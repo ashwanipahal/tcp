@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardImageVanilla component renders correctly without props 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="30"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/visa-small.png",
+        }
+      }
+      url=""
+      width="47"
+    />
+  </Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text={1234}
+    textDecoration={null}
+  />
+</Styled(View)>
+`;

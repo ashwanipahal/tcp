@@ -4,6 +4,7 @@ exports[`CheckoutCartItemListContainer should render CheckoutCartItemListContain
 <Styled(CheckoutCartItemsList)
   bagPageLabels={Object {}}
   currencySymbol="$"
+  gettingSortedItemList={[Function]}
   items={Object {}}
   itemsCount={2}
   labels={Object {}}

@@ -17,6 +17,8 @@ import {
   getCurrentProduct,
   getPDPLabels,
   getProductDetailFormValues,
+  getShortDescription,
+  getGeneralProductId,
 } from './ProductDetail.selectors';
 
 import {
@@ -25,7 +27,6 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
-import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
@@ -67,33 +68,39 @@ class ProductDetailContainer extends React.PureComponent {
       productDetails,
       breadCrumbs,
       longDescription,
+      itemPartNumber,
+      shortDescription,
       ratingsProductId,
       defaultImage,
       productInfo,
       currency,
       plpLabels,
-      isPickupModalOpen,
       pdpLabels,
       addToBagError,
       ...otherProps
     } = this.props;
-
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        currency={currency}
-        productInfo={productInfo}
-        handleAddToBag={this.handleAddToBag}
-        addToBagError={addToBagError}
-        isPickupModalOpen={isPickupModalOpen}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            shortDescription={shortDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -104,13 +111,14 @@ function mapStateToProps(state) {
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    shortDescription: getShortDescription(state),
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
     productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
     plpLabels: getPlpLabels(state),
-    isPickupModalOpen: getIsPickupModalOpen(state),
     pdpLabels: getPDPLabels(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
@@ -142,6 +150,8 @@ ProductDetailContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
   router: PropTypes.shape({
     query: PropTypes.shape({
@@ -153,7 +163,6 @@ ProductDetailContainer.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
-  isPickupModalOpen: PropTypes.bool,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -162,14 +171,15 @@ ProductDetailContainer.defaultProps = {
   addToBagError: '',
   breadCrumbs: null,
   longDescription: '',
+  shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
   currency: '',
   plpLabels: {
     lbl_sort: '',
   },
+  itemPartNumber: '',
   pdpLabels: {},
-  isPickupModalOpen: false,
 };
 
 export default withRouter(

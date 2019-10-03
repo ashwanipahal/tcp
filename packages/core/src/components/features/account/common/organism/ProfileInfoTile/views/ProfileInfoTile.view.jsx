@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -15,8 +16,8 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
   const isCA = isCanada();
   return (
     <AccountOverviewTile
-      title={labels.lbl_overview_profileInformationHeading}
-      ctaTitle={labels.lbl_overview_profileInfoViewCTA}
+      title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}
+      ctaTitle={getLabelValue(labels, 'lbl_overview_profileInfoViewCTA')}
       dataLocatorPrefix="profileInfo"
       ctaLink="/account?id=profile"
       ctaPath="/account/profile"
@@ -48,7 +49,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 fontSize="fs14"
                 fontFamily="secondary"
               >
-                {`${labels.lbl_overview_profileInfoMember} `}
+                {`${getLabelValue(labels, 'lbl_overview_profileInfoMember')} `}
                 <BodyCopy
                   component="span"
                   data-locator="memberId"
@@ -66,7 +67,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 fontSize="fs14"
                 fontFamily="secondary"
               >
-                {labels.lbl_overview_profileInfoEmailAddress}
+                {getLabelValue(labels, 'lbl_overview_profileInfoEmailAddress')}
               </BodyCopy>
               <BodyCopy
                 component="span"
@@ -94,7 +95,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 asPath="/account/profile"
                 dataLocator="userdetailsEditLnk"
               >
-                {labels.lbl_overview_profileInfoEditCTA}
+                {getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
               </Anchor>
             </BodyCopy>
           </Col>
@@ -114,7 +115,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
               fontWeight="extrabold"
               fontFamily="secondary"
             >
-              {labels.lbl_overview_profileInfoMailingAddress}
+              {getLabelValue(labels, 'lbl_overview_profileInfoMailingAddress')}
             </BodyCopy>
             <BodyCopy data-locator="mailingAddressValue" component="div">
               <Address
@@ -142,7 +143,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 asPath={internalEndpoints.mailingAddressPage.path}
                 dataLocator="mailingAddressEditLnk"
               >
-                {labels.lbl_overview_profileInfoEditCTA}
+                {getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
               </Anchor>
             </BodyCopy>
           </Col>
@@ -162,7 +163,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
               fontWeight="extrabold"
               fontFamily="secondary"
             >
-              {labels.lbl_overview_profileInfoPassword}
+              {getLabelValue(labels, 'lbl_overview_profileInfoPassword')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -190,7 +191,7 @@ const ProfileInfoTile = ({ labels, profileInfo }) => {
                 asPath={internalEndpoints.changePassowrdPage.path}
                 dataLocator="passwordChangeLnk"
               >
-                {labels.lbl_overview_profileInfoChangeCTA}
+                {getLabelValue(labels, 'lbl_overview_profileInfoChangeCTA')}
               </Anchor>
             </BodyCopy>
           </Col>

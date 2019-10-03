@@ -2,7 +2,9 @@
 
 exports[`Myprofile should render correctly 1`] = `
 <View>
-  <Styled(Text) />
+  <Styled(Text)>
+    lbl_profile_heading
+  </Styled(Text)>
   <Styled(LineComp)
     borderColor="black"
     borderWidth={1}
@@ -12,6 +14,7 @@ exports[`Myprofile should render correctly 1`] = `
   <ProfileInformation
     airMiles=""
     childrenBirthdays={Immutable.List []}
+    componentProps={Object {}}
     defaultStore=""
     handleComponentChange={[Function]}
     labels={Object {}}

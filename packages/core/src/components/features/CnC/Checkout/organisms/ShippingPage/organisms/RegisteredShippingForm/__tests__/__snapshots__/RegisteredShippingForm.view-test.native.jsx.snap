@@ -136,6 +136,8 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -240,6 +242,8 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -501,6 +505,8 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -610,6 +616,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -729,6 +737,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}
@@ -833,6 +843,8 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
         }
       }
       dataLocatorPrefix="address"
+      fontSize="fs14"
+      regularName={false}
       showCountry={false}
       showDefaultText={false}
       showName={true}

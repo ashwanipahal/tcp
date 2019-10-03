@@ -19,6 +19,7 @@ const HomePageView = dynamic({
     moduleJ: () => import('@tcp/core/src/components/common/molecules/ModuleJ').then(returnModule),
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleB: () => import('@tcp/core/src/components/common/molecules/ModuleB').then(returnModule),
+    moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
   }),
   render: ({ slots }, modules) => {
     return [
@@ -38,3 +39,4 @@ HomePageView.propTypes = {
 };
 
 export default errorBoundary(HomePageView);
+export { HomePageView as HomePageViewVanilla };

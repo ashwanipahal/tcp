@@ -1,6 +1,7 @@
 import React from 'react';
 import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
 import styles from '../styles/AddressTile.style';
@@ -85,15 +86,15 @@ class AddressBookTile extends React.Component<Props> {
                 medium: 4,
               }}
             >
-              <div>
+              <div className="default-address-label">
                 {address.primary === 'true' && (
                   <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
-                    {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
+                    {getLabelValue(labels, 'ACC_LBL_DEFAULT_SHIPPING', 'addressBook')}
                   </Badge>
                 )}
                 {address.xcont_isDefaultBilling === 'true' && (
                   <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
-                    {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
+                    {getLabelValue(labels, 'ACC_LBL_DEFAULT_BILLING', 'addressBook')}
                   </Badge>
                 )}
                 {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
@@ -101,7 +102,7 @@ class AddressBookTile extends React.Component<Props> {
                     dataLocator="addressbook-shippinglabel"
                     className="addressbook-shippinglabel"
                   >
-                    {labels.addressBook.ACC_LBL_SHIPPING}
+                    {getLabelValue(labels, 'ACC_LBL_SHIPPING', 'addressBook')}
                   </Badge>
                 )}
                 {address.primary !== 'true' && (
@@ -115,7 +116,7 @@ class AddressBookTile extends React.Component<Props> {
                       to=""
                       dataLocator="addressbook-makedefault"
                     >
-                      {labels.common.lbl_common_makeDefault}
+                      {getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
                     </Anchor>
                   </div>
                 )}
@@ -132,7 +133,7 @@ class AddressBookTile extends React.Component<Props> {
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
-            {labels.common.lbl_common_edit}
+            {getLabelValue(labels, 'lbl_common_edit', 'common')}
           </Anchor>
           <Anchor
             fontSizeVariation="large"
@@ -142,7 +143,7 @@ class AddressBookTile extends React.Component<Props> {
             dataLocator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
-            {labels.common.lbl_common_delete}
+            {getLabelValue(labels, 'lbl_common_delete', 'common')}
           </Anchor>
         </div>
       </div>

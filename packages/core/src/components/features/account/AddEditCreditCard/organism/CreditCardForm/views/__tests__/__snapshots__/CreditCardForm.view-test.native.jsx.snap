@@ -149,6 +149,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -289,7 +290,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -302,6 +303,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -325,7 +327,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -352,6 +354,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
         variation="secondary"
       />
       <Styled(View)
@@ -433,7 +436,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "marginTop": 15,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />
@@ -614,6 +617,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -777,7 +781,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -790,6 +794,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -813,7 +818,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -840,6 +845,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
         selectedValue="12345"
         variation="secondary"
       />
@@ -861,6 +867,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             }
           }
           dataLocatorPrefix="address"
+          fontSize="fs14"
+          regularName={false}
           showCountry={false}
           showDefaultText={false}
           showName={true}
@@ -925,7 +933,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "marginTop": 15,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />
@@ -1083,6 +1091,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -1223,7 +1232,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -1236,6 +1245,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -1259,7 +1269,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -1286,6 +1296,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
         variation="secondary"
       />
     </Styled(View)>
@@ -1345,7 +1356,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "marginTop": 15,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />

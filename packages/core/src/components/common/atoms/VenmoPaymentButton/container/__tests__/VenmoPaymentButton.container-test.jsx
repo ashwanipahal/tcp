@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { VenmoPaymentButtonContainer, mapDispatchToProps } from '../VenmoPaymentButton.container';
+import VenmoPaymentButton from '../../views';
 
 describe('Venmo Payment Button Container', () => {
   let props;
@@ -28,7 +29,7 @@ describe('Venmo Payment Button Container', () => {
       allowNewBrowserTab: true,
       isGuest: false,
       orderId: 3000332630,
-      setVenmoPaymentInProgress: jest.fn(),
+      setVenmoProgress: jest.fn(),
       getVenmoPaymentTokenAction: jest.fn(),
       setVenmoDataAction: jest.fn(),
       onSuccess: jest.fn(),
@@ -53,12 +54,17 @@ describe('Venmo Payment Button Container', () => {
     expect(props.onSuccess).toBeCalled();
   });
 
-  it('calling fetchVenmoClientToken method', () => {
-    const getVenmoPaymentTokenAction = jest.fn();
+  it('calling onVenmoPaymentButtonError method', () => {
     const tree = shallow(<VenmoPaymentButtonContainer {...props} />);
     const componentInstance = tree.instance();
-    componentInstance.fetchVenmoClientToken();
-    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
+    componentInstance.onVenmoPaymentButtonError();
+    expect(props.setVenmoProgress).toBeCalled();
+  });
+
+  it('should render VenmoPaymentButton correctly', () => {
+    const tree = shallow(<VenmoPaymentButtonContainer {...props} />);
+    expect(tree).toMatchSnapshot();
+    expect(tree.find(VenmoPaymentButton)).toHaveLength(1);
   });
 });
 
@@ -66,7 +72,7 @@ describe('#mapDispatchToProps', () => {
   it('should return an action setVenmoPaymentInProgress which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
-    dispatchProps.setVenmoPaymentInProgress();
+    dispatchProps.setVenmoProgress();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 

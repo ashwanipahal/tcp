@@ -135,7 +135,7 @@ export const nonFunctionalSafeComponent = WrappedComponent => {
  * @param {*} WrappedComponent
  */
 const SafeComponent = WrappedComponent =>
-  !WrappedComponent.prototype.render
+  !(WrappedComponent.prototype && WrappedComponent.prototype.render)
     ? functionalSafeComponent(WrappedComponent)
     : nonFunctionalSafeComponent(WrappedComponent);
 

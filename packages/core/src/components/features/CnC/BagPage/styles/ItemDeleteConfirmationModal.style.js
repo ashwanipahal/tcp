@@ -34,6 +34,9 @@ const styles = css`
       max-width: 432px;
       min-height: 372px;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
     .close-modal {
       @media ${props => props.theme.mediaQuery.smallOnly} {
         top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -60,7 +63,7 @@ const styles = css`
 
   .button-container {
     display: flex;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     flex-direction: column;
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
@@ -72,6 +75,11 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     &:hover {
       background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      height: 42px;
+      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
   }
 

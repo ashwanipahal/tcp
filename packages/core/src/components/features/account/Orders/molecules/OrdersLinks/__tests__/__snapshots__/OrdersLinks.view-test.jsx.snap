@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersLinks component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="right"
+>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    dataLocator="order-country-selector-link"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontSizeVariation="large"
+    onClick={[Function]}
+    underline={true}
+  >
+    lbl_orders_caOrdersLink
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="elem-ml-XXXL"
+    dataLocator="order-international-link"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontSizeVariation="large"
+    href="https://www.borderfree.com/order-status/"
+    target="_blank"
+    underline={true}
+  >
+    lbl_orders_internationalOrdersLink
+  </Styled(Anchor)>
+</Styled(BodyCopy)>
+`;

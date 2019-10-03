@@ -9,6 +9,13 @@ import {
   getCurrentProduct,
   getPlpLabels,
 } from './ProductDetail.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import {
+  addToCartEcom,
+  clearAddToBagErrorState,
+} from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
+import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -35,16 +42,42 @@ class ProductDetailContainer extends React.PureComponent {
     getDetails({ productColorId: productId, ignoreCache: true });
   }
 
+  handleAddToBag = formValues => {
+    const { addToBagEcom, currentProduct } = this.props;
+    let cartItemInfo = getCartItemInfo(currentProduct, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
+
   render() {
-    const { currentProduct, breadCrumbs, navTree, plpLabels } = this.props;
+    const {
+      currentProduct,
+      breadCrumbs,
+      navTree,
+      plpLabels,
+      navigation,
+      addToBagError,
+      clearAddToBagError,
+      isPickupModalOpen,
+    } = this.props;
+    const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
-      <ProductDetail
-        currentProduct={currentProduct}
-        breadCrumbs={breadCrumbs}
-        navTree={navTree}
-        selectedColorProductId={this.selectedColorProductId}
-        plpLabels={plpLabels}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            currentProduct={currentProduct}
+            breadCrumbs={breadCrumbs}
+            navTree={navTree}
+            selectedColorProductId={this.selectedColorProductId}
+            plpLabels={plpLabels}
+            handleFormSubmit={this.handleAddToBag}
+            navigation={navigation}
+            addToBagError={addToBagError}
+            clearAddToBagError={clearAddToBagError}
+            isPickupModalOpen={isPickupModalOpen}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -55,6 +88,8 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
+    addToBagError: getAddedToBagError(state),
   };
 }
 
@@ -63,16 +98,26 @@ function mapDispatchToProps(dispatch) {
     getDetails: payload => {
       dispatch(getProductDetails(payload));
     },
+    addToBagEcom: payload => {
+      dispatch(addToCartEcom(payload));
+    },
+    clearAddToBagError: () => {
+      dispatch(clearAddToBagErrorState());
+    },
   };
 }
 
 ProductDetailContainer.propTypes = {
   currentProduct: PropTypes.shape({}),
   getDetails: PropTypes.func.isRequired,
+  clearAddToBagError: PropTypes.func.isRequired,
   breadCrumbs: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  isPickupModalOpen: PropTypes.bool,
+  addToBagError: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -80,6 +125,8 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  isPickupModalOpen: false,
+  addToBagError: '',
 };
 
 export default connect(

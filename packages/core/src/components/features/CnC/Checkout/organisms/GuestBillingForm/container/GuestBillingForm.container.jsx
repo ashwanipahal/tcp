@@ -10,7 +10,10 @@ import {
   getPaymentMethodId,
   getSameAsShippingValue,
 } from './GuestBillingForm.selectors';
-import { submitBillingSection } from '../../../container/Checkout.action';
+import {
+  submitBillingSection,
+  setVenmoPaymentInProgress,
+} from '../../../container/Checkout.action';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 
 /**
@@ -24,8 +27,8 @@ class GuestBillingContainer extends React.Component {
    * @description submits the billing data
    */
   submitBillingData = data => {
-    const { submitBilling, navigation } = this.props;
-    const { address, sameAsShipping } = data;
+    const { submitBilling, navigation, setVenmoProgress } = this.props;
+    const { address, sameAsShipping, paymentMethodId } = data;
     let addressLine1;
     let addressLine2;
     let city;
@@ -36,6 +39,7 @@ class GuestBillingContainer extends React.Component {
     let zipCode;
     let onFileAddressKey;
     let onFileAddressId;
+    let submitData = {};
     /* istanbul ignore else */
     if (address) {
       ({
@@ -51,28 +55,34 @@ class GuestBillingContainer extends React.Component {
         onFileAddressId,
       } = address);
     }
-    submitBilling({
-      cardNumber: data.cardNumber,
-      cardType: data.cardType,
-      cvv: data.cvvCode,
-      emailAddress: undefined,
-      expMonth: data.expMonth,
-      expYear: data.expYear,
-      address: {
-        addressLine1,
-        addressLine2: addressLine2 || '',
-        city,
-        country,
-        firstName,
-        lastName,
-        state,
-        zipCode,
-        sameAsShipping,
-        onFileAddressKey,
-        onFileAddressId,
-      },
-      navigation,
-    });
+    if (paymentMethodId !== CONSTANTS.PAYMENT_METHOD_VENMO) {
+      submitData = {
+        cardNumber: data.cardNumber,
+        cardType: data.cardType,
+        cvv: data.cvvCode,
+        emailAddress: undefined,
+        expMonth: data.expMonth,
+        expYear: data.expYear,
+        address: {
+          addressLine1,
+          addressLine2: addressLine2 || '',
+          city,
+          country,
+          firstName,
+          lastName,
+          state,
+          zipCode,
+          sameAsShipping,
+          onFileAddressKey,
+          onFileAddressId,
+        },
+        navigation,
+      };
+      setVenmoProgress(false); // Cancelling Venmo Progress for non venmo payment option
+    } else {
+      submitData = { paymentMethodId, navigation };
+    }
+    submitBilling(submitData);
   };
 
   /**
@@ -117,7 +127,13 @@ class GuestBillingContainer extends React.Component {
    * @description render method to be called of component
    */
   render() {
-    const { billingData, orderHasShipping, syncErrors, shippingOnFileAddressKey } = this.props;
+    const {
+      billingData,
+      orderHasShipping,
+      syncErrors,
+      shippingOnFileAddressKey,
+      isVenmoPaymentInProgress,
+    } = this.props;
     let cardNumber;
     let cardType;
     let expMonth;
@@ -133,7 +149,9 @@ class GuestBillingContainer extends React.Component {
       <GuestBillingPage
         {...this.props}
         initialValues={{
-          paymentMethodId: CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+          paymentMethodId: isVenmoPaymentInProgress
+            ? CONSTANTS.PAYMENT_METHOD_VENMO
+            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
@@ -165,6 +183,9 @@ export const mapDispatchToProps = dispatch => {
     submitBilling: payload => {
       dispatch(submitBillingSection(payload));
     },
+    setVenmoProgress: payload => {
+      dispatch(setVenmoPaymentInProgress(payload));
+    },
   };
 };
 
@@ -181,6 +202,8 @@ GuestBillingContainer.propTypes = {
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
   navigation: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoProgress: PropTypes.func.isRequired,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -195,6 +218,7 @@ GuestBillingContainer.defaultProps = {
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
   navigation: null,
+  isVenmoPaymentInProgress: false,
 };
 
 export default connect(

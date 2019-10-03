@@ -5,6 +5,7 @@ export const constants = {
   VENMO_INPROGRESS_KEY: 'venprog',
   VENMO_PICKUP_BANNER: 'ven_pickup_banner',
   VENMO_SHIPPING_BANNER: 'ven_shipping_banner',
+  VENMO: 'VENMO',
 };
 
 export const modes = {

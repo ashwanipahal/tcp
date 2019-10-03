@@ -7,10 +7,58 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   <Styled(FormPageHeading)
     heading="lbl_common_extraPointsHeading"
   />
+  <Styled(Notification)
+    alt="lbl_earnExtraPoints_imageAlt"
+    className="elem-mt-MED"
+    status="info"
+  >
+    <Styled(BodyCopy)
+      className="elem-mr-LRG"
+      color="text.primary"
+      component="span"
+      dataLocator="earnextrapoints-notificationdate"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      09/17/19
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="span"
+      dataLocator="earnextrapoints-notificationtext"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      lbl_earnExtraPoints_you_earned 5 lbl_earnExtraPoints_place_rewards 
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      asPath="/account/place-rewards/points-history"
+      className="elem-ml-XS"
+      dataLocator="view-points-history"
+      fontSizeVariation="large"
+      to="/account?id=place-rewards&subSection=points-history"
+      underline={true}
+    >
+      lbl_earnExtraPoints_view_points_history
+    </Styled(Anchor)>
+  </Styled(Notification)>
   <Styled(BodyCopy)
     className="morePointsWrapper"
     color="text.primary"
     component="p"
+    data-locator="earnextrapoints-morePointsText"
     fontFamily="secondary"
     fontSize="fs18"
     fontWeight="semibold"

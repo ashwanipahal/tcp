@@ -5,7 +5,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
   asPath="https://www.childrensplace.com/us/c/toddler-girl-clothes"
   target=""
   title="Shop Unicorns & Friends"
-  to="/c?cid=https://www.childrensplace.com/us"
+  to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
 >
   <Styled(Row)
     fullBleed={true}
@@ -86,7 +86,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           dataLocator="moduleL_link_NaN"
           target=""
           title="Shop Unicorns & Friends"
-          to="/c?cid=https://www.childrensplace.com/us"
+          to="/c?cid=https://www.childrensplace.com/ustoddler-girl-clothes"
           withCaret={true}
         >
           Shop Unicorns & Friends

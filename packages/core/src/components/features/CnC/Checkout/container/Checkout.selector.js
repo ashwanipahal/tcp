@@ -331,7 +331,10 @@ const getBillingLabels = createSelector(
       'lbl_billing_venmo',
       'lbl_billing_selectCardTitle',
       'lbl_billing_select',
+      'lbl_billing_cardEditCancel',
+      'lbl_billing_cardEditSave',
       'lbl_billing_cvvCode',
+      'lbl_billing_continueWith',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -361,6 +364,9 @@ const getBillingLabels = createSelector(
       lbl_billing_selectCardTitle: selectCardTitle,
       lbl_billing_select: select,
       lbl_billing_cvvCode: cvvCode,
+      lbl_billing_cardEditCancel: cancelButtonText,
+      lbl_billing_cardEditSave: saveButtonText,
+      lbl_billing_continueWith: continueWith,
     } = labels;
     return {
       header,
@@ -372,6 +378,8 @@ const getBillingLabels = createSelector(
       defaultCard,
       addNewAddress,
       paymentMethod,
+      saveButtonText,
+      cancelButtonText,
       saveToAccount,
       defaultPayment,
       creditCard,
@@ -387,6 +395,7 @@ const getBillingLabels = createSelector(
       selectCardTitle,
       select,
       cvvCode,
+      continueWith,
     };
   }
 );
@@ -403,6 +412,7 @@ const getCreditFieldLabels = createSelector(
       'lbl_creditField_expMonth',
       'lbl_creditField_expYear',
       'lbl_creditField_cvvCode',
+      'lbl_creditField_cameraText',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(creditFieldLabels, key);
@@ -412,12 +422,14 @@ const getCreditFieldLabels = createSelector(
       lbl_creditField_expMonth: expMonth,
       lbl_creditField_expYear: expYear,
       lbl_creditField_cvvCode: cvvCode,
+      lbl_creditField_cameraText: cameraText,
     } = labels;
     return {
       cardNumber,
       expMonth,
       expYear,
       cvvCode,
+      cameraText,
     };
   }
 );
@@ -581,6 +593,16 @@ function getPickupInitialPickupSectionValues(state) {
   };
 }
 
+/**
+ * Get if Pickup has values in the redux state
+ * @param {object} state
+ * @returns {boolean}
+ */
+const isPickupHasValues = state => {
+  const pickupValues = getPickupInitialPickupSectionValues(state);
+  return pickupValues && pickupValues.pickUpContact && pickupValues.pickUpContact.firstName;
+};
+
 function getIsPaymentDisabled(state) {
   const orderDetails = state.CartPageReducer.get('orderDetails');
   if (orderDetails) {
@@ -659,6 +681,9 @@ const isVenmoShippingBannerDisplayed = () => {
   return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
 };
 
+const isVenmoPaymentSaveSelected = state =>
+  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -725,6 +750,34 @@ function getVenmoUserEmail(state) {
   );
 }
 
+/**
+ * This method is used to decide if we need to show review page next based on order conditions.
+ */
+const hasVenmoReviewPageRedirect = state => {
+  const isVenmoInProgress = isVenmoPaymentInProgress();
+  const isVenmoShippingDisplayed = isVenmoShippingBannerDisplayed();
+  const orderHasShipping = getIsOrderHasShipping(state);
+  const orderHasPickup = getIsOrderHasPickup(state);
+  const hasPickupValues = isPickupHasValues(state);
+  const addressList = getAddressListState(state);
+  const hasShippingAddress = addressList && addressList.size > 0;
+  let reviewPageRedirect = false;
+  if (!isVenmoInProgress || isVenmoShippingDisplayed) {
+    return reviewPageRedirect;
+  }
+  if (orderHasShipping && orderHasPickup) {
+    // Mix Cart
+    reviewPageRedirect = hasShippingAddress && hasPickupValues;
+  } else if (orderHasShipping) {
+    // Ship to Home Item
+    reviewPageRedirect = hasShippingAddress;
+  } else if (orderHasPickup) {
+    // Boss Bopis scenario
+    reviewPageRedirect = hasPickupValues;
+  }
+  return reviewPageRedirect;
+};
+
 const getGiftWrapOptions = state => {
   return state.Checkout.getIn(['options', 'giftWrapOptions']);
 };
@@ -759,8 +812,16 @@ function getInternationalCheckoutCommUrl() {
 function getInternationalCheckoutUrl(state) {
   return state.Checkout.getIn(['options', 'internationalUrl']);
 }
+
+/**
+ * @function getIsVenmoEnabled
+ * @description - Venmo Kill Switch Selector
+ * @param {object} state
+ * @returns {bool}
+ */
 const getIsVenmoEnabled = state => {
   return (
+    getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );
@@ -903,6 +964,9 @@ export default {
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
+  isVenmoPaymentSaveSelected,
+  hasVenmoReviewPageRedirect,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  isPickupHasValues,
 };

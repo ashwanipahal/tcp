@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -34,7 +35,7 @@ class TrackOrderBottomSection extends React.Component {
             className="trackorder__modal__overlaycontent"
             component="p"
           >
-            {labels.trackOrder.lbl_trackOrder_haveAccount}
+            {getLabelValue(labels, 'lbl_trackOrder_haveAccount', 'trackOrder')}
           </BodyCopy>
           <BodyCopy
             fontSize="fs12"
@@ -52,12 +53,12 @@ class TrackOrderBottomSection extends React.Component {
               href="#"
               onClick={e => this.handleDefaultLinkClick(e)}
               className="trackorder__modal__loginlink"
-              aria-label={`${labels.trackOrder.lbl_trackOrder_login}
-                ${labels.trackOrder.lbl_trackOrder_content}`}
+              aria-label={`${getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
+                ${getLabelValue(labels, 'lbl_trackOrder_content', 'trackOrder')}`}
             >
-              {labels.trackOrder.lbl_trackOrder_login}
+              {getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
             </Anchor>
-            {labels.trackOrder.lbl_trackOrder_content}
+            {getLabelValue(labels, 'lbl_trackOrder_content', 'trackOrder')}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy
@@ -73,15 +74,15 @@ class TrackOrderBottomSection extends React.Component {
             underline
             anchorVariation="primary"
             fontSize="fs12"
-            to={labels.trackOrder.lbl_trackOrder_internationTrackOrderLink}
+            to={getLabelValue(labels, 'lbl_trackOrder_internationTrackOrderLink', 'trackOrder')}
             target="_blank"
             className="trackorder__modal__clickhere_link"
-            aria-label={`${labels.trackOrder.lbl_trackOrder_clickHere}
-                ${labels.trackOrder.lbl_trackOrder_subContent}`}
+            aria-label={`${getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
+                ${getLabelValue(labels, 'lbl_trackOrder_subContent', 'trackOrder')}`}
           >
-            {labels.trackOrder.lbl_trackOrder_clickHere}
+            {getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
           </Anchor>
-          {labels.trackOrder.lbl_trackOrder_subContent}
+          {getLabelValue(labels, 'lbl_trackOrder_subContent', 'trackOrder')}
         </BodyCopy>
       </BodyCopy>
     );

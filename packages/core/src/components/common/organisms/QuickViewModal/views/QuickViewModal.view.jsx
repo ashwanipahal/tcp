@@ -33,8 +33,9 @@ class QuickViewModal extends React.Component {
         onRequestClose={this.onCloseClick}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
-        // dataLocator={getLocator('pdp_full_size_image_modal')}
-        //  closeIconDataLocator={getLocator('pdp_zoomed_image_closed_btn')}
+        dataLocator={getLocator('quick_view_modal')}
+        dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
+        closeIconDataLocator={getLocator('quick_view_icon_btn')}
         heading={quickViewLabels.addToBag}
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ height: '95%' }}
@@ -55,6 +56,7 @@ class QuickViewModal extends React.Component {
             buttonLabel="Pickup In Store"
             onPickupOpenClick={this.handlePickupOpenClick}
             currentProduct={productInfo}
+            onPickupClickAddon={this.onCloseClick}
           />
         </div>
       </Modal>

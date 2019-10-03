@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../atoms/TextBox';
 import Row from '../../atoms/Row';
 import Col from '../../atoms/Col';
@@ -113,7 +114,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     return (
       !saveToAccountEnabled &&
       isRow && (
-        <Row fullBleed className="elem-mb-LRG elem-mt-MED savetoaccount">
+        <Row fullBleed className="elem-mb-XL elem-mt-MED savetoaccount">
           <Field
             dataLocator="gift-card-checkbox-field"
             name="saveToAccount"
@@ -127,7 +128,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              {labels.lbl_payment_saveToAccount}
+              {getLabelValue(labels, 'payment_saveToAccount')}
             </BodyCopy>
           </Field>
         </Row>
@@ -155,7 +156,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             data-locator="gift-card-cancelbtn"
             onClick={this.onCancelClick}
           >
-            {labels.lbl_payment_cancelCard}
+            {getLabelValue(labels, 'lbl_payment_cancelCard')}
           </Button>
         </Col>
         <Col
@@ -172,7 +173,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             data-locator="gift-card-addcardbtn"
             disabled={isLoading}
           >
-            {labels.lbl_payment_addCard}
+            {getLabelValue(labels, 'lbl_payment_addCard')}
           </Button>
         </Col>
       </>
@@ -196,7 +197,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             colSize={{ small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 }}
           >
             <Field
-              placeholder={labels.lbl_payment_giftCardNoPlaceholder}
+              placeholder={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -209,7 +210,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           {!isRow && (
             <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
               <Field
-                placeholder={labels.lbl_payment_giftCardPinPlaceholder}
+                placeholder={getLabelValue(labels, 'lbl_payment_giftCardPinPlaceholder')}
                 name="cardPin"
                 type="tel"
                 component={TextBox}
@@ -223,7 +224,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           <Row fullBleed className="elem-mb-XL">
             <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
               <Field
-                placeholder={labels.lbl_payment_giftCardPinPlaceholder}
+                placeholder={getLabelValue(labels, 'lbl_payment_giftCardPinPlaceholder')}
                 name="cardPin"
                 type="tel"
                 component={TextBox}
@@ -249,10 +250,10 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                   className="card__msg--bold elem-mb-XS"
                   dataLocator="git-card-headertext"
                 >
-                  {labels.lbl_payment_giftCardMessageHeading}
+                  {getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
                 </BodyCopy>
                 <BodyCopy tag="p" className="card__msg" dataLocator="git-card-messagetext">
-                  {labels.lbl_payment_giftCardMessageDescription}
+                  {getLabelValue(labels, 'lbl_payment_giftCardMessageDescription')}
                 </BodyCopy>
               </div>
             </Col>

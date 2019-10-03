@@ -131,6 +131,10 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/account/points/waysToEarn',
   },
+  getEarnedPointsNotication: {
+    method: 'GET',
+    URI: 'v2/wallet/points/nontransactional/current',
+  },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',
@@ -270,6 +274,19 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  // STORE LOCATORS
+  getFavoriteStore: {
+    method: 'GET',
+    URI: 'v2/store/getFavouriteStoreLocation',
+  },
+  findStoresByCoordinates: {
+    method: 'GET',
+    URI: 'v2/store/findStoresbyLatitudeandLongitude',
+  },
+  setFavoriteStore: {
+    method: 'POST',
+    URI: 'v2/store/addFavouriteStoreLocation',
+  },
 
   getSocialAccountsInfo: {
     method: 'GET',
@@ -316,6 +333,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
   },
+  getStoreInfo: {
+    method: 'GET',
+    URI: 'v2/store/info',
+  },
+  getNearByStore: {
+    method: 'GET',
+    URI: 'v2/store/nearBy',
+  },
   getBOPISInventoryDetails: {
     method: 'POST',
     URI: 'v2/vendor/getBOPISInvetoryDetails',
@@ -327,6 +352,22 @@ const endpoints = {
   claimPoints: {
     method: 'POST',
     URI: 'v2/account/points/claim',
+  },
+  navigateXHR: {
+    method: 'POST',
+    URI: 'v2/appconfig/navigateXHR',
+  },
+  getStyliticsProductViewById: {
+    method: API_METHODS.GET,
+    URI: 'https://widget-api.stylitics.com/api/outfits',
+  },
+  getDetailedOrderHistory: {
+    method: 'GET',
+    URI: 'v2/wallet/getPointsAndOrderHistory',
+  },
+  addOrUpdateWishlist: {
+    method: 'PUT',
+    URI: 'v2/wishlist/addOrUpdateWishlist',
   },
 };
 export default endpoints;

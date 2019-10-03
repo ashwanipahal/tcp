@@ -15,11 +15,18 @@ import { isMobileApp, routerPush } from '../../../../../utils';
 import { resetCheckoutReducer } from '../container/Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import BagActions from '../../BagPage/container/BagPage.actions';
+import { updateVenmoPaymentInstruction } from '../container/CheckoutBilling.saga';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
   routerPush: jest.fn(),
 }));
+
+const emailAddress = '123@123.com';
+const orderId = '54321';
+const smsOrderInfo = '';
+const currentLanguage = 'en';
 
 describe('CheckoutReview saga', () => {
   it('CheckoutReview', () => {
@@ -38,6 +45,7 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
+    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
   it('CheckoutReview when mobile app', () => {
     isMobileApp.mockImplementation(() => true);
@@ -55,14 +63,20 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
+    expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
 });
-const emailAddress = '123@123.com';
+
 describe('submitOrderProcessing saga', () => {
   it('submitOrderProcessing review Page', () => {
     const orderProcessing = submitOrderProcessing();
-    orderProcessing.next();
-    orderProcessing.next({ userDetails: { emailAddress } });
+    orderProcessing.next(false); // Venmo not in progress
+    orderProcessing.next(false); // Venmo save option not selected
+    orderProcessing.next({}); // No venmo data
+    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
+    const res = { userDetails: { emailAddress } };
+    orderProcessing.next({ userDetails: { emailAddress } }, orderId);
+    orderProcessing.next(res);
     orderProcessing.next();
     orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
@@ -72,14 +86,27 @@ describe('submitOrderProcessing saga', () => {
   });
   it('submitOrderProcessing review Page with shipping email', () => {
     const orderProcessing = submitOrderProcessing();
-    orderProcessing.next();
-    orderProcessing.next({ shipping: { emailAddress } });
+    orderProcessing.next(false);
+    orderProcessing.next(false);
+    orderProcessing.next({});
+    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
+    const res = { userDetails: { emailAddress } };
+    orderProcessing.next({ shipping: { emailAddress } }, orderId);
+    orderProcessing.next(res);
     orderProcessing.next();
     orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
     expect(orderProcessing.next(true).value).toEqual(
       call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
     );
+  });
+
+  it('submitOrderProcessing review Page with venmo', () => {
+    const orderProcessing = submitOrderProcessing();
+    orderProcessing.next(true); // Venmo In-Progress
+    orderProcessing.next(true); // Venmo Save Option Selected
+    orderProcessing.next({ nonce: 'encrypted-nonce', deviceData: 'test-device-data' }); // Venmo Data
+    expect(orderProcessing.next().value).toEqual(call(updateVenmoPaymentInstruction));
   });
 });
 describe('loadPersonalizedCoupons saga', () => {

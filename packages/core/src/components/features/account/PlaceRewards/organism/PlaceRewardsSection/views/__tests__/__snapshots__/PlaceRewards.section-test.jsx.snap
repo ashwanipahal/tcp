@@ -28,7 +28,9 @@ exports[`MyRewards should render correctly 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        ACC_LBL_PLACE_REWARDS_HEADING
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -71,7 +73,9 @@ exports[`MyRewards should render correctly 1`] = `
               lineHeight="normal"
               link={null}
               textAlign="left"
-            />
+            >
+              lbl_my_rewards_point_balance
+            </Styled(BodyCopy)>
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
@@ -92,7 +96,7 @@ exports[`MyRewards should render correctly 1`] = `
               className="my-place-reward-section"
             >
               <Connect(RewardsPointsContainer)
-                labels={Object {}}
+                labels="placeRewards"
               />
             </div>
           </Styled(Col)>
@@ -132,7 +136,9 @@ exports[`MyRewards should render correctly 1`] = `
               lineHeight="normal"
               link={null}
               textAlign="left"
-            />
+            >
+              lbl_my_rewards_points_history
+            </Styled(BodyCopy)>
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)

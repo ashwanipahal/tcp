@@ -3,6 +3,9 @@
 exports[`QuickViewModal component should renders correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
+  closeIconDataLocator="quick_view_icon_btn"
+  dataLocator="quick_view_modal"
+  dataLocatorHeader="quick_view_add_to_bag_header"
   fixedWidth={true}
   heightConfig={
     Object {
@@ -501,6 +504,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
         }
       }
       dataLocator="global-addtocart-Button"
+      onPickupClickAddon={[Function]}
     />
   </div>
 </Styled(Modal)>

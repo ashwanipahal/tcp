@@ -13,6 +13,8 @@ const styles = css`
     position: absolute;
     right: 12px;
     top: 12px;
+    width: 15px;
+    height: 15px;
   }
 
   .genderIcon {
@@ -23,6 +25,11 @@ const styles = css`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+  }
+  .text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 

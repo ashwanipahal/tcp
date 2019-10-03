@@ -1,5 +1,12 @@
 import React from 'react';
-import { Modal, StatusBar, SafeAreaView, ScrollView } from 'react-native';
+import {
+  Modal,
+  StatusBar,
+  SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -9,6 +16,7 @@ import {
   LineWrapper,
   RowWrapper,
   ImageWrapper,
+  ModalCustomWrapper,
 } from '../Modal.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -49,6 +57,18 @@ const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: Clos
   );
 };
 
+const geLine = (horizontalBar, borderColor) => {
+  return (
+    <>
+      {horizontalBar ? (
+        <LineWrapper>
+          <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
+        </LineWrapper>
+      ) : null}
+    </>
+  );
+};
+
 const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
     heading,
@@ -59,12 +79,20 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     headerStyle,
     headingFontWeight,
     fontSize,
-    horizontalBar = true,
-    borderColor = 'black',
     iconType,
     fullWidth,
     customTransparent,
+    transparentModal,
+    horizontalBar = true,
+    borderColor = 'black',
   } = otherProps;
+  let behavior = null;
+  let keyboardVerticalOffset = 0;
+  if (Platform.OS === 'ios') {
+    behavior = 'padding';
+    keyboardVerticalOffset = 64;
+  }
+
   return (
     <SafeAreaView>
       <Modal
@@ -74,7 +102,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
         onRequestClose={onRequestClose}
       >
         {!customTransparent && (
-          <>
+          <ModalCustomWrapper transparentModal={transparentModal}>
             <ToastContainer />
             <StatusBar hidden />
             <RowWrapper isOverlay={isOverlay}>
@@ -89,17 +117,24 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                   />
                 </ModalHeading>
               )}
-              {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay })}
+              {getCloseIcon({
+                onRequestClose,
+                headerStyle,
+                iconType,
+                isOverlay,
+              })}
             </RowWrapper>
-            {horizontalBar ? (
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={2} borderColor={borderColor} />
-              </LineWrapper>
-            ) : null}
-            <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-              {children}
-            </ScrollView>
-          </>
+            {geLine(horizontalBar, borderColor)}
+            <KeyboardAvoidingView
+              behavior={behavior}
+              keyboardVerticalOffset={keyboardVerticalOffset}
+              enabled
+            >
+              <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+                {children}
+              </ScrollView>
+            </KeyboardAvoidingView>
+          </ModalCustomWrapper>
         )}
         {customTransparent && children}
       </Modal>

@@ -5,8 +5,9 @@ import Image from '../../Image/views/Image';
 import { getIconPath } from '../../../../../utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import logger from '../../../../../utils/loggerInstance';
-import { modes, constants } from '../container/VenmoPaymentButton.util';
+import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
+import BodyCopy from '../../BodyCopy';
 
 let venmoInstance = null;
 
@@ -18,6 +19,27 @@ export class VenmoPaymentButton extends Component {
       hasVenmoError: true,
     };
   }
+
+  componentWillMount() {
+    this.fetchVenmoClientToken();
+  }
+
+  /**
+   * @function fetchVenmoClientToken
+   * @description Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
+   */
+  fetchVenmoClientToken = () => {
+    const { isGuest, orderId, enabled, isNonceNotExpired, getVenmoPaymentTokenAction } = this.props;
+    if (enabled && !isNonceNotExpired) {
+      let userState = '';
+      if (isGuest) {
+        userState = VENMO_USER_STATES.GUEST;
+      } else {
+        userState = VENMO_USER_STATES.REGISTERED;
+      }
+      getVenmoPaymentTokenAction({ userState, orderId });
+    }
+  };
 
   /**
    * This method is to validate if we can call the venmo client token api.
@@ -198,7 +220,7 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { venmoData, mode, enabled, className } = this.props;
+    const { venmoData, mode, enabled, className, continueWithText } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
     const venmoIcon = getIconPath('venmo-logo-blue');
@@ -208,14 +230,27 @@ export class VenmoPaymentButton extends Component {
           supportedByBrowser &&
           (!hasVenmoError || mode === modes.PAYMENT_TOKEN) &&
           (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-            <button
-              onClick={this.handleVenmoClick}
-              ref={this.setVenmoButtonRef}
-              className="venmo-button"
-              aria-label="Venmo Payment Button"
-            >
-              <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
-            </button>
+            <div>
+              {continueWithText && (
+                <BodyCopy
+                  component="div"
+                  fontSize="fs15"
+                  fontWeight="semibold"
+                  fontFamily="secondary"
+                  className="venmo-continue-text"
+                >
+                  {continueWithText}
+                </BodyCopy>
+              )}
+              <button
+                onClick={this.handleVenmoClick}
+                ref={this.setVenmoButtonRef}
+                className="venmo-button"
+                aria-label="Venmo Payment Button"
+              >
+                <Image src={venmoIcon} alt="Venmo Payment Button" className="venmo-button-image" />
+              </button>
+            </div>
           )}
       </div>
     );
@@ -247,8 +282,12 @@ VenmoPaymentButton.propTypes = {
   onVenmoPaymentButtonClick: func,
   onVenmoPaymentButtonError: func,
   setVenmoPaymentInProgress: func,
+  getVenmoPaymentTokenAction: func.isRequired,
   isNonceNotExpired: bool,
   isRemoveOOSItems: bool,
+  continueWithText: string,
+  isGuest: bool.isRequired,
+  orderId: string.isRequired,
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -258,7 +297,7 @@ VenmoPaymentButton.defaultProps = {
   setVenmoData: () => {},
   allowNewBrowserTab: false,
   venmoData: {
-    supportedByBrowser: true,
+    supportedByBrowser: false,
   },
   mode: modes.CLIENT_TOKEN,
   onVenmoPaymentButtonClick: () => {},
@@ -266,6 +305,7 @@ VenmoPaymentButton.defaultProps = {
   setVenmoPaymentInProgress: () => {},
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
+  continueWithText: '',
 };
 
 export default withStyles(VenmoPaymentButton, styles);

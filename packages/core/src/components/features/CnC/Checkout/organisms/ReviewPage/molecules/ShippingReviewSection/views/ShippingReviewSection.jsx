@@ -19,6 +19,7 @@ export class ShippingReviewSection extends React.PureComponent {
       isGiftOptionsEnabled,
       giftWrappingDisplayName,
       labels,
+      onEdit,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
@@ -32,7 +33,7 @@ export class ShippingReviewSection extends React.PureComponent {
             <TitlePlusEditButton
               title={title}
               editTitle={edit}
-              onEdit={this.handleEnterEditModeClick}
+              onEdit={onEdit}
               dataLocator="pickup-section"
             />
           </Col>
@@ -98,6 +99,7 @@ ShippingReviewSection.propTypes = {
     shippingSpeed: PropTypes.string.isRequired,
     isDefault: PropTypes.bool,
   }).isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 ShippingReviewSection.defaultProps = {

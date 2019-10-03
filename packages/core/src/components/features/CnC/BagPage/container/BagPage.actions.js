@@ -188,6 +188,12 @@ const closeItemDeleteConfirmationModal = () => {
   };
 };
 
+const resetCartReducer = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.RESET_CART_DATA,
+  };
+};
+
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export default {
@@ -219,4 +225,5 @@ export default {
   startSflItemDelete,
   startSflDataMoveToBag,
   setSflItemDeleted,
+  resetCartReducer,
 };

@@ -14,6 +14,7 @@ import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import {
   getSetCouponsValuesActn,
   getSetRewardPointsOrderConfActn,
@@ -25,6 +26,8 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { resetCheckoutReducer } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import BagActions from '../../BagPage/container/BagPage.actions';
+import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 
 const {
   // isVenmoPaymentAvailable,
@@ -125,19 +128,24 @@ export function* loadPersonalizedCoupons(
 }
 
 export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
-  // return reviewOrder().then((res) => {
-  const venmoPayloadData = {};
-  // if (venmoPaymentMethodApplied) {
-  // const { nonce: venmoNonce, deviceData: venmo_device_data } = checkoutStoreView.getVenmoData(
-  //   state
-  // );
-  // const email = checkoutStoreView.getVenmoUserEmail(state);
-  // venmoPayloadData = {
-  //   venmoNonce,
-  //   venmo_device_data,
-  //   email,
-  // };
-  // }
+  let venmoPayloadData = {};
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+  const venmoData = yield select(selectors.getVenmoData);
+  // Add Venmo Payment method to the registered user account
+  if (isVenmoSaveSelected) {
+    yield call(updateVenmoPaymentInstruction);
+  }
+  if (isVenmoInProgress && venmoData) {
+    const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
+    const email = yield select(getUserEmail);
+    venmoPayloadData = {
+      venmoNonce,
+      venmo_device_data: venmoDeviceData,
+      email,
+      isVenmoSaveSelected,
+    };
+  }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
   yield call(loadPersonalizedCoupons, res, orderId);
   yield put(getSetOrderConfirmationActn(res));
@@ -155,10 +163,6 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
   const currentLanguage = yield select(getCurrentLanguage);
-  // const venmoPaymentAvailable = yield select(isVenmoPaymentAvailable);
-  // const isPaymentDisabled = yield select(getIsPaymentDisabled);
-  // const venmoPaymentMethodApplied = venmoPaymentAvailable && !isPaymentDisabled;
-
   const pendingPromises = [];
   // if (checkoutStoreView.isExpressCheckout(state)) {
   //   // if express checkout
@@ -299,22 +303,6 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   //     );
   //   }
 
-  //   // We need to add the Venmo payment type
-  //   // We have to add payment information here since we bypassed the billing step.
-  //   /// Need to find the shipping address id from store
-  //   const venmoData = checkoutStoreView.getVenmoData(state);
-  //   let venmoSavedToAccount = false;
-  //   if (formData && formData.billing) {
-  //     venmoSavedToAccount = formData.billing.venmoSavedToAccount;
-  //   } else if (
-  //     !userStoreView.isGuest(state) &&
-  //     venmoData &&
-  //     venmoData.venmoClientTokenData &&
-  //     venmoData.venmoClientTokenData.venmoPaymentTokenAvailable === 'TRUE'
-  //   ) {
-  //     // We need to maintain last saved to account.
-  //     venmoSavedToAccount = true;
-  //   }
   //   const addPaymentData = {
   //     billingAddressId,
   //     venmoData,
@@ -348,6 +336,7 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   yield put(resetCheckoutReducer());
   yield put(resetAirmilesReducer());
   yield put(resetCouponReducer());
+  yield put(BagActions.resetCartReducer());
   // getProductsOperator(this.store).loadProductRecommendations(
   //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
   //   vendorId

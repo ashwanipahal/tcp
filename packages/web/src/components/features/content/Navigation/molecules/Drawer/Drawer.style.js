@@ -43,7 +43,7 @@ export default css`
   .tcp-drawer__isOpen {
     display: block;
     position: absolute;
-    z-index: 999;
+    z-index: ${props => props.theme.zindex.zDrawer};
     top: ${props => (props.position && props.position.top) || 0};
     left: ${props => (props.position && props.position.left) || 0};
     width: 100%;

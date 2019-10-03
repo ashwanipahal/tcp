@@ -3,6 +3,8 @@ import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
+import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
+
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
@@ -11,10 +13,10 @@ import NavMenuLevel2 from '../components/features/content/Navigation/molecules/N
 import NavMenuLevel3 from '../components/features/content/Navigation/molecules/NavMenuLevel3';
 import ROUTE_NAMES from '../reduxStore/routes';
 
-const getNewHeader = navigation => {
-  const title = navigation && navigation.getParam('title');
+const getNewHeader = (navigation, showSearch, navTitle) => {
+  const title = navTitle || (navigation && navigation.getParam('title'));
   return {
-    header: props => <HeaderNew {...props} title={title} />,
+    header: props => <HeaderNew {...props} title={title} showSearch={showSearch} />,
     headerBackground: 'transparent',
   };
 };
@@ -33,7 +35,7 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.PRODUCT_LISTING]: {
       screen: ProductListing,
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation);
+        return getNewHeader(navigation, false);
       },
     },
     [ROUTE_NAMES.PRODUCT_DETAIL_PAGE]: {
@@ -44,6 +46,14 @@ const PlpStack = createStackNavigator(
     },
     [ROUTE_NAMES.PRODUCT_LISTING_PAGE]: {
       screen: ProductListingPage,
+    },
+    [ROUTE_NAMES.SEARCH_RESULTS_PAGE]: {
+      screen: SearchDetail,
+      navigationOptions: ({ navigation }) => {
+        const title = navigation && navigation.getParam('title');
+        const navTitle = (title && `"${title.toUpperCase()}"`) || '';
+        return getNewHeader(navigation, false, navTitle);
+      },
     },
   },
   {

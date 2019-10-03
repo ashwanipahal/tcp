@@ -26,6 +26,8 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
+import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
+
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import CheckoutSaga from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -35,16 +37,22 @@ import NavigationSaga from '@tcp/core/src/components/features/content/Navigation
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.saga';
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
+import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
+import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
 
+import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
+import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -75,6 +83,7 @@ export default function* rootSaga() {
     DeleteCardSaga(),
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
+    EarnedPointsNotificationSaga(),
     ProductListingSaga(),
     AddEditCreditCardSaga(),
     UserSaga(),
@@ -84,6 +93,7 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     BillingPaymentSaga(),
     ProductTabListSaga(),
+    StyliticsProductTabListSaga(),
     GetCandidSaga(),
     UpdateProfileSaga(),
     GiftCardsSaga(),
@@ -92,9 +102,14 @@ export default function* rootSaga() {
     ProductDetailSaga(),
     MyFavoriteStoreSaga(),
     BirthdaySavingsSaga(),
+    StoreDetailSaga(),
+    StoreLandingSaga(),
     ApplyCreditCardSaga(),
     SubmitInstantCardApplication(),
     QuickViewSaga(),
     PointsClaimSaga(),
+    SocialAccountSaga(),
+    ConfirmationPageSaga(),
+    PickupStoreSaga(),
   ]);
 }

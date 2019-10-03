@@ -7,6 +7,9 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
+  .disable-drop-down {
+    pointer-events: none;
+  }
   .billing-payment-details {
     display: flex;
   }
@@ -56,7 +59,7 @@ export default css`
     }
   }
   .cvvCode {
-    width: 90px;
+    width: 100px;
     bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     .TextBox__input {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
@@ -174,6 +177,56 @@ export default css`
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
   }
+  .card-edit-buttons {
+    display: flex;
+    flex-direction: column;
+    @media ${props => props.theme.mediaQuery.medium} {
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    }
+
+    .card-edit-button {
+      @media ${props => props.theme.mediaQuery.medium} {
+        height: 51px;
+        width: 210px;
+        margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      }
+    }
+
+    .card-edit-cancel {
+      margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      border: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+      background: ${props => props.theme.colors.WHITE};
+      &:hover {
+        background: ${props => props.theme.colors.WHITE};
+      }
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .card-edit-save {
+      display: none;
+      background: ${props => props.theme.colors.PRIMARY.BLUE};
+      &:hover {
+        background: ${props => props.theme.colors.PRIMARY.BLUE};
+      }
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: inline-block;
+      }
+    }
+
+    .card-edit-save-mob {
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: none;
+      }
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .ulBorderWithLastRow li:last-child {
       padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM}

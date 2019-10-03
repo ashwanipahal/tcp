@@ -24,6 +24,11 @@ const MODULE_HEIGHT = 220;
 const MODULE_WIDTH = getScreenWidth() - 30;
 
 /**
+ * Module width on Account Overview Tile
+ */
+const MODULE_WIDTH_ACCOUNT = getScreenWidth() - 80;
+
+/**
  * @component EarnExtraPointsTile for Native view
  *  The EarnExtraPointsTile child component used for provide Carousel view with tiles data
  */
@@ -46,35 +51,37 @@ class EarnExtraPointsTile extends PureComponent {
   };
 
   render() {
-    const { labels, waysToEarn, handleComponentChange } = this.props;
+    const { labels, waysToEarn, handleComponentChange, isAccountOverview } = this.props;
 
     return (
       <View>
-        <EarnExtraPointsHeading>
-          <BodyCopy
-            component="div"
-            fontSize="fs16"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
-            data-locator="earnExtraPointsHeading"
-          />
-          <Anchor
-            fontSizeVariation="medium"
-            anchorVariation="primary"
-            text={getLabelValue(labels, 'lbl_common_viewAll')}
-            data-locator="earnExtraPointsViewAll"
-            onPress={() => handleComponentChange('earnExtraPointsPageMobile')}
-            underline
-          />
-        </EarnExtraPointsHeading>
+        {!isAccountOverview && (
+          <EarnExtraPointsHeading>
+            <BodyCopy
+              component="div"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
+              data-locator="earnExtraPointsHeading"
+            />
+            <Anchor
+              fontSizeVariation="medium"
+              anchorVariation="primary"
+              text={getLabelValue(labels, 'lbl_common_viewAll')}
+              data-locator="earnExtraPointsViewAll"
+              onPress={() => handleComponentChange('earnExtraPointsPageMobile')}
+              underline
+            />
+          </EarnExtraPointsHeading>
+        )}
         <EarnExtraPointsWrapper>
           <View>
             <Carousel
               data={waysToEarn}
               renderItem={this.renderView}
               height={MODULE_HEIGHT}
-              width={MODULE_WIDTH}
+              width={!isAccountOverview ? MODULE_WIDTH : MODULE_WIDTH_ACCOUNT}
               variation="show-arrow"
               showDots
               darkArrow
@@ -98,6 +105,7 @@ EarnExtraPointsTile.propTypes = {
     lbl_common_earnExtraPoints: PropTypes.string,
     lbl_common_viewAll: PropTypes.string,
   }),
+  isAccountOverview: PropTypes.bool,
 };
 
 EarnExtraPointsTile.defaultProps = {
@@ -107,6 +115,7 @@ EarnExtraPointsTile.defaultProps = {
     lbl_common_earnExtraPoints: '',
     lbl_common_viewAll: '',
   },
+  isAccountOverview: false,
 };
 
 export default EarnExtraPointsTile;

@@ -9,6 +9,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Modal from '../../../molecules/Modal';
 import Button from '../../../atoms/Button';
 import { getLabelValue, routerPush } from '../../../../../utils';
+import getLinkedSocialAccountLabel from '../utils';
 
 const loginComponents = {
   Facebook: FacebookLogin,
@@ -111,7 +112,7 @@ class Socialview extends React.PureComponent {
                 >
                   {this.pointsInformation.points}
                 </BodyCopy>
-                {getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                {getLinkedSocialAccountLabel(this.pointsInformation.activity, labels)}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs14"
@@ -195,7 +196,7 @@ class Socialview extends React.PureComponent {
   };
 
   viewAll = () => {
-    routerPush('/account?id=payment', '/account/payment');
+    routerPush('/account?id=extra-points', '/account/extra-points');
   };
 
   render() {
