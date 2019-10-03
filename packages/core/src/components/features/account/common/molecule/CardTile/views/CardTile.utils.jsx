@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../../../common/molecules/Address';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
@@ -16,13 +17,13 @@ const getDataLocatorPrefix = ({ card }) => {
 const getCardName = ({ card, labels }) => {
   switch (card.ccType) {
     case 'GiftCard':
-      return labels.paymentGC.lbl_payment_giftCard;
+      return getLabelValue(labels, 'lbl_payment_giftCard', 'paymentGC');
     case 'PLACE CARD':
-      return labels.paymentGC.lbl_payment_plccCard;
+      return getLabelValue(labels, 'lbl_payment_plccCard', 'paymentGC');
     case 'VENMO':
-      return labels.paymentGC.lbl_payment_venmoAccount;
+      return getLabelValue(labels, 'lbl_payment_venmoAccount', 'paymentGC');
     default:
-      return labels.paymentGC.lbl_payment_defaultCardName;
+      return getLabelValue(labels, 'lbl_payment_defaultCardName', 'paymentGC');
   }
 };
 
@@ -65,7 +66,7 @@ const loading = (isGiftCardBalanceRequested, labels, balance) => {
           className=""
           lineHeights="lh115"
         >
-          {labels.paymentGC.lbl_payment_loading}
+          {getLabelValue(labels, 'lbl_payment_loading', 'paymentGC')}
         </BodyCopy>
       )}
     </React.Fragment>

@@ -16,6 +16,7 @@ exports[`MyRewards should render correctly 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
+        text="ACC_LBL_PLACE_REWARDS_HEADING"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -28,6 +29,7 @@ exports[`MyRewards should render correctly 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
+        text="lbl_common_point_balance"
         textDecoration={null}
       />
       <Connect(RewardsPointsContainer) />
@@ -41,6 +43,7 @@ exports[`MyRewards should render correctly 1`] = `
           fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
+          text="lbl_my_rewards_points_history"
           textDecoration={null}
         />
       </Styled(Text)>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { COMPLETE_MONTH } from '../../../../../../../utils/parseDate';
 import { isCanada } from '../../../../../../../utils';
@@ -12,10 +13,10 @@ const getMyPlaceRewards = (airMiles, myPlaceNumber, labels) => {
       fontSize="fs16"
       fontFamily="secondary"
     >
-      {isCanada() && airMiles && `${labels.lbl_profile_air_miles} ${airMiles}`}
+      {isCanada() && airMiles && `${getLabelValue(labels, 'lbl_profile_air_miles} ${airMiles')}`}
       {!isCanada() &&
         myPlaceNumber &&
-        `${labels.lbl_profile_my_place_rewards_info} ${myPlaceNumber}`}
+        `${getLabelValue(labels, 'lbl_profile_my_place_rewards_info')} ${myPlaceNumber}`}
     </BodyCopy>
   );
 };
@@ -33,9 +34,9 @@ export const PersonalInformationDisplay = ({
   const birthdayArray = userBirthday ? userBirthday.split('|') : [];
   const userBirthdayDisplay =
     birthdayArray && birthdayArray.length === 2
-      ? `${labels.lbl_profile_edit_birthday_heading} ${COMPLETE_MONTH[birthdayArray[0] - 1]} ${
-          birthdayArray[1]
-        }`
+      ? `${getLabelValue(labels, 'lbl_profile_edit_birthday_heading')} ${
+          COMPLETE_MONTH[birthdayArray[0] - 1]
+        } ${birthdayArray[1]}`
       : '';
   return (
     <div className={className}>
