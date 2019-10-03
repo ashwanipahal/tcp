@@ -7,7 +7,7 @@ describe('Order Basic Details component', () => {
     const props = {
       orderDetailsData: {
         orderDate: '2019-09-30 02:21:33.406',
-        orderNumber: '7000031141',
+        orderNumber: '70000311411',
       },
       bossMaxDate: '2019-09-30 02:21:33.406',
       ordersLabels: {},
