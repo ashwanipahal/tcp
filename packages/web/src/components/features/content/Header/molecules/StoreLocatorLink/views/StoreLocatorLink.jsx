@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, toTimeString } from '@tcp/core/src/utils';
+import { getIconPath, toTimeString, getLabelValue } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
@@ -40,7 +40,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
         dataLocator=""
         fontSizeVariation="small"
         anchorVariation="primary"
-        to={labels.storelocatorlink}
+        to="/store-locator"
         className={className}
       >
         <div className={`storelocatorlink__container${!isInfoPresent ? '--fav' : ''}`}>
@@ -69,7 +69,9 @@ const StoreLocatorLink = ({ className, labels, store }) => {
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
               >
-                {storeTime ? `${labels.openUntilTxt} ${storeTime}` : ''}
+                {storeTime
+                  ? `${getLabelValue(labels, 'lbl_storelocator_openUntilTxt')} ${storeTime}`
+                  : ''}
               </BodyCopy>
             </div>
           ) : (
@@ -80,7 +82,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               fontSize="fs13"
               className="storelocatorlink__detail"
             >
-              {labels.findAStoreLink}
+              {getLabelValue(labels, 'lbl_storelocator_findAStoreLink')}
             </BodyCopy>
           )}
         </div>
