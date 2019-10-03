@@ -481,22 +481,8 @@ storiesOf('StoreSelector', module)
         </div>
       </div>
       <pre>
-        Note: Inspect element here and find `div` with class 'store-selector-html'. Right-click and
-        copy the outer HTML. Then add the script mentioned below.
-      </pre>
-      <pre>
-        {`
-<script>
-  var selector = document.getElementById('country-selector');
-  selector.addEventListener('change', function(e){
-    var value = e.target.value;
-    var selectedCountryTile = document.querySelector('[data-intl-country="' + value + '"]');
-    if(selectedCountryTile) {
-      selectedCountryTile.scrollIntoView();
-    }
-  });
-</script>
-        `}
+        Note: Inspect element here and find `div` with class 'store-selector-static'. Right-click
+        and copy the outer HTML.
       </pre>
     </div>
   ));
