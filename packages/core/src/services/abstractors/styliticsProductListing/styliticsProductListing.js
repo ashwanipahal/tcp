@@ -48,14 +48,15 @@ const Abstractor = {
         };
       });
 
-      const subItemsPath = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
+      const subItemsId = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
 
       return {
         id,
+        subItemsId,
         imageUrl,
         largeImageUrl,
         items,
-        pdpUrl: `${rootPath}/${item.id}/${subItemsPath}`,
+        pdpUrl: `${rootPath}/${id}/${subItemsId}`,
       };
     });
   },

@@ -49,7 +49,7 @@ const {
 const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
 function getCarouselSlide(productItem, navigation, moduleQMainTile) {
-  const { imageUrl, items, pdpUrl, productItemIndex } = productItem;
+  const { imageUrl, items, subItemsId, productItemIndex } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
 
@@ -59,7 +59,14 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
         <Anchor
           navigation={navigation}
           testID={`${getLocator('moduleQ_product_image')}${productItemIndex}`}
-          url={pdpUrl}
+          onPress={() =>
+            navigation.navigate('ProductDetail', {
+              title: '',
+              pdpUrl: subItemsId,
+              selectedColorProductId: subItemsId,
+              reset: true,
+            })
+          }
         >
           <OutfitMainTileWrapper>
             <OutfitMainImageWrapper>
