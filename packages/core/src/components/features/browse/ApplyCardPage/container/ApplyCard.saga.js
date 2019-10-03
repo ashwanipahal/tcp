@@ -35,6 +35,7 @@ export function* submitCreditCardForm({ payload = '' }) {
   try {
     const labels = yield select(getErrorMapping);
     const res = yield call(applyInstantCard, payload, labels);
+    // Check for mobile App and to showcase the toast message of results.
     if (isMobileApp() && ERR_CONFIG.indexOf(res.status) === -1) {
       yield put(toastMessageInfo(res.status));
     }
