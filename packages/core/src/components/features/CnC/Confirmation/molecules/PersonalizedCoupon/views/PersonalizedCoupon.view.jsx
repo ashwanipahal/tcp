@@ -10,6 +10,7 @@ const getValidityText = ({ endDate, startDate, isPastStartDate }, { validTill, n
   if (!endDate && !startDate) {
     return ''; // Do we want some default text here?
   }
+  /* istanbul ignore else */
   if (isPastStartDate) {
     return `${nowThrough} ${endDate}`;
   }
@@ -60,6 +61,7 @@ const renderCoupon = (coupon, detailCoupon, labels) => {
       {disclaimer && (
         <BodyCopy className="details" textAlign="center" component="div">
           <Anchor
+            className="details-link"
             fontSizeVariation="medium"
             underline
             noLink
@@ -80,7 +82,7 @@ const renderCoupon = (coupon, detailCoupon, labels) => {
 const shouldShowArrowIcon = ({ startDate, endDate, code, disclaimer }) =>
   startDate || endDate || code || disclaimer;
 
-const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupon, labels }) => {
+export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupon, labels }) => {
   const { description } = coupon;
   const small = isClient() && viewport().small;
   const [showDetail, setShowDetail] = useState(false);
@@ -104,6 +106,7 @@ const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupon, labe
         {(!small || (small && showDetail)) && renderCoupon(coupon, detailCoupon, labels)}
         <BodyCopy className="print-icon" component="div">
           <Image
+            className="print-icon-img"
             src={printIcon}
             onClick={() => {
               printCoupon(coupon);
@@ -138,7 +141,12 @@ const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupon, labe
 
 PersonalizedCoupon.propTypes = {
   coupon: PropTypes.shape({
-    name: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    startDate: PropTypes.string,
+    endDate: PropTypes.string,
+    code: PropTypes.string,
+    disclaimer: PropTypes.string,
+    categoryType: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string,
   printCoupon: PropTypes.func.isRequired,

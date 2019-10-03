@@ -8,7 +8,7 @@ import CouponDetailModal from '../../../../common/organism/CouponAndPromos/views
 import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
 import styles from '../styles/PersonalizedCoupons.style';
 
-const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }) => {
+export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }) => {
   const [selectedCoupon, selectCoupon] = useState(null);
   const [openPrintModal, setPrintModal] = useState(false);
   const [openDetailsModal, setDetailsModal] = useState(false);
