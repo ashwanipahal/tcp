@@ -11,8 +11,15 @@ export const getCurrentCountry = state => {
 };
 
 /* istanbul ignore next */
-export const getPageLabels = state => {
-  return state.Labels; // && state.Labels.StoreLocator;
+export const getPageLabels = ({ Labels }) => {
+  const {
+    StoreLocator: { StoreLanding, StoreDetail, StoreList },
+  } = Labels;
+  return {
+    ...StoreLanding,
+    ...StoreDetail,
+    ...StoreList,
+  };
 };
 
 export const getStoreInfo = state => {

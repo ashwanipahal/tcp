@@ -34,6 +34,7 @@ export const DetailsHeader = styled.Text`
   font-weight: ${props => props.theme.fonts.fontWeight.black};
   color: ${props => props.theme.colors.TEXT.DARK};
   text-align: ${props => props.textAlign || 'center'};
+  text-transform: capitalize;
 `;
 
 export const ListingTileWrapper = styled.View`

@@ -105,7 +105,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
           "noMprPlcc": "#6d7278",
-          "plcc": "#254f6e",
+          "plcc": "#00A7E0",
           "plccLight": "#dbebf8",
         },
         "white": "#fff",
@@ -611,7 +611,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
     isShopInShop={true}
     labels={
       Object {
-        "lbl_storelocators_list_shop_in_shop": "shop-in-shop",
+        "lbl_storelist_shop_in_shop": "shop-in-shop",
       }
     }
     storeLocation="Test"
@@ -652,7 +652,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
       isShopInShop={true}
       labels={
         Object {
-          "lbl_storelocators_list_shop_in_shop": "shop-in-shop",
+          "lbl_storelist_shop_in_shop": "shop-in-shop",
         }
       }
       storeLocation="Test"
@@ -663,7 +663,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
         isShopInShop={true}
         labels={
           Object {
-            "lbl_storelocators_list_shop_in_shop": "shop-in-shop",
+            "lbl_storelist_shop_in_shop": "shop-in-shop",
           }
         }
         storeLocation="Test"

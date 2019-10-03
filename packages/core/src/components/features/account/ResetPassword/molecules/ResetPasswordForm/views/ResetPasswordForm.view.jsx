@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { reduxForm, Field } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -45,7 +46,7 @@ export const ResetPasswordForm = ({
       )}
       <Field
         id="password"
-        placeholder={labels.lbl_resetPassword_password}
+        placeholder={getLabelValue(labels, 'lbl_resetPassword_password')}
         name="password"
         component={PasswordField}
         dataLocator="login-passwordfield"
@@ -57,7 +58,7 @@ export const ResetPasswordForm = ({
       />
       <Field
         id="confirmPassword"
-        placeholder={labels.lbl_resetPassword_confirmPassword}
+        placeholder={getLabelValue(labels, 'lbl_resetPassword_confirmPassword')}
         name="confirmPassword"
         component={PasswordField}
         dataLocator="login-passwordfield"
@@ -76,7 +77,7 @@ export const ResetPasswordForm = ({
           className="elem-mb-XS"
           disabled={pristine}
         >
-          {labels.lbl_resetPassword_resetCta}
+          {getLabelValue(labels, 'lbl_resetPassword_resetCta')}
         </Button>
       </BodyCopy>
     </form>

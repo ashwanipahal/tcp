@@ -183,6 +183,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="editPersonalInfo-firstname"
         id="firstName"
         name="firstName"
+        placeholder="lbl_profile_personal_info_firstName"
         type="text"
       />
     </Styled(Col)>
@@ -355,6 +356,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="editPersonalInfo-lastname"
         id="lastName"
         name="lastName"
+        placeholder="lbl_profile_personal_info_lastName"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -535,6 +537,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="editPersonalInfo-email"
         id="Email"
         name="Email"
+        placeholder="lbl_profile_personal_info_email"
         type="email"
       />
       <Styled(BodyCopy)
@@ -548,7 +551,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_email_used_login
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       className="addEditPersonalPhoneNumber"
@@ -719,6 +724,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
+        placeholder="lbl_profile_personal_info_phoneNumber"
         type="tel"
       />
     </Styled(Col)>
@@ -747,7 +753,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_personal_info_birthday
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -883,6 +891,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             id="userBirthMonth"
             name="userBirthMonth"
             options={Array []}
+            placeholder="lbl_profile_personal_info_month"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -1002,6 +1011,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             id="userBirthYear"
             name="userBirthYear"
             options={Array []}
+            placeholder="lbl_profile_personal_info_year"
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -1016,7 +1026,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_celebration_birthday
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -1175,7 +1187,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         }
         dataLocator="editPersonalInfo-isEmployee"
         name="isEmployee"
-      />
+      >
+        lbl_profile_personal_info_tcp_employee
+      </Field>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1207,7 +1221,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           dataLocator="cancelBtn"
           fullWidth={true}
           type="button"
-        />
+        >
+          lbl_profile_personal_info_cancelCta
+        </Styled(Button)>
       </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
@@ -1228,7 +1244,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_profile_personal_info_updateCta
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </form>
@@ -1417,6 +1435,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="editPersonalInfo-firstname"
         id="firstName"
         name="firstName"
+        placeholder="lbl_profile_personal_info_firstName"
         type="text"
       />
     </Styled(Col)>
@@ -1589,6 +1608,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="editPersonalInfo-lastname"
         id="lastName"
         name="lastName"
+        placeholder="lbl_profile_personal_info_lastName"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -1769,6 +1789,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="editPersonalInfo-email"
         id="Email"
         name="Email"
+        placeholder="lbl_profile_personal_info_email"
         type="email"
       />
       <Styled(BodyCopy)
@@ -1782,7 +1803,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_email_used_login
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       className="addEditPersonalPhoneNumber"
@@ -1953,6 +1976,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
+        placeholder="lbl_profile_personal_info_phoneNumber"
         type="tel"
       />
     </Styled(Col)>
@@ -1981,7 +2005,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_personal_info_birthday
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -2116,6 +2142,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             enableSuccessCheck={false}
             id="userBirthMonth"
             name="userBirthMonth"
+            placeholder="lbl_profile_personal_info_month"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -2234,6 +2261,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             enableSuccessCheck={false}
             id="userBirthYear"
             name="userBirthYear"
+            placeholder="lbl_profile_personal_info_year"
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -2248,7 +2276,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_profile_celebration_birthday
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -2407,7 +2437,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         }
         dataLocator="editPersonalInfo-isEmployee"
         name="isEmployee"
-      />
+      >
+        lbl_profile_personal_info_tcp_employee
+      </Field>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -2439,7 +2471,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
           dataLocator="cancelBtn"
           fullWidth={true}
           type="button"
-        />
+        >
+          lbl_profile_personal_info_cancelCta
+        </Styled(Button)>
       </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
@@ -2460,7 +2494,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_profile_personal_info_updateCta
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </form>

@@ -36,7 +36,7 @@ StoresIntlTile.propTypes = {
     })
   ),
   labels: PropTypes.shape({
-    lbl_storelocators_list_shop_in_shop: PropTypes.string,
+    lbl_storelist_shop_in_shop: PropTypes.string,
   }).isRequired,
 };
 

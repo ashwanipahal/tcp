@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import ChangePasswordForm from '../molecules/ChangePasswordForm';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
@@ -15,7 +16,7 @@ export class ChangePassword extends React.PureComponent {
           fontSize="fs14"
           fontFamily="secondary"
           fontWeight="regular"
-          text={labels.lbl_changePassword_password_info}
+          text={getLabelValue(labels, 'lbl_changePassword_password_info')}
         />
         <ChangePasswordForm
           labels={labels}
