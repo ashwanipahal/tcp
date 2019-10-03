@@ -13,11 +13,12 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
-const getHeader = labels => {
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
   return (
     <div className="elem-mb-SM order-ledger-header">
       <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-        {labels.orderLedgerTitle}
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
       </BodyCopy>
     </div>
   );
@@ -329,7 +330,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
 };
 
 const OrderLedger = ({ className, ledgerSummaryData, labels, showAccordian }) => {
-  const header = getHeader(labels);
+  const header = getHeader(labels, ledgerSummaryData);
   const body = getBody(className, ledgerSummaryData, labels);
   return (
     <div className={`${className} elem-mb-MED`}>
@@ -347,7 +348,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels, showAccordian }) =>
           header={header}
           body={body}
           iconLocator="arrowicon"
-          defaultOpen
+          defaultOpen={false}
         />
       </Col>
       <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
