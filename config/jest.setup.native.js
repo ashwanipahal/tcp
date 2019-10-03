@@ -31,6 +31,9 @@ jest.mock('react-native-cookies', () => ({
 jest.mock('react-native-awesome-card-io', () => {
   return {
     DETECTION_MODE: 'IMAGE_AND_NUMBER',
+    CardIOUtilities: {
+      preload: jest.fn(() => Promise.resolve('the response')),
+    },
   };
 });
 

@@ -147,7 +147,6 @@ export class CreditCardFields extends React.PureComponent<Props> {
               data={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
               onValueChange={itemValue => {
-                console.log('expMonth', itemValue, selectedYear);
                 this.setState({ selectedMonth: itemValue });
                 updateExpiryDate(itemValue, selectedYear);
               }}
@@ -244,3 +243,4 @@ CreditCardFields.defaultProps = {
 };
 
 export default CreditCardFields;
+export { CreditCardFields as CreditCardFieldsVanilla };
