@@ -98,6 +98,11 @@ exports[`HomePageView should render correctly 1`] = `
         },
       ]
     }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
   />
   <HomePageSlots
     modules={
