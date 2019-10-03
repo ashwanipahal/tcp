@@ -72,8 +72,9 @@ export class BagPage extends React.Component {
 
   showToastMessage = message => {
     const { toastMessage, toastMessagePositionInfo } = this.props;
+    const { showCondensedHeader } = this.state;
     toastMessage(message);
-    toastMessagePositionInfo(122);
+    toastMessagePositionInfo(!showCondensedHeader ? 122 : 55);
   };
 
   handleChangeActiveSection = sectionName => {
