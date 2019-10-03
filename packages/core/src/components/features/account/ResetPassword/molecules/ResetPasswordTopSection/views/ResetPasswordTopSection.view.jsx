@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import PasswordRequirement from '../../PasswordRequirement';
@@ -16,7 +17,7 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
           className="elem-mb-LRG"
         >
           <span className="left-arrow"> </span>
-          {labels.lbl_resetPassword_backLogin}
+          {getLabelValue(labels, 'lbl_resetPassword_backLogin')}
         </Anchor>
       </BodyCopy>
       <BodyCopy
@@ -26,7 +27,7 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
         fontWeight="black"
         className="elem-mb-XS"
       >
-        {labels.lbl_resetPassword_heading}
+        {getLabelValue(labels, 'lbl_resetPassword_heading')}
       </BodyCopy>
       <BodyCopy component="div" className="password-required-msg">
         <PasswordRequirement labels={labels} />

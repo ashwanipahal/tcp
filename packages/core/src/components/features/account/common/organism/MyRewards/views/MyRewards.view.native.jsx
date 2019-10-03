@@ -6,6 +6,7 @@ import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
   CouponHeading,
@@ -73,7 +74,9 @@ class MyRewards extends PureComponent {
       selectedCoupon,
       ...otherProps
     } = this.props;
-    const heading = `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
+    const heading = `${getLabelValue(labels, 'lbl_my_rewards_heading', 'placeRewards')} (${
+      coupons.size
+    })`;
     const isSelected = selectedCoupon !== null;
     return (
       <View>
@@ -124,7 +127,7 @@ class MyRewards extends PureComponent {
               }}
               anchorVariation="primary"
               dataLocator="my-rewards-program-details"
-              text={labels.placeRewards.lbl_my_rewards_program_details}
+              text={getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
             />
             <AnchorLeftMargin>
               <Anchor
@@ -136,7 +139,7 @@ class MyRewards extends PureComponent {
                 }}
                 anchorVariation="primary"
                 dataLocator="my-rewards-tnc"
-                text={labels.placeRewards.lbl_common_tnc}
+                text={getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
               />
             </AnchorLeftMargin>
           </StyledAnchorWrapper>

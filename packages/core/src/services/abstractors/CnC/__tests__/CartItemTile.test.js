@@ -23,7 +23,21 @@ describe('#getOrderPointSummary', () => {
   });
   it('should return valid getCurrentOrderFormatter', () => {
     const result = getCurrentOrderFormatter(orderDetailsResponse, false, false);
-    expect(result).toEqual(response);
+    const {
+      checkout: {
+        shipping: {
+          address: { addressId, ...rest },
+          ...restShipping
+        },
+        ...restCheckout
+      },
+      ...restResp
+    } = response;
+    const responseData = {
+      ...restResp,
+      checkout: { ...restCheckout, shipping: { address: rest, ...restShipping } },
+    };
+    expect(result).toEqual(responseData);
   });
 
   it('should return getSwatchImgPath=', () => {

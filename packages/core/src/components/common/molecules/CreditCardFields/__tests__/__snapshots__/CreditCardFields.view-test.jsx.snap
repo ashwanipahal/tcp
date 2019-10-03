@@ -63,6 +63,7 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
           isPLCCEnabled={true}
           name="cardNumber"
           normalize={[Function]}
+          onFocus={[Function]}
           placeholder=""
           type="tel"
         />
@@ -131,6 +132,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       isPLCCEnabled={true}
       name="cardNumber"
       normalize={[Function]}
+      onFocus={[Function]}
       placeholder=""
       type="tel"
     />
@@ -205,6 +207,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       isPLCCEnabled={true}
       name="cardNumber"
       normalize={[Function]}
+      onFocus={[Function]}
       placeholder=""
       type="tel"
     />

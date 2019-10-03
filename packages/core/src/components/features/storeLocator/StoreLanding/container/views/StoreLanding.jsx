@@ -4,9 +4,14 @@ import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
-import { isCanada, getViewportInfo, getAPIConfig, routeToStoreDetails } from '@tcp/core/src/utils';
+import {
+  isCanada,
+  getViewportInfo,
+  getAPIConfig,
+  routeToStoreDetails,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 
 import styles from '../styles/StoreLanding.style';
@@ -104,7 +109,7 @@ export class StoreLanding extends PureComponent {
           <Row className="favoriteStore__container">
             <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
               <h3 className="favoriteStore__heading">
-                {labels.lbl_storelocators_detail_favStoreHeading}
+                {getLabelValue(labels, 'lbl_storelanding_favStoreHeading')}
               </h3>
               <StoreAddressTile
                 {...this.props}
@@ -173,7 +178,7 @@ export class StoreLanding extends PureComponent {
                 : this.renderStoreList(modifiedStoreList)}
             </Row>
           </Col>
-          {modifiedStoreList.length && (
+          {!!modifiedStoreList.length && (
             <Col
               colSize={{ large: 6, medium: 8, small: 6 }}
               ignoreGutter={{ small: true }}

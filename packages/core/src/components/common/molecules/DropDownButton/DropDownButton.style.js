@@ -29,6 +29,8 @@ export default css`
   }
   .dropdown-button {
     background: ${props => props.theme.colorPalette.gray[300]};
+    color: ${props => props.theme.colorPalette.gray[700]};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
 
     &.is-open {
       border-bottom-left-radius: 0;

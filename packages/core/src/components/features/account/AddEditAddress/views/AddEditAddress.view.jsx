@@ -20,7 +20,7 @@ const AddEditAddressContainer = ({ labels, isEdit, backToAddressBookClick, class
         asPath="/account/address-book"
       >
         <span className="left-arrow"> </span>
-        {labels.common.lbl_common_backLink}
+        {getLabelValue(labels, 'lbl_common_backLink', 'common')}
       </Anchor>
       <Heading
         fontFamily="primaryFontFamily"
