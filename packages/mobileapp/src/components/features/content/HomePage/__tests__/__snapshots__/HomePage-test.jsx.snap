@@ -23,11 +23,312 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleL": [Function],
         "moduleN": [Function],
         "moduleR": [Function],
+        "moduleS": [Function],
       }
     }
     navigation={
       Object {
         "getParam": [Function],
+      }
+    }
+  />
+  <ModuleS
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "Home Run Ready!",
+            },
+            Object {
+              "style": "medium_text_black",
+              "text": "Lets Play.",
+            },
+          ],
+        },
+      ]
+    }
+    linkedImage={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Pool",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_690",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Pool",
+            "url": "https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png",
+            "url_m": "",
+            "url_t": "",
+          },
+          "link": Object {
+            "target": "",
+            "text": "Pool",
+            "title": "Pool",
+            "url": "/c/boys-clothes",
+          },
+        },
+      ]
+    }
+    moduleWidth="half"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    singleCTAButton={
+      Object {
+        "target": "",
+        "text": "SHOP OPENING DAY",
+        "title": "SHOP OPENING DAY",
+        "url": "/c/girls-clothes",
+      }
+    }
+  />
+  <ModuleS
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "A Very Cherry Valentines",
+            },
+          ],
+        },
+      ]
+    }
+    linkedImage={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Pool",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_450",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_347",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_500",
+            "title": "Pool",
+            "url": "https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg",
+            "url_m": "",
+            "url_t": "",
+          },
+          "link": Object {
+            "target": "",
+            "text": "Pool",
+            "title": "Pool",
+            "url": "/c/boys-clothes",
+          },
+        },
+      ]
+    }
+    moduleWidth="half"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    ribbonBanner={
+      Array [
+        Object {
+          "link": Object {
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "ribbonClass": "ribbon-color-cherry",
+          "ribbonPlacement": "left",
+          "textItems": Array [
+            Object {
+              "style": "style1",
+              "text": "20% OFF",
+            },
+          ],
+        },
+      ]
+    }
+    singleCTAButton={
+      Object {
+        "target": "",
+        "text": "SHOP OPENING DAY",
+        "title": "SHOP OPENING DAY",
+        "url": "/c/girls-clothes",
+      }
+    }
+  />
+  <ModuleS
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "SHOP ALL SUMMER",
+            },
+            Object {
+              "style": "small_text_normal",
+              "text": "SURFS UP",
+            },
+            Object {
+              "style": "small_text_normal",
+              "text": "POOL SIDE",
+            },
+          ],
+        },
+      ]
+    }
+    linkedImage={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Pool",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_690",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_356",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Pool",
+            "url": "https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg",
+            "url_m": "",
+            "url_t": "",
+          },
+          "link": Object {
+            "target": "",
+            "text": "Pool",
+            "title": "Pool",
+            "url": "/c/boys-clothes",
+          },
+        },
+      ]
+    }
+    moduleWidth="half"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    singleCTAButton={
+      Object {
+        "target": "",
+        "text": "SHOP OPENING DAY",
+        "title": "SHOP OPENING DAY",
+        "url": "/c/girls-clothes",
+      }
+    }
+  />
+  <ModuleS
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "A Very Cherry Valentines",
+            },
+          ],
+        },
+      ]
+    }
+    linkedImage={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Pool",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_450",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_347",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_500",
+            "title": "Pool",
+            "url": "https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg",
+            "url_m": "",
+            "url_t": "",
+          },
+          "link": Object {
+            "target": "",
+            "text": "Pool",
+            "title": "Pool",
+            "url": "/c/boys-clothes",
+          },
+        },
+      ]
+    }
+    moduleWidth="half"
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    ribbonBanner={
+      Array [
+        Object {
+          "link": Object {
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/c/girls-clothes",
+          },
+          "ribbonClass": "ribbon-color-cherry",
+          "ribbonPlacement": "right",
+          "textItems": Array [
+            Object {
+              "style": "style1",
+              "text": "20% OFF",
+            },
+          ],
+        },
+      ]
+    }
+    singleCTAButton={
+      Object {
+        "target": "",
+        "text": "SHOP OPENING DAY",
+        "title": "SHOP OPENING DAY",
+        "url": "/c/girls-clothes",
       }
     }
   />
