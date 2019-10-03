@@ -45,7 +45,7 @@ import {
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
 } from './Checkout.saga.util';
-import submitBilling from './CheckoutBilling.saga';
+import submitBilling, { submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 
 const {
@@ -700,7 +700,12 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   }
 }
 export function* submitBillingSection(payload) {
-  yield call(submitBilling, payload, loadUpdatedCheckoutValues);
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  if (isVenmoInProgress) {
+    yield call(submitVenmoBilling, payload);
+  } else {
+    yield call(submitBilling, payload, loadUpdatedCheckoutValues);
+  }
 }
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);

@@ -63,6 +63,7 @@ export const getOrderLedgerLabels = state => {
         lbl_orderledger_totalsavings: totalSavingsLabel,
         lbl_orderledger_tooltiptext: tooltipText,
         lbl_orderledger_free: free,
+        lbl_orderledger_title: orderLedgerTitle,
       } = {},
     } = {},
   } = state.Labels;
@@ -79,5 +80,6 @@ export const getOrderLedgerLabels = state => {
     totalSavingsLabel,
     tooltipText,
     free,
+    orderLedgerTitle,
   };
 };

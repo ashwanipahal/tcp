@@ -81,6 +81,14 @@ export default {
   moduleJ_cta_link: 'moduleJ_cta_links_',
   moduleJ_cta_btn: 'moduleJ_cta_btn',
 
+  // Module Q
+  moduleQ_header_text: 'moduleQ_header_text',
+  moduleQ_promobanner_text: 'moduleQ_promobanner_text',
+  moduleQ_promobanner_img: 'moduleQ_promobanner_img_',
+  moduleQ_product_image: 'moduleQ_product_image_',
+  moduleQ_cta_link: 'moduleQ_cta_links_',
+  moduleQ_cta_btn: 'moduleQ_cta_btn',
+
   // Module R
   moduleR_header_text: 'moduleR_header_text',
   moduleR_promobanner_text: 'moduleR_promobanner_text',
@@ -286,6 +294,9 @@ export default {
   pdp_discounted_percentage: 'Product Discount Percentage',
   pdp_favorite_icon_count: 'Favorites count',
   pdp_anchor_complete_the_look: 'Complete The Look',
+  pdp_rating_reviews: 'ratings_and_reviews_section',
+  pdp_rating_reviews_title: 'ratings_and_reviews_title',
+  pdp_rating_reviews_count: 'ratings_and_reviews_count',
 
   // Quick View Modal
   quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',

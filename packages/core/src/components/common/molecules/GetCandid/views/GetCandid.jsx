@@ -161,7 +161,7 @@ class GetCandid extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.getCandid,
   };
