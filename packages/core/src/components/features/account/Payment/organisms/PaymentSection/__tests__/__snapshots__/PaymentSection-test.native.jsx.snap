@@ -37,6 +37,7 @@ exports[`Payment View should render correctly 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
+        text="lbl_payment_heading"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -51,6 +52,7 @@ exports[`Payment View should render correctly 1`] = `
       }
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/credit-card.png",
@@ -58,6 +60,10 @@ exports[`Payment View should render correctly 1`] = `
       }
       cardList={Object {}}
       checkbalanceValueInfo={null}
+      description="lbl_payment_CCEmptyDesc"
+      emptyBtnLabel="lbl_payment_ccEmptyAddBtn"
+      emptyLabel="lbl_payment_CCEmptyHeading"
+      heading="lbl_payment_ccHeading"
       labels={
         Object {
           "common": Object {},
@@ -74,6 +80,7 @@ exports[`Payment View should render correctly 1`] = `
       toggleRecaptchaModal={null}
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/gift-card.png",
@@ -81,6 +88,10 @@ exports[`Payment View should render correctly 1`] = `
       }
       cardList={Object {}}
       checkbalanceValueInfo={Object {}}
+      description="lbl_payment_GCEmptyDesc"
+      emptyBtnLabel="lbl_payment_GCEmptyAddBtn"
+      emptyLabel="lbl_payment_GCEmptyHeading"
+      heading="lbl_payment_heading"
       labels={
         Object {
           "common": Object {},
@@ -217,6 +228,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
+        text="lbl_payment_heading"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -231,6 +243,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       }
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/credit-card.png",
@@ -264,6 +277,10 @@ exports[`Payment View should render correctly with cardList 1`] = `
         ]
       }
       checkbalanceValueInfo={null}
+      description="lbl_payment_CCEmptyDesc"
+      emptyBtnLabel="lbl_payment_ccEmptyAddBtn"
+      emptyLabel="lbl_payment_CCEmptyHeading"
+      heading="lbl_payment_ccHeading"
       labels={
         Object {
           "common": Object {},
@@ -280,6 +297,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       toggleRecaptchaModal={null}
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/gift-card.png",
@@ -313,6 +331,10 @@ exports[`Payment View should render correctly with cardList 1`] = `
         ]
       }
       checkbalanceValueInfo={Object {}}
+      description="lbl_payment_GCEmptyDesc"
+      emptyBtnLabel="lbl_payment_GCEmptyAddBtn"
+      emptyLabel="lbl_payment_GCEmptyHeading"
+      heading="lbl_payment_heading"
       labels={
         Object {
           "common": Object {},
@@ -371,6 +393,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
+        text="lbl_payment_heading"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -385,6 +408,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       }
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/credit-card.png",
@@ -392,6 +416,10 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       }
       cardList={Object {}}
       checkbalanceValueInfo={null}
+      description="lbl_payment_CCEmptyDesc"
+      emptyBtnLabel="lbl_payment_ccEmptyAddBtn"
+      emptyLabel="lbl_payment_CCEmptyHeading"
+      heading="lbl_payment_ccHeading"
       labels={
         Object {
           "common": Object {},
@@ -408,6 +436,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       toggleRecaptchaModal={null}
     />
     <Styled(Cards)
+      addBtnLabel="lbl_payment_addBtn"
       cardImage={
         Object {
           "testUri": "../../../src/assets/images/gift-card.png",
@@ -415,6 +444,10 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       }
       cardList={Object {}}
       checkbalanceValueInfo={Object {}}
+      description="lbl_payment_GCEmptyDesc"
+      emptyBtnLabel="lbl_payment_GCEmptyAddBtn"
+      emptyLabel="lbl_payment_GCEmptyHeading"
+      heading="lbl_payment_heading"
       labels={
         Object {
           "common": Object {},
@@ -432,6 +465,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       toggleRecaptchaModal={null}
     />
     <ModalNative
+      heading="lbl_payment_addGiftCard"
       isOpen={true}
       isOverlay={false}
       onRequestClose={[Function]}

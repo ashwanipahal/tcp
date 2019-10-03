@@ -15,6 +15,7 @@ import {
   addAddressGet,
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import { updateCreditCardSaga } from '../../../account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { isMobileApp } from '../../../../../utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
@@ -270,4 +271,9 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
   } catch (e) {
     // submitBillingError(store, e);
   }
+}
+
+export function* updateCardDetails({ payload }) {
+  yield updateCreditCardSaga({ payload });
+  yield call(getCardList);
 }

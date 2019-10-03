@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainer,
@@ -119,9 +120,11 @@ class PaymentView extends React.Component<Props> {
 
   getCardExpiryText = (labels, selectedCard) => {
     return selectedCard && selectedCard.expMonth
-      ? `${labels.paymentGC.lbl_payment_expDate}${selectedCard.expMonth.trim()}/${
-          selectedCard.expYear
-        }`
+      ? `${getLabelValue(
+          labels,
+          'lbl_payment_expDate',
+          'paymentGC'
+        )}${selectedCard.expMonth.trim()}/${selectedCard.expYear}`
       : '';
   };
 
@@ -196,30 +199,36 @@ class PaymentView extends React.Component<Props> {
       checkbalanceValueInfo,
       updateCardList,
     } = this.props;
-    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard ,  recaptchaToken  , showGiftCardModal} = this.state;
+    const {
+      setDeleteModalMountedState,
+      setUpdateModalMountedState,
+      selectedCard,
+      recaptchaToken,
+      showGiftCardModal,
+    } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
 
     if (selectedCard.ccType === 'GiftCard') {
       dto = {
-        cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
+        cardDescription: getLabelValue(labels, 'lbl_payment_modalGCHeading', 'paymentGC'),
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
+        cardDetail: `${getLabelValue(labels, 'lbl_payment_cardNum', 'paymentGC')}`,
         accountNo: selectedCard.accountNo,
         cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
-        cardDescription: labels.paymentGC.lbl_payment_modalVenmoDeleteHeading,
+        cardDescription: getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC'),
         cardImage: cardImg,
         cardDetail: selectedCard.properties.venmoUserId,
         cardExpiry: '',
       };
     } else {
       dto = {
-        cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
+        cardDescription: getLabelValue(labels, 'lbl_payment_modalCCHeading', 'paymentGC'),
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
+        cardDetail: `${getLabelValue(labels, 'lbl_payment_cardNum', 'paymentGC')}`,
         accountNo: selectedCard.accountNo,
         cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
@@ -231,7 +240,7 @@ class PaymentView extends React.Component<Props> {
             <BodyCopy
               fontSize="fs16"
               fontWeight="extrabold"
-              text={labels.paymentGC.lbl_payment_heading}
+              text={getLabelValue(labels, 'lbl_payment_heading', 'paymentGC')}
             />
           </StyledHeading>
           <UnderlineStyle />
@@ -239,12 +248,12 @@ class PaymentView extends React.Component<Props> {
           {creditCardList && (
             <Cards
               labels={labels}
-              heading={labels.paymentGC.lbl_payment_ccHeading} // eslint-disable-next-line
+              heading={getLabelValue(labels, 'lbl_payment_ccHeading', 'paymentGC')} // eslint-disable-next-line
               cardImage={require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png')}
-              emptyLabel={labels.paymentGC.lbl_payment_CCEmptyHeading}
-              description={labels.paymentGC.lbl_payment_CCEmptyDesc}
-              emptyBtnLabel={labels.paymentGC.lbl_payment_ccEmptyAddBtn}
-              addBtnLabel={labels.paymentGC.lbl_payment_addBtn}
+              emptyLabel={getLabelValue(labels, 'lbl_payment_CCEmptyHeading', 'paymentGC')}
+              description={getLabelValue(labels, 'lbl_payment_CCEmptyDesc', 'paymentGC')}
+              emptyBtnLabel={getLabelValue(labels, 'lbl_payment_ccEmptyAddBtn', 'paymentGC')}
+              addBtnLabel={getLabelValue(labels, 'lbl_payment_addBtn', 'paymentGC')}
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
@@ -264,12 +273,12 @@ class PaymentView extends React.Component<Props> {
           {giftCardList && (
             <Cards
               labels={labels}
-              heading={labels.paymentGC.lbl_payment_heading} // eslint-disable-next-line
+              heading={getLabelValue(labels, 'lbl_payment_heading', 'paymentGC')} // eslint-disable-next-line
               cardImage={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
-              emptyLabel={labels.paymentGC.lbl_payment_GCEmptyHeading}
-              description={labels.paymentGC.lbl_payment_GCEmptyDesc}
-              emptyBtnLabel={labels.paymentGC.lbl_payment_GCEmptyAddBtn}
-              addBtnLabel={labels.paymentGC.lbl_payment_addBtn}
+              emptyLabel={getLabelValue(labels, 'lbl_payment_GCEmptyHeading', 'paymentGC')}
+              description={getLabelValue(labels, 'lbl_payment_GCEmptyDesc', 'paymentGC')}
+              emptyBtnLabel={getLabelValue(labels, 'lbl_payment_GCEmptyAddBtn', 'paymentGC')}
+              addBtnLabel={getLabelValue(labels, 'lbl_payment_addBtn', 'paymentGC')}
               cardList={giftCardList}
               checkbalanceValueInfo={checkbalanceValueInfo}
               onGetBalanceCard={onGetBalanceCard}
@@ -303,7 +312,7 @@ class PaymentView extends React.Component<Props> {
             <ModalNative
               isOpen={showGiftCardModal}
               onRequestClose={this.toggleGiftCardModal}
-              heading={labels.paymentGC.lbl_payment_addGiftCard}
+              heading={getLabelValue(labels, 'lbl_payment_addGiftCard', 'paymentGC')}
             >
               <ModalViewWrapper>
                 <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />

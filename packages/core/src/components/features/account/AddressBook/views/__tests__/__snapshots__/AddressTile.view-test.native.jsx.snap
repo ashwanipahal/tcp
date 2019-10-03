@@ -34,7 +34,9 @@ exports[`AddressTile component should renders correctly 1`] = `
       <Badge
         dataLocator="addressbook-defshippinglabel"
         showCheckmark={true}
-      />
+      >
+        ACC_LBL_DEFAULT_SHIPPING
+      </Badge>
     </View>
   </Styled(View)>
   <Styled(View)>
@@ -48,7 +50,7 @@ exports[`AddressTile component should renders correctly 1`] = `
         fontSizeVariation="large"
         locator=""
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         to="/#"
         underline={true}
         visible={false}
@@ -63,7 +65,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       fontSizeVariation="large"
       locator=""
       onPress={[Function]}
-      text=""
+      text="lbl_common_delete"
       to="/#"
       underline={true}
       visible={false}

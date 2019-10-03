@@ -6,7 +6,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
 >
   <h3
     className="storeLocatorHeading"
-  />
+  >
+    lbl_storelanding_findStoreHeading
+  </h3>
   <Styled(Row)
     fullBleed={true}
   >
@@ -22,11 +24,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
       <div
         className="currentLocationWrapper"
       >
-        <Styled(Anchor)
-          asPath="/"
-          className=""
-          to="/"
-        >
+        <Styled(Button)>
           <Styled(Image)
             alt="location"
             className="location-image icon-small"
@@ -35,8 +33,10 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
           />
           <span
             className="currentLocation"
-          />
-        </Styled(Anchor)>
+          >
+            lbl_storelanding_currentLocation
+          </span>
+        </Styled(Button)>
       </div>
       <form
         className="searchForm"
@@ -60,6 +60,8 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             id="storeAddressLocator"
             name="storeAddressLocator"
             onPlaceSelected={[Function]}
+            placeholder="lbl_storelanding_storeSearchPlaceholder"
+            title="lbl_storelanding_storeSearchPlaceholder"
           />
           <Styled(Button)
             className="button-search-store"
@@ -247,7 +249,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
-              />
+              >
+                lbl_storelanding_gymboreeStores
+              </Styled(BodyCopy)>
             </Field>
           </li>
           <li
@@ -406,7 +410,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
-              />
+              >
+                lbl_storelanding_outletStores
+              </Styled(BodyCopy)>
             </Field>
           </li>
         </ul>
@@ -415,26 +421,35 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
         >
           <li
             className="mapLink storeLinks"
+            key="lbl_storelanding_viewMap"
           >
-            <Styled(Anchor) />
+            <Styled(Anchor)>
+              lbl_storelanding_viewMap
+            </Styled(Anchor)>
           </li>
           <li
             className="storeLinks"
+            key="lbl_storelanding_allUSCAStores"
           >
             <Styled(Anchor)
               asPath=""
               className=""
               to=""
-            />
+            >
+              lbl_storelanding_allUSCAStores
+            </Styled(Anchor)>
           </li>
           <li
             className="storeLinks"
+            key="lbl_storelanding_internationalStores"
           >
             <Styled(Anchor)
               asPath=""
               className=""
               to=""
-            />
+            >
+              lbl_storelanding_internationalStores
+            </Styled(Anchor)>
           </li>
         </ul>
       </div>
