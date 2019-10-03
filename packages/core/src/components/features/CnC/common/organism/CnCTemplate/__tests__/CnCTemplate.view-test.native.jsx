@@ -14,7 +14,8 @@ describe('CnCCommonTemplate Page', () => {
   });
   it('should render correctly if on confirmation page', () => {
     const props = {
-      isConfirmation: true
+      isConfirmationPage: true,
+      isGuest: true,
     };
     const tree = shallow(<CnCCommonTemplate {...props} />);
     expect(tree).toMatchSnapshot();

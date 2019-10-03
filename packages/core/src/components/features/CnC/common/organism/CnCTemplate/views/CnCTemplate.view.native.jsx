@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import OrderLedgerContainer from '../../OrderLedger';
@@ -14,12 +14,11 @@ import {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  CouponsWrapper
+  CouponsWrapper,
 } from '../styles/CnCTemplate.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
-
 
 const CnCCommonTemplate = ({
   btnText,
@@ -29,16 +28,17 @@ const CnCCommonTemplate = ({
   footerBody,
   isGuest,
   showAccordian,
-  isConfirmationPage
+  isConfirmationPage,
 }) => {
   return (
     <>
       {!isConfirmationPage ? (
-        <><CouponAndPromosWrapper>
-          <CouponAndPromos isCheckout />
-        </CouponAndPromosWrapper>
+        <>
+          <CouponAndPromosWrapper>
+            <CouponAndPromos isCheckout />
+          </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer />
+            <OrderLedgerContainer showAccordian={showAccordian} />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>
@@ -65,22 +65,50 @@ const CnCCommonTemplate = ({
               </TouchableOpacity>
             )}
           </ButtonWrapper>
-        </>) : (<View>
+        </>
+      ) : (
+        <View>
           <OrderLedgerContainer />
           <BannerWrapper>
-            <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="LOYALTY BANNER" />
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="LOYALTY BANNER"
+            />
           </BannerWrapper>
-          {isGuest && <BannerWrapper>
-            <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="ACCOUNT FORM" />
-          </BannerWrapper>}
+          {isGuest && (
+            <BannerWrapper>
+              <BodyCopyWithSpacing
+                textAlign="center"
+                fontSize="fs16"
+                mobileFontFamily="secondary"
+                spacingStyles="margin-top-LRG margin-bottom-LRG"
+                text="ACCOUNT FORM"
+              />
+            </BannerWrapper>
+          )}
           <CouponsWrapper>
-            <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="COUPONS" />
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="COUPONS"
+            />
           </CouponsWrapper>
           <CouponsWrapper>
-            <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="COUPONS" />
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="COUPONS"
+            />
           </CouponsWrapper>
-
-        </View>)}
+        </View>
+      )}
     </>
   );
 };
@@ -93,11 +121,11 @@ CnCCommonTemplate.propTypes = {
   onBackLinkPress: PropTypes.func.isRequired,
   isGuest: PropTypes.func.isRequired,
   showAccordian: PropTypes.bool.isRequired,
-  isConfirmationPage: PropTypes.bool
+  isConfirmationPage: PropTypes.bool,
 };
 
 CnCCommonTemplate.defaultProps = {
   isConfirmationPage: false,
-}
+};
 
 export default CnCCommonTemplate;

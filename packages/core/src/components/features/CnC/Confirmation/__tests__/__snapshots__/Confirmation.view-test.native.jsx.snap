@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationView should render correctly 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-bottom-LRG"
+      text="SMS SIGN UP"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-bottom-LRG"
+      text="THANK YOU COMPONENT"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <CnCCommonTemplate
+    isConfirmationPage={true}
+    isGuest={true}
+  />
+</Styled(ScrollViewMock)>
+`;

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { BodyCopy } from '../../../../common/atoms';
-import {
-  BodyCopyWithSpacing,
-} from '../../../../common/atoms/styledWrapper';
+import PropTypes from 'prop-types';
+import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import { Wrapper, SMSWrapper, ThankYouWrapper } from '../styles/Confirmation.styles.native';
 
@@ -16,17 +13,32 @@ const ConfirmationView = ({ isGuest }) => {
   return (
     <Wrapper>
       <SMSWrapper>
-        <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="SMS SIGN UP" />
+        <BodyCopyWithSpacing
+          textAlign="center"
+          fontSize="fs16"
+          mobileFontFamily="secondary"
+          spacingStyles="margin-top-LRG margin-bottom-LRG"
+          text="SMS SIGN UP"
+        />
       </SMSWrapper>
       <ThankYouWrapper>
-        <BodyCopyWithSpacing textAlign="center" fontSize="fs16" mobileFontFamily="secondary" spacingStyles="margin-top-LRG margin-bottom-LRG" text="THANK YOU COMPONENT" />
+        <BodyCopyWithSpacing
+          textAlign="center"
+          fontSize="fs16"
+          mobileFontFamily="secondary"
+          spacingStyles="margin-top-LRG margin-bottom-LRG"
+          text="THANK YOU COMPONENT"
+        />
       </ThankYouWrapper>
-      <CnCTemplate
-        isConfirmationPage
-        isGuest={isGuest}
-      />
-    </Wrapper>)
-
+      <CnCTemplate isConfirmationPage isGuest={isGuest} />
+    </Wrapper>
+  );
 };
-
+ConfirmationView.propTypes = {
+  /** Flag indicates whether the user is a guest */
+  isGuest: PropTypes.bool,
+};
+ConfirmationView.defaultProps = {
+  isGuest: true,
+};
 export default ConfirmationView;
