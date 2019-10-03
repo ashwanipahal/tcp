@@ -73,7 +73,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
         this.setState(
           { selectedMonth: card.expiryMonth.toString(), selectedYear: card.expiryYear.toString() },
           () => {
-            updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear);
+            updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear, card.cvv);
           }
         );
       })

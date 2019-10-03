@@ -139,11 +139,12 @@ class AddNewCCForm extends React.PureComponent {
    * @function updateCardDetails
    * @description called when scan any card through camera scanner
    */
-  updateCardDetails = (cardNumber, year, month) => {
+  updateCardDetails = (cardNumber, year, month, cvvCode) => {
     const { dispatch, formName } = this.props;
     dispatch(change(formName, 'cardNumber', cardNumber));
     dispatch(change(formName, 'expYear', year));
     dispatch(change(formName, 'expMonth', month));
+    dispatch(change(formName, 'cvvCode', cvvCode));
   };
 
   /**
