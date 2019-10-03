@@ -21,7 +21,7 @@ import withStyles from '../../../hoc/withStyles';
 import styles, { modalstyles } from '../styles/PickUpStoreModal.style';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
-import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
+import PickupStoreSelectionFormContainer from '../molecules/PickupStoreSelectionForm';
 import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 
 const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
@@ -475,7 +475,7 @@ class PickUpStoreModalView extends React.Component {
           />
         }
         {
-          <PickupStoreSelectionForm
+          <PickupStoreSelectionFormContainer
             colorFitSizeDisplayNames={colorFitSizeDisplayNames}
             maxAllowedStoresInCart={maxAllowedStoresInCart}
             colorFitsSizesMap={colorFitsSizesMap}
