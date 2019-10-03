@@ -418,6 +418,7 @@ exports[`StoreSelector component should default set title as value for selected 
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -9220,6 +9221,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
