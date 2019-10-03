@@ -69,3 +69,52 @@ describe('OrderLedger Component', () => {
     expect(component).toMatchSnapshot();
   });
 });
+
+describe('OrderLedger Component on confirmation page', () => {
+  let component;
+  const Props = {
+    className: '',
+    ledgerSummaryData: {
+      itemsCount: 1,
+      currencySymbol: '',
+      subTotal: 1,
+      couponsTotal: 1,
+      savingsTotal: 1,
+      shippingTotal: 1,
+      taxesTotal: 1,
+      grandTotal: 1,
+      giftCardsTotal: 1,
+      orderBalanceTotal: 1,
+      totalOrderSavings: 1,
+      isOrderHasShipping: true,
+    },
+    confirmationPageLedgerSummaryData: {
+      itemsCount: 1,
+      currencySymbol: '',
+      subTotal: 1,
+      couponsTotal: 1,
+      savingsTotal: 1,
+      shippingTotal: 1,
+      taxesTotal: 1,
+      grandTotal: 1,
+      giftCardsTotal: 1,
+      orderBalanceTotal: 1,
+      totalOrderSavings: 1,
+      isOrderHasShipping: true,
+    },
+    labels: {},
+    isConfirmationPage: true,
+  };
+
+  beforeEach(() => {
+    component = shallow(<OrderLedgerVanilla {...Props} />);
+  });
+
+  it('OrderLedger on confirmation page should be defined', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('OrderLedger on confirmation page should render correctly', () => {
+    expect(component).toMatchSnapshot();
+  });
+});

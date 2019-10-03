@@ -17,7 +17,7 @@ class CheckoutOrderInfo extends React.PureComponent {
       <div className={className}>
         {isConfirmationPage ? (
           <>
-            <OrderLedgerContainer />
+            <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
             <Row fullBleed className="placeholder ">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <div>LOYALTY BANNER</div>

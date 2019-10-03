@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 // } from '../../../account/User/container/User.selectors';
 import constants from '../../Checkout/Checkout.constants';
 import { getLabelValue, buildStorePageUrlSuffix, getAPIConfig } from '../../../../../utils/utils';
+import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
@@ -28,17 +29,61 @@ const getOrderEmailAddress = createSelector(
   }
 );
 
-// const getItemsCount = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.itemsCount;
-// })
+const getItemsCount = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.itemsCount;
+  }
+);
 
-// const getSubTotal = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.subTotal;
-// })
+const getSubTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.subTotal;
+  }
+);
 
-// const getGrandTotal = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.grandTotal;
-// })
+const getGrandTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.grandTotal;
+  }
+);
+
+const getGiftCardsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.giftCardsTotal;
+  }
+);
+
+const getTotalTax = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.taxesTotal;
+  }
+);
+
+const getCouponsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.couponsTotal;
+  }
+);
+
+const getSavingsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.savingsTotal;
+  }
+);
+
+const getShippingTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.shippingTotal;
+  }
+);
 
 // const getSummary = createSelector(getConfirmationSummary, summary => {
 // if(summary){
@@ -349,6 +394,22 @@ const getUpdateOrderDetailsData = state => {
   );
 };
 
+const getLedgerSummaryDataConfirmation = state => {
+  return {
+    itemsCount: getItemsCount(state),
+    subTotal: getSubTotal(state),
+    couponsTotal: getCouponsTotal(state),
+    savingsTotal: getSavingsTotal(state),
+    shippingTotal: getShippingTotal(state),
+    taxesTotal: getTotalTax(state),
+    grandTotal: getGrandTotal(state),
+    giftCardsTotal: getGiftCardsTotal(state),
+    orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
+    currencySymbol: getCurrencySymbol(state),
+    isOrderHasShipping: getIsOrderHasShipping(state),
+  };
+};
+
 export default {
   getOrderConfirmation,
   getOrderEmailAddress,
@@ -388,4 +449,5 @@ export default {
   getUpdateOrderDetailsId,
   getUpdateOrderDetailsData,
   getConfirmationLblObj,
+  getLedgerSummaryDataConfirmation,
 };

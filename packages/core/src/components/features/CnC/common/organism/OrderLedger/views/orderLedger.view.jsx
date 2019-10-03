@@ -328,9 +328,20 @@ const getBody = (className, ledgerSummaryData, labels) => {
   );
 };
 
-const OrderLedger = ({ className, ledgerSummaryData, labels, showAccordian }) => {
+const OrderLedger = ({
+  className,
+  ledgerSummaryData,
+  labels,
+  showAccordian,
+  confirmationPageLedgerSummaryData,
+  isConfirmationPage,
+}) => {
+  let summaryData = ledgerSummaryData;
+  if (isConfirmationPage) {
+    summaryData = confirmationPageLedgerSummaryData;
+  }
   const header = getHeader(labels);
-  const body = getBody(className, ledgerSummaryData, labels);
+  const body = getBody(className, summaryData, labels);
   return (
     <div className={`${className} elem-mb-MED`}>
       <Col
@@ -405,6 +416,19 @@ OrderLedger.propTypes = {
   }),
   labels: PropTypes.shape({}),
   showAccordian: PropTypes.bool.isRequired,
+  isConfirmationPage: PropTypes.bool,
+  confirmationPageLedgerSummaryData: PropTypes.shape({
+    itemsCount: PropTypes.number.isRequired,
+    grandTotal: PropTypes.number,
+    savingsTotal: PropTypes.number,
+    subTotal: PropTypes.number,
+    taxesTotal: PropTypes.number,
+    couponsTotal: PropTypes.number,
+    shippingTotal: PropTypes.number,
+    giftCardsTotal: PropTypes.number,
+    currencySymbol: PropTypes.string.isRequired,
+    orderBalanceTotal: PropTypes.number,
+  }),
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
 };
@@ -412,6 +436,8 @@ OrderLedger.propTypes = {
 OrderLedger.defaultProps = {
   ledgerSummaryData: {},
   labels: {},
+  confirmationPageLedgerSummaryData: {},
+  isConfirmationPage: false,
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };
