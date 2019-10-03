@@ -1,1 +1,1 @@
-export { default } from './OrderBillingDetails.view';
+export { default } from './views/OrderBillingDetails.view';

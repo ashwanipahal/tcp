@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OrderDetailsView from '../views';
-import { getOrderDetailsList } from './OrderDetails.actions';
+import { getOrderDetails } from './OrderDetails.actions';
 import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
 
 /**
@@ -11,17 +11,12 @@ import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.select
  * @param state - initial state of selectedActivity set to be null
  */
 export class OrderDetailsContainer extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentDidMount() {
-    const { getOrderDetailsListAction, orderId } = this.props;
+    const { getOrderDetailsAction, orderId } = this.props;
     const payload = {
       orderId,
     };
-    getOrderDetailsListAction(payload);
+    getOrderDetailsAction(payload);
   }
 
   /**
@@ -31,11 +26,11 @@ export class OrderDetailsContainer extends PureComponent {
    */
 
   render() {
-    const { orderId, OrderDetailsData, OrdersLabels } = this.props;
+    const { orderId, orderDetailsData, ordersLabels } = this.props;
     return (
       <OrderDetailsView
-        OrderDetailsData={OrderDetailsData}
-        OrdersLabels={OrdersLabels}
+        orderDetailsData={orderDetailsData}
+        ordersLabels={ordersLabels}
         orderId={orderId}
       />
     );
@@ -44,8 +39,8 @@ export class OrderDetailsContainer extends PureComponent {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    getOrderDetailsListAction: payload => {
-      dispatch(getOrderDetailsList(payload));
+    getOrderDetailsAction: payload => {
+      dispatch(getOrderDetails(payload));
     },
   };
 };
@@ -53,22 +48,22 @@ export const mapDispatchToProps = dispatch => {
 export const mapStateToProps = (state, ownProps) => {
   return {
     orderId: ownProps.router.query.orderId,
-    OrderDetailsData: getOrderDetailsDataState(state),
-    OrdersLabels: getOrdersLabels(state),
+    orderDetailsData: getOrderDetailsDataState(state),
+    ordersLabels: getOrdersLabels(state),
   };
 };
 
 OrderDetailsContainer.propTypes = {
   orderId: PropTypes.string,
-  OrderDetailsData: PropTypes.shape([]),
-  OrdersLabels: PropTypes.shape([]),
-  getOrderDetailsListAction: PropTypes.func.isRequired,
+  orderDetailsData: PropTypes.shape({}),
+  ordersLabels: PropTypes.shape({}),
+  getOrderDetailsAction: PropTypes.func.isRequired,
 };
 
 OrderDetailsContainer.defaultProps = {
   orderId: '',
-  OrdersLabels: [],
-  OrderDetailsData: [],
+  ordersLabels: {},
+  orderDetailsData: {},
 };
 
 export default connect(

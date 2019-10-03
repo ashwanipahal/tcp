@@ -7,25 +7,17 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getDateInformation } from '@tcp/core/src//utils/badge.util';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import styles from './styles/OrderBasicDetails.style';
 
 /**
  * This function component use for return the OrderBasicDetails
  * can be passed in the component.
- * @param OrderDetailsData - OrderDetailsData object used for showing Order Details
+ * @param orderDetailsData - orderDetailsData object used for showing Order Details
  */
 
-const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
-  /**
-   * @function return  Used to render the JSX of the component
-   * @param    {[Void]} function does not accept anything.
-   * @return   {[Object]} JSX of the component
-   */
-
-  const { pickUpExpirationDate, orderNumber, status } = OrderDetailsData;
-  let { orderDate, bossMaxDate, bossMinDate } = OrderDetailsData;
+const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
+  const { pickUpExpirationDate, orderNumber, status } = orderDetailsData;
+  let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
   let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
   let orderTime = orderDate.split(' ')[1];
   orderDate = moment(orderDate);
@@ -38,6 +30,12 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
     `${bossMinDate.day}. ${bossMinDate.month}
    ${bossMinDate.date} - ${bossMaxDate.day}. ${bossMaxDate.month} ${bossMaxDate.date}`;
 
+  /**
+   * @function return  Used to render the JSX of the component
+   * @param    {[Void]} function does not accept anything.
+   * @return   {[Object]} JSX of the component
+   */
+
   return (
     <div className={className}>
       <BodyCopy component="div">
@@ -47,7 +45,7 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
           fontFamily="secondary"
           className="elem-mb-MED"
         >
-          {getLabelValue(OrdersLabels, 'lbl_orderDetails_orderNumber')}
+          {getLabelValue(ordersLabels, 'lbl_orderDetails_orderNumber')}
         </BodyCopy>
         <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary">
           {orderNumber}
@@ -60,7 +58,7 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
           fontFamily="secondary"
           className="elem-mb-MED"
         >
-          {getLabelValue(OrdersLabels, 'lbl_orderDetails_orderDate')}
+          {getLabelValue(ordersLabels, 'lbl_orderDetails_orderDate')}
         </BodyCopy>
         <BodyCopy fontSize="fs14" fontFamily="secondary">
           {orderDate.format('LL')}
@@ -72,7 +70,7 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
                 className="elem-mr-XXS elem-ml-XXS"
                 fontFamily="secondary"
               >
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_at')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_at')}
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {orderTime.format('hh:mma')}
@@ -86,15 +84,14 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
 };
 OrderBasicDetails.propTypes = {
   className: PropTypes.string,
-  OrderDetailsData: PropTypes.shape([]),
-  OrdersLabels: PropTypes.shape({}),
+  orderDetailsData: PropTypes.shape({}),
+  ordersLabels: PropTypes.shape({}),
 };
 
 OrderBasicDetails.defaultProps = {
   className: '',
-  OrderDetailsData: [],
-  OrdersLabels: {},
+  orderDetailsData: {},
+  ordersLabels: {},
 };
 
-export default withStyles(OrderBasicDetails, styles);
-export { OrderBasicDetails as OrderBasicDetailsVanilla };
+export default OrderBasicDetails;

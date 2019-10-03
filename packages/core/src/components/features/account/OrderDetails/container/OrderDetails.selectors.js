@@ -9,5 +9,5 @@ export const getOrdersLabels = state => {
 
 export const getOrderDetailsDataState = createSelector(
   getState,
-  state => state && state.get('orderDetailsData')
+  state => state && state.orderDetailsData
 );

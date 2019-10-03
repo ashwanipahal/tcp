@@ -4,7 +4,7 @@ import { Image, BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/comm
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getIconPath } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import styles from './styles/OrderItem.style';
+import styles from '../styles/OrderItem.style';
 
 /**
  * This function component use for return the OrderItems
@@ -27,7 +27,7 @@ const OrderItems = ({ className, ...otherProps }) => {
     currencySymbol,
     isCanceledList,
     isShowWriteReview,
-    OrdersLabels,
+    ordersLabels,
   } = otherProps;
   const idemListAndOfferPrice = listPrice === offerPrice;
 
@@ -62,11 +62,11 @@ const OrderItems = ({ className, ...otherProps }) => {
           </BodyCopy>
 
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-SM">
-            {getLabelValue(OrdersLabels, 'lbl_orderDetails_upc')}
+            {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
             {upc}
           </BodyCopy>
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
-            {getLabelValue(OrdersLabels, 'lbl_orderDetails_color')}
+            {getLabelValue(ordersLabels, 'lbl_orderDetails_color')}
             {color.name}
           </BodyCopy>
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
@@ -76,12 +76,12 @@ const OrderItems = ({ className, ...otherProps }) => {
               fontFamily="secondary"
               className="elem-mr-XL"
             >
-              {getLabelValue(OrdersLabels, 'lbl_orderDetails_fit')}
+              {getLabelValue(ordersLabels, 'lbl_orderDetails_fit')}
               {fit}
             </BodyCopy>
             {size && (
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_size')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_size')}
                 {size}
               </BodyCopy>
             )}
@@ -89,7 +89,7 @@ const OrderItems = ({ className, ...otherProps }) => {
           <BodyCopy component="div" className="elem-mt-SM itemInfo_details">
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_price')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_price')}
               </BodyCopy>
               <BodyCopy
                 component="span"
@@ -107,7 +107,7 @@ const OrderItems = ({ className, ...otherProps }) => {
 
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_youPaid')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_youPaid')}
               </BodyCopy>
               <BodyCopy
                 component="span"
@@ -121,7 +121,7 @@ const OrderItems = ({ className, ...otherProps }) => {
             </BodyCopy>
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_quantity')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_quantity')}
               </BodyCopy>
               <BodyCopy
                 component="span"
@@ -134,7 +134,7 @@ const OrderItems = ({ className, ...otherProps }) => {
             </BodyCopy>
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_subTotal')}
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_subTotal')}
               </BodyCopy>
               <BodyCopy
                 component="span"
@@ -155,7 +155,7 @@ const OrderItems = ({ className, ...otherProps }) => {
                   anchorVariation="primary"
                   underline
                 >
-                  {getLabelValue(OrdersLabels, 'lbl_orderDetails_writeReview')}
+                  {getLabelValue(ordersLabels, 'lbl_orderDetails_writeReview')}
                 </Anchor>
               </BodyCopy>
             )}

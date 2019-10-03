@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import styles from './styles/OrderItemsWithStatus.style';
-import OrderItem from '../OrderItem';
+import constants from '../../../OrderDetails.constants';
+import OrderItem from '../../OrderItem';
 
 /**
  * This function component use for return the OrderItemsWithStatus
@@ -21,7 +20,9 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
   const { orderGroup } = otherProps;
   const { items, status } = orderGroup;
 
-  const isShowWriteReview = status === 'order shipped' || status === 'partially shipped';
+  const isShowWriteReview =
+    status === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
+    status === constants.STATUS_CONSTANTS.PARTIALLY_SHIPPED;
 
   return (
     <BodyCopy component="div" className={className}>
@@ -46,5 +47,4 @@ OrderItemsWithStatus.defaultProps = {
   className: '',
 };
 
-export default withStyles(OrderItemsWithStatus, styles);
-export { OrderItemsWithStatus as OrderItemsWithStatusVanilla };
+export default OrderItemsWithStatus;

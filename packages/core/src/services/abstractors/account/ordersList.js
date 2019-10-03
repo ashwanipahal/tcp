@@ -1,7 +1,7 @@
-import config from '@tcp/core/src/utils/config/config';
+import orderConfig from '@tcp/core/src/config/orderConfig';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { orderConfig, API_CONFIG } from '../../config';
+import { API_CONFIG } from '../../config';
 import { getFormattedError } from '../../../utils/errorMessage.util';
 import { getSwatchImgPath } from '../../../components/features/browse/ProductListingPage/util/utility';
 import { extractFloat, sanitizeEntity } from '../../../utils/utils';
@@ -307,14 +307,14 @@ export const getOrderInfoByOrderId = updatedPayload => {
         pickedUpDate: (orderDetails.dateShipped || '').replace('T', ' '),
         shippedDate: (orderDetails.dateShipped || '').replace('T', ' '),
         status:
-          orderDetails.orderType === config.ORDER_ITEM_TYPE.BOSS
+          orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOSS
             ? orderDetails.orderStatus
             : orderStatusMapper[orderDetails.orderStatus],
         trackingNumber: orderDetails.tracking,
         trackingUrl:
           orderDetails.trackingUrl !== 'N/A' ? sanitizeEntity(orderDetails.trackingUrl) : '#',
-        isBopisOrder: orderDetails.orderType === config.ORDER_ITEM_TYPE.BOPIS,
-        isBossOrder: orderDetails.orderType === config.ORDER_ITEM_TYPE.BOSS,
+        isBopisOrder: orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOPIS,
+        isBossOrder: orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOSS,
         orderType: orderDetails.orderType,
         bossMaxDate: orderShipping.bossMaxDate || null,
         bossMinDate: orderShipping.bossMinDate || null,

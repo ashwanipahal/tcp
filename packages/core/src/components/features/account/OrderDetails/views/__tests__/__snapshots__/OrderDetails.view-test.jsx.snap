@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(FormPageHeading)
+    heading="lbl_orderDetails_heading"
+  />
+  <Styled(Row)
+    className="elem-mt-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(OrderBasicDetails)
+            OrderDetailsData={
+              Object {
+                "OrdersLabels": Object {},
+                "isBopisOrder": false,
+                "orderType": "ECOM",
+                "purchasedItems": Array [
+                  Object {
+                    "items": Array [
+                      Object {
+                        "itemInfo": Object {
+                          "itemBrand": "TCP",
+                          "linePrice": 24.94,
+                          "listPrice": 24.94,
+                          "offerPrice": 24.94,
+                          "quantity": 1,
+                          "quantityCanceled": 0,
+                          "quantityOOS": 0,
+                          "quantityReturned": 0,
+                          "quantityShipped": 0,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "summary": Object {
+                  "currencySymbol": "$",
+                },
+              }
+            }
+            OrdersLabels={Array []}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(OrderShippingDetails)
+            OrderDetailsData={
+              Object {
+                "OrdersLabels": Object {},
+                "isBopisOrder": false,
+                "orderType": "ECOM",
+                "purchasedItems": Array [
+                  Object {
+                    "items": Array [
+                      Object {
+                        "itemInfo": Object {
+                          "itemBrand": "TCP",
+                          "linePrice": 24.94,
+                          "listPrice": 24.94,
+                          "offerPrice": 24.94,
+                          "quantity": 1,
+                          "quantityCanceled": 0,
+                          "quantityOOS": 0,
+                          "quantityReturned": 0,
+                          "quantityShipped": 0,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "summary": Object {
+                  "currencySymbol": "$",
+                },
+              }
+            }
+            OrdersLabels={Array []}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(OrderBillingDetails)
+            OrderDetailsData={
+              Object {
+                "OrdersLabels": Object {},
+                "isBopisOrder": false,
+                "orderType": "ECOM",
+                "purchasedItems": Array [
+                  Object {
+                    "items": Array [
+                      Object {
+                        "itemInfo": Object {
+                          "itemBrand": "TCP",
+                          "linePrice": 24.94,
+                          "listPrice": 24.94,
+                          "offerPrice": 24.94,
+                          "quantity": 1,
+                          "quantityCanceled": 0,
+                          "quantityOOS": 0,
+                          "quantityReturned": 0,
+                          "quantityShipped": 0,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "summary": Object {
+                  "currencySymbol": "$",
+                },
+              }
+            }
+            OrdersLabels={Array []}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(OrderSummaryDetails)
+            OrderDetailsData={
+              Object {
+                "OrdersLabels": Object {},
+                "isBopisOrder": false,
+                "orderType": "ECOM",
+                "purchasedItems": Array [
+                  Object {
+                    "items": Array [
+                      Object {
+                        "itemInfo": Object {
+                          "itemBrand": "TCP",
+                          "linePrice": 24.94,
+                          "listPrice": 24.94,
+                          "offerPrice": 24.94,
+                          "quantity": 1,
+                          "quantityCanceled": 0,
+                          "quantityOOS": 0,
+                          "quantityReturned": 0,
+                          "quantityShipped": 0,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "summary": Object {
+                  "currencySymbol": "$",
+                },
+              }
+            }
+            OrdersLabels={Array []}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="purchasedItemsMargin"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(OrderItemsWithStatus)
+        OrdersLabels={Array []}
+        currencySymbol="$"
+        isBopisOrder={false}
+        key="0"
+        orderGroup={
+          Object {
+            "items": Array [
+              Object {
+                "itemInfo": Object {
+                  "itemBrand": "TCP",
+                  "linePrice": 24.94,
+                  "listPrice": 24.94,
+                  "offerPrice": 24.94,
+                  "quantity": 1,
+                  "quantityCanceled": 0,
+                  "quantityOOS": 0,
+                  "quantityReturned": 0,
+                  "quantityShipped": 0,
+                },
+              },
+            ],
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

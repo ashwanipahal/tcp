@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import styles from './styles/OrderShippingDetails.style';
 
 /**
  * This function component use for return the OrderShippingDetails
@@ -12,14 +10,14 @@ import styles from './styles/OrderShippingDetails.style';
  * @param OrdersLabels - OrdersLabels object used for showing Orders Labels
  */
 
-const OrderShippingDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
+const OrderShippingDetails = ({ className, orderDetailsData, ordersLabels }) => {
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
 
-  const { checkout } = OrderDetailsData;
+  const { checkout } = orderDetailsData;
   const { shippingAddress } = checkout;
 
   return (
@@ -30,7 +28,7 @@ const OrderShippingDetails = ({ className, OrderDetailsData, OrdersLabels }) => 
         fontFamily="secondary"
         className="elem-mb-MED"
       >
-        {getLabelValue(OrdersLabels, 'lbl_orderDetails_shipping')}
+        {getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}
       </BodyCopy>
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
         <Address address={shippingAddress} showCountry={false} showPhone={false} />
@@ -40,19 +38,18 @@ const OrderShippingDetails = ({ className, OrderDetailsData, OrdersLabels }) => 
 };
 OrderShippingDetails.propTypes = {
   className: PropTypes.string,
-  OrderDetailsData: PropTypes.shape([]),
-  OrdersLabels: PropTypes.shape({
+  orderDetailsData: PropTypes.shape({}),
+  ordersLabels: PropTypes.shape({
     lbl_orderDetails_shipping: PropTypes.string,
   }),
 };
 
 OrderShippingDetails.defaultProps = {
   className: '',
-  OrderDetailsData: [],
-  OrdersLabels: {
+  orderDetailsData: {},
+  ordersLabels: {
     lbl_orderDetails_shipping: '',
   },
 };
 
-export default withStyles(OrderShippingDetails, styles);
-export { OrderShippingDetails as OrderShippingDetailsVanilla };
+export default OrderShippingDetails;
