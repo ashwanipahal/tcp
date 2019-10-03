@@ -19,6 +19,25 @@ import {
   TCPOverlayTextContainer,
   GymboreeOverlayTextContainer,
 } from '../ModuleS.style.native';
+import config, {
+  BUTTON_WIDTH,
+  RIBBON_COLOR,
+  RIBBON_HEIGHT,
+  RIBBON_WIDTH,
+  MODULE_TCP_HEIGHT,
+  MODULE_GYM_HEIGHT,
+  MODULE_WITH_RIBBON_HEIGHT,
+} from '../ModuleS.config';
+
+/**
+ * This function returns named transformations from config
+ */
+const getImageConfig = hasRibbon => {
+  if (hasRibbon) {
+    return config.IMG_DATA_GYM_RIBBON[0];
+  }
+  return isGymboree() ? config.IMG_DATA_GYM[0] : config.IMG_DATA_TCP;
+};
 
 /**
  * This method returns Image width for the module
@@ -35,10 +54,6 @@ const getImageWidth = hasRibbon => {
  * Width can vary as per device width.
  */
 const getImageHeight = hasRibbon => {
-  const MODULE_TCP_HEIGHT = 356;
-  const MODULE_WITH_RIBBON_HEIGHT = 273;
-  const MODULE_GYM_HEIGHT = 420;
-
   if (hasRibbon) {
     return MODULE_WITH_RIBBON_HEIGHT;
   }
@@ -63,8 +78,8 @@ const getLinkedImage = (props, hasRibbon) => {
         height={getImageHeight(hasRibbon)}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
-        // crop={image.crop_m}
-        // imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+        crop={image.crop_m}
+        imgConfig={getImageConfig(hasRibbon)}
       />
     </Anchor>
   ) : (
@@ -73,8 +88,8 @@ const getLinkedImage = (props, hasRibbon) => {
       height={getImageHeight(hasRibbon)}
       url={image.url}
       host={LAZYLOAD_HOST_NAME.HOME}
-      // crop={image.crop_m}
-      // imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
+      crop={image.crop_m}
+      imgConfig={getImageConfig(hasRibbon)}
     />
   );
 };
@@ -84,7 +99,7 @@ const ButtonView = props => {
   return (
     <ButtonContainer>
       <Button
-        width="225px"
+        width={BUTTON_WIDTH}
         accessibilityLabel={singleCTAButton.title}
         buttonVariation="variable-width"
         text={singleCTAButton.text}
@@ -99,7 +114,7 @@ const ButtonView = props => {
 const HeaderView = props => {
   const { navigation, headerText } = props;
 
-  const color = !isGymboree() ? 'white' : '';
+  const color = !isGymboree() ? props.theme.colorPalette.white : '';
 
   return (
     headerText && (
@@ -124,8 +139,8 @@ const ribbonRightImage = require('../../../../../assets/module-a-ribbon-right.pn
 
 const RibbonView = ({ ribbonBanner, navigation }) => {
   let ribbonConfig = {
-    width: '250px',
-    height: '71px',
+    width: RIBBON_HEIGHT,
+    height: RIBBON_WIDTH,
     source: ribbonLeftImage,
   };
   if (ribbonBanner && ribbonBanner[0].ribbonPlacement === 'right') {
@@ -142,7 +157,7 @@ const RibbonView = ({ ribbonBanner, navigation }) => {
             {...ribbonConfig}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
-              tintColor: '#c9182e',
+              tintColor: RIBBON_COLOR,
             }}
           />
           <PromoBannerContainer position={ribbonBanner[0].ribbonPlacement}>
