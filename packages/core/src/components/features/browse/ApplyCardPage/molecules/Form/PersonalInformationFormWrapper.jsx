@@ -90,7 +90,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_ssn')}
               name="ssNumber"
               maxLength="4"
-              id="lastName"
+              id="ssNumber"
               data-locator={getLocator('plcc_SSN')}
             />
           </Col>

@@ -25,6 +25,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       "lbl_PLCCForm_submitButton": "submit",
     }
   }
+  onSubmitFail={[Function]}
   persistentSubmitErrors={false}
   pure={true}
   shouldAsyncValidate={[Function]}

@@ -31,6 +31,7 @@ describe('BillingPageContainer', () => {
         address: {},
       },
       submitBilling: jest.fn(),
+      setVenmoProgress: jest.fn(),
     };
     const data = {
       address: {

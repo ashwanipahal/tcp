@@ -59,6 +59,7 @@ class AddNewCCForm extends React.PureComponent {
       expMonth: creditFieldLabels.expMonth,
       expYear: creditFieldLabels.expYear,
       cvvCode: creditFieldLabels.cvvCode,
+      cameraText: creditFieldLabels.cameraText,
     };
   };
 
@@ -136,6 +137,18 @@ class AddNewCCForm extends React.PureComponent {
   };
 
   /**
+   * @function updateCardDetails
+   * @description called when scan any card through camera scanner
+   */
+  updateCardDetails = (cardNumber, year, month, cvvCode) => {
+    const { dispatch, formName } = this.props;
+    dispatch(change(formName, 'cardNumber', cardNumber));
+    dispatch(change(formName, 'expYear', year));
+    dispatch(change(formName, 'expMonth', month));
+    dispatch(change(formName, 'cvvCode', cvvCode));
+  };
+
+  /**
    * @function render
    * @description render method to be called of component
    */
@@ -154,8 +167,10 @@ class AddNewCCForm extends React.PureComponent {
           expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
           expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
           updateExpiryDate={this.updateExpiryDate}
+          updateCardDetails={this.updateCardDetails}
           selectedExpYear={expYear}
           selectedExpMonth={expMonth}
+          cameraIcon
         />
         {!isGuest && this.renderSaveToAccountOptions()}
       </>

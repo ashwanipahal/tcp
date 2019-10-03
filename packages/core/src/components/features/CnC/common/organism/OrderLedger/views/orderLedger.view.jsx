@@ -11,14 +11,67 @@ import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
+import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
-const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
+  return (
+    <div className="elem-mb-SM order-ledger-header">
+      <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
+      </BodyCopy>
+    </div>
+  );
+};
+
+export const createRowForGiftServiceTotal = (
+  className,
+  currencySymbol,
+  giftServiceTotal,
+  labels
+) => {
+  return (
+    giftServiceTotal > 0 && (
+      <Row
+        className="shipping-total rowMargin"
+        data-locator={getLocator('order_ledger_giftService_label')}
+      >
+        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <BodyCopy
+            bodySize="one"
+            color="primary"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            fontSize="fs13"
+          >
+            {`${labels.giftServiceLabel}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <BodyCopy
+            bodySize="one"
+            color="primary"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            fontSize="fs13"
+            textAlign="right"
+          >
+            {`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+    )
+  );
+};
+
+const getBody = (className, ledgerSummaryData, labels) => {
   const {
     itemsCount,
     currencySymbol,
     subTotal,
     couponsTotal,
     savingsTotal,
+    giftServiceTotal,
     shippingTotal,
     taxesTotal,
     grandTotal,
@@ -27,14 +80,11 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
     totalOrderSavings,
     isOrderHasShipping,
   } = ledgerSummaryData;
-  const toolTipMinWidth = '205px';
 
+  const toolTipMinWidth = '205px';
   return (
     <React.Fragment>
-      <Grid
-        className={`${className} elem-mb-MED`}
-        data-locator={getLocator('order_ledger_section_label')}
-      >
+      <Grid className={`${''} elem-mb-MED`} data-locator={getLocator('order_ledger_section_label')}>
         <Row className="items-total rowMargin" data-locator={getLocator('order_ledger_item_label')}>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
@@ -105,7 +155,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 fontWeight="semibold"
                 fontSize="fs13"
               >
-                {`${labels.promotionsLabel}`}
+                {`${labels.promotionsLabel}:`}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -122,6 +172,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
             </Col>
           </Row>
         ) : null}
+        {createRowForGiftServiceTotal(className, currencySymbol, giftServiceTotal, labels)}
         {isOrderHasShipping && (
           <Row
             className="shipping-total rowMargin"
@@ -150,7 +201,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {shippingTotal !== undefined
                   ? // eslint-disable-next-line no-constant-condition
-                    { shippingTotal } > 0
+                    shippingTotal > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'}
@@ -321,6 +372,33 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
   );
 };
 
+const OrderLedger = ({ className, ledgerSummaryData, labels, showAccordian }) => {
+  const header = getHeader(labels, ledgerSummaryData);
+  const body = getBody(className, ledgerSummaryData, labels);
+  return (
+    <div className={`${className} elem-mb-MED`}>
+      <Col
+        colSize={{
+          large: 12,
+          medium: 8,
+          small: 6,
+        }}
+        ignoreGutter={{ small: true, medium: true }}
+        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+      >
+        <CollapsibleContainer
+          className={`${''} ${showAccordian ? 'orderLedgerAccordian' : ''}`}
+          header={header}
+          body={body}
+          iconLocator="arrowicon"
+          defaultOpen={false}
+        />
+      </Col>
+      <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
+    </div>
+  );
+};
+
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
   /** Number of items in the cart. */
@@ -370,6 +448,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  showAccordian: PropTypes.bool.isRequired,
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
 };
