@@ -18,7 +18,6 @@ import PickupProductFormPart from '../../PickupProductFormPart';
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
-  getProductListToPath,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import {
   PickUpSkUSectionContainer,
@@ -56,14 +55,10 @@ class PickupSkuSelectionForm extends React.Component {
     });
   };
 
-  navigateToPDP = () => {
-    const { onCloseClick } = this.props;
-    onCloseClick();
-  };
-
   onGoToPDPPage = (pdpUrl, selectedColorProductId) => {
-    const { navigation } = this.props;
+    const { navigation, onCloseClick } = this.props;
     const title = navigation && navigation.getParam('title');
+    onCloseClick();
     navigation.navigate('ProductDetail', {
       title,
       pdpUrl,
@@ -80,8 +75,6 @@ class PickupSkuSelectionForm extends React.Component {
     const currencyPrefix = currency === 'USD' ? '$' : currency;
     const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
     const colorProductId = currentColorEntry && currentColorEntry.colorProductId;
-
-    const pdpToPath = getProductListToPath(currentColorPdpUrl);
 
     return (
       <PickUpSkUSectionContainer>
@@ -132,7 +125,7 @@ class PickupSkuSelectionForm extends React.Component {
               ) : null}
             </OfferPriceAndBadge3Container>
             <TouchableOpacity
-              onPress={() => this.onGoToPDPPage(pdpToPath, colorProductId)}
+              onPress={() => this.onGoToPDPPage(currentColorPdpUrl, colorProductId)}
               accessible
               accessibilityRole="button"
               accessibilityLabel={`${currentProduct.name}`}
