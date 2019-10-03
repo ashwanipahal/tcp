@@ -28,10 +28,10 @@ const getUrl = url => {
 
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { searchQuery, asPath, formData, url } = payload;
+    const { searchQuery, asPath, formData, url, scrollToTop } = payload;
     const location = getUrl(url);
     const state = yield select();
-    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop || false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
@@ -45,7 +45,7 @@ export function* fetchSlpProducts({ payload }) {
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
-    yield put(setSlpLoadingState({ isLoadingMore: false }));
+    yield put(setSlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
     logger.error(err);

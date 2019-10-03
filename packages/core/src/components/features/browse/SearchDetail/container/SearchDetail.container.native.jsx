@@ -19,7 +19,6 @@ import {
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
-  getProductsFilters,
   getTotalProductsCount,
   getCurrentSearchForText,
   getLabels,
@@ -28,10 +27,11 @@ import {
   getIsLoadingMore,
   checkIfSearchResultsAvailable,
   getAllProductsSelect,
+  updateAppliedFiltersInState,
+  getScrollToTopValue,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
-import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 class SearchDetailContainer extends React.PureComponent {
   searchQuery;
@@ -81,6 +81,18 @@ class SearchDetailContainer extends React.PureComponent {
     getMoreProducts({ URI: 'search', url: this.asPath, ignoreCache: true });
   };
 
+  onSubmitFilters = (formData, submit, getProducts, url) => {
+    const data = {
+      URI: 'search',
+      ignoreCache: true,
+      url: this.asPath,
+      sortBySelected: true,
+      formData,
+      scrollToTop: true,
+    };
+    getProducts(data);
+  };
+
   render() {
     const {
       formValues,
@@ -122,7 +134,7 @@ class SearchDetailContainer extends React.PureComponent {
                 getProducts={getProducts}
                 isLoadingMore={isLoadingMore}
                 initialValues={initialValues}
-                onSubmit={onSubmit}
+                onSubmit={this.onSubmitFilters}
                 products={products}
                 productsBlock={productsBlock}
                 totalProductsCount={totalProductsCount}
@@ -157,7 +169,7 @@ class SearchDetailContainer extends React.PureComponent {
               getProducts={getProducts}
               isLoadingMore={isLoadingMore}
               initialValues={initialValues}
-              onSubmit={onSubmit}
+              onSubmit={this.onSubmitFilters}
               products={products}
               productsBlock={productsBlock}
               totalProductsCount={totalProductsCount}
@@ -190,10 +202,12 @@ function mapStateToProps(state) {
     }
   }
 
+  const filters = updateAppliedFiltersInState(state);
+
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getAllProductsSelect(state),
-    filters: getProductsFilters(state),
+    filters,
     categoryId: getCategoryId(state),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
@@ -213,12 +227,12 @@ function mapStateToProps(state) {
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
-    onSubmit: submitProductListingFiltersForm,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     slpLabels: getLabels(state),
     searchResultSuggestions:
       state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
+    scrollToTop: getScrollToTopValue(state),
   };
 }
 
