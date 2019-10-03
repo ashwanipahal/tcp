@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, toTimeString, getLabelValue } from '@tcp/core/src/utils';
+import { getIconPath, toTimeString, getLabelValue, getLocator } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/StoreLocatorLink.style';
@@ -37,7 +37,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
   return (
     <React.Fragment>
       <Anchor
-        dataLocator="store_locator_link"
+        dataLocator={getLocator('store_drawerlink')}
         fontSizeVariation="small"
         anchorVariation="primary"
         to="/store-locator"
@@ -49,14 +49,14 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               src={getIconPath('map-marker-icon')}
               alt="Store Locator"
               className="storelocator--image"
-              data-locator="store_markericon"
+              data-locator={getLocator('store_markericon')}
             />
           </div>
           {isInfoPresent ? (
             <div className="storelocatorlink__detail">
               <BodyCopy
                 component="div"
-                data-locator="store_namelabel"
+                data-locator={getLocator('store_namelabel')}
                 fontFamily="secondary"
                 fontSize="fs13"
                 className="storelocatorlink__detail__storename"
@@ -65,7 +65,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               </BodyCopy>
               <BodyCopy
                 component="div"
-                data-locator="store_storetime"
+                data-locator={getLocator('store_storetime')}
                 fontFamily="secondary"
                 fontSize="fs10"
                 className="storelocatorlink__detail__storetime"
@@ -78,7 +78,7 @@ const StoreLocatorLink = ({ className, labels, store }) => {
           ) : (
             <BodyCopy
               component="div"
-              data-locator="store_findastore"
+              data-locator={getLocator('store_findastore')}
               fontFamily="secondary"
               fontSize="fs13"
               className="storelocatorlink__detail"
