@@ -5,7 +5,7 @@ import OrderSummaryDetails from '../OrderSummaryDetails.view';
 describe('Order Summary Details component', () => {
   it('should renders correctly', () => {
     const props = {
-      OrdersLabels: {},
+      ordersLabels: {},
     };
     const component = shallow(<OrderSummaryDetails {...props} />);
     expect(component).toMatchSnapshot();

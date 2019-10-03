@@ -57,7 +57,7 @@ const OrderItems = ({ className, ...otherProps }) => {
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
         >
-          <BodyCopy component="div" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+          <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
             {name}
           </BodyCopy>
 
@@ -70,15 +70,17 @@ const OrderItems = ({ className, ...otherProps }) => {
             {color.name}
           </BodyCopy>
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
-            <BodyCopy
-              component="span"
-              fontSize="fs14"
-              fontFamily="secondary"
-              className="elem-mr-XL"
-            >
-              {getLabelValue(ordersLabels, 'lbl_orderDetails_fit')}
-              {fit}
-            </BodyCopy>
+            {fit && (
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                fontFamily="secondary"
+                className="elem-mr-XL"
+              >
+                {getLabelValue(ordersLabels, 'lbl_orderDetails_fit')}
+                {fit}
+              </BodyCopy>
+            )}
             {size && (
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_size')}
@@ -88,7 +90,12 @@ const OrderItems = ({ className, ...otherProps }) => {
           </BodyCopy>
           <BodyCopy component="div" className="elem-mt-SM itemInfo_details">
             <BodyCopy component="div" className="itemInfo_details_items">
-              <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_price')}
               </BodyCopy>
               <BodyCopy
@@ -106,7 +113,12 @@ const OrderItems = ({ className, ...otherProps }) => {
             </BodyCopy>
 
             <BodyCopy component="div" className="itemInfo_details_items">
-              <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_youPaid')}
               </BodyCopy>
               <BodyCopy
@@ -120,7 +132,12 @@ const OrderItems = ({ className, ...otherProps }) => {
               </BodyCopy>
             </BodyCopy>
             <BodyCopy component="div" className="itemInfo_details_items">
-              <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_quantity')}
               </BodyCopy>
               <BodyCopy
@@ -133,7 +150,12 @@ const OrderItems = ({ className, ...otherProps }) => {
               </BodyCopy>
             </BodyCopy>
             <BodyCopy component="div" className="itemInfo_details_items">
-              <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
                 {getLabelValue(ordersLabels, 'lbl_orderDetails_subTotal')}
               </BodyCopy>
               <BodyCopy
@@ -147,7 +169,12 @@ const OrderItems = ({ className, ...otherProps }) => {
               </BodyCopy>
             </BodyCopy>
             {isShowWriteReview && (
-              <BodyCopy component="div" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+              <BodyCopy
+                component="div"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
                 <Anchor
                   url={pdpUrl}
                   target="_blank"

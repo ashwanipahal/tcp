@@ -26,7 +26,7 @@ describe('Order Items component', () => {
       },
       currencySymbol: '$',
       isShowWriteReview: 'true',
-      OrdersLabels: {},
+      ordersLabels: {},
     };
     const component = shallow(<OrderItemsVanilla {...props} />);
     expect(component).toMatchSnapshot();

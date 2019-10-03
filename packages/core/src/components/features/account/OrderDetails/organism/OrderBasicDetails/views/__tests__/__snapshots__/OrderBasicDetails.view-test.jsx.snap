@@ -17,7 +17,7 @@ exports[`Order Basic Details component should renders correctly 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="elem-mb-MED"
+      className="elem-mb-SM"
       color="text.primary"
       component="p"
       fontFamily="secondary"
@@ -36,7 +36,7 @@ exports[`Order Basic Details component should renders correctly 1`] = `
       component="p"
       fontFamily="secondary"
       fontSize="fs14"
-      fontWeight="black"
+      fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -46,7 +46,7 @@ exports[`Order Basic Details component should renders correctly 1`] = `
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="elem-mt-XL"
+    className="elem-mt-LRG"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -58,7 +58,7 @@ exports[`Order Basic Details component should renders correctly 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="elem-mb-MED"
+      className="elem-mb-SM"
       color="text.primary"
       component="p"
       fontFamily="secondary"

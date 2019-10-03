@@ -5,7 +5,7 @@ import OrderShippingDetails from '../OrderShippingDetails.view';
 describe('Order Shipping Details component', () => {
   it('should renders correctly', () => {
     const props = {
-      OrderDetailsData: {
+      orderDetailsData: {
         checkout: {
           shippingAddress: {
             addressLine1: '234 E 149th St',
@@ -18,7 +18,7 @@ describe('Order Shipping Details component', () => {
             zipCode: '10451',
           },
         },
-        OrdersLabels: {},
+        ordersLabels: {},
         status: 'test status',
       },
     };

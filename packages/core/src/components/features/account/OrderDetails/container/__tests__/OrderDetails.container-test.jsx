@@ -5,7 +5,7 @@ import OrderDetailsData from '../../views/OrderDetails.view';
 
 describe('Order Details container', () => {
   const props = {
-    OrdersLabels: {},
+    ordersLabels: {},
   };
   it('should render Order Details component', () => {
     const component = shallow(

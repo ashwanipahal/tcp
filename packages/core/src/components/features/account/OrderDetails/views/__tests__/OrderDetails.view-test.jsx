@@ -29,7 +29,7 @@ describe('Order Summary Details component', () => {
           currencySymbol: '$',
         },
         isBopisOrder: false,
-        OrdersLabels: {},
+        ordersLabels: {},
         orderType: 'ECOM',
       },
     };

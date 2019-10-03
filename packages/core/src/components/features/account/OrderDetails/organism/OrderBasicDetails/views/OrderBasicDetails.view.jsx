@@ -43,20 +43,20 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           fontSize="fs14"
           fontWeight="extrabold"
           fontFamily="secondary"
-          className="elem-mb-MED"
+          className="elem-mb-SM"
         >
           {getLabelValue(ordersLabels, 'lbl_orderDetails_orderNumber')}
         </BodyCopy>
-        <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary">
+        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
           {orderNumber}
         </BodyCopy>
       </BodyCopy>
-      <BodyCopy component="div" className="elem-mt-XL">
+      <BodyCopy component="div" className="elem-mt-LRG">
         <BodyCopy
           fontSize="fs14"
           fontWeight="extrabold"
           fontFamily="secondary"
-          className="elem-mb-MED"
+          className="elem-mb-SM"
         >
           {getLabelValue(ordersLabels, 'lbl_orderDetails_orderDate')}
         </BodyCopy>

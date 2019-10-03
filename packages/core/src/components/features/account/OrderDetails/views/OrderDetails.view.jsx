@@ -20,7 +20,7 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 /**
  * This function component use for return the OrderDetailsView
  * can be passed in the component.
- * @param OrderDetailsData - OrderDetailsData object used for showing Order Details
+ * @param orderDetailsData - orderDetailsData object used for showing Order Details
  */
 
 class OrderDetailsView extends PureComponent {

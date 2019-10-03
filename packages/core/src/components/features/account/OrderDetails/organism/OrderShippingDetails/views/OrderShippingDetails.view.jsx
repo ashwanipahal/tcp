@@ -7,7 +7,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 /**
  * This function component use for return the OrderShippingDetails
  * can be passed in the component.
- * @param OrdersLabels - OrdersLabels object used for showing Orders Labels
+ * @param ordersLabels - ordersLabels object used for showing Orders Labels
  */
 
 const OrderShippingDetails = ({ className, orderDetailsData, ordersLabels }) => {
