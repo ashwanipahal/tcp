@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Address from '@tcp/core/src/components/common/molecules/Address';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './styles/OrderShippingDetails.style';
 
 /**
- * This function component use for return the EarnPoints
+ * This function component use for return the OrderShippingDetails
  * can be passed in the component.
- * @param waysToEarn - waysToEarn object used for showing extra points details
+ * @param OrdersLabels - OrdersLabels object used for showing Orders Labels
  */
 
-const OrderShippingDetails = ({ className, OrderDetailsData }) => {
+const OrderShippingDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -29,7 +30,7 @@ const OrderShippingDetails = ({ className, OrderDetailsData }) => {
         fontFamily="secondary"
         className="elem-mb-MED"
       >
-        Shipping
+        {getLabelValue(OrdersLabels, 'lbl_orderDetails_shipping')}
       </BodyCopy>
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
         <Address address={shippingAddress} showCountry={false} showPhone={false} />
@@ -40,11 +41,17 @@ const OrderShippingDetails = ({ className, OrderDetailsData }) => {
 OrderShippingDetails.propTypes = {
   className: PropTypes.string,
   OrderDetailsData: PropTypes.shape([]),
+  OrdersLabels: PropTypes.shape({
+    lbl_orderDetails_shipping: PropTypes.string,
+  }),
 };
 
 OrderShippingDetails.defaultProps = {
   className: '',
   OrderDetailsData: [],
+  OrdersLabels: {
+    lbl_orderDetails_shipping: '',
+  },
 };
 
 export default withStyles(OrderShippingDetails, styles);

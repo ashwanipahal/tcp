@@ -7,9 +7,9 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './styles/OrderItem.style';
 
 /**
- * This function component use for return the EarnPoints
+ * This function component use for return the OrderItems
  * can be passed in the component.
- * @param waysToEarn - waysToEarn object used for showing extra points details
+ * @param otherProps - otherProps object used pass params to other component
  */
 
 const OrderItems = ({ className, ...otherProps }) => {
@@ -19,10 +19,6 @@ const OrderItems = ({ className, ...otherProps }) => {
    * @return   {[Object]} JSX of the component
    */
 
-  console.log('console testing---------------');
-  console.log(otherProps);
-  console.log('console testing---------------');
-
   const {
     item: {
       productInfo: { name, imagePath, color, fit, size, upc, pdpUrl },
@@ -31,10 +27,9 @@ const OrderItems = ({ className, ...otherProps }) => {
     currencySymbol,
     isCanceledList,
     isShowWriteReview,
-    OrdersLabels
+    OrdersLabels,
   } = otherProps;
-
-  // const idemListAndOfferPrice = listPrice === offerPrice;
+  const idemListAndOfferPrice = listPrice === offerPrice;
 
   return (
     <BodyCopy component="div" className={className}>
@@ -56,8 +51,12 @@ const OrderItems = ({ className, ...otherProps }) => {
             />
           </BodyCopy>
         </Col>
-
-        <Col colSize={{ large: 10, medium: 6, small: 4 }} className="elem-ml-MED">
+        <Col
+          colSize={{ large: 9, medium: 5, small: 3 }}
+          ignoreGutter={{ small: true, medium: true, large: true }}
+          offsetLeft={{ medium: 1, large: 1 }}
+          className="elem-mr-MED"
+        >
           <BodyCopy component="div" fontSize="fs14" fontWeight="black" fontFamily="secondary">
             {name}
           </BodyCopy>
@@ -70,7 +69,6 @@ const OrderItems = ({ className, ...otherProps }) => {
             {getLabelValue(OrdersLabels, 'lbl_orderDetails_color')}
             {color.name}
           </BodyCopy>
-
           <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
             <BodyCopy
               component="span"
@@ -88,13 +86,20 @@ const OrderItems = ({ className, ...otherProps }) => {
               </BodyCopy>
             )}
           </BodyCopy>
-
           <BodyCopy component="div" className="elem-mt-SM itemInfo_details">
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
                 {getLabelValue(OrdersLabels, 'lbl_orderDetails_price')}
               </BodyCopy>
-              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                className="itemInfo_details_items_leftMargin"
+                fontFamily="secondary"
+              >
+                {/* TO DO: - need to be clear how to define offer price */}
+
+                {idemListAndOfferPrice}
                 {currencySymbol}
                 {listPrice.toFixed(2)}
               </BodyCopy>
@@ -104,43 +109,56 @@ const OrderItems = ({ className, ...otherProps }) => {
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
                 {getLabelValue(OrdersLabels, 'lbl_orderDetails_youPaid')}
               </BodyCopy>
-              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                className="itemInfo_details_items_leftMargin"
+                fontFamily="secondary"
+              >
                 {currencySymbol}
                 {offerPrice.toFixed(2)}
               </BodyCopy>
             </BodyCopy>
-
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
                 {getLabelValue(OrdersLabels, 'lbl_orderDetails_quantity')}
               </BodyCopy>
-              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                {quantity}
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                className="itemInfo_details_items_leftMargin"
+                fontFamily="secondary"
+              >
+                {isCanceledList ? quantityCanceled : quantity}
               </BodyCopy>
             </BodyCopy>
             <BodyCopy component="div" className="itemInfo_details_items">
               <BodyCopy component="span" fontSize="fs14" fontWeight="black" fontFamily="secondary">
                 {getLabelValue(OrdersLabels, 'lbl_orderDetails_subTotal')}
               </BodyCopy>
-              <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+              <BodyCopy
+                component="span"
+                fontSize="fs14"
+                className="itemInfo_details_items_leftMargin"
+                fontFamily="secondary"
+              >
                 {currencySymbol}
                 {(linePrice || 0).toFixed(2)}
               </BodyCopy>
             </BodyCopy>
-            {/* {isShowWriteReview && ( */}
-            <BodyCopy component="div" fontSize="fs14" fontWeight="black" fontFamily="secondary">
-              <Anchor
-                url={pdpUrl}
-                target="_blank"
-                fontSizeVariation="large"
-                anchorVariation="primary"
-                underline
-              >
-                {getLabelValue(OrdersLabels, 'lbl_orderDetails_writeReview')}
-
-              </Anchor>
-            </BodyCopy>
-            {/* )} */}
+            {isShowWriteReview && (
+              <BodyCopy component="div" fontSize="fs14" fontWeight="black" fontFamily="secondary">
+                <Anchor
+                  url={pdpUrl}
+                  target="_blank"
+                  fontSizeVariation="large"
+                  anchorVariation="primary"
+                  underline
+                >
+                  {getLabelValue(OrdersLabels, 'lbl_orderDetails_writeReview')}
+                </Anchor>
+              </BodyCopy>
+            )}
           </BodyCopy>
         </Col>
       </Row>

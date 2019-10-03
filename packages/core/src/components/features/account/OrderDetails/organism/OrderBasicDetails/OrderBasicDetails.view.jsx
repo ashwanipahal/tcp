@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 // TO DO: Please remove eslint-disable when order work done
 
 import React from 'react';
@@ -11,9 +12,9 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './styles/OrderBasicDetails.style';
 
 /**
- * This function component use for return the EarnPoints
+ * This function component use for return the OrderBasicDetails
  * can be passed in the component.
- * @param waysToEarn - waysToEarn object used for showing extra points details
+ * @param OrderDetailsData - OrderDetailsData object used for showing Order Details
  */
 
 const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
@@ -72,7 +73,6 @@ const OrderBasicDetails = ({ className, OrderDetailsData, OrdersLabels }) => {
                 fontFamily="secondary"
               >
                 {getLabelValue(OrdersLabels, 'lbl_orderDetails_at')}
-
               </BodyCopy>
               <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                 {orderTime.format('hh:mma')}

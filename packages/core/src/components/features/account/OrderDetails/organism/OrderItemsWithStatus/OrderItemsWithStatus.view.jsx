@@ -6,9 +6,9 @@ import styles from './styles/OrderItemsWithStatus.style';
 import OrderItem from '../OrderItem';
 
 /**
- * This function component use for return the EarnPoints
+ * This function component use for return the OrderItemsWithStatus
  * can be passed in the component.
- * @param waysToEarn - waysToEarn object used for showing extra points details
+ * @param otherProps - otherProps object used pass params to other component
  */
 
 const OrderItemsWithStatus = ({ className, ...otherProps }) => {
@@ -18,7 +18,7 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
    * @return   {[Object]} JSX of the component
    */
 
-  const { orderGroup, OrdersLabels } = otherProps;
+  const { orderGroup } = otherProps;
   const { items, status } = orderGroup;
 
   const isShowWriteReview = status === 'order shipped' || status === 'partially shipped';
@@ -27,9 +27,9 @@ const OrderItemsWithStatus = ({ className, ...otherProps }) => {
     <BodyCopy component="div" className={className}>
       {items.map((item, index) => (
         <OrderItem
-          OrdersLabels={OrdersLabels}
           key={index.toString()}
           {...{ item, isShowWriteReview, orderGroup }}
+          {...otherProps}
         />
       ))}
     </BodyCopy>
