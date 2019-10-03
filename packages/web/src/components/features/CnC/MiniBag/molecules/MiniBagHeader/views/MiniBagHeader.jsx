@@ -18,7 +18,20 @@ type Props = {
   userName: any,
   currentPoints: any,
   totalRewards: any,
+  onRequestClose: Function,
+  openOverlay: Function,
 };
+
+const onLinkClick = ({ e, onRequestClose, componentId, openOverlay }) => {
+  e.preventDefault();
+  openOverlay({
+    component: componentId,
+    variation: 'primary',
+  });
+
+  onRequestClose();
+};
+
 const MiniBagHeader = ({
   labels,
   cartItemCount,
@@ -26,7 +39,12 @@ const MiniBagHeader = ({
   userName,
   currentPoints,
   totalRewards,
+  onRequestClose,
+  openOverlay,
 }: Props) => {
+  const createAccount = 'createAccount';
+  const login = 'login';
+  const accountDrawer = 'accountDrawer';
   return (
     <div className={className}>
       <Row className="mainWrapper">
@@ -36,7 +54,15 @@ const MiniBagHeader = ({
         >
           {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
-              <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
+              <Anchor
+                fontSizeVariation="large"
+                anchorVariation="primary"
+                noLink
+                to=""
+                onClick={e =>
+                  onLinkClick({ e, onRequestClose, componentId: createAccount, openOverlay })
+                }
+              >
                 {labels.createAccount}
               </Anchor>
               <BodyCopy component="span" fontSize="fs10" className="separator" />
@@ -45,6 +71,7 @@ const MiniBagHeader = ({
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 noLink
+                onClick={e => onLinkClick({ e, onRequestClose, componentId: login, openOverlay })}
               >
                 {labels.logIn}
               </Anchor>
@@ -58,6 +85,9 @@ const MiniBagHeader = ({
                 fontWeight="extrabold"
                 textAlign="left"
                 fontFamily="secondary"
+                onClick={e =>
+                  onLinkClick({ e, onRequestClose, componentId: accountDrawer, openOverlay })
+                }
               >
                 {`${labels.hi}, ${userName} `}
               </BodyCopy>

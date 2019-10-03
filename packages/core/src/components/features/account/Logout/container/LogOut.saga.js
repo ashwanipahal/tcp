@@ -1,4 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
@@ -17,6 +18,7 @@ export function* logoutSaga() {
       }
       yield put(resetUserInfo());
       yield put(navigateXHRAction());
+      yield put(BAG_PAGE_ACTIONS.getOrderDetails());
       if (!isMobileApp()) {
         yield put(closeOverlayModal());
         if (window.location.href.indexOf('account') > 0) {
