@@ -171,7 +171,7 @@ export class StoreLanding extends PureComponent {
                 : this.renderStoreList(modifiedStoreList)}
             </Row>
           </Col>
-          {modifiedStoreList.length && (
+          {!!modifiedStoreList.length && (
             <Col
               colSize={{ large: 6, medium: 8, small: 6 }}
               ignoreGutter={{ small: true }}

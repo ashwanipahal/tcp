@@ -17,7 +17,7 @@ const getBillingCardDetails = state => {
     return null;
   }
   return {
-    cardNumber: cardDetails.cardNumber.slice(-4),
+    cardNumber: cardDetails.cardNumber && cardDetails.cardNumber.slice(-4),
     ccType: cardDetails.cardType,
     ccBrand: cardDetails.cardType,
   };

@@ -89,7 +89,7 @@ export class StoreLanding extends PureComponent {
               toggleMap={this.toggleMap}
               mapView={mapView}
             />
-            {mapView && modifiedStoreList.length && (
+            {mapView && !!modifiedStoreList.length && (
               <StoreStaticMap
                 storesList={modifiedStoreList}
                 isCanada={isCanada}
