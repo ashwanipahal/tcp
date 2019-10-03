@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
@@ -18,7 +19,7 @@ class CouponCard extends React.Component<Props> {
   }
 
   RenderCardHeader = (type, headingClass, dataLocator) => {
-    const { labels, coupon } = this.props;
+    const { labels, coupon, isCarouselView, commonLabels } = this.props;
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
@@ -32,7 +33,7 @@ class CouponCard extends React.Component<Props> {
             {type}
           </BodyCopy>
         </div>
-        {coupon.isExpiring && (
+        {coupon.isExpiring && !isCarouselView && coupon.status !== 'applied' && (
           <BodyCopy
             data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
@@ -41,6 +42,17 @@ class CouponCard extends React.Component<Props> {
             fontFamily="secondary"
           >
             {labels.EXPIRING_SOON}
+          </BodyCopy>
+        )}
+        {isCarouselView && coupon.status === 'applied' && (
+          <BodyCopy
+            data-locator="coupon_header_applied"
+            className="couponCard__header_expired"
+            component="p"
+            fontSize="fs12"
+            fontFamily="secondary"
+          >
+            {getLabelValue(commonLabels, 'lbl_my_rewards_applied', 'placeRewards')}
           </BodyCopy>
         )}
       </div>
