@@ -37,6 +37,7 @@ import NavigationSaga from '@tcp/core/src/components/features/content/Navigation
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.saga';
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
@@ -92,6 +93,7 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     BillingPaymentSaga(),
     ProductTabListSaga(),
+    StyliticsProductTabListSaga(),
     GetCandidSaga(),
     UpdateProfileSaga(),
     GiftCardsSaga(),
