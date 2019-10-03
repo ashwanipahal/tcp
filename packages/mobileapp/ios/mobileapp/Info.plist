@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>This lets you take photos videos, and more within the app</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>AppType</key>
 	<string>$(APP_TYPE)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,8 +22,30 @@
 	<string>1.0-${APP_ENV}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb512065309359521</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>512065309359521</string>
+	<key>FacebookDisplayName</key>
+	<string>My Place</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -43,6 +61,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app would like to access your camera to attach pictures with your product review.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -71,25 +91,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb512065309359521</string>
-      </array>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>512065309359521</string>
-  <key>FacebookDisplayName</key>
-  <string>My Place</string>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>fbapi</string>
-    <string>fb-messenger-share-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-  </array>
 </dict>
 </plist>
