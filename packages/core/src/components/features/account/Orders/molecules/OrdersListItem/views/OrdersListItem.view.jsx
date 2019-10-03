@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import internalEndpoints from '../../../../common/internalEndpoints';
+import styles from '../styles/OrdersListItem.style';
 
 /**
  * This component will render OrdersListItem component
  * @param { string, object, boolean }
  */
-export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
+export const OrdersListItem = ({ labels, orderItem, hideHeader, className }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   const rowHeaderClass = hideHeader ? 'hide-on-desktop hide-on-tablet' : '';
   return (
     <>
-      <Row fullBleed>
+      <Row fullBleed className={className}>
         <Col colSize={{ large: 5, medium: 3, small: 6 }}>
-          <Row fullBleed className={`elem-pb-MED elem-pt-MED ${rowHeaderClass}`}>
+          <Row fullBleed className={`order-item-header ${rowHeaderClass}`}>
             <Col colSize={{ large: 6, medium: 4, small: 2 }}>
               <BodyCopy
                 data-locator="order-date-header"
@@ -38,7 +40,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
               </BodyCopy>
             </Col>
           </Row>
-          <Row fullBleed className="elem-mb-LRG">
+          <Row fullBleed className="order-item-value">
             <Col colSize={{ large: 6, medium: 4, small: 2 }}>
               <BodyCopy
                 data-locator="order-date-value"
@@ -66,7 +68,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
           </Row>
         </Col>
         <Col colSize={{ large: 7, medium: 5, small: 6 }} ignoreGutter={{ small: true }}>
-          <Row fullBleed className={`elem-pb-MED elem-pt-MED ${rowHeaderClass}`}>
+          <Row fullBleed className={`order-item-header ${rowHeaderClass}`}>
             <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="order-type-header"
@@ -93,13 +95,13 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 fontFamily="secondary"
                 fontWeight="extrabold"
                 fontSize="fs14"
-                textAlign="right"
+                className="order-total"
               >
                 {getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
               </BodyCopy>
             </Col>
           </Row>
-          <Row fullBleed className="elem-mb-LRG">
+          <Row fullBleed className="order-item-bottom">
             <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="order-type-value"
@@ -127,7 +129,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader }) => {
                 data-locator="order-total-value"
                 fontFamily="secondary"
                 fontWeight="regular"
-                textAlign="right"
+                className="order-total"
                 fontSize="fs14"
               >
                 {orderTotal}
@@ -144,10 +146,12 @@ OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
   hideHeader: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 OrdersListItem.defaultProps = {
   hideHeader: false,
+  className: '',
 };
 
-export default OrdersListItem;
+export default withStyles(OrdersListItem, styles);

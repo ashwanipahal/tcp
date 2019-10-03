@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue, getSiteId } from '@tcp/core/src/utils/utils';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import externalEndpoints from '../../../../common/externalEndpoints';
 import { API_CONFIG } from '../../../../../../../services/config';
+import styles from '../styles/OrdersLinks.style';
 
 /**
  * This component will render OrdersLinks component
@@ -50,31 +52,33 @@ class OrdersLinks extends React.Component {
         ? getLabelValue(labels, 'lbl_orders_caOrdersLink', 'orders')
         : getLabelValue(labels, 'lbl_orders_usOrdersLink', 'orders');
     return (
-      <BodyCopy className={className} textAlign="right">
-        <Anchor
-          fontSizeVariation="large"
-          underline
-          anchorVariation="primary"
-          fontSize="fs14"
-          dataLocator="order-country-selector-link"
-          onClick={this.toggleLink}
-          fontFamily="secondary"
-        >
-          {buttonText}
-        </Anchor>
-        <Anchor
-          fontSizeVariation="large"
-          underline
-          anchorVariation="primary"
-          fontSize="fs14"
-          dataLocator="order-international-link"
-          className="elem-ml-XXXL"
-          target="_blank"
-          href={externalEndpoints.internationalOrdersPage}
-          fontFamily="secondary"
-        >
-          {getLabelValue(labels, 'lbl_orders_internationalOrdersLink', 'orders')}
-        </Anchor>
+      <BodyCopy className={className}>
+        <BodyCopy className="top-order-links">
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            anchorVariation="primary"
+            fontSize="fs14"
+            dataLocator="order-country-selector-link"
+            onClick={this.toggleLink}
+            fontFamily="secondary"
+          >
+            {buttonText}
+          </Anchor>
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            anchorVariation="primary"
+            fontSize="fs14"
+            dataLocator="order-international-link"
+            className="elem-ml-XXXL"
+            target="_blank"
+            href={externalEndpoints.internationalOrdersPage}
+            fontFamily="secondary"
+          >
+            {getLabelValue(labels, 'lbl_orders_internationalOrdersLink', 'orders')}
+          </Anchor>
+        </BodyCopy>
       </BodyCopy>
     );
   }
@@ -90,4 +94,4 @@ OrdersLinks.defaultProps = {
   className: '',
 };
 
-export default OrdersLinks;
+export default withStyles(OrdersLinks, styles);
