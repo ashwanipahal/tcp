@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
@@ -26,7 +27,7 @@ const GiftCards = (props: Props) => {
   const { labels, giftCardList, onGetBalanceCard, checkbalanceValueInfo } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
+      <HeadingTextStyle>{getLabelValue(labels, 'ACC_LBL_GC_HEADING')}</HeadingTextStyle>
       {giftCardList.size === 0 && (
         <React.Fragment>
           <WrapperStyle>
@@ -36,14 +37,22 @@ const GiftCards = (props: Props) => {
                 source={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
               />
             </ImgWrapper>
-            <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
+            <EmptyCCLabelStyle>
+              {getLabelValue(labels, 'ACC_LBL_GC_EMPTY_HEADING')}
+            </EmptyCCLabelStyle>
           </WrapperStyle>
-          <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
+          <DescriptionEmptyCCStyle>
+            {getLabelValue(labels, 'ACC_LBL_GC_EMPTY_DESC')}
+          </DescriptionEmptyCCStyle>
         </React.Fragment>
       )}
       <ButtonWrapperStyle>
         <CustomButton
-          text={giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+          text={
+            giftCardList.size === 0
+              ? getLabelValue(labels, 'ACC_LBL_GC_EMPTY_ADD_BTN')
+              : getLabelValue(labels, 'ACC_LBL_ADD_BTN')
+          }
           buttonVariation="variable-width"
           fill="BLUE"
         />

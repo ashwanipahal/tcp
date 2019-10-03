@@ -13,7 +13,7 @@ export const getShippingTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']) || 0;
 };
 export const getTotalTax = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'totaltax']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'totalTax']) || 0;
 };
 export const getGrandTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'grandTotal']) || 0;

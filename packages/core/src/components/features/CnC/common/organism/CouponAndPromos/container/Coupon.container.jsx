@@ -9,40 +9,70 @@ import {
   getAppliedCouponListState,
   getAvailableCouponListState,
   getNeedHelpContent,
+  getAllCoupons,
 } from './Coupon.selectors';
+import { getGlobalLabels } from '../../../../../account/Account/container/Account.selectors';
 import Coupon from '../views/Coupon.view';
+import MyOffersCoupons from '../../../../../account/common/organism/MyOffersCoupons/views/MyOffersCoupons.view';
 
-export class CouponContainer extends React.PureComponent<Props> {
+export class CouponContainer extends React.PureComponent {
   render() {
     const {
       labels,
+      commonLabels,
       isFetching,
       handleApplyCoupon,
       handleApplyCouponFromList,
       handleRemoveCoupon,
       appliedCouponList,
       availableCouponList,
+      allCouponList,
       needHelpRichText,
       handleErrorCoupon,
       isCheckout,
       showAccordian,
+      isCarouselView,
+      closedOverlay,
       additionalClassNameModal,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
-      <Coupon
-        labels={updateLabels}
-        isCheckout={isCheckout}
-        isFetching={isFetching}
-        handleApplyCoupon={handleApplyCoupon}
-        handleApplyCouponFromList={handleApplyCouponFromList}
-        handleRemoveCoupon={handleRemoveCoupon}
-        appliedCouponList={appliedCouponList}
-        availableCouponList={availableCouponList}
-        handleErrorCoupon={handleErrorCoupon}
-        showAccordian={showAccordian}
-        additionalClassNameModal={additionalClassNameModal}
-      />
+      <>
+        {!isCarouselView && (
+          <Coupon
+            labels={updateLabels}
+            isCheckout={isCheckout}
+            isFetching={isFetching}
+            handleApplyCoupon={handleApplyCoupon}
+            handleApplyCouponFromList={handleApplyCouponFromList}
+            handleRemoveCoupon={handleRemoveCoupon}
+            appliedCouponList={appliedCouponList}
+            availableCouponList={availableCouponList}
+            handleErrorCoupon={handleErrorCoupon}
+            showAccordian={showAccordian}
+            additionalClassNameModal={additionalClassNameModal}
+          />
+        )}
+
+        {isCarouselView && (
+          <MyOffersCoupons
+            labels={updateLabels}
+            commonLabels={commonLabels}
+            isCheckout={isCheckout}
+            isFetching={isFetching}
+            handleApplyCoupon={handleApplyCoupon}
+            handleApplyCouponFromList={handleApplyCouponFromList}
+            handleRemoveCoupon={handleRemoveCoupon}
+            allCouponList={allCouponList}
+            handleErrorCoupon={handleErrorCoupon}
+            showAccordian={showAccordian}
+            sliceCount={10}
+            additionalClassNameModal={additionalClassNameModal}
+            isCarouselView={isCarouselView}
+            closedOverlay={closedOverlay}
+          />
+        )}
+      </>
     );
   }
 }
@@ -58,6 +88,17 @@ CouponContainer.propTypes = {
   availableCouponList: PropTypes.shape({}).isRequired,
   showAccordian: PropTypes.bool.isRequired,
   additionalClassNameModal: PropTypes.string.isRequired,
+  commonLabels: PropTypes.shape({}).isRequired,
+  allCouponList: PropTypes.shape([]).isRequired,
+  needHelpRichText: PropTypes.string.isRequired,
+  handleErrorCoupon: PropTypes.func.isRequired,
+  isCarouselView: PropTypes.bool,
+  closedOverlay: PropTypes.func,
+};
+
+CouponContainer.defaultProps = {
+  closedOverlay: () => {},
+  isCarouselView: false,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -95,7 +136,9 @@ export const mapStateToProps = state => ({
   labels: getCouponsLabels(state),
   appliedCouponList: getAppliedCouponListState(state),
   availableCouponList: getAvailableCouponListState(state),
+  allCouponList: getAllCoupons(state),
   needHelpRichText: getNeedHelpContent(state),
+  commonLabels: getGlobalLabels(state),
 });
 
 export default connect(

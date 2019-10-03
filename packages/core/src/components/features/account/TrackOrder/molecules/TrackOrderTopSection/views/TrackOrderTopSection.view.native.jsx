@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { TrackOrderTopSectionView } from '../styles/TrackOrderTopSection.native.style';
 
@@ -17,12 +18,12 @@ const TrackOrderTopSection = ({ labels }) => {
         mobileFontFamily="secondary"
         fontSize="fs22"
         fontWeight="extrabold"
-        text={labels.trackOrder.lbl_trackOrder_header}
+        text={getLabelValue(labels, 'trackOrder.lbl_trackOrder_header', 'trackOrder')}
       />
       <BodyCopy
         data-locator="trackordermodal-overlaysubheading"
         id="trackorder__modal__subheading"
-        text={labels.trackOrder.lbl_trackOrder_subheader}
+        text={getLabelValue(labels, 'trackOrder.lbl_trackOrder_subheader', 'trackOrder')}
       />
     </TrackOrderTopSectionView>
   );

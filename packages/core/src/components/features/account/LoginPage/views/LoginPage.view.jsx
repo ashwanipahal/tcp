@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import LoginSection from '../organism/LoginSection';
 import PasswordRequirement from '../../ResetPassword/molecules/PasswordRequirement';
 
@@ -43,7 +44,7 @@ const LoginView = ({
       setLoginModalMountState={setLoginModalMountState}
       variation={variation}
       handleContinueAsGuest={handleContinueAsGuest}
-      tooltipContent={<PasswordRequirement labels={labels.password} />}
+      tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
     />
   );
 };
