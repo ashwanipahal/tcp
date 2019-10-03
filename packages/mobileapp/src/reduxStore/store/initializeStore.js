@@ -10,7 +10,8 @@ import rootSaga from '../sagas/sagas';
 import createAnalyticsMiddleware from '../middlewares/analytics';
 
 export const initializeStore = initialState => {
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMonitor = Reactotron.createSagaMonitor();
+  const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
   const middlewares = [sagaMiddleware, createAnalyticsMiddleware()];
 

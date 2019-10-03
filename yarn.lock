@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@adobe/react-native-acpanalytics@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@adobe/react-native-acpanalytics/-/react-native-acpanalytics-1.1.0.tgz#777629a141657acfd9a98a5556ad1d00d65f2a3d"
+  integrity sha512-DeDwpZ4nh0AUDwOVybVQnZc6E+jptn/W456hQwBulE/1l5r+sndC68+hyXGV3xhUZB8PjQnG5WG4fHudI82bqQ==
+
+"@adobe/react-native-acpcore@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@adobe/react-native-acpcore/-/react-native-acpcore-1.1.1.tgz#41b88d49a33ff661285e0f27aa9b9f803640cb54"
+  integrity sha512-0rdJ2Ka2H4gOVUzAMED0LQI3jzPOVcLRe6K6J4y29qZ1afAd2Uq4ki+HQysdNeeJcwrFpf1X91emnHIYruNZoQ==
+
 "@babel/cli@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.4.4.tgz#5454bb7112f29026a4069d8e6f0e1794e651966c"
@@ -17108,6 +17118,11 @@ reactotron-react-native@^3.6.5:
     query-string "6.8.1"
     reactotron-core-client "2.8.4"
     rn-host-detect "1.1.5"
+
+reactotron-redux-saga@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/reactotron-redux-saga/-/reactotron-redux-saga-4.2.2.tgz#09072b4f43520db9646550937c7195d9b44bf81e"
+  integrity sha512-5BHi7Fj+8WOB3bMfr9lshQD9ml1aZnwk74GJpcOATxxMeHevp26ethaLsP0pPv+B6Ojqw7QLMEBX09B3u+z1Bg==
 
 reactotron-redux@^3.1.1:
   version "3.1.2"
