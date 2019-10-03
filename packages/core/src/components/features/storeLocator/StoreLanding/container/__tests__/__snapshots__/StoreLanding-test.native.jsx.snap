@@ -15,7 +15,9 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
               "textTransform": "uppercase",
             }
           }
-        />
+        >
+          lbl_storelanding_favStoreHeading
+        </Text>
         <StoreAddressTile
           className={null}
           favoriteStore={

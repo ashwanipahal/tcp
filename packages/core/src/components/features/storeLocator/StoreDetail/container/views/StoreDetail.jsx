@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Row, Col, StoreStaticMap, Anchor } from '../../../../../common/atoms';
-import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
+import { Row, Col, StoreStaticMap, Anchor } from '@tcp/core/src/components/common/atoms';
+import {
+  StoreAddressTile,
+  StoreHours,
+  StoreLocations,
+} from '@tcp/core/src/components/common/molecules';
+import {
+  getViewportInfo,
+  isCanada,
+  getAPIConfig,
+  isClient,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import style from '../styles/StoreDetail.style';
-import { getViewportInfo, isCanada, getAPIConfig, isClient } from '../../../../../../utils';
 import formatStoreTiming from '../../../../../../utils/formatStoreTiming';
 
 const StoreDetail = ({
@@ -24,11 +34,11 @@ const StoreDetail = ({
   } = store;
   const storeMeta = [
     {
-      label: labels.lbl_storelocators_detail_mallType,
+      label: getLabelValue(labels, 'lbl_storedetails_mallType'),
       value: mallType,
     },
     {
-      label: labels.lbl_storelocators_detail_entranceType,
+      label: getLabelValue(labels, 'lbl_storedetails_entranceType'),
       value: entranceType,
     },
   ];
