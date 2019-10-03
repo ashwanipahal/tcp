@@ -573,7 +573,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   link={null}
                   textAlign="left"
                 >
-                  undefined
+                  undefined:
                 </ForwardRef>
               </ForwardRef>
               <ForwardRef
@@ -1175,7 +1175,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             link={null}
             textAlign="left"
           >
-            undefined
+            undefined:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
