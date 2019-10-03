@@ -112,7 +112,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
                 fontWeight="semibold"
                 fontSize="fs13"
               >
-                {`${labels.promotionsLabel}`}
+                {`${labels.promotionsLabel}:`}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
