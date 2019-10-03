@@ -43,7 +43,7 @@ import {
 import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from '../../../CountriesAndStates.constants';
+} from '../../../../../../common/organisms/AddressForm/CountriesAndStates.constants';
 import { getLabelValue, getSiteId } from '../../../../../../../utils';
 
 const headerImage = require('../../../../../../../../src/assets/tcp-cc.png');

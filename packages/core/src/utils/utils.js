@@ -249,7 +249,7 @@ export const formatPhoneNumber = phone => {
   return '';
 };
 
-const MONTH_SHORT_FORMAT = {
+export const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
   FEB: 'Feb',
   MAR: 'Mar',
