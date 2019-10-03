@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 class LogOutView extends React.Component {
@@ -23,7 +24,7 @@ class LogOutView extends React.Component {
           fontFamily="secondary"
           fontSize="fs13"
           fontWeight="regular"
-          text={labels.lbl_overview_logout}
+          text={getLabelValue(labels, 'lbl_overview_logout')}
           color="gray.900"
         />
       </React.Fragment>

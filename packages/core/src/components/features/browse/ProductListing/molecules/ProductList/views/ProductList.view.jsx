@@ -42,6 +42,7 @@ const ProductList = props => {
     labels,
     isPlcc,
     productTileVariation,
+    isLoggedIn,
   } = props;
   let gridIndex = 0;
 
@@ -100,6 +101,7 @@ const ProductList = props => {
               isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
               isKeepAliveKillSwitch={false}
               labels={labels}
+              isLoggedIn={isLoggedIn}
             />
           </div>
         );
@@ -139,6 +141,7 @@ ProductList.propTypes = {
   labels: PropTypes.shape().isRequired,
   isPlcc: PropTypes.bool,
   productTileVariation: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -163,6 +166,7 @@ ProductList.defaultProps = {
   },
   isPlcc: false,
   productTileVariation: '',
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductList, ProductListStyle);

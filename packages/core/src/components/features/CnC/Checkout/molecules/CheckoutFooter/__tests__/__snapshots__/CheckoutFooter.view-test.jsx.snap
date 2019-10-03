@@ -5,12 +5,20 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
   <div
     className="footer-buttons"
   >
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="footer-button footer-button-mob"
+      fill="BLUE"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      type="submit"
+    />
     <div
       className="back-space"
     />
     <Styled(Button)
       buttonVariation="variable-width"
-      className="footer-button"
+      className="footer-button footer-button-web"
       fill="BLUE"
       fontSize="fs14"
       fontWeight="extrabold"

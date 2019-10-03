@@ -18,6 +18,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     textAlign="left"
   />
   <Styled(PaymentMethods)
+    isVenmoEnabled={false}
     labels={Object {}}
   />
   <div
@@ -55,6 +56,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     textAlign="left"
   />
   <Styled(PaymentMethods)
+    isVenmoEnabled={false}
     labels={Object {}}
   />
   <div
@@ -84,11 +86,13 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBilling"
       isExpirationRequired={true}
       isGuest={true}
       isSaveToAccountChecked={true}
       labels={Object {}}
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       billingData={Object {}}

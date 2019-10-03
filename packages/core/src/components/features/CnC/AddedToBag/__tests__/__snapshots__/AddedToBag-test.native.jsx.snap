@@ -2,7 +2,7 @@
 
 exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
 <ModalNative
-  animationType="slide"
+  animationType="none"
   aria={
     Object {
       "describedby": "undefined",
@@ -10,6 +10,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
     }
   }
   closeIconDataLocator="added-to-bg-close"
+  customTransparent={true}
   fontSize="fs16"
   headingAlign="left"
   headingFontFamily="secondary"
@@ -19,44 +20,90 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   isOverlay={false}
   onRequestClose={[Function]}
 >
-  <Styled(View)>
-    <Styled(View)>
-      <Styled(ProductInformation)
-        data={Object {}}
-        labels={Object {}}
-        quantity=""
-      />
-      <Connect(AddedToBagViewPointsContainer)
-        labels={Object {}}
-      />
-      <Connect(AddedToBagContainer)
-        closeModal={[Function]}
-        fromAddedToBagModal={true}
-        labels={Object {}}
-        navigation={null}
-        showAddTobag={true}
-      />
-      <Styled(BossBanner)
-        labels={Object {}}
-      />
+  <TouchableOpacity
+    accessibilityRole="none"
+    activeOpacity={0.2}
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+        "flex": 1,
+        "paddingLeft": 25,
+      }
+    }
+  >
+    <TouchableWithoutFeedback
+      accessibilityRole="none"
+    >
       <Styled(View)>
-        <Styled(Anchor)
-          accessibilityLabel=""
-          anchorVariation="primary"
-          colorName={null}
-          customStyle={Object {}}
-          dataLocator="addedToBag-continueShopping"
-          fontSizeVariation="medium"
-          locator=""
-          noLink={true}
-          onPress={null}
-          text=""
-          to=""
-          underline={true}
-          visible={false}
-        />
+        <Styled(SafeAreaView)>
+          <Styled(Text)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs16"
+              fontWeight="semibold"
+              margin={null}
+              mobileFontFamily="secondary"
+              numberOfLines={null}
+              textAlign="left"
+              textDecoration={null}
+            />
+          </Styled(Text)>
+          <Styled(View)>
+            <Styled(TouchableOpacity)
+              accessibilityRole="button"
+              onPress={[Function]}
+            >
+              <Styled(Image)
+                source={
+                  Object {
+                    "testUri": "../../../../core/src/assets/close.png",
+                  }
+                }
+              />
+            </Styled(TouchableOpacity)>
+          </Styled(View)>
+        </Styled(SafeAreaView)>
+        <Styled(View)>
+          <Styled(ProductInformation)
+            data={Object {}}
+            labels={Object {}}
+            quantity=""
+          />
+          <Connect(AddedToBagViewPointsContainer)
+            labels={Object {}}
+          />
+          <Connect(AddedToBagContainer)
+            closeModal={[Function]}
+            fromAddedToBagModal={true}
+            labels={Object {}}
+            navigation={null}
+            showAddTobag={true}
+          />
+          <Styled(BossBanner)
+            labels={Object {}}
+          />
+          <Styled(View)>
+            <Styled(Anchor)
+              accessibilityLabel=""
+              anchorVariation="primary"
+              colorName={null}
+              customStyle={Object {}}
+              dataLocator="addedToBag-continueShopping"
+              fontSizeVariation="medium"
+              locator=""
+              noLink={true}
+              onPress={null}
+              text=""
+              to=""
+              underline={true}
+              visible={false}
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>
+    </TouchableWithoutFeedback>
+  </TouchableOpacity>
 </ModalNative>
 `;

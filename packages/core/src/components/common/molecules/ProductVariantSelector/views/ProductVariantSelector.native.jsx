@@ -64,7 +64,6 @@ class ProductVariantSelector extends React.PureComponent {
     const { key, value } = locators || {};
     const isItemAvailable = this.checkIfSelectedItemIsAvaiableInData();
     const titleValue = isItemAvailable ? `${title}: ` : title;
-
     if (!data || data.length === 0) return null;
 
     return (
