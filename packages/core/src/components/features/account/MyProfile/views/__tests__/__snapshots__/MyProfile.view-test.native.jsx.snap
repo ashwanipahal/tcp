@@ -10,9 +10,9 @@ exports[`Myprofile should render correctly 1`] = `
     marginTop={0}
   />
   <ProfileInformation
-    activeComponent=""
     airMiles=""
     childrenBirthdays={Immutable.List []}
+    componentProps={Object {}}
     defaultStore=""
     handleComponentChange={[Function]}
     labels={Object {}}
