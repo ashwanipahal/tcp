@@ -21,6 +21,69 @@ export const getSetWishlistsSummariesActn = payload => {
   };
 };
 
+export const setActiveWishlistActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.SET_ACTIVE_WISHLIST,
+    payload,
+  };
+};
+
+export const getActiveWishlistActn = wishListId => {
+  return {
+    type: FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST,
+    wishListId,
+  };
+};
+
+export const createNewWishListActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST,
+    payload,
+  };
+};
+
+export const createNewWishListMoveItemActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.CREATE_NEW_WISHLIST_MOVE_ITEM,
+    payload,
+  };
+};
+
+export const deleteWishListActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.DELETE_WISHLIST,
+    payload,
+  };
+};
+
+export const setLastDeletedItemIdActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.DELETE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
+export const updateWishListActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.UPDATE_WISHLIST,
+    payload,
+  };
+};
+
+export const updateWishListItemIdActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.UPDATE_WISHLIST_ITEM,
+    payload,
+  };
+};
+
+export const sendWishListMailActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.SEND_WISHLIST_EMAIL,
+    payload,
+  };
+};
+
 export const setWishlistsSummariesActn = payload => {
   return {
     type: FAVORITES_CONSTANTS.SET_FAVORITES_WISHLIST,
