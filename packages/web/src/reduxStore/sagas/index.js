@@ -49,7 +49,10 @@ import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/o
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
+import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
+import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
@@ -112,12 +115,15 @@ export default function* rootSaga() {
     AddAirmilesBannerSaga(),
     MailingAddressSaga(),
     ProductTabListSaga(),
+    StyliticsProductTabListSaga(),
     RecommendationsSaga(),
     BillingPaymentSaga(),
+    StoreLocatorSaga(),
     SocialAccountSaga(),
     SearchPageSaga(),
     MyFavoriteStoreSaga(),
     PickupStoreSaga(),
+    StoreDetailSaga(),
     ProductPickup(),
     QuickViewSaga(),
     PointsClaimSaga(),

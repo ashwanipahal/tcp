@@ -264,7 +264,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { defaultPayment, selectFromCard, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, updateCardDetail } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
     return (
@@ -375,7 +375,7 @@ export class BillingPaymentForm extends React.PureComponent {
             key="cardEditForm"
             dispatch={dispatch}
             addressForm={this.getCheckoutBillingAddress}
-            handleEditFromSubmit={this.handleEditFromSubmit}
+            updateCardDetail={updateCardDetail}
             renderCardDetailsHeading={this.renderCardDetailsHeading}
             getAddNewCCForm={this.getAddNewCCForm}
             unsetFormEditState={this.unsetFormEditState}
@@ -384,16 +384,6 @@ export class BillingPaymentForm extends React.PureComponent {
         )}
       </>
     );
-  };
-
-  handleEditFromSubmit = data => {
-    const formData = data;
-    const { updateCardDetail } = this.props;
-    formData.onFileAddressKey = formData.address.addressId || '';
-    formData.cardType = formData.ccBrand.toUpperCase();
-    delete formData.ccType;
-    delete formData.ccBrand;
-    updateCardDetail(formData);
   };
 
   onEditCardFocus = () => {
@@ -425,7 +415,7 @@ export class BillingPaymentForm extends React.PureComponent {
    */
   render() {
     const { className, handleSubmit, cardList, isGuest } = this.props;
-    const { onFileCardKey, labels, cvvCodeRichText } = this.props;
+    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const { editMode } = this.state;
@@ -443,7 +433,11 @@ export class BillingPaymentForm extends React.PureComponent {
             >
               {labels.paymentMethod}
             </BodyCopy>
-            <PaymentMethods labels={labels} className="elem-mb-LRG" />
+            <PaymentMethods
+              labels={labels}
+              className="elem-mb-LRG"
+              isVenmoEnabled={isVenmoEnabled}
+            />
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD &&
               this.getCreditCardWrapper({
                 labels,
@@ -454,10 +448,11 @@ export class BillingPaymentForm extends React.PureComponent {
             {paymentMethodId === constants.PAYMENT_METHOD_PAYPAL && (
               <div className="payment-paypal-container" />
             )}
-            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && (
+            {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
               <VenmoPaymentButton
                 className="venmo-container"
                 continueWithText={labels.continueWith}
+                onSuccess={handleSubmit}
               />
             )}
           </div>
@@ -471,6 +466,7 @@ export class BillingPaymentForm extends React.PureComponent {
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
+          onVenmoSubmit={handleSubmit}
         />
       </form>
     );

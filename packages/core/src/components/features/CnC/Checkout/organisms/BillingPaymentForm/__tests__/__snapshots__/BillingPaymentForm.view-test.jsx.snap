@@ -226,6 +226,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -371,6 +372,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -432,6 +434,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1053,6 +1056,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1674,6 +1678,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1696,6 +1701,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1746,6 +1752,9 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
         }
       }
     />
+    <div
+      className="payment-paypal-container"
+    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1757,6 +1766,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1807,9 +1817,6 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
         }
       }
     />
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1821,6 +1828,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
     disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={true}
   />
 </form>

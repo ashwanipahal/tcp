@@ -1,49 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ButtonList component renders correctly without props 1`] = `
-<ReduxForm
-  AddressForm={[Function]}
-  destroyOnUnmount={true}
-  enableReinitialize={true}
-  forceUnregisterOnUnmount={false}
-  form="checkoutCardEditPayment"
-  getAddNewCCForm={[Function]}
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "address": undefined,
-      "cardNumber": "123",
-      "ccBrand": undefined,
-      "ccType": undefined,
-      "creditCardId": undefined,
-      "expMonth": "2",
-      "expYear": undefined,
-    }
-  }
-  keepDirtyOnReinitialize={false}
-  labels={
-    Object {
-      "cancelButtonText": "Cancel",
-      "saveButtonText": "Save",
-    }
-  }
-  onSubmitSuccess={[Function]}
-  persistentSubmitErrors={false}
-  pure={true}
-  renderCardDetailsHeading={[Function]}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateUnregisteredFields={false}
-  validate={[Function]}
-/>
-`;
-
-exports[`ButtonList component renders correctly without props 2`] = `
+exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
 <form
   name="checkoutCardEditPayment"
   noValidate={true}
@@ -99,4 +56,48 @@ exports[`ButtonList component renders correctly without props 2`] = `
     </Styled(Button)>
   </div>
 </form>
+`;
+
+exports[`CardEditForm component CardEditReduxForm 1`] = `
+<ReduxForm
+  AddressForm={[Function]}
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutCardEditPayment"
+  getAddNewCCForm={[Function]}
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "address": undefined,
+      "cardNumber": "123",
+      "ccBrand": undefined,
+      "ccType": undefined,
+      "creditCardId": undefined,
+      "expMonth": "2",
+      "expYear": undefined,
+    }
+  }
+  keepDirtyOnReinitialize={false}
+  labels={
+    Object {
+      "cancelButtonText": "Cancel",
+      "saveButtonText": "Save",
+    }
+  }
+  onSubmit={[Function]}
+  onSubmitSuccess={[Function]}
+  persistentSubmitErrors={false}
+  pure={true}
+  renderCardDetailsHeading={[Function]}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
 `;

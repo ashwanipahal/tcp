@@ -99,11 +99,20 @@ CardEditFormView.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
+export const handleEditFromSubmit = updateCardDetail => data => {
+  const formData = data;
+  formData.onFileAddressKey = formData.address.addressId || '';
+  formData.cardType = formData.ccBrand.toUpperCase();
+  delete formData.ccType;
+  delete formData.ccBrand;
+  updateCardDetail(formData);
+};
+
 const CardEditReduxForm = React.memo(props => {
   const {
     selectedCard,
     addressForm: AddressForm,
-    handleEditFromSubmit,
+    updateCardDetail,
     renderCardDetailsHeading,
     getAddNewCCForm,
     unsetFormEditState,
@@ -137,7 +146,7 @@ const CardEditReduxForm = React.memo(props => {
 
   return (
     <CartEditForm
-      onSubmit={handleEditFromSubmit}
+      onSubmit={handleEditFromSubmit(updateCardDetail)}
       initialValues={{
         cardNumber: accountNo,
         expMonth: expMonth.trim(),
@@ -168,7 +177,7 @@ CardEditReduxForm.propTypes = {
   unsetFormEditState: PropTypes.func.isRequired,
   addressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
-  handleEditFromSubmit: PropTypes.func.isRequired,
+  updateCardDetail: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   selectedCard: PropTypes.shape({
     accountNo: PropTypes.string,

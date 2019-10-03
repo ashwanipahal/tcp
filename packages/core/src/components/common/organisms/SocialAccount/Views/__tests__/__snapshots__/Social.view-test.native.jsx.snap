@@ -107,9 +107,18 @@ exports[`Social component should render with connected 1`] = `
             textAlign="center"
             textDecoration={null}
           />
-          <Styled(Text)>
-             10 
-          </Styled(Text)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="orange.800"
+            dataLocator=""
+            fontSize="fs14"
+            fontWeight="black"
+            margin={null}
+            numberOfLines={null}
+            text=" 10 "
+            textAlign="center"
+            textDecoration={null}
+          />
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
@@ -320,9 +329,18 @@ exports[`Social component should renders correctly 1`] = `
             textAlign="center"
             textDecoration={null}
           />
-          <Styled(Text)>
-             10 
-          </Styled(Text)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="orange.800"
+            dataLocator=""
+            fontSize="fs14"
+            fontWeight="black"
+            margin={null}
+            numberOfLines={null}
+            text=" 10 "
+            textAlign="center"
+            textDecoration={null}
+          />
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
@@ -606,9 +624,18 @@ exports[`Social component should simulate instagram connect 1`] = `
             textAlign="center"
             textDecoration={null}
           />
-          <Styled(Text)>
-             10 
-          </Styled(Text)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="orange.800"
+            dataLocator=""
+            fontSize="fs14"
+            fontWeight="black"
+            margin={null}
+            numberOfLines={null}
+            text=" 10 "
+            textAlign="center"
+            textDecoration={null}
+          />
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""

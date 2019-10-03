@@ -166,7 +166,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return {
       onFileCardKey:
         onFileCardId || (cardList.size > 0 && cardList.get(0) && cardList.get(0).creditCardId),
-      paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
+      paymentMethodId: this.getPaymentMethodId(),
       saveToAccount: true,
       sameAsShipping: orderHasShipping && billingOnFileAddressKey === shippingOnFileAddressKey,
       cardNumber,
@@ -307,6 +307,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       navigation,
       creditFieldLabels,
       updateCardDetail,
+      isVenmoEnabled,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -339,6 +340,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         creditFieldLabels={creditFieldLabels}
         updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
+        isVenmoEnabled={isVenmoEnabled}
       />
     );
   }
@@ -360,6 +362,7 @@ const mapStateToProps = (state, ownProps) => {
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
     editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 };
 

@@ -809,8 +809,16 @@ function getInternationalCheckoutCommUrl() {
 function getInternationalCheckoutUrl(state) {
   return state.Checkout.getIn(['options', 'internationalUrl']);
 }
+
+/**
+ * @function getIsVenmoEnabled
+ * @description - Venmo Kill Switch Selector
+ * @param {object} state
+ * @returns {bool}
+ */
 const getIsVenmoEnabled = state => {
   return (
+    getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );
