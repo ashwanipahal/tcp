@@ -1740,6 +1740,9 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
         }
       }
     />
+    <div
+      className="payment-paypal-container"
+    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1750,6 +1753,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={false}
   />
 </form>
@@ -1800,9 +1804,6 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
         }
       }
     />
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1813,6 +1814,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
     showVenmoSubmit={true}
   />
 </form>
