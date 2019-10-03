@@ -154,6 +154,7 @@
     "react-ssr-error-boundary": "^1.0.1",
     "react-swipeable": "^5.4.0",
     "redux": "^4.0.1",
+    "redux-beacon": "^2.1.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.4",
     "redux-immutable": "^4.0.0",
