@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 
-import { BodyCopy } from '../../../../../common/atoms';
+// import { BodyCopy } from '../../../../../common/atoms';
 
-import { getIconPath } from '../../../../../../utils/index';
-
-const downArrowIcon = getIconPath('down_arrow_icon');
-const upArrowIcon = getIconPath('up_arrow_icon');
-
-export const StyledBodyCopy = styled(BodyCopy)`
-  background: url ${props => (props.isAccordionOpen ? `${upArrowIcon}` : `${downArrowIcon}`)}
-    no-repeat right 0 bottom 7px;
+export const StyleProductDescription = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export default StyledBodyCopy;
+export const ImageStyleWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyleLongDescription = styled.View`
+  flex-direction: row;
+`;
+
+export default { StyleProductDescription, ImageStyleWrapper, StyleLongDescription };
