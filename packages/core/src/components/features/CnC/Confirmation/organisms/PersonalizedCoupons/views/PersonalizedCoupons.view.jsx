@@ -7,7 +7,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CouponDetailModal from '../../../../common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
 import styles from '../styles/PersonalizedCoupons.style';
-import CONSTANTS from '../container/PersonalizedCoupons.constants';
+import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
 export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }) => {
   const [selectedCoupon, selectCoupon] = useState(null);
