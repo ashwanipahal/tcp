@@ -68,7 +68,7 @@ const CnCTemplate = ({
           >
             {isConfirmationPage ? (
               <>
-                <OrderLedgerContainer />
+                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
                 <Row fullBleed>
                   <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                     <PersonalizedCoupons />

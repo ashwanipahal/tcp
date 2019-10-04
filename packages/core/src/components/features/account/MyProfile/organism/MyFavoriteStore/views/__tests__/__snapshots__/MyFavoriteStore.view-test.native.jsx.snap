@@ -10,7 +10,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
   handleComponentChange={[Function]}
   title="lbl_common_myFavoriteStore"
 >
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
@@ -19,8 +19,10 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="Fulton Street"
     textDecoration={null}
-  />
-  <Styled(BodyCopy)
+  >
+    Fulton Street
+  </Styled(Styled(BodyCopy))>
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
@@ -28,8 +30,10 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="471-485 Fulton Street"
     textDecoration={null}
-  />
-  <Styled(BodyCopy)
+  >
+    471-485 Fulton Street
+  </Styled(Styled(BodyCopy))>
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
@@ -37,8 +41,10 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="Brooklyn, NY 11201"
     textDecoration={null}
-  />
-  <Styled(BodyCopy)
+  >
+    Brooklyn, NY 11201
+  </Styled(Styled(BodyCopy))>
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
@@ -46,7 +52,9 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="(712) 431-1408"
     textDecoration={null}
-  />
+  >
+    (712) 431-1408
+  </Styled(Styled(BodyCopy))>
 </MyProfileTile>
 `;
 

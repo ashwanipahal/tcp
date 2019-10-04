@@ -8,6 +8,10 @@ import {
   getBreadCrumbs,
   getCurrentProduct,
   getPlpLabels,
+  getPDPLabels,
+  getShortDescription,
+  getGeneralProductId,
+  getDescription,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -55,10 +59,14 @@ class ProductDetailContainer extends React.PureComponent {
       breadCrumbs,
       navTree,
       plpLabels,
+      pdpLabels,
       navigation,
       addToBagError,
       clearAddToBagError,
       isPickupModalOpen,
+      longDescription,
+      shortDescription,
+      itemPartNumber,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -70,11 +78,15 @@ class ProductDetailContainer extends React.PureComponent {
             navTree={navTree}
             selectedColorProductId={this.selectedColorProductId}
             plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
             handleFormSubmit={this.handleAddToBag}
             navigation={navigation}
             addToBagError={addToBagError}
             clearAddToBagError={clearAddToBagError}
             isPickupModalOpen={isPickupModalOpen}
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
           />
         ) : null}
       </React.Fragment>
@@ -88,8 +100,12 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    pdpLabels: getPDPLabels(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
+    shortDescription: getShortDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    longDescription: getDescription(state),
   };
 }
 
@@ -116,8 +132,12 @@ ProductDetailContainer.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  pdpLabels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -125,8 +145,12 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  pdpLabels: {},
   isPickupModalOpen: false,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
 };
 
 export default connect(

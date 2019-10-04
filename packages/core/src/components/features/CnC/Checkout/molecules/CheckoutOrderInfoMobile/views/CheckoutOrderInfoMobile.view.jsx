@@ -27,7 +27,7 @@ class CheckoutOrderInfo extends React.PureComponent {
       <div className={className}>
         {isConfirmationPage ? (
           <>
-            <OrderLedgerContainer />
+            <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
             {isVenmoPaymentInProgress && venmoPayment && (
               <section className="venmo-payment-method-wrapper">
                 <BodyCopy
