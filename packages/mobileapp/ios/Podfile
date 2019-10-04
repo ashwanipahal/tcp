@@ -29,7 +29,6 @@ end
 
 target 'mobileapp' do
   facebook
-  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
   target 'mobileappTests' do
     inherit! :search_paths
