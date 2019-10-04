@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import get from 'lodash/get';
 import { FlatList, Text, Dimensions, Share } from 'react-native';
-// import Share from 'react-native-share';
 import { withTheme } from 'styled-components/native';
 import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
