@@ -78,10 +78,10 @@
 		3A33A9E62345CA7E000A022D /* libRNCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7B6B4323436BAD00919C39 /* libRNCardIO.a */; };
 		3A3DF81CB8A1498451334A86 /* Pods_gymboree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72ED905119F86754D630D9BB /* Pods_gymboree.framework */; };
 		4866C0CF1D7521A19D6D3C50 /* Pods_mobileapp_uat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92505B3E475AD48C3A1D9B9 /* Pods_mobileapp_uat.framework */; };
-		4C08FE2323469E740030BE8C /* libRCTACPAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C08FDEB23469E5F0030BE8C /* libRCTACPAnalytics.a */; };
-		4C08FE2A23469F720030BE8C /* libRCTACPCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C08FE2923469F650030BE8C /* libRCTACPCore.a */; };
 		4C08FE2C2346A0390030BE8C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C08FE2B2346A0390030BE8C /* libsqlite3.0.tbd */; };
 		4C08FE2E2346A05A0030BE8C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C08FE2D2346A05A0030BE8C /* UserNotifications.framework */; };
+		4C0F20152348019400FCCD03 /* libRCTACPCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F200F2347FFFF00FCCD03 /* libRCTACPCore.a */; };
+		4C0F20162348019F00FCCD03 /* libRCTACPAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F20142348001100FCCD03 /* libRCTACPAnalytics.a */; };
 		4FE5D41763C410D77352F39F /* Pods_mobileapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17275D38D815358A5C79328 /* Pods_mobileapp.framework */; };
 		557DAD68230E61010083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
 		557DAD69230E61350083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
@@ -681,19 +681,19 @@
 			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
 			remoteInfo = "cxxreact-tvOS";
 		};
-		4C08FDEA23469E5F0030BE8C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RCTACPAnalytics;
-		};
-		4C08FE2823469F650030BE8C /* PBXContainerItemProxy */ = {
+		4C0F200E2347FFFF00FCCD03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTACPCore;
+		};
+		4C0F20132348001100FCCD03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTACPAnalytics;
 		};
 		557DAD5A230E60D60083E52C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -897,8 +897,8 @@
 		36C9829822E727D50002786B /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		38D4E1E6A5B146E0B1EE4742 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		4BE8D865505445DEBCFA5DD5 /* RNPrint.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNPrint.xcodeproj; path = "../node_modules/react-native-print/ios/RNPrint.xcodeproj"; sourceTree = "<group>"; };
-		4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTACPAnalytics.xcodeproj; path = "../../../node_modules/@adobe/react-native-acpanalytics/ios/RCTACPAnalytics.xcodeproj"; sourceTree = "<group>"; };
-		4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTACPCore.xcodeproj; path = "../../../node_modules/@adobe/react-native-acpcore/ios/RCTACPCore.xcodeproj"; sourceTree = "<group>"; };
+		4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTACPAnalytics.xcodeproj; path = "../node_modules/@adobe/react-native-acpanalytics/ios/RCTACPAnalytics.xcodeproj"; sourceTree = "<group>"; };
+		4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTACPCore.xcodeproj; path = "../node_modules/@adobe/react-native-acpcore/ios/RCTACPCore.xcodeproj"; sourceTree = "<group>"; };
 		4C08FE2B2346A0390030BE8C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		4C08FE2D2346A05A0030BE8C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		4FF7621C1AE05A198CC9AC0F /* Pods-gymboree_uat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_uat.release.xcconfig"; path = "Target Support Files/Pods-gymboree_uat/Pods-gymboree_uat.release.xcconfig"; sourceTree = "<group>"; };
@@ -997,10 +997,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0F20162348019F00FCCD03 /* libRCTACPAnalytics.a in Frameworks */,
+				4C0F20152348019400FCCD03 /* libRCTACPCore.a in Frameworks */,
 				4C08FE2E2346A05A0030BE8C /* UserNotifications.framework in Frameworks */,
 				4C08FE2C2346A0390030BE8C /* libsqlite3.0.tbd in Frameworks */,
-				4C08FE2A23469F720030BE8C /* libRCTACPCore.a in Frameworks */,
-				4C08FE2323469E740030BE8C /* libRCTACPAnalytics.a in Frameworks */,
 				1668AB1B231EA3FD00F75A14 /* libART.a in Frameworks */,
 				844B115523001FB200A82DAA /* libRNCNetInfo.a in Frameworks */,
 				36C982A122E727F00002786B /* libRNVectorIcons.a in Frameworks */,
@@ -1548,18 +1548,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C08FDE523469E5F0030BE8C /* Products */ = {
+		4C0F200B2347FFFF00FCCD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C08FDEB23469E5F0030BE8C /* libRCTACPAnalytics.a */,
+				4C0F200F2347FFFF00FCCD03 /* libRCTACPCore.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C08FE2523469F640030BE8C /* Products */ = {
+		4C0F20102348001100FCCD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C08FE2923469F650030BE8C /* libRCTACPCore.a */,
+				4C0F20142348001100FCCD03 /* libRCTACPAnalytics.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2162,11 +2162,11 @@
 					ProjectRef = 1668AB12231EA3EA00F75A14 /* ART.xcodeproj */;
 				},
 				{
-					ProductGroup = 4C08FDE523469E5F0030BE8C /* Products */;
+					ProductGroup = 4C0F20102348001100FCCD03 /* Products */;
 					ProjectRef = 4C08FDE423469E5F0030BE8C /* RCTACPAnalytics.xcodeproj */;
 				},
 				{
-					ProductGroup = 4C08FE2523469F640030BE8C /* Products */;
+					ProductGroup = 4C0F200B2347FFFF00FCCD03 /* Products */;
 					ProjectRef = 4C08FE2423469F640030BE8C /* RCTACPCore.xcodeproj */;
 				},
 				{
@@ -2524,18 +2524,18 @@
 			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4C08FDEB23469E5F0030BE8C /* libRCTACPAnalytics.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTACPAnalytics.a;
-			remoteRef = 4C08FDEA23469E5F0030BE8C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C08FE2923469F650030BE8C /* libRCTACPCore.a */ = {
+		4C0F200F2347FFFF00FCCD03 /* libRCTACPCore.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTACPCore.a;
-			remoteRef = 4C08FE2823469F650030BE8C /* PBXContainerItemProxy */;
+			remoteRef = 4C0F200E2347FFFF00FCCD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C0F20142348001100FCCD03 /* libRCTACPAnalytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTACPAnalytics.a;
+			remoteRef = 4C0F20132348001100FCCD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		557DAD5B230E60D60083E52C /* libReactNativeConfig.a */ = {
@@ -3515,6 +3515,12 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mobileapp/Pods-mobileapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"$(SRCROOT)/newInputFile",
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-gymboree-checkManifestLockResult.txt",

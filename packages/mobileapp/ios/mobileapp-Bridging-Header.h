@@ -9,3 +9,8 @@
 #import <React/RCTUtils.h>
 #import <React/RCTConvert.h>
 #import <React/RCTBundleURLProvider.h>
+#import <RCTACPCore/ACPCore.h>
+#import <RCTACPCore/ACPLifecycle.h>
+#import <RCTACPCore/ACPIdentity.h>
+#import <RCTACPCore/ACPSignal.h>
+
