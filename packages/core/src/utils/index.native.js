@@ -19,6 +19,7 @@ export {
   LAZYLOAD_HOST_NAME,
   setTestId,
   validateColor,
+  getTranslatedMomentDate,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

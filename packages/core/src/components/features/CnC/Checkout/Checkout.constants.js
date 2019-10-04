@@ -121,6 +121,12 @@ const CONSTANTS = {
   PAYPAL_LOCATE: 'en_US',
   PAYPAL_LABEL: 'paypal',
   UPDATE_CARD_DATA: 'UPDATE_CARD_DATA',
+  REQUIRE_FORMAT: {
+    day: 'ddd',
+    month: 'MMM',
+    date: 'D',
+    year: 'YYYY',
+  },
 };
 
 const {
