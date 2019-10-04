@@ -9,12 +9,12 @@ export default {
         key: 'moduleClassName',
       },
       {
-        val: 'yellow_bg',
+        val: 'yellow-bg',
         key: 'bgClass',
       },
     ],
     composites: {
-      bgClass: 'yellow_bg',
+      bgClass: 'yellow-bg',
       headerText: [
         {
           textItems: [
@@ -89,7 +89,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '47502|460003',
+            cat_id: '3002623_BQ',
           },
           singleCTAButton: {
             url: '/ ',
@@ -103,7 +103,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '47501|460005',
+            cat_id: '2081262_K3',
           },
           singleCTAButton: null,
         },

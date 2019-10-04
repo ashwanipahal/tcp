@@ -8,7 +8,7 @@ export default css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 15px;
   }
 
-  &.yellow_bg {
+  &.yellow-bg {
     background-image: radial-gradient(circle at 61% 22%, #fff, #f1f4a2);
   }
 

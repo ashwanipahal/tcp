@@ -4,8 +4,6 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleQ from '@tcp/core/src/components/common/molecules/ModuleQ';
-import mock from '@tcp/core/src/services/abstractors/common/moduleQ/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -20,12 +18,12 @@ const HomePageView = dynamic({
     moduleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     moduleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
+    moduleQ: () => import('@tcp/core/src/components/common/molecules/ModuleQ').then(returnModule),
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
   }),
   render: ({ slots }, modules) => {
     return [
-      <ModuleQ {...mock.moduleQ.composites} />,
       <HomePageSlots slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,

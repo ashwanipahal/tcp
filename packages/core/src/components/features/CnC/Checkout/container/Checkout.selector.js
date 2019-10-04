@@ -412,6 +412,7 @@ const getCreditFieldLabels = createSelector(
       'lbl_creditField_expMonth',
       'lbl_creditField_expYear',
       'lbl_creditField_cvvCode',
+      'lbl_creditField_cameraText',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(creditFieldLabels, key);
@@ -421,12 +422,14 @@ const getCreditFieldLabels = createSelector(
       lbl_creditField_expMonth: expMonth,
       lbl_creditField_expYear: expYear,
       lbl_creditField_cvvCode: cvvCode,
+      lbl_creditField_cameraText: cameraText,
     } = labels;
     return {
       cardNumber,
       expMonth,
       expYear,
       cvvCode,
+      cameraText,
     };
   }
 );

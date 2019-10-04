@@ -505,6 +505,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1129,6 +1130,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1839,6 +1841,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "FORM_FIELD_HEIGHT": "70px",
           "LAYOUT_SPACING": Object {
             "LRG": "64px",
+            "LRGS": "110px",
             "MED": "48px",
             "SM": "32px",
             "XL": "96px",
@@ -2463,6 +2466,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "FORM_FIELD_HEIGHT": "70px",
             "LAYOUT_SPACING": Object {
               "LRG": "64px",
+              "LRGS": "110px",
               "MED": "48px",
               "SM": "32px",
               "XL": "96px",
@@ -3115,6 +3119,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "FORM_FIELD_HEIGHT": "70px",
                 "LAYOUT_SPACING": Object {
                   "LRG": "64px",
+                  "LRGS": "110px",
                   "MED": "48px",
                   "SM": "32px",
                   "XL": "96px",
@@ -3874,6 +3879,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "FORM_FIELD_HEIGHT": "70px",
                   "LAYOUT_SPACING": Object {
                     "LRG": "64px",
+                    "LRGS": "110px",
                     "MED": "48px",
                     "SM": "32px",
                     "XL": "96px",
@@ -4525,6 +4531,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "FORM_FIELD_HEIGHT": "70px",
                     "LAYOUT_SPACING": Object {
                       "LRG": "64px",
+                      "LRGS": "110px",
                       "MED": "48px",
                       "SM": "32px",
                       "XL": "96px",
@@ -5276,6 +5283,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -5990,6 +5998,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "FORM_FIELD_HEIGHT": "70px",
           "LAYOUT_SPACING": Object {
             "LRG": "64px",
+            "LRGS": "110px",
             "MED": "48px",
             "SM": "32px",
             "XL": "96px",
@@ -6617,6 +6626,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "FORM_FIELD_HEIGHT": "70px",
             "LAYOUT_SPACING": Object {
               "LRG": "64px",
+              "LRGS": "110px",
               "MED": "48px",
               "SM": "32px",
               "XL": "96px",
@@ -7257,6 +7267,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "FORM_FIELD_HEIGHT": "70px",
                 "LAYOUT_SPACING": Object {
                   "LRG": "64px",
+                  "LRGS": "110px",
                   "MED": "48px",
                   "SM": "32px",
                   "XL": "96px",
@@ -8004,6 +8015,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "FORM_FIELD_HEIGHT": "70px",
                   "LAYOUT_SPACING": Object {
                     "LRG": "64px",
+                    "LRGS": "110px",
                     "MED": "48px",
                     "SM": "32px",
                     "XL": "96px",
@@ -8643,6 +8655,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "FORM_FIELD_HEIGHT": "70px",
                     "LAYOUT_SPACING": Object {
                       "LRG": "64px",
+                      "LRGS": "110px",
                       "MED": "48px",
                       "SM": "32px",
                       "XL": "96px",

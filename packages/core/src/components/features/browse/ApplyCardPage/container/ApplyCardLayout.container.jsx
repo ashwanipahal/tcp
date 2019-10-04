@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import { isPlccUser } from '../../../account/User/container/User.selectors';
 import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
+// import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
 import { isMobileApp } from '../../../../../utils';
 
 class ApplyCardLayoutContainer extends React.Component {
@@ -184,7 +185,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(verifyAddress(payload));
     },
     fetchBagItems: () => {
-      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
+      // dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
     },
   };
 };
