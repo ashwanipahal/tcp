@@ -90,3 +90,7 @@ export const StyledErrorWrapper = styled.View`
   flex-direction: row;
   align-items: flex-start;
 `;
+
+export const BodyCopyWithTextTransform = styled(BodyCopy)`
+  text-transform: ${props => (props.textTransform ? props.textTransform : 'capitalize')};
+`;

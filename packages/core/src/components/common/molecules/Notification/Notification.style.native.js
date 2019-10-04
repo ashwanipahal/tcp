@@ -22,7 +22,6 @@ const getTextBaseStyle = props => {
       ${status === 'info' ? `border: 2px solid ${props.theme.colorPalette.gray[600]};` : ''};
     padding:${theme.spacing.ELEM_SPACING.MED};
     margin: ${theme.spacing.ELEM_SPACING.XS};
-    justify-content: space-between;
     `;
 };
 
