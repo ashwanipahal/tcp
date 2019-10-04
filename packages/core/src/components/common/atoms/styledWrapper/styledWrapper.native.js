@@ -84,6 +84,13 @@ export const TextWithSpacing = styled.Text`
   ${getAdditionalStyle}
 `;
 
+export const StyledErrorWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+`;
+
 export const BodyCopyWithTextTransform = styled(BodyCopy)`
   text-transform: ${props => (props.textTransform ? props.textTransform : 'capitalize')};
 `;
