@@ -7,8 +7,7 @@ exports[`OrdersList View component should renders correctly 1`] = `
     data-locator="OrdersListPageLbl"
     heading="lbl_orders_heading"
   />
-  <OrdersLinks
-    className=""
+  <Styled(OrdersLinks)
     labels={Object {}}
   />
   <RecentOrders
