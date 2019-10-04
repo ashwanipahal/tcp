@@ -4,6 +4,7 @@ import { Button, BodyCopy, Row, Col, Image } from '@tcp/core/src/components/comm
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SurveyQuestion from '@tcp/core/src/components/features/account/MyProfile/molecules/SurveyQuestion';
 import { getIconPath } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/AboutYouSurvey.style';
 import { Constants } from '../container/AboutYouSurvey.utils';
 
@@ -116,7 +117,7 @@ export class AboutYouSurvey extends React.Component {
               fontFamily="secondary"
               data-locator="moreaboutyou-greetingtext"
             >
-              {`${labels.lbl_profile_survey_hi}, ${userFirstName}`}
+              {`${getLabelValue(labels, 'lbl_profile_survey_hi')}, ${userFirstName}`}
             </BodyCopy>
           </Row>
           <Row centered>
@@ -129,7 +130,7 @@ export class AboutYouSurvey extends React.Component {
                 className="title-text"
                 data-locator="moreaboutyou-surveytext"
               >
-                {labels.lbl_profile_survey_header}
+                {getLabelValue(labels, 'lbl_profile_survey_header')}
               </BodyCopy>
             </Col>
           </Row>
@@ -198,7 +199,7 @@ export class AboutYouSurvey extends React.Component {
                 disabled={this.submitDisabled}
                 data-locator="moreaboutyou-savebtn"
               >
-                {labels.lbl_profile_survey_save}
+                {getLabelValue(labels, 'lbl_profile_survey_save')}
               </Button>
             </Col>
           </Row>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { routerPush } from '@tcp/core/src/utils';
-import { BrandTabs, CountrySelector, PromotionalArea } from '../..';
+import { BrandTabs, CountrySelector, PromotionalArea, StoreLocatorLink } from '../..';
 import HeaderTopNavStyle from '../HeaderTopNav.style';
 
 const HeaderTopNav = ({
@@ -13,6 +13,7 @@ const HeaderTopNav = ({
   openOverlay,
   isUserLoggedIn,
   labels,
+  store,
 }) => {
   const onLinkClick = e => {
     e.preventDefault();
@@ -44,6 +45,9 @@ const HeaderTopNav = ({
             {labels.trackOrder && labels.trackOrder.lbl_trackOrder_trackOrderHeaderLink}
           </Anchor>
         </div>
+        <div className="header-topnav__storelocator">
+          <StoreLocatorLink store={store} labels={labels && labels.store} />
+        </div>
       </div>
     </div>
   );
@@ -56,11 +60,35 @@ HeaderTopNav.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
+  store: PropTypes.shape({
+    basicInfo: PropTypes.shape({}),
+    hours: PropTypes.shape({
+      regularHours: PropTypes.shape([]),
+      regularAndHolidayHours: PropTypes.shape([]),
+      holidayHours: PropTypes.shape([]),
+    }),
+    features: PropTypes.shape({}),
+  }),
 };
 
 HeaderTopNav.defaultProps = {
   labels: {
     trackOrder: {},
+  },
+  store: {
+    basicInfo: {
+      id: '',
+      storeName: '',
+      phone: '',
+      coordinates: {},
+      address: {},
+    },
+    hours: {
+      regularHours: [],
+      regularAndHolidayHours: [],
+      holidayHours: [],
+    },
+    features: {},
   },
 };
 

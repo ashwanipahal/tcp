@@ -125,7 +125,7 @@ module.exports = function plopCli(plop) {
       {
         type: 'rawlist',
         name: 'componentContainerName',
-        message: 'Which feature does it belong to?',
+        message: 'Which Container does it belong to?',
         choices: ans =>
           glob
             .sync(

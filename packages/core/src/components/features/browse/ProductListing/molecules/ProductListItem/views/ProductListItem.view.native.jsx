@@ -19,6 +19,7 @@ import {
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
+  ImageSectionContainer,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -70,12 +71,14 @@ const ListItem = props => {
       />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <PromotionalMessage
-        isPlcc={isPlcc}
-        text={loyaltyPromotionMessage}
-        height="24px"
-        marginTop={12}
-      />
+      {loyaltyPromotionMessage ? (
+        <PromotionalMessage
+          isPlcc={isPlcc}
+          text={loyaltyPromotionMessage}
+          height="24px"
+          marginTop={12}
+        />
+      ) : null}
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -107,11 +110,13 @@ RenderTopBadge1.propTypes = TextProps;
 
 const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
   return (
-    <ImageCarousel
-      item={item}
-      selectedColorIndex={selectedColorIndex}
-      onGoToPDPPage={onGoToPDPPage}
-    />
+    <ImageSectionContainer>
+      <ImageCarousel
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        onGoToPDPPage={onGoToPDPPage}
+      />
+    </ImageSectionContainer>
   );
 };
 

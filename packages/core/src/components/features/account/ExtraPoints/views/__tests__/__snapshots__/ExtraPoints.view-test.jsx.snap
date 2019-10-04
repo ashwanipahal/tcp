@@ -16,6 +16,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       className="elem-mr-LRG"
       color="text.primary"
       component="span"
+      dataLocator="earnextrapoints-notificationdate"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="extrabold"
@@ -26,7 +27,21 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     >
       09/17/19
     </Styled(BodyCopy)>
-    lbl_earnExtraPoints_you_earned 5 lbl_earnExtraPoints_place_rewards 
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="span"
+      dataLocator="earnextrapoints-notificationtext"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      lbl_earnExtraPoints_you_earned 5 lbl_earnExtraPoints_place_rewards 
+    </Styled(BodyCopy)>
     <Styled(Anchor)
       anchorVariation="primary"
       asPath="/account/place-rewards/points-history"
@@ -43,6 +58,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
     className="morePointsWrapper"
     color="text.primary"
     component="p"
+    data-locator="earnextrapoints-morePointsText"
     fontFamily="secondary"
     fontSize="fs18"
     fontWeight="semibold"

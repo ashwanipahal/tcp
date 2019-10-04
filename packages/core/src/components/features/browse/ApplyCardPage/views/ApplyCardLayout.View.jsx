@@ -1,14 +1,10 @@
-/* eslint-disable max-params */
-/* eslint-disable no-else-return */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApplyRewardsCreditCardStyle from '../styles/ApplyCardPage.style';
-import PLCCForm from '../molecules/Form/PLCCForm';
-import {
-  ApplicationInProgress,
-  ApprovedPLCCApplicationView,
-  ExistingPLCCUserView,
-} from '../molecules';
+import ApplyRewardsCreditCardStyle from '../style/ApplyCardPage.style';
+import PLCCForm from '../molecules/Form/PLCCForm/PLCCForm';
+import ApplicationInProgress from '../molecules/Common/UnderProgressApplication';
+import ApprovedPLCCApplicationView from '../molecules/Common/ApprovedPLCCApplication';
+import ExistingPLCCUserView from '../molecules/Common/ExistingPLCCUser';
 import constants from '../RewardsCard.constants';
 
 const getApplyCardLayoutView = (
@@ -18,11 +14,7 @@ const getApplyCardLayoutView = (
   submitPLCCForm,
   bagItems,
   isPLCCModalFlow,
-  isGuest,
-  plccUser,
-  profileInfo,
-  approvedPLCCData,
-  resetPLCCApplicationStatus
+  renderViewInfo = {}
 ) => {
   if (applicationStatus === constants.APPLICATION_STATE_EXISTING) {
     return (
@@ -31,42 +23,44 @@ const getApplyCardLayoutView = (
         labels={labels}
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
-        resetPLCCResponse={resetPLCCApplicationStatus}
+        resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
       />
     );
-  } else if (applicationStatus === constants.APPLICATION_STATE_PENDING && !plccUser) {
+  }
+  if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
     return (
       <ApplicationInProgress
         bagItems={bagItems}
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
-        resetPLCCResponse={resetPLCCApplicationStatus}
-      />
-    );
-  } else if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
-    return (
-      <ApprovedPLCCApplicationView
-        bagItems={bagItems}
-        isGuest={isGuest}
-        labels={labels}
-        plccData={plccData}
-        isPLCCModalFlow={isPLCCModalFlow}
-        approvedPLCCData={approvedPLCCData}
-        resetPLCCResponse={resetPLCCApplicationStatus}
-      />
-    );
-  } else {
-    return (
-      <PLCCForm
-        plccData={plccData}
-        labels={labels}
-        bagItems={bagItems}
-        isPLCCModalFlow={isPLCCModalFlow}
-        onSubmit={submitPLCCForm}
-        initialValues={profileInfo}
+        resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
       />
     );
   }
+  if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
+    return (
+      <ApprovedPLCCApplicationView
+        bagItems={bagItems}
+        isGuest={renderViewInfo.isGuest}
+        labels={labels}
+        plccData={plccData}
+        isPLCCModalFlow={isPLCCModalFlow}
+        approvedPLCCData={renderViewInfo.approvedPLCCData}
+        resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+      />
+    );
+  }
+  return (
+    <PLCCForm
+      plccData={plccData}
+      labels={labels}
+      bagItems={bagItems}
+      isPLCCModalFlow={isPLCCModalFlow}
+      onSubmit={submitPLCCForm}
+      initialValues={renderViewInfo.profileInfo}
+      applicationStatus={applicationStatus}
+    />
+  );
 };
 
 const ApplyCardLayoutView = ({
@@ -91,11 +85,13 @@ const ApplyCardLayoutView = ({
         submitPLCCForm,
         bagItems,
         isPLCCModalFlow,
-        isGuest,
-        plccUser,
-        profileInfo,
-        approvedPLCCData,
-        resetPLCCApplicationStatus
+        {
+          isGuest,
+          plccUser,
+          profileInfo,
+          approvedPLCCData,
+          resetPLCCApplicationStatus,
+        }
       )}
     </ApplyRewardsCreditCardStyle>
   );

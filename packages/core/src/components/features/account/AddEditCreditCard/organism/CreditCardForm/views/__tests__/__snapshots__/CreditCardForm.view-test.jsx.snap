@@ -87,7 +87,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     dataLocator="payment-bilingaddresslabel"
     textAlign="left"
     variant="listMenu"
-  />
+  >
+    lbl_payment_billingAddress
+  </Styled(Heading)>
   <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
@@ -136,12 +138,15 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
-              />,
-              "title": undefined,
+              >
+                lbl_payment_addNewAddCta
+              </ForwardRef>,
+              "title": "lbl_payment_addNewAddCta",
               "value": "",
             },
           ]
         }
+        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -195,7 +200,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         buttonVariation="fixed-width"
         data-locator="payment-cancelbtn"
         type="button"
-      />
+      >
+        lbl_common_cancelCTA
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       className="CreditCardForm__submit"
@@ -217,7 +224,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         data-locator="payment-addcardbtn"
         fill="BLUE"
         type="submit"
-      />
+      >
+        lbl_common_addCTA
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </form>
@@ -310,7 +319,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     dataLocator="payment-bilingaddresslabel"
     textAlign="left"
     variant="listMenu"
-  />
+  >
+    lbl_payment_billingAddress
+  </Styled(Heading)>
   <Styled(Row)
     className="elem-mb-XL"
     fullBleed={true}
@@ -359,12 +370,15 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
-              />,
-              "title": undefined,
+              >
+                lbl_payment_addNewAddCta
+              </ForwardRef>,
+              "title": "lbl_payment_addNewAddCta",
               "value": "",
             },
           ]
         }
+        selectListTitle="lbl_payment_ccAdressSelect"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -418,7 +432,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         buttonVariation="fixed-width"
         data-locator="payment-cancelbtn"
         type="button"
-      />
+      >
+        lbl_common_cancelCTA
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       className="CreditCardForm__submit"
@@ -440,7 +456,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         data-locator="payment-addcardbtn"
         fill="BLUE"
         type="submit"
-      />
+      >
+        lbl_common_addCTA
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </form>

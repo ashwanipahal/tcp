@@ -106,7 +106,7 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
       fontWeight="black"
       margin={null}
       numberOfLines={null}
-      text="0"
+      text="lbl_rewardPoints_currency0"
       textDecoration={null}
     />
     <Styled(View)>
@@ -119,6 +119,7 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
+        text="lbl_rewardPoints_heading"
         textAlign="center"
         textDecoration={null}
       />

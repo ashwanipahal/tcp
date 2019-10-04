@@ -61,6 +61,29 @@ export function getSetRewardPointsOrderConfActn(updatedSummary) {
 }
 
 /**
+ * @function fetchUpdateOrderDetailsData
+ * @param { String } payload
+ * action creator for type: CONFIRMATION_FETCH_UPDATE_ORDER_DETAILS
+ */
+export function fetchUpdateOrderDetailsData(payload) {
+  return {
+    payload,
+    type: CONFIRMATION_CONSTANTS.CONFIRMATION_FETCH_UPDATE_ORDER_DETAILS,
+  };
+}
+
+/**
+ * @function setUpdateOrderDetailsData
+ * @param { object } payload
+ * action creator for type: CONFIRMATION_SET_UPDATE_ORDER_DETAILS
+ */
+export function setUpdateOrderDetailsData(payload) {
+  return {
+    payload,
+    type: CONFIRMATION_CONSTANTS.CONFIRMATION_SET_UPDATE_ORDER_DETAILS,
+  };
+}
+/**
  * @function setCreateAccountSuccess
  * action creator for type: CONFIRMATION_SET_CREATE_ACCOUNT_SUCCESS
  */

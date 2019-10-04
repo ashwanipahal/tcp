@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { getAPIConfig } from '@tcp/core/src/utils';
-
 import BodyCopy from '../BodyCopy';
 import Image from '../Image';
-
+import { StyledErrorWrapper, ViewWithSpacing } from '../styledWrapper/styledWrapper.native';
+import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
+import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import {
   StyledLabel,
   textInput,
@@ -18,9 +19,48 @@ import {
   item,
   container,
 } from './AutoCompleteComponent.native.style';
-import { StyledErrorWrapper, ViewWithSpacing } from '../styledWrapper/styledWrapper.native';
 
 const errorIcon = require('../../../../assets/alert-triangle.png');
+
+export function getAddressLocationInfo(address) {
+  const googleApiStoredDataObj = getCacheData('geocode-response', address);
+  if (googleApiStoredDataObj) {
+    // Available in storage, don't trigger the google API call
+    return new Promise(resolve => {
+      resolve({
+        lat: googleApiStoredDataObj.lat,
+        lng: googleApiStoredDataObj.lng,
+        country: googleApiStoredDataObj.country,
+      });
+    });
+  }
+  return requireNamedOnlineModule('google.maps').then(() => {
+    const geocoder = new window.google.maps.Geocoder();
+    return new Promise(resolve => {
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === 'OK') {
+          const country = results[0].address_components.find(component => {
+            return component.types && component.types.find(type => type === 'country');
+          });
+          const timeStamp = new Date().getTime();
+          const storeDataObject = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            country: country && country.short_name,
+          };
+          setCacheData({
+            key: 'geocode-response',
+            storageKey: address,
+            storageValue: { ...storeDataObject, timeStamp },
+          });
+          resolve(storeDataObject);
+        } else {
+          resolve({ error: status });
+        }
+      });
+    });
+  });
+}
 
 export class GooglePlacesInput extends PureComponent {
   constructor(props) {
@@ -77,6 +117,7 @@ export class GooglePlacesInput extends PureComponent {
       input,
       initialValue,
       meta: { error },
+      clearButtonMode,
     } = this.props;
     const { listViewDisplayed, active, touched } = this.state;
     return (
@@ -104,6 +145,7 @@ export class GooglePlacesInput extends PureComponent {
             name: input.name,
             onFocus: this.onFocus,
             onBlur: this.onBlur,
+            clearButtonMode,
             onSubmitEditing: text => {
               onSubmitEditing(text.nativeEvent.text);
             },
@@ -160,6 +202,7 @@ GooglePlacesInput.propTypes = {
   input: PropTypes.shape({}),
   meta: PropTypes.shape({}),
   initialValue: PropTypes.string,
+  clearButtonMode: PropTypes.string,
 };
 
 GooglePlacesInput.defaultProps = {
@@ -175,6 +218,7 @@ GooglePlacesInput.defaultProps = {
   input: {},
   meta: {},
   initialValue: '',
+  clearButtonMode: 'while-editing',
 };
 
 export default GooglePlacesInput;

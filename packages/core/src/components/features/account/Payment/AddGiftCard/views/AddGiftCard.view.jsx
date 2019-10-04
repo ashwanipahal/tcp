@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../common/hoc/withStyles';
 import styles from '../styles/AddGiftCard.style';
 import Anchor from '../../../../../common/atoms/Anchor';
@@ -47,7 +48,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           dataLocator="gift-card-addcardbacklink"
           asPath="/account/payment"
         >
-          {labels.common.lbl_common_backLink}
+          {getLabelValue(labels, 'lbl_common_backLink', 'common')}
         </Anchor>
         <Heading
           fontFamily="primaryFontFamily"
@@ -56,7 +57,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           className="card__separator"
           dataLocator="gift-card-addcardheader"
         >
-          {labels.paymentGC.lbl_payment_addGiftCard}
+          {getLabelValue(labels, 'lbl_payment_addGiftCard', 'paymentGC')}
         </Heading>
         {addGiftCardResponse && showNotification && (
           <Notification

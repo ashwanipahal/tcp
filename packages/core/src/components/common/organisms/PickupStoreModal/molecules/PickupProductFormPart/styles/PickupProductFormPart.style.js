@@ -60,7 +60,41 @@ export default css`
     }
   }
 
+  .edit-link {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+
   .list-price {
     color: ${props => props.theme.colorPalette.red[600]};
+  }
+
+  .ProductPrice {
+    display: inline-flex;
+  }
+
+  .actual-price {
+    color: #e02020;
+    font-size: 16px;
+  }
+
+  .product-price-container {
+    margin-top: 0px;
+  }
+
+  .original-price {
+    font-size: 12px;
+    color: #595959;
+    margin-left: 5px;
+    line-height: 1.9;
+  }
+
+  .price-container {
+    display: inline-flex;
+    .badge {
+      display: none;
+    }
   }
 `;
