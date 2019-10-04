@@ -11,99 +11,6 @@ exports[`HomePageView should render correctly 1`] = `
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
-  <Connect(ModuleQ)
-    bgClass="yellow-bg"
-    divTabs={
-      Array [
-        Object {
-          "category": Object {
-            "cat_id": "2044392_10",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 1",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "2044391_10",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 2",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "3002623_BQ",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 3",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "BOY",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "2081262_K3",
-          },
-          "singleCTAButton": null,
-          "text": Object {
-            "text": "TODDLER BOY",
-          },
-        },
-      ]
-    }
-    headerText={
-      Array [
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "/p/",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_black",
-              "text": "SHOP THE LOOK",
-            },
-          ],
-        },
-      ]
-    }
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
   <HomePageSlots
     modules={
       Object {
@@ -422,6 +329,99 @@ exports[`HomePageView should render correctly 1`] = `
         "text": "SHOP OPENING DAY",
         "title": "SHOP OPENING DAY",
         "url": "/c/girls-clothes",
+      }
+    }
+  />
+  <Connect(ModuleQ)
+    bgClass="yellow-bg"
+    divTabs={
+      Array [
+        Object {
+          "category": Object {
+            "cat_id": "2044392_10",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 1",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "2044391_10",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 2",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "3002623_BQ",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 3",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "BOY",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "2081262_K3",
+          },
+          "singleCTAButton": null,
+          "text": Object {
+            "text": "TODDLER BOY",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "SHOP THE LOOK",
+            },
+          ],
+        },
+      ]
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
       }
     }
   />

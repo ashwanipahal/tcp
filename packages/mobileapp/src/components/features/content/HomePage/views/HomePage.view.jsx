@@ -82,12 +82,12 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <ModuleQ navigation={navigation} {...moduleQMock.moduleQ.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <ModuleS {...moduleSMock1.moduleS.composites} navigation={navigation} />
         <ModuleS {...moduleSMock2.moduleS.composites} navigation={navigation} />
         <ModuleS {...moduleSMock3.moduleS.composites} navigation={navigation} />
         <ModuleS {...moduleSMock4.moduleS.composites} navigation={navigation} />
+        <ModuleQ navigation={navigation} {...moduleQMock.moduleQ.composites} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth
