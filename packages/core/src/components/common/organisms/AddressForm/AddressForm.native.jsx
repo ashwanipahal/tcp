@@ -4,7 +4,7 @@ import { getAddressFromPlace } from '@tcp/core/src/utils';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import { PropTypes } from 'prop-types';
 import TextBox from '../../atoms/TextBox';
-import DropDown from '../../atoms/DropDown/views/DropDown.native';
+import Select from '../../atoms/Select';
 import InputCheckbox from '../../atoms/InputCheckbox';
 import Button from '../../atoms/Button';
 import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
@@ -17,15 +17,12 @@ import {
 import {
   SaveButtonWrapper,
   CancelButtonWrapper,
-  dropDownStyle,
-  itemStyle,
   InputFieldHalf,
   StateZipCodeContainer,
   Separator,
   SetDefaultShippingWrapper,
   AddAddressWrapper,
   CountryContainer,
-  HiddenStateWrapper,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
@@ -45,7 +42,6 @@ class AddressForm extends React.PureComponent {
 
     this.state = {
       country: 'US',
-      dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
     };
 
     this.locationRef = null;
@@ -63,7 +59,6 @@ class AddressForm extends React.PureComponent {
     dispatch(change('AddressForm', 'zipCode', address.zip));
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
-    this.setState({ dropDownItem: address.state });
   };
 
   render() {
@@ -73,12 +68,11 @@ class AddressForm extends React.PureComponent {
       isMakeDefaultDisabled,
       onCancel,
       handleSubmit,
-      dispatch,
       addressLine1,
       initialValues,
       setModalHeading,
     } = this.props;
-    const { dropDownItem, country } = this.state;
+    const { country } = this.state;
     const disabledProps = {
       isChecked: initialValues.primary,
     };
@@ -133,28 +127,14 @@ class AddressForm extends React.PureComponent {
         <StateZipCodeContainer>
           <InputFieldHalf>
             <Field
-              bounces={false}
-              component={DropDown}
+              id="state"
+              name="state"
+              component={Select}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
-              dataLocator="addnewaddress-city"
-              selectedValue={dropDownItem}
-              data={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
-              onValueChange={itemValue => {
-                dispatch(change('AddressForm', 'state', itemValue));
-                this.setState({ dropDownItem: itemValue });
-              }}
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
+              options={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
             />
-
-            <HiddenStateWrapper>
-              <Field label="" component={TextBox} title="" type="hidden" id="state" name="state" />
-            </HiddenStateWrapper>
           </InputFieldHalf>
-
           <Separator />
-
           <InputFieldHalf zipCode>
             <Field
               id="zipCode"
@@ -166,27 +146,21 @@ class AddressForm extends React.PureComponent {
             />
           </InputFieldHalf>
         </StateZipCodeContainer>
-
         <CountryContainer>
           <Field
             id="country"
             name="country"
-            component={DropDown}
+            component={Select}
             heading={addressFormLabels.country}
             selectedValue={
               country === 'US'
                 ? countriesOptionsMap[0].displayName
                 : countriesOptionsMap[1].displayName
             }
-            data={countriesOptionsMap}
-            dataLocator="addnewaddress-country"
+            options={countriesOptionsMap}
             onValueChange={itemValue => {
-              dispatch(change('AddressForm', 'country', itemValue));
               this.setState({ country: itemValue });
             }}
-            variation="secondary"
-            dropDownStyle={{ ...dropDownStyle }}
-            itemStyle={{ ...itemStyle }}
           />
         </CountryContainer>
 
