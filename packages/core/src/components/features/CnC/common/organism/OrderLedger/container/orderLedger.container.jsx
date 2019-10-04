@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import OrderLedger from '../views/orderLedger.view';
 import { getLedgerSummaryData, getOrderLedgerLabels } from './orderLedger.selector';
+import confirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
 
 // @flow
 
@@ -10,6 +11,8 @@ type Props = {
   ledgerSummaryData: any,
   labels: any,
   showAccordian: any,
+  isConfirmationPage: any,
+  confirmationPageLedgerSummaryData: any,
 };
 
 export const OrderLedgerContainer = ({
@@ -17,12 +20,16 @@ export const OrderLedgerContainer = ({
   ledgerSummaryData,
   labels,
   showAccordian,
+  confirmationPageLedgerSummaryData,
+  isConfirmationPage,
 }: Props) => (
   <OrderLedger
     className={className}
     ledgerSummaryData={ledgerSummaryData}
     labels={labels}
     showAccordian={showAccordian}
+    confirmationPageLedgerSummaryData={confirmationPageLedgerSummaryData}
+    isConfirmationPage={isConfirmationPage}
   />
 );
 
@@ -31,6 +38,9 @@ function mapStateToProps(state) {
     className: 'order-summary',
     ledgerSummaryData: getLedgerSummaryData(state),
     labels: getOrderLedgerLabels(state),
+    confirmationPageLedgerSummaryData: confirmationSelectors.getLedgerSummaryDataConfirmation(
+      state
+    ),
   };
 }
 
