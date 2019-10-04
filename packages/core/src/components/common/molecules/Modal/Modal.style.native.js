@@ -57,6 +57,12 @@ const RowWrapper = styled.View`
     z-index: 1;
   `
       : ``}
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      margin: 14px 14px 0 14px
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`

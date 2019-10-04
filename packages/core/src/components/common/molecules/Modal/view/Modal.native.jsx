@@ -114,7 +114,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
           <ModalCustomWrapper transparentModal={transparentModal}>
             <ToastContainer />
             <StatusBar hidden />
-            <RowWrapper isOverlay={isOverlay}>
+            <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
               {heading && (
                 <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
                   <BodyCopy

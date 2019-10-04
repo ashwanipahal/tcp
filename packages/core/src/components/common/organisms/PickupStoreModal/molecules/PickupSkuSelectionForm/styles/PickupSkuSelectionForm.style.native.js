@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PickUpSkUSectionContainer = styled.View`
-  margin: 20px 32px 0 32px;
+  margin: 18px 14px 0 14px;
 `;
 
 const ImageWrapper = styled.View`
