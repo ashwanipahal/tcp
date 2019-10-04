@@ -39,6 +39,7 @@ function StyliticsProductTabListContainer(props) {
     styliticsProductTabList,
     getStyliticsProductTabListData,
     onProductTabChange,
+    style,
   } = props;
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
@@ -58,14 +59,15 @@ function StyliticsProductTabListContainer(props) {
 
   const buttonTabItems = getButtonTabItems(tabItems);
 
-  return (
+  return buttonTabItems.length > 1 ? (
     <ProductTabListView
       selectedTabId={selectedCategoryId}
       onTabChange={setSelectedCategoryId}
       tabs={buttonTabItems}
       dataLocator={dataLocator}
+      style={style}
     />
-  );
+  ) : null;
 }
 
 StyliticsProductTabListContainer.defaultProps = {
@@ -74,10 +76,12 @@ StyliticsProductTabListContainer.defaultProps = {
   styliticsProductTabList: {},
   onProductTabChange: () => {},
   dataLocator: '',
+  style: [],
 };
 
 StyliticsProductTabListContainer.propTypes = {
   getStyliticsProductTabListData: PropTypes.func,
+  style: PropTypes.arrayOf(PropTypes.object),
   tabItems: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,

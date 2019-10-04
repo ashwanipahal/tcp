@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 import { Image } from '../../../atoms';
+import ProductTabList from '../../../organisms/StyliticsProductTabList';
 
 const TILE_SHADOW = `
   shadow-opacity: 0.15;
@@ -112,7 +113,7 @@ export const MessageContainer = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export const ProductTabListContainer = styled.View`
+export const StyledProductTabList = styled(ProductTabList)`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
@@ -130,6 +131,6 @@ export default {
   StyledImage,
   PromoContainer,
   MessageContainer,
-  ProductTabListContainer,
+  StyledProductTabList,
   Wrapper,
 };

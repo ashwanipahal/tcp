@@ -24,11 +24,10 @@ import {
   SecondHeaderContainer,
   MessageContainer,
   Wrapper,
-  ProductTabListContainer,
+  StyledProductTabList,
   RestOutfitItemCountWrapper,
 } from '../styles/ModuleQ.style.native';
 
-import ProductTabList from '../../../organisms/StyliticsProductTabList';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 
@@ -200,14 +199,13 @@ const ModuleQ = props => {
           </PromoContainer>
         )}
       </MessageContainer>
-      <ProductTabListContainer>
-        <ProductTabList
-          onProductTabChange={onProductTabChange}
-          tabItems={divTabs}
-          navigation={navigation}
-          testID={getLocator('moduleQ_cta_link')}
-        />
-      </ProductTabListContainer>
+
+      <StyledProductTabList
+        onProductTabChange={onProductTabChange}
+        tabItems={divTabs}
+        navigation={navigation}
+        testID={getLocator('moduleQ_cta_link')}
+      />
 
       <ImageSlidesWrapper>
         {selectedProductList.length ? (
