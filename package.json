@@ -40,6 +40,7 @@
     "lint:app": "yarn eslint:app && yarn stylelint:app",
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
     "lighthouse": "node ./lighthouse",
+    "sitespeed": "sitespeed.io --config sitespeed-config/config.json",
     "plop": "plop",
     "storybook": "start-storybook -s ./public,./packages/web/src -p 9001",
     "storybook:build": "build-storybook"
@@ -159,6 +160,7 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
+    "sitespeed.io": "^10.1.1",
     "styled-components": "^4.2.0",
     "vanilla-lazyload": "^12.0.0"
   }

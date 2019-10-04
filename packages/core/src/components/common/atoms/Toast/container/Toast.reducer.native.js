@@ -10,7 +10,9 @@ const ToastMessageReducer = (state = initialState, action) => {
     case TOAST_CONSTANTS.TOAST_MESSAGE_INFO:
       return state.set('toastMessage', action.payload);
     case TOAST_CONSTANTS.TOAST_MESSAGE_RESET:
-      return state.set('toastMessage', null);
+      return state.set('toastMessage', null).set('toastMessagePosition', 0);
+    case TOAST_CONSTANTS.TOAST_MESSAGE_POSITION:
+      return state.set('toastMessagePosition', action.payload);
 
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array

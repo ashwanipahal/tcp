@@ -14,7 +14,8 @@ const getProductsUserCustomInfo = (generalProductIdsList, products, isPDP) => {
       const favProductsMap = {};
 
       if (!res.body) {
-        return favProductsMap;
+        // In case of no response from the default wishlist, return products as is
+        return products;
       }
 
       const productKey = Object.keys(res.body);

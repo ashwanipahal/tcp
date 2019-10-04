@@ -40,6 +40,7 @@ import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
 import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
+import OrderDetailsListSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -57,6 +58,7 @@ import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyPro
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
+import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
@@ -106,6 +108,7 @@ export default function* rootSaga() {
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
     EarnedPointsNotificationSaga(),
+    OrderDetailsListSaga(),
     ResetPasswordSaga(),
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
@@ -130,6 +133,7 @@ export default function* rootSaga() {
     ConfirmationPageSaga(),
     NavigateXHRSaga(),
     OrdersSaga(),
+    OutfitDetailsSaga(),
     FavoriteSaga(),
   ]);
 }

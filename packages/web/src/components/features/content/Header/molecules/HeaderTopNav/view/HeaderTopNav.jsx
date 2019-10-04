@@ -46,7 +46,7 @@ const HeaderTopNav = ({
           </Anchor>
         </div>
         <div className="header-topnav__storelocator">
-          <StoreLocatorLink store={store} labels={labels} />
+          <StoreLocatorLink store={store} labels={labels && labels.store} />
         </div>
       </div>
     </div>

@@ -10,6 +10,9 @@ export default css`
     text-decoration: underline;
     font-size: 10px;
     font-family: ${props => props.theme.typography.fonts.secondary};
+    border: none;
+    background: none;
+    outline: none;
   }
 
   .show-description-list {
@@ -62,6 +65,9 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .product-desc-heading {
       background: none;
+    }
+    .show-description-list {
+      display: block;
     }
     .introduction-text {
       max-height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
