@@ -126,7 +126,6 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           anchorVariation="primary"
           fontSizeVariation="large"
           handleLinkClick={[Function]}
-          href="#"
           noLink={true}
         />
         <Styled(BodyCopy)
