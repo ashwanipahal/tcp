@@ -4,7 +4,7 @@ import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrappe
 import { getLabelValue, formatPhoneNumber } from '../../../../../../../utils';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 import ctaTitleDefaultStore from '../utils';
-import StoreAddress from '../styles/MyFavoriteStore.style.native';
+import { BodyCopyWithTextTransform } from '../../../../../../common/atoms/styledWrapper/styledWrapper.native';
 
 const MyFavoriteStore = ({
   labels,
@@ -41,25 +41,25 @@ const MyFavoriteStore = ({
       )}
       {!!favStoreName && (
         <>
-          <StoreAddress
+          <BodyCopyWithTextTransform
             fontSize="fs16"
             text={favStoreName}
             fontWeight={isMyPreferences ? 'semibold' : 'regular'}
           >
             {favStoreName}
-          </StoreAddress>
-          <StoreAddress fontSize="fs16" text={favStoreAddress}>
+          </BodyCopyWithTextTransform>
+          <BodyCopyWithTextTransform fontSize="fs16" text={favStoreAddress}>
             {favStoreAddress}
-          </StoreAddress>
-          <StoreAddress
+          </BodyCopyWithTextTransform>
+          <BodyCopyWithTextTransform
             fontSize="fs16"
             text={`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
           >
             {`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
-          </StoreAddress>
-          <StoreAddress fontSize="fs16" text={formatPhoneNumber(favStorePhone)}>
+          </BodyCopyWithTextTransform>
+          <BodyCopyWithTextTransform fontSize="fs16" text={formatPhoneNumber(favStorePhone)}>
             {formatPhoneNumber(favStorePhone)}
-          </StoreAddress>
+          </BodyCopyWithTextTransform>
         </>
       )}
     </MyProfileTile>
