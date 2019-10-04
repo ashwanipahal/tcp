@@ -179,9 +179,9 @@ class TwitterLoginComponent extends React.Component {
             );
           })}
 
-        <input type="text" id="twitter-token" ref={this.setTokenInput} />
-        <input type="text" id="twitter-verifer" ref={this.setVerifierInput} />
-        <input type="text" onClick={this.getAccessToken} id="twitter-auth-tokens" />
+        <input type="hidden" id="twitter-token" ref={this.setTokenInput} />
+        <input type="hidden" id="twitter-verifer" ref={this.setVerifierInput} />
+        <input type="hidden" onClick={this.getAccessToken} id="twitter-auth-tokens" />
       </React.Fragment>
       //   <React.Fragment>
       //     <div
