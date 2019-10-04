@@ -3,22 +3,33 @@
 exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
 <Styled(LoyaltyBanner)
   isGuest={false}
+  isPlcc=""
   labels={
     Object {
       "applyNow": "Apply Now",
       "becomeMember": "Become a member to get a ",
+      "becomeMemberOnThisPurchase": "Become a member to get a #Reward# on this purchase!",
       "currentSubtotal": "Current Subtotal: ",
       "earnDoublePoints": "+ EARN DOUBLE POINTS* when you open & use a MY PLACE REWARDS CREDIT CARD",
       "estimatedSubtotal": "Estimated Subtotal with a My Place Rewards Credit Card: ",
       "learnMore": "Learn More",
+      "myPlaceRewardsCCPlcc": "MY PLACE REWARDS CREDIT CARD",
+      "onThisPurchasePlcc": "ON THIS PURCHASE!",
       "pointsOnPurchase": " points on this purchase!",
       "reward": " Reward ",
       "rewardOnPurchase": " on this purchase!",
       "save30Today": "SAVE 30% TODAY! ",
+      "thatsSomePointsFromReward": "That’s #pointNumber# points from a $5 Reward.",
+      "whenYouCheckOutPlcc": "when you check out with your",
       "withThisPurchase": " with this purchase!",
       "youCanEarn": "You can earn ",
-      "youllEarn": "You’ll earn ",
-      "youllGetA": "You’ll get a ",
+      "youCanEarnPoints": "You can earn #pointNumber# points on this purchase!",
+      "youllEarn": "You\\"ll earn ",
+      "youllEarnPoints": "You\\"ll earn #pointNumber# points on this purchase!",
+      "youllEarnPointsPlcc": "YOU’LL EARN #pointNumber# POINTS",
+      "youllGetA": "You\\"ll get a ",
+      "youllGetARewardPlcc": "YOU’LL GET A #REWARD#",
+      "youllGetWithThisPurchase": "You\\"ll get a #Reward# with this purchase!",
     }
   }
   thresholdValue={16.66}
