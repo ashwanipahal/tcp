@@ -26,7 +26,11 @@ export const PointsHistoryPageView = props => {
       <ViewWithSpacing spacingStyles="margin-LRG">
         <PointsHistoryList view="edit" labels={labels} showFullHistory />
         <RichTextWrapper dataLocator="points_history_rte">
-          <RichText source={{ html: richTextContent }} style={contentHeight} />
+          <RichText
+            source={{ html: richTextContent }}
+            scrollEnabled={false}
+            style={contentHeight}
+          />
         </RichTextWrapper>
         <StyledAnchorWrapper>
           <Anchor

@@ -430,6 +430,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -4343,6 +4344,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -8252,6 +8254,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -12165,6 +12168,7 @@ exports[`StoreStaticMap component resize window should update component on windo
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -12851,6 +12855,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",

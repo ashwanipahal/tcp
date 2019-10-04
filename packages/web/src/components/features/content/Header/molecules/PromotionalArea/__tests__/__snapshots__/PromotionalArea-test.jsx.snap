@@ -6,6 +6,7 @@ exports[`PromotionalArea component renders correctly with mobile check false for
 >
   <div
     className="header-topnav__promo-area--tablet"
+    tabIndex="0"
   >
     <Styled(Carousel)
       carouselConfig={
@@ -76,6 +77,7 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
 >
   <div
     className="header-topnav__promo-area--mobile"
+    tabIndex="0"
   >
     <Styled(Carousel)
       carouselConfig={

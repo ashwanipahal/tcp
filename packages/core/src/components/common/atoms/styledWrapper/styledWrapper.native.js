@@ -83,3 +83,7 @@ export const TextWithSpacing = styled.Text`
   ${androidFontStyles}
   ${getAdditionalStyle}
 `;
+
+export const BodyCopyWithTextTransform = styled(BodyCopy)`
+  text-transform: ${props => (props.textTransform ? props.textTransform : 'capitalize')};
+`;
