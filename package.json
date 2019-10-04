@@ -40,7 +40,7 @@
     "lint:app": "yarn eslint:app && yarn stylelint:app",
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
     "lighthouse": "node ./lighthouse",
-    "sitespeed": "sitespeed.io --outputFolder ./sitespeed-results --headless true",
+    "sitespeed": "sitespeed.io --config sitespeed-config/config.json",
     "plop": "plop",
     "storybook": "start-storybook -s ./public,./packages/web/src -p 9001",
     "storybook:build": "build-storybook"
