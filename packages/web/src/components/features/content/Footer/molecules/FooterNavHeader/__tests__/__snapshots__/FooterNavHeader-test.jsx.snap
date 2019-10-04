@@ -22,11 +22,15 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
 
 exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
 <Styled(Anchor)
+  aria-label="Title"
   className="footer-nav-header img-link"
   dataLocator="col_heading_3"
   to=""
 >
-  <Styled(Image) />
+  <Styled(Image)
+    aria-hidden="true"
+    tabIndex="-1"
+  />
 </Styled(Anchor)>
 `;
 

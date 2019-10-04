@@ -45,6 +45,7 @@ import ProductTabListReducer from '@tcp/core/src/components/common/organisms/Pro
 import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import OutfitDetailReducer from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/web/src/components/features/content/Header/molecules/SearchBar/SearchBar.reducer';
 import StoreLocatorReducer from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.reducer';
@@ -106,6 +107,7 @@ import {
   TOAST_REDUCER_KEY,
   MAILING_ADDRESS_REDUCER_KEY,
   PRODUCT_DETAIL_REDUCER_KEY,
+  OUTFIT_DETAILS_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   PRODUCT_TAB_LIST_REDUCER_KEY,
   STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
@@ -231,6 +233,7 @@ export default combineReducers({
   [MAILING_ADDRESS_REDUCER_KEY]: AddMailingAddressReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: ProductDetailReducer,
   [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
+  [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [APPLY_NOW_MODAL_REDUCER_KEY]: ApplyNowModalPLCCReducer,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: filteredProductTabListReducer,
   [STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY]: filteredStyliticsProductTabListReducer,
