@@ -83,6 +83,10 @@ const styles = css`
     }
   }
 
+  .hidden-condensed-header {
+    display: none;
+  }
+
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .activeSection {
       display: block;

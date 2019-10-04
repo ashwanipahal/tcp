@@ -5,6 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import utils from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/EmptyWalletRewards.styles';
 import internalEndpoints from '../../../internalEndpoints';
 
@@ -24,7 +25,7 @@ export const EmptyWalletRewards = ({ labels, className }) => {
         }}
       >
         <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
-          {labels.placeRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
+          {getLabelValue(labels, 'ACC_LBL_MY_REWARDS_NO_REWARDS_MSG', 'placeRewards')}
         </BodyCopy>
       </Col>
       <Col
@@ -42,7 +43,7 @@ export const EmptyWalletRewards = ({ labels, className }) => {
           onClick={goToHomePage}
           data-locator="my-rewards-shop-now-btn"
         >
-          {labels.placeRewards.lbl_my_rewards_shop_now}
+          {getLabelValue(labels, 'lbl_my_rewards_shop_now', 'placeRewards')}
         </Button>
       </Col>
     </BodyCopy>

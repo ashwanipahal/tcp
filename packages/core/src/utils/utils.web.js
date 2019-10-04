@@ -445,7 +445,7 @@ export const createAPIConfig = resLocals => {
   };
 };
 
-export const routeToStoreDetails = storeDetail => {
+export const routeToStoreDetails = (storeDetail, refresh = false) => {
   const {
     basicInfo: {
       id,
@@ -453,12 +453,21 @@ export const routeToStoreDetails = storeDetail => {
       address: { city, state, zipCode },
     },
   } = storeDetail;
-  const url = `/store/${storeName
+  const storeParams = `${storeName
     .replace(/\s/g, '')
     .toLowerCase()}-${state.toLowerCase()}-${city
     .replace(/\s/g, '')
     .toLowerCase()}-${zipCode}-${id}`;
-  if (isClient()) routerPush(window.location.href, url);
+  const url = `/store/${storeParams}`;
+  let routerHandler = null;
+  if (isClient())
+    routerHandler = () =>
+      routerPush(refresh ? window.location.href : `/store?storeStr=${storeParams}`, url);
+  return {
+    routerHandler,
+    url,
+    storeParams,
+  };
 };
 
 /**

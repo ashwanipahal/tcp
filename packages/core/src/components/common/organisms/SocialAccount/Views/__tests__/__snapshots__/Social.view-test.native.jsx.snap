@@ -47,7 +47,7 @@ exports[`Social component should render with connected 1`] = `
           margin={null}
           numberOfLines={null}
           spacingStyles="margin-left-MED margin-right-LRG"
-          text="undefined Facebook"
+          text="lbl_prefrence_connectTo Facebook"
           textDecoration={null}
         />
       </Styled(View)>
@@ -269,7 +269,7 @@ exports[`Social component should renders correctly 1`] = `
           margin={null}
           numberOfLines={null}
           spacingStyles="margin-left-MED margin-right-LRG"
-          text="undefined Facebook"
+          text="lbl_prefrence_connectTo Facebook"
           textDecoration={null}
         />
       </Styled(View)>
@@ -564,7 +564,7 @@ exports[`Social component should simulate instagram connect 1`] = `
           margin={null}
           numberOfLines={null}
           spacingStyles="margin-left-MED margin-right-LRG"
-          text="Facebook undefined"
+          text="Facebook lbl_prefrence_connected"
           textDecoration={null}
         />
       </Styled(View)>

@@ -76,7 +76,9 @@ exports[`LoginSection component should renders correctly 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="center"
-      />
+      >
+        lbl_login_createAccountHelp
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -85,7 +87,9 @@ exports[`LoginSection component should renders correctly 1`] = `
       fill="WHITE"
       onClick={[Function]}
       type="submit"
-    />
+    >
+      lbl_login_createAccountCTA
+    </Styled(Button)>
   </Styled(Col)>
 </Styled(Row)>
 `;

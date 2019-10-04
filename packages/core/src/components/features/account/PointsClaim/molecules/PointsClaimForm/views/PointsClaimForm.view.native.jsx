@@ -48,14 +48,16 @@ export class PointsClaimForm extends PureComponent {
    */
 
   fieldFormater = (num, name) => {
-    const { dispatch } = this.props;
-    const { STORE_NUMBER, TRANSACTION_NUMBER } = fieldNames;
-    const minLimit = name === STORE_NUMBER || name === TRANSACTION_NUMBER ? 4 : 2;
-    const zero = minLimit - num.toString().length + 1;
-    let val = num;
-    val = Array(+(zero > 0 && zero)).join('0') + num;
-    // TODO: Remove settimout and find a better way to update values
-    setTimeout(() => dispatch(change('PointsClaimForm', name, val)));
+    if (num !== '') {
+      const { dispatch } = this.props;
+      const { STORE_NUMBER, TRANSACTION_NUMBER } = fieldNames;
+      const minLimit = name === STORE_NUMBER || name === TRANSACTION_NUMBER ? 4 : 2;
+      const zero = minLimit - num.toString().length + 1;
+      let val = num;
+      val = Array(+(zero > 0 && zero)).join('0') + num;
+      // TODO: Remove settimout and find a better way to update values
+      setTimeout(() => dispatch(change('PointsClaimForm', name, val)));
+    }
   };
 
   render() {
@@ -126,6 +128,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-storenumber"
                 type="number"
+                keyboardType="numeric"
                 onBlur={val => this.fieldFormater(val, fieldNames.STORE_NUMBER)}
               />
             </FieldWrapper>
@@ -146,6 +149,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-registernumber"
                 type="number"
+                keyboardType="numeric"
                 onBlur={val => this.fieldFormater(val, fieldNames.REGISTER_NUMBER)}
               />
             </FieldWrapper>
@@ -161,6 +165,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-transactionnumber"
                 type="number"
+                keyboardType="numeric"
                 onBlur={val => this.fieldFormater(val, fieldNames.TRANSACTION_NUMBER)}
               />
             </FieldWrapper>
@@ -177,6 +182,7 @@ export class PointsClaimForm extends PureComponent {
                 component={TextBox}
                 dataLocator="points-claim-ordernumber"
                 type="number"
+                keyboardType="numeric"
               />
             </FieldWrapper>
             <FieldWrapper>

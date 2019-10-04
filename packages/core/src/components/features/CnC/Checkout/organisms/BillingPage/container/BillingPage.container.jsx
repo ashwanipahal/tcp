@@ -7,6 +7,7 @@ import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddE
 
 import { getCVVCodeInfoContentId, getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import { updateCardData } from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
   componentDidMount() {
@@ -26,6 +27,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     getCVVCodeInfo: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
+    updateCardDetail: payload => {
+      dispatch(updateCardData(payload));
     },
   };
 };

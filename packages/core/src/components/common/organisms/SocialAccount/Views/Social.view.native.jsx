@@ -84,10 +84,11 @@ class Socialview extends React.PureComponent {
                 spacingStyles="margin-left-MED margin-right-LRG"
                 text={
                   elem.isConnected
-                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
-                        labels.lbl_prefrence_connected
-                      }`
-                    : `${labels.lbl_prefrence_connectTo} ${
+                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${getLabelValue(
+                        labels,
+                        'lbl_prefrence_connected'
+                      )}`
+                    : `${getLabelValue(labels, 'lbl_prefrence_connectTo')} ${
                         config.SOCIAL_ACCOUNTS[elem.socialAccount]
                       }`
                 }

@@ -22,6 +22,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="extrabold"
+        handleLinkClick={[Function]}
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
@@ -124,8 +125,8 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           fontSizeVariation="large"
+          handleLinkClick={[Function]}
           noLink={true}
-          to=""
         />
         <Styled(BodyCopy)
           className="separator"
@@ -143,6 +144,7 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           anchorVariation="primary"
           className="rightLink"
           fontSizeVariation="large"
+          handleLinkClick={[Function]}
           noLink={true}
         />
       </Styled(BodyCopy)>

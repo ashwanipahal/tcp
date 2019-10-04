@@ -11,6 +11,7 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -133,8 +134,8 @@ let CreateAccountForm = ({
                   enableSuccessCheck={false}
                 >
                   {hideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show}
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')}
                 </Field>
               </Col>
             </span>
@@ -162,8 +163,8 @@ let CreateAccountForm = ({
                   enableSuccessCheck={false}
                 >
                   {confirmHideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show}
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')}
                 </Field>
               </Col>
             </span>
@@ -178,7 +179,7 @@ let CreateAccountForm = ({
               dataLocator="my-place-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.registration.lbl_createAccount_saveRewards}
+              {getLabelValue(labels,'lbl_createAccount_saveRewards','registration')}
             </Field>
           </Col>
           */}
@@ -196,9 +197,15 @@ let CreateAccountForm = ({
             >
               <BodyCopy fontFamily="secondary" fontSize="fs10">
                 <RichText
-                  richTextHtml={`${labels.registration.lbl_createAccount_termsConditions} ${
-                    labels.registration.lbl_createAccount_termsConditions_1
-                  }`}
+                  richTextHtml={`${getLabelValue(
+                    labels,
+                    'lbl_createAccount_termsConditions',
+                    'registration'
+                  )} ${getLabelValue(
+                    labels,
+                    'lbl_createAccount_termsConditions_1',
+                    'registration'
+                  )}`}
                 />
               </BodyCopy>
             </Field>
@@ -211,11 +218,11 @@ let CreateAccountForm = ({
               disabled={isMakeDefaultDisabled}
             >
               <BodyCopy fontFamily="secondary" className="remember-me-text" fontSize="fs10">
-                {labels.registration.lbl_createAccount_rememberMe}
+                {getLabelValue(labels, 'lbl_createAccount_rememberMe', 'registration')}
               </BodyCopy>
 
               <BodyCopy fontFamily="secondary" fontSize="fs10">
-                {labels.registration.lbl_createAccount_rememberMeHelpText}
+                {getLabelValue(labels, 'lbl_createAccount_rememberMeHelpText', 'registration')}
               </BodyCopy>
             </Field>
           </Col>
@@ -230,7 +237,7 @@ let CreateAccountForm = ({
               type="submit"
               data-locator="create-account-btn"
             >
-              {labels.registration.lbl_createAccount_createAccount}
+              {getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
             </Button>
           </Col>
           <Col
@@ -239,7 +246,7 @@ let CreateAccountForm = ({
             className="already-account align-center"
           >
             <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
-              {labels.registration.lbl_createAccount_alreadyAccount}
+              {getLabelValue(labels, 'lbl_createAccount_alreadyAccount', 'registration')}
             </Anchor>
           </Col>
         </Row>

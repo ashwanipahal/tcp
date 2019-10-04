@@ -25,7 +25,9 @@ exports[`TrackOrderTopSection component should renders correctly 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_trackOrder_header
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="trackorder__modal__overlaysubheading"
     color="text.primary"
@@ -39,6 +41,8 @@ exports[`TrackOrderTopSection component should renders correctly 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_trackOrder_subheader
+  </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;

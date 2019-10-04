@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -24,8 +25,8 @@ export const PersonalInformation = ({
   return (
     <>
       <MyProfileTile
-        title={labels.lbl_profile_personal_information}
-        ctaTitle={labels.lbl_profile_edit_personal_info}
+        title={getLabelValue(labels, 'lbl_profile_personal_information')}
+        ctaTitle={getLabelValue(labels, 'lbl_profile_edit_personal_info')}
         dataLocator="pi-editpersonalinfo"
         ctaLink={internalEndpoints.editProfileInformationPage.link}
         ctaPath={internalEndpoints.editProfileInformationPage.path}
@@ -51,8 +52,8 @@ export const PersonalInformation = ({
             className="profileInformationCol"
           >
             <MyProfileTile
-              title={labels.lbl_profile_mailing_address}
-              ctaTitle={labels.lbl_profile_edit_mailing_info}
+              title={getLabelValue(labels, 'lbl_profile_mailing_address')}
+              ctaTitle={getLabelValue(labels, 'lbl_profile_edit_mailing_info')}
               dataLocator="profileinfo-editmailingaddress"
               ctaLink={internalEndpoints.mailingAddressPage.link}
               ctaPath={internalEndpoints.mailingAddressPage.path}

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditCreditCardComponent from '../../../../AddEditCreditCard/views/AddEditCreditCard.view';
 import { addMailingAddress } from './MailingAddress.actions';
 import getAddressResponse from './MailingAddress.selectors';
@@ -133,11 +134,11 @@ export class MailingInformationContainer extends PureComponent {
         pageBackLinkPath={internalEndpoints.profilePage.path}
         errorMessage={errorMessage}
         addressList={addressList}
-        pageheading={labels.profile.lbl_profile_heading}
+        pageheading={getLabelValue(labels, 'lbl_profile_heading', 'profile')}
         showCreditCardFields={false}
         showUserName={false}
         showEmailAddress={false}
-        subHeading={labels.profile.lbl_profile_mailing_address}
+        subHeading={getLabelValue(labels, 'lbl_profile_mailing_address', 'profile')}
         onClose={onClose}
       />
     );

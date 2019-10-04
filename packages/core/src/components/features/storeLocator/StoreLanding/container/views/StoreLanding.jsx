@@ -27,8 +27,11 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDetails = (event, store) => {
+    const { fetchCurrentStore } = this.props;
     event.preventDefault();
-    routeToStoreDetails(store);
+    fetchCurrentStore(store);
+    const { routerHandler } = routeToStoreDetails(store);
+    routerHandler();
   };
 
   renderMapView = suggestedStoreList => {
@@ -80,7 +83,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore, fetchCurrentStore, openStoreDirections } = this.props;
+    const { setFavoriteStore, favoriteStore, openStoreDirections } = this.props;
     return suggestedStoreList.map(item => (
       <Col
         colSize={{ large: 12, medium: 8, small: 6 }}
@@ -94,7 +97,6 @@ export class StoreLanding extends PureComponent {
           variation="listing"
           setFavoriteStore={setFavoriteStore}
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
-          fetchCurrentStore={fetchCurrentStore}
           openStoreDirections={openStoreDirections}
           openStoreDetails={this.openStoreDetails}
         />

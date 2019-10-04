@@ -59,7 +59,7 @@ const CONSTANTS = {
     CHECKOUT_SHIPPING: 'CheckoutShipping',
     CHECKOUT_BILLING: 'CheckoutBilling',
     CHECKOUT_REVIEW: 'CheckoutReview',
-    CHECKOUT_CONFIRMATION: 'CheckoutConfirmation',
+    CHECKOUT_CONFIRMATION: 'Confirmation',
   },
 
   PAYMENT_CARD_TYPE: {
@@ -120,6 +120,8 @@ const CONSTANTS = {
   INIT_INTL_CHECKOUT: 'INIT_INTL_CHECKOUT',
   PAYPAL_LOCATE: 'en_US',
   PAYPAL_LABEL: 'paypal',
+  UPDATE_CARD_DATA: 'UPDATE_CARD_DATA',
+  LOYALITY_OFFERS: 'Loyalty_Offers',
 };
 
 const {

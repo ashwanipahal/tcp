@@ -13,7 +13,12 @@ import {
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
   CouponAndPromosWrapper,
+  BannerWrapper,
+  CouponsWrapper,
 } from '../styles/CnCTemplate.style.native';
+import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+
+/** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 
 const CnCCommonTemplate = ({
   btnText,
@@ -22,40 +27,88 @@ const CnCCommonTemplate = ({
   onBackLinkPress,
   footerBody,
   isGuest,
+  showAccordian,
+  isConfirmationPage,
 }) => {
   return (
     <>
-      <CouponAndPromosWrapper>
-        <CouponAndPromos isCheckout />
-      </CouponAndPromosWrapper>
-      <View>
-        <OrderLedgerContainer />
-      </View>
-      {!isGuest && (
-        <BonusPointsWrapper>
-          <BonusPointsDays />
-        </BonusPointsWrapper>
+      {!isConfirmationPage ? (
+        <>
+          <CouponAndPromosWrapper>
+            <CouponAndPromos isCheckout />
+          </CouponAndPromosWrapper>
+          <View>
+            <OrderLedgerContainer showAccordian={showAccordian} />
+          </View>
+          {!isGuest && (
+            <BonusPointsWrapper>
+              <BonusPointsDays />
+            </BonusPointsWrapper>
+          )}
+          <ButtonWrapper>
+            <CheckoutButton onPress={onPress}>
+              <BodyCopy
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={btnText}
+              />
+            </CheckoutButton>
+            {footerBody}
+            {!!backLinkText && (
+              <TouchableOpacity accessibilityRole="link" onPress={onBackLinkPress}>
+                <BackLinkWrapperWrapper>
+                  <BackIcon />
+                  <BackLinkText>{backLinkText}</BackLinkText>
+                </BackLinkWrapperWrapper>
+              </TouchableOpacity>
+            )}
+          </ButtonWrapper>
+        </>
+      ) : (
+        <View>
+          <OrderLedgerContainer />
+          <BannerWrapper>
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="LOYALTY BANNER"
+            />
+          </BannerWrapper>
+          {isGuest && (
+            <BannerWrapper>
+              <BodyCopyWithSpacing
+                textAlign="center"
+                fontSize="fs16"
+                mobileFontFamily="secondary"
+                spacingStyles="margin-top-LRG margin-bottom-LRG"
+                text="ACCOUNT FORM"
+              />
+            </BannerWrapper>
+          )}
+          <CouponsWrapper>
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="COUPONS"
+            />
+          </CouponsWrapper>
+          <CouponsWrapper>
+            <BodyCopyWithSpacing
+              textAlign="center"
+              fontSize="fs16"
+              mobileFontFamily="secondary"
+              spacingStyles="margin-top-LRG margin-bottom-LRG"
+              text="COUPONS"
+            />
+          </CouponsWrapper>
+        </View>
       )}
-      <ButtonWrapper>
-        <CheckoutButton onPress={onPress}>
-          <BodyCopy
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs13"
-            text={btnText}
-          />
-        </CheckoutButton>
-        {footerBody}
-        {!!backLinkText && (
-          <TouchableOpacity accessibilityRole="link" onPress={onBackLinkPress}>
-            <BackLinkWrapperWrapper>
-              <BackIcon />
-              <BackLinkText>{backLinkText}</BackLinkText>
-            </BackLinkWrapperWrapper>
-          </TouchableOpacity>
-        )}
-      </ButtonWrapper>
     </>
   );
 };
@@ -67,6 +120,12 @@ CnCCommonTemplate.propTypes = {
   backLinkText: PropTypes.string.isRequired,
   onBackLinkPress: PropTypes.func.isRequired,
   isGuest: PropTypes.func.isRequired,
+  showAccordian: PropTypes.bool.isRequired,
+  isConfirmationPage: PropTypes.bool,
+};
+
+CnCCommonTemplate.defaultProps = {
+  isConfirmationPage: false,
 };
 
 export default CnCCommonTemplate;
