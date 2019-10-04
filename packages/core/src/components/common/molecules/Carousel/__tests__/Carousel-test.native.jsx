@@ -6,7 +6,6 @@ describe('Carousel component Native', () => {
   it('state should be set as false if autoplay props is false', () => {
     const props = {
       autoplay: false,
-      data: [],
     };
     const wrapper = shallow(<SnapCarouselVanilla {...props} />);
     expect(wrapper.state('autoplay')).toBe(false);
