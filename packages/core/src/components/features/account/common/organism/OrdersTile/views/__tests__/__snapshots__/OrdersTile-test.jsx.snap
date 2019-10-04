@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInfoTile component should render correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-VigVT",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(ProfileInfoTile)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-VigVT",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  handleComponentChange={[Function]}
+  labels={
+    Object {
+      "lbl_overview_profileInfoChangeCTA": "",
+      "lbl_overview_profileInfoEditCTA": "",
+      "lbl_overview_profileInfoEmailAddress": "",
+      "lbl_overview_profileInfoMailingAddress": "",
+      "lbl_overview_profileInfoMember": "",
+      "lbl_overview_profileInfoPassword": "",
+      "lbl_overview_profileInfoViewCTA": "",
+      "lbl_overview_profileInformationHeading": "",
+    }
+  }
+  profileInfo={
+    Object {
+      "address": Object {
+        "addressLine1": "addressLine1",
+        "addressLine2": "addressLine2",
+        "city": "Manhattan",
+        "state": "NY",
+        "zipCode": "12345",
+      },
+      "emailAddress": "first.last@tcp.com",
+      "firstName": "First",
+      "lastName": "Last",
+      "rewardsAccountNumber": "B100000012222",
+    }
+  }
+/>
+`;
