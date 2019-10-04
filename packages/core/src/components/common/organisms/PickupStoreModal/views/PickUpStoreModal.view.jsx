@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getSiteId } from '@tcp/core/src/utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import {
@@ -294,6 +295,7 @@ class PickUpStoreModalView extends React.Component {
     const { SkuSelectedValues } = this.state;
     const { getUserCartStoresAndSearch } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
+    const country = getSiteId() && getSiteId().toUpperCase()
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
     const { distance } = formData;
@@ -306,6 +308,7 @@ class PickUpStoreModalView extends React.Component {
       locationPromise,
       variantId,
       cartItemsCount,
+      country,
     });
   }
 

@@ -19,27 +19,47 @@ class PickupProductFormPart extends React.PureComponent {
     /** the whole product detail to have it engaged on BOPIS form */
     ...BOPIS_PRODUCT_INFO_PROP_TYPES,
     /** This is used to display the correct currency symbol */
-    currencySymbol: PropTypes.string.isRequired,
+    currencySym: PropTypes.string,
+
     isPickUpWarningModal: PropTypes.bool,
+
+    listPrice: PropTypes.string.isRequired,
+
+    offerPrice: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     isPickUpWarningModal: false,
+    currencySym: '$',
+  };
+
+  renderProductValues = (initialValues) => {
+    const fitSize = `${initialValues.Size} ${initialValues.Fit || ''}`;
+    return (
+      <React.Fragment>
+        <BodyCopyWithSpacing
+          dataLocator="pdp_current_product_price"
+          mobileFontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          color="gray.800"
+          text={fitSize}
+          spacingStyles="margin-left-MED margin-top-XXS"
+        />
+      </React.Fragment>
+    );
   };
 
   render() {
     const {
-      name = `Girls Basic Super Skinny Jeans - Victory Blue Wash`,
-      imagePath = 'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2084917_908.jpg',
+      name,
+      imagePath,
       onEditSku,
-      // eslint-disable-next-line no-unused-vars
       initialValues,
       isPickUpWarningModal,
-      currencySymbol = '$',
-      listPrice = 14.867,
-      offerPrice = 13.868,
-      // eslint-disable-next-line no-unused-vars
-      colorFitSizeDisplayNames,
+      currencySym,
+      listPrice,
+      offerPrice,
     } = this.props;
 
     const style = { width: 40 };
@@ -75,7 +95,7 @@ class PickupProductFormPart extends React.PureComponent {
                 fontSize="fs13"
                 fontWeight="regular"
                 color="gray.800"
-                text="Color"
+                text={initialValues.color}
                 spacingStyles="margin-left-MED margin-top-XXS"
               />
             </OfferPriceAndBadge3Container>
@@ -90,15 +110,7 @@ class PickupProductFormPart extends React.PureComponent {
                 style={style}
                 spacingStyles="margin-top-XXS"
               />
-              <BodyCopyWithSpacing
-                dataLocator="pdp_current_product_price"
-                mobileFontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                color="gray.800"
-                text="Size"
-                spacingStyles="margin-left-MED margin-top-XXS"
-              />
+              {this.renderProductValues(initialValues)}
             </OfferPriceAndBadge3Container>
             <OfferPriceAndBadge3Container>
               <BodyCopyWithSpacing
@@ -117,7 +129,7 @@ class PickupProductFormPart extends React.PureComponent {
                 fontSize="fs13"
                 fontWeight="regular"
                 color="gray.800"
-                text="Qty"
+                text={initialValues.Quantity}
                 spacingStyles="margin-left-MED margin-top-XXS"
               />
             </OfferPriceAndBadge3Container>
@@ -138,7 +150,7 @@ class PickupProductFormPart extends React.PureComponent {
                 fontSize="fs16"
                 fontWeight="black"
                 color="red.500"
-                text={`${currencySymbol}${offerPrice.toFixed(2)}`}
+                text={`${currencySym}${offerPrice.toFixed(2)}`}
                 spacingStyles="margin-left-MED margin-top-XXS"
               />
               {listPrice !== offerPrice && (
@@ -149,7 +161,7 @@ class PickupProductFormPart extends React.PureComponent {
                   fontSize="fs13"
                   fontWeight="regular"
                   color="gray.800"
-                  text={`${currencySymbol}${listPrice.toFixed(2)}`}
+                  text={`${currencySym}${listPrice.toFixed(2)}`}
                   spacingStyles="margin-left-XXS margin-top-XS"
                 />
               )}
@@ -174,15 +186,6 @@ class PickupProductFormPart extends React.PureComponent {
     );
   }
 }
-
-PickupProductFormPart.propTypes = {
-  /** This is used to display the correct currency symbol */
-  currencySymbol: PropTypes.string.isRequired,
-
-  listPrice: PropTypes.string.isRequired,
-
-  offerPrice: PropTypes.string.isRequired,
-};
 
 export default withStyles(PickupProductFormPart, styles);
 export { PickupProductFormPart as PickupProductFormPartVanilla };

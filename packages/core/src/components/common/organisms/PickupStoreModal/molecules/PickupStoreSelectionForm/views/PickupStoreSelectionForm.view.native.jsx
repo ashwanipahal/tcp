@@ -42,8 +42,10 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       cartBopisStoresList,
       handleAddTobag,
       handlePickupRadioBtn,
+      selectedStoreId,
+      isBossSelected,
+      isShowMessage,
     } = this.props;
-    const { selectedStoreId, isBossSelected, isShowMessage } = this.state;
 
     return (
       // <PickupStoreListContainer
@@ -145,7 +147,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           </DistanceCol>
         </Row>
         <Button
-          margin="16px 0 0 0"
+          margin="16px 0 20px 0"
           color="white"
           fill="BLUE"
           buttonVariation="variable-width"
@@ -244,6 +246,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       <React.Fragment>
         {isSkuResolved && (
           <BodyCopyWithSpacing
+            margin="20px 14px"
             mobileFontFamily="secondary"
             fontSize="fs14"
             text={renderVariationText(storeLimitReached, sameStore)}
