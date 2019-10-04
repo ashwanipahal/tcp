@@ -1826,7 +1826,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
-    showVenmoSubmit={false}
+    showVenmoSubmit={true}
   />
 </form>
 `;

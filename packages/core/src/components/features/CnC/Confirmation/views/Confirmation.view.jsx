@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardImage from '../../../../common/molecules/CardImage';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -72,10 +71,18 @@ const ConfirmationView = ({
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
-  venmoPayment,
+  venmoUserName,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
-
+  let venmoPayment = {};
+  if (isVenmoPaymentInProgress) {
+    venmoPayment = {
+      userName: venmoUserName,
+      ccBrand: VenmoConstants.VENMO,
+      ccType: VenmoConstants.VENMO,
+      defaultInd: true,
+    };
+  }
   const isShowShippingMessage = !!orderNumber;
   let isShowBopisMessage;
   let isShowMixedMessage;
@@ -132,14 +139,10 @@ const ConfirmationView = ({
             isBossInList={isBossInList}
           />
           {isVenmoPaymentInProgress && (
-            <VenmoConfirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
-          )}
-          {isVenmoPaymentInProgress && venmoPayment && (
-            <div>
-              <section className="venmo-payment-method-wrapper">
-                <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
-              </section>
-            </div>
+            <VenmoConfirmation
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              labels={labels}
+            />
           )}
         </Col>
       </Row>
@@ -149,7 +152,12 @@ const ConfirmationView = ({
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
-      <CheckoutOrderInfo isConfirmationPage />
+      <CheckoutOrderInfo
+        isConfirmationPage
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        venmoPayment={venmoPayment}
+        labels={labels}
+      />
     </div>
   );
 };
@@ -182,11 +190,7 @@ ConfirmationView.propTypes = {
   encryptedEmailAddress: PropTypes.string,
   orderShippingDetails: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
-  venmoPayment: PropTypes.shape({
-    userName: PropTypes.string,
-    ccBrand: PropTypes.string,
-    ccType: PropTypes.string,
-  }),
+  venmoUserName: PropTypes.string,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -196,11 +200,7 @@ ConfirmationView.defaultProps = {
   encryptedEmailAddress: '',
   orderShippingDetails: null,
   isVenmoPaymentInProgress: false,
-  venmoPayment: {
-    userName: '',
-    ccBrand: VenmoConstants.VENMO,
-    ccType: VenmoConstants.VENMO,
-  },
+  venmoUserName: '',
 };
 export default withStyles(ConfirmationView, styles);
 export { ConfirmationView as ConfirmationViewVanilla };
