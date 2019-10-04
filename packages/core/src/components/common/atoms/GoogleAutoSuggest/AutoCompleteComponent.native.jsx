@@ -68,10 +68,8 @@ export class GooglePlacesInput extends PureComponent {
     const apiConfigObj = getAPIConfig();
     const { googleApiKey } = apiConfigObj;
     this.googleApiKey = googleApiKey;
-    this.touched = false;
-    this.active = false;
     this.state = {
-      listViewDisplayed: false,
+      listViewDisplayed: false, // we need to handle listViewDisplayed by ourself as library used to set it true on every prop change
       active: false,
       touched: false,
     };
@@ -86,6 +84,7 @@ export class GooglePlacesInput extends PureComponent {
 
   onBlur = () => {
     setTimeout(() => {
+      // Need to add setTimeout as blur is calling first and then request to get detailed response
       this.setState({
         active: false,
         touched: true,
