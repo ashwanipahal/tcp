@@ -11,6 +11,7 @@ import {
   LabelContainer,
   IconContainer,
   StyledHeader,
+  OrderSummaryWrapper,
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
@@ -27,6 +28,33 @@ const popover = message => {
   );
 };
 
+export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, labels) => {
+  return giftServiceTotal > 0 ? (
+    <StyledRowDataContainer>
+      <Text>
+        <BodyCopy
+          bodySize="one"
+          fontFamily="secondary"
+          textAlign="left"
+          fontWeight="regular"
+          fontSize="fs13"
+          text={`${labels.giftServiceLabel}:`}
+        />
+      </Text>
+      <Text>
+        <BodyCopy
+          bodySize="one"
+          fontFamily="secondary"
+          fontWeight="regular"
+          fontSize="fs13"
+          textAlign="right"
+          text={`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
+        />
+      </Text>
+    </StyledRowDataContainer>
+  ) : null;
+};
+
 const getBody = (ledgerSummaryData, labels) => {
   const {
     itemsCount,
@@ -34,6 +62,7 @@ const getBody = (ledgerSummaryData, labels) => {
     subTotal,
     couponsTotal,
     savingsTotal,
+    giftServiceTotal,
     shippingTotal,
     taxesTotal,
     grandTotal,
@@ -96,7 +125,7 @@ const getBody = (ledgerSummaryData, labels) => {
               textAlign="left"
               fontWeight="regular"
               fontSize="fs13"
-              text={`${labels.promotionsLabel}`}
+              text={`${labels.promotionsLabel}:`}
             />
           </Text>
           <Text>
@@ -111,6 +140,7 @@ const getBody = (ledgerSummaryData, labels) => {
           </Text>
         </StyledRowDataContainer>
       ) : null}
+      {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
       {isOrderHasShipping ? (
         <StyledRowDataContainer>
           <Text>
@@ -133,7 +163,7 @@ const getBody = (ledgerSummaryData, labels) => {
               text={
                 // eslint-disable-next-line no-nested-ternary
                 shippingTotal !== undefined
-                  ? shippingTotal > 0
+                  ? { shippingTotal } > 0
                     ? `${currencySymbol}${shippingTotal.toFixed(2)}`
                     : labels.free
                   : '-'
@@ -268,7 +298,11 @@ const getBody = (ledgerSummaryData, labels) => {
   );
 };
 
-const getHeader = labels => {
+const getHeader = (labels, ledgerSummaryData) => {
+  const { currencySymbol, orderBalanceTotal } = ledgerSummaryData;
+  const headerText = `${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(
+    2
+  )})`;
   return (
     <StyledHeader>
       <BodyCopy
@@ -276,19 +310,26 @@ const getHeader = labels => {
         fontSize="fs16"
         fontWeight="semibold"
         component="span"
-        text={labels.orderLedgerTitle}
+        text={headerText}
       />
     </StyledHeader>
   );
 };
 
 const OrderLedger = ({ ledgerSummaryData, labels, showAccordian }) => {
-  const header = getHeader(labels);
+  const header = getHeader(labels, ledgerSummaryData);
   const body = getBody(ledgerSummaryData, labels);
   return (
     <View>
       {showAccordian ? (
-        <CollapsibleContainer header={header} body={body} defaultOpen iconLocator="arrowicon" />
+        <OrderSummaryWrapper>
+          <CollapsibleContainer
+            header={header}
+            body={body}
+            defaultOpen={false}
+            iconLocator="arrowicon"
+          />
+        </OrderSummaryWrapper>
       ) : (
         body
       )}
