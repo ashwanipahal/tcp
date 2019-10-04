@@ -6,15 +6,12 @@ import { Modal } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
-import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
-import PickupProductFormPart from '../../PickupProductFormPart';
 import styles, {
   PickUpHeaderText,
   PickUpModalView,
@@ -23,9 +20,6 @@ import styles, {
   DistanceCol,
   dropDownStyle,
   itemStyle,
-  ModalTitleContainer,
-  ModalTitle,
-  ModalCloseTouchable,
 } from '../styles/PickupStoreSelectionForm.style.native';
 import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
@@ -117,74 +111,63 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
     disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
-      <Modal animationType="slide" transparent={false}>
-        <PickUpModalView>
-          <ModalTitleContainer>
-            <ModalTitle>{PICKUP_LABELS.FIND_STORE}</ModalTitle>
-            <ModalCloseTouchable onPress={onCloseClick} accessibilityRole="button">
-              <CustomIcon name={ICON_NAME.close} size="fs20" color="gray.900" />
-            </ModalCloseTouchable>
-          </ModalTitleContainer>
-
-          <PickupProductFormPart />
-
-          <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
-          <Row>
-            <AddressCol>
-              <Field
-                name="addressLocation"
-                id="addressLocation"
-                component={TextBox}
-                label="Zip, City or State"
-              />
-            </AddressCol>
-            <DistanceCol>
-              <Field
-                bounces={false}
-                name="distance"
-                component={DropDown}
-                heading="Distance"
-                data={distancesMap}
-                label="Distance"
-                className="distance-input"
-                dropDownStyle={{ ...dropDownStyle }}
-                itemStyle={{ ...itemStyle }}
-                variation="secondary"
-                selectedValue={selectedValue}
-                onValueChange={itemValue => {
-                  const { onQuantityChange, form } = this.props;
-                  if (onQuantityChange) {
-                    onQuantityChange(itemValue, form);
-                  }
-                }}
-              />
-            </DistanceCol>
-          </Row>
-          <Button
-            margin="16px 0 0 0"
-            color="white"
-            fill="BLUE"
-            buttonVariation="variable-width"
-            text="Search"
-            fontSize="fs10"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            onPress={handleSubmit(onSearch)}
-            locator="pdp_color_swatch"
-            accessibilityLabel="Search"
-            disabled={pristine || submitting || disableButton}
-          />
-          {isSkuResolved && (
-            <BodyCopyWithSpacing
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              textAlign="center"
-              text={storeSearchError}
+      <PickUpModalView>
+        <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
+        <Row>
+          <AddressCol>
+            <Field
+              name="addressLocation"
+              id="addressLocation"
+              component={TextBox}
+              label="Zip, City or State"
             />
-          )}
-        </PickUpModalView>
-      </Modal>
+          </AddressCol>
+          <DistanceCol>
+            <Field
+              bounces={false}
+              name="distance"
+              component={DropDown}
+              heading="Distance"
+              data={distancesMap}
+              label="Distance"
+              className="distance-input"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+              variation="secondary"
+              selectedValue={selectedValue}
+              onValueChange={itemValue => {
+                const { onQuantityChange, form } = this.props;
+                if (onQuantityChange) {
+                  onQuantityChange(itemValue, form);
+                }
+              }}
+            />
+          </DistanceCol>
+        </Row>
+        <Button
+          margin="16px 0 0 0"
+          color="white"
+          fill="BLUE"
+          buttonVariation="variable-width"
+          text="Search"
+          fontSize="fs10"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          onPress={handleSubmit(onSearch)}
+          locator="pdp_color_swatch"
+          accessibilityLabel="Search"
+          disabled={pristine || submitting || disableButton}
+        />
+        {isSkuResolved && (
+          <BodyCopyWithSpacing
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            textAlign="center"
+            text={storeSearchError}
+          />
+        )}
+      </PickUpModalView>
     ) : null;
   }
 
