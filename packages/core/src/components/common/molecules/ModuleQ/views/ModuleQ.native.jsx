@@ -48,6 +48,12 @@ const {
 } = CAROUSEL_OPTIONS.APP;
 const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
+/**
+ * This function is being called through snap carousel render function.
+ * @param {Object} productItem SnapCarousel data item
+ * @param {Object} navigation Navigation object required for children
+ * @param {String} moduleQMainTile label required for all slides main tile.
+ */
 function getCarouselSlide(productItem, navigation, moduleQMainTile) {
   const { imageUrl, items, subItemsId, productItemIndex } = productItem;
   const totalOutfitItemsToShow = 2;
