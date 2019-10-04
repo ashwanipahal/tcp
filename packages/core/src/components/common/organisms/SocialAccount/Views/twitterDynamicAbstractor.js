@@ -2,8 +2,9 @@
  * @description abstractors is responsible for making twitter calls like Auth.
  */
 
-import {endpoints} from './endpoints.js';
-import {ServiceResponseError} from 'service/ServiceResponseError';
+import endpoints from '../../../../../services/endpoints';
+import { executeStatefulAPICall } from '../../../../../services/handler/handler';
+import { getAPIConfig } from '../../../../../utils';
 
 let previous = null;
 
@@ -19,60 +20,50 @@ let previous = null;
 //   }
 //   return previous;
 // };
+const getAuthToken = () => {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    webService: endpoints.getTwitterAuthToken,
+    body: {
+      storeId: apiConfig.storeId,
+    },
+  };
 
-class TwitterDynamicAbstractor {
-    constructor (apiHelper) {
-        this.apiHelper = apiHelper;
-    }
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      return res.body.requestToken;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
-    /**
-     * @method getAuthToken this method fetchs the auth token for twitter. This is the step one of twitter integration
-     * @param null
-     */
+/**
+ * @method getAccessToken this method fetchs the acess token for person connecting thier twitter with TCP.
+ * This is the step Three of twitter integration where we send the auth token and verifier received from step 2 and
+ * send it to twitter api which in return provides with the access token.
+ * @param oauthToken {String} The auth token for the user received in step 2.
+ * @param verifier {String} The verifier for the user received in step 2.
+ */
 
-    getAuthToken = () => {
-        let payload = {
-            header: {
-                storeId: this.apiHelper.configOptions.storeId
-            },
-            webService: endpoints.getTwitterAuthToken
-        };
-        return this.apiHelper.webServiceCall(payload).then((res) => {
-            if (this.apiHelper.responseContainsErrors(res)) {
-              throw new ServiceResponseError(res);
-            }
-            return res.body.requestToken;
-          }).catch((err) => {
-            throw this.apiHelper.getFormattedError(err);
-          });
-    }
+const getAccessToken = (oauthToken, verifier) => {
+  const apiConfig = getAPIConfig();
+  let payload = {
+    header: {
+      verifier,
+      oauthToken,
+      storeId: apiConfig.storeId,
+    },
+    webService: endpoints.getTwitterAccessToken,
+  };
 
-    /**
-     * @method getAccessToken this method fetchs the acess token for person connecting thier twitter with TCP.
-     * This is the step Three of twitter integration where we send the auth token and verifier received from step 2 and 
-     * send it to twitter api which in return provides with the access token.
-     * @param oauthToken {String} The auth token for the user received in step 2.
-     * @param verifier {String} The verifier for the user received in step 2.
-     */
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      return res.body.accessToken;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
-    getAccessToken = (oauthToken,verifier) => {
-        let payload = {
-            header: {
-                verifier,
-                oauthToken,
-                storeId: this.apiHelper.configOptions.storeId
-            },
-            webService: endpoints.getTwitterAccessToken
-        };
-        return this.apiHelper.webServiceCall(payload).then((res) => {
-            if (this.apiHelper.responseContainsErrors(res)) {
-              throw new ServiceResponseError(res);
-            }
-            return res.body.accessToken;
-          }).catch((err) => {
-            throw this.apiHelper.getFormattedError(err);
-          });
-    }
-}
-
-export default TwitterDynamicAbstractor;
+export { getAuthToken, getAccessToken };

@@ -11,6 +11,7 @@ import config from './config';
 import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
+import { getAccessToken } from './twitterDynamicAbstractor';
 
 let elem;
 let saveAccountInfo;
@@ -49,8 +50,8 @@ class TwitterLoginComponent extends React.Component {
    */
 
   openChildWindow = () => {
-      const test1 = getLocationOrigin();
-      const test2 = getSiteId();
+    const test1 = getLocationOrigin();
+    const test2 = getSiteId();
     window.open(
       `${getLocationOrigin()}/${getSiteId()}${config.ACCOUNT_REDIRECT.TWITTER}`,
       '_blank',
@@ -96,13 +97,11 @@ class TwitterLoginComponent extends React.Component {
    */
 
   getAccessToken = () => {
-    this.twitterAbstractor
-      .getAccessToken(this.tokenInput.value, this.verifierInput.value)
-      .then(res => {
-        if (res) {
-          this.saveAccountInfo(this.createTwitterObj(res));
-        }
-      });
+    getAccessToken(this.tokenInput.value, this.verifierInput.value).then(res => {
+      if (res) {
+        this.saveAccountInfo(this.createTwitterObj(res));
+      }
+    });
   };
 
   /**
@@ -122,19 +121,13 @@ class TwitterLoginComponent extends React.Component {
    */
   handleOpenCloseTwitterOnKeyPress = () => {
     const { props } = this.props;
-    const twitterConnection = !props.elem.isConnected
-      ? this.openChildWindow
-      : this.logout;
-    return handleGenericKeyDown(
-      event,
-      config.KEY_CODES.ENTER,
-      twitterConnection
-    );
+    const twitterConnection = !props.elem.isConnected ? this.openChildWindow : this.logout;
+    return handleGenericKeyDown(event, config.KEY_CODES.ENTER, twitterConnection);
   };
 
   render() {
     const { saveSocialAcc, loginStatus, pointModalClose } = this.props;
-  debugger
+    debugger;
     saveAccountInfo = saveSocialAcc;
     elem = loginStatus;
     closeModal = pointModalClose;
@@ -185,6 +178,10 @@ class TwitterLoginComponent extends React.Component {
               </React.Fragment>
             );
           })}
+
+        <input type="text" id="twitter-token" ref={this.setTokenInput} />
+        <input type="text" id="twitter-verifer" ref={this.setVerifierInput} />
+        <input type="text" onClick={this.getAccessToken} id="twitter-auth-tokens" />
       </React.Fragment>
       //   <React.Fragment>
       //     <div
@@ -194,13 +191,7 @@ class TwitterLoginComponent extends React.Component {
       //     >
       //      twitter
       //     </div>
-      //     <input type="hidden" id="twitter-token" ref={this.setTokenInput} />
-      //     <input type="hidden" id="twitter-verifer" ref={this.setVerifierInput} />
-      //     <input
-      //       type="hidden"
-      //       onClick={this.getAccessToken}
-      //       id="twitter-auth-tokens"
-      //     />
+
       //   </React.Fragment>
     );
   }

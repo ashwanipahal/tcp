@@ -369,5 +369,13 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
   },
+  getTwitterAuthToken: {
+    method: 'GET',
+    URI: 'v2/twitter/requestToken',
+  },
+  getTwitterAccessToken: {
+    method: 'GET',
+    URI: 'v2/twitter/accessToken',
+  },
 };
 export default endpoints;

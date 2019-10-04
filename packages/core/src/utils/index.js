@@ -32,6 +32,8 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
+  canUseDOM,
+  getUrlParameter,
 } from './utils.web';
 
 export {
