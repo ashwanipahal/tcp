@@ -13,7 +13,7 @@ const SectionStyle = css`
 `;
 
 const getTextBaseStyle = props => {
-  const { theme, status } = props;
+  const { theme, status, disableSpace } = props;
   return `
     color: ${theme.colorPalette.red[500]};
 
@@ -21,7 +21,9 @@ const getTextBaseStyle = props => {
       ${status === 'error' ? `border: 2px solid ${props.theme.colorPalette.red[500]};` : ''};
       ${status === 'info' ? `border: 2px solid ${props.theme.colorPalette.gray[600]};` : ''};
     padding:${theme.spacing.ELEM_SPACING.MED};
-    margin: ${theme.spacing.ELEM_SPACING.XS};
+    margin: ${!disableSpace ? theme.spacing.ELEM_SPACING.XS : 0};
+    justify-content: ${!disableSpace ? 'space-between' : 'flex-start'};
+    align-items: center;
     `;
 };
 
