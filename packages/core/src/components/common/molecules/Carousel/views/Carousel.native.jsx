@@ -53,6 +53,7 @@ type Props = {
   autoplayInterval: Number,
   buttonPosition: String,
   autoplay?: Boolean,
+  hasParallaxImages?: Boolean,
 };
 
 type State = {
@@ -274,6 +275,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       buttonPosition,
       darkArrow,
       options,
+      hasParallaxImages,
     } = this.props;
 
     const { autoplay, activeSlide } = this.state;
@@ -292,10 +294,12 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     if (settings.loop === false && darkArrow && data.length - 1 <= activeSlide) {
       iconTypePre = prevIcon;
     }
-
+    let carouselWidth = width - 64;
+    if (hasParallaxImages) {
+      carouselWidth = width - 80;
+    }
     if (variation === 'show-arrow') {
       // reduce left and right arrow with from the total with to fix center aline issue
-      const carouselWidth = width - 64;
       return (
         <View>
           <Container>
@@ -320,6 +324,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               autoplay={autoplay}
               autoplayInterval={autoplayInterval}
               ref={this.carouselRef}
+              hasParallaxImages={hasParallaxImages}
             />
             <TouchableView
               accessibilityRole="button"
@@ -346,13 +351,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           data={data}
           renderItem={renderItem}
           sliderWidth={width}
-          itemWidth={width}
+          itemWidth={hasParallaxImages ? carouselWidth : width}
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}
           autoplay={autoplay}
           vertical={vertical}
           autoplayInterval={autoplayInterval}
+          hasParallaxImages={hasParallaxImages}
         />
 
         {data.length > 1 && (
@@ -374,6 +380,7 @@ SnapCarousel.defaultProps = {
   hidePlayStopButton: false,
   overlap: false,
   darkArrow: false,
+  hasParallaxImages: false,
 };
 
 export default withTheme(SnapCarousel);
