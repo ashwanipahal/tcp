@@ -147,7 +147,6 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
     };
   }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
-  yield call(loadPersonalizedCoupons, res, orderId);
   yield put(getSetOrderConfirmationActn(res));
   const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
   const isCaSite = yield call(isCanada);
@@ -156,6 +155,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   if (isGuestUser && !isCaSite && email) {
     yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
   }
+  return res;
 }
 
 // method to handle submit of order in review page
@@ -322,12 +322,13 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   //   pendingPromises.push(runPromisesInSerial(localPromises));
   // }
   yield all(pendingPromises);
-  yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
+  const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
   if (!isMobileApp()) {
     utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
   } else if (navigation) {
     navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
   }
+  yield call(loadPersonalizedCoupons, res, orderId);
   const cartItems = yield select(BagPageSelectors.getOrderItems);
   // const vendorId =
   //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
