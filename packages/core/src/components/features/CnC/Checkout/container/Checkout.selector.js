@@ -728,18 +728,6 @@ function isVenmoPaymentAvailable(state) {
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
-function isVenmoMessageDisplayed(state) {
-  const hasShippingCaptured =
-    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
-  const hasPickupCaptured =
-    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
-  return (
-    hasPickupCaptured ||
-    hasShippingCaptured ||
-    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
-  );
-}
-
 /**
  * This method is used to decide if we need to show review page next based on order conditions.
  */
@@ -951,7 +939,6 @@ export default {
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
-  isVenmoMessageDisplayed,
   isVenmoNonceActive,
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
