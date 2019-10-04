@@ -28,7 +28,7 @@ exports[`Notification Component should render notification component with status
       width="25px"
     />
     <Styled(View)
-      spacingStyles="padding-XXS"
+      spacingStyles="padding-MED padding-top-XXS padding-bottom-XXS"
     >
       <Styled(BodyCopy)
         accessibilityText=""
