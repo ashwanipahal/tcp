@@ -57,6 +57,7 @@ import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyPro
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
+import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
@@ -130,6 +131,7 @@ export default function* rootSaga() {
     ConfirmationPageSaga(),
     NavigateXHRSaga(),
     OrdersSaga(),
+    OutfitDetailsSaga(),
     FavoriteSaga(),
   ]);
 }

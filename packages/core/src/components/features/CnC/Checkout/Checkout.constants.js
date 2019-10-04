@@ -59,7 +59,7 @@ const CONSTANTS = {
     CHECKOUT_SHIPPING: 'CheckoutShipping',
     CHECKOUT_BILLING: 'CheckoutBilling',
     CHECKOUT_REVIEW: 'CheckoutReview',
-    CHECKOUT_CONFIRMATION: 'CheckoutConfirmation',
+    CHECKOUT_CONFIRMATION: 'Confirmation',
   },
 
   PAYMENT_CARD_TYPE: {
