@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import superagent from 'superagent';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { PropTypes } from 'prop-types';
+import { isGymboree } from '@tcp/core/src/utils/index.native';
 import { getAPIConfig, getLabelValue } from '@tcp/core/src/utils';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
@@ -30,6 +31,8 @@ const { INITIAL_STORE_LIMIT, GOOGLE_SEARCH_API_ENDPOINT } = constants;
 class StoreSearch extends Component {
   state = {
     errorNotFound: null,
+    gymSelected: isGymboree(),
+    outletSelected: false,
   };
 
   locationRef = null;
