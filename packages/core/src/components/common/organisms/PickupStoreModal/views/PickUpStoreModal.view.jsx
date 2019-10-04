@@ -518,12 +518,14 @@ class PickUpStoreModalView extends React.Component {
         className={`${className} TCPModal__Content`}
         heading={pickupModalHeading}
         fixedWidth
+        fullWidth
         stickyHeader
         inheritedStyles={modalstyles}
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
         headingAlign="center"
         horizontalBar={false}
+        stickyCloseIcon
       >
         {this.renderModal()}
       </Modal>

@@ -27,6 +27,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 
 type Props = {
   isOpen: boolean,
+  stickyCloseIcon: boolean,
   children: node,
   isOverlay?: boolean,
 };
@@ -39,11 +40,18 @@ type CloseIconProps = {
   headerStyle: Object,
   iconType: String,
   isOverlay: Boolean,
+  stickyCloseIcon: Boolean,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
+const getCloseIcon = ({
+  stickyCloseIcon,
+  onRequestClose,
+  headerStyle,
+  iconType,
+  isOverlay,
+}: CloseIconProps) => {
   return (
-    <ImageWrapper style={headerStyle}>
+    <ImageWrapper stickyCloseIcon={stickyCloseIcon} style={headerStyle}>
       <StyledTouchableOpacity
         onPress={onRequestClose}
         accessibilityRole="button"
@@ -71,6 +79,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     iconType,
     fullWidth,
     customTransparent,
+    stickyCloseIcon,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
@@ -93,7 +102,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
             <StatusBar hidden />
             <RowWrapper isOverlay={isOverlay}>
               {heading && (
-                <ModalHeading fullWidth={fullWidth}>
+                <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
                   <BodyCopy
                     mobileFontFamily={headingFontFamily || 'primary'}
                     fontWeight={headingFontWeight || 'extrabold'}
@@ -103,7 +112,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                   />
                 </ModalHeading>
               )}
-              {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay })}
+              {getCloseIcon({ onRequestClose, headerStyle, iconType, isOverlay, stickyCloseIcon })}
             </RowWrapper>
             {horizontalBar ? (
               <LineWrapper>
