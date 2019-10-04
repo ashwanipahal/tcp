@@ -1,0 +1,588 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditPersonalInformationForm component should renders correctly in initial state 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="editPersonalInfo-firstname"
+      id="firstName"
+      label="lbl_profile_personal_info_firstName"
+      name="firstName"
+    />
+  </Styled(View)>
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="editPersonalInfo-lastname"
+    id="lastName"
+    label="lbl_profile_personal_info_lastName"
+    name="lastName"
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="editPersonalInfo-email"
+    id="Email"
+    label="lbl_profile_personal_info_email"
+    name="Email"
+    type="email"
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_profile_email_used_login"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="editPersonalInfo-phnumber"
+      id="phoneNumber"
+      label="lbl_profile_personal_info_phoneNumber"
+      name="phoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "bounces": true,
+              "data": Array [],
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data={
+          Array [
+            Object {
+              "displayName": "Month",
+              "id": "",
+            },
+          ]
+        }
+        dataLocator="addnewaddress-country"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 41,
+          }
+        }
+        heading="lbl_profile_personal_info_birthday"
+        itemStyle={
+          Object {
+            "color": "black",
+            "height": 41,
+            "paddingLeft": 6,
+          }
+        }
+        onValueChange={[Function]}
+        selectedValue="Month"
+        variation="secondary"
+      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="userBirthMonth"
+          name="userBirthMonth"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)
+      zipCode={true}
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "bounces": true,
+              "data": Array [],
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        data={
+          Array [
+            Object {
+              "displayName": "Year",
+              "id": "",
+            },
+          ]
+        }
+        dataLocator="editPersonalInfo-userBirthYear"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 41,
+          }
+        }
+        itemStyle={
+          Object {
+            "color": "black",
+            "height": 41,
+            "paddingLeft": 6,
+          }
+        }
+        onValueChange={[Function]}
+        selectedValue="Year"
+        variation="secondary"
+      />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="userBirthYear"
+        name="userBirthYear"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_profile_celebration_birthday"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      dataLocator="editPersonalInfo-isEmployee"
+      id="isEmployee"
+      isChecked={false}
+      name="isEmployee"
+      rightText="lbl_profile_personal_info_tcp_employee"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="editPersonalInfo-associateId"
+      id="associateId"
+      label="lbl_profile_personal_info_associate_id"
+      name="associateId"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_profile_personal_info_updateCta"
+      theme={Object {}}
+      type="submit"
+      url=""
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={null}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_profile_personal_info_cancelCta"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
