@@ -30,13 +30,13 @@ const ROUTES_LIST = [
     resolver: '/index',
   },
   {
-    noSlugPath: 'store',
+    noSlugPath: 'store-locator',
     path: '/store-locator',
     resolver: '/storeLocator',
   },
   {
     noSlugPath: 'store',
-    path: '/store/:storeStr?',
+    path: '/store/:storeStr',
     resolver: '/storeDetail',
     params: ['storeStr'],
   },
