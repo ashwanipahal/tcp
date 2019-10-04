@@ -29,6 +29,7 @@ exports[`CartItemRadioButtons native Component LabeledRadioButton native should 
     <RadioButtonLabel
       index={-1}
       labelHorizontal={true}
+      labelStyle={Object {}}
       labelWrapStyle={Object {}}
       obj={Object {}}
       onPress={[Function]}

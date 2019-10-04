@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LabeledRadioButton from '../../../atoms/LabeledRadioButton';
-import BodyCopy from '../../../atoms/BodyCopy';
+import LabeledRadioButton from '../../../../../atoms/LabeledRadioButton';
+import BodyCopy from '../../../../../atoms/BodyCopy';
 
 const PickStoreDetails = buttonLabel => {
   return (
