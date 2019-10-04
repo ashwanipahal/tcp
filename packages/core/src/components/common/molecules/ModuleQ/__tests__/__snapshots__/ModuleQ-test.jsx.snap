@@ -2,7 +2,7 @@
 
 exports[`ModuleQ component renders correctly 1`] = `
 <Styled(Grid)
-  className=" yellow_bg moduleQ"
+  className=" yellow-bg moduleQ"
 >
   <Styled(Row)
     centered={true}
@@ -106,7 +106,7 @@ exports[`ModuleQ component renders correctly 1`] = `
             },
             Object {
               "category": Object {
-                "cat_id": "47502|460003",
+                "cat_id": "3002623_BQ",
               },
               "singleCTAButton": Object {
                 "target": "",
@@ -120,7 +120,7 @@ exports[`ModuleQ component renders correctly 1`] = `
             },
             Object {
               "category": Object {
-                "cat_id": "47501|460005",
+                "cat_id": "2081262_K3",
               },
               "singleCTAButton": null,
               "text": Object {
