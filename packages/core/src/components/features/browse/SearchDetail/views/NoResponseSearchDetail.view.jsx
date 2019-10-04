@@ -29,10 +29,14 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch } = this.props;
+    const { startSearch, slpLabels } = this.props;
     const searchText = this.searchInput.current.value;
     this.setState({ showProduct: Boolean(searchText.length) }, () => {
-      startSearch(searchText);
+      const payload = {
+        slpLabels,
+        searchText,
+      };
+      startSearch(payload);
     });
   };
 
@@ -60,6 +64,14 @@ class NoResponseSearchDetailView extends React.PureComponent {
       searchResultSuggestions && searchResultSuggestions.length
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
         : slpLabels.lbl_no_suggestion;
+
+    const ProductMatchesLabel = () => {
+      return (
+        <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
+          {getLabelValue(labels, 'lbl_search_product_matches')}
+        </BodyCopy>
+      );
+    };
 
     return (
       <div className={className}>
@@ -146,7 +158,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
               ) : (
                 <div className="matchBox">
                   <div className="matchLinkBox">
-                    (
                     {searchResults &&
                       searchResults.autosuggestList &&
                       searchResults.autosuggestList.map(item => {
@@ -157,7 +168,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                 {item.heading}
                               </BodyCopy>
                             )}
-
                             <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                               <ul>
                                 {item &&
@@ -179,12 +189,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
                           </div>
                         );
                       })}
-                    )
                   </div>
                   <div className="matchProductBox">
-                    <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-                      {getLabelValue(labels, 'lbl_search_product_matches')}
-                    </BodyCopy>
+                    <ProductMatchesLabel />
                     <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                       <ul>
                         {searchResults &&
@@ -316,8 +323,8 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    startSearch: searchTerm => {
-      dispatch(getSearchResult(searchTerm));
+    startSearch: payload => {
+      dispatch(getSearchResult(payload));
     },
   };
 };

@@ -80,7 +80,7 @@ const getCategoryMatches = response => {
  */
 
 export const makeSearch = (input, defaultResultCount = 4) => {
-  const { suggestionsCount, searchTerm, isHideBundleProduct } = input;
+  const { suggestionsCount, searchTerm, isHideBundleProduct, slpLabels } = input;
 
   const bundleFilter = isHideBundleProduct ? { filter: '-product_type:BUNDLE' } : {};
   const payload = {
@@ -148,11 +148,11 @@ export const makeSearch = (input, defaultResultCount = 4) => {
       return {
         autosuggestList: [
           {
-            heading: "I'M LOOKING FOR...",
+            heading: `${slpLabels.lbl_im_looking_for}`,
             suggestions: autoSuggestItems,
           },
           {
-            heading: 'CATEGORY',
+            heading: `${slpLabels.lbl_category_matches}`,
             suggestions: categories,
           },
         ],
