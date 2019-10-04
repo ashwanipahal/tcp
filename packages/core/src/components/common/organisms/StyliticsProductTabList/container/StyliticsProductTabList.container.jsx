@@ -6,28 +6,40 @@ import { styliticsProductTabListDataReq } from './StyliticsProductTabList.action
 import { getStyliticsProductTabListSelector } from './StyliticsProductTabList.selector';
 import ProductTabListView from '../views';
 
+// TODO: Implementing fixed stylitics number till we get the CMS text-field updated.
+const styliticsItemNumbers = ['2044392_10', '2044391_10', '3002623_BQ', '2081262_K3'];
+
 /*
     Create a required data object for the ButtonTabs components
     which is being used in the ProductTabList view.
   */
 function getButtonTabItems(tabItems) {
-  return tabItems.map(item => {
+  return tabItems.map((item, index) => {
     const {
-      category: { cat_id: catId } = {},
+      // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
+      // category: { cat_id: catId } = {},
       text: { text },
     } = item;
-    return { label: text, id: catId };
+
+    // TODO: This should be removed when the CMS category field gets updated with simple text.
+    return { label: text, id: styliticsItemNumbers[index] };
+    // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
+    // return { label: text, id: catId };
   });
 }
 
 /* Create a map of category Ids with the items.  */
 function getTabItemsMap(tabItems) {
-  return tabItems.reduce((map, item) => {
-    const {
+  return tabItems.reduce((map, item, index) => {
+    // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
+    /* const {
       category: { cat_id: catId },
-    } = item;
+    } = item; */
     const tabsMap = map;
-    tabsMap[catId] = item;
+    // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
+    /* -tabsMap[catId] = item; */
+    // TODO: This should be removed when the CMS category field gets updated with simple text.
+    tabsMap[styliticsItemNumbers[index]] = item;
     return tabsMap;
   }, {});
 }
@@ -51,9 +63,12 @@ function StyliticsProductTabListContainer(props) {
         getStyliticsProductTabListData({ categoryId: selectedCategoryId });
       }
     } else {
-      const [item = {}] = tabItems;
+      // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
+      /* const [item = {}] = tabItems;
       const { category: { cat_id: categoryId } = {} } = item;
-      setSelectedCategoryId(categoryId);
+      setSelectedCategoryId(categoryId); */
+      // TODO: This should be removed when the CMS category field gets updated with simple text.
+      setSelectedCategoryId(styliticsItemNumbers[0]);
     }
   }, [selectedCategoryId]);
 

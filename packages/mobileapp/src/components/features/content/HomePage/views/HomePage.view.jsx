@@ -5,7 +5,6 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-import moduleQMock from '@tcp/core/src/services/abstractors/common/moduleQ/mock';
 
 import moduleSMock1 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import moduleSMock2 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v2';
@@ -39,6 +38,7 @@ const modulesMap = {
   moduleJ: ModuleJ,
   moduleR: ModuleR,
   moduleS: ModuleS,
+  moduleQ: ModuleQ,
 };
 
 const buttonMargin = { margin: 30 };
@@ -87,7 +87,6 @@ class HomePageView extends React.PureComponent<Props> {
         <ModuleS {...moduleSMock2.moduleS.composites} navigation={navigation} />
         <ModuleS {...moduleSMock3.moduleS.composites} navigation={navigation} />
         <ModuleS {...moduleSMock4.moduleS.composites} navigation={navigation} />
-        <ModuleQ navigation={navigation} {...moduleQMock.moduleQ.composites} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth

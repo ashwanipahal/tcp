@@ -77,8 +77,6 @@ class ModuleQ extends React.PureComponent {
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
-    console.log(selectedProductList);
-
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
         <Row centered>
