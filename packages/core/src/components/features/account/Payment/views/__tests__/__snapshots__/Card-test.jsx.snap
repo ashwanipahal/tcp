@@ -3,7 +3,16 @@
 exports[`CardView component should renders correctly when Card are not present 1`] = `
 <Fragment>
   <CardList
+    cardList={Array []}
+    checkbalanceValueInfo=""
+    className=""
     labels={Object {}}
+    onGetBalanceCard={null}
+    setDefaultPaymentMethod={null}
+    setDeleteModalMountState={null}
+    setSelectedGiftCard=""
+    showNotification={null}
+    showNotificationCaptcha={null}
   />
 </Fragment>
 `;

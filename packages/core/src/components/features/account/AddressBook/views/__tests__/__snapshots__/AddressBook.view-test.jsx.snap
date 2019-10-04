@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddressBook component should renders correctly when addresses are not present 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -75,12 +77,18 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "common": Object {},
       }
     }
+    onDeleteAddress={null}
+    openState={false}
+    setDeleteModalMountState={null}
+    showUpdatedNotificationOnModal={null}
   />
 </div>
 `;
 
 exports[`AddressBook component should renders correctly when addresses are present 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -143,12 +151,15 @@ exports[`AddressBook component should renders correctly when addresses are prese
         },
       ]
     }
+    deleteModalMountedState={false}
     labels={
       Object {
         "addressBook": Object {},
         "common": Object {},
       }
     }
+    onDefaultShippingAddressClick={Object {}}
+    setDeleteModalMountState={null}
     setSelectedAddress={[Function]}
   />
   <Styled(DeleteAddressModal)
@@ -170,6 +181,10 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "common": Object {},
       }
     }
+    onDeleteAddress={null}
+    openState={false}
+    setDeleteModalMountState={null}
+    showUpdatedNotificationOnModal={null}
   />
 </div>
 `;

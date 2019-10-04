@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Heading from '../../../../common/atoms/Heading';
 import EmptyCard from '../../common/molecule/EmptyCard/views/EmptyCard.view';
@@ -11,20 +12,20 @@ import { CardView } from './Card.view';
 
 // @flow
 
-type Props = {
-  labels: object,
-  creditCardList: Array<object>,
-  className: string,
-  setDefaultPaymentMethod: Function,
-  setDeleteModalMountState: Function,
-  deleteModalMountedState: false,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  showNotification: boolean,
-  setSelectedCard: string,
-  addCreditCard: () => {},
-  editCreditCard: () => {},
-};
+// type Props = {
+//   labels: object,
+//   creditCardList: Array<object>,
+//   className: string,
+//   setDefaultPaymentMethod: Function,
+//   setDeleteModalMountState: Function,
+//   deleteModalMountedState: false,
+//   onDeleteCard: Function,
+//   showUpdatedNotificationOnModal: any,
+//   showNotification: boolean,
+//   setSelectedCard: string,
+//   addCreditCard: () => {},
+//   editCreditCard: () => {},
+// };
 
 const CreditCardList = ({
   labels,
@@ -92,5 +93,34 @@ const CreditCardList = ({
   );
 };
 
+CreditCardList.defaultProps = {
+  labels: {},
+  creditCardList: [],
+  className: '',
+  setDefaultPaymentMethod: null,
+  setDeleteModalMountState: null,
+  deleteModalMountedState: false,
+  onDeleteCard: null,
+  showUpdatedNotificationOnModal: '',
+  showNotification: null,
+  setSelectedCard: '',
+  addCreditCard: null,
+  editCreditCard: null,
+};
+
+CreditCardList.propTypes = {
+  labels: PropTypes.shape(),
+  creditCardList: PropTypes.arrayOf(PropTypes.shape()),
+  className: PropTypes.string,
+  setDefaultPaymentMethod: PropTypes.func,
+  setDeleteModalMountState: PropTypes.func,
+  deleteModalMountedState: PropTypes.bool,
+  onDeleteCard: PropTypes.func,
+  showUpdatedNotificationOnModal: PropTypes.string,
+  showNotification: PropTypes.bool,
+  setSelectedCard: PropTypes.string,
+  addCreditCard: PropTypes.func,
+  editCreditCard: PropTypes.func,
+};
 export default withStyles(CreditCardList, styles);
 export { CreditCardList as CreditCardListVanilla };

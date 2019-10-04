@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -29,27 +30,27 @@ import PaymentView from '../views/PaymentView';
 import utils from '../../../../../utils';
 
 // @flow
-type Props = {
-  getCardListAction: Function,
-  showNotification: any,
-  deleteModalMountedState: boolean,
-  setDeleteModalMountState: Function,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  creditCardList: List<any>,
-  venmoCardList: List<any>,
-  giftCardList: List<any>,
-  cardList: List<any>,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  setDefaultPaymentMethod: Function,
-  getPaymentBannerRichText: Function,
-  paymentBannerContentId: string,
-  showNotificationCaptcha: boolean,
-  paymentBannerRichText: string,
-  clearPaymentNotification: () => void,
-  labels: object,
-};
+// type Props = {
+//   getCardListAction: Function,
+//   showNotification: any,
+//   deleteModalMountedState: boolean,
+//   setDeleteModalMountState: Function,
+//   onDeleteCard: Function,
+//   showUpdatedNotificationOnModal: any,
+//   creditCardList: List<any>,
+//   venmoCardList: List<any>,
+//   giftCardList: List<any>,
+//   cardList: List<any>,
+//   onGetBalanceCard: Function,
+//   checkbalanceValueInfo: any,
+//   setDefaultPaymentMethod: Function,
+//   getPaymentBannerRichText: Function,
+//   paymentBannerContentId: string,
+//   showNotificationCaptcha: boolean,
+//   paymentBannerRichText: string,
+//   clearPaymentNotification: () => void,
+//   labels: object,
+// };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
@@ -157,6 +158,49 @@ const mapStateToProps = state => {
   };
 };
 
+PaymentContainer.defaultProps = {
+  getCardListAction: null,
+  showNotification: '',
+  deleteModalMountedState: null,
+  setDeleteModalMountState: null,
+  onDeleteCard: null,
+  showUpdatedNotificationOnModal: '',
+  creditCardList: [],
+  venmoCardList: [],
+  giftCardList: [],
+  cardList: [],
+  onGetBalanceCard: null,
+  checkbalanceValueInfo: '',
+  setDefaultPaymentMethod: null,
+  getPaymentBannerRichText: null,
+  paymentBannerContentId: '',
+  showNotificationCaptcha: '',
+  paymentBannerRichText: '',
+  clearPaymentNotification: null,
+  labels: {},
+};
+
+PaymentContainer.propTypes = {
+  getCardListAction: PropTypes.func,
+  showNotification: PropTypes.string,
+  deleteModalMountedState: PropTypes.bool,
+  setDeleteModalMountState: PropTypes.func,
+  onDeleteCard: PropTypes.func,
+  showUpdatedNotificationOnModal: PropTypes.string,
+  creditCardList: PropTypes.arrayOf(PropTypes.string),
+  venmoCardList: PropTypes.arrayOf(PropTypes.string),
+  giftCardList: PropTypes.arrayOf(PropTypes.string),
+  cardList: PropTypes.arrayOf(PropTypes.string),
+  onGetBalanceCard: PropTypes.func,
+  checkbalanceValueInfo: PropTypes.string,
+  setDefaultPaymentMethod: PropTypes.func,
+  getPaymentBannerRichText: PropTypes.func,
+  paymentBannerContentId: PropTypes.string,
+  showNotificationCaptcha: PropTypes.bool,
+  paymentBannerRichText: PropTypes.string,
+  clearPaymentNotification: PropTypes.func,
+  labels: PropTypes.shape(),
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps

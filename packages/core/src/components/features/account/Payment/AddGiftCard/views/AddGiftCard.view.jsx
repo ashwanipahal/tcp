@@ -9,14 +9,14 @@ import Anchor from '../../../../../common/atoms/Anchor';
 import AddGiftCardForm from '../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
 // @flow
-type Props = {
-  className: String,
-  onAddGiftCardClick: Function,
-  addGiftCardResponse: String,
-  goBackToPayment: Function,
-  labels: Object,
-  formErrorMessage: Object,
-};
+// type Props = {
+//   className: String,
+//   onAddGiftCardClick: Function,
+//   addGiftCardResponse: String,
+//   goBackToPayment: Function,
+//   labels: Object,
+//   formErrorMessage: Object,
+// };
 
 class AddGiftCard extends React.PureComponent<Props> {
   static propTypes = {
@@ -77,6 +77,24 @@ class AddGiftCard extends React.PureComponent<Props> {
     );
   }
 }
+
+AddGiftCard.defaultProps = {
+  className: '',
+  onAddGiftCardClick: null,
+  addGiftCardResponse: '',
+  goBackToPayment: null,
+  labels: {},
+  formErrorMessage: {},
+};
+
+AddGiftCard.propTypes = {
+  className: PropTypes.string,
+  onAddGiftCardClick: PropTypes.func,
+  addGiftCardResponse: PropTypes.string,
+  goBackToPayment: PropTypes.func,
+  labels: PropTypes.shape([]),
+  formErrorMessage: PropTypes.shape([]),
+};
 
 export default withStyles(AddGiftCard, styles);
 export { AddGiftCard as AddGiftCardVanilla };

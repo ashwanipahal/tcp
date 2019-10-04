@@ -2,6 +2,7 @@
 
 exports[`AddressList component should renders correctly 1`] = `
 <Styled(Row)
+  className=""
   fullBleed={true}
 >
   <Styled(Col)
@@ -37,6 +38,9 @@ exports[`AddressList component should renders correctly 1`] = `
         }
       }
       labels={Object {}}
+      onDefaultShippingAddressClick={null}
+      setDeleteModalMountState={null}
+      setSelectedAddress={null}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -72,6 +76,9 @@ exports[`AddressList component should renders correctly 1`] = `
         }
       }
       labels={Object {}}
+      onDefaultShippingAddressClick={null}
+      setDeleteModalMountState={null}
+      setSelectedAddress={null}
     />
   </Styled(Col)>
 </Styled(Row)>

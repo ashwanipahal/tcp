@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -8,13 +9,13 @@ import styles from '../EmptyCard.style';
 import { getIconPath } from '../../../../../../../utils';
 
 // @flow
-type Props = {
-  labels: object,
-  className: string,
-  icon: string,
-  alt: string,
-  prefix: string,
-};
+// type Props = {
+//   labels: object,
+//   className: string,
+//   icon: string,
+//   alt: string,
+//   prefix: string,
+// };
 
 const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
   const heading = getLabelValue(labels, `lbl_payment_${prefix}EmptyHeading`, 'paymentGC');
@@ -98,6 +99,19 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
     </div>
   );
 };
-
+EmptyCard.defaultProps = {
+  labels: {},
+  className: '',
+  icon: '',
+  alt: '',
+  prefix: '',
+};
+EmptyCard.propTypes = {
+  labels: PropTypes.shape([]),
+  className: PropTypes.string,
+  icon: PropTypes.string,
+  alt: PropTypes.string,
+  prefix: PropTypes.string,
+};
 export default withStyles(EmptyCard, styles);
 export { EmptyCard as EmptyCardVanilla };

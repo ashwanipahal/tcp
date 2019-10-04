@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import { getIconPath } from '../../../../../utils';
 import { Image } from '../../../../common/atoms';
@@ -6,10 +7,10 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
 
 // @flow
-type Props = {
-  className: string,
-  data: object,
-};
+// type Props = {
+//   className: string,
+//   data: object,
+// };
 
 class VenmoCardModalInfo extends React.Component<Props> {
   render() {
@@ -44,6 +45,15 @@ class VenmoCardModalInfo extends React.Component<Props> {
     );
   }
 }
+
+VenmoCardModalInfo.defaultProps = {
+  className: '',
+  data: {},
+};
+VenmoCardModalInfo.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.shape(),
+};
 
 export default withStyles(VenmoCardModalInfo, styles);
 export { VenmoCardModalInfo as VenmoCardModalInfoVanilla };

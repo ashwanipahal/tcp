@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../Offers.style';
@@ -7,10 +8,10 @@ import RichText from '../../../../../../common/atoms/RichText';
 
 // @flow
 
-type Props = {
-  labels: Object,
-  className: String,
-};
+// type Props = {
+//   labels: Object,
+//   className: String,
+// };
 
 const Offers = ({ labels, className }: Props) => {
   return (
@@ -28,6 +29,15 @@ const Offers = ({ labels, className }: Props) => {
       </Row>
     </div>
   );
+};
+Offers.defaultProps = {
+  labels: {},
+  className: '',
+};
+
+Offers.propTypes = {
+  labels: PropTypes.shape([]),
+  className: PropTypes.string,
 };
 
 export default withStyles(Offers, styles);

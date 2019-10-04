@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
@@ -10,15 +11,15 @@ import VenmoCardModalInfo from './VenmoCardModalInfo.view';
 import Button from '../../../../common/atoms/Button';
 // @flow
 
-type Props = {
-  data: Object,
-  className: string,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-  setDeleteModalMountState: Function,
-  onDeleteCard: Function,
-};
+// type Props = {
+//   data: Object,
+//   className: string,
+//   openState: boolean,
+//   showUpdatedNotificationOnModal: boolean,
+//   labels: Object,
+//   setDeleteModalMountState: Function,
+//   onDeleteCard: Function,
+// };
 
 /**
  * @function deleteCardModal The deleteCardModal component shows the address to delete.
@@ -157,6 +158,26 @@ class DeleteCardModal extends React.Component<Props> {
     );
   }
 }
+
+DeleteCardModal.defaultProps = {
+  data: {},
+  className: '',
+  openState: '',
+  showUpdatedNotificationOnModal: '',
+  labels: {},
+  setDeleteModalMountState: null,
+  onDeleteCard: null,
+};
+
+DeleteCardModal.propTypes = {
+  data: PropTypes.shape(),
+  className: PropTypes.string,
+  openState: PropTypes.bool,
+  showUpdatedNotificationOnModal: PropTypes.bool,
+  labels: PropTypes.shape(),
+  setDeleteModalMountState: PropTypes.func,
+  onDeleteCard: PropTypes.func,
+};
 
 export default withStyles(DeleteCardModal, styles);
 export { DeleteCardModal as DeleteCardModalVanilla };

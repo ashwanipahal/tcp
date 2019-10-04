@@ -30,15 +30,6 @@ type Props = {
   setDeleteModalMountState: Function,
 };
 
-// AddressView.propTypes = {
-//   addresses: PropTypes.shape([]),
-//   className: PropTypes.string,
-//   labels: PropTypes.shape({ }),
-//   onDefaultShippingAddressClick: PropTypes.func,
-//   setDeleteModalMountState: PropTypes.func,
-//   setSelectedAddress:PropTypes.func,
-// };
-
 export class AddressView extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
@@ -159,5 +150,36 @@ export class AddressView extends React.PureComponent<Props> {
     );
   }
 }
+
+// AddressView.defaultProps = {
+//   addresses: [],
+//   className: '',
+//   labels: {},
+//   onDefaultShippingAddressClick: {},
+//   showUpdatedNotification: null,
+//   showUpdatedNotificationOnModal: null,
+//   onDeleteAddress: null,
+//   deleteModalMountedState: false,
+//   setDeleteModalMountState: null,
+// };
+
+// AddressView.propTypes = {
+//   addresses: PropTypes.shape([]),
+//   className: PropTypes.string,
+//   labels: PropTypes.shape({}),
+//   onDefaultShippingAddressClick: PropTypes.func,
+//   setDeleteModalMountState: PropTypes.func,
+//   setSelectedAddress: PropTypes.func,
+
+//   addresses: PropTypes.shape([]),
+//   className: PropTypes.string,
+//   labels: {},
+//   onDefaultShippingAddressClick: {},
+//   showUpdatedNotification: null,
+//   showUpdatedNotificationOnModal: null,
+//   onDeleteAddress: null,
+//   deleteModalMountedState: false,
+//   setDeleteModalMountState: null,
+// };
 export default withStyles(AddressView, styles);
 export { AddressView as AddressViewVanilla };

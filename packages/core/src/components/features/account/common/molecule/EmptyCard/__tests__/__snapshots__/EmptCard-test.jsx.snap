@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyCard Component should render correctly 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -108,7 +110,9 @@ exports[`EmptyCard Component should render correctly 1`] = `
 `;
 
 exports[`EmptyCard Component should render correctly with credit card 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >

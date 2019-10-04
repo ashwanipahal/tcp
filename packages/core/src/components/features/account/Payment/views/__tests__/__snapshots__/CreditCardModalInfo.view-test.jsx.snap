@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreditCardModalInfo Component should render correctly 1`] = `
-<div>
+<div
+  className=""
+>
   <Styled(Row)
     className="elem-mb-LRG elem-mt-MED"
     fullBleed={true}
@@ -106,6 +108,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             textAlign="left"
           >
             111
+            <Component />
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -136,6 +139,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             textAlign="left"
           >
             fgh
+            <Component />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -170,7 +174,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             textAlign="left"
           >
             <Address
-              address={null}
+              address={Object {}}
               className=""
               dataLocatorPrefix="deletecreditmodal"
               fontWeight="regular"

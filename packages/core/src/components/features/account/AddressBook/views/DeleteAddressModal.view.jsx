@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
@@ -10,15 +11,15 @@ import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
-type Props = {
-  data: Object,
-  className: string,
-  onDeleteAddress: Function,
-  setDeleteModalMountState: Function,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-};
+// type Props = {
+//   data: Object,
+//   className: string,
+//   onDeleteAddress: Function,
+//   setDeleteModalMountState: Function,
+//   openState: boolean,
+//   showUpdatedNotificationOnModal: boolean,
+//   labels: Object,
+// };
 
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
@@ -152,6 +153,25 @@ class DeleteAddressModal extends React.Component<Props> {
     );
   }
 }
+
+DeleteAddressModal.defaultProps = {
+  data: {},
+  className: '',
+  onDeleteAddress: null,
+  setDeleteModalMountState: null,
+  openState: null,
+  showUpdatedNotificationOnModal: null,
+  labels: {},
+};
+DeleteAddressModal.propTypes = {
+  data: PropTypes.shape([]),
+  className: PropTypes.string,
+  onDeleteAddress: PropTypes.func,
+  setDeleteModalMountState: PropTypes.func,
+  openState: PropTypes.bool,
+  showUpdatedNotificationOnModal: PropTypes.bool,
+  labels: PropTypes.shape([]),
+};
 
 export default withStyles(DeleteAddressModal, styles);
 export { DeleteAddressModal as DeleteAddressModalVanilla };

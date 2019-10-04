@@ -44,6 +44,7 @@ exports[`CreditCardList Component should render correctly 1`] = `
         className="cardList__ccAddCta"
         dataLocator="payment-addcreditcard"
         fill="BLUE"
+        onClick={null}
       >
         lbl_payment_ccEmptyAddBtn
       </Styled(Button)>
@@ -84,6 +85,7 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         className="cardList__ccAddCta"
         dataLocator="payment-addcreditcard"
         fill="BLUE"
+        onClick={null}
       >
         lbl_payment_addBtn
       </Styled(Button)>
@@ -117,6 +119,9 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         },
       ]
     }
+    checkbalanceValueInfo=""
+    deleteModalMountedState={false}
+    editCreditCard={null}
     labels={
       Object {
         "common": Object {},
@@ -124,6 +129,14 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         "paymentGC": Object {},
       }
     }
+    onDeleteCard={null}
+    onGetBalanceCard={null}
+    setDefaultPaymentMethod={null}
+    setDeleteModalMountState={null}
+    setSelectedCard=""
+    showNotification={null}
+    showNotificationCaptcha={null}
+    showUpdatedNotificationOnModal=""
   />
 </div>
 `;

@@ -12,6 +12,7 @@ exports[`CardView component should render correctly 1`] = `
 exports[`CardView component should renders correctly when Card are not present 1`] = `
 <div>
   <Styled(Row)
+    className=""
     fullBleed={true}
   />
 </div>

@@ -2,18 +2,22 @@
 
 exports[`Delete card Modal should render correctly 1`] = `
 <Styled(Modal)
-  className="TCPModal__Content, undefined"
+  className="TCPModal__Content, "
   fixedWidth={true}
   heading="DELETE ADDRESS"
+  isOpen=""
   maxWidth="690px"
   minHeight="340px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
-  <div>
+  <div
+    className=""
+  >
     <CreditCardModalInfo
       TotalExp="undefined/undefined"
       address={null}
+      className=""
       creditCardHeading="lbl_payment_modalCCHeading"
       data={
         Object {
@@ -45,6 +49,10 @@ exports[`Delete card Modal should render correctly 1`] = `
           "paymentGC": Object {},
         }
       }
+      onDeleteCard={null}
+      openState=""
+      setDeleteModalMountState={null}
+      showUpdatedNotificationOnModal=""
     />
     <div
       className="deleteCardModal__btnWrapper"

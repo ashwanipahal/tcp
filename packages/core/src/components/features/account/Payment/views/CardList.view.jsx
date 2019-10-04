@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import CardTile from '../../common/molecule/CardTile/views/CardTile.view';
@@ -7,18 +8,19 @@ import styles from '../styles/CardList.style';
 
 // @flow
 
-type Props = {
-  labels: {},
-  className: string,
-  setDeleteModalMountState: Function,
-  setSelectedGiftCard: Function,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  cardList: Array<object>,
-  showNotification: boolean,
-  showNotificationCaptcha: boolean,
-  setDefaultPaymentMethod: Function,
-};
+// type Props = {
+//   labels: {},
+//   className: string,
+//   setDeleteModalMountState: Function,
+//   setSelectedGiftCard: Function,
+//   onGetBalanceCard: Function,
+//   checkbalanceValueInfo: any,
+//   cardList: Array<object>,
+//   showNotification: boolean,
+//   showNotificationCaptcha: boolean,
+//   setDefaultPaymentMethod: Function,
+// };
+
 export const CardList = ({
   setSelectedGiftCard,
   className,
@@ -62,6 +64,32 @@ export const CardList = ({
       </Row>
     </div>
   );
+};
+
+CardList.defaultProps = {
+  labels: {},
+  className: '',
+  setDeleteModalMountState: null,
+  setSelectedGiftCard: null,
+  onGetBalanceCard: null,
+  checkbalanceValueInfo: '',
+  cardList: [],
+  showNotification: null,
+  showNotificationCaptcha: null,
+  setDefaultPaymentMethod: null,
+};
+
+CardList.propTypes = {
+  labels: PropTypes.shape(),
+  className: PropTypes.string,
+  setDeleteModalMountState: PropTypes.func,
+  setSelectedGiftCard: PropTypes.func,
+  onGetBalanceCard: PropTypes.func,
+  checkbalanceValueInfo: PropTypes.string,
+  cardList: PropTypes.func,
+  showNotification: PropTypes.bool,
+  showNotificationCaptcha: PropTypes.bool,
+  setDefaultPaymentMethod: PropTypes.func,
 };
 
 export default withStyles(CardList, styles);
