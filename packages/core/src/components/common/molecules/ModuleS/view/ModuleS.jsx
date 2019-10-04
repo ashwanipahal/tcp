@@ -5,7 +5,7 @@ import { Row, Col, DamImage, Button } from '../../../atoms';
 import { LinkText, style } from '../ModuleS.style';
 import { PromoBanner } from '../..';
 import { getLocator, isGymboree } from '../../../../../utils';
-import config from '../ModuleS.config';
+import { imageCropConfigs } from '../ModuleS.config';
 
 /**
  * This function returns column size for grid on the basis of moduleWidth param
@@ -36,7 +36,7 @@ const getRibbonPosition = promoWrapper => {
  * @param {*} promoWrapper
  */
 const isGymboreeSite = isGymboree();
-const { IMG_DATA_TCP, IMG_DATA_GYM, IMG_DATA_GYM_RIBBON } = config;
+const { IMG_DATA_TCP, IMG_DATA_GYM, IMG_DATA_GYM_RIBBON } = imageCropConfigs;
 const getImageConfig = ribbonPresent => {
   let imageConfig = IMG_DATA_TCP;
   if (isGymboreeSite) {

@@ -74,7 +74,9 @@ exports[`AddressTile component should renders correctly 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       dataLocator="addressbook-deletelink"
@@ -82,7 +84,9 @@ exports[`AddressTile component should renders correctly 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;

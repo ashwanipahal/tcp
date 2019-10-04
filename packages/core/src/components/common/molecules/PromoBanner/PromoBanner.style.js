@@ -376,6 +376,7 @@ export default css`
   * Module R Promo Banner styles
   *********************************/
   .medium_text_regular {
+    color: ${props => props.theme.colorPalette.gray['900']};
     display: block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
@@ -398,11 +399,8 @@ export default css`
     letter-spacing: normal;
   }
 
-  /*
-  * TODO: Update this class name in CMS
-  */
   .percentage_all_wrapped_normal {
-    color: ${props => props.theme.colorPalette.black};
+    color: ${props => props.theme.colorPalette.gray['900']};
     display: inline-block;
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs48};

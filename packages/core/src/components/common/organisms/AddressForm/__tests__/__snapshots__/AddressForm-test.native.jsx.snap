@@ -102,127 +102,71 @@ exports[`AddressForm component should render correctly with default address 1`] 
     label=""
     name="lastName"
   />
-  <Styled(View)>
-    <Field
-      component={[Function]}
-      componentRestrictions={
-        Object {
-          "country": Array [
-            "US",
+  <Field
+    component={[Function]}
+    componentRestrictions={
+      Object {
+        "country": Array [
+          "US",
+        ],
+      }
+    }
+    dataLocator="addnewaddress-addressl1"
+    headerTitle=""
+    id="addressLine1"
+    initialValue=""
+    name="addressLine1"
+    onValueChange={[Function]}
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
           ],
-        }
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
       }
-      dataLocator="addnewaddress-addressl1"
-      headerTitle=""
-      initialValue=""
-      onChangeText={[Function]}
-      onValueChange={[Function]}
-      refs={[Function]}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      id="addressLine1"
-      label=""
-      name="addressLine1"
-      title=""
-      type="hidden"
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      dataLocator="addnewaddress-addressl2"
-      id="addressLine2"
-      label=""
-      name="addressLine2"
-    />
-  </Styled(View)>
+    }
+    dataLocator="addnewaddress-addressl2"
+    id="addressLine2"
+    label=""
+    name="addressLine2"
+  />
   <Field
     component={
       Object {
@@ -1053,127 +997,71 @@ exports[`AddressForm component should renders correctly 1`] = `
     label=""
     name="lastName"
   />
-  <Styled(View)>
-    <Field
-      component={[Function]}
-      componentRestrictions={
-        Object {
-          "country": Array [
-            "US",
+  <Field
+    component={[Function]}
+    componentRestrictions={
+      Object {
+        "country": Array [
+          "US",
+        ],
+      }
+    }
+    dataLocator="addnewaddress-addressl1"
+    headerTitle=""
+    id="addressLine1"
+    initialValue=""
+    name="addressLine1"
+    onValueChange={[Function]}
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
           ],
-        }
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
       }
-      dataLocator="addnewaddress-addressl1"
-      headerTitle=""
-      initialValue=""
-      onChangeText={[Function]}
-      onValueChange={[Function]}
-      refs={[Function]}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      id="addressLine1"
-      label=""
-      name="addressLine1"
-      title=""
-      type="hidden"
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      dataLocator="addnewaddress-addressl2"
-      id="addressLine2"
-      label=""
-      name="addressLine2"
-    />
-  </Styled(View)>
+    }
+    dataLocator="addnewaddress-addressl2"
+    id="addressLine2"
+    label=""
+    name="addressLine2"
+  />
   <Field
     component={
       Object {

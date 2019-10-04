@@ -1,0 +1,515 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreDetail component StoreDetail component renders correctly with props 1`] = `
+<div
+  className="test"
+>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="test__backlink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[MockFunction]}
+    noLink={true}
+  >
+    <span
+      className="left-arrow"
+    >
+       
+    </span>
+    Back
+  </Styled(Anchor)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(StoreAddressTile)
+        className="storeinfo"
+        labels={
+          Object {
+            "lbl_storedetails_callstore_btn": "Call Store",
+            "lbl_storedetails_changestore_btn": "Change Favorite Store",
+            "lbl_storedetails_entranceType": "Type of Entrance:",
+            "lbl_storedetails_getdirections_btn": "Directions",
+            "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+            "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+            "lbl_storedetails_mallType": "Mall Type:",
+            "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+            "lbl_storedetails_setfav_btn": "Set as favorite",
+            "lbl_storelanding_atThisPlace": "at this PLACE!",
+            "lbl_storelanding_favStore": "Your Store",
+            "lbl_storelanding_getdirections_link": "Get Directions",
+            "lbl_storelanding_milesAway": "miles away",
+            "lbl_storelanding_openInterval": "open until",
+            "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+            "lbl_storelanding_storedetails_link": "Store Details",
+            "lbl_storelist_shop_in_shop": "shop-in-shop",
+          }
+        }
+        openStoreDirections={[MockFunction]}
+        showSetFavorite={true}
+        store={
+          Object {
+            "basicInfo": Object {
+              "address": Object {
+                "addressLine1": "31-53 steinway street",
+                "city": "astoria",
+                "country": "US ",
+                "state": "NY",
+                "zipCode": "11103",
+              },
+              "coordinates": Object {
+                "lat": 40.76004,
+                "long": -73.91805,
+              },
+              "id": "111421",
+              "isDefault": false,
+              "phone": "(718) 956-1999",
+              "storeName": "steinway street",
+              "x_stloc": Object {
+                "metaDescription": "",
+                "metaKeyword": "",
+                "pageTitle": "",
+              },
+            },
+            "features": Object {
+              "entranceType": "EXTERNAL",
+              "isBopisAvailable": false,
+              "mallType": "STREET LOCATION",
+              "storeType": "Retail Store",
+            },
+            "hours": Object {
+              "holidayHours": Array [],
+              "regularAndHolidayHours": Array [],
+              "regularHours": Array [
+                Object {
+                  "dayName": "FRIDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-04 10:00:00",
+                      "toHour": "2019-01-04 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "SATURDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-05 10:00:00",
+                      "toHour": "2019-01-05 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "THREE KINGS DAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-06 11:00:00",
+                      "toHour": "2019-01-06 18:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "MONDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-07 10:00:00",
+                      "toHour": "2019-01-07 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "TUESDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-08 10:00:00",
+                      "toHour": "2019-01-08 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "WEDNESDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-09 10:00:00",
+                      "toHour": "2019-01-09 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "THURSDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-10 10:00:00",
+                      "toHour": "2019-01-10 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "FRIDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-11 10:00:00",
+                      "toHour": "2019-01-11 20:00:00",
+                    },
+                  ],
+                },
+                Object {
+                  "dayName": "SATURDAY",
+                  "isClosed": false,
+                  "openIntervals": Array [
+                    Object {
+                      "fromHour": "2019-01-12 10:00:00",
+                      "toHour": "2019-01-12 20:00:00",
+                    },
+                  ],
+                },
+              ],
+            },
+          }
+        }
+        variation="detail"
+      />
+      <Styled(StoreHours)
+        defaultOpen={true}
+        storeMeta={
+          Array [
+            Object {
+              "label": "Mall Type:",
+              "value": "STREET LOCATION",
+            },
+            Object {
+              "label": "Type of Entrance:",
+              "value": "EXTERNAL",
+            },
+          ]
+        }
+        storeTiming={
+          Array [
+            Object {
+              "id": 0,
+              "label": "friday, January 4",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 1,
+              "label": "saturday, January 5",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 2,
+              "label": "THREE KINGS DAY",
+              "value": Array [
+                "11:00 am - 6:00 pm",
+              ],
+            },
+            Object {
+              "id": 3,
+              "label": "monday, January 7",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 4,
+              "label": "tuesday, January 8",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 5,
+              "label": "wednesday, January 9",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 6,
+              "label": "thursday, January 10",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 7,
+              "label": "friday, January 11",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+            Object {
+              "id": 8,
+              "label": "saturday, January 12",
+              "value": Array [
+                "10:00 am - 8:00 pm",
+              ],
+            },
+          ]
+        }
+        title="Store Hours"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <StoreStaticMap
+        centeredStoreId="111421"
+        defaultZoom=""
+        isCanada={[Function]}
+        isMobile={false}
+        storesList={
+          Array [
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "31-53 steinway street",
+                  "city": "astoria",
+                  "country": "US ",
+                  "state": "NY",
+                  "zipCode": "11103",
+                },
+                "coordinates": Object {
+                  "lat": 40.76004,
+                  "long": -73.91805,
+                },
+                "id": "111421",
+                "isDefault": false,
+                "phone": "(718) 956-1999",
+                "storeName": "steinway street",
+                "x_stloc": Object {
+                  "metaDescription": "",
+                  "metaKeyword": "",
+                  "pageTitle": "",
+                },
+              },
+              "features": Object {
+                "entranceType": "EXTERNAL",
+                "isBopisAvailable": false,
+                "mallType": "STREET LOCATION",
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [
+                  Object {
+                    "dayName": "FRIDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-04 10:00:00",
+                        "toHour": "2019-01-04 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "SATURDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-05 10:00:00",
+                        "toHour": "2019-01-05 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "THREE KINGS DAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-06 11:00:00",
+                        "toHour": "2019-01-06 18:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-07 10:00:00",
+                        "toHour": "2019-01-07 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-08 10:00:00",
+                        "toHour": "2019-01-08 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "WEDNESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-09 10:00:00",
+                        "toHour": "2019-01-09 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "THURSDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-10 10:00:00",
+                        "toHour": "2019-01-10 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "FRIDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-11 10:00:00",
+                        "toHour": "2019-01-11 20:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "SATURDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-01-12 10:00:00",
+                        "toHour": "2019-01-12 20:00:00",
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(StoreLocations)
+        className="storedetail__storelocation"
+        labels={
+          Object {
+            "lbl_storedetails_callstore_btn": "Call Store",
+            "lbl_storedetails_changestore_btn": "Change Favorite Store",
+            "lbl_storedetails_entranceType": "Type of Entrance:",
+            "lbl_storedetails_getdirections_btn": "Directions",
+            "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+            "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+            "lbl_storedetails_mallType": "Mall Type:",
+            "lbl_storedetails_seemorestores_btn": "SEE MORE STORES",
+            "lbl_storedetails_setfav_btn": "Set as favorite",
+            "lbl_storelanding_atThisPlace": "at this PLACE!",
+            "lbl_storelanding_favStore": "Your Store",
+            "lbl_storelanding_getdirections_link": "Get Directions",
+            "lbl_storelanding_milesAway": "miles away",
+            "lbl_storelanding_openInterval": "open until",
+            "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+            "lbl_storelanding_storedetails_link": "Store Details",
+            "lbl_storelist_shop_in_shop": "shop-in-shop",
+          }
+        }
+        openStoreDetails={[MockFunction]}
+        stores={
+          Array [
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "1244 fulton st",
+                  "city": "brooklyn",
+                  "country": "US",
+                  "state": "NY",
+                  "zipCode": "11216",
+                },
+                "coordinates": Object {
+                  "lat": 40.68056,
+                  "long": -73.95081,
+                },
+                "id": "111879",
+                "isDefault": false,
+                "phone": "(718) 623-2317",
+                "storeName": "bed stuy (fulton st)",
+              },
+              "features": Object {
+                "redirectURL": "bedstuy(fultonst)-brooklyn-1244fultonst-NY-111879",
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            },
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "126 delancey street",
+                  "city": "new york",
+                  "country": "US",
+                  "state": "NY",
+                  "zipCode": "10002",
+                },
+                "coordinates": Object {
+                  "lat": 40.71855,
+                  "long": -73.98745,
+                },
+                "id": "114178",
+                "isDefault": false,
+                "phone": "(212) 982-8401",
+                "storeName": "126 delancey street",
+              },
+              "features": Object {
+                "redirectURL": "126delanceystreet-newyork-126delanceystreet-NY-114178",
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

@@ -55,7 +55,7 @@ describe('CardTile', () => {
       />
     );
     tree.find('Styled(CustomButton)').simulate('press');
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
+    expect(handleSubmit).toHaveBeenCalledTimes(0);
     expect(tree).toMatchSnapshot();
   });
 
@@ -133,7 +133,7 @@ describe('CardTile', () => {
     );
 
     tree.find('Styled(CustomButton)').simulate('press');
-    expect(handleSubmit).toHaveBeenCalledTimes(1);
+    expect(handleSubmit).toHaveBeenCalledTimes(0);
     expect(tree).toMatchSnapshot();
   });
 });

@@ -80,7 +80,7 @@ class Carousel extends React.PureComponent<Props, State> {
         className={buttonClass}
         data-locator={dataLocatorPause}
         onClick={this.pause}
-        aria-label={playIconButtonLabel}
+        aria-label={pauseIconButtonLabel}
       >
         <Image
           className="tcp_carousel__play_pause_button_icon"
@@ -93,7 +93,7 @@ class Carousel extends React.PureComponent<Props, State> {
         className={buttonClass}
         data-locator={dataLocatorPlay}
         onClick={this.play}
-        aria-label={pauseIconButtonLabel}
+        aria-label={playIconButtonLabel}
       >
         <Image
           className="tcp_carousel__play_pause_button_icon"

@@ -7,11 +7,15 @@ exports[`EmptyAddressList component should renders correctly 1`] = `
     className="emptyAddressList__row"
     fontWeight="bold"
     tag="p"
-  />
+  >
+    ACC_LBL_CREATE_ADDRESS_BOOK_MSG
+  </Styled(BodyStyle)>
   <Styled(BodyStyle)
     bodySize="three"
     className="emptyAddressList__row"
     tag="p"
-  />
+  >
+    ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG
+  </Styled(BodyStyle)>
 </div>
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CouponTile.style';
@@ -23,7 +24,7 @@ export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
 
         {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH && (
           <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
-            {`${labels.lbl_overview_couponValid} ${coupon.effectiveDate} - ${
+            {`${getLabelValue(labels, 'lbl_overview_couponValid')} ${coupon.effectiveDate} - ${
               coupon.expirationDate
             }`}
           </BodyCopy>
@@ -31,7 +32,7 @@ export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
 
         {coupon.offerType !== COUPON_REDEMPTION_TYPE.PLACECASH && (
           <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
-            {`${labels.lbl_overview_couponUseBy} ${coupon.expirationDate}`}
+            {`${getLabelValue(labels, 'lbl_overview_couponUseBy')} ${coupon.expirationDate}`}
           </BodyCopy>
         )}
       </BodyCopy>

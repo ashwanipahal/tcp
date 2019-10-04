@@ -53,6 +53,8 @@ exports[`AddNewCCForm should render correctly 1`] = `
       }
     }
     isExpirationRequired={true}
+    onCardFocus={[Function]}
+    showCvv={true}
     variation="secondary"
   />
   <Styled(Row)
