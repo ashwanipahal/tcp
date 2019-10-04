@@ -3,6 +3,7 @@
 exports[`PlaceRewardsContainer should render correctly 1`] = `
 <AccountDrawerView
   className=""
+  globalLabels={Object {}}
   labels={
     Object {
       "lbl_acc_drawer_user_name": "Test Name",
