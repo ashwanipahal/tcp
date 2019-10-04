@@ -5,8 +5,9 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
   <Styled(Anchor)
     anchorVariation="primary"
     className="test"
-    dataLocator=""
+    dataLocator="store_drawerlink"
     fontSizeVariation="small"
+    to="/store-locator"
   >
     <div
       className="storelocatorlink__container"
@@ -17,6 +18,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
         <Styled(Image)
           alt="Store Locator"
           className="storelocator--image"
+          data-locator="store_markericon"
           src="/static/images/marker-icon.svg"
         />
       </div>
@@ -27,7 +29,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
           className="storelocatorlink__detail__storename"
           color="text.primary"
           component="div"
-          data-locator=""
+          data-locator="store_namelabel"
           fontFamily="secondary"
           fontSize="fs13"
           fontWeight="regular"
@@ -42,7 +44,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
           className="storelocatorlink__detail__storetime"
           color="text.primary"
           component="div"
-          data-locator=""
+          data-locator="store_storetime"
           fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
@@ -51,7 +53,7 @@ exports[`StoreLocatorLink component renders correctly when a fav store is passed
           link={null}
           textAlign="left"
         >
-          undefined 8 pm
+          lbl_storelocator_openUntilTxt 8 pm
         </Styled(BodyCopy)>
       </div>
     </div>
@@ -64,8 +66,9 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
   <Styled(Anchor)
     anchorVariation="primary"
     className="test"
-    dataLocator=""
+    dataLocator="store_drawerlink"
     fontSizeVariation="small"
+    to="/store-locator"
   >
     <div
       className="storelocatorlink__container--fav"
@@ -76,6 +79,7 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
         <Styled(Image)
           alt="Store Locator"
           className="storelocator--image"
+          data-locator="store_markericon"
           src="/static/images/marker-icon.svg"
         />
       </div>
@@ -83,7 +87,7 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
         className="storelocatorlink__detail"
         color="text.primary"
         component="div"
-        data-locator=""
+        data-locator="store_findastore"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
@@ -91,7 +95,9 @@ exports[`StoreLocatorLink component renders correctly with no store is passed 1`
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_storelocator_findAStoreLink
+      </Styled(BodyCopy)>
     </div>
   </Styled(Anchor)>
 </Fragment>

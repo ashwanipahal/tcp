@@ -17,6 +17,8 @@ import {
   getCurrentProduct,
   getPDPLabels,
   getProductDetailFormValues,
+  getShortDescription,
+  getGeneralProductId,
 } from './ProductDetail.selectors';
 
 import {
@@ -66,6 +68,8 @@ class ProductDetailContainer extends React.PureComponent {
       productDetails,
       breadCrumbs,
       longDescription,
+      itemPartNumber,
+      shortDescription,
       ratingsProductId,
       defaultImage,
       productInfo,
@@ -82,7 +86,9 @@ class ProductDetailContainer extends React.PureComponent {
           <ProductDetail
             productDetails={productDetails}
             breadCrumbs={breadCrumbs}
+            itemPartNumber={itemPartNumber}
             longDescription={longDescription}
+            shortDescription={shortDescription}
             ratingsProductId={ratingsProductId}
             otherProps={otherProps}
             defaultImage={defaultImage}
@@ -105,6 +111,8 @@ function mapStateToProps(state) {
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    shortDescription: getShortDescription(state),
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
@@ -142,6 +150,8 @@ ProductDetailContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
   router: PropTypes.shape({
     query: PropTypes.shape({
@@ -161,12 +171,14 @@ ProductDetailContainer.defaultProps = {
   addToBagError: '',
   breadCrumbs: null,
   longDescription: '',
+  shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
   currency: '',
   plpLabels: {
     lbl_sort: '',
   },
+  itemPartNumber: '',
   pdpLabels: {},
 };
 

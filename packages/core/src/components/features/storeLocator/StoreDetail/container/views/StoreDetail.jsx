@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Row, Col, StoreStaticMap, Anchor } from '../../../../../common/atoms';
-import { StoreAddressTile, StoreHours, StoreLocations } from '../../../../../common/molecules';
+import { Row, Col, StoreStaticMap, Anchor } from '@tcp/core/src/components/common/atoms';
+import {
+  StoreAddressTile,
+  StoreHours,
+  StoreLocations,
+} from '@tcp/core/src/components/common/molecules';
+import {
+  getViewportInfo,
+  isCanada,
+  getAPIConfig,
+  isClient,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import style from '../styles/StoreDetail.style';
-import { getViewportInfo, isCanada, getAPIConfig, isClient } from '../../../../../../utils';
 import formatStoreTiming from '../../../../../../utils/formatStoreTiming';
 
 const StoreDetail = ({
@@ -18,18 +28,15 @@ const StoreDetail = ({
   setFavoriteStore,
   isFavorite,
 }) => {
-  const {
-    hours,
-    features: { mallType, entranceType },
-  } = store;
+  const { hours, features } = store;
   const storeMeta = [
     {
-      label: labels.lbl_storelocators_detail_mallType,
-      value: mallType,
+      label: getLabelValue(labels, 'lbl_storedetails_mallType'),
+      value: features !== undefined && features.mallType,
     },
     {
-      label: labels.lbl_storelocators_detail_entranceType,
-      value: entranceType,
+      label: getLabelValue(labels, 'lbl_storedetails_entranceType'),
+      value: features !== undefined && features.entranceType,
     },
   ];
 
@@ -37,7 +44,7 @@ const StoreDetail = ({
   if (hours !== undefined && Object.keys(hours).length > 0)
     Object.keys(hours).forEach(hour => storeTimings.push(...hours[hour]));
 
-  return (
+  return store.basicInfo !== undefined ? (
     <div className={className}>
       <Anchor
         fontSizeVariation="xlarge"
@@ -91,7 +98,7 @@ const StoreDetail = ({
         </Col>
       </Row>
     </div>
-  );
+  ) : null;
 };
 
 StoreDetail.propTypes = {

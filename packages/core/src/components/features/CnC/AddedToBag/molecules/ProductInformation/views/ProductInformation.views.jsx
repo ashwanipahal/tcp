@@ -2,9 +2,8 @@ import React from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, getLocator } from '@tcp/core/src/utils';
+import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import endpoints from '../../../../../../../service/endpoint';
 
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
@@ -28,7 +27,7 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
           <Image
             alt="Product"
             className="product-image"
-            src={endpoints.global.baseURI + data.skuInfo.imageUrl}
+            src={data.skuInfo.imageUrl}
             data-locator="addedtobag-productimage"
           />
           {!data.isGiftCard && (
@@ -36,9 +35,9 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
               alt="Brand"
               className="brand-image"
               src={
-                data.brand === 'tcp'
-                  ? getIconPath(`header__brand-tab--${data.brand}`)
-                  : getIconPath('header__brand-tab-gymboree')
+                getBrand() === 'gym'
+                  ? getIconPath(`header__brand-tab-gymboree`)
+                  : getIconPath(`header__brand-tab--${getBrand()}`)
               }
               data-locator={getLocator('header__brand-tab--tcp')}
             />

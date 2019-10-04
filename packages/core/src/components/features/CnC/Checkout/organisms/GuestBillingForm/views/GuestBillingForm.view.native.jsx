@@ -158,6 +158,7 @@ class GuestBillingForm extends React.Component {
                   : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
               )
             }
+            showAccordian
           />
         </GuestBillingFormWrapper>
       </>

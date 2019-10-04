@@ -135,8 +135,10 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      isConfirmationPage={false}
       isGuest={true}
       routeToPage="ShippingPage"
+      showAccordian={true}
     />
   </ScrollViewMock>
 </Fragment>
@@ -277,8 +279,10 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      isConfirmationPage={false}
       isGuest={true}
       routeToPage="ShippingPage"
+      showAccordian={true}
     />
   </ScrollViewMock>
 </Fragment>
@@ -370,8 +374,10 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      isConfirmationPage={false}
       isGuest={false}
       routeToPage="ShippingPage"
+      showAccordian={true}
     />
   </ScrollViewMock>
 </Fragment>

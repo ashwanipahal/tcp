@@ -97,4 +97,5 @@ export default {
   'facebook-icon': '/static/images/facebook@2x.svg',
   'twitter-icon': '/static/images/twitter-black.svg',
   'pinterest-icon': '/static/images/pinterest@2x.svg',
+  'icon-printer': '/static/images/icon-printer.png',
 };
