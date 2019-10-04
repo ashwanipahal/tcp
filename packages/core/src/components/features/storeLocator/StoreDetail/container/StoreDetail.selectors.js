@@ -78,14 +78,17 @@ export const formatCurrentStoreToObject = store => {
 export const getNearByStores = state => state[STORE_DETAIL_REDUCER_KEY].get('suggestedStores');
 
 export const getLabels = ({ Labels }) => {
-  const {
-    StoreLocator: { StoreLanding, StoreDetail, StoreList },
-  } = Labels;
-  return {
-    ...StoreLanding,
-    ...StoreDetail,
-    ...StoreList,
-  };
+  const pageLabels = Labels.StoreLocator;
+  let finalLabels = {};
+  if (pageLabels !== undefined) {
+    const { StoreLanding, StoreDetail, StoreList } = pageLabels;
+    finalLabels = {
+      ...StoreLanding,
+      ...StoreDetail,
+      ...StoreList,
+    };
+  }
+  return finalLabels;
 };
 
 export const isFavoriteStore = state => {

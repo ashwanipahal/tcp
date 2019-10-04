@@ -728,28 +728,6 @@ function isVenmoPaymentAvailable(state) {
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
-function isVenmoMessageDisplayed(state) {
-  const hasShippingCaptured =
-    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
-  const hasPickupCaptured =
-    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
-  return (
-    hasPickupCaptured ||
-    hasShippingCaptured ||
-    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
-  );
-}
-
-function getVenmoUserEmail(state) {
-  const pickupValues = getPickupValues(state);
-  return (
-    getUserEmail(state) ||
-    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
-    (pickupValues && pickupValues.emailAddress) ||
-    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
-  );
-}
-
 /**
  * This method is used to decide if we need to show review page next based on order conditions.
  */
@@ -889,6 +867,16 @@ const getShippingSectionLabels = createSelector(
   }
 );
 
+/**
+ * @function getVenmoUserName
+ * @description Gets the venmo username which is authorized from the app
+ */
+export const getVenmoUserName = () => {
+  const venmoData = getVenmoData();
+  const { details: { username } = {} } = venmoData || {};
+  return username;
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -951,9 +939,7 @@ export default {
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
-  isVenmoMessageDisplayed,
   isVenmoNonceActive,
-  getVenmoUserEmail,
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
@@ -969,4 +955,5 @@ export default {
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   isPickupHasValues,
+  getVenmoUserName,
 };
