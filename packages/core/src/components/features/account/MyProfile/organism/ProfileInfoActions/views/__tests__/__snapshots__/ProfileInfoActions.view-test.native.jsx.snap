@@ -18,6 +18,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         margin={null}
         numberOfLines={null}
         spacingStyles="margin-bottom-MED"
+        text="lbl_profile_Enhance_Experience"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -26,6 +27,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_profile_profileInCompleteMessage"
         textDecoration={null}
       />
     </Styled(View)>
@@ -33,50 +35,50 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
   <Styled(View)>
     <ProfileInfoActionTile
       activityCompletionState=""
-      activityDescription=""
+      activityDescription="lbl_profile_mailingAddressDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/mailingAddress.png",
         }
       }
       activityId="mailingAddress"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_mailingAddressActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
       activityCompletionState=""
-      activityDescription=""
+      activityDescription="lbl_profile_favStoreDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/store.png",
         }
       }
       activityId="favStore"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_favStoreActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
       activityCompletionState=""
-      activityDescription=""
+      activityDescription="lbl_profile_userBirthdayDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/birthday.png",
         }
       }
       activityId="userBirthday"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_userBirthdayActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
       activityCompletionState=""
-      activityDescription=""
+      activityDescription="lbl_profile_aboutYourselfDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/survey.png",
         }
       }
       activityId="aboutYourself"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_surveyActivityTitle"
       handleComponentChange={[Function]}
     />
   </Styled(View)>
@@ -107,6 +109,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         margin={null}
         numberOfLines={null}
         spacingStyles="margin-bottom-MED"
+        text="lbl_profile_Enhance_Experience"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -115,6 +118,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_profile_profileCompletionExclamation"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -123,6 +127,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_profile_profileCompletionMessage"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -131,6 +136,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_profile_getMorePoints"
         textDecoration={null}
       />
     </Styled(View)>
@@ -147,51 +153,51 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
   </Styled(View)>
   <Styled(View)>
     <ProfileInfoActionTile
-      activityCompletionState=""
-      activityDescription=""
+      activityCompletionState="lbl_profile_profileActivityCompleted"
+      activityDescription="lbl_profile_mailingAddressDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/mailingAddress.png",
         }
       }
       activityId="mailingAddress"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_mailingAddressActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
-      activityCompletionState=""
-      activityDescription=""
+      activityCompletionState="lbl_profile_profileActivityCompleted"
+      activityDescription="lbl_profile_favStoreDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/store.png",
         }
       }
       activityId="favStore"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_favStoreActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
-      activityCompletionState=""
-      activityDescription=""
+      activityCompletionState="lbl_profile_profileActivityCompleted"
+      activityDescription="lbl_profile_userBirthdayDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/birthday.png",
         }
       }
       activityId="userBirthday"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_userBirthdayActivityTitle"
       handleComponentChange={[Function]}
     />
     <ProfileInfoActionTile
-      activityCompletionState=""
-      activityDescription=""
+      activityCompletionState="lbl_profile_profileActivityCompleted"
+      activityDescription="lbl_profile_aboutYourselfDescription"
       activityIcon={
         Object {
           "testUri": "../../../../core/src/assets/survey.png",
         }
       }
       activityId="aboutYourself"
-      activityTitle="+20%"
+      activityTitle="lbl_profile_surveyActivityTitle"
       handleComponentChange={[Function]}
     />
   </Styled(View)>

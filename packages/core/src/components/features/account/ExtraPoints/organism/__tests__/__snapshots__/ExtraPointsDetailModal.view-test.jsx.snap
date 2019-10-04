@@ -7,6 +7,7 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
   fixedWidth={true}
   isOpen={false}
   maxWidth="615px"
+  minHeight="600px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
@@ -93,11 +94,16 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       link={null}
       textAlign="center"
     >
-      <Styled(Button)
+      <Styled(Anchor)
+        anchorVariation="button"
+        asPath="/account/profile"
         buttonVariation="fixed-width"
-        data-locator="earnPointsModal_undefined_activityCta"
+        centered={true}
+        className="elem-mb-SM"
+        dataLocator="earnPointsModal_undefined_activityCta"
         fill="BLUE"
         fullWidth={true}
+        to="/account?id=profile"
       />
     </Styled(BodyCopy)>
   </div>

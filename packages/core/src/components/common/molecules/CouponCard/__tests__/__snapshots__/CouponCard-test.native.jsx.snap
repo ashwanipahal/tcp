@@ -3,6 +3,7 @@
 exports[`CouponCard Component should renders correctly when addresses are not present 1`] = `
 <View>
   <ErrorMessage
+    bagPage={false}
     error=""
   />
   <Styled(View)>
@@ -83,6 +84,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               buttonVariation="variable-width"
               color=""
               customStyle={Object {}}
+              customTextStyle={null}
               data-locator=""
               disableButton={false}
               fill="DARK"

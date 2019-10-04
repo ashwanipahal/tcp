@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const RemoveSoldOutView = styled.Text`
   display: flex;
-  margin: 0px 2px 5px 30px;
+  margin: 0px 2px 15px 40px;
   flex-direction: row;
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
 `;

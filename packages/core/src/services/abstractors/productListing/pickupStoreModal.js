@@ -1,6 +1,11 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { sanitizeEntity, formatPhone, parseStoreHours, isCanada } from '../../../utils';
+import {
+  responseContainsErrors,
+  ServiceResponseError,
+  getFormattedError,
+} from '../../../utils/errorMessage.util';
 
 const ERROR_MESSAGES_BOPIS = {
   caPostalCode: 'Please enter a Canadian Postal Code',
@@ -196,7 +201,7 @@ function storeAPIParser(store, configs = { requestedQuantity: 0 }) {
   return storeFilteredInfo;
 }
 
-const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
+export const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
   return locationPromise.then(location => {
     try {
       let errorMessage = '';
@@ -260,9 +265,7 @@ export const getStoresPlusInventorybyLatLng = ({
           stores: stores.map(store => storeAPIParser(store, { requestedQuantity: quantity })),
         };
       }
-      if (!stores.length) {
-        apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
-      }
+      apiError = { error: ERROR_MESSAGES_BOPIS.noAddressFound };
       return { error: apiError.error, stores: [] };
     })
     .catch(err => {
@@ -275,4 +278,27 @@ export const getStoresPlusInventorybyLatLng = ({
     });
 };
 
-export default submitGetBopisSearchByLatLng;
+export const getCartStoresPlusInventory = ({ skuId, quantity, variantId }) => {
+  const payload = {
+    header: {
+      catentryId: skuId,
+      itemPartNumber: variantId,
+    },
+    webService: endpoints.getUserCartStoresAndInventory,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      } else {
+        const stores = res.body.response;
+        if (stores && stores.length) {
+          return stores.map(store => storeAPIParser(store, { requestedQuantity: quantity }));
+        }
+        return [];
+      }
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+};

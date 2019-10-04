@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
 
 class LogOutView extends React.Component {
   constructor(props) {
     super(props);
     this.logoutApp = this.logoutApp.bind(this);
+    const [body] = document.getElementsByTagName('body');
+    this.body = body;
   }
 
   logoutApp(e) {
     e.preventDefault();
     const { triggerLogout } = this.props;
     triggerLogout();
+
+    if (this.body) {
+      this.body.style.overflow = 'auto';
+    }
   }
 
   render() {
@@ -25,7 +32,7 @@ class LogOutView extends React.Component {
           fontSizeVariation="large"
           anchorVariation="primary"
         >
-          {labels.CREATE_ACC_SIGN_OUT}
+          {getLabelValue(labels, 'CREATE_ACC_SIGN_OUT')}
         </Anchor>
       </React.Fragment>
     );

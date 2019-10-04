@@ -5,6 +5,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/MyRewards.style';
 import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
@@ -27,8 +28,10 @@ const MyRewards = ({
 }) => {
   const heading =
     view === 'all'
-      ? `${labels.placeRewards.lbl_my_rewards_wallet_heading} (${coupons.size})`
-      : `${labels.placeRewards.lbl_my_rewards_heading} (${coupons.size})`;
+      ? `${getLabelValue(labels, 'lbl_my_rewards_wallet_heading', 'placeRewards')} (${
+          coupons.size
+        })`
+      : `${getLabelValue(labels, 'lbl_my_rewards_heading', 'placeRewards')} (${coupons.size})`;
   const isApplyingCoupon = !!coupons.find(
     coupon => coupon.status === COUPON_STATUS.APPLYING || coupon.status === COUPON_STATUS.REMOVING
   );
@@ -113,7 +116,7 @@ const MyRewards = ({
               dataLocator="my-rewards-program-details"
               target="_blank"
             >
-              {labels.placeRewards.lbl_my_rewards_program_details}
+              {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
             </Anchor>
             <Anchor
               fontSizeVariation="medium"
@@ -125,7 +128,7 @@ const MyRewards = ({
               className="elem-ml-XXL"
               target="_self"
             >
-              {labels.placeRewards.lbl_common_tnc}
+              {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
             </Anchor>
           </Col>
         )}

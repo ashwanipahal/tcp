@@ -81,9 +81,11 @@ const SearchListingView = ({
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           {productsBlock.length ? (
             <ProductsGrid
+              className={className}
               productsBlock={productsBlock}
               products={products}
               labels={labels}
+              productTileVariation="search-product-tile"
               {...otherProps}
             />
           ) : null}

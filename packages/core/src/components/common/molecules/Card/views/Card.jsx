@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Badge from '../../../atoms/Badge';
-import CardImage from './CardImage';
+import CardImage from '../../CardImage';
 import withStyles from '../../../hoc/withStyles';
 import CardStyle from '../Card.style';
 

@@ -29,7 +29,7 @@ export default css`
     }
   }
 
-  .get-candid-button-container {
+  div.get-candid-button-container {
     > div {
       display: flex;
       align-items: center;

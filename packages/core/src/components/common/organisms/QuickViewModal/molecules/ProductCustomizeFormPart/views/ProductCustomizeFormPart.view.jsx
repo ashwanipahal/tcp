@@ -7,6 +7,7 @@ import ProductPrice from '../../../../../../features/browse/ProductDetail/molecu
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
+import { getLocator } from '../../../../../../../utils';
 
 import {
   getMapSliceForColorProductId,
@@ -75,8 +76,17 @@ class ProductCustomizeFormPart extends React.Component {
         <div className="product-customize-form-container">
           <div className="image-title-wrapper">
             <div className="image-wrapper">
-              <Image alt={productInfo.name} src={imageUrl} />
-              <Anchor className="link-redirect" to={pdpToPath} asPath={currentColorPdpUrl}>
+              <Image
+                data-locator={getLocator('quick_view_product_image')}
+                alt={productInfo.name}
+                src={imageUrl}
+              />
+              <Anchor
+                dataLocator={getLocator('quick_view_View_Product_details')}
+                className="link-redirect"
+                to={pdpToPath}
+                asPath={currentColorPdpUrl}
+              >
                 <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
                   {quickViewLabels.viewProductDetails}
                 </BodyCopy>
@@ -88,6 +98,7 @@ class ProductCustomizeFormPart extends React.Component {
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 className="product-name"
+                dataLocator={getLocator('quick_view_product_name')}
               >
                 {productInfo.name}
               </BodyCopy>
@@ -101,6 +112,7 @@ class ProductCustomizeFormPart extends React.Component {
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 className="product-name"
+                dataLocator={getLocator('quick_view_product_name')}
               >
                 {productInfo.name}
               </BodyCopy>

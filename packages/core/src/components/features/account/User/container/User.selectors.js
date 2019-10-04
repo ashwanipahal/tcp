@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getUserGeoCoordinates = state => {
+  return state[USER_REDUCER_KEY].get('geoLatLong');
+};
+
 export const getFavoriteStore = state => {
   return state[USER_REDUCER_KEY].get('favoriteStore');
 };
@@ -24,6 +28,16 @@ export const getRewardsState = state => {
 export const getSurveyState = state => {
   return state[USER_REDUCER_KEY].get('survey');
 };
+
+export const mprUserId = createSelector(
+  getRewardsState,
+  state => state && state.get('accountNumber')
+);
+
+export const getUserId = createSelector(
+  getPersonalDataState,
+  state => state && state.get('userId')
+);
 
 export const getUserLoggedInState = createSelector(
   getPersonalDataState,
@@ -219,3 +233,8 @@ export const getPercentageIncrement = () => ({
   percentageUserBirthday: 20,
   percentageFavStore: 20,
 });
+
+export const isRememberedUser = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);

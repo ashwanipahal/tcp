@@ -35,8 +35,7 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
-import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 
@@ -187,11 +186,9 @@ export function* fetchModuleX({ payload = [] }) {
  * @param {Boolean} closeModal for closing addedtoBag modal in app
  */
 export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
-  const orderHasPickup = yield select(checkoutSelectors.getIsOrderHasPickup);
+  const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
+  const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
-  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
-  const addressList = yield select(getAddressListState);
-  const hasDefaultShippingAddress = addressList && addressList.size > 0;
   if (isMobileApp()) {
     if (orderHasPickup) {
       const navigateAction = navigationActions.navigate({
@@ -223,10 +220,13 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     }
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
+    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
+    if (hasVenmoReviewPage) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
+      return;
+    }
     if (orderHasPickup) {
       utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-    } else if (isVenmoPaymentInProgress && hasDefaultShippingAddress) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
     } else {
       utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
     }
@@ -236,8 +236,9 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
 }
 
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
+  const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
-  if (!isLoggedIn) {
+  if (!isLoggedIn && !isVenmoPaymentInProgress) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
   return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);
@@ -417,6 +418,7 @@ export function* startSflItemMoveToBag({ payload }) {
         skuId: itemId,
       },
       quantity: 1,
+      fromMoveToBag: true,
     };
     yield put(addToCartEcom(addToCartData));
     yield put(BAG_PAGE_ACTIONS.getCartData());

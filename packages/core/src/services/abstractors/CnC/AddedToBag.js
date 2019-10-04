@@ -44,13 +44,18 @@ export const addCartEcomItem = params =>
       throw getFormattedError(err);
     });
 
-export const addCartBopisItem = params =>
+export const addCartBopisItem = (params, errorMapping) =>
   executeStatefulAPICall({ body: params, webService: endpoints.addOrderBopisItem })
-    .then(res => ({
-      orderItemId: res.body.orderItemId,
-    }))
-    .catch(res => {
-      throw res.error || res.body.error;
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return {
+        orderItemId: res.body.orderItemId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err, errorMapping);
     });
 
 export default {

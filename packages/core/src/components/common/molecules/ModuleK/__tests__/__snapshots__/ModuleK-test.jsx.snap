@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kkGfuU",
+              "componentId": "sc-iRbamj",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +250,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kkGfuU",
+            "styledComponentId": "sc-iRbamj",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -294,7 +294,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-gPEVay",
               "isStatic": false,
               "rules": Array [
                 "
@@ -604,7 +604,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-gPEVay",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -622,11 +622,13 @@ exports[`ModuleK component renders correctly 1`] = `
             "nextArrow": <button
               className="slick-prev"
               data-locator="moduleK_right_arrow"
+              tabIndex="0"
               type="button"
             />,
             "prevArrow": <button
               className="slick-prev"
               data-locator="moduleK_left_arrow"
+              tabIndex="0"
               type="button"
             />,
             "responsive": Array [

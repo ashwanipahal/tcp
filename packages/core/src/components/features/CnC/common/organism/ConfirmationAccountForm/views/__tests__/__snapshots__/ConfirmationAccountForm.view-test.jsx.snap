@@ -1,0 +1,5328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationAccountForm component should render component correctly 1`] = `
+<div
+  className=" elem-pt-MED"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="gray[900]"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs26"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <form>
+    <Styled(Row)
+      className="row-form-wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="email-address"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          >
+            test@childrensplace.com
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="password-field"
+          enableSuccessCheck={false}
+          id="password"
+          name="password"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show"
+        >
+          <div
+            className="info-icon-img-wrapper"
+          >
+            <Styled(ReactTooltip)
+              aligned="right"
+              message={
+                <PasswordRequirement
+                  labels={Object {}}
+                />
+              }
+            >
+              <Styled(Image)
+                className="tcp_carousel__play tooltip"
+                src="/static/images/info-icon.png"
+              />
+            </Styled(ReactTooltip)>
+          </div>
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="pwd-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="confirm-Password-field"
+          enableSuccessCheck={false}
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show confirm-pwd"
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="confirm-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pt-XXL elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          alignCheckbox="top"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gZMcBi",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gZMcBi",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="i-agree-checkbox"
+          name="iAgree"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(RichText)
+              richTextHtml=" "
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="create-account-btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with error state 1`] = `
+<div
+  className=" elem-pt-MED"
+>
+  <Styled(Notification)
+    message="error"
+    status="error"
+  />
+  <Styled(BodyCopy)
+    className="heading"
+    color="gray[900]"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs26"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <form>
+    <Styled(Row)
+      className="row-form-wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="email-address"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          >
+            test@childrensplace.com
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="password-field"
+          enableSuccessCheck={false}
+          id="password"
+          name="password"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show"
+        >
+          <div
+            className="info-icon-img-wrapper"
+          >
+            <Styled(ReactTooltip)
+              aligned="right"
+              message={
+                <PasswordRequirement
+                  labels={Object {}}
+                />
+              }
+            >
+              <Styled(Image)
+                className="tcp_carousel__play tooltip"
+                src="/static/images/info-icon.png"
+              />
+            </Styled(ReactTooltip)>
+          </div>
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="pwd-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="confirm-Password-field"
+          enableSuccessCheck={false}
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show confirm-pwd"
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="confirm-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pt-XXL elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          alignCheckbox="top"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gZMcBi",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gZMcBi",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="i-agree-checkbox"
+          name="iAgree"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(RichText)
+              richTextHtml=" "
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="create-account-btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with isPromptForUserDetails state 1`] = `
+<div
+  className=" elem-pt-MED"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="gray[900]"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs26"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <form>
+    <Styled(Row)
+      className="row-form-wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="email-address"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          >
+            test@childrensplace.com
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="first-name-field"
+          enableSuccessCheck={false}
+          id="firstName"
+          name="firstName"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="last name-field"
+          enableSuccessCheck={false}
+          id="lastName"
+          name="lastName"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="password-field"
+          enableSuccessCheck={false}
+          id="password"
+          name="password"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show"
+        >
+          <div
+            className="info-icon-img-wrapper"
+          >
+            <Styled(ReactTooltip)
+              aligned="right"
+              message={
+                <PasswordRequirement
+                  labels={Object {}}
+                />
+              }
+            >
+              <Styled(Image)
+                className="tcp_carousel__play tooltip"
+                src="/static/images/info-icon.png"
+              />
+            </Styled(ReactTooltip)>
+          </div>
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="pwd-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="confirm-Password-field"
+          enableSuccessCheck={false}
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show confirm-pwd"
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="confirm-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="phone-number-field"
+          enableSuccessCheck={false}
+          id="phoneNumber"
+          maxLength={50}
+          name="phoneNumber"
+          placeholder=""
+          type="tel"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="zip-code-field"
+          enableSuccessCheck={false}
+          id="noCountryZip"
+          name="noCountryZip"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pt-XXL elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          alignCheckbox="top"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gZMcBi",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gZMcBi",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="i-agree-checkbox"
+          name="iAgree"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(RichText)
+              richTextHtml=" "
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="create-account-btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with isPromptForUserDetails state and without email 1`] = `
+<div
+  className=" elem-pt-MED"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="gray[900]"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs26"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <form>
+    <Styled(Row)
+      className="row-form-wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="email-address-field"
+          enableSuccessCheck={false}
+          id="emailAddress"
+          name="emailAddress"
+          placeholder="Email Address"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="first-name-field"
+          enableSuccessCheck={false}
+          id="firstName"
+          name="firstName"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="last name-field"
+          enableSuccessCheck={false}
+          id="lastName"
+          name="lastName"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="password-field"
+          enableSuccessCheck={false}
+          id="password"
+          name="password"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show"
+        >
+          <div
+            className="info-icon-img-wrapper"
+          >
+            <Styled(ReactTooltip)
+              aligned="right"
+              message={
+                <PasswordRequirement
+                  labels={Object {}}
+                />
+              }
+            >
+              <Styled(Image)
+                className="tcp_carousel__play tooltip"
+                src="/static/images/info-icon.png"
+              />
+            </Styled(ReactTooltip)>
+          </div>
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="pwd-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="confirm-Password-field"
+          enableSuccessCheck={false}
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show confirm-pwd"
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="confirm-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="phone-number-field"
+          enableSuccessCheck={false}
+          id="phoneNumber"
+          maxLength={50}
+          name="phoneNumber"
+          placeholder=""
+          type="tel"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="zip-code-field"
+          enableSuccessCheck={false}
+          id="noCountryZip"
+          name="noCountryZip"
+          placeholder=""
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pt-XXL elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          alignCheckbox="top"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gZMcBi",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gZMcBi",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="i-agree-checkbox"
+          name="iAgree"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(RichText)
+              richTextHtml=" "
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="create-account-btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with success state 1`] = `
+<div
+  className=" elem-pt-MED"
+>
+  <Styled(Notification)
+    status="success"
+  />
+  <Styled(BodyCopy)
+    className="heading"
+    color="gray[900]"
+    component="p"
+    fontFamily="primary"
+    fontSize="fs26"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="center"
+  />
+  <form>
+    <Styled(Row)
+      className="row-form-wrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="email-address"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="gray[900]"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="1.71"
+            link={null}
+            textAlign="center"
+          >
+            test@childrensplace.com
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="password-field"
+          enableSuccessCheck={false}
+          id="password"
+          name="password"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show"
+        >
+          <div
+            className="info-icon-img-wrapper"
+          >
+            <Styled(ReactTooltip)
+              aligned="right"
+              message={
+                <PasswordRequirement
+                  labels={Object {}}
+                />
+              }
+            >
+              <Styled(Image)
+                className="tcp_carousel__play tooltip"
+                src="/static/images/info-icon.png"
+              />
+            </Styled(ReactTooltip)>
+          </div>
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="pwd-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="password-container"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gzVnrw",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gzVnrw",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="confirm-Password-field"
+          enableSuccessCheck={false}
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder=""
+          type="password"
+        />
+        <div
+          className="hide-show confirm-pwd"
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="hide-show-checkbox"
+              dataLocator="confirm-hide-show-checkbox"
+              fontSizeVariation="large"
+              handleLinkClick={[Function]}
+              noLink={true}
+              underline={true}
+            />
+          </Styled(Col)>
+        </div>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pt-XXL elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Field
+          alignCheckbox="top"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-gZMcBi",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  display: block;
+  align-items: ",
+                  [Function],
+                  ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                  "25px",
+                  ";
+    width: ",
+                  "25px",
+                  ";
+    margin: 0;
+    margin-right: ",
+                  [Function],
+                  ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                  [Function],
+                  ";
+    font-size: ",
+                  [Function],
+                  "px;
+    width: ",
+                  [Function],
+                  ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                  [Function],
+                  ";
+  }
+
+  & .disabled {
+    opacity: ",
+                  [Function],
+                  ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                  [Function],
+                  ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                  [Function],
+                  ";
+    width: ",
+                  [Function],
+                  ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-gZMcBi",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="i-agree-checkbox"
+          name="iAgree"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(RichText)
+              richTextHtml=" "
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="elem-pb-XXL"
+        colSize={
+          Object {
+            "large": 6,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 3,
+          }
+        }
+        offsetRight={
+          Object {
+            "large": 3,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="create-account-btn"
+          fill="BLUE"
+          type="submit"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </form>
+</div>
+`;

@@ -79,6 +79,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           buttonVariation="fixed-width"
           color=""
           customStyle={Object {}}
+          customTextStyle={null}
           data-locator="couponDetailModal_applied_AddToBagBtn"
           disableButton={false}
           disabled={false}

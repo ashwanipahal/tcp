@@ -438,6 +438,17 @@ export const setVenmoShippingMessageState = payload => {
   };
 };
 
+/**
+ * Method to save Venmo payment option in redux.
+ * @param {boolean} payload
+ */
+export const setVenmoPaymentOptionSave = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_OPTION_SAVE,
+    payload,
+  };
+};
+
 export const resetAddGiftCard = payload => {
   return {
     type: constants.RESET_ADD_GIFT_CARD,
@@ -469,5 +480,25 @@ export const getSetIntlUrl = internationalUrl => {
   return {
     internationalUrl,
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
+  };
+};
+/**
+ * @function updateCardData
+ *  @param { object } payload
+ * action creator for type: UPDATE_CARD_DATA
+ */
+export const updateCardData = payload => {
+  return {
+    payload,
+    type: constants.UPDATE_CARD_DATA,
+  };
+};
+/**
+ * @function resetCheckoutReducer
+ * action creator for type: RESET_CHECKOUT_REDUCER
+ */
+export const resetCheckoutReducer = () => {
+  return {
+    type: constants.RESET_CHECKOUT_REDUCER,
   };
 };

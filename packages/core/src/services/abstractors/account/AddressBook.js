@@ -1,7 +1,7 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import PAGES from '../../../constants/pages.constants';
-import { parseBoolean } from '../../../utils';
+import { parseBoolean } from '../../../utils/utils';
 
 export function formatAddressBookResponse(arr) {
   let containsDefault = false;

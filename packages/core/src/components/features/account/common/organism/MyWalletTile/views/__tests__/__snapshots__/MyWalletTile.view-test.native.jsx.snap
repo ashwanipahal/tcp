@@ -53,6 +53,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -124,6 +125,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""

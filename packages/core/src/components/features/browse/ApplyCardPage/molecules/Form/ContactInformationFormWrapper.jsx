@@ -8,6 +8,7 @@ import {
   SelectBox,
   TextBox,
 } from '@tcp/core/src/components/common/atoms';
+import { getAddressFromPlace } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import {
   CAcountriesStatesTable,
@@ -44,7 +45,7 @@ class ContactInformationFormWrapper extends React.Component {
    */
   handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
-    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
+    const address = getAddressFromPlace(place, inputValue);
     dispatch(change('PLCCForm', 'city', address.city));
     dispatch(change('PLCCForm', 'noCountryZip', address.zip));
     dispatch(change('PLCCForm', 'statewocountry', address.state));
@@ -58,10 +59,8 @@ class ContactInformationFormWrapper extends React.Component {
         <Heading
           fontFamily="secondary"
           fontSize="fs16"
-          variant="h2"
-          color="black"
-          fontWeight="semibold"
-          className="title"
+          fontWeight="semiBold"
+          className="contactFormTitle"
           tabIndex="0"
         >
           {getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
@@ -192,13 +191,13 @@ class ContactInformationFormWrapper extends React.Component {
                   {getLabelValue(labels, 'lbl_PLCCForm_state')}
                 </BodyCopy>
                 <Field
-                  id="state"
+                  id="statewocountry"
                   name="statewocountry"
                   component={SelectBox}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_statePlaceholder')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator={getLocator('plcc_state')}
-                  className="field"
+                  className="field stateField"
                 />
               </Col>
               <Col
@@ -208,7 +207,7 @@ class ContactInformationFormWrapper extends React.Component {
               >
                 <Field
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_zipCode')}
-                  id="zipCode"
+                  id="noCountryZip"
                   name="noCountryZip"
                   maxLength={5}
                   component={TextBox}
@@ -228,7 +227,7 @@ class ContactInformationFormWrapper extends React.Component {
             <Field
               placeholder={getLabelValue(labels, 'lbl_PLCCForm_mobilePhoneNumber')}
               name="phoneNumberWithAlt"
-              id="phoneNumber"
+              id="phoneNumberWithAlt"
               component={TextBox}
               dataLocator={getLocator('plc_mobile_no')}
               type="tel"

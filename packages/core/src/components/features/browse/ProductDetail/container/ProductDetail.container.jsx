@@ -17,6 +17,8 @@ import {
   getCurrentProduct,
   getPDPLabels,
   getProductDetailFormValues,
+  getShortDescription,
+  getGeneralProductId,
 } from './ProductDetail.selectors';
 
 import {
@@ -26,7 +28,7 @@ import {
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
-class ProductListingContainer extends React.PureComponent {
+class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
@@ -66,6 +68,8 @@ class ProductListingContainer extends React.PureComponent {
       productDetails,
       breadCrumbs,
       longDescription,
+      itemPartNumber,
+      shortDescription,
       ratingsProductId,
       defaultImage,
       productInfo,
@@ -75,21 +79,28 @@ class ProductListingContainer extends React.PureComponent {
       addToBagError,
       ...otherProps
     } = this.props;
+    const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <ProductDetail
-        productDetails={productDetails}
-        breadCrumbs={breadCrumbs}
-        longDescription={longDescription}
-        ratingsProductId={ratingsProductId}
-        otherProps={otherProps}
-        defaultImage={defaultImage}
-        plpLabels={plpLabels}
-        pdpLabels={pdpLabels}
-        currency={currency}
-        productInfo={productInfo}
-        handleAddToBag={this.handleAddToBag}
-        addToBagError={addToBagError}
-      />
+      <React.Fragment>
+        {isProductDataAvailable ? (
+          <ProductDetail
+            productDetails={productDetails}
+            breadCrumbs={breadCrumbs}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            shortDescription={shortDescription}
+            ratingsProductId={ratingsProductId}
+            otherProps={otherProps}
+            defaultImage={defaultImage}
+            plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
+            currency={currency}
+            productInfo={productInfo}
+            handleAddToBag={this.handleAddToBag}
+            addToBagError={addToBagError}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
@@ -100,6 +111,8 @@ function mapStateToProps(state) {
     productDetails: prodDetails(state),
     breadCrumbs: getBreadCrumbs(state),
     longDescription: getDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    shortDescription: getShortDescription(state),
     ratingsProductId: getRatingsProductId(state),
     // This is just to check if the product is correct
     defaultImage: getDefaultImage(state),
@@ -126,7 +139,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-ProductListingContainer.propTypes = {
+ProductDetailContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   getDetails: PropTypes.func.isRequired,
   addToBagError: PropTypes.string,
@@ -137,6 +150,8 @@ ProductListingContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
   router: PropTypes.shape({
     query: PropTypes.shape({
@@ -150,18 +165,20 @@ ProductListingContainer.propTypes = {
   }),
 };
 
-ProductListingContainer.defaultProps = {
+ProductDetailContainer.defaultProps = {
   productDetails: [],
   productInfo: {},
   addToBagError: '',
   breadCrumbs: null,
   longDescription: '',
+  shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
   currency: '',
   plpLabels: {
     lbl_sort: '',
   },
+  itemPartNumber: '',
   pdpLabels: {},
 };
 
@@ -169,5 +186,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ProductListingContainer)
+  )(ProductDetailContainer)
 );

@@ -19,6 +19,11 @@ import {
 } from '../../Checkout/container/Checkout.action';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
+import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
+import {
+  getGrandTotal,
+  getGiftCardsTotal,
+} from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -66,6 +71,9 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessage,
       isCartItemSFL,
       isSflItemRemoved,
+      isShowSaveForLaterSwitch,
+      orderBalanceTotal,
+      bagStickyHeaderInterval,
     } = this.props;
 
     const showAddTobag = false;
@@ -89,6 +97,9 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
         isSflItemRemoved={isSflItemRemoved}
+        isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+        orderBalanceTotal={orderBalanceTotal}
+        bagStickyHeaderInterval={bagStickyHeaderInterval}
       />
     );
   }
@@ -134,6 +145,9 @@ const mapStateToProps = state => {
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
     isSflItemRemoved: getIsSflItemRemoved(state),
+    isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
+    orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
+    bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
   };
 };
 

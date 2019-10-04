@@ -6,6 +6,7 @@ const styles = css`
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    width: 104%;
   }
   .headsUpMsgBoldTitle {
     font-family: ${props => props.theme.typography.fonts.secondaryFontSemilBoldFamily};
@@ -67,16 +68,22 @@ const styles = css`
 
   .recaptcha {
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      transform: scale(0.7);
+      transform: scale(0.75);
       position: relative;
       left: -31px;
       margin-top: -25px;
     }
     @media ${props => props.theme.mediaQuery.medium} {
-      transform: scale(0.9);
+      transform: scale(0.85);
       position: relative;
       left: -5px;
       margin-top: -15px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      transform: scale(1.09);
+      position: relative;
+      left: 5px;
+      margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
   }
   .cardPin .TextBox__label,
@@ -86,6 +93,52 @@ const styles = css`
   }
   input:not([value='']) ~ .TextBox__label {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+  }
+
+  .card__row {
+    padding-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .giftCardNumber {
+      width: 102%;
+    }
+    .cardPin {
+      width: 102%;
+    }
+    .card__btn {
+      margin-right: 14px;
+    }
+    .card__row {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    .savetoaccount {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .gift-card-container {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+    .giftCardNumber {
+      width: 99%;
+    }
+    .cardPin {
+      width: 99%;
+    }
+    .card__btn {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .card__btn,
+    .card__btn--medium {
+      width: 39%;
+    }
   }
 `;
 

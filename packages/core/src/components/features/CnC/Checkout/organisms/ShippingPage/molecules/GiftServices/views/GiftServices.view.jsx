@@ -210,6 +210,7 @@ class GiftServices extends React.PureComponent {
                     checked={isGymboreeBrand === isGymboree()}
                     onChange={e => this.handleToggle(e, isGymboree())}
                     disabled={false}
+                    className="tcp-radio-button"
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image

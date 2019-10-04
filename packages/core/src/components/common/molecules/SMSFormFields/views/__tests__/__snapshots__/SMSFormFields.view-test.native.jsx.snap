@@ -99,6 +99,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           dataLocator="phone-number-field"
           enableSuccessCheck={false}
           id=".phoneNumber"
+          keyboardType="numeric"
           label="Phone Number"
           marginBottom={false}
           maxLength={50}
@@ -213,6 +214,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           dataLocator="phone-number-field"
           enableSuccessCheck={false}
           id=".phoneNumber"
+          keyboardType="numeric"
           label="Phone Number"
           marginBottom={false}
           maxLength={50}

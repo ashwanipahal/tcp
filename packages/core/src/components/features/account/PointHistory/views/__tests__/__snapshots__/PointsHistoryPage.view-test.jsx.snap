@@ -35,11 +35,13 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       <span
         className="left-arrow"
       />
+      lbl_common_backLink
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     className="elem-mb-XL"
     dataLocator="points_history_heading"
+    heading="lbl_common_points_history_heading"
   />
   <Styled(BodyCopy)
     className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
@@ -65,7 +67,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
-    />
+    >
+      lbl_common_points_history
+    </Styled(BodyCopy)>
     <Connect(PointsHistoryContainer)
       labels={Object {}}
       showFullHistory={true}
@@ -98,16 +102,17 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
-    textAlign="center"
+    textAlign="left"
   >
     <Styled(Anchor)
-      anchorVariation="secondary"
+      anchorVariation="primary"
       asPath="/account/place-rewards/points-claim"
       data-locator="claim form link"
       fontSizeVariation="xlarge"
       to="/account?id=place-rewards&subSection=points-claim"
+      underline={true}
     >
-      Points claim form
+      Points Claim Form
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(Row)
@@ -138,7 +143,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         noLink={true}
         target="_blank"
         underline={true}
-      />
+      >
+        lbl_points_history_program_details
+      </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
         className="elem-ml-XL"
@@ -147,7 +154,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         noLink={true}
         underline={true}
-      />
+      >
+        lbl_common_tnc
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
 </Styled(BodyCopy)>

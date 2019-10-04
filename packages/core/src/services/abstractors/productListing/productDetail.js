@@ -5,7 +5,7 @@ import { getNavTree } from '../../../components/features/browse/ProductDetail/co
 import processResponse from './processPdpResponse';
 import processHelperUtil from './ProductDetail.util';
 
-const parseProductFromAPI = (
+export const parseProductFromAPI = (
   product,
   colorIdOrSeoKeyword,
   dontFetchExtraImages,
@@ -77,7 +77,7 @@ const parseProductFromAPI = (
       hasDefaultFit = processHelperUtil.getHasDefaultFit(hasDefaultFit, isDefaultFit);
 
       return {
-        fitNameVal,
+        fitName: fitNameVal,
         isDefault: isDefaultFit,
         maxAvailable: processHelperUtil.validateQuantityAvailable(
           currentColorFitsSizesMap[fitNameVal]

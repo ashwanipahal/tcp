@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
@@ -11,7 +12,7 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada, scrollPage } from '../../../../../../../utils';
+import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -53,6 +54,7 @@ class LoginSection extends React.PureComponent<Props> {
       component: 'createAccount',
       variation: 'primary',
     });
+    scrollTopElement('dialogContent');
   };
 
   render() {
@@ -117,14 +119,14 @@ class LoginSection extends React.PureComponent<Props> {
           {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
             <ResetPassword
               backToLoginAction={this.showLoginForm}
-              labels={labels.password}
+              labels={getLabelValue(labels, 'password')}
               queryParams={queryParams}
             />
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
             <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-              {labels.login.lbl_login_createAccountHelp}
+              {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
             </BodyCopy>
           </BodyCopy>
           <Button
@@ -135,7 +137,7 @@ class LoginSection extends React.PureComponent<Props> {
             data-locator=""
             onClick={this.showCreateAccountForm}
           >
-            {labels.login.lbl_login_createAccountCTA}
+            {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
           </Button>
         </Col>
       </Row>

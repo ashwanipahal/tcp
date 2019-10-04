@@ -3,7 +3,6 @@ export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
-export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
@@ -87,6 +86,13 @@ export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
 export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
 export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
+// Outfit Detail Page Reducer
+export const OUTFIT_DETAILS_REDUCER_KEY = 'OutfitDetails';
+export const OUTFIT_DETAILS_PATTERN = '@@OutfitDetails-';
+// Favorites Reducer
+export const FAVORITES_REDUCER_KEY = 'Favorites';
+export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
+
 // Email signup reducer
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
@@ -147,6 +153,10 @@ export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 // ProductTabList reducer
 export const PRODUCT_TAB_LIST_REDUCER_KEY = 'ProductTabList';
 export const PRODUCT_TAB_LIST_ACTION_PATTERN = '@@ProductTabList-';
+
+export const STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY = 'StyliticsProductTabList';
+export const STYLITICS_PRODUCT_TAB_LIST_ACTION_PATTERN = '@@StyliticsProductTabList-';
+
 export const MAILING_ADDRESS_REDUCER_KEY = 'AddMailingAddressReducer';
 export const BIRTHDAY_SAVING_LIST_REDUCER_KEY = 'BirthdaySavingsList';
 
@@ -163,10 +173,24 @@ export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
 export const GIFT_SERVICES_REDUCER_KEY = 'GiftServices';
 export const GIFT_SERVICES_ACTION_PATTERN = '@@GiftServices-';
 
+// Store Locator Reducer
+export const STORE_LOCATOR_REDUCER_KEY = 'StoreLocatorReducer';
+export const STORE_LOCATOR_ACTION_PATTERN = '@@StoreLocator-';
 export const MY_FAVORITE_STORE_REDUCER_KEY = 'MyFavoriteStore';
 
+// Store Detail Reducer
+export const STORE_DETAIL_REDUCER_KEY = 'StoreDetailReducer';
+export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
+
+export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
+export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
+export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
+export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
+// User Order History
+export const ORDERS_REDUCER_KEY = 'Orders';
+export const ORDERS_ACTION_PATTERN = '@@Orders-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -192,9 +216,15 @@ export const REDUCER_ACTION_MAPPING = {
   [GET_CANDID_REDUCER_KEY]: GET_CANDID_ACTION_PATTERN,
   [MY_PROFILE_REDUCER_KEY]: MY_PROFILE_ACTION_PATTERN,
   [PRODUCT_TAB_LIST_REDUCER_KEY]: PRODUCT_TAB_LIST_ACTION_PATTERN,
+  [STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY]: STYLITICS_PRODUCT_TAB_LIST_ACTION_PATTERN,
   [NAVIGATION_REDUCER_KEY]: NAVIGATION_ACTION_PATTERN,
   [APPLY_NOW_MODAL_REDUCER_KEY]: APPLY_NOW_MODAL_REDUCER_PATTERN,
   [PICKUP_MODAL_REDUCER_KEY]: PICKUP_MODAL_REDUCER_PATTERN,
   [RECOMMENDATIONS_REDUCER_KEY]: RECOMMENDATIONS_ACTION_PATTERN,
+  [STORE_LOCATOR_REDUCER_KEY]: STORE_LOCATOR_ACTION_PATTERN,
+  [SEARCH_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
+  [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
+  [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
+  [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
 };

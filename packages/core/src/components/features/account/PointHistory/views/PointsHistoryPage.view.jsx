@@ -5,6 +5,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/PointsHistoryPage.view.style';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import PointsHistoryList from '../../common/organism/PointsHistory';
@@ -29,12 +30,12 @@ export const PointsHistoryPageView = props => {
           data-locator="backLink"
         >
           <span className="left-arrow" />
-          {labels.lbl_common_backLink}
+          {getLabelValue(labels, 'lbl_common_backLink')}
         </Anchor>
       </BodyCopy>
       <FormPageHeading
         className="elem-mb-XL"
-        heading={labels.lbl_common_points_history_heading}
+        heading={getLabelValue(labels, 'lbl_common_points_history_heading')}
         dataLocator="points_history_heading"
       />
       <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL elem-pb-MED">
@@ -46,7 +47,7 @@ export const PointsHistoryPageView = props => {
           className="hide-on-desktop hide-on-tablet elem-mb-LRG"
           dataLocator="points_history_subheading"
         >
-          {labels.lbl_common_points_history}
+          {getLabelValue(labels, 'lbl_common_points_history')}
         </BodyCopy>
         <PointsHistoryList view="edit" labels={labels} showFullHistory />
       </BodyCopy>
@@ -56,15 +57,16 @@ export const PointsHistoryPageView = props => {
         data-locator="points_history_separator"
       />
       <HistoryPointsRichTextComponent content={richTextContent} />
-      <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL" textAlign="center">
+      <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL">
         <Anchor
           to={internalEndpoints.pointsClaimPage.link}
           asPath={internalEndpoints.pointsClaimPage.path}
           fontSizeVariation="xlarge"
-          anchorVariation="secondary"
+          anchorVariation="primary"
           data-locator="claim form link"
+          underline
         >
-          Points claim form
+          Points Claim Form
         </Anchor>
       </BodyCopy>
       <Row className="elem-pt-XXL">
@@ -90,7 +92,7 @@ export const PointsHistoryPageView = props => {
             dataLocator="program_details_cta"
             target="_blank"
           >
-            {labels.lbl_points_history_program_details}
+            {getLabelValue(labels, 'lbl_points_history_program_details')}
           </Anchor>
           <Anchor
             fontSizeVariation="large"
@@ -101,7 +103,7 @@ export const PointsHistoryPageView = props => {
             dataLocator="terms_condition_cta"
             className="elem-ml-XL"
           >
-            {labels.lbl_common_tnc}
+            {getLabelValue(labels, 'lbl_common_tnc')}
           </Anchor>
         </Col>
       </Row>

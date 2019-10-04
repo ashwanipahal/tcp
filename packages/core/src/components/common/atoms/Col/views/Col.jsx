@@ -27,6 +27,8 @@ Col.propTypes = {
     large: PropTypes.bool,
   }),
   tagName: PropTypes.string,
+  customNthBreak: PropTypes.number,
+  ignoreNthRule: PropTypes.bool,
 };
 
 Col.defaultProps = {
@@ -41,6 +43,8 @@ Col.defaultProps = {
     large: false,
   },
   tagName: 'div',
+  customNthBreak: 0,
+  ignoreNthRule: false,
 };
 
 export default withStyles(Col, styles);

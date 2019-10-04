@@ -30,7 +30,13 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
       color="text.primary"
       component="span"
       fontFamily="secondary"
-      fontSize="fs14"
+      fontSize={
+        Array [
+          "fs16",
+          "fs14",
+          "fs14",
+        ]
+      }
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
@@ -49,13 +55,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           color="white"
           component="span"
           fontFamily="secondary"
-          fontSize={
-            Array [
-              "fs13",
-              "fs13",
-              "fs14",
-            ]
-          }
+          fontSize="fs14"
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -72,13 +72,7 @@ exports[`ItemDeleteConfirmation Modal should render modal when open true 1`] = `
           color="text.secondary"
           component="span"
           fontFamily="secondary"
-          fontSize={
-            Array [
-              "fs13",
-              "fs13",
-              "fs14",
-            ]
-          }
+          fontSize="fs14"
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -121,7 +115,13 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
       color="text.primary"
       component="span"
       fontFamily="secondary"
-      fontSize="fs14"
+      fontSize={
+        Array [
+          "fs16",
+          "fs14",
+          "fs14",
+        ]
+      }
       fontWeight="normal"
       letterSpacing="normal"
       lineHeight="normal"
@@ -140,13 +140,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           color="white"
           component="span"
           fontFamily="secondary"
-          fontSize={
-            Array [
-              "fs13",
-              "fs13",
-              "fs14",
-            ]
-          }
+          fontSize="fs14"
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -163,13 +157,7 @@ exports[`ItemDeleteConfirmation Modal should render no modal when isOpen is fals
           color="text.secondary"
           component="span"
           fontFamily="secondary"
-          fontSize={
-            Array [
-              "fs13",
-              "fs13",
-              "fs14",
-            ]
-          }
+          fontSize="fs14"
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"

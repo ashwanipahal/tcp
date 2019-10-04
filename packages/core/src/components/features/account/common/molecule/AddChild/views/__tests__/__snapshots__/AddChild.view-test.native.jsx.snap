@@ -12,6 +12,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      text="lbl_add_child_child_information"
       textDecoration={null}
     />
     <Styled(View)
@@ -63,6 +64,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         }
         dataLocator="childNameField"
         id="childName"
+        label="lbl_add_child_child_name"
         name="childName"
       />
     </Styled(View)>
@@ -118,6 +120,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "height": 41,
             }
           }
+          heading="lbl_add_child_birthday_heading"
           itemStyle={
             Object {
               "color": "black",
@@ -126,6 +129,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             }
           }
           onValueChange={[Function]}
+          selectedValue="lbl_add_child_birthday_month"
           variation="secondary"
         />
         <Styled(View)
@@ -243,6 +247,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             }
           }
           onValueChange={[Function]}
+          selectedValue="lbl_add_child_birthday_year"
           variation="secondary"
         />
         <Field
@@ -350,6 +355,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "height": 41,
             }
           }
+          heading="lbl_add_child_gender_heading"
           itemStyle={
             Object {
               "color": "black",
@@ -358,6 +364,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             }
           }
           onValueChange={[Function]}
+          selectedValue="lbl_add_child_choose_gender"
           variation="secondary"
         />
         <Styled(View)
@@ -424,6 +431,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
+      text="lbl_add_child_parent_digital_signature"
       textDecoration={null}
     />
     <Styled(View)>
@@ -474,6 +482,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           }
           dataLocator="firstNameField"
           id="firstName"
+          label="lbl_add_child_first_name"
           name="firstName"
         />
       </Styled(View)>
@@ -524,6 +533,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
           }
           dataLocator="lastNameField"
           id="lastName"
+          label="lbl_add_child_last_name"
           name="lastName"
         />
       </Styled(View)>
@@ -537,7 +547,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-right-LRG margin-left-LRG"
-      text="undefined "
+      text="lbl_add_child_timestamp "
       textDecoration={null}
     />
     <Styled(View)>
@@ -546,7 +556,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         dataLocator="tnccb"
         id="acceptAddChildAgreement"
         name="acceptAddChildAgreement"
-        rightText="undefinedundefined"
+        rightText="lbl_add_child_terms_agreementlbl_add_child_terms_agreement_second"
       />
     </Styled(View)>
     <Styled(View)>
@@ -559,7 +569,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         fontSizeVariation="medium"
         locator=""
         onPress={[Function]}
-        text=""
+        text="lbl_add_child_privacy"
         underline={true}
         visible={false}
       />
@@ -573,7 +583,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
         locator=""
         noLink={true}
         onPress={[Function]}
-        text=""
+        text="lbl_add_child_faq"
         underline={true}
         visible={false}
       />
@@ -587,6 +597,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -599,7 +610,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_add_child_save"
       theme={Object {}}
       type="submit"
       url=""
@@ -613,6 +624,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       buttonVariation="variable-width"
       color=""
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="WHITE"
       fullWidth=""
@@ -625,7 +637,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_add_child_cancel"
       theme={Object {}}
       url=""
     />

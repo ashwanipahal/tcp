@@ -2,46 +2,111 @@ import { css } from 'styled-components';
 
 export default css`
   &.show-condensed-header {
-    display: block;
     box-sizing: border-box;
-    padding: 14px 0;
+    padding: 14px;
     position: fixed;
     left: 0;
-    right: 0;
     top: 0;
-    z-index: ${props => props.theme.zindex.zEnlargedImage};
+    z-index: ${props => props.theme.zindex.zCondensedHeader};
     background-color: ${props => props.theme.colorPalette.white};
     text-align: center;
     width: 100%;
     margin: 0;
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[300]};
-    @media ${props => props.theme.mediaQuery.large} {
-      padding: 0 14px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: 12px 15px;
     }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: 14px 15px;
+    }
+  }
+
+  .content-wrapper {
+    margin: 0 auto;
+    width: 100%
+  }
+
+  .condensed-hamburger-menu,
+  .condensed-brand-logo,
+  .condensed-navigation {
+    float: left;
+  }
+
+  .condensed-hamburger-menu {
+    margin-right: 39px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 5px 0;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
+
+  .condensed-brand-logo {
+    height: 25px;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      padding: 14px 0;
+      height: 30px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .nav-bar-l1 {
-      overflow-x: hidden;
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 41px;
+    }
+
+    img {
+      width: 72px;
+      height: 25px;
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        width: 83px;
+        height: 30px;
+      }
 
       @media ${props => props.theme.mediaQuery.large} {
-        padding-top: 26px;
+        width: 115px;
+          height: 41px;
+      }
+    }
+  }
+
+  .condensed-navigation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+
+    @media ${props => props.theme.mediaQuery.largeOnly} {
+      .nav-bar-l1-content {
+        padding: 0 15px 5px;
       }
     }
 
-    .navigation {
-      position: unset;
-    }
+    @media ${props => props.theme.mediaQuery.large} {
+      .nav-bar-l1 {
+        padding-top: 10px;
+      }
 
-    .nav-bar-l1-content {
-      padding-top: 0;
-      line-height: 2;
+      .is-open .nav-bar-item-sizes-range {
+        top: 52px;
+      }
     }
+  }
 
-    .tcp-drawer__isOpen{
-      display: none;
+  .condensed-header-icons {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 6px;
     }
   }
 
@@ -55,14 +120,26 @@ export default css`
     }
   }
 
-  .rightLink {
-    box-sizing: border-box;
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .nav-bar-l1-content {
+    padding-top: 0;
+    line-height: 2;
   }
 
-  .userIcon {
+  .tcp-drawer__isOpen {
+    display: none;
+  }
+
+  .search-icon,
+  .user-icon-link {
     height: 25px;
+  }
+
+  .user-icon-link {
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG}
+  }
+
+  .rightLink {
+    box-sizing: border-box;
   }
 
   .username {
@@ -70,39 +147,11 @@ export default css`
     display: inline-block;
     font-size: 13px;
     overflow: hidden;
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    line-height: 28px;
     text-overflow: ellipsis;
     width: 70px;
     white-space: nowrap;
-  }
-
-  .brand-logo-middle {
-    @media ${props => props.theme.mediaQuery.large} {
-      display: none;
-    }
-  }
-
-  .brand-logo-middle img {
-    display: block;
-    width: 72px;
-    height: 25px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 83px;
-      height: 30px;
-    }
-  }
-
-  .brand-logo-left {
-    display: none;
-    text-align: left;
-    @media ${props => props.theme.mediaQuery.large} {
-      display: block;
-      padding-top: 16px;
-      img {
-        width: 115px;
-        height: 41px;
-      }
-    }
   }
 
   .header-middle-login-section {
@@ -129,15 +178,6 @@ export default css`
     padding: 2px 6px;
   }
 
-  .condensed-icons{
-    text-align: right;
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      padding-left: 30px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-top: 23px;
-    }
-  }
   .l1-overlay.is-open {
     top: 70px;
   }
@@ -146,9 +186,9 @@ export default css`
     .nav-bar-l2 {
       @media ${props => props.theme.mediaQuery.large} {
         display: block;
-        left: -40%;
-        width: 180%;
         top: 100%;
+        left: -21.5%;
+        width: 145%;
       }
     }
   }
@@ -156,7 +196,7 @@ export default css`
     font-size: 13px;
   }
 
-  .condensed-border{
+  .condensed-border {
     @media ${props => props.theme.mediaQuery.large} {
       position: fixed;
       top: 70px;

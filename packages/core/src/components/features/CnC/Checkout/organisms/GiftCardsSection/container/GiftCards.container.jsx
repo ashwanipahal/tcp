@@ -172,7 +172,10 @@ const mapStateToProps = state => {
     appliedGiftCards: GiftCardSelector.getAppliedGiftCards(state),
     itemOrderGrandTotal: GiftCardSelector.getGrandTotal(state),
     itemsGiftCardTotal: GiftCardSelector.getGiftCardsTotal(state),
-    labels: GiftCardSelector.getGiftSectionLabels(state),
+    labels: {
+      ...GiftCardSelector.getGiftSectionLabels(state),
+      ...GiftCardSelector.getGiftCardSectionLabels(state),
+    },
     giftCardErrors: GiftCardSelector.getGiftCardErrors(state),
     enableAddGiftCard: GiftCardSelector.getShowAddGiftCard(state),
     formErrorMessage: getFormValidationErrorMessages(state),

@@ -59,6 +59,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       buttonVariation="variable-width"
       color="white"
       customStyle={Object {}}
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -67,7 +68,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

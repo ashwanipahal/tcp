@@ -10,6 +10,7 @@ import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
 import { getIconPath, getLocator } from '../../../../../utils';
+import SocialConnect from './SocialConnect.view';
 
 // function to return Thumbnails list to show on PDP and full size page
 const getThumbnailList = (
@@ -147,16 +148,23 @@ class ProductImages extends React.Component {
                   })}
               </Carousel>
             }
-            {isFullSizeVisible && (
-              <Anchor
-                className="resize-text"
-                aria-label="View full size image"
-                onClick={onCloseClick}
-                dataLocator={getLocator('pdp_full_size_btn')}
-              >
-                {pdpLabels.fullSize}
-              </Anchor>
-            )}
+            <div className="social-connect-wrapper">
+              {isFullSizeVisible && (
+                <span className="fullSize-image-label">
+                  <Anchor
+                    className="resize-text"
+                    aria-label="View full size image"
+                    onClick={onCloseClick}
+                    dataLocator={getLocator('pdp_full_size_btn')}
+                  >
+                    {pdpLabels.fullSize}
+                  </Anchor>
+                </span>
+              )}
+              {isFullSizeVisible && (
+                <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
+              )}
+            </div>
           </div>
 
           <div className="enlarged-image-container">

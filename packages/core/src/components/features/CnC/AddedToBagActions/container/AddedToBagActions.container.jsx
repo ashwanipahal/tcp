@@ -6,7 +6,7 @@ import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.sel
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -26,6 +26,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      isBagPageStickyHeader,
+      closeModal,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -40,6 +42,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         showVenmo={showVenmo}
         isNoNEmptyBag={isNoNEmptyBag}
         fromAddedToBagModal={fromAddedToBagModal}
+        isBagPageStickyHeader={isBagPageStickyHeader}
+        closeModal={closeModal}
       />
     );
   }
@@ -50,6 +54,11 @@ AddedToBagContainer.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isNoNEmptyBag: PropTypes.number.isRequired,
+  isBagPageStickyHeader: PropTypes.bool,
+};
+
+AddedToBagContainer.defaultProps = {
+  isBagPageStickyHeader: false,
 };
 
 const mapDispatchToProps = dispatch => {

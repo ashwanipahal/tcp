@@ -28,6 +28,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
     isHintEnabled={false}
     largeImage={
       Object {
+        "alt": "",
         "height": 900,
         "src": "",
         "width": 900,
@@ -37,6 +38,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
     shouldUsePositiveSpaceLens={false}
     smallImage={
       Object {
+        "alt": "",
         "isFluidWidth": true,
         "src": "",
       }

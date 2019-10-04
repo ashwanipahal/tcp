@@ -1,39 +1,41 @@
+import { getLabelValue } from '@tcp/core/src/utils/utils';
+
 export const getAboutYouSurvey = labels => {
   return {
     questions: [
       {
         id: 'answer1',
-        statement: labels.lbl_profile_survey_question1,
+        statement: getLabelValue(labels, 'lbl_profile_survey_question1'),
         multiSelect: false,
         answers: [],
         optionsMap: {
-          shopper1: labels.lbl_profile_survey_question1_option1,
-          shopper2: labels.lbl_profile_survey_question1_option2,
-          shopper3: labels.lbl_profile_survey_question1_option3,
-          shopper4: labels.lbl_profile_survey_question1_option4,
+          shopper1: getLabelValue(labels, 'lbl_profile_survey_question1_option1'),
+          shopper2: getLabelValue(labels, 'lbl_profile_survey_question1_option2'),
+          shopper3: getLabelValue(labels, 'lbl_profile_survey_question1_option3'),
+          shopper4: getLabelValue(labels, 'lbl_profile_survey_question1_option4'),
         },
         options: [
           {
             id: 'shopper1',
-            value: labels.lbl_profile_survey_question1_option1,
+            value: getLabelValue(labels, 'lbl_profile_survey_question1_option1'),
             selected: false,
             dataLocator: 'moreaboutyou-question-parentbtn',
           },
           {
             id: 'shopper2',
-            value: labels.lbl_profile_survey_question1_option2,
+            value: getLabelValue(labels, 'lbl_profile_survey_question1_option2'),
             selected: false,
             dataLocator: 'moreaboutyou-question-grandparentbtn',
           },
           {
             id: 'shopper3',
-            value: labels.lbl_profile_survey_question1_option3,
+            value: getLabelValue(labels, 'lbl_profile_survey_question1_option3'),
             selected: false,
             dataLocator: 'moreaboutyou-question-giftingforothersbtn',
           },
           {
             id: 'shopper4',
-            value: labels.lbl_profile_survey_question1_option4,
+            value: getLabelValue(labels, 'lbl_profile_survey_question1_option4'),
             selected: false,
             dataLocator: 'moreaboutyou-question-prefernottoanswerbtn',
           },
@@ -41,44 +43,44 @@ export const getAboutYouSurvey = labels => {
       },
       {
         id: 'answer2',
-        statement: labels.lbl_profile_survey_question2,
+        statement: getLabelValue(labels, 'lbl_profile_survey_question2'),
         multiSelect: true,
         answers: [],
         optionsMap: {
-          shopper1: labels.lbl_profile_survey_question2_option1,
-          shopper2: labels.lbl_profile_survey_question2_option2,
-          shopper3: labels.lbl_profile_survey_question2_option3,
-          shopper4: labels.lbl_profile_survey_question2_option4,
-          shopper5: labels.lbl_profile_survey_question2_option5,
+          shopper1: getLabelValue(labels, 'lbl_profile_survey_question2_option1'),
+          shopper2: getLabelValue(labels, 'lbl_profile_survey_question2_option2'),
+          shopper3: getLabelValue(labels, 'lbl_profile_survey_question2_option3'),
+          shopper4: getLabelValue(labels, 'lbl_profile_survey_question2_option4'),
+          shopper5: getLabelValue(labels, 'lbl_profile_survey_question2_option5'),
         },
         options: [
           {
             id: 'shopper1',
-            value: labels.lbl_profile_survey_question2_option1,
+            value: getLabelValue(labels, 'lbl_profile_survey_question2_option1'),
             selected: false,
             dataLocator: 'moreaboutyou-question-girlbtn',
           },
           {
             id: 'shopper2',
-            value: labels.lbl_profile_survey_question2_option2,
+            value: getLabelValue(labels, 'lbl_profile_survey_question2_option2'),
             selected: false,
             dataLocator: 'moreaboutyou-question-boybtn',
           },
           {
             id: 'shopper3',
-            value: labels.lbl_profile_survey_question2_option3,
+            value: getLabelValue(labels, 'lbl_profile_survey_question2_option3'),
             selected: false,
             dataLocator: 'moreaboutyou-question-toddlergirlbtn',
           },
           {
             id: 'shopper4',
-            value: labels.lbl_profile_survey_question2_option4,
+            value: getLabelValue(labels, 'lbl_profile_survey_question2_option4'),
             selected: false,
             dataLocator: 'moreaboutyou-question-toddlerboybtn',
           },
           {
             id: 'shopper5',
-            value: labels.lbl_profile_survey_question2_option5,
+            value: getLabelValue(labels, 'lbl_profile_survey_question2_option5'),
             selected: false,
             dataLocator: 'moreaboutyou-question-babybtn',
           },

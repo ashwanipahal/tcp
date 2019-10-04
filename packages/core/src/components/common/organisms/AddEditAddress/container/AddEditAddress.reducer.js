@@ -12,6 +12,8 @@ const AddAddressReducer = (state = initialState, action) => {
       return state.set('error', fromJS(action.payload)).set('showNotification', true);
     case constants.ADD_USER_ADDRESS_SUCCESS:
       return fromJS(action.payload);
+    case constants.RESET_ADDRESS_STATE:
+      return initialState;
     default:
       if (state instanceof Object) {
         return fromJS(state);

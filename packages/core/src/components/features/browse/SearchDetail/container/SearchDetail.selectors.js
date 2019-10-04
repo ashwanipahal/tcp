@@ -147,6 +147,10 @@ export const getIsLoadingMore = state => {
   return state[SLP_PAGE_REDUCER_KEY].get('isLoadingMore');
 };
 
+export const checkIfSearchResultsAvailable = state => {
+  return state[SLP_PAGE_REDUCER_KEY].get('isSearchResultsAvailable');
+};
+
 export const getSpotlightReviewsUrl = () => {
   return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
 };

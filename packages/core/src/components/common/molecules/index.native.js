@@ -4,6 +4,8 @@ import ModuleH from './ModuleH';
 import ModuleL from './ModuleL';
 import ModuleK from './ModuleK';
 import ModuleN from './ModuleN';
+import ModuleS from './ModuleS';
+import ModuleQ from './ModuleQ';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
@@ -13,6 +15,11 @@ import ModuleJ from './ModuleJ';
 import ModuleR from './ModuleR';
 import ButtonTabs from './ButtonTabs';
 import Grid from './Grid';
+import StoreAddressTile from './StoreAddressTile';
+import StoreHours from './StoreHours';
+import StoreLocations from './StoreLocations';
+import FullScreenImageCarousel from './FullScreenImageCarousel';
+import SearchBar from './SearchBar';
 
 export {
   Carousel,
@@ -28,6 +35,13 @@ export {
   ModuleB,
   ModuleJ,
   ModuleR,
+  ModuleQ,
   ButtonTabs,
   Grid,
+  StoreAddressTile,
+  StoreHours,
+  StoreLocations,
+  FullScreenImageCarousel,
+  ModuleS,
+  SearchBar,
 };

@@ -35,7 +35,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
-      dataLocator="undefined_122"
       imageUrls={Array []}
       isMobile={false}
       isPLPredesign={false}
@@ -94,7 +93,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
     </Styled(Row)>
     <ProductPricesSection
       currencySymbol="$"
-      dataLocator=""
       hidePrefixListPrice={true}
       listPrice={NaN}
       merchantTag=""

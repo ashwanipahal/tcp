@@ -354,6 +354,8 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
       }
     }
     customStyle={Object {}}
+    fontSize="fs14"
+    regularName={false}
     showCountry={false}
     showDefaultText={false}
     showName={true}
@@ -446,6 +448,8 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
       }
     }
     customStyle={Object {}}
+    fontSize="fs14"
+    regularName={false}
     showCountry={false}
     showDefaultText={false}
     showName={true}
@@ -555,6 +559,8 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
   <Address
     address={null}
     customStyle={Object {}}
+    fontSize="fs14"
+    regularName={false}
     showCountry={false}
     showDefaultText={false}
     showName={true}

@@ -27,8 +27,9 @@ export default css`
       margin-bottom: 30px;
     }
   }
-  .moduleL__tile-image {
-    max-width: 210px;
+  .tile-image-wrapper {
+    display: flex;
+    align-items: center;
     min-height: 128px;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -37,6 +38,20 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       min-height: 259px;
+    }
+  }
+  .moduleL__tile-image {
+    max-width: 103px;
+    max-height: 128px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-width: 162px;
+      max-height: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 210px;
+      max-height: 259px;
     }
   }
   .moduleL__tile-text {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -60,14 +61,15 @@ class CardTile extends React.Component<Props> {
 
   getGiftCardBalance = key => {
     const { checkbalanceValueInfo } = this.props;
-    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+    const balance = checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+    return typeof balance === 'number' ? balance.toString() : balance;
   };
 
   getMakeDefaultBadge = () => {
     const { card, labels } = this.props;
     return card.defaultInd ? (
       <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
-        {labels.paymentGC.lbl_payment_defaultPayment}
+        {getLabelValue(labels, 'lbl_payment_defaultPayment', 'paymentGC')}
       </Badge>
     ) : (
       <Anchor
@@ -78,7 +80,7 @@ class CardTile extends React.Component<Props> {
         dataLocator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
-        {labels.common.lbl_common_makeDefault}
+        {getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
       </Anchor>
     );
   };
@@ -104,10 +106,16 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
-    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
-      card.expYear
-    }`;
+    const cardNum = `${getLabelValue(
+      labels,
+      'lbl_payment_cardNum',
+      'paymentGC'
+    )}${card.accountNo.slice(-4)}`;
+    const expDate = `${getLabelValue(
+      labels,
+      'lbl_payment_expDate',
+      'paymentGC'
+    )}${card.expMonth.trim()}/${card.expYear}`;
     return (
       <React.Fragment>
         <BodyCopy
@@ -183,7 +191,7 @@ class CardTile extends React.Component<Props> {
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
           >
-            {labels.paymentGC.lbl_payment_checkBalance}
+            {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
         )}
       </React.Fragment>
@@ -203,7 +211,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance && labels.paymentGC.lbl_payment_remainingBalance}
+            {balance && getLabelValue(labels, 'lbl_payment_remainingBalance', 'paymentGC')}
           </BodyCopy>
         )}
         {this.renderBalance({ balance, isGiftCardBalanceRequested, labels })}
@@ -249,7 +257,7 @@ class CardTile extends React.Component<Props> {
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
-            {labels.common.lbl_common_edit}
+            {getLabelValue(labels, 'lbl_common_edit', 'common')}
           </Anchor>
         )}
         <Anchor
@@ -261,7 +269,7 @@ class CardTile extends React.Component<Props> {
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
-          {labels.common.lbl_common_delete}
+          {getLabelValue(labels, 'lbl_common_delete', 'common')}
         </Anchor>
       </div>
     );

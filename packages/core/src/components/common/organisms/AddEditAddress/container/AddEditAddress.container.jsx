@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
-import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
+import { addAddressReq, updateAddressReq, resetState } from './AddEditAddress.actions';
 import { getFormValidationErrorMessages } from '../../../../features/account/Account/container/Account.selectors';
 import AddAddressComponent from '../views/AddEditAddress.view';
 import {
@@ -47,6 +47,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.initialValues = null;
+  }
+
+  componentWillUnmount() {
+    const { resetAddressState } = this.props;
+
+    resetAddressState();
   }
 
   getInitialValues = (addressList, address) => {
@@ -156,6 +162,9 @@ export const mapDispatchToProps = dispatch => {
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
+    },
+    resetAddressState: () => {
+      dispatch(resetState());
     },
   };
 };

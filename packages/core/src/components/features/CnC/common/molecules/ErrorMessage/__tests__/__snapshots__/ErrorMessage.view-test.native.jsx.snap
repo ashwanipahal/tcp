@@ -2,7 +2,9 @@
 
 exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
 <Fragment>
-  <Styled(View)>
+  <Styled(View)
+    bagPage={false}
+  >
     <Styled(ImageComp)
       alt=""
       host=""

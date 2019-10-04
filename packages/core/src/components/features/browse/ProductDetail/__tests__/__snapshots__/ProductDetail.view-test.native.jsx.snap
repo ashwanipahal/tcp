@@ -4,14 +4,8 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 <ScrollViewMock>
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      item={
-        Object {
-          "name": "",
-          "shortDescription": "",
-        }
-      }
+      imageUrls={Array []}
       onImageClick={[Function]}
-      selectedColorProductId=""
     />
     <Styled(ProductSummary)
       currencyExchange={
@@ -25,6 +19,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       isPlcc={false}
       productData={
         Object {
+          "colorFitsSizesMap": Array [],
           "name": "",
           "shortDescription": "",
         }
@@ -34,45 +29,32 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <ProductAddToBagContainer
       currentProduct={
         Object {
+          "colorFitsSizesMap": Array [],
           "name": "",
           "shortDescription": "",
         }
       }
+      errorOnHandleSubmit=""
+      handleFormSubmit={null}
       handleSubmit={null}
+      onChangeColor={[Function]}
       plpLabels={null}
       selectedColorProductId=""
     />
-    <ModalNative
-      closeIconDataLocator=""
-      closeIconLeftAligned={false}
-      headerStyle={
+    <Connect(AddedToBagContainer)
+      navigation={Object {}}
+    />
+    <Connect(Styled(FulfillmentSection))
+      btnClassName="added-to-bag"
+      buttonLabel="Add To Bag"
+      currentProduct={
         Object {
-          "alignItems": "flex-end",
-          "width": "100%",
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
         }
       }
-      horizontalBar={false}
-      isOpen={false}
-      isOverlay={true}
-      onRequestClose={[Function]}
-      overlayClassName="TCPModal__Overlay"
-    >
-      <Styled(View)
-        height={1334}
-      >
-        <Styled(WithTheme(ImageCarousel))
-          allowZoom={true}
-          item={
-            Object {
-              "name": "",
-              "shortDescription": "",
-            }
-          }
-          selectedColorProductId=""
-          showFavorites={false}
-        />
-      </Styled(View)>
-    </ModalNative>
+    />
   </Styled(View)>
 </ScrollViewMock>
 `;

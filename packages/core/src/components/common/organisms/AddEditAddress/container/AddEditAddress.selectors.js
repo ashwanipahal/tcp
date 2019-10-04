@@ -70,6 +70,10 @@ export const getAddEditAddressLabels = createSelector(
       'lbl_addEditAddress_phoneNumber',
       'lbl_addEditAddress_addNewAddress',
       'lbl_addEditAddress_selectFromAddress',
+      'lbl_addEditAddress_update',
+      'lbl_addEditAddress_cancel',
+      'lbl_addEditAddress_setDefault',
+      'lbl_addEditAddress_addressButton',
     ];
 
     addressLabelsKeys.forEach(key => {

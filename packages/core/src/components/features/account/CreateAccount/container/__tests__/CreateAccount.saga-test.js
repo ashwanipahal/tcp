@@ -28,6 +28,7 @@ describe('Create Account Saga', () => {
           contact: [],
         },
       };
+      createAccountGen.next(response);
       const putDescriptor = createAccountGen.next(response).value;
       expect(putDescriptor).toEqual(put(getUserInfo()));
     });

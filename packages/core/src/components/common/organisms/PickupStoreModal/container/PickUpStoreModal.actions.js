@@ -42,6 +42,20 @@ export const setStoreSearchError = payload => {
   };
 };
 
+export const getUserCartStores = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.GET_USER_CART_STORES,
+  };
+};
+
+export const setUserCartStores = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_USER_CART_STORES,
+  };
+};
+
 export default {
   togglePickupModal,
   closePickupModal,

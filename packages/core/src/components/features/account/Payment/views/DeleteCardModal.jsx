@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
 import Modal from '../../../../common/molecules/Modal';
@@ -47,7 +48,11 @@ class DeleteCardModal extends React.Component<Props> {
   onConfirm = () => {
     const { data, onDeleteCard } = this.props;
     const { description } = data;
-    onDeleteCard({ creditCardId: description.creditCardId });
+    onDeleteCard({
+      creditCardId: description.creditCardId,
+      accountNo: description.accountNo,
+      ccType: description.ccType,
+    });
   };
 
   /**
@@ -64,7 +69,7 @@ class DeleteCardModal extends React.Component<Props> {
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
     const TotalExp = `${data.description.expMonth}/${data.description.expYear}`.replace(/ /g, '');
     const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
-    const creditCardHeading = labels.paymentGC.lbl_payment_modalCCHeading;
+    const creditCardHeading = getLabelValue(labels, 'lbl_payment_modalCCHeading', 'paymentGC');
     const address = data.description.addressDetails ? data.description.addressDetails : null;
     return (
       <div className={className}>
@@ -143,7 +148,7 @@ class DeleteCardModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.paymentGC.lbl_payment_errorMsg}
+            message={getLabelValue(labels, 'lbl_payment_errorMsg', 'paymentGC')}
           />
         )}
 

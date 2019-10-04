@@ -241,6 +241,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-awesome-card-io')
+    implementation project(':react-native-fbsdk')
     implementation project(':react-native-view-shot')
     implementation project(':react-native-print')
     implementation project(':react-native-cookies')

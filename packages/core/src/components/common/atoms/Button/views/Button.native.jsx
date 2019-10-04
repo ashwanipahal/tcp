@@ -10,7 +10,7 @@ import {
   TouchableOpacityComponent,
   IconContainer,
 } from '../Button.style.native';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const IconComp = values => {
   const { showIcon, iconName, selectedIcon, iconColor, iconSize, selected } = values;
@@ -38,6 +38,7 @@ const CustomButton = props => {
     onPress,
     active,
     selected,
+    customTextStyle,
     ...otherProps
   } = props;
   const textValue = text || '';
@@ -46,7 +47,8 @@ const CustomButton = props => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
     } else {
-      navigateToPage(url, navigation);
+      const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
+      navigateToPage(cmsValidatedUrl, navigation);
     }
   };
 
@@ -67,6 +69,7 @@ const CustomButton = props => {
         disableButton={disableButton}
         active={active}
         selected={selected}
+        style={customTextStyle}
       >
         {textValue}
       </CustomStyleText>
@@ -95,6 +98,7 @@ CustomButton.propTypes = {
   iconName: PropTypes.string,
   iconColor: PropTypes.string,
   iconSize: PropTypes.string,
+  customTextStyle: PropTypes.shape({}),
 };
 
 CustomButton.defaultProps = {
@@ -117,6 +121,7 @@ CustomButton.defaultProps = {
   iconSize: 'fs12',
   showIcon: false,
   selectedIcon: ICON_NAME.chevronUp,
+  customTextStyle: null,
 };
 
 export default withStyles(CustomButton, style);

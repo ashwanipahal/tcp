@@ -35,8 +35,11 @@ export class ProductListView extends React.Component {
       brand: isBoss ? brand : 'tcp',
       storeLocId: storeId,
     };
-    const cartItemInfo = getCartItemInfo(product, formData);
-    addItemToCartBopis(cartItemInfo);
+    const productInfo = getCartItemInfo(product, formData);
+    const payload = {
+      productInfo,
+    };
+    addItemToCartBopis(payload);
   }
 
   render() {
@@ -70,6 +73,7 @@ export class ProductListView extends React.Component {
               );
             })}
         </Row>
+        <AddedToBagContainer />
       </ProductListingPageStyle>
     );
   }

@@ -16,6 +16,11 @@ const styles = css`
     width: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
     height: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
+
+  .venmo-continue-text {
+    text-align: center;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
 `;
 
 export default styles;

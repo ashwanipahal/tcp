@@ -286,7 +286,7 @@ exports[`ModuleB component should render banner bottom variation 1`] = `
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      to="/c?cid="
+      to="/c?cid=girl-t-shirts"
       url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
@@ -406,7 +406,7 @@ exports[`ModuleB component should render banner overlay variation 1`] = `
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      to="/c?cid="
+      to="/c?cid=girl-t-shirts"
       url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
@@ -608,7 +608,7 @@ exports[`ModuleB component should render banner top alt variation 1`] = `
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      to="/c?cid="
+      to="/c?cid=girl-t-shirts"
       url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)
@@ -728,7 +728,7 @@ exports[`ModuleB component should render banner top variation 1`] = `
       target=""
       text="Graphic Tees"
       title="Graphic Tees"
-      to="/c?cid="
+      to="/c?cid=girl-t-shirts"
       url="/c/girl-t-shirts"
     >
       <WithTheme(DamImage)

@@ -2,8 +2,9 @@ import styled from 'styled-components/native';
 
 export const StyledViewWrapper = styled.View`
   padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS}
-    ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   align-content: center;
+  padding-bottom: 0;
   background-color: white;
   width: 80%;
 `;
@@ -16,6 +17,8 @@ export const StyledHeader = styled.Text`
 
 export const StyledText = styled.Text`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
 `;
 
 export const ButtonWrapper = styled.View`
@@ -37,11 +40,4 @@ export const StyledTouchableOpacity = styled.TouchableOpacity`
 
 export const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
-`;
-
-export const TransparentModalContainer = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
 `;

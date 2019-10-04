@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withLazyLoad should render correctly 1`] = `
+<ReactComponentLazyLoader
+  callback={null}
+  noLazyHorizontalScroll={false}
+  placeholder={<div />}
+  thresholdX={200}
+  thresholdY={200}
+  throttleWait={75}
+  wrapperID={null}
+>
+  <[object Object] />
+</ReactComponentLazyLoader>
+`;

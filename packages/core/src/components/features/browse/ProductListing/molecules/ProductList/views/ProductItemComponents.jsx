@@ -53,13 +53,13 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
 
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={dataLocator || getLocator('global_Price_text')}
+          dataLocator={getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -98,7 +98,7 @@ export function ProductPricesSection(props) {
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile, className } = this.props;
+    const { onClick, isRemove, isDisabled, isMobile, className, activeButton } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
@@ -126,8 +126,8 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
               data-locator={getLocator('global_favorite_button')}
               alt="Add-to-favorite"
               title="addToFavorite"
-              className={className}
-              src={getIconPath('add-to-favorite')}
+              className={activeButton ? `${className} active` : className}
+              src={activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')}
             />
           </button>
         )}
@@ -204,7 +204,6 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
-  dataLocator: '',
 };
 
 ProductPricesSection.propTypes = {
@@ -212,5 +211,4 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
-  dataLocator: PropTypes.string,
 };

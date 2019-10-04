@@ -4,12 +4,15 @@ import { PropTypes } from 'prop-types';
 const HomePageSlots = props => {
   const { slots = [], modules, ...others } = props;
 
-  return slots
-    .sort((a, b) => (b.name > a.name ? -1 : 1))
-    .map(slot => {
-      const Module = modules[slot.moduleName];
-      return Module && slot.data && <Module key={slot.contentId} {...slot.data} {...others} />;
-    });
+  return slots.map(slot => {
+    const Module = modules[slot.moduleName];
+    const { data: slotData, contentId, accessibility } = slot;
+
+    return (
+      Module &&
+      slotData && <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
+    );
+  });
 };
 
 HomePageSlots.propTypes = {

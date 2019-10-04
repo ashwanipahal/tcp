@@ -90,11 +90,11 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (window && window.innerWidth > 767) {
       if (showCondensedHeader && this.body) {
-        this.body.style.overflow = 'hidden';
         modal.style.height = `${window.innerHeight - 70}px`;
       } else {
-        modal.style.height = `${window.innerHeight - modalTrianglePos}px`;
+        modal.style.height = `${window.innerHeight - (modalTrianglePos + 70)}px`;
       }
+      this.body.style.overflow = 'hidden';
     }
     /* istanbul ignore else */
     if (
@@ -143,7 +143,11 @@ class OverlayModal extends React.Component {
 
   handleWindowClick(e) {
     /* istanbul ignore else */
-    if (this.modalRef && !this.modalRef.contains(e.target)) {
+    if (
+      this.modalRef &&
+      !this.modalRef.contains(e.target) &&
+      !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
+    ) {
       this.closeModal();
     }
   }

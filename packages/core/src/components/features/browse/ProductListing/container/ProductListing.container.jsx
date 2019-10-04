@@ -5,7 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
@@ -26,7 +26,11 @@ import {
   getLabels,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
@@ -75,11 +79,11 @@ class ProductListingContainer extends React.PureComponent {
       categoryId,
       getProducts,
       onSubmit,
-      onPickUpOpenClick,
       onQuickViewOpenClick,
       formValues,
       sortLabels,
       slpLabels,
+      isLoggedIn,
       ...otherProps
     } = this.props;
     return (
@@ -101,11 +105,11 @@ class ProductListingContainer extends React.PureComponent {
         lastLoadedPageNumber={lastLoadedPageNumber}
         getProducts={getProducts}
         onSubmit={onSubmit}
-        onPickUpOpenClick={onPickUpOpenClick}
         onQuickViewOpenClick={onQuickViewOpenClick}
         formValues={formValues}
         sortLabels={sortLabels}
         slpLabels={slpLabels}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
     );
@@ -156,6 +160,8 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     slpLabels: getLabels(state),
+    isGuest: getUserLoggedInState(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -164,14 +170,14 @@ function mapDispatchToProps(dispatch) {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
-    onPickUpOpenClick: payload => {
-      dispatch(openPickupModalWithValues(payload));
-    },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -180,7 +186,6 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
   getMoreProducts: PropTypes.func.isRequired,
   productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
@@ -206,6 +211,7 @@ ProductListingContainer.propTypes = {
   }).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -225,6 +231,7 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
   sortLabels: [],
   slpLabels: {},
+  isLoggedIn: false,
 };
 
 export default withRouter(

@@ -1,9 +1,19 @@
 import styled from 'styled-components/native';
 
+const errorViewPaddingTop = ({ bagPage }) => {
+  return `
+    ${bagPage ? '22px' : '6px'}
+  `;
+};
 export const ErrorView = styled.View`
   display: flex;
-  padding: ${props => (props.showAccordian ? '0' : '6px')} 15px
-    ${props => (props.showAccordian ? '0' : '13px')} 14px;
+  padding: ${props =>
+      props.showAccordian
+        ? '0'
+        : errorViewPaddingTop({
+            bagPage: props.bagPage,
+          })}
+    15px ${props => (props.showAccordian || props.bagPage ? '0' : '13px')} 12px;
   flex-direction: row;
   background-color: ${props =>
     props.showAccordian ? props.theme.colors.WHITE : props.theme.colors.PRIMARY.PALEGRAY};

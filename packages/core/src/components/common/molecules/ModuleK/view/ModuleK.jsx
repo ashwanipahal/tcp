@@ -27,16 +27,28 @@ const ModuleK = props => {
     headerText,
     masonryGrid,
     className,
-    accessibility: { playIconButton, pauseIconButton } = {},
+    accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
   } = props;
 
   const { CAROUSEL_OPTIONS, IMG_DATA } = config;
 
   CAROUSEL_OPTIONS.prevArrow = (
-    <button type="button" data-locator="moduleK_left_arrow" className="slick-prev" />
+    <button
+      type="button"
+      tabIndex="0"
+      aria-label={previousButton}
+      data-locator="moduleK_left_arrow"
+      className="slick-prev"
+    />
   );
   CAROUSEL_OPTIONS.nextArrow = (
-    <button type="button" data-locator="moduleK_right_arrow" className="slick-prev" />
+    <button
+      type="button"
+      tabIndex="0"
+      aria-label={nextIconButton}
+      data-locator="moduleK_right_arrow"
+      className="slick-prev"
+    />
   );
 
   carouselConfig.autoplay = carouselConfig.autoplay && masonryGrid.length > 1;
@@ -138,6 +150,8 @@ ModuleK.propTypes = {
   accessibility: PropTypes.shape({
     playIconButton: PropTypes.string,
     pauseIconButton: PropTypes.string,
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
   }).isRequired,
 };
 
@@ -149,6 +163,8 @@ ModuleK.propTypes = {
   accessibility: PropTypes.shape({
     playIconButton: PropTypes.string,
     pauseIconButton: PropTypes.string,
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
   }),
   className: PropTypes.string.isRequired,
   headerText: PropTypes.arrayOf(

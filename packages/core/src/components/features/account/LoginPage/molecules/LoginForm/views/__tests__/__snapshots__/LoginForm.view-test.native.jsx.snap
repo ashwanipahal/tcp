@@ -65,6 +65,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
       dataLocator="emailAddress"
       id="emailAddress"
+      label="lbl_login_email"
       name="emailAddress"
       type="text"
     />
@@ -115,6 +116,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
         dataLocator="password"
         id="password"
+        label="lbl_login_password"
         name="password"
         rightText="lbl_createAccount_show"
         secureTextEntry={true}
@@ -169,6 +171,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           "marginTop": 30,
         }
       }
+      customTextStyle={null}
       disableButton={false}
       fill="BLUE"
       fullWidth=""
@@ -177,11 +180,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_login_loginCTA"
       theme={Object {}}
       url=""
     />
@@ -198,7 +201,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontSizeVariation="xlarge"
       locator=""
       onPress={[Function]}
-      text=""
+      text="lbl_login_forgetPasswordCTA"
       underlineBlue={true}
       visible={false}
     />

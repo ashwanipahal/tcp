@@ -21,6 +21,12 @@ export const addAddressFail = (payload: {}) => {
   };
 };
 
+export const resetState = () => {
+  return {
+    type: constants.RESET_ADDRESS_STATE,
+  };
+};
+
 export const updateAddressReq = (payload: {}) => {
   return {
     type: constants.UPDATE_USER_ADDRESS_REQ,

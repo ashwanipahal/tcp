@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
+import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import style from '../styles/ReviewPage.style.native';
 import CONSTANTS from '../../../Checkout.constants';
 import { BodyCopy } from '../../../../../../common/atoms';
+import BillingSection from '../organisms/BillingSection';
+import ShippingReviewSection from '../organisms/ShippingReviewSection';
+import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 
-const { Container, TextSection, FooterTextContainer, FooterLink } = style;
+const { Container, FooterTextContainer, FooterLink } = style;
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -49,14 +53,7 @@ class ReviewPage extends React.PureComponent {
       orderHasShipping,
       orderHasPickUp,
     } = this.props;
-    const {
-      header,
-      backLinkBilling,
-      nextSubmitText,
-      pickupSectionTitle,
-      shippingSectionTitle,
-      billingSectionTitle,
-    } = labels;
+    const { header, backLinkBilling, nextSubmitText } = labels;
 
     return (
       <>
@@ -68,9 +65,27 @@ class ReviewPage extends React.PureComponent {
         <ScrollView>
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
-            {!!orderHasPickUp && <TextSection>{pickupSectionTitle}</TextSection>}
-            {!!orderHasShipping && <TextSection>{shippingSectionTitle}</TextSection>}
-            <TextSection>{billingSectionTitle}</TextSection>
+            {!!orderHasPickUp && (
+              <PickUpReviewSectionContainer
+                onEdit={() => {
+                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+                }}
+              />
+            )}
+            {!!orderHasShipping && (
+              <ShippingReviewSection
+                onEdit={() => {
+                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+                }}
+              />
+            )}
+
+            <BillingSection
+              onEdit={() => {
+                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+              }}
+            />
+            <CheckoutCartItemList />
           </Container>
           <CnCTemplate
             navigation={navigation}
@@ -82,6 +97,7 @@ class ReviewPage extends React.PureComponent {
               navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING)
             }
             footerBody={this.renderFooter()}
+            showAccordian
           />
         </ScrollView>
       </>

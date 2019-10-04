@@ -16,11 +16,12 @@ import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
 // import errorBoundary from '../../../hoc/errorBoundary';
 
-function getParent() {
+function getParent(customWrapperClassName) {
+  const wrapperClassName = customWrapperClassName || 'TCPModal__Wrapper';
   // eslint-disable-next-line no-extra-boolean-cast
   return !!document.querySelector('.checkout-pages')
-    ? document.querySelector('#overlayWrapper .TCPModal__Wrapper')
-    : document.querySelector('.TCPModal__Wrapper');
+    ? document.querySelector(`#overlayWrapper .${wrapperClassName}`)
+    : document.querySelector(`.${wrapperClassName}`);
 }
 
 class Modal extends React.PureComponent {
@@ -50,15 +51,16 @@ class Modal extends React.PureComponent {
       ariaDescribedby,
       innerContentClassName = '',
       isOpen,
+      customWrapperClassName,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
       <div className={className}>
-        <div className="TCPModal__Wrapper">
+        <div className={`TCPModal__Wrapper ${customWrapperClassName}`}>
           {isOpen && (
             <ReactModal
               {...otherProps}
-              parentSelector={getParent}
+              parentSelector={() => getParent(customWrapperClassName)}
               aria={{
                 labelledby: ariaLabelledby,
                 describedby: ariaDescribedby,

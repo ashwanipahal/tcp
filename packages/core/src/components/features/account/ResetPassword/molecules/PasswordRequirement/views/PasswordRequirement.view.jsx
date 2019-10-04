@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const getPasswordRequirementLabels = labels => {
@@ -17,7 +18,7 @@ export const PasswordRequirement = ({ labels }) => {
         className="elem-mb-MED reset-password-heading"
         fontWeight="black"
       >
-        {labels.lbl_resetPassword_requirementHeading}
+        {getLabelValue(labels, 'lbl_resetPassword_requirementHeading')}
       </BodyCopy>
       <BodyCopy
         fontFamily="secondary"
@@ -37,7 +38,7 @@ export const PasswordRequirement = ({ labels }) => {
         textAlign="left"
         className="reset-password-note"
       >
-        {labels.lbl_resetPassword_requirementNote}
+        {getLabelValue(labels, 'lbl_resetPassword_requirementNote')}
       </BodyCopy>
     </React.Fragment>
   );

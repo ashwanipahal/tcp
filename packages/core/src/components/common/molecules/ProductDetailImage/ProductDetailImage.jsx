@@ -56,6 +56,7 @@ const ProductDetailImage = props => {
             smallImage: {
               src: imageUrl,
               isFluidWidth: true,
+              alt: imageName,
             },
             enlargedImageContainerDimensions: {
               width: productSectionWidth || '100%',
@@ -65,6 +66,7 @@ const ProductDetailImage = props => {
               src: zoomImageUrl,
               width: 900,
               height: 900,
+              alt: imageName,
             },
             enlargedImageContainerClassName: 'enlarged-image-wrapper',
             isActivatedOnTouch: false,

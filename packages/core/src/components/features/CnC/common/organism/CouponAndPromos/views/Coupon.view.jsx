@@ -58,6 +58,7 @@ class CouponView extends React.PureComponent<Props> {
     detailStatus,
     helpStatus,
     selectedCoupon,
+    additionalClassName,
   }) => {
     return (
       <div className={className}>
@@ -67,6 +68,7 @@ class CouponView extends React.PureComponent<Props> {
           source="form"
           labels={labels}
           onNeedHelpTextClick={this.toggleNeedHelpModal}
+          additionalClassNameModal={additionalClassName}
         />
         <div className="coupon_list">
           {appliedCouponList && appliedCouponList.size > 0 && (
@@ -80,6 +82,7 @@ class CouponView extends React.PureComponent<Props> {
               onRemove={handleRemoveCoupon}
               dataLocator="coupon-cartAppliedRewards"
               handleErrorCoupon={handleErrorCoupon}
+              additionalClassNameModal={additionalClassName}
             />
           )}
           {availableCouponList && (
@@ -95,6 +98,7 @@ class CouponView extends React.PureComponent<Props> {
               onApply={handleApplyCouponFromList}
               dataLocator="coupon-cartAvaliableRewards"
               handleErrorCoupon={handleErrorCoupon}
+              additionalClassNameModal={additionalClassName}
             />
           )}
           <CouponDetailModal
@@ -107,6 +111,7 @@ class CouponView extends React.PureComponent<Props> {
               });
             }}
             applyToBag={handleApplyCouponFromList}
+            additionalClassNameModal={additionalClassName}
           />
           <CouponHelpModal
             labels={labels}
@@ -118,6 +123,7 @@ class CouponView extends React.PureComponent<Props> {
               });
             }}
             heading="Help Modal"
+            additionalClassNameModal={additionalClassName}
           />
         </div>
         <ApplyNowModal />
@@ -137,23 +143,26 @@ class CouponView extends React.PureComponent<Props> {
       handleRemoveCoupon,
       handleErrorCoupon,
       showAccordian,
+      additionalClassNameModal,
     } = this.props;
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     const header = this.getHeader({ labels });
-    const body = this.getContent({
-      isFetching,
-      labels,
-      handleApplyCoupon,
-      handleApplyCouponFromList,
-      appliedCouponList,
-      availableCouponList,
-      className,
-      handleRemoveCoupon,
-      handleErrorCoupon,
-      detailStatus,
-      helpStatus,
-      selectedCoupon,
-    });
+    const body = additionalClassName =>
+      this.getContent({
+        isFetching,
+        labels,
+        handleApplyCoupon,
+        handleApplyCouponFromList,
+        appliedCouponList,
+        availableCouponList,
+        className,
+        handleRemoveCoupon,
+        handleErrorCoupon,
+        detailStatus,
+        helpStatus,
+        selectedCoupon,
+        additionalClassName,
+      });
     const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
       <div className={className}>
@@ -169,12 +178,14 @@ class CouponView extends React.PureComponent<Props> {
           <CollapsibleContainer
             className={`${className} ${showAccordian ? 'couponsWrapperAccordian' : ''}`}
             header={header}
-            body={body}
+            body={body(additionalClassNameModal)}
             iconLocator="arrowicon"
             defaultOpen={defaultOpen}
           />
         </Col>
-        <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
+        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
+          {body(`${additionalClassNameModal}_1`)}
+        </div>
       </div>
     );
   }
@@ -187,6 +198,7 @@ CouponView.propTypes = {
   handleRemoveCoupon: PropTypes.func.isRequired,
   appliedCouponList: PropTypes.shape([]).isRequired,
   availableCouponList: PropTypes.shape([]).isRequired,
+  additionalClassNameModal: PropTypes.string.isRequired,
 };
 
 export default withStyles(CouponView, styles);
