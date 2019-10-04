@@ -24,10 +24,12 @@ const cartItemMargin = cartItemCount => {
 export default css`
   .mainWrapper {
     text-align: center;
-    height: 31px;
+    height: 30px;
     padding-right: 0;
     padding-left: 0;
     justify-content: flex-end;
+    padding-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    padding-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   }
   .subHeaderText {
     text-decoration: none;

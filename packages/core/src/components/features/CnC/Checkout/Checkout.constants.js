@@ -127,6 +127,7 @@ const CONSTANTS = {
   PAYPAL_LOCATE: 'en_US',
   PAYPAL_LABEL: 'paypal',
   UPDATE_CARD_DATA: 'UPDATE_CARD_DATA',
+  LOYALITY_OFFERS: 'Loyalty_Offers',
 };
 
 const {
