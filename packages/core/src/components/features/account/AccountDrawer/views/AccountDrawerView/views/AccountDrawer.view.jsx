@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AccountDrawerPage from '../../../organisms/AccountDrawerPage';
 
-const AccountDrawerView = ({ className, plccUser, labels, userName, closedOverlay }) => {
+const AccountDrawerView = ({
+  className,
+  plccUser,
+  labels,
+  userName,
+  closedOverlay,
+  globalLabels,
+}) => {
   return (
     <AccountDrawerPage
       className={className}
@@ -10,6 +17,7 @@ const AccountDrawerView = ({ className, plccUser, labels, userName, closedOverla
       closedOverlay={closedOverlay}
       userName={userName}
       plccUser={plccUser}
+      globalLabels={globalLabels}
     />
   );
 };
@@ -20,6 +28,7 @@ AccountDrawerView.propTypes = {
   userName: PropTypes.string,
   closedOverlay: PropTypes.func.isRequired,
   plccUser: PropTypes.bool,
+  globalLabels: PropTypes.shape({}),
 };
 
 AccountDrawerView.defaultProps = {
@@ -29,6 +38,7 @@ AccountDrawerView.defaultProps = {
   },
   userName: '',
   plccUser: false,
+  globalLabels: {},
 };
 
 export default AccountDrawerView;

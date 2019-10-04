@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Button } from '../../../../../../common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
@@ -56,11 +57,13 @@ const ProductList = props => {
         }
         window.gridIndex = gridIndex;
         return typeof item === 'string' ? (
-          /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
-
-          <h2 key={item} className={`${className} item-title`}>
+          <Heading
+            key={item}
+            className={`${className} item-title`}
+            fontFamily="secondaryFontFamily"
+          >
             {item}
-          </h2>
+          </Heading>
         ) : (
           <div className={`${className} product-tile ${productTileVariation}`}>
             <ProductsGridItem

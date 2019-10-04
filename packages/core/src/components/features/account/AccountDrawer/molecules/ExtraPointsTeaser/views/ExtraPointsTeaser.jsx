@@ -7,14 +7,14 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const ExtraPointsTeaser = props => {
-  const { className, plccUser, labels } = props;
+  const { className, plccUser, globalLabels } = props;
 
   return (
     <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
       <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-LRG elem-pb-SM`}>
         <div className="earnExtra alignCenter">
           <BodyCopy fontFamily="secondary" fontWeight="extrabold" fontSize="fs14">
-            {getLabelValue(labels, 'lbl_drawer_earn_extra')}
+            {getLabelValue(globalLabels, 'lbl_drawer_earn_extra', 'accountDrawer')}
           </BodyCopy>
         </div>
         <div className="getCloser alignCenter elem-pt-XS">
@@ -24,14 +24,14 @@ const ExtraPointsTeaser = props => {
             fontSize="fs12"
             color="text.secondary"
           >
-            {getLabelValue(labels, 'lbl_drawer_get_closer')}
+            {getLabelValue(globalLabels, 'lbl_drawer_get_closer', 'accountDrawer')}
           </BodyCopy>
         </div>
         <div className="learnMore alignCenter elem-pt-XS">
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"
-            text={getLabelValue(labels, 'lbl_drawer_learn_more')}
+            text={getLabelValue(globalLabels, 'lbl_drawer_learn_more', 'accountDrawer')}
             underline
           />
         </div>
@@ -44,6 +44,7 @@ ExtraPointsTeaser.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
   plccUser: PropTypes.bool,
+  globalLabels: PropTypes.shape({}),
 };
 
 ExtraPointsTeaser.defaultProps = {
@@ -54,6 +55,7 @@ ExtraPointsTeaser.defaultProps = {
     ACC_DRAWER_LEARN_MORE: 'Learn More',
   },
   plccUser: false,
+  globalLabels: {},
 };
 
 export default withStyles(ExtraPointsTeaser, styles);
