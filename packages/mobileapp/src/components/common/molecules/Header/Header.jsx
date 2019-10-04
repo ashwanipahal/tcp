@@ -5,6 +5,7 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
@@ -126,6 +127,7 @@ class Header extends React.PureComponent<Props> {
 
     return (
       <SafeAreaViewStyle>
+        <ToastContainer />
         <Container data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <BodyCopy
