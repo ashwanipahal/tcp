@@ -20,6 +20,7 @@ import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/PickUpStoreModal.style';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
+import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
 import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 
 const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
@@ -396,6 +397,9 @@ class PickUpStoreModalView extends React.Component {
       onClearSearchFormError,
       addItemToCartInPickup,
       PickupSkuFormValues,
+      currency,
+      showDefaultSizeMsg,
+      onColorChange,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -408,6 +412,7 @@ class PickUpStoreModalView extends React.Component {
       SkuSelectedValues: { color, Fit, Size } = {},
       isSkuResolved,
       error,
+      selectedColor,
     } = this.state;
 
     const isSearchOnlyInCartStores = maxAllowedStoresInCart <= cartBopisStoresList.length;
@@ -439,49 +444,76 @@ class PickUpStoreModalView extends React.Component {
     };
 
     return (
-      <PickupStoreSelectionForm
-        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-        maxAllowedStoresInCart={maxAllowedStoresInCart}
-        colorFitsSizesMap={colorFitsSizesMap}
-        cartBopisStoresList={cartBopisStoresList}
-        distancesMap={distancesMap}
-        imagePath={getIconImageForColor(currentProduct, color)}
-        initialValues={SkuSelectedValues}
-        isPreferredStoreError={isPreferredStoreError}
-        isSearchOnlyInCartStores={isSearchOnlyInCartStores}
-        isPickUpWarningModal={isPickUpWarningModal}
-        isShoppingBag={isShoppingBag}
-        isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-        listPrice={prices.listPrice}
-        name={name}
-        offerPrice={prices.offerPrice}
-        onAddItemToCart={addItemToCartInPickup}
-        onCloseClick={this.onCloseClick}
-        onSubmit={this.handleSearchAreaStoresSubmit}
-        promotionalMessage={currentProduct.promotionalMessage}
-        promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
-        currentProduct={currentProduct}
-        addToCartError={error}
-        isBopisCtaEnabled={isBopisCtaEnabled}
-        isBossCtaEnabled={isBossCtaEnabled}
-        updateCartItemStore={updateCartItemStore}
-        allowBossStoreSearch={allowBossStoreSearch}
-        bopisChangeStore={bopisChangeStore}
-        currencySymbol={currencySymbol}
-        isBopisEnabled={isBopisEnabled}
-        isBossEnabled={isBossEnabled}
-        isGiftCard={currentProduct.isGiftCard}
-        isRadialInventoryEnabled={isRadialInventoryEnabled}
-        defaultStore={defaultStore}
-        itemsCount={itemsCount}
-        isCanada={isCanada}
-        isPlcc={isPlcc}
-        isInternationalShipping={isInternationalShipping}
-        storeSearchError={storeSearchError}
-        onClearSearchFormError={onClearSearchFormError}
-        isSkuResolved={isSkuResolved}
-        PickupSkuFormValues={PickupSkuFormValues}
-      />
+      <>
+        <PickupSkuSelectionForm
+          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+          isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+          isPreferredStoreError={isPreferredStoreError}
+          onEditSku={this.handleEditSkuDetails}
+          promotionalMessage={currentProduct.promotionalMessage}
+          promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
+          isPickUpWarningModal={isPickUpWarningModal}
+          onColorChange={onColorChange}
+          productInfo={currentProduct}
+          isCanada={isCanada}
+          name={name}
+          isPlcc={isPlcc}
+          currencySymbol={currencySymbol}
+          isInternationalShipping={isInternationalShipping}
+          prices={prices}
+          showDefaultSizeMsg={showDefaultSizeMsg}
+          isSkuResolved={isSkuResolved}
+          currentProduct={currentProduct}
+          initialValues={SkuSelectedValues}
+          selectedColor={selectedColor}
+          currency={currency}
+          className="pickup-sku-selection"
+          onCloseClick={this.onCloseClick}
+        />
+        <PickupStoreSelectionForm
+          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+          maxAllowedStoresInCart={maxAllowedStoresInCart}
+          colorFitsSizesMap={colorFitsSizesMap}
+          cartBopisStoresList={cartBopisStoresList}
+          distancesMap={distancesMap}
+          imagePath={getIconImageForColor(currentProduct, color)}
+          initialValues={SkuSelectedValues}
+          isPreferredStoreError={isPreferredStoreError}
+          isSearchOnlyInCartStores={isSearchOnlyInCartStores}
+          isPickUpWarningModal={isPickUpWarningModal}
+          isShoppingBag={isShoppingBag}
+          isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+          listPrice={prices.listPrice}
+          name={name}
+          offerPrice={prices.offerPrice}
+          onAddItemToCart={addItemToCartInPickup}
+          onCloseClick={this.onCloseClick}
+          onSubmit={this.handleSearchAreaStoresSubmit}
+          promotionalMessage={currentProduct.promotionalMessage}
+          promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
+          currentProduct={currentProduct}
+          addToCartError={error}
+          isBopisCtaEnabled={isBopisCtaEnabled}
+          isBossCtaEnabled={isBossCtaEnabled}
+          updateCartItemStore={updateCartItemStore}
+          allowBossStoreSearch={allowBossStoreSearch}
+          bopisChangeStore={bopisChangeStore}
+          currencySymbol={currencySymbol}
+          isBopisEnabled={isBopisEnabled}
+          isBossEnabled={isBossEnabled}
+          isGiftCard={currentProduct.isGiftCard}
+          isRadialInventoryEnabled={isRadialInventoryEnabled}
+          defaultStore={defaultStore}
+          itemsCount={itemsCount}
+          isCanada={isCanada}
+          isPlcc={isPlcc}
+          isInternationalShipping={isInternationalShipping}
+          storeSearchError={storeSearchError}
+          onClearSearchFormError={onClearSearchFormError}
+          isSkuResolved={isSkuResolved}
+          PickupSkuFormValues={PickupSkuFormValues}
+        />
+      </>
     );
   }
 
