@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getDateInformation } from '@tcp/core/src//utils/badge.util';
+// import { getDateInformation } from '@tcp/core/src//utils/badge.util';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 /**
@@ -16,20 +16,22 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
  */
 
 const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
-  const { pickUpExpirationDate, orderNumber, status } = orderDetailsData;
-  let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
-  let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
+  const { orderNumber } = orderDetailsData;
+  // const { pickUpExpirationDate, orderNumber } = orderDetailsData;
+  // let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
+  let { orderDate } = orderDetailsData;
+  // let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
   let orderTime = orderDate.split(' ')[1];
   orderDate = moment(orderDate);
   orderTime = orderTime && moment(orderTime, 'HH:mm:ss');
-  pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
-  bossMinDate = bossMinDate ? getDateInformation(bossMinDate) : '';
-  bossMaxDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
-  const bossDate =
-    !!(bossMinDate && bossMaxDate) &&
-    `${bossMinDate.day}. ${bossMinDate.month}
-   ${bossMinDate.date} - ${bossMaxDate.day}. ${bossMaxDate.month} ${bossMaxDate.date}`;
-
+  /* pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
+   * bossMinDate = bossMinDate ? getDateInformation(bossMinDate) : '';
+   * bossMaxDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
+   * const bossDate =
+   *   !!(bossMinDate && bossMaxDate) &&
+   *   `${bossMinDate.day}. ${bossMinDate.month}
+   *  ${bossMinDate.date} - ${bossMaxDate.day}. ${bossMaxDate.month} ${bossMaxDate.date}`;
+   */
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.

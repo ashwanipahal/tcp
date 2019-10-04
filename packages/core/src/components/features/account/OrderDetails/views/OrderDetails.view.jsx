@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-
-// TO DO - Please used all unused variable in next code.
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
@@ -28,22 +24,22 @@ class OrderDetailsView extends PureComponent {
     const { orderDetailsData, className, ordersLabels } = this.props;
 
     const {
-      orderNumber,
-      orderDate,
-      pickUpExpirationDate,
-      checkout,
+      // orderNumber,
+      // orderDate,
+      // pickUpExpirationDate,
+      // checkout,
       summary,
-      appliedGiftCards,
-      status,
-      pickedUpDate,
+      // appliedGiftCards,
+      // status,
+      // pickedUpDate,
       purchasedItems,
-      outOfStockItems,
-      isBossOrder,
-      canceledItems,
+      // outOfStockItems,
+      // isBossOrder,
+      // canceledItems,
       isBopisOrder,
-      orderType,
-      bossMaxDate,
-      bossMinDate,
+      // orderType,
+      // bossMaxDate,
+      // bossMinDate,
     } = orderDetailsData || {};
 
     const { currencySymbol } = summary || {};
