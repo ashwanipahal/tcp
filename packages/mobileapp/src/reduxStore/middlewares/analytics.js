@@ -20,11 +20,11 @@ const app_id = 'dae3661a4c63/7bc47440747f/launch-8ca67ecb0da6-development';
 
 ACPCore.setLogLevel(ACPMobileLogLevel.VERBOSE);
 ACPCore.configureWithAppId(app_id);
-ACPLifecycle.registerExtension();
-ACPIdentity.registerExtension();
-ACPSignal.registerExtension();
-ACPAnalytics.registerExtension();
-ACPCore.start();
+// ACPLifecycle.registerExtension();
+// ACPIdentity.registerExtension();
+// ACPSignal.registerExtension();
+// ACPAnalytics.registerExtension();
+// ACPCore.start();
 
 const eventMapping = {
   'analytics:TRACK_PAGE_VIEW': action => {
@@ -34,7 +34,7 @@ const eventMapping = {
     ACPAnalytics.getTrackingIdentifier().then(identifier =>
       console.log('AdobeExperienceSDK: Tracking identifier: ' + identifier)
     );
-    ACPCore.trackAction('pageView', action.payload);
+    ACPCore.trackAction('pageView', { msg: 'hello' });
   },
 };
 

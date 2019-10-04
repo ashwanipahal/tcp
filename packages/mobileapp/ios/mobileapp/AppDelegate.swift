@@ -11,6 +11,8 @@ import FBSDKLoginKit
 import FBSDKShareKit
 import FBSDKCoreKit
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -20,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
+    ACPCore.configure(withAppId: "dae3661a4c63/7bc47440747f/launch-8ca67ecb0da6-development");
+    ACPCore.setWrapperType(ACPMobileWrapperType.reactNative)
+    ACPIdentity.registerExtension()
+    ACPLifecycle.registerExtension()
+    ACPSignal.registerExtension()
+  
     // Get current app environment from info.plist and send it as initial property to react-native code
     var props: [String: Any]? = nil
     if let appName = Bundle.main.infoDictionary?["AppType"] {
