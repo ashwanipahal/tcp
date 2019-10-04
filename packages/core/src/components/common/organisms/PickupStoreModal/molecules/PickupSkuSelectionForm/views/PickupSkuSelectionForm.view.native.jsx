@@ -14,6 +14,7 @@ import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPar
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { SKU_DETAILS, PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
+import { BodyCopyWithSpacing } from '../../../../../atoms/styledWrapper';
 
 import {
   PickUpSkUSectionContainer,
@@ -62,17 +63,17 @@ const PickupSkuSelectionForm = props => {
           <Image resizeMode="contain" height="202px" width="164px" url={imageUrl} />
         </ImageWrapper>
         <ProductDetailSummary>
-          <BodyCopy
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="extrabold"
-            mobileFontFamily="secondary"
             text={currentProduct.name}
-            margin="0 0 24px 0"
+            spacingStyles="margin-bottom-LRG"
           />
           <OfferPriceAndBadge3Container>
             <BodyCopy
               dataLocator="pdp_current_product_price"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs16"
               fontWeight="black"
               color="red.500"
@@ -83,7 +84,7 @@ const PickupSkuSelectionForm = props => {
               <BodyCopy
                 dataLocator="pdp_discounted_product_price"
                 textDecoration="line-through"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontSize="fs12"
                 margin="0 0 0 10px"
                 fontWeight="regular"
@@ -95,7 +96,7 @@ const PickupSkuSelectionForm = props => {
               <BodyCopy
                 dataLocator="pdp_discounted_percentage"
                 margin="0 0 0 10px"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="regular"
                 color="red.500"
@@ -112,7 +113,7 @@ const PickupSkuSelectionForm = props => {
             <BodyCopy
               fontSize="fs14"
               fontWeight="regular"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               textDecoration="underline"
               text={PICKUP_LABELS.VIEW_DETAILS}
             />

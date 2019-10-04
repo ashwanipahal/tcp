@@ -14,7 +14,7 @@ const ProductSummaryContainer = styled.View`
 const OfferPriceAndBadge3Container = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  margin-bottom: 24px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 const ProductDetailSummary = styled.View`
   flex-wrap: wrap;
