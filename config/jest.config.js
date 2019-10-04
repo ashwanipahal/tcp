@@ -24,6 +24,7 @@ const ignorePsuedoCodeDir = [
   '/GoogleAutoSuggest/',
   '/utils/localStorageManagement.js',
   '/Favorites/',
+  '/services/abstractors/common/searchBar/makeSearch.js',
 ];
 
 module.exports = {

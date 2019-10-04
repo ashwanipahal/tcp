@@ -12,7 +12,7 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
-// import { setSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
+import { setSearchResult } from '../../../../common/molecules/SearchBar/SearchBar.actions';
 import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
@@ -83,19 +83,23 @@ export function* fetchMoreProducts({ payload }) {
 }
 
 export function* fetchSlpSearchResults({ payload }) {
-  const searchApiConfig = {
-    categoryCount: 4,
-    topQueriesCount: 4,
-    productsCounts: 4,
-    suggestionsCount: 4,
+  const suggestionsCount = {
+    category: 4,
+    keywords: 4,
+    promotedTopQueries: 4,
+  };
+
+  const isHideBundleProduct = false;
+  const payloadData = {
+    searchTerm: payload.searchText,
+    suggestionsCount,
+    isHideBundleProduct,
+    slpLabels: payload.slpLabels,
   };
 
   try {
-    yield call(makeSearch, {
-      searchTerm: payload,
-      ...searchApiConfig,
-    });
-    // yield put(setSearchResult(response));
+    const response = yield call(makeSearch, payloadData);
+    yield put(setSearchResult(response));
   } catch (err) {
     logger.error('Error: error in fetching Search bar results ');
   }

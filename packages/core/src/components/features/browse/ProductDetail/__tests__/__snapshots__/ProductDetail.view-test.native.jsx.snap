@@ -26,7 +26,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       }
       selectedColorProductId=""
     />
-    <ProductAddToBagContainer
+    <Connect(ProductAddToBagContainer)
       currentProduct={
         Object {
           "colorFitsSizesMap": Array [],
@@ -43,6 +43,13 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
+    />
+    <ProductDetailDescription
+      isShowMore={false}
+      itemPartNumber=""
+      longDescription=""
+      pdpLabels={Object {}}
+      shortDescription=""
     />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"
