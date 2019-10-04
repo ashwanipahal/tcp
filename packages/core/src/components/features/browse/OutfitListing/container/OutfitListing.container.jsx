@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'next/router'; // eslint-disable-line
-import OutfitDetail from '../views/index';
-import getLabels from './OutfitDetail.selectors';
+import OutfitListing from '../views/index';
+import getLabels from './OutfitListing.selectors';
 
 class OutfitListingContainer extends React.PureComponent {
   componentDidMount() {}
 
   render() {
     const { labels } = this.props;
-    return <OutfitDetail labels={labels} />;
+    return <OutfitListing labels={labels} />;
   }
 }
 
