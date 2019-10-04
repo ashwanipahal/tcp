@@ -42,7 +42,7 @@ exports[`Order Basic Details component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      70000311411
+      7000031141
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
