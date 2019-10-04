@@ -26,7 +26,7 @@ export const StyledBodyCopy = styled(BodyCopy)`
 `;
 
 export const ScrollViewContainer = styled.ScrollView`
-  margin-bottom: 40px;
+  padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
 `;
 
 export const ButtonWrapper = styled.View`

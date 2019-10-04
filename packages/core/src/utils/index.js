@@ -29,6 +29,8 @@ export {
   isBopisProduct,
   isBossProduct,
   viewport,
+  fetchStoreIdFromUrlPath,
+  routeToStoreDetails,
   getLocationOrigin,
 } from './utils.web';
 
@@ -67,5 +69,7 @@ export {
   configureInternalNavigationFromCMSUrl,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   flattenArray,
 } from './utils';

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Heading from '../../../../common/atoms/Heading';
 import EmptyCard from '../../common/molecule/EmptyCard/views/EmptyCard.view';
 import Button from '../../../../common/atoms/Button';
@@ -55,7 +56,7 @@ const GiftCardList = ({
         className="cardList__heading"
         dataLocator="payment-gcAndMerchandiseCards"
       >
-        {labels.paymentGC.lbl_payment_gcHeading}
+        {getLabelValue(labels, 'lbl_payment_gcHeading', 'paymentGC')}
       </Heading>
       {giftCardList.size === 0 && (
         <EmptyCard labels={labels} icon="gift-card" alt="gift card icon" prefix="GC" />
@@ -77,8 +78,8 @@ const GiftCardList = ({
             onClick={onAddGiftCardClick}
           >
             {giftCardList.size === 0
-              ? labels.paymentGC.lbl_payment_GCEmptyAddBtn
-              : labels.paymentGC.lbl_payment_addBtn}
+              ? getLabelValue(labels, 'lbl_payment_GCEmptyAddBtn', 'paymentGC')
+              : getLabelValue(labels, 'lbl_payment_addBtn', 'paymentGC')}
           </Button>
         </Col>
       </Row>

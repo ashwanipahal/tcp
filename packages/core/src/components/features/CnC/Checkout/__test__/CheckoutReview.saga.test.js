@@ -1,4 +1,5 @@
 import { call, select, put } from 'redux-saga/effects';
+import moment from 'moment';
 import CheckoutReview, {
   submitOrderProcessing,
   loadPersonalizedCoupons,
@@ -16,12 +17,17 @@ import { resetCheckoutReducer } from '../container/Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import { updateVenmoPaymentInstruction } from '../container/CheckoutBilling.saga';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
   routerPush: jest.fn(),
 }));
+
+const emailAddress = '123@123.com';
+const orderId = '54321';
+const smsOrderInfo = '';
+const currentLanguage = 'en';
 
 describe('CheckoutReview saga', () => {
   it('CheckoutReview', () => {
@@ -35,6 +41,7 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
@@ -54,6 +61,7 @@ describe('CheckoutReview saga', () => {
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
@@ -61,16 +69,17 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
 });
-const emailAddress = '123@123.com';
+
 describe('submitOrderProcessing saga', () => {
   it('submitOrderProcessing review Page', () => {
     const orderProcessing = submitOrderProcessing();
-    orderProcessing.next(false);
-    orderProcessing.next(false);
-    orderProcessing.next({});
-    orderProcessing.next();
-    orderProcessing.next({ userDetails: { emailAddress } });
-    orderProcessing.next();
+    orderProcessing.next(false); // Venmo not in progress
+    orderProcessing.next(false); // Venmo save option not selected
+    orderProcessing.next({}); // No venmo data
+    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
+    const res = { userDetails: { emailAddress } };
+    orderProcessing.next({ userDetails: { emailAddress } }, orderId);
+    orderProcessing.next(res);
     orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
     expect(orderProcessing.next(true).value).toEqual(
@@ -82,21 +91,23 @@ describe('submitOrderProcessing saga', () => {
     orderProcessing.next(false);
     orderProcessing.next(false);
     orderProcessing.next({});
-    orderProcessing.next();
-    orderProcessing.next({ shipping: { emailAddress } });
-    orderProcessing.next();
+    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
+    const res = { userDetails: { emailAddress } };
+    orderProcessing.next({ shipping: { emailAddress } }, orderId);
+    orderProcessing.next(res);
     orderProcessing.next();
     expect(orderProcessing.next().value).toEqual(select(isGuest));
     expect(orderProcessing.next(true).value).toEqual(
       call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
     );
   });
+
   it('submitOrderProcessing review Page with venmo', () => {
     const orderProcessing = submitOrderProcessing();
-    orderProcessing.next(true);
-    orderProcessing.next(true);
-    orderProcessing.next({ nonce: 'encrypted-nonce', deviceData: 'test-device-data' });
-    expect(orderProcessing.next('gagandsb').value).toEqual(call(getUserEmail));
+    orderProcessing.next(true); // Venmo In-Progress
+    orderProcessing.next(true); // Venmo Save Option Selected
+    orderProcessing.next({ nonce: 'encrypted-nonce', deviceData: 'test-device-data' }); // Venmo Data
+    expect(orderProcessing.next().value).toEqual(call(updateVenmoPaymentInstruction));
   });
 });
 describe('loadPersonalizedCoupons saga', () => {
@@ -107,8 +118,8 @@ describe('loadPersonalizedCoupons saga', () => {
         legalText: 'Valid on select styles. Excludes Gift Cards.',
         promotion: {
           categoryType: 'Marketing_Offers',
-          startDate: '2019-10-04 00:00:00',
-          endDate: '2019-10-17 23:59:59',
+          startDate: new Date(),
+          endDate: '2020-10-17 23:59:59',
           shortDescription: '20% OFF YOUR ENTIRE PURCHASE',
         },
       },
@@ -144,9 +155,9 @@ describe('loadPersonalizedCoupons saga', () => {
             code: 'Y16905R9YZDDLH',
             description: '20% OFF YOUR ENTIRE PURCHASE',
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
-            endDate: 'Oct 17th, 2019',
-            isPastStartDate: false,
-            startDate: 'Oct 4th, 2019',
+            endDate: 'Oct 17th, 2020',
+            isPastStartDate: true,
+            startDate: moment(new Date()).format('MMM Do, YYYY'),
             categoryType: 'Marketing_Offers',
           },
         ])

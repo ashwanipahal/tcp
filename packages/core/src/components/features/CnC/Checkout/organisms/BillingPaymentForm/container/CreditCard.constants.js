@@ -1,5 +1,6 @@
 export default {
   FORM_NAME: 'checkoutBillingPayment',
+  EDIT_FORM_NAME: 'checkoutCardEditPayment',
   FETCH_MODULEX_CONTENT: 'FETCH_MODULEX_CONTENT_CREDIT',
   SET_MODULEX_CONTENT: 'SET_MODULEX_CONTENT_CREDIT',
   CREDIT_CARD_CVV_INFO_LABEL: 'cvv_info',
@@ -9,4 +10,5 @@ export default {
     VENMO: 'VENMO',
     GIFT_CARD: 'GiftCard',
   },
+  PAYMENT_METHOD_PAY_PAL: 'payPal',
 };

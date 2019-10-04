@@ -161,7 +161,9 @@ class ProductImages extends React.Component {
                   </Anchor>
                 </span>
               )}
-              <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
+              {isFullSizeVisible && (
+                <SocialConnect isFacebookEnabled isPinterestEnabled isTwitterEnabled />
+              )}
             </div>
           </div>
 

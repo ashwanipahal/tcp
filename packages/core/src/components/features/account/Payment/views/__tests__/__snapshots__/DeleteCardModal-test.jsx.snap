@@ -14,6 +14,7 @@ exports[`Delete card Modal should render correctly 1`] = `
     <CreditCardModalInfo
       TotalExp="undefined/undefined"
       address={null}
+      creditCardHeading="lbl_payment_modalCCHeading"
       data={
         Object {
           "buttons": Object {

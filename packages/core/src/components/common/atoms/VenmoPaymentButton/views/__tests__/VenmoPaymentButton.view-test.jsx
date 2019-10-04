@@ -157,4 +157,12 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     expect(componentInstance.disableVenmoButton()).toEqual(undefined);
   });
+
+  it('calling fetchVenmoClientToken method', () => {
+    const getVenmoPaymentTokenAction = jest.fn();
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    componentInstance.fetchVenmoClientToken();
+    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
+  });
 });
