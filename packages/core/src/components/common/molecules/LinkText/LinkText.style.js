@@ -71,4 +71,20 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs48};
     }
   }
+
+  /* Module S Heading styles */
+  .small_text_white_medium,
+  .style11 {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.medium};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    letter-spacing: 2px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      letter-spacing: normal;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
 `;

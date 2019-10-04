@@ -387,6 +387,16 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
   }
+  /*
+  * Module S Promo Banner styles
+  *********************************/
+  .medium_text_black {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs36};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    letter-spacing: normal;
+  }
 
   /*
   * TODO: Update this class name in CMS
