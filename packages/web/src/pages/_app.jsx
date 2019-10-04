@@ -98,21 +98,6 @@ class TCPWebApp extends App {
       // eslint-disable-next-line
       global._dataLayer = createDataLayer(this.props.store);
     }
-
-    /**
-     * Store Locator static page event listener
-     * Required for onchange handler
-     */
-    const selector = document.getElementById('country-selector');
-    if (selector) {
-      selector.addEventListener('change', e => {
-        const { value } = e.target;
-        const selectedCountryTile = document.querySelector(`[data-intl-country="${value}"]`);
-        if (selectedCountryTile) {
-          selectedCountryTile.scrollIntoView();
-        }
-      });
-    }
   }
 
   componentDidUpdate() {

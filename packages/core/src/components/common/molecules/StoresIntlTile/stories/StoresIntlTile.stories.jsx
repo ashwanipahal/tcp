@@ -25,7 +25,7 @@ storiesOf('StoresIntlTile', module)
                 padding-bottom: 48px;
                 border-bottom: 1px solid #d8d8d8;
               }
-              .stores-intl-tile__header {
+              .stores-intl-tile__header, .INScountry h2 {
                 position: relative;
                 font-family: Montserrat,Arial,Helvetica,sans-serif;
                 font-weight: 400;
@@ -37,7 +37,7 @@ storiesOf('StoresIntlTile', module)
                 margin-top: 32px;
                 margin-bottom: 0;
               }
-              .stores-intl-tile__header::after {
+              .stores-intl-tile__header::after, .INScountry h2::after {
                 content: ' ';
                 position: absolute;
                 top: 100%;
@@ -99,16 +99,40 @@ storiesOf('StoresIntlTile', module)
                   margin: 0;
               }
             }
-            .stores-intl-tile__item {
+            .stores-intl-tile__item, .INScol {
               padding-top: 32px;
             }
-            .stores-intl-tile__name{
+            .stores-intl-tile__name, .INScol h3{
               font-family: Nunito-Black,Arial,Helvetica,sans-serif;
               font-size: 16px;
               font-weight: 900;
               line-height: normal;
               margin-bottom: 4px;
               margin-top: 2px;
+            }
+            .INScol h3.shop-in-shop{
+              position: relative;
+              margin-bottom: 20px;
+              padding-bottom: 6px;
+            }
+            .INScol h3.shop-in-shop:after {
+              position: absolute;
+              content: 'Shop-In-Shop';
+              font-family: Nunito-Black,Arial,Helvetica,sans-serif;
+              font-size: 10px;
+              font-weight: 900;
+              line-height: normal;
+              padding-top: 4px;
+              padding-bottom: 4px;
+              padding-left: 8px;
+              padding-right: 12px;
+              background-color: #254f6e;
+              color: #ffffff;
+              text-transform: uppercase;
+              border-top-right-radius: 12px;
+              border-bottom-right-radius: 12px;
+              top: 100%;
+              left: 0;
             }
             .stores-intl-tile_shop-in-shop{
               display: inline-block;
@@ -127,11 +151,15 @@ storiesOf('StoresIntlTile', module)
               border-bottom-right-radius: 12px;
               margin-bottom: 4px;
             }
-            .stores-intl-tile_location{
+            .stores-intl-tile_location, .street-address{
               font-family: Nunito,Arial,Helvetica,sans-serif;
               font-size: 14px;
               font-weight: 400;
               line-height: normal;
+            }
+            .street-address{
+              display: inline-block;
+              margin-top: 4px;
             }
           `,
           }}
@@ -183,6 +211,27 @@ storiesOf('StoresIntlTile', module)
             </li>
           </ul>
         </div>
+      </div>
+      <div className="stores-intl-tile">
+        <div className="INScontainer-inner INScountry" id="India">
+          <h2>India</h2>
+        </div>
+        <ul className="stores-intl-tile__list">
+          <li className="stores-intl-tile__item-wrapper">
+            <div className="INScol">
+              <h3 className="shop-in-shop">Iconic Alpha One</h3>
+              <span className="street-address">Ahmedabad</span>
+              <br />
+            </div>
+          </li>
+          <li className="stores-intl-tile__item-wrapper">
+            <div className="INScol">
+              <h3 className="shop-in-shop">Shoppers Stop Vastrapur</h3>
+              <span className="street-address">Ahmedabad</span>
+              <br />
+            </div>
+          </li>
+        </ul>
       </div>
       <pre>
         Note: Inspect element here and find `div` with class 'stores-intl-tile-html'. Right-click
