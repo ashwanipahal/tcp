@@ -4,7 +4,7 @@ import ProductListingPage from '@tcp/core/src/components/features/browse/Product
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
-import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation'
+import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
 
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
