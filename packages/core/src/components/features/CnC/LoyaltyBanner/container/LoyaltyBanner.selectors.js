@@ -12,11 +12,13 @@ const cartOrderDetails = createSelector(
     const subTotal = cartOrderDetailsObj.get('subTotalWithDiscounts');
     const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
+    const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');
     return {
       estimatedRewards,
       subTotal,
       cartTotalAfterPLCCDiscount,
       earnedReward,
+      pointsToNextReward,
     };
   }
 );

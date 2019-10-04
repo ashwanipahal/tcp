@@ -23,6 +23,8 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       thresholdValue,
       isGuest,
       earnedReward,
+      isPlcc,
+      pointsToNextReward,
     } = this.props;
     return (
       <div className={className}>
@@ -34,6 +36,8 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           thresholdValue={thresholdValue}
           isGuest={isGuest}
           earnedReward={earnedReward}
+          isPlcc={isPlcc}
+          pointsToNextReward={pointsToNextReward}
         />
       </div>
     );

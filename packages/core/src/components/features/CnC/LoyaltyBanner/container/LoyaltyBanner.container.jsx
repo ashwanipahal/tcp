@@ -5,9 +5,16 @@ import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import LoyaltyBannerLabels from '../LoyaltyBanner.labels';
 import { getThresholdValue, cartOrderDetails } from './LoyaltyBanner.selectors';
 import { isGuest } from '../../Checkout/container/Checkout.selector';
+import { isPlccUser } from '../../../account/User/container/User.selectors';
 
-export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCheck }) => {
-  const { estimatedRewards, subTotal, cartTotalAfterPLCCDiscount, earnedReward } = orderDetails;
+export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCheck, isPlcc }) => {
+  const {
+    estimatedRewards,
+    subTotal,
+    cartTotalAfterPLCCDiscount,
+    earnedReward,
+    pointsToNextReward,
+  } = orderDetails;
   return (
     <LoyaltyBannerView
       labels={LoyaltyBannerLabels}
@@ -17,6 +24,8 @@ export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCh
       thresholdValue={thresholdValue}
       isGuest={isGuestCheck}
       earnedReward={earnedReward}
+      isPlcc={isPlcc}
+      pointsToNextReward={pointsToNextReward}
     />
   );
 };
@@ -26,6 +35,7 @@ LoyaltyBannerContainer.propTypes = {
   orderDetails: PropTypes.shape({}),
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
+  isPlcc: PropTypes.string,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -33,6 +43,7 @@ LoyaltyBannerContainer.defaultProps = {
   orderDetails: {},
   thresholdValue: null,
   isGuestCheck: false,
+  isPlcc: '',
 };
 
 /* istanbul ignore next */
@@ -41,6 +52,7 @@ export function mapStateToProps(state) {
     orderDetails: cartOrderDetails(state),
     thresholdValue: getThresholdValue(state),
     isGuestCheck: isGuest(state),
+    isPlcc: isPlccUser(state),
   };
 }
 

@@ -1,5 +1,8 @@
 import { css } from 'styled-components';
 
+const plccMpr = props =>
+  props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
+
 const Styles = css`
   .alignCenter {
     text-align: center;
@@ -7,16 +10,16 @@ const Styles = css`
   .backgroundWhite {
     background: ${props => props.theme.colors.WHITE};
   }
-  .colorOrange {
-    color: ${props => props.theme.colorPalette.orange[800]};
+  .colorOrangeBlue {
+    color: ${plccMpr};
   }
   .spaceBetween {
     display: flex;
     place-content: space-between;
   }
   .loyaltyBannerSectionWrapper {
-    border-top: 5px solid ${props => props.theme.colorPalette.orange[800]};
-    border-bottom: 5px solid ${props => props.theme.colorPalette.orange[800]};
+    border-top: 5px solid ${plccMpr};
+    border-bottom: 5px solid ${plccMpr};
   }
   .subtotalPointsSection {
     border-top: 1px solid ${props => props.theme.colorPalette.gray[300]};
