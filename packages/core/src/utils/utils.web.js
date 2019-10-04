@@ -136,6 +136,11 @@ export const createUrlSearchParams = (query = {}) => {
   return queryParams.join('&');
 };
 
+export function getHostName () {
+  return window.location.hostname;
+}
+
+
 export const buildUrl = options => {
   if (typeof options === 'object') {
     const { pathname, query } = options;

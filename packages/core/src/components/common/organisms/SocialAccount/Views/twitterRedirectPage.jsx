@@ -4,12 +4,13 @@
  * authnetication page of twitter. Once the user allows the access to the application twitter directed us to the redirect URL
  * in the same window. The task of this page is to extract the access token and pass it back
  * to the parent window.
- * @author Harnoor Bandesh
+ * @author sachin
  */
 
 /* eslint-disable */
 import React from 'react';
 import { canUseDOM, getUrlParameter, getSiteId, getLocationOrigin, getHostName } from '../../../../../utils/utils.web';
+import TwitterDynamicAbstractor from './twitterDynamicAbstractor'
 
 const TwitterRedirectPage = () => {
     bindEvent();

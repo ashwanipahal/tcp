@@ -13,12 +13,12 @@ let previous = null;
  * the API call. This object contains varous options which
  * are required for the call
  */
-export const getTwitterAbstractor =  apiHelper => {
-  if (!previous || previous.apiHelper !== apiHelper) {
-    previous = new TwitterDynamicAbstractor(apiHelper);
-  }
-  return previous;
-};
+// export const getTwitterAbstractor =  apiHelper => {
+//   if (!previous || previous.apiHelper !== apiHelper) {
+//     previous = new TwitterDynamicAbstractor(apiHelper);
+//   }
+//   return previous;
+// };
 
 class TwitterDynamicAbstractor {
     constructor (apiHelper) {
@@ -74,3 +74,5 @@ class TwitterDynamicAbstractor {
           });
     }
 }
+
+export default TwitterDynamicAbstractor;
