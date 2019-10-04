@@ -109,7 +109,7 @@ class ProductDetailView extends React.PureComponent {
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           {this.renderFulfilmentSection()}
-          {isPickupModalOpen ? <PickupStoreModal /> : null}
+          {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </ScrollView>
     );

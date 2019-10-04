@@ -45,7 +45,7 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess } = ownProps;
+  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess, navigation } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
 
   const currentProduct = PickupSelectors.getCurrentProduct(state);
@@ -99,6 +99,7 @@ const mapStateToProps = (state, ownProps) => {
     currentProduct,
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
+    navigation,
   };
 };
 
