@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import CouponList from '../../../molecule/CouponList';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
@@ -20,20 +21,20 @@ export const MyPlaceRewardsOverviewTile = ({
   let rewardDataLocator = '';
 
   if (rewardCouponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myPlaceRewardsAvailable').replace(
       /\{0\}/,
       rewardCouponsCount
     );
     rewardDataLocator = 'accountoverview-myplacerewatdstile-youhaverewardtext';
   } else {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myPlaceRewardsDesc');
     rewardDataLocator = 'accountoverview-myplacerewatdstile-startshoptext';
   }
   return (
     <AccountOverviewTile
       className={className}
-      title={labels.lbl_overview_myPlaceRewardsHeading}
-      ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
+      title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}
+      ctaTitle={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCTA')}
       dataLocatorPrefix="myrewardstile"
       ctaLink="/account?id=place-rewards"
       ctaPath="/account/place-rewards"
@@ -59,7 +60,7 @@ export const MyPlaceRewardsOverviewTile = ({
               to="/home"
               dataLocator="accountoverview-myplacerewardstile-startshopbtn"
             >
-              {labels.lbl_overview_myPlaceRewardsShopNow}
+              {getLabelValue(labels, 'lbl_overview_myPlaceRewardsShopNow')}
             </Anchor>
           </div>
         )}

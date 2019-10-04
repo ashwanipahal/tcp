@@ -7,6 +7,7 @@ import { BUTTON_VARIATION } from '../../../atoms/Button/Button.constants';
 import withStyles from '../../../hoc/withStyles';
 import styles, { SelectedValueContainer } from '../styles/ProductVariantSelector.style.native';
 import ErrorDisplay from '../../../atoms/ErrorDisplay';
+import LinkImageIcon from '../../../../features/browse/ProductListing/atoms/LinkImageIcon';
 
 /**
  * This class returns Product variant selector for Product Add To Bag Page
@@ -23,16 +24,70 @@ class ProductVariantSelector extends React.PureComponent {
    *
    * @memberof ProductVariantSelector
    */
+
+  constructor(props) {
+    super(props);
+    this.renderGridItem = this.renderGridItem.bind(this);
+    this.handleItemChange = this.handleItemChange.bind(this);
+    this.setValue = this.setValue.bind(this);
+  }
+
+  setValue(value) {
+    const { input } = this.props;
+    if (input && input.value.name !== value.name && input.onChange) {
+      // if the value to select is not the current value of this component
+      // notify our listeners that the user wants the value of this component to change
+      input.onChange(value);
+    }
+  }
+
+  renderColor = ({ item }) => {
+    const {
+      color: { imagePath, name },
+    } = item;
+    const { selectedColor, selectColor } = this.props;
+    const isSelected = (selectedColor && name === selectedColor.name) || false;
+    const borderWidth = 2;
+    const componentSize = 30;
+    const imageSize = isSelected ? componentSize - borderWidth : componentSize;
+    return (
+      <LinkImageIcon
+        uri={imagePath}
+        selected={isSelected}
+        onPress={() => {
+          const value = {
+            name,
+          };
+          this.handleItemChange(value);
+          selectColor(name);
+        }}
+        width={componentSize}
+        height={componentSize}
+        borderRadius={15}
+        borderWidth={borderWidth}
+        imageWidth={imageSize}
+        imageHeight={imageSize}
+      />
+    );
+  };
+
   renderGridItem = ({ item }) => {
     const { selectedItem, selectItem, itemNameKey } = this.props;
     const itemValue = item[itemNameKey];
     const isSelected = (selectedItem && item[itemNameKey] === selectedItem) || false;
     const { disabled } = item;
+
     return (
       <Button
         buttonVariation={BUTTON_VARIATION.mobileAppFilter}
         text={itemValue.toUpperCase()}
-        onPress={() => selectItem(item[itemNameKey])}
+        onPress={() => {
+          const value = {
+            name: item[itemNameKey],
+          };
+          this.handleItemChange(value);
+          selectItem(item[itemNameKey]);
+        }}
         selected={!disabled && isSelected}
         data-locator=""
         accessibilityLabel={itemValue}
@@ -47,24 +102,27 @@ class ProductVariantSelector extends React.PureComponent {
     return data && data.filter(item => item[itemNameKey] === selectedItem).length > 0;
   };
 
+  handleItemChange(value) {
+    this.setValue(value);
+  }
+
   render() {
     const {
       title,
       itemValue,
       data,
-      renderItem,
       keyExtractor,
       selectedItem,
       componentWidth,
       separatorWidth,
       error,
       locators,
+      renderColorItem,
     } = this.props;
 
     const { key, value } = locators || {};
     const isItemAvailable = this.checkIfSelectedItemIsAvaiableInData();
     const titleValue = isItemAvailable ? `${title}: ` : title;
-
     if (!data || data.length === 0) return null;
 
     return (
@@ -92,7 +150,7 @@ class ProductVariantSelector extends React.PureComponent {
         <Grid
           name={title}
           data={data}
-          renderItem={renderItem || this.renderGridItem}
+          renderItem={renderColorItem ? this.renderColor : this.renderGridItem}
           keyExtractor={keyExtractor}
           extraData={selectedItem}
           componentWidth={componentWidth}
@@ -108,21 +166,23 @@ class ProductVariantSelector extends React.PureComponent {
 ProductVariantSelector.propTypes = {
   title: PropTypes.string.isRequired,
   itemValue: PropTypes.string,
-  renderItem: PropTypes.func,
   data: PropTypes.arrayOf(Object),
   keyExtractor: PropTypes.func,
+  selectColor: PropTypes.func,
   selectedItem: PropTypes.string,
   componentWidth: PropTypes.number,
   separatorWidth: PropTypes.number,
   selectItem: PropTypes.func,
   itemNameKey: PropTypes.string,
+  selectedColor: PropTypes.string,
   error: PropTypes.string,
   locators: PropTypes.instanceOf(Object),
+  input: PropTypes.instanceOf(Object),
+  renderColorItem: PropTypes.bool,
 };
 
 ProductVariantSelector.defaultProps = {
   itemValue: '',
-  renderItem: null,
   data: [],
   keyExtractor: null,
   selectedItem: null,
@@ -132,6 +192,10 @@ ProductVariantSelector.defaultProps = {
   itemNameKey: '',
   error: null,
   locators: null,
+  input: null,
+  selectedColor: '',
+  selectColor: null,
+  renderColorItem: false,
 };
 
 /* export class with styles */

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { Anchor } from '../../../../../../common/atoms';
 import {
   styles,
   WrapperStyle,
@@ -14,12 +15,22 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponDetailModal from './CouponDetailModal.view';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import ApplyNowWrapper from '../../../../../../common/molecules/ApplyNowPLCCModal';
+import { getLabelValue } from '../../../../../../../utils';
 
 class CouponView extends React.PureComponent {
   state = {
     detailStatus: false,
     helpStatus: false,
     selectedCoupon: {},
+    showApplyCardModal: false,
+  };
+
+  toggleApplyNowModal = () => {
+    const { showApplyCardModal } = this.state;
+    this.setState({
+      showApplyCardModal: !showApplyCardModal,
+    });
   };
 
   couponDetailClick = coupon => {
@@ -137,7 +148,7 @@ class CouponView extends React.PureComponent {
       showAccordian,
     } = this.props;
 
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const { detailStatus, helpStatus, selectedCoupon, showApplyCardModal } = this.state;
 
     const header = this.getHeader({ labels });
     const body = this.getContent({
@@ -168,6 +179,18 @@ class CouponView extends React.PureComponent {
         ) : (
           <>{body}</>
         )}
+        <View>
+          <Anchor
+            underline
+            fontSizeVariation="large"
+            onPress={this.toggleApplyNowModal}
+            text={getLabelValue(labels, 'applyNowLink')}
+          />
+          <ApplyNowWrapper
+            toggleModalWrapper={this.toggleApplyNowModal}
+            applyNow={showApplyCardModal}
+          />
+        </View>
       </View>
     );
   }

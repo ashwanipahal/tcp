@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import { Anchor, BodyCopy, Button, Image } from '../../../../../atoms';
+import { BodyCopy, Button, Image } from '../../../../../atoms';
+import ReactTooltip from '../../../../../atoms/ReactToolTip';
 import PickupRadioBtn from '../../../atoms/PickupRadioButton';
-// import {ButtonTooltip} from 'views/components/tooltip/ButtonTooltip.jsx';
 import { parseDate } from '../../../../../../../utils/parseDate';
 import { getDateInformation, parseBoolean } from '../../../../../../../utils/badge.util';
 import {
@@ -16,18 +16,81 @@ import { toTimeString, capitalize, getIconPath } from '../../../../../../../util
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/PickupStoreListItem.style';
 
-const displayStoreDetailsAnchor = () => {
+const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosingTimeTomorrow) => {
+  const storeName = capitalize(basicInfo.storeName);
+  const addressLine1 = capitalize(address.addressLine1);
+  const city = capitalize(address.city);
+
   return (
-    <Anchor noLink underline className="StoreDetailsAnchor">
+    <div>
+      <BodyCopy fontFamily="secondary" color="text.primary" fontWeight="semibold" fontSize="fs16">
+        {storeName}
+      </BodyCopy>
+      <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+        {addressLine1}
+      </BodyCopy>
+      <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+        {city}
+        {STORE_DETAILS_LABELS.COMMA_ONE}
+        {STORE_DETAILS_LABELS.SPACE_ONE}
+        {address.state}
+        {STORE_DETAILS_LABELS.SPACE_ONE}
+        {basicInfo.address.zipCode}
+      </BodyCopy>
+      <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+        {basicInfo.phone}
+      </BodyCopy>
+      <br />
+      {storeClosingTimeToday ? (
+        <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+          {STORE_DETAILS_LABELS.CLOSING_TODAY}
+          {STORE_DETAILS_LABELS.SPACE_ONE}
+          {storeClosingTimeToday}
+        </BodyCopy>
+      ) : (
+        <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+          {STORE_DETAILS_LABELS.CLOSED_TODAY}
+        </BodyCopy>
+      )}
+
+      {storeClosingTimeTomorrow ? (
+        <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+          {STORE_DETAILS_LABELS.CLOSING_TOMORROW}
+          {STORE_DETAILS_LABELS.SPACE_ONE}
+          {storeClosingTimeTomorrow}
+        </BodyCopy>
+      ) : (
+        <BodyCopy fontFamily="secondary" color="text.secondary" fontSize="fs12">
+          {STORE_DETAILS_LABELS.CLOSED_TOMORROW}
+        </BodyCopy>
+      )}
+    </div>
+  );
+};
+
+const displayStoreDetailsAnchor = (
+  basicInfo,
+  address,
+  storeClosingTimeToday,
+  storeClosingTimeTomorrow
+) => {
+  const tooltipContent = getTooltipContent(
+    basicInfo,
+    address,
+    storeClosingTimeToday,
+    storeClosingTimeTomorrow
+  );
+  return (
+    <ReactTooltip message={tooltipContent} aligned="right" minWidth="230px">
       <BodyCopy
         fontFamily="secondary"
         color="text.primary"
         fontSize="fs12"
-        className="elem-pb-SM elem-pt-LRG"
+        className="elem-mb-SM elem-mt-LRG StoreDetailsAnchor"
       >
         {STORE_DETAILS_LABELS.STORE_DETAILS}
       </BodyCopy>
-    </Anchor>
+    </ReactTooltip>
   );
 };
 
@@ -50,6 +113,12 @@ const displayFavoriteStore = (basicInfo, label) => {
     </div>
   ) : null;
 };
+
+const displayAddToCartError = addToCartError => (
+  <BodyCopy className="addToCartError" fontFamily="secondary" color="red.500" fontSize="fs10">
+    {addToCartError}
+  </BodyCopy>
+);
 
 const displayStoreUnavailable = (showBopisCTA, showBossCTA) => {
   const { STORE_UNAVAILABLE } = STORE_DETAILS_LABELS;
@@ -135,6 +204,7 @@ class PickupStoreListItem extends React.Component {
     selectedStoreId: PropTypes.number.isRequired,
 
     isBopisCtaEnabled: PropTypes.bool.isRequired,
+    onPickupRadioBtnToggle: PropTypes.func.isRequired,
     isBossCtaEnabled: PropTypes.bool.isRequired,
     buttonLabel: PropTypes.string.isRequired,
     className: PropTypes.string,
@@ -146,10 +216,6 @@ class PickupStoreListItem extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isBossSelected: false,
-      isBopisSelected: false,
-    };
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
   }
@@ -195,16 +261,13 @@ class PickupStoreListItem extends React.Component {
    * @description this method sets the pickup mode for store
    */
   handlePickupRadioBtn(isBossSelected) {
-    // TODO - Code for toggle of Radio Button
+    const { onPickupRadioBtnToggle, store } = this.props;
     this.isBossSelected = isBossSelected;
-    this.setState({
-      isBossSelected,
-      isBopisSelected: !isBossSelected,
-    });
+    return onPickupRadioBtnToggle(store.basicInfo.id, isBossSelected);
   }
 
   displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
-    const { isBossSelected, isBopisSelected } = this.state;
+    const { isBossSelected, isBopisSelected } = this.props;
     return showBopisCTA || showBossCTA ? (
       <div className="pickupCTAWrapper elem-mt-SM">
         <Button
@@ -231,6 +294,8 @@ class PickupStoreListItem extends React.Component {
     BopisCtaProps,
     buttonLabel,
     addToCartError,
+    storeClosingTimeToday,
+    storeClosingTimeTomorrow,
   }) {
     const { FAVORITE_STORE } = STORE_DETAILS_LABELS;
     return (
@@ -241,7 +306,12 @@ class PickupStoreListItem extends React.Component {
             {displayStoreTitle(basicInfo)}
             {displayDistance(distance)}
             {displayStoreAddress(address)}
-            {displayStoreDetailsAnchor()}
+            {displayStoreDetailsAnchor(
+              basicInfo,
+              address,
+              storeClosingTimeToday,
+              storeClosingTimeTomorrow
+            )}
           </div>
         </div>
         <div colSize={{ large: 7, medium: 5, small: 3.2 }} className="pickupButtonsWrapper">
@@ -255,7 +325,7 @@ class PickupStoreListItem extends React.Component {
                 handleClick={this.handlePickupRadioBtn}
                 BossCtaProps={BossCtaProps}
               />
-              {addToCartError && isBossSelected && <BodyCopy>{addToCartError}</BodyCopy>}
+              {addToCartError && isBossSelected && displayAddToCartError(addToCartError)}
             </React.Fragment>
           )}
           {showBossCTA && showBopisCTA && (
@@ -270,7 +340,7 @@ class PickupStoreListItem extends React.Component {
                 BopisCtaProps={BopisCtaProps}
                 handleClick={this.handlePickupRadioBtn}
               />
-              {addToCartError && isBopisSelected && <BodyCopy>{addToCartError}</BodyCopy>}
+              {addToCartError && isBopisSelected && displayAddToCartError(addToCartError)}
             </React.Fragment>
           )}
 
@@ -301,7 +371,7 @@ class PickupStoreListItem extends React.Component {
       className,
     } = this.props;
 
-    const { isBopisSelected, isBossSelected } = this.state;
+    const { isBopisSelected, isBossSelected } = this.props;
 
     const BopisCtaProps = {
       buttonLabel: PICKUP_CTA_LABELS.bopis,

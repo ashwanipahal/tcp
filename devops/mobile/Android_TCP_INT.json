@@ -54,7 +54,7 @@
       "value": "https://test5.childrensplace.com"
     },
     {
-      "name": "RWD_APP_ASSETHOST_TCP",
+      "name": "RWD_APP_DAM_HOST_TCP",
       "value": "https://test5.childrensplace.com"
     },
     {
@@ -138,7 +138,7 @@
       "value": "e50ab0a9-ac0b-436b-9932-2a74b9486436"
     },
     {
-      "name": "RWD_APP_ASSETHOST_GYM",
+      "name": "RWD_APP_DAM_HOST_GYM",
       "value": "https://test5.gymboree.com"
     },
     {
@@ -187,67 +187,75 @@
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",
-      "value": "qa1-childrensplace-com702771542012808"
+      "value": "dev1-childrensplace-com800681565760135"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_US_EN_TCP",
-      "value": "8eb8cb308b493ec0a6d92bff22ef8df3"
+      "value": "d248ac8ed345ce5d29c9a6a3791db213"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_TCP",
-      "value": "qa1-childrensplace-com702771542012808"
+      "value": "dev1-sp-childrensplace-com800681562071964"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_US_SP_TCP",
-      "value": "8eb8cb308b493ec0a6d92bff22ef8df3"
+      "value": "ceda813aeaf523b6a80c2d0d15276445"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_TCP",
-      "value": "qa1-canada-childrensplace-com702771542012977"
+      "value": "dev1-ca-childrensplace-com800681565760203"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_EN_TCP",
-      "value": "dfce7e656fb9a9a3f358ab4a4b710428"
+      "value": "28cc08aa079f0c27fd561b62c170b3a1"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_TCP",
-      "value": ""
+      "value": "dev1-fr-childrensplace-com800681562071927"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_FR_TCP",
-      "value": ""
+      "value": "8e8cb731da50469d7e85a1b68efea19c"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_GYM",
-      "value": "qa1-childrensplace-com702771542012808"
+      "value": "dev1-gymboree-com800681562072113"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_US_EN_GYM",
-      "value": "8eb8cb308b493ec0a6d92bff22ef8df3"
+      "value": "4c26a092be20e0a237b91e51087453fa"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_SP_GYM",
-      "value": "qa1-childrensplace-com702771542012808"
+      "value": "dev1-sp-gymboree-com800681562072181"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_US_SP_GYM",
-      "value": "8eb8cb308b493ec0a6d92bff22ef8df3"
+      "value": "430282734ccd287f6bc91a5f9a73b482"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_CA_EN_GYM",
-      "value": "qa1-canada-childrensplace-com702771542012977"
+      "value": "dev1-ca-gymboree-com800681565760514"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_EN_GYM",
-      "value": "dfce7e656fb9a9a3f358ab4a4b710428"
+      "value": "2d73e4ef3afc3a5a8dc57c46ba10c2e7"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_CA_FR_GYM",
-      "value": ""
+      "value": "dev2-fr-gymboree-com800681562072168"
     },
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
-      "value": ""
+      "value": "948cee6a142678762564f9ec4e02e91c"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_TCP",
+      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_GYM",
+      "value": "f0eaf419384f43a0acd059c4f87163c1"
     }
   ],
   "signed": true,

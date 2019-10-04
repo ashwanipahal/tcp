@@ -1,11 +1,13 @@
+/* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
-import { getAPIConfig } from './utils';
+import { getAPIConfig, isClient } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -341,7 +343,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -442,6 +444,49 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+
+export const routeToStoreDetails = (storeDetail, refresh = false) => {
+  const {
+    basicInfo: {
+      id,
+      storeName,
+      address: { city, state, zipCode },
+    },
+  } = storeDetail;
+  const storeParams = `${storeName
+    .replace(/\s/g, '')
+    .toLowerCase()}-${state.toLowerCase()}-${city
+    .replace(/\s/g, '')
+    .toLowerCase()}-${zipCode}-${id}`;
+  const url = `/store/${storeParams}`;
+  let routerHandler = null;
+  if (isClient())
+    routerHandler = () =>
+      routerPush(refresh ? window.location.href : `/store?storeStr=${storeParams}`, url);
+  return {
+    routerHandler,
+    url,
+    storeParams,
+  };
+};
+
+/**
+ * Returns data stored in localstorage
+ * @param {string} key - Localstorage item key
+ * @returns {string} - Localstorage item data
+ */
+export const getLocalStorage = key =>
+  isClient ? window.localStorage.getItem(key) : readCookie(key);
+
+/**
+ * Set key/value data to localstorage
+ * @param {Object} arg - Key/Value paired data to be set in localstorage
+ */
+export const setLocalStorage = arg => {
+  const { key, value } = arg;
+  return isClient() ? window.localStorage.setItem(key, value) : setCookie(arg);
+};
+
 export const viewport = () => {
   if (!window) return null;
 
@@ -451,6 +496,13 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
+
+export const fetchStoreIdFromUrlPath = url => {
+  const currentStoreUrl = url || document.location.href;
+  const pathSplit = currentStoreUrl.split('-');
+  return pathSplit[pathSplit.length - 1];
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -470,6 +522,9 @@ export default {
   siteRedirect,
   languageRedirect,
   handleGenericKeyDown,
+  getLocalStorage,
+  setLocalStorage,
   viewport,
+  fetchStoreIdFromUrlPath,
   canUseDOM,
 };
