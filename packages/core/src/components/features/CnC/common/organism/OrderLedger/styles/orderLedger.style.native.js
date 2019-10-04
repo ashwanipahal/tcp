@@ -27,4 +27,19 @@ const StyledHeader = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-export { StyledOrderLedger, StyledRowDataContainer, LabelContainer, IconContainer, StyledHeader };
+const OrderSummaryWrapper = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  border-top-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+`;
+
+export {
+  StyledOrderLedger,
+  StyledRowDataContainer,
+  LabelContainer,
+  IconContainer,
+  StyledHeader,
+  OrderSummaryWrapper,
+};
