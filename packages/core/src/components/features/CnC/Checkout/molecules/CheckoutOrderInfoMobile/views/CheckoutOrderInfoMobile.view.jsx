@@ -9,6 +9,7 @@ import { BodyCopy, Row, Col } from '../../../../../../common/atoms';
 import style from '../styles/CheckoutOrderInfoMobile.style';
 import CardImage from '../../../../../../common/molecules/CardImage';
 import { constants as VenmoConstants } from '../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 /** The hard coded values are just to show the template of confirmation page. these will be removed once the components are are in place */
 class CheckoutOrderInfo extends React.PureComponent {
@@ -46,14 +47,9 @@ class CheckoutOrderInfo extends React.PureComponent {
                 <div>LOYALTY BANNER</div>
               </Col>
             </Row>
-            <Row fullBleed className="placeholder">
+            <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>COUPONS</div>
-              </Col>
-            </Row>
-            <Row fullBleed className="placeholder ">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>COUPONS</div>
+                <PersonalizedCoupons />
               </Col>
             </Row>
           </>

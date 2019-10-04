@@ -58,6 +58,7 @@ exports[`Shipping Form should render correctly 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText=""
+    isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
     routeToPage=""
@@ -173,6 +174,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText=""
+    isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
     routeToPage=""
@@ -238,6 +240,7 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
   <CnCCommonTemplate
     backLinkText={false}
     btnText=""
+    isConfirmationPage={false}
     isGuest={false}
     onBackLinkPress={[Function]}
     routeToPage=""
