@@ -34,32 +34,6 @@ const nextIcon = require('../../../../../assets/carrot-large-left.png');
 const prevIconDark = require('../../../../../assets/carrot-small-rights.png');
 const nextIconDark = require('../../../../../assets/carrot-small-left.png');
 
-// @flow
-type Props = {
-  carouselConfig?: Object,
-  data: Array<Object>,
-  renderItem: Function,
-  onSnapToItem?: Function,
-  width: Number,
-  height: Number,
-  slideStyle: Object,
-  theme: Object,
-  variation: String,
-  vertical: Boolean,
-  showDots?: Boolean,
-  darkArrow?: Boolean,
-  overlap?: Boolean,
-  hidePlayStopButton?: Boolean,
-  autoplayInterval: Number,
-  buttonPosition: String,
-  autoplay?: Boolean,
-  paginationProps?: Object,
-};
-
-type State = {
-  autoplay: Boolean,
-};
-
 /**
  * Default settings for Carousel.
  */
@@ -387,6 +361,27 @@ SnapCarousel.defaultProps = {
   darkArrow: false,
   paginationProps: {},
   carouselConfig: {},
+};
+
+SnapCarousel.defaultProps = {
+  data: PropTypes.array,
+  renderItem: PropTypes.func,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  slideStyle: PropTypes.shape({}),
+  theme: PropTypes.shape({}),
+  variation: PropTypes.string,
+  vertical: PropTypes.bool,
+  autoplayInterval: PropTypes.number,
+  buttonPosition: PropTypes.string,
+  carouselConfig: PropTypes.shape({}),
+  onSnapToItem: PropTypes.func,
+  showDots: PropTypes.bool,
+  darkArrow: PropTypes.bool,
+  overlap: PropTypes.bool,
+  hidePlayStopButton: PropTypes.bool,
+  autoplay: PropTypes.bool,
+  paginationProps: PropTypes.shape({}),
 };
 
 export default withTheme(SnapCarousel);
