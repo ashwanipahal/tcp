@@ -40,7 +40,6 @@ class MiniBagHeader extends React.Component {
                   fontSizeVariation="large"
                   anchorVariation="primary"
                   noLink
-                  href="#"
                   handleLinkClick={e => {
                     e.preventDefault();
                     this.onLinkClick({ e, componentId: createAccount });
