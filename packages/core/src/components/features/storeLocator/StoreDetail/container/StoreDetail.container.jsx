@@ -87,22 +87,11 @@ export class StoreDetailContainer extends PureComponent {
     this.UrlHandler(phoneUrl);
   };
 
-  loadCurrentStoreInitialInfo() {
-    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
-    const store = formatStore(currentStoreInfo);
-    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
-      const { basicInfo } = store;
-      const { coordinates, id } = basicInfo;
-      const payloadArgs = {
-        storeLocationId: id,
-        getNearby: true,
-        latitude: coordinates.lat,
-        longitude: coordinates.long,
-      };
-      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
-      loadNearByStoreInfo(payloadArgs);
-    }
-  }
+  openStoreDetails = (event, store) => {
+    event.preventDefault();
+    const { routerHandler } = routeToStoreDetails(store, true);
+    routerHandler();
+  };
 
   openStoreDirections(store) {
     const {
@@ -121,6 +110,23 @@ export class StoreDetailContainer extends PureComponent {
           googleMapConstants.OPEN_STORE_DIR_WEB
         }${addressLine1},%20${city},%20${state},%20${zipCode}`
       );
+    }
+  }
+
+  loadCurrentStoreInitialInfo() {
+    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
+    const store = formatStore(currentStoreInfo);
+    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
+      const { basicInfo } = store;
+      const { coordinates, id } = basicInfo;
+      const payloadArgs = {
+        storeLocationId: id,
+        getNearby: true,
+        latitude: coordinates.lat,
+        longitude: coordinates.long,
+      };
+      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
+      loadNearByStoreInfo(payloadArgs);
     }
   }
 
@@ -145,7 +151,7 @@ export class StoreDetailContainer extends PureComponent {
         store={store}
         labels={labels}
         otherStores={otherStores}
-        openStoreDetails={selectedStore => routeToStoreDetails(selectedStore)}
+        openStoreDetails={this.openStoreDetails}
         openStoreDirections={() => this.openStoreDirections(store)}
         routesBack={this.constructor.routesBack}
         dialStoreNumber={this.dialStoreNumber}

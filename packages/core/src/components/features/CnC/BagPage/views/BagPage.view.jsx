@@ -190,11 +190,21 @@ class BagPageView extends React.Component {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, orderBalanceTotal, totalCount, showAddTobag, handleCartCheckout } = this.props;
+    const {
+      labels,
+      orderBalanceTotal,
+      totalCount,
+      showAddTobag,
+      handleCartCheckout,
+      orderItemsCount,
+    } = this.props;
     const { showCondensedHeader } = this.state;
     if (!showCondensedHeader) return null;
     return (
-      <div ref={this.getBagCondensedHeader}>
+      <div
+        ref={this.getBagCondensedHeader}
+        className={`${orderItemsCount === 0 ? 'hidden-condensed-header' : ''}`}
+      >
         <Row className="bag-condensed-header">
           <Row className="content-wrapper">
             <Col className="bagHeaderText" colSize={{ large: 8, medium: 4, small: 3 }}>

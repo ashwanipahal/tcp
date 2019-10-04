@@ -641,6 +641,7 @@ export const response = {
   appliedGiftCards: [],
   giftWrappingTotal: 0,
   savingsTotal: 0,
+  shippingTotal: undefined,
   couponsTotal: 0,
   giftCardsTotal: 0,
   totalTax: 0,
@@ -662,6 +663,7 @@ export const response = {
       },
       address: {
         firstName: '',
+        addressId: 0,
         lastName: '',
         addressLine1: '',
         addressLine2: '',

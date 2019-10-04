@@ -5,6 +5,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import { getScreenHeight } from '@tcp/core/src/utils/index.native';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   Row,
   OverLayView,
@@ -295,7 +296,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity
             accessible
-            accessibilityLabel={labels.common.lbl_common_tapClose}
+            accessibilityLabel={getLabelValue(labels, 'lbl_common_tapClose', 'common')}
             accessibilityRole="none"
             onPress={this.closeDropDown}
             activeOpacity={1}

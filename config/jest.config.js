@@ -7,6 +7,7 @@ const ignorePsuedoCodeDir = [
   '/ProductDetail/',
   '/SearchDetail/',
   '/OutfitDetail/',
+  '/OutfitListing/',
   '/ProductPickup/',
   '/bopisInventory/',
   '/SearchBar/',
@@ -23,6 +24,7 @@ const ignorePsuedoCodeDir = [
   '/GoogleAutoSuggest/',
   '/utils/localStorageManagement.js',
   '/Favorites/',
+  '/services/abstractors/common/searchBar/makeSearch.js',
 ];
 
 module.exports = {

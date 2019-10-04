@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { fromJS } from 'immutable';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
@@ -16,13 +17,21 @@ import MailingInformationContainer from '../../MailingInformation';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import BirthdaySavingsPage from '../../../../BirthdaySavingsPage';
 
+const map = {
+  userAboutYourselfSurvey: 'mountSurveyModal',
+  userMailing: 'mountMailingAddressModal',
+  birthdaySavings: 'mountAddChildModal',
+};
+
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { componentProps } = this.props;
+
     this.state = {
-      mountSurveyModal: false,
-      mountMailingAddressModal: false,
-      mountAddChildModal: false,
+      mountSurveyModal: map[componentProps.activeComponent] === map.userAboutYourselfSurvey,
+      mountMailingAddressModal: map[componentProps.activeComponent] === map.userMailing,
+      mountAddChildModal: map[componentProps.activeComponent] === map.birthdaySavings,
     };
   }
 
@@ -60,6 +69,7 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
       childrenBirthdays,
+      componentProps,
     } = this.props;
     const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
     return (
@@ -87,6 +97,7 @@ export class ProfileInformation extends React.PureComponent {
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
           toggleModalState={this.toggleModalState}
+          componentProps={componentProps}
         />
         {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
@@ -111,7 +122,7 @@ export class ProfileInformation extends React.PureComponent {
             }}
             anchorVariation="primary"
             data-locator="my-rewards-program-details"
-            text={labels.lbl_profile_program_details}
+            text={getLabelValue(labels, 'lbl_profile_program_details')}
           />
           <AnchorLeftMargin>
             <Anchor
@@ -123,7 +134,7 @@ export class ProfileInformation extends React.PureComponent {
               }}
               anchorVariation="primary"
               data-locator="my-rewards-tnc"
-              text={labels.lbl_profile_terms_condition}
+              text={getLabelValue(labels, 'lbl_profile_terms_condition')}
             />
           </AnchorLeftMargin>
         </StyledAnchorWrapper>
@@ -131,7 +142,7 @@ export class ProfileInformation extends React.PureComponent {
           <ModalNative
             isOpen={mountMailingAddressModal}
             onRequestClose={this.toggleMailingAddressModal}
-            heading={labelsObj.profile.lbl_profile_heading}
+            heading={getLabelValue(labelsObj, 'lbl_profile_heading', 'profile')}
           >
             <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
               <MailingInformationContainer
@@ -164,6 +175,7 @@ ProfileInformation.propTypes = {
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
   childrenBirthdays: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -183,6 +195,7 @@ ProfileInformation.defaultProps = {
   percentageIncrement: {},
   defaultStore: '',
   childrenBirthdays: fromJS([]),
+  componentProps: {},
 };
 
 export default ProfileInformation;

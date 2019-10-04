@@ -48,4 +48,5 @@ export {
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getBrand,
 } from './utils';
