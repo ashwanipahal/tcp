@@ -103,7 +103,9 @@ class BagPageView extends React.Component {
     const condensedBagHeader = this.bagPageHeader;
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
     if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
-      condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
+      if (condensedBagHeader && condensedBagHeader.style) {
+        condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
+      }
       this.setState({ showStickyHeaderMob: true });
       if (this.timer !== null) {
         clearTimeout(this.timer);
