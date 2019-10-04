@@ -127,4 +127,4 @@ export default {
     storeType: 'Retail Store',
   },
   productAvailability: {},
-}
+};

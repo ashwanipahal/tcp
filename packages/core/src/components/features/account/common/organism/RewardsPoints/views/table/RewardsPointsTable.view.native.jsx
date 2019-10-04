@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../../common/atoms/BodyCopy';
 import {
   RewardsOverviewContainer,
@@ -26,7 +27,9 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
             fontWeight="black"
             color="gray.900"
             text={`${
-              labels.lbl_rewardPoints_currency ? labels.lbl_rewardPoints_currency : ''
+              getLabelValue(labels, 'lbl_rewardPoints_currency')
+                ? getLabelValue(labels, 'lbl_rewardPoints_currency')
+                : ''
             }${Math.round(totalRewards || 0)}`}
           />
           <TextWrapper>
@@ -36,7 +39,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_rewardPoints_heading}
+              text={getLabelValue(labels, 'lbl_rewardPoints_heading')}
             />
           </TextWrapper>
         </MyRewardsWrapper>
@@ -56,7 +59,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_rewardPoints_currentPoints}
+              text={getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}
             />
           </TextWrapper>
         </CurrentPointsWrapper>
@@ -76,7 +79,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
               fontWeight="regular"
               textAlign="center"
               color="black"
-              text={labels.lbl_rewardPoints_nextReward}
+              text={getLabelValue(labels, 'lbl_rewardPoints_nextReward')}
             />
           </TextWrapper>
         </NextRewardsWrapper>

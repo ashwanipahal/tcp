@@ -10,6 +10,7 @@ import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays'
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 const getBagActions = ({ BagActions }) => {
   return BagActions && <BagActions />;
@@ -68,14 +69,9 @@ const CnCTemplate = ({
             {isConfirmationPage ? (
               <>
                 <OrderLedgerContainer />
-                <Row fullBleed className="placeholder-right">
+                <Row fullBleed>
                   <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <div>COUPONS</div>
-                  </Col>
-                </Row>
-                <Row fullBleed className="placeholder-right">
-                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <div>COUPONS</div>
+                    <PersonalizedCoupons />
                   </Col>
                 </Row>
               </>

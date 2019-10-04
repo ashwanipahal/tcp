@@ -112,7 +112,6 @@ class ApplyCardLayoutView extends React.PureComponent {
           {showAddEditAddressForm ? (
             <AddressVerification
               onSuccess={submitForm}
-              // plccOnSubmit={this.onSubmitCallBack}
               plccOnClose={() =>
                 this.onCloseCallBack(resetPLCCApplicationStatus, closeAddressVerificationModal)
               }

@@ -18,7 +18,6 @@ import {
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
-import mockLabels from '../../../../common/molecules/StoreAddressTile/__mocks__/labels.mock';
 
 export class StoreDetailContainer extends PureComponent {
   static routesBack(e) {
@@ -88,22 +87,11 @@ export class StoreDetailContainer extends PureComponent {
     this.UrlHandler(phoneUrl);
   };
 
-  loadCurrentStoreInitialInfo() {
-    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
-    const store = formatStore(currentStoreInfo);
-    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
-      const { basicInfo } = store;
-      const { coordinates, id } = basicInfo;
-      const payloadArgs = {
-        storeLocationId: id,
-        getNearby: true,
-        latitude: coordinates.lat,
-        longitude: coordinates.long,
-      };
-      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
-      loadNearByStoreInfo(payloadArgs);
-    }
-  }
+  openStoreDetails = (event, store) => {
+    event.preventDefault();
+    const { routerHandler } = routeToStoreDetails(store, true);
+    routerHandler();
+  };
 
   openStoreDirections(store) {
     const {
@@ -122,6 +110,23 @@ export class StoreDetailContainer extends PureComponent {
           googleMapConstants.OPEN_STORE_DIR_WEB
         }${addressLine1},%20${city},%20${state},%20${zipCode}`
       );
+    }
+  }
+
+  loadCurrentStoreInitialInfo() {
+    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
+    const store = formatStore(currentStoreInfo);
+    if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
+      const { basicInfo } = store;
+      const { coordinates, id } = basicInfo;
+      const payloadArgs = {
+        storeLocationId: id,
+        getNearby: true,
+        latitude: coordinates.lat,
+        longitude: coordinates.long,
+      };
+      getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
+      loadNearByStoreInfo(payloadArgs);
     }
   }
 
@@ -144,9 +149,9 @@ export class StoreDetailContainer extends PureComponent {
       <StoreDetail
         className="storedetailinfo"
         store={store}
-        labels={labels || mockLabels.StoreLocator}
+        labels={labels}
         otherStores={otherStores}
-        openStoreDetails={selectedStore => routeToStoreDetails(selectedStore)}
+        openStoreDetails={this.openStoreDetails}
         openStoreDirections={() => this.openStoreDirections(store)}
         routesBack={this.constructor.routesBack}
         dialStoreNumber={this.dialStoreNumber}
@@ -163,20 +168,20 @@ StoreDetailContainer.propTypes = {
   formatStore: PropTypes.func.isRequired,
   nearByStores: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({
-    lbl_storelocators_landingpage_openInterval: PropTypes.string,
-    lbl_storelocators_landingpage_milesAway: PropTypes.string,
-    lbl_storelocators_landingpage_getdirections_link: PropTypes.string,
-    lbl_storelocators_landingpage_favStore: PropTypes.string,
-    lbl_storelocators_landingpage_setfavStore: PropTypes.string,
-    lbl_storelocators_common_atThisPlace: PropTypes.string,
-    lbl_storelocators_landingpage_storedetails_link: PropTypes.string,
-    lbl_storelocators_details_getdirections_btn: PropTypes.string,
-    lbl_storelocators_details_callstore_btn: PropTypes.string,
-    lbl_storelocators_details_changestore_btn: PropTypes.string,
-    lbl_storelocators_detail_mallType: PropTypes.string,
-    lbl_storelocators_detail_entranceType: PropTypes.string,
-    lbl_storelocators_details_locations_details_btn: PropTypes.string,
-    lbl_storelocators_details_locations_title: PropTypes.string,
+    lbl_storelanding_openInterval: PropTypes.string,
+    lbl_storelanding_milesAway: PropTypes.string,
+    lbl_storelanding_getdirections_link: PropTypes.string,
+    lbl_storelanding_favStore: PropTypes.string,
+    lbl_storelanding_setfavStore: PropTypes.string,
+    lbl_storelanding_atThisPlace: PropTypes.string,
+    lbl_storelanding_storedetails_link: PropTypes.string,
+    lbl_storedetails_getdirections_btn: PropTypes.string,
+    lbl_storedetails_callstore_btn: PropTypes.string,
+    lbl_storedetails_changestore_btn: PropTypes.string,
+    lbl_storedetails_mallType: PropTypes.string,
+    lbl_storedetails_entranceType: PropTypes.string,
+    lbl_storedetails_locations_details_btn: PropTypes.string,
+    lbl_storedetails_locations_title: PropTypes.string,
   }).isRequired,
   loadNearByStoreInfo: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,

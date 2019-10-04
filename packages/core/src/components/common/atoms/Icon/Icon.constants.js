@@ -28,4 +28,6 @@ export const ICON_NAME = {
   fastShipping: 'fast-shipping',
   markerIcon: 'marker-icon',
   iconShare: 'icon-share',
+  search: 'mag-glass',
+  qrcode: 'scan',
 };

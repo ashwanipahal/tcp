@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, ScrollView } from 'react-native';
-import { isCanada, getAPIConfig, navigateToNestedRoute } from '@tcp/core/src/utils';
+import { isCanada, getAPIConfig, navigateToNestedRoute, getLabelValue } from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { withTheme } from 'styled-components/native';
@@ -73,7 +73,7 @@ export class StoreLanding extends PureComponent {
                     fontWeight: 'bold',
                   }}
                 >
-                  {labels.lbl_storelocators_detail_favStoreHeading}
+                  {getLabelValue(labels, 'lbl_storelanding_favStoreHeading')}
                 </Text>
                 <StoreAddressTile
                   {...this.props}
@@ -89,7 +89,7 @@ export class StoreLanding extends PureComponent {
               toggleMap={this.toggleMap}
               mapView={mapView}
             />
-            {mapView && modifiedStoreList.length && (
+            {mapView && !!modifiedStoreList.length && (
               <StoreStaticMap
                 storesList={modifiedStoreList}
                 isCanada={isCanada}

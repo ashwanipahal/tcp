@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainerStyle,
@@ -27,7 +28,9 @@ const OffersSection = (props: Props) => {
           />
         </ImgWrapper>
         <RichTextStyle>
-          <RichText source={{ html: labels.paymentGC.lbl_payment_offersMessageMobile }} />
+          <RichText
+            source={{ html: getLabelValue(labels, 'lbl_payment_offersMessageMobile', 'paymentGC') }}
+          />
         </RichTextStyle>
       </WrapperStyle>
     </View>

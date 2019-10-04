@@ -154,11 +154,6 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
       className="header-topnav__storelocator"
     >
       <Styled(StoreLocatorLink)
-        labels={
-          Object {
-            "lbl_header_trackOrder": "Track Order",
-          }
-        }
         store={
           Object {
             "basicInfo": Object {
@@ -336,11 +331,6 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
       className="header-topnav__storelocator"
     >
       <Styled(StoreLocatorLink)
-        labels={
-          Object {
-            "lbl_header_trackOrder": "Track Order",
-          }
-        }
         store={
           Object {
             "basicInfo": Object {

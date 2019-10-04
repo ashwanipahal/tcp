@@ -77,6 +77,11 @@ const getSameAsShippingValue = state => {
   return selector(state, 'sameAsShipping');
 };
 
+const getEditFormSameAsShippingValue = state => {
+  const selector = formValueSelector(constants.EDIT_FORM_NAME);
+  return selector(state, 'sameAsShipping');
+};
+
 const getSaveToAccountValue = state => {
   const selector = formValueSelector(constants.FORM_NAME);
   return selector(state, 'saveToAccount');
@@ -101,6 +106,11 @@ const getSelectedOnFileAddressId = state => {
   return selector(state, 'onFileAddressId');
 };
 
+const getEditFormSelectedOnFileAddressId = state => {
+  const selector = formValueSelector(constants.EDIT_FORM_NAME);
+  return selector(state, 'onFileAddressId');
+};
+
 export default {
   getOnFileCardKey,
   getPaymentMethodId,
@@ -112,4 +122,6 @@ export default {
   getShippingOnFileAddressKey,
   getSelectedOnFileAddressId,
   getShippingOnFileAddressId,
+  getEditFormSameAsShippingValue,
+  getEditFormSelectedOnFileAddressId,
 };
