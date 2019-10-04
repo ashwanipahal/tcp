@@ -405,6 +405,7 @@ const getUpdateOrderDetailsData = state => {
   );
 };
 
+/* istanbul ignore next */
 const getLedgerSummaryDataConfirmation = state => {
   return {
     itemsCount: getItemsCount(state),
