@@ -127,7 +127,6 @@ exports[`MiniBagHeader component renders correctly without username 1`] = `
           fontSizeVariation="large"
           noLink={true}
           onClick={[Function]}
-          to=""
         />
         <Styled(BodyCopy)
           className="separator"
