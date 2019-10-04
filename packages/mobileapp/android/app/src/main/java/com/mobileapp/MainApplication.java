@@ -13,6 +13,11 @@ import com.oblador.keychain.KeychainPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.adobe.marketing.mobile.MobileCore; // import MobileCore
+import com.adobe.marketing.mobile.Identity;
+import com.adobe.marketing.mobile.Lifecycle;
+import com.adobe.marketing.mobile.Signal;
+import com.adobe.marketing.mobile.WrapperType;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -69,5 +74,18 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    MobileCore.setApplication(this);
+  MobileCore.configureWithAppID("dae3661a4c63/7bc47440747f/launch-8ca67ecb0da6-development");
+  MobileCore.setWrapperType(WrapperType.REACT_NATIVE);
+  try {
+    Identity.registerExtension();
+    Lifecycle.registerExtension();
+    Signal.registerExtension();
+    // Register any additional extensions
+  } catch (Exception e) {
+    // handle exception
+  }
+
+  MobileCore.start(null);
   }
 }
