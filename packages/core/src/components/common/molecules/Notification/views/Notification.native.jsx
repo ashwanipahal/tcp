@@ -17,7 +17,7 @@ const Notification = ({ message, children, status }) => {
         {status === 'success' && <Image height="25px" width="25px" source={successImg} />}
         {status === 'info' && <Image height="25px" width="25px" source={infoImg} />}
         {message ? (
-          <ViewWithSpacing spacingStyles="padding-XXS">
+          <ViewWithSpacing spacingStyles="padding-MED padding-top-XXS padding-bottom-XXS">
             <BodyCopy
               fontSize="fs14"
               mobilefontFamily={['secondary']}

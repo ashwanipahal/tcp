@@ -32,7 +32,7 @@ const Cards = props => {
     openUpdateModal,
     setSelectedCard,
     setCardHandler,
-    toggleRecaptchaModal
+    toggleRecaptchaModal,
   } = props;
   return (
     <View {...props}>
