@@ -58,7 +58,6 @@ const MiniBagHeader = ({
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 noLink
-                to=""
                 onClick={e =>
                   onLinkClick({ e, onRequestClose, componentId: createAccount, openOverlay })
                 }
