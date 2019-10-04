@@ -15,6 +15,7 @@ import {
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -75,6 +76,10 @@ class ProductDetailView extends React.PureComponent {
       addToBagError,
       isPickupModalOpen,
       handleSubmit,
+      shortDescription,
+      itemPartNumber,
+      longDescription,
+      pdpLabels,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -108,6 +113,13 @@ class ProductDetailView extends React.PureComponent {
 
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <ProductDetailDescription
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            isShowMore={false}
+            pdpLabels={pdpLabels}
+          />
           {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
@@ -126,6 +138,10 @@ ProductDetailView.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   handleFormSubmit: PropTypes.func,
   addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
@@ -136,6 +152,10 @@ ProductDetailView.defaultProps = {
   isPickupModalOpen: false,
   handleFormSubmit: null,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
+  pdpLabels: {},
 };
 
 export default withStyles(ProductDetailView);
