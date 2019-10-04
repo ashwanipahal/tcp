@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoresInternational component StoresInternational component renders correctly with props 1`] = `"<div class=\\"test sc-bwzfXH kIJhGX\\"><div data-locator=\\"test\\" class=\\"sc-bdVaJa fBlCFx\\">test</div></div>"`;
+
+exports[`StoresInternational component StoresInternational component renders correctly without props 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  padding: 0 ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(StoresInternational)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

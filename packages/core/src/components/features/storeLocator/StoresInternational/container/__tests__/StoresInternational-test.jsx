@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import Theme from '@tcp/core/styles/themes';
+import { ThemeProvider } from 'styled-components';
 import StoresInternational from '../views/StoresInternational';
 
 describe('StoresInternational component', () => {
@@ -8,11 +10,17 @@ describe('StoresInternational component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('BrandLogo component renders correctly with props', () => {
+  it('StoresInternational component renders correctly with props', () => {
     const props = {
-      className: 'test-class',
+      className: 'test',
+      content: 'test',
+      dataLocator: 'test',
     };
-    const component = shallow(<StoresInternational {...props} />);
-    expect(component.find('.test-class')).toHaveLength(1);
+    const component = mount(
+      <ThemeProvider theme={Theme()}>
+        <StoresInternational {...props} />
+      </ThemeProvider>
+    );
+    expect(component.html()).toMatchSnapshot();
   });
 });

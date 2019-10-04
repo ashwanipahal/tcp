@@ -6,7 +6,7 @@ const initialState = fromJS({
 });
 
 // TBD: Update reducers for container components with contextual ones
-const StoresInternationalReducer = (state = initialState, action) => {
+const StoresInternationalReducer = (state = initialState, action = {}) => {
   if (action.type === STORES_INTL_CONSTANTS.STORES_INTERNATIONAL_SET_MODULEX) {
     return state.set('moduleXContent', action.payload);
   }

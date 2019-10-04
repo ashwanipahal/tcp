@@ -1,30 +1,28 @@
 import { fromJS } from 'immutable';
-import constants from '../StoresInternational.constants';
+import STORES_INTL_CONSTANTS from '../StoresInternational.constants';
 import StoresInternationalReducer from '../StoresInternational.reducer';
 
 describe('StoresInternational Reducer', () => {
   it('should return default state', () => {
-    const initialState = fromJS({});
-    expect(StoresInternationalReducer(initialState, {}).get('action_one')).not.toBeDefined();
+    expect(StoresInternationalReducer().get('moduleXContent')).toBe('');
+    expect(StoresInternationalReducer('')).toBe('');
+  });
+
+  it('should return immutable state for type Object', () => {
+    expect(StoresInternationalReducer({}).get('moduleXContent')).not.toBeDefined();
+  });
+
+  it('should return immutable state', () => {
+    expect(StoresInternationalReducer(fromJS({})).get('moduleXContent')).not.toBeDefined();
   });
 
   it('should return success state', () => {
     const initialState = fromJS({});
     expect(
       StoresInternationalReducer(initialState, {
-        type: constants.STORES_INTERNATIONAL_TEST_ACTION_ONE,
+        type: STORES_INTL_CONSTANTS.STORES_INTERNATIONAL_SET_MODULEX,
         payload: 'test',
-      }).get('action_one')
-    ).toEqual('test');
-  });
-
-  it('should return error state', () => {
-    const initialState = fromJS({});
-    expect(
-      StoresInternationalReducer(initialState, {
-        type: constants.STORES_INTERNATIONAL_TEST_ACTION_TWO,
-        payload: 'test',
-      }).get('action_two')
+      }).get('moduleXContent')
     ).toEqual('test');
   });
 });
