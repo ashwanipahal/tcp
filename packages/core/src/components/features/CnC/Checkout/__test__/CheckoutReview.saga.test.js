@@ -1,4 +1,5 @@
 import { call, select, put } from 'redux-saga/effects';
+import moment from 'moment';
 import CheckoutReview, {
   submitOrderProcessing,
   loadPersonalizedCoupons,
@@ -117,8 +118,8 @@ describe('loadPersonalizedCoupons saga', () => {
         legalText: 'Valid on select styles. Excludes Gift Cards.',
         promotion: {
           categoryType: 'Marketing_Offers',
-          startDate: '2019-10-04 00:00:00',
-          endDate: '2019-10-17 23:59:59',
+          startDate: new Date(),
+          endDate: '2020-10-17 23:59:59',
           shortDescription: '20% OFF YOUR ENTIRE PURCHASE',
         },
       },
@@ -154,9 +155,9 @@ describe('loadPersonalizedCoupons saga', () => {
             code: 'Y16905R9YZDDLH',
             description: '20% OFF YOUR ENTIRE PURCHASE',
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
-            endDate: 'Oct 17th, 2019',
+            endDate: 'Oct 17th, 2020',
             isPastStartDate: true,
-            startDate: 'Oct 4th, 2019',
+            startDate: moment(new Date()).format('MMM Do, YYYY'),
             categoryType: 'Marketing_Offers',
           },
         ])
