@@ -4,7 +4,9 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
 <div
   className=""
 >
-  <Connect(OrderLedgerContainer) />
+  <Connect(OrderLedgerContainer)
+    isConfirmationPage={true}
+  />
   <section
     className="venmo-payment-method-wrapper"
   >
