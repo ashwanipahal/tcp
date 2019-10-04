@@ -213,7 +213,7 @@ class Socialview extends React.PureComponent {
   dispatchSaveSocial = (socialType, accessToken, userId) => {
     const { saveSocialAcc, pointModalClose } = this.props;
     const socialAccInfo = {
-      facebook: socialType,
+      [socialType]: socialType,
       accessToken,
       userId,
       isconnected: false,
