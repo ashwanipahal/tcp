@@ -28,6 +28,7 @@ import AirmilesBannerReducer from '@tcp/core/src/components/features/CnC/common/
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import EarnExtraPointsReducer from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.reducer';
+import OrderDetailsDataReducer from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 import TrackOrderReducer from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.reducer';
 import ChangePasswordReducer from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.reducer';
@@ -93,6 +94,7 @@ import {
   ACCOUNTHEADER_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
   EARNEXTRAPOINTS_REDUCER_KEY,
+  ORDERDETAILS_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   CHANGE_PASSWORD_REDUCER_KEY,
   UPDATE_PROFILE_REDUCER_KEY,
@@ -219,6 +221,7 @@ export default combineReducers({
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [EARNEXTRAPOINTS_REDUCER_KEY]: EarnExtraPointsReducer,
+  [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [CHANGE_PASSWORD_REDUCER_KEY]: ChangePasswordReducer,
   [UPDATE_PROFILE_REDUCER_KEY]: UpdateProfileReducer,
