@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
-import OutfitDetailStyle from '../OutfitDetail.style';
+import OutfitListingStyle from '../OutfitListing.style';
 
-const OutfitDetailView = ({ className, labels }) => {
+const OutfitListingView = ({ className, labels }) => {
   return (
     <div className={className}>
       <Row className="placeholder">
@@ -21,14 +21,14 @@ const OutfitDetailView = ({ className, labels }) => {
   );
 };
 
-OutfitDetailView.propTypes = {
+OutfitListingView.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
-OutfitDetailView.defaultProps = {
+OutfitListingView.defaultProps = {
   className: '',
   labels: {},
 };
 
-export default withStyles(OutfitDetailView, OutfitDetailStyle);
+export default withStyles(OutfitListingView, OutfitListingStyle);

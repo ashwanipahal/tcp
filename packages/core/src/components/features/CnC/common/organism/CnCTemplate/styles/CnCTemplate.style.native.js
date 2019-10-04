@@ -56,16 +56,16 @@ export const CouponAndPromosWrapper = styled.View`
 `;
 
 export const BannerWrapper = styled.View`
-background-color: ${props => props.theme.colorPalette.gray[500]};
-margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
-height: 100px;`
-  ;
+  background-color: ${props => props.theme.colorPalette.gray[500]};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+  height: 100px;
+`;
 
 export const CouponsWrapper = styled.View`
-background-color: ${props => props.theme.colorPalette.gray[500]};
-margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
-height: 100px`
-  ;
+  background-color: ${props => props.theme.colorPalette.gray[500]};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+  height: 100px;
+`;
 
 export default {
   ButtonWrapper,
@@ -76,5 +76,5 @@ export default {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  CouponsWrapper
+  CouponsWrapper,
 };
