@@ -138,6 +138,10 @@ export const getIsSflItemRemoved = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isSflItemDeleted']);
 };
 
+export const getCartItemsSflError = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'cartItemSflError']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     global: {

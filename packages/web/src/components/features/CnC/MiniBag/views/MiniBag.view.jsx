@@ -70,15 +70,6 @@ class MiniBag extends React.Component {
       <Modal
         isOpen={openState}
         onRequestClose={onRequestClose}
-        heading={renderMiniBagHeader(
-          labels,
-          cartItemCount,
-          userName,
-          currentPoints,
-          totalRewards,
-          onRequestClose,
-          openOverlay
-        )}
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
         closeIconDataLocator="mini-bag-close"
@@ -90,6 +81,15 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {renderMiniBagHeader(
+          labels,
+          cartItemCount,
+          userName,
+          currentPoints,
+          totalRewards,
+          onRequestClose,
+          openOverlay
+        )}
         <MiniBagBody
           closeMiniBag={onRequestClose}
           labels={labels}

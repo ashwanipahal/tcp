@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PickUpSkUSectionContainer = styled.View`
-  margin: 20px 32px 0 32px;
+  margin: 18px 14px 0 14px;
 `;
 
 const ImageWrapper = styled.View`
@@ -14,7 +14,7 @@ const ProductSummaryContainer = styled.View`
 const OfferPriceAndBadge3Container = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  margin-bottom: 24px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 const ProductDetailSummary = styled.View`
   flex-wrap: wrap;
