@@ -11,13 +11,16 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = item => {
   return item ? (
-    <BodyCopyWithSpacing
-      fontFamily="secondary"
-      fontWeight="regular"
-      fontSize="fs14"
-      text={`\u2022 ${item}`}
-      spacingStyles="padding-bottom-XXS"
-    />
+    <View style={{ flexDirection: 'row' }}>
+      <BodyCopyWithSpacing text={`\u2022`} spacingStyles="padding-right-XXS" />
+      <BodyCopyWithSpacing
+        fontFamily="secondary"
+        fontWeight="regular"
+        fontSize="fs14"
+        text={item}
+        spacingStyles="padding-bottom-XXS"
+      />
+    </View>
   ) : null;
 };
 

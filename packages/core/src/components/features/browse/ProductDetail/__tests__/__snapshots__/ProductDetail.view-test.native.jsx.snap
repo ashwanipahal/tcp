@@ -44,6 +44,13 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
+    <ProductDetailDescription
+      isShowMore={false}
+      itemPartNumber=""
+      longDescription=""
+      pdpLabels={Object {}}
+      shortDescription=""
+    />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"
       buttonLabel="Add To Bag"
