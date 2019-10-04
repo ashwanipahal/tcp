@@ -10,6 +10,7 @@ import {
   getLabelsCartItemTile,
   getIsCartItemsSFL,
   getIsSflItemRemoved,
+  getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import {
@@ -78,6 +79,7 @@ export class BagPageContainer extends React.Component<Props> {
       orderBalanceTotal,
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
+      cartItemSflError,
     } = this.props;
 
     const showAddTobag = false;
@@ -105,6 +107,7 @@ export class BagPageContainer extends React.Component<Props> {
         orderBalanceTotal={orderBalanceTotal}
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
+        cartItemSflError={cartItemSflError}
       />
     );
   }
@@ -156,6 +159,7 @@ const mapStateToProps = state => {
     isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
+    cartItemSflError: getCartItemsSflError(state),
   };
 };
 
