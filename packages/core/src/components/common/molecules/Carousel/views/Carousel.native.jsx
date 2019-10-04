@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { withTheme } from 'styled-components';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -76,12 +77,16 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       inactiveDotStyle: inactiveDotStyleOverride,
     } = paginationProps;
 
-    /* eslint-disable  */
+    /* eslint-disable react-native/no-inline-styles */
     return (
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
-        containerStyle={{ paddingVertical: 22, paddingHorizontal: 10, ...containerStyleOverride }}
+        containerStyle={{
+          paddingVertical: 22,
+          paddingHorizontal: 10,
+          ...containerStyleOverride,
+        }}
         dotContainerStyle={{ marginHorizontal: 4, ...dotContainerStyleOverride }}
         dotStyle={{
           width: 10,
@@ -104,7 +109,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         inactiveDotScale={1}
       />
     );
-    // eslint-enable
+    /* eslint-enable react-native/no-inline-styles */
   }
 
   /**
@@ -142,8 +147,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    */
 
   getOverlapComponent(carouselConfig, buttonPosition) {
+    let overlapComponent;
     if (buttonPosition === 'right') {
-      return (
+      overlapComponent = (
         <View>
           <ControlsWrapperRight>
             {carouselConfig.autoplay && (
@@ -154,7 +160,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         </View>
       );
     } else if (buttonPosition === 'left') {
-      return (
+      overlapComponent = (
         <View>
           <ControlsWrapperLeft>
             {carouselConfig.autoplay && (
@@ -164,17 +170,20 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           </ControlsWrapperLeft>
         </View>
       );
+    } else {
+      overlapComponent = (
+        <View>
+          <ControlsWrapper>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {this.getPagination()}
+          </ControlsWrapper>
+        </View>
+      );
     }
-    return (
-      <View>
-        <ControlsWrapper>
-          {carouselConfig.autoplay && (
-            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
-          )}
-          {this.getPagination()}
-        </ControlsWrapper>
-      </View>
-    );
+
+    return overlapComponent;
   }
 
   /**
@@ -190,6 +199,21 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       </PaginationWrapper>
     );
   }
+
+  /* Return the Prev and Next Icon */
+  getNavIcons = (darkArrow, activeSlide, settings, data) => {
+    let iconTypePre = darkArrow ? prevIconDark : prevIcon;
+    let iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+
+    if (settings.loop === false && darkArrow && activeSlide < 1) {
+      iconTypeNext = nextIcon;
+    }
+    if (settings.loop === false && darkArrow && data.length - 1 <= activeSlide) {
+      iconTypePre = prevIcon;
+    }
+
+    return { iconTypeNext, iconTypePre };
+  };
 
   /**
    * To manage the direction of the carousel
@@ -261,22 +285,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       options,
     } = this.props;
 
-    const { autoplay, activeSlide } = this.state;
-    const settings = { ...defaults, ...options };
-
     if (!data) {
       return null;
     }
 
-    let iconTypePre = darkArrow ? prevIconDark : prevIcon;
-    let iconTypeNext = darkArrow ? nextIconDark : nextIcon;
+    const { autoplay, activeSlide } = this.state;
+    const settings = { ...defaults, ...options };
 
-    if (settings.loop === false && darkArrow && activeSlide < 1) {
-      iconTypeNext = nextIcon;
-    }
-    if (settings.loop === false && darkArrow && data.length - 1 <= activeSlide) {
-      iconTypePre = prevIcon;
-    }
+    const { iconTypeNext, iconTypePre } = this.getNavIcons(darkArrow, activeSlide, settings, data);
 
     if (variation === 'show-arrow') {
       // reduce left and right arrow with from the total with to fix center aline issue
