@@ -175,6 +175,8 @@ class SearchDetailContainer extends React.PureComponent {
               searchedText={searchedText}
               sortLabels={sortLabels}
               searchResultSuggestions={searchResultSuggestions}
+              onGoToPDPPage={this.onGoToPDPPage}
+              onLoadMoreProducts={this.onLoadMoreProducts}
               {...otherProps}
             />
           </View>
