@@ -12,14 +12,12 @@ const getApplyCardLayoutView = (
   plccData,
   labels,
   submitPLCCForm,
-  bagItems,
   isPLCCModalFlow,
   renderViewInfo = {}
 ) => {
   if (applicationStatus === constants.APPLICATION_STATE_EXISTING) {
     return (
       <ExistingPLCCUserView
-        bagItems={bagItems}
         labels={labels}
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
@@ -30,7 +28,6 @@ const getApplyCardLayoutView = (
   if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
     return (
       <ApplicationInProgress
-        bagItems={bagItems}
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
@@ -40,7 +37,6 @@ const getApplyCardLayoutView = (
   if (applicationStatus === constants.APPLICATION_STATE_APPROVED) {
     return (
       <ApprovedPLCCApplicationView
-        bagItems={bagItems}
         isGuest={renderViewInfo.isGuest}
         labels={labels}
         plccData={plccData}
@@ -54,7 +50,6 @@ const getApplyCardLayoutView = (
     <PLCCForm
       plccData={plccData}
       labels={labels}
-      bagItems={bagItems}
       isPLCCModalFlow={isPLCCModalFlow}
       onSubmit={submitPLCCForm}
       initialValues={renderViewInfo.profileInfo}
@@ -68,7 +63,6 @@ const ApplyCardLayoutView = ({
   plccData,
   labels,
   submitPLCCForm,
-  bagItems,
   isPLCCModalFlow,
   plccUser,
   isGuest,
@@ -83,7 +77,6 @@ const ApplyCardLayoutView = ({
         plccData,
         labels,
         submitPLCCForm,
-        bagItems,
         isPLCCModalFlow,
         {
           isGuest,
@@ -107,7 +100,6 @@ ApplyCardLayoutView.propTypes = {
   profileInfo: PropTypes.shape({}).isRequired,
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
-  bagItems: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
 };
 
