@@ -38,17 +38,11 @@ class CheckoutOrderInfo extends React.PureComponent {
             />
             <OrderLedgerContainer showAccordian={showAccordian} />
             {!isGuest && (
-              <div
-                className={`${
-                  showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-                } elem-mb-MED`}
-              >
-                <BonusPointsDays
-                  showAccordian={showAccordian}
-                  enableApplyCta
-                  additionalClassNameModal="bonus-modal-mob"
-                />
-              </div>
+              <BonusPointsDays
+                showAccordian={showAccordian}
+                enableApplyCta
+                additionalClassNameModal="bonus-modal-mob"
+              />
             )}
             <AirmilesBanner />
           </>
