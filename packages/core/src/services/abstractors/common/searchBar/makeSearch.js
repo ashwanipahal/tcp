@@ -52,6 +52,26 @@ const removeDuplicateAutosuggest = (autosuggestItems, propertyName) => {
   }, {});
   return Object.values(uniqueItems);
 };
+const getCategoryMatches = response => {
+  return filter(response.products, ['doctype', 'categoryLinkMap']).map(val => {
+    const category = val.autosuggest.split('~');
+    const categorySuggestion = category[0];
+    const getCategoryPath = categorySuggestion
+      .split('|')
+      .map(suggestion => suggestion.split('>'))
+      .join(',')
+      .split(',');
+    const parentCategory = getCategoryPath[0];
+    const getPath = getCategoryPath.filter(currentCategory => currentCategory !== parentCategory);
+    getPath.unshift(parentCategory);
+    const categoryPath = getPath.join('>');
+    return {
+      text: categoryPath,
+      docType: val.doctype,
+      url: `'/c/'${category[1] ? category[1] : category[2]}`,
+    };
+  });
+};
 
 /**
  * @function makeSearchApi - Used as abstract layer to do all server request and recieve the track order info.
@@ -94,7 +114,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
         .filter(item => 'catgroup_id' in item)
         .map(product => {
           const bundleProduct = product.product_type === 'BUNDLE' || false;
-          // const pdpURLID = product.seo_token || product.uniqueId
+          const pdpURLID = product.seo_token || product.uniqueId;
           return {
             name: product.product_name,
             imageUrl: product.imageUrl,
@@ -105,7 +125,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
             highListPrice: parseFloat(product.high_list_price) || 0,
             highOfferPrice: parseFloat(product.high_offer_price) || 0,
             isBundleProduct: bundleProduct,
-            // productUrl: `/${this.apiHelper.configOptions.siteId}/${bundleProduct ? 'b' : 'p'}/${pdpURLID}`,
+            productUrl: `${bundleProduct ? 'b' : 'p'}/${pdpURLID}`,
           };
         });
 
@@ -123,26 +143,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
       // Revoving duplicate item from the search suggestion.
       const autoSuggestItems = removeDuplicateAutosuggest(sortedAutoSuggestItems, 'text');
 
-      const categories = filter(response.products, ['doctype', 'categoryLinkMap']).map(val => {
-        const category = val.autosuggest.split('~');
-        const categorySuggestion = category[0];
-        const getCategoryPath = categorySuggestion
-          .split('|')
-          .map(suggestion => suggestion.split('>'))
-          .join(',')
-          .split(',');
-        const parentCategory = getCategoryPath[0];
-        const getPath = getCategoryPath.filter(
-          currentCategory => currentCategory !== parentCategory
-        );
-        getPath.unshift(parentCategory);
-        const categoryPath = getPath.join('>');
-        return {
-          text: categoryPath,
-          docType: val.doctype,
-          // url: `${this.apiHelper.configOptions.isUSStore ? '/us/c/' : '/ca/c/'}${category[1] ? category[1] : category[2]}`
-        };
-      });
+      const categories = getCategoryMatches(response);
 
       return {
         autosuggestList: [

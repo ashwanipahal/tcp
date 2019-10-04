@@ -71,14 +71,12 @@ export function* fetchMoreProducts() {
 }
 
 export function* fetchSlpSearchResults({ payload }) {
-  // const isMobile = routingInfoStoreView.getIsMobile(store.getState());
   const suggestionsCount = {
     category: 4,
     keywords: 4,
     promotedTopQueries: 4,
   };
 
-  // const isHideBundleProduct = abTestingStoreView.getIsHideBundleProduct(store.getState());
   const isHideBundleProduct = false;
   const payloadData = {
     searchTerm: payload,
