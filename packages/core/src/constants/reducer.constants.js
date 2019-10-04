@@ -89,6 +89,7 @@ export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 // Outfit Detail Page Reducer
 export const OUTFIT_DETAILS_REDUCER_KEY = 'OutfitDetails';
 export const OUTFIT_DETAILS_PATTERN = '@@OutfitDetails-';
+
 // Favorites Reducer
 export const FAVORITES_REDUCER_KEY = 'Favorites';
 export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
