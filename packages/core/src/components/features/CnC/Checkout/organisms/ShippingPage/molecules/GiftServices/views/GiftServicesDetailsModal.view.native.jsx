@@ -5,7 +5,9 @@ import RichTextWrapper from '../styles/GiftServicesDetailsModal.style.native';
 
 class GiftServicesDetailsModal extends React.PureComponent<Props> {
   render() {
-    const { openState, onRequestClose, labels, heading } = this.props;
+    const { openState, onRequestClose, labels, heading, brand } = this.props;
+    const { DETAILS_RICH_TEXT, DETAILS_RICH_TEXT_ZYM } = labels;
+    const modalContent = brand === 'TCP' ? DETAILS_RICH_TEXT : DETAILS_RICH_TEXT_ZYM;
     return (
       <Modal
         isOpen={openState}
@@ -16,10 +18,7 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         horizontalBar={false}
       >
         <RichTextWrapper>
-          <RichText
-            source={{ html: labels.DETAILS_RICH_TEXT }}
-            dataLocator="bonus-points-details"
-          />
+          <RichText source={{ html: modalContent }} dataLocator="bonus-points-details" />
         </RichTextWrapper>
       </Modal>
     );

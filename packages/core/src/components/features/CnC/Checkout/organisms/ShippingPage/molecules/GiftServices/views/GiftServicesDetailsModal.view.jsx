@@ -6,7 +6,9 @@ import styles, { modalStyles } from '../styles/GiftServices.style';
 
 class GiftServicesDetailsModal extends React.PureComponent<Props> {
   render() {
-    const { openState, onRequestClose, labels } = this.props;
+    const { openState, onRequestClose, labels, brand } = this.props;
+    const { DETAILS_RICH_TEXT, DETAILS_RICH_TEXT_ZYM } = labels;
+    const modalContent = brand === 'TCP' ? DETAILS_RICH_TEXT : DETAILS_RICH_TEXT_ZYM;
     return (
       <Modal
         isOpen={openState}
@@ -20,7 +22,7 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         fixedWidth
         inheritedStyles={modalStyles}
       >
-        <RichText richTextHtml={labels.DETAILS_RICH_TEXT} />
+        <RichText richTextHtml={modalContent} />
       </Modal>
     );
   }

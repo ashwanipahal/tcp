@@ -36,12 +36,31 @@ class GiftServices extends React.PureComponent {
 
     this.state = {
       detailStatus: false,
-      isGymboreeBrand: isGymboree(),
       isChecked: !isGiftServicesChecked,
       message: initialValues.message,
       selectedGiftService: 'standard',
+      brandState: initialValues.brand,
     };
   }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const brand = this.getBrandForGiftServices();
+    if (dispatch) {
+      dispatch(change('GiftServices', `brand`, brand));
+    }
+  }
+
+  getBrandForGiftServices = () => {
+    const { brandState } = this.state;
+    let brand = '';
+    if (brandState) {
+      brand = brandState;
+    } else {
+      brand = isGymboree() ? 'GYM' : 'TCP';
+    }
+    return brand;
+  };
 
   handleChange = () => {
     const { isChecked } = this.state;
@@ -66,13 +85,10 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = (giftWrapOptions, labels) => {
-    const gymboreeBrandName = 'GYM';
-    const tcpBrandName = 'TCP';
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
-    const { isGymboreeBrand } = this.state;
     const { currencySymbol } = this.props;
-    const brand = isGymboreeBrand ? gymboreeBrandName : tcpBrandName;
+    const brand = this.getBrandForGiftServices();
     const labelComponent = servicesMap => hideLongDescription => (
       <>
         <ServiceDetailWrapper>
@@ -122,8 +138,12 @@ class GiftServices extends React.PureComponent {
     );
   };
 
-  handleToggle = (e, isGymboreeBrand) => {
-    this.setState({ isGymboreeBrand });
+  handleToggle = (e, brandName) => {
+    const { dispatch } = this.props;
+    if (dispatch) {
+      dispatch(change('GiftServices', `brand`, brandName));
+    }
+    this.setState({ brandState: brandName });
   };
 
   giftServiceChanged = value => {
@@ -185,6 +205,7 @@ class GiftServices extends React.PureComponent {
   render() {
     const { labels, giftWrapOptions } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
+    const brand = this.getBrandForGiftServices();
     const dropDownStyle = {
       height: 30,
       border: 1,
@@ -197,7 +218,7 @@ class GiftServices extends React.PureComponent {
       color: 'black',
       border: 2,
     };
-    const { detailStatus, isGymboreeBrand, isChecked, message, selectedGiftService } = this.state;
+    const { detailStatus, isChecked, message, selectedGiftService, brandState } = this.state;
     return (
       <GiftServicesWrapper>
         <GiftServicesHeader>
@@ -249,8 +270,8 @@ class GiftServices extends React.PureComponent {
               <RadioButtonWrapper>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={isGymboreeBrand === isGymboree()}
-                    onPress={e => this.handleToggle(e, isGymboree())}
+                    checked={brand === 'TCP'}
+                    onPress={e => this.handleToggle(e, 'TCP')}
                     disabled={false}
                   />
                   <ImageBrandStyle
@@ -261,8 +282,8 @@ class GiftServices extends React.PureComponent {
                 </RadioButtonWrapperInner>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={isGymboreeBrand === !isGymboree()}
-                    onPress={e => this.handleToggle(e, !isGymboree())}
+                    checked={brand === 'GYM'}
+                    onPress={e => this.handleToggle(e, 'GYM')}
                     disabled={false}
                   />
                   <ImageBrandStyle
@@ -326,6 +347,7 @@ class GiftServices extends React.PureComponent {
             });
           }}
           heading={labels.giftServices}
+          brand={brandState}
         />
       </GiftServicesWrapper>
     );

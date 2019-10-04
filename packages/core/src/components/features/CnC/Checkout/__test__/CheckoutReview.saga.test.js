@@ -107,7 +107,7 @@ describe('loadPersonalizedCoupons saga', () => {
         legalText: 'Valid on select styles. Excludes Gift Cards.',
         promotion: {
           categoryType: 'Marketing_Offers',
-          startDate: '2019-10-04 00:00:00',
+          startDate: '2020-10-04 00:00:00',
           endDate: '2019-10-17 23:59:59',
           shortDescription: '20% OFF YOUR ENTIRE PURCHASE',
         },
@@ -146,7 +146,7 @@ describe('loadPersonalizedCoupons saga', () => {
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
             endDate: 'Oct 17th, 2019',
             isPastStartDate: false,
-            startDate: 'Oct 4th, 2019',
+            startDate: 'Oct 4th, 2020',
             categoryType: 'Marketing_Offers',
           },
         ])

@@ -21,11 +21,30 @@ class GiftServices extends React.PureComponent {
 
     this.state = {
       detailStatus: false,
-      isGymboreeBrand: isGymboree(),
       isChecked: isGiftServicesChecked,
       message: initialValues.message,
+      brandState: initialValues.brand,
     };
   }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const brand = this.getBrandForGiftServices();
+    if (dispatch) {
+      dispatch(change('GiftServices', `brand`, brand));
+    }
+  }
+
+  getBrandForGiftServices = () => {
+    const { brandState } = this.state;
+    let brand = '';
+    if (brandState) {
+      brand = brandState;
+    } else {
+      brand = isGymboree() ? 'GYM' : 'TCP';
+    }
+    return brand;
+  };
 
   handleChange = () => {
     const { isChecked } = this.state;
@@ -50,8 +69,8 @@ class GiftServices extends React.PureComponent {
   getServicesOptions = (giftWrapOptions, labels) => {
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
-    const { isGymboreeBrand } = this.state;
-    const brand = isGymboreeBrand ? 'GYM' : 'TCP';
+    const brand = this.getBrandForGiftServices();
+
     return (
       getServicesOptionsMap &&
       getServicesOptionsMap
@@ -91,12 +110,13 @@ class GiftServices extends React.PureComponent {
     );
   };
 
-  handleToggle = (e, isGymboreeBrand) => {
-    this.setState({ isGymboreeBrand });
+  handleToggle = e => {
+    const brand = e.target.value;
     const { dispatch } = this.props;
     if (dispatch) {
-      dispatch(change('GiftServices', `brand`, isGymboreeBrand ? 'GYM' : 'TCP'));
+      dispatch(change('GiftServices', `brand`, brand));
     }
+    this.setState({ brandState: brand });
   };
 
   giftServiceChanged = (e, value) => {
@@ -118,7 +138,8 @@ class GiftServices extends React.PureComponent {
   render() {
     const { className, labels, giftWrapOptions } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
-    const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
+    const { detailStatus, isChecked, message, brandState } = this.state;
+
     const maxLength = max => value => {
       let v;
       const result = value.length > max;
@@ -205,12 +226,13 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key="TCP"
+                    selectedValue="TCP"
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === isGymboree()}
-                    onChange={e => this.handleToggle(e, isGymboree())}
+                    variation="secondary"
                     disabled={false}
                     className="tcp-radio-button"
+                    onChange={e => this.handleToggle(e)}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
@@ -241,11 +263,12 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key="GYM"
+                    selectedValue="GYM"
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === !isGymboree()}
-                    onChange={e => this.handleToggle(e, !isGymboree())}
+                    variation="secondary"
                     disabled={false}
+                    onChange={e => this.handleToggle(e)}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
@@ -333,6 +356,7 @@ class GiftServices extends React.PureComponent {
               });
             }}
             heading={labels.giftServices}
+            brand={brandState}
           />
         </div>
       </form>

@@ -8,6 +8,7 @@ import {
   getDetailsContent,
   getGiftWrapOptions,
   getInitialGiftWrapOptions,
+  getDetailsContentZymboorie,
 } from './GiftServices.selector';
 
 class GiftServicesContainer extends React.PureComponent {
@@ -21,12 +22,17 @@ class GiftServicesContainer extends React.PureComponent {
       giftWrapOptions,
       giftWrap,
       currencySymbol,
+      detailsRichTextZymboorie,
     } = this.props;
     const optionId = giftWrap ? giftWrap.get('optionId') : '';
     const message = giftWrap ? giftWrap.get('message') : '';
     const hasGiftWrapping = !!giftWrap.size;
     const brand = giftWrap ? giftWrap.get('brand') : '';
-    const updateLabels = { ...labels, DETAILS_RICH_TEXT: detailsRichText };
+    const updateLabels = {
+      ...labels,
+      DETAILS_RICH_TEXT: detailsRichText,
+      DETAILS_RICH_TEXT_ZYM: detailsRichTextZymboorie,
+    };
     return (
       <GiftServices
         labels={updateLabels}
@@ -50,6 +56,7 @@ GiftServicesContainer.propTypes = {
   giftWrapOptions: PropTypes.shape.isRequired,
   giftWrap: PropTypes.shape.isRequired,
   currencySymbol: PropTypes.string,
+  detailsRichTextZymboorie: PropTypes.shape.isRequired,
 };
 GiftServicesContainer.defaultProps = {
   dispatch: () => {},
@@ -61,6 +68,7 @@ GiftServicesContainer.defaultProps = {
 export const mapStateToProps = state => ({
   labels: getGiftServicesLabels(state),
   detailsRichText: getDetailsContent(state),
+  detailsRichTextZymboorie: getDetailsContentZymboorie(state),
   giftWrapOptions: getGiftWrapOptions(state),
   giftWrap: getInitialGiftWrapOptions(state),
   currencySymbol: getCurrencySymbol(state),
