@@ -1,0 +1,11 @@
+{
+  "browsertime": {
+    "iterations": 3,
+    "browser": "chrome",
+        "headless": "true"
+  },
+  "s3":{
+        "bucketname":"tcp-sonar-reports/site-speed"
+  },
+  "utc": true
+}
