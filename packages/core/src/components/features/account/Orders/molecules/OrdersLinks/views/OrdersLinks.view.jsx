@@ -95,3 +95,4 @@ OrdersLinks.defaultProps = {
 };
 
 export default withStyles(OrdersLinks, styles);
+export { OrdersLinks as OrdersLinksvanilla };

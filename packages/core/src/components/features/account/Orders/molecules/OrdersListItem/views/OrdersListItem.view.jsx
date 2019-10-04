@@ -155,3 +155,4 @@ OrdersListItem.defaultProps = {
 };
 
 export default withStyles(OrdersListItem, styles);
+export { OrdersListItem as OrdersListItemvanilla };
