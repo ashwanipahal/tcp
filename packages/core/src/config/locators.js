@@ -298,6 +298,15 @@ export default {
   pdp_rating_reviews_title: 'ratings_and_reviews_title',
   pdp_rating_reviews_count: 'ratings_and_reviews_count',
 
+  // PDP product description locators
+  pdp_product_description_label: 'product_description_title',
+  pdp_short_description: 'short-description',
+  pdp_long_description: 'long_description',
+  pdp_claim_message: 'claim_message',
+  pdp_product_part_number: 'part_number',
+  pdp_read_more: 'read_more',
+  pdp_read_less: 'read_less',
+
   // Quick View Modal
   quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',
   quick_view_modal: 'quick_view_modal',
