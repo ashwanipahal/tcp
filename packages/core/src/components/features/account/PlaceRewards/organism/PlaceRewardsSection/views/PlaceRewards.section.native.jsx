@@ -18,6 +18,7 @@ import PointsHistory from '../../../../common/organism/PointsHistory';
 import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 
 const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
+  const { commonLabels } = otherProps;
   return (
     <View className={className}>
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -33,7 +34,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={getLabelValue(labels, 'lbl_common_point_balance', 'placeRewards')}
+            text={getLabelValue(commonLabels, 'lbl_common_point_balance')}
           />
           <RewardsPoints />
         </StyledView>
