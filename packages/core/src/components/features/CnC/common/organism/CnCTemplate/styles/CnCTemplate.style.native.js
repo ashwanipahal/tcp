@@ -55,6 +55,18 @@ export const CouponAndPromosWrapper = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
+export const BannerWrapper = styled.View`
+  background-color: ${props => props.theme.colorPalette.gray[500]};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+  height: 100px;
+`;
+
+export const CouponsWrapper = styled.View`
+  background-color: ${props => props.theme.colorPalette.gray[500]};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+  height: 100px;
+`;
+
 export default {
   ButtonWrapper,
   CheckoutButton,
@@ -63,4 +75,6 @@ export default {
   BackLinkWrapperWrapper,
   BonusPointsWrapper,
   CouponAndPromosWrapper,
+  BannerWrapper,
+  CouponsWrapper,
 };

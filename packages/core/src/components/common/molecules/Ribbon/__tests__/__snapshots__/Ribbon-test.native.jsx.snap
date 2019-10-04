@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RibbonComponentVanilla should match snapshot 1`] = `
+<Styled(View)
+  position="left"
+>
+  <Styled(ImageComp)
+    alt=""
+    height="70px"
+    host=""
+    source={
+      Object {
+        "testUri": "../../../../core/src/assets/module-a-ribbon-left.png",
+      }
+    }
+    style={
+      Object {
+        "tintColor": "white",
+      }
+    }
+    url=""
+    width="200px"
+  />
+  <Styled(View)
+    position="left"
+  >
+    <PromoBanner
+      color="white"
+      fontFamily="secondary"
+      fontWeight="black"
+      locator="moduleS_promoribbonbanner_text"
+      navigation={Object {}}
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "target": "",
+              "text": "Girls",
+              "title": "Girls",
+              "url": "/c/girls-clothes",
+            },
+            "ribbonClass": "ribbon-color-cherry",
+            "ribbonPlacement": "left",
+            "textItems": Array [
+              Object {
+                "style": "style1",
+                "text": "20% OFF",
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
