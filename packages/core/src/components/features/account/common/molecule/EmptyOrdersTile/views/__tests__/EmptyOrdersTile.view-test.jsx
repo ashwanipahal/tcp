@@ -1,20 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EmptyOrdersTile from '../EmptyOrdersTile.view';
+import { EmptyOrderTile } from '../EmptyOrdersTile.view';
 
 const labels = {
-  placeRewards: {
-    lbl_my_rewards_shop_now: 'shop now',
-    ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: 'msg',
+  orders: {
+    lbl_ordersTile_noOrderYet: 'shop now',
+    lbl_orders_shopNow: 'msg',
   },
 };
 
-describe('EmptyOrdersTile', () => {
+describe('EmptyOrderTile', () => {
   it('should render correctly', () => {
     const props = {
       labels,
+      goToHomePage: () => {},
     };
-    const tree = shallow(<EmptyOrdersTile {...props} />);
+    const tree = shallow(<EmptyOrderTile {...props} />);
     expect(tree).toMatchSnapshot();
   });
 });

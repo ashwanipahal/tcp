@@ -7,16 +7,11 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../../../styles/OrdersTile.style';
 import internalEndpoints from '../../../../../internalEndpoints';
 
-const OrdersTileItem = ({labels, orderItem}) => {
-  return(
+export const OrdersTileItem = ({ labels, orderItem }) => {
+  return (
     <BodyCopy component="div" className="elem-mb-LRG">
       <BodyCopy component="div" className="elem-mt-XXXS">
-        <BodyCopy
-          component="span"
-          data-locator="emailLbl"
-          fontSize="fs14"
-          fontFamily="secondary"
-        >
+        <BodyCopy component="span" data-locator="emailLbl" fontSize="fs14" fontFamily="secondary">
           {getLabelValue(labels, 'lbl_ordersTile_orderNum', 'orders')}
           {': '}
           <Anchor
@@ -34,58 +29,38 @@ const OrdersTileItem = ({labels, orderItem}) => {
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" className="elem-mt-XXXS">
-        <BodyCopy
-          component="span"
-          data-locator="emailLbl"
-          fontSize="fs14"
-          fontFamily="secondary"
-        >
+        <BodyCopy component="span" data-locator="emailLbl" fontSize="fs14" fontFamily="secondary">
           {getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
           {': '}
           {orderItem.orderDate}
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" className="elem-mt-XXXS">
-        <BodyCopy
-          component="span"
-          data-locator="emailLbl"
-          fontSize="fs14"
-          fontFamily="secondary"
-        >
+        <BodyCopy component="span" data-locator="emailLbl" fontSize="fs14" fontFamily="secondary">
           {getLabelValue(labels, 'lbl_ordersTile_purchase', 'orders')}
           {': '}
           {orderItem.isEcomOrder
-                  ? getLabelValue(labels, 'lbl_orders_online', 'orders')
-                  : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')}
+            ? getLabelValue(labels, 'lbl_orders_online', 'orders')
+            : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')}
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" className="elem-mt-XXXS">
-        <BodyCopy
-          component="span"
-          data-locator="emailLbl"
-          fontSize="fs14"
-          fontFamily="secondary"
-        >
+        <BodyCopy component="span" data-locator="emailLbl" fontSize="fs14" fontFamily="secondary">
           {getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
           {': '}
           {getLabelValue(labels, orderItem.orderStatus, 'orders')}
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" className="elem-mt-XXXS">
-        <BodyCopy
-          component="span"
-          data-locator="emailLbl"
-          fontSize="fs14"
-          fontFamily="secondary"
-        >
+        <BodyCopy component="span" data-locator="emailLbl" fontSize="fs14" fontFamily="secondary">
           {getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
           {': '}
           {orderItem.orderTotal}
         </BodyCopy>
       </BodyCopy>
     </BodyCopy>
-  )
-}
+  );
+};
 
 OrdersTileItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
