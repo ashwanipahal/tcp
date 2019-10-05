@@ -1,29 +1,33 @@
-/* eslint-disable complexity */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import Styles from '../styles/guestMprSection.style';
+import Styles from '../styles/GuestMprSection.style';
 import { BodyCopy, Row, Col } from '../../../../../../common/atoms';
 
 const PlccSection = props => {
-  const { className, finalStr, labels, showSubtotal, currentSubtotal, estimatedSubtotal } = props;
+  const {
+    className,
+    finalPointsLabelStr,
+    labels,
+    showSubtotal,
+    currentSubtotal,
+    estimatedSubtotal,
+  } = props;
 
   return (
     <div className={`${className} body`}>
       <BodyCopy
         className="youCanEarnPoints alignCenter elem-pt-MED"
         fontSize="fs16"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
-        {finalStr}
+        {finalPointsLabelStr}
       </BodyCopy>
       <BodyCopy
-        className="save30Today alignCenter colorOrangeBlue elem-pt-MED"
+        className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
         fontSize="fs20"
-        component="p"
         color="text.primary"
         fontFamily="primary"
         fontWeight="extrabold"
@@ -33,7 +37,6 @@ const PlccSection = props => {
       <BodyCopy
         className="earnDoublePoints alignCenter elem-pt-MED elem-pb-MED elem-pl-SM elem-pr-SM"
         fontSize="fs16"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -110,18 +113,17 @@ PlccSection.propTypes = {
   estimatedSubtotal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   showSubtotal: PropTypes.number,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
-  finalStr: PropTypes.string,
+  finalPointsLabelStr: PropTypes.string,
 };
 
 PlccSection.defaultProps = {
   className: '',
-  labels: {},
   estimatedSubtotal: 0,
   currentSubtotal: 0,
   showSubtotal: 0,
-  finalStr: '',
+  finalPointsLabelStr: '',
 };
 
 export default withStyles(PlccSection, Styles);

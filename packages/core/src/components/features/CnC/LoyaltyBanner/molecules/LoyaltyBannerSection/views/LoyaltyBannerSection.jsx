@@ -2,11 +2,11 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
-import { BodyCopy } from '../../../../../../common/atoms';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import labelsHashValuesReplace from '../../../util/utility';
 import PlccSection from '../../PlccSection';
-import GuestMprSection from '../../GuestMprSection';
+import GuestMpr from '../../GuestMpr';
+// import ApplyNowView from '../../ApplyNowView';
 
 const LoyaltyBannerSection = props => {
   const {
@@ -22,37 +22,40 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
   } = props;
   let showSubtotal = false;
-  let finalStr = '';
-  let finalStrValue = '';
+  let finalPointsLabelStr = '';
+  let finalPointsValue = '';
   let finalStrRemainingPlcc = '';
   let finalStrRemainingValue = '';
+  let conditionalPointsLabel = '';
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue) {
     showSubtotal = true;
   }
-  /* istanbul ignore else */
-  const valueArr = [{ value: estimatedRewardsVal, classValue: `${className} colorOrangeBlue` }];
+
+  const valueArr = [{ value: estimatedRewardsVal, classValue: `${className} mpr-plcc-theme` }];
   if (!earnedReward) {
     if (isGuest) {
-      finalStrValue = labelsHashValuesReplace(labels.youCanEarnPoints, valueArr);
+      conditionalPointsLabel = labels.youCanEarnPoints;
     } else if (!isPlcc) {
-      finalStrValue = labelsHashValuesReplace(labels.youllEarnPoints, valueArr);
+      conditionalPointsLabel = labels.youllEarnPoints;
     } else {
-      finalStrValue = labelsHashValuesReplace(labels.youllEarnPointsPlcc, valueArr);
+      conditionalPointsLabel = labels.youllEarnPointsPlcc;
     }
   } else if (isGuest) {
-    finalStrValue = labelsHashValuesReplace(labels.becomeMemberOnThisPurchase, valueArr);
+    conditionalPointsLabel = labels.becomeMemberOnThisPurchase;
   } else if (!isPlcc) {
-    finalStrValue = labelsHashValuesReplace(labels.youllGetWithThisPurchase, valueArr);
+    conditionalPointsLabel = labels.youllGetWithThisPurchase;
   } else {
-    finalStrValue = labelsHashValuesReplace(labels.youllGetARewardPlcc, valueArr);
+    conditionalPointsLabel = labels.youllGetARewardPlcc;
   }
+
+  finalPointsValue = labelsHashValuesReplace(conditionalPointsLabel, valueArr);
   // eslint-disable-next-line react/no-danger
-  finalStr = <span dangerouslySetInnerHTML={{ __html: finalStrValue }} />;
+  finalPointsLabelStr = <span dangerouslySetInnerHTML={{ __html: finalPointsValue }} />;
 
   const valueArrNextReward = [
-    { value: pointsToNextReward, classValue: `${className} colorOrangeBlue` },
+    { value: pointsToNextReward, classValue: `${className} mpr-plcc-theme` },
   ];
   finalStrRemainingValue = labelsHashValuesReplace(
     labels.thatsSomePointsFromReward,
@@ -67,9 +70,9 @@ const LoyaltyBannerSection = props => {
       <div className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED">
         <BodyCopy className="loyaltyBannerSectionWrapper" component="div" fontFamily="secondary">
           {!isPlcc && (
-            <GuestMprSection
+            <GuestMpr
               className={className}
-              finalStr={finalStr}
+              finalPointsLabelStr={finalPointsLabelStr}
               labels={labels}
               showSubtotal={showSubtotal}
               currentSubtotal={currentSubtotal}
@@ -79,27 +82,15 @@ const LoyaltyBannerSection = props => {
           {isPlcc && (
             <PlccSection
               className={className}
-              finalStr={finalStr}
+              finalPointsLabelStr={finalPointsLabelStr}
               finalStrRemainingPlcc={finalStrRemainingPlcc}
               labels={labels}
               earnedReward={earnedReward}
             />
           )}
           <div className="footer alignCenter elem-pt-MED elem-pb-MED">
-            {!isPlcc && (
-              <Anchor
-                className="applyNow"
-                fontSizeVariation="medium"
-                underline
-                to="/#"
-                anchorVariation="primary"
-                dataLocator="payment-makedefault"
-                // onClick={this.handleDefaultLinkClick}
-              >
-                {labels.applyNow}
-              </Anchor>
-            )}
-            <Anchor
+            {/* {!isPlcc && <ApplyNowView />} */}
+            {/* <Anchor
               className="learnMore elem-pl-XL"
               fontSizeVariation="medium"
               underline
@@ -109,7 +100,14 @@ const LoyaltyBannerSection = props => {
               // onClick={this.handleDefaultLinkClick}
             >
               {labels.learnMore}
-            </Anchor>
+            </Anchor> */}
+            <Anchor
+              className="learnMore elem-pl-XL"
+              fontSizeVariation="medium"
+              anchorVariation="primary"
+              text={labels.learnMore}
+              underline
+            />
           </div>
         </BodyCopy>
       </div>
@@ -119,27 +117,26 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   className: PropTypes.string,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape.isRequired,
   estimatedRewardsVal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
   thresholdValue: PropTypes.number,
   isGuest: PropTypes.bool,
   earnedReward: PropTypes.number,
-  isPlcc: PropTypes.string,
+  isPlcc: PropTypes.bool,
   pointsToNextReward: PropTypes.number,
 };
 
 LoyaltyBannerSection.defaultProps = {
   className: '',
-  labels: {},
   estimatedRewardsVal: 0,
   currentSubtotal: 0,
   estimatedSubtotal: 0,
   thresholdValue: 0,
   isGuest: false,
   earnedReward: 0,
-  isPlcc: '',
+  isPlcc: false,
   pointsToNextReward: 0,
 };
 

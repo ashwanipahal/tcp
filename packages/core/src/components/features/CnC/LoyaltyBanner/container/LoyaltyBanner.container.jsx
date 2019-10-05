@@ -31,19 +31,16 @@ export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCh
 };
 
 LoyaltyBannerContainer.propTypes = {
-  labels: PropTypes.shape({}),
-  orderDetails: PropTypes.shape({}),
+  orderDetails: PropTypes.shape.isRequired,
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
-  isPlcc: PropTypes.string,
+  isPlcc: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
-  labels: {},
-  orderDetails: {},
   thresholdValue: null,
   isGuestCheck: false,
-  isPlcc: '',
+  isPlcc: false,
 };
 
 /* istanbul ignore next */

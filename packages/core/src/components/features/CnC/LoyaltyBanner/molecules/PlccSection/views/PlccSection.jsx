@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -6,24 +5,22 @@ import Styles from '../styles/PlccSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
 
 const PlccSection = props => {
-  const { className, finalStr, finalStrRemainingPlcc, labels, earnedReward } = props;
+  const { className, finalPointsLabelStr, finalStrRemainingPlcc, labels, earnedReward } = props;
 
   return (
     <div className={`${className} bodyPlcc`}>
       <BodyCopy
         className="youCanEarnPointsPlcc alignCenter elem-pt-MED"
         fontSize="fs18"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
-        {finalStr}
+        {finalPointsLabelStr}
       </BodyCopy>
       <BodyCopy
         className="onThisPurchasePlcc alignCenter"
         fontSize="fs18"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -33,7 +30,6 @@ const PlccSection = props => {
       <BodyCopy
         className="whenYouCheckOutPlcc alignCenter elem-pt-MED"
         fontSize="fs16"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -43,7 +39,6 @@ const PlccSection = props => {
       <BodyCopy
         className="myPlaceRewardsCCPlcc alignCenter"
         fontSize="fs16"
-        component="p"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -54,7 +49,6 @@ const PlccSection = props => {
         <BodyCopy
           className="finalStrRemainingPlcc alignCenter elem-pt-MED"
           fontSize="fs16"
-          component="p"
           color="text.primary"
           fontFamily="secondary"
           fontWeight="extrabold"
@@ -68,17 +62,16 @@ const PlccSection = props => {
 
 PlccSection.propTypes = {
   earnedReward: PropTypes.number,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
-  finalStr: PropTypes.string,
+  finalPointsLabelStr: PropTypes.string,
   finalStrRemainingPlcc: PropTypes.string,
 };
 
 PlccSection.defaultProps = {
   className: '',
-  labels: {},
   earnedReward: 0,
-  finalStr: '',
+  finalPointsLabelStr: '',
   finalStrRemainingPlcc: '',
 };
 

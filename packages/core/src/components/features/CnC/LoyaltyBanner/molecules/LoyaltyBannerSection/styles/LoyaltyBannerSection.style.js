@@ -10,7 +10,7 @@ const Styles = css`
   .backgroundWhite {
     background: ${props => props.theme.colors.WHITE};
   }
-  .colorOrangeBlue {
+  .mpr-plcc-theme {
     color: ${plccMpr};
   }
   .spaceBetween {
