@@ -7,6 +7,7 @@ import {
   briteVerifyStatusExtraction,
   getVenmoToken,
 } from '../../../../../services/abstractors/CnC/index';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -83,6 +84,7 @@ export function* updateShipmentMethodSelection({ payload }) {
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
       transVibesSmsPhoneNo
     );
+    yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
