@@ -388,6 +388,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
             )
           }
+          showAccordian
         />
       </>
     );

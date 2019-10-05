@@ -27,7 +27,7 @@ exports[`AccountHeader Component should render correctly 1`] = `
       link={null}
       textAlign="right"
     >
-      undefined test
+      lbl_overview_greeting test
     </Styled(BodyCopy)>
   </Styled(Col)>
   <Styled(Col)

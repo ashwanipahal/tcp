@@ -3,9 +3,12 @@ import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import moduleSMock1 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
+import moduleSMock2 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v2';
+import moduleSMock3 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v3';
+import moduleSMock4 from '@tcp/core/src/services/abstractors/common/moduleS/mock-v4';
 import {
   ModuleD,
   ModuleH,
@@ -16,6 +19,7 @@ import {
   ModuleB,
   ModuleJ,
   ModuleR,
+  ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
@@ -33,6 +37,7 @@ const modulesMap = {
   moduleB: ModuleB,
   moduleJ: ModuleJ,
   moduleR: ModuleR,
+  moduleS: ModuleS,
 };
 
 const buttonMargin = { margin: 30 };
@@ -77,6 +82,10 @@ class HomePageView extends React.PureComponent<Props> {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <ModuleS {...moduleSMock1.moduleS.composites} navigation={navigation} />
+        <ModuleS {...moduleSMock2.moduleS.composites} navigation={navigation} />
+        <ModuleS {...moduleSMock3.moduleS.composites} navigation={navigation} />
+        <ModuleS {...moduleSMock4.moduleS.composites} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
           fullWidth

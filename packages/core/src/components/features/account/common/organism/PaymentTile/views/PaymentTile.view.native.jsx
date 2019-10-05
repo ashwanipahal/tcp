@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getIconCard } from '@tcp/core/src/utils/index.native';
 import { cardIconMapping } from '@tcp/core/src/components/features/account/common/molecule/CardTile/views/CardTile.utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PaymentItem from '../../../molecule/Payment';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
@@ -26,16 +27,16 @@ export class PaymentTile extends React.PureComponent<Props> {
   getCreditCardView = (card, isAddVariation) => {
     const { labels, handleComponentChange } = this.props;
     const cardTileProps = {
-      title: labels.lbl_overview_default_creditCard,
+      title: getLabelValue(labels, 'lbl_overview_default_creditCard'),
       text: !isAddVariation
-        ? `${labels.lbl_overview_card_ending} ${card.accountNo.slice(-4)}`
-        : labels.lbl_overview_add_creditCard,
+        ? `${getLabelValue(labels, 'lbl_overview_card_ending')} ${card.accountNo.slice(-4)}`
+        : getLabelValue(labels, 'lbl_overview_add_creditCard'),
       subText: !isAddVariation
-        ? `${labels.lbl_overview_expires} ${card.expMonth.trim()}/${card.expYear}`
+        ? `${getLabelValue(labels, 'lbl_overview_expires')} ${card.expMonth.trim()}/${card.expYear}`
         : '',
       variation: !isAddVariation
-        ? labels.lbl_overview_addressBookEdit
-        : labels.lbl_overview_addressBookAdd,
+        ? getLabelValue(labels, 'lbl_overview_addressBookEdit')
+        : getLabelValue(labels, 'lbl_overview_addressBookAdd'),
       icon: !isAddVariation ? getIconCard(cardIconMapping[card.ccBrand]) : '',
     };
     return (
@@ -53,15 +54,17 @@ export class PaymentTile extends React.PureComponent<Props> {
     const balance = (card && this.getGiftCardBalance(card.accountNo, checkbalanceValueInfo)) || '';
 
     const cardTileProps = {
-      title: labels.lbl_overview_giftCard,
+      title: getLabelValue(labels, 'lbl_overview_giftCard'),
       text: !isAddVariation
-        ? `${labels.lbl_overview_card_ending} ${card.accountNo.slice(-4)}`
-        : labels.lbl_overview_add_giftCard,
+        ? `${getLabelValue(labels, 'lbl_overview_card_ending')} ${card.accountNo.slice(-4)}`
+        : getLabelValue(labels, 'lbl_overview_add_giftCard'),
       subText:
-        !isAddVariation && balance ? `${labels.lbl_overview_remaining_balance}: $${balance}` : '',
+        !isAddVariation && balance
+          ? `${getLabelValue(labels, 'lbl_overview_remaining_balance')}: $${balance}`
+          : '',
       variation: !isAddVariation
-        ? labels.lbl_overview_addressBookEdit
-        : labels.lbl_overview_addressBookAdd,
+        ? getLabelValue(labels, 'lbl_overview_addressBookEdit')
+        : getLabelValue(labels, 'lbl_overview_addressBookAdd'),
       icon: !isAddVariation ? getIconCard(cardIconMapping.GC) : '',
     };
     return (
@@ -109,7 +112,7 @@ export class PaymentTile extends React.PureComponent<Props> {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs16"
-          text={labels.lbl_overview_paymentHeading}
+          text={getLabelValue(labels, 'lbl_overview_paymentHeading')}
           color="black"
         />
         <UnderlineStyle />
@@ -122,7 +125,7 @@ export class PaymentTile extends React.PureComponent<Props> {
 
         <ButtonWrapperStyle>
           <CustomButton
-            text={labels.lbl_overview_view_payments}
+            text={getLabelValue(labels, 'lbl_overview_view_payments')}
             buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}

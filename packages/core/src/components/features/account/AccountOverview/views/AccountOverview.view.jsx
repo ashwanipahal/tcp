@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import AccountOverviewTileList from '../organism/AccountOverviewTileList';
 
 export const AccountOverview = ({ labels, commonLabels }) => {
   return (
     <React.Fragment>
-      <FormPageHeadingComponent heading={labels.lbl_overview_heading} className="margin-none" />
+      <FormPageHeadingComponent
+        heading={getLabelValue(labels, 'lbl_overview_heading')}
+        className="margin-none"
+      />
       <AccountOverviewTileList labels={labels} commonLabels={commonLabels} />
     </React.Fragment>
   );

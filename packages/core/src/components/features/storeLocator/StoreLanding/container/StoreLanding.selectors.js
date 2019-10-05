@@ -10,9 +10,18 @@ export const getCurrentCountry = state => {
   );
 };
 
-/* istanbul ignore next */
-export const getPageLabels = state => {
-  return state.Labels; // && state.Labels.StoreLocator;
+export const getPageLabels = ({ Labels }) => {
+  const pageLabels = Labels.StoreLocator;
+  let finalLabels = {};
+  if (pageLabels !== undefined) {
+    const { StoreLanding, StoreDetail, StoreList } = pageLabels;
+    finalLabels = {
+      ...StoreLanding,
+      ...StoreDetail,
+      ...StoreList,
+    };
+  }
+  return finalLabels;
 };
 
 export const getStoreInfo = state => {

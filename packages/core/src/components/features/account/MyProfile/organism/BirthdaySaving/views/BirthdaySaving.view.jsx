@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { fromJS } from 'immutable';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -18,7 +19,7 @@ const BirthdaySaving = ({ labels, childrenBirthdays }) => {
   );
   return (
     <MyProfileTile
-      title={labels.lbl_profile_birthday_savings}
+      title={getLabelValue(labels, 'lbl_profile_birthday_savings')}
       ctaTitle={ctaTitle}
       dataLocator="birthdaySaving"
       ctaPath={internalEndPoints.birthdaySavingsPage.path}

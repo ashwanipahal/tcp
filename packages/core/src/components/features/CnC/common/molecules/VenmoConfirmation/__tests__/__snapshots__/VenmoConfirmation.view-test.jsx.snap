@@ -12,7 +12,6 @@ exports[`VenmoConfirmation component renders correctly without props 1`] = `
         className="venmo-logo-wrapper"
       >
         <Styled(Image)
-          alt="Venmo Logo"
           className="venmo-logo elem-pr-XXXS"
           src="https://cdn1.venmo.com/marketing/images/branding/venmo-icon.svg"
         />
@@ -28,9 +27,7 @@ exports[`VenmoConfirmation component renders correctly without props 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        Payment Method
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="venmo-banner-text"
         color="gray.900"
@@ -42,9 +39,7 @@ exports[`VenmoConfirmation component renders correctly without props 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      >
-        If your order ships after 10 days, a second authorization will appear on your card, however you will only be charged once.
-      </Styled(BodyCopy)>
+      />
     </div>
   </div>
 </div>
