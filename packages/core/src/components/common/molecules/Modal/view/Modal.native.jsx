@@ -31,6 +31,7 @@ type Props = {
   stickyCloseIcon: boolean,
   children: node,
   isOverlay?: boolean,
+  inheritedStyles?: String,
 };
 
 const closeIcon = require('../../../../../assets/close.png');
@@ -77,7 +78,7 @@ const geLine = (horizontalBar, borderColor) => {
   );
 };
 
-const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
+const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
   const {
     heading,
     onRequestClose,
@@ -111,7 +112,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
         onRequestClose={onRequestClose}
       >
         {!customTransparent && (
-          <ModalCustomWrapper transparentModal={transparentModal}>
+          <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
             <ToastContainer />
             <StatusBar hidden />
             <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
@@ -154,6 +155,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
 
 ModalNative.defaultProps = {
   isOverlay: false,
+  inheritedStyles: '',
 };
 
 export default ModalNative;
