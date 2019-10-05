@@ -93,10 +93,11 @@ class CheckoutCartItemsList extends Component {
     const {
       storeAddress: { addressLine1, addressLine2, city, state, zipCode },
     } = deliveryItem;
-    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber, store } = deliveryItem;
     const { today, tomorrow, phone } = labels;
     return (
       <Text>
+        <BodyCopy fontWeight="extrabold" fontSize="fs16" fontFamily="secondary" text={store} />
         {deliveryItem && deliveryItem.storeAddress && (
           <>
             <BodyCopy
@@ -120,24 +121,30 @@ class CheckoutCartItemsList extends Component {
               fontFamily="secondary"
               text={`${city},${state}${zipCode}`}
             />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${today}${storeTodayOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${tomorrow}${storeTomorrowOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${phone}${storePhoneNumber}`}
-            />
+            {storeTodayOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${today}${storeTodayOpenRange}`}
+              />
+            )}
+            {storeTomorrowOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${tomorrow}${storeTomorrowOpenRange}`}
+              />
+            )}
+            {storePhoneNumber && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${phone}${storePhoneNumber}`}
+              />
+            )}
           </>
         )}
       </Text>
