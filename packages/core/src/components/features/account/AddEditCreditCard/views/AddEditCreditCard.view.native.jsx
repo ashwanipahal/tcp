@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import CreditCardForm from '../organism/CreditCardForm';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 
@@ -31,8 +32,8 @@ export const AddEditCreditCard = ({
             onSuccess={submitAddressFormAction}
             heading={
               isEdit
-                ? labels.addressBook.ACC_LBL_EDIT_ADDRESS
-                : labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD
+                ? getLabelValue(labels, 'ACC_LBL_EDIT_ADDRESS', 'addressBook')
+                : getLabelValue(labels, 'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD', 'addressBook')
             }
             labels={labels}
             onError={submitAddressFormAction}

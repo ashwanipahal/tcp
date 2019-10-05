@@ -9,7 +9,15 @@ import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
 import { getSiteId } from '../../../../../../../core/src/utils/utils.web';
 
-const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, totalRewards) => {
+const renderMiniBagHeader = (
+  labels,
+  cartItemCount,
+  userName,
+  currentPoints,
+  totalRewards,
+  onRequestClose,
+  openOverlay
+) => {
   return (
     <MiniBagHeader
       labels={labels}
@@ -17,6 +25,8 @@ const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, tot
       userName={userName}
       currentPoints={currentPoints}
       totalRewards={totalRewards}
+      onRequestClose={onRequestClose}
+      openOverlay={openOverlay}
     />
   );
 };
@@ -51,6 +61,7 @@ class MiniBag extends React.Component {
       isCartItemsUpdating,
       isCartItemSFL,
       cartItemSflError,
+      openOverlay,
     } = this.props;
     const { country } = this.state;
     const cartItemCount = getCartItemCount();
@@ -59,7 +70,6 @@ class MiniBag extends React.Component {
       <Modal
         isOpen={openState}
         onRequestClose={onRequestClose}
-        heading={renderMiniBagHeader(labels, cartItemCount, userName, currentPoints, totalRewards)}
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
         closeIconDataLocator="mini-bag-close"
@@ -71,6 +81,15 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {renderMiniBagHeader(
+          labels,
+          cartItemCount,
+          userName,
+          currentPoints,
+          totalRewards,
+          onRequestClose,
+          openOverlay
+        )}
         <MiniBagBody
           closeMiniBag={onRequestClose}
           labels={labels}
@@ -103,6 +122,7 @@ MiniBag.propTypes = {
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBagDispatch: PropTypes.func.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

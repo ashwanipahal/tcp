@@ -7,8 +7,7 @@ import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddE
 
 import { getCVVCodeInfoContentId, getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
-
-const { getBillingLabels } = CheckoutSelectors;
+import { updateCardData } from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
   componentDidMount() {
@@ -29,15 +28,20 @@ export const mapDispatchToProps = dispatch => {
     getCVVCodeInfo: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
+    updateCardDetail: payload => {
+      dispatch(updateCardData(payload));
+    },
   };
 };
 
 export const mapStateToProps = state => {
+  const { getIsVenmoEnabled, getBillingLabels } = CheckoutSelectors;
   return {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
     labels: getBillingLabels(state),
     addressLabels: getAddEditAddressLabels(state),
+    isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 };
 

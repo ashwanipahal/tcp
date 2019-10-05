@@ -6,13 +6,16 @@ import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
+import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -51,6 +54,17 @@ class ProductDetailView extends React.PureComponent {
     return <FullScreenImageCarousel imageUrls={imageUrls} />;
   };
 
+  renderFulfilmentSection = () => {
+    const { currentProduct } = this.props;
+    return (
+      <FulfillmentSection
+        btnClassName="added-to-bag"
+        buttonLabel="Add To Bag"
+        currentProduct={currentProduct}
+      />
+    );
+  };
+
   render() {
     const {
       currentProduct,
@@ -60,6 +74,12 @@ class ProductDetailView extends React.PureComponent {
       handleFormSubmit,
       navigation,
       addToBagError,
+      isPickupModalOpen,
+      handleSubmit,
+      shortDescription,
+      itemPartNumber,
+      longDescription,
+      pdpLabels,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -88,10 +108,20 @@ class ProductDetailView extends React.PureComponent {
             selectedColorProductId={selectedColorProductId}
             errorOnHandleSubmit={addToBagError}
             onChangeColor={this.onChangeColor}
+            handleSubmit={handleSubmit}
           />
 
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <ProductDetailDescription
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            isShowMore={false}
+            pdpLabels={pdpLabels}
+          />
+          {this.renderFulfilmentSection()}
+          {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </ScrollView>
     );
@@ -104,16 +134,28 @@ ProductDetailView.propTypes = {
   selectedColorProductId: PropTypes.number.isRequired,
   clearAddToBagError: PropTypes.func.isRequired,
   plpLabels: PropTypes.shape({}),
+  handleSubmit: PropTypes.func,
+  isPickupModalOpen: PropTypes.bool,
   handleFormSubmit: PropTypes.func,
   addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
 };
 
 ProductDetailView.defaultProps = {
   currentProduct: {},
   navigation: {},
   plpLabels: null,
+  handleSubmit: null,
+  isPickupModalOpen: false,
   handleFormSubmit: null,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
+  pdpLabels: {},
 };
 
 export default withStyles(ProductDetailView);

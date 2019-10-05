@@ -180,6 +180,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
       errorDataLocator="track_order_email_error_msg"
       id="emailAddress"
       name="emailAddress"
+      placeholder="lbl_trackOrder_emailPlaceholder"
       showSuccessCheck={false}
     />
     <Field
@@ -344,6 +345,7 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
       errorDataLocator="track_order_no_error_msg"
       id="orderNumber"
       name="orderNumber"
+      placeholder="lbl_trackOrder_orderNoPlaceholder"
       showSuccessCheck={false}
     />
     <Styled(BodyCopy)
@@ -364,8 +366,11 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
         fontSizeVariation="medium"
         fontWeight="semiBold"
         target="_blank"
+        to="lbl_trackOrder_needHelpLink"
         underline={true}
-      />
+      >
+        lbl_trackOrder_needHelp
+      </Styled(Anchor)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -387,7 +392,9 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
       fill="BLUE"
       fullWidth={true}
       type="submit"
-    />
+    >
+      lbl_trackOrder_trackOrderBtn
+    </Styled(Button)>
   </Styled(BodyCopy)>
 </form>
 `;

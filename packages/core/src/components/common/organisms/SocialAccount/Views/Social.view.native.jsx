@@ -2,12 +2,20 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import InstagramLogin from 'react-native-instagram-login';
+import { getAPIConfig } from '@tcp/core/src/utils';
+import {
+  BodyCopyWithSpacing,
+  ViewWithSpacing,
+  TextWithSpacing,
+} from '../../../atoms/styledWrapper';
+import ModalNative from '../../../molecules/Modal';
+import config from './config';
+import { Row, SocialMessage } from '../styles/social.style.native';
 import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { BodyCopyWithSpacing, ViewWithSpacing } from '../../../atoms/styledWrapper';
 import { getLabelValue } from '../../../../../utils/utils';
-import config from './config';
-import Row from '../styles/social.style.native';
 import SOCIAL_ICONS from '../social.icons.constants';
 
 class Socialview extends React.PureComponent {
@@ -16,6 +24,10 @@ class Socialview extends React.PureComponent {
     saveSocialAcc: PropTypes.shape({}).isRequired,
     getSocialAcc: PropTypes.shape({}).isRequired,
     labels: PropTypes.shape({}).isRequired,
+    pointModalClose: PropTypes.func.isRequired,
+    setPointsModal: PropTypes.func.isRequired,
+    handleComponentChange: PropTypes.func.isRequired,
+    isPlcc: PropTypes.isRequired,
   };
 
   constructor(props) {
@@ -33,11 +45,32 @@ class Socialview extends React.PureComponent {
   }
 
   /**
+   * Close the points modal
+   */
+  onClose = () => {
+    const { pointModalClose } = this.props;
+    pointModalClose({ state: false });
+  };
+
+  /**
+   * Redirects to earn extra points page
+   */
+  viewAll = () => {
+    this.onClose();
+    const { handleComponentChange } = this.props;
+    handleComponentChange('earnExtraPointsPageMobile');
+  };
+
+  /**
    * @function renderAccountsInformation Render the social plugins layouts
    * @param {accounts} accounts list of accounts
    * @param {labels} labels component labels
    */
   renderAccountsInformation = (accounts, labels) => {
+    const { setPointsModal, isPlcc } = this.props;
+    const { points } = this.pointsInformation;
+    const rewardPoints = ` ${points} `;
+
     return accounts.map(elem => {
       const isSocialAccount =
         config && config.SOCIAL_ACCOUNTS[elem.socialAccount.toLocaleLowerCase()];
@@ -47,19 +80,23 @@ class Socialview extends React.PureComponent {
         <ViewWithSpacing spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS">
           <Row>
             <ImageComp source={this.icons[socialIcon]} width={50} height={50} />
-            <BodyCopyWithSpacing
-              fontSize="fs16"
-              spacingStyles="margin-left-MED margin-right-LRG"
-              text={
-                elem.isConnected
-                  ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
-                      labels.lbl_prefrence_connected
-                    }`
-                  : `${labels.lbl_prefrence_connectTo} ${
-                      config.SOCIAL_ACCOUNTS[elem.socialAccount]
-                    }`
-              }
-            />
+            <SocialMessage>
+              <BodyCopyWithSpacing
+                fontSize="fs16"
+                spacingStyles="margin-left-MED margin-right-LRG"
+                text={
+                  elem.isConnected
+                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${getLabelValue(
+                        labels,
+                        'lbl_prefrence_connected'
+                      )}`
+                    : `${getLabelValue(labels, 'lbl_prefrence_connectTo')} ${
+                        config.SOCIAL_ACCOUNTS[elem.socialAccount]
+                      }`
+                }
+              />
+            </SocialMessage>
+
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityLabel="button"
@@ -68,6 +105,85 @@ class Socialview extends React.PureComponent {
               <ImageComp source={this.icons[icon]} width={15} height={15} />
             </TouchableOpacity>
           </Row>
+          {setPointsModal && this.pointsInformation.points > 0 && (
+            <ModalNative
+              visible={setPointsModal}
+              onRequestClose={this.onClose}
+              heading=" "
+              horizontalBar={false}
+            >
+              <BodyCopy
+                fontSize="fs22"
+                fontFamily="secondary"
+                textAlign="center"
+                fontWeight="black"
+                text={getLabelValue(labels, 'lbl_prefrence_social_points_heading')}
+              />
+              <ViewWithSpacing spacingStyles="margin-left-XXXL margin-right-XXXL">
+                <TextWithSpacing spacingStyles="padding-top-MED padding-bottom-LRG">
+                  <BodyCopyWithSpacing
+                    fontSize="fs14"
+                    textAlign="center"
+                    spacingStyles="margin-top-LRG"
+                    text={getLabelValue(labels, 'lbl_prefrence_social_points_text_1')}
+                  />
+                  <BodyCopy
+                    fontSize="fs14"
+                    textAlign="center"
+                    fontWeight="black"
+                    color={isPlcc ? 'blue.800' : 'orange.800'}
+                    text={rewardPoints}
+                  />
+                  <BodyCopy
+                    fontSize="fs14"
+                    textAlign="center"
+                    text={getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                  />
+                </TextWithSpacing>
+
+                <BodyCopyWithSpacing
+                  fontSize="fs14"
+                  textAlign="center"
+                  spacingStyles="margin-top-LRG"
+                  text={getLabelValue(labels, 'lbl_prefrence_social_points_text_3')}
+                />
+
+                <BodyCopyWithSpacing
+                  fontSize="fs14"
+                  textAlign="center"
+                  spacingStyles="margin-top-LRG"
+                  text={getLabelValue(labels, 'lbl_prefrence_social_points_text_4')}
+                />
+
+                <BodyCopy
+                  fontSize="fs14"
+                  textAlign="center"
+                  text={getLabelValue(labels, 'lbl_prefrence_social_points_text_5')}
+                />
+              </ViewWithSpacing>
+              <ViewWithSpacing spacingStyles="margin-top-XXXL margin-left-XXXL margin-right-XXXL">
+                <Button
+                  buttonVariation="variable-width"
+                  color="white"
+                  fill="BLUE"
+                  type="submit"
+                  onPress={this.viewAll}
+                  text={getLabelValue(labels, 'lbl_prefrence_social_points_modal_viewall_btn')}
+                />
+
+                <ViewWithSpacing spacingStyles="margin-top-LRG">
+                  <Button
+                    buttonVariation="variable-width"
+                    fill="WHITE"
+                    color="black"
+                    type="submit"
+                    onPress={this.onClose}
+                    text={getLabelValue(labels, 'lbl_prefrence_social_points_modal_close_btn')}
+                  />
+                </ViewWithSpacing>
+              </ViewWithSpacing>
+            </ModalNative>
+          )}
         </ViewWithSpacing>
       );
     });
@@ -83,8 +199,27 @@ class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
+      if (prop === 'pointsAwarded') {
+        this.pointsInformation = {
+          activity: accounts[prop].activity,
+          id: accounts[prop].id,
+          points: accounts[prop].points,
+        };
+      }
     });
     this.socialAccounts = accountsInfo;
+  };
+
+  dispatchSaveSocial = (socialType, accessToken, userId) => {
+    const { saveSocialAcc, pointModalClose } = this.props;
+    const socialAccInfo = {
+      [socialType]: socialType,
+      accessToken,
+      userId,
+      isconnected: false,
+    };
+    saveSocialAcc({ socialAccInfo });
+    pointModalClose({ state: true });
   };
 
   /**
@@ -93,7 +228,6 @@ class Socialview extends React.PureComponent {
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
   handleSocialNetwork(isSocialAccount, isConnected) {
-    const { saveSocialAcc } = this.props;
     switch (isSocialAccount) {
       case 'Facebook':
         if (!isConnected) {
@@ -103,19 +237,16 @@ class Socialview extends React.PureComponent {
               // do nothing
             } else {
               AccessToken.getCurrentAccessToken().then(data => {
-                const socialAccInfo = {
-                  facebook: 'facebook',
-                  accessToken: data.accessToken,
-                  userId: data.userID,
-                  isconnected: false,
-                };
-                saveSocialAcc({ socialAccInfo });
+                this.dispatchSaveSocial('facebook', data.accessToken, data.userID);
               });
             }
           });
         }
         return null;
       case 'Instagram':
+        if (!isConnected) {
+          this.instagramLogin.show();
+        }
         return null;
       default:
         return null;
@@ -127,6 +258,9 @@ class Socialview extends React.PureComponent {
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
+    const { assetHost, siteId, instakey } = getAPIConfig();
+    const redirectUrl = `${assetHost}/${siteId}/instagram`;
+
     return (
       <View>
         <BodyCopy
@@ -141,6 +275,15 @@ class Socialview extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_prefrence_social_text')}
         />
         {this.renderAccountsInformation(this.socialAccounts, labels)}
+        <InstagramLogin
+          ref={ref => {
+            this.instagramLogin = ref;
+          }}
+          redirectUrl={redirectUrl}
+          clientId={instakey}
+          scopes={['basic']}
+          onLoginSuccess={token => this.dispatchSaveSocial('instagram', token, token.split('.')[0])}
+        />
       </View>
     );
   }

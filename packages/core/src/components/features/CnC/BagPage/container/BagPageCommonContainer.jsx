@@ -10,6 +10,7 @@ import {
   getLabelsCartItemTile,
   getIsCartItemsSFL,
   getIsSflItemRemoved,
+  getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import {
@@ -17,9 +18,16 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
-import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import {
+  toastMessageInfo,
+  toastMessagePosition,
+} from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
 import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
+import {
+  getGrandTotal,
+  getGiftCardsTotal,
+} from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -68,6 +76,10 @@ export class BagPageContainer extends React.Component<Props> {
       isCartItemSFL,
       isSflItemRemoved,
       isShowSaveForLaterSwitch,
+      orderBalanceTotal,
+      bagStickyHeaderInterval,
+      toastMessagePositionInfo,
+      cartItemSflError,
     } = this.props;
 
     const showAddTobag = false;
@@ -92,6 +104,10 @@ export class BagPageContainer extends React.Component<Props> {
         isCartItemSFL={isCartItemSFL}
         isSflItemRemoved={isSflItemRemoved}
         isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+        orderBalanceTotal={orderBalanceTotal}
+        bagStickyHeaderInterval={bagStickyHeaderInterval}
+        toastMessagePositionInfo={toastMessagePositionInfo}
+        cartItemSflError={cartItemSflError}
       />
     );
   }
@@ -119,6 +135,9 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
     },
+    toastMessagePositionInfo: palyoad => {
+      dispatch(toastMessagePosition(palyoad));
+    },
   };
 };
 
@@ -138,6 +157,9 @@ const mapStateToProps = state => {
     isCartItemSFL: getIsCartItemsSFL(state),
     isSflItemRemoved: getIsSflItemRemoved(state),
     isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
+    orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
+    bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
+    cartItemSflError: getCartItemsSflError(state),
   };
 };
 

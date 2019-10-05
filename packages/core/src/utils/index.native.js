@@ -45,6 +45,8 @@ export {
   getBirthDateOptionMap,
   childOptionsMap,
   calculateAge,
+  sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getBrand,
 } from './utils';

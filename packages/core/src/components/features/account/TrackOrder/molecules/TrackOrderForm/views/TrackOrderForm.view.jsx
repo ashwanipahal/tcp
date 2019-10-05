@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -24,7 +25,7 @@ class TrackOrderForm extends React.PureComponent {
         <BodyCopy component="div" className="elem-mb-LRG">
           <Field
             id="emailAddress"
-            placeholder={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
+            placeholder={getLabelValue(labels, 'lbl_trackOrder_emailPlaceholder', 'trackOrder')}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -35,7 +36,7 @@ class TrackOrderForm extends React.PureComponent {
           />
           <Field
             id="orderNumber"
-            placeholder={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
+            placeholder={getLabelValue(labels, 'lbl_trackOrder_orderNoPlaceholder', 'trackOrder')}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -51,10 +52,10 @@ class TrackOrderForm extends React.PureComponent {
               fontWeight="semiBold"
               underline
               dataLocator="track_order_need_help"
-              to={labels.trackOrder.lbl_trackOrder_needHelpLink}
+              to={getLabelValue(labels, 'lbl_trackOrder_needHelpLink', 'trackOrder')}
               target="_blank"
             >
-              {labels.trackOrder.lbl_trackOrder_needHelp}
+              {getLabelValue(labels, 'lbl_trackOrder_needHelp', 'trackOrder')}
             </Anchor>
           </BodyCopy>
         </BodyCopy>
@@ -68,7 +69,7 @@ class TrackOrderForm extends React.PureComponent {
             disabled={invalid}
             className="elem-mb-L trackOrder-trackOrdercta"
           >
-            {labels.trackOrder.lbl_trackOrder_trackOrderBtn}
+            {getLabelValue(labels, 'lbl_trackOrder_trackOrderBtn', 'trackOrder')}
           </Button>
         </BodyCopy>
       </form>

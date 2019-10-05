@@ -173,6 +173,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_addressBookHeading"
     textDecoration={null}
   />
   <Styled(View) />
@@ -194,6 +195,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_overview_defaultShipingAddress"
         textDecoration={null}
       />
     </View>
@@ -218,7 +220,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         locator=""
         noLink={true}
         onPress={[Function]}
-        text=""
+        text="lbl_overview_addressBookAdd"
         underline={true}
         visible={false}
       />
@@ -232,6 +234,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_addressNotAdded"
     textDecoration={null}
   />
   <Styled(View) />
@@ -253,6 +256,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
+        text="lbl_overview_defaultBillingAddress"
         textDecoration={null}
       />
     </View>
@@ -278,7 +282,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         locator=""
         noLink={true}
         onPress={[Function]}
-        text=""
+        text="lbl_overview_addressBookAdd"
         underline={true}
         visible={false}
       />
@@ -292,6 +296,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     fontWeight="regular"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_addressNotAdded"
     textDecoration={null}
   />
   <Styled(View)>
@@ -313,7 +318,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_addressBookCTA"
       theme={Object {}}
       url=""
     />
