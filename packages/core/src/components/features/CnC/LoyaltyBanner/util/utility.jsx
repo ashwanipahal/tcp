@@ -1,11 +1,11 @@
-const labelsHashValuesReplace = (str, valueArr) => {
+const labelsHashValuesReplace = (str, utilArr) => {
   let finalString = '';
-  valueArr.map(obj => {
+  utilArr.map(obj => {
     finalString =
       str &&
       str.replace(
-        str.substring(str.indexOf('#'), str.split('#', 2).join('#').length + 1),
-        `<span class="${obj.classValue}">${obj.value}</span>`
+        obj.key,
+        obj.value == null ? '' : `<span class="${obj.classValue}">${obj.value}</span>`
       );
     return finalString;
   });

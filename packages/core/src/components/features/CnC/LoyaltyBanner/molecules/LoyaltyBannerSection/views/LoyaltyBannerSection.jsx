@@ -1,11 +1,11 @@
+/* eslint-disable complexity */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import labelsHashValuesReplace from '../../../util/utility';
-import PlccSection from '../../PlccSection';
-import GuestMpr from '../../GuestMpr';
+import GuestMprPlccSection from '../../GuestMprPlccSection';
 // import ApplyNowView from '../../ApplyNowView';
 
 const LoyaltyBannerSection = props => {
@@ -24,16 +24,29 @@ const LoyaltyBannerSection = props => {
   let showSubtotal = false;
   let finalPointsLabelStr = '';
   let finalPointsValue = '';
-  let finalStrRemainingPlcc = '';
+  let remainingPlcc = '';
   let finalStrRemainingValue = '';
   let conditionalPointsLabel = '';
+  let pointsDescription = '';
+  let fsPoints = '';
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue) {
     showSubtotal = true;
   }
 
-  const valueArr = [{ value: estimatedRewardsVal, classValue: `${className} mpr-plcc-theme` }];
+  const convertHtml = value => {
+    // eslint-disable-next-line react/no-danger
+    return <span dangerouslySetInnerHTML={{ __html: value }} />;
+  };
+
+  const utilArrRewards = [
+    {
+      key: '#estimatedRewardsVal#',
+      value: estimatedRewardsVal,
+      classValue: `${className} mpr-plcc-theme`,
+    },
+  ];
   if (!earnedReward) {
     if (isGuest) {
       conditionalPointsLabel = labels.youCanEarnPoints;
@@ -50,57 +63,59 @@ const LoyaltyBannerSection = props => {
     conditionalPointsLabel = labels.youllGetARewardPlcc;
   }
 
-  finalPointsValue = labelsHashValuesReplace(conditionalPointsLabel, valueArr);
-  // eslint-disable-next-line react/no-danger
-  finalPointsLabelStr = <span dangerouslySetInnerHTML={{ __html: finalPointsValue }} />;
+  finalPointsValue = labelsHashValuesReplace(conditionalPointsLabel, utilArrRewards);
+  finalPointsLabelStr = convertHtml(finalPointsValue);
 
-  const valueArrNextReward = [
-    { value: pointsToNextReward, classValue: `${className} mpr-plcc-theme` },
-  ];
-  finalStrRemainingValue = labelsHashValuesReplace(
-    labels.thatsSomePointsFromReward,
-    valueArrNextReward
-  );
-
-  // eslint-disable-next-line react/no-danger
-  finalStrRemainingPlcc = <span dangerouslySetInnerHTML={{ __html: finalStrRemainingValue }} />;
+  if (isPlcc) {
+    fsPoints = 'fs18';
+    pointsDescription = convertHtml(labels.whenYouCheckOutPlcc);
+    const utilArrNextReward = [
+      {
+        key: '#pointsToNextReward#',
+        value: pointsToNextReward,
+        classValue: `${className} mpr-plcc-theme`,
+      },
+    ];
+    finalStrRemainingValue = labelsHashValuesReplace(
+      labels.thatsSomePointsFromReward,
+      utilArrNextReward
+    );
+    remainingPlcc = convertHtml(finalStrRemainingValue);
+  } else {
+    fsPoints = 'fs16';
+    pointsDescription = labels.earnDoublePoints;
+  }
 
   return (
     <div className={`${className} elem-mb-MED`}>
       <div className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED">
         <BodyCopy className="loyaltyBannerSectionWrapper" component="div" fontFamily="secondary">
           {!isPlcc && (
-            <GuestMpr
+            <GuestMprPlccSection
               className={className}
               finalPointsLabelStr={finalPointsLabelStr}
               labels={labels}
               showSubtotal={showSubtotal}
               currentSubtotal={currentSubtotal}
               estimatedSubtotal={estimatedSubtotal}
-            />
-          )}
-          {isPlcc && (
-            <PlccSection
-              className={className}
-              finalPointsLabelStr={finalPointsLabelStr}
-              finalStrRemainingPlcc={finalStrRemainingPlcc}
-              labels={labels}
+              fsPoints={fsPoints}
+              isPlcc={isPlcc}
+              pointsDescription={pointsDescription}
               earnedReward={earnedReward}
+              remainingPlcc={remainingPlcc}
             />
           )}
           <div className="footer alignCenter elem-pt-MED elem-pb-MED">
             {/* {!isPlcc && <ApplyNowView />} */}
-            {/* <Anchor
-              className="learnMore elem-pl-XL"
-              fontSizeVariation="medium"
-              underline
-              to="/#"
-              anchorVariation="primary"
-              dataLocator="payment-makedefault"
-              // onClick={this.handleDefaultLinkClick}
-            >
-              {labels.learnMore}
-            </Anchor> */}
+            {!isPlcc && (
+              <Anchor
+                className="applyNow"
+                fontSizeVariation="medium"
+                anchorVariation="primary"
+                text={labels.applyNow}
+                underline
+              />
+            )}
             <Anchor
               className="learnMore elem-pl-XL"
               fontSizeVariation="medium"
@@ -130,7 +145,7 @@ LoyaltyBannerSection.propTypes = {
 
 LoyaltyBannerSection.defaultProps = {
   className: '',
-  estimatedRewardsVal: 0,
+  estimatedRewardsVal: null,
   currentSubtotal: 0,
   estimatedSubtotal: 0,
   thresholdValue: 0,

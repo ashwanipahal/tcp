@@ -2,12 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
-import LoyaltyBannerLabels from '../LoyaltyBanner.labels';
-import { getThresholdValue, cartOrderDetails } from './LoyaltyBanner.selectors';
+import {
+  getThresholdValue,
+  cartOrderDetails,
+  getLoyaltyBannerLabels,
+} from './LoyaltyBanner.selectors';
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
-export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCheck, isPlcc }) => {
+export const LoyaltyBannerContainer = ({
+  labels,
+  orderDetails,
+  thresholdValue,
+  isGuestCheck,
+  isPlcc,
+}) => {
   const {
     estimatedRewards,
     subTotal,
@@ -17,7 +26,7 @@ export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCh
   } = orderDetails;
   return (
     <LoyaltyBannerView
-      labels={LoyaltyBannerLabels}
+      labels={labels}
       estimatedRewardsVal={estimatedRewards}
       currentSubtotal={subTotal}
       estimatedSubtotal={cartTotalAfterPLCCDiscount}
@@ -31,6 +40,7 @@ export const LoyaltyBannerContainer = ({ orderDetails, thresholdValue, isGuestCh
 };
 
 LoyaltyBannerContainer.propTypes = {
+  labels: PropTypes.shape.isRequired,
   orderDetails: PropTypes.shape.isRequired,
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
@@ -46,6 +56,7 @@ LoyaltyBannerContainer.defaultProps = {
 /* istanbul ignore next */
 export function mapStateToProps(state) {
   return {
+    labels: getLoyaltyBannerLabels(state),
     orderDetails: cartOrderDetails(state),
     thresholdValue: getThresholdValue(state),
     isGuestCheck: isGuest(state),

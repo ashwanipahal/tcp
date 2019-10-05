@@ -19,11 +19,12 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = 
       link={null}
       textAlign="left"
     >
-      <Styled(PlccSection)
+      <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
+        earnedReward={0}
         estimatedSubtotal={33}
-        finalStr={
+        finalPointsLabelStr={
           <span
             dangerouslySetInnerHTML={
               Object {
@@ -32,7 +33,10 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = 
             }
           />
         }
+        fsPoints="fs16"
+        isPlcc={false}
         labels={Object {}}
+        remainingPlcc=""
         showSubtotal={true}
       />
       <div
@@ -41,17 +45,13 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = 
         <Styled(Anchor)
           anchorVariation="primary"
           className="applyNow"
-          dataLocator="payment-makedefault"
           fontSizeVariation="medium"
-          to="/#"
           underline={true}
         />
         <Styled(Anchor)
           anchorVariation="primary"
           className="learnMore elem-pl-XL"
-          dataLocator="payment-makedefault"
           fontSizeVariation="medium"
-          to="/#"
           underline={true}
         />
       </div>
@@ -79,11 +79,12 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 2`] = 
       link={null}
       textAlign="left"
     >
-      <Styled(PlccSection)
+      <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
+        earnedReward={0}
         estimatedSubtotal={33}
-        finalStr={
+        finalPointsLabelStr={
           <span
             dangerouslySetInnerHTML={
               Object {
@@ -92,7 +93,10 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 2`] = 
             }
           />
         }
+        fsPoints="fs16"
+        isPlcc={false}
         labels={Object {}}
+        remainingPlcc=""
         showSubtotal={true}
       />
       <div
@@ -101,17 +105,13 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 2`] = 
         <Styled(Anchor)
           anchorVariation="primary"
           className="applyNow"
-          dataLocator="payment-makedefault"
           fontSizeVariation="medium"
-          to="/#"
           underline={true}
         />
         <Styled(Anchor)
           anchorVariation="primary"
           className="learnMore elem-pl-XL"
-          dataLocator="payment-makedefault"
           fontSizeVariation="medium"
-          to="/#"
           underline={true}
         />
       </div>
