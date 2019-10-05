@@ -30,6 +30,7 @@ import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
+import { isCanada } from '../../../../../utils';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -84,7 +85,9 @@ export function* updateShipmentMethodSelection({ payload }) {
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
       transVibesSmsPhoneNo
     );
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+
+    // getCartData params: calcsEnabled, excludeCartItems, recalcRewards, isCanada, isCheckoutFlow
+    yield put(BAG_PAGE_ACTIONS.getCartData(true, true, false, isCanada(), false));
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
