@@ -86,8 +86,15 @@ export function* updateShipmentMethodSelection({ payload }) {
       transVibesSmsPhoneNo
     );
 
-    // getCartData params: calcsEnabled, excludeCartItems, recalcRewards, isCanada, isCheckoutFlow
-    yield put(BAG_PAGE_ACTIONS.getCartData(true, true, false, isCanada(), false));
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        calcsEnabled: true,
+        excludeCartItems: true,
+        recalcRewards: false,
+        isCanada: isCanada(),
+        isCheckoutFlow: true,
+      })
+    );
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
