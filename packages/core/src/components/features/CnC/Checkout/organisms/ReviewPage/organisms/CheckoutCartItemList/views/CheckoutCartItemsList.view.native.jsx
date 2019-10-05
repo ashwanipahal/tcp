@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { BodyCopy, Image } from '../../../../../../../../common/atoms';
-import { getTranslateDateInformation, getAPIConfig } from '../../../../../../../../../utils/utils';
+import {
+  getTranslatedMomentDate,
+  getAPIConfig,
+} from '../../../../../../../../../utils/index.native';
 import ReactTooltip from '../../../../../../../../common/atoms/ReactToolTip';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view.native';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
@@ -279,7 +282,9 @@ class CheckoutCartItemsList extends Component {
   renderItems() {
     const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
-    const bopisDate = apiConfig && getTranslateDateInformation('', apiConfig.language);
+    const bopisDate =
+      apiConfig &&
+      getTranslatedMomentDate('', apiConfig.language, CheckoutConstants.REQUIRE_FORMAT);
     /**
      * @var sortedItem - array of items available in the cart checkout are sorted in a
      * way that the BOPIS selected stores are moved to the top in the list than BOSS
