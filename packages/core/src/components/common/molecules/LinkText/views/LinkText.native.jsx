@@ -43,6 +43,18 @@ export const bodyCopyStyles = {
     <BodyCopy color="gray.900" fontFamily="primary" fontSize="fs14" textAlign="center" {...props} />
   ),
   // large text with bold font
+  large_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="regular"
+      textAlign="center"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  // large text with bold font
   medium_text_black: props => (
     <BodyCopy
       color="gray.900"

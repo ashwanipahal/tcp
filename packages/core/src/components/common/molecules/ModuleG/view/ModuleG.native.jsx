@@ -16,7 +16,6 @@ import {
   PromoContainer,
   MessageContainer,
   Wrapper,
-  ProductTabListContainer,
   StyledAnchor,
   MiddleContainer,
   Border,
@@ -24,6 +23,7 @@ import {
   StyledCustomImage,
   SHADOW,
   ShadowContainer,
+  ProductTabListContainer,
 } from '../ModuleG.style.native';
 
 import ProductTabList from '../../../organisms/ProductTabList';
@@ -51,6 +51,15 @@ const imageContainer = {
 };
 
 const plusIcon = require('../../../../../../src/assets/plus.png');
+
+/**
+ * @param {object} props : Props for Module G multi type of banner list, button list, header text.
+ * @desc This is Module G global component. It has capability to display
+ * featured content module with links and a CTA Button list.
+ * Author can surface teaser content leading to corresponding pages.
+ */
+
+// TODO: keys will be changed once we get the actual data from CMS
 
 class ModuleG extends React.PureComponent {
   constructor(props) {
@@ -93,7 +102,7 @@ class ModuleG extends React.PureComponent {
                 })
               }
               navigation={navigation}
-              testID={`${getLocator('moduleJ_product_image')}${productItemIndex}`}
+              testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
             >
               <View style={{ width: screenWidth - 80, height: PRODUCT_IMAGE_HEIGHT }}>
                 <ParallaxImage
@@ -115,7 +124,10 @@ class ModuleG extends React.PureComponent {
   render() {
     const {
       selectedCategoryId,
-      selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {},
+      selectedTabItem: {
+        singleCTAButton: selectedSingleCTAButton,
+        singleCTAButtonCart: selectedSingleCTAButtonCart,
+      } = {},
     } = this.state;
     const { productTabList = {}, navigation, headerText, promoBanner, divTabs } = this.props;
 
@@ -144,7 +156,7 @@ class ModuleG extends React.PureComponent {
               <LinkText
                 navigation={navigation}
                 headerText={[headerText[0]]}
-                testID={getLocator('moduleJ_header_text_0')}
+                testID={getLocator('moduleG_header_text_0')}
                 useStyle
               />
             )}
@@ -152,7 +164,7 @@ class ModuleG extends React.PureComponent {
           {promoBanner && (
             <PromoContainer>
               <PromoBanner
-                testID={getLocator('moduleJ_promobanner_text')}
+                testID={getLocator('moduleG_promobanner_text')}
                 promoBanner={promoBanner}
                 navigation={navigation}
               />
@@ -164,7 +176,7 @@ class ModuleG extends React.PureComponent {
             onProductTabChange={this.onProductTabChange}
             tabItems={divTabs}
             navigation={navigation}
-            testID={getLocator('moduleJ_cta_link')}
+            testID={getLocator('moduleG_cta_link')}
           />
         </ProductTabListContainer>
         <ShadowContainer>
@@ -225,14 +237,16 @@ class ModuleG extends React.PureComponent {
           </ButtonContainer>
         ) : null}
 
-        <StyledAnchor
-          anchorVariation="primary"
-          text="Shop All Matchables"
-          fontSizeVariation="xlarge"
-          url=""
-          navigation={navigation}
-          visible
-        />
+        {selectedSingleCTAButtonCart ? (
+          <StyledAnchor
+            anchorVariation="primary"
+            text={selectedSingleCTAButtonCart.text}
+            fontSizeVariation="xlarge"
+            url={selectedSingleCTAButtonCart.url}
+            navigation={navigation}
+            visible
+          />
+        ) : null}
       </Container>
     );
   }

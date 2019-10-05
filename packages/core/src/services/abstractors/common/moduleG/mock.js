@@ -13,7 +13,7 @@ export default {
           textItems: [
             {
               text: 'ALL MATCHABLES',
-              style: 'small_text_normal',
+              style: 'large_text_black',
             },
           ],
           link: {
@@ -63,30 +63,14 @@ export default {
           textItems: [
             {
               text: '60% OFF',
-              style: 'style1',
-              style2: 'extra_large_text_black',
+              style: 'extrabold_text_regular',
+              style2: 'style2',
             },
           ],
         },
       ],
 
       divTabs: [
-        {
-          text: {
-            text: 'GIRL',
-          },
-          category: {
-            cat_id: '47526',
-          },
-          singleCTAButton: {
-            url: dummyUrl,
-            text: 'SHOP ALL 1',
-            title: 'SHOP ALL',
-            target: '',
-            external: 0,
-            action: '',
-          },
-        },
         {
           text: {
             text: 'TODDLER GIRL',
@@ -96,7 +80,39 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
+            text: 'SHOP ALL 1',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          singleCTAButtonCart: {
+            url: dummyUrl,
+            text: 'Shop All Matchables 1',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
+        },
+        {
+          text: {
+            text: 'GIRL',
+          },
+          category: {
+            cat_id: '47526',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
             text: 'SHOP ALL 2',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          singleCTAButtonCart: {
+            url: dummyUrl,
+            text: 'SHOP ALL 0',
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -118,6 +134,14 @@ export default {
             external: 0,
             action: '',
           },
+          singleCTAButtonCart: {
+            url: dummyUrl,
+            text: 'Shop All Matchables 2',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
         },
         {
           text: {
@@ -126,7 +150,22 @@ export default {
           category: {
             cat_id: '47501>47526',
           },
-          singleCTAButton: null,
+          singleCTAButton: {
+            url: dummyUrl,
+            text: 'SHOP ALL 4',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          singleCTAButtonCart: {
+            url: dummyUrl,
+            text: 'Shop All Matchables 4',
+            title: 'SHOP ALL',
+            target: '',
+            external: 0,
+            action: '',
+          },
         },
       ],
 

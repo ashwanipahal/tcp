@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-
+import ProductTabList from '../../organisms/ProductTabList';
 import { Image, Anchor } from '../../atoms';
 
 export const Container = styled.View`
@@ -110,6 +110,11 @@ export const StyledCustomImage = styled(Image)`
   margin: 9px 10px 10px 10px;
 `;
 
+export const StyledProductTabList = styled(ProductTabList)`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+`;
+
 /* stylelint-disable-next-line */
 export const SHADOW = styled.View`
   /* stylelint-disable-next-line */
@@ -155,4 +160,5 @@ export default {
   StyledCustomImage,
   SHADOW,
   ShadowContainer,
+  StyledProductTabList,
 };
