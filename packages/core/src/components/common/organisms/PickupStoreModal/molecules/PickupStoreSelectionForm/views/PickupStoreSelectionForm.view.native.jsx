@@ -12,6 +12,8 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
+import PickupStoreListContainer from '../../PickupStoreList';
+import PickupStoreListItem from '../../PickupStoreListItem';
 import styles, {
   PickUpHeaderText,
   PickUpModalView,
@@ -48,29 +50,28 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
     } = this.props;
 
     return (
-      // <PickupStoreListContainer
-      //   isShoppingBag={isShoppingBag}
-      //   onStoreSelect={handleAddTobag}
-      //   onPickupRadioBtnToggle={handlePickupRadioBtn}
-      //   isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
-      //   onCancel={onCloseClick}
-      //   sameStore={sameStore}
-      //   selectedStoreId={selectedStoreId}
-      //   isBossSelected={isBossSelected}
-      //   addToCartError={isShowMessage ? addToCartError : ''}
-      //   isBopisCtaEnabled={isBopisCtaEnabled}
-      //   isBossCtaEnabled={isBossCtaEnabled}
-      //   isBossEnabled={isBossEnabled}
-      //   isBopisEnabled={isBopisEnabled}
-      //   allowBossStoreSearch={allowBossStoreSearch}
-      //   bopisChangeStore={bopisChangeStore}
-      //   updateCartItemStore={updateCartItemStore}
-      //   buttonLabel={buttonLabel}
-      //   isGiftCard={isGiftCard}
-      //   defaultStore={defaultStore}
-      //   cartBopisStoresList={cartBopisStoresList}
-      // />
-      null
+      <PickupStoreListContainer
+        isShoppingBag={isShoppingBag}
+        onStoreSelect={handleAddTobag}
+        onPickupRadioBtnToggle={handlePickupRadioBtn}
+        isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
+        onCancel={onCloseClick}
+        sameStore={sameStore}
+        selectedStoreId={selectedStoreId}
+        isBossSelected={isBossSelected}
+        addToCartError={isShowMessage ? addToCartError : ''}
+        isBopisCtaEnabled={isBopisCtaEnabled}
+        isBossCtaEnabled={isBossCtaEnabled}
+        isBossEnabled={isBossEnabled}
+        isBopisEnabled={isBopisEnabled}
+        allowBossStoreSearch={allowBossStoreSearch}
+        bopisChangeStore={bopisChangeStore}
+        updateCartItemStore={updateCartItemStore}
+        buttonLabel={buttonLabel}
+        isGiftCard={isGiftCard}
+        defaultStore={defaultStore}
+        cartBopisStoresList={cartBopisStoresList}
+      />
     );
   }
 
@@ -198,31 +199,27 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
     } = this.props;
     return (
       !storeLimitReached &&
-      prefStoreWithData &&
-      // <div className="favorite-store-box">
-      //   <PickupStoreListItem
-      //     sameStore={sameStore}
-      //     isShoppingBag={isShoppingBag}
-      //     store={preferredStore}
-      //     onStoreSelect={handleAddTobag}
-      //     onPickupRadioBtnToggle={handlePickupRadioBtn}
-      //     isBopisSelected={
-      //       preferredStore.basicInfo.id === selectedStoreId && !isBossSelected
-      //     }
-      //     isBossSelected={preferredStore.basicInfo.id === selectedStoreId && isBossSelected}
-      //     selectedStoreId={selectedStoreId}
-      //     isBopisAvailable={getIsBopisAvailable()}
-      //     isBossAvailable={preferredStore.storeBossInfo.isBossEligible}
-      //     storeBossInfo={preferredStore.storeBossInfo}
-      //     addToCartError={isShowMessage ? addToCartError : ''}
-      //     isBopisCtaEnabled={isBopisCtaEnabled && isBopisEnabled}
-      //     isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
-      //     updateCartItemStore={updateCartItemStore}
-      //     buttonLabel={buttonLabel}
-      //     isGiftCard={isGiftCard}
-      //   />
-      // </div>
-      null
+      prefStoreWithData && (
+        <PickupStoreListItem
+          sameStore={sameStore}
+          isShoppingBag={isShoppingBag}
+          store={preferredStore}
+          onStoreSelect={handleAddTobag}
+          onPickupRadioBtnToggle={handlePickupRadioBtn}
+          isBopisSelected={preferredStore.basicInfo.id === selectedStoreId && !isBossSelected}
+          isBossSelected={preferredStore.basicInfo.id === selectedStoreId && isBossSelected}
+          selectedStoreId={selectedStoreId}
+          isBopisAvailable={getIsBopisAvailable()}
+          isBossAvailable={preferredStore.storeBossInfo.isBossEligible}
+          storeBossInfo={preferredStore.storeBossInfo}
+          addToCartError={isShowMessage ? addToCartError : ''}
+          isBopisCtaEnabled={isBopisCtaEnabled && isBopisEnabled}
+          isBossCtaEnabled={isBossCtaEnabled && isBossEnabled}
+          updateCartItemStore={updateCartItemStore}
+          buttonLabel={buttonLabel}
+          isGiftCard={isGiftCard}
+        />
+      )
     );
   }
 
