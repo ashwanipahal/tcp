@@ -93,7 +93,7 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = () => {
+  handleVenmoClick = e => {
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
@@ -118,6 +118,7 @@ export class VenmoPaymentButton extends Component {
       setVenmoData({ loading: false });
       this.disableVenmoButton(false);
     }
+    e.preventDefault(); // Added to suppress extra click calls with multiple actions on same page
   };
 
   /**
