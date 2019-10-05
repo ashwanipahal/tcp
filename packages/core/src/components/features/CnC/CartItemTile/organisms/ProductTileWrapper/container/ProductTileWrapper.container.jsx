@@ -13,10 +13,17 @@ import {
   isPlccUser,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartItemTile.actions';
+import QuickViewModal from '../../../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export const ProductTileWrapperContainer = props => {
-  return <ProductTileWrapper {...props} />;
+  const { pageView } = props;
+  return (
+    <>
+      <ProductTileWrapper {...props} />
+      <QuickViewModal fromBagPage={pageView === 'myBag'} />
+    </>
+  );
 };
 
 const mapStateToProps = state => {
@@ -43,11 +50,13 @@ export const mapDispatchToProps = dispatch => {
 
 ProductTileWrapperContainer.defaultProps = {
   orderItems: [],
+  pageView: '',
 };
 
 ProductTileWrapperContainer.propTypes = {
   orderItems: PropTypes.shape({}),
   initialActions: PropTypes.func.isRequired,
+  pageView: PropTypes.string,
 };
 
 export default connect(
