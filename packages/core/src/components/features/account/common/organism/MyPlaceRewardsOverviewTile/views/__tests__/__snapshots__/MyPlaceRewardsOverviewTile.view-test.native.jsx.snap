@@ -10,6 +10,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_myPlaceRewardsHeading"
     textDecoration={null}
   />
   <Styled(LineComp)
@@ -27,11 +28,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       fontSize="fs13"
       margin={null}
       numberOfLines={null}
+      text="lbl_overview_myPlaceRewardsDesc"
       textDecoration={null}
     />
     <Styled(View)>
       <Styled(Anchor)
-        accessibilityLabel=""
+        accessibilityLabel="lbl_overview_myPlaceRewardsShopNow"
         accessibilityRole="link"
         anchorVariation="button"
         borderColor="black"
@@ -45,7 +47,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         fullWidth={true}
         locator=""
         onPress={[Function]}
-        text=""
+        text="lbl_overview_myPlaceRewardsShopNow"
         visible={false}
       />
     </Styled(View)>
@@ -75,7 +77,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
     />
@@ -93,6 +95,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     fontSize="fs16"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_myPlaceRewardsHeading"
     textDecoration={null}
   />
   <Styled(LineComp)
@@ -165,7 +168,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
     />

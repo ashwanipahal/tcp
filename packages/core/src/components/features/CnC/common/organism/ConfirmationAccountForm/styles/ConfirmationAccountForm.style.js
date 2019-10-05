@@ -4,14 +4,24 @@ const styles = css`
   background-color: ${props => props.theme.colorPalette.gray[300]};
 
   .heading {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
   }
 
   .email-address {
-    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      padding-bottom: 0;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 

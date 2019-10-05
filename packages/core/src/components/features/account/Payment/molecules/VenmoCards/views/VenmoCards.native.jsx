@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { ParentContainerStyle, HeadingTextStyle } from '../VenmoCards.style.native';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
@@ -9,7 +10,9 @@ const VenmoCards = props => {
   const { labels, venmoCardList, toggleModal, setSelectedCard } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.paymentGC.lbl_payment_venmoHeading}</HeadingTextStyle>
+      <HeadingTextStyle>
+        {getLabelValue(labels, 'lbl_payment_venmoHeading', 'paymentGC')}
+      </HeadingTextStyle>
       {venmoCardList.size > 0 &&
         venmoCardList.map(cardItem => (
           <CardTile

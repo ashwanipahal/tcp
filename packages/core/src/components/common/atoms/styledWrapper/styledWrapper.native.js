@@ -1,5 +1,20 @@
 import styled from 'styled-components/native';
+import {
+  typography as typographyStyleSystem,
+  color as colorStyleSystem,
+} from '@tcp/core/styles/rwdStyleSystem';
+
 import BodyCopy from '../BodyCopy';
+
+import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+
+const getAdditionalStyle = props => {
+  const { margin, textDecoration } = props;
+  return {
+    ...(margin && { margin }),
+    ...(textDecoration && { 'text-decoration-line': textDecoration }),
+  };
+};
 
 /**
  * @param {*} props
@@ -63,4 +78,19 @@ export const ViewWithSpacing = styled.View`
 
 export const TextWithSpacing = styled.Text`
   ${getSpacingStyles}
+  ${typographyStyleSystem}
+  ${colorStyleSystem}
+  ${androidFontStyles}
+  ${getAdditionalStyle}
+`;
+
+export const StyledErrorWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+`;
+
+export const BodyCopyWithTextTransform = styled(BodyCopy)`
+  text-transform: ${props => (props.textTransform ? props.textTransform : 'capitalize')};
 `;

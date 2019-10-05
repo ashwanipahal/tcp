@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
@@ -33,31 +34,31 @@ class TrackOrderBottomSection extends React.Component {
     return (
       <ModalBottomView>
         <LogginView>
-          <BodyCopy text={labels.trackOrder.lbl_trackOrder_haveAccount} />
+          <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_haveAccount', 'trackOrder')} />
           <AnchorTextView>
             <Anchor
               data-locator="track_order_login"
-              accessibilityLabel={`${labels.trackOrder.lbl_trackOrder_login}
-                ${labels.trackOrder.lbl_trackOrder_content1}`}
-              text={labels.trackOrder.lbl_trackOrder_login}
+              accessibilityLabel={`${getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
+                ${getLabelValue(labels, 'lbl_trackOrder_content1', 'trackOrder')}`}
+              text={getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
               anchorVariation="primary"
               onPress={e => this.handleDefaultLinkClick(e)}
               underline
             />
-            <BodyCopy text={labels.trackOrder.lbl_trackOrder_content1} />
+            <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_content1', 'trackOrder')} />
           </AnchorTextView>
         </LogginView>
         <AnchorTextView>
           <Anchor
             locator="track_order_click_here"
             anchorVariation="primary"
-            url={labels.trackOrder.lbl_trackOrder_internationTrackOrderLink}
-            accessibilityLabel={`${labels.trackOrder.lbl_trackOrder_clickHere}
-                ${labels.trackOrder.lbl_trackOrder_content2}`}
-            text={labels.trackOrder.lbl_trackOrder_clickHere}
+            url={getLabelValue(labels, 'lbl_trackOrder_internationTrackOrderLink', 'trackOrder')}
+            accessibilityLabel={`${getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
+                ${getLabelValue(labels, 'lbl_trackOrder_content2', 'trackOrder')}`}
+            text={getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
             underline
           />
-          <BodyCopy text={labels.trackOrder.lbl_trackOrder_content2} />
+          <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_content2', 'trackOrder')} />
         </AnchorTextView>
       </ModalBottomView>
     );

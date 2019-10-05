@@ -8,11 +8,12 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getBirthDateOptionMap, childOptionsMap } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/BirthdaySavingsList.style';
 import BirthdayCardComponent from '../../../molecule/BirthdayCard';
 import EmptyBirthdayCard from '../../../molecule/EmptyBirthdayCard';
 import constants from '../BirthdaySavingsList.constants';
-import { getLabelValue } from '../../../../../../../utils';
+
 import AddChildBirthdayForm from '../../../molecule/AddChild';
 
 /**
@@ -21,7 +22,7 @@ import AddChildBirthdayForm from '../../../molecule/AddChild';
  */
 export const InfoMessage = ({ labels }) => (
   <BodyCopy fontSize="fs14" fontFamily="secondary" className="elem-mb-XXL" data-locator="instrText">
-    {labels.lbl_profile_birthday_saving_info}
+    {getLabelValue(labels, 'lbl_profile_birthday_saving_info')}
   </BodyCopy>
 );
 

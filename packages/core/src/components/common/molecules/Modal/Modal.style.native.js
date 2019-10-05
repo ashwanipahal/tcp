@@ -18,9 +18,24 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
       : ``}
 `;
 
+const ModalCustomWrapper = styled.View`
+  ${props =>
+    props.transparentModal === 'transparent-captcha'
+      ? `
+      background-color: rgba(0,0,0,.5);
+`
+      : ``}
+`;
+
 const ModalHeading = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      position: relative;
+  `
+      : ``}
 `;
 
 const LineWrapper = styled.View`
@@ -42,10 +57,23 @@ const RowWrapper = styled.View`
     z-index: 1;
   `
       : ``}
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      margin: 14px 14px 0 14px
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`
   width: 20%;
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      position: absolute;
+      right: 0;
+  `
+      : ``}
 `;
 
 export {
@@ -55,4 +83,5 @@ export {
   ModalHeading,
   LineWrapper,
   RowWrapper,
+  ModalCustomWrapper,
 };

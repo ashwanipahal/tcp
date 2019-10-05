@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, SafeAreaView } from 'react-native';
 import theme from '@tcp/core/styles/themes/TCP';
 import Address from '@tcp/core/src/components/common/molecules/Address';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Style,
@@ -69,7 +70,7 @@ class DeleteModal extends React.PureComponent<Props> {
         <ModalNative
           isOpen={setDeleteModalMountedState}
           onRequestClose={toggleModal}
-          heading={labels.paymentGC.lbl_payment_modalDeleteCard}
+          heading={getLabelValue(labels, 'lbl_payment_modalDeleteCard', 'paymentGC')}
         >
           <SafeAreaView>
             <ModalViewWrapper>
@@ -115,7 +116,7 @@ class DeleteModal extends React.PureComponent<Props> {
               <CenterAlign>
                 <ConfirmButtonWrapper>
                   <CustomButton
-                    text={labels.paymentGC.lbl_payment_modalGCConfirm}
+                    text={getLabelValue(labels, 'lbl_payment_modalGCConfirm', 'paymentGC')}
                     buttonVariation="variable-width"
                     fill="BLUE"
                     width="162px"
@@ -126,7 +127,7 @@ class DeleteModal extends React.PureComponent<Props> {
                 </ConfirmButtonWrapper>
                 <CloseButtonWrapper>
                   <CustomButton
-                    text={labels.paymentGC.lbl_payment_modalGCCancel}
+                    text={getLabelValue(labels, 'lbl_payment_modalGCCancel', 'paymentGC')}
                     buttonVariation="cautionary"
                     color={redColor}
                     font-size="14"

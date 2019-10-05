@@ -40,9 +40,15 @@
     "lint:app": "yarn eslint:app && yarn stylelint:app",
     "generate-esdoc": "./node_modules/.bin/esdoc -c .esdoc.json",
     "lighthouse": "node ./lighthouse",
-    "plop": "plop"
+    "sitespeed": "sitespeed.io --config sitespeed-config/config.json",
+    "plop": "plop",
+    "storybook": "start-storybook -s ./public,./packages/web/src -p 9001",
+    "storybook:build": "build-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.0",
+    "@storybook/addon-links": "^5.2.0",
+    "@storybook/react": "^5.2.0",
     "@types/enzyme": "^3.9.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
@@ -135,10 +141,12 @@
     "exenv": "^1.2.2",
     "immutable": "^4.0.0-rc.12",
     "little-loader": "^0.2.0",
+    "next": "8.0.3",
     "optimist": "^0.6.1",
     "react": "16.9.0",
     "react-component-lazy-loader": "1.1.2",
     "react-datepicker": "^2.9.6",
+    "react-dom": "16.9.0",
     "react-dotdotdot": "^1.3.1",
     "react-image-magnify": "^2.7.4",
     "react-modal": "^3.8.1",
@@ -152,6 +160,7 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
+    "sitespeed.io": "^10.1.1",
     "styled-components": "^4.2.0",
     "vanilla-lazyload": "^12.0.0"
   }

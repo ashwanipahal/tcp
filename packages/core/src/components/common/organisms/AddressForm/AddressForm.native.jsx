@@ -24,9 +24,6 @@ import {
   Separator,
   SetDefaultShippingWrapper,
   AddAddressWrapper,
-  GooglePlaceInputWrapper,
-  OptionalAdressWrapper,
-  HiddenAddressLineWrapper,
   CountryContainer,
   HiddenStateWrapper,
 } from './AddressForm.native.style';
@@ -57,7 +54,6 @@ class AddressForm extends React.PureComponent {
   componentDidMount() {
     const { dispatch, initialValues } = this.props;
     dispatch(change('AddressForm', 'country', initialValues.country));
-    dispatch(change('AddressForm', 'addressLine1', initialValues.addressLine1));
   }
 
   handlePlaceSelected = (place, inputValue) => {
@@ -68,7 +64,6 @@ class AddressForm extends React.PureComponent {
     dispatch(change('AddressForm', 'state', address.state));
     dispatch(change('AddressForm', 'addressLine1', address.street));
     this.setState({ dropDownItem: address.state });
-    this.locationRef.setAddressText(address.street);
   };
 
   render() {
@@ -110,49 +105,23 @@ class AddressForm extends React.PureComponent {
           component={TextBox}
           dataLocator="addnewaddress-lastname"
         />
-
-        <GooglePlaceInputWrapper>
-          <Field
-            headerTitle={addressFormLabels.addressLine1}
-            component={GooglePlacesInput}
-            onValueChange={(data, inputValue) => {
-              this.handlePlaceSelected(data, inputValue);
-            }}
-            onChangeText={text => {
-              setTimeout(() => {
-                dispatch(change('AddressForm', 'addressLine1', text));
-              });
-            }}
-            refs={instance => {
-              this.locationRef = instance;
-            }}
-            initialValue={addressLine1}
-            dataLocator="addnewaddress-addressl1"
-            componentRestrictions={{ ...{ country: [country] } }}
-          />
-        </GooglePlaceInputWrapper>
-
-        <HiddenAddressLineWrapper>
-          <Field
-            label=""
-            component={TextBox}
-            title=""
-            type="hidden"
-            id="addressLine1"
-            name="addressLine1"
-          />
-        </HiddenAddressLineWrapper>
-
-        <OptionalAdressWrapper>
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            label={addressFormLabels.addressLine2}
-            component={TextBox}
-            dataLocator="addnewaddress-addressl2"
-          />
-        </OptionalAdressWrapper>
-
+        <Field
+          headerTitle={addressFormLabels.addressLine1}
+          component={GooglePlacesInput}
+          onValueChange={this.handlePlaceSelected}
+          initialValue={addressLine1}
+          dataLocator="addnewaddress-addressl1"
+          componentRestrictions={{ ...{ country: [country] } }}
+          id="addressLine1"
+          name="addressLine1"
+        />
+        <Field
+          id="addressLine2"
+          name="addressLine2"
+          label={addressFormLabels.addressLine2}
+          component={TextBox}
+          dataLocator="addnewaddress-addressl2"
+        />
         <Field
           id="city"
           name="city"
@@ -342,9 +311,6 @@ const validateMethod = createValidateMethod(
 
 export default reduxForm({
   form: 'AddressForm', // a unique identifier for this form
-  enableReinitialize: true,
-  destroyOnUnmount: false,
-  keepDirtyOnReinitialize: true,
   ...validateMethod,
 })(AddressForm);
 

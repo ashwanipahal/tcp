@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store Detail Page should not render StoreDetail 1`] = `
+<Styled(StoreDetail)
+  className="storedetailinfo"
+  dialStoreNumber={[Function]}
+  openMoreStores={[Function]}
+  openStoreDetails={[Function]}
+  openStoreDirections={[Function]}
+  otherStores={Array []}
+  routesBack={[Function]}
+  store={
+    Object {
+      "key": Immutable.Map {},
+    }
+  }
+/>
+`;
+
+exports[`Store Detail Page should render StoreDetail 1`] = `
+<Styled(StoreDetail)
+  className="storedetailinfo"
+  dialStoreNumber={[Function]}
+  labels={
+    Object {
+      "StoreLocator": Object {
+        "lbl_storedetails_callstore_btn": "Call Store",
+        "lbl_storedetails_changestore_btn": "Change Favorite Store",
+        "lbl_storedetails_entranceType": "Type of Entrance:",
+        "lbl_storedetails_getdirections_btn": "Directions",
+        "lbl_storedetails_locations_details_btn": "SEE STORE DETAILS",
+        "lbl_storedetails_locations_title": "OTHER LOCATIONS NEAR YOU",
+        "lbl_storedetails_mallType": "Mall Type:",
+        "lbl_storelanding_atThisPlace": "at this PLACE!",
+        "lbl_storelanding_favStore": "Your Store",
+        "lbl_storelanding_getdirections_link": "Get Directions",
+        "lbl_storelanding_milesAway": "miles away",
+        "lbl_storelanding_openInterval": "open until",
+        "lbl_storelanding_setfavStore": "SET AS FAVORITE",
+        "lbl_storelanding_storedetails_link": "Store Details",
+      },
+    }
+  }
+  openMoreStores={[Function]}
+  openStoreDetails={[Function]}
+  openStoreDirections={[Function]}
+  otherStores={Array []}
+  routesBack={[Function]}
+  store={
+    Object {
+      "test": Immutable.Map {
+        "basicInfo": Immutable.Map {
+          "id": "",
+          "storeName": "",
+          "phone": "",
+          "coordinates": Immutable.Map {
+            "lat": "",
+            "long": "",
+          },
+          "address": Immutable.Map {},
+        },
+        "hours": Immutable.Map {
+          "regularHours": Immutable.List [],
+          "holidayHours": Immutable.List [],
+          "regularAndHolidayHours": Immutable.List [],
+        },
+        "features": Immutable.Map {
+          "mallType": "",
+          "entranceType": "",
+        },
+      },
+    }
+  }
+/>
+`;

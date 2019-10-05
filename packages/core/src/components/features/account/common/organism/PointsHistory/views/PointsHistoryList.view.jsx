@@ -48,7 +48,7 @@ const PointsHistoryList = ({
               className="list-fontsizes"
               fontWeight="semibold"
             >
-              {labels.lbl_common_order_date}
+              {getLabelValue(labels, 'lbl_common_order_date')}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 4, medium: 3, small: 2 }}>
@@ -58,7 +58,7 @@ const PointsHistoryList = ({
               className="list-fontsizes"
               fontWeight="semibold"
             >
-              {labels.lbl_common_transaction}
+              {getLabelValue(labels, 'lbl_common_transaction')}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 3, medium: 3, small: 2 }}>
@@ -70,7 +70,7 @@ const PointsHistoryList = ({
               fontWeight="semibold"
               textAlign="center"
             >
-              {labels.lbl_common_points_earned}
+              {getLabelValue(labels, 'lbl_common_points_earned')}
             </BodyCopy>
           </Col>
         </Row>
@@ -120,7 +120,7 @@ const PointsHistoryList = ({
           fontSize="fs16"
           fontWeight="semibold"
         >
-          {labels.lbl_common_points_history_nopoints}
+          {getLabelValue(labels, 'lbl_common_points_history_nopoints')}
         </BodyCopy>
       )}
     </div>
