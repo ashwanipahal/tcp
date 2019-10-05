@@ -34,7 +34,11 @@ const PickupStoreList = props => {
   return (
     <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
-        <InputCheckbox input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}>
+        <InputCheckbox
+          checkBoxLabel
+          execOnChangeByDefault={false}
+          input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
+        >
           {BOPIS_FILTER_LABEL}
         </InputCheckbox>
       )}

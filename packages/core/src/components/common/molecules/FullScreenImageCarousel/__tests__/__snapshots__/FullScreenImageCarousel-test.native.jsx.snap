@@ -11,6 +11,7 @@ exports[`FullScreenImageCarousel should render correctly should match snapshot 1
     }
   }
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={true}
   onRequestClose={[Function]}

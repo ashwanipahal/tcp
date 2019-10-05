@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import { getAPIConfig } from '@tcp/core/src/utils';
-import constants from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
+import constants from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.constants';
 
 const { GOOGLE_SEARCH_API_ENDPOINT } = constants;
 
