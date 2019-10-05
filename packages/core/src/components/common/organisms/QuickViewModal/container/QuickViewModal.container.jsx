@@ -41,12 +41,17 @@ class QuickViewModalContainer extends React.PureComponent {
       productInfoFromBag,
     } = this.props;
     const cartItemInfo = getCartItemInfo(productInfo, formValues);
+    const {
+      skuInfo: { skuId, variantNo, variantId },
+    } = cartItemInfo;
+    const { quantity } = cartItemInfo;
+    const { orderItemId } = productInfoFromBag;
     const payload = {
-      skuId: cartItemInfo.skuInfo.skuId,
-      itemId: productInfoFromBag.orderItemId,
-      quantity: cartItemInfo.quantity,
-      variantNo: cartItemInfo.skuInfo.variantNo,
-      itemPartNumber: cartItemInfo.skuInfo.variantId,
+      skuId,
+      itemId: orderItemId,
+      quantity,
+      variantNo,
+      itemPartNumber: variantId,
       callBack: closeQuickViewModalAction,
     };
     updateCartItemAction(payload);
