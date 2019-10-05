@@ -217,8 +217,6 @@ class PickUpStoreModalView extends React.Component {
     const { closePickupModal } = this.props;
     closePickupModal({
       isModalOpen: false,
-      // To clear QV product selected info..
-      // To clear search results from suggested store list
     });
   }
 

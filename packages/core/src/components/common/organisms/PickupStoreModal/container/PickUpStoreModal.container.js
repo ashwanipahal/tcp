@@ -17,7 +17,7 @@ import {
 } from './PickUpStoreModal.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
-import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -85,7 +85,7 @@ const mapStateToProps = (state, ownProps) => {
     isPickUpWarningModal,
     openSkuSelectionForm,
     isCanada: isCanada(),
-    addToBagError: getAddedToBagError(state),
+    addToBagError: getAddedToPickupError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
     currencySymbol: sessionSelectors.getCurrentCurrencySymbol(state),
     isInternationalShipping: sessionSelectors.getIsInternationalShipping(state),
