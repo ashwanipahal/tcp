@@ -19,7 +19,7 @@ const styles = css`
     width: 100%;
     margin: 0;
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 92%;
+      width: calc(100% - 22px);
     }
   }
 
