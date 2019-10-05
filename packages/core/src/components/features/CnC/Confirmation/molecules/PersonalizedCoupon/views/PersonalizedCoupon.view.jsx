@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-import { getIconPath, viewport, isClient } from '@tcp/core/src/utils';
+import { getIconPath } from '@tcp/core/src/utils';
 import styles from '../styles/PersonalizedCoupon.style';
 
 const getValidityText = ({ endDate, startDate, isPastStartDate }, { validTill, nowThrough }) => {
@@ -84,7 +84,6 @@ const shouldShowArrowIcon = ({ startDate, endDate, code, disclaimer }) =>
 
 export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupon, labels }) => {
   const { description } = coupon;
-  const small = isClient() && viewport().small;
   const [showDetail, setShowDetail] = useState(false);
   const carrotIcon = getIconPath('carrot-left');
   const printIcon = getIconPath('icon-printer');
@@ -103,7 +102,9 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
             {description}
           </BodyCopy>
         )}
-        {(!small || (small && showDetail)) && renderCoupon(coupon, detailCoupon, labels)}
+        <BodyCopy component="div" className={showDetail ? 'show-detail' : 'hide-detail'}>
+          {renderCoupon(coupon, detailCoupon, labels)}
+        </BodyCopy>
         <BodyCopy className="print-icon" component="div">
           <Image
             className="print-icon-img"
@@ -116,7 +117,7 @@ export const PersonalizedCoupon = ({ className, coupon, printCoupon, detailCoupo
           />
         </BodyCopy>
         <BodyCopy component="span" className="ribbon bottom-right" />
-        {small && shouldShowArrowIcon(coupon) && (
+        {shouldShowArrowIcon(coupon) && (
           <Anchor
             fontSizeVariation="medium"
             className="toggle-icon"

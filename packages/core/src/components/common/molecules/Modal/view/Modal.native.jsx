@@ -28,6 +28,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 
 type Props = {
   isOpen: boolean,
+  stickyCloseIcon: boolean,
   children: node,
   isOverlay?: boolean,
 };
@@ -40,11 +41,18 @@ type CloseIconProps = {
   headerStyle: Object,
   iconType: String,
   isOverlay: Boolean,
+  stickyCloseIcon: Boolean,
 };
 
-const getCloseIcon = ({ onRequestClose, headerStyle, iconType, isOverlay }: CloseIconProps) => {
+const getCloseIcon = ({
+  stickyCloseIcon,
+  onRequestClose,
+  headerStyle,
+  iconType,
+  isOverlay,
+}: CloseIconProps) => {
   return (
-    <ImageWrapper style={headerStyle}>
+    <ImageWrapper stickyCloseIcon={stickyCloseIcon} style={headerStyle}>
       <StyledTouchableOpacity
         onPress={onRequestClose}
         accessibilityRole="button"
@@ -82,6 +90,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
     iconType,
     fullWidth,
     customTransparent,
+    stickyCloseIcon,
     transparentModal,
     horizontalBar = true,
     borderColor = 'black',
@@ -105,9 +114,9 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
           <ModalCustomWrapper transparentModal={transparentModal}>
             <ToastContainer />
             <StatusBar hidden />
-            <RowWrapper isOverlay={isOverlay}>
+            <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
               {heading && (
-                <ModalHeading fullWidth={fullWidth}>
+                <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
                   <BodyCopy
                     mobileFontFamily={headingFontFamily || 'primary'}
                     fontWeight={headingFontWeight || 'extrabold'}
@@ -122,6 +131,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
                 headerStyle,
                 iconType,
                 isOverlay,
+                stickyCloseIcon,
               })}
             </RowWrapper>
             {geLine(horizontalBar, borderColor)}

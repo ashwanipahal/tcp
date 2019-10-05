@@ -13,6 +13,7 @@ import {
   getGeneralProdId,
   getIsCartItemsUpdating,
   getProductSkuId,
+  getCartItemsSflError,
 } from '../container/CartItemTile.selectors';
 
 describe('#CartItemTile selector', () => {
@@ -139,6 +140,15 @@ describe('#CartItemTile selector', () => {
     expect(getIsCartItemsUpdating({ CartPageReducer })).toEqual(true);
   });
 
+  it('#getCartItemsSflError', () => {
+    const CartPageReducer = fromJS({
+      uiFlags: {
+        cartItemSflError: 'error',
+      },
+    });
+    expect(getCartItemsSflError({ CartPageReducer })).toEqual('error');
+  });
+
   it('#getLabelsCartItemTile should return labels', () => {
     const addedToBagModal = {
       lbl_info_color: 'Color',
@@ -148,6 +158,7 @@ describe('#CartItemTile selector', () => {
       lbl_info_giftDesign: 'Design',
       lbl_info_giftValue: 'Value',
     };
+
     const productState = {
       Labels: {
         global: {

@@ -67,19 +67,18 @@ const getProductsTypes = orderItems => {
 };
 
 export function* getTranslatedProductInfo(cartInfo) {
+  let tcpProductsResults;
+  let gymProductsResults;
   try {
     const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
     const gymProdpartNumberList = productypes.gymProducts;
     const tcpProdpartNumberList = productypes.tcpProducts;
-    let tcpProductsResults;
-    let gymProductsResults;
     if (tcpProdpartNumberList.length) {
       tcpProductsResults = yield call(
         getProductInfoForTranslationData,
         tcpProdpartNumberList.join()
       );
     }
-
     if (gymProdpartNumberList.length) {
       gymProductsResults = yield call(
         getProductInfoForTranslationData,
@@ -91,7 +90,9 @@ export function* getTranslatedProductInfo(cartInfo) {
 
     return [...gymProductsResults, ...tcpProductsResults];
   } catch (err) {
-    return { error: { err } };
+    gymProductsResults = [];
+    tcpProductsResults = [];
+    return [...gymProductsResults, ...tcpProductsResults];
   }
 }
 

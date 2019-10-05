@@ -75,18 +75,24 @@ export class BonusPointsDays extends React.Component {
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
-        <BonusPointsView
-          labels={labels}
-          bonusData={bonusData}
-          bonusDetailsData={bonusDetailsData}
-          view={view}
-          isPlcc={isPlcc}
-          getBonusDaysData={getAvailableBonusDaysData}
-          orderDetails={orderId}
-          showAccordian={showAccordian}
-          isBagPage={isBagPage}
-          additionalClassNameModal={additionalClassNameModal}
-        />
+        <div
+          className={`${
+            showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
+          } elem-mb-MED`}
+        >
+          <BonusPointsView
+            labels={labels}
+            bonusData={bonusData}
+            bonusDetailsData={bonusDetailsData}
+            view={view}
+            isPlcc={isPlcc}
+            getBonusDaysData={getAvailableBonusDaysData}
+            orderDetails={orderId}
+            showAccordian={showAccordian}
+            isBagPage={isBagPage}
+            additionalClassNameModal={additionalClassNameModal}
+          />
+        </div>
       )
     );
   }

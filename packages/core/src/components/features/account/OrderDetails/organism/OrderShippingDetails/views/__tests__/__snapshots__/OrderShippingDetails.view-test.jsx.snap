@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Shipping Details component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Address
+      address={
+        Object {
+          "addressLine1": "234 E 149th St",
+          "addressLine2": "Test",
+          "city": "Bronx",
+          "country": "United States",
+          "firstName": "Ravi",
+          "lastName": "Prasad",
+          "state": "NY",
+          "zipCode": "10451",
+        }
+      }
+      className=""
+      dataLocatorPrefix=""
+      fontWeight="regular"
+      isDefault={false}
+      showCountry={false}
+      showDefault={true}
+      showName={true}
+      showPhone={false}
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
