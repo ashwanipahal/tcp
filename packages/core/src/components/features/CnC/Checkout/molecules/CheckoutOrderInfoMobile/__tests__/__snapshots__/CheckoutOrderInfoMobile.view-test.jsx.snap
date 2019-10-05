@@ -82,15 +82,11 @@ exports[`CheckoutFooterVanilla component should renders correctly for non confir
   <Connect(OrderLedgerContainer)
     showAccordian={false}
   />
-  <div
-    className="bonusPointsDaysWrapper elem-mb-MED"
-  >
-    <Connect(BonusPointsDays)
-      additionalClassNameModal="bonus-modal-mob"
-      enableApplyCta={true}
-      showAccordian={false}
-    />
-  </div>
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={false}
+  />
   <Connect(AirmilesBannerContainer) />
 </div>
 `;
@@ -106,15 +102,11 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
   <Connect(OrderLedgerContainer)
     showAccordian={false}
   />
-  <div
-    className="bonusPointsDaysWrapper elem-mb-MED"
-  >
-    <Connect(BonusPointsDays)
-      additionalClassNameModal="bonus-modal-mob"
-      enableApplyCta={true}
-      showAccordian={false}
-    />
-  </div>
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={false}
+  />
   <Connect(AirmilesBannerContainer) />
 </div>
 `;
@@ -130,15 +122,11 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
   <Connect(OrderLedgerContainer)
     showAccordian={true}
   />
-  <div
-    className="bonusPointsDaysWrapperAccordian elem-mb-MED"
-  >
-    <Connect(BonusPointsDays)
-      additionalClassNameModal="bonus-modal-mob"
-      enableApplyCta={true}
-      showAccordian={true}
-    />
-  </div>
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={true}
+  />
   <Connect(AirmilesBannerContainer) />
 </div>
 `;
