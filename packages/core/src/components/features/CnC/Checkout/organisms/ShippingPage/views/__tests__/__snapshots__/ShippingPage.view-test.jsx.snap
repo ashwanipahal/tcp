@@ -145,7 +145,7 @@ exports[`Shipping Page should render correctly with component did update and get
       ]
     }
     shippingAddress={null}
-    shippingAddressId={null}
+    shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
@@ -251,7 +251,7 @@ exports[`Shipping Page should render correctly with component did update and get
       ]
     }
     shippingAddress={null}
-    shippingAddressId={null}
+    shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
