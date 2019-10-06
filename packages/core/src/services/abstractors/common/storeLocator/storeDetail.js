@@ -17,6 +17,19 @@ const errorHandler = err => {
   return err || null;
 };
 
+const checkForGymStores = storeInfo => {
+  const gymStoreArr = storeInfo.Attribute || storeInfo.brands;
+  const gymStore = gymStoreArr.filter(
+    attribute =>
+      (typeof attribute === 'object' &&
+        attribute.name === 'STORE_BRAND_TYPE' &&
+        attribute.value === 'GYM') ||
+      attribute === 'GYM'
+  );
+
+  return gymStore.length > 0;
+};
+
 export const getCurrentStoreInfoApi = storeId => {
   const payloadData = {
     header: {
@@ -58,6 +71,7 @@ export const getCurrentStoreInfoApi = storeId => {
                 ? JSON.parse(storeInfo.x_stloc)
                 : { heading: '', bodyCopy: '', pageTitle: '' },
             },
+            isGym: checkForGymStores(storeInfo),
             hours: {
               regularHours: [],
               holidayHours: [],
@@ -113,6 +127,7 @@ export const getNearByStoreApi = payload => {
             holidayHours: [],
             regularAndHolidayHours: [],
           },
+          isGym: checkForGymStores(fStore),
           features: {
             storeType:
               (fStore.storeType === 'PLACE' ? STORE_TYPES.RETAIL : STORE_TYPES[fStore.storeType]) ||

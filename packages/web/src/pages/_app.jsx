@@ -173,7 +173,7 @@ class TCPWebApp extends App {
     return pageProps;
   }
 
-  static async loadComponentData(Component, { store, isServer }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, asPath, query }, pageProps) {
     const compProps = {};
     if (Component.getInitialProps) {
       // eslint-disable-next-line no-param-reassign
@@ -182,6 +182,10 @@ class TCPWebApp extends App {
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
+    }
+    if (asPath.includes('store') && query && query.storeStr) {
+      const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+      store.dispatch(getCurrentStoreInfo(storeId));
     }
     return Object.assign(pageProps, compProps);
   }
