@@ -39,6 +39,7 @@ export {
   getAddressFromPlace,
   formatAddress,
   formatPhoneNumber,
+  formatPhone,
   getLabelValue,
   capitalize,
   toTimeString,
@@ -50,4 +51,5 @@ export {
   configureInternalNavigationFromCMSUrl,
   flattenArray,
   getBrand,
+  parseStoreHours,
 } from './utils';

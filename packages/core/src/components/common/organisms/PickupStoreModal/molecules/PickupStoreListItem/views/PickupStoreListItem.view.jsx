@@ -11,6 +11,7 @@ import {
   ITEM_AVAILABILITY_MESSAGES,
   BOPIS_ITEM_AVAILABILITY,
   PICKUP_CTA_LABELS,
+  PICKUP_RADIO_BTN_NAME,
 } from '../../../PickUpStoreModal.constants';
 import { toTimeString, capitalize, getIconPath } from '../../../../../../../utils';
 import withStyles from '../../../../../hoc/withStyles';
@@ -319,7 +320,7 @@ class PickupStoreListItem extends React.Component {
             <React.Fragment>
               <PickupRadioBtn
                 className="PickupRadioBtn"
-                radioGroupName="PICKUP-BTN"
+                radioGroupName={PICKUP_RADIO_BTN_NAME}
                 isSelected={isBossSelected}
                 isBossPickupButton
                 handleClick={this.handlePickupRadioBtn}
@@ -335,7 +336,7 @@ class PickupStoreListItem extends React.Component {
             <React.Fragment>
               <PickupRadioBtn
                 className="PickupRadioBtn"
-                radioGroupName="PICKUP-BTN"
+                radioGroupName={PICKUP_RADIO_BTN_NAME}
                 isSelected={isBopisSelected}
                 BopisCtaProps={BopisCtaProps}
                 handleClick={this.handlePickupRadioBtn}
@@ -369,9 +370,9 @@ class PickupStoreListItem extends React.Component {
       isBossCtaEnabled,
       buttonLabel,
       className,
+      isBopisSelected,
+      isBossSelected,
     } = this.props;
-
-    const { isBopisSelected, isBossSelected } = this.props;
 
     const BopisCtaProps = {
       buttonLabel: PICKUP_CTA_LABELS.bopis,

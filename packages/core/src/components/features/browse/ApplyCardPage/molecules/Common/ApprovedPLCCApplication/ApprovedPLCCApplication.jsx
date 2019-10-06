@@ -4,6 +4,7 @@ import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../../
 import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.style';
 import { getLabelValue, scrollPage } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
+import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -181,7 +182,6 @@ const totalSavingsFooterContainer = (
  */
 
 const ApprovedPLCCApplicationView = ({
-  bagItems,
   plccData,
   labels,
   isPLCCModalFlow,
@@ -189,6 +189,7 @@ const ApprovedPLCCApplicationView = ({
   isGuest,
   resetPLCCResponse,
 }) => {
+  const bagItems = getCartItemCount();
   return (
     <ApprovedPLCCApplicationViewStyled isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
@@ -300,7 +301,6 @@ ApprovedPLCCApplicationView.propTypes = {
   isPLCCModalFlow: PropTypes.bool.isRequired,
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
-  bagItems: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
 };
