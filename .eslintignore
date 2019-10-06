@@ -19,5 +19,8 @@ packages/web/server/
 .storybook
 /src/static/libs/
 out
-packages/**/__mocks__/
-packages/**/stories/
+packages/**/__mocks__/*
+packages/**/stories/*
+**/*.stories.js
+**/*.stories.jsx
+**/*.mock.js
