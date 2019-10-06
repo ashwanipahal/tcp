@@ -143,6 +143,7 @@ class _PickupStoreList extends React.Component {
 
     return (
       <PickupStoreList
+        sameStore={sameStore}
         handleShowAvailableChange={this.handleShowAvailableChange}
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}

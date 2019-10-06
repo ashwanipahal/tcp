@@ -49,7 +49,7 @@ const PickStoreBOSSExtraDetails = BossCtaProps => {
         fontSize={['fs12', 'fs10']}
         fontWeight={['regular', 'extrabold']}
         color={colorBossDetail}
-        className="hide-on-desktop, hide-on-tablet"
+        className="hide-on-desktop hide-on-tablet"
       >
         {` ${startDate.month} ${startDate.date} - ${endDate.month} ${endDate.date}`}
       </BodyCopy>
@@ -84,7 +84,7 @@ export const PickupRadioButton = props => {
     <LabeledRadioButton
       className={className}
       name={radioGroupName}
-      onChange={() => handleClick(isBossPickupButton)}
+      onClick={() => handleClick(isBossPickupButton)}
       checked={isSelected}
       disabled={false}
     >
