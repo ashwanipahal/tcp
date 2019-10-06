@@ -2,10 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import { Row, Col, DamImage, Button } from '../../../atoms';
-import { LinkText, style } from '../ModuleS.style';
-import { PromoBanner } from '../..';
+import {
+  LinkText,
+  style,
+  ColWrapper,
+  WORibbonImgContainer,
+  RibbonImgContainer,
+  RLContainer,
+  ButtonContainer,
+} from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
 import { imageCropConfigs } from '../ModuleS.config';
+import RibbonComponent from '../../Ribbon';
 
 /**
  * This function returns column size for grid on the basis of moduleWidth param
@@ -23,15 +31,6 @@ const getColSize = moduleWidth => {
   return colSize;
 };
 /**
- * This function returns whether the ribbon has to be left aligned or right.
- * @param {*} promoWrapper
- */
-const getRibbonPosition = promoWrapper => {
-  const [ribbonDetails] = promoWrapper;
-  return ribbonDetails.ribbonPlacement === 'left';
-};
-
-/**
  * This function return the image config for each theme.
  * @param {*} promoWrapper
  */
@@ -44,106 +43,131 @@ const getImageConfig = ribbonPresent => {
   }
   return imageConfig;
 };
-
-const ModuleS = props => {
-  const { moduleWidth, linkedImage, headerText, singleCTAButton, className, ribbonBanner } = props;
-  const colSize = getColSize(moduleWidth);
-  const ribbonPresent = ribbonBanner && ribbonBanner.length > 0;
-  const isRibbonLeftAligned = ribbonPresent && getRibbonPosition(ribbonBanner);
+/**
+ * This function return the  LinkText component to render the text.
+ * @param {*} props
+ */
+const TextView = props => {
+  const { headerText } = props;
+  return (
+    headerText && (
+      <LinkText
+        type="heading"
+        component="h2"
+        headerText={headerText}
+        data-locator={getLocator('moduleS_header_text')}
+      />
+    )
+  );
+};
+/**
+ * This function return the  LinkText DamImage to render the image.
+ * @param {*} props
+ */
+const ImgView = props => {
+  const { linkedImage } = props;
   const [imageDetails] = linkedImage;
   const imageConfig = getImageConfig();
   return (
-    <Row
-      fullBleed
-      className={`${className} ${
-        ribbonPresent && isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
-      }`}
-    >
-      <Col colSize={colSize}>
-        {/** Variation  1 Start Here */}
-        {!ribbonPresent && (
-          <div className="col-wrapper innerPadding">
-            <div className="img-container">
-              <DamImage
-                imgData={imageDetails.image}
-                link={imageDetails.link}
-                data-locator={getLocator('moduleS_large_img')}
-                imgConfigs={imageConfig}
-              />
-            </div>
-            <div className="rl-variation">
-              {headerText && (
-                <LinkText
-                  type="heading"
-                  component="h2"
-                  headerText={headerText}
-                  data-locator={getLocator('moduleS_header_text')}
-                />
-              )}
-              <Button
-                cta={singleCTAButton}
-                buttonVariation="fixed-width"
-                className="rl-button"
-                data-locator={getLocator('moduleS_cta_btn')}
-              >
-                {singleCTAButton.text}
-              </Button>
-            </div>
-          </div>
-        )}
-        {/** Variation  1 Ends Here */}
+    imageDetails && (
+      <DamImage
+        imgData={imageDetails.image}
+        link={imageDetails.link}
+        data-locator={getLocator('moduleS_large_img')}
+        imgConfigs={imageConfig}
+      />
+    )
+  );
+};
+/**
+ * This function returns the view to be displayed when ribbon is present.
+ * @param {*} props
+ */
+const RibbonView = props => {
+  const { singleCTAButton, ribbonBanner } = props;
+  return (
+    <ColWrapper>
+      <TextView {...props} />
+      <RibbonImgContainer>
+        <ImgView {...props} />
+      </RibbonImgContainer>
+      <div className="tb-btn-section">
+        <RibbonComponent
+          width={240}
+          height={71}
+          ribbonBanner={ribbonBanner}
+          locator="moduleS_promo_badge"
+        />
+        <ButtonContainer>
+          <Button
+            cta={singleCTAButton}
+            buttonVariation="fixed-width"
+            className="tb-btn"
+            data-locator={getLocator('moduleS_cta_btn')}
+          >
+            {singleCTAButton.text}
+          </Button>
+        </ButtonContainer>
+      </div>
+    </ColWrapper>
+  );
+};
+/**
+ * This function returns the view to be displayed when ribbon is not present for TCP and Gymboree Themes.
+ * @param {*} props
+ */
+const WithOutRibbonView = props => {
+  const { singleCTAButton } = props;
+  return (
+    <ColWrapper>
+      <WORibbonImgContainer>
+        <ImgView {...props} />
+      </WORibbonImgContainer>
+      <RLContainer>
+        <TextView {...props} />
+        <ButtonContainer>
+          <Button
+            cta={singleCTAButton}
+            buttonVariation="fixed-width"
+            className="rl-button"
+            data-locator={getLocator('moduleS_cta_btn')}
+          >
+            {singleCTAButton.text}
+          </Button>
+        </ButtonContainer>
+      </RLContainer>
+    </ColWrapper>
+  );
+};
 
-        {/** Variation  2 starts Here */}
-        {ribbonPresent && (
-          <div className="col-wrapper innerPadding">
-            <div className="tb-variation">
-              {headerText && (
-                <LinkText
-                  type="heading"
-                  component="h2"
-                  headerText={headerText}
-                  data-locator={getLocator('moduleS_header_text')}
-                />
-              )}
-              <div className="img-container">
-                <DamImage
-                  imgData={imageDetails.image}
-                  link={imageDetails.link}
-                  data-locator={getLocator('moduleS_large_img')}
-                  imgConfigs={imageConfig}
-                />
-              </div>
-              <div className="tb-variation-btn-section">
-                <div className="ribbon-wrapper">
-                  <div className="ribbon-container">
-                    <PromoBanner
-                      promoBanner={ribbonBanner}
-                      data-locator={getLocator('moduleS_promo_badge')}
-                    />
-                  </div>
-                </div>
-                <Button
-                  cta={singleCTAButton}
-                  buttonVariation="fixed-width"
-                  className="tb-variation-btn"
-                  data-locator={getLocator('moduleS_cta_btn')}
-                >
-                  {singleCTAButton.text}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-        {/** Variation 2 Ends Here */}
+/**
+ * This function returns Module to display the category banner
+ * @param {*} props
+ */
+
+const ModuleS = props => {
+  const { moduleWidth, className, ribbonBanner } = props;
+  const colSize = getColSize(moduleWidth);
+  const ribbonPresent = ribbonBanner && ribbonBanner.length > 0;
+  return (
+    <Row fullBleed className={className}>
+      <Col colSize={colSize}>
+        {!ribbonPresent && <WithOutRibbonView {...props} />}
+        {ribbonPresent && <RibbonView {...props} />}
       </Col>
     </Row>
   );
 };
+const ModulePropTypes = {
+  headerText: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  ribbonBanner: PropTypes.shape({}).isRequired,
+  singleCTAButton: PropTypes.shape({}).isRequired,
+};
+WithOutRibbonView.propTypes = { ...ModulePropTypes };
+RibbonView.propTypes = { ...ModulePropTypes };
 ModuleS.propTypes = {
   className: PropTypes.string.isRequired,
-  headerText: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
-  linkedImage: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  singleCTAButton: PropTypes.objectOf(PropTypes.shape({})).isRequired,
   ribbonBanner: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))),
   moduleWidth: PropTypes.string,
 };
