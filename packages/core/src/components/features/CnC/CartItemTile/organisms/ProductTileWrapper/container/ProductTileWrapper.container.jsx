@@ -13,15 +13,12 @@ import {
   isPlccUser,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartItemTile.actions';
-import QuickViewModal from '../../../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export const ProductTileWrapperContainer = props => {
-  const { pageView } = props;
   return (
     <>
       <ProductTileWrapper {...props} />
-      <QuickViewModal fromBagPage={pageView === 'myBag'} />
     </>
   );
 };

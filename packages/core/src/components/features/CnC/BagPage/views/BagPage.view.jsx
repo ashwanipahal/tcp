@@ -13,6 +13,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -320,6 +321,7 @@ class BagPageView extends React.Component {
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
         />
+        <QuickViewModal fromBagPage />
       </div>
     );
   }
