@@ -90,6 +90,7 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
         offerPrice: getItemOfferPrice(item, sizeAndFit, isCanada),
       },
       miscInfo: {
+        // set badge info
         badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
         availability: deriveSflItemAvailability(item, currencyCode),
       },
