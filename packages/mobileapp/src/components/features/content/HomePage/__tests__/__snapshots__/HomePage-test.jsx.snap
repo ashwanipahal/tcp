@@ -22,6 +22,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
+        "moduleQ": [Function],
         "moduleR": [Function],
         "moduleS": [Function],
       }

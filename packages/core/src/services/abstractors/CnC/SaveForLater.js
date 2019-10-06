@@ -8,7 +8,7 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
-import { extractPrioritizedBadge, getProductAttributes } from '../../../utils/badge.util';
+import { extractPrioritizedBadge, getCartProductAttributes } from '../../../utils/badge.util';
 import { sanitizeEntity, flatCurrencyToCents, AVAILABILITY } from './CartItemTile';
 
 export function getProductInfo(item, imageGenerator) {
@@ -90,7 +90,8 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
         offerPrice: getItemOfferPrice(item, sizeAndFit, isCanada),
       },
       miscInfo: {
-        badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
+        // set badge info
+        badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
         availability: deriveSflItemAvailability(item, currencyCode),
       },
       itemStatus: {},
