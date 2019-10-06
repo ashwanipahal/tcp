@@ -6,7 +6,7 @@ export default {
     name: 'moduleQ',
     type: 'module',
     composites: {
-      bgColor: '#d8d8d8',
+      bgClass: 'yellow-bg',
       headerText: [
         {
           textItems: [
@@ -68,7 +68,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '2044393_10',
+            cat_id: '3002623_BQ',
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -84,7 +84,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '2044394_10',
+            cat_id: '2081262_K3',
           },
           singleCTAButton: null,
         },
