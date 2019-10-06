@@ -279,15 +279,17 @@ class BagPageView extends React.Component {
               >
                 {`${labels.bagHeading} (${totalCount})`}
               </Heading>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs10"
-                className={`estimatedHeaderText ${
-                  activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
-                }`}
-              >
-                {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
-              </BodyCopy>
+              {totalCount > 0 && (
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs10"
+                  className={`estimatedHeaderText ${
+                    activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
+                  }`}
+                >
+                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                </BodyCopy>
+              )}
             </Col>
             {isShowSaveForLaterSwitch && (
               <Col
