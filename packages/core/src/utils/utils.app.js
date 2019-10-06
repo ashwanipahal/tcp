@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable max-lines */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
