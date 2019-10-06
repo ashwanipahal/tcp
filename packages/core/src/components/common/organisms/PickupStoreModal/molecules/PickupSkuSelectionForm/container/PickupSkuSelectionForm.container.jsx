@@ -67,7 +67,6 @@ class PickupSkuSelectionFormContainer extends React.Component {
       currentProduct,
       prices,
     } = this.props;
-
     const { currentColorEntry, selectedColor } = this.state;
 
     const imageUrl = selectedColor
