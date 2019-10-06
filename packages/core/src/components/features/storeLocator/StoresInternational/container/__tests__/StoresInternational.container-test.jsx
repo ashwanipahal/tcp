@@ -63,6 +63,7 @@ describe('StoresInternational Container', () => {
         },
       };
       container.instance().selectCallback(event);
+      expect(container).toMatchSnapshot();
     });
     it('should scroll to country tile if it exists', () => {
       const countryTile = document.createElement('div');
@@ -75,6 +76,11 @@ describe('StoresInternational Container', () => {
         },
       };
       container.instance().selectCallback(event);
+      expect(container).toMatchSnapshot();
+    });
+    it('should unmount safely', () => {
+      container.unmount();
+      expect(container).toMatchSnapshot();
     });
   });
 });

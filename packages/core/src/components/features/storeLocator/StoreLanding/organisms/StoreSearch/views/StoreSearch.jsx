@@ -138,8 +138,8 @@ export class StoreSearch extends PureComponent {
         label: getLabelValue(labels, 'lbl_storelanding_allUSCAStores'),
       },
       {
-        asPath: '',
-        to: '',
+        asPath: '/content/international-stores',
+        to: '/content?contentType=international-stores',
         label: getLabelValue(labels, 'lbl_storelanding_internationalStores'),
       },
     ];

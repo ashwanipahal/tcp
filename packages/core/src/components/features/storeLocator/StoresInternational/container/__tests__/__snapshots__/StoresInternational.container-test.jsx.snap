@@ -46,6 +46,29 @@ exports[`StoresInternational Container Container should not bind change event ha
 />
 `;
 
+exports[`StoresInternational Container Container should not scroll if country tile does not exist 1`] = `
+<Styled(StoresInternational)
+  content="with-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
 exports[`StoresInternational Container Container should render correctly 1`] = `
 <Styled(StoresInternational)
   contentId="test"
@@ -67,3 +90,28 @@ exports[`StoresInternational Container Container should render correctly 1`] = `
   }
 />
 `;
+
+exports[`StoresInternational Container Container should scroll to country tile if it exists 1`] = `
+<Styled(StoresInternational)
+  content="with-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should unmount safely 1`] = `""`;

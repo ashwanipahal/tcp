@@ -9,19 +9,23 @@ export class StoresInternationalContainer extends Component {
   componentDidMount() {
     const { getModuleX, contentId } = this.props;
     getModuleX(contentId);
+    this.addSelectEventHandler();
   }
 
   componentDidUpdate(prevProps) {
     const { content } = this.props;
     if (content && content !== prevProps.content) {
-      /**
-       * Store Locator static page event listener
-       * Required for onchange handler
-       */
-      const selector = document.getElementById('country-selector');
-      if (selector) {
-        selector.addEventListener('change', this.selectCallback);
-      }
+      this.addSelectEventHandler();
+    }
+  }
+
+  componentWillUnmount() {
+    /**
+     * Remove event listener
+     */
+    const selector = document.getElementById('country-selector');
+    if (selector) {
+      selector.removeEventListener('change', this.selectCallback);
     }
   }
 
@@ -34,6 +38,20 @@ export class StoresInternationalContainer extends Component {
       });
     }
   };
+
+  addSelectEventHandler() {
+    const { content } = this.props;
+    /**
+     * Store Locator static page event listener
+     * Required for onchange handler
+     */
+    if (content) {
+      const selector = document.getElementById('country-selector');
+      if (selector) {
+        selector.addEventListener('change', this.selectCallback);
+      }
+    }
+  }
 
   render() {
     return <StoresInternational {...this.props} dataLocator="store_InternationalstoresWrapper" />;
