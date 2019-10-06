@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -19,7 +20,7 @@ class TrackOrderForm extends React.PureComponent {
           <Field
             id="emailAddress"
             type="text"
-            label={labels.trackOrder.lbl_trackOrder_emailPlaceholder}
+            label={getLabelValue(labels, 'lbl_trackOrder_emailPlaceholder', 'trackOrder')}
             name="emailAddress"
             component={TextBox}
             dataLocator="track_order_email_address"
@@ -34,7 +35,7 @@ class TrackOrderForm extends React.PureComponent {
           <Field
             id="orderNumber"
             type="text"
-            label={labels.trackOrder.lbl_trackOrder_orderNoPlaceholder}
+            label={getLabelValue(labels, 'lbl_trackOrder_orderNoPlaceholder', 'trackOrder')}
             name="orderNumber"
             component={TextBox}
             dataLocator="track_order_no"
@@ -49,8 +50,8 @@ class TrackOrderForm extends React.PureComponent {
           <Anchor
             anchorVariation="primary"
             underline
-            url={labels.trackOrder.lbl_trackOrder_needHelpLink}
-            text={labels.trackOrder.lbl_trackOrder_needHelp}
+            url={getLabelValue(labels, 'lbl_trackOrder_needHelpLink', 'trackOrder')}
+            text={getLabelValue(labels, 'lbl_trackOrder_needHelp', 'trackOrder')}
             locator="track_order_need_help"
           />
         </AnchorView>
@@ -61,7 +62,7 @@ class TrackOrderForm extends React.PureComponent {
             onPress={!invalid ? handleSubmit : null}
             buttonVariation="variable-width"
             disableButton={invalid}
-            text={labels.trackOrder.lbl_trackOrder_trackOrderBtn}
+            text={getLabelValue(labels, 'lbl_trackOrder_trackOrderBtn', 'trackOrder')}
             color="white"
           />
         </CtaView>

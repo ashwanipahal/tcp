@@ -5,6 +5,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { isCanada } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 import styles from '../styles/PlaceRewards.section.style';
 import MyRewards from '../../../../common/organism/MyRewards';
@@ -33,7 +34,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             className="place-rewards__heading"
             data-locator="place-rewards-heading"
           >
-            {labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            {getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}
           </BodyCopy>
         </Col>
       </Row>
@@ -63,7 +64,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                     component="h4"
                     className="elem-mb-SM elem-ml-SM"
                   >
-                    {labels.placeRewards.lbl_my_rewards_point_balance}
+                    {getLabelValue(labels, 'lbl_my_rewards_point_balance', 'placeRewards')}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -77,7 +78,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                   className="reward-points-section"
                 >
                   <div className="my-place-reward-section">
-                    <RewardsPoints labels={labels.placeRewards} />
+                    <RewardsPoints labels={getLabelValue(labels, 'placeRewards')} />
                   </div>
                 </Col>
               </Row>
@@ -106,7 +107,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                     className="elem-mb-SM elem-ml-SM"
                     data-locator="pointshistorylbl"
                   >
-                    {labels.placeRewards.lbl_my_rewards_points_history}
+                    {getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
                   </BodyCopy>
                 </Col>
               </Row>

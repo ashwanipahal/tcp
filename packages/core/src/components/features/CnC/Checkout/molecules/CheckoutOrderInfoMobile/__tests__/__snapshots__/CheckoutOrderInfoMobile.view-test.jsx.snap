@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <Connect(OrderLedgerContainer)
+    isConfirmationPage={true}
+  />
+  <section
+    className="venmo-payment-method-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="venmo-paid-text"
+      color="gray.900"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Paid With
+    </Styled(BodyCopy)>
+    <Styled(CardImage)
+      card={
+        Object {
+          "ccBrand": "VENMO",
+          "ccType": "VENMO",
+          "userName": "test-user",
+        }
+      }
+      cardNumber="test-user"
+    />
+  </section>
+  <Styled(Row)
+    className="placeholder "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div>
+        LOYALTY BANNER
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(Styled(PersonalizedCoupons)) />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly for non confirmation page 1`] = `
+<div
+  className=""
+>
+  <Connect(CouponContainer)
+    additionalClassNameModal="coupon-modal-mob"
+    showAccordian={false}
+  />
+  <Connect(OrderLedgerContainer)
+    showAccordian={false}
+  />
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={false}
+  />
+  <Connect(AirmilesBannerContainer) />
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly for non venmo payment 1`] = `
+<div
+  className=""
+>
+  <Connect(CouponContainer)
+    additionalClassNameModal="coupon-modal-mob"
+    showAccordian={false}
+  />
+  <Connect(OrderLedgerContainer)
+    showAccordian={false}
+  />
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={false}
+  />
+  <Connect(AirmilesBannerContainer) />
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly for non venmo payment and with accordian 1`] = `
+<div
+  className=""
+>
+  <Connect(CouponContainer)
+    additionalClassNameModal="coupon-modal-mob"
+    showAccordian={true}
+  />
+  <Connect(OrderLedgerContainer)
+    showAccordian={true}
+  />
+  <Connect(BonusPointsDays)
+    additionalClassNameModal="bonus-modal-mob"
+    enableApplyCta={true}
+    showAccordian={true}
+  />
+  <Connect(AirmilesBannerContainer) />
+</div>
+`;

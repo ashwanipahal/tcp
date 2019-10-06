@@ -130,7 +130,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           priceCurrency=""
         />
       </div>
-      <ProductAddToBagContainer
+      <Connect(ProductAddToBagContainer)
         currentProduct={
           Object {
             "alternateSizes": Object {},

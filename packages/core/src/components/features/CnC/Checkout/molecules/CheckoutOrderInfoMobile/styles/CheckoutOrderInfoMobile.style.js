@@ -8,6 +8,13 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .order-summary {
+      padding: 0;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
   .bonusPointsDaysWrapper {
     background-color: ${props => props.theme.colorPalette.white};
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
@@ -31,6 +38,16 @@ const styles = css`
         padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }
+  }
+
+  .venmo-payment-method-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .venmo-paid-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

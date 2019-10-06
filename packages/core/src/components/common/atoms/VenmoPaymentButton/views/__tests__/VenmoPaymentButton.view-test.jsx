@@ -43,6 +43,10 @@ describe('Venmo Payment Button', () => {
     setVenmoDataAction: jest.fn(),
   };
 
+  const e = {
+    preventDefault: jest.fn(),
+  };
+
   it('should render correctly', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -104,7 +108,7 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     componentInstance.canCallVenmoApi = jest.fn();
     componentInstance.venmoInstance = {};
-    componentInstance.handleVenmoClick();
+    componentInstance.handleVenmoClick(e);
     expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
     expect(props.onVenmoPaymentButtonClick).toBeCalled();
@@ -118,7 +122,7 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...newProps} />);
     const componentInstance = tree.instance();
     componentInstance.canCallVenmoApi = jest.fn();
-    componentInstance.handleVenmoClick();
+    componentInstance.handleVenmoClick(e);
     expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
     expect(props.onVenmoPaymentButtonClick).toBeCalled();
@@ -132,7 +136,7 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...newProps} />);
     const componentInstance = tree.instance();
     const fetchVenmoNonce = jest.spyOn(componentInstance, 'fetchVenmoNonce');
-    componentInstance.handleVenmoClick();
+    componentInstance.handleVenmoClick(e);
     expect(props.setVenmoPaymentInProgress).toBeCalled();
     expect(fetchVenmoNonce).not.toBeCalled();
   });
@@ -156,5 +160,13 @@ describe('Venmo Payment Button', () => {
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     expect(componentInstance.disableVenmoButton()).toEqual(undefined);
+  });
+
+  it('calling fetchVenmoClientToken method', () => {
+    const getVenmoPaymentTokenAction = jest.fn();
+    const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
+    const componentInstance = tree.instance();
+    componentInstance.fetchVenmoClientToken();
+    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
   });
 });

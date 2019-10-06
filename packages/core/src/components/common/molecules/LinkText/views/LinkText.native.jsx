@@ -65,20 +65,20 @@ export const bodyCopyStyles = {
  * accepts all parameters for BodyCopy and Heading atom
  */
 
-const getTextItems = (textItems, useStyle) => {
+const getTextItems = (textItems, useStyle, compProps) => {
   return (
     textItems &&
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
         const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
-
         return (
           <StyleBodyCopy
             accessibilityRole="text"
             accessibilityLabel={text}
             text={text}
             key={index.toString()}
+            {...compProps}
           />
         );
       }
@@ -123,7 +123,7 @@ const LinkText = (props: Props) => {
 
   return headerText.map((item, index) => {
     const { link, textItems } = item;
-    const textItemsComponents = getTextItems(textItems, useStyle);
+    const textItemsComponents = getTextItems(textItems, useStyle, compProps);
     if (useStyle) {
       return (
         <Anchor url={link.url} navigation={navigation}>

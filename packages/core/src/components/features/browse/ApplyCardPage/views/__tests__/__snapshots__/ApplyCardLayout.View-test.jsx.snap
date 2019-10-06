@@ -11,6 +11,7 @@ exports[`ApplyCardLayoutView component should renders correctly 1`] = `
 exports[`ApplyCardLayoutView component should renders correctly considering selective arguments are passed 1`] = `
 <styled.div>
   <ReduxForm
+    applicationStatus=""
     destroyOnUnmount={true}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
@@ -18,6 +19,7 @@ exports[`ApplyCardLayoutView component should renders correctly considering sele
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
     labels={Object {}}
+    onSubmitFail={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

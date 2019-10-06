@@ -150,6 +150,29 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
         to="/#"
       />
     </div>
+    <div
+      className="header-topnav__storelocator"
+    >
+      <Styled(StoreLocatorLink)
+        store={
+          Object {
+            "basicInfo": Object {
+              "address": Object {},
+              "coordinates": Object {},
+              "id": "",
+              "phone": "",
+              "storeName": "",
+            },
+            "features": Object {},
+            "hours": Object {
+              "holidayHours": Array [],
+              "regularAndHolidayHours": Array [],
+              "regularHours": Array [],
+            },
+          }
+        }
+      />
+    </div>
   </div>
 </div>
 `;
@@ -302,6 +325,29 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
         id="trackOrder"
         onClick={[Function]}
         to="/#"
+      />
+    </div>
+    <div
+      className="header-topnav__storelocator"
+    >
+      <Styled(StoreLocatorLink)
+        store={
+          Object {
+            "basicInfo": Object {
+              "address": Object {},
+              "coordinates": Object {},
+              "id": "",
+              "phone": "",
+              "storeName": "",
+            },
+            "features": Object {},
+            "hours": Object {
+              "holidayHours": Array [],
+              "regularAndHolidayHours": Array [],
+              "regularHours": Array [],
+            },
+          }
+        }
       />
     </div>
   </div>

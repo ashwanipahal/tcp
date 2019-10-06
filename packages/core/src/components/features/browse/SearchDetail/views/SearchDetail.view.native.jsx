@@ -12,7 +12,7 @@ class SearchDetail extends React.PureComponent {
     const { searchedText } = this.props;
     return (
       <View {...this.props}>
-        {searchedText && (
+        {searchedText.length > 0 && (
           <View>
             <BodyCopy color="gray.900" fontFamily="secondary" fontSize="fs14" text={SEARCHED_FOR} />
             <BodyCopy
