@@ -26,7 +26,6 @@ export const ModalCloseTouchable = styled.TouchableOpacity`
 `;
 
 export const PickUpModalView = styled.View`
-  margin: 0 14px;
   flex: 1;
 `;
 
