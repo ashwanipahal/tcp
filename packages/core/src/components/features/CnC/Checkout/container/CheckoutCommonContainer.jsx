@@ -258,16 +258,7 @@ const mapStateToProps = state => {
       userAddresses: getAddressListState(state),
       creditFieldLabels: getCreditFieldLabels(state),
     },
-    // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
-    // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
-    // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
-    // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
-    // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
-
     activeStep: getCheckoutStage(state),
-    // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
-    // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
-
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
     isUsSite: isUsSiteUser(),
