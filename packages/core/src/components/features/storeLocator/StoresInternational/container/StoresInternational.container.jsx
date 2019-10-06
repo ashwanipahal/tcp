@@ -20,18 +20,20 @@ export class StoresInternationalContainer extends Component {
        */
       const selector = document.getElementById('country-selector');
       if (selector) {
-        selector.addEventListener('change', e => {
-          const { value } = e.target;
-          const selectedCountryTile = document.querySelector(value);
-          if (selectedCountryTile) {
-            selectedCountryTile.scrollIntoView({
-              behavior: 'smooth',
-            });
-          }
-        });
+        selector.addEventListener('change', this.selectCallback);
       }
     }
   }
+
+  selectCallback = e => {
+    const { value } = e.target;
+    const selectedCountryTile = document.querySelector(value);
+    if (selectedCountryTile) {
+      selectedCountryTile.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  };
 
   render() {
     return <StoresInternational {...this.props} dataLocator="store_InternationalstoresWrapper" />;
@@ -49,7 +51,7 @@ StoresInternationalContainer.defaultProps = {
   children: null,
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     content: getContent(state),
     contentId: getModuleXContentId(state),

@@ -21,6 +21,6 @@ describe('StoresInternational component', () => {
         <StoresInternational {...props} />
       </ThemeProvider>
     );
-    expect(component.html()).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });
