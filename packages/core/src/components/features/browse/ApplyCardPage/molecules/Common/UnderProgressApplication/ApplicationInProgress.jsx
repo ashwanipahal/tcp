@@ -4,6 +4,7 @@ import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
  * @const ApplicationInProgress
@@ -12,7 +13,8 @@ import { redirectToBag, redirectToHome } from '../../../utils/utility';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels, resetPLCCResponse }) => {
+const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) => {
+  const bagItems = getCartItemCount();
   return (
     <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
@@ -72,7 +74,6 @@ const ApplicationInProgress = ({ bagItems, isPLCCModalFlow, labels, resetPLCCRes
 ApplicationInProgress.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
-  bagItems: PropTypes.number.isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
 };
 
