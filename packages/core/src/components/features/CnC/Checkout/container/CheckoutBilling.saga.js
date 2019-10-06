@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 /* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
-import { SubmissionError } from 'redux-form'; // ES6
+import { SubmissionError } from 'redux-form';
 import {
   updatePaymentOnOrder,
   addPaymentToOrder,
