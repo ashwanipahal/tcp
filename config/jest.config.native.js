@@ -48,6 +48,7 @@ module.exports = {
     '/__mocks__/',
     '/features/account/LoginPage/container/loginUtils/keychain.utils.native.js',
     '/common/atoms/Swipeable',
+    '/PickupStoreModal/',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

@@ -1,16 +1,47 @@
 import React from 'react';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   StyledAnchorWrapper,
   StyledWrapper,
   AddedToBagWrapper,
+  RowWrapper,
+  ModalHeading,
+  ImageWrapper,
+  StyledTouchableOpacity,
+  StyledCrossImage,
 } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import AddedToBagActions from '../../AddedToBagActions';
 import Anchor from '../../../../common/atoms/Anchor';
+
+const closeIcon = require('../../../../../assets/close.png');
+
+const styles = {
+  AddedToBagContainer: {
+    flex: 1,
+    paddingLeft: 25,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+};
+
+const getCloseIcon = (onRequestClose, labels) => {
+  return (
+    <ImageWrapper>
+      <StyledTouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={labels.close}
+        onPress={onRequestClose}
+      >
+        <StyledCrossImage source={closeIcon} />
+      </StyledTouchableOpacity>
+    </ImageWrapper>
+  );
+};
 
 const AddedToBag = ({
   openState,
@@ -26,7 +57,7 @@ const AddedToBag = ({
       isOpen={openState}
       onRequestClose={onRequestClose}
       closeIconDataLocator="added-to-bg-close"
-      animationType="slide"
+      animationType="none"
       headingAlign="left"
       heading={labels.addedToBag}
       headingFontFamily="secondary"
@@ -37,34 +68,56 @@ const AddedToBag = ({
         labelledby: `${labels.addedToBag}`,
         describedby: `${labels.addedToBag}`,
       }}
+      customTransparent
     >
-      <StyledWrapper>
-        {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-        <AddedToBagWrapper>
-          <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-          <AddedToBagViewPoints labels={labels} />
-          <AddedToBagActions
-            labels={labels}
-            navigation={navigation}
-            closeModal={onRequestClose}
-            showAddTobag
-            fromAddedToBagModal
-          />
-          <BossBanner labels={labels} />
-          <StyledAnchorWrapper>
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              anchorVariation="primary"
-              onPress={handleContinueShopping}
-              noLink
-              to=""
-              dataLocator="addedToBag-continueShopping"
-              text={labels.continueShopping}
-            />
-          </StyledAnchorWrapper>
-        </AddedToBagWrapper>
-      </StyledWrapper>
+      <TouchableOpacity
+        accessibilityLabel={labels.overlayAriaText}
+        accessibilityRole="none"
+        onPress={onRequestClose}
+        style={styles.AddedToBagContainer}
+      >
+        <TouchableWithoutFeedback accessibilityRole="none">
+          <StyledWrapper>
+            <RowWrapper>
+              <ModalHeading>
+                <BodyCopy
+                  mobileFontFamily="secondary"
+                  fontWeight="semibold"
+                  textAlign="left"
+                  fontSize="fs16"
+                  text={labels.addedToBag}
+                />
+              </ModalHeading>
+              {getCloseIcon(onRequestClose, labels)}
+            </RowWrapper>
+            {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
+            <AddedToBagWrapper>
+              <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
+              <AddedToBagViewPoints labels={labels} />
+              <AddedToBagActions
+                labels={labels}
+                navigation={navigation}
+                closeModal={onRequestClose}
+                showAddTobag
+                fromAddedToBagModal
+              />
+              <BossBanner labels={labels} />
+              <StyledAnchorWrapper>
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  onPress={handleContinueShopping}
+                  noLink
+                  to=""
+                  dataLocator="addedToBag-continueShopping"
+                  text={labels.continueShopping}
+                />
+              </StyledAnchorWrapper>
+            </AddedToBagWrapper>
+          </StyledWrapper>
+        </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </Modal>
   );
 };

@@ -30,12 +30,6 @@ const CheckoutStack = createStackNavigator(
         routeTo: 'ReviewPage',
       },
     },
-    CheckoutConfirmation: {
-      screen: Checkout,
-      params: {
-        routeTo: 'ConfirmationPage',
-      },
-    },
   },
   {
     defaultNavigationOptions: {

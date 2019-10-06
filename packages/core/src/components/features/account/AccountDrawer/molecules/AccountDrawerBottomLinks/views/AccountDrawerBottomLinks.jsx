@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountDrawerBottomLinks.style';
@@ -16,7 +17,7 @@ const AccountDrawerBottomLinks = props => {
             fontSizeVariation="large"
             fontFamily="secondary"
             anchorVariation="primary"
-            text={labels.CREATE_ACC_MY_FAV}
+            text={getLabelValue(labels, 'CREATE_ACC_MY_FAV')}
           />
         </div>
         <div className="elem-pt-MED elem-pb-MED bottomLine">
@@ -24,7 +25,7 @@ const AccountDrawerBottomLinks = props => {
             fontSizeVariation="large"
             fontFamily="secondary"
             anchorVariation="primary"
-            text={labels.CREATE_ACC_MY_PLACE_REWARDS_CC}
+            text={getLabelValue(labels, 'CREATE_ACC_MY_PLACE_REWARDS_CC')}
           />
         </div>
         <div className="elem-pt-MED elem-pb-MED bottomLine">
@@ -34,7 +35,7 @@ const AccountDrawerBottomLinks = props => {
             to={internalEndpoints.myWalletPage.link}
             asPath={internalEndpoints.myWalletPage.path}
             anchorVariation="primary"
-            text={labels.CREATE_ACC_WALLET}
+            text={getLabelValue(labels, 'CREATE_ACC_WALLET')}
           />
         </div>
         <div className="elem-pt-MED elem-pb-MED bottomLine">
@@ -42,7 +43,7 @@ const AccountDrawerBottomLinks = props => {
             fontSizeVariation="large"
             fontFamily="secondary"
             anchorVariation="primary"
-            text={labels.CREATE_ACC_ORDERS}
+            text={getLabelValue(labels, 'CREATE_ACC_ORDERS')}
           />
         </div>
         <div className="elem-pt-MED elem-pb-MED bottomLine">

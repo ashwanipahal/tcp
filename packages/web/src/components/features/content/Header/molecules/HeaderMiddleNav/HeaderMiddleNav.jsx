@@ -115,7 +115,7 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className="header-middle-nav-storelocator"
             >
-              <StoreLocatorLink store={store} labels={labels} />
+              <StoreLocatorLink store={store} labels={labels && labels.store} />
             </Col>
             <Col
               className="header-middle-nav-search"
@@ -149,7 +149,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-              <StoreLocatorLink store={store} labels={labels} />
+              <StoreLocatorLink store={store} labels={labels && labels.store} />
               <BrandLogo
                 alt={config[brand].alt}
                 className="header-brand__home-logo--brand"

@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { getAPIConfig } from '@tcp/core/src/utils';
+import BodyCopy from '../BodyCopy';
+import Image from '../Image';
+import { StyledErrorWrapper, ViewWithSpacing } from '../styledWrapper/styledWrapper.native';
+import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
+import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import {
   StyledLabel,
   textInput,
@@ -14,8 +19,8 @@ import {
   item,
   container,
 } from './AutoCompleteComponent.native.style';
-import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
-import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
+
+const errorIcon = require('../../../../assets/alert-triangle.png');
 
 export function getAddressLocationInfo(address) {
   const googleApiStoredDataObj = getCacheData('geocode-response', address);
@@ -57,84 +62,131 @@ export function getAddressLocationInfo(address) {
   });
 }
 
-export const GooglePlacesInput = props => {
-  const {
-    headerTitle,
-    componentRestrictions,
-    onValueChange,
-    initialValue,
-    onSubmitEditing,
-    onEndEditing,
-    refs,
-    onChangeText,
-    clearButtonMode,
-  } = props;
-  const [focussed, setFocussed] = useState(false);
-  const onFocus = () => {
-    setFocussed(true);
+export class GooglePlacesInput extends PureComponent {
+  constructor(props) {
+    super(props);
+    const apiConfigObj = getAPIConfig();
+    const { googleApiKey } = apiConfigObj;
+    this.googleApiKey = googleApiKey;
+    this.state = {
+      listViewDisplayed: false, // we need to handle listViewDisplayed by ourself as library used to set it true on every prop change
+      active: false,
+      touched: false,
+    };
+  }
+
+  onFocus = () => {
+    this.setState({
+      listViewDisplayed: 'auto',
+      active: true,
+    });
   };
 
-  const setValue = value => {
-    if (value) setFocussed(true);
-    return value;
+  onBlur = () => {
+    setTimeout(() => {
+      // Need to add setTimeout as blur is calling first and then request to get detailed response
+      this.setState({
+        active: false,
+        touched: true,
+        listViewDisplayed: false,
+      });
+    }, 0);
   };
 
-  const apiConfigObj = getAPIConfig();
-  const { googleApiKey } = apiConfigObj;
-  return (
-    <Container>
-      <StyledLabel isFocused={focussed}>{headerTitle}</StyledLabel>
-      <GooglePlacesAutocomplete
-        placeholder={null}
-        suppressDefaultStyles
-        minLength={2} // minimum length of text to search
-        autoFocus={false}
-        ref={instance => refs(instance)}
-        returnKeyType="search"
-        fetchDetails
-        renderDescription={row => row.description}
-        onPress={(data, details = null) => {
-          setFocussed(true);
-          onValueChange(details, data.description);
-          // 'details' is provided when fetchDetails = true
-          return [data, details];
-        }}
-        getDefaultValue={() => setValue(initialValue)}
-        query={{
-          key: googleApiKey,
-          components: `country:${componentRestrictions.country[0]}`,
-          types: 'address',
-        }}
-        textInputProps={{
-          onFocus,
-          clearButtonMode,
-          onSubmitEditing: text => {
-            onSubmitEditing(text.nativeEvent.text);
-          },
-          onEndEditing: text => {
-            onEndEditing(text.nativeEvent.text);
-          },
-          onChangeText: text => {
-            onChangeText(text);
-          },
-        }}
-        styles={{
-          textInputContainer,
-          textInput,
-          description,
-          listView,
-          separator,
-          poweredContainer,
-          row: item,
-          container,
-        }}
-        nearbyPlacesAPI="GooglePlacesSearch"
-        debounce={0} // debounce the requests in ms.
-        listViewDisplayed={false}
-      />
-    </Container>
-  );
-};
+  onPress = (data, details = null) => {
+    const { onValueChange } = this.props;
+    this.setState(
+      {
+        listViewDisplayed: false,
+      },
+      () => {
+        onValueChange(details, data.description);
+      }
+    );
+  };
+
+  render() {
+    const {
+      headerTitle,
+      componentRestrictions,
+      onSubmitEditing,
+      onEndEditing,
+      refs,
+      onChangeText,
+      input,
+      initialValue,
+      meta: { error },
+      clearButtonMode,
+    } = this.props;
+    const { listViewDisplayed, active, touched } = this.state;
+    return (
+      <Container>
+        <StyledLabel isFocused={active || input.value}>{headerTitle}</StyledLabel>
+        <GooglePlacesAutocomplete
+          placeholder={null}
+          suppressDefaultStyles
+          minLength={2} // minimum length of text to search
+          autoFocus={false}
+          ref={instance => refs(instance)}
+          returnKeyType="search"
+          fetchDetails
+          renderDescription={row => row.description}
+          listViewDisplayed={listViewDisplayed}
+          onPress={this.onPress}
+          query={{
+            key: this.googleApiKey,
+            components: `country:${componentRestrictions.country[0]}`,
+            types: 'address',
+          }}
+          text={input.value}
+          getDefaultValue={() => initialValue}
+          textInputProps={{
+            name: input.name,
+            onFocus: this.onFocus,
+            onBlur: this.onBlur,
+            clearButtonMode,
+            onSubmitEditing: text => {
+              onSubmitEditing(text.nativeEvent.text);
+            },
+            onEndEditing: text => {
+              onEndEditing(text.nativeEvent.text);
+            },
+            onChangeText: text => {
+              input.onChange(text);
+              onChangeText(text);
+            },
+          }}
+          styles={{
+            textInputContainer,
+            textInput,
+            description,
+            listView,
+            separator,
+            poweredContainer,
+            row: item,
+            container,
+          }}
+          nearbyPlacesAPI="GooglePlacesSearch"
+          debounce={0} // debounce the requests in ms.
+        />
+        {touched && !active && error ? (
+          <StyledErrorWrapper>
+            <ViewWithSpacing spacingStyles="margin-right-XXXS">
+              <Image source={errorIcon} width="15px" height="15px" />
+            </ViewWithSpacing>
+            <BodyCopy
+              mobilefontFamily={['secondary']}
+              fontWeight="semibold"
+              fontSize="fs12"
+              text={error}
+              color="error"
+            />
+          </StyledErrorWrapper>
+        ) : null}
+      </Container>
+    );
+  }
+}
 
 GooglePlacesInput.propTypes = {
   headerTitle: PropTypes.string,
@@ -142,11 +194,13 @@ GooglePlacesInput.propTypes = {
     country: PropTypes.shape([]),
   }),
   onValueChange: PropTypes.func,
-  initialValue: PropTypes.string,
   onSubmitEditing: PropTypes.func,
   onEndEditing: PropTypes.func,
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
+  input: PropTypes.shape({}),
+  meta: PropTypes.shape({}),
+  initialValue: PropTypes.string,
   clearButtonMode: PropTypes.string,
 };
 
@@ -156,11 +210,13 @@ GooglePlacesInput.defaultProps = {
     country: [],
   },
   onValueChange: () => {},
-  initialValue: '',
   onSubmitEditing: () => {},
   onEndEditing: () => {},
   refs: () => {},
   onChangeText: () => {},
+  input: {},
+  meta: {},
+  initialValue: '',
   clearButtonMode: 'while-editing',
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   ParentContainer,
   StyledHeading,
@@ -17,6 +18,7 @@ import PointsHistory from '../../../../common/organism/PointsHistory';
 import EarnExtraPointsTileContainer from '../../../../common/organism/EarnExtraPointsTile';
 
 const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
+  const { commonLabels } = otherProps;
   return (
     <View className={className}>
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
@@ -24,7 +26,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            text={getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}
           />
         </StyledHeading>
         <UnderlineStyle />
@@ -32,7 +34,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.placeRewards.lbl_common_point_balance}
+            text={getLabelValue(commonLabels, 'lbl_common_point_balance')}
           />
           <RewardsPoints />
         </StyledView>
@@ -41,7 +43,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             <BodyCopy
               fontSize="fs16"
               fontWeight="extrabold"
-              text={labels.placeRewards.lbl_my_rewards_points_history}
+              text={getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
             />
           </StyledHeading>
           <PointsHistory {...otherProps} />

@@ -8,6 +8,9 @@ const ERRORS_MAP = require('./errorResponseMapping/index.json');
  * @returns {Array} list of errors
  */
 const getErrorList = response => {
+  if (!response || !response.body) {
+    return false;
+  }
   const {
     body: { errorCode, errorKey, errorMessageKey, errorMessage },
   } = response;
@@ -85,7 +88,7 @@ const getErrorKey = ({ errorKey, errorCode, errorMessageKey }) =>
  * @returns {String} errorObject
  */
 export const verifyErrorResponse = response => {
-  const errorsList = getErrorList(response);
+  const errorsList = getErrorList(response) || [];
 
   let errorCode = '';
   const errorMessage = {};

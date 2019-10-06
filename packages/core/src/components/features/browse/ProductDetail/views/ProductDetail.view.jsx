@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { isClient } from '@tcp/core/src/utils';
-import { Row, Col, RichText } from '../../../../common/atoms';
+import { Row, Col } from '../../../../common/atoms';
 import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle from '../ProductDetail.style';
@@ -13,6 +13,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator } from '../../../../../utils';
+import ProductDescription from '../molecules/ProductDescription/views';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -50,6 +51,8 @@ class ProductDetailView extends React.Component {
       className,
       productDetails,
       longDescription,
+      shortDescription,
+      itemPartNumber,
       breadCrumbs,
       currency,
       productInfo,
@@ -143,7 +146,13 @@ class ProductDetailView extends React.Component {
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="product-detail-section">
-              <RichText richTextHtml={longDescription} />
+              <ProductDescription
+                productId={itemPartNumber}
+                isShowMore={false}
+                pdpLabels={pdpLabels}
+                shortDescription={shortDescription}
+                longDescription={longDescription}
+              />
             </div>
           </Col>
         </Row>
@@ -189,6 +198,8 @@ ProductDetailView.propTypes = {
   handleAddToBag: PropTypes.func.isRequired,
   productDetails: PropTypes.shape({}),
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
@@ -202,11 +213,13 @@ ProductDetailView.defaultProps = {
   className: '',
   productDetails: {},
   longDescription: '',
+  shortDescription: '',
   breadCrumbs: {},
   currency: '',
   plpLabels: {
     lbl_sort: '',
   },
+  itemPartNumber: '',
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',

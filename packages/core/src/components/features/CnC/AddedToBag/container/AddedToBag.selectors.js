@@ -18,6 +18,10 @@ export const getAddedToBagError = state => {
   return state.AddedToBagReducer.get('error');
 };
 
+export const getAddedToPickupError = state => {
+  return state.AddedToBagReducer.get('pickupError');
+};
+
 export const filterItemObject = (arr, searchedValue) => {
   const filteredValue = arr.filter(value => {
     return (

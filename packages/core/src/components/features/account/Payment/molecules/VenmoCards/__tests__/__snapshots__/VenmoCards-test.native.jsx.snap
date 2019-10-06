@@ -13,7 +13,9 @@ exports[`VenmoCardList Component should render correctly 1`] = `
   toggleModal={[Function]}
   venmoCardList={Immutable.List []}
 >
-  <Styled(Text) />
+  <Styled(Text)>
+    lbl_payment_venmoHeading
+  </Styled(Text)>
 </View>
 `;
 
@@ -48,7 +50,9 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     ]
   }
 >
-  <Styled(Text) />
+  <Styled(Text)>
+    lbl_payment_venmoHeading
+  </Styled(Text)>
   <ReduxForm
     card={
       Object {

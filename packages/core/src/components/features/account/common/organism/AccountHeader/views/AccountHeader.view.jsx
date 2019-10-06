@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import RewardsPoints from '../../RewardsPoints';
 import RewardsPointsBanner from '../molecule/RewardsPointsBanner';
@@ -32,7 +33,7 @@ export const AccountHeader = ({
         className="hide-on-mobile hide-on-tablet"
       >
         <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
-          {`${labels.lbl_overview_greeting} ${name || ''}`}
+          {`${getLabelValue(labels, 'lbl_overview_greeting')} ${name || ''}`}
         </BodyCopy>
       </Col>
       {!isCA && (

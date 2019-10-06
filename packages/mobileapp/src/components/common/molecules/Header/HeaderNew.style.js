@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
-import { isDisplayWithNotch } from '@tcp/core/src/utils/dimensions';
 import { isAndroid } from '@tcp/core/src/utils/utils.app';
 
 const getAdditionalStyle = props => {
-  const { theme } = props;
-  const headerHeight = isDisplayWithNotch()
-    ? theme.spacing.LAYOUT_SPACING.XL
+  const { theme, showSearch } = props;
+  const headerHeight = showSearch
+    ? theme.spacing.LAYOUT_SPACING.LRGS
     : theme.spacing.LAYOUT_SPACING.LRG;
+
   return {
     ...(isAndroid() && { height: headerHeight }),
   };
@@ -27,8 +27,13 @@ export const SafeAreaViewStyle = styled.SafeAreaView`
 `;
 
 export const Container = styled.View`
-  flex-direction: row;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const HeaderContainer = styled.View`
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
