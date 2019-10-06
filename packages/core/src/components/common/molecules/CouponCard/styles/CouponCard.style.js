@@ -116,6 +116,9 @@ const styles = css`
     background: none;
     padding-bottom: 0;
   }
+  .couponTitle {
+    word-break: ${props => (props.isCarouselView ? 'break-word' : 'normal')};
+  }
 `;
 
 export default styles;
