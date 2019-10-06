@@ -418,6 +418,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1099,6 +1100,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1735,7 +1737,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -1764,7 +1766,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -1772,6 +1774,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -1779,10 +1782,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -1790,6 +1794,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -1797,6 +1802,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -2071,7 +2077,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -2100,7 +2106,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -2108,6 +2114,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -2115,10 +2122,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -2126,6 +2134,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -2133,6 +2142,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -2407,7 +2417,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -2436,7 +2446,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -2444,6 +2454,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -2451,10 +2462,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -2462,6 +2474,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -2469,6 +2482,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={false}
@@ -2668,7 +2682,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -2697,7 +2711,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -2705,6 +2719,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -2712,10 +2727,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -2723,6 +2739,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -2730,6 +2747,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -3004,7 +3022,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -3033,7 +3051,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -3041,6 +3059,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -3048,10 +3067,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -3059,6 +3079,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -3066,6 +3087,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -3340,7 +3362,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -3369,7 +3391,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -3377,6 +3399,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -3384,10 +3407,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -3395,6 +3419,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -3402,6 +3427,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={false}
@@ -3601,7 +3627,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -3630,7 +3656,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -3638,6 +3664,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -3645,10 +3672,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -3656,6 +3684,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -3663,6 +3692,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={false}
@@ -3862,7 +3892,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -3891,7 +3921,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -3899,6 +3929,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -3906,10 +3937,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -3917,6 +3949,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -3924,6 +3957,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -4198,7 +4232,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -4227,7 +4261,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -4235,6 +4269,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -4242,10 +4277,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -4253,6 +4289,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -4260,6 +4297,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -4534,7 +4572,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -4563,7 +4601,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -4571,6 +4609,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -4578,10 +4617,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -4589,6 +4629,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -4596,6 +4637,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={false}
@@ -4795,7 +4837,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -4824,7 +4866,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -4832,6 +4874,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -4839,10 +4882,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -4850,6 +4894,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -4857,6 +4902,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -5131,7 +5177,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -5160,7 +5206,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -5168,6 +5214,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -5175,10 +5222,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -5186,6 +5234,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -5193,6 +5242,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}
@@ -5467,7 +5517,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -5496,7 +5546,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -5504,6 +5554,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -5511,10 +5562,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -5522,6 +5574,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -5529,6 +5582,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={false}
@@ -5728,7 +5782,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                           "componentStyle": ComponentStyle {
                             "componentId": "sc-bZQynM",
                             "isStatic": false,
-                            "lastClassName": "ilWdlh",
+                            "lastClassName": "bfKBuE",
                             "rules": Array [
                               "
   ",
@@ -5757,7 +5811,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM ilWdlh"
+                        className="store-intl-item sc-bZQynM bfKBuE"
                         colSize={
                           Object {
                             "large": 2,
@@ -5765,6 +5819,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": 3,
                           }
                         }
+                        customNthBreak={0}
                         hideCol={
                           Object {
                             "large": false,
@@ -5772,10 +5827,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                             "small": true,
                           }
                         }
+                        ignoreNthRule={false}
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM ilWdlh"
+                          className="store-intl-item sc-bZQynM bfKBuE"
                           colSize={
                             Object {
                               "large": 2,
@@ -5783,6 +5839,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": 3,
                             }
                           }
+                          customNthBreak={0}
                           hideCol={
                             Object {
                               "large": false,
@@ -5790,6 +5847,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                               "small": true,
                             }
                           }
+                          ignoreNthRule={false}
                         >
                           <Styled(StoreAddressIntl)
                             isShopInShop={true}

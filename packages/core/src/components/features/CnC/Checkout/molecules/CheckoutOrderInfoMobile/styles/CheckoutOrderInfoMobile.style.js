@@ -39,6 +39,16 @@ const styles = css`
       }
     }
   }
+
+  .venmo-payment-method-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .venmo-paid-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
 
 export default styles;

@@ -3,6 +3,8 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import InstagramLogin from 'react-native-instagram-login';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -84,10 +86,11 @@ class Socialview extends React.PureComponent {
                 spacingStyles="margin-left-MED margin-right-LRG"
                 text={
                   elem.isConnected
-                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${
-                        labels.lbl_prefrence_connected
-                      }`
-                    : `${labels.lbl_prefrence_connectTo} ${
+                    ? `${config.SOCIAL_ACCOUNTS[elem.socialAccount]} ${getLabelValue(
+                        labels,
+                        'lbl_prefrence_connected'
+                      )}`
+                    : `${getLabelValue(labels, 'lbl_prefrence_connectTo')} ${
                         config.SOCIAL_ACCOUNTS[elem.socialAccount]
                       }`
                 }
@@ -207,13 +210,24 @@ class Socialview extends React.PureComponent {
     this.socialAccounts = accountsInfo;
   };
 
+  dispatchSaveSocial = (socialType, accessToken, userId) => {
+    const { saveSocialAcc, pointModalClose } = this.props;
+    const socialAccInfo = {
+      [socialType]: socialType,
+      accessToken,
+      userId,
+      isconnected: false,
+    };
+    saveSocialAcc({ socialAccInfo });
+    pointModalClose({ state: true });
+  };
+
   /**
    * @function Handling of social plugins - facebook login/log out
    * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
   handleSocialNetwork(isSocialAccount, isConnected) {
-    const { saveSocialAcc, pointModalClose } = this.props;
     switch (isSocialAccount) {
       case 'Facebook':
         if (!isConnected) {
@@ -223,20 +237,16 @@ class Socialview extends React.PureComponent {
               // do nothing
             } else {
               AccessToken.getCurrentAccessToken().then(data => {
-                const socialAccInfo = {
-                  facebook: 'facebook',
-                  accessToken: data.accessToken,
-                  userId: data.userID,
-                  isconnected: false,
-                };
-                saveSocialAcc({ socialAccInfo });
-                pointModalClose({ state: true });
+                this.dispatchSaveSocial('facebook', data.accessToken, data.userID);
               });
             }
           });
         }
         return null;
       case 'Instagram':
+        if (!isConnected) {
+          this.instagramLogin.show();
+        }
         return null;
       default:
         return null;
@@ -248,6 +258,9 @@ class Socialview extends React.PureComponent {
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
+    const { assetHost, siteId, instakey } = getAPIConfig();
+    const redirectUrl = `${assetHost}/${siteId}/instagram`;
+
     return (
       <View>
         <BodyCopy
@@ -262,6 +275,15 @@ class Socialview extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_prefrence_social_text')}
         />
         {this.renderAccountsInformation(this.socialAccounts, labels)}
+        <InstagramLogin
+          ref={ref => {
+            this.instagramLogin = ref;
+          }}
+          redirectUrl={redirectUrl}
+          clientId={instakey}
+          scopes={['basic']}
+          onLoginSuccess={token => this.dispatchSaveSocial('instagram', token, token.split('.')[0])}
+        />
       </View>
     );
   }

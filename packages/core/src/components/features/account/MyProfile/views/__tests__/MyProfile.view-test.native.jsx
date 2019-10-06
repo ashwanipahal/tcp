@@ -7,6 +7,7 @@ describe('Myprofile', () => {
     const props = {
       labels: {},
       handleComponentChange: () => {},
+      componentProps: {},
     };
     const tree = shallow(<MyProfile {...props} />);
     expect(tree).toMatchSnapshot();

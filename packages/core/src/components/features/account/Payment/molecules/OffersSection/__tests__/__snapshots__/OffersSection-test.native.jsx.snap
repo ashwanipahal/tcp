@@ -27,7 +27,7 @@ exports[`Offers Component should render correctly 1`] = `
         javaScriptEnabled={false}
         source={
           Object {
-            "html": undefined,
+            "html": "lbl_payment_offersMessageMobile",
           }
         }
         thirdPartyCookiesEnabled={false}

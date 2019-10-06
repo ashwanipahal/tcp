@@ -7,7 +7,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
     ctaLink="accountOverviewMobile"
     ctaTitle="Edit personal Info"
     handleComponentChange={[Function]}
-    title=""
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles="XXXXXXX"
@@ -28,6 +28,8 @@ exports[`PersonalInformation component should render correctly 1`] = `
     />
   </MyProfileTile>
   <ModalNative
+    heading="lbl_profile_heading"
+    inheritedStyles=""
     isOpen={false}
     isOverlay={false}
     onRequestClose={[Function]}
@@ -44,9 +46,9 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
   <MyProfileTile
     birthdaySaving={false}
     ctaLink="accountOverviewMobile"
-    ctaTitle=""
+    ctaTitle="lbl_profile_edit_personal_info"
     handleComponentChange={[Function]}
-    title=""
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles=""
@@ -60,6 +62,8 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
     />
   </MyProfileTile>
   <ModalNative
+    heading="lbl_profile_heading"
+    inheritedStyles=""
     isOpen={false}
     isOverlay={false}
     onRequestClose={[Function]}

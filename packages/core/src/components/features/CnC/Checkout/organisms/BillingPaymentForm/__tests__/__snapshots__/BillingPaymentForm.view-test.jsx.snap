@@ -1752,9 +1752,6 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
         }
       }
     />
-    <div
-      className="payment-paypal-container"
-    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
