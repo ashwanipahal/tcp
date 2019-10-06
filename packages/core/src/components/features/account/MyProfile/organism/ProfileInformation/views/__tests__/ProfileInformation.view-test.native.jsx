@@ -13,6 +13,7 @@ describe('ProfileInformation', () => {
     },
     handleComponentChange: () => {},
     userSurvey: fromJS({ answers1: [], answers2: [] }),
+    componentProps: {},
   };
 
   it('should render correctly', () => {

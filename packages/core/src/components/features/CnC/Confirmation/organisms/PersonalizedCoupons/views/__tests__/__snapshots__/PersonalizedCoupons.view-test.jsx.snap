@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalizedCoupon View should not render loyality offers for canada 1`] = `
+<div
+  className="className"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Special Coupons just for you!
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      (Coupon(s) will also he included in your oder emails.)
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(PersonalizedCoupon)
+    coupon={
+      Object {
+        "categoryType": "Marketing_Offers",
+        "code": "Y16905Y9W1RIWT",
+        "description": "description",
+        "disclaimer": "20% OFF YOUR ENTIRE PURCHASE",
+        "endDate": "Oct 15th, 2019",
+        "isPastStartDate": true,
+        "startDate": "Oct 2nd, 2019",
+      }
+    }
+    detailCoupon={[Function]}
+    key="Y16905Y9W1RIWT"
+    labels={
+      Object {
+        "detailsLink": "details",
+        "heading1": "Special Coupons just for you!",
+        "heading2": "(Coupon(s) will also he included in your oder emails.)",
+        "nowThrough": "Now through",
+        "validTill": "Valid",
+        "webCode": "WEB CODE: ",
+      }
+    }
+    printCoupon={[Function]}
+  />
+</div>
+`;
+
+exports[`PersonalizedCoupon View should render correctly for empty coupons state 1`] = `""`;
+
+exports[`PersonalizedCoupon View should render correctly for full filled state 1`] = `
+<div
+  className="className"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Special Coupons just for you!
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      (Coupon(s) will also he included in your oder emails.)
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(PersonalizedCoupon)
+    coupon={
+      Object {
+        "categoryType": "Marketing_Offers",
+        "code": "Y16905Y9W1RIWT",
+        "description": "description",
+        "disclaimer": "20% OFF YOUR ENTIRE PURCHASE",
+        "endDate": "Oct 15th, 2019",
+        "isPastStartDate": true,
+        "startDate": "Oct 2nd, 2019",
+      }
+    }
+    detailCoupon={[Function]}
+    key="Y16905Y9W1RIWT"
+    labels={
+      Object {
+        "detailsLink": "details",
+        "heading1": "Special Coupons just for you!",
+        "heading2": "(Coupon(s) will also he included in your oder emails.)",
+        "nowThrough": "Now through",
+        "validTill": "Valid",
+        "webCode": "WEB CODE: ",
+      }
+    }
+    printCoupon={[Function]}
+  />
+  <Styled(PersonalizedCoupon)
+    coupon={
+      Object {
+        "categoryType": "Loyalty_Offers",
+        "code": "Y16905Y9W1RIWT",
+        "description": "description",
+        "disclaimer": "20% OFF YOUR ENTIRE PURCHASE",
+        "endDate": "Oct 15th, 2019",
+        "isPastStartDate": true,
+        "startDate": "Oct 2nd, 2019",
+      }
+    }
+    detailCoupon={[Function]}
+    key="Y16905Y9W1RIWT"
+    labels={
+      Object {
+        "detailsLink": "details",
+        "heading1": "Special Coupons just for you!",
+        "heading2": "(Coupon(s) will also he included in your oder emails.)",
+        "nowThrough": "Now through",
+        "validTill": "Valid",
+        "webCode": "WEB CODE: ",
+      }
+    }
+    printCoupon={[Function]}
+  />
+</div>
+`;
+
+exports[`PersonalizedCoupon View should simulate details modal open click 1`] = `
+<div
+  className="className"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Special Coupons just for you!
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      (Coupon(s) will also he included in your oder emails.)
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(PersonalizedCoupon)
+    coupon={
+      Object {
+        "categoryType": "Marketing_Offers",
+        "code": "Y16905Y9W1RIWT",
+        "description": "description",
+        "disclaimer": "20% OFF YOUR ENTIRE PURCHASE",
+        "endDate": "Oct 15th, 2019",
+        "isPastStartDate": true,
+        "startDate": "Oct 2nd, 2019",
+      }
+    }
+    detailCoupon={[Function]}
+    key="Y16905Y9W1RIWT"
+    labels={
+      Object {
+        "detailsLink": "details",
+        "heading1": "Special Coupons just for you!",
+        "heading2": "(Coupon(s) will also he included in your oder emails.)",
+        "nowThrough": "Now through",
+        "validTill": "Valid",
+        "webCode": "WEB CODE: ",
+      }
+    }
+    printCoupon={[Function]}
+  />
+</div>
+`;
+
+exports[`PersonalizedCoupon View should simulate print modal open click 1`] = `
+<div
+  className="className"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Special Coupons just for you!
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="gray[800]"
+      component="p"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      (Coupon(s) will also he included in your oder emails.)
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(PersonalizedCoupon)
+    coupon={
+      Object {
+        "categoryType": "Marketing_Offers",
+        "code": "Y16905Y9W1RIWT",
+        "description": "description",
+        "disclaimer": "20% OFF YOUR ENTIRE PURCHASE",
+        "endDate": "Oct 15th, 2019",
+        "isPastStartDate": true,
+        "startDate": "Oct 2nd, 2019",
+      }
+    }
+    detailCoupon={[Function]}
+    key="Y16905Y9W1RIWT"
+    labels={
+      Object {
+        "detailsLink": "details",
+        "heading1": "Special Coupons just for you!",
+        "heading2": "(Coupon(s) will also he included in your oder emails.)",
+        "nowThrough": "Now through",
+        "validTill": "Valid",
+        "webCode": "WEB CODE: ",
+      }
+    }
+    printCoupon={[Function]}
+  />
+</div>
+`;
