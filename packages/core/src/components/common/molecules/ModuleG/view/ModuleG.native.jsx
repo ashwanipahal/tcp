@@ -182,7 +182,6 @@ class ModuleG extends React.PureComponent {
                 carouselConfig={{
                   autoplay: false,
                 }}
-                autoplay={false}
               />
             ) : null}
           </ImageSlidesWrapper>
@@ -205,7 +204,6 @@ class ModuleG extends React.PureComponent {
                 carouselConfig={{
                   autoplay: false,
                 }}
-                autoplay={false}
               />
             ) : null}
           </ImageSlidesWrapper>
