@@ -2,7 +2,7 @@
 
 exports[`EmptyOrderTile should render correctly 1`] = `
 <Styled(BodyCopy)
-  className=""
+  className="elem-mb-XXL"
   color="text.primary"
   component="p"
   fontFamily="primary"

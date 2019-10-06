@@ -5,8 +5,8 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import utils from '@tcp/core/src/utils';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import styles from '../styles/EmptyOrdersTile.styles';
+// import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+// import styles from '../styles/EmptyOrdersTile.styles';
 import internalEndpoints from '../../../internalEndpoints';
 
 const goToHomePage = () => {
@@ -14,9 +14,9 @@ const goToHomePage = () => {
   return null;
 };
 
-export const EmptyOrderTile = ({labels, className}) => {
+export const EmptyOrderTile = ({ labels }) => {
   return (
-    <BodyCopy className={className}>
+    <BodyCopy className="elem-mb-XXL">
       <Col
         colSize={{
           small: 6,
@@ -28,7 +28,7 @@ export const EmptyOrderTile = ({labels, className}) => {
           {getLabelValue(labels, 'lbl_ordersTile_noOrderYet', 'orders')}
         </BodyCopy>
       </Col>
-      <BodyCopy component='div' className="elem-mt-LRG">
+      <BodyCopy component="div" className="elem-mt-LRG">
         <Button
           buttonVariation="fixed-width"
           fill="WHITE"
@@ -46,12 +46,10 @@ export const EmptyOrderTile = ({labels, className}) => {
 
 EmptyOrderTile.propTypes = {
   labels: PropTypes.shape({}),
-  className: PropTypes.string,
 };
 
 EmptyOrderTile.defaultProps = {
   labels: {},
-  className: '',
 };
 
-export default withStyles(EmptyOrderTile, styles);
+export default EmptyOrderTile;

@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/OrdersTile.style';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import EmptyOrdersTile from '../../../molecule/EmptyOrdersTile';
 import { OrdersTileItem } from '../molecules/OrderTileItem/views/OrdersTileItem.view';
+import internalEndpoints from '../../../internalEndpoints';
 
 export const OrdersTile = ({ labels, ordersList }) => {
   const selectedOrders = ordersList && ordersList.orders.slice(0, 2);
@@ -22,8 +21,8 @@ export const OrdersTile = ({ labels, ordersList }) => {
       title={getLabelValue(labels, 'lbl_ordersTile_heading', 'orders')}
       ctaTitle={getLabelValue(labels, 'lbl_ordersTile_viewAllOrders', 'orders')}
       dataLocatorPrefix="orders"
-      ctaLink="/account?id=orders"
-      ctaPath="/account/orders"
+      ctaLink={internalEndpoints.myOrderPage.link}
+      ctaPath={internalEndpoints.myOrderPage.path}
     >
       {ordersItemList}
     </AccountOverviewTile>
@@ -42,4 +41,4 @@ OrdersTile.defaultProps = {
   },
 };
 
-export default withStyles(OrdersTile, styles);
+export default OrdersTile;

@@ -51,7 +51,7 @@ exports[`OrdersTile component should render correctly 2`] = `
   dataLocatorPrefix="orders"
   title="lbl_ordersTile_heading"
 >
-  <Styled(EmptyOrderTile)
+  <EmptyOrderTile
     labels={Object {}}
   />
 </Styled(AccountOverviewTile)>

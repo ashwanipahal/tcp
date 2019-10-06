@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { BodyCopy } from '../../../../../../../../common/atoms';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
-import withStyles from '../../../../../../../../common/hoc/withStyles';
-import styles from '../../../styles/OrdersTile.style';
 import internalEndpoints from '../../../../../internalEndpoints';
 
 export const OrdersTileItem = ({ labels, orderItem }) => {
@@ -67,4 +65,4 @@ OrdersTileItem.propTypes = {
   orderItem: PropTypes.shape({}).isRequired,
 };
 
-export default withStyles(OrdersTileItem, styles);
+export default OrdersTileItem;
