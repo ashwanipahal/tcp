@@ -39,23 +39,7 @@ export const Wrapper = styled.View`
 `;
 
 export const PromoContainer = styled.View`
-  ${props =>
-    props.layout === 'alt'
-      ? `margin-top: ${props.theme.spacing.ELEM_SPACING.SM}; `
-      : `margin-top: ${props.theme.spacing.ELEM_SPACING.XXS};`};
-`;
-
-export const HeaderContainer = styled.View`
-  align-items: center;
-  ${props =>
-    props.layout === 'alt'
-      ? ` width:100%;
-      `
-      : `background:white;
- margin-left:62px;
- margin-right:62px;
- width:70%;
- `};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export const SecondHeaderContainer = styled.View`
@@ -99,7 +83,7 @@ export const Circle = styled.View`
   width: 40px;
   height: 40px;
   border: 1px solid ${props => props.theme.colorPalette.gray['900']};
-  background: white;
+  background: ${props => props.theme.colorPalette.white};
   border-radius: 20;
 `;
 
@@ -131,7 +115,7 @@ export const SHADOW = styled.View`
   position: absolute;
   background: ${props => props.theme.colorPalette.white};
   justify-content: center;
-  border-color: white;
+  border-color: ${props => props.theme.colorPalette.white};
   border-width: 1;
   margin-top: -12px;
 `;

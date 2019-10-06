@@ -78,6 +78,9 @@ class ModuleG extends React.PureComponent {
     });
   };
 
+  /**
+   * @param {object} props : Props for renderCarouselSlide accept slideProps & parallaxProps and render the image sliding view.
+   */
   renderCarouselSlide = (slideProps, parallaxProps) => {
     const { item } = slideProps;
     const { navigation } = this.props;
@@ -121,42 +124,26 @@ class ModuleG extends React.PureComponent {
     );
   };
 
-  render() {
-    const {
-      selectedCategoryId,
-      selectedTabItem: {
-        singleCTAButton: selectedSingleCTAButton,
-        singleCTAButtonCart: selectedSingleCTAButtonCart,
-      } = {},
-    } = this.state;
-    const { productTabList = {}, navigation, headerText, promoBanner, divTabs } = this.props;
-
-    let selectedProductList = productTabList[selectedCategoryId] || [];
-    selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-
-    const selectedProductCarouselList = selectedProductList.reduce(
-      (list, item, index) => {
-        const lastList = list[list.length - 1];
-        if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
-          list.push([{ ...item, productItemIndex: index }]);
-        } else {
-          lastList.push({ ...item, productItemIndex: index });
-        }
-
-        return list;
-      },
-      [[]]
-    );
-
+  /**
+   * @param {object} props : Props for renderView multi type of banner list, button list, header text.
+   * @desc This is Method return the complete View with CTA Button .
+   */
+  renderView = (
+    selectedProductCarouselList,
+    selectedProductList,
+    selectedSingleCTAButton,
+    selectedSingleCTAButtonCart
+  ) => {
+    const { navigation, headerText, promoBanner, divTabs } = this.props;
     return (
       <Container>
         <MessageContainer>
           <Wrapper>
-            {[headerText[0]] && (
+            {headerText && headerText.length > 0 && (
               <LinkText
                 navigation={navigation}
-                headerText={[headerText[0]]}
-                testID={getLocator('moduleG_header_text_0')}
+                headerText={headerText}
+                locator={getLocator('moduleG_header_text')}
                 useStyle
               />
             )}
@@ -248,6 +235,44 @@ class ModuleG extends React.PureComponent {
           />
         ) : null}
       </Container>
+    );
+  };
+
+  /**
+   * @desc This is Method return the view with TAB List.
+   */
+  render() {
+    const {
+      selectedCategoryId,
+      selectedTabItem: {
+        singleCTAButton: selectedSingleCTAButton,
+        singleCTAButtonCart: selectedSingleCTAButtonCart,
+      } = {},
+    } = this.state;
+    const { productTabList = {} } = this.props;
+
+    let selectedProductList = productTabList[selectedCategoryId] || [];
+    selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
+
+    const selectedProductCarouselList = selectedProductList.reduce(
+      (list, item, index) => {
+        const lastList = list[list.length - 1];
+        if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
+          list.push([{ ...item, productItemIndex: index }]);
+        } else {
+          lastList.push({ ...item, productItemIndex: index });
+        }
+
+        return list;
+      },
+      [[]]
+    );
+
+    return this.renderView(
+      selectedProductCarouselList,
+      selectedProductList,
+      selectedSingleCTAButton,
+      selectedSingleCTAButtonCart
     );
   }
 }
