@@ -32,6 +32,8 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils.web';
 
 export {
@@ -67,8 +69,6 @@ export {
   parseStoreHours,
   parseBoolean,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,

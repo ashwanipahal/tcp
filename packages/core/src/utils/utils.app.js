@@ -4,6 +4,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
 import { getAPIConfig } from './utils';
 
 import config from '../components/common/atoms/Anchor/config.native';
@@ -578,4 +579,23 @@ export const validateColor = color => {
   }
 
   return colorSheet.viewColor.color;
+};
+
+/**
+ * @method getTranslatedMomentDate
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ * @param {upperCase} formate use for convert locate formate
+ */
+export const getTranslatedMomentDate = (dateInput, language = 'en', format) => {
+  const { day, month, date, year } = format;
+  moment.locale(language);
+  const currentDate = dateInput ? moment(dateInput) : moment();
+  return {
+    day: currentDate.format(day),
+    month: currentDate.format(month),
+    date: currentDate.format(date),
+    year: currentDate.format(year),
+  };
 };
