@@ -4,6 +4,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import PromoListTile from '@tcp/core/src/components/common/molecules/PromoListTile/views';
 import styles from '../styles/ExtraPoints.style';
 import externalEndpoints from '../../common/externalEndpoints';
 import internalEndpoints from '../../common/internalEndpoints';
@@ -11,7 +12,6 @@ import internalEndpoints from '../../common/internalEndpoints';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import DetailedEarnExtraPointsSingleTileComponent from '../../common/molecule/DetailedEarnExtraPointsTile/views/DetailedEarnExtraPointsSingleTile.view';
-
 /**
  * This function getNotificationMarkup use for return the notification message
  * can be passed in the component.
@@ -62,6 +62,40 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
 };
 
 /**
+ * @function return  Used to render the promolist tiles
+ * @param    {[Object]}  promoListData tile data from graphQL
+ * @return   {[Object]} JSX of the component
+ */
+const getPromoTileData = promoListData => {
+  return promoListData ? (
+    <Row fullBleed>
+      {promoListData.map((item, index) => {
+        return (
+          <>
+            {item && (index === 0 || index === 2) && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
+                <PromoListTile key={index.toString()} tileData={item} />
+              </Col>
+            )}
+            {item && index === 1 && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderDesktop">
+                <PromoListTile key={index.toString()} tileData={item} />
+              </Col>
+            )}
+            {item && index === 3 && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+                <PromoListTile key={index.toString()} tileData={item} />
+              </Col>
+            )}
+          </>
+        );
+      })}
+    </Row>
+  ) : (
+    ''
+  );
+};
+/**
  * This function component use for return the EarnPoints
  * can be passed in the component.
  * @param waysToEarn - waysToEarn object used for showing extra points details
@@ -74,6 +108,7 @@ const EarnPoints = ({
   waysToEarn,
   earnedPointsNotification,
   onViewActivityDetails,
+  promoListData,
 }) => {
   let fistRowItem = [];
   let secondRowItem = [];
@@ -99,6 +134,45 @@ const EarnPoints = ({
     <div className={className}>
       <FormPageHeadingComponent heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')} />
       {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
+      <div className="extraEarningWrapper">
+        <BodyCopy
+          fontSize="fs28"
+          fontWeight="black"
+          textAlign="center"
+          fontFamily="primary"
+          className="earningExtra"
+          data-locator="earnextrapoints-youAreEarning"
+        >
+          {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_youAreEarning')}
+        </BodyCopy>
+        <BodyCopy
+          fontSize="fs16"
+          fontWeight="regular"
+          textAlign="center"
+          fontFamily="secondary"
+          className="checkOffers"
+          data-locator="earnextrapoints-morePointsText"
+        >
+          {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_checkOffers')}
+        </BodyCopy>
+        <BodyCopy textAlign="center" className="learnMore">
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            noLink
+            textAlign="center"
+            href="#"
+            anchorVariation="primary"
+            dataLocator="shipping internationally"
+            target="_self"
+          >
+            {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_learnMore')}
+          </Anchor>
+        </BodyCopy>
+      </div>
+
+      {getPromoTileData(promoListData)}
+
       {waysToEarn && waysToEarn.length && (
         <>
           <BodyCopy
@@ -199,6 +273,7 @@ EarnPoints.propTypes = {
     lbl_earnExtraPoints_place_rewards: PropTypes.string,
     lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
+  promoListData: PropTypes.shape([]),
 };
 
 EarnPoints.defaultProps = {
@@ -214,6 +289,7 @@ EarnPoints.defaultProps = {
     lbl_earnExtraPoints_place_rewards: '',
     lbl_earnExtraPoints_view_points_history: '',
   },
+  promoListData: [],
 };
 
 export default withStyles(EarnPoints, styles);

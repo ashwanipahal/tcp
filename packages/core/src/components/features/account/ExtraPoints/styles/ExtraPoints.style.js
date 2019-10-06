@@ -22,4 +22,24 @@ export default css`
       margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
   }
+  .extraEarningWrapper {
+    border: 2px solid ${props => props.theme.colorPalette.orange[800]};
+  }
+  .earningExtra {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+  .checkOffers {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  .learnMore {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
 `;
