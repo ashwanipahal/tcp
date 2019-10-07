@@ -421,5 +421,219 @@ exports[`HomePageView should render correctly 1`] = `
     theme={Object {}}
     url=""
   />
+  <Connect(ModuleG)
+    bgColor="#d8d8d8"
+    divTabs={
+      Array [
+        Object {
+          "category": Object {
+            "cat_id": "47502>47535>54071",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 1",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables 1",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47526",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 2",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 0",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47503>47544",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 3",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables 2",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "BOY",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": "47501>47526",
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "SHOP ALL 4",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables 4",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER BOY",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "large_text_black",
+              "text": "ALL MATCHABLES",
+            },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "THE SHORT SHOP",
+            },
+          ],
+        },
+      ]
+    }
+    layout="alt"
+    mediaLinkedList={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Boys",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boys",
+            "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1562731929/Image_14_bp7ih0.jpg",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Boys",
+            "title": "Boys",
+          },
+          "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+        },
+        Object {
+          "image": Object {
+            "alt": "Girls",
+            "crop_d": "h_189,w_177",
+            "crop_m": "h_310,w_375",
+            "crop_t": "h_189,w_177",
+            "title": "Girls",
+            "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1565145744/mod-h-kids_b9ivyr.png",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+          },
+        },
+      ]
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "class": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "extrabold_text_regular",
+              "style2": "style2",
+              "text": "60% OFF",
+            },
+          ],
+        },
+      ]
+    }
+  />
 </LazyloadScrollView>
 `;
