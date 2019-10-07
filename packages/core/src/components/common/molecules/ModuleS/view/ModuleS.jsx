@@ -12,7 +12,7 @@ import {
   ButtonContainer,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
-import { imageCropConfigs } from '../ModuleS.config';
+import imageCropConfigs from '../ModuleS.config';
 import RibbonComponent from '../../Ribbon';
 
 /**

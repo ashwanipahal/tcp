@@ -7,7 +7,7 @@ export const MODULE_TCP_HEIGHT = 356;
 export const MODULE_WITH_RIBBON_HEIGHT = 273;
 export const MODULE_GYM_HEIGHT = 420;
 
-export const imageCropConfigs = {
+export default {
   IMG_DATA_TCP: {
     crops: ['t_mod_S_TCP_img_m', 't_mod_S_GYM_img_t', 't_mod_S_TCP_img_d'],
   },
