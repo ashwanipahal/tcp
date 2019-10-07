@@ -124,5 +124,5 @@ export default {
     L1_BACKGROUND: '#f6f6f6',
   },
   REWARDS_OVERLAY: 'rgba(25, 25, 25, 0.7)',
-  VENMO: '#3d95ce',
+  VENMO_BLUE: '#3d95ce',
 };
