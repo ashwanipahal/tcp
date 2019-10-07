@@ -37,11 +37,6 @@ const externalJsonpAPIClient = reqObj => {
 const ExternalAPIClient = (apiConfig, reqObj) => {
   // TODO - Keeping it generic for now, to check if it fulfills all the variations of external call
   const { webService } = reqObj;
-  const { envId, previewEnvId } = apiConfig;
-  // TODO: It will be passed to request header to detect the environment
-  const setEnvId = previewEnvId || envId;
-  // eslint-disable-next-line no-console
-  console.log(setEnvId);
 
   if (webService.JSONP) {
     return externalJsonpAPIClient(reqObj);

@@ -55,13 +55,12 @@ const generateSessionId = apiConfig => {
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { domain, catalogId, storeId, langId, isMobile, envId, previewEnvId } = apiConfig;
+  const { domain, catalogId, storeId, langId, isMobile, isPreviewEnv, previewEnvId } = apiConfig;
   const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
   const requestUrl = `${domain}${reqObj.webService.URI}`;
-  // TODO: It will be passed to request header to detect the environment
-  const setEnvId = previewEnvId || envId;
-  // eslint-disable-next-line no-console
-  console.log(setEnvId);
+  // TODO: It will be passed to request header to detect preview
+  // eslint-disable-next-line no-unused-vars
+  const setEnvId = isPreviewEnv || previewEnvId;
 
   const reqHeaders = {
     langId,

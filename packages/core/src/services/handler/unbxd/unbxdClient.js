@@ -19,11 +19,6 @@ const getRequestParams = (apiConfig, reqObj) => {
   const {
     webService: { URI, unbxdCustom },
   } = reqObj;
-  const { envId, previewEnvId } = apiConfig;
-  // TODO: It will be passed to request header to detect the environment
-  const setEnvId = previewEnvId || envId;
-  // eslint-disable-next-line no-console
-  console.log(setEnvId);
 
   const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
   const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;

@@ -129,7 +129,7 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
-      apiConfig.previewEnvId = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
 
       // optimizely headers
       const optimizelyHeadersObject = {};
