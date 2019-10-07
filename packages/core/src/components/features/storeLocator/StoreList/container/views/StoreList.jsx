@@ -14,7 +14,10 @@ export const StoreList = ({ className, labels, storesList }) => {
     }
   });
   const { storeListUS, storeListCA } = storesList;
-  const finalStores = [...storeListUS, ...storeListCA];
+  const finalStores =
+    Array.isArray(storeListUS) && Array.isArray(storeListCA)
+      ? [...storeListUS, ...storeListCA]
+      : [];
   const stores = finalStores.map(store => ({
     title: store.displayName,
     content: store.displayName,

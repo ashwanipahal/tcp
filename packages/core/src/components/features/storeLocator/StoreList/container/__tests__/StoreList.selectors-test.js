@@ -5,7 +5,9 @@ describe('#StoreList Selectors testcase', () => {
   it('#getLabels', () => {
     const state = {
       Labels: {
-        StoreList: {},
+        StoreLocator: {
+          StoreList: {},
+        },
       },
     };
     const result = getLabels(state);

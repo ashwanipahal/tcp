@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { getStoreList } from './StoreList.actions';
 import StoreListView from './views/StoreList';
 import { getLabels, getStoreFormattedList } from './StoreList.selectors';
-import mockLabels from './__mocks__/labels.mock';
 
 export class StoreListContainer extends PureComponent {
   componentDidMount() {
@@ -14,9 +13,7 @@ export class StoreListContainer extends PureComponent {
 
   render() {
     const { labels, storeListUS, storeListCA } = this.props;
-    return (
-      <StoreListView labels={labels || mockLabels} storesList={{ storeListUS, storeListCA }} />
-    );
+    return <StoreListView labels={labels} storesList={{ storeListUS, storeListCA }} />;
   }
 }
 
