@@ -2,6 +2,7 @@
 
 exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
 <Styled(LoyaltyBanner)
+  getCurrencySymbol=""
   isGuest={false}
   isPlcc={false}
   thresholdValue={16.66}

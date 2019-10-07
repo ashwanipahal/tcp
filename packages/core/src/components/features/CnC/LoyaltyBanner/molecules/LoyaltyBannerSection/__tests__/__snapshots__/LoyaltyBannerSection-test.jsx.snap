@@ -102,6 +102,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
           />
         }
         fsPoints="fs16"
+        getCurrencySymbol=""
         isPlcc={false}
         labels={Object {}}
         remainingPlcc=""
@@ -196,6 +197,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
           />
         }
         fsPoints="fs16"
+        getCurrencySymbol=""
         isPlcc={false}
         labels={Object {}}
         remainingPlcc=""
@@ -256,6 +258,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
           />
         }
         fsPoints="fs16"
+        getCurrencySymbol=""
         isPlcc={false}
         labels={Object {}}
         remainingPlcc=""
