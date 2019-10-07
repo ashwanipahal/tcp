@@ -6,6 +6,7 @@ import CustomButton from '../../../../common/atoms/Button';
 import ModalNative from '../../../../common/molecules/Modal';
 import CreateAccount from '../../CreateAccount';
 
+// TODO - need to file usage and then get lables from getLableVa
 class AddressBook extends React.PureComponent<Props> {
   constructor() {
     super();

@@ -3,6 +3,7 @@
 exports[`BirthdaySavingsPage component should renders correctly 1`] = `
 <ModalNative
   heading="Birthday Savings"
+  inheritedStyles=""
   isOpen={false}
   isOverlay={false}
   onRequestClose={[MockFunction]}

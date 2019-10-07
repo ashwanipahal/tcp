@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Button } from '../../../../../../common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
@@ -41,6 +42,7 @@ const ProductList = props => {
     labels,
     isPlcc,
     productTileVariation,
+    isLoggedIn,
   } = props;
   let gridIndex = 0;
 
@@ -55,11 +57,13 @@ const ProductList = props => {
         }
         window.gridIndex = gridIndex;
         return typeof item === 'string' ? (
-          /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
-
-          <h2 key={item} className={`${className} item-title`}>
+          <Heading
+            key={item}
+            className={`${className} item-title`}
+            fontFamily="secondaryFontFamily"
+          >
             {item}
-          </h2>
+          </Heading>
         ) : (
           <div className={`${className} product-tile ${productTileVariation}`}>
             <ProductsGridItem
@@ -97,6 +101,7 @@ const ProductList = props => {
               isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
               isKeepAliveKillSwitch={false}
               labels={labels}
+              isLoggedIn={isLoggedIn}
             />
           </div>
         );
@@ -136,6 +141,7 @@ ProductList.propTypes = {
   labels: PropTypes.shape().isRequired,
   isPlcc: PropTypes.bool,
   productTileVariation: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -160,6 +166,7 @@ ProductList.defaultProps = {
   },
   isPlcc: false,
   productTileVariation: '',
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductList, ProductListStyle);

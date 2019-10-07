@@ -26,7 +26,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       }
       selectedColorProductId=""
     />
-    <ProductAddToBagContainer
+    <Connect(ProductAddToBagContainer)
       currentProduct={
         Object {
           "colorFitsSizesMap": Array [],
@@ -36,12 +36,31 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       }
       errorOnHandleSubmit=""
       handleFormSubmit={null}
+      handleSubmit={null}
       onChangeColor={[Function]}
       plpLabels={null}
       selectedColorProductId=""
     />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
+    />
+    <ProductDetailDescription
+      isShowMore={false}
+      itemPartNumber=""
+      longDescription=""
+      pdpLabels={Object {}}
+      shortDescription=""
+    />
+    <Connect(Styled(FulfillmentSection))
+      btnClassName="added-to-bag"
+      buttonLabel="Add To Bag"
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
     />
   </Styled(View)>
 </ScrollViewMock>

@@ -8,9 +8,9 @@ import getFavoriteStore from '../../../../../../../services/abstractors/account/
  * @function getMyFavoriteStoreSaga
  * @description This function will call getFavoriteStore Abstractor to get Favorite Store details
  */
-export function* getMyFavoriteStoreSaga() {
+export function* getMyFavoriteStoreSaga({ payload }) {
   try {
-    const response = yield call(getFavoriteStore);
+    const response = yield call(getFavoriteStore, payload);
     yield put(
       setFavoriteStore({
         favoriteStore: response,

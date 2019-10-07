@@ -1,7 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
 import { addToCartEcom, addItemToCartBopis, AddedToBagSaga } from '../container/AddedToBag.saga';
-import { SetAddedToBagData, openAddedToBag } from '../container/AddedToBag.actions';
+import {
+  SetAddedToBagData,
+  openAddedToBag,
+  AddToPickupError,
+} from '../container/AddedToBag.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
@@ -59,15 +63,17 @@ describe('Added to bag saga', () => {
     };
     const addItemToCartBopisGen = addItemToCartBopis({ payload });
     addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
 
-    const res = {
-      ...payload,
-      orderItemId: '1111',
-    };
     const response = {
       orderItemId: '1111',
     };
-    let putDescriptor = addItemToCartBopisGen.next(response).value;
+    const res = {
+      ...payload.productInfo,
+      ...response,
+    };
+    const putDescriptor = addItemToCartBopisGen.next(response).value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
     const err = {
       ...response,
@@ -77,35 +83,11 @@ describe('Added to bag saga', () => {
     };
 
     const addItemToCartBopisGen1 = addItemToCartBopis({ payload });
+
     addItemToCartBopisGen1.next();
-    const putDescriptorError = addItemToCartBopisGen1.next(err).value;
-    expect(putDescriptorError).toEqual(
-      put({
-        payload: {
-          body: {
-            error: 'error',
-          },
-          orderItemId: '1111',
-          productInfo: {
-            isBoss: true,
-            quantity: '1',
-            skuInfo: {
-              skuId: 'skuId',
-              variantId: 'variantId',
-              variantNo: 'variantNo',
-            },
-            storeLocId: '345',
-          },
-        },
-        type: 'SET_ADDED_TO_BAG',
-      })
-    );
-    putDescriptor = addItemToCartBopisGen.next().value;
-    expect(putDescriptor).toEqual(
-      put({
-        type: 'OPEN_ADDED_TO_BAG',
-      })
-    );
+    addItemToCartBopisGen1.next();
+    addItemToCartBopisGen1.throw(err);
+    expect(addItemToCartBopisGen1.next().value).toEqual(put(AddToPickupError('ERROR')));
   });
 
   describe('CardListSaga', () => {

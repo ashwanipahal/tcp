@@ -71,7 +71,9 @@ describe('OverlayModal', () => {
     };
     const mockedcloseOverlay = jest.fn();
     const mockedEvent = {
-      target: 'hello',
+      target: {
+        closest: jest.fn(),
+      },
     };
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
     tree.instance().setModalRef();

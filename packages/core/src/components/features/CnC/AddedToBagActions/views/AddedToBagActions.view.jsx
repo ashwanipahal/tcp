@@ -60,8 +60,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
       showVenmo,
       handleCartCheckout,
       isEditingItem,
+      isUSSite,
     } = this.props;
-    if (!isInternationalShipping && isVenmoEnabled && showVenmo) {
+    if (!isInternationalShipping && isVenmoEnabled && showVenmo && isUSSite) {
       return (
         <div className="venmo-wrapper">
           <VenmoPaymentButton
@@ -131,11 +132,13 @@ AddedToBagActions.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   showVenmo: PropTypes.bool,
   isBagPageStickyHeader: PropTypes.bool,
+  isUSSite: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   showVenmo: true,
   isBagPageStickyHeader: false,
+  isUSSite: true,
 };
 
 export default withStyles(AddedToBagActions, style);

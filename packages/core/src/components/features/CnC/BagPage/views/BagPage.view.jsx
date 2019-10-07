@@ -13,6 +13,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -102,7 +103,11 @@ class BagPageView extends React.Component {
     const { bagStickyHeaderInterval } = this.props;
     const condensedBagHeader = this.bagPageHeader;
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
-    if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
+    if (
+      isClient() &&
+      condensedBagHeader &&
+      window.pageYOffset > sticky - condensedPageHeaderHeight
+    ) {
       condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
       this.setState({ showStickyHeaderMob: true });
       if (this.timer !== null) {
@@ -190,11 +195,21 @@ class BagPageView extends React.Component {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, orderBalanceTotal, totalCount, showAddTobag, handleCartCheckout } = this.props;
+    const {
+      labels,
+      orderBalanceTotal,
+      totalCount,
+      showAddTobag,
+      handleCartCheckout,
+      orderItemsCount,
+    } = this.props;
     const { showCondensedHeader } = this.state;
     if (!showCondensedHeader) return null;
     return (
-      <div ref={this.getBagCondensedHeader}>
+      <div
+        ref={this.getBagCondensedHeader}
+        className={`${orderItemsCount === 0 ? 'hidden-condensed-header' : ''}`}
+      >
         <Row className="bag-condensed-header">
           <Row className="content-wrapper">
             <Col className="bagHeaderText" colSize={{ large: 8, medium: 4, small: 3 }}>
@@ -306,6 +321,7 @@ class BagPageView extends React.Component {
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
         />
+        <QuickViewModal fromBagPage />
       </div>
     );
   }

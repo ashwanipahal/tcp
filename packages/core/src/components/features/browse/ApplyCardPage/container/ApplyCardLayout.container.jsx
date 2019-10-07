@@ -1,34 +1,16 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ApplyCardLayoutView from '../views';
 import { fetchModuleX, resetPLCCResponse, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
-import { getUserProfileData, getUserId, getBagItemsSize, isGuest } from './ApplyCard.selectors';
+import { getUserProfileData, getUserId, isGuest } from './ApplyCard.selectors';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import BAG_PAGE_ACTIONS from '../../../CnC/BagPage/container/BagPage.actions';
+import { isMobileApp } from '../../../../../utils';
 
 class ApplyCardLayoutContainer extends React.Component {
-  static propTypes = {
-    plccData: PropTypes.shape({}).isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    fetchModuleXContent: PropTypes.func.isRequired,
-    isPLCCModalFlow: PropTypes.bool.isRequired,
-    submitApplication: PropTypes.func.isRequired,
-    applicationStatus: PropTypes.string.isRequired,
-    plccUser: PropTypes.bool.isRequired,
-    bagItems: PropTypes.number.isRequired,
-    profileInfo: PropTypes.shape({}).isRequired,
-    verifyAddressAction: PropTypes.func.isRequired,
-    fetchBagItems: PropTypes.func.isRequired,
-    approvedPLCCData: PropTypes.shape({}).isRequired,
-    isGuestUser: PropTypes.bool.isRequired,
-    userId: PropTypes.string.isRequired,
-    applyCard: PropTypes.bool.isRequired,
-    toggleModal: PropTypes.shape({}).isRequired,
-    resetPLCCApplicationStatus: PropTypes.func.isRequired,
-  };
   /**
    *  @function - constructor
    *
@@ -43,8 +25,7 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { plccData, fetchModuleXContent, fetchBagItems, labels } = this.props;
-    fetchBagItems();
+    const { plccData, fetchModuleXContent, labels } = this.props;
     if (!plccData && labels && labels.referred) {
       fetchModuleXContent(labels && labels.referred);
     }
@@ -76,7 +57,8 @@ class ApplyCardLayoutContainer extends React.Component {
    *  @description - submits for an instant credit card
    */
   submitPLCCForm = formData => {
-    const { verifyAddressAction } = this.props;
+    const { verifyAddressAction, resetPLCCApplicationStatus } = this.props;
+    resetPLCCApplicationStatus({ status: null });
     const payload = Object.assign({}, formData);
     const formattedPayload = this.formatPayload(payload);
     if (Object.keys(formattedPayload).length) {
@@ -101,6 +83,10 @@ class ApplyCardLayoutContainer extends React.Component {
     submitApplication(userData);
   };
 
+  closeAddressVerificationModal = () => {
+    this.setState({ showAddEditAddressForm: false });
+  };
+
   render() {
     const {
       applicationStatus,
@@ -108,7 +94,6 @@ class ApplyCardLayoutContainer extends React.Component {
       isPLCCModalFlow,
       plccData,
       isGuestUser,
-      bagItems,
       labels,
       plccUser,
       profileInfo,
@@ -117,13 +102,13 @@ class ApplyCardLayoutContainer extends React.Component {
       resetPLCCApplicationStatus,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
+
     return (
       <React.Fragment>
         <ApplyCardLayoutView
           applicationStatus={applicationStatus}
           labels={labels}
           plccData={plccData}
-          bagItems={bagItems}
           isGuest={isGuestUser}
           submitPLCCForm={this.submitPLCCForm}
           approvedPLCCData={approvedPLCCData}
@@ -134,12 +119,35 @@ class ApplyCardLayoutContainer extends React.Component {
           applyCard={applyCard}
           onSubmit={this.submitPLCCForm}
           resetPLCCApplicationStatus={resetPLCCApplicationStatus}
+          showAddEditAddressForm={showAddEditAddressForm}
+          submitForm={this.submitForm}
+          closeAddressVerificationModal={this.closeAddressVerificationModal}
         />
-        {showAddEditAddressForm ? <AddressVerification onSuccess={this.submitForm} /> : null}
+        {!isMobileApp() && showAddEditAddressForm ? (
+          <AddressVerification onSuccess={this.submitForm} />
+        ) : null}
       </React.Fragment>
     );
   }
 }
+
+ApplyCardLayoutContainer.propTypes = {
+  plccData: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  fetchModuleXContent: PropTypes.func.isRequired,
+  isPLCCModalFlow: PropTypes.bool.isRequired,
+  submitApplication: PropTypes.func.isRequired,
+  applicationStatus: PropTypes.string.isRequired,
+  plccUser: PropTypes.bool.isRequired,
+  profileInfo: PropTypes.shape({}).isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  approvedPLCCData: PropTypes.shape({}).isRequired,
+  isGuestUser: PropTypes.bool.isRequired,
+  userId: PropTypes.string.isRequired,
+  applyCard: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.shape({}).isRequired,
+  resetPLCCApplicationStatus: PropTypes.func.isRequired,
+};
 
 export const mapStateToProps = state => {
   const { ApplyCardPage, Labels } = state;
@@ -148,7 +156,6 @@ export const mapStateToProps = state => {
     approvedPLCCData: ApplyCardPage && ApplyCardPage.approvedPLCCData,
     plccData: ApplyCardPage && ApplyCardPage.plccData,
     plccUser: isPlccUser(state),
-    bagItems: getBagItemsSize(state),
     isGuestUser: isGuest(state),
     profileInfo: getUserProfileData(state),
     labels: Labels && Labels.global && Labels.global.plccForm,
@@ -169,9 +176,6 @@ export const mapDispatchToProps = dispatch => {
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
-    },
-    fetchBagItems: () => {
-      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
     },
   };
 };

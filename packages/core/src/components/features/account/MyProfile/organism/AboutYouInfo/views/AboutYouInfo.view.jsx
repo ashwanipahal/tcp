@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/AboutYouInfo.style';
 
 /**
@@ -17,8 +18,8 @@ export const AboutYouInfo = ({ labels, userSurvey, className }) => {
 
   return (
     <MyProfileTile
-      title={labels.lbl_profile_about_you_title}
-      ctaTitle={labels.lbl_profile_update_info}
+      title={getLabelValue(labels, 'lbl_profile_about_you_title')}
+      ctaTitle={getLabelValue(labels, 'lbl_profile_update_info')}
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=edit-aboutyou-info"
       dataLocator="moreaboutyou"
@@ -39,7 +40,7 @@ export const AboutYouInfo = ({ labels, userSurvey, className }) => {
               fontSize="fs13"
               fontFamily="secondary"
             >
-              {`${labels.lbl_profile_about_you_describe}: ${answer1}`}
+              {`${getLabelValue(labels, 'lbl_profile_about_you_describe')}: ${answer1}`}
             </BodyCopy>
           </Col>
         </Row>
@@ -58,7 +59,7 @@ export const AboutYouInfo = ({ labels, userSurvey, className }) => {
                 fontSize="fs13"
                 fontFamily="secondary"
               >
-                {`${labels.lbl_profile_about_you_shopping}: ${answer2}`}
+                {`${getLabelValue(labels, 'lbl_profile_about_you_shopping')}: ${answer2}`}
               </BodyCopy>
             )}
           </Col>

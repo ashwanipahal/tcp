@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Heading from '../../../../common/atoms/Heading';
 import EmptyCard from '../../common/molecule/EmptyCard/views/EmptyCard.view';
 import Button from '../../../../common/atoms/Button';
@@ -46,7 +47,7 @@ const CreditCardList = ({
         className="cardList__heading"
         dataLocator="payment-creditAndDebitCardsLabel"
       >
-        {labels.paymentGC.lbl_payment_ccHeading}
+        {getLabelValue(labels, 'lbl_payment_ccHeading', 'paymentGC')}
       </Heading>
       {creditCardList.size === 0 && (
         <EmptyCard labels={labels} icon="credit-card" alt="card icon" prefix="CC" />
@@ -68,8 +69,8 @@ const CreditCardList = ({
             onClick={addCreditCard}
           >
             {creditCardList.size === 0
-              ? labels.paymentGC.lbl_payment_ccEmptyAddBtn
-              : labels.paymentGC.lbl_payment_addBtn}
+              ? getLabelValue(labels, 'lbl_payment_ccEmptyAddBtn', 'paymentGC')
+              : getLabelValue(labels, 'lbl_payment_addBtn', 'paymentGC')}
           </Button>
         </Col>
       </Row>

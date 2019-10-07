@@ -25,6 +25,7 @@ exports[`ProfileInformation should render correctly 1`] = `
   />
   <PersonalInformation
     airMiles=""
+    componentProps={Object {}}
     handleComponentChange={[Function]}
     labels={
       Object {
@@ -83,7 +84,7 @@ exports[`ProfileInformation should render correctly 1`] = `
       fontSizeVariation="medium"
       locator=""
       onPress={[Function]}
-      text=""
+      text="lbl_profile_program_details"
       underline={true}
       visible={false}
     />
@@ -98,7 +99,7 @@ exports[`ProfileInformation should render correctly 1`] = `
         locator=""
         noLink={true}
         onPress={[Function]}
-        text=""
+        text="lbl_profile_terms_condition"
         underline={true}
         visible={false}
       />

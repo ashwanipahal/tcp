@@ -29,9 +29,14 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           <LabeledRadioButton
             buttonInnerColor="#000"
             buttonOuterColor="#000"
+            buttonOuterSize={20}
+            buttonSize={10}
+            buttonStyle={Object {}}
             checked={false}
             disabled={false}
             index={0}
+            labelStyle={Object {}}
+            labelWrapStyle={Object {}}
             obj={
               Object {
                 "label": undefined,
@@ -105,9 +110,14 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           <LabeledRadioButton
             buttonInnerColor="#000"
             buttonOuterColor="#000"
+            buttonOuterSize={20}
+            buttonSize={10}
+            buttonStyle={Object {}}
             checked={false}
             disabled={false}
             index={0}
+            labelStyle={Object {}}
+            labelWrapStyle={Object {}}
             obj={
               Object {
                 "label": undefined,
@@ -188,9 +198,14 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           <LabeledRadioButton
             buttonInnerColor="#000"
             buttonOuterColor="#000"
+            buttonOuterSize={20}
+            buttonSize={10}
+            buttonStyle={Object {}}
             checked={false}
             disabled={false}
             index={0}
+            labelStyle={Object {}}
+            labelWrapStyle={Object {}}
             obj={
               Object {
                 "label": undefined,
@@ -264,9 +279,14 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           <LabeledRadioButton
             buttonInnerColor="#000"
             buttonOuterColor="#000"
+            buttonOuterSize={20}
+            buttonSize={10}
+            buttonStyle={Object {}}
             checked={true}
             disabled={false}
             index={0}
+            labelStyle={Object {}}
+            labelWrapStyle={Object {}}
             obj={
               Object {
                 "label": undefined,

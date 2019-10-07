@@ -12,6 +12,7 @@ import {
   getSflMaxCount,
 } from '../../SaveForLater/container/SaveForLater.selectors';
 import { getPersonalDataState } from '../../../account/User/container/User.selectors';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 
 // @flow
 
@@ -56,6 +57,7 @@ export const CartItemTileContainer = ({
   startSflItemDelete,
   startSflDataMoveToBag,
   currencySymbol,
+  onQuickViewOpenClick,
 }) => (
   <CartItemTile
     labels={labels}
@@ -85,6 +87,7 @@ export const CartItemTileContainer = ({
     startSflItemDelete={startSflItemDelete}
     startSflDataMoveToBag={startSflDataMoveToBag}
     currencySymbol={currencySymbol}
+    onQuickViewOpenClick={onQuickViewOpenClick}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -112,6 +115,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     startSflDataMoveToBag: payload => {
       dispatch(BAG_PAGE_ACTIONS.startSflDataMoveToBag(payload));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 };

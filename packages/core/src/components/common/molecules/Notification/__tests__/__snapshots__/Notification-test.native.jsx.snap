@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Component should render notification component with status error 1`] = `
+<View>
+  <Styled(View)
+    disableSpace={false}
+    status="error"
+  />
+</View>
+`;
+
+exports[`Notification Component should render notification component with status info 1`] = `
+<View>
+  <Styled(View)
+    disableSpace={false}
+    status="info"
+  >
+    <Styled(ImageComp)
+      alt=""
+      height="25px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/circle-info-fill.png",
+        }
+      }
+      url=""
+      width="25px"
+    />
+    <Styled(View)
+      spacingStyles="padding-MED padding-top-XXS padding-bottom-XXS"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs14"
+        fontWeight="regular"
+        margin={null}
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        text="show"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
+exports[`Notification Component should render notification component with status success 1`] = `
+<View>
+  <Styled(View)
+    disableSpace={false}
+    status="success"
+  >
+    <Styled(ImageComp)
+      alt=""
+      height="25px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/circle-check-fill.png",
+        }
+      }
+      url=""
+      width="25px"
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`Notification Component should render notification component with status success with disableSpace 1`] = `
+<View>
+  <Styled(View)
+    disableSpace={true}
+    status="success"
+  >
+    <Styled(ImageComp)
+      alt=""
+      height="25px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/circle-check-fill.png",
+        }
+      }
+      url=""
+      width="25px"
+    />
+  </Styled(View)>
+</View>
+`;

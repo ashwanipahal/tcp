@@ -5,7 +5,7 @@ import Image from '../../Image/views/Image';
 import { getIconPath } from '../../../../../utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import logger from '../../../../../utils/loggerInstance';
-import { modes, constants } from '../container/VenmoPaymentButton.util';
+import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 import BodyCopy from '../../BodyCopy';
 
@@ -19,6 +19,27 @@ export class VenmoPaymentButton extends Component {
       hasVenmoError: true,
     };
   }
+
+  componentWillMount() {
+    this.fetchVenmoClientToken();
+  }
+
+  /**
+   * @function fetchVenmoClientToken
+   * @description Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
+   */
+  fetchVenmoClientToken = () => {
+    const { isGuest, orderId, enabled, isNonceNotExpired, getVenmoPaymentTokenAction } = this.props;
+    if (enabled && !isNonceNotExpired) {
+      let userState = '';
+      if (isGuest) {
+        userState = VENMO_USER_STATES.GUEST;
+      } else {
+        userState = VENMO_USER_STATES.REGISTERED;
+      }
+      getVenmoPaymentTokenAction({ userState, orderId });
+    }
+  };
 
   /**
    * This method is to validate if we can call the venmo client token api.
@@ -72,7 +93,8 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = () => {
+  handleVenmoClick = e => {
+    e.preventDefault(); // Added to suppress extra click calls with multiple actions on same page
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
@@ -261,9 +283,12 @@ VenmoPaymentButton.propTypes = {
   onVenmoPaymentButtonClick: func,
   onVenmoPaymentButtonError: func,
   setVenmoPaymentInProgress: func,
+  getVenmoPaymentTokenAction: func.isRequired,
   isNonceNotExpired: bool,
   isRemoveOOSItems: bool,
   continueWithText: string,
+  isGuest: bool.isRequired,
+  orderId: string.isRequired,
 };
 
 VenmoPaymentButton.defaultProps = {

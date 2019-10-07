@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
+<form
+  name="checkoutCardEditPayment"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  Hello
+  <div>
+    CCForm
+  </div>
+  <Component
+    editMode={true}
+    key="cardEditAddressForm"
+  />
+  <div
+    className="edit-card-error-container"
+  />
+  <div
+    className="card-edit-buttons"
+  >
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="card-edit-button card-edit-save-mob"
+      fill="BLUE"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      type="submit"
+    >
+      Save
+    </Styled(Button)>
+    <Styled(Button)
+      className="card-edit-button card-edit-cancel"
+      type="button"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.secondary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Cancel
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="card-edit-button card-edit-save"
+      fill="BLUE"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      type="submit"
+    >
+      Save
+    </Styled(Button)>
+  </div>
+</form>
+`;
+
+exports[`CardEditForm component CardEditReduxForm 1`] = `
+<ReduxForm
+  AddressForm={[Function]}
+  destroyOnUnmount={false}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="checkoutCardEditPayment"
+  getAddNewCCForm={[Function]}
+  getFormState={[Function]}
+  initialValues={
+    Object {
+      "address": undefined,
+      "cardNumber": "123",
+      "creditCardId": undefined,
+      "expMonth": "2",
+      "expYear": undefined,
+    }
+  }
+  keepDirtyOnReinitialize={true}
+  labels={
+    Object {
+      "cancelButtonText": "Cancel",
+      "saveButtonText": "Save",
+    }
+  }
+  onSubmit={[Function]}
+  onSubmitSuccess={[Function]}
+  persistentSubmitErrors={false}
+  pure={true}
+  renderCardDetailsHeading={[Function]}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;

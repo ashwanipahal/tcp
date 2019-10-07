@@ -331,8 +331,11 @@ const getBillingLabels = createSelector(
       'lbl_billing_venmo',
       'lbl_billing_selectCardTitle',
       'lbl_billing_select',
+      'lbl_billing_cardEditCancel',
+      'lbl_billing_cardEditSave',
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
+      'lbl_billing_cardEditUnSavedError',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -362,7 +365,10 @@ const getBillingLabels = createSelector(
       lbl_billing_selectCardTitle: selectCardTitle,
       lbl_billing_select: select,
       lbl_billing_cvvCode: cvvCode,
+      lbl_billing_cardEditCancel: cancelButtonText,
+      lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
+      lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
     } = labels;
     return {
       header,
@@ -374,6 +380,9 @@ const getBillingLabels = createSelector(
       defaultCard,
       addNewAddress,
       paymentMethod,
+      saveButtonText,
+      cardEditUnSavedError,
+      cancelButtonText,
       saveToAccount,
       defaultPayment,
       creditCard,
@@ -406,6 +415,7 @@ const getCreditFieldLabels = createSelector(
       'lbl_creditField_expMonth',
       'lbl_creditField_expYear',
       'lbl_creditField_cvvCode',
+      'lbl_creditField_cameraText',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(creditFieldLabels, key);
@@ -415,12 +425,14 @@ const getCreditFieldLabels = createSelector(
       lbl_creditField_expMonth: expMonth,
       lbl_creditField_expYear: expYear,
       lbl_creditField_cvvCode: cvvCode,
+      lbl_creditField_cameraText: cameraText,
     } = labels;
     return {
       cardNumber,
       expMonth,
       expYear,
       cvvCode,
+      cameraText,
     };
   }
 );
@@ -719,28 +731,6 @@ function isVenmoPaymentAvailable(state) {
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
-function isVenmoMessageDisplayed(state) {
-  const hasShippingCaptured =
-    state.checkout.values.shipping && state.checkout.values.shipping.onFileAddressId;
-  const hasPickupCaptured =
-    state.checkout.values.pickUpContact && state.checkout.values.pickUpContact.firstName;
-  return (
-    hasPickupCaptured ||
-    hasShippingCaptured ||
-    (state.checkout.uiFlags && state.checkout.uiFlags.venmoInformationMessageDisplayed)
-  );
-}
-
-function getVenmoUserEmail(state) {
-  const pickupValues = getPickupValues(state);
-  return (
-    getUserEmail(state) ||
-    (state.checkout.values.shipping && state.checkout.values.shipping.emailAddress) ||
-    (pickupValues && pickupValues.emailAddress) ||
-    (state.user.personalData.contactInfo && state.user.personalData.contactInfo.emailAddress)
-  );
-}
-
 /**
  * This method is used to decide if we need to show review page next based on order conditions.
  */
@@ -803,8 +793,16 @@ function getInternationalCheckoutCommUrl() {
 function getInternationalCheckoutUrl(state) {
   return state.Checkout.getIn(['options', 'internationalUrl']);
 }
+
+/**
+ * @function getIsVenmoEnabled
+ * @description - Venmo Kill Switch Selector
+ * @param {object} state
+ * @returns {bool}
+ */
 const getIsVenmoEnabled = state => {
   return (
+    getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );
@@ -872,6 +870,16 @@ const getShippingSectionLabels = createSelector(
   }
 );
 
+/**
+ * @function getVenmoUserName
+ * @description Gets the venmo username which is authorized from the app
+ */
+export const getVenmoUserName = () => {
+  const venmoData = getVenmoData();
+  const { details: { username } = {} } = venmoData || {};
+  return username;
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -934,9 +942,7 @@ export default {
   getVenmoData,
   getVenmoClientTokenData,
   isVenmoPaymentAvailable,
-  isVenmoMessageDisplayed,
   isVenmoNonceActive,
-  getVenmoUserEmail,
   isVenmoNonceNotExpired,
   isVenmoPaymentInProgress,
   isVenmoPaymentToken,
@@ -952,4 +958,5 @@ export default {
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   isPickupHasValues,
+  getVenmoUserName,
 };

@@ -143,6 +143,7 @@ class _PickupStoreList extends React.Component {
 
     return (
       <PickupStoreList
+        sameStore={sameStore}
         handleShowAvailableChange={this.handleShowAvailableChange}
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}
@@ -158,7 +159,7 @@ function mapStateToProps(state, ownProps) {
   return {
     storesList: suggestedStores,
     isShowFilterCheckbox: suggestedStores && suggestedStores.length > 0,
-    defaultStoreName: defaultStore ? defaultStore && defaultStore.basicInfo.storeName : null,
+    defaultStoreName: (defaultStore && defaultStore.basicInfo.storeName) || null,
     ...ownProps,
   };
 }
