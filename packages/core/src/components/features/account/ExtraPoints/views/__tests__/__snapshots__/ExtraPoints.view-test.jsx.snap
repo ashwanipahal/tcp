@@ -144,9 +144,21 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
           }
         }
       />
+      <Styled(BodyCopy)
+        className="tile-border"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
     </Styled(Col)>
     <Styled(Col)
-      className="borderDesktop"
+      className="borderAll"
       colSize={
         Object {
           "large": 3,
@@ -172,6 +184,18 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+      />
+      <Styled(BodyCopy)
+        className="tile-border-desktop"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -201,6 +225,18 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
             ],
           }
         }
+      />
+      <Styled(BodyCopy)
+        className="tile-border"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       />
     </Styled(Col)>
     <Styled(Col)
