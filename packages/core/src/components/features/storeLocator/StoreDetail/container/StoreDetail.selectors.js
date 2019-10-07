@@ -49,8 +49,8 @@ export const formatCurrentStoreToObject = store => {
   if (store && store.size > 0) {
     const formattedStore = {};
     const basicInfoState = store.get('basicInfo');
-    const addressState = basicInfoState.get('address');
-    const coordinateState = basicInfoState.get('coordinates');
+    const addressState = basicInfoState && basicInfoState.get('address');
+    const coordinateState = basicInfoState && basicInfoState.get('coordinates');
     const address = {};
     const coordinates = {};
     addressState.forEach((value, key) => {

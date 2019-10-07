@@ -173,19 +173,15 @@ class TCPWebApp extends App {
     return pageProps;
   }
 
-  static async loadComponentData(Component, { store, isServer, asPath, query }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
     const compProps = {};
     if (Component.getInitialProps) {
       // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer }, pageProps);
+      pageProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
-    }
-    if (asPath.includes('store') && query && query.storeStr) {
-      const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-      store.dispatch(getCurrentStoreInfo(storeId));
     }
     return Object.assign(pageProps, compProps);
   }
