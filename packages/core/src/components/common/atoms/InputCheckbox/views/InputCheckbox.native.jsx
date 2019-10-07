@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Alert } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
 import BodyCopy from '../../BodyCopy';
+import { BodyCopyWithSpacing } from '../../styledWrapper';
 import { StyledCheckBox, StyledImage, StyledErrorIcon } from '../InputCheckbox.style.native';
 
 import { StyledErrorWrapper } from '../../TextBox/TextBox.style.native';
@@ -24,12 +25,16 @@ class InputCheckBox extends React.Component {
     meta: PropTypes.func,
     fontSize: PropTypes.string,
     disabled: PropTypes.bool,
+    checkBoxLabel: PropTypes.bool,
+    execOnChangeByDefault: PropTypes.bool,
+    children: PropTypes.string,
     inputVariation: PropTypes.string,
   };
 
   static defaultProps = {
     rightText: null,
     isChecked: false,
+    execOnChangeByDefault: true,
     onClick: () => {},
     id: 'checkbox',
     input: { val: '' },
@@ -38,12 +43,14 @@ class InputCheckBox extends React.Component {
     fontSize: 'fs12',
     disabled: false,
     inputVariation: 'inputVariation',
+    checkBoxLabel: false,
+    children: null,
   };
 
   constructor(props) {
     super(props);
-    const { isChecked, input } = props;
-    input.onChange(isChecked);
+    const { isChecked, input, execOnChangeByDefault } = props;
+    if (execOnChangeByDefault) input.onChange(isChecked);
     this.state = {
       isChecked,
     };
@@ -136,6 +143,9 @@ class InputCheckBox extends React.Component {
       disabled,
       rightText,
       inputVariation,
+      checkBoxLabel,
+      children,
+      fontSize,
       ...otherProps
     } = this.props;
     const { value } = input;
@@ -152,6 +162,15 @@ class InputCheckBox extends React.Component {
         >
           {!hideCheckboxIcon && this.genCheckedIcon()}
           {rightText && this.renderRight()}
+          {checkBoxLabel && (
+            <BodyCopyWithSpacing
+              fontFamily="secondary"
+              fontSize={fontSize}
+              text={children}
+              {...otherProps}
+              spacingStyles="margin-top-XXS"
+            />
+          )}
         </StyledCheckBox>
         <Fragment>
           {isError ? (

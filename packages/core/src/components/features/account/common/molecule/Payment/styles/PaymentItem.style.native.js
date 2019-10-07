@@ -52,6 +52,7 @@ const RecaptchaContainer = styled.View`
 
 const CheckBalanceContainer = styled.View`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export {

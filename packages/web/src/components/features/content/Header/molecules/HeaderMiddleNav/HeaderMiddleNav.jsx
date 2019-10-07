@@ -7,11 +7,11 @@ import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/conta
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
-import SearchBar from '../SearchBar/index';
 import style from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
 

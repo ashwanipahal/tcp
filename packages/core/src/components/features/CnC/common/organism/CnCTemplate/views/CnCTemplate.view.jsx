@@ -19,17 +19,11 @@ const getBagActions = ({ BagActions }) => {
 const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   return (
     !isGuest && (
-      <div
-        className={`${
-          showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-        } elem-mb-MED`}
-      >
-        <BonusPointsDays
-          showAccordian={showAccordian}
-          enableApplyCta
-          additionalClassNameModal="bonus-modal-web"
-        />
-      </div>
+      <BonusPointsDays
+        showAccordian={showAccordian}
+        enableApplyCta
+        additionalClassNameModal="bonus-modal-web"
+      />
     )
   );
 };
@@ -68,7 +62,7 @@ const CnCTemplate = ({
           >
             {isConfirmationPage ? (
               <>
-                <OrderLedgerContainer />
+                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
                 <Row fullBleed>
                   <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                     <PersonalizedCoupons />

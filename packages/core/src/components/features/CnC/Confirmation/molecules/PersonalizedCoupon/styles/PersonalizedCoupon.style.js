@@ -144,6 +144,14 @@ const styles = css`
     }
   }
 
+  .show-detail {
+    display: block;
+  }
+
+  .hide-detail {
+    display: none;
+  }
+
   .toggle-icon {
     display: block;
 
@@ -153,6 +161,16 @@ const styles = css`
 
     .down-arrow {
       transform: rotate(-90deg);
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .toggle-icon {
+      display: none;
+    }
+
+    .hide-detail {
+      display: block;
     }
   }
 `;

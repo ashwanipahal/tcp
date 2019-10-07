@@ -6,9 +6,8 @@ import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/at
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
-
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
-import SearchBar from '../SearchBar/index';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';

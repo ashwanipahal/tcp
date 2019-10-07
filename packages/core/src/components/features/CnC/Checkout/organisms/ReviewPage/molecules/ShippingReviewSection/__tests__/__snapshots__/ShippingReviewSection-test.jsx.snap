@@ -97,16 +97,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
           "small": 6,
         }
       }
-    >
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={
-          Object {
-            "lbl_review_sectionShippingMethodTitle": "title",
-          }
-        }
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;
@@ -207,12 +198,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           "small": 6,
         }
       }
-    >
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={Object {}}
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;

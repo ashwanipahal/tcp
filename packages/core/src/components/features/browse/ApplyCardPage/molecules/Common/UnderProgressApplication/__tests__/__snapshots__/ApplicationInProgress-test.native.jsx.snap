@@ -57,33 +57,6 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       customTextStyle={null}
       disableButton={false}
       fill="BLUE"
-      fontWeight="regular"
-      fullWidth=""
-      iconColor="gray.800"
-      iconName="chevron-down"
-      iconSize="fs12"
-      locator=""
-      navigation={Object {}}
-      onPress={[Function]}
-      selected={false}
-      selectedIcon="chevron-up"
-      showIcon={false}
-      text="lbl_PLCCForm_checkout"
-      theme={Object {}}
-      type="submit"
-      url=""
-      width="90%"
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
-      buttonVariation="variable-width"
-      color="black"
-      customStyle={Object {}}
-      customTextStyle={null}
-      disableButton={false}
-      fill="WHITE"
       fullWidth=""
       iconColor="gray.800"
       iconName="chevron-down"
