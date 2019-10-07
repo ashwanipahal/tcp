@@ -94,31 +94,22 @@ const CreditCardList = ({
 };
 
 CreditCardList.defaultProps = {
-  labels: {},
-  creditCardList: [],
-  className: '',
-  setDefaultPaymentMethod: null,
-  setDeleteModalMountState: null,
   deleteModalMountedState: false,
-  onDeleteCard: null,
-  showUpdatedNotificationOnModal: '',
-  showNotification: null,
-  setSelectedCard: '',
   addCreditCard: null,
   editCreditCard: null,
 };
 
 CreditCardList.propTypes = {
-  labels: PropTypes.shape(),
-  creditCardList: PropTypes.arrayOf(PropTypes.shape()),
-  className: PropTypes.string,
-  setDefaultPaymentMethod: PropTypes.func,
-  setDeleteModalMountState: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+  creditCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  className: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
   deleteModalMountedState: PropTypes.bool,
-  onDeleteCard: PropTypes.func,
-  showUpdatedNotificationOnModal: PropTypes.string,
-  showNotification: PropTypes.bool,
-  setSelectedCard: PropTypes.string,
+  onDeleteCard: PropTypes.func.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  setSelectedCard: PropTypes.string.isRequired,
   addCreditCard: PropTypes.func,
   editCreditCard: PropTypes.func,
 };

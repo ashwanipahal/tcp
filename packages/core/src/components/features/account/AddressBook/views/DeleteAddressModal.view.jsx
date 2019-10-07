@@ -153,24 +153,14 @@ class DeleteAddressModal extends React.Component<Props> {
     );
   }
 }
-
-DeleteAddressModal.defaultProps = {
-  data: {},
-  className: '',
-  onDeleteAddress: null,
-  setDeleteModalMountState: null,
-  openState: null,
-  showUpdatedNotificationOnModal: null,
-  labels: {},
-};
 DeleteAddressModal.propTypes = {
-  data: PropTypes.shape([]),
-  className: PropTypes.string,
-  onDeleteAddress: PropTypes.func,
-  setDeleteModalMountState: PropTypes.func,
-  openState: PropTypes.bool,
-  showUpdatedNotificationOnModal: PropTypes.bool,
-  labels: PropTypes.shape([]),
+  data: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDeleteAddress: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  openState: PropTypes.bool.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(DeleteAddressModal, styles);

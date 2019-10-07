@@ -6,6 +6,10 @@ const {
   isCanadaSite,
   getConfirmationLblObj,
   getConfirmationLabels,
+  getItemsCount,
+  getSubTotal,
+  getCouponsTotal,
+  getSavingsTotal,
 } = ConfirmationSelectors;
 
 jest.mock('../../../../../utils/utils', () => ({
@@ -96,5 +100,53 @@ describe('Confirmation Selectors', () => {
       nextDetailsBoss: undefined,
     };
     expect(getConfirmationLabels(State)).toEqual(object);
+  });
+});
+
+describe('Confirmation Page Selectors', () => {
+  const State = {
+    Confirmation: {
+      orderConfirmation: {
+        summary: {
+          itemsTotal: 1,
+          itemsCount: 4,
+          couponsTotal: 4,
+          giftWrappingTotal: 0,
+          giftCardsTotal: 0,
+          savingsTotal: 2,
+          taxesTotal: 2,
+          shippingTotal: 3,
+          valueOfEarnedPcCoupons: 9,
+          subTotal: 23,
+          grandTotal: 33,
+        },
+        orderDetails: {
+          orderNumber: 1,
+          orderTotal: 5,
+          currencyCode: 'USD',
+        },
+      },
+    },
+  };
+
+  // TODO : Skipping it as it will be fixed after the immutable decision
+  it.skip('#getItemsCount', () => {
+    expect(getItemsCount(State)).toEqual(4);
+  });
+
+  it.skip('#getSubTotal', () => {
+    expect(getSubTotal(State)).toEqual(23);
+  });
+
+  it.skip('#getSubTotal', () => {
+    expect(getSubTotal(State)).toEqual(23);
+  });
+
+  it.skip('#getCouponsTotal', () => {
+    expect(getCouponsTotal(State)).toEqual(12);
+  });
+
+  it.skip('#getSavingsTotal', () => {
+    expect(getSavingsTotal(State)).toEqual(12);
   });
 });

@@ -51,13 +51,10 @@ class GiftCardModalInfo extends React.Component<Props> {
     );
   }
 }
-GiftCardModalInfo.defaultProps = {
-  getAccNumbr: {},
-  data: {},
-};
+
 GiftCardModalInfo.propTypes = {
-  getAccNumbr: PropTypes.shape(),
-  data: PropTypes.shape(),
+  getAccNumbr: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(GiftCardModalInfo, styles);

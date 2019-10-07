@@ -159,24 +159,14 @@ class DeleteCardModal extends React.Component<Props> {
   }
 }
 
-DeleteCardModal.defaultProps = {
-  data: {},
-  className: '',
-  openState: '',
-  showUpdatedNotificationOnModal: '',
-  labels: {},
-  setDeleteModalMountState: null,
-  onDeleteCard: null,
-};
-
 DeleteCardModal.propTypes = {
-  data: PropTypes.shape(),
-  className: PropTypes.string,
-  openState: PropTypes.bool,
-  showUpdatedNotificationOnModal: PropTypes.bool,
-  labels: PropTypes.shape(),
-  setDeleteModalMountState: PropTypes.func,
-  onDeleteCard: PropTypes.func,
+  data: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  openState: PropTypes.bool.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 
 export default withStyles(DeleteCardModal, styles);

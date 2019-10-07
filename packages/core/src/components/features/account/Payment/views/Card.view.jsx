@@ -44,27 +44,15 @@ export const CardView = ({
   );
 };
 
-CardView.defaultProps = {
-  labels: {},
-  setDeleteModalMountState: null,
-  cardList: [],
-  onGetBalanceCard: null,
-  checkbalanceValueInfo: '',
-  showNotification: null,
-  showNotificationCaptcha: null,
-  setSelectedCard: '',
-  setDefaultPaymentMethod: null,
-};
-
 CardView.propTypes = {
-  labels: PropTypes.shape(),
-  setDeleteModalMountState: PropTypes.func,
-  cardList: PropTypes.arrayOf(PropTypes.shape()),
-  onGetBalanceCard: PropTypes.func,
-  checkbalanceValueInfo: PropTypes.string,
-  showNotification: PropTypes.bool,
-  showNotificationCaptcha: PropTypes.bool,
-  setSelectedCard: PropTypes.string,
-  setDefaultPaymentMethod: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  setSelectedCard: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
 };
 export default CardView;

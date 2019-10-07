@@ -151,21 +151,13 @@ class AddressBookTile extends React.Component<Props> {
   }
 }
 
-AddressBookTile.defaultProps = {
-  address: {},
-  className: '',
-  labels: {},
-  onDefaultShippingAddressClick: null,
-  setDeleteModalMountState: null,
-  setSelectedAddress: null,
-};
 AddressBookTile.propTypes = {
-  address: PropTypes.shape([]),
-  className: PropTypes.string,
-  labels: PropTypes.shape({}),
-  onDefaultShippingAddressClick: PropTypes.func,
-  setDeleteModalMountState: PropTypes.func,
-  setSelectedAddress: PropTypes.func,
+  address: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedAddress: PropTypes.func.isRequired,
 };
 
 export default withStyles(AddressBookTile, styles);

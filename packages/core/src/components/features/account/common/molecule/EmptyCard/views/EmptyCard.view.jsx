@@ -99,19 +99,13 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
     </div>
   );
 };
-EmptyCard.defaultProps = {
-  labels: {},
-  className: '',
-  icon: '',
-  alt: '',
-  prefix: '',
-};
+
 EmptyCard.propTypes = {
-  labels: PropTypes.shape([]),
-  className: PropTypes.string,
-  icon: PropTypes.string,
-  alt: PropTypes.string,
-  prefix: PropTypes.string,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  prefix: PropTypes.string.isRequired,
 };
 export default withStyles(EmptyCard, styles);
 export { EmptyCard as EmptyCardVanilla };

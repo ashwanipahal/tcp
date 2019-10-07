@@ -143,21 +143,12 @@ const CreditCardModalInfo = ({
   );
 };
 
-CreditCardModalInfo.defaultProps = {
-  TotalExp: {},
-  getAccNumbr: {},
-  data: {},
-  address: {},
-  creditCardHeading: '',
-  className: '',
-};
-
 CreditCardModalInfo.propTypes = {
-  TotalExp: PropTypes.shape(),
-  getAccNumbr: PropTypes.shape(),
-  data: PropTypes.shape(),
-  address: PropTypes.shape(),
-  creditCardHeading: PropTypes.string,
-  className: PropTypes.string,
+  TotalExp: PropTypes.shape({}).isRequired,
+  getAccNumbr: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
+  address: PropTypes.shape({}).isRequired,
+  creditCardHeading: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 export default CreditCardModalInfo;

@@ -55,6 +55,7 @@ describe('DeleteAddressSaga', () => {
       deleteCardGen.next({ statusCode: 200 });
       deleteCardGen.next();
       deleteCardGen.next();
+      deleteCardGen.next();
       const putDescriptor = deleteCardGen.next({
         payload,
       }).value;

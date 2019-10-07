@@ -30,14 +30,10 @@ const Offers = ({ labels, className }: Props) => {
     </div>
   );
 };
-Offers.defaultProps = {
-  labels: {},
-  className: '',
-};
 
 Offers.propTypes = {
-  labels: PropTypes.shape([]),
-  className: PropTypes.string,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(Offers, styles);

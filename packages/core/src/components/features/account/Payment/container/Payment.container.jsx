@@ -50,7 +50,7 @@ import utils from '../../../../../utils';
 //   paymentBannerRichText: string,
 //   clearPaymentNotification: () => void,
 //   labels: object,
-// };
+// };.isRequired
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
@@ -159,47 +159,29 @@ const mapStateToProps = state => {
 };
 
 PaymentContainer.defaultProps = {
-  getCardListAction: null,
-  showNotification: '',
-  deleteModalMountedState: null,
-  setDeleteModalMountState: null,
-  onDeleteCard: null,
-  showUpdatedNotificationOnModal: '',
-  creditCardList: [],
-  venmoCardList: [],
-  giftCardList: [],
-  cardList: [],
-  onGetBalanceCard: null,
-  checkbalanceValueInfo: '',
-  setDefaultPaymentMethod: null,
-  getPaymentBannerRichText: null,
-  paymentBannerContentId: '',
-  showNotificationCaptcha: '',
-  paymentBannerRichText: '',
   clearPaymentNotification: null,
-  labels: {},
 };
 
 PaymentContainer.propTypes = {
-  getCardListAction: PropTypes.func,
-  showNotification: PropTypes.string,
-  deleteModalMountedState: PropTypes.bool,
-  setDeleteModalMountState: PropTypes.func,
-  onDeleteCard: PropTypes.func,
-  showUpdatedNotificationOnModal: PropTypes.string,
-  creditCardList: PropTypes.arrayOf(PropTypes.string),
-  venmoCardList: PropTypes.arrayOf(PropTypes.string),
-  giftCardList: PropTypes.arrayOf(PropTypes.string),
-  cardList: PropTypes.arrayOf(PropTypes.string),
-  onGetBalanceCard: PropTypes.func,
-  checkbalanceValueInfo: PropTypes.string,
-  setDefaultPaymentMethod: PropTypes.func,
-  getPaymentBannerRichText: PropTypes.func,
-  paymentBannerContentId: PropTypes.string,
-  showNotificationCaptcha: PropTypes.bool,
-  paymentBannerRichText: PropTypes.string,
+  getCardListAction: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  deleteModalMountedState: PropTypes.bool.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  creditCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  venmoCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  giftCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  getPaymentBannerRichText: PropTypes.func.isRequired,
+  paymentBannerContentId: PropTypes.string.isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  paymentBannerRichText: PropTypes.string.isRequired,
   clearPaymentNotification: PropTypes.func,
-  labels: PropTypes.shape(),
+  labels: PropTypes.shape({}).isRequired,
 };
 export default connect(
   mapStateToProps,

@@ -52,22 +52,13 @@ export const AddressList = ({
   );
 };
 
-AddressList.defaultProps = {
-  addresses: {},
-  className: '',
-  labels: {},
-  onDefaultShippingAddressClick: null,
-  setDeleteModalMountState: null,
-  setSelectedAddress: null,
-};
-
 AddressList.propTypes = {
-  addresses: PropTypes.shape([]),
-  className: PropTypes.string,
-  labels: PropTypes.shape({}),
-  onDefaultShippingAddressClick: PropTypes.func,
-  setDeleteModalMountState: PropTypes.func,
-  setSelectedAddress: PropTypes.func,
+  addresses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedAddress: PropTypes.func.isRequired,
 };
 
 export default withStyles(AddressList, styles);

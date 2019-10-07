@@ -78,22 +78,13 @@ class AddGiftCard extends React.PureComponent<Props> {
   }
 }
 
-AddGiftCard.defaultProps = {
-  className: '',
-  onAddGiftCardClick: null,
-  addGiftCardResponse: '',
-  goBackToPayment: null,
-  labels: {},
-  formErrorMessage: {},
-};
-
 AddGiftCard.propTypes = {
-  className: PropTypes.string,
-  onAddGiftCardClick: PropTypes.func,
-  addGiftCardResponse: PropTypes.string,
-  goBackToPayment: PropTypes.func,
-  labels: PropTypes.shape([]),
-  formErrorMessage: PropTypes.shape([]),
+  className: PropTypes.string.isRequired,
+  onAddGiftCardClick: PropTypes.func.isRequired,
+  addGiftCardResponse: PropTypes.string.isRequired,
+  goBackToPayment: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(AddGiftCard, styles);

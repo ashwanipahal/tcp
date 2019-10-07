@@ -66,30 +66,17 @@ export const CardList = ({
   );
 };
 
-CardList.defaultProps = {
-  labels: {},
-  className: '',
-  setDeleteModalMountState: null,
-  setSelectedGiftCard: null,
-  onGetBalanceCard: null,
-  checkbalanceValueInfo: '',
-  cardList: [],
-  showNotification: null,
-  showNotificationCaptcha: null,
-  setDefaultPaymentMethod: null,
-};
-
 CardList.propTypes = {
-  labels: PropTypes.shape(),
-  className: PropTypes.string,
-  setDeleteModalMountState: PropTypes.func,
-  setSelectedGiftCard: PropTypes.func,
-  onGetBalanceCard: PropTypes.func,
-  checkbalanceValueInfo: PropTypes.string,
-  cardList: PropTypes.func,
-  showNotification: PropTypes.bool,
-  showNotificationCaptcha: PropTypes.bool,
-  setDefaultPaymentMethod: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedGiftCard: PropTypes.func.isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
 };
 
 export default withStyles(CardList, styles);

@@ -24,13 +24,9 @@ export const EmptyAddressList = ({ labels, className }: Props) => {
     </div>
   );
 };
-EmptyAddressList.defaultProps = {
-  labels: {},
-  className: '',
-};
 EmptyAddressList.propTypes = {
-  labels: PropTypes.shape([]),
-  className: PropTypes.string,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(EmptyAddressList, styles);

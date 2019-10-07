@@ -88,17 +88,12 @@ const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }: Pr
     </React.Fragment>
   );
 };
-MyAccountLeftNav.defaultProps = {
-  navData: {},
-  active: '',
-  activeSubComponent: '',
-  className: '',
-};
+
 MyAccountLeftNav.propTypes = {
-  navData: PropTypes.shape([]),
-  active: PropTypes.string,
-  activeSubComponent: PropTypes.string,
-  className: PropTypes.string,
+  navData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  active: PropTypes.string.isRequired,
+  activeSubComponent: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(MyAccountLeftNav, styles);

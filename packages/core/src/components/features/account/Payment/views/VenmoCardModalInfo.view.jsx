@@ -46,13 +46,9 @@ class VenmoCardModalInfo extends React.Component<Props> {
   }
 }
 
-VenmoCardModalInfo.defaultProps = {
-  className: '',
-  data: {},
-};
 VenmoCardModalInfo.propTypes = {
-  className: PropTypes.string,
-  data: PropTypes.shape(),
+  className: PropTypes.string.isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(VenmoCardModalInfo, styles);
