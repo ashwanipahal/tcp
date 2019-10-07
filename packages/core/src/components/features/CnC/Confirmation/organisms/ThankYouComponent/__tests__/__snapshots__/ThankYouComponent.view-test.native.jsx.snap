@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThankYouComponentVanilla should render correctly 1`] = `
+<Fragment>
+  <ThankYouTitleDisplay
+    isOrderPending={false}
+    isShowBopisMessage={false}
+    isShowMixedMessage={false}
+    isShowShippingMessage={false}
+    labels={Object {}}
+    orderShippingDetails={null}
+  />
+  <ConfirmationFulfillmentCenterItemDisplay
+    center={Object {}}
+    index={0}
+    isGuest={true}
+    labels={Object {}}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-bottom-LRG"
+      text="Place Cash Banner"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    mobilefontFamily="primary"
+    numberOfLines={null}
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    mobilefontFamily="primary"
+    numberOfLines={null}
+    spacingStyles="margin-top-XL margin-left-XS"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        domStorageEnabled={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": Object {},
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] = `
+<Fragment>
+  <ThankYouTitleDisplay
+    isOrderPending={false}
+    isShowBopisMessage={false}
+    isShowMixedMessage={false}
+    isShowShippingMessage={false}
+    labels={Object {}}
+    orderShippingDetails={null}
+  />
+  <ConfirmationFulfillmentCenterItemDisplay
+    center={Object {}}
+    index={0}
+    isGuest={true}
+    labels={Object {}}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-bottom-LRG"
+      text="Place Cash Banner"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    mobilefontFamily="primary"
+    numberOfLines={null}
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    mobilefontFamily="primary"
+    numberOfLines={null}
+    spacingStyles="margin-top-XL margin-left-XS"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        domStorageEnabled={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": Object {},
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
