@@ -9,7 +9,7 @@ const TilesWrapper = styled.View`
 
 const InnerTileWrapper = styled.View`
   width: 48%;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => (props.isPromoList ? '' : props.theme.spacing.ELEM_SPACING.LRG)};
 `;
 
 const MorePointsWrapper = styled.View`
@@ -38,6 +38,17 @@ const MprTermsWrapper = styled.View`
   flex-direction: row;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
+const ExtraEarningHeader = styled.View`
+  margin-top: 32px;
+  border: 2px solid ${props => props.theme.colorPalette.orange[800]};
+`;
+const AnchorWrapper = styled.View`
+  margin-bottom: 32px;
+  margin-top: 16px;
+`;
+const PromoTileWrapper = styled.View`
+  width: 48%;
+`;
 
 export {
   TilesWrapper,
@@ -46,4 +57,7 @@ export {
   MprTermsWrapper,
   MessageInfoWrapper,
   MorePointsWrapper,
+  ExtraEarningHeader,
+  AnchorWrapper,
+  PromoTileWrapper,
 };

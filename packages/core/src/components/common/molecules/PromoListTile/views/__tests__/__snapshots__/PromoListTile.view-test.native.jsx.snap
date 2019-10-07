@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoListTile component should renders correctly with anchor in list 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="50"
+      host=""
+      source=""
+      url="https://test4.childrensplace.com/wcsstore/static/images/tcp_star_bag.jpg"
+      width="60"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
+    text="Shop for Extra points"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    text="Earn 10 points"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      locator=""
+      noLink={true}
+      onPress={[Function]}
+      text="Apply Today"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`PromoListTile component should renders correctly withot anchor 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="50"
+      host=""
+      source=""
+      url="https://test4.childrensplace.com/wcsstore/static/images/tcp_star_bag.jpg"
+      width="60"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
+    text="Shop Extra"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    text="Earn 10 points"
+    textAlign="center"
+    textDecoration={null}
+  />
+</Styled(View)>
+`;

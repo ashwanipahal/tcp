@@ -3,6 +3,127 @@
 exports[`EarnPointsVanilla component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-LRG margin-right-LRG margin-bottom-MED margin-left-LRG"
+      text="lbl_earnExtraPoints_youAreEarning"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-right-MED margin-bottom-SM margin-left-MED"
+      text="lbl_earnExtraPoints_checkOffers"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        noLink={true}
+        onPress={[Function]}
+        text="lbl_earnExtraPoints_learnMore"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <PromoListTile
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": "Shop Extra",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 10 points",
+              },
+            ],
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <PromoListTile
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Bonus Days",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 5 points",
+              },
+            ],
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <PromoListTile
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Bonus Events",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 50 points",
+              },
+            ],
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <PromoListTile
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Shop for  Bonus",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn points",
+              },
+            ],
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""

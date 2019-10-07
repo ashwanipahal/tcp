@@ -47,6 +47,16 @@ export const importGraphQLClientDynamically = module => {
     }
   });
 };
+export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'promoList':
+      resolve(require('../services/handler/graphQL/queries/promoList'));
+      break;
+    default:
+      reject();
+      break;
+  }
+};
 
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
@@ -78,8 +88,11 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
     default:
-      reject();
-      break;
+      importOtherGraphQLQueries({
+        query,
+        resolve,
+        reject,
+      });
   }
 };
 
