@@ -35,7 +35,7 @@ const styles = css`
   .right-sec {
     margin-bottom: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.LRG : 0)};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.SM : 0)};
       margin-bottom: 0;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
