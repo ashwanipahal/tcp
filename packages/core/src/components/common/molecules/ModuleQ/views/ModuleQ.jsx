@@ -1,7 +1,6 @@
-/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, Image, Row } from '../../../atoms';
+import { Anchor, Button, BodyCopy, Col, Image, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -32,6 +31,60 @@ class ModuleQ extends React.PureComponent {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
+  getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
+
+  getSlideItem = (item, index) => {
+    const { id, items, largeImageUrl, pdpUrl } = item;
+    const {
+      accessibility: { moduleQMainTile = 'Shop This Look' },
+    } = this.props;
+    const looksImages = items.slice(0, 2);
+    const hiddenImagesCount = items.length - looksImages.length;
+    return (
+      <div>
+        <Anchor
+          key={id}
+          className="moduleQ-image-link"
+          to={pdpUrl}
+          asPath={pdpUrl}
+          dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
+        >
+          <div className="looks-large-image">
+            <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
+            <div className="shop-this-look-link">
+              <Anchor withCaret centered>
+                <BodyCopy component="span" color="gray.900" fontFamily="secondary" fontSize="fs12">
+                  {moduleQMainTile}
+                </BodyCopy>
+              </Anchor>
+            </div>
+          </div>
+          <div className="looks-images-wrapper">
+            {looksImages.map(({ smallImageUrl, name, remoteId }) => {
+              return (
+                <div className="looks-image">
+                  <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+                </div>
+              );
+            })}
+            {hiddenImagesCount > 0 ? (
+              <div className="looks-image looks-image-last">
+                <BodyCopy
+                  color="gray.900"
+                  fontFamily="secondary"
+                  fontSize="fs22"
+                  fontWeight="extrabold"
+                >
+                  {`+${hiddenImagesCount}`}
+                </BodyCopy>
+              </div>
+            ) : null}
+          </div>
+        </Anchor>
+      </div>
+    );
+  };
+
   getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
 
@@ -50,7 +103,7 @@ class ModuleQ extends React.PureComponent {
             target={currentSingleCTAButton.target}
             title={currentSingleCTAButton.title}
             asPath={currentSingleCTAButton.url}
-            dataLocator={getLocator('moduleJ_cta_btn')}
+            dataLocator={getLocator('moduleQ_cta_btn')}
           >
             <Button buttonVariation="fixed-width" className="cta-btn">
               {currentSingleCTAButton.text}
@@ -60,8 +113,6 @@ class ModuleQ extends React.PureComponent {
       </Row>
     ) : null;
   };
-
-  getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
   render() {
     const {
@@ -76,8 +127,7 @@ class ModuleQ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-
-    console.log(selectedProductList);
+    selectedProductList = selectedProductList.concat(selectedProductList);
 
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
@@ -94,6 +144,7 @@ class ModuleQ extends React.PureComponent {
                 component="div"
                 headerText={headerText}
                 className="moduleQ-header"
+                headingClass="moduleQ-promo-header"
                 dataLocator={getLocator('moduleQ_header_text')}
               />
             )}
@@ -113,26 +164,26 @@ class ModuleQ extends React.PureComponent {
             />
           </div>
         </Row>
-        <Row>
+        <Row fullBleed={{ small: true, medium: true }}>
           <Col
             className="moduleQ__carousel-wrapper"
             colSize={{
               small: 6,
               medium: 8,
-              large: 10,
+              large: 8,
             }}
             offsetLeft={{
               small: 0,
               medium: 0,
-              large: 1,
+              large: 2,
             }}
             offsetRight={{
               small: 0,
               medium: 0,
-              large: 1,
+              large: 2,
             }}
           >
-            {selectedProductList ? (
+            {selectedProductList.length > 0 ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -142,20 +193,7 @@ class ModuleQ extends React.PureComponent {
                   customArrowRight: getIconPath('carousel-big-carrot'),
                 }}
               >
-                {selectedProductList.map(({ imageUrl, pdpUrl }, index) => {
-                  return (
-                    <div key={index.toString()}>
-                      <Anchor
-                        className="image-link"
-                        to={pdpUrl}
-                        asPath={pdpUrl}
-                        dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
-                      >
-                        <Image alt={imageUrl} src={imageUrl} />
-                      </Anchor>
-                    </div>
-                  );
-                })}
+                {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
               </Carousel>
             ) : null}
           </Col>
@@ -167,6 +205,7 @@ class ModuleQ extends React.PureComponent {
 }
 
 ModuleQ.defaultProps = {
+  accessibility: {},
   bgClass: '',
   className: '',
   promoBanner: [],
@@ -174,6 +213,7 @@ ModuleQ.defaultProps = {
 
 ModuleQ.propTypes = {
   bgClass: PropTypes.string,
+  accessibility: PropTypes.shape({}),
   className: PropTypes.string,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({

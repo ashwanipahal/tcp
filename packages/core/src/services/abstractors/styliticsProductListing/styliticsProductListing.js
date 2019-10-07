@@ -33,7 +33,7 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    const rootPath = 'https://www.childrensplace.com/us/outfit';
+    const rootPath = '/outfit';
 
     return res.body.map(item => {
       const { image_url: imageUrl, large_image_url: largeImageUrl, id, items: subItems } = item;
@@ -48,14 +48,15 @@ const Abstractor = {
         };
       });
 
-      const subItemsPath = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
+      const subItemsId = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
 
       return {
         id,
+        subItemsId,
         imageUrl,
         largeImageUrl,
         items,
-        pdpUrl: `${rootPath}/${item.id}/${subItemsPath}`,
+        pdpUrl: `${rootPath}/${id}/${subItemsId}`,
       };
     });
   },

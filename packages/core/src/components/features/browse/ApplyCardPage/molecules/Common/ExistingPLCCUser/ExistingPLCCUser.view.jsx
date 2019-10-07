@@ -4,6 +4,7 @@ import { RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
 import { getLabelValue } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
  * @const ExistingPLCCUserView
@@ -14,12 +15,12 @@ import { redirectToBag, redirectToHome } from '../../../utils/utility';
  */
 
 const ExistingPLCCUserView = ({
-  bagItems,
   existingCustomerDetails,
   labels,
   isPLCCModalFlow,
   resetPLCCResponse,
 }) => {
+  const bagItems = getCartItemCount();
   return (
     <ExistingPLCCUserStyle isPLCCModalFlow={isPLCCModalFlow}>
       <div className="header-image" />
@@ -68,7 +69,6 @@ ExistingPLCCUserView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   existingCustomerDetails: PropTypes.string.isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
-  bagItems: PropTypes.number.isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
 };
 

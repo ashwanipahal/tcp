@@ -89,6 +89,7 @@ export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 // Outfit Detail Page Reducer
 export const OUTFIT_DETAILS_REDUCER_KEY = 'OutfitDetails';
 export const OUTFIT_DETAILS_PATTERN = '@@OutfitDetails-';
+
 // Favorites Reducer
 export const FAVORITES_REDUCER_KEY = 'Favorites';
 export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
@@ -123,6 +124,10 @@ export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 // Earn extra points reducer
 export const EARNEXTRAPOINTS_REDUCER_KEY = 'earnExtraPointsReducer';
 export const EARNEXTRAPOINTS_ACTION_PATTERN = '@@earnExtraPoints-';
+
+// Earn extra points reducer
+export const ORDERDETAILS_REDUCER_KEY = 'OrderDetailsReducer';
+export const ORDERDETAILS_ACTION_PATTERN = '@@OrderDetails-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
@@ -207,6 +212,7 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
   [EARNEXTRAPOINTS_REDUCER_KEY]: EARNEXTRAPOINTS_ACTION_PATTERN,
+  [ORDERDETAILS_REDUCER_KEY]: ORDERDETAILS_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
   [COUNTRY_SELECTOR_REDUCER_KEY]: COUNTRY_SELECTOR_ACTION_PATTERN,
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,

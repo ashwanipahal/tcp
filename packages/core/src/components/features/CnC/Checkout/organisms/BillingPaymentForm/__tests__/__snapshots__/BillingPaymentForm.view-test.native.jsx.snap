@@ -36,7 +36,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             },
             Object {
               "displayName": undefined,
-              "id": undefined,
+              "id": "venmo",
             },
           ]
         }
@@ -247,7 +247,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             },
             Object {
               "displayName": undefined,
-              "id": undefined,
+              "id": "venmo",
             },
           ]
         }
@@ -396,7 +396,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
             },
             Object {
               "displayName": undefined,
-              "id": undefined,
+              "id": "venmo",
             },
           ]
         }
@@ -453,7 +453,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             },
             Object {
               "displayName": undefined,
-              "id": undefined,
+              "id": "venmo",
             },
           ]
         }
@@ -736,7 +736,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             },
             Object {
               "displayName": undefined,
-              "id": undefined,
+              "id": "venmo",
             },
           ]
         }

@@ -66,17 +66,18 @@ class ProductTabListContainer extends React.PureComponent {
 
   render() {
     const { selectedCategoryId } = this.state;
-    const { tabItems, dataLocator } = this.props;
+    const { tabItems, dataLocator, style } = this.props;
     const buttonTabItems = this.getButtonTabItems(tabItems);
 
-    return (
+    return buttonTabItems.length > 1 ? (
       <ProductTabListView
         selectedTabId={selectedCategoryId}
         onTabChange={this.onTabChange}
         tabs={buttonTabItems}
         dataLocator={dataLocator}
+        style={style}
       />
-    );
+    ) : null;
   }
 }
 
@@ -86,6 +87,7 @@ ProductTabListContainer.defaultProps = {
   productTabList: {},
   onProductTabChange: () => {},
   dataLocator: '',
+  style: [],
 };
 
 ProductTabListContainer.propTypes = {
@@ -107,6 +109,7 @@ ProductTabListContainer.propTypes = {
   ),
   onProductTabChange: PropTypes.func,
   dataLocator: PropTypes.string,
+  style: PropTypes.arrayOf(PropTypes.object),
 };
 
 export const mapStateToProps = state => {

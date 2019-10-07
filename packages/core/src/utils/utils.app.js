@@ -4,6 +4,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
 import { getAPIConfig } from './utils';
 
 import config from '../components/common/atoms/Anchor/config.native';
@@ -72,6 +73,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleS':
       resolve(require('../services/handler/graphQL/queries/moduleS'));
+      break;
+    case 'moduleQ':
+      resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
     default:
       reject();
@@ -372,6 +376,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
   };
 };
 
@@ -577,4 +582,23 @@ export const validateColor = color => {
   }
 
   return colorSheet.viewColor.color;
+};
+
+/**
+ * @method getTranslatedMomentDate
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ * @param {upperCase} formate use for convert locate formate
+ */
+export const getTranslatedMomentDate = (dateInput, language = 'en', format) => {
+  const { day, month, date, year } = format;
+  moment.locale(language);
+  const currentDate = dateInput ? moment(dateInput) : moment();
+  return {
+    day: currentDate.format(day),
+    month: currentDate.format(month),
+    date: currentDate.format(date),
+    year: currentDate.format(year),
+  };
 };

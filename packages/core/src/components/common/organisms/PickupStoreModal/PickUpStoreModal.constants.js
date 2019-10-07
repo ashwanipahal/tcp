@@ -16,6 +16,7 @@ export const PICKUP_MODAL_ACTIONS_CONSTANTS = {
 // Label Constants -
 export const PICKUP_HEADING = 'Pick Up In Store';
 export const EDIT = 'Edit';
+export const BOPIS_FILTER_LABEL = 'Only show stores available for pickup today';
 
 export const SKU_DETAILS = {
   fit: 'Fit',
@@ -223,6 +224,8 @@ export const DEFAULT_STORE = {
   timeStamp: 1568281373404,
 };
 
+export const PICKUP_RADIO_BTN_NAME = 'PICKUP-BTN';
+
 export default {
   PICKUP_MODAL_ACTIONS_CONSTANTS,
   PICKUP_HEADING,
@@ -235,4 +238,5 @@ export default {
   PICKUP_CTA_LABELS,
   ENTER_KEY_CODE,
   PRODUCT_VALUES,
+  PICKUP_RADIO_BTN_NAME,
 };

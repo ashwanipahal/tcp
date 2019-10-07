@@ -19,17 +19,11 @@ const getBagActions = ({ BagActions }) => {
 const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   return (
     !isGuest && (
-      <div
-        className={`${
-          showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-        } elem-mb-MED`}
-      >
-        <BonusPointsDays
-          showAccordian={showAccordian}
-          enableApplyCta
-          additionalClassNameModal="bonus-modal-web"
-        />
-      </div>
+      <BonusPointsDays
+        showAccordian={showAccordian}
+        enableApplyCta
+        additionalClassNameModal="bonus-modal-web"
+      />
     )
   );
 };

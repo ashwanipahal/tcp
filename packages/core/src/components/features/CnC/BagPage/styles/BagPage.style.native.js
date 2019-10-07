@@ -5,7 +5,7 @@ export const WrapperStyle = styled.View`
 `;
 
 export const ScrollViewWrapper = styled.ScrollView`
-  height: ${props => (props.showAddTobag ? '60%' : '75%')};
+  height: ${props => props.viewHeight};
 `;
 
 export const HeadingViewStyle = styled.TouchableOpacity`
@@ -71,6 +71,9 @@ export const BagHeaderRow = styled.View`
   justify-content: center;
   margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
 `;
+export const BagHeaderMain = styled.View`
+  display: flex;
+`;
 
 export const SuccessTickImage = styled.Image`
   width: 23px;
@@ -84,6 +87,62 @@ export const SuccessMessageContainer = styled.View`
   border-width: 2px;
   border-color: ${props => props.theme.colors.NOTIFICATION.SUCCESS};
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+export const HeadingTextStyleView = styled.View`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ActiveBagHeaderTextNew = styled.Text`
+  font-weight: ${props => props.theme.fonts.fontWeight.black};
+  font-size: ${props => props.theme.typography.fontSizes.fs18};
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  text-align: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
+export const InActiveBagHeaderTextView = styled.Text`
+  font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  color: ${props => props.theme.colors.TEXT.DARKGRAY};
+  font-size: ${props => props.theme.typography.fontSizes.fs18};
+  font-family: ${props => props.theme.typography.fonts.secondary};
+  text-align: center;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
+export const EstimateTextStyle = styled.Text`
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  font-weight: ${props => props.theme.fonts.fontWeight.light};
+  text-align: center;
+  width: 100%;
+`;
+export const InActiveEstimateTextStyle = styled.Text`
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  color: ${props => props.theme.colors.TEXT.DARKGRAY};
+  text-align: center;
+  width: 100%;
+`;
+
+export const FooterView = styled.View`
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+export const ContainerMain = styled.View`
+  flex: 1;
+  margin-bottom: 100px;
 `;
 
 export default {
@@ -101,4 +160,12 @@ export default {
   InActiveBagHeaderView,
   SuccessTickImage,
   SuccessMessageContainer,
+  HeadingTextStyleView,
+  EstimateTextStyle,
+  ActiveBagHeaderTextNew,
+  InActiveBagHeaderTextView,
+  InActiveEstimateTextStyle,
+  BagHeaderMain,
+  FooterView,
+  ContainerMain,
 };
