@@ -7,7 +7,7 @@ import {
 } from '@tcp/core/src/components/common/molecules/StoreLocations';
 import { CountryName } from '@tcp/core/src/components/common/molecules/StoresIntlTile/styles/StoresIntlTile.style';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
-import { getViewportInfo, isClient } from '@tcp/core/src/utils';
+import { getViewportInfo, isClient, getLocator } from '@tcp/core/src/utils';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
 import style from '../styles/StoresCountryTile.style';
 
@@ -28,13 +28,14 @@ class StoresCountryTile extends PureComponent {
   }
 
   getAddressTile(store) {
-    const { labels, titleClickCb } = this.props;
+    const { labels, titleClickCb, dataLocatorKey } = this.props;
     return (
       <LocationTile
         labels={labels}
         store={store}
         locatorGetDirections=""
         titleClickCb={() => titleClickCb(store)}
+        dataLocatorKey={dataLocatorKey}
       />
     );
   }
@@ -57,7 +58,7 @@ class StoresCountryTile extends PureComponent {
   }
 
   render() {
-    const { children, className, title, isDefaultOpen } = this.props;
+    const { children, className, title, isDefaultOpen, dataLocatorKey } = this.props;
     if (isClient() && (getViewportInfo().isMobile || getViewportInfo().isTablet)) {
       return (
         <CollapsibleLocations
@@ -73,7 +74,9 @@ class StoresCountryTile extends PureComponent {
     }
     return (
       <div className={className} id={`scroll-${title}`}>
-        <CountryName>{title}</CountryName>
+        <CountryName data-locator={getLocator(`store_${dataLocatorKey}statelabel`)}>
+          {title}
+        </CountryName>
         {this.getAddressTiles()}
         {children}
       </div>
@@ -89,12 +92,14 @@ StoresCountryTile.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   titleClickCb: PropTypes.func.isRequired,
   isDefaultOpen: PropTypes.bool,
+  dataLocatorKey: PropTypes.string,
 };
 
 StoresCountryTile.defaultProps = {
   children: null,
   stores: [],
   isDefaultOpen: false,
+  dataLocatorKey: '',
 };
 
 export default withStyles(StoresCountryTile, style);

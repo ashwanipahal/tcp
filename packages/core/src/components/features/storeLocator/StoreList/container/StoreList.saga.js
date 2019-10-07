@@ -7,16 +7,16 @@ import { setStoreList } from './StoreList.actions';
 
 export function* getStoresList() {
   try {
-    const [storeUS, storeCA] = yield all([
+    const [storesUS, storesCA] = yield all([
       call(getStoresByCountry, defaultCountries[0]),
       call(getStoresByCountry, defaultCountries[1]),
     ]);
     const payloadUS = {
-      stores: storeUS,
+      stores: storesUS,
       id: defaultCountries[0].id,
     };
     const payloadCA = {
-      stores: storeCA,
+      stores: storesCA,
       id: defaultCountries[1].id,
     };
     return yield all([put(setStoreList(payloadUS)), put(setStoreList(payloadCA))]);

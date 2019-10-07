@@ -4,7 +4,20 @@ exports[`StoreList component Component should render with props 1`] = `
 <div
   className="test-class1"
 >
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="test-class1__backlink"
+    dataLocator="store_USCanadabacklink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+  >
+    <span
+      className="left-arrow"
+    />
+  </Styled(Anchor)>
   <Styled(StoreSelector)
+    dataLocator="store_USCanadasearchlabel"
     defaultSelectText="Select a State"
     options={
       Array [
@@ -304,6 +317,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleText="SEARCH FOR STORES BY STATE"
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -397,6 +411,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -477,6 +492,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -635,6 +651,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1053,6 +1070,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1120,6 +1138,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1200,6 +1219,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1228,6 +1248,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1490,6 +1511,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1648,6 +1670,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1728,6 +1751,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1795,6 +1819,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -1888,6 +1913,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2007,6 +2033,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2061,6 +2088,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2128,6 +2156,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2221,6 +2250,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2301,6 +2331,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2485,6 +2516,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2513,6 +2545,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2619,6 +2652,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2647,6 +2681,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2727,6 +2762,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2820,6 +2856,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -2861,6 +2898,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3019,6 +3057,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3060,6 +3099,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3101,6 +3141,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3129,6 +3170,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3209,6 +3251,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3276,6 +3319,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3356,6 +3400,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3501,6 +3546,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3620,6 +3666,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3700,6 +3747,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3728,6 +3776,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3756,6 +3805,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3901,6 +3951,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3942,6 +3993,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -3996,6 +4048,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4024,6 +4077,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4143,6 +4197,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4626,6 +4681,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4732,6 +4788,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4864,6 +4921,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -4918,6 +4976,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5011,6 +5070,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5052,6 +5112,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5197,6 +5258,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5342,6 +5404,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5383,6 +5446,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5424,6 +5488,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5452,6 +5517,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5480,6 +5546,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5781,6 +5848,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5809,6 +5877,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5915,6 +5984,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {
@@ -5956,6 +6026,7 @@ exports[`StoreList component Component should render with props 1`] = `
     titleClickCb={[Function]}
   />
   <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
     isDefaultOpen={false}
     labels={
       Object {

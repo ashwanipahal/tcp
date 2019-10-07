@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { routeToStoreDetails, scrollToParticularElement } from '../../../../../../utils';
+import {
+  routeToStoreDetails,
+  scrollToParticularElement,
+  isClient,
+  getLocator,
+} from '../../../../../../utils';
+import { Anchor } from '../../../../../common/atoms';
 import { StoreSelector, StoresCountryTile } from '../../../../../common/molecules';
 import style from '../styles/StoreList.style';
 
+/**
+ *
+ * @param {String} className - classname
+ * @param {Object} labels - labels for the page
+ * @param {Object} storesList - list of US and CA stores
+ */
 export const StoreList = ({ className, labels, storesList }) => {
   const [location, setLocation] = useState();
   useEffect(() => {
-    const scrollEle = document.getElementById(`scroll-${location}`);
-    if (scrollEle) {
-      scrollToParticularElement(scrollEle);
+    const scrollToElem = document.getElementById(`scroll-${location}`);
+    if (scrollToElem) {
+      scrollToParticularElement(scrollToElem);
     }
   });
   const { storeListUS, storeListCA } = storesList;
@@ -26,6 +38,21 @@ export const StoreList = ({ className, labels, storesList }) => {
 
   return (
     <div className={className}>
+      <Anchor
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        handleLinkClick={e => {
+          e.preventDefault();
+          if (isClient()) window.history.back();
+        }}
+        noLink
+        className={`${className}__backlink`}
+        title={labels.lbl_storelist_backLink}
+        dataLocator={getLocator('store_USCanadabacklink')}
+      >
+        <span className="left-arrow" />
+        {labels.lbl_storelist_backLink}
+      </Anchor>
       {finalStores.length > 0 && (
         <StoreSelector
           titleText={labels.lbl_storelist_searchByStates}
@@ -33,6 +60,7 @@ export const StoreList = ({ className, labels, storesList }) => {
           options={stores}
           selectedLocation={location}
           selectionCallback={(_, v) => setLocation(v)}
+          dataLocator="store_USCanadasearchlabel"
         />
       )}
       {finalStores.length > 0 &&
@@ -46,6 +74,7 @@ export const StoreList = ({ className, labels, storesList }) => {
               routerHandler();
             }}
             isDefaultOpen={location === store.displayName}
+            dataLocatorKey="USCanada"
           />
         ))}
     </div>

@@ -4,7 +4,7 @@ import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { toTimeString, getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
   TileHeader,
@@ -110,12 +110,17 @@ class StoreAddressTile extends PureComponent {
         basicInfo: { storeName },
       },
       titleClickCb,
+      dataLocatorKey,
     } = this.props;
     return (
       <div className="store-details-header">
         {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
         {titleClickCb && (
-          <button className="store-name store-name--details-btn" onClick={titleClickCb}>
+          <button
+            className="store-name store-name--details-btn"
+            onClick={titleClickCb}
+            data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
+          >
             {storeName}
           </button>
         )}
@@ -297,7 +302,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getBrandStoreIcon(cls = '') {
-    const { labels } = this.props;
+    const { labels, dataLocatorKey } = this.props;
     return (
       <BodyCopy
         fontSize="fs12"
@@ -305,6 +310,7 @@ class StoreAddressTile extends PureComponent {
         color="text.primary"
         fontFamily="secondary"
         className={`brand-store ${cls}`}
+        dataLocator={getLocator(`store_${dataLocatorKey}gymboreetstorelabel`)}
       >
         <Image
           src={getIconPath('gymboree-icon')}
