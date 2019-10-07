@@ -2,19 +2,16 @@
 
 exports[`Delete Address Modal should render correctly 1`] = `
 <Styled(Modal)
-  className="TCPModal__Content, "
+  className="TCPModal__Content, undefined"
   closeIconDataLocator="addressdeletemodalcrossicon"
   fixedWidth={true}
   heading="DELETE ADDRESS"
-  isOpen={null}
   maxWidth="460px"
   minHeight="500px"
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
-  <div
-    className=""
-  >
+  <div>
     <div
       className="deleteAddressModal_btnWrapper"
     >

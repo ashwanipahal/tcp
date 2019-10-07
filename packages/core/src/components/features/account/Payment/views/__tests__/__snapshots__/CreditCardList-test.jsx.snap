@@ -119,7 +119,6 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         },
       ]
     }
-    checkbalanceValueInfo=""
     deleteModalMountedState={false}
     editCreditCard={null}
     labels={
@@ -129,14 +128,6 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         "paymentGC": Object {},
       }
     }
-    onDeleteCard={null}
-    onGetBalanceCard={null}
-    setDefaultPaymentMethod={null}
-    setDeleteModalMountState={null}
-    setSelectedCard=""
-    showNotification={null}
-    showNotificationCaptcha={null}
-    showUpdatedNotificationOnModal=""
   />
 </div>
 `;

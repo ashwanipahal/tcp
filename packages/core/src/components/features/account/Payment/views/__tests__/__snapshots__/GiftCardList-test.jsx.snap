@@ -119,7 +119,6 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
         },
       ]
     }
-    checkbalanceValueInfo=""
     labels={
       Object {
         "common": Object {},
@@ -127,12 +126,6 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
         "paymentGC": Object {},
       }
     }
-    onGetBalanceCard={null}
-    setDefaultPaymentMethod={null}
-    setDeleteModalMountState={null}
-    setSelectedCard=""
-    showNotification={null}
-    showNotificationCaptcha={null}
   />
 </div>
 `;

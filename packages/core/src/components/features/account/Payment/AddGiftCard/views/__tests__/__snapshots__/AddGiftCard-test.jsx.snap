@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Add gift card component should render component correctly if add gift is failure 1`] = `
-<div
-  className=""
->
+<div>
   <Styled(Anchor)
     anchorVariation="secondary"
     asPath="/account/payment"
@@ -27,9 +25,7 @@ exports[`Add gift card component should render component correctly if add gift i
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
-    formErrorMessage={Object {}}
     getFormState={[Function]}
-    goBackToPayment={null}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
     labels={Object {}}
@@ -50,9 +46,7 @@ exports[`Add gift card component should render component correctly if add gift i
 `;
 
 exports[`Add gift card component should render component correctly if add gift is successful 1`] = `
-<div
-  className=""
->
+<div>
   <Styled(Anchor)
     anchorVariation="secondary"
     asPath="/account/payment"
@@ -76,9 +70,7 @@ exports[`Add gift card component should render component correctly if add gift i
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="AddGiftCardForm"
-    formErrorMessage={Object {}}
     getFormState={[Function]}
-    goBackToPayment={null}
     isRecapchaEnabled={true}
     keepDirtyOnReinitialize={false}
     labels={Object {}}

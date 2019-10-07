@@ -32,7 +32,6 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
         tag="span"
       >
         111
-        <Component />
       </Styled(BodyStyle)>
     </Styled(BodyStyle)>
   </Styled(BodyStyle)>
