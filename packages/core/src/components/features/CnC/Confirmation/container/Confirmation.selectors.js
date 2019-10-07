@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 // } from '../../../account/User/container/User.selectors';
 import constants from '../../Checkout/Checkout.constants';
 import { getLabelValue, buildStorePageUrlSuffix, getAPIConfig } from '../../../../../utils/utils';
+import { getCurrencySymbol } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
 const getOrderConfirmation = state => {
   return state.Confirmation && state.Confirmation.get('orderConfirmation');
@@ -28,17 +29,71 @@ const getOrderEmailAddress = createSelector(
   }
 );
 
-// const getItemsCount = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.itemsCount;
-// })
+// TODO : Skipping it as it will be fixed after the immutable decision
+// ignoring it with istanbul ignore also.
+/* istanbul ignore next */
+const getItemsCount = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.itemsCount;
+  }
+);
 
-// const getSubTotal = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.subTotal;
-// })
+/* istanbul ignore next */
+const getSubTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.subTotal;
+  }
+);
 
-// const getGrandTotal = createSelector(getConfirmationSummary, summary => {
-//   return summary && summary.grandTotal;
-// })
+/* istanbul ignore next */
+const getGrandTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.grandTotal;
+  }
+);
+
+/* istanbul ignore next */
+const getGiftCardsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.giftCardsTotal;
+  }
+);
+
+/* istanbul ignore next */
+const getTotalTax = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.taxesTotal;
+  }
+);
+
+/* istanbul ignore next */
+const getCouponsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.couponsTotal;
+  }
+);
+
+/* istanbul ignore next */
+const getSavingsTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.savingsTotal;
+  }
+);
+
+/* istanbul ignore next */
+const getShippingTotal = createSelector(
+  getConfirmationSummary,
+  summary => {
+    return summary && summary.shippingTotal;
+  }
+);
 
 // const getSummary = createSelector(getConfirmationSummary, summary => {
 // if(summary){
@@ -276,6 +331,9 @@ const getConfirmationLabels = createSelector(
       'lbl_confirmation_nextDetails',
       'lbl_confirmation_nextDetails_boss',
       'lbl_confirmation_updateOrderHeading',
+      'lbl_confirmation_venmo_heading',
+      'lbl_confirmation_venmo_ship_information',
+      'lbl_confirmation_paid_with_venmo',
     ];
     lblKeys.forEach(key => {
       labels[key] = getLabelValue(confirmationLbl, key);
@@ -305,6 +363,9 @@ const getConfirmationLabels = createSelector(
       lbl_confirmation_nextDetails: nextDetails,
       lbl_confirmation_updateOrderHeading: updateOrderHeading,
       lbl_confirmation_nextDetails_boss: nextDetailsBoss,
+      lbl_confirmation_venmo_heading: venmoHeading,
+      lbl_confirmation_venmo_ship_information: venmoShipInformation,
+      lbl_confirmation_paid_with_venmo: paidWithVenmo,
     } = labels;
     return {
       thankYouHeading,
@@ -331,6 +392,9 @@ const getConfirmationLabels = createSelector(
       nextDetails,
       updateOrderHeading,
       nextDetailsBoss,
+      venmoHeading,
+      venmoShipInformation,
+      paidWithVenmo,
     };
   }
 );
@@ -350,12 +414,31 @@ const getUpdateOrderDetailsData = state => {
   );
 };
 
+/* istanbul ignore next */
+const getLedgerSummaryDataConfirmation = state => {
+  return {
+    itemsCount: getItemsCount(state),
+    subTotal: getSubTotal(state),
+    couponsTotal: getCouponsTotal(state),
+    savingsTotal: getSavingsTotal(state),
+    shippingTotal: getShippingTotal(state),
+    taxesTotal: getTotalTax(state),
+    grandTotal: getGrandTotal(state),
+    giftCardsTotal: getGiftCardsTotal(state),
+    orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
+    currencySymbol: getCurrencySymbol(state),
+    isOrderHasShipping: getIsOrderHasShipping(state),
+  };
+};
+
 export default {
   getOrderConfirmation,
   getOrderEmailAddress,
   getCurrentSiteId,
-  // getItemsCount,
-  // getSubTotal,
+  getItemsCount,
+  getSubTotal,
+  getCouponsTotal,
+  getSavingsTotal,
   // getGrandTotal,
   // getSummary,
   getFullfilmentCentersMap,
@@ -389,4 +472,5 @@ export default {
   getUpdateOrderDetailsId,
   getUpdateOrderDetailsData,
   getConfirmationLblObj,
+  getLedgerSummaryDataConfirmation,
 };

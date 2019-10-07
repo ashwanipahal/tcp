@@ -111,13 +111,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -266,13 +266,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -421,13 +421,13 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -576,13 +576,13 @@ exports[`StoreSearch component component renders correctly with proper elements 
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",

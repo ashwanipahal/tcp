@@ -19,6 +19,7 @@ export {
   LAZYLOAD_HOST_NAME,
   setTestId,
   validateColor,
+  getTranslatedMomentDate,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -38,6 +39,7 @@ export {
   getAddressFromPlace,
   formatAddress,
   formatPhoneNumber,
+  formatPhone,
   getLabelValue,
   capitalize,
   toTimeString,
@@ -50,4 +52,6 @@ export {
   flattenArray,
   getDateInformation,
   buildStorePageUrlSuffix,
+  getBrand,
+  parseStoreHours,
 } from './utils';

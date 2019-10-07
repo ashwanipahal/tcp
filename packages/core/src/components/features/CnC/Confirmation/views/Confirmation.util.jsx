@@ -34,6 +34,7 @@ const propTypes = {
     ccBrand: PropTypes.string,
     ccType: PropTypes.string,
   }),
+  venmoUserName: PropTypes.string,
 };
 const defaultProps = {
   className: '',
@@ -48,6 +49,7 @@ const defaultProps = {
     ccBrand: VenmoConstants.VENMO,
     ccType: VenmoConstants.VENMO,
   },
+  venmoUserName: '',
 };
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */

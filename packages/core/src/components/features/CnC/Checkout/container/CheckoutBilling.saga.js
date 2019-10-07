@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 /* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
+import { SubmissionError } from 'redux-form';
 import {
   updatePaymentOnOrder,
   addPaymentToOrder,
@@ -20,6 +21,9 @@ import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { isMobileApp } from '../../../../../utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getFormattedError } from '../../../../../utils/errorMessage.util';
+import CreditCardSelector from '../organisms/BillingPaymentForm/container/CreditCard.selectors';
 
 const {
   getIsPaymentDisabled,
@@ -273,7 +277,14 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
   }
 }
 
-export function* updateCardDetails({ payload }) {
-  yield updateCreditCardSaga({ payload });
-  yield call(getCardList);
+export function* updateCardDetails({ payload: { formData, resolve, reject } }) {
+  try {
+    const cardType = yield select(CreditCardSelector.getEditFormCardType);
+    yield updateCreditCardSaga({ payload: { ...formData, cardType } }, true);
+    yield call(getCardList);
+    resolve();
+  } catch (err) {
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    reject(new SubmissionError({ _error: getFormattedError(err, errorsMapping) }));
+  }
 }

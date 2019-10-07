@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
+import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import InputCheckbox from '../../../../../atoms/InputCheckbox';
@@ -32,13 +32,14 @@ const PickupStoreList = props => {
   } = props;
 
   return (
-    <div className="stores-info">
+    <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
         <InputCheckbox
-          className="store-availability-checkbox"
+          checkBoxLabel
+          execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
         >
-          Only show stores available for pickup today.
+          {BOPIS_FILTER_LABEL}
         </InputCheckbox>
       )}
       {derivedStoresList.map(store => (
@@ -68,7 +69,7 @@ const PickupStoreList = props => {
           onPickupRadioBtnToggle={onPickupRadioBtnToggle}
         />
       ))}
-    </div>
+    </>
   );
 };
 

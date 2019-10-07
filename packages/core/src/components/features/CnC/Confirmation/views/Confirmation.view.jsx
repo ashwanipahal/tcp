@@ -1,5 +1,4 @@
 import React from 'react';
-import CardImage from '../../../../common/molecules/CardImage';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -16,6 +15,7 @@ import {
   checkIfNotShippingFullName,
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
+import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 const renderAccountForm = isGuest => {
   return (
@@ -46,10 +46,18 @@ const ConfirmationView = ({
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
-  venmoPayment,
+  venmoUserName,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
-
+  let venmoPayment = {};
+  if (isVenmoPaymentInProgress) {
+    venmoPayment = {
+      userName: venmoUserName,
+      ccBrand: VenmoConstants.VENMO,
+      ccType: VenmoConstants.VENMO,
+      defaultInd: true,
+    };
+  }
   const isShowShippingMessage = !!orderNumber;
   let isShowBopisMessage;
   let isShowMixedMessage;
@@ -106,14 +114,10 @@ const ConfirmationView = ({
             isBossInList={isBossInList}
           />
           {isVenmoPaymentInProgress && (
-            <VenmoConfirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
-          )}
-          {isVenmoPaymentInProgress && venmoPayment && (
-            <div>
-              <section className="venmo-payment-method-wrapper">
-                <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
-              </section>
-            </div>
+            <VenmoConfirmation
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              labels={labels}
+            />
           )}
         </Col>
       </Row>
@@ -123,7 +127,12 @@ const ConfirmationView = ({
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
-      <CheckoutOrderInfo isConfirmationPage />
+      <CheckoutOrderInfo
+        isConfirmationPage
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        venmoPayment={venmoPayment}
+        labels={labels}
+      />
     </div>
   );
 };

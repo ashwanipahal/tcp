@@ -3,7 +3,7 @@ import React, { PureComponent, Fragment } from 'react';
 import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath } from '@tcp/core/src/utils';
+import { toTimeString, getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
@@ -76,6 +76,7 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
             handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
@@ -123,7 +124,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const { openStoreDetail, store, labels, openStoreDirections } = this.props;
+    const { openStoreDetails, store, labels, openStoreDirections } = this.props;
     const { isGym, basicInfo, distance } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
@@ -204,11 +205,13 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={openStoreDetail}
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
+            handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            noLink
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </Anchor>

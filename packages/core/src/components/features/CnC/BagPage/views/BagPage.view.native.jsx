@@ -3,6 +3,8 @@ import { View, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada } from '@tcp/core/src/utils';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
@@ -29,6 +31,7 @@ import {
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
@@ -38,7 +41,7 @@ export class BagPage extends React.Component {
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
-      height: new Animated.Value(70),
+      height: new Animated.Value(68),
     };
     this.timer = null;
   }
@@ -56,19 +59,9 @@ export class BagPage extends React.Component {
   }
 
   componentDidUpdate() {
-    const {
-      isCartItemSFL,
-      labels,
-      isSflItemRemoved,
-      isCartItemsUpdating: { isDeleting },
-    } = this.props;
-    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
-    if (isCartItemSFL) {
-      this.showToastMessage(sflSuccess);
-    } else if (isSflItemRemoved) {
-      this.showToastMessage(sflDeleteSuccess);
-    } else if (isDeleting) {
-      this.showToastMessage(itemDeleted);
+    const { cartItemSflError } = this.props;
+    if (cartItemSflError) {
+      this.showToastMessage(cartItemSflError);
     }
   }
 
@@ -77,6 +70,39 @@ export class BagPage extends React.Component {
     const { showCondensedHeader } = this.state;
     toastMessage(message);
     toastMessagePositionInfo(!showCondensedHeader ? 122 : 55);
+  };
+
+  showNotification = () => {
+    const {
+      isCartItemSFL,
+      labels,
+      isSflItemRemoved,
+      isCartItemsUpdating: { isDeleting },
+    } = this.props;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
+    let message = null;
+    if (isCartItemSFL) {
+      message = sflSuccess;
+    } else if (isSflItemRemoved) {
+      message = sflDeleteSuccess;
+    } else if (isDeleting) {
+      message = itemDeleted;
+    }
+
+    return (
+      message && (
+        <Notification status="success" disableSpace>
+          <ViewWithSpacing spacingStyles="padding-right-SM padding-left-SM">
+            <BodyCopy
+              fontSize="fs12"
+              mobilefontFamily={['secondary']}
+              fontWeight="extrabold"
+              text={message}
+            />
+          </ViewWithSpacing>
+        </Notification>
+      )
+    );
   };
 
   handleChangeActiveSection = sectionName => {
@@ -92,7 +118,7 @@ export class BagPage extends React.Component {
     const { height } = this.state;
     Animated.timing(height, {
       duration: 200,
-      toValue: enable ? 70 : 0,
+      toValue: enable ? 68 : 0,
     }).start();
   };
 
@@ -264,6 +290,7 @@ export class BagPage extends React.Component {
               </SflHeadingViewStyle>
             </BagHeaderRow>
           </AnimatedBagHeaderMain>
+          {this.showNotification()}
           <ScrollViewWrapper
             viewHeight={showAddTobag ? '60%' : viewHeight}
             onScroll={this.handleScroll}
@@ -316,6 +343,7 @@ BagPage.propTypes = {
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
+  cartItemSflError: PropTypes.string.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);
