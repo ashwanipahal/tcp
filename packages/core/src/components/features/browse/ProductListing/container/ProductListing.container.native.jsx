@@ -17,9 +17,9 @@ import {
   getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
-  getProductsInCurrCategory,
   getAllProductsSelect,
   getScrollToTopValue,
+  getTotalProductsCount,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -139,7 +139,6 @@ function mapStateToProps(state) {
     ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
     filtersLength,
     initialValues: {
       ...state.ProductListing.appliedFiltersIds,
@@ -151,9 +150,9 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
-    totalProductsInCurrCategory: getProductsInCurrCategory(state),
     scrollToTop: getScrollToTopValue(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    totalProductsCount: getTotalProductsCount(state),
   };
 }
 

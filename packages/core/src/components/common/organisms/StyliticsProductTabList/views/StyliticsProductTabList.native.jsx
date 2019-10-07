@@ -6,10 +6,10 @@ import ButtonTabs from '../../../molecules/ButtonTabs';
 import { Wrapper } from '../StyliticsProductTabList.style.native';
 
 const StyliticsProductTabList = props => {
-  const { selectedTabId, tabs, onTabChange } = props;
+  const { selectedTabId, tabs, onTabChange, style } = props;
 
   return (
-    <Wrapper>
+    <Wrapper style={style}>
       <ButtonTabs selectedTabId={selectedTabId} onTabChange={onTabChange} tabs={tabs} />
     </Wrapper>
   );
@@ -19,6 +19,7 @@ StyliticsProductTabList.defaultProps = {
   onTabChange: () => {},
   tabs: [],
   selectedTabId: '',
+  style: [],
 };
 
 StyliticsProductTabList.propTypes = {
@@ -30,6 +31,7 @@ StyliticsProductTabList.propTypes = {
     })
   ),
   selectedTabId: PropTypes.string,
+  style: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default StyliticsProductTabList;

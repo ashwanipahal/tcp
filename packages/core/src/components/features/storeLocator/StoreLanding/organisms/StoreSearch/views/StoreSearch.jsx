@@ -14,7 +14,7 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
-import { getLabelValue } from '@tcp/core/src/utils';
+import { getLabelValue, isGymboree } from '@tcp/core/src/utils';
 import constants from '../../../container/StoreLanding.constants';
 import styles from '../styles/StoreSearch.style';
 
@@ -23,7 +23,7 @@ const { INITIAL_STORE_LIMIT } = constants;
 export class StoreSearch extends PureComponent {
   state = {
     errorNotFound: null,
-    gymSelected: false,
+    gymSelected: isGymboree(),
     outletSelected: false,
   };
 
@@ -138,8 +138,8 @@ export class StoreSearch extends PureComponent {
         label: getLabelValue(labels, 'lbl_storelanding_allUSCAStores'),
       },
       {
-        asPath: '',
-        to: '',
+        asPath: '/content/international-stores',
+        to: '/content?contentType=international-stores',
         label: getLabelValue(labels, 'lbl_storelanding_internationalStores'),
       },
     ];

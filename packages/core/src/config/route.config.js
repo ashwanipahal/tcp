@@ -36,7 +36,7 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'store',
-    path: '/store/:storeStr',
+    path: '/store/:storeStr?',
     resolver: '/storeDetail',
     params: ['storeStr'],
   },
@@ -142,12 +142,6 @@ const ROUTES_LIST = [
     path: '/content/:contentType',
     resolver: '/content',
     params: ['contentType'],
-  },
-  {
-    noSlugPath: 'store',
-    path: '/store/:storeStr?',
-    resolver: '/storeDetail',
-    params: ['storeStr'],
   },
 ];
 

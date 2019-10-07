@@ -6,10 +6,10 @@ import ButtonTabs from '../../../molecules/ButtonTabs';
 import { Wrapper } from '../ProductTabList.style.native';
 
 const ProductTabList = props => {
-  const { selectedTabId, tabs, onTabChange } = props;
+  const { selectedTabId, tabs, onTabChange, style } = props;
 
   return (
-    <Wrapper>
+    <Wrapper style={style}>
       <ButtonTabs selectedTabId={selectedTabId} onTabChange={onTabChange} tabs={tabs} />
     </Wrapper>
   );
@@ -19,6 +19,7 @@ ProductTabList.defaultProps = {
   onTabChange: () => {},
   tabs: [],
   selectedTabId: '',
+  style: [],
 };
 
 ProductTabList.propTypes = {
@@ -30,6 +31,7 @@ ProductTabList.propTypes = {
     })
   ),
   selectedTabId: PropTypes.string,
+  style: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default ProductTabList;

@@ -149,7 +149,7 @@ class CheckoutAddress extends React.Component {
   };
 
   getAddressFields = () => {
-    const { addressLabels, dispatch, isGuest, formName } = this.props;
+    const { addressLabels, dispatch, isGuest, formName, editMode } = this.props;
     return (
       <FormSection name="address">
         <AddressFields
@@ -162,7 +162,7 @@ class CheckoutAddress extends React.Component {
           isGuest={isGuest}
           showPhoneNumber={false}
           grayTextBox
-          className="elem-mb-LRG"
+          className={`${!editMode ? 'elem-mb-LRG' : ''}`}
         />
       </FormSection>
     );

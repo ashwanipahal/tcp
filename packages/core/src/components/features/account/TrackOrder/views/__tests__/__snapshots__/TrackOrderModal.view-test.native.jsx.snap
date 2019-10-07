@@ -11,6 +11,7 @@ exports[`TrackOrderModal component should renders correctly 1`] = `
   headingAlign="center"
   headingFontFamily="secondary"
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
   onRequestClose={[Function]}

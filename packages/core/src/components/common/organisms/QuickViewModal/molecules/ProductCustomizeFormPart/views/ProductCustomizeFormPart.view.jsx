@@ -31,8 +31,10 @@ const ProductCustomizeFormPart = props => {
     onChangeColor,
     goToPDPPage,
     imageUrl,
+    handleUpdateItem,
+    ...otherProps
   } = props;
-
+  const { fromBagPage } = otherProps;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const currentColorPdpUrl =
     currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
@@ -102,8 +104,9 @@ const ProductCustomizeFormPart = props => {
             onChangeColor={onChangeColor}
             plpLabels={plpLabels}
             currentProduct={productInfo}
-            handleFormSubmit={handleAddToBag}
             errorOnHandleSubmit={addToBagError}
+            handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
+            fromBagPage={fromBagPage}
           />
         </div>
       </div>
@@ -115,6 +118,7 @@ ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
   onChangeColor: PropTypes.func.isRequired,
   handleAddToBag: PropTypes.func.isRequired,
+  handleUpdateItem: PropTypes.func.isRequired,
   quickViewLabels: PropTypes.shape({
     addToBag: PropTypes.string,
     viewProductDetails: PropTypes.string,

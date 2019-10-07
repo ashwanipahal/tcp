@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Button from '../../../atoms/Button';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/FullfillmentSection.style';
-import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 
 // TODO - These are psuedo files, added to include functionality of PickupStore. These files will be updated later.
@@ -17,16 +16,15 @@ class FulfillmentSection extends React.Component {
 
   pickupOpenClick() {
     const { currentProduct, onPickUpOpenClick, closeQuickViewClick } = this.props;
-    const { colorFitsSizesMap, generalProductId } = currentProduct;
-    const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    const { generalProductId } = currentProduct;
     if (closeQuickViewClick) {
       closeQuickViewClick();
     }
     onPickUpOpenClick({
       generalProductId,
       colorProductId: generalProductId,
-      isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-      isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      // sBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       currentProduct,
     });
   }
