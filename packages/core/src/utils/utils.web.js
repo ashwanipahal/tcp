@@ -25,6 +25,11 @@ const MONTH_SHORT_FORMAT = {
   DEC: 'Dec',
 };
 
+const FIXED_HEADER = {
+  LG_HEADER: 70,
+  SM_HEADER: 60,
+};
+
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
@@ -542,6 +547,20 @@ export const getTranslateDateInformation = (
   };
 };
 
+export const scrollToParticularElement = element => {
+  const fixedHeaderOffset = getViewportInfo().isDesktop
+    ? FIXED_HEADER.LG_HEADER
+    : FIXED_HEADER.SM_HEADER;
+  if (isClient()) {
+    const elementPositionFromTop = element.getBoundingClientRect().top;
+    const calculatedOffset = elementPositionFromTop - fixedHeaderOffset;
+    window.scrollTo({
+      top: calculatedOffset,
+      behavior: 'smooth',
+    });
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -568,4 +587,5 @@ export default {
   canUseDOM,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  scrollToParticularElement,
 };

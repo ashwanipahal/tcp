@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { routeToStoreDetails, getViewportInfo, isClient } from '../../../../../../utils';
+import { routeToStoreDetails, scrollToParticularElement } from '../../../../../../utils';
 import { StoreSelector, StoresCountryTile } from '../../../../../common/molecules';
 import style from '../styles/StoreList.style';
 
@@ -10,9 +10,7 @@ export const StoreList = ({ className, labels, storesList }) => {
   useEffect(() => {
     const scrollEle = document.getElementById(`scroll-${location}`);
     if (scrollEle) {
-      scrollEle.scrollIntoView(
-        isClient() && getViewportInfo().isMobile && getViewportInfo().isTablet
-      );
+      scrollToParticularElement(scrollEle);
     }
   });
   const { storeListUS, storeListCA } = storesList;
