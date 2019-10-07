@@ -44,6 +44,12 @@ const ErrorComp = errorMessage => {
 };
 
 class ProductAddToBag extends React.PureComponent<Props> {
+  getButtonLabel = () => {
+    const { fromBagPage, plpLabels } = this.props;
+    const { addToBag, update } = plpLabels;
+    return fromBagPage ? update : addToBag;
+  };
+
   render() {
     const {
       plpLabels,
@@ -65,7 +71,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     sizeList = sizeList && fromJS(sizeList);
     fitList = fitList && fromJS(fitList);
     colorList = fromJS(colorList);
-    const { addToBag, errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
+    const { errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
 
     return (
       <form className={className} noValidate>
@@ -149,7 +155,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     }
                   }}
                 >
-                  {addToBag}
+                  {this.getButtonLabel()}
                 </Button>
                 <RenderPerf.Measure name="render_cart_cta" />
               </div>
