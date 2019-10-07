@@ -4,9 +4,9 @@ import SearchDetail from '../views/SearchDetail.view';
 
 class SearchDetailContainer extends React.PureComponent {
   renderSearchDetails = () => {
-    const { searchedText } = this.props;
-
-    return <SearchDetail searchedText={searchedText} />;
+    const { navigation } = this.props;
+    const title = navigation && navigation.getParam('title');
+    return <SearchDetail searchedText={title} />;
   };
 
   render() {
@@ -15,11 +15,11 @@ class SearchDetailContainer extends React.PureComponent {
 }
 
 SearchDetailContainer.propTypes = {
-  searchedText: PropTypes.string,
+  navigation: PropTypes.instanceOf(Object),
 };
 
 SearchDetailContainer.defaultProps = {
-  searchedText: '',
+  navigation: null,
 };
 
 export default SearchDetailContainer;
