@@ -34,7 +34,7 @@ const hasGymboreeStores = storeInfo => {
       (typeof attribute === 'object' &&
         attribute.name === 'STORE_BRAND_TYPE' &&
         attribute.value === BRAND_TYPE.gymboree) ||
-      attribute === BRAND_TYPE.gymbore
+      attribute === BRAND_TYPE.gymboree
   );
 
   return gymStore.length > 0;
