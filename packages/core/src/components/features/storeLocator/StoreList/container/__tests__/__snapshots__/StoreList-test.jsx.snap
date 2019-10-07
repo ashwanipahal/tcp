@@ -11,10 +11,12 @@ exports[`StoreList component Component should render with props 1`] = `
     fontSizeVariation="xlarge"
     handleLinkClick={[Function]}
     noLink={true}
+    title="Back"
   >
     <span
       className="left-arrow"
     />
+    Back
   </Styled(Anchor)>
   <Styled(StoreSelector)
     dataLocator="store_USCanadasearchlabel"
@@ -321,6 +323,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -415,6 +418,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -496,6 +500,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -655,6 +660,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1074,6 +1080,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1142,6 +1149,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1223,6 +1231,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1252,6 +1261,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1515,6 +1525,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1674,6 +1685,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1755,6 +1767,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1823,6 +1836,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -1917,6 +1931,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2037,6 +2052,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2092,6 +2108,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2160,6 +2177,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2254,6 +2272,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2335,6 +2354,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2520,6 +2540,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2549,6 +2570,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2656,6 +2678,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2685,6 +2708,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2766,6 +2790,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2860,6 +2885,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -2902,6 +2928,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3061,6 +3088,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3103,6 +3131,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3145,6 +3174,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3174,6 +3204,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3255,6 +3286,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3323,6 +3355,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3404,6 +3437,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3550,6 +3584,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3670,6 +3705,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3751,6 +3787,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3780,6 +3817,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3809,6 +3847,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3955,6 +3994,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -3997,6 +4037,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4052,6 +4093,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4081,6 +4123,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4201,6 +4244,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4685,6 +4729,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4792,6 +4837,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4925,6 +4971,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -4980,6 +5027,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5074,6 +5122,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5116,6 +5165,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5262,6 +5312,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5408,6 +5459,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5450,6 +5502,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5492,6 +5545,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5521,6 +5575,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5550,6 +5605,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5852,6 +5908,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5881,6 +5938,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -5988,6 +6046,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -6030,6 +6089,7 @@ exports[`StoreList component Component should render with props 1`] = `
     isDefaultOpen={false}
     labels={
       Object {
+        "lbl_storelist_backLink": "Back",
         "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
@@ -6057,4 +6117,19 @@ exports[`StoreList component Component should render with props 1`] = `
 </div>
 `;
 
-exports[`StoreList component StoreList component renders correctly without props 1`] = `<div />`;
+exports[`StoreList component StoreList component renders correctly without props 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="undefined__backlink"
+    dataLocator="store_USCanadabacklink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+  >
+    <span
+      className="left-arrow"
+    />
+  </Styled(Anchor)>
+</div>
+`;

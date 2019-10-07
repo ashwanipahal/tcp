@@ -83,7 +83,7 @@ export const StoreList = ({ className, labels, storesList }) => {
 
 StoreList.propTypes = {
   className: PropTypes.string.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
   storesList: PropTypes.shape({
     storeListUS: PropTypes.shape([]),
     storeListCA: PropTypes.shape([]),
@@ -95,6 +95,7 @@ StoreList.defaultProps = {
     storeListUS: [],
     storeListCA: [],
   },
+  labels: {},
 };
 
 export default withStyles(StoreList, style);

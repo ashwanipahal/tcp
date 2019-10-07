@@ -4,6 +4,7 @@ exports[`Store List Page should render Store List page 1`] = `
 <Styled(StoreList)
   labels={
     Object {
+      "lbl_storelist_backLink": "Back",
       "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
       "lbl_storelist_searchByStates_dropdown": "Select a State",
     }
