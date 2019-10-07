@@ -101,8 +101,8 @@ class ProductList extends React.PureComponent {
   renderFooter = () => {
     const { products } = this.props;
     const productsLen = get(products, 'length', 0);
-    const totalProductsInCurrCategory = get(this.props, 'totalProductsInCurrCategory', 0);
-    if (productsLen === totalProductsInCurrCategory) {
+    const totalProductsCount = get(this.props, 'totalProductsCount', 0);
+    if (productsLen === totalProductsCount) {
       return null;
     }
 
@@ -130,6 +130,14 @@ class ProductList extends React.PureComponent {
     return onRenderHeader();
   };
 
+  setListRef = ref => {
+    const { setListRef } = this.props;
+    this.flatListRef = ref;
+    if (setListRef) {
+      setListRef(ref);
+    }
+  };
+
   /**
    * @desc This is render product list
    */
@@ -137,9 +145,7 @@ class ProductList extends React.PureComponent {
     const { products } = this.props;
     return (
       <FlatList
-        ref={ref => {
-          this.flatListRef = ref;
-        }}
+        ref={ref => this.setListRef(ref)}
         data={products}
         renderItem={this.renderItemList}
         keyExtractor={item => item.productInfo.generalProductId}
@@ -166,7 +172,6 @@ class ProductList extends React.PureComponent {
 ProductList.propTypes = {
   // TODO: Disable eslint for the proptypes as some of the values are not being used in the list. This will be cover in kill swithc story.
   /* eslint-disable */
-  className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
@@ -200,10 +205,11 @@ ProductList.propTypes = {
   title: PropTypes.string.isRequired,
   onLoadMoreProducts: PropTypes.func.isRequired,
   onRenderHeader: PropTypes.func.isRequired,
+  setListRef: PropTypes.func,
 };
 
 ProductList.defaultProps = {
-  className: '',
+  setListRef: () => {},
   products: [],
   showQuickViewForProductId: '',
   onAddItemToFavorites: () => {},
