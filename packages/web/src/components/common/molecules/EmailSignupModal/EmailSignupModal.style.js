@@ -22,7 +22,12 @@ const EmailSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
-
+  @media ${props => props.theme.mediaQuery.small} {
+    .button-container {
+      width: 225px;
+      height: 42px;
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
@@ -49,6 +54,8 @@ const EmailSignupModalStyle = css`
     }
     .button-container {
       bottom: 24px;
+      width: 222px;
+      height: 51px;
     }
     .shop-button {
       bottom: 0;

@@ -19,6 +19,8 @@ const SignupConfirmStyle = css`
   .confirmation-image {
     margin: 0 auto 15px;
     display: flex;
+    width: 50px;
+    height: 50px;
   }
   .first-label {
     margin: 0 60px 5px;

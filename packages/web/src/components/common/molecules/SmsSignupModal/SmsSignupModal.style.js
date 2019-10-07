@@ -25,7 +25,13 @@ const SmsSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
-
+  @media ${props => props.theme.mediaQuery.small} {
+    .button-container {
+      position: absolute;
+      width: 225px;
+      height: 42px;
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
@@ -48,6 +54,8 @@ const SmsSignupModalStyle = css`
     .button-container {
       position: absolute;
       bottom: 24px;
+      width: 222px;
+      height: 51px;
     }
     .shop-button {
       position: absolute;
