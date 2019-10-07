@@ -27,6 +27,10 @@ const styles = css`
   @media ${props => props.theme.mediaQuery.medium} {
     min-height: 450px;
   }
+
+  .address {
+    word-break: break-word;
+  }
 `;
 
 export default styles;
