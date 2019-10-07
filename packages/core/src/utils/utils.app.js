@@ -592,8 +592,7 @@ export const validateColor = color => {
  * @param {upperCase} locale use for convert locate formate
  * @param {upperCase} formate use for convert locate formate
  */
-export const getTranslatedMomentDate = (dateInput, language = 'en', format) => {
-  const { day, month, date, year } = format;
+export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month, date, year }) => {
   moment.locale(language);
   const currentDate = dateInput ? moment(dateInput) : moment();
   return {
