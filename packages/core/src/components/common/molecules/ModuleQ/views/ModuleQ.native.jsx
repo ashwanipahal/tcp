@@ -140,7 +140,7 @@ const ModuleQ = props => {
     divTabs,
     bgClass,
     autoplayInterval,
-    accessibility: { moduleQMainTile = 'Shop This Look' },
+    shopThisLookLabel,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -154,7 +154,7 @@ const ModuleQ = props => {
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, moduleQMainTile);
+    return getCarouselSlide(item, navigation, shopThisLookLabel);
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -250,13 +250,13 @@ ModuleQ.defaultProps = {
   bgClass: '',
   promoBanner: null,
   autoplayInterval: 1,
-  accessibility: {},
+  shopThisLookLabel: '',
 };
 
 ModuleQ.propTypes = {
   bgClass: PropTypes.string,
   autoplayInterval: PropTypes.number,
-  accessibility: PropTypes.shape({}),
+  shopThisLookLabel: PropTypes.string,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.object,

@@ -31,13 +31,21 @@ class ModuleQ extends React.PureComponent {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
+  /** This method is to add protocol to image url
+   * since image is coming from unbox without protocol
+   * and it breaks on local without protocol
+   * TODO: It will be removed refactored later
+   */
   getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
+  /**
+   * This function is being called to render carousel items.
+   * @param {object} item image object for the carousel
+   * @param {integer} index Index for the carousel item
+   */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const {
-      accessibility: { moduleQMainTile = 'Shop This Look' },
-    } = this.props;
+    const { shopThisLookLabel } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     return (
@@ -54,7 +62,7 @@ class ModuleQ extends React.PureComponent {
             <div className="shop-this-look-link">
               <Anchor withCaret centered>
                 <BodyCopy component="span" color="gray.900" fontFamily="secondary" fontSize="fs12">
-                  {moduleQMainTile}
+                  {shopThisLookLabel}
                 </BodyCopy>
               </Anchor>
             </div>
@@ -205,7 +213,7 @@ class ModuleQ extends React.PureComponent {
 }
 
 ModuleQ.defaultProps = {
-  accessibility: {},
+  shopThisLookLabel: '',
   bgClass: '',
   className: '',
   promoBanner: [],
@@ -213,7 +221,7 @@ ModuleQ.defaultProps = {
 
 ModuleQ.propTypes = {
   bgClass: PropTypes.string,
-  accessibility: PropTypes.shape({}),
+  shopThisLookLabel: PropTypes.string,
   className: PropTypes.string,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
