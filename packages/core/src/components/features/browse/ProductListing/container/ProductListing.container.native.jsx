@@ -16,9 +16,9 @@ import {
   getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
-  getProductsInCurrCategory,
   getAllProductsSelect,
   getScrollToTopValue,
+  getTotalProductsCount,
 } from './ProductListing.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
@@ -137,7 +137,6 @@ function mapStateToProps(state) {
     ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
     filtersLength,
     initialValues: {
       ...state.ProductListing.appliedFiltersIds,
@@ -149,8 +148,8 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
-    totalProductsInCurrCategory: getProductsInCurrCategory(state),
     scrollToTop: getScrollToTopValue(state),
+    totalProductsCount: getTotalProductsCount(state),
   };
 }
 
