@@ -311,6 +311,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       creditFieldLabels,
       updateCardDetail,
       isVenmoEnabled,
+      editFormCardType,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -330,6 +331,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         formErrorMessage={formErrorMessage}
         isPaymentDisabled={isPaymentDisabled}
         cardType={cardType}
+        editFormCardType={editFormCardType}
         syncErrorsObj={syncErrorsObj}
         addressLabels={addressLabels}
         shippingAddress={shippingAddress}
@@ -358,6 +360,7 @@ const mapStateToProps = (state, ownProps) => {
     isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     syncErrorsObj: CreditCardSelector.getSyncError(state),
     cardType: CreditCardSelector.getCardType(state),
+    editFormCardType: CreditCardSelector.getEditFormCardType(state),
     isSameAsShippingChecked: CreditCardSelector.getSameAsShippingValue(state),
     isEditFormSameAsShippingChecked: CreditCardSelector.getEditFormSameAsShippingValue(state),
     isSaveToAccountChecked: CreditCardSelector.getSaveToAccountValue(state),
