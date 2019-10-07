@@ -20,7 +20,7 @@ export default css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
-    .slick-initialized .slick-track {
+    .slick-track {
       display: flex;
       align-items: center;
     }

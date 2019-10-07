@@ -54,6 +54,220 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       lbl_earnExtraPoints_view_points_history
     </Styled(Anchor)>
   </Styled(Notification)>
+  <div
+    className="extraEarningWrapper"
+  >
+    <Styled(BodyCopy)
+      className="earningExtra"
+      color="text.primary"
+      component="p"
+      data-locator="earnextrapoints-youAreEarning"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_earnExtraPoints_youAreEarning
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="checkOffers"
+      color="text.primary"
+      component="p"
+      data-locator="earnextrapoints-morePointsText"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_earnExtraPoints_checkOffers
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="learnMore"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="shipping internationally"
+        fontSizeVariation="large"
+        href="#"
+        noLink={true}
+        target="_self"
+        textAlign="center"
+        underline={true}
+      >
+        lbl_earnExtraPoints_learnMore
+      </Styled(Anchor)>
+    </Styled(BodyCopy)>
+  </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="borderAll"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(PromoListTile)
+        key="0"
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": "Shop Extra",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 10 points",
+              },
+            ],
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="tile-border"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="borderAll"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(PromoListTile)
+        key="1"
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Bonus Days",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 5 points",
+              },
+            ],
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="tile-border-desktop"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="borderAll"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(PromoListTile)
+        key="2"
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Bonus Events",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn 50 points",
+              },
+            ],
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="tile-border"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(PromoListTile)
+        key="3"
+        tileData={
+          Object {
+            "class": null,
+            "heading": Array [
+              Object {
+                "text": " Shop for  Bonus",
+              },
+            ],
+            "subHeading": Array [
+              Object {
+                "text": "Earn points",
+              },
+            ],
+          }
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(BodyCopy)
     className="morePointsWrapper"
     color="text.primary"
