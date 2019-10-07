@@ -54,6 +54,7 @@ import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organis
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
 import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
+import StoresInternationalSaga from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
@@ -135,5 +136,6 @@ export default function* rootSaga() {
     OrdersSaga(),
     OutfitDetailsSaga(),
     FavoriteSaga(),
+    StoresInternationalSaga(),
   ]);
 }
