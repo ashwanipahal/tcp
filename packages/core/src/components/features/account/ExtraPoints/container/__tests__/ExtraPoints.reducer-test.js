@@ -12,7 +12,7 @@ describe('ExtraPointsReducer', () => {
     });
     expect(
       ExtraPointsReducer(initialState, {
-        type: EXTRA_POINTS_CONSTANTS.SET_MODULEX_CONTENT,
+        type: EXTRA_POINTS_CONSTANTS.SET_PROMO_LIST_CONTENT,
         payload: promoList,
       })
     ).toEqual(

@@ -15,7 +15,7 @@ import {
   getEarnedPointsNotification,
 } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.actions';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view';
-import { fetchModuleX } from './ExtraPoints.actions';
+import { fetchPromoList } from './ExtraPoints.actions';
 /**
  * This Class component use for return the Extra Points details
  * can be passed in the component.
@@ -99,7 +99,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(getEarnedPointsNotification());
     },
     fetchExtraPointsModuleContent: contentIds => {
-      dispatch(fetchModuleX(contentIds));
+      dispatch(fetchPromoList(contentIds));
     },
   };
 };

@@ -1,15 +1,15 @@
 import EXTRA_POINTS_CONSTANTS from '../ExtraPoints.constants';
 
-export const fetchModuleX = payload => {
+export const fetchPromoList = payload => {
   return {
     payload,
-    type: EXTRA_POINTS_CONSTANTS.FETCH_MODULEX_CONTENT,
+    type: EXTRA_POINTS_CONSTANTS.FETCH_PROMO_LIST_CONTENT,
   };
 };
 
-export const setModuleX = payload => {
+export const setPromoList = payload => {
   return {
     payload,
-    type: EXTRA_POINTS_CONSTANTS.SET_MODULEX_CONTENT,
+    type: EXTRA_POINTS_CONSTANTS.SET_PROMO_LIST_CONTENT,
   };
 };

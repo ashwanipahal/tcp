@@ -34,7 +34,7 @@ export class PromoListTile extends React.PureComponent {
           <Row className="image">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <Image
-                alt="earn points"
+                alt={tileData.image.alt}
                 className="tileImage"
                 src={tileData.image.url}
                 data-locator="earnpoints-image"
