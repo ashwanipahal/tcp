@@ -25,6 +25,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       earnedReward,
       isPlcc,
       pointsToNextReward,
+      getCurrencySymbol,
     } = this.props;
     return (
       <div className={className}>
@@ -38,6 +39,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           earnedReward={earnedReward}
           isPlcc={isPlcc}
           pointsToNextReward={pointsToNextReward}
+          getCurrencySymbol={getCurrencySymbol}
         />
       </div>
     );

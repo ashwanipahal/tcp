@@ -17,6 +17,7 @@ const GuestMprPlccSection = props => {
     pointsDescription,
     earnedReward,
     remainingPlcc,
+    getCurrencySymbol,
   } = props;
 
   return (
@@ -86,7 +87,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="semibold"
                 >
-                  {'$'}
+                  {getCurrencySymbol}
                   {currentSubtotal}
                 </BodyCopy>
               </Col>
@@ -115,7 +116,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="extrabold"
                 >
-                  {'$'}
+                  {getCurrencySymbol}
                   {estimatedSubtotal}
                 </BodyCopy>
               </Col>
@@ -139,6 +140,7 @@ GuestMprPlccSection.propTypes = {
   pointsDescription: PropTypes.string,
   earnedReward: PropTypes.number,
   remainingPlcc: PropTypes.number,
+  getCurrencySymbol: PropTypes.string,
 };
 
 GuestMprPlccSection.defaultProps = {
@@ -152,6 +154,7 @@ GuestMprPlccSection.defaultProps = {
   pointsDescription: '',
   earnedReward: 0,
   remainingPlcc: 0,
+  getCurrencySymbol: '',
 };
 
 export default withStyles(GuestMprPlccSection, Styles);

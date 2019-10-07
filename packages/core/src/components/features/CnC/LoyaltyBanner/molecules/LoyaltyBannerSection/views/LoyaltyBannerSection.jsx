@@ -18,6 +18,7 @@ const LoyaltyBannerSection = props => {
     earnedReward,
     isPlcc,
     pointsToNextReward,
+    getCurrencySymbol,
   } = props;
   let showSubtotal = false;
   let finalPointsLabelStr = '';
@@ -101,6 +102,7 @@ const LoyaltyBannerSection = props => {
               pointsDescription={pointsDescription}
               earnedReward={earnedReward}
               remainingPlcc={remainingPlcc}
+              getCurrencySymbol={getCurrencySymbol}
             />
           )}
           <div className="footer alignCenter elem-pt-MED elem-pb-MED">
@@ -138,6 +140,7 @@ LoyaltyBannerSection.propTypes = {
   earnedReward: PropTypes.number,
   isPlcc: PropTypes.bool,
   pointsToNextReward: PropTypes.number,
+  getCurrencySymbol: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -150,6 +153,7 @@ LoyaltyBannerSection.defaultProps = {
   earnedReward: 0,
   isPlcc: false,
   pointsToNextReward: 0,
+  getCurrencySymbol: '',
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);
