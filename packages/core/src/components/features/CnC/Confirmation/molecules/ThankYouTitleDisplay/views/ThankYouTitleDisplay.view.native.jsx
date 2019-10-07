@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 /**
@@ -18,7 +19,7 @@ const ThankYouTitleDisplay = ({
   if (isShowMixedMessage) {
     confirmationMessage = (
       <BodyCopy
-        fontFamily="secondary"
+        mobilefontFamily="secondary"
         fontSize="fs18"
         textAlign="center"
         text={`${labels.mixOrderMsg1} ${emailAddress} ${labels.mixOrderMsg2}`}
@@ -27,41 +28,44 @@ const ThankYouTitleDisplay = ({
   } else {
     confirmationMessage = (
       <BodyCopy
-        fontFamily="secondary"
+        mobilefontFamily="secondary"
         fontSize="fs18"
         textAlign="center"
         text={`${labels.orderMsg1} ${
           isShowShippingMessage ? labels.shippingMsg : isShowBopisMessage && labels.pickup
-        }
-        ${labels.orderMsg2} ${emailAddress}`}
+        }${labels.orderMsg2} ${emailAddress}`}
       />
     );
   }
   return (
     <>
-      <BodyCopy
-        fontFamily="primary"
-        textAlign="center"
-        fontWeight="black"
-        fontSize={['fs36', 'fs36', 'fs38']}
-        text={labels.thankYouHeading}
-      />
-
-      {isOrderPending && (
+      <ViewWithSpacing spacingStyles="margin-top-XS margin-bottom-XS margin-left-MED margin-right-MED">
         <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs18"
+          fontFamily={['primary']}
           textAlign="center"
-          text={labels.pendingOrderMsg}
+          fontWeight="black"
+          fontSize="fs36"
+          text={labels.thankYouHeading}
         />
-      )}
+      </ViewWithSpacing>
 
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs18"
-        textAlign="center"
-        text={confirmationMessage}
-      />
+      <ViewWithSpacing spacingStyles="margin-top-SM margin-left-LRG margin-right-LRG">
+        {isOrderPending && (
+          <BodyCopy
+            mobilefontFamily="secondary"
+            fontSize="fs16"
+            textAlign="center"
+            text={labels.pendingOrderMsg}
+          />
+        )}
+
+        <BodyCopy
+          mobilefontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+          text={confirmationMessage}
+        />
+      </ViewWithSpacing>
     </>
   );
 };

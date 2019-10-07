@@ -74,14 +74,6 @@ const ConfirmationView = ({
           text="SMS SIGN UP"
         />
       </SMSWrapper>
-      {/* <ThankYouWrapper>
-        <BodyCopyWithSpacing
-          textAlign="center"
-          fontSize="fs16"
-          mobileFontFamily="secondary"
-          spacingStyles="margin-top-LRG margin-bottom-LRG"
-          text="THANK YOU COMPONENT"
-        /> */}
       <ThankYouComponent
         emailAddress={emailAddress}
         isOrderPending={isOrderPending}

@@ -4,7 +4,13 @@ import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
 import ConfirmationFulfillmentCenterItemDisplay from '../../ConfirmationFulfillmentCenterItemDisplay';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import RichText from '../../../../../../common/atoms/RichText';
-
+import {
+  Container,
+  RichTextContainer,
+  CashBannerWrapper,
+  BorderWrapper,
+} from '../styles/ThankYouComponent.style.native';
+import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 /**
  * @function ThankYouComponent
  * @description wrapper for thank you component.
@@ -45,39 +51,43 @@ const ThankYouComponent = ({
           />
         ))}
 
-      <BodyCopy
-        fontSize="fs16"
-        fontFamily="secondary"
-        fontWeight="extrabold"
-        textAlign="center"
-        text="Place Cash Banner"
-      />
+      {isGuest && (
+        <CashBannerWrapper>
+          <BodyCopyWithSpacing
+            textAlign="center"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="secondary"
+            spacingStyles="margin-top-LRG margin-bottom-LRG"
+            text="Place Cash Banner"
+          />
+        </CashBannerWrapper>
+      )}
 
       {orderNumbersByFullfillmentCenter && (
         <>
-          <BodyCopy
-            fontSize={['fs16', 'fs16', 'fs20']}
-            fontFamily="primary"
-            text={labels.nextHeading}
-          />
+          <BorderWrapper />
+          <BodyCopy fontSize="fs16" mobilefontFamily="primary" text={labels.nextHeading} />
 
           <BodyCopy
-            fontSize={['fs14', 'fs14', 'fs16']}
-            fontFamily="secondary"
+            fontSize="fs14"
+            mobilefontFamily="secondary"
             text={isBossInList ? labels.nextDetailsBoss : labels.nextDetails}
           />
         </>
       )}
-
-      <>
-        <BodyCopy
-          fontSize={['fs16', 'fs16', 'fs20']}
-          fontFamily="primary"
-          text={labels.updateOrderHeading}
-        />
-
-        <RichText richTextHtml={updateOrderDetailsData} dataLocator="update-order-details" />
-      </>
+      <BorderWrapper />
+      <BodyCopyWithSpacing
+        spacingStyles="margin-top-XL margin-left-XS"
+        fontSize="fs16"
+        mobilefontFamily="primary"
+        text={labels.updateOrderHeading}
+      />
+      <Container>
+        <RichTextContainer>
+          <RichText source={{ html: updateOrderDetailsData }} />
+        </RichTextContainer>
+      </Container>
     </>
   );
 };
@@ -123,4 +133,4 @@ ThankYouComponent.defaultProps = {
   isShowBopisMessage: false,
   isShowMixedMessage: false,
 };
-export default { ThankYouComponent };
+export default ThankYouComponent;

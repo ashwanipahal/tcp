@@ -5,8 +5,14 @@ import { getDateInformation } from '../../../../../../../utils';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import { ROUTE_PATH } from '../../../../../../../config/route.config';
 import internalEndpoints from '../../../../../account/common/internalEndpoints';
+import {
+  OrderWrapper,
+  ConfirmationItemCount,
+  ConfirmationType,
+  ConfirmationOrderDetailsWrapper,
+} from '../styles/ConfirmationOrderNumberDisplay.styles.native';
+import { UrlHandler } from '../../../../../../../utils/utils.app';
 
 const { orderPage } = internalEndpoints;
 
@@ -32,56 +38,63 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels }) => {
   const bossEndDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
-    `${bossStartDate.day}. ${bossStartDate.month}
-   ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
+    `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${bossEndDate.day}. ${
+      bossEndDate.month
+    } ${bossEndDate.date}`;
   const bopisDate = `${labels.bopisDate} ${today.month} ${today.date}`;
   return (
-    <>
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="black"
-        className="confirmation-item-count"
-        text={`${productsCount} ${productsCount > 1 ? labels.items : labels.item}`}
-      />
-
-      {isBoss && (
+    <OrderWrapper>
+      <ConfirmationItemCount>
         <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-          text={bossDate}
+          mobilefontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="black"
+          text={`${productsCount} ${productsCount > 1 ? labels.items : labels.item}`}
         />
+      </ConfirmationItemCount>
+      {isBoss && (
+        <ConfirmationType>
+          <BodyCopy
+            fontSize="fs22"
+            mobilefontFamily="secondary"
+            fontWeight="extrabold"
+            textAlign="center"
+            text={bossDate}
+          />
+        </ConfirmationType>
       )}
       {isBopis && (
-        <BodyCopy
-          fontSize="fs22"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="confirmation-fullfillment-type"
-          textAlign="center"
-          text={bopisDate}
-        />
+        <ConfirmationType>
+          <BodyCopy
+            fontSize="fs22"
+            mobilefontFamily="secondary"
+            fontWeight="extrabold"
+            textAlign="center"
+            text={bopisDate}
+          />
+        </ConfirmationType>
       )}
-      <>
-        <ConfirmationItemDisplay title={labels.orderNumber}>
+      <ConfirmationOrderDetailsWrapper>
+        <ConfirmationItemDisplay title={labels.orderNumber} isLink>
           {isGuest ? (
             <Anchor
               underline
-              url={ROUTE_PATH.guestOrderDetails({
-                pathSuffix: `${orderNumber}/${encryptedEmailAddress}`,
-              })}
-            >
-              {orderNumber}
-            </Anchor>
+              onPress={() => {
+                UrlHandler(`${orderNumber}/${encryptedEmailAddress}`);
+              }}
+              text={orderNumber}
+            />
           ) : (
-            <Anchor underline to={orderPage.link} asPath={`${orderPage.path}/${orderNumber}`}>
-              {orderNumber}
-            </Anchor>
+            <Anchor
+              underline
+              text={orderNumber}
+              onPress={() => {
+                UrlHandler(`${orderPage.path}/${encryptedEmailAddress}`);
+              }}
+            />
           )}
         </ConfirmationItemDisplay>
+
         <ConfirmationItemDisplay title={labels.orderDate}>
           {orderDate.toLocaleDateString('en-US', CONFIRMATION_CONSTANTS.DATE_OPTIONS)}
         </ConfirmationItemDisplay>
@@ -90,8 +103,8 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels }) => {
             {`${labels.currencySign} ${orderTotal.toFixed(2)}`}
           </ConfirmationItemDisplay>
         )}
-      </>
-    </>
+      </ConfirmationOrderDetailsWrapper>
+    </OrderWrapper>
   );
 };
 

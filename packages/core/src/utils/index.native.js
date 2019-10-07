@@ -48,4 +48,6 @@ export {
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getDateInformation,
+  buildStorePageUrlSuffix,
 } from './utils';
