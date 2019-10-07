@@ -7,8 +7,8 @@ const StyledLinkText = styled(LinkText)`
       display: block;
     }
     .small_text_white_medium {
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        padding: 0 20px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        display: inline;
       }
     }
   }
