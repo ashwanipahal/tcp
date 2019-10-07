@@ -35,6 +35,32 @@ const nextIcon = require('../../../../../assets/carrot-large-left.png');
 const prevIconDark = require('../../../../../assets/carrot-small-rights.png');
 const nextIconDark = require('../../../../../assets/carrot-small-left.png');
 
+// @flow
+type Props = {
+  carouselConfig: Object,
+  data: Array<Object>,
+  renderItem: Function,
+  onSnapToItem?: Function,
+  width: Number,
+  height: Number,
+  slideStyle: Object,
+  theme: Object,
+  variation: String,
+  vertical: Boolean,
+  showDots?: Boolean,
+  darkArrow?: Boolean,
+  overlap?: Boolean,
+  hidePlayStopButton?: Boolean,
+  autoplayInterval: Number,
+  buttonPosition: String,
+  autoplay?: Boolean,
+  hasParallaxImages?: Boolean,
+};
+
+type State = {
+  autoplay: Boolean,
+};
+
 /**
  * Default settings for Carousel.
  */
@@ -283,6 +309,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       buttonPosition,
       darkArrow,
       options,
+      hasParallaxImages,
     } = this.props;
 
     if (!data) {
@@ -293,10 +320,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     const settings = { ...defaults, ...options };
 
     const { iconTypeNext, iconTypePre } = this.getNavIcons(darkArrow, activeSlide, settings, data);
+    let carouselWidth = width - 64;
+    if (hasParallaxImages) {
+      carouselWidth = width - 80;
+    }
 
     if (variation === 'show-arrow') {
       // reduce left and right arrow with from the total with to fix center aline issue
-      const carouselWidth = width - 64;
       return (
         <View>
           <Container>
@@ -320,6 +350,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               autoplay={autoplay}
               autoplayInterval={autoplayInterval}
               ref={this.carouselRef}
+              hasParallaxImages={hasParallaxImages}
               {...settings}
             />
             <TouchableView
@@ -346,13 +377,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           data={data}
           renderItem={renderItem}
           sliderWidth={width}
-          itemWidth={width}
+          itemWidth={hasParallaxImages ? carouselWidth : width}
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}
           autoplay={autoplay}
           vertical={vertical}
           autoplayInterval={autoplayInterval}
+          hasParallaxImages={hasParallaxImages}
           {...settings}
         />
 
@@ -375,6 +407,7 @@ SnapCarousel.defaultProps = {
   hidePlayStopButton: false,
   overlap: false,
   darkArrow: false,
+  hasParallaxImages: false,
   paginationProps: {},
   carouselConfig: {},
   data: [],
@@ -387,6 +420,7 @@ SnapCarousel.defaultProps = {
   buttonPosition: '',
   width: null,
   height: null,
+  options: {},
 };
 
 SnapCarousel.propTypes = {
@@ -408,6 +442,8 @@ SnapCarousel.propTypes = {
   hidePlayStopButton: PropTypes.bool,
   autoplay: PropTypes.bool,
   paginationProps: PropTypes.shape({}),
+  hasParallaxImages: PropTypes.bool,
+  options: PropTypes.shape({}),
 };
 
 export default withTheme(SnapCarousel);

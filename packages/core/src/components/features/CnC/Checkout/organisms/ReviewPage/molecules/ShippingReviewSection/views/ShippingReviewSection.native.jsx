@@ -99,7 +99,7 @@ ShippingReviewSection.propTypes = {
 ShippingReviewSection.defaultProps = {
   labels: {},
   shippingAddress: {},
-  isGiftOptionsEnabled: true,
+  isGiftOptionsEnabled: false,
   giftWrappingDisplayName: 'N/A',
 };
 

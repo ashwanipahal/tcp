@@ -3,19 +3,15 @@
 exports[`BonusPointsDaysContainer should not render correctly 1`] = `""`;
 
 exports[`BonusPointsDaysContainer should render correctly 1`] = `
-<div
-  className="bonusPointsDaysWrapperAccordian elem-mb-MED"
->
-  <Styled(BonusPointsView)
-    bonusData={Object {}}
-    bonusDetailsData=""
-    getBonusDaysData={[Function]}
-    isBagPage={false}
-    isPlcc={false}
-    labels={Object {}}
-    orderDetails=""
-    showAccordian={true}
-    view="edit"
-  />
-</div>
+<Styled(BonusPointsView)
+  bonusData={Object {}}
+  bonusDetailsData=""
+  getBonusDaysData={[Function]}
+  isBagPage={false}
+  isPlcc={false}
+  labels={Object {}}
+  orderDetails=""
+  showAccordian={true}
+  view="edit"
+/>
 `;
