@@ -41,6 +41,7 @@ import PointsClaimReducer from '@tcp/core/src/components/features/account/Points
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -93,6 +94,7 @@ import {
   CONFIRMATION_REDUCER_KEY,
   STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
+  EXTRA_POINTS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -188,6 +190,7 @@ const rootReducer = combineReducers({
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
+  [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
 });
 
 export default rootReducer;
