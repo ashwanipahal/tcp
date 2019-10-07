@@ -761,9 +761,15 @@ const getGiftWrapOptions = state => {
 };
 
 const getSelectedGiftWrapDetails = state => {
-  const selectedGiftWrapValues = getGiftWrappingValues(state);
+  const orderDetails = state.CartPageReducer.get('orderDetails');
+  const checkout = orderDetails.get('checkout');
+  const optionId = checkout.getIn(['giftWrap', 'optionId']);
   const selectedOptionData = getGiftWrapOptions(state);
-  return { ...selectedGiftWrapValues, ...selectedOptionData };
+  const selectedOption = selectedOptionData.body.giftOptions.filter(
+    option => option.catEntryId === optionId
+  );
+  if (selectedOption.length === 1) return selectedOption[0];
+  return [];
 };
 
 /**
