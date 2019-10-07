@@ -8,7 +8,6 @@ import { getSiteId } from '../../../../../../../utils';
 import { getLabels } from '../../../../Account/container/Account.selectors';
 
 class OrdersTile extends PureComponent {
-
   componentDidMount() {
     const { fetchOrders } = this.props;
     fetchOrders(getSiteId());
@@ -17,12 +16,7 @@ class OrdersTile extends PureComponent {
   render() {
     const { labels, ordersListItems } = this.props;
 
-    return (
-      <OrdersTileComponent
-        labels={labels}
-        ordersList={ordersListItems}
-      />
-    )
+    return <OrdersTileComponent labels={labels} ordersList={ordersListItems} />;
   }
 }
 
