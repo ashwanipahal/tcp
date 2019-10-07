@@ -41,7 +41,8 @@ const getImageConfig = ribbonPresent => {
   if (isGymboreeSite) {
     imageConfig = ribbonPresent ? IMG_DATA_GYM_RIBBON : IMG_DATA_GYM;
   }
-  return imageConfig;
+  console.log(imageConfig.crops);
+  return imageConfig.crops;
 };
 /**
  * This function return the  LinkText component to render the text.
