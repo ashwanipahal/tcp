@@ -244,7 +244,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -4158,7 +4158,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -8068,7 +8068,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -11982,7 +11982,7 @@ exports[`StoreStaticMap component resize window should update component on windo
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -12669,7 +12669,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {

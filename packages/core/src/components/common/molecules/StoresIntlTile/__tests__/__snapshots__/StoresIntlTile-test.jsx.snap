@@ -232,7 +232,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -914,7 +914,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO": "#3d95ce",
+        "VENMO_BLUE": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
