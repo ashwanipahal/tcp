@@ -8,7 +8,7 @@ import {
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import { routeToStoreDetails, routerPush } from '../../../../../utils';
+import { routeToStoreDetails, routerPush, fetchStoreIdFromUrlPath } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -90,12 +90,7 @@ export class StoreDetailContainer extends PureComponent {
 
   openStoreDetails = (event, store) => {
     event.preventDefault();
-    const { fetchCurrentStore } = this.props;
-    const {
-      basicInfo: { id },
-    } = store;
     const { routerHandler } = routeToStoreDetails(store);
-    fetchCurrentStore(id);
     routerHandler();
   };
 
@@ -169,6 +164,15 @@ export class StoreDetailContainer extends PureComponent {
   }
 }
 
+StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
+  if (!isServer) {
+    const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+    store.dispatch(getCurrentStoreInfo(storeId));
+  }
+
+  return pageProps;
+};
+
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),
   formatStore: PropTypes.func.isRequired,
@@ -195,7 +199,6 @@ StoreDetailContainer.propTypes = {
   setFavStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
-  fetchCurrentStore: PropTypes.func.isRequired,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -235,7 +238,6 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(getFavoriteStoreActn(payload));
   },
   setFavStore: payload => dispatch(setFavoriteStoreActn({ ...payload, key: 'DETAIL' })),
-  fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 export default connect(

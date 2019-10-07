@@ -14,7 +14,7 @@ const getDefaultState = state => {
   return state;
 };
 
-const ProductListingReducer = (state = initialState, action) => {
+const SearchDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case SLP_CONSTANTS.SET_PRODUCTS:
       return state.set(
@@ -34,4 +34,4 @@ const ProductListingReducer = (state = initialState, action) => {
   }
 };
 
-export default ProductListingReducer;
+export default SearchDetailReducer;
