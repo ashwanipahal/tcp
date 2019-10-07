@@ -4,7 +4,15 @@ import { Anchor, BodyCopy, Row } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from './L3Panel.style';
 import Drawer from '../Drawer';
+import { keyboard } from '../../../../../../constants/constants';
 import mock from './mock';
+
+const keydownHideL3Drawer = (e, hideL3Drawer) => {
+  const { KEY_ENTER, KEY_SPACE } = keyboard;
+  if (e.which === KEY_ENTER || e.which === KEY_SPACE) {
+    hideL3Drawer();
+  }
+};
 
 const L3Panel = props => {
   const {
@@ -48,7 +56,7 @@ const L3Panel = props => {
             tabIndex={0}
             className="icon-back"
             onClick={hideL3Drawer}
-            onKeyDown={hideL3Drawer}
+            onKeyDown={e => keydownHideL3Drawer(e, hideL3Drawer)}
           />
           <span className="l1-label l3-label">{name}</span>
         </div>

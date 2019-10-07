@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import mock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { keyboard } from '../../../../../../constants/constants';
 import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
 import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
@@ -91,6 +92,13 @@ const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, e) => {
     openL3Drawer(`l3-drawer-${id.toString()}`, hasL3)(e);
   } else {
     hideL2Nav();
+  }
+};
+
+const keydownHideL2Drawer = (e, hideL2Drawer) => {
+  const { KEY_ENTER, KEY_SPACE } = keyboard;
+  if (e.which === KEY_ENTER || e.which === KEY_SPACE) {
+    hideL2Drawer(e);
   }
 };
 
@@ -197,7 +205,7 @@ const L2Panel = props => {
                   tabIndex={0}
                   className="icon-back"
                   onClick={hideL2Drawer}
-                  onKeyDown={hideL2Drawer}
+                  onKeyDown={e => keydownHideL2Drawer(e, hideL2Drawer)}
                 />
                 <span className="l1-label">{name}</span>
               </div>
