@@ -31,6 +31,28 @@ describe('EarnPointsVanilla component', () => {
       labels: {},
       earnExtraPointsLabels: {},
       onViewActivityDetails: () => {},
+      promoListData: [
+        {
+          class: null,
+          heading: [{ text: 'Shop Extra' }],
+          subHeading: [{ text: 'Earn 10 points' }],
+        },
+        {
+          class: null,
+          heading: [{ text: ' Bonus Days' }],
+          subHeading: [{ text: 'Earn 5 points' }],
+        },
+        {
+          class: null,
+          heading: [{ text: ' Bonus Events' }],
+          subHeading: [{ text: 'Earn 50 points' }],
+        },
+        {
+          class: null,
+          heading: [{ text: ' Shop for  Bonus' }],
+          subHeading: [{ text: 'Earn points' }],
+        },
+      ],
     };
     const component = shallow(<EarnPointsVanilla {...props} />);
     expect(component).toMatchSnapshot();

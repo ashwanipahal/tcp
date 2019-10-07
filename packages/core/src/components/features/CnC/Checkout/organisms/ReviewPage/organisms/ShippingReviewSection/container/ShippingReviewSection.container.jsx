@@ -3,14 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ShippingReviewSection from '../../../molecules/ShippingReviewSection';
 import CHECKOUT_SELECTOR from '../../../../../container/Checkout.selector';
+import CONSTANTS from '../../../../../Checkout.constants';
 
-export const ShippingReviewContainer = ({ shippingAddress, shippingMethod, onEdit, labels }) => {
+export const ShippingReviewContainer = ({
+  shippingAddress,
+  shippingMethod,
+  onEdit,
+  labels,
+  isGiftOptionsEnabled,
+  giftWrappingDisplayName,
+}) => {
   return (
     <ShippingReviewSection
       shippingAddress={shippingAddress}
       shippingMethod={shippingMethod}
       onEdit={onEdit}
       labels={labels}
+      isGiftOptionsEnabled={isGiftOptionsEnabled}
+      giftWrappingDisplayName={giftWrappingDisplayName}
     />
   );
 };
@@ -20,6 +30,8 @@ ShippingReviewContainer.propTypes = {
   shippingMethod: PropTypes.shape({}).isRequired,
   onEdit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  isGiftOptionsEnabled: PropTypes.bool.isRequired,
+  giftWrappingDisplayName: PropTypes.string.isRequired,
 };
 
 ShippingReviewContainer.defaultProps = {
@@ -31,9 +43,9 @@ const mapStateToProps = state => {
     shippingAddress: CHECKOUT_SELECTOR.getShippingDestinationValues(state),
     shippingMethod: CHECKOUT_SELECTOR.getSelectedShippingMethodDetails(state),
     labels: CHECKOUT_SELECTOR.getShippingSectionLabels(state),
-    // isGiftOptionsEnabled: CHECKOUT_SELECTOR.isGiftOptionsEnabled(state),
-    // giftWrappingDisplayName:
-    // CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).displayName || 'N/A',
+    isGiftOptionsEnabled: !!CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).name,
+    giftWrappingDisplayName:
+      CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).name || CONSTANTS.NA,
   };
 };
 
