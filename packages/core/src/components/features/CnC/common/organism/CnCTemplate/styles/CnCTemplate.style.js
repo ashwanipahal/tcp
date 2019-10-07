@@ -39,7 +39,7 @@ const styles = css`
       margin-bottom: 0;
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.MED : 0)};
+      margin-top: ${props => (props.marginTop ? props.theme.spacing.LAYOUT_SPACING.XS : 0)};
       margin-bottom: 0;
     }
   }
