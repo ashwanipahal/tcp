@@ -6,6 +6,11 @@ const StyledLinkText = styled(LinkText)`
     span {
       display: block;
     }
+    .small_text_white_medium {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        padding: 0 20px;
+      }
+    }
   }
 `;
 const ColWrapper = styled.div`

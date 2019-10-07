@@ -73,11 +73,10 @@ export default css`
   }
 
   /* Module S Heading styles */
-  .small_text_white_medium,
-  .style11 {
+  .small_text_white_medium {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: ${props => props.theme.typography.fontWeights.medium};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
     letter-spacing: 2px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
