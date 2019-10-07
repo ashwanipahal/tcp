@@ -13,6 +13,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -279,15 +280,17 @@ class BagPageView extends React.Component {
               >
                 {`${labels.bagHeading} (${totalCount})`}
               </Heading>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs10"
-                className={`estimatedHeaderText ${
-                  activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
-                }`}
-              >
-                {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
-              </BodyCopy>
+              {totalCount > 0 && (
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs10"
+                  className={`estimatedHeaderText ${
+                    activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
+                  }`}
+                >
+                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                </BodyCopy>
+              )}
             </Col>
             {isShowSaveForLaterSwitch && (
               <Col
@@ -320,6 +323,7 @@ class BagPageView extends React.Component {
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
         />
+        <QuickViewModal fromBagPage />
       </div>
     );
   }
