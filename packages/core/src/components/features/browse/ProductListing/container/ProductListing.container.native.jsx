@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -166,6 +167,9 @@ function mapDispatchToProps(dispatch) {
     addItemToCartBopis: () => {},
     resetProducts: () => {
       dispatch(resetPlpProducts());
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 }

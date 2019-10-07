@@ -8,6 +8,7 @@ import {
   getBreadCrumbs,
   getCurrentProduct,
   getPlpLabels,
+  getProductDetailFormValues,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -42,8 +43,8 @@ class ProductDetailContainer extends React.PureComponent {
     getDetails({ productColorId: productId, ignoreCache: true });
   }
 
-  handleAddToBag = formValues => {
-    const { addToBagEcom, currentProduct } = this.props;
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, currentProduct } = this.props;
     let cartItemInfo = getCartItemInfo(currentProduct, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
@@ -90,6 +91,7 @@ function mapStateToProps(state) {
     plpLabels: getPlpLabels(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
+    formValues: getProductDetailFormValues(state),
   };
 }
 
@@ -118,6 +120,7 @@ ProductDetailContainer.propTypes = {
   plpLabels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
+  formValues: PropTypes.shape({}).isRequired,
 };
 
 ProductDetailContainer.defaultProps = {

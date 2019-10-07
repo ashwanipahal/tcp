@@ -1,4 +1,5 @@
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
+import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 
 import { getLabelValue } from '../../../../../utils';
 
@@ -16,7 +17,7 @@ export const getModalState = state => {
 
 export const getQuickViewFormValues = state => {
   const generalProductId = getGeneralProductId(state);
-  return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
+  return getAddedToBagFormValues(state, `${PRODUCT_ADD_TO_BAG}-${generalProductId}`);
 };
 
 export const getQuickViewLabels = state => {

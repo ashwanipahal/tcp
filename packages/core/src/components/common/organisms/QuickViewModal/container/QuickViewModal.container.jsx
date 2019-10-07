@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
 import PropTypes from 'prop-types';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
@@ -82,9 +81,7 @@ QuickViewModalContainer.propTypes = {
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(QuickViewModalContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuickViewModalContainer);

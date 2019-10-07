@@ -7,7 +7,7 @@ import ProductPrice from '../../../../../../features/browse/ProductDetail/molecu
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
-import { getLocator } from '../../../../../../../utils';
+import { getLocator, routerPush } from '../../../../../../../utils';
 
 import {
   getMapSliceForColorProductId,
@@ -31,6 +31,13 @@ class ProductCustomizeFormPart extends React.Component {
   onChangeColor = e => {
     const { colorFitsSizesMap } = this.props;
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
+
+  goToPDPPage = (e, pdpToPath, currentColorPdpUrl) => {
+    e.preventDefault();
+    const { onCloseClick } = this.props;
+    routerPush(pdpToPath, currentColorPdpUrl);
+    onCloseClick();
   };
 
   render() {
@@ -84,8 +91,8 @@ class ProductCustomizeFormPart extends React.Component {
               <Anchor
                 dataLocator={getLocator('quick_view_View_Product_details')}
                 className="link-redirect"
-                to={pdpToPath}
-                asPath={currentColorPdpUrl}
+                to="/#"
+                onClick={e => this.goToPDPPage(e, pdpToPath, currentColorPdpUrl)}
               >
                 <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
                   {quickViewLabels.viewProductDetails}
@@ -136,6 +143,7 @@ class ProductCustomizeFormPart extends React.Component {
 ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
   handleAddToBag: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
   closeQuickViewModal: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({
