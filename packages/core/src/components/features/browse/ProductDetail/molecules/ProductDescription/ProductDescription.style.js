@@ -15,6 +15,10 @@ export default css`
     outline: none;
   }
 
+  .part-number-section {
+    margin: 18px 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+
   .show-description-list {
     display: none;
   }
