@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from '../../ProductListing/container/ProductListing.util';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, flattenArray } from '../../../../../utils';
 import { PRODUCTS_PER_LOAD } from './SearchDetail.constants';
 import { SLP_PAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
@@ -67,6 +67,14 @@ export const getProductsSelect = createSelector(
   getSearchListingState,
   products =>
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+);
+
+export const getAllProductsSelect = createSelector(
+  getSearchListingState,
+  products => {
+    const allProducts = products && products.get('loadedProductsPages');
+    return allProducts && flattenArray(allProducts);
+  }
 );
 
 export const getLabels = state => {
@@ -173,4 +181,41 @@ export const getLastLoadedPageNumber = state => {
 export const getMaxPageNumber = state => {
   // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
   return Math.ceil(state[SLP_PAGE_REDUCER_KEY].get('totalProductsCount') / getPageSize());
+};
+
+/**
+ * @function updateAppliedFiltersInState
+ * matches filterMaps with appliedFilterIds
+ * and updates isSelected state in filters
+ *
+ * @param {*} state
+ * @returns
+ */
+export const updateAppliedFiltersInState = state => {
+  const filters = getProductsFilters(state);
+  const appliedFilters = getAppliedFilters(state);
+  const filterEntries = (filters && Object.entries(filters)) || [];
+  if (appliedFilters && Object.keys(appliedFilters).length) {
+    filterEntries.map(filter => {
+      const key = filter[0];
+      const values = filter[1];
+      const appliedFilterValue = appliedFilters[key] || [];
+      if (!(values instanceof Array)) return values;
+
+      // for all arrays in filters - update isSelected as true if it is present in appliedFilterIds
+      values.map(value => {
+        const isValueApplied = appliedFilterValue.filter(id => id === value.id).length > 0;
+        const updatedValue = value;
+        updatedValue.isSelected = isValueApplied;
+        return updatedValue;
+      });
+      return values;
+    });
+  }
+
+  return filters;
+};
+
+export const getScrollToTopValue = state => {
+  return getSearchListingState(state).get('isScrollToTop');
 };
