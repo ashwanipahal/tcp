@@ -403,6 +403,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      fromBagPage,
     } = this.props;
     const {
       selectedColor,
@@ -444,6 +445,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        fromBagPage={fromBagPage}
       />
     );
   }
