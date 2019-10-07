@@ -65,14 +65,6 @@ exports[`ShippingReviewSection component should renders correctly props are pres
           }
         }
       />
-      <GiftWrappingDisplay
-        displayName="N/A"
-        labels={
-          Object {
-            "lbl_review_sectionShippingMethodTitle": "title",
-          }
-        }
-      />
     </View>
   </Styled(View)>
 </Fragment>
@@ -134,12 +126,7 @@ exports[`ShippingReviewSection component should renders correctly props not pres
         />
       </Styled(View)>
     </View>
-    <View>
-      <GiftWrappingDisplay
-        displayName="N/A"
-        labels={Object {}}
-      />
-    </View>
+    <View />
   </Styled(View)>
 </Fragment>
 `;
