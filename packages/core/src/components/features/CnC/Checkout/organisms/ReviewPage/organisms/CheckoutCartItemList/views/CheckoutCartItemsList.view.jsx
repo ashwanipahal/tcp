@@ -200,7 +200,7 @@ class CheckoutCartItemsList extends Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs10"
               fontFamily="secondary"
               className="store-date-container"
             >

@@ -4,8 +4,10 @@ export default css`
   background-color: ${props => props.theme.colors.WHITE};
 
   .header-topnav__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
-    padding: 0 14px;
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -14,10 +16,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       padding: 15px 15px 0 6px;
-    }
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      padding-left: 25%;
     }
   }
 
@@ -68,7 +66,7 @@ export default css`
   .exitFromCheckout {
     position: absolute;
     top: 16px;
-    left: 20px;
+    left: -7px;
     border: none;
     background: transparent;
 
@@ -81,6 +79,8 @@ export default css`
     text-align: center;
     padding: 10px 0;
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    margin-left: 0;
+    width: 100%;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
