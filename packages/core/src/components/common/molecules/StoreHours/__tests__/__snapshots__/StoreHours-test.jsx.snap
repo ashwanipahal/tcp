@@ -319,7 +319,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO_BLUE": "#3d95ce",
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -944,7 +944,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO_BLUE": "#3d95ce",
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -1655,7 +1655,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "FOCUS_BORDER": "#439ad4",
             "SUCCESS_BORDER": "#6dc927",
           },
-          "VENMO_BLUE": "#3d95ce",
+          "VENMO": "#3d95ce",
           "WHITE": "#ffffff",
         },
         "fonts": Object {
@@ -2280,7 +2280,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "FOCUS_BORDER": "#439ad4",
               "SUCCESS_BORDER": "#6dc927",
             },
-            "VENMO_BLUE": "#3d95ce",
+            "VENMO": "#3d95ce",
             "WHITE": "#ffffff",
           },
           "fonts": Object {
@@ -2933,7 +2933,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "FOCUS_BORDER": "#439ad4",
                   "SUCCESS_BORDER": "#6dc927",
                 },
-                "VENMO_BLUE": "#3d95ce",
+                "VENMO": "#3d95ce",
                 "WHITE": "#ffffff",
               },
               "fonts": Object {
@@ -3693,7 +3693,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "FOCUS_BORDER": "#439ad4",
                     "SUCCESS_BORDER": "#6dc927",
                   },
-                  "VENMO_BLUE": "#3d95ce",
+                  "VENMO": "#3d95ce",
                   "WHITE": "#ffffff",
                 },
                 "fonts": Object {
@@ -4345,7 +4345,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "FOCUS_BORDER": "#439ad4",
                       "SUCCESS_BORDER": "#6dc927",
                     },
-                    "VENMO_BLUE": "#3d95ce",
+                    "VENMO": "#3d95ce",
                     "WHITE": "#ffffff",
                   },
                   "fonts": Object {
@@ -5097,7 +5097,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO_BLUE": "#3d95ce",
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
@@ -5812,7 +5812,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "FOCUS_BORDER": "#439ad4",
             "SUCCESS_BORDER": "#6dc927",
           },
-          "VENMO_BLUE": "#3d95ce",
+          "VENMO": "#3d95ce",
           "WHITE": "#ffffff",
         },
         "fonts": Object {
@@ -6440,7 +6440,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "FOCUS_BORDER": "#439ad4",
               "SUCCESS_BORDER": "#6dc927",
             },
-            "VENMO_BLUE": "#3d95ce",
+            "VENMO": "#3d95ce",
             "WHITE": "#ffffff",
           },
           "fonts": Object {
@@ -7081,7 +7081,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "FOCUS_BORDER": "#439ad4",
                   "SUCCESS_BORDER": "#6dc927",
                 },
-                "VENMO_BLUE": "#3d95ce",
+                "VENMO": "#3d95ce",
                 "WHITE": "#ffffff",
               },
               "fonts": Object {
@@ -7829,7 +7829,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "FOCUS_BORDER": "#439ad4",
                     "SUCCESS_BORDER": "#6dc927",
                   },
-                  "VENMO_BLUE": "#3d95ce",
+                  "VENMO": "#3d95ce",
                   "WHITE": "#ffffff",
                 },
                 "fonts": Object {
@@ -8469,7 +8469,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "FOCUS_BORDER": "#439ad4",
                       "SUCCESS_BORDER": "#6dc927",
                     },
-                    "VENMO_BLUE": "#3d95ce",
+                    "VENMO": "#3d95ce",
                     "WHITE": "#ffffff",
                   },
                   "fonts": Object {

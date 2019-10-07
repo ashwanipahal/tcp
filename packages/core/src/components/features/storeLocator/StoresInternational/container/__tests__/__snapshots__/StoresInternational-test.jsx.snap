@@ -232,7 +232,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "FOCUS_BORDER": "#439ad4",
           "SUCCESS_BORDER": "#6dc927",
         },
-        "VENMO_BLUE": "#3d95ce",
+        "VENMO": "#3d95ce",
         "WHITE": "#ffffff",
       },
       "fonts": Object {
