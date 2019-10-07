@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const styles = css`
   .aboutyou-wrapper {
     width: 72%;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-left: 0px;
   }
 

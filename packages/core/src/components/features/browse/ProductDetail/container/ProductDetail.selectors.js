@@ -38,6 +38,7 @@ export const getPlpLabels = state => {
   if (!state.Labels || !state.Labels.PLP)
     return {
       addToBag: '',
+      update: '',
       errorMessage: '',
       size: '',
       fit: '',
@@ -49,6 +50,7 @@ export const getPlpLabels = state => {
     PLP: {
       plpTiles: {
         lbl_add_to_bag: addToBag,
+        lbl_update: update,
         lbl_pdp_size_error: errorMessage,
         lbl_pdp_size: size,
         lbl_pdp_fit: fit,
@@ -65,6 +67,7 @@ export const getPlpLabels = state => {
     fit,
     color,
     quantity,
+    update,
   };
 };
 

@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import {
   USER_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
-  CARTPAGE_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { fetchBillingOrShippingAddress } from '../utils/utility';
 import getErrorList from '../../../CnC/BagPage/container/Errors.selector';
@@ -32,13 +31,6 @@ export const getErrorMapping = state => {
 export const getUserId = state => {
   const personalData = state[USER_REDUCER_KEY].get('personalData');
   return personalData && personalData.get('userId');
-};
-
-export const getBagItemsSize = state => {
-  const orderDetails = state[CARTPAGE_REDUCER_KEY].get('orderDetails');
-  return (
-    (orderDetails && orderDetails.get('orderItems') && orderDetails.get('orderItems').size) || 0
-  );
 };
 
 export const getUserProfileData = createSelector(

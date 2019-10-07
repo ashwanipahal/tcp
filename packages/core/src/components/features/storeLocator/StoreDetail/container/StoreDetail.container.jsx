@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
-import { getNearByStore } from './StoreDetail.actions';
+import { getNearByStore, getCurrentStoreInfo } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
   setFavoriteStoreActn,
@@ -62,7 +62,8 @@ export class StoreDetailContainer extends PureComponent {
     const prevStore = formatStore(prevProps.currentStoreInfo);
     const newStore = formatStore(currentStoreInfo);
     if (
-      prevStore.basicInfo.id !== newStore.basicInfo.id ||
+      (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
+        (newStore.basicInfo !== undefined && newStore.basicInfo.id) ||
       prevProps.isUserLoggedIn !== isUserLoggedIn
     ) {
       return true;
@@ -89,7 +90,12 @@ export class StoreDetailContainer extends PureComponent {
 
   openStoreDetails = (event, store) => {
     event.preventDefault();
-    const { routerHandler } = routeToStoreDetails(store, true);
+    const { fetchCurrentStore } = this.props;
+    const {
+      basicInfo: { id },
+    } = store;
+    const { routerHandler } = routeToStoreDetails(store);
+    fetchCurrentStore(id);
     routerHandler();
   };
 
@@ -145,7 +151,7 @@ export class StoreDetailContainer extends PureComponent {
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
         : [];
 
-    return store && Object.keys(store).length > 0 ? (
+    return store && store !== undefined && Object.keys(store).length > 0 ? (
       <StoreDetail
         className="storedetailinfo"
         store={store}
@@ -189,6 +195,7 @@ StoreDetailContainer.propTypes = {
   setFavStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
+  fetchCurrentStore: PropTypes.func.isRequired,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -228,6 +235,7 @@ export const mapDispatchToProps = dispatch => ({
     dispatch(getFavoriteStoreActn(payload));
   },
   setFavStore: payload => dispatch(setFavoriteStoreActn({ ...payload, key: 'DETAIL' })),
+  fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 export default connect(

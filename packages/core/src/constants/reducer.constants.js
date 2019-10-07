@@ -47,6 +47,10 @@ export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
 
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
 
+// Extra Points promo list reducer
+export const EXTRA_POINTS_REDUCER_KEY = 'ExtraPoints';
+export const EXTRA_POINTS_ACTION_PATTERN = '@@ExtraPoints';
+
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
 export const ACCOUNT_ACTION_PATTERN = '@@Account-';
@@ -89,6 +93,7 @@ export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 // Outfit Detail Page Reducer
 export const OUTFIT_DETAILS_REDUCER_KEY = 'OutfitDetails';
 export const OUTFIT_DETAILS_PATTERN = '@@OutfitDetails-';
+
 // Favorites Reducer
 export const FAVORITES_REDUCER_KEY = 'Favorites';
 export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
@@ -188,6 +193,10 @@ export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
+// Store International List reducer
+export const STORES_INTL_REDUCER_KEY = 'StoresIntl';
+export const STORES_INTL_ACTION_PATTERN = '@@StoresIntl-';
+
 export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
 export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
 export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
@@ -231,5 +240,6 @@ export const REDUCER_ACTION_MAPPING = {
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
   [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
+  [STORES_INTL_REDUCER_KEY]: STORES_INTL_ACTION_PATTERN,
   [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
 };

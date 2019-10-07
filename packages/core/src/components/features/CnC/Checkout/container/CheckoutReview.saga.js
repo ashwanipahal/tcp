@@ -148,13 +148,6 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
   yield put(getSetOrderConfirmationActn(res));
-  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
-  const isCaSite = yield call(isCanada);
-  const isGuestUser = yield select(isGuest);
-  /* istanbul ignore else */
-  if (isGuestUser && !isCaSite && email) {
-    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
-  }
   return res;
 }
 
@@ -328,8 +321,16 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   } else if (navigation) {
     navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
   }
+
   yield call(loadPersonalizedCoupons, res, orderId);
   const cartItems = yield select(BagPageSelectors.getOrderItems);
+  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
+  const isCaSite = yield call(isCanada);
+  const isGuestUser = yield select(isGuest);
+  /* istanbul ignore else */
+  if (isGuestUser && !isCaSite && email) {
+    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+  }
   // const vendorId =
   //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
 
