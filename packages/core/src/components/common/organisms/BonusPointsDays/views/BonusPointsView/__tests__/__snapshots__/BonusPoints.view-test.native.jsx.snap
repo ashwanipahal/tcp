@@ -26,6 +26,7 @@ exports[`BonusPointsView should render correctly 1`] = `
     heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
     headingAlign="left"
     headingFontFamily="secondary"
+    inheritedStyles=""
     isOpen={true}
     isOverlay={false}
     onRequestClose={[Function]}
