@@ -45,7 +45,7 @@ const onRenderHeader = (
   getProducts,
   navigation,
   sortLabels,
-  totalProductsInCurrCategory
+  totalProductsCount
 ) => {
   return (
     <React.Fragment>
@@ -58,7 +58,7 @@ const onRenderHeader = (
           navigation={navigation}
           sortLabels={sortLabels}
         />
-        {renderItemCountView(totalProductsInCurrCategory)}
+        {renderItemCountView(totalProductsCount)}
       </ListHeaderContainer>
     </React.Fragment>
   );
@@ -75,8 +75,8 @@ const ProductListView = ({
   getProducts,
   navigation,
   sortLabels,
-  totalProductsInCurrCategory,
   scrollToTop,
+  totalProductsCount,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -86,7 +86,7 @@ const ProductListView = ({
         products={products}
         title={title}
         scrollToTop={scrollToTop}
-        totalProductsInCurrCategory={totalProductsInCurrCategory}
+        totalProductsCount={totalProductsCount}
         onRenderHeader={() =>
           onRenderHeader(
             filters,
@@ -95,7 +95,7 @@ const ProductListView = ({
             getProducts,
             navigation,
             sortLabels,
-            totalProductsInCurrCategory
+            totalProductsCount
           )
         }
         {...otherProps}
@@ -115,8 +115,8 @@ ProductListView.propTypes = {
   getProducts: PropTypes.func.isRequired,
   navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
-  totalProductsInCurrCategory: PropTypes.number.isRequired,
   scrollToTop: PropTypes.bool.isRequired,
+  totalProductsCount: PropTypes.number.isRequired,
 };
 
 ProductListView.defaultProps = {

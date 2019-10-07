@@ -20,10 +20,6 @@ const styles = css`
   .exp-year-field {
     margin-right: auto;
   }
-
-  .TextBox__label {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-  }
 `;
 
 export default styles;

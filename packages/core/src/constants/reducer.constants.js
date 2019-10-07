@@ -47,6 +47,10 @@ export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
 
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
 
+// Extra Points promo list reducer
+export const EXTRA_POINTS_REDUCER_KEY = 'ExtraPoints';
+export const EXTRA_POINTS_ACTION_PATTERN = '@@ExtraPoints';
+
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
 export const ACCOUNT_ACTION_PATTERN = '@@Account-';

@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <LinkText
+        headerText={
+          Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "large_text_black",
+                  "text": "ALL MATCHABLES",
+                },
+              ],
+            },
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_black",
+                  "text": "THE SHORT SHOP",
+                },
+              ],
+            },
+          ]
+        }
+        useStyle={true}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <PromoBanner
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "extrabold_text_regular",
+                  "style2": "style2",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Connect(ProductTabListContainer)
+      onProductTabChange={[Function]}
+      tabItems={
+        Array [
+          Object {
+            "category": Object {
+              "cat_id": "47502>47535>54071",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 1",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "singleCTAButtonCart": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop All Matchables 1",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "TODDLER GIRL",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47526",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 2",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "singleCTAButtonCart": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 0",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "GIRL",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47503>47544",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 3",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "singleCTAButtonCart": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop All Matchables 2",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "BOY",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": "47501>47526",
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 4",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "singleCTAButtonCart": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop All Matchables 4",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "TODDLER BOY",
+            },
+          },
+        ]
+      }
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View) />
+  </Styled(View)>
+  <View>
+    <Styled(View) />
+    <Styled(View)>
+      <Styled(View) />
+      <Styled(View) />
+      <Styled(Styled(ImageComp))
+        alt=""
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/plus.png",
+          }
+        }
+        url=""
+      />
+    </Styled(View)>
+    <Styled(View) />
+  </View>
+</Styled(View)>
+`;
