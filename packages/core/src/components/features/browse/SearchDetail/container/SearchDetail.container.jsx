@@ -32,7 +32,6 @@ import {
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
-import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {

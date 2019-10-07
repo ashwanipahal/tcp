@@ -15,7 +15,6 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={
       Object {
-        "className": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
@@ -34,6 +33,7 @@ exports[`ProductList component should renders correctly 1`] = `
             "productInfo": "",
           },
         ],
+        "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
         "siblingProperties": "",
         "unbxdId": "",

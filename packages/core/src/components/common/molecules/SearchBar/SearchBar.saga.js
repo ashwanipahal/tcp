@@ -13,9 +13,10 @@ export function* getSearchResult({ payload }) {
 
   const isHideBundleProduct = false;
   const payloadData = {
-    searchTerm: payload,
+    searchTerm: payload.searchText,
     suggestionsCount,
     isHideBundleProduct,
+    slpLabels: payload.slpLabels,
   };
   try {
     const response = yield call(makeSearch, payloadData);
