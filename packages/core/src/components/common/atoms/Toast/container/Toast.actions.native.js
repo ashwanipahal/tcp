@@ -14,4 +14,11 @@ const resetToastMsg = payload => {
   };
 };
 
-export { toastMessageInfo, resetToastMsg };
+const toastMessagePosition = payload => {
+  return {
+    type: TOAST_CONSTANTS.TOAST_MESSAGE_POSITION,
+    payload,
+  };
+};
+
+export { toastMessageInfo, resetToastMsg, toastMessagePosition };

@@ -83,21 +83,42 @@ const colLength = ({ colSize, offsetLeft, offsetRight }, viewport) => {
   return length;
 };
 
+/**
+ * Injects Nth Rule for Columns considering that all Cols in a Row are of same size
+ * Specify ignoreNthRule=true to ignore nth rule for use cases where there are different column size for Columns within a Row
+ */
+const injectNthRule = (props, key) => {
+  if (props.customNthBreak) {
+    return `
+      @media ${props.theme.mediaQuery[`${key}Only`]} {
+        &:nth-child(${props.customNthBreak}n) {
+          margin-right: 0;
+        }
+      }
+    `;
+  }
+  return !props.ignoreNthRule
+    ? `
+    @media ${props.theme.mediaQuery[`${key}Only`]} {
+      ${calculateNthChild(key, colLength(props, key), props.theme.gridDimensions) &&
+        `&:nth-child(${calculateNthChild(
+          key,
+          colLength(props, key),
+          props.theme.gridDimensions
+        )}n) {
+          margin-right: 0;
+        }`}
+    }
+  `
+    : ``;
+};
+
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       // eslint-disable-next-line complexity
       key => `
-      @media ${props.theme.mediaQuery[`${key}Only`]} {
-        ${calculateNthChild(key, colLength(props, key), props.theme.gridDimensions) &&
-          `&:nth-child(${calculateNthChild(
-            key,
-            colLength(props, key),
-            props.theme.gridDimensions
-          )}) {
-            margin-right: 0;
-          }`}
-      }
+      ${injectNthRule(props, key)}
       ${key !== 'small' ? `}` : ''}
       ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};

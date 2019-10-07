@@ -7,19 +7,20 @@ import endpoints from '../../endpoints';
  */
 const Abstractor = {
   /**
-   * @param {Object} params Should have {id, count}. Id is item id of stylitics. Count is total
+   * @param {Object} params Should have {itemId, count}. itemId is unique id of
+   *  stylitics product. Count is total
    * number of the product. Count is optional.
    * @return {Object} return Promise.
    */
   getData: params => {
-    const { id, count = 7 } = params;
+    const { categoryId, count = 7 } = params;
 
     const payload = {
       body: {
         username: 'thechildrensplace',
         region: 'US',
         total: count,
-        item_number: id,
+        item_number: categoryId,
       },
       webService: endpoints.getStyliticsProductViewById,
     };
@@ -32,7 +33,7 @@ const Abstractor = {
     return mock;
   },
   processData: res => {
-    const rootPath = 'https://www.childrensplace.com/us/outfit';
+    const rootPath = '/outfit';
 
     return res.body.map(item => {
       const { image_url: imageUrl, large_image_url: largeImageUrl, id, items: subItems } = item;
@@ -47,14 +48,15 @@ const Abstractor = {
         };
       });
 
-      const subItemsPath = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
+      const subItemsId = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
 
       return {
         id,
+        subItemsId,
         imageUrl,
         largeImageUrl,
         items,
-        pdpUrl: `${rootPath}/${item.id}/${subItemsPath}`,
+        pdpUrl: `${rootPath}/${id}/${subItemsId}`,
       };
     });
   },

@@ -27,6 +27,8 @@ class QuickViewModal extends React.Component {
       quickViewLabels,
       ...otherProps
     } = this.props;
+
+    const { fromBagPage } = otherProps;
     return (
       <Modal
         isOpen={isModalOpen}
@@ -36,7 +38,7 @@ class QuickViewModal extends React.Component {
         dataLocator={getLocator('quick_view_modal')}
         dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
         closeIconDataLocator={getLocator('quick_view_icon_btn')}
-        heading={quickViewLabels.addToBag}
+        heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ height: '95%' }}
         fixedWidth
@@ -56,6 +58,7 @@ class QuickViewModal extends React.Component {
             buttonLabel="Pickup In Store"
             onPickupOpenClick={this.handlePickupOpenClick}
             currentProduct={productInfo}
+            onPickupClickAddon={this.onCloseClick}
           />
         </div>
       </Modal>

@@ -3,13 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
-
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
-import SearchBar from '../SearchBar/index';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
@@ -25,7 +23,6 @@ class CondensedHeader extends React.PureComponent {
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isSearchOpen: false,
-      isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
@@ -54,7 +51,6 @@ class CondensedHeader extends React.PureComponent {
     } else {
       const { openMiniBagDispatch } = this.props;
       openMiniBagDispatch();
-      this.setState({ isOpenMiniBagModal: isOpen });
       if (!isOpen) {
         this.setState({
           cartItemCount: getCartItemCount(),
@@ -99,14 +95,8 @@ class CondensedHeader extends React.PureComponent {
       labels,
     } = this.props;
     const brand = getBrand();
-    const {
-      isSearchOpen,
-      isOpenMiniBagModal,
-      userNameClick,
-      triggerLoginCreateAccount,
-      cartItemCount,
-    } = this.state;
-    const { accountIconButton, cartIconButton, hamburgerMenu } = labels.accessibility;
+    const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
+    const { accessibility: { accountIconButton, cartIconButton, hamburgerMenu } = {} } = labels;
     return (
       <React.Fragment>
         <Row id="condensedHeader" className={`${className} condensed-header`}>
@@ -214,11 +204,6 @@ class CondensedHeader extends React.PureComponent {
             </div>
           </div>
         </Row>
-        <MiniBagContainer
-          isOpen={isOpenMiniBagModal}
-          toggleMiniBagModal={this.toggleMiniBagModal}
-          userName={userName}
-        />
         <Row className={`${className} condensed-border`} />
       </React.Fragment>
     );
@@ -238,7 +223,6 @@ CondensedHeader.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({
-    isOpenMiniBagModal: PropTypes.string.isRequired,
     userNameClick: PropTypes.string.isRequired,
     triggerLoginCreateAccount: PropTypes.string.isRequired,
     cartItemCount: PropTypes.string.isRequired,

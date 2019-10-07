@@ -27,14 +27,18 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_default_creditCard
+        </Styled(BodyCopy)>
         <Styled(Anchor)
           anchorVariation="primary"
           asPath="/account/payment"
           fontSizeVariation="large"
           to="/account?id=payment"
           underline={true}
-        />
+        >
+          lbl_overview_addressBookAdd
+        </Styled(Anchor)>
       </div>
       <Styled(Row)
         className="elem-mb-XL"
@@ -60,7 +64,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_overview_add_creditCard
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
     </div>
@@ -90,14 +96,18 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_giftCard
+        </Styled(BodyCopy)>
         <Styled(Anchor)
           anchorVariation="primary"
           asPath="/account/payment"
           fontSizeVariation="large"
           to="/account?id=payment"
           underline={true}
-        />
+        >
+          lbl_overview_addressBookAdd
+        </Styled(Anchor)>
       </div>
       <Styled(Row)
         className="elem-mb-XXL"
@@ -123,7 +133,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_overview_add_giftCard
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
     </Styled(BodyCopy)>

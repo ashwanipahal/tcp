@@ -14,6 +14,7 @@ import createValidateMethod from '@tcp/core/src/utils/formValidation/createValid
 import { isCanada } from '@tcp/core/src/utils';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/AddEditPersonalInformationForm.style';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
 import internalEndpoints from '../../../../common/internalEndpoints';
@@ -46,7 +47,7 @@ export const AddEditPersonalInformationForm = ({
       <Row fullBleed className="elem-mt-XXL">
         <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_firstName}
+            placeholder={getLabelValue(labels, 'lbl_profile_personal_info_firstName')}
             name="firstName"
             id="firstName"
             type="text"
@@ -56,7 +57,7 @@ export const AddEditPersonalInformationForm = ({
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonallastName">
           <Field
-            placeholder={labels.lbl_profile_personal_info_lastName}
+            placeholder={getLabelValue(labels, 'lbl_profile_personal_info_lastName')}
             name="lastName"
             id="lastName"
             component={TextBox}
@@ -67,7 +68,7 @@ export const AddEditPersonalInformationForm = ({
       <Row fullBleed className="elem-mt-MED">
         <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
           <Field
-            placeholder={labels.lbl_profile_personal_info_email}
+            placeholder={getLabelValue(labels, 'lbl_profile_personal_info_email')}
             name="Email"
             id="Email"
             type="email"
@@ -75,12 +76,12 @@ export const AddEditPersonalInformationForm = ({
             dataLocator="editPersonalInfo-email"
           />
           <BodyCopy fontFamily="secondary" fontSize="fs12">
-            {labels.lbl_profile_email_used_login}
+            {getLabelValue(labels, 'lbl_profile_email_used_login')}
           </BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }} className="addEditPersonalPhoneNumber">
           <Field
-            placeholder={labels.lbl_profile_personal_info_phoneNumber}
+            placeholder={getLabelValue(labels, 'lbl_profile_personal_info_phoneNumber')}
             name="phoneNumber"
             id="phoneNumber"
             component={TextBox}
@@ -92,7 +93,7 @@ export const AddEditPersonalInformationForm = ({
       <Row fullBleed className="elem-mt-XL addEditPersonalBirthday">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <BodyCopy component="div" fontWeight="extrabold" fontSize="fs12">
-            {labels.lbl_profile_personal_info_birthday}
+            {getLabelValue(labels, 'lbl_profile_personal_info_birthday')}
           </BodyCopy>
         </Col>
       </Row>
@@ -101,7 +102,7 @@ export const AddEditPersonalInformationForm = ({
           <Row fullBleed>
             <Col colSize={{ small: 3, medium: 4, large: 6 }}>
               <Field
-                placeholder={labels.lbl_profile_personal_info_month}
+                placeholder={getLabelValue(labels, 'lbl_profile_personal_info_month')}
                 name="userBirthMonth"
                 id="userBirthMonth"
                 component={SelectBox}
@@ -113,7 +114,7 @@ export const AddEditPersonalInformationForm = ({
             </Col>
             <Col colSize={{ small: 3, medium: 4, large: 6 }}>
               <Field
-                placeholder={labels.lbl_profile_personal_info_year}
+                placeholder={getLabelValue(labels, 'lbl_profile_personal_info_year')}
                 name="userBirthYear"
                 id="userBirthYear"
                 component={SelectBox}
@@ -125,21 +126,21 @@ export const AddEditPersonalInformationForm = ({
             </Col>
           </Row>
           <BodyCopy className="elem-mt-XS" fontFamily="secondary" fontSize="fs12">
-            {labels.lbl_profile_celebration_birthday}
+            {getLabelValue(labels, 'lbl_profile_celebration_birthday')}
           </BodyCopy>
         </Col>
         <Col colSize={{ small: 6, medium: 4, large: 6 }}>
           {isCanada() && (
             <>
               <Field
-                placeholder={labels.lbl_profile_personal_air_miles}
+                placeholder={getLabelValue(labels, 'lbl_profile_personal_air_miles')}
                 name="airMilesAccountNumber"
                 id="airMilesAccountNumber"
                 component={TextBox}
                 dataLocator="editPersonalInfo-airMiles"
               />
               <BodyCopy fontSize="fs12" component="div">
-                {labels.lbl_profile_collector_number}
+                {getLabelValue(labels, 'lbl_profile_collector_number')}
               </BodyCopy>
             </>
           )}
@@ -153,7 +154,7 @@ export const AddEditPersonalInformationForm = ({
             dataLocator="editPersonalInfo-isEmployee"
             className="AddPersonalInfo-isEmployee"
           >
-            {labels.lbl_profile_personal_info_tcp_employee}
+            {getLabelValue(labels, 'lbl_profile_personal_info_tcp_employee')}
           </Field>
         </Col>
       </Row>
@@ -161,7 +162,7 @@ export const AddEditPersonalInformationForm = ({
         <Row fullBleed className="elem-mt-XL">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.lbl_profile_personal_info_associate_id}
+              placeholder={getLabelValue(labels, 'lbl_profile_personal_info_associate_id')}
               name="associateId"
               id="associateId"
               type="text"
@@ -195,7 +196,7 @@ export const AddEditPersonalInformationForm = ({
               fullWidth
               className="elem-mb-XS"
             >
-              {labels.lbl_profile_personal_info_cancelCta}
+              {getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
             </Button>
           </Anchor>
         </Col>
@@ -216,7 +217,7 @@ export const AddEditPersonalInformationForm = ({
             className="elem-mb-XS"
             disabled={pristine}
           >
-            {labels.lbl_profile_personal_info_updateCta}
+            {getLabelValue(labels, 'lbl_profile_personal_info_updateCta')}
           </Button>
         </Col>
       </Row>

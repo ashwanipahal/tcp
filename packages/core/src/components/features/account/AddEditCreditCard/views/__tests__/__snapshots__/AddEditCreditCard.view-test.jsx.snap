@@ -26,10 +26,12 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
       >
          
       </span>
+      lbl_common_backLink
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     data-locator="payment-addcreditordebitcardheader"
+    heading="lbl_payment_addCCHeading"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -87,10 +89,12 @@ exports[`AddEditCreditCard component should renders correctly with error message
       >
          
       </span>
+      lbl_common_backLink
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
     data-locator="payment-addcreditordebitcardheader"
+    heading="lbl_payment_editCCHeading"
   />
   <ReduxForm
     destroyOnUnmount={true}

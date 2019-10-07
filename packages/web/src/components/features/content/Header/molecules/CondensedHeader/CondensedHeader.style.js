@@ -82,6 +82,10 @@ export default css`
     transform: translateX(-50%);
     width: 70%;
 
+    .nav-bar-l1-item {
+      color: ${props => props.theme.colorPalette.gray[900]};
+    }
+
     @media ${props => props.theme.mediaQuery.largeOnly} {
       .nav-bar-l1-content {
         padding: 0 15px 5px;
@@ -96,6 +100,26 @@ export default css`
       .is-open .nav-bar-item-sizes-range {
         top: 52px;
       }
+
+      .is-open .nav-bar-l2 {
+        display: block;
+        top: 100%;
+        left: -21.5%;
+        width: 145%;
+      }
+    }
+
+    .nav-bar-l1-content {
+      padding-top: 0;
+      line-height: 2;
+    }
+
+    .l1-overlay.is-open {
+      top: 70px;
+    }
+
+    .nav-bar-item-label {
+      font-size: 13px;
     }
   }
 
@@ -120,11 +144,6 @@ export default css`
     }
   }
 
-  .nav-bar-l1-content {
-    padding-top: 0;
-    line-height: 2;
-  }
-
   .tcp-drawer__isOpen {
     display: none;
   }
@@ -147,7 +166,8 @@ export default css`
     display: inline-block;
     font-size: 13px;
     overflow: hidden;
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    line-height: 28px;
     text-overflow: ellipsis;
     width: 70px;
     white-space: nowrap;
@@ -175,24 +195,6 @@ export default css`
     border-radius: 8px;
     margin: 1px 0px 0px -8px;
     padding: 2px 6px;
-  }
-
-  .l1-overlay.is-open {
-    top: 70px;
-  }
-
-  .is-open {
-    .nav-bar-l2 {
-      @media ${props => props.theme.mediaQuery.large} {
-        display: block;
-        top: 100%;
-        left: -21.5%;
-        width: 145%;
-      }
-    }
-  }
-  .nav-bar-item-label {
-    font-size: 13px;
   }
 
   .condensed-border {

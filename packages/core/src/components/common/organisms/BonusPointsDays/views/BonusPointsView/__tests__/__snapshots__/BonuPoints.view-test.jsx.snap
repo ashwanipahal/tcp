@@ -3,59 +3,63 @@
 exports[`BonusPointsViewVanilla should render correctly 1`] = `
 <Fragment>
   <div
-    className=""
+    className="bonusPointsDaysWrapper elem-mb-MED "
   >
-    <Styled(BonusPointsSection)
-      bonusData={Object {}}
-      getBonusDaysData={[Function]}
-      orderDetails={Object {}}
-      toggleBonusPointsModal={[Function]}
-    />
-  </div>
-  <Styled(Modal)
-    className="TCPModal__Content bonus-details-modal"
-    fixedWidth={true}
-    heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
-    inheritedStyles={
-      Array [
-        "
+    <div
+      className=""
+    >
+      <Styled(BonusPointsSection)
+        bonusData={Object {}}
+        getBonusDaysData={[Function]}
+        orderDetails={Object {}}
+        toggleBonusPointsModal={[Function]}
+      />
+    </div>
+    <Styled(Modal)
+      className="TCPModal__Content bonus-details-modal"
+      fixedWidth={true}
+      heading="lbl_bonusPoints_placeRewardsBonus lbl_bonusPoints_placeRewardsPoints DETAILS"
+      inheritedStyles={
+        Array [
+          "
   .Modal_Heading {
     border-bottom: 3px solid ",
-        [Function],
-        ";
+          [Function],
+          ";
     margin-bottom: ",
-        [Function],
-        ";
+          [Function],
+          ";
     margin-top: 0;
     padding-bottom: ",
-        [Function],
-        ";
+          [Function],
+          ";
     @media ",
-        [Function],
-        " {
+          [Function],
+          " {
       display: block;
     }
     font-weight: ",
-        [Function],
-        ";
+          [Function],
+          ";
     font-size: ",
-        [Function],
-        ";
+          [Function],
+          ";
   }
 ",
-      ]
-    }
-    isOpen={true}
-    maxWidth="704px"
-    minHeight="550px"
-    onRequestClose={[Function]}
-    overlayClassName="TCPModal__Overlay"
-    showHeading={true}
-  >
-    <Styled(RichText)
-      dataLocator="bonus-points-details"
-      richTextHtml="hello"
-    />
-  </Styled(Modal)>
+        ]
+      }
+      isOpen={true}
+      maxWidth="704px"
+      minHeight="550px"
+      onRequestClose={[Function]}
+      overlayClassName="TCPModal__Overlay"
+      showHeading={true}
+    >
+      <Styled(RichText)
+        dataLocator="bonus-points-details"
+        richTextHtml="hello"
+      />
+    </Styled(Modal)>
+  </div>
 </Fragment>
 `;

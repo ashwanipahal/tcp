@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -67,7 +66,7 @@ const renderL3Panel = (
   hideL3Drawer,
   name,
   subCategories,
-  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }: navHandler
+  { accessibilityLabels, hideL2Drawer, hideL2Nav, closeNav }
 ) => {
   return (
     hasSubCategories && (
@@ -232,7 +231,7 @@ const L2Panel = props => {
                         category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
                       return (
                         <React.Fragment>
-                          <Col colSize={colSize} className="l2-nav-category">
+                          <Col colSize={colSize} ignoreNthRule className="l2-nav-category">
                             {label ? (
                               <div className="l2-nav-category-header">
                                 <Heading
@@ -288,6 +287,7 @@ const L2Panel = props => {
                                   medium: 8,
                                   large: 2,
                                 }}
+                                ignoreNthRule
                               >
                                 <div className="l2-nav-category-header">
                                   <Heading
@@ -313,6 +313,7 @@ const L2Panel = props => {
                                   medium: 8,
                                   large: 2,
                                 }}
+                                ignoreNthRule
                               >
                                 {imageBanner.map(({ image, link }) => (
                                   <React.Fragment>

@@ -10,6 +10,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       className="undefined header-middle-nav"
     >
       <Styled(Col)
+        className="header-middle-nav-storelocator"
         colSize={
           Object {
             "large": 4,
@@ -17,7 +18,27 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(StoreLocatorLink)
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
+        />
+      </Styled(Col)>
       <Styled(Col)
         className="header-middle-nav-search"
         colSize={
@@ -36,6 +57,25 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           onKeyDown={[Function]}
           src="/static/images/menu.svg"
           tabIndex="0"
+        />
+        <Styled(StoreLocatorLink)
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
         />
         <Styled(BrandLogo)
           alt="The Children's Place"
@@ -156,6 +196,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       className="undefined header-middle-nav"
     >
       <Styled(Col)
+        className="header-middle-nav-storelocator"
         colSize={
           Object {
             "large": 4,
@@ -163,7 +204,27 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(StoreLocatorLink)
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
+        />
+      </Styled(Col)>
       <Styled(Col)
         className="header-middle-nav-search"
         colSize={
@@ -182,6 +243,25 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           onKeyDown={[Function]}
           src="/static/images/menu.svg"
           tabIndex="0"
+        />
+        <Styled(StoreLocatorLink)
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
         />
         <Styled(BrandLogo)
           alt="The Children's Place"

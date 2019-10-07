@@ -15,12 +15,9 @@ describe('ProductVariantSelector native should render correctly', () => {
   });
 
   it('should call render grid', () => {
-    const renderItem = jest.fn();
-    wrapper.setProps({ renderItem, data: [{}], title: 'Color' });
+    wrapper.setProps({ renderColorItem: false, data: [{}], title: 'Color' });
     const Grid = wrapper.find('Grid');
     expect(Grid.length).toBe(1);
-    Grid.props().renderItem();
-    expect(renderItem).toHaveBeenCalled();
   });
 
   it('should call default render grid item method', () => {

@@ -7,7 +7,7 @@ import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
-import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
@@ -26,7 +26,9 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      isBagPageStickyHeader,
       closeModal,
+      isUSSite,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -41,7 +43,9 @@ export class AddedToBagContainer extends React.Component<Props> {
         showVenmo={showVenmo}
         isNoNEmptyBag={isNoNEmptyBag}
         fromAddedToBagModal={fromAddedToBagModal}
+        isBagPageStickyHeader={isBagPageStickyHeader}
         closeModal={closeModal}
+        isUSSite={isUSSite}
       />
     );
   }
@@ -52,6 +56,11 @@ AddedToBagContainer.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isNoNEmptyBag: PropTypes.number.isRequired,
+  isBagPageStickyHeader: PropTypes.bool,
+};
+
+AddedToBagContainer.defaultProps = {
+  isBagPageStickyHeader: false,
 };
 
 const mapDispatchToProps = dispatch => {
@@ -67,6 +76,7 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isUSSite: isUsSite(state),
   };
 };
 

@@ -12,17 +12,77 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  getPaypalButton() {
+    const { isBagPageStickyHeader, showAddTobag } = this.props;
+    const containerId = isBagPageStickyHeader
+      ? 'paypal-button-container-bagHeader'
+      : 'paypal-button-container';
+    return (
+      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+        <PayPalButton className="payPal-button" containerId={containerId} />
+      </div>
+    );
+  }
+
+  getHeaderPaypalButton() {
+    const { isBagPageStickyHeader } = this.props;
+    if (isBagPageStickyHeader) {
+      return this.getPaypalButton();
+    }
+    return null;
+  }
+
+  getCheckoutButton() {
+    const { labels, handleCartCheckout, isEditingItem } = this.props;
+    return (
+      <Button
+        data-locator={getLocator('addedtobag_btncheckout')}
+        className="checkout"
+        onClick={() => handleCartCheckout(isEditingItem)}
+      >
+        <BodyCopy
+          component="span"
+          color="white"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs14"
+        >
+          {labels.checkout}
+        </BodyCopy>
+      </Button>
+    );
+  }
+
+  getVenmoPaymentButton() {
+    const {
+      isInternationalShipping,
+      isVenmoEnabled,
+      showVenmo,
+      handleCartCheckout,
+      isEditingItem,
+      isUSSite,
+    } = this.props;
+    if (!isInternationalShipping && isVenmoEnabled && showVenmo && isUSSite) {
+      return (
+        <div className="venmo-wrapper">
+          <VenmoPaymentButton
+            className="venmo-container"
+            onSuccess={() => handleCartCheckout(isEditingItem)}
+          />
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
     const {
       className,
       labels,
       onClickViewBag,
       showAddTobag,
-      handleCartCheckout,
-      isEditingItem,
       isInternationalShipping,
-      isVenmoEnabled,
-      showVenmo,
+      isBagPageStickyHeader,
     } = this.props;
     return (
       <div className={className}>
@@ -47,37 +107,16 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </Col>
           </Row>
         )}
-        <Row className="checkout-button">
-          <div className="paypal-venmo">
-            {!isInternationalShipping && (
-              <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-                <PayPalButton className="payPal-button" />
-              </div>
-            )}
-            {!isInternationalShipping && isVenmoEnabled && showVenmo && (
-              <div className="venmo-wrapper">
-                <VenmoPaymentButton
-                  className="venmo-container"
-                  onSuccess={() => handleCartCheckout(isEditingItem)}
-                />
-              </div>
-            )}
+        <Row
+          className={`checkout-button ${isBagPageStickyHeader ? 'checkout-button-bagHeader' : ''}`}
+          id={`${!isBagPageStickyHeader ? 'checkout-button-section' : ''}`}
+        >
+          <div className={`paypal-venmo ${isBagPageStickyHeader ? 'checkout-sticky-header' : ''}`}>
+            {!isInternationalShipping && !isBagPageStickyHeader && this.getPaypalButton()}
+            {this.getHeaderPaypalButton()}
+            {this.getVenmoPaymentButton()}
           </div>
-          <Button
-            data-locator={getLocator('addedtobag_btncheckout')}
-            className="checkout"
-            onClick={() => handleCartCheckout(isEditingItem)}
-          >
-            <BodyCopy
-              component="span"
-              color="white"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {labels.checkout}
-            </BodyCopy>
-          </Button>
+          {this.getCheckoutButton()}
           <RenderPerf.Measure name="render_checkout_cta" />
         </Row>
       </div>
@@ -92,10 +131,14 @@ AddedToBagActions.propTypes = {
   showAddTobag: PropTypes.bool,
   handleCartCheckout: PropTypes.func.isRequired,
   showVenmo: PropTypes.bool,
+  isBagPageStickyHeader: PropTypes.bool,
+  isUSSite: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   showVenmo: true,
+  isBagPageStickyHeader: false,
+  isUSSite: true,
 };
 
 export default withStyles(AddedToBagActions, style);

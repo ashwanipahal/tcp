@@ -2,22 +2,28 @@ import { css } from 'styled-components';
 
 const styles = css`
   div.TCPModal__InnerContent {
+    .close-modal {
+      height: 14px;
+      right: 0px;
+      top: 12px;
+      @media ${props => props.theme.mediaQuery.medium} {
+        top: 12px;
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        top: 12px;
+      }
+    }
     font-family: Nunito;
     max-height: 760px;
 
-    padding: 14px 0;
+    padding: 0px 14px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 24px 9px;
+      padding: 0px 24px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
       padding: 24px 17px;
-    }
-
-    .close-modal {
-      top: 12px;
-      height: 14px;
     }
 
     .search-store {
@@ -98,7 +104,7 @@ const styles = css`
       font-size: ${props => props.theme.typography.fontSizes.fs22};
     }
 
-    .product-price-container {
+    .product-customize-form-container .product-price-container {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
 
@@ -150,6 +156,31 @@ const styles = css`
       @media ${props => props.theme.mediaQuery.medium} {
         margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
       }
+    }
+  }
+`;
+
+export const modalstyles = css`
+  .Modal_Heading {
+    border-bottom: 0px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-top: 0;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
+    }
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    font-size: ${props => props.theme.typography.fontSizes.fs22};
+    text-align: center;
+  }
+  .Modal-Header {
+    padding-top: 14px;
+    z-index: 1;
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: 24px;
     }
   }
 `;
