@@ -13,7 +13,12 @@ const LabeledRadioButton = ({
   checked,
   buttonInnerColor,
   buttonOuterColor,
+  labelWrapStyle,
+  buttonStyle,
+  buttonSize,
+  buttonOuterSize,
   disabled,
+  labelStyle,
 }) => {
   return (
     <View pointerEvents={disabled ? 'none' : 'auto'}>
@@ -27,16 +32,17 @@ const LabeledRadioButton = ({
           borderWidth={1}
           buttonInnerColor={buttonInnerColor}
           buttonOuterColor={buttonOuterColor}
-          buttonSize={10}
-          buttonOuterSize={20}
-          buttonStyle={{}}
+          buttonSize={buttonSize}
+          buttonOuterSize={buttonOuterSize}
+          buttonStyle={buttonStyle}
         />
         <RadioButtonLabel
           obj={obj}
           index={index}
           labelHorizontal
           onPress={onPress}
-          labelWrapStyle={{}}
+          labelStyle={labelStyle}
+          labelWrapStyle={labelWrapStyle}
         />
       </RadioButton>
     </View>
@@ -45,9 +51,14 @@ const LabeledRadioButton = ({
 
 LabeledRadioButton.propTypes = {
   obj: PropTypes.shape({}),
+  labelStyle: PropTypes.shape({}),
+  labelWrapStyle: PropTypes.shape({}),
+  buttonStyle: PropTypes.shape({}),
   onPress: PropTypes.func,
   checked: PropTypes.bool,
   index: PropTypes.number,
+  buttonSize: PropTypes.number,
+  buttonOuterSize: PropTypes.number,
   buttonInnerColor: PropTypes.string,
   buttonOuterColor: PropTypes.string,
   disabled: PropTypes.bool,
@@ -55,9 +66,14 @@ LabeledRadioButton.propTypes = {
 
 LabeledRadioButton.defaultProps = {
   obj: {},
+  labelStyle: {},
+  labelWrapStyle: {},
+  buttonStyle: {},
   onPress: () => {},
   checked: false,
   index: -1,
+  buttonSize: 10,
+  buttonOuterSize: 20,
   buttonInnerColor: colorPallete.black,
   buttonOuterColor: colorPallete.black,
   disabled: false,
