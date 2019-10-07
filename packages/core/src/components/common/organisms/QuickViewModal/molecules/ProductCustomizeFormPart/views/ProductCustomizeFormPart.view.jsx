@@ -46,8 +46,12 @@ class ProductCustomizeFormPart extends React.Component {
       isInternationalShipping,
       quickViewLabels,
       handleAddToBag,
+      handleUpdateItem,
       addToBagError,
+      ...otherProps
     } = this.props;
+
+    const { fromBagPage } = otherProps;
 
     const { currentColorEntry } = this.state;
     const imageUrl = currentColorEntry
@@ -123,8 +127,9 @@ class ProductCustomizeFormPart extends React.Component {
               onChangeColor={this.onChangeColor}
               plpLabels={plpLabels}
               currentProduct={productInfo}
-              handleFormSubmit={handleAddToBag}
+              handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
               errorOnHandleSubmit={addToBagError}
+              fromBagPage={fromBagPage}
             />
           </div>
         </div>
@@ -136,6 +141,7 @@ class ProductCustomizeFormPart extends React.Component {
 ProductCustomizeFormPart.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
   handleAddToBag: PropTypes.func.isRequired,
+  handleUpdateItem: PropTypes.func.isRequired,
   closeQuickViewModal: PropTypes.func,
   formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({

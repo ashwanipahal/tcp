@@ -57,6 +57,7 @@ import PointsClaimReducer from '@tcp/core/src/components/features/account/Points
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
+import StoresInternationalReducer from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -125,6 +126,7 @@ import {
   CONFIRMATION_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
   EXTRA_POINTS_REDUCER_KEY,
+  STORES_INTL_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -249,4 +251,5 @@ export default combineReducers({
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
+  [STORES_INTL_REDUCER_KEY]: StoresInternationalReducer,
 });
