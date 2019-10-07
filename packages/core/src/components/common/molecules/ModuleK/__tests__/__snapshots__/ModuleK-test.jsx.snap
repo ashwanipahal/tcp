@@ -233,6 +233,35 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module S Heading styles */
+  .small_text_white_medium {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    @media ",
+                [Function],
+                " {
+      letter-spacing: normal;
+    }
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
