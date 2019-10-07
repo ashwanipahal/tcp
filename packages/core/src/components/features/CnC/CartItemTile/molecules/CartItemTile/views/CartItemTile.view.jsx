@@ -39,6 +39,13 @@ class CartItemTile extends React.Component {
       this.toggleFormVisibility();
       const { getProductSKUInfo } = this.props;
       getProductSKUInfo({ productNum, itemBrand });
+    } else {
+      const { onQuickViewOpenClick, productDetail } = this.props;
+      const { itemId } = productDetail.itemInfo;
+      onQuickViewOpenClick({
+        colorProductId: productNumber,
+        orderInfo: { orderItemId: itemId },
+      });
     }
   };
 
@@ -726,6 +733,7 @@ CartItemTile.defaultProps = {
   sflItemsCount: 0,
   isBagPageSflSection: false,
   showOnReviewPage: true,
+  onQuickViewOpenClick: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -751,6 +759,7 @@ CartItemTile.propTypes = {
   showOnReviewPage: PropTypes.bool,
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);
