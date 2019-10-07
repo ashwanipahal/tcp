@@ -331,6 +331,9 @@ const getConfirmationLabels = createSelector(
       'lbl_confirmation_nextDetails',
       'lbl_confirmation_nextDetails_boss',
       'lbl_confirmation_updateOrderHeading',
+      'lbl_confirmation_venmo_heading',
+      'lbl_confirmation_venmo_ship_information',
+      'lbl_confirmation_paid_with_venmo',
     ];
     lblKeys.forEach(key => {
       labels[key] = getLabelValue(confirmationLbl, key);
@@ -360,6 +363,9 @@ const getConfirmationLabels = createSelector(
       lbl_confirmation_nextDetails: nextDetails,
       lbl_confirmation_updateOrderHeading: updateOrderHeading,
       lbl_confirmation_nextDetails_boss: nextDetailsBoss,
+      lbl_confirmation_venmo_heading: venmoHeading,
+      lbl_confirmation_venmo_ship_information: venmoShipInformation,
+      lbl_confirmation_paid_with_venmo: paidWithVenmo,
     } = labels;
     return {
       thankYouHeading,
@@ -386,6 +392,9 @@ const getConfirmationLabels = createSelector(
       nextDetails,
       updateOrderHeading,
       nextDetailsBoss,
+      venmoHeading,
+      venmoShipInformation,
+      paidWithVenmo,
     };
   }
 );

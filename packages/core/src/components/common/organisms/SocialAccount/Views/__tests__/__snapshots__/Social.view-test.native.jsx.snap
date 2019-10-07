@@ -74,6 +74,7 @@ exports[`Social component should render with connected 1`] = `
     <ModalNative
       heading=" "
       horizontalBar={false}
+      inheritedStyles=""
       isOverlay={false}
       onRequestClose={[Function]}
       visible={true}
@@ -219,6 +220,18 @@ exports[`Social component should render with connected 1`] = `
       </Styled(View)>
     </ModalNative>
   </Styled(View)>
+  <Instagram
+    onLoginFailure={[Function]}
+    onLoginSuccess={[Function]}
+    redirectUrl="undefined/undefined/instagram"
+    responseType="token"
+    scopes={
+      Array [
+        "basic",
+      ]
+    }
+    styles={Object {}}
+  />
 </View>
 `;
 
@@ -296,6 +309,7 @@ exports[`Social component should renders correctly 1`] = `
     <ModalNative
       heading=" "
       horizontalBar={false}
+      inheritedStyles=""
       isOverlay={false}
       onRequestClose={[Function]}
       visible={true}
@@ -441,6 +455,18 @@ exports[`Social component should renders correctly 1`] = `
       </Styled(View)>
     </ModalNative>
   </Styled(View)>
+  <Instagram
+    onLoginFailure={[Function]}
+    onLoginSuccess={[Function]}
+    redirectUrl="undefined/undefined/instagram"
+    responseType="token"
+    scopes={
+      Array [
+        "basic",
+      ]
+    }
+    styles={Object {}}
+  />
 </View>
 `;
 
@@ -591,6 +617,7 @@ exports[`Social component should simulate instagram connect 1`] = `
     <ModalNative
       heading=" "
       horizontalBar={false}
+      inheritedStyles=""
       isOverlay={false}
       onRequestClose={[Function]}
       visible={true}
@@ -736,5 +763,17 @@ exports[`Social component should simulate instagram connect 1`] = `
       </Styled(View)>
     </ModalNative>
   </Styled(View)>
+  <Instagram
+    onLoginFailure={[Function]}
+    onLoginSuccess={[Function]}
+    redirectUrl="undefined/undefined/instagram"
+    responseType="token"
+    scopes={
+      Array [
+        "basic",
+      ]
+    }
+    styles={Object {}}
+  />
 </View>
 `;

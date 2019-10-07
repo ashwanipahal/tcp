@@ -387,11 +387,10 @@ export function addPaymentToOrder({
 }) {
   let venmoInstruction = {};
   if (venmoDetails) {
-    const { userId, saveVenmoTokenIntoProfile, nonce } = venmoDetails;
+    const { userId, saveVenmoTokenIntoProfile } = venmoDetails;
     venmoInstruction = {
       venmo_user_id: userId,
       save_venmo_token_into_profile: saveVenmoTokenIntoProfile ? 'true' : 'false',
-      account: nonce,
     };
   }
   const paymentInstruction = {

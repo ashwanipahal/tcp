@@ -50,7 +50,11 @@ const AddedToBag = ({
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
-        <AddedToBagActions labels={labels} handleCartCheckout={handleCartCheckout} />
+        <AddedToBagActions
+          labels={labels}
+          handleCartCheckout={handleCartCheckout}
+          showVenmo={false}
+        />
         <BossBannerView labels={labels} />
         <div className="continue-shopping">
           <Anchor
