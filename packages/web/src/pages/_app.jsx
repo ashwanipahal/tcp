@@ -83,7 +83,6 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     const { envId, raygunApiKey, channelId } = getAPIConfig();
-    console.log('------', envId);
     initErrorReporter({
       isServer: false,
       envId,
@@ -131,7 +130,6 @@ class TCPWebApp extends App {
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
       apiConfig.previewEnvId = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
-      console.log(apiConfig);
 
       // optimizely headers
       const optimizelyHeadersObject = {};
