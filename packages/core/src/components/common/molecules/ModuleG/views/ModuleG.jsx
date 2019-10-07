@@ -39,33 +39,60 @@ class ModuleG extends React.PureComponent {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
 
     return currentSingleCTAButton ? (
-      <Row centered>
-        <Col
-          colSize={{
-            small: 4,
-            medium: 2,
-            large: 2,
-          }}
-        >
-          <Anchor
-            noLink
-            to={currentSingleCTAButton.url}
-            target={currentSingleCTAButton.target}
-            title={currentSingleCTAButton.title}
-            asPath={currentSingleCTAButton.url}
-            dataLocator={getLocator('moduleJ_cta_btn')}
+      <>
+        <Row centered>
+          <Col
+            colSize={{
+              small: 4,
+              medium: 2,
+              large: 2,
+            }}
           >
-            <Button buttonVariation="fixed-width" className="cta-btn">
-              {currentSingleCTAButton.text}
-            </Button>
-          </Anchor>
-        </Col>
-      </Row>
+            <Anchor
+              noLink
+              to={currentSingleCTAButton.url}
+              target={currentSingleCTAButton.target}
+              title={currentSingleCTAButton.title}
+              asPath={currentSingleCTAButton.url}
+              dataLocator={getLocator('moduleJ_cta_btn')}
+            >
+              <Button buttonVariation="fixed-width" className="cta-btn">
+                add to bag
+              </Button>
+            </Anchor>
+          </Col>
+        </Row>
+        {/* <Row centered>
+          <Col
+            colSize={{
+              small: 4,
+              medium: 2,
+              large: 2,
+            }}
+            className="carousel-bottom-link"
+          >
+            <Anchor
+              noLink
+              to={currentSingleCTAButton.url}
+              target={currentSingleCTAButton.target}
+              title={currentSingleCTAButton.title}
+              asPath={currentSingleCTAButton.url}
+              dataLocator={getLocator('moduleJ_cta_btn')}
+            >
+              <span>Shop All Matchables</span>
+              <span className="">
+                <Image src={getIconPath('smallright')} />
+              </span>
+            </Anchor>
+          </Col>
+        </Row> */}
+      </>
     ) : null;
   };
 
   getHeaderText = () => {
     const { headerText, layout } = this.props;
+    console.log('headerText:', headerText);
     return headerText && layout !== 'alt' ? (
       <div className="promo-header-wrapper">
         <LinkText
@@ -98,26 +125,76 @@ class ModuleG extends React.PureComponent {
     );
   };
 
+  renderCarousel = type => {
+    const { productTabList } = this.props;
+    const { currentCatId } = this.state;
+    const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
+    let data = productTabList[currentCatId] || [];
+    data = data.slice(0, TOTAL_IMAGES);
+    if (data.length > 0) {
+      return (
+        <Col
+          className={`moduleG__carousel-wrapper moduleG__carousel-${type}`}
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 10,
+          }}
+          offsetLeft={{
+            small: 0,
+            medium: 0,
+            large: 1,
+          }}
+          offsetRight={{
+            small: 0,
+            medium: 0,
+            large: 1,
+          }}
+        >
+          {data.length > 0 ? (
+            <Carousel
+              options={CAROUSEL_OPTIONS}
+              carouselConfig={{
+                autoplay: false,
+                variation: 'big-arrows',
+                customArrowLeft: getIconPath('carousel-big-carrot'),
+                customArrowRight: getIconPath('carousel-big-carrot'),
+              }}
+            >
+              {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+                return (
+                  <div key={index.toString()}>
+                    <Anchor
+                      className="image-link"
+                      to={pdpUrl}
+                      asPath={pdpAsPath}
+                      dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
+                    >
+                      <Image alt={productName} src={imageUrl[0]} />
+                    </Anchor>
+                  </div>
+                );
+              })}
+            </Carousel>
+          ) : null}
+        </Col>
+      );
+    }
+
+    return null;
+  };
+
   render() {
     const {
       className,
-      productTabList,
+      // productTabList,
       // mediaLinkedList,
       // layout,
       divTabs,
     } = this.props;
-    const { currentCatId } = this.state;
     // const promoMediaLinkedList = mediaLinkedList || [];
     // const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     // const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const {
-      CAROUSEL_OPTIONS,
-      // PROMO_IMG_DATA,
-      TOTAL_IMAGES,
-    } = config;
-    let data = productTabList[currentCatId] || [];
-    data = data.slice(0, TOTAL_IMAGES);
-
     return (
       <Grid className={`${className} moduleG`}>
         <Row>
@@ -128,6 +205,7 @@ class ModuleG extends React.PureComponent {
               large: 12,
             }}
           >
+            {this.getHeaderText()}
             <ProductTabList
               onProductTabChange={this.onTabChange}
               tabItems={divTabs}
@@ -136,97 +214,14 @@ class ModuleG extends React.PureComponent {
           </Col>
         </Row>
         <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
-          <Col
-            className="moduleG__carousel-wrapper moduleG__carousel-top"
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 10,
-            }}
-            offsetLeft={{
-              small: 0,
-              medium: 0,
-              large: 1,
-            }}
-            offsetRight={{
-              small: 0,
-              medium: 0,
-              large: 1,
-            }}
-          >
-            {data ? (
-              <Carousel
-                options={CAROUSEL_OPTIONS}
-                carouselConfig={{
-                  autoplay: false,
-                  variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
-                }}
-              >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
-                  return (
-                    <div key={index.toString()}>
-                      <Anchor
-                        className="image-link"
-                        to={pdpUrl}
-                        asPath={pdpAsPath}
-                        dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
-                      >
-                        <Image alt={productName} src={imageUrl[0]} />
-                      </Anchor>
-                    </div>
-                  );
-                })}
-              </Carousel>
-            ) : null}
-          </Col>
+          {this.renderCarousel('top')}
+          <div className="focusAreaView">
+            <span className="focusArea-plus">
+              <Image src={getIconPath('plus-icon')} />
+            </span>
+          </div>
           {/* carousel bottom */}
-          {/* <Col
-            className="moduleG__carousel-wrapper moduleG__carousel-bottom"
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 10,
-            }}
-            offsetLeft={{
-              small: 0,
-              medium: 0,
-              large: 1,
-            }}
-            offsetRight={{
-              small: 0,
-              medium: 0,
-              large: 1,
-            }}
-          >
-            {data ? (
-              <Carousel
-                options={CAROUSEL_OPTIONS}
-                carouselConfig={{
-                  autoplay: false,
-                  variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
-                }}
-              >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
-                  return (
-                    <div key={index.toString()}>
-                      <Anchor
-                        className="image-link"
-                        to={pdpUrl}
-                        asPath={pdpAsPath}
-                        dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
-                      >
-                        <Image alt={productName} src={imageUrl[0]} />
-                      </Anchor>
-                    </div>
-                  );
-                })}
-              </Carousel>
-            ) : null}
-          </Col> */}
+          {this.renderCarousel('bottom')}
         </Row>
         {this.getCurrentCtaButton()}
       </Grid>

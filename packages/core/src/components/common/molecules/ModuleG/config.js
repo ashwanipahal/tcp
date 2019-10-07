@@ -7,24 +7,32 @@ export default {
   CAROUSEL_OPTIONS: {
     autoplay: false,
     arrows: true,
-    autoplaySpeed: 2000,
     centerMode: true,
-    centerPadding: '20px',
+    centerPadding: '0px',
     fade: false,
     speed: 1000,
+    lazyLoad: false,
     dots: false,
     swipe: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    initialSlide: -1,
     responsive: [
       {
         breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
-          slidesToShow: 3,
-          // centerPadding: '50px',
+          slidesToShow: 1,
           arrows: false,
           swipeToSlide: true,
+          centerPadding: '18%',
+        },
+      },
+      {
+        breakpoint: parseInt(breakpoints.large, 10) - 1,
+        settings: {
+          slidesToShow: 3,
+          arrows: false,
+          swipeToSlide: true,
+          centerPadding: '13%',
         },
       },
     ],
