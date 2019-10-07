@@ -33,7 +33,7 @@ class PickupProductFormPart extends React.PureComponent {
     currencySym: '$',
   };
 
-  renderProductValues = (initialValues) => {
+  renderProductValues = initialValues => {
     const fitSize = `${initialValues.Size} ${initialValues.Fit || ''}`;
     return (
       <React.Fragment>

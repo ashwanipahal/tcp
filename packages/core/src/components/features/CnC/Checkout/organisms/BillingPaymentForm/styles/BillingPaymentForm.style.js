@@ -183,15 +183,20 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       flex-direction: row;
       justify-content: flex-end;
-      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
 
     .card-edit-button {
       @media ${props => props.theme.mediaQuery.medium} {
         height: 51px;
-        width: 210px;
+        width: 162px;
         margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        width: 210px;
       }
     }
 
@@ -223,6 +228,31 @@ export default css`
     .card-edit-save-mob {
       @media ${props => props.theme.mediaQuery.medium} {
         display: none;
+      }
+    }
+  }
+
+  .edit-card-error {
+    span {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+  }
+
+  .edit-card-error-container {
+    display: flex;
+    flex-direction: row-reverse;
+    .edit-card-error {
+      padding-top: 0;
+      @media ${props => props.theme.mediaQuery.medium} {
+        width: 356px;
+        flex: none;
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        width: 450px;
+      }
+      img {
+        padding-left: 0;
       }
     }
   }

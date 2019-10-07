@@ -16,7 +16,11 @@ import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartIt
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export const ProductTileWrapperContainer = props => {
-  return <ProductTileWrapper {...props} />;
+  return (
+    <>
+      <ProductTileWrapper {...props} />
+    </>
+  );
 };
 
 const mapStateToProps = state => {
@@ -43,11 +47,13 @@ export const mapDispatchToProps = dispatch => {
 
 ProductTileWrapperContainer.defaultProps = {
   orderItems: [],
+  pageView: '',
 };
 
 ProductTileWrapperContainer.propTypes = {
   orderItems: PropTypes.shape({}),
   initialActions: PropTypes.func.isRequired,
+  pageView: PropTypes.string,
 };
 
 export default connect(
