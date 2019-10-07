@@ -390,7 +390,7 @@ class CheckoutCartItemsList extends Component {
               fontFamily="secondary"
               className="checkout-cart-list-heading"
             >
-              {`${bagPageLabels.bagHeading} (${itemsCount})`}
+              {`${bagPageLabels.bagHeading} (${itemsCount}):`}
             </BodyCopy>
             {this.renderItems()}
           </Col>

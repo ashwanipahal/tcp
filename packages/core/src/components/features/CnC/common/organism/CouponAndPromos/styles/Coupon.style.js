@@ -32,10 +32,11 @@ const styles = css`
       background-color: ${props => props.theme.colorPalette.white};
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      width: 108%;
+      margin-left: -14px;
     }
     .collapsible-icon {
       top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 `;

@@ -28,15 +28,8 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.smallMax} {
       padding-top: 0px;
       padding-bottom: 0px;
-      .collapsible-header {
-        padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-      .collapsible-icon {
-        top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
-      .item-opened {
-        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
+      width: 101%;
+      margin-left: -14px;
     }
   }
 `;
