@@ -57,7 +57,7 @@ class StoresCountryTile extends PureComponent {
   }
 
   render() {
-    const { children, className, title } = this.props;
+    const { children, className, title, isDefaultOpen } = this.props;
     if (isClient() && (getViewportInfo().isMobile || getViewportInfo().isTablet)) {
       return (
         <CollapsibleLocations
@@ -66,11 +66,13 @@ class StoresCountryTile extends PureComponent {
           className={className}
           iconClose="plus-icon"
           iconOpen="minus-icon"
+          defaultOpen={isDefaultOpen}
+          id={`scroll-${title}`}
         />
       );
     }
     return (
-      <div className={className}>
+      <div className={className} id={`scroll-${title}`}>
         <CountryName>{title}</CountryName>
         {this.getAddressTiles()}
         {children}
@@ -86,11 +88,13 @@ StoresCountryTile.propTypes = {
   stores: PropTypes.arrayOf(propTypes.store),
   labels: PropTypes.shape({}).isRequired,
   titleClickCb: PropTypes.func.isRequired,
+  isDefaultOpen: PropTypes.bool,
 };
 
 StoresCountryTile.defaultProps = {
   children: null,
   stores: [],
+  isDefaultOpen: false,
 };
 
 export default withStyles(StoresCountryTile, style);

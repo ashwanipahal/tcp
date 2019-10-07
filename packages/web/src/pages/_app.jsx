@@ -210,7 +210,7 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {this.getSEOTags(Component.pageId)}
+              {Component.pageId ? this.getSEOTags(Component.pageId) : null}
               <Header />
               <CheckoutHeader />
               <Loader />

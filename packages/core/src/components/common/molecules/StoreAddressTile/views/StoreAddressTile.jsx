@@ -359,7 +359,7 @@ class StoreAddressTile extends PureComponent {
         </BodyCopy>
         <div className="address-meta">
           <div className="address-meta__left">
-            {variation === detailsType && this.getStoreType()}
+            {variation === detailsType && store.features && this.getStoreType()}
             {store.isGym ? this.getBrandStoreIcon() : <div className="brand-store" />}
           </div>
           <div className="address-meta__right">
