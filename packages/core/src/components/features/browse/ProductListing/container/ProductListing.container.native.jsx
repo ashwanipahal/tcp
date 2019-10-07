@@ -21,6 +21,7 @@ import {
   getAllProductsSelect,
   getScrollToTopValue,
 } from './ProductListing.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
@@ -152,6 +153,7 @@ function mapStateToProps(state) {
     sortLabels: getSortLabels(state),
     totalProductsInCurrCategory: getProductsInCurrCategory(state),
     scrollToTop: getScrollToTopValue(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 }
 

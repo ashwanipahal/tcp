@@ -12,6 +12,7 @@ import {
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const renderItemCountView = itemCount => {
   if (itemCount === undefined) {
@@ -80,6 +81,7 @@ const ProductListView = ({
   totalProductsInCurrCategory,
   scrollToTop,
   onPickUpOpenClick,
+  isPickupModalOpen,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -105,6 +107,7 @@ const ProductListView = ({
       />
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
+      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );
 };
@@ -117,6 +120,7 @@ ProductListView.propTypes = {
   onPressFilter: PropTypes.func.isRequired,
   onPressSort: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isPickupModalOpen: PropTypes.bool.isRequired,
   getProducts: PropTypes.func.isRequired,
   navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),

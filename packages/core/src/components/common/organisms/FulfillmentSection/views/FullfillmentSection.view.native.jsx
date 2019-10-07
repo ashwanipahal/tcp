@@ -16,9 +16,12 @@ class FulfillmentSection extends React.Component {
   }
 
   pickupOpenClick() {
-    const { currentProduct, onPickUpOpenClick } = this.props;
+    const { currentProduct, onPickUpOpenClick, closeQuickViewClick } = this.props;
     const { colorFitsSizesMap, generalProductId } = currentProduct;
     const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    if (closeQuickViewClick) {
+      closeQuickViewClick();
+    }
     onPickUpOpenClick({
       generalProductId,
       colorProductId: generalProductId,
@@ -53,12 +56,14 @@ class FulfillmentSection extends React.Component {
 
 FulfillmentSection.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
+  closeQuickViewClick: PropTypes.func,
   buttonLabel: PropTypes.string,
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 };
 
 FulfillmentSection.defaultProps = {
   buttonLabel: '',
+  closeQuickViewClick: () => {},
 };
 
 export default withStyles(FulfillmentSection, styles);
