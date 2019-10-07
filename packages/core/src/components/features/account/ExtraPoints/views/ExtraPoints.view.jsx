@@ -75,11 +75,13 @@ const getPromoTileData = promoListData => {
             {item && (index === 0 || index === 2) && (
               <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
                 <PromoListTile key={index.toString()} tileData={item} />
+                <BodyCopy component="div" className="tile-border" />
               </Col>
             )}
             {item && index === 1 && (
-              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderDesktop">
+              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
                 <PromoListTile key={index.toString()} tileData={item} />
+                <BodyCopy component="div" className="tile-border-desktop" />
               </Col>
             )}
             {item && index === 3 && (

@@ -14,7 +14,16 @@ export default css`
       margin-right: 19px;
     }
   }
-
+  .tile-border-desktop {
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 1px;
+      height: 135px;
+      background-color: ${props => props.theme.colorPalette.gray[500]};
+      position: absolute;
+      right: 0;
+      top: 64px;
+    }
+  }
   .morePointsWrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.small} {
@@ -41,5 +50,16 @@ export default css`
   .learnMore {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .borderAll {
+    position: relative;
+  }
+  .tile-border {
+    width: 1px;
+    height: 135px;
+    background-color: ${props => props.theme.colorPalette.gray[500]};
+    position: absolute;
+    right: 0;
+    top: 64px;
   }
 `;
