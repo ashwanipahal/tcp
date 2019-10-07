@@ -102,7 +102,10 @@ class HeaderMiddleNav extends React.PureComponent {
     } = this.props;
     const brand = getBrand();
     const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
-    const { accessibility: { closeIconButton, hamburgerMenu } = {}, store: storeLabel } = labels;
+    const {
+      accessibility: { closeIconButton, hamburgerMenu } = {},
+      store: storeLabel = {},
+    } = labels;
     return (
       <React.Fragment>
         <Row className="content-wrapper" fullBleed>
