@@ -29,6 +29,7 @@ const ModalCustomWrapper = styled.View`
       background-color: rgba(0,0,0,.5);
 `
       : ``}
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 const ModalHeading = styled.Text`

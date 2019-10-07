@@ -27,6 +27,7 @@ class GuestBillingForm extends React.Component {
     syncErrorsObj: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     orderHasShipping: PropTypes.bool,
+    isPaymentDisabled: PropTypes.bool.isRequired,
     addressLabels: PropTypes.shape({}).isRequired,
     isGuest: PropTypes.bool,
     isSameAsShippingChecked: PropTypes.bool,
@@ -103,6 +104,7 @@ class GuestBillingForm extends React.Component {
       handleSubmit,
       onSubmit,
       creditFieldLabels,
+      isPaymentDisabled,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -112,39 +114,41 @@ class GuestBillingForm extends React.Component {
     return (
       <>
         <GuestBillingFormWrapper>
-          <BodyCopy
-            mobileFontFamily="primary"
-            fontSize="fs26"
-            fontWeight="regular"
-            data-locator="billing-details"
-            className="elem-mb-XS elem-mt-MED"
-            text={labels.paymentMethod}
-          />
-          <>
-            <AddNewCCForm
-              cvvInfo={cvvInfo({ cvvCodeRichText })}
-              cardType={cardType}
-              cvvError={cvvError}
-              labels={labels}
-              formName="checkoutBilling"
-              isExpirationRequired={isExpirationRequired}
-              isGuest={isGuest}
-              dispatch={dispatch}
-              billingData={billingData}
-              creditFieldLabels={creditFieldLabels}
-            />
-            <CheckoutBillingAddress
-              isGuest={isGuest}
-              orderHasShipping={orderHasShipping}
-              addressLabels={addressLabels}
-              dispatch={dispatch}
-              shippingAddress={shippingAddress}
-              isSameAsShippingChecked={isSameAsShippingChecked}
-              labels={labels}
-              billingData={billingData}
-              formName="checkoutBilling"
-            />
-          </>
+          {!isPaymentDisabled && (
+            <>
+              <BodyCopy
+                mobileFontFamily="primary"
+                fontSize="fs26"
+                fontWeight="regular"
+                data-locator="billing-details"
+                className="elem-mb-XS elem-mt-MED"
+                text={labels.paymentMethod}
+              />
+              <AddNewCCForm
+                cvvInfo={cvvInfo({ cvvCodeRichText })}
+                cardType={cardType}
+                cvvError={cvvError}
+                labels={labels}
+                formName="checkoutBilling"
+                isExpirationRequired={isExpirationRequired}
+                isGuest={isGuest}
+                dispatch={dispatch}
+                billingData={billingData}
+                creditFieldLabels={creditFieldLabels}
+              />
+              <CheckoutBillingAddress
+                isGuest={isGuest}
+                orderHasShipping={orderHasShipping}
+                addressLabels={addressLabels}
+                dispatch={dispatch}
+                shippingAddress={shippingAddress}
+                isSameAsShippingChecked={isSameAsShippingChecked}
+                labels={labels}
+                billingData={billingData}
+                formName="checkoutBilling"
+              />
+            </>
+          )}
           <CnCTemplate
             navigation={navigation}
             btnText={nextSubmitText}

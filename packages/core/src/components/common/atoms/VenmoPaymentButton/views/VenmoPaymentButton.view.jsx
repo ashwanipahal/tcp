@@ -93,7 +93,8 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = () => {
+  handleVenmoClick = e => {
+    e.preventDefault(); // Added to suppress extra click calls with multiple actions on same page
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
