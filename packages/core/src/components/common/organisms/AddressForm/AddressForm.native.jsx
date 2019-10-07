@@ -17,39 +17,18 @@ import {
 import {
   SaveButtonWrapper,
   CancelButtonWrapper,
-  InputFieldHalf,
   StateZipCodeContainer,
-  Separator,
   SetDefaultShippingWrapper,
   AddAddressWrapper,
-  CountryContainer,
+  InputFieldHalf,
 } from './AddressForm.native.style';
 
 class AddressForm extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    const selectArray = [
-      {
-        id: ``,
-        fullName: '',
-        displayName: 'Select',
-      },
-    ];
-
-    this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
-    this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
-
     this.state = {
-      country: 'US',
+      country: props.initialValues.country || 'US',
     };
-
-    this.locationRef = null;
-  }
-
-  componentDidMount() {
-    const { dispatch, initialValues } = this.props;
-    dispatch(change('AddressForm', 'country', initialValues.country));
   }
 
   handlePlaceSelected = (place, inputValue) => {
@@ -131,39 +110,29 @@ class AddressForm extends React.PureComponent {
               name="state"
               component={Select}
               heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
-              options={country === 'CA' ? this.CAcountriesStates : this.UScountriesStates}
+              options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
             />
           </InputFieldHalf>
-          <Separator />
-          <InputFieldHalf zipCode>
+          <InputFieldHalf>
             <Field
               id="zipCode"
               name="zipCode"
               label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
               maxLength={country === 'CA' ? 6 : 5}
               component={TextBox}
-              dataLocator="addnewaddress-zipcode"
             />
           </InputFieldHalf>
         </StateZipCodeContainer>
-        <CountryContainer>
-          <Field
-            id="country"
-            name="country"
-            component={Select}
-            heading={addressFormLabels.country}
-            selectedValue={
-              country === 'US'
-                ? countriesOptionsMap[0].displayName
-                : countriesOptionsMap[1].displayName
-            }
-            options={countriesOptionsMap}
-            onValueChange={itemValue => {
-              this.setState({ country: itemValue });
-            }}
-          />
-        </CountryContainer>
-
+        <Field
+          id="country"
+          name="country"
+          component={Select}
+          heading={addressFormLabels.country}
+          options={countriesOptionsMap}
+          onValueChange={itemValue => {
+            this.setState({ country: itemValue });
+          }}
+        />
         <Field
           id="phoneNumber"
           name="phoneNumber"
@@ -172,7 +141,6 @@ class AddressForm extends React.PureComponent {
           dataLocator="addnewaddress-phnumber"
           type="tel"
         />
-
         <SetDefaultShippingWrapper>
           <Field
             id="primary"

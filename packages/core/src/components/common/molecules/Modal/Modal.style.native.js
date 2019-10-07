@@ -1,9 +1,13 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
+import { Platform, KeyboardAvoidingView } from 'react-native';
 
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView)`
+  flex: 1;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
@@ -77,6 +81,7 @@ const ImageWrapper = styled.View`
 `;
 
 export {
+  StyledKeyboardAvoidingView,
   StyledCrossImage,
   ImageWrapper,
   StyledTouchableOpacity,

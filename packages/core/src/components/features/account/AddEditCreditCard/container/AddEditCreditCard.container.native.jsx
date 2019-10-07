@@ -210,6 +210,7 @@ export class AddEditCreditCard extends React.PureComponent {
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
         addressLabels={addressLabels}
+        addressFormLabels={addressLabels.addressFormLabels}
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}

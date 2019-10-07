@@ -4,8 +4,8 @@ import {
   StatusBar,
   SafeAreaView,
   ScrollView,
-  KeyboardAvoidingView,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
@@ -77,6 +77,11 @@ const geLine = (horizontalBar, borderColor) => {
   );
 };
 
+const SafeAreaViewStyles = {
+  flex: 1,
+  height: 800,
+};
+
 const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   const {
     heading,
@@ -103,7 +108,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={SafeAreaViewStyles}>
       <Modal
         transparent={customTransparent || false}
         visible={isOpen}
