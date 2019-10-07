@@ -38,7 +38,6 @@ exports[`PromoListTile component should renders correctly 1`] = `
         }
       >
         <Styled(Image)
-          alt="earn points"
           className="tileImage"
           data-locator="earnpoints-image"
           src="https://test4.childrensplace.com/wcsstore/static/images/tcp_star_bag.jpg"
