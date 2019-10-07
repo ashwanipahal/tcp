@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ShippingReviewSection from '../../../molecules/ShippingReviewSection';
 import CHECKOUT_SELECTOR from '../../../../../container/Checkout.selector';
+import CONSTANTS from '../../../../../Checkout.constants';
 
 export const ShippingReviewContainer = ({
   shippingAddress,
@@ -43,7 +44,8 @@ const mapStateToProps = state => {
     shippingMethod: CHECKOUT_SELECTOR.getSelectedShippingMethodDetails(state),
     labels: CHECKOUT_SELECTOR.getShippingSectionLabels(state),
     isGiftOptionsEnabled: !!CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).name,
-    giftWrappingDisplayName: CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).name || 'N/A',
+    giftWrappingDisplayName:
+      CHECKOUT_SELECTOR.getSelectedGiftWrapDetails(state).name || CONSTANTS.NA,
   };
 };
 
