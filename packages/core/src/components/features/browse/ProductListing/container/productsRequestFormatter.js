@@ -56,7 +56,7 @@ export default class ProductsOperator {
   getImgPath(id, excludeExtension) {
     return {
       colorSwatch: this.getSwatchImgPath(id, excludeExtension),
-      productImages: this.getProductImgPath(id, excludeExtension),
+      productImages: this.getProductImagePath(id, excludeExtension),
     };
   }
 
@@ -104,6 +104,18 @@ export default class ProductsOperator {
       900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
         excludeExtension ? '' : '.jpg'
       }`,
+    };
+  };
+
+  getProductImagePath = (id, excludeExtension) => {
+    const imageName = id.split('_');
+    const imagePath = imageName[0];
+
+    return {
+      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     };
   };
 
