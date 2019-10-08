@@ -177,7 +177,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
         </>
       );
     }
-    return '';
+    return null;
   };
 
   render() {
