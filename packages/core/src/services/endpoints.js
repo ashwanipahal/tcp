@@ -369,5 +369,9 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
   },
+  getStoreLocationByCountry: {
+    method: 'GET',
+    URI: 'v2/store/getStoreLocationByCountry',
+  },
 };
 export default endpoints;
