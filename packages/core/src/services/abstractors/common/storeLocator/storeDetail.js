@@ -8,6 +8,11 @@ const STORE_TYPES = {
   OUTLET: 'Outlet',
 };
 
+const BRAND_TYPE = {
+  gymboree: 'GYM',
+  tcp: 'TCP',
+};
+
 /**
  * @function errorHandler function to handle all the server side errors.
  * @param {object} err - error object in case server side data send server side validation errors.
@@ -15,6 +20,24 @@ const STORE_TYPES = {
  */
 const errorHandler = err => {
   return err || null;
+};
+
+/**
+ * @function hasGymboreeStores to check and return a boolean value if Gymboree brand.
+ * @param {object} storeInfo - store object
+ * @returns {boolean} returns true is store is a gymboree store.
+ */
+const hasGymboreeStores = storeInfo => {
+  const gymStoreArr = storeInfo.Attribute || storeInfo.brands;
+  const gymStore = gymStoreArr.filter(
+    attribute =>
+      (typeof attribute === 'object' &&
+        attribute.name === 'STORE_BRAND_TYPE' &&
+        attribute.value === BRAND_TYPE.gymboree) ||
+      attribute === BRAND_TYPE.gymboree
+  );
+
+  return gymStore.length > 0;
 };
 
 export const getCurrentStoreInfoApi = storeId => {
@@ -58,6 +81,7 @@ export const getCurrentStoreInfoApi = storeId => {
                 ? JSON.parse(storeInfo.x_stloc)
                 : { heading: '', bodyCopy: '', pageTitle: '' },
             },
+            isGym: hasGymboreeStores(storeInfo),
             hours: {
               regularHours: [],
               holidayHours: [],
@@ -113,6 +137,7 @@ export const getNearByStoreApi = payload => {
             holidayHours: [],
             regularAndHolidayHours: [],
           },
+          isGym: hasGymboreeStores(fStore),
           features: {
             storeType:
               (fStore.storeType === 'PLACE' ? STORE_TYPES.RETAIL : STORE_TYPES[fStore.storeType]) ||

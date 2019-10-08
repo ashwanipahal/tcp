@@ -1,4 +1,5 @@
 import filter from 'lodash/filter';
+import { getLabelValue } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
 
@@ -125,7 +126,7 @@ export const makeSearch = (input, defaultResultCount = 4) => {
             highListPrice: parseFloat(product.high_list_price) || 0,
             highOfferPrice: parseFloat(product.high_offer_price) || 0,
             isBundleProduct: bundleProduct,
-            productUrl: `${bundleProduct ? 'b' : 'p'}/${pdpURLID}`,
+            productUrl: `${bundleProduct ? '/b' : '/p'}/${pdpURLID}`,
           };
         });
 
@@ -148,11 +149,11 @@ export const makeSearch = (input, defaultResultCount = 4) => {
       return {
         autosuggestList: [
           {
-            heading: `${slpLabels.lbl_im_looking_for}`,
+            heading: `${getLabelValue(slpLabels, 'lbl_search_looking_for')}`,
             suggestions: autoSuggestItems,
           },
           {
-            heading: `${slpLabels.lbl_category_matches}`,
+            heading: `${getLabelValue(slpLabels, 'lbl_category_matches')}`,
             suggestions: categories,
           },
         ],

@@ -24,7 +24,7 @@ class MiniBagBody extends React.PureComponent {
   };
 
   ViewSaveForLaterLink = savedforLaterQty => {
-    const { labels } = this.props;
+    const { labels, closeMiniBag } = this.props;
     if (savedforLaterQty <= 0) {
       return null;
     }
@@ -37,6 +37,7 @@ class MiniBagBody extends React.PureComponent {
         to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
+        onClick={() => closeMiniBag()}
       >
         {`${labels.viewSfl}(${savedforLaterQty})`}
       </Anchor>
@@ -98,6 +99,7 @@ class MiniBagBody extends React.PureComponent {
       isCartItemsUpdating,
       isCartItemSFL,
       closeMiniBag,
+      onLinkClick,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -114,6 +116,7 @@ class MiniBagBody extends React.PureComponent {
                     asPath={CHECKOUT_ROUTES.bagPage.asPath}
                     to={CHECKOUT_ROUTES.bagPage.to}
                     dataLocator="addressbook-makedefault"
+                    onClick={() => closeMiniBag()}
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
@@ -128,6 +131,7 @@ class MiniBagBody extends React.PureComponent {
                     asPath={CHECKOUT_ROUTES.bagPage.asPath}
                     to={CHECKOUT_ROUTES.bagPage.to}
                     data-locator="addressbook-makedefault"
+                    onClick={() => closeMiniBag()}
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
@@ -166,7 +170,7 @@ class MiniBagBody extends React.PureComponent {
           {cartItemCount ? (
             <ProductTileWrapper sflItemsCount={savedforLaterQty} onItemEdit={this.handleItemEdit} />
           ) : (
-            <EmptyMiniBag labels={labels} userName={userName} />
+            <EmptyMiniBag labels={labels} userName={userName} onLinkClick={onLinkClick} />
           )}
         </BodyCopy>
         {cartItemCount ? (
@@ -215,6 +219,7 @@ MiniBagBody.propTypes = {
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBag: PropTypes.func.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);
