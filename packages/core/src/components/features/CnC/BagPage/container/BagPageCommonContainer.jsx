@@ -142,7 +142,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { size = 0 } = getCartOrderList(state) || {};
+  const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),

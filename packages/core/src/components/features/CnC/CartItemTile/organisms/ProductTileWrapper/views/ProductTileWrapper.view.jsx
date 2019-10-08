@@ -16,6 +16,7 @@ import productTileCss, {
 } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
+import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartItemTileSkelton.view';
 
 class ProductTileWrapper extends React.PureComponent<props> {
   constructor(props) {
@@ -167,7 +168,12 @@ class ProductTileWrapper extends React.PureComponent<props> {
         />
       );
     }
-    return <></>;
+    return (
+      <>
+        <CartItemTileSkelton />
+        <CartItemTileSkelton />
+      </>
+    );
   };
 
   render() {
@@ -206,23 +212,25 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUnavailable = true;
         }
         return (
-          <CartItemTile
-            inheritedStyles={inheritedStyles}
-            labels={labels}
-            productDetail={productDetail}
-            key={`${getProductName(tile)}`}
-            pageView={pageView}
-            toggleEditAllowance={this.toggleEditAllowance}
-            isEditAllowed={this.isEditAllowed(productDetail, pageView)}
-            isPlcc={isPlcc}
-            itemIndex={index}
-            openedTile={openedTile}
-            setSelectedProductTile={this.setSelectedProductTile}
-            setSwipedElement={this.setSwipedElement}
-            swipedElement={swipedElement}
-            sflItemsCount={sflItemsCount}
-            isBagPageSflSection={isBagPageSflSection}
-          />
+          <>
+            <CartItemTile
+              inheritedStyles={inheritedStyles}
+              labels={labels}
+              productDetail={productDetail}
+              key={`${getProductName(tile)}`}
+              pageView={pageView}
+              toggleEditAllowance={this.toggleEditAllowance}
+              isEditAllowed={this.isEditAllowed(productDetail, pageView)}
+              isPlcc={isPlcc}
+              itemIndex={index}
+              openedTile={openedTile}
+              setSelectedProductTile={this.setSelectedProductTile}
+              setSwipedElement={this.setSwipedElement}
+              swipedElement={swipedElement}
+              sflItemsCount={sflItemsCount}
+              isBagPageSflSection={isBagPageSflSection}
+            />
+          </>
         );
       });
       const { isDeleting } = isCartItemsUpdating;

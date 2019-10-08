@@ -208,7 +208,9 @@ class BagPageView extends React.Component {
     return (
       <div
         ref={this.getBagCondensedHeader}
-        className={`${orderItemsCount === 0 ? 'hidden-condensed-header' : ''}`}
+        className={`${
+          orderItemsCount === 0 || orderItemsCount === false ? 'hidden-condensed-header' : ''
+        }`}
       >
         <Row className="bag-condensed-header">
           <Row className="content-wrapper">
@@ -255,6 +257,7 @@ class BagPageView extends React.Component {
     const { activeSection, showStickyHeaderMob } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
+    const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
         {this.stickyBagCondensedHeader()}
@@ -316,7 +319,10 @@ class BagPageView extends React.Component {
         </div>
         <CnCTemplate
           leftSection={this.renderLeftSection}
-          showLeftSection={isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE}
+          showLeftSection={
+            (isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE) || isNotLoaded
+          }
+          isNotLoaded={!isNotLoaded}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}

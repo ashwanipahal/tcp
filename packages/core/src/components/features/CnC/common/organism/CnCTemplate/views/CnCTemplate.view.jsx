@@ -38,6 +38,7 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isNonEmptySFL,
+  isNotLoaded,
   isConfirmationPage,
 }) => {
   const isSmallLeftSection = isNonEmptySFL || showLeftSection;
@@ -60,25 +61,29 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {isConfirmationPage ? (
+            {!!isNotLoaded && (
               <>
-                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
-                <Row fullBleed>
-                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <PersonalizedCoupons />
-                  </Col>
-                </Row>
-              </>
-            ) : (
-              <>
-                <OrderLedgerContainer />
-                {getBagActions({ BagActions })}
-                {getBonusPointsDaysSection({ isGuest, showAccordian })}
-                <AirmilesBanner />
-                <CouponAndPromos
-                  showAccordian={showAccordian}
-                  additionalClassNameModal="coupon-modal-web"
-                />
+                {isConfirmationPage ? (
+                  <>
+                    <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+                    <Row fullBleed>
+                      <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                        <PersonalizedCoupons />
+                      </Col>
+                    </Row>
+                  </>
+                ) : (
+                  <>
+                    <OrderLedgerContainer />
+                    {getBagActions({ BagActions })}
+                    {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                    <AirmilesBanner />
+                    <CouponAndPromos
+                      showAccordian={showAccordian}
+                      additionalClassNameModal="coupon-modal-web"
+                    />
+                  </>
+                )}
               </>
             )}
           </Col>
@@ -100,6 +105,7 @@ CnCTemplate.propTypes = {
   isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
+  isNotLoaded: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
@@ -110,6 +116,7 @@ CnCTemplate.defaultProps = {
   isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
+  isNotLoaded: true,
 };
 
 export default withStyles(CnCTemplate, styles);
