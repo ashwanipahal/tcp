@@ -20,6 +20,8 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
@@ -99,6 +101,7 @@ class HomePageView extends React.PureComponent<Props> {
           }
           style={buttonMargin}
         />
+
         <Button
           fullWidth
           buttonVariation="variable-width"
@@ -111,6 +114,8 @@ class HomePageView extends React.PureComponent<Props> {
           }
           style={buttonMargin}
         />
+
+        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
       </LazyloadScrollView>
     );
   }

@@ -124,6 +124,7 @@ const CONSTANTS = {
     date: 'D',
     year: 'YYYY',
   },
+  NA: 'N/A',
   PAYPAL_LOCATE: 'en_US',
   PAYPAL_LABEL: 'paypal',
   UPDATE_CARD_DATA: 'UPDATE_CARD_DATA',
