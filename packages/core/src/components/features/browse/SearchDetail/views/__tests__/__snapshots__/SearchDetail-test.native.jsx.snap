@@ -39,6 +39,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     labelsFilter={Object {}}
     lastLoadedPageNumber={0}
     navigation={Object {}}
+    onPickUpOpenClick={[Function]}
     onSubmit={[MockFunction]}
     products={Array []}
     setListRef={[Function]}

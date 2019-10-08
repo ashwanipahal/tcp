@@ -96,7 +96,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         "colorFitSizeDisplayNames": null,
         "colorFitsSizesMap": Array [
           Object {
-            "categoryEntity": "Boy:School Uniforms",
             "color": Object {
               "family": "GRAY",
               "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_1137.jpg",
