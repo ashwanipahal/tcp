@@ -70,15 +70,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     showEmailAddress: true,
   };
 
-  constructor(props) {
-    super(props);
-    const { onFileAddresskey } = props;
-    this.state = {
-      addAddressMount: false,
-      selectedAddress: onFileAddresskey,
-    };
-  }
-
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
     let addressOptions =
@@ -104,23 +95,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   getSelectedAddress = (addressList, onFileAddresskey) => {
-    const { dispatch } = this.props;
-    const defaultAddress = onFileAddresskey
-      ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
-      : addressList && addressList.find(add => add.primary);
-    dispatch(
-      change(
-        'addEditCreditCard',
-        'onFileAddressKey',
-        (defaultAddress && defaultAddress.addressId) || ''
-      )
-    );
-    return defaultAddress;
+    return addressList && addressList.find(add => add.addressId === onFileAddresskey);
   };
 
   handleComponentChange = item => {
     const { dispatch } = this.props;
-    this.setState({ selectedAddress: item });
     dispatch(change('addEditCreditCard', 'onFileAddressKey', item));
   };
 
@@ -142,10 +121,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     }
   };
 
-  showAddressDropdown = (mailingAddress, addressComponentList) => {
-    return mailingAddress
-      ? addressComponentList && addressComponentList.length > 1
-      : addressComponentList;
+  showAddressDropdown = addressComponentList => {
+    return addressComponentList && addressComponentList.length > 1;
   };
 
   getSubHeading = (labels, pagesubHeading) => {
@@ -172,6 +149,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      pristine,
       labels,
       addressLabels,
       addressList,
@@ -190,12 +168,12 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       subHeading,
       mailingAddress,
     } = this.props;
-    const { selectedAddress } = this.state;
+    const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddresskey;
     const addressComponentList = this.getAddressOptions();
-    const addressDropdown = this.showAddressDropdown(mailingAddress, addressComponentList);
+    const addressDropdown = this.showAddressDropdown(addressComponentList);
 
-    const defaultAddress = selectedAddress
-      ? this.getSelectedAddress(addressList, selectedAddress)
+    const defaultAddress = onFileAddresskey
+      ? this.getSelectedAddress(addressList, onFileAddresskey)
       : null;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
@@ -250,6 +228,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                 onValueChange={itemValue => {
                   this.handleComponentChange(itemValue);
                 }}
+                addAddress={() => {
+                  this.handleComponentChange('');
+                }}
                 labels={labels}
                 selectedValue={onFileAddresskey}
               />
@@ -269,7 +250,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               <RightBracket />
             </DefaultAddress>
           )}
-          {!selectedAddress && (
+          {showAddressForm && (
             <ViewWithSpacing spacingStyles="margin-top-LRG">
               <FormSection name="address">
                 <AddressFields
@@ -283,6 +264,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                   showUserName={showUserName}
                   showEmailAddress={showEmailAddress}
                   initialValues={initialValues}
+                  isGuest={false}
                 />
               </FormSection>
             </ViewWithSpacing>

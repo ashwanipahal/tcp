@@ -65,7 +65,11 @@ export const AddEditCreditCard = ({
           dto={dto}
           updateCardList={updateCardList}
           selectedCard={selectedCard}
-          onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
+          onFileAddresskey={
+            selectedCard && isEdit ? selectedCard.billingAddressId.toString() : null
+          }
+          initialValues={initialValues}
+          showEmailAddress={false}
           {...otherProps}
         />
       )}
