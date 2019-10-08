@@ -156,7 +156,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
     bagLabels,
     isUserLoggedIn,
     isBagPageSflSection,
-    showPlccApplyNow
+    showPlccApplyNow,
+    isBagPage
   ) => {
     if (productSectionData.size === 0) {
       return (
@@ -168,12 +169,15 @@ class ProductTileWrapper extends React.PureComponent<props> {
         />
       );
     }
-    return (
-      <>
-        <CartItemTileSkelton />
-        <CartItemTileSkelton />
-      </>
-    );
+    if (isBagPage) {
+      return (
+        <>
+          <CartItemTileSkelton />
+          <CartItemTileSkelton />
+        </>
+      );
+    }
+    return '';
   };
 
   render() {
@@ -268,7 +272,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
           bagLabels,
           isUserLoggedIn,
           isBagPageSflSection,
-          showPlccApplyNow
+          showPlccApplyNow,
+          isBagPage
         )}
       </>
     );
