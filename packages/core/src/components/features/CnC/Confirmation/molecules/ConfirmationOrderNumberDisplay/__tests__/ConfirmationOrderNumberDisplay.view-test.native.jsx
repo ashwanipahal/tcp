@@ -3,7 +3,9 @@ import { shallow } from 'enzyme';
 import ConfirmationOrderNumberDisplay from '../views/ConfirmationOrderNumberDisplay.view.native';
 
 describe('ConfirmationOrderNumberDisplay', () => {
-  it('should render correctly', () => {
+  // TODO: Enable this snapshot once we have some way to override the render logic
+  // using new Date(), which will differ from CI to local based on the timezone.
+  it.skip('should render correctly', () => {
     const props = {
       center: {
         storeName: 'union',
