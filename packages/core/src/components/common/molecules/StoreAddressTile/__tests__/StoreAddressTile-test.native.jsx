@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { shallow } from 'enzyme';
 import StoreAddressTile from '../views/StoreAddressTile.native';

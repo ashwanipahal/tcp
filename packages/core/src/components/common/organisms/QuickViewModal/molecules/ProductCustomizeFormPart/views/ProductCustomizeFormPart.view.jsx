@@ -34,7 +34,7 @@ const ProductCustomizeFormPart = props => {
     handleUpdateItem,
     ...otherProps
   } = props;
-  const { fromBagPage } = otherProps;
+  const { fromBagPage, productInfoFromBag } = otherProps;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const currentColorPdpUrl =
     currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
@@ -107,6 +107,7 @@ const ProductCustomizeFormPart = props => {
             errorOnHandleSubmit={addToBagError}
             handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
             fromBagPage={fromBagPage}
+            productInfoFromBag={productInfoFromBag}
           />
         </div>
       </div>

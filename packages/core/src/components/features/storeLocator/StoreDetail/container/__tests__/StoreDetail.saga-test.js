@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 import { getCurrentStore, getNearByStore } from '../StoreDetail.saga';
 import { setCurrentStoreInfo, setNearByStore } from '../StoreDetail.actions';
 
-describe('Track Order saga', () => {
+describe('StoreDetail saga', () => {
   describe('#getCurrentStore', () => {
     let currentStoreGen;
     beforeEach(() => {

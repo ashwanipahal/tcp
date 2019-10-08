@@ -352,6 +352,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     dispatch(change(form, 'Quantity', selectedQuantity));
   };
 
+  setPreSelectedValuesForProduct = productInfoFromBag => {
+    const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
+    this.initialValuesForm.Fit = selectedFit;
+    this.initialValuesForm.Quantity = selectedQty;
+    this.initialValuesForm.Size.name = selectedSize;
+    this.initialValuesForm.color.name = selectedColor;
+  };
+
   /**
    * @function render
    *
@@ -369,6 +377,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       customFormName,
       showAddToBagCTA = true,
       fromBagPage,
+      productInfoFromBag,
     } = this.props;
     const {
       selectedColor,
@@ -378,6 +387,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       selectedQuantity,
     } = this.state;
+    if (fromBagPage) {
+      this.setPreSelectedValuesForProduct(productInfoFromBag);
+    }
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 

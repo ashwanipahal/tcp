@@ -25,7 +25,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      text="\\"test\\""
+      text="\\"Pant\\""
       textDecoration={null}
     />
   </Styled(View)>
@@ -38,8 +38,11 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     labels={Object {}}
     labelsFilter={Object {}}
     lastLoadedPageNumber={0}
-    navigation={Object {}}
-    onPickUpOpenClick={[Function]}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
     onSubmit={[MockFunction]}
     products={Array []}
     setListRef={[Function]}
