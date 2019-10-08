@@ -36,7 +36,7 @@ const RibbonViewImgContainer = styled.div`
     height: 355px;
   }
 `;
-const RLContainer = styled.div`
+const Container = styled.div`
   position: absolute;
   top: 50%;
   right: 14px;
@@ -77,7 +77,7 @@ export {
   ColWrapper,
   ImgContainer,
   RibbonViewImgContainer,
-  RLContainer,
+  Container,
   ButtonContainer,
   style,
 };
@@ -87,7 +87,7 @@ export default {
   ColWrapper,
   ImgContainer,
   RibbonViewImgContainer,
-  RLContainer,
+  Container,
   ButtonContainer,
   style,
 };

@@ -8,7 +8,7 @@ import {
   ColWrapper,
   ImgContainer,
   RibbonViewImgContainer,
-  RLContainer,
+  Container,
   ButtonContainer,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
@@ -125,7 +125,7 @@ const WithOutRibbonView = props => {
       <ImgContainer>
         <ImgView {...props} />
       </ImgContainer>
-      <RLContainer>
+      <Container className="tcp-variation-content">
         <TextView {...props} />
         <ButtonContainer>
           <Button
@@ -137,7 +137,7 @@ const WithOutRibbonView = props => {
             {singleCTAButton.text}
           </Button>
         </ButtonContainer>
-      </RLContainer>
+      </Container>
     </ColWrapper>
   );
 };
