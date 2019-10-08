@@ -125,6 +125,7 @@ class DeleteAddressModal extends React.Component<Props> {
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
+
   render() {
     const { className, data, openState, showUpdatedNotificationOnModal, labels } = this.props;
     const { heading } = data;
@@ -153,6 +154,7 @@ class DeleteAddressModal extends React.Component<Props> {
     );
   }
 }
+
 DeleteAddressModal.propTypes = {
   data: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,

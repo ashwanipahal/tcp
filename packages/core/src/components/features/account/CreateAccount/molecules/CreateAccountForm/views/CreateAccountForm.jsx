@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -18,16 +19,16 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import { getIconPath } from '../../../../../../../utils';
 
 // @flow
-type Props = {
-  isMakeDefaultDisabled: string,
-  handleSubmit: string,
-  labels: string,
-  hideShowPwd: boolean,
-  confirmHideShowPwd: boolean,
-  onAlreadyHaveAnAccountClick: any,
-  className: string,
-  tooltipContent: any,
-};
+// type Props = {
+//   isMakeDefaultDisabled: string,
+//   handleSubmit: string,
+//   labels: string,
+//   hideShowPwd: boolean,
+//   confirmHideShowPwd: boolean,
+//   onAlreadyHaveAnAccountClick: any,
+//   className: string,
+//   tooltipContent: any,
+// };
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -274,6 +275,17 @@ CreateAccountForm = reduxForm({
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);
+
+CreateAccountForm.propTypes = {
+  isMakeDefaultDisabled: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  labels: PropTypes.string.isRequired,
+  hideShowPwd: PropTypes.bool.isRequired,
+  confirmHideShowPwd: PropTypes.bool.isRequired,
+  onAlreadyHaveAnAccountClick: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  tooltipContent: PropTypes.string.isRequired,
+};
 
 export default withStyles(CreateAccountForm, Styles);
 export { CreateAccountForm as CreateAccountFormVanilla };

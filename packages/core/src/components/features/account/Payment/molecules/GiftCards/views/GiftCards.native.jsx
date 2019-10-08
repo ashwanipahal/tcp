@@ -17,12 +17,12 @@ import {
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
 // @flow
-type Props = {
-  labels: string,
-  giftCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-};
+// type Props = {
+//   labels: string,
+//   giftCardList: object,
+//   onGetBalanceCard: Function,
+//   checkbalanceValueInfo: any,
+// };
 
 const GiftCards = (props: Props) => {
   const {
@@ -85,6 +85,5 @@ GiftCards.propTypes = {
   checkbalanceValueInfo: PropTypes.string.isRequired,
   toggleRecaptchaModal: PropTypes.bool.isRequired,
 };
-
 export default withStyles(GiftCards, ParentContainerStyle);
 export { GiftCards as GiftCardsVanilla };

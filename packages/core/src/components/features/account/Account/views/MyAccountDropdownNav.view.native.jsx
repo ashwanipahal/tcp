@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import { navigateToNestedRoute } from '../../../../../utils/index.native';
 import withStyles from '../../../../common/hoc/withStyles';
 import StyledWrapper from '../styles/MyAccountDropDown.style.native';
 // @flow
-type Props = {
-  navData: Array<Object>,
-  handleComponentChange: Function,
-  className: string,
-  navigation: Object,
-  component: string,
-};
+// type Props = {
+//   navData: Array<Object>,
+//   handleComponentChange: Function,
+//   className: string,
+//   navigation: Object,
+//   component: string,
+// };
 
 type State = {
   dropDownItem: String,
@@ -74,6 +75,13 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     );
   }
 }
+MyAccountDropdownNav.propTypes = {
+  navData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleComponentChange: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  component: PropTypes.string.isRequired,
+};
 
 export default withStyles(MyAccountDropdownNav, StyledWrapper);
 export { MyAccountDropdownNav as MyAccountDropdownNavVanilla };

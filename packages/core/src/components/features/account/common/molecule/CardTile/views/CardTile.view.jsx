@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -23,22 +24,23 @@ import {
   loading,
 } from './CardTile.utils';
 import Button from '../../../../../../common/atoms/Button';
+
 // @flow
-type Props = {
-  card: object,
-  className: string,
-  labels: object,
-  setDefaultPaymentMethod: Function,
-  setDeleteModalMountState: Function,
-  setSelectedGiftCard: Function,
-  change: any,
-  handleSubmit: any,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  showNotificationCaptcha: any,
-  form: any,
-  dispatch: Function,
-};
+// type Props = {
+//   card: object,
+//   className: string,
+//   labels: object,
+//   setDefaultPaymentMethod: Function,
+//   setDeleteModalMountState: Function,
+//   setSelectedGiftCard: Function,
+//   change: any,
+//   handleSubmit: any,
+//   onGetBalanceCard: Function,
+//   checkbalanceValueInfo: any,
+//   showNotificationCaptcha: any,
+//   form: any,
+//   dispatch: Function,
+// };
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
@@ -386,6 +388,22 @@ class CardTile extends React.Component<Props> {
   }
 }
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
+
+CardTile.propTypes = {
+  card: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedGiftCard: PropTypes.func.isRequired,
+  change: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  showNotificationCaptcha: PropTypes.string.isRequired,
+  form: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default reduxForm({ destroyOnUnmount: false, enableReinitialize: true, ...validateMethod })(
   withStyles(CardTile, styles)
