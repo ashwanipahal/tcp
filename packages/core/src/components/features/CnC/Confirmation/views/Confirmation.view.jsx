@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -9,8 +10,6 @@ import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
 import {
-  propTypes,
-  defaultProps,
   checkIfShippingFullName,
   checkIfNotShippingFullName,
   checkIffullfillmentCenterMap,
@@ -137,9 +136,46 @@ const ConfirmationView = ({
   );
 };
 
-ConfirmationView.propTypes = propTypes;
+ConfirmationView.propTypes = {
+  className: PropTypes.string,
+  /** Flag indicates whether the user is a guest */
+  isGuest: PropTypes.bool,
 
-ConfirmationView.defaultProps = defaultProps;
+  /** indicates order payment is processing */
+  isOrderPending: PropTypes.bool,
+
+  /** email address of the user that placed the order */
+  emailAddress: PropTypes.string.isRequired,
+
+  /** shipped order only details */
+  orderDetails: PropTypes.shape({
+    date: PropTypes.instanceOf(Date).isRequired,
+    orderNumber: PropTypes.string.isRequired,
+    trackingLink: PropTypes.string.isRequired,
+  }).isRequired,
+
+  /** Bopis order details */
+  orderNumbersByFullfillmentCenter: PropTypes.shape({
+    holdDate: PropTypes.instanceOf(Date).isRequired,
+    fullfillmentCenterMap: PropTypes.shape([{}]),
+  }).isRequired,
+  updateOrderDetailsData: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
+  encryptedEmailAddress: PropTypes.string,
+  orderShippingDetails: PropTypes.shape({}),
+  isVenmoPaymentInProgress: PropTypes.bool,
+  venmoUserName: PropTypes.string,
+};
+ConfirmationView.defaultProps = {
+  className: '',
+  isGuest: true,
+  isOrderPending: false,
+  updateOrderDetailsData: null,
+  encryptedEmailAddress: '',
+  orderShippingDetails: null,
+  isVenmoPaymentInProgress: false,
+  venmoUserName: '',
+};
 
 export default withStyles(ConfirmationView, styles);
 export { ConfirmationView as ConfirmationViewVanilla };

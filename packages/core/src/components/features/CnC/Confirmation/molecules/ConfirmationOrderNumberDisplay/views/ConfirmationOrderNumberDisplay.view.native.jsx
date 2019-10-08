@@ -96,7 +96,10 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels }) => {
         </ConfirmationItemDisplay>
 
         <ConfirmationItemDisplay title={labels.orderDate}>
-          {orderDate.toLocaleDateString('en-US', CONFIRMATION_CONSTANTS.DATE_OPTIONS)}
+          {orderDate.toLocaleDateString(
+            CONFIRMATION_CONSTANTS.CONFIRMATION_LOCAL_DATE_FORMATE,
+            CONFIRMATION_CONSTANTS.DATE_OPTIONS
+          )}
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>

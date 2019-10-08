@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import { Wrapper, SMSWrapper } from '../styles/Confirmation.styles.native';
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import {
-  propTypes,
-  defaultProps,
   checkIfShippingFullName,
   checkIfNotShippingFullName,
   checkIffullfillmentCenterMap,
@@ -92,6 +91,46 @@ const ConfirmationView = ({
     </Wrapper>
   );
 };
-ConfirmationView.propTypes = propTypes;
-ConfirmationView.defaultProps = defaultProps;
+
+ConfirmationView.propTypes = {
+  /** Flag indicates whether the user is a guest */
+  isGuest: PropTypes.bool,
+
+  /** indicates order payment is processing */
+  isOrderPending: PropTypes.bool,
+
+  /** email address of the user that placed the order */
+  emailAddress: PropTypes.string.isRequired,
+
+  /** shipped order only details */
+  orderDetails: PropTypes.shape({
+    date: PropTypes.instanceOf(Date).isRequired,
+    orderNumber: PropTypes.string.isRequired,
+    trackingLink: PropTypes.string.isRequired,
+  }).isRequired,
+
+  /** Bopis order details */
+  orderNumbersByFullfillmentCenter: PropTypes.shape({
+    holdDate: PropTypes.instanceOf(Date).isRequired,
+    fullfillmentCenterMap: PropTypes.shape([{}]),
+  }).isRequired,
+  updateOrderDetailsData: PropTypes.string.isRequired,
+  labels: PropTypes.shape({
+    lbl_confirmation_heading: PropTypes.string,
+    lbl_confirmation_mixOrderMsg1: PropTypes.string,
+    lbl_confirmation_shippingMsg: PropTypes.string,
+    lbl_confirmation_items: PropTypes.string,
+  }).isRequired,
+  encryptedEmailAddress: PropTypes.string,
+  orderShippingDetails: PropTypes.shape({
+    address: PropTypes.string,
+    orderTotal: PropTypes.number,
+    itemsCount: PropTypes.number,
+  }).isRequired,
+};
+ConfirmationView.defaultProps = {
+  isGuest: true,
+  isOrderPending: false,
+  encryptedEmailAddress: '',
+};
 export default ConfirmationView;

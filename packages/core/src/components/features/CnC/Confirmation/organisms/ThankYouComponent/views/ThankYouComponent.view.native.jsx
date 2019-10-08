@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
 import ConfirmationFulfillmentCenterItemDisplay from '../../ConfirmationFulfillmentCenterItemDisplay';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import RichText from '../../../../../../common/atoms/RichText';
 import {
   Container,
@@ -67,9 +66,15 @@ const ThankYouComponent = ({
       {orderNumbersByFullfillmentCenter && (
         <>
           <BorderWrapper />
-          <BodyCopy fontSize="fs16" mobilefontFamily="primary" text={labels.nextHeading} />
+          <BodyCopyWithSpacing
+            spacingStyles="margin-top-XL margin-left-XS"
+            fontSize="fs16"
+            mobilefontFamily="primary"
+            text={labels.nextHeading}
+          />
 
-          <BodyCopy
+          <BodyCopyWithSpacing
+            spacingStyles="margin-top-XXS margin-left-XS margin-right-XS"
             fontSize="fs14"
             mobilefontFamily="secondary"
             text={isBossInList ? labels.nextDetailsBoss : labels.nextDetails}
@@ -111,13 +116,16 @@ ThankYouComponent.propTypes = {
   /** Bopis order details */
   orderNumbersByFullfillmentCenter: PropTypes.shape({
     holdDate: PropTypes.instanceOf(Date).isRequired,
-    fullfillmentCenterMap: PropTypes.shape([{}]),
   }).isRequired,
-  updateOrderDetailsData: PropTypes.shape({}),
-  labels: PropTypes.shape({}).isRequired,
-  orderShippingDetails: PropTypes.shape({}),
+  updateOrderDetailsData: PropTypes.string.isRequired,
+  labels: PropTypes.shape({
+    nextHeading: PropTypes.string,
+    nextDetailsBoss: PropTypes.string,
+    nextDetails: PropTypes.string,
+    updateOrderHeading: PropTypes.string,
+  }).isRequired,
   isBossInList: PropTypes.bool,
-  fullfillmentCenterData: PropTypes.shape([{}]),
+  fullfillmentCenterData: PropTypes.shape([{}]).isRequired,
   isShowShippingMessage: PropTypes.bool,
   isShowBopisMessage: PropTypes.bool,
   isShowMixedMessage: PropTypes.bool,
@@ -125,10 +133,7 @@ ThankYouComponent.propTypes = {
 ThankYouComponent.defaultProps = {
   isGuest: true,
   isOrderPending: false,
-  updateOrderDetailsData: null,
-  orderShippingDetails: null,
   isBossInList: false,
-  fullfillmentCenterData: null,
   isShowShippingMessage: false,
   isShowBopisMessage: false,
   isShowMixedMessage: false,

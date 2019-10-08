@@ -32,22 +32,24 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View) />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
     margin={null}
     mobilefontFamily="primary"
     numberOfLines={null}
+    spacingStyles="margin-top-XL margin-left-XS"
     textDecoration={null}
   />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs14"
     margin={null}
     mobilefontFamily="secondary"
     numberOfLines={null}
+    spacingStyles="margin-top-XXS margin-left-XS margin-right-XS"
     textDecoration={null}
   />
   <Styled(View) />
@@ -110,22 +112,24 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
     />
   </Styled(View)>
   <Styled(View) />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
     margin={null}
     mobilefontFamily="primary"
     numberOfLines={null}
+    spacingStyles="margin-top-XL margin-left-XS"
     textDecoration={null}
   />
-  <Styled(BodyCopy)
+  <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
     fontSize="fs14"
     margin={null}
     mobilefontFamily="secondary"
     numberOfLines={null}
+    spacingStyles="margin-top-XXS margin-left-XS margin-right-XS"
     textDecoration={null}
   />
   <Styled(View) />

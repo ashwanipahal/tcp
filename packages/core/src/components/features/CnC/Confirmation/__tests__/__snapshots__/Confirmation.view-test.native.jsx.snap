@@ -24,8 +24,6 @@ exports[`ConfirmationView should render correctly 1`] = `
     isShowBopisMessage={false}
     isShowMixedMessage={false}
     isShowShippingMessage={false}
-    orderShippingDetails={null}
-    updateOrderDetailsData={null}
   />
   <CnCCommonTemplate
     isConfirmationPage={true}
@@ -84,8 +82,6 @@ exports[`ConfirmationView should render correctly 2`] = `
         ],
       }
     }
-    orderShippingDetails={null}
-    updateOrderDetailsData={null}
   />
   <CnCCommonTemplate
     isConfirmationPage={true}
@@ -139,8 +135,6 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
         ],
       }
     }
-    orderShippingDetails={null}
-    updateOrderDetailsData={null}
   />
   <CnCCommonTemplate
     isConfirmationPage={true}

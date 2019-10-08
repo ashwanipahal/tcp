@@ -18,7 +18,7 @@ export const ConfirmationItemCount = styled.View`
   line-height: 2.4;
   background: ${props => props.theme.colorPalette.white};
   left: 45%;
-  top: -10;
+  top: -10px;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   position: absolute;
 `;

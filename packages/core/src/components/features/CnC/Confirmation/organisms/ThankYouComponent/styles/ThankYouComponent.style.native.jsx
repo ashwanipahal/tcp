@@ -5,12 +5,12 @@ export const Container = styled.View`
 `;
 export const RichTextContainer = styled.View`
   width: 100%;
-  height: 143px;
+  min-height: 100px;
 `;
 export const CashBannerWrapper = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[500]};
-  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
-  height: 70px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
 `;
 
 export const BorderWrapper = styled.View`

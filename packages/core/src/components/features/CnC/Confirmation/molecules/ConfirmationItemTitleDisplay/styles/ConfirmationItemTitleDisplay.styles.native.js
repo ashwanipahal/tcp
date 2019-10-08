@@ -14,6 +14,12 @@ export const LabelContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
+export const AddressPopUpWrapper = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const IconContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
@@ -33,10 +39,7 @@ export const LocationContainer = styled.View``;
 export const Container = styled.View`
   margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS} 0;
 `;
-export const RichTextContainer = styled.View`
-  width: 100%;
-  height: 143px;
-`;
+
 export const italicStyle = {
   fontStyle: 'italic',
 };
@@ -44,7 +47,6 @@ export const AddressHeaderWrapper = styled.Text`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 export const LocationContainerWrapper = styled.View``;
 
@@ -55,8 +57,8 @@ export default {
   LocationContainer,
   AnchorWrapper,
   Container,
-  RichTextContainer,
   italicStyle,
   AddressHeaderWrapper,
   LocationContainerWrapper,
+  AddressPopUpWrapper,
 };

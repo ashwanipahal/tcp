@@ -16,6 +16,7 @@ import {
   AddressHeaderWrapper,
   italicStyle,
   LocationContainerWrapper,
+  AddressPopUpWrapper,
 } from '../styles/ConfirmationItemTitleDisplay.styles.native';
 
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
@@ -35,55 +36,38 @@ const getAddressHeader = (label, text) => {
         style={italicStyle}
         text={`${label}`}
       />
-      <BodyCopy
-        mobilefontFamily="secondary"
-        fontSize="fs14"
-        textAlign="center"
-        text={`${text}\n`}
-      />
+      <BodyCopy mobilefontFamily="secondary" fontSize="fs14" textAlign="center" text={`${text}`} />
     </AddressHeaderWrapper>
   );
 };
 const getAddress = (address, labels, todayOpenRange, tomorrowOpenRange, phoneNumber) => {
   return address ? (
-    <>
+    <AddressPopUpWrapper>
       <BodyCopy
         mobilefontFamily="secondary"
         fontSize="fs14"
         textAlign="center"
-        text={`${address.addressLine1}\n`}
+        text={`${address.addressLine1}`}
       />
       {address.addressLine2 && (
         <BodyCopy
           mobilefontFamily="secondary"
           fontSize="fs14"
           textAlign="center"
-          text={`${address.addressLine2}\n`}
+          text={`${address.addressLine2}`}
         />
       )}
       <BodyCopy
         mobilefontFamily="secondary"
         fontSize="fs14"
         textAlign="center"
-        text={`${address.city}, ${address.state} ${address.zipCode} \n\n`}
+        text={`${address.city}, ${address.state} ${address.zipCode}`}
       />
       {getAddressHeader(labels.today, todayOpenRange)}
       {getAddressHeader(labels.tomorrow, tomorrowOpenRange)}
       {getAddressHeader(labels.phone, phoneNumber)}
-    </>
+    </AddressPopUpWrapper>
   ) : null;
-};
-
-const popover = message => {
-  return (
-    <BodyCopy
-      fontSize="fs13"
-      mobilefontFamily="secondary"
-      fontWeight="semibold"
-      color="gray.900"
-      text={message}
-    />
-  );
 };
 
 /**
@@ -178,7 +162,7 @@ const ConfirmationItemTitleDisplay = ({ center, labels }) => {
           </LocationContainerWrapper>
           {storeName && (
             <IconContainer>
-              <ReactTooltip withOverlay={false} popover={popover(infoMsg)} height={150}>
+              <ReactTooltip withOverlay={false} popover={infoMsg} height={150}>
                 <Image source={IconInfoLogo} height={20} width={20} />
               </ReactTooltip>
             </IconContainer>

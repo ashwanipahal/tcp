@@ -95,148 +95,128 @@ exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
         overlayColor="rgba(250, 250, 250, 0.80)"
         pointerColor="#fff"
         popover={
-          <ForwardRef
-            accessibilityText=""
-            color="gray.900"
-            dataLocator=""
-            fontSize="fs13"
-            fontWeight="semibold"
-            margin={null}
-            mobilefontFamily="secondary"
-            numberOfLines={null}
-            text={
-              <React.Fragment>
-                <ForwardRef
-                  accessibilityText=""
-                  dataLocator=""
-                  fontSize="fs14"
-                  margin={null}
-                  mobilefontFamily="secondary"
-                  numberOfLines={null}
-                  text="1123 ab
-"
-                  textAlign="center"
-                  textDecoration={null}
-                />
-                <ForwardRef
-                  accessibilityText=""
-                  dataLocator=""
-                  fontSize="fs14"
-                  margin={null}
-                  mobilefontFamily="secondary"
-                  numberOfLines={null}
-                  text="adf
-"
-                  textAlign="center"
-                  textDecoration={null}
-                />
-                <ForwardRef
-                  accessibilityText=""
-                  dataLocator=""
-                  fontSize="fs14"
-                  margin={null}
-                  mobilefontFamily="secondary"
-                  numberOfLines={null}
-                  text="AC, AD 10001 
-
-"
-                  textAlign="center"
-                  textDecoration={null}
-                />
-                <ForwardRef>
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    style={
-                      Object {
-                        "fontStyle": "italic",
-                      }
-                    }
-                    text="undefined"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    text="
-"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                </ForwardRef>
-                <ForwardRef>
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    style={
-                      Object {
-                        "fontStyle": "italic",
-                      }
-                    }
-                    text="undefined"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    text="
-"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                </ForwardRef>
-                <ForwardRef>
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    style={
-                      Object {
-                        "fontStyle": "italic",
-                      }
-                    }
-                    text="undefined"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                  <ForwardRef
-                    accessibilityText=""
-                    dataLocator=""
-                    fontSize="fs14"
-                    margin={null}
-                    mobilefontFamily="secondary"
-                    numberOfLines={null}
-                    text="23456789023
-"
-                    textAlign="center"
-                    textDecoration={null}
-                  />
-                </ForwardRef>
-              </React.Fragment>
-            }
-            textDecoration={null}
-          />
+          <ForwardRef>
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="1123 ab"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="adf"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="AC, AD 10001"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text=""
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text=""
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text="23456789023"
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+          </ForwardRef>
         }
         toggleOnPress={true}
         width={240}
@@ -327,20 +307,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly without shipping f
         onOpen={[Function]}
         overlayColor="rgba(250, 250, 250, 0.80)"
         pointerColor="#fff"
-        popover={
-          <ForwardRef
-            accessibilityText=""
-            color="gray.900"
-            dataLocator=""
-            fontSize="fs13"
-            fontWeight="semibold"
-            margin={null}
-            mobilefontFamily="secondary"
-            numberOfLines={null}
-            text={null}
-            textDecoration={null}
-          />
-        }
+        popover={null}
         toggleOnPress={true}
         width={240}
         withOverlay={false}
