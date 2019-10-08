@@ -51,8 +51,7 @@ class ProductCustomizeFormPart extends React.Component {
       ...otherProps
     } = this.props;
 
-    const { fromBagPage } = otherProps;
-
+    const { fromBagPage, productInfoFromBag } = otherProps;
     const { currentColorEntry } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&
@@ -130,6 +129,7 @@ class ProductCustomizeFormPart extends React.Component {
               handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
               errorOnHandleSubmit={addToBagError}
               fromBagPage={fromBagPage}
+              productInfoFromBag={productInfoFromBag}
             />
           </div>
         </div>
