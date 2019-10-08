@@ -74,9 +74,14 @@ export function* removeCartItem({ payload }) {
 export function* updateCartItemSaga({ payload }) {
   try {
     const res = yield call(updateItem, payload);
+    const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    if (callBack) {
+      callBack();
+    }
+    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(BAG_PAGE_ACTIONS.getCartData());
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {

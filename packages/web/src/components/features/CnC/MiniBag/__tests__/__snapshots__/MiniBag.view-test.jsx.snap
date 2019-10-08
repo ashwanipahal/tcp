@@ -71,6 +71,7 @@ exports[`MiniBag template should render correctly 1`] = `
     currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}
+    onLinkClick={[Function]}
     savedforLaterQty={0}
     subTotal=""
     userName=""

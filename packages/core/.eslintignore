@@ -1,0 +1,25 @@
+# Don't lint the following
+coverage
+docs
+snapshots
+dist
+node_modules
+log
+logs
+mock
+reports
+stories
+flow-typed
+**/server/
+**/flow-typed/
+**/node_modules/
+# Make sure to INCLUDE the following,
+# because eslint ignores hidden/dotfiles by default.
+/src/static/libs/
+out
+**/__mocks__/*
+**/stories/*
+**/*.stories.js
+**/*.stories.jsx
+**/*.mock.js
+.storybook

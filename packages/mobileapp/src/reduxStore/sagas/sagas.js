@@ -46,6 +46,7 @@ import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetai
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
 import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
 import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
+import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
@@ -111,5 +112,6 @@ export default function* rootSaga() {
     SocialAccountSaga(),
     ConfirmationPageSaga(),
     PickupStoreSaga(),
+    ExtraPointsSaga(),
   ]);
 }

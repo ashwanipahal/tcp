@@ -293,7 +293,7 @@ class PickUpStoreModalView extends React.Component {
     const { SkuSelectedValues } = this.state;
     const { getUserCartStoresAndSearch } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
-    const country = getSiteId() && getSiteId().toUpperCase()
+    const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
     const { distance } = formData;
