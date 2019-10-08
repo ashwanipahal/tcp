@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native';
-import { BodyCopy, Image } from '../../../../../atoms';
+import { BodyCopy, Image, Anchor } from '../../../../../atoms';
 import {
   PickUpSkUSectionContainer,
   ImageWrapper,
@@ -47,12 +46,8 @@ const ProductCustomizeFormPart = props => {
       <ProductSummaryContainer>
         <ImageWrapper>
           <Image resizeMode="contain" height="198px" width="161px" url={imageUrl} />
-          <TouchableOpacity
-            onPress={() => goToPDPPageMobile(modifiedPdpUrl, colorProductId)}
-            accessible
-            accessibilityRole="button"
-            accessibilityLabel={`${productInfo.name}`}
-          >
+
+          <Anchor noLink onPress={() => goToPDPPageMobile(modifiedPdpUrl, colorProductId)}>
             <BodyCopy
               fontSize="fs14"
               fontWeight="regular"
@@ -60,7 +55,7 @@ const ProductCustomizeFormPart = props => {
               textDecoration="underline"
               text={quickViewLabels.viewProductDetails}
             />
-          </TouchableOpacity>
+          </Anchor>
         </ImageWrapper>
         <ProductDetailSummary>
           <BodyCopyWithSpacing

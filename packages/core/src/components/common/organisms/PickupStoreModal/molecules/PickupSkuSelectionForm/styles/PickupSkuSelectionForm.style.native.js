@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const PickUpSkUSectionContainer = styled.View`
-  margin: 18px 0;
+  margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
 `;
 
 const ImageWrapper = styled.View`
-  margin-right: 20px;
+  margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   width: 164px;
 `;
 const ProductSummaryContainer = styled.View`

@@ -13,12 +13,16 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         url=""
         width="161px"
       />
-      <TouchableOpacity
-        accessibilityLabel="Boys Uniform V Neck Sweater"
-        accessibilityRole="button"
-        accessible={true}
-        activeOpacity={0.2}
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        noLink={true}
         onPress={[Function]}
+        text=""
+        visible={false}
       >
         <Styled(BodyCopy)
           accessibilityText=""
@@ -30,7 +34,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           numberOfLines={null}
           textDecoration="underline"
         />
-      </TouchableOpacity>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Styled(BodyCopy))

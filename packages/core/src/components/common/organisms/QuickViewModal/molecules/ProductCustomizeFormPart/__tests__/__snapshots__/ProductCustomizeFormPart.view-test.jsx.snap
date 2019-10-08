@@ -21,8 +21,8 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         <Styled(Anchor)
           className="link-redirect"
           dataLocator="quick_view_View_Product_details"
+          noLink={true}
           onClick={[Function]}
-          to="/#"
         >
           <Styled(BodyCopy)
             className="product-link"

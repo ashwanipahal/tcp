@@ -65,7 +65,7 @@ const ProductCustomizeFormPart = props => {
             <Anchor
               dataLocator={getLocator('quick_view_View_Product_details')}
               className="link-redirect"
-              to="/#"
+              noLink
               onClick={e => goToPDPPage(e, pdpToPath, currentColorPdpUrl)}
             >
               <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
