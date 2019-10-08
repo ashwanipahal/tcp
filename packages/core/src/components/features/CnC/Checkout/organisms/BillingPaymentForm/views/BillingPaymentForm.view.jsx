@@ -25,14 +25,12 @@ import getCvvInfo from '../../../molecules/CVVInfo';
 import AddNewCCForm from '../../AddNewCCForm';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
+import { propTypes, defaultProps, getCardOptions } from './BillingPaymentForm.view.util';
 import {
-  propTypes,
-  defaultProps,
   getExpirationRequiredFlag,
-  getSelectedCard,
   getCreditCardList,
-  getCardOptions,
-} from './BillingPaymentForm.view.util';
+  getSelectedCard,
+} from '../BillingPaymentForm.util';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
