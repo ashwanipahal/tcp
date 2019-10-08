@@ -9,7 +9,7 @@ import { isClient, getLocator } from '@tcp/core/src/utils';
 import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
-import { Anchor } from '../../../../../../common/atoms';
+import { Anchor, DamImage } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
 class ProductAltImages extends React.PureComponent {
@@ -235,6 +235,10 @@ class ProductAltImages extends React.PureComponent {
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
     const pdpToPath = getProductListToPath(pdpUrl);
+    const imgData = {
+      alt: productName,
+      url: imageUrls[0],
+    };
     return imageUrls.length < 2 ? (
       <figure
         className="product-image-container"
@@ -251,11 +255,10 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
         >
-          <img
-            src={imageUrls[0]}
-            alt={productName}
-            data-locator={getLocator('global_productimg_imagelink')}
-            itemProp="contentUrl"
+          <DamImage
+            dataLocator={getLocator('global_productimg_imagelink')}
+            imgData={imgData}
+            isProductPage
           />
         </Anchor>
       </figure>

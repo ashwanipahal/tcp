@@ -15,6 +15,7 @@ jest.mock('@tcp/core/src/utils', () => ({
   isCanada: jest.fn(),
   isClient: jest.fn().mockImplementation(() => true),
   getIconPath: jest.fn(),
+  getLocator: jest.fn(),
 }));
 
 const labels = labelsMock.StoreLocator;

@@ -4,6 +4,7 @@ import ProductListingPage from '@tcp/core/src/components/features/browse/Product
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
+import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
 
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
@@ -35,7 +36,7 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.PRODUCT_LISTING]: {
       screen: ProductListing,
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation, false);
+        return getNewHeader(navigation, true);
       },
     },
     [ROUTE_NAMES.PRODUCT_DETAIL_PAGE]: {
@@ -54,6 +55,9 @@ const PlpStack = createStackNavigator(
         const navTitle = (title && `"${title.toUpperCase()}"`) || '';
         return getNewHeader(navigation, false, navTitle);
       },
+    },
+    [ROUTE_NAMES.CONFIRMATION]: {
+      screen: Confirmation,
     },
   },
   {

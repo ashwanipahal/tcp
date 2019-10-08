@@ -87,6 +87,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   <ModalNative
     heading=" "
     horizontalBar={false}
+    inheritedStyles=""
     isOpen={true}
     isOverlay={false}
     onRequestClose={[Function]}

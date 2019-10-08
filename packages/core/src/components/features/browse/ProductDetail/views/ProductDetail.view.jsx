@@ -148,7 +148,6 @@ class ProductDetailView extends React.Component {
             <div className="product-detail-section">
               <ProductDescription
                 productId={itemPartNumber}
-                titleClickable={false}
                 isShowMore={false}
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}

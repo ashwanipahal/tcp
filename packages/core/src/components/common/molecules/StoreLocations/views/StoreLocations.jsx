@@ -45,7 +45,7 @@ class StoreLocations extends PureComponent {
       <LocationTile
         labels={tileLabels}
         store={store}
-        openStoreDirections={() => openStoreDetails(store)}
+        openStoreDirections={event => openStoreDetails(event, store)}
         locatorGetDirections="open-store-details"
       />
     );

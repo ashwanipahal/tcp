@@ -18,10 +18,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       <LabeledRadioButton
         buttonInnerColor="#000"
         buttonOuterColor="#000"
+        buttonOuterSize={20}
+        buttonSize={10}
+        buttonStyle={Object {}}
         checked={false}
         data-locator="moreaboutyou-radiooption-0"
         disabled={false}
         index={0}
+        labelStyle={Object {}}
+        labelWrapStyle={Object {}}
         name="question1"
         obj={
           Object {
@@ -36,10 +41,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       <LabeledRadioButton
         buttonInnerColor="#000"
         buttonOuterColor="#000"
+        buttonOuterSize={20}
+        buttonSize={10}
+        buttonStyle={Object {}}
         checked={false}
         data-locator="moreaboutyou-radiooption-1"
         disabled={false}
         index={1}
+        labelStyle={Object {}}
+        labelWrapStyle={Object {}}
         name="question1"
         obj={
           Object {
@@ -54,10 +64,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       <LabeledRadioButton
         buttonInnerColor="#000"
         buttonOuterColor="#000"
+        buttonOuterSize={20}
+        buttonSize={10}
+        buttonStyle={Object {}}
         checked={true}
         data-locator="moreaboutyou-radiooption-2"
         disabled={false}
         index={2}
+        labelStyle={Object {}}
+        labelWrapStyle={Object {}}
         name="question1"
         obj={
           Object {
@@ -72,10 +87,15 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
       <LabeledRadioButton
         buttonInnerColor="#000"
         buttonOuterColor="#000"
+        buttonOuterSize={20}
+        buttonSize={10}
+        buttonStyle={Object {}}
         checked={false}
         data-locator="moreaboutyou-radiooption-3"
         disabled={false}
         index={3}
+        labelStyle={Object {}}
+        labelWrapStyle={Object {}}
         name="question1"
         obj={
           Object {

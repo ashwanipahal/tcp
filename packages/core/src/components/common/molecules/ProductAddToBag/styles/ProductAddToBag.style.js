@@ -82,7 +82,8 @@ const styles = css`
   }
 
   .size-error {
-    margin-top: -4px;
+    position: absolute;
+    margin-top: -5px;
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;

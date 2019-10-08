@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
-import { getLocator } from '@tcp/core/src/utils';
+import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
+
+import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import {
@@ -48,8 +50,44 @@ class HeaderNew extends React.PureComponent<Props> {
     super(props);
     this.state = {
       cartVal: 0,
+      showSearchModal: false,
     };
   }
+
+  /**
+   * @function openSearchProductPage
+   * opens search product modal
+   *
+   * @memberof HeaderNew
+   */
+  openSearchProductPage = () => {
+    this.setState({ showSearchModal: true });
+  };
+
+  /**
+   * @function closeSearchProductPage
+   * closes search product modal
+   *
+   * @memberof HeaderNew
+   */
+  closeSearchProductPage = () => {
+    this.setState({ showSearchModal: false });
+  };
+
+  /**
+   * @function goToSearchResultsPage
+   * navigates to search results page
+   *
+   * @memberof HeaderNew
+   */
+  goToSearchResultsPage = searchText => {
+    this.closeSearchProductPage();
+
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'PlpStack', 'SearchDetail', {
+      title: searchText,
+    });
+  };
 
   onBack = () => {
     const { navigation } = this.props;
@@ -66,7 +104,7 @@ class HeaderNew extends React.PureComponent<Props> {
 
   render() {
     const { title, showSearch } = this.props;
-    const { cartVal } = this.state;
+    const { cartVal, showSearchModal } = this.state;
     return (
       <SafeAreaViewStyle showSearch={showSearch}>
         <Container>
@@ -112,7 +150,13 @@ class HeaderNew extends React.PureComponent<Props> {
               </Touchable>
             </RightSection>
           </HeaderContainer>
-          {showSearch && <SearchBar />}
+          {showSearch && <SearchBar openSearchProductPage={this.openSearchProductPage} />}
+          {showSearchModal && (
+            <SearchProduct
+              closeSearchModal={this.closeSearchProductPage}
+              goToSearchResultsPage={this.goToSearchResultsPage}
+            />
+          )}
         </Container>
       </SafeAreaViewStyle>
     );

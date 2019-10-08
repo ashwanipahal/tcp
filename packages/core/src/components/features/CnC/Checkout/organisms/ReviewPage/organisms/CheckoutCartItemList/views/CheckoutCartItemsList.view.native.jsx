@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { BodyCopy, Image } from '../../../../../../../../common/atoms';
-import { getTranslateDateInformation, getAPIConfig } from '../../../../../../../../../utils/utils';
+import {
+  getTranslatedMomentDate,
+  getAPIConfig,
+} from '../../../../../../../../../utils/index.native';
 import ReactTooltip from '../../../../../../../../common/atoms/ReactToolTip';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view.native';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
@@ -90,10 +93,11 @@ class CheckoutCartItemsList extends Component {
     const {
       storeAddress: { addressLine1, addressLine2, city, state, zipCode },
     } = deliveryItem;
-    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber, store } = deliveryItem;
     const { today, tomorrow, phone } = labels;
     return (
       <Text>
+        <BodyCopy fontWeight="extrabold" fontSize="fs16" fontFamily="secondary" text={store} />
         {deliveryItem && deliveryItem.storeAddress && (
           <>
             <BodyCopy
@@ -117,24 +121,30 @@ class CheckoutCartItemsList extends Component {
               fontFamily="secondary"
               text={`${city},${state}${zipCode}`}
             />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${today}${storeTodayOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${tomorrow}${storeTomorrowOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${phone}${storePhoneNumber}`}
-            />
+            {storeTodayOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${today}${storeTodayOpenRange}`}
+              />
+            )}
+            {storeTomorrowOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${tomorrow}${storeTomorrowOpenRange}`}
+              />
+            )}
+            {storePhoneNumber && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${phone}${storePhoneNumber}`}
+              />
+            )}
           </>
         )}
       </Text>
@@ -279,7 +289,9 @@ class CheckoutCartItemsList extends Component {
   renderItems() {
     const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
-    const bopisDate = apiConfig && getTranslateDateInformation('', apiConfig.language);
+    const bopisDate =
+      apiConfig &&
+      getTranslatedMomentDate('', apiConfig.language, CheckoutConstants.REQUIRE_FORMAT);
     /**
      * @var sortedItem - array of items available in the cart checkout are sorted in a
      * way that the BOPIS selected stores are moved to the top in the list than BOSS

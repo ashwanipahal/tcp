@@ -1,4 +1,6 @@
 import React from 'react';
+import { change } from 'redux-form';
+import { connect } from 'react-redux';
 import { getFormSKUValue } from '../../../../../utils/utils';
 import ProductAddToBag from '../views/ProductAddToBag.view';
 
@@ -377,8 +379,18 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     );
   };
 
-  quantityChange = selectedQuantity => {
+  quantityChange = (selectedQuantity, form) => {
     this.setState({ selectedQuantity });
+    const { dispatch } = this.props;
+    dispatch(change(form, 'Quantity', selectedQuantity));
+  };
+
+  setPreSelectedValuesForProduct = productInfoFromBag => {
+    const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
+    this.initialValuesForm.Fit = selectedFit;
+    this.initialValuesForm.Quantity = selectedQty;
+    this.initialValuesForm.Size.name = selectedSize;
+    this.initialValuesForm.color.name = selectedColor;
   };
 
   /**
@@ -399,6 +411,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      fromBagPage,
+      productInfoFromBag,
     } = this.props;
     const {
       selectedColor,
@@ -408,6 +422,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       selectedQuantity,
     } = this.state;
+    if (fromBagPage) {
+      this.setPreSelectedValuesForProduct(productInfoFromBag);
+    }
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
@@ -440,6 +457,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        fromBagPage={fromBagPage}
       />
     );
   }
@@ -447,6 +465,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
 /* Export container */
 
-export default ProductAddToBagContainer;
+export default connect()(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

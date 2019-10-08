@@ -1,4 +1,5 @@
 import { call, select, put } from 'redux-saga/effects';
+import moment from 'moment';
 import CheckoutReview, {
   submitOrderProcessing,
   loadPersonalizedCoupons,
@@ -25,8 +26,6 @@ jest.mock('../../../../../utils', () => ({
 
 const emailAddress = '123@123.com';
 const orderId = '54321';
-const smsOrderInfo = '';
-const currentLanguage = 'en';
 
 describe('CheckoutReview saga', () => {
   it('CheckoutReview', () => {
@@ -40,7 +39,12 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
+    const res = { userDetails: { emailAddress } };
+    CheckoutReviewSaga.next({ userDetails: { emailAddress } }, orderId);
+    CheckoutReviewSaga.next(res);
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
@@ -58,6 +62,10 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
+    const res = { userDetails: { emailAddress } };
+    CheckoutReviewSaga.next({ userDetails: { emailAddress } }, orderId);
+    CheckoutReviewSaga.next(res);
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
@@ -65,42 +73,50 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
   });
+  it('CheckoutReview for email sign up', () => {
+    isMobileApp.mockImplementation(() => false);
+    routerPush.mockImplementation(() => {});
+    const CheckoutReviewSaga = CheckoutReview({ payload: {} });
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    expect(CheckoutReviewSaga.next().value).toEqual(
+      call(submitOrderProcessing, undefined, undefined, undefined)
+    );
+    const res = { userDetails: { emailAddress } };
+    CheckoutReviewSaga.next({ userDetails: { emailAddress } }, orderId);
+    CheckoutReviewSaga.next(res);
+    CheckoutReviewSaga.next();
+    expect(CheckoutReviewSaga.next().value).toEqual(select(isGuest));
+    expect(CheckoutReviewSaga.next(true).value).toEqual(
+      call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
+    );
+  });
+
+  it('CheckoutReview for email sign up with shipping email', () => {
+    isMobileApp.mockImplementation(() => false);
+    routerPush.mockImplementation(() => {});
+    const CheckoutReviewSaga = CheckoutReview({ payload: {} });
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
+    expect(CheckoutReviewSaga.next().value).toEqual(
+      call(submitOrderProcessing, undefined, undefined, undefined)
+    );
+    const res = { userDetails: { emailAddress } };
+    CheckoutReviewSaga.next({ shipping: { emailAddress } }, orderId);
+    CheckoutReviewSaga.next(res);
+    CheckoutReviewSaga.next();
+    expect(CheckoutReviewSaga.next().value).toEqual(select(isGuest));
+    expect(CheckoutReviewSaga.next(true).value).toEqual(
+      call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
+    );
+  });
 });
 
 describe('submitOrderProcessing saga', () => {
-  it('submitOrderProcessing review Page', () => {
-    const orderProcessing = submitOrderProcessing();
-    orderProcessing.next(false); // Venmo not in progress
-    orderProcessing.next(false); // Venmo save option not selected
-    orderProcessing.next({}); // No venmo data
-    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
-    const res = { userDetails: { emailAddress } };
-    orderProcessing.next({ userDetails: { emailAddress } }, orderId);
-    orderProcessing.next(res);
-    orderProcessing.next();
-    orderProcessing.next();
-    expect(orderProcessing.next().value).toEqual(select(isGuest));
-    expect(orderProcessing.next(true).value).toEqual(
-      call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
-    );
-  });
-  it('submitOrderProcessing review Page with shipping email', () => {
-    const orderProcessing = submitOrderProcessing();
-    orderProcessing.next(false);
-    orderProcessing.next(false);
-    orderProcessing.next({});
-    orderProcessing.next(orderId, smsOrderInfo, currentLanguage, {});
-    const res = { userDetails: { emailAddress } };
-    orderProcessing.next({ shipping: { emailAddress } }, orderId);
-    orderProcessing.next(res);
-    orderProcessing.next();
-    orderProcessing.next();
-    expect(orderProcessing.next().value).toEqual(select(isGuest));
-    expect(orderProcessing.next(true).value).toEqual(
-      call(validateAndSubmitEmailSignup, emailAddress, 'us_guest_checkout')
-    );
-  });
-
   it('submitOrderProcessing review Page with venmo', () => {
     const orderProcessing = submitOrderProcessing();
     orderProcessing.next(true); // Venmo In-Progress
@@ -117,8 +133,8 @@ describe('loadPersonalizedCoupons saga', () => {
         legalText: 'Valid on select styles. Excludes Gift Cards.',
         promotion: {
           categoryType: 'Marketing_Offers',
-          startDate: '2019-10-04 00:00:00',
-          endDate: '2019-10-17 23:59:59',
+          startDate: new Date(),
+          endDate: '2020-10-17 23:59:59',
           shortDescription: '20% OFF YOUR ENTIRE PURCHASE',
         },
       },
@@ -154,9 +170,9 @@ describe('loadPersonalizedCoupons saga', () => {
             code: 'Y16905R9YZDDLH',
             description: '20% OFF YOUR ENTIRE PURCHASE',
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
-            endDate: 'Oct 17th, 2019',
-            isPastStartDate: false,
-            startDate: 'Oct 4th, 2019',
+            endDate: 'Oct 17th, 2020',
+            isPastStartDate: true,
+            startDate: moment(new Date()).format('MMM Do, YYYY'),
             categoryType: 'Marketing_Offers',
           },
         ])

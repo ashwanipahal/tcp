@@ -43,7 +43,6 @@ const CustomButton = props => {
   } = props;
   const textValue = text || '';
   const { url, navigation } = otherProps;
-
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);

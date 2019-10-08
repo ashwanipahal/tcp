@@ -13,6 +13,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -102,7 +103,11 @@ class BagPageView extends React.Component {
     const { bagStickyHeaderInterval } = this.props;
     const condensedBagHeader = this.bagPageHeader;
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
-    if (isClient() && window.pageYOffset > sticky - condensedPageHeaderHeight) {
+    if (
+      isClient() &&
+      condensedBagHeader &&
+      window.pageYOffset > sticky - condensedPageHeaderHeight
+    ) {
       condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
       this.setState({ showStickyHeaderMob: true });
       if (this.timer !== null) {
@@ -275,15 +280,17 @@ class BagPageView extends React.Component {
               >
                 {`${labels.bagHeading} (${totalCount})`}
               </Heading>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs10"
-                className={`estimatedHeaderText ${
-                  activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
-                }`}
-              >
-                {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
-              </BodyCopy>
+              {totalCount > 0 && (
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs10"
+                  className={`estimatedHeaderText ${
+                    activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
+                  }`}
+                >
+                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                </BodyCopy>
+              )}
             </Col>
             {isShowSaveForLaterSwitch && (
               <Col
@@ -316,6 +323,7 @@ class BagPageView extends React.Component {
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
         />
+        <QuickViewModal fromBagPage />
       </div>
     );
   }

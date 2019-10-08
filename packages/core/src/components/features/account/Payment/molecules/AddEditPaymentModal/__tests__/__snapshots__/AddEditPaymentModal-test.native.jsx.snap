@@ -3,6 +3,7 @@
 exports[`AddEditPaymentModal component should render correctly 1`] = `
 <ModalNative
   heading=""
+  inheritedStyles=""
   isOverlay={false}
   onRequestClose={Object {}}
 >

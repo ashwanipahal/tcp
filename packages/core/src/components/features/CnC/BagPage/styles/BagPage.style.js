@@ -18,6 +18,9 @@ const styles = css`
     flex-direction: column-reverse;
     width: 100%;
     margin: 0;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: calc(100% - 22px);
+    }
   }
 
   button.checkout {

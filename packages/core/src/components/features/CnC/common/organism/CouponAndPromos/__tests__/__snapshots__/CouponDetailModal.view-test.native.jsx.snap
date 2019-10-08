@@ -11,6 +11,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     }
   }
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
   onRequestClose={[Function]}
