@@ -34,6 +34,7 @@ export {
   getLocationOrigin,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  scrollToParticularElement,
 } from './utils.web';
 
 export {

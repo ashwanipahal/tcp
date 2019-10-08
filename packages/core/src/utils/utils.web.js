@@ -25,6 +25,11 @@ const MONTH_SHORT_FORMAT = {
   DEC: 'Dec',
 };
 
+const FIXED_HEADER = {
+  LG_HEADER: 70,
+  SM_HEADER: 60,
+};
+
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
@@ -352,6 +357,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
+    previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -542,6 +548,20 @@ export const getTranslateDateInformation = (
   };
 };
 
+export const scrollToParticularElement = element => {
+  const fixedHeaderOffset = getViewportInfo().isDesktop
+    ? FIXED_HEADER.LG_HEADER
+    : FIXED_HEADER.SM_HEADER;
+  if (isClient()) {
+    const elementPositionFromTop = element.getBoundingClientRect().top;
+    const calculatedOffset = elementPositionFromTop - fixedHeaderOffset;
+    window.scrollTo({
+      top: calculatedOffset,
+      behavior: 'smooth',
+    });
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -568,4 +588,5 @@ export default {
   canUseDOM,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  scrollToParticularElement,
 };

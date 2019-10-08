@@ -7,6 +7,7 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
+import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
@@ -38,8 +39,8 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isNonEmptySFL,
-  isNotLoaded,
   isConfirmationPage,
+  isNotLoaded,
 }) => {
   const isSmallLeftSection = isNonEmptySFL || showLeftSection;
   return (
@@ -76,6 +77,7 @@ const CnCTemplate = ({
                   <>
                     <OrderLedgerContainer />
                     {getBagActions({ BagActions })}
+                    <LoyaltyBanner />
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
@@ -116,7 +118,7 @@ CnCTemplate.defaultProps = {
   isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: true,
+  isNotLoaded: false,
 };
 
 export default withStyles(CnCTemplate, styles);

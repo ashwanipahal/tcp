@@ -129,6 +129,7 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
 
       // optimizely headers
       const optimizelyHeadersObject = {};
@@ -210,7 +211,7 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {this.getSEOTags(Component.pageId)}
+              {Component.pageId ? this.getSEOTags(Component.pageId) : null}
               <Header />
               <CheckoutHeader />
               <Loader />

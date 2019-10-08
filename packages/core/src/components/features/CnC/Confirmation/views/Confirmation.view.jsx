@@ -8,39 +8,13 @@ import CheckoutOrderInfo from '../../Checkout/molecules/CheckoutOrderInfoMobile'
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
-import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIfNotShippingFullName
- * @description return boolean value if shippingFullname is present .
- */
-const checkIfShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
-  return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
-    center => !!center.shippingFullname
-  );
-};
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIfNotShippingFullName
- * @description return boolean value if shippingFullname is not present .
- */
-const checkIfNotShippingFullName = ({ orderNumbersByFullfillmentCenter }) => {
-  return orderNumbersByFullfillmentCenter.fullfillmentCenterMap.find(
-    center => !center.shippingFullname
-  );
-};
-
-/** The hard coded values are just to show the template. these will be removed once the components are are in place */
-/**
- * @function checkIffullfillmentCenterMap
- * @description return boolean value if fullfillmentCenterMap is present .
- */
-const checkIffullfillmentCenterMap = orderNumbersByFullfillmentCenter => {
-  return orderNumbersByFullfillmentCenter && orderNumbersByFullfillmentCenter.fullfillmentCenterMap;
-};
+import {
+  checkIfShippingFullName,
+  checkIfNotShippingFullName,
+  checkIffullfillmentCenterMap,
+} from './Confirmation.util';
+import { constants as VenmoConstants } from '../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 
 const renderAccountForm = isGuest => {
   return (
@@ -202,5 +176,6 @@ ConfirmationView.defaultProps = {
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
 };
+
 export default withStyles(ConfirmationView, styles);
 export { ConfirmationView as ConfirmationViewVanilla };
