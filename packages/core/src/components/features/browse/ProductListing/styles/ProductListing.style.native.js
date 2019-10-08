@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const PageContainer = styled.View`
-  justify-content: center;
+  flex: 1;
 `;
 
 const ItemCountContainer = styled.View`

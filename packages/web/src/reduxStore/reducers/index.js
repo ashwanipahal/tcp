@@ -56,7 +56,9 @@ import StoreDetailReducer from '@tcp/core/src/components/features/storeLocator/S
 import PointsClaimReducer from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
+import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import StoresInternationalReducer from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.reducer';
+import StoreListReducer from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -124,7 +126,9 @@ import {
   POINTS_CLAIM_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
+  EXTRA_POINTS_REDUCER_KEY,
   STORES_INTL_REDUCER_KEY,
+  STORE_LIST_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -248,5 +252,7 @@ export default combineReducers({
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
+  [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
   [STORES_INTL_REDUCER_KEY]: StoresInternationalReducer,
+  [STORE_LIST_REDUCER_KEY]: StoreListReducer,
 });
