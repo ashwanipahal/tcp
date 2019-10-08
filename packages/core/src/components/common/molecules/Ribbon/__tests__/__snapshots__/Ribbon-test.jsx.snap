@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RibbonComponent should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    height="70"
+    imgPath="/static/images/module-a-ribbon-left.png"
+    width="200"
+  >
+    <Styled(PromoBanner)
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "target": "",
+              "text": "Girls",
+              "title": "Girls",
+              "url": "/c/girls-clothes",
+            },
+            "ribbonClass": "ribbon-color-cherry",
+            "ribbonPlacement": "left",
+            "textItems": Array [
+              Object {
+                "style": "style1",
+                "text": "20% OFF",
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </styled.div>
+</styled.div>
+`;

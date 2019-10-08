@@ -2,14 +2,9 @@ import styled, { css } from 'styled-components';
 import { LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  .link-text {
+  &.header-text {
     span {
       display: block;
-    }
-    .small_text_white_medium {
-      @media ${props => props.theme.mediaQuery.mediumOnly} {
-        display: inline;
-      }
     }
   }
 `;
@@ -20,7 +15,7 @@ const ColWrapper = styled.div`
     padding: 48px 15px;
   }
 `;
-const WORibbonImgContainer = styled.div`
+const ImgContainer = styled.div`
   text-align: center;
   height: ${props => (props.theme.isGymboree ? '420px' : '356px')};
   @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -30,7 +25,7 @@ const WORibbonImgContainer = styled.div`
     height: ${props => (props.theme.isGymboree ? '616px' : '580px')};
   }
 `;
-const RibbonImgContainer = styled.div`
+const RibbonViewImgContainer = styled.div`
   text-align: center;
   margin-bottom: 8px;
   height: 273px;
@@ -80,8 +75,8 @@ const style = css`
 export {
   StyledLinkText as LinkText,
   ColWrapper,
-  WORibbonImgContainer,
-  RibbonImgContainer,
+  ImgContainer,
+  RibbonViewImgContainer,
   RLContainer,
   ButtonContainer,
   style,
@@ -90,8 +85,8 @@ export {
 export default {
   LinkText: StyledLinkText,
   ColWrapper,
-  WORibbonImgContainer,
-  RibbonImgContainer,
+  ImgContainer,
+  RibbonViewImgContainer,
   RLContainer,
   ButtonContainer,
   style,

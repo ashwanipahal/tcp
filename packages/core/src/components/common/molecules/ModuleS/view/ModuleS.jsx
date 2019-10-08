@@ -6,13 +6,13 @@ import {
   LinkText,
   style,
   ColWrapper,
-  WORibbonImgContainer,
-  RibbonImgContainer,
+  ImgContainer,
+  RibbonViewImgContainer,
   RLContainer,
   ButtonContainer,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
-import imageCropConfigs from '../ModuleS.config';
+import imageCropConfigs, { TEXT_COLOR_WHITE } from '../ModuleS.config';
 import RibbonComponent from '../../Ribbon';
 
 /**
@@ -34,14 +34,12 @@ const getColSize = moduleWidth => {
  * This function return the image config for each theme.
  * @param {*} promoWrapper
  */
-const isGymboreeSite = isGymboree();
 const { IMG_DATA_TCP, IMG_DATA_GYM, IMG_DATA_GYM_RIBBON } = imageCropConfigs;
 const getImageConfig = ribbonPresent => {
   let imageConfig = IMG_DATA_TCP;
-  if (isGymboreeSite) {
+  if (isGymboree()) {
     imageConfig = ribbonPresent ? IMG_DATA_GYM_RIBBON : IMG_DATA_GYM;
   }
-  console.log(imageConfig.crops);
   return imageConfig.crops;
 };
 /**
@@ -50,13 +48,16 @@ const getImageConfig = ribbonPresent => {
  */
 const TextView = props => {
   const { headerText } = props;
+  const color = !isGymboree() ? TEXT_COLOR_WHITE : '';
   return (
     headerText && (
       <LinkText
         type="heading"
         component="h2"
+        className="header-text"
         headerText={headerText}
         data-locator={getLocator('moduleS_header_text')}
+        color={color}
       />
     )
   );
@@ -89,9 +90,9 @@ const RibbonView = props => {
   return (
     <ColWrapper>
       <TextView {...props} />
-      <RibbonImgContainer>
+      <RibbonViewImgContainer>
         <ImgView {...props} />
-      </RibbonImgContainer>
+      </RibbonViewImgContainer>
       <div className="tb-btn-section">
         <RibbonComponent
           width={240}
@@ -121,9 +122,9 @@ const WithOutRibbonView = props => {
   const { singleCTAButton } = props;
   return (
     <ColWrapper>
-      <WORibbonImgContainer>
+      <ImgContainer>
         <ImgView {...props} />
-      </WORibbonImgContainer>
+      </ImgContainer>
       <RLContainer>
         <TextView {...props} />
         <ButtonContainer>

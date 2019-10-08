@@ -82,6 +82,9 @@ export default css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       letter-spacing: normal;
     }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: inline;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
