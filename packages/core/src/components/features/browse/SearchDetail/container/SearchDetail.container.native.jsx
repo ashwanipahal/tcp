@@ -33,10 +33,6 @@ import {
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 
 class SearchDetailContainer extends React.PureComponent {
-  searchQuery;
-
-  asPath;
-
   componentDidMount() {
     this.makeApiCall();
   }
@@ -110,11 +106,11 @@ class SearchDetailContainer extends React.PureComponent {
       getProducts,
       onSubmit,
       onPickUpOpenClick,
-      searchedText,
       slpLabels,
       searchResultSuggestions,
       sortLabels,
       isSearchResultsAvailable,
+      searchedText,
       ...otherProps
     } = this.props;
 
