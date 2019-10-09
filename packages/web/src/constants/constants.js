@@ -30,11 +30,14 @@ const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';
 
 const OPTIMIZELY_HEADER_PREFIX = 'x-flag-';
 
+const PREVIEW_HEADER_KEY = 'x-akamai-staging';
+
 export default {
   brand,
   defaultDeviceType,
   OPTIMIZELY_DECISION_LABEL,
   OPTIMIZELY_HEADER_PREFIX,
+  PREVIEW_HEADER_KEY,
   sites,
   keyboard,
 };

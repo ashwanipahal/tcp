@@ -62,7 +62,7 @@ const {
   getCreditFieldLabels,
 } = selectors;
 
-export class CheckoutContainer extends React.Component<Props> {
+export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {
       initCheckout,

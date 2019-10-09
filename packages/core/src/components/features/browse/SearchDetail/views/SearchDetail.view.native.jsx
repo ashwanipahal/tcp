@@ -13,7 +13,8 @@ class SearchDetail extends React.PureComponent {
   };
 
   renderSearchTopSection = () => {
-    const { searchedText, slpLabels } = this.props;
+    const { slpLabels, navigation } = this.props;
+    const searchedText = navigation && navigation.getParam('title');
     if (searchedText !== undefined) {
       return (
         <Container margins="0 12px 0 12px">
@@ -53,6 +54,7 @@ class SearchDetail extends React.PureComponent {
       sortLabels,
       ...otherProps
     } = this.props;
+
     return (
       <PageContainer>
         {this.renderSearchTopSection()}
