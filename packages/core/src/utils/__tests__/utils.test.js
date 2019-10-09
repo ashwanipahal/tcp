@@ -35,9 +35,9 @@ describe('getLabelValue', () => {
     expect(label).toBe(labelState.account.payment.lbl_name);
   });
 
-  it('should return empty string if incorrect params type are passed', () => {
+  it('should return labelkey if incorrect params type are passed', () => {
     const label = getLabelValue('', 'common.account.lbl_last_name');
-    expect(label).toBe('');
+    expect(label).toBe('common.account.lbl_last_name');
   });
 
   it('should return label key if category is passed but not present in label state', () => {

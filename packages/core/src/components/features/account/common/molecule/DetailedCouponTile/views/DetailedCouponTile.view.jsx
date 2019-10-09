@@ -145,11 +145,7 @@ export class DetailedCouponTile extends React.Component {
     return (
       <BodyCopy component="div" className={className} data-locator="myrewards-tile">
         {showOverlow && (
-          <BodyCopy
-            component="div"
-            data-locator="coupon-overlay"
-            className="overlay hide-on-desktop hide-on-tablet"
-          >
+          <BodyCopy component="div" data-locator="coupon-overlay" className="overlay">
             <BodyCopy
               component="div"
               fontSize="fs16"

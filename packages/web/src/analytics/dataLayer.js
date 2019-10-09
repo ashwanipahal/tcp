@@ -1,4 +1,5 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { generateBrowseDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -18,20 +19,18 @@ import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
  * @returns {Object} data layer
  */
 export default function create(store) {
+  const browseDataLayer = generateBrowseDataLayer(store);
   return Object.create(defaultDataLayer, {
+    ...browseDataLayer,
+
+    // TODO: All pods to include dataElements here like browseDataLayer and make a global for common one.
+
     pageName: {
       get() {
         return store.getState().pageName;
       },
     },
     // TODO: This formatting logic needs to match current app
-    listingFilterList: {
-      get() {
-        const { form: { 'filter-form': { values } = {} } = {} } = store.getState();
-        const { TCPColor_uFilter: color, v_tcpsize_uFilter: size } = values;
-        return color || size ? JSON.stringify({ color, size }) : '';
-      },
-    },
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
