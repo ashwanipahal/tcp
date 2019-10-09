@@ -30,11 +30,26 @@ export const StoreList = ({ className, labels, storesList }) => {
     Array.isArray(storeListUS) && Array.isArray(storeListCA)
       ? [...storeListUS, ...storeListCA]
       : [];
-  const stores = finalStores.map(store => ({
-    title: store.displayName,
-    content: store.displayName,
-    value: store.displayName,
-  }));
+  const stores = [];
+  const pushStore = list => {
+    list.forEach(store => {
+      stores.push({
+        title: store.displayName,
+        content: store.displayName,
+        value: store.displayName,
+      });
+    });
+  };
+  if (storeListUS.length > 0 && storeListCA.length > 0) {
+    pushStore(storeListUS);
+    stores.push({
+      title: 'disabled',
+      content: '------------------',
+      value: 'disabled',
+      disabled: true,
+    });
+    pushStore(storeListCA);
+  }
 
   return (
     <div className={className}>
@@ -59,7 +74,9 @@ export const StoreList = ({ className, labels, storesList }) => {
           defaultSelectText={labels.lbl_storelist_searchByStates_dropdown}
           options={stores}
           selectedLocation={location}
-          selectionCallback={(_, v) => setLocation(v)}
+          selectionCallback={(e, value) => {
+            if (value !== 'disabled') setLocation(value);
+          }}
           dataLocator="store_USCanadasearchlabel"
         />
       )}
