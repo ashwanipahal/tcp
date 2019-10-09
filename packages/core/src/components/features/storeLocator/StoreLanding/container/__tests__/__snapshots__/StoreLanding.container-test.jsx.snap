@@ -10,7 +10,6 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
       "name": "saint andreas",
     }
   }
-  fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={
     [MockFunction] {
@@ -51,7 +50,6 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
       "name": "saint andreas",
     }
   }
-  fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={
     [MockFunction] {
@@ -92,7 +90,6 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
       "name": "saint andreas",
     }
   }
-  fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={
     [MockFunction] {
@@ -126,7 +123,6 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
 exports[`StoreSearch Container should render StoreLanding Correctly - without fav store 1`] = `
 <Styled(StoreLanding)
   favoriteStore={null}
-  fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={
     [MockFunction] {
@@ -167,7 +163,6 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
       "name": "saint andreas",
     }
   }
-  fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
   getFavoriteStore={[MockFunction]}
   getLocationStores={[Function]}
