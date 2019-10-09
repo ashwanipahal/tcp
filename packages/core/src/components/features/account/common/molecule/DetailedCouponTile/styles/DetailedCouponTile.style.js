@@ -20,7 +20,7 @@ const styles = css`
     box-sizing: border-box;
   }
 
-  .coupon-saving {
+  .coupon {
     margin: 0 auto 8px;
   }
   .overlap {
