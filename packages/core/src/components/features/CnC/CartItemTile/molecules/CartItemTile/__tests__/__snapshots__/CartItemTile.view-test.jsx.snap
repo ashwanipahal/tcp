@@ -111,6 +111,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    img {
+      display: block;
+    }
   }
 
   @media ",
@@ -528,6 +531,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    img {
+      display: block;
+    }
   }
 
   @media ",
