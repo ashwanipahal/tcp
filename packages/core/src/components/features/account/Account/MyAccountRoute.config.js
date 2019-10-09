@@ -77,6 +77,13 @@ const navData = [
     component: 'myPlaceRewardsCCPage',
     href,
   },
+  {
+    id: 'favorites',
+    url: '/account/favorites',
+    displayName: 'Favorites',
+    component: 'favorites',
+    href,
+  },
 ];
 
 export default navData;
