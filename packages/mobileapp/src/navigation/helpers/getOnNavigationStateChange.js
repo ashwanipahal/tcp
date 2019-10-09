@@ -1,3 +1,4 @@
+import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import { getActiveRouteName } from './getActiveRouteName';
 /*eslint-disable */
 
@@ -9,8 +10,13 @@ export function getOnNavigationStateChange(store) {
       if (prevScreen !== currentScreen) {
         // change the tracker here to use other Mobile analytics SDK.
         store.dispatch({
-          type: 'analytics:TRACK_PAGE_VIEW',
-          payload: { previousScreen: prevScreen, currentScreen, appState: store.getState() },
+          type: TRACK_PAGE_VIEW,
+          payload: {
+            previousScreen: prevScreen,
+            currentScreen,
+            appState: store.getState(),
+            navState: currentState,
+          },
         });
         __DEV__
           ? console.info(`%cNow navigating to: ${currentScreen}`, 'background: #333; color: #fff')

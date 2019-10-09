@@ -1,8 +1,7 @@
 /* eslint-disable  */
 import { createMiddleware } from 'redux-beacon';
 import logger from '@redux-beacon/logger';
-// import eventMapping from '../../analytics/eventMapping';
-import createTrackingTarget from '../../analytics/trackingTarget';
+import { eventMapping } from '../../analytics/eventMapping';
 import {
   ACPCore,
   ACPLifecycle,
@@ -20,26 +19,14 @@ const app_id = 'dae3661a4c63/7bc47440747f/launch-8ca67ecb0da6-development';
 
 ACPCore.setLogLevel(ACPMobileLogLevel.VERBOSE);
 ACPCore.configureWithAppId(app_id);
-// ACPLifecycle.registerExtension();
-// ACPIdentity.registerExtension();
-// ACPSignal.registerExtension();
-// ACPAnalytics.registerExtension();
-// ACPCore.start();
-
-const eventMapping = {
-  'analytics:TRACK_PAGE_VIEW': action => {
-    ACPCore.getSdkIdentities().then(identities =>
-      console.log('AdobeExperienceSDK: Identities = ' + identities)
-    );
-    ACPAnalytics.getTrackingIdentifier().then(identifier =>
-      console.log('AdobeExperienceSDK: Tracking identifier: ' + identifier)
-    );
-    ACPCore.trackAction('pageView', { msg: 'hello' });
-  },
-};
+ACPLifecycle.registerExtension();
+ACPIdentity.registerExtension();
+ACPSignal.registerExtension();
+ACPAnalytics.registerExtension();
+ACPCore.start();
 
 function trackingTarget(events) {
-  console.log(events);
+  console.log('EVENTS', events);
 }
 
 export default function create() {
