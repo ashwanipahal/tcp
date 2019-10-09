@@ -11,7 +11,6 @@ const EmailSignupModalStyle = css`
   .button-wrapper-form {
     background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
     margin: 89px -15px 0 0;
-    width: 375px;
     display: flex;
     justify-content: center;
     padding: 21px 0;

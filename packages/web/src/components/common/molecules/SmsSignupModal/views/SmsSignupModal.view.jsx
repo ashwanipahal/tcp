@@ -114,7 +114,7 @@ class SmsSignupModal extends React.PureComponent {
           overlayClassName="TCPModal__Overlay"
           onRequestClose={this.closeModal}
           noPadding
-          widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
+          widthConfig={{ small: '100%', medium: '458px', large: '851px' }}
           heightConfig={{ minHeight: '500px', height: '560px', maxHeight: '560px' }}
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
