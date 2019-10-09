@@ -25,6 +25,7 @@ import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import LabeledRadioButton from '../../../../../../../../common/atoms/LabeledRadioButton';
 import { getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view.native';
+import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 
 const gymboreeImage = require('../../../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../../../assets/tcp-logo.png');
@@ -247,8 +248,8 @@ class GiftServices extends React.PureComponent {
               <RadioButtonWrapper>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={brand === 'TCP'}
-                    onPress={e => this.handleToggle(e, 'TCP')}
+                    checked={brand === GIFT_SERVICES_CONSTANTS.TCP}
+                    onPress={e => this.handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
                     disabled={false}
                   />
                   <ImageBrandStyle
@@ -259,8 +260,8 @@ class GiftServices extends React.PureComponent {
                 </RadioButtonWrapperInner>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={brand === 'GYM'}
-                    onPress={e => this.handleToggle(e, 'GYM')}
+                    checked={brand === GIFT_SERVICES_CONSTANTS.GYM}
+                    onPress={e => this.handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
                     disabled={false}
                   />
                   <ImageBrandStyle
