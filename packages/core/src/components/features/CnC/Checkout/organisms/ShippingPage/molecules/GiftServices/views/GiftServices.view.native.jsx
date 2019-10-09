@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import { Field, change } from 'redux-form';
+import { Field, change, reduxForm } from 'redux-form';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
@@ -37,9 +37,9 @@ class GiftServices extends React.PureComponent {
 
     this.state = {
       detailStatus: false,
-      isChecked: !isGiftServicesChecked,
+      isChecked: isGiftServicesChecked,
       message: initialValues.message,
-      selectedGiftService: 'standard',
+      selectedGiftService: initialValues.optionId ? initialValues.optionId : 'standard',
     };
   }
 
@@ -120,8 +120,15 @@ class GiftServices extends React.PureComponent {
   };
 
   handleToggle = (e, brandName) => {
-    const { handleToggle } = this.props;
+    const { handleToggle, dispatch, giftWrapOptions } = this.props;
     handleToggle(e, brandName);
+
+    const parsedDefaultSelectedGiftService = JSON.parse(giftWrapOptions);
+    const defaultSelectedGiftService = parsedDefaultSelectedGiftService.giftOptions[0].catEntryId;
+    this.setState({
+      selectedGiftService: defaultSelectedGiftService,
+    });
+    dispatch(change('GiftServices', `optionId`, defaultSelectedGiftService));
   };
 
   giftServiceChanged = value => {
@@ -181,7 +188,7 @@ class GiftServices extends React.PureComponent {
   };
 
   render() {
-    const { labels, giftWrapOptions, SelectedBrand } = this.props;
+    const { labels, giftWrapOptions, SelectedBrand, dispatch, isGiftServicesChecked } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
     const brand = SelectedBrand;
     const dropDownStyle = {
@@ -206,7 +213,8 @@ class GiftServices extends React.PureComponent {
               component={InputCheckbox}
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
-              onChange={this.handleChange}
+              onClick={this.handleChange}
+              isChecked={isGiftServicesChecked}
             />
             <BodyCopy
               fontFamily="secondary"
@@ -235,7 +243,7 @@ class GiftServices extends React.PureComponent {
             text={labels.addAGift}
           />
         </GiftServicesContent>
-        {!!isChecked && (
+        {isChecked && (
           <View>
             <GiftServicesContent>
               <BodyCopy
@@ -307,7 +315,10 @@ class GiftServices extends React.PureComponent {
               name="message"
               id="message"
               value={message}
-              onChangeText={text => this.setState({ message: text })}
+              onChangeText={text => {
+                this.setState({ message: text });
+                dispatch(change('GiftServices', `message`, text));
+              }}
               type="text"
               maxLength={100}
               dataLocator="gift-message"
@@ -347,4 +358,9 @@ GiftServices.defaultProps = {
   dispatch: () => {},
   initialValues: {},
 };
-export default GiftServices;
+
+export { GiftServices as GiftServicesVanilla };
+export default reduxForm({
+  form: 'GiftServices',
+  enableReinitialize: true,
+})(GiftServices);
