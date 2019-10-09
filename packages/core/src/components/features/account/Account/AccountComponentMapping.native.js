@@ -13,12 +13,12 @@ const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
   paymentGiftCardsPageMobile: PaymentViewContainer,
   myPlaceRewardsMobile: PlaceRewardsContainer,
-  accountOverview: AccountOverviewViewContainer,
-  profile: MyProfile,
+  accountOverviewMobile: AccountOverviewViewContainer,
+  profileInformationMobile: MyProfile,
   myWalletPageMobile: Wallet,
   earnExtraPointsPageMobile: ExtraPoints,
   pointHistoryPageMobile: PointHistoryPage,
-  myPreferences: MyPrefrenceContainer,
+  myPreferencePageMobile: MyPrefrenceContainer,
   PointsClaimPageMobile: PointsClaimPage,
 };
 

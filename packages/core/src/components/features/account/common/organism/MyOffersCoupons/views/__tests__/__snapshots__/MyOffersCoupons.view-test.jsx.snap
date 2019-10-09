@@ -51,7 +51,7 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
               link={null}
               textAlign="left"
             >
-               (6)
+              lbl_my_rewards_drawerHeading (6)
             </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)
@@ -86,7 +86,9 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
                 textAlign="right"
                 to="/account?id=wallet"
                 underline={true}
-              />
+              >
+                lbl_my_rewards_viewAll
+              </Styled(Anchor)>
             </Styled(BodyCopy)>
           </Styled(Col)>
         </Styled(Row)>
@@ -124,7 +126,9 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
             fontSizeVariation="small"
             onClick={[Function]}
             underline={true}
-          />
+          >
+            lbl_my_rewards_helpLink
+          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -352,7 +356,9 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
                 data-locator="coupon_viewall_Cta"
                 onClick={[Function]}
                 type="submit"
-              />
+              >
+                lbl_my_rewards_viewAll
+              </Styled(Button)>
             </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </Styled(Carousel)>
