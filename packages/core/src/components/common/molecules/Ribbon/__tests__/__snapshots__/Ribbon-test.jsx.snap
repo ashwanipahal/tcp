@@ -4,7 +4,7 @@ exports[`RibbonComponent should match snapshot 1`] = `
 <styled.div>
   <styled.div
     height="70"
-    imgPath="/static/images/module-a-ribbon-left.png"
+    imgPath="/static/images/module-s-left-ribbon.png"
     width="200"
   >
     <Styled(PromoBanner)

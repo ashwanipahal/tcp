@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PromoBanner from '../PromoBanner';
-import { getLocator } from '../../../../utils';
+import { getLocator, getIconPath } from '../../../../utils';
 import { RibbonWrapper, RibbonContainer } from './Ribbon.style';
 
-const ribbonLeftImage = '/static/images/module-a-ribbon-left.png';
-const ribbonRightImage = '/static/images/module-a-ribbon-right.png';
+const ribbonLeftImage = getIconPath('modules-s-left-ribbon');
+const ribbonRightImage = getIconPath('modules-s-right-ribbon');
 
 const getImgPath = ribbonBanner => {
   const [ribbonDetails] = ribbonBanner;
