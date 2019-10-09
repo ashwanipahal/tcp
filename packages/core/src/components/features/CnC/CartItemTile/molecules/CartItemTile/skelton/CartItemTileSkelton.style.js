@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export default css`
   padding: 10px 15px 20px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
-  background: #fff;
+  background: ${props => props.theme.colors.WHITE};
   margin: 15px 0;
   .product-brand-img-wrapper {
     width: 105px;

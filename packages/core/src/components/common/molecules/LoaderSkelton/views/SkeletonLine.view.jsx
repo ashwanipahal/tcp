@@ -23,7 +23,7 @@ const WrappedComponent = styled.div`
       rgba(255, 255, 255, 0.6),
       rgba(255, 255, 255, 0)
     );
-    animation: progress 1.2s ease-in-out infinite;
+    animation: progress 0.5s ease-in-out infinite;
     @keyframes progress {
       0% {
         left: -500px;
