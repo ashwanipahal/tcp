@@ -155,6 +155,7 @@ describe('ButtonList component', () => {
           cvvCode: 'Enter correct code',
         },
       },
+      dispatch: jest.fn(),
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
