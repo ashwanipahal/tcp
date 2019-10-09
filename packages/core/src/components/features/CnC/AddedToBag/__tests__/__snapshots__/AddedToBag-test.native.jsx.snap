@@ -16,6 +16,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   headingFontFamily="secondary"
   headingFontWeight="semibold"
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={[Function]}
   isOverlay={false}
   onRequestClose={[Function]}

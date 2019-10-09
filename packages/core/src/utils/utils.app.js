@@ -1,11 +1,12 @@
+/* eslint-disable max-lines */
 /* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
 import { getAPIConfig } from './utils';
-
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
@@ -72,6 +73,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleS':
       resolve(require('../services/handler/graphQL/queries/moduleS'));
+      break;
+    case 'moduleQ':
+      resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
     default:
       reject();
@@ -358,6 +362,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKey = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`];
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
@@ -366,12 +371,14 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`]}/${
+    unboxKey: `${unbxdApiKey}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`,
+    unbxdApiKey,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
   };
 };
 
@@ -467,12 +474,10 @@ export const switchAPIConfig = envConfig => {
   const isPrevConfigTCP = currentAppAPIConfig === tcpAPIConfig;
   return getCurrentAPIConfig(envConfig, !isPrevConfigTCP);
 };
-
 export const getSiteId = () => {
   const { siteId } = getAPIConfig();
   return siteId;
 };
-
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
   const prototype = Object.getPrototypeOf(obj);
   // eslint-disable-next-line
@@ -577,4 +582,21 @@ export const validateColor = color => {
   }
 
   return colorSheet.viewColor.color;
+};
+/**
+ * @method getTranslatedMomentDate
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ * @param {upperCase} formate use for convert locate formate
+ */
+export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month, date, year }) => {
+  moment.locale(language);
+  const currentDate = dateInput ? moment(dateInput) : moment();
+  return {
+    day: currentDate.format(day),
+    month: currentDate.format(month),
+    date: currentDate.format(date),
+    year: currentDate.format(year),
+  };
 };

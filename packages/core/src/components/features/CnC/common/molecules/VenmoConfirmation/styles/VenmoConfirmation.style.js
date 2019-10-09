@@ -7,7 +7,8 @@ const styles = css`
 
   .venmo-logo-wrapper {
     border-top: 1px solid ${props => props.theme.colorPalette.gray[600]};
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    text-align: center;
   }
 
   .venmo-logo {

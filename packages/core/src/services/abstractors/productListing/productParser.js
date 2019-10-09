@@ -37,14 +37,17 @@ export function getClearanceString(categoryType) {
 }
 
 export function attributeListMaker(attributes) {
-  return attributes.split(`;`).map(attribute => {
-    const regexUrl = /((http|https):\/\/)?(([\w.-]*)\.([\w])).*/g;
-    const isUrl = regexUrl.test(attribute);
-    const match = attribute.match(regexUrl);
-    const url = match && match[0].split('|');
-    const attAndValue = attribute.split(`:`);
-    return { identifier: attAndValue[0], value: isUrl ? url : attAndValue[1] };
-  });
+  return (
+    attributes &&
+    attributes.split(`;`).map(attribute => {
+      const regexUrl = /((http|https):\/\/)?(([\w.-]*)\.([\w])).*/g;
+      const isUrl = regexUrl.test(attribute);
+      const match = attribute.match(regexUrl);
+      const url = match && match[0].split('|');
+      const attAndValue = attribute.split(`:`);
+      return { identifier: attAndValue[0], value: isUrl ? url : attAndValue[1] };
+    })
+  );
 }
 export function extractAttributeValue(item, attribute) {
   try {

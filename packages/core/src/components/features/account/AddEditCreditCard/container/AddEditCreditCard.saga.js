@@ -54,7 +54,7 @@ export function* addCreditCardSaga({ payload }) {
   }
 }
 
-export function* updateCreditCardSaga({ payload }) {
+export function* updateCreditCardSaga({ payload }, fromCheckout) {
   try {
     const { address, cardType, onFileAddressKey, ...otherPayloadProps } = payload;
     const addressList = yield select(getAddressListState);
@@ -86,6 +86,9 @@ export function* updateCreditCardSaga({ payload }) {
     yield put(getAddressList());
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
+    if (fromCheckout) {
+      throw err;
+    }
     let error = {};
     /* istanbul ignore else */
     error = err;

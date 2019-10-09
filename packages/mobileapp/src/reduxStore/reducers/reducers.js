@@ -41,6 +41,9 @@ import PointsClaimReducer from '@tcp/core/src/components/features/account/Points
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
+import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
+import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -93,6 +96,9 @@ import {
   CONFIRMATION_REDUCER_KEY,
   STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
+  SLP_PAGE_REDUCER_KEY,
+  EXTRA_POINTS_REDUCER_KEY,
+  SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -130,6 +136,11 @@ const filteredStyliticsProductTabListReducer = createFilteredReducer(
 const filteredProductDetailReducer = createFilteredReducer(
   ProductDetailReducer,
   PRODUCT_DETAIL_REDUCER_KEY
+);
+
+const filteredSearchDetailReducer = createFilteredReducer(
+  SearchDetailReducer,
+  SLP_PAGE_REDUCER_KEY
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
@@ -188,6 +199,9 @@ const rootReducer = combineReducers({
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
+  [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
+  [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
+  [SEARCH_REDUCER_KEY]: SearchBarReducer,
 });
 
 export default rootReducer;

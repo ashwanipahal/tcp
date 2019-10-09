@@ -14,7 +14,7 @@ const getDefaultState = state => {
   return state;
 };
 
-const ProductListingReducer = (state = initialState, action) => {
+const SearchDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case SLP_CONSTANTS.SET_PRODUCTS:
       return state.set(
@@ -29,9 +29,11 @@ const ProductListingReducer = (state = initialState, action) => {
       return state.merge(action.payload);
     case SLP_CONSTANTS.SET_SLP_RESULTS_AVAILABLE_STATE:
       return state.merge(action.payload);
+    case SLP_CONSTANTS.RESET_PRODUCTS:
+      return { ...state };
     default:
       return getDefaultState(state);
   }
 };
 
-export default ProductListingReducer;
+export default SearchDetailReducer;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductListItem component should renders ProductListItem correctly 1`] = `
+exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
   accessible={true}
 >

@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleQ component renders correctly 1`] = `
+<Styled(Grid)
+  className=" yellow-bg moduleQ"
+>
+  <Styled(Row)
+    centered={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(LinkText)
+        className="moduleQ-header"
+        component="div"
+        dataLocator="moduleQ_header_text"
+        headerText={
+          Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "/ ",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_black",
+                  "text": "SHOP THIS LOOK",
+                },
+              ],
+            },
+          ]
+        }
+        headingClass="moduleQ-promo-header"
+      />
+      <Styled(PromoBanner)
+        className="moduleQ-promo"
+        dataLocator="moduleQ_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_semibold",
+                  "style2": "extra_large_text_regular",
+                  "text": "ALL UNIFORMS",
+                  "text2": "ALL SHORTS",
+                },
+                Object {
+                  "style": "fixed_medium_text_black",
+                  "style2": "extra_large_text_black",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <div>
+      <Connect(StyliticsProductTabListContainer)
+        dataLocator="moduleQ_cta_links_"
+        onProductTabChange={[Function]}
+        tabItems={
+          Array [
+            Object {
+              "category": Object {
+                "cat_id": "2044392_10",
+              },
+              "singleCTAButton": null,
+              "text": Object {
+                "text": "GIRL",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "2044391_10",
+              },
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "Shop Now ",
+                "title": "",
+                "url": "/",
+              },
+              "text": Object {
+                "text": "TODDLER GIRL",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "3002623_BQ",
+              },
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "SHOP NOW",
+                "title": "",
+                "url": "/ ",
+              },
+              "text": Object {
+                "text": "BOY",
+              },
+            },
+            Object {
+              "category": Object {
+                "cat_id": "2081262_K3",
+              },
+              "singleCTAButton": null,
+              "text": Object {
+                "text": "TODDLER BOY",
+              },
+            },
+          ]
+        }
+      />
+    </div>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      className="moduleQ__carousel-wrapper"
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 2,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 2,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    />
+  </Styled(Row)>
+</Styled(Grid)>
+`;

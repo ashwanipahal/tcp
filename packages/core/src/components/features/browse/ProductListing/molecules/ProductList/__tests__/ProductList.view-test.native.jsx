@@ -5,7 +5,7 @@ import { ProductListVanilla } from '../views/ProductList.view.native';
 describe('ProductList component', () => {
   it('should renders correctly', () => {
     const props = {
-      className: '',
+      setListRef: jest.fn(),
       products: [{ productInfo: '' }],
       showQuickViewForProductId: '',
       currencySymbol: '',
