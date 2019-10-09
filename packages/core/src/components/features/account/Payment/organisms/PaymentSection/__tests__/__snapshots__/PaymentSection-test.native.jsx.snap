@@ -466,6 +466,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
     />
     <ModalNative
       heading="lbl_payment_addGiftCard"
+      inheritedStyles=""
       isOpen={true}
       isOverlay={false}
       onRequestClose={[Function]}

@@ -432,9 +432,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             key="lbl_storelanding_allUSCAStores"
           >
             <Styled(Anchor)
-              asPath=""
+              asPath="/stores"
               className=""
-              to=""
+              to="/stores"
             >
               lbl_storelanding_allUSCAStores
             </Styled(Anchor)>
@@ -444,9 +444,9 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             key="lbl_storelanding_internationalStores"
           >
             <Styled(Anchor)
-              asPath=""
+              asPath="/content/international-stores"
               className=""
-              to=""
+              to="/content?contentType=international-stores"
             >
               lbl_storelanding_internationalStores
             </Styled(Anchor)>

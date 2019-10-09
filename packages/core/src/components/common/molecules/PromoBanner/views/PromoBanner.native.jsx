@@ -189,6 +189,16 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  extrabold_text_regular: props => (
+    <BodyCopy
+      fontSize="fs42"
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
 
   percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
 };

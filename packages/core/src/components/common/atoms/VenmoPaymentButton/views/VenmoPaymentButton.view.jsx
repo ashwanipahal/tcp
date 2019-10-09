@@ -93,7 +93,8 @@ export class VenmoPaymentButton extends Component {
     this.handleVenmoClickedError(err);
   };
 
-  handleVenmoClick = () => {
+  handleVenmoClick = e => {
+    e.preventDefault(); // Added to suppress extra click calls with multiple actions on same page
     const {
       setVenmoData,
       onVenmoPaymentButtonClick,
@@ -220,10 +221,12 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { venmoData, mode, enabled, className, continueWithText } = this.props;
+    const { venmoData, mode, enabled, className, continueWithText, isVenmoBlueButton } = this.props;
     const { hasVenmoError } = this.state;
     const { supportedByBrowser } = venmoData || {};
-    const venmoIcon = getIconPath('venmo-logo-blue');
+    const venmoIcon = isVenmoBlueButton
+      ? getIconPath('venmo-button')
+      : getIconPath('venmo-logo-blue');
     return (
       <div className={className}>
         {enabled &&
@@ -288,6 +291,7 @@ VenmoPaymentButton.propTypes = {
   continueWithText: string,
   isGuest: bool.isRequired,
   orderId: string.isRequired,
+  isVenmoBlueButton: bool, // Venmo Blue Background CTA as per venmo guidelines
 };
 
 VenmoPaymentButton.defaultProps = {
@@ -306,6 +310,7 @@ VenmoPaymentButton.defaultProps = {
   isNonceNotExpired: false,
   isRemoveOOSItems: false,
   continueWithText: '',
+  isVenmoBlueButton: false,
 };
 
 export default withStyles(VenmoPaymentButton, styles);

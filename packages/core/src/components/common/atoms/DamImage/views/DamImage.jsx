@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import { configureInternalNavigationFromCMSUrl, getAPIConfig } from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -29,7 +29,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints } = props;
+  const { breakpoints, isProductPage } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -40,7 +40,12 @@ const getBreakpointImgUrl = (type, props) => {
   if (imgConfigs[breakpointTypeIndex]) {
     config = imgConfigs[breakpointTypeIndex];
   }
-  return `${basePath}/${config}/${imgPath}`;
+
+  const { assetHost, productAssetPath } = getAPIConfig();
+
+  return isProductPage
+    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
+    : `${basePath}/${config}/${imgPath}`;
 };
 
 const renderImage = imgProps => {

@@ -131,10 +131,7 @@ describe('# Store Details Selectors', () => {
     const expected = {
       basicInfo: {
         address: {},
-        coordinates: {
-          lat: '',
-          long: '',
-        },
+        coordinates: {},
       },
       hours: {
         regularHours: [],

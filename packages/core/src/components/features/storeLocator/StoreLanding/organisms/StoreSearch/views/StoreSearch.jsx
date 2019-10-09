@@ -133,13 +133,13 @@ export class StoreSearch extends PureComponent {
 
     const linksConfig = [
       {
-        asPath: '',
-        to: '',
+        asPath: '/stores',
+        to: '/stores',
         label: getLabelValue(labels, 'lbl_storelanding_allUSCAStores'),
       },
       {
-        asPath: '',
-        to: '',
+        asPath: '/content/international-stores',
+        to: '/content?contentType=international-stores',
         label: getLabelValue(labels, 'lbl_storelanding_internationalStores'),
       },
     ];

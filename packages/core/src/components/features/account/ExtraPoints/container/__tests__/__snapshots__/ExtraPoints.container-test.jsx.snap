@@ -8,6 +8,7 @@ exports[`ExtraPointsContainer View should render ExtraPointsContainer Correctly 
     handleComponentChange={[Function]}
     labels={Object {}}
     onViewActivityDetails={[Function]}
+    promoListData={Array []}
     waysToEarn={Array []}
   />
 </Fragment>

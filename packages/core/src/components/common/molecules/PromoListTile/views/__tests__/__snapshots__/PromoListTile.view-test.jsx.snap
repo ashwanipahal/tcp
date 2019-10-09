@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoListTile component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="className"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="border-padding"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Row)
+      className="image"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Image)
+          className="tileImage"
+          data-locator="earnpoints-image"
+          src="https://test4.childrensplace.com/wcsstore/static/images/tcp_star_bag.jpg"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="earnExtraPointsTileHeadline"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Shop Extra
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      data-locator="earnExtraPointsTilSubHeadline"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Earn 10 points
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="tile-anchor"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      <Styled(Anchor)
+        data-locator="privacyLnk"
+        noLink={true}
+        underline={true}
+      >
+        Apply now
+      </Styled(Anchor)>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
