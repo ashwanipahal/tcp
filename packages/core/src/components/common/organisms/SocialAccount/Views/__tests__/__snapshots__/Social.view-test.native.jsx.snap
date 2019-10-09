@@ -26,7 +26,11 @@ exports[`Social component should render with connected 1`] = `
   <Styled(View)
     spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
   >
-    <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityLabel="button"
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
       <Styled(ImageComp)
         alt=""
         height={50}
@@ -51,26 +55,19 @@ exports[`Social component should render with connected 1`] = `
           textDecoration={null}
         />
       </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/plus.png",
-            }
+      <Styled(ImageComp)
+        alt=""
+        height={15}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/plus.png",
           }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
+        }
+        url=""
+        width={15}
+      />
+    </Styled(TouchableOpacity)>
     <ModalNative
       heading=" "
       horizontalBar={false}
@@ -261,7 +258,11 @@ exports[`Social component should renders correctly 1`] = `
   <Styled(View)
     spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
   >
-    <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityLabel="button"
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
       <Styled(ImageComp)
         alt=""
         height={50}
@@ -286,26 +287,19 @@ exports[`Social component should renders correctly 1`] = `
           textDecoration={null}
         />
       </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/plus.png",
-            }
+      <Styled(ImageComp)
+        alt=""
+        height={15}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/plus.png",
           }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
+        }
+        url=""
+        width={15}
+      />
+    </Styled(TouchableOpacity)>
     <ModalNative
       heading=" "
       horizontalBar={false}
@@ -569,7 +563,11 @@ exports[`Social component should simulate instagram connect 1`] = `
   <Styled(View)
     spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
   >
-    <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityLabel="button"
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
       <Styled(ImageComp)
         alt=""
         height={50}
@@ -594,26 +592,19 @@ exports[`Social component should simulate instagram connect 1`] = `
           textDecoration={null}
         />
       </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/dark_close.png",
-            }
+      <Styled(ImageComp)
+        alt=""
+        height={15}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/dark_close.png",
           }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
+        }
+        url=""
+        width={15}
+      />
+    </Styled(TouchableOpacity)>
     <ModalNative
       heading=" "
       horizontalBar={false}
