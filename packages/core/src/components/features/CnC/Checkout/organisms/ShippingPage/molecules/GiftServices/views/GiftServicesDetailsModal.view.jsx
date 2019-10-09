@@ -7,8 +7,8 @@ import styles, { modalStyles } from '../styles/GiftServices.style';
 class GiftServicesDetailsModal extends React.PureComponent<Props> {
   render() {
     const { openState, onRequestClose, labels, brand } = this.props;
-    const { DETAILS_RICH_TEXT, DETAILS_RICH_TEXT_ZYM } = labels;
-    const modalContent = brand === 'TCP' ? DETAILS_RICH_TEXT : DETAILS_RICH_TEXT_ZYM;
+    const { DETAILS_RICH_TEXT, DETAILS_RICH_TEXT_GYM } = labels;
+    const modalContent = brand === 'TCP' ? DETAILS_RICH_TEXT : DETAILS_RICH_TEXT_GYM;
     return (
       <Modal
         isOpen={openState}
