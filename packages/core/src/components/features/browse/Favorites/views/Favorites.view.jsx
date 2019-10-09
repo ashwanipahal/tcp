@@ -1,5 +1,4 @@
 import React from 'react';
-import { isMobileApp } from '@tcp/core/src/utils';
 import { PropTypes } from 'prop-types';
 import ProductAltImages from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/views/ProductAltImages';
 import { Row, Col, BodyCopy } from '../../../../common/atoms';
@@ -68,7 +67,6 @@ const FavoritesView = props => {
       } = item;
       const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
       const isKeepAlive = killSwitchKeepAliveProduct && keepAlive;
-      const isMobile = isMobileApp();
       const imageUrls = imagesByColor[color.name].extraImages.map(
         imageEntry => imageEntry.regularSizeImageUrl
       );
@@ -86,14 +84,12 @@ const FavoritesView = props => {
               onClick={() => setLastDeletedItemId({ itemId })}
               isDisabled={itemNotAvailable}
               isRemove
-              isMobile={isMobile}
             />
           )}
           <ProductAltImages
             pdpUrl={pdpUrl}
             imageUrls={imageUrls}
             productName={name}
-            isMobile={isMobile}
             keepAlive={isKeepAlive && itemNotAvailable}
           />
           <ProductTitle name={name} pdpUrl={pdpUrl} />

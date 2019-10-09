@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { isMobileApp } from '@tcp/core/src/utils';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 import CreateWishlistForm from '../CreateWishlistForm';
 
@@ -56,7 +55,6 @@ export class MoveItem extends React.Component {
       disabled: favoriteList.length >= 4,
       onClick: this.handleCreateWishlist,
     };
-    const isMobile = isMobileApp();
 
     return (
       <div className="move-item-container">
@@ -92,7 +90,6 @@ export class MoveItem extends React.Component {
 
             {isCreateNewList && (
               <CreateWishlistForm
-                isMobile={isMobile}
                 onSubmit={this.handleCreateWishlistSubmit}
                 onClose={this.handleCloseCreateWishlist}
                 deleteWishList={this.handleDeleteWishList}

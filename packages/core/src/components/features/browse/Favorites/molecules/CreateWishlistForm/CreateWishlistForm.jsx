@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import InputCheckout from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import ErrorMessage from '@tcp/core/src/components/common/hoc/ErrorMessage';
 
-export const CreateWishlistForm = ({ onSubmit, onClose, deleteWishList, isMobile, error }) => {
+export const CreateWishlistForm = ({ onSubmit, onClose, deleteWishList, error }) => {
   return (
     <form onSubmit={onSubmit} className="create-wishlist-form">
       {error && <ErrorMessage error={error} />}
@@ -26,7 +26,7 @@ export const CreateWishlistForm = ({ onSubmit, onClose, deleteWishList, isMobile
 
       <div className="buttons-container">
         <button type="submit" className="">
-          {isMobile ? 'Create New' : 'Save'}
+          Save
         </button>
         <button type="button" className="button-cancel" onClick={onClose}>
           Cancel
@@ -43,12 +43,10 @@ CreateWishlistForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   deleteWishList: PropTypes.func.isRequired,
-  isMobile: PropTypes.bool,
   error: PropTypes.shape({}),
 };
 
 CreateWishlistForm.defaultProps = {
-  isMobile: false,
   error: null,
 };
 
