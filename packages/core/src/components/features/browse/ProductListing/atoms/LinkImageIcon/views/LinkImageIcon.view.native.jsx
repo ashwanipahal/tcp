@@ -15,7 +15,11 @@ const LinkImageIcon = props => {
     borderRadius,
     imageWidth,
     imageHeight,
+    name,
   } = props;
+
+  const imageCompAccessibilityRole = `image ${name}`;
+
   return (
     <ImageTouchableOpacity
       onPress={onPress}
@@ -29,7 +33,7 @@ const LinkImageIcon = props => {
     >
       <ImageComp
         accessibilityRole="image"
-        accessibilityLabel="image"
+        accessibilityLabel={imageCompAccessibilityRole}
         source={{
           uri,
         }}
@@ -55,6 +59,7 @@ LinkImageIcon.propTypes = {
   onPress: PropTypes.func,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,
+  name: PropTypes.string,
 };
 
 LinkImageIcon.defaultProps = {
@@ -67,6 +72,7 @@ LinkImageIcon.defaultProps = {
   onPress: null,
   imageWidth: null,
   imageHeight: null,
+  name: '',
 };
 
 export default withStyles(LinkImageIcon);
