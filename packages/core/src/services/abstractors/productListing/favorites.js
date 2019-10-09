@@ -9,6 +9,7 @@ import {
   isBopisProduct,
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
@@ -58,7 +59,7 @@ const addItemToWishlist = wishlistDetails => {
       };
     })
     .catch(err => {
-      console.log('err', err);
+      logger.error('err', err);
     });
 };
 
@@ -397,7 +398,6 @@ export const moveItemToNewWishList = (formData, activeWishlistId, activeWishlist
       }
     })
     .catch(err => {
-      console.log('err', err);
       throw getFormattedError(err);
     });
 };
