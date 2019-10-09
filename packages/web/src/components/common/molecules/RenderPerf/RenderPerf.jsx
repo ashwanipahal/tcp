@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import Safe from 'react-safe';
 import { string } from 'prop-types';
-import ServerOnly from '../../atoms/ServerOnly';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 
@@ -8,6 +8,31 @@ const isEnabled = Boolean(process.env.PERF_TIMING);
 function entryExists(name) {
   return Boolean(performance.getEntriesByName(name).length);
 }
+
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
+function ServerOnlyScript({ children, ...props }) {
+  return (
+    <Safe.script suppressHydrationWarning {...props}>
+      {/* This may be unnecessary since react-dom will not execute the contents. */}
+      {typeof window === 'undefined' ? children : null}
+    </Safe.script>
+  );
+}
+
+ServerOnlyScript.propTypes = {
+  children: string.isRequired,
+};
 
 export function Mark({ name }) {
   // For client-side execution
@@ -20,15 +45,12 @@ export function Mark({ name }) {
   // For server-side execution
   // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled ? (
-    <ServerOnly>
-      <script type="text/javascript">
-        {`
-        if (typeof performance !== 'undefined') {
-          performance.mark(${JSON.stringify(name)});
-        }
-        `}
-      </script>
-    </ServerOnly>
+    <ServerOnlyScript>
+      {stringify`
+        if (typeof performance !== ${undefined}) {
+          performance.mark(${name});
+        }`}
+    </ServerOnlyScript>
   ) : null;
 }
 
@@ -51,20 +73,16 @@ export function Measure({ name, start, end }) {
   // For server-side execution
   // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled && typeof performance !== 'undefined' ? (
-    <ServerOnly>
-      {/* TODO: find a replacement for react-safe owing to transpilation issues */}
-      <script type="text/javascript">
-        {`
-        if (typeof performance !== 'undefined') {
+    <ServerOnlyScript>
+      {stringify`
+        if (typeof performance !== ${undefined}) {
           performance.measure(
-            ${JSON.stringify(name)},
-            ${JSON.stringify(start)},
-            ${JSON.stringify(end)}
+            ${name},
+            ${start},
+            ${end}
           );
-        }
-        `}
-      </script>
-    </ServerOnly>
+        }`}
+    </ServerOnlyScript>
   ) : null;
 }
 
