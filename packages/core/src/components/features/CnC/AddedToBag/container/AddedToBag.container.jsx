@@ -35,13 +35,21 @@ export class AddedToBagContainer extends React.Component<Props> {
     }
   }
 
-  closeModal(event) {
-    if (event) event.preventDefault();
+  componentWillUnmount() {
+    this.handleCloseModal();
+  }
+
+  handleCloseModal = () => {
     const { closeModal } = this.props;
     if (!isMobileApp()) {
       enableBodyScroll();
     }
     closeModal();
+  };
+
+  closeModal(event) {
+    if (event) event.preventDefault();
+    this.handleCloseModal();
   }
 
   render() {
