@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CheckoutFooter.style';
-import { Button, Image } from '../../../../../../common/atoms';
-import { getIconPath } from '../../../../../../../utils';
+import { Button } from '../../../../../../common/atoms';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
-
-const carrotLeft = getIconPath('carrot-left');
 
 class CheckoutFooter extends React.PureComponent {
   render() {
@@ -62,7 +59,7 @@ class CheckoutFooter extends React.PureComponent {
                 className="back-link"
                 onClick={backLinkHandler}
               >
-                <Image src={carrotLeft} className="back-link-image" />
+                <span className="left-arrow"> </span>
                 {backLinkText}
               </Button>
             )}
