@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { mount } from 'enzyme';
 import Theme from '@tcp/core/styles/themes';

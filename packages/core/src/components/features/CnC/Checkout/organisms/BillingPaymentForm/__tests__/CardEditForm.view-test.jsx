@@ -41,11 +41,7 @@ describe('CardEditForm component', () => {
     let funcValue;
     handleEditFromSubmit(obj => {
       funcValue = obj;
-    })({ address: { addressId: '123' }, ccBrand: 'Visa' });
-    expect(funcValue).toEqual({
-      address: { addressId: '123' },
-      cardType: 'VISA',
-      onFileAddressKey: '123',
-    });
+    })({ address: { addressId: '123' } });
+    expect(funcValue.formData).toEqual({ address: { addressId: '123' }, onFileAddressKey: '123' });
   });
 });

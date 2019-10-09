@@ -28,6 +28,33 @@ const popover = message => {
   );
 };
 
+export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, labels) => {
+  return giftServiceTotal > 0 ? (
+    <StyledRowDataContainer>
+      <Text>
+        <BodyCopy
+          bodySize="one"
+          fontFamily="secondary"
+          textAlign="left"
+          fontWeight="regular"
+          fontSize="fs13"
+          text={`${labels.giftServiceLabel}:`}
+        />
+      </Text>
+      <Text>
+        <BodyCopy
+          bodySize="one"
+          fontFamily="secondary"
+          fontWeight="regular"
+          fontSize="fs13"
+          textAlign="right"
+          text={`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
+        />
+      </Text>
+    </StyledRowDataContainer>
+  ) : null;
+};
+
 const getBody = (ledgerSummaryData, labels) => {
   const {
     itemsCount,
@@ -35,6 +62,7 @@ const getBody = (ledgerSummaryData, labels) => {
     subTotal,
     couponsTotal,
     savingsTotal,
+    giftServiceTotal,
     shippingTotal,
     taxesTotal,
     grandTotal,
@@ -97,7 +125,7 @@ const getBody = (ledgerSummaryData, labels) => {
               textAlign="left"
               fontWeight="regular"
               fontSize="fs13"
-              text={`${labels.promotionsLabel}`}
+              text={`${labels.promotionsLabel}:`}
             />
           </Text>
           <Text>
@@ -112,6 +140,7 @@ const getBody = (ledgerSummaryData, labels) => {
           </Text>
         </StyledRowDataContainer>
       ) : null}
+      {createRowForGiftServiceTotal(currencySymbol, giftServiceTotal, labels)}
       {isOrderHasShipping ? (
         <StyledRowDataContainer>
           <Text>

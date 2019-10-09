@@ -3,8 +3,8 @@ import React, { PureComponent, Fragment } from 'react';
 import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath } from '@tcp/core/src/utils';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { toTimeString, getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
+import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import style, {
   TileHeader,
@@ -76,6 +76,7 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
             handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
@@ -109,12 +110,17 @@ class StoreAddressTile extends PureComponent {
         basicInfo: { storeName },
       },
       titleClickCb,
+      dataLocatorKey,
     } = this.props;
     return (
       <div className="store-details-header">
         {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
         {titleClickCb && (
-          <button className="store-name store-name--details-btn" onClick={titleClickCb}>
+          <button
+            className="store-name store-name--details-btn"
+            onClick={titleClickCb}
+            data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
+          >
             {storeName}
           </button>
         )}
@@ -123,7 +129,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const { openStoreDetail, store, labels, openStoreDirections } = this.props;
+    const { openStoreDetails, store, labels, openStoreDirections } = this.props;
     const { isGym, basicInfo, distance } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
@@ -204,11 +210,13 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={openStoreDetail}
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
+            handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            noLink
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </Anchor>
@@ -294,7 +302,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getBrandStoreIcon(cls = '') {
-    const { labels } = this.props;
+    const { labels, dataLocatorKey } = this.props;
     return (
       <BodyCopy
         fontSize="fs12"
@@ -302,6 +310,7 @@ class StoreAddressTile extends PureComponent {
         color="text.primary"
         fontFamily="secondary"
         className={`brand-store ${cls}`}
+        dataLocator={getLocator(`store_${dataLocatorKey}gymboreetstorelabel`)}
       >
         <Image
           src={getIconPath('gymboree-icon')}
@@ -356,7 +365,7 @@ class StoreAddressTile extends PureComponent {
         </BodyCopy>
         <div className="address-meta">
           <div className="address-meta__left">
-            {variation === detailsType && this.getStoreType()}
+            {variation === detailsType && store.features && this.getStoreType()}
             {store.isGym ? this.getBrandStoreIcon() : <div className="brand-store" />}
           </div>
           <div className="address-meta__right">

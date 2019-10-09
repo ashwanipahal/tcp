@@ -12,15 +12,6 @@ exports[`MiniBag template should render correctly 1`] = `
   closeIconDataLocator="mini-bag-close"
   closeIconLeftAligned={true}
   data-locator="mini-bag-modal"
-  heading={
-    <ForwardRef
-      cartItemCount={0}
-      currentPoints=""
-      labels={Object {}}
-      totalRewards=""
-      userName=""
-    />
-  }
   inheritedStyles={
     Array [
       "
@@ -68,11 +59,19 @@ exports[`MiniBag template should render correctly 1`] = `
   isOpen={true}
   overlayClassName="TCPModal__Overlay"
 >
+  <Styled(MiniBagHeader)
+    cartItemCount={0}
+    currentPoints=""
+    labels={Object {}}
+    totalRewards=""
+    userName=""
+  />
   <Styled(MiniBagBody)
     cartItemCount={0}
     currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}
+    onLinkClick={[Function]}
     savedforLaterQty={0}
     subTotal=""
     userName=""

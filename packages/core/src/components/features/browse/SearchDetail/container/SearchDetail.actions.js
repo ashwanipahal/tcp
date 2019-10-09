@@ -55,3 +55,10 @@ export const getSearchResult = payload => {
     payload,
   };
 };
+
+export const resetSlpProducts = payload => {
+  return {
+    type: SLP_CONSTANTS.RESET_PRODUCTS,
+    payload,
+  };
+};

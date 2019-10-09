@@ -25,11 +25,18 @@ const ModalCustomWrapper = styled.View`
       background-color: rgba(0,0,0,.5);
 `
       : ``}
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 const ModalHeading = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: ${props => (props.fullWidth ? '100%' : '80%')};
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      position: relative;
+  `
+      : ``}
 `;
 
 const LineWrapper = styled.View`
@@ -51,10 +58,23 @@ const RowWrapper = styled.View`
     z-index: 1;
   `
       : ``}
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      margin: 14px 14px 0 14px
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`
   width: 20%;
+  ${props =>
+    props.stickyCloseIcon
+      ? `
+      position: absolute;
+      right: 0;
+  `
+      : ``}
 `;
 
 export {
