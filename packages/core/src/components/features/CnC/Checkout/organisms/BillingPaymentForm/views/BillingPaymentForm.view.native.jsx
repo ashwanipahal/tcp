@@ -30,6 +30,7 @@ import {
   CreditCardHeader,
   CreditCardWrapper,
   PaymentMethodMainWrapper,
+  PaymentMethodImage,
 } from '../styles/BillingPaymentForm.style.native';
 
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -172,10 +173,12 @@ export class BillingPaymentForm extends React.PureComponent {
     return (
       <PaymentMethodWrapper>
         {labels.creditCardEnd ? (
-          <CardImage
-            card={selectedCard}
-            cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
-          />
+          <PaymentMethodImage>
+            <CardImage
+              card={selectedCard}
+              cardNumber={`${labels.creditCardEnd}${selectedCard.accountNo.slice(-4)}`}
+            />
+          </PaymentMethodImage>
         ) : null}
         {labels.cvvCode && selectedCard.ccType !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD ? (
           <CvvCode>
