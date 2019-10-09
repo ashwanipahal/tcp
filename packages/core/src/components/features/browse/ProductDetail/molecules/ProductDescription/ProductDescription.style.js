@@ -7,7 +7,7 @@ const upArrowIcon = getIconPath('up_arrow_icon');
 export default css`
   .button-wrapper {
     cursor: pointer;
-    margin: 18px 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     padding: 0;
     text-decoration: underline;
     font-size: 10px;
