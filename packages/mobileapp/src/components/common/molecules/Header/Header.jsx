@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import { updateCartCount } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
@@ -17,12 +20,6 @@ import {
   ImageColor,
   Touchable,
 } from './Header.style';
-
-// @flow
-type Props = {
-  labels: object,
-  navigation: object,
-};
 
 /**
  * This component creates Mobile Header
@@ -49,18 +46,15 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
     };
   }
 
   componentDidMount() {
+    const { updateCartCountAction } = this.props;
     const CART_ITEM_COUNTER = 'cartItemsCount';
     const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
-
     cartValuePromise.then(res => {
-      this.setState({
-        cartVal: parseInt(res || 0, 10),
-      });
+      updateCartCountAction(parseInt(res || 0, 10));
     });
   }
 
@@ -80,7 +74,8 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isDownIcon, cartVal } = this.state;
+    const { isDownIcon } = this.state;
+    const { cartVal } = this.props;
     let headerLabels = {
       lbl_header_storeDefaultTitle: '',
       lbl_header_welcomeMessage: '',
@@ -163,8 +158,30 @@ class Header extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    cartVal: state.Header.cartItemCount,
   };
 };
 
-export default connect(mapStateToProps)(Header);
+export const mapDispatchToProps = dispatch => {
+  return {
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+  };
+};
+
+Header.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}),
+  cartVal: PropTypes.number.isRequired,
+};
+
+Header.defaultProps = {
+  navigation: {},
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InitialPropsHOC(Header));
 export { Header as HeaderVanilla };

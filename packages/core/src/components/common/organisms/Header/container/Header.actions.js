@@ -33,6 +33,13 @@ export const loadHeaderData = payload => {
   };
 };
 
+export const updateCartCount = payload => {
+  return {
+    payload,
+    type: HEADER_CONSTANTS.CART_ITEM_COUNT,
+  };
+};
+
 export default {
   loadHeaderData,
 };
