@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
+import accountPageNameMapping from '../AccountPageNameMapping';
 import utils from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
@@ -104,7 +105,9 @@ Account.getInitialProps = (reduxProps, pageProps) => {
   return {
     ...pageProps,
     ...{
-      pageName: componentToLoad,
+      pageName: accountPageNameMapping[componentToLoad]
+        ? accountPageNameMapping[componentToLoad].pageName
+        : '',
     },
   };
 };
