@@ -115,6 +115,13 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
               "id": "myPlaceRewardsCC",
               "url": "/account/rewardsCreditCard",
             },
+            Object {
+              "component": "favorites",
+              "displayName": "Favorites",
+              "href": "/account?id=account-overview",
+              "id": "favorites",
+              "url": "/account/favorites",
+            },
           ]
         }
       />
@@ -207,6 +214,13 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
               "href": "/account?id=account-overview",
               "id": "myPlaceRewardsCC",
               "url": "/account/rewardsCreditCard",
+            },
+            Object {
+              "component": "favorites",
+              "displayName": "Favorites",
+              "href": "/account?id=account-overview",
+              "id": "favorites",
+              "url": "/account/favorites",
             },
           ]
         }
