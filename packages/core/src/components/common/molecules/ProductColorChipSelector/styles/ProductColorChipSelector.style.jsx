@@ -54,8 +54,8 @@ const styles = css`
 
       input[type='radio']:focus {
         border-radius: 15px;
-        box-shadow: 0 0 0 2pt #87cefa;
-        margin-top: -2px;
+        box-shadow: 0 0 0 2pt ${props => props.theme.colorPalette.blue.A100};
+        margin-top: -3px;
         margin-left: -3px;
         width: 30px;
         height: 30px;
