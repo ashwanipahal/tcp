@@ -4,8 +4,8 @@ import {
   StatusBar,
   SafeAreaView,
   ScrollView,
-  Platform,
   KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';

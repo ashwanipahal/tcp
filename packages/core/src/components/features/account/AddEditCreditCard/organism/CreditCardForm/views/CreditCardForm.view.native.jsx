@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change, FormSection } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -6,6 +7,8 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
+import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddressDropdown from '@tcp/core/src/components/features/account/AddEditCreditCard/molecule/AddressDropdown/views/AddressDropdown.view.native';
 import { fromJS } from 'immutable';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
@@ -19,6 +22,7 @@ import {
   AddAddressButton,
   CancelButton,
   CreditCardContainer,
+  ModalViewWrapper,
   DefaultAddress,
   LeftBracket,
   RightBracket,
@@ -70,6 +74,15 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     showEmailAddress: true,
   };
 
+  constructor(props) {
+    super(props);
+    const { onFileAddresskey } = props;
+    this.state = {
+      addAddressMount: false,
+      selectedAddress: onFileAddresskey,
+    };
+  }
+
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
     let addressOptions =
@@ -95,11 +108,23 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   };
 
   getSelectedAddress = (addressList, onFileAddresskey) => {
-    return addressList && addressList.find(add => add.addressId === onFileAddresskey);
+    const { dispatch } = this.props;
+    const defaultAddress = onFileAddresskey
+      ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
+      : addressList && addressList.find(add => add.primary);
+    dispatch(
+      change(
+        'addEditCreditCard',
+        'onFileAddressKey',
+        (defaultAddress && defaultAddress.addressId) || ''
+      )
+    );
+    return defaultAddress;
   };
 
   handleComponentChange = item => {
     const { dispatch } = this.props;
+    this.setState({ selectedAddress: item });
     dispatch(change('addEditCreditCard', 'onFileAddressKey', item));
   };
 
@@ -121,8 +146,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     }
   };
 
-  showAddressDropdown = addressComponentList => {
-    return addressComponentList && addressComponentList.length > 1;
+  showAddressDropdown = (mailingAddress, addressComponentList) => {
+    return mailingAddress
+      ? addressComponentList && addressComponentList.length > 1
+      : addressComponentList;
+  };
+
+  addressFormVisible = (mailingAddress, selectedAddress) => {
+    return mailingAddress && !selectedAddress;
   };
 
   getSubHeading = (labels, pagesubHeading) => {
@@ -149,7 +180,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      pristine,
       labels,
       addressLabels,
       addressList,
@@ -168,12 +198,13 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       subHeading,
       mailingAddress,
     } = this.props;
-    const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddresskey;
+    const { addAddressMount, selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
-    const addressDropdown = this.showAddressDropdown(addressComponentList);
+    const addressDropdown = this.showAddressDropdown(mailingAddress, addressComponentList);
+    const isAddressFormVisible = this.addressFormVisible(mailingAddress, selectedAddress);
 
-    const defaultAddress = onFileAddresskey
-      ? this.getSelectedAddress(addressList, onFileAddresskey)
+    const defaultAddress = selectedAddress
+      ? this.getSelectedAddress(addressList, selectedAddress)
       : null;
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
@@ -183,110 +214,131 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     }
 
     return (
-      <CreditCardContainer>
-        {showCreditCardFields && (
-          <CreditCardFields
-            {...this.props}
-            updateExpiryDate={this.updateExpiryDate}
-            dto={dto}
-            selectedCard={selectedCard}
-            creditFieldLabels={this.getCreditFieldLabels()}
-            showCvv={false}
-          />
-        )}
-        <AddressWrapper>
-          <Heading
-            mobilefontFamily="secondary"
-            fontSize="fs14"
-            letterSpacing="ls167"
-            textAlign="left"
-            fontWeight="black"
-            text={this.getSubHeading(labels, subHeading)}
-          />
-          {addressDropdown && (
-            <>
-              <TextWrapper>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  textAlign="left"
-                  fontWeight="black"
-                  marginTop="10"
-                  text={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        {...this.props}
+        keyboardShouldPersistTaps="handled"
+      >
+        <CreditCardContainer>
+          {showCreditCardFields && (
+            <CreditCardFields
+              {...this.props}
+              updateExpiryDate={this.updateExpiryDate}
+              dto={dto}
+              selectedCard={selectedCard}
+              creditFieldLabels={this.getCreditFieldLabels()}
+              showCvv={false}
+            />
+          )}
+          <AddressWrapper>
+            <Heading
+              mobilefontFamily="secondary"
+              fontSize="fs14"
+              letterSpacing="ls167"
+              textAlign="left"
+              fontWeight="black"
+              text={this.getSubHeading(labels, subHeading)}
+            />
+            {addressDropdown && (
+              <>
+                <TextWrapper>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs12"
+                    textAlign="left"
+                    fontWeight="black"
+                    marginTop="10"
+                    text={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
+                  />
+                </TextWrapper>
+                <Field
+                  selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
+                  name="onFileAddressKey"
+                  id="onFileAddressKey"
+                  component={AddressDropdown}
+                  dataLocator="payment-billingaddressdd"
+                  data={addressComponentList}
+                  variation="secondary"
+                  dropDownStyle={{ ...dropDownStyle }}
+                  itemStyle={{ ...itemStyle }}
+                  addAddress={this.toggleModal}
+                  onValueChange={itemValue => {
+                    this.handleComponentChange(itemValue);
+                  }}
+                  labels={labels}
+                  selectedValue={onFileAddresskey}
                 />
-              </TextWrapper>
-              <Field
-                selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
-                name="onFileAddressKey"
-                id="onFileAddressKey"
-                component={AddressDropdown}
-                dataLocator="payment-billingaddressdd"
-                data={addressComponentList}
-                variation="secondary"
-                dropDownStyle={{ ...dropDownStyle }}
-                itemStyle={{ ...itemStyle }}
-                onValueChange={itemValue => {
-                  this.handleComponentChange(itemValue);
-                }}
-                addAddress={() => {
-                  this.handleComponentChange('');
-                }}
-                labels={labels}
-                selectedValue={onFileAddresskey}
-              />
-            </>
-          )}
-          {defaultAddress && (
-            <DefaultAddress>
-              <LeftBracket />
-              <Address
-                address={defaultAddress}
-                showCountry={false}
-                showPhone={false}
-                showName
-                dataLocatorPrefix="address"
-                customStyle={CustomAddress}
-              />
-              <RightBracket />
-            </DefaultAddress>
-          )}
-          {showAddressForm && (
-            <ViewWithSpacing spacingStyles="margin-top-LRG">
-              <FormSection name="address">
-                <AddressFields
-                  labels={addressLabels}
-                  showDefaultCheckbox={false}
-                  showPhoneNumber={false}
-                  formName={constants.FORM_NAME}
-                  formSection="address"
-                  dispatch={dispatch}
-                  addressFormLabels={addressFormLabels}
-                  showUserName={showUserName}
-                  showEmailAddress={showEmailAddress}
-                  initialValues={initialValues}
-                  isGuest={false}
+              </>
+            )}
+            {defaultAddress && (
+              <DefaultAddress>
+                <LeftBracket />
+                <Address
+                  address={defaultAddress}
+                  showCountry={false}
+                  showPhone={false}
+                  showName
+                  dataLocatorPrefix="address"
+                  customStyle={CustomAddress}
                 />
-              </FormSection>
-            </ViewWithSpacing>
+                <RightBracket />
+              </DefaultAddress>
+            )}
+            {isAddressFormVisible && (
+              <ViewWithSpacing spacingStyles="margin-top-LRG">
+                <FormSection name="address">
+                  <AddressFields
+                    labels={addressLabels}
+                    showDefaultCheckbox={false}
+                    showPhoneNumber={false}
+                    formName={constants.FORM_NAME}
+                    formSection="address"
+                    dispatch={dispatch}
+                    addressFormLabels={addressFormLabels}
+                    showUserName={showUserName}
+                    showEmailAddress={showEmailAddress}
+                    initialValues={initialValues}
+                  />
+                </FormSection>
+              </ViewWithSpacing>
+            )}
+          </AddressWrapper>
+          <ActionsWrapper>
+            <Button
+              fill="BLUE"
+              buttonVariation="variable-width"
+              text={this.getSubmitCTAText(labels, mailingAddress, isEdit)}
+              style={AddAddressButton}
+              onPress={handleSubmit}
+            />
+            <Button
+              fill="WHITE"
+              onPress={onClose}
+              buttonVariation="variable-width"
+              text={getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
+              style={CancelButton}
+            />
+          </ActionsWrapper>
+          {addAddressMount && (
+            <ModalNative
+              isOpen={addAddressMount}
+              onRequestClose={this.toggleModal}
+              heading={getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook')}
+            >
+              <ModalViewWrapper>
+                <AddEditAddressContainer
+                  onCancel={this.toggleModal}
+                  addressBookLabels={addressLabels}
+                  showHeading={false}
+                  currentForm="AddAddress"
+                  toggleAddressModal={this.toggleModal}
+                  address={null}
+                />
+              </ModalViewWrapper>
+            </ModalNative>
           )}
-        </AddressWrapper>
-        <ActionsWrapper>
-          <Button
-            fill="BLUE"
-            buttonVariation="variable-width"
-            text={this.getSubmitCTAText(labels, mailingAddress, isEdit)}
-            style={AddAddressButton}
-            onPress={handleSubmit}
-          />
-          <Button
-            fill="WHITE"
-            onPress={onClose}
-            buttonVariation="variable-width"
-            text={getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
-            style={CancelButton}
-          />
-        </ActionsWrapper>
-      </CreditCardContainer>
+        </CreditCardContainer>
+      </ScrollView>
     );
   }
 }

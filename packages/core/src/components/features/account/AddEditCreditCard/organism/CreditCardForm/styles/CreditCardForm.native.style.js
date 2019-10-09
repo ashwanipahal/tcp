@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 const CreditCardContainer = styled.View`
-  position: relative;
-  margin: ${props => `0 ${props.theme.spacing.ELEM_SPACING.SM}`};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const AddressWrapper = styled.View`
