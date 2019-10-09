@@ -191,11 +191,12 @@ class Header extends React.PureComponent<Props> {
 Header.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   favStore: PropTypes.shape({}),
-  loadFavoriteStore: PropTypes.func.isRequired,
+  loadFavoriteStore: PropTypes.func,
 };
 
 Header.defaultProps = {
   favStore: {},
+  loadFavoriteStore: () => null,
 };
 
 const mapStateToProps = state => {
