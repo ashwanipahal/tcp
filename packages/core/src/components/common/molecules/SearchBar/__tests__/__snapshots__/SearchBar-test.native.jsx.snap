@@ -5,7 +5,9 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": undefined,
+      "_foldedDefaultProps": Object {
+        "openSearchProductPage": null,
+      },
       "attrs": Array [],
       "displayName": "Styled(SearchBar)",
       "inlineStyle": InlineStyle {
@@ -31,5 +33,6 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
     }
   }
   forwardedRef={null}
+  openSearchProductPage={null}
 />
 `;

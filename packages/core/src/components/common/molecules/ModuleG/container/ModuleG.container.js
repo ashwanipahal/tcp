@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ModuleJ from '../view/ModuleG.native';
+import ModuleG from '../views';
 
 export const mapStateToProps = state => {
   const { ProductTabList } = state;
@@ -10,4 +10,4 @@ export const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ModuleJ);
+export default connect(mapStateToProps)(ModuleG);

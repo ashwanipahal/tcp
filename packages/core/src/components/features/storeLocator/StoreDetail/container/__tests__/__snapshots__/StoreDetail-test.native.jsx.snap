@@ -6,6 +6,7 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
     <StoreAddressTile
       changeFavoriteStore={[MockFunction]}
       className={null}
+      dataLocatorKey=""
       isFavorite={true}
       isListingHeader={false}
       labels={
