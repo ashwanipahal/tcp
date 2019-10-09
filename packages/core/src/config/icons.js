@@ -93,7 +93,7 @@ export default {
   'map-marker-icon': '/static/images/marker-icon.svg',
   'venmo-logo-blue': '/static/images/venmo_logo_blue.png',
   'sample-receipt': '/static/images/sample-receipt.png',
-  'cart-icon-white': '/static/images/bag-white.svg',
+  'cart-icon-white': '/static/images/white-bag.svg',
   'facebook-icon': '/static/images/facebook@2x.svg',
   'twitter-icon': '/static/images/twitter-black.svg',
   'pinterest-icon': '/static/images/pinterest@2x.svg',

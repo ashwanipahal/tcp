@@ -59,23 +59,23 @@ class MyOffersCouponView extends PureComponent {
     closedOverlay();
   };
 
-  render() {
+  /**
+   * This function will render carousel view
+   * @param {} -
+   */
+  renderCarouselView = () => {
     const {
       isFetching,
       labels,
       commonLabels,
       handleApplyCouponFromList,
       allCouponList,
-      className,
       handleRemoveCoupon,
       handleErrorCoupon,
       isCarouselView,
       closedOverlay,
       sliceCount,
     } = this.props;
-
-    const { detailStatus, helpStatus, selectedCoupon } = this.state;
-    const couponListSize = allCouponList && allCouponList.size;
 
     const CAROUSEL_OPTIONS = {
       autoplay: false,
@@ -97,6 +97,80 @@ class MyOffersCouponView extends PureComponent {
         },
       ],
     };
+    return allCouponList ? (
+      <BodyCopy component="div" className="coupon_carousel">
+        {allCouponList.size > 0 && (
+          <Carousel
+            options={CAROUSEL_OPTIONS}
+            carouselConfig={{
+              customArrowLeft: getIconPath('smallright'),
+              customArrowRight: getIconPath('smallright'),
+              arrow: 'small',
+              type: 'light',
+            }}
+            carouselTheme="dark"
+          >
+            {allCouponList.slice(0, sliceCount).map(coupon => {
+              return (
+                <CouponCard
+                  key={coupon.id}
+                  labels={labels}
+                  commonLabels={commonLabels}
+                  isFetching={isFetching}
+                  coupon={coupon}
+                  handleErrorCoupon={handleErrorCoupon}
+                  couponDetailClick={this.couponDetailClick}
+                  helpAnchorClick={this.toggleNeedHelpModal}
+                  onApply={handleApplyCouponFromList}
+                  onRemove={handleRemoveCoupon}
+                  isCarouselView={isCarouselView}
+                  className="coupon-slider"
+                />
+              );
+            })}
+            <BodyCopy component="div" className="coupon_viewall_tile">
+              <BodyCopy className="elem-mt-XXXL" component="div" textAlign="center">
+                <Button
+                  className="coupon_button_black"
+                  buttonVariation="variable-width"
+                  type="submit"
+                  data-locator="coupon_viewall_Cta"
+                  onClick={this.goToWalletPage}
+                >
+                  {getLabelValue(commonLabels, 'lbl_my_rewards_viewAll', 'placeRewards')}
+                </Button>
+              </BodyCopy>
+            </BodyCopy>
+          </Carousel>
+        )}
+
+        {allCouponList.size === 0 && (
+          <Row>
+            <Col
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: 12,
+              }}
+            >
+              <EmptyOffersList commonLabels={commonLabels} closedOverlay={closedOverlay} />
+            </Col>
+          </Row>
+        )}
+      </BodyCopy>
+    ) : null;
+  };
+
+  render() {
+    const {
+      labels,
+      commonLabels,
+      handleApplyCouponFromList,
+      allCouponList,
+      className,
+    } = this.props;
+    const { detailStatus, helpStatus, selectedCoupon } = this.state;
+    const couponListSize = allCouponList && allCouponList.size;
     return (
       <>
         <Row className={className}>
@@ -178,67 +252,7 @@ class MyOffersCouponView extends PureComponent {
                 </BodyCopy>
               )}
             </BodyCopy>
-            <BodyCopy component="div" className="coupon_carousel">
-              <Carousel
-                options={CAROUSEL_OPTIONS}
-                carouselConfig={{
-                  customArrowLeft: getIconPath('smallright'),
-                  customArrowRight: getIconPath('smallright'),
-                  arrow: 'small',
-                  type: 'light',
-                }}
-                carouselTheme="dark"
-              >
-                {couponListSize > 0 &&
-                  allCouponList.slice(0, sliceCount).map(coupon => {
-                    return (
-                      <CouponCard
-                        key={coupon.id}
-                        labels={labels}
-                        commonLabels={commonLabels}
-                        isFetching={isFetching}
-                        coupon={coupon}
-                        handleErrorCoupon={handleErrorCoupon}
-                        couponDetailClick={this.couponDetailClick}
-                        helpAnchorClick={this.toggleNeedHelpModal}
-                        onApply={handleApplyCouponFromList}
-                        onRemove={handleRemoveCoupon}
-                        isCarouselView={isCarouselView}
-                        className="coupon-slider"
-                      />
-                    );
-                  })}
-                {couponListSize > 0 && (
-                  <BodyCopy component="div" className="coupon_viewall_tile">
-                    <BodyCopy className="elem-mt-XXXL" component="div" textAlign="center">
-                      <Button
-                        className="coupon_button_black"
-                        buttonVariation="variable-width"
-                        type="submit"
-                        data-locator="coupon_viewall_Cta"
-                        onClick={this.goToWalletPage}
-                      >
-                        {getLabelValue(commonLabels, 'lbl_my_rewards_viewAll', 'placeRewards')}
-                      </Button>
-                    </BodyCopy>
-                  </BodyCopy>
-                )}
-              </Carousel>
-
-              {couponListSize && couponListSize === 0 && (
-                <Row>
-                  <Col
-                    colSize={{
-                      small: 6,
-                      medium: 8,
-                      large: 12,
-                    }}
-                  >
-                    <EmptyOffersList commonLabels={commonLabels} closedOverlay={closedOverlay} />
-                  </Col>
-                </Row>
-              )}
-            </BodyCopy>
+            {this.renderCarouselView()}
           </Col>
         </Row>
         <CouponDetailModal
