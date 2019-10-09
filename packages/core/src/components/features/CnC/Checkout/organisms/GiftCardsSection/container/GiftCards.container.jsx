@@ -26,7 +26,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     getCardListAction();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       handleSetOrderBalanceTotal,
       itemOrderGrandTotal,
@@ -36,7 +36,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getCardListAction,
       resetAddGiftCardAction,
     } = this.props;
-    handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
+
+    if (prevProps.itemsGiftCardTotal !== itemsGiftCardTotal) {
+      handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
+    }
+
     if (addGiftCardResponse === 'success') {
       hideAddGiftCard();
       getCardListAction();
