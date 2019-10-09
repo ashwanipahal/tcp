@@ -37,7 +37,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       resetAddGiftCardAction,
     } = this.props;
 
-    if (prevProps.itemsGiftCardTotal !== itemsGiftCardTotal) {
+    if (prevProps && prevProps.itemsGiftCardTotal !== itemsGiftCardTotal) {
       handleSetOrderBalanceTotal(itemOrderGrandTotal - itemsGiftCardTotal);
     }
 
