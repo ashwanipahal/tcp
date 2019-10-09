@@ -125,7 +125,7 @@ class TCPWebApp extends App {
     let payload = { siteConfig: false };
     // Get initial props is getting called twice on server
     // This check ensures this block is executed once since Component is not available in first call
-    if (Component.displayName && isServer) {
+    if (isServer) {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
