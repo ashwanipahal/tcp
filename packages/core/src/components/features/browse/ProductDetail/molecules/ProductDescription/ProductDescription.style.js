@@ -16,7 +16,8 @@ export default css`
   }
 
   .part-number-section {
-    margin: 18px 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    text-align: right;
   }
 
   .show-description-list {
