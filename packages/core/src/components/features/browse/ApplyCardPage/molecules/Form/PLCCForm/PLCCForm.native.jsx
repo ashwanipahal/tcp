@@ -268,14 +268,7 @@ class PLCCForm extends React.PureComponent<Props> {
             }}
           />
           <AddressLine1Container>
-            <Field
-              label=""
-              component={TextBox}
-              title=""
-              type="hidden"
-              id="addressLine1"
-              name="addressLine1"
-            />
+            <Field label="" component={TextBox} title="" type="hidden" id="addressLine1" />
           </AddressLine1Container>
         </NameFieldContainer>
 
