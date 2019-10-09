@@ -185,7 +185,6 @@ class MiniBagBody extends React.PureComponent {
                 closeMiniBag={closeMiniBag}
                 showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
               />
-              <LoyaltyBanner />
               <AirmilesBanner />
             </div>
           </React.Fragment>
@@ -202,6 +201,7 @@ class MiniBagBody extends React.PureComponent {
             </BodyCopy>
           </div>
         )}
+        <LoyaltyBanner />
       </div>
     );
   }

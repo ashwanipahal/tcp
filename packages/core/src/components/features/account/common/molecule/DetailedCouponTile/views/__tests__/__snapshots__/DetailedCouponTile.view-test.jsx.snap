@@ -15,7 +15,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="overlay hide-on-desktop hide-on-tablet"
+    className="overlay"
     color="text.primary"
     component="div"
     data-locator="coupon-overlay"
@@ -463,7 +463,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="overlay hide-on-desktop hide-on-tablet"
+    className="overlay"
     color="text.primary"
     component="div"
     data-locator="coupon-overlay"
