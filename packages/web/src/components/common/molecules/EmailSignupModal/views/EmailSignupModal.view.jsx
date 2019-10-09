@@ -115,9 +115,11 @@ class EmailSignupModal extends React.PureComponent {
                   className="img-wrapper"
                 >
                   <DamImage
-                    alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    imgData={{
+                      url: formViewConfig.lbl_SignUp_imageSrc,
+                      alt: formViewConfig.imageAltText,
+                    }}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
@@ -151,9 +153,11 @@ class EmailSignupModal extends React.PureComponent {
                     className="img-wrapper"
                   >
                     <DamImage
-                      alt={formViewConfig.imageAltText}
                       imgConfigs={IMG_DATA.imgConfig}
-                      imgData={formViewConfig.lbl_SignUp_imageSrc}
+                      imgData={{
+                        url: formViewConfig.lbl_SignUp_imageSrc,
+                        alt: formViewConfig.imageAltText,
+                      }}
                     />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>
