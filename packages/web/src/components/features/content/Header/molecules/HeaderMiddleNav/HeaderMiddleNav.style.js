@@ -37,6 +37,8 @@ export default css`
     }
   }
   .header-middle-login-section {
+    position: absolute;
+    right: 0;
     margin-top: 30px;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 71%;

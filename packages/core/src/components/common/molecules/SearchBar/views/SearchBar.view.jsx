@@ -56,11 +56,11 @@ class SearchBar extends React.PureComponent {
   closeSearchBar = e => {
     e.preventDefault();
     const { setSearchState } = this.props;
+    this.setState({ showProduct: false });
     setSearchState(false);
   };
 
-  initiateSearch = e => {
-    e.preventDefault();
+  startInitiateSearch = () => {
     const { setSearchState } = this.props;
     let searchText = this.searchInput.current.value;
     if (searchText) {
@@ -82,6 +82,15 @@ class SearchBar extends React.PureComponent {
       this.redirectToSearchPage(searchText);
     }
     setSearchState(false);
+  };
+
+  initiateSearch = e => {
+    e.preventDefault();
+    this.startInitiateSearch();
+  };
+
+  initiateSearchBySubmit = () => {
+    this.startInitiateSearch();
   };
 
   redirectToSearchPage = searchText => {
@@ -128,13 +137,15 @@ class SearchBar extends React.PureComponent {
           {isSearchOpen ? (
             <div className="searchWrapper">
               <div className="searchbar">
-                <input
-                  ref={this.searchInput}
-                  onChange={this.changeSearchText}
-                  className="search-input"
-                  maxLength="50"
-                  onSubmit={this.initiateSearch}
-                />
+                <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
+                  <input
+                    id="search-input"
+                    ref={this.searchInput}
+                    onChange={this.changeSearchText}
+                    className="search-input"
+                    maxLength="50"
+                  />
+                </form>
                 <Image
                   alt="search"
                   className="search-image icon-small"

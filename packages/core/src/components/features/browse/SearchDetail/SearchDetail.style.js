@@ -210,4 +210,62 @@ export default css`
   .suggestionHide {
     display: none;
   }
+
+  .matchBox {
+    width: 240px;
+    display: table-cell;
+    border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    border-top: 0px;
+    box-sizing: border-box;
+    z-index: 100000;
+    position: absolute;
+    background-color: ${props => props.theme.colors.WHITE};
+    overflow-y: auto;
+    border-radius: 20px;
+    margin: 45px 10px 0 10px;
+  }
+
+  .boxHead {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .matchLinkBox .matchLinkBoxHead,
+  .matchProductBox .matchProductHead {
+    height: 52px;
+    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+    line-height: 52px;
+    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .matchLinkBox .matchLinkBoxBody {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  }
+
+  .matchProductBox .matchProductBody {
+    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+  }
+
+  .matchProductBox .matchProductBody ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  li.linkName {
+    height: 40px;
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+  }
+
+  li.productBox {
+    width: 24%;
+    height: 81px;
+    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
+    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+  }
+  .autosuggest-image {
+    height: 80px;
+    width: 80px;
+  }
 `;
