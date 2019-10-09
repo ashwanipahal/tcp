@@ -40,7 +40,6 @@ const ProductCustomizeFormPart = props => {
   const modifiedPdpUrl = getProductListToPathInMobileApp(currentColorPdpUrl) || '';
   // const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const colorProductId = currentColorEntry && currentColorEntry.colorProductId;
-
   return (
     <PickUpSkUSectionContainer>
       <ProductSummaryContainer>
