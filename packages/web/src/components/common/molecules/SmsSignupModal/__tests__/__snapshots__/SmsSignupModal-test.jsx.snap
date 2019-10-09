@@ -21,8 +21,8 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -72,6 +72,12 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   "t_smsSignUp_img_t",
                   "t_smsSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>
@@ -336,8 +342,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -381,6 +387,12 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 "t_smsSignUp_img_t",
                 "t_smsSignUp_img_d",
               ]
+            }
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
           />
         </Styled(Col)>
@@ -455,8 +467,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -506,6 +518,12 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   "t_smsSignUp_img_t",
                   "t_smsSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>

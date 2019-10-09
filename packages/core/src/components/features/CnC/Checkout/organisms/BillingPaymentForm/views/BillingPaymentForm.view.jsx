@@ -12,7 +12,11 @@ import Card from '../../../../../../common/molecules/Card';
 import { Row, Col, Heading, TextBox, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import constants from '../container/CreditCard.constants';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
-import utility from '../../../util/utility';
+import utility, {
+  getExpirationRequiredFlag,
+  getCreditCardList,
+  getSelectedCard,
+} from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import DropdownList from './CreditCardDropdownList.view';
 import getCvvInfo from '../../../molecules/CVVInfo';
@@ -22,9 +26,6 @@ import AddressFields from '../../../../../../common/molecules/AddressFields';
 import {
   propTypes,
   defaultProps,
-  getExpirationRequiredFlag,
-  getSelectedCard,
-  getCreditCardList,
   getCardOptions,
   onCCDropUpdateChange,
   onAddNewCreditCardUpdate,
