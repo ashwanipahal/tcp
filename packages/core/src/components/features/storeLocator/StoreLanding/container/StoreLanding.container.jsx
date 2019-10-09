@@ -115,7 +115,6 @@ export class StoreLanding extends PureComponent {
 
   render() {
     const { navigation } = this.props;
-    const { searchDone, geoLocationEnabled } = this.state;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -128,8 +127,7 @@ export class StoreLanding extends PureComponent {
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
-        searchDone={searchDone}
-        geoLocationEnabled={geoLocationEnabled}
+        {...this.state}
       />
     );
   }
