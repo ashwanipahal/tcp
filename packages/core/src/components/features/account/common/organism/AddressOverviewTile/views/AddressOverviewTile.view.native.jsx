@@ -29,7 +29,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
   };
 
   /**
-   * Redirects to corresponding page based on default billing address availability
+   *  Redirects to corresponding page based on default billing address availability
    */
   defaultBillingCta = defaultBillingAddress => {
     const { handleComponentChange } = this.props;

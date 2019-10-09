@@ -26,6 +26,36 @@ describe('AddressOverviewTile component', () => {
     const component = shallow(<AddressOverviewTile labels={labels} addressList={addresses} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('test defaultBillingCta redirection to addressBookMobile', () => {
+    const props = {
+      addresses: [
+        {
+          firstName: 'test1',
+          lastName: 'test2',
+          addressLine: ['addressline s1', 'addresslines 2'],
+          city: 'test city',
+          country: 'test country',
+          phone1: '1234567890',
+        },
+      ],
+      labels: {},
+      handleComponentChange: jest.fn(),
+    };
+    const component = shallow(<AddressOverviewTile {...props} />);
+    component.instance().defaultBillingCta(props.addresses);
+    expect(props.handleComponentChange).toHaveBeenCalled();
+  });
+  it('test defaultBillingCta redirection to paymentGiftCardsPage', () => {
+    const props = {
+      addresses: [],
+      labels: {},
+      handleComponentChange: jest.fn(),
+    };
+    const component = shallow(<AddressOverviewTile {...props} />);
+    component.instance().defaultBillingCta(props.addresses);
+    expect(props.handleComponentChange).toHaveBeenCalled();
+  });
 });
 
 describe('AddressOverviewTile render empty address component', () => {
