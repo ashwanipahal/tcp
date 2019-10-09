@@ -155,11 +155,13 @@ class ImageCarousel extends React.PureComponent {
                 text="100"
               />
             </FavoriteContainer>
-            <PaginationDots
-              numberOfDots={imageUrls.length}
-              selectedIndex={activeSlideIndex}
-              onPress={this.onPageChange}
-            />
+            {imageUrls.length > 1 && (
+              <PaginationDots
+                numberOfDots={imageUrls.length}
+                selectedIndex={activeSlideIndex}
+                onPress={this.onPageChange}
+              />
+            )}
             <DownloadContainer>
               <CustomIcon
                 iconFontName={ICON_FONT_CLASS.Icomoon}

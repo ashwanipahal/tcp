@@ -222,7 +222,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'auto';
+    body.style['overflow-y'] = 'auto';
   }
 };
 
@@ -232,7 +232,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'hidden';
+    body.style['overflow-y'] = 'hidden';
   }
 };
 

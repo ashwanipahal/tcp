@@ -12,7 +12,7 @@ exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla corr
   width={10}
 >
   <Styled(Image)
-    accessibilityLabel="image"
+    accessibilityLabel="image "
     accessibilityRole="image"
     borderRadius={6}
     borderWidth={1}
