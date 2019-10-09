@@ -35,27 +35,8 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   static getDerivedStateFromProps(props, state) {
     const { component } = props;
     const { dropDownItem } = state;
-    let newComponent = null;
     if (component !== dropDownItem) {
-      switch (component) {
-        case 'accountOverview':
-          newComponent = 'accountOverviewMobile';
-          break;
-        case 'profile':
-          newComponent = 'profileInformationMobile';
-          break;
-        case 'myPreferences':
-          newComponent = 'myPreferencePageMobile';
-          break;
-        case 'pointHistoryPageMobile':
-          newComponent = 'myPreferencePageMobile';
-          break;
-        default:
-          newComponent = component;
-      }
-      return {
-        dropDownItem: newComponent,
-      };
+      return { dropDownItem: component };
     }
     return null;
   }

@@ -47,7 +47,6 @@ export class Account extends React.PureComponent<Props, State> {
   /**
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
-  // eslint-disable-next-line complexity
   getComponent = component => {
     switch (component) {
       case 'paymentGiftCardsPageMobile':
@@ -55,11 +54,9 @@ export class Account extends React.PureComponent<Props, State> {
       case 'myPlaceRewardsMobile':
         return 'myPlaceRewardsMobile';
       case 'accountOverviewMobile':
-      case 'accountOverview':
-        return 'accountOverview';
+        return 'accountOverviewMobile';
       case 'profileInformationMobile':
-      case 'profile':
-        return 'profile';
+        return 'profileInformationMobile';
       case 'myWalletPageMobile':
         return 'myWalletPageMobile';
       case 'earnExtraPointsPageMobile':
@@ -67,8 +64,7 @@ export class Account extends React.PureComponent<Props, State> {
       case 'pointsHistoryMobile':
         return 'pointHistoryPageMobile';
       case 'myPreferencePageMobile':
-      case 'myPreferences':
-        return 'myPreferences';
+        return 'myPreferencePageMobile';
       case 'PointsClaimPageMobile':
         return 'PointsClaimPageMobile';
       default:
