@@ -200,7 +200,6 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
       showEmailAddress={false}
       showPhoneNumber={false}
       showUserName={true}
-      state=""
       variation="primary"
     />
   </FormSection>
@@ -255,7 +254,6 @@ exports[`CheckoutAddress should render correctly 1`] = `
       showEmailAddress={false}
       showPhoneNumber={false}
       showUserName={true}
-      state=""
       variation="primary"
     />
   </FormSection>

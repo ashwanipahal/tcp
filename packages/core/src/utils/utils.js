@@ -411,8 +411,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
