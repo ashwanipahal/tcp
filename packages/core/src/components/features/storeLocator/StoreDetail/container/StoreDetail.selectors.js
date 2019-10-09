@@ -49,18 +49,22 @@ export const formatCurrentStoreToObject = store => {
   if (store && store.size > 0) {
     const formattedStore = {};
     const basicInfoState = store.get('basicInfo');
-    const addressState = basicInfoState.get('address');
-    const coordinateState = basicInfoState.get('coordinates');
+    const addressState = basicInfoState.size > 0 && basicInfoState.get('address');
+    const coordinateState = basicInfoState.size > 0 && basicInfoState.get('coordinates');
     const address = {};
     const coordinates = {};
-    addressState.forEach((value, key) => {
-      address[key] = value;
-      return value;
-    });
-    coordinateState.forEach((value, key) => {
-      coordinates[key] = value;
-      return value;
-    });
+    if (Array.isArray(addressState)) {
+      addressState.forEach((value, key) => {
+        address[key] = value;
+        return value;
+      });
+    }
+    if (Array.isArray(coordinateState)) {
+      coordinateState.forEach((value, key) => {
+        coordinates[key] = value;
+        return value;
+      });
+    }
     formattedStore.basicInfo = {
       id: basicInfoState.get('id'),
       storeName: basicInfoState.get('storeName'),

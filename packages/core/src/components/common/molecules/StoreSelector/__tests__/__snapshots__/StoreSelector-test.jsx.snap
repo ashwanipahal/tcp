@@ -3243,6 +3243,7 @@ exports[`StoreSelector component should default set title as value for selected 
     >
       <StoreSelector
         className="sc-fjdhpX knGUel"
+        dataLocator=""
         defaultSelectText="Test Text"
         options={
           Array [
@@ -12044,6 +12045,7 @@ exports[`StoreSelector component should render correctly 1`] = `
     >
       <StoreSelector
         className="sc-fjdhpX knGUel"
+        dataLocator=""
         defaultSelectText="Test Text"
         options={
           Array [

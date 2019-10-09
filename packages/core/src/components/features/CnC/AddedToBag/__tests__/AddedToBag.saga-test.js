@@ -1,7 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
 import { addToCartEcom, addItemToCartBopis, AddedToBagSaga } from '../container/AddedToBag.saga';
-import { SetAddedToBagData, openAddedToBag, AddToCartError } from '../container/AddedToBag.actions';
+import {
+  SetAddedToBagData,
+  openAddedToBag,
+  AddToPickupError,
+} from '../container/AddedToBag.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
@@ -83,7 +87,7 @@ describe('Added to bag saga', () => {
     addItemToCartBopisGen1.next();
     addItemToCartBopisGen1.next();
     addItemToCartBopisGen1.throw(err);
-    expect(addItemToCartBopisGen1.next().value).toEqual(put(AddToCartError('ERROR')));
+    expect(addItemToCartBopisGen1.next().value).toEqual(put(AddToPickupError('ERROR')));
   });
 
   describe('CardListSaga', () => {

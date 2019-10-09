@@ -14,6 +14,11 @@ export const AddToCartError = payload => ({
   payload,
 });
 
+export const AddToPickupError = payload => ({
+  type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_PICKUP_ERROR,
+  payload,
+});
+
 export const SetAddedToBagData = payload => ({
   type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG,
   payload,
@@ -25,6 +30,10 @@ export const openAddedToBag = () => ({
 
 export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
+});
+
+export const clearAddToPickupErrorState = () => ({
+  type: ADDEDTOBAG_CONSTANTS.CLEAR_ADD_TO_PICKUP_ERROR_STATE,
 });
 
 export const clearAddToBagErrorState = () => ({

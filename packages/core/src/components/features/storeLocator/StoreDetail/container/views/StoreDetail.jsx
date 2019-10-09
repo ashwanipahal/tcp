@@ -52,9 +52,10 @@ const StoreDetail = ({
         handleLinkClick={routesBack}
         noLink
         className={`${className}__backlink`}
+        title={getLabelValue(labels, 'lbl_storedetails_backLink')}
       >
-        <span className="left-arrow"> </span>
-        Back
+        <span className="left-arrow" />
+        {getLabelValue(labels, 'lbl_storedetails_backLink')}
       </Anchor>
       <Row>
         <Col colSize={{ small: 6, medium: 4, large: 4 }}>

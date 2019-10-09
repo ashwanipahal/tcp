@@ -47,6 +47,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
     headingFontWeight="semibold"
     horizontalBar={false}
     iconType="arrow"
+    inheritedStyles=""
     isOpen={true}
     isOverlay={false}
     onRequestClose={[MockFunction]}

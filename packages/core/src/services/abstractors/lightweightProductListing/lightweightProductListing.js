@@ -15,7 +15,7 @@ const Abstractor = {
         'variants.count': 0,
         version: 'V2',
         pagetype: 'boolean',
-        'p-id': `categoryPathId:"${categoryId}"`,
+        'p-id': `categoryPathId:"${categoryId.replace(/\|/g, '<')}"`,
         fields,
       },
       webService: endpoints.getProductviewbyCategory,

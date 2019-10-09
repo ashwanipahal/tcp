@@ -23,6 +23,7 @@ import StyledPLCCFormWrapper from '../styles/PLCCForm.style';
 import PLCCTimeoutInterimModal from '../../Modals/PLCCTmeoutInterimModal';
 import { getPageViewGridRowSize, fetchPLCCFormErrors } from '../../../utils/utility';
 import Notification from '../../../../../../common/molecules/Notification';
+import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 const handleSubmitFail = errors => {
   const formattedErrors = fetchPLCCFormErrors(errors);
@@ -166,10 +167,10 @@ class PLCCForm extends React.PureComponent {
       handleSubmit,
       labels,
       isPLCCModalFlow,
-      bagItems,
       applicationStatus,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
+    const bagItems = getCartItemCount();
     return (
       <StyledPLCCFormWrapper isPLCCModalFlow={isPLCCModalFlow}>
         <form onSubmit={handleSubmit}>
@@ -344,7 +345,6 @@ PLCCForm.propTypes = {
   isPLCCModalFlow: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  bagItems: PropTypes.bool.isRequired,
   applicationStatus: PropTypes.string.isRequired,
   labels: PropTypes.shape({
     plcc_form_checkbox_text: PropTypes.string.isRequired,

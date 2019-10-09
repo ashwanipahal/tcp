@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../atoms';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../atoms/Icon/Icon.constants';
@@ -13,10 +14,15 @@ import withStyles from '../../../hoc/withStyles';
  * @param {*} props
  */
 class SearchBar extends React.PureComponent {
+  onSearchFocus = () => {
+    const { openSearchProductPage } = this.props;
+    if (openSearchProductPage) openSearchProductPage();
+  };
+
   render() {
     return (
       <View {...this.props}>
-        <TouchableOpacityContainer activeOpacity={1}>
+        <TouchableOpacityContainer activeOpacity={1} onPress={this.onSearchFocus}>
           <CustomIcon
             iconFontName={ICON_FONT_CLASS.Icomoon}
             name={ICON_NAME.search}
@@ -41,5 +47,13 @@ class SearchBar extends React.PureComponent {
     );
   }
 }
+
+SearchBar.propTypes = {
+  openSearchProductPage: PropTypes.func,
+};
+
+SearchBar.defaultProps = {
+  openSearchProductPage: null,
+};
 
 export default withStyles(SearchBar, styles);
