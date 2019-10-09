@@ -367,61 +367,7 @@ exports[`HomePageView should render correctly 1`] = `
     theme={Object {}}
     url=""
   />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill=""
-    fullWidth={true}
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    style={
-      Object {
-        "margin": 30,
-      }
-    }
-    text="Store Details"
-    theme={Object {}}
-    url=""
-  />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill=""
-    fullWidth={true}
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    style={
-      Object {
-        "margin": 30,
-      }
-    }
-    text="Store Landing"
-    theme={Object {}}
-    url=""
-  />
-  <ModuleG
+  <Connect(Styled(ErrorBoundary))
     bgColor="#d8d8d8"
     divTabs={
       Array [
