@@ -4,8 +4,10 @@ export default css`
   background-color: ${props => props.theme.colors.WHITE};
 
   .header-topnav__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
-    padding: 0 14px;
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -15,11 +17,6 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       padding: 15px 15px 0 6px;
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    }
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      display: flex;
-      justify-content: center;
     }
   }
 
@@ -74,7 +71,7 @@ export default css`
   .exitFromCheckout {
     position: absolute;
     top: 16px;
-    left: 0px;
+    left: -7px;
     border: none;
     background: transparent;
 
