@@ -369,11 +369,11 @@ export const formValidationRules = {
     required: true,
     cvvNumber: true,
     cvvLengthThree: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
     // amex validation, validates length === 4 only if type is amex, otherwise it passes validation
     cvvLengthFour: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
   },
   phoneNumberWithAlt: {
