@@ -1,11 +1,131 @@
-/* eslint-disable */
 import React from 'react';
+import { isMobileApp } from '@tcp/core/src/utils';
+import { PropTypes } from 'prop-types';
+import ProductAltImages from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/views/ProductAltImages';
 import { Row, Col, BodyCopy } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
+import MoveItem from '../molecules/MoveItem';
+import ProductTitle from '../molecules/ProductTitle';
+import ProductRemoveSection from '../molecules/ProductRemoveSection';
+import ProductSKUInfo from '../molecules/ProductSKUInfo';
+import ProductPricesSection from '../molecules/ProductPricesSection';
+import ProductWishlistIcon from '../molecules/ProductWishlistIcon';
+import ProductStatus from '../molecules/ProductStatus';
+import ProductPurchaseSection from '../molecules/ProductPurchaseSection';
+import { STATUS, AVAILABILITY } from '../container/Favorites.constants';
 
 const FavoritesView = props => {
-  const { className } = props;
+  const {
+    className,
+    wishlistsSummaries,
+    killSwitchKeepAliveProduct,
+    activeWishList,
+    createNewWishListMoveItem,
+    deleteWishList,
+    getActiveWishlist,
+    createNewWishList,
+    setLastDeletedItemId,
+  } = props;
+
+  const favoriteListMap = wishlistsSummaries.map(favorite => {
+    const { id, displayName, itemsCount, isDefault } = favorite;
+    const updatedDisplayName = displayName || id;
+    return (
+      <>
+        <button className="wish-list" onClick={() => getActiveWishlist({ id })}>
+          <span className="favorite-list-name">
+            {updatedDisplayName}
+            {isDefault && <i className="heart-icon-container">Default</i>}
+          </span>
+          <p>
+            <span>
+              {updatedDisplayName}
+              {isDefault && <i className="heart-icon-container">Default</i>}
+            </span>
+            <span className="item-list">
+              {itemsCount}
+              item
+              {itemsCount > 1 ? 's' : ''}
+            </span>
+          </p>
+        </button>
+        <button onClick={createNewWishList}>Create New List</button>
+      </>
+    );
+  });
+
+  const productsList =
+    !!activeWishList &&
+    // eslint-disable-next-line complexity
+    activeWishList.items.map(item => {
+      const {
+        skuInfo: { color, fit, size },
+        productInfo: { name, pdpUrl, offerPrice, listPrice },
+        itemInfo: { itemId, quantity, availability, keepAlive },
+        imagesByColor,
+        quantityPurchased,
+        isReadOnly,
+      } = item;
+      const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
+      const isKeepAlive = killSwitchKeepAliveProduct && keepAlive;
+      const isMobile = isMobileApp();
+      const imageUrls = imagesByColor[color.name].extraImages.map(
+        imageEntry => imageEntry.regularSizeImageUrl
+      );
+
+      return (
+        <div className="product-items">
+          {!(isKeepAlive && itemNotAvailable) && (
+            <ProductStatus
+              status={(quantityPurchased > 0 && STATUS.PURCHASED) || availability}
+              keepAlive={isKeepAlive}
+            />
+          )}
+          {!isReadOnly && (
+            <ProductWishlistIcon
+              onClick={() => setLastDeletedItemId(itemId)}
+              isDisabled={itemNotAvailable}
+              isRemove
+              isMobile={isMobile}
+            />
+          )}
+          <ProductAltImages
+            pdpUrl={pdpUrl}
+            imageUrls={imageUrls}
+            productName={name}
+            isMobile={isMobile}
+            keepAlive={isKeepAlive && itemNotAvailable}
+          />
+          <ProductTitle name={name} pdpUrl={pdpUrl} />
+          {itemNotAvailable ? (
+            <ProductRemoveSection onClick={this.handleRemoveItem} itemId={itemId} />
+          ) : (
+            <ProductPricesSection listPrice={listPrice} offerPrice={offerPrice} />
+          )}
+          <ProductSKUInfo color={color} size={size} fit={fit} />
+          {!itemNotAvailable && (
+            <div className="purchased-and-move-dropdown-container">
+              <ProductPurchaseSection
+                key="purchased-section"
+                purchased={quantityPurchased}
+                quantity={quantity}
+              />
+              {!isReadOnly && (
+                <MoveItem
+                  key="move-item-select"
+                  wishlistItemId={itemId}
+                  favoriteList={wishlistsSummaries}
+                  createNewWishListMoveItem={createNewWishListMoveItem}
+                  deleteWishList={deleteWishList}
+                />
+              )}
+            </div>
+          )}
+        </div>
+      );
+    });
+
   return (
     <Row className={className} fullBleed>
       <Col
@@ -21,7 +141,7 @@ const FavoritesView = props => {
         offsetLeft={{ small: 0, medium: 0, large: 3 }}
         className="favorite-list"
       >
-        <span>Dropdown center</span>
+        {favoriteListMap}
       </Col>
       <Col
         colSize={{ small: 6, medium: 8, large: 2 }}
@@ -67,13 +187,7 @@ const FavoritesView = props => {
         className="product-list"
         ignoreGutter={{ small: true, medium: true, large: true }}
       >
-        <div className="product">Product 1</div>
-        <div className="product">Product 2</div>
-        <div className="product">Product 3</div>
-        <div className="product">Product 4</div>
-        <div className="product">Product 5</div>
-        <div className="product">Product 6</div>
-        <div className="product">Product 7</div>
+        {productsList}
       </Col>
       <Col
         hideCol={{ small: true, medium: true }}
@@ -84,6 +198,25 @@ const FavoritesView = props => {
       </Col>
     </Row>
   );
+};
+
+FavoritesView.propTypes = {
+  className: PropTypes.string,
+  wishlistsSummaries: PropTypes.arrayOf({}),
+  killSwitchKeepAliveProduct: PropTypes.bool,
+  activeWishList: PropTypes.shape({}),
+  createNewWishListMoveItem: PropTypes.func.isRequired,
+  deleteWishList: PropTypes.func.isRequired,
+  getActiveWishlist: PropTypes.func.isRequired,
+  createNewWishList: PropTypes.func.isRequired,
+  setLastDeletedItemId: PropTypes.func.isRequired,
+};
+
+FavoritesView.defaultProps = {
+  className: '',
+  wishlistsSummaries: [],
+  killSwitchKeepAliveProduct: false,
+  activeWishList: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

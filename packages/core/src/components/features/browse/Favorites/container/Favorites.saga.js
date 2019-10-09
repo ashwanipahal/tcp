@@ -47,7 +47,6 @@ export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
     getSetActiveWishlistActn(wishlistItems);
     return wishlistItems;
   } catch (err) {
-    console.log('err', err);
     return [];
   }
 }
@@ -59,7 +58,6 @@ export function* addItemsToWishlist({ payload }) {
   try {
     if (isGuest) {
       yield put(setLoginModalMountedState({ state: true }));
-      // TODO - On login, request to update the wishlist
     } else {
       const res = yield call(addItemsToWishlistAbstractor, {
         wishListId: '',
@@ -141,13 +139,16 @@ export function* createNewWishList(formData) {
 
 export function* createNewWishListMoveItem(formData) {
   try {
-    const createdWishListResponse = yield call(
-      createWishList,
-      formData.wishListName,
-      formData.isDefault
-    );
+    let createdWishListResponse;
+    if (!formData.wisListId) {
+      createdWishListResponse = yield call(
+        createWishList,
+        formData.wishListName,
+        formData.isDefault
+      );
+    }
     const payload = {
-      toWishListId: createdWishListResponse.id,
+      toWishListId: formData.wisListId || createdWishListResponse.id,
       itemId: formData.id,
     };
     const state = yield select();
@@ -250,7 +251,7 @@ export function* sendWishListMail(formData) {
       shareSubject,
       shareMessage
     );
-    if (emailSentResponse.successful) {
+    if (!emailSentResponse.successful) {
       throw emailSentResponse;
     }
   } catch (err) {

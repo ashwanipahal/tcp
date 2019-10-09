@@ -30,4 +30,16 @@ const FAVORITES_CONSTANTS = {
   SEND_WISHLIST_EMAIL,
 };
 
+export const AVAILABILITY = {
+  OK: 'OK',
+  SOLDOUT: 'SOLDOUT',
+  UNAVAILABLE: 'UNAVAILABLE',
+  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+};
+
+export const STATUS = {
+  PURCHASED: 'PURCHASED',
+  SUGGESTED: 'SUGGESTED',
+};
+
 export default FAVORITES_CONSTANTS;

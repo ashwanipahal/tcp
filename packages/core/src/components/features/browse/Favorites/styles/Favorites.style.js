@@ -13,11 +13,17 @@ export default css`
   .fav-items {
     text-align: right;
   }
-  .product {
+  .wish-list {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .product-items {
     width: 20%;
     display: inline-block;
     text-align: center;
-    padding: 10px 0;
-    background: gray;
+    padding: 10px 10px;
+    background: #d3d3d3;
+    min-height: 230px;
+    margin: 10px;
   }
 `;

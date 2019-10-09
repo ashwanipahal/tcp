@@ -141,6 +141,10 @@ const getSize = item => {
 const getAvailability = item => {
   return item.availability === 'Available' ? AVAILABILITY.OK : AVAILABILITY.SOLDOUT;
 };
+
+const generateUPC = item =>
+  parseBoolean(item.isProduct) ? null : (item.sizes[item.productId] || {}).UPC;
+
 /**
  * @function getWishListbyId
  * @param {String} wishListId - Id of the wishlist you are moving the item from
@@ -149,7 +153,6 @@ const getAvailability = item => {
  * @see https://childrensplace.atlassian.net/browse/DT-24970
  * @see https://childrensplace.atlassian.net/wiki/display/DT/TCP+API+Specifications?preview=/44072969/69013363/TCP%20-%20API%20Design%20Specification%20-%20Category-Checkout_getWishListById_v1.docx
  */
-
 export const getWishListbyId = ({
   wishListId,
   userName,
@@ -221,11 +224,9 @@ export const getWishListbyId = ({
               },
               skuInfo: {
                 skuId: item.productId,
-                upc: parseBoolean(item.isProduct) ? null : (item.sizes[item.productId] || {}).UPC,
+                upc: generateUPC(item),
                 imageUrl: item.imagePath,
 
-                // REVIEW: I'm not sure this is the correct place for it,
-                // it's just a value we need to store to send to the recommendations service
                 colorProductId: item.productPartNumber,
                 color: {
                   name: item.productColor,
@@ -250,7 +251,7 @@ export const getWishListbyId = ({
                 },
               },
               miscInfo: {
-                // when an item is added to the wishlist, backend chosses a random sku,
+                // when an item is added to the wishlist, backend choses a random sku,
                 // and we need to pass that random sku when moving to a different wishlist.
                 // since that is the case we also need to flag when to show the quivkiew for such item
                 isShowQuickView: parseBoolean(item.isProduct),
@@ -352,7 +353,6 @@ export const createWishList = (wishlistName, isDefault) => {
       }
     })
     .catch(err => {
-      console.log('err', err);
       throw getFormattedError(err);
     });
 };
@@ -427,7 +427,6 @@ export const deleteWishList = wishlistId => {
       }
     })
     .catch(err => {
-      console.log('err', err);
       throw getFormattedError(err);
     });
 };
