@@ -52,7 +52,7 @@ function parseAltImagesForColor(imageBasePath, hasShortImage, altImgs, getImgPat
   }
 }
 
-// We seem to be itterating over all colors and added alt images in this location
+// We seem to be iterating over all colors and added alt images in this location
 export function extractExtraImages(
   rawColors,
   altImgs,

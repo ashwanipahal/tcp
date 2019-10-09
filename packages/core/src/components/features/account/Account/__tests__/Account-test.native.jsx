@@ -17,7 +17,9 @@ describe('Account View', () => {
 
   it('should validate getComponent', () => {
     component = shallow(<Account {...props} />);
-    expect(component.instance().getComponent('accountOverviewMobile')).toEqual('accountOverview');
+    expect(component.instance().getComponent('accountOverviewMobile')).toEqual(
+      'accountOverviewMobile'
+    );
   });
 
   it('should render Account Correctly', () => {
