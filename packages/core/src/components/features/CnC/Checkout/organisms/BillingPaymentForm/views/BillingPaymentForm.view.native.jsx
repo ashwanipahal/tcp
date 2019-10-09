@@ -13,7 +13,7 @@ import {
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
-} from '../BillingPaymentForm.util';
+} from '../../../util/utility';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';

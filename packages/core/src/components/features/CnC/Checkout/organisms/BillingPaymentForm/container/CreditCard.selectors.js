@@ -4,7 +4,7 @@ import constants from './CreditCard.constants';
 import CARD_RANGES from '../../../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
-import { getSelectedCard } from '../BillingPaymentForm.util';
+import { getSelectedCard } from '../../../util/utility';
 
 const { getBillingValues, getShippingDestinationValues } = CheckoutSelectors;
 
