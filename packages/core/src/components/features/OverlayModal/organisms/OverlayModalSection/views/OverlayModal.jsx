@@ -97,6 +97,7 @@ class OverlayModal extends React.Component {
       this.body.style.overflow = 'hidden';
     }
 
+    /* istanbul ignore else */
     if (window && window.innerWidth < 767) {
       const bodyContainer = document.querySelector('.non-checkout-pages');
       bodyContainer.style.height = `${modal.offsetHeight}px`;
