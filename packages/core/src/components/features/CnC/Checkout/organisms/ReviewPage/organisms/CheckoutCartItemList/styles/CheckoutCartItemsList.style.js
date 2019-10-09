@@ -6,6 +6,11 @@ const styles = css`
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
+  .title-list-product {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     width: calc(100% - ${props => props.theme.spacing.LAYOUT_SPACING.XXL});
   }
@@ -21,7 +26,6 @@ const styles = css`
     width: 100%;
   }
   .cart-item-tile-container {
-    border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     position: relative;
     .tile-header {
@@ -39,13 +43,15 @@ const styles = css`
     }
   }
   .header-list {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   }
   .store-of-product {
     margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
   .title-list-pickup-product {
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
     div {
       margin: 0;
     }
@@ -58,6 +64,9 @@ const styles = css`
   .toolTip {
     margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     vertical-align: bottom;
+    .tooltip-bubble {
+      left: 36px;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -88,20 +97,22 @@ const styles = css`
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
     padding: 0;
-    width: 108%;
+    margin-right: -14px;
     margin-left: -14px;
     margin-top: 0;
+
     div.checkout-cart-list {
       margin-left: 14px;
       margin-right: 14px;
       width: calc(100% - 28px);
+      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
     .checkout-cart-list-heading {
       margin-left: 14px;
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     .cart-item-tile-container {
-      margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
       .align-product-img {
         margin-right: 0;
       }

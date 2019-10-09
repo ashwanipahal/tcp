@@ -46,8 +46,6 @@ const LedgerStyle = css`
   }
 
   @media ${props => props.theme.mediaQuery.smallMax} {
-    width: 108%;
-    margin-left: -14px;
     background-color: ${props => props.theme.colors.WHITE};
     .hide-in-medium-down {
       display: none;

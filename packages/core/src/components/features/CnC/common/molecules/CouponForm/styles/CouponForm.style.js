@@ -6,11 +6,6 @@ export default css`
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
 
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      margin-left: -14px;
-      width: 108%;
-    }
-
     .coupon_form_heading {
       margin: 0px;
       margin-bottom: 18px;
