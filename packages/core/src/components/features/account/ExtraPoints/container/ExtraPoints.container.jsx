@@ -8,12 +8,14 @@ import {
   getEarnExtraPointsLabels,
   getEarnedPointsNotificationState,
 } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.selectors';
+import { getExtraPointsTilesContentId, getPromoListDetails } from './ExtraPoints.selectors';
+
 import {
   getEarnExtraPointsList,
   getEarnedPointsNotification,
 } from '../../common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.actions';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view';
-
+import { fetchPromoList } from './ExtraPoints.actions';
 /**
  * This Class component use for return the Extra Points details
  * can be passed in the component.
@@ -28,9 +30,15 @@ export class ExtraPointsContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const { getEarnExtraPointsListAction, getEarnedPointsNotificationAction } = this.props;
+    const {
+      getEarnExtraPointsListAction,
+      getEarnedPointsNotificationAction,
+      extraPointsTilesContentIds,
+      fetchExtraPointsModuleContent,
+    } = this.props;
     getEarnExtraPointsListAction();
     getEarnedPointsNotificationAction();
+    fetchExtraPointsModuleContent(extraPointsTilesContentIds);
   }
 
   /**
@@ -56,6 +64,7 @@ export class ExtraPointsContainer extends PureComponent {
       earnedPointsNotification,
       earnExtraPointsLabels,
       handleComponentChange,
+      promoListData,
     } = this.props;
     const { selectedActivity } = this.state;
     return (
@@ -67,6 +76,7 @@ export class ExtraPointsContainer extends PureComponent {
           earnedPointsNotification={earnedPointsNotification}
           onViewActivityDetails={this.handlePopupEarnPointsDetails}
           handleComponentChange={handleComponentChange}
+          promoListData={promoListData}
         />
         {selectedActivity && (
           <ExtraPointsDetailModal
@@ -88,6 +98,9 @@ export const mapDispatchToProps = dispatch => {
     getEarnedPointsNotificationAction: () => {
       dispatch(getEarnedPointsNotification());
     },
+    fetchExtraPointsModuleContent: contentIds => {
+      dispatch(fetchPromoList(contentIds));
+    },
   };
 };
 
@@ -97,6 +110,8 @@ const mapStateToProps = state => {
     labels: getCommonLabels(state),
     earnExtraPointsLabels: getEarnExtraPointsLabels(state),
     earnedPointsNotification: getEarnedPointsNotificationState(state),
+    extraPointsTilesContentIds: getExtraPointsTilesContentId(state),
+    promoListData: getPromoListDetails(state),
   };
 };
 
@@ -108,6 +123,9 @@ ExtraPointsContainer.propTypes = {
   waysToEarn: PropTypes.shape([]),
   earnedPointsNotification: PropTypes.shape([]),
   handleComponentChange: PropTypes.func,
+  extraPointsTilesContentIds: PropTypes.shape([]),
+  fetchExtraPointsModuleContent: PropTypes.func.isRequired,
+  promoListData: PropTypes.shape([]),
 };
 
 ExtraPointsContainer.defaultProps = {
@@ -116,6 +134,8 @@ ExtraPointsContainer.defaultProps = {
   waysToEarn: [],
   earnedPointsNotification: [],
   handleComponentChange: () => {},
+  extraPointsTilesContentIds: [],
+  promoListData: [],
 };
 
 export default connect(

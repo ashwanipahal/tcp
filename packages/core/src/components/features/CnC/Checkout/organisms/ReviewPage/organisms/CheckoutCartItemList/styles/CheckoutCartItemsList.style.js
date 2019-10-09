@@ -6,6 +6,10 @@ const styles = css`
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
+  @media ${props => props.theme.mediaQuery.large} {
+    width: calc(100% - ${props => props.theme.spacing.LAYOUT_SPACING.XXL});
+  }
+
   .checkout-cart-list {
     margin-left: 0;
     margin-right: 0;

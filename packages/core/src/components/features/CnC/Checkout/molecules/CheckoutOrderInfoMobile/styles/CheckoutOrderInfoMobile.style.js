@@ -15,22 +15,14 @@ const styles = css`
     }
   }
 
-  .bonusPointsDaysWrapper {
-    background-color: ${props => props.theme.colorPalette.white};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
-      ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .venmo-payment-method-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
   }
 
-  .bonusPointsDaysWrapperAccordian {
-    background-color: ${props => props.theme.colorPalette.white};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
-      ${props => props.theme.spacing.ELEM_SPACING.SM};
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      padding-top: 0px;
-      padding-bottom: 0px;
-      width: 101%;
-      margin-left: -14px;
-    }
+  .venmo-paid-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

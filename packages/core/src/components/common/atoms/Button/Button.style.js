@@ -32,6 +32,7 @@ const ButtonStyles = css`
   text-transform: uppercase;
   min-height: 42px;
   letter-spacing: 0.93px;
+  font-size: ${props => props.theme.typography.fontSizes.fs13}
   ${props =>
     !props.link
       ? `@media ${props.theme.mediaQuery.large} {
@@ -45,7 +46,6 @@ const ButtonStyles = css`
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
       color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.typography.fonts.secondary};
-      font-size: ${props.theme.fonts.fontSize.button.size}px;
       font-weight: ${props.theme.typography.fontWeights.extrabold};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 12px 20px;
@@ -59,7 +59,6 @@ const ButtonStyles = css`
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
       color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
-      font-size: ${props.theme.fonts.fontSize.button.size}px;
       font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 12px 32px;
@@ -221,6 +220,7 @@ const ButtonStyles = css`
       : ''}
 
   @media ${props => props.theme.mediaQuery.large} {
+    font-size: ${props => props.theme.typography.fontSizes.fs14}
     ${props =>
       props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};
     ${props =>

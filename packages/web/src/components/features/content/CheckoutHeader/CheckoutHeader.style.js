@@ -16,6 +16,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       padding: 15px 15px 0 6px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
@@ -43,6 +44,10 @@ export default css`
 
   .header-topnav__promo-area {
     text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: 12px;
+    }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
@@ -78,9 +83,9 @@ export default css`
   .checkout-mobile-header {
     text-align: center;
     padding: 10px 0;
-    border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin-left: 0;
     width: 100%;
+    border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
     @media ${props => props.theme.mediaQuery.large} {
       display: none;

@@ -10,6 +10,7 @@ import {
   getViewportInfo,
   getAPIConfig,
   routeToStoreDetails,
+  isGymboree,
   getLabelValue,
 } from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
@@ -22,7 +23,7 @@ export class StoreLanding extends PureComponent {
   state = {
     mapView: false,
     isOutlet: false,
-    isGym: false,
+    isGym: isGymboree(),
   };
 
   openStoreDetails = (event, store) => {
