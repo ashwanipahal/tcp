@@ -13,9 +13,10 @@ const SelectBox = ({
   name,
   input,
   options,
-  placeholder,
+  heading,
   onValueChange,
   meta: { touched, error },
+  ...otherProps
 }) => {
   const isFocussed = !!input.value;
   return (
@@ -24,7 +25,7 @@ const SelectBox = ({
         isFocussed={isFocussed}
         fontSize={isFocussed ? 'fs10' : 'fs14'}
         fontWeight={isFocussed ? 'extrabold' : 'regular'}
-        text={placeholder}
+        text={heading}
       />
       <NativeDropdown
         onValueChange={value => {
@@ -36,6 +37,7 @@ const SelectBox = ({
         id={id}
         name={name}
         buttonVariation="mobileApp-select"
+        {...otherProps}
       />
       {touched && error && (
         <StyledErrorWrapper>
@@ -55,7 +57,7 @@ SelectBox.propTypes = {
   input: PropTypes.shape({}),
   options: PropTypes.shape([]),
   onValueChange: PropTypes.func,
-  placeholder: PropTypes.string,
+  heading: PropTypes.string,
   meta: PropTypes.shape({
     touched: PropTypes.bool,
     error: PropTypes.bool,
@@ -68,7 +70,7 @@ SelectBox.defaultProps = {
   input: {},
   options: [],
   onValueChange: () => {},
-  placeholder: '',
+  heading: '',
   meta: {},
 };
 
