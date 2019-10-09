@@ -22,6 +22,7 @@ import {
   AddAddressWrapper,
   InputFieldHalf,
 } from './AddressForm.native.style';
+import { API_CONFIG } from '../../../../services/config';
 
 class AddressForm extends React.PureComponent {
   constructor(props) {
@@ -52,6 +53,7 @@ class AddressForm extends React.PureComponent {
       setModalHeading,
     } = this.props;
     const { country } = this.state;
+    const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     const disabledProps = {
       isChecked: initialValues.primary,
     };
@@ -109,16 +111,16 @@ class AddressForm extends React.PureComponent {
               id="state"
               name="state"
               component={Select}
-              heading={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
-              options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+              heading={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
+              options={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
             />
           </InputFieldHalf>
           <InputFieldHalf>
             <Field
               id="zipCode"
               name="zipCode"
-              label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
-              maxLength={country === 'CA' ? 6 : 5}
+              label={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
+              maxLength={isCA ? 6 : 5}
               component={TextBox}
             />
           </InputFieldHalf>

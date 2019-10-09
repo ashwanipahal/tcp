@@ -53,9 +53,9 @@ const SelectBox = ({
 
 SelectBox.propTypes = {
   id: PropTypes.string,
-  name: PropTypes.string,
-  input: PropTypes.shape({}),
-  options: PropTypes.shape([]),
+  name: PropTypes.string.isRequired,
+  input: PropTypes.shape({}).isRequired,
+  options: PropTypes.shape([]).isRequired,
   onValueChange: PropTypes.func,
   heading: PropTypes.string,
   meta: PropTypes.shape({
@@ -66,9 +66,6 @@ SelectBox.propTypes = {
 
 SelectBox.defaultProps = {
   id: '',
-  name: '',
-  input: {},
-  options: [],
   onValueChange: () => {},
   heading: '',
   meta: {},

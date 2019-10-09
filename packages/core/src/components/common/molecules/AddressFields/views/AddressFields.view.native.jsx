@@ -154,8 +154,8 @@ export class AddressFields extends React.PureComponent {
               id="state"
               name="state"
               component={Select}
-              heading={getLabelValue(addressFormLabels, country === 'CA' ? 'province' : 'stateLbl')}
-              options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+              heading={getLabelValue(addressFormLabels, isCA ? 'province' : 'stateLbl')}
+              options={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
               onValueChange={() => {
                 this.changeShipmentMethods();
               }}
