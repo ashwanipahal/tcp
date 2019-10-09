@@ -36,7 +36,6 @@ class PasswordRequirement extends PureComponent<Props> {
           text={getLabelValue(labels, 'lbl_resetPassword_requirementHeading')}
           spacingStyles="margin-top-SM margin-bottom-SM"
         />
-
         {this.keysLabelsMap(labels)}
         <BodyCopyWithSpacing
           textAlign="start"
