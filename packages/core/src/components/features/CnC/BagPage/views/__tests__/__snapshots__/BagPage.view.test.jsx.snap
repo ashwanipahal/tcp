@@ -56,7 +56,7 @@ exports[`Bag page View should not render SFL section 1`] = `
     showAccordian={false}
     showLeftSection={true}
   />
-  <withRouter(Connect(QuickViewModalContainer))
+  <Connect(QuickViewModalContainer)
     fromBagPage={true}
   />
 </div>
@@ -118,7 +118,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
     showAccordian={false}
     showLeftSection={true}
   />
-  <withRouter(Connect(QuickViewModalContainer))
+  <Connect(QuickViewModalContainer)
     fromBagPage={true}
   />
 </div>
@@ -180,7 +180,7 @@ exports[`Bag page View should render SFL section 1`] = `
     showAccordian={false}
     showLeftSection={true}
   />
-  <withRouter(Connect(QuickViewModalContainer))
+  <Connect(QuickViewModalContainer)
     fromBagPage={true}
   />
 </div>

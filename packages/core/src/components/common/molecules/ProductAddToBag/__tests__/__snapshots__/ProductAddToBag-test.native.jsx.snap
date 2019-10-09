@@ -2,10 +2,10 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
-  addToBagAction={null}
   colorList={Array []}
   currentProduct={null}
   fitList={Array []}
+  handleFormSubmit={null}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
