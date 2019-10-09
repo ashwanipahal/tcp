@@ -17,6 +17,11 @@ export default css`
     outline: none;
   }
 
+  .part-number-section {
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED};
+    text-align: right;
+  }
+
   .show-description-list {
     display: none;
   }
