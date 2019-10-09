@@ -22,10 +22,10 @@ class MyAccountDropdownNav extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.component !== state.dropDownItem) {
-      return {
-        dropDownItem: props.component,
-      };
+    const { component } = props;
+    const { dropDownItem } = state;
+    if (component !== dropDownItem) {
+      return { dropDownItem: component };
     }
     return null;
   }
