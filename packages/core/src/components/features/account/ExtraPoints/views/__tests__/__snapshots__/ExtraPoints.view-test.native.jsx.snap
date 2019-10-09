@@ -29,7 +29,9 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       textAlign="center"
       textDecoration={null}
     />
-    <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-MED margin-bottom-XL"
+    >
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"

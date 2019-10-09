@@ -34,7 +34,9 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
     textAlign="center"
     textDecoration={null}
   />
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-MED"
+  >
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="primary"
