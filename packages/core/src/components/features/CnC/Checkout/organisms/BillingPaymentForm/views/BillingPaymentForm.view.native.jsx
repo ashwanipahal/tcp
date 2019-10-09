@@ -131,7 +131,7 @@ export class BillingPaymentForm extends React.PureComponent {
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const { addNewCCState } = this.state;
-
+    dispatch(change(constants.FORM_NAME, 'cardType', cardType));
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}

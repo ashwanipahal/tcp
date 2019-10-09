@@ -123,12 +123,14 @@ export class BillingPaymentForm extends React.PureComponent {
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const formCardType = editMode ? editFormCardType : cardType;
+    const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    dispatch(change(formName, 'cardType', cardType));
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}
         {...{ cardType: formCardType, cvvError, isGuest, onCardFocus, isSaveToAccountChecked }}
         {...{ dispatch, isExpirationRequired, creditFieldLabels, editMode, labels }}
-        formName={editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME}
+        formName={formName}
       />
     );
   };
