@@ -43,7 +43,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
-              onPress={() => handleComponentChange('editPersonalInfoMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -95,7 +95,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
-              onPress={() => handleComponentChange('editMailingAddressMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -122,7 +122,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoChangeCTA')}
-              onPress={() => handleComponentChange('changePasswordMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
