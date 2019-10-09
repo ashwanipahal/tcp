@@ -161,8 +161,12 @@ const getCurrentOrderId = state => {
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
+const returnCurrentCurrency = currency => {
+  return currency === 'USD' || currency === 'CA' ? '$' : currency;
+};
 const getCurrentCurrency = state => {
-  return state.session.getIn(['siteDetails', 'currency']);
+  const currency = state.session && state.session.getIn(['siteDetails', 'currency']);
+  return currency ? returnCurrentCurrency(currency) : '$';
 };
 
 const getCartStores = state => {
