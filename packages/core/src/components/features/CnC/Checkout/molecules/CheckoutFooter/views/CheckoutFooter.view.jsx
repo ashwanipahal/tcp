@@ -36,6 +36,7 @@ class CheckoutFooter extends React.PureComponent {
               className="footer-venmo-button"
               continueWithText={continueWithText}
               onSuccess={onVenmoSubmit}
+              isVenmoBlueButton
             />
           ) : (
             <Button

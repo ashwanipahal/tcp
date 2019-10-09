@@ -94,3 +94,8 @@ export const StyledErrorWrapper = styled.View`
 export const BodyCopyWithTextTransform = styled(BodyCopy)`
   text-transform: ${props => (props.textTransform ? props.textTransform : 'capitalize')};
 `;
+export const Row = styled.View`
+  flex-direction: row;
+  display: flex;
+  justify-content: ${props => (props.justifyContent ? props.justifyContent : 'flex-start')};
+`;

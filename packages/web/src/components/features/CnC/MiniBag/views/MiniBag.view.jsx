@@ -47,6 +47,16 @@ class MiniBag extends React.Component {
     }
   }
 
+  onLinkClick = ({ e, componentId }) => {
+    const { onRequestClose, openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+    onRequestClose();
+  };
+
   render() {
     const {
       onRequestClose,
@@ -101,6 +111,7 @@ class MiniBag extends React.Component {
           savedforLaterQty={sflItemsCount}
           isCartItemSFL={isCartItemSFL}
           cartItemSflError={cartItemSflError}
+          onLinkClick={this.onLinkClick}
         />
       </Modal>
     );

@@ -2,7 +2,7 @@
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
-import { isClient, isMobileApp } from '../../../utils';
+import { isClient, isMobileApp, getAPIConfig } from '../../../utils';
 
 const modifyUnbxdUrl = unboxKey => {
   const temp = unboxKey.split('/');
@@ -22,8 +22,10 @@ const getRequestParams = (apiConfig, reqObj) => {
 
   const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
   const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
-
-  const reqHeaders = {};
+  const { unbxdApiKey } = getAPIConfig();
+  const reqHeaders = {
+    Authorization: unbxdApiKey,
+  };
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
     reqHeaders.Cookie = apiConfig.cookie;
