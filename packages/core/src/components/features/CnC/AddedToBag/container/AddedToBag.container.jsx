@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  getLabelValue,
+  isMobileApp,
+  enableBodyScroll,
+  disableBodyScroll,
+} from '@tcp/core/src/utils';
 import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
@@ -21,10 +26,30 @@ export class AddedToBagContainer extends React.Component<Props> {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { isOpenDialog } = this.props;
+    const { isOpenDialog: previousOpenState } = prevProps;
+
+    if (!isMobileApp() && isOpenDialog !== previousOpenState && isOpenDialog) {
+      disableBodyScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    this.handleCloseModal();
+  }
+
+  handleCloseModal = () => {
+    const { closeModal } = this.props;
+    if (!isMobileApp()) {
+      enableBodyScroll();
+    }
+    closeModal();
+  };
+
   closeModal(event) {
     if (event) event.preventDefault();
-    const { closeModal } = this.props;
-    closeModal();
+    this.handleCloseModal();
   }
 
   render() {

@@ -375,7 +375,6 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             showEmailAddress={true}
             showPhoneNumber={false}
             showUserName={true}
-            state=""
           />
         </FormSection>
       </Styled(View)>

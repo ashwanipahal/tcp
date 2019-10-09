@@ -14,7 +14,7 @@ exports[`Address component should renders correctly 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="addressTile__name address"
+    className="addressTile__name address text-break"
     color="text.primary"
     component="p"
     data-locator=""
@@ -29,7 +29,7 @@ exports[`Address component should renders correctly 1`] = `
     test test
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break "
     color="text.primary"
     component="p"
     data-locator=""
@@ -44,7 +44,7 @@ exports[`Address component should renders correctly 1`] = `
     addressline 1
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break "
     color="text.primary"
     component="p"
     data-locator=""
@@ -59,7 +59,7 @@ exports[`Address component should renders correctly 1`] = `
     addressline 2
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break"
     color="text.primary"
     component="p"
     data-locator=""
@@ -74,7 +74,7 @@ exports[`Address component should renders correctly 1`] = `
     test city, test state 111-111
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -88,7 +88,7 @@ exports[`Address component should renders correctly 1`] = `
     test country
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -118,7 +118,7 @@ exports[`Address component should renders correctly when optional fields are not
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="addressTile__name address"
+    className="addressTile__name address text-break"
     color="text.primary"
     component="p"
     data-locator=""
@@ -133,7 +133,7 @@ exports[`Address component should renders correctly when optional fields are not
     test test
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break "
     color="text.primary"
     component="p"
     data-locator=""
@@ -148,7 +148,7 @@ exports[`Address component should renders correctly when optional fields are not
     addressline 1
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break "
     color="text.primary"
     component="p"
     data-locator=""
@@ -163,7 +163,7 @@ exports[`Address component should renders correctly when optional fields are not
     addressline 2
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="address"
+    className="address text-break"
     color="text.primary"
     component="p"
     data-locator=""
