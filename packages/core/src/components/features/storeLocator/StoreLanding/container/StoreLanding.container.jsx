@@ -25,6 +25,10 @@ export class StoreLanding extends PureComponent {
     );
   }
 
+  state = {
+    searchDone: false,
+  };
+
   componentDidMount() {
     this.getFavoriteStoreInititator();
   }
@@ -80,9 +84,14 @@ export class StoreLanding extends PureComponent {
    */
   loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
     const { fetchStoresByCoordinates } = this.props;
-    coordinatesPromise.then(({ lat, lng }) =>
-      fetchStoresByCoordinates({ coordinates: { lat, lng }, maxItems, radius })
-    );
+    coordinatesPromise.then(coordinates => {
+      this.setState(
+        {
+          searchDone: true,
+        },
+        () => fetchStoresByCoordinates({ coordinates, maxItems, radius })
+      );
+    });
     return false;
   };
 
@@ -96,6 +105,7 @@ export class StoreLanding extends PureComponent {
 
   render() {
     const { navigation } = this.props;
+    const { searchDone } = this.state;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -108,6 +118,7 @@ export class StoreLanding extends PureComponent {
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
+        searchDone={searchDone}
       />
     );
   }
@@ -139,6 +150,8 @@ const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
   suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  isStoreSearched:
+    state.StoreLocatorReducer && state.StoreLocatorReducer.get('storeSuggestionCompleted'),
   favoriteStore: state.User && state.User.get('defaultStore'),
 });
 
