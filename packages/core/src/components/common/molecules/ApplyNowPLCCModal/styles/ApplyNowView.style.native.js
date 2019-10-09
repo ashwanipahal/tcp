@@ -26,7 +26,7 @@ export const StyledBodyCopy = styled(BodyCopy)`
 `;
 
 export const ScrollViewContainer = styled.ScrollView`
-  margin-bottom: 40px;
+  height: 900px;
 `;
 
 export const ButtonWrapper = styled.View`
@@ -63,6 +63,13 @@ export const StyledImage = styled(Image)`
   resize-mode: stretch;
 `;
 
+export const HeaderContainer = styled.View`
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 export default {
   ImageContainer,
   StyledBodyCopy,
@@ -73,4 +80,5 @@ export default {
   RichTextContainer,
   Container,
   StyledImage,
+  HeaderContainer,
 };

@@ -3,6 +3,7 @@
 exports[`Bag page Container should render modal when open true 1`] = `
 <ModalNative
   customTransparent={true}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
 >
@@ -125,6 +126,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
 exports[`Bag page Container should render no modal when isOpen is false 1`] = `
 <ModalNative
   customTransparent={true}
+  inheritedStyles=""
   isOpen={false}
   isOverlay={false}
 >

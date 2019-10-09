@@ -26,7 +26,7 @@ const FavoritesReducer = (state = initialState, action) => {
       return state.set('wishlistsSummaries', payload);
     case FAVORITES_CONSTANTS.SET_ACTIVE_WISHLIST:
       return state.set('activeWishList', payload);
-    case FAVORITES_CONSTANTS.DELETE_WISHLIST_ITEM:
+    case FAVORITES_CONSTANTS.DELETED_WISHLIST_ITEM:
       return state.set('lastDeletedItemId', payload);
     default:
       return getDefaultState(state);

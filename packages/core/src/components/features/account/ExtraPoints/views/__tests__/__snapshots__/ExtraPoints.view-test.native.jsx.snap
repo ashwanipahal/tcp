@@ -87,6 +87,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   <ModalNative
     heading=" "
     horizontalBar={false}
+    inheritedStyles=""
     isOpen={true}
     isOverlay={false}
     onRequestClose={[Function]}
@@ -95,6 +96,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       spacingStyles="margin-left-LRG margin-right-LRG"
     >
       <ExtraPointsDetailModal
+        handleComponentChange={[Function]}
         waysToEarnRow={Object {}}
       />
     </Styled(View)>

@@ -10,12 +10,12 @@ import {
   getSetActiveWishlistActn,
   setActiveWishlistActn,
   getActiveWishlistActn,
-  setLastDeletedItemIdActn,
+  setDeletedItemActn,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
   getWishListbyId,
-  getProductsPrices,
+  // getProductsPrices,
   createWishList,
   moveItemToNewWishList,
   deleteWishList,
@@ -35,13 +35,12 @@ export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
     const state = yield select();
     const userName = getUserContactInfo(state).get('firstName');
     const isCanadaCheck = isCanada();
-    // const imageGenerator = getProductsOperator(this.store).getImgPath;
 
     const wishlistItems = yield call(getWishListbyId, {
       wishListId,
       userName,
       guestAccessKey,
-      isCanada: isCanadaCheck /* , imageGenerator */,
+      isCanada: isCanadaCheck,
     });
     getSetIsWishlistReadOnlyActn(true);
     getSetActiveWishlistActn(wishlistItems);
@@ -87,16 +86,16 @@ export function* loadActiveWishlist({ wishListId }) {
       imageGenerator: getImgPath,
     });
     const wishlistItems = wishlistById.items;
-    const prices = yield call(
-      getProductsPrices,
-      wishlistItems.map(wishlist => wishlist.skuInfo.colorProductId)
-    );
+    // const prices = yield call(
+    //   getProductsPrices,
+    //   wishlistItems.map(wishlist => wishlist.skuInfo.colorProductId)
+    // );
     const WishlistWithUnbxdPrice = wishlistItems.map(wishlist => {
       return {
         ...wishlist,
         productInfo: {
           ...wishlist.productInfo,
-          ...prices[wishlist.skuInfo.colorProductId],
+          // ...prices[wishlist.skuInfo.colorProductId],
         },
       };
     });
@@ -202,16 +201,16 @@ export function* updateExistingWishList(formData) {
   }
 }
 
-export function* deleteWishListItemById(formData) {
+export function* deleteWishListItemById({ payload }) {
   const state = yield select();
   const activeWishlistObject =
     state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
   const activeWishlistId = activeWishlistObject.id;
-  const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, formData.itemId);
+  const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, payload.itemId);
   if (!deleteItemResponse.success) {
     throw deleteItemResponse;
   }
-  yield put(setLastDeletedItemIdActn(formData.itemId));
+  yield put(setDeletedItemActn(payload.itemId));
   yield* loadWishlistsSummaries(activeWishlistId);
 }
 

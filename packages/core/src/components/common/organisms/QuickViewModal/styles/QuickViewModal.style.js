@@ -20,6 +20,14 @@ export const customHeaderStyle = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
+  .close-modal {
+    &.alignTop {
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+    &.alignRight {
+      right: 0;
+    }
+  }
 `;
 
 export default styles;

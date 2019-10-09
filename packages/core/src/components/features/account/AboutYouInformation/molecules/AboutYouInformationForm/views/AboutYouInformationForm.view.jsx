@@ -12,6 +12,7 @@ import {
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/AboutYouInformationForm.style';
 import AboutYouInformationConstants from '../../../container/AboutYouInformation.constants';
 
@@ -71,7 +72,7 @@ export class AboutYouInformationForm extends React.PureComponent {
       <div className={className}>
         <Row fullBleed className="elem-mt-XXL">
           <BodyCopy fontSize="fs14" fontFamily="secondary" data-locator="moreaboutyou-edit-q1text">
-            {labels.lbl_profile_survey_question1}
+            {getLabelValue(labels, 'lbl_profile_survey_question1')}
           </BodyCopy>
         </Row>
         <Row className="aboutyou-wrapper">
@@ -103,7 +104,7 @@ export class AboutYouInformationForm extends React.PureComponent {
 
         <Row fullBleed className="elem-mt-XXL">
           <BodyCopy fontSize="fs14" fontFamily="secondary" data-locator="moreaboutyou-edit-q2text">
-            {labels.lbl_profile_survey_question2}
+            {getLabelValue(labels, 'lbl_profile_survey_question2')}
           </BodyCopy>
         </Row>
 
@@ -153,7 +154,7 @@ export class AboutYouInformationForm extends React.PureComponent {
               disabled={pristine}
               onClick={this.onUpdate}
             >
-              {labels.lbl_profile_survey_save}
+              {getLabelValue(labels, 'lbl_profile_survey_save')}
             </Button>
           </Col>
           <Col
@@ -175,7 +176,7 @@ export class AboutYouInformationForm extends React.PureComponent {
                 fullWidth
                 className="elem-mb-XS"
               >
-                {labels.lbl_profile_personal_info_cancelCta}
+                {getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
               </Button>
             </Anchor>
           </Col>

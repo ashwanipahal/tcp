@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import { COMPLETE_MONTH } from '../../../../../../../utils/parseDate';
 import { isCanada } from '../../../../../../../utils';
@@ -10,10 +11,13 @@ const getMyPlaceRewards = (airMiles, myPlaceNumber, labels) => {
   let myPlaceRewardsText = '';
   const isCA = isCanada();
   if (isCA && airMiles) {
-    myPlaceRewardsText = `${labels.lbl_profile_air_miles} ${airMiles}`;
+    myPlaceRewardsText = `${getLabelValue(labels, 'lbl_profile_air_miles')} ${airMiles}`;
   }
   if (!isCA && myPlaceNumber) {
-    myPlaceRewardsText = `${labels.lbl_profile_my_place_rewards_info} ${myPlaceNumber}`;
+    myPlaceRewardsText = `${getLabelValue(
+      labels,
+      'lbl_profile_my_place_rewards_info'
+    )} ${myPlaceNumber}`;
   }
   if (myPlaceRewardsText) {
     return (
@@ -35,9 +39,9 @@ export const PersonalInformationDisplay = ({
   const birthdayArray = userBirthday ? userBirthday.split('|') : [];
   const userBirthdayDisplay =
     birthdayArray && birthdayArray.length === 2
-      ? `${labels.lbl_profile_edit_birthday_heading} ${COMPLETE_MONTH[birthdayArray[0] - 1]} ${
-          birthdayArray[1]
-        }`
+      ? `${getLabelValue(labels, 'lbl_profile_edit_birthday_heading')} ${
+          COMPLETE_MONTH[birthdayArray[0] - 1]
+        } ${birthdayArray[1]}`
       : '';
   return (
     <View>

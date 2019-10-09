@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
 import PropTypes from 'prop-types';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
@@ -11,6 +10,7 @@ import {
   getProductInfo,
   getQuickViewLabels,
   getQuickViewFormValues,
+  getProductInfoFromBag,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -20,6 +20,7 @@ import {
   addToCartEcom,
   clearAddToBagErrorState,
 } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
+import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
 
 class QuickViewModalContainer extends React.PureComponent {
@@ -28,6 +29,31 @@ class QuickViewModalContainer extends React.PureComponent {
     let cartItemInfo = getCartItemInfo(productInfo, formValues);
     cartItemInfo = { ...cartItemInfo, callBack: closeQuickViewModalAction };
     addToBagEcom(cartItemInfo);
+  };
+
+  handleUpdateItem = () => {
+    const {
+      updateCartItemAction,
+      formValues,
+      productInfo,
+      closeQuickViewModalAction,
+      productInfoFromBag,
+    } = this.props;
+    const cartItemInfo = getCartItemInfo(productInfo, formValues);
+    const {
+      skuInfo: { skuId, variantNo, variantId },
+    } = cartItemInfo;
+    const { quantity } = cartItemInfo;
+    const { orderItemId } = productInfoFromBag;
+    const payload = {
+      skuId,
+      itemId: orderItemId,
+      quantity,
+      variantNo,
+      itemPartNumber: variantId,
+      callBack: closeQuickViewModalAction,
+    };
+    updateCartItemAction(payload);
   };
 
   render() {
@@ -40,6 +66,7 @@ class QuickViewModalContainer extends React.PureComponent {
             closeQuickViewModal={closeQuickViewModalAction}
             productInfo={productInfo}
             handleAddToBag={this.handleAddToBag}
+            handleUpdateItem={this.handleUpdateItem}
             {...otherProps}
           />
         ) : null}
@@ -57,6 +84,7 @@ function mapStateToProps(state) {
     quickViewLabels: getQuickViewLabels(state),
     formValues: getQuickViewFormValues(state),
     addToBagError: getAddedToBagError(state),
+    productInfoFromBag: getProductInfoFromBag(state),
   };
 }
 
@@ -71,6 +99,9 @@ function mapDispatchToProps(dispatch) {
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
     },
+    updateCartItemAction: payload => {
+      dispatch(updateCartItem(payload));
+    },
   };
 }
 
@@ -79,12 +110,16 @@ QuickViewModalContainer.propTypes = {
   formValues: PropTypes.shape({}).isRequired,
   closeQuickViewModalAction: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
+  updateCartItemAction: PropTypes.func.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  productInfoFromBag: PropTypes.shape({}),
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(QuickViewModalContainer)
-);
+QuickViewModalContainer.defaultProps = {
+  productInfoFromBag: {},
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuickViewModalContainer);

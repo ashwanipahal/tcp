@@ -9,7 +9,7 @@ export const ModalTitleContainer = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20;
+  margin-top: 20px;
 `;
 
 export const ModalTitle = styled.Text`
@@ -26,16 +26,15 @@ export const ModalCloseTouchable = styled.TouchableOpacity`
 `;
 
 export const PickUpModalView = styled.View`
-  padding: 20px 14px;
+  flex: 1;
 `;
 
 export const PickUpHeaderText = styled.Text`
   flex-direction: row;
   align-items: flex-start;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: ${props => props.theme.typography.fontSizes.fs16};
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
   text-transform: uppercase;
-  margin-top: 50px;
 `;
 
 export const Row = styled.TouchableOpacity`
@@ -47,14 +46,14 @@ export const Row = styled.TouchableOpacity`
 export const AddressCol = styled.View`
   width: 66%;
   margin-right: 4%;
-  font-size: 13px;
-  color: #1a1a1a;
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
+  color: ${props => props.theme.colorPalette.gray[900]};
 `;
 export const DistanceCol = styled.View`
   width: 30%;
   margin-top: 5px;
-  font-size: 13px;
-  color: #1a1a1a;
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
+  color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
 export const dropDownStyle = {

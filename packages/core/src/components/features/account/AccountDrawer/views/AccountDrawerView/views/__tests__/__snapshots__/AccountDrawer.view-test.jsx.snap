@@ -3,6 +3,7 @@
 exports[`AccountDrawerView should render correctly 1`] = `
 <Styled(AccountDrawerPage)
   className=""
+  globalLabels={Object {}}
   labels={Object {}}
   plccUser={false}
   userName=""

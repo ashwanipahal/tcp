@@ -82,7 +82,12 @@ export default class ShippingPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { address, selectedShipmentId, updateShippingMethodSelection } = this.props;
+    const {
+      address,
+      selectedShipmentId,
+      updateShippingMethodSelection,
+      shippingAddressId,
+    } = this.props;
     const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
     if (address && prevAddress) {
       const {
@@ -99,7 +104,11 @@ export default class ShippingPage extends React.PureComponent {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
     }
-    if (selectedShipmentId !== prevSelectedShipmentId) {
+    if (
+      shippingAddressId &&
+      prevSelectedShipmentId &&
+      selectedShipmentId !== prevSelectedShipmentId
+    ) {
       updateShippingMethodSelection({ id: selectedShipmentId });
     }
   }

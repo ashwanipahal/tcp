@@ -140,7 +140,7 @@ export const getPromotionalMessage = (isPlcc, handlers) => {
   return null;
 };
 
-export const toTimeString = est => {
+export const toTimeString = (est, perfect = false) => {
   let hh = est.getHours();
   let mm = est.getMinutes();
   const ampm = hh >= 12 ? ' pm' : ' am';
@@ -150,7 +150,7 @@ export const toTimeString = est => {
   if (hh === 11 && mm === 59 && ampm === ' pm') {
     return 'Midnight';
   }
-  return `${hh}:${mm}${ampm}`;
+  return !perfect ? `${hh}:${mm}${ampm}` : `${hh}${ampm}`;
 };
 
 /**
@@ -249,7 +249,7 @@ export const formatPhoneNumber = phone => {
   return '';
 };
 
-const MONTH_SHORT_FORMAT = {
+export const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
   FEB: 'Feb',
   MAR: 'Mar',
@@ -266,18 +266,54 @@ const MONTH_SHORT_FORMAT = {
 
 export const getBirthDateOptionMap = () => {
   const monthOptionsMap = [
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+    {
+      id: '1',
+      displayName: MONTH_SHORT_FORMAT.JAN,
+    },
+    {
+      id: '2',
+      displayName: MONTH_SHORT_FORMAT.FEB,
+    },
+    {
+      id: '3',
+      displayName: MONTH_SHORT_FORMAT.MAR,
+    },
+    {
+      id: '4',
+      displayName: MONTH_SHORT_FORMAT.APR,
+    },
+    {
+      id: '5',
+      displayName: MONTH_SHORT_FORMAT.MAY,
+    },
+    {
+      id: '6',
+      displayName: MONTH_SHORT_FORMAT.JUN,
+    },
+    {
+      id: '7',
+      displayName: MONTH_SHORT_FORMAT.JUL,
+    },
+    {
+      id: '8',
+      displayName: MONTH_SHORT_FORMAT.AUG,
+    },
+    {
+      id: '9',
+      displayName: MONTH_SHORT_FORMAT.SEP,
+    },
+    {
+      id: '10',
+      displayName: MONTH_SHORT_FORMAT.OCT,
+    },
+    {
+      id: '11',
+      displayName: MONTH_SHORT_FORMAT.NOV,
+    },
+    {
+      id: '12',
+      displayName: MONTH_SHORT_FORMAT.DEC,
+    },
   ];
 
   const yearOptionsMap = [];
@@ -285,14 +321,20 @@ export const getBirthDateOptionMap = () => {
   const nowYear = new Date().getFullYear();
 
   for (let i = 1900; i < nowYear - 17; i += 1) {
-    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+    yearOptionsMap.push({
+      id: i.toString(),
+      displayName: i.toString(),
+    });
   }
 
   for (let i = 1; i < 32; i += 1) {
     if (i <= 9) {
       i = 0 + i;
     }
-    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+    dayOptionsMap.push({
+      id: i.toString(),
+      displayName: i.toString(),
+    });
   }
 
   return {
@@ -338,11 +380,23 @@ export const childOptionsMap = () => {
     .fill(currentYear)
     .map((e, index) => {
       const year = e - index;
-      return { id: year.toString(), displayName: year.toString() };
+      return {
+        id: year.toString(),
+        displayName: year.toString(),
+      };
     });
 
   return {
-    genderMap: [{ id: '01', displayName: 'Boy' }, { id: '0', displayName: 'Girl' }],
+    genderMap: [
+      {
+        id: '01',
+        displayName: 'Boy',
+      },
+      {
+        id: '0',
+        displayName: 'Girl',
+      },
+    ],
     yearsMap: yearOptionsMap,
   };
 };
@@ -568,40 +622,6 @@ export const configureInternalNavigationFromCMSUrl = url => {
   return url;
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = { weekday: 'short' },
-  monthOption = { month: 'short' }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-    year: currentDate.getFullYear(),
-  };
-};
 const WEEK_DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 const WEEK_DAYS_SMALL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -691,10 +711,9 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
+  sanitizeEntity,
   getFormSKUValue,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
   extractFloat,

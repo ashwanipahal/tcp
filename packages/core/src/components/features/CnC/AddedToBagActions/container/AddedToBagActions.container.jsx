@@ -7,7 +7,7 @@ import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
-import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
@@ -28,6 +28,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       fromAddedToBagModal,
       isBagPageStickyHeader,
       closeModal,
+      isUSSite,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -44,6 +45,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         fromAddedToBagModal={fromAddedToBagModal}
         isBagPageStickyHeader={isBagPageStickyHeader}
         closeModal={closeModal}
+        isUSSite={isUSSite}
       />
     );
   }
@@ -74,6 +76,7 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isUSSite: isUsSite(state),
   };
 };
 

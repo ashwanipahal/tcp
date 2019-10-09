@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+
 import {
   getNavTree,
   getBreadCrumbs,
   getCurrentProduct,
   getPlpLabels,
+  getProductDetailFormValues,
+  getPDPLabels,
+  getShortDescription,
+  getGeneralProductId,
+  getDescription,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -42,8 +48,8 @@ class ProductDetailContainer extends React.PureComponent {
     getDetails({ productColorId: productId, ignoreCache: true });
   }
 
-  handleAddToBag = formValues => {
-    const { addToBagEcom, currentProduct } = this.props;
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, currentProduct } = this.props;
     let cartItemInfo = getCartItemInfo(currentProduct, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
@@ -55,10 +61,14 @@ class ProductDetailContainer extends React.PureComponent {
       breadCrumbs,
       navTree,
       plpLabels,
+      pdpLabels,
       navigation,
       addToBagError,
       clearAddToBagError,
       isPickupModalOpen,
+      longDescription,
+      shortDescription,
+      itemPartNumber,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -70,11 +80,15 @@ class ProductDetailContainer extends React.PureComponent {
             navTree={navTree}
             selectedColorProductId={this.selectedColorProductId}
             plpLabels={plpLabels}
+            pdpLabels={pdpLabels}
             handleFormSubmit={this.handleAddToBag}
             navigation={navigation}
             addToBagError={addToBagError}
             clearAddToBagError={clearAddToBagError}
             isPickupModalOpen={isPickupModalOpen}
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
           />
         ) : null}
       </React.Fragment>
@@ -88,8 +102,13 @@ function mapStateToProps(state) {
     currentProduct: getCurrentProduct(state),
     breadCrumbs: getBreadCrumbs(state),
     plpLabels: getPlpLabels(state),
+    pdpLabels: getPDPLabels(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
+    formValues: getProductDetailFormValues(state),
+    shortDescription: getShortDescription(state),
+    itemPartNumber: getGeneralProductId(state),
+    longDescription: getDescription(state),
   };
 }
 
@@ -116,8 +135,13 @@ ProductDetailContainer.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   navTree: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  pdpLabels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
+  formValues: PropTypes.shape({}).isRequired,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -125,8 +149,12 @@ ProductDetailContainer.defaultProps = {
   breadCrumbs: {},
   navTree: {},
   plpLabels: {},
+  pdpLabels: {},
   isPickupModalOpen: false,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
 };
 
 export default connect(

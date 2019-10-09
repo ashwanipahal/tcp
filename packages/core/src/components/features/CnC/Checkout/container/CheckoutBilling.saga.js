@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 /* eslint-disable */
 import { call, put, select } from 'redux-saga/effects';
+import { SubmissionError } from 'redux-form';
 import {
   updatePaymentOnOrder,
   addPaymentToOrder,
@@ -15,10 +16,14 @@ import {
   addAddressGet,
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
+import { updateCreditCardSaga } from '../../../account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { isMobileApp } from '../../../../../utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getFormattedError } from '../../../../../utils/errorMessage.util';
+import CreditCardSelector from '../organisms/BillingPaymentForm/container/CreditCard.selectors';
 
 const {
   getIsPaymentDisabled,
@@ -95,13 +100,50 @@ export function* updatePaymentInstruction(
   }
 }
 
-function* getAddressData(formData) {
+/**
+ * @function updateVenmoPaymentInstruction
+ * @description - Update payment instruction for venmo checkout
+ * @param {object} venmoDetails
+ */
+export function* updateVenmoPaymentInstruction() {
+  const { PAYMENT_METHOD_VENMO } = CONSTANTS;
+  const grandTotal = yield select(getGrandTotal);
+  const shippingDetails = yield select(getShippingDestinationValues);
+  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+  const venmoData = yield select(selectors.getVenmoData);
+  const { nonce: venmoNonce, deviceData: venmoDeviceData, details: { username } = {} } =
+    venmoData || {};
+  const billingAddressId = shippingDetails.onFileAddressId;
+  const paymentMethod = PAYMENT_METHOD_VENMO && PAYMENT_METHOD_VENMO.toUpperCase();
+  const requestData = {
+    billingAddressId,
+    cardType: paymentMethod,
+    cc_brand: paymentMethod,
+    cardNumber: username || 'test-user', // Venmo User Id, for all the scenario's it will have user information from the venmo, for dev, added test-user
+    isDefault: 'false',
+    orderGrandTotal: grandTotal,
+    applyToOrder: true,
+    monthExpire: '',
+    yearExpire: '',
+    setAsDefault: false,
+    saveToAccount: false,
+    venmoDetails: {
+      userId: username || 'test-user',
+      saveVenmoTokenIntoProfile: isVenmoSaveSelected,
+      nonce: venmoNonce,
+      venmoDeviceData,
+    },
+  };
+  yield call(addPaymentToOrder, requestData);
+}
+
+export function* getAddressData(formData) {
   const existingAddress = yield select(getAddressByKey, formData.address.onFileAddressKey);
   const shippingDetails = yield select(getShippingDestinationValues);
   return existingAddress ? existingAddress.addressId : shippingDetails.onFileAddressId;
 }
 
-function addressIdToString(addressId) {
+export function addressIdToString(addressId) {
   if (addressId) {
     return addressId.toString();
   }
@@ -186,6 +228,22 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
   }
 }
 
+/**
+ * @function submitVenmoBilling
+ * @description - Redirect venmo payment from billing to review. This method is called from the Billing Page
+ * @param {obejct} payload - venmo payload to submit billing and redirect to review page
+ */
+export function* submitVenmoBilling(payload = {}) {
+  const { payload: { navigation } = {} } = payload;
+  yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
+  yield call(updateVenmoPaymentInstruction);
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else if (navigation) {
+    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+  }
+}
+
 export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
@@ -216,5 +274,17 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     }
   } catch (e) {
     // submitBillingError(store, e);
+  }
+}
+
+export function* updateCardDetails({ payload: { formData, resolve, reject } }) {
+  try {
+    const cardType = yield select(CreditCardSelector.getEditFormCardType);
+    yield updateCreditCardSaga({ payload: { ...formData, cardType } }, true);
+    yield call(getCardList);
+    resolve();
+  } catch (err) {
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    reject(new SubmissionError({ _error: getFormattedError(err, errorsMapping) }));
   }
 }

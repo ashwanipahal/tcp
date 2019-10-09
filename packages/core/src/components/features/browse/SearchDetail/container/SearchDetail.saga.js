@@ -12,17 +12,26 @@ import {
 } from './SearchDetail.actions';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from '../../ProductListing/container/productsRequestFormatter';
-// import { setSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
+import { setSearchResult } from '../../../../common/molecules/SearchBar/SearchBar.actions';
 import { getLastLoadedPageNumber } from './SearchDetail.selectors';
 
 const instanceProductListing = new Abstractor();
 const operatorInstance = new ProductsOperator();
 
+const getUrl = url => {
+  return url
+    ? {
+        pathname: url,
+      }
+    : window.location;
+};
+
 export function* fetchSlpProducts({ payload }) {
   try {
-    const { searchQuery, asPath, formData } = payload;
+    const { searchQuery, asPath, formData, url, scrollToTop } = payload;
+    const location = getUrl(url);
     const state = yield select();
-    yield put(setSlpLoadingState({ isLoadingMore: true }));
+    yield put(setSlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop || false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
@@ -32,19 +41,22 @@ export function* fetchSlpProducts({ payload }) {
       formData,
       asPath,
       pageNumber: 1,
+      location,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setListingFirstProductsPage({ ...res }));
-    yield put(setSlpLoadingState({ isLoadingMore: false }));
+    yield put(setSlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
     logger.error(err);
   }
 }
 
-export function* fetchMoreProducts() {
+export function* fetchMoreProducts({ payload }) {
   try {
+    const { url } = payload;
     const state = yield select();
+    const location = getUrl(url);
     yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
@@ -59,8 +71,8 @@ export function* fetchMoreProducts() {
       state,
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
+      location,
     });
-
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     yield put(setSlpProducts({ ...res }));
     yield put(setSlpLoadingState({ isLoadingMore: false }));
@@ -71,19 +83,23 @@ export function* fetchMoreProducts() {
 }
 
 export function* fetchSlpSearchResults({ payload }) {
-  const searchApiConfig = {
-    categoryCount: 4,
-    topQueriesCount: 4,
-    productsCounts: 4,
-    suggestionsCount: 4,
+  const suggestionsCount = {
+    category: 4,
+    keywords: 4,
+    promotedTopQueries: 4,
+  };
+
+  const isHideBundleProduct = false;
+  const payloadData = {
+    searchTerm: payload.searchText,
+    suggestionsCount,
+    isHideBundleProduct,
+    slpLabels: payload.slpLabels,
   };
 
   try {
-    yield call(makeSearch, {
-      searchTerm: payload,
-      ...searchApiConfig,
-    });
-    // yield put(setSearchResult(response));
+    const response = yield call(makeSearch, payloadData);
+    yield put(setSearchResult(response));
   } catch (err) {
     logger.error('Error: error in fetching Search bar results ');
   }

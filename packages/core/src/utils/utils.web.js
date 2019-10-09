@@ -1,11 +1,13 @@
+/* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
-import { getAPIConfig } from './utils';
+import { getAPIConfig, isClient } from './utils';
 import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
+import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
 
 const MONTH_SHORT_FORMAT = {
@@ -21,6 +23,11 @@ const MONTH_SHORT_FORMAT = {
   OCT: 'Oct',
   NOV: 'Nov',
   DEC: 'Dec',
+};
+
+const FIXED_HEADER = {
+  LG_HEADER: 70,
+  SM_HEADER: 60,
 };
 
 export const importGraphQLClientDynamically = module => {
@@ -342,6 +349,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
+    productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
@@ -350,6 +358,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
     }`,
     envId: processEnv.RWD_WEB_ENV_ID,
+    previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -442,6 +451,49 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
+
+export const routeToStoreDetails = (storeDetail, refresh = false) => {
+  const {
+    basicInfo: {
+      id,
+      storeName,
+      address: { city, state, zipCode },
+    },
+  } = storeDetail;
+  const storeParams = `${storeName
+    .replace(/\s/g, '')
+    .toLowerCase()}-${state.toLowerCase()}-${city
+    .replace(/\s/g, '')
+    .toLowerCase()}-${zipCode}-${id}`;
+  const url = `/store/${storeParams}`;
+  let routerHandler = null;
+  if (isClient())
+    routerHandler = () =>
+      routerPush(refresh ? window.location.href : `/store?storeStr=${storeParams}`, url);
+  return {
+    routerHandler,
+    url,
+    storeParams,
+  };
+};
+
+/**
+ * Returns data stored in localstorage
+ * @param {string} key - Localstorage item key
+ * @returns {string} - Localstorage item data
+ */
+export const getLocalStorage = key =>
+  isClient ? window.localStorage.getItem(key) : readCookie(key);
+
+/**
+ * Set key/value data to localstorage
+ * @param {Object} arg - Key/Value paired data to be set in localstorage
+ */
+export const setLocalStorage = arg => {
+  const { key, value } = arg;
+  return isClient() ? window.localStorage.setItem(key, value) : setCookie(arg);
+};
+
 export const viewport = () => {
   if (!window) return null;
 
@@ -451,6 +503,66 @@ export const viewport = () => {
     large: window.matchMedia(mediaQuery.large).matches,
   };
 };
+
+export const fetchStoreIdFromUrlPath = url => {
+  const currentStoreUrl = url || document.location.href;
+  const pathSplit = currentStoreUrl.split('-');
+  return pathSplit[pathSplit.length - 1];
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = {
+    weekday: 'short',
+  },
+  monthOption = {
+    month: 'short',
+  }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
+  };
+};
+
+export const scrollToParticularElement = element => {
+  const fixedHeaderOffset = getViewportInfo().isDesktop
+    ? FIXED_HEADER.LG_HEADER
+    : FIXED_HEADER.SM_HEADER;
+  if (isClient()) {
+    const elementPositionFromTop = element.getBoundingClientRect().top;
+    const calculatedOffset = elementPositionFromTop - fixedHeaderOffset;
+    window.scrollTo({
+      top: calculatedOffset,
+      behavior: 'smooth',
+    });
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -470,6 +582,12 @@ export default {
   siteRedirect,
   languageRedirect,
   handleGenericKeyDown,
+  getLocalStorage,
+  setLocalStorage,
   viewport,
+  fetchStoreIdFromUrlPath,
   canUseDOM,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  scrollToParticularElement,
 };

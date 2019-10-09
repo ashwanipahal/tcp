@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersTile component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="/account?id=orders"
+  ctaPath="/account/orders"
+  ctaTitle="lbl_ordersTile_viewAllOrders"
+  dataLocatorPrefix="orders"
+  title="lbl_ordersTile_heading"
+>
+  <OrdersTileItem
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 6, 2019",
+        "orderNumber": "7000037170",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$24.95",
+        "orderTracking": "N/A",
+      }
+    }
+  />
+  <OrdersTileItem
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 4, 2019",
+        "orderNumber": "7000037171",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$24.959",
+        "orderTracking": "N/A",
+      }
+    }
+  />
+</Styled(AccountOverviewTile)>
+`;
+
+exports[`OrdersTile component should render correctly 2`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="/account?id=orders"
+  ctaPath="/account/orders"
+  ctaTitle="lbl_ordersTile_viewAllOrders"
+  dataLocatorPrefix="orders"
+  title="lbl_ordersTile_heading"
+>
+  <EmptyOrderTile
+    labels={Object {}}
+  />
+</Styled(AccountOverviewTile)>
+`;

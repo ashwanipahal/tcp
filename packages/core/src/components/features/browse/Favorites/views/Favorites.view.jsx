@@ -10,7 +10,7 @@ import ProductTitle from '../molecules/ProductTitle';
 import ProductRemoveSection from '../molecules/ProductRemoveSection';
 import ProductSKUInfo from '../molecules/ProductSKUInfo';
 import ProductPricesSection from '../molecules/ProductPricesSection';
-import ProductWishlistIcon from '../molecules/ProductWishlistIcon';
+import { ProductWishlistIcon } from '../../ProductListing/molecules/ProductList/views/ProductItemComponents';
 import ProductStatus from '../molecules/ProductStatus';
 import ProductPurchaseSection from '../molecules/ProductPurchaseSection';
 import { STATUS, AVAILABILITY } from '../container/Favorites.constants';
@@ -33,7 +33,7 @@ const FavoritesView = props => {
     const updatedDisplayName = displayName || id;
     return (
       <>
-        <button className="wish-list" onClick={() => getActiveWishlist({ id })}>
+        <button className="wish-list" onClick={() => getActiveWishlist(id)}>
           <span className="favorite-list-name">
             {updatedDisplayName}
             {isDefault && <i className="heart-icon-container">Default</i>}
@@ -50,7 +50,6 @@ const FavoritesView = props => {
             </span>
           </p>
         </button>
-        <button onClick={createNewWishList}>Create New List</button>
       </>
     );
   });
@@ -84,7 +83,7 @@ const FavoritesView = props => {
           )}
           {!isReadOnly && (
             <ProductWishlistIcon
-              onClick={() => setLastDeletedItemId(itemId)}
+              onClick={() => setLastDeletedItemId({ itemId })}
               isDisabled={itemNotAvailable}
               isRemove
               isMobile={isMobile}
@@ -142,6 +141,7 @@ const FavoritesView = props => {
         className="favorite-list"
       >
         {favoriteListMap}
+        <button onClick={createNewWishList}>Create New List</button>
       </Col>
       <Col
         colSize={{ small: 6, medium: 8, large: 2 }}

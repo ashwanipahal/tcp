@@ -5,6 +5,7 @@ import {
   updateCardListonDeleteErr,
   setDeleteModalMountedState,
   clearCardBalance,
+  setPaymentNotification,
 } from './Payment.actions';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import { deleteCardApi } from '../../../../../services/abstractors/account';
@@ -16,6 +17,7 @@ export function* deleteCard({ payload }) {
       yield put(getCardList({ ignoreCache: true }));
       yield put(getAddressList({ ignoreCache: true }));
       yield put(setDeleteModalMountedState({ state: false }));
+      yield put(setPaymentNotification({ status: 'success' }));
       if (payload.ccType === 'GiftCard') {
         yield put(clearCardBalance(payload));
       }

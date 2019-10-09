@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import { Image, BodyCopy } from '../../../../../../common/atoms';
@@ -27,15 +28,15 @@ const CreateAccountTopSection = props => {
       <BodyCopy component="div" className="bordered elem-pt-MED labels-wrapper">
         {isCanada() && (
           <BodyCopy fontSize="fs14" fontWeight="black" textAlign="center" className="elem-pb-LRG">
-            {labels.registration.lbl_createAccount_title}
+            {getLabelValue(labels, 'lbl_createAccount_title', 'registration')}
           </BodyCopy>
         )}
         <BodyCopy className="elem-pb-XS" fontFamily="secondary" fontSize="fs13" textAlign="center">
-          <span>{labels.registration.lbl_createAccount_createA}</span>
+          <span>{getLabelValue(labels, 'lbl_createAccount_createA', 'registration')}</span>
           <span className="my-place-rewards">
-            {labels.registration.lbl_createAccount_myPlaceRewards}
+            {getLabelValue(labels, 'lbl_createAccount_myPlaceRewards', 'registration')}
           </span>
-          <span>{labels.registration.lbl_createAccount_earnPoints}</span>
+          <span>{getLabelValue(labels, 'lbl_createAccount_earnPoints', 'registration')}</span>
         </BodyCopy>
       </BodyCopy>
 
@@ -47,7 +48,7 @@ const CreateAccountTopSection = props => {
             textAlign="center"
             className="my-place-rewards"
           >
-            {labels.registration.lbl_createAccount_spendPoint}
+            {getLabelValue(labels, 'lbl_createAccount_spendPoint', 'registration')}
           </BodyCopy>
           <BodyCopy
             fontFamily="secondary"
@@ -55,20 +56,20 @@ const CreateAccountTopSection = props => {
             textAlign="center"
             className="my-place-rewards"
           >
-            {labels.registration.lbl_createAccount_pointReward}
+            {getLabelValue(labels, 'lbl_createAccount_pointReward', 'registration')}
           </BodyCopy>
         </>
       )}
 
       <BodyCopy component="div" className="bordered elem-pb-MED signed-up-in-store">
         <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-          <p>{labels.registration.lbl_createAccount_signedUp}</p>
-          <p>{labels.registration.lbl_createAccount_onlineAccCreated}</p>
+          <p>{getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}</p>
+          <p>{getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}</p>
           <BodyCopy component="div" fontFamily="secondary" fontSize="fs12" textAlign="center">
             <Anchor underline className="reset-password" onClick={showForgotPasswordFormFn}>
-              {labels.registration.lbl_createAccount_clickhere}
+              {getLabelValue(labels, 'lbl_createAccount_clickhere', 'registration')}
             </Anchor>
-            {labels.registration.lbl_createAccount_resetPassword}
+            {getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>

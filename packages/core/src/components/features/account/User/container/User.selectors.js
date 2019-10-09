@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getUserGeoCoordinates = state => {
+  return state[USER_REDUCER_KEY].get('geoLatLong');
+};
+
 export const getFavoriteStore = state => {
   return state[USER_REDUCER_KEY].get('favoriteStore');
 };
@@ -39,6 +43,11 @@ export const getUserLoggedInState = createSelector(
   getPersonalDataState,
   state => state && !state.get('isGuest')
 );
+
+export const getIsGuest = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('isGuest');
+};
 
 export const isPlccUser = createSelector(
   getPersonalDataState,

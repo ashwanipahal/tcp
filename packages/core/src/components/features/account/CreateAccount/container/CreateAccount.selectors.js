@@ -1,5 +1,6 @@
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 export const getIAgree = state => {
   const selector = formValueSelector('CreateAccountForm');
@@ -36,6 +37,8 @@ export const getErrorMessage = createSelector(
     if (errorCode && labels[`lbl_createAccount_error_${errorCode}`]) {
       return labels[`lbl_createAccount_error_${errorCode}`];
     }
-    return error ? error.getIn(['errorMessage', '_error']) || labels.lbl_createAccount_error : '';
+    return error
+      ? error.getIn(['errorMessage', '_error']) || getLabelValue(labels, 'lbl_createAccount_error')
+      : '';
   }
 );

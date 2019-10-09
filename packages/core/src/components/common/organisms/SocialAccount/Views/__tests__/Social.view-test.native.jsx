@@ -5,7 +5,7 @@ import { SocialviewVanilla } from '../Social.view.native';
 
 describe('Social component', () => {
   const props = {
-    saveSocialAcc: {},
+    saveSocialAcc: jest.fn(),
     getSocialAcc: {
       facebook: {
         accessToken: false,
@@ -57,5 +57,10 @@ describe('Social component', () => {
       .find('TouchableOpacity')
       .simulate('press', { isSocialAccount: 'Instagram', isConnected: false });
     expect(component).toMatchSnapshot();
+  });
+
+  it('test dispatchSaveSocial func', () => {
+    component.instance().dispatchSaveSocial('facebook', 'foo', 'foo');
+    expect(props.pointModalClose).toHaveBeenCalled();
   });
 });

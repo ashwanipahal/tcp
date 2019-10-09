@@ -63,6 +63,13 @@ export const setLastDeletedItemIdActn = payload => {
   };
 };
 
+export const setDeletedItemActn = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.DELETED_WISHLIST_ITEM,
+    payload,
+  };
+};
+
 export const updateWishListActn = payload => {
   return {
     type: FAVORITES_CONSTANTS.UPDATE_WISHLIST,

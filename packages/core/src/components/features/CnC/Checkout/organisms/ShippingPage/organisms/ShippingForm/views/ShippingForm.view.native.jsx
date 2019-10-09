@@ -193,6 +193,7 @@ const ShippingForm = ({
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
         onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
+        showAccordian
       />
     </>
   );

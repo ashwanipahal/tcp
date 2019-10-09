@@ -24,6 +24,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcworkspace
 Pods
 
 # Android/IntelliJ
@@ -44,4 +45,10 @@ yarn-error.log
 TestComponent
 TestContainer
 withTest
+
+#storybook
+storybook-static
 node_modules
+
+#sitespeed
+sitespeed-results

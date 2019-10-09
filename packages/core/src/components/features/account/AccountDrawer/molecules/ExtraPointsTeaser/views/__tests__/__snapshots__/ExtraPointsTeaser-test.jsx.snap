@@ -22,7 +22,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        Want to Earn Extra Points?
+        lbl_drawer_earn_extra
       </Styled(BodyCopy)>
     </div>
     <div
@@ -40,7 +40,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        Get even closer to your next reward!
+        lbl_drawer_get_closer
       </Styled(BodyCopy)>
     </div>
     <div
@@ -49,7 +49,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         fontSizeVariation="medium"
-        text="Learn More"
+        text="lbl_drawer_learn_more"
         underline={true}
       />
     </div>

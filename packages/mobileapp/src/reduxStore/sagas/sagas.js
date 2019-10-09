@@ -37,12 +37,17 @@ import NavigationSaga from '@tcp/core/src/components/features/content/Navigation
 import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import BillingPaymentSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/BillingPaymentForm/container/CreditCard.saga';
 import ProductTabListSaga from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.saga';
+import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.saga';
 import GetCandidSaga from '@tcp/core/src/components/common/molecules/GetCandid/container/GetCandid.saga';
 import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organisms/GiftCardsSection/container/GiftCards.saga';
 import MailingAddressSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MailingInformation/container/MailingAddress.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import BirthdaySavingsSaga from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.saga';
+import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
+import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
+import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
+
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
@@ -50,6 +55,7 @@ import ApplyCreditCardSaga, {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
 import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
+import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -89,6 +95,7 @@ export default function* rootSaga() {
     ChangePasswordSaga(),
     BillingPaymentSaga(),
     ProductTabListSaga(),
+    StyliticsProductTabListSaga(),
     GetCandidSaga(),
     UpdateProfileSaga(),
     GiftCardsSaga(),
@@ -97,6 +104,8 @@ export default function* rootSaga() {
     ProductDetailSaga(),
     MyFavoriteStoreSaga(),
     BirthdaySavingsSaga(),
+    StoreDetailSaga(),
+    StoreLandingSaga(),
     ApplyCreditCardSaga(),
     SubmitInstantCardApplication(),
     QuickViewSaga(),
@@ -104,5 +113,7 @@ export default function* rootSaga() {
     SocialAccountSaga(),
     ConfirmationPageSaga(),
     PickupStoreSaga(),
+    ExtraPointsSaga(),
+    SearchBarSaga(),
   ]);
 }

@@ -274,6 +274,19 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
+  // STORE LOCATORS
+  getFavoriteStore: {
+    method: 'GET',
+    URI: 'v2/store/getFavouriteStoreLocation',
+  },
+  findStoresByCoordinates: {
+    method: 'GET',
+    URI: 'v2/store/findStoresbyLatitudeandLongitude',
+  },
+  setFavoriteStore: {
+    method: 'POST',
+    URI: 'v2/store/addFavouriteStoreLocation',
+  },
 
   getSocialAccountsInfo: {
     method: 'GET',
@@ -319,6 +332,14 @@ const endpoints = {
   personalizedCoupons: {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
+  },
+  getStoreInfo: {
+    method: 'GET',
+    URI: 'v2/store/info',
+  },
+  getNearByStore: {
+    method: 'GET',
+    URI: 'v2/store/nearBy',
   },
   getBOPISInventoryDetails: {
     method: 'POST',
@@ -379,6 +400,10 @@ const endpoints = {
   shareWishListForUser: {
     method: 'POST',
     URI: 'v2/wishlist/shareWishListForUser',
+  },
+  getStoreLocationByCountry: {
+    method: 'GET',
+    URI: 'v2/store/getStoreLocationByCountry',
   },
 };
 export default endpoints;

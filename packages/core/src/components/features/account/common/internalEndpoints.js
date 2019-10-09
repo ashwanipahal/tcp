@@ -62,6 +62,10 @@ const internalEndpoints = {
     link: '/account?id=my-preference',
     path: '/account//my-preference',
   },
+  myOrderPage: {
+    link: '/account?id=orders',
+    path: '/account/orders',
+  },
 };
 
 export default internalEndpoints;
