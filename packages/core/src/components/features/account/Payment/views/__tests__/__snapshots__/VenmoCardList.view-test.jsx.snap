@@ -61,6 +61,7 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
         },
       ]
     }
+    deleteModalMountedState={false}
     labels={
       Object {
         "VenmoCardHeading": "heading",

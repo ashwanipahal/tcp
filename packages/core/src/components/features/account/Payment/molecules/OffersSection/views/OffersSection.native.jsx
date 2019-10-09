@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -11,12 +12,7 @@ import {
 } from '../OffersSection.style.native';
 import RichText from '../../../../../../common/atoms/RichText';
 
-// @flow
-type Props = {
-  labels: Object,
-};
-
-const OffersSection = (props: Props) => {
+const OffersSection = props => {
   const { labels } = props;
   return (
     <View {...props}>
@@ -35,6 +31,10 @@ const OffersSection = (props: Props) => {
       </WrapperStyle>
     </View>
   );
+};
+
+OffersSection.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(OffersSection, ParentContainerStyle);
