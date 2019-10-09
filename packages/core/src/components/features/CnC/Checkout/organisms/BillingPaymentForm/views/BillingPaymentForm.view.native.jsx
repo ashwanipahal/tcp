@@ -8,13 +8,12 @@ import getCvvInfo from '../../../molecules/CVVInfo';
 import AddNewCCForm from '../../AddNewCCForm';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
+import { propTypes, defaultProps } from './BillingPaymentForm.view.util';
 import {
-  propTypes,
-  defaultProps,
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
-} from './BillingPaymentForm.view.util';
+} from '../../../util/utility';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';

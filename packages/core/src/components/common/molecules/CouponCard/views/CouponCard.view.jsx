@@ -176,6 +176,7 @@ class CouponCard extends React.Component<Props> {
                       lineHeight="lh115"
                       fontWeight="black"
                       fontFamily="secondary"
+                      className="couponTitle"
                       data-locator={`coupon_${coupon.status}_couponNameLbl`}
                     >
                       {`${coupon.title}`}

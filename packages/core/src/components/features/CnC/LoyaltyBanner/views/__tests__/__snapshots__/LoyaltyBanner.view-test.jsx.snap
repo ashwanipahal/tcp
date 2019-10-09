@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(LoyaltyBannerSection)
+    currentSubtotal={21}
+    estimatedRewardsVal={20}
+    estimatedSubtotal={33}
+    labels={Object {}}
+    thresholdValue={16.66}
+  />
+</div>
+`;

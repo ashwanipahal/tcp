@@ -32,7 +32,7 @@ describe('Social component', () => {
 
   it.skip('should simulate facebook connect', () => {
     component
-      .find('TouchableOpacity')
+      .find('Styled(TouchableOpacity)')
       .simulate('press', { isSocialAccount: 'Facebook', isConnected: false });
     expect(component).toMatchSnapshot();
   });
@@ -54,7 +54,7 @@ describe('Social component', () => {
 
   it('should simulate instagram connect', () => {
     component
-      .find('TouchableOpacity')
+      .find('Styled(TouchableOpacity)')
       .simulate('press', { isSocialAccount: 'Instagram', isConnected: false });
     expect(component).toMatchSnapshot();
   });
