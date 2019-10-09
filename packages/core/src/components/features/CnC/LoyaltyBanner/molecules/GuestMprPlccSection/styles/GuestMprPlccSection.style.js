@@ -14,16 +14,16 @@ const Styles = css`
   .earnDoublePoints,
   .currentSubtotalText,
   .estimatedSubtotalText {
-    font-size: 12px;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
   }
   .save30Today {
-    font-size: 18px;
+    font-size: ${props => props.theme.typography.fontSizes.fs18};
   }
   .currentSubtotalVal {
-    font-size: 14px;
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
   }
   .estimatedSubtotalVal {
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -38,18 +38,18 @@ const Styles = css`
     }
     .youCanEarnPoints,
     .earnDoublePoints {
-      font-size: 10px;
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
     }
     .save30Today,
     .currentSubtotalVal {
-      font-size: 14px;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
     .currentSubtotalText,
     .estimatedSubtotalText {
-      font-size: 12px;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
     .estimatedSubtotalVal {
-      font-size: 16px;
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
   }
 
@@ -66,17 +66,17 @@ const Styles = css`
     .youCanEarnPoints,
     .earnDoublePoints,
     .currentSubtotalVal {
-      font-size: 16px;
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
     .save30Today {
-      font-size: 20px;
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
     }
     .currentSubtotalText,
     .estimatedSubtotalText {
-      font-size: 14px;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
     .estimatedSubtotalVal {
-      font-size: 18px;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 `;
