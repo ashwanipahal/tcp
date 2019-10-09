@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils';
+import { getLocator, readCookieMobileApp } from '@tcp/core/src/utils';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import { updateCartCount } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
   MessageContainer,
@@ -20,6 +19,8 @@ import {
   ImageColor,
   Touchable,
 } from './Header.style';
+
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header
@@ -49,9 +50,8 @@ class Header extends React.PureComponent<Props> {
     };
   }
 
-  componentDidMount() {
+  getInitialProps() {
     const { updateCartCountAction } = this.props;
-    const CART_ITEM_COUNTER = 'cartItemsCount';
     const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
       updateCartCountAction(parseInt(res || 0, 10));
