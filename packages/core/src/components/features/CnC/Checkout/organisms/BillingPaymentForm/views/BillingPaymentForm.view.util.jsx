@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { change } from 'redux-form';
 import constants from '../container/CreditCard.constants';
 import Button from '../../../../../../common/atoms/Button';
 import Card from '../../../../../../common/molecules/Card';
@@ -111,6 +112,19 @@ const getCardOptions = ({
   return cardOptions;
 };
 
+const onCCDropUpdateChange = (value, selectedCard, dispatch) => {
+  if (selectedCard) {
+    dispatch(change(constants.FORM_NAME, 'cardType', selectedCard.ccBrand.toUpperCase()));
+  }
+};
+
+const onAddNewCreditCardUpdate = dispatch => {
+  dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
+  dispatch(change(constants.FORM_NAME, 'expMonth', ''));
+  dispatch(change(constants.FORM_NAME, 'expYear', ''));
+  dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
+};
+
 export {
   propTypes,
   defaultProps,
@@ -118,4 +132,6 @@ export {
   getSelectedCard,
   getCreditCardList,
   getCardOptions,
+  onCCDropUpdateChange,
+  onAddNewCreditCardUpdate,
 };

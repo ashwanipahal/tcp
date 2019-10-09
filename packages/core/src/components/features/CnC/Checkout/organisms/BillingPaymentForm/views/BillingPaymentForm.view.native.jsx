@@ -14,6 +14,7 @@ import {
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
+  onCCDropUpdateChange,
 } from './BillingPaymentForm.view.util';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
@@ -209,6 +210,8 @@ export class BillingPaymentForm extends React.PureComponent {
     if (addNewCCState) {
       this.setState({ addNewCCState: false });
     }
+    const { dispatch } = this.props;
+    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
   getCCDropDown = ({
@@ -294,6 +297,9 @@ export class BillingPaymentForm extends React.PureComponent {
   getCreditCardWrapper = ({ labels, creditCardList, cvvCodeRichText, onFileCardKey, dispatch }) => {
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { addNewCCState } = this.state;
+    if (onFileCardKey) {
+      onCCDropUpdateChange(onFileCardKey, selectedCard, dispatch);
+    }
     return (
       <>
         {creditCardList && creditCardList.size > 0 && !addNewCCState
