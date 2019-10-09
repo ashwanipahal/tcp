@@ -27,6 +27,7 @@ export class StoreLanding extends PureComponent {
 
   state = {
     searchDone: false,
+    geoLocationEnabled: false,
   };
 
   componentDidMount() {
@@ -59,13 +60,22 @@ export class StoreLanding extends PureComponent {
             Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
             INITIAL_STORE_LIMIT
           );
+          this.setState({
+            geoLocationEnabled: true,
+          });
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
+          this.setState({
+            geoLocationEnabled: false,
+          });
         }
       );
     } else {
       this.initiateGetFavoriteStoreRequest();
+      this.setState({
+        geoLocationEnabled: false,
+      });
     }
   };
 
@@ -105,7 +115,7 @@ export class StoreLanding extends PureComponent {
 
   render() {
     const { navigation } = this.props;
-    const { searchDone } = this.state;
+    const { searchDone, geoLocationEnabled } = this.state;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -119,6 +129,7 @@ export class StoreLanding extends PureComponent {
         navigation={navigation}
         getLocationStores={this.getLocationStores}
         searchDone={searchDone}
+        geoLocationEnabled={geoLocationEnabled}
       />
     );
   }

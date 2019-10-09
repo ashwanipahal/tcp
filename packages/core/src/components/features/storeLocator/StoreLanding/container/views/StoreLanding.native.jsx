@@ -71,6 +71,7 @@ export class StoreLanding extends PureComponent {
       labels,
       loadStoresByCoordinates,
       getLocationStores,
+      geoLocationEnabled,
     } = this.props;
     const { mapView, isGym, isOutlet } = this.state;
 
@@ -111,6 +112,7 @@ export class StoreLanding extends PureComponent {
                   store={favoriteStore}
                   variation="listing-header"
                   isFavorite
+                  geoLocationDisabled={!geoLocationEnabled}
                 />
               </StyledFavStoreHeading>
             )}
@@ -150,11 +152,13 @@ StoreLanding.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
+  geoLocationEnabled: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
+  geoLocationEnabled: false,
 };
 
 export default withTheme(StoreLanding);

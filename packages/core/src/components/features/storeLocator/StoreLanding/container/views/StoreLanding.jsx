@@ -115,7 +115,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderFavoriteStore = () => {
-    const { favoriteStore, labels } = this.props;
+    const { favoriteStore, labels, geoLocationEnabled } = this.props;
     return (
       <>
         {favoriteStore && (
@@ -130,6 +130,7 @@ export class StoreLanding extends PureComponent {
                 variation="listing-header"
                 isFavorite
                 openStoreDetails={this.openStoreDetails}
+                geoLocationDisabled={!geoLocationEnabled}
               />
             </Col>
           </Row>
@@ -247,12 +248,14 @@ StoreLanding.propTypes = {
   searchIcon: PropTypes.string.isRequired,
   getLocationStores: PropTypes.func.isRequired,
   searchDone: PropTypes.bool,
+  geoLocationEnabled: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
   searchDone: false,
+  geoLocationEnabled: false,
 };
 
 export default withStyles(StoreLanding, styles);

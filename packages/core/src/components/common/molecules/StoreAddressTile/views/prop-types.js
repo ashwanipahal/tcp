@@ -53,6 +53,7 @@ export const propTypes = {
   locatorSetFavStore: PropTypes.string,
   showSetFavorite: PropTypes.bool,
   titleClickCb: PropTypes.func,
+  geoLocationDisabled: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -69,4 +70,5 @@ export const defaultProps = {
   titleClickCb: null,
   locatorDirections: 'get-store-directions',
   locatorSetFavStore: 'set-favorite-store',
+  geoLocationDisabled: true,
 };

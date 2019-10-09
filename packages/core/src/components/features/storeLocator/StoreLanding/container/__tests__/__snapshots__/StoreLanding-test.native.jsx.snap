@@ -154,6 +154,8 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
             }
           }
           fetchStoresByLatLng={[MockFunction]}
+          geoLocationDisabled={true}
+          geoLocationEnabled={false}
           isFavorite={true}
           isListingHeader={false}
           labels={Object {}}
@@ -604,6 +606,8 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
             }
           }
           fetchStoresByLatLng={[MockFunction]}
+          geoLocationDisabled={true}
+          geoLocationEnabled={false}
           isFavorite={true}
           isListingHeader={false}
           key="110685"

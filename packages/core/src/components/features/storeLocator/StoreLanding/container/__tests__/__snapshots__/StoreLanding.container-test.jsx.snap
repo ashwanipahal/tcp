@@ -12,6 +12,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   }
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -54,6 +55,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   }
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -96,6 +98,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
   }
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -131,6 +134,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
   favoriteStore={null}
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -173,6 +177,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
   }
   fetchCurrentStore={[Function]}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={[MockFunction]}
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
