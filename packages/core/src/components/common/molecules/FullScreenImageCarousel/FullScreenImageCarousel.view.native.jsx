@@ -41,6 +41,8 @@ class FullScreenImageCarousel extends React.PureComponent {
       },
     }));
 
+    const numberOfImages = (imageUrls && imageUrls.length) || 0;
+
     return (
       <ModalNative
         isOpen={zoomImage}
@@ -65,13 +67,15 @@ class FullScreenImageCarousel extends React.PureComponent {
             index={activeSlideIndex}
             enablePreload
           />
-          <PaginationContainer>
-            <PaginationDots
-              numberOfDots={(imageUrls && imageUrls.length) || 0}
-              selectedIndex={activeSlideIndex}
-              onPress={this.onPageChange}
-            />
-          </PaginationContainer>
+          {numberOfImages > 1 && (
+            <PaginationContainer>
+              <PaginationDots
+                numberOfDots={numberOfImages}
+                selectedIndex={activeSlideIndex}
+                onPress={this.onPageChange}
+              />
+            </PaginationContainer>
+          )}
         </ModalCarousel>
       </ModalNative>
     );
