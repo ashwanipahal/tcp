@@ -36,6 +36,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
         },
         "error": "#c8102e",
@@ -3243,6 +3244,7 @@ exports[`StoreSelector component should default set title as value for selected 
     >
       <StoreSelector
         className="sc-fjdhpX knGUel"
+        dataLocator=""
         defaultSelectText="Test Text"
         options={
           Array [
@@ -8839,6 +8841,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
         },
         "error": "#c8102e",
@@ -12044,6 +12047,7 @@ exports[`StoreSelector component should render correctly 1`] = `
     >
       <StoreSelector
         className="sc-fjdhpX knGUel"
+        dataLocator=""
         defaultSelectText="Test Text"
         options={
           Array [
