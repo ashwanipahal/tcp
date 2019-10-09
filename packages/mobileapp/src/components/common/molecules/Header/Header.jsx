@@ -78,6 +78,11 @@ class Header extends React.PureComponent<Props> {
     });
   };
 
+  /**
+   * @function getStoreHours to calulate store hours for the current date
+   * @param {Object} store - store object
+   * @return {string} storeTime for the current date
+   */
   getStoreHours = store => {
     const hours = store && store.hours;
     const storeHours = hours && [
@@ -87,8 +92,7 @@ class Header extends React.PureComponent<Props> {
     ];
     const todaysDate = new Date();
     let storeTime = '';
-    /* eslint-disable no-unused-expressions */
-    storeHours &&
+    if (storeHours && Array.isArray(storeHours)) {
       storeHours.forEach(hour => {
         const openInterval =
           hour &&
@@ -98,6 +102,7 @@ class Header extends React.PureComponent<Props> {
           storeTime = toTimeString(parseDate(openInterval), true);
         }
       });
+    }
     return storeTime;
   };
 
