@@ -15,10 +15,13 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="myWallet"
     >
       <Styled(Anchor)
-        anchorVariation="primary"
+        anchorVariation="grayed"
+        asPath="/myWalletPage"
         fontSizeVariation="large"
-        fontWeightVariation="active"
-      />
+        fontWeightVariation=""
+      >
+        My Wallet
+      </Styled(Anchor)>
     </li>
     <li
       className="nav-link-wrapper"
@@ -26,10 +29,13 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
       key="earnExtraPoints"
     >
       <Styled(Anchor)
-        anchorVariation="primary"
+        anchorVariation="grayed"
+        asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
-        fontWeightVariation="active"
-      />
+        fontWeightVariation=""
+      >
+        Earn Extra Points
+      </Styled(Anchor)>
     </li>
     <li
       className="nav-link-wrapper"
@@ -38,9 +44,13 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        asPath="/account/place-rewards"
         fontSizeVariation="large"
         fontWeightVariation="active"
-      />
+        to="/account?id=myPlaceRewards"
+      >
+        My Place Rewards
+      </Styled(Anchor)>
       <ul
         className="nav-sub-section"
       >
@@ -75,9 +85,12 @@ exports[`My Account Left Nav should render only 2  links if navData has 2 links 
     >
       <Styled(Anchor)
         anchorVariation="primary"
+        asPath="/myWalletPage"
         fontSizeVariation="large"
         fontWeightVariation="active"
-      />
+      >
+        My Wallet
+      </Styled(Anchor)>
     </li>
     <li
       className="nav-link-wrapper"
@@ -85,10 +98,13 @@ exports[`My Account Left Nav should render only 2  links if navData has 2 links 
       key="earnExtraPoints"
     >
       <Styled(Anchor)
-        anchorVariation="primary"
+        anchorVariation="grayed"
+        asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
-        fontWeightVariation="active"
-      />
+        fontWeightVariation=""
+      >
+        Earn Extra Points
+      </Styled(Anchor)>
     </li>
   </ul>
 </Fragment>

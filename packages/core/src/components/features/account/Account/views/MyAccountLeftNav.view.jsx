@@ -9,7 +9,8 @@ import styles from '../styles/MyAccountLayout.style';
  * @param {nav} nav Each Link data is passed in nav Object
  * NOTE:-  Used the next Link, will change it to atom Anchor once the as attribute in common Achor Atom gets resolved
  */
-const getNavLink = (nav, active, selectedSubNav) => {
+const getNavLink = (navObj, selectedSubNav) => {
+  const { nav, active } = navObj;
   const selectedNav = active === nav.component;
   return (
     <Anchor
@@ -28,14 +29,15 @@ const getNavLink = (nav, active, selectedSubNav) => {
  * @function renderSubSections This function renders each subSection link present in the left nav
  * @param {nav} nav Each Link data is passed in nav Object
  */
-const renderSubSections = (nav, activeSubComponent) => {
+const renderSubSections = navObj => {
+  const { nav, activeSubComponent } = navObj;
   return (
     <ul className="nav-sub-section">
       {nav.subSections.map(subSection => {
         const selectedSubNav = subSection.component === activeSubComponent;
         return (
           <li id={subSection.id} key={subSection.id} className="nav-link-wrapper">
-            {getNavLink(subSection, selectedSubNav)}
+            {getNavLink({ nav: subSection }, selectedSubNav)}
           </li>
         );
       })}
@@ -62,7 +64,7 @@ const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }) =>
                 {active === nav.component &&
                   nav.subSections &&
                   nav.subSections.length !== 0 &&
-                  renderSubSections(nav, activeSubComponent)}
+                  renderSubSections({ nav, activeSubComponent })}
               </li>
             );
           })}
@@ -72,10 +74,10 @@ const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }) =>
 };
 
 MyAccountLeftNav.propTypes = {
-  navData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  active: PropTypes.string.isRequired,
-  activeSubComponent: PropTypes.string.isRequired,
+  navData: PropTypes.shape([]).isRequired,
+  active: PropTypes.bool.isRequired,
   className: PropTypes.string.isRequired,
+  activeSubComponent: PropTypes.string.isRequired,
 };
 
 export default withStyles(MyAccountLeftNav, styles);

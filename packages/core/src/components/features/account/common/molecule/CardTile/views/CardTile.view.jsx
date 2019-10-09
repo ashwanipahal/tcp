@@ -25,22 +25,6 @@ import {
 } from './CardTile.utils';
 import Button from '../../../../../../common/atoms/Button';
 
-// @flow
-// type Props = {
-//   card: object,
-//   className: string,
-//   labels: object,
-//   setDefaultPaymentMethod: Function,
-//   setDeleteModalMountState: Function,
-//   setSelectedGiftCard: Function,
-//   change: any,
-//   handleSubmit: any,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   showNotificationCaptcha: any,
-//   form: any,
-//   dispatch: Function,
-// };
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);

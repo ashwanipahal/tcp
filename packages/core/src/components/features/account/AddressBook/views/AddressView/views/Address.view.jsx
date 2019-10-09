@@ -14,24 +14,8 @@ import DeleteAddressModal from '../../DeleteAddressModal.view';
 import Notification from '../../../../../../common/molecules/Notification';
 import utils from '../../../../../../../utils';
 
-// import { List } from 'immutable'
-// @flow
-// type Props = {
-//   addresses: List<{}>,
-//   labels: {
-//     addNewAddressCTA: string,
-//   },
-//   className: string,
-//   onDefaultShippingAddressClick: Object,
-//   showUpdatedNotification: any,
-//   showUpdatedNotificationOnModal: any,
-//   onDeleteAddress: Function,
-//   deleteModalMountedState: false,
-//   setDeleteModalMountState: Function,
-// };
-
 export class AddressView extends React.PureComponent<Props> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedAddress: {},
