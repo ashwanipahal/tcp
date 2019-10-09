@@ -8,66 +8,9 @@ exports[`GiftServices component should renders correctly props not present 1`] =
         component={[Function]}
         dataLocator="hide-show-checkbox"
         enableSuccessCheck={false}
+        isChecked={true}
         name="hasGiftWrapping"
-        onChange={[Function]}
-      />
-      <Styled(BodyCopy)
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        margin={null}
-        numberOfLines={null}
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        colorName={null}
-        customStyle={Object {}}
-        fontFamily="secondary"
-        fontSizeVariation="medium"
-        locator=""
-        onPress={[Function]}
-        text=""
-        underline={true}
-        visible={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      dataLocator="add-gift-services-details-lbl"
-      fontSize="fs14"
-      fontWeight="regular"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <GiftServicesDetailsModal
-    labels={Object {}}
-    onRequestClose={[Function]}
-    openState={false}
-  />
-</Styled(View)>
-`;
-
-exports[`GiftServices component should renders correctly props not present 2`] = `
-<Styled(View)>
-  <Styled(View)>
-    <Styled(View)>
-      <Field
-        component={[Function]}
-        dataLocator="hide-show-checkbox"
-        enableSuccessCheck={false}
-        name="hasGiftWrapping"
-        onChange={[Function]}
+        onClick={[Function]}
       />
       <Styled(BodyCopy)
         accessibilityText=""
@@ -128,7 +71,7 @@ exports[`GiftServices component should renders correctly props not present 2`] =
             buttonOuterSize={20}
             buttonSize={10}
             buttonStyle={Object {}}
-            checked={true}
+            checked={false}
             disabled={false}
             index={-1}
             labelStyle={Object {}}
@@ -273,6 +216,65 @@ exports[`GiftServices component should renders correctly props not present 2`] =
       type="text"
     />
   </View>
+  <GiftServicesDetailsModal
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</Styled(View)>
+`;
+
+exports[`GiftServices component should renders correctly props not present 2`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="hide-show-checkbox"
+        enableSuccessCheck={false}
+        isChecked={false}
+        name="hasGiftWrapping"
+        onClick={[Function]}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontFamily="secondary"
+        fontSizeVariation="medium"
+        locator=""
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator="add-gift-services-details-lbl"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
   <GiftServicesDetailsModal
     labels={Object {}}
     onRequestClose={[Function]}

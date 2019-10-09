@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -20,6 +21,7 @@ import {
   getScrollToTopValue,
   getTotalProductsCount,
 } from './ProductListing.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
@@ -149,6 +151,7 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
   };
 }
@@ -165,6 +168,9 @@ function mapDispatchToProps(dispatch) {
     addItemToCartBopis: () => {},
     resetProducts: () => {
       dispatch(resetPlpProducts());
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 }

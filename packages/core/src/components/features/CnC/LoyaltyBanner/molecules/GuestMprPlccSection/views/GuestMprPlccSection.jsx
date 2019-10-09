@@ -36,14 +36,14 @@ const GuestMprPlccSection = props => {
           className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
           fontSize="fs20"
           color="text.primary"
-          fontFamily="primary"
+          fontFamily="secondary"
           fontWeight="extrabold"
         >
           {labels.save30Today}
         </BodyCopy>
       )}
       <BodyCopy
-        className="earnDoublePoints alignCenter elem-pt-MED elem-pb-MED elem-pl-SM elem-pr-SM"
+        className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
         fontSize="fs16"
         color="text.primary"
         fontFamily="secondary"
@@ -63,7 +63,7 @@ const GuestMprPlccSection = props => {
         </BodyCopy>
       )}
       {showSubtotal && !isPlcc && (
-        <div className="subtotalPointsSection elem-pt-MED elem-pl-SM elem-pr-SM">
+        <div className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM">
           <Row fullBleed className="currentSubtotalRow">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="currentSubtotalTextCol">
               <BodyCopy

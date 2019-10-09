@@ -2,6 +2,7 @@ const BUTTON_VARIATION = {
   miniNav: 'mini-nav',
   mobileAppFilter: 'mobileApp-filter',
   mobileAppFilterIcon: 'mobileApp-filter-icon',
+  mobileAppSelect: 'mobileApp-select',
 };
 
 const BUTTON_FILL = {

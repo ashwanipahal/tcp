@@ -65,7 +65,7 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <Field
               labels={labels}
@@ -79,7 +79,7 @@ class LoginForm extends React.PureComponent<Props> {
               enableSuccessCheck={false}
               className="elem-mb-SM"
               tooltipContent={tooltipContent}
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <BodyCopy component="div">
               <Field
