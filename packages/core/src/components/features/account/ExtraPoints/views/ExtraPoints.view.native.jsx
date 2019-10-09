@@ -22,7 +22,6 @@ import {
   MessageInfoWrapper,
   MorePointsWrapper,
   ExtraEarningHeader,
-  AnchorWrapper,
   PromoTileWrapper,
 } from '../styles/ExtraPoints.style.native';
 
@@ -132,7 +131,7 @@ export class EarnPoints extends React.PureComponent {
             textAlign="center"
             fontWeight="regular"
           />
-          <AnchorWrapper>
+          <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
             <Anchor
               fontSizeVariation="large"
               underline
@@ -143,7 +142,7 @@ export class EarnPoints extends React.PureComponent {
               }}
               text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_learnMore')}
             />
-          </AnchorWrapper>
+          </ViewWithSpacing>
         </ExtraEarningHeader>
         <TilesWrapper>
           {promoListData &&

@@ -5,11 +5,6 @@ const TileWrapper = styled.View`
   min-height: 240px;
 `;
 
-const EarnPointDesc = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-`;
-
 const PromoTileImage = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   text-align: center;
@@ -18,4 +13,4 @@ const PromoTileImage = styled.View`
   align-items: center;
 `;
 
-export { TileWrapper, EarnPointDesc, PromoTileImage };
+export { TileWrapper, PromoTileImage };

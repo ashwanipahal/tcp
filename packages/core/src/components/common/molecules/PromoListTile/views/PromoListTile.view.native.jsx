@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
-import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
-import { TileWrapper, EarnPointDesc, PromoTileImage } from '../styles/PromoListTile.style.native';
+import { TileWrapper, PromoTileImage } from '../styles/PromoListTile.style.native';
 
 /**
  * DetailedEarnExtraPointsTile component used for show details earn extra points.
@@ -28,7 +31,7 @@ const PromoListTile = ({ tileData }) => {
       />
       <BodyCopy textAlign="center" fontSize="fs14" text={tileData.subHeadLine[0].text} />
       {tileData.buttonList && (
-        <EarnPointDesc>
+        <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-MED">
           <Anchor
             fontSizeVariation="large"
             underline
@@ -39,7 +42,7 @@ const PromoListTile = ({ tileData }) => {
             }}
             text={tileData.buttonList[0].text}
           />
-        </EarnPointDesc>
+        </ViewWithSpacing>
       )}
     </TileWrapper>
   );

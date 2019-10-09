@@ -39,12 +39,8 @@ const MprTermsWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 const ExtraEarningHeader = styled.View`
-  margin-top: 32px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   border: 2px solid ${props => props.theme.colorPalette.orange[800]};
-`;
-const AnchorWrapper = styled.View`
-  margin-bottom: 32px;
-  margin-top: 16px;
 `;
 const PromoTileWrapper = styled.View`
   width: 48%;
@@ -58,6 +54,5 @@ export {
   MessageInfoWrapper,
   MorePointsWrapper,
   ExtraEarningHeader,
-  AnchorWrapper,
   PromoTileWrapper,
 };
