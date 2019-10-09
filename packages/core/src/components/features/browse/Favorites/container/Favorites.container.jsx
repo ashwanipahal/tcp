@@ -3,12 +3,12 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Favorites from '../views';
 import {
-  getSetWishlistsSummariesActn,
-  createNewWishListMoveItemActn,
-  deleteWishListActn,
-  getActiveWishlistActn,
-  createNewWishListActn,
-  setLastDeletedItemIdActn,
+  getSetWishlistsSummariesAction,
+  createNewWishListMoveItemAction,
+  deleteWishListAction,
+  getActiveWishlistAction,
+  createNewWishListAction,
+  setLastDeletedItemIdAction,
 } from './Favorites.actions';
 
 class FavoritesContainer extends React.PureComponent {
@@ -51,12 +51,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadWishList: () => dispatch(getSetWishlistsSummariesActn()),
-    createNewWishListMoveItem: wishListId => dispatch(createNewWishListMoveItemActn(wishListId)),
-    deleteWishList: wishListId => dispatch(deleteWishListActn(wishListId)),
-    getActiveWishlist: payload => dispatch(getActiveWishlistActn(payload)),
-    createNewWishList: formData => dispatch(createNewWishListActn(formData)),
-    setLastDeletedItemId: itemId => dispatch(setLastDeletedItemIdActn(itemId)),
+    loadWishList: () => dispatch(getSetWishlistsSummariesAction()),
+    createNewWishListMoveItem: wishListId => dispatch(createNewWishListMoveItemAction(wishListId)),
+    deleteWishList: wishListId => dispatch(deleteWishListAction(wishListId)),
+    getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
+    createNewWishList: formData => dispatch(createNewWishListAction(formData)),
+    setLastDeletedItemId: itemId => dispatch(setLastDeletedItemIdAction(itemId)),
   };
 };
 

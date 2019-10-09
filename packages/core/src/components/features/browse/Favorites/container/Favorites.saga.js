@@ -5,17 +5,17 @@ import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import {
   setWishlistState,
-  setWishlistsSummariesActn,
-  getSetIsWishlistReadOnlyActn,
-  getSetActiveWishlistActn,
-  setActiveWishlistActn,
-  getActiveWishlistActn,
-  setDeletedItemActn,
+  setWishlistsSummariesAction,
+  getSetIsWishlistReadOnlyAction,
+  getSetActiveWishlistAction,
+  setActiveWishlistAction,
+  getActiveWishlistAction,
+  setDeletedItemAction,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
   getWishListbyId,
-  // getProductsPrices,
+  getProductsPrices,
   createWishList,
   moveItemToNewWishList,
   deleteWishList,
@@ -42,8 +42,8 @@ export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
       guestAccessKey,
       isCanada: isCanadaCheck,
     });
-    getSetIsWishlistReadOnlyActn(true);
-    getSetActiveWishlistActn(wishlistItems);
+    getSetIsWishlistReadOnlyAction(true);
+    getSetActiveWishlistAction(wishlistItems);
     return wishlistItems;
   } catch (err) {
     return [];
@@ -86,21 +86,21 @@ export function* loadActiveWishlist({ wishListId }) {
       imageGenerator: getImgPath,
     });
     const wishlistItems = wishlistById.items;
-    // const prices = yield call(
-    //   getProductsPrices,
-    //   wishlistItems.map(wishlist => wishlist.skuInfo.colorProductId)
-    // );
+    const prices = yield call(
+      getProductsPrices,
+      wishlistItems.map(wishlist => wishlist.skuInfo.colorProductId)
+    );
     const WishlistWithUnbxdPrice = wishlistItems.map(wishlist => {
       return {
         ...wishlist,
         productInfo: {
           ...wishlist.productInfo,
-          // ...prices[wishlist.skuInfo.colorProductId],
+          ...prices[wishlist.skuInfo.colorProductId],
         },
       };
     });
     const updatedWishList = { ...wishlistById, items: [...WishlistWithUnbxdPrice] };
-    yield put(setActiveWishlistActn(updatedWishList));
+    yield put(setActiveWishlistAction(updatedWishList));
   } catch (err) {
     yield null;
   }
@@ -115,9 +115,9 @@ export function* loadWishlistsSummaries(config) {
     }
     const userName = getUserContactInfo(state).get('firstName');
     const wishlists = yield call(getUserWishLists, userName);
-    yield put(setWishlistsSummariesActn(wishlists));
+    yield put(setWishlistsSummariesAction(wishlists));
     const activeWishListId = wishListId || wishlists.find(list => list.isDefault).id;
-    yield put(getActiveWishlistActn(activeWishListId));
+    yield put(getActiveWishlistAction(activeWishListId));
   } catch (err) {
     yield null;
   }
@@ -210,7 +210,7 @@ export function* deleteWishListItemById({ payload }) {
   if (!deleteItemResponse.success) {
     throw deleteItemResponse;
   }
-  yield put(setDeletedItemActn(payload.itemId));
+  yield put(setDeletedItemAction(payload.itemId));
   yield* loadWishlistsSummaries(activeWishlistId);
 }
 
