@@ -159,6 +159,7 @@ class ShippingForm extends React.Component {
     if (modalState && type === 'add') {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
     }
+
     if (isEditingMobileMode) {
       this.setState({ isEditingMobileMode: !isEditingMobileMode });
     }
