@@ -102,7 +102,6 @@ class SmsSignupModal extends React.PureComponent {
       submitSucceeded,
     } = this.props;
     const { validationStarted = false } = this.state;
-
     const { IMG_DATA } = config;
 
     return (
@@ -141,7 +140,7 @@ class SmsSignupModal extends React.PureComponent {
                   <DamImage
                     alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    imgData={{ url: formViewConfig.lbl_SignUp_imageSrc }}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>

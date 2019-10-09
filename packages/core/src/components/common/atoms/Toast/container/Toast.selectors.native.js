@@ -4,4 +4,8 @@ const getToastMsgResponse = state => {
   return state[TOAST_REDUCER_KEY].get('toastMessage');
 };
 
-export default getToastMsgResponse;
+const getToastMsgPosition = state => {
+  return state[TOAST_REDUCER_KEY].get('toastMessagePosition');
+};
+
+export { getToastMsgResponse, getToastMsgPosition };

@@ -7,12 +7,13 @@ import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/conta
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
-import SearchBar from '../SearchBar/index';
 import style from './HeaderMiddleNav.style';
+import StoreLocatorLink from '../StoreLocatorLink';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -96,6 +97,8 @@ class HeaderMiddleNav extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
+      store,
+      labels,
     } = this.props;
     const brand = getBrand();
     const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
@@ -110,7 +113,10 @@ class HeaderMiddleNav extends React.PureComponent {
                 medium: 8,
                 small: 6,
               }}
-            />
+              className="header-middle-nav-storelocator"
+            >
+              <StoreLocatorLink store={store} labels={labels && labels.store} />
+            </Col>
             <Col
               className="header-middle-nav-search"
               colSize={{
@@ -143,6 +149,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
+              <StoreLocatorLink store={store} labels={labels && labels.store} />
               <BrandLogo
                 alt={config[brand].alt}
                 className="header-brand__home-logo--brand"
@@ -268,11 +275,36 @@ HeaderMiddleNav.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   openMiniBagDispatch: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    basicInfo: PropTypes.shape({}),
+    hours: PropTypes.shape({
+      regularHours: PropTypes.shape([]),
+      regularAndHolidayHours: PropTypes.shape([]),
+      holidayHours: PropTypes.shape([]),
+    }),
+    features: PropTypes.shape({}),
+  }),
+  labels: PropTypes.shape({}).isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {
   navigationDrawer: {
     open: false,
+  },
+  store: {
+    basicInfo: {
+      id: '',
+      storeName: '',
+      phone: '',
+      coordinates: {},
+      address: {},
+    },
+    hours: {
+      regularHours: [],
+      regularAndHolidayHours: [],
+      holidayHours: [],
+    },
+    features: {},
   },
 };
 

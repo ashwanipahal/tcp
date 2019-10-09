@@ -8,29 +8,21 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
-  .bonusPointsDaysWrapper {
-    background-color: ${props => props.theme.colorPalette.white};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
-      ${props => props.theme.spacing.ELEM_SPACING.SM};
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .order-summary {
+      padding: 0;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
 
-  .bonusPointsDaysWrapperAccordian {
-    background-color: ${props => props.theme.colorPalette.white};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
-      ${props => props.theme.spacing.ELEM_SPACING.SM};
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      padding-top: 0px;
-      padding-bottom: 0px;
-      .collapsible-header {
-        padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-      .collapsible-icon {
-        top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
-      .item-opened {
-        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
-    }
+  .venmo-payment-method-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .venmo-paid-text {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

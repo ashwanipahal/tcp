@@ -25,6 +25,10 @@ export const getGeneralProductId = state => {
   return state.ProductDetail.getIn(['currentProduct', 'generalProductId']);
 };
 
+export const getShortDescription = state => {
+  return state.ProductDetail.getIn(['currentProduct', 'shortDescription']);
+};
+
 export const getProductDetailFormValues = state => {
   const generalProductId = getGeneralProductId(state);
   return getAddedToBagFormValues(state, `ProductAddToBag-${generalProductId}`);
@@ -34,6 +38,7 @@ export const getPlpLabels = state => {
   if (!state.Labels || !state.Labels.PLP)
     return {
       addToBag: '',
+      update: '',
       errorMessage: '',
       size: '',
       fit: '',
@@ -45,6 +50,7 @@ export const getPlpLabels = state => {
     PLP: {
       plpTiles: {
         lbl_add_to_bag: addToBag,
+        lbl_update: update,
         lbl_pdp_size_error: errorMessage,
         lbl_pdp_size: size,
         lbl_pdp_fit: fit,
@@ -61,6 +67,7 @@ export const getPlpLabels = state => {
     fit,
     color,
     quantity,
+    update,
   };
 };
 
@@ -97,5 +104,25 @@ export const getPDPLabels = state => {
     recentlyViewed: getLabelValue(state.Labels, 'lbl_recently_viewed', 'PDP', 'Browse'),
     myStylePlace: getLabelValue(state.Labels, 'lbl_my_style_place', 'PDP', 'Browse'),
     ratingReview: getLabelValue(state.Labels, 'lbl_rating_review', 'PDP', 'Browse'),
+    ShowMore: getLabelValue(state.Labels, 'lbl_product_description_show_more', 'PDP', 'Browse'),
+    ShowLess: getLabelValue(state.Labels, 'lbl_product_description_show_less', 'PDP', 'Browse'),
+    ProductDescription: getLabelValue(
+      state.Labels,
+      'lbl_product_description_label',
+      'PDP',
+      'Browse'
+    ),
+    ClaimMessage: getLabelValue(
+      state.Labels,
+      'lbl_product_description_claim_message',
+      'PDP',
+      'Browse'
+    ),
+    PartNumber: getLabelValue(
+      state.Labels,
+      'lbl_product_description_item_part_number',
+      'PDP',
+      'Browse'
+    ),
   };
 };

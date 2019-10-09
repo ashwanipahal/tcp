@@ -88,11 +88,15 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   onClose = () => {
-    const { toggleAddressModal, resetVerifyAddressAction } = this.props;
+    const { toggleAddressModal, resetVerifyAddressAction, plccOnClose } = this.props;
     if (toggleAddressModal) {
       toggleAddressModal();
     } else {
       resetVerifyAddressAction();
+    }
+
+    if (plccOnClose) {
+      plccOnClose();
     }
   };
 
@@ -322,6 +326,7 @@ AddressVerification.propTypes = {
   setModalHeading: PropTypes.func,
   verifyModalRendered: PropTypes.func,
   isValidAddress: PropTypes.bool,
+  plccOnClose: PropTypes.func,
 };
 
 AddressVerification.defaultProps = {
@@ -342,6 +347,7 @@ AddressVerification.defaultProps = {
   setModalHeading: () => {},
   verifyModalRendered: () => {},
   isValidAddress: false,
+  plccOnClose: () => {},
 };
 
 export { AddressVerification as AddressVerificationVanilla };

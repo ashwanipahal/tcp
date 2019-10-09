@@ -2,20 +2,14 @@ import { executeStatefulAPICall } from '../../../handler';
 import endpoints from '../../../endpoints';
 import { getSiteId } from '../../../../utils';
 import { API_CONFIG } from '../../../config';
-
-export const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
-  }
-  throw new Error('Your action could not be completed due to system error');
-};
+import { getFormattedError } from '../../../../utils/errorMessage.util';
 
 export const isCanada = () => {
   const siteId = getSiteId();
   return siteId === API_CONFIG.siteIds.ca;
 };
 
-const getStatusCodeRes = (returnCode, body, args) => {
+const getStatusCodeRes = (returnCode, body, args, errorsMapping) => {
   if (returnCode) {
     const { address } = body;
     switch (body.returnCode) {
@@ -25,7 +19,7 @@ const getStatusCodeRes = (returnCode, body, args) => {
         };
       case '04':
         return {
-          status: 'TIMEOUT',
+          status: errorsMapping.ERR_REQUEST_TIMEOUT,
         };
       case '01':
         return {
@@ -63,14 +57,14 @@ const getStatusCodeRes = (returnCode, body, args) => {
         };
       default:
         return {
-          status: 'ERROR',
+          status: 'Something went wrong.',
         };
     }
   }
   return false;
 };
 
-const applyInstantCard = args => {
+const applyInstantCard = (args, errorsMapping) => {
   const payload = {
     // Overriding 'application/json' - specific to processWIC
     header: {
@@ -100,14 +94,25 @@ const applyInstantCard = args => {
     .then(res => {
       const response = res.body;
       if (!response) {
-        throw new Error('res body is null');
-        // TODO - Set API Helper to filter if error exists in response
+        return {
+          status: errorsMapping.INTERNAL_SERVER_ERROR,
+        };
       }
       const body = res.body && res.body.response ? res.body.response : res.body;
       const returnCode = body.returnCode || body.errorCode;
-      return getStatusCodeRes(returnCode, body, args);
+      return getStatusCodeRes(returnCode, body, args, errorsMapping);
     })
-    .catch(errorHandler);
+    .catch(err => {
+      const error = getFormattedError(err, errorsMapping);
+      error.errorMessages = error.errorMessages || {
+        internalError: errorsMapping.INTERNAL_SERVER_ERROR,
+      };
+      const { errorMessages } = error;
+      errorMessages.internalError = {
+        status: errorMessages.internalError,
+      };
+      return error.errorMessages && error.errorMessages.internalError;
+    });
 };
 
 export default applyInstantCard;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import Anchor from '../../../../common/atoms/Anchor';
@@ -73,7 +74,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             dataLocator="addnewaddress-back"
           >
             <span className="left-arrow"> </span>
-            {labels.password.lbl_forgotPassword_backLogin}
+            {getLabelValue(labels, 'lbl_forgotPassword_backLogin', 'password')}
           </Anchor>
         </div>
         <form
@@ -100,9 +101,9 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 textAlign="center"
               >
                 <span className="forgot-password-text">
-                  {labels.password.lbl_forgotPassword_content1}
+                  {getLabelValue(labels, 'lbl_forgotPassword_content1', 'password')}
                 </span>
-                <span>{labels.password.lbl_forgotPassword_content3}</span>
+                <span>{getLabelValue(labels, 'lbl_forgotPassword_content3', 'password')}</span>
               </BodyCopy>
               <BodyCopy
                 fontWeight="semibold"
@@ -111,12 +112,12 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 className="elem-mb-SM"
                 fontSize="fs12"
               >
-                {labels.password.lbl_forgotPassword_content2}
+                {getLabelValue(labels, 'lbl_forgotPassword_content2', 'password')}
               </BodyCopy>
               <BodyCopy component="div" className="elem-mb-LRG">
                 <Field
                   name="Email"
-                  placeholder={labels.password.lbl_forgotPassword_emailAddress}
+                  placeholder={getLabelValue(labels, 'lbl_forgotPassword_emailAddress', 'password')}
                   id="Email"
                   type="text"
                   component={TextBox}
@@ -124,7 +125,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 />
               </BodyCopy>
               <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
-                {labels.password.lbl_forgotPassword_resetPassword}
+                {getLabelValue(labels, 'lbl_forgotPassword_resetPassword', 'password')}
               </Button>
             </React.Fragment>
           )}
@@ -138,7 +139,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.password.lbl_forgotPassword_checkMail}
+                {getLabelValue(labels, 'lbl_forgotPassword_checkMail', 'password')}
               </BodyCopy>
 
               <BodyCopy
@@ -151,13 +152,13 @@ class ForgotPasswordView extends React.Component<Props, State> {
               >
                 <RichText
                   className="heading-link"
-                  richTextHtml={labels.password.lbl_forgotPassword_heading}
+                  richTextHtml={getLabelValue(labels, 'lbl_forgotPassword_heading', 'password')}
                   dataLocator="forgot-password"
                 />
 
                 <RichText
                   className="heading-link"
-                  richTextHtml={labels.password.lbl_forgotPassword_subHeading}
+                  richTextHtml={getLabelValue(labels, 'lbl_forgotPassword_subHeading', 'password')}
                   dataLocator="forgot-password"
                 />
               </BodyCopy>
@@ -167,7 +168,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 onClick={this.onBackClick}
                 buttonVariation="fixed-width"
               >
-                {labels.password.lbl_forgotPassword_returnLogin}
+                {getLabelValue(labels, 'lbl_forgotPassword_returnLogin', 'password')}
               </Button>
             </React.Fragment>
           )}

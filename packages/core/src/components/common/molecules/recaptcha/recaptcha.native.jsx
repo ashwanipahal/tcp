@@ -18,7 +18,7 @@ const generateTheWebViewContent = siteKey => {
           <html>
             <head>
                 <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="viewport" content="width=device-width, initial-scale=0.6">
                 <script src="https://recaptcha.google.com/recaptcha/api.js"></script>
                 <script type="text/javascript"> var onloadCallback = function() { };
                   var onDataCallback = function(response) { console.log(response); window.postMessage(response);  };
@@ -39,7 +39,8 @@ const generateTheWebViewContent = siteKey => {
           </html>`;
 };
 
-const Recaptcha = ({ onMessage, siteKey, style, url }) => (
+const color = { backgroundColor: 'transparent' };
+const Recaptcha = ({ onMessage, siteKey, url }) => (
   <WebView
     originWhitelist={['*']}
     mixedContentMode="always"
@@ -47,7 +48,7 @@ const Recaptcha = ({ onMessage, siteKey, style, url }) => (
     javaScriptEnabled
     injectedJavaScript={patchPostMessageJsCode}
     automaticallyAdjustContentInsets
-    style={style}
+    style={color}
     source={{
       html: generateTheWebViewContent(siteKey),
       baseUrl: `${url}`,
@@ -64,7 +65,7 @@ Recaptcha.propTypes = {
 
 Recaptcha.defaultProps = {
   onMessage: () => {},
-  url: 'https://www.childrensplace.com',
+  url: 'https://test4.childrensplace.com',
   style: {},
   siteKey: '6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8',
 };

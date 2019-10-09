@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 import { Image } from '../../../atoms';
+import ProductTabList from '../../../organisms/ProductTabList';
 
 export const Container = styled.View`
   width: 100%;
@@ -39,7 +40,7 @@ export const ImageContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const ProductTabListContainer = styled.View`
+export const StyledProductTabList = styled(ProductTabList)`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
@@ -51,5 +52,5 @@ export default {
   ButtonContainer,
   StyledImage,
   ImageContainer,
-  ProductTabListContainer,
+  StyledProductTabList,
 };

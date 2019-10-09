@@ -5,13 +5,16 @@ import withStyles from '../../../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
 import { Image } from '../../../../../../../../common/atoms';
-import { getAPIConfig } from '../../../../../../../../../utils';
-import { getTranslateDateInformation } from '../../../../../../../../../utils/utils';
+import {
+  getTranslatedMomentDate,
+  getAPIConfig,
+} from '../../../../../../../../../utils/index.native';
 import {
   PickupStoreDetails,
   PickupStoreIcon,
   PickupStoreMargin,
 } from '../styles/PickUpStoreDisplay.style.native';
+import CONSTANTS from '../../../../../Checkout.constants';
 
 const pickupIcon = require('../../../../../../../../../assets/marker-icon.png');
 
@@ -32,7 +35,7 @@ const PickupStoreDisplay = props => {
     lbl_review_sectionPickupItem: item,
     lbl_review_sectionPickupItems: items,
   } = labels;
-  const today = getTranslateDateInformation('', apiConfig.language);
+  const today = getTranslatedMomentDate('', apiConfig.language, CONSTANTS.REQUIRE_FORMAT);
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
     `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${bossEndDate.day}. ${

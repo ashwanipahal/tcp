@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThankYouComponentVanilla should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(ThankYouTitleDisplay)
+    isOrderPending={false}
+    isShowBopisMessage={false}
+    isShowMixedMessage={false}
+    isShowShippingMessage={false}
+    labels={Object {}}
+  />
+  <Styled(Row)
+    className="confirmation-fullfillment-center variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="confirmation-fullfillment-center-item"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <ConfirmationFulfillmentCenterItemDisplay
+        center={Object {}}
+        index={0}
+        isGuest={true}
+        labels={Object {}}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="place-cash-banner"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="place-cash-banner-text"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        Place Cash Banner
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="confirmation-next-update-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs16",
+            "fs20",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs14",
+            "fs14",
+            "fs16",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="confirmation-update-details"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="confirmation-next-update-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs16",
+            "fs20",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs14",
+            "fs14",
+            "fs16",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(RichText)
+          dataLocator="update-order-details"
+          richTextHtml={Object {}}
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] = `
+<div
+  className=""
+>
+  <Styled(ThankYouTitleDisplay)
+    isOrderPending={false}
+    isShowBopisMessage={false}
+    isShowMixedMessage={false}
+    isShowShippingMessage={false}
+    labels={Object {}}
+  />
+  <Styled(Row)
+    className="confirmation-fullfillment-center variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="confirmation-fullfillment-center-item"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <ConfirmationFulfillmentCenterItemDisplay
+        center={Object {}}
+        index={0}
+        isGuest={true}
+        labels={Object {}}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="place-cash-banner"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="place-cash-banner-text"
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        Place Cash Banner
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="confirmation-next-update-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs16",
+            "fs20",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs14",
+            "fs14",
+            "fs16",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="variable-width "
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="confirmation-update-details"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="confirmation-next-update-heading"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs16",
+            "fs16",
+            "fs20",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs14",
+            "fs14",
+            "fs16",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(RichText)
+          dataLocator="update-order-details"
+          richTextHtml={Object {}}
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

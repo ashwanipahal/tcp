@@ -3,16 +3,16 @@
 exports[`ContactInformationFormWrapper component should renders correctly 1`] = `
 <styled.div>
   <Styled(Heading)
-    className="title"
-    color="black"
+    className="contactFormTitle"
+    color="text.primary"
     component={null}
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="semibold"
+    fontWeight="semiBold"
     tabIndex="0"
     textAlign="left"
-    variant="h2"
+    variant="h1"
   >
     contact information
   </Styled(Heading)>
@@ -984,7 +984,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             state
           </Styled(BodyCopy)>
           <Field
-            className="field"
+            className="field stateField"
             component={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
@@ -1087,7 +1087,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
               }
             }
             dataLocator="plcc_state"
-            id="state"
+            id="statewocountry"
             name="statewocountry"
             options={
               Array [
@@ -1330,7 +1330,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
               }
             }
             dataLocator="plcc_zip_code"
-            id="zipCode"
+            id="noCountryZip"
             maxLength={5}
             name="noCountryZip"
             placeholder="zipcode"
@@ -1511,7 +1511,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
         }
         dataLocator="plc_mobile_no"
-        id="phoneNumber"
+        id="phoneNumberWithAlt"
         name="phoneNumberWithAlt"
         placeholder="mobile phone"
         type="tel"

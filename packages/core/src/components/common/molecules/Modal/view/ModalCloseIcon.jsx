@@ -13,23 +13,23 @@ const CloseButtonStyle = css`
   width: 15px;
   height: 15px;
   &.alignRight {
-    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: 14px;
   }
   &.alignLeft {
-    left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    left: 14px;
   }
   &.alignTop {
-    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    top: 14px;
   }
-  @media ${props => props.theme.mediaQuery.small} {
+  @media ${props => props.theme.mediaQuery.medium} {
     &.alignRight {
-      right: 14px;
+      right: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     &.alignLeft {
-      left: 14px;
+      left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
     &.alignTop {
-      top: 14px;
+      top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;

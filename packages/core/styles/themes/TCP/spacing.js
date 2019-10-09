@@ -30,6 +30,7 @@ export default {
     SM: '32px',
     MED: '48px',
     LRG: '64px',
+    LRGS: '110px',
     XL: '96px',
     XXL: '160px',
     XXXL: '320px',

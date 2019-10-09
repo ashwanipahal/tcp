@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PropTypes from 'prop-types';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
@@ -49,7 +50,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs16"
-          text={labels.lbl_overview_addressBookHeading}
+          text={getLabelValue(labels, 'lbl_overview_addressBookHeading')}
           color="black"
         />
 
@@ -60,7 +61,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              text={labels.lbl_overview_defaultShipingAddress}
+              text={getLabelValue(labels, 'lbl_overview_defaultShipingAddress')}
               color="black"
             />
           </View>
@@ -69,8 +70,8 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
               anchorVariation="primary"
               text={
                 defaultShippingAddress && defaultShippingAddress.length
-                  ? labels.lbl_overview_addressBookEdit
-                  : labels.lbl_overview_addressBookAdd
+                  ? getLabelValue(labels, 'lbl_overview_addressBookEdit')
+                  : getLabelValue(labels, 'lbl_overview_addressBookAdd')
               }
               onPress={() => handleComponentChange('addressBookMobile')}
               underline
@@ -93,7 +94,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             fontSize="fs13"
             fontFamily="primary"
             fontWeight="regular"
-            text={labels.lbl_overview_addressNotAdded}
+            text={getLabelValue(labels, 'lbl_overview_addressNotAdded')}
           />
         )}
         <UnderlineStyle />
@@ -103,7 +104,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              text={labels.lbl_overview_defaultBillingAddress}
+              text={getLabelValue(labels, 'lbl_overview_defaultBillingAddress')}
               color="black"
             />
           </View>
@@ -112,8 +113,8 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
               anchorVariation="primary"
               text={
                 defaultBillingAddress && defaultBillingAddress.length
-                  ? labels.lbl_overview_addressBookEdit
-                  : labels.lbl_overview_addressBookAdd
+                  ? getLabelValue(labels, 'lbl_overview_addressBookEdit')
+                  : getLabelValue(labels, 'lbl_overview_addressBookAdd')
               }
               onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
               underline
@@ -138,13 +139,13 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             fontSize="fs13"
             fontFamily="primary"
             fontWeight="regular"
-            text={labels.lbl_overview_addressNotAdded}
+            text={getLabelValue(labels, 'lbl_overview_addressNotAdded')}
           />
         )}
 
         <ButtonWrapperStyle>
           <CustomButton
-            text={labels.lbl_overview_addressBookCTA}
+            text={getLabelValue(labels, 'lbl_overview_addressBookCTA')}
             buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('addressBookMobile')}

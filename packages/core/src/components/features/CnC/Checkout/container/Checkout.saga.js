@@ -45,7 +45,7 @@ import {
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
 } from './Checkout.saga.util';
-import submitBilling from './CheckoutBilling.saga';
+import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 
 const {
@@ -203,7 +203,9 @@ function* submitPickupSection({ payload }) {
   // eslint-disable-next-line no-unused-expressions
   // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
   const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  if (!isMobileApp()) {
+    yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+  }
   // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
   // }).catch((err) => {
   //   throw getSubmissionError(this.store, 'submitPickupSection', err);
@@ -634,13 +636,15 @@ function* submitShipping({
   // But how can the reward points change here?
   const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
-  yield loadUpdatedCheckoutValues(
-    true,
-    false,
-    true,
-    recalcFlag,
-    !(isOrderHasPickup && smsNumberForOrderUpdates)
-  );
+  if (!isMobileApp()) {
+    yield loadUpdatedCheckoutValues(
+      true,
+      false,
+      true,
+      recalcFlag,
+      !(isOrderHasPickup && smsNumberForOrderUpdates)
+    );
+  }
   yield call(getAddressList);
 }
 
@@ -696,7 +700,12 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   }
 }
 export function* submitBillingSection(payload) {
-  yield call(submitBilling, payload, loadUpdatedCheckoutValues);
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  if (isVenmoInProgress) {
+    yield call(submitVenmoBilling, payload);
+  } else {
+    yield call(submitBilling, payload, loadUpdatedCheckoutValues);
+  }
 }
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
@@ -715,5 +724,6 @@ export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.ADD_NEW_SHIPPING_ADDRESS, addNewShippingAddress);
   yield takeLatest(CONSTANTS.SUBMIT_REVIEW_SECTION, submitOrderForProcessing);
   yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
+  yield takeLatest(CONSTANTS.UPDATE_CARD_DATA, updateCardDetails);
 }
 export default CheckoutSaga;

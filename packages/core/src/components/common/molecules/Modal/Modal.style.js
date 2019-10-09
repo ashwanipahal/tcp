@@ -46,6 +46,16 @@ const ModalStyle = css`
       display: none;
     }
   }
+  .Modal-Header {
+    ${props =>
+      props.stickyHeader
+        ? `
+    top:0px;
+    position:sticky;
+    background:#ffffff;
+    `
+        : ''};
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ModalStyle;

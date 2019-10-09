@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    lbl_orderDetails_orderSummary
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

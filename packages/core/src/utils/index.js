@@ -29,7 +29,12 @@ export {
   isBopisProduct,
   isBossProduct,
   viewport,
+  fetchStoreIdFromUrlPath,
+  routeToStoreDetails,
   getLocationOrigin,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  scrollToParticularElement,
 } from './utils.web';
 
 export {
@@ -65,7 +70,7 @@ export {
   parseStoreHours,
   parseBoolean,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   flattenArray,
 } from './utils';

@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment } from 'react';
+import React from 'react';
 import ModalCloseIcon from './ModalCloseIcon';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
@@ -20,7 +20,7 @@ const ModalHeader = ({
   dataLocatorHeader,
 }: Props) => {
   return (
-    <Fragment>
+    <div className="Modal-Header">
       <ModalCloseIcon
         className="close-modal"
         closeFunc={closeFunc}
@@ -32,7 +32,7 @@ const ModalHeader = ({
           {heading}
         </BodyCopy>
       )}
-    </Fragment>
+    </div>
   );
 };
 

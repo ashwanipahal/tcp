@@ -8,6 +8,8 @@ import {
   openMiniBag,
   closeMiniBag,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -37,6 +39,7 @@ type Props = {
   cartItemSflError: any,
   updateCartItemCount: Function,
   closeMiniBagDispatch: Function,
+  openOverlay: Function,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -65,6 +68,7 @@ export class MiniBagContainer extends React.Component<Props> {
       isCartItemSFL,
       cartItemSflError,
       closeMiniBagDispatch,
+      openOverlay,
     } = this.props;
     return (
       <MiniBagView
@@ -81,6 +85,7 @@ export class MiniBagContainer extends React.Component<Props> {
         isCartItemSFL={isCartItemSFL}
         cartItemSflError={cartItemSflError}
         closeMiniBagDispatch={closeMiniBagDispatch}
+        openOverlay={openOverlay}
       />
     );
   }
@@ -103,11 +108,13 @@ const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     openMiniBagDispatch: () => {
+      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
       dispatch(openMiniBag());
     },
     closeMiniBagDispatch: () => {
       dispatch(closeMiniBag());
     },
+    openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };
 

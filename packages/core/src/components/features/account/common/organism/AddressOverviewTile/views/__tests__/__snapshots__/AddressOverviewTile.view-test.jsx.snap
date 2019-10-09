@@ -227,6 +227,8 @@ exports[`AddressOverviewTile render empty address component should render correc
 <Styled(AccountOverviewTile)
   ctaLink="/account?id=address-book"
   ctaPath="/account/address-book"
+  ctaTitle="lbl_overview_addressBookCTA"
+  title="lbl_overview_addressBookHeading"
 >
   <Styled(BodyCopy)
     className="heading"
@@ -263,7 +265,9 @@ exports[`AddressOverviewTile render empty address component should render correc
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_defaultShipingAddress
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -292,7 +296,9 @@ exports[`AddressOverviewTile render empty address component should render correc
             fontSizeVariation="medium"
             to="/account?id=address-book&subSection=add-new-address"
             underline={true}
-          />
+          >
+            lbl_overview_addressBookAdd
+          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -320,7 +326,9 @@ exports[`AddressOverviewTile render empty address component should render correc
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_addressNotAdded
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(BodyCopy)>
@@ -359,7 +367,9 @@ exports[`AddressOverviewTile render empty address component should render correc
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_defaultBillingAddress
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -376,7 +386,9 @@ exports[`AddressOverviewTile render empty address component should render correc
           fontSizeVariation="medium"
           to="/account?id=add-credit-card"
           underline={true}
-        />
+        >
+          lbl_overview_addressBookAdd
+        </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -403,7 +415,9 @@ exports[`AddressOverviewTile render empty address component should render correc
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_addressNotAdded
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(BodyCopy)>
@@ -414,6 +428,8 @@ exports[`AddressOverviewTile render empty address should render empty address co
 <Styled(AccountOverviewTile)
   ctaLink="/account?id=address-book"
   ctaPath="/account/address-book"
+  ctaTitle="lbl_overview_addressBookCTA"
+  title="lbl_overview_addressBookHeading"
 >
   <Styled(BodyCopy)
     className="heading"
@@ -450,7 +466,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_defaultShipingAddress
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -479,7 +497,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
             fontSizeVariation="medium"
             to="/account?id=address-book&subSection=add-new-address"
             underline={true}
-          />
+          >
+            lbl_overview_addressBookAdd
+          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -507,7 +527,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_addressNotAdded
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(BodyCopy)>
@@ -546,7 +568,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_defaultBillingAddress
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -563,7 +587,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
           fontSizeVariation="medium"
           to="/account?id=add-credit-card"
           underline={true}
-        />
+        >
+          lbl_overview_addressBookAdd
+        </Styled(Anchor)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -590,7 +616,9 @@ exports[`AddressOverviewTile render empty address should render empty address co
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_overview_addressNotAdded
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(BodyCopy)>

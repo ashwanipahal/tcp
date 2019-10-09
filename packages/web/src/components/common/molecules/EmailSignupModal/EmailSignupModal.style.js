@@ -19,19 +19,22 @@ const EmailSignupModalStyle = css`
   .button-wrapper-form {
     margin: 89px -15px 0;
   }
+  .button-container {
+    width: 225px;
+    box-sizing: border-box;
+  }
   .terms-label {
     margin-top: 52px;
-  }
-  @media ${props => props.theme.mediaQuery.small} {
-    .button-container {
-      width: 225px;
-      height: 42px;
-    }
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
       width: 458px;
+    }
+    .button-container {
+      bottom: 24px;
+      width: 222px;
+      box-sizing: border-box;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -52,11 +55,7 @@ const EmailSignupModalStyle = css`
     .img-wrapper + div {
       width: calc(100% - 300px);
     }
-    .button-container {
-      bottom: 24px;
-      width: 222px;
-      height: 51px;
-    }
+
     .shop-button {
       bottom: 0;
       width: 100%;

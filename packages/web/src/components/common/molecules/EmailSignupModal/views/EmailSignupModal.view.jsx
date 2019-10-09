@@ -117,7 +117,8 @@ class EmailSignupModal extends React.PureComponent {
                   <DamImage
                     alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    imgData={{ url: formViewConfig.lbl_SignUp_imageSrc }}
+                    lazyLoad={false}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>

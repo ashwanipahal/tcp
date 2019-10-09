@@ -73,68 +73,80 @@ class CheckoutCartItemsList extends Component {
    */
   OrderTooltip = deliveryItem => {
     const { labels } = this.props;
+    const {
+      storeAddress: { addressLine1, addressLine2, city, state, zipCode },
+    } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber, store } = deliveryItem;
+    const { today, tomorrow, phone } = labels;
     return (
       <>
+        <BodyCopy component="div" fontWeight="bold" fontSize="fs16" fontFamily="secondary">
+          {store}
+        </BodyCopy>
         {deliveryItem.storeAddress && (
           <>
             <BodyCopy
-              component="span"
+              component="div"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
               className="title-list-product"
             >
-              {deliveryItem.storeAddress.addressLine1}
+              {addressLine1}
             </BodyCopy>
-            {deliveryItem.storeAddress.addressLine2 && (
+            {addressLine2 && (
               <BodyCopy
-                component="span"
+                component="div"
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
                 className="title-list-product"
               >
-                {deliveryItem.storeAddress.addressLine2}
+                {addressLine2}
               </BodyCopy>
             )}
             <BodyCopy
-              component="span"
+              component="div"
               fontWeight="regular"
               fontSize="fs12"
               fontFamily="secondary"
               className="title-list-product"
             >
-              {`${deliveryItem.storeAddress.city},${deliveryItem.storeAddress.state}${
-                deliveryItem.storeAddress.zipCode
-              }`}
+              {`${city},${state}${zipCode}`}
             </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.today}${deliveryItem.storeTodayOpenRange}`}
-            </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.tomorrow}${deliveryItem.storeTomorrowOpenRange}`}
-            </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.phone}${deliveryItem.storePhoneNumber}`}
-            </BodyCopy>
+            {storeTodayOpenRange && (
+              <BodyCopy
+                component="div"
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                className="title-list-product"
+              >
+                {`${today}${storeTodayOpenRange}`}
+              </BodyCopy>
+            )}
+            {storeTomorrowOpenRange && (
+              <BodyCopy
+                component="div"
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                className="title-list-product"
+              >
+                {`${tomorrow}${storeTomorrowOpenRange}`}
+              </BodyCopy>
+            )}
+            {storePhoneNumber && (
+              <BodyCopy
+                component="div"
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                className="title-list-product"
+              >
+                {`${phone}${storePhoneNumber}`}
+              </BodyCopy>
+            )}
           </>
         )}
       </>
@@ -152,6 +164,7 @@ class CheckoutCartItemsList extends Component {
    */
   getPickupHeader = (deliveryItem, isShowHeader) => {
     const { labels } = this.props;
+    const toolTipMinWidth = '205px';
     return (
       <div className="title-list-pickup-product">
         {isShowHeader && (
@@ -189,6 +202,7 @@ class CheckoutCartItemsList extends Component {
                   message={this.OrderTooltip(deliveryItem)}
                   aligned="right"
                   className="toolTip"
+                  minWidth={toolTipMinWidth}
                 >
                   <Image height="15" width="15" src={getIconPath('info-icon')} />
                 </ReactToolTip>
@@ -200,7 +214,7 @@ class CheckoutCartItemsList extends Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs10"
               fontFamily="secondary"
               className="store-date-container"
             >
