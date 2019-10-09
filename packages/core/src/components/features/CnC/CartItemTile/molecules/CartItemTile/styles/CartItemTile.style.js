@@ -93,6 +93,9 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    img {
+      display: block;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {

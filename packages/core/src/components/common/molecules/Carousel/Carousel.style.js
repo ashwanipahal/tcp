@@ -175,7 +175,7 @@ const CarouselStyle = css`
   .slick-dots li {
     position: relative;
     display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0;
+    background: url('/static/images/carousal-dot.svg') no-repeat 0 0;
     width: 10px;
     height: 10px;
     button,
