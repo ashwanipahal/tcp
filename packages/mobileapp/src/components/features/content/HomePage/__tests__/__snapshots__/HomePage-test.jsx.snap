@@ -367,7 +367,7 @@ exports[`HomePageView should render correctly 1`] = `
     theme={Object {}}
     url=""
   />
-  <Connect(Styled(ErrorBoundary))
+  <ModuleG
     bgColor="#d8d8d8"
     divTabs={
       Array [
