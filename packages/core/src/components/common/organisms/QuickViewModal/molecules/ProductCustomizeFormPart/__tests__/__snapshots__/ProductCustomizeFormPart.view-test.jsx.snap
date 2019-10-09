@@ -16,13 +16,13 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         <Styled(Image)
           alt="Boys Uniform V Neck Sweater"
           data-locator="quick_view_product_image"
-          src="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
+          src=""
         />
         <Styled(Anchor)
-          asPath="/p/2100606_IV"
           className="link-redirect"
           dataLocator="quick_view_View_Product_details"
-          to="/p?pid=2100606_IV"
+          noLink={true}
+          onClick={[Function]}
         >
           <Styled(BodyCopy)
             className="product-link"
@@ -57,6 +57,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           Boys Uniform V Neck Sweater
         </Styled(BodyCopy)>
         <Styled(ProductPrice)
+          badge2="25% OFF"
           currencyExchange=""
           currencySymbol=""
           customFonts={
@@ -105,6 +106,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           Boys Uniform V Neck Sweater
         </Styled(BodyCopy)>
         <Styled(ProductPrice)
+          badge2="25% OFF"
           currencyExchange=""
           currencySymbol=""
           customFonts={
@@ -303,7 +305,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           }
         }
         errorOnHandleSubmit=""
-        onChangeColor={[Function]}
         plpLabels={Object {}}
       />
     </div>

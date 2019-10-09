@@ -6,7 +6,7 @@ import FulfillmentSection from '../../FulfillmentSection';
 import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart/views/ProductCustomizeFormPart.view';
+import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
 
 class QuickViewModal extends React.Component {
   componentWillUnmount = () => {
@@ -43,24 +43,27 @@ class QuickViewModal extends React.Component {
         heightConfig={{ height: '95%' }}
         fixedWidth
         inheritedStyles={customHeaderStyle}
+        headingAlign="center"
+        horizontalBar={false}
+        stickyCloseIcon
+        fullWidth
+        stickyHeader
       >
         <ProductCustomizeFormPart
           productInfo={productInfo}
           colorFitsSizesMap={colorFitsSizesMap}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
+          onCloseClick={this.onCloseClick}
           {...otherProps}
         />
-        <div className="fulfillment-section">
-          <FulfillmentSection
-            btnClassName="added-to-bag"
-            dataLocator={getLocator('global_addtocart_Button')}
-            buttonLabel="Pickup In Store"
-            onPickupOpenClick={this.handlePickupOpenClick}
-            currentProduct={productInfo}
-            onPickupClickAddon={this.onCloseClick}
-          />
-        </div>
+        <FulfillmentSection
+          btnClassName="added-to-bag"
+          dataLocator={getLocator('global_addtocart_Button')}
+          buttonLabel="Pickup In Store"
+          currentProduct={productInfo}
+          closeQuickViewClick={this.onCloseClick}
+        />
       </Modal>
     );
   }

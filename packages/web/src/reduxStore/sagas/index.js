@@ -63,7 +63,9 @@ import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDe
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
+import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
@@ -136,6 +138,8 @@ export default function* rootSaga() {
     OrdersSaga(),
     OutfitDetailsSaga(),
     FavoriteSaga(),
+    ExtraPointsSaga(),
     StoresInternationalSaga(),
+    StoreListSaga(),
   ]);
 }
