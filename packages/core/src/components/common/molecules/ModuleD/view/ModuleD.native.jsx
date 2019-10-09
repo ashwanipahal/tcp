@@ -9,7 +9,7 @@ import spacing from '../../../../../../styles/themes/TCP/spacing';
 import LinkText from '../../LinkText';
 import config from '../config';
 
-const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
+const imageSize = parseInt((getScreenWidth() - 47) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
 /**
@@ -78,11 +78,11 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
           headerText={headerText}
           navigation={navigation}
           fontFamily="primary"
-          fontSize="fs36"
+          fontSize="fs32"
           letterSpacing="ls167"
           textAlign="center"
           color="text.primary"
-          fontWeight="extrabold"
+          fontWeight="black"
           type="heading"
           testID={getLocator('moduleD_headerlink')}
         />
