@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
 const RichTextWrapper = styled.View`
-  flex-basis: 80%;
+  height: 900px;
 `;
 export default RichTextWrapper;
