@@ -87,7 +87,7 @@ exports[`ConfirmationOrderNumberDisplay should render correctly with BOPIS 1`] =
       margin={null}
       mobilefontFamily="secondary"
       numberOfLines={null}
-      text="undefined Oct 8"
+      text="undefined Oct 9"
       textAlign="center"
       textDecoration={null}
     />

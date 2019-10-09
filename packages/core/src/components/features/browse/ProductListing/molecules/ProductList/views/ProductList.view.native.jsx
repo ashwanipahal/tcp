@@ -49,7 +49,13 @@ class ProductList extends React.PureComponent {
    * @desc This is renderer method of the product tile list
    */
   renderItemList = itemData => {
-    const { isMatchingFamily, currencyExchange, currencySymbol, isPlcc } = this.props;
+    const {
+      isMatchingFamily,
+      currencyExchange,
+      currencySymbol,
+      isPlcc,
+      onQuickViewOpenClick,
+    } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
@@ -84,6 +90,7 @@ class ProductList extends React.PureComponent {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         onGoToPDPPage={this.onOpenPDPPageHandler}
+        onQuickViewOpenClick={onQuickViewOpenClick}
       />
     );
   };
