@@ -118,7 +118,7 @@ class EmailSignupModal extends React.PureComponent {
                     imgConfigs={IMG_DATA.imgConfig}
                     imgData={{
                       url: formViewConfig.lbl_SignUp_imageSrc,
-                      alt: formViewConfig.imageAltText,
+                      alt: formViewConfig.lbl_SignUp_imageAlt,
                     }}
                   />
                 </Col>
@@ -156,7 +156,7 @@ class EmailSignupModal extends React.PureComponent {
                       imgConfigs={IMG_DATA.imgConfig}
                       imgData={{
                         url: formViewConfig.lbl_SignUp_imageSrc,
-                        alt: formViewConfig.imageAltText,
+                        alt: formViewConfig.lbl_SignUp_imageAlt,
                       }}
                     />
                   </Col>
