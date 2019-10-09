@@ -60,7 +60,7 @@ class MyOffersCouponView extends PureComponent {
   };
 
   /**
-   * This function will handle click to go to wallet Page
+   * This function will render carousel view
    * @param {} -
    */
   renderCarouselView = () => {
