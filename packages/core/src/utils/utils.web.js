@@ -343,19 +343,20 @@ export const handleGenericKeyDown = (event, key, method) => {
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
+    productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
-    }`,
+    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
+    unbxdApiKey,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,

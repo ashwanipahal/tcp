@@ -41,10 +41,16 @@ class CartItemTile extends React.Component {
       getProductSKUInfo({ productNum, itemBrand });
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
-      const { itemId } = productDetail.itemInfo;
+      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
       onQuickViewOpenClick({
         colorProductId: productNumber,
-        orderInfo: { orderItemId: itemId },
+        orderInfo: {
+          orderItemId: itemId,
+          selectedQty: qty,
+          selectedColor: color,
+          selectedSize: size,
+          selectedFit: fit,
+        },
       });
     }
   };
