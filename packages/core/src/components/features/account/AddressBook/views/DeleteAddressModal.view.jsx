@@ -9,18 +9,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 
-// @flow
-
-// type Props = {
-//   data: Object,
-//   className: string,
-//   onDeleteAddress: Function,
-//   setDeleteModalMountState: Function,
-//   openState: boolean,
-//   showUpdatedNotificationOnModal: boolean,
-//   labels: Object,
-// };
-
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
  * This component includes the adress view, and confirm and cancel buttons
@@ -29,7 +17,7 @@ import Notification from '../../../../common/molecules/Notification';
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class DeleteAddressModal extends React.Component<Props> {
+class DeleteAddressModal extends React.Component {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.

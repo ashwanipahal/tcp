@@ -9,17 +9,6 @@ import GiftCardModalInfo from './GiftCardModalInfo.view';
 import CreditCardModalInfo from './CreditCardModalInfo.view';
 import VenmoCardModalInfo from './VenmoCardModalInfo.view';
 import Button from '../../../../common/atoms/Button';
-// @flow
-
-// type Props = {
-//   data: Object,
-//   className: string,
-//   openState: boolean,
-//   showUpdatedNotificationOnModal: boolean,
-//   labels: Object,
-//   setDeleteModalMountState: Function,
-//   onDeleteCard: Function,
-// };
 
 /**
  * @function deleteCardModal The deleteCardModal component shows the address to delete.
@@ -29,7 +18,7 @@ import Button from '../../../../common/atoms/Button';
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class DeleteCardModal extends React.Component<Props> {
+class DeleteCardModal extends React.Component {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.

@@ -10,23 +10,6 @@ import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import { CardView } from './Card.view';
 
-// @flow
-
-// type Props = {
-//   labels: object,
-//   creditCardList: Array<object>,
-//   className: string,
-//   setDefaultPaymentMethod: Function,
-//   setDeleteModalMountState: Function,
-//   deleteModalMountedState: false,
-//   onDeleteCard: Function,
-//   showUpdatedNotificationOnModal: any,
-//   showNotification: boolean,
-//   setSelectedCard: string,
-//   addCreditCard: () => {},
-//   editCreditCard: () => {},
-// };
-
 const CreditCardList = ({
   labels,
   creditCardList,
@@ -40,7 +23,7 @@ const CreditCardList = ({
   setSelectedCard,
   addCreditCard,
   editCreditCard,
-}: Props) => {
+}) => {
   return (
     <div className={className}>
       <Heading

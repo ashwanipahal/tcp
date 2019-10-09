@@ -8,16 +8,6 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import CardIconMapping from '../CardIconMapping';
 
-// @flow
-// type Props = {
-//   TotalExp: object,
-//   getAccNumbr: object,
-//   data: object,
-//   address: object,
-//   creditCardHeading: string,
-//   className: string,
-// };
-
 const CreditCardModalInfo = ({
   TotalExp,
   getAccNumbr,
@@ -25,7 +15,7 @@ const CreditCardModalInfo = ({
   address,
   creditCardHeading,
   className,
-}: Props) => {
+}) => {
   return (
     <div className={className}>
       <Row fullBleed className="elem-mb-LRG elem-mt-MED">

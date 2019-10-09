@@ -6,12 +6,6 @@ import { Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
 
-// @flow
-// type Props = {
-//   className: string,
-//   data: object,
-// };
-
 class VenmoCardModalInfo extends React.Component<Props> {
   render() {
     const { data, className } = this.props;

@@ -11,17 +11,7 @@ import utils from '../../../../../utils';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 
-// @flow
-// type Props = {
-//   address: Object,
-//   labels: Object,
-//   className: string,
-//   onDefaultShippingAddressClick(address: {}): Object,
-//   setSelectedAddress: Function,
-//   setDeleteModalMountState: Function,
-// };
-
-class AddressBookTile extends React.Component<Props> {
+class AddressBookTile extends React.Component {
   handleDefaultLinkClick = event => {
     const { onDefaultShippingAddressClick, address } = this.props;
     event.preventDefault();

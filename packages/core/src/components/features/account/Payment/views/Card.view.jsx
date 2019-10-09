@@ -2,20 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardList } from './CardList.view';
 
-// @flow
-
-// type Props = {
-//   labels: object,
-//   setDeleteModalMountState: Function,
-//   cardList: Array<object>,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   showNotification: boolean,
-//   showNotificationCaptcha: boolean,
-//   setSelectedCard: string,
-//   setDefaultPaymentMethod: Function,
-// };
-
 export const CardView = ({
   labels,
   setDeleteModalMountState,
@@ -26,7 +12,7 @@ export const CardView = ({
   showNotificationCaptcha,
   setSelectedCard,
   setDefaultPaymentMethod,
-}: Props) => {
+}) => {
   return (
     <React.Fragment>
       <CardList

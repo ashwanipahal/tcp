@@ -6,19 +6,6 @@ import MyAccountDropdownNav from './MyAccountDropdownNav.view';
 import ParentContainer from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
 
-// @flow
-// type Props = {
-//   navData: Array<Object>,
-//   mainContent: Function,
-//   handleComponentChange: Function,
-//   className: string,
-//   labels: object,
-//   isUserLoggedIn: string,
-//   navigation: object,
-//   component: string,
-//   componentProps: object,
-// };
-
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of drop down
  * navigationLinks and the component associated with it
@@ -27,7 +14,7 @@ import withStyles from '../../../../common/hoc/withStyles';
  * @param {mainContent} mainContent The component to be rendered on the below side
  */
 
-const MyAccountLayoutView = (props: Props) => {
+const MyAccountLayoutView = props => {
   const {
     navData,
     mainContent: MainContent,

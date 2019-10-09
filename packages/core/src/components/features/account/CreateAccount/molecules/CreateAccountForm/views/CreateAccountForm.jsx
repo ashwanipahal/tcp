@@ -18,18 +18,6 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath } from '../../../../../../../utils';
 
-// @flow
-// type Props = {
-//   isMakeDefaultDisabled: string,
-//   handleSubmit: string,
-//   labels: string,
-//   hideShowPwd: boolean,
-//   confirmHideShowPwd: boolean,
-//   onAlreadyHaveAnAccountClick: any,
-//   className: string,
-//   tooltipContent: any,
-// };
-
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
@@ -40,7 +28,7 @@ let CreateAccountForm = ({
   onAlreadyHaveAnAccountClick,
   className,
   tooltipContent,
-}: Props) => {
+}) => {
   return (
     <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
@@ -170,20 +158,6 @@ let CreateAccountForm = ({
               </Col>
             </span>
           </Col>
-
-          {/* CHECKBOXES */}
-          {/* TODO: Uncomment when PLCC reg is available
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
-            <Field
-              name="myPlace"
-              component={InputCheckbox}
-              dataLocator="my-place-checkbox"
-              disabled={isMakeDefaultDisabled}
-            >
-              {getLabelValue(labels,'lbl_createAccount_saveRewards','registration')}
-            </Field>
-          </Col>
-          */}
           <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}

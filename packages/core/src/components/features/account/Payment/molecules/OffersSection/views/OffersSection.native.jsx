@@ -12,12 +12,7 @@ import {
 } from '../OffersSection.style.native';
 import RichText from '../../../../../../common/atoms/RichText';
 
-// @flow
-// type Props = {
-//   labels: Object,
-// };
-
-const OffersSection = (props: Props) => {
+const OffersSection = props => {
   const { labels } = props;
   return (
     <View {...props}>

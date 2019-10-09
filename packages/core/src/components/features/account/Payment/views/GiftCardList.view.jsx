@@ -12,23 +12,6 @@ import { CardView } from './Card.view';
 import Router from 'next/router'; //eslint-disable-line
 import utils from '../../../../../utils';
 
-// @flow
-
-// type Props = {
-//   labels: object,
-//   giftCardList: Array<object>,
-//   className: string,
-//   setDeleteModalMountState: Function,
-//   deleteModalMountedState: false,
-//   onDeleteCard: Function,
-//   showUpdatedNotificationOnModal: any,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   showNotification: boolean,
-//   showNotificationCaptcha: boolean,
-//   setSelectedCard: string,
-// };
-
 const onAddGiftCardClick = () => {
   utils.routerPush(
     '/account?id=payment&subSection=add-gift-card',
@@ -49,7 +32,7 @@ const GiftCardList = ({
   showNotification,
   showNotificationCaptcha,
   setSelectedCard,
-}: Props) => {
+}) => {
   return (
     <div className={className}>
       <Heading

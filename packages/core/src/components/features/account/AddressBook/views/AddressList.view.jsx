@@ -6,17 +6,6 @@ import Col from '../../../../common/atoms/Col';
 import AddressTile from './AddressTile.view';
 import styles from '../styles/AddressList.style';
 
-// @flow
-
-// type Props = {
-//   addresses: Object[],
-//   labels: {},
-//   className: string,
-//   onDefaultShippingAddressClick: Object,
-//   setDeleteModalMountState: Function,
-//   setSelectedAddress: Function,
-// };
-
 export const AddressList = ({
   addresses,
   labels,
@@ -24,7 +13,7 @@ export const AddressList = ({
   onDefaultShippingAddressClick,
   setDeleteModalMountState,
   setSelectedAddress,
-}: Props) => {
+}) => {
   return (
     <Row fullBleed className={className}>
       {addresses.map((address, index) => (

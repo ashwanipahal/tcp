@@ -5,18 +5,6 @@ import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropD
 import { navigateToNestedRoute } from '../../../../../utils/index.native';
 import withStyles from '../../../../common/hoc/withStyles';
 import StyledWrapper from '../styles/MyAccountDropDown.style.native';
-// @flow
-// type Props = {
-//   navData: Array<Object>,
-//   handleComponentChange: Function,
-//   className: string,
-//   navigation: Object,
-//   component: string,
-// };
-
-type State = {
-  dropDownItem: String,
-};
 
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
@@ -25,7 +13,7 @@ type State = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-class MyAccountDropdownNav extends React.Component<Props, State> {
+class MyAccountDropdownNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

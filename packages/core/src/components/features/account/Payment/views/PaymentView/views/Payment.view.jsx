@@ -13,28 +13,7 @@ import VenmoCardList from '../../VenmoCardList.view';
 import Offers from '../../../../common/molecule/Offers/views/Offers.view';
 import DeleteCardModal from '../../DeleteCardModal';
 
-// @flow
-// type Props = {
-//   giftCard: List<{}>,
-//   labels: object,
-//   className: string,
-//   showNotification: boolean,
-//   setDeleteModalMountState: Function,
-//   deleteModalMountedState: false,
-//   onDeleteCard: Function,
-//   showUpdatedNotificationOnModal: any,
-//   creditCardList: Array<object>,
-//   giftCardList: Array<object>,
-//   cardList: Array<object>,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   setDefaultPaymentMethod: Function,
-//   venmoCardList: Array<object>,
-//   showNotificationCaptcha: boolean,
-//   addCreditCard: () => {},
-// };
-
-export class PaymentView extends React.Component<Props> {
+export class PaymentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

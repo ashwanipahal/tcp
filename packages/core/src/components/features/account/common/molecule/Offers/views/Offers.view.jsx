@@ -6,14 +6,7 @@ import styles from '../Offers.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import RichText from '../../../../../../common/atoms/RichText';
 
-// @flow
-
-// type Props = {
-//   labels: Object,
-//   className: String,
-// };
-
-const Offers = ({ labels, className }: Props) => {
+const Offers = ({ labels, className }) => {
   return (
     <div className={className}>
       <Row fullBleed>

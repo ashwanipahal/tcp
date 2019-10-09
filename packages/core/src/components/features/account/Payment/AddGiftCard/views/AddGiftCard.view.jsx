@@ -8,17 +8,7 @@ import styles from '../styles/AddGiftCard.style';
 import Anchor from '../../../../../common/atoms/Anchor';
 import AddGiftCardForm from '../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
-// @flow
-// type Props = {
-//   className: String,
-//   onAddGiftCardClick: Function,
-//   addGiftCardResponse: String,
-//   goBackToPayment: Function,
-//   labels: Object,
-//   formErrorMessage: Object,
-// };
-
-class AddGiftCard extends React.PureComponent<Props> {
+class AddGiftCard extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     onAddGiftCardClick: PropTypes.func.isRequired,

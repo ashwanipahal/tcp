@@ -29,30 +29,7 @@ import PaymentView from '../views/PaymentView';
 
 import utils from '../../../../../utils';
 
-// @flow
-// type Props = {
-//   getCardListAction: Function,
-//   showNotification: any,
-//   deleteModalMountedState: boolean,
-//   setDeleteModalMountState: Function,
-//   onDeleteCard: Function,
-//   showUpdatedNotificationOnModal: any,
-//   creditCardList: List<any>,
-//   venmoCardList: List<any>,
-//   giftCardList: List<any>,
-//   cardList: List<any>,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   setDefaultPaymentMethod: Function,
-//   getPaymentBannerRichText: Function,
-//   paymentBannerContentId: string,
-//   showNotificationCaptcha: boolean,
-//   paymentBannerRichText: string,
-//   clearPaymentNotification: () => void,
-//   labels: object,
-// };.isRequired
-
-export class PaymentContainer extends React.Component<Props> {
+export class PaymentContainer extends React.Component {
   componentDidMount() {
     const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
@@ -111,7 +88,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getCardListAction: () => {
       dispatch(getCardList());

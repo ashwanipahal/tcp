@@ -6,13 +6,7 @@ import { Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
 
-// @flow
-// type Props = {
-//   getAccNumbr: object,
-//   data: object,
-// };
-
-class GiftCardModalInfo extends React.Component<Props> {
+class GiftCardModalInfo extends React.Component {
   render() {
     const { getAccNumbr, data } = this.props;
     return (

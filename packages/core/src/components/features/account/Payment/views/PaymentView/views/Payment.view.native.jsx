@@ -2,21 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PaymentSection from '../../../organisms/PaymentSection';
 
-// @flow
-// type Props = {
-//   labels: Object,
-//   creditCardList: object,
-//   setDefaultPaymentMethod: Function,
-//   giftCardList: object,
-//   venmoCardList: object,
-//   cardList: object,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   onDeleteCard: any,
-//   deleteModalMountedState: any,
-//   updateCardList: Function,
-// };
-
 const PaymentViewContainer = ({
   labels,
   creditCardList,
@@ -29,7 +14,7 @@ const PaymentViewContainer = ({
   onDeleteCard,
   deleteModalMountedState,
   updateCardList,
-}: Props) => {
+}) => {
   return (
     <PaymentSection
       labels={labels}

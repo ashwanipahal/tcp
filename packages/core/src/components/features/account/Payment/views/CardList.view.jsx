@@ -6,21 +6,6 @@ import CardTile from '../../common/molecule/CardTile/views/CardTile.view';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/CardList.style';
 
-// @flow
-
-// type Props = {
-//   labels: {},
-//   className: string,
-//   setDeleteModalMountState: Function,
-//   setSelectedGiftCard: Function,
-//   onGetBalanceCard: Function,
-//   checkbalanceValueInfo: any,
-//   cardList: Array<object>,
-//   showNotification: boolean,
-//   showNotificationCaptcha: boolean,
-//   setDefaultPaymentMethod: Function,
-// };
-
 export const CardList = ({
   setSelectedGiftCard,
   className,
@@ -32,7 +17,7 @@ export const CardList = ({
   showNotification,
   showNotificationCaptcha,
   setDefaultPaymentMethod,
-}: Props) => {
+}) => {
   return (
     <div>
       <Row fullBleed className={className}>
