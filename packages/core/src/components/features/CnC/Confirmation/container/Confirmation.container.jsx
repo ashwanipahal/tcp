@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ConfirmationView from '../views';
 import selectors from './Confirmation.selectors';
-import { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
+import { isGuest, isUsSite, getVenmoUserName } from '../../Checkout/container/Checkout.selector';
 import { fetchUpdateOrderDetailsData } from './Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 
@@ -44,6 +44,8 @@ class ConfirmationContainer extends React.Component {
     orderShippingDetails: PropTypes.shape({}),
     isCanadaSite: PropTypes.bool,
     isUsSiteId: PropTypes.bool,
+    venmoUserName: PropTypes.string,
+    isVenmoPaymentInProgress: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -56,6 +58,8 @@ class ConfirmationContainer extends React.Component {
     orderShippingDetails: null,
     isCanadaSite: false,
     isUsSiteId: true,
+    venmoUserName: '',
+    isVenmoPaymentInProgress: false,
   };
 
   /**
@@ -101,6 +105,8 @@ class ConfirmationContainer extends React.Component {
       isCanadaSite,
       isUsSiteId,
       orderNumbersByFullfillmentCenter,
+      venmoUserName,
+      isVenmoPaymentInProgress,
     } = this.props;
     return (
       <ConfirmationView
@@ -115,6 +121,8 @@ class ConfirmationContainer extends React.Component {
         orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
         labels={labels}
         updateOrderDetailsData={updateOrderDetailsData}
+        venmoUserName={venmoUserName}
+        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
       />
     );
   }
@@ -164,6 +172,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
+    venmoUserName: getVenmoUserName(),
   };
 };
 

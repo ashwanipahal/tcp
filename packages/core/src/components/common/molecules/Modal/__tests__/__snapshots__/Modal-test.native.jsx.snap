@@ -8,7 +8,9 @@ exports[`Modal Native should render correctly 1`] = `
     transparent={false}
     visible={true}
   >
-    <Styled(View)>
+    <Styled(View)
+      inheritedStyles=""
+    >
       <Connect(ToastContainer) />
       <StatusBar
         animated={false}

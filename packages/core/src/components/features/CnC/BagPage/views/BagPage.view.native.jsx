@@ -169,12 +169,14 @@ export class BagPage extends React.Component {
         {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
           <>
             <InActiveBagHeaderTextView>{bagHeadingTexts}</InActiveBagHeaderTextView>
-            <InActiveEstimateTextStyle>{estimateTotal}</InActiveEstimateTextStyle>
+            {totalCount > 0 && (
+              <InActiveEstimateTextStyle>{estimateTotal}</InActiveEstimateTextStyle>
+            )}
           </>
         ) : (
           <>
             <ActiveBagHeaderTextNew>{bagHeadingTexts}</ActiveBagHeaderTextNew>
-            <EstimateTextStyle>{estimateTotal}</EstimateTextStyle>
+            {totalCount > 0 && <EstimateTextStyle>{estimateTotal}</EstimateTextStyle>}
           </>
         )}
       </HeadingTextStyleView>

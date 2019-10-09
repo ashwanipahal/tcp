@@ -12,6 +12,9 @@ export default css`
     text-decoration: underline;
     font-size: 10px;
     font-family: ${props => props.theme.typography.fonts.secondary};
+    border: none;
+    background: none;
+    outline: none;
   }
 
   .show-description-list {

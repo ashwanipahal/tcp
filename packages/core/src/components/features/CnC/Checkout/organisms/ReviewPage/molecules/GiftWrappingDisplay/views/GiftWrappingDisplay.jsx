@@ -17,6 +17,7 @@ class GiftWrappingDisplay extends React.PureComponent {
             color="gray.900"
             fontWeight="extrabold"
             dataLocator="gift-wrapping-title"
+            className="gift-wrapping-title"
           >
             {GiftServiceTitle}
           </BodyCopy>

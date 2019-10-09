@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, RichText } from '../../../../../../common/atoms';
 import {
@@ -14,16 +14,21 @@ import {
   StyledImage,
 } from './style/ExistingPLCCUser.view.style.native';
 import { getLabelValue } from '../../../../../../../utils/utils';
+import { readCookieMobileApp } from '../../../../../../../../../mobileapp/src/utils/utils';
 
 const headerImage = require('../../../../../../../assets/tcp-cc.png');
 
-const ExistingPLCCUserView = ({
-  labels,
-  bagItems,
-  existingCustomerDetails,
-  navigation,
-  toggleModal,
-}) => {
+const ExistingPLCCUserView = ({ labels, existingCustomerDetails, navigation, toggleModal }) => {
+  const [bagItems, setBagItems] = useState(0);
+  const setCount = () => {
+    const cartValuePromise = readCookieMobileApp('cartItemsCount');
+    cartValuePromise.then(res => {
+      setBagItems(parseInt(res || 0, 10));
+    });
+  };
+  useEffect(() => {
+    setCount();
+  }, []);
   return (
     <ScrollViewContainer>
       <ImageContainer>
@@ -89,7 +94,6 @@ ExistingPLCCUserView.propTypes = {
   labels: PropTypes.shape({
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
-  bagItems: PropTypes.bool.isRequired,
   existingCustomerDetails: PropTypes.string.isRequired,
   navigation: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,

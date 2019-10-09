@@ -5,7 +5,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -223,7 +223,6 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -237,7 +236,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -369,7 +368,6 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -383,7 +381,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -431,7 +429,6 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -445,7 +442,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -1053,7 +1050,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1067,7 +1063,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -1675,7 +1671,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1689,7 +1684,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1698,7 +1693,6 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1712,7 +1706,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -1760,7 +1754,6 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
@@ -1774,7 +1767,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
@@ -1822,11 +1815,10 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
   <Styled(CheckoutFooter)
     backLinkHandler={[Function]}
     backLinkText=""
-    disableDesktopOnlyNext={false}
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
-    showVenmoSubmit={false}
+    showVenmoSubmit={true}
   />
 </form>
 `;
