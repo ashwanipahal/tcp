@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 import searchData from '../SearchBar.mock';
 import { getSearchResult } from '../SearchBar.actions';
+import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
 
 /**
  * This component produces a Search Bar component for Header
@@ -62,14 +62,30 @@ class SearchBar extends React.PureComponent {
   initiateSearch = e => {
     e.preventDefault();
     const { setSearchState } = this.props;
-    const searchText = this.searchInput.current.value;
+    let searchText = this.searchInput.current.value;
     if (searchText) {
+      searchText = searchText.toLowerCase();
+      const getPreviousSearchResults = getRecentStoreFromLocalStorage();
+      let filteredSearchResults;
+      if (getPreviousSearchResults) {
+        filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        if (filteredSearchResults.indexOf(searchText) !== -1) {
+          console.log('search value exist');
+        } else {
+          filteredSearchResults.push(searchText);
+        }
+      } else {
+        filteredSearchResults = [];
+        filteredSearchResults.push(searchText);
+      }
+      setRecentStoreToLocalStorage(filteredSearchResults);
       this.redirectToSearchPage(searchText);
     }
     setSearchState(false);
   };
 
   redirectToSearchPage = searchText => {
+    this.setState({ showProduct: false });
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
@@ -86,12 +102,25 @@ class SearchBar extends React.PureComponent {
     });
   };
 
+  getLatestSearchResultsExists = latestSearchResults => {
+    return !!(latestSearchResults && latestSearchResults.length > 0);
+  };
+
   render() {
     const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
 
     const { showProduct } = this.state;
 
-    logger.debug(searchResults); // only for use purpose (temporary)
+    const getRecentStore = getRecentStoreFromLocalStorage();
+    let latestSearchResults;
+
+    if (getRecentStore) {
+      latestSearchResults = JSON.parse(getRecentStore.split(','));
+    } else {
+      latestSearchResults = [];
+    }
+
+    const isLatestSearchResultsExists = this.getLatestSearchResultsExists(latestSearchResults);
 
     return (
       <React.Fragment>
@@ -104,6 +133,7 @@ class SearchBar extends React.PureComponent {
                   onChange={this.changeSearchText}
                   className="search-input"
                   maxLength="50"
+                  onSubmit={this.initiateSearch}
                 />
                 <Image
                   alt="search"
@@ -146,28 +176,36 @@ class SearchBar extends React.PureComponent {
                         </ul>
                       </BodyCopy>
                     </div>
-                    <div className="recentBox">
-                      <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
-                        {getLabelValue(labels, 'lbl_search_recent_search')}
-                      </BodyCopy>
-                      <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
-                        <ul>
-                          {searchData.recent.map(item => {
-                            return (
-                              <BodyCopy
-                                component="li"
-                                fontFamily="secondary"
-                                fontSize="fs14"
-                                key={item.id}
-                                className="recentTag"
-                              >
-                                {item.text}
-                              </BodyCopy>
-                            );
-                          })}
-                        </ul>
-                      </BodyCopy>
-                    </div>
+                    {isLatestSearchResultsExists && (
+                      <div className="recentBox">
+                        <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
+                          {getLabelValue(labels, 'lbl_search_recent_search')}
+                        </BodyCopy>
+                        <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
+                          <ul>
+                            {latestSearchResults.map(item => {
+                              return (
+                                <BodyCopy
+                                  component="li"
+                                  fontFamily="secondary"
+                                  fontSize="fs14"
+                                  key={item.id}
+                                  className="recentTag"
+                                >
+                                  <Anchor
+                                    asPath={`/search/${item}`}
+                                    to={`/search?searchQuery=${item}`}
+                                    className="suggestion-label"
+                                  >
+                                    {item.toUpperCase()}
+                                  </Anchor>
+                                </BodyCopy>
+                              );
+                            })}
+                          </ul>
+                        </BodyCopy>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="matchBox">
@@ -192,7 +230,13 @@ class SearchBar extends React.PureComponent {
                                         key={item.id}
                                         className="linkName"
                                       >
-                                        {itemData.text}
+                                        <Anchor
+                                          asPath={`/search/${itemData.text}`}
+                                          to={`/search?searchQuery=${itemData.text}`}
+                                          className="suggestion-label"
+                                        >
+                                          {itemData.text}
+                                        </Anchor>
                                       </BodyCopy>
                                     );
                                   })}
@@ -212,7 +256,19 @@ class SearchBar extends React.PureComponent {
                             searchResults.autosuggestProducts.map(item => {
                               return (
                                 <BodyCopy component="li" key={item.id} className="productBox">
-                                  {item.name}
+                                  <Anchor
+                                    asPath={`${item.productUrl}`}
+                                    to={`${item.productUrl}`}
+                                    className="suggestion-label"
+                                  >
+                                    <Image
+                                      alt={`${item.name}`}
+                                      className="autosuggest-image"
+                                      src={`${item.imageUrl[0]}`}
+                                      data-locator={`${item.name}`}
+                                      height="25px"
+                                    />
+                                  </Anchor>
                                 </BodyCopy>
                               );
                             })}

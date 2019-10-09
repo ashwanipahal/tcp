@@ -171,4 +171,8 @@ export default css`
     border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
     background-color: ${props => props.theme.colors.PRIMARY.GRAY};
   }
+  .autosuggest-image {
+    height: 80px;
+    width: 80px;
+  }
 `;
