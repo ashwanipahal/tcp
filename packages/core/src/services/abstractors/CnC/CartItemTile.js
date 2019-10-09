@@ -610,7 +610,7 @@ tomorrowClosingTime
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
       message: orderDetailsResponse.giftWrapItem[0].giftOptionsMessage || '',
-      brand: '',
+      brand: orderDetailsResponse.giftWrapItem[0].itemBrand || '',
     };
     usersOrder.giftWrappingTotal = flatCurrencyToCents(
       orderDetailsResponse.giftWrapItem[0].totalPrice
