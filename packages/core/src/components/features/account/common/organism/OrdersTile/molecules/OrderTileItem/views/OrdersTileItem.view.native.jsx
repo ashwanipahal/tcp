@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
@@ -11,8 +11,20 @@ export const OrdersTileItem = ({ labels, orderItem }) => {
   return (
     <ViewWithSpacing spacingStyles="margin-bottom-MED">
       <OrdersTypeContainer>
-        <Text>{getLabelValue(labels, 'lbl_ordersTile_orderNum', 'orders')}</Text>
-        <Text>: </Text>
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, 'lbl_ordersTile_orderNum', 'orders')}
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text=": "
+          color="gray.900"
+        />
         <Anchor
           fontSizeVariation="large"
           underline
@@ -21,32 +33,110 @@ export const OrdersTileItem = ({ labels, orderItem }) => {
           dataLocator="order-number-value"
           fontFamily="secondary"
         >
-          <Text>{orderNumber}</Text>
+          <BodyCopy
+            fontWeight="regular"
+            fontSize="fs14"
+            mobilefontFamily={['secondary']}
+            text={orderNumber}
+            color="gray.900"
+          />
         </Anchor>
       </OrdersTypeContainer>
       <OrdersTypeContainer>
-        <Text>{getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}</Text>
-        <Text>: </Text>
-        <Text>{orderDate}</Text>
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text=": "
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={orderDate}
+          color="gray.900"
+        />
       </OrdersTypeContainer>
       <OrdersTypeContainer>
-        <Text>{getLabelValue(labels, 'lbl_ordersTile_purchase', 'orders')}</Text>
-        <Text>: </Text>
-        <Text>
-          {isEcomOrder
-            ? getLabelValue(labels, 'lbl_orders_online', 'orders')
-            : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')}
-        </Text>
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, 'lbl_ordersTile_purchase', 'orders')}
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text=": "
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={
+            isEcomOrder
+              ? getLabelValue(labels, 'lbl_orders_online', 'orders')
+              : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')
+          }
+          color="gray.900"
+        />
       </OrdersTypeContainer>
       <OrdersTypeContainer>
-        <Text>{getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}</Text>
-        <Text>: </Text>
-        <Text>{getLabelValue(labels, orderStatus, 'orders')}</Text>
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text=": "
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, orderStatus, 'orders')}
+          color="gray.900"
+        />
       </OrdersTypeContainer>
       <OrdersTypeContainer>
-        <Text>{getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}</Text>
-        <Text>: </Text>
-        <Text>{orderTotal}</Text>
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text=": "
+          color="gray.900"
+        />
+        <BodyCopy
+          fontWeight="regular"
+          fontSize="fs14"
+          mobilefontFamily={['secondary']}
+          text={orderTotal}
+          color="gray.900"
+        />
       </OrdersTypeContainer>
     </ViewWithSpacing>
   );

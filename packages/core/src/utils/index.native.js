@@ -20,7 +20,6 @@ export {
   setTestId,
   validateColor,
   getTranslatedMomentDate,
-  getTranslateDateInformation,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -55,4 +54,6 @@ export {
   buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';

@@ -32,8 +32,6 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   scrollToParticularElement,
 } from './utils.web';
 
@@ -73,4 +71,6 @@ export {
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';
