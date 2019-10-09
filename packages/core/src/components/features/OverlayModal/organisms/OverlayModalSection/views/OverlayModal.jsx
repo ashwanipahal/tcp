@@ -96,6 +96,12 @@ class OverlayModal extends React.Component {
       }
       this.body.style.overflow = 'hidden';
     }
+
+    if (window && window.innerWidth < 767) {
+      const bodyContainer = document.querySelector('.non-checkout-pages');
+      bodyContainer.style.height = `${modal.offsetHeight}px`;
+      bodyContainer.style.overflow = 'hidden';
+    }
     /* istanbul ignore else */
     if (
       !showCondensedHeader &&
@@ -132,6 +138,9 @@ class OverlayModal extends React.Component {
     if (this.body) {
       this.body.style['overflow-y'] = 'auto';
     }
+    const bodyContainer = document.querySelector('.non-checkout-pages');
+    bodyContainer.style.height = '';
+    bodyContainer.style.overflow = 'auto';
   };
 
   /**
