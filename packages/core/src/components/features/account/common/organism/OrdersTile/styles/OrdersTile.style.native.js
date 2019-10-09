@@ -17,42 +17,4 @@ const ButtonWrapperStyle = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-const TouchableLink = styled.TouchableHighlight.attrs({
-  underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
-})`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-`;
-
-const OrdersTypeContainer = styled.View`
-  height: 24px;
-  flex: 1;
-  flex-direction: row;
-`;
-
-const BodyCopyStyle = {
-  fontSize: 'fs13',
-};
-
-const LeftContainer = {
-  flex: 1.5,
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-};
-
-const RightContainer = {
-  flex: 0.5,
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-};
-
-export {
-  UnderlineStyle,
-  OrdersTileContainer,
-  ButtonWrapperStyle,
-  TouchableLink,
-  BodyCopyStyle,
-  OrdersTypeContainer,
-  LeftContainer,
-  RightContainer,
-};
+export { UnderlineStyle, OrdersTileContainer, ButtonWrapperStyle };

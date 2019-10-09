@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersTileItem component should render correctly 1`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-MED"
+>
+  <Styled(View)>
+    <Text>
+      lbl_ordersTile_orderNum
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="order-number-value"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontSizeVariation="large"
+      locator=""
+      onPress={null}
+      text=""
+      underline={true}
+      visible={false}
+    >
+      <Text>
+        7000037172
+      </Text>
+    </Styled(Anchor)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderDate
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text>
+      Oct 6, 2019
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_ordersTile_purchase
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text>
+      lbl_orders_online
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderStatus
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text>
+      lbl_orders_statusNa
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderTotal
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text>
+      $24.95
+    </Text>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`OrdersTileItem component should render correctly 2`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-MED"
+>
+  <Styled(View)>
+    <Text>
+      lbl_ordersTile_orderNum
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="order-number-value"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontSizeVariation="large"
+      locator=""
+      onPress={null}
+      text=""
+      underline={true}
+      visible={false}
+    >
+      <Text />
+    </Styled(Anchor)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderDate
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text />
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_ordersTile_purchase
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text>
+      lbl_orders_pickupStore
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderStatus
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text />
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      lbl_orders_orderTotal
+    </Text>
+    <Text>
+      : 
+    </Text>
+    <Text />
+  </Styled(View)>
+</Styled(View)>
+`;

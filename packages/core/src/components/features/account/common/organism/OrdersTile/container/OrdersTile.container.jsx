@@ -8,21 +8,16 @@ import { getSiteId } from '../../../../../../../utils';
 import { getLabels } from '../../../../Account/container/Account.selectors';
 
 class OrdersTile extends PureComponent {
-
   componentDidMount() {
     const { fetchOrders } = this.props;
     fetchOrders(getSiteId());
   }
 
   render() {
-    const { labels, ordersListItems } = this.props;
-
+    const { labels, ordersListItems, navigation } = this.props;
     return (
-      <OrdersTileComponent
-        labels={labels}
-        ordersList={ordersListItems}
-      />
-    )
+      <OrdersTileComponent labels={labels} ordersList={ordersListItems} navigation={navigation} />
+    );
   }
 }
 
@@ -30,6 +25,7 @@ OrdersTile.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fetchOrders: PropTypes.func,
   ordersListItems: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 OrdersTile.defaultProps = {

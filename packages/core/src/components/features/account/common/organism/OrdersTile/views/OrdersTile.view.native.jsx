@@ -1,34 +1,64 @@
 import React from 'react';
-// import { View, Text } from 'react-native';
-// import PropTypes from 'prop-types';
-// import { withNavigation } from 'react-navigation';
-// import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+import PropTypes from 'prop-types';
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-// import { BodyCopy, Anchor, Button } from '@tcp/core/src/components/common/atoms';
-// import { getLabelValue } from '@tcp/core/src/utils';
-// import { OrdersTileItem } from '../molecules/OrderTileItem/views/OrdersTileItem.view';
+import { getLabelValue } from '@tcp/core/src/utils';
+import CustomButton from '../../../../../../common/atoms/Button';
+import EmptyOrdersTile from '../../../molecule/EmptyOrdersTile';
+import { OrdersTileItem } from '../molecules/OrderTileItem/views/OrdersTileItem.view';
 import {
   UnderlineStyle,
   OrdersTileContainer,
-  // ButtonWrapperStyle,
-  // TouchableLink,
-  // BodyCopyStyle,
-  // OrdersTypeContainer,
-  // LeftContainer,
-  // RightContainer,
-} from '../styles/OrdersOverviewTile.style.native';
+  ButtonWrapperStyle,
+} from '../styles/OrdersTile.style.native';
 /*
 OrdersTile component is used in AccountOverview screen on mobile app
 */
-export class OrdersTile extends React.PureComponent<Props> {
-  render() {
-    return (
-      <OrdersTileContainer>
-        <BodyCopy fontFamily="secondary" fontSize="fs16" text="Orders Tile Views" color="black" />
-        <UnderlineStyle />
-      </OrdersTileContainer>
-    );
+export const OrdersTile = ({ labels, ordersList, navigation }) => {
+  const selectedOrders = ordersList && ordersList.orders.slice(0, 2);
+  let ordersItemList;
+  if (selectedOrders && selectedOrders.length) {
+    ordersItemList = selectedOrders.map(orderItem => (
+      <OrdersTileItem orderItem={orderItem} labels={labels} navigation={navigation} />
+    ));
+  } else {
+    ordersItemList = <EmptyOrdersTile labels={labels} navigation={navigation} />;
   }
-}
+  return (
+    <OrdersTileContainer>
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs16"
+        text={getLabelValue(labels, 'lbl_ordersTile_heading', 'orders')}
+        color="black"
+      />
+      <UnderlineStyle />
+      {ordersItemList}
+      <ButtonWrapperStyle>
+        <CustomButton
+          text={getLabelValue(labels, 'lbl_ordersTile_viewAllOrders', 'orders')}
+          buttonVariation="variable-width"
+          fill="BLUE"
+          onPress={() => {
+            navigateToNestedRoute(navigation, 'HomeStack', 'home');
+          }}
+        />
+      </ButtonWrapperStyle>
+    </OrdersTileContainer>
+  );
+};
+
+OrdersTile.propTypes = {
+  labels: PropTypes.shape({}),
+  ordersList: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+};
+
+OrdersTile.defaultProps = {
+  labels: {
+    lbl_ordersTile_heading: '',
+    lbl_ordersTile_viewAllOrders: '',
+  },
+};
 
 export default OrdersTile;
