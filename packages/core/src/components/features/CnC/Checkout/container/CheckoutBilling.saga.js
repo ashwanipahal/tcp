@@ -180,6 +180,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = res.body;
   } else if (formData.address.onFileAddressKey && !isGuestUser) {
     // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
+
     const addressId = yield call(getAddressData, formData);
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,
