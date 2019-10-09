@@ -969,31 +969,37 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   sizeList={
     Array [
       Object {
+        "disabled": false,
         "displayName": "XS (4)",
         "id": "XS (4)",
         "maxAvailable": 739,
       },
       Object {
+        "disabled": false,
         "displayName": "S (5/6)",
         "id": "S (5/6)",
         "maxAvailable": 6771,
       },
       Object {
+        "disabled": false,
         "displayName": "M (7/8)",
         "id": "M (7/8)",
         "maxAvailable": 12920,
       },
       Object {
+        "disabled": false,
         "displayName": "L (10/12)",
         "id": "L (10/12)",
         "maxAvailable": 9331,
       },
       Object {
+        "disabled": false,
         "displayName": "XL (14)",
         "id": "XL (14)",
         "maxAvailable": 4381,
       },
       Object {
+        "disabled": false,
         "displayName": "XXL (16)",
         "id": "XXL (16)",
         "maxAvailable": 3473,

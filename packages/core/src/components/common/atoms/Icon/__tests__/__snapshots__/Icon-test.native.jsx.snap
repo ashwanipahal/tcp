@@ -2,10 +2,11 @@
 
 exports[`CustomIcon should render correctly 1`] = `
 <Styled(View)
+  accessibilityLabel=""
+  accessibilityRole="button"
   margin={null}
 >
   <Icon
-    accessibilityRole="button"
     allowFontScaling={false}
     name="chevron-right"
     size={null}
