@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ProductCustomizeFormPartVanilla } from '../views/ProductCustomizeFormPart.view';
+import { ProductCustomizeFormPartContainerVanilla } from '../container/ProductCustomizeFormPart.container';
 
-describe('ProductCustomizeFormPart component', () => {
-  const defaultBadge = 'ONLINE EXCLUSIVE';
+describe('ProductCustomizeFormPartContainer component', () => {
   it('should renders correctly', () => {
+    const defaultBadge = 'ONLINE EXCLUSIVE';
     const props = {
       quickViewLabels: {},
       className: '',
@@ -408,7 +408,7 @@ describe('ProductCustomizeFormPart component', () => {
         },
       ],
     };
-    const component = shallow(<ProductCustomizeFormPartVanilla {...props} />);
+    const component = shallow(<ProductCustomizeFormPartContainerVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
