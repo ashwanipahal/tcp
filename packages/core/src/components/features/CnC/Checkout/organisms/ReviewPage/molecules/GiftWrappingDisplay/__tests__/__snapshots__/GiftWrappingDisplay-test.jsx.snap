@@ -8,7 +8,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
     className="gift-wrapping-container"
   >
     <Styled(BodyCopy)
-      className={null}
+      className="gift-wrapping-title"
       color="gray.900"
       component="p"
       dataLocator="gift-wrapping-title"
@@ -49,7 +49,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
     className="gift-wrapping-container"
   >
     <Styled(BodyCopy)
-      className={null}
+      className="gift-wrapping-title"
       color="gray.900"
       component="p"
       dataLocator="gift-wrapping-title"
