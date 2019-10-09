@@ -29,6 +29,8 @@ const SearchDetailReducer = (state = initialState, action) => {
       return state.merge(action.payload);
     case SLP_CONSTANTS.SET_SLP_RESULTS_AVAILABLE_STATE:
       return state.merge(action.payload);
+    case SLP_CONSTANTS.RESET_PRODUCTS:
+      return { ...state };
     default:
       return getDefaultState(state);
   }
