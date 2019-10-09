@@ -20,6 +20,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
         </Text>
         <StoreAddressTile
           className={null}
+          dataLocatorKey=""
           favoriteStore={
             Object {
               "basicInfo": Object {
@@ -472,6 +473,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
       <Styled(View)>
         <StoreAddressTile
           className={null}
+          dataLocatorKey=""
           favoriteStore={
             Object {
               "basicInfo": Object {

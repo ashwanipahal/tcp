@@ -18397,6 +18397,11 @@ react-native-image-zoom-viewer@^2.2.26:
   dependencies:
     react-native-image-pan-zoom "^2.1.9"
 
+react-native-instagram-login@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-instagram-login/-/react-native-instagram-login-1.1.0.tgz#b68b0d393bf3db1c7590b5e62bacf9adcd2e669c"
+  integrity sha512-XJ8mECbeqW0SilyIHvQozBGCH7Yqp/QXp6I5piEWFaJKo4f8vs5PcVMaZ+unFurbM65DVl4ba5YB9XYfVUng/w==
+
 react-native-keychain@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.0.0.tgz#29da1dfa43c2581f76bf9420914fd38a1558cf18"

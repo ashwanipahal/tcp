@@ -1,8 +1,26 @@
-import { css } from 'styled-components';
+import { Dimensions } from 'react-native';
+import styled, { css } from 'styled-components';
 
-const styles = css`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
-    ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
+const Screen = Dimensions.get('window');
+const ScreenHeight = Screen.height;
+
+const getAdditionalStyle = props => {
+  const { margins, padding } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(padding && { padding }),
+  };
+};
+
+const PageContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: ${ScreenHeight - 150};
 `;
 
-export default styles;
+const Container = styled.View`
+  ${getAdditionalStyle}
+`;
+
+const styles = css``;
+
+export { styles, PageContainer, Container };

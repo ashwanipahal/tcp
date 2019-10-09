@@ -42,6 +42,7 @@ describe('Shipping Page', () => {
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
+      shippingAddressId: '123',
       userAddresses: new List([
         {
           addressId: '123',
@@ -107,6 +108,7 @@ describe('Shipping Page', () => {
         addressLine2: 'pob',
       },
       selectedShipmentId: '336',
+      shippingAddressId: '123',
     });
     tree.setState({ defaultAddressId: '34567' });
     expect(mockedloadShipmentMethods).toBeCalled();

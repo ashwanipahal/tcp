@@ -411,8 +411,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -622,44 +622,6 @@ export const configureInternalNavigationFromCMSUrl = url => {
   return url;
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = {
-    weekday: 'short',
-  },
-  monthOption = {
-    month: 'short',
-  }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-    year: currentDate.getFullYear(),
-  };
-};
 const WEEK_DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 const WEEK_DAYS_SMALL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -752,8 +714,6 @@ export default {
   sanitizeEntity,
   getFormSKUValue,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
   extractFloat,
