@@ -14,6 +14,7 @@ import {
   submitBillingSection,
   setVenmoPaymentInProgress,
 } from '../../../container/Checkout.action';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 
 /**
@@ -172,6 +173,7 @@ export const mapStateToProps = state => {
   return {
     cardType: getCardType(state),
     syncErrors: getSyncError(state),
+    isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     paymentMethodId: getPaymentMethodId(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
