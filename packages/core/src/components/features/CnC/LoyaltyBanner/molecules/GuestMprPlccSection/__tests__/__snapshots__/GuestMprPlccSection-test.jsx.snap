@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 1`] = `
+<div
+  className=" body"
+>
+  <Styled(BodyCopy)
+    className="youCanEarnPoints alignCenter elem-pt-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize=""
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="earnDoublePoints alignCenter"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    0
+  </Styled(BodyCopy)>
+  0
+</div>
+`;
+
+exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 2`] = `
+<div
+  className=" body"
+>
+  <Styled(BodyCopy)
+    className="youCanEarnPoints alignCenter elem-pt-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize=""
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs20"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <div
+    className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM"
+  >
+    <Styled(Row)
+      className="currentSubtotalRow"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="currentSubtotalTextCol"
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 5,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="currentSubtotalText"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="currentSubtotalValCol"
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="currentSubtotalVal"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          21
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="estimatedSubtotalRow elem-pt-SM elem-pb-MED"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="estimatedSubtotalTextCol"
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 5,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="estimatedSubtotalText"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="estimatedSubtotalValCol"
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="estimatedSubtotalVal"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs18"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          33
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;

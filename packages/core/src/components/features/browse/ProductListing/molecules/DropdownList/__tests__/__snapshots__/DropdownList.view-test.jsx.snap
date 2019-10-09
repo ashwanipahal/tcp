@@ -46,7 +46,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
   .item-list-wrapper {
     max-height: 430px;
     text-align: center;
-    max-width: 590px;
+    max-width: 605px;
 
     @media ",
           [Function],

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import SearchDetail from '../views/SearchDetail.view';
-import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
+import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import {
@@ -33,9 +33,11 @@ import {
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 
 class SearchDetailContainer extends React.PureComponent {
-  searchQuery;
-
-  asPath;
+  constructor(props) {
+    super(props);
+    const { resetProducts } = this.props;
+    resetProducts();
+  }
 
   componentDidMount() {
     this.makeApiCall();
@@ -43,7 +45,7 @@ class SearchDetailContainer extends React.PureComponent {
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
-    const searchQuery = navigation && navigation.getParam('searchQuery');
+    const searchQuery = navigation && navigation.getParam('title');
     if (this.searchQuery !== searchQuery) {
       this.searchQuery = searchQuery;
       const splitAsPathBy = `/search/${this.searchQuery}?`;
@@ -110,11 +112,11 @@ class SearchDetailContainer extends React.PureComponent {
       getProducts,
       onSubmit,
       onPickUpOpenClick,
-      searchedText,
       slpLabels,
       searchResultSuggestions,
       sortLabels,
       isSearchResultsAvailable,
+      searchedText,
       ...otherProps
     } = this.props;
 
@@ -242,6 +244,9 @@ function mapDispatchToProps(dispatch) {
     getMoreProducts: payload => {
       dispatch(getMoreSlpProducts(payload));
     },
+    resetProducts: () => {
+      dispatch(resetSlpProducts());
+    },
   };
 }
 
@@ -279,6 +284,7 @@ SearchDetailContainer.propTypes = {
   slpLabels: PropTypes.shape({}),
   searchResultSuggestions: PropTypes.shape({}),
   sortLabels: PropTypes.shape({}),
+  resetProducts: PropTypes.func,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -302,6 +308,7 @@ SearchDetailContainer.defaultProps = {
   slpLabels: {},
   searchResultSuggestions: {},
   sortLabels: {},
+  resetProducts: () => {},
 };
 
 export default connect(

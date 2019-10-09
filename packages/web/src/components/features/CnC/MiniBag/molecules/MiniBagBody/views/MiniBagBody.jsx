@@ -11,6 +11,7 @@ import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTi
 import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import LoyaltyBanner from '@tcp/core/src/components/features/CnC/LoyaltyBanner';
 import ErrorMessage from '../../../../../../../../../core/src/components/features/CnC/common/molecules/ErrorMessage';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
@@ -200,6 +201,7 @@ class MiniBagBody extends React.PureComponent {
             </BodyCopy>
           </div>
         )}
+        <LoyaltyBanner />
       </div>
     );
   }
