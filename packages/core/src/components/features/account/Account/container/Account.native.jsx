@@ -67,6 +67,8 @@ export class Account extends React.PureComponent<Props, State> {
         return 'myPreferencePageMobile';
       case 'PointsClaimPageMobile':
         return 'PointsClaimPageMobile';
+      case 'myOrdersPageMobile':
+        return 'myOrdersPageMobile';
       default:
         return 'addressBookMobile';
     }
