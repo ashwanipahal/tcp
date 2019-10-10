@@ -5,7 +5,7 @@ exports[`Venmo Payment Button should render correctly 1`] = `
   className="venmo-container sc-gqjmRU gvHLxz"
 >
   <Styled(TouchableOpacity)
-    accessibilityRole="none"
+    accessibilityRole="button"
   >
     <Styled(ImageComp)
       alt=""
