@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RibbonComponent should call the getConfig getImgPath 1`] = `
+<styled.div>
+  <styled.div
+    height="70"
+    imgPath="/static/images/module-s-right-ribbon.png"
+    width="200"
+  >
+    <Styled(PromoBanner)
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "target": "",
+              "text": "Girls",
+              "title": "Girls",
+              "url": "/c/girls-clothes",
+            },
+            "ribbonClass": "ribbon-color-cherry",
+            "ribbonPlacement": "right",
+            "textItems": Array [
+              Array [
+                [Function],
+              ],
+            ],
+          },
+        ]
+      }
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`RibbonComponent should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    height="70"
+    imgPath="/static/images/module-s-left-ribbon.png"
+    width="200"
+  >
+    <Styled(PromoBanner)
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "target": "",
+              "text": "Girls",
+              "title": "Girls",
+              "url": "/c/girls-clothes",
+            },
+            "ribbonClass": "ribbon-color-cherry",
+            "ribbonPlacement": "left",
+            "textItems": Array [
+              Object {
+                "style": "style1",
+                "text": "20% OFF",
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </styled.div>
+</styled.div>
+`;

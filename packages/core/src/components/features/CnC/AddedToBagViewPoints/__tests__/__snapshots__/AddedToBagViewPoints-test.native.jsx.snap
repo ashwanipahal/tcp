@@ -19,7 +19,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       fontSize="fs13"
       margin={null}
       numberOfLines={null}
-      text="$12"
+      text="undefined12"
       textDecoration={null}
     />
   </Styled(View)>
@@ -66,7 +66,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       fontSize="fs13"
       margin={null}
       numberOfLines={null}
-      text="$0"
+      text="undefined0"
       textDecoration={null}
     />
   </Styled(View)>
