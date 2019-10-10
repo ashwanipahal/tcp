@@ -104,7 +104,6 @@ const ButtonView = props => {
       <Button
         width={BUTTON_WIDTH}
         accessibilityLabel={singleCTAButton.title}
-        buttonVariation="variable-width"
         text={singleCTAButton.text}
         testID={getLocator('moduleD_button')}
         url={singleCTAButton.url}
