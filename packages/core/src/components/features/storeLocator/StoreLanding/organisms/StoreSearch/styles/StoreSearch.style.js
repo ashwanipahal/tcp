@@ -15,10 +15,15 @@ export default css`
     position: relative;
   }
 
-  .TextBox__input {
-    background-color: transparent;
-    @media ${props => props.theme.mediaQuery.medium} {
-      padding-bottom: 2px;
+  .store-locator-field {
+    .TextBox__input {
+      background-color: transparent;
+      width: 90%;
+      padding-right: 10%;
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        padding-bottom: 2px;
+      }
     }
   }
 
@@ -39,7 +44,7 @@ export default css`
   .button-search-store {
     position: absolute;
     right: -4px;
-    bottom: 10px;
+    top: 6px;
   }
 
   .currentLocationWrapper {

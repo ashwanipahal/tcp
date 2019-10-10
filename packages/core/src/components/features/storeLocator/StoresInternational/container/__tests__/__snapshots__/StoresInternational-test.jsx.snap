@@ -38,6 +38,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -623,9 +624,9 @@ exports[`StoresInternational component StoresInternational component renders cor
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bwzfXH",
+            "componentId": "sc-gqjmRU",
             "isStatic": false,
-            "lastClassName": "kIJhGX",
+            "lastClassName": "lrgQs",
             "rules": Array [
               "
   ",
@@ -641,7 +642,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "displayName": "Styled(StoresInternational)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-bwzfXH",
+          "styledComponentId": "sc-gqjmRU",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -651,13 +652,161 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="test sc-bwzfXH kIJhGX"
+        className="test sc-gqjmRU lrgQs"
         content="test"
         dataLocator="test"
       >
         <div
-          className="test sc-bwzfXH kIJhGX"
+          className="test sc-gqjmRU lrgQs"
         >
+          <Styled(Anchor)
+            anchorVariation="secondary"
+            className="test sc-gqjmRU lrgQs__backlink"
+            dataLocator="store_USCanadabacklink"
+            fontSizeVariation="xlarge"
+            handleLinkClick={[Function]}
+            noLink={true}
+            title="lbl_storelist_backLink"
+          >
+            <StyledComponent
+              anchorVariation="secondary"
+              className="test sc-gqjmRU lrgQs__backlink"
+              dataLocator="store_USCanadabacklink"
+              fontSizeVariation="xlarge"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "lastClassName": "eZrbaF",
+                    "rules": Array [
+                      "
+  ",
+                      "
+  font-family: ",
+                      [Function],
+                      ";
+  color: inherit;
+
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+
+  .left-arrow {
+    border: solid ",
+                      [Function],
+                      ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(Anchor)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              handleLinkClick={[Function]}
+              noLink={true}
+              title="lbl_storelist_backLink"
+            >
+              <Anchor
+                anchorVariation="secondary"
+                asPath=""
+                className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                dataLocator="store_USCanadabacklink"
+                fontSizeVariation="xlarge"
+                handleLinkClick={[Function]}
+                noLink={true}
+                scroll=""
+                shallow={false}
+                target=""
+                text=""
+                title="lbl_storelist_backLink"
+                url=""
+              >
+                <a
+                  anchorVariation="secondary"
+                  className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                  data-locator="store_USCanadabacklink"
+                  fontSizeVariation="xlarge"
+                  href=""
+                  onClick={[Function]}
+                  target="_self"
+                  title="lbl_storelist_backLink"
+                >
+                  <span
+                    className="left-arrow"
+                  />
+                  lbl_storelist_backLink
+                </a>
+              </Anchor>
+            </StyledComponent>
+          </Styled(Anchor)>
           <Styled(RichText)
             dataLocator="test"
             richTextHtml="test"
@@ -728,7 +877,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
+        "componentId": "sc-gqjmRU",
         "isStatic": false,
         "rules": Array [
           "
@@ -745,7 +894,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "displayName": "Styled(StoresInternational)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
+      "styledComponentId": "sc-gqjmRU",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
