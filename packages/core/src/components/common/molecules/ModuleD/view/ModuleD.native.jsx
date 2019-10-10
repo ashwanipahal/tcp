@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
+import spacing from '../../../../../../styles/themes/TCP/spacing';
 import { ButtonWrapper, Tile, Wrapper, Container, ListContainer } from '../ModuleD.style.native';
 import LinkText from '../../LinkText';
 import config from '../config';
@@ -34,7 +35,7 @@ const renderItem = (item, navigation) => {
           url={image.url}
           crop={image.crop_m}
           height={imageSize}
-          marginBottom={8}
+          marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
           imgConfig={config.IMG_DATA_2.imgConfig[0]}
           host={LAZYLOAD_HOST_NAME.HOME}
