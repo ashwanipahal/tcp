@@ -8,6 +8,8 @@ import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
 // import {FavoriteButtonContainer} from './FavoriteButtonContainer.js';
 import { BadgeItem } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
+import withStyles from '../../../../../common/hoc/withStyles';
+import productBasicInfo from './ProductBasicInfo.style';
 
 const ProductBasicInfo = props => {
   const {
@@ -36,7 +38,12 @@ const ProductBasicInfo = props => {
 
   return (
     <div className="product-details-header-container">
-      <BadgeItem customFontWeight="regular" className="inline-badge-item" text={badge} />
+      <BadgeItem
+        customFontWeight="regular"
+        customFontSize={['fs10', 'fs10', 'fs10']}
+        className="inline-badge-item"
+        text={badge}
+      />
       <div className="information-container">
         {typeof pdpUrl === 'string' ? (
           <Anchor to={pdpUrl} className="product-link-title">
@@ -72,4 +79,4 @@ ProductBasicInfo.defaultProps = {
   badge: '',
 };
 
-export default ProductBasicInfo;
+export default withStyles(ProductBasicInfo, productBasicInfo);

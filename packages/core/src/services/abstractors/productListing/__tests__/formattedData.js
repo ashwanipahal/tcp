@@ -117,4 +117,5 @@ export const formattedPdpRes = {
     long_product_title: 'Baby And Toddler Girls Long Sleeve Butterfly Print Smocked Top',
     bundleProducts: [],
   },
+  currentColorProductId: '2043572',
 };
