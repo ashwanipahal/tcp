@@ -42,9 +42,11 @@ class Modal extends React.PureComponent {
       ariaDescribedby,
       innerContentClassName = '',
       overlayClassName,
+      isOpen,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
-    return (
+
+    return isOpen ? (
       <ReactModal
         {...otherProps}
         overlayClassName={`${className} ${overlayClassName}`}
@@ -93,7 +95,7 @@ class Modal extends React.PureComponent {
           </div>
         )}
       </ReactModal>
-    );
+    ) : null;
   }
 }
 
