@@ -38,12 +38,18 @@ const SmsSignupModalStyle = css`
     }
     .button-wrapper,
     .button-wrapper-form {
-      margin: 24px auto 20px;
+      margin: 24px auto 0;
       background: none;
       padding: 0;
     }
     .img-wrapper {
       display: flex;
+      width: 300px;
+      margin-right: 0;
+      height: 620px;
+    }
+    .img-wrapper + div {
+      width: calc(100% - 300px);
     }
     .button-container {
       position: absolute;

@@ -110,7 +110,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 fontSize="fs15"
                 fontWeight="black"
                 text="§"
-                paddingTop="15px"
+                paddingTop="5px"
               />
             </HeaderContainer>
 

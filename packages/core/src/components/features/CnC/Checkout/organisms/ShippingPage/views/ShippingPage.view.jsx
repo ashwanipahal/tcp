@@ -254,8 +254,8 @@ export default class ShippingPage extends React.PureComponent {
   };
 
   getAddressInitialValues = () => {
-    const { shippingAddress, shippingPhoneAndEmail } = this.props;
-    if (!isEmpty(shippingAddress)) {
+    const { shippingAddress, shippingPhoneAndEmail, userAddresses, isGuest } = this.props;
+    if (!isEmpty(shippingAddress) && (isGuest || !userAddresses || userAddresses.size === 0)) {
       return {
         addressLine1: shippingAddress.addressLine1,
         addressLine2: shippingAddress.addressLine2,

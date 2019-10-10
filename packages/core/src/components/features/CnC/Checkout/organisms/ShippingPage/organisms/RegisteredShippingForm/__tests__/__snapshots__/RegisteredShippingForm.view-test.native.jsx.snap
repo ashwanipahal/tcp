@@ -155,7 +155,7 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />
@@ -261,7 +261,7 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />
@@ -524,7 +524,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />
@@ -635,7 +635,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />
@@ -756,7 +756,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />
@@ -862,7 +862,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       noLink={true}
       onPress={[Function]}
       target="_blank"
-      text=""
+      text="lbl_shipping_edit"
       underline={true}
       visible={false}
     />

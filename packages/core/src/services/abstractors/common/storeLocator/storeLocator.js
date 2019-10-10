@@ -359,7 +359,10 @@ export const getLocationStores = ({
       }
       return fetchedStores.map(storeResponseParser);
     })
-    .catch(errorHandler);
+    .catch(err => {
+      errorHandler(err);
+      return {};
+    });
 };
 
 /**

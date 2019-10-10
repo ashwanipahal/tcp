@@ -82,7 +82,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
   const {
     heading,
     onRequestClose,
-    animationType,
+    animationType = 'slide',
     headingAlign,
     headingFontFamily,
     headerStyle,
@@ -113,35 +113,35 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
       >
         {!customTransparent && (
           <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
-            <ToastContainer />
-            <StatusBar hidden />
-            <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-              {heading && (
-                <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                  <BodyCopy
-                    mobileFontFamily={headingFontFamily || 'primary'}
-                    fontWeight={headingFontWeight || 'extrabold'}
-                    textAlign={headingAlign}
-                    fontSize={fontSize || 'fs16'}
-                    text={heading}
-                  />
-                </ModalHeading>
-              )}
-              {getCloseIcon({
-                onRequestClose,
-                headerStyle,
-                iconType,
-                isOverlay,
-                stickyCloseIcon,
-              })}
-            </RowWrapper>
-            {geLine(horizontalBar, borderColor)}
             <KeyboardAvoidingView
               behavior={behavior}
               keyboardVerticalOffset={keyboardVerticalOffset}
               enabled
             >
               <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+                <ToastContainer />
+                <StatusBar hidden />
+                <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
+                  {heading && (
+                    <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
+                      <BodyCopy
+                        mobileFontFamily={headingFontFamily || 'primary'}
+                        fontWeight={headingFontWeight || 'extrabold'}
+                        textAlign={headingAlign}
+                        fontSize={fontSize || 'fs16'}
+                        text={heading}
+                      />
+                    </ModalHeading>
+                  )}
+                  {getCloseIcon({
+                    onRequestClose,
+                    headerStyle,
+                    iconType,
+                    isOverlay,
+                    stickyCloseIcon,
+                  })}
+                </RowWrapper>
+                {geLine(horizontalBar, borderColor)}
                 {children}
               </ScrollView>
             </KeyboardAvoidingView>

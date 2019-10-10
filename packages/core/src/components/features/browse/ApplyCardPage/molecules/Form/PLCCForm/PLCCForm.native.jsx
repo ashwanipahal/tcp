@@ -39,6 +39,8 @@ import {
   MiddleNameContainer,
   FieldContainer,
   SSNContainer,
+  AddressLine1Container,
+  DropDownContainer,
 } from './style/PLCCForm.style.native';
 import {
   CAcountriesStatesTable,
@@ -80,15 +82,18 @@ class PLCCForm extends React.PureComponent<Props> {
     this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
     this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
 
+    this.date = calendarDaysMap();
+    this.year = calendarYearsMap();
+
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       country: 'US',
       // eslint-disable-next-line react/no-unused-state
       dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
       isPreScreen: false,
-      date: null,
-      month: null,
-      year: null,
+      date: this.date[0].displayName,
+      month: months[0].displayName,
+      year: this.year[0].displayName,
     };
 
     this.locationRef = null;
@@ -159,7 +164,7 @@ class PLCCForm extends React.PureComponent<Props> {
         <PreScreenCodeContainer>
           <StyledBodyCopy
             text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
-            fontSize="fs16"
+            fontSize="fs15"
             color="gray.900"
             paddingLeft="16px"
             mobilefontFamily="secondary"
@@ -179,9 +184,10 @@ class PLCCForm extends React.PureComponent<Props> {
           ) : (
             <StyledBodyCopy
               text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
-              fontSize="fs16"
+              fontSize="fs15"
               color="gray.900"
               textAlign="center"
+              paddingRight="16px"
               paddingTop={!isPreScreen ? '12px' : '1px'}
             />
           )}
@@ -264,14 +270,9 @@ class PLCCForm extends React.PureComponent<Props> {
               this.locationRef = instance;
             }}
           />
-          <Field
-            label=""
-            component={TextBox}
-            title=""
-            type="hidden"
-            id="addressLine1"
-            name="addressLine1"
-          />
+          <AddressLine1Container>
+            <Field label="" component={TextBox} title="" type="hidden" id="addressLine1" />
+          </AddressLine1Container>
         </NameFieldContainer>
 
         <NameFieldContainer>
@@ -394,7 +395,6 @@ class PLCCForm extends React.PureComponent<Props> {
               name="month"
               bounces={false}
               component={DropDown}
-              heading="MM"
               data={months}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
@@ -405,19 +405,18 @@ class PLCCForm extends React.PureComponent<Props> {
               }}
               selectedValue={month}
             />
-            <FieldContainer>
+            <DropDownContainer>
               <Field label="" component={TextBox} title="" type="hidden" id="month" name="month" />
-            </FieldContainer>
+            </DropDownContainer>
           </DateContainerView>
 
           <DateContainerView>
             <Field
               id="date"
               name="date"
-              heading="DD"
               bounces={false}
               component={DropDown}
-              data={calendarDaysMap()}
+              data={this.date}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
@@ -427,18 +426,17 @@ class PLCCForm extends React.PureComponent<Props> {
                 this.setState({ date: itemValue });
               }}
             />
-            <FieldContainer>
+            <DropDownContainer>
               <Field label="" component={TextBox} title="" type="hidden" id="date" name="date" />
-            </FieldContainer>
+            </DropDownContainer>
           </DateContainerView>
           <DateContainerView>
             <Field
               id="year"
               name="year"
-              heading="YYYY"
               bounces={false}
               component={DropDown}
-              data={calendarYearsMap()}
+              data={this.year}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
@@ -448,9 +446,9 @@ class PLCCForm extends React.PureComponent<Props> {
               }}
               selectedValue={year}
             />
-            <FieldContainer>
+            <DropDownContainer>
               <Field label="" component={TextBox} title="" type="hidden" id="year" name="year" />
-            </FieldContainer>
+            </DropDownContainer>
           </DateContainerView>
         </PersonalInformationContainerView>
 

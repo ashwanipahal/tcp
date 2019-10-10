@@ -78,6 +78,7 @@ const getGiftServicesFormData = state => {
     catEntryId: selector(state, 'optionId'),
     hasGiftWrapping: selector(state, 'hasGiftWrapping'),
     GiftMsg: selector(state, 'message'),
+    brand: selector(state, 'brand'),
   };
 };
 
