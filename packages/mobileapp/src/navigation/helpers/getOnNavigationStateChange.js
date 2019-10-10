@@ -1,4 +1,4 @@
-import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import { TRACK_PAGE_VIEW, TRACK_CLICK } from '@tcp/core/src/analytics';
 import { getActiveRouteName } from './getActiveRouteName';
 /*eslint-disable */
 

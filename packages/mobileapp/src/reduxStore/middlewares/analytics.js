@@ -2,6 +2,7 @@
 import { createMiddleware } from 'redux-beacon';
 import logger from '@redux-beacon/logger';
 import { eventMapping } from '../../analytics/eventMapping';
+import { trackingTarget } from '../../analytics/trackingTarget';
 import {
   ACPCore,
   ACPLifecycle,
@@ -24,10 +25,6 @@ ACPIdentity.registerExtension();
 ACPSignal.registerExtension();
 ACPAnalytics.registerExtension();
 ACPCore.start();
-
-function trackingTarget(events) {
-  console.log('EVENTS', events);
-}
 
 export default function create() {
   return createMiddleware(
