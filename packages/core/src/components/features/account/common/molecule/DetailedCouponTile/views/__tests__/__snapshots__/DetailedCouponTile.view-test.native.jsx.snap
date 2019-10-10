@@ -141,7 +141,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../../core/src/assets/bag-white.png",
+              "testUri": "../../../../core/src/assets/white-bag.png",
             }
           }
           url=""

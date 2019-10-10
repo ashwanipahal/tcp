@@ -31,10 +31,11 @@ const TextProps = {
   text: PropTypes.string.isRequired,
 };
 
-const onAddToBagHandler = (onAddToBag, data) => {
-  if (onAddToBag) {
-    onAddToBag(data);
-  }
+const handleQuickViewOpenClick = (selectedColorIndex, colorsMap, onQuickViewOpenClick) => {
+  const { colorProductId } = colorsMap[selectedColorIndex];
+  onQuickViewOpenClick({
+    colorProductId,
+  });
 };
 
 const ListItem = props => {
@@ -43,12 +44,12 @@ const ListItem = props => {
     badge1,
     badge2,
     loyaltyPromotionMessage,
-    onAddToBag,
     onFavorite,
     currencyExchange,
     currencySymbol,
     isPlcc,
     onGoToPDPPage,
+    onQuickViewOpenClick,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -87,7 +88,7 @@ const ListItem = props => {
           data-locator=""
           text="ADD TO BAG"
           onPress={() => {
-            onAddToBagHandler(onAddToBag, item);
+            handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
           }}
           accessibilityLabel="add to bag"
         />
@@ -194,12 +195,12 @@ ListItem.propTypes = {
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   loyaltyPromotionMessage: PropTypes.string,
-  onAddToBag: PropTypes.func,
   onFavorite: PropTypes.func,
   isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {
@@ -208,7 +209,6 @@ ListItem.defaultProps = {
   badge1: '',
   badge2: '',
   loyaltyPromotionMessage: '',
-  onAddToBag: () => {},
   onFavorite: () => {},
   isPlcc: false,
 };

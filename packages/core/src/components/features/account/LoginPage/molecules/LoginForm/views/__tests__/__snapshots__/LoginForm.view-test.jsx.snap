@@ -184,7 +184,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
@@ -267,7 +267,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
@@ -678,7 +678,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
@@ -762,7 +762,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
         placeholder="lbl_login_password"
         showSuccessCheck={false}
       />

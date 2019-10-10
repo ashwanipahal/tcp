@@ -142,6 +142,7 @@ class GuestBillingForm extends React.Component {
               className="venmo-container"
               continueWithText={labels.continueWith}
               onSuccess={handleSubmit}
+              isVenmoBlueButton
             />
           )}
         </div>

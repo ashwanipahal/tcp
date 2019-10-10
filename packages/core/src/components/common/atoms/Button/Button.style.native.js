@@ -59,6 +59,38 @@ const getMobileAppFilterButtonViewStyle = props => {
   `;
 };
 
+const getMobileAppSelectFieldViewStyle = props => {
+  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
+  const { colorPalette } = theme;
+  const bgColor = selected ? colorPalette.gray[900] : 'transparent';
+  const borderColor = colorPalette.gray[900];
+
+  if (buttonVariation === BUTTON_VARIATION.mobileAppSelect) {
+    return `
+      width: 100%;
+      border: 1px solid ${borderColor};
+      background-color: ${bgColor};
+      align-items: flex-end;
+      justify-content: space-between;
+      min-height: 40px;
+      height: 40px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      ${
+        bottomBorderOnly
+          ? `
+          border-top-width: 0;
+          border-left-width: 0;
+          border-right-width: 0;
+          `
+          : ''
+      };
+    `;
+  }
+  return `
+  null
+  `;
+};
+
 const getMobileAppFilterButtonTextStyle = props => {
   const { theme, selected, buttonVariation } = props;
   const { colorPalette, typography } = theme;
@@ -73,7 +105,10 @@ const getMobileAppFilterButtonTextStyle = props => {
     fontWeight = fontWeights.black;
     letterSpacing = '0.71px';
   }
-  if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
+  if (
+    buttonVariation === BUTTON_VARIATION.mobileAppFilter ||
+    buttonVariation === BUTTON_VARIATION.mobileAppSelect
+  ) {
     return `
       letter-spacing: ${letterSpacing};
       font-size: ${fontSizes.fs10};
@@ -147,6 +182,13 @@ const TouchableOpacityComponent = styled.TouchableOpacity`
 const IconContainer = styled.View`
   position: absolute;
   right: 14px;
+  ${props =>
+    props.buttonVariation === BUTTON_VARIATION.mobileAppSelect
+      ? `
+    right: 0;
+    bottom: 6px;
+  `
+      : ''};
 `;
 
 const style = css`
@@ -217,6 +259,7 @@ const style = css`
 
   ${getMobileAppFilterButtonViewStyle};
   ${getMobileAppFilterIconButtonViewStyle};
+  ${getMobileAppSelectFieldViewStyle};
 `;
 
 const CustomStyleText = styled(StyledText)`

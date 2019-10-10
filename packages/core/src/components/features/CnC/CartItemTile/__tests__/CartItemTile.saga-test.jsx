@@ -8,7 +8,7 @@ import {
   getProductSKUInfoSaga,
   afterRemovingCartItem,
 } from '../container/CartItemTile.saga';
-import { removeCartItemComplete, updateCartItemComplete } from '../container/CartItemTile.actions';
+import { removeCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
@@ -80,19 +80,11 @@ describe('Cart Item saga update', () => {
         quantity: '1',
         variantNo: '3002156005',
         xitem_catEntryId: '1285036',
+        callBack: jest.fn(),
       },
     ];
     const updateCartItemSagaGen = updateCartItemSaga(payload);
     updateCartItemSagaGen.next();
-
-    const res = {
-      orderId: '3000284778',
-      orderItem: [{ orderItemId: '3001545559' }],
-      x_orderItemTotal: '10.50000',
-      x_orderTotal: '49.35000',
-    };
-    const putDescriptor = updateCartItemSagaGen.next(res).value;
-    expect(putDescriptor).toEqual(put(updateCartItemComplete(res)));
   });
 });
 

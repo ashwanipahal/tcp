@@ -1,0 +1,6202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreList component Component should render with props 1`] = `
+<div
+  className="test-class1"
+>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="test-class1__backlink"
+    dataLocator="store_USCanadabacklink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+    title="Back"
+  >
+    <span
+      className="left-arrow"
+    />
+    Back
+  </Styled(Anchor)>
+  <Styled(StoreSelector)
+    dataLocator="store_USCanadasearchlabel"
+    defaultSelectText="Select a State"
+    options={
+      Array [
+        Object {
+          "content": "Alabama",
+          "title": "Alabama",
+          "value": "Alabama",
+        },
+        Object {
+          "content": "Arkansas",
+          "title": "Arkansas",
+          "value": "Arkansas",
+        },
+        Object {
+          "content": "Arizona",
+          "title": "Arizona",
+          "value": "Arizona",
+        },
+        Object {
+          "content": "California",
+          "title": "California",
+          "value": "California",
+        },
+        Object {
+          "content": "Colorado",
+          "title": "Colorado",
+          "value": "Colorado",
+        },
+        Object {
+          "content": "Connecticut",
+          "title": "Connecticut",
+          "value": "Connecticut",
+        },
+        Object {
+          "content": "Delaware",
+          "title": "Delaware",
+          "value": "Delaware",
+        },
+        Object {
+          "content": "Florida",
+          "title": "Florida",
+          "value": "Florida",
+        },
+        Object {
+          "content": "Georgia",
+          "title": "Georgia",
+          "value": "Georgia",
+        },
+        Object {
+          "content": "Iowa",
+          "title": "Iowa",
+          "value": "Iowa",
+        },
+        Object {
+          "content": "Idaho",
+          "title": "Idaho",
+          "value": "Idaho",
+        },
+        Object {
+          "content": "Illinois",
+          "title": "Illinois",
+          "value": "Illinois",
+        },
+        Object {
+          "content": "Indiana",
+          "title": "Indiana",
+          "value": "Indiana",
+        },
+        Object {
+          "content": "Kansas",
+          "title": "Kansas",
+          "value": "Kansas",
+        },
+        Object {
+          "content": "Kentucky",
+          "title": "Kentucky",
+          "value": "Kentucky",
+        },
+        Object {
+          "content": "Louisiana",
+          "title": "Louisiana",
+          "value": "Louisiana",
+        },
+        Object {
+          "content": "Massachusetts",
+          "title": "Massachusetts",
+          "value": "Massachusetts",
+        },
+        Object {
+          "content": "Maryland",
+          "title": "Maryland",
+          "value": "Maryland",
+        },
+        Object {
+          "content": "Maine",
+          "title": "Maine",
+          "value": "Maine",
+        },
+        Object {
+          "content": "Michigan",
+          "title": "Michigan",
+          "value": "Michigan",
+        },
+        Object {
+          "content": "Minnesota",
+          "title": "Minnesota",
+          "value": "Minnesota",
+        },
+        Object {
+          "content": "Missouri",
+          "title": "Missouri",
+          "value": "Missouri",
+        },
+        Object {
+          "content": "Mississippi",
+          "title": "Mississippi",
+          "value": "Mississippi",
+        },
+        Object {
+          "content": "Montana",
+          "title": "Montana",
+          "value": "Montana",
+        },
+        Object {
+          "content": "North Carolina",
+          "title": "North Carolina",
+          "value": "North Carolina",
+        },
+        Object {
+          "content": "North Dakota",
+          "title": "North Dakota",
+          "value": "North Dakota",
+        },
+        Object {
+          "content": "Nebraska",
+          "title": "Nebraska",
+          "value": "Nebraska",
+        },
+        Object {
+          "content": "New Hampshire",
+          "title": "New Hampshire",
+          "value": "New Hampshire",
+        },
+        Object {
+          "content": "New Jersey",
+          "title": "New Jersey",
+          "value": "New Jersey",
+        },
+        Object {
+          "content": "New Mexico",
+          "title": "New Mexico",
+          "value": "New Mexico",
+        },
+        Object {
+          "content": "Nevada",
+          "title": "Nevada",
+          "value": "Nevada",
+        },
+        Object {
+          "content": "New York",
+          "title": "New York",
+          "value": "New York",
+        },
+        Object {
+          "content": "Ohio",
+          "title": "Ohio",
+          "value": "Ohio",
+        },
+        Object {
+          "content": "Oklahoma",
+          "title": "Oklahoma",
+          "value": "Oklahoma",
+        },
+        Object {
+          "content": "ON",
+          "title": "ON",
+          "value": "ON",
+        },
+        Object {
+          "content": "Oregon",
+          "title": "Oregon",
+          "value": "Oregon",
+        },
+        Object {
+          "content": "Pennsylvania",
+          "title": "Pennsylvania",
+          "value": "Pennsylvania",
+        },
+        Object {
+          "content": "Rhode Island",
+          "title": "Rhode Island",
+          "value": "Rhode Island",
+        },
+        Object {
+          "content": "South Carolina",
+          "title": "South Carolina",
+          "value": "South Carolina",
+        },
+        Object {
+          "content": "South Dakota",
+          "title": "South Dakota",
+          "value": "South Dakota",
+        },
+        Object {
+          "content": "Tennessee",
+          "title": "Tennessee",
+          "value": "Tennessee",
+        },
+        Object {
+          "content": "Texas",
+          "title": "Texas",
+          "value": "Texas",
+        },
+        Object {
+          "content": "Utah",
+          "title": "Utah",
+          "value": "Utah",
+        },
+        Object {
+          "content": "Virgin Islands",
+          "title": "Virgin Islands",
+          "value": "Virgin Islands",
+        },
+        Object {
+          "content": "Washington",
+          "title": "Washington",
+          "value": "Washington",
+        },
+        Object {
+          "content": "Wisconsin",
+          "title": "Wisconsin",
+          "value": "Wisconsin",
+        },
+        Object {
+          "content": "West Virginia",
+          "title": "West Virginia",
+          "value": "West Virginia",
+        },
+        Object {
+          "content": "------------------",
+          "disabled": true,
+          "title": "disabled",
+          "value": "disabled",
+        },
+        Object {
+          "content": "Alberta",
+          "title": "Alberta",
+          "value": "Alberta",
+        },
+        Object {
+          "content": "British Columbia",
+          "title": "British Columbia",
+          "value": "British Columbia",
+        },
+        Object {
+          "content": "Manitoba",
+          "title": "Manitoba",
+          "value": "Manitoba",
+        },
+        Object {
+          "content": "New Brunswick",
+          "title": "New Brunswick",
+          "value": "New Brunswick",
+        },
+        Object {
+          "content": "Newfoundland and Labrador",
+          "title": "Newfoundland and Labrador",
+          "value": "Newfoundland and Labrador",
+        },
+        Object {
+          "content": "Nova Scotia",
+          "title": "Nova Scotia",
+          "value": "Nova Scotia",
+        },
+        Object {
+          "content": "Ontario",
+          "title": "Ontario",
+          "value": "Ontario",
+        },
+        Object {
+          "content": "Prince Edward Island",
+          "title": "Prince Edward Island",
+          "value": "Prince Edward Island",
+        },
+        Object {
+          "content": "Quebec",
+          "title": "Quebec",
+          "value": "Quebec",
+        },
+        Object {
+          "content": "Saskatchewan",
+          "title": "Saskatchewan",
+          "value": "Saskatchewan",
+        },
+        Object {
+          "content": "TX",
+          "title": "TX",
+          "value": "TX",
+        },
+      ]
+    }
+    selectedLocation={null}
+    selectionCallback={[Function]}
+    titleText="SEARCH FOR STORES BY STATE"
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2000 riverchase galleria",
+              "city": "birmingham",
+              "state": "AL",
+              "zipCode": "35244",
+            },
+            "id": "111430",
+            "phone": "(205) 560-0363",
+            "storeName": "riverchase galleria",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "900 commons drive",
+              "city": "dothan",
+              "state": "AL",
+              "zipCode": "36303",
+            },
+            "id": "111906",
+            "phone": "(334) 792-9385",
+            "storeName": "wiregrass commons",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1001 rainbow drive",
+              "city": "gadsden",
+              "state": "AL",
+              "zipCode": "35901",
+            },
+            "id": "114222",
+            "phone": "(256) 543-1353",
+            "storeName": "gadsden mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2801 memorial parkway south",
+              "city": "huntsville",
+              "state": "AL",
+              "zipCode": "35801",
+            },
+            "id": "114368",
+            "phone": "(256) 519-6253",
+            "storeName": "parkway place",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3444 bel air mall",
+              "city": "mobile",
+              "state": "AL",
+              "zipCode": "36606",
+            },
+            "id": "111447",
+            "phone": "(251) 478-8876",
+            "storeName": "bel air mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7044 eastchase parkway",
+              "city": "montgomery",
+              "state": "AL",
+              "zipCode": "36117",
+            },
+            "id": "111439",
+            "phone": "(334) 215-8888",
+            "storeName": "the shops at eastchase",
+          },
+        },
+      ]
+    }
+    title="Alabama"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5111 rogers ave.",
+              "city": "fort smith",
+              "state": "AR",
+              "zipCode": "72903",
+            },
+            "id": "111305",
+            "phone": "(479) 484-7879",
+            "storeName": "central mall fort smith",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "419 cornerstone market place",
+              "city": "hot springs",
+              "state": "AR",
+              "zipCode": "71913",
+            },
+            "id": "114327",
+            "phone": "(501) 525-0333",
+            "storeName": "cornerstone marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3000 east highland",
+              "city": "jonesboro",
+              "state": "AR",
+              "zipCode": "72401",
+            },
+            "id": "111884",
+            "phone": "(870) 336-2531",
+            "storeName": "the mall @ turtle creek",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "207 north university",
+              "city": "little rock",
+              "state": "AR",
+              "zipCode": "72205",
+            },
+            "id": "111891",
+            "phone": "(501) 280-9116",
+            "storeName": "midtown shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "11201 bass pro parkway",
+              "city": "little rock",
+              "state": "AR",
+              "zipCode": "72210",
+            },
+            "id": "114381",
+            "phone": "(501) 407-0029",
+            "storeName": "outlets at little rock",
+          },
+        },
+      ]
+    }
+    title="Arkansas"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3111 w chandler blvd",
+              "city": "chandler",
+              "state": "AZ",
+              "zipCode": "85226",
+            },
+            "id": "111282",
+            "phone": "(480) 855-0632",
+            "storeName": "chandler fashion center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4650 us 89",
+              "city": "flagstaff",
+              "state": "AZ",
+              "zipCode": "86004",
+            },
+            "id": "114375",
+            "phone": "(928) 526-1994",
+            "storeName": "flagstaff mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2180 east williams field",
+              "city": "gilbert",
+              "state": "AZ",
+              "zipCode": "85295",
+            },
+            "id": "111919",
+            "phone": "(480) 855-6007",
+            "storeName": "san tan village",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6555 east southern ave.",
+              "city": "mesa",
+              "state": "AZ",
+              "zipCode": "85206",
+            },
+            "id": "111413",
+            "phone": "(480) 985-6558",
+            "storeName": "superstition springs center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4550 e cactus rd",
+              "city": "phoenix",
+              "state": "AZ",
+              "zipCode": "85032",
+            },
+            "id": "111255",
+            "phone": "(602) 485-4229",
+            "storeName": "paradise valley",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9617 n. metro prkwy west",
+              "city": "phoenix",
+              "state": "AZ",
+              "zipCode": "85051",
+            },
+            "id": "111412",
+            "phone": "(602) 997-6004",
+            "storeName": "metrocenter",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7014-2220 e camelback rd",
+              "city": "scottsdale",
+              "state": "AZ",
+              "zipCode": "85251",
+            },
+            "id": "111064",
+            "phone": "(480) 946-9015",
+            "storeName": "scottsdale fashion square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2200 el mercado loop",
+              "city": "sierra vista",
+              "state": "AZ",
+              "zipCode": "85635",
+            },
+            "id": "114146",
+            "phone": "(520) 458-2605",
+            "storeName": "sierra vista",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5000 arizona mills circle",
+              "city": "tempe",
+              "state": "AZ",
+              "zipCode": "85282",
+            },
+            "id": "111442",
+            "phone": "(480) 775-3511",
+            "storeName": "arizona mills",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4500 north oracle road",
+              "city": "tucson",
+              "state": "AZ",
+              "zipCode": "85705",
+            },
+            "id": "111606",
+            "phone": "(520) 888-9177",
+            "storeName": "tucson mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1490 south yuma palms pky",
+              "city": "yuma",
+              "state": "AZ",
+              "zipCode": "85365",
+            },
+            "id": "111841",
+            "phone": "(928) 782-6292",
+            "storeName": "yuma palms",
+          },
+        },
+      ]
+    }
+    title="Arizona"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2710 ming ave",
+              "city": "bakersfield",
+              "state": "CA",
+              "zipCode": "93304",
+            },
+            "id": "111291",
+            "phone": "(661) 397-5377",
+            "storeName": "valley plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "126 los ceritos center",
+              "city": "cerritos",
+              "state": "CA",
+              "zipCode": "90703",
+            },
+            "id": "111856",
+            "phone": "(562) 402-0425",
+            "storeName": "los cerritos center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1950 east 20th street",
+              "city": "chico",
+              "state": "CA",
+              "zipCode": "95928",
+            },
+            "id": "114185",
+            "phone": "(530) 894-2589",
+            "storeName": "chico mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "13920 city center drive",
+              "city": "chino hills",
+              "state": "CA",
+              "zipCode": "91709",
+            },
+            "id": "111992",
+            "phone": "(909) 902-9520",
+            "storeName": "shoppes @ chino hills",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6051 sunrise mall",
+              "city": "citrus heights",
+              "state": "CA",
+              "zipCode": "95610",
+            },
+            "id": "114071",
+            "phone": "(916) 967-1063",
+            "storeName": "sunrise mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3 serramonte center",
+              "city": "daly city",
+              "state": "CA",
+              "zipCode": "94015",
+            },
+            "id": "111030",
+            "phone": "(650) 992-8053",
+            "storeName": "serramonte center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "423 stonewood street",
+              "city": "downey",
+              "state": "CA",
+              "zipCode": "90241",
+            },
+            "id": "111712",
+            "phone": "(562) 862-0518",
+            "storeName": "stonewood cntr",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "200 e via rncho pkwy",
+              "city": "escondido",
+              "state": "CA",
+              "zipCode": "92025",
+            },
+            "id": "111311",
+            "phone": "(760) 871-0162",
+            "storeName": "north county fair",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3300 broadway box 416",
+              "city": "eureka",
+              "state": "CA",
+              "zipCode": "95501",
+            },
+            "id": "111218",
+            "phone": "(707) 476-8990",
+            "storeName": "bayshore mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1350 travis blvd.",
+              "city": "fairfield",
+              "state": "CA",
+              "zipCode": "94533",
+            },
+            "id": "111050",
+            "phone": "(707) 425-3463",
+            "storeName": "solano town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "605 east shaw ave",
+              "city": "fresno",
+              "state": "CA",
+              "zipCode": "93710",
+            },
+            "id": "111499",
+            "phone": "(559) 221-1010",
+            "storeName": "fashion fair mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6423 pacific avenue",
+              "city": "huntington park",
+              "state": "CA",
+              "zipCode": "90255",
+            },
+            "id": "111472",
+            "phone": "(323) 582-5544",
+            "storeName": "pacific avenue",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3650 martin luther kingjr",
+              "city": "los angeles",
+              "state": "CA",
+              "zipCode": "90008",
+            },
+            "id": "111966",
+            "phone": "(323) 388-4649",
+            "storeName": "baldwin hills crenshaw plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "713 merced mall",
+              "city": "merced",
+              "state": "CA",
+              "zipCode": "95348",
+            },
+            "id": "114212",
+            "phone": "(209) 723-0630",
+            "storeName": "merced mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3401 dale road",
+              "city": "modesto",
+              "state": "CA",
+              "zipCode": "95356",
+            },
+            "id": "111086",
+            "phone": "(209) 523-6674",
+            "storeName": "vintage faire",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "22500 town circle",
+              "city": "moreno valley",
+              "state": "CA",
+              "zipCode": "92553",
+            },
+            "id": "111976",
+            "phone": "(951) 653-1925",
+            "storeName": "moreno valley mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "20 city boulevard west",
+              "city": "orange",
+              "state": "CA",
+              "zipCode": "92868",
+            },
+            "id": "114005",
+            "phone": "(714) 940-0375",
+            "storeName": "outlets at orange",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "12501 north mainstreet",
+              "city": "rancho cucamonga",
+              "state": "CA",
+              "zipCode": "91739",
+            },
+            "id": "111719",
+            "phone": "(909) 463-0725",
+            "storeName": "victoria gardens",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "900 dana drive",
+              "city": "redding",
+              "state": "CA",
+              "zipCode": "96003",
+            },
+            "id": "114239",
+            "phone": "(530) 222-4788",
+            "storeName": "mt shasta mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1262 galleria at tyler",
+              "city": "riverside",
+              "state": "CA",
+              "zipCode": "92503",
+            },
+            "id": "111213",
+            "phone": "(951) 687-8344",
+            "storeName": "galleria at tyler",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1689 arden way",
+              "city": "sacramento",
+              "state": "CA",
+              "zipCode": "95815",
+            },
+            "id": "111215",
+            "phone": "(916) 564-8304",
+            "storeName": "arden fair",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "724 northridge mall",
+              "city": "salinas",
+              "state": "CA",
+              "zipCode": "93906",
+            },
+            "id": "111219",
+            "phone": "(831) 443-4167",
+            "storeName": "northridge mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "238 inland center drive",
+              "city": "san bernardino",
+              "state": "CA",
+              "zipCode": "92408",
+            },
+            "id": "111926",
+            "phone": "(909) 889-4624",
+            "storeName": "inland center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4505 la jolla village dr",
+              "city": "san diego",
+              "state": "CA",
+              "zipCode": "92122",
+            },
+            "id": "111503",
+            "phone": "(858) 866-0394",
+            "storeName": "university town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "925 blossom hill road",
+              "city": "san jose",
+              "state": "CA",
+              "zipCode": "95123",
+            },
+            "id": "111044",
+            "phone": "(408) 227-9060",
+            "storeName": "oakridge mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "394 hillsdale shoppingctr",
+              "city": "san mateo",
+              "state": "CA",
+              "zipCode": "94403",
+            },
+            "id": "111420",
+            "phone": "(650) 525-0682",
+            "storeName": "hillsdale shopping ctr",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2800 n main street",
+              "city": "santa ana",
+              "state": "CA",
+              "zipCode": "92705",
+            },
+            "id": "111240",
+            "phone": "(714) 972-0246",
+            "storeName": "main place santa ana",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "190 west hillcrest drive",
+              "city": "thousand oaks",
+              "state": "CA",
+              "zipCode": "91360",
+            },
+            "id": "114055",
+            "phone": "(805) 449-1713",
+            "storeName": "thousand oaks",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2031 south mooney blvd",
+              "city": "visalia",
+              "state": "CA",
+              "zipCode": "93277",
+            },
+            "id": "114196",
+            "phone": "(559) 713-0747",
+            "storeName": "visalia mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "168 plaza drive",
+              "city": "west covina",
+              "state": "CA",
+              "zipCode": "91790",
+            },
+            "id": "111258",
+            "phone": "(626) 962-0259",
+            "storeName": "plaza west covina",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2086 newpark mall",
+              "city": "newark",
+              "state": "CA",
+              "zipCode": "94560",
+            },
+            "id": "114399",
+            "phone": "(510) 402-0027",
+            "storeName": "newpark mall",
+          },
+        },
+      ]
+    }
+    title="California"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1710 briargate blvd",
+              "city": "colorado springs",
+              "state": "CO",
+              "zipCode": "80920",
+            },
+            "id": "110942",
+            "phone": "(719) 592-1110",
+            "storeName": "chapel hills mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2424 hwy 6 - 50",
+              "city": "grand junction",
+              "state": "CO",
+              "zipCode": "81505",
+            },
+            "id": "114098",
+            "phone": "(970) 243-1348",
+            "storeName": "mesa mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8501 w bowles ave",
+              "city": "littleton",
+              "state": "CO",
+              "zipCode": "80123",
+            },
+            "id": "114411",
+            "phone": "(303) 973-0208",
+            "storeName": "southwest plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3429 dillion road",
+              "city": "pueblo",
+              "state": "CO",
+              "zipCode": "81008",
+            },
+            "id": "114120",
+            "phone": "(719) 545-1330",
+            "storeName": "pueblo mall",
+          },
+        },
+      ]
+    }
+    title="Colorado"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "500 connecticut ave.",
+              "city": "norwalk",
+              "state": "CT",
+              "zipCode": "06854",
+            },
+            "id": "111097",
+            "phone": "(203) 838-4772",
+            "storeName": "darinor plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "495 flatbush avenue",
+              "city": "hartford",
+              "state": "CT",
+              "zipCode": "06106",
+            },
+            "id": "114318",
+            "phone": "(860) 953-1191",
+            "storeName": "charter oak marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1201 boston post road",
+              "city": "milford",
+              "state": "CT",
+              "zipCode": "06460",
+            },
+            "id": "110801",
+            "phone": "(203) 877-1538",
+            "storeName": "connecticut post mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "194 buckland hills dr.",
+              "city": "manchester",
+              "state": "CT",
+              "zipCode": "06042",
+            },
+            "id": "110677",
+            "phone": "(860) 644-7557",
+            "storeName": "the shoppes at buckland hills",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1600 southeast road",
+              "city": "farmington",
+              "state": "CT",
+              "zipCode": "06032",
+            },
+            "id": "114233",
+            "phone": "(860) 678-0550",
+            "storeName": "west farms shopping center",
+          },
+        },
+      ]
+    }
+    title="Connecticut"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "36461 seaside outlet dr",
+              "city": "rehoboth beach",
+              "state": "DE",
+              "zipCode": "19971",
+            },
+            "id": "111475",
+            "phone": "(302) 226-2874",
+            "storeName": "tanger outlets seaside",
+          },
+        },
+      ]
+    }
+    title="Delaware"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "592 brandon towncenter",
+              "city": "brandon",
+              "state": "FL",
+              "zipCode": "33511",
+            },
+            "id": "111233",
+            "phone": "(813) 681-1322",
+            "storeName": "brandon town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "27001 us hwy 19 north",
+              "city": "clearwater",
+              "state": "FL",
+              "zipCode": "33761",
+            },
+            "id": "111226",
+            "phone": "(727) 725-2160",
+            "storeName": "countryside mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9319 w. atlantic blvd.",
+              "city": "coral springs",
+              "state": "FL",
+              "zipCode": "33071",
+            },
+            "id": "110696",
+            "phone": "(954) 340-7012",
+            "storeName": "coral square mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9097 atlantic avenue",
+              "city": "delray beach",
+              "state": "FL",
+              "zipCode": "33446",
+            },
+            "id": "114359",
+            "phone": "(561) 495-5758",
+            "storeName": "delray marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4125 cleveland ave",
+              "city": "fort myers",
+              "state": "FL",
+              "zipCode": "33901",
+            },
+            "id": "111307",
+            "phone": "(239) 278-5150",
+            "storeName": "edison mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1665 west 49th street",
+              "city": "hialeah",
+              "state": "FL",
+              "zipCode": "33012",
+            },
+            "id": "111068",
+            "phone": "(305) 825-0868",
+            "storeName": "westland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5087 sheridan street",
+              "city": "hollywood",
+              "state": "FL",
+              "zipCode": "33021",
+            },
+            "id": "111254",
+            "phone": "(954) 987-0220",
+            "storeName": "sheridan plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3800 us highway 98 north",
+              "city": "lakeland",
+              "state": "FL",
+              "zipCode": "33809",
+            },
+            "id": "111236",
+            "phone": "(863) 816-7998",
+            "storeName": "lakeland square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1700 west new haven ave",
+              "city": "melbourne",
+              "state": "FL",
+              "zipCode": "32904",
+            },
+            "id": "111654",
+            "phone": "(321) 722-9025",
+            "storeName": "melbourne square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1455 nw 107th ave.",
+              "city": "miami",
+              "state": "FL",
+              "zipCode": "33172",
+            },
+            "id": "110982",
+            "phone": "(305) 718-8727",
+            "storeName": "miami international mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8951 sw 107th avenue",
+              "city": "miami",
+              "state": "FL",
+              "zipCode": "33176",
+            },
+            "id": "111829",
+            "phone": "(305) 598-8540",
+            "storeName": "kendall mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8307 w. flagler street nw",
+              "city": "miami",
+              "state": "FL",
+              "zipCode": "33144",
+            },
+            "id": "111969",
+            "phone": "(305) 266-1930",
+            "storeName": "flagler park plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8001 s orange blossom ter",
+              "city": "orlando",
+              "state": "FL",
+              "zipCode": "32809",
+            },
+            "id": "110956",
+            "phone": "(407) 438-8770",
+            "storeName": "the florida mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "11401 pines blvd",
+              "city": "pembroke pines",
+              "state": "FL",
+              "zipCode": "33026",
+            },
+            "id": "111071",
+            "phone": "(954) 450-9497",
+            "storeName": "pembroke lakes mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6901 22nd ave. north",
+              "city": "saint petersburg",
+              "state": "FL",
+              "zipCode": "33710",
+            },
+            "id": "111077",
+            "phone": "(727) 343-0104",
+            "storeName": "tyrone square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "12801 w. sunrise blvd.",
+              "city": "sunrise",
+              "state": "FL",
+              "zipCode": "33323",
+            },
+            "id": "110920",
+            "phone": "(954) 835-1122",
+            "storeName": "sawgrass mills",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1500 apalachee pkwy",
+              "city": "tallahassee",
+              "state": "FL",
+              "zipCode": "32301",
+            },
+            "id": "110913",
+            "phone": "(850) 219-8142",
+            "storeName": "governors square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "181 west shore plaza",
+              "city": "tampa",
+              "state": "FL",
+              "zipCode": "33609",
+            },
+            "id": "111229",
+            "phone": "(813) 288-0640",
+            "storeName": "west shore plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1751 palm beach lakes boulevar",
+              "city": "west palm beach",
+              "state": "FL",
+              "zipCode": "33401",
+            },
+            "id": "114319",
+            "phone": "(561) 687-9388",
+            "storeName": "palm beach outlet",
+          },
+        },
+      ]
+    }
+    title="Florida"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2034 north point circle",
+              "city": "alpharetta",
+              "state": "GA",
+              "zipCode": "30022",
+            },
+            "id": "110981",
+            "phone": "(770) 521-9065",
+            "storeName": "north point mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2860 cumberland mall se",
+              "city": "atlanta",
+              "state": "GA",
+              "zipCode": "30339",
+            },
+            "id": "111204",
+            "phone": "(770) 435-6112",
+            "storeName": "cumberland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "816 walnut sq blvd",
+              "city": "dalton",
+              "state": "GA",
+              "zipCode": "30721",
+            },
+            "id": "114105",
+            "phone": "(706) 278-0112",
+            "storeName": "walnut square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "400 ernest w.barrett pkwy",
+              "city": "kennesaw",
+              "state": "GA",
+              "zipCode": "30144",
+            },
+            "id": "110837",
+            "phone": "(770) 792-1996",
+            "storeName": "town center at cobb",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1501 lafayette parkway",
+              "city": "lagrange",
+              "state": "GA",
+              "zipCode": "30241",
+            },
+            "id": "114078",
+            "phone": "(706) 883-7402",
+            "storeName": "la grange mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5080 riverside drive",
+              "city": "macon",
+              "state": "GA",
+              "zipCode": "31210",
+            },
+            "id": "114258",
+            "phone": "(478) 471-9238",
+            "storeName": "shoppes at river crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2770 martha berry hwy",
+              "city": "rome",
+              "state": "GA",
+              "zipCode": "30165",
+            },
+            "id": "114077",
+            "phone": "(706) 232-1066",
+            "storeName": "mount berry square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7804 abercorn street",
+              "city": "savannah",
+              "state": "GA",
+              "zipCode": "31406",
+            },
+            "id": "110903",
+            "phone": "(912) 691-0706",
+            "storeName": "oglethorpe mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "325 northside drive east",
+              "city": "statesboro",
+              "state": "GA",
+              "zipCode": "30458",
+            },
+            "id": "114109",
+            "phone": "(912) 319-4210",
+            "storeName": "statesboro mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1700 norman drive",
+              "city": "valdosta",
+              "state": "GA",
+              "zipCode": "31601",
+            },
+            "id": "111913",
+            "phone": "(229) 245-8830",
+            "storeName": "colonial mall @ valdosta",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2601 dawson road",
+              "city": "albany",
+              "state": "GA",
+              "zipCode": "31707",
+            },
+            "id": "111808",
+            "phone": "(229) 438-2647",
+            "storeName": "albany mall",
+          },
+        },
+      ]
+    }
+    title="Georgia"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4444 1st avenue ne",
+              "city": "cedar rapids",
+              "state": "IA",
+              "zipCode": "52402",
+            },
+            "id": "114056",
+            "phone": "(319) 393-3227",
+            "storeName": "lindale mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "320 west kimberly road",
+              "city": "davenport",
+              "state": "IA",
+              "zipCode": "52806",
+            },
+            "id": "114321",
+            "phone": "(563) 386-3296",
+            "storeName": "northpark mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3800 merle hay road",
+              "city": "des moines",
+              "state": "IA",
+              "zipCode": "50310",
+            },
+            "id": "111222",
+            "phone": "(515) 276-4613",
+            "storeName": "merle hay mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "555 jfk road",
+              "city": "dubuque",
+              "state": "IA",
+              "zipCode": "52002",
+            },
+            "id": "114126",
+            "phone": "(563) 557-2330",
+            "storeName": "kennedy mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4400 sergeant road",
+              "city": "sioux city",
+              "state": "IA",
+              "zipCode": "51106",
+            },
+            "id": "111080",
+            "phone": "(712) 276-4152",
+            "storeName": "southern hills mall",
+          },
+        },
+      ]
+    }
+    title="Iowa"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "350 n milwaukee",
+              "city": "boise",
+              "state": "ID",
+              "zipCode": "83704",
+            },
+            "id": "111220",
+            "phone": "(208) 658-9363",
+            "storeName": "boise towne square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2300 east 17th street",
+              "city": "idaho falls",
+              "state": "ID",
+              "zipCode": "83404",
+            },
+            "id": "114166",
+            "phone": "(208) 522-0690",
+            "storeName": "grand teton mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "16465 n. marketplace blvd",
+              "city": "nampa",
+              "state": "ID",
+              "zipCode": "83687",
+            },
+            "id": "114189",
+            "phone": "(208) 466-7333",
+            "storeName": "treasure valley marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1485 pole line road e",
+              "city": "twin falls",
+              "state": "ID",
+              "zipCode": "83301",
+            },
+            "id": "114191",
+            "phone": "(208) 736-3908",
+            "storeName": "magic valley mall",
+          },
+        },
+      ]
+    }
+    title="Idaho"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "115 river oaks center",
+              "city": "calumet city",
+              "state": "IL",
+              "zipCode": "60409",
+            },
+            "id": "110743",
+            "phone": "(708) 730-9082",
+            "storeName": "river oaks shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7601 south cicero ave.",
+              "city": "chicago",
+              "state": "IL",
+              "zipCode": "60652",
+            },
+            "id": "110604",
+            "phone": "(773) 284-8254",
+            "storeName": "ford city mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "11606 s. marshfield ave",
+              "city": "chicago",
+              "state": "IL",
+              "zipCode": "60643",
+            },
+            "id": "114242",
+            "phone": "(773) 928-2420",
+            "storeName": "marshfield plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3340 mall loop drive 1249",
+              "city": "joliet",
+              "state": "IL",
+              "zipCode": "60431",
+            },
+            "id": "111467",
+            "phone": "(815) 609-9093",
+            "storeName": "louis joliet mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4500 16th st.",
+              "city": "moline",
+              "state": "IL",
+              "zipCode": "61265",
+            },
+            "id": "110972",
+            "phone": "(309) 764-5729",
+            "storeName": "south park mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7200 harrison ave",
+              "city": "rockford",
+              "state": "IL",
+              "zipCode": "61112",
+            },
+            "id": "111056",
+            "phone": "(815) 332-8782",
+            "storeName": "cherry vale mall",
+          },
+        },
+      ]
+    }
+    title="Illinois"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6425 north old 27",
+              "city": "fremont",
+              "state": "IN",
+              "zipCode": "46737",
+            },
+            "id": "111850",
+            "phone": "(260) 833-9279",
+            "storeName": "the outlet shoppes at fremont",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "800 north green river rd.",
+              "city": "evansville",
+              "state": "IN",
+              "zipCode": "47715",
+            },
+            "id": "110757",
+            "phone": "(812) 475-8570",
+            "storeName": "eastland mall-in",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4201 coldwater road",
+              "city": "fort wayne",
+              "state": "IN",
+              "zipCode": "46805",
+            },
+            "id": "110641",
+            "phone": "(260) 482-8664",
+            "storeName": "glenbrook square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6020 e 82nd street",
+              "city": "indianapolis",
+              "state": "IN",
+              "zipCode": "46250",
+            },
+            "id": "110733",
+            "phone": "(317) 570-0106",
+            "storeName": "castleton square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1114 s. 17th street",
+              "city": "kokomo",
+              "state": "IN",
+              "zipCode": "46902",
+            },
+            "id": "114267",
+            "phone": "(765) 868-8067",
+            "storeName": "markland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3501 n granville ave",
+              "city": "muncie",
+              "state": "IN",
+              "zipCode": "47303",
+            },
+            "id": "111438",
+            "phone": "(765) 287-8536",
+            "storeName": "muncie mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3401 s us hwy 41",
+              "city": "terre haute",
+              "state": "IN",
+              "zipCode": "47802",
+            },
+            "id": "111269",
+            "phone": "(812) 478-1060",
+            "storeName": "honey creek mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2410 laporte avenue",
+              "city": "valparaiso",
+              "state": "IN",
+              "zipCode": "46383",
+            },
+            "id": "114336",
+            "phone": "(219) 464-0644",
+            "storeName": "valparaiso marketplace",
+          },
+        },
+      ]
+    }
+    title="Indiana"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "100 manhattan center",
+              "city": "manhattan",
+              "state": "KS",
+              "zipCode": "66502",
+            },
+            "id": "114154",
+            "phone": "(785) 539-4998",
+            "storeName": "manhattan town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1801 sw wanamaker",
+              "city": "topeka",
+              "state": "KS",
+              "zipCode": "66604",
+            },
+            "id": "110968",
+            "phone": "(785) 271-4480",
+            "storeName": "west ridge mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7700 e. kellogg",
+              "city": "wichita",
+              "state": "KS",
+              "zipCode": "67207",
+            },
+            "id": "110930",
+            "phone": "(316) 202-6912",
+            "storeName": "towne east square",
+          },
+        },
+      ]
+    }
+    title="Kansas"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7800 john davis drive",
+              "city": "frankfort",
+              "state": "KY",
+              "zipCode": "40601",
+            },
+            "id": "114343",
+            "phone": "(502) 234-5134",
+            "storeName": "parkside center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5000 shelbyville road",
+              "city": "louisville",
+              "state": "KY",
+              "zipCode": "40207",
+            },
+            "id": "110786",
+            "phone": "(502) 895-2249",
+            "storeName": "mall at st. matthews",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5000 frederica st",
+              "city": "owensboro",
+              "state": "KY",
+              "zipCode": "42301",
+            },
+            "id": "114092",
+            "phone": "(270) 684-7701",
+            "storeName": "towne square mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5101 hinkleville road",
+              "city": "paducah",
+              "state": "KY",
+              "zipCode": "42001",
+            },
+            "id": "111457",
+            "phone": "(270) 441-7133",
+            "storeName": "kentucky oaks mall",
+          },
+        },
+      ]
+    }
+    title="Kentucky"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7445 corporate blvd",
+              "city": "baton rouge",
+              "state": "LA",
+              "zipCode": "70809",
+            },
+            "id": "111940",
+            "phone": "(225) 216-0700",
+            "storeName": "town center @ cedar lodge",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "315 boardwalk blvd",
+              "city": "bossier city",
+              "state": "LA",
+              "zipCode": "71111",
+            },
+            "id": "111815",
+            "phone": "(318) 752-2910",
+            "storeName": "louisiana boardwalk",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5953 west park avenue",
+              "city": "houma",
+              "state": "LA",
+              "zipCode": "70364",
+            },
+            "id": "111988",
+            "phone": "(985) 876-4300",
+            "storeName": "southland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1401 w esplanade ave.",
+              "city": "kenner",
+              "state": "LA",
+              "zipCode": "70065",
+            },
+            "id": "111009",
+            "phone": "(504) 467-4316",
+            "storeName": "the esplanade",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4700 milhaven road",
+              "city": "monroe",
+              "state": "LA",
+              "zipCode": "71203",
+            },
+            "id": "111436",
+            "phone": "(318) 324-8626",
+            "storeName": "pecanland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "714 canal street",
+              "city": "new orleans",
+              "state": "LA",
+              "zipCode": "70130",
+            },
+            "id": "111066",
+            "phone": "(504) 525-5333",
+            "storeName": "canal street",
+          },
+        },
+      ]
+    }
+    title="Louisiana"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "385 southbridge street",
+              "city": "auburn",
+              "state": "MA",
+              "zipCode": "01501",
+            },
+            "id": "110841",
+            "phone": "(508) 721-0260",
+            "storeName": "auburn mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "250 granite street",
+              "city": "braintree",
+              "state": "MA",
+              "zipCode": "02184",
+            },
+            "id": "110707",
+            "phone": "(781) 348-4920",
+            "storeName": "southshore",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "164 everett avenue",
+              "city": "chelsea",
+              "state": "MA",
+              "zipCode": "02150",
+            },
+            "id": "114256",
+            "phone": "(617) 660-9190",
+            "storeName": "mystic mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "181 plain street",
+              "city": "lowell",
+              "state": "MA",
+              "zipCode": "01852",
+            },
+            "id": "114261",
+            "phone": "(978) 275-3828",
+            "storeName": "meadow brook center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "126 colony place",
+              "city": "plymouth",
+              "state": "MA",
+              "zipCode": "02360",
+            },
+            "id": "111945",
+            "phone": "(508) 732-0414",
+            "storeName": "colony place",
+          },
+        },
+      ]
+    }
+    title="Massachusetts"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2002 annapolis mall",
+              "city": "annapolis",
+              "state": "MD",
+              "zipCode": "21401",
+            },
+            "id": "110101",
+            "phone": "(410) 841-6965",
+            "storeName": "annapolis mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7839 eastpoint mall",
+              "city": "baltimore",
+              "state": "MD",
+              "zipCode": "21224",
+            },
+            "id": "110077",
+            "phone": "(410) 284-0130",
+            "storeName": "eastpoint mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2401 liberty heights ave",
+              "city": "baltimore",
+              "state": "MD",
+              "zipCode": "21215",
+            },
+            "id": "114197",
+            "phone": "(410) 462-1030",
+            "storeName": "mondawmin mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7101 democracy blvd.",
+              "city": "bethesda",
+              "state": "MD",
+              "zipCode": "20817",
+            },
+            "id": "110832",
+            "phone": "(301) 767-1863",
+            "storeName": "montgomery mall-md",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "15530 emerald way",
+              "city": "bowie",
+              "state": "MD",
+              "zipCode": "20716",
+            },
+            "id": "111274",
+            "phone": "(301) 860-1700",
+            "storeName": "bowie town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5500 buckeystown pike",
+              "city": "frederick",
+              "state": "MD",
+              "zipCode": "21703",
+            },
+            "id": "111288",
+            "phone": "(301) 228-2340",
+            "storeName": "francis scott key mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "lake forest",
+              "city": "gaithersburg",
+              "state": "MD",
+              "zipCode": "20877",
+            },
+            "id": "110019",
+            "phone": "(301) 977-2900",
+            "storeName": "lake forest",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "765 premium outlets blvd",
+              "city": "hagerstown",
+              "state": "MD",
+              "zipCode": "21740",
+            },
+            "id": "110912",
+            "phone": "(301) 665-9503",
+            "storeName": "hagerstown premium outlet",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "12741 ocean gateway",
+              "city": "ocean city",
+              "state": "MD",
+              "zipCode": "21842",
+            },
+            "id": "111939",
+            "phone": "(410) 213-7101",
+            "storeName": "ocean city factory outlet",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2300 n. salisbury blvd",
+              "city": "salisbury",
+              "state": "MD",
+              "zipCode": "21801",
+            },
+            "id": "114176",
+            "phone": "(410) 749-2191",
+            "storeName": "the centre at salisbury",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "11160 viers mill road",
+              "city": "silver spring",
+              "state": "MD",
+              "zipCode": "20902",
+            },
+            "id": "110840",
+            "phone": "(301) 962-6880",
+            "storeName": "wheaton plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "825 dulaney valley road",
+              "city": "towson",
+              "state": "MD",
+              "zipCode": "21204",
+            },
+            "id": "110718",
+            "phone": "(410) 823-0546",
+            "storeName": "towson town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1110 mall circle",
+              "city": "waldorf",
+              "state": "MD",
+              "zipCode": "20603",
+            },
+            "id": "110678",
+            "phone": "(301) 705-8060",
+            "storeName": "st. charles towne center",
+          },
+        },
+      ]
+    }
+    title="Maryland"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "663 stillwater ave.",
+              "city": "bangor",
+              "state": "ME",
+              "zipCode": "04401",
+            },
+            "id": "110852",
+            "phone": "(207) 262-7135",
+            "storeName": "bangor mall",
+          },
+        },
+      ]
+    }
+    title="Maine"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "346 west 14th mile rd.",
+              "city": "troy",
+              "state": "MI",
+              "zipCode": "48083",
+            },
+            "id": "110029",
+            "phone": "(248) 588-9165",
+            "storeName": "oakland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4600 baldwin road",
+              "city": "auburn hills",
+              "state": "MI",
+              "zipCode": "48326",
+            },
+            "id": "110847",
+            "phone": "(248) 745-9256",
+            "storeName": "great lakes crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "18900 michigan ave.",
+              "city": "dearborn",
+              "state": "MI",
+              "zipCode": "48126",
+            },
+            "id": "110028",
+            "phone": "(313) 336-2188",
+            "storeName": "fairlane town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3225 s. linden",
+              "city": "flint",
+              "state": "MI",
+              "zipCode": "48507",
+            },
+            "id": "110955",
+            "phone": "(810) 720-0574",
+            "storeName": "genesee valley center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "woodland mall",
+              "city": "grand rapids",
+              "state": "MI",
+              "zipCode": "49512",
+            },
+            "id": "110025",
+            "phone": "(616) 957-0320",
+            "storeName": "woodland mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5600 harvey st",
+              "city": "muskegon",
+              "state": "MI",
+              "zipCode": "49444",
+            },
+            "id": "111404",
+            "phone": "(231) 798-9789",
+            "storeName": "the lakes mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4828 fashion square mall",
+              "city": "saginaw",
+              "state": "MI",
+              "zipCode": "48604",
+            },
+            "id": "111089",
+            "phone": "(989) 497-9760",
+            "storeName": "fashion square mall",
+          },
+        },
+      ]
+    }
+    title="Michigan"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1850 adams st",
+              "city": "mankato",
+              "state": "MN",
+              "zipCode": "56001",
+            },
+            "id": "111052",
+            "phone": "(507) 216-8476",
+            "storeName": "river hills mall",
+          },
+        },
+      ]
+    }
+    title="Minnesota"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "300 tanger blve",
+              "city": "branson",
+              "state": "MO",
+              "zipCode": "65616",
+            },
+            "id": "111065",
+            "phone": "(417) 335-2598",
+            "storeName": "branson tanger outlet",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3049 william street",
+              "city": "cape girardeau",
+              "state": "MO",
+              "zipCode": "63703",
+            },
+            "id": "114202",
+            "phone": "(573) 334-3179",
+            "storeName": "west park mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "101 north rangeline rd",
+              "city": "joplin",
+              "state": "MO",
+              "zipCode": "64801",
+            },
+            "id": "110964",
+            "phone": "(417) 206-6806",
+            "storeName": "northpark mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3702 frederick ave",
+              "city": "saint joseph",
+              "state": "MO",
+              "zipCode": "64506",
+            },
+            "id": "114142",
+            "phone": "(816) 233-3649",
+            "storeName": "east hills mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "55 south county centerway",
+              "city": "saint louis",
+              "state": "MO",
+              "zipCode": "63129",
+            },
+            "id": "111033",
+            "phone": "(314) 487-8400",
+            "storeName": "south county center",
+          },
+        },
+      ]
+    }
+    title="Missouri"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2600 beach boulevard",
+              "city": "biloxi",
+              "state": "MS",
+              "zipCode": "39531",
+            },
+            "id": "114303",
+            "phone": "(228) 385-3052",
+            "storeName": "edgewater mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "10435 factory shops blvd",
+              "city": "gulfport",
+              "state": "MS",
+              "zipCode": "39503",
+            },
+            "id": "111638",
+            "phone": "(228) 265-5226",
+            "storeName": "gulfport premium outlets",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6055 hwy 98 - univrsty dr",
+              "city": "hattiesburg",
+              "state": "MS",
+              "zipCode": "39402",
+            },
+            "id": "114031",
+            "phone": "(601) 268-3204",
+            "storeName": "turtle creek crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "131 s. frontage street",
+              "city": "meridian",
+              "state": "MS",
+              "zipCode": "39301",
+            },
+            "id": "114114",
+            "phone": "(601) 482-4452",
+            "storeName": "meridian crossroads",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1001 barnes crossing road",
+              "city": "tupelo",
+              "state": "MS",
+              "zipCode": "38804",
+            },
+            "id": "110933",
+            "phone": "(662) 620-0720",
+            "storeName": "mall @ barnes crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4000 south frontage road",
+              "city": "vicksburg",
+              "state": "MS",
+              "zipCode": "39180",
+            },
+            "id": "111971",
+            "phone": "(601) 636-5662",
+            "storeName": "vicksburg factory shops",
+          },
+        },
+      ]
+    }
+    title="Mississippi"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "300 south 24th street w",
+              "city": "billings",
+              "state": "MT",
+              "zipCode": "59102",
+            },
+            "id": "114323",
+            "phone": "(406) 656-0691",
+            "storeName": "rimrock mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2825 west main street",
+              "city": "bozeman",
+              "state": "MT",
+              "zipCode": "59718",
+            },
+            "id": "114337",
+            "phone": "(406) 586-0278",
+            "storeName": "gallatin valley mall",
+          },
+        },
+      ]
+    }
+    title="Montana"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "800 brevard road",
+              "city": "asheville",
+              "state": "NC",
+              "zipCode": "28806",
+            },
+            "id": "114382",
+            "phone": "(828) 665-1884",
+            "storeName": "asheville outlets",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1105 walnut street",
+              "city": "cary",
+              "state": "NC",
+              "zipCode": "27511",
+            },
+            "id": "110833",
+            "phone": "(919) 388-8877",
+            "storeName": "cary towne center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6801 northlake mall drive",
+              "city": "charlotte",
+              "state": "NC",
+              "zipCode": "28216",
+            },
+            "id": "111823",
+            "phone": "(704) 596-2211",
+            "storeName": "northlake mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1058 west club blvd.",
+              "city": "durham",
+              "state": "NC",
+              "zipCode": "27701",
+            },
+            "id": "110928",
+            "phone": "(919) 286-5324",
+            "storeName": "northgate mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "246 n. new hope rd",
+              "city": "gastonia",
+              "state": "NC",
+              "zipCode": "28054",
+            },
+            "id": "111818",
+            "phone": "(704) 867-8260",
+            "storeName": "eastridge mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "141 four seasons town cnt",
+              "city": "greensboro",
+              "state": "NC",
+              "zipCode": "27407",
+            },
+            "id": "110776",
+            "phone": "(336) 854-4061",
+            "storeName": "four seasons town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "178 valley hills mall",
+              "city": "hickory",
+              "state": "NC",
+              "zipCode": "28602",
+            },
+            "id": "111053",
+            "phone": "(828) 431-3080",
+            "storeName": "valley hills mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3146 drmartin lthrkng blv",
+              "city": "new bern",
+              "state": "NC",
+              "zipCode": "28562",
+            },
+            "id": "114192",
+            "phone": "(252) 514-0281",
+            "storeName": "new bern mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5956 triangle town blvd",
+              "city": "raleigh",
+              "state": "NC",
+              "zipCode": "27616",
+            },
+            "id": "111427",
+            "phone": "(919) 792-2180",
+            "storeName": "triangle town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1100 n wesleyan blvd",
+              "city": "rocky mount",
+              "state": "NC",
+              "zipCode": "27804",
+            },
+            "id": "111034",
+            "phone": "(252) 442-6636",
+            "storeName": "golden east crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3320 hanes mall",
+              "city": "winston-salem",
+              "state": "NC",
+              "zipCode": "27103",
+            },
+            "id": "110695",
+            "phone": "(336) 760-4384",
+            "storeName": "hanes mall",
+          },
+        },
+      ]
+    }
+    title="North Carolina"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "706 kirkwood mall",
+              "city": "bismarck",
+              "state": "ND",
+              "zipCode": "58501",
+            },
+            "id": "114156",
+            "phone": "(701) 221-1167",
+            "storeName": "kirkwood mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3902 13th avenue sw",
+              "city": "fargo",
+              "state": "ND",
+              "zipCode": "58103",
+            },
+            "id": "111306",
+            "phone": "(701) 433-0856",
+            "storeName": "west acres shopping center",
+          },
+        },
+      ]
+    }
+    title="North Dakota"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3404 west 13th street",
+              "city": "grand island",
+              "state": "NE",
+              "zipCode": "68803",
+            },
+            "id": "114391",
+            "phone": "(308) 381-9901",
+            "storeName": "conestoga mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3001 south 144th street",
+              "city": "omaha",
+              "state": "NE",
+              "zipCode": "68144",
+            },
+            "id": "110907",
+            "phone": "(402) 334-7775",
+            "storeName": "oak view mall",
+          },
+        },
+      ]
+    }
+    title="Nebraska"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "310 daniel webster hwy",
+              "city": "nashua",
+              "state": "NH",
+              "zipCode": "03060",
+            },
+            "id": "110760",
+            "phone": "(603) 891-1910",
+            "storeName": "pheasant lane mall",
+          },
+        },
+      ]
+    }
+    title="New Hampshire"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2101 atlantic ave",
+              "city": "atlantic city",
+              "state": "NJ",
+              "zipCode": "08401",
+            },
+            "id": "111875",
+            "phone": "(609) 347-0149",
+            "storeName": "the walk outlet",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "30 mall drive west",
+              "city": "jersey city",
+              "state": "NJ",
+              "zipCode": "07310",
+            },
+            "id": "110715",
+            "phone": "(201) 963-5537",
+            "storeName": "newport center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "771-787 broad street",
+              "city": "newark",
+              "state": "NJ",
+              "zipCode": "07102",
+            },
+            "id": "111202",
+            "phone": "(973) 624-5625",
+            "storeName": "newark",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "698 main avenue",
+              "city": "passaic",
+              "state": "NJ",
+              "zipCode": "07055",
+            },
+            "id": "111888",
+            "phone": "(973) 249-6362",
+            "storeName": "passaic",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "303 main st",
+              "city": "paterson",
+              "state": "NJ",
+              "zipCode": "07505",
+            },
+            "id": "114030",
+            "phone": "(973) 225-0326",
+            "storeName": "center city paterson",
+          },
+        },
+      ]
+    }
+    title="New Jersey"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6600 menaul blvd ne",
+              "city": "albuquerque",
+              "state": "NM",
+              "zipCode": "87110",
+            },
+            "id": "111434",
+            "phone": "(505) 884-0725",
+            "storeName": "coronado center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2809 north prince",
+              "city": "clovis",
+              "state": "NM",
+              "zipCode": "88101",
+            },
+            "id": "114400",
+            "phone": "(575) 763-9778",
+            "storeName": "north plains mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "700 s. telshor blvd",
+              "city": "las cruces",
+              "state": "NM",
+              "zipCode": "88011",
+            },
+            "id": "114106",
+            "phone": "(575) 532-5030",
+            "storeName": "mesilla valley mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4250 cerrillos road",
+              "city": "santa fe",
+              "state": "NM",
+              "zipCode": "87592",
+            },
+            "id": "111847",
+            "phone": "(505) 357-0724",
+            "storeName": "santa fe place",
+          },
+        },
+      ]
+    }
+    title="New Mexico"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1300 west sunset road",
+              "city": "henderson",
+              "state": "NV",
+              "zipCode": "89014",
+            },
+            "id": "111245",
+            "phone": "(702) 435-4583",
+            "storeName": "galleria at sunset",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4300 meadows la",
+              "city": "las vegas",
+              "state": "NV",
+              "zipCode": "89107",
+            },
+            "id": "111310",
+            "phone": "(702) 870-7022",
+            "storeName": "meadows mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "705 s grand central pkwy",
+              "city": "las vegas",
+              "state": "NV",
+              "zipCode": "89106",
+            },
+            "id": "111644",
+            "phone": "(702) 471-0347",
+            "storeName": "las vegas premium outlets",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7400 las vegas blvd s",
+              "city": "las vegas",
+              "state": "NV",
+              "zipCode": "89123",
+            },
+            "id": "114385",
+            "phone": "(702) 896-5640",
+            "storeName": "las vegas premium south",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5435 meadowood mall circl",
+              "city": "reno",
+              "state": "NV",
+              "zipCode": "89502",
+            },
+            "id": "111010",
+            "phone": "(775) 828-9964",
+            "storeName": "meadowood mall",
+          },
+        },
+      ]
+    }
+    title="Nevada"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "120 washington ave",
+              "city": "albany",
+              "state": "NY",
+              "zipCode": "12203",
+            },
+            "id": "110710",
+            "phone": "(518) 464-0170",
+            "storeName": "crossgate",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1401 route 300",
+              "city": "newburgh",
+              "state": "NY",
+              "zipCode": "12550",
+            },
+            "id": "111893",
+            "phone": "(845) 564-2179",
+            "storeName": "newburgh mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2001 south road",
+              "city": "poughkeepsie",
+              "state": "NY",
+              "zipCode": "12601",
+            },
+            "id": "110770",
+            "phone": "(845) 298-0247",
+            "storeName": "poughkeepsie galleria",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9593 carousel center",
+              "city": "syracuse",
+              "state": "NY",
+              "zipCode": "13290",
+            },
+            "id": "110685",
+            "phone": "(315) 466-3703",
+            "storeName": "destiny usa",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "358 the galleria",
+              "city": "white plains",
+              "state": "NY",
+              "zipCode": "10601",
+            },
+            "id": "110033",
+            "phone": "(914) 997-8133",
+            "storeName": "the galleria at white plains",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2500 central park ave.",
+              "city": "yonkers",
+              "state": "NY",
+              "zipCode": "10702",
+            },
+            "id": "111096",
+            "phone": "(914) 771-5942",
+            "storeName": "yonkers gateway plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1 ridge hill road",
+              "city": "yonkers",
+              "state": "NY",
+              "zipCode": "10710",
+            },
+            "id": "114395",
+            "phone": "(914) 963-8346",
+            "storeName": "ridge hill",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "31-53 steinway street",
+              "city": "astoria",
+              "state": "NY",
+              "zipCode": "11103",
+            },
+            "id": "111421",
+            "phone": "(718) 956-1999",
+            "storeName": "steinway street",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "601-635 harry l. drive",
+              "city": "johnson city",
+              "state": "NY",
+              "zipCode": "13790",
+            },
+            "id": "110812",
+            "phone": "(607) 770-1404",
+            "storeName": "oakdale mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "839 new york avenue",
+              "city": "huntington",
+              "state": "NY",
+              "zipCode": "11743",
+            },
+            "id": "114314",
+            "phone": "(631) 271-2304",
+            "storeName": "big h shopping center",
+          },
+        },
+      ]
+    }
+    title="New York"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3265 west market street",
+              "city": "akron",
+              "state": "OH",
+              "zipCode": "44333",
+            },
+            "id": "110788",
+            "phone": "(330) 864-0440",
+            "storeName": "summit mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4230 belden village mall",
+              "city": "canton",
+              "state": "OH",
+              "zipCode": "44718",
+            },
+            "id": "111072",
+            "phone": "(330) 305-0882",
+            "storeName": "belden village mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "11700 princeton pike",
+              "city": "cincinnati",
+              "state": "OH",
+              "zipCode": "45246",
+            },
+            "id": "110687",
+            "phone": "(513) 952-9279",
+            "storeName": "tri-county mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4601 eastgate blvd.",
+              "city": "cincinnati",
+              "state": "OH",
+              "zipCode": "45245",
+            },
+            "id": "111628",
+            "phone": "(513) 342-1602",
+            "storeName": "eastgate mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2700 miamisburg-ctrvil rd",
+              "city": "dayton",
+              "state": "OH",
+              "zipCode": "45459",
+            },
+            "id": "110759",
+            "phone": "(937) 436-5877",
+            "storeName": "dayton mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2400 eilda road",
+              "city": "lima",
+              "state": "OH",
+              "zipCode": "45805",
+            },
+            "id": "111241",
+            "phone": "(419) 222-5900",
+            "storeName": "lima mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5001 monroe st.",
+              "city": "toledo",
+              "state": "OH",
+              "zipCode": "43623",
+            },
+            "id": "110971",
+            "phone": "(419) 475-3929",
+            "storeName": "franklin park",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7401 market street",
+              "city": "youngstown",
+              "state": "OH",
+              "zipCode": "44512",
+            },
+            "id": "110814",
+            "phone": "(330) 965-8356",
+            "storeName": "southern park mall",
+          },
+        },
+      ]
+    }
+    title="Ohio"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "200 southwest c avenue",
+              "city": "lawton",
+              "state": "OK",
+              "zipCode": "73501",
+            },
+            "id": "114058",
+            "phone": "(580) 353-1146",
+            "storeName": "central mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7179 southeast 29th st",
+              "city": "midwest city",
+              "state": "OK",
+              "zipCode": "73110",
+            },
+            "id": "114094",
+            "phone": "(405) 732-0256",
+            "storeName": "town center plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3357 west main st",
+              "city": "norman",
+              "state": "OK",
+              "zipCode": "73072",
+            },
+            "id": "111916",
+            "phone": "(405) 321-2469",
+            "storeName": "sooner mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2501 w memorial road",
+              "city": "oklahoma city",
+              "state": "OK",
+              "zipCode": "73134",
+            },
+            "id": "111062",
+            "phone": "(405) 302-5001",
+            "storeName": "quail springs mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7021 s memorial dr",
+              "city": "tulsa",
+              "state": "OK",
+              "zipCode": "74133",
+            },
+            "id": "111315",
+            "phone": "(918) 294-0850",
+            "storeName": "woodland hills mall",
+          },
+        },
+      ]
+    }
+    title="Oklahoma"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "13850 steeles ave west",
+              "city": "georgetown",
+              "state": "ON",
+              "zipCode": "L7G0J1",
+            },
+            "id": "123225",
+            "phone": "(905) 876-1533",
+            "storeName": "toronto premium outlets",
+          },
+        },
+      ]
+    }
+    title="ON"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "269 valley river center",
+              "city": "eugene",
+              "state": "OR",
+              "zipCode": "97401",
+            },
+            "id": "111012",
+            "phone": "(541) 343-4169",
+            "storeName": "valley river center",
+          },
+        },
+      ]
+    }
+    title="Oregon"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "660 park city center",
+              "city": "lancaster",
+              "state": "PA",
+              "zipCode": "17601",
+            },
+            "id": "110843",
+            "phone": "(717) 295-7474",
+            "storeName": "park city center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5580 goods lane",
+              "city": "altoona",
+              "state": "PA",
+              "zipCode": "16602",
+            },
+            "id": "111854",
+            "phone": "(814) 942-0789",
+            "storeName": "logan valley mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "634 mill creek mall space 265",
+              "city": "erie",
+              "state": "PA",
+              "zipCode": "16565",
+            },
+            "id": "110818",
+            "phone": "(814) 866-7022",
+            "storeName": "mill creek mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "134 outlet square",
+              "city": "hershey",
+              "state": "PA",
+              "zipCode": "17033",
+            },
+            "id": "111865",
+            "phone": "(717) 520-5260",
+            "storeName": "outlets at hershey",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "500 galleria drive",
+              "city": "johnstown",
+              "state": "PA",
+              "zipCode": "15904",
+            },
+            "id": "114254",
+            "phone": "(814) 266-4234",
+            "storeName": "the galleria",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1575 franklin mills circle",
+              "city": "philadelphia",
+              "state": "PA",
+              "zipCode": "19154",
+            },
+            "id": "110674",
+            "phone": "(215) 637-2355",
+            "storeName": "philadelphia mills",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2200 oregon avenue",
+              "city": "philadelphia",
+              "state": "PA",
+              "zipCode": "19145",
+            },
+            "id": "111701",
+            "phone": "(215) 465-2492",
+            "storeName": "quartermaster plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "447 south hills village",
+              "city": "pittsburgh",
+              "state": "PA",
+              "zipCode": "15241",
+            },
+            "id": "110767",
+            "phone": "(412) 851-0808",
+            "storeName": "south hill village",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "938 freeport road",
+              "city": "pittsburgh",
+              "state": "PA",
+              "zipCode": "15238",
+            },
+            "id": "111470",
+            "phone": "(412) 782-6667",
+            "storeName": "waterworks mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2899 whiteford road",
+              "city": "york",
+              "state": "PA",
+              "zipCode": "17402",
+            },
+            "id": "110691",
+            "phone": "(717) 755-5122",
+            "storeName": "york galleria",
+          },
+        },
+      ]
+    }
+    title="Pennsylvania"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "109 hillside road",
+              "city": "cranston",
+              "state": "RI",
+              "zipCode": "02920",
+            },
+            "id": "111474",
+            "phone": "(401) 275-0234",
+            "storeName": "garden city center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "34 provident place",
+              "city": "providence",
+              "state": "RI",
+              "zipCode": "02903",
+            },
+            "id": "110939",
+            "phone": "(401) 243-0230",
+            "storeName": "providence place",
+          },
+        },
+      ]
+    }
+    title="Rhode Island"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4618 factory store blvd",
+              "city": "myrtle beach",
+              "state": "SC",
+              "zipCode": "29579",
+            },
+            "id": "110948",
+            "phone": "(843) 268-0120",
+            "storeName": "myrtle beach factory stores",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2000 coastal grand circle",
+              "city": "myrtle beach",
+              "state": "SC",
+              "zipCode": "29577",
+            },
+            "id": "111704",
+            "phone": "(843) 839-3125",
+            "storeName": "coastal grand",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "205 w blackstock road",
+              "city": "spartanburg",
+              "state": "SC",
+              "zipCode": "29301",
+            },
+            "id": "110819",
+            "phone": "(864) 587-2882",
+            "storeName": "westgate mall",
+          },
+        },
+      ]
+    }
+    title="South Carolina"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4001 w 41st street",
+              "city": "sioux falls",
+              "state": "SD",
+              "zipCode": "57106",
+            },
+            "id": "110975",
+            "phone": "(605) 362-5734",
+            "storeName": "the empire",
+          },
+        },
+      ]
+    }
+    title="South Dakota"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "475 outlet village blvd",
+              "city": "lebanon",
+              "state": "TN",
+              "zipCode": "37090",
+            },
+            "id": "111922",
+            "phone": "(615) 443-2820",
+            "storeName": "lebanon outlet marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2100 hamilton place blvd",
+              "city": "chattanooga",
+              "state": "TN",
+              "zipCode": "37421",
+            },
+            "id": "110811",
+            "phone": "(423) 855-4327",
+            "storeName": "hamilton place",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2801 wilma rudolf blvd",
+              "city": "clarksville",
+              "state": "TN",
+              "zipCode": "37040",
+            },
+            "id": "114209",
+            "phone": "(931) 920-0441",
+            "storeName": "governors square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2101 fort henry drive",
+              "city": "kingsport",
+              "state": "TN",
+              "zipCode": "37664",
+            },
+            "id": "114188",
+            "phone": "(423) 230-0010",
+            "storeName": "fort henry mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7600 kingston pike",
+              "city": "knoxville",
+              "state": "TN",
+              "zipCode": "37919",
+            },
+            "id": "110965",
+            "phone": "(865) 693-7494",
+            "storeName": "west town mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4465 poplar ave.",
+              "city": "memphis",
+              "state": "TN",
+              "zipCode": "38117",
+            },
+            "id": "110810",
+            "phone": "(901) 683-1333",
+            "storeName": "oak court mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2615 medical center hway",
+              "city": "murfreesboro",
+              "state": "TN",
+              "zipCode": "37129",
+            },
+            "id": "111970",
+            "phone": "(615) 494-1655",
+            "storeName": "avenue @ murfreesboro",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "397 opry mills drive",
+              "city": "nashville",
+              "state": "TN",
+              "zipCode": "37214",
+            },
+            "id": "111024",
+            "phone": "(615) 823-4951",
+            "storeName": "opry mills mall",
+          },
+        },
+      ]
+    }
+    title="Tennessee"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8332 agora parkway",
+              "city": "selma",
+              "state": "TX",
+              "zipCode": "78154",
+            },
+            "id": "111452",
+            "phone": "(210) 658-0146",
+            "storeName": "forum at olympia",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "123 central mall",
+              "city": "texarkana",
+              "state": "TX",
+              "zipCode": "75503",
+            },
+            "id": "111840",
+            "phone": "(903) 838-3743",
+            "storeName": "central mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5622 fairmont parkway",
+              "city": "pasadena",
+              "state": "TX",
+              "zipCode": "77505",
+            },
+            "id": "111460",
+            "phone": "(281) 487-0370",
+            "storeName": "fairway plaza",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7701 west i 40",
+              "city": "amarillo",
+              "state": "TX",
+              "zipCode": "79121",
+            },
+            "id": "111266",
+            "phone": "(806) 359-6544",
+            "storeName": "westgate mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2901 capital of texas hwy",
+              "city": "austin",
+              "state": "TX",
+              "zipCode": "78746",
+            },
+            "id": "111650",
+            "phone": "(512) 330-1750",
+            "storeName": "barton creek",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1201 barbara jordan blvd",
+              "city": "austin",
+              "state": "TX",
+              "zipCode": "78723",
+            },
+            "id": "114085",
+            "phone": "(512) 322-0812",
+            "storeName": "mueller town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4665 garth road",
+              "city": "baytown",
+              "state": "TX",
+              "zipCode": "77521",
+            },
+            "id": "114042",
+            "phone": "(832) 556-0978",
+            "storeName": "riceland pavillion",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6155 eastex freeway",
+              "city": "beaumont",
+              "state": "TX",
+              "zipCode": "77706",
+            },
+            "id": "111839",
+            "phone": "(409) 898-0916",
+            "storeName": "parkdale mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2370 n expressway",
+              "city": "brownsville",
+              "state": "TX",
+              "zipCode": "78526",
+            },
+            "id": "111203",
+            "phone": "(956) 329-2801",
+            "storeName": "sunrise mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5488 south padre island",
+              "city": "corpus christi",
+              "state": "TX",
+              "zipCode": "78411",
+            },
+            "id": "111217",
+            "phone": "(361) 992-9899",
+            "storeName": "la palmera",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "13350 dallas parkway",
+              "city": "dallas",
+              "state": "TX",
+              "zipCode": "75240",
+            },
+            "id": "111045",
+            "phone": "(972) 980-7618",
+            "storeName": "galleria dallas",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "10325 lake june road",
+              "city": "dallas",
+              "state": "TX",
+              "zipCode": "75217",
+            },
+            "id": "114238",
+            "phone": "(972) 329-0003",
+            "storeName": "torre vista shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2205 veterans blvd",
+              "city": "del rio",
+              "state": "TX",
+              "zipCode": "78840",
+            },
+            "id": "114204",
+            "phone": "(830) 774-2703",
+            "storeName": "plaza del sol",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8401 gateway west",
+              "city": "el paso",
+              "state": "TX",
+              "zipCode": "79925",
+            },
+            "id": "111074",
+            "phone": "(915) 771-8371",
+            "storeName": "cielo vista mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1936 green oaks road",
+              "city": "fort worth",
+              "state": "TX",
+              "zipCode": "76116",
+            },
+            "id": "111013",
+            "phone": "(817) 989-0915",
+            "storeName": "ridgmar mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9409 sage meadow trail",
+              "city": "fort worth",
+              "state": "TX",
+              "zipCode": "76177",
+            },
+            "id": "114054",
+            "phone": "(817) 750-0324",
+            "storeName": "alliance town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "15841 north freeway",
+              "city": "fort worth",
+              "state": "TX",
+              "zipCode": "76177",
+            },
+            "id": "114409",
+            "phone": "(682) 831-9986",
+            "storeName": "tanger fort worth",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7925 fm 1960 west",
+              "city": "houston",
+              "state": "TX",
+              "zipCode": "77070",
+            },
+            "id": "111041",
+            "phone": "(281) 890-0589",
+            "storeName": "willowbrook mall-tx",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "565 meyerland plaza",
+              "city": "houston",
+              "state": "TX",
+              "zipCode": "77096",
+            },
+            "id": "111454",
+            "phone": "(713) 668-5933",
+            "storeName": "meyerland plaza shopping cnt",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "950 gulfgate center",
+              "city": "houston",
+              "state": "TX",
+              "zipCode": "77087",
+            },
+            "id": "111951",
+            "phone": "(713) 649-1004",
+            "storeName": "gulfgate center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1911 taylor st.",
+              "city": "houston",
+              "state": "TX",
+              "zipCode": "77007",
+            },
+            "id": "114286",
+            "phone": "(713) 868-4462",
+            "storeName": "sawyer heights",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5300 san dario",
+              "city": "laredo",
+              "state": "TX",
+              "zipCode": "78041",
+            },
+            "id": "111088",
+            "phone": "(956) 796-1418",
+            "storeName": "mall del norte",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3098 north eastman road",
+              "city": "longview",
+              "state": "TX",
+              "zipCode": "75605",
+            },
+            "id": "114086",
+            "phone": "(903) 663-8592",
+            "storeName": "longview town crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6002 slide road",
+              "city": "lubbock",
+              "state": "TX",
+              "zipCode": "79414",
+            },
+            "id": "111711",
+            "phone": "(806) 799-3371",
+            "storeName": "south plains mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4600 south medford drive",
+              "city": "lufkin",
+              "state": "TX",
+              "zipCode": "75901",
+            },
+            "id": "114351",
+            "phone": "(936) 632-9000",
+            "storeName": "lufkin mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2200 south 10th street",
+              "city": "mcallen",
+              "state": "TX",
+              "zipCode": "78503",
+            },
+            "id": "111099",
+            "phone": "(956) 686-7211",
+            "storeName": "la plaza mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4201 east 42nd street",
+              "city": "odessa",
+              "state": "TX",
+              "zipCode": "79762",
+            },
+            "id": "114213",
+            "phone": "(432) 362-0669",
+            "storeName": "music city mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3100 highway 365",
+              "city": "port arthur",
+              "state": "TX",
+              "zipCode": "77642",
+            },
+            "id": "114247",
+            "phone": "(409) 729-9157",
+            "storeName": "central mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7400 san pedro road",
+              "city": "san antonio",
+              "state": "TX",
+              "zipCode": "78216",
+            },
+            "id": "111021",
+            "phone": "(210) 384-0618",
+            "storeName": "north star mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2310 sw military drive",
+              "city": "san antonio",
+              "state": "TX",
+              "zipCode": "78224",
+            },
+            "id": "111484",
+            "phone": "(210) 932-4760",
+            "storeName": "southpark mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5511 west loop 1604 north",
+              "city": "san antonio",
+              "state": "TX",
+              "zipCode": "78253",
+            },
+            "id": "114158",
+            "phone": "(210) 521-0207",
+            "storeName": "alamo ranch",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "16535 south west freeway",
+              "city": "sugar land",
+              "state": "TX",
+              "zipCode": "77479",
+            },
+            "id": "111029",
+            "phone": "(281) 399-5863",
+            "storeName": "first colony mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4601 south broadway",
+              "city": "tyler",
+              "state": "TX",
+              "zipCode": "75703",
+            },
+            "id": "111927",
+            "phone": "(903) 561-9192",
+            "storeName": "broadway square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2500 west loop 340",
+              "city": "waco",
+              "state": "TX",
+              "zipCode": "76711",
+            },
+            "id": "111736",
+            "phone": "(254) 662-1511",
+            "storeName": "central texas marketplace",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3111 midwestern parkway",
+              "city": "wichita falls",
+              "state": "TX",
+              "zipCode": "76308",
+            },
+            "id": "111602",
+            "phone": "(940) 692-4442",
+            "storeName": "sikes center mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "12638 fountain lakes crcl",
+              "city": "stafford",
+              "state": "TX",
+              "zipCode": "77477",
+            },
+            "id": "114265",
+            "phone": "(281) 313-3365",
+            "storeName": "the fountains",
+          },
+        },
+      ]
+    }
+    title="Texas"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6191 south state",
+              "city": "murray",
+              "state": "UT",
+              "zipCode": "84107",
+            },
+            "id": "110980",
+            "phone": "(801) 265-3663",
+            "storeName": "fashion place",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1201 north hill field rd",
+              "city": "layton",
+              "state": "UT",
+              "zipCode": "84041",
+            },
+            "id": "111060",
+            "phone": "(801) 498-7695",
+            "storeName": "layton hills mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1300 north main",
+              "city": "logan",
+              "state": "UT",
+              "zipCode": "84341",
+            },
+            "id": "114082",
+            "phone": "(435) 752-2116",
+            "storeName": "cache valley mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "575 e university pkwy",
+              "city": "orem",
+              "state": "UT",
+              "zipCode": "84097",
+            },
+            "id": "110941",
+            "phone": "(801) 426-8478",
+            "storeName": "university mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "10450 south state street",
+              "city": "sandy",
+              "state": "UT",
+              "zipCode": "84070",
+            },
+            "id": "110938",
+            "phone": "(801) 816-9670",
+            "storeName": "south towne center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3768 west center park dr",
+              "city": "west jordan",
+              "state": "UT",
+              "zipCode": "84084",
+            },
+            "id": "111859",
+            "phone": "(801) 280-3588",
+            "storeName": "jordan landing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3639 south 2700 west",
+              "city": "west valley city",
+              "state": "UT",
+              "zipCode": "84119",
+            },
+            "id": "114160",
+            "phone": "(801) 967-2900",
+            "storeName": "valley fair mall",
+          },
+        },
+      ]
+    }
+    title="Utah"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4200 portsmouth blvd.",
+              "city": "chesapeake",
+              "state": "VA",
+              "zipCode": "23321",
+            },
+            "id": "111058",
+            "phone": "(757) 465-4305",
+            "storeName": "chesapeake square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "space m249",
+              "city": "fairfax",
+              "state": "VA",
+              "zipCode": "22033",
+            },
+            "id": "110031",
+            "phone": "(571) 432-0201",
+            "storeName": "fair oaks shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "310 spotsylvania mall",
+              "city": "fredericksburg",
+              "state": "VA",
+              "zipCode": "22407",
+            },
+            "id": "110977",
+            "phone": "(540) 548-2298",
+            "storeName": "spotsylvania mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "475 d simons run",
+              "city": "lynchburg",
+              "state": "VA",
+              "zipCode": "24502",
+            },
+            "id": "114296",
+            "phone": "(434) 239-0152",
+            "storeName": "wards crossing",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8300 sudley road",
+              "city": "manassas",
+              "state": "VA",
+              "zipCode": "20109",
+            },
+            "id": "114220",
+            "phone": "(703) 361-1086",
+            "storeName": "manassas mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "12300 jefferson ave.",
+              "city": "newport news",
+              "state": "VA",
+              "zipCode": "23602",
+            },
+            "id": "111075",
+            "phone": "(757) 930-3136",
+            "storeName": "patrick henry mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4802 valley view blvd nw",
+              "city": "roanoke",
+              "state": "VA",
+              "zipCode": "24012",
+            },
+            "id": "111466",
+            "phone": "(540) 362-4888",
+            "storeName": "valley view mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4554 virginia beach boulevard",
+              "city": "virginia beach",
+              "state": "VA",
+              "zipCode": "23462",
+            },
+            "id": "114350",
+            "phone": "(757) 490-7381",
+            "storeName": "pembroke mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5715-64/65 richmond road",
+              "city": "williamsburg",
+              "state": "VA",
+              "zipCode": "23188",
+            },
+            "id": "111846",
+            "phone": "(757) 220-5790",
+            "storeName": "williamsburg premium outlets",
+          },
+        },
+      ]
+    }
+    title="Virgin Islands"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1321 n columbia ctr blvd",
+              "city": "kennewick",
+              "state": "WA",
+              "zipCode": "99336",
+            },
+            "id": "111619",
+            "phone": "(509) 736-9518",
+            "storeName": "columbia center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "625 black lake blvd.",
+              "city": "olympia",
+              "state": "WA",
+              "zipCode": "98502",
+            },
+            "id": "111022",
+            "phone": "(360) 709-9738",
+            "storeName": "capital mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4750 n. division",
+              "city": "spokane",
+              "state": "WA",
+              "zipCode": "99207",
+            },
+            "id": "111239",
+            "phone": "(509) 487-1452",
+            "storeName": "north town mall",
+          },
+        },
+      ]
+    }
+    title="Washington"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4301 w wisconsin ave",
+              "city": "appleton",
+              "state": "WI",
+              "zipCode": "54913",
+            },
+            "id": "110822",
+            "phone": "(920) 733-1019",
+            "storeName": "fox river mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4800 golf road",
+              "city": "eau claire",
+              "state": "WI",
+              "zipCode": "54701",
+            },
+            "id": "110918",
+            "phone": "(715) 835-3766",
+            "storeName": "oakwood mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "920 bay park square",
+              "city": "green bay",
+              "state": "WI",
+              "zipCode": "54304",
+            },
+            "id": "111626",
+            "phone": "(920) 498-0646",
+            "storeName": "bay park",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3800 state road 16",
+              "city": "la crosse",
+              "state": "WI",
+              "zipCode": "54601",
+            },
+            "id": "114326",
+            "phone": "(608) 779-0006",
+            "storeName": "valley view mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3001 south washburn st",
+              "city": "oshkosh",
+              "state": "WI",
+              "zipCode": "54904",
+            },
+            "id": "111845",
+            "phone": "(920) 303-0688",
+            "storeName": "the outlet shoppes at oshkosh",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5676 durand ave",
+              "city": "racine",
+              "state": "WI",
+              "zipCode": "53406",
+            },
+            "id": "111903",
+            "phone": "(262) 554-1055",
+            "storeName": "regency mall",
+          },
+        },
+      ]
+    }
+    title="Wisconsin"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2399 meadowbrook mall",
+              "city": "bridgeport",
+              "state": "WV",
+              "zipCode": "26330",
+            },
+            "id": "114253",
+            "phone": "(304) 842-7052",
+            "storeName": "meadowbrook mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9911 mall road",
+              "city": "morgantown",
+              "state": "WV",
+              "zipCode": "26501",
+            },
+            "id": "114270",
+            "phone": "(304) 397-5620",
+            "storeName": "morgantown mall",
+          },
+        },
+      ]
+    }
+    title="West Virginia"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "100 anderson road se",
+              "city": "calgary",
+              "state": "AB",
+              "zipCode": "T2J3V1",
+            },
+            "id": "123112",
+            "phone": "(403) 271-4133",
+            "storeName": "southcentre mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6455 macleod trail sw",
+              "city": "calgary",
+              "state": "AB",
+              "zipCode": "T2H0K9",
+            },
+            "id": "123114",
+            "phone": "(403) 255-3620",
+            "storeName": "chinook centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3625 shaganappi trail nw",
+              "city": "calgary",
+              "state": "AB",
+              "zipCode": "T3A0E2",
+            },
+            "id": "123207",
+            "phone": "(403) 247-3927",
+            "storeName": "calgary market mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2525 36th street ne",
+              "city": "calgary",
+              "state": "AB",
+              "zipCode": "T1Y5T4",
+            },
+            "id": "123217",
+            "phone": "(403) 293-1410",
+            "storeName": "sunridge mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "8882 170th street",
+              "city": "edmonton",
+              "state": "AB",
+              "zipCode": "T5T4M2",
+            },
+            "id": "123109",
+            "phone": "(780) 481-3984",
+            "storeName": "west edmonton mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9739 19th avenue",
+              "city": "edmonton",
+              "state": "AB",
+              "zipCode": "T6N1N5",
+            },
+            "id": "123228",
+            "phone": "(780) 440-3075",
+            "storeName": "south edmonton commons",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "501 1 avenue south",
+              "city": "lethbridge",
+              "state": "AB",
+              "zipCode": "T1J4L9",
+            },
+            "id": "123261",
+            "phone": "(403) 327-1955",
+            "storeName": "park place - lethbridge",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3292 dunmore road s.e.",
+              "city": "medicine hat",
+              "state": "AB",
+              "zipCode": "T1B2R4",
+            },
+            "id": "123303",
+            "phone": "(403) 526-2361",
+            "storeName": "medicine hat mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4900 molly bannister driv",
+              "city": "red deer",
+              "state": "AB",
+              "zipCode": "T4R1N9",
+            },
+            "id": "123263",
+            "phone": "(587) 802-2302",
+            "storeName": "bower place",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "375 st. albert road",
+              "city": "st. albert",
+              "state": "AB",
+              "zipCode": "T8N3K8",
+            },
+            "id": "123329",
+            "phone": "(780) 458-2352",
+            "storeName": "st. albert centre",
+          },
+        },
+      ]
+    }
+    title="Alberta"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "32900 south fraser way",
+              "city": "abbotsford",
+              "state": "BC",
+              "zipCode": "V2S5A1",
+            },
+            "id": "123302",
+            "phone": "(604) 851-9305",
+            "storeName": "seven oaks mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "17 4567 lougheed hwy",
+              "city": "burnaby",
+              "state": "BC",
+              "zipCode": "V5C3Z6",
+            },
+            "id": "123200",
+            "phone": "(604) 243-9931",
+            "storeName": "brentwood mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4700 kingsway",
+              "city": "burnaby",
+              "state": "BC",
+              "zipCode": "V5H4M1",
+            },
+            "id": "123216",
+            "phone": "(604) 245-3563",
+            "storeName": "metropolis at metrotown",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2929 barnet highway",
+              "city": "coquitlam",
+              "state": "BC",
+              "zipCode": "V3B5R5",
+            },
+            "id": "123219",
+            "phone": "(604) 552-9006",
+            "storeName": "coquitlam centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1320 trans canada hwy wst",
+              "city": "kamloops",
+              "state": "BC",
+              "zipCode": "V1S1J2",
+            },
+            "id": "123275",
+            "phone": "(250) 800-4171",
+            "storeName": "aberdeen",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2271 harvey avenue",
+              "city": "kelowna",
+              "state": "BC",
+              "zipCode": "V1Y6H2",
+            },
+            "id": "123240",
+            "phone": "(778) 760-0596",
+            "storeName": "orchard park mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "19705 fraser highway",
+              "city": "langley",
+              "state": "BC",
+              "zipCode": "V3A7E9",
+            },
+            "id": "123218",
+            "phone": "(604) 534-1203",
+            "storeName": "willowbrook shopping centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6631 n island hwy #79",
+              "city": "nanaimo",
+              "state": "BC",
+              "zipCode": "V9T4T7",
+            },
+            "id": "123224",
+            "phone": "(250) 390-4506",
+            "storeName": "woodgrove centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3055 massey drive",
+              "city": "prince george",
+              "state": "BC",
+              "zipCode": "V2N2S9",
+            },
+            "id": "123272",
+            "phone": "(250) 561-2777",
+            "storeName": "pine centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "10355 152nd street",
+              "city": "surrey",
+              "state": "BC",
+              "zipCode": "V3R7C1",
+            },
+            "id": "123241",
+            "phone": "(604) 245-3567",
+            "storeName": "guildford town center",
+          },
+        },
+      ]
+    }
+    title="British Columbia"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1225 st marys road",
+              "city": "winnipeg",
+              "state": "MB",
+              "zipCode": "R2M5E5",
+            },
+            "id": "123105",
+            "phone": "(204) 255-8903",
+            "storeName": "st vital centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1555 regent street west",
+              "city": "winnipeg",
+              "state": "MB",
+              "zipCode": "R2C4J2",
+            },
+            "id": "123296",
+            "phone": "(204) 202-6268",
+            "storeName": "kildonan place",
+          },
+        },
+      ]
+    }
+    title="Manitoba"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1381 regent street",
+              "city": "fredericton",
+              "state": "NB",
+              "zipCode": "E3C1A2",
+            },
+            "id": "123203",
+            "phone": "(506) 457-4558",
+            "storeName": "regent shopping mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "519 westmorland rd",
+              "city": "saint john",
+              "state": "NB",
+              "zipCode": "E2J3W9",
+            },
+            "id": "123202",
+            "phone": "(506) 634-3800",
+            "storeName": "mcallister pl",
+          },
+        },
+      ]
+    }
+    title="New Brunswick"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "56 kenmount round",
+              "city": "st. john's",
+              "state": "NL",
+              "zipCode": "A1B1W3",
+            },
+            "id": "123299",
+            "phone": "(709) 800-6551",
+            "storeName": "avalon mall annex",
+          },
+        },
+      ]
+    }
+    title="Newfoundland and Labrador"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7001 mumford road",
+              "city": "halifax",
+              "state": "NS",
+              "zipCode": "B3L4R3",
+            },
+            "id": "123103",
+            "phone": "(902) 418-5598",
+            "storeName": "halifax shopping center",
+          },
+        },
+      ]
+    }
+    title="Nova Scotia"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "25 peel centre drive",
+              "city": "brampton",
+              "state": "ON",
+              "zipCode": "L6T3R5",
+            },
+            "id": "123104",
+            "phone": "(905) 799-8626",
+            "storeName": "bramalea city centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "84 lynden road",
+              "city": "brantford",
+              "state": "ON",
+              "zipCode": "N3R6B8",
+            },
+            "id": "123237",
+            "phone": "(519) 756-3836",
+            "storeName": "lynden park mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1 water street east",
+              "city": "cornwall",
+              "state": "ON",
+              "zipCode": "K6H6M2",
+            },
+            "id": "123281",
+            "phone": "(613) 932-1642",
+            "storeName": "cornwall square",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "945 gardiners road",
+              "city": "kingston",
+              "state": "ON",
+              "zipCode": "K7M7H4",
+            },
+            "id": "123009",
+            "phone": "(613) 634-2567",
+            "storeName": "cataraqui town centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2960 kingsway drive",
+              "city": "kitchener",
+              "state": "ON",
+              "zipCode": "N2C1X1",
+            },
+            "id": "123235",
+            "phone": "(519) 894-2287",
+            "storeName": "fairview park mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1105 wellinton road",
+              "city": "london",
+              "state": "ON",
+              "zipCode": "N6E1V4",
+            },
+            "id": "123019",
+            "phone": "(519) 680-1132",
+            "storeName": "white oaks mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "500 highway 7 east",
+              "city": "markham",
+              "state": "ON",
+              "zipCode": "L3R4M9",
+            },
+            "id": "123210",
+            "phone": "(289) 806-1642",
+            "storeName": "markville shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "6075 mavis road",
+              "city": "mississauga",
+              "state": "ON",
+              "zipCode": "L5R4G6",
+            },
+            "id": "123026",
+            "phone": "(289) 799-7636",
+            "storeName": "heartland town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "5100 erin mills parkway",
+              "city": "mississauga",
+              "state": "ON",
+              "zipCode": "L5M4Z5",
+            },
+            "id": "123259",
+            "phone": "(905) 820-4698",
+            "storeName": "erin mills town center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "17600 yonge street",
+              "city": "newmarket",
+              "state": "ON",
+              "zipCode": "L3Y4Z1",
+            },
+            "id": "123106",
+            "phone": "(905) 953-9260",
+            "storeName": "upper canada mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3527 wyecroft road",
+              "city": "oakville",
+              "state": "ON",
+              "zipCode": "L6L0B6",
+            },
+            "id": "123236",
+            "phone": "(905) 469-7461",
+            "storeName": "riocan burloak centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "991 taunton road e",
+              "city": "oshawa",
+              "state": "ON",
+              "zipCode": "L1H7K5",
+            },
+            "id": "123258",
+            "phone": "(289) 274-1082",
+            "storeName": "oshawa north",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1200 st laurent bi u 535",
+              "city": "ottawa",
+              "state": "ON",
+              "zipCode": "K1K3B8",
+            },
+            "id": "123012",
+            "phone": "(613) 741-4547",
+            "storeName": "st laurent shopping centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2214 bank street",
+              "city": "ottawa",
+              "state": "ON",
+              "zipCode": "K1V1J6",
+            },
+            "id": "123265",
+            "phone": "(613) 733-0891",
+            "storeName": "south keys",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "645 lansdowne street w",
+              "city": "peterborough",
+              "state": "ON",
+              "zipCode": "K9J7Y5",
+            },
+            "id": "123260",
+            "phone": "(705) 748-5840",
+            "storeName": "lansdowne place",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1355 kingston road",
+              "city": "pickering",
+              "state": "ON",
+              "zipCode": "L1V1B8",
+            },
+            "id": "123001",
+            "phone": "(905) 420-5624",
+            "storeName": "pickering town centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "9350 yonge street",
+              "city": "richmond hill",
+              "state": "ON",
+              "zipCode": "L4C5G2",
+            },
+            "id": "123004",
+            "phone": "(905) 884-4991",
+            "storeName": "hillcrest mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1380 london road",
+              "city": "sarnia",
+              "state": "ON",
+              "zipCode": "N7S1P8",
+            },
+            "id": "123273",
+            "phone": "(519) 541-0354",
+            "storeName": "lambton mall",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1000 fort william road",
+              "city": "thunder bay",
+              "state": "ON",
+              "zipCode": "P7B6B9",
+            },
+            "id": "123234",
+            "phone": "(807) 700-4275",
+            "storeName": "intercity shopping center",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "66 wellington street west",
+              "city": "toronto",
+              "state": "ON",
+              "zipCode": "M5K1H1",
+            },
+            "id": "123113",
+            "phone": "(416) 363-2112",
+            "storeName": "toronto dominion",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "1980 st. clair avenue west",
+              "city": "toronto",
+              "state": "ON",
+              "zipCode": "M6N0A3",
+            },
+            "id": "123321",
+            "phone": "(416) 762-0553",
+            "storeName": "the stockyards",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3100 howard ave u l4",
+              "city": "windsor",
+              "state": "ON",
+              "zipCode": "N8X3Y8",
+            },
+            "id": "123016",
+            "phone": "(519) 967-1296",
+            "storeName": "devonshire mall",
+          },
+        },
+      ]
+    }
+    title="Ontario"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "181 buchanan drive",
+              "city": "charlottetown",
+              "state": "PE",
+              "zipCode": "C1E1E3",
+            },
+            "id": "123264",
+            "phone": "(604) 245-3570",
+            "storeName": "smart centres charlottetown",
+          },
+        },
+      ]
+    }
+    title="Prince Edward Island"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7275 rue sherbrooke e",
+              "city": "montreal",
+              "state": "QC",
+              "zipCode": "H1N1E9",
+            },
+            "id": "123018",
+            "phone": "(514) 352-2069",
+            "storeName": "place versailles",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "79 boul de la gappe",
+              "city": "gatineau",
+              "state": "QC",
+              "zipCode": "J8T0B5",
+            },
+            "id": "123289",
+            "phone": "(819) 246-7598",
+            "storeName": "riocan centre la gappe",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "40 rue evangeline",
+              "city": "granby",
+              "state": "QC",
+              "zipCode": "J2G8K1",
+            },
+            "id": "123245",
+            "phone": "(450) 361-8185",
+            "storeName": "les galeries des granby",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3035 boul carrefour d-13",
+              "city": "laval",
+              "state": "QC",
+              "zipCode": "H7T1C8",
+            },
+            "id": "123005",
+            "phone": "(450) 973-5208",
+            "storeName": "carrefour laval",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "100 boul brein",
+              "city": "repentigny",
+              "state": "QC",
+              "zipCode": "J6A5N4",
+            },
+            "id": "123017",
+            "phone": "(450) 582-4108",
+            "storeName": "galeries rive nord",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "3050 portland boul",
+              "city": "sherbrooke",
+              "state": "QC",
+              "zipCode": "J1L1K1",
+            },
+            "id": "123223",
+            "phone": "(819) 348-0543",
+            "storeName": "carrefour de l estrie",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "4225 des forges boul",
+              "city": "trois-rivieres",
+              "state": "QC",
+              "zipCode": "G8Y1W2",
+            },
+            "id": "123290",
+            "phone": "(819) 378-4258",
+            "storeName": "les rivieres",
+          },
+        },
+      ]
+    }
+    title="Quebec"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "2101 11th avenue",
+              "city": "regina",
+              "state": "SK",
+              "zipCode": "S4P3Y6",
+            },
+            "id": "123208",
+            "phone": "(306) 775-2990",
+            "storeName": "cornwall centre",
+          },
+        },
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "201 1st avenue south",
+              "city": "saskatoon",
+              "state": "SK",
+              "zipCode": "S7K1J5",
+            },
+            "id": "123209",
+            "phone": "(306) 955-8035",
+            "storeName": "midtown plaza",
+          },
+        },
+      ]
+    }
+    title="Saskatchewan"
+    titleClickCb={[Function]}
+  />
+  <Styled(StoresCountryTile)
+    dataLocatorKey="USCanada"
+    isDefaultOpen={false}
+    labels={
+      Object {
+        "lbl_storelist_backLink": "Back",
+        "lbl_storelist_searchByStates": "SEARCH FOR STORES BY STATE",
+        "lbl_storelist_searchByStates_dropdown": "Select a State",
+      }
+    }
+    onToggleCallback={[Function]}
+    stores={
+      Array [
+        Object {
+          "basicInfo": Object {
+            "address": Object {
+              "addressLine1": "7800 north navarro st",
+              "city": "victoria",
+              "state": "TX",
+              "zipCode": "77904",
+            },
+            "id": "111958",
+            "phone": "(361) 576-9208",
+            "storeName": "victoria mall",
+          },
+        },
+      ]
+    }
+    title="TX"
+    titleClickCb={[Function]}
+  />
+</div>
+`;
+
+exports[`StoreList component StoreList component renders correctly without props 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="undefined__backlink"
+    dataLocator="store_USCanadabacklink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+    title="lbl_storelist_backLink"
+  >
+    <span
+      className="left-arrow"
+    />
+    lbl_storelist_backLink
+  </Styled(Anchor)>
+</div>
+`;

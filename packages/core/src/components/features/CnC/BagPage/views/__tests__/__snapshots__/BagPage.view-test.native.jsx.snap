@@ -90,9 +90,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text)>
                 test (0)
               </Styled(Text)>
-              <Styled(Text)>
-                undefined: $0.00
-              </Styled(Text)>
+              <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
@@ -150,9 +148,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text)>
                 test (0)
               </Styled(Text)>
-              <Styled(Text)>
-                undefined: $0.00
-              </Styled(Text)>
+              <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>
@@ -208,9 +204,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               <Styled(Text)>
                 test (0)
               </Styled(Text)>
-              <Styled(Text)>
-                undefined: $0.00
-              </Styled(Text)>
+              <Styled(Text) />
             </Styled(View)>
           </Styled(View)>
         </Styled(TouchableOpacity)>

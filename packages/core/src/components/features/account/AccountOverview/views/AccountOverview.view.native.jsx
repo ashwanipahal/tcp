@@ -11,6 +11,7 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
+import OrdersTile from '../../common/organism/OrdersTile';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -173,12 +174,14 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_earnPointsHeading')}>
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')} />
-            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
-              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
+              <OrdersTile labels={labels} navigation={navigation} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
+              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />

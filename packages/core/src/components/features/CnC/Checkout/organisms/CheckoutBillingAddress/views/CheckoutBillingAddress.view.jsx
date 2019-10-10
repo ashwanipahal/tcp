@@ -48,8 +48,9 @@ class CheckoutAddress extends React.Component {
   openAddNewAddressMode = () => {
     const { editMode, dispatch, formName } = this.props;
     this.newAddressModeStarted = true;
-    if (editMode) {
+    if (!editMode) {
       dispatch(change(formName, `address.addressId`, ''));
+      dispatch(change(formName, `onFileAddressId`, ''));
     }
     this.setState({ isAddNewAddress: true });
   };
@@ -149,7 +150,7 @@ class CheckoutAddress extends React.Component {
   };
 
   getAddressFields = () => {
-    const { addressLabels, dispatch, isGuest, formName } = this.props;
+    const { addressLabels, dispatch, isGuest, formName, editMode } = this.props;
     return (
       <FormSection name="address">
         <AddressFields
@@ -162,7 +163,7 @@ class CheckoutAddress extends React.Component {
           isGuest={isGuest}
           showPhoneNumber={false}
           grayTextBox
-          className="elem-mb-LRG"
+          className={`${!editMode ? 'elem-mb-LRG' : ''}`}
         />
       </FormSection>
     );

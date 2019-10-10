@@ -47,6 +47,10 @@ export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
 
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
 
+// Extra Points promo list reducer
+export const EXTRA_POINTS_REDUCER_KEY = 'ExtraPoints';
+export const EXTRA_POINTS_ACTION_PATTERN = '@@ExtraPoints';
+
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
 export const ACCOUNT_ACTION_PATTERN = '@@Account-';
@@ -189,6 +193,10 @@ export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
+// Store International List reducer
+export const STORES_INTL_REDUCER_KEY = 'StoresIntl';
+export const STORES_INTL_ACTION_PATTERN = '@@StoresIntl-';
+
 export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
 export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
 export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
@@ -196,6 +204,9 @@ export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
 // User Order History
 export const ORDERS_REDUCER_KEY = 'Orders';
 export const ORDERS_ACTION_PATTERN = '@@Orders-';
+// Store List Reducer
+export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
+export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -232,5 +243,7 @@ export const REDUCER_ACTION_MAPPING = {
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
   [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
+  [STORES_INTL_REDUCER_KEY]: STORES_INTL_ACTION_PATTERN,
   [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
+  [STORE_LIST_REDUCER_KEY]: STORE_LIST_ACTION_PATTERN,
 };

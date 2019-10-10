@@ -143,6 +143,11 @@ const ROUTES_LIST = [
     resolver: '/content',
     params: ['contentType'],
   },
+  {
+    noSlugPath: 'stores',
+    path: '/stores',
+    resolver: '/StoreList',
+  },
 ];
 
 const ROUTING_MAP = {};
