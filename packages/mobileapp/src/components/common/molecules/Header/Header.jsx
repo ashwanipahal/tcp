@@ -1,8 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils';
+import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
+import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+
 import { readCookieMobileApp } from '../../../../utils/utils';
+
 import {
   Container,
   MessageContainer,
@@ -18,11 +28,7 @@ import {
   Touchable,
 } from './Header.style';
 
-// @flow
-type Props = {
-  labels: object,
-  navigation: object,
-};
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header
@@ -49,18 +55,28 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
     };
   }
 
   componentDidMount() {
-    const CART_ITEM_COUNTER = 'cartItemsCount';
-    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
+    const { loadFavoriteStore } = this.props;
+    loadFavoriteStore({});
+    this.getInitialProps();
+  }
 
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
+    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
+  }
+
+  getInitialProps() {
+    const { updateCartCountAction } = this.props;
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
-      this.setState({
-        cartVal: parseInt(res || 0, 10),
-      });
+      updateCartCountAction(parseInt(res || 0, 10));
     });
   }
 
@@ -71,7 +87,7 @@ class Header extends React.PureComponent<Props> {
     const { navigation, labels } = this.props;
     const { isDownIcon } = this.state;
     navigation.navigate({
-      routeName: 'StoreDetails',
+      routeName: 'StoreLanding',
       params: { title: labels.lbl_header_storeDefaultTitle.toUpperCase() },
     });
     this.setState({
@@ -79,17 +95,51 @@ class Header extends React.PureComponent<Props> {
     });
   };
 
+  /**
+   * @function getStoreHours to calulate store hours for the current date
+   * @param {Object} store - store object
+   * @return {string} storeTime for the current date
+   */
+  getStoreHours = store => {
+    const hours = store && store.hours;
+    const storeHours = hours && [
+      ...hours.regularAndHolidayHours,
+      ...hours.regularHours,
+      ...hours.holidayHours,
+    ];
+    const todaysDate = new Date();
+    let storeTime = '';
+    if (storeHours && Array.isArray(storeHours)) {
+      storeHours.forEach(hour => {
+        const openInterval =
+          hour &&
+          hour.openIntervals.length > 0 &&
+          hour.openIntervals[hour.openIntervals.length - 1].toHour;
+        if (compareDate(todaysDate, parseDate(openInterval))) {
+          storeTime = toTimeString(parseDate(openInterval), true);
+        }
+      });
+    }
+    return storeTime;
+  };
+
   render() {
-    const { isDownIcon, cartVal } = this.state;
+    const { favStore, labels, cartVal } = this.props;
+    const { isDownIcon } = this.state;
+    const basicInfo = favStore && favStore.basicInfo;
+    const storeTime = this.getStoreHours(favStore);
+    const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
     let headerLabels = {
       lbl_header_storeDefaultTitle: '',
       lbl_header_welcomeMessage: '',
     };
 
-    const { labels } = this.props;
     if (labels) {
       headerLabels = labels;
     }
+    const favStoreTxt = isInfoPresent
+      ? `${capitalize(basicInfo.storeName)} ${headerLabels.lbl_header_openUntil} ${storeTime}`
+      : null;
 
     return (
       <SafeAreaViewStyle>
@@ -111,7 +161,7 @@ class Header extends React.PureComponent<Props> {
                 textAlign="center"
                 color="text.primary"
                 fontWeight="regular"
-                text={headerLabels.lbl_header_storeDefaultTitle}
+                text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
                 data-locator={getLocator('global_findastoretext')}
                 accessibilityText="Drop Down"
               />
@@ -160,11 +210,41 @@ class Header extends React.PureComponent<Props> {
   }
 }
 
+Header.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  favStore: PropTypes.shape({}),
+  loadFavoriteStore: PropTypes.func,
+  cartVal: PropTypes.number.isRequired,
+};
+
+Header.defaultProps = {
+  favStore: {},
+  loadFavoriteStore: () => null,
+};
+
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    favStore: state.User && state.User.get('defaultStore'),
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
   };
 };
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => {
+  return {
+    loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InitialPropsHOC(Header));
 export { Header as HeaderVanilla };

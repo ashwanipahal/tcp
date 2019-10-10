@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { getModuleXContent } from '../StoresInternational.actions';
 import { getContent, getModuleXContentId } from '../StoresInternational.selectors';
+
 import {
   StoresInternationalContainer,
   mapDispatchToProps,
@@ -13,6 +14,10 @@ const dispatch = jest.fn();
 jest.mock('../StoresInternational.selectors', () => ({
   getModuleXContentId: jest.fn(),
   getContent: jest.fn(),
+}));
+
+jest.mock('../../../StoreList/container/StoreList.selectors', () => ({
+  getLabels: jest.fn(),
 }));
 
 jest.mock('../StoresInternational.actions', () => ({

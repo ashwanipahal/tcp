@@ -1,34 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import Safe from 'react-safe';
 import { string } from 'prop-types';
-import ServerOnly from '../../atoms/ServerOnly';
+import { stringify } from '@tcp/core/src/utils';
+import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 
-// Helper
-function entryExists(name) {
-  return Boolean(performance.getEntriesByName(name).length);
+// Script as string for SSR
+const isSupported = stringify`typeof performance !== ${undefined}`;
+
+function ServerOnlyScript({ children, ...props }) {
+  return (
+    <Safe.script suppressHydrationWarning {...props}>
+      {/* This may be unnecessary since react-dom will not execute the contents. */}
+      {typeof window === 'undefined' ? children : null}
+    </Safe.script>
+  );
 }
+
+ServerOnlyScript.propTypes = {
+  children: string.isRequired,
+};
 
 export function Mark({ name }) {
   // For client-side execution
-  useEffect(() => {
-    if (isEnabled && !entryExists(name)) {
-      performance.mark(name);
-    }
-  }, [name]);
-
+  usePerfMark(name);
   // For server-side execution
-  // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled ? (
-    <ServerOnly>
-      <script type="text/javascript">
-        {`
-        if (typeof performance !== 'undefined') {
-          performance.mark(${JSON.stringify(name)});
-        }
-        `}
-      </script>
-    </ServerOnly>
+    <ServerOnlyScript>{stringify`${isSupported} && performance.mark(${name});`}</ServerOnlyScript>
   ) : null;
 }
 
@@ -38,33 +37,13 @@ Mark.propTypes = {
 
 export function Measure({ name, start, end }) {
   // For client-side execution
-  useEffect(() => {
-    try {
-      if (isEnabled && !entryExists(name) && typeof performance !== 'undefined') {
-        performance.measure(name, start, end);
-      }
-    } catch (err) {
-      /* Will throw if "start" or "end" don't match existing marks */
-    }
-  }, [name]);
-
+  usePerfMeasure(name, start, end);
   // For server-side execution
-  // NOTE: JSON.stringify used to properly quote the arguments
-  return isEnabled && typeof performance !== 'undefined' ? (
-    <ServerOnly>
-      {/* TODO: find a replacement for react-safe owing to transpilation issues */}
-      <script type="text/javascript">
-        {`
-        if (typeof performance !== 'undefined') {
-          performance.measure(
-            ${JSON.stringify(name)},
-            ${JSON.stringify(start)},
-            ${JSON.stringify(end)}
-          );
-        }
-        `}
-      </script>
-    </ServerOnly>
+  return isEnabled ? (
+    <ServerOnlyScript>
+      {/* "start" and "end" intentionally omitted for SSR */}
+      {stringify`${isSupported} && performance.measure(${name});`}
+    </ServerOnlyScript>
   ) : null;
 }
 

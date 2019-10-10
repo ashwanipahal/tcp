@@ -29,12 +29,15 @@ describe('OverlayModal', () => {
     modalTriangle.setAttribute('id', 'modalTriangle');
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('id', 'modalWrapper');
+    const bodyContainer = document.createElement('div');
+    bodyContainer.setAttribute('class', 'non-checkout-pages');
     document.body.appendChild(comp);
     document.body.appendChild(dialog);
     document.body.appendChild(modalTriangle);
     document.body.appendChild(overlayElementWrapper);
     document.body.appendChild(overlayElementComponent);
     document.body.appendChild(modalWrapper);
+    document.body.appendChild(bodyContainer);
     mockedRef = {
       contains: jest.fn(),
     };

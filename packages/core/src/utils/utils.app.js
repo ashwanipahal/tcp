@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
+import CookieManager from 'react-native-cookies';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -612,4 +613,18 @@ export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month
     date: currentDate.format(date),
     year: currentDate.format(year),
   };
+};
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = key => {
+  const apiConfigObj = getAPIConfig();
+  return new Promise((resolve, reject) => {
+    CookieManager.get(apiConfigObj.domain)
+      .then(response => {
+        return resolve(response[key]);
+      })
+      .catch(e => reject(e));
+  });
 };

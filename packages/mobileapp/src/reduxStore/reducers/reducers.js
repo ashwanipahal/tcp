@@ -44,6 +44,7 @@ import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Conf
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
 import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
+import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -101,6 +102,7 @@ import {
   PICKUP_MODAL_REDUCER_KEY,
   SLP_PAGE_REDUCER_KEY,
   EXTRA_POINTS_REDUCER_KEY,
+  ORDERS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -206,6 +208,7 @@ const rootReducer = combineReducers({
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
   [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
+  [ORDERS_REDUCER_KEY]: OrdersReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
 });

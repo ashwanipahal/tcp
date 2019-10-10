@@ -8,15 +8,11 @@ const InputFieldPhoneNumber = styled.View`
 const StateZipCodeContainer = styled.View`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 const InputFieldHalf = styled.View`
   width: 48%;
-  margin-top: ${props => (props.zipCode ? props.theme.spacing.ELEM_SPACING.SM : 0)};
-`;
-
-const Separator = styled.View`
-  width: 4%;
 `;
 
 const SaveButtonWrapper = styled.View`
@@ -91,7 +87,6 @@ export {
   InputFieldHalf,
   InputFieldPhoneNumber,
   StateZipCodeContainer,
-  Separator,
   SetDefaultShippingWrapper,
   StyledLabel,
   GooglePlaceInputWrapper,
