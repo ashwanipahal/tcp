@@ -14,6 +14,12 @@ export const ImageStyleWrapper = styled.View`
   align-items: center;
 `;
 
+export const ItemStyleWrapper = styled.View`
+  width: 100%;
+  align-items: flex-end;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
 export const StyleLongDescription = styled.View`
   flex-direction: row;
 `;

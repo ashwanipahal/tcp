@@ -1,25 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Safe from 'react-safe';
 import { string } from 'prop-types';
+import { stringify } from '@tcp/core/src/utils';
+import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 
-// Helper
-function entryExists(name) {
-  return Boolean(performance.getEntriesByName(name).length);
-}
-
-/**
- * Helper for proper quotations in script string output.
- * This is a template literal tag function.
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
- */
-function stringify(strings, ...values) {
-  return strings.reduce(
-    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
-    ''
-  );
-}
+// Script as string for SSR
+const isSupported = stringify`typeof performance !== ${undefined}`;
 
 function ServerOnlyScript({ children, ...props }) {
   return (
@@ -36,21 +24,10 @@ ServerOnlyScript.propTypes = {
 
 export function Mark({ name }) {
   // For client-side execution
-  useEffect(() => {
-    if (isEnabled && !entryExists(name)) {
-      performance.mark(name);
-    }
-  }, [name]);
-
+  usePerfMark(name);
   // For server-side execution
-  // NOTE: JSON.stringify used to properly quote the arguments
   return isEnabled ? (
-    <ServerOnlyScript>
-      {stringify`
-        if (typeof performance !== ${undefined}) {
-          performance.mark(${name});
-        }`}
-    </ServerOnlyScript>
+    <ServerOnlyScript>{stringify`${isSupported} && performance.mark(${name});`}</ServerOnlyScript>
   ) : null;
 }
 
@@ -60,28 +37,12 @@ Mark.propTypes = {
 
 export function Measure({ name, start, end }) {
   // For client-side execution
-  useEffect(() => {
-    try {
-      if (isEnabled && !entryExists(name) && typeof performance !== 'undefined') {
-        performance.measure(name, start, end);
-      }
-    } catch (err) {
-      /* Will throw if "start" or "end" don't match existing marks */
-    }
-  }, [name]);
-
+  usePerfMeasure(name, start, end);
   // For server-side execution
-  // NOTE: JSON.stringify used to properly quote the arguments
-  return isEnabled && typeof performance !== 'undefined' ? (
+  return isEnabled ? (
     <ServerOnlyScript>
-      {stringify`
-        if (typeof performance !== ${undefined}) {
-          performance.measure(
-            ${name},
-            ${start},
-            ${end}
-          );
-        }`}
+      {/* "start" and "end" intentionally omitted for SSR */}
+      {stringify`${isSupported} && performance.measure(${name});`}
     </ServerOnlyScript>
   ) : null;
 }

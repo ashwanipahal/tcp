@@ -43,12 +43,13 @@ export class GooglePlacesInput extends PureComponent {
   onBlur = () => {
     setTimeout(() => {
       // Need to add setTimeout as blur is calling first and then request to get detailed response
+      // Value set to 1000ms to handle all auto complete scenarios
       this.setState({
         active: false,
         touched: true,
         listViewDisplayed: false,
       });
-    }, 0);
+    }, 1000);
   };
 
   onPress = (data, details = null) => {

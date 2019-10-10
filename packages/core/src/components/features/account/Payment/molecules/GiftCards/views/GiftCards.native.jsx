@@ -52,7 +52,6 @@ const GiftCards = props => {
               ? getLabelValue(labels, 'ACC_LBL_GC_EMPTY_ADD_BTN')
               : getLabelValue(labels, 'ACC_LBL_ADD_BTN')
           }
-          buttonVariation="variable-width"
           fill="BLUE"
         />
       </ButtonWrapperStyle>

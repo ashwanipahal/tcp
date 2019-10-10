@@ -36,7 +36,10 @@ import { removeCartItem } from '../../CartItemTile/container/CartItemTile.action
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
-import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
+import {
+  closeMiniBag,
+  updateCartManually,
+} from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 
 // external helper function
@@ -111,11 +114,13 @@ function createMatchObject(res, translatedProductInfo) {
 export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
+    yield put(updateCartManually(true));
     const res = yield call(getOrderDetailsData);
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
 
     createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (after) {
       yield call(after);
     }

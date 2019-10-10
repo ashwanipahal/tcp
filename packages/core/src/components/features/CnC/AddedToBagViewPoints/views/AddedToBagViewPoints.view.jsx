@@ -26,7 +26,7 @@ const getPointsColor = isPlcc => {
   return 'orange.800';
 };
 
-const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
+const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, currencySymbol }) => {
   const {
     itemPrice,
     itemPoints,
@@ -44,7 +44,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
           className="text-value"
           colSize={{ large: 3, small: 2, medium: 2 }}
         >
-          {`$${itemPrice || 0}`}
+          {`${currencySymbol}${itemPrice || 0}`}
         </Col>
       </Row>
       {showPoints(userPoints) && (
@@ -77,7 +77,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc }) => {
           className="text-value"
           colSize={{ large: 3, small: 2, medium: 2 }}
         >
-          {`$${bagSubTotal || 0}`}
+          {`${currencySymbol}${bagSubTotal || 0}`}
         </Col>
       </Row>
       {showPoints(userPoints) && (
@@ -129,6 +129,7 @@ AddedToBagViewPoints.propTypes = {
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
   isPlcc: PropTypes.bool.isRequired,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);
