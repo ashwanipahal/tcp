@@ -171,6 +171,15 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  onLinkClick = ({ e, componentId }) => {
+    const { openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+  };
+
   renderEmptyBag = (
     productSectionData,
     bagLabels,
@@ -186,6 +195,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUserLoggedIn={isUserLoggedIn}
           isBagPageSflSection={isBagPageSflSection}
           showPlccApplyNow={showPlccApplyNow}
+          onLinkClick={this.onLinkClick}
         />
       );
     }
