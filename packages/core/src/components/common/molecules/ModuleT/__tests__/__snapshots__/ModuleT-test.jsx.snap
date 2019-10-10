@@ -83,11 +83,11 @@ exports[`ModuleT component renders correctly 1`] = `
             },
             "textItems": Array [
               Object {
-                "style": "medium_text_regular",
+                "style": "modT_medium_text_regular",
                 "text": "ALL GRAPHIC TEES",
               },
               Object {
-                "style": "percentage_all_wrapped_normal",
+                "style": "modT_percentage_all_wrapped_normal",
                 "text": "60 % OFF",
               },
             ],
@@ -125,9 +125,9 @@ exports[`ModuleT component renders correctly 1`] = `
         data-locator="moduleJ_promobanner_img_1"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,h_404,w_328",
-            "c_fill,g_face:center,h_400,w_324",
-            "c_fill,g_face:center,h_407,w_330",
+            "t_mod_T_img_m",
+            "t_mod_T_img_t",
+            "t_mod_T_img_d",
           ]
         }
         imgData={
@@ -218,11 +218,11 @@ exports[`ModuleT component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "medium_text_regular",
+                  "style": "modT_medium_text_regular",
                   "text": "ALL GRAPHIC TEES",
                 },
                 Object {
-                  "style": "percentage_all_wrapped_normal",
+                  "style": "modT_percentage_all_wrapped_normal",
                   "text": "60 % OFF",
                 },
               ],
@@ -257,9 +257,9 @@ exports[`ModuleT component renders correctly 1`] = `
         data-locator="moduleJ_promobanner_img_2"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,h_404,w_328",
-            "c_fill,g_face:center,h_400,w_324",
-            "c_fill,g_face:center,h_407,w_330",
+            "t_mod_T_img_m",
+            "t_mod_T_img_t",
+            "t_mod_T_img_d",
           ]
         }
         imgData={

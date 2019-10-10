@@ -19,7 +19,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/p/",
+                  "url": "http://www.childrensplace.com",
                 },
                 "textItems": Array [
                   Object {
@@ -30,6 +30,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
               },
             ]
           }
+          testID="moduleT_header_text"
           useStyle={true}
         />
       </Styled(View)>
@@ -45,24 +46,22 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
                 "target": "",
                 "text": "",
                 "title": "",
-                "url": "/c/",
+                "url": "http://www.childrensplace.com",
               },
               "textItems": Array [
                 Object {
-                  "style": "medium_text_regular",
-                  "style2": "extra_large_text_regular",
+                  "style": "modT_medium_text_regular",
                   "text": "ALL GRAPHIC TEES",
-                  "text2": "ALL SHORTS",
                 },
                 Object {
-                  "style": "percentage_wrapped_large_black",
-                  "style2": "extra_large_text_black",
+                  "style": "modT_percentage_all_wrapped_normal",
                   "text": "60 % OFF",
                 },
               ],
             },
           ]
         }
+        testID="moduleJ_promobanner_text"
       />
     </Styled(View)>
   </Styled(View)>
@@ -87,7 +86,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
         imgConfig="t_mod_T_img_m"
         source=""
         testID="undefined0"
-        url="https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1569002145/ecom/assets/products/tcp/3006086/3006086_10.jpg"
+        url="https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg"
         width="361px"
       />
     </Styled(Anchor)>
@@ -111,113 +110,11 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
         imgConfig="t_mod_T_img_m"
         source=""
         testID="undefined1"
-        url="https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1569002143/ecom/assets/products/tcp/3005541/3005541_SV.jpg"
+        url="https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png"
         width="361px"
       />
     </Styled(Anchor)>
   </Styled(View)>
-  <View>
-    <Styled(View)>
-      <ButtonList
-        buttonListVariation="linkCTAList"
-        buttonsData={
-          Array [
-            Object {
-              "button": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "Girl",
-                "title": "Girl",
-                "url": "/c/girls-clothing",
-              },
-              "image": Object {
-                "alt": "Girl",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              },
-            },
-            Object {
-              "button": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "Toddler Girl",
-                "title": "Toddler Girl",
-                "url": "/c/toddler-girl-clothes",
-              },
-              "image": Object {
-                "alt": "Girl",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              },
-            },
-            Object {
-              "button": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "Boy",
-                "title": "Boy",
-                "url": "/c/boys-clothing",
-              },
-              "image": Object {
-                "alt": "Girl",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              },
-            },
-            Object {
-              "button": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "Toddler Boy",
-                "title": "Toddler Boy",
-                "url": "/c/toddler-boy-clothes",
-              },
-              "image": Object {
-                "alt": "Girl",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              },
-            },
-            Object {
-              "button": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "Baby",
-                "title": "Baby",
-                "url": "/c/baby-clothes",
-              },
-              "image": Object {
-                "alt": "Girl",
-                "crop_d": "",
-                "crop_m": "",
-                "crop_t": "",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-              },
-            },
-          ]
-        }
-        color="gray"
-        locator="link_cta_list"
-      />
-    </Styled(View)>
-  </View>
+  <View />
 </Styled(View)>
 `;
