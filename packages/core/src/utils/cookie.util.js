@@ -1,4 +1,5 @@
-import { isClient, isMobileApp } from './utils';
+import { isClient, isMobileApp, getAPIConfig } from './utils';
+import { API_CONFIG } from '../services/config';
 
 export const CART_ITEM_COUNTER = 'cartItemsCount';
 export const SFL_ITEM_COUNTER = 'sflItemsCount_US';
@@ -106,25 +107,13 @@ export function getSflItemCount(siteId) {
  * @return  {String}  - string of cookies
  */
 export function generateSessionId() {
-  const sessionCookies = ['QuantumMetricSessionID'];
-  let cookie = '';
+  const { sessionCookieKey } = API_CONFIG;
 
-  // eslint-disable-next-line no-plusplus
-  for (let index = 0; index < sessionCookies.length; index++) {
-    const sessionCookieKey = sessionCookies[index];
-    const cookieValue = readCookie(
-      sessionCookieKey,
-      !isClient() ? this.configOptions.cookie : null
-    );
-
-    if (cookieValue) {
-      cookie = cookieValue;
-      break;
-    }
-  }
+  const cookieValue = readCookie(sessionCookieKey, !isClient() ? getAPIConfig().cookie : null);
 
   return (
-    cookie && `${cookie.substring(0, 4).toUpperCase()}-${cookie.substring(4, 8).toUpperCase()}`
+    cookieValue &&
+    `${cookieValue.substring(0, 4).toUpperCase()}-${cookieValue.substring(4, 8).toUpperCase()}`
   );
 }
 /**
