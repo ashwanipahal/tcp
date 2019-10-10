@@ -1,8 +1,8 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { withRouter } from 'next/router'; // eslint-disable-line
-import OutfitDetails from '../views/index';
+import OutfitDetails from '../views/OutfitDetails.view.native';
 import { getLabels, getOutfitImage, getOutfitProducts } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import { getPlpLabels } from '../../ProductDetail/container/ProductDetail.selectors';
@@ -18,10 +18,10 @@ class OutfitDetailsContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getOutfit,
-      router: {
-        query: { vendorColorProductIdsList, outfitId },
-      },
+      navigation: { getParam },
     } = this.props;
+    const vendorColorProductIdsList = getParam('vendorColorProductIdsList');
+    const outfitId = getParam('outfitId');
     getOutfit({ outfitId, vendorColorProductIdsList });
   }
 
@@ -53,7 +53,7 @@ class OutfitDetailsContainer extends React.PureComponent {
         />
       );
     }
-    return '';
+    return <Text />;
   }
 }
 
@@ -94,6 +94,9 @@ OutfitDetailsContainer.propTypes = {
   currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
   currencyExchange: PropTypes.string,
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -111,9 +114,7 @@ OutfitDetailsContainer.defaultProps = {
   currencyExchange: [{ exchangevalue: 1 }],
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(OutfitDetailsContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OutfitDetailsContainer);

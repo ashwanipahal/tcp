@@ -41,6 +41,7 @@ import PointsClaimReducer from '@tcp/core/src/components/features/account/Points
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import OutfitDetailReducer from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.reducer';
 import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
@@ -99,6 +100,7 @@ import {
   SLP_PAGE_REDUCER_KEY,
   EXTRA_POINTS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  OUTFIT_DETAILS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -202,6 +204,7 @@ const rootReducer = combineReducers({
   [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
+  [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
 });
 
 export default rootReducer;

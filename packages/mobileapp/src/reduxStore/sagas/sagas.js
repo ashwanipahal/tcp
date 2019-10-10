@@ -49,6 +49,7 @@ import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/Sto
 import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
+import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -115,5 +116,6 @@ export default function* rootSaga() {
     PickupStoreSaga(),
     ExtraPointsSaga(),
     SearchBarSaga(),
+    OutfitDetailsSaga(),
   ]);
 }
