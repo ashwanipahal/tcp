@@ -92,18 +92,11 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -247,18 +240,11 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -402,18 +388,11 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -557,18 +536,11 @@ exports[`StoreSearch component component renders correctly with proper elements 
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>

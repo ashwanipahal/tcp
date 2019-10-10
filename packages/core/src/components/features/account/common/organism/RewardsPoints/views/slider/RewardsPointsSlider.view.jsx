@@ -48,7 +48,7 @@ const RewardsPointsSlider = ({
                 fontFamily="secondary"
                 fontSize="fs13"
               >
-                {`${getLabelValue(labels, 'lbl_rewardPoints_heading')}`}
+                {`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
                 <BodyCopy
                   data-locator="slidermyrewardsvalue"
                   component="span"

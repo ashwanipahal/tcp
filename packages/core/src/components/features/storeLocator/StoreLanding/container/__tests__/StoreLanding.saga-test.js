@@ -1,4 +1,4 @@
-import { call, takeLatest, select } from 'redux-saga/effects';
+import { call, takeLatest, select, put } from 'redux-saga/effects';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 import { getLocationStores } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import STORE_LOCATOR_CONSTANTS from '../StoreLanding.constants';
@@ -7,6 +7,7 @@ import StoreSaga, {
   getFavoriteStoreSaga,
   setFavoriteStoreSaga,
 } from '../StoreLanding.saga';
+import { setStoresByCoordinates } from '../StoreLanding.actions';
 
 describe('Store Locator saga', () => {
   test('should test watch Store Landing page action', () => {
@@ -41,7 +42,7 @@ describe('Store Locator saga', () => {
     test('default', () => {
       const generator = fetchLocationStoresSaga({ payload });
       expect(generator.next().value).toEqual(call(getLocationStores, payload));
-      expect(generator.next().value).toEqual(null);
+      expect(generator.next().value).toEqual(put(setStoresByCoordinates([])));
     });
   });
 

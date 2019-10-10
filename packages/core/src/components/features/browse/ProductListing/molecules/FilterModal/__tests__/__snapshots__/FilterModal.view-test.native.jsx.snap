@@ -27,10 +27,13 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
         <Styled(View)>
           <Styled(Text) />
           <Styled(TouchableOpacity)
+            accessibilityLabel="Close button"
             accessibilityRole="button"
+            isButton={true}
             onPress={[Function]}
           >
             <Styled(CustomIcon)
+              accessibilityLabel=""
               color="gray.900"
               dataLocator=""
               iconFontName="FontAwesome"

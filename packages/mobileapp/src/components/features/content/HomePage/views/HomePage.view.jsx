@@ -20,8 +20,10 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
+import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT/views/ModuleT.native';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
@@ -89,33 +91,8 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Details"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreDetails',
-              params: { title: 'Store Details'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
-
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Landing"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreLanding',
-              params: { title: 'Find A Store'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
-
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
       </LazyloadScrollView>
     );
   }

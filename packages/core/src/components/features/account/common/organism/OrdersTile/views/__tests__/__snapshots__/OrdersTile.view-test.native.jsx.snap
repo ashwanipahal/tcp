@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersTile component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_ordersTile_heading"
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <OrdersTileItem
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 6, 2019",
+        "orderNumber": "7000037170",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$24.95",
+        "orderTracking": "N/A",
+      }
+    }
+  />
+  <OrdersTileItem
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 4, 2019",
+        "orderNumber": "7000037171",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$24.959",
+        "orderTracking": "N/A",
+      }
+    }
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_ordersTile_viewAllOrders"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`OrdersTile component should render correctly 2`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_ordersTile_heading"
+    textDecoration={null}
+  />
+  <Styled(View) />
+  <EmptyOrdersTile
+    labels={Object {}}
+    navigation={Object {}}
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="variable-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_ordersTile_viewAllOrders"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
