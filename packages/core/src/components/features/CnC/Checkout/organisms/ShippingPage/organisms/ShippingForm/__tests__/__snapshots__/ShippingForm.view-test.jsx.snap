@@ -1131,18 +1131,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
                       "field": "address.addressLine1",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -1261,10 +1249,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -1583,18 +1567,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
                       "field": "address.addressLine1",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -1713,10 +1685,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
