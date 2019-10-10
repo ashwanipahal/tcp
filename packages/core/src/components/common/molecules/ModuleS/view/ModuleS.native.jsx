@@ -34,6 +34,7 @@ const getImageConfig = hasRibbon => {
   if (hasRibbon) {
     return config.IMG_DATA_GYM_RIBBON.crops[0];
   }
+
   return isGymboree() ? config.IMG_DATA_GYM.crops[0] : config.IMG_DATA_TCP.crops[0];
 };
 

@@ -2,7 +2,6 @@
 
 exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 <View>
-  <Connect(ToastContainer) />
   <CouponDetailModal
     commonLabels={Object {}}
     coupon={Object {}}
@@ -59,7 +58,6 @@ exports[`MyRewards should render carousel if coupons are avalable 1`] = `
 
 exports[`MyRewards should render correctly 1`] = `
 <View>
-  <Connect(ToastContainer) />
   <CouponDetailModal
     commonLabels={Object {}}
     coupon={Object {}}
