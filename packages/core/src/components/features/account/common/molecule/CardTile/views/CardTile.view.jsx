@@ -175,6 +175,7 @@ class CardTile extends React.Component<Props> {
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
+            buttonVariation="variable-width"
           >
             {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
