@@ -122,7 +122,7 @@ export class VenmoPaymentButton extends Component {
     return (
       <View className={className}>
         {enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-          <VenmoButton accessibilityRole="none">
+          <VenmoButton accessibilityRole="button">
             <Image source={venmoIconBlue} width={150} height={28} />
           </VenmoButton>
         )}
