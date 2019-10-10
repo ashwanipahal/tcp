@@ -160,18 +160,12 @@ class AddressForm extends React.PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
           />
         </SaveButtonWrapper>
 
         <CancelButtonWrapper>
-          <Button
-            fill="WHITE"
-            onPress={onCancel}
-            buttonVariation="variable-width"
-            text={addressFormLabels.cancel}
-          />
+          <Button fill="WHITE" onPress={onCancel} text={addressFormLabels.cancel} />
         </CancelButtonWrapper>
       </AddAddressWrapper>
     );

@@ -285,7 +285,6 @@ export default class AddressVerification extends React.PureComponent {
                   color="white"
                   fill="BLUE"
                   text={verifyAddressLabels.continueCta}
-                  buttonVariation="variable-width"
                   onPress={this.onConfirm}
                 />
               </ButtonWrapper>
@@ -294,7 +293,6 @@ export default class AddressVerification extends React.PureComponent {
                   color={colorPallete.red[300]}
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
-                  buttonVariation="variable-width"
                   onPress={this.onClose}
                 />
               </ButtonWrapper>
