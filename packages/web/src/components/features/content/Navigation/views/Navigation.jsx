@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
@@ -12,7 +13,9 @@ import style from '../Navigation.style';
  * @param {*} closeNavigationDrawer
  */
 const handleRouteChange = closeNavigationDrawer => () => {
-  closeNavigationDrawer();
+  if (!getViewportInfo().isDesktop) {
+    closeNavigationDrawer();
+  }
 };
 
 /**
