@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Image, BodyCopy, Anchor } from '../../../../../common/atoms';
+import FulfillmentSection from '../../../../../common/organisms/FulfillmentSection';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
 import {
@@ -8,6 +9,7 @@ import {
   getMapSliceForColorProductId,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
+import { getLocator } from '../../../../../../utils';
 import withStyles from '../../../../../common/hoc/withStyles';
 import OutfitProductStyle from './OutfitProduct.style';
 
@@ -23,6 +25,7 @@ const OutfitDetailsView = ({
   currencySymbol,
   priceCurrency,
   currencyExchange,
+  handleAddToBag,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -79,11 +82,15 @@ const OutfitDetailsView = ({
           />
         </div>
         <ProductAddToBagContainer
-          handleFormSubmit={() => {}}
-          errorOnHandleSubmit={() => {}}
+          handleFormSubmit={handleAddToBag}
           currentProduct={outfitProduct}
           plpLabels={plpLabels}
-          onChangeColor={() => {}}
+        />
+        <FulfillmentSection
+          btnClassName="added-to-bag"
+          dataLocator={getLocator('global_addtocart_Button')}
+          buttonLabel="Fulfilment Section"
+          currentProduct={outfitProduct}
         />
       </Col>
     </Row>
@@ -102,6 +109,7 @@ OutfitDetailsView.propTypes = {
   currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
   currencyExchange: PropTypes.string,
+  handleAddToBag: PropTypes.func.isRequired,
 };
 
 OutfitDetailsView.defaultProps = {
