@@ -103,7 +103,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
@@ -417,7 +417,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}

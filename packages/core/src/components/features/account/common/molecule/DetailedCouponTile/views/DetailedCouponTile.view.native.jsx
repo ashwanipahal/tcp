@@ -263,7 +263,6 @@ export class DetailedCouponTile extends React.Component {
             ) : (
               <CustomButton
                 text={addToBagCTALabel}
-                buttonVariation="variable-width"
                 disabled={isApplyButtonDisabled}
                 fill="BLUE"
                 color={colorPallete.white}

@@ -171,7 +171,6 @@ class LoginForm extends React.PureComponent<Props> {
           <CustomButton
             fill="BLUE"
             text={getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
-            buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
             onPress={this.handleLoginClick}
           />

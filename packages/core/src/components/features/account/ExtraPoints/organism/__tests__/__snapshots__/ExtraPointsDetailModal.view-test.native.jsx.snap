@@ -56,7 +56,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
