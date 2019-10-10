@@ -4,7 +4,7 @@ const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImag
 export default {
   moduleT: {
     contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
-    name: 'moduleJ',
+    name: 'moduleT',
     type: 'module',
     composites: {
       ctaType: ctaTypes[0],

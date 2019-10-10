@@ -5,7 +5,7 @@ import { Col, DamImage, Row } from '../../../atoms';
 import { ButtonList, Grid, LinkText, PromoBanner } from '../..';
 import withStyles from '../../../hoc/withStyles';
 import moduleTStyle from '../styles/ModuleT.style';
-import { getLocator } from '../../../../../utils';
+import { getLocator, isGymboree } from '../../../../../utils';
 import config from '../moduleT.config';
 
 /**
@@ -18,8 +18,38 @@ import config from '../moduleT.config';
  * @param {mediaLinkedList} mediaLinkedList promo images list
  */
 class ModuleT extends React.PureComponent {
+  /* This method returns module's Header  */
+  getHeader = () => {
+    const { headerText } = this.props;
+    return (
+      headerText && (
+        <LinkText
+          component="div"
+          headerText={headerText}
+          className="header"
+          headingClass="moduleT-header"
+          dataLocator={getLocator('moduleT_header_text')}
+        />
+      )
+    );
+  };
+
+  /* This method returns module promo banner  */
+  getPromoBanner = () => {
+    const { promoBanner } = this.props;
+    return (
+      promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          className="promoBanner"
+          dataLocator={getLocator('moduleT_promobanner_text')}
+        />
+      )
+    );
+  };
+
   render() {
-    const { className, ctaItems, ctaType, headerText, promoBanner, mediaLinkedList } = this.props;
+    const { className, ctaItems, ctaType, mediaLinkedList } = this.props;
     const { ctaTypes, PROMO_IMG_DATA } = config;
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
@@ -28,31 +58,15 @@ class ModuleT extends React.PureComponent {
 
     return (
       <Grid className={`${className} moduleT`}>
-        <div className="header-wrapper-smallOnly">
-          {headerText && (
-            <LinkText
-              component="div"
-              headerText={headerText}
-              className="header"
-              headingClass="moduleT-header"
-              dataLocator={getLocator('moduleT_header_text')}
-            />
-          )}
-        </div>
-        <div className="promo-wrapper-smallOnly">
-          {promoBanner && (
-            <PromoBanner
-              promoBanner={promoBanner}
-              className="promoBanner"
-              dataLocator={getLocator('moduleT_promobanner_text')}
-            />
-          )}
+        <div className="smallOnlyView">
+          {this.getHeader()}
+          {this.getPromoBanner()}
         </div>
         <Row className="moduleT-promo-wrapper">
           <Col
             className="promo-image-left"
             colSize={{
-              small: 0,
+              small: 3,
               medium: 2,
               large: 3,
             }}
@@ -61,16 +75,21 @@ class ModuleT extends React.PureComponent {
               medium: 1,
               large: 1,
             }}
+            ignoreGutter={{
+              medium: true,
+            }}
           >
-            <DamImage
-              imgConfigs={PROMO_IMG_DATA.imgConfig}
-              imgData={promoImage1}
-              data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
-              link={promoLink1}
-            />
+            {promoImage1 && (
+              <DamImage
+                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgData={promoImage1}
+                data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
+                link={promoLink1}
+              />
+            )}
           </Col>
           <Col
-            className=""
+            className="header-promo-wrapper"
             colSize={{
               small: 0,
               medium: 2,
@@ -79,27 +98,12 @@ class ModuleT extends React.PureComponent {
             hideCol={{
               small: true,
             }}
+            ignoreGutter={{
+              medium: true,
+            }}
           >
-            <div className="moduleT-header-wrapper">
-              {headerText && (
-                <LinkText
-                  component="div"
-                  headerText={headerText}
-                  className="header"
-                  headingClass="moduleT-header"
-                  dataLocator={getLocator('moduleT_header_text')}
-                />
-              )}
-            </div>
-            <div className="moduleT-promo-wrapper">
-              {promoBanner && (
-                <PromoBanner
-                  promoBanner={promoBanner}
-                  className="promoBanner"
-                  dataLocator={getLocator('moduleT_promobanner_text')}
-                />
-              )}
-            </div>
+            {this.getHeader()}
+            {this.getPromoBanner()}
           </Col>
           <Col
             className="promo-image-right"
@@ -113,16 +117,25 @@ class ModuleT extends React.PureComponent {
               medium: 1,
               large: 1,
             }}
+            ignoreGutter={{
+              medium: true,
+            }}
           >
-            <DamImage
-              imgConfigs={PROMO_IMG_DATA.imgConfig}
-              imgData={promoImage2}
-              data-locator={`${getLocator('moduleT_promobanner_img')}${2}`}
-              link={promoLink2}
-            />
+            {promoImage2 && (
+              <DamImage
+                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgData={promoImage2}
+                data-locator={`${getLocator('moduleT_promobanner_img')}${2}`}
+                link={promoLink2}
+              />
+            )}
           </Col>
         </Row>
-        <div className={`button-list-container ${buttonListCtaType}`}>
+        <div
+          className={`button-list-container ${buttonListCtaType} ${
+            isGymboree() ? 'gymboree-button-list' : 'tcp-button-list'
+          }`}
+        >
           {ctaItems && (
             <ButtonList
               buttonsData={ctaItems}
