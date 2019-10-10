@@ -29,7 +29,7 @@ exports[`MyRewards should render correctly 1`] = `
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_common_point_balance"
         textDecoration={null}
       />
       <Connect(RewardsPointsContainer) />

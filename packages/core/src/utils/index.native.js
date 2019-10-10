@@ -55,4 +55,6 @@ export {
   buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';

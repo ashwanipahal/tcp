@@ -97,32 +97,6 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Details"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreDetails',
-              params: { title: 'Store Details'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
-
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Landing"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreLanding',
-              params: { title: 'Find A Store'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
-
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
       </LazyloadScrollView>
     );

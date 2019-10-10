@@ -198,7 +198,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
             </ForwardRef>
           </ForwardRef>
           <Measure
-            name="render_cart_total"
+            name="pricing_visible"
           />
         </React.Fragment>
       }
@@ -405,7 +405,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       </Styled(Row)>
     </Styled(Grid)>
     <Measure
-      name="render_cart_total"
+      name="pricing_visible"
     />
   </div>
 </div>
@@ -1006,7 +1006,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             </ForwardRef>
           </ForwardRef>
           <Measure
-            name="render_cart_total"
+            name="pricing_visible"
           />
         </React.Fragment>
       }
@@ -1608,7 +1608,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       </Styled(Row)>
     </Styled(Grid)>
     <Measure
-      name="render_cart_total"
+      name="pricing_visible"
     />
   </div>
 </div>
@@ -2155,7 +2155,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
             </ForwardRef>
           </ForwardRef>
           <Measure
-            name="render_cart_total"
+            name="pricing_visible"
           />
         </React.Fragment>
       }
@@ -2703,7 +2703,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
       </Styled(Row)>
     </Styled(Grid)>
     <Measure
-      name="render_cart_total"
+      name="pricing_visible"
     />
   </div>
 </div>
