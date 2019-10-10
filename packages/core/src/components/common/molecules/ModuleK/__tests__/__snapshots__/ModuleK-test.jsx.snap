@@ -257,6 +257,11 @@ exports[`ModuleK component renders correctly 1`] = `
     @media ",
                 [Function],
                 " {
+      display: inline;
+    }
+    @media ",
+                [Function],
+                " {
       font-size: ",
                 [Function],
                 ";
