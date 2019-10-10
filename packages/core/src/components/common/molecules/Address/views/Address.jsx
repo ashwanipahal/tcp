@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/Address.style';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
@@ -92,20 +94,22 @@ const Address = ({
           {getUserName({ address, isDefault, showDefault })}
         </BodyCopy>
       )}
-      {address.addressLine
-        ? getAddessLines({ address, dataLocatorPrefix })
-        : getAddressfromDiffLines(address, dataLocatorPrefix)}
-      {getFormattedAddress(address, dataLocatorPrefix)}
-      {showCountry && address.country && (
-        <BodyCopy component="p" fontFamily="secondary" className="address text-break">
-          {address.country}
-        </BodyCopy>
-      )}
-      {showPhone && address.phone1 && (
-        <BodyCopy component="p" fontFamily="secondary" className="address text-break">
-          {address.phone1}
-        </BodyCopy>
-      )}
+      <div className="addressLine">
+        {address.addressLine
+          ? getAddessLines({ address, dataLocatorPrefix })
+          : getAddressfromDiffLines(address, dataLocatorPrefix)}
+        {getFormattedAddress(address, dataLocatorPrefix)}
+        {showCountry && address.country && (
+          <BodyCopy component="p" fontFamily="secondary" className="address text-break">
+            {address.country}
+          </BodyCopy>
+        )}
+        {showPhone && address.phone1 && (
+          <BodyCopy component="p" fontFamily="secondary" className="address text-break">
+            {address.phone1}
+          </BodyCopy>
+        )}
+      </div>
     </BodyCopy>
   ) : null;
 };
@@ -134,4 +138,4 @@ Address.defaultProps = {
   showDefault: true,
 };
 
-export default Address;
+export default withStyles(Address, styles);
