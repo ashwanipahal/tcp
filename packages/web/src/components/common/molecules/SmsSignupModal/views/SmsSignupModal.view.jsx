@@ -116,7 +116,7 @@ class SmsSignupModal extends React.PureComponent {
           onRequestClose={this.closeModal}
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
-          heightConfig={{ minHeight: '500px', height: '560px', maxHeight: '560px' }}
+          heightConfig={{ minHeight: '500px', height: '620px', maxHeight: '620px' }}
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
           }
@@ -139,9 +139,11 @@ class SmsSignupModal extends React.PureComponent {
                   className="img-wrapper"
                 >
                   <DamImage
-                    alt={formViewConfig.imageAltText}
                     imgConfigs={IMG_DATA.imgConfig}
-                    imgData={formViewConfig.lbl_SignUp_imageSrc}
+                    imgData={{
+                      url: formViewConfig.lbl_SignUp_imageSrc,
+                      alt: formViewConfig.lbl_SignUp_imageAlt,
+                    }}
                   />
                 </Col>
                 <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
@@ -175,9 +177,11 @@ class SmsSignupModal extends React.PureComponent {
                     className="img-wrapper"
                   >
                     <DamImage
-                      alt={formViewConfig.imageAltText}
                       imgConfigs={IMG_DATA.imgConfig}
-                      imgData={formViewConfig.lbl_SignUp_imageSrc}
+                      imgData={{
+                        url: formViewConfig.lbl_SignUp_imageSrc,
+                        alt: formViewConfig.lbl_SignUp_imageAlt,
+                      }}
                     />
                   </Col>
                   <Col colSize={{ small: 6, medium: 8, large: 8 }}>

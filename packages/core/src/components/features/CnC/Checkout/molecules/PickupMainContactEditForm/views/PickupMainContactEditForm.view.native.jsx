@@ -32,7 +32,6 @@ class PickupMainContactEditForm extends React.Component {
       <Button
         fill="BLUE"
         color="white"
-        buttonVariation="variable-width"
         text={labels.btnSaveUpdate}
         onPress={handleSubmit(this.pickupEditSubmit)}
       />

@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
+import CookieManager from 'react-native-cookies';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -47,6 +48,16 @@ export const importGraphQLClientDynamically = module => {
     }
   });
 };
+export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'promoList':
+      resolve(require('../services/handler/graphQL/queries/promoList'));
+      break;
+    default:
+      reject();
+      break;
+  }
+};
 
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
@@ -78,8 +89,11 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
     default:
-      reject();
-      break;
+      importOtherGraphQLQueries({
+        query,
+        resolve,
+        reject,
+      });
   }
 };
 
@@ -362,6 +376,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKey = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`];
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
@@ -370,9 +385,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`]}/${
+    unboxKey: `${unbxdApiKey}/${
       envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
     }`,
+    unbxdApiKey,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
@@ -597,4 +613,18 @@ export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month
     date: currentDate.format(date),
     year: currentDate.format(year),
   };
+};
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = key => {
+  const apiConfigObj = getAPIConfig();
+  return new Promise((resolve, reject) => {
+    CookieManager.get(apiConfigObj.domain)
+      .then(response => {
+        return resolve(response[key]);
+      })
+      .catch(e => reject(e));
+  });
 };

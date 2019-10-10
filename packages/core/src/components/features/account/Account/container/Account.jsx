@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
+import accountPageNameMapping from '../AccountPageNameMapping';
 import utils from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
@@ -17,10 +18,16 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * @param {router} router Router object to get the query key
  */
 
+const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
   constructor(props) {
     super(props);
-    const activeComponent = utils.getObjectValue(props.router, 'account-overview', 'query', 'id');
+    const activeComponent = utils.getObjectValue(
+      props.router,
+      DEFAULT_ACTIVE_COMPONENT,
+      'query',
+      'id'
+    );
     this.state = {
       componentToLoad:
         utils.getObjectValue(props.router, undefined, 'query', 'subSection') || activeComponent,
@@ -43,7 +50,7 @@ export class Account extends React.PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
       nextProps.router,
-      'account-overview',
+      DEFAULT_ACTIVE_COMPONENT,
       'query',
       'id'
     );
@@ -92,6 +99,18 @@ export class Account extends React.PureComponent {
 }
 
 Account.getInitActions = () => initActions;
+
+Account.getInitialProps = (reduxProps, pageProps) => {
+  const componentToLoad = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageName: accountPageNameMapping[componentToLoad]
+        ? accountPageNameMapping[componentToLoad].pageName
+        : '',
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {

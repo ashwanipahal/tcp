@@ -135,7 +135,6 @@ class ModuleQ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-    selectedProductList = selectedProductList.concat(selectedProductList);
 
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>

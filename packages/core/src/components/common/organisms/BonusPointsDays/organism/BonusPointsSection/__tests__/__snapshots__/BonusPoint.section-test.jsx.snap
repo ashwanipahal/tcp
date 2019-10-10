@@ -124,6 +124,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         </React.Fragment>
       }
       className=""
+      defaultOpen={true}
       header={
         <div
           className="elem-mb-SM"
@@ -496,6 +497,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         </React.Fragment>
       }
       className=""
+      defaultOpen={true}
       header={
         <div
           className="elem-mb-SM"
@@ -878,6 +880,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         </React.Fragment>
       }
       className=""
+      defaultOpen={true}
       header={
         <div
           className="elem-mb-SM"
@@ -1260,6 +1263,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         </React.Fragment>
       }
       className=""
+      defaultOpen={true}
       header={
         <div
           className="elem-mb-SM"
@@ -1609,6 +1613,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         </React.Fragment>
       }
       className=""
+      defaultOpen={true}
       header={
         <div
           className="elem-mb-SM"

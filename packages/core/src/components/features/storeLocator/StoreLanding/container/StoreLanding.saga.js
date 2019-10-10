@@ -15,10 +15,11 @@ export function* fetchLocationStoresSaga({ payload }) {
     if (res && Array.isArray(res)) {
       yield put(setStoresByCoordinates(res));
     } else {
+      yield put(setStoresByCoordinates([]));
       throw res;
     }
   } catch (err) {
-    yield null;
+    yield put(setStoresByCoordinates([]));
   }
 }
 
