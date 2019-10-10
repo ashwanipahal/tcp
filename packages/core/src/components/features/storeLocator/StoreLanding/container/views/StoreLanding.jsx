@@ -203,15 +203,6 @@ export class StoreLanding extends PureComponent {
               </Col>
             </Row>
           </Col>
-        </Row>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row className="storeView__List" fullBleed>
-              {mapView
-                ? this.renderMapView(modifiedStoreList)
-                : this.renderStoreList(modifiedStoreList)}
-            </Row>
-          </Col>
           {!!modifiedStoreList.length && (
             <Col
               colSize={{ large: 6, medium: 8, small: 6 }}
@@ -226,6 +217,15 @@ export class StoreLanding extends PureComponent {
               />
             </Col>
           )}
+        </Row>
+        <Row>
+          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+            <Row className="storeView__List" fullBleed>
+              {mapView
+                ? this.renderMapView(modifiedStoreList)
+                : this.renderStoreList(modifiedStoreList)}
+            </Row>
+          </Col>
         </Row>
       </Grid>
     );
