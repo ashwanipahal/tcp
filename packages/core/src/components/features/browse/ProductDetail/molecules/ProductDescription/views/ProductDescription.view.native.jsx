@@ -7,6 +7,7 @@ import {
   StyleProductDescription,
   StyleLongDescription,
   ImageStyleWrapper,
+  ItemStyleWrapper,
 } from '../ProductDescription.native.style';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -49,8 +50,8 @@ class ProductDetailDescription extends React.PureComponent {
   };
 
   render() {
-    const { longDescription, shortDescription, pdpLabels } = this.props;
-    const { ProductDescription, ClaimMessage } = pdpLabels;
+    const { longDescription, shortDescription, pdpLabels, itemPartNumber } = this.props;
+    const { ProductDescription, ClaimMessage, PartNumber } = pdpLabels;
     const { isAccordionOpen } = this.state;
     return (
       <View>
@@ -94,7 +95,16 @@ class ProductDetailDescription extends React.PureComponent {
               spacingStyles="padding-top-LRG"
               fontFamily="secondary"
               fontSize="fs14"
+              fontWeight="regular"
             />
+            <ItemStyleWrapper>
+              <BodyCopy
+                text={`${PartNumber} ${itemPartNumber}`}
+                fontFamily="secondary"
+                fontWeight="regular"
+                fontSize="fs10"
+              />
+            </ItemStyleWrapper>
           </>
         ) : null}
       </View>
@@ -106,12 +116,14 @@ ProductDetailDescription.propTypes = {
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
 };
 
 ProductDetailDescription.defaultProps = {
   longDescription: '',
   pdpLabels: {},
   shortDescription: '',
+  itemPartNumber: '',
 };
 
 export default ProductDetailDescription;

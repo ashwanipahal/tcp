@@ -40,7 +40,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
         margin="16px 0 0 0"
         color="white"
         fill="BLUE"
-        buttonVariation="variable-width"
         text={addToBag}
         fontSize="fs10"
         fontWeight="extrabold"

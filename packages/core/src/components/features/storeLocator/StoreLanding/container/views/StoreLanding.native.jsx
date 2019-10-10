@@ -40,8 +40,8 @@ export class StoreLanding extends PureComponent {
     navigateToNestedRoute(navigation, 'HomeStack', 'StoreDetails');
   };
 
-  renderList = (modifiedStoreList, searchDone) => {
-    const { labels, setFavoriteStore, favoriteStore } = this.props;
+  renderList = modifiedStoreList => {
+    const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
     const { mapView } = this.state;
     return searchDone && !modifiedStoreList.length ? (
       <Text>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</Text>
@@ -153,12 +153,14 @@ StoreLanding.propTypes = {
   loadStoresByCoordinates: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
   geoLocationEnabled: PropTypes.bool,
+  searchDone: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
   geoLocationEnabled: false,
+  searchDone: false,
 };
 
 export default withTheme(StoreLanding);

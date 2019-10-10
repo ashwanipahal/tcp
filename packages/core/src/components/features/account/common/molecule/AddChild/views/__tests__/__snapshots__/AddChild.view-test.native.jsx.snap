@@ -603,7 +603,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   >
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -630,7 +630,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   >
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

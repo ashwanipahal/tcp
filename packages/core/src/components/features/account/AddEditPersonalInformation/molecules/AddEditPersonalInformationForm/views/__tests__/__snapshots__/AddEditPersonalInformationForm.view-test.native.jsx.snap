@@ -544,7 +544,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -569,7 +569,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
