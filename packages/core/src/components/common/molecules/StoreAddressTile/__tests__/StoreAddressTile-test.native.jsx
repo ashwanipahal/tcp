@@ -15,6 +15,24 @@ const props = {
 };
 
 describe('StoreAddressTile component', () => {
+  const RealDate = Date;
+
+  function mockDate(isoDate) {
+    global.Date = class extends RealDate {
+      constructor() {
+        return new RealDate(isoDate);
+      }
+    };
+  }
+
+  afterEach(() => {
+    global.Date = RealDate;
+  });
+
+  beforeEach(() => {
+    mockDate('2019-09-18 20:00:00');
+  });
+
   describe('Details', () => {
     it('StoreAddressTile component renders correctly', () => {
       const component = shallow(<StoreAddressTile {...props} />);
