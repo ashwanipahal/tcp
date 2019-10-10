@@ -3,7 +3,7 @@ export default {
   ctaTypes: {
     stackedCTAButtons: 'stackedCTAList',
     linkList: 'linkCTAList',
-    CTAButtonCarousel: 'scrollCTAList',
+    scrollCTAList: 'scrollCTAList',
     divImageCTACarousel: 'imageCTAList',
   },
 };

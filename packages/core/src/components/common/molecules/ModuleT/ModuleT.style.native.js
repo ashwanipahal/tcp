@@ -66,18 +66,13 @@ export const MessageContainer = styled.View`
 
 export const Border = styled.View`
   height: 0.5px;
-  background: ${props =>
-    props.background === 'text'
-      ? props.theme.colors.BUTTON.WHITE.BORDER
-      : props.theme.colorPalette.gray[700]};
+  background: ${props => props.theme.colorPalette.gray[700]};
 `;
-
-export const DivImageCTAContainer = styled.View``;
 
 export const ButtonLinksContainer = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  background: #003057;
+  background: ${props => props.theme.colorPalette.navyblue.dark};
 `;
 
 export default {
@@ -92,6 +87,5 @@ export default {
   MessageContainer,
   Border,
   Wrapper,
-  DivImageCTAContainer,
   ButtonLinksContainer,
 };

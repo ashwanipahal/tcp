@@ -72,6 +72,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      key="0"
       locator=""
       onPress={null}
       text=""
@@ -95,6 +96,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      key="1"
       locator=""
       onPress={null}
       text=""
@@ -115,9 +117,10 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
     </Styled(Anchor)>
   </Styled(View)>
   <View>
-    <Styled(View)>
+    <View>
+      <Styled(View) />
       <ButtonList
-        buttonListVariation="imageCTAList"
+        buttonListVariation="stackedCTAList"
         buttonsData={
           Array [
             Object {
@@ -212,10 +215,11 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
             },
           ]
         }
-        color="black"
-        locator="moduleT_cta_links"
+        color="fixed-width"
+        locator="stacked_cta_list"
       />
-    </Styled(View)>
+      <Styled(View) />
+    </View>
   </View>
 </Styled(View)>
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Anchor, DamImage } from '../../../atoms';
-import { getLocator } from '../../../../../utils/index.native';
+import { getLocator } from '../../../../../utils';
 import config from '../config';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
@@ -15,14 +15,13 @@ import {
   ImageContainer,
   MessageContainer,
   Wrapper,
-  DivImageCTAContainer,
   ButtonContainer,
   ButtonLinksContainer,
   Border,
 } from '../ModuleT.style.native';
 
 // TODO: keys will be changed once we get the actual data from CMS
-const { IMG_DATA } = config;
+const { IMG_DATA, ctaTypes } = config;
 
 /**
  * These are button width.
@@ -69,15 +68,15 @@ class ModuleT extends React.PureComponent {
   renderButtonList(ctaType, navigation, ctaItems) {
     return (
       <View>
-        {ctaType === 'imageCTAList' && (
-          <DivImageCTAContainer>
+        {ctaType === ctaTypes.divImageCTACarousel && (
+          <View>
             {this.renderButtonListItem(ctaType, navigation, ctaItems, 'moduleT_cta_links', 'black')}
-          </DivImageCTAContainer>
+          </View>
         )}
 
-        {ctaType === 'stackedCTAList' && (
+        {ctaType === ctaTypes.stackedCTAButtons && (
           <View>
-            <Border background="gray" />
+            <Border />
             {this.renderButtonListItem(
               ctaType,
               navigation,
@@ -85,17 +84,17 @@ class ModuleT extends React.PureComponent {
               'stacked_cta_list',
               'fixed-width'
             )}
-            <Border background="gray" />
+            <Border />
           </View>
         )}
 
-        {ctaType === 'scrollCTAList' && (
+        {ctaType === ctaTypes.scrollCTAList && (
           <ButtonContainer>
             {this.renderButtonListItem(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
           </ButtonContainer>
         )}
 
-        {ctaType === 'linkCTAList' && (
+        {ctaType === ctaItems.linkList && (
           <ButtonLinksContainer>
             {this.renderButtonListItem(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
           </ButtonLinksContainer>
@@ -104,9 +103,41 @@ class ModuleT extends React.PureComponent {
     );
   }
 
+  /**
+   * This method return the renderMediaLinkedImage method to manage all product image with cropping rule .
+   *  @naviagtion is used to navigate the page.
+   */
+  renderMediaLinkedImage = (mediaLinkedList, navigation) => {
+    return (
+      <ImageContainer>
+        {mediaLinkedList.map(({ image, link }, index) => {
+          return (
+            <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+              <DamImage
+                url={image && image.url}
+                height="202px"
+                width={`${buttonWidth}px`}
+                testID={`${getLocator('moduleT_product_img')}${index}`}
+                alt={image && image.alt}
+                imgConfig={IMG_DATA[0]}
+              />
+            </Anchor>
+          );
+        })}
+      </ImageContainer>
+    );
+  };
+
   render() {
-    const { navigation, mediaLinkedList, headerText, promoBanner, ctaItems } = this.props;
-    const ctaType = 'imageCTAList';
+    const {
+      navigation,
+      mediaLinkedList,
+      headerText,
+      promoBanner,
+      ctaItems,
+      set: [set = {}],
+    } = this.props;
+    const ctaType = ctaTypes[set.val];
     return (
       <Container>
         <MessageContainer>
@@ -133,29 +164,7 @@ class ModuleT extends React.PureComponent {
             </PromoContainer>
           )}
         </MessageContainer>
-        <ImageContainer>
-          <Anchor navigation={navigation} url={mediaLinkedList[0] && mediaLinkedList[0].link.url}>
-            <DamImage
-              url={mediaLinkedList[0] && mediaLinkedList[0].image.url}
-              height="202px"
-              width={`${buttonWidth}px`}
-              testID={`${getLocator('moduleT_promobanner_img')}${0}`}
-              alt={mediaLinkedList[0] && mediaLinkedList[0].image.alt}
-              imgConfig={IMG_DATA[0]}
-            />
-          </Anchor>
-
-          <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
-            <DamImage
-              url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
-              height="202px"
-              width={`${buttonWidth}px`}
-              testID={`${getLocator('moduleT_promobanner_img')}${1}`}
-              alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
-              imgConfig={IMG_DATA[0]}
-            />
-          </Anchor>
-        </ImageContainer>
+        {this.renderMediaLinkedImage(mediaLinkedList, navigation)}
         {this.renderButtonList(ctaType, navigation, ctaItems)}
       </Container>
     );
@@ -187,6 +196,7 @@ ModuleT.propTypes = {
       link: PropTypes.object,
     })
   ).isRequired,
+  set: PropTypes.shape([]).isRequired,
 };
 
 export default ModuleT;

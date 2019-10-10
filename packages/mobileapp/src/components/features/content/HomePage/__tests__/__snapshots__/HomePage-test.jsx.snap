@@ -835,6 +835,14 @@ exports[`HomePageView should render correctly 1`] = `
         },
       ]
     }
+    set={
+      Array [
+        Object {
+          "key": "ctaType",
+          "val": "stackedCTAButtons",
+        },
+      ]
+    }
   />
 </LazyloadScrollView>
 `;

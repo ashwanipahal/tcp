@@ -6,10 +6,23 @@ import common from './colors/common';
 import yellow from './colors/yellow';
 import orange from './colors/orange';
 import pink from './colors/pink';
+import navybluecolor from './colors/navyblue';
 
 function createThemeColorPalette(colors = {}) {
-  const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
-  const { secondary = { light: red[100], main: red[300], dark: red[300] } } = colors;
+  const {
+    primary = {
+      light: blue[300],
+      main: blue[500],
+      dark: blue[700],
+    },
+  } = colors;
+  const {
+    secondary = {
+      light: red[100],
+      main: red[300],
+      dark: red[300],
+    },
+  } = colors;
   const {
     text = {
       primary: gray[900],
@@ -33,6 +46,12 @@ function createThemeColorPalette(colors = {}) {
     },
   } = colors;
 
+  const {
+    navyblue = {
+      dark: navybluecolor[900],
+    },
+  } = colors;
+
   return {
     white,
     black,
@@ -49,6 +68,7 @@ function createThemeColorPalette(colors = {}) {
     pink,
     blue,
     userTheme,
+    navyblue,
   };
 }
 

@@ -2,13 +2,7 @@ const dummyUrl = 'http://www.childrensplace.com';
 const dummyImage =
   'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
 
-const ctaTypes = [
-  'divImageCTACarousel',
-  'stackedCTAButtonsExpandable',
-  'CTAButtonCarouselExpandable',
-  'stackedCTAButtons',
-  'CTAButtonCarousel',
-];
+const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 
 export default {
   moduleT: {
@@ -260,13 +254,12 @@ export default {
           },
         },
       ],
+      set: [
+        {
+          key: 'ctaType',
+          val: ctaTypes[0],
+        },
+      ],
     },
-
-    set: [
-      {
-        key: 'ctaType',
-        val: ctaTypes[0],
-      },
-    ],
   },
 };
