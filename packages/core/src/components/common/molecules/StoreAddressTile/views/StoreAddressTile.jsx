@@ -48,7 +48,7 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     return (
       <Fragment>
-        <div>
+        <div className="tile-footer__fullwidth">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
@@ -59,10 +59,11 @@ class StoreAddressTile extends PureComponent {
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </Button>
         </div>
-        <div>
-          {variation === detailsType && (!isFavorite && showSetFavorite)
-            ? this.getFavLink()
-            : this.changeFavStoreLink()}
+        <div className="tile-footer__fullwidth">
+          {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
+          {variation === detailsType &&
+            (isFavorite && showSetFavorite) &&
+            this.changeFavStoreLink()}
         </div>
       </Fragment>
     );
