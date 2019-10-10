@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const ModalStyle = css`
-  .TCPModal__Overlay {
+  &.TCPModal__Overlay {
     position: fixed;
     top: 0px;
     left: 0px;

@@ -14,15 +14,6 @@ import ModalHeader from './ModalHeader';
 import styles from '../Modal.style';
 import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
-// import errorBoundary from '../../../hoc/errorBoundary';
-
-function getParent(customWrapperClassName) {
-  const wrapperClassName = customWrapperClassName || 'TCPModal__Wrapper';
-  // eslint-disable-next-line no-extra-boolean-cast
-  return !!document.querySelector('.checkout-pages')
-    ? document.querySelector(`#overlayWrapper .${wrapperClassName}`)
-    : document.querySelector(`.${wrapperClassName}`);
-}
 
 class Modal extends React.PureComponent {
   componentDidMount() {
@@ -50,65 +41,58 @@ class Modal extends React.PureComponent {
       ariaLabelledby,
       ariaDescribedby,
       innerContentClassName = '',
-      isOpen,
-      customWrapperClassName,
+      overlayClassName,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
-      <div className={className}>
-        <div className={`TCPModal__Wrapper ${customWrapperClassName}`}>
-          {isOpen && (
-            <ReactModal
-              {...otherProps}
-              parentSelector={() => getParent(customWrapperClassName)}
-              aria={{
-                labelledby: ariaLabelledby,
-                describedby: ariaDescribedby,
-              }}
-            >
-              {!fixedWidth && (
-                <Grid>
-                  <Row>
-                    <Col
-                      colSize={column}
-                      className={`TCPModal__InnerContent ${innerContentClassName}`}
-                      data-locator={dataLocator}
-                    >
-                      <ModalHeader
-                        closeFunc={onRequestClose}
-                        title={title}
-                        heading={heading}
-                        closeIconDataLocator={closeIconDataLocator}
-                        closeIconLeftAligned={closeIconLeftAligned}
-                        dataLocatorHeader={dataLocatorHeader}
-                        headingStyle={headingStyle}
-                      />
-                      {children}
-                    </Col>
-                  </Row>
-                </Grid>
-              )}
-              {fixedWidth && (
-                <div
-                  className={`TCPModal__InnerContent ${innerContentClassName}`}
-                  data-locator={dataLocator}
-                >
-                  <ModalHeader
-                    closeFunc={onRequestClose}
-                    title={title}
-                    heading={heading}
-                    closeIconDataLocator={closeIconDataLocator}
-                    closeIconLeftAligned={closeIconLeftAligned}
-                    dataLocatorHeader={dataLocatorHeader}
-                    headingStyle={headingStyle}
-                  />
-                  {children}
-                </div>
-              )}
-            </ReactModal>
-          )}
-        </div>
-      </div>
+      <ReactModal
+        {...otherProps}
+        overlayClassName={`${className} ${overlayClassName}`}
+        aria={{
+          labelledby: ariaLabelledby,
+          describedby: ariaDescribedby,
+        }}
+      >
+        {!fixedWidth && (
+          <Grid>
+            <Row>
+              <Col
+                colSize={column}
+                className={`TCPModal__InnerContent ${innerContentClassName}`}
+                data-locator={dataLocator}
+              >
+                <ModalHeader
+                  closeFunc={onRequestClose}
+                  title={title}
+                  heading={heading}
+                  closeIconDataLocator={closeIconDataLocator}
+                  closeIconLeftAligned={closeIconLeftAligned}
+                  dataLocatorHeader={dataLocatorHeader}
+                  headingStyle={headingStyle}
+                />
+                {children}
+              </Col>
+            </Row>
+          </Grid>
+        )}
+        {fixedWidth && (
+          <div
+            className={`TCPModal__InnerContent ${innerContentClassName}`}
+            data-locator={dataLocator}
+          >
+            <ModalHeader
+              closeFunc={onRequestClose}
+              title={title}
+              heading={heading}
+              closeIconDataLocator={closeIconDataLocator}
+              closeIconLeftAligned={closeIconLeftAligned}
+              dataLocatorHeader={dataLocatorHeader}
+              headingStyle={headingStyle}
+            />
+            {children}
+          </div>
+        )}
+      </ReactModal>
     );
   }
 }
