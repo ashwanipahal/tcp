@@ -8,8 +8,20 @@ import orange from './colors/orange';
 import pink from './colors/pink';
 
 function createThemeColorPalette(colors = {}) {
-  const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
-  const { secondary = { light: red[100], main: red[300], dark: red[300] } } = colors;
+  const {
+    primary = {
+      light: blue[300],
+      main: blue[500],
+      dark: blue[700],
+    },
+  } = colors;
+  const {
+    secondary = {
+      light: red[100],
+      main: red[300],
+      dark: red[300],
+    },
+  } = colors;
   const {
     text = {
       primary: gray[900],

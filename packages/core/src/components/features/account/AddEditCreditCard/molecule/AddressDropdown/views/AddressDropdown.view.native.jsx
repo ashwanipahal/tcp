@@ -143,7 +143,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
     if (showInBottom) {
       if (calculateHeight > dH) {
-        listHeight = dH;
+        listHeight = 250;
       } else {
         listHeight = calculateHeight;
       }
