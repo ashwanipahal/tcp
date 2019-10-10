@@ -7,7 +7,9 @@ import { BUTTON_VARIATION } from '.';
 const getAdditionalStyle = props => {
   const { margin } = props;
   return {
-    ...(margin && { margin }),
+    ...(margin && {
+      margin,
+    }),
   };
 };
 
@@ -195,12 +197,19 @@ const style = css`
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   background: ${props => props.theme.colorPalette.white};
+  ${props =>
+    props.width
+      ? `
+      width: ${props.width};
+   `
+      : ''};
   ${props => getShape(props)};
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
    width: ${props.width};
    height: ${props.height};
+   background: ${props.theme.colorPalette.gray[300]}
    `
       : ''};
   ${props =>
@@ -267,7 +276,6 @@ const CustomStyleText = styled(StyledText)`
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      width: 100%;
       padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
   `
       : ''};

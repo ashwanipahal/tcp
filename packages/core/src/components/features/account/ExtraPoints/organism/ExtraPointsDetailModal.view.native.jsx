@@ -112,7 +112,6 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </RichTextWrapper>
         <ButtonWrapper>
           <Button
-            buttonVariation="variable-width"
             text={activityDetails.activityModalCtaText}
             fill="BLUE"
             color="white"

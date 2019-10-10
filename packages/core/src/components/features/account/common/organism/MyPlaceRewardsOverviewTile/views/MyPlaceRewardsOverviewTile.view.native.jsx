@@ -90,7 +90,6 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
             <ShopAnchor>
               <Anchor
                 anchorVariation="button"
-                buttonVariation="variable-width"
                 fullWidth
                 centered
                 fill="WHITE"
@@ -113,7 +112,6 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
         <ButtonWrapperStyle>
           <CustomButton
             text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCTA')}
-            buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('myPlaceRewardsMobile')}
           />

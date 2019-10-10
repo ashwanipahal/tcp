@@ -139,7 +139,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -302,7 +302,7 @@ exports[`AddressOverviewTile render empty address component should render correc
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
