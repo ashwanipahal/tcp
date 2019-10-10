@@ -73,4 +73,5 @@ export {
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  stringify,
 } from './utils';
