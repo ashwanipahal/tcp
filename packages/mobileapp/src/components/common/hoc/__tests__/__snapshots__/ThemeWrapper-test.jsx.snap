@@ -39,6 +39,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -61,9 +62,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
-        },
-        "navyblue": Object {
-          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",

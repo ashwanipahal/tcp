@@ -117,10 +117,9 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
     </Styled(Anchor)>
   </Styled(View)>
   <View>
-    <View>
-      <Styled(View) />
+    <Styled(View)>
       <ButtonList
-        buttonListVariation="stackedCTAList"
+        buttonListVariation="linkCTAList"
         buttonsData={
           Array [
             Object {
@@ -215,11 +214,10 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
             },
           ]
         }
-        color="fixed-width"
-        locator="stacked_cta_list"
+        color="gray"
+        locator="link_cta_list"
       />
-      <Styled(View) />
-    </View>
+    </Styled(View)>
   </View>
 </Styled(View)>
 `;

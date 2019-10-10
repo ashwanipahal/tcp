@@ -94,7 +94,7 @@ class ModuleT extends React.PureComponent {
           </ButtonContainer>
         )}
 
-        {ctaType === ctaItems.linkList && (
+        {ctaType === ctaTypes.linkList && (
           <ButtonLinksContainer>
             {this.renderButtonListItem(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
           </ButtonLinksContainer>

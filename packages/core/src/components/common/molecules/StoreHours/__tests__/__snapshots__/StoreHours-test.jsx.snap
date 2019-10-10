@@ -125,6 +125,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -147,9 +148,6 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
-        },
-        "navyblue": Object {
-          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",
@@ -754,6 +752,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -776,9 +775,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
-        },
-        "navyblue": Object {
-          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",
@@ -1469,6 +1465,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "900": "#162f42",
             "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -1491,9 +1488,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "300": "#7dc24c",
             "400": "#4b742d",
             "500": "#26762c",
-          },
-          "navyblue": Object {
-            "dark": "#003057",
           },
           "orange": Object {
             "100": "#fdead2",
@@ -2098,6 +2092,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "900": "#162f42",
               "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -2120,9 +2115,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "300": "#7dc24c",
               "400": "#4b742d",
               "500": "#26762c",
-            },
-            "navyblue": Object {
-              "dark": "#003057",
             },
             "orange": Object {
               "100": "#fdead2",
@@ -2755,6 +2747,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "900": "#162f42",
                   "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -2777,9 +2770,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "300": "#7dc24c",
                   "400": "#4b742d",
                   "500": "#26762c",
-                },
-                "navyblue": Object {
-                  "dark": "#003057",
                 },
                 "orange": Object {
                   "100": "#fdead2",
@@ -3519,6 +3509,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "900": "#162f42",
                     "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -3541,9 +3532,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "300": "#7dc24c",
                     "400": "#4b742d",
                     "500": "#26762c",
-                  },
-                  "navyblue": Object {
-                    "dark": "#003057",
                   },
                   "orange": Object {
                     "100": "#fdead2",
@@ -4176,6 +4164,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "900": "#162f42",
                       "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -4198,9 +4187,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "300": "#7dc24c",
                       "400": "#4b742d",
                       "500": "#26762c",
-                    },
-                    "navyblue": Object {
-                      "dark": "#003057",
                     },
                     "orange": Object {
                       "100": "#fdead2",
@@ -4933,6 +4919,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -4955,9 +4942,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
-        },
-        "navyblue": Object {
-          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",
@@ -5652,6 +5636,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "900": "#162f42",
             "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -5674,9 +5659,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "300": "#7dc24c",
             "400": "#4b742d",
             "500": "#26762c",
-          },
-          "navyblue": Object {
-            "dark": "#003057",
           },
           "orange": Object {
             "100": "#fdead2",
@@ -6284,6 +6266,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "900": "#162f42",
               "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -6306,9 +6289,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "300": "#7dc24c",
               "400": "#4b742d",
               "500": "#26762c",
-            },
-            "navyblue": Object {
-              "dark": "#003057",
             },
             "orange": Object {
               "100": "#fdead2",
@@ -6929,6 +6909,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "900": "#162f42",
                   "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -6951,9 +6932,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "300": "#7dc24c",
                   "400": "#4b742d",
                   "500": "#26762c",
-                },
-                "navyblue": Object {
-                  "dark": "#003057",
                 },
                 "orange": Object {
                   "100": "#fdead2",
@@ -7681,6 +7659,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "900": "#162f42",
                     "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -7703,9 +7682,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "300": "#7dc24c",
                     "400": "#4b742d",
                     "500": "#26762c",
-                  },
-                  "navyblue": Object {
-                    "dark": "#003057",
                   },
                   "orange": Object {
                     "100": "#fdead2",
@@ -8326,6 +8302,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "900": "#162f42",
                       "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -8348,9 +8325,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "300": "#7dc24c",
                       "400": "#4b742d",
                       "500": "#26762c",
-                    },
-                    "navyblue": Object {
-                      "dark": "#003057",
                     },
                     "orange": Object {
                       "100": "#fdead2",

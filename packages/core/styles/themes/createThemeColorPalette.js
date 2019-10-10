@@ -6,7 +6,6 @@ import common from './colors/common';
 import yellow from './colors/yellow';
 import orange from './colors/orange';
 import pink from './colors/pink';
-import navybluecolor from './colors/navyblue';
 
 function createThemeColorPalette(colors = {}) {
   const {
@@ -46,12 +45,6 @@ function createThemeColorPalette(colors = {}) {
     },
   } = colors;
 
-  const {
-    navyblue = {
-      dark: navybluecolor[900],
-    },
-  } = colors;
-
   return {
     white,
     black,
@@ -68,7 +61,6 @@ function createThemeColorPalette(colors = {}) {
     pink,
     blue,
     userTheme,
-    navyblue,
   };
 }
 

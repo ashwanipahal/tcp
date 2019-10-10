@@ -72,7 +72,7 @@ export const Border = styled.View`
 export const ButtonLinksContainer = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  background: ${props => props.theme.colorPalette.navyblue.dark};
+  background: ${props => props.theme.colorPalette.blue.C900};
 `;
 
 export default {
