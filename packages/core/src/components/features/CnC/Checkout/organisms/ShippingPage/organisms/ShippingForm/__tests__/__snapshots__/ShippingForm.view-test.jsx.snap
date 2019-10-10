@@ -3,7 +3,7 @@
 exports[`Shipping Form should render correctly 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -17,7 +17,9 @@ exports[`Shipping Form should render correctly 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
@@ -94,7 +96,7 @@ exports[`Shipping Form should render correctly 1`] = `
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={null}
             />
           </div>
@@ -122,10 +124,10 @@ exports[`Shipping Form should render correctly 1`] = `
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
+      backLinkText="lbl_shipping_backLinkText"
       disableNext={false}
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -134,7 +136,7 @@ exports[`Shipping Form should render correctly 1`] = `
 exports[`Shipping Form should render correctly with logged in user 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -148,7 +150,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
@@ -322,7 +326,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupHeading
+          </Styled(BodyCopy)>
         </Field>
         <div
           className="email-signup-text"
@@ -339,7 +345,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubHeading
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
@@ -351,7 +359,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubSubHeading
+          </Styled(BodyCopy)>
           <Styled(Anchor)
             anchorVariation="primary"
             dataLocator="shipping-email-signUp-contact-anchor"
@@ -360,7 +370,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
             noLink={true}
             noUnderline={true}
             target="_blank"
-          />
+          >
+            lbl_pickup_emailSignupContact
+          </Styled(Anchor)>
         </div>
       </div>
     </FormSection>
@@ -386,7 +398,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={null}
             />
           </div>
@@ -414,10 +426,10 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
+      backLinkText="lbl_shipping_backLinkText"
       disableNext={false}
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -426,7 +438,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
 exports[`Shipping Form should render correctly with logged in user having addresses 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -440,7 +452,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
@@ -782,7 +796,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupHeading
+          </Styled(BodyCopy)>
         </Field>
         <div
           className="email-signup-text"
@@ -799,7 +815,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubHeading
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
@@ -811,7 +829,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubSubHeading
+          </Styled(BodyCopy)>
           <Styled(Anchor)
             anchorVariation="primary"
             dataLocator="shipping-email-signUp-contact-anchor"
@@ -820,7 +840,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             noLink={true}
             noUnderline={true}
             target="_blank"
-          />
+          >
+            lbl_pickup_emailSignupContact
+          </Styled(Anchor)>
         </div>
       </div>
     </FormSection>
@@ -846,7 +868,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {
@@ -1048,10 +1070,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
+      backLinkText="lbl_shipping_backLinkText"
       disableNext={false}
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -1060,7 +1082,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
 exports[`Shipping Form should render correctly with logged in user having addresses with isAddressModalEmptied false 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1074,7 +1096,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={true}
@@ -1107,18 +1131,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 Array [
                   Object {
                     "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
                       "field": "address.addressLine1",
                       "form": "checkoutShipping",
                       "persistentSubmitErrors": undefined,
@@ -1237,10 +1249,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                 ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -1447,7 +1455,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupHeading
+          </Styled(BodyCopy)>
         </Field>
         <div
           className="email-signup-text"
@@ -1464,7 +1474,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubHeading
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
@@ -1476,7 +1488,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubSubHeading
+          </Styled(BodyCopy)>
           <Styled(Anchor)
             anchorVariation="primary"
             dataLocator="shipping-email-signUp-contact-anchor"
@@ -1485,7 +1499,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             noLink={true}
             noUnderline={true}
             target="_blank"
-          />
+          >
+            lbl_pickup_emailSignupContact
+          </Styled(Anchor)>
         </div>
       </div>
     </FormSection>
@@ -1511,7 +1527,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {
@@ -1545,18 +1561,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                       "touch": undefined,
                     },
                     "payload": "90113",
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "onFileAddressKey",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": "334",
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
@@ -1725,10 +1729,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   "type": "return",
                   "value": undefined,
                 },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
               ],
             }
           }
@@ -1744,10 +1744,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
+      backLinkText="lbl_shipping_backLinkText"
       disableNext={true}
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>
@@ -1756,7 +1756,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
 exports[`Shipping Form should render correctly with logged in user having addresses with modalType add and state true 1`] = `
 <Fragment>
   <Styled(CheckoutSectionTitleDisplay)
-    title=""
+    title="lbl_shipping_header"
   />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
@@ -1770,7 +1770,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    lbl_shipping_sectionHeader
+  </Styled(BodyCopy)>
   <form
     className=""
     isEditing={false}
@@ -1983,7 +1985,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupHeading
+          </Styled(BodyCopy)>
         </Field>
         <div
           className="email-signup-text"
@@ -2000,7 +2004,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubHeading
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
@@ -2012,7 +2018,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             lineHeight="normal"
             link={null}
             textAlign="left"
-          />
+          >
+            lbl_pickup_emailSignupSubSubHeading
+          </Styled(BodyCopy)>
           <Styled(Anchor)
             anchorVariation="primary"
             dataLocator="shipping-email-signUp-contact-anchor"
@@ -2021,7 +2029,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
             noLink={true}
             noUnderline={true}
             target="_blank"
-          />
+          >
+            lbl_pickup_emailSignupContact
+          </Styled(Anchor)>
         </div>
       </div>
     </FormSection>
@@ -2047,7 +2057,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               formName="checkoutShipping"
               formSection="shipmentMethods"
               selectedShipmentId={null}
-              shipmentHeader=""
+              shipmentHeader="lbl_shipping_shipmentHeader"
               shipmentMethods={
                 Array [
                   Object {},
@@ -2118,10 +2128,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
       showAccordian={true}
     />
     <Styled(CheckoutFooter)
-      backLinkText=""
+      backLinkText="lbl_shipping_backLinkText"
       disableNext={false}
       hideBackLink={false}
-      nextButtonText=""
+      nextButtonText="lbl_shipping_billingText"
     />
   </form>
 </Fragment>

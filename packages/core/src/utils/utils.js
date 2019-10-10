@@ -411,8 +411,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -723,6 +723,18 @@ export const getTranslateDateInformation = (
   };
 };
 
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+export function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -757,4 +769,5 @@ export default {
   extractFloat,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  stringify,
 };

@@ -75,6 +75,7 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "common": Object {},
       }
     }
+    openState={false}
   />
 </div>
 `;
@@ -143,6 +144,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
         },
       ]
     }
+    deleteModalMountedState={false}
     labels={
       Object {
         "addressBook": Object {},
@@ -170,6 +172,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "common": Object {},
       }
     }
+    openState={false}
   />
 </div>
 `;

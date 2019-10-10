@@ -23,6 +23,62 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       name="shipmentMethods"
     >
       <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -76,6 +132,62 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "defaultInd": false,
               },
             ]
+          }
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": null,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
           }
           formName="checkoutBillingPayment"
           labels={
@@ -140,6 +252,62 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           />
         </ReactTooltip>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -169,6 +337,62 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "PLACE CARD",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -234,6 +458,46 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": null,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -289,6 +553,46 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           />
         </ReactTooltip>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -318,6 +622,46 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -439,7 +783,30 @@ exports[`ButtonList component renders correctly without props 1`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
-        dispatch={[MockFunction]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -494,7 +861,30 @@ exports[`ButtonList component renders correctly without props 1`] = `
               },
             ]
           }
-          dispatch={[MockFunction]}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           formName="checkoutBillingPayment"
           labels={
             Object {
@@ -722,7 +1112,46 @@ exports[`ButtonList component renders correctly without props 2`] = `
       name="shipmentMethods"
     >
       <PaymentMethods
-        dispatch={[MockFunction]}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "PLACE CARD",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
         formName="checkoutBillingPayment"
         paymentMethods={
           Array [
@@ -777,7 +1206,46 @@ exports[`ButtonList component renders correctly without props 2`] = `
               },
             ]
           }
-          dispatch={[MockFunction]}
+          dispatch={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "cardType",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": "PLACE CARD",
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           formName="checkoutBillingPayment"
           labels={
             Object {

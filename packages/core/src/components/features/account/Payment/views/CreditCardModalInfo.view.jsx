@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getIconPath } from '../../../../../utils';
 import { Image } from '../../../../common/atoms';
@@ -7,16 +8,6 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import CardIconMapping from '../CardIconMapping';
 
-// @flow
-type Props = {
-  TotalExp: object,
-  getAccNumbr: object,
-  data: object,
-  address: object,
-  creditCardHeading: string,
-  className: string,
-};
-
 const CreditCardModalInfo = ({
   TotalExp,
   getAccNumbr,
@@ -24,7 +15,7 @@ const CreditCardModalInfo = ({
   address,
   creditCardHeading,
   className,
-}: Props) => {
+}) => {
   return (
     <div className={className}>
       <Row fullBleed className="elem-mb-LRG elem-mt-MED">
@@ -142,4 +133,12 @@ const CreditCardModalInfo = ({
   );
 };
 
+CreditCardModalInfo.propTypes = {
+  TotalExp: PropTypes.shape({}).isRequired,
+  getAccNumbr: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
+  address: PropTypes.shape({}).isRequired,
+  creditCardHeading: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 export default CreditCardModalInfo;

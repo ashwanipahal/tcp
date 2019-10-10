@@ -73,4 +73,5 @@ export {
   flattenArray,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  stringify,
 } from './utils';

@@ -487,7 +487,6 @@ exports[`OrdersTileItem component should render correctly 2`] = `
         ]
       }
       numberOfLines={null}
-      text=""
       textDecoration={null}
     />
   </Styled(View)>
