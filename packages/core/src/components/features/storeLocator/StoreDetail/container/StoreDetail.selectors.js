@@ -30,7 +30,7 @@ export const formatHoursToObject = storeHours => {
     });
     return returnedHours;
   };
-  if (storeHours !== undefined && storeHours.size > 0) {
+  if (storeHours && storeHours.size > 0) {
     storeHours.forEach((value, key) => {
       formattedHrs[key] = formatHoursChild(storeHours.get(key));
       return value;
@@ -41,7 +41,7 @@ export const formatHoursToObject = storeHours => {
 
 export const formatGenericMapObject = store => {
   const resultObject = {};
-  if (store !== undefined && store.size > 0) {
+  if (store && store.size > 0) {
     store.forEach((value, key) => {
       resultObject[key] = value;
       return value;
