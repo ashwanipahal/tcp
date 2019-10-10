@@ -61,6 +61,9 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "navyblue": Object {
+          "dark": "#003057",
+        },
         "orange": Object {
           "100": "#fdead2",
           "300": "#fbd5a5",

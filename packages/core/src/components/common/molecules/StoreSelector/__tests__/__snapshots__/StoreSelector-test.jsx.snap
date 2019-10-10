@@ -61,6 +61,9 @@ exports[`StoreSelector component should default set title as value for selected 
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "navyblue": Object {
+          "dark": "#003057",
+        },
         "orange": Object {
           "100": "#fdead2",
           "300": "#fbd5a5",
@@ -8865,6 +8868,9 @@ exports[`StoreSelector component should render correctly 1`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
+        },
+        "navyblue": Object {
+          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",

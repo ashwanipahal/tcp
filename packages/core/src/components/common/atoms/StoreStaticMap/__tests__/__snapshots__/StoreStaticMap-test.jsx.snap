@@ -73,6 +73,9 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "navyblue": Object {
+          "dark": "#003057",
+        },
         "orange": Object {
           "100": "#fdead2",
           "300": "#fbd5a5",
@@ -3988,6 +3991,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "navyblue": Object {
+          "dark": "#003057",
+        },
         "orange": Object {
           "100": "#fdead2",
           "300": "#fbd5a5",
@@ -7898,6 +7904,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
+        },
+        "navyblue": Object {
+          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",
@@ -11814,6 +11823,9 @@ exports[`StoreStaticMap component resize window should update component on windo
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "navyblue": Object {
+          "dark": "#003057",
+        },
         "orange": Object {
           "100": "#fdead2",
           "300": "#fbd5a5",
@@ -12501,6 +12513,9 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
+        },
+        "navyblue": Object {
+          "dark": "#003057",
         },
         "orange": Object {
           "100": "#fdead2",
