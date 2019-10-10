@@ -5,13 +5,14 @@ import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 const itemLists = (item, activeValue, clickHandler) => {
+  const isDisabledClass = item.disabled ? ' dropdown--disabled' : '';
   return (
     <li
       key={item.value}
       tabIndex={-1}
       className={`dropdownliBottomBorder ${
         activeValue === item.value ? 'dropdownActiveClass' : ''
-      }`}
+      }${isDisabledClass}`}
     >
       <BodyCopy
         component="div"

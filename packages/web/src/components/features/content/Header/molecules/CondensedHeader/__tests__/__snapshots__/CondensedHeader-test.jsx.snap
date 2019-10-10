@@ -14,10 +14,12 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
       >
         <Styled(Image)
           alt="menu"
+          aria-label="menu"
           className="hamburger-menu"
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/grey-menu.svg"
           tabIndex="0"
         />

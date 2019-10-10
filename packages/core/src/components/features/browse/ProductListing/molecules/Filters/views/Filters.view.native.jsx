@@ -80,12 +80,14 @@ class Filters extends React.PureComponent {
   };
 
   renderColorSwitchItem = ({ item }) => {
-    const { imagePath, isSelected } = item;
+    const { imagePath, isSelected, displayName } = item;
+    const name = displayName || '';
     return (
       <LinkImageIcon
         uri={imagePath}
         selected={isSelected}
         onPress={() => this.onSelectFilter(item)}
+        name={name}
       />
     );
   };

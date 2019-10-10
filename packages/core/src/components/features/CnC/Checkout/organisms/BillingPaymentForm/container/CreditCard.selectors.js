@@ -3,6 +3,8 @@ import { createSelector } from 'reselect';
 import constants from './CreditCard.constants';
 import CARD_RANGES from '../../../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
+import { getSelectedCard } from '../../../util/utility';
 
 const { getBillingValues, getShippingDestinationValues } = CheckoutSelectors;
 
@@ -41,16 +43,13 @@ const getSyncError = state => {
   };
 };
 
-const calcCardType = (formCardNumber, billingData) => {
+const calcCardType = (formCardNumber, defaultCardType) => {
   if ((formCardNumber || '').length === 0) {
     return null;
   }
   const cardNumber = formCardNumber;
-  if (cardNumber.startsWith('*') && billingData && billingData.billing) {
-    const {
-      billing: { cardType },
-    } = billingData;
-    return cardType;
+  if (cardNumber.startsWith('*') && defaultCardType) {
+    return defaultCardType;
   }
   // look up based on cardNumber
   const type = Object.keys(CARD_RANGES.CREDIT_CARDS_BIN_RANGES).filter(range => {
@@ -75,12 +74,29 @@ const calcCardType = (formCardNumber, billingData) => {
 };
 
 const getCardType = createSelector(
-  [getCardNumber, getBillingValues],
+  [
+    getCardNumber,
+    state => {
+      const billingData = getBillingValues(state);
+      return billingData && billingData.billing && billingData.billing.cardType;
+    },
+  ],
   calcCardType
 );
 
 const getEditFormCardType = createSelector(
-  [getEditFormCardNumber, getBillingValues],
+  [
+    getEditFormCardNumber,
+    state => {
+      const onFileCardKey = getOnFileCardKey(state);
+      const cardList = getCardListState(state);
+      if (onFileCardKey) {
+        const selectedCard = getSelectedCard({ creditCardList: cardList, onFileCardKey });
+        return selectedCard.ccBrand.toUpperCase();
+      }
+      return null;
+    },
+  ],
   calcCardType
 );
 

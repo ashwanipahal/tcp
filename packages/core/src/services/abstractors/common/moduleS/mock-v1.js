@@ -34,7 +34,7 @@ export default {
         {
           image: {
             url:
-              'https://test5.childrensplace.com/image/upload/v1565027643/homepagetest/gymboree/images/PlayB_Spring-1_2x_diwsan.png',
+              'https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png',
             alt: 'Pool',
             title: 'Pool',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
