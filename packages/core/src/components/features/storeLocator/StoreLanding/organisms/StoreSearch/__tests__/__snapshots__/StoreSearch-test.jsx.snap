@@ -95,6 +95,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
         >
           <li
             className="storeOptions"
+            key="gymboreeStoreOption"
           >
             <Field
               checked={false}
@@ -256,6 +257,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
           </li>
           <li
             className="storeOptions"
+            key="outletOption"
           >
             <Field
               checked={false}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
@@ -75,7 +76,7 @@ const ProductDetailImage = props => {
       ) : (
         getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)
       )}
-      <RenderPerf.Measure name="render_product_photo" />
+      <RenderPerf.Measure name={HERO_VISIBLE} />
     </div>
   );
 };
