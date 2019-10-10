@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import CouponList from '../../../molecule/CouponList';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -15,18 +16,21 @@ export const MyWalletTile = ({ className, labels, commonLabels, coupons }) => {
   let myWalletCTA = '';
 
   if (couponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myWalletOfferAvailable.replace(/\{0\}/, couponsCount);
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myWalletOfferAvailable').replace(
+      /\{0\}/,
+      couponsCount
+    );
     walletDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
-    myWalletCTA = labels.lbl_overview_walletViewAllCTA;
+    myWalletCTA = getLabelValue(labels, 'lbl_overview_walletViewAllCTA');
   } else {
-    walletOverviewInfo = labels.lbl_overview_myWalletNoOfferAvailable;
+    walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myWalletNoOfferAvailable');
     walletDataLocator = 'accountoverview-mywallettile-startshoptext';
-    myWalletCTA = labels.lbl_overview_viewMyWalletCTA;
+    myWalletCTA = getLabelValue(labels, 'lbl_overview_viewMyWalletCTA');
   }
   return (
     <AccountOverviewTile
       className={className}
-      title={labels.lbl_overview_myWalletHeading}
+      title={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
       ctaTitle={myWalletCTA}
       ctaLink={internalEndpoints.myWalletPage.link}
       ctaPath={internalEndpoints.myWalletPage.path}
@@ -49,7 +53,7 @@ export const MyWalletTile = ({ className, labels, commonLabels, coupons }) => {
             fontWeight="semibold"
             data-locator={walletDataLocator}
           >
-            {labels.lbl_overview_myWalletStartShop}
+            {getLabelValue(labels, 'lbl_overview_myWalletStartShop')}
           </BodyCopy>
         )}
 
@@ -65,7 +69,7 @@ export const MyWalletTile = ({ className, labels, commonLabels, coupons }) => {
               asPath={internalEndpoints.shopNowPage.path}
               dataLocator="accountoverview-mywallettile-startshopbtn"
             >
-              {labels.lbl_overview_myWalletShopCTA}
+              {getLabelValue(labels, 'lbl_overview_myWalletShopCTA')}
             </Anchor>
           </div>
         )}

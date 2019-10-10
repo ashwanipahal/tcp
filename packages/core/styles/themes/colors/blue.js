@@ -8,6 +8,8 @@ const blue = {
   800: '#254f6e',
   900: '#162f42',
   B100: '#00A7E0',
+  A100: '#5e9ed6',
+  C900: '#003057',
 };
 
 export default blue;

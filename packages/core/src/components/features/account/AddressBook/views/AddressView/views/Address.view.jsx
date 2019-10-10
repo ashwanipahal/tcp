@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
-import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../../../styles/AddressBook.style';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -13,24 +14,8 @@ import DeleteAddressModal from '../../DeleteAddressModal.view';
 import Notification from '../../../../../../common/molecules/Notification';
 import utils from '../../../../../../../utils';
 
-// @flow
-
-type Props = {
-  addresses: List<{}>,
-  labels: {
-    addNewAddressCTA: string,
-  },
-  className: string,
-  onDefaultShippingAddressClick: Object,
-  showUpdatedNotification: any,
-  showUpdatedNotificationOnModal: any,
-  onDeleteAddress: Function,
-  deleteModalMountedState: false,
-  setDeleteModalMountState: Function,
-};
-
 export class AddressView extends React.PureComponent<Props> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedAddress: {},
@@ -78,7 +63,7 @@ export class AddressView extends React.PureComponent<Props> {
               tag="h4"
               className="addressBook__separator"
             >
-              {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING}
+              {getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook')}
             </Heading>
             {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
           </Col>
@@ -99,7 +84,7 @@ export class AddressView extends React.PureComponent<Props> {
               fill="BLUE"
               data-locator="addressbook-addnewaddress"
             >
-              {labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+              {getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook')}
             </Button>
           </Col>
         </Row>
@@ -109,8 +94,8 @@ export class AddressView extends React.PureComponent<Props> {
             colSize={{ large: 12, medium: 8, small: 6 }}
             message={
               showUpdatedNotification === 'success'
-                ? labels.common.lbl_common_successMessage
-                : labels.common.lbl_common_errorMessage
+                ? getLabelValue(labels, 'lbl_common_successMessage', 'common')
+                : getLabelValue(labels, 'lbl_common_errorMessage', 'common')
             }
           />
         )}
@@ -127,13 +112,17 @@ export class AddressView extends React.PureComponent<Props> {
         <DeleteAddressModal
           openState={deleteModalMountedState}
           data={{
-            heading: labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING,
-            title: labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE,
-            msg: labels.addressBook.lbl_deleteAddressModal_ccAssociatedAddressMsg,
+            heading: getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_HEADING', 'addressBook'),
+            title: getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_TITLE', 'addressBook'),
+            msg: getLabelValue(
+              labels,
+              'lbl_deleteAddressModal_ccAssociatedAddressMsg',
+              'addressBook'
+            ),
             description: selectedAddress,
             buttons: {
-              cancel: labels.common.lbl_common_dontDelete,
-              confirm: labels.common.lbl_common_YesDelete,
+              cancel: getLabelValue(labels, 'lbl_common_dontDelete', 'common'),
+              confirm: getLabelValue(labels, 'lbl_common_YesDelete', 'common'),
             },
           }}
           setDeleteModalMountState={setDeleteModalMountState}
@@ -145,5 +134,20 @@ export class AddressView extends React.PureComponent<Props> {
     );
   }
 }
+AddressView.defaultProps = {
+  deleteModalMountedState: false,
+};
+
+AddressView.propTypes = {
+  addresses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  showUpdatedNotification: PropTypes.string.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  onDeleteAddress: PropTypes.func.isRequired,
+  deleteModalMountedState: PropTypes.bool,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+};
 export default withStyles(AddressView, styles);
 export { AddressView as AddressViewVanilla };

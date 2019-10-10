@@ -10,9 +10,18 @@ import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
+import { routerPush } from '../../../../../utils';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
+  componentDidMount() {
+    const { router } = this.props;
+    const section = router.query.section || router.query.subSection;
+    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
+      routerPush('/', '/');
+    }
+  }
   // componentDidUpdate() {
   // const { router, cartOrderItems } = this.props;
   // const currentStage = router.query.section;
@@ -191,6 +200,7 @@ class CheckoutPage extends React.PureComponent {
             setVenmoShippingState={setVenmoShippingState}
             setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isGuest={isGuest}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (

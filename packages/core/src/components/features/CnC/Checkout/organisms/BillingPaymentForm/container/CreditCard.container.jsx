@@ -6,6 +6,7 @@ import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import { updateCardData } from '../../../container/Checkout.action';
 
 /**
  * @class GiftCardsContainer
@@ -113,7 +114,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let address;
     if (this.isBillingIfoPresent()) {
       ({
-        address: {
+        address = {
           onFileAddressKey: billingOnFileAddressKey,
           onFileAddressId: billingOnFileAddressId,
           firstName,
@@ -165,7 +166,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return {
       onFileCardKey:
         onFileCardId || (cardList.size > 0 && cardList.get(0) && cardList.get(0).creditCardId),
-      paymentMethodId: constants.PAYMENT_METHOD_CREDIT_CARD,
+      paymentMethodId: this.getPaymentMethodId(),
       saveToAccount: true,
       sameAsShipping: orderHasShipping && billingOnFileAddressKey === shippingOnFileAddressKey,
       cardNumber,
@@ -189,6 +190,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   getAddressLine2 = addressLine2 => {
     return addressLine2 || '';
   };
+
+  getNickName = selectedAddress =>
+    selectedAddress && selectedAddress.get(0) && selectedAddress.get(0).nickName;
 
   /**
    * @function submitBillingData
@@ -246,7 +250,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         userAddresses &&
         userAddresses.size > 0 &&
         userAddresses.filter(address => address.addressId === data.onFileAddressId);
-      onFileAddressKey = selectedAddress && selectedAddress.get(0).nickName;
+      onFileAddressKey = this.getNickName(selectedAddress);
     }
     const isCardTypeRequired = cardDetails.ccBrand !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
     handleSubmit({
@@ -301,8 +305,13 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isSaveToAccountChecked,
       userAddresses,
       selectedOnFileAddressId,
+      isEditFormSameAsShippingChecked,
+      editFormSelectedOnFileAddressId,
       navigation,
       creditFieldLabels,
+      updateCardDetail,
+      isVenmoEnabled,
+      editFormCardType,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -322,6 +331,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         formErrorMessage={formErrorMessage}
         isPaymentDisabled={isPaymentDisabled}
         cardType={cardType}
+        editFormCardType={editFormCardType}
         syncErrorsObj={syncErrorsObj}
         addressLabels={addressLabels}
         shippingAddress={shippingAddress}
@@ -330,8 +340,12 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isSaveToAccountChecked={isSaveToAccountChecked}
         userAddresses={userAddresses}
         selectedOnFileAddressId={selectedOnFileAddressId}
+        editFormSelectedOnFileAddressId={editFormSelectedOnFileAddressId}
         navigation={navigation}
         creditFieldLabels={creditFieldLabels}
+        updateCardDetail={updateCardDetail}
+        isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
+        isVenmoEnabled={isVenmoEnabled}
       />
     );
   }
@@ -346,12 +360,27 @@ const mapStateToProps = (state, ownProps) => {
     isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     syncErrorsObj: CreditCardSelector.getSyncError(state),
     cardType: CreditCardSelector.getCardType(state),
+    editFormCardType: CreditCardSelector.getEditFormCardType(state),
     isSameAsShippingChecked: CreditCardSelector.getSameAsShippingValue(state),
+    isEditFormSameAsShippingChecked: CreditCardSelector.getEditFormSameAsShippingValue(state),
     isSaveToAccountChecked: CreditCardSelector.getSaveToAccountValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
+    editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 };
 
-export default connect(mapStateToProps)(GiftCardsContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCardDetail: payload => {
+      dispatch(updateCardData(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GiftCardsContainer);

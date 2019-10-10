@@ -1,4 +1,6 @@
 import React from 'react';
+import { change } from 'redux-form';
+import { connect } from 'react-redux';
 import ProductAddToBag from '../views/ProductAddToBag.view';
 
 /**
@@ -221,6 +223,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
               displayName: size.sizeName,
               id: size.sizeName,
               maxAvailable: size.maxAvailable,
+              disabled: size.maxAvailable <= 0,
             }));
           }
         } else {
@@ -229,6 +232,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             displayName: size.sizeName,
             id: size.sizeName,
             maxAvailable: size.maxAvailable,
+            disabled: size.maxAvailable <= 0,
           }));
         }
       });
@@ -344,31 +348,18 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }
   };
 
-  addToBagAction = () => {
-    const { selectedSize, selectedFit, selectedColor } = this.state;
-    const {
-      currentProduct: { colorFitsSizesMap },
-    } = this.props;
-    const colors = colorFitsSizesMap.filter(item => item.color.name === selectedColor.name);
-    let fitList = [];
-    const color = colors && colors.length > 0 && colors[0];
-    if (color.hasFits && selectedFit) {
-      fitList = color.fits.filter(fit => fit.fitName === selectedFit.name);
-    } else {
-      fitList = color.fits;
-    }
-
-    const isSizeAvaiable =
-      (selectedSize &&
-        fitList &&
-        fitList.length > 0 &&
-        fitList[0].sizes.filter(size => size.sizeName === selectedSize.name).length > 0) ||
-      false;
-    this.displayErrorMessage(!isSizeAvaiable);
+  quantityChange = (selectedQuantity, form) => {
+    this.setState({ selectedQuantity });
+    const { dispatch } = this.props;
+    dispatch(change(form, 'Quantity', selectedQuantity));
   };
 
-  quantityChange = selectedQuantity => {
-    this.setState({ selectedQuantity });
+  setPreSelectedValuesForProduct = productInfoFromBag => {
+    const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
+    this.initialValuesForm.Fit = selectedFit;
+    this.initialValuesForm.Quantity = selectedQty;
+    this.initialValuesForm.Size.name = selectedSize;
+    this.initialValuesForm.color.name = selectedColor;
   };
 
   /**
@@ -384,11 +375,11 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
-      addToBagEcom,
-      addToBagError,
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      fromBagPage,
+      productInfoFromBag,
     } = this.props;
     const {
       selectedColor,
@@ -398,6 +389,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       selectedQuantity,
     } = this.state;
+    if (fromBagPage) {
+      this.setPreSelectedValuesForProduct(productInfoFromBag);
+    }
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
@@ -420,16 +414,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         displayErrorMessage={this.displayErrorMessage}
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
-        addToBagAction={this.addToBagAction}
         generalProductId={generalProductId}
         handleFormSubmit={handleFormSubmit}
         errorOnHandleSubmit={errorOnHandleSubmit}
-        addToBagEcom={addToBagEcom}
-        addToBagError={addToBagError}
         currentProduct={currentProduct}
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        fromBagPage={fromBagPage}
       />
     );
   }
@@ -437,6 +429,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
 /* Export container */
 
-export default ProductAddToBagContainer;
+export default connect()(ProductAddToBagContainer);
 
 export { ProductAddToBagContainer as ProductAddToBagContainerVanilla };

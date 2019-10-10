@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -22,22 +24,7 @@ import {
   loading,
 } from './CardTile.utils';
 import Button from '../../../../../../common/atoms/Button';
-// @flow
-type Props = {
-  card: object,
-  className: string,
-  labels: object,
-  setDefaultPaymentMethod: Function,
-  setDeleteModalMountState: Function,
-  setSelectedGiftCard: Function,
-  change: any,
-  handleSubmit: any,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  showNotificationCaptcha: any,
-  form: any,
-  dispatch: Function,
-};
+
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
@@ -68,7 +55,7 @@ class CardTile extends React.Component<Props> {
     const { card, labels } = this.props;
     return card.defaultInd ? (
       <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
-        {labels.paymentGC.lbl_payment_defaultPayment}
+        {getLabelValue(labels, 'lbl_payment_defaultPayment', 'paymentGC')}
       </Badge>
     ) : (
       <Anchor
@@ -79,7 +66,7 @@ class CardTile extends React.Component<Props> {
         dataLocator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
-        {labels.common.lbl_common_makeDefault}
+        {getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
       </Anchor>
     );
   };
@@ -105,10 +92,16 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
-    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
-      card.expYear
-    }`;
+    const cardNum = `${getLabelValue(
+      labels,
+      'lbl_payment_cardNum',
+      'paymentGC'
+    )}${card.accountNo.slice(-4)}`;
+    const expDate = `${getLabelValue(
+      labels,
+      'lbl_payment_expDate',
+      'paymentGC'
+    )}${card.expMonth.trim()}/${card.expYear}`;
     return (
       <React.Fragment>
         <BodyCopy
@@ -184,7 +177,7 @@ class CardTile extends React.Component<Props> {
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
           >
-            {labels.paymentGC.lbl_payment_checkBalance}
+            {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
         )}
       </React.Fragment>
@@ -204,7 +197,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance && labels.paymentGC.lbl_payment_remainingBalance}
+            {balance && getLabelValue(labels, 'lbl_payment_remainingBalance', 'paymentGC')}
           </BodyCopy>
         )}
         {this.renderBalance({ balance, isGiftCardBalanceRequested, labels })}
@@ -250,7 +243,7 @@ class CardTile extends React.Component<Props> {
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
-            {labels.common.lbl_common_edit}
+            {getLabelValue(labels, 'lbl_common_edit', 'common')}
           </Anchor>
         )}
         <Anchor
@@ -262,7 +255,7 @@ class CardTile extends React.Component<Props> {
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
-          {labels.common.lbl_common_delete}
+          {getLabelValue(labels, 'lbl_common_delete', 'common')}
         </Anchor>
       </div>
     );
@@ -379,6 +372,22 @@ class CardTile extends React.Component<Props> {
   }
 }
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
+
+CardTile.propTypes = {
+  card: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedGiftCard: PropTypes.func.isRequired,
+  change: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  showNotificationCaptcha: PropTypes.string.isRequired,
+  form: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default reduxForm({ destroyOnUnmount: false, enableReinitialize: true, ...validateMethod })(
   withStyles(CardTile, styles)

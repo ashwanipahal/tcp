@@ -27,6 +27,11 @@ class ToastView extends React.PureComponent {
   static propTypes = {
     errorMessage: PropTypes.string.isRequired,
     toastMessageReset: PropTypes.bool.isRequired,
+    positionValue: PropTypes.number,
+  };
+
+  static defaultProps = {
+    positionValue: 0,
   };
 
   constructor() {
@@ -53,13 +58,14 @@ class ToastView extends React.PureComponent {
   }
 
   render() {
+    const { positionValue } = this.props;
     return (
       <SafeAreaView style={styles.Container}>
         <Toast
           ref={this.toastRef}
           style={styles.ToastStyle}
           position="top"
-          positionValue={0}
+          positionValue={positionValue}
           fadeInDuration={750}
           fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
           opacity={1}

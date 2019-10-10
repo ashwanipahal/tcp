@@ -37,7 +37,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -106,7 +108,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
           "noMprPlcc": "#6d7278",
-          "plcc": "#254f6e",
+          "plcc": "#00A7E0",
           "plccLight": "#dbebf8",
         },
         "white": "#fff",
@@ -419,6 +421,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -595,6 +598,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "zindex": Object {
+        "zCondensedHeader": 1100,
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,

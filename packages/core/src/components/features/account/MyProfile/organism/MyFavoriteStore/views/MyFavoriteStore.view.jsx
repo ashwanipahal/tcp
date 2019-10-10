@@ -86,7 +86,7 @@ const MyFavoriteStore = ({
               data-locator="storeName"
               fontFamily="secondary"
               component="p"
-              fontWeight={isMyPreferences ? 'semibold' : 'regular'}
+              fontWeight={isMyPreferences ? 'extrabold' : 'regular'}
             >
               {favStoreName}
             </BodyCopy>

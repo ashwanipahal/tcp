@@ -19,6 +19,7 @@ import {
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
+  ImageSectionContainer,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -30,10 +31,11 @@ const TextProps = {
   text: PropTypes.string.isRequired,
 };
 
-const onAddToBagHandler = (onAddToBag, data) => {
-  if (onAddToBag) {
-    onAddToBag(data);
-  }
+const handleQuickViewOpenClick = (selectedColorIndex, colorsMap, onQuickViewOpenClick) => {
+  const { colorProductId } = colorsMap[selectedColorIndex];
+  onQuickViewOpenClick({
+    colorProductId,
+  });
 };
 
 const ListItem = props => {
@@ -42,12 +44,12 @@ const ListItem = props => {
     badge1,
     badge2,
     loyaltyPromotionMessage,
-    onAddToBag,
     onFavorite,
     currencyExchange,
     currencySymbol,
     isPlcc,
     onGoToPDPPage,
+    onQuickViewOpenClick,
   } = props;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
@@ -70,12 +72,14 @@ const ListItem = props => {
       />
       <RenderTitle text={name} />
       <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      <PromotionalMessage
-        isPlcc={isPlcc}
-        text={loyaltyPromotionMessage}
-        height="24px"
-        marginTop={12}
-      />
+      {loyaltyPromotionMessage ? (
+        <PromotionalMessage
+          isPlcc={isPlcc}
+          text={loyaltyPromotionMessage}
+          height="24px"
+          marginTop={12}
+        />
+      ) : null}
       <AddToBagContainer>
         <CustomButton
           fill="BLUE"
@@ -84,7 +88,7 @@ const ListItem = props => {
           data-locator=""
           text="ADD TO BAG"
           onPress={() => {
-            onAddToBagHandler(onAddToBag, item);
+            handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
           }}
           accessibilityLabel="add to bag"
         />
@@ -107,11 +111,13 @@ RenderTopBadge1.propTypes = TextProps;
 
 const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
   return (
-    <ImageCarousel
-      item={item}
-      selectedColorIndex={selectedColorIndex}
-      onGoToPDPPage={onGoToPDPPage}
-    />
+    <ImageSectionContainer>
+      <ImageCarousel
+        item={item}
+        selectedColorIndex={selectedColorIndex}
+        onGoToPDPPage={onGoToPDPPage}
+      />
+    </ImageSectionContainer>
   );
 };
 
@@ -189,12 +195,12 @@ ListItem.propTypes = {
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   loyaltyPromotionMessage: PropTypes.string,
-  onAddToBag: PropTypes.func,
   onFavorite: PropTypes.func,
   isPlcc: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {
@@ -203,7 +209,6 @@ ListItem.defaultProps = {
   badge1: '',
   badge2: '',
   loyaltyPromotionMessage: '',
-  onAddToBag: () => {},
   onFavorite: () => {},
   isPlcc: false,
 };

@@ -39,19 +39,14 @@ export class Account extends React.PureComponent<Props, State> {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     const hasMobile = isMobileApp();
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (hasMobile) {
-        this.navigattePage();
-      } else {
-        closeOverlay();
-      }
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn && !hasMobile) {
+      closeOverlay();
     }
   }
 
   /**
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
-
   getComponent = component => {
     switch (component) {
       case 'paymentGiftCardsPageMobile':
@@ -59,9 +54,9 @@ export class Account extends React.PureComponent<Props, State> {
       case 'myPlaceRewardsMobile':
         return 'myPlaceRewardsMobile';
       case 'accountOverviewMobile':
-        return 'accountOverview';
+        return 'accountOverviewMobile';
       case 'profileInformationMobile':
-        return 'profile';
+        return 'profileInformationMobile';
       case 'myWalletPageMobile':
         return 'myWalletPageMobile';
       case 'earnExtraPointsPageMobile':
@@ -69,7 +64,7 @@ export class Account extends React.PureComponent<Props, State> {
       case 'pointsHistoryMobile':
         return 'pointHistoryPageMobile';
       case 'myPreferencePageMobile':
-        return 'myPreferences';
+        return 'myPreferencePageMobile';
       case 'PointsClaimPageMobile':
         return 'PointsClaimPageMobile';
       default:
@@ -80,10 +75,11 @@ export class Account extends React.PureComponent<Props, State> {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = component => {
+  handleComponentChange = (component, otherProps) => {
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
+      componentProps: otherProps,
     });
   };
 
@@ -98,13 +94,15 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component } = this.state;
+    const { component, componentProps } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
             navData={navDataMobile}
+            component={this.getComponent(component)}
+            componentProps={componentProps}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}

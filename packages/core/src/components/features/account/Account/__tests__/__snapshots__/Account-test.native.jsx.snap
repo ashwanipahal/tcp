@@ -10,6 +10,7 @@ exports[`Account View should render Account Correctly 1`] = `
     keyboardShouldPersistTaps="handled"
   >
     <Styled(MyAccountLayoutView)
+      component="addressBookMobile"
       handleComponentChange={[Function]}
       labels={
         Object {

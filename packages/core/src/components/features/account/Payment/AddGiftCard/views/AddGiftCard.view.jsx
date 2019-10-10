@@ -2,22 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../common/hoc/withStyles';
 import styles from '../styles/AddGiftCard.style';
 import Anchor from '../../../../../common/atoms/Anchor';
 import AddGiftCardForm from '../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 
-// @flow
-type Props = {
-  className: String,
-  onAddGiftCardClick: Function,
-  addGiftCardResponse: String,
-  goBackToPayment: Function,
-  labels: Object,
-  formErrorMessage: Object,
-};
-
-class AddGiftCard extends React.PureComponent<Props> {
+class AddGiftCard extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     onAddGiftCardClick: PropTypes.func.isRequired,
@@ -47,7 +38,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           dataLocator="gift-card-addcardbacklink"
           asPath="/account/payment"
         >
-          {labels.common.lbl_common_backLink}
+          {getLabelValue(labels, 'lbl_common_backLink', 'common')}
         </Anchor>
         <Heading
           fontFamily="primaryFontFamily"
@@ -56,7 +47,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           className="card__separator"
           dataLocator="gift-card-addcardheader"
         >
-          {labels.paymentGC.lbl_payment_addGiftCard}
+          {getLabelValue(labels, 'lbl_payment_addGiftCard', 'paymentGC')}
         </Heading>
         {addGiftCardResponse && showNotification && (
           <Notification
@@ -76,6 +67,15 @@ class AddGiftCard extends React.PureComponent<Props> {
     );
   }
 }
+
+AddGiftCard.propTypes = {
+  className: PropTypes.string.isRequired,
+  onAddGiftCardClick: PropTypes.func.isRequired,
+  addGiftCardResponse: PropTypes.string.isRequired,
+  goBackToPayment: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  formErrorMessage: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(AddGiftCard, styles);
 export { AddGiftCard as AddGiftCardVanilla };

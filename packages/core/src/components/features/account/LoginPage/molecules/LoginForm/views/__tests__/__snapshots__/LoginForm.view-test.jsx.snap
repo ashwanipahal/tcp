@@ -184,7 +184,8 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
       <Field
@@ -266,7 +267,8 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -417,8 +419,12 @@ exports[`LoginForm component should renders correctly 1`] = `
         >
           <span
             className="remember-me-text"
-          />
-          <span />
+          >
+            lbl_login_rememberMe
+          </span>
+          <span>
+            lbl_login_rememberMeHelpText
+          </span>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -454,14 +460,18 @@ exports[`LoginForm component should renders correctly 1`] = `
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_login_loginCTA
+      </Styled(Button)>
       <Styled(Anchor)
         anchorVariation="secondary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_login_forgetPasswordCTA
+      </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
 </div>
@@ -668,7 +678,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
       <Field
@@ -751,7 +762,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -902,8 +914,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         >
           <span
             className="remember-me-text"
-          />
-          <span />
+          >
+            lbl_login_rememberMe
+          </span>
+          <span>
+            lbl_login_rememberMeHelpText
+          </span>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -939,14 +955,18 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_login_loginCTA
+      </Styled(Button)>
       <Styled(Anchor)
         anchorVariation="secondary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_login_forgetPasswordCTA
+      </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
 </div>

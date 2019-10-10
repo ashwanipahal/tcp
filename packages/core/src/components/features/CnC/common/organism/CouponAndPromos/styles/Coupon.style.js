@@ -21,6 +21,10 @@ const styles = css`
     .hideAccordian {
       display: none;
     }
+    .coupon_list {
+      margin-left: 14px;
+      margin-right: 14px;
+    }
   }
 
   .rewards-header {
@@ -28,6 +32,8 @@ const styles = css`
   }
 
   .couponsWrapperAccordian {
+    margin-left: -14px;
+    margin-right: -14px;
     .collapsible-header {
       background-color: ${props => props.theme.colorPalette.white};
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};

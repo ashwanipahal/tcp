@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kkGfuU",
+              "componentId": "sc-eqIVtm",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +250,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-ckVGcZ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kkGfuU",
+            "styledComponentId": "sc-eqIVtm",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -294,7 +294,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-dVhcbM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -480,7 +480,7 @@ exports[`ModuleK component renders correctly 1`] = `
   .slick-dots li {
     position: relative;
     display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0;
+    background: url('/static/images/carousal-dot.svg') no-repeat 0 0;
     width: 10px;
     height: 10px;
     button,
@@ -604,7 +604,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-fjdhpX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-dVhcbM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

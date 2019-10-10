@@ -4,8 +4,12 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import PromoListTile from '@tcp/core/src/components/common/molecules/PromoListTile/views';
 import endpoints from '../../common/externalEndpoints';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import ExtraPointsDetailModal from '../organism/ExtraPointsDetailModal.view.native';
@@ -17,6 +21,8 @@ import {
   MprTermsWrapper,
   MessageInfoWrapper,
   MorePointsWrapper,
+  ExtraEarningHeader,
+  PromoTileWrapper,
 } from '../styles/ExtraPoints.style.native';
 
 /**
@@ -68,6 +74,7 @@ export class EarnPoints extends React.PureComponent {
       earnedPointsNotification,
       earnExtraPointsLabels,
       handleComponentChange,
+      promoListData,
     } = this.props;
     const { waysToEarnRow, showModal } = this.state;
     let infoMessage = '';
@@ -91,6 +98,7 @@ export class EarnPoints extends React.PureComponent {
                 fontFamily="secondary"
                 dataLocator="earnPoints-message"
                 text={infoMessage}
+                color="gray.900"
               />
               <Anchor
                 fontSizeVariation="large"
@@ -106,6 +114,48 @@ export class EarnPoints extends React.PureComponent {
             </MessageInfoWrapper>
           </Notification>
         ) : null}
+        <ExtraEarningHeader>
+          <BodyCopyWithSpacing
+            fontFamily="primary"
+            fontSize="fs28"
+            fontWeight="extrabold"
+            text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_youAreEarning')}
+            spacingStyles="margin-top-LRG margin-right-LRG margin-bottom-MED margin-left-LRG"
+            textAlign="center"
+          />
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs16"
+            text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_checkOffers')}
+            spacingStyles="margin-right-MED margin-bottom-SM margin-left-MED"
+            textAlign="center"
+            fontWeight="regular"
+          />
+          <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
+            <Anchor
+              fontSizeVariation="large"
+              underline
+              noLink
+              anchorVariation="primary"
+              onPress={() => {
+                UrlHandler(endpoints.myPlaceRewardsPage);
+              }}
+              text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_learnMore')}
+            />
+          </ViewWithSpacing>
+        </ExtraEarningHeader>
+        <TilesWrapper>
+          {promoListData &&
+            promoListData.length > 0 &&
+            promoListData.map(item => {
+              return (
+                <PromoTileWrapper>
+                  <PromoListTile tileData={item} />
+                </PromoTileWrapper>
+              );
+            })}
+        </TilesWrapper>
+
         {waysToEarn && (
           <TilesWrapper>
             <MorePointsWrapper>
@@ -178,7 +228,10 @@ export class EarnPoints extends React.PureComponent {
           heading=" "
         >
           <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
-            <ExtraPointsDetailModal waysToEarnRow={waysToEarnRow} />
+            <ExtraPointsDetailModal
+              waysToEarnRow={waysToEarnRow}
+              handleComponentChange={handleComponentChange}
+            />
           </ViewWithSpacing>
         </ModalNative>
       </>
@@ -193,6 +246,7 @@ EarnPoints.propTypes = {
     lbl_common_viewAll: PropTypes.string,
   }),
   earnedPointsNotification: PropTypes.shape([]),
+  promoListData: PropTypes.shape([]),
   earnExtraPointsLabels: PropTypes.shape({
     lbl_earnExtraPoints_you_earned: PropTypes.string,
     lbl_earnExtraPoints_place_rewards: PropTypes.string,
@@ -208,6 +262,7 @@ EarnPoints.defaultProps = {
     lbl_common_viewAll: '',
   },
   earnedPointsNotification: [],
+  promoListData: [],
   earnExtraPointsLabels: {
     lbl_earnExtraPoints_you_earned: '',
     lbl_earnExtraPoints_place_rewards: '',

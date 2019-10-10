@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(FormPageHeading)
+    heading="lbl_orderDetails_heading"
+  />
+  <Styled(Row)
+    className="elem-mt-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <OrderBasicDetails
+            className=""
+            orderDetailsData={Object {}}
+            ordersLabels={Object {}}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <OrderShippingDetails
+            className=""
+            orderDetailsData={Object {}}
+            ordersLabels={Object {}}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <OrderBillingDetails
+            className=""
+            orderDetailsData={Object {}}
+            ordersLabels={Object {}}
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <OrderSummaryDetails
+            className=""
+            orderDetailsData={Object {}}
+            ordersLabels={Object {}}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

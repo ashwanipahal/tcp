@@ -11,6 +11,7 @@ import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTi
 import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner';
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import LoyaltyBanner from '@tcp/core/src/components/features/CnC/LoyaltyBanner';
 import ErrorMessage from '../../../../../../../../../core/src/components/features/CnC/common/molecules/ErrorMessage';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
@@ -23,7 +24,7 @@ class MiniBagBody extends React.PureComponent {
   };
 
   ViewSaveForLaterLink = savedforLaterQty => {
-    const { labels } = this.props;
+    const { labels, closeMiniBag } = this.props;
     if (savedforLaterQty <= 0) {
       return null;
     }
@@ -36,6 +37,7 @@ class MiniBagBody extends React.PureComponent {
         to={`${CHECKOUT_ROUTES.bagPage.to}?isSfl=true`}
         data-locator="cartitem-saveforlater"
         className="elem-ml-MED"
+        onClick={() => closeMiniBag()}
       >
         {`${labels.viewSfl}(${savedforLaterQty})`}
       </Anchor>
@@ -97,6 +99,7 @@ class MiniBagBody extends React.PureComponent {
       isCartItemsUpdating,
       isCartItemSFL,
       closeMiniBag,
+      onLinkClick,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -113,6 +116,7 @@ class MiniBagBody extends React.PureComponent {
                     asPath={CHECKOUT_ROUTES.bagPage.asPath}
                     to={CHECKOUT_ROUTES.bagPage.to}
                     dataLocator="addressbook-makedefault"
+                    onClick={() => closeMiniBag()}
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
@@ -127,6 +131,7 @@ class MiniBagBody extends React.PureComponent {
                     asPath={CHECKOUT_ROUTES.bagPage.asPath}
                     to={CHECKOUT_ROUTES.bagPage.to}
                     data-locator="addressbook-makedefault"
+                    onClick={() => closeMiniBag()}
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
@@ -165,7 +170,7 @@ class MiniBagBody extends React.PureComponent {
           {cartItemCount ? (
             <ProductTileWrapper sflItemsCount={savedforLaterQty} onItemEdit={this.handleItemEdit} />
           ) : (
-            <EmptyMiniBag labels={labels} userName={userName} />
+            <EmptyMiniBag labels={labels} userName={userName} onLinkClick={onLinkClick} />
           )}
         </BodyCopy>
         {cartItemCount ? (
@@ -196,6 +201,7 @@ class MiniBagBody extends React.PureComponent {
             </BodyCopy>
           </div>
         )}
+        <LoyaltyBanner />
       </div>
     );
   }
@@ -213,6 +219,7 @@ MiniBagBody.propTypes = {
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBag: PropTypes.func.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

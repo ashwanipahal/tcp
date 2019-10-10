@@ -10,7 +10,11 @@ import {
   getPaymentMethodId,
   getSameAsShippingValue,
 } from './GuestBillingForm.selectors';
-import { submitBillingSection } from '../../../container/Checkout.action';
+import {
+  submitBillingSection,
+  setVenmoPaymentInProgress,
+} from '../../../container/Checkout.action';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
 
 /**
@@ -24,8 +28,8 @@ class GuestBillingContainer extends React.Component {
    * @description submits the billing data
    */
   submitBillingData = data => {
-    const { submitBilling, navigation } = this.props;
-    const { address, sameAsShipping } = data;
+    const { submitBilling, navigation, setVenmoProgress } = this.props;
+    const { address, sameAsShipping, paymentMethodId } = data;
     let addressLine1;
     let addressLine2;
     let city;
@@ -36,6 +40,7 @@ class GuestBillingContainer extends React.Component {
     let zipCode;
     let onFileAddressKey;
     let onFileAddressId;
+    let submitData = {};
     /* istanbul ignore else */
     if (address) {
       ({
@@ -51,28 +56,34 @@ class GuestBillingContainer extends React.Component {
         onFileAddressId,
       } = address);
     }
-    submitBilling({
-      cardNumber: data.cardNumber,
-      cardType: data.cardType,
-      cvv: data.cvvCode,
-      emailAddress: undefined,
-      expMonth: data.expMonth,
-      expYear: data.expYear,
-      address: {
-        addressLine1,
-        addressLine2: addressLine2 || '',
-        city,
-        country,
-        firstName,
-        lastName,
-        state,
-        zipCode,
-        sameAsShipping,
-        onFileAddressKey,
-        onFileAddressId,
-      },
-      navigation,
-    });
+    if (paymentMethodId !== CONSTANTS.PAYMENT_METHOD_VENMO) {
+      submitData = {
+        cardNumber: data.cardNumber,
+        cardType: data.cardType,
+        cvv: data.cvvCode,
+        emailAddress: undefined,
+        expMonth: data.expMonth,
+        expYear: data.expYear,
+        address: {
+          addressLine1,
+          addressLine2: addressLine2 || '',
+          city,
+          country,
+          firstName,
+          lastName,
+          state,
+          zipCode,
+          sameAsShipping,
+          onFileAddressKey,
+          onFileAddressId,
+        },
+        navigation,
+      };
+      setVenmoProgress(false); // Cancelling Venmo Progress for non venmo payment option
+    } else {
+      submitData = { paymentMethodId, navigation };
+    }
+    submitBilling(submitData);
   };
 
   /**
@@ -162,6 +173,7 @@ export const mapStateToProps = state => {
   return {
     cardType: getCardType(state),
     syncErrors: getSyncError(state),
+    isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     paymentMethodId: getPaymentMethodId(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
@@ -172,6 +184,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     submitBilling: payload => {
       dispatch(submitBillingSection(payload));
+    },
+    setVenmoProgress: payload => {
+      dispatch(setVenmoPaymentInProgress(payload));
     },
   };
 };
@@ -190,6 +205,7 @@ GuestBillingContainer.propTypes = {
   shippingOnFileAddressKey: PropTypes.string,
   navigation: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoProgress: PropTypes.func.isRequired,
 };
 
 GuestBillingContainer.defaultProps = {

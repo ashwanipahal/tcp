@@ -82,6 +82,10 @@ export const getProductStore = product => {
   return product.getIn(['miscInfo', 'store']);
 };
 
+export const getProductStoreAddress = product => {
+  return product.getIn(['miscInfo', 'storeAddress']);
+};
+
 export const getProductOrderItemType = product => {
   return product.getIn(['miscInfo', 'orderItemType']);
 };
@@ -136,6 +140,10 @@ export const getIsCartItemsSFL = state => {
 
 export const getIsSflItemRemoved = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isSflItemDeleted']);
+};
+
+export const getCartItemsSflError = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'cartItemSflError']);
 };
 
 export const getLabelsCartItemTile = state => {
@@ -264,6 +272,7 @@ export const getLabelsCartItemTile = state => {
     shipping,
     sflDeleteSuccess,
     removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
+    itemUpdated: getLabelValue(state.Labels, 'lbl_minibag_itemUpdated', 'minibag', 'global'),
   };
 };
 
@@ -296,6 +305,7 @@ export const getProductDetails = tile => {
     miscInfo: {
       badge: getProductBadge(tile),
       store: getProductStore(tile),
+      storeAddress: getProductStoreAddress(tile),
       orderItemType: getProductOrderItemType(tile),
       bossStartDate: getBossStartDate(tile),
       bossEndDate: getBossEndDate(tile),

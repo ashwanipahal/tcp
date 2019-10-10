@@ -18,7 +18,6 @@ exports[`Shipping Form should render correctly 1`] = `
         showEmailAddress={true}
         showPhoneNumber={true}
         showUserName={true}
-        state=""
       />
     </FormSection>
     <FormSection
@@ -41,7 +40,7 @@ exports[`Shipping Form should render correctly 1`] = `
         formName="checkoutShipping"
         formSection="shipmentMethods"
         selectedShipmentId={null}
-        shipmentHeader=""
+        shipmentHeader="lbl_shipping_shipmentHeader"
         shipmentMethods={null}
       />
     </FormSection>
@@ -57,10 +56,12 @@ exports[`Shipping Form should render correctly 1`] = `
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
-    btnText=""
+    btnText="lbl_shipping_billingText"
+    isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
     routeToPage=""
+    showAccordian={true}
   />
 </Fragment>
 `;
@@ -83,7 +84,6 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         showEmailAddress={true}
         showPhoneNumber={true}
         showUserName={true}
-        state=""
       />
     </FormSection>
     <FormSection
@@ -104,7 +104,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
             margin={null}
             mobileFontFamily="secondary"
             numberOfLines={null}
-            text=""
+            text="lbl_pickup_emailSignupHeading"
             textDecoration={null}
           />
         </Styled(View)>
@@ -116,7 +116,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           margin={null}
           mobileFontFamily="secondary"
           numberOfLines={null}
-          text=""
+          text="lbl_pickup_emailSignupSubHeading"
           textDecoration={null}
         />
         <Styled(BodyCopy)
@@ -127,7 +127,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           margin={null}
           mobileFontFamily="secondary"
           numberOfLines={null}
-          text=""
+          text="lbl_pickup_emailSignupSubSubHeading"
           textDecoration={null}
         />
         <Styled(Anchor)
@@ -143,7 +143,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           noUnderline={true}
           onPress={null}
           target="_blank"
-          text=""
+          text="lbl_pickup_emailSignupContact"
           visible={false}
         />
       </Styled(View)>
@@ -155,7 +155,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         formName="checkoutShipping"
         formSection="shipmentMethods"
         selectedShipmentId={null}
-        shipmentHeader=""
+        shipmentHeader="lbl_shipping_shipmentHeader"
         shipmentMethods={null}
       />
     </FormSection>
@@ -171,10 +171,12 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
-    btnText=""
+    btnText="lbl_shipping_billingText"
+    isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
     routeToPage=""
+    showAccordian={true}
   />
 </Fragment>
 `;
@@ -219,7 +221,7 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
         formName="checkoutShipping"
         formSection="shipmentMethods"
         selectedShipmentId={null}
-        shipmentHeader=""
+        shipmentHeader="lbl_shipping_shipmentHeader"
         shipmentMethods={null}
       />
     </FormSection>
@@ -235,10 +237,12 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
-    btnText=""
+    btnText="lbl_shipping_billingText"
+    isConfirmationPage={false}
     isGuest={false}
     onBackLinkPress={[Function]}
     routeToPage=""
+    showAccordian={true}
   />
 </Fragment>
 `;

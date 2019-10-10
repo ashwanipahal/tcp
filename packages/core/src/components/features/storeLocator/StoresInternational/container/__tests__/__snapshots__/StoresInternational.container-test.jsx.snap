@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoresInternational Container Container should bind change event handler if select exists 1`] = `
+<Styled(StoresInternational)
+  content="with-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should not bind change event handler if select does not exists 1`] = `
+<Styled(StoresInternational)
+  content="no-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should not scroll if country tile does not exist 1`] = `
+<Styled(StoresInternational)
+  content="with-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should render correctly 1`] = `
+<Styled(StoresInternational)
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should scroll to country tile if it exists 1`] = `
+<Styled(StoresInternational)
+  content="with-select"
+  contentId="test"
+  dataLocator="store_InternationalstoresWrapper"
+  getModuleX={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "test",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+/>
+`;
+
+exports[`StoresInternational Container Container should unmount safely 1`] = `""`;

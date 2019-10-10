@@ -7,9 +7,11 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
+import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 const getBagActions = ({ BagActions }) => {
   return BagActions && <BagActions />;
@@ -18,17 +20,11 @@ const getBagActions = ({ BagActions }) => {
 const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   return (
     !isGuest && (
-      <div
-        className={`${
-          showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-        } elem-mb-MED`}
-      >
-        <BonusPointsDays
-          showAccordian={showAccordian}
-          enableApplyCta
-          additionalClassNameModal="bonus-modal-web"
-        />
-      </div>
+      <BonusPointsDays
+        showAccordian={showAccordian}
+        enableApplyCta
+        additionalClassNameModal="bonus-modal-web"
+      />
     )
   );
 };
@@ -67,15 +63,10 @@ const CnCTemplate = ({
           >
             {isConfirmationPage ? (
               <>
-                <OrderLedgerContainer />
-                <Row fullBleed className="placeholder-right">
+                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+                <Row fullBleed>
                   <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <div>COUPONS</div>
-                  </Col>
-                </Row>
-                <Row fullBleed className="placeholder-right">
-                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <div>COUPONS</div>
+                    <PersonalizedCoupons />
                   </Col>
                 </Row>
               </>
@@ -83,6 +74,7 @@ const CnCTemplate = ({
               <>
                 <OrderLedgerContainer />
                 {getBagActions({ BagActions })}
+                <LoyaltyBanner />
                 {getBonusPointsDaysSection({ isGuest, showAccordian })}
                 <AirmilesBanner />
                 <CouponAndPromos

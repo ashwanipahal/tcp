@@ -19,7 +19,7 @@ const dropDownlist = css`
   }
 
   .dropdownDivOverFlow {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 230px;
   }
 
@@ -73,6 +73,10 @@ const dropDownlist = css`
     background: none;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .dropdown--disabled {
+    pointer-events: none;
+  }
 `;
 
 export default dropDownlist;

@@ -49,7 +49,16 @@ const ModalStyle = css`
   .alignTop {
     top: 25px;
   }
-
+  .Modal-Header {
+    ${props =>
+      props.stickyHeader
+        ? `
+    top:0px;
+    position:sticky;
+    background:#ffffff;
+    `
+        : ''};
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ModalStyle;

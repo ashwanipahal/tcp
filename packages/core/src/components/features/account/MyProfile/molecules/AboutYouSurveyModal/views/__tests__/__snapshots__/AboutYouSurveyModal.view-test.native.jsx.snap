@@ -2,6 +2,8 @@
 
 exports[`AboutYouSurveyModal should render correctly 1`] = `
 <ModalNative
+  heading="lbl_profile_about_you_modal_heading"
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
   onRequestClose={[Function]}

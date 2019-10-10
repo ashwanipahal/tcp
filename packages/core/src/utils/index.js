@@ -1,5 +1,7 @@
 export {
   default,
+  enableBodyScroll,
+  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -15,19 +17,22 @@ export {
   closeOverlay,
   bindAllClassMethodsToThis,
   scrollPage,
+  scrollTopElement,
   createAPIConfig,
   getCountriesMap,
   getCurrenciesMap,
   siteRedirect,
   languageRedirect,
-  redirectToPdp,
   getAsPathWithSlug,
   getMappedPageHref,
   handleGenericKeyDown,
   isBopisProduct,
   isBossProduct,
   viewport,
+  fetchStoreIdFromUrlPath,
+  routeToStoreDetails,
   getLocationOrigin,
+  scrollToParticularElement,
 } from './utils.web';
 
 export {
@@ -63,6 +68,10 @@ export {
   parseStoreHours,
   parseBoolean,
   configureInternalNavigationFromCMSUrl,
+  getDateInformation,
+  buildStorePageUrlSuffix,
+  flattenArray,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  stringify,
 } from './utils';

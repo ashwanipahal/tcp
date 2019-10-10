@@ -30,7 +30,7 @@ import {
 } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import CouponIcon from '../../CouponIcon';
 
-const bagIcon = require('../../../../../../../assets/bag-white.png');
+const bagIcon = require('../../../../../../../assets/white-bag.png');
 
 export class DetailedCouponTile extends React.Component {
   static propTypes = {
@@ -122,8 +122,8 @@ export class DetailedCouponTile extends React.Component {
    */
   getAddToBagCtaLabel = (labels, isStarted, isPlaceCash) => {
     return !isStarted && isPlaceCash
-      ? labels.lbl_coupon_seeRedeemDates
-      : labels.lbl_coupon_applyToBag;
+      ? getLabelValue(labels, 'lbl_coupon_seeRedeemDates')
+      : getLabelValue(labels, 'lbl_coupon_applyToBag');
   };
 
   /**
@@ -217,7 +217,9 @@ export class DetailedCouponTile extends React.Component {
                 <BodyCopy
                   data-locator="accountoverview-myplacerewatdstile-rewarduseby"
                   text={`${
-                    isPlaceCash ? labels.lbl_coupon_couponValid : labels.lbl_coupon_couponUseBy
+                    isPlaceCash
+                      ? getLabelValue(labels, 'lbl_coupon_couponValid')
+                      : getLabelValue(labels, 'lbl_coupon_couponUseBy')
                   }`}
                 />
                 <BodyCopy
@@ -243,7 +245,7 @@ export class DetailedCouponTile extends React.Component {
             </TileDesc>
             <ButtonWrapper>
               <CustomButton
-                text={labels.lbl_coupon_viewPrint}
+                text={getLabelValue(labels, 'lbl_coupon_viewPrint')}
                 buttonVariation="variable-width"
                 fill="WHITE"
                 onPress={() => {
@@ -255,7 +257,7 @@ export class DetailedCouponTile extends React.Component {
             {coupon.applyAlert && <BodyCopy text={coupon.applyAlert} />}
             {!coupon.applyAlert && coupon.status === COUPON_STATUS.APPLIED ? (
               <CustomButton
-                text={labels.lbl_coupon_removeFromBag}
+                text={getLabelValue(labels, 'lbl_coupon_removeFromBag')}
                 buttonVariation="variable-width"
                 fill="WHITE"
                 onPress={() => {

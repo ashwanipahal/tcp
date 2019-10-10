@@ -2,14 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
+import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
-
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
-import SearchBar from '../SearchBar/index';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
@@ -25,7 +23,6 @@ class CondensedHeader extends React.PureComponent {
     const { isLoggedIn, cartItemCount } = props;
     this.state = {
       isSearchOpen: false,
-      isOpenMiniBagModal: false,
       userNameClick: true,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
@@ -54,7 +51,6 @@ class CondensedHeader extends React.PureComponent {
     } else {
       const { openMiniBagDispatch } = this.props;
       openMiniBagDispatch();
-      this.setState({ isOpenMiniBagModal: isOpen });
       if (!isOpen) {
         this.setState({
           cartItemCount: getCartItemCount(),
@@ -99,31 +95,13 @@ class CondensedHeader extends React.PureComponent {
       labels,
     } = this.props;
     const brand = getBrand();
-    const {
-      isSearchOpen,
-      isOpenMiniBagModal,
-      userNameClick,
-      triggerLoginCreateAccount,
-      cartItemCount,
-    } = this.state;
-    const { accountIconButton, cartIconButton, hamburgerMenu } = labels.accessibility;
+    const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
+    const { accessibility: { accountIconButton, cartIconButton, hamburgerMenu } = {} } = labels;
     return (
       <React.Fragment>
-        <Row className={`${className} condensed-header`}>
-          <Row className="content-wrapper">
-            <Col
-              colSize={{
-                large: 2,
-                medium: 1,
-                small: 1,
-              }}
-            >
-              <BrandLogo
-                alt={config[brand].alt}
-                className="brand-logo-left"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+        <Row id="condensedHeader" className={`${className} condensed-header`}>
+          <div className="content-wrapper">
+            <div className="condensed-hamburger-menu">
               <Image
                 src={
                   navigationDrawer.open
@@ -148,40 +126,23 @@ class CondensedHeader extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-            </Col>
-            <Col
-              className="navigation"
-              colSize={{
-                large: 8,
-                medium: 2,
-                small: 2,
-              }}
-              offsetLeft={{
-                medium: 2,
-              }}
-            >
-              <BrandLogo
-                alt={config[brand].alt}
-                className="brand-logo-middle"
-                dataLocator={config[brand].dataLocator}
-                imgSrc={config[brand].imgSrc}
-              />
+            </div>
+            <BrandLogo
+              alt={config[brand].alt}
+              className="condensed-brand-logo"
+              dataLocator={config[brand].dataLocator}
+              imgSrc={config[brand].imgSrc}
+            />
+            <div className="condensed-navigation">
               <Navigation
                 openNavigationDrawer={navigationDrawer.open}
                 closeNavigationDrawer={!navigationDrawer.open}
                 closeNav={closeNavigationDrawer}
               />
-            </Col>
-            <Col
-              className="condensed-icons"
-              colSize={{
-                large: 2,
-                medium: 3,
-                small: 3,
-              }}
-            >
+            </div>
+            <div className="condensed-header-icons">
               <SearchBar
-                className={!isSearchOpen && 'rightLink'}
+                className={!isSearchOpen && 'rightLink search-icon'}
                 setSearchState={this.setSearchState}
                 isSearchOpen={isSearchOpen}
                 fromCondensedHeader
@@ -202,7 +163,7 @@ class CondensedHeader extends React.PureComponent {
                 <Anchor
                   href="#"
                   noLink
-                  className="leftLink"
+                  className="user-icon-link"
                   onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
@@ -240,14 +201,9 @@ class CondensedHeader extends React.PureComponent {
                   {cartItemCount || 0}
                 </BodyCopy>
               </Anchor>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </Row>
-        <MiniBagContainer
-          isOpen={isOpenMiniBagModal}
-          toggleMiniBagModal={this.toggleMiniBagModal}
-          userName={userName}
-        />
         <Row className={`${className} condensed-border`} />
       </React.Fragment>
     );
@@ -267,7 +223,6 @@ CondensedHeader.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({
-    isOpenMiniBagModal: PropTypes.string.isRequired,
     userNameClick: PropTypes.string.isRequired,
     triggerLoginCreateAccount: PropTypes.string.isRequired,
     cartItemCount: PropTypes.string.isRequired,

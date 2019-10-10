@@ -11,6 +11,7 @@ const styles = css`
     position: relative;
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    cursor: auto;
   }
 
   .color-chips-selector-item {
@@ -49,6 +50,16 @@ const styles = css`
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+      }
+
+      input[type='radio']:focus {
+        border-radius: 15px;
+        box-shadow: 0 0 0 2pt ${props => props.theme.colorPalette.blue.A100};
+        margin-top: -3px;
+        margin-left: -3px;
+        width: 30px;
+        height: 30px;
+        outline: 0;
       }
 
       &:before,

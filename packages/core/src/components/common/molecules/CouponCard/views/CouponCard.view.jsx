@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
@@ -10,8 +11,15 @@ import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
+  componentDidUpdate(prevProps) {
+    const { coupon, handleErrorCoupon } = this.props;
+    if (!prevProps.coupon.error && coupon.error) {
+      handleErrorCoupon(coupon);
+    }
+  }
+
   RenderCardHeader = (type, headingClass, dataLocator) => {
-    const { labels, coupon } = this.props;
+    const { labels, coupon, isCarouselView, commonLabels } = this.props;
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
@@ -25,7 +33,7 @@ class CouponCard extends React.Component<Props> {
             {type}
           </BodyCopy>
         </div>
-        {coupon.isExpiring && (
+        {coupon.isExpiring && (!isCarouselView || (isCarouselView && coupon.status !== 'applied')) && (
           <BodyCopy
             data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
@@ -34,6 +42,17 @@ class CouponCard extends React.Component<Props> {
             fontFamily="secondary"
           >
             {labels.EXPIRING_SOON}
+          </BodyCopy>
+        )}
+        {isCarouselView && coupon.status === 'applied' && (
+          <BodyCopy
+            data-locator="coupon_header_applied"
+            className="couponCard__header_expired"
+            component="p"
+            fontSize="fs12"
+            fontFamily="secondary"
+          >
+            {getLabelValue(commonLabels, 'lbl_my_rewards_applied', 'placeRewards')}
           </BodyCopy>
         )}
       </div>
@@ -105,6 +124,16 @@ class CouponCard extends React.Component<Props> {
     );
   };
 
+  RenderButtons = coupon => {
+    const { isCarouselView } = this.props;
+    return (
+      <div className={!isCarouselView ? 'couponCard__col' : ''}>
+        {coupon.status === 'available' && this.RenderApplyButton()}
+        {coupon.status === 'applied' && this.RenderRemoveButton()}
+      </div>
+    );
+  };
+
   handleDefaultLinkClick = event => {
     event.preventDefault();
     const { coupon, couponDetailClick } = this.props;
@@ -112,14 +141,12 @@ class CouponCard extends React.Component<Props> {
   };
 
   render() {
-    const { labels, coupon, className, handleErrorCoupon } = this.props;
-    if (coupon.error) {
-      handleErrorCoupon(coupon);
-    }
+    const { labels, coupon, className, isCarouselView } = this.props;
+    const containerOveride = isCarouselView ? 'couponCard_slick' : '';
     return (
       <div className={className}>
-        <div className="couponCard__container">
-          <ErrorMessage error={coupon.error} />
+        <div className={`couponCard__container ${containerOveride}`}>
+          {!isCarouselView && <ErrorMessage error={coupon.error} />}
           <div className="couponCard__container_main">
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
               this.RenderCardHeader(
@@ -146,8 +173,10 @@ class CouponCard extends React.Component<Props> {
                     <BodyCopy
                       component="p"
                       fontSize="fs12"
+                      lineHeight="lh115"
                       fontWeight="black"
                       fontFamily="secondary"
+                      className="couponTitle"
                       data-locator={`coupon_${coupon.status}_couponNameLbl`}
                     >
                       {`${coupon.title}`}
@@ -172,13 +201,11 @@ class CouponCard extends React.Component<Props> {
                     {labels.DETAILS_BUTTON_TEXT}
                   </Anchor>
                 </div>
-                <div className="couponCard__col">
-                  {coupon.status === 'available' && this.RenderApplyButton()}
-                  {coupon.status === 'applied' && this.RenderRemoveButton()}
-                </div>
+                {this.RenderButtons(coupon)}
               </div>
             </div>
           </div>
+          {isCarouselView && <ErrorMessage className="transparent-box" error={coupon.error} />}
         </div>
       </div>
     );

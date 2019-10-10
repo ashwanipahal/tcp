@@ -24,7 +24,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
 *.xcworkspace
 Pods
 
@@ -46,3 +45,10 @@ yarn-error.log
 TestComponent
 TestContainer
 withTest
+
+#storybook
+storybook-static
+node_modules
+
+#sitespeed
+sitespeed-results

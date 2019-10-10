@@ -2,6 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import ProductList from '../../ProductList/views';
 import { isClient } from '../../../../../../../utils';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import ProductsGridStyles from '../ProductsGrid.style';
 
 // hardcoded value to load products before the end of the products list (400 is about the height of 1 row)
 const NEXT_PAGE_LOAD_OFFSET = 400;
@@ -33,6 +35,7 @@ class ProductsGrid extends React.Component {
     isGridView: PropTypes.bool,
     className: PropTypes.string,
     labels: PropTypes.string,
+    productTileVariation: PropTypes.string,
   };
 
   static defaultProps = {
@@ -44,6 +47,7 @@ class ProductsGrid extends React.Component {
     isGridView: false,
     className: '',
     labels: '',
+    productTileVariation: '',
   };
 
   constructor(props, context) {
@@ -134,10 +138,11 @@ class ProductsGrid extends React.Component {
       isLoadingMore,
       onPickUpOpenClick,
       onQuickViewOpenClick,
+      productTileVariation,
       ...otherProps
     } = this.props;
 
-    const containerClassName = 'main-section-container ';
+    const containerClassName = `${className} main-section-container `;
     return (
       <main className={containerClassName}>
         <section
@@ -162,6 +167,7 @@ class ProductsGrid extends React.Component {
                         className={`${className} product-list`}
                         labels={labels}
                         onQuickViewOpenClick={onQuickViewOpenClick}
+                        productTileVariation={productTileVariation}
                         {...otherProps}
                       />
                     );
@@ -175,4 +181,4 @@ class ProductsGrid extends React.Component {
   }
 }
 
-export default ProductsGrid;
+export default withStyles(ProductsGrid, ProductsGridStyles);

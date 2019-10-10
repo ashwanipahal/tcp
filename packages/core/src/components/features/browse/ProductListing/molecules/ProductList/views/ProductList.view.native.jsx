@@ -7,8 +7,11 @@ import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { styles, PageContainer } from '../styles/ProductList.style.native';
+import CustomButton from '../../../../../../common/atoms/Button';
 
 class ProductList extends React.PureComponent {
+  flatListRef = null;
+
   constructor(props) {
     super(props);
     const { products } = this.props;
@@ -18,6 +21,14 @@ class ProductList extends React.PureComponent {
     this.colorsExtraInfo = {
       [colorName]: miscInfo,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const isScrollToTopValue = get(this.props, 'scrollToTop');
+    const isScrollToTopPrevPropValue = get(prevProps, 'scrollToTop');
+    if (isScrollToTopValue && isScrollToTopValue !== isScrollToTopPrevPropValue) {
+      this.scrollToTop();
+    }
   }
 
   // eslint-disable-next-line
@@ -38,7 +49,13 @@ class ProductList extends React.PureComponent {
    * @desc This is renderer method of the product tile list
    */
   renderItemList = itemData => {
-    const { isMatchingFamily, currencyExchange, currencySymbol, isPlcc } = this.props;
+    const {
+      isMatchingFamily,
+      currencyExchange,
+      currencySymbol,
+      isPlcc,
+      onQuickViewOpenClick,
+    } = this.props;
     const { item } = itemData;
     const { colorsMap, productInfo } = item;
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
@@ -73,8 +90,59 @@ class ProductList extends React.PureComponent {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         onGoToPDPPage={this.onOpenPDPPageHandler}
+        onQuickViewOpenClick={onQuickViewOpenClick}
       />
     );
+  };
+
+  onLoadMoreProductsHandler = () => {
+    const { onLoadMoreProducts } = this.props;
+    if (onLoadMoreProducts) {
+      onLoadMoreProducts();
+    }
+  };
+
+  /**
+   * @desc This is render product list load more footer
+   */
+  renderFooter = () => {
+    const { products } = this.props;
+    const productsLen = get(products, 'length', 0);
+    const totalProductsCount = get(this.props, 'totalProductsCount', 0);
+    if (productsLen === totalProductsCount) {
+      return null;
+    }
+
+    return (
+      <CustomButton
+        margin="0 12px 20px 12px"
+        fill="WHITE"
+        type="button"
+        buttonVariation="variable-width"
+        data-locator="lod more"
+        text="LOAD MORE"
+        onPress={() => {
+          this.onLoadMoreProductsHandler();
+        }}
+        accessibilityLabel="load more"
+      />
+    );
+  };
+
+  /**
+   * @desc This is render product list load more footer
+   */
+  renderHeader = () => {
+    const { onRenderHeader } = this.props;
+    return onRenderHeader();
+  };
+
+  setListRef = ref => {
+    const { setListRef } = this.props;
+    this.flatListRef = ref;
+    if (setListRef) {
+      setListRef(ref);
+    }
   };
 
   /**
@@ -84,6 +152,7 @@ class ProductList extends React.PureComponent {
     const { products } = this.props;
     return (
       <FlatList
+        ref={ref => this.setListRef(ref)}
         data={products}
         renderItem={this.renderItemList}
         keyExtractor={item => item.productInfo.generalProductId}
@@ -91,8 +160,15 @@ class ProductList extends React.PureComponent {
         maxToRenderPerBatch={2}
         numColumns={2}
         extraData={this.props}
+        ListFooterComponent={this.renderFooter}
+        ListHeaderComponent={this.renderHeader}
+        stickyHeaderIndices={[0]}
       />
     );
+  };
+
+  scrollToTop = () => {
+    this.flatListRef.scrollToOffset({ animated: true, offset: 0 });
   };
 
   render() {
@@ -103,7 +179,6 @@ class ProductList extends React.PureComponent {
 ProductList.propTypes = {
   // TODO: Disable eslint for the proptypes as some of the values are not being used in the list. This will be cover in kill swithc story.
   /* eslint-disable */
-  className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
@@ -135,10 +210,13 @@ ProductList.propTypes = {
   /* eslint-enable */
   onGoToPDPPage: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  onLoadMoreProducts: PropTypes.func.isRequired,
+  onRenderHeader: PropTypes.func.isRequired,
+  setListRef: PropTypes.func,
 };
 
 ProductList.defaultProps = {
-  className: '',
+  setListRef: () => {},
   products: [],
   showQuickViewForProductId: '',
   onAddItemToFavorites: () => {},

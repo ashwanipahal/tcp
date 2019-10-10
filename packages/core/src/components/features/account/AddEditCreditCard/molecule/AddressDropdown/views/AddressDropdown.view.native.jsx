@@ -5,6 +5,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import { getScreenHeight } from '@tcp/core/src/utils/index.native';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   Row,
   OverLayView,
@@ -174,27 +175,31 @@ export class AddressDropdown extends React.PureComponent<Props> {
     );
   };
 
+  getContext = item => {
+    const { content, useCustomContent } = item;
+    return useCustomContent ? (
+      content
+    ) : (
+      <Address
+        address={content}
+        showCountry={false}
+        showPhone={false}
+        className="CreditCardForm__address"
+        dataLocatorPrefix="payment"
+        showName
+        showDefaultText={item && item.primary}
+      />
+    );
+  };
+
   /**
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
     const { itemStyle } = this.props;
-    const { content } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
-        {item.id ? (
-          <Address
-            address={content}
-            showCountry={false}
-            showPhone={false}
-            className="CreditCardForm__address"
-            dataLocatorPrefix="payment"
-            showName
-            showDefaultText={item && item.primary}
-          />
-        ) : (
-          this.renderButton({ item })
-        )}
+        {item.id ? this.getContext(item) : this.renderButton({ item })}
       </DropDownItemContainer>
     );
   };
@@ -291,7 +296,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity
             accessible
-            accessibilityLabel={labels.common.lbl_common_tapClose}
+            accessibilityLabel={getLabelValue(labels, 'lbl_common_tapClose', 'common')}
             accessibilityRole="none"
             onPress={this.closeDropDown}
             activeOpacity={1}

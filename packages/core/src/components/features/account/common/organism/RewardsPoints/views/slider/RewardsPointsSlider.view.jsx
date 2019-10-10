@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy } from '../../../../../../../common/atoms';
 import withStyles from '../../../../../../../common/hoc/withStyles';
 import styles from '../../styles/RewardsPoints.style';
@@ -28,7 +29,7 @@ const RewardsPointsSlider = ({
                 fontFamily="secondary"
                 fontSize="fs13"
               >
-                {`${labels.lbl_rewardPoints_currentPoints}: `}
+                {`${getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}: `}
                 <BodyCopy
                   data-locator="slidercurrentpointsvalue"
                   component="span"
@@ -47,7 +48,7 @@ const RewardsPointsSlider = ({
                 fontFamily="secondary"
                 fontSize="fs13"
               >
-                {`${labels.lbl_rewardPoints_heading}: `}
+                {`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
                 <BodyCopy
                   data-locator="slidermyrewardsvalue"
                   component="span"
@@ -55,7 +56,7 @@ const RewardsPointsSlider = ({
                   fontFamily="secondary"
                   fontSize="fs13"
                 >
-                  {labels.lbl_rewardPoints_currency}
+                  {getLabelValue(labels, 'lbl_rewardPoints_currency')}
                   {totalRewards && Math.trunc(totalRewards)}
                 </BodyCopy>
               </BodyCopy>
@@ -87,7 +88,7 @@ const RewardsPointsSlider = ({
             fontFamily="secondary"
             fontSize="fs13"
           >
-            {`${labels.lbl_rewardPoints_nextReward}: `}
+            {`${getLabelValue(labels, 'lbl_rewardPoints_nextReward')}: `}
             <BodyCopy
               data-locator="slidernextrewardspointsvalue"
               component="span"

@@ -1,32 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Anchor from '../../../../common/atoms/Anchor';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountLayout.style';
-
-// @flow
-type Props = {
-  navData: Array<Object>,
-  active: String,
-  className: String,
-  activeSubComponent: String,
-};
-
-type NavProps = {
-  nav: Object,
-  active: String,
-};
-
-type SubSectionProps = {
-  nav: Object,
-  activeSubComponent: String,
-};
 
 /**
  * @function getNavLink This function renders each link present in the left nav
  * @param {nav} nav Each Link data is passed in nav Object
  * NOTE:-  Used the next Link, will change it to atom Anchor once the as attribute in common Achor Atom gets resolved
  */
-const getNavLink = ({ nav, active }: NavProps, selectedSubNav) => {
+const getNavLink = (navObj, selectedSubNav) => {
+  const { nav, active } = navObj;
   const selectedNav = active === nav.component;
   return (
     <Anchor
@@ -45,7 +29,8 @@ const getNavLink = ({ nav, active }: NavProps, selectedSubNav) => {
  * @function renderSubSections This function renders each subSection link present in the left nav
  * @param {nav} nav Each Link data is passed in nav Object
  */
-const renderSubSections = ({ nav, activeSubComponent }: SubSectionProps) => {
+const renderSubSections = navObj => {
+  const { nav, activeSubComponent } = navObj;
   return (
     <ul className="nav-sub-section">
       {nav.subSections.map(subSection => {
@@ -67,7 +52,7 @@ const renderSubSections = ({ nav, activeSubComponent }: SubSectionProps) => {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }: Props) => {
+const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }) => {
   return (
     <React.Fragment>
       <ul className={className}>
@@ -86,6 +71,13 @@ const MyAccountLeftNav = ({ navData, active, className, activeSubComponent }: Pr
       </ul>
     </React.Fragment>
   );
+};
+
+MyAccountLeftNav.propTypes = {
+  navData: PropTypes.shape([]).isRequired,
+  active: PropTypes.bool.isRequired,
+  className: PropTypes.string.isRequired,
+  activeSubComponent: PropTypes.string.isRequired,
 };
 
 export default withStyles(MyAccountLeftNav, styles);

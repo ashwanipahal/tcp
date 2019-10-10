@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -11,22 +12,11 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath } from '../../../../../../../utils';
-
-// @flow
-type Props = {
-  isMakeDefaultDisabled: string,
-  handleSubmit: string,
-  labels: string,
-  hideShowPwd: boolean,
-  confirmHideShowPwd: boolean,
-  onAlreadyHaveAnAccountClick: any,
-  className: string,
-  tooltipContent: any,
-};
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -38,7 +28,7 @@ let CreateAccountForm = ({
   onAlreadyHaveAnAccountClick,
   className,
   tooltipContent,
-}: Props) => {
+}) => {
   return (
     <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
@@ -133,8 +123,8 @@ let CreateAccountForm = ({
                   enableSuccessCheck={false}
                 >
                   {hideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show}
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')}
                 </Field>
               </Col>
             </span>
@@ -162,26 +152,12 @@ let CreateAccountForm = ({
                   enableSuccessCheck={false}
                 >
                   {confirmHideShowPwd
-                    ? labels.registration.lbl_createAccount_hide
-                    : labels.registration.lbl_createAccount_show}
+                    ? getLabelValue(labels, 'lbl_createAccount_hide', 'registration')
+                    : getLabelValue(labels, 'lbl_createAccount_show', 'registration')}
                 </Field>
               </Col>
             </span>
           </Col>
-
-          {/* CHECKBOXES */}
-          {/* TODO: Uncomment when PLCC reg is available
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
-            <Field
-              name="myPlace"
-              component={InputCheckbox}
-              dataLocator="my-place-checkbox"
-              disabled={isMakeDefaultDisabled}
-            >
-              {labels.registration.lbl_createAccount_saveRewards}
-            </Field>
-          </Col>
-          */}
           <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
@@ -196,9 +172,15 @@ let CreateAccountForm = ({
             >
               <BodyCopy fontFamily="secondary" fontSize="fs10">
                 <RichText
-                  richTextHtml={`${labels.registration.lbl_createAccount_termsConditions} ${
-                    labels.registration.lbl_createAccount_termsConditions_1
-                  }`}
+                  richTextHtml={`${getLabelValue(
+                    labels,
+                    'lbl_createAccount_termsConditions',
+                    'registration'
+                  )} ${getLabelValue(
+                    labels,
+                    'lbl_createAccount_termsConditions_1',
+                    'registration'
+                  )}`}
                 />
               </BodyCopy>
             </Field>
@@ -211,11 +193,11 @@ let CreateAccountForm = ({
               disabled={isMakeDefaultDisabled}
             >
               <BodyCopy fontFamily="secondary" className="remember-me-text" fontSize="fs10">
-                {labels.registration.lbl_createAccount_rememberMe}
+                {getLabelValue(labels, 'lbl_createAccount_rememberMe', 'registration')}
               </BodyCopy>
 
               <BodyCopy fontFamily="secondary" fontSize="fs10">
-                {labels.registration.lbl_createAccount_rememberMeHelpText}
+                {getLabelValue(labels, 'lbl_createAccount_rememberMeHelpText', 'registration')}
               </BodyCopy>
             </Field>
           </Col>
@@ -230,7 +212,7 @@ let CreateAccountForm = ({
               type="submit"
               data-locator="create-account-btn"
             >
-              {labels.registration.lbl_createAccount_createAccount}
+              {getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
             </Button>
           </Col>
           <Col
@@ -239,7 +221,7 @@ let CreateAccountForm = ({
             className="already-account align-center"
           >
             <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
-              {labels.registration.lbl_createAccount_alreadyAccount}
+              {getLabelValue(labels, 'lbl_createAccount_alreadyAccount', 'registration')}
             </Anchor>
           </Col>
         </Row>
@@ -267,6 +249,17 @@ CreateAccountForm = reduxForm({
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);
+
+CreateAccountForm.propTypes = {
+  isMakeDefaultDisabled: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  labels: PropTypes.string.isRequired,
+  hideShowPwd: PropTypes.bool.isRequired,
+  confirmHideShowPwd: PropTypes.bool.isRequired,
+  onAlreadyHaveAnAccountClick: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  tooltipContent: PropTypes.string.isRequired,
+};
 
 export default withStyles(CreateAccountForm, Styles);
 export { CreateAccountForm as CreateAccountFormVanilla };

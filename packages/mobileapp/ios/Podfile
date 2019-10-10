@@ -1,0 +1,65 @@
+platform :ios, '9.0'
+use_frameworks!
+
+def facebook
+  pod 'FBSDKCoreKit', '~> 4.35.0'
+  pod 'FBSDKLoginKit', '~> 4.35.0'
+  pod 'FBSDKShareKit', '~> 4.35.0'
+end
+
+target 'gymboree' do
+   facebook
+end
+
+target 'gymboree_dev' do
+   facebook
+end
+
+target 'gymboree_int' do
+   facebook
+end
+
+target 'gymboree_prod' do
+   facebook
+end
+
+target 'gymboree_uat' do
+   facebook
+end
+
+target 'mobileapp' do
+  facebook
+
+  target 'mobileappTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'mobileapp-tvOS' do
+  facebook
+  # Pods for mobileapp-tvOS
+
+  target 'mobileapp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'mobileapp_dev' do
+  facebook
+end
+
+target 'mobileapp_int' do
+  facebook
+end
+
+target 'mobileapp_prod' do
+   facebook
+end
+
+target 'mobileapp_uat' do
+  facebook
+end

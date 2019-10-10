@@ -3,6 +3,8 @@
 exports[`ProductList component should renders correctly 1`] = `
 <Styled(View)>
   <FlatList
+    ListFooterComponent={[Function]}
+    ListHeaderComponent={[Function]}
     data={
       Array [
         Object {
@@ -13,7 +15,6 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={
       Object {
-        "className": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
@@ -32,6 +33,7 @@ exports[`ProductList component should renders correctly 1`] = `
             "productInfo": "",
           },
         ],
+        "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
         "siblingProperties": "",
         "unbxdId": "",
@@ -46,6 +48,11 @@ exports[`ProductList component should renders correctly 1`] = `
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
+    stickyHeaderIndices={
+      Array [
+        0,
+      ]
+    }
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />

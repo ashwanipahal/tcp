@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
+import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import InputCheckbox from '../../../../../atoms/InputCheckbox';
@@ -28,16 +28,18 @@ const PickupStoreList = props => {
     isOnlyShowAvailable,
     derivedStoresList,
     addItemToCartInPickup,
+    onPickupRadioBtnToggle,
   } = props;
 
   return (
-    <div className="stores-info">
+    <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (
         <InputCheckbox
-          className="store-availability-checkbox"
+          checkBoxLabel
+          execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
         >
-          Only show stores available for pickup today.
+          {BOPIS_FILTER_LABEL}
         </InputCheckbox>
       )}
       {derivedStoresList.map(store => (
@@ -64,9 +66,10 @@ const PickupStoreList = props => {
           updateCartItemStore={updateCartItemStore}
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
+          onPickupRadioBtnToggle={onPickupRadioBtnToggle}
         />
       ))}
-    </div>
+    </>
   );
 };
 
@@ -130,6 +133,7 @@ PickupStoreList.propTypes = {
 
   isGiftCard: PropTypes.bool.isRequired,
   allowBossStoreSearch: PropTypes.bool.isRequired,
+  onPickupRadioBtnToggle: PropTypes.func.isRequired,
   updateCartItemStore: PropTypes.bool.isRequired,
   buttonLabel: PropTypes.string.isRequired,
   isBopisCtaEnabled: PropTypes.bool.isRequired,

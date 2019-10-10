@@ -120,7 +120,9 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
 
     verifyAddressAction(formattedPayload);
     toggleAddressModal();
-    setAddressLine1(formattedPayload.address1, formattedPayload.state);
+    if (setAddressLine1) {
+      setAddressLine1(formattedPayload.address1, formattedPayload.state);
+    }
   };
 
   submitAddressForm = payloadParam => {

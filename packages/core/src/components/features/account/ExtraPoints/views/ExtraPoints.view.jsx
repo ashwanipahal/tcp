@@ -4,6 +4,8 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import PromoListTile from '@tcp/core/src/components/common/molecules/PromoListTile/views';
+import { isCanada } from '@tcp/core/src/utils';
 import styles from '../styles/ExtraPoints.style';
 import externalEndpoints from '../../common/externalEndpoints';
 import internalEndpoints from '../../common/internalEndpoints';
@@ -11,7 +13,6 @@ import internalEndpoints from '../../common/internalEndpoints';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import DetailedEarnExtraPointsSingleTileComponent from '../../common/molecule/DetailedEarnExtraPointsTile/views/DetailedEarnExtraPointsSingleTile.view';
-
 /**
  * This function getNotificationMarkup use for return the notification message
  * can be passed in the component.
@@ -31,10 +32,19 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
         fontWeight="extrabold"
         fontFamily="secondary"
         className="elem-mr-LRG"
+        dataLocator="earnextrapoints-notificationdate"
       >
         {earnedPointsNotification[0].transactionDate}
       </BodyCopy>
-      {infoMessage}
+      <BodyCopy
+        component="span"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        dataLocator="earnextrapoints-notificationtext"
+      >
+        {infoMessage}
+      </BodyCopy>
       <Anchor
         fontSizeVariation="large"
         underline
@@ -53,6 +63,42 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
 };
 
 /**
+ * @function return  Used to render the promolist tiles
+ * @param    {[Object]}  promoListData tile data from graphQL
+ * @return   {[Object]} JSX of the component
+ */
+const getPromoTileData = promoListData => {
+  return promoListData ? (
+    <Row fullBleed>
+      {promoListData.map((item, index) => {
+        return (
+          <>
+            {item && (index === 0 || index === 2) && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
+                <PromoListTile key={index.toString()} tileData={item} />
+                <BodyCopy component="div" className="tile-border" />
+              </Col>
+            )}
+            {item && index === 1 && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }} className="borderAll">
+                <PromoListTile key={index.toString()} tileData={item} />
+                <BodyCopy component="div" className="tile-border-desktop" />
+              </Col>
+            )}
+            {item && index === 3 && (
+              <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+                <PromoListTile key={index.toString()} tileData={item} />
+              </Col>
+            )}
+          </>
+        );
+      })}
+    </Row>
+  ) : (
+    ''
+  );
+};
+/**
  * This function component use for return the EarnPoints
  * can be passed in the component.
  * @param waysToEarn - waysToEarn object used for showing extra points details
@@ -65,6 +111,7 @@ const EarnPoints = ({
   waysToEarn,
   earnedPointsNotification,
   onViewActivityDetails,
+  promoListData,
 }) => {
   let fistRowItem = [];
   let secondRowItem = [];
@@ -88,40 +135,108 @@ const EarnPoints = ({
 
   return (
     <div className={className}>
-      <FormPageHeadingComponent heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')} />
-      {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
-      {waysToEarn && waysToEarn.length && (
+      {!isCanada() && (
         <>
-          <BodyCopy
-            fontSize="fs18"
-            fontWeight="semibold"
-            textAlign="center"
-            fontFamily="secondary"
-            className="morePointsWrapper"
-          >
-            {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
-          </BodyCopy>
-          <Row fullBleed className="elem-mt-LRG">
-            {fistRowItem &&
-              fistRowItem.map((item, index) => {
-                return (
-                  <>
-                    {item && index === 0 && (
-                      <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-                        <DetailedEarnExtraPointsSingleTileComponent
-                          key={index.toString()}
-                          waysToEarnRow={item}
-                          onViewActivityDetails={onViewActivityDetails}
-                          labels={labels}
-                          viewAll
-                        />
-                      </Col>
-                    )}
-                    {item && index > 0 && (
-                      <Col
-                        colSize={{ small: 3, medium: 2, large: 3 }}
-                        className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
-                      >
+          <FormPageHeadingComponent
+            heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')}
+          />
+          {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
+
+          <div className="extraEarningWrapper">
+            <BodyCopy
+              fontSize="fs28"
+              fontWeight="black"
+              textAlign="center"
+              fontFamily="primary"
+              className="earningExtra"
+              data-locator="earnextrapoints-youAreEarning"
+            >
+              {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_youAreEarning')}
+            </BodyCopy>
+
+            <BodyCopy
+              fontSize="fs18"
+              fontWeight="regular"
+              textAlign="center"
+              fontFamily="secondary"
+              className="checkOffers"
+              data-locator="earnextrapoints-morePointsText"
+            >
+              {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_checkOffers')}
+            </BodyCopy>
+            <BodyCopy textAlign="center" className="learnMore">
+              <Anchor
+                fontSizeVariation="xlarge"
+                underline
+                noLink
+                textAlign="center"
+                href="#"
+                anchorVariation="primary"
+                dataLocator="shipping internationally"
+                target="_self"
+              >
+                {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_learnMore')}
+              </Anchor>
+            </BodyCopy>
+          </div>
+
+          {getPromoTileData(promoListData)}
+
+          {waysToEarn && waysToEarn.length && (
+            <>
+              <BodyCopy
+                fontSize="fs18"
+                fontWeight="semibold"
+                textAlign="center"
+                fontFamily="secondary"
+                className="morePointsWrapper"
+                data-locator="earnextrapoints-morePointsText"
+              >
+                {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
+              </BodyCopy>
+              <Row fullBleed className="elem-mt-LRG">
+                {fistRowItem &&
+                  fistRowItem.map((item, index) => {
+                    return (
+                      <>
+                        {item && index === 0 && (
+                          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+                            <DetailedEarnExtraPointsSingleTileComponent
+                              key={index.toString()}
+                              waysToEarnRow={item}
+                              onViewActivityDetails={onViewActivityDetails}
+                              labels={labels}
+                              viewAll
+                            />
+                          </Col>
+                        )}
+                        {item && index > 0 && (
+                          <Col
+                            colSize={{ small: 3, medium: 2, large: 3 }}
+                            className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
+                          >
+                            <DetailedEarnExtraPointsTile
+                              key={index.toString()}
+                              waysToEarnRow={item}
+                              onViewActivityDetails={onViewActivityDetails}
+                              labels={labels}
+                              viewAll
+                            />
+                          </Col>
+                        )}
+                      </>
+                    );
+                  })}
+              </Row>
+              <Row fullBleed>
+                {secondRowItem &&
+                  secondRowItem.map((item, index) => {
+                    let ignoreGutter = '';
+                    if ((index + 1) % 4 === 0) {
+                      ignoreGutter = { large: true, medium: true, small: true };
+                    }
+                    return (
+                      <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
                         <DetailedEarnExtraPointsTile
                           key={index.toString()}
                           waysToEarnRow={item}
@@ -130,48 +245,33 @@ const EarnPoints = ({
                           viewAll
                         />
                       </Col>
-                    )}
-                  </>
-                );
-              })}
-          </Row>
-          <Row fullBleed>
-            {secondRowItem &&
-              secondRowItem.map((item, index) => {
-                let ignoreGutter = '';
-                if ((index + 1) % 4 === 0) {
-                  ignoreGutter = { large: true, medium: true, small: true };
-                }
-                return (
-                  <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
-                    <DetailedEarnExtraPointsTile
-                      key={index.toString()}
-                      waysToEarnRow={item}
-                      onViewActivityDetails={onViewActivityDetails}
-                      labels={labels}
-                      viewAll
-                    />
-                  </Col>
-                );
-              })}
-          </Row>
+                    );
+                  })}
+              </Row>
+            </>
+          )}
+          <BodyCopy
+            fontSize="fs14"
+            fontWeight="regular"
+            fontFamily="secondary"
+            className="elem-mt-XL"
+          >
+            <Anchor
+              noUnderline
+              anchorVariation="primary"
+              fontSizeVariation="large"
+              underline
+              noLink
+              href={externalEndpoints.mprTermsPage}
+              target="_blank"
+              dataLocator="shipping-email-signUp-contact-anchor"
+            >
+              {getLabelValue(labels, 'lbl_common_check_here')}
+            </Anchor>
+            {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
+          </BodyCopy>
         </>
       )}
-      <BodyCopy fontSize="fs14" fontWeight="regular" fontFamily="secondary" className="elem-mt-XL">
-        <Anchor
-          noUnderline
-          anchorVariation="primary"
-          fontSizeVariation="large"
-          underline
-          noLink
-          href={externalEndpoints.mprTermsPage}
-          target="_blank"
-          dataLocator="shipping-email-signUp-contact-anchor"
-        >
-          {getLabelValue(labels, 'lbl_common_check_here')}
-        </Anchor>
-        {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
-      </BodyCopy>
     </div>
   );
 };
@@ -189,6 +289,7 @@ EarnPoints.propTypes = {
     lbl_earnExtraPoints_place_rewards: PropTypes.string,
     lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
+  promoListData: PropTypes.shape([]),
 };
 
 EarnPoints.defaultProps = {
@@ -204,6 +305,7 @@ EarnPoints.defaultProps = {
     lbl_earnExtraPoints_place_rewards: '',
     lbl_earnExtraPoints_view_points_history: '',
   },
+  promoListData: [],
 };
 
 export default withStyles(EarnPoints, styles);

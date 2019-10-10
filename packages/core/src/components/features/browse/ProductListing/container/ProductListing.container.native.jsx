@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
-import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
+import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
-  getProductsSelect,
   getNavigationTree,
   getLoadedProductsCount,
   getUnbxdId,
@@ -17,20 +17,32 @@ import {
   getLoadedProductsPages,
   getAppliedFilters,
   updateAppliedFiltersInState,
+  getAllProductsSelect,
+  getScrollToTopValue,
+  getTotalProductsCount,
 } from './ProductListing.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
+  categoryUrl;
+
+  constructor(props) {
+    super(props);
+    const { resetProducts } = this.props;
+    resetProducts();
+  }
+
   componentDidMount() {
     this.makeApiCall();
   }
 
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
-    const url = navigation && navigation.getParam('url');
-    getProducts({ URI: 'category', url, ignoreCache: true });
+    this.categoryUrl = navigation && navigation.getParam('url');
+    getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
   };
 
   onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
@@ -41,6 +53,11 @@ class ProductListingContainer extends React.PureComponent {
       selectedColorProductId,
       reset: true,
     });
+  };
+
+  onLoadMoreProducts = () => {
+    const { getMoreProducts } = this.props;
+    getMoreProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
   };
 
   render() {
@@ -87,6 +104,7 @@ class ProductListingContainer extends React.PureComponent {
         navigation={navigation}
         onGoToPDPPage={this.onGoToPDPPage}
         sortLabels={sortLabels}
+        onLoadMoreProducts={this.onLoadMoreProducts}
         {...otherProps}
       />
     );
@@ -111,7 +129,7 @@ function mapStateToProps(state) {
 
   return {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
-    products: getProductsSelect(state),
+    products: getAllProductsSelect(state),
     filters,
     currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
     categoryId: getCategoryId(state),
@@ -121,7 +139,6 @@ function mapStateToProps(state) {
     ),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
-    totalProductsCount: state.ProductListing.totalProductsCount,
     filtersLength,
     initialValues: {
       ...state.ProductListing.appliedFiltersIds,
@@ -133,6 +150,9 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
     sortLabels: getSortLabels(state),
+    scrollToTop: getScrollToTopValue(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
+    totalProductsCount: getTotalProductsCount(state),
   };
 }
 
@@ -146,6 +166,12 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
+    resetProducts: () => {
+      dispatch(resetPlpProducts());
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
+    },
   };
 }
 
@@ -170,6 +196,7 @@ ProductListingContainer.propTypes = {
   lastLoadedPageNumber: PropTypes.number,
   router: PropTypes.shape({}).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  resetProducts: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -188,6 +215,7 @@ ProductListingContainer.defaultProps = {
   isLoadingMore: false,
   lastLoadedPageNumber: 0,
   sortLabels: [],
+  resetProducts: () => {},
 };
 
 export default connect(

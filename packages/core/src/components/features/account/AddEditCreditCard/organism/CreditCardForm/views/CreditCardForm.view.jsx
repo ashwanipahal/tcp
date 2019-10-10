@@ -97,10 +97,10 @@ export class CreditCardForm extends React.PureComponent {
 
     addressOptions = addressOptions.push({
       value: '',
-      title: labels.paymentGC.lbl_payment_addNewAddCta,
+      title: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: (
         <Button fullWidth buttonVariation="variable-width" fill="BLUE">
-          {labels.paymentGC.lbl_payment_addNewAddCta}
+          {getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC')}
         </Button>
       ),
     });
@@ -144,7 +144,7 @@ export class CreditCardForm extends React.PureComponent {
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
 
     const getSubHeading = pagesubHeading => {
-      let subheading = labels.paymentGC.lbl_payment_billingAddress;
+      let subheading = getLabelValue(labels, 'lbl_payment_billingAddress', 'paymentGC');
       if (pagesubHeading) {
         subheading = pagesubHeading;
       }
@@ -180,7 +180,7 @@ export class CreditCardForm extends React.PureComponent {
               className="creditCardForm__addressBook"
             >
               <Field
-                selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+                selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
                 name="onFileAddressKey"
                 id="onFileAddressKey"
                 component={AddressDropdown}
@@ -236,7 +236,7 @@ export class CreditCardForm extends React.PureComponent {
               type="button"
               data-locator="payment-cancelbtn"
             >
-              {labels.common.lbl_common_cancelCTA}
+              {getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
             </Button>
           </Col>
           <Col
@@ -252,8 +252,10 @@ export class CreditCardForm extends React.PureComponent {
               data-locator="payment-addcardbtn"
             >
               {!mailingAddress &&
-                (isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA)}
-              {mailingAddress && labels.common.lbl_common_saveCTA}
+                (isEdit
+                  ? getLabelValue(labels, 'lbl_common_updateCTA', 'common')
+                  : getLabelValue(labels, 'lbl_common_addCTA', 'common'))}
+              {mailingAddress && getLabelValue(labels, 'lbl_common_saveCTA', 'common')}
             </Button>
           </Col>
         </Row>

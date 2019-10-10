@@ -7,7 +7,10 @@ const MainWrapper = styled.View`
 
 const OuterContainer = styled.View`
   flex-direction: row;
-  padding: 10px;
+  padding: ${props =>
+    props.showOnReviewPage
+      ? props.theme.spacing.APP_LAYOUT_SPACING.XXS
+      : `${props.theme.spacing.APP_LAYOUT_SPACING.XXS} 0`};
   background-color: ${props => props.theme.colorPalette.white};
 `;
 const UnavailableView = styled.View`
@@ -15,7 +18,10 @@ const UnavailableView = styled.View`
   padding: 5px 2px 2px 14px;
   flex-direction: row;
 `;
-const ProductName = styled.View``;
+const ProductName = styled.View`
+  width: ${props => (props.showOnReviewPage ? '66%' : 'auto')};
+  flex-wrap: wrap;
+`;
 const ProductDesc = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
@@ -39,7 +45,10 @@ const SoldOutLabel = styled.View`
   justify-content: center;
 `;
 const ImgWrapper = styled.View`
-  width: 30%;
+  margin-right: ${props =>
+    props.showOnReviewPage ? `0` : props.theme.spacing.APP_LAYOUT_SPACING.XS};
+  margin-left: ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  width: ${props => (props.showOnReviewPage ? `30%` : `auto`)};
   align-items: center;
 `;
 
@@ -65,7 +74,8 @@ const ImageGymBrandStyle = styled.Image`
 `;
 
 const ProductSubDetailLabel = styled.View`
-  min-width: 25%;
+  ${props => (props.showOnReviewPage ? `0` : props.theme.spacing.ELEM_SPACING.XXS)};
+  min-width: ${props => (props.showOnReviewPage ? '25%' : 'auto')};
 `;
 const ProductListPrice = styled.View`
   padding-left: 5px;
@@ -137,6 +147,17 @@ const SflIcons = styled.TouchableOpacity`
 const IconHeight = '58px';
 const IconWidth = '58px';
 
+const ProductListPriceOnReview = styled.View`
+  position: absolute;
+  right: 0;
+  top: 10px;
+`;
+
+const SizeQtyOnReview = styled.View`
+  flex-direction: row;
+  display: flex;
+`;
+
 export {
   OuterContainer,
   ProductName,
@@ -162,4 +183,6 @@ export {
   IconTextMoveToBag,
   HeartIcon,
   SflIcons,
+  ProductListPriceOnReview,
+  SizeQtyOnReview,
 };

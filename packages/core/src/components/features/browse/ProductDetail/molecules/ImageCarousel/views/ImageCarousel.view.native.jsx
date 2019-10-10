@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import get from 'lodash/get';
-import { FlatList, Text, Dimensions } from 'react-native';
+import { FlatList, Text, Dimensions, Share } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  getImagesToDisplay,
-  getMapSliceForColorProductId,
-} from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import {
   Container,
   FavoriteAndPaginationContainer,
@@ -21,7 +17,7 @@ import {
   styles,
 } from '../styles/ImageCarousel.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
-import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
+import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../../common/atoms/Icon/Icon.constants';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -70,6 +66,28 @@ class ImageCarousel extends React.PureComponent {
 
   onFavorite = () => {};
 
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Share the details on different platforms',
+        url: 'http://local.childrensplace.com:3000/us/p/3000332_2155',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log('shared with activity type of result.activityType');
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   renderNormalImage = imgSource => {
     const { onImageClick } = this.props;
     const { activeSlideIndex } = this.state;
@@ -92,21 +110,9 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorProductId } = this.props;
+    const { imageUrls } = this.props;
+
     const { activeSlideIndex } = this.state;
-    const imagesByColor = get(item, 'imagesByColor', null);
-    const colorFitsSizesMap = get(item, 'colorFitsSizesMap', null);
-    let curentColorEntry;
-    let imageUrls;
-    if (colorFitsSizesMap) {
-      curentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId);
-      imageUrls = getImagesToDisplay({
-        imagesByColor,
-        curentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
-    }
 
     if (imageUrls && imageUrls.length > 0) {
       return (
@@ -149,12 +155,25 @@ class ImageCarousel extends React.PureComponent {
                 text="100"
               />
             </FavoriteContainer>
-            <PaginationDots
-              numberOfDots={imageUrls.length}
-              selectedIndex={activeSlideIndex}
-              onPress={this.onPageChange}
-            />
-            <DownloadContainer />
+            {imageUrls.length > 1 && (
+              <PaginationDots
+                numberOfDots={imageUrls.length}
+                selectedIndex={activeSlideIndex}
+                onPress={this.onPageChange}
+              />
+            )}
+            <DownloadContainer>
+              <CustomIcon
+                iconFontName={ICON_FONT_CLASS.Icomoon}
+                name={ICON_NAME.iconShare}
+                size="fs18"
+                color="gray.1600"
+                dataLocator="pdp_social_connect"
+                onPress={this.onShare}
+                title="Share"
+                isButton
+              />
+            </DownloadContainer>
           </FavoriteAndPaginationContainer>
         </Container>
       );
@@ -165,14 +184,19 @@ class ImageCarousel extends React.PureComponent {
 
 ImageCarousel.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
+  imageUrls: PropTypes.arrayOf(
+    PropTypes.shape({
+      item: PropTypes.shape({
+        regularSizeImageUrl: PropTypes.string.isRequired,
+      }),
+    })
+  ),
   onImageClick: PropTypes.func.isRequired,
 };
 
 ImageCarousel.defaultProps = {
   theme: {},
-  item: {},
+  imageUrls: [],
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);
