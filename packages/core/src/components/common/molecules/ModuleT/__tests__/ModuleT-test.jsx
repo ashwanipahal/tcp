@@ -20,7 +20,7 @@ describe('ModuleT component', () => {
   });
 
   it('Module has promo banner', () => {
-    expect(ModuleTComp.find('.moduleT-promo-wrapper')).toHaveLength(1);
+    expect(ModuleTComp.find('.promoBanner')).toHaveLength(2);
   });
 
   it('Module has left promo image view', () => {
