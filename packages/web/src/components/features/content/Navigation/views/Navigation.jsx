@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getViewportInfo } from '@tcp/core/src/utils';
 import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
@@ -10,10 +9,11 @@ import style from '../Navigation.style';
 
 /**
  * This function closes Navigation Drawer on route change
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const handleRouteChange = closeNavigationDrawer => () => {
-  if (!getViewportInfo().isDesktop) {
+const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
+  if (isDrawerOpen) {
     closeNavigationDrawer();
   }
 };
@@ -27,14 +27,15 @@ const handleRouteComplete = () => {
 
 /**
  * This function handler router change and complete events
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const registerRouterChangeEvent = closeNavigationDrawer => () => {
-  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+const registerRouterChangeEvent = (closeNavigationDrawer, isDrawerOpen) => () => {
+  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
   Router.events.on('routeChangeComplete', handleRouteComplete);
 
   return () => {
-    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
     Router.events.off('routeChangeComplete', handleRouteComplete);
   };
 };
@@ -46,9 +47,10 @@ const Navigation = props => {
     closeNavigationDrawer,
     hideNavigationFooter,
     showCondensedHeader,
+    isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer));
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
 
   return (
     <Drawer
@@ -85,6 +87,7 @@ Navigation.propTypes = {
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  isDrawerOpen: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };
