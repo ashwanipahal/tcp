@@ -31,12 +31,12 @@ describe('AddressOverviewTile component', () => {
     const props = {
       addresses: [
         {
-          firstName: 'test1',
-          lastName: 'test2',
-          addressLine: ['addressline s1', 'addresslines 2'],
-          city: 'test city',
-          country: 'test country',
-          phone1: '1234567890',
+          firstName: 'user',
+          lastName: 'user1',
+          addressLine: ['addressline1', 'addresslines 2'],
+          city: 'ny city',
+          country: 'country',
+          phone1: '1234506789',
         },
       ],
       labels: {},
