@@ -35,7 +35,7 @@ exports[`ModuleT component renders correctly 1`] = `
   forwardedRef={null}
 >
   <div
-    className="header-wrapper-smallOnly"
+    className="smallOnlyView"
   >
     <Styled(LinkText)
       className="header"
@@ -67,10 +67,6 @@ exports[`ModuleT component renders correctly 1`] = `
       }
       headingClass="moduleT-header"
     />
-  </div>
-  <div
-    className="promo-wrapper-smallOnly"
-  >
     <Styled(PromoBanner)
       className="promoBanner"
       dataLocator="moduleJ_promobanner_text"
@@ -176,72 +172,64 @@ exports[`ModuleT component renders correctly 1`] = `
         }
       }
     >
-      <div
-        className="moduleT-header-wrapper"
-      >
-        <Styled(LinkText)
-          className="header"
-          component="div"
-          dataLocator="moduleT_header_text"
-          headerText={
-            Array [
-              Object {
-                "icon": Object {
-                  "icon": "",
-                  "placement": "",
-                },
-                "link": Object {
-                  "action": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
-                  "title": "",
-                  "url": "http://www.childrensplace.com",
-                },
-                "textItems": Array [
-                  Object {
-                    "style": "medium_text_black",
-                    "text": "THE SHORT SHOP",
-                  },
-                ],
+      <Styled(LinkText)
+        className="header"
+        component="div"
+        dataLocator="moduleT_header_text"
+        headerText={
+          Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
               },
-            ]
-          }
-          headingClass="moduleT-header"
-        />
-      </div>
-      <div
-        className="moduleT-promo-wrapper"
-      >
-        <Styled(PromoBanner)
-          className="promoBanner"
-          dataLocator="moduleJ_promobanner_text"
-          promoBanner={
-            Array [
-              Object {
-                "link": Object {
-                  "class": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
-                  "title": "",
-                  "url": "http://www.childrensplace.com",
-                },
-                "textItems": Array [
-                  Object {
-                    "style": "medium_text_regular",
-                    "text": "ALL GRAPHIC TEES",
-                  },
-                  Object {
-                    "style": "percentage_all_wrapped_normal",
-                    "text": "60 % OFF",
-                  },
-                ],
+              "link": Object {
+                "action": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "http://www.childrensplace.com",
               },
-            ]
-          }
-        />
-      </div>
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_black",
+                  "text": "THE SHORT SHOP",
+                },
+              ],
+            },
+          ]
+        }
+        headingClass="moduleT-header"
+      />
+      <Styled(PromoBanner)
+        className="promoBanner"
+        dataLocator="moduleJ_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "http://www.childrensplace.com",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_regular",
+                  "text": "ALL GRAPHIC TEES",
+                },
+                Object {
+                  "style": "percentage_all_wrapped_normal",
+                  "text": "60 % OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
     </Styled(Col)>
     <Styled(Col)
       className="promo-image-right"
@@ -298,10 +286,10 @@ exports[`ModuleT component renders correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <div
-    className="button-list-container linkCTAList tcp-button-list"
+    className="button-list-container stackedCTAList tcp-button-list"
   >
     <Styled(ButtonList)
-      buttonListVariation="linkCTAList"
+      buttonListVariation="stackedCTAList"
       buttonsData={
         Array [
           Object {
