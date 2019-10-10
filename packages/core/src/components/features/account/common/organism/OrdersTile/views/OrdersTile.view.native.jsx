@@ -37,7 +37,6 @@ export const OrdersTile = ({ labels, ordersList, navigation }) => {
       <ButtonWrapperStyle>
         <CustomButton
           text={getLabelValue(labels, 'lbl_ordersTile_viewAllOrders', 'orders')}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => {
             navigateToNestedRoute(navigation, 'HomeStack', 'home');

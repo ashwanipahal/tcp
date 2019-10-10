@@ -42,13 +42,13 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     customTextStyle={null}
     disableButton={false}
     fill=""
-    fullWidth={true}
+    fullWidth=""
     iconColor="gray.800"
     iconName="chevron-down"
     iconSize="fs12"
