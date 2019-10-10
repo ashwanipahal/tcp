@@ -73,7 +73,10 @@ exports[`HomePageView should render correctly 1`] = `
       Array [
         Object {
           "category": Object {
-            "cat_id": "47502>47535>54071",
+            "cat_id": Array [
+              "47502>47535>54071",
+              "47502>47535>54071",
+            ],
           },
           "singleCTAButton": Object {
             "action": "",
@@ -97,7 +100,10 @@ exports[`HomePageView should render correctly 1`] = `
         },
         Object {
           "category": Object {
-            "cat_id": "47526",
+            "cat_id": Array [
+              "47526",
+              "47526",
+            ],
           },
           "singleCTAButton": Object {
             "action": "",
@@ -121,7 +127,10 @@ exports[`HomePageView should render correctly 1`] = `
         },
         Object {
           "category": Object {
-            "cat_id": "47503>47544",
+            "cat_id": Array [
+              "47503>47544",
+              "47503>47544",
+            ],
           },
           "singleCTAButton": Object {
             "action": "",
@@ -145,7 +154,10 @@ exports[`HomePageView should render correctly 1`] = `
         },
         Object {
           "category": Object {
-            "cat_id": "47501>47526",
+            "cat_id": Array [
+              "47501>47526",
+              "47501>47526",
+            ],
           },
           "singleCTAButton": Object {
             "action": "",
