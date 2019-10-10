@@ -66,7 +66,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
       <Styled(View)>
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -92,7 +92,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
         <Styled(View)>
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color=""
             customStyle={Object {}}
             customTextStyle={null}
@@ -117,7 +117,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
         <Styled(View)>
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color=""
             customStyle={Object {}}
             customTextStyle={null}
@@ -226,7 +226,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
       <Styled(View)>
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -252,7 +252,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
         <Styled(View)>
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color=""
             customStyle={Object {}}
             customTextStyle={null}
@@ -277,7 +277,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
         <Styled(View)>
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color=""
             customStyle={Object {}}
             customTextStyle={null}

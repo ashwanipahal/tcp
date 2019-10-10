@@ -124,7 +124,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
             type="submit"
             fontWeight="regular"
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             onPress={() => {
               toggleModal();
@@ -139,7 +138,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
           fill={bagItems ? 'WHITE' : 'BLUE'}
           type="submit"
           color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
           text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           onPress={() => {
             navigation.navigate('Home');

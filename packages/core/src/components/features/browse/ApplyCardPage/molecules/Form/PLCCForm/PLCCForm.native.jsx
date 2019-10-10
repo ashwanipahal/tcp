@@ -520,7 +520,6 @@ class PLCCForm extends React.PureComponent<Props> {
             type="submit"
             onPress={handleSubmit}
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
             width="90%"
           />
