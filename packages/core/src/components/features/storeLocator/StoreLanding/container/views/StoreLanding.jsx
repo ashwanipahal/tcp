@@ -27,9 +27,7 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDetails = (event, store) => {
-    const { fetchCurrentStore } = this.props;
     event.preventDefault();
-    fetchCurrentStore(store);
     const { routerHandler } = routeToStoreDetails(store);
     routerHandler();
   };
@@ -241,7 +239,6 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape(PropTypes.string).isRequired,
-  fetchCurrentStore: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
   markerIcon: PropTypes.string.isRequired,
