@@ -12,7 +12,6 @@ const GuestMprPlccSection = props => {
     showSubtotal,
     currentSubtotal,
     estimatedSubtotal,
-    fsPoints,
     isPlcc,
     pointsDescription,
     earnedReward,
@@ -23,8 +22,7 @@ const GuestMprPlccSection = props => {
   return (
     <div className={`${className} body`}>
       <BodyCopy
-        className="youCanEarnPoints alignCenter elem-pt-MED"
-        fontSize={fsPoints}
+        className="youCanEarnPoints alignCenter"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -33,18 +31,16 @@ const GuestMprPlccSection = props => {
       </BodyCopy>
       {!isPlcc && (
         <BodyCopy
-          className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
-          fontSize="fs20"
+          className="save30Today alignCenter mpr-plcc-theme"
           color="text.primary"
-          fontFamily="primary"
+          fontFamily="secondary"
           fontWeight="extrabold"
         >
           {labels.save30Today}
         </BodyCopy>
       )}
       <BodyCopy
-        className="earnDoublePoints alignCenter elem-pt-MED elem-pb-MED elem-pl-SM elem-pr-SM"
-        fontSize="fs16"
+        className="earnDoublePoints alignCenter elem-pl-SM elem-pr-SM"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
@@ -63,12 +59,11 @@ const GuestMprPlccSection = props => {
         </BodyCopy>
       )}
       {showSubtotal && !isPlcc && (
-        <div className="subtotalPointsSection elem-pt-MED elem-pl-SM elem-pr-SM">
+        <div className="subtotalPointsSection elem-pl-SM elem-pr-SM">
           <Row fullBleed className="currentSubtotalRow">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="currentSubtotalTextCol">
               <BodyCopy
                 className="currentSubtotalText"
-                fontSize="fs14"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -81,7 +76,6 @@ const GuestMprPlccSection = props => {
               <Col colSize={{ large: 5, medium: 3, small: 2 }} className="currentSubtotalValCol">
                 <BodyCopy
                   className="currentSubtotalVal"
-                  fontSize="fs16"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
@@ -93,11 +87,10 @@ const GuestMprPlccSection = props => {
               </Col>
             )}
           </Row>
-          <Row fullBleed className="estimatedSubtotalRow elem-pt-SM elem-pb-MED">
+          <Row fullBleed className="estimatedSubtotalRow elem-pt-SM elem-pb-SM">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="estimatedSubtotalTextCol">
               <BodyCopy
                 className="estimatedSubtotalText"
-                fontSize="fs14"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -110,7 +103,6 @@ const GuestMprPlccSection = props => {
               <Col colSize={{ large: 5, medium: 3, small: 2 }} className="estimatedSubtotalValCol">
                 <BodyCopy
                   className="estimatedSubtotalVal"
-                  fontSize="fs18"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
@@ -135,7 +127,6 @@ GuestMprPlccSection.propTypes = {
   labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
   finalPointsLabelStr: PropTypes.string,
-  fsPoints: PropTypes.string,
   isPlcc: PropTypes.bool,
   pointsDescription: PropTypes.string,
   earnedReward: PropTypes.number,
@@ -149,7 +140,6 @@ GuestMprPlccSection.defaultProps = {
   currentSubtotal: 0,
   showSubtotal: 0,
   finalPointsLabelStr: '',
-  fsPoints: '',
   isPlcc: false,
   pointsDescription: '',
   earnedReward: 0,

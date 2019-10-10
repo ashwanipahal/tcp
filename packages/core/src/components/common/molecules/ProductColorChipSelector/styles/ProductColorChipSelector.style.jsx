@@ -52,6 +52,16 @@ const styles = css`
         -webkit-appearance: none;
       }
 
+      input[type='radio']:focus {
+        border-radius: 15px;
+        box-shadow: 0 0 0 2pt ${props => props.theme.colorPalette.blue.A100};
+        margin-top: -3px;
+        margin-left: -3px;
+        width: 30px;
+        height: 30px;
+        outline: 0;
+      }
+
       &:before,
       &:after {
         display: none;

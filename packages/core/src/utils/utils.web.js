@@ -222,7 +222,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'auto';
+    body.style['overflow-y'] = 'auto';
   }
 };
 
@@ -232,7 +232,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'hidden';
+    body.style['overflow-y'] = 'hidden';
   }
 };
 
@@ -343,6 +343,7 @@ export const handleGenericKeyDown = (event, key, method) => {
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -354,9 +355,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
-    }`,
+    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
+    unbxdApiKey,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
@@ -510,45 +510,6 @@ export const fetchStoreIdFromUrlPath = url => {
   return pathSplit[pathSplit.length - 1];
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = {
-    weekday: 'short',
-  },
-  monthOption = {
-    month: 'short',
-  }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-    year: currentDate.getFullYear(),
-  };
-};
-
 export const scrollToParticularElement = element => {
   const fixedHeaderOffset = getViewportInfo().isDesktop
     ? FIXED_HEADER.LG_HEADER
@@ -587,7 +548,5 @@ export default {
   viewport,
   fetchStoreIdFromUrlPath,
   canUseDOM,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   scrollToParticularElement,
 };

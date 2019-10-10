@@ -4,6 +4,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { getLocator } from '@tcp/core/src/utils';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
@@ -347,7 +348,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
           </Row>
         ) : null}
       </Grid>
-      <RenderPerf.Measure name="render_cart_total" />
+      <RenderPerf.Measure name={PRICING_VISIBLE} />
     </React.Fragment>
   );
 };
