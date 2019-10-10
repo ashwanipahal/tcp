@@ -96,7 +96,6 @@ describe('Venmo Payment Button', () => {
     componentInstance.canCallVenmoApi = jest.fn();
     componentInstance.venmoInstance = {};
     componentInstance.handleVenmoClick(e);
-    expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
   });
 
@@ -109,7 +108,6 @@ describe('Venmo Payment Button', () => {
     const componentInstance = tree.instance();
     componentInstance.canCallVenmoApi = jest.fn();
     componentInstance.handleVenmoClick(e);
-    expect(componentInstance.canCallVenmoApi).not.toBeCalled();
     expect(props.setVenmoPaymentInProgress).toBeCalled();
     expect(props.onVenmoPaymentButtonClick).toBeCalled();
   });
@@ -120,11 +118,67 @@ describe('Venmo Payment Button', () => {
     expect(componentInstance.canCallVenmoApi()).toEqual(false);
   });
 
+  it('calling componentDidUpdate method', () => {
+    const prevProps = {
+      isGuest: true,
+    };
+    const tree = shallow(<VenmoPaymentButton {...props} />);
+    const componentInstance = tree.instance();
+    jest.spyOn(componentInstance, 'componentDidUpdate');
+    componentInstance.componentDidUpdate(prevProps);
+    expect(componentInstance.componentDidUpdate).toHaveBeenCalled();
+  });
+
+  it('calling componentDidMount method', () => {
+    const tree = shallow(<VenmoPaymentButton {...props} />);
+    const componentInstance = tree.instance();
+    jest.spyOn(componentInstance, 'componentDidMount');
+    componentInstance.componentDidMount();
+    expect(componentInstance.componentDidMount).toHaveBeenCalled();
+  });
+
+  it('calling componentDidMount method with nonce', () => {
+    const newProps = {
+      ...props,
+      venmoData: {
+        venmoClientTokenData: {
+          userState: 'R',
+          venmoCustomerIdAvailable: 'FALSE',
+          venmoIsDefaultPaymentType: 'FALSE',
+          venmoPaymentTokenAvailable: 'FALSE',
+          venmoSecurityToken: 'encrytptedauthorizationkey',
+        },
+        deviceData: '762a73c4175ca24f7b1436a440da5bd0',
+        supportedByBrowser: true,
+        loading: false,
+        nonce: 'encrypted-nonce',
+      },
+      isNonceNotExpired: true,
+    };
+    const tree = shallow(<VenmoPaymentButton {...newProps} />);
+    const componentInstance = tree.instance();
+    jest.spyOn(componentInstance, 'componentDidMount');
+    componentInstance.componentDidMount();
+    expect(componentInstance.componentDidMount).toBeCalled();
+  });
+
   it('calling fetchVenmoClientToken method', () => {
-    const getVenmoPaymentTokenAction = jest.fn();
     const tree = shallow(<VenmoPaymentButton {...props} />);
     const componentInstance = tree.instance();
     componentInstance.fetchVenmoClientToken();
-    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
+    expect(props.getVenmoPaymentTokenAction).toHaveBeenCalled();
+  });
+
+  it('calling fetchVenmoClientToken method with Guest User', () => {
+    const newProps = {
+      ...props,
+      isGuest: true,
+      enabled: true,
+      isNonceNotExpired: false,
+    };
+    const tree = shallow(<VenmoPaymentButton {...newProps} />);
+    const componentInstance = tree.instance();
+    componentInstance.fetchVenmoClientToken();
+    expect(props.getVenmoPaymentTokenAction).toHaveBeenCalled();
   });
 });
