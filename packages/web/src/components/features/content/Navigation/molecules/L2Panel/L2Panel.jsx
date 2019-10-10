@@ -95,6 +95,7 @@ const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, e) => {
   }
 };
 
+/* Method to close L2Drawer on keydown(ENTER and SPACE) */
 const keydownHideL2Drawer = (e, hideL2Drawer) => {
   const { KEY_ENTER, KEY_SPACE } = keyboard;
   if (e.which === KEY_ENTER || e.which === KEY_SPACE) {

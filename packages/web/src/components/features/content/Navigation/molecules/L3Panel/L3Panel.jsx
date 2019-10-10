@@ -7,6 +7,7 @@ import Drawer from '../Drawer';
 import { keyboard } from '../../../../../../constants/constants';
 import mock from './mock';
 
+/* Method to close L3Drawer on keydown(ENTER and SPACE) */
 const keydownHideL3Drawer = (e, hideL3Drawer) => {
   const { KEY_ENTER, KEY_SPACE } = keyboard;
   if (e.which === KEY_ENTER || e.which === KEY_SPACE) {
