@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -117,7 +118,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             {this.getVenmoPaymentButton()}
           </div>
           {this.getCheckoutButton()}
-          <RenderPerf.Measure name="render_checkout_cta" />
+          <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
       </div>
     );
