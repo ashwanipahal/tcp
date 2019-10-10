@@ -20,11 +20,65 @@ exports[`Venmo Payment Button should render Venmo Button correctly 1`] = `
 </div>
 `;
 
+exports[`Venmo Payment Button should render blue venmo button correctly 1`] = `
+<div
+  className="venmo-container sc-gqjmRU gvHLxz"
+>
+  <div>
+    <button
+      aria-label="Venmo Payment Button"
+      className="venmo-button"
+      onClick={[Function]}
+    >
+      <Styled(Image)
+        alt="Venmo Payment Button"
+        className="venmo-button-image"
+        src="/static/images/venmo_white_logo.svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
 exports[`Venmo Payment Button should render correctly 1`] = `
 <div
   className="venmo-container sc-gqjmRU gvHLxz"
 >
   <div>
+    <button
+      aria-label="Venmo Payment Button"
+      className="venmo-button"
+      onClick={[Function]}
+    >
+      <Styled(Image)
+        alt="Venmo Payment Button"
+        className="venmo-button-image"
+        src="/static/images/venmo_logo_blue.png"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Venmo Payment Button should render with continueWithText correctly 1`] = `
+<div
+  className="venmo-container sc-gqjmRU gvHLxz"
+>
+  <div>
+    <Styled(BodyCopy)
+      className="venmo-continue-text"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize="fs15"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Continue with
+    </Styled(BodyCopy)>
     <button
       aria-label="Venmo Payment Button"
       className="venmo-button"

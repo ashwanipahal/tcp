@@ -83,7 +83,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
                 large: 12,
               }}
             >
-              <BodyCopy component="span" fontSize="fs16">
+              <BodyCopy component="span" fontSize="fs16" fontWeight="semibold">
                 {labels.checkoutHeaderLabel}
               </BodyCopy>
             </Col>

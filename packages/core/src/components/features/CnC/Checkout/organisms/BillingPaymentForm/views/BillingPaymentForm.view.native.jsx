@@ -8,7 +8,7 @@ import getCvvInfo from '../../../molecules/CVVInfo';
 import AddNewCCForm from '../../AddNewCCForm';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
-import { propTypes, defaultProps } from './BillingPaymentForm.view.util';
+import { propTypes, defaultProps, onCCDropUpdateChange } from './BillingPaymentForm.view.util';
 import {
   getExpirationRequiredFlag,
   getCreditCardList,
@@ -129,7 +129,7 @@ export class BillingPaymentForm extends React.PureComponent {
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const { addNewCCState } = this.state;
-
+    dispatch(change(constants.FORM_NAME, 'cardType', cardType));
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}
@@ -208,6 +208,8 @@ export class BillingPaymentForm extends React.PureComponent {
     if (addNewCCState) {
       this.setState({ addNewCCState: false });
     }
+    const { dispatch } = this.props;
+    dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
   getCCDropDown = ({
@@ -293,6 +295,9 @@ export class BillingPaymentForm extends React.PureComponent {
   getCreditCardWrapper = ({ labels, creditCardList, cvvCodeRichText, onFileCardKey, dispatch }) => {
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { addNewCCState } = this.state;
+    if (onFileCardKey) {
+      onCCDropUpdateChange(onFileCardKey, selectedCard, dispatch);
+    }
     return (
       <>
         {creditCardList && creditCardList.size > 0 && !addNewCCState

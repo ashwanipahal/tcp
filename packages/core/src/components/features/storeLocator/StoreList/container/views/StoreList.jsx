@@ -14,6 +14,25 @@ import style from '../styles/StoreList.style';
 import STORE_LIST_CONSTANTS from '../StoreList.constants';
 
 class StoreList extends Component {
+  static pushStore(list, stores) {
+    list.forEach(store => {
+      stores.push({
+        title: store.displayName,
+        content: store.displayName,
+        value: store.displayName,
+      });
+    });
+  }
+
+  static pushDisabled(stores) {
+    stores.push({
+      title: 'disabled',
+      content: '------------------',
+      value: 'disabled',
+      disabled: true,
+    });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +55,27 @@ class StoreList extends Component {
     clearTimeout(this.scrollTimeout);
   }
 
+  getBackBtn() {
+    const { labels, className } = this.props;
+    return (
+      <Anchor
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        handleLinkClick={e => {
+          e.preventDefault();
+          if (isClient()) window.history.back();
+        }}
+        noLink
+        className={`${className}__backlink`}
+        title={getLabelValue(labels, 'lbl_storelist_backLink')}
+        dataLocator={getLocator('store_USCanadabacklink')}
+      >
+        <span className="left-arrow" />
+        {getLabelValue(labels, 'lbl_storelist_backLink')}
+      </Anchor>
+    );
+  }
+
   scrollToLocation = () => {
     const { location } = this.state;
     this.scrollTimeout = setTimeout(() => {
@@ -55,29 +95,18 @@ class StoreList extends Component {
       Array.isArray(storeListUS) && Array.isArray(storeListCA)
         ? [...storeListUS, ...storeListCA]
         : [];
-    const stores = finalStores.map(store => ({
-      title: store.displayName,
-      content: store.displayName,
-      value: store.displayName,
-    }));
+
+    const stores = [];
+
+    if (storeListUS.length > 0 && storeListCA.length > 0) {
+      this.constructor.pushStore(storeListUS, stores);
+      this.constructor.pushDisabled(stores);
+      this.constructor.pushStore(storeListCA, stores);
+    }
 
     return (
       <div className={className}>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          handleLinkClick={e => {
-            e.preventDefault();
-            if (isClient()) window.history.back();
-          }}
-          noLink
-          className={`${className}__backlink`}
-          title={getLabelValue(labels, 'lbl_storelist_backLink')}
-          dataLocator={getLocator('store_USCanadabacklink')}
-        >
-          <span className="left-arrow" />
-          {getLabelValue(labels, 'lbl_storelist_backLink')}
-        </Anchor>
+        {this.getBackBtn()}
         {finalStores.length > 0 && (
           <StoreSelector
             titleText={labels.lbl_storelist_searchByStates}
@@ -85,11 +114,13 @@ class StoreList extends Component {
             options={stores}
             selectedLocation={location}
             selectionCallback={(_, v) => {
-              this.setState({
-                location: v,
-                defaultOpenIndex: -1,
-                isAccordionClick: false,
-              });
+              if (v !== 'disabled') {
+                this.setState({
+                  location: v,
+                  defaultOpenIndex: -1,
+                  isAccordionClick: false,
+                });
+              }
             }}
             dataLocator="store_USCanadasearchlabel"
           />

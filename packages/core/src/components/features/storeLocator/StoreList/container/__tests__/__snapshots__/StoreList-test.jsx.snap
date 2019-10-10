@@ -259,6 +259,12 @@ exports[`StoreList component Component should render with props 1`] = `
           "value": "West Virginia",
         },
         Object {
+          "content": "------------------",
+          "disabled": true,
+          "title": "disabled",
+          "value": "disabled",
+        },
+        Object {
           "content": "Alberta",
           "title": "Alberta",
           "value": "Alberta",

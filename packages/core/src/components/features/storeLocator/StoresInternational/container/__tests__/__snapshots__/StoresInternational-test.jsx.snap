@@ -665,7 +665,7 @@ exports[`StoresInternational component StoresInternational component renders cor
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
             noLink={true}
-            title=""
+            title="lbl_storelist_backLink"
           >
             <StyledComponent
               anchorVariation="secondary"
@@ -771,7 +771,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               forwardedRef={null}
               handleLinkClick={[Function]}
               noLink={true}
-              title=""
+              title="lbl_storelist_backLink"
             >
               <Anchor
                 anchorVariation="secondary"
@@ -785,7 +785,7 @@ exports[`StoresInternational component StoresInternational component renders cor
                 shallow={false}
                 target=""
                 text=""
-                title=""
+                title="lbl_storelist_backLink"
                 url=""
               >
                 <a
@@ -796,11 +796,12 @@ exports[`StoresInternational component StoresInternational component renders cor
                   href=""
                   onClick={[Function]}
                   target="_self"
-                  title=""
+                  title="lbl_storelist_backLink"
                 >
                   <span
                     className="left-arrow"
                   />
+                  lbl_storelist_backLink
                 </a>
               </Anchor>
             </StyledComponent>

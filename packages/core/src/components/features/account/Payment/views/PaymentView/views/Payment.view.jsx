@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -12,28 +13,7 @@ import VenmoCardList from '../../VenmoCardList.view';
 import Offers from '../../../../common/molecule/Offers/views/Offers.view';
 import DeleteCardModal from '../../DeleteCardModal';
 
-// @flow
-type Props = {
-  // giftCard: List<{}>,
-  labels: object,
-  className: string,
-  showNotification: boolean,
-  setDeleteModalMountState: Function,
-  deleteModalMountedState: false,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  creditCardList: Array<object>,
-  giftCardList: Array<object>,
-  cardList: Array<object>,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  setDefaultPaymentMethod: Function,
-  venmoCardList: Array<object>,
-  showNotificationCaptcha: boolean,
-  addCreditCard: () => {},
-};
-
-export class PaymentView extends React.Component<Props> {
+export class PaymentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -227,6 +207,27 @@ export class PaymentView extends React.Component<Props> {
     );
   }
 }
+PaymentView.defaultProps = {
+  deleteModalMountedState: false,
+};
 
+PaymentView.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  deleteModalMountedState: PropTypes.bool,
+  onDeleteCard: PropTypes.func.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  creditCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  giftCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  venmoCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  addCreditCard: PropTypes.func.isRequired,
+};
 export default withStyles(PaymentView, styles);
 export { PaymentView as PaymentViewVanilla };

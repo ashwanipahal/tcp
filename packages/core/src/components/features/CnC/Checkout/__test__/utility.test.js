@@ -163,7 +163,12 @@ describe('utility', () => {
   });
   it('getAvailableStages', () => {
     const cartItems = fromJS({});
-    expect(getAvailableStages(cartItems)).toStrictEqual(['', '']);
+    expect(
+      getAvailableStages(cartItems, {
+        billingLabel: '',
+        reviewLabel: '',
+      })
+    ).toStrictEqual(['', '']);
   });
   it('hasPOBox', () => {
     expect(hasPOBox('dsa', 'dasdas')).toBe(false);
