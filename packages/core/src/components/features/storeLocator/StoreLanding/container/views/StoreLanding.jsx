@@ -59,7 +59,7 @@ export class StoreLanding extends PureComponent {
       <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
         <StoreStaticMap
           storesList={suggestedStoreList}
-          isCanada={isCanada}
+          isCanada={isCanada()}
           isMobile={getViewportInfo().isMobile}
           apiKey={this.googleApiKey}
           labels={labels}

@@ -2812,7 +2812,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
                 fetchCurrentStore={[MockFunction]}
                 fetchStoresByLatLng={[MockFunction]}
                 geoLocationEnabled={false}
-                isCanada={[Function]}
+                isCanada={false}
                 isMobile={false}
                 labels={Object {}}
                 storesList={Array []}
