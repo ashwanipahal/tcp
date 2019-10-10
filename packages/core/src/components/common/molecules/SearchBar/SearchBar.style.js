@@ -118,6 +118,7 @@ export default css`
 
   .trendingBox .trendingBoxBody {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-left: 25px;
   }
 
   .matchLinkBox .matchLinkBoxBody {

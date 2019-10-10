@@ -26,7 +26,6 @@ const ignorePsuedoCodeDir = [
   '/Favorites/',
   '/services/abstractors/account/ordersList', // TO DO - Furkan The story is in progress Excluding for now
   '/services/abstractors/common/searchBar/makeSearch.js',
-  '/Header/molecules/HeaderMiddleNav/',
 ];
 
 module.exports = {
