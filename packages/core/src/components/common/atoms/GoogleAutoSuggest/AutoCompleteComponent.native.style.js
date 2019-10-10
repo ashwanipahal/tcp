@@ -19,6 +19,7 @@ const StyledLabel = styled.Text`
 `;
 
 const Container = styled.View`
+  position: relative;
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;

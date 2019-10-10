@@ -40,8 +40,39 @@ export class StoreLanding extends PureComponent {
     navigateToNestedRoute(navigation, 'HomeStack', 'StoreDetails');
   };
 
+  renderList = (modifiedStoreList, searchDone) => {
+    const { labels, setFavoriteStore, favoriteStore } = this.props;
+    const { mapView } = this.state;
+    return searchDone && !modifiedStoreList.length ? (
+      <Text>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</Text>
+    ) : (
+      <StyledStoreListView>
+        {modifiedStoreList.map((item, index) => (
+          <StoreAddressTile
+            {...this.props}
+            store={item}
+            variation="listing"
+            storeIndex={mapView && `${index + 1}`}
+            setFavoriteStore={setFavoriteStore}
+            isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+            key={item.basicInfo.id}
+            openStoreDetails={this.openStoreDetails}
+          />
+        ))}
+      </StyledStoreListView>
+    );
+  };
+
   render() {
-    const { suggestedStoreList, setFavoriteStore, favoriteStore, theme, labels } = this.props;
+    const {
+      suggestedStoreList,
+      favoriteStore,
+      theme,
+      labels,
+      loadStoresByCoordinates,
+      getLocationStores,
+      geoLocationEnabled,
+    } = this.props;
     const { mapView, isGym, isOutlet } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
@@ -81,37 +112,28 @@ export class StoreLanding extends PureComponent {
                   store={favoriteStore}
                   variation="listing-header"
                   isFavorite
+                  geoLocationDisabled={!geoLocationEnabled}
                 />
               </StyledFavStoreHeading>
             )}
             <StoreLocatorSearch
-              {...this.props}
-              selectStoreType={this.selectStoreType}
+              labels={labels}
+              loadStoresByCoordinates={loadStoresByCoordinates}
               toggleMap={this.toggleMap}
               mapView={mapView}
+              selectStoreType={this.selectStoreType}
+              getLocationStores={getLocationStores}
+              selectedCountry={isCanada() ? 'CA' : 'USA'}
             />
             {mapView && !!modifiedStoreList.length && (
               <StoreStaticMap
                 storesList={modifiedStoreList}
-                isCanada={isCanada}
+                isCanada={isCanada()}
                 apiKey={getAPIConfig().googleApiKey}
                 {...this.props}
               />
             )}
-            <StyledStoreListView>
-              {modifiedStoreList.map((item, index) => (
-                <StoreAddressTile
-                  {...this.props}
-                  store={item}
-                  variation="listing"
-                  storeIndex={mapView && `${index + 1}`}
-                  setFavoriteStore={setFavoriteStore}
-                  isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
-                  key={item.basicInfo.id}
-                  openStoreDetails={this.openStoreDetails}
-                />
-              ))}
-            </StyledStoreListView>
+            {this.renderList(modifiedStoreList)}
           </ScrollView>
         </View>
       </StyleStoreLandingContainer>
@@ -128,11 +150,15 @@ StoreLanding.propTypes = {
   labels: PropTypes.shape(PropTypes.string).isRequired,
   fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  loadStoresByCoordinates: PropTypes.func.isRequired,
+  getLocationStores: PropTypes.func.isRequired,
+  geoLocationEnabled: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
+  geoLocationEnabled: false,
 };
 
 export default withTheme(StoreLanding);

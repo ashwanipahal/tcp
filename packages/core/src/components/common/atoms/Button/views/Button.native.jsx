@@ -13,10 +13,18 @@ import {
 import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 
 const IconComp = values => {
-  const { showIcon, iconName, selectedIcon, iconColor, iconSize, selected } = values;
+  const {
+    showIcon,
+    iconName,
+    selectedIcon,
+    iconColor,
+    iconSize,
+    selected,
+    buttonVariation,
+  } = values;
   if (showIcon) {
     return (
-      <IconContainer>
+      <IconContainer buttonVariation={buttonVariation}>
         <CustomIcon name={selected ? selectedIcon : iconName} size={iconSize} color={iconColor} />
       </IconContainer>
     );

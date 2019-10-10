@@ -10,7 +10,6 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductSizeSelector.style';
@@ -82,14 +81,11 @@ class ProductSizeSelector extends React.PureComponent<Props> {
 
     return (
       sizesMap && (
-        <>
-          <LabeledRadioButtonGroup
-            className={`${className} size-and-fit-detail`}
-            optionsMap={optionsMap}
-            {...otherProps}
-          />
-          <RenderPerf.Measure name="render_product_sizes" />
-        </>
+        <LabeledRadioButtonGroup
+          className={`${className} size-and-fit-detail`}
+          optionsMap={optionsMap}
+          {...otherProps}
+        />
       )
     );
   }
