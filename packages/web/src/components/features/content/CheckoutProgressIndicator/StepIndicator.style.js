@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 import { getIconPath } from '../../../../../../core/src/utils';
 
-const checkoutwhitedot = getIconPath('checkout-white-dot');
 const checkouttick = getIconPath('checkout-tick');
 
 export default css`
@@ -55,10 +54,9 @@ export default css`
     color: ${props => props.theme.colors.TEXT.DARK};
 
     &:before {
-      width: 14px;
-      height: 14px;
+      width: 17px;
+      height: 17px;
       content: '';
-      background-color: ${props => props.theme.colors.PRIMARY.GRAY};
       display: block;
       text-align: center;
       margin: 0 auto 7px;
@@ -86,6 +84,10 @@ export default css`
     button,
     span {
       text-transform: none;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
+      }
     }
 
     button {
@@ -107,8 +109,8 @@ export default css`
       content: '';
       background: url(${checkouttick});
       background-color: ${props => props.theme.colors.WHITE};
-      height: 14px;
-      width: 14px;
+      height: 20px;
+      width: 20px;
       position: inherit;
       display: block;
       z-index: 1;
@@ -136,8 +138,9 @@ export default css`
     }
 
     .white-dot {
-      background: url(${checkoutwhitedot});
       background-color: ${props => props.theme.colors.WHITE};
+      border: 2px solid black;
+      border-radius: 50%;
       display: block;
       height: 17px;
       width: 17px;
@@ -148,6 +151,13 @@ export default css`
         left: 50%;
         transform: translateX(-50%);
       }
+    }
+  }
+
+  .pending {
+    &:before {
+      background-color: ${props => props.theme.colors.WHITE};
+      border: 1px solid black;
     }
   }
 
