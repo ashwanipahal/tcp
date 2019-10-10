@@ -10,7 +10,9 @@ import {
   updateCartCount,
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+
 import { readCookieMobileApp } from '../../../../utils/utils';
+
 import {
   Container,
   MessageContainer,
@@ -212,6 +214,7 @@ Header.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   favStore: PropTypes.shape({}),
   loadFavoriteStore: PropTypes.func,
+  cartVal: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
@@ -222,20 +225,10 @@ Header.defaultProps = {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    favStore: state.User && state.User.get('defaultStore'),
     cartVal: state.Header && state.Header.cartItemCount,
     isUpdateCartCount: state.Header && state.Header.updateCartCount,
-    favStore: state.User && state.User.get('defaultStore'),
   };
-};
-
-Header.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
-  navigation: PropTypes.shape({}),
-  cartVal: PropTypes.number.isRequired,
-};
-
-Header.defaultProps = {
-  navigation: {},
 };
 
 const mapDispatchToProps = dispatch => {
