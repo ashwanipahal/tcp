@@ -35,6 +35,8 @@ export const TileHeader = styled.div`
         background: none;
         cursor: pointer;
         outline: inherit;
+        text-transform: capitalize;
+        text-align: left;
       }
     }
   }
@@ -121,6 +123,7 @@ export default css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     margin-right: ${props =>
       props.variation === 'listing' ? props.theme.spacing.ELEM_SPACING.XL : 0};
+    text-transform: capitalize;
   }
 
   .listing-header {
@@ -133,6 +136,9 @@ export default css`
       }
       span {
         margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+      &__one {
+        text-transform: capitalize;
       }
     }
     @media ${props => props.theme.mediaQuery.mediumOnly} {

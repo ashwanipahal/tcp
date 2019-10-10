@@ -28,12 +28,10 @@ const errorHandler = err => {
  * @returns {boolean} returns true is store is a gymboree store.
  */
 const hasGymboreeStores = storeInfo => {
-  const gymStoreArr = storeInfo.Attribute || storeInfo.brands;
+  const gymStoreArr = storeInfo.x_brands || storeInfo.brands;
   const gymStore = gymStoreArr.filter(
     attribute =>
-      (typeof attribute === 'object' &&
-        attribute.name === 'STORE_BRAND_TYPE' &&
-        attribute.value === BRAND_TYPE.gymboree) ||
+      (Array.isArray(gymStoreArr) && gymStoreArr.includes(BRAND_TYPE.gymboree)) ||
       attribute === BRAND_TYPE.gymboree
   );
 

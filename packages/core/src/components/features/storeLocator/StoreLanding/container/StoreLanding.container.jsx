@@ -7,7 +7,6 @@ import {
   setFavoriteStoreActn,
   getFavoriteStoreActn,
 } from './StoreLanding.actions';
-import { getCurrentStoreInfo } from '../../StoreDetail/container/StoreDetail.actions';
 import StoreLandingView from './views/StoreLanding';
 import { getCurrentCountry, getPageLabels } from './StoreLanding.selectors';
 import constants from './StoreLanding.constants';
@@ -20,10 +19,13 @@ export class StoreLanding extends PureComponent {
       basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    window.open(
-      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
-    );
+    return `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`;
   }
+
+  state = {
+    searchDone: false,
+    geoLocationEnabled: false,
+  };
 
   componentDidMount() {
     this.getFavoriteStoreInititator();
@@ -55,13 +57,22 @@ export class StoreLanding extends PureComponent {
             Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
             INITIAL_STORE_LIMIT
           );
+          this.setState({
+            geoLocationEnabled: true,
+          });
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
+          this.setState({
+            geoLocationEnabled: false,
+          });
         }
       );
     } else {
       this.initiateGetFavoriteStoreRequest();
+      this.setState({
+        geoLocationEnabled: false,
+      });
     }
   };
 
@@ -80,18 +91,15 @@ export class StoreLanding extends PureComponent {
    */
   loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
     const { fetchStoresByCoordinates } = this.props;
-    coordinatesPromise.then(({ lat, lng }) =>
-      fetchStoresByCoordinates({ coordinates: { lat, lng }, maxItems, radius })
-    );
+    coordinatesPromise.then(coordinates => {
+      this.setState(
+        {
+          searchDone: true,
+        },
+        () => fetchStoresByCoordinates({ coordinates, maxItems, radius })
+      );
+    });
     return false;
-  };
-
-  fetchCurrentStoreDetails = store => {
-    const { fetchCurrentStore } = this.props;
-    const {
-      basicInfo: { id },
-    } = store;
-    if (id) fetchCurrentStore(id);
   };
 
   render() {
@@ -104,10 +112,10 @@ export class StoreLanding extends PureComponent {
         loadStoresByCoordinates={this.loadStoresByCoordinates}
         searchIcon={searchIcon}
         markerIcon={markerIcon}
-        fetchCurrentStore={store => this.fetchCurrentStoreDetails(store)}
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
+        {...this.state}
       />
     );
   }
@@ -117,7 +125,6 @@ StoreLanding.propTypes = {
   fetchStoresByCoordinates: PropTypes.func.isRequired,
   getFavoriteStore: PropTypes.func.isRequired,
   favoriteStore: PropTypes.shape(PropTypes.string),
-  fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
 };
 
@@ -131,7 +138,6 @@ const mapDispatchToProps = dispatch => ({
   fetchStoresByCoordinates: storeConfig => dispatch(getStoresByCoordinates(storeConfig)),
   setFavoriteStore: payload => dispatch(setFavoriteStoreActn(payload)),
   getFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
-  fetchCurrentStore: payload => dispatch(getCurrentStoreInfo(payload)),
 });
 
 /* istanbul ignore next  */
@@ -139,6 +145,8 @@ const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
   suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  isStoreSearched:
+    state.StoreLocatorReducer && state.StoreLocatorReducer.get('storeSuggestionCompleted'),
   favoriteStore: state.User && state.User.get('defaultStore'),
 });
 

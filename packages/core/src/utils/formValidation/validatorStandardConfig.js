@@ -23,6 +23,10 @@ export const formValidationMessages = {
     minLength: validStreetAddress,
     maxLength: 'lbl_err_addressline1_maxlength',
   },
+  storeAddressLocator: {
+    required: 'lbl_storelanding_errorLabel',
+    address: 'lbl_storelanding_errorLabel',
+  },
   addressLine2: {
     address: 'lbl_err_addressline2_address',
     maxLength: validStreetAddress,
@@ -206,6 +210,10 @@ export const formValidationRules = {
     address: true,
     minLength: 5,
     maxLength: 30,
+  },
+  storeAddressLocator: {
+    required: true,
+    address: true,
   },
   addressLine2: {
     address: true,
