@@ -29,13 +29,7 @@ const errorHandler = err => {
  */
 const hasGymboreeStores = storeInfo => {
   const gymStoreArr = storeInfo.x_brands || storeInfo.brands;
-  const gymStore = gymStoreArr.filter(
-    attribute =>
-      (Array.isArray(gymStoreArr) && gymStoreArr.includes(BRAND_TYPE.gymboree)) ||
-      attribute === BRAND_TYPE.gymboree
-  );
-
-  return gymStore.length > 0;
+  return Array.isArray(gymStoreArr) && gymStoreArr.includes(BRAND_TYPE.gymboree);
 };
 
 export const getCurrentStoreInfoApi = storeId => {
