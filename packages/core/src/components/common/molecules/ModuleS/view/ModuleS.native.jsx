@@ -34,7 +34,7 @@ const getImageConfig = hasRibbon => {
   if (hasRibbon) {
     return config.IMG_DATA_GYM_RIBBON[0];
   }
-  return isGymboree() ? config.IMG_DATA_GYM[0] : config.IMG_DATA_TCP;
+  return isGymboree() ? config.IMG_DATA_GYM[0] : config.IMG_DATA_TCP[0];
 };
 
 /**
@@ -69,6 +69,7 @@ const getLinkedImage = (props, hasRibbon) => {
     navigation,
     linkedImage: [{ image, link }],
   } = props;
+
   return link ? (
     <Anchor url={link.url} navigation={navigation}>
       <StyledImage
