@@ -60,7 +60,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
           <View style={LeftContainer}>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs16"
+              fontSize="fs14"
               text={getLabelValue(labels, 'lbl_overview_defaultShipingAddress')}
               color="black"
             />
@@ -103,7 +103,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
           <View style={LeftContainer}>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs16"
+              fontSize="fs14"
               text={getLabelValue(labels, 'lbl_overview_defaultBillingAddress')}
               color="black"
             />

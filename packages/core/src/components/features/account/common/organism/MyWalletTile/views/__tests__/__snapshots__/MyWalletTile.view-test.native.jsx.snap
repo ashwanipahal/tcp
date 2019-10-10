@@ -8,6 +8,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myWalletHeading"
@@ -82,6 +83,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myWalletHeading"
