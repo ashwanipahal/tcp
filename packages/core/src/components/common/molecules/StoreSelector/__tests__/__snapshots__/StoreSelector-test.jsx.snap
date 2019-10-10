@@ -38,6 +38,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -8843,6 +8844,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {

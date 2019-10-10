@@ -16,6 +16,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     }
     data-locator="pdp_quantity"
     disableButton={false}
+    disabled={false}
     fill=""
     fullWidth=""
     iconColor="gray.800"

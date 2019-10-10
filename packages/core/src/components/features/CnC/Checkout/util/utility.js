@@ -27,6 +27,7 @@ import {
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
 import { isMobileApp, routerPush } from '../../../../../utils';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
@@ -162,6 +163,23 @@ function redirectToBilling(navigation) {
     navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
   }
 }
+
+export const getSelectedCard = ({ creditCardList, onFileCardKey }) => {
+  return creditCardList.find(card => card.creditCardId === +onFileCardKey);
+};
+
+export const getCreditCardList = ({ cardList }) =>
+  cardList &&
+  cardList.size > 0 &&
+  cardList.filter(
+    card =>
+      card.ccType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.GIFT_CARD &&
+      card.ccType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.VENMO
+  );
+
+export const getExpirationRequiredFlag = ({ cardType }) => {
+  return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
+};
 
 export default {
   getOrderPointsRecalcFlag,

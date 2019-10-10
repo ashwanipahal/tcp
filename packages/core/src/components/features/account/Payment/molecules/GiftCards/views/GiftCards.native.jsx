@@ -16,15 +16,7 @@ import {
 } from '../GiftCards.style.native';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
-// @flow
-type Props = {
-  labels: string,
-  giftCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-};
-
-const GiftCards = (props: Props) => {
+const GiftCards = props => {
   const {
     labels,
     giftCardList,
@@ -85,6 +77,5 @@ GiftCards.propTypes = {
   checkbalanceValueInfo: PropTypes.string.isRequired,
   toggleRecaptchaModal: PropTypes.bool.isRequired,
 };
-
 export default withStyles(GiftCards, ParentContainerStyle);
 export { GiftCards as GiftCardsVanilla };

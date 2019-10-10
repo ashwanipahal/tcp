@@ -239,6 +239,7 @@ class CartItemTile extends React.Component {
 
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
+    const { currencySymbol } = this.props;
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -280,7 +281,7 @@ class CartItemTile extends React.Component {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`$${productDetail.itemInfo.price.toFixed(2)}`}
+            {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
           </BodyCopy>
         )}
       </Row>
@@ -324,7 +325,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductPriceList = (productDetail, pageView) => {
-    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
     if (isBagPageSflSection) {
       return (
         <>
@@ -348,7 +349,7 @@ class CartItemTile extends React.Component {
               dataLocator={getLocator('cart_item_price')}
               fontWeight={['extrabold']}
             >
-              {`$${productDetail.itemInfo.price.toFixed(2)}`}
+              {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
             </BodyCopy>
           </Col>
         </>
@@ -378,8 +379,8 @@ class CartItemTile extends React.Component {
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
             {pageView === 'myBag'
-              ? `$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
-              : `$${productDetail.itemInfo.price.toFixed(2)}`}
+              ? `${currencySymbol}${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
+              : `${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
           </BodyCopy>
         </Col>
       </>
@@ -766,6 +767,7 @@ CartItemTile.propTypes = {
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);
