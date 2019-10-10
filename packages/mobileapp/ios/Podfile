@@ -7,41 +7,40 @@ def facebook
   pod 'FBSDKShareKit', '~> 4.35.0'
 end
 
+def twitter
+  pod 'TwitterKit', '~> 3.3.0'
+end
+
 target 'gymboree' do
    facebook
+   twitter
 end
 
 target 'gymboree_dev' do
    facebook
+   twitter
 end
 
 target 'gymboree_int' do
    facebook
+   twitter
 end
 
 target 'gymboree_prod' do
    facebook
+   twitter
 end
 
 target 'gymboree_uat' do
    facebook
+   twitter
 end
 
 target 'mobileapp' do
   facebook
-
+  twitter
+  
   target 'mobileappTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
-
-target 'mobileapp-tvOS' do
-  facebook
-  # Pods for mobileapp-tvOS
-
-  target 'mobileapp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -50,16 +49,20 @@ end
 
 target 'mobileapp_dev' do
   facebook
+  twitter
 end
 
 target 'mobileapp_int' do
   facebook
+  twitter
 end
 
 target 'mobileapp_prod' do
    facebook
+   twitter
 end
 
 target 'mobileapp_uat' do
   facebook
+  twitter
 end

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, NativeModules } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -39,6 +39,8 @@ class Socialview extends React.PureComponent {
       InstagramEnable: SOCIAL_ICONS.INSTAGRAM_ENABLE_ICON,
       FacebookDisable: SOCIAL_ICONS.FACEBOOK_DISABLE_ICON,
       InstagramDisable: SOCIAL_ICONS.INSTAGRAM_DISABLE_ICON,
+      TwitterEnable: SOCIAL_ICONS.TWITTER_ENABLE_ICON,
+      TwitterDisable: SOCIAL_ICONS.TWITTER_DISABLE_ICON,
       Connected: SOCIAL_ICONS.CLOSE_ICON,
       Disconnected: SOCIAL_ICONS.PLUS_ICON,
     };
@@ -190,7 +192,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook' || prop === 'instagram') {
+      if (prop === 'facebook' || prop === 'instagram' || prop === 'twitter') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
@@ -225,6 +227,7 @@ class Socialview extends React.PureComponent {
    * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   handleSocialNetwork(isSocialAccount, isConnected) {
     switch (isSocialAccount) {
       case 'Facebook':
@@ -244,6 +247,17 @@ class Socialview extends React.PureComponent {
       case 'Instagram':
         if (!isConnected) {
           this.instagramLogin.show();
+        }
+        return null;
+      case 'Twitter':
+        if (!isConnected) {
+          const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = getAPIConfig();
+          const { RNTwitterSignIn } = NativeModules;
+          RNTwitterSignIn.init(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
+          RNTwitterSignIn.logIn().then(loginData => {
+            const { authToken, userID } = loginData;
+            this.dispatchSaveSocial('twitter', authToken, userID);
+          });
         }
         return null;
       default:

@@ -59,7 +59,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
-    "superagent-jsonp": "^0.2.1"
+    "superagent-jsonp": "^0.2.1",
+    "react-native-twitter-signin": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -184,7 +185,9 @@
       "**/react-native-instagram-login",
       "**/react-native-instagram-login/**",
       "**/react-native-awesome-card-io",
-      "**/react-native-awesome-card-io/**"
+      "**/react-native-awesome-card-io/**",
+      "**/react-native-twitter-signin",
+      "**/react-native-twitter-signin/**"
     ]
   }
 }
