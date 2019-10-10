@@ -648,7 +648,7 @@ function* submitShipping({
   yield call(getAddressList);
 }
 
-function* submitShippingSection({ payload: { navigation, ...formData } }) {
+function* submitShippingSection({ payload: { navigation, resolve, reject, ...formData } }) {
   try {
     const {
       // giftWrap,
@@ -695,10 +695,13 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     } else {
       redirectToBilling(navigation);
     }
+    resolve();
   } catch (err) {
+    reject(err);
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
+
 export function* submitBillingSection(payload) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   if (isVenmoInProgress) {

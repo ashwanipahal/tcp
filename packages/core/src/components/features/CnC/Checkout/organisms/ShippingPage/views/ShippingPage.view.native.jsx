@@ -136,24 +136,28 @@ export default class ShippingPage extends React.Component {
       }
     }
     const { handleSubmit } = this.props;
-    handleSubmit({
-      method: {
-        shippingMethodId: shipmentMethods.shippingMethodId,
-      },
-      shipTo: {
-        address: shipAddress,
-        addressId: shipAddress.addressId,
-        emailAddress: shipAddress.emailAddress,
-        emailSignup: true,
-        onFileAddressKey,
-        phoneNumber: shipAddress.phoneNumber,
-        saveToAccount: saveToAddressBook,
-        setAsDefault: defaultShipping || shipAddress.primary === 'true',
-      },
-      smsInfo: {
-        smsUpdateNumber: smsSignUp.phoneNumber,
-        wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
-      },
+    return new Promise((resolve, reject) => {
+      handleSubmit({
+        resolve,
+        reject,
+        method: {
+          shippingMethodId: shipmentMethods.shippingMethodId,
+        },
+        shipTo: {
+          address: shipAddress,
+          addressId: shipAddress.addressId,
+          emailAddress: shipAddress.emailAddress,
+          emailSignup: true,
+          onFileAddressKey,
+          phoneNumber: shipAddress.phoneNumber,
+          saveToAccount: saveToAddressBook,
+          setAsDefault: defaultShipping || shipAddress.primary === 'true',
+        },
+        smsInfo: {
+          smsUpdateNumber: smsSignUp.phoneNumber,
+          wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+        },
+      });
     });
   };
 
