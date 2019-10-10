@@ -34,6 +34,7 @@ const getImageConfig = hasRibbon => {
   if (hasRibbon) {
     return config.IMG_DATA_GYM_RIBBON.crops[0];
   }
+
   return isGymboree() ? config.IMG_DATA_GYM.crops[0] : config.IMG_DATA_TCP.crops[0];
 };
 
@@ -105,7 +106,6 @@ const ButtonView = props => {
       <Button
         width={BUTTON_WIDTH}
         accessibilityLabel={singleCTAButton.title}
-        buttonVariation="variable-width"
         text={singleCTAButton.text}
         testID={getLocator('moduleD_button')}
         url={singleCTAButton.url}

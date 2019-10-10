@@ -382,7 +382,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -411,7 +411,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -879,7 +879,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -908,7 +908,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -1302,7 +1302,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -1331,7 +1331,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
