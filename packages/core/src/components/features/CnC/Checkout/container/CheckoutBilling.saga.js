@@ -37,13 +37,19 @@ const { getCreditCardType } = utility;
 
 export function* updatePaymentInstruction(
   formData,
-  cardDetails,
+  cardDetailsInfo,
   isGuestUser,
   res,
   loadUpdatedCheckoutValues
 ) {
+  let cardDetails;
   let cardNotUpdated = true;
   if (formData.onFileCardId) {
+    if (!cardDetailsInfo) {
+      cardDetails = yield select(getDetailedCreditCardById, formData.onFileCardId);
+    } else {
+      cardDetails = cardDetailsInfo;
+    }
     const grandTotal = yield select(getGrandTotal);
     const requestData = {
       onFileCardId: formData.onFileCardId,
@@ -174,6 +180,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = res.body;
   } else if (formData.address.onFileAddressKey && !isGuestUser) {
     // return submitPaymentInformation({addressId: formData.address.onFileAddressKey});
+
     const addressId = yield call(getAddressData, formData);
     res = yield call(updateAddress, {
       checkoutUpdateOnly: true,

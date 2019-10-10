@@ -685,6 +685,18 @@ export const flattenArray = arr => {
   }, []);
 };
 
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+export function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -717,4 +729,5 @@ export default {
   getDateInformation,
   buildStorePageUrlSuffix,
   extractFloat,
+  stringify,
 };
