@@ -27,7 +27,6 @@ const LoyaltyBannerSection = props => {
   let finalStrRemainingValue = '';
   let conditionalPointsLabel = '';
   let pointsDescription = '';
-  let fsPoints = '';
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue) {
@@ -66,7 +65,6 @@ const LoyaltyBannerSection = props => {
   finalPointsLabelStr = convertHtml(finalPointsValue);
 
   if (isPlcc) {
-    fsPoints = 'fs18';
     pointsDescription = convertHtml(labels.whenYouCheckOutPlcc);
     const utilArrNextReward = [
       {
@@ -81,7 +79,6 @@ const LoyaltyBannerSection = props => {
     );
     remainingPlcc = convertHtml(finalStrRemainingValue);
   } else {
-    fsPoints = 'fs16';
     pointsDescription = labels.earnDoublePoints;
   }
 
@@ -97,7 +94,6 @@ const LoyaltyBannerSection = props => {
               showSubtotal={showSubtotal}
               currentSubtotal={currentSubtotal}
               estimatedSubtotal={estimatedSubtotal}
-              fsPoints={fsPoints}
               isPlcc={isPlcc}
               pointsDescription={pointsDescription}
               earnedReward={earnedReward}

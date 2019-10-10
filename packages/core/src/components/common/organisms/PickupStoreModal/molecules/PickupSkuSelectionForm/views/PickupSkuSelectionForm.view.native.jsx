@@ -55,7 +55,7 @@ const PickupSkuSelectionForm = props => {
 
   const listPrice = prices && prices.listPrice;
   const offerPrice = prices && prices.offerPrice;
-
+  const listPriceStyle = { lineHeight: 20 };
   return (
     <PickUpSkUSectionContainer>
       <ProductSummaryContainer>
@@ -90,6 +90,7 @@ const PickupSkuSelectionForm = props => {
                 fontWeight="regular"
                 color="gray.800"
                 text={`${currencyPrefix}${listPrice}`}
+                style={listPriceStyle}
               />
             ) : null}
             {badge2 ? (
@@ -101,6 +102,7 @@ const PickupSkuSelectionForm = props => {
                 fontWeight="regular"
                 color="red.500"
                 text={badge2}
+                style={listPriceStyle}
               />
             ) : null}
           </OfferPriceAndBadge3Container>

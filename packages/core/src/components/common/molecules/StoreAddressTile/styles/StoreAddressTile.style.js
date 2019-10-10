@@ -35,6 +35,8 @@ export const TileHeader = styled.div`
         background: none;
         cursor: pointer;
         outline: inherit;
+        text-transform: capitalize;
+        text-align: left;
       }
     }
   }

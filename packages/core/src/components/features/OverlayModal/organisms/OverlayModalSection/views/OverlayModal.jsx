@@ -130,7 +130,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style.overflow = 'auto';
+      this.body.style['overflow-y'] = 'auto';
     }
   };
 
