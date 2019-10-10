@@ -134,11 +134,8 @@ const getGiftServicesContentTcpId = state => {
   return contentTCP && contentTCP.contentId;
 };
 
-const getGiftServicesContentGymId = ({
-  Labels: {
-    checkout: { addedToBag: { referred = [] } = {} },
-  },
-}) => {
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };

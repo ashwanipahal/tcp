@@ -35,21 +35,26 @@ export class StoreLanding extends PureComponent {
   };
 
   renderMapView = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore, ...others } = this.props;
-    const storeList = suggestedStoreList.map((item, index) => (
-      <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-        <StoreAddressTile
-          {...this.props}
-          store={item}
-          variation="listing"
-          storeIndex={index + 1}
-          setFavoriteStore={setFavoriteStore}
-          isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
-          key={item.basicInfo.id}
-          openStoreDetails={this.openStoreDetails}
-        />
-      </Col>
-    ));
+    const { setFavoriteStore, favoriteStore, labels, searchDone, ...others } = this.props;
+    const storeList =
+      !suggestedStoreList.length && searchDone ? (
+        <p>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</p>
+      ) : (
+        suggestedStoreList.map((item, index) => (
+          <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+            <StoreAddressTile
+              {...this.props}
+              store={item}
+              variation="listing"
+              storeIndex={index + 1}
+              setFavoriteStore={setFavoriteStore}
+              isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+              key={item.basicInfo.id}
+              openStoreDetails={this.openStoreDetails}
+            />
+          </Col>
+        ))
+      );
     const storeMap = (
       <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
         <StoreStaticMap
@@ -57,6 +62,7 @@ export class StoreLanding extends PureComponent {
           isCanada={isCanada}
           isMobile={getViewportInfo().isMobile}
           apiKey={this.googleApiKey}
+          labels={labels}
           {...others}
         />
       </Col>
@@ -83,8 +89,11 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore, openStoreDirections } = this.props;
-    return suggestedStoreList.map(item => (
+    const { setFavoriteStore, favoriteStore, openStoreDirections, labels, searchDone } = this.props;
+    if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
+      return <p>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</p>;
+    }
+    return suggestedStoreList.map((item, index) => (
       <Col
         colSize={{ large: 12, medium: 8, small: 6 }}
         ignoreGutter={{ small: true }}
@@ -99,13 +108,14 @@ export class StoreLanding extends PureComponent {
           isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
           openStoreDirections={openStoreDirections}
           openStoreDetails={this.openStoreDetails}
+          storeIndex={!!getViewportInfo().isDesktop && index + 1}
         />
       </Col>
     ));
   };
 
   renderFavoriteStore = () => {
-    const { favoriteStore, labels } = this.props;
+    const { favoriteStore, labels, geoLocationEnabled } = this.props;
     return (
       <>
         {favoriteStore && (
@@ -120,6 +130,7 @@ export class StoreLanding extends PureComponent {
                 variation="listing-header"
                 isFavorite
                 openStoreDetails={this.openStoreDetails}
+                geoLocationDisabled={!geoLocationEnabled}
               />
             </Col>
           </Row>
@@ -143,7 +154,16 @@ export class StoreLanding extends PureComponent {
   };
 
   render() {
-    const { className, suggestedStoreList, ...others } = this.props;
+    const {
+      className,
+      suggestedStoreList,
+      labels,
+      loadStoresByCoordinates,
+      searchIcon,
+      markerIcon,
+      getLocationStores,
+      ...others
+    } = this.props;
     const { mapView, isGym, isOutlet } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
@@ -165,16 +185,29 @@ export class StoreLanding extends PureComponent {
         <Row>
           <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
             {this.renderFavoriteStore()}
+          </Col>
+        </Row>
+        <Row fullBleed>
+          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
             <Row fullBleed>
               <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
                 <StoreLocatorSearch
-                  {...this.props}
+                  labels={labels}
+                  loadStoresByCoordinates={loadStoresByCoordinates}
                   toggleMap={this.toggleMap}
                   mapView={mapView}
                   selectStoreType={this.selectStoreType}
+                  searchIcon={searchIcon}
+                  markerIcon={markerIcon}
+                  getLocationStores={getLocationStores}
+                  selectedCountry={isCanada() ? 'CA' : 'USA'}
                 />
               </Col>
             </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
             <Row className="storeView__List" fullBleed>
               {mapView
                 ? this.renderMapView(modifiedStoreList)
@@ -189,7 +222,7 @@ export class StoreLanding extends PureComponent {
             >
               <StoreStaticMap
                 storesList={modifiedStoreList}
-                isCanada={isCanada}
+                isCanada={isCanada()}
                 apiKey={this.googleApiKey}
                 {...others}
               />
@@ -210,11 +243,19 @@ StoreLanding.propTypes = {
   labels: PropTypes.shape(PropTypes.string).isRequired,
   fetchCurrentStore: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
+  loadStoresByCoordinates: PropTypes.func.isRequired,
+  markerIcon: PropTypes.string.isRequired,
+  searchIcon: PropTypes.string.isRequired,
+  getLocationStores: PropTypes.func.isRequired,
+  searchDone: PropTypes.bool,
+  geoLocationEnabled: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
+  searchDone: false,
+  geoLocationEnabled: false,
 };
 
 export default withStyles(StoreLanding, styles);

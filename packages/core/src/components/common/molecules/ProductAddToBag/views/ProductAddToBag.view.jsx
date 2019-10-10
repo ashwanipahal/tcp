@@ -9,6 +9,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
+import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import ProductSizeSelector from '../../ProductSizeSelector';
@@ -157,7 +158,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 >
                   {this.getButtonLabel()}
                 </Button>
-                <RenderPerf.Measure name="render_cart_cta" />
+                <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
             </Col>
           </Row>
