@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Button, ButtonWrapper } from '../ButtonTabs.style.native';
 
-const getActiveStatus = (id, selectedTabId = []) => {
+export const getActiveStatus = (id, selectedTabId = []) => {
   if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
     return true;
   }

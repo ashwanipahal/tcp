@@ -7,7 +7,7 @@ import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import buttonTabsStyle from '../ButtonTabs.style';
 
-const getActiveStatus = (id, selectedTabId = []) => {
+export const getActiveStatus = (id, selectedTabId = []) => {
   const selectedTab = Array.isArray(selectedTabId)
     ? selectedTabId && selectedTabId[0]
     : selectedTabId;
@@ -60,3 +60,5 @@ ButtonTabs.propTypes = {
 };
 
 export default withStyles(errorBoundary(ButtonTabs), buttonTabsStyle);
+
+export { ButtonTabs as ButtonTabsVanilla };
