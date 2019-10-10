@@ -62,7 +62,7 @@ const StyledLabel = styled.Text`
   left: 0;
   top: 0;
   font-size: ${props => props.theme.typography.fontSizes.fs10};
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.TEXT.DARK};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   margin-bottom: 0;
 `;
