@@ -69,7 +69,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
     <Measure
-      name="render_checkout_cta"
+      name="call_to_action_visible"
     />
   </Styled(Row)>
 </div>

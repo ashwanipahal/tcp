@@ -85,65 +85,29 @@ class CheckoutCartItemsList extends Component {
         </BodyCopy>
         {deliveryItem.storeAddress && (
           <>
-            <BodyCopy
-              component="div"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
               {addressLine1}
             </BodyCopy>
             {addressLine2 && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
                 {addressLine2}
               </BodyCopy>
             )}
-            <BodyCopy
-              component="div"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
               {`${city},${state}${zipCode}`}
             </BodyCopy>
             {storeTodayOpenRange && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
                 {`${today}${storeTodayOpenRange}`}
               </BodyCopy>
             )}
             {storeTomorrowOpenRange && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
                 {`${tomorrow}${storeTomorrowOpenRange}`}
               </BodyCopy>
             )}
             {storePhoneNumber && (
-              <BodyCopy
-                component="div"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
                 {`${phone}${storePhoneNumber}`}
               </BodyCopy>
             )}
@@ -176,7 +140,6 @@ class CheckoutCartItemsList extends Component {
                   fontWeight="extrabold"
                   fontSize="fs16"
                   fontFamily="secondary"
-                  className="title-list-product"
                 >
                   {labels.pickup}
                 </BodyCopy>
@@ -214,7 +177,7 @@ class CheckoutCartItemsList extends Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs10"
               fontFamily="secondary"
               className="store-date-container"
             >
@@ -404,7 +367,7 @@ class CheckoutCartItemsList extends Component {
               fontFamily="secondary"
               className="checkout-cart-list-heading"
             >
-              {`${bagPageLabels.bagHeading} (${itemsCount})`}
+              {`${bagPageLabels.bagHeading} (${itemsCount}):`}
             </BodyCopy>
             {this.renderItems()}
           </Col>

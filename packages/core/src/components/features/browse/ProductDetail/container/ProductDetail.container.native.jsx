@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+
 import {
   getNavTree,
   getBreadCrumbs,
   getCurrentProduct,
   getPlpLabels,
+  getProductDetailFormValues,
   getPDPLabels,
   getShortDescription,
   getGeneralProductId,
@@ -46,8 +48,8 @@ class ProductDetailContainer extends React.PureComponent {
     getDetails({ productColorId: productId, ignoreCache: true });
   }
 
-  handleAddToBag = formValues => {
-    const { addToBagEcom, currentProduct } = this.props;
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, currentProduct } = this.props;
     let cartItemInfo = getCartItemInfo(currentProduct, formValues);
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
@@ -103,6 +105,7 @@ function mapStateToProps(state) {
     pdpLabels: getPDPLabels(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     addToBagError: getAddedToBagError(state),
+    formValues: getProductDetailFormValues(state),
     shortDescription: getShortDescription(state),
     itemPartNumber: getGeneralProductId(state),
     longDescription: getDescription(state),
@@ -135,6 +138,7 @@ ProductDetailContainer.propTypes = {
   pdpLabels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   addToBagError: PropTypes.string,
+  formValues: PropTypes.shape({}).isRequired,
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,

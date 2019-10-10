@@ -163,6 +163,9 @@ export default css`
       display: none !important;
     }
   }
+  .text-break {
+    word-break: break-word;
+  }
 
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {

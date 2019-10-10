@@ -57,7 +57,7 @@ const ProductSubDetails = styled.View`
 `;
 
 const ImageStyle = styled.Image`
-  width: ${props => (props.showOnReviewPage ? `100px` : `55px`)};
+  width: 100px;
   height: 100px;
 `;
 

@@ -31,7 +31,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
   renderAddToBagButton = () => {
     const {
       plpLabels: { addToBag },
-      addToBagAction,
+      handleFormSubmit,
       fitChanged,
       displayErrorMessage,
     } = this.props;
@@ -49,7 +49,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           if (fitChanged) {
             displayErrorMessage(fitChanged);
           } else {
-            addToBagAction();
+            handleFormSubmit();
           }
         }}
         locator="pdp_color_swatch"
@@ -192,7 +192,7 @@ ProductAddToBag.propTypes = {
   plpLabels: PropTypes.instanceOf(Object),
   isErrorMessageDisplayed: PropTypes.bool,
   showAddToBagCTA: PropTypes.bool,
-  addToBagAction: PropTypes.func,
+  handleFormSubmit: PropTypes.func,
   selectedQuantity: PropTypes.number,
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
@@ -208,7 +208,7 @@ ProductAddToBag.defaultProps = {
   quantityList: [],
   plpLabels: {},
   isErrorMessageDisplayed: false,
-  addToBagAction: null,
+  handleFormSubmit: null,
   selectedQuantity: 1,
   showAddToBagCTA: true,
 };
