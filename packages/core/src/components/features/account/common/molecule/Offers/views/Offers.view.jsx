@@ -1,18 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../Offers.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import RichText from '../../../../../../common/atoms/RichText';
 
-// @flow
-
-type Props = {
-  labels: Object,
-  className: String,
-};
-
-const Offers = ({ labels, className }: Props) => {
+const Offers = ({ labels, className }) => {
   return (
     <div className={className}>
       <Row fullBleed>
@@ -28,6 +22,11 @@ const Offers = ({ labels, className }: Props) => {
       </Row>
     </div>
   );
+};
+
+Offers.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(Offers, styles);

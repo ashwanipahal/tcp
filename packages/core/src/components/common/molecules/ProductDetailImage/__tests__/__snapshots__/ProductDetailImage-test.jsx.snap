@@ -45,7 +45,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
     }
   />
   <Measure
-    name="render_product_photo"
+    name="hero_visible"
   />
 </div>
 `;
