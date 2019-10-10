@@ -6,6 +6,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
 >
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_fast_shipping_icon"
       iconFontName="Icomoon"
@@ -51,6 +52,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_store_marker_icon"
       iconFontName="Icomoon"
@@ -94,7 +96,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
   </Styled(View)>
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}

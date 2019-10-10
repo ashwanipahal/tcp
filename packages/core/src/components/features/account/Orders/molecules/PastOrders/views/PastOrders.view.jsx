@@ -117,7 +117,13 @@ class PastOrders extends React.Component {
         </Row>
         {ordersListItemsFilter &&
           ordersListItemsFilter.map(item => (
-            <OrdersListItem labels={labels} key={item.orderNumber} hideHeader orderItem={item} />
+            <OrdersListItem
+              labels={labels}
+              key={item.orderNumber}
+              hideHeader
+              orderItem={item}
+              mobileRightText
+            />
           ))}
         {ordersListItems.length >= 10 && (
           <Anchor

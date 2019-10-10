@@ -109,7 +109,6 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
           <Button
             width="225px"
             accessibilityLabel={singleCTAButton.title}
-            buttonVariation="variable-width"
             text={singleCTAButton.text}
             testID={getLocator('moduleD_button')}
             url={singleCTAButton.url}

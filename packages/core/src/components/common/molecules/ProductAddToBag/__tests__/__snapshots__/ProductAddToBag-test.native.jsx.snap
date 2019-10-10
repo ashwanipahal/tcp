@@ -202,7 +202,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}
