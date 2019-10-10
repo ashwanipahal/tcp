@@ -151,7 +151,7 @@ export default css`
       width: 88px;
       height: 1px;
       border-radius: 0.5px;
-      background-color: ${props => props.theme.colorPalette.blue[500]};
+      background-color: ${props => props.theme.colorPalette.primary.main};
     }
     .l2-nav-category-links {
       display: flex;

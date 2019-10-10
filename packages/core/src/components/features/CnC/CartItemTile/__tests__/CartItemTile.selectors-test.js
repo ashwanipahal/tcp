@@ -226,6 +226,7 @@ describe('#CartItemTile selector', () => {
       itemDeleted: 'lbl_msg_itemDeleteSuccess',
       itemSoldOut: 'minibag',
       itemUnavailable: 'minibag',
+      itemUpdated: 'lbl_minibag_itemUpdated',
       moveToBagLink: 'moveToBagLink',
       off: 'off',
       phone: undefined,
