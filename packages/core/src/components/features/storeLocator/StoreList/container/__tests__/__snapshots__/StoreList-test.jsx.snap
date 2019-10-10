@@ -315,6 +315,7 @@ exports[`StoreList component Component should render with props 1`] = `
         },
       ]
     }
+    selectedLocation={null}
     selectionCallback={[Function]}
     titleText="SEARCH FOR STORES BY STATE"
   />
@@ -328,6 +329,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -423,6 +425,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -505,6 +508,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -665,6 +669,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1085,6 +1090,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1154,6 +1160,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1236,6 +1243,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1266,6 +1274,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1530,6 +1539,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1690,6 +1700,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1772,6 +1783,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1841,6 +1853,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -1936,6 +1949,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2057,6 +2071,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2113,6 +2128,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2182,6 +2198,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2277,6 +2294,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2359,6 +2377,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2545,6 +2564,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2575,6 +2595,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2683,6 +2704,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2713,6 +2735,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2795,6 +2818,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2890,6 +2914,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -2933,6 +2958,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3093,6 +3119,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3136,6 +3163,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3179,6 +3207,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3209,6 +3238,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3291,6 +3321,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3360,6 +3391,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3442,6 +3474,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3589,6 +3622,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3710,6 +3744,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3792,6 +3827,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3822,6 +3858,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3852,6 +3889,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -3999,6 +4037,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4042,6 +4081,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4098,6 +4138,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4128,6 +4169,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4249,6 +4291,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4734,6 +4777,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4842,6 +4886,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -4976,6 +5021,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5032,6 +5078,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5127,6 +5174,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5170,6 +5218,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5317,6 +5366,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5464,6 +5514,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5507,6 +5558,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5550,6 +5602,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5580,6 +5633,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5610,6 +5664,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5913,6 +5968,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -5943,6 +5999,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -6051,6 +6108,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -6094,6 +6152,7 @@ exports[`StoreList component Component should render with props 1`] = `
         "lbl_storelist_searchByStates_dropdown": "Select a State",
       }
     }
+    onToggleCallback={[Function]}
     stores={
       Array [
         Object {
@@ -6126,10 +6185,12 @@ exports[`StoreList component StoreList component renders correctly without props
     fontSizeVariation="xlarge"
     handleLinkClick={[Function]}
     noLink={true}
+    title="lbl_storelist_backLink"
   >
     <span
       className="left-arrow"
     />
+    lbl_storelist_backLink
   </Styled(Anchor)>
 </div>
 `;

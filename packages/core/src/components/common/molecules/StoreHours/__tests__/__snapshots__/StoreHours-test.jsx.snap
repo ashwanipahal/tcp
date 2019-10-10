@@ -4122,6 +4122,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
               id=""
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
@@ -8254,6 +8255,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
               id=""
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
