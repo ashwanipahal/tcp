@@ -5,7 +5,14 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+
 import { readCookieMobileApp } from '../../../../utils/utils';
+
 import {
   Container,
   MessageContainer,
@@ -20,6 +27,8 @@ import {
   ImageColor,
   Touchable,
 } from './Header.style';
+
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header
@@ -46,20 +55,28 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
     };
   }
 
   componentDidMount() {
-    const CART_ITEM_COUNTER = 'cartItemsCount';
-    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     const { loadFavoriteStore } = this.props;
     loadFavoriteStore({});
+    this.getInitialProps();
+  }
 
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
+    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
+  }
+
+  getInitialProps() {
+    const { updateCartCountAction } = this.props;
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
-      this.setState({
-        cartVal: parseInt(res || 0, 10),
-      });
+      updateCartCountAction(parseInt(res || 0, 10));
     });
   }
 
@@ -107,8 +124,8 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { favStore, labels } = this.props;
-    const { isDownIcon, cartVal } = this.state;
+    const { favStore, labels, cartVal } = this.props;
+    const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
     const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
@@ -197,6 +214,7 @@ Header.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   favStore: PropTypes.shape({}),
   loadFavoriteStore: PropTypes.func,
+  cartVal: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
@@ -208,17 +226,25 @@ const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
     favStore: state.User && state.User.get('defaultStore'),
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
+    },
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(InitialPropsHOC(Header));
 export { Header as HeaderVanilla };
