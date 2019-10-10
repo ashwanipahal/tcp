@@ -127,7 +127,7 @@ class ShippingForm extends React.Component {
     const { dispatch, defaultAddressId, isMobile } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
-    if (defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
+    if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
       if (isMobile) {
         this.toggleAddEditModal({ type: 'add' });
       } else {
@@ -164,6 +164,7 @@ class ShippingForm extends React.Component {
     if (modalState && type === 'add') {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
     }
+
     if (isEditingMobileMode) {
       this.setState({ isEditingMobileMode: !isEditingMobileMode });
     }

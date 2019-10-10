@@ -114,7 +114,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let address;
     if (this.isBillingIfoPresent()) {
       ({
-        address: {
+        address = {
           onFileAddressKey: billingOnFileAddressKey,
           onFileAddressId: billingOnFileAddressId,
           firstName,

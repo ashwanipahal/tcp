@@ -61,7 +61,7 @@ exports[`Shipping Page should render correctly 1`] = `
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -74,7 +74,7 @@ exports[`Shipping Page should render correctly 1`] = `
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />
@@ -204,7 +204,7 @@ exports[`Shipping Page should render correctly with component did update and get
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -217,7 +217,7 @@ exports[`Shipping Page should render correctly with component did update and get
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />
@@ -328,7 +328,7 @@ exports[`Shipping Page should render correctly with component did update and get
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -341,7 +341,7 @@ exports[`Shipping Page should render correctly with component did update and get
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />

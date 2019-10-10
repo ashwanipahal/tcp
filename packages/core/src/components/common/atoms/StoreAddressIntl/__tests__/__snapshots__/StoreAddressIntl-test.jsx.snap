@@ -36,7 +36,9 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {

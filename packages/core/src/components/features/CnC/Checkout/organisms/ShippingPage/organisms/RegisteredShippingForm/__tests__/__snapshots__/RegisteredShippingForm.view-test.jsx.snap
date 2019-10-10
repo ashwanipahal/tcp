@@ -60,7 +60,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                   dataLocator="shipping-defshippinglabel"
                   showCheckmark={true}
                 >
-                  
+                  lbl_shipping_default
                 </ForwardRef>
               </div>,
               "title": "test test (Default)",
@@ -74,7 +74,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                 fullWidth={true}
                 onClick={[Function]}
               >
-                
+                lbl_shipping_addNewAddress
               </ForwardRef>,
               "title": "Add New Address",
               "value": "",
@@ -110,7 +110,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -128,7 +130,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -172,7 +176,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -285,7 +291,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                 fullWidth={true}
                 onClick={[Function]}
               >
-                
+                lbl_shipping_addNewAddress
               </ForwardRef>,
               "title": "Add New Address",
               "value": "",
@@ -321,7 +327,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -410,7 +418,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -572,7 +582,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -597,7 +609,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         fill="WHITE"
         onClick={[Function]}
         type="button"
-      />
+      >
+        lbl_shipping_cancel
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -614,7 +628,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         fill="BLUE"
         onClick={[Function]}
         type="button"
-      />
+      >
+        lbl_shipping_save
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(AddEditShippingAddress)
@@ -693,7 +709,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 fullWidth={true}
                 onClick={[Function]}
               >
-                
+                lbl_shipping_addNewAddress
               </ForwardRef>,
               "title": "Add New Address",
               "value": "",
@@ -729,7 +745,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -802,7 +820,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -963,7 +983,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -1122,7 +1144,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -1202,7 +1226,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 fullWidth={true}
                 onClick={[Function]}
               >
-                
+                lbl_shipping_addNewAddress
               </ForwardRef>,
               "title": "Add New Address",
               "value": "",
@@ -1238,7 +1262,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1311,7 +1337,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1472,7 +1500,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -1631,7 +1661,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -1711,7 +1743,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                 fullWidth={true}
                 onClick={[Function]}
               >
-                
+                lbl_shipping_addNewAddress
               </ForwardRef>,
               "title": "Add New Address",
               "value": "",
@@ -1747,7 +1779,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1820,7 +1854,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         noLink={true}
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1982,7 +2018,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -2007,7 +2045,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         fill="WHITE"
         onClick={[Function]}
         type="button"
-      />
+      >
+        lbl_shipping_cancel
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -2024,7 +2064,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         fill="BLUE"
         onClick={[Function]}
         type="button"
-      />
+      >
+        lbl_shipping_save
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(AddEditShippingAddress)
@@ -2266,7 +2308,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -2425,7 +2469,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -2701,7 +2747,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -2860,7 +2908,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -3136,7 +3186,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -3295,7 +3347,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>
@@ -3538,7 +3592,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_saveToAccount
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
     <Styled(Col)
@@ -3697,7 +3753,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          lbl_shipping_defaultShipping
+        </Styled(BodyCopy)>
       </Field>
     </Styled(Col)>
   </Styled(Row)>

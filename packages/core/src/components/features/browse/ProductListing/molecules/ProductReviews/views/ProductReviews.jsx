@@ -56,9 +56,7 @@ class ProductReviews extends React.PureComponent {
       event.preventDefault();
       event.stopPropagation();
       onLoginClick();
-      return false;
     }
-    return false;
   }
 
   captureContainerRef(ref) {

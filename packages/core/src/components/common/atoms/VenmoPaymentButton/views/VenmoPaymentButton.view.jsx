@@ -20,10 +20,6 @@ export class VenmoPaymentButton extends Component {
     };
   }
 
-  componentWillMount() {
-    this.fetchVenmoClientToken();
-  }
-
   /**
    * @function fetchVenmoClientToken
    * @description Fetch venmo token details from the backend api. This is used to create instance of venmo and for authorization
@@ -149,7 +145,11 @@ export class VenmoPaymentButton extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    const { mode, authorizationKey, isNonceNotExpired } = this.props;
+    const { mode, authorizationKey, isNonceNotExpired, isGuest } = this.props;
+    if (prevProps.isGuest !== isGuest) {
+      // Condition for bag page reload on registered user, and user logging in from bag page
+      this.fetchVenmoClientToken();
+    }
     if (
       mode === modes.CLIENT_TOKEN &&
       (prevProps.authorizationKey !== authorizationKey ||
@@ -168,6 +168,7 @@ export class VenmoPaymentButton extends Component {
       setVenmoData,
       isNonceNotExpired,
     } = this.props;
+    this.fetchVenmoClientToken();
     if (nonce && isNonceNotExpired) {
       this.setState({ hasVenmoError: false });
       setVenmoData({ loading: false });
