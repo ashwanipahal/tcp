@@ -6,7 +6,10 @@ import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
-import { updateCartCount } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import {
   Container,
@@ -57,6 +60,14 @@ class Header extends React.PureComponent<Props> {
     const { loadFavoriteStore } = this.props;
     loadFavoriteStore({});
     this.getInitialProps();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
+    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
   }
 
   getInitialProps() {
@@ -211,7 +222,8 @@ Header.defaultProps = {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
-    cartVal: state.Header.cartItemCount,
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
     favStore: state.User && state.User.get('defaultStore'),
   };
 };
@@ -231,6 +243,9 @@ const mapDispatchToProps = dispatch => {
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
     updateCartCountAction: payload => {
       dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
     },
   };
 };

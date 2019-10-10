@@ -40,6 +40,13 @@ export const updateCartCount = payload => {
   };
 };
 
+export const updateCartManually = payload => {
+  return {
+    payload,
+    type: HEADER_CONSTANTS.UPDATE_CART_MANUALLY,
+  };
+};
+
 export default {
   loadHeaderData,
 };
