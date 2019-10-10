@@ -2,6 +2,8 @@ import HEADER_CONSTANTS from './Header.constants';
 
 const initailState = {
   miniBag: false,
+  cartItemCount: 0,
+  updateCartCount: false,
 };
 
 const HeaderReducer = (state = initailState, action) => {
@@ -27,6 +29,16 @@ const HeaderReducer = (state = initailState, action) => {
       return {
         ...state,
         miniBag: true,
+      };
+    case HEADER_CONSTANTS.CART_ITEM_COUNT:
+      return {
+        ...state,
+        cartItemCount: action.payload,
+      };
+    case HEADER_CONSTANTS.UPDATE_CART_MANUALLY:
+      return {
+        ...state,
+        updateCartCount: action.payload,
       };
     default:
       return state;
