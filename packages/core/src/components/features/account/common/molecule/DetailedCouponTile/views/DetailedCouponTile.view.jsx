@@ -182,7 +182,7 @@ export class DetailedCouponTile extends React.Component {
           </BodyCopy>
         )}
         <BodyCopy component="div" className="content elem-pl-SM elem-pr-SM elem-pt-XL">
-          <BodyCopy component="div" textAlign="center" className="top-content">
+          <BodyCopy component="div" textAlign="center" className="top-content overlap">
             <CouponIcon coupon={coupon} labels={labels} className={`elem-mb-XS ${overlapCls}`} />
             <BodyCopy
               fontSize="fs16"

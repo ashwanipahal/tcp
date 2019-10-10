@@ -259,6 +259,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
       </Styled(View)>
     </Styled(View)>
     <Styled(View)>
+      <Styled(Text) />
       <Field
         component={
           Object {

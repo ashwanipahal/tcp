@@ -32,9 +32,9 @@ import config, {
  */
 const getImageConfig = hasRibbon => {
   if (hasRibbon) {
-    return config.IMG_DATA_GYM_RIBBON[0];
+    return config.IMG_DATA_GYM_RIBBON.crops[0];
   }
-  return isGymboree() ? config.IMG_DATA_GYM[0] : config.IMG_DATA_TCP;
+  return isGymboree() ? config.IMG_DATA_GYM.crops[0] : config.IMG_DATA_TCP.crops[0];
 };
 
 /**
@@ -69,6 +69,7 @@ const getLinkedImage = (props, hasRibbon) => {
     navigation,
     linkedImage: [{ image, link }],
   } = props;
+
   return link ? (
     <Anchor url={link.url} navigation={navigation}>
       <StyledImage
@@ -76,7 +77,7 @@ const getLinkedImage = (props, hasRibbon) => {
         height={getImageHeight(hasRibbon)}
         url={image.url}
         host={LAZYLOAD_HOST_NAME.HOME}
-        imgConfig={getImageConfig(hasRibbon)}
+        imgConfig={image.crop_m || getImageConfig(hasRibbon)}
       />
     </Anchor>
   ) : (
@@ -85,7 +86,7 @@ const getLinkedImage = (props, hasRibbon) => {
       height={getImageHeight(hasRibbon)}
       url={image.url}
       host={LAZYLOAD_HOST_NAME.HOME}
-      imgConfig={getImageConfig(hasRibbon)}
+      imgConfig={image.crop_m || getImageConfig(hasRibbon)}
     />
   );
 };

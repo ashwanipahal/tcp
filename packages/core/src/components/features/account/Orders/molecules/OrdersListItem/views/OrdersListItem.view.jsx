@@ -11,7 +11,7 @@ import styles from '../styles/OrdersListItem.style';
  * This component will render OrdersListItem component
  * @param { string, object, boolean }
  */
-export const OrdersListItem = ({ labels, orderItem, hideHeader, className }) => {
+export const OrdersListItem = ({ labels, orderItem, hideHeader, className, mobileRightText }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   const rowHeaderClass = hideHeader ? 'hide-on-desktop hide-on-tablet' : '';
   return (
@@ -130,6 +130,7 @@ export const OrdersListItem = ({ labels, orderItem, hideHeader, className }) => 
                 fontFamily="secondary"
                 fontWeight="regular"
                 className="order-total"
+                mobileRightText={mobileRightText}
                 fontSize="fs14"
               >
                 {orderTotal}
@@ -147,11 +148,13 @@ OrdersListItem.propTypes = {
   orderItem: PropTypes.shape([]).isRequired,
   hideHeader: PropTypes.bool,
   className: PropTypes.string,
+  mobileRightText: PropTypes.bool,
 };
 
 OrdersListItem.defaultProps = {
   hideHeader: false,
   className: '',
+  mobileRightText: false,
 };
 
 export default withStyles(OrdersListItem, styles);

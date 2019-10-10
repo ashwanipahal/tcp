@@ -1,4 +1,5 @@
 const dummyUrl = 'http://www.childrensplace.com';
+
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 
 export default {

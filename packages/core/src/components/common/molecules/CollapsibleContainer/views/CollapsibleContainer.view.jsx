@@ -14,6 +14,7 @@ class CollapsibleContainer extends React.Component {
     className: PropTypes.string,
     defaultOpen: PropTypes.bool,
     id: PropTypes.string,
+    onToggleCallback: PropTypes.func,
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ class CollapsibleContainer extends React.Component {
     className: '',
     defaultOpen: false,
     id: '',
+    onToggleCallback: null,
   };
 
   constructor(props) {
@@ -33,8 +35,7 @@ class CollapsibleContainer extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { defaultOpen } = this.props;
-    const { isExpanded } = this.state;
-    if (defaultOpen && !isExpanded && prevProps.defaultOpen !== defaultOpen) {
+    if (prevProps.defaultOpen !== defaultOpen) {
       this.updateState();
     }
   }
@@ -47,8 +48,13 @@ class CollapsibleContainer extends React.Component {
   };
 
   toggleCollapseState = () => {
+    const { onToggleCallback } = this.props;
     const { isExpanded } = this.state;
-    this.setState({ isExpanded: !isExpanded });
+    this.setState({ isExpanded: !isExpanded }, () => {
+      if (onToggleCallback) {
+        onToggleCallback(this.state);
+      }
+    });
   };
 
   render() {

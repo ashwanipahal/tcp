@@ -23,6 +23,7 @@ const HomePageView = dynamic({
     moduleQ: () => import('@tcp/core/src/components/common/molecules/ModuleQ').then(returnModule),
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
+    moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
   }),
   render: ({ slots }, modules) => {
     return [

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import {
@@ -6,32 +6,15 @@ import {
   scrollToParticularElement,
   isClient,
   getLocator,
+  getLabelValue,
 } from '../../../../../../utils';
 import { Anchor } from '../../../../../common/atoms';
 import { StoreSelector, StoresCountryTile } from '../../../../../common/molecules';
 import style from '../styles/StoreList.style';
+import STORE_LIST_CONSTANTS from '../StoreList.constants';
 
-/**
- *
- * @param {String} className - classname
- * @param {Object} labels - labels for the page
- * @param {Object} storesList - list of US and CA stores
- */
-export const StoreList = ({ className, labels, storesList }) => {
-  const [location, setLocation] = useState();
-  useEffect(() => {
-    const scrollToElem = document.getElementById(`scroll-${location}`);
-    if (scrollToElem) {
-      scrollToParticularElement(scrollToElem);
-    }
-  });
-  const { storeListUS, storeListCA } = storesList;
-  const finalStores =
-    Array.isArray(storeListUS) && Array.isArray(storeListCA)
-      ? [...storeListUS, ...storeListCA]
-      : [];
-  const stores = [];
-  const pushStore = list => {
+class StoreList extends Component {
+  static pushStore(list, stores) {
     list.forEach(store => {
       stores.push({
         title: store.displayName,
@@ -39,20 +22,42 @@ export const StoreList = ({ className, labels, storesList }) => {
         value: store.displayName,
       });
     });
-  };
-  if (storeListUS.length > 0 && storeListCA.length > 0) {
-    pushStore(storeListUS);
+  }
+
+  static pushDisabled(stores) {
     stores.push({
       title: 'disabled',
       content: '------------------',
       value: 'disabled',
       disabled: true,
     });
-    pushStore(storeListCA);
   }
 
-  return (
-    <div className={className}>
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: null,
+      defaultOpenIndex: -1,
+      isAccordionClick: false,
+    };
+    this.scrollTimeout = null;
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { location, isAccordionClick } = this.state;
+
+    if (!isAccordionClick && prevState.location !== location) {
+      this.scrollToLocation();
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.scrollTimeout);
+  }
+
+  getBackBtn() {
+    const { labels, className } = this.props;
+    return (
       <Anchor
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
@@ -62,41 +67,99 @@ export const StoreList = ({ className, labels, storesList }) => {
         }}
         noLink
         className={`${className}__backlink`}
-        title={labels.lbl_storelist_backLink}
+        title={getLabelValue(labels, 'lbl_storelist_backLink')}
         dataLocator={getLocator('store_USCanadabacklink')}
       >
         <span className="left-arrow" />
-        {labels.lbl_storelist_backLink}
+        {getLabelValue(labels, 'lbl_storelist_backLink')}
       </Anchor>
-      {finalStores.length > 0 && (
-        <StoreSelector
-          titleText={labels.lbl_storelist_searchByStates}
-          defaultSelectText={labels.lbl_storelist_searchByStates_dropdown}
-          options={stores}
-          selectedLocation={location}
-          selectionCallback={(e, value) => {
-            if (value !== 'disabled') setLocation(value);
-          }}
-          dataLocator="store_USCanadasearchlabel"
-        />
-      )}
-      {finalStores.length > 0 &&
-        finalStores.map(store => (
-          <StoresCountryTile
-            title={store.displayName}
-            labels={labels}
-            stores={store.storesList}
-            titleClickCb={item => {
-              const { routerHandler } = routeToStoreDetails(item);
-              routerHandler();
+    );
+  }
+
+  scrollToLocation = () => {
+    const { location } = this.state;
+    this.scrollTimeout = setTimeout(() => {
+      clearTimeout(this.scrollTimeout);
+      const scrollToElem = document.getElementById(`scroll-${location}`);
+      if (scrollToElem) {
+        scrollToParticularElement(scrollToElem);
+      }
+    }, STORE_LIST_CONSTANTS.SCROLL_TIMEOUT);
+  };
+
+  render() {
+    const { location, defaultOpenIndex } = this.state;
+    const { className, labels, storesList } = this.props;
+    const { storeListUS, storeListCA } = storesList;
+    const finalStores =
+      Array.isArray(storeListUS) && Array.isArray(storeListCA)
+        ? [...storeListUS, ...storeListCA]
+        : [];
+
+    const stores = [];
+
+    if (storeListUS.length > 0 && storeListCA.length > 0) {
+      this.constructor.pushStore(storeListUS, stores);
+      this.constructor.pushDisabled(stores);
+      this.constructor.pushStore(storeListCA, stores);
+    }
+
+    return (
+      <div className={className}>
+        {this.getBackBtn()}
+        {finalStores.length > 0 && (
+          <StoreSelector
+            titleText={labels.lbl_storelist_searchByStates}
+            defaultSelectText={labels.lbl_storelist_searchByStates_dropdown}
+            options={stores}
+            selectedLocation={location}
+            selectionCallback={(_, v) => {
+              if (v !== 'disabled') {
+                this.setState({
+                  location: v,
+                  defaultOpenIndex: -1,
+                  isAccordionClick: false,
+                });
+              }
             }}
-            isDefaultOpen={location === store.displayName}
-            dataLocatorKey="USCanada"
+            dataLocator="store_USCanadasearchlabel"
           />
-        ))}
-    </div>
-  );
-};
+        )}
+        {finalStores.length > 0 &&
+          finalStores.map((store, i) => (
+            <StoresCountryTile
+              title={store.displayName}
+              labels={labels}
+              stores={store.storesList}
+              titleClickCb={item => {
+                const { routerHandler } = routeToStoreDetails(item);
+                routerHandler();
+              }}
+              isDefaultOpen={
+                defaultOpenIndex === -1 ? location === store.displayName : defaultOpenIndex === i
+              }
+              dataLocatorKey="USCanada"
+              onToggleCallback={({ isExpanded }) => {
+                if (isExpanded) {
+                  this.setState({
+                    defaultOpenIndex: i,
+                    location: store.displayName,
+                    isAccordionClick: true,
+                  });
+                } else {
+                  this.setState({
+                    defaultOpenIndex: -1,
+                    location: store.displayName,
+                    isAccordionClick: true,
+                  });
+                }
+              }}
+            />
+          ))}
+      </div>
+    );
+  }
+}
 
 StoreList.propTypes = {
   className: PropTypes.string.isRequired,
