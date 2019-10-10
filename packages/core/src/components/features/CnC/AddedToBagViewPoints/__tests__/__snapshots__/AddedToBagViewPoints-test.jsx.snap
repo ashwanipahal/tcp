@@ -36,7 +36,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       }
       data-locator="addedtobag-productprice"
     >
-      $12
+      undefined12
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)>
@@ -122,7 +122,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       }
       data-locator="addedtobag-bagsubtotal"
     >
-      $0
+      undefined0
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

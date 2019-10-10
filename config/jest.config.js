@@ -26,6 +26,7 @@ const ignorePsuedoCodeDir = [
   '/Favorites/',
   '/services/abstractors/account/ordersList', // TO DO - Furkan The story is in progress Excluding for now
   '/services/abstractors/common/searchBar/makeSearch.js',
+  '/ModuleK/',
 ];
 
 module.exports = {
@@ -78,6 +79,7 @@ module.exports = {
     '/*.app.jsx',
     '/stories/',
     '/*.stories.jsx',
+    '/ModuleK/',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

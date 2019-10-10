@@ -81,7 +81,6 @@ exports[`Header Component Header should render correctly 1`] = `
               "position": "absolute",
             }
           }
-          text={0}
           textDecoration={null}
         />
       </Styled(TouchableOpacity)>

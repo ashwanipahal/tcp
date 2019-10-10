@@ -20,6 +20,7 @@ export {
   setTestId,
   validateColor,
   getTranslatedMomentDate,
+  readCookieMobileApp,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

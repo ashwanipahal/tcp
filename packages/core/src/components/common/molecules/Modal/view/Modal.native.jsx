@@ -82,7 +82,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
   const {
     heading,
     onRequestClose,
-    animationType,
+    animationType = 'slide',
     headingAlign,
     headingFontFamily,
     headerStyle,
