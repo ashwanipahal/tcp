@@ -162,7 +162,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           locatorSetFavStore="set-favorite-store"
           openCallStore={null}
           openStoreDetail={null}
-          openStoreDirections={null}
+          openStoreDirections={[Function]}
           setFavoriteStore={null}
           store={
             Object {
@@ -889,7 +889,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           openCallStore={null}
           openStoreDetail={null}
           openStoreDetails={[Function]}
-          openStoreDirections={null}
+          openStoreDirections={[Function]}
           setFavoriteStore={null}
           store={
             Object {
