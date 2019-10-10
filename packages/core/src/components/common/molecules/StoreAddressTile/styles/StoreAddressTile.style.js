@@ -58,12 +58,18 @@ export const TileFooter = styled.div`
     props.showSetFavorite &&
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-        ${key !== 'large' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
-          flex-direction: column;
+        ${key !== 'large' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
+          ${
+            key !== 'large'
+              ? `
+              flex-direction: column;
 
-          .tile-footer__fullwidth {
-            width: 100%;
-            margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM}
+              .tile-footer__fullwidth {
+                width: 100%;
+                margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM}
+              }
+            `
+              : ``
           }
         ${key !== 'large' ? `}` : ''}
       `
