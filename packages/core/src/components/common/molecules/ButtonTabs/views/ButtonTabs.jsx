@@ -7,15 +7,27 @@ import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import buttonTabsStyle from '../ButtonTabs.style';
 
+const getActiveStatus = (id, selectedTabId = []) => {
+  const selectedTab = Array.isArray(selectedTabId)
+    ? selectedTabId && selectedTabId[0]
+    : selectedTabId;
+  if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
+    return true;
+  }
+  if (id === selectedTab) {
+    return true;
+  }
+  return false;
+};
+
 function ButtonTabs(props) {
   const { className, tabs, selectedTabId, onTabChange, dataLocator } = props;
-  const selectedTab = Array.isArray(selectedTabId) ? selectedTabId[0] : selectedTabId;
   return (
     <div className={className}>
       {tabs.map(({ label, id }, index) => (
         <div key={id} className="button-wrapper" data-locator={`${dataLocator}${index}`}>
           <Button
-            active={id === selectedTab}
+            active={getActiveStatus(id, selectedTabId)}
             buttonVariation="mini-nav"
             onClick={() => onTabChange(id)}
           >

@@ -76,7 +76,7 @@ export default {
             text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: ['47502>47535>54071', '47502>47535>54071'],
+            cat_id: ['47502>47535>54071', '9900099'],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -100,7 +100,7 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: ['47526', '47526'],
+            cat_id: ['009900', '119900'],
           },
           singleCTAButton: {
             url: dummyUrl,
