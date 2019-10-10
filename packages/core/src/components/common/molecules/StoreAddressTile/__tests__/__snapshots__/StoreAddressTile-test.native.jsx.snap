@@ -317,7 +317,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
-        (open until 6 pm)
+        (open until 8 pm)
       </Styled(Text)>
       <Styled(Text)>
         0.17 miles away
@@ -395,7 +395,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
-        (open until 6 pm)
+        (open until 8 pm)
       </Styled(Text)>
       <Styled(Text)>
         0.17 miles away
@@ -482,7 +482,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
-        (open until 6 pm)
+        (open until 8 pm)
       </Styled(Text)>
       <Styled(Text)>
         0.17 miles away
@@ -583,7 +583,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
-        (open until 6 pm)
+        (open until 8 pm)
       </Styled(Text)>
       <Styled(Text)>
         0.17 miles away
@@ -675,7 +675,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
-        (open until 6 pm)
+        (open until 8 pm)
       </Styled(Text)>
       <Styled(Text)>
         0.17 miles away
