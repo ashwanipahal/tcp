@@ -136,7 +136,13 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const { openStoreDetails, store, labels, openStoreDirections } = this.props;
+    const {
+      openStoreDetails,
+      store,
+      labels,
+      openStoreDirections,
+      geoLocationDisabled,
+    } = this.props;
     const { isGym, basicInfo, distance } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
@@ -167,18 +173,20 @@ class StoreAddressTile extends PureComponent {
                   'lbl_storelanding_openInterval'
                 )} ${this.getStoreHours()})`}
               </BodyCopy>
-              <BodyCopy
-                fontSize="fs12"
-                component="span"
-                color="text.primary"
-                fontFamily="secondary"
-              >
-                {`${
-                  distance
-                    ? `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
-                    : ''
-                }`}
-              </BodyCopy>
+              {!geoLocationDisabled && (
+                <BodyCopy
+                  fontSize="fs12"
+                  component="span"
+                  color="text.primary"
+                  fontFamily="secondary"
+                >
+                  {`${
+                    distance
+                      ? `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
+                      : ''
+                  }`}
+                </BodyCopy>
+              )}
               <Anchor
                 fontSizeVariation="medium"
                 underline

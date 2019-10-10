@@ -11,6 +11,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
     }
   }
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -36,6 +37,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
+  searchDone={false}
   searchIcon="/static/images/search-icon.svg"
 />
 `;
@@ -51,6 +53,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
     }
   }
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -76,6 +79,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called - no 
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
+  searchDone={false}
   searchIcon="/static/images/search-icon.svg"
 />
 `;
@@ -91,6 +95,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
     }
   }
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -116,6 +121,7 @@ exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] =
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
+  searchDone={false}
   searchIcon="/static/images/search-icon.svg"
 />
 `;
@@ -124,6 +130,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
 <Styled(StoreLanding)
   favoriteStore={null}
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={
     [MockFunction] {
       "calls": Array [
@@ -149,6 +156,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly - without fa
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
+  searchDone={false}
   searchIcon="/static/images/search-icon.svg"
 />
 `;
@@ -164,12 +172,14 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
     }
   }
   fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
   getFavoriteStore={[MockFunction]}
   getLocationStores={[Function]}
   loadStoresByCoordinates={[Function]}
   markerIcon="/static/images/marker-icon.png"
   navigation={Object {}}
   openStoreDirections={[Function]}
+  searchDone={false}
   searchIcon="/static/images/search-icon.svg"
 />
 `;
