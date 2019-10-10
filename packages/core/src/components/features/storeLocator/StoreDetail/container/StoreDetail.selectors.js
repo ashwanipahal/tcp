@@ -30,19 +30,23 @@ export const formatHoursToObject = storeHours => {
     });
     return returnedHours;
   };
-  storeHours.forEach((value, key) => {
-    formattedHrs[key] = formatHoursChild(storeHours.get(key));
-    return value;
-  });
+  if (storeHours !== undefined && storeHours.size > 0) {
+    storeHours.forEach((value, key) => {
+      formattedHrs[key] = formatHoursChild(storeHours.get(key));
+      return value;
+    });
+  }
   return formattedHrs;
 };
 
 export const formatGenericMapObject = store => {
   const resultObject = {};
-  store.forEach((value, key) => {
-    resultObject[key] = value;
-    return value;
-  });
+  if (store !== undefined && store.size > 0) {
+    store.forEach((value, key) => {
+      resultObject[key] = value;
+      return value;
+    });
+  }
   return resultObject;
 };
 
