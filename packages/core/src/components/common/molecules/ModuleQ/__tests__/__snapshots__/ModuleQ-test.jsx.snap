@@ -163,7 +163,205 @@ exports[`ModuleQ component renders correctly 1`] = `
           "small": 0,
         }
       }
-    />
+    >
+      <Styled(Carousel)
+        carouselConfig={
+          Object {
+            "autoplay": false,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
+            "variation": "big-arrows",
+          }
+        }
+        options={
+          Object {
+            "APP": Object {
+              "INACTIVE_SLIDE_OPACITY": 0.6,
+              "INACTIVE_SLIDE_SCALE": 0.75,
+              "ITEM_WIDTH": 230,
+              "LOOP_CLONES_PER_SIDE": 2,
+              "MODULE_HEIGHT": 400,
+              "OUTFIT_ITEM_IMAGE_HEIGHT": 78,
+              "OUTFIT_ITEM_IMAGE_WIDTH": 63,
+              "PRODUCT_IMAGE_HEIGHT": 237,
+              "PRODUCT_IMAGE_WIDTH": 193,
+            },
+            "arrows": true,
+            "autoplay": false,
+            "centerMode": true,
+            "centerPadding": "0px",
+            "dots": true,
+            "fade": false,
+            "infinite": true,
+            "responsive": Array [
+              Object {
+                "breakpoint": 767,
+                "settings": Object {
+                  "arrows": false,
+                  "centerPadding": "75px",
+                  "slidesToShow": 1,
+                  "swipeToSlide": true,
+                },
+              },
+              Object {
+                "breakpoint": 1199,
+                "settings": Object {
+                  "arrows": false,
+                  "centerPadding": "197px",
+                  "slidesToShow": 1,
+                  "swipeToSlide": true,
+                },
+              },
+            ],
+            "slidesToScroll": 1,
+            "slidesToShow": 3,
+            "speed": 500,
+            "swipe": true,
+          }
+        }
+      >
+        <div
+          key="0"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="1"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="2"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="3"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="4"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="5"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+        <div
+          key="6"
+        >
+          <Styled(Skeleton)
+            className="looks-large-image skeleton-image-wrapper"
+          />
+          <div
+            className="looks-images-wrapper"
+          >
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image"
+            />
+            <Styled(Skeleton)
+              className="looks-image looks-image-last"
+            />
+          </div>
+        </div>
+      </Styled(Carousel)>
+    </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
 `;

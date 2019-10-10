@@ -140,4 +140,15 @@ export default css`
       }
     }
   }
+  .skeleton-image-wrapper {
+    height: 260px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 419px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 427px;
+    }
+  }
 `;

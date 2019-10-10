@@ -8,7 +8,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -294,7 +294,113 @@ exports[`ModuleJ component renders correctly 1`] = `
             "swipe": true,
           }
         }
-      />
+      >
+        <div
+          key="0"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="1"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="2"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="3"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="4"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="5"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="6"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="7"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="8"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="9"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="10"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="11"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="12"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="13"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+        <div
+          key="14"
+        >
+          <Styled(Skeleton)
+            className="image-link"
+          />
+        </div>
+      </Styled(Carousel)>
     </Styled(Col)>
   </Styled(Row)>
 </StyledComponent>

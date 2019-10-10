@@ -147,7 +147,6 @@ export default css`
       height: 217px;
     }
   }
-
   .cta-btn {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
