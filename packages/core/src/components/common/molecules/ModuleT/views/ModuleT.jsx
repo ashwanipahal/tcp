@@ -50,7 +50,7 @@ class ModuleT extends React.PureComponent {
 
   render() {
     const { className, ctaItems, ctaType, mediaLinkedList } = this.props;
-    const { ctaTypes, PROMO_IMG_DATA } = config;
+    const { ctaTypes, IMG_DATA } = config;
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
@@ -81,7 +81,7 @@ class ModuleT extends React.PureComponent {
           >
             {promoImage1 && (
               <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage1}
                 data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
                 link={promoLink1}
@@ -123,7 +123,7 @@ class ModuleT extends React.PureComponent {
           >
             {promoImage2 && (
               <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleT_promobanner_img')}${2}`}
                 link={promoLink2}

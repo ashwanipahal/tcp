@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { css } from 'styled-components';
 
 // TODO: Remove style10 when currency_up_style is added to CMS
@@ -448,6 +449,83 @@ export default css`
       }
 
       .percentage_all_wrapped_normal-2 {
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      }
+    }
+  }
+
+  /*
+  * Module T Promo Banner styles
+  *********************************/
+  .modT_medium_text_regular {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    line-height: ${props => props.theme.typography.lineHeights.lh107};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+
+  .modT_percentage_all_wrapped_normal {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    display: inline-block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    text-align: center;
+    transform: translateX(-18px);
+    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+
+    .modT_percentage_all_wrapped_normal-1 {
+      font-size: ${props => props.theme.typography.fontSizes.fs28};
+      position: absolute;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+
+    .modT_percentage_all_wrapped_normal-2 {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+      position: absolute;
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+
+      .modT_percentage_all_wrapped_normal-0 {
+        font-size: 62px;
+      }
+
+      .modT_percentage_all_wrapped_normal-1 {
+        font-size: ${props => props.theme.typography.fontSizes.fs36};
+        top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      }
+
+      .modT_percentage_all_wrapped_normal-2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs18};
+        bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
+      transform: translateX(-50px);
+
+      .modT_percentage_all_wrapped_normal-0 {
+        font-size: 152px;
+      }
+
+      .modT_percentage_all_wrapped_normal-1 {
+        font-size: 88px;
+        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .modT_percentage_all_wrapped_normal-2 {
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
         bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }

@@ -44,11 +44,11 @@ export default {
           textItems: [
             {
               text: 'ALL GRAPHIC TEES',
-              style: 'medium_text_regular',
+              style: 'modT_medium_text_regular',
             },
             {
               text: '60 % OFF',
-              style: 'percentage_all_wrapped_normal',
+              style: 'modT_percentage_all_wrapped_normal',
             },
           ],
         },

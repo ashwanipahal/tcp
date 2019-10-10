@@ -35,24 +35,6 @@ export default css`
       .medium_text_black {
         line-height: 1;
       }
-      .medium_text_regular {
-        font-size: 20px;
-      }
-      .percentage_all_wrapped_normal {
-        margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
-        transform: translateX(-18px);
-      }
-      .percentage_all_wrapped_normal-0 {
-        font-size: 62px;
-      }
-      .percentage_all_wrapped_normal-1 {
-        font-size: ${props => props.theme.typography.fontSizes.fs36};
-        top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-      }
-      .percentage_all_wrapped_normal-2 {
-        font-size: ${props => props.theme.typography.fontSizes.fs18};
-        bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      }
     }
   }
 
@@ -75,7 +57,7 @@ export default css`
   }
 
   .gymboree-button-list {
-    background-color: #003057;
+    background-color: ${props => props.theme.colorPalette.C900};
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
