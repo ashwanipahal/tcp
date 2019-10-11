@@ -29,6 +29,7 @@ class QuickViewModal extends React.Component {
     } = this.props;
 
     const { fromBagPage } = otherProps;
+
     return (
       <Modal
         isOpen={isModalOpen}
