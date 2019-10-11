@@ -7,6 +7,7 @@ import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getUnbxdId,
   getCategoryId,
@@ -246,6 +247,9 @@ function mapDispatchToProps(dispatch) {
     },
     resetProducts: () => {
       dispatch(resetSlpProducts());
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 }

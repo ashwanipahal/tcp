@@ -32,11 +32,14 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
               "bounces": true,
               "data": Array [],
+              "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
             },
@@ -148,11 +151,14 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
               "bounces": true,
               "data": Array [],
+              "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
             },
