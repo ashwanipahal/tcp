@@ -6,11 +6,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   leftActionReleaseAnimationConfig={null}
   leftActionReleaseAnimationFn={null}
   leftButtonWidth={75}
-  leftButtons={
-    Array [
-      null,
-    ]
-  }
+  leftButtons={null}
   leftButtonsActivationDistance={75}
   leftButtonsCloseReleaseAnimationConfig={null}
   leftButtonsCloseReleaseAnimationFn={null}
@@ -387,11 +383,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
   leftActionReleaseAnimationConfig={null}
   leftActionReleaseAnimationFn={null}
   leftButtonWidth={75}
-  leftButtons={
-    Array [
-      null,
-    ]
-  }
+  leftButtons={null}
   leftButtonsActivationDistance={75}
   leftButtonsCloseReleaseAnimationConfig={null}
   leftButtonsCloseReleaseAnimationFn={null}
@@ -787,11 +779,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   leftActionReleaseAnimationConfig={null}
   leftActionReleaseAnimationFn={null}
   leftButtonWidth={75}
-  leftButtons={
-    Array [
-      null,
-    ]
-  }
+  leftButtons={null}
   leftButtonsActivationDistance={75}
   leftButtonsCloseReleaseAnimationConfig={null}
   leftButtonsCloseReleaseAnimationFn={null}

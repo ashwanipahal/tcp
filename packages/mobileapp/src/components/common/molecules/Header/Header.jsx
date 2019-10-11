@@ -10,7 +10,7 @@ import {
   updateCartCount,
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { readCookieMobileApp } from '../../../../utils/utils';
 
 import {
@@ -143,6 +143,7 @@ class Header extends React.PureComponent<Props> {
 
     return (
       <SafeAreaViewStyle>
+        <ToastContainer />
         <Container data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <BodyCopy

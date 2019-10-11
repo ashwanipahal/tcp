@@ -85,8 +85,6 @@ class HomePageView extends React.PureComponent<Props> {
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
-          fullWidth
-          buttonVariation="variable-width"
           text="PLP Page"
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}

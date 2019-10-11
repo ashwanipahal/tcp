@@ -5,13 +5,16 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   style={
     Object {
       "elevation": 5,
-      "shadowColor": "#6d7278",
+      "marginLeft": 5,
+      "marginRight": 3,
+      "marginTop": 5,
+      "shadowColor": "#9b9b9b",
       "shadowOffset": Object {
-        "height": 2,
+        "height": 5,
         "width": 0,
       },
-      "shadowOpacity": 0.3,
-      "shadowRadius": 5,
+      "shadowOpacity": 0.2,
+      "shadowRadius": 10,
     }
   }
   viewAll={true}
@@ -38,7 +41,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       />
     </Styled(View)>
     <Styled(View)
-      spacingStyles="margin-top-LRG"
+      spacingStyles="margin-top-LRG margin-bottom-XL"
     >
       <Styled(BodyCopy)
         accessibilityText=""

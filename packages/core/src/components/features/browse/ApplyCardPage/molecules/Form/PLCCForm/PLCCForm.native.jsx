@@ -82,15 +82,18 @@ class PLCCForm extends React.PureComponent<Props> {
     this.CAcountriesStates = [...selectArray, ...CAcountriesStatesTable];
     this.UScountriesStates = [...selectArray, ...UScountriesStatesTable];
 
+    this.date = calendarDaysMap();
+    this.year = calendarYearsMap();
+
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       country: 'US',
       // eslint-disable-next-line react/no-unused-state
       dropDownItem: props.countryState ? props.countryState : this.UScountriesStates[0].displayName,
       isPreScreen: false,
-      date: null,
-      month: null,
-      year: null,
+      date: this.date[0].displayName,
+      month: months[0].displayName,
+      year: this.year[0].displayName,
     };
 
     this.locationRef = null;
@@ -413,7 +416,7 @@ class PLCCForm extends React.PureComponent<Props> {
               name="date"
               bounces={false}
               component={DropDown}
-              data={calendarDaysMap()}
+              data={this.date}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
@@ -433,7 +436,7 @@ class PLCCForm extends React.PureComponent<Props> {
               name="year"
               bounces={false}
               component={DropDown}
-              data={calendarYearsMap()}
+              data={this.year}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
@@ -517,7 +520,6 @@ class PLCCForm extends React.PureComponent<Props> {
             type="submit"
             onPress={handleSubmit}
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
             width="90%"
           />

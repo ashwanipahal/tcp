@@ -23,6 +23,7 @@ import {
   getCurrentPointsState,
   getTotalRewardsState,
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
+import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
 // @flow
 type Props = {
@@ -40,6 +41,7 @@ type Props = {
   updateCartItemCount: Function,
   closeMiniBagDispatch: Function,
   openOverlay: Function,
+  resetSuccessMessage: Function,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -69,6 +71,7 @@ export class MiniBagContainer extends React.Component<Props> {
       cartItemSflError,
       closeMiniBagDispatch,
       openOverlay,
+      resetSuccessMessage,
     } = this.props;
     return (
       <MiniBagView
@@ -86,6 +89,7 @@ export class MiniBagContainer extends React.Component<Props> {
         cartItemSflError={cartItemSflError}
         closeMiniBagDispatch={closeMiniBagDispatch}
         openOverlay={openOverlay}
+        resetSuccessMessage={resetSuccessMessage}
       />
     );
   }
@@ -115,6 +119,9 @@ export const mapDispatchToProps = dispatch => {
       dispatch(closeMiniBag());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
+    resetSuccessMessage: payload => {
+      dispatch(BAG_ACTIONS.setCartItemsSFL(payload));
+    },
   };
 };
 

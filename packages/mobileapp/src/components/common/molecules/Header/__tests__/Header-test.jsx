@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { HeaderVanilla } from '../Header';
 import { Container, StoreContainer, CartContainer } from '../Header.style';
 
@@ -58,5 +59,8 @@ describe('Header Component', () => {
       },
     };
     expect(componentInstance.getStoreHours(store)).toEqual('8 pm');
+  });
+  it('Header should return ToastContainer component value one', () => {
+    expect(component.find(ToastContainer)).toHaveLength(1);
   });
 });
