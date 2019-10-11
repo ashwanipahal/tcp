@@ -1,24 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InitialPropsHOC testcases should render correctly 1`] = `
-<InitialProps
-  navigation={
-    Object {
-      "addListener": [MockFunction] {
-        "calls": Array [
-          Array [
-            "didFocus",
-            [Function],
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      },
-    }
-  }
-/>
-`;
+exports[`InitialPropsHOC testcases should render correctly 1`] = `undefined`;

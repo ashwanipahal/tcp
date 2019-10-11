@@ -1,16 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeaderPromo Component HeaderPromo should render correctly 1`] = `
-<WithTheme(SnapCarousel)
-  carouselConfig={
-    Object {
-      "autoplay": true,
-    }
-  }
-  data={Object {}}
-  height={30}
-  renderItem={[Function]}
-  variation="show-arrow"
-  width={750}
-/>
-`;
+exports[`HeaderPromo Component HeaderPromo should render correctly 1`] = `undefined`;
