@@ -19,6 +19,11 @@ import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 class MiniBagBody extends React.PureComponent {
   isEditing = false;
 
+  componentWillUnmount() {
+    const { resetSuccessMessage } = this.props;
+    resetSuccessMessage(false);
+  }
+
   handleItemEdit = value => {
     this.isEditing = value;
   };
@@ -220,6 +225,7 @@ MiniBagBody.propTypes = {
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBag: PropTypes.func.isRequired,
   onLinkClick: PropTypes.func.isRequired,
+  resetSuccessMessage: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);
