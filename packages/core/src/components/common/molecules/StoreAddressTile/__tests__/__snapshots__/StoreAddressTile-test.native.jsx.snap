@@ -311,9 +311,20 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
 >
   <Styled(View)>
     <Styled(View)>
-      <Styled(Text)>
-        86th Street - 3rd Ave.
-      </Styled(Text)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(Text)>
+          86th Street - 3rd Ave.
+        </Styled(Text)>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
@@ -389,9 +400,20 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
 >
   <Styled(View)>
     <Styled(View)>
-      <Styled(Text)>
-        86th Street - 3rd Ave.
-      </Styled(Text)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(Text)>
+          86th Street - 3rd Ave.
+        </Styled(Text)>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
@@ -476,9 +498,20 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
 >
   <Styled(View)>
     <Styled(View)>
-      <Styled(Text)>
-        86th Street - 3rd Ave.
-      </Styled(Text)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(Text)>
+          86th Street - 3rd Ave.
+        </Styled(Text)>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
@@ -576,10 +609,21 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
 >
   <Styled(View)>
     <Styled(View)>
-      <Styled(Text)>
-        2. 
-        86th Street - 3rd Ave.
-      </Styled(Text)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(Text)>
+          2. 
+          86th Street - 3rd Ave.
+        </Styled(Text)>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>
@@ -668,10 +712,21 @@ exports[`StoreAddressTile component Listing should render listing view with inde
 >
   <Styled(View)>
     <Styled(View)>
-      <Styled(Text)>
-        1. 
-        86th Street - 3rd Ave.
-      </Styled(Text)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Styled(Text)>
+          1. 
+          86th Street - 3rd Ave.
+        </Styled(Text)>
+      </Styled(Anchor)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text)>

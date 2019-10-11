@@ -69,6 +69,7 @@ export class StoreLanding extends PureComponent {
             isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
             key={item.basicInfo.id}
             openStoreDetails={this.openStoreDetails}
+            titleClickCb={this.focusOnMap}
           />
         ))}
       </StyledStoreListView>
