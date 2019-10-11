@@ -143,11 +143,11 @@ export default css`
   .skeleton-image-wrapper {
     height: 212px;
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 419px;
+      height: 345px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      height: 427px;
+      height: 290px;
     }
   }
 `;

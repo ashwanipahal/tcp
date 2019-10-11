@@ -81,6 +81,17 @@ export default css`
   }
   .loader-container {
     width: 100%;
-    height: 200px;
+    height: 150px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 200px;
+    }
+  }
+  &:last-child {
+    display: none;
+  }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .loader-col:last-child {
+      display: none;
+    }
   }
 `;

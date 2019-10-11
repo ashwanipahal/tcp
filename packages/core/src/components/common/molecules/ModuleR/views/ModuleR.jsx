@@ -167,36 +167,22 @@ class ModuleR extends React.PureComponent {
   }
 
   getLoader = () => {
-    const { medium, large } = viewport();
-    let colCount = 3;
-    if (medium) {
-      colCount = 4;
-    }
-    if (large) {
-      colCount = 6;
-    }
     return (
-      <div>
-        {Array.from({ length: 2 }).map((rItem, rowIndex) => {
+      <Row>
+        {Array.from({ length: 4 }).map((cItem, index) => {
           return (
-            <Row className="" key={`rowkey_${rowIndex.toString()}`}>
-              {Array.from({ length: colCount }).map((cItem, index) => {
-                return (
-                  <Col
-                    key={index.toString()}
-                    className=""
-                    colSize={{ small: 2, medium: 4, large: 3 }}
-                  >
-                    <div className="loader-wrapper">
-                      <Skeleton className="loader-container" />
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
+            <Col
+              key={index.toString()}
+              className="loader-col"
+              colSize={{ small: 2, medium: 2, large: 3 }}
+            >
+              <div className="loader-wrapper">
+                <Skeleton className="loader-container" />
+              </div>
+            </Col>
           );
         })}
-      </div>
+      </Row>
     );
   };
 
@@ -231,7 +217,7 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
-        {this.getLoader()}
+        {selectedProductList.length === 0 ? this.getLoader() : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>
