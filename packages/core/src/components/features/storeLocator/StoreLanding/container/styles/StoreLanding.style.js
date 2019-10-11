@@ -12,11 +12,11 @@ export default css`
     display: none;
   }
 
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .store__list:nth-child(even) {
-      margin-right: 0;
-    }
+  .store_item_container:nth-child(1n) {
+    margin: 0 14px;
+  }
 
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
     .storeView__List {
       flex-direction: row-reverse;
     }

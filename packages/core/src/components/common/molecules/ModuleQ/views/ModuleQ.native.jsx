@@ -233,7 +233,6 @@ const ModuleQ = props => {
       {selectedSingleCTAButton ? (
         <ButtonContainer>
           <Button
-            buttonVariation="variable-width"
             width="225px"
             text={selectedSingleCTAButton.text}
             url={selectedSingleCTAButton.url}

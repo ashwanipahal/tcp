@@ -48,7 +48,7 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     return (
       <Fragment>
-        <div>
+        <div className="tile-footer__fullwidth">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
@@ -59,10 +59,11 @@ class StoreAddressTile extends PureComponent {
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </Button>
         </div>
-        <div>
-          {variation === detailsType && (!isFavorite && showSetFavorite)
-            ? this.getFavLink()
-            : this.changeFavStoreLink()}
+        <div className="tile-footer__fullwidth">
+          {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
+          {variation === detailsType &&
+            (isFavorite && showSetFavorite) &&
+            this.changeFavStoreLink()}
         </div>
       </Fragment>
     );
@@ -245,9 +246,9 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileHeader() {
-    const { storeIndex, store, labels, openStoreDirections } = this.props;
+    const { storeIndex, store, labels, openStoreDirections, titleClickCb } = this.props;
     const { basicInfo, distance } = store;
-    const { storeName } = basicInfo;
+    const { storeName, id } = basicInfo;
     const storeHours = this.getStoreHours();
 
     return (
@@ -255,11 +256,13 @@ class StoreAddressTile extends PureComponent {
         <div className="title-one">
           <BodyCopy
             fontSize="fs14"
-            component="span"
+            component={titleClickCb ? Anchor : 'span'}
             color="text.primary"
             fontFamily="secondary"
             fontWeight="semibold"
             className="store-name store-name--listing"
+            handleLinkClick={e => titleClickCb(e, id)}
+            noLink
           >
             {!!storeIndex && `${storeIndex}. `}
             {storeName}

@@ -166,7 +166,7 @@ exports[`Social component should render with connected 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -192,7 +192,7 @@ exports[`Social component should render with connected 1`] = `
         >
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color="black"
             customStyle={Object {}}
             customTextStyle={null}
@@ -398,7 +398,7 @@ exports[`Social component should renders correctly 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -424,7 +424,7 @@ exports[`Social component should renders correctly 1`] = `
         >
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color="black"
             customStyle={Object {}}
             customTextStyle={null}
@@ -703,7 +703,7 @@ exports[`Social component should simulate instagram connect 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -729,7 +729,7 @@ exports[`Social component should simulate instagram connect 1`] = `
         >
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color="black"
             customStyle={Object {}}
             customTextStyle={null}

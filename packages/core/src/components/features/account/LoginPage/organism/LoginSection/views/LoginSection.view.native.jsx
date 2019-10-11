@@ -111,7 +111,6 @@ class LoginSection extends PureComponent<Props> {
             color={colorPallete.text.secondary}
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
             onPress={this.toggleCheckoutModal}
