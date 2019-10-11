@@ -153,6 +153,7 @@ const styles = css`
     height: 12px;
     padding-right: 6px;
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;
