@@ -16,7 +16,7 @@ import {
 } from '../../../container/Checkout.action';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
-import { getSiteId } from '../../../../../../../utils/utils.web';
+import { getSiteId } from '../../../../../../../utils';
 
 /**
  * @class GuestBillingContainer
