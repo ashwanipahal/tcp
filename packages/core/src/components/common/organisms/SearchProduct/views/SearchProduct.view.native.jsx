@@ -136,7 +136,7 @@ class SearchProduct extends React.PureComponent {
           value={searchText}
           onSubmitEditing={() => {
             const { searchText: text } = this.state;
-            if (text.length > 0) this.searchProducts(text);
+            this.searchProducts(text);
           }}
         />
         {searchText.length > 0 ? (
@@ -160,7 +160,6 @@ class SearchProduct extends React.PureComponent {
         )}
         <Button
           buttonVariation="fixed-width"
-          width="40px"
           text="Cancel"
           fontSize="fs13"
           fontWeight="regular"
