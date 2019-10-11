@@ -19,6 +19,9 @@ const OrderShippingDetails = ({ className, orderDetailsData, ordersLabels }) => 
 
   const { checkout } = orderDetailsData;
   const { shippingAddress } = checkout;
+  console.log('orderDADSD', orderDetailsData);
+  console.log('checkout', checkout);
+  console.log('shippingAddress', shippingAddress);
 
   return (
     <BodyCopy component="div" className={className}>

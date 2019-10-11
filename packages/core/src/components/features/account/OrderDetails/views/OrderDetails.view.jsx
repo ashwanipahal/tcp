@@ -70,17 +70,14 @@ class OrderDetailsView extends PureComponent {
               </Col>
               <Col colSize={{ large: 6, medium: 4, small: 6 }}>
                 <Row fullBleed>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <Col colSize={{ large: 5, medium: 8, small: 6 }}>
                     <OrderBillingDetails
                       orderDetailsData={orderDetailsData}
                       ordersLabels={ordersLabels}
                     />
                   </Col>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-                    <OrderSummaryDetails
-                      orderDetailsData={orderDetailsData}
-                      ordersLabels={ordersLabels}
-                    />
+                  <Col colSize={{ large: 7, medium: 8, small: 6 }}>
+                    <OrderSummaryDetails orderSummaryData={summary} ordersLabels={ordersLabels} />
                   </Col>
                 </Row>
               </Col>
