@@ -10,6 +10,7 @@ import {
   setPaymentNotification,
   fetchModuleX,
 } from './Payment.actions';
+import { resetSuccessState } from '../../AddEditCreditCard/container/AddEditCreditCard.actions';
 
 import {
   getCreditDebitCards,
@@ -37,8 +38,9 @@ export class PaymentContainer extends React.Component {
   }
 
   componentWillUnmount() {
-    const { clearPaymentNotification } = this.props;
+    const { clearPaymentNotification, resetSuccessNotification } = this.props;
     clearPaymentNotification();
+    resetSuccessNotification();
   }
 
   addNewCreditCard = () => {
@@ -115,6 +117,9 @@ export const mapDispatchToProps = dispatch => {
     getPaymentBannerRichText: cid => {
       dispatch(fetchModuleX(cid));
     },
+    resetSuccessNotification: () => {
+      dispatch(resetSuccessState());
+    },
   };
 };
 
@@ -159,6 +164,7 @@ PaymentContainer.propTypes = {
   paymentBannerRichText: PropTypes.string.isRequired,
   clearPaymentNotification: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
+  resetSuccessNotification: PropTypes.func.isRequired,
 };
 export default connect(
   mapStateToProps,
