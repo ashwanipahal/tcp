@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import {
   isCanada,
   getViewportInfo,
@@ -14,6 +15,7 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
+import StoreDetailContainerClass from '../../../StoreDetail/container/StoreDetail.container';
 
 import styles from '../styles/StoreLanding.style';
 
@@ -24,24 +26,38 @@ export class StoreLanding extends PureComponent {
     mapView: false,
     isOutlet: false,
     isGym: isGymboree(),
+    centeredStoreId: '',
   };
 
   openStoreDetails = (event, store) => {
-    const { fetchCurrentStore } = this.props;
     event.preventDefault();
-    fetchCurrentStore(store);
     const { routerHandler } = routeToStoreDetails(store);
     routerHandler();
   };
 
+  focusOnMap = (event, id) => {
+    event.preventDefault();
+    this.setState({
+      centeredStoreId: id,
+    });
+  };
+
   renderMapView = suggestedStoreList => {
     const { setFavoriteStore, favoriteStore, labels, searchDone, ...others } = this.props;
+    const { centeredStoreId } = this.state;
     const storeList =
       !suggestedStoreList.length && searchDone ? (
-        <p>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</p>
+        <Notification
+          status="info"
+          message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+        />
       ) : (
         suggestedStoreList.map((item, index) => (
-          <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+          <Col
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            ignoreGutter={{ small: true }}
+            className="store_item_container"
+          >
             <StoreAddressTile
               {...this.props}
               store={item}
@@ -51,6 +67,7 @@ export class StoreLanding extends PureComponent {
               isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
               key={item.basicInfo.id}
               openStoreDetails={this.openStoreDetails}
+              titleClickCb={this.focusOnMap}
             />
           </Col>
         ))
@@ -59,10 +76,11 @@ export class StoreLanding extends PureComponent {
       <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
         <StoreStaticMap
           storesList={suggestedStoreList}
-          isCanada={isCanada}
+          isCanada={isCanada()}
           isMobile={getViewportInfo().isMobile}
           apiKey={this.googleApiKey}
           labels={labels}
+          centeredStoreId={centeredStoreId}
           {...others}
         />
       </Col>
@@ -91,13 +109,18 @@ export class StoreLanding extends PureComponent {
   renderStoreList = suggestedStoreList => {
     const { setFavoriteStore, favoriteStore, openStoreDirections, labels, searchDone } = this.props;
     if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
-      return <p>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</p>;
+      return (
+        <Notification
+          status="info"
+          message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+        />
+      );
     }
     return suggestedStoreList.map((item, index) => (
       <Col
         colSize={{ large: 12, medium: 8, small: 6 }}
         ignoreGutter={{ small: true }}
-        className="store__list"
+        className="store__list store_item_container"
         key={item.basicInfo.id}
       >
         <StoreAddressTile
@@ -109,6 +132,7 @@ export class StoreLanding extends PureComponent {
           openStoreDirections={openStoreDirections}
           openStoreDetails={this.openStoreDetails}
           storeIndex={!!getViewportInfo().isDesktop && index + 1}
+          titleClickCb={this.focusOnMap}
         />
       </Col>
     ));
@@ -120,7 +144,11 @@ export class StoreLanding extends PureComponent {
       <>
         {favoriteStore && (
           <Row className="favoriteStore__container">
-            <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+            <Col
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              ignoreGutter={{ small: true }}
+              className="store_item_container"
+            >
               <h3 className="favoriteStore__heading">
                 {getLabelValue(labels, 'lbl_storelanding_favStoreHeading')}
               </h3>
@@ -164,7 +192,7 @@ export class StoreLanding extends PureComponent {
       getLocationStores,
       ...others
     } = this.props;
-    const { mapView, isGym, isOutlet } = this.state;
+    const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
 
@@ -181,40 +209,43 @@ export class StoreLanding extends PureComponent {
     }
 
     return (
-      <Grid className={className}>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            {this.renderFavoriteStore()}
-          </Col>
-        </Row>
-        <Row fullBleed>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row fullBleed>
-              <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-                <StoreLocatorSearch
-                  labels={labels}
-                  loadStoresByCoordinates={loadStoresByCoordinates}
-                  toggleMap={this.toggleMap}
-                  mapView={mapView}
-                  selectStoreType={this.selectStoreType}
-                  searchIcon={searchIcon}
-                  markerIcon={markerIcon}
-                  getLocationStores={getLocationStores}
-                  selectedCountry={isCanada() ? 'CA' : 'USA'}
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row className="storeView__List" fullBleed>
-              {mapView
-                ? this.renderMapView(modifiedStoreList)
-                : this.renderStoreList(modifiedStoreList)}
-            </Row>
-          </Col>
-          {!!modifiedStoreList.length && (
+      <>
+        <Anchor
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          handleLinkClick={StoreDetailContainerClass.routesBack}
+          noLink
+          className={`${className}__backlink`}
+          title={getLabelValue(labels, 'lbl_storedetails_backLink')}
+        >
+          <span className="left-arrow" />
+          {getLabelValue(labels, 'lbl_storedetails_backLink')}
+        </Anchor>
+        <Grid className={className}>
+          <Row fullBleed>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+              {this.renderFavoriteStore()}
+              <Row fullBleed>
+                <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+                  <StoreLocatorSearch
+                    labels={labels}
+                    loadStoresByCoordinates={loadStoresByCoordinates}
+                    toggleMap={this.toggleMap}
+                    mapView={mapView}
+                    selectStoreType={this.selectStoreType}
+                    searchIcon={searchIcon}
+                    markerIcon={markerIcon}
+                    getLocationStores={getLocationStores}
+                    selectedCountry={isCanada() ? 'CA' : 'USA'}
+                  />
+                </Col>
+              </Row>
+              <Row className="storeView__List" fullBleed>
+                {mapView
+                  ? this.renderMapView(modifiedStoreList)
+                  : this.renderStoreList(modifiedStoreList)}
+              </Row>
+            </Col>
             <Col
               colSize={{ large: 6, medium: 8, small: 6 }}
               ignoreGutter={{ small: true }}
@@ -224,12 +255,13 @@ export class StoreLanding extends PureComponent {
                 storesList={modifiedStoreList}
                 isCanada={isCanada()}
                 apiKey={this.googleApiKey}
+                centeredStoreId={centeredStoreId}
                 {...others}
               />
             </Col>
-          )}
-        </Row>
-      </Grid>
+          </Row>
+        </Grid>
+      </>
     );
   }
 }
@@ -241,7 +273,6 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape(PropTypes.string).isRequired,
-  fetchCurrentStore: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
   markerIcon: PropTypes.string.isRequired,

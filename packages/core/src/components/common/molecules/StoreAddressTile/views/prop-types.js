@@ -64,7 +64,7 @@ export const defaultProps = {
   isFavorite: false,
   isListingHeader: false,
   openStoreDetail: null,
-  openStoreDirections: null,
+  openStoreDirections: store => `${store}`,
   openCallStore: null,
   setFavoriteStore: null,
   storeIndex: 0,

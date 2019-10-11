@@ -2,6 +2,7 @@
 
 exports[`Header Component Header should render correctly 1`] = `
 <Styled(SafeAreaView)>
+  <Connect(ToastContainer) />
   <Styled(View)
     data-locator="global_headerpanel"
   >
@@ -80,7 +81,6 @@ exports[`Header Component Header should render correctly 1`] = `
               "position": "absolute",
             }
           }
-          text={0}
           textDecoration={null}
         />
       </Styled(TouchableOpacity)>

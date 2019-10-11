@@ -23,6 +23,7 @@ import {
   InputFieldHalf,
 } from './AddressForm.native.style';
 import { API_CONFIG } from '../../../../services/config';
+import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 
 class AddressForm extends React.PureComponent {
   constructor(props) {
@@ -142,6 +143,7 @@ class AddressForm extends React.PureComponent {
           component={TextBox}
           dataLocator="addnewaddress-phnumber"
           type="tel"
+          normalize={formatPhoneNumber}
         />
         <SetDefaultShippingWrapper>
           <Field
@@ -160,18 +162,12 @@ class AddressForm extends React.PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
             text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
           />
         </SaveButtonWrapper>
 
         <CancelButtonWrapper>
-          <Button
-            fill="WHITE"
-            onPress={onCancel}
-            buttonVariation="variable-width"
-            text={addressFormLabels.cancel}
-          />
+          <Button fill="WHITE" onPress={onCancel} text={addressFormLabels.cancel} />
         </CancelButtonWrapper>
       </AddAddressWrapper>
     );
