@@ -32,7 +32,7 @@ const StyledModal = css`
     overflow-y: auto;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       max-height: none !important;
-      height: 100%;
+      height: auto;
     }
     margin-top: 8px;
   }

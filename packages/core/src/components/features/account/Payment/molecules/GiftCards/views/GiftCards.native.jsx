@@ -16,15 +16,7 @@ import {
 } from '../GiftCards.style.native';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
-// @flow
-type Props = {
-  labels: string,
-  giftCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-};
-
-const GiftCards = (props: Props) => {
+const GiftCards = props => {
   const {
     labels,
     giftCardList,
@@ -60,7 +52,6 @@ const GiftCards = (props: Props) => {
               ? getLabelValue(labels, 'ACC_LBL_GC_EMPTY_ADD_BTN')
               : getLabelValue(labels, 'ACC_LBL_ADD_BTN')
           }
-          buttonVariation="variable-width"
           fill="BLUE"
         />
       </ButtonWrapperStyle>
@@ -85,6 +76,5 @@ GiftCards.propTypes = {
   checkbalanceValueInfo: PropTypes.string.isRequired,
   toggleRecaptchaModal: PropTypes.bool.isRequired,
 };
-
 export default withStyles(GiftCards, ParentContainerStyle);
 export { GiftCards as GiftCardsVanilla };

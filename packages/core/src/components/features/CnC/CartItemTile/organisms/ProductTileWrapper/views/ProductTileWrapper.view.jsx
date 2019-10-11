@@ -150,6 +150,35 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  renderUpdatingBagItemSuccessfulMsg = isUpdating => {
+    const { labels } = this.props;
+    return (
+      isUpdating && (
+        <div className="delete-msg">
+          {this.getTickIcon()}
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {labels.itemUpdated}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  onLinkClick = ({ e, componentId }) => {
+    const { openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+  };
+
   renderEmptyBag = (
     productSectionData,
     bagLabels,
@@ -164,6 +193,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUserLoggedIn={isUserLoggedIn}
           isBagPageSflSection={isBagPageSflSection}
           showPlccApplyNow={showPlccApplyNow}
+          onLinkClick={this.onLinkClick}
         />
       );
     }
@@ -225,7 +255,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           />
         );
       });
-      const { isDeleting } = isCartItemsUpdating;
+      const { isDeleting, isUpdating } = isCartItemsUpdating;
       return (
         <>
           {!isBagPageSflSection && this.getHeaderError(labels, productSectionData, pageView)}
@@ -249,12 +279,14 @@ class ProductTileWrapper extends React.PureComponent<props> {
           )}
           {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
+          {this.renderUpdatingBagItemSuccessfulMsg(isUpdating)}
           {orderItemsView}
         </>
       );
     }
     return (
       <>
+        {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(
           productSectionData,
           bagLabels,

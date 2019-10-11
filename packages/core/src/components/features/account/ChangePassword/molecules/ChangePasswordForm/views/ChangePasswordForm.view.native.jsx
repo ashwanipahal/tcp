@@ -6,15 +6,21 @@ import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import ImageComp from '@tcp/core/src/components/common/atoms/Image';
+import IconInfoLogo from '@tcp/core/src/assets/info-icon.png';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import Constants from '../../../container/CurrentPassword.utils';
+import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
+
 import {
   HideShowField,
   CurrentPasswordWrapper,
   NewPasswordWrapper,
   ConfirmPasswordWrapper,
   CancelWrapper,
+  IconContainer,
 } from '../styles/ChangePasswordForm.style.native';
 
 export class ChangePasswordForm extends React.Component {
@@ -87,6 +93,17 @@ export class ChangePasswordForm extends React.Component {
             enableSuccessCheck={false}
             secureTextEntry={Password.New}
           />
+          <IconContainer>
+            <ReactTooltip
+              withOverlay={false}
+              popover={<PasswordRequirement labels={labels} />}
+              height={200}
+              width={300}
+              textAlign="left"
+            >
+              <ImageComp source={IconInfoLogo} height={25} width={25} />
+            </ReactTooltip>
+          </IconContainer>
           {this.getHideShowView(Constants.New, Password.New)}
         </NewPasswordWrapper>
 
@@ -107,7 +124,6 @@ export class ChangePasswordForm extends React.Component {
         <Button
           fill="BLUE"
           color="white"
-          buttonVariation="variable-width"
           text={getLabelValue(labels, 'lbl_changePassword_saveCta')}
           disabled={pristine}
           onPress={handleSubmit}
@@ -115,7 +131,6 @@ export class ChangePasswordForm extends React.Component {
         <CancelWrapper>
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_changePassword_cancelCta')}
             onPress={onClose}
           />

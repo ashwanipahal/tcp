@@ -199,12 +199,7 @@ class CardTile extends React.Component {
           <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
           <Text>{addressDetails.addressLine1}</Text>
           {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
-          <Text>
-            {`
-            ${addressDetails.city}, 
-            ${addressDetails.state} 
-            ${addressDetails.zipCode}`}
-          </Text>
+          <Text>{`${addressDetails.city}, ${addressDetails.state} ${addressDetails.zipCode}`}</Text>
         </CardAddress>
       )
     );
@@ -253,7 +248,7 @@ class CardTile extends React.Component {
             color="white"
             fill="BLUE"
             text={getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             onPress={e => this.setRecaptchaModalMountState(e)}
           />
         )}

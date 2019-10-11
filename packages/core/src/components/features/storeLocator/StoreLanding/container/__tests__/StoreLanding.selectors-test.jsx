@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { getCurrentCountry, getStoreInfo } from '../StoreLanding.selectors';
+import { getCurrentCountry, getStoreInfo, getPageLabels } from '../StoreLanding.selectors';
 import {
   SESSIONCONFIG_REDUCER_KEY,
   STORE_LOCATOR_REDUCER_KEY,
@@ -25,5 +25,25 @@ describe('selectors', () => {
       [STORE_LOCATOR_REDUCER_KEY]: storeLocatorState,
     };
     expect(getStoreInfo(state)).toBe(storeLocatorState);
+  });
+
+  it('getPageLabels', () => {
+    const state = {
+      Labels: {
+        StoreLocator: {
+          StoreLanding: {},
+          StoreDetail: {},
+          StoreList: {},
+        },
+      },
+    };
+    expect(getPageLabels(state)).toStrictEqual({});
+  });
+
+  it('getPageLabels', () => {
+    const state = {
+      Labels: {},
+    };
+    expect(getPageLabels(state)).toStrictEqual({});
   });
 });

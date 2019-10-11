@@ -75,13 +75,6 @@ class ProductDetailView extends React.Component {
         isAbTestActive: false,
         isFullSet: true,
       });
-
-      imagesToDisplay = getImagesToDisplay({
-        imagesByColor: productInfo.imagesByColor,
-        curentColorEntry: currentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
     }
 
     return (

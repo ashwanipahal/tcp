@@ -5,11 +5,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
   className=" body"
 >
   <Styled(BodyCopy)
-    className="youCanEarnPoints alignCenter elem-pt-MED"
+    className="youCanEarnPoints alignCenter"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize=""
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -33,7 +33,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -63,11 +63,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
   className=" body"
 >
   <Styled(BodyCopy)
-    className="youCanEarnPoints alignCenter elem-pt-MED"
+    className="youCanEarnPoints alignCenter"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize=""
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -75,11 +75,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <Styled(BodyCopy)
-    className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
+    className="save30Today alignCenter mpr-plcc-theme"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs20"
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -87,11 +87,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <Styled(BodyCopy)
-    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
+    className="earnDoublePoints alignCenter elem-pl-SM elem-pr-SM"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -99,7 +99,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <div
-    className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM"
+    className="subtotalPointsSection elem-pl-SM elem-pr-SM"
   >
     <Styled(Row)
       className="currentSubtotalRow"
@@ -120,7 +120,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           color="text.primary"
           component="span"
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize={12}
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -143,7 +143,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           color="text.primary"
           component="span"
           fontFamily="secondary"
-          fontSize="fs16"
+          fontSize={12}
           fontWeight="semibold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -155,7 +155,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="estimatedSubtotalRow elem-pt-SM elem-pb-MED"
+      className="estimatedSubtotalRow elem-pt-SM elem-pb-SM"
       fullBleed={true}
     >
       <Styled(Col)
@@ -173,7 +173,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           color="text.primary"
           component="span"
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize={12}
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
@@ -196,7 +196,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           color="text.primary"
           component="span"
           fontFamily="secondary"
-          fontSize="fs18"
+          fontSize={12}
           fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"

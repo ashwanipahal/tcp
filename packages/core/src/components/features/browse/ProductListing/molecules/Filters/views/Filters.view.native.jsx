@@ -80,12 +80,14 @@ class Filters extends React.PureComponent {
   };
 
   renderColorSwitchItem = ({ item }) => {
-    const { imagePath, isSelected } = item;
+    const { imagePath, isSelected, displayName } = item;
+    const name = displayName || '';
     return (
       <LinkImageIcon
         uri={imagePath}
         selected={isSelected}
         onPress={() => this.onSelectFilter(item)}
+        name={name}
       />
     );
   };
@@ -183,7 +185,6 @@ class Filters extends React.PureComponent {
           <Button
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={labelsFilter.lbl_clear}
             onPress={this.onClearAll}
@@ -194,7 +195,6 @@ class Filters extends React.PureComponent {
           <Button
             fill="BLACK"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={labelsFilter.lbl_apply}
             onPress={this.onApplyFilter}
