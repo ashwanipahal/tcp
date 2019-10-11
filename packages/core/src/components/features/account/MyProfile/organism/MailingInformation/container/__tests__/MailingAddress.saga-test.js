@@ -84,7 +84,7 @@ describe('MailingAddress saga', () => {
     expect(putDescriptor).toEqual(put(addMailingAddressSuccess(response.body)));
   });
 
-  it('should dispatch addAddressFail action if response is fail', () => {
+  it('should dispatch addMailingAddressFail action if response is fail', () => {
     const errorBody = {};
     const error = {
       body: {
