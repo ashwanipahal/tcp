@@ -6,6 +6,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
 >
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_fast_pickup_icon"
       iconFontName="Icomoon"
@@ -19,6 +20,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_fast_shipping_icon"
       iconFontName="Icomoon"
@@ -247,6 +249,7 @@ exports[`ConfirmationItemTitleDisplay should render correctly without shipping f
 >
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_fast_pickup_icon"
       iconFontName="Icomoon"

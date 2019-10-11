@@ -27,9 +27,7 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDetails = (event, store) => {
-    const { fetchCurrentStore } = this.props;
     event.preventDefault();
-    fetchCurrentStore(store);
     const { routerHandler } = routeToStoreDetails(store);
     routerHandler();
   };
@@ -59,7 +57,7 @@ export class StoreLanding extends PureComponent {
       <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
         <StoreStaticMap
           storesList={suggestedStoreList}
-          isCanada={isCanada}
+          isCanada={isCanada()}
           isMobile={getViewportInfo().isMobile}
           apiKey={this.googleApiKey}
           labels={labels}
@@ -205,15 +203,6 @@ export class StoreLanding extends PureComponent {
               </Col>
             </Row>
           </Col>
-        </Row>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row className="storeView__List" fullBleed>
-              {mapView
-                ? this.renderMapView(modifiedStoreList)
-                : this.renderStoreList(modifiedStoreList)}
-            </Row>
-          </Col>
           {!!modifiedStoreList.length && (
             <Col
               colSize={{ large: 6, medium: 8, small: 6 }}
@@ -229,6 +218,15 @@ export class StoreLanding extends PureComponent {
             </Col>
           )}
         </Row>
+        <Row>
+          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+            <Row className="storeView__List" fullBleed>
+              {mapView
+                ? this.renderMapView(modifiedStoreList)
+                : this.renderStoreList(modifiedStoreList)}
+            </Row>
+          </Col>
+        </Row>
       </Grid>
     );
   }
@@ -241,7 +239,6 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape(PropTypes.string).isRequired,
-  fetchCurrentStore: PropTypes.func.isRequired,
   openStoreDirections: PropTypes.func.isRequired,
   loadStoresByCoordinates: PropTypes.func.isRequired,
   markerIcon: PropTypes.string.isRequired,

@@ -89,16 +89,8 @@ class PickUpFormPart extends React.Component {
     const { pickUpLabels, handleSubmit } = this.props;
     return (
       <View>
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnCancel}
-          onClick={this.handleExitEditModeClick}
-        />
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnUpdate}
-          onPress={handleSubmit(this.pickupEditSubmit)}
-        />
+        <Button text={pickUpLabels.btnCancel} onClick={this.handleExitEditModeClick} />
+        <Button text={pickUpLabels.btnUpdate} onPress={handleSubmit(this.pickupEditSubmit)} />
       </View>
     );
   };

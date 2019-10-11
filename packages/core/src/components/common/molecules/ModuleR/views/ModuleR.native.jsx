@@ -109,7 +109,6 @@ class ModuleR extends React.PureComponent {
     return currentSingleCTAButton ? (
       <ButtonContainer>
         <Button
-          buttonVariation="variable-width"
           width="225px"
           text={currentSingleCTAButton.text}
           url={currentSingleCTAButton.url}

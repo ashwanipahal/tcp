@@ -223,6 +223,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
               displayName: size.sizeName,
               id: size.sizeName,
               maxAvailable: size.maxAvailable,
+              disabled: size.maxAvailable <= 0,
             }));
           }
         } else {
@@ -231,6 +232,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             displayName: size.sizeName,
             id: size.sizeName,
             maxAvailable: size.maxAvailable,
+            disabled: size.maxAvailable <= 0,
           }));
         }
       });
