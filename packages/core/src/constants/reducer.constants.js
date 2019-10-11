@@ -12,6 +12,8 @@ export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
 export const SOCIAL_REDUCER_KEY = 'Social';
+export const RECENT_SEARCH_REDUCER_KEY = 'RecentSearches';
+
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
 // Login Page Reducer

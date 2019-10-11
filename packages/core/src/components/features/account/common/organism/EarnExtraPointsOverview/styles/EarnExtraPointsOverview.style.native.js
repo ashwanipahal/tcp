@@ -2,7 +2,8 @@ import styled from 'styled-components/native';
 
 const EarnExtraPointsOverviewContainer = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[700]};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
   min-height: 150px;
 `;
 
