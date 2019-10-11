@@ -14,6 +14,7 @@ storeMockNotGym.isGym = false;
 const props = {
   labels,
   store: storeMock,
+  showSetFavorite: true,
 };
 
 describe('StoreAddressTile component', () => {

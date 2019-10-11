@@ -49,7 +49,7 @@ class StoreSearch extends Component {
     loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
-  renderStoreTypes = ({ name, dataLocator, storeLabel } = {}) => {
+  renderStoreTypes = ({ name, dataLocator, storeLabel, checked } = {}) => {
     return (
       <StyledCheckbox>
         <Field
@@ -57,6 +57,7 @@ class StoreSearch extends Component {
           component={InputCheckbox}
           dataLocator={dataLocator}
           enableSuccessCheck={false}
+          isChecked={checked}
           onChange={(...args) => this.onSelectStore(args)}
         />
         <StyledCheckBoxBodyCopy>
@@ -126,6 +127,8 @@ class StoreSearch extends Component {
 
   render() {
     const { labels, error, selectedCountry, toggleMap, mapView, getLocationStores } = this.props;
+
+    console.log(':::', isGymboree());
 
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound
