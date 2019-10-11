@@ -96,7 +96,6 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
       <ButtonWrapperStyle>
         <Button
           text={myWalletCTA}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => navigateToNestedRoute(navigation, 'WalletStack', 'walletPage')}
         />

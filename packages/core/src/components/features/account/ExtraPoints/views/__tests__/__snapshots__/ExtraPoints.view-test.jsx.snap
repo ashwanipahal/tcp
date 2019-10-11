@@ -78,7 +78,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       component="p"
       data-locator="earnextrapoints-morePointsText"
       fontFamily="secondary"
-      fontSize="fs16"
+      fontSize="fs18"
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
@@ -102,7 +102,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="shipping internationally"
-        fontSizeVariation="large"
+        fontSizeVariation="xlarge"
         href="#"
         noLink={true}
         target="_self"

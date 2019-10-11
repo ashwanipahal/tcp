@@ -30,9 +30,16 @@ export const CheckoutButton = styled.TouchableOpacity`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+export const PaymentsButtonWrapper = styled.View`
+  margin: 0 ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  display: flex;
+  flex: 1;
+`;
+
 export default {
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,
   CheckoutButton,
+  PaymentsButtonWrapper,
 };

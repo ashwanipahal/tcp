@@ -9,13 +9,13 @@ import buttonTabsStyle from '../ButtonTabs.style';
 
 function ButtonTabs(props) {
   const { className, tabs, selectedTabId, onTabChange, dataLocator } = props;
-
+  const selectedTab = Array.isArray(selectedTabId) ? selectedTabId[0] : selectedTabId;
   return (
     <div className={className}>
       {tabs.map(({ label, id }, index) => (
         <div key={id} className="button-wrapper" data-locator={`${dataLocator}${index}`}>
           <Button
-            active={id === selectedTabId}
+            active={id === selectedTab}
             buttonVariation="mini-nav"
             onClick={() => onTabChange(id)}
           >

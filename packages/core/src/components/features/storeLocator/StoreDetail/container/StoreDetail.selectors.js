@@ -1,5 +1,6 @@
 import { STORE_DETAIL_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import { createSelector } from 'reselect';
+import { fromJS } from 'immutable';
 
 export const getCurrentStore = state => {
   return state[STORE_DETAIL_REDUCER_KEY].get('currentStore');
@@ -29,37 +30,41 @@ export const formatHoursToObject = storeHours => {
     });
     return returnedHours;
   };
-  storeHours.forEach((value, key) => {
-    formattedHrs[key] = formatHoursChild(storeHours.get(key));
-    return value;
-  });
+  if (storeHours && storeHours.size > 0) {
+    storeHours.forEach((value, key) => {
+      formattedHrs[key] = formatHoursChild(storeHours.get(key));
+      return value;
+    });
+  }
   return formattedHrs;
 };
 
 export const formatGenericMapObject = store => {
   const resultObject = {};
-  store.forEach((value, key) => {
-    resultObject[key] = value;
-    return value;
-  });
+  if (store && store.size > 0) {
+    store.forEach((value, key) => {
+      resultObject[key] = value;
+      return value;
+    });
+  }
   return resultObject;
 };
 
 export const formatCurrentStoreToObject = store => {
   if (store && store.size > 0) {
     const formattedStore = {};
-    const basicInfoState = store.get('basicInfo');
+    const basicInfoState = store.get('basicInfo') || fromJS({});
     const addressState = basicInfoState.size > 0 && basicInfoState.get('address');
     const coordinateState = basicInfoState.size > 0 && basicInfoState.get('coordinates');
     const address = {};
     const coordinates = {};
-    if (Array.isArray(addressState)) {
+    if (addressState.size > 0) {
       addressState.forEach((value, key) => {
         address[key] = value;
         return value;
       });
     }
-    if (Array.isArray(coordinateState)) {
+    if (coordinateState.size > 0) {
       coordinateState.forEach((value, key) => {
         coordinates[key] = value;
         return value;

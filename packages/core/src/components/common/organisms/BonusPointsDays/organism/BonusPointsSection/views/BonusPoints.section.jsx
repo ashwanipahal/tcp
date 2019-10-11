@@ -236,6 +236,7 @@ const BonusPointsSection = ({
           className={className}
           header={header}
           body={body}
+          defaultOpen
           iconLocator="arrowicon"
         />
       </Col>
