@@ -114,6 +114,7 @@ export class PaymentTile extends React.PureComponent<Props> {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_overview_paymentHeading')}
           color="black"
+          fontWeight="black"
         />
         <UnderlineStyle />
         {creditCardList && creditCardList.size > 0

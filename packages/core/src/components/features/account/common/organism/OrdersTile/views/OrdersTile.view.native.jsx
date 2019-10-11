@@ -31,6 +31,7 @@ export const OrdersTile = ({ labels, ordersList, navigation }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_ordersTile_heading', 'orders')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       {ordersItemList}

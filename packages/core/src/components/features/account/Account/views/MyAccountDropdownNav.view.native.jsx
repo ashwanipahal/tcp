@@ -41,6 +41,10 @@ class MyAccountDropdownNav extends React.Component {
       height: 49,
       color: 'gray.800',
     };
+    const arrowImageStyle = {
+      position: 'absolute',
+      right: 20,
+    };
     return (
       <View className={className} {...this.props}>
         <DropDown
@@ -57,7 +61,10 @@ class MyAccountDropdownNav extends React.Component {
           variation="primary"
           dropDownStyle={{ ...dropDownStyle }}
           itemStyle={{ ...itemStyle }}
+          arrowImageStyle={{ ...arrowImageStyle }}
           bounces={false}
+          selectedItemFontWeight="extrabold"
+          dropDownItemFontWeight="regular"
         />
       </View>
     );
