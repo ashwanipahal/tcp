@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
 import { noop, get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -15,8 +14,6 @@ import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
-
-const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -174,16 +171,12 @@ class LoginForm extends React.PureComponent<Props> {
           <CustomButton
             fill="BLUE"
             text={getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
-            buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
             onPress={this.handleLoginClick}
           />
 
           {variation === 'checkout' && (
             <CustomButton
-              color={colorPallete.black}
-              fill="WHITE"
-              buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
               text={getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
               onPress={this.handleContinueAsGuest}

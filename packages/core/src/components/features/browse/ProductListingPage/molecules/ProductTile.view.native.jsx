@@ -93,7 +93,6 @@ class ProductTile extends React.Component {
 
           <Button
             fullWidth
-            buttonVariation="variable-width"
             text="Add to Bag"
             onPress={() =>
               addToBagEcom(item, quantity, brand, {
@@ -136,7 +135,6 @@ class ProductTile extends React.Component {
           />
           <Button
             fullWidth
-            buttonVariation="variable-width"
             text="Add to BOPIS"
             onPress={() =>
               addToBagBossBopis(item, false, quantity, storeId, brand, {
