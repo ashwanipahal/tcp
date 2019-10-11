@@ -8,8 +8,6 @@ import ProductRating from '../ProductRating/ProductRating';
 import { Anchor, BodyCopy } from '../../../../../common/atoms';
 // import {FavoriteButtonContainer} from './FavoriteButtonContainer.js';
 import { BadgeItem } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
-import withStyles from '../../../../../common/hoc/withStyles';
-import productBasicInfo from './ProductBasicInfo.style';
 
 const ProductBasicInfo = props => {
   const {
@@ -79,4 +77,4 @@ ProductBasicInfo.defaultProps = {
   badge: '',
 };
 
-export default withStyles(ProductBasicInfo, productBasicInfo);
+export default ProductBasicInfo;
