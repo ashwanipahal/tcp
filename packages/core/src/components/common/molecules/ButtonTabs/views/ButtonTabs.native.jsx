@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Button, ButtonWrapper } from '../ButtonTabs.style.native';
 
+/**
+ * @constant getActiveStatus
+ * @params - id - id of iteratable button tabs
+ *           selectedTabId - id of selected tab from buttonTabs
+ *
+ * @description -  gives status of activeness of button.
+ */
 export const getActiveStatus = (id, selectedTabId = []) => {
   if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
     return true;

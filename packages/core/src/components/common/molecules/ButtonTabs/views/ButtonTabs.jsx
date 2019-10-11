@@ -7,6 +7,13 @@ import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import buttonTabsStyle from '../ButtonTabs.style';
 
+/**
+ * @constant getActiveStatus
+ * @params - id - id of iteratable button tabs
+ *           selectedTabId - id of selected tab from buttonTabs
+ *
+ * @description -  gives status of activeness of button.
+ */
 export const getActiveStatus = (id, selectedTabId = []) => {
   const selectedTab = Array.isArray(selectedTabId)
     ? selectedTabId && selectedTabId[0]
