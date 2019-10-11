@@ -121,11 +121,14 @@ exports[`GiftServices component should renders correctly props not present 1`] =
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
+            "arrowImageStyle": null,
             "bounces": true,
             "data": Array [],
+            "dropDownItemFontWeight": "semibold",
             "dropDownStyle": null,
             "itemStyle": null,
             "onValueChange": null,
+            "selectedItemFontWeight": "semibold",
             "selectedValue": null,
             "variation": "primary",
           },

@@ -115,7 +115,25 @@ exports[`ProductImages component should renders correctly 1`] = `
             aria-label="View full size image"
             className="resize-text"
             dataLocator="pdp_full_size_btn"
-          />
+          >
+            <Styled(Image)
+              className="icon-expand"
+              height="25px"
+              src="/static/images/icon-expand.svg"
+            />
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </span>
         <Styled(SocialConnect)
           isFacebookEnabled={true}

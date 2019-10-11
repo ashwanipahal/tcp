@@ -142,15 +142,17 @@ class ProductSummary extends React.PureComponent {
                 text={listPriceForColor}
               />
             )}
-            <BodyCopy
-              dataLocator="pdp_discounted_percentage"
-              margin="0 0 0 10px"
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              color="red.500"
-              text={badge2}
-            />
+            {badge2 ? (
+              <BodyCopy
+                dataLocator="pdp_discounted_percentage"
+                margin="0 0 0 10px"
+                mobileFontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                color="red.500"
+                text={badge2}
+              />
+            ) : null}
           </OfferPriceAndBadge3Container>
           {this.loyaltyPromotionMessage && (
             <PromotionalMessage
