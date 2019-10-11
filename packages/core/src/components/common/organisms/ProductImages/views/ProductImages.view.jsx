@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor } from '../../../atoms';
+import { Anchor, BodyCopy, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
@@ -157,7 +157,15 @@ class ProductImages extends React.Component {
                     onClick={onCloseClick}
                     dataLocator={getLocator('pdp_full_size_btn')}
                   >
-                    {pdpLabels.fullSize}
+                    <Image
+                      alt={pdpLabels.fullSize}
+                      className="icon-expand"
+                      src={getIconPath('icon-expand')}
+                      height="25px"
+                    />
+                    <BodyCopy fontFamily="secondary" fontSize="fs10">
+                      {pdpLabels.fullSize}
+                    </BodyCopy>
                   </Anchor>
                 </span>
               )}
