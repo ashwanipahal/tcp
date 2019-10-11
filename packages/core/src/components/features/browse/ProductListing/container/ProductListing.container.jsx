@@ -40,16 +40,12 @@ class ProductListingContainer extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     const {
-      router: {
-        query: { cid },
-      },
+      router: { asPath },
     } = prevProps;
     const {
-      router: {
-        query: { cid: currentCid },
-      },
+      router: { asPath: currentAsPath },
     } = this.props;
-    if (cid !== currentCid) {
+    if (asPath !== currentAsPath) {
       this.makeApiCall();
     }
   }
