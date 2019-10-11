@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { View, Text } from 'react-native';
+// import Col from '@tcp/core/src/components/common/atoms/Col';
+// import Button from '@tcp/core/src/components/common/atoms/Button';
 // import { routerPush } from '@tcp/core/src/utils';
 // import internalEndpoints from '../../../../common/internalEndpoints';
 
@@ -19,18 +21,23 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 export const EmptyOrdersList = ({ className, labels }) => {
   console.info('EmptyOrdersList')
   return (
-    <BodyCopy className={className}>
+    <>
       <BodyCopy
-        dataLocator="orders-no-order-info"
-        fontFamily="secondary"
+        mobileFontFamily="secondary"
         fontSize="fs14"
-        component="p"
-        fontWeight="regular"
-        className="elem-mt-LRG elem-mb-LRG"
-      >
-        {getLabelValue(labels, 'lbl_orders_emptySupportingText', 'orders')}
-      </BodyCopy>
-    </BodyCopy>
+        fontWeight="semibold"
+        data-locator="no_rewards_msg"
+        text={getLabelValue(labels, 'lbl_ordersTile_noOrderYet', 'orders')}
+      />
+      <Button
+        buttonVariation="variable-width"
+        fill="WHITE"
+        color="gray"
+        onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
+        data-locator="orders-shop-now-btn"
+        text={getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
+      />
+    </>
   );
 };
 
