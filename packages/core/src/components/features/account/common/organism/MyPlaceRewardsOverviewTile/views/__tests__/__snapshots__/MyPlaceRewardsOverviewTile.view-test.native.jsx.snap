@@ -8,6 +8,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -17,7 +18,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <View>
     <Styled(BodyCopy)
@@ -55,7 +56,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Styled(View)>
     <Styled(CustomButton)
@@ -92,6 +93,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -101,7 +103,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Styled(View)>
     <View>
@@ -138,7 +140,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Connect(BonusPointsDays)
     labels={

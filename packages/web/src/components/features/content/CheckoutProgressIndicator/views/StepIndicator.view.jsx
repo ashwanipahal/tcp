@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import style from '../StepIndicator.style';
 
 const StepIndicator = ({ className, key, name, isActive, isComplete, onClick }) => {
@@ -13,6 +14,9 @@ const StepIndicator = ({ className, key, name, isActive, isComplete, onClick }) 
   } else if (isComplete) {
     stepClass = 'completed';
     indicatorClass = 'white-background ';
+  } else {
+    stepClass = 'pending';
+    indicatorClass = 'pending-background ';
   }
 
   return (
@@ -20,10 +24,26 @@ const StepIndicator = ({ className, key, name, isActive, isComplete, onClick }) 
       <span className={indicatorClass} />
       {isComplete ? (
         <button type="button" onClick={onClick}>
-          {name}
+          <BodyCopy
+            className="stageName"
+            component="span"
+            color="text.primary"
+            fontFamily="secondary"
+            fontWeight={stepClass !== 'pending' ? 'extrabold' : ''}
+          >
+            {name}
+          </BodyCopy>
         </button>
       ) : (
-        <span className="stageName">{name}</span>
+        <BodyCopy
+          className="stageName"
+          component="span"
+          color="text.primary"
+          fontFamily="secondary"
+          fontWeight={stepClass !== 'pending' ? 'extrabold' : ''}
+        >
+          {name}
+        </BodyCopy>
       )}
     </li>
   );

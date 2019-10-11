@@ -336,6 +336,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
       'lbl_billing_cardEditUnSavedError',
+      'lbl_billing_addCC',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(billingLabel, key);
@@ -369,6 +370,7 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
+      lbl_billing_addCC: addCreditCard,
     } = labels;
     return {
       header,
@@ -399,6 +401,7 @@ const getBillingLabels = createSelector(
       select,
       cvvCode,
       continueWith,
+      addCreditCard,
     };
   }
 );
