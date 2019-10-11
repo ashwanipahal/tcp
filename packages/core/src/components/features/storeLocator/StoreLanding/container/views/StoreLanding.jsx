@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -14,6 +14,7 @@ import {
   getLabelValue,
 } from '@tcp/core/src/utils';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
+import StoreDetailContainerClass from '../../../StoreDetail/container/StoreDetail.container';
 
 import styles from '../styles/StoreLanding.style';
 
@@ -179,55 +180,68 @@ export class StoreLanding extends PureComponent {
     }
 
     return (
-      <Grid className={className}>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            {this.renderFavoriteStore()}
-          </Col>
-        </Row>
-        <Row fullBleed>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row fullBleed>
-              <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-                <StoreLocatorSearch
-                  labels={labels}
-                  loadStoresByCoordinates={loadStoresByCoordinates}
-                  toggleMap={this.toggleMap}
-                  mapView={mapView}
-                  selectStoreType={this.selectStoreType}
-                  searchIcon={searchIcon}
-                  markerIcon={markerIcon}
-                  getLocationStores={getLocationStores}
-                  selectedCountry={isCanada() ? 'CA' : 'USA'}
+      <>
+        <Anchor
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          handleLinkClick={StoreDetailContainerClass.routesBack}
+          noLink
+          className={`${className}__backlink`}
+          title={getLabelValue(labels, 'lbl_storedetails_backLink')}
+        >
+          <span className="left-arrow" />
+          {getLabelValue(labels, 'lbl_storedetails_backLink')}
+        </Anchor>
+        <Grid className={className}>
+          <Row>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+              {this.renderFavoriteStore()}
+            </Col>
+          </Row>
+          <Row fullBleed>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+              <Row fullBleed>
+                <Col colSize={{ large: 12, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+                  <StoreLocatorSearch
+                    labels={labels}
+                    loadStoresByCoordinates={loadStoresByCoordinates}
+                    toggleMap={this.toggleMap}
+                    mapView={mapView}
+                    selectStoreType={this.selectStoreType}
+                    searchIcon={searchIcon}
+                    markerIcon={markerIcon}
+                    getLocationStores={getLocationStores}
+                    selectedCountry={isCanada() ? 'CA' : 'USA'}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            {!!modifiedStoreList.length && (
+              <Col
+                colSize={{ large: 6, medium: 8, small: 6 }}
+                ignoreGutter={{ small: true }}
+                className="mapView__desktop"
+              >
+                <StoreStaticMap
+                  storesList={modifiedStoreList}
+                  isCanada={isCanada()}
+                  apiKey={this.googleApiKey}
+                  {...others}
                 />
               </Col>
-            </Row>
-          </Col>
-          {!!modifiedStoreList.length && (
-            <Col
-              colSize={{ large: 6, medium: 8, small: 6 }}
-              ignoreGutter={{ small: true }}
-              className="mapView__desktop"
-            >
-              <StoreStaticMap
-                storesList={modifiedStoreList}
-                isCanada={isCanada()}
-                apiKey={this.googleApiKey}
-                {...others}
-              />
+            )}
+          </Row>
+          <Row>
+            <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
+              <Row className="storeView__List" fullBleed>
+                {mapView
+                  ? this.renderMapView(modifiedStoreList)
+                  : this.renderStoreList(modifiedStoreList)}
+              </Row>
             </Col>
-          )}
-        </Row>
-        <Row>
-          <Col colSize={{ large: 6, medium: 8, small: 6 }} ignoreGutter={{ small: true }}>
-            <Row className="storeView__List" fullBleed>
-              {mapView
-                ? this.renderMapView(modifiedStoreList)
-                : this.renderStoreList(modifiedStoreList)}
-            </Row>
-          </Col>
-        </Row>
-      </Grid>
+          </Row>
+        </Grid>
+      </>
     );
   }
 }

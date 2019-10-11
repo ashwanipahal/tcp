@@ -1,6 +1,12 @@
 import { css } from 'styled-components';
 
 export default css`
+  &__backlink {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+
   .favoriteStore__heading {
     font-size: 16px;
     color: ${props => props.theme.colors.TEXT.DARK};
