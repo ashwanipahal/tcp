@@ -55,7 +55,8 @@ const renderItem = (item, navigation) => {
       <ChildContainer style={{ backgroundColor: validateColor(tileBgColor) }}>
         <DamImage
           url={image.url}
-          height={127}
+          width={103}
+          height={128}
           crop={image.crop_m}
           testID={`${getLocator('moduleL_image')}${index + 1}`}
           imgConfig={config.IMG_DATA.crops[0]}
@@ -66,7 +67,7 @@ const renderItem = (item, navigation) => {
           <BodyCopyContainer width={width}>
             <BodyCopy
               fontSize="fs20"
-              color="black"
+              color="gray.900"
               letterSpacing="ls222"
               text={image.alt}
               testID={`${getLocator('moduleL_title')}${index + 1}`}
@@ -80,6 +81,8 @@ const renderItem = (item, navigation) => {
               url={link.url}
               navigation={navigation}
               testID={`${getLocator('moduleL_link')}${index + 1}`}
+              anchorVariation="custom"
+              color="gray.900"
             />
           </LinkContainer>
         </MessageContainer>

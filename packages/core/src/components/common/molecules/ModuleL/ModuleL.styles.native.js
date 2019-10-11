@@ -10,8 +10,8 @@ export const BodyCopyContainer = styled.View`
 
 export const ChildContainer = styled.View`
   flex-direction: row;
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-left: 14px;
+  margin-right: 14px;
   align-items: center;
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
@@ -24,7 +24,7 @@ export const MessageContainer = styled.View`
 `;
 
 export const LinkContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
