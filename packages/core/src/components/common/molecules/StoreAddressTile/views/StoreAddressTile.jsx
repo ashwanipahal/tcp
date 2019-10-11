@@ -237,9 +237,9 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileHeader() {
-    const { storeIndex, store, labels, openStoreDirections } = this.props;
+    const { storeIndex, store, labels, openStoreDirections, titleClickCb } = this.props;
     const { basicInfo, distance, hours } = store;
-    const { storeName } = basicInfo;
+    const { storeName, id } = basicInfo;
     const currentDate = new Date();
     const storeHours = getStoreHours(hours, labels, currentDate);
 
@@ -248,11 +248,13 @@ class StoreAddressTile extends PureComponent {
         <div className="title-one">
           <BodyCopy
             fontSize="fs14"
-            component="span"
+            component={titleClickCb ? Anchor : 'span'}
             color="text.primary"
             fontFamily="secondary"
             fontWeight="semibold"
             className="store-name store-name--listing"
+            handleLinkClick={e => titleClickCb(e, id)}
+            noLink
           >
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
