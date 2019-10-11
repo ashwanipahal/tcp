@@ -51,16 +51,8 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
           textAlign="left"
         />
       </div>
-      <Address
-        address={null}
+      <Styled(Address)
         className="addressStyle"
-        dataLocatorPrefix=""
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
       />
       <Styled(BodyCopy)
         className={null}
@@ -152,16 +144,8 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           textAlign="left"
         />
       </div>
-      <Address
-        address={null}
+      <Styled(Address)
         className="addressStyle"
-        dataLocatorPrefix=""
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
       />
       <Styled(BodyCopy)
         className={null}
