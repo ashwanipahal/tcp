@@ -94,13 +94,11 @@ export class StoreDetailContainer extends PureComponent {
 
   openStoreDirections(store) {
     const {
-      basicInfo: { address, coordinates },
+      basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    const { lat, long } = coordinates;
-    const mapLabel = `${addressLine1}, ${city}, ${state}`;
     if (this.hasMobileApp) {
-      this.mapHandler(lat, long, mapLabel);
+      this.mapHandler(store);
     } else {
       window.open(
         `${

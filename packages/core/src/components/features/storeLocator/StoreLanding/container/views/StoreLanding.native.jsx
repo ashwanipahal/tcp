@@ -70,13 +70,7 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDirections = store => {
-    const {
-      basicInfo: { address, coordinates },
-    } = store;
-    const { addressLine1, city, state } = address;
-    const { lat, long } = coordinates;
-    const mapLabel = `${addressLine1}, ${city}, ${state}`;
-    mapHandler(lat, long, mapLabel);
+    mapHandler(store);
   };
 
   render() {

@@ -11,6 +11,7 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
@@ -636,13 +637,21 @@ export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
   });
 };
 
-export const mapHandler = (lat = '', long = '', label = '') => {
-  const url = createGoogleMapUrl(lat, long, label);
+export const mapHandler = store => {
+  const {
+    basicInfo: { address, coordinates },
+  } = store;
+  const { addressLine1, city, state, zipCode } = address;
+  const { lat, long } = coordinates;
+  const mapLabel = `${addressLine1}, ${city}, ${state}`;
+  const url = createGoogleMapUrl(lat, long, mapLabel);
   Linking.canOpenURL(url).then(supported => {
-    if (!supported) {
+    if (supported) {
       return Linking.openURL(url);
     }
-    const browserUrl = `https://www.google.com/maps/@${lat},${long}?q=${label}`;
+    const browserUrl = `${
+      googleMapConstants.OPEN_STORE_DIR_WEB
+    }${addressLine1}, ${city}, ${state}, ${zipCode}`;
     return Linking.openURL(browserUrl);
   });
 };
