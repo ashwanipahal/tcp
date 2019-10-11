@@ -21,7 +21,9 @@ exports[`Modal Native should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          <Connect(ToastContainer) />
+          <Connect(ToastContainer)
+            shouldShowSafeArea={false}
+          />
           <StatusBar
             animated={false}
             hidden={true}

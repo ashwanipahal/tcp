@@ -119,7 +119,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
               enabled
             >
               <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-                <ToastContainer />
+                <ToastContainer shouldShowSafeArea={false} />
                 <StatusBar hidden />
                 <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
                   {heading && (
