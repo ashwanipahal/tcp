@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore } from 'redux-persist';
+
 import Reactotron from 'reactotron-react-native';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
@@ -32,7 +34,9 @@ export const initializeStore = initialState => {
 
   // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
   setStoreRef(store);
-  return store;
+
+  const persistor = persistStore(store);
+  return { store, persistor };
 };
 
 export default initializeStore;
