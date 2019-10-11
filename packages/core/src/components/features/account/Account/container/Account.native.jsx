@@ -67,6 +67,16 @@ export class Account extends React.PureComponent<Props, State> {
         return 'myPreferencePageMobile';
       case 'PointsClaimPageMobile':
         return 'PointsClaimPageMobile';
+      default:
+        return this.getComponent2(component);
+    }
+  };
+
+  /**
+   *  @function getComponent2 takes component and return the component that is required on the drop down click.
+   */
+  getComponent2 = component => {
+    switch (component) {
       case 'myOrdersPageMobile':
         return 'myOrdersPageMobile';
       default:

@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { View, Text } from 'react-native';
-// import Col from '@tcp/core/src/components/common/atoms/Col';
-// import Button from '@tcp/core/src/components/common/atoms/Button';
-// import { routerPush } from '@tcp/core/src/utils';
-// import internalEndpoints from '../../../../common/internalEndpoints';
-
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+import ButtonWrapper from '../styles/EmptyOrdersList.style.native';
 /**
  * This function will handle click to go to homepage
  * @param {} -
@@ -18,36 +14,34 @@ import { View, Text } from 'react-native';
  * This component will render EmptyOrdersList component
  * @param { string, object }
  */
-export const EmptyOrdersList = ({ className, labels }) => {
-  console.info('EmptyOrdersList')
+export const EmptyOrdersList = ({ labels, navigation }) => {
   return (
     <>
       <BodyCopy
         mobileFontFamily="secondary"
         fontSize="fs14"
-        fontWeight="semibold"
+        fontWeight="regular"
         data-locator="no_rewards_msg"
-        text={getLabelValue(labels, 'lbl_ordersTile_noOrderYet', 'orders')}
+        className="elem-mt-LRG elem-mb-LRG"
+        text={getLabelValue(labels, 'lbl_orders_emptySupportingText', 'orders')}
       />
-      <Button
-        buttonVariation="variable-width"
-        fill="WHITE"
-        color="gray"
-        onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
-        data-locator="orders-shop-now-btn"
-        text={getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
-      />
+      <ButtonWrapper>
+        <Button
+          buttonVariation="fixed-width"
+          fill="BLUE"
+          color="white"
+          onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
+          data-locator="orders-shop-now-btn"
+          text={getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
+        />
+      </ButtonWrapper>
     </>
   );
 };
 
 EmptyOrdersList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  className: PropTypes.string,
-};
-
-EmptyOrdersList.defaultProps = {
-  className: '',
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default EmptyOrdersList;

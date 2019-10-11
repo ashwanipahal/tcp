@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { View, Text } from 'react-native';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import OrdersListItem from '../../OrdersListItem';
 import EmptyOrdersList from '../../EmptyOrdersList';
 
@@ -10,24 +12,44 @@ import EmptyOrdersList from '../../EmptyOrdersList';
  * This component will render RecentOrders component
  * @param { string, object, object }
  */
-export const RecentOrders = ({ className, ordersListItems, labels }) => {
-  console.info('RecentOrders')
+export const RecentOrders = ({ ordersListItems, labels, navigation }) => {
   return (
-    <View>
-      <Text>Recent orders..</Text>
-      <EmptyOrdersList />
-    </View>
+    <>
+      <ViewWithSpacing spacingStyles="margin-bottom-MED">
+        <BodyCopy
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          data-locator="no_rewards_msg"
+          className="elem-mb-LRG"
+          dataLocator="recent-order_heading"
+          fontFamily="secondary"
+          text={getLabelValue(labels, 'lbl_orders_recentOrder', 'orders')}
+        />
+      </ViewWithSpacing>
+      {ordersListItems && ordersListItems.length ? (
+        <>
+          <OrdersListItem labels={labels} orderItem={ordersListItems[0]} />
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            color="white"
+            onPress={() => UrlHandler(ordersListItems[0].orderTrackingUrl)}
+            data-locator="orders-shop-now-btn"
+            text={getLabelValue(labels, 'lbl_orders_trackit', 'orders')}
+          />
+        </>
+      ) : (
+        <EmptyOrdersList labels={labels} navigation={navigation} />
+      )}
+    </>
   );
 };
 
 RecentOrders.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
-  className: PropTypes.string,
-};
-
-RecentOrders.defaultProps = {
-  className: '',
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default RecentOrders;
