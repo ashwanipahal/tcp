@@ -48,7 +48,7 @@ const renderLogInLink = labels => {
       className="login elem-pl-XL"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.LogIn}
+      text={labels.logIn}
       underline
     />
   );
