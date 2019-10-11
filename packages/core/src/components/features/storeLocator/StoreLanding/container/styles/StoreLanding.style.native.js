@@ -9,8 +9,3 @@ export const StyleStoreLandingContainer = styled.View`
   width: 100%;
   font-size: ${props => props.theme.typography.fontSizes.fs12};
 `;
-
-export const StyledStoreListView = styled.View`
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-`;
