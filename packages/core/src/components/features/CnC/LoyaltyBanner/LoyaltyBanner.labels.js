@@ -1,0 +1,26 @@
+const labels = {
+  youCanEarnPoints: 'You can earn #estimatedRewardsVal# points on this purchase!',
+  youllEarnPoints: 'You"ll earn #estimatedRewardsVal# points on this purchase!',
+  becomeMemberOnThisPurchase: 'Become a member to get a #estimatedRewardsVal# on this purchase!',
+  youllGetWithThisPurchase: 'You"ll get a #estimatedRewardsVal# with this purchase!',
+  youllEarnPointsPlcc: 'YOU’LL EARN #estimatedRewardsVal# POINTS <br/> ON THIS PURCHASE!',
+  youllGetARewardPlcc: 'YOU’LL GET A #estimatedRewardsVal# <br/> ON THIS PURCHASE!',
+  whenYouCheckOutPlcc: 'when you check out with your <br/> MY PLACE REWARDS CREDIT CARD',
+  thatsSomePointsFromReward: 'That’s #pointsToNextReward# points from a $5 Reward.',
+  save30Today: 'SAVE 30% TODAY!',
+  earnDoublePoints: '+ EARN DOUBLE POINTS* when you open & use a MY PLACE REWARDS CREDIT CARD',
+  currentSubtotal: 'Current Subtotal: ',
+  estimatedSubtotal: 'Estimated Subtotal with a My Place Rewards Credit Card: ',
+  applyNow: 'Apply Now',
+  learnMore: 'Learn More',
+
+  LogIn: 'Log In',
+  getRewardedShopping: 'GET REWARDED FOR SHOPPING!',
+  loyaltyPayPoints: '$1 SPENT = 1 POINT  |  100 POINTS = $5 REWARD',
+  createAccount: 'Create My Place Reward Account',
+  earnDoublePointsPDP: 'EARN DOUBLE POINTS EVERY DAY!',
+  getDoublePointsPLCCPDP: 'YOU RE GETTING DOUBLE POINTS!',
+  myPlaceCreditCard: 'with the My Place Rewards Credit Card',
+  checkoutMyPlaceCreditCard: 'when you checkout with your My Place Rewards Credit Card',
+};
+export default labels;
