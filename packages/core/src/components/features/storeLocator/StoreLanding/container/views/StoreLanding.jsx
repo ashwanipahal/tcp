@@ -110,7 +110,7 @@ export class StoreLanding extends PureComponent {
     if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
       return (
         <Notification
-          status="error"
+          status="info"
           message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
         />
       );
