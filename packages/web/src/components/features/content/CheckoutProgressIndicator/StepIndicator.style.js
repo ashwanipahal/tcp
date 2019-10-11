@@ -139,7 +139,7 @@ export default css`
 
     .white-dot {
       background-color: ${props => props.theme.colors.WHITE};
-      border: 2px solid black;
+      border: 2px solid ${props => props.theme.colors.BLACK};
       border-radius: 50%;
       display: block;
       height: 17px;
@@ -157,7 +157,7 @@ export default css`
   .pending {
     &:before {
       background-color: ${props => props.theme.colors.WHITE};
-      border: 1px solid black;
+      border: 1px solid ${props => props.theme.colors.BLACK};
     }
   }
 
