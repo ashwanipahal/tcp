@@ -298,6 +298,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     }
     return (
       <>
+        {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(
           productSectionData,
           bagLabels,

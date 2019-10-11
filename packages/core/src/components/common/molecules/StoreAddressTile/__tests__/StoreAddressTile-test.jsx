@@ -14,6 +14,7 @@ storeMockNotGym.isGym = false;
 const props = {
   labels,
   store: storeMock,
+  showSetFavorite: true,
 };
 
 describe('StoreAddressTile component', () => {
@@ -40,6 +41,15 @@ describe('StoreAddressTile component', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
           <StoreAddressTile {...props} />
+        </ThemeProvider>
+      );
+      expect(component.html()).toMatchSnapshot();
+    });
+    it('should render details view - with titleClickCb', () => {
+      const titleClickCb = jest.fn();
+      const component = mount(
+        <ThemeProvider theme={Theme()}>
+          <StoreAddressTile {...props} titleClickCb={titleClickCb} />
         </ThemeProvider>
       );
       expect(component.html()).toMatchSnapshot();
@@ -92,9 +102,10 @@ describe('StoreAddressTile component', () => {
         variation: 'listing',
         storeIndex: 1,
       };
+      const storeMockData = { ...props.store, hours: { ...props.store.hours, regularHours: [] } };
       const component = mount(
         <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
+          <StoreAddressTile {...testProps} store={storeMockData} />
         </ThemeProvider>
       );
       expect(component.html()).toMatchSnapshot();

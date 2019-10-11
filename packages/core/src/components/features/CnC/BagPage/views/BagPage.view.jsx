@@ -134,7 +134,7 @@ class BagPageView extends React.Component {
   };
 
   renderLeftSection = () => {
-    const { labels, sflItems, isShowSaveForLaterSwitch } = this.props;
+    const { labels, sflItems, isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -150,7 +150,7 @@ class BagPageView extends React.Component {
           <div
             className={`save-for-later-section ${
               activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
-            } ${sflItems.size === 0 ? 'hide-on-desktop' : ''}`}
+            } ${sflItems.size === 0 && !isSflItemRemoved ? 'hide-on-desktop' : ''}`}
           >
             <BodyCopy
               fontFamily="secondary"
@@ -349,6 +349,7 @@ BagPageView.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
+  isSflItemRemoved: PropTypes.bool.isRequired,
 };
 
 export default withStyles(BagPageView, styles);
