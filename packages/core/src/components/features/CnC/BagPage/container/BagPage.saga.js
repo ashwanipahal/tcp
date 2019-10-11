@@ -321,11 +321,9 @@ export function* authorizePayPalPayment() {
   );
   if (res) {
     // redirect
-    utility.routeToPage(
-      CHECKOUT_ROUTES.reviewPage,
-      { queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' } },
-      true
-    );
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage, {
+      queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' },
+    });
   }
 }
 
