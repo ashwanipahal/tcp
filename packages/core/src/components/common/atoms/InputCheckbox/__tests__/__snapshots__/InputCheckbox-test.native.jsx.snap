@@ -44,7 +44,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
           "navigate": [Function],
         }
       }
-      tree="<div><p>checkbox</p></div>"
+      tree="<div><span>checkbox</span></div>"
     />
   </Styled(View)>
 </Fragment>
@@ -94,7 +94,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
           "navigate": [Function],
         }
       }
-      tree="<div><p>checkbox</p></div>"
+      tree="<div><span>checkbox</span></div>"
     />
   </Styled(View)>
 </Fragment>
