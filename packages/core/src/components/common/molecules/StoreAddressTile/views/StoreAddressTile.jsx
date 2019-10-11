@@ -256,7 +256,7 @@ class StoreAddressTile extends PureComponent {
         <div className="title-one">
           <BodyCopy
             fontSize="fs14"
-            component={Anchor}
+            component={titleClickCb ? Anchor : 'span'}
             color="text.primary"
             fontFamily="secondary"
             fontWeight="semibold"

@@ -64,7 +64,7 @@ describe('StoreSearch Container', () => {
   });
 
   test('should call selectStoreType', () => {
-    const wrapper = shallow(<StoreLandingVanilla {...props} />);
+    const wrapper = shallow(<StoreLandingVanilla {...props} searchDone suggestedStoreList={[]} />);
     const event = {
       preventDefault: jest.fn(),
     };

@@ -68,7 +68,7 @@ export const defaultProps = {
   openCallStore: null,
   setFavoriteStore: null,
   storeIndex: 0,
-  titleClickCb: () => {},
+  titleClickCb: null,
   locatorDirections: 'get-store-directions',
   locatorSetFavStore: 'set-favorite-store',
   geoLocationDisabled: true,
