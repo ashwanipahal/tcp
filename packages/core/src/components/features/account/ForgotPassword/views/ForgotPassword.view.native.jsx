@@ -72,7 +72,6 @@ class ForgotPasswordView extends React.Component<Props> {
           color={colorPallete.white}
           fill="BLUE"
           text={getLabelValue(labels, 'lbl_forgotPassword_resetPassword', 'password')}
-          buttonVariation="variable-width"
           customStyle={styles.createAccountStyle}
           onPress={handleSubmit(this.onFormSubmit)}
         />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import HeaderNew from '../HeaderNew';
 
 describe('HeaderNew Component', () => {
@@ -14,5 +15,9 @@ describe('HeaderNew Component', () => {
   });
   it('HeaderNew should render correctly', () => {
     expect(component).toMatchSnapshot();
+  });
+
+  it('HeaderNew should return ToastContainer component value one', () => {
+    expect(component.find(ToastContainer)).toHaveLength(1);
   });
 });

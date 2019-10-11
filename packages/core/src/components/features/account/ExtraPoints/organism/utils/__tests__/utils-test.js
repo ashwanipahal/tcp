@@ -26,8 +26,8 @@ const ctaUserBirthday = {
   path: internalEndpoints.editProfileInformationPage.path,
 };
 const ctaOrders = {
-  to: internalEndpoints.orderPage.link,
-  path: internalEndpoints.orderPage.path,
+  to: internalEndpoints.myOrderPage.link,
+  path: internalEndpoints.myOrderPage.path,
 };
 
 describe('CTA link based on active activity ', () => {
