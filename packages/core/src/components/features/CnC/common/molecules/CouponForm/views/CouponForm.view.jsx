@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, TextBox, BodyCopy, Heading } from '@tcp/core/src/components/common/atoms';
+import { keyboard } from '../../../../../../../../../web/src/constants/constants';
 import style from '../styles/CouponForm.style';
 import ErrorMessage from '../../ErrorMessage';
 
@@ -19,6 +19,14 @@ class CouponForm extends React.PureComponent {
   toggleTouched = () => {
     const { touched } = this.state;
     this.setState({ touched: !touched });
+  };
+
+  handleKeyDown = (event, callback) => {
+    const { KEY_ENTER, KEY_SPACE } = keyboard;
+    const { which } = event;
+    if (which === KEY_ENTER || which === KEY_SPACE) {
+      callback();
+    }
   };
 
   handleSubmit = e => {
@@ -59,7 +67,10 @@ class CouponForm extends React.PureComponent {
               className="coupon_need_help_link"
               component="span"
               fontWeight="semibold"
+              tabIndex="0"
               onClick={onNeedHelpTextClick}
+              role="button"
+              onKeyDown={e => this.handleKeyDown(e, onNeedHelpTextClick)}
             >
               {labels.couponNeedHelpText}
             </BodyCopy>
