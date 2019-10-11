@@ -185,7 +185,6 @@ class Filters extends React.PureComponent {
           <Button
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={labelsFilter.lbl_clear}
             onPress={this.onClearAll}
@@ -196,7 +195,6 @@ class Filters extends React.PureComponent {
           <Button
             fill="BLACK"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={labelsFilter.lbl_apply}
             onPress={this.onApplyFilter}

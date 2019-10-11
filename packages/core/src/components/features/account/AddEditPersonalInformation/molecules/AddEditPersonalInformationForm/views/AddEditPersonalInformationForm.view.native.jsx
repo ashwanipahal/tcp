@@ -202,14 +202,12 @@ export class AddEditPersonalInformationForm extends PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_profile_personal_info_updateCta')}
           />
         </SaveButtonWrapper>
         <CancelButtonWrapper>
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             onPress={onCancel}
             text={getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
           />

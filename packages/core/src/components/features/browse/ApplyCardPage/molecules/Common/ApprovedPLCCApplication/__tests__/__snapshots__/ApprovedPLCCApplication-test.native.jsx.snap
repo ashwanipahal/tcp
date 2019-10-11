@@ -155,7 +155,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -278,7 +278,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
