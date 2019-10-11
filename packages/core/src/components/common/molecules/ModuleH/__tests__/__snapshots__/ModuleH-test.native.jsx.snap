@@ -3,54 +3,227 @@
 exports[`ModuleH component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      key="0"
-      locator=""
-      onPress={null}
-      text=""
-      url="/toddler"
-      visible={false}
-    >
-      <Styled(Heading)
-        color="white"
-        fontFamily="primary"
-        fontSize="fs32"
-        fontWeight="black"
-        letterSpacing="ls167"
+    <View>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        key="0"
         locator=""
-        testID="moduleH_header_text1"
-        text="New arrivals"
-        textAlign="left"
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      key="1"
-      locator=""
-      onPress={null}
-      text=""
-      url="/toddler"
-      visible={false}
-    >
-      <Styled(Heading)
-        color="white"
-        fontFamily="primary"
-        fontSize="fs32"
-        fontWeight="black"
-        letterSpacing="ls167"
+        onPress={null}
+        text=""
+        url="/toddler"
+        visible={false}
+      >
+        <Styled(Heading)
+          color="white"
+          fontFamily="primary"
+          fontSize="fs32"
+          fontWeight="black"
+          letterSpacing="ls167"
+          locator=""
+          testID="moduleH_header_text1"
+          text="New arrivals"
+          textAlign="left"
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        key="1"
         locator=""
-        testID="moduleH_header_text2"
-        text="New adventures"
-        textAlign="left"
-      />
-    </Styled(Anchor)>
+        onPress={null}
+        text=""
+        url="/toddler"
+        visible={false}
+      >
+        <Styled(Heading)
+          color="white"
+          fontFamily="primary"
+          fontSize="fs32"
+          fontWeight="black"
+          letterSpacing="ls167"
+          locator=""
+          testID="moduleH_header_text2"
+          text="New adventures"
+          textAlign="left"
+        />
+      </Styled(Anchor)>
+    </View>
+    <View>
+      <Styled(View)
+        lines={2}
+      >
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text=""
+          url="/toddler"
+          visible={false}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="white"
+            dataLocator=""
+            fontSize="fs22"
+            fontWeight="black"
+            key="0"
+            margin={null}
+            mobilefontFamily="secondary"
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 16,
+                "opacity": 1,
+              }
+            }
+            testID="moduleH_cta_links_1"
+            text="Toddler Girl"
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text=""
+          url="/girl"
+          visible={false}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="white"
+            dataLocator=""
+            fontSize="fs22"
+            fontWeight={null}
+            key="1"
+            margin={null}
+            mobilefontFamily="secondary"
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 16,
+                "opacity": 0.8,
+              }
+            }
+            testID="moduleH_cta_links_2"
+            text="Girl"
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text=""
+          url="/toddler-boy"
+          visible={false}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="white"
+            dataLocator=""
+            fontSize="fs22"
+            fontWeight={null}
+            key="2"
+            margin={null}
+            mobilefontFamily="secondary"
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 16,
+                "opacity": 0.8,
+              }
+            }
+            testID="moduleH_cta_links_3"
+            text="Toddler boy"
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text=""
+          url="/boy"
+          visible={false}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="white"
+            dataLocator=""
+            fontSize="fs22"
+            fontWeight={null}
+            key="3"
+            margin={null}
+            mobilefontFamily="secondary"
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 16,
+                "opacity": 0.8,
+              }
+            }
+            testID="moduleH_cta_links_4"
+            text="Boy"
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(Anchor)>
+        <Styled(Anchor)
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text=""
+          url="/baby"
+          visible={false}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="white"
+            dataLocator=""
+            fontSize="fs22"
+            fontWeight={null}
+            key="4"
+            margin={null}
+            mobilefontFamily="secondary"
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 16,
+                "opacity": 0.8,
+              }
+            }
+            testID="moduleH_cta_links_5"
+            text="Baby"
+            textAlign="left"
+            textDecoration={null}
+          />
+        </Styled(Anchor)>
+      </Styled(View)>
+    </View>
   </Styled(View)>
   <WithTheme(SnapCarousel)
     carouselConfig={
@@ -160,174 +333,5 @@ exports[`ModuleH component renders correctly 1`] = `
     vertical={true}
     width={750}
   />
-  <Styled(View)
-    lines={2}
-  >
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      locator=""
-      onPress={null}
-      text=""
-      url="/toddler"
-      visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontSize="fs22"
-        fontWeight="black"
-        key="0"
-        margin={null}
-        mobilefontFamily="secondary"
-        numberOfLines={null}
-        style={
-          Object {
-            "marginTop": 16,
-            "opacity": 1,
-          }
-        }
-        testID="moduleH_cta_links_1"
-        text="Toddler Girl"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      locator=""
-      onPress={null}
-      text=""
-      url="/girl"
-      visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontSize="fs22"
-        fontWeight={null}
-        key="1"
-        margin={null}
-        mobilefontFamily="secondary"
-        numberOfLines={null}
-        style={
-          Object {
-            "marginTop": 16,
-            "opacity": 0.8,
-          }
-        }
-        testID="moduleH_cta_links_2"
-        text="Girl"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      locator=""
-      onPress={null}
-      text=""
-      url="/toddler-boy"
-      visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontSize="fs22"
-        fontWeight={null}
-        key="2"
-        margin={null}
-        mobilefontFamily="secondary"
-        numberOfLines={null}
-        style={
-          Object {
-            "marginTop": 16,
-            "opacity": 0.8,
-          }
-        }
-        testID="moduleH_cta_links_3"
-        text="Toddler boy"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      locator=""
-      onPress={null}
-      text=""
-      url="/boy"
-      visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontSize="fs22"
-        fontWeight={null}
-        key="3"
-        margin={null}
-        mobilefontFamily="secondary"
-        numberOfLines={null}
-        style={
-          Object {
-            "marginTop": 16,
-            "opacity": 0.8,
-          }
-        }
-        testID="moduleH_cta_links_4"
-        text="Boy"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation=""
-      colorName={null}
-      customStyle={Object {}}
-      locator=""
-      onPress={null}
-      text=""
-      url="/baby"
-      visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontSize="fs22"
-        fontWeight={null}
-        key="4"
-        margin={null}
-        mobilefontFamily="secondary"
-        numberOfLines={null}
-        style={
-          Object {
-            "marginTop": 16,
-            "opacity": 0.8,
-          }
-        }
-        testID="moduleH_cta_links_5"
-        text="Baby"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
-  </Styled(View)>
 </Styled(View)>
 `;
