@@ -4,7 +4,6 @@ import { Anchor } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
-
 import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageModal/views/FullSizeImageModal.view';
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
