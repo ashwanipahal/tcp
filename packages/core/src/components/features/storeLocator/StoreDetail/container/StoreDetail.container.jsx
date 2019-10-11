@@ -31,15 +31,13 @@ export class StoreDetailContainer extends PureComponent {
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(
-        ({ isMobileApp, navigateToNestedRoute, UrlHandler, validateExternalUrl, isAndroid }) => {
-          this.hasMobileApp = isMobileApp();
-          this.navigateToNestedRoute = navigateToNestedRoute;
-          this.UrlHandler = UrlHandler;
-          this.validateExternalUrl = validateExternalUrl;
-          this.isAndroid = isAndroid && isAndroid();
-        }
-      )
+      .then(({ isMobileApp, navigateToNestedRoute, UrlHandler, isAndroid, mapHandler }) => {
+        this.hasMobileApp = isMobileApp();
+        this.navigateToNestedRoute = navigateToNestedRoute;
+        this.UrlHandler = UrlHandler;
+        this.isAndroid = isAndroid && isAndroid();
+        this.mapHandler = mapHandler;
+      })
       .catch(error => {
         console.log('error: ', error);
       });
@@ -100,11 +98,9 @@ export class StoreDetailContainer extends PureComponent {
     } = store;
     const { addressLine1, city, state, zipCode } = address;
     const { lat, long } = coordinates;
+    const mapLabel = `${addressLine1}, ${city}, ${state}`;
     if (this.hasMobileApp) {
-      const url = `${googleMapConstants.OPEN_STORE_DIR_APP}${lat}%2C${long}`;
-      if (this.validateExternalUrl(url)) {
-        this.UrlHandler(url);
-      }
+      this.mapHandler(lat, long, mapLabel);
     } else {
       window.open(
         `${

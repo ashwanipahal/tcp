@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { toTimeString, getLabelValue } from '@tcp/core/src/utils';
+import { toTimeString, getLabelValue, capitalize } from '@tcp/core/src/utils';
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -31,6 +31,7 @@ import StoreAddressTileRoot, {
   brandImageStyles,
   markerImageStyles,
   favStoreIconStyles,
+  BtnFullWidth,
 } from '../styles/StoreAddressTile.style.native';
 import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
 
@@ -38,6 +39,7 @@ const ListingTitleLink = withStyles(Anchor, headerLinkStyle);
 const BrandImage = withStyles(Image, brandImageStyles);
 const MarkerImage = withStyles(Image, markerImageStyles);
 const FavStoreIcon = withStyles(Image, favStoreIconStyles);
+const BtnWrapper = withStyles(Button, BtnFullWidth);
 
 class StoreAddressTile extends PureComponent {
   getDetailsHeader() {
@@ -96,7 +98,7 @@ class StoreAddressTile extends PureComponent {
     return (
       <View>
         <FooterBtnWrapper>
-          <Button
+          <BtnWrapper
             fill="BLUE"
             type="submit"
             color="white"
@@ -109,14 +111,14 @@ class StoreAddressTile extends PureComponent {
         </FooterBtnWrapper>
         <FooterBtnWrapper>
           <FooterBtnLeft>
-            <Button
+            <BtnWrapper
               type="button"
               onPress={openStoreDirections}
               text={getLabelValue(labels, 'lbl_storedetails_getdirections_btn')}
             />
           </FooterBtnLeft>
           <FooterBtnRight>
-            <Button
+            <BtnWrapper
               type="button"
               onPress={openCallStore}
               text={getLabelValue(labels, 'lbl_storedetails_callstore_btn')}
@@ -194,7 +196,7 @@ class StoreAddressTile extends PureComponent {
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     return [addressLine1, `${city}, ${state}, ${zipCode}`, phone].map((item, i) => (
-      <AddressText key={`${item + i}`}>{item}</AddressText>
+      <AddressText key={`${item + i}`}>{item && capitalize(item)}</AddressText>
     ));
   }
 

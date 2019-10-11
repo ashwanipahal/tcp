@@ -628,3 +628,21 @@ export const readCookieMobileApp = key => {
       .catch(e => reject(e));
   });
 };
+
+export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
+  return Platform.select({
+    ios: `maps:${lat},${long}?q=${label}`,
+    android: `geo:${lat},long?q=${label}`,
+  });
+};
+
+export const mapHandler = (lat = '', long = '', label = '') => {
+  const url = createGoogleMapUrl(lat, long, label);
+  Linking.canOpenURL(url).then(supported => {
+    if (!supported) {
+      return Linking.openURL(url);
+    }
+    const browserUrl = `https://www.google.com/maps/@${lat},${long}?q=${label}`;
+    return Linking.openURL(browserUrl);
+  });
+};

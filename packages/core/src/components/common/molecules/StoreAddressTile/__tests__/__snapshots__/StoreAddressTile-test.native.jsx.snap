@@ -15,12 +15,12 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -64,7 +64,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
   <Styled(View)>
     <View>
       <Styled(View)>
-        <Styled(CustomButton)
+        <Styled(Styled(CustomButton))
           active={false}
           buttonVariation="fixed-width"
           color="white"
@@ -90,7 +90,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
-          <Styled(CustomButton)
+          <Styled(Styled(CustomButton))
             active={false}
             buttonVariation="fixed-width"
             color=""
@@ -115,7 +115,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
           />
         </Styled(View)>
         <Styled(View)>
-          <Styled(CustomButton)
+          <Styled(Styled(CustomButton))
             active={false}
             buttonVariation="fixed-width"
             color=""
@@ -160,12 +160,12 @@ exports[`StoreAddressTile component Details should render details view with fav 
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -224,7 +224,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
   <Styled(View)>
     <View>
       <Styled(View)>
-        <Styled(CustomButton)
+        <Styled(Styled(CustomButton))
           active={false}
           buttonVariation="fixed-width"
           color="white"
@@ -250,7 +250,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
       </Styled(View)>
       <Styled(View)>
         <Styled(View)>
-          <Styled(CustomButton)
+          <Styled(Styled(CustomButton))
             active={false}
             buttonVariation="fixed-width"
             color=""
@@ -275,7 +275,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
           />
         </Styled(View)>
         <Styled(View)>
-          <Styled(CustomButton)
+          <Styled(Styled(CustomButton))
             active={false}
             buttonVariation="fixed-width"
             color=""
@@ -339,12 +339,12 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -417,12 +417,12 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -504,12 +504,12 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -605,12 +605,12 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
@@ -697,12 +697,12 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     <Styled(Text)
       key="471-485 fulton street0"
     >
-      471-485 fulton street
+      471-485 Fulton Street
     </Styled(Text)>
     <Styled(Text)
       key="brooklyn, NY, 112011"
     >
-      brooklyn, NY, 11201
+      Brooklyn, NY, 11201
     </Styled(Text)>
     <Styled(Text)
       key="(718) 243-11502"
