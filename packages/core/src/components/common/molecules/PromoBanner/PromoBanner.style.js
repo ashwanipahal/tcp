@@ -388,6 +388,16 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
   }
+  /*
+  * Module S Promo Banner styles
+  *********************************/
+  .medium_text_black {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs36};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    letter-spacing: normal;
+  }
 
   .percentage_all_wrapped_normal {
     color: ${props => props.theme.colorPalette.gray['900']};

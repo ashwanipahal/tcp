@@ -76,11 +76,14 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
+                "arrowImageStyle": null,
                 "bounces": true,
                 "data": Array [],
+                "dropDownItemFontWeight": "semibold",
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
               },
@@ -195,11 +198,14 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
+                "arrowImageStyle": null,
                 "bounces": true,
                 "data": Array [],
+                "dropDownItemFontWeight": "semibold",
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
               },
@@ -311,11 +317,14 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
+                "arrowImageStyle": null,
                 "bounces": true,
                 "data": Array [],
+                "dropDownItemFontWeight": "semibold",
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
               },
@@ -594,7 +603,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   >
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -621,7 +630,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   >
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

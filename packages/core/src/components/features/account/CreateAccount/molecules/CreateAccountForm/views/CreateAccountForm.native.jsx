@@ -173,7 +173,6 @@ class CreateAccountForm extends PureComponent<Props> {
           <ButtonWrapper>
             <CustomButton
               text={getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
-              buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
             />

@@ -51,9 +51,7 @@ export default class GiftCardTile extends React.PureComponent {
     if (isGiftCardApplied) {
       return (
         <CustomButton
-          fill="WHITE"
           type="submit"
-          buttonVariation="variable-width"
           data-locator=""
           text={getLabelValue(labels, 'lbl_giftcard_removeBtn')}
           onPress={() => {
@@ -67,7 +65,6 @@ export default class GiftCardTile extends React.PureComponent {
       <CustomButton
         fill="DARK"
         type="submit"
-        buttonVariation="variable-width"
         data-locator=""
         text={getLabelValue(labels, 'lbl_giftcard_applyBtn')}
         disableButton={!orderBalanceTotal}

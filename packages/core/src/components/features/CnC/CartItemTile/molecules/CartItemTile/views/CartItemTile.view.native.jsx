@@ -289,7 +289,7 @@ class ProductInformation extends React.Component {
         }}
         rightButtons={[this.rightButton()]}
         rightButtonWidth={240}
-        leftButtons={[null]}
+        leftButtons={null}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
         }}

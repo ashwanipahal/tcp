@@ -223,6 +223,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
               displayName: size.sizeName,
               id: size.sizeName,
               maxAvailable: size.maxAvailable,
+              disabled: size.maxAvailable <= 0,
             }));
           }
         } else {
@@ -231,6 +232,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
             displayName: size.sizeName,
             id: size.sizeName,
             maxAvailable: size.maxAvailable,
+            disabled: size.maxAvailable <= 0,
           }));
         }
       });
@@ -378,6 +380,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       showAddToBagCTA = true,
       fromBagPage,
       productInfoFromBag,
+      customSubmitButtonStyle,
     } = this.props;
     const {
       selectedColor,
@@ -420,6 +423,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
         fromBagPage={fromBagPage}
+        inheritedStyles={customSubmitButtonStyle}
       />
     );
   }

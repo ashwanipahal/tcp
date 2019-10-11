@@ -26,6 +26,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       <InfoContainer>
@@ -142,7 +143,6 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
       <ButtonWrapperStyle>
         <CustomButton
           text={getLabelValue(labels, 'lbl_overview_profileInfoViewCTA')}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => handleComponentChange('profileInformationMobile')}
         />
