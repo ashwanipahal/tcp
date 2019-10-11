@@ -488,7 +488,7 @@ export default css`
   .percentage_all_wrapped_normal_tab {
     ${props => percentageAllWrappedNormal(props, '_tab')};
 
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
       margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
       transform: translateX(-18px);
 
