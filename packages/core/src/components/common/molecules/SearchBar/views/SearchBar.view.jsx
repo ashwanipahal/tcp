@@ -7,9 +7,9 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
-import searchData from '../SearchBar.mock';
 import { getSearchResult } from '../SearchBar.actions';
 import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
+import CancelSearch from './CancelSearch.view';
 
 /**
  * This component produces a Search Bar component for Header
@@ -60,6 +60,17 @@ class SearchBar extends React.PureComponent {
     setSearchState(false);
   };
 
+  cancelSearchBar = e => {
+    e.preventDefault();
+    const searchText = this.searchInput.current.value;
+    const CLOSE_IMAGE = 'close-mobile-image';
+    const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
+    if (searchText) {
+      document.getElementById('search-input-form').reset();
+      document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+    }
+  };
+
   startInitiateSearch = () => {
     const { setSearchState } = this.props;
     let searchText = this.searchInput.current.value;
@@ -69,8 +80,8 @@ class SearchBar extends React.PureComponent {
       let filteredSearchResults;
       if (getPreviousSearchResults) {
         filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        // eslint-disable-next-line no-empty
         if (filteredSearchResults.indexOf(searchText) !== -1) {
-          console.log('search value exist');
         } else {
           filteredSearchResults.push(searchText);
         }
@@ -80,6 +91,8 @@ class SearchBar extends React.PureComponent {
       }
       setRecentStoreToLocalStorage(filteredSearchResults);
       this.redirectToSearchPage(searchText);
+    } else {
+      routerPush(`/search?searchQuery=`, `/search/`, { shallow: true });
     }
     setSearchState(false);
   };
@@ -102,21 +115,101 @@ class SearchBar extends React.PureComponent {
     e.preventDefault();
     const { startSearch, labels } = this.props;
     const searchText = this.searchInput.current.value;
-    this.setState({ showProduct: Boolean(searchText.length) }, () => {
-      const payload = {
-        searchText,
-        slpLabels: labels,
-      };
-      startSearch(payload);
-    });
+    const CLOSE_IMAGE = 'close-mobile-image';
+    const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
+    const searchImage = document
+      .getElementById(`${CLOSE_IMAGE}`)
+      .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
+
+    if (searchText.length > 2) {
+      this.setState({ showProduct: Boolean(searchText.length) }, () => {
+        const payload = {
+          searchText,
+          slpLabels: labels,
+        };
+        startSearch(payload);
+      });
+    } else {
+      this.setState({ showProduct: false });
+    }
+
+    if (searchText.length >= 1 && !searchImage) {
+      document.getElementById(`${CLOSE_IMAGE}`).classList.add(`${CLOSE_IMAGE_MOBILE}`);
+    } else if (searchText.length < 1 && searchImage) {
+      document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+    }
   };
 
   getLatestSearchResultsExists = latestSearchResults => {
     return !!(latestSearchResults && latestSearchResults.length > 0);
   };
 
+  highlight = inputTextParam => {
+    const text = this.searchInput.current.value;
+    let { inputText } = inputTextParam;
+    inputText = inputText.toLowerCase();
+    const index = inputText.indexOf(text.toLowerCase());
+    if (index >= 0) {
+      return (
+        <div className="lookingFor-textWrapper-div">
+          {`${inputText.substring(0, index)}`}
+          <span className="highlight-search-result">
+            {`${inputText.substring(index, index + text.length)}`}
+          </span>
+          {`${inputText.substring(index + text.length)}`}
+        </div>
+      );
+    }
+    return null;
+  };
+
+  isLookingForExist = searchResults => {
+    const { labels } = this.props;
+    if (
+      searchResults &&
+      searchResults.autosuggestList &&
+      searchResults.autosuggestList[0] &&
+      searchResults.autosuggestList[0].suggestions.length > 0
+    ) {
+      return (
+        <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
+          {getLabelValue(labels, 'lbl_search_looking_for')}
+        </BodyCopy>
+      );
+    }
+    return null;
+  };
+
+  isLookingForProductsExist = searchResults => {
+    const { labels } = this.props;
+    if (
+      searchResults &&
+      searchResults.autosuggestProducts &&
+      searchResults.autosuggestProducts.length > 0
+    ) {
+      return (
+        <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
+          {getLabelValue(labels, 'lbl_search_product_matches')}
+        </BodyCopy>
+      );
+    }
+    return null;
+  };
+
+  isRecentResultExist = searchResults => {
+    const { labels } = this.props;
+    if (searchResults.length > 0) {
+      return (
+        <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
+          {getLabelValue(labels, 'lbl_search_recent_search')}
+        </BodyCopy>
+      );
+    }
+    return null;
+  };
+
   render() {
-    const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
+    const { className, fromCondensedHeader, searchResults, isSearchOpen } = this.props;
 
     const { showProduct } = this.state;
 
@@ -131,67 +224,82 @@ class SearchBar extends React.PureComponent {
 
     const isLatestSearchResultsExists = this.getLatestSearchResultsExists(latestSearchResults);
 
+    const LookingForLabel = () => {
+      return this.isLookingForExist(searchResults);
+    };
+
+    const RecentResultsLabel = () => {
+      return this.isRecentResultExist(latestSearchResults);
+    };
+
+    const LookingForProductLabel = () => {
+      return this.isLookingForProductsExist(searchResults);
+    };
+
+    const HighLightSearch = inputText => this.highlight(inputText);
+
+    const SEARCH_IMAGE = 'search-icon';
+    const SEARCH_BLUE_IMAGE = 'search-icon-blue';
+
     return (
       <React.Fragment>
         <BodyCopy className={className} component="div">
           {isSearchOpen ? (
             <div className="searchWrapper">
               <div className="searchbar">
-                <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
+                <Image
+                  alt="search-mobile"
+                  id="search-image-mobile"
+                  className="search-mobile-image icon-small"
+                  onClick={this.initiateSearch}
+                  src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                  data-locator="search-mobile-icon"
+                  height="25px"
+                />
+                <form
+                  id="search-input-form"
+                  className={className}
+                  noValidate
+                  onSubmit={this.initiateSearchBySubmit}
+                >
                   <input
                     id="search-input"
                     ref={this.searchInput}
                     onChange={this.changeSearchText}
                     className="search-input"
                     maxLength="50"
+                    autoComplete="off"
                   />
                 </form>
                 <Image
                   alt="search"
-                  className="search-image icon-small"
+                  id="search-image-typeAhead"
+                  className="search-image-typeAhead icon-small"
                   onClick={this.initiateSearch}
-                  src={getIconPath('search-icon')}
+                  src={getIconPath(`${SEARCH_IMAGE}`)}
                   data-locator="search-icon"
                   height="25px"
                 />
                 <Image
                   alt="close"
-                  className="close-image icon-small"
+                  id="close-image"
+                  className="close-image icon-small close-image-toggle"
                   onClick={this.closeSearchBar}
                   src={getIconPath('search-close-icon')}
                   data-locator="close-icon"
                   height="25px"
                 />
 
+                <CancelSearch
+                  closeSearchBar={this.closeSearchBar}
+                  cancelSearchBar={this.cancelSearchBar}
+                />
+
                 {!showProduct ? (
                   <div className="suggestionBox">
-                    <div className="trendingBox">
-                      <BodyCopy fontFamily="secondary" className="boxHead trendingBoxHead">
-                        {getLabelValue(labels, 'lbl_search_whats_trending')}
-                      </BodyCopy>
-                      <BodyCopy className="trendingBoxBody" lineHeight="39" component="div">
-                        <ul>
-                          {searchData.trending.map(item => {
-                            return (
-                              <BodyCopy
-                                component="li"
-                                fontSize="fs14"
-                                fontFamily="secondary"
-                                key={item.id}
-                                className="tagName"
-                              >
-                                {item.text}
-                              </BodyCopy>
-                            );
-                          })}
-                        </ul>
-                      </BodyCopy>
-                    </div>
                     {isLatestSearchResultsExists && (
                       <div className="recentBox">
-                        <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
-                          {getLabelValue(labels, 'lbl_search_recent_search')}
-                        </BodyCopy>
+                        <RecentResultsLabel latestSearchResults={latestSearchResults} />
                         <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                           <ul>
                             {latestSearchResults.map(item => {
@@ -221,9 +329,7 @@ class SearchBar extends React.PureComponent {
                 ) : (
                   <div className="matchBox">
                     <div className="matchLinkBox">
-                      <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
-                        {getLabelValue(labels, 'lbl_search_looking_for')}
-                      </BodyCopy>
+                      <LookingForLabel searchResults={searchResults} />
                       {searchResults &&
                         searchResults.autosuggestList &&
                         searchResults.autosuggestList.map(item => {
@@ -246,7 +352,7 @@ class SearchBar extends React.PureComponent {
                                           to={`/search?searchQuery=${itemData.text}`}
                                           className="suggestion-label"
                                         >
-                                          {itemData.text}
+                                          <HighLightSearch inputText={`${itemData.text}`} />
                                         </Anchor>
                                       </BodyCopy>
                                     );
@@ -257,9 +363,8 @@ class SearchBar extends React.PureComponent {
                         })}
                     </div>
                     <div className="matchProductBox">
-                      <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-                        {getLabelValue(labels, 'lbl_search_product_matches')}
-                      </BodyCopy>
+                      <LookingForProductLabel searchResults={searchResults} />
+
                       <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                         <ul>
                           {searchResults &&
@@ -296,7 +401,7 @@ class SearchBar extends React.PureComponent {
               className="search-image icon`"
               onClick={this.openSearchBar}
               src={getIconPath(fromCondensedHeader ? 'search-icon-blue' : 'search-icon')}
-              data-locator="close-icon"
+              data-locator="search-icon"
               height="25px"
             />
           )}

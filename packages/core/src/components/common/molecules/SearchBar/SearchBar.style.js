@@ -176,4 +176,145 @@ export default css`
     height: 80px;
     width: 80px;
   }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .searchbar {
+      border-radius: 0px;
+    }
+
+    .close-image-toggle {
+      display: inline-block;
+    }
+
+    .search-mobile-image {
+      display: none;
+    }
+
+    .search-image-typeAhead {
+      display: inline-block;
+    }
+
+    .cancel-search-label {
+      display: none;
+    }
+
+    .close-mobile-image {
+      display: none;
+    }
+    .close-mobile-image-toggle {
+      display: none;
+    }
+
+    .close-image-mobile {
+      display: inline-block;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .searchbar input {
+      width: calc(100% - 140px);
+    }
+
+    .close-image-toggle {
+      display: none;
+    }
+
+    .search-mobile-image {
+      display: inline-block;
+    }
+
+    .search-image-typeAhead {
+      display: none;
+    }
+
+    .cancel-search-label {
+      display: inline-block;
+    }
+
+    .close-mobile-image {
+      display: none;
+    }
+
+    .close-mobile-image-toggle {
+      display: none;
+    }
+
+    .close-image-mobile {
+      display: inline-block;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .searchbar {
+      border-radius: 0px;
+    }
+
+    .searchbar input {
+      width: calc(100% - 130px);
+    }
+
+    .matchProductBox {
+      display: none;
+    }
+
+    .close-image-toggle {
+      display: none;
+    }
+
+    .search-mobile-image {
+      display: inline-block;
+    }
+
+    .search-image-typeAhead {
+      display: none;
+    }
+
+    .cancel-search-label {
+      display: inline-block;
+    }
+
+    .close-mobile-image {
+      display: none;
+    }
+
+    .close-mobile-image-toggle {
+      display: none;
+    }
+
+    .close-image-mobile {
+      display: inline-block;
+    }
+  }
+  .highlight-search-result {
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .searchbar input {
+      width: calc(100% - 80px);
+    }
+    .close-image-toggle {
+      display: inline-block;
+    }
+    .close-image-mobile {
+      display: inline-block;
+    }
+    .search-mobile-image {
+      display: none;
+    }
+
+    .search-image-typeAhead {
+      display: inline-block;
+    }
+    .cancel-search-label {
+      display: none;
+    }
+
+    .close-mobile-image-toggle {
+      display: none;
+    }
+
+    .close-mobile-image {
+      display: none;
+    }
+  }
 `;

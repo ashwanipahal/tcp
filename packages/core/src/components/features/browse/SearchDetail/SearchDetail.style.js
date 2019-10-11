@@ -217,7 +217,7 @@ export default css`
     border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-top: 0px;
     box-sizing: border-box;
-    z-index: 100000;
+    z-index: ${props => props.theme.zindex.zLoader};
     position: absolute;
     background-color: ${props => props.theme.colors.WHITE};
     overflow-y: auto;

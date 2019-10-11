@@ -110,6 +110,10 @@ class SearchDetailContainer extends React.PureComponent {
       searchResultSuggestions,
       sortLabels,
       isSearchResultsAvailable,
+      router: {
+        query: { searchQuery },
+        asPath,
+      },
       ...otherProps
     } = this.props;
 
@@ -117,7 +121,7 @@ class SearchDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isSearchResultsAvailable ? (
           <div>
-            {products && products.length > 0 ? (
+            {products && products.length > 0 && searchQuery ? (
               <SearchDetail
                 filters={filters}
                 formValues={formValues}
