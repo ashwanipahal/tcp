@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { View } from 'react-native';
 import { DamImage, BodyCopy, Heading, Anchor } from '../../../atoms';
 import { getLocator, getScreenWidth, getPixelRatio } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
@@ -107,11 +107,25 @@ class ModuleH extends React.PureComponent {
     return (
       <Wrapper>
         <HeaderWrapper>
-          {textItems &&
-            textItems.map((textLine, index) => {
-              return link ? (
-                <Anchor key={index.toString()} url={link.url} navigation={navigation}>
+          <View>
+            {textItems &&
+              textItems.map((textLine, index) => {
+                return link ? (
+                  <Anchor key={index.toString()} url={link.url} navigation={navigation}>
+                    <Heading
+                      fontFamily="primary"
+                      fontSize={HeadingFontSize}
+                      letterSpacing="ls167"
+                      textAlign="left"
+                      color="white"
+                      fontWeight="black"
+                      text={textLine.text}
+                      testID={`${getLocator('moduleH_header_text')}${index + 1}`}
+                    />
+                  </Anchor>
+                ) : (
                   <Heading
+                    key={index.toString()}
                     fontFamily="primary"
                     fontSize={HeadingFontSize}
                     letterSpacing="ls167"
@@ -121,22 +135,18 @@ class ModuleH extends React.PureComponent {
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
                   />
-                </Anchor>
-              ) : (
-                <Heading
-                  key={index.toString()}
-                  fontFamily="primary"
-                  fontSize={HeadingFontSize}
-                  letterSpacing="ls167"
-                  textAlign="left"
-                  color="white"
-                  fontWeight="black"
-                  text={textLine.text}
-                  testID={`${getLocator('moduleH_header_text')}${index + 1}`}
-                />
-              );
-            })}
+                );
+              })}
+          </View>
+          <View>
+            {divCTALinks ? (
+              <LinksWrapper lines={headerLines}>
+                {this.renderLinks(divCTALinks, navigation)}
+              </LinksWrapper>
+            ) : null}
+          </View>
         </HeaderWrapper>
+
         {divCTALinks && (
           <Carousel
             onSnapToItem={this.updateCurrentIndex}
@@ -152,11 +162,6 @@ class ModuleH extends React.PureComponent {
             }}
           />
         )}
-        {divCTALinks ? (
-          <LinksWrapper lines={headerLines}>
-            {this.renderLinks(divCTALinks, navigation)}
-          </LinksWrapper>
-        ) : null}
       </Wrapper>
     );
   }
