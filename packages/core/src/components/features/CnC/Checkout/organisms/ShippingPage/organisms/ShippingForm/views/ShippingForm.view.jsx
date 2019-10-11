@@ -67,8 +67,8 @@ class ShippingForm extends React.Component {
   }
 
   shouldComponentUpdate() {
-    const { submitting } = this.props;
-    return !submitting;
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
   }
 
   componentDidUpdate(prevProps) {

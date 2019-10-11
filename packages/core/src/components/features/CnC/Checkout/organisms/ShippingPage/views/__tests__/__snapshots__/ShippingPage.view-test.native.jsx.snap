@@ -18,8 +18,6 @@ exports[`Shipping Page should render correctly 1`] = `
                     "method": Object {
                       "shippingMethodId": undefined,
                     },
-                    "reject": [Function],
-                    "resolve": [Function],
                     "shipTo": Object {
                       "address": Object {
                         "addressLine1": "pob",
@@ -126,8 +124,6 @@ exports[`Shipping Page should render correctly 1`] = `
                       "method": Object {
                         "shippingMethodId": undefined,
                       },
-                      "reject": [Function],
-                      "resolve": [Function],
                       "shipTo": Object {
                         "address": Object {
                           "addressLine1": "pob",

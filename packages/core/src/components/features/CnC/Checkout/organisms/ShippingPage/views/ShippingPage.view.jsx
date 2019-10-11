@@ -20,6 +20,7 @@ export default class ShippingPage extends React.PureComponent {
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.shape([]),
@@ -178,31 +179,26 @@ export default class ShippingPage extends React.PureComponent {
     //   storeId: '10152',
     // };
     const { handleSubmit, setVenmoPickupState } = this.props;
-    return new Promise((resolve, reject) => {
-      handleSubmit({
-        resolve,
-        reject,
-        method: {
-          shippingMethodId: shipmentMethods.shippingMethodId,
-        },
-        shipTo: {
-          address: shipAddress,
-          addressId: shipAddress.addressId,
-          emailAddress: shipAddress.emailAddress,
-          emailSignup: true,
-          onFileAddressKey,
-          phoneNumber: shipAddress.phoneNumber,
-          saveToAccount: saveToAddressBook,
-          setAsDefault: defaultShipping || shipAddress.primary === 'true',
-        },
-        smsInfo: {
-          smsUpdateNumber: smsSignUp.phoneNumber,
-          wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
-        },
-      });
-    }).then(() => {
-      setVenmoPickupState(true);
+    handleSubmit({
+      method: {
+        shippingMethodId: shipmentMethods.shippingMethodId,
+      },
+      shipTo: {
+        address: shipAddress,
+        addressId: shipAddress.addressId,
+        emailAddress: shipAddress.emailAddress,
+        emailSignup: true,
+        onFileAddressKey,
+        phoneNumber: shipAddress.phoneNumber,
+        saveToAccount: saveToAddressBook,
+        setAsDefault: defaultShipping || shipAddress.primary === 'true',
+      },
+      smsInfo: {
+        smsUpdateNumber: smsSignUp.phoneNumber,
+        wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
+      },
     });
+    setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -308,6 +304,7 @@ export default class ShippingPage extends React.PureComponent {
       shippingAddress,
       isVenmoPaymentInProgress,
       isVenmoShippingDisplayed,
+      isSubmitting,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -315,6 +312,7 @@ export default class ShippingPage extends React.PureComponent {
       <>
         {shipmentMethods.length > 0 && (
           <ShippingForm
+            isSubmitting={isSubmitting}
             routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}

@@ -512,6 +512,10 @@ const getShipmentMethods = state => {
   return state.Checkout.getIn(['options', 'shippingMethods']);
 };
 
+const getShipmentLoadingStatus = state => {
+  return state.Checkout.getIn(['values', 'isShippingFormLoading']);
+};
+
 const getDefaultShipmentID = createSelector(
   [getShipmentMethods, getShippingDestinationValues],
   (shipmentMethods, shippingDestinationValues) => {
@@ -928,6 +932,7 @@ export default {
   getLabels,
   getShippingAddress,
   getIsPaymentDisabled,
+  getShipmentLoadingStatus,
   getBillingValues,
   getAddressByKey,
   isCardNotUpdated,

@@ -33,6 +33,7 @@ const initialState = fromJS({
     },
     addEditResponseAddressId: null,
     giftCardError: null,
+    isShippingFormLoading: false,
     orderBalanceTotal: 0,
   },
   options: {
@@ -137,6 +138,8 @@ function uiGiftCardFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'addGiftCardResponse'], null);
     case CheckoutConstants.RESET_CHECKOUT_REDUCER:
       return initialState;
+    case CheckoutConstants.CHECKOUT_VALUES_SET_SHIPPING_LOADING:
+      return checkout.setIn(['values', 'isShippingFormLoading'], action.isLoading);
     default:
       return paypalReducer(checkout, action);
   }
