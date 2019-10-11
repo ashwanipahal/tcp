@@ -125,6 +125,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -751,6 +752,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -1463,6 +1465,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "900": "#162f42",
             "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -2089,6 +2092,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "900": "#162f42",
               "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -2743,6 +2747,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "900": "#162f42",
                   "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -3504,6 +3509,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "900": "#162f42",
                     "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -4159,6 +4165,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "900": "#162f42",
                       "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -4913,6 +4920,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -5629,6 +5637,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "900": "#162f42",
             "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -6258,6 +6267,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "900": "#162f42",
               "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -6900,6 +6910,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "900": "#162f42",
                   "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -7649,6 +7660,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "900": "#162f42",
                     "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -8292,6 +8304,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "900": "#162f42",
                       "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {

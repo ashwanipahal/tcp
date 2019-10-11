@@ -3,6 +3,7 @@
 exports[`Modal Native should render correctly 1`] = `
 <SafeAreaView>
   <Component
+    animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[MockFunction]}
     transparent={false}

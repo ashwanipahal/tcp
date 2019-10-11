@@ -19,7 +19,6 @@ const EmptyOrdersTile = ({ labels, navigation }) => {
 
       <ViewWithSpacing spacingStyles="margin-top-LRG">
         <Button
-          buttonVariation="variable-width"
           fill="WHITE"
           color="gray"
           onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}

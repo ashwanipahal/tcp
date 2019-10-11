@@ -158,7 +158,6 @@ export class AddressView extends React.Component {
             {getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook') && (
               <Button
                 color="white"
-                buttonVariation="variable-width"
                 fill="BLUE"
                 data-locator="addressbook-addnewaddress"
                 text={getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook')}

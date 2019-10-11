@@ -57,11 +57,16 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels } = this.props;
+    const { labels, currencySymbol } = this.props;
     const showOnReviewPage = false;
     return (
       <div className="cart-item-tile-container">
-        <CartItemTile productDetail={item} labels={labels} showOnReviewPage={showOnReviewPage} />
+        <CartItemTile
+          productDetail={item}
+          labels={labels}
+          showOnReviewPage={showOnReviewPage}
+          currencySymbol={currencySymbol}
+        />
       </div>
     );
   };

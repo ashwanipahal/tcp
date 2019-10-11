@@ -241,11 +241,10 @@ describe('Venmo Payment Button', () => {
   });
 
   it('calling fetchVenmoClientToken method', () => {
-    const getVenmoPaymentTokenAction = jest.fn();
     const tree = shallow(<VenmoPaymentButtonVanilla {...props} />);
     const componentInstance = tree.instance();
     componentInstance.fetchVenmoClientToken();
-    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
+    expect(props.getVenmoPaymentTokenAction).toHaveBeenCalled();
   });
 
   it('calling fetchVenmoClientToken method with Guest User', () => {
@@ -255,10 +254,9 @@ describe('Venmo Payment Button', () => {
       enabled: true,
       isNonceNotExpired: false,
     };
-    const getVenmoPaymentTokenAction = jest.fn();
     const tree = shallow(<VenmoPaymentButtonVanilla {...newProps} />);
     const componentInstance = tree.instance();
     componentInstance.fetchVenmoClientToken();
-    expect(getVenmoPaymentTokenAction).not.toHaveBeenCalled();
+    expect(props.getVenmoPaymentTokenAction).toHaveBeenCalled();
   });
 });

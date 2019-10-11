@@ -100,7 +100,6 @@ class StoreAddressTile extends PureComponent {
             type="submit"
             color="white"
             onPress={() => (isFavorite ? changeFavoriteStore() : setFavoriteStore(store))}
-            buttonVariation="variable-width"
             text={getLabelValue(
               labels,
               `lbl_storedetails_${isFavorite ? 'changestore' : 'setfav'}_btn`
@@ -112,7 +111,6 @@ class StoreAddressTile extends PureComponent {
             <Button
               type="button"
               onPress={openStoreDirections}
-              buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_storedetails_getdirections_btn')}
             />
           </FooterBtnLeft>
@@ -120,7 +118,6 @@ class StoreAddressTile extends PureComponent {
             <Button
               type="button"
               onPress={openCallStore}
-              buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_storedetails_callstore_btn')}
             />
           </FooterBtnRight>
