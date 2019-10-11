@@ -4,6 +4,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { isCanada, getAPIConfig, navigateToNestedRoute, getLabelValue } from '@tcp/core/src/utils';
 import { isGymboree } from '@tcp/core/src/utils/index.native';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { withTheme } from 'styled-components/native';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
@@ -18,6 +19,7 @@ export class StoreLanding extends PureComponent {
     mapView: false,
     isOutlet: false,
     isGym: isGymboree(),
+    centeredStoreId: '',
   };
 
   toggleMap = event => {
@@ -25,6 +27,13 @@ export class StoreLanding extends PureComponent {
     this.setState(prevState => ({
       mapView: !prevState.mapView,
     }));
+  };
+
+  focusOnMap = (event, id) => {
+    event.preventDefault();
+    this.setState({
+      centeredStoreId: id,
+    });
   };
 
   selectStoreType = ({ gymSelected, outletSelected }) => {
@@ -44,7 +53,10 @@ export class StoreLanding extends PureComponent {
     const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
     const { mapView } = this.state;
     return searchDone && !modifiedStoreList.length ? (
-      <Text>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</Text>
+      <Notification
+        status="info"
+        message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+      />
     ) : (
       <StyledStoreListView>
         {modifiedStoreList.map((item, index) => (
@@ -57,6 +69,7 @@ export class StoreLanding extends PureComponent {
             isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
             key={item.basicInfo.id}
             openStoreDetails={this.openStoreDetails}
+            titleClickCb={this.focusOnMap}
           />
         ))}
       </StyledStoreListView>
@@ -73,7 +86,7 @@ export class StoreLanding extends PureComponent {
       getLocationStores,
       geoLocationEnabled,
     } = this.props;
-    const { mapView, isGym, isOutlet } = this.state;
+    const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
 
@@ -130,6 +143,7 @@ export class StoreLanding extends PureComponent {
                 storesList={modifiedStoreList}
                 isCanada={isCanada()}
                 apiKey={getAPIConfig().googleApiKey}
+                centeredStoreId={centeredStoreId}
                 {...this.props}
               />
             )}
