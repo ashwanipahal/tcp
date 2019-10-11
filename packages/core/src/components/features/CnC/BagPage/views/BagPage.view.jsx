@@ -202,6 +202,7 @@ class BagPageView extends React.Component {
       showAddTobag,
       handleCartCheckout,
       orderItemsCount,
+      currencySymbol,
     } = this.props;
     const { showCondensedHeader } = this.state;
     if (!showCondensedHeader) return null;
@@ -223,7 +224,7 @@ class BagPageView extends React.Component {
                   component="span"
                   className="elem-ml-SM"
                 >
-                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
                 </BodyCopy>
               </BodyCopy>
             </Col>
@@ -253,6 +254,7 @@ class BagPageView extends React.Component {
       sflItems,
       isShowSaveForLaterSwitch,
       orderBalanceTotal,
+      currencySymbol,
     } = this.props;
     const { activeSection, showStickyHeaderMob } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
@@ -291,7 +293,7 @@ class BagPageView extends React.Component {
                     activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
                   }`}
                 >
-                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
                 </BodyCopy>
               )}
             </Col>
@@ -349,6 +351,7 @@ BagPageView.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
+  currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
 };
 
