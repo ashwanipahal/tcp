@@ -50,11 +50,11 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "modT_medium_text_regular",
+                  "style": "medium_text_regular_tab",
                   "text": "ALL GRAPHIC TEES",
                 },
                 Object {
-                  "style": "modT_percentage_all_wrapped_normal",
+                  "style": "percentage_all_wrapped_normal_tab",
                   "text": "60 % OFF",
                 },
               ],

@@ -83,11 +83,11 @@ exports[`ModuleT component renders correctly 1`] = `
             },
             "textItems": Array [
               Object {
-                "style": "modT_medium_text_regular",
+                "style": "medium_text_regular_tab",
                 "text": "ALL GRAPHIC TEES",
               },
               Object {
-                "style": "modT_percentage_all_wrapped_normal",
+                "style": "percentage_all_wrapped_normal_tab",
                 "text": "60 % OFF",
               },
             ],
@@ -218,11 +218,11 @@ exports[`ModuleT component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "modT_medium_text_regular",
+                  "style": "medium_text_regular_tab",
                   "text": "ALL GRAPHIC TEES",
                 },
                 Object {
-                  "style": "modT_percentage_all_wrapped_normal",
+                  "style": "percentage_all_wrapped_normal_tab",
                   "text": "60 % OFF",
                 },
               ],
@@ -286,7 +286,7 @@ exports[`ModuleT component renders correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <div
-    className="button-list-container stackedCTAList tcp-button-list"
+    className="button-list-container stackedCTAList"
   >
     <Styled(ButtonList)
       buttonListVariation="stackedCTAList"
