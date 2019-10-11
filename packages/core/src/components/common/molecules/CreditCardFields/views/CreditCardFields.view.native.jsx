@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import CustomIcon from '../../../atoms/Icon';
 import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 import CreditCardNumber from '../../../atoms/CreditCardNumber';
@@ -22,6 +21,7 @@ import {
   StyledImageWrapper,
   StyledLabel,
 } from '../styles/CreditCardFields.styles.native';
+import Select from '../../../atoms/Select';
 
 /**
  *
@@ -31,23 +31,6 @@ import {
  * @description view component to render credit card form fields.
  */
 export class CreditCardFields extends React.PureComponent<Props> {
-  constructor(props) {
-    super(props);
-    const { isEdit, selectedCard, selectedExpYear, selectedExpMonth } = props;
-    if (isEdit && selectedCard) {
-      const { expMonth, expYear } = selectedCard;
-      this.state = {
-        selectedYear: expYear,
-        selectedMonth: expMonth && expMonth.trim(), // expMonth value for few cards coming with extra space. if no expMonth then default will be 1st from the options
-      };
-    } else {
-      this.state = {
-        selectedYear: selectedExpYear,
-        selectedMonth: selectedExpMonth,
-      };
-    }
-  }
-
   componentWillMount() {
     if (Platform.OS === 'ios') {
       CardIOUtilities.preload();
@@ -68,12 +51,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
     };
     const card = await CardIOModule.scanCard(config);
     if (card) {
-      this.setState(
-        { selectedMonth: card.expiryMonth.toString(), selectedYear: card.expiryYear.toString() },
-        () => {
-          updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear, card.cvv);
-        }
-      );
+      updateCardDetails(card.cardNumber, card.expiryMonth, card.expiryYear, card.cvv);
     }
   };
 
@@ -89,7 +67,6 @@ export class CreditCardFields extends React.PureComponent<Props> {
       expMonthOptionsMap,
       expYearOptionsMap,
       dto,
-      updateExpiryDate,
       isEdit,
       creditCard,
       creditFieldLabels,
@@ -97,7 +74,6 @@ export class CreditCardFields extends React.PureComponent<Props> {
       showCvv,
       cameraIcon,
     } = this.props;
-    const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
       height: 40,
       border: 1,
@@ -144,56 +120,28 @@ export class CreditCardFields extends React.PureComponent<Props> {
           <ExpiryMonth>
             <Field
               heading={creditFieldLabels.expMonth}
-              component={DropDown}
+              component={Select}
               name="expMonth"
-              data={expMonthOptionsMap}
+              id="expMonth"
+              options={expMonthOptionsMap}
               dataLocator="addEditCreditCard-expMonth"
-              onValueChange={itemValue => {
-                this.setState({ selectedMonth: itemValue });
-                updateExpiryDate(itemValue, selectedYear);
-              }}
               variation="secondary"
-              selectedValue={selectedMonth || creditFieldLabels.expMonth}
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
             />
-            <HiddenExpiryWrapper>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                name="expMonth"
-                id="expMonth"
-              />
-            </HiddenExpiryWrapper>
           </ExpiryMonth>
           <ExpiryYear>
             <Field
               heading={creditFieldLabels.expYear}
-              component={DropDown}
+              component={Select}
               name="expYear"
-              data={expYearOptionsMap}
+              id="expYear"
+              options={expYearOptionsMap}
               dataLocator="addEditCreditCard-expYear"
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
-              onValueChange={itemValue => {
-                this.setState({ selectedYear: itemValue });
-                updateExpiryDate(selectedMonth, itemValue);
-              }}
-              selectedValue={selectedYear || creditFieldLabels.expYear}
             />
-            <HiddenExpiryWrapper>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                name="expYear"
-                id="expYear"
-              />
-            </HiddenExpiryWrapper>
           </ExpiryYear>
           {showCvv && (
             <CvvCode>

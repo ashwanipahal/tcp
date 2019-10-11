@@ -17,10 +17,12 @@ const ExpiryContainer = styled.View`
 
 const ExpiryMonth = styled.View`
   width: 30%;
+  margin-right: 20px;
 `;
 
 const ExpiryYear = styled.View`
   width: 30%;
+  margin-right: 20px;
 `;
 
 const CvvCode = styled.View`
