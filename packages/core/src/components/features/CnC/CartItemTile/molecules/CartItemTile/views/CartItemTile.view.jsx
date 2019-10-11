@@ -55,13 +55,46 @@ class CartItemTile extends React.Component {
     }
   };
 
+  handleEditCartItemWithStore = (pageView, itemBrand, productNumber) => {
+    if (pageView === 'myBag') {
+      const { onPickUpOpenClick, productDetail, orderId } = this.props;
+      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { store, orderItemType } = productDetail.miscInfo;
+      const isItemShipToHome = !store;
+      onPickUpOpenClick({
+        colorProductId: productNumber,
+        orderInfo: {
+          orderItemId: itemId,
+          Quantity: qty,
+          color,
+          Size: size,
+          Fit: fit,
+          orderId,
+          orderItemType,
+          isItemShipToHome,
+        },
+      });
+    }
+  };
+
   callEditMethod = () => {
     const { productDetail, pageView } = this.props;
-    this.handleEditCartItem(
-      pageView,
-      productDetail.itemInfo.itemBrand,
-      productDetail.productInfo.productPartNumber
-    );
+    const {
+      miscInfo: { orderItemType },
+    } = productDetail;
+    if (orderItemType === 'ECOM') {
+      this.handleEditCartItem(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
+    } else {
+      this.handleEditCartItemWithStore(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
+    }
   };
 
   handleMoveItemtoSaveList = () => {
@@ -765,7 +798,9 @@ CartItemTile.propTypes = {
   showOnReviewPage: PropTypes.bool,
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
+  orderId: PropTypes.number.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

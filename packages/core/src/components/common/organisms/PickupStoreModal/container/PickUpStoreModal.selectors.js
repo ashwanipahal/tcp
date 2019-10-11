@@ -105,3 +105,42 @@ export const getOpenSkuSelectionForm = state => {
 export const getStoreSearchError = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
 };
+
+export const getIsPickupModalOpenFromBagPage = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('fromBagPage');
+};
+
+export const getUpdateCartItemStore = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('updateCartItemStore')
+  );
+};
+
+export const getInitialValuesFromBagPage = state => {
+  return {
+    Quantity:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'Quantity']),
+    color:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'color']),
+    Size:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'Size']),
+    Fit:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'Fit']),
+    isItemShipToHome:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'isItemShipToHome']),
+    orderItemType:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'orderItemType']),
+    orderId:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'orderId']),
+    orderItemId:
+      state[PICKUP_MODAL_REDUCER_KEY] &&
+      state[PICKUP_MODAL_REDUCER_KEY].getIn(['initialValues', 'orderItemId']),
+  };
+};

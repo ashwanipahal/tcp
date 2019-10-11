@@ -17,6 +17,7 @@ import {
   getFormattedError,
 } from '../../../utils/errorMessage.util';
 import { isCanada } from '../../../utils';
+import { UPDATE_ITEM_IN_CART } from '../../config';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -152,19 +153,46 @@ export const removeItem = orderItemId => {
   });
 };
 
-export const updateItem = payloadData => {
+const defaultUpdateItemPayload = payloadData => {
   const { itemId, skuId, quantity, itemPartNumber, variantNo } = payloadData;
+  return {
+    orderItem: [
+      {
+        orderItemId: itemId,
+        xitem_catEntryId: skuId,
+        quantity: quantity.toString(),
+        itemPartNumber,
+        variantNo,
+      },
+    ],
+  };
+};
+
+const pickUpItemUpdatePayload = payloadData => {
+  const { apiPayload } = payloadData;
+  return {
+    x_calculationUsage: UPDATE_ITEM_IN_CART.X_CALCULATION_USAGE,
+    x_isUpdateDescription: UPDATE_ITEM_IN_CART.X_UPDATE_DESCRIPTION,
+    ...apiPayload,
+  };
+};
+
+const payloadFormationForUpdateItem = payloadData => {
+  const { updateActionType } = payloadData;
+  switch (updateActionType) {
+    case 'UpdatePickUpItem':
+      return pickUpItemUpdatePayload(payloadData);
+    default:
+      return defaultUpdateItemPayload(payloadData);
+  }
+};
+
+export const updateItem = payloadData => {
+  const updatePayloadData = payloadFormationForUpdateItem(payloadData);
+  const { callback } = payloadData;
   const payload = {
     body: {
-      orderItem: [
-        {
-          orderItemId: itemId,
-          xitem_catEntryId: skuId,
-          quantity: quantity.toString(),
-          itemPartNumber,
-          variantNo,
-        },
-      ],
+      ...updatePayloadData,
     },
     webService: endpoints.updateOrderItem,
   };
@@ -172,6 +200,9 @@ export const updateItem = payloadData => {
   return executeStatefulAPICall(payload).then(res => {
     if (res && !res.body) {
       throw new Error('res body is null');
+    }
+    if (callback) {
+      callback();
     }
     return {
       orderItemId: res.body.orderItem[0].orderItemId,
