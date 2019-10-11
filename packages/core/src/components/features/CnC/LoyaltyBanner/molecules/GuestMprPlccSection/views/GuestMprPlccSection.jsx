@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -15,7 +14,6 @@ const GuestMprPlccSection = props => {
     currentSubtotal,
     estimatedSubtotal,
     isPlcc,
-    isGuest,
     pointsDescription,
     earnedReward,
     remainingPlcc,
@@ -134,9 +132,7 @@ GuestMprPlccSection.propTypes = {
   className: PropTypes.string,
   headingLabel: PropTypes.string,
   subHeadingLabel: PropTypes.string,
-  fsPoints: PropTypes.string,
   isPlcc: PropTypes.bool,
-  isGuest: PropTypes.bool,
   pointsDescription: PropTypes.string,
   earnedReward: PropTypes.number,
   remainingPlcc: PropTypes.number,
@@ -151,9 +147,7 @@ GuestMprPlccSection.defaultProps = {
   showSubtotal: 0,
   headingLabel: '',
   subHeadingLabel: '',
-  fsPoints: '',
   isPlcc: false,
-  isGuest: false,
   pointsDescription: '',
   earnedReward: 0,
   remainingPlcc: 0,
