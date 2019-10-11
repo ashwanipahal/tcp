@@ -150,6 +150,7 @@ class ModuleQ extends React.PureComponent {
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
     selectedProductList = selectedProductList.concat(selectedProductList);
+    const IconPath = getIconPath('carousel-big-carrot');
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
         <Row centered>
@@ -204,22 +205,41 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
-            <Carousel
-              options={CAROUSEL_OPTIONS}
-              carouselConfig={{
-                autoplay: false,
-                variation: 'big-arrows',
-                customArrowLeft: getIconPath('carousel-big-carrot'),
-                customArrowRight: getIconPath('carousel-big-carrot'),
-              }}
-            >
-              {selectedProductList.length === 0
+            {selectedProductList.length === 0 && (
+              <Carousel
+                options={CAROUSEL_OPTIONS}
+                carouselConfig={{
+                  autoplay: false,
+                  variation: 'big-arrows',
+                  customArrowLeft: IconPath,
+                  customArrowRight: IconPath,
+                }}
+              >
+                {selectedProductList.length === 0
+                  ? Array.from({ length: TOTAL_IMAGES }).map((item, index) => {
+                      return this.getLoaderSlide(index);
+                    })
+                  : null}
+              </Carousel>
+            )}
+            {selectedProductList.length > 0 && (
+              <Carousel
+                options={CAROUSEL_OPTIONS}
+                carouselConfig={{
+                  autoplay: false,
+                  variation: 'big-arrows',
+                  customArrowLeft: IconPath,
+                  customArrowRight: IconPath,
+                }}
+              >
+                {/* {selectedProductList.length === 0
                 ? Array.from({ length: TOTAL_IMAGES }).map((item, index) => {
                     return this.getLoaderSlide(index);
                   })
-                : null}
-              {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
-            </Carousel>
+                : null} */}
+                {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
+              </Carousel>
+            )}
           </Col>
         </Row>
         {this.getCurrentCtaButton()}

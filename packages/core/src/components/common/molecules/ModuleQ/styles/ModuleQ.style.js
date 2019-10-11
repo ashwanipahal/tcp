@@ -141,8 +141,7 @@ export default css`
     }
   }
   .skeleton-image-wrapper {
-    height: 260px;
-
+    height: 212px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 419px;
     }

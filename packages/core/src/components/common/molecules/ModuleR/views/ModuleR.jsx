@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import { Anchor, Button, Col, Row, Image, Skeleton } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
@@ -166,6 +166,40 @@ class ModuleR extends React.PureComponent {
     ) : null;
   }
 
+  getLoader = () => {
+    const { medium, large } = viewport();
+    let colCount = 9;
+    if (medium) {
+      colCount = 11;
+    }
+    if (large) {
+      colCount = 6;
+    }
+    return (
+      <div>
+        {Array.from({ length: 3 }).map((rItem, rowIndex) => {
+          return (
+            <Row className="" key={`rowkey_${rowIndex.toString()}`}>
+              {Array.from({ length: colCount }).map((cItem, index) => {
+                return (
+                  <Col
+                    key={index.toString()}
+                    className=""
+                    colSize={{ small: 2, medium: 4, large: 3 }}
+                  >
+                    <div className="loader-wrapper">
+                      <Skeleton className="loader-container" />
+                    </div>
+                  </Col>
+                );
+              })}
+            </Row>
+          );
+        })}
+      </div>
+    );
+  };
+
   render() {
     const { className, divTabs, productTabList, headerText, bannerPosition } = this.props;
     const promoComponent = this.getPromoComponent();
@@ -197,6 +231,7 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
+        {this.getLoader()}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>

@@ -74,4 +74,13 @@ export default css`
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader-container {
+    width: 100%;
+    height: 200px;
+  }
 `;
