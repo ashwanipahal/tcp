@@ -166,8 +166,7 @@ class SearchProduct extends React.PureComponent {
           />
         )}
         <Button
-          buttonVariation="fixed-width"
-          width="40px"
+          width="90px"
           text="Cancel"
           fontSize="fs13"
           fontWeight="regular"
