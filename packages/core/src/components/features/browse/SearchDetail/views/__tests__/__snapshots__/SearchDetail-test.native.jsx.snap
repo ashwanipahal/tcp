@@ -1,3 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchDetailVanilla should render correctly 1`] = `undefined`;
+exports[`SearchDetailVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)
+    margins="0 12px 0 12px"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="\\"Pant\\""
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(ProductListView)
+    breadCrumbs={Array []}
+    filters={null}
+    filtersLength={0}
+    getProducts={[MockFunction]}
+    isLoadingMore={false}
+    labels={Object {}}
+    labelsFilter={Object {}}
+    lastLoadedPageNumber={0}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onPickUpOpenClick={[Function]}
+    onSubmit={[MockFunction]}
+    products={Array []}
+    setListRef={[Function]}
+    slpLabels={
+      Object {
+        "lbl_searched_for": "",
+      }
+    }
+    sortLabels={Object {}}
+    totalProductsCount={0}
+  />
+  <Connect(QuickViewModalContainer) />
+  <Connect(AddedToBagContainer) />
+</Styled(View)>
+`;

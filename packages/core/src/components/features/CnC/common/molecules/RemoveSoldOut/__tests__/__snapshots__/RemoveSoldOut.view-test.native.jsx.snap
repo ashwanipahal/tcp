@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RemoveSoldOut Component RemoveSoldOut should render correctly 1`] = `undefined`;
+exports[`RemoveSoldOut Component RemoveSoldOut should render correctly 1`] = `
+<Styled(Text)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(Text)>
+</Styled(Text)>
+`;
