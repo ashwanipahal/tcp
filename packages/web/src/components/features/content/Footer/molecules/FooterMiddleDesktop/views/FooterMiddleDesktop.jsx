@@ -85,7 +85,7 @@ const FooterMiddleDesktop = ({
         >
           {renderFooterNavLinks(navLinks[i], className, i, linkConfig, footerActionCreator, {
             isSubHeader: false,
-            isLoggedIn: true,
+            isLoggedIn,
           })}
         </Col>
       );
@@ -103,7 +103,7 @@ const FooterMiddleDesktop = ({
       >
         {renderFooterNavLinks(navLinks[0], className, 0, linkConfig, footerActionCreator, {
           isSubHeader: false,
-          isLoggedIn: false,
+          isLoggedIn,
           headerAsImage: true,
         })}
       </Col>
@@ -116,7 +116,7 @@ const FooterMiddleDesktop = ({
       >
         {renderFooterNavLinks(navLinks[1], className, 1, linkConfig, footerActionCreator, {
           isSubHeader: false,
-          isLoggedIn: false,
+          isLoggedIn,
           headerAsImage: true,
         })}
       </Col>

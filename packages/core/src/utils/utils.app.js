@@ -630,6 +630,11 @@ export const readCookieMobileApp = key => {
   });
 };
 
+/**
+ * @function createGoogleMapUrl - returns map apps url.
+ * @param {String} lat - lattitude
+ * @param {String} long - longitude
+ */
 export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
   return Platform.select({
     ios: `maps:${lat},${long}?q=${label}`,
@@ -637,6 +642,11 @@ export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
   });
 };
 
+/**
+ * @function mapHandler - checks if map application is present in phone, opens app,
+ * otherwise opens the map in mobile browser.
+ * @param {Object} store - store info
+ */
 export const mapHandler = store => {
   const {
     basicInfo: { address, coordinates },

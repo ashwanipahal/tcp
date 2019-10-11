@@ -10,6 +10,7 @@ import {
   mapHandler,
 } from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { withTheme } from 'styled-components/native';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
@@ -23,6 +24,7 @@ export class StoreLanding extends PureComponent {
     mapView: false,
     isOutlet: false,
     isGym: isGymboree(),
+    centeredStoreId: '',
   };
 
   toggleMap = event => {
@@ -30,6 +32,13 @@ export class StoreLanding extends PureComponent {
     this.setState(prevState => ({
       mapView: !prevState.mapView,
     }));
+  };
+
+  focusOnMap = (event, id) => {
+    event.preventDefault();
+    this.setState({
+      centeredStoreId: id,
+    });
   };
 
   selectStoreType = ({ gymSelected, outletSelected }) => {
@@ -51,7 +60,10 @@ export class StoreLanding extends PureComponent {
     const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
     const { mapView } = this.state;
     return searchDone && !modifiedStoreList.length ? (
-      <Text>{getLabelValue(labels, 'lbl_storelanding_noStoresFound')}</Text>
+      <Notification
+        status="info"
+        message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+      />
     ) : (
       modifiedStoreList.map((item, index) => (
         <StoreAddressTile
@@ -64,6 +76,7 @@ export class StoreLanding extends PureComponent {
           key={item.basicInfo.id}
           openStoreDetails={this.openStoreDetails}
           openStoreDirections={() => this.openStoreDirections(item)}
+          titleClickCb={this.focusOnMap}
         />
       ))
     );
@@ -83,7 +96,7 @@ export class StoreLanding extends PureComponent {
       getLocationStores,
       geoLocationEnabled,
     } = this.props;
-    const { mapView, isGym, isOutlet } = this.state;
+    const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
 
@@ -144,6 +157,7 @@ export class StoreLanding extends PureComponent {
                 storesList={modifiedStoreList}
                 isCanada={isCanada()}
                 apiKey={getAPIConfig().googleApiKey}
+                centeredStoreId={centeredStoreId}
                 {...this.props}
               />
             )}

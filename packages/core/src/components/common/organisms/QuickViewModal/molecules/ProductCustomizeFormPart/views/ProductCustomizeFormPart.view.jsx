@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
-import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
+import styles, {
+  customPriceStyles,
+  customSubmitButtonStyle,
+} from '../styles/ProductCustomizeFormPart.style';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
@@ -108,6 +111,7 @@ const ProductCustomizeFormPart = props => {
             handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
             fromBagPage={fromBagPage}
             productInfoFromBag={productInfoFromBag}
+            customSubmitButtonStyle={customSubmitButtonStyle}
           />
         </div>
       </div>
