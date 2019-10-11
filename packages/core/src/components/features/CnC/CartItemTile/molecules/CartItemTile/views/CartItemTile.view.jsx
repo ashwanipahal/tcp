@@ -55,6 +55,12 @@ class CartItemTile extends React.Component {
     }
   };
 
+  /**
+   *
+   * @method handleEditCartItemWithStore
+   * @description this method handles edit for cart item for boss/bopis item
+   * @memberof CartItemTile
+   */
   handleEditCartItemWithStore = (pageView, itemBrand, productNumber) => {
     if (pageView === 'myBag') {
       const { onPickUpOpenClick, productDetail, orderId } = this.props;

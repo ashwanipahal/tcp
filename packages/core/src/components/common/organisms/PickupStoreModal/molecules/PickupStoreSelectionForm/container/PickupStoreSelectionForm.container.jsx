@@ -234,6 +234,12 @@ class PickupStoreSelectionFormContainer extends React.Component {
     return onAddItemToCart(payload);
   };
 
+  /**
+   *
+   * @method calculateTargetOrderType
+   * @description this method returns targetOrderType
+   * @memberof PickupStoreSelectionFormContainer
+   */
   calculateTargetOrderType = (isBopisCtaEnabled, isBossCtaEnabled) => {
     if (isBopisCtaEnabled) {
       return ORDER_ITEM_TYPE.BOPIS;
@@ -246,7 +252,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
 
   /**
    *
-   *
+   * @method handleUpdatePickUpItem
+   * @description this method returns targetOrderType
    * @memberof PickupStoreSelectionFormContainer
    */
   handleUpdatePickUpItem = (selectedStoreId, isBossSelected) => {

@@ -134,6 +134,13 @@ export function* getProductSKUInfoSaga(payload) {
   }
 }
 
+/**
+ *
+ * @method openPickupModalFromBag
+ * @description this method handles opening of pickup modal on click of edit from bag for boss/bopis item
+ * @export
+ * @param {*} payload
+ */
 export function* openPickupModalFromBag(payload) {
   try {
     const state = yield select();

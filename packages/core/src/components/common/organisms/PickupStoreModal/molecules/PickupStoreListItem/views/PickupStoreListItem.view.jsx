@@ -262,7 +262,8 @@ class PickupStoreListItem extends React.Component {
 
   /**
    *
-   *
+   * @method handleStoreUpdate
+   * @description this method handles store update
    * @memberof PickupStoreListItem
    */
   handleStoreUpdate() {

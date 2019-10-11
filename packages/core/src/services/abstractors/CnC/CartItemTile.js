@@ -168,6 +168,13 @@ const defaultUpdateItemPayload = payloadData => {
   };
 };
 
+/**
+ *
+ * @method pickUpItemUpdatePayload
+ * @description this method handles payload formation for pickupitem
+ * @param {*} payloadData
+ * @returns
+ */
 const pickUpItemUpdatePayload = payloadData => {
   const { apiPayload } = payloadData;
   return {
@@ -177,6 +184,13 @@ const pickUpItemUpdatePayload = payloadData => {
   };
 };
 
+/**
+ *
+ * @method payloadFormationForUpdateItem
+ * @description this method handles payload formation for update item call for all types of item.
+ * @param {*} payloadData
+ * @returns
+ */
 const payloadFormationForUpdateItem = payloadData => {
   const { updateActionType } = payloadData;
   switch (updateActionType) {
@@ -187,6 +201,13 @@ const payloadFormationForUpdateItem = payloadData => {
   }
 };
 
+/**
+ *
+ * @method updateItem
+ * @description this method call updateItem API call for all types of item.
+ * @param {*} payloadData
+ * @returns
+ */
 export const updateItem = payloadData => {
   const updatePayloadData = payloadFormationForUpdateItem(payloadData);
   const { callback } = payloadData;
