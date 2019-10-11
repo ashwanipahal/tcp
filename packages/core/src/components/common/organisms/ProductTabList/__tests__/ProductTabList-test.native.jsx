@@ -91,7 +91,7 @@ describe('ProductTabList', () => {
           text: 'test',
         },
         category: {
-          cat_id: '2',
+          cat_id: ['2'],
         },
       },
       {
@@ -106,6 +106,6 @@ describe('ProductTabList', () => {
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith('2', tabItems[0]);
+    expect(onProductTabChangeMock).toHaveBeenCalledWith(['2'], [tabItems[0]]);
   });
 });

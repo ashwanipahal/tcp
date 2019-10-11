@@ -55,15 +55,25 @@ class StoreAddressTile extends PureComponent {
       store: { basicInfo, distance },
       labels,
       openStoreDirections,
+      titleClickCb,
     } = this.props;
-    const { storeName } = basicInfo;
+    const { storeName, id } = basicInfo;
     return (
       <Fragment>
         <ListingTileWrapper>
-          <ListingTitleStoreName>
-            {!!storeIndex && `${storeIndex}. `}
-            {storeName}
-          </ListingTitleStoreName>
+          {titleClickCb ? (
+            <Anchor onPress={e => titleClickCb(e, id)}>
+              <ListingTitleStoreName>
+                {!!storeIndex && `${storeIndex}. `}
+                {storeName}
+              </ListingTitleStoreName>
+            </Anchor>
+          ) : (
+            <ListingTitleStoreName>
+              {!!storeIndex && `${storeIndex}. `}
+              {storeName}
+            </ListingTitleStoreName>
+          )}
         </ListingTileWrapper>
         <ListingTileWrapper>
           <ListingTitleText>
@@ -101,7 +111,6 @@ class StoreAddressTile extends PureComponent {
             type="submit"
             color="white"
             onPress={() => (isFavorite ? changeFavoriteStore() : setFavoriteStore(store))}
-            buttonVariation="variable-width"
             text={getLabelValue(
               labels,
               `lbl_storedetails_${isFavorite ? 'changestore' : 'setfav'}_btn`
@@ -113,7 +122,6 @@ class StoreAddressTile extends PureComponent {
             <Button
               type="button"
               onPress={openStoreDirections}
-              buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_storedetails_getdirections_btn')}
             />
           </FooterBtnLeft>
@@ -121,7 +129,6 @@ class StoreAddressTile extends PureComponent {
             <Button
               type="button"
               onPress={openCallStore}
-              buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_storedetails_callstore_btn')}
             />
           </FooterBtnRight>

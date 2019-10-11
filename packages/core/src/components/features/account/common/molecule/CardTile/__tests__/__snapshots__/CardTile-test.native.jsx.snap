@@ -146,10 +146,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -327,10 +324,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -477,7 +471,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -632,7 +626,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -813,10 +807,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -968,7 +959,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -1137,10 +1128,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>
@@ -1449,10 +1437,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       Yucca Street
     </Text>
     <Text>
-      
-            Los Angeles, 
-            CA 
-            90028
+      Los Angeles, CA 90028
     </Text>
   </Styled(View)>
   <Styled(View)>

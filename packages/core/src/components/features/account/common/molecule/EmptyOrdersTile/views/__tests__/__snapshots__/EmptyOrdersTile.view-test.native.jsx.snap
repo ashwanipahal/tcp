@@ -19,7 +19,7 @@ exports[`EmptyOrderTile should render correctly 1`] = `
   >
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="gray"
       customStyle={Object {}}
       customTextStyle={null}

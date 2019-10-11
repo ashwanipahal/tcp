@@ -124,7 +124,6 @@ export class ChangePasswordForm extends React.Component {
         <Button
           fill="BLUE"
           color="white"
-          buttonVariation="variable-width"
           text={getLabelValue(labels, 'lbl_changePassword_saveCta')}
           disabled={pristine}
           onPress={handleSubmit}
@@ -132,7 +131,6 @@ export class ChangePasswordForm extends React.Component {
         <CancelWrapper>
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_changePassword_cancelCta')}
             onPress={onClose}
           />
