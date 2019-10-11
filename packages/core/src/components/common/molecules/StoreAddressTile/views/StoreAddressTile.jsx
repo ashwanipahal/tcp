@@ -2,15 +2,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import {
-  toTimeString,
-  getIconPath,
-  routeToStoreDetails,
-  getSiteId,
-  routerPush,
-} from '@tcp/core/src/utils';
-import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
-import { parseDate } from '@tcp/core/src/utils/parseDate';
+import { getIconPath, routeToStoreDetails, getSiteId, routerPush } from '@tcp/core/src/utils';
+import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
 import style, {
   TileHeader,
   TileFooter,
@@ -144,9 +137,10 @@ class StoreAddressTile extends PureComponent {
       openStoreDirections,
       geoLocationDisabled,
     } = this.props;
-    const { isGym, basicInfo, distance } = store;
+    const { isGym, basicInfo, distance, hours } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
+    const currentDate = new Date();
     return (
       <div className="listing-header">
         <div className="heading-left">
@@ -169,10 +163,7 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {`(${getLabelValue(
-                  labels,
-                  'lbl_storelanding_openInterval'
-                )} ${this.getStoreHours()})`}
+                {getStoreHours(hours, labels, currentDate)}
               </BodyCopy>
               {!geoLocationDisabled && (
                 <BodyCopy
@@ -246,21 +237,24 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileHeader() {
-    const { storeIndex, store, labels, openStoreDirections } = this.props;
-    const { basicInfo, distance } = store;
-    const { storeName } = basicInfo;
-    const storeHours = this.getStoreHours();
+    const { storeIndex, store, labels, openStoreDirections, titleClickCb } = this.props;
+    const { basicInfo, distance, hours } = store;
+    const { storeName, id } = basicInfo;
+    const currentDate = new Date();
+    const storeHours = getStoreHours(hours, labels, currentDate);
 
     return (
       <div className="store-listing-header">
         <div className="title-one">
           <BodyCopy
             fontSize="fs14"
-            component="span"
+            component={titleClickCb ? Anchor : 'span'}
             color="text.primary"
             fontFamily="secondary"
             fontWeight="semibold"
             className="store-name store-name--listing"
+            handleLinkClick={e => titleClickCb(e, id)}
+            noLink
           >
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
@@ -269,7 +263,7 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {`(${getLabelValue(labels, 'lbl_storelanding_openInterval')} ${storeHours})`}
+              {storeHours}
             </BodyCopy>
           )}
           <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
@@ -390,42 +384,6 @@ class StoreAddressTile extends PureComponent {
         </div>
       </div>
     );
-  }
-
-  getStoreHours() {
-    const {
-      store: { hours },
-    } = this.props;
-    const todaysDate = new Date();
-    const { regularHours, holidayHours, regularAndHolidayHours } = hours;
-    const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
-    let selectedInterval = intervals.filter(hour => {
-      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-      const parsedDate = new Date(toInterval);
-      return (
-        parsedDate.getDate() === todaysDate.getDate() &&
-        parsedDate.getMonth() === todaysDate.getMonth() &&
-        parsedDate.getFullYear() === todaysDate.getFullYear()
-      );
-    });
-    // Fallback for Date and month not matching.
-    // We check day and year instead.
-    if (!selectedInterval.length) {
-      selectedInterval = intervals.filter(hour => {
-        const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-        const parsedDate = new Date(toInterval);
-        return (
-          parsedDate.getDay() === todaysDate.getDay() &&
-          parsedDate.getFullYear() === todaysDate.getFullYear()
-        );
-      });
-    }
-    try {
-      return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
-    } catch (err) {
-      // Show empty incase no data found.
-      return '';
-    }
   }
 
   changeFavStoreLink() {

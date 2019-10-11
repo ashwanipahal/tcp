@@ -50,6 +50,7 @@ const styles = css`
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
       }
 
       input[type='radio']:focus {

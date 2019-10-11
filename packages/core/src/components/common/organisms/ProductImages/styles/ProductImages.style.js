@@ -61,6 +61,9 @@ export default css`
   .icon-facebook {
     margin-right: 14px;
   }
+  .icon-expand {
+    margin-right: 6px;
+  }
 
   @media ${props => props.theme.mediaQuery.medium} {
     .main-image-container-wrap {
@@ -74,6 +77,8 @@ export default css`
     }
     .resize-text {
       display: inline-flex;
+      flex-direction: row;
+      align-items: center;
     }
     .social-connect-wrapper {
       padding-top: 64px;
@@ -133,5 +138,10 @@ export const carousalStyle = css`
   }
   .slick-disabled {
     display: none !important;
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .slick-dots {
+      display: none;
+    }
   }
 `;
