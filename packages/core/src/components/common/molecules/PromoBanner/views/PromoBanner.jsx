@@ -72,7 +72,7 @@ const PromoBanner = props => {
               style === 'percentage_wrapped_extra_large' ||
               style === 'percentage_wrapped_large' ||
               style === 'percentage_all_wrapped_normal' ||
-              style === 'modT_percentage_all_wrapped_normal'
+              style === 'percentage_all_wrapped_normal_tab'
             ) {
               const percentageTexts = text.split(' ');
               promoText = (

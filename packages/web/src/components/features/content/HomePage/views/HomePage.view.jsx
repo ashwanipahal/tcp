@@ -27,8 +27,8 @@ const HomePageView = dynamic({
   }),
   render: ({ slots }, modules) => {
     return [
-      <ModuleT {...mock.moduleT.composites} />,
       <HomePageSlots slots={slots} modules={modules} />,
+      <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
     ];

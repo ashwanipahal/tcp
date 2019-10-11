@@ -5,7 +5,7 @@ import { Col, DamImage, Row } from '../../../atoms';
 import { ButtonList, Grid, LinkText, PromoBanner } from '../..';
 import withStyles from '../../../hoc/withStyles';
 import moduleTStyle from '../styles/ModuleT.style';
-import { getLocator, isGymboree } from '../../../../../utils';
+import { getLocator } from '../../../../../utils';
 import config from '../moduleT.config';
 
 /**
@@ -131,11 +131,7 @@ class ModuleT extends React.PureComponent {
             )}
           </Col>
         </Row>
-        <div
-          className={`button-list-container ${buttonListCtaType} ${
-            isGymboree() ? 'gymboree-button-list' : 'tcp-button-list'
-          }`}
-        >
+        <div className={`button-list-container ${buttonListCtaType}`}>
           {ctaItems && (
             <ButtonList
               buttonsData={ctaItems}

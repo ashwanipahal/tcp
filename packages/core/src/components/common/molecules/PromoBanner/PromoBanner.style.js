@@ -1,8 +1,92 @@
 /* eslint-disable max-lines */
 import { css } from 'styled-components';
 
-// TODO: Remove style10 when currency_up_style is added to CMS
+const mediumTextRegular = (props, variation) => {
+  return `
+    {
+      color: ${props.theme.colorPalette.gray['900']};
+      display: block;
+      font-family: ${props.theme.typography.fonts.primary};
+      font-size: ${props.theme.typography.fontSizes.fs20};
+      font-weight: ${props.theme.typography.fontWeights.semibold};
+      line-height: ${props.theme.typography.lineHeights.lh107};
+      letter-spacing: ${props.theme.typography.letterSpacings.ls1};
 
+      ${
+        variation === 'tab'
+          ? `
+        @media ${props.theme.mediaQuery.large} {
+          font-size: ${props.theme.typography.fontSizes.fs32};
+        }
+      `
+          : `
+      @media ${props.theme.mediaQuery.medium} {
+        font-size: ${props.theme.typography.fontSizes.fs32};
+      }
+      `
+      }
+    }
+  `;
+};
+
+const percentageAllWrappedNormal = (props, variation) => {
+  const className = `percentage_all_wrapped_normal${variation}`;
+  return `
+    {
+      color: ${props.theme.colorPalette.gray['900']};
+      display: inline-block;
+      font-family: ${props.theme.typography.fonts.primary};
+      font-size: ${props.theme.typography.fontSizes.fs48};
+      font-weight: ${props.theme.typography.fontWeights.black};
+      text-align: center;
+      transform: translateX(-18px);
+      margin-top: -${props.theme.spacing.ELEM_SPACING.XS};
+
+      .${className}-1 {
+        font-size: ${props.theme.typography.fontSizes.fs28};
+        position: absolute;
+        top: ${props.theme.spacing.ELEM_SPACING.XXS};
+      }
+
+      .${className}-2 {
+        font-size: ${props.theme.typography.fontSizes.fs18};
+        position: absolute;
+        bottom: ${props.theme.spacing.ELEM_SPACING.XS};
+      }
+
+      @media ${props.theme.mediaQuery.medium} {
+        margin-top: -${props.theme.spacing.ELEM_SPACING.XL};
+        transform: translateX(-50px);
+
+        .${className}-0 {
+          font-size: 152px;
+        }
+        .${className}-1 {
+          font-size: 88px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
+        }
+        .${className}-2 {
+          font-size: ${props.theme.typography.fontSizes.fs48};
+          bottom: ${props.theme.spacing.ELEM_SPACING.LRG};
+        }
+      }
+
+      @media ${props.theme.mediaQuery.large} {
+        margin-top: -${props.theme.spacing.ELEM_SPACING.MED};
+
+        .${className}-1 {
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
+        }
+
+        .${className}-2 {
+          bottom: ${props.theme.spacing.ELEM_SPACING.LRG};
+        }
+      }
+    }
+  `;
+};
+
+// TODO: Remove style10 when currency_up_style is added to CMS
 export default css`
   font-family: ${props => props.theme.typography.fonts.primary};
   text-align: center;
@@ -377,17 +461,7 @@ export default css`
   * Module R Promo Banner styles
   *********************************/
   .medium_text_regular {
-    color: ${props => props.theme.colorPalette.gray['900']};
-    display: block;
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs20};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    line-height: ${props => props.theme.typography.lineHeights.lh107};
-    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs32};
-    }
+    ${props => mediumTextRegular(props)}
   }
   /*
   * Module S Promo Banner styles
@@ -401,132 +475,33 @@ export default css`
   }
 
   .percentage_all_wrapped_normal {
-    color: ${props => props.theme.colorPalette.gray['900']};
-    display: inline-block;
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    text-align: center;
-    transform: translateX(-18px);
-    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
-
-    .percentage_all_wrapped_normal-1 {
-      font-size: ${props => props.theme.typography.fontSizes.fs28};
-      position: absolute;
-      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
-
-    .percentage_all_wrapped_normal-2 {
-      font-size: ${props => props.theme.typography.fontSizes.fs18};
-      position: absolute;
-      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: -${props => props.theme.spacing.ELEM_SPACING.XL};
-      transform: translateX(-50px);
-
-      .percentage_all_wrapped_normal-0 {
-        font-size: 152px;
-      }
-
-      .percentage_all_wrapped_normal-1 {
-        font-size: 88px;
-        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-
-      .percentage_all_wrapped_normal-2 {
-        font-size: ${props => props.theme.typography.fontSizes.fs48};
-        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
-
-      .percentage_all_wrapped_normal-1 {
-        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-
-      .percentage_all_wrapped_normal-2 {
-        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-      }
-    }
+    ${props => percentageAllWrappedNormal(props)};
   }
 
   /*
   * Module T Promo Banner styles
   *********************************/
-  .modT_medium_text_regular {
-    color: ${props => props.theme.colorPalette.gray['900']};
-    display: block;
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs20};
-    font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    line-height: ${props => props.theme.typography.lineHeights.lh107};
-    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
-
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs32};
-    }
+  .medium_text_regular_tab {
+    ${props => mediumTextRegular(props, 'tab')};
   }
 
-  .modT_percentage_all_wrapped_normal {
-    color: ${props => props.theme.colorPalette.gray['900']};
-    display: inline-block;
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    text-align: center;
-    transform: translateX(-18px);
-    margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+  .percentage_all_wrapped_normal_tab {
+    ${props => percentageAllWrappedNormal(props, '_tab')};
 
-    .modT_percentage_all_wrapped_normal-1 {
-      font-size: ${props => props.theme.typography.fontSizes.fs28};
-      position: absolute;
-      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
-
-    .modT_percentage_all_wrapped_normal-2 {
-      font-size: ${props => props.theme.typography.fontSizes.fs18};
-      position: absolute;
-      bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin-top: -${props => props.theme.spacing.ELEM_SPACING.XS};
+      transform: translateX(-18px);
 
-      .modT_percentage_all_wrapped_normal-0 {
+      .percentage_all_wrapped_normal_tab-0 {
         font-size: 62px;
       }
-
-      .modT_percentage_all_wrapped_normal-1 {
+      .percentage_all_wrapped_normal_tab-1 {
         font-size: ${props => props.theme.typography.fontSizes.fs36};
         top: ${props => props.theme.spacing.ELEM_SPACING.XS};
       }
-
-      .modT_percentage_all_wrapped_normal-2 {
+      .percentage_all_wrapped_normal_tab-2 {
         font-size: ${props => props.theme.typography.fontSizes.fs18};
         bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      }
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-top: -${props => props.theme.spacing.ELEM_SPACING.MED};
-      transform: translateX(-50px);
-
-      .modT_percentage_all_wrapped_normal-0 {
-        font-size: 152px;
-      }
-
-      .modT_percentage_all_wrapped_normal-1 {
-        font-size: 88px;
-        top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-      }
-
-      .modT_percentage_all_wrapped_normal-2 {
-        font-size: ${props => props.theme.typography.fontSizes.fs48};
-        bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
     }
   }
