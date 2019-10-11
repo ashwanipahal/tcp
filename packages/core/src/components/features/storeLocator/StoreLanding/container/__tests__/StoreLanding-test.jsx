@@ -62,4 +62,13 @@ describe('StoreSearch Container', () => {
     wrapper.instance().openStoreDetails(event, suggestedStore);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('should call selectStoreType', () => {
+    const wrapper = shallow(<StoreLandingVanilla {...props} />);
+    const event = {
+      preventDefault: jest.fn(),
+    };
+    wrapper.instance().focusOnMap(event, '123-321');
+    expect(wrapper.instance().state.centeredStoreId).toBe('123-321');
+  });
 });
