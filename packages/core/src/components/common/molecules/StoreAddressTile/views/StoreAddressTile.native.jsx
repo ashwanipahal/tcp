@@ -55,15 +55,25 @@ class StoreAddressTile extends PureComponent {
       store: { basicInfo, distance },
       labels,
       openStoreDirections,
+      titleClickCb,
     } = this.props;
-    const { storeName } = basicInfo;
+    const { storeName, id } = basicInfo;
     return (
       <Fragment>
         <ListingTileWrapper>
-          <ListingTitleStoreName>
-            {!!storeIndex && `${storeIndex}. `}
-            {storeName}
-          </ListingTitleStoreName>
+          {titleClickCb ? (
+            <Anchor onPress={e => titleClickCb(e, id)}>
+              <ListingTitleStoreName>
+                {!!storeIndex && `${storeIndex}. `}
+                {storeName}
+              </ListingTitleStoreName>
+            </Anchor>
+          ) : (
+            <ListingTitleStoreName>
+              {!!storeIndex && `${storeIndex}. `}
+              {storeName}
+            </ListingTitleStoreName>
+          )}
         </ListingTileWrapper>
         <ListingTileWrapper>
           <ListingTitleText>
