@@ -40,6 +40,7 @@ const EmptyBagPage = ({
   bagLabels,
   isBagPageSflSection,
   showPlccApplyNow = true,
+  onLinkClick,
 }) => {
   return (
     <div className={className}>
@@ -63,9 +64,14 @@ const EmptyBagPage = ({
                 isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
               )}
               className="CTA-button"
-              onClick={() => {
-                const page = !isUserLoggedIn ? CHECKOUT_ROUTES.login : CHECKOUT_ROUTES.home;
-                utility.routeToPage(page);
+              onClick={e => {
+                if (!isUserLoggedIn) {
+                  const login = 'login';
+                  onLinkClick({ e, componentId: login });
+                } else {
+                  const page = CHECKOUT_ROUTES.home;
+                  utility.routeToPage(page);
+                }
               }}
             >
               <BodyCopy
@@ -107,6 +113,7 @@ EmptyBagPage.propTypes = {
   bagLabels: PropTypes.bool.isRequired,
   showPlccApplyNow: PropTypes.bool.isRequired,
   isBagPageSflSection: PropTypes.bool,
+  onLinkClick: PropTypes.func.isRequired,
 };
 
 EmptyBagPage.defaultProps = {

@@ -165,6 +165,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           openCallStore={null}
           openStoreDetail={null}
           openStoreDirections={[Function]}
+          searchDone={false}
           setFavoriteStore={null}
           store={
             Object {
@@ -620,6 +621,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           openStoreDetail={null}
           openStoreDetails={[Function]}
           openStoreDirections={[Function]}
+          searchDone={false}
           setFavoriteStore={null}
           store={
             Object {

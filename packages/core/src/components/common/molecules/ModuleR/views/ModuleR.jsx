@@ -168,16 +168,16 @@ class ModuleR extends React.PureComponent {
 
   getLoader = () => {
     const { medium, large } = viewport();
-    let colCount = 9;
+    let colCount = 3;
     if (medium) {
-      colCount = 11;
+      colCount = 4;
     }
     if (large) {
       colCount = 6;
     }
     return (
       <div>
-        {Array.from({ length: 3 }).map((rItem, rowIndex) => {
+        {Array.from({ length: 2 }).map((rItem, rowIndex) => {
           return (
             <Row className="" key={`rowkey_${rowIndex.toString()}`}>
               {Array.from({ length: colCount }).map((cItem, index) => {

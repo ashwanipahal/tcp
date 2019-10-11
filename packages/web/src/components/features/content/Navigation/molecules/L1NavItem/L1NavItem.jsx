@@ -116,7 +116,6 @@ class L1NavItem extends React.PureComponent {
             color="text.hint"
             lineHeight="lh115"
             data-locator={dataLocator}
-            tabIndex={0}
             onMouseOver={this.onHover}
             onFocus={this.onHover}
             onMouseOut={this.onMouseLeave}
@@ -124,7 +123,7 @@ class L1NavItem extends React.PureComponent {
             {...others}
           >
             <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
-              <div className="nav-bar-l1-content" role="button" tabIndex={0}>
+              <div className="nav-bar-l1-content">
                 <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
                 <span
                   className={`nav-bar-item-content ${

@@ -102,7 +102,10 @@ class HeaderMiddleNav extends React.PureComponent {
     } = this.props;
     const brand = getBrand();
     const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
-
+    const {
+      accessibility: { closeIconButton, hamburgerMenu } = {},
+      store: storeLabel = {},
+    } = labels;
     return (
       <React.Fragment>
         <Row className="content-wrapper" fullBleed>
@@ -115,7 +118,7 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className="header-middle-nav-storelocator"
             >
-              <StoreLocatorLink store={store} labels={labels && labels.store} />
+              <StoreLocatorLink store={store} labels={storeLabel} />
             </Col>
             <Col
               className="header-middle-nav-search"
@@ -132,7 +135,9 @@ class HeaderMiddleNav extends React.PureComponent {
                     : '/static/images/menu.svg'
                 }
                 alt="hamburger menu"
+                role="button"
                 tabIndex="0"
+                aria-label={navigationDrawer.open ? closeIconButton : hamburgerMenu}
                 className="hamburger-menu"
                 onClick={handleNavigationDrawer(
                   openNavigationDrawer,
@@ -149,7 +154,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-              <StoreLocatorLink store={store} labels={labels && labels.store} />
+              <StoreLocatorLink store={store} labels={storeLabel} />
               <BrandLogo
                 alt={config[brand].alt}
                 className="header-brand__home-logo--brand"

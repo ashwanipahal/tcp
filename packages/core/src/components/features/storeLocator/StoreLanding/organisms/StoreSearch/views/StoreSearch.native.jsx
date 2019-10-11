@@ -187,7 +187,6 @@ class StoreSearch extends Component {
               component={GooglePlacesInput}
               dataLocator="storeAddressLocator"
               componentRestrictions={{ ...{ country: [selectedCountry] } }}
-              onChange={this.handleChange}
               onValueChange={this.handleLocationSelection}
               refs={instance => {
                 this.locationRef = instance;

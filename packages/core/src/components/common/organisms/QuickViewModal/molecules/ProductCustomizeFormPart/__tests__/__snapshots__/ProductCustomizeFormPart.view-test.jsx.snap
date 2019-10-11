@@ -304,6 +304,19 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             "unbxdProdId": "2100606_IV",
           }
         }
+        customSubmitButtonStyle={
+          Array [
+            "
+  @media ",
+            [Function],
+            " {
+    .add-to-bag-button {
+      width: 243px;
+    }
+  }
+",
+          ]
+        }
         errorOnHandleSubmit=""
         plpLabels={Object {}}
       />
