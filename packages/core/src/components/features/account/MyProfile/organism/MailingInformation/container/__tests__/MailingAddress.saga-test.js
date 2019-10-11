@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import MailingAddressSaga, { updateMailingAddressPut } from '../MailingAddress.saga';
-import { addMailingAddressSuccess } from '../MailingAddress.actions';
+import { addMailingAddressSuccess, addMailingAddressFail } from '../MailingAddress.actions';
 import { getUserInfo } from '../../../../../User/container/User.actions';
 import { updateProfileSuccess } from '../../../../container/MyProfile.actions';
 import {
@@ -82,6 +82,17 @@ describe('MailingAddress saga', () => {
     mailingInfoGeneration.next();
     const putDescriptor = mailingInfoGeneration.next().value;
     expect(putDescriptor).toEqual(put(addMailingAddressSuccess(response.body)));
+  });
+
+  it('should dispatch addAddressFail action if response is fail', () => {
+    const errorBody = {};
+    const error = {
+      body: {
+        errors: errorBody,
+      },
+    };
+    const putDescriptor = mailingInfoGeneration.throw(error).value;
+    expect(putDescriptor).toEqual(put(addMailingAddressFail(errorBody)));
   });
 
   it('should return correct takeLatest effect', () => {
