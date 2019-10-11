@@ -44,6 +44,15 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
+    it('should render details view - with titleClickCb', () => {
+      const titleClickCb = jest.fn();
+      const component = mount(
+        <ThemeProvider theme={Theme()}>
+          <StoreAddressTile {...props} titleClickCb={titleClickCb} />
+        </ThemeProvider>
+      );
+      expect(component.html()).toMatchSnapshot();
+    });
     it('should render details view with clickable title', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
@@ -92,9 +101,10 @@ describe('StoreAddressTile component', () => {
         variation: 'listing',
         storeIndex: 1,
       };
+      const storeMockData = { ...props.store, hours: { ...props.store.hours, regularHours: [] } };
       const component = mount(
         <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
+          <StoreAddressTile {...testProps} store={storeMockData} />
         </ThemeProvider>
       );
       expect(component.html()).toMatchSnapshot();
