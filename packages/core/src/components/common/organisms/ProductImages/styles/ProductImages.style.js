@@ -134,4 +134,9 @@ export const carousalStyle = css`
   .slick-disabled {
     display: none !important;
   }
+  @media ${props => props.theme.mediaQuery.large} {
+    .slick-dots {
+      display: none;
+    }
+  }
 `;
