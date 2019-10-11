@@ -56,13 +56,17 @@ class HeaderMiddleNav extends React.PureComponent {
     e.preventDefault();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
-        component: e.target.id,
+        component: e.target.id !== '' ? e.target.id : e.target.parentNode.id,
         variation: 'primary',
       });
     }
     this.setState({
       userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
     });
+  };
+
+  handleCarrottoggle = userNameClick => {
+    return userNameClick ? 'carrot-down-icon' : 'carrot-up-icon';
   };
 
   handleKeyDown = (event, openNavigationDrawer, closeNavigationDrawer, isNavigationDrawerOpen) => {
@@ -165,15 +169,29 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
             >
+              <SearchBar
+                className={!isSearchOpen && 'leftLink'}
+                setSearchState={this.setSearchState}
+                isSearchOpen={isSearchOpen}
+              />
               {userName ? (
                 <React.Fragment>
                   <BodyCopy
                     id="accountDrawer"
                     textAlign="right"
-                    className="username"
+                    className="username rightLink"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                   >
-                    {`Hi, ${userName}`}
+                    <span className="user-name">
+                      {`Hi, ${userName}`}
+                      <Image
+                        alt="user"
+                        className={this.handleCarrottoggle(userNameClick)}
+                        src={getIconPath('down_arrow_icon')}
+                        height="6px"
+                      />
+                    </span>
+                    <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
                   </BodyCopy>
                 </React.Fragment>
               ) : (
@@ -204,11 +222,7 @@ class HeaderMiddleNav extends React.PureComponent {
                   </React.Fragment>
                 )
               )}
-              <SearchBar
-                className={!isSearchOpen && 'rightLink'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
-              />
+
               <Anchor
                 to=""
                 id="cartIcon"

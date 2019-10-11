@@ -50,6 +50,30 @@ export default css`
     cursor: pointer;
     display: inline-block;
   }
+  .carrot-down-icon {
+    margin: 9px;
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+  }
+  .carrot-up-icon {
+    margin: 9px;
+    transform: rotate(180deg);
+    transition: transform 0.15s linear;
+  }
+  .user-name {
+    cursor: pointer;
+    display: none;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline-block;
+    }
+  }
+  .usericon {
+    cursor: pointer;
+    display: inline-block;
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+  }
   .product-image {
     vertical-align: baseline;
   }

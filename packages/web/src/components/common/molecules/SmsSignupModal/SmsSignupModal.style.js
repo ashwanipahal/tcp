@@ -25,7 +25,6 @@ const SmsSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
-
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
