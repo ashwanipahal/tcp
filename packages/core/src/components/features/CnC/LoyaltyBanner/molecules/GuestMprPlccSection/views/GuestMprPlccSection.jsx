@@ -43,8 +43,8 @@ const GuestMprPlccSection = props => {
       {!isProductDetailView && (
         <BodyCopy
           className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
-          fontSize="fs16"
           color="text.primary"
+          fontSize="fs16"
           fontFamily="secondary"
           fontWeight="extrabold"
         >
