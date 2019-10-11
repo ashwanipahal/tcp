@@ -10,6 +10,7 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
 import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 import {
   SaveButtonWrapper,
   FieldTopMarginWrapper,
@@ -118,6 +119,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
             component={TextBox}
             dataLocator="editPersonalInfo-phnumber"
             type="tel"
+            normalize={formatPhoneNumber}
           />
         </FieldTopMarginWrapper>
 
