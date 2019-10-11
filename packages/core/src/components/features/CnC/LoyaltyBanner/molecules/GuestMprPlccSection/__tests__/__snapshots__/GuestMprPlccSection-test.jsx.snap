@@ -17,6 +17,18 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <Styled(BodyCopy)
+    className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs20"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
     className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
     color="text.primary"
     component="p"
