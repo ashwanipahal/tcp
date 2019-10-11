@@ -127,9 +127,6 @@ class StoreSearch extends Component {
 
   render() {
     const { labels, error, selectedCountry, toggleMap, mapView, getLocationStores } = this.props;
-
-    console.log(':::', isGymboree());
-
     const { errorNotFound, gymSelected, outletSelected } = this.state;
     const errorMessage = errorNotFound
       ? getLabelValue(labels, 'lbl_storelanding_errorLabel')
