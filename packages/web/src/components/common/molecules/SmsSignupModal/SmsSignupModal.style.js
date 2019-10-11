@@ -28,6 +28,25 @@ const SmsSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
+  .alignRight {
+    right: 14px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      right: 16px;
+    }
+  }
+  .alignTop {
+    top: 14px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      top: 16px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .button-wrapper {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {

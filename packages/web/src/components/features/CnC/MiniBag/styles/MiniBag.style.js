@@ -27,6 +27,10 @@ export const modalStyles = css`
       display: block;
     }
   }
+  .alignTop {
+    /* stylelint-disable-line */
+    top: 28px;
+  }
 `;
 const styles = css`
   .mini-bg-close {
