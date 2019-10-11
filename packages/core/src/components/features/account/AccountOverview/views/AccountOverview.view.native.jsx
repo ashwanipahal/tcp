@@ -213,7 +213,6 @@ class AccountOverview extends PureComponent<Props> {
                 id="createAccount"
                 type="submit"
                 width="150px"
-                buttonVariation="variable-width"
                 data-locator=""
                 text={getLabelValue(labels, 'lbl_overview_join_text')}
                 onPress={e =>
@@ -229,11 +228,9 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                className="classBtn"
                 fill="BLUE"
                 id="login"
                 type="submit"
-                buttonVariation="variable-width"
                 data-locator=""
                 width="150px"
                 text={getLabelValue(labels, 'lbl_overview_login_text')}

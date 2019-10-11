@@ -29,8 +29,8 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
       anchorVariation="primary"
       dataLocator="addedToBag-continueShopping"
       fontSizeVariation="medium"
+      handleLinkClick={[Function]}
       noLink={true}
-      to=""
       underline={true}
     >
       continue Shopping
@@ -68,8 +68,8 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
       anchorVariation="primary"
       dataLocator="addedToBag-continueShopping"
       fontSizeVariation="medium"
+      handleLinkClick={[Function]}
       noLink={true}
-      to=""
       underline={true}
     >
       continue Shopping
@@ -107,8 +107,8 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       anchorVariation="primary"
       dataLocator="addedToBag-continueShopping"
       fontSizeVariation="medium"
+      handleLinkClick={[Function]}
       noLink={true}
-      to=""
       underline={true}
     >
       continue Shopping

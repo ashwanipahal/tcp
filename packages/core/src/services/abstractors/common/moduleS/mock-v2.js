@@ -31,7 +31,7 @@ export default {
         {
           image: {
             url:
-              'https://test5.childrensplace.com/image/upload/v1567846221/Module-H_TCP_ybjasx.jpg',
+              'https://dam-qa-ressh.cloudinary.com/image/upload/v1570707425/Module-H_TCP_ybjasx_ahura1.jpg',
             alt: 'Pool',
             title: 'Pool',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_450',

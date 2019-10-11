@@ -4,6 +4,7 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
 <Styled(SafeAreaView)
   showSearch={false}
 >
+  <Connect(ToastContainer) />
   <Styled(View)>
     <Styled(View)
       data-locator="global_headerpanel"
