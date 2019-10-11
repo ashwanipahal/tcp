@@ -33,7 +33,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize="fs16"
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -75,11 +75,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <Styled(BodyCopy)
-    className="save30Today alignCenter mpr-plcc-theme"
+    className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize="fs20"
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -87,11 +87,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <Styled(BodyCopy)
-    className="earnDoublePoints alignCenter elem-pl-SM elem-pr-SM"
+    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize={12}
+    fontSize="fs16"
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
@@ -99,7 +99,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     textAlign="left"
   />
   <div
-    className="subtotalPointsSection elem-pl-SM elem-pr-SM"
+    className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM"
   >
     <Styled(Row)
       className="currentSubtotalRow"
