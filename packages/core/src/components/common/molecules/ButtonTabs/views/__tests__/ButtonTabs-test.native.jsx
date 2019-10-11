@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ButtonTabs, { getActiveStatus } from '../ButtonTabs.native';
+import ButtonTabs from '../ButtonTabs.native';
 
 describe('ButtonTabs', () => {
   const props = {
@@ -26,20 +26,5 @@ describe('ButtonTabs', () => {
   const component = shallow(<ButtonTabs {...props} />);
   it('Should be defined ', () => {
     expect(component).toBeDefined();
-  });
-
-  it('Should call getActiveStatus', () => {
-    props.selectedTabId = 1;
-    const componentWithEqualProp = shallow(<ButtonTabs {...props} />);
-    getActiveStatus(1, 1);
-    expect(componentWithEqualProp).toBeDefined();
-  });
-
-  it('Should call getActiveStatus with no matching id', () => {
-    getActiveStatus(1, 2);
-  });
-
-  it('Should call getActiveStatus for collection of data', () => {
-    getActiveStatus([], []);
   });
 });

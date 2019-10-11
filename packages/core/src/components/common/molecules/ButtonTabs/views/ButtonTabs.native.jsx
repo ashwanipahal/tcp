@@ -1,35 +1,17 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import getActiveStatus from '../utils';
 import { Wrapper, Button, ButtonWrapper } from '../ButtonTabs.style.native';
-
-/**
- * @constant getActiveStatus
- * @params - id - id of iteratable button tabs
- *           selectedTabId - id of selected tab from buttonTabs
- *
- * @description -  gives status of activeness of button.
- */
-export const getActiveStatus = (id, selectedTabId = []) => {
-  if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
-    return true;
-  }
-  if (id === selectedTabId) {
-    return true;
-  }
-  return false;
-};
 
 function ButtonTabs(props) {
   const { tabs, selectedTabId, onTabChange } = props;
-  const selectedTab = Array.isArray(selectedTabId) ? selectedTabId[0] : selectedTabId;
   return (
     <Wrapper>
       {tabs.map(({ label, id }, index) => (
         <ButtonWrapper key={id} noRightBorder={index === tabs.length - 1}>
           <Button
-            active={getActiveStatus(id, selectedTab)}
+            active={getActiveStatus(id, selectedTabId)}
             text={label}
             buttonVariation="mini-nav"
             onPress={() => onTabChange(id)}

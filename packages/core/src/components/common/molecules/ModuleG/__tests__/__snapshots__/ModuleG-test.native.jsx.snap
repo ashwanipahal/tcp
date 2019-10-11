@@ -87,7 +87,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             "category": Object {
               "cat_id": Array [
                 "47502>47535>54071",
-                "9900099",
+                "47502>47535>54071",
               ],
             },
             "singleCTAButton": Object {
@@ -113,8 +113,8 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
           Object {
             "category": Object {
               "cat_id": Array [
-                "009900",
-                "119900",
+                "47526",
+                "47526",
               ],
             },
             "singleCTAButton": Object {
