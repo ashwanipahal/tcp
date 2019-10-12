@@ -26,6 +26,7 @@ import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock'
 import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
+import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -91,6 +92,7 @@ class HomePageView extends React.PureComponent<Props> {
         />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
+        <Recommendations variations="moduleO" />
       </LazyloadScrollView>
     );
   }

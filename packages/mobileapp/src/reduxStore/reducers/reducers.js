@@ -45,6 +45,7 @@ import SearchDetailReducer from '@tcp/core/src/components/features/browse/Search
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
+import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -101,6 +102,7 @@ import {
   EXTRA_POINTS_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  RECOMMENDATIONS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -205,6 +207,7 @@ const rootReducer = combineReducers({
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
+  [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
 });
 
 export default rootReducer;

@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
 import { getSiteId } from '../../../../utils';
-import { executeUnbxdAPICall } from '../../../handler';
+import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
 
@@ -105,7 +105,41 @@ const RecommendationsAbstractor = {
       }
     });
   },
+  getAppData: ({ pageType, categoryName, partNumber }) => {
+    const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
+    const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
+    const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
+    const region = 'US'; // TODO use `CA` for Canada
+    const requestLocation = {
+      impressionId: ADOBE_RECOMMENDATIONS_IMPRESSION_ID,
+      host: ADOBE_RECOMMENDATIONS_HOST,
+    };
 
+    return executeExternalAPICall({
+      webService: {
+        method: 'POST',
+        URI: ADOBE_RECOMMENDATIONS_URL,
+      },
+      body: {
+        marketingCloudVisitorId: '',
+        mbox: 'target-global-mbox',
+        requestLocation,
+        mboxParameters: {
+          'entity.categoryId': categoryName || 'boysskinnychinopants',
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US',
+          pageType,
+          region,
+        },
+      },
+    })
+      .then(result => {
+        logger.info('result', result);
+        return result;
+      })
+      .error(e => {
+        logger.error(e);
+      });
+  },
   handleValidationError: e => {
     logger.error(e);
   },

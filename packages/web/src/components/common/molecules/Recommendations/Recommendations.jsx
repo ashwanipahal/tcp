@@ -77,7 +77,7 @@ class Recommendations extends Component {
     });
   }
 
-  renderRecommendationVariation(variation) {
+  renderRecommendationView(variation) {
     const {
       moduleOHeaderLabel,
       modulePHeaderLabel,
@@ -91,7 +91,8 @@ class Recommendations extends Component {
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
-    const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
+    const headerLabel =
+      variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
       products &&
@@ -178,7 +179,7 @@ class Recommendations extends Component {
     return variation.map(value => {
       return (
         <section className={`${className} recommendations-tile`}>
-          {this.renderRecommendationVariation(value)}
+          {this.renderRecommendationView(value)}
         </section>
       );
     });
