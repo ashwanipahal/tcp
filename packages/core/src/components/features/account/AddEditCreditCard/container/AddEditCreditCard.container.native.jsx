@@ -10,6 +10,8 @@ import {
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view.native';
@@ -22,6 +24,7 @@ import {
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from './AddEditCreditCard.utils';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -44,6 +47,9 @@ export class AddEditCreditCard extends React.PureComponent {
     selectedCard: PropTypes.shape({}),
     resetAddCreditCardAction: PropTypes.func,
     addressLabels: PropTypes.shape({}),
+    addEditCreditCardErrorMsg: PropTypes.string,
+    showNotification: PropTypes.bool.isRequired,
+    toastMessage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -62,6 +68,7 @@ export class AddEditCreditCard extends React.PureComponent {
     selectedCard: null,
     resetAddCreditCardAction: noop,
     addressLabels: {},
+    addEditCreditCardErrorMsg: '',
   };
 
   constructor(props) {
@@ -89,12 +96,19 @@ export class AddEditCreditCard extends React.PureComponent {
       addressList,
       onClose,
       updateCardList,
+      addEditCreditCardErrorMsg,
+      toastMessage,
+      showNotification,
     } = this.props;
     const isAddressListUpdated = !prevProps.addressList && addressList;
     if (!prevProps.addEditCreditCardSuccess && addEditCreditCardSuccess) {
       showSuccessNotification();
       updateCardList();
       onClose();
+    }
+
+    if (!prevProps.showNotification && showNotification) {
+      toastMessage(addEditCreditCardErrorMsg);
     }
 
     if (isAddressListUpdated || (!prevProps.creditCard && creditCard)) {
@@ -241,6 +255,8 @@ const mapStateToProps = (state, ownProps) => {
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
     addressLabels: getAddEditAddressLabels(state),
+    showNotification: getshowNotification(state),
+    addEditCreditCardErrorMsg: getAddGiftCardErrorMessage(state),
   };
 };
 
@@ -260,6 +276,9 @@ const mapDispatchToProps = dispatch => {
     },
     resetAddCreditCardAction: () => {
       dispatch(resetAddCreditCardState());
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };
