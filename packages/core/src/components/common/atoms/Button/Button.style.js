@@ -94,6 +94,7 @@ const ButtonStyles = css`
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
       padding-bottom: 3px;
 
+      /* fixes button flickering on the hover */
       ::after {
         font-family: ${props.theme.typography.fonts.secondary};
         font-weight: ${props.theme.typography.fontWeights.regular};
