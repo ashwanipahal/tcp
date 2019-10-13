@@ -652,6 +652,7 @@ function* submitShipping({
 function* submitShippingSection({ payload: { navigation, ...formData } }) {
   try {
     yield put(setShippingLoadingState(true));
+
     const {
       // giftWrap,
       method,
