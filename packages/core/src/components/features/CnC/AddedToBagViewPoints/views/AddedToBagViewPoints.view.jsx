@@ -36,8 +36,14 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
     totalItems,
   } = pointsSummary;
   return (
-    <BodyCopy color="black" fontFamily="secondary" component="div" className={className}>
-      <Row className="row-padding">
+    <BodyCopy
+      color="black"
+      fontFamily="secondary"
+      component="div"
+      className={className}
+      tabIndex="0"
+    >
+      <Row className="row-padding" tabIndex="0">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
         <Col
           data-locator="addedtobag-productprice"
@@ -48,7 +54,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
         </Col>
       </Row>
       {showPoints(userPoints) && (
-        <Row>
+        <Row tabIndex="0">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
               {labels.pointsYouCanEarn}
@@ -68,7 +74,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
         </Row>
       )}
       <Row className="divided-line" />
-      <Row className="row-padding">
+      <Row className="row-padding" tabIndex="0">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
           {getModifiedString(labels, totalItems || 0)}
         </Col>
@@ -81,7 +87,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
         </Col>
       </Row>
       {showPoints(userPoints) && (
-        <Row className="row-padding">
+        <Row className="row-padding" tabIndex="0">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
               {labels.totalRewardsInPoints}
@@ -101,7 +107,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
         </Row>
       )}
       {!isCanada() && (
-        <Row className="row-padding">
+        <Row className="row-padding" tabIndex="0">
           <Col colSize={{ large: 9, small: 4, medium: 6 }}>
             <BodyCopy fontFamily="secondary" fontWeight="extrabold">
               {labels.totalNextRewards}
