@@ -108,4 +108,15 @@ const onAddNewCreditCardUpdate = dispatch => {
   dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
 };
 
-export { propTypes, defaultProps, getCardOptions, onCCDropUpdateChange, onAddNewCreditCardUpdate };
+const getFormName = editMode => {
+  return editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+};
+
+export {
+  propTypes,
+  defaultProps,
+  getCardOptions,
+  onCCDropUpdateChange,
+  onAddNewCreditCardUpdate,
+  getFormName,
+};
