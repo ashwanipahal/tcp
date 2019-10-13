@@ -18,7 +18,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
       }
     }
     onClose={[Function]}
-    onFileAddresskey=""
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     selectedCard={
@@ -75,7 +75,7 @@ exports[`AddEditCreditCard component should renders correctly when showCreditCar
     }
     mailingAddress={false}
     onClose={[Function]}
-    onFileAddresskey=""
+    onFileAddressKey=""
     onSubmit={[Function]}
     persistentSubmitErrors={false}
     pure={true}
@@ -112,7 +112,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
       }
     }
     onClose={[Function]}
-    onFileAddresskey="150786"
+    onFileAddressKey="150786"
     persistentSubmitErrors={false}
     pure={true}
     selectedCard={

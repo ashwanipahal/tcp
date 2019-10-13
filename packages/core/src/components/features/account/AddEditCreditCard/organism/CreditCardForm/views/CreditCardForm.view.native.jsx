@@ -73,10 +73,19 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { onFileAddresskey } = props;
+    const { onFileAddressKey } = props;
     this.state = {
-      selectedAddress: onFileAddresskey,
+      selectedAddress: onFileAddressKey,
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (!state.selectedAddress && props.pristine && props.initialValues.onFileAddressKey) {
+      return {
+        selectedAddress: props.initialValues.onFileAddressKey,
+      };
+    }
+    return null;
   }
 
   getAddressOptions = () => {
@@ -103,8 +112,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) => {
-    return addressList && addressList.find(add => add.addressId === onFileAddresskey);
+  getSelectedAddress = (addressList, onFileAddressKey) => {
+    return addressList && addressList.find(add => add.addressId === onFileAddressKey);
   };
 
   handleComponentChange = item => {
@@ -172,7 +181,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const isAddressFormVisible = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
 
     console.log(
-      '<---------------------pristine, initialValues.onFileAddresskey, onFileAddressKey',
+      '<---------------------pristine, initialValues.onFileAddressKey, onFileAddressKey',
       pristine,
       initialValues.onFileAddressKey,
       onFileAddressKey

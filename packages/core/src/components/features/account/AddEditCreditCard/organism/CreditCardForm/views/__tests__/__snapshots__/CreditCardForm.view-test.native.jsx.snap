@@ -595,7 +595,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   }
   mailingAddress={false}
   onFileAddressKey=""
-  onFileAddresskey="12345"
+  onFileAddressKey="12345"
   selectedCard={null}
   showCreditCardFields={true}
   showEmailAddress={true}
@@ -764,7 +764,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
       mailingAddress={false}
       onFileAddressKey=""
-      onFileAddresskey="12345"
+      onFileAddressKey="12345"
       selectedCard={null}
       showCreditCardFields={true}
       showCvv={false}

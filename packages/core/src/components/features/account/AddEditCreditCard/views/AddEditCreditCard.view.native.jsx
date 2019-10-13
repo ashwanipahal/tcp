@@ -91,7 +91,7 @@ AddEditCreditCard.propTypes = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: PropTypes.shape({}),
-  onFileAddresskey: PropTypes.string,
+  onFileAddressKey: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
@@ -107,7 +107,7 @@ AddEditCreditCard.defaultProps = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: {},
-  onFileAddresskey: '',
+  onFileAddressKey: '',
   mailingAddress: false,
   addressFormLabels: {},
 };

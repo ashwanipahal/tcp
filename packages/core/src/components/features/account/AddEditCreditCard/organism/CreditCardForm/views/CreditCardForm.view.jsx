@@ -108,8 +108,8 @@ export class CreditCardForm extends React.PureComponent {
     return addressOptions;
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) => {
-    return addressList.find(add => add.addressId === onFileAddresskey);
+  getSelectedAddress = (addressList, onFileAddressKey) => {
+    return addressList.find(add => add.addressId === onFileAddressKey);
   };
 
   getCreditFieldLabels = () => {

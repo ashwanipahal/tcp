@@ -836,6 +836,8 @@ export const getStoreHours = (
   }
 };
 
+export const noop = () => {};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -871,4 +873,5 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  noop,
 };

@@ -20,7 +20,7 @@ describe('CreditCardForm component', () => {
           primary: 'true',
         },
       ]),
-      onFileAddresskey: '12345',
+      onFileAddressKey: '12345',
       initialValues: {},
       expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
       expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
