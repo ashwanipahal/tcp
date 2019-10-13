@@ -118,7 +118,7 @@ CnCTemplate.defaultProps = {
   isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: false,
+  isNotLoaded: true,
 };
 
 export default withStyles(CnCTemplate, styles);
