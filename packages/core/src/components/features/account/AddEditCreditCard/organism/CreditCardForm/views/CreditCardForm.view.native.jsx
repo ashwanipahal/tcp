@@ -180,13 +180,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     const addressDropdown = this.showAddressDropdown(addressComponentList);
     const isAddressFormVisible = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
 
-    console.log(
-      '<---------------------pristine, initialValues.onFileAddressKey, onFileAddressKey',
-      pristine,
-      initialValues.onFileAddressKey,
-      onFileAddressKey
-    );
-
     const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     if (isEdit && selectedCard) {
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));

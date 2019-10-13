@@ -3,12 +3,14 @@
 exports[`AddEditCreditCard component should renders correctly 1`] = `
 <Fragment>
   <ReduxForm
+    addressFormLabels={Object {}}
     destroyOnUnmount={true}
     dto={Object {}}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="addEditCreditCard"
     getFormState={[Function]}
+    initialValues={Object {}}
     isEdit={false}
     keepDirtyOnReinitialize={false}
     labels={
@@ -97,12 +99,14 @@ exports[`AddEditCreditCard component should renders correctly when showCreditCar
 exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
 <Fragment>
   <ReduxForm
+    addressFormLabels={Object {}}
     destroyOnUnmount={true}
     dto={Object {}}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="addEditCreditCard"
     getFormState={[Function]}
+    initialValues={Object {}}
     isEdit={true}
     keepDirtyOnReinitialize={false}
     labels={
@@ -112,7 +116,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
       }
     }
     onClose={[Function]}
-    onFileAddressKey="150786"
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     selectedCard={

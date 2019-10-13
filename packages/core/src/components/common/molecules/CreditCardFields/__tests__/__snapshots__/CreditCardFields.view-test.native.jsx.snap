@@ -28,49 +28,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
   >
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "arrowImageStyle": null,
-              "bounces": true,
-              "data": Array [],
-              "dropDownItemFontWeight": "semibold",
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedItemFontWeight": "semibold",
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component={[Function]}
         dataLocator="addEditCreditCard-expMonth"
         dropDownStyle={
           Object {
@@ -81,6 +39,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           }
         }
         heading=""
+        id="expMonth"
         itemStyle={
           Object {
             "height": 40,
@@ -88,108 +47,12 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           }
         }
         name="expMonth"
-        onValueChange={[Function]}
-        selectedValue=""
         variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="expMonth"
-          label=""
-          name="expMonth"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "_foldedDefaultProps": Object {
-              "arrowImageStyle": null,
-              "bounces": true,
-              "data": Array [],
-              "dropDownItemFontWeight": "semibold",
-              "dropDownStyle": null,
-              "itemStyle": null,
-              "onValueChange": null,
-              "selectedItemFontWeight": "semibold",
-              "selectedValue": null,
-              "variation": "primary",
-            },
-            "attrs": Array [],
-            "displayName": "Styled(DropDown)",
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "
-    ",
-                "
-  height: ",
-                [Function],
-                "px;
-  ",
-                [Function],
-                ";
-  background-color: ",
-                [Function],
-                ";
-  width: 100%;
-",
-                ";
-  ",
-              ],
-            },
-            "render": [Function],
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component={[Function]}
         dataLocator="addEditCreditCard-expYear"
         dropDownStyle={
           Object {
@@ -200,6 +63,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           }
         }
         heading=""
+        id="expYear"
         itemStyle={
           Object {
             "height": 40,
@@ -207,62 +71,8 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           }
         }
         name="expYear"
-        onValueChange={[Function]}
-        selectedValue=""
         variation="secondary"
       />
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "marginBottom": true,
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "onChangeText": [Function],
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "showSuccessCheck": false,
-                "successText": "",
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          id="expYear"
-          label=""
-          name="expYear"
-          title=""
-          type="hidden"
-        />
-      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Styled(Text) />
