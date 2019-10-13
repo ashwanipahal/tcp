@@ -6,6 +6,7 @@ const ORDERDETAILS_CONSTANTS = {
   STATUS_CONSTANTS: {
     ORDER_SHIPPED: 'order shipped',
     PARTIALLY_SHIPPED: 'partially shipped',
+    ORDER_PICKED: 'order picked',
   },
 };
 
