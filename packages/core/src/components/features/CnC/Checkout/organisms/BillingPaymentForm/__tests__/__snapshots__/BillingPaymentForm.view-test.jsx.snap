@@ -173,6 +173,18 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -182,8 +194,28 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -244,6 +276,18 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -253,8 +297,28 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -398,6 +462,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -407,8 +483,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -469,6 +565,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -478,8 +586,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
