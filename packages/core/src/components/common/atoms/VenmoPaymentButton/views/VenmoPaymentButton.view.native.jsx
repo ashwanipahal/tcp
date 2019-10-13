@@ -67,6 +67,16 @@ export class VenmoPaymentButton extends Component {
     }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
+    this.handleVenmoSuccess({
+      details: { username: 'gagandsb' },
+      username: 'gagandsb',
+      deviceData: '523d2ff2f87421afab351d7447afafab',
+      error: null,
+      nonce: 'fake-venmo-account-nonce',
+      supportedByBrowser: true,
+      timestamp: Date.now(),
+      type: 'VenmoAccount',
+    });
   };
 
   /**
@@ -118,12 +128,12 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { mode, enabled, className } = this.props;
+    const { mode, enabled } = this.props;
     return (
-      <View className={className}>
+      <View>
         {enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-          <VenmoButton accessibilityRole="button">
-            <Image source={venmoIconBlue} width={150} height={28} />
+          <VenmoButton accessibilityRole="button" onPress={this.handleVenmoClick}>
+            <Image source={venmoIconBlue} width="80px" height="15px" />
           </VenmoButton>
         )}
       </View>
@@ -132,7 +142,6 @@ export class VenmoPaymentButton extends Component {
 }
 
 VenmoPaymentButton.propTypes = {
-  className: string,
   enabled: bool,
   authorizationKey: string,
   mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
@@ -163,7 +172,6 @@ VenmoPaymentButton.propTypes = {
 };
 
 VenmoPaymentButton.defaultProps = {
-  className: '',
   enabled: false,
   authorizationKey: '',
   setVenmoData: () => {},

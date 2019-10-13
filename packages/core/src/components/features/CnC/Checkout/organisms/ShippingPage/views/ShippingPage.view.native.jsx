@@ -8,6 +8,7 @@ import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.nati
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
+import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
@@ -40,6 +41,12 @@ export default class ShippingPage extends React.Component {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoShippingDisplayed: PropTypes.bool,
+    setVenmoPickupState: PropTypes.func,
+    venmoBannerLabel: PropTypes.shape({
+      venmoBannerText: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -62,6 +69,12 @@ export default class ShippingPage extends React.Component {
     addNewShippingAddressData: () => {},
     syncErrors: {},
     newUserPhoneNo: null,
+    isVenmoPaymentInProgress: false,
+    isVenmoShippingDisplayed: true,
+    setVenmoPickupState: () => {},
+    venmoBannerLabel: {
+      venmoBannerText: '',
+    },
   };
 
   constructor(props) {
@@ -114,6 +127,20 @@ export default class ShippingPage extends React.Component {
     }
   }
 
+  /**
+   * This function is to validate if we need to show venmo banner or not.
+   * Only if user comes on pickup or shipping page, but not on coming back from navigation
+   * @params {string} currentSection - current checkout section name
+   */
+  isShowVenmoBanner = currentSection => {
+    const { isVenmoPaymentInProgress } = this.props;
+    return (
+      isVenmoPaymentInProgress &&
+      ((currentSection.toLowerCase() === 'pickup' && !this.isVenmoPickupDisplayed()) ||
+        (currentSection.toLowerCase() === 'shipping' && !this.isVenmoShippingDisplayed()))
+    );
+  };
+
   submitShippingForm = data => {
     const {
       address,
@@ -135,7 +162,7 @@ export default class ShippingPage extends React.Component {
         shipAddress.addressLine2 = addressLine2;
       }
     }
-    const { handleSubmit } = this.props;
+    const { handleSubmit, setVenmoPickupState } = this.props;
     handleSubmit({
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -155,6 +182,7 @@ export default class ShippingPage extends React.Component {
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
     });
+    setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -226,6 +254,9 @@ export default class ShippingPage extends React.Component {
       setAsDefaultShipping,
       syncErrors,
       newUserPhoneNo,
+      venmoBannerLabel,
+      isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
     } = this.props;
 
     const { defaultAddressId } = this.state;
@@ -236,6 +267,7 @@ export default class ShippingPage extends React.Component {
           navigation={navigation}
           availableStages={availableStages}
         />
+        {this.isShowVenmoBanner('shipping') && <VenmoBanner labels={venmoBannerLabel} />}
         <ScrollView keyboardShouldPersistTaps="handled">
           <HeaderContainer>
             <CheckoutSectionTitleDisplay
@@ -284,6 +316,8 @@ export default class ShippingPage extends React.Component {
               defaultAddressId={defaultAddressId}
               syncErrorsObject={syncErrors}
               newUserPhoneNo={newUserPhoneNo}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              isVenmoShippingDisplayed={isVenmoShippingDisplayed}
             />
           )}
         </ScrollView>

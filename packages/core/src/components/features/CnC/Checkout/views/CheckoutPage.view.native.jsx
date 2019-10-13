@@ -43,6 +43,9 @@ class CheckoutPage extends React.PureComponent {
       // setCheckoutStage,
       onPickupSubmit,
       submitReview,
+      isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
@@ -53,6 +56,7 @@ class CheckoutPage extends React.PureComponent {
       REVIEW,
       CONFIRMATION,
     } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
+    const { venmoBannerText } = pickUpLabels;
     switch (currentRoute) {
       case PICKUP.toLowerCase():
         return (
@@ -72,6 +76,8 @@ class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            orderHasShipping={orderHasShipping}
           />
         );
       case SHIPPING.toLowerCase():
@@ -89,6 +95,8 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            venmoBannerLabel={{ venmoBannerText }}
+            setVenmoPickupState={setVenmoPickupState}
           />
         );
       case BILLING.toLowerCase():
@@ -112,6 +120,8 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            setVenmoPickupState={setVenmoPickupState}
+            setVenmoShippingState={setVenmoShippingState}
           />
         );
       case CONFIRMATION.toLowerCase():
@@ -157,6 +167,15 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
+  setVenmoShippingState: PropTypes.func,
+};
+
+CheckoutPage.defaultProps = {
+  isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);
