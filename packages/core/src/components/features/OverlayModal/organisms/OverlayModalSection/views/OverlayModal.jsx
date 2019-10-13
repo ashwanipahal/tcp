@@ -26,8 +26,10 @@ class OverlayModal extends React.Component {
     super(props);
     const overlayElementWrapper = document.getElementById('overlayWrapper');
     const overlayElement = document.getElementById('overlayComponent');
+    const bodyContainer = document.querySelector('.non-checkout-pages');
     this.overlayElementWrapper = overlayElementWrapper;
     this.overlayElement = overlayElement;
+    this.bodyContainer = bodyContainer;
     const [body] = document.getElementsByTagName('body');
     this.body = body;
     this.handleWindowClick = this.handleWindowClick.bind(this);
@@ -48,8 +50,10 @@ class OverlayModal extends React.Component {
   componentDidUpdate(prevProps) {
     const { component: nextTargetComponent, showCondensedHeader: nextCondensedState } = this.props;
     const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
+    const modal = document.getElementById('dialogContent');
     if (nextTargetComponent !== prevTargetComponent) {
       scrollPage();
+      modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
     }
 
@@ -70,6 +74,7 @@ class OverlayModal extends React.Component {
       this.body.removeEventListener('mousedown', this.handleWindowClick);
       this.body.classList.remove('no-scroll');
     }
+    this.resetBodyScrollStyles();
   }
 
   /**
@@ -85,8 +90,7 @@ class OverlayModal extends React.Component {
     const modal = document.getElementById('dialogContent');
     const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
     const modalTriangle = document.getElementById('modalTriangle');
-    const modalTrianglePos =
-      modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
+    const modalTrianglePos = modalTriangle && window && modalTriangle.getBoundingClientRect().y;
     /* istanbul ignore else */
     if (window && window.innerWidth > 767) {
       if (showCondensedHeader && this.body) {
@@ -95,6 +99,13 @@ class OverlayModal extends React.Component {
         modal.style.height = `${window.innerHeight - (modalTrianglePos + 20)}px`;
       }
       this.body.style.overflow = 'hidden';
+    }
+
+    /* istanbul ignore else */
+    /* set scroll height in mobile view */
+    if (window && window.innerWidth < 767) {
+      this.bodyContainer.style.height = `${modal.offsetHeight}px`;
+      this.bodyContainer.style.overflow = 'hidden';
     }
     /* istanbul ignore else */
     if (
@@ -132,6 +143,7 @@ class OverlayModal extends React.Component {
     if (this.body) {
       this.body.style['overflow-y'] = 'auto';
     }
+    this.resetBodyScrollStyles();
   };
 
   /**
@@ -139,6 +151,14 @@ class OverlayModal extends React.Component {
    */
   setModalRef = node => {
     this.modalRef = node;
+  };
+
+  /**
+   * Reset Body scroll styles
+   */
+  resetBodyScrollStyles = () => {
+    this.bodyContainer.style.height = '';
+    this.bodyContainer.style.overflow = 'auto';
   };
 
   handleWindowClick(e) {

@@ -110,7 +110,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 fontSize="fs15"
                 fontWeight="black"
                 text="§"
-                paddingTop="15px"
+                paddingTop="5px"
               />
             </HeaderContainer>
 
@@ -132,7 +132,6 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 fill="BLUE"
                 type="submit"
                 color="white"
-                buttonVariation="variable-width"
                 text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
                 width="90%"
                 onPress={this.closeModal}

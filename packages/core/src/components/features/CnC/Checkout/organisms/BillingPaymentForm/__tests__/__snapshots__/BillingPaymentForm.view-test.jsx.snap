@@ -45,6 +45,14 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         }
       }
     />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="billing-payment-bilingcreditcardlabel"
+      textAlign="left"
+      variant="listMenu"
+    />
     <Styled(Row)
       className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
@@ -419,6 +427,14 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "lbl_billing_venmo": "Venmo",
         }
       }
+    />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="billing-payment-bilingcreditcardlabel"
+      textAlign="left"
+      variant="listMenu"
     />
     <AddNewCCForm
       cardList={null}

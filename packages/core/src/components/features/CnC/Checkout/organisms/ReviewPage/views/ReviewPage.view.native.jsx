@@ -85,8 +85,8 @@ class ReviewPage extends React.PureComponent {
                 navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
               }}
             />
-            <CheckoutCartItemList />
           </Container>
+          <CheckoutCartItemList />
           <CnCTemplate
             navigation={navigation}
             btnText={nextSubmitText}

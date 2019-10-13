@@ -947,24 +947,26 @@ exports[`ButtonList component renders correctly without props 1`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <CardImage
-          card={
-            Object {
-              "accountNo": "************3743",
-              "addressDetails": Object {
-                "addressLine1": "Dorney Park Road",
-                "addressLine2": "",
-                "city": "Allentown",
-                "country": "US",
-              },
-              "ccBrand": "PLACE CARD",
-              "ccType": "PLACE CARD1",
-              "creditCardId": 82596,
-              "defaultInd": false,
+        <Styled(View)>
+          <CardImage
+            card={
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              }
             }
-          }
-          cardNumber="ending in 3743"
-        />
+            cardNumber="ending in 3743"
+          />
+        </Styled(View)>
         <Styled(View)>
           <Field
             component={
@@ -1308,24 +1310,26 @@ exports[`ButtonList component renders correctly without props 2`] = `
         />
       </Styled(View)>
       <Styled(View)>
-        <CardImage
-          card={
-            Object {
-              "accountNo": "************3743",
-              "addressDetails": Object {
-                "addressLine1": "Dorney Park Road",
-                "addressLine2": "",
-                "city": "Allentown",
-                "country": "US",
-              },
-              "ccBrand": "PLACE CARD",
-              "ccType": "PLACE CARD1",
-              "creditCardId": 82596,
-              "defaultInd": false,
+        <Styled(View)>
+          <CardImage
+            card={
+              Object {
+                "accountNo": "************3743",
+                "addressDetails": Object {
+                  "addressLine1": "Dorney Park Road",
+                  "addressLine2": "",
+                  "city": "Allentown",
+                  "country": "US",
+                },
+                "ccBrand": "PLACE CARD",
+                "ccType": "PLACE CARD1",
+                "creditCardId": 82596,
+                "defaultInd": false,
+              }
             }
-          }
-          cardNumber="ending in 3743"
-        />
+            cardNumber="ending in 3743"
+          />
+        </Styled(View)>
         <Styled(View)>
           <Field
             component={

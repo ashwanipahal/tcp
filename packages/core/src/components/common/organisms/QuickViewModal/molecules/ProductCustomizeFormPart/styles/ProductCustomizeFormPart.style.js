@@ -93,4 +93,12 @@ export const customPriceStyles = css`
   }
 `;
 
+export const customSubmitButtonStyle = css`
+  @media ${props => props.theme.mediaQuery.large} {
+    .add-to-bag-button {
+      width: 243px;
+    }
+  }
+`;
+
 export default styles;

@@ -20,6 +20,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 class CreateAccountForm extends PureComponent<Props> {
   onSaveMyPlaceRewards = value => {
@@ -76,6 +77,7 @@ class CreateAccountForm extends PureComponent<Props> {
             type="text"
             component={TextBox}
             dataLocator="phoneNumber"
+            normalize={formatPhoneNumber}
           />
           <Field
             label={getLabelValue(labels, 'lbl_createAccount_zipCode', 'registration')}
@@ -173,7 +175,6 @@ class CreateAccountForm extends PureComponent<Props> {
           <ButtonWrapper>
             <CustomButton
               text={getLabelValue(labels, 'lbl_createAccount_createAccount', 'registration')}
-              buttonVariation="variable-width"
               onPress={handleSubmit(handleSubmitForm)}
               fill="BLUE"
             />

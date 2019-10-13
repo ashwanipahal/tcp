@@ -8,6 +8,7 @@ exports[`OrdersTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_ordersTile_heading"
@@ -49,7 +50,7 @@ exports[`OrdersTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -81,6 +82,7 @@ exports[`OrdersTile component should render correctly 2`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_ordersTile_heading"
@@ -94,7 +96,7 @@ exports[`OrdersTile component should render correctly 2`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

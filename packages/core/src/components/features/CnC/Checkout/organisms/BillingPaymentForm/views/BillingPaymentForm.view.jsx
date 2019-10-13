@@ -30,6 +30,7 @@ import {
   onCCDropUpdateChange,
   onAddNewCreditCardUpdate,
   getFormName,
+  renderBillingAddressHeading,
 } from './BillingPaymentForm.view.util';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
@@ -145,6 +146,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const ccListPreset = creditCardList && creditCardList.size > 0;
     return (
       <>
+        {renderBillingAddressHeading(labels)}
         {ccListPreset && this.getCCDropDown({ labels, creditCardList, onFileCardKey })}
         {this.getAddNewCCForm()}
         {this.getCheckoutBillingAddress()}
@@ -195,6 +197,7 @@ export class BillingPaymentForm extends React.PureComponent {
               this.getCreditCardDropDown(options, onClickHandler, activeValue, onClose)
             }
             onChange={this.onCCDropDownChange}
+            customTitle={labels.addCreditCard}
           />
         </Col>
       </Row>
@@ -251,7 +254,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the credit card drop down along with selected card
    */
   getCreditListView = ({ labels, cvvCodeRichText, creditCardList, onFileCardKey }) => {
-    const { defaultPayment, selectFromCard, paymentMethod, creditCardEnd, cvvCode } = labels;
+    const { defaultPayment, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode, editModeSubmissionError } = this.state;
     const { dispatch, updateCardDetail } = this.props;
@@ -260,14 +263,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { onEditCardFocus, renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState } = this;
     return (
       <>
-        <Heading
-          component="h3"
-          variant="listMenu"
-          className="cardDropdownHeading"
-          dataLocator="billing-payment-bilingcreditcardlabel"
-        >
-          {selectFromCard}
-        </Heading>
+        {renderBillingAddressHeading(labels)}
         {this.getCCDropDown({ labels, creditCardList, onFileCardKey, selectedCard, editMode })}
         {!editMode ? (
           <>
