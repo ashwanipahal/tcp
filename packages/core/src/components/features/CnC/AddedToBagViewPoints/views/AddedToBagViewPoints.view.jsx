@@ -53,8 +53,9 @@ const AddedToBagViewPoints = ({
       fontFamily="secondary"
       component="div"
       className={className}
+      tabIndex="0"
     >
-      <Row className="row-padding">
+      <Row className="row-padding" tabIndex="0">
         <Col colSize={{ large: 8, small: 3, medium: 5 }}>{labels.price}</Col>
         <Col
           data-locator="addedtobag-productprice"
@@ -86,7 +87,7 @@ const AddedToBagViewPoints = ({
         </Row>
       )}
       <Row className="divided-line" />
-      <Row className="row-padding">
+      <Row className="row-padding" tabIndex="0">
         <Col colSize={{ large: 8, small: 3, medium: 5 }}>
           {getModifiedString(labels, totalItems || 0)}
         </Col>
@@ -99,7 +100,7 @@ const AddedToBagViewPoints = ({
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
-        <Row className="row-padding">
+        <Row className="row-padding" tabIndex="0">
           <Col colSize={{ large: 8, small: 3, medium: 5 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalRewardsInPoints}
@@ -120,7 +121,7 @@ const AddedToBagViewPoints = ({
         </Row>
       )}
       {showPointsToNextRewards(isInternationalShipping) && (
-        <Row className="row-padding">
+        <Row className="row-padding" tabIndex="0">
           <Col colSize={{ large: 8, small: 3, medium: 5 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalNextRewards}
