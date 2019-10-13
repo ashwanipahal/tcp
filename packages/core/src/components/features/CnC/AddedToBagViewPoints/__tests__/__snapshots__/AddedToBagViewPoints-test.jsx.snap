@@ -41,9 +41,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       undefined 12
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    tabIndex="0"
-  >
+  <Styled(Row)>
     <Styled(Col)
       colSize={
         Object {
