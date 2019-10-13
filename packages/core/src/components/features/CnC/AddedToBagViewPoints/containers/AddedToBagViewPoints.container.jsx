@@ -9,18 +9,20 @@ import {
   getAddedToBagData,
   getPointsSummary,
 } from '../../AddedToBag/container/AddedToBag.selectors';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 
 export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {};
 
   render() {
-    const { pointsSummary, labels, isPlcc, currencySymbol } = this.props;
+    const { pointsSummary, labels, isPlcc, currencySymbol, isInternationalShipping } = this.props;
     return (
       <AddedToBagViewPoints
         labels={labels}
         pointsSummary={pointsSummary}
         isPlcc={isPlcc}
         currencySymbol={currencySymbol}
+        isInternationalShipping={isInternationalShipping}
       />
     );
   }
@@ -31,6 +33,7 @@ function mapStateToProps(state) {
     pointsSummary: getPointsSummary(getCartOrderDetails(state), getAddedToBagData(state)),
     isPlcc: isPlccUser(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
+    isInternationalShipping: getIsInternationalShipping(state),
   };
 }
 
@@ -39,11 +42,13 @@ AddedToBagViewPointsContainer.propTypes = {
   labels: PropTypes.shape,
   isPlcc: PropTypes.bool.isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  isInternationalShipping: PropTypes.bool,
 };
 
 AddedToBagViewPointsContainer.defaultProps = {
   pointsSummary: {},
   labels: {},
+  isInternationalShipping: false,
 };
 
 export default connect(mapStateToProps)(AddedToBagViewPointsContainer);

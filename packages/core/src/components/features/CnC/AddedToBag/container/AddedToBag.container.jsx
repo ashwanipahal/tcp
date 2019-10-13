@@ -9,6 +9,7 @@ import {
 import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 
 // @flow
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
   labels: any,
   quantity: number,
   navigation: object,
+  isInternationalShipping: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -53,12 +55,20 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { addedToBagData, isOpenDialog, labels, quantity, navigation } = this.props;
+    const {
+      addedToBagData,
+      isOpenDialog,
+      labels,
+      quantity,
+      navigation,
+      isInternationalShipping,
+    } = this.props;
     return (
       <AddedToBag
         openState={isOpenDialog}
         onRequestClose={this.closeModal}
         addedToBagData={addedToBagData}
+        isInternationalShipping={isInternationalShipping}
         labels={labels}
         quantity={quantity}
         handleContinueShopping={this.closeModal}
@@ -106,6 +116,7 @@ const mapStateToProps = state => {
     addedToBagData: getAddedToBagData(state),
     isOpenDialog: isOpenAddedToBag(state),
     quantity: getQuantityValue(state),
+    isInternationalShipping: getIsInternationalShipping(state),
     labels: {
       colorLabel,
       sizeLabel,

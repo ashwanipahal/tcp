@@ -6,7 +6,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
   color="black"
   component="div"
   fontFamily="secondary"
-  fontSize={12}
+  fontSize="fs13"
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
@@ -21,9 +21,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
+          "large": 8,
+          "medium": 5,
+          "small": 3,
         }
       }
     />
@@ -31,14 +31,14 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       className="text-value"
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
+          "large": 4,
+          "medium": 3,
+          "small": 3,
         }
       }
       data-locator="addedtobag-productprice"
     >
-      undefined12
+      undefined 12
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -47,9 +47,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
+          "large": 8,
+          "medium": 5,
+          "small": 3,
         }
       }
     >
@@ -58,7 +58,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -69,9 +69,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
+          "large": 4,
+          "medium": 3,
+          "small": 3,
         }
       }
     >
@@ -81,7 +81,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         component="p"
         data-locator="addedtobag-pointsonitem"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -102,9 +102,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
+          "large": 8,
+          "medium": 5,
+          "small": 3,
         }
       }
     >
@@ -120,14 +120,14 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       className="text-value"
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
+          "large": 4,
+          "medium": 3,
+          "small": 3,
         }
       }
       data-locator="addedtobag-bagsubtotal"
     >
-      undefined0
+      undefined 0
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -137,9 +137,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
+          "large": 8,
+          "medium": 5,
+          "small": 3,
         }
       }
     >
@@ -148,7 +148,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -159,9 +159,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
+          "large": 4,
+          "medium": 3,
+          "small": 3,
         }
       }
     >
@@ -171,7 +171,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         component="p"
         data-locator="addedtobag-totalrewardpoints"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -189,9 +189,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
+          "large": 8,
+          "medium": 5,
+          "small": 3,
         }
       }
     >
@@ -200,7 +200,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
@@ -211,9 +211,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
+          "large": 4,
+          "medium": 3,
+          "small": 3,
         }
       }
     >
@@ -223,7 +223,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
         component="p"
         data-locator="addedtobag-totalpointsnextreward"
         fontFamily="secondary"
-        fontSize={12}
+        fontSize="fs13"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"

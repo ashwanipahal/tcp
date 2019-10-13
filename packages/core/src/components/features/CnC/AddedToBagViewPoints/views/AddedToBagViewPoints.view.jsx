@@ -15,8 +15,12 @@ const getModifiedString = (labels, totalItems) => {
   );
 };
 
-const showPoints = userPoints => {
-  return userPoints !== 0 && !isCanada();
+const showPoints = (userPoints, isInternationalShipping) => {
+  return userPoints !== 0 && !isCanada() && !isInternationalShipping;
+};
+
+const showPointsToNextRewards = isInternationalShipping => {
+  return !isCanada() && !isInternationalShipping;
 };
 
 const getPointsColor = isPlcc => {
@@ -26,7 +30,14 @@ const getPointsColor = isPlcc => {
   return 'orange.800';
 };
 
-const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, currencySymbol }) => {
+const AddedToBagViewPoints = ({
+  className,
+  pointsSummary,
+  labels,
+  isPlcc,
+  currencySymbol,
+  isInternationalShipping,
+}) => {
   const {
     itemPrice,
     itemPoints,
@@ -37,6 +48,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
   } = pointsSummary;
   return (
     <BodyCopy
+      fontSize="fs13"
       color="black"
       fontFamily="secondary"
       component="div"
@@ -44,24 +56,25 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
       tabIndex="0"
     >
       <Row className="row-padding" tabIndex="0">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
+        <Col colSize={{ large: 8, small: 3, medium: 5 }}>{labels.price}</Col>
         <Col
           data-locator="addedtobag-productprice"
           className="text-value"
-          colSize={{ large: 3, small: 2, medium: 2 }}
+          colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol}${itemPrice || 0}`}
+          {`${currencySymbol} ${itemPrice || 0}`}
         </Col>
       </Row>
-      {showPoints(userPoints) && (
-        <Row tabIndex="0">
-          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+      {showPoints(userPoints, isInternationalShipping) && (
+        <Row>
+          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+            <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.pointsYouCanEarn}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
             <BodyCopy
+              fontSize="fs13"
               data-locator="addedtobag-pointsonitem"
               fontFamily="secondary"
               className="text-value"
@@ -75,26 +88,27 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
       )}
       <Row className="divided-line" />
       <Row className="row-padding" tabIndex="0">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
+        <Col colSize={{ large: 8, small: 3, medium: 5 }}>
           {getModifiedString(labels, totalItems || 0)}
         </Col>
         <Col
           data-locator="addedtobag-bagsubtotal"
           className="text-value"
-          colSize={{ large: 3, small: 2, medium: 2 }}
+          colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol}${bagSubTotal || 0}`}
+          {`${currencySymbol} ${bagSubTotal || 0}`}
         </Col>
       </Row>
-      {showPoints(userPoints) && (
+      {showPoints(userPoints, isInternationalShipping) && (
         <Row className="row-padding" tabIndex="0">
-          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+            <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalRewardsInPoints}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
             <BodyCopy
+              fontSize="fs13"
               data-locator="addedtobag-totalrewardpoints"
               fontFamily="secondary"
               className="text-value"
@@ -106,15 +120,16 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels, isPlcc, curren
           </Col>
         </Row>
       )}
-      {!isCanada() && (
+      {showPointsToNextRewards(isInternationalShipping) && (
         <Row className="row-padding" tabIndex="0">
-          <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-            <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+            <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalNextRewards}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 3, small: 2, medium: 2 }}>
+          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
             <BodyCopy
+              fontSize="fs13"
               data-locator="addedtobag-totalpointsnextreward"
               fontFamily="secondary"
               className="text-value"
@@ -136,6 +151,7 @@ AddedToBagViewPoints.propTypes = {
   labels: PropTypes.shape.isRequired,
   isPlcc: PropTypes.bool.isRequired,
   currencySymbol: PropTypes.string.isRequired,
+  isInternationalShipping: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);
