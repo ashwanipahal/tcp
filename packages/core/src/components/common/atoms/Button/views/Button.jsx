@@ -36,6 +36,11 @@ const Button = ({
   ...otherProps
 }) => {
   if (!cta) {
+    // Using this label in CSS to fake the width of hover style category-link-button
+    let categoryLinkLabel = '';
+    if (buttonVariation === 'category-links-dark') {
+      categoryLinkLabel = children;
+    }
     return (
       <button
         disabled={disabled}
@@ -44,6 +49,7 @@ const Button = ({
         type={type}
         fullWidth={fullWidth}
         data-locator={dataLocator}
+        data-category-link-label={categoryLinkLabel}
         {...otherProps}
       >
         {children}

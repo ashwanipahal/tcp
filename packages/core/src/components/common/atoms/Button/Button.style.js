@@ -94,6 +94,17 @@ const ButtonStyles = css`
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
       padding-bottom: 3px;
 
+      ::after {
+        font-family: ${props.theme.typography.fonts.secondary};
+        font-weight: ${props.theme.typography.fontWeights.regular};
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        display: block;
+        content: attr(data-category-link-label);
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+		 }
+
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
       }
