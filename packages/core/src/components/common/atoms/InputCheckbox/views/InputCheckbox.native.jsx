@@ -108,7 +108,7 @@ class InputCheckBox extends React.Component {
 
     return (
       <RenderTree
-        tree={`<div><span>${rightText}</span></div>`}
+        tree={`<span>${rightText}</span>`}
         tools={astlyBag}
         componentMap={{
           ...ComponentMap,

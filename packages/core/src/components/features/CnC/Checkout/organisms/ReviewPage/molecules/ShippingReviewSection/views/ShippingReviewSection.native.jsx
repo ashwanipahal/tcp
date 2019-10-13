@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import Address from '../../../../../../../../common/molecules/Address';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import ShippingMethodDisplay from '../../ShippingMethodDisplay';
@@ -57,14 +58,16 @@ export class ShippingReviewSection extends React.PureComponent {
                 fontWeight="regular"
                 text={shippingAddress.emailAddress}
               />
-              <BodyCopy
-                fontSize="fs16"
-                dataLocator=""
-                mobileFontFamily="secondary"
-                color="gray.900"
-                fontWeight="regular"
-                text={shippingAddress.phoneNumber}
-              />
+              {shippingAddress.phoneNumber && (
+                <BodyCopy
+                  fontSize="fs16"
+                  dataLocator=""
+                  mobileFontFamily="secondary"
+                  color="gray.900"
+                  fontWeight="regular"
+                  text={formatPhoneNumber(shippingAddress.phoneNumber)}
+                />
+              )}
             </AddressSection>
           </View>
           <View>

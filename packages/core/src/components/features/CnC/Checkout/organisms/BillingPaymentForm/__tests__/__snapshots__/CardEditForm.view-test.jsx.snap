@@ -7,9 +7,7 @@ exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
   onSubmit={[Function]}
 >
   Hello
-  <div>
-    CCForm
-  </div>
+  CCForm
   <Component
     editMode={true}
     key="cardEditAddressForm"
