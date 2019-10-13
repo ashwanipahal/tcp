@@ -11,10 +11,12 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
   letterSpacing="normal"
   lineHeight="normal"
   link={null}
+  tabIndex="0"
   textAlign="left"
 >
   <Styled(Row)
     className="row-padding"
+    tabIndex="0"
   >
     <Styled(Col)
       colSize={
@@ -39,7 +41,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       undefined12
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    tabIndex="0"
+  >
     <Styled(Col)
       colSize={
         Object {
@@ -93,6 +97,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
   />
   <Styled(Row)
     className="row-padding"
+    tabIndex="0"
   >
     <Styled(Col)
       colSize={
@@ -127,6 +132,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
   </Styled(Row)>
   <Styled(Row)
     className="row-padding"
+    tabIndex="0"
   >
     <Styled(Col)
       colSize={
@@ -178,6 +184,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
   </Styled(Row)>
   <Styled(Row)
     className="row-padding"
+    tabIndex="0"
   >
     <Styled(Col)
       colSize={
