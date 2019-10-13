@@ -11,6 +11,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
   <Styled(SafeAreaView)>
     <Styled(View)>
       <Styled(CustomIcon)
+        accessibilityLabel=""
         color="blue.500"
         dataLocator=""
         iconFontName="Icomoon"
@@ -29,6 +30,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
         value=""
       />
       <Styled(CustomIcon)
+        accessibilityLabel=""
         color="gray.600"
         dataLocator=""
         iconFontName="Icomoon"
@@ -73,7 +75,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
         text="Cancel"
         theme={Object {}}
         url=""
-        width="40px"
+        width="90px"
       />
     </Styled(View)>
     <SectionList

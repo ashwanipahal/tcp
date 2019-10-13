@@ -69,8 +69,8 @@ export default css`
       top: 66px;
       z-index: 1;
       opacity: 0.6;
-      width: 200%;
-      left: -50%;
+      width: 100%;
+      left: 0%;
       height: 200vh;
     }
     &.is-open {

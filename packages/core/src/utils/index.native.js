@@ -20,6 +20,9 @@ export {
   setTestId,
   validateColor,
   getTranslatedMomentDate,
+  readCookieMobileApp,
+  createGoogleMapUrl,
+  mapHandler,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

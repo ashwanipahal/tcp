@@ -41,7 +41,6 @@ export const MyProfileTile = ({
       {isCtaPresent && (
         <CustomButton
           fill="BLUE"
-          buttonVariation="variable-width"
           text={ctaTitle}
           onPress={() => {
             handleComponentChange(ctaLink);

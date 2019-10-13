@@ -5,8 +5,7 @@ const AddNewCCWrapper = styled.View`
 `;
 
 const CvvCode = styled.View`
-  width: 40%;
-  padding-left: 70px;
+  flex: 0.25;
 `;
 
 const CvvTextboxStyle = {
@@ -52,7 +51,7 @@ const CreditCardHeader = styled.View`
   top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 const CreditCardWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 const DefaultPaymentTextWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
@@ -61,10 +60,12 @@ const PaymentMethodMainWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   border-top-width: 1px;
-  border-bottom-width: 1px;
   border-style: solid;
   border-color: ${props => props.theme.colors.PRIMARY.GRAY};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+const PaymentMethodImage = styled.View`
+  flex: 0.5;
 `;
 export {
   CvvCode,
@@ -82,4 +83,5 @@ export {
   CreditCardWrapper,
   DefaultPaymentTextWrapper,
   PaymentMethodMainWrapper,
+  PaymentMethodImage,
 };
