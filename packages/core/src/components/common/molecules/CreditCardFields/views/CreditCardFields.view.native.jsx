@@ -95,6 +95,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       cvvInfo,
       showCvv,
       cameraIcon,
+      onCardFocus,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -127,6 +128,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             creditCard={creditCard}
             customStyle={CardTextboxStyle}
             cameraIcon={cameraIcon}
+            onFocus={onCardFocus}
           />
           {cameraIcon && cardType == null && (
             <StyledImageWrapper onPress={this.scanCard}>
@@ -225,6 +227,7 @@ CreditCardFields.propTypes = {
   selectedCard: PropTypes.shape({}),
   showCvv: PropTypes.bool,
   cameraIcon: PropTypes.bool,
+  onCardFocus: PropTypes.func,
 };
 
 CreditCardFields.defaultProps = {
@@ -242,6 +245,7 @@ CreditCardFields.defaultProps = {
   selectedCard: null,
   showCvv: true,
   cameraIcon: false,
+  onCardFocus: () => {},
 };
 
 export default CreditCardFields;

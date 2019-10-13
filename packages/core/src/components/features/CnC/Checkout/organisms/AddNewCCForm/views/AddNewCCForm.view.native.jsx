@@ -28,6 +28,8 @@ class AddNewCCForm extends React.PureComponent {
     billingData: PropTypes.shape({ billing: {}, address: {} }),
     addNewCCState: PropTypes.bool,
     creditFieldLabels: PropTypes.shape({}),
+    editMode: PropTypes.bool,
+    isSameAsShippingChecked: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -41,6 +43,8 @@ class AddNewCCForm extends React.PureComponent {
     billingData: null,
     addNewCCState: false,
     creditFieldLabels: {},
+    editMode: false,
+    isSameAsShippingChecked: false,
   };
 
   constructor(props) {
@@ -153,7 +157,15 @@ class AddNewCCForm extends React.PureComponent {
    * @description render method to be called of component
    */
   render() {
-    const { cvvInfo, cardType, cvvError, isGuest, isExpirationRequired } = this.props;
+    const {
+      cvvInfo,
+      cardType,
+      cvvError,
+      isGuest,
+      isExpirationRequired,
+      editMode,
+      isSameAsShippingChecked,
+    } = this.props;
     const { expMonth, expYear } = this.getExpData();
     return (
       <>
@@ -171,8 +183,10 @@ class AddNewCCForm extends React.PureComponent {
           selectedExpYear={expYear}
           selectedExpMonth={expMonth}
           cameraIcon
+          showCvv={!editMode}
+          isSameAsShippingChecked={isSameAsShippingChecked}
         />
-        {!isGuest && this.renderSaveToAccountOptions()}
+        {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>
     );
   }

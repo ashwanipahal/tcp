@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSection, reduxForm, change, Field } from 'redux-form';
+import { FormSection, reduxForm, change, Field, reset } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -38,6 +38,7 @@ import {
   getDefaultPayment,
   getBillingAddressWrapper,
 } from './BillingPaymentForm.view.native.util';
+import CardEditFrom from './CardEditForm.view.native';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -46,9 +47,7 @@ export class BillingPaymentForm extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      addNewCCState: false,
-    };
+    this.state = { addNewCCState: false, editMode: false, editModeSubmissionError: '' };
   }
 
   /**
@@ -68,7 +67,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getCheckoutBillingAddress
    * @description returns the checkout billing address form
    */
-  getCheckoutBillingAddress = () => {
+  getCheckoutBillingAddress = ({ editMode, onUpdateAddress } = {}) => {
     const {
       selectedOnFileAddressId,
       userAddresses,
@@ -80,10 +79,17 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       shippingAddress,
       isSameAsShippingChecked,
+      isEditFormSameAsShippingChecked = false,
+      editFormSelectedOnFileAddressId,
       billingData,
     } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
+    const formType = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    const addressId = editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId;
+    if (!addressId) {
+      dispatch(change(formType, 'onFileAddressId', ''));
+    }
     return (
       <CheckoutBillingAddress
         isGuest={isGuest}
@@ -91,17 +97,21 @@ export class BillingPaymentForm extends React.PureComponent {
         addressLabels={addressLabels}
         dispatch={dispatch}
         shippingAddress={shippingAddress}
-        isSameAsShippingChecked={isSameAsShippingChecked}
+        isSameAsShippingChecked={
+          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
+        }
         labels={labels}
         billingData={billingData}
         userAddresses={userAddresses}
-        selectedOnFileAddressId={selectedOnFileAddressId}
-        formName={constants.FORM_NAME}
+        selectedOnFileAddressId={addressId}
+        formName={formType}
         addNewCCState={
           addNewCCState ||
           (!creditCardList && !orderHasShipping) ||
           (creditCardList && creditCardList.size === 0)
         }
+        editMode={editMode}
+        onUpdateAddress={onUpdateAddress}
       />
     );
   };
@@ -110,7 +120,7 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getAddNewCCForm
    * @description returns the add new credit card form
    */
-  getAddNewCCForm = () => {
+  getAddNewCCForm = ({ onCardFocus, editMode } = {}) => {
     const {
       cvvCodeRichText,
       cardType,
@@ -121,6 +131,9 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       billingData,
       creditFieldLabels,
+      editFormCardType,
+      isEditFormSameAsShippingChecked,
+      isSameAsShippingChecked,
     } = this.props;
     let cvvError;
     /* istanbul ignore else */
@@ -129,7 +142,9 @@ export class BillingPaymentForm extends React.PureComponent {
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const { addNewCCState } = this.state;
-    dispatch(change(constants.FORM_NAME, 'cardType', cardType));
+    const formCardType = editMode ? editFormCardType : cardType;
+    const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    dispatch(change(formName, 'cardType', cardType));
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}
@@ -138,12 +153,18 @@ export class BillingPaymentForm extends React.PureComponent {
         labels={labels}
         isGuest={isGuest}
         isSaveToAccountChecked={isSaveToAccountChecked}
-        formName={constants.FORM_NAME}
+        formName={formName}
         dispatch={dispatch}
         isExpirationRequired={isExpirationRequired}
         billingData={billingData}
         addNewCCState={addNewCCState}
         creditFieldLabels={creditFieldLabels}
+        editMode={editMode}
+        onCardFocus={onCardFocus}
+        formCardType={formCardType}
+        isSameAsShippingChecked={
+          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
+        }
       />
     );
   };
@@ -220,7 +241,10 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch,
     cvvCodeRichText,
   }) => {
-    const { addNewCCState } = this.state;
+    const { addNewCCState, editMode, editModeSubmissionError } = this.state;
+    const isCardDetailEdit = selectedCard && !editMode;
+    const { unsetFormEditState, onEditCardFocus, getAddNewCCForm, onUpdateAddress } = this;
+    const { updateCardDetail } = this.props;
     return (
       <BillingAddressWrapper>
         <CreditCardWrapper>
@@ -245,25 +269,63 @@ export class BillingPaymentForm extends React.PureComponent {
             onChange={this.onCCDropDownChange}
           />
         </CreditCardWrapper>
-        {selectedCard ? getCardDetailsMethod(labels) : null}
-        {selectedCard ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
-        {selectedCard ? getDefaultPayment(selectedCard, labels) : null}
-        {selectedCard ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+        {selectedCard ? getCardDetailsMethod(labels, this.setFormToEditState, editMode) : null}
+        {isCardDetailEdit ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
+        {isCardDetailEdit ? getDefaultPayment(selectedCard, labels) : null}
+        {isCardDetailEdit ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+
+        {editMode ? (
+          <CardEditFrom
+            {...{ selectedCard, unsetFormEditState, getAddNewCCForm, onUpdateAddress }}
+            {...{ onEditCardFocus, dispatch, labels, updateCardDetail, editModeSubmissionError }}
+            key="cardEditForm"
+            addressForm={this.getCheckoutBillingAddress}
+            errorMessageRef={this.ediCardErrorRef}
+          />
+        ) : null}
       </BillingAddressWrapper>
     );
   };
 
+  setFormToEditState = e => {
+    e.preventDefault();
+    this.cardNumberCleared = false;
+    this.setState({ editMode: true });
+  };
+
+  unsetFormEditState = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    const { dispatch } = this.props;
+    dispatch(reset(constants.EDIT_FORM_NAME));
+    this.setState({ editMode: false, editModeSubmissionError: '' });
+  };
+
+  onUpdateAddress = () => {
+    // const { dispatch } = this.props;
+    // dispatch(change(constants.EDIT_FORM_NAME, 'sameAsShipping', value));
+  };
+
+  onEditCardFocus = () => {
+    if (!this.cardNumberCleared) {
+      const { dispatch } = this.props;
+      this.cardNumberCleared = true;
+      dispatch(change(constants.EDIT_FORM_NAME, 'cardNumber', ''));
+    }
+  };
+
   addNewBillingInfoForm = () => {
     const { cardList, labels, dispatch, onFileCardKey } = this.props;
-    const { addNewCCState } = this.state;
+    const { editMode } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
         {creditCardList &&
           creditCardList.size > 0 &&
           this.getCCDropDown({ labels, creditCardList, onFileCardKey, dispatch })}
-        {this.getAddNewCCForm()}
-        {this.getCheckoutBillingAddress({ ...this.props, creditCardList, addNewCCState })}
+        {this.getAddNewCCForm({ editMode })}
+        {this.getCheckoutBillingAddress()}
       </>
     );
   };

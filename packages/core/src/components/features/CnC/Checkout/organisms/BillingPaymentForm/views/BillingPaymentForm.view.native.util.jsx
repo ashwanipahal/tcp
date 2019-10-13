@@ -13,7 +13,7 @@ import {
   DefaultPaymentTextWrapper,
 } from '../styles/BillingPaymentForm.style.native';
 
-const getCardDetailsMethod = labels => {
+const getCardDetailsMethod = (labels, setFormToEditState, editMode) => {
   return (
     <CardDetailHeader>
       {labels.cardDetailsTitle ? (
@@ -27,7 +27,7 @@ const getCardDetailsMethod = labels => {
           text={labels.cardDetailsTitle}
         />
       ) : null}
-      {labels.edit ? (
+      {labels.edit && !editMode ? (
         <CardDetailEdit>
           <Anchor
             underline
@@ -36,6 +36,7 @@ const getCardDetailsMethod = labels => {
             noLink
             href=""
             target=""
+            onPress={e => setFormToEditState(e)}
             text={labels.edit}
           />
         </CardDetailEdit>

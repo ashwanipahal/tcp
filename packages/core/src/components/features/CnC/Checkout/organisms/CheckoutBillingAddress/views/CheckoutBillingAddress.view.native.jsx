@@ -32,9 +32,16 @@ const itemStyle = {
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
-    const { addNewCCState, selectedOnFileAddressId, userAddresses, orderHasShipping } = props;
+    const {
+      addNewCCState,
+      selectedOnFileAddressId,
+      userAddresses,
+      orderHasShipping,
+      editMode,
+    } = props;
     this.state = {
       isAddNewAddress:
+        editMode ||
         (addNewCCState &&
           !(
             selectedOnFileAddressId &&
@@ -66,20 +73,21 @@ class CheckoutAddress extends React.Component {
    * @description toggles the isAddNewAddress state
    */
   toggleAddNewAddressMode = () => {
-    const { isAddNewAddress } = this.state;
     const { dispatch, formName } = this.props;
-    this.setState({ isAddNewAddress: !isAddNewAddress });
+    this.newAddressModeStarted = true;
     dispatch(change(formName, 'onFileAddressId', ''));
+    dispatch(change(formName, `address.addressId`, ''));
     dispatch(resetSection(formName, 'address'));
+    this.setState({ isAddNewAddress: true });
   };
 
   /**
    * @function onSameAsShippingChange
    * @description called when same as shipping checkbox is checked
    */
-  onSameAsShippingChange = () => {
-    const { isSameAsShippingChecked, dispatch, shippingAddress, formName } = this.props;
-    if (shippingAddress) {
+  onSameAsShippingChange = (e, value) => {
+    const { shippingAddress, editMode, userAddresses, onUpdateAddress } = this.props;
+    if (value) {
       const {
         firstName,
         lastName,
@@ -89,17 +97,59 @@ class CheckoutAddress extends React.Component {
         city,
         zipCode,
         country,
+        addressId,
       } = shippingAddress;
-      if (isSameAsShippingChecked) {
-        dispatch(change(formName, `address.firstName`, firstName));
-        dispatch(change(formName, `address.lastName`, lastName));
-        dispatch(change(formName, `address.addressLine1`, addressLine1));
-        dispatch(change(formName, `address.addressLine2`, addressLine2));
-        dispatch(change(formName, `address.state`, state));
-        dispatch(change(formName, `address.city`, city));
-        dispatch(change(formName, `address.zipCode`, zipCode));
-        dispatch(change(formName, `address.country`, country));
+      let fieldsToUpdate = [];
+      if (editMode) {
+        fieldsToUpdate.push({ fieldName: `address.addressId`, value: addressId });
       }
+      const fields = [
+        { fieldName: `address.firstName`, value: firstName },
+        { fieldName: `address.lastName`, value: lastName },
+        { fieldName: `address.addressLine1`, value: addressLine1 },
+        { fieldName: `address.addressLine2`, value: addressLine2 },
+        { fieldName: `address.state`, value: state },
+        { fieldName: `address.city`, value: city },
+        { fieldName: `address.zipCode`, value: zipCode },
+        { fieldName: `address.country`, value: country },
+      ];
+      fieldsToUpdate = [...fieldsToUpdate, ...fields];
+      fieldsToUpdate.forEach(({ fieldName, value: fieldValue }) => {
+        this.updateFormField(fieldName, fieldValue);
+      });
+      onUpdateAddress(true);
+    } else if (editMode) {
+      const index = userAddresses.findIndex(
+        val => val.primary && val.primary.toString() === 'true'
+      );
+      const {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        state,
+        city,
+        zipCode,
+        country,
+        addressId,
+      } = userAddresses.get(index);
+      const fields = [
+        { fieldName: `onFileAddressId`, value: addressId },
+        { fieldName: `address.addressId`, value: addressId },
+        { fieldName: `address.firstName`, value: firstName },
+        { fieldName: `address.lastName`, value: lastName },
+        { fieldName: `address.addressLine1`, value: addressLine1 },
+        { fieldName: `address.addressLine2`, value: addressLine2 },
+        { fieldName: `address.state`, value: state },
+        { fieldName: `address.city`, value: city },
+        { fieldName: `address.zipCode`, value: zipCode },
+        { fieldName: `address.country`, value: country },
+      ];
+      fields.forEach(({ fieldName, value: fieldValue }) => {
+        this.updateFormField(fieldName, fieldValue);
+      });
+      this.setState({ isAddNewAddress: editMode });
+      onUpdateAddress(false);
     }
   };
 
@@ -149,13 +199,14 @@ class CheckoutAddress extends React.Component {
       shippingAddress,
       isSameAsShippingChecked,
       billingData,
+      editMode,
     } = this.props;
     const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId);
     const { isAddNewAddress } = this.state;
     let addressLine1;
     let state;
     let address;
-    if (!isAddNewAddress) {
+    if (!isAddNewAddress || editMode) {
       if (selectedAddress) {
         [addressLine1] = selectedAddress.addressLine;
         ({ state } = selectedAddress);
@@ -263,13 +314,39 @@ class CheckoutAddress extends React.Component {
    * @function onAddressDropDownChange
    * @description called when address dropdown value is changed
    */
-  onAddressDropDownChange = itemValue => {
+  onAddressDropDownChange = addressId => {
+    const { editMode, userAddresses, dispatch, formName } = this.props;
+    if (this.newAddressModeStarted || !addressId) {
+      this.newAddressModeStarted = false;
+      return;
+    }
     const { isAddNewAddress } = this.state;
-    const { dispatch, formName } = this.props;
+    if (editMode) {
+      const {
+        addressLine: [addressLine1, addressLine2],
+        firstName,
+        lastName,
+        state,
+        city,
+        zipCode,
+        country,
+      } = userAddresses.find(
+        address => addressId && addressId.toString() === address.addressId.toString()
+      );
+      dispatch(change(formName, `address.addressId`, addressId));
+      dispatch(change(formName, `address.firstName`, firstName));
+      dispatch(change(formName, `address.lastName`, lastName));
+      dispatch(change(formName, `address.addressLine1`, addressLine1));
+      dispatch(change(formName, `address.addressLine2`, addressLine2));
+      dispatch(change(formName, `address.state`, state));
+      dispatch(change(formName, `address.city`, city));
+      dispatch(change(formName, `address.zipCode`, zipCode));
+      dispatch(change(formName, `address.country`, country));
+      dispatch(change(formName, 'onFileAddressId', addressId));
+    }
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });
     }
-    dispatch(change(formName, 'onFileAddressId', itemValue));
   };
 
   /**
@@ -323,6 +400,11 @@ class CheckoutAddress extends React.Component {
     );
   };
 
+  updateFormField(fieldName, value) {
+    const { dispatch, formName } = this.props;
+    dispatch(change(formName, fieldName, value));
+  }
+
   /**
    * @function renderNonShippingAddressForm
    * @description returns the non shipping address form
@@ -367,6 +449,8 @@ CheckoutAddress.propTypes = {
   addNewCCState: PropTypes.bool.isRequired,
   onFileAddressId: PropTypes.string,
   billingData: PropTypes.shape({}),
+  editMode: PropTypes.bool,
+  onUpdateAddress: PropTypes.func.isRequired,
 };
 
 CheckoutAddress.defaultProps = {
@@ -377,6 +461,7 @@ CheckoutAddress.defaultProps = {
   selectedOnFileAddressId: null,
   onFileAddressId: null,
   billingData: null,
+  editMode: false,
 };
 export default withStyles(CheckoutAddress, styles);
 export { CheckoutAddress as CheckoutAddressVanilla };
