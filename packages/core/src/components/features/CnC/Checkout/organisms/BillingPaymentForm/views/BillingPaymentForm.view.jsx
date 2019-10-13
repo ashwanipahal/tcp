@@ -397,7 +397,7 @@ export class BillingPaymentForm extends React.PureComponent {
     if (editMode) {
       e.preventDefault();
       this.setState({ editModeSubmissionError: labels.cardEditUnSavedError });
-      return this.ediCardErrorRef.current.scrollIntoView();
+      return this.ediCardErrorRef.current.scrollIntoView(false);
     }
     return handleSubmit(e);
   };
