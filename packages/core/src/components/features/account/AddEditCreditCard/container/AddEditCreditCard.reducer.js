@@ -10,7 +10,6 @@ const AddEditCreditCardReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.ADD_CREDIT_CARD:
     case constants.EDIT_CREDIT_CARD:
-    case constants.RESET_ADD_CREDIT_CARD:
       return initialState;
     case constants.ADD_CREDIT_CARD_SUCCESS:
       return fromJS(action.payload);

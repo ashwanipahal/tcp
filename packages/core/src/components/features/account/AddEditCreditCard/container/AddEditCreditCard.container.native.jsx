@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-import { noop } from '@tcp/core/src/utils';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
@@ -17,11 +16,7 @@ import {
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view.native';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
-import {
-  addCreditCard,
-  editCreditCard,
-  resetAddCreditCardState,
-} from './AddEditCreditCard.actions';
+import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from './AddEditCreditCard.utils';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -45,7 +40,6 @@ export class AddEditCreditCard extends React.PureComponent {
     dto: PropTypes.shape({}),
     isEdit: PropTypes.bool,
     selectedCard: PropTypes.shape({}),
-    resetAddCreditCardAction: PropTypes.func,
     addressLabels: PropTypes.shape({}),
     addEditCreditCardErrorMsg: PropTypes.string,
     showNotification: PropTypes.bool.isRequired,
@@ -61,12 +55,11 @@ export class AddEditCreditCard extends React.PureComponent {
     addEditCreditCardError: null,
     creditCard: null,
     labels: {},
-    onClose: noop,
-    updateCardList: noop,
+    onClose: () => {},
+    updateCardList: () => {},
     dto: {},
     isEdit: false,
     selectedCard: null,
-    resetAddCreditCardAction: noop,
     addressLabels: {},
     addEditCreditCardErrorMsg: '',
   };
@@ -80,12 +73,11 @@ export class AddEditCreditCard extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { addressList, getAddressListAction, resetAddCreditCardAction } = this.props;
+    const { addressList, getAddressListAction } = this.props;
     if (addressList === null || !addressList.size) {
       getAddressListAction();
     }
     this.setInitialValues();
-    resetAddCreditCardAction();
   }
 
   componentDidUpdate(prevProps) {
@@ -273,9 +265,6 @@ const mapDispatchToProps = dispatch => {
     },
     showSuccessNotification: () => {
       dispatch(setDefaultPaymentSuccess());
-    },
-    resetAddCreditCardAction: () => {
-      dispatch(resetAddCreditCardState());
     },
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));

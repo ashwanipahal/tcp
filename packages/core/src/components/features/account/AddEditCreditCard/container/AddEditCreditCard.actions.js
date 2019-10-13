@@ -19,7 +19,3 @@ export const addCreditCardError = payload => ({
   type: constants.ADD_CREDIT_CARD_ERROR,
   payload,
 });
-
-export const resetAddCreditCardState = () => ({
-  type: constants.RESET_ADD_CREDIT_CARD,
-});

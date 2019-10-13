@@ -30,6 +30,7 @@ const SelectBox = ({
       <NativeDropdown
         onValueChange={value => {
           input.onChange(value);
+          input.onBlur(value);
           onValueChange(value);
         }}
         data={options}
