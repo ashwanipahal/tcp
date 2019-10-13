@@ -85,7 +85,6 @@ exports[`Order Items component should renders correctly 1`] = `
           ]
         }
         key="0"
-        notification={null}
       />
     </Styled(Col)>
   </Styled(Row)>

@@ -22,11 +22,7 @@ const OrderItemsList = ({ className, ...otherProps }) => {
     <BodyCopy component="div" className={className}>
       <Row fullBleed>
         {items.map((item, index) => (
-          <Col
-            className="order-Item"
-            // ignoreGutter={{ small: true, medium: true, large: true }}
-            colSize={{ large: 6, medium: 4, small: 6 }}
-          >
+          <Col className="order-Item" colSize={{ large: 6, medium: 4, small: 6 }}>
             <OrderItem key={index.toString()} {...{ item }} {...otherProps} />
           </Col>
         ))}
@@ -38,15 +34,12 @@ OrderItemsList.propTypes = {
   className: PropTypes.string,
   items: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string.isRequired,
-  header: PropTypes.element.isRequired,
-  notification: PropTypes.element,
   isShowWriteReview: PropTypes.bool.isRequired,
   isCanceledList: PropTypes.bool,
 };
 
 OrderItemsList.defaultProps = {
   className: '',
-  notification: null,
   isCanceledList: false,
 };
 

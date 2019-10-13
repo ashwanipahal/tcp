@@ -1,9 +1,9 @@
 /* eslint-disable complexity */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, BodyCopy, Button } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-// import config from '@tcp/core/src/config/orderConfig';
+import config from '@tcp/core/src/config/orderConfig';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/OrderDetails.style';
 import OrderBasicDetails from '../organism/OrderBasicDetails';
@@ -12,6 +12,7 @@ import OrderBillingDetails from '../organism/OrderBillingDetails';
 import OrderSummaryDetails from '../organism/OrderSummaryDetails';
 // import OrderItemsWithStatus from '../organism/OrderItemsWithStatus';
 import OrderItemsList from '../organism/OrderItemsList';
+import OrderStatus from '../organism/OrderStatus';
 import constants from '../OrderDetails.constants';
 
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
@@ -29,16 +30,16 @@ class OrderDetailsView extends PureComponent {
     const {
       // orderNumber,
       // orderDate,
-      // pickUpExpirationDate,
+      pickUpExpirationDate,
       // checkout,
       summary,
       // appliedGiftCards,
       status,
-      // pickedUpDate,
+      pickedUpDate,
       purchasedItems,
-      // outOfStockItems,
+      outOfStockItems,
       isBossOrder,
-      // canceledItems,
+      canceledItems,
       isBopisOrder,
       // orderType,
       // bossMaxDate,
@@ -91,76 +92,19 @@ class OrderDetailsView extends PureComponent {
                 </Row>
               </Col>
             </Row>
-            {/* {purchasedItems && (
-              <Row fullBleed className="purchasedItemsMargin">
-                {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
-                  purchasedItems.length > 0 &&
-                  purchasedItems.map((orderGroup, index) => (
-                    <Col
-                      ignoreGutter={{ small: true, medium: true, large: true }}
-                      colSize={{ large: 12, medium: 8, small: 6 }}
-                    >
-                      <OrderItemsWithStatus
-                        key={index.toString()}
-                        {...{ orderGroup }}
-                        ordersLabels={ordersLabels}
-                        isBopisOrder={isBopisOrder}
-                        currencySymbol={currencySymbol}
-                      />
-                    </Col>
-                  ))}
-              </Row>
-            )} */}
-
-            {purchasedItems &&
+            {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
+              purchasedItems &&
               purchasedItems.length > 0 &&
               purchasedItems.map((orderGroup, index) => (
                 <Row fullBleed className="group-row purchasedItemsMargin">
-                  <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                    <Row fullBleed className="elem-mb-XL">
-                      <Col
-                        className="elem-pt-MED elem-pb-MED"
-                        colSize={{ large: 9, medium: 8, small: 6 }}
-                      >
-                        <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                          {'Shipped on: '}
-                        </BodyCopy>
-
-                        <BodyCopy
-                          fontWeight="extrabold"
-                          component="span"
-                          fontSize="fs16"
-                          fontFamily="secondary"
-                        >
-                          April 1, 2018
-                        </BodyCopy>
-                        <BodyCopy className="orderDetail-trackingNumber-pipe" component="span">
-                          {' | '}
-                        </BodyCopy>
-                        <BodyCopy
-                          component="span"
-                          fontSize="fs16"
-                          fontWeight="extrabold"
-                          fontFamily="secondary"
-                        >
-                          {'Tracking Number: '}
-                        </BodyCopy>
-                        <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                          {'1446456354635'}
-                        </BodyCopy>
-                      </Col>
-                      <Col className="button-Container" colSize={{ large: 3, medium: 0, small: 6 }}>
-                        <Button
-                          // onClick={this.onAddNNewAddressClick}
-                          buttonVariation="variable-width"
-                          fill="BLUE"
-                          data-locator="order-track"
-                          className="button-track"
-                        >
-                          TRACK IT
-                        </Button>
-                      </Col>
-                    </Row>
+                  <OrderStatus
+                    status={orderGroup.status}
+                    trackingNumber={orderGroup.trackingNumber}
+                    trackingUrl={orderGroup.trackingUrl}
+                    shippedDate={orderGroup.shippedDate}
+                    isBopisOrder={isBopisOrder}
+                  />
+                  {/* <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                     <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
                       <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                         {'Purchased Items: '}
@@ -175,21 +119,32 @@ class OrderDetailsView extends PureComponent {
                         {summary.purchasedItems}
                       </BodyCopy>
                     </Col>
-                  </Col>
+                  </Col> */}
                   <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                     <OrderItemsList
                       key={index.toString()}
                       ordersLabels={ordersLabels}
                       items={orderGroup.items}
                       currencySymbol={currencySymbol}
-                      isBopisOrder={isBopisOrder}
+                      isShowWriteReview={
+                        orderGroup.status === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
+                        status === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
+                      }
                     />
                   </Col>
                 </Row>
               ))}
 
-            {purchasedItems && purchasedItems.length > 0 && (
+            {(isBossOrder || isBopisOrder) && purchasedItems && purchasedItems.length > 0 && (
               <Row fullBleed className="group-row">
+                {isBopisOrder && (
+                  <OrderStatus
+                    status={status}
+                    pickUpExpirationDate={pickUpExpirationDate}
+                    pickedUpDate={pickedUpDate}
+                    isBopisOrder={isBopisOrder}
+                  />
+                )}
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
                   <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
                     {'Purchased Items: '}
@@ -217,7 +172,7 @@ class OrderDetailsView extends PureComponent {
               </Row>
             )}
 
-            {purchasedItems && purchasedItems.length > 0 && (
+            {outOfStockItems && outOfStockItems.length > 0 && (
               <Row fullBleed className="group-row">
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
                   <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
@@ -230,7 +185,7 @@ class OrderDetailsView extends PureComponent {
                     fontSize="fs16"
                     fontFamily="secondary"
                   >
-                    {purchasedItems.length}
+                    {outOfStockItems.length}
                   </BodyCopy>
                 </Col>
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
@@ -242,7 +197,7 @@ class OrderDetailsView extends PureComponent {
                 <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                   <OrderItemsList
                     ordersLabels={ordersLabels}
-                    items={purchasedItems[0].items}
+                    items={outOfStockItems}
                     currencySymbol={currencySymbol}
                     isShowWriteReview={false}
                   />
@@ -250,7 +205,7 @@ class OrderDetailsView extends PureComponent {
               </Row>
             )}
 
-            {purchasedItems && purchasedItems.length > 0 && (
+            {canceledItems && canceledItems.length > 0 && (
               <Row fullBleed className="group-row">
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
                   <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
@@ -264,7 +219,7 @@ class OrderDetailsView extends PureComponent {
                     className="itemInfo_details_items_leftMargin"
                     fontFamily="secondary"
                   >
-                    {purchasedItems.length}
+                    {canceledItems.length}
                   </BodyCopy>
                 </Col>
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
@@ -275,7 +230,7 @@ class OrderDetailsView extends PureComponent {
                 <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                   <OrderItemsList
                     ordersLabels={ordersLabels}
-                    items={purchasedItems[0].items}
+                    items={canceledItems.items}
                     currencySymbol={currencySymbol}
                     isShowWriteReview={false}
                   />

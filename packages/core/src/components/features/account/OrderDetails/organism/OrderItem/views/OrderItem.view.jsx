@@ -195,7 +195,6 @@ const OrderItems = ({ className, ...otherProps }) => {
 OrderItems.propTypes = {
   className: PropTypes.string,
   currencySymbol: PropTypes.string.isRequired,
-  isBopisOrder: PropTypes.bool.isRequired,
   orderGroup: PropTypes.shape({}).isRequired,
 };
 
