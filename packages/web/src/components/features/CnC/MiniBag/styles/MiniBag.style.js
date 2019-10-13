@@ -27,7 +27,7 @@ export const modalStyles = css`
       display: block;
     }
   }
-  .alignTop.alignTop {
+  .alignTop {
     /* stylelint-disable-line */
     top: 28px;
   }
