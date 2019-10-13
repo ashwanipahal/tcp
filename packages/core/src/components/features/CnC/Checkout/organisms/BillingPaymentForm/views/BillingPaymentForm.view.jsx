@@ -29,6 +29,7 @@ import {
   getCardOptions,
   onCCDropUpdateChange,
   onAddNewCreditCardUpdate,
+  getFormName,
   renderBillingAddressHeading,
 } from './BillingPaymentForm.view.util';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
@@ -79,12 +80,8 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const {
-      selectedOnFileAddressId,
-      isSameAsShippingChecked,
-      isEditFormSameAsShippingChecked = false,
-      editFormSelectedOnFileAddressId,
-    } = this.props;
+    const { selectedOnFileAddressId, isSameAsShippingChecked } = this.props;
+    const { isEditFormSameAsShippingChecked, editFormSelectedOnFileAddressId } = this.props;
     const { userAddresses, labels, cardList, isGuest, dispatch } = this.props;
     const { orderHasShipping, addressLabels, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
@@ -101,7 +98,7 @@ export class BillingPaymentForm extends React.PureComponent {
         selectedOnFileAddressId={
           editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId
         }
-        formName={editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME}
+        formName={getFormName(editMode)}
         addNewCCState={
           addNewCCState ||
           (!creditCardList && !orderHasShipping) ||
@@ -118,6 +115,7 @@ export class BillingPaymentForm extends React.PureComponent {
   getAddNewCCForm = ({ onCardFocus, editMode } = {}) => {
     const { cardType, editFormCardType, labels, dispatch, syncErrorsObj, isGuest } = this.props;
     const { cvvCodeRichText, creditFieldLabels, isSaveToAccountChecked } = this.props;
+    const { isPLCCEnabled } = this.props;
     let cvvError;
     /* istanbul ignore else */
     if (syncErrorsObj) {
@@ -125,13 +123,14 @@ export class BillingPaymentForm extends React.PureComponent {
     }
     const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const formCardType = editMode ? editFormCardType : cardType;
-    const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    const formName = getFormName(editMode);
     dispatch(change(formName, 'cardType', cardType));
+    dispatch(change(formName, 'isPLCCEnabled', isPLCCEnabled));
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}
         {...{ cardType: formCardType, cvvError, isGuest, onCardFocus, isSaveToAccountChecked }}
-        {...{ dispatch, isExpirationRequired, creditFieldLabels, editMode, labels }}
+        {...{ dispatch, isExpirationRequired, creditFieldLabels, editMode, labels, isPLCCEnabled }}
         formName={formName}
       />
     );
@@ -297,6 +296,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         className="field"
                         showSuccessCheck={false}
                         enableSuccessCheck={false}
+                        autoComplete="off"
                       />
                       <span className="hide-show show-hide-icons">
                         <span className="info-icon-img-wrapper">
