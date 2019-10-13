@@ -73,7 +73,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
     }
     mailingAddress={false}
-    onFileAddressKey=""
     onFileAddressKey="12345"
     showCreditCardFields={true}
     showCvv={false}
@@ -157,24 +156,27 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "small": 6,
         }
       }
-    />
-  </Styled(Row)>
-  <div
-    className="elem-mb-XL"
-  >
-    <FormSection
-      name="address"
     >
-      <Styled(AddressFields)
-        formName="addEditCreditCard"
-        formSection="address"
-        labels={Object {}}
-        showDefaultCheckbox={false}
-        showPhoneNumber={false}
-        showUserName={true}
+      <Address
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        dataLocatorPrefix="payment"
+        fontWeight="regular"
+        isDefault={false}
+        showCountry={false}
+        showDefault={true}
+        showName={true}
+        showPhone={false}
       />
-    </FormSection>
-  </div>
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     className="CreditCardForm__ctaContainer"
     fullBleed={true}
