@@ -662,7 +662,6 @@ class CartItemTile extends React.Component {
   };
 
   showRadioButtons = (isBossEnabled, isBopisEnabled, store) => {
-    console.log('in showRadioButtons', isBossEnabled, isBopisEnabled, store);
     return isBossEnabled || isBopisEnabled || store;
   };
 
@@ -709,14 +708,6 @@ class CartItemTile extends React.Component {
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = this.getBossBopisFlags(itemBrand);
-    console.log(
-      'isBossEnabled',
-      isBossEnabled,
-      'isBopisEnabled',
-      isBopisEnabled,
-      'itemBrand',
-      itemBrand
-    );
     const availability = this.getAvailability(isBossEnabled, isBopisEnabled);
     const isECOMOrder = this.isEcomOrder(orderItemType);
     const isBOPISOrder = this.isBopisOrder(orderItemType);
@@ -726,28 +717,6 @@ class CartItemTile extends React.Component {
     const { noBopisMessage, noBossMessage } = this.noBossBopisMessage();
     const { bossDisabled, bopisDisabled } = this.checkBossBopisDisabled();
 
-    console.log(
-      'isBossEnabled',
-      isBossEnabled,
-      'isBopisEnabled',
-      isBopisEnabled,
-      'bossDisabled',
-      bossDisabled,
-      'bopisDisabled',
-      bopisDisabled,
-      'isECOMOrder',
-      isECOMOrder,
-      'isBOPISOrder',
-      isBOPISOrder,
-      'isBOSSOrder',
-      isBOSSOrder,
-      'isEcomSoldout',
-      isEcomSoldout,
-      'noBopisMessage',
-      noBopisMessage,
-      'noBossMessage',
-      noBossMessage
-    );
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
       Fit: productDetail.itemInfo.fit,
