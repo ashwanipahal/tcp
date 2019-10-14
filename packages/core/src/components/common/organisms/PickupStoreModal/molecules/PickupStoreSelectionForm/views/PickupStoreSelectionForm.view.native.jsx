@@ -151,7 +151,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           margin="16px 0 20px 0"
           color="white"
           fill="BLUE"
-          buttonVariation="variable-width"
           text="Search"
           fontSize="fs10"
           fontWeight="extrabold"

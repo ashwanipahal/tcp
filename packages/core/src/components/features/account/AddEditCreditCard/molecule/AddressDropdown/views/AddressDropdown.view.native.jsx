@@ -162,7 +162,6 @@ export class AddressDropdown extends React.PureComponent<Props> {
     return showButton ? (
       <Button
         fullWidth
-        buttonVariation="variable-width"
         fill="BLUE"
         text={label}
         onPress={this.openAddressBook}

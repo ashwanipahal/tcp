@@ -9,6 +9,7 @@ import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 import AddedToBagActions from '../../AddedToBagActions';
+
 import {
   HeadingViewStyle,
   MainSection,
