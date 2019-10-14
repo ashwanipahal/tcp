@@ -39,6 +39,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
               "large": 6,
@@ -68,6 +69,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
         fullBleed={true}
       >
         <Styled(Col)
+          className="margin-mobile"
           colSize={
             Object {
               "large": 5,
@@ -82,6 +84,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
               "large": 7,

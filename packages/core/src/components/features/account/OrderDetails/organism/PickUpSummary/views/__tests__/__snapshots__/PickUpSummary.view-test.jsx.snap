@@ -13,15 +13,16 @@ exports[`Order Summary Details component should renders correctly 1`] = `
           "
   ",
           "
-  .capitalise{
-   text-transform: uppercase;
+  .capitalise {
+    text-transform: uppercase;
   }
-  .margin-wrapper{
-      margin:",
+  .margin-wrapper {
+    margin: ",
           [Function],
-          " 0 ",
+          " 0
+      ",
           [Function],
-          " 0; 
+          " 0;
   }
 ",
           ";
