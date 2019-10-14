@@ -168,21 +168,27 @@ class ModuleR extends React.PureComponent {
 
   getLoader = () => {
     return (
-      <Row>
-        {Array.from({ length: 4 }).map((cItem, index) => {
+      <div>
+        {Array.from({ length: 2 }).map((rItem, rIndex) => {
           return (
-            <Col
-              key={index.toString()}
-              className="loader-col"
-              colSize={{ small: 2, medium: 2, large: 3 }}
-            >
-              <div className="loader-wrapper">
-                <Skeleton className="loader-container" />
-              </div>
-            </Col>
+            <Row key={rIndex.toString()}>
+              {Array.from({ length: 4 }).map((cItem, index) => {
+                return (
+                  <Col
+                    key={index.toString()}
+                    className="loader-col"
+                    colSize={{ small: 2, medium: 2, large: 3 }}
+                  >
+                    <div className="loader-wrapper">
+                      <Skeleton className="loader-container" />
+                    </div>
+                  </Col>
+                );
+              })}
+            </Row>
           );
         })}
-      </Row>
+      </div>
     );
   };
 

@@ -81,9 +81,16 @@ export default css`
   }
   .loader-container {
     width: 100%;
-    height: 150px;
+    height: 110px;
+    margin-bottom: 10px;
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 200px;
+      height: 180px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 175px;
+    }
+    @media ${props => props.theme.mediaQuery.xlarge} {
+      height: 217px;
     }
   }
   &:last-child {
