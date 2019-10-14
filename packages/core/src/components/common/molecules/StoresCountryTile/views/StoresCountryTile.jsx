@@ -58,7 +58,14 @@ class StoresCountryTile extends PureComponent {
   }
 
   render() {
-    const { children, className, title, isDefaultOpen, dataLocatorKey } = this.props;
+    const {
+      children,
+      className,
+      title,
+      isDefaultOpen,
+      dataLocatorKey,
+      onToggleCallback,
+    } = this.props;
     if (isClient() && (getViewportInfo().isMobile || getViewportInfo().isTablet)) {
       return (
         <CollapsibleLocations
@@ -69,6 +76,7 @@ class StoresCountryTile extends PureComponent {
           iconOpen="minus-icon"
           defaultOpen={isDefaultOpen}
           id={`scroll-${title}`}
+          onToggleCallback={onToggleCallback}
         />
       );
     }
@@ -93,6 +101,7 @@ StoresCountryTile.propTypes = {
   titleClickCb: PropTypes.func.isRequired,
   isDefaultOpen: PropTypes.bool,
   dataLocatorKey: PropTypes.string,
+  onToggleCallback: PropTypes.func,
 };
 
 StoresCountryTile.defaultProps = {
@@ -100,6 +109,7 @@ StoresCountryTile.defaultProps = {
   stores: [],
   isDefaultOpen: false,
   dataLocatorKey: '',
+  onToggleCallback: null,
 };
 
 export default withStyles(StoresCountryTile, style);

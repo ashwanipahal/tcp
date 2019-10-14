@@ -14,14 +14,42 @@ storeMockNotGym.isGym = false;
 const props = {
   labels,
   store: storeMock,
+  showSetFavorite: true,
 };
 
 describe('StoreAddressTile component', () => {
+  const RealDate = Date;
+
+  function mockDate(isoDate) {
+    global.Date = class extends RealDate {
+      constructor() {
+        return new RealDate(isoDate);
+      }
+    };
+  }
+
+  afterEach(() => {
+    global.Date = RealDate;
+  });
+
+  beforeEach(() => {
+    mockDate('2019-09-18 20:00:00');
+  });
+
   describe('Details', () => {
     it('should render details view', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
           <StoreAddressTile {...props} />
+        </ThemeProvider>
+      );
+      expect(component.html()).toMatchSnapshot();
+    });
+    it('should render details view - with titleClickCb', () => {
+      const titleClickCb = jest.fn();
+      const component = mount(
+        <ThemeProvider theme={Theme()}>
+          <StoreAddressTile {...props} titleClickCb={titleClickCb} />
         </ThemeProvider>
       );
       expect(component.html()).toMatchSnapshot();
@@ -74,9 +102,10 @@ describe('StoreAddressTile component', () => {
         variation: 'listing',
         storeIndex: 1,
       };
+      const storeMockData = { ...props.store, hours: { ...props.store.hours, regularHours: [] } };
       const component = mount(
         <ThemeProvider theme={Theme()}>
-          <StoreAddressTile {...testProps} />
+          <StoreAddressTile {...testProps} store={storeMockData} />
         </ThemeProvider>
       );
       expect(component.html()).toMatchSnapshot();

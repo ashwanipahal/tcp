@@ -30,7 +30,6 @@ exports[`Drawer component renders correctly 1`] = `
       onFocus={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      tabIndex={0}
       textAlign="left"
     >
       <Styled(Anchor)
@@ -38,8 +37,6 @@ exports[`Drawer component renders correctly 1`] = `
       >
         <div
           className="nav-bar-l1-content"
-          role="button"
-          tabIndex={0}
         >
           <span
             className="nav-bar-item-label "

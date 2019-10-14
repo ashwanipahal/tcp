@@ -19,9 +19,17 @@ class CouponListSection extends React.Component<Props> {
 
   toggleShow = event => {
     event.preventDefault();
-    this.setState(prevState => ({
-      showMore: !prevState.showMore,
-    }));
+    this.setState(
+      prevState => ({
+        showMore: !prevState.showMore,
+      }),
+      () => {
+        const couponDetailDOM = document.getElementsByClassName('cartDetailsLink')[10];
+        if (couponDetailDOM) {
+          couponDetailDOM.focus();
+        }
+      }
+    );
   };
 
   helpAnchorClick = event => {
@@ -55,7 +63,7 @@ class CouponListSection extends React.Component<Props> {
             <BodyCopy
               className="couponList__heading"
               fontWeight="semibold"
-              component="p"
+              component="h2"
               fontSize="fs16"
               data-locator={dataLocator}
               fontFamily="secondary"
@@ -99,6 +107,7 @@ class CouponListSection extends React.Component<Props> {
                   onApply={onApply}
                   onRemove={onRemove}
                   handleErrorCoupon={handleErrorCoupon}
+                  ref={this.couponRef}
                 />
               );
             })}

@@ -135,7 +135,6 @@ class ModuleQ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-    selectedProductList = selectedProductList.concat(selectedProductList);
 
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
@@ -191,7 +190,7 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
-            {selectedProductList.length > 0 ? (
+            {selectedProductList.length > 3 ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -206,7 +205,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-        {this.getCurrentCtaButton()}
+        {selectedProductList.length > 3 ? this.getCurrentCtaButton() : null}
       </Grid>
     );
   }

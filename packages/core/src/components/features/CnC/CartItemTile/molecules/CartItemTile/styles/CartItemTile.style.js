@@ -329,5 +329,11 @@ export default css`
     text-decoration: underline;
     cursor: pointer;
   }
+  .size-and-item-container {
+    display: inline-flex;
+  }
+  .product-detail-review-page {
+    display: inline-block;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

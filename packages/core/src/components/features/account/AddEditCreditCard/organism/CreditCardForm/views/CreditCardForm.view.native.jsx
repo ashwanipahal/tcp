@@ -306,7 +306,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           <ActionsWrapper>
             <Button
               fill="BLUE"
-              buttonVariation="variable-width"
               text={this.getSubmitCTAText(labels, mailingAddress, isEdit)}
               style={AddAddressButton}
               onPress={handleSubmit}
@@ -314,7 +313,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             <Button
               fill="WHITE"
               onPress={onClose}
-              buttonVariation="variable-width"
               text={getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
               style={CancelButton}
             />

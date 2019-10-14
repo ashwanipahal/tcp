@@ -17,6 +17,7 @@ import {
   RowWrapper,
   ImageWrapper,
   ModalCustomWrapper,
+  Heading,
 } from '../Modal.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -82,7 +83,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
   const {
     heading,
     onRequestClose,
-    animationType,
+    animationType = 'slide',
     headingAlign,
     headingFontFamily,
     headerStyle,
@@ -118,30 +119,36 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
               keyboardVerticalOffset={keyboardVerticalOffset}
               enabled
             >
-              <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-                <ToastContainer />
-                <StatusBar hidden />
-                <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-                  {heading && (
-                    <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                      <BodyCopy
-                        mobileFontFamily={headingFontFamily || 'primary'}
-                        fontWeight={headingFontWeight || 'extrabold'}
-                        textAlign={headingAlign}
-                        fontSize={fontSize || 'fs16'}
-                        text={heading}
-                      />
-                    </ModalHeading>
-                  )}
-                  {getCloseIcon({
-                    onRequestClose,
-                    headerStyle,
-                    iconType,
-                    isOverlay,
-                    stickyCloseIcon,
-                  })}
-                </RowWrapper>
-                {geLine(horizontalBar, borderColor)}
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+                stickyHeaderIndices={[0]}
+              >
+                <Heading>
+                  <ToastContainer shouldShowSafeArea={false} />
+                  <StatusBar hidden />
+                  <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
+                    {heading && (
+                      <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
+                        <BodyCopy
+                          mobileFontFamily={headingFontFamily || 'primary'}
+                          fontWeight={headingFontWeight || 'extrabold'}
+                          textAlign={headingAlign}
+                          fontSize={fontSize || 'fs16'}
+                          text={heading}
+                        />
+                      </ModalHeading>
+                    )}
+                    {getCloseIcon({
+                      onRequestClose,
+                      headerStyle,
+                      iconType,
+                      isOverlay,
+                      stickyCloseIcon,
+                    })}
+                  </RowWrapper>
+                  {geLine(horizontalBar, borderColor)}
+                </Heading>
                 {children}
               </ScrollView>
             </KeyboardAvoidingView>

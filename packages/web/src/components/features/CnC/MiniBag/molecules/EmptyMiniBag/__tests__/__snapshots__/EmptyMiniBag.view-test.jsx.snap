@@ -27,10 +27,9 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="addedToBag-continueShopping"
+      dataLocator="emptyMiniBag-continueShopping"
       fontSizeVariation="medium"
-      noLink={true}
-      to=""
+      to="/home"
       underline={true}
     >
       continue Shopping
@@ -66,10 +65,9 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="addedToBag-continueShopping"
+      dataLocator="emptyMiniBag-continueShopping"
       fontSizeVariation="medium"
-      noLink={true}
-      to=""
+      to="/home"
       underline={true}
     >
       continue Shopping
@@ -105,10 +103,9 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="addedToBag-continueShopping"
+      dataLocator="emptyMiniBag-continueShopping"
       fontSizeVariation="medium"
-      noLink={true}
-      to=""
+      to="/home"
       underline={true}
     >
       continue Shopping

@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .order-total {
-    text-align: left;
+    text-align: ${props => (props.mobileRightText ? 'right' : 'left')};
     @media ${props => props.theme.mediaQuery.medium} {
       text-align: right;
     }
