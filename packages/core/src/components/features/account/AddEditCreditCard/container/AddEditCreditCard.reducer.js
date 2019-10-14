@@ -12,9 +12,17 @@ const AddEditCreditCardReducer = (state = initialState, action) => {
     case constants.EDIT_CREDIT_CARD:
       return initialState;
     case constants.ADD_CREDIT_CARD_SUCCESS:
-      return fromJS(action.payload);
+      // return fromJS(action.payload);
+      return state.set('success', fromJS(action.payload)).set('error', null);
     case constants.ADD_CREDIT_CARD_ERROR:
-      return state.set('error', fromJS(action.payload)).set('showNotification', true);
+      return state
+        .set('error', fromJS(action.payload))
+        .set('showNotification', true)
+        .set('success', null);
+    case constants.ADD_CREDIT_CARD_RESET_SUCCESS:
+      return state.set('success', null).set('showNotification', false);
+    case constants.ADD_CREDIT_CARD_RESET_ERROR:
+      return state.set('error', null).set('showNotification', false);
     default:
       if (state instanceof Object) {
         return fromJS(state);

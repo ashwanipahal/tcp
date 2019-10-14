@@ -11,7 +11,7 @@ export const getAddEditCreditCardResponse = state => {
 
 export const getAddEditCreditCardSuccess = createSelector(
   getAddEditCreditCardResponse,
-  resp => resp && resp.get('response')
+  resp => resp && resp.get('success')
 );
 
 export const getAddEditCreditCardError = createSelector(
