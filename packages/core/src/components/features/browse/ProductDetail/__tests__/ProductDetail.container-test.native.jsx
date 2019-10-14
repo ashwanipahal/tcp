@@ -9,6 +9,7 @@ describe('ProductDetailContainerVanilla component', () => {
       breadCrumbs: {},
       navTree: {},
       getDetails: jest.fn(),
+      currentColorProductId: '',
     };
     const component = shallow(<ProductDetailContainerVanilla {...props} />);
     expect(component).toMatchSnapshot();

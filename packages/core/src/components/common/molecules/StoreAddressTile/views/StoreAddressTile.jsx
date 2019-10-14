@@ -2,7 +2,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, routeToStoreDetails, getSiteId, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
 import style, {
   TileHeader,
@@ -54,9 +54,6 @@ class StoreAddressTile extends PureComponent {
         </div>
         <div className="tile-footer__fullwidth">
           {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
-          {variation === detailsType &&
-            (isFavorite && showSetFavorite) &&
-            this.changeFavStoreLink()}
         </div>
       </Fragment>
     );
@@ -237,7 +234,14 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingTileHeader() {
-    const { storeIndex, store, labels, openStoreDirections, titleClickCb } = this.props;
+    const {
+      storeIndex,
+      store,
+      labels,
+      openStoreDirections,
+      titleClickCb,
+      geoLocationDisabled,
+    } = this.props;
     const { basicInfo, distance, hours } = store;
     const { storeName, id } = basicInfo;
     const currentDate = new Date();
@@ -266,9 +270,13 @@ class StoreAddressTile extends PureComponent {
               {storeHours}
             </BodyCopy>
           )}
-          <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-            {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
-          </BodyCopy>
+          {!geoLocationDisabled && (
+            <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
+              {`${
+                distance ? `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}` : ''
+              }`}
+            </BodyCopy>
+          )}
           <Anchor
             fontSizeVariation="medium"
             underline
@@ -356,6 +364,7 @@ class StoreAddressTile extends PureComponent {
     const { store, variation, isFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
+    const addressMetaClassName = variation === listingType && !store.isGym ? '__nodisplay' : '';
 
     return (
       <div className="address-wrapper">
@@ -373,7 +382,7 @@ class StoreAddressTile extends PureComponent {
             </BodyCopy>
           ))}
         </BodyCopy>
-        <div className="address-meta">
+        <div className={`address-meta${addressMetaClassName}`}>
           <div className="address-meta__left">
             {variation === detailsType && store.features && this.getStoreType()}
             {store.isGym ? this.getBrandStoreIcon() : <div className="brand-store" />}
@@ -383,24 +392,6 @@ class StoreAddressTile extends PureComponent {
           </div>
         </div>
       </div>
-    );
-  }
-
-  changeFavStoreLink() {
-    const { labels } = this.props;
-    const btnLabel = getLabelValue(labels, 'lbl_storedetails_changestore_btn');
-
-    return (
-      <Button
-        buttonVariation="fixed-width"
-        type="button"
-        onClick={() => {
-          routerPush('/store-locator', '/store-locator');
-        }}
-        title={btnLabel && btnLabel.toUpperCase()}
-      >
-        {btnLabel && btnLabel.toUpperCase()}
-      </Button>
     );
   }
 
