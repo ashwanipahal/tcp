@@ -144,9 +144,9 @@ exports[`CouponList component should renders applied list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
+      className="cart-show-more-button"
       dataLocator="cartShowLessButton"
       fontFamily="secondary"
-      fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
       underline={true}
@@ -322,9 +322,9 @@ exports[`CouponList component should renders available list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
+      className="cart-show-more-button"
       dataLocator="cartShowLessButton"
       fontFamily="secondary"
-      fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
       underline={true}
