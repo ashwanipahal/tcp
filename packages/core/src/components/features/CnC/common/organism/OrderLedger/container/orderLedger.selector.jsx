@@ -10,7 +10,7 @@ export const getSavingsTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'savingsTotal']) || 0;
 };
 export const getShippingTotal = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']);
 };
 export const getTotalTax = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'totalTax']) || 0;
