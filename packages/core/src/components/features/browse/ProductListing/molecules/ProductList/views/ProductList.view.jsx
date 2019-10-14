@@ -43,6 +43,10 @@ const ProductList = props => {
     isPlcc,
     productTileVariation,
     isLoggedIn,
+    wishlistsSummaries,
+    isFavoriteView,
+    removeFavItem,
+    createNewWishListMoveItem,
   } = props;
   let gridIndex = 0;
 
@@ -102,6 +106,10 @@ const ProductList = props => {
               isKeepAliveKillSwitch={false}
               labels={labels}
               isLoggedIn={isLoggedIn}
+              wishlistsSummaries={wishlistsSummaries}
+              isFavoriteView={isFavoriteView}
+              removeFavItem={removeFavItem}
+              createNewWishListMoveItem={createNewWishListMoveItem}
             />
           </div>
         );
@@ -142,6 +150,10 @@ ProductList.propTypes = {
   isPlcc: PropTypes.bool,
   productTileVariation: PropTypes.string,
   isLoggedIn: PropTypes.bool,
+  wishlistsSummaries: PropTypes.shape(),
+  isFavoriteView: PropTypes.bool,
+  removeFavItem: PropTypes.func,
+  createNewWishListMoveItem: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -167,6 +179,10 @@ ProductList.defaultProps = {
   isPlcc: false,
   productTileVariation: '',
   isLoggedIn: false,
+  wishlistsSummaries: null,
+  isFavoriteView: false,
+  removeFavItem: null,
+  createNewWishListMoveItem: null,
 };
 
 export default withStyles(ProductList, ProductListStyle);

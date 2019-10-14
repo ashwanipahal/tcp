@@ -371,7 +371,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
-      currentProduct: { colorFitsSizesMap },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
@@ -381,6 +380,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
+      colorFitsSizesMap,
     } = this.props;
     const {
       selectedColor,
