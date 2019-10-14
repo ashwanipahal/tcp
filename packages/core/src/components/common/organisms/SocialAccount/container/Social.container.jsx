@@ -16,6 +16,7 @@ class SocialContainer extends React.PureComponent {
     setPointsModal: PropTypes.func.isRequired,
     isPlcc: PropTypes.string.isRequired,
     handleComponentChange: PropTypes.func,
+    urlParams: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class SocialContainer extends React.PureComponent {
       pointModalClose,
       isPlcc,
       handleComponentChange,
+      urlParams,
     } = this.props;
     return (
       <Socialview
@@ -48,6 +50,7 @@ class SocialContainer extends React.PureComponent {
         pointModalClose={pointModalClose}
         isPlcc={isPlcc}
         handleComponentChange={handleComponentChange}
+        urlParams={urlParams}
       />
     );
   }
@@ -70,8 +73,9 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    urlParams: ownProps.router,
     getSocialAcc: getsocialDataOnLoadState(state),
     // initial state of the social point modal
     setPointsModal: getPointsModal(state),

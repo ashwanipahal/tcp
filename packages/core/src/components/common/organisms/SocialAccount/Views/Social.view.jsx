@@ -25,6 +25,7 @@ class Socialview extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
+    urlParams: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -38,7 +39,12 @@ class Socialview extends React.PureComponent {
   }
 
   renderSocialLogins = (Component, saveSocialAcc) => {
-    const { socialLoad, pointModalClose } = this.props;
+    const { socialLoad, urlParams, pointModalClose } = this.props;
+
+    console.log('inaaya------------');
+    console.log(urlParams);
+    console.log('inaaya------------');
+
     return (
       <Component
         socialLoad={socialLoad}
