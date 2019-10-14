@@ -62,8 +62,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                   "type": "@@redux-form/CHANGE",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -100,7 +116,9 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="auto"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
@@ -172,8 +190,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
+                Array [
+                  Object {
+                    "meta": Object {
+                      "field": "isPLCCEnabled",
+                      "form": "checkoutBillingPayment",
+                      "persistentSubmitErrors": undefined,
+                      "touch": undefined,
+                    },
+                    "payload": undefined,
+                    "type": "@@redux-form/CHANGE",
+                  },
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -291,8 +325,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -308,9 +358,12 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           ],
         }
       }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={false}
       labels={
         Object {
@@ -331,6 +384,21 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           "lbl_billing_selectFromCard": "Select from card on file",
           "lbl_billing_venmo": "Venmo",
           "paymentMethod": "Payment Method",
+        }
+      }
+      selectedCard={
+        Object {
+          "accountNo": "************3743",
+          "addressDetails": Object {
+            "addressLine1": "Dorney Park Road",
+            "addressLine2": "",
+            "city": "Allentown",
+            "country": "US",
+          },
+          "ccBrand": "PLACE CARD",
+          "ccType": "PLACE CARD1",
+          "creditCardId": 82596,
+          "defaultInd": false,
         }
       }
     />
@@ -376,8 +444,24 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -393,6 +477,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           ],
         }
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -429,6 +514,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />
@@ -476,6 +562,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
               Array [
                 Object {
                   "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
                     "field": "cardType",
                     "form": "checkoutBillingPayment",
                     "persistentSubmitErrors": undefined,
@@ -485,8 +583,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                   "type": "@@redux-form/CHANGE",
                 },
               ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "isPLCCEnabled",
+                    "form": "checkoutBillingPayment",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": undefined,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -571,12 +689,36 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
                   "touch": undefined,
                 },
                 "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
                 "type": "@@redux-form/CHANGE",
               },
             ],
@@ -590,12 +732,23 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
               "type": "return",
               "value": undefined,
             },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
           ],
         }
       }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={false}
       labels={
         Object {
@@ -618,6 +771,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "paymentMethod": "Payment Method",
         }
       }
+      selectedCard=""
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
@@ -640,12 +794,36 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
                   "touch": undefined,
                 },
                 "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
                 "type": "@@redux-form/CHANGE",
               },
             ],
@@ -659,9 +837,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
               "type": "return",
               "value": undefined,
             },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
           ],
         }
       }
+      editMode={false}
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -698,6 +885,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />
@@ -754,6 +942,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />
@@ -828,7 +1017,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="auto"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
@@ -923,7 +1114,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             href=""
             locator=""
             noLink={true}
-            onPress={null}
+            onPress={[Function]}
             target=""
             text="Edit"
             underline={true}
@@ -1053,7 +1244,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Styled(View) />
       <Styled(View)>
         <Styled(Card)
           card={
@@ -1085,6 +1275,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />
@@ -1175,7 +1366,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
       />
     </FormSection>
     <Styled(View)>
-      <Styled(View)>
+      <Styled(View)
+        pointerEvents="auto"
+      >
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
@@ -1286,7 +1479,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             href=""
             locator=""
             noLink={true}
-            onPress={null}
+            onPress={[Function]}
             target=""
             text="Edit"
             underline={true}
@@ -1416,7 +1609,6 @@ exports[`ButtonList component renders correctly without props 2`] = `
           </Styled(View)>
         </Styled(View)>
       </Styled(View)>
-      <Styled(View) />
       <Styled(View)>
         <Styled(Card)
           card={
@@ -1448,6 +1640,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />
@@ -1461,6 +1654,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     btnText=""
     isConfirmationPage={false}
     onBackLinkPress={[Function]}
+    onPress={[Function]}
     routeToPage=""
     showAccordian={true}
   />

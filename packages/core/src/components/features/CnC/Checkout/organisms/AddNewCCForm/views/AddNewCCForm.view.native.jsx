@@ -30,6 +30,8 @@ class AddNewCCForm extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     editMode: PropTypes.bool,
     isSameAsShippingChecked: PropTypes.bool,
+    dto: PropTypes.shape({}),
+    selectedCard: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -45,6 +47,8 @@ class AddNewCCForm extends React.PureComponent {
     creditFieldLabels: {},
     editMode: false,
     isSameAsShippingChecked: false,
+    dto: {},
+    selectedCard: null,
   };
 
   constructor(props) {
@@ -165,6 +169,7 @@ class AddNewCCForm extends React.PureComponent {
       isExpirationRequired,
       editMode,
       isSameAsShippingChecked,
+      selectedCard,
     } = this.props;
     const { expMonth, expYear } = this.getExpData();
     return (
@@ -185,6 +190,9 @@ class AddNewCCForm extends React.PureComponent {
           cameraIcon
           showCvv={!editMode}
           isSameAsShippingChecked={isSameAsShippingChecked}
+          selectedCard={selectedCard}
+          isEdit={editMode}
+          dto={selectedCard}
         />
         {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>

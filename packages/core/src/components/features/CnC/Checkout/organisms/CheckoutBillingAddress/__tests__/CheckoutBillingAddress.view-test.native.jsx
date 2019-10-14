@@ -99,7 +99,7 @@ describe('CheckoutAddress', () => {
 
     const tree = shallow(<CheckoutAddressVanilla {...props} />);
     tree.setProps({ isSameAsShippingChecked: true });
-    tree.instance().onSameAsShippingChange();
+    tree.instance().onSameAsShippingChange(true);
     expect(mockedDispatch).toHaveBeenCalled();
     tree.setState({ isAddNewAddress: false });
     tree.instance().toggleAddNewAddressMode();

@@ -85,8 +85,8 @@ class CheckoutAddress extends React.Component {
    * @function onSameAsShippingChange
    * @description called when same as shipping checkbox is checked
    */
-  onSameAsShippingChange = (e, value) => {
-    const { shippingAddress, editMode, userAddresses, onUpdateAddress } = this.props;
+  onSameAsShippingChange = value => {
+    const { shippingAddress, editMode, userAddresses } = this.props;
     if (value) {
       const {
         firstName,
@@ -102,7 +102,9 @@ class CheckoutAddress extends React.Component {
       let fieldsToUpdate = [];
       if (editMode) {
         fieldsToUpdate.push({ fieldName: `address.addressId`, value: addressId });
+        fieldsToUpdate.push({ fieldName: `onFileAddressId`, value: addressId });
       }
+      this.SameAsShippingChange = true;
       const fields = [
         { fieldName: `address.firstName`, value: firstName },
         { fieldName: `address.lastName`, value: lastName },
@@ -117,39 +119,41 @@ class CheckoutAddress extends React.Component {
       fieldsToUpdate.forEach(({ fieldName, value: fieldValue }) => {
         this.updateFormField(fieldName, fieldValue);
       });
-      onUpdateAddress(true);
     } else if (editMode) {
-      const index = userAddresses.findIndex(
-        val => val.primary && val.primary.toString() === 'true'
-      );
-      const {
-        firstName,
-        lastName,
-        addressLine1,
-        addressLine2,
-        state,
-        city,
-        zipCode,
-        country,
-        addressId,
-      } = userAddresses.get(index);
-      const fields = [
-        { fieldName: `onFileAddressId`, value: addressId },
-        { fieldName: `address.addressId`, value: addressId },
-        { fieldName: `address.firstName`, value: firstName },
-        { fieldName: `address.lastName`, value: lastName },
-        { fieldName: `address.addressLine1`, value: addressLine1 },
-        { fieldName: `address.addressLine2`, value: addressLine2 },
-        { fieldName: `address.state`, value: state },
-        { fieldName: `address.city`, value: city },
-        { fieldName: `address.zipCode`, value: zipCode },
-        { fieldName: `address.country`, value: country },
-      ];
-      fields.forEach(({ fieldName, value: fieldValue }) => {
-        this.updateFormField(fieldName, fieldValue);
-      });
-      this.setState({ isAddNewAddress: editMode });
-      onUpdateAddress(false);
+      if (this.SameAsShippingChange) {
+        const index = userAddresses.findIndex(
+          val => val.primary && val.primary.toString() === 'true'
+        );
+        const {
+          firstName,
+          lastName,
+          addressLine1,
+          addressLine2,
+          state,
+          city,
+          zipCode,
+          country,
+          addressId,
+        } = userAddresses.get(index);
+        const fields = [
+          { fieldName: `address.addressId`, value: addressId },
+          { fieldName: `address.firstName`, value: firstName },
+          { fieldName: `address.lastName`, value: lastName },
+          { fieldName: `address.addressLine1`, value: addressLine1 },
+          { fieldName: `address.addressLine2`, value: addressLine2 },
+          { fieldName: `address.state`, value: state },
+          { fieldName: `address.city`, value: city },
+          { fieldName: `address.zipCode`, value: zipCode },
+          { fieldName: `address.country`, value: country },
+          { fieldName: `onFileAddressId`, value: addressId },
+        ];
+
+        fields.forEach(({ fieldName, value: fieldValue }) => {
+          this.updateFormField(fieldName, fieldValue);
+        });
+      }
+      this.setState({ isAddNewAddress: !this.SameAsShipping });
+      this.SameAsShipping = true;
     }
   };
 
@@ -450,7 +454,6 @@ CheckoutAddress.propTypes = {
   onFileAddressId: PropTypes.string,
   billingData: PropTypes.shape({}),
   editMode: PropTypes.bool,
-  onUpdateAddress: PropTypes.func.isRequired,
 };
 
 CheckoutAddress.defaultProps = {

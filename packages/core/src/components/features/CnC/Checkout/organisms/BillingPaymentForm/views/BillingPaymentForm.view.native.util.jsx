@@ -11,6 +11,7 @@ import {
   BillingAddressHeader,
   BillingAddressWrapper,
   DefaultPaymentTextWrapper,
+  DefaultPaymentWrapper,
 } from '../styles/BillingPaymentForm.style.native';
 
 const getCardDetailsMethod = (labels, setFormToEditState, editMode) => {
@@ -45,29 +46,25 @@ const getCardDetailsMethod = (labels, setFormToEditState, editMode) => {
   );
 };
 
-const getDefaultPayment = (selectedCard, labels) => {
-  return (
-    <BillingAddressHeader>
-      {!selectedCard.defaultInd && labels.defaultPayment ? (
-        <>
-          <Field
-            id="primary"
-            name="primary"
-            component={InputCheckbox}
-            dataLocator="abilling-payment-checkbox-field"
-          />
-          <DefaultPaymentTextWrapper>
-            <BodyCopy
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              text={labels.defaultPayment}
-            />
-          </DefaultPaymentTextWrapper>
-        </>
-      ) : null}
-    </BillingAddressHeader>
-  );
+const getDefaultPayment = (selectedCard, labels, isSpace) => {
+  return !selectedCard.defaultInd && labels.defaultPayment ? (
+    <DefaultPaymentWrapper isSpace={isSpace}>
+      <Field
+        id="primary"
+        name={isSpace ? 'isDefault' : 'defaultPayment'}
+        component={InputCheckbox}
+        dataLocator="abilling-payment-checkbox-field"
+      />
+      <DefaultPaymentTextWrapper>
+        <BodyCopy
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          text={labels.defaultPayment}
+        />
+      </DefaultPaymentTextWrapper>
+    </DefaultPaymentWrapper>
+  ) : null;
 };
 
 const getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {

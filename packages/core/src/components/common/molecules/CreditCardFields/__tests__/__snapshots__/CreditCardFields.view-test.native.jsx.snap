@@ -20,6 +20,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
       keyboardType="numeric"
       label=""
       name="cardNumber"
+      onFocus={[Function]}
       val=""
     />
   </Styled(View)>

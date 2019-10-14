@@ -97,6 +97,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       showCvv,
       cameraIcon,
       onCardFocus,
+      isExpirationRequired,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -142,79 +143,81 @@ export class CreditCardFields extends React.PureComponent<Props> {
             </StyledImageWrapper>
           )}
         </CardContainer>
-        <ExpiryContainer showCvv={showCvv}>
-          <ExpiryMonth>
-            <Field
-              heading={creditFieldLabels.expMonth}
-              component={DropDown}
-              name="expMonth"
-              data={expMonthOptionsMap}
-              dataLocator="addEditCreditCard-expMonth"
-              onValueChange={itemValue => {
-                this.setState({ selectedMonth: itemValue });
-                updateExpiryDate(itemValue, selectedYear);
-              }}
-              variation="secondary"
-              selectedValue={selectedMonth || creditFieldLabels.expMonth}
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-            />
-            <HiddenExpiryWrapper>
+        {isExpirationRequired && (
+          <ExpiryContainer showCvv={showCvv}>
+            <ExpiryMonth>
               <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
+                heading={creditFieldLabels.expMonth}
+                component={DropDown}
                 name="expMonth"
-                id="expMonth"
+                data={expMonthOptionsMap}
+                dataLocator="addEditCreditCard-expMonth"
+                onValueChange={itemValue => {
+                  this.setState({ selectedMonth: itemValue });
+                  updateExpiryDate(itemValue, selectedYear);
+                }}
+                variation="secondary"
+                selectedValue={selectedMonth || creditFieldLabels.expMonth}
+                dropDownStyle={{ ...dropDownStyle }}
+                itemStyle={{ ...itemStyle }}
               />
-            </HiddenExpiryWrapper>
-          </ExpiryMonth>
-          <ExpiryYear>
-            <Field
-              heading={creditFieldLabels.expYear}
-              component={DropDown}
-              name="expYear"
-              data={expYearOptionsMap}
-              dataLocator="addEditCreditCard-expYear"
-              variation="secondary"
-              dropDownStyle={{ ...dropDownStyle }}
-              itemStyle={{ ...itemStyle }}
-              onValueChange={itemValue => {
-                this.setState({ selectedYear: itemValue });
-                updateExpiryDate(selectedMonth, itemValue);
-              }}
-              selectedValue={selectedYear || creditFieldLabels.expYear}
-            />
-            <HiddenExpiryWrapper>
+              <HiddenExpiryWrapper>
+                <Field
+                  label=""
+                  component={TextBox}
+                  title=""
+                  type="hidden"
+                  name="expMonth"
+                  id="expMonth"
+                />
+              </HiddenExpiryWrapper>
+            </ExpiryMonth>
+            <ExpiryYear>
               <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
+                heading={creditFieldLabels.expYear}
+                component={DropDown}
                 name="expYear"
-                id="expYear"
+                data={expYearOptionsMap}
+                dataLocator="addEditCreditCard-expYear"
+                variation="secondary"
+                dropDownStyle={{ ...dropDownStyle }}
+                itemStyle={{ ...itemStyle }}
+                onValueChange={itemValue => {
+                  this.setState({ selectedYear: itemValue });
+                  updateExpiryDate(selectedMonth, itemValue);
+                }}
+                selectedValue={selectedYear || creditFieldLabels.expYear}
               />
-            </HiddenExpiryWrapper>
-          </ExpiryYear>
-          {showCvv && (
-            <CvvCode>
-              <StyledLabel>{creditFieldLabels.cvvCode}</StyledLabel>
-              <Field
-                label=""
-                name="cvvCode"
-                id="cvvCode"
-                keyboardType="numeric"
-                type="text"
-                component={TextBox}
-                dataLocator="payment-cvv"
-                customStyle={CvvTextboxStyle}
-              />
-              <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
-              <CVVInfo>{cvvInfo}</CVVInfo>
-            </CvvCode>
-          )}
-        </ExpiryContainer>
+              <HiddenExpiryWrapper>
+                <Field
+                  label=""
+                  component={TextBox}
+                  title=""
+                  type="hidden"
+                  name="expYear"
+                  id="expYear"
+                />
+              </HiddenExpiryWrapper>
+            </ExpiryYear>
+            {showCvv && (
+              <CvvCode>
+                <StyledLabel>{creditFieldLabels.cvvCode}</StyledLabel>
+                <Field
+                  label=""
+                  name="cvvCode"
+                  id="cvvCode"
+                  keyboardType="numeric"
+                  type="text"
+                  component={TextBox}
+                  dataLocator="payment-cvv"
+                  customStyle={CvvTextboxStyle}
+                />
+                <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
+                <CVVInfo>{cvvInfo}</CVVInfo>
+              </CvvCode>
+            )}
+          </ExpiryContainer>
+        )}
       </PaymentContainer>
     );
   }
@@ -230,6 +233,7 @@ CreditCardFields.propTypes = {
   showCvv: PropTypes.bool,
   cameraIcon: PropTypes.bool,
   onCardFocus: PropTypes.func,
+  isExpirationRequired: PropTypes.bool,
 };
 
 CreditCardFields.defaultProps = {
@@ -248,6 +252,7 @@ CreditCardFields.defaultProps = {
   showCvv: true,
   cameraIcon: false,
   onCardFocus: () => {},
+  isExpirationRequired: true,
 };
 
 export default CreditCardFields;

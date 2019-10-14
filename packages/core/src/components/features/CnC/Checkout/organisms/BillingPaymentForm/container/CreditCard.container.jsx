@@ -313,6 +313,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isVenmoEnabled,
       editFormCardType,
       isPLCCEnabled,
+      scrollView,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -348,6 +349,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
         isVenmoEnabled={isVenmoEnabled}
         isPLCCEnabled={isPLCCEnabled}
+        scrollView={scrollView}
       />
     );
   }
