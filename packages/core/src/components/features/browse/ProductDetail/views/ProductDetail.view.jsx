@@ -14,6 +14,7 @@ import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToB
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -129,6 +130,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
+            <LoyaltyBanner isProductDetailView />
           </Col>
         </Row>
         <Row className="placeholder">

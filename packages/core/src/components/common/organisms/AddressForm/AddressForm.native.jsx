@@ -23,6 +23,7 @@ import {
   InputFieldHalf,
 } from './AddressForm.native.style';
 import { API_CONFIG } from '../../../../services/config';
+import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 
 class AddressForm extends React.PureComponent {
   constructor(props) {
@@ -142,6 +143,7 @@ class AddressForm extends React.PureComponent {
           component={TextBox}
           dataLocator="addnewaddress-phnumber"
           type="tel"
+          normalize={formatPhoneNumber}
         />
         <SetDefaultShippingWrapper>
           <Field

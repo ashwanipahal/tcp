@@ -80,6 +80,7 @@ export class BagPageContainer extends React.Component<Props> {
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
       cartItemSflError,
+      currencySymbol,
     } = this.props;
 
     const showAddTobag = false;
@@ -108,6 +109,7 @@ export class BagPageContainer extends React.Component<Props> {
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
+        currencySymbol={currencySymbol}
       />
     );
   }
@@ -142,7 +144,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { size = 0 } = getCartOrderList(state) || {};
+  const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
@@ -160,6 +162,7 @@ const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
   };
 };
 
