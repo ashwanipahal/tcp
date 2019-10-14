@@ -10,6 +10,7 @@ import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import styles from '../styles/CheckoutCartItemsList.style';
 import CheckoutConstants from '../../../../../Checkout.constants';
+import CollapsibleContainer from '../../../../../../../../common/molecules/CollapsibleContainer';
 
 /**
  *
@@ -47,6 +48,7 @@ class CheckoutCartItemsList extends Component {
     bagPageLabels: PropTypes.shape({}),
     className: PropTypes.string.isRequired,
     gettingSortedItemList: PropTypes.func.isRequired,
+    showAccordian: PropTypes.bool,
   };
 
   /**
@@ -361,22 +363,41 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels } = this.props;
+    const { itemsCount, className, bagPageLabels, showAccordian } = this.props;
+    const header = (
+      <BodyCopy
+        fontWeight="semibold"
+        fontSize="fs16"
+        fontFamily="secondary"
+        className="checkout-cart-list-heading"
+      >
+        {`${bagPageLabels.bagHeading} (${itemsCount}):`}
+      </BodyCopy>
+    );
+
     return (
       <div className={className}>
-        <Row tagName="header" className="checkout-cart-list">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy
-              fontWeight="semibold"
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="checkout-cart-list-heading"
-            >
-              {`${bagPageLabels.bagHeading} (${itemsCount}):`}
-            </BodyCopy>
-            {this.renderItems()}
-          </Col>
-        </Row>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+          ignoreGutter={{ small: true, medium: true }}
+          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        >
+          <CollapsibleContainer
+            className={`${className} ${showAccordian ? 'reviewMyBagAccordian' : ''}`}
+            header={header}
+            body={this.renderItems()}
+            iconLocator="arrowicon"
+            defaultOpen
+          />
+        </Col>
+        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
+          {header}
+          {this.renderItems()}
+        </div>
       </div>
     );
   }
@@ -385,6 +406,7 @@ class CheckoutCartItemsList extends Component {
 CheckoutCartItemsList.defaultProps = {
   labels: {},
   bagPageLabels: {},
+  showAccordian: true,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

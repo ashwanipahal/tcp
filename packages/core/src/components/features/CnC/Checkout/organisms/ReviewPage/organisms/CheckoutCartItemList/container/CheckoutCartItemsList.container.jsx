@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import BAGPAGE_SELECTORS from '../../../../../../BagPage/container/BagPage.selectors';
 import { getLabelsCartItemTile } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import CheckoutCartItemsList from '../views/CheckoutCartItemsList.view';
-import { BodyCopy } from '../../../../../../../../common/atoms';
 
 /**
  * @function categorizingItemsForStores
@@ -40,18 +39,11 @@ const categorizingItemsForStores = ({
     storeTomorrowOpenRange: storeTomorrowOpenRange || '',
     orderType,
     duration:
-      orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS ? (
-        `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${bossEndDate.day}. ${
-          bossEndDate.month
-        } ${bossEndDate.date}`
-      ) : (
-        <BodyCopy
-          fontWeight="extrabold"
-          fontSize="fs12"
-          fontFamily="secondary"
-          text={`${labels.today}, ${bopisDate.month} ${bopisDate.date}`}
-        />
-      ),
+      orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS
+        ? `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${
+            bossEndDate.day
+          }. ${bossEndDate.month} ${bossEndDate.date}`
+        : `${labels.today}, ${bopisDate.month} ${bopisDate.date}`,
   };
   if (bucket[deliveryType]) {
     bucketReferenceTemp[deliveryType][currentStore] = bucket[deliveryType][currentStore] || {};

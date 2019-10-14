@@ -18,6 +18,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from '../styles/AddEditPersonalInformationForm.style';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
 import internalEndpoints from '../../../../common/internalEndpoints';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 export const AddEditPersonalInformationForm = ({
   className,
@@ -87,6 +88,7 @@ export const AddEditPersonalInformationForm = ({
             component={TextBox}
             dataLocator="editPersonalInfo-phnumber"
             type="tel"
+            normalize={formatPhoneNumber}
           />
         </Col>
       </Row>
