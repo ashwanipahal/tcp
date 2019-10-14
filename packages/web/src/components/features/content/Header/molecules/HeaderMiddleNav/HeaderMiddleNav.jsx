@@ -184,18 +184,24 @@ class HeaderMiddleNav extends React.PureComponent {
                     className="username rightLink"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                   >
-                    <span className="user-name">{`Hi, ${userName}`}</span>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs12"
+                      className="user-name"
+                      textAlign="left"
+                    >
+                      {`Hi, ${userName}`}
+                    </BodyCopy>
                     <Image
                       alt="user"
                       className={this.handleCarrottoggle(userNameClick)}
                       src={getIconPath('down_arrow_icon')}
                       height="6px"
                     />
-                    <BodyCopy fontFamily="secondary" fontSize="fs10">
-                      {`${userPoints} Points |`}
-                      {`${userRewards} Rewards`}
+                    <BodyCopy className="rightLink" fontFamily="secondary" fontSize="fs10">
+                      {`${userPoints} Points`}
                     </BodyCopy>
-
+                    <BodyCopy>{`${userRewards} Rewards`}</BodyCopy>
                     <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
                   </BodyCopy>
                 </React.Fragment>
