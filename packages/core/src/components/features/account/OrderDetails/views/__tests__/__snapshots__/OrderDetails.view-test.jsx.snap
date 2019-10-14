@@ -70,14 +70,13 @@ exports[`Order Summary Details component should renders correctly 1`] = `
         <Styled(Col)
           colSize={
             Object {
-              "large": 6,
+              "large": 5,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderBillingDetails
-            className=""
+          <Styled(OrderBillingDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
@@ -85,14 +84,13 @@ exports[`Order Summary Details component should renders correctly 1`] = `
         <Styled(Col)
           colSize={
             Object {
-              "large": 6,
+              "large": 7,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderSummaryDetails
-            className=""
+          <Styled(OrderSummaryDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />

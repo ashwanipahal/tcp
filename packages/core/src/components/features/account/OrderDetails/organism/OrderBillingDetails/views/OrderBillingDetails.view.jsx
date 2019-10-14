@@ -25,8 +25,8 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
   const cardIconMapping = {
     DISC: 'disc-small',
     MC: 'mc-small',
-    Amex: 'amex-small',
-    Visa: 'visa-bordered',
+    AMEX: 'amex-small',
+    VISA: 'visa-bordered',
     GC: 'gift-card-small',
     'PLACE CARD': 'place-card-small',
     VENMO: 'venmo-bordered',
@@ -38,7 +38,10 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
         {getLabelValue(ordersLabels, 'lbl_orderDetails_billing')}
       </BodyCopy>
       <BodyCopy component="div" className="card-details">
-        <Image src={getIconPath(cardIconMapping[card.cardType])} className="elem-mr-XS" />
+        <Image
+          src={getIconPath(cardIconMapping[card.cardType.toUpperCase()])}
+          className="elem-mr-XS"
+        />
         <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
           {`${getLabelValue(ordersLabels, 'lbl_orders_ending')} in ${card.endingNumbers.slice(-4)}`}
         </BodyCopy>

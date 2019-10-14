@@ -1,31 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Order Billing Details component should renders correctly 1`] = `
-<Styled(BodyCopy)
+<StyledComponent
   className=""
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  link={null}
-  textAlign="left"
->
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    lbl_orderDetails_billing
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .card-details {
+    display: flex;
+    align-items: center;
+    margin: ",
+          [Function],
+          " 0;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(OrderBillingDetails)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  orderDetailsData={
+    Object {
+      "checkout": Object {
+        "billing": Object {
+          "card": Object {
+            "VISA": "***************1211",
+          },
+        },
+      },
+    }
+  }
+  ordersLabels={Object {}}
+/>
 `;

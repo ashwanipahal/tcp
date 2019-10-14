@@ -7,6 +7,15 @@ describe('Order Billing Details component', () => {
     const props = {
       ordersLabels: {},
       className: '',
+      orderDetailsData: {
+        checkout: {
+          billing: {
+            card: {
+              VISA: '***************1211',
+            },
+          },
+        },
+      },
     };
     const component = shallow(<OrderBillingDetails {...props} />);
     expect(component).toMatchSnapshot();

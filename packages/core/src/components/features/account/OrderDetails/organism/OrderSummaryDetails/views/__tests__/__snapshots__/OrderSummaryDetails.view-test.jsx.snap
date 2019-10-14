@@ -1,31 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Order Summary Details component should renders correctly 1`] = `
-<Styled(BodyCopy)
-  className=""
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  link={null}
-  textAlign="left"
->
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    lbl_orderDetails_orderSummary
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .row-margin {
+    margin: 0 0 ",
+          [Function],
+          " 0;
+  }
+  .items-total {
+    padding-bottom: ",
+          [Function],
+          ";
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+  }
+  .total-value {
+    padding-top: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(OrderSummaryDetails)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  orderDetailsData={
+    Object {
+      "summary": Object {
+        "currencySymbol": "$",
+        "grandTotal": "12.50",
+        "shippingTotal": "23",
+      },
+    }
+  }
+  ordersLabels={Object {}}
+/>
 `;

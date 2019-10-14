@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-
+import PickUpSummary from '../../PickUpSummary';
 /**
  * This function component use for return the OrderShippingDetails
  * can be passed in the component.
@@ -18,10 +18,7 @@ const OrderShippingDetails = ({ className, orderDetailsData, ordersLabels }) => 
    */
 
   const { checkout } = orderDetailsData;
-  const { shippingAddress } = checkout;
-  console.log('orderDADSD', orderDetailsData);
-  console.log('checkout', checkout);
-  console.log('shippingAddress', shippingAddress);
+  const { shippingAddress, pickUpStore } = checkout;
 
   return (
     <BodyCopy component="div" className={className}>
@@ -31,11 +28,14 @@ const OrderShippingDetails = ({ className, orderDetailsData, ordersLabels }) => 
         fontFamily="secondary"
         className="elem-mb-MED"
       >
-        {getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}
+        {shippingAddress
+          ? getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')
+          : getLabelValue(ordersLabels, 'lbl_orderDetails_pickup')}
       </BodyCopy>
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
         <Address address={shippingAddress} showCountry={false} showPhone={false} />
       </BodyCopy>
+      {pickUpStore && <PickUpSummary pickUpStore={pickUpStore} ordersLabels={ordersLabels} />}
     </BodyCopy>
   );
 };

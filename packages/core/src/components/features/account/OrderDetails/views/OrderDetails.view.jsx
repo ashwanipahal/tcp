@@ -43,7 +43,6 @@ class OrderDetailsView extends PureComponent {
     } = orderDetailsData || {};
 
     const { currencySymbol } = summary || {};
-
     return (
       <div className={className}>
         <FormPageHeadingComponent
@@ -60,7 +59,7 @@ class OrderDetailsView extends PureComponent {
                       ordersLabels={ordersLabels}
                     />
                   </Col>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <Col colSize={{ large: 6, medium: 8, small: 6 }} className="margin-tablet">
                     <OrderShippingDetails
                       orderDetailsData={orderDetailsData}
                       ordersLabels={ordersLabels}
@@ -70,13 +69,13 @@ class OrderDetailsView extends PureComponent {
               </Col>
               <Col colSize={{ large: 6, medium: 4, small: 6 }}>
                 <Row fullBleed>
-                  <Col colSize={{ large: 5, medium: 8, small: 6 }}>
+                  <Col colSize={{ large: 5, medium: 8, small: 6 }} className="margin-mobile">
                     <OrderBillingDetails
                       orderDetailsData={orderDetailsData}
                       ordersLabels={ordersLabels}
                     />
                   </Col>
-                  <Col colSize={{ large: 7, medium: 8, small: 6 }}>
+                  <Col colSize={{ large: 7, medium: 8, small: 6 }} className="margin-tablet">
                     <OrderSummaryDetails
                       orderDetailsData={orderDetailsData}
                       ordersLabels={ordersLabels}

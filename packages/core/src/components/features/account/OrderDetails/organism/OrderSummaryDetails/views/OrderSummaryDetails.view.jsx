@@ -4,6 +4,7 @@ import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OrderSummaryDetails.style';
+
 /**
  * This function component use for return the OrderShippingDetails
  * can be passed in the component.
@@ -30,6 +31,12 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
     shippingTotal > 0
       ? `${currencySymbol}${shippingTotal.toFixed(2)}`
       : getLabelValue(ordersLabels, 'lbl_orders_free');
+
+  const formatAmount = value => {
+    const symbol = value < 0 ? '-' : '';
+    return symbol + currencySymbol + Math.abs(value).toFixed(2);
+  };
+
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -58,7 +65,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
         <Col colSize={{ large: 5, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {`${currencySymbol}${subTotal.toFixed(2)}`}
+            {formatAmount(subTotal)}
           </BodyCopy>
         </Col>
       </Row>
@@ -70,7 +77,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
         <Col colSize={{ large: 5, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {`${currencySymbol}${couponsTotal.toFixed(2)}`}
+            {formatAmount(couponsTotal)}
           </BodyCopy>
         </Col>
       </Row>

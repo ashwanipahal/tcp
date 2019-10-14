@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .capitalise{
+   text-transform: uppercase;
+  }
+  .margin-wrapper{
+      margin:",
+          [Function],
+          " 0 ",
+          [Function],
+          " 0; 
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(PickUpSummary)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  ordersLabels={Object {}}
+  pickUpStore={
+    Object {
+      "basicInfo": Object {
+        "address": Object {
+          "addressLine1": "space 170",
+          "city": "Ohio",
+          "state": "CA",
+          "zipCode": "33232",
+        },
+        "phone": "8139942076",
+      },
+      "hours": Object {
+        "regularHours": Array [
+          Object {
+            "dayName": "COLUMBUS DAY",
+            "openIntervals": Array [
+              Object {
+                "fromHour": "2019-10-14 10:00:00",
+                "toHour": "2019-10-14 21:00:00",
+              },
+            ],
+          },
+        ],
+      },
+      "pickUpAlternative": Object {},
+      "pickUpPrimary": Object {
+        "firstName": "abc",
+        "lastName": "def",
+      },
+    }
+  }
+/>
+`;
