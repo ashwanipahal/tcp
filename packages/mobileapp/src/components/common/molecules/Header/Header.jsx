@@ -26,7 +26,6 @@ import {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  BackgroundView,
   CartIconView,
   ImageColor,
   Touchable,
@@ -63,16 +62,25 @@ class Header extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { loadFavoriteStore } = this.props;
-    loadFavoriteStore({});
     this.getInitialProps();
   }
 
   componentDidUpdate(prevProps) {
-    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
-    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+    const {
+      isUpdateCartCount,
+      updateCartManuallyAction,
+      isUserLoggedIn,
+      loadFavoriteStore,
+    } = this.props;
+    if (
+      isUpdateCartCount !== prevProps.isUpdateCartCount ||
+      isUserLoggedIn !== prevProps.isUserLoggedIn
+    ) {
       this.getInitialProps();
       updateCartManuallyAction(false);
+    }
+    if (isUserLoggedIn !== prevProps.isUserLoggedIn) {
+      loadFavoriteStore({});
     }
   }
 
@@ -148,7 +156,7 @@ class Header extends React.PureComponent<Props> {
       ? `${capitalize(basicInfo.storeName)} ${headerLabels.lbl_header_openUntil} ${storeTime}`
       : null;
     const welcomeMessage = isUserLoggedIn
-      ? `Hi ${userName}!`
+      ? `${headerLabels.lbl_header_hiTxt} ${userName}!`
       : headerLabels.lbl_header_welcomeMessage;
 
     return (
@@ -204,7 +212,6 @@ class Header extends React.PureComponent<Props> {
                 data-locator={getLocator('global_headerpanelbagicon')}
                 cartVal={cartVal}
               />
-              <BackgroundView />
               <RoundView cartVal={cartVal} />
               <BodyCopy
                 text={cartVal}

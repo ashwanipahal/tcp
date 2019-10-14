@@ -65,7 +65,6 @@ exports[`Header Component Header should render correctly 1`] = `
           }
         />
         <Styled(View) />
-        <Styled(View) />
         <Styled(BodyCopy)
           accessibilityText="Mini bag with count"
           color="white"

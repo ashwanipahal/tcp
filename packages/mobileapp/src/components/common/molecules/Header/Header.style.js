@@ -57,14 +57,6 @@ export const Icon = styled.Image`
   height: 5px;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
-export const BackgroundView = styled.View`
-  background-color: ${props => props.theme.colorPalette.white};
-  width: 22px;
-  height: 22px;
-  border-radius: 11;
-  position: absolute;
-  margin-top: 14px;
-`;
 
 export const RoundView = styled.View`
   background-color: ${props => props.theme.colorPalette.primary.dark};
@@ -181,7 +173,6 @@ export default {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  BackgroundView,
   CartIconView,
   ImageColor,
   HeaderPromoContainer,
