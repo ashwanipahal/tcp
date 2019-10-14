@@ -1,4 +1,3 @@
-/* eslint-disable react-native-a11y/has-accessibility-props */
 import React, { useRef, useEffect, useState } from 'react';
 import { TouchableOpacity, Clipboard } from 'react-native';
 import PropTypes from 'prop-types';
@@ -81,7 +80,10 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
         marginLeft="60px"
         text={approvedPLCCData && approvedPLCCData.couponCode}
       />
-      <TouchableOpacity onPress={() => copyToClipboard(approvedPLCCData.couponCode)}>
+      <TouchableOpacity
+        accessibilityRole="button"
+        onPress={() => copyToClipboard(approvedPLCCData.couponCode)}
+      >
         <CopyToClipBoardWrapper
           color="gray.900"
           fontFamily="secondary"
