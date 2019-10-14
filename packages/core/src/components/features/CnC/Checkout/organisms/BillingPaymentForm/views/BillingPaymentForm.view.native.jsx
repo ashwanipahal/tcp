@@ -87,7 +87,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const creditCardList = getCreditCardList({ cardList });
     const formType = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
     const addressId = editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId;
-    if (!addressId) {
+    if (!editFormSelectedOnFileAddressId) {
       dispatch(change(formType, 'onFileAddressId', ''));
     }
     return (
@@ -293,19 +293,13 @@ export class BillingPaymentForm extends React.PureComponent {
     this.setState({ editMode: true });
   };
 
-  unsetFormEditState = e => {
-    if (e) {
-      e.preventDefault();
-    }
+  unsetFormEditState = () => {
     const { dispatch } = this.props;
     dispatch(reset(constants.EDIT_FORM_NAME));
     this.setState({ editMode: false, editModeSubmissionError: '' });
   };
 
-  onUpdateAddress = () => {
-    // const { dispatch } = this.props;
-    // dispatch(change(constants.EDIT_FORM_NAME, 'sameAsShipping', value));
-  };
+  onUpdateAddress = () => {};
 
   onEditCardFocus = () => {
     if (!this.cardNumberCleared) {

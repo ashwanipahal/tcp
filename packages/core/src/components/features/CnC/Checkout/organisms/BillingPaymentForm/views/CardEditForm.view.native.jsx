@@ -13,6 +13,7 @@ import {
   CancelButtonWrapper,
   BillingAddressWrapper,
   CardDetailsWrapper,
+  AddAddressWrapper,
 } from '../styles/CardEditForm.style.native';
 
 class CardEditFormView extends React.Component {
@@ -29,7 +30,6 @@ class CardEditFormView extends React.Component {
 
   render() {
     const {
-      // renderCardDetailsHeading,
       getAddNewCCForm,
       unsetFormEditState,
       labels: {
@@ -46,50 +46,47 @@ class CardEditFormView extends React.Component {
       onUpdateAddress,
     } = this.props;
     return (
-      // <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={this.handleSubmit}>
-      <>
+      <AddAddressWrapper>
         <View>
           {error && <ErrorMessage error={error.message} />}
-          <CardDetailsWrapper ref={errorMessageRef}>
-            <View>
+          <AddAddressWrapper>
+            <CardDetailsWrapper>
               {getAddNewCCForm({
                 onCardFocus: onEditCardFocus,
                 editMode: true,
               })}
-            </View>
-          </CardDetailsWrapper>
-          <BillingAddressWrapper>
-            <AddressForm editMode onUpdateAddress={onUpdateAddress} key="cardEditAddressForm" />
-          </BillingAddressWrapper>
+            </CardDetailsWrapper>
+            <BillingAddressWrapper>
+              <AddressForm editMode onUpdateAddress={onUpdateAddress} />
+            </BillingAddressWrapper>
+          </AddAddressWrapper>
           {/* <View className="edit-card-error-container">
           {editModeSubmissionError && (
             <ErrorMessage error={editModeSubmissionError} className="edit-card-error" />
           )}
         </View> */}
         </View>
-        <View className="card-edit-buttons">
-          <SaveButtonWrapper>
-            <Button
-              aria-label={ariaLabelSaveButtonText}
-              onPress={this.handleFormSubmit}
-              fontSize="fs14"
-              fontWeight="extrabold"
-              buttonVariation="variable-width"
-              fill="BLUE"
-              text={saveButtonText}
-            />
-          </SaveButtonWrapper>
-          <CancelButtonWrapper>
-            <Button
-              aria-label={ariaLabelCancelButtonText}
-              type="button"
-              className="card-edit-button card-edit-cancel"
-              onPress={unsetFormEditState}
-              text={cancelButtonText}
-            />
-          </CancelButtonWrapper>
-        </View>
-      </>
+        <SaveButtonWrapper ref={errorMessageRef}>
+          <Button
+            aria-label={ariaLabelSaveButtonText}
+            onPress={this.handleFormSubmit}
+            fontSize="fs14"
+            fontWeight="extrabold"
+            buttonVariation="variable-width"
+            fill="BLUE"
+            text={saveButtonText}
+          />
+        </SaveButtonWrapper>
+        <CancelButtonWrapper>
+          <Button
+            aria-label={ariaLabelCancelButtonText}
+            type="button"
+            className="card-edit-button card-edit-cancel"
+            onPress={unsetFormEditState}
+            text={cancelButtonText}
+          />
+        </CancelButtonWrapper>
+      </AddAddressWrapper>
     );
   }
 }
@@ -101,7 +98,6 @@ CardEditFormView.propTypes = {
     ariaLabelCancelButtonText: PropTypes.string,
     ariaLabelSaveButtonText: PropTypes.string,
   }).isRequired,
-  // renderCardDetailsHeading: PropTypes.func.isRequired,
   getAddNewCCForm: PropTypes.func.isRequired,
   unsetFormEditState: PropTypes.func.isRequired,
   AddressForm: PropTypes.shape({}).isRequired,
@@ -148,7 +144,7 @@ const CardEditReduxForm = React.memo(props => {
     form: constants.EDIT_FORM_NAME, // a unique identifier for this form
     enableReinitialize: true,
     keepDirtyOnReinitialize: true,
-    destroyOnUnmount: false,
+    destroyOnUnmount: true,
     ...validateMethod,
     onSubmitSuccess: () => {
       unsetFormEditState();

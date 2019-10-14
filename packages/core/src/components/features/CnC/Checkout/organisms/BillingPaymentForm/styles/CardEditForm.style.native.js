@@ -17,4 +17,15 @@ const CardDetailsWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export { SaveButtonWrapper, CancelButtonWrapper, BillingAddressWrapper, CardDetailsWrapper };
+const AddAddressWrapper = styled.View`
+  flex: 1;
+  flex-direction: column;
+`;
+
+export {
+  SaveButtonWrapper,
+  CancelButtonWrapper,
+  BillingAddressWrapper,
+  CardDetailsWrapper,
+  AddAddressWrapper,
+};
