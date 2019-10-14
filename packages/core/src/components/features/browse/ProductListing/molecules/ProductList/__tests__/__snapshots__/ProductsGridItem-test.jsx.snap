@@ -10,6 +10,13 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
   >
     <BadgeItem
       className="top-badge-container"
+      customFontSize={
+        Array [
+          "fs10",
+          "fs12",
+          "fs14",
+        ]
+      }
       customFontWeight=""
       haveSpace={true}
       isShowBadges={true}
