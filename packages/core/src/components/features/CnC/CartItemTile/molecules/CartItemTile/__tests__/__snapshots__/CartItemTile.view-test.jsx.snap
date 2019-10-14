@@ -373,6 +373,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
     text-decoration: underline;
     cursor: pointer;
   }
+  .size-and-item-container {
+    display: inline-flex;
+  }
+  .product-detail-review-page {
+    display: inline-block;
+  }
   ",
           [Function],
           ";
@@ -792,6 +798,12 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .sflActions {
     text-decoration: underline;
     cursor: pointer;
+  }
+  .size-and-item-container {
+    display: inline-flex;
+  }
+  .product-detail-review-page {
+    display: inline-block;
   }
   ",
           [Function],
