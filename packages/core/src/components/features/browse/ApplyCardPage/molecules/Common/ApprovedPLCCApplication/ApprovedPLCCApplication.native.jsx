@@ -1,4 +1,6 @@
+/* eslint-disable react-native-a11y/has-accessibility-props */
 import React, { useRef, useEffect, useState } from 'react';
+import { TouchableOpacity, Clipboard } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button, RichText } from '../../../../../../common/atoms';
 import {
@@ -37,6 +39,15 @@ const fetchTotalSavingOnOrder = (plccData = {}, approvedPLCCData = {}) => {
 };
 
 /**
+ * @function - copyToClipboard
+ *
+ * @param {*} couponCode - text data.
+ */
+const copyToClipboard = async couponCode => {
+  await Clipboard.setString(couponCode);
+};
+
+/**
  * @const getCouponBody
  *
  * @param - labels
@@ -70,16 +81,18 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
         marginLeft="60px"
         text={approvedPLCCData && approvedPLCCData.couponCode}
       />
-      <CopyToClipBoardWrapper
-        color="gray.900"
-        fontFamily="secondary"
-        fontWeight="regular"
-        fontSize="fs18"
-        textAlign="center"
-        text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
-        paddingTop="16px"
-        paddingBottom="24px"
-      />
+      <TouchableOpacity onPress={() => copyToClipboard(approvedPLCCData.couponCode)}>
+        <CopyToClipBoardWrapper
+          color="gray.900"
+          fontFamily="secondary"
+          fontWeight="regular"
+          fontSize="fs18"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
+          paddingTop="16px"
+          paddingBottom="24px"
+        />
+      </TouchableOpacity>
       <ImageContainer>
         <StyledImage source={couponImage} width="158px" height="125px" />
       </ImageContainer>

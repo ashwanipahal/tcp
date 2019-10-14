@@ -98,21 +98,26 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     textAlign="center"
     textDecoration={null}
   />
-  <Styled(Styled(Styled(BodyCopy)))
-    accessibilityText=""
-    color="gray.900"
-    dataLocator=""
-    fontFamily="secondary"
-    fontSize="fs18"
-    fontWeight="regular"
-    margin={null}
-    numberOfLines={null}
-    paddingBottom="24px"
-    paddingTop="16px"
-    text="lbl_PLCCForm_copyToClipboard"
-    textAlign="center"
-    textDecoration={null}
-  />
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Styled(Styled(Styled(BodyCopy)))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      paddingBottom="24px"
+      paddingTop="16px"
+      text="lbl_PLCCForm_copyToClipboard"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </TouchableOpacity>
   <Styled(View)>
     <Styled(Styled(ImageComp))
       alt=""
