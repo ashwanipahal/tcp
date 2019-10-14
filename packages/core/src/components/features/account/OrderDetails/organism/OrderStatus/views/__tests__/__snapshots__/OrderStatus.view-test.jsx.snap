@@ -27,7 +27,7 @@ exports[`Order Items component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      Order Received: 
+      lbl_orders_statusOrderReceived
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className={null}
@@ -41,7 +41,7 @@ exports[`Order Items component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      Processing
+      lbl_orders_processing
     </Styled(BodyCopy)>
   </Styled(Col)>
 </Styled(Row)>
