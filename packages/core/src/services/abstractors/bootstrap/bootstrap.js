@@ -124,10 +124,14 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
     if (CACHED_KEYS[item] === key) {
       const globalRedisClient = global.redisClient;
       if (globalRedisClient && globalRedisClient.connected) {
-        await setDataInRedis({
-          data: bootstrapData[key],
-          CACHE_IDENTIFIER: item,
-        });
+        try {
+          await setDataInRedis({
+            data: bootstrapData[key],
+            CACHE_IDENTIFIER: item,
+          });
+        } catch (err) {
+          logger.error(err);
+        }
       }
     }
   });
