@@ -153,7 +153,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
     >
-      <Address
+      <Styled(Address)
         address={
           Object {
             "addressId": "12345",
@@ -164,12 +164,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
         className="CreditCardForm__address"
         dataLocatorPrefix="payment"
-        fontWeight="regular"
-        isDefault={false}
         showCountry={false}
-        showDefault={true}
-        showName={true}
         showPhone={false}
+        singleLineAddress={true}
       />
     </Styled(Col)>
   </Styled(Row)>

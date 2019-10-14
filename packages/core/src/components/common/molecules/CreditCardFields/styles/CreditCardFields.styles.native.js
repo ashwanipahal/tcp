@@ -12,6 +12,7 @@ const ExpiryContainer = styled.View`
   flex: 1;
   flex-direction: row;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   justify-content: ${props => (props.showCvv ? 'space-between' : 'flex-start')};
 `;
 
