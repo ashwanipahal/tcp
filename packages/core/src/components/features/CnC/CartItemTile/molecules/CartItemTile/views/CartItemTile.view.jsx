@@ -78,6 +78,7 @@ class CartItemTile extends React.Component {
           orderId,
           orderItemType,
           isItemShipToHome,
+          itemBrand,
         },
       });
     }
@@ -88,7 +89,7 @@ class CartItemTile extends React.Component {
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    if (orderItemType === 'ECOM') {
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,

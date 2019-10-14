@@ -14,11 +14,8 @@ import {
   isProductOOS,
   isBOSSProductOOSQtyMismatched,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import {
-  PICKUP_LABELS,
-  BOPIS_ITEM_AVAILABILITY,
-  ORDER_ITEM_TYPE,
-} from '../../../PickUpStoreModal.constants';
+import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
+import ORDER_ITEM_TYPE from '../../../../../../features/CnC/CartItemTile/CartItemTile.constants';
 import { minStoreCount } from '../../../PickUpStoreModal.config';
 import { getCartItemInfo } from '../../../../../../features/CnC/AddedToBag/util/utility';
 
@@ -266,7 +263,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
       isBopisCtaEnabled,
       isBossCtaEnabled,
     } = this.props;
-    const brand = getBrand();
+    const { itemBrand } = initialValuesFromBagPage;
     const { color, Fit: fit, Size: size, Quantity: quantity } = initialValues;
     const formIntialValues = {
       // This is required as different teams have used different 'Fit' or 'fit' labels
@@ -279,7 +276,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
       wishlistItemId: false,
       quantity,
       isBoss: isBossSelected,
-      brand,
+      brand: itemBrand,
       storeLocId: selectedStoreId,
     };
     const productInfo = getCartItemInfo(currentProduct, productFormData);
