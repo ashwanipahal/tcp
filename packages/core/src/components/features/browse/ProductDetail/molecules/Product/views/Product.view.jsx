@@ -9,6 +9,8 @@ import {
   getPricesWithRange,
   getMapSliceForColorProductId,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 
 class Product extends React.Component {
   // static propTypes = {
@@ -264,6 +266,7 @@ class Product extends React.Component {
           isPlcc={isHasPlcc}
           isInternationalShipping={isInternationalShipping}
         />
+        <RenderPerf.Measure name={PRICING_VISIBLE} />
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,
