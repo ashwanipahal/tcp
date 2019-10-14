@@ -18,7 +18,7 @@ import {
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
