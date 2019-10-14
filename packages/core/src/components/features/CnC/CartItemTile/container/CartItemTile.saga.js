@@ -20,6 +20,8 @@ import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { isItemBossBopisInEligible } from './CartItemTile.selectors';
+import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
+import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
@@ -132,11 +134,47 @@ export function* getProductSKUInfoSaga(payload) {
   }
 }
 
+/**
+ *
+ * @method openPickupModalFromBag
+ * @description this method handles opening of pickup modal on click of edit from bag for boss/bopis item
+ * @export
+ * @param {*} payload
+ */
+export function* openPickupModalFromBag(payload) {
+  try {
+    const state = yield select();
+    const {
+      payload: { colorProductId, orderInfo },
+    } = payload;
+    const productDetail = yield call(getProductInfoById, colorProductId, state);
+    const { product } = productDetail;
+    const currentProduct = product;
+    const { generalProductId } = currentProduct;
+    yield put(
+      openPickupModalWithValues({
+        generalProductId,
+        colorProductId: generalProductId,
+        // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+        // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+        currentProduct,
+        fromBagPage: true,
+        openSkuSelectionForm: true,
+        initialValues: { ...orderInfo },
+        updateCartItemStore: true,
+      })
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export function* CartPageSaga() {
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM, removeCartItem);
   yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM, updateCartItemSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.CONFIRM_REMOVE_CART_ITEM, confirmRemoveItem);
+  yield takeLatest(CARTPAGE_CONSTANTS.PICKUP_MODAL_OPEN_FROM_BAG, openPickupModalFromBag);
 }
 
 export default CartPageSaga;

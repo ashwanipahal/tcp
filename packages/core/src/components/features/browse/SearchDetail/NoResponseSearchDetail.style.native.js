@@ -22,4 +22,13 @@ const ColumnContainer = styled.View`
   flex-direction: column;
 `;
 
-export { styles, RowContainer, ColumnContainer };
+const PageContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  align-items: center;
+`;
+
+const AnchorContainer = {
+  flexDirection: 'row',
+};
+
+export { styles, RowContainer, ColumnContainer, PageContainer, AnchorContainer };

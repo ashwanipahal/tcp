@@ -112,7 +112,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         options={
           Immutable.List [
             Object {
-              "content": <Address
+              "content": <ForwardRef
                 address={
                   Object {
                     "addressId": "12345",
@@ -121,13 +121,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                     "primary": "true",
                   }
                 }
-                className=""
-                dataLocatorPrefix=""
-                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
-                showDefault={true}
-                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",
@@ -150,6 +145,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addressContainer"
       colSize={
         Object {
           "large": 6,
@@ -344,7 +340,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         options={
           Immutable.List [
             Object {
-              "content": <Address
+              "content": <ForwardRef
                 address={
                   Object {
                     "addressId": "12345",
@@ -353,13 +349,8 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                     "primary": "true",
                   }
                 }
-                className=""
-                dataLocatorPrefix=""
-                fontWeight="regular"
                 isDefault={true}
                 showCountry={false}
-                showDefault={true}
-                showName={true}
                 showPhone={false}
               />,
               "title": "test test (Default)",
@@ -382,6 +373,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
     </Styled(Col)>
     <Styled(Col)
+      className="addressContainer"
       colSize={
         Object {
           "large": 6,
