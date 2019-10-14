@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Anchor, DamImage } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
-import config from '../config';
+import config from '../moduleT.config';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import ButtonList from '../../ButtonList';
@@ -119,7 +119,7 @@ class ModuleT extends React.PureComponent {
                 width={`${buttonWidth}px`}
                 testID={`${getLocator('moduleT_product_img')}${index}`}
                 alt={image && image.alt}
-                imgConfig={IMG_DATA[0]}
+                imgConfig={IMG_DATA.promoImgConfig[0]}
               />
             </Anchor>
           );
@@ -129,15 +129,8 @@ class ModuleT extends React.PureComponent {
   };
 
   render() {
-    const {
-      navigation,
-      mediaLinkedList,
-      headerText,
-      promoBanner,
-      ctaItems,
-      set: [set = {}],
-    } = this.props;
-    const ctaType = ctaTypes[set.val];
+    const { navigation, mediaLinkedList, headerText, promoBanner, ctaItems, ctaType } = this.props;
+
     return (
       <Container>
         <MessageContainer>
@@ -196,7 +189,8 @@ ModuleT.propTypes = {
       link: PropTypes.object,
     })
   ).isRequired,
-  set: PropTypes.shape([]).isRequired,
+  ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
+    .isRequired,
 };
 
 export default ModuleT;

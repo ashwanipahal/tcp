@@ -54,6 +54,13 @@ exports[`ProductImages component should renders correctly 1`] = `
   .slick-disabled {
     display: none !important;
   }
+  @media ",
+            [Function],
+            " {
+    .slick-dots {
+      display: none;
+    }
+  }
 ",
           ]
         }
@@ -62,7 +69,7 @@ exports[`ProductImages component should renders correctly 1`] = `
             "arrows": true,
             "autoplay": false,
             "beforeChange": [Function],
-            "dots": false,
+            "dots": true,
             "dotsClass": "slick-dots",
             "fade": false,
             "infinite": false,
@@ -71,7 +78,6 @@ exports[`ProductImages component should renders correctly 1`] = `
                 "breakpoint": 1199,
                 "settings": Object {
                   "arrows": false,
-                  "dots": true,
                 },
               },
             ],
@@ -109,7 +115,25 @@ exports[`ProductImages component should renders correctly 1`] = `
             aria-label="View full size image"
             className="resize-text"
             dataLocator="pdp_full_size_btn"
-          />
+          >
+            <Styled(Image)
+              className="icon-expand"
+              height="25px"
+              src="/static/images/icon-expand.svg"
+            />
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            />
+          </Styled(Anchor)>
         </span>
         <Styled(SocialConnect)
           isFacebookEnabled={true}

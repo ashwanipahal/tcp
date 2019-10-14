@@ -5,6 +5,7 @@ import CARD_RANGES from '../../../../../account/AddEditCreditCard/container/AddE
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import { getCardListState } from '../../../../../account/Payment/container/Payment.selectors';
 import { getSelectedCard } from '../../../util/utility';
+import { getCurrentCountry } from '../../../../../../../reduxStore/selectors/session.selectors';
 
 const { getBillingValues, getShippingDestinationValues } = CheckoutSelectors;
 
@@ -84,6 +85,19 @@ const getCardType = createSelector(
   calcCardType
 );
 
+const getCardAddress = createSelector(
+  [
+    getCardNumber,
+    state => {
+      const billingData = getBillingValues(state);
+      return billingData && billingData.address && billingData.address.country;
+    },
+  ],
+  () => {
+    return null;
+  }
+);
+
 const getEditFormCardType = createSelector(
   [
     getEditFormCardNumber,
@@ -139,6 +153,13 @@ const getEditFormSelectedOnFileAddressId = state => {
   return selector(state, 'onFileAddressId');
 };
 
+const getIsPLCCEnabled = state => {
+  const countryA = getCardAddress(state);
+  const selector = formValueSelector(constants.FORM_NAME);
+  const country = countryA || selector(state, 'address.country') || getCurrentCountry(state);
+  return country === 'US';
+};
+
 export default {
   getOnFileCardKey,
   getPaymentMethodId,
@@ -153,4 +174,5 @@ export default {
   getShippingOnFileAddressId,
   getEditFormSameAsShippingValue,
   getEditFormSelectedOnFileAddressId,
+  getIsPLCCEnabled,
 };

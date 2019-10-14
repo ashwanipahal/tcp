@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import { Header, FontStyle } from '../styles/PickUpContactDisplay.style.native';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
@@ -33,7 +34,7 @@ class PickUpContactDisplay extends React.PureComponent {
               mobileFontFamily="secondary"
               color="gray.900"
               fontWeight="regular"
-              text={formData.phoneNumber}
+              text={formatPhoneNumber(formData.phoneNumber)}
             />
           </FontStyle>
         )}

@@ -6,7 +6,9 @@ import {
   formatPhoneNumber,
   getAddressFromPlace,
   extractFloat,
+  getStoreHours,
 } from '../utils';
+import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
@@ -149,5 +151,21 @@ describe('getAddressFromPlace', () => {
       ''
     );
     expect(address.street).toBe('1000 test');
+  });
+});
+
+describe('getStoreHours', () => {
+  const { hours } = storesMock;
+  const labels = {
+    lbl_storelanding_opensAt: 'opens at',
+    lbl_storelanding_openInterval: 'open until',
+  };
+  it('should return opens until toTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 19:59:00'));
+    expect(storeTime).toContain('open until 8 pm');
+  });
+  it('should return opens at fromTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 21:00:00'));
+    expect(storeTime).toContain('opens at 10 am');
   });
 });
