@@ -5,7 +5,7 @@ const styles = css`
   .confirmation-fullfillment-type {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
   }
   .confirmation-fullfillment-details {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
