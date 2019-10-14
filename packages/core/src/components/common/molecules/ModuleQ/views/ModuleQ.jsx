@@ -242,7 +242,7 @@ class ModuleQ extends React.PureComponent {
             )}
           </Col>
         </Row>
-        {this.getCurrentCtaButton()}
+        {selectedProductList.length > 3 ? this.getCurrentCtaButton() : null}
       </Grid>
     );
   }
