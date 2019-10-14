@@ -131,7 +131,7 @@ const ButtonStyles = css`
         height: 0;
         overflow: hidden;
         visibility: hidden;
-		 }
+		  }
     `
       : ''};
 
