@@ -225,7 +225,6 @@ class Socialview extends React.PureComponent {
    * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   handleSocialNetwork(isSocialAccount, isConnected) {
     switch (isSocialAccount) {
       case 'Facebook':
