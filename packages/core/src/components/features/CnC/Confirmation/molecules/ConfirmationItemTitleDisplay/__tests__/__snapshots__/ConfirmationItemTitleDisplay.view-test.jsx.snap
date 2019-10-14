@@ -6,11 +6,15 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
 >
   <Styled(Image)
     alt="Pickup"
+    height="37px"
     src="/static/images/marker-icon.svg"
+    width="30px"
   />
   <Styled(Image)
     alt="Shipping"
+    height="37px"
     src="/static/images/fast-shipping.svg"
+    width="40px"
   />
   <div
     className="confirmation-fullfillment-type"
@@ -96,9 +100,9 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
         }
       >
         <Styled(Image)
-          height="15"
+          height="20"
           src="/static/images/info-icon.png"
-          width="15"
+          width="20"
         />
       </Styled(ReactTooltip)>
     </div>
@@ -112,7 +116,9 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly without shi
 >
   <Styled(Image)
     alt="Pickup"
+    height="37px"
     src="/static/images/marker-icon.svg"
+    width="30px"
   />
   <div
     className="confirmation-fullfillment-type"
@@ -150,9 +156,9 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly without shi
         message=""
       >
         <Styled(Image)
-          height="15"
+          height="20"
           src="/static/images/info-icon.png"
-          width="15"
+          width="20"
         />
       </Styled(ReactTooltip)>
     </div>
