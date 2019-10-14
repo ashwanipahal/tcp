@@ -99,6 +99,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     textDecoration={null}
   />
   <TouchableOpacity
+    accessibilityRole="button"
     activeOpacity={0.2}
     onPress={[Function]}
   >
