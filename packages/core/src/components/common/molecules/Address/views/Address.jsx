@@ -94,7 +94,7 @@ const Address = ({
           {getUserName({ address, isDefault, showDefault })}
         </BodyCopy>
       )}
-      <div className="addressLine">
+      <BodyCopy component="div" className="addressLine">
         {address.addressLine
           ? getAddessLines({ address, dataLocatorPrefix })
           : getAddressfromDiffLines(address, dataLocatorPrefix)}
@@ -109,7 +109,7 @@ const Address = ({
             {address.phone1}
           </BodyCopy>
         )}
-      </div>
+      </BodyCopy>
     </BodyCopy>
   ) : null;
 };
