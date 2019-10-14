@@ -14,13 +14,19 @@ const OutfitDetailsView = ({
   handleAddToBag,
   addToBagEcom,
   currentState,
+  labels,
 }) => {
   return (
     <>
       <Row className={className}>
-        <Col colSize={{ small: 6, medium: 3, large: 5 }} ignoreGutter={{ small: true }}>
+        <Col
+          colSize={{ small: 6, medium: 3, large: 5 }}
+          ignoreGutter={{ small: true }}
+          className="outfit-image"
+        >
           <Image className="promo-area-0" src={outfitImageUrl} />
         </Col>
+        <hr className="outfit-line-break" />
         <Col
           colSize={{ small: 6, medium: 5, large: 6 }}
           offsetLeft={{ large: 1 }}
@@ -32,11 +38,13 @@ const OutfitDetailsView = ({
                 <li key={product.generalProductId}>
                   <OutfitProduct
                     plpLabels={plpLabels}
+                    labels={labels}
                     outfitProduct={product}
                     productIndexText={`Product ${index + 1} of ${outfitProducts.length}`}
                     handleAddToBag={() => {
                       handleAddToBag(addToBagEcom, product, product.generalProductId, currentState);
                     }}
+                    className="outfiting-list-details"
                   />
                 </li>
               ))}
@@ -65,6 +73,7 @@ OutfitDetailsView.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   handleAddToBag: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -72,6 +81,7 @@ OutfitDetailsView.defaultProps = {
   outfitImageUrl: '',
   outfitProducts: null,
   plpLabels: {},
+  labels: {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);
