@@ -28,9 +28,7 @@ const TwitterRedirectPage = () => {
    * This is step one of the integration.
    */
   makeAuthCall = () => {
-    debugger;
     getAuthToken().then(res => {
-      debugger;
       window.location = `${config.AUTH_URL.TWITTER}?oauth_token=${res}`;
     });
   },
@@ -41,7 +39,6 @@ const TwitterRedirectPage = () => {
    */
   bindEvent = () => {
     if (canUseDOM()) {
-      debugger;
       window.addEventListener('load', () => {
         let token = getUrlParameter('oauth_token'),
           verifier = getUrlParameter('oauth_verifier'),

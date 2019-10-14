@@ -79,15 +79,13 @@ class TwitterLoginComponent extends React.Component {
    */
 
   logout = () => {
-    const { props } = this.props;
-    props.saveAccountInfo(
-      props.elem.socialAccount,
-      {
-        accessToken: '',
-        userId: '',
-      },
-      true
-    );
+    const socialAccInfo = {
+      twitter: elem[2].socialAccount,
+      accessToken: '',
+      isconnected: true,
+      userId: '',
+    };
+    saveAccountInfo({ socialAccInfo });
   };
 
   /**
@@ -109,9 +107,16 @@ class TwitterLoginComponent extends React.Component {
    * @param acessToken {String} The access token which we have received from step 3 of integartion.
    */
 
-  saveAccountInfo = acessToken => {
-    const { props } = this.props;
-    props.saveAccountInfo(props.elem.socialAccount, acessToken, false);
+  saveAccountInfo = payload => {
+    // const { props } = this.props;
+    const socialAccInfo = {
+      twitter: elem[2].socialAccount,
+      accessToken: payload.accessToken,
+      isconnected: false,
+      userId: payload.userId,
+    };
+    saveAccountInfo({ socialAccInfo });
+    //  saveAccountInfo(elem[2].socialAccount, acessToken, false);
   };
 
   /**
@@ -171,7 +176,7 @@ class TwitterLoginComponent extends React.Component {
                       height={15}
                       src={getIconPath('close-icon')}
                       data-locator="facebookCrossIcon"
-                      onClick={this.openChildWindow}
+                      onClick={this.logout}
                     />
                   </BodyCopy>
                 )}

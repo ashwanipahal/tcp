@@ -6,20 +6,13 @@ import endpoints from '../../../../../services/endpoints';
 import { executeStatefulAPICall } from '../../../../../services/handler/handler';
 import { getAPIConfig } from '../../../../../utils';
 
-let previous = null;
-
 /**
  *
  * @param {object} apiHelper - object data which is required for
  * the API call. This object contains varous options which
  * are required for the call
  */
-// export const getTwitterAbstractor =  apiHelper => {
-//   if (!previous || previous.apiHelper !== apiHelper) {
-//     previous = new TwitterDynamicAbstractor(apiHelper);
-//   }
-//   return previous;
-// };
+
 const getAuthToken = () => {
   const apiConfig = getAPIConfig();
   const payload = {
@@ -48,7 +41,7 @@ const getAuthToken = () => {
 
 const getAccessToken = (oauthToken, verifier) => {
   const apiConfig = getAPIConfig();
-  let payload = {
+  const payload = {
     header: {
       verifier,
       oauthToken,
