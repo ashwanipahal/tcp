@@ -4,14 +4,11 @@ import { View } from 'react-native';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
-// import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
-// import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
 import {
   getPrices,
   getMapSliceForColorProductId,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
-// import withStyles from '../../../../../common/hoc/withStyles';
 import CustomImage from '../../../../../common/atoms/CustomImage';
 import { BodyCopy } from '../../../../../common/atoms';
 import { getPromotionalMessage } from '../../../ProductListing/molecules/ProductList/utils/utility';
@@ -31,6 +28,7 @@ const OutfitDetailsView = ({
   currencySymbol,
   currencyExchange,
   favoriteCount,
+  handleAddToBag,
 }) => {
   const {
     imagesByColor,
@@ -153,12 +151,10 @@ const OutfitDetailsView = ({
         </DetailsContainer>
       </OutfitProductContainer>
       <ProductAddToBagContainer
-        handleFormSubmit={() => {}}
-        errorOnHandleSubmit={() => {}}
+        handleFormSubmit={handleAddToBag}
         currentProduct={outfitProduct}
         plpLabels={plpLabels}
-        onChangeColor={() => {}}
-        selectedColorProductId={colorProductId}
+        isOutfitPage
       />
     </>
   );
@@ -173,6 +169,7 @@ OutfitDetailsView.propTypes = {
   currencySymbol: PropTypes.string,
   currencyExchange: PropTypes.string,
   favoriteCount: PropTypes.string,
+  handleAddToBag: PropTypes.func.isRequired,
 };
 
 OutfitDetailsView.defaultProps = {
