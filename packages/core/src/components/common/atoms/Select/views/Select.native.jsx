@@ -38,6 +38,7 @@ const SelectBox = ({
         id={id}
         name={name}
         buttonVariation="mobileApp-select"
+        width="100%"
         {...otherProps}
       />
       {touched && error && (

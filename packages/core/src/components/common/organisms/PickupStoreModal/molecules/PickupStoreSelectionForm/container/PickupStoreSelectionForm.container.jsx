@@ -15,6 +15,7 @@ import {
   isBOSSProductOOSQtyMismatched,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { PICKUP_LABELS, BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
+import ORDER_ITEM_TYPE from '../../../../../../features/CnC/CartItemTile/CartItemTile.constants';
 import { minStoreCount } from '../../../PickUpStoreModal.config';
 import { getCartItemInfo } from '../../../../../../features/CnC/AddedToBag/util/utility';
 
@@ -231,6 +232,90 @@ class PickupStoreSelectionFormContainer extends React.Component {
   };
 
   /**
+   *
+   * @method calculateTargetOrderType
+   * @description this method returns targetOrderType
+   * @memberof PickupStoreSelectionFormContainer
+   */
+  calculateTargetOrderType = (isBopisCtaEnabled, isBossCtaEnabled) => {
+    if (isBopisCtaEnabled) {
+      return ORDER_ITEM_TYPE.BOPIS;
+    }
+    if (isBossCtaEnabled) {
+      return ORDER_ITEM_TYPE.BOSS;
+    }
+    return ORDER_ITEM_TYPE.ECOM;
+  };
+
+  /**
+   *
+   * @method handleUpdatePickUpItem
+   * @description this method returns targetOrderType
+   * @memberof PickupStoreSelectionFormContainer
+   */
+  handleUpdatePickUpItem = (selectedStoreId, isBossSelected) => {
+    const {
+      onUpdatePickUpItem,
+      initialValues,
+      initialValuesFromBagPage,
+      currentProduct,
+      onCloseClick,
+      isBopisCtaEnabled,
+      isBossCtaEnabled,
+    } = this.props;
+    const { itemBrand } = initialValuesFromBagPage;
+    const { color, Fit: fit, Size: size, Quantity: quantity } = initialValues;
+    const formIntialValues = {
+      // This is required as different teams have used different 'Fit' or 'fit' labels
+      color,
+      fit,
+      size,
+    };
+    const productFormData = {
+      ...formIntialValues,
+      wishlistItemId: false,
+      quantity,
+      isBoss: isBossSelected,
+      brand: itemBrand,
+      storeLocId: selectedStoreId,
+    };
+    const productInfo = getCartItemInfo(currentProduct, productFormData);
+    const {
+      orderId,
+      orderItemId,
+      Quantity,
+      isItemShipToHome,
+      orderItemType,
+    } = initialValuesFromBagPage;
+    const {
+      skuInfo: { skuId, variantNo, variantId },
+    } = productInfo;
+    const targetOrderType = this.calculateTargetOrderType(isBopisCtaEnabled, isBossCtaEnabled);
+
+    const payload = {
+      apiPayload: {
+        orderId: orderId.toString(),
+        orderItem: [
+          {
+            orderItemId,
+            xitem_catEntryId: skuId,
+            quantity: Quantity.toString(),
+            variantNo,
+            itemPartNumber: variantId,
+          },
+        ],
+        x_storeLocId: selectedStoreId,
+        // replaced "ECOM" and "BOPIS" with a config variable
+        x_orderitemtype: isItemShipToHome ? ORDER_ITEM_TYPE.ECOM : orderItemType, // source type of Item
+        x_updatedItemType: targetOrderType,
+      },
+      callback: onCloseClick,
+      updateActionType: 'UpdatePickUpItem',
+    };
+    onUpdatePickUpItem(payload);
+  };
+
+  /**
    * @method handlePickupRadioBtn
    * @description this method sets the pickup mode for store
    */
@@ -369,6 +454,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
         preferredStore={this.preferredStore}
         handleAddTobag={this.handleAddTobag}
         handlePickupRadioBtn={this.handlePickupRadioBtn}
+        handleUpdatePickUpItem={this.handleUpdatePickUpItem}
         selectedStoreId={selectedStoreId}
         isBossSelected={isBossSelected}
         isShowMessage={isShowMessage}
