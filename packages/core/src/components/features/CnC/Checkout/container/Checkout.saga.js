@@ -24,12 +24,10 @@ import {
   setShippingOptions,
   setAddressError,
   getSetIntlUrl,
-  setShippingLoadingState,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
-import { isCanada } from '../../../../../utils/utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
@@ -48,6 +46,10 @@ import {
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
+import {
+  submitVerifiedAddress as submitVerifiedAddressData,
+  submitShippingSection as submitShippingSectionData,
+} from './CheckoutShipping.saga';
 
 const {
   getRecalcOrderPointsInterval,
@@ -62,7 +64,7 @@ const {
   // isGuest,
   // getIsMobile,
 } = selectors;
-const { getOrderPointsRecalcFlag, hasPOBox, redirectToBilling } = utility;
+const { getOrderPointsRecalcFlag, hasPOBox } = utility;
 let oldHasPOB = {};
 
 function* loadGiftWrappingOptions() {
@@ -649,62 +651,6 @@ function* submitShipping({
   yield call(getAddressList);
 }
 
-function* submitShippingSection({ payload: { navigation, ...formData } }) {
-  try {
-    yield put(setShippingLoadingState(true));
-
-    const {
-      // giftWrap,
-      method,
-      smsInfo,
-      shipTo,
-    } = formData;
-    let {
-      shipTo: { emailAddress },
-    } = formData;
-    const isCanadaUser = yield select(isCanada);
-    const isGuestUser = yield select(isGuest);
-    const isEmailSignUpAllowed = !(!isCanadaUser && isGuestUser);
-    const recalcFlag = false;
-    if (!emailAddress || !isGuestUser) {
-      // on registered user entering a new address the email field is not visible -> emailAddress = null
-      emailAddress = yield select(getUserEmail);
-    }
-    // let getGiftWrappingValues = yield select(getGiftWrappingValues);
-    // let initialGiftWrappingVal = getGiftWrappingValues.hasGiftWrapping;
-    // const giftWrappingStoreOptionID = getGiftWrappingValues.optionId;
-    // // If the giftwrapping option differs from the initial state
-    // // Recalculate true needs to be sent as true
-    // if (
-    //   initialGiftWrappingVal !== giftWrap.hasGiftWrapping ||
-    //   (giftWrappingStoreOptionID && giftWrap.optionId !== giftWrappingStoreOptionID)
-    // ) {
-    //   recalcFlag = true;
-    // }
-    yield submitShipping({
-      ...shipTo,
-      method,
-      smsInfo,
-      isEmailSignUpAllowed,
-      recalcFlag,
-      emailAddress,
-    });
-    yield call(getAddressList);
-    yield call(getCardList);
-    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-    const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
-    if (isVenmoInProgress && !isVenmoShippingDisplayed) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
-    } else {
-      redirectToBilling(navigation);
-    }
-    yield put(setShippingLoadingState(false));
-  } catch (err) {
-    yield put(setShippingLoadingState(false));
-    // throw getSubmissionError(store, 'submitShippingSection', err);
-  }
-}
-
 export function* submitBillingSection(payload) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   if (isVenmoInProgress) {
@@ -713,8 +659,20 @@ export function* submitBillingSection(payload) {
     yield call(submitBilling, payload, loadUpdatedCheckoutValues);
   }
 }
+
+export function* submitShippingSection(...params) {
+  params.push(submitShipping);
+  yield submitShippingSectionData(...params);
+}
+
+export function* submitVerifiedAddress(...params) {
+  params.push(submitShipping);
+  yield submitVerifiedAddressData(...params);
+}
+
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest(CONSTANTS.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS, submitVerifiedAddress);
   yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);
   yield takeLatest(CONSTANTS.SUBMIT_SHIPPING_SECTION, submitShippingSection);

@@ -131,6 +131,8 @@ class CheckoutPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      verifyAddressAction,
+      submitVerifiedShippingAddressData,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -176,8 +178,10 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            verifyAddressAction={verifyAddressAction}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
             /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
           />
@@ -298,6 +302,8 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,

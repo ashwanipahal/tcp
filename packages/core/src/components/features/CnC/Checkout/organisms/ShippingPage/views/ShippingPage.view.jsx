@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
+import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -35,6 +36,8 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
+    verifyAddressAction: PropTypes.func.isRequired,
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
@@ -144,6 +147,18 @@ export default class ShippingPage extends React.PureComponent {
     this.setState({ isAddNewAddress: !isAddNewAddress });
   };
 
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+      },
+    };
+  };
+
   submitShippingData = data => {
     const {
       address,
@@ -153,7 +168,7 @@ export default class ShippingPage extends React.PureComponent {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses } = this.props;
+    const { isGuest, userAddresses, verifyAddressAction } = this.props;
     const { isAddNewAddress } = this.state;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && !isAddNewAddress) {
@@ -179,7 +194,7 @@ export default class ShippingPage extends React.PureComponent {
     //   storeId: '10152',
     // };
     const { handleSubmit, setVenmoPickupState } = this.props;
-    handleSubmit({
+    const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
       },
@@ -197,8 +212,16 @@ export default class ShippingPage extends React.PureComponent {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
-    });
-    setVenmoPickupState(true);
+    };
+
+    if (!onFileAddressKey) {
+      const formattedPayload = this.formatPayload(shipAddress);
+      this.submitData = submitData;
+      return verifyAddressAction(formattedPayload);
+    }
+
+    handleSubmit(submitData);
+    return setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -275,6 +298,11 @@ export default class ShippingPage extends React.PureComponent {
     };
   };
 
+  submitVerifiedShippingAddressData = shippingAddress => {
+    const { submitVerifiedShippingAddressData } = this.props;
+    submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
+  };
+
   render() {
     const {
       addressLabels,
@@ -308,6 +336,7 @@ export default class ShippingPage extends React.PureComponent {
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
+    const shippingAddressData = (this.submitData && this.submitData.shipTo.address) || {};
     return (
       <>
         {shipmentMethods.length > 0 && (
@@ -357,6 +386,12 @@ export default class ShippingPage extends React.PureComponent {
             isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           />
         )}
+        <AddressVerification
+          onSuccess={this.submitVerifiedShippingAddressData}
+          heading={addressLabels.addAddressHeading}
+          onError={this.submitVerifiedShippingAddressData}
+          userAddress={this.formatPayload(shippingAddressData)}
+        />
       </>
     );
   }
