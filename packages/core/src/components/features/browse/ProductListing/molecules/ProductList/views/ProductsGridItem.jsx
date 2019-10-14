@@ -1,7 +1,10 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
+
 import React from 'react';
+import { getIconPath } from '@tcp/core/src/utils';
 import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-import Button from '../../../../../../common/atoms/Button';
+import { Button, Anchor, BodyCopy, Col, Row, Image } from '../../../../../../common/atoms';
 import { getLocator, isClient } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
@@ -15,13 +18,13 @@ import {
   ProductWishlistIcon,
   BadgeItem,
   PromotionalMessage,
+  CreateWishList,
 } from './ProductItemComponents';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 
 import ProductAltImages from './ProductAltImages';
 
 // import ErrorMessage from './ErrorMessage';
-import { BodyCopy, Col, Row } from '../../../../../../common/atoms';
 
 class ProductsGridItem extends React.PureComponent {
   static propTypes = { ...productGridItemPropTypes };
@@ -29,11 +32,18 @@ class ProductsGridItem extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.colorsExtraInfo = {
-      [props.item.colorsMap[0].color.name]: props.item.colorsMap[0].miscInfo,
-    };
+    const {
+      colorsMap,
+      skuInfo: { colorProductId: itemColorProductId },
+    } = props.item;
 
-    const { colorProductId } = props.item.colorsMap[0];
+    if (colorsMap) {
+      this.colorsExtraInfo = {
+        [colorsMap[0].color.name]: colorsMap[0].miscInfo,
+      };
+    }
+
+    const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
 
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
@@ -41,6 +51,7 @@ class ProductsGridItem extends React.PureComponent {
       currentImageIndex: 0,
       pdpUrl: props.item.productInfo.pdpUrl,
       isAltImgRequested: false,
+      isMoveItemOpen: false,
     };
 
     this.handleAddToWishlist = this.handleAddToWishlist.bind(this);
@@ -57,6 +68,10 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenQuickViewClick = () =>
       onQuickViewOpenClick(generalProductId, selectedColorProductId, generalProductId);
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   // DT-32496
@@ -83,12 +98,17 @@ class ProductsGridItem extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
   getQuickViewInitialValues() {
     const {
       item: { colorsMap },
     } = this.props;
     const { selectedColorProductId } = this.state;
-    const colorEntry = colorsMap.find(entry => entry.colorProductId === selectedColorProductId);
+    const colorEntry =
+      colorsMap && colorsMap.find(entry => entry.colorProductId === selectedColorProductId);
     return colorEntry && colorEntry.color && colorEntry.color.name
       ? { color: colorEntry.color.name }
       : undefined;
@@ -104,6 +124,17 @@ class ProductsGridItem extends React.PureComponent {
     return hideImageCarousel ? imageUrls.slice(0, 1) : imageUrls;
   }
 
+  handleClickOutside = event => {
+    const { isMoveItemOpen } = this.state;
+    const openItem = document.querySelector('.move-item-section');
+    const isChildren = openItem && openItem.contains(event.target);
+    if (!isChildren && !event.target.classList.contains('move-item-button') && isMoveItemOpen) {
+      this.setState({
+        isMoveItemOpen: false,
+      });
+    }
+  };
+
   handleAddToWishlist = () => {
     const {
       item: {
@@ -111,11 +142,17 @@ class ProductsGridItem extends React.PureComponent {
       },
       onAddItemToFavorites,
       isLoggedIn,
+      removeFavItem,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
-    if (isClient() && isLoggedIn) {
-      this.setState({ isInDefaultWishlist: true });
+    const colorProductId = selectedColorProductId || generalProductId;
+    if (removeFavItem) {
+      removeFavItem(colorProductId);
+    } else {
+      onAddItemToFavorites({ colorProductId });
+      if (isClient() && isLoggedIn) {
+        this.setState({ isInDefaultWishlist: true });
+      }
     }
   };
 
@@ -138,7 +175,7 @@ class ProductsGridItem extends React.PureComponent {
 
   /* get video url */
   getVideoUrl = curentColorEntry => {
-    return Array.isArray(curentColorEntry.miscInfo.videoUrl)
+    return curentColorEntry && Array.isArray(curentColorEntry.miscInfo.videoUrl)
       ? curentColorEntry.miscInfo.videoUrl[0]
       : '';
   };
@@ -147,10 +184,25 @@ class ProductsGridItem extends React.PureComponent {
   getColorChipContainer = curentColorEntry => {
     const {
       isMobile,
-      item: { colorsMap },
+      item: { colorsMap, skuInfo },
       isPLPredesign,
+      isFavoriteView,
     } = this.props;
-    return colorsMap.length >= 1 ? (
+    const { colorProductId } = skuInfo;
+    if (colorProductId) {
+      return (
+        <ProductColorChipWrapper
+          className="color-chips-container"
+          selectedColorId={colorProductId}
+          isMobile={isMobile}
+          showColorEvenOne
+          isPLPredesign={isPLPredesign}
+          skuInfo={skuInfo}
+          isFavoriteView={isFavoriteView}
+        />
+      );
+    }
+    return colorsMap && colorsMap.length >= 1 ? (
       <ProductColorChipWrapper
         className="color-chips-container"
         onChipClick={this.handleChangeColor}
@@ -198,13 +250,11 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
-  handleQuickViewOpenClick() {
-    const { onQuickViewOpenClick } = this.props;
-    const { selectedColorProductId } = this.state;
-    onQuickViewOpenClick({
-      colorProductId: selectedColorProductId,
-    });
-  }
+  openMoveItem = () => {
+    this.setState(prevState => ({
+      isMoveItemOpen: !prevState.isMoveItemOpen,
+    }));
+  };
 
   handleChangeColor(colorProductId) {
     const { pdpUrl } = this.state;
@@ -227,6 +277,98 @@ class ProductsGridItem extends React.PureComponent {
     this.setState({ selectedColorProductId: colorProductId, currentImageIndex: 0 });
   }
 
+  handleQuickViewOpenClick() {
+    const { onQuickViewOpenClick } = this.props;
+    const { selectedColorProductId } = this.state;
+    onQuickViewOpenClick({
+      colorProductId: selectedColorProductId,
+    });
+  }
+
+  renderMoveItem = itemId => {
+    const {
+      wishlistsSummaries,
+      labels,
+      createNewWishList,
+      createNewWishListMoveItem,
+      gridIndex,
+    } = this.props;
+    const { isMoveItemOpen } = this.state;
+    const accordianIcon = isMoveItemOpen
+      ? getIconPath('circle-check-no-circle')
+      : getIconPath('down_arrow_icon');
+    return (
+      wishlistsSummaries && (
+        <div className="move-item-container">
+          <Button className="move-item-button" onClick={this.openMoveItem}>
+            moveToAnotherList
+            <Image
+              alt="accordian button"
+              className="accordian-item-arrow icon-small"
+              src={accordianIcon}
+              data-locator="accordian-icon"
+              height="8px"
+            />
+          </Button>
+          {isMoveItemOpen && (
+            <div className={`item__${gridIndex % 2 ? 'even' : 'odd'} move-item-section`}>
+              <CreateWishList
+                labels={labels}
+                wishlistsSummaries={wishlistsSummaries}
+                createNewWishList={createNewWishList}
+                createNewWishListMoveItem={createNewWishListMoveItem}
+                itemId={itemId}
+                gridIndex={gridIndex}
+              />
+            </div>
+          )}
+        </div>
+      )
+    );
+  };
+
+  renderEditButton = () => {
+    const { isFavoriteView, labels, onQuickViewOpenClick } = this.props;
+    const { selectedColorProductId } = this.state;
+    return (
+      isFavoriteView && (
+        <Anchor
+          className="edit-fav-item__button"
+          handleLinkClick={event => {
+            event.preventDefault();
+            onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+          }}
+          noLink
+        >
+          {labels.edit}
+        </Anchor>
+      )
+    );
+  };
+
+  renderWishListIcon = () => {
+    const { isFavoriteView } = this.props;
+    const { isInDefaultWishlist } = this.state;
+    return (
+      <Col colSize={{ small: 2, medium: 2, large: 2 }}>
+        <ProductWishlistIcon
+          onClick={this.handleAddToWishlist}
+          activeButton={isInDefaultWishlist || isFavoriteView}
+          className="fav-icon"
+        />
+      </Col>
+    );
+  };
+
+  renderPurchaseSection = (quantity, labels, quantityPurchased) =>
+    !!quantity && (
+      <div className="purchase-section">
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+        {quantityPurchased}/{quantity}
+        <span>{labels.Purchased}</span>
+      </div>
+    );
+
   render() {
     const {
       isShowVideoOnPlp,
@@ -243,9 +385,13 @@ class ProductsGridItem extends React.PureComponent {
           promotionalPLCCMessage,
           generalProductId,
           name,
+          listPrice: itemListPrice,
+          offerPrice: itemOfferPrice,
           // eslint-disable-next-line camelcase
           long_product_title,
         },
+        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag },
+        quantityPurchased,
         colorsMap,
         imagesByColor,
       },
@@ -271,7 +417,6 @@ class ProductsGridItem extends React.PureComponent {
     const prodNameAltImages = long_product_title || name;
     // eslint-disable-next-line no-unused-vars
     const {
-      isInDefaultWishlist,
       selectedColorProductId,
       // error,
       currentImageIndex,
@@ -288,18 +433,20 @@ class ProductsGridItem extends React.PureComponent {
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
 
     const currentColorMiscInfo =
-      this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo || {};
+      (curentColorEntry &&
+        (this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo)) ||
+      {};
 
     const {
-      listPrice,
-      offerPrice,
+      listPrice = itemListPrice,
+      offerPrice = itemOfferPrice,
       // isBopisEligible,
       badge1,
       badge2,
       badge3,
       //  isClearance,
       //  isBossEligible,
-      keepAlive,
+      keepAlive = keepAliveFlag,
     } = currentColorMiscInfo;
     // const miscInfo = {
     //   isBossEligible,
@@ -364,6 +511,7 @@ class ProductsGridItem extends React.PureComponent {
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
           />
+          {this.renderEditButton()}
           {
             <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
@@ -376,13 +524,7 @@ class ProductsGridItem extends React.PureComponent {
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
-              <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-                <ProductWishlistIcon
-                  onClick={this.handleAddToWishlist}
-                  activeButton={isInDefaultWishlist}
-                  className="fav-icon"
-                />
-              </Col>
+              {this.renderWishListIcon()}
             </Row>
           }
           {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
@@ -415,7 +557,10 @@ class ProductsGridItem extends React.PureComponent {
               {labels.addToBag}
             </Button>
           </div>
-
+          <div className="favorite-move-purchase-section">
+            {this.renderPurchaseSection(quantity, labels, quantityPurchased)}
+            {this.renderMoveItem(itemId)}
+          </div>
           {/* {error && <ErrorMessage error={error} />} */}
         </div>
       </li>
