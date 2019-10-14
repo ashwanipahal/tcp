@@ -49,7 +49,7 @@ exports[`MiniBag template should render correctly 1`] = `
       display: block;
     }
   }
-  .alignTop.alignTop {
+  .alignTop {
     /* stylelint-disable-line */
     top: 28px;
   }
