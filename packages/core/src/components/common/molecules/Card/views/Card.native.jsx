@@ -20,11 +20,13 @@ const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}
         text={address.addressLine1}
       />
-      <BodyCopy
-        mobileFontFamily="secondary"
-        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}
-        text={address.addressLine2}
-      />
+      {address.addressLine2 ? (
+        <BodyCopy
+          mobileFontFamily="secondary"
+          data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}
+          text={address.addressLine2}
+        />
+      ) : null}
     </React.Fragment>
   );
 };

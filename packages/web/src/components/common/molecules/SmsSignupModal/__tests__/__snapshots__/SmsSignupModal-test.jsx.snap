@@ -34,7 +34,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -355,7 +355,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -480,7 +480,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >

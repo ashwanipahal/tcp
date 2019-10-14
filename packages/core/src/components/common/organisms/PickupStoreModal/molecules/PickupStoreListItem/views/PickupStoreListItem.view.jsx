@@ -209,6 +209,8 @@ class PickupStoreListItem extends React.Component {
     isBossCtaEnabled: PropTypes.bool.isRequired,
     buttonLabel: PropTypes.string.isRequired,
     className: PropTypes.string,
+    onStoreUpdate: PropTypes.func.isRequired,
+    updateCartItemStore: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -218,6 +220,7 @@ class PickupStoreListItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleStoreSelect = this.handleStoreSelect.bind(this);
+    this.handleStoreUpdate = this.handleStoreUpdate.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
   }
 
@@ -258,6 +261,18 @@ class PickupStoreListItem extends React.Component {
   }
 
   /**
+   *
+   * @method handleStoreUpdate
+   * @description this method handles store update
+   * @memberof PickupStoreListItem
+   */
+  handleStoreUpdate() {
+    const { onStoreUpdate, store } = this.props;
+    const isBoss = this.isBossSelected;
+    return onStoreUpdate(store.basicInfo.id, isBoss);
+  }
+
+  /**
    * @method handlePickupRadioBtn
    * @description this method sets the pickup mode for store
    */
@@ -268,12 +283,12 @@ class PickupStoreListItem extends React.Component {
   }
 
   displayPickupCTA(showBopisCTA, showBossCTA, buttonLabel) {
-    const { isBossSelected, isBopisSelected } = this.props;
+    const { isBossSelected, isBopisSelected, updateCartItemStore } = this.props;
     return showBopisCTA || showBossCTA ? (
       <div className="pickupCTAWrapper elem-mt-SM">
         <Button
           buttonVariation="fixed-width"
-          onClick={this.handleStoreSelect}
+          onClick={updateCartItemStore ? this.handleStoreUpdate : this.handleStoreSelect}
           fill="BLACK"
           disabled={!isBossSelected && !isBopisSelected}
         >

@@ -196,4 +196,42 @@ describe('CartItemTile common component', () => {
     const component = shallow(<CartItemTileVanilla {...props} />);
     component.instance().moveToBagSflItem();
   });
+
+  it('CartItemTile common should call handle callEditMethod', () => {
+    const props = {
+      productDetail: {
+        itemInfo: {
+          isGiftItem: false,
+          fit: 'regular',
+          itemId: '123',
+          itemUnitPrice: 23,
+          price: 25,
+          qty: 1,
+          color: 'blue',
+        },
+        miscInfo: {
+          badge: '',
+          availability: 'UNAVAILABLE',
+          orderItemType: 'BOPIS',
+          store: '',
+        },
+        productInfo: {
+          skuId: '3444',
+          generalProductId: '111',
+        },
+      },
+      onPickUpOpenClick: jest.fn(),
+      pageView: 'myBag',
+      labels: {
+        color: 'Color',
+        sizeL: 'Size',
+        qty: 'Qty',
+        design: 'Design',
+        price: 'Price',
+      },
+    };
+
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    component.instance().callEditMethod();
+  });
 });

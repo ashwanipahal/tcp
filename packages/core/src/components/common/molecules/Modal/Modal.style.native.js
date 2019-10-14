@@ -77,6 +77,10 @@ const ImageWrapper = styled.View`
       : ``}
 `;
 
+const Heading = styled.View`
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
 export {
   StyledCrossImage,
   ImageWrapper,
@@ -85,4 +89,5 @@ export {
   LineWrapper,
   RowWrapper,
   ModalCustomWrapper,
+  Heading,
 };

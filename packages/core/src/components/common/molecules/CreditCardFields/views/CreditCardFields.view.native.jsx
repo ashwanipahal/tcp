@@ -20,6 +20,7 @@ import {
   HiddenExpiryWrapper,
   CVVInfo,
   StyledImageWrapper,
+  StyledLabel,
 } from '../styles/CreditCardFields.styles.native';
 
 /**
@@ -196,8 +197,9 @@ export class CreditCardFields extends React.PureComponent<Props> {
           </ExpiryYear>
           {showCvv && (
             <CvvCode>
+              <StyledLabel>{creditFieldLabels.cvvCode}</StyledLabel>
               <Field
-                label={creditFieldLabels.cvvCode}
+                label=""
                 name="cvvCode"
                 id="cvvCode"
                 keyboardType="numeric"

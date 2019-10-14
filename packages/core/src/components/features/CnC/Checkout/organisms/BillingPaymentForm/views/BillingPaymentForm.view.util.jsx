@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { change } from 'redux-form';
+import constants from '../container/CreditCard.constants';
 import Button from '../../../../../../common/atoms/Button';
 import Card from '../../../../../../common/molecules/Card';
+import { Heading } from '../../../../../../common/atoms';
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -93,4 +96,42 @@ const getCardOptions = ({
   return cardOptions;
 };
 
-export { propTypes, defaultProps, getCardOptions };
+const onCCDropUpdateChange = (value, selectedCard, dispatch) => {
+  if (selectedCard) {
+    dispatch(change(constants.FORM_NAME, 'cardType', selectedCard.ccBrand.toUpperCase()));
+  }
+};
+
+const onAddNewCreditCardUpdate = dispatch => {
+  dispatch(change(constants.FORM_NAME, 'cardNumber', ''));
+  dispatch(change(constants.FORM_NAME, 'expMonth', ''));
+  dispatch(change(constants.FORM_NAME, 'expYear', ''));
+  dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
+};
+
+const getFormName = editMode => {
+  return editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+};
+
+const renderBillingAddressHeading = labels => {
+  return (
+    <Heading
+      component="h3"
+      variant="listMenu"
+      className="cardDropdownHeading"
+      dataLocator="billing-payment-bilingcreditcardlabel"
+    >
+      {labels.selectFromCard}
+    </Heading>
+  );
+};
+
+export {
+  propTypes,
+  defaultProps,
+  getCardOptions,
+  onCCDropUpdateChange,
+  onAddNewCreditCardUpdate,
+  getFormName,
+  renderBillingAddressHeading,
+};

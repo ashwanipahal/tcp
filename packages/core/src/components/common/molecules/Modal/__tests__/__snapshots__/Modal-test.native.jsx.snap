@@ -3,6 +3,7 @@
 exports[`Modal Native should render correctly 1`] = `
 <SafeAreaView>
   <Component
+    animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[MockFunction]}
     transparent={false}
@@ -19,53 +20,62 @@ exports[`Modal Native should render correctly 1`] = `
         <ScrollViewMock
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
+          stickyHeaderIndices={
+            Array [
+              0,
+            ]
+          }
         >
-          <Connect(ToastContainer) />
-          <StatusBar
-            animated={false}
-            hidden={true}
-            showHideTransition="fade"
-          />
-          <Styled(View)
-            isOverlay={false}
-          >
-            <Styled(Text)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                dataLocator=""
-                fontSize="fs16"
-                fontWeight="extrabold"
-                margin={null}
-                mobileFontFamily="primary"
-                numberOfLines={null}
-                text="Modal Heading"
-                textDecoration={null}
-              />
-            </Styled(Text)>
-            <Styled(View)>
-              <Styled(TouchableOpacity)
-                accessibilityLabel="close"
-                accessibilityRole="button"
-                isOverlay={false}
-                onPress={[MockFunction]}
-              >
-                <Styled(Image)
-                  source={
-                    Object {
-                      "testUri": "../../../../core/src/assets/close.png",
-                    }
-                  }
-                />
-              </Styled(TouchableOpacity)>
-            </Styled(View)>
-          </Styled(View)>
           <Styled(View)>
-            <Styled(LineComp)
-              borderColor="black"
-              borderWidth={2}
-              marginBottom={0}
-              marginTop={5}
+            <Connect(ToastContainer)
+              shouldShowSafeArea={false}
             />
+            <StatusBar
+              animated={false}
+              hidden={true}
+              showHideTransition="fade"
+            />
+            <Styled(View)
+              isOverlay={false}
+            >
+              <Styled(Text)>
+                <Styled(BodyCopy)
+                  accessibilityText=""
+                  dataLocator=""
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  margin={null}
+                  mobileFontFamily="primary"
+                  numberOfLines={null}
+                  text="Modal Heading"
+                  textDecoration={null}
+                />
+              </Styled(Text)>
+              <Styled(View)>
+                <Styled(TouchableOpacity)
+                  accessibilityLabel="close"
+                  accessibilityRole="button"
+                  isOverlay={false}
+                  onPress={[MockFunction]}
+                >
+                  <Styled(Image)
+                    source={
+                      Object {
+                        "testUri": "../../../../core/src/assets/close.png",
+                      }
+                    }
+                  />
+                </Styled(TouchableOpacity)>
+              </Styled(View)>
+            </Styled(View)>
+            <Styled(View)>
+              <Styled(LineComp)
+                borderColor="black"
+                borderWidth={2}
+                marginBottom={0}
+                marginTop={5}
+              />
+            </Styled(View)>
           </Styled(View)>
         </ScrollViewMock>
       </KeyboardAvoidingView>

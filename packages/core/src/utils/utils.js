@@ -411,8 +411,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -685,6 +685,157 @@ export const flattenArray = arr => {
   }, []);
 };
 
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = {
+    weekday: 'short',
+  },
+  monthOption = {
+    month: 'short',
+  }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
+  };
+};
+
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+export function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
+/**
+ * Function to add number of days to a date
+ * @param {Date} date The date object
+ * @param {number} days The number of days to be added
+ * @returns {Date} The future date
+ */
+export const addDays = (date, days) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+/**
+ * Check if
+ * @param {Date} date1 The date one object
+ * @param {Date} date2 The date two object
+ */
+export const isPastStoreHours = (date1, date2) => {
+  const date1HH = date1.getHours();
+  const date2HH = date2.getHours();
+  if (date2HH > date1HH) {
+    return true;
+  }
+
+  if (date2HH === date1HH) {
+    const date1MM = date1.getMinutes();
+    const date2MM = date2.getMinutes();
+    if (date2MM > date1MM) {
+      return true;
+    }
+    return false;
+  }
+
+  return false;
+};
+
+/**
+ * Function to get the stores hours based on the current date
+ * @param {Array} intervals The store hours array
+ * @param {Date} currentDate The current date to be checked against
+ */
+export const getCurrentStoreHours = (intervals = [], currentDate) => {
+  let selectedInterval = intervals.filter(hour => {
+    const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+    const parsedDate = new Date(toInterval);
+    return (
+      parsedDate.getDate() === currentDate.getDate() &&
+      parsedDate.getMonth() === currentDate.getMonth() &&
+      parsedDate.getFullYear() === currentDate.getFullYear()
+    );
+  });
+  // Fallback for Date and month not matching.
+  // We check day and year instead.
+  if (!selectedInterval.length) {
+    selectedInterval = intervals.filter(hour => {
+      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+      const parsedDate = new Date(toInterval);
+      return (
+        parsedDate.getDay() === currentDate.getDay() &&
+        parsedDate.getFullYear() === currentDate.getFullYear()
+      );
+    });
+  }
+  return selectedInterval;
+};
+
+/**
+ * Function to get the store opening or open until hours data
+ * @param {object} hours The hours object of the store
+ * @param {object} labels The store locator labels
+ * @param {object} currentDate The date to be compared with
+ * @returns {string} The time when the store next opens or time it is open till
+ */
+export const getStoreHours = (
+  hours = {
+    regularHours: [],
+    holidayHours: [],
+    regularAndHolidayHours: [],
+  },
+  labels = {},
+  currentDate
+) => {
+  const { regularHours, holidayHours, regularAndHolidayHours } = hours;
+  const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
+  const selectedInterval = getCurrentStoreHours(intervals, currentDate);
+  try {
+    const openUntilLabel = getLabelValue(labels, 'lbl_storelanding_openInterval');
+    const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
+    const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
+    if (!isPastStoreHours(selectedDateToHour, currentDate)) {
+      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+    }
+    const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
+    // Handle the other scenarion
+    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+  } catch (err) {
+    // Show empty incase no data found.
+    return '';
+  }
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -717,4 +868,7 @@ export default {
   getDateInformation,
   buildStorePageUrlSuffix,
   extractFloat,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
 };

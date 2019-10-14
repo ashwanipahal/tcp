@@ -11,8 +11,9 @@ import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../../../common/atoms/Image';
-import { isGymboree, getIconPath, getLocator } from '../../../../../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view';
+import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 
 class GiftServices extends React.PureComponent {
   constructor(props) {
@@ -21,7 +22,6 @@ class GiftServices extends React.PureComponent {
 
     this.state = {
       detailStatus: false,
-      isGymboreeBrand: isGymboree(),
       isChecked: isGiftServicesChecked,
       message: initialValues.message,
     };
@@ -48,14 +48,16 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = (giftWrapOptions, labels) => {
+    const { SelectedBrand } = this.props;
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
-    const { isGymboreeBrand } = this.state;
-    const brand = isGymboreeBrand ? 'GYM' : 'TCP';
+
     return (
       getServicesOptionsMap &&
       getServicesOptionsMap
-        .filter(servicesMap => servicesMap.itemBrand === brand || servicesMap.itemBrand === 'ALL')
+        .filter(
+          servicesMap => servicesMap.itemBrand === SelectedBrand || servicesMap.itemBrand === 'ALL'
+        )
         .map(servicesMap => {
           return {
             title: (
@@ -91,14 +93,6 @@ class GiftServices extends React.PureComponent {
     );
   };
 
-  handleToggle = (e, isGymboreeBrand) => {
-    this.setState({ isGymboreeBrand });
-    const { dispatch } = this.props;
-    if (dispatch) {
-      dispatch(change('GiftServices', `brand`, isGymboreeBrand ? 'GYM' : 'TCP'));
-    }
-  };
-
   giftServiceChanged = (e, value) => {
     const { dispatch } = this.props;
     if (dispatch) {
@@ -116,9 +110,10 @@ class GiftServices extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, giftWrapOptions } = this.props;
+    const { className, labels, giftWrapOptions, handleToggle, SelectedBrand } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
-    const { detailStatus, isGymboreeBrand, isChecked, message } = this.state;
+    const { detailStatus, isChecked, message } = this.state;
+
     const maxLength = max => value => {
       let v;
       const result = value.length > max;
@@ -205,12 +200,13 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key={GIFT_SERVICES_CONSTANTS.TCP}
+                    selectedValue={GIFT_SERVICES_CONSTANTS.TCP}
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === isGymboree()}
-                    onChange={e => this.handleToggle(e, isGymboree())}
+                    variation="secondary"
                     disabled={false}
                     className="tcp-radio-button"
+                    onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
@@ -241,11 +237,12 @@ class GiftServices extends React.PureComponent {
                   </LabeledRadioButton> */}
                   <Field
                     component={LabeledRadioButton}
+                    key={GIFT_SERVICES_CONSTANTS.GYM}
+                    selectedValue={GIFT_SERVICES_CONSTANTS.GYM}
                     name="brand"
-                    id="brand"
-                    checked={isGymboreeBrand === !isGymboree()}
-                    onChange={e => this.handleToggle(e, !isGymboree())}
+                    variation="secondary"
                     disabled={false}
+                    onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
@@ -333,6 +330,7 @@ class GiftServices extends React.PureComponent {
               });
             }}
             heading={labels.giftServices}
+            brand={SelectedBrand}
           />
         </div>
       </form>
@@ -347,6 +345,8 @@ GiftServices.propTypes = {
   dispatch: PropTypes.func,
   giftWrapOptions: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}),
+  handleToggle: PropTypes.func.isRequired,
+  SelectedBrand: PropTypes.string.isRequired,
 };
 
 GiftServices.defaultProps = {

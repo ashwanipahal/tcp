@@ -6,7 +6,9 @@ import {
   formatPhoneNumber,
   getAddressFromPlace,
   extractFloat,
+  getStoreHours,
 } from '../utils';
+import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
@@ -35,9 +37,9 @@ describe('getLabelValue', () => {
     expect(label).toBe(labelState.account.payment.lbl_name);
   });
 
-  it('should return empty string if incorrect params type are passed', () => {
+  it('should return labelkey if incorrect params type are passed', () => {
     const label = getLabelValue('', 'common.account.lbl_last_name');
-    expect(label).toBe('');
+    expect(label).toBe('common.account.lbl_last_name');
   });
 
   it('should return label key if category is passed but not present in label state', () => {
@@ -149,5 +151,21 @@ describe('getAddressFromPlace', () => {
       ''
     );
     expect(address.street).toBe('1000 test');
+  });
+});
+
+describe('getStoreHours', () => {
+  const { hours } = storesMock;
+  const labels = {
+    lbl_storelanding_opensAt: 'opens at',
+    lbl_storelanding_openInterval: 'open until',
+  };
+  it('should return opens until toTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 19:59:00'));
+    expect(storeTime).toContain('open until 8 pm');
+  });
+  it('should return opens at fromTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 21:00:00'));
+    expect(storeTime).toContain('opens at 10 am');
   });
 });

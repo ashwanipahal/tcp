@@ -7,51 +7,51 @@ import { BodyCopy, Row, Col } from '../../../../../../common/atoms';
 const GuestMprPlccSection = props => {
   const {
     className,
-    finalPointsLabelStr,
+    headingLabel,
+    subHeadingLabel,
     labels,
     showSubtotal,
     currentSubtotal,
     estimatedSubtotal,
-    fsPoints,
     isPlcc,
     pointsDescription,
     earnedReward,
     remainingPlcc,
     getCurrencySymbol,
+    isProductDetailView,
   } = props;
 
   return (
     <div className={`${className} body`}>
       <BodyCopy
-        className="youCanEarnPoints alignCenter elem-pt-MED"
-        fontSize={fsPoints}
+        className="youCanEarnPoints alignCenter"
         color="text.primary"
         fontFamily="secondary"
         fontWeight="extrabold"
       >
-        {finalPointsLabelStr}
+        {headingLabel}
       </BodyCopy>
-      {!isPlcc && (
+      <BodyCopy
+        className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
+        fontSize="fs20"
+        color="text.primary"
+        fontFamily="secondary"
+        fontWeight="extrabold"
+      >
+        {subHeadingLabel}
+      </BodyCopy>
+      {!isProductDetailView && (
         <BodyCopy
-          className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
-          fontSize="fs20"
+          className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
           color="text.primary"
+          fontSize="fs16"
           fontFamily="secondary"
           fontWeight="extrabold"
         >
-          {labels.save30Today}
+          {pointsDescription}
         </BodyCopy>
       )}
-      <BodyCopy
-        className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
-        fontSize="fs16"
-        color="text.primary"
-        fontFamily="secondary"
-        fontWeight="extrabold"
-      >
-        {pointsDescription}
-      </BodyCopy>
-      {isPlcc && !earnedReward && (
+      {isPlcc && !earnedReward && !isProductDetailView && (
         <BodyCopy
           className="earnDoublePoints alignCenter"
           fontSize="fs16"
@@ -62,13 +62,12 @@ const GuestMprPlccSection = props => {
           {remainingPlcc}
         </BodyCopy>
       )}
-      {showSubtotal && !isPlcc && (
+      {showSubtotal && !isPlcc && !isProductDetailView && (
         <div className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM">
           <Row fullBleed className="currentSubtotalRow">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="currentSubtotalTextCol">
               <BodyCopy
                 className="currentSubtotalText"
-                fontSize="fs14"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -81,7 +80,6 @@ const GuestMprPlccSection = props => {
               <Col colSize={{ large: 5, medium: 3, small: 2 }} className="currentSubtotalValCol">
                 <BodyCopy
                   className="currentSubtotalVal"
-                  fontSize="fs16"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
@@ -93,11 +91,10 @@ const GuestMprPlccSection = props => {
               </Col>
             )}
           </Row>
-          <Row fullBleed className="estimatedSubtotalRow elem-pt-SM elem-pb-MED">
+          <Row fullBleed className="estimatedSubtotalRow elem-pt-SM elem-pb-SM">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="estimatedSubtotalTextCol">
               <BodyCopy
                 className="estimatedSubtotalText"
-                fontSize="fs14"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -110,7 +107,6 @@ const GuestMprPlccSection = props => {
               <Col colSize={{ large: 5, medium: 3, small: 2 }} className="estimatedSubtotalValCol">
                 <BodyCopy
                   className="estimatedSubtotalVal"
-                  fontSize="fs18"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
@@ -134,13 +130,14 @@ GuestMprPlccSection.propTypes = {
   showSubtotal: PropTypes.number,
   labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
-  finalPointsLabelStr: PropTypes.string,
-  fsPoints: PropTypes.string,
+  headingLabel: PropTypes.string,
+  subHeadingLabel: PropTypes.string,
   isPlcc: PropTypes.bool,
   pointsDescription: PropTypes.string,
   earnedReward: PropTypes.number,
   remainingPlcc: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
+  isProductDetailView: PropTypes.bool,
 };
 
 GuestMprPlccSection.defaultProps = {
@@ -148,13 +145,14 @@ GuestMprPlccSection.defaultProps = {
   estimatedSubtotal: 0,
   currentSubtotal: 0,
   showSubtotal: 0,
-  finalPointsLabelStr: '',
-  fsPoints: '',
+  headingLabel: '',
+  subHeadingLabel: '',
   isPlcc: false,
   pointsDescription: '',
   earnedReward: 0,
   remainingPlcc: 0,
   getCurrencySymbol: '',
+  isProductDetailView: '',
 };
 
 export default withStyles(GuestMprPlccSection, Styles);

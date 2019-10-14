@@ -48,6 +48,7 @@ const styles = css`
 
       input {
         -webkit-appearance: none;
+        display: none;
       }
 
       &:before,

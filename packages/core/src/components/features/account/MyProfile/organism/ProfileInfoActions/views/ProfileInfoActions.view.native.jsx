@@ -94,7 +94,7 @@ export const ProfileInfoActions = ({
           activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
           activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          handleComponentChange={() => toggleModalState('mountPersonalInformationModal')}
         />
         <ProfileInfoActionTile
           activityId="aboutYourself"

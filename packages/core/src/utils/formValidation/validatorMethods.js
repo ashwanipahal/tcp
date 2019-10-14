@@ -167,12 +167,12 @@ function onlyDigitsValidator(value) {
   return /^\d+$/.test(value);
 }
 
-function cvvLengthThreeValidator(value, param, linkedProps) {
-  return linkedProps[0] !== ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 3 : true;
+function cvvLengthThreeValidator(value, param, linkedProps, linkedFieldsValues) {
+  return linkedFieldsValues[0] !== ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 3 : true;
 }
 
-function cvvLengthFourValidator(value, param, linkedProps) {
-  return linkedProps[0] === ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 4 : true;
+function cvvLengthFourValidator(value, param, linkedProps, linkedFieldsValues) {
+  return linkedFieldsValues[0] === ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 4 : true;
 }
 function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {
   return (value || linkedFieldsValues[0] || '').length > 0;

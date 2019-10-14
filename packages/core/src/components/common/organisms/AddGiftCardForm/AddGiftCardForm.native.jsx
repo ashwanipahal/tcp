@@ -205,7 +205,6 @@ class AddGiftCardForm extends React.PureComponent {
                 color="black"
                 text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                 data-locator="gift-card-cancelbtn"
-                buttonVariation="variable-width"
                 onPress={toggleModal}
                 width="150px"
               />
@@ -213,7 +212,6 @@ class AddGiftCardForm extends React.PureComponent {
                 color="white"
                 fill="BLUE"
                 text={getLabelValue(labels, 'lbl_payment_addCard')}
-                buttonVariation="variable-width"
                 data-locator="gift-card-addcardbtn"
                 width="164px"
                 onPress={this.handleAddGiftCardClick}
@@ -228,7 +226,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="white"
                   fill="BLUE"
                   text={getLabelValue(labels, 'lbl_payment_addCard')}
-                  buttonVariation="variable-width"
                   data-locator="gift-card-addcardbtn"
                   onPress={this.handleAddGiftCardClick}
                 />
@@ -239,7 +236,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="black"
                   text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                   data-locator="gift-card-cancelbtn"
-                  buttonVariation="variable-width"
                   onPress={toggleModal}
                 />
               </CancelButtonWrapper>

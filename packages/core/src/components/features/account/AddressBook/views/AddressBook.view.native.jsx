@@ -26,11 +26,7 @@ class AddressBook extends React.PureComponent<Props> {
     return (
       <View>
         <Text>{labels.addressBookHeading}</Text>
-        <CustomButton
-          text={labels.acc_lbl_create_account}
-          buttonVariation="variable-width"
-          onPress={this.openModal}
-        />
+        <CustomButton text={labels.acc_lbl_create_account} onPress={this.openModal} />
         <ModalNative
           isOpen={isOpenBool}
           onRequestClose={this.openModal}

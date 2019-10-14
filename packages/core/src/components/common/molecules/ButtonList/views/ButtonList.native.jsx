@@ -36,7 +36,6 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, showFullWidth, locator, buttonVariation) => {
   const { button } = item;
-
   return (
     <Button
       locator={locator}
@@ -95,7 +94,7 @@ const renderItemScrollCTAList = (item, navigation, locator, color) => {
         locator={locator}
         accessibilityRole="button"
         accessibilityLabel={button.text}
-        buttonVariation="cautionary-button"
+        buttonVariation="variable-width"
         color={color}
         text={button.text}
         url={button.url}

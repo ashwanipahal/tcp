@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -28,30 +29,7 @@ import PaymentView from '../views/PaymentView';
 
 import utils from '../../../../../utils';
 
-// @flow
-type Props = {
-  getCardListAction: Function,
-  showNotification: any,
-  deleteModalMountedState: boolean,
-  setDeleteModalMountState: Function,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  creditCardList: List<any>,
-  venmoCardList: List<any>,
-  giftCardList: List<any>,
-  cardList: List<any>,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  setDefaultPaymentMethod: Function,
-  getPaymentBannerRichText: Function,
-  paymentBannerContentId: string,
-  showNotificationCaptcha: boolean,
-  paymentBannerRichText: string,
-  clearPaymentNotification: () => void,
-  labels: object,
-};
-
-export class PaymentContainer extends React.Component<Props> {
+export class PaymentContainer extends React.Component {
   componentDidMount() {
     const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
@@ -110,7 +88,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getCardListAction: () => {
       dispatch(getCardList());
@@ -157,6 +135,31 @@ const mapStateToProps = state => {
   };
 };
 
+PaymentContainer.defaultProps = {
+  clearPaymentNotification: null,
+};
+
+PaymentContainer.propTypes = {
+  getCardListAction: PropTypes.func.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  deleteModalMountedState: PropTypes.bool.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.string.isRequired,
+  creditCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  venmoCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  giftCardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  cardList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  onGetBalanceCard: PropTypes.func.isRequired,
+  checkbalanceValueInfo: PropTypes.string.isRequired,
+  setDefaultPaymentMethod: PropTypes.func.isRequired,
+  getPaymentBannerRichText: PropTypes.func.isRequired,
+  paymentBannerContentId: PropTypes.string.isRequired,
+  showNotificationCaptcha: PropTypes.bool.isRequired,
+  paymentBannerRichText: PropTypes.string.isRequired,
+  clearPaymentNotification: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps

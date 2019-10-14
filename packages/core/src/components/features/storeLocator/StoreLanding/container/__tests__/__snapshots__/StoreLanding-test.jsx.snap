@@ -1,317 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
-<Styled(Grid)>
-  <Styled(Row)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
+exports[`StoreSearch Container should call openStoreDetails 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="undefined__backlink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+    title="lbl_storedetails_backLink"
+  >
+    <span
+      className="left-arrow"
+    />
+    lbl_storedetails_backLink
+  </Styled(Anchor)>
+  <Styled(Grid)>
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(Row)
-        className="favoriteStore__container"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
       >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
+        <Styled(Row)
+          className="favoriteStore__container"
         >
-          <h3
-            className="favoriteStore__heading"
+          <Styled(Col)
+            className="store_item_container"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
           >
-            lbl_storelanding_favStoreHeading
-          </h3>
-          <Styled(StoreAddressTile)
-            favoriteStore={
-              Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
-              }
-            }
-            fetchStoresByLatLng={[MockFunction]}
-            isFavorite={true}
-            labels={Object {}}
-            openStoreDetails={[Function]}
-            store={
-              Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
-              }
-            }
-            suggestedStoreList={
-              Array [
+            <h3
+              className="favoriteStore__heading"
+            >
+              lbl_storelanding_favStoreHeading
+            </h3>
+            <Styled(StoreAddressTile)
+              favoriteStore={
                 Object {
                   "basicInfo": Object {
                     "address": Object {
@@ -442,183 +188,353 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
                     "isBossEligible": "0",
                     "startDate": undefined,
                   },
-                },
-              ]
-            }
-            variation="listing-header"
-          />
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
+                }
+              }
+              fetchCurrentStore={[MockFunction]}
+              fetchStoresByLatLng={[MockFunction]}
+              geoLocationDisabled={true}
+              geoLocationEnabled={false}
+              isFavorite={true}
+              labels={Object {}}
+              openStoreDetails={[Function]}
+              searchDone={false}
+              store={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
+                }
+              }
+              suggestedStoreList={
+                Array [
+                  Object {
+                    "basicInfo": Object {
+                      "address": Object {
+                        "addressLine1": "9593 carousel center",
+                        "city": "syracuse",
+                        "country": "US ",
+                        "state": "NY",
+                        "zipCode": "13290",
+                      },
+                      "coordinates": Object {
+                        "lat": 43.0683,
+                        "long": -76.1703,
+                      },
+                      "id": "110685",
+                      "isDefault": "0",
+                      "phone": "(315) 466-3703",
+                      "storeName": "destiny usa",
+                    },
+                    "distance": "19.09",
+                    "features": Object {
+                      "entranceType": undefined,
+                      "mallType": undefined,
+                      "storeType": "Retail Store",
+                    },
+                    "hours": Object {
+                      "holidayHours": Array [],
+                      "regularAndHolidayHours": Array [],
+                      "regularHours": Array [
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-06 10:00:00",
+                              "toHour": "2019-05-06 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-07 10:00:00",
+                              "toHour": "2019-05-07 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "WEDNESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-08 10:00:00",
+                              "toHour": "2019-05-08 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "THURSDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-09 10:00:00",
+                              "toHour": "2019-05-09 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "FRIDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-10 10:00:00",
+                              "toHour": "2019-05-10 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "SATURDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-11 10:00:00",
+                              "toHour": "2019-05-11 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MOTHER'S DAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-12 11:00:00",
+                              "toHour": "2019-05-12 18:00:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-13 10:00:00",
+                              "toHour": "2019-05-13 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-14 10:00:00",
+                              "toHour": "2019-05-14 21:30:00",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "pickupType": Object {
+                      "isStoreBopisSelected": true,
+                      "isStoreBossSelected": true,
+                    },
+                    "productAvailability": Object {},
+                    "storeBossInfo": Object {
+                      "endDate": undefined,
+                      "isBossEligible": "0",
+                      "startDate": undefined,
+                    },
+                  },
+                ]
+              }
+              variation="listing-header"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          fullBleed={true}
         >
-          <ReduxForm
-            destroyOnUnmount={true}
-            enableReinitialize={true}
-            favoriteStore={
+          <Styled(Col)
+            colSize={
               Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
+                "large": 12,
+                "medium": 8,
+                "small": 6,
               }
             }
-            fetchStoresByLatLng={[MockFunction]}
-            forceUnregisterOnUnmount={false}
-            form="StoreSearch"
-            getFormState={[Function]}
-            keepDirtyOnReinitialize={false}
-            labels={Object {}}
-            mapView={false}
-            persistentSubmitErrors={false}
-            pure={true}
-            selectStoreType={[Function]}
-            shouldAsyncValidate={[Function]}
-            shouldError={[Function]}
-            shouldValidate={[Function]}
-            shouldWarn={[Function]}
-            submitAsSideEffect={false}
-            suggestedStoreList={
-              Array [
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <ReduxForm
+              destroyOnUnmount={true}
+              enableReinitialize={true}
+              forceUnregisterOnUnmount={false}
+              form="StoreSearchForm"
+              getFormState={[Function]}
+              keepDirtyOnReinitialize={false}
+              labels={Object {}}
+              mapView={false}
+              persistentSubmitErrors={false}
+              pure={true}
+              selectStoreType={[Function]}
+              selectedCountry="USA"
+              shouldAsyncValidate={[Function]}
+              shouldError={[Function]}
+              shouldValidate={[Function]}
+              shouldWarn={[Function]}
+              submitAsSideEffect={false}
+              toggleMap={[Function]}
+              touchOnBlur={true}
+              touchOnChange={false}
+              updateUnregisteredFields={false}
+              validate={[Function]}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="storeView__List"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="store__list store_item_container"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+            key="110685"
+          >
+            <Styled(StoreAddressTile)
+              favoriteStore={
                 Object {
                   "basicInfo": Object {
                     "address": Object {
@@ -749,988 +665,2153 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
                     "isBossEligible": "0",
                     "startDate": undefined,
                   },
+                }
+              }
+              fetchCurrentStore={[MockFunction]}
+              fetchStoresByLatLng={[MockFunction]}
+              geoLocationDisabled={true}
+              geoLocationEnabled={false}
+              isFavorite={true}
+              labels={Object {}}
+              openStoreDetails={[Function]}
+              searchDone={false}
+              store={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
+                }
+              }
+              storeIndex={false}
+              suggestedStoreList={
+                Array [
+                  Object {
+                    "basicInfo": Object {
+                      "address": Object {
+                        "addressLine1": "9593 carousel center",
+                        "city": "syracuse",
+                        "country": "US ",
+                        "state": "NY",
+                        "zipCode": "13290",
+                      },
+                      "coordinates": Object {
+                        "lat": 43.0683,
+                        "long": -76.1703,
+                      },
+                      "id": "110685",
+                      "isDefault": "0",
+                      "phone": "(315) 466-3703",
+                      "storeName": "destiny usa",
+                    },
+                    "distance": "19.09",
+                    "features": Object {
+                      "entranceType": undefined,
+                      "mallType": undefined,
+                      "storeType": "Retail Store",
+                    },
+                    "hours": Object {
+                      "holidayHours": Array [],
+                      "regularAndHolidayHours": Array [],
+                      "regularHours": Array [
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-06 10:00:00",
+                              "toHour": "2019-05-06 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-07 10:00:00",
+                              "toHour": "2019-05-07 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "WEDNESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-08 10:00:00",
+                              "toHour": "2019-05-08 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "THURSDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-09 10:00:00",
+                              "toHour": "2019-05-09 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "FRIDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-10 10:00:00",
+                              "toHour": "2019-05-10 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "SATURDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-11 10:00:00",
+                              "toHour": "2019-05-11 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MOTHER'S DAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-12 11:00:00",
+                              "toHour": "2019-05-12 18:00:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-13 10:00:00",
+                              "toHour": "2019-05-13 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-14 10:00:00",
+                              "toHour": "2019-05-14 21:30:00",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "pickupType": Object {
+                      "isStoreBopisSelected": true,
+                      "isStoreBossSelected": true,
+                    },
+                    "productAvailability": Object {},
+                    "storeBossInfo": Object {
+                      "endDate": undefined,
+                      "isBossEligible": "0",
+                      "startDate": undefined,
+                    },
+                  },
+                ]
+              }
+              titleClickCb={[Function]}
+              variation="listing"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="mapView__desktop"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <StoreStaticMap
+          centeredStoreId=""
+          defaultZoom=""
+          favoriteStore={
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "9593 carousel center",
+                  "city": "syracuse",
+                  "country": "US ",
+                  "state": "NY",
+                  "zipCode": "13290",
                 },
-              ]
+                "coordinates": Object {
+                  "lat": 43.0683,
+                  "long": -76.1703,
+                },
+                "id": "110685",
+                "isDefault": "0",
+                "phone": "(315) 466-3703",
+                "storeName": "destiny usa",
+              },
+              "distance": "19.09",
+              "features": Object {
+                "entranceType": undefined,
+                "mallType": undefined,
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-06 10:00:00",
+                        "toHour": "2019-05-06 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-07 10:00:00",
+                        "toHour": "2019-05-07 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "WEDNESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-08 10:00:00",
+                        "toHour": "2019-05-08 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "THURSDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-09 10:00:00",
+                        "toHour": "2019-05-09 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "FRIDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-10 10:00:00",
+                        "toHour": "2019-05-10 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "SATURDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-11 10:00:00",
+                        "toHour": "2019-05-11 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MOTHER'S DAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-12 11:00:00",
+                        "toHour": "2019-05-12 18:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-13 10:00:00",
+                        "toHour": "2019-05-13 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-14 10:00:00",
+                        "toHour": "2019-05-14 21:30:00",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "pickupType": Object {
+                "isStoreBopisSelected": true,
+                "isStoreBossSelected": true,
+              },
+              "productAvailability": Object {},
+              "storeBossInfo": Object {
+                "endDate": undefined,
+                "isBossEligible": "0",
+                "startDate": undefined,
+              },
             }
-            toggleMap={[Function]}
-            touchOnBlur={true}
-            touchOnChange={false}
-            updateUnregisteredFields={false}
-          />
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="storeView__List"
-        fullBleed={true}
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-</Styled(Grid)>
+          }
+          fetchCurrentStore={[MockFunction]}
+          fetchStoresByLatLng={[MockFunction]}
+          geoLocationEnabled={false}
+          isCanada={false}
+          isMobile={false}
+          searchDone={false}
+          storesList={
+            Array [
+              Object {
+                "basicInfo": Object {
+                  "address": Object {
+                    "addressLine1": "9593 carousel center",
+                    "city": "syracuse",
+                    "country": "US ",
+                    "state": "NY",
+                    "zipCode": "13290",
+                  },
+                  "coordinates": Object {
+                    "lat": 43.0683,
+                    "long": -76.1703,
+                  },
+                  "id": "110685",
+                  "isDefault": "0",
+                  "phone": "(315) 466-3703",
+                  "storeName": "destiny usa",
+                },
+                "distance": "19.09",
+                "features": Object {
+                  "entranceType": undefined,
+                  "mallType": undefined,
+                  "storeType": "Retail Store",
+                },
+                "hours": Object {
+                  "holidayHours": Array [],
+                  "regularAndHolidayHours": Array [],
+                  "regularHours": Array [
+                    Object {
+                      "dayName": "MONDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-06 10:00:00",
+                          "toHour": "2019-05-06 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "TUESDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-07 10:00:00",
+                          "toHour": "2019-05-07 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "WEDNESDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-08 10:00:00",
+                          "toHour": "2019-05-08 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "THURSDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-09 10:00:00",
+                          "toHour": "2019-05-09 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "FRIDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-10 10:00:00",
+                          "toHour": "2019-05-10 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "SATURDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-11 10:00:00",
+                          "toHour": "2019-05-11 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "MOTHER'S DAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-12 11:00:00",
+                          "toHour": "2019-05-12 18:00:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "MONDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-13 10:00:00",
+                          "toHour": "2019-05-13 21:30:00",
+                        },
+                      ],
+                    },
+                    Object {
+                      "dayName": "TUESDAY",
+                      "isClosed": false,
+                      "openIntervals": Array [
+                        Object {
+                          "fromHour": "2019-05-14 10:00:00",
+                          "toHour": "2019-05-14 21:30:00",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "pickupType": Object {
+                  "isStoreBopisSelected": true,
+                  "isStoreBossSelected": true,
+                },
+                "productAvailability": Object {},
+                "storeBossInfo": Object {
+                  "endDate": undefined,
+                  "isBossEligible": "0",
+                  "startDate": undefined,
+                },
+              },
+            ]
+          }
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</Fragment>
+`;
+
+exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="undefined__backlink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+    title="lbl_storedetails_backLink"
+  >
+    <span
+      className="left-arrow"
+    />
+    lbl_storedetails_backLink
+  </Styled(Anchor)>
+  <Styled(Grid)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(Row)
+          className="favoriteStore__container"
+        >
+          <Styled(Col)
+            className="store_item_container"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <h3
+              className="favoriteStore__heading"
+            >
+              lbl_storelanding_favStoreHeading
+            </h3>
+            <Styled(StoreAddressTile)
+              favoriteStore={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
+                }
+              }
+              fetchCurrentStore={[MockFunction]}
+              fetchStoresByLatLng={[MockFunction]}
+              geoLocationDisabled={true}
+              geoLocationEnabled={false}
+              isFavorite={true}
+              labels={Object {}}
+              openStoreDetails={[Function]}
+              searchDone={false}
+              store={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
+                }
+              }
+              suggestedStoreList={
+                Array [
+                  Object {
+                    "basicInfo": Object {
+                      "address": Object {
+                        "addressLine1": "9593 carousel center",
+                        "city": "syracuse",
+                        "country": "US ",
+                        "state": "NY",
+                        "zipCode": "13290",
+                      },
+                      "coordinates": Object {
+                        "lat": 43.0683,
+                        "long": -76.1703,
+                      },
+                      "id": "110685",
+                      "isDefault": "0",
+                      "phone": "(315) 466-3703",
+                      "storeName": "destiny usa",
+                    },
+                    "distance": "19.09",
+                    "features": Object {
+                      "entranceType": undefined,
+                      "mallType": undefined,
+                      "storeType": "Retail Store",
+                    },
+                    "hours": Object {
+                      "holidayHours": Array [],
+                      "regularAndHolidayHours": Array [],
+                      "regularHours": Array [
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-06 10:00:00",
+                              "toHour": "2019-05-06 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-07 10:00:00",
+                              "toHour": "2019-05-07 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "WEDNESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-08 10:00:00",
+                              "toHour": "2019-05-08 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "THURSDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-09 10:00:00",
+                              "toHour": "2019-05-09 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "FRIDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-10 10:00:00",
+                              "toHour": "2019-05-10 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "SATURDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-11 10:00:00",
+                              "toHour": "2019-05-11 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MOTHER'S DAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-12 11:00:00",
+                              "toHour": "2019-05-12 18:00:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-13 10:00:00",
+                              "toHour": "2019-05-13 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-14 10:00:00",
+                              "toHour": "2019-05-14 21:30:00",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "pickupType": Object {
+                      "isStoreBopisSelected": true,
+                      "isStoreBossSelected": true,
+                    },
+                    "productAvailability": Object {},
+                    "storeBossInfo": Object {
+                      "endDate": undefined,
+                      "isBossEligible": "0",
+                      "startDate": undefined,
+                    },
+                  },
+                ]
+              }
+              variation="listing-header"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <ReduxForm
+              destroyOnUnmount={true}
+              enableReinitialize={true}
+              forceUnregisterOnUnmount={false}
+              form="StoreSearchForm"
+              getFormState={[Function]}
+              keepDirtyOnReinitialize={false}
+              labels={Object {}}
+              mapView={false}
+              persistentSubmitErrors={false}
+              pure={true}
+              selectStoreType={[Function]}
+              selectedCountry="USA"
+              shouldAsyncValidate={[Function]}
+              shouldError={[Function]}
+              shouldValidate={[Function]}
+              shouldWarn={[Function]}
+              submitAsSideEffect={false}
+              toggleMap={[Function]}
+              touchOnBlur={true}
+              touchOnChange={false}
+              updateUnregisteredFields={false}
+              validate={[Function]}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="storeView__List"
+          fullBleed={true}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="mapView__desktop"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <StoreStaticMap
+          centeredStoreId=""
+          defaultZoom=""
+          favoriteStore={
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "9593 carousel center",
+                  "city": "syracuse",
+                  "country": "US ",
+                  "state": "NY",
+                  "zipCode": "13290",
+                },
+                "coordinates": Object {
+                  "lat": 43.0683,
+                  "long": -76.1703,
+                },
+                "id": "110685",
+                "isDefault": "0",
+                "phone": "(315) 466-3703",
+                "storeName": "destiny usa",
+              },
+              "distance": "19.09",
+              "features": Object {
+                "entranceType": undefined,
+                "mallType": undefined,
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-06 10:00:00",
+                        "toHour": "2019-05-06 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-07 10:00:00",
+                        "toHour": "2019-05-07 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "WEDNESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-08 10:00:00",
+                        "toHour": "2019-05-08 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "THURSDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-09 10:00:00",
+                        "toHour": "2019-05-09 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "FRIDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-10 10:00:00",
+                        "toHour": "2019-05-10 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "SATURDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-11 10:00:00",
+                        "toHour": "2019-05-11 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MOTHER'S DAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-12 11:00:00",
+                        "toHour": "2019-05-12 18:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-13 10:00:00",
+                        "toHour": "2019-05-13 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-14 10:00:00",
+                        "toHour": "2019-05-14 21:30:00",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "pickupType": Object {
+                "isStoreBopisSelected": true,
+                "isStoreBossSelected": true,
+              },
+              "productAvailability": Object {},
+              "storeBossInfo": Object {
+                "endDate": undefined,
+                "isBossEligible": "0",
+                "startDate": undefined,
+              },
+            }
+          }
+          fetchCurrentStore={[MockFunction]}
+          fetchStoresByLatLng={[MockFunction]}
+          geoLocationEnabled={false}
+          isCanada={false}
+          isMobile={false}
+          searchDone={false}
+          storesList={Array []}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</Fragment>
 `;
 
 exports[`StoreSearch Container should render StoreLanding Correctly with map 1`] = `
-<Styled(Grid)>
-  <Styled(Row)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="undefined__backlink"
+    fontSizeVariation="xlarge"
+    handleLinkClick={[Function]}
+    noLink={true}
+    title="lbl_storedetails_backLink"
+  >
+    <span
+      className="left-arrow"
+    />
+    lbl_storedetails_backLink
+  </Styled(Anchor)>
+  <Styled(Grid)>
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Styled(Row)
-        className="favoriteStore__container"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
       >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
+        <Styled(Row)
+          className="favoriteStore__container"
         >
-          <h3
-            className="favoriteStore__heading"
+          <Styled(Col)
+            className="store_item_container"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
           >
-            lbl_storelanding_favStoreHeading
-          </h3>
-          <Styled(StoreAddressTile)
-            favoriteStore={
-              Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
-              }
-            }
-            fetchStoresByLatLng={[MockFunction]}
-            isFavorite={true}
-            labels={Object {}}
-            openStoreDetails={[Function]}
-            store={
-              Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
-              }
-            }
-            suggestedStoreList={
-              Array [
-                Object {
-                  "basicInfo": Object {
-                    "address": Object {
-                      "addressLine1": "9593 carousel center",
-                      "city": "syracuse",
-                      "country": "US ",
-                      "state": "NY",
-                      "zipCode": "13290",
-                    },
-                    "coordinates": Object {
-                      "lat": 43.0683,
-                      "long": -76.1703,
-                    },
-                    "id": "110685",
-                    "isDefault": "0",
-                    "phone": "(315) 466-3703",
-                    "storeName": "destiny usa",
-                  },
-                  "distance": "19.09",
-                  "features": Object {
-                    "entranceType": undefined,
-                    "mallType": undefined,
-                    "storeType": "Retail Store",
-                  },
-                  "hours": Object {
-                    "holidayHours": Array [],
-                    "regularAndHolidayHours": Array [],
-                    "regularHours": Array [
-                      Object {
-                        "dayName": "MONDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-06 10:00:00",
-                            "toHour": "2019-05-06 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "TUESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-07 10:00:00",
-                            "toHour": "2019-05-07 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "WEDNESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-08 10:00:00",
-                            "toHour": "2019-05-08 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "THURSDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-09 10:00:00",
-                            "toHour": "2019-05-09 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "FRIDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-10 10:00:00",
-                            "toHour": "2019-05-10 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "SATURDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-11 10:00:00",
-                            "toHour": "2019-05-11 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "MOTHER'S DAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-12 11:00:00",
-                            "toHour": "2019-05-12 18:00:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "MONDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-13 10:00:00",
-                            "toHour": "2019-05-13 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "TUESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-14 10:00:00",
-                            "toHour": "2019-05-14 21:30:00",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  "pickupType": Object {
-                    "isStoreBopisSelected": true,
-                    "isStoreBossSelected": true,
-                  },
-                  "productAvailability": Object {},
-                  "storeBossInfo": Object {
-                    "endDate": undefined,
-                    "isBossEligible": "0",
-                    "startDate": undefined,
-                  },
-                },
-              ]
-            }
-            variation="listing-header"
-          />
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
-        >
-          <ReduxForm
-            destroyOnUnmount={true}
-            enableReinitialize={true}
-            favoriteStore={
-              Object {
-                "basicInfo": Object {
-                  "address": Object {
-                    "addressLine1": "9593 carousel center",
-                    "city": "syracuse",
-                    "country": "US ",
-                    "state": "NY",
-                    "zipCode": "13290",
-                  },
-                  "coordinates": Object {
-                    "lat": 43.0683,
-                    "long": -76.1703,
-                  },
-                  "id": "110685",
-                  "isDefault": "0",
-                  "phone": "(315) 466-3703",
-                  "storeName": "destiny usa",
-                },
-                "distance": "19.09",
-                "features": Object {
-                  "entranceType": undefined,
-                  "mallType": undefined,
-                  "storeType": "Retail Store",
-                },
-                "hours": Object {
-                  "holidayHours": Array [],
-                  "regularAndHolidayHours": Array [],
-                  "regularHours": Array [
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-06 10:00:00",
-                          "toHour": "2019-05-06 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-07 10:00:00",
-                          "toHour": "2019-05-07 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "WEDNESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-08 10:00:00",
-                          "toHour": "2019-05-08 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "THURSDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-09 10:00:00",
-                          "toHour": "2019-05-09 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "FRIDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-10 10:00:00",
-                          "toHour": "2019-05-10 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "SATURDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-11 10:00:00",
-                          "toHour": "2019-05-11 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MOTHER'S DAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-12 11:00:00",
-                          "toHour": "2019-05-12 18:00:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "MONDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-13 10:00:00",
-                          "toHour": "2019-05-13 21:30:00",
-                        },
-                      ],
-                    },
-                    Object {
-                      "dayName": "TUESDAY",
-                      "isClosed": false,
-                      "openIntervals": Array [
-                        Object {
-                          "fromHour": "2019-05-14 10:00:00",
-                          "toHour": "2019-05-14 21:30:00",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                "pickupType": Object {
-                  "isStoreBopisSelected": true,
-                  "isStoreBossSelected": true,
-                },
-                "productAvailability": Object {},
-                "storeBossInfo": Object {
-                  "endDate": undefined,
-                  "isBossEligible": "0",
-                  "startDate": undefined,
-                },
-              }
-            }
-            fetchStoresByLatLng={[MockFunction]}
-            forceUnregisterOnUnmount={false}
-            form="StoreSearch"
-            getFormState={[Function]}
-            keepDirtyOnReinitialize={false}
-            labels={Object {}}
-            mapView={true}
-            persistentSubmitErrors={false}
-            pure={true}
-            selectStoreType={[Function]}
-            shouldAsyncValidate={[Function]}
-            shouldError={[Function]}
-            shouldValidate={[Function]}
-            shouldWarn={[Function]}
-            submitAsSideEffect={false}
-            suggestedStoreList={
-              Array [
-                Object {
-                  "basicInfo": Object {
-                    "address": Object {
-                      "addressLine1": "9593 carousel center",
-                      "city": "syracuse",
-                      "country": "US ",
-                      "state": "NY",
-                      "zipCode": "13290",
-                    },
-                    "coordinates": Object {
-                      "lat": 43.0683,
-                      "long": -76.1703,
-                    },
-                    "id": "110685",
-                    "isDefault": "0",
-                    "phone": "(315) 466-3703",
-                    "storeName": "destiny usa",
-                  },
-                  "distance": "19.09",
-                  "features": Object {
-                    "entranceType": undefined,
-                    "mallType": undefined,
-                    "storeType": "Retail Store",
-                  },
-                  "hours": Object {
-                    "holidayHours": Array [],
-                    "regularAndHolidayHours": Array [],
-                    "regularHours": Array [
-                      Object {
-                        "dayName": "MONDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-06 10:00:00",
-                            "toHour": "2019-05-06 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "TUESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-07 10:00:00",
-                            "toHour": "2019-05-07 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "WEDNESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-08 10:00:00",
-                            "toHour": "2019-05-08 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "THURSDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-09 10:00:00",
-                            "toHour": "2019-05-09 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "FRIDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-10 10:00:00",
-                            "toHour": "2019-05-10 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "SATURDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-11 10:00:00",
-                            "toHour": "2019-05-11 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "MOTHER'S DAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-12 11:00:00",
-                            "toHour": "2019-05-12 18:00:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "MONDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-13 10:00:00",
-                            "toHour": "2019-05-13 21:30:00",
-                          },
-                        ],
-                      },
-                      Object {
-                        "dayName": "TUESDAY",
-                        "isClosed": false,
-                        "openIntervals": Array [
-                          Object {
-                            "fromHour": "2019-05-14 10:00:00",
-                            "toHour": "2019-05-14 21:30:00",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  "pickupType": Object {
-                    "isStoreBopisSelected": true,
-                    "isStoreBossSelected": true,
-                  },
-                  "productAvailability": Object {},
-                  "storeBossInfo": Object {
-                    "endDate": undefined,
-                    "isBossEligible": "0",
-                    "startDate": undefined,
-                  },
-                },
-              ]
-            }
-            toggleMap={[Function]}
-            touchOnBlur={true}
-            touchOnChange={false}
-            updateUnregisteredFields={false}
-          />
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="storeView__List"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          className="store__map"
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 4,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
-        >
-          <Styled(Row)
-            fullBleed={true}
-          >
-            <Styled(Col)
-              colSize={
-                Object {
-                  "large": 12,
-                  "medium": 8,
-                  "small": 6,
-                }
-              }
-              ignoreGutter={
-                Object {
-                  "small": true,
-                }
-              }
+            <h3
+              className="favoriteStore__heading"
             >
-              <StoreStaticMap
-                centeredStoreId=""
-                defaultZoom=""
-                fetchStoresByLatLng={[MockFunction]}
-                isCanada={[Function]}
-                isMobile={false}
-                labels={Object {}}
-                storesList={Array []}
-                suggestedStoreList={
-                  Array [
-                    Object {
-                      "basicInfo": Object {
-                        "address": Object {
-                          "addressLine1": "9593 carousel center",
-                          "city": "syracuse",
-                          "country": "US ",
-                          "state": "NY",
-                          "zipCode": "13290",
-                        },
-                        "coordinates": Object {
-                          "lat": 43.0683,
-                          "long": -76.1703,
-                        },
-                        "id": "110685",
-                        "isDefault": "0",
-                        "phone": "(315) 466-3703",
-                        "storeName": "destiny usa",
-                      },
-                      "distance": "19.09",
-                      "features": Object {
-                        "entranceType": undefined,
-                        "mallType": undefined,
-                        "storeType": "Retail Store",
-                      },
-                      "hours": Object {
-                        "holidayHours": Array [],
-                        "regularAndHolidayHours": Array [],
-                        "regularHours": Array [
+              lbl_storelanding_favStoreHeading
+            </h3>
+            <Styled(StoreAddressTile)
+              favoriteStore={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
                           Object {
-                            "dayName": "MONDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-06 10:00:00",
-                                "toHour": "2019-05-06 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "TUESDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-07 10:00:00",
-                                "toHour": "2019-05-07 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "WEDNESDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-08 10:00:00",
-                                "toHour": "2019-05-08 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "THURSDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-09 10:00:00",
-                                "toHour": "2019-05-09 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "FRIDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-10 10:00:00",
-                                "toHour": "2019-05-10 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "SATURDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-11 10:00:00",
-                                "toHour": "2019-05-11 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "MOTHER'S DAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-12 11:00:00",
-                                "toHour": "2019-05-12 18:00:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "MONDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-13 10:00:00",
-                                "toHour": "2019-05-13 21:30:00",
-                              },
-                            ],
-                          },
-                          Object {
-                            "dayName": "TUESDAY",
-                            "isClosed": false,
-                            "openIntervals": Array [
-                              Object {
-                                "fromHour": "2019-05-14 10:00:00",
-                                "toHour": "2019-05-14 21:30:00",
-                              },
-                            ],
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
                           },
                         ],
                       },
-                      "pickupType": Object {
-                        "isStoreBopisSelected": true,
-                        "isStoreBossSelected": true,
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
                       },
-                      "productAvailability": Object {},
-                      "storeBossInfo": Object {
-                        "endDate": undefined,
-                        "isBossEligible": "0",
-                        "startDate": undefined,
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
                       },
-                    },
-                  ]
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
                 }
-              />
-            </Styled(Col)>
-          </Styled(Row)>
-        </Styled(Col)>
-        <Styled(Col)
-          className="storeList__map"
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 4,
-              "small": 6,
-            }
-          }
-          ignoreGutter={
-            Object {
-              "small": true,
-            }
-          }
+              }
+              fetchCurrentStore={[MockFunction]}
+              fetchStoresByLatLng={[MockFunction]}
+              geoLocationDisabled={true}
+              geoLocationEnabled={false}
+              isFavorite={true}
+              labels={Object {}}
+              openStoreDetails={[Function]}
+              searchDone={false}
+              store={
+                Object {
+                  "basicInfo": Object {
+                    "address": Object {
+                      "addressLine1": "9593 carousel center",
+                      "city": "syracuse",
+                      "country": "US ",
+                      "state": "NY",
+                      "zipCode": "13290",
+                    },
+                    "coordinates": Object {
+                      "lat": 43.0683,
+                      "long": -76.1703,
+                    },
+                    "id": "110685",
+                    "isDefault": "0",
+                    "phone": "(315) 466-3703",
+                    "storeName": "destiny usa",
+                  },
+                  "distance": "19.09",
+                  "features": Object {
+                    "entranceType": undefined,
+                    "mallType": undefined,
+                    "storeType": "Retail Store",
+                  },
+                  "hours": Object {
+                    "holidayHours": Array [],
+                    "regularAndHolidayHours": Array [],
+                    "regularHours": Array [
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-06 10:00:00",
+                            "toHour": "2019-05-06 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-07 10:00:00",
+                            "toHour": "2019-05-07 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "WEDNESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-08 10:00:00",
+                            "toHour": "2019-05-08 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "THURSDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-09 10:00:00",
+                            "toHour": "2019-05-09 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "FRIDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-10 10:00:00",
+                            "toHour": "2019-05-10 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "SATURDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-11 10:00:00",
+                            "toHour": "2019-05-11 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MOTHER'S DAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-12 11:00:00",
+                            "toHour": "2019-05-12 18:00:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "MONDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-13 10:00:00",
+                            "toHour": "2019-05-13 21:30:00",
+                          },
+                        ],
+                      },
+                      Object {
+                        "dayName": "TUESDAY",
+                        "isClosed": false,
+                        "openIntervals": Array [
+                          Object {
+                            "fromHour": "2019-05-14 10:00:00",
+                            "toHour": "2019-05-14 21:30:00",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  "pickupType": Object {
+                    "isStoreBopisSelected": true,
+                    "isStoreBossSelected": true,
+                  },
+                  "productAvailability": Object {},
+                  "storeBossInfo": Object {
+                    "endDate": undefined,
+                    "isBossEligible": "0",
+                    "startDate": undefined,
+                  },
+                }
+              }
+              suggestedStoreList={
+                Array [
+                  Object {
+                    "basicInfo": Object {
+                      "address": Object {
+                        "addressLine1": "9593 carousel center",
+                        "city": "syracuse",
+                        "country": "US ",
+                        "state": "NY",
+                        "zipCode": "13290",
+                      },
+                      "coordinates": Object {
+                        "lat": 43.0683,
+                        "long": -76.1703,
+                      },
+                      "id": "110685",
+                      "isDefault": "0",
+                      "phone": "(315) 466-3703",
+                      "storeName": "destiny usa",
+                    },
+                    "distance": "19.09",
+                    "features": Object {
+                      "entranceType": undefined,
+                      "mallType": undefined,
+                      "storeType": "Retail Store",
+                    },
+                    "hours": Object {
+                      "holidayHours": Array [],
+                      "regularAndHolidayHours": Array [],
+                      "regularHours": Array [
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-06 10:00:00",
+                              "toHour": "2019-05-06 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-07 10:00:00",
+                              "toHour": "2019-05-07 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "WEDNESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-08 10:00:00",
+                              "toHour": "2019-05-08 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "THURSDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-09 10:00:00",
+                              "toHour": "2019-05-09 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "FRIDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-10 10:00:00",
+                              "toHour": "2019-05-10 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "SATURDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-11 10:00:00",
+                              "toHour": "2019-05-11 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MOTHER'S DAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-12 11:00:00",
+                              "toHour": "2019-05-12 18:00:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "MONDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-13 10:00:00",
+                              "toHour": "2019-05-13 21:30:00",
+                            },
+                          ],
+                        },
+                        Object {
+                          "dayName": "TUESDAY",
+                          "isClosed": false,
+                          "openIntervals": Array [
+                            Object {
+                              "fromHour": "2019-05-14 10:00:00",
+                              "toHour": "2019-05-14 21:30:00",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "pickupType": Object {
+                      "isStoreBopisSelected": true,
+                      "isStoreBossSelected": true,
+                    },
+                    "productAvailability": Object {},
+                    "storeBossInfo": Object {
+                      "endDate": undefined,
+                      "isBossEligible": "0",
+                      "startDate": undefined,
+                    },
+                  },
+                ]
+              }
+              variation="listing-header"
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          fullBleed={true}
         >
-          <Styled(Row)
-            fullBleed={true}
-          />
-        </Styled(Col)>
-      </Styled(Row)>
-    </Styled(Col)>
-  </Styled(Row)>
-</Styled(Grid)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <ReduxForm
+              destroyOnUnmount={true}
+              enableReinitialize={true}
+              forceUnregisterOnUnmount={false}
+              form="StoreSearchForm"
+              getFormState={[Function]}
+              keepDirtyOnReinitialize={false}
+              labels={Object {}}
+              mapView={true}
+              persistentSubmitErrors={false}
+              pure={true}
+              selectStoreType={[Function]}
+              selectedCountry="USA"
+              shouldAsyncValidate={[Function]}
+              shouldError={[Function]}
+              shouldValidate={[Function]}
+              shouldWarn={[Function]}
+              submitAsSideEffect={false}
+              toggleMap={[Function]}
+              touchOnBlur={true}
+              touchOnChange={false}
+              updateUnregisteredFields={false}
+              validate={[Function]}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(Row)
+          className="storeView__List"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className="store__map"
+            colSize={
+              Object {
+                "large": 6,
+                "medium": 4,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Row)
+              fullBleed={true}
+            >
+              <Styled(Col)
+                colSize={
+                  Object {
+                    "large": 12,
+                    "medium": 8,
+                    "small": 6,
+                  }
+                }
+                ignoreGutter={
+                  Object {
+                    "small": true,
+                  }
+                }
+              >
+                <StoreStaticMap
+                  centeredStoreId=""
+                  defaultZoom=""
+                  fetchCurrentStore={[MockFunction]}
+                  fetchStoresByLatLng={[MockFunction]}
+                  geoLocationEnabled={false}
+                  isCanada={false}
+                  isMobile={false}
+                  labels={Object {}}
+                  storesList={Array []}
+                  suggestedStoreList={
+                    Array [
+                      Object {
+                        "basicInfo": Object {
+                          "address": Object {
+                            "addressLine1": "9593 carousel center",
+                            "city": "syracuse",
+                            "country": "US ",
+                            "state": "NY",
+                            "zipCode": "13290",
+                          },
+                          "coordinates": Object {
+                            "lat": 43.0683,
+                            "long": -76.1703,
+                          },
+                          "id": "110685",
+                          "isDefault": "0",
+                          "phone": "(315) 466-3703",
+                          "storeName": "destiny usa",
+                        },
+                        "distance": "19.09",
+                        "features": Object {
+                          "entranceType": undefined,
+                          "mallType": undefined,
+                          "storeType": "Retail Store",
+                        },
+                        "hours": Object {
+                          "holidayHours": Array [],
+                          "regularAndHolidayHours": Array [],
+                          "regularHours": Array [
+                            Object {
+                              "dayName": "MONDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-06 10:00:00",
+                                  "toHour": "2019-05-06 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "TUESDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-07 10:00:00",
+                                  "toHour": "2019-05-07 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "WEDNESDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-08 10:00:00",
+                                  "toHour": "2019-05-08 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "THURSDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-09 10:00:00",
+                                  "toHour": "2019-05-09 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "FRIDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-10 10:00:00",
+                                  "toHour": "2019-05-10 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "SATURDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-11 10:00:00",
+                                  "toHour": "2019-05-11 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "MOTHER'S DAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-12 11:00:00",
+                                  "toHour": "2019-05-12 18:00:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "MONDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-13 10:00:00",
+                                  "toHour": "2019-05-13 21:30:00",
+                                },
+                              ],
+                            },
+                            Object {
+                              "dayName": "TUESDAY",
+                              "isClosed": false,
+                              "openIntervals": Array [
+                                Object {
+                                  "fromHour": "2019-05-14 10:00:00",
+                                  "toHour": "2019-05-14 21:30:00",
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                        "pickupType": Object {
+                          "isStoreBopisSelected": true,
+                          "isStoreBossSelected": true,
+                        },
+                        "productAvailability": Object {},
+                        "storeBossInfo": Object {
+                          "endDate": undefined,
+                          "isBossEligible": "0",
+                          "startDate": undefined,
+                        },
+                      },
+                    ]
+                  }
+                />
+              </Styled(Col)>
+            </Styled(Row)>
+          </Styled(Col)>
+          <Styled(Col)
+            className="storeList__map"
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 4,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(Row)
+              fullBleed={true}
+            />
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="mapView__desktop"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <StoreStaticMap
+          centeredStoreId=""
+          defaultZoom=""
+          favoriteStore={
+            Object {
+              "basicInfo": Object {
+                "address": Object {
+                  "addressLine1": "9593 carousel center",
+                  "city": "syracuse",
+                  "country": "US ",
+                  "state": "NY",
+                  "zipCode": "13290",
+                },
+                "coordinates": Object {
+                  "lat": 43.0683,
+                  "long": -76.1703,
+                },
+                "id": "110685",
+                "isDefault": "0",
+                "phone": "(315) 466-3703",
+                "storeName": "destiny usa",
+              },
+              "distance": "19.09",
+              "features": Object {
+                "entranceType": undefined,
+                "mallType": undefined,
+                "storeType": "Retail Store",
+              },
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-06 10:00:00",
+                        "toHour": "2019-05-06 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-07 10:00:00",
+                        "toHour": "2019-05-07 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "WEDNESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-08 10:00:00",
+                        "toHour": "2019-05-08 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "THURSDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-09 10:00:00",
+                        "toHour": "2019-05-09 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "FRIDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-10 10:00:00",
+                        "toHour": "2019-05-10 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "SATURDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-11 10:00:00",
+                        "toHour": "2019-05-11 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MOTHER'S DAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-12 11:00:00",
+                        "toHour": "2019-05-12 18:00:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "MONDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-13 10:00:00",
+                        "toHour": "2019-05-13 21:30:00",
+                      },
+                    ],
+                  },
+                  Object {
+                    "dayName": "TUESDAY",
+                    "isClosed": false,
+                    "openIntervals": Array [
+                      Object {
+                        "fromHour": "2019-05-14 10:00:00",
+                        "toHour": "2019-05-14 21:30:00",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "pickupType": Object {
+                "isStoreBopisSelected": true,
+                "isStoreBossSelected": true,
+              },
+              "productAvailability": Object {},
+              "storeBossInfo": Object {
+                "endDate": undefined,
+                "isBossEligible": "0",
+                "startDate": undefined,
+              },
+            }
+          }
+          fetchCurrentStore={[MockFunction]}
+          fetchStoresByLatLng={[MockFunction]}
+          geoLocationEnabled={false}
+          isCanada={false}
+          isMobile={false}
+          searchDone={false}
+          storesList={Array []}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</Fragment>
 `;

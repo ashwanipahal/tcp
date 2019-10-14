@@ -21,6 +21,7 @@ export const EarnExtraPointsOverview = ({ labels, handleComponentChange }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       <BodyCopy
