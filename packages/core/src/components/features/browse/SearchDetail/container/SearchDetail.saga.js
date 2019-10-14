@@ -52,7 +52,7 @@ export function* fetchSlpProducts({ payload }) {
   }
 }
 
-export function* fetchMoreProducts({ payload }) {
+export function* fetchMoreProducts({ payload = {} }) {
   try {
     const { url } = payload;
     const state = yield select();

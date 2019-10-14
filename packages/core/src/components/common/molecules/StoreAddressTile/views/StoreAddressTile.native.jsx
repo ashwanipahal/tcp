@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
-import { toTimeString, getLabelValue } from '@tcp/core/src/utils';
-import { parseDate } from '@tcp/core/src/utils/parseDate';
+import { getLabelValue, capitalize } from '@tcp/core/src/utils';
+import { getStoreHours } from '@tcp/core/src/utils/utils';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -31,6 +31,7 @@ import StoreAddressTileRoot, {
   brandImageStyles,
   markerImageStyles,
   favStoreIconStyles,
+  BtnFullWidth,
 } from '../styles/StoreAddressTile.style.native';
 import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
 
@@ -38,6 +39,7 @@ const ListingTitleLink = withStyles(Anchor, headerLinkStyle);
 const BrandImage = withStyles(Image, brandImageStyles);
 const MarkerImage = withStyles(Image, markerImageStyles);
 const FavStoreIcon = withStyles(Image, favStoreIconStyles);
+const BtnWrapper = withStyles(Button, BtnFullWidth);
 
 class StoreAddressTile extends PureComponent {
   getDetailsHeader() {
@@ -52,12 +54,13 @@ class StoreAddressTile extends PureComponent {
   getListingHeader() {
     const {
       storeIndex,
-      store: { basicInfo, distance },
+      store: { basicInfo, distance, hours },
       labels,
       openStoreDirections,
       titleClickCb,
     } = this.props;
     const { storeName, id } = basicInfo;
+    const currentDate = new Date();
     return (
       <Fragment>
         <ListingTileWrapper>
@@ -76,9 +79,7 @@ class StoreAddressTile extends PureComponent {
           )}
         </ListingTileWrapper>
         <ListingTileWrapper>
-          <ListingTitleText>
-            {`(${getLabelValue(labels, 'lbl_storelanding_openInterval')} ${this.getStoreHours()})`}
-          </ListingTitleText>
+          <ListingTitleText>{getStoreHours(hours, labels, currentDate)}</ListingTitleText>
           <ListingTitleText>
             {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
           </ListingTitleText>
@@ -106,7 +107,7 @@ class StoreAddressTile extends PureComponent {
     return (
       <View>
         <FooterBtnWrapper>
-          <Button
+          <BtnWrapper
             fill="BLUE"
             type="submit"
             color="white"
@@ -119,14 +120,14 @@ class StoreAddressTile extends PureComponent {
         </FooterBtnWrapper>
         <FooterBtnWrapper>
           <FooterBtnLeft>
-            <Button
+            <BtnWrapper
               type="button"
               onPress={openStoreDirections}
               text={getLabelValue(labels, 'lbl_storedetails_getdirections_btn')}
             />
           </FooterBtnLeft>
           <FooterBtnRight>
-            <Button
+            <BtnWrapper
               type="button"
               onPress={openCallStore}
               text={getLabelValue(labels, 'lbl_storedetails_callstore_btn')}
@@ -163,48 +164,12 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  getStoreHours() {
-    const {
-      store: { hours },
-    } = this.props;
-    const todaysDate = new Date();
-    const { regularHours, holidayHours, regularAndHolidayHours } = hours;
-    const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
-    let selectedInterval = intervals.filter(hour => {
-      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-      const parsedDate = new Date(toInterval);
-      return (
-        parsedDate.getDate() === todaysDate.getDate() &&
-        parsedDate.getMonth() === todaysDate.getMonth() &&
-        parsedDate.getFullYear() === todaysDate.getFullYear()
-      );
-    });
-    // Fallback for Date and month not matching.
-    // We check day and year instead.
-    if (!selectedInterval.length) {
-      selectedInterval = intervals.filter(hour => {
-        const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-        const parsedDate = new Date(toInterval);
-        return (
-          parsedDate.getDay() === todaysDate.getDay() &&
-          parsedDate.getFullYear() === todaysDate.getFullYear()
-        );
-      });
-    }
-    try {
-      return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
-    } catch (err) {
-      // Show empty incase no data found.
-      return '';
-    }
-  }
-
   getStoreAddress() {
     const { store } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     return [addressLine1, `${city}, ${state}, ${zipCode}`, phone].map((item, i) => (
-      <AddressText key={`${item + i}`}>{item}</AddressText>
+      <AddressText key={`${item + i}`}>{item && capitalize(item)}</AddressText>
     ));
   }
 
@@ -225,7 +190,6 @@ class StoreAddressTile extends PureComponent {
 
   getStoreType() {
     const {
-      labels,
       store: { features },
     } = this.props;
     const { storeType } = features;
@@ -233,9 +197,7 @@ class StoreAddressTile extends PureComponent {
       storeType && (
         <StoryType>
           <MarkerImage source={marker} accessibilityLabel="Icon Marker" accessibilityRole="image" />
-          <ListingTitleText>
-            {getLabelValue(labels, 'lbl_storelanding_atThisPlace')}
-          </ListingTitleText>
+          <ListingTitleText>{storeType}</ListingTitleText>
         </StoryType>
       )
     );

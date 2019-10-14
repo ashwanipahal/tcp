@@ -33,6 +33,7 @@ class QuickViewModal extends React.Component {
       ? colorFitsSizesMap.filter(item => item.colorDisplayId === selectedColorProductId)
       : colorFitsSizesMap;
     const { fromBagPage } = otherProps;
+
     return (
       <Modal
         isOpen={isModalOpen}

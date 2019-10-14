@@ -55,6 +55,13 @@ class AccountOverview extends PureComponent<Props> {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.isUserLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
     if (getComponentId.login || getComponentId.favorites) {
@@ -66,7 +73,6 @@ class AccountOverview extends PureComponent<Props> {
           variation={getComponentId.favorites && 'favorites'}
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
-          resetAccountOverViewState={this.resetAccountOverViewState}
         />
       );
     }

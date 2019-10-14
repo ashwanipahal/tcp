@@ -74,7 +74,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text email-sign-up"
@@ -119,7 +119,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text sms_sign_up"
@@ -178,7 +178,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   }}
                 >
                   <BodyCopy
-                    component="div"
+                    component="h2"
                     fontWeight="black"
                     fontSize="fs15"
                     className="heading_text refer-a-friend"
