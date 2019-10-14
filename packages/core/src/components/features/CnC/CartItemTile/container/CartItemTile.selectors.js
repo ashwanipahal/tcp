@@ -102,6 +102,26 @@ export const getProductAvailability = product => {
   return product.getIn(['miscInfo', 'availability']);
 };
 
+export const getIsBossEligible = product => {
+  return product.getIn(['miscInfo', 'isBossEligible']);
+};
+
+export const getIsBopisEligible = product => {
+  return product.getIn(['miscInfo', 'isBopisEligible']);
+};
+
+export const getIsOnlineOnly = product => {
+  return product.getIn(['miscInfo', 'isOnlineOnly']);
+};
+
+export const getClearanceItem = product => {
+  return product.getIn(['miscInfo', 'clearanceItem']);
+};
+
+export const getIsInventoryAvailBOSS = product => {
+  return product.getIn(['miscInfo', 'isInventoryAvailBOSS']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -310,6 +330,11 @@ export const getProductDetails = tile => {
       bossStartDate: getBossStartDate(tile),
       bossEndDate: getBossEndDate(tile),
       availability: getProductAvailability(tile),
+      isBossEligible: getIsBossEligible(tile),
+      isBopisEligible: getIsBopisEligible(tile),
+      isOnlineOnly: getIsOnlineOnly(tile),
+      clearanceItem: getClearanceItem(tile),
+      isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
     },
   };
 };

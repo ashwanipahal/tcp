@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  validateBossEligibility,
+  validateBopisEligibility,
+} from '@tcp/core/src/components/common/organisms/ProductPickup/util';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
@@ -12,6 +16,7 @@ import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -166,7 +171,7 @@ class CartItemTile extends React.Component {
     if (isEdit) return null;
     if (
       !isBagPageSflSection &&
-      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK &&
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.OK &&
       isShowSaveForLater
     ) {
       return (
@@ -187,7 +192,7 @@ class CartItemTile extends React.Component {
     }
     if (
       isBagPageSflSection &&
-      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_OK
+      productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.OK
     ) {
       return (
         <BodyCopy
@@ -579,11 +584,121 @@ class CartItemTile extends React.Component {
     );
   };
 
+  getAvailability = (isBopisEnabled, isBossEnabled) => {
+    const {
+      productDetail: {
+        miscInfo: { orderItemType, availability },
+      },
+    } = this.props;
+    const isBossAvailable = orderItemType === CONSTANTS.ORDER_ITEM_TYPE.BOSS && !isBossEnabled;
+    const isBopisAvailable = orderItemType === CONSTANTS.ORDER_ITEM_TYPE.BOPIS && !isBopisEnabled;
+    return isBossAvailable || isBopisAvailable
+      ? CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE
+      : availability;
+  };
+
+  noBossBopisMessage = () => {
+    const {
+      productDetail: {
+        miscInfo: { isOnlineOnly, clearanceItem },
+      },
+      isBopisClearanceProductEnabled,
+      isBossClearanceProductEnabled,
+    } = this.props;
+
+    let noBopisMessage = null;
+    let noBossMessage = null;
+
+    // BOPIS online only check
+    if (isOnlineOnly) {
+      noBopisMessage = 'Not available (Online Only)';
+    } else if (clearanceItem && !isBopisClearanceProductEnabled) {
+      // BOPIS clearance check
+      noBopisMessage = 'Not available (Clearance Item)';
+    }
+
+    // BOSS clearance check
+    if (clearanceItem && !isBossClearanceProductEnabled) {
+      noBossMessage = 'Not available (Clearance Item)';
+    }
+
+    return { noBopisMessage, noBossMessage };
+  };
+
+  isEcomOrder = orderType => orderType === CONSTANTS.ORDER_ITEM_TYPE.ECOM;
+
+  isBopisOrder = orderType => orderType === CONSTANTS.ORDER_ITEM_TYPE.BOPIS;
+
+  isBossOrder = orderType => orderType === CONSTANTS.ORDER_ITEM_TYPE.BOSS;
+
+  checkBossBopisDisabled = (isBossEnabled, isBopisEnabled, isEcomSoldout) => {
+    const {
+      productDetail: {
+        miscInfo: { isOnlineOnly },
+      },
+      productDetail: { miscInfo },
+      isBopisClearanceProductEnabled,
+      isBossClearanceProductEnabled,
+      isRadialInventoryEnabled,
+    } = this.props;
+
+    const bossDisabled =
+      !validateBossEligibility({
+        isBossClearanceProductEnabled,
+        isBossEnabled,
+        miscInfo,
+      }) || (isRadialInventoryEnabled ? !miscInfo.isInventoryAvailBOSS : isEcomSoldout);
+
+    const bopisDisabled =
+      !validateBopisEligibility({
+        isBopisClearanceProductEnabled,
+        isBopisEnabled,
+        miscInfo,
+      }) ||
+      isOnlineOnly ||
+      isEcomSoldout;
+
+    return { bossDisabled, bopisDisabled };
+  };
+
+  showRadioButtons = (isBossEnabled, isBopisEnabled, store) => {
+    console.log('in showRadioButtons', isBossEnabled, isBopisEnabled, store);
+    return isBossEnabled || isBopisEnabled || store;
+  };
+
+  isSoldOut = availability => availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT;
+
+  isNotAvailable = availability => availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK;
+
+  isUnAvailable = availability => availability === CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE;
+
+  isReqQtyUnAvailable = availability =>
+    availability === CARTPAGE_CONSTANTS.AVAILABILITY.REQ_QTY_UNAVAILABLE;
+
+  isBossInEligibleAvailablity = availability =>
+    availability === CARTPAGE_CONSTANTS.AVAILABILITY.BOSSINELIGIBLE;
+
+  getBossBopisFlags = brand => {
+    const {
+      [`isBossEnabled${brand}`]: isBossEnabled,
+      [`isBopisEnabled${brand}`]: isBopisEnabled,
+    } = this.props;
+
+    return {
+      isBossEnabled,
+      isBopisEnabled,
+    };
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
     const {
       productDetail,
+      productDetail: {
+        miscInfo: { store, orderItemType },
+        itemInfo: { itemBrand },
+      },
       labels,
       editableProductInfo,
       className,
@@ -592,6 +707,47 @@ class CartItemTile extends React.Component {
       isBagPageSflSection,
       showOnReviewPage,
     } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = this.getBossBopisFlags(itemBrand);
+    console.log(
+      'isBossEnabled',
+      isBossEnabled,
+      'isBopisEnabled',
+      isBopisEnabled,
+      'itemBrand',
+      itemBrand
+    );
+    const availability = this.getAvailability(isBossEnabled, isBopisEnabled);
+    const isECOMOrder = this.isEcomOrder(orderItemType);
+    const isBOPISOrder = this.isBopisOrder(orderItemType);
+    const isBOSSOrder = this.isBossOrder(orderItemType);
+    const isEcomSoldout = this.isSoldOut(availability);
+
+    const { noBopisMessage, noBossMessage } = this.noBossBopisMessage();
+    const { bossDisabled, bopisDisabled } = this.checkBossBopisDisabled();
+
+    console.log(
+      'isBossEnabled',
+      isBossEnabled,
+      'isBopisEnabled',
+      isBopisEnabled,
+      'bossDisabled',
+      bossDisabled,
+      'bopisDisabled',
+      bopisDisabled,
+      'isECOMOrder',
+      isECOMOrder,
+      'isBOPISOrder',
+      isBOPISOrder,
+      'isBOSSOrder',
+      isBOSSOrder,
+      'isEcomSoldout',
+      isEcomSoldout,
+      'noBopisMessage',
+      noBopisMessage,
+      'noBossMessage',
+      noBossMessage
+    );
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
       Fit: productDetail.itemInfo.fit,
@@ -751,12 +907,23 @@ class CartItemTile extends React.Component {
         {showOnReviewPage &&
           !isBagPageSflSection &&
           pageView === 'myBag' &&
-          productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
+          this.showRadioButtons(isBossEnabled, isBopisEnabled, store) && (
             <Row fullBleed>
               <CartItemRadioButtons
                 className="cart-item-radio-buttons"
                 productDetail={productDetail}
                 labels={labels}
+                isNotAvailable={this.isNotAvailable(availability)}
+                isEcomSoldout={isEcomSoldout}
+                isECOMOrder={isECOMOrder}
+                isBOSSOrder={isBOSSOrder}
+                isBOPISOrder={isBOPISOrder}
+                noBopisMessage={noBopisMessage}
+                noBossMessage={noBossMessage}
+                bossDisabled={bossDisabled}
+                bopisDisabled={bopisDisabled}
+                isBossEnabled={isBossEnabled}
+                isBopisEnabled={isBopisEnabled}
               />
             </Row>
           )}
@@ -773,6 +940,9 @@ CartItemTile.defaultProps = {
   isBagPageSflSection: false,
   showOnReviewPage: true,
   onQuickViewOpenClick: () => {},
+  isBossClearanceProductEnabled: false,
+  isBopisClearanceProductEnabled: false,
+  isRadialInventoryEnabled: false,
 };
 
 CartItemTile.propTypes = {
@@ -800,6 +970,9 @@ CartItemTile.propTypes = {
   startSflDataMoveToBag: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   currencySymbol: PropTypes.string.isRequired,
+  isBossClearanceProductEnabled: PropTypes.bool,
+  isBopisClearanceProductEnabled: PropTypes.bool,
+  isRadialInventoryEnabled: PropTypes.bool,
 };
 
 export default withStyles(CartItemTile, styles);

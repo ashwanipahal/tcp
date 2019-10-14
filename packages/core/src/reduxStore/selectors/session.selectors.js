@@ -56,6 +56,20 @@ export const getIsBopisEnabled = (state, brand = getBrand()) => {
   );
 };
 
+export const getIsBossClearanceProductEnabled = state => {
+  return !!(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOSS_ENABLED_CLEARANCE_PRODUCTS'])
+  );
+};
+
+export const getIsBopisClearanceProductEnabled = state => {
+  return !!(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOPIS_ENABLED_CLEARANCE_PRODUCTS'])
+  );
+};
+
 export const getCurrentCurrency = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&

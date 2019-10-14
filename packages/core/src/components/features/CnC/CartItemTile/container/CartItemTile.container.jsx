@@ -2,6 +2,13 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  getIsBossEnabled,
+  getIsBopisEnabled,
+  getIsBossClearanceProductEnabled,
+  getIsBopisClearanceProductEnabled,
+  getIsRadialInventoryEnabled,
+} from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import { removeCartItem, updateCartItem, getProductSKUInfo } from './CartItemTile.actions';
@@ -58,6 +65,13 @@ export const CartItemTileContainer = ({
   startSflDataMoveToBag,
   currencySymbol,
   onQuickViewOpenClick,
+  isBossEnabledTCP,
+  isBossEnabledGYM,
+  isBopisEnabledTCP,
+  isBopisEnabledGYM,
+  isBossClearanceProductEnabled,
+  isBopisClearanceProductEnabled,
+  isRadialInventoryEnabled,
 }) => (
   <CartItemTile
     labels={labels}
@@ -88,6 +102,13 @@ export const CartItemTileContainer = ({
     startSflDataMoveToBag={startSflDataMoveToBag}
     currencySymbol={currencySymbol}
     onQuickViewOpenClick={onQuickViewOpenClick}
+    isBossEnabledTCP={isBossEnabledTCP}
+    isBossEnabledGYM={isBossEnabledGYM}
+    isBopisEnabledTCP={isBopisEnabledTCP}
+    isBopisEnabledGYM={isBopisEnabledGYM}
+    isBossClearanceProductEnabled={isBossClearanceProductEnabled}
+    isBopisClearanceProductEnabled={isBopisClearanceProductEnabled}
+    isRadialInventoryEnabled={isRadialInventoryEnabled}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -129,6 +150,13 @@ export function mapStateToProps(state) {
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
+    isBossEnabledTCP: getIsBossEnabled(state, 'TCP'),
+    isBossEnabledGYM: getIsBossEnabled(state, 'GYM'),
+    isBopisEnabledTCP: getIsBopisEnabled(state, 'TCP'),
+    isBopisEnabledGYM: getIsBopisEnabled(state, 'GYM'),
+    isBossClearanceProductEnabled: getIsBossClearanceProductEnabled(state),
+    isBopisClearanceProductEnabled: getIsBopisClearanceProductEnabled(state),
+    isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),
   };
 }
 

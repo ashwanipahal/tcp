@@ -5,6 +5,7 @@
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
+
 import {
   parseBoolean,
   extractPrioritizedBadge,
@@ -16,7 +17,8 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
-import { isCanada } from '../../../utils';
+import { isCanada as isCASite } from '../../../utils';
+import CARTITEMTILE_CONSTANTS from '../../../components/features/CnC/CartItemTile/CartItemTile.constants';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -25,10 +27,7 @@ export const ORDER_ITEM_TYPE = {
 };
 
 export const AVAILABILITY = {
-  OK: 'OK',
-  SOLDOUT: 'SOLDOUT',
-  UNAVAILABLE: 'UNAVAILABLE',
-  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+  ...CARTITEMTILE_CONSTANTS.AVAILABILITY,
 };
 
 export const COUPON_STATUS = {
@@ -221,7 +220,12 @@ export const constructCouponStructure = cpnArray => {
   return coupons;
 };
 
-export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems, isCanada) => {
+export const getCurrentOrderFormatter = (
+  orderDetailsResponse,
+  excludeCartItems,
+  isCanada,
+  isRadialInvEnabled
+) => {
   const EMPTY_OBJECT = Object.create(null);
   let pickUpContact = {};
   let pickUpAlternative = {};
@@ -541,7 +545,7 @@ tomorrowClosingTime
           colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : EMPTY_OBJECT,
           // added to read type of order for the item
           orderType: item.orderItemType,
-          itemBrand: item.itemBrand,
+          itemBrand: item.itemBrand || 'TCP',
         },
         itemInfo: {
           quantity: parseInt(item.qty),
@@ -560,13 +564,16 @@ tomorrowClosingTime
             : flatCurrencyToCents(item.productInfo.offerPrice),
         },
         miscInfo: {
-          // clearanceItem: this.apiHelper.configOptions.isUSStore ? item.productInfo.itemTCPProductIndUSStore === 'Clearance' : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
-          isOnlineOnly: true
+          clearanceItem: !isCASite()
+            ? item.productInfo.itemTCPProductIndUSStore === 'Clearance'
+            : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
+          isOnlineOnly: !isCASite()
             ? Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))
             : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)),
           isBopisEligible: !parseBoolean(orderDetailsResponse.bopisIntlField),
           isBossEligible: deriveBossEligiblity(item, orderDetailsResponse),
           badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
+          isInventoryAvailBOSS: item.inventoryAvailBOSS > 0,
           // onlineInventoryAvailable: item.inventoryAvail,
 
           // TODO: cleanup structure
@@ -588,7 +595,12 @@ tomorrowClosingTime
           // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
           // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(
+            orderDetailsResponse,
+            item,
+            store,
+            isRadialInvEnabled
+          ),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -675,6 +687,7 @@ export const getCartData = ({
   recalcRewards,
   isCanada,
   isCheckoutFlow,
+  isRadialInvEnabled,
 }) => {
   const payload = {
     webService: endpoints.fullDetails,
@@ -702,7 +715,12 @@ export const getCartData = ({
         constructCouponStructure(res.body.coupons.offers);
     return {
       coupons,
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
+      orderDetails: getCurrentOrderFormatter(
+        orderDetailsResponse,
+        excludeCartItems,
+        isCanada,
+        isRadialInvEnabled
+      ),
     };
   });
 };
@@ -756,30 +774,59 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
-export const deriveItemAvailability = (orderDetails, item, store) => {
+const deriveBossInventoryMismatch = item => {
+  //RAD-88/86 qty - requested quantity,inventoryAvailBOSS - available quantity at FFMC
+  return item.qty > item.inventoryAvailBOSS;
+};
+
+export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEnabled) => {
   const isUsOrder = orderDetails.currencyCode === 'USD';
   const isCaOrder = orderDetails.currencyCode !== 'USD';
-  const isStoreBOSSEligible = true;
+
   if (
     (isUsOrder && item.productInfo.articleOOSUS) ||
     (isCaOrder && item.productInfo.articleOOSCA)
   ) {
     return AVAILABILITY.SOLDOUT;
+    // replaced "BOPIS" with a config variable
   } else if (
     item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
     item.stLocId &&
     !parseBoolean(orderDetails.bopisIntlField)
   ) {
     return AVAILABILITY.OK;
-  } else if (
-    item.orderItemType === ORDER_ITEM_TYPE.BOSS &&
-    item.stLocId &&
-    (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
-  ) {
+  } else if (item.orderItemType === ORDER_ITEM_TYPE.BOSS && item.stLocId) {
+    const isStoreBOSSEligible = store
+      ? parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible)
+      : true;
     /**
-     * Adding new check to return status unavailable
-     * in case of boss store ineligible or boss international order
+     * Adding new check to return status unavailable in case of:
+     * 1. international order - exisiting
+     * 2. boss store ineligible - exisiting
+     * 3. boss item inventory zero - added with RAD-88/RAD-86
+     * 4. boss item inventory mismatch(requested qty > avail qty) - added with RAD-88/RAD-86
+     * 5. boss product ineligible -  added with RAD-88/RAD-86
+     * returning respective updated Error copies(RAD-86)
      */
+    if (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible) {
+      return AVAILABILITY.UNAVAILABLE;
+    } else if (isRadialInvEnabled) {
+      const isProductBossEligible = deriveBossEligiblity(item, orderDetails); //product ineligibility added as part of RAD-88, not present earlier in production
+
+      if (item.inventoryAvailBOSS <= 0) {
+        return AVAILABILITY.UNAVAILABLE;
+      } else if (deriveBossInventoryMismatch(item)) {
+        return AVAILABILITY.REQ_QTY_UNAVAILABLE;
+      } else if (!isProductBossEligible) {
+        return AVAILABILITY.BOSSINELIGIBLE;
+      }
+
+      return AVAILABILITY.OK;
+    } else if (item.inventoryAvail > 0) {
+      return AVAILABILITY.OK;
+    }
+    return AVAILABILITY.UNAVAILABLE;
+  } else if (item.qty > item.inventoryAvail) {
     return AVAILABILITY.UNAVAILABLE;
   } else if (item.inventoryAvail > 0) {
     // inventory check for BOSS and ECOM
@@ -793,7 +840,7 @@ export const getUnqualifiedItems = () => {
   let payload = {
     webService: endpoints.getUnqualifiedItems,
   };
-  const isCanadaSite = isCanada();
+  const isCanadaSite = isCASite();
 
   return executeStatefulAPICall(payload)
     .then((res = { body: {} }) => {
