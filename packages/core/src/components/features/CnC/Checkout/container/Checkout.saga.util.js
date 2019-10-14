@@ -62,10 +62,10 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
           fromPage: '',
         },
       },
-      true // add to address book inside redux-store
+      false // add to address book inside redux-store
     );
+    addOrEditAddressResponse = { payload: { addressId: addOrEditAddressResponse.body.addressId } };
   }
-
   return addOrEditAddressResponse;
   // }
 }
