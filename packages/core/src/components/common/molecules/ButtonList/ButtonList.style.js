@@ -143,7 +143,7 @@ export default css`
     padding-bottom: 16px;
     .stacked-button {
       width: 100%;
-      margin-left: 9px;
+      margin-left: 30px;
       :first-child {
         margin-left: 0;
       }
@@ -204,6 +204,10 @@ export default css`
     .stacked-cta-wrapper-class {
       width: 100%;
       height: 100%;
+      padding-top: 16px;
+      padding-right: 20px;
+      padding-bottom: 16px;
+      padding-left: 20px;
     }
 
     &.scroll-button-list-wrapper,
