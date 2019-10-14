@@ -22,6 +22,8 @@ describe('Shipping Page', () => {
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
       userAddresses: List(),
+      addressLabels: {},
+      verifyAddressAction: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -39,6 +41,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -56,6 +59,7 @@ describe('Shipping Page', () => {
         },
       ]),
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -82,6 +86,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -99,6 +104,7 @@ describe('Shipping Page', () => {
       ]),
       addEditResponseAddressId: '34789',
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -123,6 +129,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -155,6 +162,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
       selectedShipmentId: '334',
