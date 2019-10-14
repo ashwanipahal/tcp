@@ -1,4 +1,16 @@
 import styled from 'styled-components/native';
+import { isGymboree } from '@tcp/core/src/utils';
+
+const setBackground = props => {
+  if (isGymboree()) {
+    return `
+    background: ${props.theme.colorPalette.orange[700]};
+    `;
+  }
+  return `
+  background: ${props.theme.colorPalette.blue[800]};
+  `;
+};
 
 export const SafeAreaViewStyle = styled.SafeAreaView`
   background: ${props => props.theme.colorPalette.white};
@@ -52,6 +64,7 @@ export const BackgroundView = styled.View`
 `;
 
 export const RoundView = styled.View`
+  ${setBackground}
   background-color: ${props => props.theme.colorPalette.primary.dark};
   width: 20px;
   height: 20px;

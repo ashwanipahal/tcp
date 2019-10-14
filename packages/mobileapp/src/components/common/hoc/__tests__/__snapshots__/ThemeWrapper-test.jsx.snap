@@ -77,7 +77,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "500": "#df4b9a",
         },
         "primary": Object {
-          "dark": "#254f6e",
+          "dark": "#3c7fb0",
           "light": "#93c5ea",
           "main": "#4b9fdd",
         },
