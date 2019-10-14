@@ -7,7 +7,6 @@ import config from '../moduleT.config';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import ButtonList from '../../ButtonList';
-import { getScreenWidth } from '../../../../../utils/utils.app';
 import {
   Container,
   PromoContainer,
@@ -18,6 +17,7 @@ import {
   ButtonContainer,
   ButtonLinksContainer,
   Border,
+  ImageWrapper,
 } from '../ModuleT.style.native';
 
 // TODO: keys will be changed once we get the actual data from CMS
@@ -26,7 +26,7 @@ const { IMG_DATA, ctaTypes } = config;
 /**
  * These are button width.
  */
-const buttonWidth = getScreenWidth() / 2 - 14;
+const buttonWidth = 164;
 
 /**
  * @param {object} props : Props for Module T multi type of banner list, button list, header text.
@@ -112,16 +112,18 @@ class ModuleT extends React.PureComponent {
       <ImageContainer>
         {mediaLinkedList.map(({ image, link }, index) => {
           return (
-            <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
-              <DamImage
-                url={image && image.url}
-                height="202px"
-                width={`${buttonWidth}px`}
-                testID={`${getLocator('moduleT_product_img')}${index}`}
-                alt={image && image.alt}
-                imgConfig={IMG_DATA.promoImgConfig[0]}
-              />
-            </Anchor>
+            <ImageWrapper>
+              <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+                <DamImage
+                  url={image && image.url}
+                  height="202px"
+                  width={`${buttonWidth}px`}
+                  testID={`${getLocator('moduleT_product_img')}${index}`}
+                  alt={image && image.alt}
+                  imgConfig={IMG_DATA.promoImgConfig[0]}
+                />
+              </Anchor>
+            </ImageWrapper>
           );
         })}
       </ImageContainer>

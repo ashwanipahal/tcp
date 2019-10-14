@@ -394,7 +394,7 @@ const MediumTextRegular = props => {
       fontSize="fs20"
       color="gray.900"
       mobilefontFamily="primary"
-      fontWeight="regular"
+      fontWeight="semibold"
       textAlign="center"
       letterSpacing="ls2"
       lineHeight="20px"
