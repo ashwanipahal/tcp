@@ -74,6 +74,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="black"
+                id="Y00105578"
                 letterSpacing="normal"
                 lineHeight="lh115"
                 link={null}
@@ -99,6 +100,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             </Styled(BodyCopy)>
             <Styled(Anchor)
               anchorVariation="primary"
+              aria-labelledby="Y00105578"
               className="cartDetailsLink"
               dataLocator="coupon_available_cartDetailsLink"
               fontSize="fs10"
@@ -112,6 +114,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             className="couponCard__col"
           >
             <Styled(Button)
+              aria-labelledby="Y00105578"
               buttonVariation="variable-width"
               className="coupon__button_black"
               data-locator="coupon_available_apply_cartCta"

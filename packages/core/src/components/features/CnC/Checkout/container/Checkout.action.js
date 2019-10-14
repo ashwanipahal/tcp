@@ -333,6 +333,13 @@ export const resetGiftCardError = () => {
   };
 };
 
+export const setShippingLoadingState = isLoading => {
+  return {
+    type: constants.CHECKOUT_VALUES_SET_SHIPPING_LOADING,
+    isLoading,
+  };
+};
+
 export const setOrderBalanceTotal = payload => {
   return {
     type: constants.SET_ORDER_TOTAL,
