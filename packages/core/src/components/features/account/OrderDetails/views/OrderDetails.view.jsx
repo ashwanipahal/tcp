@@ -77,7 +77,10 @@ class OrderDetailsView extends PureComponent {
                     />
                   </Col>
                   <Col colSize={{ large: 7, medium: 8, small: 6 }}>
-                    <OrderSummaryDetails orderSummaryData={summary} ordersLabels={ordersLabels} />
+                    <OrderSummaryDetails
+                      orderDetailsData={orderDetailsData}
+                      ordersLabels={ordersLabels}
+                    />
                   </Col>
                 </Row>
               </Col>

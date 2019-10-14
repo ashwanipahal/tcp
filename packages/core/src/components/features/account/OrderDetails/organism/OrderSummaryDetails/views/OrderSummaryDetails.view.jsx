@@ -10,7 +10,26 @@ import styles from '../styles/OrderSummaryDetails.style';
  * @param ordersLabels - ordersLabels object used for showing Orders Labels
  */
 
-const OrderSummaryDetails = ({ className, ordersLabels, orderSummaryData }) => {
+const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
+  const { summary } = orderDetailsData || {};
+  const {
+    // canceledItem,
+    couponsTotal,
+    currencySymbol,
+    grandTotal,
+    purchasedItems,
+    // returnedItems,
+    // returnedTotal,
+    // shippedItems,
+    shippingTotal,
+    subTotal,
+    // totalItems,
+    totalTax,
+  } = summary || {};
+  const shippingValue =
+    shippingTotal > 0
+      ? `${currencySymbol}${shippingTotal.toFixed(2)}`
+      : getLabelValue(ordersLabels, 'lbl_orders_free');
   /**
    * @function return  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -25,69 +44,69 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderSummaryData }) => {
             {getLabelValue(ordersLabels, 'lbl_orderDetails_orderSummary')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 5, medium: 3, small: 3 }}>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
           <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
-            Total
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="items-total row-margin">
-        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`Items (1):`}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 6, medium: 3, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {`${orderSummaryData.currencySymbol}420`}
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="items-total row-margin">
-        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            Coupons & Promotions
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 6, medium: 3, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            %110.00
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="items-total row-margin">
-        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 6, medium: 3, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            FREE
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="items-total row-margin">
-        <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            tax:
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 6, medium: 3, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            $0.00
+            {getLabelValue(ordersLabels, 'lbl_orders_items')}
           </BodyCopy>
         </Col>
       </Row>
       <Row className="row-margin">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
-          <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-            Total
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
+            {`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 5, medium: 3, small: 3 }}>
-          <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
-            $0.0
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+            {`${currencySymbol}${subTotal.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="row-margin">
+        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
+            {getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+            {`${currencySymbol}${couponsTotal.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="row-margin">
+        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
+            {`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+            {shippingValue}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="items-total row-margin">
+        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
+            {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+            {`${currencySymbol}${totalTax.toFixed(2)}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="row-margin total-value">
+        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+          <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary">
+            {`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
+            {`${currencySymbol}${grandTotal.toFixed(2)}`}
           </BodyCopy>
         </Col>
       </Row>
@@ -99,7 +118,7 @@ OrderSummaryDetails.propTypes = {
   ordersLabels: PropTypes.shape({
     lbl_orderDetails_orderSummary: PropTypes.string,
   }),
-  orderSummaryData: PropTypes.shape({}),
+  orderDetailsData: PropTypes.shape({}),
 };
 
 OrderSummaryDetails.defaultProps = {
@@ -107,7 +126,7 @@ OrderSummaryDetails.defaultProps = {
   ordersLabels: {
     lbl_orderDetails_orderSummary: '',
   },
-  orderSummaryData: {},
+  orderDetailsData: {},
 };
 
 export default withStyles(OrderSummaryDetails, styles);

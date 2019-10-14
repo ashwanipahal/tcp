@@ -40,7 +40,7 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
       <BodyCopy component="div" className="card-details">
         <Image src={getIconPath(cardIconMapping[card.cardType])} className="elem-mr-XS" />
         <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-          {`ending in ${card.endingNumbers.slice(-4)}`}
+          {`${getLabelValue(ordersLabels, 'lbl_orders_ending')} in ${card.endingNumbers.slice(-4)}`}
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
