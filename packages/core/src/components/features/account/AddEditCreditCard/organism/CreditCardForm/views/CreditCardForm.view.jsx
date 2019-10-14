@@ -194,6 +194,7 @@ export class CreditCardForm extends React.PureComponent {
                 medium: 4,
                 small: 6,
               }}
+              className="addressContainer"
             >
               {onFileAddressKey && (
                 <Address
@@ -202,6 +203,7 @@ export class CreditCardForm extends React.PureComponent {
                   showPhone={false}
                   className="CreditCardForm__address"
                   dataLocatorPrefix="payment"
+                  singleLineAddress
                 />
               )}
             </Col>
