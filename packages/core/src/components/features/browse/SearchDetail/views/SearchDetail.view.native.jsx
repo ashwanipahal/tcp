@@ -4,6 +4,8 @@ import { BodyCopy } from '../../../../common/atoms/index.native';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import { styles, PageContainer, Container } from '../SearchDetail.style.native';
 import ProductListing from '../../ProductListing/views';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class SearchDetail extends React.PureComponent {
   listRef;
@@ -13,7 +15,8 @@ class SearchDetail extends React.PureComponent {
   };
 
   renderSearchTopSection = () => {
-    const { searchedText, slpLabels } = this.props;
+    const { slpLabels, navigation } = this.props;
+    const searchedText = navigation && navigation.getParam('title');
     if (searchedText !== undefined) {
       return (
         <Container margins="0 12px 0 12px">
@@ -53,6 +56,7 @@ class SearchDetail extends React.PureComponent {
       sortLabels,
       ...otherProps
     } = this.props;
+
     return (
       <PageContainer>
         {this.renderSearchTopSection()}
@@ -74,6 +78,8 @@ class SearchDetail extends React.PureComponent {
           onLoadMoreProducts={this.onLoadMoreProducts}
           {...otherProps}
         />
+        <QuickViewModal />
+        <AddedToBagContainer />
       </PageContainer>
     );
   }

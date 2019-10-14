@@ -9,6 +9,7 @@ import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 import AddedToBagActions from '../../AddedToBagActions';
+
 import {
   HeadingViewStyle,
   MainSection,
@@ -169,14 +170,16 @@ export class BagPage extends React.Component {
         {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
           <>
             <InActiveBagHeaderTextView>{bagHeadingTexts}</InActiveBagHeaderTextView>
-            {totalCount > 0 && (
-              <InActiveEstimateTextStyle>{estimateTotal}</InActiveEstimateTextStyle>
-            )}
+            {
+              <InActiveEstimateTextStyle>
+                {totalCount > 0 ? estimateTotal : ''}
+              </InActiveEstimateTextStyle>
+            }
           </>
         ) : (
           <>
             <ActiveBagHeaderTextNew>{bagHeadingTexts}</ActiveBagHeaderTextNew>
-            {totalCount > 0 && <EstimateTextStyle>{estimateTotal}</EstimateTextStyle>}
+            {<EstimateTextStyle>{totalCount > 0 ? estimateTotal : ''}</EstimateTextStyle>}
           </>
         )}
       </HeadingTextStyleView>

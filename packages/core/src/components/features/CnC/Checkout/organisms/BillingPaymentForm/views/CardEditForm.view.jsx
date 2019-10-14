@@ -38,19 +38,17 @@ class CardEditFormView extends React.PureComponent {
       <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={this.handleSubmit}>
         {renderCardDetailsHeading({ hideAnchor: true })}
         {error && <ErrorMessage error={error.message} className="edit-card-error" />}
-        <div ref={errorMessageRef}>
-          {getAddNewCCForm({
-            onCardFocus: onEditCardFocus,
-            editMode: true,
-          })}
-        </div>
+        {getAddNewCCForm({
+          onCardFocus: onEditCardFocus,
+          editMode: true,
+        })}
         <AddressForm editMode key="cardEditAddressForm" />
         <div className="edit-card-error-container">
           {editModeSubmissionError && (
             <ErrorMessage error={editModeSubmissionError} className="edit-card-error" />
           )}
         </div>
-        <div className="card-edit-buttons">
+        <div className="card-edit-buttons" ref={errorMessageRef}>
           <Button
             aria-label={ariaLabelSaveButtonText}
             type="submit"

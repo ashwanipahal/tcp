@@ -534,7 +534,6 @@ class ProductPickup extends React.PureComponent {
           margin="12px 12px 0 12px"
           color="white"
           fill="BLACK"
-          buttonVariation="variable-width"
           text={
             showPickupInfo
               ? labels.lbl_Product_pickup_PICKUP_IN_STORE

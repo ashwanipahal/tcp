@@ -7,7 +7,7 @@ exports[`CnC template should render correctly 1`] = `
   <[object Object] />
   <Styled(Row)>
     <Styled(Col)
-      className="left-sec"
+      className="left-sec "
       colSize={
         Object {
           "large": 8,
@@ -30,6 +30,7 @@ exports[`CnC template should render correctly 1`] = `
     >
       <Connect(OrderLedgerContainer) />
       <[object Object] />
+      <Connect(LoyaltyBannerContainer) />
       <Connect(AirmilesBannerContainer) />
       <Connect(CouponContainer)
         additionalClassNameModal="coupon-modal-web"

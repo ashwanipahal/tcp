@@ -11,7 +11,6 @@ const EmailSignupModalStyle = css`
   .button-wrapper-form {
     background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
     margin: 89px -15px 0 0;
-    width: 375px;
     display: flex;
     justify-content: center;
     padding: 21px 0;
@@ -19,16 +18,47 @@ const EmailSignupModalStyle = css`
   .button-wrapper-form {
     margin: 89px -15px 0;
   }
+  .button-container {
+    width: 225px;
+    box-sizing: border-box;
+  }
   .terms-label {
     margin-top: 52px;
   }
+  .alignRight {
+    right: 14px;
 
+    @media ${props => props.theme.mediaQuery.medium} {
+      right: 16px;
+    }
+  }
+  .alignTop {
+    top: 14px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      top: 16px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .button-wrapper {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
       width: 458px;
     }
+    .button-container {
+      bottom: 24px;
+      width: 222px;
+      box-sizing: border-box;
+    }
   }
+
   @media ${props => props.theme.mediaQuery.large} {
     .field-container {
       padding-top: 0;
@@ -43,19 +73,16 @@ const EmailSignupModalStyle = css`
       display: flex;
       width: 300px;
       margin-right: 0;
+      height: 620px;
     }
     .img-wrapper + div {
       width: calc(100% - 300px);
-    }
-    .button-container {
-      bottom: 24px;
     }
     .shop-button {
       bottom: 0;
       width: 100%;
     }
   }
-
   .email-modal-signup-image {
     max-width: 300px;
   }

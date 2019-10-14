@@ -5,6 +5,10 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
+  .alignTop.alignTop {
+    top: 15px;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .hide-in-large-up {
       display: none;
@@ -21,6 +25,10 @@ const styles = css`
     .hideAccordian {
       display: none;
     }
+    .coupon_list {
+      margin-left: 14px;
+      margin-right: 14px;
+    }
   }
 
   .rewards-header {
@@ -28,6 +36,8 @@ const styles = css`
   }
 
   .couponsWrapperAccordian {
+    margin-left: -14px;
+    margin-right: -14px;
     .collapsible-header {
       background-color: ${props => props.theme.colorPalette.white};
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};

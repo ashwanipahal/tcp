@@ -17,7 +17,7 @@ class LogOutView extends React.Component {
     triggerLogout();
 
     if (this.body) {
-      this.body.style.overflow = 'auto';
+      this.body.style['overflow-y'] = 'auto';
     }
   }
 

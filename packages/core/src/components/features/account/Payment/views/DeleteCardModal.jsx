@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
@@ -8,17 +9,6 @@ import GiftCardModalInfo from './GiftCardModalInfo.view';
 import CreditCardModalInfo from './CreditCardModalInfo.view';
 import VenmoCardModalInfo from './VenmoCardModalInfo.view';
 import Button from '../../../../common/atoms/Button';
-// @flow
-
-type Props = {
-  data: Object,
-  className: string,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-  setDeleteModalMountState: Function,
-  onDeleteCard: Function,
-};
 
 /**
  * @function deleteCardModal The deleteCardModal component shows the address to delete.
@@ -28,7 +18,7 @@ type Props = {
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class DeleteCardModal extends React.Component<Props> {
+class DeleteCardModal extends React.Component {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
@@ -157,6 +147,16 @@ class DeleteCardModal extends React.Component<Props> {
     );
   }
 }
+
+DeleteCardModal.propTypes = {
+  data: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  openState: PropTypes.bool.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+};
 
 export default withStyles(DeleteCardModal, styles);
 export { DeleteCardModal as DeleteCardModalVanilla };

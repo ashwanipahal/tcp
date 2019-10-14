@@ -20,6 +20,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -55,10 +56,12 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -206,6 +209,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -241,10 +245,12 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {

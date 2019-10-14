@@ -25,7 +25,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      text="\\"test\\""
+      text="\\"Pant\\""
       textDecoration={null}
     />
   </Styled(View)>
@@ -38,7 +38,12 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     labels={Object {}}
     labelsFilter={Object {}}
     lastLoadedPageNumber={0}
-    navigation={Object {}}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onPickUpOpenClick={[Function]}
     onSubmit={[MockFunction]}
     products={Array []}
     setListRef={[Function]}
@@ -50,5 +55,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     sortLabels={Object {}}
     totalProductsCount={0}
   />
+  <Connect(QuickViewModalContainer) />
+  <Connect(AddedToBagContainer) />
 </Styled(View)>
 `;

@@ -16,6 +16,7 @@ import productTileCss, {
 } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import RemoveSoldOut from '../../../../common/molecules/RemoveSoldOut';
+import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartItemTileSkelton.view';
 
 class ProductTileWrapper extends React.PureComponent<props> {
   constructor(props) {
@@ -150,12 +151,42 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  renderUpdatingBagItemSuccessfulMsg = isUpdating => {
+    const { labels } = this.props;
+    return (
+      isUpdating && (
+        <div className="delete-msg">
+          {this.getTickIcon()}
+          <BodyCopy
+            component="span"
+            fontSize="fs12"
+            textAlign="center"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+          >
+            {labels.itemUpdated}
+          </BodyCopy>
+        </div>
+      )
+    );
+  };
+
+  onLinkClick = ({ e, componentId }) => {
+    const { openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+  };
+
   renderEmptyBag = (
     productSectionData,
     bagLabels,
     isUserLoggedIn,
     isBagPageSflSection,
-    showPlccApplyNow
+    showPlccApplyNow,
+    isBagPage
   ) => {
     if (productSectionData.size === 0) {
       return (
@@ -164,10 +195,19 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUserLoggedIn={isUserLoggedIn}
           isBagPageSflSection={isBagPageSflSection}
           showPlccApplyNow={showPlccApplyNow}
+          onLinkClick={this.onLinkClick}
         />
       );
     }
-    return <></>;
+    if (isBagPage) {
+      return (
+        <>
+          <CartItemTileSkelton />
+          <CartItemTileSkelton />
+        </>
+      );
+    }
+    return null;
   };
 
   render() {
@@ -206,26 +246,28 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUnavailable = true;
         }
         return (
-          <CartItemTile
-            inheritedStyles={inheritedStyles}
-            labels={labels}
-            productDetail={productDetail}
-            key={`${getProductName(tile)}`}
-            pageView={pageView}
-            toggleEditAllowance={this.toggleEditAllowance}
-            isEditAllowed={this.isEditAllowed(productDetail, pageView)}
-            isPlcc={isPlcc}
-            itemIndex={index}
-            openedTile={openedTile}
-            setSelectedProductTile={this.setSelectedProductTile}
-            setSwipedElement={this.setSwipedElement}
-            swipedElement={swipedElement}
-            sflItemsCount={sflItemsCount}
-            isBagPageSflSection={isBagPageSflSection}
-          />
+          <>
+            <CartItemTile
+              inheritedStyles={inheritedStyles}
+              labels={labels}
+              productDetail={productDetail}
+              key={`${getProductName(tile)}`}
+              pageView={pageView}
+              toggleEditAllowance={this.toggleEditAllowance}
+              isEditAllowed={this.isEditAllowed(productDetail, pageView)}
+              isPlcc={isPlcc}
+              itemIndex={index}
+              openedTile={openedTile}
+              setSelectedProductTile={this.setSelectedProductTile}
+              setSwipedElement={this.setSwipedElement}
+              swipedElement={swipedElement}
+              sflItemsCount={sflItemsCount}
+              isBagPageSflSection={isBagPageSflSection}
+            />
+          </>
         );
       });
-      const { isDeleting } = isCartItemsUpdating;
+      const { isDeleting, isUpdating } = isCartItemsUpdating;
       return (
         <>
           {!isBagPageSflSection && this.getHeaderError(labels, productSectionData, pageView)}
@@ -249,18 +291,21 @@ class ProductTileWrapper extends React.PureComponent<props> {
           )}
           {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
+          {this.renderUpdatingBagItemSuccessfulMsg(isUpdating)}
           {orderItemsView}
         </>
       );
     }
     return (
       <>
+        {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(
           productSectionData,
           bagLabels,
           isUserLoggedIn,
           isBagPageSflSection,
-          showPlccApplyNow
+          showPlccApplyNow,
+          isBagPage
         )}
       </>
     );

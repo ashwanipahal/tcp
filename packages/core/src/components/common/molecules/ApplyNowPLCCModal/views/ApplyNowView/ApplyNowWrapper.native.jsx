@@ -13,6 +13,7 @@ import {
   RichTextContainer,
   Container,
   StyledImage,
+  HeaderContainer,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
 import ApplyCardLayoutView from '../../../../../features/browse/ApplyCardPage';
@@ -93,15 +94,26 @@ class ApplyNowModalWrapper extends React.PureComponent {
           isOpen={applyNow}
         >
           <ScrollViewContainer>
-            <StyledBodyCopy
-              color="gray.900"
-              mobilefontFamily="primary"
-              fontSize="fs38"
-              textAlign="center"
-              fontWeight="black"
-              text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
-              paddingTop="30px"
-            />
+            <HeaderContainer>
+              <StyledBodyCopy
+                color="gray.900"
+                mobilefontFamily="primary"
+                fontSize="fs38"
+                textAlign="center"
+                fontWeight="black"
+                text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+                paddingTop="30px"
+              />
+              <StyledBodyCopy
+                color="gray.900"
+                mobilefontFamily="primary"
+                fontSize="fs15"
+                fontWeight="black"
+                text="§"
+                paddingTop="5px"
+              />
+            </HeaderContainer>
+
             <ImageContainer>
               <StyledImage source={headerImage} width="45%" height="112px" />
             </ImageContainer>
@@ -120,7 +132,6 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 fill="BLUE"
                 type="submit"
                 color="white"
-                buttonVariation="variable-width"
                 text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
                 width="90%"
                 onPress={this.closeModal}

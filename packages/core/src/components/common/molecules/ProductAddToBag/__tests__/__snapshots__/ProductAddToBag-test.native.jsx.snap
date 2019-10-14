@@ -2,10 +2,10 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
-  addToBagAction={null}
   colorList={Array []}
   currentProduct={null}
   fitList={Array []}
+  handleFormSubmit={null}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
@@ -202,7 +202,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}

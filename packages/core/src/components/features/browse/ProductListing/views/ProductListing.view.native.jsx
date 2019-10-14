@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   styles,
   PageContainer,
@@ -10,6 +11,8 @@ import {
   ListHeaderContainer,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const renderItemCountView = itemCount => {
   if (itemCount === undefined) {
@@ -76,6 +79,8 @@ const ProductListView = ({
   navigation,
   sortLabels,
   scrollToTop,
+  onPickUpOpenClick,
+  isPickupModalOpen,
   totalProductsCount,
   ...otherProps
 }) => {
@@ -100,6 +105,9 @@ const ProductListView = ({
         }
         {...otherProps}
       />
+      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer navigation={navigation} />
+      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );
 };
@@ -112,10 +120,12 @@ ProductListView.propTypes = {
   onPressFilter: PropTypes.func.isRequired,
   onPressSort: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isPickupModalOpen: PropTypes.bool.isRequired,
   getProducts: PropTypes.func.isRequired,
   navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   scrollToTop: PropTypes.bool.isRequired,
+  onPickUpOpenClick: PropTypes.func,
   totalProductsCount: PropTypes.number.isRequired,
 };
 
@@ -126,6 +136,7 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   navigation: {},
   sortLabels: [],
+  onPickUpOpenClick: () => {},
 };
 
 export default withStyles(ProductListView, styles);

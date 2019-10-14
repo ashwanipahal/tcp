@@ -55,6 +55,9 @@ import ApplyCreditCardSaga, {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
 import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
+import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
+import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -113,5 +116,8 @@ export default function* rootSaga() {
     ConfirmationPageSaga(),
     PickupStoreSaga(),
     ExtraPointsSaga(),
+    OrdersSaga(),
+    SearchBarSaga(),
+    RecentSearchSaga(),
   ]);
 }

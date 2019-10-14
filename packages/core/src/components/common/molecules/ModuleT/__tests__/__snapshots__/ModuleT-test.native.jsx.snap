@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://www.childrensplace.com",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "medium_text_black",
+                    "text": "THE SHORT SHOP",
+                  },
+                ],
+              },
+            ]
+          }
+          testID="moduleT_header_text"
+          useStyle={true}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <PromoBanner
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "http://www.childrensplace.com",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "medium_text_regular_tab",
+                  "text": "ALL GRAPHIC TEES",
+                },
+                Object {
+                  "style": "percentage_all_wrapped_normal_tab",
+                  "text": "60 % OFF",
+                },
+              ],
+            },
+          ]
+        }
+        testID="moduleJ_promobanner_text"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      key="0"
+      locator=""
+      onPress={null}
+      text=""
+      url="/p/"
+      visible={false}
+    >
+      <Styled(DamImage)
+        alt="Boys"
+        crop=""
+        height="202px"
+        host=""
+        imgConfig="t_mod_T_img_m"
+        source=""
+        testID="undefined0"
+        url="https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg"
+        width="361px"
+      />
+    </Styled(Anchor)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      key="1"
+      locator=""
+      onPress={null}
+      text=""
+      url="/p/"
+      visible={false}
+    >
+      <Styled(DamImage)
+        alt="Girls"
+        crop=""
+        height="202px"
+        host=""
+        imgConfig="t_mod_T_img_m"
+        source=""
+        testID="undefined1"
+        url="https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png"
+        width="361px"
+      />
+    </Styled(Anchor)>
+  </Styled(View)>
+  <View />
+</Styled(View)>
+`;

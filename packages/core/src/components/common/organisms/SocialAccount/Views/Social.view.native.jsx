@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -78,7 +78,11 @@ class Socialview extends React.PureComponent {
       const icon = `${elem.isConnected ? 'Connected' : 'Disconnected'}`;
       return (
         <ViewWithSpacing spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS">
-          <Row>
+          <Row
+            accessibilityRole="button"
+            accessibilityLabel="button"
+            onPress={() => this.handleSocialNetwork(isSocialAccount, elem.isConnected)}
+          >
             <ImageComp source={this.icons[socialIcon]} width={50} height={50} />
             <SocialMessage>
               <BodyCopyWithSpacing
@@ -97,13 +101,7 @@ class Socialview extends React.PureComponent {
               />
             </SocialMessage>
 
-            <TouchableOpacity
-              accessibilityRole="button"
-              accessibilityLabel="button"
-              onPress={() => this.handleSocialNetwork(isSocialAccount, elem.isConnected)}
-            >
-              <ImageComp source={this.icons[icon]} width={15} height={15} />
-            </TouchableOpacity>
+            <ImageComp source={this.icons[icon]} width={15} height={15} />
           </Row>
           {setPointsModal && this.pointsInformation.points > 0 && (
             <ModalNative
@@ -163,7 +161,6 @@ class Socialview extends React.PureComponent {
               </ViewWithSpacing>
               <ViewWithSpacing spacingStyles="margin-top-XXXL margin-left-XXXL margin-right-XXXL">
                 <Button
-                  buttonVariation="variable-width"
                   color="white"
                   fill="BLUE"
                   type="submit"
@@ -173,7 +170,6 @@ class Socialview extends React.PureComponent {
 
                 <ViewWithSpacing spacingStyles="margin-top-LRG">
                   <Button
-                    buttonVariation="variable-width"
                     fill="WHITE"
                     color="black"
                     type="submit"

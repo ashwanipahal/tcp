@@ -96,7 +96,9 @@ class CondensedHeader extends React.PureComponent {
     } = this.props;
     const brand = getBrand();
     const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
-    const { accessibility: { accountIconButton, cartIconButton, hamburgerMenu } = {} } = labels;
+    const {
+      accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
+    } = labels;
     return (
       <React.Fragment>
         <Row id="condensedHeader" className={`${className} condensed-header`}>
@@ -110,6 +112,8 @@ class CondensedHeader extends React.PureComponent {
                 }
                 alt={hamburgerMenu}
                 tabIndex="0"
+                role="button"
+                aria-label={navigationDrawer.open ? closeIconButton : hamburgerMenu}
                 className="hamburger-menu"
                 onClick={handleNavigationDrawer(
                   openNavigationDrawer,

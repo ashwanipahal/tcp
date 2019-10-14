@@ -20,6 +20,9 @@ export {
   setTestId,
   validateColor,
   getTranslatedMomentDate,
+  readCookieMobileApp,
+  createGoogleMapUrl,
+  mapHandler,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -50,6 +53,10 @@ export {
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getDateInformation,
+  buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';
