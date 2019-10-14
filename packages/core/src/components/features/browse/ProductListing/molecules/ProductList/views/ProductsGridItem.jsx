@@ -1,47 +1,46 @@
-/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
 import { getIconPath } from '@tcp/core/src/utils';
-import productGridItemPropTypes from '../propTypes/ProductGridItemPropTypes';
-import { Button, Anchor, BodyCopy, Col, Row, Image } from '../../../../../../common/atoms';
+import productGridItemPropTypes, {
+  productGridDefaultProps,
+} from '../propTypes/ProductGridItemPropTypes';
+import { Button, BodyCopy, Col, Row, Image } from '../../../../../../common/atoms';
 import { getLocator, isClient } from '../../../../../../../utils';
 import { getImagesToDisplay, getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 // import { ProductRating } from './ProductRating';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProductsGridItem.style';
 import { getPromotionalMessage } from '../utils/utility';
-
 import {
   ProductTitle,
   ProductPricesSection,
-  ProductWishlistIcon,
   BadgeItem,
   PromotionalMessage,
   CreateWishList,
+  PurchaseSection,
+  WishListIcon,
+  EditButton,
 } from './ProductItemComponents';
+import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
-
 import ProductAltImages from './ProductAltImages';
-
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
   static propTypes = { ...productGridItemPropTypes };
 
+  static defaultProps = { ...productGridDefaultProps };
+
   constructor(props) {
     super(props);
-
     const { colorsMap, skuInfo: { colorProductId: itemColorProductId } = {} } = props.item;
-
     if (colorsMap) {
       this.colorsExtraInfo = {
         [colorsMap[0].color.name]: colorsMap[0].miscInfo,
       };
     }
-
     const colorProductId = colorsMap ? colorsMap[0].colorProductId : itemColorProductId;
-
     this.state = {
       isInDefaultWishlist: props.item.miscInfo.isInDefaultWishlist,
       selectedColorProductId: colorProductId,
@@ -50,11 +49,6 @@ class ProductsGridItem extends React.PureComponent {
       isAltImgRequested: false,
       isMoveItemOpen: false,
     };
-
-    this.handleAddToWishlist = this.handleAddToWishlist.bind(this);
-    this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
-    this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleQuickViewOpenClick = this.handleQuickViewOpenClick.bind(this);
     const {
       onQuickViewOpenClick,
       item: {
@@ -80,9 +74,8 @@ class ProductsGridItem extends React.PureComponent {
         miscInfo: { isInDefaultWishlist },
       },
     } = nextProps;
-
-    // eslint-disable-next-line react/destructuring-assignment
-    if (this.state.isInDefaultWishlist === undefined) {
+    const { isInDefaultWishlist: currentIsInDefaultWishlist } = this.state;
+    if (currentIsInDefaultWishlist === undefined) {
       this.setState({ isInDefaultWishlist });
     }
     const {
@@ -121,6 +114,10 @@ class ProductsGridItem extends React.PureComponent {
     return hideImageCarousel ? imageUrls.slice(0, 1) : imageUrls;
   }
 
+  /**
+   * This function closes the move item container onclick
+   * @param {object} event
+   */
   handleClickOutside = event => {
     const { isMoveItemOpen } = this.state;
     const openItem = document.querySelector('.move-item-section');
@@ -163,20 +160,6 @@ class ProductsGridItem extends React.PureComponent {
     this.setState({ isAltImgRequested: true });
   };
 
-  /* getTopBadge  */
-  getTopBadge = (isMatchingFamily, badge1) => {
-    return isMatchingFamily && badge1.matchBadge
-      ? badge1.matchBadge
-      : badge1 && badge1.defaultBadge;
-  };
-
-  /* get video url */
-  getVideoUrl = curentColorEntry => {
-    return curentColorEntry && Array.isArray(curentColorEntry.miscInfo.videoUrl)
-      ? curentColorEntry.miscInfo.videoUrl[0]
-      : '';
-  };
-
   /* get color chip component */
   getColorChipContainer = curentColorEntry => {
     const {
@@ -186,29 +169,29 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
     } = this.props;
     const colorProductId = skuInfo && skuInfo.colorProductId;
+    const ChipProps = {
+      className: 'color-chips-container',
+      isMobile: { isMobile },
+      showColorEvenOne: true,
+      isPLPredesign: { isPLPredesign },
+    };
     if (colorProductId) {
       return (
         <ProductColorChipWrapper
-          className="color-chips-container"
           selectedColorId={colorProductId}
-          isMobile={isMobile}
-          showColorEvenOne
-          isPLPredesign={isPLPredesign}
           skuInfo={skuInfo}
           isFavoriteView={isFavoriteView}
+          {...ChipProps}
         />
       );
     }
     return colorsMap && colorsMap.length >= 1 ? (
       <ProductColorChipWrapper
-        className="color-chips-container"
         onChipClick={this.handleChangeColor}
         maxVisibleItems={5}
         selectedColorId={curentColorEntry.color.name}
         colorsMap={colorsMap}
-        isMobile={isMobile}
-        showColorEvenOne
-        isPLPredesign={isPLPredesign}
+        {...ChipProps}
       />
     ) : (
       <div className="empty-color-chips-container" />
@@ -218,7 +201,6 @@ class ProductsGridItem extends React.PureComponent {
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
     const { currencySymbol } = this.props;
-
     return (
       <ProductPricesSection
         currencySymbol={currencySymbol || '$'}
@@ -253,7 +235,7 @@ class ProductsGridItem extends React.PureComponent {
     }));
   };
 
-  handleChangeColor(colorProductId) {
+  handleChangeColor = colorProductId => {
     const { pdpUrl } = this.state;
     /**
      * Check if pdp url contains "_" then replace any "-" with "_" if not then vice versa.
@@ -265,22 +247,20 @@ class ProductsGridItem extends React.PureComponent {
         : { searchvalue: '_', newvalue: '-' };
     const { searchvalue, newvalue } = replaceObj;
     const { selectedColorProductId } = this.state;
-
     const color = selectedColorProductId.replace(searchvalue, newvalue);
     const selectedColor = colorProductId.replace(searchvalue, newvalue);
-
     // eslint-disable-next-line react/destructuring-assignment
     this.state.pdpUrl = this.state.pdpUrl.replace(color, selectedColor);
     this.setState({ selectedColorProductId: colorProductId, currentImageIndex: 0 });
-  }
+  };
 
-  handleQuickViewOpenClick() {
+  handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
-  }
+  };
 
   renderMoveItem = itemId => {
     const {
@@ -292,13 +272,13 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
-      ? getIconPath('circle-check-no-circle')
+      ? getIconPath('up_arrow_icon')
       : getIconPath('down_arrow_icon');
     return (
       wishlistsSummaries && (
         <div className="move-item-container">
           <Button className="move-item-button" onClick={this.openMoveItem}>
-            moveToAnotherList
+            {labels.moveToAnotherList}
             <Image
               alt="accordian button"
               className="accordian-item-arrow icon-small"
@@ -324,50 +304,9 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
-  renderEditButton = () => {
-    const { isFavoriteView, labels, onQuickViewOpenClick } = this.props;
-    const { selectedColorProductId } = this.state;
-    return (
-      isFavoriteView && (
-        <Anchor
-          className="edit-fav-item__button"
-          handleLinkClick={event => {
-            event.preventDefault();
-            onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
-          }}
-          noLink
-        >
-          {labels.edit}
-        </Anchor>
-      )
-    );
-  };
-
-  renderWishListIcon = () => {
-    const { isFavoriteView } = this.props;
-    const { isInDefaultWishlist } = this.state;
-    return (
-      <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-        <ProductWishlistIcon
-          onClick={this.handleAddToWishlist}
-          activeButton={isInDefaultWishlist || isFavoriteView}
-          className="fav-icon"
-        />
-      </Col>
-    );
-  };
-
-  renderPurchaseSection = (quantity, labels, quantityPurchased) =>
-    !!quantity && (
-      <div className="purchase-section">
-        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-        {quantityPurchased}/{quantity}
-        <span>{labels.Purchased}</span>
-      </div>
-    );
-
   render() {
     const {
+      onQuickViewOpenClick,
       isShowVideoOnPlp,
       isMobile,
       //  currencySymbol,
@@ -384,8 +323,7 @@ class ProductsGridItem extends React.PureComponent {
           name,
           listPrice: itemListPrice,
           offerPrice: itemOfferPrice,
-          // eslint-disable-next-line camelcase
-          long_product_title,
+          long_product_title: longProductTitle,
         },
         itemInfo: { itemId, quantity, keepAlive: keepAliveFlag } = {},
         quantityPurchased,
@@ -408,16 +346,16 @@ class ProductsGridItem extends React.PureComponent {
       sqnNmbr,
       unbxdId,
       labels,
+      isFavoriteView,
     } = this.props;
 
-    // eslint-disable-next-line camelcase
-    const prodNameAltImages = long_product_title || name;
-    // eslint-disable-next-line no-unused-vars
+    const prodNameAltImages = longProductTitle || name;
     const {
       selectedColorProductId,
       // error,
       currentImageIndex,
       pdpUrl,
+      isInDefaultWishlist,
     } = this.state;
 
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
@@ -426,14 +364,11 @@ class ProductsGridItem extends React.PureComponent {
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
     });
-
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
-
     const currentColorMiscInfo =
       (curentColorEntry &&
         (this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo)) ||
       {};
-
     const {
       listPrice = itemListPrice,
       offerPrice = itemOfferPrice,
@@ -451,9 +386,7 @@ class ProductsGridItem extends React.PureComponent {
     //   isClearance,
     // };
     const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
-
-    const topBadge = this.getTopBadge(isMatchingFamily, badge1);
-
+    const topBadge = getTopBadge(isMatchingFamily, badge1);
     const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
     const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
     // const isShowPickupCTA =
@@ -469,9 +402,7 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
-
-    const videoUrl = this.getVideoUrl(curentColorEntry);
-
+    const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
         className={className}
@@ -508,7 +439,7 @@ class ProductsGridItem extends React.PureComponent {
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
           />
-          {this.renderEditButton()}
+          {EditButton({ onQuickViewOpenClick, isFavoriteView, labels }, selectedColorProductId)}
           {
             <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
@@ -521,7 +452,7 @@ class ProductsGridItem extends React.PureComponent {
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
-              {this.renderWishListIcon()}
+              {WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist)}
             </Row>
           }
           {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
@@ -555,7 +486,7 @@ class ProductsGridItem extends React.PureComponent {
             </Button>
           </div>
           <div className="favorite-move-purchase-section">
-            {this.renderPurchaseSection(quantity, labels, quantityPurchased)}
+            {PurchaseSection(quantity, labels, quantityPurchased)}
             {this.renderMoveItem(itemId)}
           </div>
           {/* {error && <ErrorMessage error={error} />} */}
@@ -564,24 +495,6 @@ class ProductsGridItem extends React.PureComponent {
     );
   }
 }
-
-ProductsGridItem.defaultProps = {
-  //  isBopisEnabled: false,
-  onPickUpOpenClick: () => {},
-  onQuickBopisOpenClick: () => {},
-  onAddItemToFavorites: () => {},
-  isInternationalShipping: false,
-  isPLPredesign: true,
-  siblingProperties: false,
-  isShowVideoOnPlp: false,
-  isMatchingFamily: false,
-  isKeepAliveKillSwitch: false,
-  loadedProductCount: 1,
-  // isPLPShowPickupCTA: true,
-  currencyExchange: {
-    exchangevalue: 0,
-  },
-};
 
 export default withStyles(ProductsGridItem, styles);
 export { ProductsGridItem as ProductsGridItemVanilla };

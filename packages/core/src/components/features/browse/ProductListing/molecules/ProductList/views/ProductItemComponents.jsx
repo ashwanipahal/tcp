@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
-import { Image, BodyCopy, Anchor, Button } from '../../../../../../common/atoms';
+import { Image, BodyCopy, Anchor, Button, Col } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
@@ -262,6 +262,45 @@ export const ProductSKUInfo = props => {
       {size && fit && <i className="separator-bar-icon">|</i>}
       {fit && <span className="fit-container">{fit}</span>}
     </div>
+  );
+};
+
+export const PurchaseSection = (quantity, labels, quantityPurchased) =>
+  !!quantity && (
+    <div className="purchase-section">
+      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+      {quantityPurchased}/{quantity}
+      <span>{labels.Purchased}</span>
+    </div>
+  );
+
+export const WishListIcon = (isFavoriteView, isInDefaultWishlist, handleAddToWishlist) => {
+  return (
+    <Col colSize={{ small: 2, medium: 2, large: 2 }}>
+      <ProductWishlistIcon
+        onClick={handleAddToWishlist}
+        activeButton={isInDefaultWishlist || isFavoriteView}
+        className="fav-icon"
+      />
+    </Col>
+  );
+};
+
+export const EditButton = (props, selectedColorProductId) => {
+  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
+  return (
+    isFavoriteView && (
+      <Anchor
+        className="edit-fav-item__button"
+        handleLinkClick={event => {
+          event.preventDefault();
+          onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+        }}
+        noLink
+      >
+        {labels.edit}
+      </Anchor>
+    )
   );
 };
 
