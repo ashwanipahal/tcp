@@ -9,7 +9,7 @@ import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 
 const errorLabel = 'Error in API';
 

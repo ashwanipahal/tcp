@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
-import { scrollPage } from '../../../../../../utils';
+import { scrollPage } from '../../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
