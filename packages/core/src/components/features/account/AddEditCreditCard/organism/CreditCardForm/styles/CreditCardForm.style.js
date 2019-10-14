@@ -8,6 +8,12 @@ const styles = css`
   .addressDropdownHeading {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+
+  .addressContainer {
+    display: flex;
+    align-items: flex-end;
+  }
+
   .CreditCardForm__address {
     display: inline-block;
     background-image: linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
@@ -27,6 +33,7 @@ const styles = css`
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       display: block;
+      width: 100%;
     }
   }
 

@@ -205,12 +205,14 @@ class BagPageView extends React.Component {
       currencySymbol,
     } = this.props;
     const { showCondensedHeader } = this.state;
-    if (!showCondensedHeader) return null;
+    // if (!showCondensedHeader) return null;
     return (
       <div
         ref={this.getBagCondensedHeader}
         className={`${
-          orderItemsCount === 0 || orderItemsCount === false ? 'hidden-condensed-header' : ''
+          orderItemsCount === 0 || orderItemsCount === false || !showCondensedHeader
+            ? 'hidden-condensed-header'
+            : ''
         }`}
       >
         <Row className="bag-condensed-header">
