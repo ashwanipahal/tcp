@@ -219,7 +219,7 @@ class CheckoutCartItemsList extends Component {
         )}
         <BodyCopy
           fontWeight="extrabold"
-          fontSize="fs16"
+          fontSize="fs10"
           fontFamily="secondary"
           text={deliveryItem.duration}
         />

@@ -29,6 +29,7 @@ const PickupStoreList = props => {
     derivedStoresList,
     addItemToCartInPickup,
     onPickupRadioBtnToggle,
+    onStoreUpdate,
   } = props;
 
   return (
@@ -67,6 +68,7 @@ const PickupStoreList = props => {
           buttonLabel={buttonLabel}
           isGiftCard={isGiftCard}
           onPickupRadioBtnToggle={onPickupRadioBtnToggle}
+          onStoreUpdate={onStoreUpdate}
         />
       ))}
     </>
@@ -98,6 +100,7 @@ PickupStoreList.propTypes = {
    * receive one parameter, the id of the clicked store.
    */
   onStoreSelect: PropTypes.func.isRequired,
+  onStoreUpdate: PropTypes.func.isRequired,
   handleShowAvailableChange: PropTypes.func.isRequired,
   addItemToCartInPickup: PropTypes.func.isRequired,
 
