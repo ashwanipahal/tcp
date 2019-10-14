@@ -40,7 +40,6 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
-      showSavePlcc,
       pristine,
       variation,
       handleContinueAsGuest,
@@ -94,17 +93,13 @@ class LoginForm extends React.PureComponent<Props> {
                 <span>{getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}</span>
               </Field>
             </BodyCopy>
-            {showSavePlcc && (
-              <BodyCopy component="div">
-                <Field
-                  name="savePlcc"
-                  component={InputCheckbox}
-                  dataLocator="login-savemyplcccardcb"
-                >
-                  {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login')}
-                </Field>
-              </BodyCopy>
-            )}
+
+            <BodyCopy component="div">
+              <Field name="savePlcc" component={InputCheckbox} dataLocator="login-savemyplcccardcb">
+                {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login')}
+              </Field>
+            </BodyCopy>
+
             <BodyCopy component="div">
               {showRecaptcha && (
                 <>
@@ -170,7 +165,6 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
-  showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
   handleContinueAsGuest: PropTypes.func.isRequired,
 };
@@ -180,7 +174,6 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
-  showSavePlcc: false,
   pristine: false,
 };
 

@@ -1,6 +1,10 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import constants, { ERR_CONFIG } from '../RewardsCard.constants';
 import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
+import {
+  setPlccCardIdActn,
+  setPlccCardNumberActn,
+} from '../../../account/User/container/User.actions';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
 import applyInstantCard from '../../../../../services/abstractors/common/PLCC';
 import { validateReduxCache } from '../../../../../utils/cache.util';
@@ -40,6 +44,8 @@ export function* submitCreditCardForm({ payload = '' }) {
       yield put(toastMessageInfo(res.status));
     }
     yield put(obtainInstantCardApplication(res));
+    yield put(setPlccCardIdActn(res.onFileCard));
+    yield put(setPlccCardNumberActn((res.cardNumber || '').substr(-4)));
   } catch (err) {
     yield null;
   }

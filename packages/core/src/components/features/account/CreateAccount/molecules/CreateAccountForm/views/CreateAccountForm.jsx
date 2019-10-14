@@ -161,6 +161,22 @@ let CreateAccountForm = ({
             </span>
           </Col>
           <Col
+            className="plcc_checkbox elem-pb-MED"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 6 }}
+          >
+            <Field
+              name="plcc_checkbox"
+              component={InputCheckbox}
+              dataLocator="plcc_checkbox"
+              alignCheckbox="top"
+            >
+              <BodyCopy fontFamily="secondary" fontSize="fs10">
+                <RichText richTextHtml="Save My Place Rewards Credit Card ending in 1234 to my account for future purchases." />
+              </BodyCopy>
+            </Field>
+          </Col>
+          <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
             colSize={{ small: 6 }}

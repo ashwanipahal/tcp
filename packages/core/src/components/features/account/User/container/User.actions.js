@@ -74,3 +74,17 @@ export const setDefaultStore = payload => ({
   payload,
   type: CONSTANTS.SET_DEFAULT_STORE,
 });
+
+export const setPlccCardIdActn = payload => {
+  return {
+    payload,
+    type: CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION,
+  };
+};
+
+export const setPlccCardNumberActn = payload => {
+  return {
+    payload,
+    type: CONSTANTS.RESPONSE_SET_PLCC_INFORMATION,
+  };
+};
