@@ -119,7 +119,7 @@ class CouponListSection extends React.Component<Props> {
               fontSizeVariation="small"
               underline
               anchorVariation="primary"
-              fontSize="fs10"
+              className="cart-show-more-button"
               dataLocator={showMore === true ? 'cartShowMoreButton' : 'cartShowLessButton'}
               onClick={this.toggleShow}
               fontFamily="secondary"
