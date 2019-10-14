@@ -35,9 +35,8 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
           fontSizeVariation="medium"
           underline
           anchorVariation="primary"
-          noLink
-          to=""
-          dataLocator="addedToBag-continueShopping"
+          to="/home"
+          dataLocator="emptyMiniBag-continueShopping"
         >
           {labels.continueShopping}
         </Anchor>

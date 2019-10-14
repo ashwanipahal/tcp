@@ -10,19 +10,27 @@ export class ToastContainer extends PureComponent {
     errorMessage: PropTypes.string.isRequired,
     toastMessageReset: PropTypes.func.isRequired,
     errorMessagePosition: PropTypes.number,
+    shouldShowSafeArea: PropTypes.bool,
   };
 
   static defaultProps = {
     errorMessagePosition: 0,
+    shouldShowSafeArea: true,
   };
 
   render() {
-    const { errorMessage, toastMessageReset, errorMessagePosition } = this.props;
+    const {
+      errorMessage,
+      toastMessageReset,
+      errorMessagePosition,
+      shouldShowSafeArea,
+    } = this.props;
     return (
       <ToastView
         toastMessageReset={toastMessageReset}
         errorMessage={errorMessage}
         positionValue={errorMessagePosition}
+        shouldShowSafeArea={shouldShowSafeArea}
       />
     );
   }

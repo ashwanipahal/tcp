@@ -172,10 +172,10 @@ class CardTile extends React.Component<Props> {
         {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
-            buttonVariation="variable-width"
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
+            buttonVariation="variable-width"
           >
             {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
@@ -321,7 +321,6 @@ class CardTile extends React.Component<Props> {
                   {cardName}
                 </BodyCopy>
                 {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-                {isCreditCard ? getAddressDetails({ card }) : null}
               </div>
             </Col>
             <Col
@@ -338,6 +337,7 @@ class CardTile extends React.Component<Props> {
             </Col>
           </Row>
         </div>
+        {isCreditCard && <div>{getAddressDetails({ card })}</div>}
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
             <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>

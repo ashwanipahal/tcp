@@ -22,6 +22,8 @@ class ErrorMessage extends React.PureComponent {
               fontFamily="secondary"
               fontWeight={fontWeight}
               fontSize={fontSize}
+              aria-live="assertive"
+              role="alert"
             >
               {error}
             </BodyCopy>

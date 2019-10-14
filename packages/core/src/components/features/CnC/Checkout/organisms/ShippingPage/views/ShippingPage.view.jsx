@@ -20,6 +20,7 @@ export default class ShippingPage extends React.PureComponent {
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.shape([]),
@@ -303,6 +304,7 @@ export default class ShippingPage extends React.PureComponent {
       shippingAddress,
       isVenmoPaymentInProgress,
       isVenmoShippingDisplayed,
+      isSubmitting,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -310,6 +312,7 @@ export default class ShippingPage extends React.PureComponent {
       <>
         {shipmentMethods.length > 0 && (
           <ShippingForm
+            isSubmitting={isSubmitting}
             routeToPickupPage={routeToPickupPage}
             addressLabels={addressLabels}
             isOrderUpdateChecked={isOrderUpdateChecked}

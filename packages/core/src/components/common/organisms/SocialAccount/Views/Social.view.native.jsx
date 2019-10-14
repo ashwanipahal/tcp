@@ -163,7 +163,6 @@ class Socialview extends React.PureComponent {
               </ViewWithSpacing>
               <ViewWithSpacing spacingStyles="margin-top-XXXL margin-left-XXXL margin-right-XXXL">
                 <Button
-                  buttonVariation="variable-width"
                   color="white"
                   fill="BLUE"
                   type="submit"
@@ -173,7 +172,6 @@ class Socialview extends React.PureComponent {
 
                 <ViewWithSpacing spacingStyles="margin-top-LRG">
                   <Button
-                    buttonVariation="variable-width"
                     fill="WHITE"
                     color="black"
                     type="submit"

@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import AddEditPersonalInformation from '@tcp/core/src/components/features/account/AddEditPersonalInformation';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
 import Address from '../../../../../../common/molecules/Address';
@@ -9,23 +7,6 @@ import Address from '../../../../../../common/molecules/Address';
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
 export class PersonalInformation extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    const { componentProps } = this.props;
-    if (componentProps.activeComponent === 'userBirthday') {
-      this.state = { isOpenBool: true };
-    } else {
-      this.state = { isOpenBool: false };
-    }
-  }
-
-  toggleModal = () => {
-    const { isOpenBool } = this.state;
-    this.setState({
-      isOpenBool: !isOpenBool,
-    });
-  };
-
   render() {
     const {
       labels,
@@ -40,13 +21,12 @@ export class PersonalInformation extends React.PureComponent {
     } = this.props;
 
     const { address } = profileInfoTile;
-    const { isOpenBool } = this.state;
     return (
       <>
         <MyProfileTile
           title={getLabelValue(labels, 'lbl_profile_personal_information')}
           ctaTitle={getLabelValue(labels, 'lbl_profile_edit_personal_info')}
-          handleComponentChange={this.toggleModal}
+          handleComponentChange={() => toggleModalState('mountPersonalInformationModal')}
         >
           <PersonalInformationDisplay
             labels={labels}
@@ -71,14 +51,6 @@ export class PersonalInformation extends React.PureComponent {
             />
           </MyProfileTile>
         )}
-
-        <ModalNative
-          isOpen={isOpenBool}
-          onRequestClose={this.toggleModal}
-          heading={getLabelValue(labels, 'lbl_profile_heading')}
-        >
-          <AddEditPersonalInformation onRequestClose={this.toggleModal} />
-        </ModalNative>
       </>
     );
   }

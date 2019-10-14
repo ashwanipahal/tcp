@@ -44,7 +44,7 @@ exports[`Bag page View should not render SFL section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: $50.00
+          undefined: undefined50.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -52,6 +52,7 @@ exports[`Bag page View should not render SFL section 1`] = `
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
+    isNotLoaded={true}
     leftSection={[Function]}
     showAccordian={false}
     showLeftSection={true}
@@ -106,7 +107,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: $50.00
+          undefined: undefined50.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -114,6 +115,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
+    isNotLoaded={true}
     leftSection={[Function]}
     showAccordian={false}
     showLeftSection={true}
@@ -168,7 +170,7 @@ exports[`Bag page View should render SFL section 1`] = `
           link={null}
           textAlign="left"
         >
-          undefined: $50.00
+          undefined: undefined50.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -176,6 +178,7 @@ exports[`Bag page View should render SFL section 1`] = `
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={true}
+    isNotLoaded={true}
     leftSection={[Function]}
     showAccordian={false}
     showLeftSection={true}

@@ -37,11 +37,14 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
   };
 
   boxWithShadow = {
-    shadowColor: colorPalette.gray[1000],
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
+    shadowColor: colorPalette.gray[600],
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     elevation: 5,
+    marginLeft: 5,
+    marginRight: 3,
+    marginTop: 5,
   };
 
   render() {
@@ -58,7 +61,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
           <EarnExtraPointsTileImage viewAll>
             <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
-          <ViewWithSpacing spacingStyles="margin-top-LRG">
+          <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-XL">
             <BodyCopy
               component="p"
               fontSize="fs16"

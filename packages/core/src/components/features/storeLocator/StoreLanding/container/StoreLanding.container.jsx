@@ -20,9 +20,7 @@ export class StoreLanding extends PureComponent {
       basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    window.open(
-      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
-    );
+    return `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`;
   }
 
   state = {

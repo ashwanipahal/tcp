@@ -114,6 +114,7 @@ export class PaymentTile extends React.PureComponent<Props> {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_overview_paymentHeading')}
           color="black"
+          fontWeight="black"
         />
         <UnderlineStyle />
         {creditCardList && creditCardList.size > 0
@@ -126,7 +127,6 @@ export class PaymentTile extends React.PureComponent<Props> {
         <ButtonWrapperStyle>
           <CustomButton
             text={getLabelValue(labels, 'lbl_overview_view_payments')}
-            buttonVariation="variable-width"
             fill="BLUE"
             onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
           />

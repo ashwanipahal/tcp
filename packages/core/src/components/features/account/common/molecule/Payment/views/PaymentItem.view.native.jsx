@@ -120,7 +120,6 @@ class PaymentItem extends React.Component<Props> {
                 <CustomButton
                   fill="BLUE"
                   text={getLabelValue(labels, 'lbl_overview_check_balance')}
-                  buttonVariation="variable-width"
                   width="190px"
                   onPress={handleSubmit(formData =>
                     this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)

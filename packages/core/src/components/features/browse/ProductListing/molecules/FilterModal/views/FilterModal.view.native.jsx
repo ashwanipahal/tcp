@@ -163,7 +163,12 @@ class FilterModal extends React.PureComponent {
               <ModalContent>
                 <ModalTitleContainer>
                   <ModalTitle>{labelsFilter.lbl_filter_by}</ModalTitle>
-                  <ModalCloseTouchable onPress={this.onCloseModal} accessibilityRole="button">
+                  <ModalCloseTouchable
+                    isButton
+                    onPress={this.onCloseModal}
+                    accessibilityRole="button"
+                    accessibilityLabel="Close button"
+                  >
                     <CustomIcon name={ICON_NAME.close} size="fs20" color="gray.900" />
                   </ModalCloseTouchable>
                 </ModalTitleContainer>

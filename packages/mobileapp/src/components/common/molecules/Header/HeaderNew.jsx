@@ -9,6 +9,7 @@ import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProdu
 import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   Container,
   HeaderContainer,
@@ -107,6 +108,7 @@ class HeaderNew extends React.PureComponent<Props> {
     const { cartVal, showSearchModal } = this.state;
     return (
       <SafeAreaViewStyle showSearch={showSearch}>
+        <ToastContainer />
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
             <LeftSection>

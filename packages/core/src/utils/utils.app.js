@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
+import CookieManager from 'react-native-cookies';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -10,6 +11,7 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
@@ -614,4 +616,54 @@ export const getTranslatedMomentDate = (dateInput, language = 'en', { day, month
     date: currentDate.format(date),
     year: currentDate.format(year),
   };
+};
+
+/**
+ * This function reads cookie for mobile app
+ */
+export const readCookieMobileApp = key => {
+  const apiConfigObj = getAPIConfig();
+  return new Promise((resolve, reject) => {
+    CookieManager.get(apiConfigObj.domain)
+      .then(response => {
+        return resolve(response[key]);
+      })
+      .catch(e => reject(e));
+  });
+};
+
+/**
+ * @function createGoogleMapUrl - returns map apps url.
+ * @param {String} lat - lattitude
+ * @param {String} long - longitude
+ */
+export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
+  return Platform.select({
+    ios: `maps:${lat},${long}?q=${label}`,
+    android: `geo:${lat},long?q=${label}`,
+  });
+};
+
+/**
+ * @function mapHandler - checks if map application is present in phone, opens app,
+ * otherwise opens the map in mobile browser.
+ * @param {Object} store - store info
+ */
+export const mapHandler = store => {
+  const {
+    basicInfo: { address, coordinates },
+  } = store;
+  const { addressLine1, city, state, zipCode } = address;
+  const { lat, long } = coordinates;
+  const mapLabel = `${addressLine1}, ${city}, ${state}`;
+  const url = createGoogleMapUrl(lat, long, mapLabel);
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) {
+      return Linking.openURL(url);
+    }
+    const browserUrl = `${
+      googleMapConstants.OPEN_STORE_DIR_WEB
+    }${addressLine1}, ${city}, ${state}, ${zipCode}`;
+    return Linking.openURL(browserUrl);
+  });
 };
