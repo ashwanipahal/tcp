@@ -11,6 +11,10 @@ import {
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import {
+  getUserLoggedInState,
+  getUserName,
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { readCookieMobileApp } from '../../../../utils/utils';
 
 import {
@@ -84,11 +88,14 @@ class Header extends React.PureComponent<Props> {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels } = this.props;
+    const { navigation, labels, cartVal } = this.props;
     const { isDownIcon } = this.state;
     navigation.navigate({
       routeName: 'StoreLanding',
-      params: { title: labels.lbl_header_storeDefaultTitle.toUpperCase() },
+      params: {
+        title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
+        cartItemsCount: cartVal,
+      },
     });
     this.setState({
       isDownIcon: !isDownIcon,
@@ -124,7 +131,7 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { favStore, labels, cartVal } = this.props;
+    const { favStore, labels, cartVal, isUserLoggedIn, userName } = this.props;
     const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
@@ -140,6 +147,9 @@ class Header extends React.PureComponent<Props> {
     const favStoreTxt = isInfoPresent
       ? `${capitalize(basicInfo.storeName)} ${headerLabels.lbl_header_openUntil} ${storeTime}`
       : null;
+    const welcomeMessage = isUserLoggedIn
+      ? `Hi ${userName}!`
+      : headerLabels.lbl_header_welcomeMessage;
 
     return (
       <SafeAreaViewStyle>
@@ -152,7 +162,7 @@ class Header extends React.PureComponent<Props> {
               textAlign="center"
               color="black"
               fontWeight="semibold"
-              text={headerLabels.lbl_header_welcomeMessage}
+              text={welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
             />
             <StoreContainer onPress={this.validateIcon}>
@@ -192,9 +202,10 @@ class Header extends React.PureComponent<Props> {
               <CartIconView
                 source={cartIcon}
                 data-locator={getLocator('global_headerpanelbagicon')}
+                cartVal={cartVal}
               />
               <BackgroundView />
-              <RoundView />
+              <RoundView cartVal={cartVal} />
               <BodyCopy
                 text={cartVal}
                 color="white"
@@ -202,6 +213,7 @@ class Header extends React.PureComponent<Props> {
                 fontSize="fs10"
                 data-locator={getLocator('global_headerpanelbagitemtext')}
                 accessibilityText="Mini bag with count"
+                fontWeight="extrabold"
               />
             </Touchable>
           </CartContainer>
@@ -229,6 +241,8 @@ const mapStateToProps = state => {
     favStore: state.User && state.User.get('defaultStore'),
     cartVal: state.Header && state.Header.cartItemCount,
     isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    isUserLoggedIn: getUserLoggedInState(state),
+    userName: getUserName(state),
   };
 };
 
