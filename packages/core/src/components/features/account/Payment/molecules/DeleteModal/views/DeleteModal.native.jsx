@@ -118,7 +118,6 @@ class DeleteModal extends React.PureComponent<Props> {
                   <CustomButton
                     text={getLabelValue(labels, 'lbl_payment_modalGCConfirm', 'paymentGC')}
                     fill="BLUE"
-                    width="162px"
                     font-size="14"
                     onPress={onConfirm}
                     style={buttonStyle}

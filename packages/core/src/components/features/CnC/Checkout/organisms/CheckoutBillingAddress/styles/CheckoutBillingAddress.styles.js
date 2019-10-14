@@ -28,6 +28,11 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
+  .paymentMethodHeading {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
 
 export default styles;

@@ -45,6 +45,14 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         }
       }
     />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="billing-payment-bilingcreditcardlabel"
+      textAlign="left"
+      variant="listMenu"
+    />
     <Styled(Row)
       className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
@@ -173,6 +181,18 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -182,8 +202,28 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -244,6 +284,18 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -253,8 +305,28 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -356,6 +428,14 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
         }
       }
     />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="billing-payment-bilingcreditcardlabel"
+      textAlign="left"
+      variant="listMenu"
+    />
     <AddNewCCForm
       cardList={null}
       cardType={null}
@@ -398,6 +478,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -407,8 +499,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -469,6 +581,18 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "cardType",
                   "form": "checkoutBillingPayment",
                   "persistentSubmitErrors": undefined,
@@ -478,8 +602,28 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
                 "type": "@@redux-form/CHANGE",
               },
             ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,
@@ -822,6 +966,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         }
       >
         <Field
+          autoComplete="off"
           className="field"
           component={
             Object {
@@ -1443,6 +1588,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         }
       >
         <Field
+          autoComplete="off"
           className="field"
           component={
             Object {

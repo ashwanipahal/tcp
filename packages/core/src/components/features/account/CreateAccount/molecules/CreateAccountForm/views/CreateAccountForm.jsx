@@ -17,6 +17,7 @@ import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath } from '../../../../../../../utils';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -63,6 +64,7 @@ let CreateAccountForm = ({
               maxLength={50}
               dataLocator="phone-number-field"
               enableSuccessCheck={false}
+              normalize={formatPhoneNumber}
             />
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
