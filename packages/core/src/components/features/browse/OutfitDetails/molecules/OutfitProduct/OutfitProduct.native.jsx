@@ -180,7 +180,7 @@ OutfitDetailsView.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   currencyExchange: [{ exchangevalue: 1 }],
-  favoriteCount: '',
+  favoriteCount: 0,
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

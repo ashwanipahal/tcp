@@ -85,14 +85,8 @@ class HomePageView extends React.PureComponent<Props> {
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
-          text="Outfit Page"
-          onPress={() =>
-            navigation.navigate('OutfitDetail', {
-              title: 'COMPLETE THE LOOK',
-              outfitId: '151896',
-              vendorColorProductIdsList: '2084546_IV-2044422_10-2009561_DB-2042327_IV',
-            })
-          }
+          text="PLP Page"
+          onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
