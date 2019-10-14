@@ -12,7 +12,7 @@ function createThemeColorPalette(colors = {}) {
     primary = {
       light: blue[300],
       main: blue[500],
-      dark: blue[700],
+      dark: blue[800],
     },
   } = colors;
   const {

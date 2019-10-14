@@ -57,7 +57,7 @@ export const RoundView = styled.View`
   height: 20px;
   border-radius: 10;
   position: absolute;
-  margin-top: 14px;
+  margin-top: 15px;
 `;
 
 export const CartIconView = styled.Image`
@@ -68,7 +68,7 @@ export const CartIconView = styled.Image`
 
 export const TextStyle = {
   position: 'absolute',
-  marginTop: 18,
+  marginTop: 19,
   paddingRight: 5.6,
 };
 
