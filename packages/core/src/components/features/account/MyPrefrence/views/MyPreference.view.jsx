@@ -5,7 +5,7 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
 import MyPref from '../organism/MyPreferencesSection.view';
 
-const MyPrefrence = ({ labels, urlParams }) => {
+const MyPrefrence = ({ labels, ...otherProps }) => {
   return (
     <div>
       <FormPageHeadingComponent
@@ -13,7 +13,7 @@ const MyPrefrence = ({ labels, urlParams }) => {
         className="margin-none"
         data-locator="mypreference-header"
       />
-      <MyPref labels={labels} urlParams={urlParams} />
+      <MyPref labels={labels} {...otherProps} />
     </div>
   );
 };

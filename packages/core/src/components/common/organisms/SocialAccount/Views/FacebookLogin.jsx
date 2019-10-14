@@ -135,6 +135,14 @@ const FacebookLoginComponent = props => {
       {elem &&
         elem.length &&
         elem.map(element => {
+          {
+            element.socialAccount === 'facebook' &&
+            !element.isConnected &&
+            (props.urlParams.socialAccount === 'facebook' && props.urlParams.id === 'my-preference')
+              ? loginUser(element)
+              : '';
+          }
+
           return (
             <React.Fragment>
               {element.socialAccount === 'facebook' && !element.isConnected && (

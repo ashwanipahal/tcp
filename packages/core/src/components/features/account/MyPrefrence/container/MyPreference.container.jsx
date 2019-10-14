@@ -9,12 +9,9 @@ const getMyPrefrenceLabels = labels => {
 
 export class MyPrefrenceContainer extends PureComponent {
   render() {
-    const { labels, handleComponentChange, componentProps, urlParams } = this.props;
+    const { labels, handleComponentChange, componentProps, router } = this.props;
+    const urlParams = router.query;
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
-
-    console.log('kali bhai--------------------------');
-    console.log(urlParams);
-    console.log('kali bhai--------------------------');
 
     return (
       <MyPrefrence
@@ -27,22 +24,20 @@ export class MyPrefrenceContainer extends PureComponent {
   }
 }
 
-export const mapStateToProps = (state, ownProps) => {
-  return {
-    urlParams: ownProps.router.query,
-  };
-};
-
 MyPrefrenceContainer.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
+  router: PropTypes.shape({
+    query: PropTypes.shape({}),
+  }),
 };
 
 MyPrefrenceContainer.defaultProps = {
   labels: {},
   handleComponentChange: () => {},
   componentProps: {},
+  router: {},
 };
 
-export default connect(mapStateToProps)(MyPrefrenceContainer);
+export default connect()(MyPrefrenceContainer);

@@ -16,11 +16,12 @@ class SocialContainer extends React.PureComponent {
     setPointsModal: PropTypes.func.isRequired,
     isPlcc: PropTypes.string.isRequired,
     handleComponentChange: PropTypes.func,
-    urlParams: PropTypes.string.isRequired,
+    urlParams: PropTypes.shape({}),
   };
 
   static defaultProps = {
     handleComponentChange: () => {},
+    urlParams: {},
   };
 
   componentDidMount() {
@@ -73,9 +74,8 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
-    urlParams: ownProps.router,
     getSocialAcc: getsocialDataOnLoadState(state),
     // initial state of the social point modal
     setPointsModal: getPointsModal(state),

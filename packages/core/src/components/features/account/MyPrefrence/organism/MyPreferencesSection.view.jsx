@@ -258,10 +258,12 @@ class MyPrefrenceSection extends React.PureComponent {
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
+  urlParams: PropTypes.shape({}),
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
+  urlParams: {},
 };
 
 export default reduxForm({
