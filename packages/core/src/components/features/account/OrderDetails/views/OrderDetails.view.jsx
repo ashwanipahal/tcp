@@ -24,6 +24,32 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
  */
 
 class OrderDetailsView extends PureComponent {
+  header = (label, message) => {
+    return (
+      <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+        <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
+          <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+            {label}
+          </BodyCopy>
+
+          <BodyCopy fontWeight="extrabold" component="span" fontSize="fs14" fontFamily="secondary">
+            {message}
+          </BodyCopy>
+        </Col>
+      </Col>
+    );
+  };
+
+  notification = message => {
+    return (
+      <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
+        <BodyCopy fontSize="fs14" fontFamily="secondary">
+          {message}
+        </BodyCopy>
+      </Col>
+    );
+  };
+
   render() {
     const { orderDetailsData, className, ordersLabels } = this.props;
 
@@ -34,7 +60,8 @@ class OrderDetailsView extends PureComponent {
       // checkout,
       summary,
       // appliedGiftCards,
-      status,
+      // status,
+      orderStatus,
       pickedUpDate,
       purchasedItems,
       outOfStockItems,
@@ -47,10 +74,12 @@ class OrderDetailsView extends PureComponent {
     } = orderDetailsData || {};
 
     const { currencySymbol } = summary || {};
-    const notificationHeader = isBossOrder ? 'No Longer Available: ' : 'Canceled Items: ';
+    const notificationHeader = isBossOrder
+      ? getLabelValue(ordersLabels, 'lbl_orders_noLongerAvailable')
+      : getLabelValue(ordersLabels, 'lbl_orders_canceledItems');
     const notificationMessage = isBossOrder
-      ? 'The following has been removed from your order due to availability issues. The items will not be shipped. You will not be charged'
-      : 'This order has been canceled and will not be shipped.';
+      ? getLabelValue(ordersLabels, 'lbl_orders_isBossOrderCancelNotification')
+      : getLabelValue(ordersLabels, 'lbl_orders_CancelNotification');
     return (
       <div className={className}>
         <FormPageHeadingComponent
@@ -98,28 +127,14 @@ class OrderDetailsView extends PureComponent {
               purchasedItems.map((orderGroup, index) => (
                 <Row fullBleed className="group-row purchasedItemsMargin">
                   <OrderStatus
-                    status={orderGroup.status}
+                    status={orderGroup.orderStatus}
                     trackingNumber={orderGroup.trackingNumber}
                     trackingUrl={orderGroup.trackingUrl}
                     shippedDate={orderGroup.shippedDate}
                     isBopisOrder={isBopisOrder}
+                    ordersLabels={ordersLabels}
                   />
-                  {/* <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                    <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-                      <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                        {'Purchased Items: '}
-                      </BodyCopy>
 
-                      <BodyCopy
-                        fontWeight="extrabold"
-                        component="span"
-                        fontSize="fs14"
-                        fontFamily="secondary"
-                      >
-                        {summary.purchasedItems}
-                      </BodyCopy>
-                    </Col>
-                  </Col> */}
                   <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                     <OrderItemsList
                       key={index.toString()}
@@ -127,8 +142,8 @@ class OrderDetailsView extends PureComponent {
                       items={orderGroup.items}
                       currencySymbol={currencySymbol}
                       isShowWriteReview={
-                        orderGroup.status === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
-                        status === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
+                        orderGroup.orderStatus === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
+                        orderStatus === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
                       }
                     />
                   </Col>
@@ -139,33 +154,24 @@ class OrderDetailsView extends PureComponent {
               <Row fullBleed className="group-row">
                 {isBopisOrder && (
                   <OrderStatus
-                    status={status}
+                    status={orderStatus}
                     pickUpExpirationDate={pickUpExpirationDate}
                     pickedUpDate={pickedUpDate}
                     isBopisOrder={isBopisOrder}
+                    ordersLabels={ordersLabels}
                   />
                 )}
-                <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-                  <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                    {'Purchased Items: '}
-                  </BodyCopy>
-
-                  <BodyCopy
-                    component="span"
-                    fontWeight="extrabold"
-                    fontSize="fs14"
-                    fontFamily="secondary"
-                  >
-                    {summary.purchasedItems}
-                  </BodyCopy>
-                </Col>
+                {this.header(
+                  getLabelValue(ordersLabels, 'lbl_orders_purchasedItems'),
+                  summary.purchasedItems
+                )}
                 <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                   <OrderItemsList
                     ordersLabels={ordersLabels}
                     items={purchasedItems[0].items}
                     currencySymbol={currencySymbol}
                     isShowWriteReview={
-                      isBopisOrder ? true : status === constants.STATUS_CONSTANTS.ORDER_PICKED
+                      isBopisOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ORDER_PICKED
                     }
                   />
                 </Col>
@@ -174,26 +180,13 @@ class OrderDetailsView extends PureComponent {
 
             {outOfStockItems && outOfStockItems.length > 0 && (
               <Row fullBleed className="group-row">
-                <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-                  <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                    Out of Stock:
-                  </BodyCopy>
-
-                  <BodyCopy
-                    fontWeight="extrabold"
-                    component="span"
-                    fontSize="fs16"
-                    fontFamily="secondary"
-                  >
-                    {outOfStockItems.length}
-                  </BodyCopy>
-                </Col>
-                <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-                  <BodyCopy fontSize="fs14" fontFamily="secondary">
-                    Unfortunately some items were out of stock and could not be shipped. You have
-                    been fully refunded.
-                  </BodyCopy>
-                </Col>
+                {this.header(
+                  getLabelValue(ordersLabels, 'lbl_orders_outOfStock'),
+                  outOfStockItems.length
+                )}
+                {this.notification(
+                  getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')
+                )}
                 <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                   <OrderItemsList
                     ordersLabels={ordersLabels}
@@ -208,25 +201,12 @@ class OrderDetailsView extends PureComponent {
             {canceledItems && canceledItems.length > 0 && (
               <Row fullBleed className="group-row">
                 <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-                  <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                    {notificationHeader}
-                  </BodyCopy>
-
-                  <BodyCopy
-                    fontWeight="extrabold"
-                    component="span"
-                    fontSize="fs16"
-                    className="itemInfo_details_items_leftMargin"
-                    fontFamily="secondary"
-                  >
-                    {canceledItems.length}
-                  </BodyCopy>
-                </Col>
-                <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
                   <BodyCopy fontSize="fs14" fontFamily="secondary">
                     {notificationMessage}
                   </BodyCopy>
                 </Col>
+                {this.header(notificationHeader, canceledItems.length)}
+                {this.notification(notificationMessage)}
                 <Col colSize={{ large: 12, medium: 8, small: 6 }}>
                   <OrderItemsList
                     ordersLabels={ordersLabels}

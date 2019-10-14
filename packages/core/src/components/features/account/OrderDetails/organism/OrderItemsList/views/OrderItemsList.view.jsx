@@ -3,19 +3,7 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import OrderItem from '../../OrderItem';
 
-/**
- * This function component use for return the OrderItemsWithStatus
- * can be passed in the component.
- * @param otherProps - otherProps object used pass params to other component
- */
-
 const OrderItemsList = ({ className, ...otherProps }) => {
-  /**
-   * @function return  Used to render the JSX of the component
-   * @param    {[Void]} function does not accept anything.
-   * @return   {[Object]} JSX of the component
-   */
-
   const { items } = otherProps;
 
   return (
