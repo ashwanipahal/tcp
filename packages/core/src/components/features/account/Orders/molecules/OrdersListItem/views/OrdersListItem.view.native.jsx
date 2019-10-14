@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+
 import {
   OrdersListItemMainView,
   OrdersNumberWrapper,
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-export const OrdersListItem = ({ labels, orderItem }) => {
+export const OrdersListItem = ({ labels, orderItem, navigation }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   return (
     <>
@@ -35,7 +37,9 @@ export const OrdersListItem = ({ labels, orderItem }) => {
               noLink
               underline
               anchorVariation="primary"
-              onPress={() => {}}
+              onPress={() => {
+                navigateToNestedRoute(navigation, 'HomeStack', 'home');
+              }}
             />
           </OrdersNumberWrapper>
         </OrdersListItemView>
@@ -87,6 +91,7 @@ export const OrdersListItem = ({ labels, orderItem }) => {
 OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
+  navigation: PropTypes.shape([]).isRequired,
 };
 
 export default OrdersListItem;

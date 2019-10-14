@@ -13,7 +13,7 @@ export const OrdersList = ({ labels, ordersListItems, navigation }) => {
       <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
       <RecentOrders labels={labels} ordersListItems={ordersListItems} navigation={navigation} />
       {ordersListItems && ordersListItems.length ? (
-        <PastOrders labels={labels} ordersListItems={ordersListItems} />
+        <PastOrders labels={labels} ordersListItems={ordersListItems} navigation={navigation} />
       ) : null}
     </React.Fragment>
   );

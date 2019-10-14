@@ -5,10 +5,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import ButtonWrapper from '../styles/EmptyOrdersList.style.native';
-/**
- * This function will handle click to go to homepage
- * @param {} -
- */
 
 /**
  * This component will render EmptyOrdersList component

@@ -29,7 +29,7 @@ export const RecentOrders = ({ ordersListItems, labels, navigation }) => {
       </ViewWithSpacing>
       {ordersListItems && ordersListItems.length ? (
         <>
-          <OrdersListItem labels={labels} orderItem={ordersListItems[0]} />
+          <OrdersListItem labels={labels} orderItem={ordersListItems[0]} navigation={navigation} />
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
