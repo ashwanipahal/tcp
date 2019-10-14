@@ -7,6 +7,7 @@ exports[`Grid native should render correctly should match snapshot 1`] = `
   horizontal={false}
   initialNumToRender={10}
   keyExtractor={[Function]}
+  listKey={[Function]}
   maxToRenderPerBatch={10}
   numColumns={8}
   onEndReachedThreshold={2}
