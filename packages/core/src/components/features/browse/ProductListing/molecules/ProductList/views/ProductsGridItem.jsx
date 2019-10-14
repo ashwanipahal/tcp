@@ -32,10 +32,7 @@ class ProductsGridItem extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const {
-      colorsMap,
-      skuInfo: { colorProductId: itemColorProductId },
-    } = props.item;
+    const { colorsMap, skuInfo: { colorProductId: itemColorProductId } = {} } = props.item;
 
     if (colorsMap) {
       this.colorsExtraInfo = {
@@ -188,7 +185,7 @@ class ProductsGridItem extends React.PureComponent {
       isPLPredesign,
       isFavoriteView,
     } = this.props;
-    const { colorProductId } = skuInfo;
+    const colorProductId = skuInfo && skuInfo.colorProductId;
     if (colorProductId) {
       return (
         <ProductColorChipWrapper
@@ -390,7 +387,7 @@ class ProductsGridItem extends React.PureComponent {
           // eslint-disable-next-line camelcase
           long_product_title,
         },
-        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag },
+        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag } = {},
         quantityPurchased,
         colorsMap,
         imagesByColor,

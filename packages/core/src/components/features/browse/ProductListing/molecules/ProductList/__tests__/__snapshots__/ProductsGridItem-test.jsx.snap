@@ -140,6 +140,9 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         onClick={[Function]}
       />
     </div>
+    <div
+      className="favorite-move-purchase-section"
+    />
   </div>
 </li>
 `;

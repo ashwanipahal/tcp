@@ -215,7 +215,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   getSizeOptions = (colorItem, selectedFit?) => {
     const { fits } = colorItem;
     let sizeOptions = [];
-    if (colorItem) {
+    if (colorItem && fits && fits.length) {
       fits.forEach(fit => {
         if (selectedFit) {
           if (fit.fitName === selectedFit.name) {
