@@ -166,9 +166,9 @@ class CreateAccountForm extends PureComponent<Props> {
             disabled={false}
             rightText={`${getLabelValue(
               labels,
-              'lbl_createAccount_termsConditions',
+              'lbl_createAccount_termsConditions_app',
               'registration'
-            )} ${getLabelValue(labels, 'lbl_createAccount_termsConditions_1', 'registration')}`}
+            )} ${getLabelValue(labels, 'lbl_createAccount_termsConditions_1_app', 'registration')}`}
             marginTop={13}
           />
           <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />

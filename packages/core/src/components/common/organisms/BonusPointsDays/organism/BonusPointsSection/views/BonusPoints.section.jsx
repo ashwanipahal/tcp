@@ -86,7 +86,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         color="orange.800"
         className="elem-mr-XS"
       >
@@ -96,7 +96,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         className="elem-mr-XS"
         color="primary.main"
       >
@@ -106,7 +106,7 @@ const getHeader = ({ labels }) => {
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
-        component="span"
+        component="h2"
         color="pink.500"
       >
         {getLabelValue(labels, 'lbl_bonusPoints_placeRewardsDay')}

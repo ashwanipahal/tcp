@@ -56,6 +56,7 @@ export const bodyCopyStyles = {
   ),
   percentage_wrapped_large: props => <PercentageStyle colorVariation="white" {...props} />,
   percentage_wrapped_large_black: props => <PercentageStyle colorVariation="black" {...props} />,
+  percentage_all_wrapped_normal_tab: props => <PercentageStyle colorVariation="black" {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
   // TODO: Remove .style10 when currency_up_style is available in CMS
@@ -168,18 +169,8 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  medium_text_regular: props => (
-    <BodyCopy
-      fontSize="fs20"
-      color="gray.900"
-      mobilefontFamily="primary"
-      fontWeight="regular"
-      textAlign="center"
-      letterSpacing="ls2"
-      lineHeight="20px"
-      {...props}
-    />
-  ),
+  medium_text_regular: props => <MediumTextRegular {...props} />,
+  medium_text_regular_tab: props => <MediumTextRegular {...props} />,
   extrabold_text_regular: props => (
     <BodyCopy
       fontSize="fs42"
@@ -391,6 +382,25 @@ const PercentagePinkStyle = props => {
 
 PercentagePinkStyle.propTypes = {
   text: PropTypes.string.isRequired,
+};
+
+/**
+ * This function return the Promobanner Style
+ * Style contains regular primary font
+ */
+const MediumTextRegular = props => {
+  return (
+    <BodyCopy
+      fontSize="fs20"
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontWeight="regular"
+      textAlign="center"
+      letterSpacing="ls2"
+      lineHeight="20px"
+      {...props}
+    />
+  );
 };
 
 PromoBanner.propTypes = {

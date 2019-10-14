@@ -96,6 +96,13 @@ export default {
   moduleR_cta_link: 'moduleR_cta_links_',
   moduleR_cta_btn: 'moduleR_cta_btn',
 
+  // Module T
+  moduleT_header_text: 'moduleT_header_text',
+  moduleT_promobanner_text: 'moduleJ_promobanner_text',
+  moduleT_promobanner_img: 'moduleJ_promobanner_img_',
+  moduleT_cta_links: 'moduleT_cta_links_',
+  moduleT_cta_image: 'moduleT_cta_image_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

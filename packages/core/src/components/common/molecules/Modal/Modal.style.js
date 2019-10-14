@@ -46,9 +46,6 @@ const ModalStyle = css`
       display: none;
     }
   }
-  .alignTop {
-    top: 25px;
-  }
   .Modal-Header {
     ${props =>
       props.stickyHeader

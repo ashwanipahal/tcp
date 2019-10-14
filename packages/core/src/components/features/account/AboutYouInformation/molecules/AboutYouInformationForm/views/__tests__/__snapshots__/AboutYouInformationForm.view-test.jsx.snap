@@ -153,6 +153,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -324,6 +330,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }
@@ -503,6 +515,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -674,6 +692,12 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }

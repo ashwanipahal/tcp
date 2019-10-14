@@ -29,6 +29,9 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         lineHeight="normal"
         link={null}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
         textAlign="left"
       />
     </Styled(Heading)>
@@ -88,6 +91,9 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         lineHeight="normal"
         link={null}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
         textAlign="left"
       />
     </Styled(Heading)>
