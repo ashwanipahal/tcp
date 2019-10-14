@@ -97,7 +97,7 @@ const ButtonStyles = css`
       /* fixes button flickering on the hover */
       ::after {
         font-family: ${props.theme.typography.fonts.secondary};
-        font-weight: ${props.theme.typography.fontWeights.regular};
+        font-weight: ${props.theme.typography.fontWeights.black};
         font-size: ${props.theme.typography.fontSizes.fs14};
         display: block;
         content: attr(data-category-link-label);
