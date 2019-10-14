@@ -134,7 +134,7 @@ export const InActiveEstimateTextStyle = styled.Text`
 
 export const FooterView = styled.View`
   width: 100%;
-  height: 100px;
+  height: 160px;
   position: absolute;
   bottom: 0;
   background-color: ${props => props.theme.colors.WHITE};

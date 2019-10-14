@@ -48,7 +48,7 @@ const ButtonStyles = css`
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
-      padding: 12px 20px;
+      padding: 11px 20px;
       width: 100%;
     `
       : ''};
@@ -61,7 +61,7 @@ const ButtonStyles = css`
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
-      padding: 12px 32px;
+      padding: 11px 32px;
     `
       : ''};
 

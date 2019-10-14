@@ -42,13 +42,13 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     customTextStyle={null}
     disableButton={false}
     fill=""
-    fullWidth={true}
+    fullWidth=""
     iconColor="gray.800"
     iconName="chevron-down"
     iconSize="fs12"
@@ -294,17 +294,15 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <ModuleT
-    bgColor="#d8d8d8"
     ctaItems={
       Array [
         Object {
           "button": Object {
-            "action": "",
             "external": 0,
             "target": "",
             "text": "Girl",
             "title": "Girl",
-            "url": "/c/girls-clothing",
+            "url": "/c/",
           },
           "image": Object {
             "alt": "Girl",
@@ -317,139 +315,75 @@ exports[`HomePageView should render correctly 1`] = `
         },
         Object {
           "button": Object {
-            "action": "",
             "external": 0,
             "target": "",
             "text": "Toddler Girl",
             "title": "Toddler Girl",
-            "url": "/c/toddler-girl-clothes",
+            "url": "/c/",
           },
           "image": Object {
-            "alt": "Girl",
+            "alt": "Toddler Girl alt",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Girl",
+            "title": "Toddler Girl title",
             "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
           },
         },
         Object {
           "button": Object {
-            "action": "",
             "external": 0,
             "target": "",
             "text": "Boy",
             "title": "Boy",
-            "url": "/c/boys-clothing",
+            "url": "/c/",
           },
           "image": Object {
-            "alt": "Girl",
+            "alt": "Boy",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Girl",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "title": "Boy",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
           },
         },
         Object {
           "button": Object {
-            "action": "",
             "external": 0,
             "target": "",
             "text": "Toddler Boy",
             "title": "Toddler Boy",
-            "url": "/c/toddler-boy-clothes",
+            "url": "/c/",
           },
           "image": Object {
-            "alt": "Girl",
+            "alt": "Toddler Boy alt",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Girl",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "title": "Toddler Boy title",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
           },
         },
         Object {
           "button": Object {
-            "action": "",
             "external": 0,
             "target": "",
             "text": "Baby",
             "title": "Baby",
-            "url": "/c/baby-clothes",
+            "url": "/c/",
           },
           "image": Object {
-            "alt": "Girl",
+            "alt": "Baby",
             "crop_d": "",
             "crop_m": "",
             "crop_t": "",
-            "title": "Girl",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            "title": "Baby",
+            "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
           },
         },
       ]
     }
-    divTabs={
-      Array [
-        Object {
-          "category": Object {
-            "cat_id": "47526",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 1",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47502>47535>54071",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 2",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47503>47544",
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 3",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "BOY",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": "47501>47526",
-          },
-          "singleCTAButton": null,
-          "text": Object {
-            "text": "TODDLER BOY",
-          },
-        },
-      ]
-    }
+    ctaType="stackedCTAButtons"
     headerText={
       Array [
         Object {
@@ -463,7 +397,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/p/",
+            "url": "http://www.childrensplace.com",
           },
           "textItems": Array [
             Object {
@@ -474,7 +408,6 @@ exports[`HomePageView should render correctly 1`] = `
         },
       ]
     }
-    layout="alt"
     mediaLinkedList={
       Array [
         Object {
@@ -484,7 +417,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1569002145/ecom/assets/products/tcp/3006086/3006086_10.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
@@ -502,7 +435,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Girls",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1569002143/ecom/assets/products/tcp/3005541/3005541_SV.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",
@@ -529,29 +462,18 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/c/",
+            "url": "http://www.childrensplace.com",
           },
           "textItems": Array [
             Object {
-              "style": "medium_text_regular",
-              "style2": "extra_large_text_regular",
+              "style": "medium_text_regular_tab",
               "text": "ALL GRAPHIC TEES",
-              "text2": "ALL SHORTS",
             },
             Object {
-              "style": "percentage_wrapped_large_black",
-              "style2": "extra_large_text_black",
+              "style": "percentage_all_wrapped_normal_tab",
               "text": "60 % OFF",
             },
           ],
-        },
-      ]
-    }
-    set={
-      Array [
-        Object {
-          "key": "ctaType",
-          "val": "linkList",
         },
       ]
     }

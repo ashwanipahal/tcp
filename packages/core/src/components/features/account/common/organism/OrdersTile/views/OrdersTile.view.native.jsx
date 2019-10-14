@@ -31,13 +31,13 @@ export const OrdersTile = ({ labels, ordersList, navigation }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_ordersTile_heading', 'orders')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       {ordersItemList}
       <ButtonWrapperStyle>
         <CustomButton
           text={getLabelValue(labels, 'lbl_ordersTile_viewAllOrders', 'orders')}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => {
             navigateToNestedRoute(navigation, 'HomeStack', 'home');

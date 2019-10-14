@@ -137,6 +137,12 @@ exports[`Shipping Page should render correctly 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -287,6 +293,12 @@ exports[`Shipping Page should render correctly 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }

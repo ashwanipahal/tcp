@@ -8,11 +8,8 @@ import styles from '../styles/ProductImages.style';
 class SocialConnect extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
-
     isFacebookEnabled: PropTypes.bool,
-
     isPinterestEnabled: PropTypes.bool,
-
     isTwitterEnabled: PropTypes.bool,
   };
 
