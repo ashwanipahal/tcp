@@ -100,7 +100,7 @@ const styles = css`
     margin-right: -14px;
     margin-left: -14px;
     margin-top: 0;
-
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     div.checkout-cart-list {
       margin-left: 14px;
       margin-right: 14px;
@@ -125,6 +125,40 @@ const styles = css`
       .product-detail {
         margin-right: 35px;
       }
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .hide-in-large-up {
+      display: none;
+    }
+    .hideAccordian {
+      display: none;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .hide-in-medium-down {
+      display: none;
+    }
+    .hideAccordian {
+      display: none;
+    }
+  }
+
+  .reviewMyBagAccordian {
+    margin: 0;
+    .collapsible-header {
+      background-color: ${props => props.theme.colorPalette.white};
+      padding-top: 0;
+      padding-left: 0;
+    }
+    .collapsible-icon {
+      top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+    .item-opened {
+      margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
   }
 `;

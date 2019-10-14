@@ -48,7 +48,8 @@ const CtaStyle = css`
       background: ${props => props.theme.colors.PRIMARY.BLUE};
     }
     height: 48px;
-    margin-left: 10px;
+    margin-left: ${props =>
+      props.isInternationalShipping ? '0px' : props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     flex: 1;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     @media ${props => props.theme.mediaQuery.smallMax} {

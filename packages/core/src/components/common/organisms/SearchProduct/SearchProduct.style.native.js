@@ -36,9 +36,11 @@ const SafeAreaView = styled.SafeAreaView`
   flex: 1;
 `;
 
-const CloseButton = styled.View`
+const CloseButton = styled.TouchableOpacity`
   width: 25px;
+  height: 25px;
   align-items: center;
+  justify-content: center;
 `;
 
 export default SearchContainer;
