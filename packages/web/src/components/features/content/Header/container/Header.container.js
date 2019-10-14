@@ -10,6 +10,8 @@ import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLoc
 import {
   getUserName,
   getUserLoggedInState,
+  getCurrentPointsState,
+  getTotalRewardsState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAGPAGE_SELECTORS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
@@ -26,6 +28,8 @@ const mapStateToProps = state => {
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
     userName: getUserName(state),
+    userPoints: getCurrentPointsState(state),
+    userRewards: getTotalRewardsState(state),
     isLoggedIn: getUserLoggedInState(state),
     cartItemCount: getCartItemCount(),
     totalItems: BAGPAGE_SELECTORS.getTotalItems(state),

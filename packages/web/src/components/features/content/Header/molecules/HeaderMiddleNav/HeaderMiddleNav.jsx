@@ -101,6 +101,8 @@ class HeaderMiddleNav extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
+      userPoints,
+      userRewards,
       store,
       labels,
     } = this.props;
@@ -182,15 +184,18 @@ class HeaderMiddleNav extends React.PureComponent {
                     className="username rightLink"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                   >
-                    <span className="user-name">
-                      {`Hi, ${userName}`}
-                      <Image
-                        alt="user"
-                        className={this.handleCarrottoggle(userNameClick)}
-                        src={getIconPath('down_arrow_icon')}
-                        height="6px"
-                      />
-                    </span>
+                    <span className="user-name">{`Hi, ${userName}`}</span>
+                    <Image
+                      alt="user"
+                      className={this.handleCarrottoggle(userNameClick)}
+                      src={getIconPath('down_arrow_icon')}
+                      height="6px"
+                    />
+                    <BodyCopy fontFamily="secondary" fontSize="fs10">
+                      {`${userPoints} Points |`}
+                      {`${userRewards} Rewards`}
+                    </BodyCopy>
+
                     <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
                   </BodyCopy>
                 </React.Fragment>
@@ -285,6 +290,8 @@ HeaderMiddleNav.propTypes = {
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,

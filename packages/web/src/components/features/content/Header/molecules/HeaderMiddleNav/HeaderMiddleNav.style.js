@@ -51,12 +51,12 @@ export default css`
     display: inline-block;
   }
   .carrot-down-icon {
-    margin: 9px;
+    margin-left: 9px;
     transform: rotate(0deg);
     transition: transform 0.1s linear;
   }
   .carrot-up-icon {
-    margin: 9px;
+    margin-left: 9px;
     transform: rotate(180deg);
     transition: transform 0.15s linear;
   }

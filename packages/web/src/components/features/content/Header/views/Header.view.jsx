@@ -78,6 +78,8 @@ class Header extends React.PureComponent {
       openNavigationDrawer,
       closeNavigationDrawer,
       userName,
+      userPoints,
+      userRewards,
       openOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
@@ -111,6 +113,8 @@ class Header extends React.PureComponent {
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
           userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           openOverlay={openOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
@@ -157,6 +161,8 @@ Header.propTypes = {
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
