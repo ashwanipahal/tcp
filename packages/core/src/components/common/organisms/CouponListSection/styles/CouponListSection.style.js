@@ -23,9 +23,6 @@ const styles = css`
     width: ${props => props.theme.spacing.ELEM_SPACING.MED};
     height: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
-  .cart-show-more-button {
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
-  }
 `;
 
 export default styles;
