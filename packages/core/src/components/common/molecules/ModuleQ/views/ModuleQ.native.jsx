@@ -58,7 +58,6 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
 
-  console.log('on carousel load ');
   return (
     <ImageSlideWrapper>
       <ImageItemWrapper>
