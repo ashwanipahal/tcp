@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/PickUpContactDisplay.style';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
@@ -26,7 +27,7 @@ class PickUpContactDisplay extends React.PureComponent {
             color="gray.900"
             fontWeight="regular"
           >
-            {formData.phoneNumber}
+            {formatPhoneNumber(formData.phoneNumber)}
           </BodyCopy>
         )}
         {formData.emailAddress && (

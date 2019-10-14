@@ -54,6 +54,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}
           color="black"
+          fontWeight="black"
         />
 
         <LineComp {...UnderlineStyle} />

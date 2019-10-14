@@ -724,6 +724,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
         dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
+        normalize={[Function]}
         placeholder="lbl_profile_personal_info_phoneNumber"
         type="tel"
       />
@@ -1976,6 +1977,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
         dataLocator="editPersonalInfo-phnumber"
         id="phoneNumber"
         name="phoneNumber"
+        normalize={[Function]}
         placeholder="lbl_profile_personal_info_phoneNumber"
         type="tel"
       />

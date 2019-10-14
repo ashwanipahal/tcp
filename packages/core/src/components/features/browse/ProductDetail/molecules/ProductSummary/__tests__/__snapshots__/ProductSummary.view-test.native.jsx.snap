@@ -92,19 +92,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     text="$24.95"
     textDecoration={null}
   />
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      color="red.500"
-      dataLocator="pdp_discounted_percentage"
-      fontSize="fs14"
-      fontWeight="regular"
-      margin="0 0 0 10px"
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      textDecoration={null}
-    />
-  </Styled(View)>
+  <Styled(View) />
   <Styled(PromotionalMessage)
     dataLocator="pdp_loyalty_text"
     fontSize="fs12"
