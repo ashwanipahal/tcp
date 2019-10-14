@@ -46,6 +46,8 @@ class CheckoutPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
@@ -78,6 +80,8 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             orderHasShipping={orderHasShipping}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case SHIPPING.toLowerCase():
@@ -97,6 +101,8 @@ class CheckoutPage extends React.PureComponent {
             labels={labels}
             venmoBannerLabel={{ venmoBannerText }}
             setVenmoPickupState={setVenmoPickupState}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case BILLING.toLowerCase():
@@ -170,12 +176,16 @@ CheckoutPage.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,
+  isVenmoPickupBannerDisplayed: PropTypes.bool,
+  isVenmoShippingBannerDisplayed: PropTypes.bool,
 };
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
   setVenmoPickupState: () => {},
   setVenmoShippingState: () => {},
+  isVenmoPickupBannerDisplayed: true,
+  isVenmoShippingBannerDisplayed: true,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

@@ -156,11 +156,15 @@ class PickUpFormPart extends React.Component {
    * @params {string} currentSection - current checkout section name
    */
   isShowVenmoBanner = currentSection => {
-    const { isVenmoPaymentInProgress } = this.props;
+    const {
+      isVenmoPaymentInProgress,
+      isVenmoPickupDisplayed,
+      isVenmoShippingDisplayed,
+    } = this.props;
     return (
       isVenmoPaymentInProgress &&
-      ((currentSection.toLowerCase() === 'pickup' && !this.isVenmoPickupDisplayed()) ||
-        (currentSection.toLowerCase() === 'shipping' && !this.isVenmoShippingDisplayed()))
+      ((currentSection.toLowerCase() === 'pickup' && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === 'shipping' && !isVenmoShippingDisplayed))
     );
   };
 
@@ -376,6 +380,7 @@ PickUpFormPart.propTypes = {
   availableStages: PropTypes.shape([]).isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   isVenmoPickupDisplayed: PropTypes.bool,
+  isVenmoShippingDisplayed: PropTypes.bool,
   orderHasShipping: PropTypes.bool.isRequired,
 };
 
@@ -390,6 +395,7 @@ PickUpFormPart.defaultProps = {
   currentPhoneNumber: '',
   isVenmoPaymentInProgress: false,
   isVenmoPickupDisplayed: true,
+  isVenmoShippingDisplayed: true,
 };
 
 const validateMethod = createValidateMethod({

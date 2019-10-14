@@ -43,6 +43,7 @@ export default class ShippingPage extends React.Component {
     newUserPhoneNo: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoShippingDisplayed: PropTypes.bool,
+    isVenmoPickupDisplayed: PropTypes.bool,
     setVenmoPickupState: PropTypes.func,
     venmoBannerLabel: PropTypes.shape({
       venmoBannerText: PropTypes.string,
@@ -71,6 +72,7 @@ export default class ShippingPage extends React.Component {
     newUserPhoneNo: null,
     isVenmoPaymentInProgress: false,
     isVenmoShippingDisplayed: true,
+    isVenmoPickupDisplayed: true,
     setVenmoPickupState: () => {},
     venmoBannerLabel: {
       venmoBannerText: '',
@@ -133,11 +135,15 @@ export default class ShippingPage extends React.Component {
    * @params {string} currentSection - current checkout section name
    */
   isShowVenmoBanner = currentSection => {
-    const { isVenmoPaymentInProgress } = this.props;
+    const {
+      isVenmoPaymentInProgress,
+      isVenmoPickupDisplayed,
+      isVenmoShippingDisplayed,
+    } = this.props;
     return (
       isVenmoPaymentInProgress &&
-      ((currentSection.toLowerCase() === 'pickup' && !this.isVenmoPickupDisplayed()) ||
-        (currentSection.toLowerCase() === 'shipping' && !this.isVenmoShippingDisplayed()))
+      ((currentSection.toLowerCase() === 'pickup' && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === 'shipping' && !isVenmoShippingDisplayed))
     );
   };
 
