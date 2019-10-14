@@ -12,7 +12,10 @@ import {
   getIsSflItemRemoved,
   getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import {
   setVenmoPaymentInProgress,
   setVenmoPickupMessageState,
@@ -33,14 +36,29 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const {
+      setVenmoPickupState,
+      setVenmoShippingState,
+      isRegisteredUserCallDone,
+      initialActions,
+      fetchSflData,
+    } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    if (isRegisteredUserCallDone) {
+      initialActions();
+      fetchSflData();
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { router } = this.props;
+      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+      const { router, initialActions, fetchSflData, isRegisteredUserCallDone } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+        initialActions();
+        fetchSflData();
+      }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
       if (isSfl) {
         document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
@@ -49,12 +67,6 @@ export class BagPageContainer extends React.Component<Props> {
   }
 
   closeModal = () => {};
-
-  componentWillMount = () => {
-    const { initialActions, fetchSflData } = this.props;
-    initialActions();
-    fetchSflData();
-  };
 
   render() {
     const {
@@ -163,6 +175,7 @@ const mapStateToProps = state => {
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

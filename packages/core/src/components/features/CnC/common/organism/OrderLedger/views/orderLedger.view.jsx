@@ -12,7 +12,8 @@ const getHeader = (labels, ledgerSummaryData) => {
   return (
     <div className="elem-mb-SM order-ledger-header">
       <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal &&
+          orderBalanceTotal.toFixed(2)})`}
       </BodyCopy>
     </div>
   );

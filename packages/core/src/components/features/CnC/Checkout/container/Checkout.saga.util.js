@@ -32,6 +32,20 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isCanada } from '../../../../../utils';
 
+export const pickUpRouting = ({
+  getIsShippingRequired,
+  isVenmoInProgress,
+  isVenmoPickupDisplayed,
+}) => {
+  if (getIsShippingRequired) {
+    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  }
+};
+
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
   const selectedAddressId = yield select(selectors.getOnFileAddressKey);

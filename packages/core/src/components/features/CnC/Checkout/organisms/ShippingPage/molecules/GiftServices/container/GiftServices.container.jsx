@@ -66,7 +66,7 @@ class GiftServicesContainer extends React.PureComponent {
     } = this.props;
     const optionId = giftWrap ? giftWrap.get('optionId') : '';
     const message = giftWrap ? giftWrap.get('message') : '';
-    const hasGiftWrapping = !!giftWrap.size;
+    const hasGiftWrapping = !!(giftWrap && giftWrap.size);
     const brand = giftWrap ? giftWrap.get('brand') : '';
     const SelectedBrand = this.getBrandForGiftServices();
     const updateLabels = {
@@ -79,7 +79,7 @@ class GiftServicesContainer extends React.PureComponent {
         labels={updateLabels}
         formName={formName}
         dispatch={dispatch}
-        isGiftServicesChecked={giftWrap.size}
+        isGiftServicesChecked={giftWrap && giftWrap.size}
         formSection={formSection}
         giftWrapOptions={giftWrapOptions}
         initialValues={{ optionId, message, hasGiftWrapping, brand }}
