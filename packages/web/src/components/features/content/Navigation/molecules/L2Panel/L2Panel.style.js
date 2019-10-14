@@ -162,6 +162,11 @@ export default css`
       ul.half-width {
         width: 50%;
       }
+
+      li {
+        height: 40px;
+      }
+
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
