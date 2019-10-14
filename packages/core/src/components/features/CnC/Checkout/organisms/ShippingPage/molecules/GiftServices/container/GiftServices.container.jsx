@@ -66,7 +66,7 @@ class GiftServicesContainer extends React.PureComponent {
     } = this.props;
     const optionId = giftWrap ? giftWrap.get('optionId') : '';
     const message = giftWrap ? giftWrap.get('message') : '';
-    const hasGiftWrapping = !!giftWrap.size;
+    const hasGiftWrapping = giftWrap && !!giftWrap.size;
     const brand = giftWrap ? giftWrap.get('brand') : '';
     const SelectedBrand = this.getBrandForGiftServices();
     const updateLabels = {
@@ -75,18 +75,22 @@ class GiftServicesContainer extends React.PureComponent {
       DETAILS_RICH_TEXT_GYM: detailsRichTextGymboree,
     };
     return (
-      <GiftServices
-        labels={updateLabels}
-        formName={formName}
-        dispatch={dispatch}
-        isGiftServicesChecked={giftWrap.size}
-        formSection={formSection}
-        giftWrapOptions={giftWrapOptions}
-        initialValues={{ optionId, message, hasGiftWrapping, brand }}
-        currencySymbol={currencySymbol}
-        handleToggle={this.handleToggle}
-        SelectedBrand={SelectedBrand}
-      />
+      <>
+        {giftWrapOptions && (
+          <GiftServices
+            labels={updateLabels}
+            formName={formName}
+            dispatch={dispatch}
+            isGiftServicesChecked={giftWrap && giftWrap.size}
+            formSection={formSection}
+            giftWrapOptions={giftWrapOptions}
+            initialValues={{ optionId, message, hasGiftWrapping, brand }}
+            currencySymbol={currencySymbol}
+            handleToggle={this.handleToggle}
+            SelectedBrand={SelectedBrand}
+          />
+        )}
+      </>
     );
   }
 }

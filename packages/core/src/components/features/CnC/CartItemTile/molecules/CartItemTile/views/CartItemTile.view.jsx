@@ -8,7 +8,6 @@ import ProductEditForm from '../../../../../../common/molecules/ProductCustomize
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-
 import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
@@ -55,13 +54,53 @@ class CartItemTile extends React.Component {
     }
   };
 
+  /**
+   *
+   * @method handleEditCartItemWithStore
+   * @description this method handles edit for cart item for boss/bopis item
+   * @memberof CartItemTile
+   */
+  handleEditCartItemWithStore = (pageView, itemBrand, productNumber) => {
+    if (pageView === 'myBag') {
+      const { onPickUpOpenClick, productDetail, orderId } = this.props;
+      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { store, orderItemType } = productDetail.miscInfo;
+      const isItemShipToHome = !store;
+      onPickUpOpenClick({
+        colorProductId: productNumber,
+        orderInfo: {
+          orderItemId: itemId,
+          Quantity: qty,
+          color,
+          Size: size,
+          Fit: fit,
+          orderId,
+          orderItemType,
+          isItemShipToHome,
+          itemBrand,
+        },
+      });
+    }
+  };
+
   callEditMethod = () => {
     const { productDetail, pageView } = this.props;
-    this.handleEditCartItem(
-      pageView,
-      productDetail.itemInfo.itemBrand,
-      productDetail.productInfo.productPartNumber
-    );
+    const {
+      miscInfo: { orderItemType },
+    } = productDetail;
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+      this.handleEditCartItem(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
+    } else {
+      this.handleEditCartItemWithStore(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
+    }
   };
 
   handleMoveItemtoSaveList = () => {
@@ -658,7 +697,7 @@ class CartItemTile extends React.Component {
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
                   fontFamily="secondary"
-                  tag="span"
+                  component="h2"
                   fontSize="fs14"
                   fontWeight={['extrabold']}
                   dataLocator={getLocator('cart_item_title')}
@@ -799,7 +838,9 @@ CartItemTile.propTypes = {
   showOnReviewPage: PropTypes.bool,
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
+  orderId: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
 };
 

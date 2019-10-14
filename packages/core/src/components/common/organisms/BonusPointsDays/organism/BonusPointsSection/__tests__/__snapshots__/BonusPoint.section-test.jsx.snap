@@ -133,7 +133,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -153,7 +153,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -173,7 +173,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           <ForwardRef
             className={null}
             color="pink.500"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -205,7 +205,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -225,7 +225,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -245,7 +245,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -506,7 +506,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -526,7 +526,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -546,7 +546,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           <ForwardRef
             className={null}
             color="pink.500"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -578,7 +578,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -598,7 +598,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -618,7 +618,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -889,7 +889,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -909,7 +909,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -929,7 +929,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           <ForwardRef
             className={null}
             color="pink.500"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -961,7 +961,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -981,7 +981,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1001,7 +1001,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1272,7 +1272,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1292,7 +1292,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1312,7 +1312,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           <ForwardRef
             className={null}
             color="pink.500"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1344,7 +1344,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1364,7 +1364,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1384,7 +1384,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1622,7 +1622,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1642,7 +1642,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           <ForwardRef
             className="elem-mr-XS"
             color="primary.main"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1662,7 +1662,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           <ForwardRef
             className={null}
             color="pink.500"
-            component="span"
+            component="h2"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1694,7 +1694,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1714,7 +1714,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="primary.main"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1734,7 +1734,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       <Styled(BodyCopy)
         className={null}
         color="pink.500"
-        component="span"
+        component="h2"
         fontFamily="primary"
         fontSize={
           Array [

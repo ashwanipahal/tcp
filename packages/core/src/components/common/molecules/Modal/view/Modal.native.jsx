@@ -125,7 +125,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                 stickyHeaderIndices={[0]}
               >
                 <Heading>
-                  <ToastContainer />
+                  <ToastContainer shouldShowSafeArea={false} />
                   <StatusBar hidden />
                   <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
                     {heading && (

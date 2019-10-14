@@ -515,6 +515,10 @@ const getShipmentMethods = state => {
   return state.Checkout.getIn(['options', 'shippingMethods']);
 };
 
+const getShipmentLoadingStatus = state => {
+  return state.Checkout.getIn(['values', 'isShippingFormLoading']);
+};
+
 const getDefaultShipmentID = createSelector(
   [getShipmentMethods, getShippingDestinationValues],
   (shipmentMethods, shippingDestinationValues) => {
@@ -771,10 +775,13 @@ const getSelectedGiftWrapDetails = state => {
   const checkout = orderDetails.get('checkout');
   const optionId = checkout.getIn(['giftWrap', 'optionId']);
   const selectedOptionData = getGiftWrapOptions(state);
-  const selectedOption = selectedOptionData.body.giftOptions.filter(
-    option => option.catEntryId === optionId
-  );
-  if (selectedOption.length === 1) return selectedOption[0];
+  if (selectedOptionData.body) {
+    const selectedOption = selectedOptionData.body.giftOptions.filter(
+      option => option.catEntryId === optionId
+    );
+    if (selectedOption.length === 1) return selectedOption[0];
+  }
+
   return [];
 };
 
@@ -937,6 +944,7 @@ export default {
   getLabels,
   getShippingAddress,
   getIsPaymentDisabled,
+  getShipmentLoadingStatus,
   getBillingValues,
   getAddressByKey,
   isCardNotUpdated,

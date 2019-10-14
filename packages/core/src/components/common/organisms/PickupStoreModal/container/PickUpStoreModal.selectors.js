@@ -105,3 +105,28 @@ export const getOpenSkuSelectionForm = state => {
 export const getStoreSearchError = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
 };
+
+export const getIsPickupModalOpenFromBagPage = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('fromBagPage');
+};
+
+export const getUpdateCartItemStore = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('updateCartItemStore')
+  );
+};
+
+export const getInitialValuesFromBagPage = state => {
+  const pickUpModalReducer =
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');
+  return {
+    Quantity: pickUpModalReducer.get('Quantity'),
+    color: pickUpModalReducer.get('color'),
+    Size: pickUpModalReducer.get('Size'),
+    Fit: pickUpModalReducer.get('Fit'),
+    isItemShipToHome: pickUpModalReducer.get('isItemShipToHome'),
+    orderItemType: pickUpModalReducer.get('orderItemType'),
+    orderId: pickUpModalReducer.get('orderId'),
+    orderItemId: pickUpModalReducer.get('orderItemId'),
+  };
+};

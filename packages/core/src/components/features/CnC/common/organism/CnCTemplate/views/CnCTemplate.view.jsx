@@ -53,7 +53,7 @@ const CnCTemplate = ({
             medium: isSmallLeftSection ? 5 : 8,
             large: isSmallLeftSection ? 8 : 12,
           }}
-          className="left-sec"
+          className="left-sec "
         >
           <LeftSection />
         </Col>
@@ -118,7 +118,7 @@ CnCTemplate.defaultProps = {
   isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: false,
+  isNotLoaded: true,
 };
 
 export default withStyles(CnCTemplate, styles);
