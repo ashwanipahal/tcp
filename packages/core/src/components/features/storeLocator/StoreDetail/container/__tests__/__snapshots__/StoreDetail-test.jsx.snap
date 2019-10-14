@@ -10,13 +10,12 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
     fontSizeVariation="xlarge"
     handleLinkClick={[MockFunction]}
     noLink={true}
+    title="lbl_storedetails_backLink"
   >
     <span
       className="left-arrow"
-    >
-       
-    </span>
-    Back
+    />
+    lbl_storedetails_backLink
   </Styled(Anchor)>
   <Styled(Row)>
     <Styled(Col)

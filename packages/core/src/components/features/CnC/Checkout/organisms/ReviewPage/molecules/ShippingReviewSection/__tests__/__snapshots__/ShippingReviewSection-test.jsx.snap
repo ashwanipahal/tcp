@@ -75,19 +75,6 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
         link={null}
         textAlign="left"
       />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -97,16 +84,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
           "small": 6,
         }
       }
-    >
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={
-          Object {
-            "lbl_review_sectionShippingMethodTitle": "title",
-          }
-        }
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;
@@ -185,19 +163,6 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
         link={null}
         textAlign="left"
       />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -207,12 +172,7 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           "small": 6,
         }
       }
-    >
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={Object {}}
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;

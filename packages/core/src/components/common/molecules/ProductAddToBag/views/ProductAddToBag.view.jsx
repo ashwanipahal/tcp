@@ -9,6 +9,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
+import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import ProductSizeSelector from '../../ProductSizeSelector';
@@ -44,6 +45,12 @@ const ErrorComp = errorMessage => {
 };
 
 class ProductAddToBag extends React.PureComponent<Props> {
+  getButtonLabel = () => {
+    const { fromBagPage, plpLabels } = this.props;
+    const { addToBag, update } = plpLabels;
+    return fromBagPage ? update : addToBag;
+  };
+
   render() {
     const {
       plpLabels,
@@ -65,7 +72,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     sizeList = sizeList && fromJS(sizeList);
     fitList = fitList && fromJS(fitList);
     colorList = fromJS(colorList);
-    const { addToBag, errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
+    const { errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
 
     return (
       <form className={className} noValidate>
@@ -149,9 +156,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     }
                   }}
                 >
-                  {addToBag}
+                  {this.getButtonLabel()}
                 </Button>
-                <RenderPerf.Measure name="render_cart_cta" />
+                <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
             </Col>
           </Row>

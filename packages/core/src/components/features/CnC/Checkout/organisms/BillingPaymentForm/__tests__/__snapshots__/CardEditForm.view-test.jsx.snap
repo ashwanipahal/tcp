@@ -13,6 +13,9 @@ exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
     key="cardEditAddressForm"
   />
   <div
+    className="edit-card-error-container"
+  />
+  <div
     className="card-edit-buttons"
   >
     <Styled(Button)
@@ -61,7 +64,7 @@ exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
 exports[`CardEditForm component CardEditReduxForm 1`] = `
 <ReduxForm
   AddressForm={[Function]}
-  destroyOnUnmount={true}
+  destroyOnUnmount={false}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
   form="checkoutCardEditPayment"
@@ -71,14 +74,12 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
     Object {
       "address": undefined,
       "cardNumber": "123",
-      "ccBrand": undefined,
-      "ccType": undefined,
       "creditCardId": undefined,
       "expMonth": "2",
       "expYear": undefined,
     }
   }
-  keepDirtyOnReinitialize={false}
+  keepDirtyOnReinitialize={true}
   labels={
     Object {
       "cancelButtonText": "Cancel",

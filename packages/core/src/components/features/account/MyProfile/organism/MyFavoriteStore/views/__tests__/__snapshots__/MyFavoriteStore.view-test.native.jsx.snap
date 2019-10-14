@@ -19,9 +19,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="Fulton Street"
     textDecoration={null}
-  >
-    Fulton Street
-  </Styled(Styled(BodyCopy))>
+  />
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
@@ -30,20 +28,28 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="471-485 Fulton Street"
     textDecoration={null}
-  >
-    471-485 Fulton Street
-  </Styled(Styled(BodyCopy))>
-  <Styled(Styled(BodyCopy))
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
-    text="Brooklyn, NY 11201"
-    textDecoration={null}
-  >
-    Brooklyn, NY 11201
-  </Styled(Styled(BodyCopy))>
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text="Brooklyn, "
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text="NY 11201"
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
     dataLocator=""
@@ -52,9 +58,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
     numberOfLines={null}
     text="(712) 431-1408"
     textDecoration={null}
-  >
-    (712) 431-1408
-  </Styled(Styled(BodyCopy))>
+  />
 </MyProfileTile>
 `;
 
@@ -63,10 +67,10 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle=""
+  ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
-  title=""
+  title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
     accessibilityText=""
@@ -75,7 +79,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-LRG"
-    text=""
+    text="lbl_common_favStoreNotAdded"
     textDecoration={null}
   />
 </MyProfileTile>
@@ -86,10 +90,10 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle=""
+  ctaTitle="lbl_common_edit"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
-  title=""
+  title="lbl_common_myFavoriteStore"
 >
   <Styled(Styled(BodyCopy))
     accessibilityText=""
@@ -98,7 +102,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-XXL"
-    text=""
+    text="lbl_common_accessBuyOnline"
     textDecoration={null}
   />
   <Styled(Styled(BodyCopy))
@@ -108,7 +112,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-LRG"
-    text=""
+    text="lbl_common_favStoreNotAdded"
     textDecoration={null}
   />
 </MyProfileTile>

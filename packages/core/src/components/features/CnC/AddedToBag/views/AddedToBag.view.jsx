@@ -18,6 +18,7 @@ type Props = {
   labels: any,
   quantity: number,
   handleContinueShopping: Function,
+  isInternationalShipping: boolean,
 };
 
 const AddedToBag = ({
@@ -29,6 +30,7 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   handleCartCheckout,
+  isInternationalShipping,
 }: Props) => {
   return (
     <Modal
@@ -50,8 +52,12 @@ const AddedToBag = ({
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
-        <AddedToBagActions labels={labels} handleCartCheckout={handleCartCheckout} />
-        <BossBannerView labels={labels} />
+        <AddedToBagActions
+          labels={labels}
+          handleCartCheckout={handleCartCheckout}
+          showVenmo={false}
+        />
+        {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
           <Anchor
             fontSizeVariation="medium"

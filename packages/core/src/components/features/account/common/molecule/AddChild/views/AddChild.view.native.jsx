@@ -239,14 +239,12 @@ export class AddChildBirthdayForm extends PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
             text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_save')}
           />
         </ViewWithSpacing>
         <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             onPress={closeAddModal}
             text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_cancel')}
           />

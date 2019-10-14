@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../ProductDescription.style';
+import { getLocator } from '../../../../../../../utils';
 
 class ProductDetailDescription extends React.PureComponent {
   constructor(props) {
@@ -30,6 +31,7 @@ class ProductDetailDescription extends React.PureComponent {
             className="button-wrapper"
             type="button"
             onClick={this.handleToggleShowMoreOrLess}
+            data-locator={getLocator('pdp_read_less')}
           >
             {ShowLess}
           </button>
@@ -42,6 +44,7 @@ class ProductDetailDescription extends React.PureComponent {
             className="button-wrapper"
             type="button"
             onClick={this.handleToggleShowMoreOrLess}
+            data-locator={getLocator('pdp_read_more')}
           >
             {ShowMore}
           </button>
@@ -93,13 +96,19 @@ class ProductDetailDescription extends React.PureComponent {
           fontFamily="secondary"
           fontWeight="black"
           onClick={this.handleAccordionToggle}
+          data-locator={getLocator('pdp_product_description_label')}
         >
           {ProductDescription}
         </BodyCopy>
         {isExpanded && (
           <div className={isAccordionOpen ? 'show-description-list' : ''}>
-            {!shortDescription && (
-              <BodyCopy className="short-description" fontSize="fs14" fontFamily="secondary">
+            {shortDescription && (
+              <BodyCopy
+                className="short-description"
+                fontSize="fs14"
+                fontFamily="secondary"
+                data-locator={getLocator('pdp_short_description')}
+              >
                 {shortDescription}
               </BodyCopy>
             )}
@@ -116,6 +125,7 @@ class ProductDetailDescription extends React.PureComponent {
                   dangerouslySetInnerHTML={{ __html: longDescription }}
                   fontSize="fs14"
                   fontFamily="secondary"
+                  data-locator={getLocator('pdp_long_description')}
                 />
               )}
               <BodyCopy
@@ -123,6 +133,7 @@ class ProductDetailDescription extends React.PureComponent {
                 component="aside"
                 fontSize="fs14"
                 fontFamily="secondary"
+                data-locator={getLocator('pdp_claim_message')}
               >
                 {ClaimMessage}
               </BodyCopy>
@@ -135,11 +146,23 @@ class ProductDetailDescription extends React.PureComponent {
                   className="show-product-id"
                   fontSize="fs10"
                   fontFamily="secondary"
+                  data-locator={getLocator('pdp_product_part_number')}
                 >
                   {PartNumber}
                   {productId}
                 </BodyCopy>
               </div>
+            )}
+            {!descAvail && (
+              <BodyCopy
+                className="part-number-section"
+                fontSize="fs10"
+                fontFamily="secondary"
+                data-locator={getLocator('pdp_product_part_number')}
+              >
+                {PartNumber}
+                {productId}
+              </BodyCopy>
             )}
           </div>
         )}

@@ -9,12 +9,12 @@ const styles = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 24px;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     width: 161px;
   }
   .product-link {
     text-decoration: underline;
-    margin-top: 24px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .product-detail {
     display: flex;
@@ -22,7 +22,7 @@ const styles = css`
     flex-direction: row;
   }
   .product-name {
-    margin-bottom: 12px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .product-details-card-container-separate {
     display: flex;
@@ -35,6 +35,20 @@ const styles = css`
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
+  }
+  .price-container {
+    display: inline-flex;
+
+    .actual-price {
+      color: ${props => props.theme.colorPalette.red};
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
+    }
+    .original-price {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+      color: ${props => props.theme.colorPalette.gray[900]};
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      line-height: 1.9;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -76,6 +90,14 @@ const styles = css`
 export const customPriceStyles = css`
   .list-badge-container {
     display: flex;
+  }
+`;
+
+export const customSubmitButtonStyle = css`
+  @media ${props => props.theme.mediaQuery.large} {
+    .add-to-bag-button {
+      width: 243px;
+    }
   }
 `;
 

@@ -7,6 +7,7 @@ import constants from '../container/CreditCard.constants';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CardEditFormView extends React.PureComponent {
   handleSubmit = e => {
@@ -29,16 +30,25 @@ class CardEditFormView extends React.PureComponent {
       },
       AddressForm,
       onEditCardFocus,
+      error,
+      editModeSubmissionError,
+      errorMessageRef,
     } = this.props;
     return (
       <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={this.handleSubmit}>
         {renderCardDetailsHeading({ hideAnchor: true })}
+        {error && <ErrorMessage error={error.message} className="edit-card-error" />}
         {getAddNewCCForm({
           onCardFocus: onEditCardFocus,
           editMode: true,
         })}
         <AddressForm editMode key="cardEditAddressForm" />
-        <div className="card-edit-buttons">
+        <div className="edit-card-error-container">
+          {editModeSubmissionError && (
+            <ErrorMessage error={editModeSubmissionError} className="edit-card-error" />
+          )}
+        </div>
+        <div className="card-edit-buttons" ref={errorMessageRef}>
           <Button
             aria-label={ariaLabelSaveButtonText}
             type="submit"
@@ -97,15 +107,15 @@ CardEditFormView.propTypes = {
   AddressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  error: PropTypes.shape({}).isRequired,
+  editModeSubmissionError: PropTypes.string.isRequired,
+  errorMessageRef: PropTypes.shape({}).isRequired,
 };
 
 export const handleEditFromSubmit = updateCardDetail => data => {
   const formData = data;
   formData.onFileAddressKey = formData.address.addressId || '';
-  formData.cardType = formData.ccBrand.toUpperCase();
-  delete formData.ccType;
-  delete formData.ccBrand;
-  updateCardDetail(formData);
+  return new Promise((resolve, reject) => updateCardDetail({ formData, resolve, reject }));
 };
 
 const CardEditReduxForm = React.memo(props => {
@@ -119,16 +129,10 @@ const CardEditReduxForm = React.memo(props => {
     onEditCardFocus,
     labels,
     dispatch,
+    editModeSubmissionError,
+    errorMessageRef,
   } = props;
-  const {
-    accountNo,
-    ccBrand,
-    ccType,
-    expMonth,
-    expYear,
-    addressDetails: address,
-    creditCardId,
-  } = selectedCard;
+  const { accountNo, expMonth, expYear, addressDetails: address, creditCardId } = selectedCard;
 
   const validateMethod = createValidateMethod({
     address: AddressFields.addressValidationConfig,
@@ -138,6 +142,8 @@ const CardEditReduxForm = React.memo(props => {
   const CartEditForm = reduxForm({
     form: constants.EDIT_FORM_NAME, // a unique identifier for this form
     enableReinitialize: true,
+    keepDirtyOnReinitialize: true,
+    destroyOnUnmount: false,
     ...validateMethod,
     onSubmitSuccess: () => {
       unsetFormEditState();
@@ -151,8 +157,6 @@ const CardEditReduxForm = React.memo(props => {
         cardNumber: accountNo,
         expMonth: expMonth.trim(),
         expYear,
-        ccBrand,
-        ccType,
         address,
         creditCardId,
       }}
@@ -163,6 +167,8 @@ const CardEditReduxForm = React.memo(props => {
       getAddNewCCForm={getAddNewCCForm}
       unsetFormEditState={unsetFormEditState}
       labels={labels}
+      editModeSubmissionError={editModeSubmissionError}
+      errorMessageRef={errorMessageRef}
     />
   );
 });
@@ -178,11 +184,11 @@ CardEditReduxForm.propTypes = {
   addressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
   updateCardDetail: PropTypes.func.isRequired,
+  editModeSubmissionError: PropTypes.string.isRequired,
+  errorMessageRef: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   selectedCard: PropTypes.shape({
     accountNo: PropTypes.string,
-    ccBrand: PropTypes.string,
-    ccType: PropTypes.string,
     expMonth: PropTypes.string,
     expYear: PropTypes.string,
     addressDetails: PropTypes.shape({}),

@@ -19,6 +19,11 @@ const styles = css`
   .details-link {
     display: block;
   }
+
+  .elem-mb-SM h2 {
+    display: inline-block;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .hide-in-large-up {
       display: none;

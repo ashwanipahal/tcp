@@ -8,6 +8,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -17,7 +18,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <View>
     <Styled(BodyCopy)
@@ -38,7 +39,6 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         anchorVariation="button"
         borderColor="black"
         borderWidth="1"
-        buttonVariation="variable-width"
         centered={true}
         colorName={null}
         customStyle={Object {}}
@@ -56,12 +56,12 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -93,6 +93,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myPlaceRewardsHeading"
@@ -102,7 +103,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Styled(View)>
     <View>
@@ -139,7 +140,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
     borderColor="gray"
     borderWidth={0.5}
     marginBottom={20}
-    marginTop={20}
+    marginTop={24}
   />
   <Connect(BonusPointsDays)
     labels={
@@ -152,7 +153,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

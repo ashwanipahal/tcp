@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
+import withKeyboardAvoidingView from '../../../../common/hoc/withKeyboardAvoidingView.native';
+import Confirmation from '../../Confirmation';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -114,7 +115,7 @@ export default class CheckoutPage extends React.PureComponent {
           />
         );
       case CONFIRMATION.toLowerCase():
-        return <Text>Confirmation Page</Text>;
+        return <Confirmation />;
       default:
         return null;
     }
@@ -157,3 +158,5 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
 };
+
+export default withKeyboardAvoidingView(CheckoutPage);

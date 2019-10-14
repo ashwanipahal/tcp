@@ -24,6 +24,7 @@ import {
   setShippingOptions,
   setAddressError,
   getSetIntlUrl,
+  setShippingLoadingState,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -650,6 +651,8 @@ function* submitShipping({
 
 function* submitShippingSection({ payload: { navigation, ...formData } }) {
   try {
+    yield put(setShippingLoadingState(true));
+
     const {
       // giftWrap,
       method,
@@ -695,10 +698,13 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     } else {
       redirectToBilling(navigation);
     }
+    yield put(setShippingLoadingState(false));
   } catch (err) {
+    yield put(setShippingLoadingState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
   }
 }
+
 export function* submitBillingSection(payload) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   if (isVenmoInProgress) {

@@ -14,6 +14,7 @@ import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToB
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -68,13 +69,6 @@ class ProductDetailView extends React.Component {
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
     if (isProductDataAvailable) {
-      imagesToDisplay = getImagesToDisplay({
-        imagesByColor: productInfo.imagesByColor,
-        curentColorEntry: currentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
-
       imagesToDisplay = getImagesToDisplay({
         imagesByColor: productInfo.imagesByColor,
         curentColorEntry: currentColorEntry,
@@ -136,6 +130,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
+            <LoyaltyBanner isProductDetailView />
           </Col>
         </Row>
         <Row className="placeholder">
@@ -148,7 +143,6 @@ class ProductDetailView extends React.Component {
             <div className="product-detail-section">
               <ProductDescription
                 productId={itemPartNumber}
-                titleClickable={false}
                 isShowMore={false}
                 pdpLabels={pdpLabels}
                 shortDescription={shortDescription}

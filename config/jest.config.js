@@ -24,7 +24,11 @@ const ignorePsuedoCodeDir = [
   '/GoogleAutoSuggest/',
   '/utils/localStorageManagement.js',
   '/Favorites/',
+  '/services/abstractors/account/ordersList', // TO DO - Furkan The story is in progress Excluding for now
   '/services/abstractors/common/searchBar/makeSearch.js',
+  '/ModuleK/',
+  '/formValidation/createValidateMethod.js',
+  '/ExtraPoints/imageSourceMap.js',
 ];
 
 module.exports = {
@@ -77,6 +81,7 @@ module.exports = {
     '/*.app.jsx',
     '/stories/',
     '/*.stories.jsx',
+    '/ModuleK/',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

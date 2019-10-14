@@ -7,6 +7,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
   headingAlign="left"
   headingFontFamily="secondary"
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
   onRequestClose={[MockFunction]}
@@ -28,7 +29,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}
@@ -53,7 +54,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}
@@ -86,6 +87,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
   headingAlign="left"
   headingFontFamily="secondary"
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={false}
   isOverlay={false}
   onRequestClose={[MockFunction]}
@@ -107,7 +109,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}
@@ -132,7 +134,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}

@@ -96,6 +96,13 @@ export default {
   moduleR_cta_link: 'moduleR_cta_links_',
   moduleR_cta_btn: 'moduleR_cta_btn',
 
+  // Module T
+  moduleT_header_text: 'moduleT_header_text',
+  moduleT_promobanner_text: 'moduleJ_promobanner_text',
+  moduleT_promobanner_img: 'moduleJ_promobanner_img_',
+  moduleT_cta_links: 'moduleT_cta_links_',
+  moduleT_cta_image: 'moduleT_cta_image_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
@@ -297,6 +304,15 @@ export default {
   pdp_rating_reviews: 'ratings_and_reviews_section',
   pdp_rating_reviews_title: 'ratings_and_reviews_title',
   pdp_rating_reviews_count: 'ratings_and_reviews_count',
+
+  // PDP product description locators
+  pdp_product_description_label: 'product_description_title',
+  pdp_short_description: 'short-description',
+  pdp_long_description: 'long_description',
+  pdp_claim_message: 'claim_message',
+  pdp_product_part_number: 'part_number',
+  pdp_read_more: 'read_more',
+  pdp_read_less: 'read_less',
 
   // Quick View Modal
   quick_view_add_to_bag_header: 'quick_view_add_to_bag_header',

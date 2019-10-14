@@ -134,11 +134,8 @@ const getGiftServicesContentTcpId = state => {
   return contentTCP && contentTCP.contentId;
 };
 
-const getGiftServicesContentGymId = ({
-  Labels: {
-    checkout: { addedToBag: { referred = [] } = {} },
-  },
-}) => {
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };
@@ -161,8 +158,12 @@ const getCurrentOrderId = state => {
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
+const returnCurrentCurrency = currency => {
+  return currency === 'USD' || currency === 'CA' ? '$' : currency;
+};
 const getCurrentCurrency = state => {
-  return state.session.getIn(['siteDetails', 'currency']);
+  const currency = state.session && state.session.getIn(['siteDetails', 'currency']);
+  return currency ? returnCurrentCurrency(currency) : '$';
 };
 
 const getCartStores = state => {

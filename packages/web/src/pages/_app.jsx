@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import Router from 'next/router';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -21,6 +22,7 @@ import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -29,7 +31,6 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
-import RenderPerf from '../components/common/molecules/RenderPerf';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 
 // constants
@@ -37,7 +38,21 @@ import constants from '../constants';
 
 // Analytics script injection
 function AnalyticsScript() {
-  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
+  // TODO: Need proper handling for this perf mark
+  const handleLoad = () => performance && performance.mark('analytics_script_loaded');
+  return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
+}
+
+/**
+ * Setup perf marks for when the route changes.
+ * This is needed for measuring CSR times relative to
+ * when the route/page last changed.
+ */
+if (process.env.PERF_TIMING && typeof performance !== 'undefined') {
+  Router.events.on('beforeHistoryChange', () => {
+    performance.clearMarks(NAVIGATION_START);
+    performance.mark(NAVIGATION_START);
+  });
 }
 
 class TCPWebApp extends App {
@@ -129,6 +144,7 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
 
       // optimizely headers
       const optimizelyHeadersObject = {};
@@ -173,11 +189,11 @@ class TCPWebApp extends App {
     return pageProps;
   }
 
-  static async loadComponentData(Component, { store, isServer }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
     const compProps = {};
     if (Component.getInitialProps) {
       // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer }, pageProps);
+      pageProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
@@ -204,13 +220,11 @@ class TCPWebApp extends App {
     }
     return (
       <Container>
-        {/* TODO: Remove, this is for testing only */}
-        <RenderPerf.Mark name="app_render_start" />
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {this.getSEOTags(Component.pageId)}
+              {Component.pageId ? this.getSEOTags(Component.pageId) : null}
               <Header />
               <CheckoutHeader />
               <Loader />
@@ -229,8 +243,6 @@ class TCPWebApp extends App {
         </ThemeProvider>
         {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {/* TODO: Remove, this is for testing only */}
-        <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>
     );
   }

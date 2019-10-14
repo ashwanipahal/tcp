@@ -237,6 +237,19 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
+      }
+
+      input[type='radio']:focus {
+        border-radius: 15px;
+        box-shadow: 0 0 0 2pt ",
+                    [Function],
+                    ";
+        margin-top: -3px;
+        margin-left: -3px;
+        width: 30px;
+        height: 30px;
+        outline: 0;
       }
 
       &:before,
@@ -399,6 +412,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
       input {
         -webkit-appearance: none;
+        display: none;
       }
 
       &:before,
@@ -706,6 +720,19 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
+      }
+
+      input[type='radio']:focus {
+        border-radius: 15px;
+        box-shadow: 0 0 0 2pt ",
+                    [Function],
+                    ";
+        margin-top: -3px;
+        margin-left: -3px;
+        width: 30px;
+        height: 30px;
+        outline: 0;
       }
 
       &:before,
@@ -868,6 +895,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
       input {
         -webkit-appearance: none;
+        display: none;
       }
 
       &:before,

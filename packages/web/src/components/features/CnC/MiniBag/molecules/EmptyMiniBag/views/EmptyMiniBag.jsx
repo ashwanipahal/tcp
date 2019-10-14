@@ -11,8 +11,11 @@ type Props = {
   labels: any,
   className: string,
   userName: any,
+  onLinkClick: Function,
 };
-const MiniBagHeader = ({ labels, className, userName }: Props) => {
+const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
+  const createAccount = 'createAccount';
+  const login = 'login';
   return (
     <div className={className}>
       <div className="continue-shopping">
@@ -32,9 +35,8 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
           fontSizeVariation="medium"
           underline
           anchorVariation="primary"
-          noLink
-          to=""
-          dataLocator="addedToBag-continueShopping"
+          to="/home"
+          dataLocator="emptyMiniBag-continueShopping"
         >
           {labels.continueShopping}
         </Anchor>
@@ -42,7 +44,7 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
       {!userName ? (
         <>
           <div className="continue-shopping">
-            <Button className="logIn">
+            <Button className="logIn" onClick={e => onLinkClick({ e, componentId: login })}>
               <BodyCopy
                 component="span"
                 color="white"
@@ -63,7 +65,10 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
             </BodyCopy>
           </div>
           <div className="continue-shopping">
-            <Button className="createAccount">
+            <Button
+              className="createAccount"
+              onClick={e => onLinkClick({ e, componentId: createAccount })}
+            >
               <BodyCopy
                 component="span"
                 color="white"

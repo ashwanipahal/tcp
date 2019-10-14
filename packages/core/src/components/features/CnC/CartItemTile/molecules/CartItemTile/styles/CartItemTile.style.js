@@ -93,6 +93,9 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    img {
+      display: block;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -325,6 +328,12 @@ export default css`
   .sflActions {
     text-decoration: underline;
     cursor: pointer;
+  }
+  .size-and-item-container {
+    display: inline-flex;
+  }
+  .product-detail-review-page {
+    display: inline-block;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

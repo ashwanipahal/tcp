@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import InstagramLogin from 'react-native-instagram-login';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -76,7 +78,11 @@ class Socialview extends React.PureComponent {
       const icon = `${elem.isConnected ? 'Connected' : 'Disconnected'}`;
       return (
         <ViewWithSpacing spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS">
-          <Row>
+          <Row
+            accessibilityRole="button"
+            accessibilityLabel="button"
+            onPress={() => this.handleSocialNetwork(isSocialAccount, elem.isConnected)}
+          >
             <ImageComp source={this.icons[socialIcon]} width={50} height={50} />
             <SocialMessage>
               <BodyCopyWithSpacing
@@ -95,13 +101,7 @@ class Socialview extends React.PureComponent {
               />
             </SocialMessage>
 
-            <TouchableOpacity
-              accessibilityRole="button"
-              accessibilityLabel="button"
-              onPress={() => this.handleSocialNetwork(isSocialAccount, elem.isConnected)}
-            >
-              <ImageComp source={this.icons[icon]} width={15} height={15} />
-            </TouchableOpacity>
+            <ImageComp source={this.icons[icon]} width={15} height={15} />
           </Row>
           {setPointsModal && this.pointsInformation.points > 0 && (
             <ModalNative
@@ -161,7 +161,6 @@ class Socialview extends React.PureComponent {
               </ViewWithSpacing>
               <ViewWithSpacing spacingStyles="margin-top-XXXL margin-left-XXXL margin-right-XXXL">
                 <Button
-                  buttonVariation="variable-width"
                   color="white"
                   fill="BLUE"
                   type="submit"
@@ -171,7 +170,6 @@ class Socialview extends React.PureComponent {
 
                 <ViewWithSpacing spacingStyles="margin-top-LRG">
                   <Button
-                    buttonVariation="variable-width"
                     fill="WHITE"
                     color="black"
                     type="submit"
@@ -208,13 +206,24 @@ class Socialview extends React.PureComponent {
     this.socialAccounts = accountsInfo;
   };
 
+  dispatchSaveSocial = (socialType, accessToken, userId) => {
+    const { saveSocialAcc, pointModalClose } = this.props;
+    const socialAccInfo = {
+      [socialType]: socialType,
+      accessToken,
+      userId,
+      isconnected: false,
+    };
+    saveSocialAcc({ socialAccInfo });
+    pointModalClose({ state: true });
+  };
+
   /**
    * @function Handling of social plugins - facebook login/log out
    * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
    * @param {*} isConnected - Status to check whether user is connected with social sites
    */
   handleSocialNetwork(isSocialAccount, isConnected) {
-    const { saveSocialAcc, pointModalClose } = this.props;
     switch (isSocialAccount) {
       case 'Facebook':
         if (!isConnected) {
@@ -224,20 +233,16 @@ class Socialview extends React.PureComponent {
               // do nothing
             } else {
               AccessToken.getCurrentAccessToken().then(data => {
-                const socialAccInfo = {
-                  facebook: 'facebook',
-                  accessToken: data.accessToken,
-                  userId: data.userID,
-                  isconnected: false,
-                };
-                saveSocialAcc({ socialAccInfo });
-                pointModalClose({ state: true });
+                this.dispatchSaveSocial('facebook', data.accessToken, data.userID);
               });
             }
           });
         }
         return null;
       case 'Instagram':
+        if (!isConnected) {
+          this.instagramLogin.show();
+        }
         return null;
       default:
         return null;
@@ -249,6 +254,9 @@ class Socialview extends React.PureComponent {
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
+    const { assetHost, siteId, instakey } = getAPIConfig();
+    const redirectUrl = `${assetHost}/${siteId}/instagram`;
+
     return (
       <View>
         <BodyCopy
@@ -263,6 +271,15 @@ class Socialview extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_prefrence_social_text')}
         />
         {this.renderAccountsInformation(this.socialAccounts, labels)}
+        <InstagramLogin
+          ref={ref => {
+            this.instagramLogin = ref;
+          }}
+          redirectUrl={redirectUrl}
+          clientId={instakey}
+          scopes={['basic']}
+          onLoginSuccess={token => this.dispatchSaveSocial('instagram', token, token.split('.')[0])}
+        />
       </View>
     );
   }

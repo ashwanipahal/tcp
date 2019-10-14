@@ -47,6 +47,16 @@ class MiniBag extends React.Component {
     }
   }
 
+  onLinkClick = ({ e, componentId }) => {
+    const { onRequestClose, openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+    onRequestClose();
+  };
+
   render() {
     const {
       onRequestClose,
@@ -70,15 +80,6 @@ class MiniBag extends React.Component {
       <Modal
         isOpen={openState}
         onRequestClose={onRequestClose}
-        heading={renderMiniBagHeader(
-          labels,
-          cartItemCount,
-          userName,
-          currentPoints,
-          totalRewards,
-          onRequestClose,
-          openOverlay
-        )}
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
         closeIconDataLocator="mini-bag-close"
@@ -90,6 +91,15 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {renderMiniBagHeader(
+          labels,
+          cartItemCount,
+          userName,
+          currentPoints,
+          totalRewards,
+          onRequestClose,
+          openOverlay
+        )}
         <MiniBagBody
           closeMiniBag={onRequestClose}
           labels={labels}
@@ -101,6 +111,7 @@ class MiniBag extends React.Component {
           savedforLaterQty={sflItemsCount}
           isCartItemSFL={isCartItemSFL}
           cartItemSflError={cartItemSflError}
+          onLinkClick={this.onLinkClick}
         />
       </Modal>
     );

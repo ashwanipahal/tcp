@@ -6,7 +6,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
     <Styled(CustomButton)
       accessibilityLabel="Clear"
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -33,7 +33,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
     <Styled(CustomButton)
       accessibilityLabel="Apply"
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

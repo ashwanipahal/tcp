@@ -317,10 +317,6 @@ const endpoints = {
     method: 'POST',
     URI: SAVE_FOR_LATER,
   },
-  getMyFavoriteStore: {
-    method: API_METHODS.GET,
-    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
-  },
   getStoreandProductInventoryInfo: {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
@@ -376,6 +372,42 @@ const endpoints = {
   getTwitterAccessToken: {
     method: 'GET',
     URI: 'v2/twitter/accessToken',
+  },
+  getListofWishList: {
+    method: 'GET',
+    URI: 'v2/wishlist/getListOfWishlist',
+  },
+  getWishListbyId: {
+    method: 'GET',
+    URI: 'v2/wishlist/getWishListbyId',
+  },
+  createWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/createWishListForUser',
+  },
+  moveWishListItem: {
+    method: 'PUT',
+    URI: 'v2/wishlist/moveItemToWishList',
+  },
+  deleteWishListForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteWishListForUser',
+  },
+  editWishList: {
+    method: 'PUT',
+    URI: 'v2/wishlist/updateWishListForUser',
+  },
+  deleteWishListItemForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteItemFromWishList',
+  },
+  shareWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/shareWishListForUser',
+  },
+  getStoreLocationByCountry: {
+    method: 'GET',
+    URI: 'v2/store/getStoreLocationByCountry',
   },
 };
 export default endpoints;

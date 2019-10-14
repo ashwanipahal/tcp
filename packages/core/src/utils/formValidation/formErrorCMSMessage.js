@@ -61,6 +61,7 @@ const formErrorCMSMessage = {
   lbl_err_cvvcode_cvvnumber: 'Please enter a valid security code',
   lbl_err_cvvcode_cvvlengththree: 'Security code must be a 3-digit number without any spaces',
   lbl_err_cvvcode_cvvlengthfour: 'Security code must be a 4-digit number without any spaces',
+  lbl_storelanding_errorLabel: 'Please re-type address & select location from dropdown suggestions',
 };
 
 export default formErrorCMSMessage;

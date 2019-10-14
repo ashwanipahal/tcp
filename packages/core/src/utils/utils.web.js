@@ -25,16 +25,21 @@ const MONTH_SHORT_FORMAT = {
   DEC: 'Dec',
 };
 
+const FIXED_HEADER = {
+  LG_HEADER: 70,
+  SM_HEADER: 60,
+};
+
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
 
 export const getUrlParameter = name => {
-    const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-    let regex = new RegExp('[\\?&]' + replacedName + '=([^&#]*)');
-    let results = regex.exec(window.location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  };
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  let regex = new RegExp('[\\?&]' + replacedName + '=([^&#]*)');
+  let results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
 
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
@@ -136,10 +141,9 @@ export const createUrlSearchParams = (query = {}) => {
   return queryParams.join('&');
 };
 
-export function getHostName () {
+export function getHostName() {
   return window.location.hostname;
 }
-
 
 export const buildUrl = options => {
   if (typeof options === 'object') {
@@ -229,7 +233,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'auto';
+    body.style['overflow-y'] = 'auto';
   }
 };
 
@@ -239,7 +243,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style.overflow = 'hidden';
+    body.style['overflow-y'] = 'hidden';
   }
 };
 
@@ -350,20 +354,22 @@ export const handleGenericKeyDown = (event, key, method) => {
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
   const country = siteId && siteId.toUpperCase();
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
+    productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`]}/${
-      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]
-    }`,
+    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
+    unbxdApiKey,
     envId: processEnv.RWD_WEB_ENV_ID,
+    previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -515,6 +521,20 @@ export const fetchStoreIdFromUrlPath = url => {
   return pathSplit[pathSplit.length - 1];
 };
 
+export const scrollToParticularElement = element => {
+  const fixedHeaderOffset = getViewportInfo().isDesktop
+    ? FIXED_HEADER.LG_HEADER
+    : FIXED_HEADER.SM_HEADER;
+  if (isClient()) {
+    const elementPositionFromTop = element.getBoundingClientRect().top;
+    const calculatedOffset = elementPositionFromTop - fixedHeaderOffset;
+    window.scrollTo({
+      top: calculatedOffset,
+      behavior: 'smooth',
+    });
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -539,4 +559,5 @@ export default {
   viewport,
   fetchStoreIdFromUrlPath,
   canUseDOM,
+  scrollToParticularElement,
 };

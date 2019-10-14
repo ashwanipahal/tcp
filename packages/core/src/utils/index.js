@@ -34,6 +34,7 @@ export {
   getLocationOrigin,
   canUseDOM,
   getUrlParameter,
+  scrollToParticularElement,
 } from './utils.web';
 
 export {
@@ -69,9 +70,10 @@ export {
   parseStoreHours,
   parseBoolean,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
 } from './utils';

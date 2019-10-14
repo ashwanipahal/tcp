@@ -9,6 +9,8 @@ import {
   SetAddedToBagData,
   openAddedToBag,
   clearAddToBagErrorState,
+  clearAddToPickupErrorState,
+  AddToPickupError,
 } from './AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -85,7 +87,7 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
-    yield put(clearAddToBagErrorState());
+    yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
     if (callback) {
@@ -106,7 +108,7 @@ export function* addItemToCartBopis({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
-    yield put(AddToCartError(errorMessage));
+    yield put(AddToPickupError(errorMessage));
   }
 }
 

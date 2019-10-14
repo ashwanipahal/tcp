@@ -15,7 +15,7 @@ import getLinkedSocialAccountLabel from '../utils';
 const loginComponents = {
   Facebook: FacebookLogin,
   Instagram: InstagramLoginComponent,
-  Twitter: TwitterLoginComponent
+  Twitter: TwitterLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -199,6 +199,7 @@ class Socialview extends React.PureComponent {
 
   viewAll = () => {
     routerPush('/account?id=extra-points', '/account/extra-points');
+    this.onClose();
   };
 
   render() {

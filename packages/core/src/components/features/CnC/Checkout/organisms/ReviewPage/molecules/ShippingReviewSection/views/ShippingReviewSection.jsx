@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
 import Row from '../../../../../../../../common/atoms/Row';
@@ -62,15 +63,17 @@ export class ShippingReviewSection extends React.PureComponent {
             >
               {shippingAddress.emailAddress}
             </BodyCopy>
-            <BodyCopy
-              fontSize="fs16"
-              dataLocator=""
-              fontFamily="secondary"
-              color="gray.900"
-              fontWeight="regular"
-            >
-              {shippingAddress.phoneNumber}
-            </BodyCopy>
+            {shippingAddress.phoneNumber && (
+              <BodyCopy
+                fontSize="fs16"
+                dataLocator=""
+                fontFamily="secondary"
+                color="gray.900"
+                fontWeight="regular"
+              >
+                {formatPhoneNumber(shippingAddress.phoneNumber)}
+              </BodyCopy>
+            )}
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {shippingMethod && (
@@ -105,7 +108,7 @@ ShippingReviewSection.propTypes = {
 ShippingReviewSection.defaultProps = {
   labels: {},
   shippingAddress: {},
-  isGiftOptionsEnabled: true,
+  isGiftOptionsEnabled: false,
   giftWrappingDisplayName: 'N/A',
 };
 

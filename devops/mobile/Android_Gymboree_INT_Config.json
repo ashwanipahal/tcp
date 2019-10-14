@@ -248,6 +248,22 @@
     {
       "name": "RWD_APP_UNBXD_API_KEY_CA_FR_GYM",
       "value": "948cee6a142678762564f9ec4e02e91c"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_GYM",
+      "value": "f0eaf419384f43a0acd059c4f87163c1"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_TCP",
+      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
+    },
+    {
+      "name": "RWD_APP_ASSETHOST_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_ASSETHOST_GYM",
+      "value": "https://test5.gymboree.com"
     }
   ],
   "signed": true,

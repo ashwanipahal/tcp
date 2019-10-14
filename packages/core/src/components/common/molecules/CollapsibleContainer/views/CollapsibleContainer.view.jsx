@@ -13,6 +13,8 @@ class CollapsibleContainer extends React.Component {
     iconClose: PropTypes.string,
     className: PropTypes.string,
     defaultOpen: PropTypes.bool,
+    id: PropTypes.string,
+    onToggleCallback: PropTypes.func,
   };
 
   static defaultProps = {
@@ -20,6 +22,8 @@ class CollapsibleContainer extends React.Component {
     iconClose: 'down_arrow_icon',
     className: '',
     defaultOpen: false,
+    id: '',
+    onToggleCallback: null,
   };
 
   constructor(props) {
@@ -31,8 +35,7 @@ class CollapsibleContainer extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { defaultOpen } = this.props;
-    const { isExpanded } = this.state;
-    if (defaultOpen && !isExpanded && prevProps.defaultOpen !== defaultOpen) {
+    if (prevProps.defaultOpen !== defaultOpen) {
       this.updateState();
     }
   }
@@ -45,17 +48,22 @@ class CollapsibleContainer extends React.Component {
   };
 
   toggleCollapseState = () => {
+    const { onToggleCallback } = this.props;
     const { isExpanded } = this.state;
-    this.setState({ isExpanded: !isExpanded });
+    this.setState({ isExpanded: !isExpanded }, () => {
+      if (onToggleCallback) {
+        onToggleCallback(this.state);
+      }
+    });
   };
 
   render() {
-    const { header, body, iconOpen, iconClose, className } = this.props;
+    const { header, body, iconOpen, iconClose, className, id } = this.props;
     const IconOpen = (iconOpen && getIconPath(iconOpen)) || getIconPath('up_arrow_icon');
     const IconClose = (iconClose && getIconPath(iconClose)) || getIconPath('down_arrow_icon');
     const { isExpanded } = this.state;
     return (
-      <div className={className}>
+      <div className={className} id={id}>
         <button
           aria-expanded={!!isExpanded}
           onClick={this.toggleCollapseState}

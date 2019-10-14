@@ -52,31 +52,39 @@ class ProductTabListContainer extends React.PureComponent {
     });
   };
 
-  updateCategoryId(catId) {
+  updateCategoryId(categoryId) {
+    let catId = categoryId;
     if (catId) {
+      if (!Array.isArray(catId)) {
+        catId = [catId];
+      }
       const { productTabList, getProductTabListData, onProductTabChange, tabItems } = this.props;
-      const categoryItem = this.getTabItemsMap(tabItems)[catId];
+      const categoryItem = [];
+      catId.map(id => categoryItem.push(this.getTabItemsMap(tabItems)[id]));
       this.setState({ selectedCategoryId: catId });
       onProductTabChange(catId, categoryItem);
-      if (!productTabList[catId]) {
-        getProductTabListData({ categoryId: catId });
-      }
+      catId.forEach(id => {
+        if (!productTabList[id]) {
+          getProductTabListData({ categoryId: id });
+        }
+      });
     }
   }
 
   render() {
     const { selectedCategoryId } = this.state;
-    const { tabItems, dataLocator } = this.props;
+    const { tabItems, dataLocator, style } = this.props;
     const buttonTabItems = this.getButtonTabItems(tabItems);
 
-    return (
+    return buttonTabItems.length > 1 ? (
       <ProductTabListView
         selectedTabId={selectedCategoryId}
         onTabChange={this.onTabChange}
         tabs={buttonTabItems}
         dataLocator={dataLocator}
+        style={style}
       />
-    );
+    ) : null;
   }
 }
 
@@ -86,6 +94,7 @@ ProductTabListContainer.defaultProps = {
   productTabList: {},
   onProductTabChange: () => {},
   dataLocator: '',
+  style: [],
 };
 
 ProductTabListContainer.propTypes = {
@@ -107,6 +116,7 @@ ProductTabListContainer.propTypes = {
   ),
   onProductTabChange: PropTypes.func,
   dataLocator: PropTypes.string,
+  style: PropTypes.arrayOf(PropTypes.object),
 };
 
 export const mapStateToProps = state => {

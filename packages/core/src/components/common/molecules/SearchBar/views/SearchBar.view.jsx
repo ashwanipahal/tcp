@@ -75,19 +75,23 @@ class SearchBar extends React.PureComponent {
 
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch } = this.props;
+    const { startSearch, labels } = this.props;
     const searchText = this.searchInput.current.value;
     this.setState({ showProduct: Boolean(searchText.length) }, () => {
-      startSearch(searchText);
+      const payload = {
+        searchText,
+        slpLabels: labels,
+      };
+      startSearch(payload);
     });
   };
 
   render() {
     const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
-
     const { showProduct } = this.state;
 
     logger.debug(searchResults); // only for use purpose (temporary)
+
     return (
       <React.Fragment>
         <BodyCopy className={className} component="div">
@@ -170,23 +174,31 @@ class SearchBar extends React.PureComponent {
                       <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
                         {getLabelValue(labels, 'lbl_search_looking_for')}
                       </BodyCopy>
-                      <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
-                        <ul>
-                          {searchData.looking.map(item => {
-                            return (
-                              <BodyCopy
-                                component="li"
-                                fontFamily="secondary"
-                                fontSize="fs14"
-                                key={item.id}
-                                className="linkName"
-                              >
-                                {item.text}
-                              </BodyCopy>
-                            );
-                          })}
-                        </ul>
-                      </BodyCopy>
+                      {searchResults &&
+                        searchResults.autosuggestList &&
+                        searchResults.autosuggestList.map(item => {
+                          return (
+                            <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
+                              <ul>
+                                {item &&
+                                  item.suggestions &&
+                                  item.suggestions.map(itemData => {
+                                    return (
+                                      <BodyCopy
+                                        component="li"
+                                        fontFamily="secondary"
+                                        fontSize="fs14"
+                                        key={item.id}
+                                        className="linkName"
+                                      >
+                                        {itemData.text}
+                                      </BodyCopy>
+                                    );
+                                  })}
+                              </ul>
+                            </BodyCopy>
+                          );
+                        })}
                     </div>
                     <div className="matchProductBox">
                       <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
@@ -194,9 +206,15 @@ class SearchBar extends React.PureComponent {
                       </BodyCopy>
                       <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                         <ul>
-                          {searchData.products.map(item => {
-                            return <BodyCopy component="li" key={item.id} className="productBox" />;
-                          })}
+                          {searchResults &&
+                            searchResults.autosuggestProducts &&
+                            searchResults.autosuggestProducts.map(item => {
+                              return (
+                                <BodyCopy component="li" key={item.id} className="productBox">
+                                  {item.name}
+                                </BodyCopy>
+                              );
+                            })}
                         </ul>
                       </BodyCopy>
                     </div>
@@ -264,8 +282,8 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    startSearch: searchTerm => {
-      dispatch(getSearchResult(searchTerm));
+    startSearch: payload => {
+      dispatch(getSearchResult(payload));
     },
   };
 };

@@ -34,7 +34,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -72,6 +72,12 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   "t_emailSignUp_img_t",
                   "t_emailSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>
@@ -348,7 +354,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -386,6 +392,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   "t_emailSignUp_img_t",
                   "t_emailSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>
@@ -662,7 +674,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -700,6 +712,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   "t_emailSignUp_img_t",
                   "t_emailSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>

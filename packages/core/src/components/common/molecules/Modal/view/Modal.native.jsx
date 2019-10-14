@@ -17,6 +17,7 @@ import {
   RowWrapper,
   ImageWrapper,
   ModalCustomWrapper,
+  Heading,
 } from '../Modal.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 
@@ -31,6 +32,7 @@ type Props = {
   stickyCloseIcon: boolean,
   children: node,
   isOverlay?: boolean,
+  inheritedStyles?: String,
 };
 
 const closeIcon = require('../../../../../assets/close.png');
@@ -77,11 +79,11 @@ const geLine = (horizontalBar, borderColor) => {
   );
 };
 
-const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
+const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
   const {
     heading,
     onRequestClose,
-    animationType,
+    animationType = 'slide',
     headingAlign,
     headingFontFamily,
     headerStyle,
@@ -111,36 +113,42 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
         onRequestClose={onRequestClose}
       >
         {!customTransparent && (
-          <ModalCustomWrapper transparentModal={transparentModal}>
-            <ToastContainer />
-            <StatusBar hidden />
-            <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-              {heading && (
-                <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                  <BodyCopy
-                    mobileFontFamily={headingFontFamily || 'primary'}
-                    fontWeight={headingFontWeight || 'extrabold'}
-                    textAlign={headingAlign}
-                    fontSize={fontSize || 'fs16'}
-                    text={heading}
-                  />
-                </ModalHeading>
-              )}
-              {getCloseIcon({
-                onRequestClose,
-                headerStyle,
-                iconType,
-                isOverlay,
-                stickyCloseIcon,
-              })}
-            </RowWrapper>
-            {geLine(horizontalBar, borderColor)}
+          <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
             <KeyboardAvoidingView
               behavior={behavior}
               keyboardVerticalOffset={keyboardVerticalOffset}
               enabled
             >
-              <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+                stickyHeaderIndices={[0]}
+              >
+                <Heading>
+                  <ToastContainer shouldShowSafeArea={false} />
+                  <StatusBar hidden />
+                  <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
+                    {heading && (
+                      <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
+                        <BodyCopy
+                          mobileFontFamily={headingFontFamily || 'primary'}
+                          fontWeight={headingFontWeight || 'extrabold'}
+                          textAlign={headingAlign}
+                          fontSize={fontSize || 'fs16'}
+                          text={heading}
+                        />
+                      </ModalHeading>
+                    )}
+                    {getCloseIcon({
+                      onRequestClose,
+                      headerStyle,
+                      iconType,
+                      isOverlay,
+                      stickyCloseIcon,
+                    })}
+                  </RowWrapper>
+                  {geLine(horizontalBar, borderColor)}
+                </Heading>
                 {children}
               </ScrollView>
             </KeyboardAvoidingView>
@@ -154,6 +162,7 @@ const ModalNative = ({ isOpen, children, isOverlay, ...otherProps }: Props) => {
 
 ModalNative.defaultProps = {
   isOverlay: false,
+  inheritedStyles: '',
 };
 
 export default ModalNative;

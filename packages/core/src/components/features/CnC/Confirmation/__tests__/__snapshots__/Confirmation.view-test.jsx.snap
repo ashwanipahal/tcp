@@ -106,6 +106,8 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
   </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    venmoPayment={Object {}}
   />
 </div>
 `;
@@ -177,15 +179,6 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       <Styled(VenmoConfirmation)
         isVenmoPaymentInProgress={true}
       />
-      <div>
-        <section
-          className="venmo-payment-method-wrapper"
-        >
-          <Styled(CardImage)
-            card={Object {}}
-          />
-        </section>
-      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -223,6 +216,15 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
   </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
   />
 </div>
 `;
@@ -294,15 +296,6 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <Styled(VenmoConfirmation)
         isVenmoPaymentInProgress={true}
       />
-      <div>
-        <section
-          className="venmo-payment-method-wrapper"
-        >
-          <Styled(CardImage)
-            card={Object {}}
-          />
-        </section>
-      </div>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -340,6 +333,15 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
   </Styled(Row)>
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
   />
 </div>
 `;

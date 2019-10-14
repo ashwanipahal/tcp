@@ -8,7 +8,6 @@ import ProductEditForm from '../../../../../../common/molecules/ProductCustomize
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-
 import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
@@ -39,6 +38,19 @@ class CartItemTile extends React.Component {
       this.toggleFormVisibility();
       const { getProductSKUInfo } = this.props;
       getProductSKUInfo({ productNum, itemBrand });
+    } else {
+      const { onQuickViewOpenClick, productDetail } = this.props;
+      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      onQuickViewOpenClick({
+        colorProductId: productNumber,
+        orderInfo: {
+          orderItemId: itemId,
+          selectedQty: qty,
+          selectedColor: color,
+          selectedSize: size,
+          selectedFit: fit,
+        },
+      });
     }
   };
 
@@ -226,6 +238,7 @@ class CartItemTile extends React.Component {
 
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
+    const { currencySymbol } = this.props;
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -267,7 +280,7 @@ class CartItemTile extends React.Component {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`$${productDetail.itemInfo.price.toFixed(2)}`}
+            {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
           </BodyCopy>
         )}
       </Row>
@@ -311,7 +324,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductPriceList = (productDetail, pageView) => {
-    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
     if (isBagPageSflSection) {
       return (
         <>
@@ -335,7 +348,7 @@ class CartItemTile extends React.Component {
               dataLocator={getLocator('cart_item_price')}
               fontWeight={['extrabold']}
             >
-              {`$${productDetail.itemInfo.price.toFixed(2)}`}
+              {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
             </BodyCopy>
           </Col>
         </>
@@ -365,8 +378,8 @@ class CartItemTile extends React.Component {
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
             {pageView === 'myBag'
-              ? `$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
-              : `$${productDetail.itemInfo.price.toFixed(2)}`}
+              ? `${currencySymbol}${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
+              : `${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
           </BodyCopy>
         </Col>
       </>
@@ -453,6 +466,46 @@ class CartItemTile extends React.Component {
     );
   };
 
+  renderSizeAndFit = () => {
+    const { labels, productDetail, isBagPageSflSection } = this.props;
+    return (
+      <div>
+        <div className="color-size-fit-label color-fit-size-desktop">
+          <BodyCopy
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs12"
+            fontWeight={['extrabold']}
+          >
+            {this.getSizeLabel(productDetail, labels)}
+          </BodyCopy>
+        </div>
+        <BodyCopy
+          className="padding-left-10"
+          fontFamily="secondary"
+          component="span"
+          fontSize="fs12"
+          color="gray.800"
+          dataLocator={getLocator('cart_item_size')}
+        >
+          {`${productDetail.itemInfo.size}`}
+          {this.getProductFit(productDetail)}
+        </BodyCopy>
+        {!isBagPageSflSection && (
+          <BodyCopy
+            className="color-fit-size-separator"
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs12"
+            color="gray.600"
+          >
+            |
+          </BodyCopy>
+        )}
+      </div>
+    );
+  };
+
   renderHeartIcon = () => {
     const { isBagPageSflSection, labels } = this.props;
     if (!isBagPageSflSection) return null;
@@ -499,6 +552,30 @@ class CartItemTile extends React.Component {
           )}
         </div>
       )
+    );
+  };
+
+  getProductDetailClass = () => {
+    const { showOnReviewPage } = this.props;
+    return showOnReviewPage ? 'product-detail' : 'product-detail product-detail-review-page';
+  };
+
+  renderReviewPageSection = () => {
+    const { showOnReviewPage } = this.props;
+    return (
+      <>
+        {!showOnReviewPage ? (
+          <div className="size-and-item-container">
+            {this.renderSizeAndFit()}
+            {this.renderItemQuantity()}
+          </div>
+        ) : (
+          <>
+            {this.renderSizeAndFit()}
+            {this.renderItemQuantity()}
+          </>
+        )}
+      </>
     );
   };
 
@@ -580,7 +657,7 @@ class CartItemTile extends React.Component {
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
                   fontFamily="secondary"
-                  tag="span"
+                  component="h2"
                   fontSize="fs14"
                   fontWeight={['extrabold']}
                   dataLocator={getLocator('cart_item_title')}
@@ -594,7 +671,9 @@ class CartItemTile extends React.Component {
               <React.Fragment>
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <Col
-                    className={pageView !== 'myBag' ? 'product-detail' : 'product-detail-bag'}
+                    className={
+                      pageView !== 'myBag' ? this.getProductDetailClass() : 'product-detail-bag'
+                    }
                     colSize={{ small: 10, medium: 10, large: 10 }}
                   >
                     <div>
@@ -619,40 +698,7 @@ class CartItemTile extends React.Component {
                       >
                         {`${productDetail.itemInfo.color}`}
                       </BodyCopy>
-                      <BodyCopy
-                        className="color-fit-size-separator"
-                        fontFamily="secondary"
-                        component="span"
-                        fontSize="fs12"
-                        color="gray.600"
-                      >
-                        |
-                      </BodyCopy>
-                    </div>
-
-                    <div>
-                      <div className="color-size-fit-label color-fit-size-desktop">
-                        <BodyCopy
-                          fontFamily="secondary"
-                          component="span"
-                          fontSize="fs12"
-                          fontWeight={['extrabold']}
-                        >
-                          {this.getSizeLabel(productDetail, labels)}
-                        </BodyCopy>
-                      </div>
-                      <BodyCopy
-                        className="padding-left-10"
-                        fontFamily="secondary"
-                        component="span"
-                        fontSize="fs12"
-                        color="gray.800"
-                        dataLocator={getLocator('cart_item_size')}
-                      >
-                        {`${productDetail.itemInfo.size}`}
-                        {this.getProductFit(productDetail)}
-                      </BodyCopy>
-                      {!isBagPageSflSection && (
+                      {showOnReviewPage && (
                         <BodyCopy
                           className="color-fit-size-separator"
                           fontFamily="secondary"
@@ -664,7 +710,7 @@ class CartItemTile extends React.Component {
                         </BodyCopy>
                       )}
                     </div>
-                    {this.renderItemQuantity()}
+                    {this.renderReviewPageSection()}
                   </Col>
                   {showOnReviewPage && (
                     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
@@ -726,6 +772,7 @@ CartItemTile.defaultProps = {
   sflItemsCount: 0,
   isBagPageSflSection: false,
   showOnReviewPage: true,
+  onQuickViewOpenClick: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -751,6 +798,8 @@ CartItemTile.propTypes = {
   showOnReviewPage: PropTypes.bool,
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func,
+  currencySymbol: PropTypes.string.isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

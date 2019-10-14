@@ -7,6 +7,7 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
+import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
@@ -19,17 +20,11 @@ const getBagActions = ({ BagActions }) => {
 const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   return (
     !isGuest && (
-      <div
-        className={`${
-          showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-        } elem-mb-MED`}
-      >
-        <BonusPointsDays
-          showAccordian={showAccordian}
-          enableApplyCta
-          additionalClassNameModal="bonus-modal-web"
-        />
-      </div>
+      <BonusPointsDays
+        showAccordian={showAccordian}
+        enableApplyCta
+        additionalClassNameModal="bonus-modal-web"
+      />
     )
   );
 };
@@ -45,6 +40,7 @@ const CnCTemplate = ({
   showAccordian,
   isNonEmptySFL,
   isConfirmationPage,
+  isNotLoaded,
 }) => {
   const isSmallLeftSection = isNonEmptySFL || showLeftSection;
   return (
@@ -57,7 +53,7 @@ const CnCTemplate = ({
             medium: isSmallLeftSection ? 5 : 8,
             large: isSmallLeftSection ? 8 : 12,
           }}
-          className="left-sec"
+          className="left-sec "
         >
           <LeftSection />
         </Col>
@@ -66,25 +62,30 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {isConfirmationPage ? (
+            {!!isNotLoaded && (
               <>
-                <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
-                <Row fullBleed>
-                  <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                    <PersonalizedCoupons />
-                  </Col>
-                </Row>
-              </>
-            ) : (
-              <>
-                <OrderLedgerContainer />
-                {getBagActions({ BagActions })}
-                {getBonusPointsDaysSection({ isGuest, showAccordian })}
-                <AirmilesBanner />
-                <CouponAndPromos
-                  showAccordian={showAccordian}
-                  additionalClassNameModal="coupon-modal-web"
-                />
+                {isConfirmationPage ? (
+                  <>
+                    <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+                    <Row fullBleed>
+                      <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                        <PersonalizedCoupons />
+                      </Col>
+                    </Row>
+                  </>
+                ) : (
+                  <>
+                    <OrderLedgerContainer />
+                    {getBagActions({ BagActions })}
+                    <LoyaltyBanner />
+                    {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                    <AirmilesBanner />
+                    <CouponAndPromos
+                      showAccordian={showAccordian}
+                      additionalClassNameModal="coupon-modal-web"
+                    />
+                  </>
+                )}
               </>
             )}
           </Col>
@@ -106,6 +107,7 @@ CnCTemplate.propTypes = {
   isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
+  isNotLoaded: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
@@ -116,6 +118,7 @@ CnCTemplate.defaultProps = {
   isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
+  isNotLoaded: true,
 };
 
 export default withStyles(CnCTemplate, styles);

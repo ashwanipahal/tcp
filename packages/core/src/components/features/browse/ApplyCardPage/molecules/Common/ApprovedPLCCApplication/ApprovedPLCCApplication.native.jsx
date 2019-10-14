@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, RichText } from '../../../../../../common/atoms';
 import {
@@ -19,6 +19,7 @@ import {
   CopyToClipBoardWrapper,
 } from './style/ApprovedPLCCApplication.style.native';
 import { getLabelValue } from '../../../../../../../utils/utils';
+import { readCookieMobileApp } from '../../../../../../../../../mobileapp/src/utils/utils';
 
 const headerImage = require('../../../../../../../assets/tcp-cc.png');
 const couponImage = require('../../../../../../../assets/promo.png');
@@ -123,7 +124,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
             type="submit"
             fontWeight="regular"
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             onPress={() => {
               toggleModal();
@@ -138,7 +138,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
           fill={bagItems ? 'WHITE' : 'BLUE'}
           type="submit"
           color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
           text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           onPress={() => {
             navigation.navigate('Home');
@@ -179,16 +178,21 @@ const ApprovedPLCCApplicationView = ({
   labels,
   approvedPLCCData,
   isGuest,
-  bagItems,
   navigation,
   toggleModal,
 }) => {
   const viewRef = useRef(null);
-
+  const [bagItems, setBagItems] = useState(0);
+  const setCount = () => {
+    const cartValuePromise = readCookieMobileApp('cartItemsCount');
+    cartValuePromise.then(res => {
+      setBagItems(parseInt(res || 0, 10));
+    });
+  };
   useEffect(() => {
     viewRef.current.scrollTo({ x: 0, y: 0 });
+    setCount();
   }, []);
-
   return (
     <ScrollViewContainer ref={viewRef}>
       <ImageContainer>
@@ -233,7 +237,6 @@ ApprovedPLCCApplicationView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
-  bagItems: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   navigation: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,

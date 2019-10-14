@@ -7,7 +7,7 @@ exports[`Header component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gJWqzi",
+        "componentId": "sc-gPWkxV",
         "isStatic": false,
         "rules": Array [
           "
@@ -30,6 +30,41 @@ exports[`Header component renders correctly 1`] = `
   .checkout-pages & {
     display: none;
   }
+
+  .skip-main {
+    padding: 6px;
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    color: ",
+          [Function],
+          ";
+    border-right: 1px solid ",
+          [Function],
+          ";
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    border-bottom-right-radius: 8px;
+    background: ",
+          [Function],
+          ";
+    -webkit-transition: top 1s ease-out;
+    transition: top 1s ease-out;
+    z-index: ",
+          [Function],
+          ";
+  }
+
+  .skip-main:focus,
+  .skip-main:active {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    outline-color: transparent;
+    -webkit-transition: top 0.1s ease-in;
+    transition: top 0.1s ease-in;
+  }
 ",
           ";
 ",
@@ -38,7 +73,7 @@ exports[`Header component renders correctly 1`] = `
       "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gJWqzi",
+      "styledComponentId": "sc-gPWkxV",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

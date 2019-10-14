@@ -8,6 +8,8 @@ import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCo
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const SearchListingView = ({
   className,
@@ -91,6 +93,8 @@ const SearchListingView = ({
           ) : null}
         </Col>
       </Row>
+      <QuickViewModal />
+      <AddedToBagContainer />
     </div>
   );
 };

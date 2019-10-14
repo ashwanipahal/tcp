@@ -7,6 +7,7 @@ import {
   briteVerifyStatusExtraction,
   getVenmoToken,
 } from '../../../../../services/abstractors/CnC/index';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -29,6 +30,7 @@ import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
+import { isCanada } from '../../../../../utils';
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -60,10 +62,10 @@ export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, 
           fromPage: '',
         },
       },
-      true // add to address book inside redux-store
+      false // add to address book inside redux-store
     );
+    addOrEditAddressResponse = { payload: { addressId: addOrEditAddressResponse.body.addressId } };
   }
-
   return addOrEditAddressResponse;
   // }
 }
@@ -82,6 +84,16 @@ export function* updateShipmentMethodSelection({ payload }) {
       addressId,
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
       transVibesSmsPhoneNo
+    );
+
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        calcsEnabled: true,
+        excludeCartItems: true,
+        recalcRewards: false,
+        isCanada: isCanada(),
+        isCheckoutFlow: true,
+      })
     );
   } catch (err) {
     // throw getSubmissionError(store, 'submitShippingSection', err);

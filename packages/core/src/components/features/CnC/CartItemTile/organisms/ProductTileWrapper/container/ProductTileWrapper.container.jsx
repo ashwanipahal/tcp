@@ -8,6 +8,7 @@ import {
   getIsCartItemsSFL,
   getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import {
   getUserLoggedInState,
   isPlccUser,
@@ -16,7 +17,11 @@ import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartIt
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export const ProductTileWrapperContainer = props => {
-  return <ProductTileWrapper {...props} />;
+  return (
+    <>
+      <ProductTileWrapper {...props} />
+    </>
+  );
 };
 
 const mapStateToProps = state => {
@@ -38,16 +43,19 @@ export const mapDispatchToProps = dispatch => {
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
+    openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };
 
 ProductTileWrapperContainer.defaultProps = {
   orderItems: [],
+  pageView: '',
 };
 
 ProductTileWrapperContainer.propTypes = {
   orderItems: PropTypes.shape({}),
   initialActions: PropTypes.func.isRequired,
+  pageView: PropTypes.string,
 };
 
 export default connect(

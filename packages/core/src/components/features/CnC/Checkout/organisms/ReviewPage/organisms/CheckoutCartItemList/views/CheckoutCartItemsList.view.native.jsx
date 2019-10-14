@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { BodyCopy, Image } from '../../../../../../../../common/atoms';
-import { getTranslateDateInformation, getAPIConfig } from '../../../../../../../../../utils/utils';
+import {
+  getTranslatedMomentDate,
+  getAPIConfig,
+} from '../../../../../../../../../utils/index.native';
 import ReactTooltip from '../../../../../../../../common/atoms/ReactToolTip';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view.native';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
@@ -17,7 +20,9 @@ import {
   CartItemTileContainer,
   StoreDetailsWrapper,
   TooltipWrapper,
+  ContainerView,
 } from '../styles/CheckoutCartItemsList.style.native';
+import CollapsibleContainer from '../../../../../../../../common/molecules/CollapsibleContainer';
 
 const infoIcon = require('../../../../../../../../../assets/info-icon.png');
 
@@ -81,6 +86,26 @@ class CheckoutCartItemsList extends Component {
   };
 
   /**
+   *
+   *
+   * @returns
+   * @memberof CheckoutCartItemsList
+   */
+  getHeader() {
+    const { itemsCount, bagPageLabels } = this.props;
+    return (
+      <CartListHeading>
+        <BodyCopy
+          fontWeight="semibold"
+          fontSize="fs16"
+          fontFamily="secondary"
+          text={`${bagPageLabels.bagHeading} (${itemsCount}):`}
+        />
+      </CartListHeading>
+    );
+  }
+
+  /**
    * @function popover
    * @param {Object} deliveryItem - delivery item details
    * @summary This function accepts a deliveryItem and gives tooltip data
@@ -90,10 +115,11 @@ class CheckoutCartItemsList extends Component {
     const {
       storeAddress: { addressLine1, addressLine2, city, state, zipCode },
     } = deliveryItem;
-    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber, store } = deliveryItem;
     const { today, tomorrow, phone } = labels;
     return (
       <Text>
+        <BodyCopy fontWeight="extrabold" fontSize="fs16" fontFamily="secondary" text={store} />
         {deliveryItem && deliveryItem.storeAddress && (
           <>
             <BodyCopy
@@ -117,24 +143,30 @@ class CheckoutCartItemsList extends Component {
               fontFamily="secondary"
               text={`${city},${state}${zipCode}`}
             />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${today}${storeTodayOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${tomorrow}${storeTomorrowOpenRange}`}
-            />
-            <BodyCopy
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              text={`${phone}${storePhoneNumber}`}
-            />
+            {storeTodayOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${today}${storeTodayOpenRange}`}
+              />
+            )}
+            {storeTomorrowOpenRange && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${tomorrow}${storeTomorrowOpenRange}`}
+              />
+            )}
+            {storePhoneNumber && (
+              <BodyCopy
+                fontWeight="regular"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={`${phone}${storePhoneNumber}`}
+              />
+            )}
           </>
         )}
       </Text>
@@ -279,7 +311,9 @@ class CheckoutCartItemsList extends Component {
   renderItems() {
     const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
-    const bopisDate = apiConfig && getTranslateDateInformation('', apiConfig.language);
+    const bopisDate =
+      apiConfig &&
+      getTranslatedMomentDate('', apiConfig.language, CheckoutConstants.REQUIRE_FORMAT);
     /**
      * @var sortedItem - array of items available in the cart checkout are sorted in a
      * way that the BOPIS selected stores are moved to the top in the list than BOSS
@@ -335,11 +369,11 @@ class CheckoutCartItemsList extends Component {
     const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
     if (orderBucket) {
       return (
-        <View>
+        <ContainerView>
           {orderTypeList.map((item, index) =>
             this.renderOrderItems(item, orderBucket[item], index)
           )}
-        </View>
+        </ContainerView>
       );
     }
     return {};
@@ -350,18 +384,14 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, bagPageLabels } = this.props;
     return (
       <Container>
-        <CartListHeading>
-          <BodyCopy
-            fontWeight="semibold"
-            fontSize="fs16"
-            fontFamily="secondary"
-            text={`${bagPageLabels.bagHeading} (${itemsCount}):`}
-          />
-        </CartListHeading>
-        {this.renderItems()}
+        <CollapsibleContainer
+          header={this.getHeader()}
+          body={this.renderItems()}
+          defaultOpen
+          iconLocator="arrowicon"
+        />
       </Container>
     );
   }

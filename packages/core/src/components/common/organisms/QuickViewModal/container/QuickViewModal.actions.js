@@ -7,6 +7,13 @@ export const setQuickView = payload => {
   };
 };
 
+export const setItemFromBagInfoForQuickView = payload => {
+  return {
+    type: QUICK_VIEW_CONSTANTS.SET_ITEM_FROM_BAG_INFO,
+    payload,
+  };
+};
+
 export const openQuickViewWithValues = payload => {
   return {
     payload,
