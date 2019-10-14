@@ -40,7 +40,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
             }
           />
           <Styled(Text)>
-            at this PLACE!
+            Retail Store
           </Styled(Text)>
         </Styled(View)>
         <Styled(View)>
@@ -185,7 +185,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             }
           />
           <Styled(Text)>
-            at this PLACE!
+            Retail Store
           </Styled(Text)>
         </Styled(View)>
         <Styled(View)>

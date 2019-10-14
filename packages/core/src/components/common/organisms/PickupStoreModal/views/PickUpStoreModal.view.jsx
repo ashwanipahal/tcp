@@ -158,6 +158,8 @@ class PickUpStoreModalView extends React.Component {
     }).isRequired,
     className: PropTypes.string,
     currency: PropTypes.string,
+    updatePickUpCartItem: PropTypes.func.isRequired,
+    initialValuesFromBagPage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -388,10 +390,12 @@ class PickUpStoreModalView extends React.Component {
       storeSearchError,
       onClearSearchFormError,
       addItemToCartInPickup,
+      updatePickUpCartItem,
       currency,
       PickupSkuFormValues,
       addToBagError,
       navigation,
+      initialValuesFromBagPage,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -479,6 +483,7 @@ class PickUpStoreModalView extends React.Component {
           name={name}
           offerPrice={prices.offerPrice}
           onAddItemToCart={addItemToCartInPickup}
+          onUpdatePickUpItem={updatePickUpCartItem}
           onCloseClick={this.onCloseClick}
           onSubmit={this.handleSearchAreaStoresSubmit}
           promotionalMessage={currentProduct.promotionalMessage}
@@ -504,6 +509,7 @@ class PickUpStoreModalView extends React.Component {
           onClearSearchFormError={onClearSearchFormError}
           isSkuResolved={isSkuResolved}
           PickupSkuFormValues={PickupSkuFormValues}
+          initialValuesFromBagPage={initialValuesFromBagPage}
         />
       </>
     );

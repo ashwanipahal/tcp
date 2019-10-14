@@ -17,6 +17,13 @@ export const removeCartItemComplete = () => {
   };
 };
 
+export const openPickupModalWithValuesFromBag = payload => {
+  return {
+    payload,
+    type: CARTPAGE_CONSTANTS.PICKUP_MODAL_OPEN_FROM_BAG,
+  };
+};
+
 export const confirmRemoveCartItem = (payload, afterHandler) => {
   return {
     type: CARTPAGE_CONSTANTS.CONFIRM_REMOVE_CART_ITEM,

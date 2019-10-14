@@ -694,7 +694,6 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
       recalcFlag,
       emailAddress,
     });
-    yield call(getAddressList);
     yield call(getCardList);
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
     const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
