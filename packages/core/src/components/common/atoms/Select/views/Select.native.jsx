@@ -30,6 +30,7 @@ const SelectBox = ({
       <NativeDropdown
         onValueChange={value => {
           input.onChange(value);
+          input.onBlur(value);
           onValueChange(value);
         }}
         data={options}
@@ -37,6 +38,7 @@ const SelectBox = ({
         id={id}
         name={name}
         buttonVariation="mobileApp-select"
+        width="100%"
         {...otherProps}
       />
       {touched && error && (

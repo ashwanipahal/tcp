@@ -6,7 +6,7 @@ const ignorePsuedoCodeDir = [
   '/StoreSummaryComponents/',
   '/ProductDetail/',
   '/SearchDetail/',
-  '/OutfitDetail/',
+  '/OutfitDetails/',
   '/OutfitListing/',
   '/ProductPickup/',
   '/bopisInventory/',
@@ -27,6 +27,8 @@ const ignorePsuedoCodeDir = [
   '/services/abstractors/account/ordersList', // TO DO - Furkan The story is in progress Excluding for now
   '/services/abstractors/common/searchBar/makeSearch.js',
   '/ModuleK/',
+  '/formValidation/createValidateMethod.js',
+  '/ExtraPoints/imageSourceMap.js',
 ];
 
 module.exports = {

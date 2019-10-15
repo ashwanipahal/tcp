@@ -133,6 +133,10 @@ export const FooterBtnWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
+export const BtnFullWidth = css`
+  width: 100%;
+`;
+
 export const FooterBtnRight = styled.View`
   flex: 1;
   padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
