@@ -66,12 +66,7 @@ class Header extends React.PureComponent<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      isUpdateCartCount,
-      updateCartManuallyAction,
-      isUserLoggedIn,
-      loadFavoriteStore,
-    } = this.props;
+    const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
     if (
       isUpdateCartCount !== prevProps.isUpdateCartCount ||
       isUserLoggedIn !== prevProps.isUserLoggedIn
@@ -79,30 +74,27 @@ class Header extends React.PureComponent<Props> {
       this.getInitialProps();
       updateCartManuallyAction(false);
     }
-    if (isUserLoggedIn !== prevProps.isUserLoggedIn) {
-      loadFavoriteStore({});
-    }
   }
 
   getInitialProps() {
-    const { updateCartCountAction } = this.props;
+    const { updateCartCountAction, loadFavoriteStore } = this.props;
     const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
       updateCartCountAction(parseInt(res || 0, 10));
     });
+    loadFavoriteStore({});
   }
 
   /**
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { navigation, labels, cartVal } = this.props;
+    const { navigation, labels } = this.props;
     const { isDownIcon } = this.state;
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
         title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
-        cartItemsCount: cartVal,
       },
     });
     this.setState({
