@@ -127,7 +127,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           className="rightLink"
-          fontSizeVariation="small"
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
