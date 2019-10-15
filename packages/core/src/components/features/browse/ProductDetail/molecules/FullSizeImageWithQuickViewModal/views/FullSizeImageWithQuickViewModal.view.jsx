@@ -38,7 +38,7 @@ const FullSizeImageWithQuickViewModal = props => {
             <Row className="edit-form-css">
               <Col colSize={{ small: 10, medium: 10, large: 10 }}>
                 <div className="select-value-wrapper">
-                  {colorList.size > 0 && (
+                  {colorList && colorList.size > 0 && (
                     <div className="color-selector">
                       <Field
                         id="color-swatch"
