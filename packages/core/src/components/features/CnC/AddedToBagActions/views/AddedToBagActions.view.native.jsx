@@ -69,7 +69,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         {(isNoNEmptyBag || fromAddedToBagModal) && (
           <View>
             <ButtonWrapper>
-              <PayPalButton getPayPalSettings={getPayPalSettings} />
+              <PayPalButton getPayPalSettings={getPayPalSettings} navigation={navigation} />
               <CheckoutButton
                 onPress={() => {
                   handleCartCheckout({

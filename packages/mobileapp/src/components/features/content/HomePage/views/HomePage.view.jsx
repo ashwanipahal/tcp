@@ -79,6 +79,11 @@ class HomePageView extends React.PureComponent<Props> {
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
+        <Button
+          text="PLP Page"
+          onPress={() => navigation.navigate('ProductListingPageContainer')}
+          style={buttonMargin}
+        />
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>

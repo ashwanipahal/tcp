@@ -10,7 +10,6 @@ import { getAPIConfig } from '../../../../../../../utils';
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const { startPaypalNativeCheckoutAction } = this.props;
-    console.log('startPaypalNativeCheckoutAction');
     startPaypalNativeCheckoutAction();
   }
 
@@ -52,7 +51,15 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isQualifedOrder, containerId, getPayPalSettings, payPalWebViewHandle } = this.props;
+    const {
+      isQualifedOrder,
+      containerId,
+      navigation,
+      getPayPalSettings,
+      payPalWebViewHandle,
+      paypalAuthorizationHandle,
+      clearPaypalSettings,
+    } = this.props;
     return (
       getPayPalSettings &&
       getPayPalSettings.paypalInContextToken && (
@@ -60,8 +67,11 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           isQualifedOrder={isQualifedOrder}
           initalizePayPalButton={this.initalizePayPalButton}
           containerId={containerId}
+          navigation={navigation}
           getPayPalSettings={getPayPalSettings}
           payPalWebViewHandle={payPalWebViewHandle}
+          paypalAuthorizationHandle={paypalAuthorizationHandle}
+          clearPaypalSettings={clearPaypalSettings}
         />
       )
     );
@@ -81,8 +91,8 @@ export const mapDispatchToProps = dispatch => {
     startPaypalNativeCheckoutAction: () => {
       dispatch(bagPageActions.startPaypalNativeCheckout());
     },
-    paypalAuthorizationHandle: () => {
-      dispatch(bagPageActions.paypalAuthorization());
+    paypalAuthorizationHandle: payload => {
+      dispatch(bagPageActions.paypalAuthorization(payload));
     },
     clearPaypalSettings: () => {
       dispatch(getSetIsPaypalPaymentSettings(null));

@@ -39,25 +39,20 @@
             });
           },
           onAuthorize: function(data, actions) {
-            // document.getElementById("test").style.backgroundColor = "green";
-            window.postMessage("authorized");
+            window.postMessage("onAuthorize");
           },
           onCancel: function(data, actions) {
             return new Promise((resolve) => {
-              window.postMessage("cancelled");
+              window.postMessage("onCancel");
               resolve(true);
             });
-            // Show a cancel page or return to cart
-            // document.getElementById("test").style.backgroundColor = "yellow";
           },
           onError: function() {
-            window.postMessage("error");
-            // document.getElementById("test").style.backgroundColor = "red";
+            window.postMessage("onError");
           }
         },
         "#paypal-button"
       );
-      // document.getElementById("test").style.backgroundColor = "blue";
     </script>
   </body>
 </html>

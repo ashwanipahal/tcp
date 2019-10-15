@@ -122,7 +122,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       setVenmoShippingState,
       getPayPalSettings,
-      startPaypalNativeCheckoutAction,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -170,7 +169,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
         getPayPalSettings={getPayPalSettings}
-        startPaypalNativeCheckoutAction={startPaypalNativeCheckoutAction}
       />
     );
   }
@@ -221,9 +219,6 @@ export const mapDispatchToProps = dispatch => {
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
-    startPaypalNativeCheckoutAction: () => {
-      dispatch(BAG_PAGE_ACTIONS.startPaypalNativeCheckout());
-    },
   };
 };
 

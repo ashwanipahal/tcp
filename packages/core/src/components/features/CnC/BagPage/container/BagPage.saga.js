@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select, delay } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -318,7 +319,7 @@ export function* startPaypalNativeCheckout() {
   }
 }
 
-export function* authorizePayPalPayment() {
+export function* authorizePayPalPayment({ payload: { navigation, navigationActions } = {} } = {}) {
   const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
     checkoutSelectors.getPaypalPaymentSettings
   );
@@ -330,10 +331,24 @@ export function* authorizePayPalPayment() {
     centinelOrderId
   );
   if (res) {
+    if (isMobileApp()) {
+      const navigateAction = navigationActions.navigate({
+        routeName: CONSTANTS.CHECKOUT_ROOT,
+        params: {},
+        action: navigationActions.navigate({
+          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW,
+          params: {
+            routeTo: CONSTANTS.REVIEW_DEFAULT_PARAM,
+          },
+        }),
+      });
+      navigation.dispatch(navigateAction);
+    } else {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, {
+        queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' },
+      });
+    }
     // redirect
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPage, {
-      queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' },
-    });
   }
 }
 
