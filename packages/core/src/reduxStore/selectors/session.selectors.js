@@ -16,10 +16,7 @@ export /**
  * @description this selector gives current country selected.
  */
 const getCurrentCountry = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
 };
 
 export /**
@@ -38,29 +35,26 @@ const getIsInternationalShipping = state => {
 export const getIsRadialInventoryEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isRadialInventoryEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.isRadialInventoryEnabled
   );
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
+  const isBOSSEnabled = `isBOSSEnabled_${brand.toUpperCase()}`;
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOSSEnabled_${brand.toUpperCase()}`])
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
   );
 };
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
+  const isBOPISEnabled = `isBOPISEnabled_${brand.toUpperCase()}`;
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOPISEnabled_${brand.toUpperCase()}`])
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOPISEnabled]
   );
 };
 
 export const getCurrentCurrency = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'currency'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.currency;
 };
 
 export const getCurrentCurrencySymbol = state => {

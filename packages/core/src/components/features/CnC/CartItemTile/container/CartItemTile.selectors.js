@@ -316,10 +316,10 @@ export const getProductDetails = tile => {
 
 export const getBossBopisFlags = state => {
   return {
-    isBOSSEnabled_TCP: state.session.getIn(['siteDetails', 'isBOSSEnabled_TCP']),
-    isBOPISEnabled_TCP: state.session.getIn(['siteDetails', 'isBOPISEnabled_TCP']),
-    isBOPISEnabled_GYM: state.session.getIn(['siteDetails', 'isBOPISEnabled_GYM']),
-    isBOSSEnabled_GYM: state.session.getIn(['siteDetails', 'isBOSSEnabled_GYM']),
+    isBOSSEnabled_TCP: state.session.siteDetails.isBOSSEnabled_TCP,
+    isBOPISEnabled_TCP: state.session.siteDetails.isBOPISEnabled_TCP,
+    isBOPISEnabled_GYM: state.session.siteDetails.isBOPISEnabled_GYM,
+    isBOSSEnabled_GYM: state.session.siteDetails.isBOSSEnabled_GYM,
   };
 };
 

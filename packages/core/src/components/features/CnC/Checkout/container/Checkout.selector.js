@@ -813,7 +813,7 @@ const getIsVenmoEnabled = state => {
   return (
     getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.VENMO_ENABLED === 'TRUE'
   );
 };
 
