@@ -16,7 +16,7 @@ import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { className, labels } = this.props;
+    const { className, labels, onSubscribe, isTcpSubscribe } = this.props;
     return (
       <div className={`elem-pt-LRG ${className}`}>
         <Row fullBleed>
@@ -141,7 +141,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     src={getIconPath('icon-alarm')}
                   />
                   <Field
-                    name="primary"
+                    name="tcpAppSubscribe"
                     component={InputCheckbox}
                     dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
@@ -157,7 +157,7 @@ class MyPrefrenceSection extends React.PureComponent {
                     </BodyCopy>
                   </Field>
                   <Field
-                    name="primary"
+                    name="gymboreeAppSubscribe"
                     component={InputCheckbox}
                     dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
@@ -192,20 +192,23 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
 
                   <Field
-                    name="primary"
+                    name="tcpWebSubscribe"
                     component={InputCheckbox}
                     dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
+                    onChange={onSubscribe}
+                    checked={isTcpSubscribe}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
-                    name="primary"
+                    name="gymboreeWebSubscribe"
                     component={InputCheckbox}
                     dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
+                    onChange={onSubscribe}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
@@ -258,10 +261,13 @@ class MyPrefrenceSection extends React.PureComponent {
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
+  onSubscribe: PropTypes.func.isRequired,
+  isTcpSubscribe: PropTypes.bool,
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
+  isTcpSubscribe: false,
 };
 
 export default reduxForm({
