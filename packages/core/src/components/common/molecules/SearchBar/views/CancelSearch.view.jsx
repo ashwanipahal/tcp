@@ -18,27 +18,37 @@ import SearchBarStyle from '../SearchBar.style';
  */
 class CancelSearch extends React.PureComponent {
   render() {
-    const { className, closeSearchBar, cancelSearchBar } = this.props;
+    const { className, closeModalSearch, cancelSearchBar, closeSearchBar } = this.props;
 
     return (
       <React.Fragment>
         <Image
-          alt="mobile-close"
-          id="close-mobile-image"
-          className="close-mobile-image icon-small close-mobile-image-toggle"
-          onClick={cancelSearchBar}
+          alt="close"
+          id="close-image"
+          className="close-image icon-small close-image-toggle"
+          onClick={closeSearchBar}
           src={getIconPath('search-close-icon')}
-          data-locator="close-mobile-con"
+          data-locator="close-icon"
           height="25px"
         />
-
+        <span className="search-close-icon-wrapper">
+          <Image
+            alt="mobile-close"
+            id="close-mobile-image"
+            className="close-mobile-image icon-small close-mobile-image-toggle"
+            onClick={cancelSearchBar}
+            src={getIconPath('search-close-icon')}
+            data-locator="close-mobile-con"
+            height="25px"
+          />
+        </span>
         <BodyCopy
           component="span"
           fontFamily="secondary"
           fontSize="fs14"
           className={`${className} cancel-search-label-wrapper`}
         >
-          <Anchor onClick={closeSearchBar} className="cancel-search-label">
+          <Anchor onClick={closeModalSearch} className="cancel-search-label">
             Cancel
           </Anchor>
         </BodyCopy>
@@ -52,8 +62,9 @@ CancelSearch.propTypes = {
   labels: PropTypes.shape({
     lbl_cancel_search: PropTypes.string,
   }),
-  closeSearchBar: PropTypes.func.isRequired,
+  closeModalSearch: PropTypes.func.isRequired,
   cancelSearchBar: PropTypes.func.isRequired,
+  closeSearchBar: PropTypes.func.isRequired,
 };
 
 CancelSearch.defaultProps = {

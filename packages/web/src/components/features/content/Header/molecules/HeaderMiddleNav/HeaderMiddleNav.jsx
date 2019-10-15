@@ -8,11 +8,12 @@ import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
+import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
-import style from './HeaderMiddleNav.style';
+import style, { customHeaderStyle } from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
 
 /**
@@ -35,8 +36,18 @@ class HeaderMiddleNav extends React.PureComponent {
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      isFullSizeSearchModalOpen: false,
     };
     this.setSearchState = this.setSearchState.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
+  }
+
+  onCloseClick() {
+    const { isFullSizeSearchModalOpen, isSearchOpen } = this.state;
+    this.setState({
+      isFullSizeSearchModalOpen: !isFullSizeSearchModalOpen,
+      isSearchOpen: !isSearchOpen,
+    });
   }
 
   setSearchState(currentStatus, cb = null) {
@@ -101,11 +112,18 @@ class HeaderMiddleNav extends React.PureComponent {
       labels,
     } = this.props;
     const brand = getBrand();
-    const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
+    const {
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+      isSearchOpen,
+      isFullSizeSearchModalOpen,
+    } = this.state;
     const {
       accessibility: { closeIconButton, hamburgerMenu } = {},
       store: storeLabel = {},
     } = labels;
+
     return (
       <React.Fragment>
         <Row className="content-wrapper" fullBleed>
@@ -209,11 +227,40 @@ class HeaderMiddleNav extends React.PureComponent {
                   </React.Fragment>
                 )
               )}
-              <SearchBar
-                className={!isSearchOpen && 'rightLink'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
-              />
+              {isFullSizeSearchModalOpen ? (
+                <Modal
+                  isOpen={isFullSizeSearchModalOpen}
+                  onRequestClose={this.handleShowHideFullSizeModalClick}
+                  overlayClassName="TCPModal__Overlay"
+                  className="TCPModal__Content"
+                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
+                  heightConfig={{ height: '99%' }}
+                  fixedWidth
+                  inheritedStyles={customHeaderStyle}
+                  headingAlign="center"
+                  horizontalBar={false}
+                  stickyCloseIcon
+                  fullWidth
+                  stickyHeader
+                >
+                  <SearchBar
+                    className={!isSearchOpen}
+                    setSearchState={this.setSearchState}
+                    isSearchOpen={isSearchOpen}
+                    onCloseClick={this.onCloseClick}
+                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                  />
+                </Modal>
+              ) : (
+                <SearchBar
+                  className={!isSearchOpen && 'rightLink'}
+                  setSearchState={this.setSearchState}
+                  isSearchOpen={isSearchOpen}
+                  onCloseClick={this.onCloseClick}
+                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                />
+              )}
+
               <Anchor
                 to=""
                 id="cartIcon"

@@ -10,6 +10,7 @@ import SearchBarStyle from '../SearchBar.style';
 import { getSearchResult } from '../SearchBar.actions';
 import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
 import CancelSearch from './CancelSearch.view';
+import SuggestionBox from './SuggestionBox.view';
 
 /**
  * This component produces a Search Bar component for Header
@@ -32,6 +33,7 @@ class SearchBar extends React.PureComponent {
     this.searchInput = React.createRef();
     this.openSearchBar = this.openSearchBar.bind(this);
     this.closeSearchBar = this.closeSearchBar.bind(this);
+    this.closeModalSearch = this.closeModalSearch.bind(this);
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
   }
@@ -43,13 +45,33 @@ class SearchBar extends React.PureComponent {
     }
   }
 
+  openFullSizeSearchModel = () => {
+    const { onCloseClick } = this.props;
+    onCloseClick();
+    const elementExists = document.getElementById('search-input');
+    if (elementExists) {
+      document.getElementById('search-input').focus();
+    }
+  };
+
   openSearchBar = e => {
     e.preventDefault();
     const { setSearchState } = this.props;
-    if (window.innerWidth <= breakpoints.large) {
+
+    if (window.innerWidth <= 1024) {
+      this.openFullSizeSearchModel();
+    } else if (window.innerWidth <= breakpoints.large) {
       routerPush('/search', '/search');
     } else {
       setSearchState(true);
+    }
+  };
+
+  closeModalIfMobile = e => {
+    e.preventDefault();
+    if (window.innerWidth <= 1024) {
+      const { onCloseClick } = this.props;
+      onCloseClick();
     }
   };
 
@@ -58,6 +80,14 @@ class SearchBar extends React.PureComponent {
     const { setSearchState } = this.props;
     this.setState({ showProduct: false });
     setSearchState(false);
+  };
+
+  closeModalSearch = e => {
+    e.preventDefault();
+    const { setSearchState, onCloseClick } = this.props;
+    this.setState({ showProduct: false });
+    setSearchState(false);
+    onCloseClick();
   };
 
   cancelSearchBar = e => {
@@ -97,6 +127,13 @@ class SearchBar extends React.PureComponent {
     setSearchState(false);
   };
 
+  initiateSearchByModal = e => {
+    e.preventDefault();
+    this.startInitiateSearch();
+    const { onCloseClick } = this.props;
+    onCloseClick();
+  };
+
   initiateSearch = e => {
     e.preventDefault();
     this.startInitiateSearch();
@@ -104,6 +141,8 @@ class SearchBar extends React.PureComponent {
 
   initiateSearchBySubmit = () => {
     this.startInitiateSearch();
+    const { onCloseClick } = this.props;
+    onCloseClick();
   };
 
   redirectToSearchPage = searchText => {
@@ -152,11 +191,11 @@ class SearchBar extends React.PureComponent {
     if (index >= 0) {
       return (
         <div className="lookingFor-textWrapper-div">
-          {`${inputText.substring(0, index)}`}
+          {`${inputText.substring(0, index).toUpperCase()}`}
           <span className="highlight-search-result">
-            {`${inputText.substring(index, index + text.length)}`}
+            {`${inputText.substring(index, index + text.length).toUpperCase()}`}
           </span>
-          {`${inputText.substring(index + text.length)}`}
+          {`${inputText.substring(index + text.length).toUpperCase()}`}
         </div>
       );
     }
@@ -196,16 +235,10 @@ class SearchBar extends React.PureComponent {
     return null;
   };
 
-  isRecentResultExist = searchResults => {
-    const { labels } = this.props;
-    if (searchResults.length > 0) {
-      return (
-        <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
-          {getLabelValue(labels, 'lbl_search_recent_search')}
-        </BodyCopy>
-      );
-    }
-    return null;
+  redirectToSuggestedUrl = searchText => {
+    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    const { onCloseClick } = this.props;
+    onCloseClick();
   };
 
   render() {
@@ -228,10 +261,6 @@ class SearchBar extends React.PureComponent {
       return this.isLookingForExist(searchResults);
     };
 
-    const RecentResultsLabel = () => {
-      return this.isRecentResultExist(latestSearchResults);
-    };
-
     const LookingForProductLabel = () => {
       return this.isLookingForProductsExist(searchResults);
     };
@@ -251,7 +280,7 @@ class SearchBar extends React.PureComponent {
                   alt="search-mobile"
                   id="search-image-mobile"
                   className="search-mobile-image icon-small"
-                  onClick={this.initiateSearch}
+                  onClick={this.initiateSearchByModal}
                   src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
                   data-locator="search-mobile-icon"
                   height="25px"
@@ -276,56 +305,22 @@ class SearchBar extends React.PureComponent {
                   id="search-image-typeAhead"
                   className="search-image-typeAhead icon-small"
                   onClick={this.initiateSearch}
-                  src={getIconPath(`${SEARCH_IMAGE}`)}
+                  src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
                   data-locator="search-icon"
-                  height="25px"
-                />
-                <Image
-                  alt="close"
-                  id="close-image"
-                  className="close-image icon-small close-image-toggle"
-                  onClick={this.closeSearchBar}
-                  src={getIconPath('search-close-icon')}
-                  data-locator="close-icon"
                   height="25px"
                 />
 
                 <CancelSearch
                   closeSearchBar={this.closeSearchBar}
+                  closeModalSearch={this.closeModalSearch}
                   cancelSearchBar={this.cancelSearchBar}
                 />
 
                 {!showProduct ? (
-                  <div className="suggestionBox">
-                    {isLatestSearchResultsExists && (
-                      <div className="recentBox">
-                        <RecentResultsLabel latestSearchResults={latestSearchResults} />
-                        <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
-                          <ul>
-                            {latestSearchResults.map(item => {
-                              return (
-                                <BodyCopy
-                                  component="li"
-                                  fontFamily="secondary"
-                                  fontSize="fs14"
-                                  key={item.id}
-                                  className="recentTag"
-                                >
-                                  <Anchor
-                                    asPath={`/search/${item}`}
-                                    to={`/search?searchQuery=${item}`}
-                                    className="suggestion-label"
-                                  >
-                                    {item.toUpperCase()}
-                                  </Anchor>
-                                </BodyCopy>
-                              );
-                            })}
-                          </ul>
-                        </BodyCopy>
-                      </div>
-                    )}
-                  </div>
+                  <SuggestionBox
+                    isLatestSearchResultsExists={isLatestSearchResultsExists}
+                    latestSearchResults={latestSearchResults}
+                  />
                 ) : (
                   <div className="matchBox">
                     <div className="matchLinkBox">
@@ -348,9 +343,11 @@ class SearchBar extends React.PureComponent {
                                         className="linkName"
                                       >
                                         <Anchor
-                                          asPath={`/search/${itemData.text}`}
-                                          to={`/search?searchQuery=${itemData.text}`}
+                                          noLink
                                           className="suggestion-label"
+                                          onClick={() =>
+                                            this.redirectToSuggestedUrl(`${itemData.text}`)
+                                          }
                                         >
                                           <HighLightSearch inputText={`${itemData.text}`} />
                                         </Anchor>
@@ -397,10 +394,10 @@ class SearchBar extends React.PureComponent {
             </div>
           ) : (
             <Image
-              alt="close"
+              alt="search-image"
               className="search-image icon`"
               onClick={this.openSearchBar}
-              src={getIconPath(fromCondensedHeader ? 'search-icon-blue' : 'search-icon')}
+              src={getIconPath(fromCondensedHeader ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`)}
               data-locator="search-icon"
               height="25px"
             />
@@ -428,6 +425,7 @@ SearchBar.propTypes = {
     lbl_search_looking_for: PropTypes.string,
     lbl_search_product_matches: PropTypes.string,
   }),
+  onCloseClick: PropTypes.func.isRequired,
 };
 
 SearchBar.defaultProps = {
