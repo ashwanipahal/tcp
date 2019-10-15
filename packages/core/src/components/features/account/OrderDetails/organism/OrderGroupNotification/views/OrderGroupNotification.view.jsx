@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 
 /**
  * This function component use for Order Group Notification
@@ -11,11 +11,13 @@ import { Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 const OrderGroupNotification = props => {
   const { message } = props;
   return (
-    <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
-      <BodyCopy fontSize="fs14" fontFamily="secondary">
-        {message}
-      </BodyCopy>
-    </Col>
+    <Row>
+      <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
+        <BodyCopy fontSize="fs14" fontFamily="secondary">
+          {message}
+        </BodyCopy>
+      </Col>
+    </Row>
   );
 };
 OrderGroupNotification.propTypes = {

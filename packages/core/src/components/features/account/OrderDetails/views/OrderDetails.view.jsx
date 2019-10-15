@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
@@ -20,6 +19,88 @@ import constants from '../OrderDetails.constants';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
 /**
+ * This function component use for rendering Bopis and Boss orders
+ * can be passed in the component.
+ * @param orderDetailsData - orderDetailsData object used for showing Order Details
+ */
+
+const renderBopisAndBossOrder = (orderDetailsData, ordersLabels) => {
+  const {
+    pickUpExpirationDate,
+    summary,
+    orderStatus,
+    pickedUpDate,
+    purchasedItems,
+    isBossOrder,
+    isBopisOrder,
+  } = orderDetailsData || {};
+  const { currencySymbol } = summary || {};
+  return (
+    (isBossOrder || isBopisOrder) &&
+    purchasedItems &&
+    purchasedItems.length > 0 && (
+      <Row fullBleed className="group-row">
+        {isBopisOrder && (
+          <OrderStatus
+            status={orderStatus}
+            pickUpExpirationDate={pickUpExpirationDate}
+            pickedUpDate={pickedUpDate}
+            isBopisOrder={isBopisOrder}
+            ordersLabels={ordersLabels}
+          />
+        )}
+        <OrderGroupHeader
+          label={getLabelValue(ordersLabels, 'lbl_orders_purchasedItems')}
+          message={summary.purchasedItems}
+        />
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <OrderItemsList
+            ordersLabels={ordersLabels}
+            items={purchasedItems[0].items}
+            currencySymbol={currencySymbol}
+            isShowWriteReview={
+              isBopisOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ORDER_PICKED
+            }
+          />
+        </Col>
+      </Row>
+    )
+  );
+};
+
+/**
+ * This function component use for rendering Cancelled and Out of Stock orders
+ * can be passed in the component.
+ * @param orderDetailsData - orderDetailsData object used for showing Order Details
+ */
+
+const renderCancelledAndOutOfStockOrders = (
+  items,
+  ordersLabels,
+  currencySymbol,
+  headerLabel,
+  notificationMessage
+) => {
+  return (
+    items &&
+    items.length > 0 && (
+      <Row fullBleed className="group-row">
+        <OrderGroupHeader label={headerLabel} message={items.length} />
+        <OrderGroupNotification message={notificationMessage} />
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <OrderItemsList
+            ordersLabels={ordersLabels}
+            items={items}
+            currencySymbol={currencySymbol}
+            isShowWriteReview={false}
+          />
+        </Col>
+      </Row>
+    )
+  );
+};
+
+/**
  * This function component use for return the OrderDetailsView
  * can be passed in the component.
  * @param orderDetailsData - orderDetailsData object used for showing Order Details
@@ -31,13 +112,13 @@ const OrderDetailsView = props => {
   const {
     // orderNumber,
     // orderDate,
-    pickUpExpirationDate,
+    // pickUpExpirationDate,
     // checkout,
     summary,
     // appliedGiftCards,
     // status,
     orderStatus,
-    pickedUpDate,
+    // pickedUpDate,
     purchasedItems,
     outOfStockItems,
     isBossOrder,
@@ -123,67 +204,21 @@ const OrderDetailsView = props => {
               </Row>
             ))}
 
-          {(isBossOrder || isBopisOrder) && purchasedItems && purchasedItems.length > 0 && (
-            <Row fullBleed className="group-row">
-              {isBopisOrder && (
-                <OrderStatus
-                  status={orderStatus}
-                  pickUpExpirationDate={pickUpExpirationDate}
-                  pickedUpDate={pickedUpDate}
-                  isBopisOrder={isBopisOrder}
-                  ordersLabels={ordersLabels}
-                />
-              )}
-              <OrderGroupHeader
-                label={getLabelValue(ordersLabels, 'lbl_orders_purchasedItems')}
-                message={summary.purchasedItems}
-              />
-              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                <OrderItemsList
-                  ordersLabels={ordersLabels}
-                  items={purchasedItems[0].items}
-                  currencySymbol={currencySymbol}
-                  isShowWriteReview={
-                    isBopisOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ORDER_PICKED
-                  }
-                />
-              </Col>
-            </Row>
+          {renderBopisAndBossOrder(orderDetailsData, ordersLabels)}
+          {renderCancelledAndOutOfStockOrders(
+            outOfStockItems,
+            ordersLabels,
+            currencySymbol,
+            getLabelValue(ordersLabels, 'lbl_orders_outOfStock'),
+            getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')
           )}
 
-          {outOfStockItems && outOfStockItems.length > 0 && (
-            <Row fullBleed className="group-row">
-              <OrderGroupHeader
-                label={getLabelValue(ordersLabels, 'lbl_orders_outOfStock')}
-                message={outOfStockItems.length}
-              />
-              <OrderGroupNotification
-                message={getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')}
-              />
-              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                <OrderItemsList
-                  ordersLabels={ordersLabels}
-                  items={outOfStockItems}
-                  currencySymbol={currencySymbol}
-                  isShowWriteReview={false}
-                />
-              </Col>
-            </Row>
-          )}
-
-          {canceledItems && canceledItems.length > 0 && (
-            <Row fullBleed className="group-row">
-              <OrderGroupHeader label={notificationHeader} message={canceledItems.length} />
-              <OrderGroupNotification message={notificationMessage} />
-              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                <OrderItemsList
-                  ordersLabels={ordersLabels}
-                  items={canceledItems.items}
-                  currencySymbol={currencySymbol}
-                  isShowWriteReview={false}
-                />
-              </Col>
-            </Row>
+          {renderCancelledAndOutOfStockOrders(
+            canceledItems,
+            ordersLabels,
+            currencySymbol,
+            notificationHeader,
+            notificationMessage
           )}
         </>
       )}

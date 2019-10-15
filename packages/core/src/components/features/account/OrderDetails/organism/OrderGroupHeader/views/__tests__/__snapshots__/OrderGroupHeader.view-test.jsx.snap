@@ -1,15 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Order Group Header component should renders correctly 1`] = `
-<Styled(Col)
-  colSize={
-    Object {
-      "large": 12,
-      "medium": 8,
-      "small": 6,
-    }
-  }
->
+<Styled(Row)>
   <Styled(Col)
     className="elem-mb-MED"
     colSize={
@@ -49,5 +41,5 @@ exports[`Order Group Header component should renders correctly 1`] = `
       1
     </Styled(BodyCopy)>
   </Styled(Col)>
-</Styled(Col)>
+</Styled(Row)>
 `;
