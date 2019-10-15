@@ -46,15 +46,19 @@ describe('CheckoutAddress', () => {
       labels: {},
       shippingAddress: {},
       isSameAsShippingChecked: false,
-      userAddresses: new List([
+      userAddresses: [
         {
           addressId: '1234',
+          addressLine: [],
         },
-        { addressId: '5678' },
-      ]),
+        { addressId: '5678', addressLine: [] },
+      ],
       selectedOnFileAddressId: '1234',
 
       onFileAddressId: '1234',
+      editMode: true,
+      change: jest.fn(),
+      billingData: { address: {} },
     };
     const tree = shallow(<CheckoutAddressVanilla {...props} />);
     tree.setState({ isAddNewAddress: true });
@@ -106,5 +110,47 @@ describe('CheckoutAddress', () => {
     expect(tree.state('isAddNewAddress')).toBe(true);
     expect(mockedDispatch).toHaveBeenCalled();
     expect(tree).toMatchSnapshot();
+  });
+  it('should call onSameAsShippingChange with editMode', () => {
+    const mockedDispatch = jest.fn();
+    const props = {
+      dispatch: mockedDispatch,
+      orderHasShipping: false,
+      addressLabels: {},
+      isGuest: true,
+      labels: {},
+      shippingAddress: {},
+      isSameAsShippingChecked: false,
+      userAddresses: new List(),
+      editMode: true,
+    };
+
+    const tree = shallow(<CheckoutAddressVanilla {...props} />);
+    tree.setProps({ isSameAsShippingChecked: true });
+    tree.instance().onSameAsShippingChange(true);
+    expect(mockedDispatch).toHaveBeenCalled();
+    tree.setState({ isAddNewAddress: false });
+    tree.instance().toggleAddNewAddressMode();
+    expect(tree.state('isAddNewAddress')).toBe(true);
+    expect(mockedDispatch).toHaveBeenCalled();
+    expect(tree).toMatchSnapshot();
+  });
+  it('should call onSameAsShippingChange with editMode without value', () => {
+    const mockedDispatch = jest.fn();
+    const props = {
+      dispatch: mockedDispatch,
+      orderHasShipping: false,
+      addressLabels: {},
+      isGuest: true,
+      labels: {},
+      shippingAddress: {},
+      isSameAsShippingChecked: false,
+      userAddresses: new List(),
+      editMode: true,
+    };
+
+    const tree = shallow(<CheckoutAddressVanilla {...props} />);
+    tree.setProps({ isSameAsShippingChecked: true });
+    tree.instance().onSameAsShippingChange(false);
   });
 });

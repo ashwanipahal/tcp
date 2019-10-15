@@ -222,6 +222,260 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
 </Styled(View)>
 `;
 
+exports[`CheckoutAddress should call onSameAsShippingChange with editMode 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator="billing-payment-billingAddress"
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <FormSection
+    name="address"
+  >
+    <AddressFields
+      className="elem-mb-LRG"
+      disableCountry={false}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressId",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressId",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.firstName",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.lastName",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressLine1",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressLine2",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.state",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.city",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.zipCode",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.country",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "onFileAddressId",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "address.addressId",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "form": undefined,
+                  "sections": Array [
+                    "address",
+                  ],
+                },
+                "type": "@@redux-form/RESET_SECTION",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      formSection="address"
+      initialValues={
+        Object {
+          "address": Object {
+            "addressLine1": undefined,
+          },
+        }
+      }
+      isGuest={true}
+      showDefaultCheckbox={false}
+      showEmailAddress={false}
+      showPhoneNumber={false}
+      showUserName={true}
+      variation="primary"
+    />
+  </FormSection>
+</Styled(View)>
+`;
+
 exports[`CheckoutAddress should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
@@ -290,91 +544,6 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
       textDecoration={null}
     />
   </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      dataLocator=""
-      fontSize="fs12"
-      fontWeight="black"
-      margin={null}
-      marginTop="10"
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      text=""
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Field
-      addAddress={[Function]}
-      component={[Function]}
-      data={
-        Array [
-          Object {
-            "content": Object {
-              "addressId": "1234",
-            },
-            "id": "1234",
-            "label": "undefined undefined ",
-            "primary": false,
-          },
-          Object {
-            "content": Object {
-              "addressId": "5678",
-            },
-            "id": "5678",
-            "label": "undefined undefined ",
-            "primary": false,
-          },
-          Object {
-            "content": "",
-            "id": "",
-            "label": undefined,
-            "primary": false,
-          },
-        ]
-      }
-      disableBtn={false}
-      dropDownStyle={
-        Object {
-          "borderBottomWidth": 1,
-          "height": 30,
-          "marginTop": 25,
-        }
-      }
-      id="onFileAddressId"
-      itemStyle={
-        Object {
-          "height": 90,
-        }
-      }
-      labels={
-        Object {
-          "common": Object {
-            "lbl_common_tapClose": "close",
-          },
-        }
-      }
-      name="onFileAddressId"
-      onValueChange={[Function]}
-      selectedLabelState="Select from address book"
-      selectedValue="1234"
-      variation="secondary"
-    />
-  </Styled(View)>
-  <Address
-    address={
-      Object {
-        "addressId": "1234",
-      }
-    }
-    customStyle={Object {}}
-    fontSize="fs14"
-    regularName={false}
-    showCountry={false}
-    showDefaultText={false}
-    showName={true}
-    showPhone={false}
-  />
 </Styled(View)>
 `;
 
