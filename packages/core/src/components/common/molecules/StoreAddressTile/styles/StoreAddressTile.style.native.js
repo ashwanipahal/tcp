@@ -16,8 +16,8 @@ export const TileHeader = styled.View`
   ${props =>
     props.selectedStoreId
       ? `
-        border: solid 1px ${props.theme.colors.PRIMARY.LIGHTGRAY};
-        background-color: ${props.theme.colors.PRIMARY.PALEGRAY};
+        border: solid 1px ${props.theme.colorPalette.gray[500]};
+        background-color: ${props.theme.colorPalette.gray[300]};
         `
       : ''};
 `;

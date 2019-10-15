@@ -109,8 +109,8 @@ export default css`
   border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
   &.address-tile__selectedStore {
-    border: solid 1px ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+    border: solid 1px ${props => props.theme.colorPalette.gray[500]};
+    background-color: ${props => props.theme.colorPalette.gray[300]};
   }
 
   .brand-store {
