@@ -16,6 +16,7 @@ import { FullScreenImageCarousel } from '../../../../common/molecules/index.nati
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
+import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -80,6 +81,7 @@ class ProductDetailView extends React.PureComponent {
       itemPartNumber,
       longDescription,
       pdpLabels,
+      relatedOutfits,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -120,6 +122,11 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
+          <RelatedOutfits
+            pdpLabels={pdpLabels}
+            navigation={navigation}
+            relatedOutfits={relatedOutfits}
+          />
           {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
@@ -142,6 +149,7 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  relatedOutfits: PropTypes.shape([]),
 };
 
 ProductDetailView.defaultProps = {
@@ -156,6 +164,7 @@ ProductDetailView.defaultProps = {
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  relatedOutfits: [],
 };
 
 export default withStyles(ProductDetailView);

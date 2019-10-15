@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, BodyCopy } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
@@ -77,7 +76,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
             <OutfitMainImageWrapper>
               <StyledImage
                 alt={moduleQMainTile}
-                host={LAZYLOAD_HOST_NAME.HOME}
+                // host={LAZYLOAD_HOST_NAME.HOME}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
                 width={PRODUCT_IMAGE_WIDTH}
@@ -99,7 +98,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
                   <StyledImage
                     key={remoteId}
                     alt={alt}
-                    host={LAZYLOAD_HOST_NAME.HOME}
+                    // host={LAZYLOAD_HOST_NAME.HOME}
                     url={getUrlWithHttp(smallImageUrl)}
                     height={OUTFIT_ITEM_IMAGE_HEIGHT}
                     width={OUTFIT_ITEM_IMAGE_WIDTH}
