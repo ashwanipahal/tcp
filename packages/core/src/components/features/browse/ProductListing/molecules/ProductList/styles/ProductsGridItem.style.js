@@ -64,8 +64,8 @@ const styles = css`
 
   .move-item-section {
     min-width: 256px;
-    border: solid 1px #979797;
-    background: #fff;
+    border: solid 1px ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+    background: ${props => props.theme.colors.WHITE};
     position: absolute;
     z-index: 1;
     top: 40px;
@@ -105,7 +105,7 @@ const styles = css`
 
   .product-sku-info-container {
     font-size: 12px;
-    color: #1a1a1a;
+    color: ${props => props.theme.colors.ANCHOR.PRIMARY};
     text-transform: capitalize;
   }
 
