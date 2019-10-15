@@ -144,7 +144,7 @@ class Drawer extends React.Component {
     const classToShowOnViewports = showOnViewport({ small, medium, large });
 
     return (
-      <div className={className}>
+      <div className={className} ref={this.setDrawerRef}>
         {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
         // User will have to handle display of this element with CSS
         isDrawerNotRequiredOnAllViewports(small, medium, large) && (
@@ -154,7 +154,6 @@ class Drawer extends React.Component {
           <React.Fragment>
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
-              ref={this.setDrawerRef}
             >
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
