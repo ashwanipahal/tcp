@@ -11,12 +11,13 @@ const CardContainer = styled.View`
 const ExpiryContainer = styled.View`
   flex: 1;
   flex-direction: row;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   justify-content: ${props => (props.showCvv ? 'space-between' : 'flex-start')};
 `;
 
 const ExpiryMonth = styled.View`
   width: 30%;
+  margin-right: ${props => (props.showCvv ? 0 : props.theme.spacing.ELEM_SPACING.MED)};
 `;
 
 const ExpiryYear = styled.View`
