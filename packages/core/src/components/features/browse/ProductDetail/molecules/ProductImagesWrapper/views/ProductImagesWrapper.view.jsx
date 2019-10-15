@@ -4,6 +4,7 @@ import ExecutionEnvironment from 'exenv';
 import { breakpoints } from '../../../../../../../../styles/themes/TCP/mediaQuery';
 import ProductImages from '../../../../../../common/organisms/ProductImages';
 import FullSizeImageWithQuickViewModal from '../../FullSizeImageWithQuickViewModal/views/FullSizeImageWithQuickViewModal.view';
+import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 
 class ProductImageWrapper extends React.Component {
   constructor(props) {
@@ -12,6 +13,20 @@ class ProductImageWrapper extends React.Component {
     this.handleShowHideFullSizeModalClick = this.handleShowHideFullSizeModalClick.bind(this);
   }
 
+  colorChange = e => {
+    // const { selectedSize } = this.state;
+    const { onChangeColor } = this.props;
+    // this.setState({
+    //   selectedColor: { name: e },
+    //   selectedSize,
+    //   isErrorMessageDisplayed: false,
+    // });
+    // props for any custom action to call
+    if (onChangeColor) {
+      onChangeColor(e);
+    }
+  };
+
   handleShowHideFullSizeModalClick(e) {
     e.preventDefault();
     const { isFullSizeModalOpen } = this.state;
@@ -19,8 +34,20 @@ class ProductImageWrapper extends React.Component {
   }
 
   render() {
-    const { productName, images, isZoomEnabled, isThumbnailListVisible, pdpLabels } = this.props;
+    const {
+      productName,
+      images,
+      isZoomEnabled,
+      isThumbnailListVisible,
+      pdpLabels,
+      currentProduct,
+    } = this.props;
     const { isFullSizeModalOpen } = this.state;
+    const { colorFitsSizesMap } = currentProduct;
+    const colorChipSelector = {
+      colorList: colorFitsSizesMap,
+      selectColor: this.colorChange,
+    };
     const isMobile =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
     return (
@@ -46,6 +73,7 @@ class ProductImageWrapper extends React.Component {
               name={productName}
               isThumbnailListVisible
               isFullSizeModalOpen={isFullSizeModalOpen}
+              colorChipSelector={colorChipSelector}
             />
           ))}
       </React.Fragment>
@@ -53,7 +81,10 @@ class ProductImageWrapper extends React.Component {
   }
 }
 
-ProductImageWrapper.defaultProps = {};
+ProductImageWrapper.defaultProps = {
+  onChangeColor: () => {},
+  currentProduct: {},
+};
 
 ProductImageWrapper.propTypes = {
   /** Product's Name (global product, not by color, size, fit or some clasification) */
@@ -80,6 +111,8 @@ ProductImageWrapper.propTypes = {
   /** Flags if the zoom should be enabled */
   isZoomEnabled: PropTypes.bool.isRequired,
   isThumbnailListVisible: PropTypes.bool.isRequired,
+  onChangeColor: PropTypes.func,
+  currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE,
 };
 
 export default ProductImageWrapper;

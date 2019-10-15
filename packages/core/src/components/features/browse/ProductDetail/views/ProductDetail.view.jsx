@@ -97,6 +97,8 @@ class ProductDetailView extends React.Component {
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
               isZoomEnabled
+              currentProduct={currentProduct}
+              onChangeColor={this.onChangeColor}
             />
           </Col>
           <Col
