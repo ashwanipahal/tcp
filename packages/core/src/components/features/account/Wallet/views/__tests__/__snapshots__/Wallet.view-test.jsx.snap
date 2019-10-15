@@ -2,6 +2,7 @@
 
 exports[`WalletView component should render correctly 1`] = `
 <Styled(PageHeadingWithLinks)
+  className="myAccountRightView"
   heading="lbl_my_wallet_heading"
   programDetailsCta="lbl_my_rewards_program_details"
   termsConditionCta="lbl_common_tnc"

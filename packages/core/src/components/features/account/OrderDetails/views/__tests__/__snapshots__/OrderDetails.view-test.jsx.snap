@@ -5,6 +5,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
   className=""
 >
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     heading="lbl_orderDetails_heading"
   />
   <Styled(Row)
