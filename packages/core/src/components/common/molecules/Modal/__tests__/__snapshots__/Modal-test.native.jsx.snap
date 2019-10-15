@@ -27,7 +27,9 @@ exports[`Modal Native should render correctly 1`] = `
           }
         >
           <Styled(View)>
-            <Connect(ToastContainer) />
+            <Connect(ToastContainer)
+              shouldShowSafeArea={false}
+            />
             <StatusBar
               animated={false}
               hidden={true}

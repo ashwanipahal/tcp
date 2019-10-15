@@ -6,8 +6,9 @@ import constants from '../Checkout.constants';
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = () => ({
+export const initCheckoutAction = router => ({
   type: constants.INIT_CHECKOUT,
+  router,
 });
 
 export const submitPickupSection = payload => ({
@@ -330,6 +331,13 @@ export const setOnFileAddressKey = payload => {
 export const resetGiftCardError = () => {
   return {
     type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setShippingLoadingState = isLoading => {
+  return {
+    type: constants.CHECKOUT_VALUES_SET_SHIPPING_LOADING,
+    isLoading,
   };
 };
 

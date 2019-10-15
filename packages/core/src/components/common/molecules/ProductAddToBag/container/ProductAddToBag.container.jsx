@@ -215,7 +215,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   getSizeOptions = (colorItem, selectedFit?) => {
     const { fits } = colorItem;
     let sizeOptions = [];
-    if (colorItem) {
+    if (colorItem && fits && fits.length) {
       fits.forEach(fit => {
         if (selectedFit) {
           if (fit.fitName === selectedFit.name) {
@@ -371,7 +371,6 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
-      currentProduct: { colorFitsSizesMap },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
@@ -381,6 +380,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
+      colorFitsSizesMap,
+      isOutfitPage,
     } = this.props;
     const {
       selectedColor,
@@ -424,6 +425,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         showAddToBagCTA={showAddToBagCTA}
         fromBagPage={fromBagPage}
         inheritedStyles={customSubmitButtonStyle}
+        isOutfitPage={isOutfitPage}
       />
     );
   }

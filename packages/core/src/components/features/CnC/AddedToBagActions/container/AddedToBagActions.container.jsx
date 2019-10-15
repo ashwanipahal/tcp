@@ -26,6 +26,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      inheritedStyles,
       isBagPageStickyHeader,
       closeModal,
       isUSSite,
@@ -46,6 +47,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isBagPageStickyHeader={isBagPageStickyHeader}
         closeModal={closeModal}
         isUSSite={isUSSite}
+        inheritedStyles={inheritedStyles}
       />
     );
   }

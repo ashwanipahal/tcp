@@ -11,6 +11,7 @@ import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
 import { routerPush } from '../../../../../utils';
+import { Anchor, Button } from '../../../../common/atoms';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -130,6 +131,7 @@ class CheckoutPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      isExpressCheckout,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -201,6 +203,7 @@ class CheckoutPage extends React.PureComponent {
             setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
+            isExpressCheckout={isExpressCheckout}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -210,8 +213,15 @@ class CheckoutPage extends React.PureComponent {
     );
   };
 
+  handleDefaultLinkClick = e => {
+    e.preventDefault();
+  };
+
   render() {
-    const { isGuest, router } = this.props;
+    const { isGuest, router, submitReview, reviewProps } = this.props;
+    const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
+    const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
+    const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
@@ -220,6 +230,46 @@ class CheckoutPage extends React.PureComponent {
         marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
         isCheckoutView
+        orderLedgerAfterView={
+          currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
+            <div className="review-submit-container">
+              <Button
+                aria-label={ariaLabelSubmitOrderButton}
+                type="button"
+                className="review-submit-button"
+                fontSize="fs13"
+                fontWeight="extrabold"
+                buttonVariation="variable-width"
+                fill="BLUE"
+                onClick={submitReview}
+              >
+                {nextSubmitText}
+              </Button>
+              <div className="submit-disclaimer">
+                {applyConditionPreText}
+                <Anchor
+                  className="submit-disclaimer-link"
+                  underline
+                  to="/#"
+                  dataLocator="termAndConditionText"
+                  onClick={this.handleDefaultLinkClick}
+                >
+                  {applyConditionTermsText}
+                </Anchor>
+                {applyConditionAndText}
+                <Anchor
+                  className="submit-disclaimer-link"
+                  underline
+                  to="/#"
+                  dataLocator="PrivacyText"
+                  onClick={this.handleDefaultLinkClick}
+                >
+                  {applyConditionPolicyText}
+                </Anchor>
+              </div>
+            </div>
+          )
+        }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
       />
     );
@@ -261,12 +311,14 @@ CheckoutPage.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,
+  isExpressCheckout: PropTypes.bool,
 };
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
   setVenmoPickupState: () => {},
   setVenmoShippingState: () => {},
+  isExpressCheckout: false,
 };
 
 export default CheckoutPage;

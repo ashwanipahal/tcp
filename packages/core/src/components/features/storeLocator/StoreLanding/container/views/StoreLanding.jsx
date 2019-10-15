@@ -68,6 +68,7 @@ export class StoreLanding extends PureComponent {
               key={item.basicInfo.id}
               openStoreDetails={this.openStoreDetails}
               titleClickCb={this.focusOnMap}
+              selectedStoreId={centeredStoreId}
             />
           </Col>
         ))
@@ -107,7 +108,15 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore, openStoreDirections, labels, searchDone } = this.props;
+    const { centeredStoreId } = this.state;
+    const {
+      setFavoriteStore,
+      favoriteStore,
+      openStoreDirections,
+      labels,
+      searchDone,
+      geoLocationEnabled,
+    } = this.props;
     if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
       return (
         <Notification
@@ -133,6 +142,8 @@ export class StoreLanding extends PureComponent {
           openStoreDetails={this.openStoreDetails}
           storeIndex={!!getViewportInfo().isDesktop && index + 1}
           titleClickCb={this.focusOnMap}
+          selectedStoreId={centeredStoreId === item.basicInfo.id}
+          geoLocationDisabled={!geoLocationEnabled}
         />
       </Col>
     ));

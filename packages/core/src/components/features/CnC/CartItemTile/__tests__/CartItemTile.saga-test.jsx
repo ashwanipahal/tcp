@@ -7,6 +7,7 @@ import {
   updateCartItemSaga,
   getProductSKUInfoSaga,
   afterRemovingCartItem,
+  openPickupModalFromBag,
 } from '../container/CartItemTile.saga';
 import { removeCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
@@ -105,5 +106,27 @@ describe('ForgotPasswordSaga', () => {
     expect(takeLatestDescriptor).toEqual(
       takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga)
     );
+
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    expect(takeLatestDescriptor).toEqual(
+      takeLatest(CARTPAGE_CONSTANTS.PICKUP_MODAL_OPEN_FROM_BAG, openPickupModalFromBag)
+    );
+  });
+});
+
+describe('openPickupModalFromBag', () => {
+  const payload = {
+    payload: {
+      colorProductId: '00193511095440',
+      orderInfo: {},
+    },
+  };
+  const generator = openPickupModalFromBag(payload);
+  it('should return correct takeLatest effect', () => {
+    generator.next();
+    generator.next();
+    generator.next({ product: { generalProductId: '12345' } });
+    generator.next();
   });
 });

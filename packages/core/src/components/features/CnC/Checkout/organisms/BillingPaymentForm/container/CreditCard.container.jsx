@@ -7,6 +7,7 @@ import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import { updateCardData } from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @class GiftCardsContainer
@@ -312,6 +313,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       updateCardDetail,
       isVenmoEnabled,
       editFormCardType,
+      isPLCCEnabled,
+      scrollView,
+      toastMessage,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -346,6 +350,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
         isVenmoEnabled={isVenmoEnabled}
+        isPLCCEnabled={isPLCCEnabled}
+        scrollView={scrollView}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -368,6 +375,7 @@ const mapStateToProps = (state, ownProps) => {
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
     editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isPLCCEnabled: CreditCardSelector.getIsPLCCEnabled(state),
     isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 };
@@ -376,6 +384,9 @@ const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
       dispatch(updateCardData(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

@@ -200,7 +200,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     };
     wrapper.setProps(currentProduct);
     wrapper.instance().setState({ selectedColor: color, selectedFit: fit });
-    expect(wrapper.props().sizeList).toEqual(false);
+    expect(wrapper.props().sizeList).toEqual([]);
   });
 
   it('should call getInitialValues', () => {
