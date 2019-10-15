@@ -64,7 +64,12 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    let compProps;
+    try {
+      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    } catch (e) {
+      compProps = {};
+    }
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
     return {
       pageProps,
@@ -190,16 +195,19 @@ class TCPWebApp extends App {
   }
 
   static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
-    const compProps = {};
+    let compProps = {};
     if (Component.getInitialProps) {
-      // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+      try {
+        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+      } catch (e) {
+        compProps = {};
+      }
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
     }
-    return Object.assign(pageProps, compProps);
+    return Object.assign({}, pageProps, compProps);
   }
 
   getSEOTags = pageId => {
