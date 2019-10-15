@@ -169,15 +169,10 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            <Address
-              address={null}
-              className=""
+            <Styled(Address)
               dataLocatorPrefix="deletecreditmodal"
               fontWeight="regular"
-              isDefault={false}
               showCountry={false}
-              showDefault={true}
-              showName={true}
               showPhone={false}
             />
           </Styled(BodyCopy)>
