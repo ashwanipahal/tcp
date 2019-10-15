@@ -26,8 +26,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getHeaderPaypalButton() {
-    const { isBagPageStickyHeader } = this.props;
-    if (isBagPageStickyHeader) {
+    const { isBagPageStickyHeader, isInternationalShipping } = this.props;
+    if (!isInternationalShipping && isBagPageStickyHeader) {
       return this.getPaypalButton();
     }
     return null;

@@ -20,7 +20,6 @@ const GuestMprPlccSection = props => {
     getCurrencySymbol,
     isProductDetailView,
   } = props;
-
   return (
     <div className={`${className} body`}>
       <BodyCopy
@@ -32,7 +31,7 @@ const GuestMprPlccSection = props => {
         {headingLabel}
       </BodyCopy>
       <BodyCopy
-        className="save30Today alignCenter mpr-plcc-theme elem-pt-MED"
+        className="save30Today alignCenter elem-pt-MED"
         fontSize="fs20"
         color="text.primary"
         fontFamily="secondary"

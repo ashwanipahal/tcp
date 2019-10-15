@@ -17,6 +17,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -192,6 +193,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -577,6 +579,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

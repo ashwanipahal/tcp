@@ -3,8 +3,6 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
-import utility from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import styles from '../styles/EmptyMiniBag.style';
 
 // @flow
@@ -37,12 +35,8 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
           fontSizeVariation="medium"
           underline
           anchorVariation="primary"
-          noLink
-          handleLinkClick={() => {
-            const page = CHECKOUT_ROUTES.home;
-            utility.routeToPage(page);
-          }}
-          dataLocator="addedToBag-continueShopping"
+          to="/home"
+          dataLocator="emptyMiniBag-continueShopping"
         >
           {labels.continueShopping}
         </Anchor>

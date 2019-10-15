@@ -188,6 +188,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       }
     >
       <Field
+        aria-label="undefined undefined"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

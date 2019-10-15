@@ -1,30 +1,24 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import ProductAltImages from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/views/ProductAltImages';
+import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { Row, Col, BodyCopy } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
-import MoveItem from '../molecules/MoveItem';
-import ProductTitle from '../molecules/ProductTitle';
-import ProductRemoveSection from '../molecules/ProductRemoveSection';
-import ProductSKUInfo from '../molecules/ProductSKUInfo';
-import ProductPricesSection from '../molecules/ProductPricesSection';
-import { ProductWishlistIcon } from '../../ProductListing/molecules/ProductList/views/ProductItemComponents';
-import ProductStatus from '../molecules/ProductStatus';
-import ProductPurchaseSection from '../molecules/ProductPurchaseSection';
-import { STATUS, AVAILABILITY } from '../container/Favorites.constants';
 
 const FavoritesView = props => {
   const {
     className,
     wishlistsSummaries,
-    killSwitchKeepAliveProduct,
     activeWishList,
     createNewWishListMoveItem,
-    deleteWishList,
     getActiveWishlist,
     createNewWishList,
     setLastDeletedItemId,
+    labels,
+    onQuickViewOpenClick,
+    selectedColorProductId,
+    // deleteWishList, @TODO will be used in the wish-list pop-up
   } = props;
 
   const favoriteListMap = wishlistsSummaries.map(favorite => {
@@ -53,73 +47,22 @@ const FavoritesView = props => {
     );
   });
 
-  const productsList =
-    !!activeWishList &&
-    // eslint-disable-next-line complexity
-    activeWishList.items.map(item => {
-      const {
-        skuInfo: { color, fit, size },
-        productInfo: { name, pdpUrl, offerPrice, listPrice },
-        itemInfo: { itemId, quantity, availability, keepAlive },
-        imagesByColor,
-        quantityPurchased,
-        isReadOnly,
-      } = item;
-      const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
-      const isKeepAlive = killSwitchKeepAliveProduct && keepAlive;
-      const imageUrls = imagesByColor[color.name].extraImages.map(
-        imageEntry => imageEntry.regularSizeImageUrl
-      );
-
-      return (
-        <div className="product-items">
-          {!(isKeepAlive && itemNotAvailable) && (
-            <ProductStatus
-              status={(quantityPurchased > 0 && STATUS.PURCHASED) || availability}
-              keepAlive={isKeepAlive}
-            />
-          )}
-          {!isReadOnly && (
-            <ProductWishlistIcon
-              onClick={() => setLastDeletedItemId({ itemId })}
-              isDisabled={itemNotAvailable}
-              isRemove
-            />
-          )}
-          <ProductAltImages
-            pdpUrl={pdpUrl}
-            imageUrls={imageUrls}
-            productName={name}
-            keepAlive={isKeepAlive && itemNotAvailable}
-          />
-          <ProductTitle name={name} pdpUrl={pdpUrl} />
-          {itemNotAvailable ? (
-            <ProductRemoveSection onClick={this.handleRemoveItem} itemId={itemId} />
-          ) : (
-            <ProductPricesSection listPrice={listPrice} offerPrice={offerPrice} />
-          )}
-          <ProductSKUInfo color={color} size={size} fit={fit} />
-          {!itemNotAvailable && (
-            <div className="purchased-and-move-dropdown-container">
-              <ProductPurchaseSection
-                key="purchased-section"
-                purchased={quantityPurchased}
-                quantity={quantity}
-              />
-              {!isReadOnly && (
-                <MoveItem
-                  key="move-item-select"
-                  wishlistItemId={itemId}
-                  favoriteList={wishlistsSummaries}
-                  createNewWishListMoveItem={createNewWishListMoveItem}
-                  deleteWishList={deleteWishList}
-                />
-              )}
-            </div>
-          )}
-        </div>
-      );
-    });
+  const productsList = !!activeWishList && (
+    <>
+      <ProductsGrid
+        products={activeWishList.items}
+        productsBlock={[activeWishList.items]}
+        labels={labels}
+        wishlistsSummaries={wishlistsSummaries}
+        createNewWishList={createNewWishList}
+        onQuickViewOpenClick={onQuickViewOpenClick}
+        isFavoriteView
+        removeFavItem={setLastDeletedItemId}
+        createNewWishListMoveItem={createNewWishListMoveItem}
+      />
+      <QuickViewModal selectedColorProductId={selectedColorProductId} />
+    </>
+  );
 
   return (
     <Row className={className} fullBleed>
@@ -178,7 +121,6 @@ const FavoritesView = props => {
         <span>4 Items</span>
       </Col>
       <Col
-        hideCol={{ small: true, medium: true }}
         colSize={{ small: 6, medium: 8, large: 12 }}
         className="product-list"
         ignoreGutter={{ small: true, medium: true, large: true }}
@@ -199,20 +141,22 @@ const FavoritesView = props => {
 FavoritesView.propTypes = {
   className: PropTypes.string,
   wishlistsSummaries: PropTypes.arrayOf({}),
-  killSwitchKeepAliveProduct: PropTypes.bool,
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
-  deleteWishList: PropTypes.func.isRequired,
+  // deleteWishList: PropTypes.func.isRequired, @TODO will be used in the wish-list pop-up
   getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  selectedColorProductId: PropTypes.string,
 };
 
 FavoritesView.defaultProps = {
   className: '',
   wishlistsSummaries: [],
-  killSwitchKeepAliveProduct: false,
   activeWishList: {},
+  selectedColorProductId: '',
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);

@@ -109,6 +109,10 @@ const onAddNewCreditCardUpdate = dispatch => {
   dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
 };
 
+const getFormName = editMode => {
+  return editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+};
+
 const renderBillingAddressHeading = labels => {
   return (
     <Heading
@@ -128,5 +132,6 @@ export {
   getCardOptions,
   onCCDropUpdateChange,
   onAddNewCreditCardUpdate,
+  getFormName,
   renderBillingAddressHeading,
 };

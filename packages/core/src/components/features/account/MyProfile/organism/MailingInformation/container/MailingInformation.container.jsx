@@ -51,10 +51,12 @@ export class MailingInformationContainer extends PureComponent {
           country: isCanada() ? 'CA' : 'US',
           addressLine2: '',
         },
+        onFileAddressKey: '',
         primary: addressList && addressList.size === 0,
       };
     }
     return {
+      onFileAddressKey: '',
       address: {
         ...address.address,
         firstName: address.firstName,

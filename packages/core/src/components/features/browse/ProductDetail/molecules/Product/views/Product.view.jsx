@@ -212,17 +212,21 @@ class Product extends React.Component {
       isCanada,
       isHasPlcc,
       isInternationalShipping,
-      badge1,
       isKeepAlive,
+      isMatchingFamily,
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
+    const currentColorProductId = productDetails.get('currentColorProductId');
     if (!productInfo) {
       return <div />; // TODO - maybe add loader later
     }
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const colorProduct =
-      productInfo && getMapSliceForColorProductId(productInfo.colorFitsSizesMap, colorProductId);
+      productInfo &&
+      getMapSliceForColorProductId(productInfo.colorFitsSizesMap, currentColorProductId);
     const prices = productInfo && getPrices(productInfo, colorProduct.color.name);
+    const badges = colorProduct.miscInfo.badge1;
+    const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
     // if(isShowPriceRange) {
     //   const { fit, size } = addToBagFormValues;
     //   prices = getPricesWithRange(productInfo, colorProduct.color.name, fit, size, isSelectedSizeDisabled);

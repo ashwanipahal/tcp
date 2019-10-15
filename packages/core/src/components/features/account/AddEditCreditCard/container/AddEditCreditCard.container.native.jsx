@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
   getCardType,
@@ -9,16 +10,16 @@ import {
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
+  getAddGiftCardErrorMessage,
+  getshowNotification,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view.native';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
-import {
-  getCreditCardExpirationOptionMap,
-  convertObjectKeysToLowerCase,
-} from './AddEditCreditCard.utils';
+import { getCreditCardExpirationOptionMap } from './AddEditCreditCard.utils';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -39,6 +40,10 @@ export class AddEditCreditCard extends React.PureComponent {
     dto: PropTypes.shape({}),
     isEdit: PropTypes.bool,
     selectedCard: PropTypes.shape({}),
+    addressLabels: PropTypes.shape({}),
+    addEditCreditCardErrorMsg: PropTypes.string,
+    showNotification: PropTypes.bool.isRequired,
+    toastMessage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -55,6 +60,8 @@ export class AddEditCreditCard extends React.PureComponent {
     dto: {},
     isEdit: false,
     selectedCard: null,
+    addressLabels: {},
+    addEditCreditCardErrorMsg: '',
   };
 
   constructor(props) {
@@ -81,12 +88,19 @@ export class AddEditCreditCard extends React.PureComponent {
       addressList,
       onClose,
       updateCardList,
+      addEditCreditCardErrorMsg,
+      toastMessage,
+      showNotification,
     } = this.props;
     const isAddressListUpdated = !prevProps.addressList && addressList;
     if (!prevProps.addEditCreditCardSuccess && addEditCreditCardSuccess) {
       showSuccessNotification();
       updateCardList();
       onClose();
+    }
+
+    if (!prevProps.showNotification && showNotification) {
+      toastMessage(addEditCreditCardErrorMsg);
     }
 
     if (isAddressListUpdated || (!prevProps.creditCard && creditCard)) {
@@ -131,7 +145,7 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   getInitialValues = () => {
-    const { addressList, creditCard } = this.props;
+    const { addressList, selectedCard, isEdit } = this.props;
     let onFileAddressKey = '';
 
     if (addressList && addressList.size > 0) {
@@ -140,8 +154,8 @@ export class AddEditCreditCard extends React.PureComponent {
         defaultBillingAddress.size > 0 ? defaultBillingAddress.get(0).addressId : '';
     }
 
-    if (creditCard) {
-      return this.getInitialValuesForEditMode(creditCard);
+    if (isEdit) {
+      return this.getInitialValuesForEditMode(selectedCard);
     }
 
     return {
@@ -180,6 +194,7 @@ export class AddEditCreditCard extends React.PureComponent {
       dto,
       isEdit,
       selectedCard,
+      addressLabels,
     } = this.props;
 
     if (addressList === null) {
@@ -188,7 +203,6 @@ export class AddEditCreditCard extends React.PureComponent {
 
     const isExpirationRequired = this.getExpirationRequiredFlag();
     const { initialValues } = this.state;
-    const addressLabels = convertObjectKeysToLowerCase(labels.addressBook);
     let creditCardType = cardType;
     if (selectedCard && !cardType) {
       creditCardType = selectedCard.ccBrand || selectedCard.ccType;
@@ -209,12 +223,14 @@ export class AddEditCreditCard extends React.PureComponent {
         expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
-        addressLabels={addressLabels}
+        addressLabels={labels}
+        addressFormLabels={addressLabels.addressFormLabels}
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}
         onClose={onClose}
         dto={dto}
+        showEmailAddress={false}
         selectedCard={selectedCard}
       />
     );
@@ -230,6 +246,9 @@ const mapStateToProps = (state, ownProps) => {
     isPLCCEnabled: true,
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
+    addressLabels: getAddEditAddressLabels(state),
+    showNotification: getshowNotification(state),
+    addEditCreditCardErrorMsg: getAddGiftCardErrorMessage(state),
   };
 };
 
@@ -246,6 +265,9 @@ const mapDispatchToProps = dispatch => {
     },
     showSuccessNotification: () => {
       dispatch(setDefaultPaymentSuccess());
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

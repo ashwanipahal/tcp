@@ -48,7 +48,7 @@ const ButtonStyles = css`
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
-      padding: 12px 20px;
+      padding: 11px 20px;
       width: 100%;
     `
       : ''};
@@ -61,7 +61,7 @@ const ButtonStyles = css`
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
-      padding: 12px 32px;
+      padding: 11px 32px;
     `
       : ''};
 
@@ -220,11 +220,14 @@ const ButtonStyles = css`
       : ''}
 
   @media ${props => props.theme.mediaQuery.large} {
-    font-size: ${props => props.theme.typography.fontSizes.fs14}
     ${props =>
-      props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};
+      props.buttonVariation === 'fixed-width'
+        ? `min-height: 51px; padding: 16px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        : ''};
     ${props =>
-      props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
+      props.buttonVariation === 'variable-width'
+        ? `min-height: 45px; padding: 16px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        : ''};
   }
   ${props =>
     props.theme.isGymboree &&
