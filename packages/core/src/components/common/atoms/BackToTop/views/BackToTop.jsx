@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import config from '@tcp//core/src/config/site.config';
 import { isClient } from '../../../../../utils';
 import style from '../styles/BackToTop.style';
 
@@ -8,7 +9,10 @@ const BackToTop = ({ className }) => {
   const [showButton, setShowButton] = useState(false);
 
   const addBackToTopBtn = () => {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (
+      document.body.scrollTop > config.SCROLL_TOP_POS ||
+      document.documentElement.scrollTop > config.SCROLL_TOP_POS
+    ) {
       setShowButton(true);
     } else {
       setShowButton(false);
@@ -24,7 +28,7 @@ const BackToTop = ({ className }) => {
   };
 
   useEffect(() => {
-    if (isClient()) {
+    if (isClient() && (!showButton || document.body.scrollTop === 0)) {
       fireScrollEvent();
     }
   });

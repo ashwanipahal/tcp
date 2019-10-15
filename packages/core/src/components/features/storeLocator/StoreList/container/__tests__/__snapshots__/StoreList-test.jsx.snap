@@ -6189,7 +6189,6 @@ exports[`StoreList component Component should render with props 1`] = `
     title="TX"
     titleClickCb={[Function]}
   />
-  <Styled(BackToTop) />
 </div>
 `;
 
@@ -6209,6 +6208,5 @@ exports[`StoreList component StoreList component renders correctly without props
     />
     lbl_storelist_backLink
   </Styled(Anchor)>
-  <Styled(BackToTop) />
 </div>
 `;

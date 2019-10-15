@@ -10,7 +10,7 @@ import {
   getLabelValue,
 } from '../../../../../../utils';
 import { defaultCountries } from '../../../../../../constants/site.constants';
-import { Anchor, BackToTop } from '../../../../../common/atoms';
+import { Anchor } from '../../../../../common/atoms';
 import { StoreSelector, StoresCountryTile } from '../../../../../common/molecules';
 import style from '../styles/StoreList.style';
 import STORE_LIST_CONSTANTS from '../StoreList.constants';
@@ -168,7 +168,6 @@ class StoreList extends Component {
               ) : null}
             </StoresCountryTile>
           ))}
-        <BackToTop />
       </div>
     );
   }
