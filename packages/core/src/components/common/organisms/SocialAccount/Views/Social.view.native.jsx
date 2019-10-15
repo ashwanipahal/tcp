@@ -218,6 +218,18 @@ class Socialview extends React.PureComponent {
     pointModalClose({ state: true });
   };
 
+  logoutApp = socialType => {
+    const { saveSocialAcc, pointModalClose } = this.props;
+    const socialAccInfo = {
+      [socialType]: socialType,
+      accessToken: '',
+      userId: '',
+      isconnected: true,
+    };
+    saveSocialAcc({ socialAccInfo });
+    pointModalClose({ state: false });
+  };
+
   /**
    * @function Handling of social plugins - facebook login/log out
    * @param {*} isSocialAccount what type of social account - Facebook/Instagram/Twitter
@@ -238,12 +250,13 @@ class Socialview extends React.PureComponent {
             }
           });
         }
-        return null;
+        LoginManager.logOut();
+        return this.logoutApp('facebook');
       case 'Instagram':
         if (!isConnected) {
           this.instagramLogin.show();
         }
-        return null;
+        return this.logoutApp('instagram');
       default:
         return null;
     }
