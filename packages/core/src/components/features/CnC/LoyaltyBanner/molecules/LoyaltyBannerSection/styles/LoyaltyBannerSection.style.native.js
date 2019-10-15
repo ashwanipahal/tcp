@@ -1,11 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components/native';
 
 const plccMpr = props =>
   props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
-
-const Styles = css`
-  padding: 2px;
-`;
 
 const LoyaltyBannerContainer = styled.View`
   padding: 12px 14px;
@@ -24,4 +20,4 @@ const FooterLinksSection = styled.View`
   padding: 12px 0;
 `;
 
-export { Styles, LoyaltyBannerContainer, LineStyle, FooterLinksSection };
+export { LoyaltyBannerContainer, LineStyle, FooterLinksSection };

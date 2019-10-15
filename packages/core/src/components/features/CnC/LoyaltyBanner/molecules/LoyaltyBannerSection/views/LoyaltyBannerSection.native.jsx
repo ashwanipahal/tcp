@@ -1,14 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { PropTypes } from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles';
 import {
-  Styles,
   LoyaltyBannerContainer,
   LineStyle,
   FooterLinksSection,
 } from '../styles/LoyaltyBannerSection.style.native';
-import { mobileHashValues } from '../../../util/utility';
+import mobileHashValues from '../../../util/utilityNative';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
@@ -38,7 +36,6 @@ const renderLearnMoreLink = labels => {
 
 const LoyaltyBannerSection = props => {
   const {
-    className,
     labels,
     currentSubtotal,
     estimatedSubtotal,
@@ -54,7 +51,7 @@ const LoyaltyBannerSection = props => {
   let headingLabel = '';
   let conditionalPointsLabelVal = '';
   let rewardPointsValue = '';
-  let remainingPlcc = !'';
+  let remainingPlcc = false;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc) {
@@ -102,15 +99,8 @@ const LoyaltyBannerSection = props => {
   const subHeadingLabel = labels.save30Today;
   const descriptionLabel = labels.earnDoublePoints;
 
-  remainingPlcc = mobileHashValues(
-    labels.thatsSomePointsFromReward,
-    '#pointsToNextReward#',
-    pointsToNextReward,
-    ''
-  );
-
   return (
-    <LoyaltyBannerContainer className={className}>
+    <LoyaltyBannerContainer>
       <LineStyle />
       <GuestMprPlccSection
         labels={labels}
@@ -139,7 +129,6 @@ const LoyaltyBannerSection = props => {
 };
 
 LoyaltyBannerSection.propTypes = {
-  className: PropTypes.string,
   labels: PropTypes.shape.isRequired,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
@@ -153,7 +142,6 @@ LoyaltyBannerSection.propTypes = {
 };
 
 LoyaltyBannerSection.defaultProps = {
-  className: '',
   currentSubtotal: 0,
   estimatedSubtotal: 0,
   thresholdValue: 0,
@@ -165,5 +153,4 @@ LoyaltyBannerSection.defaultProps = {
   pointsToNextReward: 0,
 };
 
-export default withStyles(LoyaltyBannerSection, Styles);
-export { LoyaltyBannerSection as LoyaltyBannerSectionVanilla };
+export default LoyaltyBannerSection;
