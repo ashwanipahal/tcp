@@ -251,6 +251,11 @@ export default css`
       margin: 0 15px;
     }
 
+    .stacked-button:last-child,
+    .scroll-button:last-child {
+      margin-right: 0;
+    }
+
     .stacked-button {
       flex-grow: 0;
       width: auto;

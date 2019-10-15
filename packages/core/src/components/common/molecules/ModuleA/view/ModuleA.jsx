@@ -79,7 +79,7 @@ class ModuleA extends React.Component {
         className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
           isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
         } moduleA`}
-        fullBleed={{ small: true, medium: true, large: false }}
+        fullBleed
       >
         <Col
           colSize={{
@@ -126,7 +126,7 @@ class ModuleA extends React.Component {
                         />
                       )}
                     </div>
-                    {ribbonBanner && (
+                    {/* {ribbonBanner && (
                       <div className="ribbon-container">
                         <PromoBanner
                           promoBanner={ribbonBanner}
@@ -135,7 +135,7 @@ class ModuleA extends React.Component {
                           fontSize="fs48"
                         />
                       </div>
-                    )}
+                    )} */}
                   </div>
                 );
               })}
