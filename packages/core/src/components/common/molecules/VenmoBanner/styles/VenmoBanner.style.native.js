@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const VenmoBannerContainer = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[300]};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const VenmoBannerTextContainer = styled.View`

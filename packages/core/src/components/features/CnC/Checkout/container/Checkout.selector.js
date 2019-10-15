@@ -672,7 +672,10 @@ const getVenmoData = state => {
   const venmoDataString = isMobileApp()
     ? state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData'])
     : getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
-  return isMobileApp() ? venmoDataString : JSON.parse(venmoDataString);
+  if (venmoDataString) {
+    return isMobileApp() ? venmoDataString : JSON.parse(venmoDataString);
+  }
+  return {};
 };
 
 const getVenmoClientTokenData = state =>
@@ -825,13 +828,14 @@ function getInternationalCheckoutUrl(state) {
  */
 const getIsVenmoEnabled = state => {
   if (isMobileApp()) {
+    // Mobile app kill switch
     return (
       state[SESSIONCONFIG_REDUCER_KEY] &&
       state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_APP_ENABLED']) === 'TRUE'
     );
   }
   return (
-    getIsMobile() &&
+    getIsMobile() && // Mobile Web Kill switch
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
   );

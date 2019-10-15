@@ -63,6 +63,7 @@ describe('CheckoutPageVanilla component', () => {
   it('calling isShowVenmoBanner method', () => {
     const props = {
       ...initialProps,
+      isVenmoPickupBannerDisplayed: false,
       router: { query: { subSection: CHECKOUT_STAGES.PICKUP, section: CHECKOUT_STAGES.PICKUP } },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
@@ -71,7 +72,15 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isShowVenmoBanner method for Shipping', () => {
-    const componentInstance = tree.instance();
+    const props = {
+      ...initialProps,
+      isVenmoShippingBannerDisplayed: false,
+      router: {
+        query: { subSection: CHECKOUT_STAGES.SHIPPING, section: CHECKOUT_STAGES.SHIPPING },
+      },
+    };
+    const component = shallow(<CheckoutPageVanilla {...props} />);
+    const componentInstance = component.instance();
     expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING)).toBeTruthy();
   });
 
@@ -85,6 +94,7 @@ describe('CheckoutPageVanilla component', () => {
       disableBackLink: false,
       router: { query: { section: 'pickup', subSection: 'pickup' } },
       onPickupSubmit: () => {},
+      isVenmoPickupBannerDisplayed: false,
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
@@ -92,7 +102,19 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isVenmoShippingDisplayed method', () => {
-    const componentInstance = tree.instance();
+    const props = {
+      className: 'className',
+      backLinkText: 'backLinkText',
+      nextButtonText: 'nextButtonText',
+      disableNext: false,
+      backLinkHandler: () => {},
+      disableBackLink: false,
+      router: { query: { section: 'pickup', subSection: 'pickup' } },
+      onPickupSubmit: () => {},
+      isVenmoShippingBannerDisplayed: false,
+    };
+    const component = shallow(<CheckoutPageVanilla {...props} />);
+    const componentInstance = component.instance();
     expect(componentInstance.isVenmoShippingDisplayed()).toBeFalsy();
   });
 });

@@ -1,9 +1,10 @@
 import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
-import { isMobileApp } from '../../../../../utils';
+import { isMobileApp, getViewportInfo } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
+  getViewportInfo: jest.fn(),
 }));
 
 describe('Checkout Selectors', () => {
@@ -203,8 +204,23 @@ describe('Checkout Selectors', () => {
     const state = {
       session,
     };
+    getViewportInfo.mockImplementation(() => ({ isMobile: true }));
+    isMobileApp.mockImplementation(() => false);
+    expect(getIsVenmoEnabled(state)).toEqual(true);
+  });
+
+  it('#getIsVenmoEnabled for Mobile App', () => {
+    const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
+    const session = fromJS({
+      siteDetails: {
+        VENMO_APP_ENABLED: 'TRUE',
+      },
+    });
+
+    const state = {
+      session,
+    };
     isMobileApp.mockImplementation(() => true);
-    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
     expect(getIsVenmoEnabled(state)).toEqual(true);
   });
 

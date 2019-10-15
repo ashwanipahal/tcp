@@ -67,6 +67,7 @@ export class VenmoPaymentButton extends Component {
     }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
+    // Local Test Data without bridge, required for local development and testing
     this.handleVenmoSuccess({
       details: { username: 'gagandsb' },
       username: 'gagandsb',
