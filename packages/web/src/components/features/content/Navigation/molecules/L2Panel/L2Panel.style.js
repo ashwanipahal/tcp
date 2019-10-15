@@ -163,10 +163,6 @@ export default css`
         width: 50%;
       }
 
-      li {
-        height: 40px;
-      }
-
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
@@ -181,8 +177,8 @@ export default css`
     }
     .l2-nav-link {
       display: block;
-      padding: 13px 0 12px 0;
-      line-height: 1.07;
+      padding: 11px 0 5px 0;
+      line-height: 1.11;
     }
     .shop-by-size-links {
       display: flex;
