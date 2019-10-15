@@ -1,4 +1,6 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { Skeleton } from '../../../atoms';
 
 export default css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
@@ -148,6 +150,36 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 290px;
+    }
+  }
+`;
+export const StyledSkeleton = styled(Skeleton)`
+  @media ${props => props.theme.mediaQuery.large} {
+    .left-carousel {
+      left: -60px;
+    }
+    .right-carousel {
+      right: -60px;
+    }
+  }
+  .skeleton-col {
+    width: 247px;
+    height: 265px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 389px;
+      height: 402px;
+      &:first-child,
+      &:last-child {
+        transform: scale(0.8);
+      }
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 334px;
+      height: 347px;
+      &:first-child,
+      &:last-child {
+        transform: scale(0.8);
+      }
     }
   }
 `;

@@ -5,7 +5,7 @@ import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import StyliticsProductTabList from '../../../organisms/StyliticsProductTabList';
-import moduleQStyle from '../styles/ModuleQ.style';
+import moduleQStyle, { StyledSkeleton } from '../styles/ModuleQ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleQ.config';
 
@@ -205,23 +205,15 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
-            {selectedProductList.length === 0 && (
-              <Carousel
-                options={CAROUSEL_OPTIONS}
-                carouselConfig={{
-                  autoplay: false,
-                  variation: 'big-arrows',
-                  customArrowLeft: IconPath,
-                  customArrowRight: IconPath,
-                }}
-              >
-                {selectedProductList.length === 0
-                  ? Array.from({ length: TOTAL_IMAGES }).map((item, index) => {
-                      return this.getLoaderSlide(index);
-                    })
-                  : null}
-              </Carousel>
-            )}
+            {selectedProductList.length === 0 ? (
+              <StyledSkeleton
+                row={1}
+                // col={{ s: 3, m: 3, l: 3 }}
+                col={{ s: 1, m: 3, l: 3 }}
+                rowProps={{ justifyContent: 'space-around' }}
+                showArrows
+              />
+            ) : null}
             {selectedProductList.length > 0 && (
               <Carousel
                 options={CAROUSEL_OPTIONS}
@@ -232,11 +224,6 @@ class ModuleQ extends React.PureComponent {
                   customArrowRight: IconPath,
                 }}
               >
-                {/* {selectedProductList.length === 0
-                ? Array.from({ length: TOTAL_IMAGES }).map((item, index) => {
-                    return this.getLoaderSlide(index);
-                  })
-                : null} */}
                 {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
               </Carousel>
             )}

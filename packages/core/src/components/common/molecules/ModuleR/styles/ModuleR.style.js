@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import Col from '../../../atoms/Col';
+import { Skeleton } from '../../../atoms';
 
 export const ImageGridCol = styled(Col)`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -51,6 +52,21 @@ export const ImageGridCol = styled(Col)`
   }
 `;
 
+export const StyledSkeleton = styled(Skeleton)`
+  .skeleton-col {
+    height: 109px;
+    width: 109px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 161px;
+      width: 161px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 209px;
+      width: 209px;
+    }
+  }
+`;
+
 export default css`
   margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
 
@@ -73,32 +89,5 @@ export default css`
 
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  }
-  .loader-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .loader-container {
-    width: 100%;
-    height: 110px;
-    margin-bottom: 10px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      height: 180px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      height: 175px;
-    }
-    @media ${props => props.theme.mediaQuery.xlarge} {
-      height: 217px;
-    }
-  }
-  &:last-child {
-    display: none;
-  }
-  @media ${props => props.theme.mediaQuery.smallOnly} {
-    .loader-col:last-child {
-      display: none;
-    }
   }
 `;

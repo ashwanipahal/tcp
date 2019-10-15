@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
-import { Button, Anchor, BodyCopy } from '../../../atoms';
+import { Button, Anchor, BodyCopy, Skeleton } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../ModuleQ.config';
@@ -206,7 +206,16 @@ const ModuleQ = props => {
         navigation={navigation}
         testID={getLocator('moduleQ_cta_link')}
       />
-
+      {selectedProductList.length === 0 ? (
+        <Skeleton
+          row={1}
+          col={1}
+          width={250}
+          height={300}
+          rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+          showArrows
+        />
+      ) : null}
       <ImageSlidesWrapper>
         {selectedProductList.length ? (
           <Carousel

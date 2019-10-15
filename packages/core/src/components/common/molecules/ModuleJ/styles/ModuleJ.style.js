@@ -1,4 +1,6 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { Skeleton } from '../../../atoms';
 
 export default css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
@@ -149,5 +151,33 @@ export default css`
   }
   .cta-btn {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+`;
+
+export const StyledSkeleton = styled(Skeleton)`
+  @media ${props => props.theme.mediaQuery.large} {
+    .left-carousel {
+      left: -15px;
+    }
+    .right-carousel {
+      right: -15px;
+    }
+  }
+  .skeleton-col {
+    width: 89px;
+    height: 110px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 146px;
+      height: 180px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 142px;
+      height: 175px;
+    }
+
+    @media ${props => props.theme.mediaQuery.xlarge} {
+      width: 175px;
+      height: 217px;
+    }
   }
 `;

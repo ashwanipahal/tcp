@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, DamImage, Image, Row, Skeleton } from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Image, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
-import moduleJStyle from '../styles/ModuleJ.style';
+import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../moduleJ.config';
 
@@ -213,40 +213,40 @@ class ModuleJ extends React.PureComponent {
               large: 1,
             }}
           >
-            <Carousel
-              options={CAROUSEL_OPTIONS}
-              carouselConfig={{
-                autoplay: false,
-                variation: 'big-arrows',
-                customArrowLeft: iconPath,
-                customArrowRight: iconPath,
-              }}
-            >
-              {data.length === 0
-                ? Array.from({ length: TOTAL_IMAGES }).map((item, index) => {
-                    return (
-                      <div key={index.toString()}>
-                        <Skeleton className="image-link" />
-                      </div>
-                    );
-                  })
-                : null}
-
-              {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
-                return (
-                  <div key={index.toString()}>
-                    <Anchor
-                      className="image-link"
-                      to={pdpUrl}
-                      asPath={pdpAsPath}
-                      dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
-                    >
-                      <Image alt={productName} src={imageUrl[0]} />
-                    </Anchor>
-                  </div>
-                );
-              })}
-            </Carousel>
+            {data.length === 0 ? (
+              <StyledSkeleton
+                row={1}
+                col={{ s: 4, m: 5, l: 5 }}
+                rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+                showArrows
+              />
+            ) : null}
+            {data ? (
+              <Carousel
+                options={CAROUSEL_OPTIONS}
+                carouselConfig={{
+                  autoplay: false,
+                  variation: 'big-arrows',
+                  customArrowLeft: iconPath,
+                  customArrowRight: iconPath,
+                }}
+              >
+                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+                  return (
+                    <div key={index.toString()}>
+                      <Anchor
+                        className="image-link"
+                        to={pdpUrl}
+                        asPath={pdpAsPath}
+                        dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
+                      >
+                        <Image alt={productName} src={imageUrl[0]} />
+                      </Anchor>
+                    </div>
+                  );
+                })}
+              </Carousel>
+            ) : null}
           </Col>
         </Row>
 

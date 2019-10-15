@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Anchor } from '../../../atoms';
+import { Button, Anchor, Skeleton } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { LAZYLOAD_HOST_NAME } from '../../../../../utils/utils.app';
 
@@ -168,7 +168,13 @@ class ModuleR extends React.PureComponent {
           tabItems={divTabs}
           navigation={navigation}
         />
-
+        {selectedProductList.length === 0 ? (
+          <Skeleton
+            row={2}
+            col={3}
+            rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+          />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Container>

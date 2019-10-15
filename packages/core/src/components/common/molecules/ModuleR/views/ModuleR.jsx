@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Anchor, Button, Col, Row, Image, Skeleton } from '../../../atoms';
+import { Anchor, Button, Col, Row, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
-import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
+import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -166,32 +166,6 @@ class ModuleR extends React.PureComponent {
     ) : null;
   }
 
-  getLoader = () => {
-    return (
-      <div>
-        {Array.from({ length: 2 }).map((rItem, rIndex) => {
-          return (
-            <Row key={rIndex.toString()}>
-              {Array.from({ length: 4 }).map((cItem, index) => {
-                return (
-                  <Col
-                    key={index.toString()}
-                    className="loader-col"
-                    colSize={{ small: 2, medium: 2, large: 3 }}
-                  >
-                    <div className="loader-wrapper">
-                      <Skeleton className="loader-container" />
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
-          );
-        })}
-      </div>
-    );
-  };
-
   render() {
     const { className, divTabs, productTabList, headerText, bannerPosition } = this.props;
     const promoComponent = this.getPromoComponent();
@@ -223,7 +197,13 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
-        {selectedProductList.length === 0 ? this.getLoader() : null}
+        {selectedProductList.length === 0 ? (
+          <StyledSkeleton
+            row={2}
+            col={{ s: 3, m: 4, l: 6 }}
+            rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+          />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>
