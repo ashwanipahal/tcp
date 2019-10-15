@@ -23,7 +23,6 @@ class BackToTop extends React.Component {
   }
 
   addBackToTopBtn = () => {
-    console.log('hello');
     if (
       document.body.scrollTop > config.SCROLL_TOP_POS ||
       document.documentElement.scrollTop > config.SCROLL_TOP_POS
