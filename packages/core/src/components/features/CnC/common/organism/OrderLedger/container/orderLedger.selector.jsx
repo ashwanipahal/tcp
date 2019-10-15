@@ -1,4 +1,5 @@
 import CheckoutSelectors from '../../../../Checkout/container/Checkout.selector';
+import { getLabelValue } from '../../../../../../../utils';
 
 export const getItemsTotalCount = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'totalItems']) || 0;
@@ -88,5 +89,11 @@ export const getOrderLedgerLabels = state => {
     tooltipText,
     free,
     orderLedgerTitle,
+    totalLabelConfirmation: getLabelValue(
+      state.Labels,
+      'lbl_orderledger_totalConfirmation',
+      'bagPage',
+      'checkout'
+    ),
   };
 };
