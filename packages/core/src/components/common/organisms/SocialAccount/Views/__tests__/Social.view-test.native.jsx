@@ -52,13 +52,6 @@ describe('Social component', () => {
     expect(props.handleComponentChange).toHaveBeenCalledTimes(1);
   });
 
-  it('should simulate instagram connect', () => {
-    component
-      .find('Styled(TouchableOpacity)')
-      .simulate('press', { isSocialAccount: 'Instagram', isConnected: false });
-    expect(component).toMatchSnapshot();
-  });
-
   it('test dispatchSaveSocial func', () => {
     component.instance().dispatchSaveSocial('facebook', 'foo', 'foo');
     expect(props.pointModalClose).toHaveBeenCalled();

@@ -84,4 +84,8 @@ export default css`
     font-family: ${props => props.theme.fonts.secondaryFontBlackFamily};
     opacity: 1;
   }
+
+  .moduleH_carousel .tcp_carousel .slick-list .slick-track {
+    left: 0 !important;
+  }
 `;
