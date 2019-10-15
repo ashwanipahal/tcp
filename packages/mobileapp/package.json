@@ -61,7 +61,8 @@
     "superagent": "^5.0.8",
     "superagent-jsonp": "^0.2.1",
     "redux-persist": "^6.0.0",
-    "redux-persist-transform-immutable": "^5.0.0"
+    "redux-persist-transform-immutable": "^5.0.0",
+    "react-native-fast-image": "^7.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -190,7 +191,9 @@
       "**/redux-persist",
       "**/redux-persist/**",
       "**/redux-persist-transform-immutable",
-      "**/redux-persist-transform-immutable/**"
+      "**/redux-persist-transform-immutable/**",
+      "**/react-native-fast-image",
+      "**/react-native-fast-image/**"
     ]
   }
 }
