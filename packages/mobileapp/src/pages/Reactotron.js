@@ -19,7 +19,7 @@ if (__DEV__) {
     .connect();
 
   // This will not block normal console.log. This can be use like console.tron.log('tcp')
-  console.tron = ReactotronConfig;
+  console.log = ReactotronConfig.log;
   ReactotronConfig.clear();
 }
 

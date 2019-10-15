@@ -3,19 +3,21 @@ import { PropTypes } from 'prop-types';
 import { View, WebView, Platform } from 'react-native';
 
 const PayPalButton = props => {
-  const { getPayPalSettings } = props;
+  const { getPayPalSettings, payPalWebViewHandle } = props;
   const [showAsModal, setAsModal] = useState(false);
   const handleWebViewEvents = event => {
     switch (event.nativeEvent.data) {
       case 'payment':
+        payPalWebViewHandle(true);
         setAsModal(true);
         break;
       default:
+        payPalWebViewHandle(false);
         setAsModal(false);
     }
   };
   let styles = {
-    height: 100,
+    height: 42,
     width: 150,
   };
   if (showAsModal) {
@@ -24,6 +26,7 @@ const PayPalButton = props => {
       top: 0,
       width: '100%',
       height: 800,
+      zIndex: 1,
     };
   }
 
@@ -55,6 +58,7 @@ const PayPalButton = props => {
 
 PayPalButton.propTypes = {
   getPayPalSettings: PropTypes.shape({}).isRequired,
+  payPalWebViewHandle: PropTypes.func.isRequired,
 };
 
 export default PayPalButton;

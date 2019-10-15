@@ -203,6 +203,13 @@ const resetCartReducer = () => {
 
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
+const getSetPayPalWebView = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
+    payload,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -234,4 +241,5 @@ export default {
   startSflDataMoveToBag,
   setSflItemDeleted,
   resetCartReducer,
+  getSetPayPalWebView,
 };

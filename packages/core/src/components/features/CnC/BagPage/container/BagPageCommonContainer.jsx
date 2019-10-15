@@ -82,6 +82,7 @@ export class BagPageContainer extends React.Component<Props> {
       cartItemSflError,
       currencySymbol,
       startPaypalNativeCheckoutAction,
+      isPayPalWebViewEnable,
     } = this.props;
 
     const showAddTobag = false;
@@ -112,6 +113,7 @@ export class BagPageContainer extends React.Component<Props> {
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
         startPaypalNativeCheckoutAction={startPaypalNativeCheckoutAction}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -167,6 +169,7 @@ const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
   };
 };

@@ -32,29 +32,32 @@
             disallowed: [paypal && paypal.FUNDING.CREDIT]
           },
           payment: function() {
+            window.postMessage("payment");
             return new Promise(resolve => {
-              window.postMessage("payment");
               const key = getUrlVars()["key"];
               resolve(key);
             });
           },
           onAuthorize: function(data, actions) {
-            document.getElementById("test").style.backgroundColor = "green";
+            // document.getElementById("test").style.backgroundColor = "green";
             window.postMessage("authorized");
           },
           onCancel: function(data, actions) {
+            return new Promise((resolve) => {
+              window.postMessage("cancelled");
+              resolve(true);
+            });
             // Show a cancel page or return to cart
-            window.postMessage("cancelled");
-            document.getElementById("test").style.backgroundColor = "yellow";
+            // document.getElementById("test").style.backgroundColor = "yellow";
           },
           onError: function() {
             window.postMessage("error");
-            document.getElementById("test").style.backgroundColor = "red";
+            // document.getElementById("test").style.backgroundColor = "red";
           }
         },
         "#paypal-button"
       );
-      document.getElementById("test").style.backgroundColor = "blue";
+      // document.getElementById("test").style.backgroundColor = "blue";
     </script>
   </body>
 </html>

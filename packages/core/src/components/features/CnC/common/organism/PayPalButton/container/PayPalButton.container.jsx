@@ -14,6 +14,11 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     startPaypalNativeCheckoutAction();
   }
 
+  componentWillUnmount() {
+    const { payPalWebViewHandle } = this.props;
+    payPalWebViewHandle(false);
+  }
+
   initalizePayPalButton = data => {
     const apiConfigObj = getAPIConfig();
     const { paypalEnv } = apiConfigObj;
@@ -47,7 +52,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isQualifedOrder, containerId, getPayPalSettings } = this.props;
+    const { isQualifedOrder, containerId, getPayPalSettings, payPalWebViewHandle } = this.props;
     return (
       getPayPalSettings &&
       getPayPalSettings.paypalInContextToken && (
@@ -56,6 +61,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           initalizePayPalButton={this.initalizePayPalButton}
           containerId={containerId}
           getPayPalSettings={getPayPalSettings}
+          payPalWebViewHandle={payPalWebViewHandle}
         />
       )
     );
@@ -80,6 +86,9 @@ export const mapDispatchToProps = dispatch => {
     },
     clearPaypalSettings: () => {
       dispatch(getSetIsPaypalPaymentSettings(null));
+    },
+    payPalWebViewHandle: payload => {
+      dispatch(bagPageActions.getSetPayPalWebView(payload));
     },
   };
 };

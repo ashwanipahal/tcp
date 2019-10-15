@@ -257,7 +257,7 @@ export class BagPage extends React.Component {
 
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
-    const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
+    const { handleCartCheckout, isUserLoggedIn, sflItems, isPayPalWebViewEnable } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection, showCondensedHeader, height } = this.state;
     if (!labels.tagLine) {
@@ -266,6 +266,7 @@ export class BagPage extends React.Component {
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     const viewHeight = showCondensedHeader ? '74%' : '65%';
+    console.log('isPayPalWebViewEnable', isPayPalWebViewEnable);
     return (
       <>
         <ContainerMain>
@@ -315,7 +316,7 @@ export class BagPage extends React.Component {
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
-          <FooterView>
+          <FooterView isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <AddedToBagActions
               handleCartCheckout={handleCartCheckout}
               labels={labels}
@@ -349,6 +350,7 @@ BagPage.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  isPayPalWebViewEnable: PropTypes.bool.isRequired,
 };
 
 export default InitialPropsHOC(BagPage);

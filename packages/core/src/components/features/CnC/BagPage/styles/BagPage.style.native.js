@@ -132,12 +132,21 @@ export const InActiveEstimateTextStyle = styled.Text`
   width: 100%;
 `;
 
+const applyPositionClassStyle = props => {
+  if (props.isPayPalWebViewEnable === true) {
+    return `
+    top: 0;
+    `;
+  }
+  return 'bottom: 0;';
+};
+
 export const FooterView = styled.View`
   width: 100%;
   height: 160px;
   position: absolute;
-  bottom: 0;
   background-color: ${props => props.theme.colors.WHITE};
+  ${applyPositionClassStyle}
 `;
 
 export const ContainerMain = styled.View`

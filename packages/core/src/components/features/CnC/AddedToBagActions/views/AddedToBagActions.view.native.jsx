@@ -70,7 +70,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <View>
             <ButtonWrapper>
               <PayPalButton getPayPalSettings={getPayPalSettings} />
-
               <CheckoutButton
                 onPress={() => {
                   handleCartCheckout({

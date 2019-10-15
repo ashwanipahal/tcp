@@ -971,6 +971,7 @@ export default {
   getInternationalCheckoutApiUrl,
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
+  getPayPalSettings,
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
@@ -980,5 +981,4 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
-  getPayPalSettings,
 };
