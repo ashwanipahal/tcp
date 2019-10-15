@@ -181,7 +181,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   showModal = () => {
     this.setState({ show: true, isSortOpenModal: false });
-    document.body.style.overflow = 'hidden';
+    document.body.style.height = '90vh';
     document.body.style.position = 'fixed';
   };
 
@@ -397,6 +397,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
           heightConfig={{ height: '100%' }}
           style={customStyles}
           inheritedStyles={customModalCss}
+          bodyOpenClassName={null}
         >
           <form
             className={`${className} available-filters-sorting-container`}
