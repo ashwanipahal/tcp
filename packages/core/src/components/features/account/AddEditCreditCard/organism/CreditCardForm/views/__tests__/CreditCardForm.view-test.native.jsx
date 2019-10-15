@@ -127,10 +127,5 @@ describe('CreditCardForm component', () => {
     it('#showAddressDropdown should return false if mailingAddress is false and addressList is not present', () => {
       expect(component.instance().showAddressDropdown(false)).toBeFalsy();
     });
-
-    it('#toggleModal should toggle showAddressForm to false if mailingAddress is present', () => {
-      component.instance().toggleModal();
-      expect(component.state('showAddressForm')).toBeFalsy();
-    });
   });
 });

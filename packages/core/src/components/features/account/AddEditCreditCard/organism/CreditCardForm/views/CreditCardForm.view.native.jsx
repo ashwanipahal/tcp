@@ -122,7 +122,13 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     dispatch(change('addEditCreditCard', 'onFileAddressKey', item));
   };
 
-  toggleModal = () => {};
+  updateExpiryDate = (month, year) => {
+    const { dispatch } = this.props;
+
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', year));
+    dispatch(change('addEditCreditCard', 'expMonth', month));
+  };
 
   showAddressDropdown = addressComponentList => {
     return addressComponentList && addressComponentList.length > 1;
@@ -182,6 +188,9 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
     const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     if (isEdit && selectedCard) {
+      const { expMonth, expYear } = selectedCard;
+
+      this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
 
@@ -195,6 +204,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           {showCreditCardFields && (
             <CreditCardFields
               {...this.props}
+              updateExpiryDate={this.updateExpiryDate}
               dto={dto}
               selectedCard={selectedCard}
               creditFieldLabels={this.getCreditFieldLabels()}
