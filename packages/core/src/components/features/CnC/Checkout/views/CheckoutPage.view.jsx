@@ -128,6 +128,7 @@ class CheckoutPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      isExpressCheckout,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -199,6 +200,7 @@ class CheckoutPage extends React.PureComponent {
             setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
+            isExpressCheckout={isExpressCheckout}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -308,6 +310,7 @@ CheckoutPage.propTypes = {
   setVenmoShippingState: PropTypes.func,
   isVenmoPickupBannerDisplayed: PropTypes.bool,
   isVenmoShippingBannerDisplayed: PropTypes.bool,
+  isExpressCheckout: PropTypes.bool,
 };
 
 CheckoutPage.defaultProps = {
@@ -316,6 +319,7 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isVenmoPickupBannerDisplayed: true,
   isVenmoShippingBannerDisplayed: true,
+  isExpressCheckout: false,
 };
 
 export default CheckoutPage;

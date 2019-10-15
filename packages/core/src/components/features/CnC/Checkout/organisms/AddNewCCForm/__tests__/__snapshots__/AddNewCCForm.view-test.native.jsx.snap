@@ -16,7 +16,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
       }
     }
     cvvError={null}
-    dto={Object {}}
+    dto={null}
     expMonthOptionsMap={
       Array [
         Object {
@@ -117,8 +117,11 @@ exports[`AddNewCCForm should render correctly 1`] = `
         },
       ]
     }
+    isEdit={false}
     isExpirationRequired={true}
     isPLCCEnabled={true}
+    isSameAsShippingChecked={false}
+    onCardFocus={[Function]}
     selectedCard={null}
     showCvv={true}
     updateCardDetails={[Function]}
