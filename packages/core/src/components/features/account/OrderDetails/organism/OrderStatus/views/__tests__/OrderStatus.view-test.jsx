@@ -11,6 +11,8 @@ describe('Order Items component', () => {
       pickUpExpirationDate: 'April, 2019',
       pickedUpDate: 'Jun, 2019',
       isBopisOrder: false,
+      trackingUrl: '/test',
+      trackingNumber: '1234567',
     };
     const component = shallow(<OrderStatus {...props} />);
     expect(component).toMatchSnapshot();

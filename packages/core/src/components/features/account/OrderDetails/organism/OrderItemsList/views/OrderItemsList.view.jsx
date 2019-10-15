@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import OrderItem from '../../OrderItem';
 
+/**
+ * This function component use for return the Order item list based on group
+ * can be passed in the component.
+ * @param otherProps - otherProps object used for showing Order Item list
+ */
 const OrderItemsList = ({ className, ...otherProps }) => {
   const { items } = otherProps;
 

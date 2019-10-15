@@ -26,8 +26,32 @@ exports[`Order Items component should renders correctly 1`] = `
       lineHeight="normal"
       link={null}
       textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className="orderDetail-trackingNumber-pipe"
+      color="text.primary"
+      component="span"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     >
-      lbl_orders_statusOrderReceived
+       | 
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className={null}
@@ -41,8 +65,44 @@ exports[`Order Items component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
-      lbl_orders_processing
+      lbl_orders_trackingNumber
     </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      1234567
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+  <Styled(Col)
+    className="button-container"
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 0,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Anchor)
+      anchorVariation="button"
+      buttonVariation="fixed-width"
+      centered={true}
+      className="button-track"
+      dataLocator="1234567"
+      fill="BLUE"
+      to="/test"
+    >
+      lbl_orders_trackit
+    </Styled(Anchor)>
   </Styled(Col)>
 </Styled(Row)>
 `;

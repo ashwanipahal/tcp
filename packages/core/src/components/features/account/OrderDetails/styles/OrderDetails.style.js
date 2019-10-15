@@ -11,50 +11,39 @@ export default css`
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
   }
   .group-row {
-    border-bottom: solid 1px #d8d8d8;
+    border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
     padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  }
-  .button-Container {
-    text-align: right;
-  }
-  .order-Item {
-    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-  }
-
-  .button-track {
-    width: 100%;
-  }
-  .orderDetail-trackingNumber {
-    display: inline;
-  }
-  .orderDetail-trackingNumber-pipe {
-    display: inline;
-  }
-
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .button-track {
-      width: 40%;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     }
-    .button-Container {
+  }
+  .button-container {
+    text-align: right;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
       text-align: left;
     }
   }
-
-  @media ${props => props.theme.mediaQuery.smallOnly} {
-    .button-track {
-      width: 100%;
+  .button-track {
+    width: 100%;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 40%;
     }
-
-    .orderDetail-trackingNumber {
+  }
+  .orderDetail-trackingNumber {
+    display: inline;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
     }
-    .orderDetail-trackingNumber-pipe {
+  }
+  .orderDetail-trackingNumber-pipe {
+    display: inline;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
       display: none;
     }
-    .group-row {
-      padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    }
-    .order-Item {
+  }
+  .order-Item {
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.smallOnly} {
       padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     }
   }
