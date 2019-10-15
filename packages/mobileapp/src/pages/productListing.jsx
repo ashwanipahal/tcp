@@ -2,6 +2,8 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
+import OutfitListing from '@tcp/core/src/components/features/browse/OutfitListing';
+
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
 import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
@@ -41,6 +43,12 @@ const PlpStack = createStackNavigator(
     },
     [ROUTE_NAMES.PRODUCT_DETAIL_PAGE]: {
       screen: ProductDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    [ROUTE_NAMES.OUTFIT_LISTING]: {
+      screen: OutfitListing,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
