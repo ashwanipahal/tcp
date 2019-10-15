@@ -31,6 +31,7 @@ import StoreAddressTileRoot, {
   brandImageStyles,
   markerImageStyles,
   favStoreIconStyles,
+  StyledListingTileContainer,
 } from '../styles/StoreAddressTile.style.native';
 import { listingHeader, listingType, detailsType, propTypes, defaultProps } from './prop-types';
 
@@ -59,7 +60,7 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     const { storeName, id } = basicInfo;
     return (
-      <Fragment>
+      <StyledListingTileContainer>
         <ListingTileWrapper>
           <ListingTitleStoreName>
             <Anchor onPress={e => titleClickCb(e, id)}>
@@ -82,7 +83,7 @@ class StoreAddressTile extends PureComponent {
             text={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           />
         </ListingTileWrapper>
-      </Fragment>
+      </StyledListingTileContainer>
     );
   }
 

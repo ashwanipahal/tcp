@@ -51,7 +51,7 @@ export class StoreLanding extends PureComponent {
 
   renderList = modifiedStoreList => {
     const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
-    const { mapView } = this.state;
+    const { mapView, centeredStoreId } = this.state;
     return searchDone && !modifiedStoreList.length ? (
       <Notification
         status="info"
@@ -69,6 +69,7 @@ export class StoreLanding extends PureComponent {
             isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
             key={item.basicInfo.id}
             openStoreDetails={this.openStoreDetails}
+            selectedStoreId={centeredStoreId === item.basicInfo.id}
           />
         ))}
       </StyledStoreListView>
