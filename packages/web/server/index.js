@@ -19,6 +19,7 @@ const {
   setEnvConfig,
   HEALTH_CHECK_PATH,
   ERROR_REDIRECT_STATUS,
+  CACHE_CLEAR_PATH,
 } = require('./config/server.config');
 const {
   initErrorReporter,
@@ -208,6 +209,27 @@ app.prepare().then(() => {
     res.send({
       success: true,
     });
+  });
+  // Clear redis cache
+  server.get(CACHE_CLEAR_PATH, async (req, res) => {
+    if (global.redisClient) {
+      global.redisClient
+        .flushdb()
+        .then(() => {
+          res.send({
+            success: true,
+          });
+        })
+        .catch(err => {
+          res.send({
+            success: false,
+          });
+        });
+    } else {
+      res.send({
+        success: false,
+      });
+    }
   });
 
   server.get('/', redirectToHomePage);
