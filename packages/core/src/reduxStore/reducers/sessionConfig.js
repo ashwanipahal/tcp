@@ -39,9 +39,9 @@ const initialState = {
 const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:
-      return { ...state, siteDetails: { ...action.payload } };
+      return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
     case GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS:
-      return { ...state, siteDetails: { ...action.payload } };
+      return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
     case GLOBAL_CONSTANTS.SET_COUNTRY:
       return { ...state, siteDetails: { ...state.siteDetails, country: action.payload } };
     case GLOBAL_CONSTANTS.SET_CURRENCY:
