@@ -7,6 +7,7 @@ import {
   getAddressFromPlace,
   extractFloat,
   getStoreHours,
+  parseUTCDate,
 } from '../utils';
 import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
 
@@ -167,5 +168,12 @@ describe('getStoreHours', () => {
   it('should return opens at fromTime', () => {
     const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 21:00:00'));
     expect(storeTime).toContain('opens at 10 am');
+  });
+});
+
+describe('parseUTCDate', () => {
+  it('default', () => {
+    const returnDateValue = parseUTCDate('2019-10-15 20:00:00');
+    expect(returnDateValue).toStrictEqual(new Date('2019-10-15T20:00:00.000Z'));
   });
 });
