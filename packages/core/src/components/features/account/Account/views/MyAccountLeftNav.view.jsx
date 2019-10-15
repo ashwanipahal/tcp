@@ -4,7 +4,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountLayout.style';
 
-const focusHandler = e => {
+const focusHandler = () => {
   const domHeader = document.getElementsByClassName('myAccountRightView');
   if (domHeader && domHeader[0]) {
     domHeader[0].focus();
@@ -22,7 +22,7 @@ const getNavLink = (navObj, selectedSubNav) => {
   return (
     <Anchor
       asPath={nav.url}
-      onClick={e => focusHandler(e)}
+      onClick={() => focusHandler()}
       to={nav.href}
       anchorVariation={selectedNav || selectedSubNav ? 'primary' : 'grayed'}
       fontSizeVariation="large"
