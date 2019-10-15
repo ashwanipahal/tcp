@@ -48,6 +48,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
         "paymentGC": Object {},
       }
     }
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
@@ -111,6 +112,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
         "paymentGC": Object {},
       }
     }
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

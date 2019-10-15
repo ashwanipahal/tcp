@@ -19,7 +19,8 @@ const ProductDetailReducer = (state = initialState, action) => {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
       return state
         .set('currentProduct', action.payload.product)
-        .set('breadCrumbs', action.payload.breadCrumbs);
+        .set('breadCrumbs', action.payload.breadCrumbs)
+        .set('currentColorProductId', action.payload.currentColorProductId);
     default:
       return getDefaultState(state);
   }

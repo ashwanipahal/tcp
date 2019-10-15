@@ -30,11 +30,6 @@ export default {
     medium: false,
     large: false,
   },
-  COL_SIZE: {
-    small: 6,
-    medium: 8,
-    large: 12,
-  },
   OFFSET_LEFT: {
     small: 0,
     medium: 1,
@@ -42,5 +37,16 @@ export default {
   },
   MODULE_STYLE: {
     height: 425,
+  },
+  getColSize: moduleWidth => {
+    const colSize = {
+      small: 6,
+      medium: 8,
+      large: 12,
+    };
+    if (moduleWidth.toLowerCase() === 'half') {
+      colSize.large = 6;
+    }
+    return colSize;
   },
 };

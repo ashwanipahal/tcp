@@ -25,6 +25,7 @@ const OrderLedger = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
+  orderLedgerAfterView,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
@@ -52,6 +53,7 @@ const OrderLedger = ({
         />
       </Col>
       <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
+      {orderLedgerAfterView}
     </div>
   );
 };
@@ -72,6 +74,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
   confirmationPageLedgerSummaryData: PropTypes.shape({

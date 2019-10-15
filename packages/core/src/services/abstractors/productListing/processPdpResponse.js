@@ -58,6 +58,14 @@ const getReviewsCount = (isGiftCard, reviewsCount) => {
   return isGiftCard ? 0 : reviewsCount;
 };
 
+const getCurrentColorProductId = (generalProductId, colorFitsSizesMap) => {
+  const currentColorProduct =
+    generalProductId !== 'gift_cards'
+      ? colorFitsSizesMap.filter(item => item.colorDisplayId === generalProductId)
+      : [];
+  return currentColorProduct.length ? currentColorProduct[0].colorProductId : generalProductId;
+};
+
 const processPdpResponse = ({
   baseProduct,
   categoryPathMap,
@@ -70,40 +78,44 @@ const processPdpResponse = ({
   reviewsCount,
   alternateSizes,
   breadCrumbs,
-}) => ({
-  breadCrumbs,
-  rawBreadCrumb: getRawBreadCrumb(categoryPathMap),
-  product: {
-    // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
-    ratingsProductId: baseProduct.style_partno,
-    // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
-    generalProductId: getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct),
-    categoryId: getCatId(categoryId),
-    name: getIsGiftCard(isGiftCard, baseProduct),
-    pdpUrl: `/p/${colorIdOrSeoKeyword}`,
-    shortDescription: baseProduct.product_short_description,
-    longDescription: getLongDescription(isBundleProduct, baseProduct),
-    imagesByColor,
-    colorFitsSizesMap,
-    isGiftCard,
-    colorFitSizeDisplayNames: getColorFitSizeDisplayNames(isGiftCard),
-    listPrice: getListPrice(baseProduct),
-    offerPrice: getOfferPrice(baseProduct),
-    highListPrice: getHighListPrice(baseProduct),
-    highOfferPrice: getHighOfferPrice(baseProduct),
-    lowListPrice: getLowListPrice(baseProduct),
-    lowOfferPrice: getLowOfferPrice(baseProduct),
-    ratings: getRating(isGiftCard, baseProduct),
-    reviewsCount: getReviewsCount(isGiftCard, reviewsCount),
-    // unbxdId: getUnbxdId(),
-    unbxdProdId: baseProduct.uniqueId,
-    alternateSizes,
-    productId: baseProduct.uniqueId,
-    promotionalMessage: baseProduct.TCPLoyaltyPromotionTextUSStore || '',
-    promotionalPLCCMessage: baseProduct.TCPLoyaltyPLCCPromotionTextUSStore || '',
-    long_product_title: baseProduct.long_product_title || '',
-    bundleProducts: baseProduct.products || [],
-  },
-});
+}) => {
+  const generalProductId = getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct);
+  return {
+    breadCrumbs,
+    rawBreadCrumb: getRawBreadCrumb(categoryPathMap),
+    product: {
+      // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
+      ratingsProductId: baseProduct.style_partno,
+      // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
+      generalProductId,
+      categoryId: getCatId(categoryId),
+      name: getIsGiftCard(isGiftCard, baseProduct),
+      pdpUrl: `/p/${colorIdOrSeoKeyword}`,
+      shortDescription: baseProduct.product_short_description,
+      longDescription: getLongDescription(isBundleProduct, baseProduct),
+      imagesByColor,
+      colorFitsSizesMap,
+      isGiftCard,
+      colorFitSizeDisplayNames: getColorFitSizeDisplayNames(isGiftCard),
+      listPrice: getListPrice(baseProduct),
+      offerPrice: getOfferPrice(baseProduct),
+      highListPrice: getHighListPrice(baseProduct),
+      highOfferPrice: getHighOfferPrice(baseProduct),
+      lowListPrice: getLowListPrice(baseProduct),
+      lowOfferPrice: getLowOfferPrice(baseProduct),
+      ratings: getRating(isGiftCard, baseProduct),
+      reviewsCount: getReviewsCount(isGiftCard, reviewsCount),
+      // unbxdId: getUnbxdId(),
+      unbxdProdId: baseProduct.uniqueId,
+      alternateSizes,
+      productId: baseProduct.uniqueId,
+      promotionalMessage: baseProduct.TCPLoyaltyPromotionTextUSStore || '',
+      promotionalPLCCMessage: baseProduct.TCPLoyaltyPLCCPromotionTextUSStore || '',
+      long_product_title: baseProduct.long_product_title || '',
+      bundleProducts: baseProduct.products || [],
+    },
+    currentColorProductId: getCurrentColorProductId(generalProductId, colorFitsSizesMap),
+  };
+};
 
 export default processPdpResponse;

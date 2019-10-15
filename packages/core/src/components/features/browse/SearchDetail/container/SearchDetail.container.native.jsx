@@ -41,12 +41,22 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.makeApiCall();
+    const { navigation } = this.props;
+    const title = navigation.getParam('title');
+    this.makeApiCall(title);
   }
 
-  makeApiCall = () => {
-    const { getProducts, navigation } = this.props;
-    const searchQuery = navigation && navigation.getParam('title');
+  componentWillUpdate = nextProps => {
+    const { navigation } = nextProps;
+    const title = navigation.getParam('title');
+    const isForceUpdate = navigation.getParam('isForceUpdate');
+    if (isForceUpdate) {
+      this.makeApiCall(title);
+    }
+  };
+
+  makeApiCall = searchQuery => {
+    const { getProducts } = this.props;
     if (this.searchQuery !== searchQuery) {
       this.searchQuery = searchQuery;
       const splitAsPathBy = `/search/${this.searchQuery}?`;
