@@ -123,7 +123,7 @@ OutfitDetailsView.propTypes = {
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyExchange: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
 };
@@ -139,7 +139,7 @@ OutfitDetailsView.defaultProps = {
   isInternationalShipping: false,
   currencySymbol: '$',
   priceCurrency: 'USD',
-  currencyExchange: '1',
+  currencyExchange: [{ exchangevalue: 1 }],
   labels: {},
 };
 
