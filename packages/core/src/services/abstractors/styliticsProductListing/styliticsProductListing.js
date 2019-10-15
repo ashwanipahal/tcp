@@ -29,6 +29,23 @@ const Abstractor = {
       .then(Abstractor.processData)
       .catch(Abstractor.handleError);
   },
+  getOutfit: params => {
+    const { categoryId, count = 20 } = params;
+
+    const payload = {
+      body: {
+        username: 'thechildrensplace',
+        region: 'US',
+        total: count,
+        tags: categoryId,
+      },
+      webService: endpoints.getStyliticsProductViewById,
+    };
+
+    return executeExternalAPICall(payload)
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
+  },
   getMock: () => {
     return mock;
   },

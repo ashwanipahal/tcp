@@ -3,7 +3,7 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
-// import navigationAbstractor from './navigation';
+import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
@@ -111,7 +111,7 @@ const createBootstrapParams = () => {
 export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   const cachedKeyData = cachedData[key];
   if (cachedKeyData) {
-    logger.info('CACHE HIT');
+    logger.info(`BOOTSTRAP CACHE HIT: ${key}`);
     try {
       return JSON.parse(cachedKeyData);
     } catch (err) {
@@ -119,15 +119,19 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
     }
   }
 
-  logger.info('CACHE MISS');
+  logger.info(`BOOTSTRAP CACHE MISS: ${key}`);
   Object.keys(CACHED_KEYS).forEach(async item => {
     if (CACHED_KEYS[item] === key) {
       const globalRedisClient = global.redisClient;
       if (globalRedisClient && globalRedisClient.connected) {
-        await setDataInRedis({
-          data: bootstrapData[key],
-          CACHE_IDENTIFIER: item,
-        });
+        try {
+          await setDataInRedis({
+            data: bootstrapData[key],
+            CACHE_IDENTIFIER: item,
+          });
+        } catch (err) {
+          logger.error(err);
+        }
       }
     }
   });
@@ -155,8 +159,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
    *  -   Labels
    *  -   Navigation
    */
-  // const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
-  const bootstrapModules = modules || ['labels', 'header', 'footer'];
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
@@ -187,9 +190,9 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     response.labels = labelsAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
     );
-    /* response.navigation = navigationAbstractor.processData(
+    response.navigation = navigationAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
-    ); */
+    );
   } catch (error) {
     logger.error(error);
   }
