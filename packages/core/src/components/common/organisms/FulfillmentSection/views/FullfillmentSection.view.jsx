@@ -18,7 +18,7 @@ class FulfillmentSection extends React.Component {
 
   pickupOpenClick() {
     const { currentProduct, onPickUpOpenClick, onPickupClickAddon } = this.props;
-    const { colorFitsSizesMap, generalProductId } = currentProduct;
+    const { /* colorFitsSizesMap, */ generalProductId } = currentProduct;
     // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
       generalProductId,

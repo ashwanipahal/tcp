@@ -467,7 +467,7 @@ exports[`BillingSection should render correctly without card details 1`] = `
       >
         Billing Address
       </Styled(BodyCopy)>
-      <Address
+      <Styled(Address)
         address={
           Object {
             "addressLine1": "1234 XYZ",
@@ -479,13 +479,6 @@ exports[`BillingSection should render correctly without card details 1`] = `
           }
         }
         className="review-billing-address"
-        dataLocatorPrefix=""
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
       />
     </Styled(Col)>
     <Styled(Col)

@@ -3,7 +3,7 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
-// import navigationAbstractor from './navigation';
+import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
@@ -159,8 +159,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
    *  -   Labels
    *  -   Navigation
    */
-  // const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
-  const bootstrapModules = modules || ['labels', 'header', 'footer'];
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
@@ -191,9 +190,9 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     response.labels = labelsAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
     );
-    /* response.navigation = navigationAbstractor.processData(
+    response.navigation = navigationAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
-    ); */
+    );
   } catch (error) {
     logger.error(error);
   }

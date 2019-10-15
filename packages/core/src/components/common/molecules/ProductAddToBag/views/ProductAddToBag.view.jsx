@@ -11,7 +11,9 @@ import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
+import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import styles from '../styles/ProductAddToBag.style';
 
@@ -49,6 +51,20 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { fromBagPage, plpLabels } = this.props;
     const { addToBag, update } = plpLabels;
     return fromBagPage ? update : addToBag;
+  };
+
+  renderOutfitButton = () => {
+    const { isOutfitPage, currentProduct } = this.props;
+    return isOutfitPage ? (
+      <div className="outfit-pickup">
+        <FulfillmentSection
+          btnClassName="added-to-bag"
+          dataLocator={getLocator('global_addtocart_Button')}
+          buttonLabel="Fulfilment Section"
+          currentProduct={currentProduct}
+        />
+      </div>
+    ) : null;
   };
 
   render() {
@@ -140,7 +156,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
         {showAddToBagCTA && (
           <Row fullBleed>
-            <Col colSize={{ small: 12, medium: 12, large: 12 }}>
+            <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
                 <Button
                   type="submit"
@@ -160,6 +176,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 </Button>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
+              {this.renderOutfitButton()}
             </Col>
           </Row>
         )}

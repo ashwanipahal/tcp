@@ -12,7 +12,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
-      component={null}
+      component="h2"
       dataLocator=""
       fontFamily="primaryFontFamily"
       textAlign="left"
@@ -74,7 +74,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
-      component={null}
+      component="h2"
       dataLocator=""
       fontFamily="primaryFontFamily"
       textAlign="left"

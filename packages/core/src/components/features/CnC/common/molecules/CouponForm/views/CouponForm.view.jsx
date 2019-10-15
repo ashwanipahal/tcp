@@ -56,6 +56,7 @@ class CouponForm extends React.PureComponent {
         <div className="coupon_form_container">
           <Heading
             fontFamily="primaryFontFamily"
+            component="h2"
             variant="h6"
             className="coupon_form_heading"
             color="black"
