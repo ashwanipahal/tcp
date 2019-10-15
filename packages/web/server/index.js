@@ -144,9 +144,10 @@ const renderAndCache = async (app, req, res, resolver, params) => {
   try {
     const cachedKey = await getDataFromRedis(key);
     if (cachedKey) {
-      logger.info(`ROUTE CACHE HIT: ${cachedKey}`);
+      logger.info(`ROUTE CACHE HIT: ${key}`);
       res.setHeader('x-cache', 'CACHE HIT');
-      res.send(cachedKey);
+      const data = JSON.parse(cachedKey);
+      res.send(data.html);
       return;
     }
     const html = await app.renderToHTML(req, res, resolver, params);
@@ -157,10 +158,10 @@ const renderAndCache = async (app, req, res, resolver, params) => {
     }
     // TBD: The route paths that should not be cached.
     await setDataInRedis({
-      data: html,
+      data: { html },
       CACHE_IDENTIFIER: key,
     });
-    logger.info(`ROUTE CACHE MISS: ${cachedKey}`);
+    logger.info(`ROUTE CACHE MISS: ${key}`);
     res.setHeader('x-cache', 'CACHE MISS');
     res.send(html);
   } catch (err) {
