@@ -669,6 +669,7 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
               }
               fetchCurrentStore={[MockFunction]}
               fetchStoresByLatLng={[MockFunction]}
+              geoLocationDisabled={true}
               geoLocationEnabled={false}
               isFavorite={true}
               labels={Object {}}

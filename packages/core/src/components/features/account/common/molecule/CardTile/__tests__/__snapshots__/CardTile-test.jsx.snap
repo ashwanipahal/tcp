@@ -105,7 +105,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -119,13 +119,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>
@@ -249,7 +245,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -263,13 +259,9 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>
@@ -410,7 +402,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -424,13 +416,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>
@@ -859,7 +847,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -873,13 +861,9 @@ exports[`CardTile should render correctly with master card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>
@@ -1302,7 +1286,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -1316,13 +1300,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>
@@ -1562,7 +1542,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     </Styled(Row)>
   </div>
   <div>
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "Yucca Street",
@@ -1576,13 +1556,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
           "zipCode": "90028",
         }
       }
-      className=""
       dataLocatorPrefix="payment-creditcard"
       fontWeight="normal"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </div>

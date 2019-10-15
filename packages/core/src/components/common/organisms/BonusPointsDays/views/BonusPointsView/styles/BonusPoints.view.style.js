@@ -23,7 +23,7 @@ const styles = css`
         top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       }
       .item-opened {
-        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+        padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
       }
     }
   }

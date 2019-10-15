@@ -8706,6 +8706,7 @@ exports[`StoreSelector component should default set title as value for selected 
                               lineHeight="normal"
                               link={null}
                               onClick={[Function]}
+                              tabIndex="0"
                               textAlign="left"
                             >
                               <StyledComponent
@@ -8766,6 +8767,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                 lineHeight="normal"
                                 link={null}
                                 onClick={[Function]}
+                                tabIndex="0"
                                 textAlign="left"
                               >
                                 <BodyCopy
@@ -8779,11 +8781,13 @@ exports[`StoreSelector component should default set title as value for selected 
                                   lineHeight="normal"
                                   link={null}
                                   onClick={[Function]}
+                                  tabIndex="0"
                                   textAlign="left"
                                 >
                                   <div
                                     className="customSelectTitle sc-bwzfXH fdGFgB"
                                     onClick={[Function]}
+                                    tabIndex="0"
                                   >
                                     Canada
                                   </div>
@@ -17510,6 +17514,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                               lineHeight="normal"
                               link={null}
                               onClick={[Function]}
+                              tabIndex="0"
                               textAlign="left"
                             >
                               <StyledComponent
@@ -17570,6 +17575,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                 lineHeight="normal"
                                 link={null}
                                 onClick={[Function]}
+                                tabIndex="0"
                                 textAlign="left"
                               >
                                 <BodyCopy
@@ -17583,11 +17589,13 @@ exports[`StoreSelector component should render correctly 1`] = `
                                   lineHeight="normal"
                                   link={null}
                                   onClick={[Function]}
+                                  tabIndex="0"
                                   textAlign="left"
                                 >
                                   <div
                                     className="customSelectTitle sc-bwzfXH fdGFgB"
                                     onClick={[Function]}
+                                    tabIndex="0"
                                   >
                                     Test Text
                                   </div>

@@ -56,6 +56,7 @@ class ModuleH extends React.PureComponent {
         <Col colSize={COL_SIZE}>
           <Carousel
             options={CAROUSEL_OPTIONS}
+            className="moduleH_carousel"
             carouselConfig={{
               autoplay: true,
               dataLocatorPlay: getLocator('moduleH_play_button'),
