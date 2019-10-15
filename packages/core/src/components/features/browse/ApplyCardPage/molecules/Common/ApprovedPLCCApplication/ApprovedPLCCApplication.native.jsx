@@ -82,6 +82,7 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
       />
       <TouchableOpacity
         accessibilityRole="button"
+        accessibilityLabel={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
         onPress={() => copyToClipboard(approvedPLCCData.couponCode)}
       >
         <CopyToClipBoardWrapper
