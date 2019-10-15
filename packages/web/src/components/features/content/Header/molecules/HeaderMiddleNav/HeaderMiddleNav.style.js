@@ -51,7 +51,8 @@ export default css`
     display: inline-block;
   }
   .product-image {
-    vertical-align: baseline;
+    vertical-align: middle;
+    height: 20px;
   }
 
   .rightLink {
@@ -70,6 +71,7 @@ export default css`
     border-radius: 8px;
     margin: 1px 0px 0px -7px;
     padding: 2px 5px;
+    vertical-align: bottom;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;

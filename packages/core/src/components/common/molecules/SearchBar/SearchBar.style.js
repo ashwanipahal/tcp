@@ -52,7 +52,7 @@ export default css`
 
   .icon {
     cursor: pointer;
-    vertical-align: baseline;
+    vertical-align: middle;
   }
 
   .searchbar input {

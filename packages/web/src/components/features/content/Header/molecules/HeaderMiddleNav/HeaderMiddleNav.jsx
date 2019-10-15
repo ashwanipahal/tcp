@@ -219,7 +219,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 id="cartIcon"
                 className="rightLink"
                 onClick={e => this.openMiniBag(e)}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 noLink
               >
