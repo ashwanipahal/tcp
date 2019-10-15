@@ -56,7 +56,7 @@ const ProductListView = ({
 }) => {
   const themeContext = useContext(ThemeContext);
 
-  const largeBreakpoint = 1440;
+  const largeBreakpoint = 1200;
   const promoModulesTheme = {
     ...themeContext,
     breakpoints: {
