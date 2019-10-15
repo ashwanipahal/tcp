@@ -2,15 +2,9 @@
 
 exports[`TrackOrderModal component should renders correctly 1`] = `
 <ModalNative
-  fontSize="fs22"
-  headerStyle={
-    Object {
-      "width": "100%",
-    }
-  }
-  headingAlign="center"
+  fontSize="fs16"
+  heading="lbl_header_trackOrderOverlay_appHeader"
   headingFontFamily="secondary"
-  horizontalBar={false}
   inheritedStyles=""
   isOpen={true}
   isOverlay={false}

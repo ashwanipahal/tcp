@@ -13,17 +13,9 @@ const TrackOrderTopSection = ({ labels }) => {
   return (
     <TrackOrderTopSectionView>
       <BodyCopy
-        data-locator="trackordermodal-overlayheading"
-        id="trackorder__modal__heading"
-        mobileFontFamily="secondary"
-        fontSize="fs22"
-        fontWeight="extrabold"
-        text={getLabelValue(labels, 'trackOrder.lbl_trackOrder_header', 'trackOrder')}
-      />
-      <BodyCopy
         data-locator="trackordermodal-overlaysubheading"
         id="trackorder__modal__subheading"
-        text={getLabelValue(labels, 'trackOrder.lbl_trackOrder_subheader', 'trackOrder')}
+        text={getLabelValue(labels, 'lbl_trackOrder_subheader', 'trackOrder')}
       />
     </TrackOrderTopSectionView>
   );

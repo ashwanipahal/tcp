@@ -39,13 +39,13 @@ class TrackOrderBottomSection extends React.Component {
             <Anchor
               data-locator="track_order_login"
               accessibilityLabel={`${getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
-                ${getLabelValue(labels, 'lbl_trackOrder_content1', 'trackOrder')}`}
+                ${getLabelValue(labels, 'lbl_trackOrder_content', 'trackOrder')}`}
               text={getLabelValue(labels, 'lbl_trackOrder_login', 'trackOrder')}
               anchorVariation="primary"
               onPress={e => this.handleDefaultLinkClick(e)}
               underline
             />
-            <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_content1', 'trackOrder')} />
+            <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_content', 'trackOrder')} />
           </AnchorTextView>
         </LogginView>
         <AnchorTextView>
@@ -54,11 +54,11 @@ class TrackOrderBottomSection extends React.Component {
             anchorVariation="primary"
             url={getLabelValue(labels, 'lbl_trackOrder_internationTrackOrderLink', 'trackOrder')}
             accessibilityLabel={`${getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
-                ${getLabelValue(labels, 'lbl_trackOrder_content2', 'trackOrder')}`}
+                ${getLabelValue(labels, 'lbl_trackOrder_subContent', 'trackOrder')}`}
             text={getLabelValue(labels, 'lbl_trackOrder_clickHere', 'trackOrder')}
             underline
           />
-          <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_content2', 'trackOrder')} />
+          <BodyCopy text={getLabelValue(labels, 'lbl_trackOrder_subContent', 'trackOrder')} />
         </AnchorTextView>
       </ModalBottomView>
     );

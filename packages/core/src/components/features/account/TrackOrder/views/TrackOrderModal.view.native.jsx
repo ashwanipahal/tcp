@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { SafeAreaView } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import ModalNative from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
 
@@ -35,18 +36,13 @@ export class TrackOrderModal extends React.PureComponent {
       isUserLoggedIn,
       handleToggle,
     } = this.props;
-    const fullWidth = {
-      width: '100%',
-    };
     return (
       <ModalNative
         isOpen={openState}
         onRequestClose={this.onClose}
-        horizontalBar={false}
-        headingAlign="center"
         headingFontFamily="secondary"
-        fontSize="fs22"
-        headerStyle={fullWidth}
+        fontSize="fs16"
+        heading={getLabelValue(labels, 'lbl_header_trackOrderOverlay_appHeader', 'trackOrder')}
       >
         <SafeAreaView>
           <TrackOrderViewTemplate
