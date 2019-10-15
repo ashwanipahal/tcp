@@ -265,6 +265,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -273,6 +274,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         }
       }
       mailingAddress={true}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
@@ -709,6 +711,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -717,6 +720,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
       mailingAddress={false}
+      onCardFocus={[Function]}
       onFileAddressKey="12345"
       selectedCard={null}
       showCreditCardFields={true}
@@ -1159,6 +1163,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -1167,6 +1172,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
       }
       mailingAddress={false}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
