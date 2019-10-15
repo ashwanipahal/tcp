@@ -26,6 +26,18 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
             Array [
               Object {
                 "meta": Object {
+                  "field": "onFileAddressId",
+                  "form": undefined,
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
                   "field": "address.firstName",
                   "form": undefined,
                   "persistentSubmitErrors": undefined,
@@ -156,6 +168,10 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
             ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
             Object {
               "type": "return",
               "value": undefined,

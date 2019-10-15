@@ -1,9 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CardEditReduxForm, {
-  CardEditFormViewVanilla,
-  handleEditFromSubmit,
-} from '../views/CardEditForm.view';
+import CardEditReduxForm, { CardEditFormViewVanilla } from '../views/CardEditForm.view';
+import { handleEditFromSubmit } from '../views/CardEditReduxForm';
 
 describe('CardEditForm component', () => {
   const props = {

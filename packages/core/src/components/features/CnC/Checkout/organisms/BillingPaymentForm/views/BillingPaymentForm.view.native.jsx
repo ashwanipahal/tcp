@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSection, reduxForm, change, Field, reset } from 'redux-form';
+import { FormSection, reduxForm, change, Field } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -40,6 +40,12 @@ import {
   getBillingAddressWrapper,
 } from './BillingPaymentForm.view.native.util';
 import CardEditFrom from './CardEditForm.view.native';
+import {
+  onEditCardFocus,
+  setFormToEditState,
+  unsetPaymentFormEditState,
+  handleBillingFormSubmit,
+} from './BillingPaymentForm.util';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -208,6 +214,10 @@ export class BillingPaymentForm extends React.PureComponent {
     return <CVVInfo>{getCvvInfo({ cvvCodeRichText })}</CVVInfo>;
   };
 
+  unsetFormEditState = e => {
+    unsetPaymentFormEditState(this, e);
+  };
+
   /**
    * @function onCCDropDownChange
    * @description sets the add new credit card state to false if it is true
@@ -231,7 +241,7 @@ export class BillingPaymentForm extends React.PureComponent {
   }) => {
     const { addNewCCState, editMode, editModeSubmissionError } = this.state;
     const isCardDetailEdit = selectedCard && !editMode;
-    const { unsetFormEditState, onEditCardFocus, getAddNewCCForm } = this;
+    const { getAddNewCCForm, unsetFormEditState } = this;
     const { updateCardDetail, toastMessage } = this.props;
     return (
       <BillingAddressWrapper>
@@ -257,7 +267,7 @@ export class BillingPaymentForm extends React.PureComponent {
             onChange={this.onCCDropDownChange}
           />
         </CreditCardWrapper>
-        {selectedCard ? getCardDetailsMethod(labels, this.setFormToEditState, editMode) : null}
+        {selectedCard ? getCardDetailsMethod(labels, setFormToEditState, editMode, this) : null}
         {isCardDetailEdit ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
         {isCardDetailEdit ? getDefaultPayment(selectedCard, labels, false) : null}
         {isCardDetailEdit ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
@@ -274,27 +284,6 @@ export class BillingPaymentForm extends React.PureComponent {
         ) : null}
       </BillingAddressWrapper>
     );
-  };
-
-  setFormToEditState = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    this.cardNumberCleared = false;
-    this.setState({ editMode: true });
-  };
-
-  unsetFormEditState = () => {
-    const { dispatch } = this.props;
-    dispatch(reset(constants.EDIT_FORM_NAME));
-    this.setState({ editMode: false, editModeSubmissionError: '' });
-  };
-
-  onEditCardFocus = () => {
-    if (!this.cardNumberCleared) {
-      const { dispatch } = this.props;
-      this.cardNumberCleared = true;
-      dispatch(change(constants.EDIT_FORM_NAME, 'cardNumber', ''));
-    }
   };
 
   addNewBillingInfoForm = () => {
@@ -434,7 +423,7 @@ export class BillingPaymentForm extends React.PureComponent {
           navigation={navigation}
           btnText={nextSubmitText}
           routeToPage=""
-          onPress={this.handleSubmit}
+          onPress={e => handleBillingFormSubmit(this, e, true)}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           onBackLinkPress={() =>
             navigation.navigate(

@@ -215,14 +215,7 @@ describe('ButtonList component', () => {
     instance.getCheckoutBillingAddress({ editMode: true });
     expect(spyGetCreditListView).toHaveBeenCalled();
   });
-  it('renders correctly with method setFormToEditState', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyGetCreditListView = jest.spyOn(instance, 'setFormToEditState');
-    const event = { preventDefault: jest.fn(), stopPropagation: jest.fn() };
-    instance.setFormToEditState(event);
-    expect(spyGetCreditListView).toHaveBeenCalled();
-  });
+
   it('renders correctly with method unsetFormEditState', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
@@ -230,13 +223,7 @@ describe('ButtonList component', () => {
     instance.unsetFormEditState();
     expect(spyGetCreditListView).toHaveBeenCalled();
   });
-  it('renders correctly with method onEditCardFocus', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyGetCreditListView = jest.spyOn(instance, 'onEditCardFocus');
-    instance.onEditCardFocus();
-    expect(spyGetCreditListView).toHaveBeenCalled();
-  });
+
   it('renders correctly with method handleSubmit', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();

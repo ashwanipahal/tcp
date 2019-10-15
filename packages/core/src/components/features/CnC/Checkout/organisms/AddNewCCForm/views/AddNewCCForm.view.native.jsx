@@ -30,8 +30,17 @@ class AddNewCCForm extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     editMode: PropTypes.bool,
     isSameAsShippingChecked: PropTypes.bool,
-    dto: PropTypes.shape({}),
-    selectedCard: PropTypes.shape({}),
+    dto: PropTypes.shape({
+      accountNo: PropTypes.string,
+      expMonth: PropTypes.string,
+      expYear: PropTypes.string,
+    }),
+    selectedCard: PropTypes.shape({
+      accountNo: PropTypes.string,
+      expMonth: PropTypes.string,
+      expYear: PropTypes.string,
+      cvvCode: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
