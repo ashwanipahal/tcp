@@ -29,6 +29,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex="0"
     textAlign="left"
   >
     Please select list item
@@ -60,6 +61,7 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex="0"
     textAlign="left"
   />
 </Styled(BodyCopy)>

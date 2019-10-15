@@ -88,7 +88,6 @@ class SearchBar extends React.PureComponent {
 
   render() {
     const { className, fromCondensedHeader, searchResults, labels, isSearchOpen } = this.props;
-
     const { showProduct } = this.state;
 
     logger.debug(searchResults); // only for use purpose (temporary)

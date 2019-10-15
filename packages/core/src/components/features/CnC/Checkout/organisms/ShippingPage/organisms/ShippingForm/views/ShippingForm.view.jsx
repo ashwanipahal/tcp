@@ -66,6 +66,11 @@ class ShippingForm extends React.Component {
     this.addNewAddressEnabled = false;
   }
 
+  shouldComponentUpdate() {
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
+  }
+
   componentDidUpdate(prevProps) {
     const { shipmentMethods: prevShipmentMethods } = prevProps;
     const { shipmentMethods: nextShipmentMethods, dispatch, defaultShipmentId } = this.props;

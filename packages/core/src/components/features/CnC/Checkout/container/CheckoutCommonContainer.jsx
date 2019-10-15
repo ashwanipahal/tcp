@@ -60,6 +60,7 @@ const {
   getBillingValues,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  getShipmentLoadingStatus,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -230,6 +231,7 @@ const mapStateToProps = state => {
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
     shippingProps: {
+      isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
       isGiftServicesChecked: getGiftWrappingValues(state),

@@ -34,9 +34,33 @@ describe('SearchProduct should render correctly', () => {
 
   it('should go to srp on search', () => {
     const goToSearchResultsPage = jest.fn();
-    wrapper.setProps({ goToSearchResultsPage });
+    const setRecentSearches = jest.fn();
+    wrapper.setProps({ goToSearchResultsPage, setRecentSearches });
     wrapper.instance().searchProducts('pants');
     expect(wrapper.instance().state.modalVisible).toBeFalsy();
     expect(goToSearchResultsPage).toHaveBeenCalled();
+    expect(setRecentSearches).toHaveBeenCalled();
+  });
+
+  it('should clear search text', () => {
+    wrapper.instance().clearSearchText();
+    expect(wrapper.instance().state.searchText.length).toBe(0);
+  });
+
+  it('should search product on submit editing', () => {
+    const goToSearchResultsPage = jest.fn();
+    wrapper.setProps({ goToSearchResultsPage });
+    wrapper.instance().setState({ searchText: 'Pants' });
+    const textInput = wrapper.find('Styled(TextInput)');
+    textInput.props().onSubmitEditing();
+    expect(goToSearchResultsPage).toHaveBeenCalled();
+  });
+
+  it('should render item in list', () => {
+    let listItem = shallow(wrapper.instance().renderItem({ item: { text: 'Shoes' } }));
+    expect(listItem.find('Styled(BodyCopy)').length).toBe(1);
+    wrapper.instance().setState({ searchText: 'ho' });
+    listItem = shallow(wrapper.instance().renderItem({ item: { text: 'Shoes' } }));
+    expect(listItem.find('Styled(BodyCopy)').length).toBe(3);
   });
 });
