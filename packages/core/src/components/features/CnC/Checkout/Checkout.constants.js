@@ -9,6 +9,7 @@ const CONSTANTS = {
   },
   EMAIL_REGISTRATION_TYPE_CONSTANT: '10',
   CHECKOUT: 'checkout',
+  PAYPAL_REDIRECT_PARAM: 'isPaypalPostBack',
   PAYMENT_METHOD_VENMO: 'venmo',
   PAYMENT_METHOD_PAYPAL: 'payPal',
   INTERNATIONAL_CHECKOUT: 'international-checkout',
@@ -54,6 +55,7 @@ const CONSTANTS = {
   CHECKOUT_ROOT: 'Checkout',
   PICKUP_DEFAULT_PARAM: 'PickupPage',
   SHIPPING_DEFAULT_PARAM: 'ShippingPage',
+  REVIEW_DEFAULT_PARAM: 'ReviewPage',
   CHECKOUT_ROUTES_NAMES: {
     CHECKOUT_PICKUP: 'CheckoutPickup',
     CHECKOUT_SHIPPING: 'CheckoutShipping',
@@ -139,6 +141,7 @@ const {
   HOME,
   LOGIN,
   INTERNATIONAL_CHECKOUT,
+  PAYPAL_REDIRECT_PARAM,
 } = CONSTANTS;
 
 export const CHECKOUT_ROUTES = {
@@ -160,6 +163,10 @@ export const CHECKOUT_ROUTES = {
   },
   reviewPage: {
     to: `/${CHECKOUT}?section=${REVIEW}`,
+    asPath: `/${CHECKOUT}/${REVIEW}`,
+  },
+  reviewPagePaypal: {
+    to: `/${CHECKOUT}?section=${REVIEW}&${[PAYPAL_REDIRECT_PARAM]}=true`,
     asPath: `/${CHECKOUT}/${REVIEW}`,
   },
   internationalCheckout: {

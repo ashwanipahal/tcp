@@ -37,7 +37,7 @@ describe('StoreAddressTile component', () => {
   });
 
   describe('Details', () => {
-    it.skip('should render details view', () => {
+    it('should render details view', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
           <StoreAddressTile {...props} />
@@ -45,7 +45,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render details view - with titleClickCb', () => {
+    it('should render details view - with titleClickCb', () => {
       const titleClickCb = jest.fn();
       const component = mount(
         <ThemeProvider theme={Theme()}>
@@ -54,7 +54,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render details view with clickable title', () => {
+    it('should render details view with clickable title', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
           <StoreAddressTile {...props} titleClickCb={() => {}} />
@@ -62,7 +62,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render details view with set fav button', () => {
+    it('should render details view with set fav button', () => {
       const component = mount(
         <ThemeProvider theme={Theme()}>
           <StoreAddressTile {...props} showSetFavorite />
@@ -70,7 +70,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render details view with fav store', () => {
+    it('should render details view with fav store', () => {
       const testProps = {
         ...props,
         isFavorite: true,
@@ -84,7 +84,7 @@ describe('StoreAddressTile component', () => {
     });
   });
   describe('Listing', () => {
-    it.skip('should render listing view', () => {
+    it('should render listing view', () => {
       const testProps = {
         ...props,
         variation: 'listing',
@@ -96,7 +96,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render listing view with index', () => {
+    it('should render listing view with index', () => {
       const testProps = {
         ...props,
         variation: 'listing',
@@ -110,7 +110,7 @@ describe('StoreAddressTile component', () => {
       );
       expect(component.html()).toMatchSnapshot();
     });
-    it.skip('should render listing view with fav store', () => {
+    it('should render listing view with fav store', () => {
       const testProps = {
         ...props,
         variation: 'listing',
@@ -125,7 +125,7 @@ describe('StoreAddressTile component', () => {
       expect(component.html()).toMatchSnapshot();
     });
 
-    it.skip('should not render gymboree store', () => {
+    it('should not render gymboree store', () => {
       const testProps = {
         labels,
         store: storeMockNotGym,
@@ -141,7 +141,7 @@ describe('StoreAddressTile component', () => {
   });
 
   describe('Listing Header', () => {
-    it.skip('should render listing-header view', () => {
+    it('should render listing-header view', () => {
       const testProps = {
         ...props,
         variation: 'listing-header',
