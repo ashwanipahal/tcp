@@ -40,6 +40,11 @@ exports[`Account View should render Account Correctly 1`] = `
             "value": "earnExtraPointsPageMobile",
           },
           Object {
+            "id": "orders",
+            "label": "Orders",
+            "value": "myOrdersPageMobile",
+          },
+          Object {
             "id": "profileInformation",
             "label": "PROFILE INFORMATION",
             "value": "profileInformationMobile",
