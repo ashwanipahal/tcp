@@ -53,15 +53,14 @@ class Drawer extends React.Component {
   }
 
   componentDidUpdate() {
-    const { renderOverlay } = this.props;
+    const { open, renderOverlay } = this.props;
     if (renderOverlay) {
       this.getDrawerStyle();
     }
+    if (!open) {
+      document.body.removeEventListener('click', this.closeNavOnOverlayClick);
+    }
     return null;
-  }
-
-  componentWillUnmount() {
-    document.body.removeEventListener('click', this.closeNavOnOverlayClick);
   }
 
   /* Set drawer ref */
@@ -74,6 +73,7 @@ class Drawer extends React.Component {
     const { close } = this.props;
     if (this.drawerRef && !this.drawerRef.contains(e.target) && typeof close === 'function') {
       close();
+      e.stopPropagation();
     }
   };
 
@@ -144,7 +144,7 @@ class Drawer extends React.Component {
     const classToShowOnViewports = showOnViewport({ small, medium, large });
 
     return (
-      <div className={className} ref={this.setDrawerRef}>
+      <div className={className}>
         {// If Drawer is not required on all viewports then duplicate the DOM for the children without Drawer
         // User will have to handle display of this element with CSS
         isDrawerNotRequiredOnAllViewports(small, medium, large) && (
@@ -154,6 +154,7 @@ class Drawer extends React.Component {
           <React.Fragment>
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
+              ref={this.setDrawerRef}
             >
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
