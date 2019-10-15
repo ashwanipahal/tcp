@@ -7,6 +7,7 @@ import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLa
 import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
+import OutfitDetail from '@tcp/core/src/components/features/browse/OutfitDetails';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -39,6 +40,12 @@ const HomeStack = createStackNavigator(
     },
     ProductDetail: {
       screen: ProductDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    OutfitDetail: {
+      screen: OutfitDetail,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },

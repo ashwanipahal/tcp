@@ -3,6 +3,10 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
+    set {
+      val
+      key
+    }
     composites {
       headerText {
         textItems {
