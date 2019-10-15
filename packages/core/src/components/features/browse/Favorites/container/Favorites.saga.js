@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
+import processHelperUtil from '@tcp/core/src/services/abstractors/productListing/ProductDetail.util';
 import { FAVORITES_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import FAVORITES_CONSTANTS from './Favorites.constants';
 import {
@@ -83,7 +83,7 @@ export function* loadActiveWishlist({ wishListId }) {
       userName,
       guestAccessKey: null,
       isCanada: isCanada(),
-      imageGenerator: getImgPath,
+      imageGenerator: processHelperUtil.getImgPath,
     });
     const wishlistItems = wishlistById.items;
     const prices = yield call(
@@ -136,7 +136,7 @@ export function* createNewWishList(formData) {
   }
 }
 
-export function* createNewWishListMoveItem(formData) {
+export function* createNewWishListMoveItem({ payload: formData }) {
   try {
     let createdWishListResponse;
     if (!formData.wisListId) {

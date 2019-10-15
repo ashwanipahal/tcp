@@ -4,10 +4,9 @@ const styles = css`
   .my-rewards-heading {
     text-align: ${props => (props.view === 'all' ? 'left' : 'center')};
     margin-bottom: ${props =>
-        props.view === 'all'
-          ? props.theme.spacing.ELEM_SPACING.MED
-          : props.theme.spacing.ELEM_SPACING.XL}
-      ${props => props.theme.spacing.ELEM_SPACING.XL};
+      props.view === 'all'
+        ? props.theme.spacing.ELEM_SPACING.MED
+        : props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props =>
         props.view === 'all'

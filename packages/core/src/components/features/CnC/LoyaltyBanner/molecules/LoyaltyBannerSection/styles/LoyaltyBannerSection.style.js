@@ -33,6 +33,29 @@ const Styles = css`
   .estimatedSubtotalValCol {
     text-align: right;
   }
+
+  ${props =>
+    props.isProductDetailView
+      ? `
+    .footer {
+      padding: 6px 0 ${props.theme.spacing.ELEM_SPACING.SM};
+    }
+    .loyalty-banner-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    `
+      : `
+      .footer {
+        padding-top: ${props.theme.spacing.ELEM_SPACING.MED};
+        padding-bottom: ${props.theme.spacing.ELEM_SPACING.MED};
+      }
+
+      .loyalty-banner-wrapper {
+        padding-left: ${props.theme.spacing.ELEM_SPACING.MED};
+        padding-right: ${props.theme.spacing.ELEM_SPACING.MED};
+      }
+      `};
 `;
 
 export default Styles;
