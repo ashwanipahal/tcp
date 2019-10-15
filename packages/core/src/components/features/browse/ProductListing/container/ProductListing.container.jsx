@@ -4,6 +4,7 @@ import { withRouter } from 'next/router'; // eslint-disable-line
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
+import OutfitListingContainer from '../../OutfitListing/container';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
@@ -34,6 +35,15 @@ import {
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
 class ProductListingContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOutfit: false,
+      asPath: '',
+    };
+  }
+
   componentDidMount() {
     this.makeApiCall();
   }
@@ -51,7 +61,18 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   makeApiCall = () => {
-    const { getProducts, navigation } = this.props;
+    const {
+      getProducts,
+      navigation,
+      router: { asPath },
+    } = this.props;
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    if (path.indexOf('-outfits') > -1) {
+      this.setState({
+        isOutfit: true,
+        asPath: path,
+      });
+    }
     const url = navigation && navigation.getParam('url');
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
@@ -82,7 +103,8 @@ class ProductListingContainer extends React.PureComponent {
       isLoggedIn,
       ...otherProps
     } = this.props;
-    return (
+    const { isOutfit, asPath } = this.state;
+    return !isOutfit ? (
       <ProductListing
         productsBlock={productsBlock}
         products={products}
@@ -107,6 +129,15 @@ class ProductListingContainer extends React.PureComponent {
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
         {...otherProps}
+      />
+    ) : (
+      <OutfitListingContainer
+        asPath={asPath}
+        breadCrumbs={breadCrumbs}
+        navTree={navTree}
+        currentNavIds={currentNavIds}
+        longDescription={longDescription}
+        categoryId={categoryId}
       />
     );
   }

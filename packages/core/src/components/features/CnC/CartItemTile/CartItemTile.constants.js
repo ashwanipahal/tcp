@@ -24,6 +24,7 @@ const CARTPAGE_CONSTANTS = {
   },
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
+  PICKUP_MODAL_OPEN_FROM_BAG: 'PICKUP_MODAL_OPEN_FROM_BAG',
   ECOM: 'ECOM', // REVIEW: we need it to control an state to favorite's item (favorites' page).
   BRANDS: {
     TCP: 'TCP',

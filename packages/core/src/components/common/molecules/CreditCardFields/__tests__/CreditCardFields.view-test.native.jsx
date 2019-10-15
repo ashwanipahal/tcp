@@ -33,4 +33,12 @@ describe('CreditCardFields native Component', () => {
     component = shallow(<CreditCardFieldsVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
+  it('CreditCardFields to render correctly ', () => {
+    props.dto = { accountNo: '' };
+    props.isEdit = true;
+    props.cameraIcon = true;
+    props.cardType = null;
+    component = shallow(<CreditCardFieldsVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 });

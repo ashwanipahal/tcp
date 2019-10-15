@@ -54,7 +54,7 @@ const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
  * @param {String} moduleQMainTile label required for all slides main tile.
  */
 function getCarouselSlide(productItem, navigation, moduleQMainTile) {
-  const { imageUrl, items, subItemsId, productItemIndex } = productItem;
+  const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
 
@@ -65,11 +65,10 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
           navigation={navigation}
           testID={`${getLocator('moduleQ_product_image')}${productItemIndex}`}
           onPress={() =>
-            navigation.navigate('ProductDetail', {
-              title: '',
-              pdpUrl: subItemsId,
-              selectedColorProductId: subItemsId,
-              reset: true,
+            navigation.navigate('OutfitDetail', {
+              title: 'COMPLETE THE LOOK',
+              outfitId: id,
+              vendorColorProductIdsList: subItemsId,
             })
           }
         >

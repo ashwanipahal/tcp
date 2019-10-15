@@ -48,28 +48,23 @@ export class Account extends React.PureComponent<Props, State> {
    *  @function getComponent takes component and return the component that is required on the drop down click.
    */
   getComponent = component => {
-    switch (component) {
-      case 'paymentGiftCardsPageMobile':
-        return 'paymentGiftCardsPageMobile';
-      case 'myPlaceRewardsMobile':
-        return 'myPlaceRewardsMobile';
-      case 'accountOverviewMobile':
-        return 'accountOverviewMobile';
-      case 'profileInformationMobile':
-        return 'profileInformationMobile';
-      case 'myWalletPageMobile':
-        return 'myWalletPageMobile';
-      case 'earnExtraPointsPageMobile':
-        return 'earnExtraPointsPageMobile';
-      case 'pointsHistoryMobile':
-        return 'pointHistoryPageMobile';
-      case 'myPreferencePageMobile':
-        return 'myPreferencePageMobile';
-      case 'PointsClaimPageMobile':
-        return 'PointsClaimPageMobile';
-      default:
-        return 'addressBookMobile';
+    const componentObject = {
+      paymentGiftCardsPageMobile: 'paymentGiftCardsPageMobile',
+      myPlaceRewardsMobile: 'myPlaceRewardsMobile',
+      accountOverviewMobile: 'accountOverviewMobile',
+      profileInformationMobile: 'profileInformationMobile',
+      myWalletPageMobile: 'myWalletPageMobile',
+      earnExtraPointsPageMobile: 'earnExtraPointsPageMobile',
+      pointsHistoryMobile: 'pointHistoryPageMobile',
+      myPreferencePageMobile: 'myPreferencePageMobile',
+      PointsClaimPageMobile: 'PointsClaimPageMobile',
+      myOrdersPageMobile: 'myOrdersPageMobile',
+      addressBookMobile: 'addressBookMobile',
+    };
+    if (componentObject[component]) {
+      return componentObject[component];
     }
+    return 'addressBookMobile';
   };
 
   /**

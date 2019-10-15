@@ -14,6 +14,8 @@ const initialState = {
   initialValues: null,
   suggestedStores: null,
   cartStores: [],
+  fromBagPage: false,
+  updateCartItemStore: false,
 };
 
 const mergePickupModalState = (state, payload) => {
