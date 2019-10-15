@@ -765,19 +765,16 @@ class CartItemTile extends React.Component {
 
   isBossOrder = orderType => orderType === CONSTANTS.ORDER_ITEM_TYPE.BOSS;
 
-  checkBossBopisDisabled = (isBossEnabled, isBopisEnabled, isEcomSoldout, isBOSSOrder) => {
+  checkBOSSDisabled = (isBossEnabled, isEcomSoldout, isBOSSOrder) => {
     const {
       productDetail: {
-        miscInfo: { isOnlineOnly, isStoreBOSSEligible, availability },
-        itemInfo: { isGiftItem },
+        miscInfo: { isStoreBOSSEligible, availability },
       },
       productDetail: { miscInfo },
-      isBopisClearanceProductEnabled,
       isBossClearanceProductEnabled,
       isRadialInventoryEnabled,
     } = this.props;
-
-    const bossDisabled =
+    return (
       !validateBossEligibility({
         isBossClearanceProductEnabled,
         isBossEnabled,
@@ -787,18 +784,42 @@ class CartItemTile extends React.Component {
         ? !miscInfo.isInventoryAvailBOSS ||
           (isBOSSOrder && availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK)
         : isEcomSoldout) ||
-      (isBOSSOrder && !isStoreBOSSEligible);
+      (isBOSSOrder && !isStoreBOSSEligible)
+    );
+  };
 
-    const bopisDisabled =
+  checkBOPISDisabled = (isBopisEnabled, isEcomSoldout, isBOPISOrder) => {
+    const {
+      productDetail: {
+        miscInfo: { isOnlineOnly, availability },
+        itemInfo: { isGiftItem },
+      },
+      productDetail: { miscInfo },
+      isBopisClearanceProductEnabled,
+    } = this.props;
+
+    return (
       !validateBopisEligibility({
         isBopisClearanceProductEnabled,
         isBopisEnabled,
         miscInfo,
       }) ||
+      (isBOPISOrder && availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK) ||
       isOnlineOnly ||
       isEcomSoldout ||
-      isGiftItem;
+      isGiftItem
+    );
+  };
 
+  checkBossBopisDisabled = (
+    isBossEnabled,
+    isBopisEnabled,
+    isEcomSoldout,
+    isBOSSOrder,
+    isBOPISOrder
+  ) => {
+    const bossDisabled = this.checkBOSSDisabled(isBossEnabled, isEcomSoldout, isBOSSOrder);
+    const bopisDisabled = this.checkBOPISDisabled(isBopisEnabled, isEcomSoldout, isBOPISOrder);
     return { bossDisabled, bopisDisabled };
   };
 
@@ -853,7 +874,8 @@ class CartItemTile extends React.Component {
       isBossEnabled,
       isBopisEnabled,
       isEcomSoldout,
-      isBOSSOrder
+      isBOSSOrder,
+      isBOPISOrder
     );
 
     const initialValues = {

@@ -44,6 +44,8 @@ import {
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
+import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 
 // external helper function
 const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
@@ -159,7 +161,14 @@ export function* getCartDataSaga(payload = {}) {
     if (!translatedProductInfo.error) {
       createMatchObject(res, translatedProductInfo);
     }
+    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+    const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+    res.orderDetails = {
+      ...res.orderDetails,
+      orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+    };
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
       if (!personalData || !personalData.get('userId')) {

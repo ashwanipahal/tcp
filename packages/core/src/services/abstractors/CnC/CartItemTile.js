@@ -573,7 +573,6 @@ tomorrowClosingTime
 } = parseStoreOpeningAndClosingTimes(store);*/
 
       const isGiftCard = item.giftItem;
-      item.inventoryAvailBOSS = 2;
       usersOrder.orderItems.push({
         productInfo: {
           generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
