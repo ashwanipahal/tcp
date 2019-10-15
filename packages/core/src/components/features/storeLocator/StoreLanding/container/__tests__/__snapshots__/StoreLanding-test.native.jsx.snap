@@ -622,6 +622,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
           openStoreDetails={[Function]}
           openStoreDirections={[Function]}
           searchDone={false}
+          selectedStoreId={false}
           setFavoriteStore={null}
           store={
             Object {

@@ -660,6 +660,7 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
             labels={Object {}}
             openStoreDetails={[Function]}
             searchDone={false}
+            selectedStoreId={false}
             store={
               Object {
                 "basicInfo": Object {
