@@ -37,7 +37,7 @@ exports[`Order Shipping Details component should renders correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    <Address
+    <Styled(Address)
       address={
         Object {
           "addressLine1": "234 E 149th St",
@@ -50,13 +50,7 @@ exports[`Order Shipping Details component should renders correctly 1`] = `
           "zipCode": "10451",
         }
       }
-      className=""
-      dataLocatorPrefix=""
-      fontWeight="regular"
-      isDefault={false}
       showCountry={false}
-      showDefault={true}
-      showName={true}
       showPhone={false}
     />
   </Styled(BodyCopy)>

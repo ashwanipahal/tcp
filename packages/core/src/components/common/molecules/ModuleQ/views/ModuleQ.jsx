@@ -190,7 +190,7 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
-            {selectedProductList.length > 0 ? (
+            {selectedProductList.length > 3 ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -205,7 +205,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-        {this.getCurrentCtaButton()}
+        {selectedProductList.length > 3 ? this.getCurrentCtaButton() : null}
       </Grid>
     );
   }

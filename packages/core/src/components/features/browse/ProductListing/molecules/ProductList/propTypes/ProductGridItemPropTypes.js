@@ -80,3 +80,21 @@ export default {
   /* This is AB test for Pickup CTA */
   // isPLPShowPickupCTA: PropTypes.bool,
 };
+
+export const productGridDefaultProps = {
+  //  isBopisEnabled: false,
+  onPickUpOpenClick: () => {},
+  onQuickBopisOpenClick: () => {},
+  onAddItemToFavorites: () => {},
+  isInternationalShipping: false,
+  isPLPredesign: true,
+  siblingProperties: false,
+  isShowVideoOnPlp: false,
+  isMatchingFamily: false,
+  isKeepAliveKillSwitch: false,
+  loadedProductCount: 1,
+  // isPLPShowPickupCTA: true,
+  currencyExchange: {
+    exchangevalue: 0,
+  },
+};

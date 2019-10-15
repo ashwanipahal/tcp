@@ -82,8 +82,18 @@ exports[`GiftServices component renders correctly 1`] = `
   .dropdownliBottomBorder {
     height: 71px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding-left: ",
+          [Function],
+          ";
+      padding-right: ",
+          [Function],
+          ";
+    }
   }
   .price {
     float: right;
