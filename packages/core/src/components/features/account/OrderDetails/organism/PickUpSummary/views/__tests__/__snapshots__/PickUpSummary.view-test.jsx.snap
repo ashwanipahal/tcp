@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Order Billing Details component should renders correctly with credit card details 1`] = `
+exports[`Order Summary Details component should renders correctly 1`] = `
 <Styled(BodyCopy)
   className=""
   color="text.primary"
@@ -14,7 +14,19 @@ exports[`Order Billing Details component should renders correctly with credit ca
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className={null}
+    className="capitalize"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className="capitalize"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -25,74 +37,10 @@ exports[`Order Billing Details component should renders correctly with credit ca
     link={null}
     textAlign="left"
   >
-    lbl_orderDetails_billing
+    space 170
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="card-details"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(Image)
-      className="elem-mr-XS"
-      src="/static/images/visa-bordered.svg"
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs12"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      lbl_orders_ending 1111
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className={null}
-    color="text.primary"
-    component="div"
-    fontFamily="secondary"
-    fontSize="fs14"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(Address)
-      showCountry={false}
-      showPhone={false}
-    />
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
-`;
-
-exports[`Order Billing Details component should renders correctly with venmo card  1`] = `
-<Styled(BodyCopy)
-  className=""
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  link={null}
-  textAlign="left"
->
-  <Styled(BodyCopy)
-    className={null}
+    className="capitalize"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -103,10 +51,10 @@ exports[`Order Billing Details component should renders correctly with venmo car
     link={null}
     textAlign="left"
   >
-    lbl_orderDetails_billing
+    Ohio, CA, 33232
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="card-details"
+    className="margin-wrapper"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -117,29 +65,49 @@ exports[`Order Billing Details component should renders correctly with venmo car
     link={null}
     textAlign="left"
   >
-    <Styled(Image)
-      className="elem-mr-XS"
-      src="/static/images/venmo-bordered.svg"
-    />
     <Styled(BodyCopy)
       className={null}
       color="text.primary"
       component="p"
       fontFamily="secondary"
-      fontSize="fs12"
-      fontWeight="extrabold"
+      fontSize="fs14"
+      fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
       textAlign="left"
     >
-      lbl_orders_ending name
+      lbl_orders_phone: (813) 994-2076
     </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="margin-wrapper"
+    fontFamily="secondary"
+    fontSizeVariation="large"
+    onClick={[Function]}
+    underline={true}
+  >
+    lbl_orders_getDirections
+  </Styled(Anchor)>
+  <Styled(BodyCopy)
+    className="margin-wrapper"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    lbl_orders_pickupPerson
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className={null}
     color="text.primary"
-    component="div"
+    component="p"
     fontFamily="secondary"
     fontSize="fs14"
     fontWeight="regular"
@@ -148,10 +116,21 @@ exports[`Order Billing Details component should renders correctly with venmo car
     link={null}
     textAlign="left"
   >
-    <Styled(Address)
-      showCountry={false}
-      showPhone={false}
-    />
+    abc def
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    undefined undefined
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;
