@@ -10,6 +10,7 @@ import {
   Border,
   ContainerView,
   DivImageCTAContainer,
+  HeaderContainer,
 } from '../ModuleN.styles.native';
 import config from '../config';
 
@@ -31,19 +32,21 @@ const ModuleN = (props: Props) => {
 
   return (
     <Container background="red">
-      {headerText && (
-        <LinkText
-          type="heading"
-          fontFamily="primary"
-          fontSize="fs20"
-          letterSpacing="ls271"
-          textAlign="center"
-          color="white"
-          navigation={navigation}
-          headerText={headerText}
-          locator="moduleN_header_text"
-        />
-      )}
+      <HeaderContainer>
+        {headerText && (
+          <LinkText
+            type="heading"
+            fontFamily="primary"
+            fontSize="fs22"
+            letterSpacing="ls222"
+            textAlign="center"
+            color="white"
+            navigation={navigation}
+            headerText={headerText}
+            locator="moduleN_header_text"
+          />
+        )}
+      </HeaderContainer>
       <PromoTextBannerWrapper>
         {promoBanner && (
           <PromoBanner

@@ -315,7 +315,7 @@ const PercentageStyle = props => {
           style={bodyCopyStyle}
         />
         <BodyCopy
-          fontSize="fs20"
+          fontSize="fs18"
           fontWeight="black"
           color={colorVariation}
           fontFamily="primary"
