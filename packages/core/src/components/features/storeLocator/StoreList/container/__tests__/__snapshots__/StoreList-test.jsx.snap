@@ -5361,7 +5361,17 @@ exports[`StoreList component Component should render with props 1`] = `
     }
     title="Alberta"
     titleClickCb={[Function]}
-  />
+  >
+    <div
+      className="storelist__countrylbl"
+    >
+      <styled.h3
+        className="storelist__countryname"
+      >
+        CANADA
+      </styled.h3>
+    </div>
+  </Styled(StoresCountryTile)>
   <Styled(StoresCountryTile)
     dataLocatorKey="USCanada"
     isDefaultOpen={false}
@@ -6179,6 +6189,7 @@ exports[`StoreList component Component should render with props 1`] = `
     title="TX"
     titleClickCb={[Function]}
   />
+  <Styled(BackToTop) />
 </div>
 `;
 
@@ -6198,5 +6209,6 @@ exports[`StoreList component StoreList component renders correctly without props
     />
     lbl_storelist_backLink
   </Styled(Anchor)>
+  <Styled(BackToTop) />
 </div>
 `;

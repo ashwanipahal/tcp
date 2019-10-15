@@ -624,9 +624,9 @@ exports[`StoresInternational component StoresInternational component renders cor
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-VigVT",
             "isStatic": false,
-            "lastClassName": "lrgQs",
+            "lastClassName": "YdtAz",
             "rules": Array [
               "
   ",
@@ -642,7 +642,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "displayName": "Styled(StoresInternational)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-VigVT",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -652,16 +652,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="test sc-gqjmRU lrgQs"
+        className="test sc-VigVT YdtAz"
         content="test"
         dataLocator="test"
       >
         <div
-          className="test sc-gqjmRU lrgQs"
+          className="test sc-VigVT YdtAz"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="test sc-gqjmRU lrgQs__backlink"
+            className="test sc-VigVT YdtAz__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -670,7 +670,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="test sc-gqjmRU lrgQs__backlink"
+              className="test sc-VigVT YdtAz__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -777,7 +777,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               <Anchor
                 anchorVariation="secondary"
                 asPath=""
-                className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -791,7 +791,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                  className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
@@ -863,6 +863,106 @@ exports[`StoresInternational component StoresInternational component renders cor
               </RichText>
             </StyledComponent>
           </Styled(RichText)>
+          <Styled(BackToTop)>
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-gqjmRU",
+                    "isStatic": false,
+                    "lastClassName": "kETQqu",
+                    "rules": Array [
+                      "
+  ",
+                      "
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
+  border: 3px solid ",
+                      [Function],
+                      ";
+  background-color: ",
+                      [Function],
+                      ";
+  position: fixed;
+  bottom: ",
+                      [Function],
+                      ";
+  right: ",
+                      [Function],
+                      ";
+  z-index: 99;
+  outline: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+
+  .scrollToTop__arrowBtn {
+    width: 15px;
+    height: 15px;
+    border:solid ",
+                      [Function],
+                      ";
+    border-width: 3px 0 0 3px;
+    transform: rotate(45deg);
+    margin: 14px auto 0;
+  }
+
+  &.scrollToTopBtn--show {
+    display: block;
+  }
+
+  &.scrollToTopBtn--hide {
+    display: none;
+  }
+
+  &:hover {
+    @media ",
+                      [Function],
+                      " {
+      background-color: ",
+                      [Function],
+                      ";
+
+      .scrollToTop__arrowBtn {
+        border-color: ",
+                      [Function],
+                      ";
+      }
+    }
+  }
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(BackToTop)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-gqjmRU",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <BackToTop
+                className="sc-gqjmRU kETQqu"
+              >
+                <button
+                  className="sc-gqjmRU kETQqu scrollToTopBtn scrollToTopBtn--hide"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="scrollToTop__arrowBtn"
+                  />
+                </button>
+              </BackToTop>
+            </StyledComponent>
+          </Styled(BackToTop)>
         </div>
       </StoresInternational>
     </StyledComponent>
@@ -877,7 +977,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-VigVT",
         "isStatic": false,
         "rules": Array [
           "
@@ -894,7 +994,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "displayName": "Styled(StoresInternational)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-VigVT",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

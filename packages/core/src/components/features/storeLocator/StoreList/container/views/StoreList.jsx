@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { CountryName } from '@tcp/core/src/components/common/molecules/StoresIntlTile/styles/StoresIntlTile.style';
 import {
   routeToStoreDetails,
   scrollToParticularElement,
@@ -8,7 +9,8 @@ import {
   getLocator,
   getLabelValue,
 } from '../../../../../../utils';
-import { Anchor } from '../../../../../common/atoms';
+import { defaultCountries } from '../../../../../../constants/site.constants';
+import { Anchor, BackToTop } from '../../../../../common/atoms';
 import { StoreSelector, StoresCountryTile } from '../../../../../common/molecules';
 import style from '../styles/StoreList.style';
 import STORE_LIST_CONSTANTS from '../StoreList.constants';
@@ -87,6 +89,16 @@ class StoreList extends Component {
     }, STORE_LIST_CONSTANTS.SCROLL_TIMEOUT);
   };
 
+  optionSelectionCallback = value => {
+    if (value !== 'disabled') {
+      this.setState({
+        location: value,
+        defaultOpenIndex: -1,
+        isAccordionClick: false,
+      });
+    }
+  };
+
   render() {
     const { location, defaultOpenIndex } = this.state;
     const { className, labels, storesList } = this.props;
@@ -113,15 +125,7 @@ class StoreList extends Component {
             defaultSelectText={labels.lbl_storelist_searchByStates_dropdown}
             options={stores}
             selectedLocation={location}
-            selectionCallback={(_, v) => {
-              if (v !== 'disabled') {
-                this.setState({
-                  location: v,
-                  defaultOpenIndex: -1,
-                  isAccordionClick: false,
-                });
-              }
-            }}
+            selectionCallback={(_, v) => this.optionSelectionCallback(v)}
             dataLocator="store_USCanadasearchlabel"
           />
         )}
@@ -154,8 +158,17 @@ class StoreList extends Component {
                   });
                 }
               }}
-            />
+            >
+              {i === storeListUS.length ? (
+                <div className="storelist__countrylbl">
+                  <CountryName className="storelist__countryname">
+                    {defaultCountries[1].displayName}
+                  </CountryName>
+                </div>
+              ) : null}
+            </StoresCountryTile>
           ))}
+        <BackToTop />
       </div>
     );
   }
