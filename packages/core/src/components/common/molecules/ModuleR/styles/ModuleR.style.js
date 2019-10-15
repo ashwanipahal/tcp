@@ -55,14 +55,23 @@ export const ImageGridCol = styled(Col)`
 export const StyledSkeleton = styled(Skeleton)`
   .skeleton-col {
     height: 109px;
-    width: 109px;
-    @media ${props => props.theme.mediaQuery.medium} {
+    margin-bottom: 10px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      &:nth-child(n + 10) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 161px;
-      width: 161px;
+      &:nth-child(n + 13) {
+        display: none;
+      }
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 209px;
-      width: 209px;
+      &:nth-child(6n) {
+        margin-right: 0;
+      }
     }
   }
 `;

@@ -198,11 +198,7 @@ class ModuleR extends React.PureComponent {
           />
         </div>
         {selectedProductList.length === 0 ? (
-          <StyledSkeleton
-            row={2}
-            col={{ s: 3, m: 4, l: 6 }}
-            rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
-          />
+          <StyledSkeleton col={18} colSize={{ small: 2, medium: 2, large: 2 }} removeLastMargin />
         ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}

@@ -162,24 +162,17 @@ export const StyledSkeleton = styled(Skeleton)`
       right: -60px;
     }
   }
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    justify-content: center;
+    width: 30%;
+  }
   .skeleton-col {
-    width: 247px;
-    height: 265px;
+    height: 225px;
     @media ${props => props.theme.mediaQuery.medium} {
-      width: 389px;
-      height: 402px;
-      &:first-child,
-      &:last-child {
-        transform: scale(0.8);
-      }
+      height: 360px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 334px;
       height: 347px;
-      &:first-child,
-      &:last-child {
-        transform: scale(0.8);
-      }
     }
   }
 `;

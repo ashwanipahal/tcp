@@ -215,10 +215,10 @@ class ModuleJ extends React.PureComponent {
           >
             {data.length === 0 ? (
               <StyledSkeleton
-                row={1}
-                col={{ s: 4, m: 5, l: 5 }}
-                rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+                col={6}
+                colSize={{ small: 2, medium: 2, large: 2 }}
                 showArrows
+                removeLastMargin
               />
             ) : null}
             {data ? (

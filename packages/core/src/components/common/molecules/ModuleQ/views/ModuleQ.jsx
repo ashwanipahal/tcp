@@ -207,10 +207,9 @@ class ModuleQ extends React.PureComponent {
           >
             {selectedProductList.length === 0 ? (
               <StyledSkeleton
-                row={1}
-                // col={{ s: 3, m: 3, l: 3 }}
-                col={{ s: 1, m: 3, l: 3 }}
-                rowProps={{ justifyContent: 'space-around' }}
+                col={3}
+                colSize={{ small: 2, medium: 2, large: 4 }}
+                removeLastMargin
                 showArrows
               />
             ) : null}

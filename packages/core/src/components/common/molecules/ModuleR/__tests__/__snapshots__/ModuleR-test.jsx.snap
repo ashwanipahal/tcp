@@ -110,84 +110,22 @@ exports[`Module R Component renders correctly 1`] = `
       }
     />
   </div>
-  <Styled(Row)>
-    <Styled(Col)
-      className="loader-col"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
+  <Styled(Styled(Skeleton))
+    col={
+      Object {
+        "l": 6,
+        "m": 4,
+        "s": 3,
       }
-      key="0"
-    >
-      <div
-        className="loader-wrapper"
-      >
-        <Styled(Skeleton)
-          className="loader-container"
-        />
-      </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="loader-col"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
+    }
+    row={2}
+    rowProps={
+      Object {
+        "justifyContent": "space-around",
+        "marginBottom": "10px",
       }
-      key="1"
-    >
-      <div
-        className="loader-wrapper"
-      >
-        <Styled(Skeleton)
-          className="loader-container"
-        />
-      </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="loader-col"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-      key="2"
-    >
-      <div
-        className="loader-wrapper"
-      >
-        <Styled(Skeleton)
-          className="loader-container"
-        />
-      </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="loader-col"
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-      key="3"
-    >
-      <div
-        className="loader-wrapper"
-      >
-        <Styled(Skeleton)
-          className="loader-container"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
+    }
+  />
   <Styled(Row)
     className="image-items-container"
   />

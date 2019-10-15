@@ -157,26 +157,30 @@ export default css`
 export const StyledSkeleton = styled(Skeleton)`
   @media ${props => props.theme.mediaQuery.large} {
     .left-carousel {
-      left: -15px;
+      left: -25px;
     }
     .right-carousel {
-      right: -15px;
+      right: -25px;
     }
   }
   .skeleton-col {
-    width: 89px;
     height: 110px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 146px;
-      height: 180px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      &:nth-child(n + 4) {
+        display: none;
+      }
     }
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 142px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 180px;
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.largeOnly} {
       height: 175px;
     }
 
     @media ${props => props.theme.mediaQuery.xlarge} {
-      width: 175px;
       height: 217px;
     }
   }

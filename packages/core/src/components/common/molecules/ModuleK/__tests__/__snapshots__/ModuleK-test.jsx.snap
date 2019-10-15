@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fAjcbJ",
+              "componentId": "sc-gisBJw",
               "isStatic": false,
               "rules": Array [
                 "
@@ -281,10 +281,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-jKJlTe",
+              "sc-hMqMXs",
             ],
             "render": [Function],
-            "styledComponentId": "sc-fAjcbJ",
+            "styledComponentId": "sc-gisBJw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -328,7 +328,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-eqIVtm",
+              "componentId": "sc-caSCKo",
               "isStatic": false,
               "rules": Array [
                 "
@@ -635,10 +635,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-jzJRlG",
+              "sc-kAzzGY",
             ],
             "render": [Function],
-            "styledComponentId": "sc-eqIVtm",
+            "styledComponentId": "sc-caSCKo",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

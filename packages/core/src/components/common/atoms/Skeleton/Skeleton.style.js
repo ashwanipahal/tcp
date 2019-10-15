@@ -1,32 +1,19 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
-const getRowStyle = props => {
-  const { rowProps } = props;
-  return rowProps;
-};
-
-const getColStyle = props => {
-  const { colProps } = props;
-  return colProps;
-};
-
-export const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  ${getRowStyle}
-`;
-export const Col = styled.div`
-  margin-bottom: 5px;
-  margin-right: 5px;
-  background: #d8d8d8;
-  position: relative;
-  width: 100px;
-  height: 150px;
-  ${getColStyle}
-`;
 const style = css`
-  position: relative;
+  &.skeleton-row {
+    position: relative;
+  }
+  .skeleton-col {
+    height: 150px;
+    background: #d8d8d8;
+    ${props =>
+      props.removeLastMargin
+        ? `&:nth-child(${props.col}){
+      margin-right:0;
+    }`
+        : ''}
+  }
   .left-carousel {
     position: absolute;
     top: 50%;
