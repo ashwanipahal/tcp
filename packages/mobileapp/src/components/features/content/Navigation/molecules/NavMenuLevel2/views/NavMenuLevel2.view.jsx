@@ -40,7 +40,7 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
       title: name,
       url,
       accessibilityLabels,
-      categoryId: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
+      outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
     });
   }
 

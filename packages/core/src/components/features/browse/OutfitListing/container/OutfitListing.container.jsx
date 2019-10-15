@@ -9,7 +9,7 @@ import { styliticsProductTabListDataReqforOutfit } from '../../../../common/orga
 class OutfitListingContainer extends React.PureComponent {
   componentDidMount() {
     const { getStyliticsProductTabListData, asPath, navigation } = this.props;
-    const categoryId = (navigation && navigation.getParam('categoryId')) || asPath;
+    const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
     getStyliticsProductTabListData({ categoryId, count: 20 });
   }
 
@@ -26,7 +26,7 @@ class OutfitListingContainer extends React.PureComponent {
       navigation,
     } = this.props;
 
-    const categoryNavId = categoryId || (navigation && navigation.getParam('categoryId'));
+    const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
 
     return (
       <OutfitListing
@@ -36,8 +36,8 @@ class OutfitListingContainer extends React.PureComponent {
         navTree={navTree}
         currentNavIds={currentNavIds}
         longDescription={longDescription}
-        categoryId={categoryNavId}
-        asPath={asPath}
+        categoryId={categoryId}
+        asPath={outfitPath}
         navigation={navigation}
       />
     );

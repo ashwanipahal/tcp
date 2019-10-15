@@ -13,11 +13,7 @@ class OutfitListing extends React.PureComponent {
    *
    * @memberof OutfitListing
    */
-  navigateToOutfitDetails = () => {
-    // const { navigation } = this.props;
-    // eslint-disable-next-line extra-rules/no-commented-out-code
-    // if(navigation) navigation.navigate('OutfitDetails');
-  };
+  navigateToOutfitDetails = () => {};
 
   /**
    * @function renderItem
@@ -66,8 +62,8 @@ class OutfitListing extends React.PureComponent {
   itemSeparator = () => <Separator />;
 
   render() {
-    const { outfitDetails, categoryId } = this.props;
-    const outfits = (outfitDetails && outfitDetails[categoryId]) || [];
+    const { outfitDetails, asPath } = this.props;
+    const outfits = (outfitDetails && outfitDetails[asPath]) || [];
 
     const flatlistContentContainerStyle = { paddingBottom: 32 };
     return (
@@ -84,16 +80,14 @@ class OutfitListing extends React.PureComponent {
 
 OutfitListing.propTypes = {
   outfitDetails: PropTypes.arrayOf(Object),
-  categoryId: PropTypes.string,
+  asPath: PropTypes.string,
   labels: PropTypes.instanceOf(Object),
-  //   navigation: PropTypes.instanceOf(Object),
 };
 
 OutfitListing.defaultProps = {
   outfitDetails: [],
-  categoryId: '',
+  asPath: '',
   labels: {},
-  //   navigation: null,
 };
 
 export default OutfitListing;
