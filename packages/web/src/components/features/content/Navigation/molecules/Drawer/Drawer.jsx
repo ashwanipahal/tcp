@@ -48,16 +48,15 @@ class Drawer extends React.Component {
     this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
   }
 
-  componentDidMount() {
-    document.body.addEventListener('click', this.closeNavOnOverlayClick);
-  }
-
   componentDidUpdate() {
     const { open, renderOverlay } = this.props;
     if (renderOverlay) {
       this.getDrawerStyle();
     }
-    if (!open) {
+    console.log(open);
+    if (open) {
+      document.body.addEventListener('click', this.closeNavOnOverlayClick);
+    } else {
       document.body.removeEventListener('click', this.closeNavOnOverlayClick);
     }
     return null;
