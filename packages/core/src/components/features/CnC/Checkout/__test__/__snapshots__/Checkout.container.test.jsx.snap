@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
+<CheckoutPage
+  activeStage="shipping"
+  activeStep="shipping"
+  availableStages={
+    Array [
+      "billingLabel",
+      "reviewLabel",
+    ]
+  }
+  currentPhoneNumber=""
+  initialValues={Object {}}
+  isExpressCheckout={false}
+  isGuest={true}
+  isMobile={false}
+  isSmsUpdatesEnabled={true}
+  isUsSite={false}
+  isVenmoPaymentInProgress={false}
+  onEditModeChange={true}
+  router={
+    Object {
+      "query": Object {
+        "section": "",
+      },
+    }
+  }
+  setVenmoPickupState={[Function]}
+  setVenmoShippingState={[Function]}
+/>
+`;
+
 exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
 <CheckoutPage
   activeStage="shipping"
@@ -13,6 +44,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   currentPhoneNumber=""
   formatPayload={[Function]}
   initialValues={Object {}}
+  isExpressCheckout={false}
   isGuest={true}
   isMobile={false}
   isSmsUpdatesEnabled={true}

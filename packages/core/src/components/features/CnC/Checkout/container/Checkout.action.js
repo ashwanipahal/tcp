@@ -6,8 +6,9 @@ import constants from '../Checkout.constants';
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = () => ({
+export const initCheckoutAction = router => ({
   type: constants.INIT_CHECKOUT,
+  router,
 });
 
 export const submitPickupSection = payload => ({

@@ -34,7 +34,10 @@ import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
+import {
+  getUserPhoneNumber,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
@@ -68,18 +71,32 @@ const {
 export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {
-      initCheckout,
       needHelpContentId,
       fetchNeedHelpContent,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
+      isRegisteredUserCallDone,
+      initCheckout,
+      router,
     } = this.props;
-    initCheckout();
+    /* istanbul ignore else */
+    if (isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
     fetchNeedHelpContent([
       needHelpContentId,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
     ]);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { isRegisteredUserCallDone, router, initCheckout } = this.props;
+    /* istanbul ignore else */
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
   }
 
   formatPayload = payload => {
@@ -195,8 +212,8 @@ CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: () => {
-      dispatch(initCheckoutAction());
+    initCheckout: router => {
+      dispatch(initCheckoutAction(router));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
@@ -310,6 +327,7 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

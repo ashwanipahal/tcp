@@ -89,7 +89,7 @@ class FooterTopSignUpForm extends React.PureComponent {
     return (
       <form className="footer_top__signup_form">
         <Grid>
-          <Row fullBleed>
+          <Row fullBleed className="footer_top__signup_form_row">
             <Col
               className=""
               colSize={{

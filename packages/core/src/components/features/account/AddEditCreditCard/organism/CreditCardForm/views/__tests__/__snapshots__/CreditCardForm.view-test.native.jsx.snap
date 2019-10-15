@@ -265,6 +265,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -273,6 +274,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         }
       }
       mailingAddress={true}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
@@ -355,6 +357,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         name="onFileAddressKey"
         onValueChange={[Function]}
         selectListTitle="lbl_payment_ccAdressSelect"
+        selectedValue=""
         variation="secondary"
       />
       <Styled(View)
@@ -458,30 +461,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     ]
   }
   className=""
-  dispatch={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
-            "meta": Object {
-              "field": "onFileAddressKey",
-              "form": "addEditCreditCard",
-              "persistentSubmitErrors": undefined,
-              "touch": undefined,
-            },
-            "payload": "12345",
-            "type": "@@redux-form/CHANGE",
-          },
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  dispatch={[MockFunction]}
   dto={Object {}}
   expMonthOptionsMap={
     Array [
@@ -594,8 +574,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     }
   }
   mailingAddress={false}
-  onFileAddressKey=""
-  onFileAddresskey="12345"
+  onFileAddressKey="12345"
   selectedCard={null}
   showCreditCardFields={true}
   showEmailAddress={true}
@@ -627,30 +606,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "expYear": "lbl_payment_expYear",
         }
       }
-      dispatch={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "onFileAddressKey",
-                  "form": "addEditCreditCard",
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": "12345",
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      }
+      dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
         Array [
@@ -755,6 +711,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -763,8 +720,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
       mailingAddress={false}
-      onFileAddressKey=""
-      onFileAddresskey="12345"
+      onCardFocus={[Function]}
+      onFileAddressKey="12345"
       selectedCard={null}
       showCreditCardFields={true}
       showCvv={false}
@@ -1206,6 +1163,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -1214,6 +1172,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
       }
       mailingAddress={false}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
@@ -1296,8 +1255,30 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         name="onFileAddressKey"
         onValueChange={[Function]}
         selectListTitle="lbl_payment_ccAdressSelect"
+        selectedValue=""
         variation="secondary"
       />
+      <Styled(View)
+        spacingStyles="margin-top-LRG"
+      >
+        <FormSection
+          name="address"
+        >
+          <AddressFields
+            disableCountry={false}
+            dispatch={[MockFunction]}
+            formName="addEditCreditCard"
+            formSection="address"
+            initialValues={Object {}}
+            isGuest={true}
+            labels={Object {}}
+            showDefaultCheckbox={false}
+            showEmailAddress={true}
+            showPhoneNumber={false}
+            showUserName={true}
+          />
+        </FormSection>
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)

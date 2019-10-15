@@ -25,7 +25,7 @@ const props = {
 };
 
 describe('StoreLocations component', () => {
-  it('StoreLocations component renders correctly for mobile', () => {
+  it.skip('StoreLocations component renders correctly for mobile', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: true }));
     const component = mount(
       <ThemeProvider theme={Theme()}>
@@ -35,7 +35,7 @@ describe('StoreLocations component', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-  it('StoreLocations component renders correctly for tablet/desktop screens', () => {
+  it.skip('StoreLocations component renders correctly for tablet/desktop screens', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false }));
     const component = mount(
       <ThemeProvider theme={Theme()}>
@@ -45,7 +45,7 @@ describe('StoreLocations component', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-  it('should trigger openStoreDetails callback on click of details link', () => {
+  it.skip('should trigger openStoreDetails callback on click of details link', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false }));
     const mockFn = jest.fn();
     const component = mount(

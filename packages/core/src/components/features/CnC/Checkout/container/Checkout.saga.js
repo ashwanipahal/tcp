@@ -3,16 +3,16 @@ import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
-import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+import CONSTANTS from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
   getShippingMethods,
   setShippingMethodAndAddressId,
-  addPickupPerson,
   getInternationCheckoutSettings,
+  startExpressCheckout,
 } from '../../../../../services/abstractors/CnC/index';
-import selectors, { isGuest } from './Checkout.selector';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
+import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 import utility from '../util/utility';
 import {
   getSetPickupValuesActn,
@@ -43,6 +43,8 @@ import {
   getVenmoClientTokenSaga,
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
+  pickUpRouting,
+  callPickupSubmitMethod,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -141,29 +143,6 @@ export function* loadUpdatedCheckoutValues(
   );
 }
 
-function* callPickupSubmitMethod(formData) {
-  return yield call(addPickupPerson, {
-    firstName: formData.pickUpContact.firstName,
-    lastName: formData.pickUpContact.lastName,
-    phoneNumber: formData.pickUpContact.phoneNumber,
-    emailAddress:
-      formData.pickUpContact.emailAddress ||
-      (yield select(isGuest) ? yield select(getUserEmail) : ''),
-    alternateEmail:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.emailAddress
-        : '',
-    alternateFirstName:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.firstName
-        : '',
-    alternateLastName:
-      formData.hasAlternatePickup && formData.pickUpAlternate
-        ? formData.pickUpAlternate.lastName
-        : '',
-  });
-}
-
 function* submitPickupSection({ payload }) {
   const formData = { ...payload };
   const { navigation } = payload;
@@ -184,14 +163,7 @@ function* submitPickupSection({ payload }) {
       const getIsShippingRequired = yield select(getIsOrderHasShipping);
       const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
       const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
-
-      if (getIsShippingRequired) {
-        utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-      } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
-        utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
-      } else {
-        utility.routeToPage(CHECKOUT_ROUTES.billingPage);
-      }
+      pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
@@ -305,7 +277,64 @@ function* loadCartAndCheckoutDetails(isRecalcRewards, isInitialLoad) {
   );
 }
 
+// function* displayPreScreenModal (res) {
+//   return getPlccOperator(this.store).optionalPlccOfferModal(
+//     res.plccEligible,
+//     res.prescreenCode).then(() => {
+//       return this.loadUpdatedCheckoutValues();
+//     });
+// };
+
+function* triggerExpressCheckout(isRecalcRewards, shouldPreScreenUser = false, source = null) {
+  try {
+    // const preScreenInfo =
+    yield startExpressCheckout(shouldPreScreenUser, source);
+    /* Doing displayPreScreenModal in parallel. The only issue i can see here is
+      //         * if loadCartAndCheckoutDetails is not resolved by the time the user
+      //         * navigates to the form we can not pre-set the address.
+      //         * If this ever does become an issue then we can just push this out
+      //         * and do it after the other api resolves.
+      //         * Doing it this way should make the page seem more responsive however.
+      //         */
+    //  if (preScreenInfo.plccEligible) {
+    // yield call(displayPreScreenModal(preScreenInfo) )
+    //  };
+    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
+    const shippingValues = yield select(getShippingDestinationValues);
+    const shippingAddress = (shippingValues && shippingValues.address) || {};
+    yield validDateAndLoadShipmentMethods(
+      {
+        country: shippingAddress.country || '',
+        state: shippingAddress.state || '',
+        zipCode: shippingAddress.zipCode || '',
+      },
+      { state: true, zipCode: true },
+      true
+    );
+  } catch (e) {
+    yield put(setIsExpressEligible(false));
+    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
+  }
+}
+
+function* loadExpressCheckout(isRecalcRewards) {
+  //    On shipping we taking into acocunt if this is a gift or not.
+  //    On express checkout we pre-screen no matter what,
+  //    even though the user may have a gift order
+  // const isPreScreenEnabled = yield select(selectors.getIsPreScreenEnabled);
+  // const isUserPlcc = yield select(isPlccUser);
+  // const shouldPreScreenUser = false;
+  // const shouldPreScreenUser = isPreScreenEnabled && !isUserPlcc;
+  //     let source = null;
+  //     if (checkoutStoreView.isVenmoPaymentInProgress(this.store.getState())) {
+  //       source = 'venmo';
+  //     }
+  yield call(triggerExpressCheckout, isRecalcRewards);
+}
+
 function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  // const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   // if (isVenmo) {
   //   const venmoData = getLocalStorage(VENMO_STORAGE_KEY);
   //   if (venmoData) {
@@ -327,7 +356,6 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   // let pendingPromises = [
   yield call(loadGiftWrappingOptions);
   // ];
-  yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
   //   let loadCartAndCheckoutDetails = () => {
   //     return this.loadUpdatedCheckoutValues(null, null, null, isRecalcRewards)
   //     .then(loadSelectedOrDefaultShippingMethods);
@@ -340,60 +368,6 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
 
   //   };
 
-  //   let displayPreScreenModal = (res) => {
-  //     return getPlccOperator(this.store).optionalPlccOfferModal(
-  //       res.plccEligible,
-  //       res.prescreenCode).then(() => {
-  //         return this.loadUpdatedCheckoutValues();
-  //       });
-  //   };
-
-  //   let loadExpressCheckout = () => {
-  //    On shipping we taking into acocunt if this is a gift or not.
-  //    On express checkout we pre-screen no matter what,
-  //    even though the user may have a gift order
-  //     let shouldPreScreenUser = generalStoreView
-  //       .getIsPrescreenFormEnabled(storeState) &&
-  //       !userStoreView.getUserIsPlcc(storeState);
-
-  //     let source = null;
-  //     if (checkoutStoreView.isVenmoPaymentInProgress(this.store.getState())) {
-  //       source = 'venmo';
-  //     }
-
-  //     return this.checkoutServiceAbstractor.startExpressCheckout(shouldPreScreenUser, source)
-  //       .then((preScreenInfo) => {
-  //         /* Doing displayPreScreenModal in parallel. The only issue i can see here is
-  //         * if loadCartAndCheckoutDetails is not resolved by the time the user
-  //         * navigates to the form we can not pre-set the address.
-  //         * If this ever does become an issue then we can just push this out
-  //         * and do it after the other api resolves.
-  //         * Doing it this way should make the page seem more responsive however.
-  //         */
-  //         if(preScreenInfo.plccEligible) {displayPreScreenModal(preScreenInfo)};
-  //         return loadCartAndCheckoutDetails();
-  //       })
-  //       .then(() => {
-  //         const shippingValues = checkoutStoreView.getShippingDestinationValues(this.store.getState());
-  //         const shippingAddress = (shippingValues && shippingValues.address) || {};
-  //         loadShipmentMethods(
-  //           this.store,
-  //           {
-  //             country: shippingAddress.country || '',
-  //             state: shippingAddress.state || '',
-  //             zipCode: shippingAddress.zipCode || ''
-  //           },
-  //           {state: true, zipCode: true},
-  //           true,
-  //           this.checkoutServiceAbstractor
-  //         )
-  //       })
-  //       .catch(() => {
-  //         this.store.dispatch(setIsExpressEligible(false));
-  //         return loadCartAndCheckoutDetails();
-  //       });
-  //   };
-
   // if (userStoreView.isRemembered(storeState)) {
   //   getRoutingOperator(this.store).gotoPage(HOME_PAGE_SECTIONS[DRAWER_IDS.LOGIN]);
   //   return Promise.reject(
@@ -401,11 +375,12 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //   );
   // }
 
-  // if (!isPaypalPostBack && checkoutStoreView.isExpressCheckout(storeState)) {
-  //   pendingPromises.push(loadExpressCheckout());
-  // } else {
-  //   pendingPromises.push(loadCartAndCheckoutDetails());
-  // }
+  if (!isPaypalPostBack && isExpressCheckoutEnabled) {
+    yield call(loadExpressCheckout, isRecalcRewards);
+  } else {
+    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
+    yield call(getAddressList);
+  }
 
   // if (!userStoreView.isGuest(storeState)) {
   //   pendingPromises.push(getPaymentCardsOperator(this.store)
@@ -421,7 +396,6 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //       }
   //     }));
   //   pendingPromises.push(getAddressesOperator(this.store).loadAddressesOnAccount());
-  yield call(getAddressList);
   // }
 
   // yield all(pendingPromises);
@@ -524,33 +498,41 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //         runPrescreenOnLoadVenmo();
   //       }
   //     };
-  //     if (routingInfoStoreView.getIsMobile(storeState) && venmoEnabled && (venmoNonceActive || gotoBillingStep)) {
-  //       handleVenmoNavigation();
-  //     } else if (isPaypalPostBack || checkoutStoreView.isExpressCheckout(storeState)) {
-  //       checkoutSignalsOperator.openReviewSectionForm(true);
-  //       generalOperator.setIsLoading(false);
-  //     } else if (cartStoreView.getIsOrderHasPickup(storeState)) {
-  //       checkoutSignalsOperator.openPickupSectionForm(true);
-  //       generalOperator.setIsLoading(false);
-  //     } else {
-  //       checkoutSignalsOperator.openShippingSectionForm(true);
-  //       generalOperator.setIsLoading(false);
-  //     }
+  // if (routingInfoStoreView.getIsMobile(storeState) && venmoEnabled && (venmoNonceActive || gotoBillingStep)) {
+  //   handleVenmoNavigation();
+  // } else
+  // if (!isMobileApp()) {
+  // if (isPaypalPostBack || isExpressCheckoutEnabled) {
+  //  utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
+  // generalOperator.setIsLoading(false);
+  // } else if (isOrderHasPickup) {
+  //  utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc: false });
+  // generalOperator.setIsLoading(false);
+  // } else {
+  // utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc: false });
+  // generalOperator.setIsLoading(false);
+  // }
+  // }
+
   //   } catch(err) {
   //     logErrorAndServerThrow(this.store, 'CheckoutOperator.loadStartupData', err);
   //     generalOperator.setIsLoading(false);
   //   }
 }
 
-function* initCheckout() {
-  // const location = yield select(getCurrentLocation);   // -------- WIll get QueryParams from the PAge URL using NEXT
-  // let queryObject = queryString.parse(location.search);
+function* initCheckout(router) {
+  let isPaypalPostBack;
+  if (router && router.query) {
+    const { query } = router;
+    ({ isPaypalPostBack } = query);
+  }
+
   // yield call (loadStartupData, queryObject[PAYPAL_REDIRECT_PARAM],
   //   queryObject[config.QUERY_PARAM.RECALC_REWARDS],
   //   parseBoolean(getLocalStorage(VENMO_INPROGRESS_KEY)),
   // )
   try {
-    yield call(loadStartupData);
+    yield call(loadStartupData, isPaypalPostBack);
   } catch (e) {
     logger.error(e);
   }

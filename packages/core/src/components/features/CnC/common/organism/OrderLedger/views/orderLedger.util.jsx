@@ -74,7 +74,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
               fontFamily="secondary"
               textAlign="left"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
               dataLocator="orderLedgerCount"
             >
               {`${labels.itemsLabel} (${itemsCount}):`}
@@ -86,7 +86,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
               textAlign="right"
             >
               {`${currencySymbol}${subTotal.toFixed(2)}`}
@@ -290,7 +290,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs18"
             >
               {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
             </BodyCopy>
@@ -302,7 +302,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs18"
               textAlign="right"
             >
               {`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
