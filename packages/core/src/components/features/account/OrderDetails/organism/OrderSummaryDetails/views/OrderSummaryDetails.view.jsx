@@ -4,6 +4,7 @@ import { BodyCopy, Row, Col } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OrderSummaryDetails.style';
+import formatAmount from '../utils';
 
 /**
  * This function component use for return the OrderShippingDetails
@@ -27,15 +28,6 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
     // totalItems,
     totalTax,
   } = summary || {};
-  const shippingValue =
-    shippingTotal > 0
-      ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-      : getLabelValue(ordersLabels, 'lbl_orders_free');
-
-  const formatAmount = value => {
-    const symbol = value < 0 ? '-' : '';
-    return symbol + currencySymbol + Math.abs(value).toFixed(2);
-  };
 
   /**
    * @function return  Used to render the JSX of the component
@@ -45,7 +37,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
 
   return (
     <BodyCopy component="div" className={className}>
-      <Row className="row-margin">
+      <Row className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_orderSummary')}
@@ -57,7 +49,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
           </BodyCopy>
         </Col>
       </Row>
-      <Row className="row-margin">
+      <Row className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
@@ -65,23 +57,25 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
         <Col colSize={{ large: 5, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {formatAmount(subTotal)}
+            {formatAmount(subTotal, currencySymbol)}
           </BodyCopy>
         </Col>
       </Row>
-      <Row className="row-margin">
-        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {formatAmount(couponsTotal)}
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="row-margin">
+      {couponsTotal && (
+        <Row className="elem-mb-XS">
+          <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+            <BodyCopy fontFamily="secondary" fontSize="fs14">
+              {`${getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}:`}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+            <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+              {formatAmount(couponsTotal, currencySymbol)}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
+      <Row className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
@@ -89,34 +83,45 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
         <Col colSize={{ large: 5, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {shippingValue}
+            {shippingTotal > 0
+              ? formatAmount(shippingTotal, currencySymbol)
+              : `${getLabelValue(ordersLabels, 'lbl_orders_free')}`}
           </BodyCopy>
         </Col>
       </Row>
-      <Row className="items-total row-margin">
-        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-            {`${currencySymbol}${totalTax.toFixed(2)}`}
-          </BodyCopy>
-        </Col>
-      </Row>
-      <Row className="row-margin total-value">
-        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
-          <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary">
-            {`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
-          <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary" textAlign="right">
-            {`${currencySymbol}${grandTotal.toFixed(2)}`}
-          </BodyCopy>
-        </Col>
-      </Row>
+      {totalTax && (
+        <Row className="items-total elem-mb-XS">
+          <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+            <BodyCopy fontFamily="secondary" fontSize="fs14">
+              {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+            <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+              {`${currencySymbol}${totalTax.toFixed(2)}`}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
+      {grandTotal && (
+        <Row className="elem-mb-XS total-value">
+          <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+            <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary">
+              {`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
+            </BodyCopy>
+          </Col>
+          <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+            <BodyCopy
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              textAlign="right"
+            >
+              {`${currencySymbol}${grandTotal.toFixed(2)}`}
+            </BodyCopy>
+          </Col>
+        </Row>
+      )}
     </BodyCopy>
   );
 };
@@ -137,3 +142,4 @@ OrderSummaryDetails.defaultProps = {
 };
 
 export default withStyles(OrderSummaryDetails, styles);
+export { OrderSummaryDetails as OrderSummaryDetailsVanilla };

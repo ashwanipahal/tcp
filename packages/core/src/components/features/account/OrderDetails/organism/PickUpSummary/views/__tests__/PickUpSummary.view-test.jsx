@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PickUpSummary from '../PickUpSummary.view';
+import { PickUpSummaryVanilla } from '../PickUpSummary.view';
 
 describe('Order Summary Details component', () => {
   const props = {
@@ -36,7 +36,7 @@ describe('Order Summary Details component', () => {
     },
   };
   it('should renders correctly', () => {
-    const component = shallow(<PickUpSummary {...props} />);
+    const component = shallow(<PickUpSummaryVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

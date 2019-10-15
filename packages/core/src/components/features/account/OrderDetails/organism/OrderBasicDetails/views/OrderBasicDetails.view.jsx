@@ -12,7 +12,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
  */
 
 const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
-  const { orderNumber, pickUpExpirationDate, isBossOrder } = orderDetailsData;
+  const { orderNumber, pickUpExpirationDate, isBossOrder, status } = orderDetailsData;
   let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
   let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
   let orderTime = orderDate.split(' ')[1];
@@ -46,6 +46,22 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           </BodyCopy>
           <BodyCopy fontSize="fs14" fontFamily="secondary">
             {bossDate}
+          </BodyCopy>
+          <BodyCopy
+            fontSize="fs14"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            className="elem-mb-SM"
+          >
+            {getLabelValue(ordersLabels, 'lbl_orders_bossStatus')}
+          </BodyCopy>
+          <BodyCopy
+            fontSize="fs14"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className="elem-mb-SM"
+          >
+            {status}
           </BodyCopy>
         </BodyCopy>
       );
