@@ -114,6 +114,7 @@ class HeaderNew extends React.PureComponent<Props> {
     const { navigation } = this.props;
     navigateToNestedRoute(navigation, 'PlpStack', 'SearchDetail', {
       title: searchText,
+      isForceUpdate: true,
     });
   };
 
