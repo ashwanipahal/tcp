@@ -3,6 +3,5 @@ import { NAVIGATION_ACTION_PATTERN } from '@tcp/core/src/constants/reducer.const
 export default {
   START_SEARCH: `${NAVIGATION_ACTION_PATTERN}START_SEARCH`,
   SET_SEARCH: `${NAVIGATION_ACTION_PATTERN}SET_SEARCH`,
-  SEARCH_PLACEHOLDER: 'What are you looking for?',
   RECENT_STORE_CACHE_KEY: 'RECENT_STORE_CACHE_KEY',
 };

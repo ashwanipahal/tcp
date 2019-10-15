@@ -142,7 +142,9 @@ class SearchBar extends React.PureComponent {
   initiateSearchBySubmit = () => {
     this.startInitiateSearch();
     const { onCloseClick } = this.props;
-    onCloseClick();
+    if (window.innerWidth <= 1024) {
+      onCloseClick();
+    }
   };
 
   redirectToSearchPage = searchText => {
@@ -320,6 +322,7 @@ class SearchBar extends React.PureComponent {
                   <SuggestionBox
                     isLatestSearchResultsExists={isLatestSearchResultsExists}
                     latestSearchResults={latestSearchResults}
+                    labels
                   />
                 ) : (
                   <div className="matchBox">

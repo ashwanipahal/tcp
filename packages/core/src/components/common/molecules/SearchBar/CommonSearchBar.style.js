@@ -34,8 +34,8 @@ export const commonSearchBarStyles = css`
     background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-radius: 20px;
     width: 100%;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     height: 40px;
   }
 
@@ -43,10 +43,10 @@ export const commonSearchBarStyles = css`
     width: calc(100% - 80px);
     height: 25px;
     outline: none;
-    font-size: 18px;
+    font-size: ${props => props.theme.typography.fontSizes.fs18};
     background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
-    border: 0px;
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+    border: 0;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
     vertical-align: middle;
@@ -74,9 +74,9 @@ export const commonStyles = css`
     width: 100%;
     display: block;
     border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
-    border-top: 0px;
+    border-top: 0;
     box-sizing: border-box;
-    z-index: 100000;
+    z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
     position: relative;
     background-color: ${props => props.theme.colors.WHITE};
     overflow-y: auto;
@@ -100,7 +100,7 @@ export const commonStyles = css`
   }
 
   .boxHead {
-    font-size: 13px;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
     font-weight: 600;
   }
 
@@ -119,10 +119,11 @@ export const commonStyles = css`
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     border: 1px solid ${props => props.theme.colors.TEXT.DARKERBLUE};
     border-radius: 20px;
-    padding: 0px 10px;
+    padding: 0 10px;
     text-align: center;
     line-height: 40px;
-    margin: 6px 5px;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   li.recentTag {

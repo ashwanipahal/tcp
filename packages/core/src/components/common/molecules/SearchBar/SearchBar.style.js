@@ -10,8 +10,8 @@ export default css`
 
     .searchWrapper {
       position: absolute;
-      top: 0px;
-      left:0px;
+      top: 0;
+      left:0;
       height:50px;
       ${props =>
         props.fromCondensedHeader
@@ -19,8 +19,8 @@ export default css`
 
           position: fixed;
           width: 100%;
-          left: 0px;
-          top: 0px;
+          left: 0;
+          top: 0;
 
           @media ${props.theme.mediaQuery.large} {
             width: 100%;
@@ -28,30 +28,30 @@ export default css`
 
           @media ${props.theme.mediaQuery.large} {
             width: 31.8%;
-            left: 0px;
-            top: 0px;
+            left: 0;
+            top: 0;
           }
         `
           : ``};
     }
 
     .searchbar {
-      border-radius: 0px;
+      border-radius: 0;
       background-color: #ffffff;
       height:50px;
     }
 
     .searchbar input {
       width: 122px;
-      font-size:14px;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
       padding-right: 172px;
       background-color: #ffffff;
-      padding-left: 24px;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
     .searchbar .icon-small {
       vertical-align: middle;
-      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
       cursor: pointer;
       padding-left:35px;
     }
@@ -73,7 +73,7 @@ export default css`
 
     .cancel-search-label {
       display: none;
-      font-size: 13px;
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
     }
 
     .close-mobile-image-toggle {
@@ -91,7 +91,7 @@ export default css`
     height: 52px;
     background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     line-height: 52px;
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left:35px;
   }
 
@@ -111,7 +111,7 @@ export default css`
 }
 
 .cancel-search-label-wrapper {
-  padding-left: 20px;
+  padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 }
 .li.productBox{
   height: 152px;
@@ -123,12 +123,12 @@ export default css`
 
     .searchWrapper {
       position: absolute;
-      top: 0px;
+      top: 0;
       height: 50px;
     }
 
     .searchbar {
-      border-radius: 0px;
+      border-radius: 0;
       background-color: #ffffff;
       height:50px;
     }
@@ -136,15 +136,15 @@ export default css`
 
     .searchbar input {
       width: 122px;
-      font-size:14px;
+      font-size:${props => props.theme.typography.fontSizes.fs14};
       padding-right: 172px;
       background-color: #ffffff;
-      padding-left: 24px;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
     .searchbar .icon-small {
       vertical-align: middle;
-      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
       padding-left:35px;
       cursor: pointer;
     }
@@ -184,7 +184,7 @@ export default css`
     height: 52px;
     background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     line-height: 52px;
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: 35px;
   }
 
@@ -204,7 +204,7 @@ export default css`
     }
 
     .cancel-search-label-wrapper {
-      padding-left: 20px;
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     }
     .li.productBox{
       height: 152px;
@@ -217,16 +217,16 @@ export default css`
 
     .searchWrapper {
       position: absolute;
-      top: 0px;
-      left:0px;
+      top: 0;
+      left:0;
       ${props =>
         props.fromCondensedHeader
           ? `
 
           position: fixed;
           width: 100%;
-          left: 0px;
-          top: 0px;
+          left: 0;
+          top: 0;
 
           @media ${props.theme.mediaQuery.large} {
             width: 100%;
@@ -234,21 +234,21 @@ export default css`
 
           @media ${props.theme.mediaQuery.large} {
             width: 32.8%;
-            left: 0px;
-            top: 0px;
+            left: 0;
+            top: 0;
           }
         `
           : ``};
     }
 
     .searchbar {
-      border-radius: 0px;
+      border-radius: 0;
       background-color: #ffffff;
     }
 
     .searchbar input {
       width: 122px;
-      font-size:14px;
+      font-size:${props => props.theme.typography.fontSizes.fs14};
       padding-right: 94px;
       background-color: #ffffff;
       padding-left: 26px;
@@ -275,7 +275,7 @@ export default css`
 
     .cancel-search-label {
       display: inline-block;
-      font-size: 13px;
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
 
     }
 
@@ -318,7 +318,7 @@ export default css`
     height: 52px;
     background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     line-height: 52px;
-    padding: 0px 14px;
+    padding: 0 14px;
     padding-left:14px;
   }
 
@@ -365,8 +365,8 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border-radius: 20px;
       width: 100%;
-      border-bottom-right-radius: 0px;
-      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
       height: 40px;
     }
 
@@ -374,10 +374,10 @@ export default css`
       width: calc(100% - 80px);
       height: 25px;
       outline: none;
-      font-size: 18px;
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
-      border: 0px;
-      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
+      border: 0;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
       border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
       color: ${props => props.theme.colors.TEXTBOX.COLOR};
       vertical-align: middle;
@@ -416,7 +416,7 @@ export default css`
     .searchbar .icon-small {
       vertical-align: middle;
       height: 16px;
-      padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
       width: 20px;
       cursor: pointer;
     }
@@ -428,8 +428,8 @@ export default css`
     height: 52px;
     background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     line-height: 52px;
-    padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: 30px;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   }
 
   .recentBox .recentBoxBody {

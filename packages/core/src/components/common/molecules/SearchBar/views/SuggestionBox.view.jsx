@@ -17,31 +17,22 @@ import SearchBarStyle from '../SearchBar.style';
  * @param {*} props
  */
 class SuggestionBox extends React.PureComponent {
-  isRecentResultExist = searchResults => {
-    const { labels } = this.props;
-    if (searchResults.length > 0) {
-      return (
-        <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
-          {getLabelValue(labels, 'lbl_search_recent_search')}
-        </BodyCopy>
-      );
-    }
-    return null;
-  };
-
   render() {
-    const { className, isLatestSearchResultsExists, latestSearchResults } = this.props;
+    const { isLatestSearchResultsExists, latestSearchResults, labels } = this.props;
 
-    const RecentResultsLabel = () => {
-      return this.isRecentResultExist(latestSearchResults);
-    };
+    // const latestSearchResultsMap = latestSearchResults.sort();
 
     return (
       <React.Fragment>
-        <div className={`${className} suggestionBox`}>
+        <div className="suggestionBox">
           {isLatestSearchResultsExists && (
             <div className="recentBox">
-              <RecentResultsLabel latestSearchResults={latestSearchResults} />
+              {latestSearchResults && latestSearchResults.length > 0 && (
+                <BodyCopy fontFamily="secondary" className="boxHead recentBoxHead">
+                  {getLabelValue(labels, 'lbl_search_recent_search')}
+                </BodyCopy>
+              )}
+
               <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                 <ul>
                   {latestSearchResults.map(item => {
@@ -74,7 +65,6 @@ class SuggestionBox extends React.PureComponent {
 }
 
 SuggestionBox.propTypes = {
-  className: PropTypes.string.isRequired,
   labels: PropTypes.shape({
     lbl_search_recent_search: PropTypes.string,
   }),
