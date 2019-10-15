@@ -93,6 +93,7 @@ class ProductDetailView extends React.Component {
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
             <ProductImagesWrapper
               productName={productInfo.name}
+              isGiftCard={productInfo.isGiftCard}
               isThumbnailListVisible={isWeb}
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
@@ -104,7 +105,11 @@ class ProductDetailView extends React.Component {
             className="product-detail-section"
             colSize={{ small: 6, medium: 4, large: 5 }}
           >
-            <Product productDetails={productDetails} currencySymbol={currency} />
+            <Product
+              isGiftCard={productInfo.isGiftCard}
+              productDetails={productDetails}
+              currencySymbol={currency}
+            />
             {currentProduct && (
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}

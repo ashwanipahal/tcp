@@ -214,6 +214,7 @@ class Product extends React.Component {
       isInternationalShipping,
       isKeepAlive,
       isMatchingFamily,
+      isGiftCard,
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
     const currentColorProductId = productDetails.get('currentColorProductId');
@@ -237,6 +238,7 @@ class Product extends React.Component {
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
+          isGiftCard={isGiftCard}
           productInfo={productInfo}
           // {...addToBagFormValues}
           isShowFavoriteCount
