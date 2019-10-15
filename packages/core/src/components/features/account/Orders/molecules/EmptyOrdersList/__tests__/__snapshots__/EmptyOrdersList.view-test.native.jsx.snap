@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyOrdersList component should renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    className="elem-mt-LRG elem-mb-LRG"
+    data-locator="no_rewards_msg"
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="regular"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="lbl_orders_emptySupportingText"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator="orders-shop-now-btn"
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_orders_shopNow"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Fragment>
+`;

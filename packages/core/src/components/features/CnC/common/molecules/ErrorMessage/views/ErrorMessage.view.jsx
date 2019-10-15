@@ -10,12 +10,12 @@ const alertTriangleIcon = getIconPath('alert-triangle');
 
 class ErrorMessage extends React.PureComponent {
   render() {
-    const { error, className, fontSize, fontWeight } = this.props;
+    const { error, alt, className, fontSize, fontWeight } = this.props;
     return (
       <>
         {error && (
           <div className={className}>
-            <Image src={alertTriangleIcon} />
+            <Image alt={alt} src={alertTriangleIcon} />
             <BodyCopy
               component="span"
               color="error"
@@ -36,6 +36,7 @@ class ErrorMessage extends React.PureComponent {
 
 ErrorMessage.propTypes = {
   error: PropTypes.string,
+  alt: PropTypes.string,
   className: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
@@ -43,6 +44,7 @@ ErrorMessage.propTypes = {
 
 ErrorMessage.defaultProps = {
   error: '',
+  alt: 'error',
   className: '',
   fontSize: 'fs10',
   fontWeight: 'normal',
