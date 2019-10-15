@@ -26,7 +26,11 @@ const {
 } = require('@tcp/core/src/utils/errorReporter.util');
 const { ENV_DEVELOPMENT } = require('@tcp/core/src/constants/env.config');
 
-const { connectRedis } = require('@tcp/core/src/utils/redis.util');
+const {
+  connectRedis,
+  getDataFromRedis,
+  setDataInRedis,
+} = require('@tcp/core/src/utils/redis.util');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -118,6 +122,57 @@ const redirectToHomePage = (req, res) => {
   res.redirect(ERROR_REDIRECT_STATUS, errorPageRoute);
 };
 
+/**
+ * Function to get the cache key for the requested path
+ * @param {object} req The request object
+ */
+const getCacheKey = req => {
+  return `${req.path}`;
+};
+/**
+ * Function to cache a requested path
+ * @param {object} req The request object
+ * @param {object} res The response object
+ * @param {object} app The express/next app instance
+ * @param {string} resolver The route resolver
+ * @param {object} params The route params
+ */
+const renderAndCache = async (app, req, res, resolver, params) => {
+  // Key it the request path
+  const key = getCacheKey(req);
+
+  try {
+    const cachedKey = await getDataFromRedis(key);
+    if (cachedKey) {
+      logger.info(`ROUTE CACHE HIT: ${cachedKey}`);
+      res.setHeader('x-cache', 'CACHE HIT');
+      res.send(cachedKey);
+      return;
+    }
+    const html = await app.renderToHTML(req, res, resolver, params);
+    // Something is wrong with the request, let's skip the cache
+    if (res.statusCode !== 200) {
+      res.send(html);
+      return;
+    }
+    // TBD: The route paths that should not be cached.
+    await setDataInRedis({
+      data: html,
+      CACHE_IDENTIFIER: key,
+    });
+    logger.info(`ROUTE CACHE MISS: ${cachedKey}`);
+    res.setHeader('x-cache', 'CACHE MISS');
+    res.send(html);
+  } catch (err) {
+    if (!key.match(/error/)) {
+      logger.error(err);
+      redirectToErrorPage(req, res);
+    } else {
+      app.render(req, res, resolver, params);
+    }
+  }
+};
+
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
   ROUTES_LIST.forEach(route => {
@@ -133,7 +188,10 @@ app.prepare().then(() => {
       setBrandId(req, res);
       setHostname(req, res);
       // Handling routes without params
-      if (!route.params) return app.render(req, res, route.resolver, req.query);
+      if (!route.params) {
+        renderAndCache(app, req, res, route.resolver, req.query);
+        return;
+      }
 
       // Handling routes with params
       const params = route.params.reduce((componentParam, paramKey) => {
@@ -141,7 +199,7 @@ app.prepare().then(() => {
         componentParam[paramKey] = req.params[paramKey];
         return componentParam;
       }, {});
-      return app.render(req, res, route.resolver, params);
+      renderAndCache(app, req, res, route.resolver, params);
     });
   });
 
