@@ -1,27 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   getSiteId,
   //   getHostName,
   getLocationOrigin,
   handleGenericKeyDown,
 } from '../../../../../utils/utils.web';
-// import { getApiHelper } from 'service/WebAPIServiceAbstractors/apiHelper.js';
-// import { getTwitterAbstractor } from './twitterDynamicAbstractor';
 import config from './config';
-import { getIconPath, getAPIConfig } from '../../../../../utils';
+import { getIconPath } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
 import { getAccessToken } from './twitterDynamicAbstractor';
 
 let elem;
 let saveAccountInfo;
+// eslint-disable-next-line
 let closeModal;
 
 class TwitterLoginComponent extends React.Component {
   constructor(props) {
     super(props);
-    // this.apiHelper = getApiHelper(getSiteId(), getHostName());
-    // this.twitterAbstractor = getTwitterAbstractor(this.apiHelper);
     this.tokenInput = null;
     this.verifierInput = null;
   }
@@ -50,8 +48,6 @@ class TwitterLoginComponent extends React.Component {
    */
 
   openChildWindow = () => {
-    const test1 = getLocationOrigin();
-    const test2 = getSiteId();
     window.open(
       `${getLocationOrigin()}/${getSiteId()}${config.ACCOUNT_REDIRECT.TWITTER}`,
       '_blank',
@@ -67,11 +63,10 @@ class TwitterLoginComponent extends React.Component {
     // The first part before '-' is the userID
     // Hence, spliting to extract it from the accesstoken
     const splitVal = (res && res.split('-')) || [];
-    const twitterObj = {
+    return {
       accessToken: res,
       userId: splitVal[0],
     };
-    return twitterObj;
   };
 
   /**
@@ -108,7 +103,6 @@ class TwitterLoginComponent extends React.Component {
    */
 
   saveAccountInfo = payload => {
-    // const { props } = this.props;
     const socialAccInfo = {
       twitter: elem[2].socialAccount,
       accessToken: payload.accessToken,
@@ -116,7 +110,7 @@ class TwitterLoginComponent extends React.Component {
       userId: payload.userId,
     };
     saveAccountInfo({ socialAccInfo });
-    //  saveAccountInfo(elem[2].socialAccount, acessToken, false);
+    closeModal({ state: true });
   };
 
   /**
@@ -125,27 +119,15 @@ class TwitterLoginComponent extends React.Component {
    * triggers the edit method when enter key is pressed
    */
   handleOpenCloseTwitterOnKeyPress = () => {
-    const { props } = this.props;
-    const twitterConnection = !props.elem.isConnected ? this.openChildWindow : this.logout;
-    return handleGenericKeyDown(event, config.KEY_CODES.ENTER, twitterConnection);
+    const twitterConnection = !elem.isConnected ? this.openChildWindow : this.logout;
+    return handleGenericKeyDown(config.KEY_CODES.ENTER, twitterConnection);
   };
 
   render() {
     const { saveSocialAcc, loginStatus, pointModalClose } = this.props;
-    debugger;
     saveAccountInfo = saveSocialAcc;
     elem = loginStatus;
     closeModal = pointModalClose;
-    // this.twitterAbstractor
-    //   .getAccessToken(twitterTokenVal, twitterVerifierVal)
-    //   .then(res => {
-    //     if (res) {
-    //       this.saveAccountInfo(this.createTwitterObj(res));
-    //     }
-    //   });
-    // setLocalStorage({ key: 'twitterToken', value: '' });
-    // setLocalStorage({ key: 'twitterVerifer', value: '' });
-
     return (
       <React.Fragment>
         {elem &&
@@ -188,18 +170,17 @@ class TwitterLoginComponent extends React.Component {
         <input type="hidden" id="twitter-verifer" ref={this.setVerifierInput} />
         <input type="hidden" onClick={this.getAccessToken} id="twitter-auth-tokens" />
       </React.Fragment>
-      //   <React.Fragment>
-      //     <div
-      //       className="social-accounts__CTA"
-      //       tabIndex="0"
-      //       onKeyDown={this.handleOpenCloseTwitterOnKeyPress}
-      //     >
-      //      twitter
-      //     </div>
-
-      //   </React.Fragment>
     );
   }
 }
+
+TwitterLoginComponent.propTypes = {
+  socialLoad: PropTypes.shape({}).isRequired,
+  saveSocialAcc: PropTypes.shape({}).isRequired,
+  getSocialAcc: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  pointModalClose: PropTypes.func.isRequired,
+  loginStatus: PropTypes.shape({}).isRequired,
+};
 
 export default TwitterLoginComponent;
