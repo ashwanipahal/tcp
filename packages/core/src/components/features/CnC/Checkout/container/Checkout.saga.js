@@ -8,7 +8,6 @@ import {
   getGiftWrappingOptions,
   getShippingMethods,
   setShippingMethodAndAddressId,
-  addPickupPerson,
   getInternationCheckoutSettings,
   startExpressCheckout,
 } from '../../../../../services/abstractors/CnC/index';
@@ -48,6 +47,7 @@ import {
   saveLocalSmsInfo,
   addOrEditGuestUserAddress,
   pickUpRouting,
+  callPickupSubmitMethod,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -143,26 +143,6 @@ export function* loadUpdatedCheckoutValues(
       onCartRes,
     })
   );
-}
-
-function* callPickupSubmitMethod(formData) {
-  let emailAddress = '';
-  let firstName = '';
-  let lastName = '';
-  if (formData.hasAlternatePickup && formData.pickUpAlternate) {
-    ({ emailAddress, firstName, lastName } = formData.pickUpAlternate);
-  }
-  return yield call(addPickupPerson, {
-    firstName: formData.pickUpContact.firstName,
-    lastName: formData.pickUpContact.lastName,
-    phoneNumber: formData.pickUpContact.phoneNumber,
-    emailAddress:
-      formData.pickUpContact.emailAddress ||
-      (yield select(isGuest) ? yield select(getUserEmail) : ''),
-    alternateEmail: emailAddress,
-    alternateFirstName: firstName,
-    alternateLastName: lastName,
-  });
 }
 
 function* submitPickupSection({ payload }) {
@@ -401,6 +381,7 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
     yield call(loadExpressCheckout, isRecalcRewards);
   } else {
     yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
+    yield call(getAddressList);
   }
 
   // if (!userStoreView.isGuest(storeState)) {
@@ -417,7 +398,6 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //       }
   //     }));
   //   pendingPromises.push(getAddressesOperator(this.store).loadAddressesOnAccount());
-  yield call(getAddressList);
   // }
 
   // yield all(pendingPromises);
@@ -549,8 +529,6 @@ function* initCheckout(router) {
     ({ isPaypalPostBack } = query);
   }
 
-  // const location = yield select(getCurrentLocation);   // -------- WIll get QueryParams from the PAge URL using NEXT
-  // let queryObject = queryString.parse(location.search);
   // yield call (loadStartupData, queryObject[PAYPAL_REDIRECT_PARAM],
   //   queryObject[config.QUERY_PARAM.RECALC_REWARDS],
   //   parseBoolean(getLocalStorage(VENMO_INPROGRESS_KEY)),

@@ -36,28 +36,18 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
-    const {
-      setVenmoPickupState,
-      setVenmoShippingState,
-      isRegisteredUserCallDone,
-      initialActions,
-      fetchSflData,
-    } = this.props;
+    const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
-    if (isRegisteredUserCallDone) {
-      initialActions();
-      fetchSflData();
-    }
+    this.fetchInitialActions();
   }
 
   componentDidUpdate(prevProps) {
     if (isClient()) {
       const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-      const { router, initialActions, fetchSflData, isRegisteredUserCallDone } = this.props;
-      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
-        initialActions();
-        fetchSflData();
+      const { router, isRegisteredUserCallDone } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+        this.fetchInitialActions();
       }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
       if (isSfl) {
@@ -67,6 +57,14 @@ export class BagPageContainer extends React.Component<Props> {
   }
 
   closeModal = () => {};
+
+  fetchInitialActions() {
+    const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
+    if (isRegisteredUserCallDone) {
+      initialActions();
+      fetchSflData();
+    }
+  }
 
   render() {
     const {
