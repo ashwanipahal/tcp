@@ -20,8 +20,6 @@ class SuggestionBox extends React.PureComponent {
   render() {
     const { isLatestSearchResultsExists, latestSearchResults, labels } = this.props;
 
-    // const latestSearchResultsMap = latestSearchResults.sort();
-
     return (
       <React.Fragment>
         <div className="suggestionBox">
