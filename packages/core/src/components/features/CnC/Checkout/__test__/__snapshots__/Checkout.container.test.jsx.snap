@@ -18,6 +18,8 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   isVenmoPaymentInProgress={false}
+  isVenmoPickupBannerDisplayed={true}
+  isVenmoShippingBannerDisplayed={true}
   onEditModeChange={true}
   router={
     Object {
