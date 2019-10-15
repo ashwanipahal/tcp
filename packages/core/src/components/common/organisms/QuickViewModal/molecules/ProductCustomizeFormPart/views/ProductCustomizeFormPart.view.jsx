@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '../../../../../atoms';
+import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, {
   customPriceStyles,
@@ -35,6 +36,7 @@ const ProductCustomizeFormPart = props => {
     goToPDPPage,
     imageUrl,
     handleUpdateItem,
+    colorFitsSizesMap,
     ...otherProps
   } = props;
   const { fromBagPage, productInfoFromBag } = otherProps;
@@ -112,6 +114,7 @@ const ProductCustomizeFormPart = props => {
             fromBagPage={fromBagPage}
             productInfoFromBag={productInfoFromBag}
             customSubmitButtonStyle={customSubmitButtonStyle}
+            colorFitsSizesMap={colorFitsSizesMap}
           />
         </div>
       </div>
@@ -140,6 +143,7 @@ ProductCustomizeFormPart.propTypes = {
   imageUrl: PropTypes.string,
   currentColorEntry: PropTypes.func,
   goToPDPPage: PropTypes.func,
+  colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
 };
 
 ProductCustomizeFormPart.defaultProps = {
