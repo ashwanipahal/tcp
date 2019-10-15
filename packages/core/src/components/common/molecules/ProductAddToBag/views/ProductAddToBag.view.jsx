@@ -13,7 +13,7 @@ import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import ProductSizeSelector from '../../ProductSizeSelector';
-import styles from '../styles/ProductAddToBag.style';
+import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
 
 // to get Error Message displayed in case any error comes on Add To card
 const ErrorComp = errorMessage => {
@@ -65,14 +65,24 @@ class ProductAddToBag extends React.PureComponent<Props> {
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
+      isGiftCard,
     } = this.props;
 
-    let { sizeList, fitList, colorList } = this.props;
+    let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
+    colorFitSizeDisplayNames = {
+      color: 'Color',
+      fit: 'Fit',
+      size: 'Size',
+      ...colorFitSizeDisplayNames,
+    };
 
-    sizeList = sizeList && fromJS(sizeList);
-    fitList = fitList && fromJS(fitList);
+    if (sizeList) {
+      sizeList = fromJS(sizeList);
+      fitList = fromJS(fitList);
+    }
+
     colorList = fromJS(colorList);
-    const { errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
+    const { errorMessage, fit: fitTitle } = plpLabels;
 
     return (
       <form className={className} noValidate>
@@ -89,7 +99,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     colorFitsSizesMap={colorList}
                     onChange={selectColor}
                     dataLocator="addnewaddress-state"
-                    title={`${colorTitle}:`}
+                    title={`${colorFitSizeDisplayNames.color}:`}
+                    inheritedStyles={isGiftCard ? giftCardDesignStyle : ''}
                   />
                 </div>
               )}
@@ -118,7 +129,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     sizesMap={sizeList}
                     onChange={selectSize}
                     dataLocator="addnewaddress-state"
-                    title={`${sizeTitle}:`}
+                    title={`${colorFitSizeDisplayNames.size}:`}
                   />
                   {isErrorMessageDisplayed && ErrorComp(errorMessage)}
                 </div>

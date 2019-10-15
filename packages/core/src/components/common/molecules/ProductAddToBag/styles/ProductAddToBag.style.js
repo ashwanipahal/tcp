@@ -156,4 +156,36 @@ const styles = css`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
+export const giftCardDesignStyle = css`
+  .color-chips-selector-item {
+    height: 111px;
+    width: 90px;
+    border-radius: 0;
+
+    .input-radio-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image color of item */
+    .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+
+    /* When the input is checked, the image color has black border (selected) */
+    .input-radio-icon-checked + .input-radio-title {
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+  }
+`;
+
 export default styles;
