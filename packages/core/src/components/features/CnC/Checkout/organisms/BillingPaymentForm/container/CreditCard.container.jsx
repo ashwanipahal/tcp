@@ -7,6 +7,7 @@ import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import { updateCardData } from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @class GiftCardsContainer
@@ -314,6 +315,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       editFormCardType,
       isPLCCEnabled,
       scrollView,
+      toastMessage,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -350,6 +352,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isVenmoEnabled={isVenmoEnabled}
         isPLCCEnabled={isPLCCEnabled}
         scrollView={scrollView}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -381,6 +384,9 @@ const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
       dispatch(updateCardData(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

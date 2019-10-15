@@ -18,14 +18,12 @@ import {
 import ErrorMessage from '../../../../../../common/atoms/ErrorDisplay';
 
 class CardEditFormView extends React.PureComponent {
-  handleFormSubmit = e => {
-    const { handleSubmit, onSubmit } = this.props;
-    e.preventDefault();
-    e.stopPropagation();
-    handleSubmit(data => {
-      onSubmit(data);
-    })();
-  };
+  componentDidUpdate(prevProps) {
+    const { toastMessage, error } = this.props;
+    if (error !== prevProps.error) {
+      toastMessage(error.message);
+    }
+  }
 
   render() {
     const {
@@ -39,22 +37,17 @@ class CardEditFormView extends React.PureComponent {
       },
       AddressForm,
       onEditCardFocus,
-      error,
       editModeSubmissionError,
       errorMessageRef,
       getDefaultPayment,
       selectedCard,
       labels,
+      handleSubmit,
     } = this.props;
     return (
       <View>
         <ScrollView ref={errorMessageRef}>
           <View>
-            {error && (
-              <ErrorMessageWrapper>
-                <ErrorMessage error={error.message} />
-              </ErrorMessageWrapper>
-            )}
             <AddAddressWrapper>
               <CardDetailsWrapper>
                 {getAddNewCCForm({
@@ -77,7 +70,7 @@ class CardEditFormView extends React.PureComponent {
             <SaveButtonWrapper>
               <Button
                 aria-label={ariaLabelSaveButtonText}
-                onPress={this.handleFormSubmit}
+                onPress={handleSubmit}
                 fontSize="fs14"
                 fontWeight="extrabold"
                 buttonVariation="variable-width"
@@ -112,7 +105,7 @@ CardEditFormView.propTypes = {
   unsetFormEditState: PropTypes.func.isRequired,
   AddressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.shape({}).isRequired,
   editModeSubmissionError: PropTypes.string.isRequired,
@@ -146,6 +139,7 @@ const CardEditReduxForm = React.memo(props => {
     editModeSubmissionError,
     errorMessageRef,
     getDefaultPayment,
+    toastMessage,
   } = props;
   const {
     accountNo,
@@ -193,6 +187,7 @@ const CardEditReduxForm = React.memo(props => {
       errorMessageRef={errorMessageRef}
       getDefaultPayment={getDefaultPayment}
       selectedCard={selectedCard}
+      toastMessage={toastMessage}
     />
   );
 });
@@ -218,6 +213,7 @@ CardEditReduxForm.propTypes = {
     addressDetails: PropTypes.shape({}),
   }).isRequired,
   getDefaultPayment: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 export default CardEditReduxForm;

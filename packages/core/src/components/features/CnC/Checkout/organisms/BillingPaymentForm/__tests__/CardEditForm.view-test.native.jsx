@@ -28,18 +28,6 @@ describe('CardEditForm component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('CardEditFormViewVanilla', () => {
-    let counter = 0;
-    props.dispatch = () => {
-      counter += 1;
-    };
-    const component = shallow(<CardEditFormViewVanilla {...props} />);
-    const instance = component.instance();
-    instance.handleFormSubmit({ preventDefault: () => {}, stopPropagation: () => {} });
-    expect(counter).toEqual(0);
-    expect(component).toMatchSnapshot();
-  });
-
   it('handleEditFromSubmit', () => {
     let funcValue;
     handleEditFromSubmit(obj => {
