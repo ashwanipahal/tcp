@@ -53,7 +53,6 @@ class Drawer extends React.Component {
     if (renderOverlay) {
       this.getDrawerStyle();
     }
-    console.log(open);
     if (open) {
       document.body.addEventListener('click', this.closeNavOnOverlayClick);
     } else {
