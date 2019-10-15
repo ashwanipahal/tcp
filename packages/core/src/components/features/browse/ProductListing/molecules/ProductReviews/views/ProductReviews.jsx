@@ -72,7 +72,7 @@ class ProductReviews extends React.PureComponent {
       productId: ratingsProductId,
       summaryContainerDiv: `BVRRSummaryContainer-${ratingsProductId}`,
     };
-    const brand = getBrand().toUpperCase();
+    const brand = getBrand();
 
     document
       .getElementById(containerDivId)
@@ -105,7 +105,7 @@ class ProductReviews extends React.PureComponent {
         window.$BV.configure('global', {
           productId: ratingsProductId,
           userToken: securityToken.toString(),
-          brandcode: brand,
+          brandcode: brand && brand.toUpperCase(),
         });
       } else {
         window.$BV.configure('global', {
