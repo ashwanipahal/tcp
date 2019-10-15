@@ -28,7 +28,7 @@ const MyAccountLayoutView = props => {
   } = props;
   return (
     <View className={className} {...props}>
-      {isUserLoggedIn && (
+      {!isUserLoggedIn && (
         <React.Fragment>
           <RewardsPoints tableView labels={labels} />
           <MyAccountDropdownNav
