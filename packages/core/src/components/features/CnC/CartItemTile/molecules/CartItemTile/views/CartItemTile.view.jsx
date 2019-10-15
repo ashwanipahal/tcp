@@ -625,6 +625,12 @@ class CartItemTile extends React.Component {
         <Row
           fullBleed
           className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+          tabIndex="0"
+          aria-label={`${productDetail.itemInfo.name}. ${labels.price} ${
+            productDetail.itemInfo.price
+          }. ${labels.size} ${productDetail.itemInfo.size}. ${labels.qty} ${
+            productDetail.itemInfo.qty
+          }`}
         >
           <Col
             key="productDetails"

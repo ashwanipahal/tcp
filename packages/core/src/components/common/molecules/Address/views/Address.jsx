@@ -84,6 +84,7 @@ const Address = ({
       {showName && (
         <BodyCopy
           component="p"
+          id={address.addressId}
           fontWeight={fontWeight}
           fontFamily="secondary"
           className="addressTile__name address text-break"

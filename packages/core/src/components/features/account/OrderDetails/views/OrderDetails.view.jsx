@@ -48,6 +48,7 @@ class OrderDetailsView extends PureComponent {
       <div className={className}>
         <FormPageHeadingComponent
           heading={getLabelValue(ordersLabels, 'lbl_orderDetails_heading')}
+          className="myAccountRightView"
         />
         {orderDetailsData && (
           <>
