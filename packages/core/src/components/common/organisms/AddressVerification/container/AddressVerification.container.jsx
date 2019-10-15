@@ -10,7 +10,7 @@ import { resetVerifyAddress } from './AddressVerification.actions';
 
 export const mapStateToProps = (state, ownProps) => {
   return {
-    userAddress: ownProps.userAddress || getUserAddress(state),
+    userAddress: ownProps.shippingAddress || getUserAddress(state),
     suggestedAddress: getSuggestedAddress(state),
     verificationResult: getVerificationResult(state),
     labels: getVerifyAddressLabels(state),

@@ -46,10 +46,7 @@ import {
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
-import {
-  submitVerifiedAddress as submitVerifiedAddressData,
-  submitShippingSection as submitShippingSectionData,
-} from './CheckoutShipping.saga';
+import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
 
 const {
   getRecalcOrderPointsInterval,
@@ -660,14 +657,12 @@ export function* submitBillingSection(payload) {
   }
 }
 
-export function* submitShippingSection(...params) {
-  params.push(submitShipping);
-  yield submitShippingSectionData(...params);
+export function* submitShippingSection(action) {
+  yield submitShippingSectionData(action, submitShipping);
 }
 
-export function* submitVerifiedAddress(...params) {
-  params.push(submitShipping);
-  yield submitVerifiedAddressData(...params);
+export function* submitVerifiedAddress(action) {
+  yield submitVerifiedAddressData(action, submitShipping);
 }
 
 export function* CheckoutSaga() {

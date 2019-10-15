@@ -36,6 +36,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
     updateShippingMethodSelection: PropTypes.func.isRequired,
@@ -147,18 +148,6 @@ export default class ShippingPage extends React.PureComponent {
     this.setState({ isAddNewAddress: !isAddNewAddress });
   };
 
-  formatPayload = payload => {
-    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
-    return {
-      ...otherPayload,
-      ...{
-        address1: addressLine1,
-        address2: addressLine2,
-        zip: zipCode,
-      },
-    };
-  };
-
   submitShippingData = data => {
     const {
       address,
@@ -193,7 +182,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit, setVenmoPickupState } = this.props;
+    const { handleSubmit, setVenmoPickupState, formatPayload } = this.props;
     const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -215,7 +204,7 @@ export default class ShippingPage extends React.PureComponent {
     };
 
     if (!onFileAddressKey) {
-      const formattedPayload = this.formatPayload(shipAddress);
+      const formattedPayload = formatPayload(shipAddress);
       this.submitData = submitData;
       return verifyAddressAction(formattedPayload);
     }
@@ -333,6 +322,7 @@ export default class ShippingPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       isVenmoShippingDisplayed,
       isSubmitting,
+      formatPayload,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -388,7 +378,7 @@ export default class ShippingPage extends React.PureComponent {
           onSuccess={this.submitVerifiedShippingAddressData}
           heading={addressLabels.addAddressHeading}
           onError={this.submitVerifiedShippingAddressData}
-          userAddress={this.formatPayload(shippingAddressData)}
+          shippingAddress={formatPayload(shippingAddressData)}
         />
       </>
     );

@@ -11,7 +11,7 @@ import { getCardList } from '../../../account/Payment/container/Payment.saga';
 
 const { redirectToBilling } = utility;
 
-export function* submitShippingSection({ payload: { navigation, ...formData } }, submitShipping) {
+export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
     yield put(setShippingLoadingState(true));
 
@@ -43,14 +43,16 @@ export function* submitShippingSection({ payload: { navigation, ...formData } },
     // ) {
     //   recalcFlag = true;
     // }
-    yield submitShipping({
-      ...shipTo,
-      method,
-      smsInfo,
-      isEmailSignUpAllowed,
-      recalcFlag,
-      emailAddress,
-    });
+    if (callback) {
+      yield callback({
+        ...shipTo,
+        method,
+        smsInfo,
+        isEmailSignUpAllowed,
+        recalcFlag,
+        emailAddress,
+      });
+    }
     yield call(getAddressList);
     yield call(getCardList);
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
@@ -67,10 +69,7 @@ export function* submitShippingSection({ payload: { navigation, ...formData } },
   }
 }
 
-export function* submitVerifiedAddress(
-  { payload: { submitData, shippingAddress } },
-  submitShipping
-) {
+export function* submitVerifiedAddressData({ payload: { submitData, shippingAddress } }, callback) {
   const {
     address1: addressLine1,
     address2: addressLine2,
@@ -87,5 +86,5 @@ export function* submitVerifiedAddress(
   };
   payloadData.shipTo.address = shipAddress;
   payloadData.shipTo.phoneNumber = shipAddress.phoneNumber;
-  yield submitShippingSection({ payload: { ...payloadData } }, submitShipping);
+  yield submitShippingSectionData({ payload: { ...payloadData } }, callback);
 }

@@ -132,6 +132,7 @@ class CheckoutPage extends React.PureComponent {
       setVenmoPickupState,
       setVenmoShippingState,
       verifyAddressAction,
+      formatPayload,
       submitVerifiedShippingAddressData,
     } = this.props;
 
@@ -169,6 +170,7 @@ class CheckoutPage extends React.PureComponent {
             {...shippingProps}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
@@ -312,6 +314,7 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,

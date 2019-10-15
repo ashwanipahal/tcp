@@ -82,6 +82,18 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     ]);
   }
 
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+      },
+    };
+  };
+
   render() {
     const {
       initialValues,
@@ -170,6 +182,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={reviewProps}
+        formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
