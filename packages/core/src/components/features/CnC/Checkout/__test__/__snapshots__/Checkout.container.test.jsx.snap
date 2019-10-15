@@ -11,6 +11,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
     ]
   }
   currentPhoneNumber=""
+  formatPayload={[Function]}
   initialValues={Object {}}
   isExpressCheckout={false}
   isGuest={true}
