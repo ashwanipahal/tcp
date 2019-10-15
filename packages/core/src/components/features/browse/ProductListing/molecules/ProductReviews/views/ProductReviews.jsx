@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getBrand } from '@tcp/core/src/utils';
 import { bin2hex, md5 } from '../encoding';
 import cssClassName from '../../../../../../../utils/cssClassName';
 import { requireUrlScript } from '../../../../../../../utils/resourceLoader';
@@ -71,6 +72,7 @@ class ProductReviews extends React.PureComponent {
       productId: ratingsProductId,
       summaryContainerDiv: `BVRRSummaryContainer-${ratingsProductId}`,
     };
+    const brand = getBrand();
 
     document
       .getElementById(containerDivId)
@@ -103,6 +105,7 @@ class ProductReviews extends React.PureComponent {
         window.$BV.configure('global', {
           productId: ratingsProductId,
           userToken: securityToken.toString(),
+          brandcode: brand && brand.toUpperCase(),
         });
       } else {
         window.$BV.configure('global', {
