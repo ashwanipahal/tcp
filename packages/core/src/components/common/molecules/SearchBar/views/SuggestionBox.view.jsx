@@ -33,7 +33,7 @@ class SuggestionBox extends React.PureComponent {
 
               <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                 <ul>
-                  {latestSearchResults.map(item => {
+                  {latestSearchResults.reverse().map(item => {
                     return (
                       <BodyCopy
                         component="li"

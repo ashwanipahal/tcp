@@ -11,6 +11,8 @@ import { getSearchResult } from '../SearchBar.actions';
 import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
 import CancelSearch from './CancelSearch.view';
 import SuggestionBox from './SuggestionBox.view';
+import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
+import SearchBarPropTypes from '../SearchBar.PropTypes';
 
 /**
  * This component produces a Search Bar component for Header
@@ -69,7 +71,7 @@ class SearchBar extends React.PureComponent {
 
   closeModalIfMobile = e => {
     e.preventDefault();
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= breakpoints.large) {
       const { onCloseClick } = this.props;
       onCloseClick();
     }
@@ -110,15 +112,20 @@ class SearchBar extends React.PureComponent {
       let filteredSearchResults;
       if (getPreviousSearchResults) {
         filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-        // eslint-disable-next-line no-empty
-        if (filteredSearchResults.indexOf(searchText) !== -1) {
-        } else {
+        if (filteredSearchResults.indexOf(searchText) === -1) {
           filteredSearchResults.push(searchText);
         }
       } else {
         filteredSearchResults = [];
         filteredSearchResults.push(searchText);
       }
+      if (
+        filteredSearchResults &&
+        filteredSearchResults.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+      ) {
+        filteredSearchResults.shift();
+      }
+
       setRecentStoreToLocalStorage(filteredSearchResults);
       this.redirectToSearchPage(searchText);
     } else {
@@ -162,7 +169,7 @@ class SearchBar extends React.PureComponent {
       .getElementById(`${CLOSE_IMAGE}`)
       .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
 
-    if (searchText.length > 2) {
+    if (searchText.length > RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
       this.setState({ showProduct: Boolean(searchText.length) }, () => {
         const payload = {
           searchText,
@@ -316,6 +323,7 @@ class SearchBar extends React.PureComponent {
                   closeSearchBar={this.closeSearchBar}
                   closeModalSearch={this.closeModalSearch}
                   cancelSearchBar={this.cancelSearchBar}
+                  labels
                 />
 
                 {!showProduct ? (
@@ -411,25 +419,7 @@ class SearchBar extends React.PureComponent {
   }
 }
 
-SearchBar.propTypes = {
-  className: PropTypes.string.isRequired,
-  fromCondensedHeader: PropTypes.bool,
-  startSearch: PropTypes.func.isRequired,
-  setSearchState: PropTypes.func.isRequired,
-  isSearchOpen: PropTypes.bool,
-  searchResults: PropTypes.shape({
-    trends: PropTypes.shape({}),
-    categories: PropTypes.shape({}),
-    products: PropTypes.shape({}),
-  }),
-  labels: PropTypes.shape({
-    lbl_search_whats_trending: PropTypes.string,
-    lbl_search_recent_search: PropTypes.string,
-    lbl_search_looking_for: PropTypes.string,
-    lbl_search_product_matches: PropTypes.string,
-  }),
-  onCloseClick: PropTypes.func.isRequired,
-};
+SearchBar.propTypes = SearchBarPropTypes;
 
 SearchBar.defaultProps = {
   isSearchOpen: false,

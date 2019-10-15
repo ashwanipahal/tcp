@@ -37,7 +37,7 @@ export default css`
 
     .searchbar {
       border-radius: 0;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
       height:50px;
     }
 
@@ -45,7 +45,7 @@ export default css`
       width: 122px;
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       padding-right: 172px;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
@@ -85,38 +85,38 @@ export default css`
     }
 
     .trendingBox .trendingBoxHead,
-  .recentBox .recentBoxHead,
-  .matchLinkBox .matchLinkBoxHead,
-  .matchProductBox .matchProductHead {
-    height: 52px;
-    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
-    line-height: 52px;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left:35px;
-  }
+    .recentBox .recentBoxHead,
+    .matchLinkBox .matchLinkBoxHead,
+    .matchProductBox .matchProductHead {
+      height: 52px;
+      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+      line-height: 52px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-left:35px;
+    }
 
-  .recentBox .recentBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
+    .recentBox .recentBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
 
-  .matchLinkBox .matchLinkBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
+    .matchLinkBox .matchLinkBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
 
-  .search-close-icon-wrapper{
-    padding-left :251px;
-}
+    .search-close-icon-wrapper{
+      padding-left :251px;
+    }
 
-.cancel-search-label-wrapper {
-  padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-}
-.li.productBox{
-  height: 152px;
-  width: 152px;
-}
+    .cancel-search-label-wrapper {
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    }
+    .li.productBox{
+      height: 152px;
+      width: 152px;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -129,7 +129,7 @@ export default css`
 
     .searchbar {
       border-radius: 0;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
       height:50px;
     }
 
@@ -138,7 +138,7 @@ export default css`
       width: 122px;
       font-size:${props => props.theme.typography.fontSizes.fs14};
       padding-right: 172px;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
 
@@ -178,28 +178,28 @@ export default css`
     }
 
     .trendingBox .trendingBoxHead,
-  .recentBox .recentBoxHead,
-  .matchLinkBox .matchLinkBoxHead,
-  .matchProductBox .matchProductHead {
-    height: 52px;
-    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
-    line-height: 52px;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: 35px;
-  }
+    .recentBox .recentBoxHead,
+    .matchLinkBox .matchLinkBoxHead,
+    .matchProductBox .matchProductHead {
+      height: 52px;
+      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+      line-height: 52px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-left: 35px;
+    }
 
-  .recentBox .recentBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
+    .recentBox .recentBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
 
-  .matchLinkBox .matchLinkBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      66px;
-  }
+    .matchLinkBox .matchLinkBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS} ${props =>
+  props.theme.spacing.LAYOUT_SPACING.LRG};
+    }
 
-  .search-close-icon-wrapper{
+    .search-close-icon-wrapper{
         padding-left :251px;
     }
 
@@ -243,14 +243,14 @@ export default css`
 
     .searchbar {
       border-radius: 0;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
     }
 
     .searchbar input {
       width: 122px;
       font-size:${props => props.theme.typography.fontSizes.fs14};
       padding-right: 94px;
-      background-color: #ffffff;
+      background-color: ${props => props.theme.colors.WHITE};
       padding-left: 26px;
     }
 
@@ -312,21 +312,21 @@ export default css`
     }
 
     .trendingBox .trendingBoxHead,
-  .recentBox .recentBoxHead,
-  .matchLinkBox .matchLinkBoxHead,
-  .matchProductBox .matchProductHead {
-    height: 52px;
-    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
-    line-height: 52px;
-    padding: 0 14px;
-    padding-left:14px;
-  }
+    .recentBox .recentBoxHead,
+    .matchLinkBox .matchLinkBoxHead,
+    .matchProductBox .matchProductHead {
+      height: 52px;
+      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+      line-height: 52px;
+      padding: 0 14px;
+      padding-left:14px;
+    }
 
-  .recentBox .recentBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
+    .recentBox .recentBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
 
   }
 
@@ -422,40 +422,39 @@ export default css`
     }
 
     .trendingBox .trendingBoxHead,
-  .recentBox .recentBoxHead,
-  .matchLinkBox .matchLinkBoxHead,
-  .matchProductBox .matchProductHead {
-    height: 52px;
-    background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
-    line-height: 52px;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
-  }
+    .recentBox .recentBoxHead,
+    .matchLinkBox .matchLinkBoxHead,
+    .matchProductBox .matchProductHead {
+      height: 52px;
+      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+      line-height: 52px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    }
 
-  .recentBox .recentBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL}
-      ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
+    .recentBox .recentBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
 
-  .matchLinkBox .matchLinkBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
+    .matchLinkBox .matchLinkBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
 
-   .search-close-icon-wrapper{
-    display: none;
-   }
+    .search-close-icon-wrapper{
+      display: none;
+    }
 
-  .cancel-search-label-wrapper{
-    display: none;
-   }
+    .cancel-search-label-wrapper{
+      display: none;
+    }
 
    .close-image .icon-small {
     height: 12px;
-    width: 12px;
-  }
-
+      width: 12px;
+    }
   }
 
   .highlight-search-result {
