@@ -138,6 +138,7 @@ class PickUpStoreModalView extends React.Component {
     isBossCtaEnabled: PropTypes.bool,
     isBopisCtaEnabled: PropTypes.bool,
     updateCartItemStore: PropTypes.bool,
+    isItemShipToHome: PropTypes.bool,
     autoSkipStep1: PropTypes.bool,
     showDefaultSizeMsg: PropTypes.bool,
     isRadialInventoryEnabled: PropTypes.number,
@@ -188,6 +189,7 @@ class PickUpStoreModalView extends React.Component {
     addToBagError: '',
     className: '',
     currency: 'USD',
+    isItemShipToHome: false,
   };
 
   constructor(props) {
@@ -396,6 +398,7 @@ class PickUpStoreModalView extends React.Component {
       addToBagError,
       navigation,
       initialValuesFromBagPage,
+      isItemShipToHome,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -510,6 +513,7 @@ class PickUpStoreModalView extends React.Component {
           isSkuResolved={isSkuResolved}
           PickupSkuFormValues={PickupSkuFormValues}
           initialValuesFromBagPage={initialValuesFromBagPage}
+          isItemShipToHome={isItemShipToHome}
         />
       </>
     );

@@ -15,6 +15,10 @@ import {
   updateCartItemComplete,
   getProductSKUInfoSuccess,
 } from './CartItemTile.actions';
+import {
+  AddToPickupError,
+  clearAddToPickupErrorState,
+} from '../../AddedToBag/container/AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
@@ -75,7 +79,9 @@ export function* removeCartItem({ payload }) {
 
 export function* updateCartItemSaga({ payload }) {
   try {
-    const res = yield call(updateItem, payload);
+    yield put(clearAddToPickupErrorState());
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
@@ -87,7 +93,13 @@ export function* updateCartItemSaga({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
-    logger.error(err);
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errorMessage =
+      // eslint-disable-next-line no-underscore-dangle
+      (err && err.errorMessages && err.errorMessages._error) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
+    yield put(AddToPickupError(errorMessage));
   }
 }
 
@@ -145,7 +157,14 @@ export function* openPickupModalFromBag(payload) {
   try {
     const state = yield select();
     const {
-      payload: { colorProductId, orderInfo },
+      payload: {
+        colorProductId,
+        orderInfo,
+        openSkuSelectionForm,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
+        isItemShipToHome,
+      },
     } = payload;
     const productDetail = yield call(getProductInfoById, colorProductId, state);
     const { product } = productDetail;
@@ -155,13 +174,14 @@ export function* openPickupModalFromBag(payload) {
       openPickupModalWithValues({
         generalProductId,
         colorProductId: generalProductId,
-        // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-        // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
         currentProduct,
         fromBagPage: true,
-        openSkuSelectionForm: true,
+        openSkuSelectionForm,
         initialValues: { ...orderInfo },
         updateCartItemStore: true,
+        isItemShipToHome,
       })
     );
   } catch (err) {

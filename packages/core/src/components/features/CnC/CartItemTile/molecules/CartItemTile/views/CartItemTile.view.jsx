@@ -60,27 +60,31 @@ class CartItemTile extends React.Component {
    * @description this method handles edit for cart item for boss/bopis item
    * @memberof CartItemTile
    */
-  handleEditCartItemWithStore = (pageView, itemBrand, productNumber) => {
-    if (pageView === 'myBag') {
-      const { onPickUpOpenClick, productDetail, orderId } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
-      const { store, orderItemType } = productDetail.miscInfo;
-      const isItemShipToHome = !store;
-      onPickUpOpenClick({
-        colorProductId: productNumber,
-        orderInfo: {
-          orderItemId: itemId,
-          Quantity: qty,
-          color,
-          Size: size,
-          Fit: fit,
-          orderId,
-          orderItemType,
-          isItemShipToHome,
-          itemBrand,
-        },
-      });
-    }
+  handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false) => {
+    const { onPickUpOpenClick, productDetail, orderId } = this.props;
+    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+    const { store, orderItemType } = productDetail.miscInfo;
+    const { productPartNumber } = productDetail.productInfo;
+    const isItemShipToHome = !store;
+    const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+    const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    onPickUpOpenClick({
+      colorProductId: productPartNumber,
+      orderInfo: {
+        orderItemId: itemId,
+        Quantity: qty,
+        color,
+        Size: size,
+        Fit: fit,
+        orderId,
+        orderItemType,
+        itemBrand,
+      },
+      openSkuSelectionForm,
+      isBopisCtaEnabled,
+      isBossCtaEnabled,
+      isItemShipToHome,
+    });
   };
 
   callEditMethod = () => {
@@ -94,12 +98,9 @@ class CartItemTile extends React.Component {
         productDetail.itemInfo.itemBrand,
         productDetail.productInfo.productPartNumber
       );
-    } else {
-      this.handleEditCartItemWithStore(
-        pageView,
-        productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
-      );
+    } else if (pageView === 'myBag') {
+      const openSkuSelectionForm = true;
+      this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
     }
   };
 
@@ -797,6 +798,7 @@ class CartItemTile extends React.Component {
                 className="cart-item-radio-buttons"
                 productDetail={productDetail}
                 labels={labels}
+                openPickUpModal={this.handleEditCartItemWithStore}
               />
             </Row>
           )}
