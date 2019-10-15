@@ -137,6 +137,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -182,6 +188,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       }
     >
       <Field
+        aria-label="undefined undefined"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -286,6 +293,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }

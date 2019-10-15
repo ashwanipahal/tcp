@@ -23,7 +23,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className="heading_text email-sign-up"
         color="text.primary"
-        component="div"
+        component="h2"
         dataLocator="email_promo_text"
         fontFamily="primary"
         fontSize="fs15"
@@ -129,7 +129,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className="heading_text sms_sign_up"
         color="text.primary"
-        component="div"
+        component="h2"
         dataLocator="sms_promo_text"
         fontFamily="primary"
         fontSize="fs15"
@@ -258,7 +258,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             <Styled(BodyCopy)
               className="heading_text refer-a-friend"
               color="text.primary"
-              component="div"
+              component="h2"
               fontFamily="primary"
               fontSize="fs15"
               fontWeight="black"
