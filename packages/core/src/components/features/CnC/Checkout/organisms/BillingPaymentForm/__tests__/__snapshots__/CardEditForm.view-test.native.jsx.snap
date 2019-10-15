@@ -82,6 +82,7 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
 <ReduxForm
   AddressForm={[Function]}
   destroyOnUnmount={false}
+  editModeSubmissionError={false}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
   form="checkoutCardEditPayment"
@@ -121,9 +122,88 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
   shouldValidate={[Function]}
   shouldWarn={[Function]}
   submitAsSideEffect={false}
+  toastMessage={[MockFunction]}
   touchOnBlur={true}
   touchOnChange={false}
   updateUnregisteredFields={false}
   validate={[Function]}
 />
+`;
+
+exports[`CardEditForm component should renders componentDidUpdate  correctly 1`] = `
+<View>
+  <ScrollViewMock>
+    <View>
+      <Styled(View)>
+        <Styled(View)>
+          CCForm
+        </Styled(View)>
+        <Styled(View)>
+          <Component
+            editMode={true}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <ErrorDisplay
+          error={true}
+        />
+      </Styled(View)>
+    </View>
+    <View>
+      <Styled(ScrollViewMock)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="variable-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill="BLUE"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="Save"
+          theme={Object {}}
+          url=""
+        />
+      </Styled(ScrollViewMock)>
+      <Styled(View)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          className="card-edit-button card-edit-cancel"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill=""
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="Cancel"
+          theme={Object {}}
+          type="button"
+          url=""
+        />
+      </Styled(View)>
+    </View>
+  </ScrollViewMock>
+</View>
 `;

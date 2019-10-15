@@ -19,6 +19,8 @@ describe('CardEditForm component', () => {
     getDefaultPayment: jest.fn(),
     handleSubmit: () => jest.fn(),
     onSubmit: jest.fn(),
+    toastMessage: jest.fn(),
+    editModeSubmissionError: false,
   };
 
   it('CardEditReduxForm', () => {
@@ -45,5 +47,13 @@ describe('CardEditForm component', () => {
       funcValue = obj;
     })({ address: { addressId: '' } });
     expect(funcValue.formData).toEqual({ address: { addressId: '' }, onFileAddressKey: '' });
+  });
+  it('should renders componentDidUpdate  correctly', () => {
+    const component = shallow(<CardEditFormViewVanilla {...props} />);
+    component.setProps({
+      error: { message: 'error' },
+      editModeSubmissionError: true,
+    });
+    expect(component).toMatchSnapshot();
   });
 });
