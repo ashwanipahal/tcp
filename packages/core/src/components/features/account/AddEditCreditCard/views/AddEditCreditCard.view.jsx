@@ -89,6 +89,7 @@ export const AddEditCreditCard = ({
             showCreditCardFields={showCreditCardFields}
             addressFormLabels={addressFormLabels}
             formErrorMessage={formErrorMessage}
+            onFileAddressKey={onFileAddressKey}
             {...otherProps}
           />
         </div>
@@ -100,6 +101,7 @@ export const AddEditCreditCard = ({
           initialValues={initialValues}
           addressFormLabels={addressFormLabels}
           formErrorMessage={formErrorMessage}
+          onFileAddressKey={onFileAddressKey}
           {...otherProps}
         />
       )}
