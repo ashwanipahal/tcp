@@ -4,19 +4,16 @@ import { getLocator, getIconPath } from '@tcp/core/src/utils';
 import { BodyCopy, LabeledRadioButton, Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
+import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemRadioButtons extends React.Component {
-  handleToggle = (e, orderType) => {
-    console.log(orderType);
-  };
-
   showBoss = (isBossOrder, isBossEnabled) => isBossOrder || isBossEnabled;
 
   showBopis = (isBopisOrder, isBopisEnabled) => isBopisOrder || isBopisEnabled;
 
-  renderBossBanner = () => {
+  renderBossBanner = (isBossItem, onlineClearanceMessage) => {
     const { labels } = this.props;
-    return (
+    return isBossItem && !onlineClearanceMessage ? (
       <div className="banner-wrapper">
         <div className="triangle-left" />
         <div className="promo-wrapper">
@@ -28,17 +25,17 @@ class CartItemRadioButtons extends React.Component {
           </BodyCopy>
         </div>
       </div>
-    );
+    ) : null;
   };
 
-  renderBossDates = () => {
+  renderBossDates = isBossItem => {
     const {
       labels,
       productDetail: {
         miscInfo: { bossStartDate, bossEndDate },
       },
     } = this.props;
-    return (
+    return isBossItem ? (
       <>
         {labels.by}
         <BodyCopy
@@ -48,36 +45,61 @@ class CartItemRadioButtons extends React.Component {
           fontFamily="secondary"
           fontSize="fs10"
         >
-          {` ${bossStartDate.get('day')}. ${bossStartDate.get('month')} ${bossStartDate.get(
+          {`${bossStartDate.get('day')}. ${bossStartDate.get('month')} ${bossStartDate.get(
             'date'
           )} - ${bossEndDate.get('day')}. ${bossEndDate.get('month')} ${bossEndDate.get('date')}`}
         </BodyCopy>
       </>
-    );
-  };
-
-  renderChangeStore = disabled => {
-    const { isNotAvailable } = this.props;
-    return !disabled || (disabled && isNotAvailable) ? (
-      <BodyCopy component="div">
-        <Anchor fontSizeVariation="large" anchorVariation="secondary" underline target="_blank">
-          Change Store
-        </Anchor>
-      </BodyCopy>
     ) : null;
   };
 
-  renderBossBopisItem = ({
+  hideChangeStore = isBossItem => {
+    const {
+      isBossEnabled,
+      isBopisEnabled,
+      productDetail: {
+        miscInfo: { isBossEligible, isBopisEligible, availability },
+      },
+    } = this.props;
+
+    if (isBossItem) {
+      return !(
+        !isBossEnabled ||
+        !isBossEligible ||
+        availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+      );
+    }
+    return !(!isBopisEnabled || !isBopisEligible);
+  };
+
+  renderChangeStore = (disabled, isBossItem) => {
+    const { labels } = this.props;
+    return !disabled || this.hideChangeStore(isBossItem) ? (
+      <Anchor
+        className="elem-pl-LRG"
+        fontSizeVariation="small"
+        underline
+        anchorVariation="primary"
+        fontSize="fs12"
+        fontFamily="secondary"
+      >
+        {labels.changeStore}
+      </Anchor>
+    ) : null;
+  };
+
+  renderRadioItem = ({
     isSelected,
     onlineClearanceMessage,
     store,
     disabled,
     radioText,
     isBossItem,
+    isEcomItem,
     labels,
   }) => {
     return (
-      <div className="main-container">
+      <div className={`main-container ${disabled ? 'disabled' : ''}`}>
         {isSelected && disabled && (
           <Image
             alt="disabled"
@@ -97,7 +119,7 @@ class CartItemRadioButtons extends React.Component {
             {radioText}
           </BodyCopy>
 
-          {isBossItem && !onlineClearanceMessage && this.renderBossBanner()}
+          {this.renderBossBanner(isBossItem, onlineClearanceMessage)}
 
           {onlineClearanceMessage && (
             <BodyCopy
@@ -111,12 +133,12 @@ class CartItemRadioButtons extends React.Component {
             </BodyCopy>
           )}
         </BodyCopy>
-        {isSelected && (
+        {!isEcomItem && isSelected && !onlineClearanceMessage && (
           <BodyCopy component="div" className="subtitle-container elem-mt-XS">
             <BodyCopy component="div" color="gray.800" fontFamily="secondary" fontSize="fs10">
               {labels.at}
               <BodyCopy
-                className="elem-pl-XXS"
+                className="elem-pl-XXS elem-pr-XXS"
                 fontWeight="semibold"
                 component="span"
                 fontFamily="secondary"
@@ -124,9 +146,9 @@ class CartItemRadioButtons extends React.Component {
               >
                 {store}
               </BodyCopy>
-              {isBossItem && this.renderBossDates()}
+              {this.renderBossDates(isBossItem)}
             </BodyCopy>
-            {this.renderChangeStore(disabled)}
+            {this.renderChangeStore(disabled, isBossItem)}
           </BodyCopy>
         )}
       </div>
@@ -134,7 +156,6 @@ class CartItemRadioButtons extends React.Component {
   };
 
   render() {
-    // const { selectedOrder } = this.state;
     const {
       className,
       labels,
@@ -166,18 +187,18 @@ class CartItemRadioButtons extends React.Component {
               bossDisabled && 'disabled',
             ].join(' ')}
             name={radioGroupName}
-            onChange={e => this.handleToggle(e, 'BOSS')}
             checked={isBOSSOrder}
             disabled={bossDisabled}
             data-locator={getLocator('cart_item_no_rush_radio_button')}
           >
-            {this.renderBossBopisItem({
+            {this.renderRadioItem({
               isSelected: isBOSSOrder,
               onlineClearanceMessage: noBossMessage,
               store,
               disabled: bossDisabled,
               radioText: labels.bossPickUp,
               isBossItem: true,
+              isEcomItem: false,
               labels,
             })}
           </LabeledRadioButton>
@@ -191,40 +212,44 @@ class CartItemRadioButtons extends React.Component {
               bopisDisabled && 'disabled',
             ].join(' ')}
             name={radioGroupName}
-            onChange={e => this.handleToggle(e, 'BOPIS')}
             checked={isBOPISOrder}
             disabled={bopisDisabled}
             data-locator={getLocator('cart_item_pickup_radio_today_button')}
           >
-            {this.renderBossBopisItem({
+            {this.renderRadioItem({
               isSelected: isBOPISOrder,
               onlineClearanceMessage: noBopisMessage,
               store,
               disabled: bopisDisabled,
               radioText: labels.bopisPickUp,
               isBossItem: false,
+              isEcomItem: false,
               labels,
             })}
           </LabeledRadioButton>
         )}
         <LabeledRadioButton
-          className={['normal-select-box', commonSelectBox, isECOMOrder && selectedMethod].join(
-            ' '
-          )}
+          className={[
+            'normal-select-box',
+            commonSelectBox,
+            isECOMOrder && selectedMethod,
+            isEcomSoldout && 'disabled',
+          ].join(' ')}
           name={radioGroupName}
-          onChange={e => this.handleToggle(e, 'ECOM')}
           checked={isECOMOrder}
           disabled={isEcomSoldout}
           data-locator={getLocator('cart_item_ship_to_home_radio_button')}
         >
-          <BodyCopy
-            dataLocator={getLocator('cart_item_ship_to_home')}
-            color="gray.900"
-            fontSize="fs14"
-            fontFamily="secondary"
-          >
-            {labels.ecomShipping}
-          </BodyCopy>
+          {this.renderRadioItem({
+            isSelected: isECOMOrder,
+            onlineClearanceMessage: false,
+            store,
+            disabled: isEcomSoldout,
+            radioText: labels.ecomShipping,
+            isBossItem: false,
+            isEcomItem: true,
+            labels,
+          })}
         </LabeledRadioButton>
       </div>
     );
@@ -240,7 +265,6 @@ CartItemRadioButtons.propTypes = {
   isBossEnabled: PropTypes.bool.isRequired,
   isBopisEnabled: PropTypes.bool.isRequired,
   isEcomSoldout: PropTypes.bool.isRequired,
-  isNotAvailable: PropTypes.bool.isRequired,
   isECOMOrder: PropTypes.bool.isRequired,
   isBOPISOrder: PropTypes.bool.isRequired,
   isBOSSOrder: PropTypes.bool.isRequired,

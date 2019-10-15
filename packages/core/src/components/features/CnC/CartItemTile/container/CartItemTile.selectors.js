@@ -122,6 +122,10 @@ export const getIsInventoryAvailBOSS = product => {
   return product.getIn(['miscInfo', 'isInventoryAvailBOSS']);
 };
 
+export const getIsStoreBOSSEligible = product => {
+  return product.getIn(['miscInfo', 'isStoreBOSSEligible']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -293,6 +297,50 @@ export const getLabelsCartItemTile = state => {
     sflDeleteSuccess,
     removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
     itemUpdated: getLabelValue(state.Labels, 'lbl_minibag_itemUpdated', 'minibag', 'global'),
+    bossUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    bossReqQtyUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossReqQtyUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    bopisUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bopisUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    ecomUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_ecomUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    notAvailableOnlineOnly: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_notAvailableOnlineOnly',
+      'cartItemTile',
+      'global'
+    ),
+    notAvailableClearanceItem: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_notAvailableClearanceItem',
+      'cartItemTile',
+      'global'
+    ),
+    soldOutError: getLabelValue(state.Labels, 'lbl_cartTile_soldOut', 'cartItemTile', 'global'),
+    bossInEligible: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossInEligible',
+      'cartItemTile',
+      'global'
+    ),
+    changeStore: getLabelValue(state.Labels, 'lbl_cartTile_changeStore', 'cartItemTile', 'global'),
   };
 };
 
@@ -335,6 +383,7 @@ export const getProductDetails = tile => {
       isOnlineOnly: getIsOnlineOnly(tile),
       clearanceItem: getClearanceItem(tile),
       isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
+      isStoreBOSSEligible: getIsStoreBOSSEligible(tile),
     },
   };
 };

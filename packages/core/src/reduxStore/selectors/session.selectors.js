@@ -36,9 +36,9 @@ const getIsInternationalShipping = state => {
 };
 
 export const getIsRadialInventoryEnabled = state => {
-  return (
+  return !!(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isRadialInventoryEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_RADIAL_BOSS_ENABLED'])
   );
 };
 

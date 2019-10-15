@@ -35,7 +35,10 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  getIsInternationalShipping,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
   updateCartManually,
@@ -143,7 +146,7 @@ export function* getCartDataSaga(payload = {}) {
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = true; // TODO to get current country
+    const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const isCanadaSIte = false; // TODO to get current country
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,

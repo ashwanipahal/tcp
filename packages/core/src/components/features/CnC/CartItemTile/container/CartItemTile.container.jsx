@@ -20,6 +20,7 @@ import {
 } from '../../SaveForLater/container/SaveForLater.selectors';
 import { getPersonalDataState } from '../../../account/User/container/User.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 // @flow
 
@@ -150,10 +151,10 @@ export function mapStateToProps(state) {
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
-    isBossEnabledTCP: getIsBossEnabled(state, 'TCP'),
-    isBossEnabledGYM: getIsBossEnabled(state, 'GYM'),
-    isBopisEnabledTCP: getIsBopisEnabled(state, 'TCP'),
-    isBopisEnabledGYM: getIsBopisEnabled(state, 'GYM'),
+    isBossEnabledTCP: getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
+    isBossEnabledGYM: getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.GYM),
+    isBopisEnabledTCP: getIsBopisEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
+    isBopisEnabledGYM: getIsBopisEnabled(state, CARTPAGE_CONSTANTS.BRANDS.GYM),
     isBossClearanceProductEnabled: getIsBossClearanceProductEnabled(state),
     isBopisClearanceProductEnabled: getIsBopisClearanceProductEnabled(state),
     isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),

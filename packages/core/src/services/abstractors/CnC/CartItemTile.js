@@ -521,6 +521,7 @@ tomorrowClosingTime
 } = parseStoreOpeningAndClosingTimes(store);*/
 
       const isGiftCard = item.giftItem;
+      item.inventoryAvailBOSS = 2;
       usersOrder.orderItems.push({
         productInfo: {
           generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
@@ -578,6 +579,9 @@ tomorrowClosingTime
 
           // TODO: cleanup structure
           store: store ? capitalize(store.shippingAddressDetails.storeName) : null,
+          isStoreBOSSEligible: store
+            ? parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible)
+            : false,
           // replaced "BOPIS" with a config variable
           // show storeId for both BOSS and BOPIS
           storeId: store && item.stLocId ? item.stLocId : null,

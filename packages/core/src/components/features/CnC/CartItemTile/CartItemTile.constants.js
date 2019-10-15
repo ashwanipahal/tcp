@@ -25,6 +25,10 @@ const CARTPAGE_CONSTANTS = {
   BOSS: 'BOSS',
   BOPIS: 'BOPIS',
   ECOM: 'ECOM', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+  BRANDS: {
+    TCP: 'TCP',
+    GYM: 'GYM',
+  },
 };
 
 export default CARTPAGE_CONSTANTS;

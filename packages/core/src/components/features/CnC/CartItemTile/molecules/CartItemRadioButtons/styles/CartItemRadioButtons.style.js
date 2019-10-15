@@ -17,29 +17,21 @@ const styles = css`
     padding-bottom: 13px;
   }
   .select-box-1 {
-    border-top: 1px solid ${props => props.theme.colorPalette.gray[900]};
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[900]};
-
-    &.disabled {
-      border-top: 1px solid ${props => props.theme.colorPalette.gray[600]};
-      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
-    }
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    margin: -1px 0;
   }
   .normal-select-box {
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[900]};
-
-    &.disabled {
-      border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
-    }
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    margin: -1px 0;
   }
+
   .selected-method {
-    border-left: 1px solid ${props => props.theme.colorPalette.gray[900]};
-    border-right: 1px solid ${props => props.theme.colorPalette.gray[900]};
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[600]};
+    border-right: 1px solid ${props => props.theme.colorPalette.gray[600]};
 
     &.disabled {
-      border-left: 1px solid ${props => props.theme.colorPalette.gray[600]};
-      border-right: 1px solid ${props => props.theme.colorPalette.gray[600]};
-
       .radio-button-checked {
         display: none;
       }
@@ -48,6 +40,14 @@ const styles = css`
   .main-container {
     display: flex;
     flex-direction: column;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .disabled .radio-button {
+    opacity: 0.5;
   }
 
   .title-container {
@@ -60,6 +60,16 @@ const styles = css`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      justify-content: flex-start;
+    }
   }
 
   .disabled-icon {
