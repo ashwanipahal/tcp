@@ -1,7 +1,8 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, disableBodyScroll } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -257,6 +258,7 @@ class ProductsGridItem extends React.PureComponent {
   handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
+    disableBodyScroll();
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
