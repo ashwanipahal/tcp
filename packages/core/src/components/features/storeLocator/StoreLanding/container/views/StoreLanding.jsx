@@ -107,7 +107,14 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { setFavoriteStore, favoriteStore, openStoreDirections, labels, searchDone } = this.props;
+    const {
+      setFavoriteStore,
+      favoriteStore,
+      openStoreDirections,
+      labels,
+      searchDone,
+      geoLocationEnabled,
+    } = this.props;
     if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
       return (
         <Notification
@@ -133,6 +140,7 @@ export class StoreLanding extends PureComponent {
           openStoreDetails={this.openStoreDetails}
           storeIndex={!!getViewportInfo().isDesktop && index + 1}
           titleClickCb={this.focusOnMap}
+          geoLocationDisabled={!geoLocationEnabled}
         />
       </Col>
     ));
