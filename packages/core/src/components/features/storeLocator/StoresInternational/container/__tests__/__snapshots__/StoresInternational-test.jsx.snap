@@ -872,14 +872,14 @@ exports[`StoresInternational component StoresInternational component renders cor
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-gqjmRU",
                     "isStatic": false,
-                    "lastClassName": "kETQqu",
+                    "lastClassName": "hKUlLc",
                     "rules": Array [
                       "
   ",
                       "
   width: 50px;
   height: 50px;
-  border-radius:50%;
+  border-radius: 50%;
   border: 3px solid ",
                       [Function],
                       ";
@@ -901,7 +901,7 @@ exports[`StoresInternational component StoresInternational component renders cor
   .scrollToTop__arrowBtn {
     width: 15px;
     height: 15px;
-    border:solid ",
+    border: solid ",
                       [Function],
                       ";
     border-width: 3px 0 0 3px;
@@ -950,10 +950,10 @@ exports[`StoresInternational component StoresInternational component renders cor
               forwardedRef={null}
             >
               <BackToTop
-                className="sc-gqjmRU kETQqu"
+                className="sc-gqjmRU hKUlLc"
               >
                 <button
-                  className="sc-gqjmRU kETQqu scrollToTopBtn scrollToTopBtn--hide"
+                  className="sc-gqjmRU hKUlLc scrollToTopBtn scrollToTopBtn--hide"
                   onClick={[Function]}
                 >
                   <div
