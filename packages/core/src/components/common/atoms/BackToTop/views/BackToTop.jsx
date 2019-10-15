@@ -7,15 +7,25 @@ import style from '../styles/BackToTop.style';
 const BackToTop = ({ className }) => {
   const [showButton, setShowButton] = useState(false);
 
+  const addBackToTopBtn = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+  const fireScrollEvent = () => {
+    let resizeId = '';
+    window.addEventListener('scroll', () => {
+      clearTimeout(resizeId);
+      resizeId = setTimeout(addBackToTopBtn, 500);
+    });
+  };
+
   useEffect(() => {
     if (isClient()) {
-      window.onscroll = () => {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          setShowButton(true);
-        } else {
-          setShowButton(false);
-        }
-      };
+      fireScrollEvent();
     }
   });
 
@@ -30,7 +40,7 @@ const BackToTop = ({ className }) => {
       className={`${className} scrollToTopBtn scrollToTopBtn--${showButton ? 'show' : 'hide'}`}
       onClick={() => scrollToTop()}
     >
-      <div className="scrollToTop__arrowBtn" />
+      <span className="scrollToTop__arrowBtn" />
     </button>
   );
 };

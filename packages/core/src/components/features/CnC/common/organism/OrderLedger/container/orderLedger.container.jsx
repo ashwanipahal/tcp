@@ -12,6 +12,7 @@ type Props = {
   labels: any,
   showAccordian: any,
   isConfirmationPage: any,
+  orderLedgerAfterView: any,
   confirmationPageLedgerSummaryData: any,
 };
 
@@ -22,12 +23,14 @@ export const OrderLedgerContainer = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
+  orderLedgerAfterView,
 }: Props) => (
   <OrderLedger
     className={className}
     ledgerSummaryData={ledgerSummaryData}
     labels={labels}
     showAccordian={showAccordian}
+    orderLedgerAfterView={orderLedgerAfterView}
     confirmationPageLedgerSummaryData={confirmationPageLedgerSummaryData}
     isConfirmationPage={isConfirmationPage}
   />

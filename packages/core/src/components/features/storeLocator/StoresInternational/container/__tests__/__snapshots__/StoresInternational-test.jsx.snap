@@ -872,7 +872,7 @@ exports[`StoresInternational component StoresInternational component renders cor
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-gqjmRU",
                     "isStatic": false,
-                    "lastClassName": "hKUlLc",
+                    "lastClassName": "ljASWp",
                     "rules": Array [
                       "
   ",
@@ -907,6 +907,7 @@ exports[`StoresInternational component StoresInternational component renders cor
     border-width: 3px 0 0 3px;
     transform: rotate(45deg);
     margin: 14px auto 0;
+    display: block;
   }
 
   &.scrollToTopBtn--show {
@@ -950,13 +951,13 @@ exports[`StoresInternational component StoresInternational component renders cor
               forwardedRef={null}
             >
               <BackToTop
-                className="sc-gqjmRU hKUlLc"
+                className="sc-gqjmRU ljASWp"
               >
                 <button
-                  className="sc-gqjmRU hKUlLc scrollToTopBtn scrollToTopBtn--hide"
+                  className="sc-gqjmRU ljASWp scrollToTopBtn scrollToTopBtn--hide"
                   onClick={[Function]}
                 >
-                  <div
+                  <span
                     className="scrollToTop__arrowBtn"
                   />
                 </button>

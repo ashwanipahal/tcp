@@ -13,7 +13,7 @@ export default css`
   .storelist__countrylbl {
     margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     @media ${props => props.theme.mediaQuery.large} {
-      border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      border-bottom: 2px solid ${props => props.theme.colorPalette.gray[500]};
     }
   }
 

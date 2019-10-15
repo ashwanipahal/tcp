@@ -90,7 +90,7 @@ export const ProgressDotActive = styled.View`
 
 export const StyledAnchorCompleted = styled.View`
   position: absolute;
-  top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   width: 70px;
   left: -${props => props.theme.spacing.ELEM_SPACING.SM};
 `;

@@ -178,7 +178,7 @@ const LoyaltyBannerSection = props => {
 
   return (
     <div className={`${className} elem-mb-MED`}>
-      <div className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED">
+      <div className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper">
         <BodyCopy className="loyaltyBannerSectionWrapper" component="div" fontFamily="secondary">
           <GuestMprPlccSection
             className={className}
@@ -196,7 +196,7 @@ const LoyaltyBannerSection = props => {
             getCurrencySymbol={getCurrencySymbol}
             isProductDetailView={isProductDetailView}
           />
-          <div className="footer alignCenter elem-pt-MED elem-pb-MED">
+          <div className="footer alignCenter">
             {isProductDetailView && (
               <div>
                 {isGuest && (

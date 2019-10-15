@@ -27,6 +27,7 @@ export default css`
     border-width: 3px 0 0 3px;
     transform: rotate(45deg);
     margin: 14px auto 0;
+    display: block;
   }
 
   &.scrollToTopBtn--show {
