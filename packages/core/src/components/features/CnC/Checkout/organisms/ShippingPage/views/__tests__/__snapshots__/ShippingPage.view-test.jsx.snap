@@ -74,13 +74,6 @@ exports[`Shipping Page should render correctly 1`] = `
   <Connect(Styled(AddressVerification))
     onError={[Function]}
     onSuccess={[Function]}
-    userAddress={
-      Object {
-        "address1": undefined,
-        "address2": undefined,
-        "zip": undefined,
-      }
-    }
   />
 </Fragment>
 `;
@@ -192,13 +185,6 @@ exports[`Shipping Page should render correctly with component did update and get
   <Connect(Styled(AddressVerification))
     onError={[Function]}
     onSuccess={[Function]}
-    userAddress={
-      Object {
-        "address1": "pob",
-        "address2": "",
-        "zip": undefined,
-      }
-    }
   />
 </Fragment>
 `;
@@ -310,13 +296,6 @@ exports[`Shipping Page should render correctly with component did update and get
   <Connect(Styled(AddressVerification))
     onError={[Function]}
     onSuccess={[Function]}
-    userAddress={
-      Object {
-        "address1": "pob",
-        "address2": "",
-        "zip": undefined,
-      }
-    }
   />
 </Fragment>
 `;
