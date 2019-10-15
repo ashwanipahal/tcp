@@ -14,6 +14,8 @@ import SearchContainer, {
 } from '../SearchProduct.style.native';
 import { getSearchResult } from '../../../molecules/SearchBar/SearchBar.actions';
 import { getLabelValue } from '../../../../../utils/index.native';
+import { setRecentSearch } from '../RecentSearch.actions';
+import getRecentSearchesData from '../RecentSearches.selectors';
 
 class SearchProduct extends React.PureComponent {
   constructor(props) {
@@ -36,14 +38,20 @@ class SearchProduct extends React.PureComponent {
       const lookingForLabel = getLabelValue(slpLabels, 'lbl_search_looking_for');
       const lookingForData = autosuggestList.find(data => data.heading === lookingForLabel);
       const { suggestions } = lookingForData;
+
+      const listData =
+        suggestions.length > 0
+          ? [
+              {
+                title: lookingForLabel,
+                data: suggestions,
+              },
+            ]
+          : [];
+
       // sets data with looking for results
       this.setState({
-        listData: [
-          {
-            title: lookingForLabel,
-            data: suggestions,
-          },
-        ],
+        listData,
       });
     }
   }
@@ -95,8 +103,9 @@ class SearchProduct extends React.PureComponent {
   searchProducts = name => {
     this.setState({ modalVisible: false }, () => {
       const { searchText } = this.state;
-      const { goToSearchResultsPage } = this.props;
+      const { goToSearchResultsPage, setRecentSearches } = this.props;
       const selectedSearchResult = name || searchText;
+      if (setRecentSearches) setRecentSearches(selectedSearchResult);
       if (goToSearchResultsPage) goToSearchResultsPage(selectedSearchResult);
     });
   };
@@ -136,18 +145,16 @@ class SearchProduct extends React.PureComponent {
           value={searchText}
           onSubmitEditing={() => {
             const { searchText: text } = this.state;
-            if (text.length > 0) this.searchProducts(text);
+            this.searchProducts(text);
           }}
         />
         {searchText.length > 0 ? (
-          <CloseButton>
+          <CloseButton onPress={this.clearSearchText}>
             <CustomIcon
               iconFontName={ICON_FONT_CLASS.Icomoon}
               name={ICON_NAME.large}
               size="fs10"
               color="gray.900"
-              isButton
-              onPress={this.clearSearchText}
             />
           </CloseButton>
         ) : (
@@ -160,7 +167,6 @@ class SearchProduct extends React.PureComponent {
         )}
         <Button
           buttonVariation="fixed-width"
-          width="40px"
           text="Cancel"
           fontSize="fs13"
           fontWeight="regular"
@@ -253,9 +259,17 @@ class SearchProduct extends React.PureComponent {
    */
   keyExtractor = (_, index) => index.toString();
 
+  recentSearchesListData = () => {
+    const { recentSearches, labels = {} } = this.props;
+    const recentSearchesLabel = (labels && getLabelValue(labels, 'lbl_search_recent_search')) || '';
+    return recentSearches && recentSearches.length > 0
+      ? [{ title: recentSearchesLabel, data: recentSearches }]
+      : [];
+  };
+
   render() {
     const { modalVisible, showRecentSearches, extraDataForSearch, listData } = this.state;
-    const data = showRecentSearches ? [] : listData;
+    const data = showRecentSearches ? this.recentSearchesListData() : listData;
 
     return (
       <Modal
@@ -288,6 +302,8 @@ SearchProduct.propTypes = {
   startSearch: PropTypes.func,
   labels: PropTypes.instanceOf(Object),
   searchResults: PropTypes.instanceOf(Object),
+  recentSearches: PropTypes.arrayOf(Object),
+  setRecentSearches: PropTypes.func,
 };
 
 SearchProduct.defaultProps = {
@@ -296,12 +312,15 @@ SearchProduct.defaultProps = {
   startSearch: null,
   labels: null,
   searchResults: {},
+  recentSearches: [],
+  setRecentSearches: null,
 };
 
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.Search,
     searchResults: state.Search && state.Search.searchResults,
+    recentSearches: getRecentSearchesData(state),
   };
 };
 
@@ -309,6 +328,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     startSearch: searchTerm => {
       dispatch(getSearchResult(searchTerm));
+    },
+    setRecentSearches: searchTerm => {
+      dispatch(setRecentSearch({ searchTerm }));
     },
   };
 };

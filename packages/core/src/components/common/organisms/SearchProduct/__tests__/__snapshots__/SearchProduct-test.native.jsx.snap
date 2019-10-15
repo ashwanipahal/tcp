@@ -75,7 +75,6 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
         text="Cancel"
         theme={Object {}}
         url=""
-        width="40px"
       />
     </Styled(View)>
     <SectionList

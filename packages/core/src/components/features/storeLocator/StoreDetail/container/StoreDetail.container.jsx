@@ -31,15 +31,13 @@ export class StoreDetailContainer extends PureComponent {
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(
-        ({ isMobileApp, navigateToNestedRoute, UrlHandler, validateExternalUrl, isAndroid }) => {
-          this.hasMobileApp = isMobileApp();
-          this.navigateToNestedRoute = navigateToNestedRoute;
-          this.UrlHandler = UrlHandler;
-          this.validateExternalUrl = validateExternalUrl;
-          this.isAndroid = isAndroid && isAndroid();
-        }
-      )
+      .then(({ isMobileApp, navigateToNestedRoute, UrlHandler, isAndroid, mapHandler }) => {
+        this.hasMobileApp = isMobileApp();
+        this.navigateToNestedRoute = navigateToNestedRoute;
+        this.UrlHandler = UrlHandler;
+        this.isAndroid = isAndroid && isAndroid();
+        this.mapHandler = mapHandler;
+      })
       .catch(error => {
         console.log('error: ', error);
       });
@@ -96,15 +94,11 @@ export class StoreDetailContainer extends PureComponent {
 
   openStoreDirections(store) {
     const {
-      basicInfo: { address, coordinates },
+      basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    const { lat, long } = coordinates;
     if (this.hasMobileApp) {
-      const url = `${googleMapConstants.OPEN_STORE_DIR_APP}${lat}%2C${long}`;
-      if (this.validateExternalUrl(url)) {
-        this.UrlHandler(url);
-      }
+      this.mapHandler(store);
     } else {
       window.open(
         `${
@@ -165,7 +159,9 @@ export class StoreDetailContainer extends PureComponent {
 }
 
 StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
+  console.log('Hello -----------------------------------------------');
   if (!isServer) {
+    console.log('hello');
     const storeId = fetchStoreIdFromUrlPath(query.storeStr);
     store.dispatch(getCurrentStoreInfo(storeId));
   }

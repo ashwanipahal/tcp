@@ -1,6 +1,12 @@
 import { css } from 'styled-components';
 
 export default css`
+  &__backlink {
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+
   .favoriteStore__heading {
     font-size: 16px;
     color: ${props => props.theme.colors.TEXT.DARK};
@@ -12,11 +18,11 @@ export default css`
     display: none;
   }
 
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .store__list:nth-child(even) {
-      margin-right: 0;
-    }
+  .store_item_container:nth-child(1n) {
+    margin: 0 14px;
+  }
 
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
     .storeView__List {
       flex-direction: row-reverse;
     }

@@ -16,6 +16,7 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
+import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 
 export class AddressForm extends React.PureComponent {
   static propTypes = {
@@ -172,6 +173,7 @@ export class AddressForm extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-phnumber"
               type="tel"
+              normalize={formatPhoneNumber}
             />
           </Col>
         </Row>

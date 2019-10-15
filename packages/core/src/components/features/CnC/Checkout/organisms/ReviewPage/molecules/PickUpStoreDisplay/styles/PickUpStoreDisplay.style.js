@@ -18,6 +18,15 @@ const styles = css`
   .pickup-store-margin {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .pickup-store-icon {
+      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    }
+    .pickup-store-details {
+      margin-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    }
+  }
 `;
 
 export default styles;

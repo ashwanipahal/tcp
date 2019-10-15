@@ -69,29 +69,6 @@ exports[`CardTile should render correctly with amex card 1`] = `
           >
             lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -126,6 +103,27 @@ exports[`CardTile should render correctly with amex card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -208,29 +206,6 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
           >
             lbl_payment_cardNum6765
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -268,6 +243,27 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -367,29 +363,6 @@ exports[`CardTile should render correctly with discover card 1`] = `
           >
             lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -427,6 +400,27 @@ exports[`CardTile should render correctly with discover card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -814,29 +808,6 @@ exports[`CardTile should render correctly with master card 1`] = `
           >
             lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -874,6 +845,27 @@ exports[`CardTile should render correctly with master card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -1255,29 +1247,6 @@ exports[`CardTile should render correctly with plcc card 1`] = `
           >
             lbl_payment_cardNum6765
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -1315,6 +1284,27 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"
@@ -1513,29 +1503,6 @@ exports[`CardTile should render correctly with visa card 1`] = `
           >
             lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -1573,6 +1540,27 @@ exports[`CardTile should render correctly with visa card 1`] = `
         </div>
       </Styled(Col)>
     </Styled(Row)>
+  </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
   </div>
   <div
     className="cardTile__ctaLinks"

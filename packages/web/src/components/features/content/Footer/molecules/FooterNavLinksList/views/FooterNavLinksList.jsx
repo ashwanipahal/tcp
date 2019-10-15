@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { routerPush, scrollPage, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
+import { routerPush, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import styles from '../FooterNavLinksList.style';
 
 /**
@@ -41,7 +41,6 @@ const FooterNavLinksList = ({
   const myAccountLogin = (e, handler) => {
     e.preventDefault();
     // TO-DO : When the header is fixed at top, we can remove the scroll page call.
-    scrollPage();
     footerActionCreator(handler, {
       component: 'login',
       variation: 'primary',
