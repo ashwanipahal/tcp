@@ -13,6 +13,13 @@ export default styled.View`
 
 export const TileHeader = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  ${props =>
+    props.selectedStoreId
+      ? `
+        border: solid 1px ${props.theme.colors.PRIMARY.LIGHTGRAY};
+        background-color: ${props.theme.colors.PRIMARY.PALEGRAY};
+        `
+      : ''};
 `;
 
 export const TileBody = styled.View`
@@ -74,16 +81,6 @@ export const ListingTitleText = styled.Text`
 
 export const AddressText = styled.Text`
   ${headerTextStyle}
-`;
-
-export const StyledListingTileContainer = styled.View`
-  ${props =>
-    props.selectedStoreId
-      ? `
-        border: solid 1px ${props.theme.colors.PRIMARY.LIGHTGRAY};
-        background-color: ${props.theme.colors.PRIMARY.PALEGRAY};
-        `
-      : ''};
 `;
 
 export const StoryType = styled.View`
