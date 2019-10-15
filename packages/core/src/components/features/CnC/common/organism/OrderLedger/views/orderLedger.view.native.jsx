@@ -316,7 +316,7 @@ const getHeader = (labels, ledgerSummaryData) => {
   return (
     <StyledHeader>
       <BodyCopy
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
         component="span"
