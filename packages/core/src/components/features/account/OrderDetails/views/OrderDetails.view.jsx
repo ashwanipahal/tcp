@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+/* eslint-disable complexity */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -9,7 +10,12 @@ import OrderBasicDetails from '../organism/OrderBasicDetails';
 import OrderShippingDetails from '../organism/OrderShippingDetails';
 import OrderBillingDetails from '../organism/OrderBillingDetails';
 import OrderSummaryDetails from '../organism/OrderSummaryDetails';
-import OrderItemsWithStatus from '../organism/OrderItemsWithStatus';
+import OrderItemsList from '../organism/OrderItemsList';
+import OrderStatus from '../organism/OrderStatus';
+import OrderGroupHeader from '../organism/OrderGroupHeader';
+import OrderGroupNotification from '../organism/OrderGroupNotification';
+
+import constants from '../OrderDetails.constants';
 
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
@@ -19,96 +25,171 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
  * @param orderDetailsData - orderDetailsData object used for showing Order Details
  */
 
-class OrderDetailsView extends PureComponent {
-  render() {
-    const { orderDetailsData, className, ordersLabels } = this.props;
+const OrderDetailsView = props => {
+  const { orderDetailsData, className, ordersLabels } = props;
 
-    const {
-      // orderNumber,
-      // orderDate,
-      // pickUpExpirationDate,
-      // checkout,
-      summary,
-      // appliedGiftCards,
-      // status,
-      // pickedUpDate,
-      purchasedItems,
-      // outOfStockItems,
-      // isBossOrder,
-      // canceledItems,
-      isBopisOrder,
-      // orderType,
-      // bossMaxDate,
-      // bossMinDate,
-    } = orderDetailsData || {};
+  const {
+    // orderNumber,
+    // orderDate,
+    pickUpExpirationDate,
+    // checkout,
+    summary,
+    // appliedGiftCards,
+    // status,
+    orderStatus,
+    pickedUpDate,
+    purchasedItems,
+    outOfStockItems,
+    isBossOrder,
+    canceledItems,
+    isBopisOrder,
+    // orderType,
+    // bossMaxDate,
+    // bossMinDate,
+  } = orderDetailsData || {};
 
-    const { currencySymbol } = summary || {};
+  const { currencySymbol } = summary || {};
+  const notificationHeader = isBossOrder
+    ? getLabelValue(ordersLabels, 'lbl_orders_noLongerAvailable')
+    : getLabelValue(ordersLabels, 'lbl_orders_canceledItems');
+  const notificationMessage = isBossOrder
+    ? getLabelValue(ordersLabels, 'lbl_orders_isBossOrderCancelNotification')
+    : getLabelValue(ordersLabels, 'lbl_orders_CancelNotification');
+  return (
+    <div className={className}>
+      <FormPageHeadingComponent heading={getLabelValue(ordersLabels, 'lbl_orderDetails_heading')} />
+      {orderDetailsData && (
+        <>
+          <Row fullBleed className="elem-mt-XL">
+            <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+              <Row fullBleed>
+                <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <OrderBasicDetails
+                    orderDetailsData={orderDetailsData}
+                    ordersLabels={ordersLabels}
+                  />
+                </Col>
+                <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <OrderShippingDetails
+                    orderDetailsData={orderDetailsData}
+                    ordersLabels={ordersLabels}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <Col colSize={{ large: 6, medium: 4, small: 6 }}>
+              <Row fullBleed>
+                <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <OrderBillingDetails
+                    orderDetailsData={orderDetailsData}
+                    ordersLabels={ordersLabels}
+                  />
+                </Col>
+                <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+                  <OrderSummaryDetails
+                    orderDetailsData={orderDetailsData}
+                    ordersLabels={ordersLabels}
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
+            purchasedItems &&
+            purchasedItems.length > 0 &&
+            purchasedItems.map((orderGroup, index) => (
+              <Row fullBleed className="group-row purchasedItemsMargin">
+                <OrderStatus
+                  status={orderGroup.orderStatus}
+                  trackingNumber={orderGroup.trackingNumber}
+                  trackingUrl={orderGroup.trackingUrl}
+                  shippedDate={orderGroup.shippedDate}
+                  isBopisOrder={isBopisOrder}
+                  ordersLabels={ordersLabels}
+                />
 
-    return (
-      <div className={className}>
-        <FormPageHeadingComponent
-          heading={getLabelValue(ordersLabels, 'lbl_orderDetails_heading')}
-        />
-        {orderDetailsData && (
-          <>
-            <Row fullBleed className="elem-mt-XL">
-              <Col colSize={{ large: 6, medium: 4, small: 6 }}>
-                <Row fullBleed>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-                    <OrderBasicDetails
-                      orderDetailsData={orderDetailsData}
-                      ordersLabels={ordersLabels}
-                    />
-                  </Col>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-                    <OrderShippingDetails
-                      orderDetailsData={orderDetailsData}
-                      ordersLabels={ordersLabels}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-              <Col colSize={{ large: 6, medium: 4, small: 6 }}>
-                <Row fullBleed>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-                    <OrderBillingDetails
-                      orderDetailsData={orderDetailsData}
-                      ordersLabels={ordersLabels}
-                    />
-                  </Col>
-                  <Col colSize={{ large: 6, medium: 8, small: 6 }}>
-                    <OrderSummaryDetails
-                      orderDetailsData={orderDetailsData}
-                      ordersLabels={ordersLabels}
-                    />
-                  </Col>
-                </Row>
+                <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                  <OrderItemsList
+                    key={index.toString()}
+                    ordersLabels={ordersLabels}
+                    items={orderGroup.items}
+                    currencySymbol={currencySymbol}
+                    isShowWriteReview={
+                      orderGroup.orderStatus === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
+                      orderStatus === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
+                    }
+                  />
+                </Col>
+              </Row>
+            ))}
+
+          {(isBossOrder || isBopisOrder) && purchasedItems && purchasedItems.length > 0 && (
+            <Row fullBleed className="group-row">
+              {isBopisOrder && (
+                <OrderStatus
+                  status={orderStatus}
+                  pickUpExpirationDate={pickUpExpirationDate}
+                  pickedUpDate={pickedUpDate}
+                  isBopisOrder={isBopisOrder}
+                  ordersLabels={ordersLabels}
+                />
+              )}
+              <OrderGroupHeader
+                label={getLabelValue(ordersLabels, 'lbl_orders_purchasedItems')}
+                message={summary.purchasedItems}
+              />
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <OrderItemsList
+                  ordersLabels={ordersLabels}
+                  items={purchasedItems[0].items}
+                  currencySymbol={currencySymbol}
+                  isShowWriteReview={
+                    isBopisOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ORDER_PICKED
+                  }
+                />
               </Col>
             </Row>
-            {purchasedItems && (
-              <Row fullBleed className="purchasedItemsMargin">
-                {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
-                  purchasedItems.length > 0 &&
-                  purchasedItems.map((orderGroup, index) => (
-                    <Col colSize={{ large: 6, medium: 3, small: 6 }}>
-                      <OrderItemsWithStatus
-                        key={index.toString()}
-                        {...{ orderGroup }}
-                        ordersLabels={ordersLabels}
-                        isBopisOrder={isBopisOrder}
-                        currencySymbol={currencySymbol}
-                      />
-                    </Col>
-                  ))}
-              </Row>
-            )}
-          </>
-        )}
-      </div>
-    );
-  }
-}
+          )}
 
+          {outOfStockItems && outOfStockItems.length > 0 && (
+            <Row fullBleed className="group-row">
+              <OrderGroupHeader
+                label={getLabelValue(ordersLabels, 'lbl_orders_outOfStock')}
+                message={outOfStockItems.length}
+              />
+              <OrderGroupNotification
+                message={getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')}
+              />
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <OrderItemsList
+                  ordersLabels={ordersLabels}
+                  items={outOfStockItems}
+                  currencySymbol={currencySymbol}
+                  isShowWriteReview={false}
+                />
+              </Col>
+            </Row>
+          )}
+
+          {canceledItems && canceledItems.length > 0 && (
+            <Row fullBleed className="group-row">
+              <OrderGroupHeader label={notificationHeader} message={canceledItems.length} />
+              <OrderGroupNotification message={notificationMessage} />
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <OrderItemsList
+                  ordersLabels={ordersLabels}
+                  items={canceledItems.items}
+                  currencySymbol={currencySymbol}
+                  isShowWriteReview={false}
+                />
+              </Col>
+            </Row>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
 OrderDetailsView.propTypes = {
   className: PropTypes.string,
   orderDetailsData: PropTypes.shape({}),

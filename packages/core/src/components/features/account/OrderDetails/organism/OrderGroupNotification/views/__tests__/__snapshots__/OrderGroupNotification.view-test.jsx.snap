@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order GroupHeader component should renders correctly 1`] = `
+<Styled(Col)
+  className="elem-mb-MED"
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    1
+  </Styled(BodyCopy)>
+</Styled(Col)>
+`;
