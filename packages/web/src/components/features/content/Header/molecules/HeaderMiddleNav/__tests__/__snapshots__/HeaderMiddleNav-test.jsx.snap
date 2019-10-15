@@ -121,7 +121,9 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
@@ -310,7 +312,9 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
