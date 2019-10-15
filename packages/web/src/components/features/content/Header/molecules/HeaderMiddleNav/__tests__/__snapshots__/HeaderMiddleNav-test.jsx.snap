@@ -316,7 +316,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         <Styled(Anchor)
           anchorVariation="primary"
           className="rightLink"
-          fontSizeVariation="small"
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
