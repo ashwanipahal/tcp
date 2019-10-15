@@ -6,9 +6,7 @@
  * @description -  gives status of activeness of button.
  */
 const getActiveStatus = (id, selectedTabId = []) => {
-  const selectedTab = Array.isArray(selectedTabId)
-    ? selectedTabId && selectedTabId[0]
-    : selectedTabId;
+  const selectedTab = Array.isArray(selectedTabId) ? selectedTabId[0] : selectedTabId;
   if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
     return true;
   }

@@ -106,10 +106,15 @@ export function getPricesWithRange(productInfo, color, fit, size, isSelectedSize
  * @return the first element in the colorFitsSizesMap array that corresponds to the given colorProductId.
  */
 export function getMapSliceForColorProductId(colorFitsSizesMap, colorProductId) {
-  const selectedProduct = colorFitsSizesMap.find(
-    entry => entry.colorProductId === colorProductId || entry.colorDisplayId === colorProductId
+  const selectedProduct =
+    colorFitsSizesMap &&
+    colorFitsSizesMap.find(
+      entry => entry.colorProductId === colorProductId || entry.colorDisplayId === colorProductId
+    );
+  return (
+    selectedProduct ||
+    (colorFitsSizesMap && colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null)
   );
-  return selectedProduct || (colorFitsSizesMap.length > 0 ? colorFitsSizesMap[0] : null);
 }
 
 /**
