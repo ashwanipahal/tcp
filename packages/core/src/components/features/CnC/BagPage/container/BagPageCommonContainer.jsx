@@ -81,6 +81,7 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessagePositionInfo,
       cartItemSflError,
       currencySymbol,
+      startPaypalNativeCheckoutAction,
     } = this.props;
 
     const showAddTobag = false;
@@ -110,6 +111,7 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
+        startPaypalNativeCheckoutAction={startPaypalNativeCheckoutAction}
       />
     );
   }
@@ -139,6 +141,9 @@ export const mapDispatchToProps = dispatch => {
     },
     toastMessagePositionInfo: palyoad => {
       dispatch(toastMessagePosition(palyoad));
+    },
+    startPaypalNativeCheckoutAction: () => {
+      dispatch(BAG_PAGE_ACTIONS.startPaypalNativeCheckout());
     },
   };
 };

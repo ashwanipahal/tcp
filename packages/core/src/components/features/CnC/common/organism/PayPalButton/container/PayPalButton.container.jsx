@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
@@ -9,6 +8,12 @@ import CONSTANTS from '../../../../Checkout/Checkout.constants';
 import { getAPIConfig } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
+  componentDidMount() {
+    const { startPaypalNativeCheckoutAction } = this.props;
+    console.log('startPaypalNativeCheckoutAction');
+    startPaypalNativeCheckoutAction();
+  }
+
   initalizePayPalButton = data => {
     const apiConfigObj = getAPIConfig();
     const { paypalEnv } = apiConfigObj;
@@ -42,14 +47,17 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isQualifedOrder, containerId } = this.props;
-    // const { router } = this.props;
+    const { isQualifedOrder, containerId, getPayPalSettings } = this.props;
     return (
-      <PayPalButton
-        isQualifedOrder={isQualifedOrder}
-        initalizePayPalButton={this.initalizePayPalButton}
-        containerId={containerId}
-      />
+      getPayPalSettings &&
+      getPayPalSettings.paypalInContextToken && (
+        <PayPalButton
+          isQualifedOrder={isQualifedOrder}
+          initalizePayPalButton={this.initalizePayPalButton}
+          containerId={containerId}
+          getPayPalSettings={getPayPalSettings}
+        />
+      )
     );
   }
 }
@@ -64,6 +72,9 @@ export const mapDispatchToProps = dispatch => {
     startPaypalCheckout: payload => {
       dispatch(bagPageActions.startPaypalCheckout(payload));
     },
+    startPaypalNativeCheckoutAction: () => {
+      dispatch(bagPageActions.startPaypalNativeCheckout());
+    },
     paypalAuthorizationHandle: () => {
       dispatch(bagPageActions.paypalAuthorization());
     },
@@ -73,9 +84,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PayPalButtonContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PayPalButtonContainer);

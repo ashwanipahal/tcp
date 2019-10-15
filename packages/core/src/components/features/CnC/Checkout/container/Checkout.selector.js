@@ -896,6 +896,10 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getPayPalSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -976,4 +980,5 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getPayPalSettings,
 };

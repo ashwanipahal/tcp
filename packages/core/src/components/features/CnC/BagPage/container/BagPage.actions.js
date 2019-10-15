@@ -113,6 +113,13 @@ const startPaypalCheckout = payload => {
   };
 };
 
+const startPaypalNativeCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT,
+    payload,
+  };
+};
+
 const paypalAuthorization = payload => {
   return {
     type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
@@ -211,6 +218,7 @@ export default {
   setItemOOS,
   paypalAuthorization,
   startPaypalCheckout,
+  startPaypalNativeCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,

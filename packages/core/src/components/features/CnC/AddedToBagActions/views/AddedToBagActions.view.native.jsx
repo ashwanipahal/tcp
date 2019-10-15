@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
@@ -9,6 +10,7 @@ import {
   CheckoutButton,
   PaymentsButtonWrapper,
 } from '../styles/AddedToBagActions.style.native';
+import PayPalButton from '../../common/organism/PayPalButton';
 import ADDEDTOBAG_CONSTANTS from '../../AddedToBag/AddedToBag.constants';
 import CheckoutModals from '../../common/organism/CheckoutModals';
 import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
@@ -39,6 +41,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       closeModal,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      getPayPalSettings,
     } = this.props;
     return (
       <ActionsWrapper>
@@ -64,26 +67,30 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </ButtonWrapper>
         )}
         {(isNoNEmptyBag || fromAddedToBagModal) && (
-          <ButtonWrapper>
-            <CheckoutButton
-              onPress={() => {
-                handleCartCheckout({
-                  isEditingItem,
-                  navigation,
-                  closeModal,
-                  navigationActions: NavigationActions,
-                });
-              }}
-            >
-              <BodyCopy
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs13"
-                text={labels.checkout && labels.checkout.toUpperCase()}
-              />
-            </CheckoutButton>
-          </ButtonWrapper>
+          <View>
+            <ButtonWrapper>
+              <PayPalButton getPayPalSettings={getPayPalSettings} />
+
+              <CheckoutButton
+                onPress={() => {
+                  handleCartCheckout({
+                    isEditingItem,
+                    navigation,
+                    closeModal,
+                    navigationActions: NavigationActions,
+                  });
+                }}
+              >
+                <BodyCopy
+                  color="white"
+                  fontWeight="extrabold"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  text={labels.checkout && labels.checkout.toUpperCase()}
+                />
+              </CheckoutButton>
+            </ButtonWrapper>
+          </View>
         )}
         {(isNoNEmptyBag || fromAddedToBagModal) && this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />

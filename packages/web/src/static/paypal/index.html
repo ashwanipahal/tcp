@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+  </head>
+  <body style="margin: 0px; padding:0px;">
+    <div style="display: none" id="test">Hello World</div>
+    <div id="paypal-button"></div>
+    <script>
+      function getUrlVars() {
+          var vars = {};
+          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+              vars[key] = value;
+          });
+          return vars;
+      }
+      paypal.Button.render(
+        {
+          style: {
+            size: "responsive",
+            color: "blue",
+            shape: "rect",
+            tagline: false,
+            height: 42,
+            label: 'paypal',
+          },
+          env: "sandbox", // Specify 'sandbox' for the test environment
+          funding: {
+            disallowed: [paypal && paypal.FUNDING.CREDIT]
+          },
+          payment: function() {
+            return new Promise(resolve => {
+              window.postMessage("payment");
+              const key = getUrlVars()["key"];
+              resolve(key);
+            });
+          },
+          onAuthorize: function(data, actions) {
+            document.getElementById("test").style.backgroundColor = "green";
+            window.postMessage("authorized");
+          },
+          onCancel: function(data, actions) {
+            // Show a cancel page or return to cart
+            window.postMessage("cancelled");
+            document.getElementById("test").style.backgroundColor = "yellow";
+          },
+          onError: function() {
+            window.postMessage("error");
+            document.getElementById("test").style.backgroundColor = "red";
+          }
+        },
+        "#paypal-button"
+      );
+      document.getElementById("test").style.backgroundColor = "blue";
+    </script>
+  </body>
+</html>

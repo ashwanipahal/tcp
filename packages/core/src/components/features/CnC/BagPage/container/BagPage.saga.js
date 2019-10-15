@@ -308,6 +308,16 @@ export function* startPaypalCheckout({ payload }) {
   }
 }
 
+export function* startPaypalNativeCheckout() {
+  const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+  // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
+  const fromPage = 'AjaxOrderItemDisplayView';
+  const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+  if (res) {
+    yield put(getSetIsPaypalPaymentSettings(res));
+  }
+}
+
 export function* authorizePayPalPayment() {
   const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
     checkoutSelectors.getPaypalPaymentSettings
@@ -446,6 +456,7 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.ADD_ITEM_SAVE_FOR_LATER, addItemToSFL);
   yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_CHECKOUT, startPaypalCheckout);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);

@@ -30,6 +30,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isBagPageStickyHeader,
       closeModal,
       isUSSite,
+      getPayPalSettings,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -48,6 +49,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeModal={closeModal}
         isUSSite={isUSSite}
         inheritedStyles={inheritedStyles}
+        getPayPalSettings={getPayPalSettings}
       />
     );
   }
@@ -78,6 +80,7 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    getPayPalSettings: checkoutSelectors.getPayPalSettings(state),
     isUSSite: isUsSite(state),
   };
 };
