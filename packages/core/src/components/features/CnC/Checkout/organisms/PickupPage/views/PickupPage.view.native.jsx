@@ -36,6 +36,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
 
 const formName = 'checkoutPickup';
 class PickUpFormPart extends React.Component {
@@ -161,10 +162,11 @@ class PickUpFormPart extends React.Component {
       isVenmoPickupDisplayed,
       isVenmoShippingDisplayed,
     } = this.props;
+    const { CHECKOUT_STAGES } = CONSTANTS;
     return (
       isVenmoPaymentInProgress &&
-      ((currentSection.toLowerCase() === 'pickup' && !isVenmoPickupDisplayed) ||
-        (currentSection.toLowerCase() === 'shipping' && !isVenmoShippingDisplayed))
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
     );
   };
 
@@ -213,11 +215,13 @@ class PickUpFormPart extends React.Component {
     return (
       <>
         <CheckoutProgressIndicator
-          activeStage="pickup"
+          activeStage={CONSTANTS.CHECKOUT_STAGES.PICKUP}
           navigation={navigation}
           availableStages={availableStages}
         />
-        {this.isShowVenmoBanner('pickup') && <VenmoBanner labels={pickUpLabels} />}
+        {this.isShowVenmoBanner(CONSTANTS.CHECKOUT_STAGES.PICKUP) && (
+          <VenmoBanner labels={pickUpLabels} />
+        )}
         <ScrollView>
           <Container>
             <PickupError>

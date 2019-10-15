@@ -9,6 +9,7 @@ import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
@@ -140,10 +141,11 @@ export default class ShippingPage extends React.Component {
       isVenmoPickupDisplayed,
       isVenmoShippingDisplayed,
     } = this.props;
+    const { CHECKOUT_STAGES } = CONSTANTS;
     return (
       isVenmoPaymentInProgress &&
-      ((currentSection.toLowerCase() === 'pickup' && !isVenmoPickupDisplayed) ||
-        (currentSection.toLowerCase() === 'shipping' && !isVenmoShippingDisplayed))
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
     );
   };
 
@@ -266,14 +268,17 @@ export default class ShippingPage extends React.Component {
     } = this.props;
 
     const { defaultAddressId } = this.state;
+    const { CHECKOUT_STAGES } = CONSTANTS;
     return (
       <>
         <CheckoutProgressIndicator
-          activeStage="shipping"
+          activeStage={CHECKOUT_STAGES.SHIPPING}
           navigation={navigation}
           availableStages={availableStages}
         />
-        {this.isShowVenmoBanner('shipping') && <VenmoBanner labels={venmoBannerLabel} />}
+        {this.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING) && (
+          <VenmoBanner labels={venmoBannerLabel} />
+        )}
         <ScrollView keyboardShouldPersistTaps="handled">
           <HeaderContainer>
             <CheckoutSectionTitleDisplay

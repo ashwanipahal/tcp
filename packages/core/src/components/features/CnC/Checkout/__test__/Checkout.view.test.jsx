@@ -116,6 +116,16 @@ describe('CheckoutPageVanilla component', () => {
       router: { query: { section: 'pickup', subSection: 'pickup' } },
       onPickupSubmit: () => {},
       isVenmoShippingBannerDisplayed: false,
+      reviewProps: {
+        labels: {
+          ariaLabelSubmitOrderButton: '',
+          applyConditionPreText: '',
+          applyConditionTermsText: '',
+          nextSubmitText: '',
+          applyConditionPolicyText: '',
+          applyConditionAndText: '',
+        },
+      },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();

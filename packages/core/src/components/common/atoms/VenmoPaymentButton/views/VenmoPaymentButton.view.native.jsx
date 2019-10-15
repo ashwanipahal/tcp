@@ -3,7 +3,12 @@ import { View } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
 import logger from '../../../../../utils/loggerInstance';
-import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
+import {
+  modes,
+  constants,
+  VENMO_USER_STATES,
+  VENMO_MOCK_DATA,
+} from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
@@ -68,16 +73,7 @@ export class VenmoPaymentButton extends Component {
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
     // Local Test Data without bridge, required for local development and testing
-    this.handleVenmoSuccess({
-      details: { username: 'gagandsb' },
-      username: 'gagandsb',
-      deviceData: '523d2ff2f87421afab351d7447afafab',
-      error: null,
-      nonce: 'fake-venmo-account-nonce',
-      supportedByBrowser: true,
-      timestamp: Date.now(),
-      type: 'VenmoAccount',
-    });
+    this.handleVenmoSuccess(VENMO_MOCK_DATA);
   };
 
   /**
