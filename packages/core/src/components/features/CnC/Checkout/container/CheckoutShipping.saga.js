@@ -69,7 +69,10 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
   }
 }
 
-export function* submitVerifiedAddressData({ payload: { submitData, shippingAddress } }, callback) {
+export function* submitVerifiedAddressData(
+  { payload: { submitData, shippingAddress, navigation } },
+  callback
+) {
   const {
     address1: addressLine1,
     address2: addressLine2,
@@ -86,5 +89,5 @@ export function* submitVerifiedAddressData({ payload: { submitData, shippingAddr
   };
   payloadData.shipTo.address = shipAddress;
   payloadData.shipTo.phoneNumber = shipAddress.phoneNumber;
-  yield submitShippingSectionData({ payload: { ...payloadData } }, callback);
+  yield call(submitShippingSectionData, { payload: { ...payloadData, navigation } }, callback);
 }
