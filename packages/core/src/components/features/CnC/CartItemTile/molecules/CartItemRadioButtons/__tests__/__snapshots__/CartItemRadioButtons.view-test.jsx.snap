@@ -5,48 +5,40 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
   className=""
 >
   <Styled(LabeledRadioButton)
-    checked={false}
-    className="normal-select-box common-select-box-css false"
-    data-locator="ItemPickUpTodayRadioButton"
-    disabled={true}
-    name="ship-it-undefined"
-    onChange={[Function]}
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      dataLocator="cartPickUpToday"
-      fontFamily="secondary"
-      fontSize="fs14"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-  </Styled(LabeledRadioButton)>
-  <Styled(LabeledRadioButton)
-    checked={false}
-    className="normal-select-box common-select-box-css false"
+    className="normal-select-box common-select-box-css  "
     data-locator="ItemShipToHomeRadioButton"
-    disabled={false}
     name="ship-it-undefined"
-    onChange={[Function]}
   >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      dataLocator="cartShipToHome"
-      fontFamily="secondary"
-      fontSize="fs14"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
+    <div
+      className="main-container "
+    >
+      <Styled(BodyCopy)
+        className="title-container"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          dataLocator="cartPickUpToday"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(BodyCopy)>
+    </div>
   </Styled(LabeledRadioButton)>
 </div>
 `;
