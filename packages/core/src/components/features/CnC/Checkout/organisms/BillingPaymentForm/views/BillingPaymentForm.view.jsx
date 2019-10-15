@@ -378,17 +378,6 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  handleSubmit = e => {
-    const { handleSubmit, labels } = this.props;
-    const { editMode } = this.state;
-    if (editMode) {
-      e.preventDefault();
-      this.setState({ editModeSubmissionError: labels.cardEditUnSavedError });
-      return this.ediCardErrorRef.current.scrollIntoView(false);
-    }
-    return handleSubmit(e);
-  };
-
   /**
    * @function render
    * @description render method to be called of component

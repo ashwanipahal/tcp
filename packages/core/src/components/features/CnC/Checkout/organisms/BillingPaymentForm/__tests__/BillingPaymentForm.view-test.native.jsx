@@ -223,22 +223,6 @@ describe('ButtonList component', () => {
     instance.unsetFormEditState();
     expect(spyGetCreditListView).toHaveBeenCalled();
   });
-
-  it('renders correctly with method handleSubmit', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    const instance = component.instance();
-    const spyGetCreditListView = jest.spyOn(instance, 'handleSubmit');
-    instance.handleSubmit();
-    expect(spyGetCreditListView).toHaveBeenCalled();
-  });
-  it('renders correctly with method handleSubmit with editmode', () => {
-    const component = shallow(<BillingPaymentForm {...props} />);
-    component.setState({ editMode: true });
-    const instance = component.instance();
-    const spyGetCreditListView = jest.spyOn(instance, 'handleSubmit');
-    instance.handleSubmit();
-    expect(spyGetCreditListView).toHaveBeenCalled();
-  });
   it('renders correctly with method onCCDropDownChange', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     component.setState({ addNewCCState: true });
