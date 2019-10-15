@@ -219,9 +219,11 @@ export default class ShippingPage extends React.PureComponent {
       onFileAddressKey,
       setAsDefaultShipping,
       saveToAddressBook,
-      updateShippingAddressData,
+      formatPayload,
+      verifyAddressAction,
     } = this.props;
-    updateShippingAddressData({
+    this.isAddressUpdating = true;
+    this.submitShippingAddressData = {
       shipTo: {
         address,
         addressId: address.addressId,
@@ -232,7 +234,9 @@ export default class ShippingPage extends React.PureComponent {
         saveToAccount: saveToAddressBook,
         setAsDefault: setAsDefaultShipping,
       },
-    });
+    };
+    const formattedPayload = formatPayload(address);
+    return verifyAddressAction(formattedPayload);
   };
 
   addNewShippingAddress = () => {
@@ -288,8 +292,19 @@ export default class ShippingPage extends React.PureComponent {
   };
 
   submitVerifiedShippingAddressData = shippingAddress => {
-    const { submitVerifiedShippingAddressData } = this.props;
-    submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
+    const { submitVerifiedShippingAddressData, updateShippingAddressData } = this.props;
+    if (this.isAddressUpdating) {
+      this.isAddressUpdating = false;
+      this.submitShippingAddressData.shipTo.address = {
+        ...this.submitShippingAddressData.shipTo.address,
+        ...shippingAddress,
+        addressLine1: shippingAddress.address1,
+        addressLine2: shippingAddress.address2,
+        zipCode: shippingAddress.zip,
+      };
+      return updateShippingAddressData(this.submitShippingAddressData);
+    }
+    return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
   };
 
   render() {
@@ -326,7 +341,11 @@ export default class ShippingPage extends React.PureComponent {
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
-    const shippingAddressData = (this.submitData && this.submitData.shipTo.address) || {};
+    let { submitData } = this;
+    if (this.isAddressUpdating) {
+      submitData = this.submitShippingAddressData;
+    }
+    const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
       <>
         <ShippingForm

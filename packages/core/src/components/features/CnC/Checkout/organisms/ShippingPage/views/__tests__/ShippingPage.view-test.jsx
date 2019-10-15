@@ -192,12 +192,12 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      verifyAddressAction: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);
     tree.setState({ isAddNewAddress: false });
     tree.instance().updateShippingAddress();
-    expect(mockedupdateShippingAddressData).toBeCalled();
     tree.instance().addNewShippingAddress();
     expect(mockedaddNewShippingAddressData).toBeCalled();
     tree
