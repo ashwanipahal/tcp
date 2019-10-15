@@ -6,6 +6,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
     className=""
   >
     <Styled(Image)
+      alt="error"
       src="/static/images/alert-triangle.png"
     />
     <Styled(BodyCopy)

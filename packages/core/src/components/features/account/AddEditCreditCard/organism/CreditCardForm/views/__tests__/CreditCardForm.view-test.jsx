@@ -21,7 +21,7 @@ describe('CreditCardForm component', () => {
           primary: 'true',
         },
       ]),
-      onFileAddresskey: '12345',
+      onFileAddressKey: '12345',
       initialValues: {},
     };
     const component = shallow(<CreditCardForm {...props} />);
@@ -44,7 +44,7 @@ describe('CreditCardForm component', () => {
           primary: 'true',
         },
       ]),
-      onFileAddresskey: '12345',
+      onFileAddressKey: '12345',
       initialValues: {},
       showCreditCardFields: false,
     };
