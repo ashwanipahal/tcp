@@ -70,6 +70,7 @@ export class StoreLanding extends PureComponent {
             key={item.basicInfo.id}
             openStoreDetails={this.openStoreDetails}
             selectedStoreId={centeredStoreId === item.basicInfo.id}
+            titleClickCb={this.focusOnMap}
           />
         ))}
       </StyledStoreListView>

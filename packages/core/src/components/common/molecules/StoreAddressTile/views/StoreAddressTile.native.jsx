@@ -62,12 +62,19 @@ class StoreAddressTile extends PureComponent {
     return (
       <StyledListingTileContainer>
         <ListingTileWrapper>
-          <ListingTitleStoreName>
+          {titleClickCb ? (
             <Anchor onPress={e => titleClickCb(e, id)}>
+              <ListingTitleStoreName>
+                {!!storeIndex && `${storeIndex}. `}
+                {storeName}
+              </ListingTitleStoreName>
+            </Anchor>
+          ) : (
+            <ListingTitleStoreName>
               {!!storeIndex && `${storeIndex}. `}
               {storeName}
-            </Anchor>
-          </ListingTitleStoreName>
+            </ListingTitleStoreName>
+          )}
         </ListingTileWrapper>
         <ListingTileWrapper>
           <ListingTitleText>

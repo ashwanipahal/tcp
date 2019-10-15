@@ -899,7 +899,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
               },
             }
           }
-          titleClickCb={null}
+          titleClickCb={[Function]}
           variation="listing"
         />
       </Styled(View)>
