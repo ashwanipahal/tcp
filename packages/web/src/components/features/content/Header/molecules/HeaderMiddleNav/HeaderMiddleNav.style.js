@@ -52,7 +52,7 @@ export default css`
   }
   .product-image {
     vertical-align: middle;
-    height: 20px;
+    height: 25px;
   }
 
   .rightLink {

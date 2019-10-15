@@ -110,7 +110,7 @@ class SearchBar extends React.PureComponent {
                   onClick={this.initiateSearch}
                   src={getIconPath('search-icon')}
                   data-locator="search-icon"
-                  height="20px"
+                  height="25px"
                 />
                 <Image
                   alt="close"
@@ -229,7 +229,7 @@ class SearchBar extends React.PureComponent {
               onClick={this.openSearchBar}
               src={getIconPath(fromCondensedHeader ? 'search-icon-blue' : 'search-icon')}
               data-locator="close-icon"
-              height="20px"
+              height="25px"
             />
           )}
         </BodyCopy>
