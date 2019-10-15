@@ -32,7 +32,8 @@ const ButtonStyles = css`
   text-transform: uppercase;
   min-height: 42px;
   letter-spacing: 0.93px;
-  font-size: ${props => props.theme.typography.fontSizes.fs13}
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
+  color: ${props => props.theme.colorPalette.gray['900']}
   ${props =>
     !props.link
       ? `@media ${props.theme.mediaQuery.large} {

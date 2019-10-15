@@ -10,7 +10,7 @@ import {
 } from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
-import { isPlccUser, getUserLoggedInState } from '../../account/User/container/User.selectors';
+import { isPlccUser, getUserLoggedInState } from '../../User/container/User.selectors';
 
 const propTypes = {
   component: PropTypes.string,
