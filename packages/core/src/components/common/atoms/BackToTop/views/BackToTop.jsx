@@ -1,53 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import config from '@tcp//core/src/config/site.config';
 import { isClient } from '../../../../../utils';
 import style from '../styles/BackToTop.style';
 
-const BackToTop = ({ className }) => {
-  const [showButton, setShowButton] = useState(false);
+class BackToTop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showButton: false,
+    };
+  }
 
-  const addBackToTopBtn = () => {
+  componentDidMount() {
+    window.addEventListener('scroll', throttle(this.addBackToTopBtn.bind(this), 100));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', throttle(this.addBackToTopBtn.bind(this), 100));
+  }
+
+  addBackToTopBtn = () => {
+    console.log('hello');
     if (
       document.body.scrollTop > config.SCROLL_TOP_POS ||
       document.documentElement.scrollTop > config.SCROLL_TOP_POS
     ) {
-      setShowButton(true);
+      this.setState({ showButton: true });
     } else {
-      setShowButton(false);
+      this.setState({ showButton: false });
     }
   };
 
-  const fireScrollEvent = () => {
-    let resizeId = '';
-    window.addEventListener('scroll', () => {
-      clearTimeout(resizeId);
-      resizeId = setTimeout(addBackToTopBtn, 500);
-    });
-  };
-
-  useEffect(() => {
-    if (isClient() && (!showButton || document.body.scrollTop === 0)) {
-      fireScrollEvent();
-    }
-  });
-
-  const scrollToTop = () => {
+  scrollToTop = () => {
     if (isClient()) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  return (
-    <button
-      className={`${className} scrollToTopBtn scrollToTopBtn--${showButton ? 'show' : 'hide'}`}
-      onClick={() => scrollToTop()}
-    >
-      <span className="scrollToTop__arrowBtn" />
-    </button>
-  );
-};
+  render() {
+    const { showButton } = this.state;
+    const { className } = this.props;
+    return (
+      <button
+        className={`${className} scrollToTopBtn scrollToTopBtn--${showButton ? 'show' : 'hide'}`}
+        onClick={this.scrollToTop}
+      >
+        <span className="scrollToTop__arrowBtn" />
+      </button>
+    );
+  }
+}
 
 BackToTop.propTypes = {
   className: PropTypes.string,
