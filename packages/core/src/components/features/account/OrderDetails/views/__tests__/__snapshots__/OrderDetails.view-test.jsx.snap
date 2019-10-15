@@ -39,6 +39,7 @@ exports[`Order Summary Details component should renders BOSSOrder and Bopis orde
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
               "large": 6,
@@ -68,31 +69,31 @@ exports[`Order Summary Details component should renders BOSSOrder and Bopis orde
         fullBleed={true}
       >
         <Styled(Col)
+          className="margin-mobile"
           colSize={
             Object {
-              "large": 6,
+              "large": 5,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderBillingDetails
-            className=""
+          <Styled(OrderBillingDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
-              "large": 6,
+              "large": 7,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderSummaryDetails
-            className=""
+          <Styled(OrderSummaryDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
@@ -142,6 +143,7 @@ exports[`Order Summary Details component should renders CanceledItems items 1`] 
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
               "large": 6,
@@ -171,31 +173,31 @@ exports[`Order Summary Details component should renders CanceledItems items 1`] 
         fullBleed={true}
       >
         <Styled(Col)
+          className="margin-mobile"
           colSize={
             Object {
-              "large": 6,
+              "large": 5,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderBillingDetails
-            className=""
+          <Styled(OrderBillingDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
-              "large": 6,
+              "large": 7,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderSummaryDetails
-            className=""
+          <Styled(OrderSummaryDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
@@ -245,6 +247,7 @@ exports[`Order Summary Details component should renders Out of Stock items 1`] =
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
               "large": 6,
@@ -274,31 +277,31 @@ exports[`Order Summary Details component should renders Out of Stock items 1`] =
         fullBleed={true}
       >
         <Styled(Col)
+          className="margin-mobile"
           colSize={
             Object {
-              "large": 6,
+              "large": 5,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderBillingDetails
-            className=""
+          <Styled(OrderBillingDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
         </Styled(Col)>
         <Styled(Col)
+          className="margin-tablet"
           colSize={
             Object {
-              "large": 6,
+              "large": 7,
               "medium": 8,
               "small": 6,
             }
           }
         >
-          <OrderSummaryDetails
-            className=""
+          <Styled(OrderSummaryDetails)
             orderDetailsData={Object {}}
             ordersLabels={Object {}}
           />
