@@ -417,7 +417,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1570821467/ecom/assets/products/gym/3009634/3009634_1128.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           },
           "link": Object {
             "action": "",
@@ -435,7 +435,7 @@ exports[`HomePageView should render correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Girls",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1570821443/ecom/assets/products/gym/3009633/3009633_6B-3.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           },
           "link": Object {
             "action": "",
