@@ -165,19 +165,15 @@ exports[`ModuleQ component renders correctly 1`] = `
       }
     >
       <Styled(Styled(Skeleton))
-        col={
+        col={3}
+        colSize={
           Object {
-            "l": 3,
-            "m": 3,
-            "s": 1,
+            "large": 4,
+            "medium": 2,
+            "small": 2,
           }
         }
-        row={1}
-        rowProps={
-          Object {
-            "justifyContent": "space-around",
-          }
-        }
+        removeLastMargin={true}
         showArrows={true}
       />
     </Styled(Col)>

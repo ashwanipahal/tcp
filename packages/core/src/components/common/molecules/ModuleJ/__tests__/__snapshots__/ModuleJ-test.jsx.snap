@@ -8,7 +8,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-chPdSV",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-chPdSV",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -252,20 +252,15 @@ exports[`ModuleJ component renders correctly 1`] = `
       }
     >
       <Styled(Styled(Skeleton))
-        col={
+        col={6}
+        colSize={
           Object {
-            "l": 5,
-            "m": 5,
-            "s": 4,
+            "large": 2,
+            "medium": 2,
+            "small": 2,
           }
         }
-        row={1}
-        rowProps={
-          Object {
-            "justifyContent": "space-around",
-            "marginBottom": "10px",
-          }
-        }
+        removeLastMargin={true}
         showArrows={true}
       />
       <Styled(Carousel)

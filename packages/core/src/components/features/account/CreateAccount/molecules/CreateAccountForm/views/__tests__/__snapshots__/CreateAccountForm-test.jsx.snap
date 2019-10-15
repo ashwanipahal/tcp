@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -75,7 +75,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
         "tooltipContent": [Function],
       },
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-jTzLTM",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {
