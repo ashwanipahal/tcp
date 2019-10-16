@@ -9,7 +9,7 @@ export const AccountOverview = ({ labels, commonLabels }) => {
     <React.Fragment>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_overview_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
       />
       <AccountOverviewTileList labels={labels} commonLabels={commonLabels} />
     </React.Fragment>

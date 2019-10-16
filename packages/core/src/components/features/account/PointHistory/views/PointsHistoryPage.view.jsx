@@ -34,7 +34,7 @@ export const PointsHistoryPageView = props => {
         </Anchor>
       </BodyCopy>
       <FormPageHeading
-        className="elem-mb-XL"
+        className="elem-mb-XL myAccountRightView"
         heading={getLabelValue(labels, 'lbl_common_points_history_heading')}
         dataLocator="points_history_heading"
       />

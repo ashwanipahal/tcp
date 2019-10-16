@@ -48,10 +48,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta
-            name="viewport"
-            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
-          />
+          <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link href="/static/app.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
         </Head>

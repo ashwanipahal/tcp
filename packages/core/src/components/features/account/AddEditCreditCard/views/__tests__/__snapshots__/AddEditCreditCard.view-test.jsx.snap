@@ -30,6 +30,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     data-locator="payment-addcreditordebitcardheader"
     heading="lbl_payment_addCCHeading"
   />
@@ -94,6 +95,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     data-locator="payment-addcreditordebitcardheader"
     heading="lbl_payment_editCCHeading"
   />
