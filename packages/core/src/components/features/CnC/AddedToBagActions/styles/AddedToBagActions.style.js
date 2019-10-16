@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const CtaStyle = css`
+const ctaStyle = css`
   display: block;
   margin-bottom: ${props =>
     props.isBagPageStickyHeader ? '0' : props.theme.spacing.ELEM_SPACING.MED};
@@ -20,27 +20,6 @@ const CtaStyle = css`
 
   .checkout-button {
     padding-top: 10px;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      bottom: 0;
-      left: 0;
-      position: fixed;
-      width: 92%;
-      background: ${props => props.theme.colors.WHITE};
-      z-index: ${props => props.theme.zindex.zLoader};
-      margin: 0;
-      border-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
-        ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-        ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-  }
-
-  .checkout-button.checkout-button-bagHeader {
-    flex-direction: row;
-  }
-
-  .checkout-sticky-header {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .checkout {
@@ -75,6 +54,9 @@ const CtaStyle = css`
   }
   .paypal-wrapper-atb {
     width: 100%;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-right: 10px;
+    }
   }
   .venmo-wrapper {
     display: none;
@@ -86,4 +68,4 @@ const CtaStyle = css`
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
-export default CtaStyle;
+export default ctaStyle;

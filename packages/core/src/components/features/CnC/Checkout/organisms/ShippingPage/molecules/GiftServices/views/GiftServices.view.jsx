@@ -205,6 +205,7 @@ class GiftServices extends React.PureComponent {
                     name="brand"
                     variation="secondary"
                     disabled={false}
+                    aria-label={GIFT_SERVICES_CONSTANTS.TCP}
                     className="tcp-radio-button"
                     onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
                   >
@@ -239,6 +240,7 @@ class GiftServices extends React.PureComponent {
                     component={LabeledRadioButton}
                     key={GIFT_SERVICES_CONSTANTS.GYM}
                     selectedValue={GIFT_SERVICES_CONSTANTS.GYM}
+                    aria-label={GIFT_SERVICES_CONSTANTS.GYM}
                     name="brand"
                     variation="secondary"
                     disabled={false}

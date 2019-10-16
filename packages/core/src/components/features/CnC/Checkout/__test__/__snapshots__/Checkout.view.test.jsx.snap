@@ -6,6 +6,7 @@ exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
   isConfirmationPage={false}
   leftSection={[Function]}
   marginTop={true}
+  orderLedgerAfterView={false}
 />
 `;
 
@@ -15,5 +16,6 @@ exports[`CheckoutPageVanilla component should renders correctly with shipping 1`
   isConfirmationPage={false}
   leftSection={[Function]}
   marginTop={true}
+  orderLedgerAfterView={false}
 />
 `;

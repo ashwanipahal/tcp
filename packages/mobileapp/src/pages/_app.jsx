@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, UIManager } from 'react-native';
+import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
 
@@ -90,7 +90,12 @@ export class App extends React.PureComponent {
         <NetworkProvider>
           <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
             <Box style={styles.container}>
-              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              {Platform.OS === 'ios' ? (
+                <StatusBar barStyle="default" />
+              ) : (
+                <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+              )}
+
               <AppNavigator
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
               />

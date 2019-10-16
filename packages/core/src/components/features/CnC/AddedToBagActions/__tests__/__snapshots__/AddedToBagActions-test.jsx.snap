@@ -46,7 +46,6 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       >
         <withRouter(Connect(PayPalButtonContainer))
           className="payPal-button"
-          containerId="paypal-button-container"
         />
       </div>
     </div>

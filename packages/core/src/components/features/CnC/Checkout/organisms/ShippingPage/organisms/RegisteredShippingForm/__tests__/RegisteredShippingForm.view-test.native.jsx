@@ -58,7 +58,7 @@ describe('RegisteredShippingForm', () => {
     expect(tree.state('modalType')).toBe('edit');
     expect(tree).toMatchSnapshot();
   });
-  it('should render correctly with  addresses and call toggleModal if it has onFileAddresskey', () => {
+  it('should render correctly with  addresses and call toggleModal if it has onFileAddressKey', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
@@ -90,7 +90,7 @@ describe('RegisteredShippingForm', () => {
     expect(tree.state('modalType')).toBe('edit');
     expect(tree).toMatchSnapshot();
   });
-  it('should render correctly with  addresses and call toggleModal if it has onFileAddresskey but does not match', () => {
+  it('should render correctly with  addresses and call toggleModal if it has onFileAddressKey but does not match', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,

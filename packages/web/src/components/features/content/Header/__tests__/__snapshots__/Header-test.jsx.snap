@@ -7,7 +7,7 @@ exports[`Header component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gPWkxV",
+        "componentId": "sc-fONwsr",
         "isStatic": false,
         "rules": Array [
           "
@@ -73,7 +73,7 @@ exports[`Header component renders correctly 1`] = `
       "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gPWkxV",
+      "styledComponentId": "sc-fONwsr",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
