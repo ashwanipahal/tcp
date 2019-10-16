@@ -72,12 +72,12 @@ export const generateBrowseDataLayer = store => {
     },
     listingCount: {
       get() {
-        return store.getState().ProductListing.get('totalProductsCount');
+        return store.getState().ProductListing.get('totalProductsCount') || '';
       },
     },
     storeId: {
       get() {
-        return store.getState().User.get('defaultStore').basicInfo.id;
+        return store.getState().User.get('defaultStore').basicInfo.id || '';
       },
     },
   };
