@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 
 /**
  * This function component use for Order Group Header
@@ -11,7 +11,7 @@ import { Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 const OrderGroupHeader = props => {
   const { label, message } = props;
   return (
-    <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+    <Row>
       <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
         <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
           {label}
@@ -21,7 +21,7 @@ const OrderGroupHeader = props => {
           {message}
         </BodyCopy>
       </Col>
-    </Col>
+    </Row>
   );
 };
 OrderGroupHeader.propTypes = {

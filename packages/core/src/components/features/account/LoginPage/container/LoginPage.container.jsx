@@ -14,7 +14,7 @@ import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 import {
   getLoginError,

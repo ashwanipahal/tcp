@@ -60,7 +60,7 @@ const style = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      top: 50%;
       left: 120px;
       width: 470px;
     }

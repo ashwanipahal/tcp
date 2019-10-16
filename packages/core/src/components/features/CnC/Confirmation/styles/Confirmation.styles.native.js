@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 
 const Wrapper = styled.ScrollView`
+  display: flex;
+`;
+
+const InnerWrapper = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
@@ -15,4 +19,4 @@ const ThankYouWrapper = styled.View`
   height: 400px;
 `;
 
-export { Wrapper, SMSWrapper, ThankYouWrapper };
+export { Wrapper, SMSWrapper, ThankYouWrapper, InnerWrapper };

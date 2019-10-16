@@ -7,14 +7,12 @@ export default css`
     }
   }
 
-  .purchasedItemsMargin {
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
-  }
   .group-row {
     border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
-    padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     }
   }
   .button-container {
@@ -30,21 +28,33 @@ export default css`
     }
   }
   .orderDetail-trackingNumber {
-    display: inline;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      display: block;
+    display: block;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline;
     }
   }
   .orderDetail-trackingNumber-pipe {
-    display: inline;
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      display: none;
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline;
     }
   }
   .order-Item {
-    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    }
+  }
+  .margin-tablet {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 0;
+    }
+  }
+  .margin-mobile {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 0;
     }
   }
 `;

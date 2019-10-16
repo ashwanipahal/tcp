@@ -29,16 +29,18 @@ const OrderStatus = props => {
             <BodyCopy className="orderDetail-trackingNumber-pipe" component="span">
               {' | '}
             </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontSize="fs16"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-            >
-              {getLabelValue(ordersLabels, 'lbl_orders_trackingNumber')}
-            </BodyCopy>
-            <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-              {trackingNumber}
+            <BodyCopy className="orderDetail-trackingNumber">
+              <BodyCopy
+                component="span"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
+                {getLabelValue(ordersLabels, 'lbl_orders_trackingNumber')}
+              </BodyCopy>
+              <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+                {trackingNumber}
+              </BodyCopy>
             </BodyCopy>
           </>
         )}
