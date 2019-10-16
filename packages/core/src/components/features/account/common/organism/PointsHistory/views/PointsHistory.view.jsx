@@ -21,7 +21,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
 
   return (
     <div className={className}>
-      <Row fullbleed className="elem-mb-SM elem-mt-SM">
+      <Row fullBleed className="elem-mb-SM elem-mt-SM">
         <Col colSize={{ large: 3, medium: 2, small: 2 }}>
           <BodyCopy
             data-locator="pointshistoryorderdatelbl"
@@ -49,6 +49,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
+            textAlign="center"
           >
             {getLabelValue(labels, 'lbl_common_points_earned')}
           </BodyCopy>
@@ -58,7 +59,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
       {pointHistoryData &&
         pointHistoryData.length &&
         pointHistoryData.map(pointHistoryRow => (
-          <Row fullbleed className="elem-mb-SM">
+          <Row fullBleed className="elem-mb-SM">
             <Col colSize={{ large: 3, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistoryorderdate"
@@ -93,7 +94,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
           </Row>
         ))}
 
-      <Row fullbleed className="elem-mt-XXL elem-mt-XXS">
+      <Row fullBleed className="elem-mt-XXL elem-mt-XXS">
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <Anchor
             dataLocator="pointshistorylnk"
