@@ -86,7 +86,6 @@ class ReviewPage extends React.PureComponent {
             <BillingSection
               onEdit={() => {
                 setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
-                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
               }}
             />
           </Container>
