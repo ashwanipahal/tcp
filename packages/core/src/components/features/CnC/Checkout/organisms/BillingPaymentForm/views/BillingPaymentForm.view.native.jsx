@@ -39,6 +39,13 @@ import {
   getDefaultPayment,
   getBillingAddressWrapper,
 } from './BillingPaymentForm.view.native.util';
+import CardEditFrom from './CardEditForm.view.native';
+import {
+  onEditCardFocus,
+  setFormToEditState,
+  unsetPaymentFormEditState,
+  handleBillingFormSubmit,
+} from './BillingPaymentForm.util';
 
 export class BillingPaymentForm extends React.PureComponent {
   static propTypes = propTypes;
@@ -47,9 +54,8 @@ export class BillingPaymentForm extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      addNewCCState: false,
-    };
+    this.state = { addNewCCState: false, editMode: false, editModeSubmissionError: '' };
+    this.ediCardErrorRef = React.createRef();
   }
 
   /**
@@ -69,22 +75,21 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getCheckoutBillingAddress
    * @description returns the checkout billing address form
    */
-  getCheckoutBillingAddress = () => {
+  getCheckoutBillingAddress = ({ editMode } = {}) => {
     const {
-      selectedOnFileAddressId,
-      userAddresses,
-      labels,
-      cardList,
-      isGuest,
-      orderHasShipping,
-      addressLabels,
-      dispatch,
-      shippingAddress,
       isSameAsShippingChecked,
-      billingData,
+      isEditFormSameAsShippingChecked = false,
+      editFormSelectedOnFileAddressId,
     } = this.props;
+    const { selectedOnFileAddressId, userAddresses, labels, cardList, isGuest } = this.props;
+    const { orderHasShipping, addressLabels, dispatch, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
+    const formType = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    let addressId = editMode ? editFormSelectedOnFileAddressId : selectedOnFileAddressId;
+    if (!editFormSelectedOnFileAddressId && editMode) {
+      addressId = '';
+    }
     return (
       <CheckoutBillingAddress
         isGuest={isGuest}
@@ -92,17 +97,20 @@ export class BillingPaymentForm extends React.PureComponent {
         addressLabels={addressLabels}
         dispatch={dispatch}
         shippingAddress={shippingAddress}
-        isSameAsShippingChecked={isSameAsShippingChecked}
+        isSameAsShippingChecked={
+          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
+        }
         labels={labels}
         billingData={billingData}
         userAddresses={userAddresses}
-        selectedOnFileAddressId={selectedOnFileAddressId}
-        formName={constants.FORM_NAME}
+        selectedOnFileAddressId={addressId}
+        formName={formType}
         addNewCCState={
           addNewCCState ||
           (!creditCardList && !orderHasShipping) ||
           (creditCardList && creditCardList.size === 0)
         }
+        editMode={editMode}
       />
     );
   };
@@ -111,40 +119,44 @@ export class BillingPaymentForm extends React.PureComponent {
    * @function getAddNewCCForm
    * @description returns the add new credit card form
    */
-  getAddNewCCForm = () => {
-    const {
-      cvvCodeRichText,
-      cardType,
-      labels,
-      syncErrorsObj,
-      isGuest,
-      isSaveToAccountChecked,
-      dispatch,
-      billingData,
-      creditFieldLabels,
-    } = this.props;
+  getAddNewCCForm = ({ onCardFocus, editMode } = {}) => {
+    const { cardList, onFileCardKey } = this.props;
+    const { isEditFormSameAsShippingChecked, isSameAsShippingChecked, isPLCCEnabled } = this.props;
+    const { cvvCodeRichText, cardType, labels, syncErrorsObj, isGuest, dispatch } = this.props;
+    const { isSaveToAccountChecked, billingData, creditFieldLabels, editFormCardType } = this.props;
     let cvvError;
     /* istanbul ignore else */
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
-    const isExpirationRequired = getExpirationRequiredFlag({ cardType });
+    const formCardType = editMode ? editFormCardType : cardType;
+    const isExpirationRequired = getExpirationRequiredFlag({ formCardType });
     const { addNewCCState } = this.state;
-    dispatch(change(constants.FORM_NAME, 'cardType', cardType));
+    const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+    dispatch(change(formName, 'cardType', formCardType));
+    dispatch(change(formName, 'isPLCCEnabled', isPLCCEnabled));
+    const creditCardList = getCreditCardList({ cardList });
+    const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     return (
       <AddNewCCForm
         cvvInfo={getCvvInfo({ cvvCodeRichText })}
-        cardType={cardType}
+        cardType={formCardType}
         cvvError={cvvError}
         labels={labels}
         isGuest={isGuest}
         isSaveToAccountChecked={isSaveToAccountChecked}
-        formName={constants.FORM_NAME}
+        formName={formName}
         dispatch={dispatch}
         isExpirationRequired={isExpirationRequired}
         billingData={billingData}
         addNewCCState={addNewCCState}
         creditFieldLabels={creditFieldLabels}
+        editMode={editMode}
+        onCardFocus={onCardFocus}
+        isSameAsShippingChecked={
+          editMode ? isEditFormSameAsShippingChecked : isSameAsShippingChecked
+        }
+        selectedCard={selectedCard}
       />
     );
   };
@@ -158,7 +170,7 @@ export class BillingPaymentForm extends React.PureComponent {
               mobileFontFamily="primary"
               fontSize="fs16"
               fontWeight="extrabold"
-              data-locator="billing-payment-method"
+              dataLocator="paymentMethodLbl"
               text={labels.paymentMethod}
               color="gray.900"
             />
@@ -188,7 +200,7 @@ export class BillingPaymentForm extends React.PureComponent {
               id="cvvCode"
               type="text"
               component={TextBox}
-              dataLocator="payment-cvv"
+              dataLocator="cvvTxtBox"
               customStyle={CvvTextboxStyle}
             />
             {this.getCvvInfoIcon(cvvCodeRichText)}
@@ -200,6 +212,10 @@ export class BillingPaymentForm extends React.PureComponent {
 
   getCvvInfoIcon = cvvCodeRichText => {
     return <CVVInfo>{getCvvInfo({ cvvCodeRichText })}</CVVInfo>;
+  };
+
+  unsetFormEditState = e => {
+    unsetPaymentFormEditState(this, e);
   };
 
   /**
@@ -223,16 +239,19 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch,
     cvvCodeRichText,
   }) => {
-    const { addNewCCState } = this.state;
+    const { addNewCCState, editMode, editModeSubmissionError } = this.state;
+    const isCardDetailEdit = selectedCard && !editMode;
+    const { getAddNewCCForm, unsetFormEditState } = this;
+    const { updateCardDetail, toastMessage } = this.props;
     return (
       <BillingAddressWrapper>
-        <CreditCardWrapper>
+        <CreditCardWrapper pointerEvents={editMode ? 'none' : 'auto'}>
           <CreditCardHeader>
             <BodyCopy
               mobileFontFamily="primary"
               fontSize="fs10"
               fontWeight="extrabold"
-              dataLocator="billing-payment-bilingcreditcardlabel"
+              dataLocator="cardDropDownLbl"
               text={labels.selectFromCard}
             />
           </CreditCardHeader>
@@ -248,17 +267,27 @@ export class BillingPaymentForm extends React.PureComponent {
             onChange={this.onCCDropDownChange}
           />
         </CreditCardWrapper>
-        {selectedCard ? getCardDetailsMethod(labels) : null}
-        {selectedCard ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
-        {selectedCard ? getDefaultPayment(selectedCard, labels) : null}
-        {selectedCard ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+        {selectedCard ? getCardDetailsMethod(labels, setFormToEditState, editMode, this) : null}
+        {isCardDetailEdit ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
+        {isCardDetailEdit ? getDefaultPayment(selectedCard, labels, false) : null}
+        {isCardDetailEdit ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+
+        {editMode ? (
+          <CardEditFrom
+            {...{ selectedCard, unsetFormEditState, getAddNewCCForm }}
+            {...{ onEditCardFocus, dispatch, labels, updateCardDetail, editModeSubmissionError }}
+            key="cardEditForm"
+            addressForm={this.getCheckoutBillingAddress}
+            errorMessageRef={this.ediCardErrorRef}
+            {...{ getDefaultPayment, toastMessage }}
+          />
+        ) : null}
       </BillingAddressWrapper>
     );
   };
 
   addNewBillingInfoForm = () => {
     const { cardList, labels, dispatch, onFileCardKey } = this.props;
-    const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     return (
       <>
@@ -266,7 +295,7 @@ export class BillingPaymentForm extends React.PureComponent {
           creditCardList.size > 0 &&
           this.getCCDropDown({ labels, creditCardList, onFileCardKey, dispatch })}
         {this.getAddNewCCForm()}
-        {this.getCheckoutBillingAddress({ ...this.props, creditCardList, addNewCCState })}
+        {this.getCheckoutBillingAddress()}
       </>
     );
   };
@@ -323,7 +352,6 @@ export class BillingPaymentForm extends React.PureComponent {
    */
   render() {
     const {
-      handleSubmit,
       cardList,
       onFileCardKey,
       labels,
@@ -333,7 +361,6 @@ export class BillingPaymentForm extends React.PureComponent {
       backLinkPickup,
       backLinkShipping,
       nextSubmitText,
-      onSubmit,
       navigation,
       dispatch,
       isPaymentDisabled,
@@ -355,7 +382,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 fontWeight="regular"
                 spacingStyles="margin-bottom-MED"
                 color="gray.900"
-                data-locator="billing-details"
+                dataLocator="paymentMethodLbl"
                 text={labels.paymentMethod}
               />
             </PaymentMethodHeader>
@@ -386,7 +413,7 @@ export class BillingPaymentForm extends React.PureComponent {
           navigation={navigation}
           btnText={nextSubmitText}
           routeToPage=""
-          onPress={handleSubmit(onSubmit)}
+          onPress={e => handleBillingFormSubmit(this, e, true)}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           onBackLinkPress={() =>
             navigation.navigate(

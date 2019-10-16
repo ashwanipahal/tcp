@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
 import { InstagramLoginComponent } from './InstagramLogin';
+import TwitterLoginComponent from './twitterLoginComponent';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -14,6 +15,7 @@ import getLinkedSocialAccountLabel from '../utils';
 const loginComponents = {
   Facebook: FacebookLogin,
   Instagram: InstagramLoginComponent,
+  Twitter: TwitterLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -172,7 +174,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook' || prop === 'instagram') {
+      if (prop === 'facebook' || prop === 'instagram' || prop === 'twitter') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,

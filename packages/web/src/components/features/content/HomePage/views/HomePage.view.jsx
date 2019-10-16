@@ -6,8 +6,8 @@ import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlo
 import { isTCP } from '@tcp/core/src/utils';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
-import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
+import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;

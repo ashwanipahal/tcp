@@ -10,11 +10,14 @@ describe('Shipping Page', () => {
       addressLine1: 'pob',
       addressLine2: '',
     };
-    const data = { address, shipmentMethods: [{}], smsSignUp: {} };
+    const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
+      formatPayload: () => {},
+      addressLabels: {},
+      verifyAddressAction: () => {},
       shippingLabels: {
         sectionHeader: '',
       },
@@ -92,7 +95,10 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
+      formatPayload: () => {},
+      addressLabels: {},
       selectedShipmentId: '334',
+      verifyAddressAction: () => {},
       userAddresses: new List([
         {
           addressId: '123',
@@ -132,6 +138,9 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
+      formatPayload: () => {},
+      verifyAddressAction: () => {},
+      addressLabels: {},
       selectedShipmentId: '334',
       userAddresses: new List([
         {

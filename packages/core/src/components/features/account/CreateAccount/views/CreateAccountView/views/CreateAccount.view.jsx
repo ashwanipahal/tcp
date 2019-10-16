@@ -46,6 +46,8 @@ class CreateAccount extends React.Component<Props> {
       onRequestClose,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -62,6 +64,8 @@ class CreateAccount extends React.Component<Props> {
           showForgotPasswordForm={this.showForgotPasswordForm}
           isUserLoggedIn={isUserLoggedIn}
           formErrorMessage={formErrorMessage}
+          userplccCardNumber={userplccCardNumber}
+          userplccCardId={userplccCardId}
         />
       </div>
     );

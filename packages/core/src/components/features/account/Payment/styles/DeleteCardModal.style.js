@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const deleteCardModalStyle = css`
-  @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .deleteCardModal__card {
       display: block;
