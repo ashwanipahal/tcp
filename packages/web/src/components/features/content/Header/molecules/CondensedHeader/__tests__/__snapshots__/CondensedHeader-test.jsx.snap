@@ -45,6 +45,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           className="rightLink search-icon"
           fromCondensedHeader={true}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
