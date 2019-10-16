@@ -43,13 +43,13 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   }
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
-    const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
+    this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
     return {
-      selectedColor: initialValues && initialValues.color,
-      selectedFit: initialValues && initialValues.Fit,
-      selectedSize: initialValues && initialValues.Size,
-      selectedQuantity: initialValues && initialValues.Quantity,
-      persistSelectedFit: initialValues && initialValues.Fit,
+      selectedColor: this.initialValuesForm && this.initialValuesForm.color,
+      selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
+      selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
+      selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
+      persistSelectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
     };
   };
 
