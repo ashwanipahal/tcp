@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
+import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
@@ -102,6 +103,14 @@ class CartItemTile extends React.Component {
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
       this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    }
+  };
+
+  handleKeyDown = (event, callback) => {
+    const { KEY_ENTER, KEY_SPACE } = KEY_CODES;
+    const { which } = event;
+    if (which === KEY_ENTER || which === KEY_SPACE) {
+      callback();
     }
   };
 
@@ -563,13 +572,24 @@ class CartItemTile extends React.Component {
   };
 
   getCrossIconImage = () => {
-    const { isBagPageSflSection } = this.props;
+    const {
+      isBagPageSflSection,
+      productDetail: {
+        itemInfo: { name },
+      },
+      labels: { removeEdit },
+    } = this.props;
     return (
       <Image
-        alt="closeIcon"
+        alt={`${removeEdit} ${name}`}
+        role="button"
+        tabIndex="0"
         className="close-icon-image"
         src={getIconPath('close-icon')}
         onClick={isBagPageSflSection ? this.removeSflItem : this.removeCartItem}
+        onKeyDown={e =>
+          this.handleKeyDown(e, isBagPageSflSection ? this.removeSflItem : this.removeCartItem)
+        }
       />
     );
   };
@@ -647,6 +667,12 @@ class CartItemTile extends React.Component {
         <Row
           fullBleed
           className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+          tabIndex="0"
+          aria-label={`${productDetail.itemInfo.name}. ${labels.price} ${
+            productDetail.itemInfo.price
+          }. ${labels.size} ${productDetail.itemInfo.size}. ${labels.qty} ${
+            productDetail.itemInfo.qty
+          }`}
         >
           <Col
             key="productDetails"
@@ -761,9 +787,12 @@ class CartItemTile extends React.Component {
                           fontFamily="secondary"
                           fontSize="fs12"
                           component="div"
+                          role="button"
+                          tabIndex="0"
                           dataLocator={getLocator('cart_item_edit_link')}
                           className="padding-left-10 responsive-edit-css"
                           onClick={this.callEditMethod}
+                          onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
                         >
                           {labels.edit}
                         </BodyCopy>

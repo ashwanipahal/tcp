@@ -10,24 +10,18 @@ import { Row, Col } from '../../../atoms';
 import config from '../config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
-const { ctaTypes } = config;
+const { ctaTypes, getColSize } = config;
 
 const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType } = props;
-
+  const { className, ctaItems, headerText, promoBanner, ctaType, moduleWidth } = props;
+  const COL_SIZE = getColSize(moduleWidth);
   return (
     <Row
       className={`${className} moduleN`}
       fullBleed={{ small: true, medium: true, large: true }}
       data-locator={getLocator('moduleN_promobanner_img')}
     >
-      <Col
-        colSize={{
-          small: 6,
-          medium: 8,
-          large: 12,
-        }}
-      >
+      <Col className="moduleN-innerContent" colSize={COL_SIZE}>
         <div className="heading-wrapper">
           {headerText && (
             <LinkText
@@ -67,6 +61,7 @@ ModuleN.defaultProps = {
   headerText: [],
   promoBanner: [],
   ctaType: 'stackedCTAButtons',
+  moduleWidth: 'full',
 };
 
 ModuleN.propTypes = {
@@ -75,6 +70,7 @@ ModuleN.propTypes = {
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   ctaType: PropTypes.string,
+  moduleWidth: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);

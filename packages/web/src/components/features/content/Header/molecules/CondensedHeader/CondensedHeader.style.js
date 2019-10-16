@@ -116,6 +116,9 @@ export default css`
 
     .l1-overlay.is-open {
       top: 70px;
+      height: 100vh;
+      left: -21.5%;
+      width: 145%;
     }
 
     .nav-bar-item-label {
