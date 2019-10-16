@@ -15,31 +15,35 @@ const GuestMprPlccSection = props => {
     estimatedSubtotal,
     isPlcc,
     pointsDescription,
-    earnedReward,
+    // earnedReward,
     remainingPlcc,
     getCurrencySymbol,
     isProductDetailView,
   } = props;
   return (
     <div className={`${className} body`}>
-      <BodyCopy
-        className="youCanEarnPoints alignCenter"
-        color="text.primary"
-        fontFamily="secondary"
-        fontWeight="extrabold"
-      >
-        {headingLabel}
-      </BodyCopy>
-      <BodyCopy
-        className="save30Today alignCenter elem-pt-MED"
-        fontSize="fs20"
-        color="text.primary"
-        fontFamily="secondary"
-        fontWeight="extrabold"
-      >
-        {subHeadingLabel}
-      </BodyCopy>
-      {!isProductDetailView && (
+      {headingLabel && (
+        <BodyCopy
+          className="youCanEarnPoints alignCenter"
+          color="text.primary"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+        >
+          {headingLabel}
+        </BodyCopy>
+      )}
+      {subHeadingLabel && (
+        <BodyCopy
+          className="save30Today alignCenter elem-pt-MED"
+          fontSize="fs20"
+          color="text.primary"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+        >
+          {subHeadingLabel}
+        </BodyCopy>
+      )}
+      {pointsDescription && (
         <BodyCopy
           className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
           color="text.primary"
@@ -50,7 +54,8 @@ const GuestMprPlccSection = props => {
           {pointsDescription}
         </BodyCopy>
       )}
-      {isPlcc && !earnedReward && !isProductDetailView && (
+
+      {remainingPlcc && (
         <BodyCopy
           className="earnDoublePoints alignCenter"
           fontSize="fs16"
@@ -126,14 +131,14 @@ const GuestMprPlccSection = props => {
 GuestMprPlccSection.propTypes = {
   estimatedSubtotal: PropTypes.number,
   currentSubtotal: PropTypes.number,
-  showSubtotal: PropTypes.number,
+  showSubtotal: PropTypes.bool,
   labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
   headingLabel: PropTypes.string,
   subHeadingLabel: PropTypes.string,
   isPlcc: PropTypes.bool,
   pointsDescription: PropTypes.string,
-  earnedReward: PropTypes.number,
+  // earnedReward: PropTypes.number,
   remainingPlcc: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
@@ -143,12 +148,12 @@ GuestMprPlccSection.defaultProps = {
   className: '',
   estimatedSubtotal: 0,
   currentSubtotal: 0,
-  showSubtotal: 0,
+  showSubtotal: false,
   headingLabel: '',
   subHeadingLabel: '',
   isPlcc: false,
   pointsDescription: '',
-  earnedReward: 0,
+  // earnedReward: 0,
   remainingPlcc: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',

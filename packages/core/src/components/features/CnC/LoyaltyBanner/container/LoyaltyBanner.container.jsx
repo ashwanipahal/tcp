@@ -11,6 +11,7 @@ import {
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+// import labels from '../LoyaltyBanner.labels';
 
 export const LoyaltyBannerContainer = ({
   labels,
@@ -20,6 +21,7 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   isProductDetailView,
+  isReviewPage,
 }) => {
   const {
     estimatedRewards,
@@ -41,6 +43,7 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       isProductDetailView={isProductDetailView}
+      isReviewPage={isReviewPage}
     />
   );
 };
@@ -53,6 +56,7 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -61,6 +65,7 @@ LoyaltyBannerContainer.defaultProps = {
   isPlcc: false,
   currencySymbol: '',
   isProductDetailView: '',
+  isReviewPage: false,
 };
 
 /* istanbul ignore next */

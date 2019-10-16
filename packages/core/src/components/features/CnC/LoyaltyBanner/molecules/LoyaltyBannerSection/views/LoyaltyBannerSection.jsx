@@ -2,57 +2,15 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
-import { BodyCopy, Anchor } from '../../../../../../common/atoms';
-import labelsHashValuesReplace from '../../../util/utility';
+import { BodyCopy } from '../../../../../../common/atoms';
+import {
+  labelsHashValuesReplace,
+  renderLoyaltyBanner,
+  convertHtml,
+  updateLoyaltyBannerLabels,
+} from '../../../util/utility';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
-
-const renderApplyNowLink = labels => {
-  return (
-    <Anchor
-      className="applyNow"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.applyNow}
-      underline
-    />
-  );
-};
-
-const renderLearnMoreLink = labels => {
-  return (
-    <Anchor
-      className="learnMore elem-pl-XL"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.learnMore}
-      underline
-    />
-  );
-};
-
-const renderCreateAccountLink = labels => {
-  return (
-    <Anchor
-      className="createAccount"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.createAccount}
-      underline
-    />
-  );
-};
-
-const renderLogInLink = labels => {
-  return (
-    <Anchor
-      className="login elem-pl-XL"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.logIn}
-      underline
-    />
-  );
-};
+import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
 const renderPDPLoyaltyMessage = (earnedReward, isGuest, labels, isPlcc) => {
   let pdpHeadingLabel = '';
@@ -70,27 +28,6 @@ const renderPDPLoyaltyMessage = (earnedReward, isGuest, labels, isPlcc) => {
     }
   }
   return { pdpHeadingLabel, pdpSubHeadingLabel };
-};
-
-const renderLoyaltyBanner = (earnedReward, isGuest, labels, isPlcc) => {
-  let conditionalPointsLabelVal = '';
-  if (!earnedReward) {
-    if (isGuest) {
-      conditionalPointsLabelVal = labels.youCanEarnPoints;
-    } else if (!isPlcc) {
-      conditionalPointsLabelVal = labels.youllEarnPoints;
-    } else {
-      conditionalPointsLabelVal = labels.youllEarnPointsPlcc;
-    }
-  } else if (isGuest) {
-    conditionalPointsLabelVal = labels.becomeMemberOnThisPurchase;
-  } else if (!isPlcc) {
-    conditionalPointsLabelVal = labels.youllGetWithThisPurchase;
-  } else {
-    conditionalPointsLabelVal = labels.youllGetARewardPlcc;
-  }
-
-  return { conditionalPointsLabelVal };
 };
 
 const subTotalCalc = (currentSubtotal, thresholdValue) => {
@@ -116,6 +53,7 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     isProductDetailView,
+    isReviewPage,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -125,28 +63,32 @@ const LoyaltyBannerSection = props => {
   let conditionalPointsLabel = '';
   let subHeadingLabel = '';
   let pointsDescription = '';
-  let fsPoints = '';
+  let remainingPlccLabel = '';
+  let rewardPointsValue = '';
 
   const showSubtotalReceived = subTotalCalc(currentSubtotal, thresholdValue);
   showSubtotal = showSubtotalReceived.showSubtotalCalc;
-
-  const convertHtml = value => {
-    // eslint-disable-next-line react/no-danger
-    return <span dangerouslySetInnerHTML={{ __html: value }} />;
-  };
 
   if (isProductDetailView) {
     const LoyaltyMessage = renderPDPLoyaltyMessage(earnedReward, isGuest, labels, isPlcc);
     headingLabel = LoyaltyMessage.pdpHeadingLabel;
     subHeadingLabel = LoyaltyMessage.pdpSubHeadingLabel;
   } else {
-    const LoyaltyMessage = renderLoyaltyBanner(earnedReward, isGuest, labels, isPlcc);
+    const LoyaltyMessage = renderLoyaltyBanner(
+      earnedReward,
+      estimatedRewardsVal,
+      isGuest,
+      labels,
+      isPlcc,
+      isReviewPage
+    );
     conditionalPointsLabel = LoyaltyMessage.conditionalPointsLabelVal;
+    rewardPointsValue = LoyaltyMessage.rewardPointsVal;
 
     const utilArrRewards = [
       {
         key: '#estimatedRewardsVal#',
-        value: estimatedRewardsVal,
+        value: rewardPointsValue,
         classValue: `${className} mpr-plcc-theme`,
       },
     ];
@@ -154,26 +96,30 @@ const LoyaltyBannerSection = props => {
     finalPointsValue = labelsHashValuesReplace(conditionalPointsLabel, utilArrRewards);
     headingLabel = convertHtml(finalPointsValue);
 
-    if (isPlcc) {
-      fsPoints = 'fs18';
-      pointsDescription = convertHtml(labels.whenYouCheckOutPlcc);
-      const utilArrNextReward = [
-        {
-          key: '#pointsToNextReward#',
-          value: pointsToNextReward,
-          classValue: `${className} mpr-plcc-theme`,
-        },
-      ];
-      finalStrRemainingValue = labelsHashValuesReplace(
-        labels.thatsSomePointsFromReward,
-        utilArrNextReward
-      );
-      remainingPlcc = convertHtml(finalStrRemainingValue);
-    } else {
-      fsPoints = 'fs16';
-      pointsDescription = labels.earnDoublePoints;
-      subHeadingLabel = labels.save30Today;
-    }
+    const updatedLoyaltyBannerLabels = updateLoyaltyBannerLabels(
+      isReviewPage,
+      isPlcc,
+      isGuest,
+      earnedReward,
+      labels
+    );
+
+    subHeadingLabel = updatedLoyaltyBannerLabels.subHeadingLabelVal;
+    pointsDescription = updatedLoyaltyBannerLabels.pointsDescriptionVal;
+    remainingPlccLabel = updatedLoyaltyBannerLabels.remainingPlccLabelVal;
+    showSubtotal = updatedLoyaltyBannerLabels.showSubtotalVal;
+  }
+
+  if (remainingPlccLabel) {
+    const utilArrNextReward = [
+      {
+        key: '#pointsToNextReward#',
+        value: pointsToNextReward,
+        classValue: `${className} mpr-plcc-theme`,
+      },
+    ];
+    finalStrRemainingValue = labelsHashValuesReplace(remainingPlccLabel, utilArrNextReward);
+    remainingPlcc = convertHtml(finalStrRemainingValue);
   }
 
   return (
@@ -188,46 +134,22 @@ const LoyaltyBannerSection = props => {
             showSubtotal={showSubtotal}
             currentSubtotal={currentSubtotal}
             estimatedSubtotal={estimatedSubtotal}
-            fsPoints={fsPoints}
             isPlcc={isPlcc}
             pointsDescription={pointsDescription}
-            earnedReward={earnedReward}
             remainingPlcc={remainingPlcc}
             getCurrencySymbol={getCurrencySymbol}
             isProductDetailView={isProductDetailView}
+            isReviewPage={isReviewPage}
           />
           <div className="footer alignCenter">
-            {isProductDetailView && (
-              <div>
-                {isGuest && (
-                  <span>
-                    {renderCreateAccountLink(labels)}
-                    {renderLogInLink(labels)}
-                  </span>
-                )}
-                {!isGuest && (
-                  <>
-                    {!isPlcc && (
-                      <span>
-                        {renderApplyNowLink(labels)}
-                        {renderLearnMoreLink(labels)}
-                      </span>
-                    )}
-                    {isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
-                  </>
-                )}
-              </div>
-            )}
-            {!isProductDetailView && (
-              <>
-                {!isPlcc && (
-                  <span>
-                    {renderApplyNowLink(labels)}
-                    {renderLearnMoreLink(labels)}
-                  </span>
-                )}
-              </>
-            )}
+            <LoyaltyFooterSection
+              className={className}
+              labels={labels}
+              isPlcc={isPlcc}
+              isProductDetailView={isProductDetailView}
+              isReviewPage={isReviewPage}
+              isGuest={isGuest}
+            />
           </div>
         </BodyCopy>
       </div>
@@ -248,6 +170,7 @@ LoyaltyBannerSection.propTypes = {
   pointsToNextReward: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -259,6 +182,7 @@ LoyaltyBannerSection.defaultProps = {
   isGuest: false,
   earnedReward: 0,
   isPlcc: false,
+  isReviewPage: false,
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',
