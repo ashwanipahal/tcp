@@ -120,13 +120,13 @@ export const getInitialValuesFromBagPage = state => {
   const pickUpModalReducer =
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');
   return {
-    Quantity: pickUpModalReducer.get('Quantity'),
-    color: pickUpModalReducer.get('color'),
-    Size: pickUpModalReducer.get('Size'),
-    Fit: pickUpModalReducer.get('Fit'),
-    isItemShipToHome: pickUpModalReducer.get('isItemShipToHome'),
-    orderItemType: pickUpModalReducer.get('orderItemType'),
-    orderId: pickUpModalReducer.get('orderId'),
-    orderItemId: pickUpModalReducer.get('orderItemId'),
+    Quantity: pickUpModalReducer && pickUpModalReducer.get('Quantity'),
+    color: pickUpModalReducer && pickUpModalReducer.get('color'),
+    Size: pickUpModalReducer && pickUpModalReducer.get('Size'),
+    Fit: pickUpModalReducer && pickUpModalReducer.get('Fit'),
+    isItemShipToHome: pickUpModalReducer && pickUpModalReducer.get('isItemShipToHome'),
+    orderItemType: pickUpModalReducer && pickUpModalReducer.get('orderItemType'),
+    orderId: pickUpModalReducer && pickUpModalReducer.get('orderId'),
+    orderItemId: pickUpModalReducer && pickUpModalReducer.get('orderItemId'),
   };
 };

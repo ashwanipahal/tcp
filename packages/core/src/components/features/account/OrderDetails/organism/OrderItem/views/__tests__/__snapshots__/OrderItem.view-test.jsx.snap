@@ -68,7 +68,7 @@ exports[`Order Items component should renders correctly 1`] = `
         Object {
           "large": 9,
           "medium": 5,
-          "small": 3,
+          "small": 4,
         }
       }
       ignoreGutter={
