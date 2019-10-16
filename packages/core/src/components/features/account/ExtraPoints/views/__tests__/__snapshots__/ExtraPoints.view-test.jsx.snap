@@ -5,6 +5,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
   className="className"
 >
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     heading="lbl_common_extraPointsHeading"
   />
   <Styled(Notification)

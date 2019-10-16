@@ -14,13 +14,14 @@ import { getLocator } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { isBagPageStickyHeader, showAddTobag } = this.props;
-    const containerId = isBagPageStickyHeader
-      ? 'paypal-button-container-bagHeader'
-      : 'paypal-button-container';
+    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    let containerID = containerId;
+    if (isBagPageStickyHeader) {
+      containerID = 'paypal-button-container-bag-header';
+    }
     return (
       <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerId} />
+        <PayPalButton className="payPal-button" containerId={containerID} />
       </div>
     );
   }

@@ -47,6 +47,8 @@ import {
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
+import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -137,20 +139,12 @@ export function* getOrderDetailSaga(payload) {
 export function* getCartDataSaga(payload = {}) {
   try {
     const {
-      payload: {
-        isRecalculateTaxes,
-        isCheckoutFlow,
-        isCartNotRequired,
-        updateSmsInfo,
-        recalcRewards,
-        isCartPage,
-        onCartRes,
-        excludeCartItems = false,
-      } = {},
+      payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage, onCartRes, recalcRewards } = {},
     } = payload;
-    const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
+    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
+    const recalcOrderPointsInterval = 3000;
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = select(getIsRadialInventoryEnabled);
+    const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       excludeCartItems,
@@ -162,7 +156,16 @@ export function* getCartDataSaga(payload = {}) {
     if (!translatedProductInfo.error) {
       createMatchObject(res, translatedProductInfo);
     }
+    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+    if (bopisItems.length) {
+      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+      res.orderDetails = {
+        ...res.orderDetails,
+        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+      };
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
       if (!personalData || !personalData.get('userId')) {

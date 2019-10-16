@@ -170,15 +170,19 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     const fetchCachedDataParams = { bootstrapData, cachedData };
 
     if (pageName) {
-      response[pageName] = bootstrapData[pageName];
-      logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
-      response.modules =
-        bootstrapData[pageName] &&
-        (await layoutAbstractor.getModulesFromLayout(
-          retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
-        ));
-      logger.info('Modules Query Executed Successfully');
-      logger.debug('Modules Query Result: ', response.modules);
+      try {
+        response[pageName] = bootstrapData[pageName];
+        logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
+        response.modules =
+          bootstrapData[pageName] &&
+          (await layoutAbstractor.getModulesFromLayout(
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
+          ));
+        logger.info('Modules Query Executed Successfully');
+        logger.debug('Modules Query Result: ', response.modules);
+      } catch (e) {
+        logger.error('Error occurred in modules query: ', e);
+      }
     }
 
     response.header = headerAbstractor.processData(
@@ -194,7 +198,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
   } catch (error) {
-    logger.error(error);
+    logger.error('Error occurred in bootstrap query: ', error);
   }
   return response;
 };
