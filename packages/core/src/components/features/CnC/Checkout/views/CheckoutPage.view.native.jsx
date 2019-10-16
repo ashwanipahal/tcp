@@ -46,6 +46,11 @@ class CheckoutPage extends React.PureComponent {
       verifyAddressAction,
       submitVerifiedShippingAddressData,
       submitReview,
+      isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
@@ -56,6 +61,7 @@ class CheckoutPage extends React.PureComponent {
       REVIEW,
       CONFIRMATION,
     } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
+    const { venmoBannerText } = pickUpLabels;
     switch (currentRoute) {
       case PICKUP.toLowerCase():
         return (
@@ -75,6 +81,10 @@ class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            orderHasShipping={orderHasShipping}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case SHIPPING.toLowerCase():
@@ -95,6 +105,10 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            venmoBannerLabel={{ venmoBannerText }}
+            setVenmoPickupState={setVenmoPickupState}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case BILLING.toLowerCase():
@@ -118,6 +132,8 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            setVenmoPickupState={setVenmoPickupState}
+            setVenmoShippingState={setVenmoShippingState}
           />
         );
       case CONFIRMATION.toLowerCase():
@@ -166,6 +182,19 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
+  setVenmoShippingState: PropTypes.func,
+  isVenmoPickupBannerDisplayed: PropTypes.bool,
+  isVenmoShippingBannerDisplayed: PropTypes.bool,
+};
+
+CheckoutPage.defaultProps = {
+  isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
+  isVenmoPickupBannerDisplayed: true,
+  isVenmoShippingBannerDisplayed: true,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

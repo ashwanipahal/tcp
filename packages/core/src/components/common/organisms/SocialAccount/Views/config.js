@@ -34,7 +34,7 @@ const config = {
     TWITTER: 'https://api.twitter.com/oauth/authenticate',
   },
   ACCOUNT_REDIRECT: {
-    TWITTER: '/twitter?stage=first'
+    TWITTER: '/twitter?stage=first',
   },
 };
 
