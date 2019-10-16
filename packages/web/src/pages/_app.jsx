@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Router from 'next/router';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -23,7 +22,6 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
-import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -43,18 +41,6 @@ function AnalyticsScript() {
   // TODO: Need proper handling for this perf mark
   const handleLoad = () => performance && performance.mark('analytics_script_loaded');
   return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
-}
-
-/**
- * Setup perf marks for when the route changes.
- * This is needed for measuring CSR times relative to
- * when the route/page last changed.
- */
-if (process.env.PERF_TIMING && typeof performance !== 'undefined') {
-  Router.events.on('beforeHistoryChange', () => {
-    performance.clearMarks(NAVIGATION_START);
-    performance.mark(NAVIGATION_START);
-  });
 }
 
 class TCPWebApp extends App {
@@ -250,10 +236,10 @@ class TCPWebApp extends App {
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
             {process.env.ANALYTICS && <RouteTracker />}
-            {/* Inject UX timer reporting if enabled. */}
-            {process.env.PERF_TIMING && <UserTimingReporter />}
           </Provider>
         </ThemeProvider>
+        {/* Inject UX timer reporting if enabled. */}
+        {process.env.PERF_TIMING && <UserTimingReporter />}
         {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>

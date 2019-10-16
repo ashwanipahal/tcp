@@ -1,6 +1,7 @@
 import React from 'react';
 import Safe from 'react-safe';
 import { string } from 'prop-types';
+import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import { stringify } from '@tcp/core/src/utils';
 import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
@@ -34,7 +35,8 @@ Mark.propTypes = {
 
 export function Measure({ name, start, end }) {
   // For client-side execution
-  usePerfMeasure(name, start, end);
+  // Note: use `NAVIGATION_START` as a default for CSR user timing
+  usePerfMeasure(name, start || NAVIGATION_START, end);
   // For server-side execution
   return isEnabled ? (
     <ServerOnlyScript>
