@@ -16,12 +16,6 @@ class ProductImageWrapper extends React.Component {
   colorChange = e => {
     // const { selectedSize } = this.state;
     const { onChangeColor } = this.props;
-    // this.setState({
-    //   selectedColor: { name: e },
-    //   selectedSize,
-    //   isErrorMessageDisplayed: false,
-    // });
-    // props for any custom action to call
     if (onChangeColor) {
       onChangeColor(e);
     }
@@ -42,6 +36,7 @@ class ProductImageWrapper extends React.Component {
       pdpLabels,
       currentProduct,
       currentColorEntry,
+      isGiftCard,
     } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const { colorFitsSizesMap } = currentProduct;
@@ -62,7 +57,8 @@ class ProductImageWrapper extends React.Component {
         {images.length > 0 ? (
           <ProductImages
             productName={productName}
-            isThumbnailListVisible={isThumbnailListVisible}
+            isThumbnailListVisible={isThumbnailListVisible && !isGiftCard}
+            isGiftCard={isGiftCard}
             images={images}
             isMobile={isMobile}
             isZoomEnabled={isZoomEnabled}
@@ -123,6 +119,7 @@ ProductImageWrapper.propTypes = {
   onChangeColor: PropTypes.func,
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE,
   currentColorEntry: PropTypes.shape({}),
+  isGiftCard: PropTypes.bool.isRequired,
 };
 
 export default ProductImageWrapper;

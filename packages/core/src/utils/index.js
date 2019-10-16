@@ -32,7 +32,10 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
+  canUseDOM,
+  getUrlParameter,
   scrollToParticularElement,
+  getDirections,
 } from './utils.web';
 
 export {

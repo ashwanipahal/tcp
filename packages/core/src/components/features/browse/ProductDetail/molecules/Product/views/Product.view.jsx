@@ -215,6 +215,7 @@ class Product extends React.Component {
       isKeepAlive,
       isMatchingFamily,
       selectedColorProductId,
+      isGiftCard,
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
     if (!productInfo) {
@@ -237,6 +238,7 @@ class Product extends React.Component {
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
+          isGiftCard={isGiftCard}
           productInfo={productInfo}
           // {...addToBagFormValues}
           isShowFavoriteCount
@@ -251,19 +253,21 @@ class Product extends React.Component {
           // isShowPriceRange={isShowPriceRange}
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
         />
-        <ProductPrice
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
-          isItemPartNumberVisible={false}
-          itemPartNumber={colorProduct.colorDisplayId}
-          {...prices}
-          promotionalMessage={promotionalMessage}
-          isCanada={isCanada}
-          promotionalPLCCMessage={promotionalPLCCMessage}
-          isPlcc={isHasPlcc}
-          isInternationalShipping={isInternationalShipping}
-        />
+        {!isGiftCard ? (
+          <ProductPrice
+            currencySymbol={currencySymbol}
+            priceCurrency={priceCurrency}
+            currencyExchange={currencyExchange}
+            isItemPartNumberVisible={false}
+            itemPartNumber={colorProduct.colorDisplayId}
+            {...prices}
+            promotionalMessage={promotionalMessage}
+            isCanada={isCanada}
+            promotionalPLCCMessage={promotionalPLCCMessage}
+            isPlcc={isHasPlcc}
+            isInternationalShipping={isInternationalShipping}
+          />
+        ) : null}
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,

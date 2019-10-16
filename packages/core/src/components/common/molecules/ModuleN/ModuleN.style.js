@@ -1,8 +1,10 @@
 import { css } from 'styled-components';
 
 export default css`
-  margin-bottom: 40px;
-
+  .moduleN-innerContent {
+    background-color: #f53d3d;
+    margin-bottom: 40px;
+  }
   .heading-wrapper {
     padding: 16px 0;
 
@@ -12,8 +14,6 @@ export default css`
       padding-bottom: 25px;
     }
   }
-
-  background-color: #f53d3d;
 
   h3.link-text {
     margin: 0;

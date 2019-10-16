@@ -25,9 +25,13 @@ class QuickViewModal extends React.Component {
       productInfo,
       productInfo: { colorFitsSizesMap, colorFitSizeDisplayNames },
       quickViewLabels,
+      selectedColorProductId,
       ...otherProps
     } = this.props;
 
+    const modifiedColorFitsSizesMap = selectedColorProductId
+      ? colorFitsSizesMap.filter(item => item.colorDisplayId === selectedColorProductId)
+      : colorFitsSizesMap;
     const { fromBagPage } = otherProps;
 
     return (
@@ -52,19 +56,23 @@ class QuickViewModal extends React.Component {
       >
         <ProductCustomizeFormPart
           productInfo={productInfo}
-          colorFitsSizesMap={colorFitsSizesMap}
+          colorFitsSizesMap={
+            modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
+          }
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
           onCloseClick={this.onCloseClick}
           {...otherProps}
         />
-        <FulfillmentSection
-          btnClassName="added-to-bag"
-          dataLocator={getLocator('global_addtocart_Button')}
-          buttonLabel="Pickup In Store"
-          currentProduct={productInfo}
-          closeQuickViewClick={this.onCloseClick}
-        />
+        {!fromBagPage && (
+          <FulfillmentSection
+            btnClassName="added-to-bag"
+            dataLocator={getLocator('global_addtocart_Button')}
+            buttonLabel="Pickup In Store"
+            currentProduct={productInfo}
+            closeQuickViewClick={this.onCloseClick}
+          />
+        )}
       </Modal>
     );
   }
@@ -79,6 +87,7 @@ QuickViewModal.propTypes = {
   clearAddToBagError: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  selectedColorProductId: PropTypes.string.isRequired,
 };
 
 export default withStyles(QuickViewModal, styles);

@@ -10,7 +10,7 @@ const MyPrefrence = ({ labels }) => {
     <div>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_prefrence_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
         data-locator="mypreference-header"
       />
       <MyPref labels={labels} />
