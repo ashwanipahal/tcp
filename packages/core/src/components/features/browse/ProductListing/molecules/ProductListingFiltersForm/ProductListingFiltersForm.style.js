@@ -56,9 +56,9 @@ export default css`
     width: 86px;
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding-bottom: 12px;
-      padding-left: 8px;
-      margin-right: 16px;
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
