@@ -8,6 +8,17 @@ import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemRadioButtons extends React.Component {
   /**
+   * @function handleChangeStoreClick Handle click event for change store
+   * @memberof CartItemRadioButtons
+   */
+  handleChangeStoreClick = () => {
+    const { openPickUpModal } = this.props;
+    const { selectedOrder } = this.state;
+    const openSkuSelectionForm = false;
+    openPickUpModal(selectedOrder, openSkuSelectionForm);
+  };
+
+  /**
    * @function showBoss Handles to show BOSS Item or not
    * @param isBossOrder Represents the current product is BOSS or not
    * @param isBossEnabled Represents the Country/State level kill switch for BOSS
@@ -119,6 +130,10 @@ class CartItemRadioButtons extends React.Component {
         anchorVariation="primary"
         fontSize="fs12"
         fontFamily="secondary"
+        onClick={e => {
+          e.preventDefault();
+          this.handleChangeStoreClick();
+        }}
       >
         {labels.changeStore}
       </Anchor>
@@ -315,6 +330,7 @@ CartItemRadioButtons.propTypes = {
   noBossMessage: PropTypes.string.isRequired,
   bossDisabled: PropTypes.bool.isRequired,
   bopisDisabled: PropTypes.bool.isRequired,
+  openPickUpModal: PropTypes.bool.isRequired,
 };
 
 export default withStyles(CartItemRadioButtons, style);

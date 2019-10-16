@@ -207,7 +207,7 @@ const payloadFormationForUpdateItem = payloadData => {
  * @param {*} payloadData
  * @returns
  */
-export const updateItem = payloadData => {
+export const updateItem = (payloadData, errorMapping) => {
   const updatePayloadData = payloadFormationForUpdateItem(payloadData);
   const { callback } = payloadData;
   const payload = {
@@ -217,17 +217,21 @@ export const updateItem = payloadData => {
     webService: endpoints.updateOrderItem,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-    }
-    if (callback) {
-      callback();
-    }
-    return {
-      orderItemId: res.body.orderItem[0].orderItemId,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      if (callback) {
+        callback();
+      }
+      return {
+        orderItemId: res.body.orderItem[0].orderItemId,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err, errorMapping);
+    });
 };
 
 /**

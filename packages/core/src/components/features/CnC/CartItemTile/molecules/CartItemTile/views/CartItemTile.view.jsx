@@ -13,7 +13,7 @@ import ProductEditForm from '../../../../../../common/molecules/ProductCustomize
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
+import { getIconPath, getLocator, isCanada, disableBodyScroll } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -55,6 +55,7 @@ class CartItemTile extends React.Component {
           selectedColor: color,
           selectedSize: size,
           selectedFit: fit,
+          itemBrand,
         },
       });
     }
@@ -66,27 +67,31 @@ class CartItemTile extends React.Component {
    * @description this method handles edit for cart item for boss/bopis item
    * @memberof CartItemTile
    */
-  handleEditCartItemWithStore = (pageView, itemBrand, productNumber) => {
-    if (pageView === 'myBag') {
-      const { onPickUpOpenClick, productDetail, orderId } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
-      const { store, orderItemType } = productDetail.miscInfo;
-      const isItemShipToHome = !store;
-      onPickUpOpenClick({
-        colorProductId: productNumber,
-        orderInfo: {
-          orderItemId: itemId,
-          Quantity: qty,
-          color,
-          Size: size,
-          Fit: fit,
-          orderId,
-          orderItemType,
-          isItemShipToHome,
-          itemBrand,
-        },
-      });
-    }
+  handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false) => {
+    const { onPickUpOpenClick, productDetail, orderId } = this.props;
+    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+    const { store, orderItemType } = productDetail.miscInfo;
+    const { productPartNumber } = productDetail.productInfo;
+    const isItemShipToHome = !store;
+    const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+    const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    onPickUpOpenClick({
+      colorProductId: productPartNumber,
+      orderInfo: {
+        orderItemId: itemId,
+        Quantity: qty,
+        color,
+        Size: size,
+        Fit: fit,
+        orderId,
+        orderItemType,
+        itemBrand,
+      },
+      openSkuSelectionForm,
+      isBopisCtaEnabled,
+      isBossCtaEnabled,
+      isItemShipToHome,
+    });
   };
 
   callEditMethod = () => {
@@ -94,18 +99,16 @@ class CartItemTile extends React.Component {
     const {
       miscInfo: { orderItemType },
     } = productDetail;
+    disableBodyScroll();
     if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,
         productDetail.productInfo.productPartNumber
       );
-    } else {
-      this.handleEditCartItemWithStore(
-        pageView,
-        productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
-      );
+    } else if (pageView === 'myBag') {
+      const openSkuSelectionForm = true;
+      this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
     }
   };
 
@@ -1150,6 +1153,7 @@ class CartItemTile extends React.Component {
                 bopisDisabled={bopisDisabled}
                 isBossEnabled={isBossEnabled}
                 isBopisEnabled={isBopisEnabled}
+                openPickUpModal={this.handleEditCartItemWithStore}
               />
             </Row>
           )}
