@@ -103,21 +103,19 @@ class SearchBar extends React.PureComponent {
     }
   };
 
-  startInitiateSearch = () => {
-    const { setSearchState } = this.props;
-    let searchText = this.searchInput.current.value;
+  setDataInLocalStorage = searchText => {
     if (searchText) {
-      searchText = searchText.toLowerCase();
+      const searchTextParam = searchText.toLowerCase();
       const getPreviousSearchResults = getRecentStoreFromLocalStorage();
       let filteredSearchResults;
       if (getPreviousSearchResults) {
         filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-        if (filteredSearchResults.indexOf(searchText) === -1) {
-          filteredSearchResults.push(searchText);
+        if (filteredSearchResults.indexOf(searchTextParam) === -1) {
+          filteredSearchResults.push(searchTextParam);
         }
       } else {
         filteredSearchResults = [];
-        filteredSearchResults.push(searchText);
+        filteredSearchResults.push(searchTextParam);
       }
       if (
         filteredSearchResults &&
@@ -127,6 +125,14 @@ class SearchBar extends React.PureComponent {
       }
 
       setRecentStoreToLocalStorage(filteredSearchResults);
+    }
+  };
+
+  startInitiateSearch = () => {
+    const { setSearchState } = this.props;
+    const searchText = this.searchInput.current.value;
+    if (searchText) {
+      this.setDataInLocalStorage(searchText);
       this.redirectToSearchPage(searchText);
     } else {
       routerPush(`/search?searchQuery=`, `/search/`, { shallow: true });
@@ -245,9 +251,18 @@ class SearchBar extends React.PureComponent {
   };
 
   redirectToSuggestedUrl = searchText => {
+    if (searchText) {
+      this.setDataInLocalStorage(searchText);
+    }
+
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
     const { onCloseClick } = this.props;
     onCloseClick();
+  };
+
+  hideOverlayAfterClick = searchText => {
+    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    this.setState({ showProduct: false });
   };
 
   render() {
@@ -331,6 +346,7 @@ class SearchBar extends React.PureComponent {
                     isLatestSearchResultsExists={isLatestSearchResultsExists}
                     latestSearchResults={latestSearchResults}
                     labels
+                    hideOverlayAfterClick={this.hideOverlayAfterClick}
                   />
                 ) : (
                   <div className="matchBox">

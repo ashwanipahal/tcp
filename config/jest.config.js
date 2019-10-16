@@ -29,7 +29,6 @@ const ignorePsuedoCodeDir = [
   '/ModuleK/',
   '/formValidation/createValidateMethod.js',
   '/ExtraPoints/imageSourceMap.js',
-  '/Header/',
 ];
 
 module.exports = {

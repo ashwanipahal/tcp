@@ -18,7 +18,12 @@ import SearchBarStyle from '../SearchBar.style';
  */
 class SuggestionBox extends React.PureComponent {
   render() {
-    const { isLatestSearchResultsExists, latestSearchResults, labels } = this.props;
+    const {
+      isLatestSearchResultsExists,
+      latestSearchResults,
+      labels,
+      hideOverlayAfterClick,
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -43,9 +48,11 @@ class SuggestionBox extends React.PureComponent {
                         className="recentTag"
                       >
                         <Anchor
-                          asPath={`/search/${item}`}
-                          to={`/search?searchQuery=${item}`}
+                          // asPath={`/search/${item}`}
+                          // to={`/search?searchQuery=${item}`}
+                          noLink
                           className="suggestion-label"
+                          onClick={() => hideOverlayAfterClick(`${item}`)}
                         >
                           {item.toUpperCase()}
                         </Anchor>
@@ -68,6 +75,7 @@ SuggestionBox.propTypes = {
   }),
   isLatestSearchResultsExists: PropTypes.bool,
   latestSearchResults: PropTypes.arrayOf(PropTypes.shape({})),
+  hideOverlayAfterClick: PropTypes.func.isRequired,
 };
 
 SuggestionBox.defaultProps = {
