@@ -32,6 +32,18 @@ const getSortParams = store => {
   return sort ? `sort=${sort}` : '';
 };
 
+const getDepartmentList = store => {
+  const state = store.getState();
+  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  return departmentListing[0].displayName;
+};
+
+const getCategoryList = store => {
+  const state = store.getState();
+  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  return departmentListing[1].displayName;
+};
+
 export const generateBrowseDataLayer = store => {
   return {
     listingFilterList: {
@@ -46,6 +58,26 @@ export const generateBrowseDataLayer = store => {
         filterLiteral = filterLiteral ? sortfilterTypeSeparator + filterLiteral : '';
         const sortLiteral = getSortParams(store);
         return sortLiteral ? sortLiteral + filterLiteral : '';
+      },
+    },
+    listingDepartment: {
+      get() {
+        return getDepartmentList(store) || '';
+      },
+    },
+    listingCategory: {
+      get() {
+        return getCategoryList(store) || '';
+      },
+    },
+    listingCount: {
+      get() {
+        return store.getState().ProductListing.get('totalProductsCount');
+      },
+    },
+    storeId: {
+      get() {
+        return store.getState().User.get('defaultStore').basicInfo.id;
       },
     },
   };
