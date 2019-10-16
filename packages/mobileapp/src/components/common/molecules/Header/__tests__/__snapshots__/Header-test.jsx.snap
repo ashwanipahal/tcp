@@ -65,13 +65,13 @@ exports[`Header Component Header should render correctly 1`] = `
           }
         />
         <Styled(View) />
-        <Styled(View) />
         <Styled(BodyCopy)
           accessibilityText="Mini bag with count"
           color="white"
           data-locator="obal_headerpanelbagicon"
           dataLocator=""
           fontSize="fs10"
+          fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
           style={

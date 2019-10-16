@@ -92,7 +92,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           }
         }
       >
-        <Address
+        <Styled(Address)
           address={
             Object {
               "addressLine": Array [
@@ -108,14 +108,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
               "xcont_isDefaultBilling": "true",
             }
           }
-          className=""
-          dataLocatorPrefix=""
-          fontWeight="regular"
-          isDefault={false}
           showCountry={false}
-          showDefault={true}
-          showName={true}
-          showPhone={true}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -192,7 +185,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           }
         }
       >
-        <Address
+        <Styled(Address)
           address={
             Object {
               "addressLine": Array [
@@ -208,14 +201,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
               "xcont_isDefaultBilling": "true",
             }
           }
-          className=""
-          dataLocatorPrefix=""
-          fontWeight="regular"
-          isDefault={false}
           showCountry={false}
-          showDefault={true}
-          showName={true}
-          showPhone={true}
         />
       </Styled(Col)>
     </Styled(Row)>

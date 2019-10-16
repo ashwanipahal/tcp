@@ -12,6 +12,21 @@ const setBackground = props => {
   `;
 };
 
+const cartItemsWidth = cartItems => {
+  let width = '';
+  switch (cartItems.toString().length) {
+    case 2:
+      width = '25px';
+      break;
+    case 3:
+      width = '30px';
+      break;
+    default:
+      width = '20px';
+  }
+  return width;
+};
+
 export const SafeAreaViewStyle = styled.SafeAreaView`
   background: ${props => props.theme.colorPalette.white};
 `;
@@ -54,28 +69,20 @@ export const Icon = styled.Image`
   height: 5px;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
-export const BackgroundView = styled.View`
-  background-color: ${props => props.theme.colorPalette.white};
-  width: 22px;
-  height: 22px;
-  border-radius: 11;
-  position: absolute;
-  margin-top: 14px;
-`;
 
 export const RoundView = styled.View`
   ${setBackground}
-  width: 20px;
+  width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 20px;
   border-radius: 10;
   position: absolute;
   margin-top: 15px;
+  border: 2px solid white;
 `;
 
 export const CartIconView = styled.Image`
-  width: 32px;
-  height: 32px;
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-right: ${props =>
+    props.cartVal.toString().length === 1 ? 0 : props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export const TextStyle = {
@@ -178,7 +185,6 @@ export default {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  BackgroundView,
   CartIconView,
   ImageColor,
   HeaderPromoContainer,

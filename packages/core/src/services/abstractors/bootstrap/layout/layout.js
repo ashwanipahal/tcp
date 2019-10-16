@@ -68,15 +68,17 @@ const LayoutAbstractor = {
   collateModuleObject: items => {
     const moduleIds = [];
     items.forEach(({ layout: { slots } }) => {
-      slots.forEach(slot =>
-        moduleIds.push({
-          name: slot.moduleName,
-          data: {
-            contentId: slot.contentId,
-            slot: slot.name,
-          },
-        })
-      );
+      slots.forEach(slot => {
+        if (slot.contentId) {
+          moduleIds.push({
+            name: slot.moduleName,
+            data: {
+              contentId: slot.contentId,
+              slot: slot.name,
+            },
+          });
+        }
+      });
     });
     return moduleIds;
   },

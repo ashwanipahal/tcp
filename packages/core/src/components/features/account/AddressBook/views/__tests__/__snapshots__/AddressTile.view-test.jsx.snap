@@ -17,7 +17,7 @@ exports[`AddressTile component should renders correctly 1`] = `
           }
         }
       >
-        <Address
+        <Styled(Address)
           address={
             Object {
               "addressLine": Array [
@@ -32,14 +32,8 @@ exports[`AddressTile component should renders correctly 1`] = `
               "primary": "true",
             }
           }
-          className=""
           dataLocatorPrefix="addressbook"
           fontWeight="extrabold"
-          isDefault={false}
-          showCountry={true}
-          showDefault={true}
-          showName={true}
-          showPhone={true}
         />
       </Styled(Col)>
       <Styled(Col)
