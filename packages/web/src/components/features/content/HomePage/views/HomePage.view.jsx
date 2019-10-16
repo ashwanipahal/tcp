@@ -3,6 +3,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import { isTCP } from '@tcp/core/src/utils';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
@@ -28,7 +29,7 @@ const HomePageView = dynamic({
   render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
-      <ModuleT {...mock.moduleT.composites} />,
+      isTCP() ? <ModuleT {...mock.moduleT.composites} /> : null,
       <ModuleTwoCol slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
