@@ -12,7 +12,9 @@ exports[`BillingPageContainer should render correctly 1`] = `
   getFormState={[Function]}
   initialValues={
     Object {
-      "address": null,
+      "address": Object {
+        "country": undefined,
+      },
       "cardNumber": undefined,
       "cardType": undefined,
       "expMonth": undefined,

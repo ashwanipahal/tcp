@@ -8,6 +8,7 @@ import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getUnbxdId,
   getCategoryId,
@@ -110,6 +111,10 @@ class SearchDetailContainer extends React.PureComponent {
       searchResultSuggestions,
       sortLabels,
       isSearchResultsAvailable,
+      router: {
+        query: { searchQuery },
+        asPath,
+      },
       ...otherProps
     } = this.props;
 
@@ -117,7 +122,7 @@ class SearchDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isSearchResultsAvailable ? (
           <div>
-            {products && products.length > 0 ? (
+            {products && products.length > 0 && searchQuery ? (
               <SearchDetail
                 filters={filters}
                 formValues={formValues}
@@ -230,6 +235,9 @@ function mapDispatchToProps(dispatch) {
     },
     getMoreProducts: payload => {
       dispatch(getMoreSlpProducts(payload));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 }

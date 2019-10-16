@@ -41,6 +41,14 @@ export const getLoyaltyBannerLabels = state => {
         lbl_loyaltyBanner_estimatedSubtotal: estimatedSubtotal,
         lbl_loyaltyBanner_applyNow: applyNow,
         lbl_loyaltyBanner_learnMore: learnMore,
+        lbl_loyaltyBanner_logIn: logIn,
+        lbl_loyaltyBanner_getRewardedShopping: getRewardedShopping,
+        lbl_loyaltyBanner_loyaltyPayPoints: loyaltyPayPoints,
+        lbl_loyaltyBanner_createAccount: createAccount,
+        lbl_loyaltyBanner_earnDoublePointsPDP: earnDoublePointsPDP,
+        lbl_loyaltyBanner_getDoublePointsPLCCPDP: getDoublePointsPLCCPDP,
+        lbl_loyaltyBanner_myPlaceCreditCard: myPlaceCreditCard,
+        lbl_loyaltyBanner_checkoutMyPlaceCreditCard: checkoutMyPlaceCreditCard,
       } = {},
     } = {},
   } = state.Labels;
@@ -60,6 +68,14 @@ export const getLoyaltyBannerLabels = state => {
     estimatedSubtotal,
     applyNow,
     learnMore,
+    logIn,
+    getRewardedShopping,
+    loyaltyPayPoints,
+    createAccount,
+    earnDoublePointsPDP,
+    getDoublePointsPLCCPDP,
+    myPlaceCreditCard,
+    checkoutMyPlaceCreditCard,
   };
 };
 

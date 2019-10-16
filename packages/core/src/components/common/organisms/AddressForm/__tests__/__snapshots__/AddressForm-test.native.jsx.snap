@@ -657,6 +657,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
     id="phoneNumber"
     label=""
     name="phoneNumber"
+    normalize={[Function]}
     type="tel"
   />
   <Styled(View)>
@@ -1379,6 +1380,7 @@ exports[`AddressForm component should renders correctly 1`] = `
     id="phoneNumber"
     label=""
     name="phoneNumber"
+    normalize={[Function]}
     type="tel"
   />
   <Styled(View)>

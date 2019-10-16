@@ -8,6 +8,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
     text=""

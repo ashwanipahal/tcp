@@ -28,10 +28,12 @@ class ToastView extends React.PureComponent {
     errorMessage: PropTypes.string.isRequired,
     toastMessageReset: PropTypes.bool.isRequired,
     positionValue: PropTypes.number,
+    shouldShowSafeArea: PropTypes.bool,
   };
 
   static defaultProps = {
     positionValue: 0,
+    shouldShowSafeArea: true,
   };
 
   constructor() {
@@ -57,21 +59,28 @@ class ToastView extends React.PureComponent {
     }
   }
 
-  render() {
+  toast = () => {
     const { positionValue } = this.props;
     return (
-      <SafeAreaView style={styles.Container}>
-        <Toast
-          ref={this.toastRef}
-          style={styles.ToastStyle}
-          position="top"
-          positionValue={positionValue}
-          fadeInDuration={750}
-          fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
-          opacity={1}
-          textStyle={{ color: colors.WHITE }}
-        />
-      </SafeAreaView>
+      <Toast
+        ref={this.toastRef}
+        style={styles.ToastStyle}
+        position="top"
+        positionValue={positionValue}
+        fadeInDuration={750}
+        fadeOutDuration={DEFAULT_TOAST_ERROR_MESSAGE_TTL}
+        opacity={1}
+        textStyle={{ color: colors.WHITE }}
+      />
+    );
+  };
+
+  render() {
+    const { shouldShowSafeArea } = this.props;
+    return shouldShowSafeArea ? (
+      <SafeAreaView style={styles.Container}>{this.toast()}</SafeAreaView>
+    ) : (
+      this.toast()
     );
   }
 }

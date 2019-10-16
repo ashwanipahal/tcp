@@ -128,17 +128,17 @@ class ProductInformation extends React.Component {
   };
 
   renderQuantity = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     const { itemInfo: { qty } = {} } = productDetail;
     if (isBagPageSflSection) return null;
     return (
       <ProductDesc>
-        <ProductSubDetailLabel>
+        <ProductSubDetailLabel showOnReviewPage={showOnReviewPage}>
           <BodyCopy
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={`${labels.qty}: `}
+            text={`${labels.qty}:`}
           />
         </ProductSubDetailLabel>
         <BodyCopy color="gray.800" fontFamily="secondary" fontSize="fs13" text={qty} />
@@ -156,7 +156,7 @@ class ProductInformation extends React.Component {
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
+            text={isGiftItem === true ? `${labels.value}:` : `${labels.size}:`}
           />
         </ProductSubDetailLabel>
         <BodyCopy
@@ -289,7 +289,7 @@ class ProductInformation extends React.Component {
         }}
         rightButtons={[this.rightButton()]}
         rightButtonWidth={240}
-        leftButtons={[null]}
+        leftButtons={null}
         onSwipeComplete={(event, gestureState, swipe) => {
           this.onSwipeComplete(swipe);
         }}
@@ -335,7 +335,7 @@ class ProductInformation extends React.Component {
                 ) : (
                   <SizeQtyOnReview>
                     {this.renderSize()}
-                    <BodyCopy fontFamily="secondary" color="gray.800" fontSize="fs13" text="|" />
+                    <BodyCopy fontFamily="secondary" color="gray.800" fontSize="fs13" text="| " />
                     {this.renderQuantity()}
                   </SizeQtyOnReview>
                 )}

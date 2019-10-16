@@ -9,6 +9,8 @@ import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
 const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) => {
+  const { paymentMethod, paypal } = labels;
+  const payPalLabel = `${paymentMethod} ${paypal}`;
   return (
     <>
       <BodyCopy
@@ -33,6 +35,7 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="creditCardRadioBtn"
           />
         </Col>
         <Col
@@ -43,11 +46,13 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
             component={LabeledRadioButton}
             key="PayPal"
             selectedValue="payPal"
+            aria-label={payPalLabel}
             title=""
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="paypalRadioBtn"
           />
         </Col>
         {isVenmoEnabled && (
@@ -63,6 +68,7 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
               subtitle=""
               name="paymentMethodId"
               variation="secondary"
+              data-locator="venmoRadioBtn"
             />
           </Col>
         )}

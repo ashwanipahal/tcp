@@ -9,9 +9,10 @@ export const addItemToCartBopis = payload => ({
   payload,
 });
 
-export const AddToCartError = payload => ({
+export const AddToCartError = (payload, id) => ({
   type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR,
   payload,
+  id,
 });
 
 export const AddToPickupError = payload => ({

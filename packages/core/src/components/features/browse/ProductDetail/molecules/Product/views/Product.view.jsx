@@ -212,17 +212,22 @@ class Product extends React.Component {
       isCanada,
       isHasPlcc,
       isInternationalShipping,
-      badge1,
       isKeepAlive,
+      isMatchingFamily,
+      isGiftCard,
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
+    const currentColorProductId = productDetails.get('currentColorProductId');
     if (!productInfo) {
       return <div />; // TODO - maybe add loader later
     }
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const colorProduct =
-      productInfo && getMapSliceForColorProductId(productInfo.colorFitsSizesMap, colorProductId);
+      productInfo &&
+      getMapSliceForColorProductId(productInfo.colorFitsSizesMap, currentColorProductId);
     const prices = productInfo && getPrices(productInfo, colorProduct.color.name);
+    const badges = colorProduct.miscInfo.badge1;
+    const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
     // if(isShowPriceRange) {
     //   const { fit, size } = addToBagFormValues;
     //   prices = getPricesWithRange(productInfo, colorProduct.color.name, fit, size, isSelectedSizeDisabled);
@@ -233,6 +238,7 @@ class Product extends React.Component {
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
+          isGiftCard={isGiftCard}
           productInfo={productInfo}
           // {...addToBagFormValues}
           isShowFavoriteCount
@@ -247,19 +253,21 @@ class Product extends React.Component {
           // isShowPriceRange={isShowPriceRange}
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
         />
-        <ProductPrice
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
-          isItemPartNumberVisible={false}
-          itemPartNumber={colorProduct.colorDisplayId}
-          {...prices}
-          promotionalMessage={promotionalMessage}
-          isCanada={isCanada}
-          promotionalPLCCMessage={promotionalPLCCMessage}
-          isPlcc={isHasPlcc}
-          isInternationalShipping={isInternationalShipping}
-        />
+        {!isGiftCard ? (
+          <ProductPrice
+            currencySymbol={currencySymbol}
+            priceCurrency={priceCurrency}
+            currencyExchange={currencyExchange}
+            isItemPartNumberVisible={false}
+            itemPartNumber={colorProduct.colorDisplayId}
+            {...prices}
+            promotionalMessage={promotionalMessage}
+            isCanada={isCanada}
+            promotionalPLCCMessage={promotionalPLCCMessage}
+            isPlcc={isHasPlcc}
+            isInternationalShipping={isInternationalShipping}
+          />
+        ) : null}
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,

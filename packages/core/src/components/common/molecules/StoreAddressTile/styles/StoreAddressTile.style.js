@@ -52,28 +52,6 @@ export const TileFooter = styled.div`
       ? props.theme.spacing.ELEM_SPACING.MED
       : props.theme.spacing.ELEM_SPACING.XS};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-
-  ${props =>
-    props.variation === 'detail' &&
-    props.showSetFavorite &&
-    props.theme.gridDimensions.gridBreakPointsKeys.map(
-      key => `
-        ${key !== 'large' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
-          ${
-            key !== 'large'
-              ? `
-              flex-direction: column;
-
-              .tile-footer__fullwidth {
-                width: 100%;
-                margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM}
-              }
-            `
-              : ``
-          }
-        ${key !== 'large' ? `}` : ''}
-      `
-    )}
 `;
 
 export const TileBody = styled.div`
@@ -105,6 +83,9 @@ export const TileBody = styled.div`
       flex: none;
     }
   }
+  .address-meta__nodisplay {
+    display: none;
+  }
 `;
 
 export const FavStore = styled.div`
@@ -126,6 +107,11 @@ export default css`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+
+  &.address-tile__selectedStore {
+    border: solid 1px ${props => props.theme.colorPalette.gray[500]};
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+  }
 
   .brand-store {
     display: flex;
