@@ -14,6 +14,7 @@ import {
   CheckoutAddressWrapper,
   AddressDropdownWrapper,
 } from '../styles/CheckoutBillingAddress.styles.native';
+import { updateAddress, getSelectedAddress } from './CheckoutBillingAddress.util';
 
 const dropDownStyle = {
   height: 30,
@@ -32,13 +33,19 @@ const itemStyle = {
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
-    const { addNewCCState, selectedOnFileAddressId, userAddresses, orderHasShipping } = props;
+    const {
+      addNewCCState,
+      selectedOnFileAddressId,
+      userAddresses,
+      orderHasShipping,
+      editMode,
+    } = props;
     this.state = {
       isAddNewAddress:
+        editMode ||
         (addNewCCState &&
           !(
-            selectedOnFileAddressId &&
-            this.getSelectedAddress(userAddresses, selectedOnFileAddressId)
+            selectedOnFileAddressId && getSelectedAddress(userAddresses, selectedOnFileAddressId)
           )) ||
         this.checkIfPickUp({ orderHasShipping, userAddresses, selectedOnFileAddressId }) ||
         false,
@@ -46,19 +53,7 @@ class CheckoutAddress extends React.Component {
   }
 
   checkIfPickUp = ({ orderHasShipping, userAddresses, selectedOnFileAddressId }) => {
-    return !orderHasShipping && !this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
-  };
-
-  /**
-   * @function getSelectedAddress
-   * @description returns the selected address from address list
-   */
-  getSelectedAddress = (addressList, onFileAddressId) => {
-    let selectedAddress = null;
-    if (onFileAddressId) {
-      selectedAddress = addressList.find(add => add.addressId === onFileAddressId);
-    }
-    return selectedAddress;
+    return !orderHasShipping && !getSelectedAddress(userAddresses, selectedOnFileAddressId);
   };
 
   /**
@@ -66,40 +61,32 @@ class CheckoutAddress extends React.Component {
    * @description toggles the isAddNewAddress state
    */
   toggleAddNewAddressMode = () => {
-    const { isAddNewAddress } = this.state;
     const { dispatch, formName } = this.props;
-    this.setState({ isAddNewAddress: !isAddNewAddress });
+    this.newAddressModeStarted = true;
     dispatch(change(formName, 'onFileAddressId', ''));
+    dispatch(change(formName, `address.addressId`, ''));
     dispatch(resetSection(formName, 'address'));
+    this.setState({ isAddNewAddress: true });
   };
 
   /**
    * @function onSameAsShippingChange
    * @description called when same as shipping checkbox is checked
    */
-  onSameAsShippingChange = () => {
-    const { isSameAsShippingChecked, dispatch, shippingAddress, formName } = this.props;
-    if (shippingAddress) {
-      const {
-        firstName,
-        lastName,
-        addressLine1,
-        addressLine2,
-        state,
-        city,
-        zipCode,
-        country,
-      } = shippingAddress;
-      if (isSameAsShippingChecked) {
-        dispatch(change(formName, `address.firstName`, firstName));
-        dispatch(change(formName, `address.lastName`, lastName));
-        dispatch(change(formName, `address.addressLine1`, addressLine1));
-        dispatch(change(formName, `address.addressLine2`, addressLine2));
-        dispatch(change(formName, `address.state`, state));
-        dispatch(change(formName, `address.city`, city));
-        dispatch(change(formName, `address.zipCode`, zipCode));
-        dispatch(change(formName, `address.country`, country));
+  onSameAsShippingChange = value => {
+    const { shippingAddress, editMode, userAddresses, dispatch, formName } = this.props;
+    if (value) {
+      updateAddress(shippingAddress, editMode, dispatch, formName, true);
+      this.SameAsShippingChange = true;
+    } else if (editMode) {
+      if (this.SameAsShippingChange) {
+        const index = userAddresses.findIndex(
+          val => val.primary && val.primary.toString() === 'true'
+        );
+        updateAddress(userAddresses.get(index), editMode, dispatch, formName, true);
       }
+      this.setState({ isAddNewAddress: !this.SameAsShipping });
+      this.SameAsShipping = true;
     }
   };
 
@@ -149,13 +136,14 @@ class CheckoutAddress extends React.Component {
       shippingAddress,
       isSameAsShippingChecked,
       billingData,
+      editMode,
     } = this.props;
-    const selectedAddress = this.getSelectedAddress(userAddresses, onFileAddressId);
+    const selectedAddress = getSelectedAddress(userAddresses, onFileAddressId);
     const { isAddNewAddress } = this.state;
     let addressLine1;
     let state;
     let address;
-    if (!isAddNewAddress) {
+    if (!isAddNewAddress || editMode) {
       if (selectedAddress) {
         [addressLine1] = selectedAddress.addressLine;
         ({ state } = selectedAddress);
@@ -263,13 +251,22 @@ class CheckoutAddress extends React.Component {
    * @function onAddressDropDownChange
    * @description called when address dropdown value is changed
    */
-  onAddressDropDownChange = itemValue => {
+  onAddressDropDownChange = addressId => {
+    const { editMode, userAddresses, dispatch, formName } = this.props;
+    if (this.newAddressModeStarted || !addressId) {
+      this.newAddressModeStarted = false;
+      return;
+    }
     const { isAddNewAddress } = this.state;
-    const { dispatch, formName } = this.props;
+    if (editMode) {
+      const userAddress = userAddresses.find(
+        address => addressId && addressId.toString() === address.addressId.toString()
+      );
+      updateAddress(userAddress, editMode, dispatch, formName, true);
+    }
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });
     }
-    dispatch(change(formName, 'onFileAddressId', itemValue));
   };
 
   /**
@@ -283,7 +280,7 @@ class CheckoutAddress extends React.Component {
       addressLabels: { addressFormLabels },
     } = this.props;
     const { isAddNewAddress } = this.state;
-    const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
+    const selectedAddress = getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
       userAddresses &&
       userAddresses.size > 0 && (
@@ -367,6 +364,7 @@ CheckoutAddress.propTypes = {
   addNewCCState: PropTypes.bool.isRequired,
   onFileAddressId: PropTypes.string,
   billingData: PropTypes.shape({}),
+  editMode: PropTypes.bool,
 };
 
 CheckoutAddress.defaultProps = {
@@ -377,6 +375,7 @@ CheckoutAddress.defaultProps = {
   selectedOnFileAddressId: null,
   onFileAddressId: null,
   billingData: null,
+  editMode: false,
 };
 export default withStyles(CheckoutAddress, styles);
 export { CheckoutAddress as CheckoutAddressVanilla };

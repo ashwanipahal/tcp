@@ -35,6 +35,21 @@ const OrderSummaryWrapper = styled.View`
   border-color: ${props => props.theme.colors.PRIMARY.GRAY};
 `;
 
+const OrderSummaryBody = styled.View`
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+`;
+
+const OrderSummaryHeader = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+`;
+
 export {
   StyledOrderLedger,
   StyledRowDataContainer,
@@ -42,4 +57,6 @@ export {
   IconContainer,
   StyledHeader,
   OrderSummaryWrapper,
+  OrderSummaryHeader,
+  OrderSummaryBody,
 };

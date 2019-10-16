@@ -1,6 +1,6 @@
-import CreateAccount from '../../account/CreateAccount';
-import LoginPage from '../../account/LoginPage';
-import AccountDrawer from '../../account/AccountDrawer';
+import CreateAccount from '../../CreateAccount';
+import LoginPage from '../../LoginPage';
+import AccountDrawer from '../../AccountDrawer';
 
 const OverlayModalComponentMapping = {
   login: LoginPage,
