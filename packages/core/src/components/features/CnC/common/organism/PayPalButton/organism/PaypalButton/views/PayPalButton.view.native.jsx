@@ -10,6 +10,7 @@ const PayPalButton = props => {
     paypalAuthorizationHandle,
     clearPaypalSettings,
     navigation,
+    paypalEnv,
   } = props;
   const [showAsModal, setAsModal] = useState(false);
   const handleWebViewEvents = event => {
@@ -49,7 +50,7 @@ const PayPalButton = props => {
 
   const webURL = `http://dev.childrensplace.com:3000/static/paypal/index.html?key=${
     getPayPalSettings.paypalInContextToken
-  }`;
+  }&paypalEnv=${paypalEnv}`;
 
   return (
     <View style={{ ...styles }}>
@@ -79,6 +80,7 @@ PayPalButton.propTypes = {
   paypalAuthorizationHandle: PropTypes.func.isRequired,
   clearPaypalSettings: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  paypalEnv: PropTypes.string.isRequired,
 };
 
 export default PayPalButton;

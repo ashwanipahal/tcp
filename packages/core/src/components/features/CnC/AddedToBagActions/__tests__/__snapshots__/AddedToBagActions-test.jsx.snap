@@ -44,7 +44,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       <div
         className="paypal-wrapper-atb"
       >
-        <withRouter(Connect(PayPalButtonContainer))
+        <Connect(PayPalButtonContainer)
           className="payPal-button"
           containerId="paypal-button-container"
         />

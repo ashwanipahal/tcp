@@ -5,17 +5,17 @@ import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
-import { getAPIConfig } from '../../../../../../../utils';
+import { getAPIConfig, isMobileApp } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const { startPaypalNativeCheckoutAction } = this.props;
-    startPaypalNativeCheckoutAction();
+    if (isMobileApp()) startPaypalNativeCheckoutAction();
   }
 
   componentWillUnmount() {
     const { payPalWebViewHandle } = this.props;
-    payPalWebViewHandle(false);
+    if (isMobileApp()) payPalWebViewHandle(false);
   }
 
   initalizePayPalButton = data => {
@@ -60,6 +60,8 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       paypalAuthorizationHandle,
       clearPaypalSettings,
     } = this.props;
+    const apiConfigObj = getAPIConfig();
+    const { paypalEnv } = apiConfigObj;
     return (
       getPayPalSettings &&
       getPayPalSettings.paypalInContextToken && (
@@ -72,6 +74,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           payPalWebViewHandle={payPalWebViewHandle}
           paypalAuthorizationHandle={paypalAuthorizationHandle}
           clearPaypalSettings={clearPaypalSettings}
+          paypalEnv={paypalEnv}
         />
       )
     );

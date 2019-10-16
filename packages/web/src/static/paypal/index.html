@@ -17,6 +17,8 @@
           });
           return vars;
       }
+      const paypalEnv = getUrlVars()["paypalEnv"];
+      
       paypal.Button.render(
         {
           style: {
@@ -25,7 +27,7 @@
             shape: "rect",
             tagline: false,
             height: 42,
-            label: 'paypal',
+            label: paypalEnv,
           },
           env: "sandbox", // Specify 'sandbox' for the test environment
           funding: {

@@ -8,6 +8,33 @@ exports[`HomePageView should render correctly 1`] = `
   recycleDistance={5336}
   renderDistance={0}
 >
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill=""
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    style={
+      Object {
+        "margin": 30,
+      }
+    }
+    text="PLP Page"
+    theme={Object {}}
+    url=""
+  />
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
