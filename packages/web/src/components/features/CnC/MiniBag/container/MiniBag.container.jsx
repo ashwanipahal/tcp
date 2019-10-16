@@ -8,7 +8,7 @@ import {
   openMiniBag,
   closeMiniBag,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import MiniBagView from '../views/MiniBag.view';
 import {

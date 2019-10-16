@@ -6,6 +6,7 @@ describe('#Checkout Header Selectors', () => {
       checkoutHeader: {
         lbl_checkoutheader_checkout: 'Checkout',
         lbl_checkoutheader_returnBag: 'Return to Bag',
+        lbl_checkoutHeader_expressCheckout: 'Express Checkout',
       },
     },
   };
@@ -18,6 +19,7 @@ describe('#Checkout Header Selectors', () => {
     expect(CheckoutHeaderSelector.getCheckoutHeaderLabels(state)).toEqual({
       checkoutHeaderLabel: 'Checkout',
       returnBagLabel: 'Return to Bag',
+      expressCheckoutLbl: 'Express Checkout',
     });
   });
 });

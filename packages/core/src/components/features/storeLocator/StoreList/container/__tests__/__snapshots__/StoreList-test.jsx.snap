@@ -5361,7 +5361,17 @@ exports[`StoreList component Component should render with props 1`] = `
     }
     title="Alberta"
     titleClickCb={[Function]}
-  />
+  >
+    <div
+      className="storelist__countrylbl"
+    >
+      <styled.h3
+        className="storelist__countryname"
+      >
+        CANADA
+      </styled.h3>
+    </div>
+  </Styled(StoresCountryTile)>
   <Styled(StoresCountryTile)
     dataLocatorKey="USCanada"
     isDefaultOpen={false}

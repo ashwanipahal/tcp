@@ -56,6 +56,7 @@ const AddedToBag = ({
           labels={labels}
           handleCartCheckout={handleCartCheckout}
           showVenmo={false}
+          containerId="paypal-button-container-added-to-bag"
         />
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">

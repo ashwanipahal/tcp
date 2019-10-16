@@ -6,7 +6,8 @@ const upArrowIcon = getIconPath('up_arrow_icon');
 
 const dropDownlist = css`
   .dropdownUlBorder {
-    border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-left: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-right: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
   }
 

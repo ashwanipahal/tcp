@@ -37,6 +37,7 @@ const ProductListView = ({
   sortLabels,
   slpLabels,
   onPickUpOpenClick,
+  isFilterBy,
   ...otherProps
 }) => {
   return (
@@ -76,6 +77,7 @@ const ProductListView = ({
                 getProducts={getProducts}
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
+                isFilterBy={isFilterBy}
               />
             </div>
           </Col>
@@ -128,6 +130,7 @@ ProductListView.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFilterBy: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {
@@ -146,6 +149,7 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   sortLabels: [],
   slpLabels: {},
+  isFilterBy: true,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
