@@ -152,6 +152,7 @@ class ProductDetailView extends React.Component {
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
 
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
@@ -211,6 +212,7 @@ class ProductDetailView extends React.Component {
                 onChangeColor={this.onChangeColor}
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
+                selectedColorProductId={selectedColorProductId}
               />
             )}
 
