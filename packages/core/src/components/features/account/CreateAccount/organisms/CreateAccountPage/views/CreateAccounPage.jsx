@@ -22,6 +22,8 @@ class CreateAccounPage extends React.Component {
     showForgotPasswordForm: PropTypes.func,
     isUserLoggedIn: PropTypes.bool.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    userplccCardNumber: PropTypes.string.isRequired,
+    userplccCardId: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -60,6 +62,8 @@ class CreateAccounPage extends React.Component {
       showForgotPasswordForm,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -102,6 +106,8 @@ class CreateAccounPage extends React.Component {
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
             tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
             formErrorMessage={formErrorMessage}
+            userplccCardNumber={userplccCardNumber}
+            userplccCardId={userplccCardId}
           />
         </div>
       </div>
