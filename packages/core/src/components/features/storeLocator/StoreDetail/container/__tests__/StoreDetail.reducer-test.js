@@ -43,6 +43,9 @@ describe('StoreDetail Reducer', () => {
       cacheUntil: null,
       bopisItemInventory: [],
       bopisStoresOnCart: [],
+      storelocator_Promo1: '',
+      storelocator_Promo2: '',
+      storelocator_Promo3: '',
     });
     expect(state).toEqual(updatedState);
   });
