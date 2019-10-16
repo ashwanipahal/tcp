@@ -44,7 +44,12 @@ function* bootstrap(params) {
   Object.keys(CACHED_KEYS).forEach(async item => {
     const globalRedisClient = global.redisClient;
     if (globalRedisClient && globalRedisClient.connected) {
-      const cachedLabels = await getDataFromRedis(item);
+      let cachedLabels;
+      try {
+        cachedLabels = await getDataFromRedis(item);
+      } catch (err) {
+        logger.error(err);
+      }
       if (cachedLabels) {
         modulesList = modules && modules.filter(key => key !== 'labels');
         cachedData.labels = cachedLabels;

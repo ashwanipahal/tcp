@@ -220,7 +220,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            undefined (0.00)
+            undefined (0)
           </ForwardRef>
         </div>
       }

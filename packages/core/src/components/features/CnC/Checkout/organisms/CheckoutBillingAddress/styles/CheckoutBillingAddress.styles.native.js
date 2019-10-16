@@ -8,9 +8,7 @@ const SameAsShippingWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-const CheckoutAddressWrapper = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-`;
+const CheckoutAddressWrapper = styled.View``;
 
 const AddressDropdownWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

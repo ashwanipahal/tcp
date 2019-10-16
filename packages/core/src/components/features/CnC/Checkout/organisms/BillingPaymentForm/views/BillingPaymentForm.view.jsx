@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field, change, reset } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BillingPaymentForm.style';
@@ -35,6 +35,12 @@ import {
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
+import {
+  onEditCardFocus,
+  setFormToEditState,
+  unsetPaymentFormEditState,
+  handleBillingFormSubmit,
+} from './BillingPaymentForm.util';
 
 /**
  * @class BillingPaymentForm
@@ -204,21 +210,6 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  setFormToEditState = e => {
-    e.preventDefault();
-    this.cardNumberCleared = false;
-    this.setState({ editMode: true });
-  };
-
-  unsetFormEditState = e => {
-    if (e) {
-      e.preventDefault();
-    }
-    const { dispatch } = this.props;
-    dispatch(reset(constants.EDIT_FORM_NAME));
-    this.setState({ editMode: false, editModeSubmissionError: '' });
-  };
-
   renderCardDetailsHeading = ({ hideAnchor } = {}) => {
     const { labels } = this.props;
     return (
@@ -237,7 +228,7 @@ export class BillingPaymentForm extends React.PureComponent {
             fontSizeVariation="medium"
             underline
             noLink
-            onClick={this.setFormToEditState}
+            onClick={e => setFormToEditState(this, e)}
             anchorVariation="primary"
             className="billing-payment-edit"
             dataLocator="billing-payment-edit"
@@ -260,7 +251,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { dispatch, updateCardDetail } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
-    const { onEditCardFocus, renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState } = this;
+    const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState } = this;
     return (
       <>
         {renderBillingAddressHeading(labels)}
@@ -368,12 +359,8 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  onEditCardFocus = () => {
-    if (!this.cardNumberCleared) {
-      const { dispatch } = this.props;
-      this.cardNumberCleared = true;
-      dispatch(change(constants.EDIT_FORM_NAME, 'cardNumber', ''));
-    }
+  unsetFormEditState = e => {
+    unsetPaymentFormEditState(this, e);
   };
 
   /**
@@ -391,17 +378,6 @@ export class BillingPaymentForm extends React.PureComponent {
     );
   };
 
-  handleSubmit = e => {
-    const { handleSubmit, labels } = this.props;
-    const { editMode } = this.state;
-    if (editMode) {
-      e.preventDefault();
-      this.setState({ editModeSubmissionError: labels.cardEditUnSavedError });
-      return this.ediCardErrorRef.current.scrollIntoView(false);
-    }
-    return handleSubmit(e);
-  };
-
   /**
    * @function render
    * @description render method to be called of component
@@ -417,7 +393,7 @@ export class BillingPaymentForm extends React.PureComponent {
         name={constants.FORM_NAME}
         noValidate
         className={className}
-        onSubmit={this.handleSubmit}
+        onSubmit={e => handleBillingFormSubmit(this, e)}
       >
         {!isPaymentDisabled && (
           <div>

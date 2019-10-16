@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
 import TrackOrderView from '../views';
 import {
