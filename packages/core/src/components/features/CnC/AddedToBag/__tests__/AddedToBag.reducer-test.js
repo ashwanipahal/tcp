@@ -63,6 +63,8 @@ describe('Added to bag Reducer', () => {
     const initialState = fromJS({
       error: false,
     });
-    expect(AddedToBagReducer(initialState, AddToCartError(err))).toEqual(fromJS({ error: err }));
+    expect(AddedToBagReducer(initialState, AddToCartError(err))).toEqual(
+      fromJS({ error: err, errorCatId: undefined })
+    );
   });
 });

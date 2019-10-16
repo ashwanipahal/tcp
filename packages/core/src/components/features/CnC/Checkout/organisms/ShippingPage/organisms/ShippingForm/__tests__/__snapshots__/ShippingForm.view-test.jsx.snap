@@ -24,6 +24,7 @@ exports[`Shipping Form should render correctly 1`] = `
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
     <Styled(RegisteredShippingForm)
       addressLabels={
@@ -35,6 +36,12 @@ exports[`Shipping Form should render correctly 1`] = `
       className=""
       defaultAddressId={null}
       defaultShipmentId={null}
+      editShipmentDetailsError=""
+      errorMessageRef={
+        Object {
+          "current": null,
+        }
+      }
       isAddNewAddress={false}
       isEditing={false}
       isGuest={false}
@@ -125,7 +132,6 @@ exports[`Shipping Form should render correctly 1`] = `
     />
     <Styled(CheckoutFooter)
       backLinkText="lbl_shipping_backLinkText"
-      disableNext={false}
       hideBackLink={false}
       nextButtonText="lbl_shipping_billingText"
     />
@@ -157,6 +163,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
     <div
       className="address-form"
@@ -427,7 +434,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     />
     <Styled(CheckoutFooter)
       backLinkText="lbl_shipping_backLinkText"
-      disableNext={false}
       hideBackLink={false}
       nextButtonText="lbl_shipping_billingText"
     />
@@ -459,6 +465,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
     <div
       className="address-form"
@@ -1071,7 +1078,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
     />
     <Styled(CheckoutFooter)
       backLinkText="lbl_shipping_backLinkText"
-      disableNext={false}
       hideBackLink={false}
       nextButtonText="lbl_shipping_billingText"
     />
@@ -1103,6 +1109,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     className=""
     isEditing={true}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
     <div
       className="address-form"
@@ -1745,7 +1752,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
     />
     <Styled(CheckoutFooter)
       backLinkText="lbl_shipping_backLinkText"
-      disableNext={true}
       hideBackLink={false}
       nextButtonText="lbl_shipping_billingText"
     />
@@ -1777,6 +1783,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
     className=""
     isEditing={false}
     name="checkoutShipping"
+    onSubmit={[Function]}
   >
     <div
       className="address-form"
@@ -2129,7 +2136,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
     />
     <Styled(CheckoutFooter)
       backLinkText="lbl_shipping_backLinkText"
-      disableNext={false}
       hideBackLink={false}
       nextButtonText="lbl_shipping_billingText"
     />
