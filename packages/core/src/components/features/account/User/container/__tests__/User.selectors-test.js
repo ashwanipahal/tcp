@@ -17,6 +17,7 @@ import {
   getDefaultStore,
   getProfileInfoTileData,
   getChildren,
+  getIsRegisteredUserCallDone,
 } from '../User.selectors';
 import { USER_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -45,6 +46,7 @@ describe('#User selector', () => {
       answers: [[''], ['']],
     },
     children: [{ childId: '12345' }],
+    isRegisteredUserCallDone: true,
   };
   const state = {
     [USER_REDUCER_KEY]: fromJS(stateObject),
@@ -148,6 +150,10 @@ describe('#User selector', () => {
 
   it('#getProfileInfoTileData should return profile information data', () => {
     expect(getProfileInfoTileData(state).firstName).toBe('first');
+  });
+
+  it('#getIsRegisteredUserCallDone should return user email', () => {
+    expect(getIsRegisteredUserCallDone(state)).toBe(stateObject.isRegisteredUserCallDone);
   });
 
   it('#getChildren should return childrens', () => {

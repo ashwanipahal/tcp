@@ -19,6 +19,8 @@ const accordionStyles = css`
     font-weight: bold;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
     color: ${props => props.theme.colors.ACCORDION.COLLAPSE_EXPAND_ICON};
+    height: 10px;
+    width: 10px;
   }
 
   &.inactive::after {

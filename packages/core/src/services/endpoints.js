@@ -409,5 +409,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/store/getStoreLocationByCountry',
   },
+  startExpressCheckout: {
+    method: 'POST',
+    URI: 'v2/checkout/expressCheckout',
+  },
 };
 export default endpoints;

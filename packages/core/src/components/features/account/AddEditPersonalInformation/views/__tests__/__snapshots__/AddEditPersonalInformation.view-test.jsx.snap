@@ -30,7 +30,7 @@ exports[`AddEditPersonalInformation.view component should renders correctly 1`] 
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="margin-none"
+    className="margin-none myAccountRightView"
     dataLocator="pi-profileinformationheading"
     heading="update Profile"
   />

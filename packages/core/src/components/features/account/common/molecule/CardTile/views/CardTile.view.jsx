@@ -92,6 +92,7 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
+    const { creditCardId } = card;
     const cardNum = `${getLabelValue(
       labels,
       'lbl_payment_cardNum',
@@ -106,6 +107,7 @@ class CardTile extends React.Component<Props> {
       <React.Fragment>
         <BodyCopy
           component="span"
+          id={creditCardId}
           fontSize="fs14"
           fontFamily="secondary"
           fontWeight="bold"
@@ -237,6 +239,7 @@ class CardTile extends React.Component<Props> {
           <Anchor
             fontSizeVariation="large"
             underline
+            aria-describedby={creditCardId}
             to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
             asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
@@ -250,6 +253,7 @@ class CardTile extends React.Component<Props> {
           className="cardTile__anchor"
           fontSizeVariation="large"
           underline
+          aria-describedby={creditCardId}
           to="/#"
           anchorVariation="primary"
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}

@@ -35,6 +35,7 @@ export {
   canUseDOM,
   getUrlParameter,
   scrollToParticularElement,
+  getDirections,
 } from './utils.web';
 
 export {
