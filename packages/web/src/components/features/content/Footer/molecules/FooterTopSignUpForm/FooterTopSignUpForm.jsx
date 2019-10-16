@@ -9,13 +9,6 @@ import { Button, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms
 import style from '../../Footer.style';
 
 class FooterTopSignUpForm extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      validationStarted: false,
-    };
-  }
-
   componentDidUpdate({ submitSucceeded: oldSubmitSucceeded }) {
     const { subscription, submitSucceeded, openSuccessModal } = this.props;
 
@@ -27,7 +20,6 @@ class FooterTopSignUpForm extends React.PureComponent {
       }
       this.formSubmitPromise = null;
     }
-
     if (oldSubmitSucceeded !== submitSucceeded && submitSucceeded) {
       openSuccessModal();
       this.cleanUpForm();
@@ -41,53 +33,52 @@ class FooterTopSignUpForm extends React.PureComponent {
     }
   };
 
-  onInputBlur = () => {
-    this.setState({
-      validationStarted: true,
-    });
-  };
-
   cleanUpForm = () => {
     const { reset } = this.props;
     reset();
-    this.setState({
-      validationStarted: false,
-    });
   };
 
-  submitForm = () => {
-    const { handleSubmit, onFormSubmit, fieldName } = this.props;
+  submitForm = values => {
+    const {
+      onFormSubmit,
+      validateForm,
+      labels: { validationErrorLabel },
+      fieldName,
+    } = this.props;
 
-    handleSubmit(values => {
-      return new Promise((resolve, reject) => {
-        this.formSubmitPromise = { resolve, reject };
-        onFormSubmit(values[fieldName]);
-      }).catch(() => {
-        const {
-          labels: { validationErrorLabel },
-        } = this.props;
+    console.info('vlues: ', values);
+    return validateForm(values)
+      .then(subscription => {
+        if (subscription.error) {
+          return Promise.reject();
+        }
+
+        return new Promise((resolve, reject) => {
+          this.formSubmitPromise = { resolve, reject };
+          console.info('values[fieldName]: ', values[fieldName]);
+          onFormSubmit(values[fieldName]);
+        });
+      })
+      .catch(() => {
         const error = { [fieldName]: validationErrorLabel };
+        console.info('validationErrorLabel: ', error, values, fieldName);
         throw new SubmissionError({ ...error, _error: error });
       });
-    })();
   };
 
   render() {
     const {
       labels,
       pristine,
-      invalid,
-      asyncValidating,
       submitting,
-      submitSucceeded,
+      handleSubmit,
       dataLocators,
       fieldName,
       fieldProps,
     } = this.props;
-    const { validationStarted = false } = this.state;
 
     return (
-      <form className="footer_top__signup_form">
+      <form className="footer_top__signup_form" onSubmit={handleSubmit(this.submitForm)}>
         <Grid>
           <Row fullBleed>
             <Col
@@ -107,10 +98,10 @@ class FooterTopSignUpForm extends React.PureComponent {
                 id={fieldName}
                 type="text"
                 component={TextBox}
-                onBlur={this.onInputBlur}
-                onKeyPress={this.onSignUpInputKeyPress}
                 dataLocator={dataLocators.inputField}
                 errorDataLocator={dataLocators.errorDataLocator}
+                enableSuccessCheck={false}
+                showSuccessCheck={false}
                 {...fieldProps}
               />
             </Col>
@@ -126,18 +117,10 @@ class FooterTopSignUpForm extends React.PureComponent {
               className="candidate_a_inline_container_button"
             >
               <Button
-                disabled={
-                  pristine ||
-                  !validationStarted ||
-                  asyncValidating ||
-                  invalid ||
-                  submitSucceeded ||
-                  submitting
-                }
+                disabled={pristine || submitting}
                 buttonVariation="fixed-width"
-                type="button"
+                type="submit"
                 data-locator={dataLocators.submitButton}
-                onClick={this.submitForm}
                 className="candidate_a_form_button"
               >
                 {labels.lbl_SignUp_submitButtonLabel}
@@ -163,7 +146,7 @@ FooterTopSignUpForm.propTypes = {
   }),
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
-  asyncValidating: PropTypes.oneOf(PropTypes.bool, PropTypes.string),
+  validateForm: PropTypes.func,
   submitSucceeded: PropTypes.bool,
   submitting: PropTypes.bool,
   subscription: PropTypes.shape({}),
@@ -188,7 +171,7 @@ FooterTopSignUpForm.defaultProps = {
   },
   pristine: false,
   invalid: false,
-  asyncValidating: false,
+  validateForm: () => {},
   submitSucceeded: false,
   submitting: false,
   subscription: {},

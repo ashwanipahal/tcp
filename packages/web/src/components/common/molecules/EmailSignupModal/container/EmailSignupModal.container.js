@@ -16,6 +16,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(validateEmail(payload));
     },
     submitEmailSubscription: payload => {
+      console.info('adf', payload);
       dispatch(submitEmailSignup(payload));
     },
     clearEmailSignupForm: () => {

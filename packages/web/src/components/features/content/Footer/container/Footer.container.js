@@ -81,11 +81,20 @@ const mapDispatchToProps = dispatch => {
       dispatch(toggleSmsSignupModal({ isModalOpen: true }));
     },
     submitEmailSubscription: payload => {
+      console.info('validating', payload);
       dispatch(submitEmailSignup(payload));
     },
     submitSmsSubscription: payload => {
       dispatch(clearSmsSignupForm());
       dispatch(submitSmsSignup(payload));
+    },
+    validateSignupEmail: values => {
+      return emailSignupAbstractor.verifyEmail(values.signup);
+    },
+    validateSignupSmsPhoneNumber: values => {
+      return validatePhoneNumber(values.footerTopSmsSignup)
+        ? Promise.resolve({})
+        : Promise.reject();
     },
     /* Validate function for email signup redux-for. check asyncValidate of redux-form */
     emailSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
