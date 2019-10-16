@@ -10,7 +10,7 @@ const images = [
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
-    const gymboreeHeaderTextItems = [
+  const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
       style: 'style1',
@@ -23,7 +23,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
       text: 'The whole bunch is blooming',
       style: 'gymboree_description',
     },
-   /*  {
+    /*  {
       text: 'in purple and pastel pops ',
       style: 'gymboree_description',
     },
@@ -45,7 +45,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
   imageSlides.push({
     headerText: [
       {
-        textItems: tcpHeaderTextItems,
+        textItems: gymboreeHeaderTextItems,
         link: {
           url: '/c/',
           text: '',
@@ -65,7 +65,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
-        textItems: tcpPromoTextItems,
+        textItems: gymboreePromoTextItems,
       },
     ],
     linkedImage: [
@@ -87,7 +87,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
         },
       },
     ],
-   /*  ribbonBanner: [
+    /*  ribbonBanner: [
       {
         ribbonPlacement: 'right',
         textItems: [

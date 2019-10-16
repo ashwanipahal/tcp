@@ -75,7 +75,7 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
-              <ModuleA {...moduleAMock.moduleA.composites} ctaType="stackedCTAButtons" fullBleed />
+              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
               <ModuleD {...moduleDMock.composites} />
               <ModuleG {...moduleGMock.moduleG.composites} />
               <ModuleQ {...moduleQMock.moduleQ.composites} />

@@ -177,6 +177,7 @@ export const isValidDate = date => {
 };
 
 export const isGymboree = () => {
+  return true;
   const { brandId } = getAPIConfig();
   return brandId === API_CONFIG.brandIds.gym;
 };
