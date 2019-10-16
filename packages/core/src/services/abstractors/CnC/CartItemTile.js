@@ -18,6 +18,7 @@ import {
 } from '../../../utils/errorMessage.util';
 import { isCanada } from '../../../utils';
 import { UPDATE_ITEM_IN_CART } from '../../config';
+import { setLocalStorage } from '../../../utils/localStorageManagement';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -106,6 +107,10 @@ export const getProductImgPath = (id, excludeExtension) => {
     500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
     900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
   };
+};
+
+const setBrierleyOrderPointsTimeCache = () => {
+  setLocalStorage({ key: 'orderPointsTimeStamp', value: new Date().getTime() });
 };
 
 // NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
@@ -273,7 +278,12 @@ export const constructCouponStructure = cpnArray => {
   return coupons;
 };
 
-export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems, isCanada) => {
+export const getCurrentOrderFormatter = (
+  orderDetailsResponse,
+  excludeCartItems,
+  isCanada,
+  isRadialInvEnabled
+) => {
   const EMPTY_OBJECT = Object.create(null);
   let pickUpContact = {};
   let pickUpAlternative = {};
@@ -640,7 +650,12 @@ tomorrowClosingTime
           // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
           // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(
+            orderDetailsResponse,
+            item,
+            store,
+            isRadialInvEnabled
+          ),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -727,13 +742,15 @@ export const getCartData = ({
   recalcRewards,
   isCanada,
   isCheckoutFlow,
+  isRadialInvEnabled,
+  isLoggedIn,
 }) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
       pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
       langId: -1,
-      source: '',
+      source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
       recalculate: !!recalcRewards,
     },
@@ -744,7 +761,9 @@ export const getCartData = ({
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-
+    if (res.req && res.req.header && res.req.header.recalculate) {
+      setBrierleyOrderPointsTimeCache();
+    }
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
     const coupons = isCheckoutFlow
@@ -754,7 +773,12 @@ export const getCartData = ({
         constructCouponStructure(res.body.coupons.offers);
     return {
       coupons,
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, excludeCartItems, isCanada),
+      orderDetails: getCurrentOrderFormatter(
+        orderDetailsResponse,
+        excludeCartItems,
+        isCanada,
+        isRadialInvEnabled
+      ),
     };
   });
 };
@@ -808,7 +832,7 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
-export const deriveItemAvailability = (orderDetails, item, store) => {
+export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEnabled) => {
   const isUsOrder = orderDetails.currencyCode === 'USD';
   const isCaOrder = orderDetails.currencyCode !== 'USD';
   const isStoreBOSSEligible = true;

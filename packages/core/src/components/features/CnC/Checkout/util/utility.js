@@ -28,19 +28,35 @@ import CardConstants from '../../../account/AddEditCreditCard/container/AddEditC
 import { isMobileApp, routerPush } from '../../../../../utils';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
+import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
-const getOrderPointsRecalcFlag = (/* recalcRewards, recalcOrderPointsInterval */) => {
-  // let recalcVal = recalcRewards;
-  // if(recalcOrderPointsInterval && !recalcRewards) {
-  //   const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
-  //   const currentTime = ((new Date()).getTime());
-  //   if(!orderPointsTimeStamp || (orderPointsTimeStamp && ((currentTime - orderPointsTimeStamp) > recalcOrderPointsInterval))) {
-  //     recalcVal = true;
-  //   }
-  // }
-  return false;
+/**
+ * getOrderPointsRecalcFlag
+ * @param {boolean} recalcRewards - current recalculate rewards value for the request
+ * @param {number} recalcOrderPointsInterval - XAPPConfig configuration value for timeout for recalc flag
+ * the entire function will be dependent on this flag being set from backend
+ * @description this method takes recalculate flag and the XappConfigValue configuration
+ * in case recalcRewards is false and caching interval is configured, it changes it to true in these cases:
+ * if time of last recalcRewards true request is not cached in localStorage
+ * if the time elapsed since last recalcRewards true request is more than the set threshold
+ * after recalcRewards flag is modified, if it is true, cache the time when the true request is sent
+ * @returns {boolean} recalcVal to be passed in the getOrderDetails or cart API header
+ */
+const getOrderPointsRecalcFlag = (recalcRewards, recalcOrderPointsInterval) => {
+  let recalcVal = recalcRewards;
+  if (recalcOrderPointsInterval && !recalcRewards) {
+    const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
+    const currentTime = new Date().getTime();
+    if (
+      !orderPointsTimeStamp ||
+      (orderPointsTimeStamp && currentTime - orderPointsTimeStamp > recalcOrderPointsInterval)
+    ) {
+      recalcVal = true;
+    }
+  }
+  return recalcVal;
 };
 
 const updateCartInfo = (cartInfo, isUpdateCartItems) => {
