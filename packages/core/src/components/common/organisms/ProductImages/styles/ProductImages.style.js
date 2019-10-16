@@ -65,6 +65,11 @@ export default css`
     margin-right: 6px;
   }
 
+  .slick-dots {
+    position: relative;
+    bottom: 0px;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .main-image-container-wrap {
       width: 100%;
@@ -81,7 +86,7 @@ export default css`
       align-items: center;
     }
     .social-connect-wrapper {
-      padding-top: 64px;
+      padding-top: 34px;
       width: 100%;
       display: inline-block;
     }
@@ -95,6 +100,14 @@ export default css`
       width: 35px;
       height: 35px;
       object-fit: contain;
+    }
+    .slick-dots {
+      position: relative;
+      bottom: 0px;
+    }
+    .fullSize-image-label .resize-text {
+      position: absolute;
+      bottom: 68px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -121,6 +134,10 @@ export default css`
       width: 31px;
       height: 31px;
       object-fit: contain;
+    }
+    .fullSize-image-label .resize-text {
+      position: unset;
+      bottom: initial;
     }
   }
 `;

@@ -371,6 +371,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
+      currentProduct: { colorFitsSizesMap },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
@@ -380,7 +381,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
-      colorFitsSizesMap,
+      colorFitsSizesMap: favColorFitsSizesMap,
       isOutfitPage,
     } = this.props;
     const {
@@ -394,14 +395,17 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     if (fromBagPage) {
       this.setPreSelectedValuesForProduct(productInfoFromBag);
     }
+
+    const productColorFitsSizesMap = colorFitsSizesMap || favColorFitsSizesMap;
+
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
-        colorList={colorFitsSizesMap}
-        fitList={this.getFitOptions(colorFitsSizesMap, selectedColor)}
-        sizeList={this.getSizeList(colorFitsSizesMap)}
+        colorList={productColorFitsSizesMap}
+        fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
+        sizeList={this.getSizeList(productColorFitsSizesMap)}
         selectSize={this.sizeChange}
         selectFit={this.fitChange}
         selectColor={this.colorChange}
