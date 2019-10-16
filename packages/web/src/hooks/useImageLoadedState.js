@@ -12,18 +12,14 @@ export default function useImageLoadedState(imageRef) {
   const [isLoaded, handleLoaded] = useBooleanState(false);
   // Set the state based on image completion or load event handling
   useEffect(() => {
-    try {
-      const imageElement = imageRef.current;
-      if (!imageElement) return null;
-      if (imageElement.complete) {
-        handleLoaded();
-        return null;
-      }
-      imageElement.addEventListener('load', handleLoaded);
-      return () => imageElement.removeEventListener('load', handleLoaded);
-    } catch {
-      return null;
+    const imageElement = imageRef.current;
+    if (!imageElement) return undefined;
+    if (imageElement.complete) {
+      handleLoaded();
+      return undefined;
     }
+    imageElement.addEventListener('load', handleLoaded);
+    return () => imageElement.removeEventListener('load', handleLoaded);
   }, [imageRef]);
   // Return the current state
   return isLoaded;
