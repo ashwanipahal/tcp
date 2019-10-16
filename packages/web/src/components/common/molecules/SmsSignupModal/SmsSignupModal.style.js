@@ -79,8 +79,8 @@ const SmsSignupModalStyle = css`
     }
     .shop-button {
       position: absolute;
-      bottom: 0;
-      width: 100%;
+      width: 222px;
+      bottom: 24px;
     }
   }
 `;

@@ -5,7 +5,7 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -243,7 +243,7 @@ exports[`CheckoutAddress should call onSameAsShippingChange with editMode 1`] = 
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -497,7 +497,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -509,6 +509,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="sameShiAddChkBox"
       fontSize="fs16"
       name="sameAsShipping"
       onChange={[Function]}
@@ -551,7 +552,7 @@ exports[`CheckoutAddress should render correctly if isAddNewAddress is true 1`] 
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -568,7 +569,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -606,12 +607,14 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
           },
           Object {
             "content": "",
+            "dataLocator": "billingAddressBtn",
             "id": "",
             "label": undefined,
             "primary": false,
           },
         ]
       }
+      dataLocator="billingAddDropDown"
       disableBtn={false}
       dropDownStyle={
         Object {
@@ -647,6 +650,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
       }
     }
     customStyle={Object {}}
+    dataLocator="billingAddDetail"
     fontSize="fs14"
     regularName={false}
     showCountry={false}
@@ -662,7 +666,7 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      dataLocator="billing-payment-billingAddress"
+      dataLocator="billingAddressLbl"
       fontSize="fs16"
       fontWeight="semibold"
       margin={null}
@@ -674,6 +678,7 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="sameShiAddChkBox"
       fontSize="fs16"
       name="sameAsShipping"
       onChange={[Function]}
@@ -721,12 +726,14 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
           },
           Object {
             "content": "",
+            "dataLocator": "billingAddressBtn",
             "id": "",
             "label": undefined,
             "primary": false,
           },
         ]
       }
+      dataLocator="billingAddDropDown"
       disableBtn={false}
       dropDownStyle={
         Object {
@@ -758,6 +765,7 @@ exports[`CheckoutAddress should render correctly if selectedAddress is present 1
   <Address
     address={null}
     customStyle={Object {}}
+    dataLocator="billingAddDetail"
     fontSize="fs14"
     regularName={false}
     showCountry={false}
