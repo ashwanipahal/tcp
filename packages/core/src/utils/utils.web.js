@@ -35,6 +35,13 @@ export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
 
+export const getUrlParameter = name => {
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
+  const results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
@@ -134,6 +141,10 @@ export const createUrlSearchParams = (query = {}) => {
   }
   return queryParams.join('&');
 };
+
+export function getHostName() {
+  return window.location.hostname;
+}
 
 export const buildUrl = options => {
   if (typeof options === 'object') {
