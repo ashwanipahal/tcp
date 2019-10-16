@@ -31,7 +31,7 @@ import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
 import RouteTracker from '../components/common/atoms/RouteTracker';
-import UserTimingReporter from '../components/common/atoms/UserTimingReporter';
+import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
 import constants from '../constants';
@@ -239,7 +239,7 @@ class TCPWebApp extends App {
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}
-        {process.env.PERF_TIMING && <UserTimingReporter />}
+        {process.env.PERF_TIMING && <UserTimingRouteHandler />}
         {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
