@@ -88,7 +88,7 @@ class ModuleJ extends React.PureComponent {
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
+    const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     return (
@@ -115,7 +115,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={{
                   alt: promoImage1.alt,
                   url: promoImage1.url,
@@ -153,7 +153,7 @@ class ModuleJ extends React.PureComponent {
             >
               <DamImage
                 className="promo-img"
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 link={promoLink2}

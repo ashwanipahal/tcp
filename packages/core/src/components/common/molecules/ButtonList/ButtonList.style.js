@@ -55,7 +55,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 16px;
+      margin: 0 21px;
     }
   }
 
@@ -143,7 +143,7 @@ export default css`
     padding-bottom: 16px;
     .stacked-button {
       width: 100%;
-      margin-left: 30px;
+      margin-left: 9px;
       :first-child {
         margin-left: 0;
       }

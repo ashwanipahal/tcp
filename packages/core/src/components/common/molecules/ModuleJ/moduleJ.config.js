@@ -37,14 +37,7 @@ export default {
     ],
   },
   IMG_DATA: {
-    productImgConfig: ['t_mod_J_product_m', 't_mod_J_img_product_t', 't_mod_J_img_product_d'],
-    promoImgConfig: ['t_mod_J_img_promo_m', 't_mod_J_img_promo_t', 't_mod_J_img_promo_d'],
-  },
-  PROMO_IMG_DATA: {
-    imgConfig: [
-      'c_fill,g_face:center,h_310,w_375',
-      'c_fill,g_face:center,h_158,w_177',
-      'c_fill,g_face:center,h_215,w_279',
-    ],
+    productImgConfig: ['mod_J_img_product_m', 'mod_J_img_product_t', 'mod_J_img_product_d'],
+    promoImgConfig: ['mod_J_img_promo_m', 'mod_J_img_promo_t', 'mod_J_img_promo_d'],
   },
 };
