@@ -12,6 +12,9 @@ export const initialState = fromJS({
   storesSummaryListOthers: [],
   bopisStoresOnCart: [],
   bopisItemInventory: [],
+  storelocator_Promo1: '',
+  storelocator_Promo2: '',
+  storelocator_Promo3: '',
 });
 
 const StoreDetailReducer = (state = initialState, action) => {
@@ -20,6 +23,8 @@ const StoreDetailReducer = (state = initialState, action) => {
       return state.set('currentStore', action.payload);
     case constants.SET_SUGGESTED_STORE:
       return state.set('suggestedStores', action.payload.nearByStores);
+    case constants.SET_MODULEX_CONTENT:
+      return state.set(action.payload.key, action.payload.value);
     default:
       if (state instanceof Object) {
         return fromJS(state);
