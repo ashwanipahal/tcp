@@ -599,37 +599,69 @@ class CartItemTile extends React.Component {
     );
   };
 
+  /**
+   * @function getBOSSUnavailabilityMessage Get Boss Unavailability messages
+   * @param {bool} bossDisabled Represents if the boss option should be disabled or not
+   * @param {string} noBossMessage Represents the online only products or clearance disabled products message.
+   * @param {string} availability Represents status of the availability
+   * @param {Object} labels
+   * @returns {string} Unavailable message string
+   * @memberof CartItemTile
+   */
   getBOSSUnavailabilityMessage = (bossDisabled, noBossMessage, availability, labels) => {
-    let unavailableMessage = '';
-    if (
-      bossDisabled ||
-      !!noBossMessage ||
-      availability === CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE
-    ) {
-      unavailableMessage = labels.bossUnavailable;
-    } else if (availability === CARTPAGE_CONSTANTS.AVAILABILITY.REQ_QTY_UNAVAILABLE) {
-      unavailableMessage = labels.bossReqQtyUnavailable;
-    } else if (availability === CARTPAGE_CONSTANTS.AVAILABILITY.BOSSINELIGIBLE) {
-      unavailableMessage = labels.bossInEligible;
+    let unavailableMessage;
+    /* istanbul ignore else */
+    if (bossDisabled || !!noBossMessage) {
+      switch (availability) {
+        case CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE:
+          unavailableMessage = labels.bossUnavailable;
+          break;
+        case CARTPAGE_CONSTANTS.AVAILABILITY.REQ_QTY_UNAVAILABLE:
+          unavailableMessage = labels.bossReqQtyUnavailable;
+          break;
+        case CARTPAGE_CONSTANTS.AVAILABILITY.BOSSINELIGIBLE:
+          unavailableMessage = labels.bossInEligible;
+          break;
+        default:
+          unavailableMessage = '';
+      }
     }
     return unavailableMessage;
   };
 
+  /**
+   * @function getBOPISUnavailabilityMessage Get BOPIS Unavailability messages
+   * @param {bool} bopisDisabled Represents if the bopis option should be disabled or not
+   * @param {string} noBopisMessage Represents the online only products or clearance disabled products message.
+   * @param {string} availability Represents status of the availability
+   * @param {Object} labels
+   * @returns {string} Unavailable message string
+   * @memberof CartItemTile
+   */
   getBOPISUnavailabilityMessage = (bopisDisabled, noBopisMessage, availability, labels) => {
     let unavailableMessage = '';
-    if (
-      bopisDisabled ||
-      !!noBopisMessage ||
-      availability === CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE
-    ) {
+    /* istanbul ignore else */
+    if (bopisDisabled || !!noBopisMessage) {
       unavailableMessage = labels.bopisUnavailable;
     }
     return unavailableMessage;
   };
 
+  /**
+   * @function getSTHUnavailabilityMessage
+   * @param {string} availability Represents status of the availability
+   * @param {Object} labels
+   * @memberof CartItemTile
+   */
   getSTHUnavailabilityMessage = (availability, labels) =>
     availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK ? labels.ecomUnavailable : '';
 
+  /**
+   * @function renderUnavailableErrorMessage
+   * @param {Object} settings
+   * @returns {JSX} Returns Item Unavailable component with respective variation of text via passed input
+   * @memberof CartItemTile
+   */
   renderUnavailableErrorMessage = ({
     isEcomSoldout,
     bossDisabled,
@@ -671,6 +703,12 @@ class CartItemTile extends React.Component {
     ) : null;
   };
 
+  /**
+   * @function headerAndAvailabilityErrorContainer
+   * @param {Object} settings
+   * @returns {JSX} Returns Error Message component
+   * @memberof CartItemTile
+   */
   headerAndAvailabilityErrorContainer = ({
     isEcomSoldout,
     bossDisabled,
@@ -730,6 +768,11 @@ class CartItemTile extends React.Component {
     );
   };
 
+  /**
+   * @function noBossBopisMessage Checks for online only or clearance messages for BOSS/BOPIS items
+   * @return {Object}
+   * @memberof CartItemTile
+   */
   noBossBopisMessage = () => {
     const {
       productDetail: {
@@ -765,6 +808,13 @@ class CartItemTile extends React.Component {
 
   isBossOrder = orderType => orderType === CONSTANTS.ORDER_ITEM_TYPE.BOSS;
 
+  /**
+   * @function checkBOSSDisabled
+   * @param {bool} isBossEnabled Represents Country/State level kill switch
+   * @param {bool} isEcomSoldout Represents whether the product is sold out
+   * @param {bool} isBOSSOrder Represent BOSS item
+   * @memberof CartItemTile
+   */
   checkBOSSDisabled = (isBossEnabled, isEcomSoldout, isBOSSOrder) => {
     const {
       productDetail: {
@@ -788,6 +838,13 @@ class CartItemTile extends React.Component {
     );
   };
 
+  /**
+   * @function checkBOPISDisabled
+   * @param {bool} isBopisEnabled Represents Country/State level kill switch
+   * @param {bool} isEcomSoldout Represents whether the product is sold out
+   * @param {bool }isBOPISOrder Represent BOPIS item
+   * @memberof CartItemTile
+   */
   checkBOPISDisabled = (isBopisEnabled, isEcomSoldout, isBOPISOrder) => {
     const {
       productDetail: {
@@ -811,6 +868,15 @@ class CartItemTile extends React.Component {
     );
   };
 
+  /**
+   * @function checkBossBopisDisabled
+   * @param {bool} isBossEnabled Represents Country/State level kill switch
+   * @param {bool} isBopisEnabled Represents Country/State level kill switch
+   * @param {bool} isEcomSoldout Represents whether the product is sold out
+   * @param {bool} isBOSSOrder Represent BOSS item
+   * @param {bool }isBOPISOrder Represent BOPIS item
+   * @memberof CartItemTile
+   */
   checkBossBopisDisabled = (
     isBossEnabled,
     isBopisEnabled,
