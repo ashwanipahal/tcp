@@ -38,12 +38,17 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  getIsInternationalShipping,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
+import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -131,19 +136,12 @@ export function* getOrderDetailSaga(payload) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    const {
-      payload: {
-        isRecalculateTaxes,
-        isCheckoutFlow,
-        isCartNotRequired,
-        updateSmsInfo,
-        onCartRes,
-      } = {},
-    } = payload;
+    const { payload: { isRecalculateTaxes, isCheckoutFlow } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, onCartRes } = {} } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = true; // TODO to get current country
+    const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const isCanadaSIte = false; // TODO to get current country
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
@@ -156,7 +154,16 @@ export function* getCartDataSaga(payload = {}) {
     if (!translatedProductInfo.error) {
       createMatchObject(res, translatedProductInfo);
     }
+    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+    if (bopisItems.length) {
+      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+      res.orderDetails = {
+        ...res.orderDetails,
+        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+      };
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
       if (!personalData || !personalData.get('userId')) {

@@ -81,7 +81,7 @@ class CheckoutAddress extends React.Component {
         component="h2"
         variant="listMenu"
         className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
       >
         {labels.billingAddress}
       </Heading>
@@ -131,6 +131,7 @@ class CheckoutAddress extends React.Component {
               name="sameAsShipping"
               className="elem-mb-LRG"
               onChange={this.onSameAsShippingChange}
+              dataLocator="sameShiAddChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.sameAsShipping}
@@ -192,6 +193,7 @@ class CheckoutAddress extends React.Component {
             fill="BLACK"
             onClick={this.openAddNewAddressMode}
             disabled={isAddNewAddress || !selectedAddress}
+            dataLocator="billingAddressBtn"
           >
             {labels.addNewAddress}
           </Button>
@@ -236,7 +238,7 @@ class CheckoutAddress extends React.Component {
                 name="onFileAddressId"
                 id="onFileAddressId"
                 component={AddressDropdown}
-                dataLocator="shipping-address"
+                dataLocator="billingAddDropDown"
                 options={this.getAddressOptions({ selectedAddress })}
                 onChange={this.onAddressDropDownChange}
                 customSelectClassName="billing-address-dropDown"
@@ -249,6 +251,7 @@ class CheckoutAddress extends React.Component {
             showPhone={false}
             address={selectedAddress}
             className="address elem-mb-XXXL"
+            dataLocator="billingAddDetail"
           />
         </>
       )
