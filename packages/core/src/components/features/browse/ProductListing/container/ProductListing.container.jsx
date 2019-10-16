@@ -25,6 +25,7 @@ import {
   getAppliedFilters,
   getAppliedSortId,
   getLabels,
+  getIsFilterBy,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -189,6 +190,7 @@ function mapStateToProps(state) {
     slpLabels: getLabels(state),
     isGuest: getUserLoggedInState(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    isFilterBy: getIsFilterBy(state),
   };
 }
 

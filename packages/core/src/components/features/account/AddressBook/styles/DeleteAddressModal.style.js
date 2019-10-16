@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const DeleteAddressModalStyle = css`
-  @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 80px;
-  }
   .deleteAddressModal_btnWrapper {
     width: 225px;
     margin: 0 auto;
