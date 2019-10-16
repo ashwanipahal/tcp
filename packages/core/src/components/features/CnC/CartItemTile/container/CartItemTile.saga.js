@@ -85,6 +85,7 @@ export function* updateCartItemSaga({ payload }) {
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
+    /* istanbul ignore else */
     if (callBack) {
       callBack();
     }
