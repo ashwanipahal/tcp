@@ -28,9 +28,15 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   componentWillReceiveProps(nextProps) {
     const { currentProduct, selectedColorProductId } = nextProps;
-    const { currentProduct: prevCurrentProduct } = this.props;
+    const {
+      currentProduct: prevCurrentProduct,
+      selectedColorProductId: prevSelectedColorProductId,
+    } = this.props;
 
-    if (currentProduct && currentProduct !== prevCurrentProduct) {
+    if (
+      (currentProduct && currentProduct !== prevCurrentProduct) ||
+      selectedColorProductId !== prevSelectedColorProductId
+    ) {
       // update selected color once map is received from api
       this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
     }

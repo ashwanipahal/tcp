@@ -68,6 +68,8 @@ class ProductDetailView extends React.Component {
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
+
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
         imagesByColor: productInfo.imagesByColor,
@@ -99,6 +101,7 @@ class ProductDetailView extends React.Component {
               isZoomEnabled
               currentProduct={currentProduct}
               onChangeColor={this.onChangeColor}
+              currentColorEntry={currentColorEntry}
             />
           </Col>
           <Col
@@ -114,6 +117,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
                 plpLabels={plpLabels}
                 onChangeColor={this.onChangeColor}
+                selectedColorProductId={selectedColorProductId}
               />
             )}
             {productInfo && currentColorEntry && (

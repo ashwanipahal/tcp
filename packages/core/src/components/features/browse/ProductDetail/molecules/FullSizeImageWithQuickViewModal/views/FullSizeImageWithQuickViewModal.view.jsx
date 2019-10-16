@@ -1,6 +1,8 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -41,8 +43,8 @@ const FullSizeImageWithQuickViewModal = props => {
                   {colorList && colorList.size > 0 && (
                     <div className="color-selector">
                       <Field
-                        id="color-swatch"
-                        name="color-swatch"
+                        id="colorSwatchModal"
+                        name="colorSwatchModal"
                         component={ProductColorChipsSelector}
                         colorFitsSizesMap={colorList}
                         onChange={selectColor}
@@ -100,8 +102,16 @@ FullSizeImageWithQuickViewModal.defaultProps = {
   colorChipSelector: {},
 };
 
-export default reduxForm({
-  form: FullSizeImageWithQuickViewConstant.FULL_SIZE_QUICK_VIEW_FORM,
-})(withStyles(FullSizeImageWithQuickViewModal, styles));
+export default compose(
+  connect((state, props) => {
+    const formName =
+      props.customFormName || FullSizeImageWithQuickViewConstant.FULL_SIZE_QUICK_VIEW_FORM;
+    return {
+      form: formName,
+      enableReinitialize: true,
+    };
+  }),
+  reduxForm()
+)(withStyles(FullSizeImageWithQuickViewModal, styles));
 
 export { FullSizeImageWithQuickViewModal as FullSizeImageWithQuickViewModalVanilla };

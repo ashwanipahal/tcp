@@ -41,6 +41,7 @@ class ProductImageWrapper extends React.Component {
       isThumbnailListVisible,
       pdpLabels,
       currentProduct,
+      currentColorEntry,
     } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const { colorFitsSizesMap } = currentProduct;
@@ -48,6 +49,12 @@ class ProductImageWrapper extends React.Component {
       colorList: colorFitsSizesMap,
       selectColor: this.colorChange,
     };
+    const initialValuesForm = {
+      colorSwatchModal: {
+        name: currentColorEntry && currentColorEntry.color && currentColorEntry.color.name,
+      },
+    };
+
     const isMobile =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
     return (
@@ -74,6 +81,7 @@ class ProductImageWrapper extends React.Component {
               isThumbnailListVisible
               isFullSizeModalOpen={isFullSizeModalOpen}
               colorChipSelector={colorChipSelector}
+              initialValues={initialValuesForm}
             />
           ))}
       </React.Fragment>
@@ -84,6 +92,7 @@ class ProductImageWrapper extends React.Component {
 ProductImageWrapper.defaultProps = {
   onChangeColor: () => {},
   currentProduct: {},
+  currentColorEntry: {},
 };
 
 ProductImageWrapper.propTypes = {
@@ -113,6 +122,7 @@ ProductImageWrapper.propTypes = {
   isThumbnailListVisible: PropTypes.bool.isRequired,
   onChangeColor: PropTypes.func,
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE,
+  currentColorEntry: PropTypes.shape({}),
 };
 
 export default ProductImageWrapper;
