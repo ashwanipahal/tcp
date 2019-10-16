@@ -35,7 +35,7 @@ const DescriptionEmptyCCStyle = styled.Text`
 `;
 
 const ButtonWrapperStyle = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XL}
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
     ${props => props.theme.spacing.ELEM_SPACING.XL} ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
@@ -50,7 +50,7 @@ const StyledHeading = styled.Text`
 const UnderlineStyle = styled.View`
   height: 3px;
   background-color: ${props => props.theme.colorPalette.black};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const NoAddressWrapper = styled.View`
