@@ -15,8 +15,16 @@ import { getIconPath } from '../../../../../../../core/src/utils';
  * @param { Object } brandTabs Tabs
  * @param { Object } labels Labels
  * @param { Boolean } isInternationalShipping shipping internationally or not
+ * @param {Boolean} isExpressCheckoutPage express checkout or not
  */
-const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping, itemsCount }) => {
+const CheckoutHeader = ({
+  className,
+  brandTabs,
+  labels,
+  isInternationalShipping,
+  itemsCount,
+  isExpressCheckoutPage,
+}) => {
   return (
     <header className={className}>
       {itemsCount > 0 && (
@@ -50,7 +58,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
               }}
             >
               <BodyCopy component="span" fontSize="fs32">
-                {labels.checkoutHeaderLabel}
+                {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
               </BodyCopy>
             </Col>
 
@@ -84,7 +92,7 @@ const CheckoutHeader = ({ className, brandTabs, labels, isInternationalShipping,
               }}
             >
               <BodyCopy component="span" fontSize="fs16" fontWeight="semibold">
-                {labels.checkoutHeaderLabel}
+                {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
               </BodyCopy>
             </Col>
           </Row>
@@ -111,9 +119,12 @@ CheckoutHeader.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   itemsCount: PropTypes.number.isRequired,
+  isExpressCheckoutPage: PropTypes.bool,
 };
 
-CheckoutHeader.defaultProps = {};
+CheckoutHeader.defaultProps = {
+  isExpressCheckoutPage: false,
+};
 
 export default withStyles(CheckoutHeader, style);
 export { CheckoutHeader as CheckoutHeaderVanilla };

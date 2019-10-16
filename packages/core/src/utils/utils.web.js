@@ -9,6 +9,7 @@ import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
+import googleMapConstants from '../constants/googleMap.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -527,6 +528,13 @@ export const scrollToParticularElement = element => {
   }
 };
 
+export const getDirections = address => {
+  const { addressLine1, city, state, zipCode } = address;
+  return window.open(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  );
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -552,4 +560,5 @@ export default {
   fetchStoreIdFromUrlPath,
   canUseDOM,
   scrollToParticularElement,
+  getDirections,
 };
