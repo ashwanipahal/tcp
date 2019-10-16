@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
-import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import { getLocator, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
@@ -9,7 +9,7 @@ import { ButtonWrapper, Tile, Wrapper, Container, ListContainer } from '../Modul
 import LinkText from '../../LinkText';
 import config from '../config';
 
-const imageSize = parseInt((getScreenWidth() - 86) / 2, 10);
+const imageSize = 164;
 const keyExtractor = (_, index) => index.toString();
 
 /**
