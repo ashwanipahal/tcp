@@ -67,6 +67,48 @@ class ProductAddToBag extends React.PureComponent<Props> {
     ) : null;
   };
 
+  renderColorList = (colorList, colorTitle) => {
+    const { selectColor } = this.props;
+    return (
+      colorList &&
+      colorList.size > 0 && (
+        <div className="color-selector">
+          <Field
+            width={87}
+            id="color"
+            name="color"
+            component={ProductColorChipsSelector}
+            colorFitsSizesMap={colorList}
+            onChange={selectColor}
+            dataLocator="addnewaddress-state"
+            title={`${colorTitle}:`}
+          />
+        </div>
+      )
+    );
+  };
+
+  renderFitList = (fitList, fitTitle) => {
+    const { selectFit } = this.props;
+    return (
+      fitList &&
+      fitList.size > 0 && (
+        <div className="fit-selector">
+          <Field
+            width={69}
+            id="fit"
+            name="Fit"
+            component={ProductSizeSelector}
+            sizesMap={fitList}
+            onChange={selectFit}
+            dataLocator="addnewaddress-state"
+            title={`${fitTitle}:`}
+          />
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       plpLabels,
@@ -74,8 +116,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       fitChanged,
       quantityList,
-      selectColor,
-      selectFit,
       selectSize,
       displayErrorMessage,
       errorOnHandleSubmit,
@@ -95,35 +135,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
         <Row className="edit-form-css">
           <Col colSize={{ small: 10, medium: 10, large: 10 }}>
             <div className="select-value-wrapper">
-              {colorList.size > 0 && (
-                <div className="color-selector">
-                  <Field
-                    width={87}
-                    id="color"
-                    name="color"
-                    component={ProductColorChipsSelector}
-                    colorFitsSizesMap={colorList}
-                    onChange={selectColor}
-                    dataLocator="addnewaddress-state"
-                    title={`${colorTitle}:`}
-                  />
-                </div>
-              )}
-              {fitList.size > 0 && (
-                <div className="fit-selector">
-                  <Field
-                    width={69}
-                    id="fit"
-                    name="Fit"
-                    component={ProductSizeSelector}
-                    sizesMap={fitList}
-                    onChange={selectFit}
-                    dataLocator="addnewaddress-state"
-                    title={`${fitTitle}:`}
-                  />
-                </div>
-              )}
-              {sizeList.size > 0 && (
+              {this.renderColorList(colorList, colorTitle)}
+              {this.renderFitList(fitList, fitTitle)}
+              {sizeList && sizeList.size > 0 && (
                 <div className="size-selector">
                   <Field
                     width={49}

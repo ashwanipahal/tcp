@@ -1,4 +1,6 @@
 /* eslint-disable max-lines */
+
+import moment from 'moment';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -7,6 +9,7 @@ import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
 import { ROUTE_PATH } from '../config/route.config';
+import constants from '../components/features/account/OrderDetails/OrderDetails.constants';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -845,6 +848,36 @@ export const getStoreHours = (
     // Show empty incase no data found.
     return '';
   }
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getOrderGroupLabelAndMessage = orderProps => {
+  let label;
+  let message;
+  const { status, shippedDate, pickedUpDate, ordersLabels } = orderProps;
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
+    case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
+      message = moment(shippedDate).format('LL');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
+      message = moment(pickedUpDate).format('LL');
+      break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+
+  return { label, message };
 };
 
 export default {
