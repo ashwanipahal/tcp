@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 import {
   LoyaltyBannerContainer,
   LineStyle,
   FooterLinksSection,
+  LearnMoreWrapper,
 } from '../styles/LoyaltyBannerSection.style.native';
 import mobileHashValues from '../../../util/utilityNative';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
@@ -58,12 +58,6 @@ const LoyaltyBannerSection = props => {
     showSubtotal = true;
   }
 
-  // const earnedReward = true;
-  // const isGuest = false;
-  // const isPlcc = true;
-  // eslint-disable-next-line extra-rules/no-commented-out-code
-  // showSubtotal = false;
-
   if (!earnedReward) {
     rewardPointsValue = estimatedRewardsVal;
     if (isGuest) {
@@ -114,13 +108,8 @@ const LoyaltyBannerSection = props => {
         estimatedSubtotal={estimatedSubtotal}
       />
       <FooterLinksSection>
-        {!isPlcc && (
-          <>
-            {renderApplyNowLink(labels)}
-            <Text>{'    '}</Text>
-          </>
-        )}
-        {renderLearnMoreLink(labels)}
+        {!isPlcc && renderApplyNowLink(labels)}
+        <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
 
       <LineStyle />

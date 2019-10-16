@@ -1,7 +1,5 @@
 import React from 'react';
-import withStyles from '../../../../../../common/hoc/withStyles';
 import LoyaltyBannerSection from '../../../molecules/LoyaltyBannerSection';
-import Styles from '../styles/LoyaltyBanner.style';
 
 class LoyaltyBanner extends React.PureComponent<Props> {
   render() {
@@ -34,5 +32,4 @@ class LoyaltyBanner extends React.PureComponent<Props> {
   }
 }
 
-export default withStyles(LoyaltyBanner, Styles);
-export { LoyaltyBanner as LoyaltyBannerVanilla };
+export default LoyaltyBanner;

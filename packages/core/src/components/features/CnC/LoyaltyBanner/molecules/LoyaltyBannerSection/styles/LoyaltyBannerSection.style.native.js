@@ -20,4 +20,8 @@ const FooterLinksSection = styled.View`
   padding: 12px 0;
 `;
 
-export { LoyaltyBannerContainer, LineStyle, FooterLinksSection };
+const LearnMoreWrapper = styled.View`
+  padding-left: 30px;
+`;
+
+export { LoyaltyBannerContainer, LineStyle, FooterLinksSection, LearnMoreWrapper };
