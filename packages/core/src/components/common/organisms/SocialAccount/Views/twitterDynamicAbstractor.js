@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @description abstractors is responsible for making twitter calls like Auth.
  */

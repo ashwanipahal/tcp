@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * @module TwitterRedirectPage
  * @description This file is the redirect page after twitter login. We open up a child window and lands the user to the
