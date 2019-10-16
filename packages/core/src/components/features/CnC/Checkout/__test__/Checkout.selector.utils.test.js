@@ -255,4 +255,54 @@ describe('Checkout Selectors', () => {
       Checkout.getIn(['values', 'venmoClientTokenData'])
     );
   });
+
+  it('#isVenmoPaymentInProgress', () => {
+    const { isVenmoPaymentInProgress } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoPaymentInProgress: true,
+        },
+      }),
+    };
+    expect(isVenmoPaymentInProgress(state)).toEqual(true);
+  });
+
+  it('#isVenmoPaymentSaveSelected', () => {
+    const { isVenmoPaymentSaveSelected } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoPaymentOptionSave: true,
+        },
+      }),
+    };
+    expect(isVenmoPaymentSaveSelected(state)).toEqual(true);
+  });
+
+  it('#isVenmoPickupBannerDisplayed', () => {
+    const { isVenmoPickupBannerDisplayed } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoPickupMessageDisplayed: true,
+        },
+      }),
+    };
+    isMobileApp.mockImplementation(() => true);
+    expect(isVenmoPickupBannerDisplayed(state)).toEqual(false);
+  });
+
+  it('#isVenmoShippingBannerDisplayed', () => {
+    const { isVenmoShippingBannerDisplayed } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoShippingMessageDisplayed: false,
+        },
+      }),
+    };
+    isMobileApp.mockImplementation(() => true);
+    expect(isVenmoShippingBannerDisplayed(state)).toEqual(false);
+  });
 });
