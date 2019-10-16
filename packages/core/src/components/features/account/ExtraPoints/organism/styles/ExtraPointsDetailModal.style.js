@@ -50,6 +50,7 @@ const CouponDetailModalStyle = css`
   .AddFavoriteStore {
     background-image: url('/static/images/store.png');
   }
+
   .AddShopperType {
     background-image: url('/static/images/survey.png');
   }
