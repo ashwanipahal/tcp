@@ -57,7 +57,7 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "withComponent": [Function],
             }
           }
-          dataLocator="payment-cardtextfield"
+          dataLocator="cardNbrTxtBox"
           enableSuccessCheck={false}
           id="cardNumber"
           isPLCCEnabled={true}
@@ -126,7 +126,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -201,7 +201,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -324,7 +324,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expmonthdd"
+      dataLocator="expMonthDropDown"
       enableSuccessCheck={false}
       id="expMonth"
       name="expMonth"
@@ -496,7 +496,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expyeardd"
+      dataLocator="expYearDropDown"
       enableSuccessCheck={false}
       id="expYear"
       name="expYear"
@@ -717,7 +717,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cvv"
+      dataLocator="cvvTxtBox"
       enableSuccessCheck={false}
       id="cvvCode"
       maxLength="4"

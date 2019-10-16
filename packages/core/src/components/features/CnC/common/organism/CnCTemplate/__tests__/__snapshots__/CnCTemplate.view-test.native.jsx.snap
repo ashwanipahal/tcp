@@ -20,7 +20,7 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="white"
-        dataLocator=""
+        dataLocator="reviewBtn"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"

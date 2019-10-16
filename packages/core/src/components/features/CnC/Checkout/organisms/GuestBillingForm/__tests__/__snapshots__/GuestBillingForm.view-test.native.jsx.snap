@@ -6,7 +6,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     <Styled(BodyCopy)
       accessibilityText=""
       className="elem-mb-XS elem-mt-MED"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       dataLocator=""
       fontSize="fs26"
       fontWeight="regular"
@@ -91,7 +91,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     <Styled(BodyCopy)
       accessibilityText=""
       className="elem-mb-XS elem-mt-MED"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       dataLocator=""
       fontSize="fs26"
       fontWeight="regular"

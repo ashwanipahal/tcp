@@ -12,7 +12,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -49,7 +49,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -70,7 +70,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -94,6 +94,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -125,6 +126,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={true}
                   fill="BLACK"
                   fullWidth={true}
@@ -395,7 +397,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -432,7 +434,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -692,7 +694,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -753,7 +755,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -790,7 +792,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -811,7 +813,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -835,6 +837,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -866,6 +869,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={false}
                   fill="BLACK"
                   fullWidth={true}
@@ -896,7 +900,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="elem-mb-XS"
         color="text.primary"
         component="p"
-        data-locator="billing-payment-details"
+        dataLocator="cardDetailLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -919,7 +923,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       className="paymentMethodHeading"
       color="text.primary"
       component="h2"
-      dataLocator="billing-payment-method"
+      dataLocator="paymentMethodLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -1123,7 +1127,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator="billing-payment-cvvCode"
+          dataLocator="cvvTxtBox"
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
@@ -1291,7 +1295,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator="billing-payment-checkbox-field"
+        dataLocator="defaultPaymentChkBox"
         name="defaultPaymentMethod"
       >
         <Styled(BodyCopy)
@@ -1317,7 +1321,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="paymentMethodHeading"
         color="text.primary"
         component="h2"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
         textAlign="left"
         variant="listMenu"
       />
@@ -1343,7 +1347,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           }
         }
         className="CreditCardForm__address"
-        dataLocatorPrefix="billing-payment-card-detail"
+        dataLocator="selectedCardDetail"
         showAddress={true}
       />
     </Styled(Row)>
@@ -1375,7 +1379,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -1412,7 +1416,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -1433,7 +1437,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -1457,6 +1461,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -1488,6 +1493,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={false}
                   fill="BLACK"
                   fullWidth={true}
@@ -1518,7 +1524,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="elem-mb-XS"
         color="text.primary"
         component="p"
-        data-locator="billing-payment-details"
+        dataLocator="cardDetailLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1541,7 +1547,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       className="paymentMethodHeading"
       color="text.primary"
       component="h2"
-      dataLocator="billing-payment-method"
+      dataLocator="paymentMethodLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -1745,7 +1751,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator="billing-payment-cvvCode"
+          dataLocator="cvvTxtBox"
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
@@ -1913,7 +1919,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator="billing-payment-checkbox-field"
+        dataLocator="defaultPaymentChkBox"
         name="defaultPaymentMethod"
       >
         <Styled(BodyCopy)
@@ -1939,7 +1945,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="paymentMethodHeading"
         color="text.primary"
         component="h2"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
         textAlign="left"
         variant="listMenu"
       />
@@ -1965,7 +1971,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           }
         }
         className="CreditCardForm__address"
-        dataLocatorPrefix="billing-payment-card-detail"
+        dataLocator="selectedCardDetail"
         showAddress={true}
       />
     </Styled(Row)>
@@ -2019,7 +2025,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -2080,7 +2086,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      data-locator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
