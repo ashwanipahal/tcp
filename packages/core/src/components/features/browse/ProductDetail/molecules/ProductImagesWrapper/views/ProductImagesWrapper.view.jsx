@@ -19,7 +19,14 @@ class ProductImageWrapper extends React.Component {
   }
 
   render() {
-    const { productName, images, isZoomEnabled, isThumbnailListVisible, pdpLabels } = this.props;
+    const {
+      productName,
+      images,
+      isZoomEnabled,
+      pdpLabels,
+      isGiftCard,
+      isThumbnailListVisible,
+    } = this.props;
     const { isFullSizeModalOpen } = this.state;
     const isMobile =
       ExecutionEnvironment.canUseDOM && document.body.offsetWidth < breakpoints.values.sm;
@@ -28,7 +35,8 @@ class ProductImageWrapper extends React.Component {
         {images.length > 0 ? (
           <ProductImages
             productName={productName}
-            isThumbnailListVisible={isThumbnailListVisible}
+            isThumbnailListVisible={isThumbnailListVisible && !isGiftCard}
+            isGiftCard={isGiftCard}
             images={images}
             isMobile={isMobile}
             isZoomEnabled={isZoomEnabled}
@@ -80,6 +88,7 @@ ProductImageWrapper.propTypes = {
   /** Flags if the zoom should be enabled */
   isZoomEnabled: PropTypes.bool.isRequired,
   isThumbnailListVisible: PropTypes.bool.isRequired,
+  isGiftCard: PropTypes.bool.isRequired,
 };
 
 export default ProductImageWrapper;

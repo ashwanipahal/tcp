@@ -23,6 +23,8 @@ const LoginView = ({
   setLoginModalMountState,
   variation,
   handleContinueAsGuest,
+  userplccCardNumber,
+  userplccCardId,
 }) => {
   return (
     <LoginSection
@@ -45,6 +47,8 @@ const LoginView = ({
       variation={variation}
       handleContinueAsGuest={handleContinueAsGuest}
       tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
+      userplccCardNumber={userplccCardNumber}
+      userplccCardId={userplccCardId}
     />
   );
 };
@@ -68,6 +72,8 @@ LoginView.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginView.defaultProps = {

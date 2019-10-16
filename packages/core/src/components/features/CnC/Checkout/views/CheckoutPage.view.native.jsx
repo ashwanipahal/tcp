@@ -49,6 +49,9 @@ class CheckoutPage extends React.PureComponent {
       updateShippingAddressData,
       addNewShippingAddressData,
       onPickupSubmit,
+      formatPayload,
+      verifyAddressAction,
+      submitVerifiedShippingAddressData,
       submitReview,
       currentStage,
       setCheckoutStage,
@@ -84,6 +87,9 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
+            verifyAddressAction={verifyAddressAction}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
@@ -152,6 +158,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,

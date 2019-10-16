@@ -30,7 +30,7 @@ export const AboutYouInformation = ({
       </BodyCopy>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_profile_about_you_modal_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
         data-locator="moreaboutyou-header"
       />
       <AboutYouInformationForm

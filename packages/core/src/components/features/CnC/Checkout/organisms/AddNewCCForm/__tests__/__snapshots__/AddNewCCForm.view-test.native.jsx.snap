@@ -131,6 +131,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="saveCardChkBox"
       fontSize="fs16"
       name="saveToAccount"
       onChange={[Function]}
@@ -140,6 +141,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="defaultPaymentChkBox"
       disabled={false}
       fontSize="fs16"
       name="defaultPayment"

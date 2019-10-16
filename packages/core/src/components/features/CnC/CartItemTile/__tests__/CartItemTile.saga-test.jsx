@@ -12,6 +12,7 @@ import {
 import { removeCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { AddToPickupError } from '../../AddedToBag/container/AddedToBag.actions';
 
 describe('Cart Item saga remove', () => {
   it('should dispatch confirmRemoveItem action for success resposnse', () => {
@@ -73,19 +74,34 @@ describe('Cart Item saga remove', () => {
 });
 
 describe('Cart Item saga update', () => {
+  const payload = {
+    itemPartNumber: '00193511095440',
+    orderItemId: '3001545559',
+    quantity: '1',
+    variantNo: '3002156005',
+    xitem_catEntryId: '1285036',
+    callBack: jest.fn(),
+  };
+  const updateCartItemSagaGen = updateCartItemSaga({ payload });
   it('should dispatch updateCartItem action for success resposnse', () => {
-    const payload = [
-      {
-        itemPartNumber: '00193511095440',
-        orderItemId: '3001545559',
-        quantity: '1',
-        variantNo: '3002156005',
-        xitem_catEntryId: '1285036',
-        callBack: jest.fn(),
-      },
-    ];
-    const updateCartItemSagaGen = updateCartItemSaga(payload);
     updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
+    const res = updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next(res);
+    updateCartItemSagaGen.next({ isUpdating: true });
+    updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next({ isUpdating: false });
+  });
+
+  it('should dispatch updateCartItem action for success resposnse', () => {
+    const err = {
+      errorMessages: { _error: 'Error in API' },
+    };
+    let putDescriptor = updateCartItemSagaGen.throw(err).value;
+    putDescriptor = updateCartItemSagaGen.next().value;
+    // eslint-disable-next-line no-underscore-dangle
+    expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
   });
 });
 

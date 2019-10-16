@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
+import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -35,6 +36,9 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    formatPayload: PropTypes.func.isRequired,
+    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
+    verifyAddressAction: PropTypes.func.isRequired,
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
@@ -153,7 +157,7 @@ export default class ShippingPage extends React.PureComponent {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses } = this.props;
+    const { isGuest, userAddresses, verifyAddressAction } = this.props;
     const { isAddNewAddress } = this.state;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && !isAddNewAddress) {
@@ -178,8 +182,8 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit, setVenmoPickupState } = this.props;
-    handleSubmit({
+    const { handleSubmit, setVenmoPickupState, formatPayload } = this.props;
+    const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
       },
@@ -197,8 +201,16 @@ export default class ShippingPage extends React.PureComponent {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
-    });
-    setVenmoPickupState(true);
+    };
+
+    if (!onFileAddressKey) {
+      const formattedPayload = formatPayload(shipAddress);
+      this.submitData = submitData;
+      return verifyAddressAction(formattedPayload);
+    }
+
+    handleSubmit(submitData);
+    return setVenmoPickupState(true);
   };
 
   updateShippingAddress = () => {
@@ -207,9 +219,11 @@ export default class ShippingPage extends React.PureComponent {
       onFileAddressKey,
       setAsDefaultShipping,
       saveToAddressBook,
-      updateShippingAddressData,
+      formatPayload,
+      verifyAddressAction,
     } = this.props;
-    updateShippingAddressData({
+    this.isAddressUpdating = true;
+    this.submitShippingAddressData = {
       shipTo: {
         address,
         addressId: address.addressId,
@@ -220,7 +234,9 @@ export default class ShippingPage extends React.PureComponent {
         saveToAccount: saveToAddressBook,
         setAsDefault: setAsDefaultShipping,
       },
-    });
+    };
+    const formattedPayload = formatPayload(address);
+    return verifyAddressAction(formattedPayload);
   };
 
   addNewShippingAddress = () => {
@@ -275,6 +291,22 @@ export default class ShippingPage extends React.PureComponent {
     };
   };
 
+  submitVerifiedShippingAddressData = shippingAddress => {
+    const { submitVerifiedShippingAddressData, updateShippingAddressData } = this.props;
+    if (this.isAddressUpdating) {
+      this.isAddressUpdating = false;
+      this.submitShippingAddressData.shipTo.address = {
+        ...this.submitShippingAddressData.shipTo.address,
+        ...shippingAddress,
+        addressLine1: shippingAddress.address1,
+        addressLine2: shippingAddress.address2,
+        zipCode: shippingAddress.zip,
+      };
+      return updateShippingAddressData(this.submitShippingAddressData);
+    }
+    return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
+  };
+
   render() {
     const {
       addressLabels,
@@ -305,55 +337,69 @@ export default class ShippingPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       isVenmoShippingDisplayed,
       isSubmitting,
+      formatPayload,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
+    let { submitData } = this;
+    if (this.isAddressUpdating) {
+      submitData = this.submitShippingAddressData;
+    }
+    const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
-      <ShippingForm
-        isSubmitting={isSubmitting}
-        routeToPickupPage={routeToPickupPage}
-        addressLabels={addressLabels}
-        isOrderUpdateChecked={isOrderUpdateChecked}
-        isGiftServicesChecked={isGiftServicesChecked}
-        smsSignUpLabels={smsSignUpLabels}
-        initialValues={{
-          address: this.getAddressInitialValues(),
-          shipmentMethods: { shippingMethodId: defaultShipmentId },
-          saveToAddressBook: !isGuest,
-          onFileAddressKey: shippingAddressId || primaryAddressId,
-        }}
-        selectedShipmentId={selectedShipmentId}
-        checkPOBoxAddress={this.checkPOBoxAddress}
-        addressPhoneNo={addressPhoneNumber}
-        onSubmit={this.submitShippingData}
-        emailSignUpLabels={emailSignUpLabels}
-        isGuest={isGuest}
-        isUsSite={isUsSite}
-        orderHasPickUp={orderHasPickUp}
-        shipmentMethods={shipmentMethods}
-        loadShipmentMethods={loadShipmentMethods}
-        defaultShipmentId={defaultShipmentId}
-        isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-        userAddresses={userAddresses}
-        onFileAddressKey={onFileAddressKey}
-        isMobile={isMobile}
-        newUserPhoneNo={newUserPhoneNo}
-        defaultAddressId={defaultAddressId}
-        shippingAddressId={shippingAddressId}
-        isAddNewAddress={isAddNewAddress}
-        isEditing={isEditing}
-        toggleAddNewAddress={this.toggleAddNewAddress}
-        updateShippingAddress={this.updateShippingAddress}
-        setAsDefaultShipping={setAsDefaultShipping}
-        addNewShippingAddress={this.addNewShippingAddress}
-        labels={labels}
-        address={address}
-        setDefaultAddressId={this.setDefaultAddressId}
-        syncErrorsObject={syncErrors}
-        shippingAddress={shippingAddress}
-        isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-        isVenmoShippingDisplayed={isVenmoShippingDisplayed}
-      />
+      <>
+        <ShippingForm
+          isSubmitting={isSubmitting}
+          routeToPickupPage={routeToPickupPage}
+          addressLabels={addressLabels}
+          isOrderUpdateChecked={isOrderUpdateChecked}
+          isGiftServicesChecked={isGiftServicesChecked}
+          smsSignUpLabels={smsSignUpLabels}
+          initialValues={{
+            address: this.getAddressInitialValues(),
+            shipmentMethods: { shippingMethodId: defaultShipmentId },
+            saveToAddressBook: !isGuest,
+            onFileAddressKey: shippingAddressId || primaryAddressId,
+          }}
+          selectedShipmentId={selectedShipmentId}
+          checkPOBoxAddress={this.checkPOBoxAddress}
+          addressPhoneNo={addressPhoneNumber}
+          onSubmit={this.submitShippingData}
+          emailSignUpLabels={emailSignUpLabels}
+          isGuest={isGuest}
+          isUsSite={isUsSite}
+          orderHasPickUp={orderHasPickUp}
+          shipmentMethods={shipmentMethods}
+          loadShipmentMethods={loadShipmentMethods}
+          defaultShipmentId={defaultShipmentId}
+          isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+          userAddresses={userAddresses}
+          onFileAddressKey={onFileAddressKey}
+          isMobile={isMobile}
+          newUserPhoneNo={newUserPhoneNo}
+          defaultAddressId={defaultAddressId}
+          shippingAddressId={shippingAddressId}
+          isAddNewAddress={isAddNewAddress}
+          isEditing={isEditing}
+          toggleAddNewAddress={this.toggleAddNewAddress}
+          updateShippingAddress={this.updateShippingAddress}
+          setAsDefaultShipping={setAsDefaultShipping}
+          addNewShippingAddress={this.addNewShippingAddress}
+          labels={labels}
+          address={address}
+          setDefaultAddressId={this.setDefaultAddressId}
+          syncErrorsObject={syncErrors}
+          shippingAddress={shippingAddress}
+          isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+          isVenmoShippingDisplayed={isVenmoShippingDisplayed}
+        />
+        <AddressVerification
+          onSuccess={this.submitVerifiedShippingAddressData}
+          heading={addressLabels.addAddressHeading}
+          onError={this.submitVerifiedShippingAddressData}
+          shippingAddress={formatPayload(shippingAddressData)}
+        />
+      </>
     );
   }
 }
