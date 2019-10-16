@@ -49,6 +49,7 @@ class CartItemTile extends React.Component {
           selectedColor: color,
           selectedSize: size,
           selectedFit: fit,
+          itemBrand,
         },
       });
     }

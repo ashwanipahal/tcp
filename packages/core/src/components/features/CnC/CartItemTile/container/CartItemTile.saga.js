@@ -166,7 +166,11 @@ export function* openPickupModalFromBag(payload) {
         isItemShipToHome,
       },
     } = payload;
-    const productDetail = yield call(getProductInfoById, colorProductId, state);
+    let itemBrand;
+    if (orderInfo) {
+      ({ itemBrand } = orderInfo);
+    }
+    const productDetail = yield call(getProductInfoById, colorProductId, state, itemBrand);
     const { product } = productDetail;
     const currentProduct = product;
     const { generalProductId } = currentProduct;

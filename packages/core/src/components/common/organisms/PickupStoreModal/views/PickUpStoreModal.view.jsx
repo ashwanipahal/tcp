@@ -37,7 +37,7 @@ const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
 );
 
 // eslint-disable-next-line no-unused-vars
-const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
+// const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
 class PickUpStoreModalView extends React.Component {
   static propTypes = {
@@ -99,7 +99,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** callback for closing this modal */
     closePickupModal: PropTypes.func.isRequired,
-
     onColorChange: PropTypes.func.isRequired,
 
     /**
