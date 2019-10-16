@@ -29,20 +29,20 @@ class L1NavItem extends React.PureComponent {
 
   onHover = e => {
     if (getViewportInfo().isDesktop) {
-      const hoverElement = e.target.classList.contains('l1-overlay');
-      if (!hoverElement) {
-        this.timerId = setTimeout(() => {
-          this.setState({
-            hovered: true,
-          });
-        }, HeaderConstants.l1HoverDelay);
-      } else {
+      const IsL1overlay = e.target.classList.contains('l1-overlay');
+      if (IsL1overlay) {
         this.setState(
           {
             hovered: false,
           },
           () => clearTimeout(this.timerId)
         );
+      } else {
+        this.timerId = setTimeout(() => {
+          this.setState({
+            hovered: true,
+          });
+        }, HeaderConstants.l1HoverDelay);
       }
     }
   };
