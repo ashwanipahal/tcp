@@ -116,6 +116,10 @@ export const getUpdateCartItemStore = state => {
   );
 };
 
+export const getIsItemShipToHome = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isItemShipToHome');
+};
+
 export const getInitialValuesFromBagPage = state => {
   const pickUpModalReducer =
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');
@@ -124,7 +128,6 @@ export const getInitialValuesFromBagPage = state => {
     color: pickUpModalReducer && pickUpModalReducer.get('color'),
     Size: pickUpModalReducer && pickUpModalReducer.get('Size'),
     Fit: pickUpModalReducer && pickUpModalReducer.get('Fit'),
-    isItemShipToHome: pickUpModalReducer && pickUpModalReducer.get('isItemShipToHome'),
     orderItemType: pickUpModalReducer && pickUpModalReducer.get('orderItemType'),
     orderId: pickUpModalReducer && pickUpModalReducer.get('orderId'),
     orderItemId: pickUpModalReducer && pickUpModalReducer.get('orderItemId'),
