@@ -14,6 +14,7 @@ describe('User reducer', () => {
     children: null,
     favoriteStore: null,
     defaultStore: null,
+    isRegisteredUserCallDone: false,
   });
 
   it('should return default state', () => {
@@ -32,6 +33,7 @@ describe('User reducer', () => {
         airmilesAccountNumber: '1111',
         myPlaceNumber: '2222',
         surveyAnswers: [],
+        isExpressEligible: true,
       };
       state = UserReducer(initialState, setUserInfo(payload));
     });
@@ -70,6 +72,27 @@ describe('User reducer', () => {
 
     it('setting favorite store correctly', () => {
       expect(state.getIn(['favoriteStore', 'name'])).toEqual(payload.name);
+    });
+
+    it('set isExpressEligible correctly', () => {
+      const action = {
+        type: USER_CONSTANTS.SET_IS_EXPRESS_ELIGIBLE,
+        payload: true,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.setIn(['personalData', 'isExpressEligible'], true);
+      expect(updatedState).toStrictEqual(returnValue);
+    });
+
+    it('set isRegisteredUserCallDone correctly', () => {
+      const action = {
+        type: USER_CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.set('isRegisteredUserCallDone', true);
+      expect(updatedState).toStrictEqual(returnValue);
     });
 
     it('setting default store correctly', () => {

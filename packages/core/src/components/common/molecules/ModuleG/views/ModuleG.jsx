@@ -92,7 +92,6 @@ class ModuleG extends React.PureComponent {
 
   getHeaderText = () => {
     const { headerText, layout } = this.props;
-    console.log('headerText:', headerText);
     return headerText && layout !== 'alt' ? (
       <div className="promo-header-wrapper">
         <LinkText

@@ -10,7 +10,7 @@ import styles, {
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
-import { getLocator } from '../../../../../../../utils';
+import { getSiteId, getLocator } from '../../../../../../../utils';
 
 import {
   getPrices,
@@ -71,6 +71,7 @@ const ProductCustomizeFormPart = props => {
               dataLocator={getLocator('quick_view_View_Product_details')}
               className="link-redirect"
               noLink
+              to={`/${getSiteId()}${currentColorPdpUrl}`}
               onClick={e => goToPDPPage(e, pdpToPath, currentColorPdpUrl)}
             >
               <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">

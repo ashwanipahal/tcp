@@ -52,7 +52,7 @@ const OrderItems = ({ className, ...otherProps }) => {
           </BodyCopy>
         </Col>
         <Col
-          colSize={{ large: 9, medium: 5, small: 3 }}
+          colSize={{ large: 9, medium: 5, small: 4 }}
           ignoreGutter={{ small: true, medium: true, large: true }}
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
@@ -195,7 +195,6 @@ const OrderItems = ({ className, ...otherProps }) => {
 OrderItems.propTypes = {
   className: PropTypes.string,
   currencySymbol: PropTypes.string.isRequired,
-  isBopisOrder: PropTypes.bool.isRequired,
   orderGroup: PropTypes.shape({}).isRequired,
 };
 

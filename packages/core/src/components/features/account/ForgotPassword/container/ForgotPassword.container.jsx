@@ -12,7 +12,7 @@ import { resetUserInfo } from '../../User/container/User.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 import { getLoginError, shouldShowRecaptcha } from '../../LoginPage/container/LoginPage.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import ForgotPasswordView from '../views/ForgotPassword.view';

@@ -33,6 +33,9 @@ const config = {
     INSTAGRAM: 'https://api.instagram.com/oauth/authorize/',
     TWITTER: 'https://api.twitter.com/oauth/authenticate',
   },
+  ACCOUNT_REDIRECT: {
+    TWITTER: '/twitter?stage=first'
+  },
 };
 
 export default config;

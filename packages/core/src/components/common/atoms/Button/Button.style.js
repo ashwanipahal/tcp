@@ -77,10 +77,6 @@ const ButtonStyles = css`
       border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
       margin-right: 16px;
       padding-bottom: 3px;
-
-      @media ${props.theme.mediaQuery.large} {
-      font-size: ${props.theme.typography.fontSizes.fs20};
-      }
     `
       : ''};
 
@@ -94,10 +90,6 @@ const ButtonStyles = css`
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
       padding-bottom: 3px;
-
-      @media ${props.theme.mediaQuery.large} {
-      font-size: ${props.theme.typography.fontSizes.fs20};
-      }
     `
       : ''};
 
@@ -109,24 +101,7 @@ const ButtonStyles = css`
   }
 
   ${props =>
-    props.buttonVariation === 'category-links-light'
-      ? `
-      &:hover {
-        background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
-        border-color: ${props.theme.colorPalette.orange[800]};
-      }
-
-      &:hover {
-        background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
-        border-color: ${props.theme.colorPalette.orange[800]};
-      }
-    `
-      : ''};
-
-  ${props =>
-    props.buttonVariation === darkLinkCategory
+    props.buttonVariation === 'category-links-light' || props.buttonVariation === darkLinkCategory
       ? `
       &:hover, &:focus {
         background: none;
@@ -137,6 +112,25 @@ const ButtonStyles = css`
         background: none;
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
+      }
+
+      /* fixes button flickering on the hover because for font-weight */
+      ::after {
+        font-family: ${props.theme.typography.fonts.secondary};
+        font-weight: ${props.theme.typography.fontWeights.black};
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        display: block;
+        content: attr(data-category-link-label);
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
+      
+      @media ${props.theme.mediaQuery.large} {
+      font-size: ${props.theme.typography.fontSizes.fs20};
+      ::after {
+          font-size: ${props.theme.typography.fontSizes.fs20};
+        }
       }
     `
       : ''};

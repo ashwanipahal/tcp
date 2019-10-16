@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
-import { Wrapper, SMSWrapper } from '../styles/Confirmation.styles.native';
+import { Wrapper, SMSWrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
 import ThankYouComponent from '../organisms/ThankYouComponent';
 import {
   checkIfShippingFullName,
@@ -69,28 +69,30 @@ const ConfirmationView = ({
   }
   return (
     <Wrapper>
-      <SMSWrapper>
-        <BodyCopyWithSpacing
-          textAlign="center"
-          fontSize="fs16"
-          mobileFontFamily="secondary"
-          spacingStyles="margin-top-LRG margin-bottom-LRG"
-          text="SMS SIGN UP"
+      <InnerWrapper>
+        <SMSWrapper>
+          <BodyCopyWithSpacing
+            textAlign="center"
+            fontSize="fs16"
+            mobileFontFamily="secondary"
+            spacingStyles="margin-top-LRG margin-bottom-LRG"
+            text="SMS SIGN UP"
+          />
+        </SMSWrapper>
+        <ThankYouComponent
+          emailAddress={emailAddress}
+          isOrderPending={isOrderPending}
+          isShowShippingMessage={isShowShippingMessage}
+          isShowBopisMessage={isShowBopisMessage}
+          isShowMixedMessage={isShowMixedMessage}
+          labels={labels}
+          fullfillmentCenterData={fullfillmentCenterData}
+          isGuest={isGuest}
+          updateOrderDetailsData={updateOrderDetailsData}
+          orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
+          isBossInList={isBossInList}
         />
-      </SMSWrapper>
-      <ThankYouComponent
-        emailAddress={emailAddress}
-        isOrderPending={isOrderPending}
-        isShowShippingMessage={isShowShippingMessage}
-        isShowBopisMessage={isShowBopisMessage}
-        isShowMixedMessage={isShowMixedMessage}
-        labels={labels}
-        fullfillmentCenterData={fullfillmentCenterData}
-        isGuest={isGuest}
-        updateOrderDetailsData={updateOrderDetailsData}
-        orderNumbersByFullfillmentCenter={orderNumbersByFullfillmentCenter}
-        isBossInList={isBossInList}
-      />
+      </InnerWrapper>
       {renderAccountForm()}
       <CnCTemplate isConfirmationPage isGuest={isGuest} />
     </Wrapper>
