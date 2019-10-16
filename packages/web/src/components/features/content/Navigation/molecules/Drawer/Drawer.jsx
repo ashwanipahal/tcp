@@ -68,8 +68,13 @@ class Drawer extends React.Component {
 
   /* Method to close nav bar on click of dark overlay */
   closeNavOnOverlayClick = e => {
-    const { close } = this.props;
-    if (this.drawerRef && !this.drawerRef.contains(e.target) && typeof close === 'function') {
+    const { close, open } = this.props;
+    if (
+      open &&
+      this.drawerRef &&
+      !this.drawerRef.contains(e.target) &&
+      typeof close === 'function'
+    ) {
       close();
       e.stopPropagation();
     }

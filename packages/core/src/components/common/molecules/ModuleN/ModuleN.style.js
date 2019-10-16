@@ -1,10 +1,9 @@
 import { css } from 'styled-components';
 
 export default css`
-  .moduleN-innerContent {
-    background-color: #f53d3d;
-    margin-bottom: 40px;
-  }
+  background-color: #f53d3d;
+  margin-bottom: 40px;
+
   .heading-wrapper {
     padding: 16px 0;
 
