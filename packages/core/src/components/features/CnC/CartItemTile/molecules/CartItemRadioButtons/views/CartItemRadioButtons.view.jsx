@@ -7,10 +7,28 @@ import style from '../styles/CartItemRadioButtons.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
 class CartItemRadioButtons extends React.Component {
+  /**
+   * @function showBoss Handles to show BOSS Item or not
+   * @param isBossOrder Represents the current product is BOSS or not
+   * @param isBossEnabled Represents the Country/State level kill switch for BOSS
+   * @memberof CartItemRadioButtons
+   */
   showBoss = (isBossOrder, isBossEnabled) => isBossOrder || isBossEnabled;
 
+  /**
+   * @function showBopis Handles to show BOPIS Item or not
+   * @param isBopisOrder Represents the current product is BOPIS or not
+   * @param isBopisEnabled Represents the Country/State level kill switch for BOPIS
+   * @memberof CartItemRadioButtons
+   */
   showBopis = (isBopisOrder, isBopisEnabled) => isBopisOrder || isBopisEnabled;
 
+  /**
+   * @function renderBossBanner
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @param {string} onlineClearanceMessage Represents the Online only message
+   * @memberof CartItemRadioButtons
+   */
   renderBossBanner = (isBossItem, onlineClearanceMessage) => {
     const { labels } = this.props;
     return isBossItem && !onlineClearanceMessage ? (
@@ -28,6 +46,12 @@ class CartItemRadioButtons extends React.Component {
     ) : null;
   };
 
+  /**
+   * @function renderBossDates Renders the boss dates values in the format as required.
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {JSX} renders the boss dates unit
+   * @memberof CartItemRadioButtons
+   */
   renderBossDates = isBossItem => {
     const {
       labels,
@@ -53,6 +77,12 @@ class CartItemRadioButtons extends React.Component {
     ) : null;
   };
 
+  /**
+   * @function hideChangeStore Method use to handle various conditions for show hide the change store link
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {bool} Whether to hide the change store
+   * @memberof CartItemRadioButtons
+   */
   hideChangeStore = isBossItem => {
     const {
       isBossEnabled,
@@ -72,6 +102,13 @@ class CartItemRadioButtons extends React.Component {
     return !(!isBopisEnabled || !isBopisEligible);
   };
 
+  /**
+   * @function renderChangeStore
+   * @param {bool} disabled Represents with the current item is disabled or not
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {JSX} Render Change store link.
+   * @memberof CartItemRadioButtons
+   */
   renderChangeStore = (disabled, isBossItem) => {
     const { labels } = this.props;
     return !disabled || this.hideChangeStore(isBossItem) ? (
@@ -88,6 +125,12 @@ class CartItemRadioButtons extends React.Component {
     ) : null;
   };
 
+  /**
+   * @function renderRadioItem
+   * @param {Object} Object Boss Bopis and STH settings object to draw different scenarios.
+   * @return {JSX} Render each radio button line item with different variations.
+   * @memberof CartItemRadioButtons
+   */
   renderRadioItem = ({
     isSelected,
     onlineClearanceMessage,
