@@ -150,7 +150,7 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
-  relatedOutfits: PropTypes.shape([]),
+  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductDetailView.defaultProps = {

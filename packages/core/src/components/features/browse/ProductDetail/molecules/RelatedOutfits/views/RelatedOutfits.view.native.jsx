@@ -30,7 +30,6 @@ class RelatedOutfits extends React.PureComponent {
     const RelatedOutfitsSlots = () => {
       const { data, contentId, accessibility } = relatedOutfits[0];
       return (
-        ModuleQ &&
         data && (
           <ModuleQ
             key={contentId}
@@ -70,7 +69,7 @@ class RelatedOutfits extends React.PureComponent {
 RelatedOutfits.propTypes = {
   pdpLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}),
-  relatedOutfits: PropTypes.shape([]),
+  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 RelatedOutfits.defaultProps = {

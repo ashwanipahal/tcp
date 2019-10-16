@@ -146,7 +146,9 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  relatedOutfits: PropTypes.shape({}),
+  relatedOutfits: PropTypes.shape({
+    slots: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
 };
 
 ProductDetailContainer.defaultProps = {
