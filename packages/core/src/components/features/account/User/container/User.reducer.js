@@ -30,6 +30,8 @@ const getUserReducer = (state = initialState, { type, payload }) => {
 
 const UserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case USER_CONSTANTS.GET_USER_INFO:
+      return state.set('isRegisteredUserCallDone', false);
     case USER_CONSTANTS.SET_USER_INFO:
       return state
         .set(

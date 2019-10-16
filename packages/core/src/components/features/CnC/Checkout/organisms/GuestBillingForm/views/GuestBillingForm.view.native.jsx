@@ -39,6 +39,7 @@ class GuestBillingForm extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     creditFieldLabels: PropTypes.shape({}),
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -105,6 +106,7 @@ class GuestBillingForm extends React.Component {
       onSubmit,
       creditFieldLabels,
       isPaymentDisabled,
+      setCheckoutStage,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -156,11 +158,9 @@ class GuestBillingForm extends React.Component {
             onPress={handleSubmit(onSubmit)}
             backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
             onBackLinkPress={() =>
-              navigation.navigate(
-                orderHasShipping
-                  ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
-                  : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
-              )
+              orderHasShipping
+                ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
+                : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
             }
             showAccordian
           />

@@ -26,6 +26,7 @@ import {
   setAddressError,
   getSetIntlUrl,
   setShippingLoadingState,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -48,6 +49,7 @@ import {
   addOrEditGuestUserAddress,
   pickUpRouting,
   callPickupSubmitMethod,
+  redirectToBilling,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -58,14 +60,8 @@ const {
   getShippingDestinationValues,
   getDefaultAddress,
   getGiftServicesFormData,
-  // isUsSite,
-  // getIsOrderHasShipping  ,
-  // getShippingDestinationValues,
-  // getDefaultAddress,
-  // isGuest,
-  // getIsMobile,
 } = selectors;
-const { getOrderPointsRecalcFlag, hasPOBox, redirectToBilling } = utility;
+const { getOrderPointsRecalcFlag, hasPOBox } = utility;
 let oldHasPOB = {};
 
 function* loadGiftWrappingOptions() {
@@ -148,15 +144,6 @@ export function* loadUpdatedCheckoutValues(
 function* submitPickupSection({ payload }) {
   const formData = { ...payload };
   const { navigation } = payload;
-  // let pickupOperator = getPickupOperator(this.store);
-  // let storeState = this.store.getState();
-  // let isEmailSignUpAllowed = true;
-  // if ((yield select(isUsSite)) && (yield select(isGuest))) {
-  //   isEmailSignUpAllowed = false;
-  // }
-  //  if (formData.pickUpContact.emailSignup && formData.pickUpContact.emailAddress && isEmailSignUpAllowed) {
-  //    // pendingPromises.push(this.userServiceAbstractor.validateAndSubmitEmailSignup(formData.pickUpContact.emailAddress));
-  //  }
   const result = yield call(callPickupSubmitMethod, formData);
   if (result.addressId) {
     yield call(getAddressList);
@@ -167,7 +154,7 @@ function* submitPickupSection({ payload }) {
       const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
       pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
     } else if (navigation) {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+      yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
     }
   }
   /* In the future I imagine us sending the SMS to backend for them to
@@ -678,7 +665,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
     if (isVenmoInProgress && !isVenmoShippingDisplayed) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
     } else {
-      redirectToBilling(navigation);
+      yield call(redirectToBilling);
     }
     yield put(setShippingLoadingState(false));
   } catch (err) {

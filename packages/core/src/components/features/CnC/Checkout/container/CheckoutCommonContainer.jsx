@@ -37,6 +37,7 @@ import {
   getIsRegisteredUserCallDone,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { getUserInfo } from '../../../account/User/container/User.actions';
 
 const {
   getSmsSignUpLabels,
@@ -64,6 +65,7 @@ const {
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   getShipmentLoadingStatus,
+  getCurrentCheckoutStage,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -76,7 +78,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isRegisteredUserCallDone,
       initCheckout,
       router,
+      getUserInformation,
     } = this.props;
+    getUserInformation();
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
       initCheckout(router);
@@ -138,6 +142,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      currentStage,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -184,6 +189,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        currentStage={currentStage}
       />
     );
   }
@@ -234,6 +240,7 @@ export const mapDispatchToProps = dispatch => {
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
+    getUserInformation: () => dispatch(getUserInfo()),
   };
 };
 
@@ -303,6 +310,7 @@ const mapStateToProps = state => {
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    currentStage: getCurrentCheckoutStage(state),
   };
 };
 

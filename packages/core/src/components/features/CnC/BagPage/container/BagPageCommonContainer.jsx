@@ -4,6 +4,7 @@ import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Ch
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
+import { getUserInfo } from '../../../account/User/container/User.actions';
 import {
   getCartOrderList,
   getIsCartItemsUpdating,
@@ -34,7 +35,8 @@ import {
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
+    const { needHelpContentId, fetchNeedHelpContent, getUserInformation } = this.props;
+    getUserInformation();
     fetchNeedHelpContent([needHelpContentId]);
     const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
@@ -149,6 +151,9 @@ export const mapDispatchToProps = dispatch => {
     },
     toastMessagePositionInfo: palyoad => {
       dispatch(toastMessagePosition(palyoad));
+    },
+    getUserInformation: () => {
+      dispatch(getUserInfo());
     },
   };
 };
