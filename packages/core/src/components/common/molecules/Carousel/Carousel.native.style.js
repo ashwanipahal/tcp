@@ -49,7 +49,7 @@ export const ControlsWrapperLeft = styled.View`
 export const ControlsWrapperRight = styled.View`
   flex-direction: row;
   position: absolute;
-  bottom: 10px;
+  bottom: 13px;
   right: 0;
 `;
 
