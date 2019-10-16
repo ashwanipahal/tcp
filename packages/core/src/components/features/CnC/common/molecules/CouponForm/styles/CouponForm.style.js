@@ -40,6 +40,9 @@ export default css`
       width: 102px;
       margin-top: 8px;
       cursor: default;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        font-size: ${props => props.theme.typography.fontSizes.fs10};
+      }
       @media ${props => props.theme.mediaQuery.mediumOnly} {
         width: 162px;
         align-self: center;

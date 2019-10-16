@@ -190,7 +190,6 @@ class StoreAddressTile extends PureComponent {
 
   getStoreType() {
     const {
-      labels,
       store: { features },
     } = this.props;
     const { storeType } = features;
@@ -198,9 +197,7 @@ class StoreAddressTile extends PureComponent {
       storeType && (
         <StoryType>
           <MarkerImage source={marker} accessibilityLabel="Icon Marker" accessibilityRole="image" />
-          <ListingTitleText>
-            {getLabelValue(labels, 'lbl_storelanding_atThisPlace')}
-          </ListingTitleText>
+          <ListingTitleText>{storeType}</ListingTitleText>
         </StoryType>
       )
     );
@@ -238,9 +235,9 @@ class StoreAddressTile extends PureComponent {
   }
 
   render() {
-    const { children, variation } = this.props;
+    const { children, variation, selectedStoreId } = this.props;
     return (
-      <StoreAddressTileRoot variation={variation}>
+      <StoreAddressTileRoot variation={variation} selectedStoreId={selectedStoreId}>
         <TileHeader>
           {variation === detailsType && this.getDetailsHeader()}
           {variation !== detailsType && this.getListingHeader()}

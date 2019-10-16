@@ -21,7 +21,7 @@ import { API_CONFIG } from '../../../../../services/config';
 import {
   closeOverlayModal,
   openOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 

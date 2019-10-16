@@ -9,6 +9,7 @@ import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
+import googleMapConstants from '../constants/googleMap.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -340,10 +341,9 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
-  const country = siteId && siteId.toUpperCase();
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
+  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -355,7 +355,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
+    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN`]}`,
     unbxdApiKey,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
@@ -436,7 +436,11 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
+  const basicConfig = getAPIInfoFromEnv(
+    apiSiteInfo,
+    processEnv,
+    countryConfig && countryConfig.countryKey
+  );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
@@ -524,6 +528,13 @@ export const scrollToParticularElement = element => {
   }
 };
 
+export const getDirections = address => {
+  const { addressLine1, city, state, zipCode } = address;
+  return window.open(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  );
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -549,4 +560,5 @@ export default {
   fetchStoreIdFromUrlPath,
   canUseDOM,
   scrollToParticularElement,
+  getDirections,
 };

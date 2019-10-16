@@ -180,7 +180,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-jTzLTM",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -322,7 +322,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-jTzLTM",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -347,7 +347,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-VigVT",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -441,7 +441,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-VigVT",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -663,7 +663,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-jTzLTM",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -805,7 +805,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-jTzLTM",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -830,7 +830,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-VigVT",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -924,7 +924,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-VigVT",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

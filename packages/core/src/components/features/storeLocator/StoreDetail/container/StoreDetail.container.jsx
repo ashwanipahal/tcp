@@ -159,7 +159,9 @@ export class StoreDetailContainer extends PureComponent {
 }
 
 StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
+  console.log('Hello -----------------------------------------------');
   if (!isServer) {
+    console.log('hello');
     const storeId = fetchStoreIdFromUrlPath(query.storeStr);
     store.dispatch(getCurrentStoreInfo(storeId));
   }

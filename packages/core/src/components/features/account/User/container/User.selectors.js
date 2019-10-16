@@ -25,6 +25,10 @@ export const getRewardsState = state => {
   return state[USER_REDUCER_KEY].get('rewards');
 };
 
+export const getIsRegisteredUserCallDone = state => {
+  return state[USER_REDUCER_KEY].get('isRegisteredUserCallDone');
+};
+
 export const getSurveyState = state => {
   return state[USER_REDUCER_KEY].get('survey');
 };

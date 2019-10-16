@@ -7,7 +7,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kgAjT",
+        "componentId": "sc-cJSrbW",
         "isStatic": false,
         "rules": Array [
           "
@@ -31,7 +31,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
       "displayName": "Styled(ModuleS)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kgAjT",
+      "styledComponentId": "sc-cJSrbW",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

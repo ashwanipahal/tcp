@@ -183,6 +183,7 @@ class BagPageView extends React.Component {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          containerId="paypal-button-container-bag"
         />
       </div>
     );
@@ -205,12 +206,14 @@ class BagPageView extends React.Component {
       currencySymbol,
     } = this.props;
     const { showCondensedHeader } = this.state;
-    if (!showCondensedHeader) return null;
+    // if (!showCondensedHeader) return null;
     return (
       <div
         ref={this.getBagCondensedHeader}
         className={`${
-          orderItemsCount === 0 || orderItemsCount === false ? 'hidden-condensed-header' : ''
+          orderItemsCount === 0 || orderItemsCount === false || !showCondensedHeader
+            ? 'hidden-condensed-header'
+            : ''
         }`}
       >
         <Row className="bag-condensed-header">
@@ -235,6 +238,7 @@ class BagPageView extends React.Component {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                containerId="paypal-button-container-bag-header"
               />
             </Col>
           </Row>
@@ -256,13 +260,13 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob } = this.state;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {this.stickyBagCondensedHeader()}
+        {showCondensedHeader && this.stickyBagCondensedHeader()}
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -276,6 +280,7 @@ class BagPageView extends React.Component {
               }}
             >
               <Heading
+                component="h2"
                 variant="h6"
                 fontSize="fs16"
                 color="text.primary"

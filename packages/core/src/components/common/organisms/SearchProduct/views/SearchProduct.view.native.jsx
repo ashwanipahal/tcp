@@ -145,7 +145,7 @@ class SearchProduct extends React.PureComponent {
           value={searchText}
           onSubmitEditing={() => {
             const { searchText: text } = this.state;
-            if (text.length > 0) this.searchProducts(text);
+            this.searchProducts(text);
           }}
         />
         {searchText.length > 0 ? (
@@ -166,7 +166,7 @@ class SearchProduct extends React.PureComponent {
           />
         )}
         <Button
-          width="90px"
+          buttonVariation="fixed-width"
           text="Cancel"
           fontSize="fs13"
           fontWeight="regular"
@@ -185,17 +185,24 @@ class SearchProduct extends React.PureComponent {
    *
    * @memberof SearchProduct
    */
-  renderSectionHeader = ({ section: { title } }) => (
-    <HeaderContainer>
-      <BodyCopy
-        fontWeight="regular"
-        color="gray.900"
-        mobileFontFamily="secondary"
-        fontSize="fs13"
-        text={title}
-      />
-    </HeaderContainer>
-  );
+  renderSectionHeader = ({ section: { title } }) => {
+    const { showRecentSearches } = this.state;
+    const headerStyle = showRecentSearches
+      ? { textTransform: 'capitalize' }
+      : { textTransform: 'none' };
+    return (
+      <HeaderContainer>
+        <BodyCopy
+          fontWeight="regular"
+          color="gray.900"
+          mobileFontFamily="secondary"
+          fontSize="fs13"
+          text={title}
+          style={headerStyle}
+        />
+      </HeaderContainer>
+    );
+  };
 
   /**
    * @function renderItem

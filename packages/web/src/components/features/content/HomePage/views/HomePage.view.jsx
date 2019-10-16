@@ -5,11 +5,11 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
-
 const HomePageView = dynamic({
   modules: () => ({
     moduleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
@@ -29,6 +29,7 @@ const HomePageView = dynamic({
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
+      <ModuleTwoCol slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
     ];

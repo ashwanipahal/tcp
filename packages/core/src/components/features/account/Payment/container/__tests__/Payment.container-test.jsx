@@ -30,4 +30,19 @@ describe('Payment & Gift Cards', () => {
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });
+  it('resetSuccessNotification should be called on unmount', () => {
+    const resetSuccessNotificationSpy = jest.fn();
+    const clearPaymentNotificationSpy = jest.fn();
+    const props = {
+      getCardListAction: jest.fn(),
+      getPaymentBannerRichText: jest.fn(),
+      clearPaymentNotification: clearPaymentNotificationSpy,
+      resetSuccessNotification: resetSuccessNotificationSpy,
+    };
+
+    const component = shallow(<PaymentContainer {...props} />);
+    component.unmount();
+    expect(clearPaymentNotificationSpy).toHaveBeenCalled();
+    expect(resetSuccessNotificationSpy).toHaveBeenCalled();
+  });
 });

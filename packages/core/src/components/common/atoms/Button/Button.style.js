@@ -32,7 +32,8 @@ const ButtonStyles = css`
   text-transform: uppercase;
   min-height: 42px;
   letter-spacing: 0.93px;
-  font-size: ${props => props.theme.typography.fontSizes.fs13}
+  font-size: ${props => props.theme.typography.fontSizes.fs13};
+  color: ${props => props.theme.colorPalette.gray['900']}
   ${props =>
     !props.link
       ? `@media ${props.theme.mediaQuery.large} {
@@ -108,24 +109,7 @@ const ButtonStyles = css`
   }
 
   ${props =>
-    props.buttonVariation === 'category-links-light'
-      ? `
-      &:hover {
-        background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
-        border-color: ${props.theme.colorPalette.orange[800]};
-      }
-
-      &:hover {
-        background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
-        border-color: ${props.theme.colorPalette.orange[800]};
-      }
-    `
-      : ''};
-
-  ${props =>
-    props.buttonVariation === darkLinkCategory
+    props.buttonVariation === 'category-links-light' || props.buttonVariation === darkLinkCategory
       ? `
       &:hover, &:focus {
         background: none;
@@ -137,6 +121,18 @@ const ButtonStyles = css`
         font-weight: ${props.theme.typography.fontWeights.black};
         border-color: ${props.theme.colorPalette.orange[800]};
       }
+
+      /* fixes button flickering on the hover because for font-weight */
+      ::after {
+        font-family: ${props.theme.typography.fonts.secondary};
+        font-weight: ${props.theme.typography.fontWeights.black};
+        font-size: ${props.theme.typography.fontSizes.fs14};
+        display: block;
+        content: attr(data-category-link-label);
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+		  }
     `
       : ''};
 
@@ -220,11 +216,14 @@ const ButtonStyles = css`
       : ''}
 
   @media ${props => props.theme.mediaQuery.large} {
-    font-size: ${props => props.theme.typography.fontSizes.fs14}
     ${props =>
-      props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 15px 20px;' : ''};
+      props.buttonVariation === 'fixed-width'
+        ? `min-height: 51px; padding: 16px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        : ''};
     ${props =>
-      props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 15px 32px;' : ''};
+      props.buttonVariation === 'variable-width'
+        ? `min-height: 45px; padding: 16px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        : ''};
   }
   ${props =>
     props.theme.isGymboree &&

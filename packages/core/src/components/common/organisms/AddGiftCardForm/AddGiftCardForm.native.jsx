@@ -117,7 +117,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const { labels, toggleModal, addGiftCardResponse, isRow } = this.props;
+    const { labels, toggleModal, addGiftCardResponse, isRow, showNotification } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -126,7 +126,7 @@ class AddGiftCardForm extends React.PureComponent {
         keyboardShouldPersistTaps="handled"
       >
         <View>
-          {addGiftCardResponse && (
+          {showNotification && addGiftCardResponse && (
             <ErrorWrapper>
               <BodyCopy
                 mobileFontFamily={['secondary']}
@@ -263,6 +263,7 @@ AddGiftCardForm.propTypes = {
     }),
   }),
   addGiftCardResponse: PropTypes.string,
+  showNotification: PropTypes.bool,
   change: PropTypes.func,
   addGiftCardError: PropTypes.string,
   onClearError: PropTypes.func,
@@ -290,6 +291,7 @@ AddGiftCardForm.defaultProps = {
   onClearError: () => {},
   isRow: false,
   isRecapchaEnabled: true,
+  showNotification: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));

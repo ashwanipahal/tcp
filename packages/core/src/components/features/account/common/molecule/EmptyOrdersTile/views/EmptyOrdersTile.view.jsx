@@ -24,7 +24,7 @@ export const EmptyOrderTile = ({ labels }) => {
           medium: 8,
         }}
       >
-        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
+        <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold">
           {getLabelValue(labels, 'lbl_ordersTile_noOrderYet', 'orders')}
         </BodyCopy>
       </Col>
