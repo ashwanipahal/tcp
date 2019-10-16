@@ -20,14 +20,16 @@ import {
   getLocator,
 } from '../../../../../utils';
 import config from '../config';
+import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 
 class ModuleG extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentCatId: '',
+      currentCatId: [],
       currentTabItem: {},
+      next: 0,
     };
   }
 
@@ -35,9 +37,22 @@ class ModuleG extends React.PureComponent {
     this.setState({ currentCatId: catId, currentTabItem: tabItem });
   };
 
-  getCurrentCtaButton = () => {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+  onAddToBagClick = () => {
+    const { onQuickViewOpenClick } = this.props;
+    const { currentCatId, next } = this.state;
+    const { productTabList } = this.props;
+    const { TOTAL_IMAGES } = config;
+    let data = [];
+    data = currentCatId.map(item => [...data, ...(productTabList[item] || [])]);
+    data = data.slice(0, TOTAL_IMAGES);
+    onQuickViewOpenClick({
+      colorProductId: data[0][next].prodpartno,
+    });
+  };
 
+  getCurrentCtaButton = () => {
+    const { currentTabItem: CTAButtons } = this.state;
+    const currentSingleCTAButton = CTAButtons[0];
     return currentSingleCTAButton ? (
       <>
         <Row centered>
@@ -48,21 +63,16 @@ class ModuleG extends React.PureComponent {
               large: 2,
             }}
           >
-            <Anchor
-              noLink
-              to={currentSingleCTAButton.url}
-              target={currentSingleCTAButton.target}
-              title={currentSingleCTAButton.title}
-              asPath={currentSingleCTAButton.url}
-              dataLocator={getLocator('moduleJ_cta_btn')}
+            <Button
+              onClick={() => this.onAddToBagClick()}
+              buttonVariation="fixed-width"
+              className="cta-btn"
             >
-              <Button buttonVariation="fixed-width" className="cta-btn">
-                add to bag
-              </Button>
-            </Anchor>
+              add to bag
+            </Button>
           </Col>
         </Row>
-        {/* <Row centered>
+        <Row centered>
           <Col
             colSize={{
               small: 4,
@@ -79,27 +89,27 @@ class ModuleG extends React.PureComponent {
               asPath={currentSingleCTAButton.url}
               dataLocator={getLocator('moduleJ_cta_btn')}
             >
-              <span>Shop All Matchables</span>
-              <span className="">
+              <span className="shopall_footerlink">Shop All Matchables</span>
+              <span className="right_chevron_arrow">
                 <Image src={getIconPath('smallright')} />
               </span>
             </Anchor>
           </Col>
-        </Row> */}
+        </Row>
+        <QuickViewModal />
       </>
     ) : null;
   };
 
   getHeaderText = () => {
     const { headerText, layout } = this.props;
-    console.log('headerText:', headerText);
     return headerText && layout !== 'alt' ? (
       <div className="promo-header-wrapper">
         <LinkText
           component="div"
           headerText={headerText}
           className="promo-header"
-          dataLocator={getLocator('moduleJ_header_text')}
+          dataLocator={getLocator('moduleG_header_text')}
         />
       </div>
     ) : (
@@ -107,7 +117,7 @@ class ModuleG extends React.PureComponent {
         component="div"
         headerText={headerText}
         className="promo-header"
-        dataLocator={getLocator('moduleJ_header_text')}
+        dataLocator={getLocator('moduleG_header_text')}
       />
     );
   };
@@ -125,9 +135,8 @@ class ModuleG extends React.PureComponent {
     );
   };
 
-  renderCarousel = type => {
+  renderCarousel = (type, currentCatId) => {
     const { productTabList } = this.props;
-    const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -192,6 +201,11 @@ class ModuleG extends React.PureComponent {
       // layout,
       divTabs,
     } = this.props;
+    const { CAROUSEL_OPTIONS } = config;
+    CAROUSEL_OPTIONS.beforeChange = (current, next) => {
+      this.setState({ next });
+    };
+    const { currentCatId } = this.state;
     // const promoMediaLinkedList = mediaLinkedList || [];
     // const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     // const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
@@ -214,14 +228,14 @@ class ModuleG extends React.PureComponent {
           </Col>
         </Row>
         <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
-          {this.renderCarousel('top')}
+          {this.renderCarousel('top', currentCatId[0])}
           <div className="focusAreaView">
             <span className="focusArea-plus">
               <Image src={getIconPath('plus-icon')} />
             </span>
           </div>
           {/* carousel bottom */}
-          {this.renderCarousel('bottom')}
+          {this.renderCarousel('bottom', currentCatId[1])}
         </Row>
         {this.getCurrentCtaButton()}
       </Grid>
@@ -249,6 +263,7 @@ ModuleG.propTypes = {
       textItems: PropTypes.array,
     })
   ),
+  onQuickViewOpenClick: PropTypes.func.isRequired,
   productTabList: PropTypes.oneOfType(
     PropTypes.objectOf(
       PropTypes.arrayOf(

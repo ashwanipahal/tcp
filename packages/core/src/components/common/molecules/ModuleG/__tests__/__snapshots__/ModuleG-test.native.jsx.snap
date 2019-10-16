@@ -22,7 +22,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "large_text_black",
+                  "style": "medium_text_regular",
                   "text": "ALL MATCHABLES",
                 },
               ],
@@ -43,7 +43,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
               "textItems": Array [
                 Object {
                   "style": "medium_text_black",
-                  "text": "THE SHORT SHOP",
+                  "text": "60% OFF",
                 },
               ],
             },
@@ -86,33 +86,6 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
           Object {
             "category": Object {
               "cat_id": Array [
-                "47502>47535>54071",
-                "47502>47535>54071",
-              ],
-            },
-            "singleCTAButton": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "SHOP ALL 1",
-              "title": "SHOP ALL",
-              "url": "http://www.childrensplace.com",
-            },
-            "singleCTAButtonCart": Object {
-              "action": "",
-              "external": 0,
-              "target": "",
-              "text": "Shop All Matchables 1",
-              "title": "SHOP ALL",
-              "url": "http://www.childrensplace.com",
-            },
-            "text": Object {
-              "text": "TODDLER GIRL",
-            },
-          },
-          Object {
-            "category": Object {
-              "cat_id": Array [
                 "47526",
                 "47526",
               ],
@@ -140,8 +113,35 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
           Object {
             "category": Object {
               "cat_id": Array [
+                "47526",
                 "47503>47544",
+              ],
+            },
+            "singleCTAButton": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "SHOP ALL 1",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "singleCTAButtonCart": Object {
+              "action": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop All Matchables 1",
+              "title": "SHOP ALL",
+              "url": "http://www.childrensplace.com",
+            },
+            "text": Object {
+              "text": "TODDLER GIRL",
+            },
+          },
+          Object {
+            "category": Object {
+              "cat_id": Array [
                 "47503>47544",
+                "47526",
               ],
             },
             "singleCTAButton": Object {
@@ -168,7 +168,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             "category": Object {
               "cat_id": Array [
                 "47501>47526",
-                "47501>47526",
+                "47503>47544",
               ],
             },
             "singleCTAButton": Object {
