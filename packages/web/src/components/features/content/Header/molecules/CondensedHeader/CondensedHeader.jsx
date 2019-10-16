@@ -184,6 +184,7 @@ class CondensedHeader extends React.PureComponent {
               <Anchor
                 to="#"
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
                 fontSizeVariation="small"
@@ -201,6 +202,8 @@ class CondensedHeader extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  tabIndex="-1"
+                  aria-hidden="true"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>

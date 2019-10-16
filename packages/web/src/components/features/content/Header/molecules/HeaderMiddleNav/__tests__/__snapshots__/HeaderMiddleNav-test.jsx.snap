@@ -126,6 +126,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -140,6 +141,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -149,6 +151,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0
@@ -315,6 +318,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -329,6 +333,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -338,6 +343,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0

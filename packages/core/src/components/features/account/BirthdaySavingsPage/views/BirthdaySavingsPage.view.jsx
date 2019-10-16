@@ -27,7 +27,7 @@ export const BirthdaySavings = ({ labels }) => {
         </Anchor>
       </BodyCopy>
       <FormPageHeading
-        className="elem-mb-XL"
+        className="elem-mb-XL myAccountRightView"
         heading={getLabelValue(labels, 'lbl_profile_birthday_savings')}
         data-locator="birthdaySavingsLbl"
       />

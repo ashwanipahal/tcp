@@ -103,7 +103,7 @@ class HeaderMiddleNav extends React.PureComponent {
     const brand = getBrand();
     const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
     const {
-      accessibility: { closeIconButton, hamburgerMenu } = {},
+      accessibility: { cartIconButton, closeIconButton, hamburgerMenu } = {},
       store: storeLabel = {},
     } = labels;
     return (
@@ -217,6 +217,7 @@ class HeaderMiddleNav extends React.PureComponent {
               <Anchor
                 to=""
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
@@ -234,6 +235,8 @@ class HeaderMiddleNav extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  aria-hidden="true"
+                  tabIndex="-1"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>
