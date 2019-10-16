@@ -6,7 +6,7 @@ import styles from '../styles/FormPageHeading.styles';
 
 export const FormPageHeading = ({ className, heading, ...otherProps }) => {
   return (
-    <Heading component="h2" variant="h6" className={className} {...otherProps}>
+    <Heading component="h2" variant="h6" className={className} tabIndex="-1" {...otherProps}>
       {heading}
     </Heading>
   );

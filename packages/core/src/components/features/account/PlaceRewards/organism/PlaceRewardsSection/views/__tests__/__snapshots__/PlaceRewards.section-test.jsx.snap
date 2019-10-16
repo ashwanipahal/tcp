@@ -17,7 +17,7 @@ exports[`MyRewards should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="place-rewards__heading"
+        className="place-rewards__heading myAccountRightView"
         color="text.primary"
         component="h4"
         data-locator="place-rewards-heading"
