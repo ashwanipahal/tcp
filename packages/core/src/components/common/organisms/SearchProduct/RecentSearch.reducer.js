@@ -10,8 +10,7 @@ const RecentSearchReducer = (state = INITIAL_STATE, action) => {
     case RECENT_SEARCH_CONSTANTS.SET_RECENT_SEARCH: {
       const { searchTerm } = action.payload;
       const trimmedSearchedTerm = searchTerm.trim();
-
-      if (trimmedSearchedTerm && trimmedSearchedTerm.length === 0) return state;
+      if (trimmedSearchedTerm.length === 0) return state;
 
       let updatedList = [{ text: trimmedSearchedTerm }];
 
@@ -22,7 +21,7 @@ const RecentSearchReducer = (state = INITIAL_STATE, action) => {
         searchTermList &&
         searchTermList.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
       ) {
-        // There can be max 20 terms in local storage at one time, remove first search in such a scenario
+        // There can be max 10 terms in local storage at one time, remove first search in such a scenario
         searchTermList.pop();
       }
 

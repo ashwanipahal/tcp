@@ -21,6 +21,7 @@ let gymAPIConfig = null;
 export const LAZYLOAD_HOST_NAME = {
   HOME: 'lazyload-home',
   PLP: 'lazyload-plp',
+  PDP: 'lazyload-pdp',
   ACCOUNT: 'lazyload-account',
   WALLET: 'lazyload-wallet',
 };

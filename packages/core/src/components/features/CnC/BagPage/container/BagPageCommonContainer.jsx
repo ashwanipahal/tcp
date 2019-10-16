@@ -12,7 +12,10 @@ import {
   getIsSflItemRemoved,
   getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import {
   setVenmoPaymentInProgress,
   setVenmoPickupMessageState,
@@ -36,11 +39,16 @@ export class BagPageContainer extends React.Component<Props> {
     const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    this.fetchInitialActions();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { router } = this.props;
+      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+      const { router, isRegisteredUserCallDone } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+        this.fetchInitialActions();
+      }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
       if (isSfl) {
         document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
@@ -50,11 +58,13 @@ export class BagPageContainer extends React.Component<Props> {
 
   closeModal = () => {};
 
-  componentWillMount = () => {
-    const { initialActions, fetchSflData } = this.props;
-    initialActions();
-    fetchSflData();
-  };
+  fetchInitialActions() {
+    const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
+    if (isRegisteredUserCallDone) {
+      initialActions();
+      fetchSflData();
+    }
+  }
 
   render() {
     const {
@@ -163,6 +173,7 @@ const mapStateToProps = state => {
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

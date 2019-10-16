@@ -224,7 +224,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
-            <LoyaltyBanner isProductDetailView loyaltyBannerStyle="loyalty-banner" />
+            <LoyaltyBanner isProductDetailView />
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>

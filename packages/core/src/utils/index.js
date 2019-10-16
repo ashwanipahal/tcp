@@ -33,6 +33,7 @@ export {
   routeToStoreDetails,
   getLocationOrigin,
   scrollToParticularElement,
+  getDirections,
 } from './utils.web';
 
 export {

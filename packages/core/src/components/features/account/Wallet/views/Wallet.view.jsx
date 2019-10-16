@@ -7,6 +7,7 @@ import MyRewards from '../../common/organism/MyRewards';
 const WalletView = ({ labels }) => {
   return (
     <PageHeadingWithLinks
+      className="myAccountRightView"
       heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
       programDetailsCta={getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
       termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
