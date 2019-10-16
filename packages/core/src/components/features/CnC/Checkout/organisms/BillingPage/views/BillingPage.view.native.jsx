@@ -74,7 +74,11 @@ class BillingPage extends React.PureComponent {
           navigation={navigation}
           availableStages={availableStages}
         />
-        <ScrollView>
+        <ScrollView
+          ref={scrollView => {
+            this.scrollView = scrollView;
+          }}
+        >
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
             <GiftCardsContainer />
@@ -110,6 +114,7 @@ class BillingPage extends React.PureComponent {
                 userAddresses={userAddresses}
                 navigation={navigation}
                 creditFieldLabels={creditFieldLabels}
+                scrollView={this.scrollView}
               />
             )}
           </Container>
