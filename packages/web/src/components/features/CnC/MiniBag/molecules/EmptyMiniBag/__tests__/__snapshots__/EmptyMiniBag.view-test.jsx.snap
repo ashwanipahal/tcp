@@ -13,7 +13,7 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
       component="span"
       fontFamily="secondary"
       fontSize="fs18"
-      fontWeight="semibold"
+      fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -27,12 +27,25 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
-      fontSizeVariation="medium"
       to="/home"
       underline={true}
     >
-      continue Shopping
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs15"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        continue Shopping
+      </Styled(BodyCopy)>
     </Styled(Anchor)>
   </div>
 </div>
@@ -51,7 +64,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
       component="span"
       fontFamily="secondary"
       fontSize="fs18"
-      fontWeight="semibold"
+      fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -65,12 +78,25 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
-      fontSizeVariation="medium"
       to="/home"
       underline={true}
     >
-      continue Shopping
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs15"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        continue Shopping
+      </Styled(BodyCopy)>
     </Styled(Anchor)>
   </div>
 </div>
@@ -89,7 +115,7 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       component="span"
       fontFamily="secondary"
       fontSize="fs18"
-      fontWeight="semibold"
+      fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -103,12 +129,25 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
-      fontSizeVariation="medium"
       to="/home"
       underline={true}
     >
-      continue Shopping
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs15"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        continue Shopping
+      </Styled(BodyCopy)>
     </Styled(Anchor)>
   </div>
   <div
