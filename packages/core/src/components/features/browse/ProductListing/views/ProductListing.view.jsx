@@ -13,7 +13,6 @@ import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock
 import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
 import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
 import moduleQMock from '../../../../../services/abstractors/common/moduleQ/mock';
-// import moduleOMock from '../../../../../services/abstractors/common/moduleO/mock';
 
 // import ProductList from '../molecules/ProductList/views';
 import ProductsGrid from '../molecules/ProductsGrid/views';
