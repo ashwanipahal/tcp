@@ -151,4 +151,8 @@ export default css`
   .cta-btn {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+
+  .buttonStylingAndSpacing {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
 `;

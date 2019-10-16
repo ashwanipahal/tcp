@@ -137,11 +137,13 @@ class ModuleJ extends React.PureComponent {
             >
               {this.getHeaderText()}
               {this.getPromoBanner()}
-              <ProductTabList
-                onProductTabChange={this.onTabChange}
-                tabItems={divTabs}
-                dataLocator={getLocator('moduleJ_cta_link')}
-              />
+              <div className="buttonStylingAndSpacing">
+                <ProductTabList
+                  onProductTabChange={this.onTabChange}
+                  tabItems={divTabs}
+                  dataLocator={getLocator('moduleJ_cta_link')}
+                />
+              </div>
             </Col>
             <Col
               className="promo-image-right"
