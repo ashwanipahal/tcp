@@ -116,6 +116,7 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     isProductDetailView,
+    loyaltyBannerStyle,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -178,7 +179,9 @@ const LoyaltyBannerSection = props => {
 
   return (
     <div className={`${className} elem-mb-MED`}>
-      <div className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED">
+      <div
+        className={`backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED ${loyaltyBannerStyle}`}
+      >
         <BodyCopy className="loyaltyBannerSectionWrapper" component="div" fontFamily="secondary">
           <GuestMprPlccSection
             className={className}
@@ -247,6 +250,7 @@ LoyaltyBannerSection.propTypes = {
   isPlcc: PropTypes.bool,
   pointsToNextReward: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
+  loyaltyBannerStyle: PropTypes.string,
   isProductDetailView: PropTypes.bool,
 };
 
@@ -262,6 +266,7 @@ LoyaltyBannerSection.defaultProps = {
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',
+  loyaltyBannerStyle: '',
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

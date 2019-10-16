@@ -338,6 +338,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   sizeChange = e => {
     const { selectedFit } = this.state;
+    const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
@@ -345,6 +346,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
+    }
+    if (onChangeSize) {
+      onChangeSize(e);
     }
   };
 

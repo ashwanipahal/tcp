@@ -63,6 +63,7 @@ const styles = css`
   }
 
   .color-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
     margin-bottom: 33px;
@@ -78,6 +79,7 @@ const styles = css`
   }
 
   .size-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
   }
 
@@ -158,8 +160,8 @@ const styles = css`
 
 export const giftCardDesignStyle = css`
   .color-chips-selector-item {
-    height: 111px;
-    width: 90px;
+    height: 126px;
+    width: 103px;
     border-radius: 0;
 
     .input-radio-title {
@@ -184,6 +186,19 @@ export const giftCardDesignStyle = css`
       border: 0;
       height: auto;
       width: 100%;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .color-chips-selector-item {
+      height: 79px;
+      width: 66px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .color-chips-selector-item {
+      height: 109px;
+      width: 90px;
     }
   }
 `;
