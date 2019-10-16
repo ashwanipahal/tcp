@@ -54,7 +54,6 @@ const style = css`
 
   &.gymboree-module-a .banner-content {
     @media ${props => props.theme.mediaQuery.medium} {
-      top: 50%;
       left: 14px;
       width: 280px;
     }

@@ -80,7 +80,7 @@ class ModuleA extends React.Component {
         className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
           isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
         } moduleA`}
-        fullBleed={fullBleed && { small: true, medium: true, large: false }}
+        fullBleed={fullBleed || { small: true, medium: true, large: false }}
       >
         <Col
           colSize={{
