@@ -136,15 +136,8 @@ export function* getOrderDetailSaga(payload) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    const {
-      payload: {
-        isRecalculateTaxes,
-        isCheckoutFlow,
-        isCartNotRequired,
-        updateSmsInfo,
-        onCartRes,
-      } = {},
-    } = payload;
+    const { payload: { isRecalculateTaxes, isCheckoutFlow } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, onCartRes } = {} } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
@@ -162,11 +155,13 @@ export function* getCartDataSaga(payload = {}) {
       createMatchObject(res, translatedProductInfo);
     }
     const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
-    const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
-    res.orderDetails = {
-      ...res.orderDetails,
-      orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
-    };
+    if (bopisItems.length) {
+      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+      res.orderDetails = {
+        ...res.orderDetails,
+        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+      };
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
 
     if (res.orderDetails.orderItems.length > 0) {

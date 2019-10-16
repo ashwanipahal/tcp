@@ -609,7 +609,7 @@ class CartItemTile extends React.Component {
    * @memberof CartItemTile
    */
   getBOSSUnavailabilityMessage = (bossDisabled, noBossMessage, availability, labels) => {
-    let unavailableMessage;
+    let unavailableMessage = '';
     /* istanbul ignore else */
     if (bossDisabled || !!noBossMessage) {
       switch (availability) {
@@ -623,7 +623,7 @@ class CartItemTile extends React.Component {
           unavailableMessage = labels.bossInEligible;
           break;
         default:
-          unavailableMessage = '';
+          unavailableMessage = labels.bossUnavailable;
       }
     }
     return unavailableMessage;
