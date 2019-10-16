@@ -11,5 +11,4 @@ export default {
     imgSrc: '/static/images/gymboree-logo.svg',
     title: 'Gymboree',
   },
-  l1HoverDelay: 150,
 };
