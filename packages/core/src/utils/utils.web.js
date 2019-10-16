@@ -37,8 +37,7 @@ export const importGraphQLClientDynamically = module => {
 
 export const getUrlParameter = name => {
   const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-  // eslint-disable-next-line
-  const regex = new RegExp('[\\?&]' + replacedName + '=([^&#]*)');
+  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
   const results = regex.exec(window.location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
