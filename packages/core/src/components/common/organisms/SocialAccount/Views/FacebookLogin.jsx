@@ -129,7 +129,6 @@ const FacebookLoginComponent = props => {
   saveAccountInfo = props.saveSocialAcc;
   elem = props.loginStatus;
   closeModal = props.pointModalClose;
-
   return (
     <React.Fragment>
       {elem &&
