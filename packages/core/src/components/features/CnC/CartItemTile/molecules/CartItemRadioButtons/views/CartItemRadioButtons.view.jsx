@@ -24,6 +24,13 @@ class CartItemRadioButtons extends React.Component {
     this.setState({ selectedOrder: orderType });
   };
 
+  handleChangeStoreClick = () => {
+    const { openPickUpModal } = this.props;
+    const { selectedOrder } = this.state;
+    const openSkuSelectionForm = false;
+    openPickUpModal(selectedOrder, openSkuSelectionForm);
+  };
+
   render() {
     const { selectedOrder } = this.state;
     const { className, labels, productDetail } = this.props;
@@ -101,6 +108,14 @@ class CartItemRadioButtons extends React.Component {
                     'date'
                   )}`}
                 </BodyCopy>
+                <BodyCopy
+                  onClick={e => {
+                    e.preventDefault();
+                    this.handleChangeStoreClick();
+                  }}
+                >
+                  (Change Store)
+                </BodyCopy>
               </BodyCopy>
             )}
           </LabeledRadioButton>
@@ -143,6 +158,14 @@ class CartItemRadioButtons extends React.Component {
               >
                 {productDetail.miscInfo.store}
               </BodyCopy>
+              <BodyCopy
+                onClick={e => {
+                  e.preventDefault();
+                  this.handleChangeStoreClick();
+                }}
+              >
+                (Change Store)
+              </BodyCopy>
             </BodyCopy>
           )}
         </LabeledRadioButton>
@@ -178,6 +201,7 @@ CartItemRadioButtons.propTypes = {
   }).isRequired,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
+  openPickUpModal: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemRadioButtons, style);
