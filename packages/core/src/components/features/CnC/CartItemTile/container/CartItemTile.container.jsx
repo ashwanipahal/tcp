@@ -4,7 +4,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
-import { removeCartItem, updateCartItem, getProductSKUInfo } from './CartItemTile.actions';
+import {
+  removeCartItem,
+  updateCartItem,
+  getProductSKUInfo,
+  openPickupModalWithValuesFromBag,
+} from './CartItemTile.actions';
 import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import { getCartOrderList, getEditableProductInfo } from './CartItemTile.selectors';
 import {
@@ -58,6 +63,8 @@ export const CartItemTileContainer = ({
   startSflDataMoveToBag,
   currencySymbol,
   onQuickViewOpenClick,
+  onPickUpOpenClick,
+  orderId,
 }) => (
   <CartItemTile
     labels={labels}
@@ -88,6 +95,8 @@ export const CartItemTileContainer = ({
     startSflDataMoveToBag={startSflDataMoveToBag}
     currencySymbol={currencySymbol}
     onQuickViewOpenClick={onQuickViewOpenClick}
+    onPickUpOpenClick={onPickUpOpenClick}
+    orderId={orderId}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
@@ -119,6 +128,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
+    onPickUpOpenClick: payload => {
+      dispatch(openPickupModalWithValuesFromBag(payload));
+    },
   };
 };
 
@@ -129,6 +141,7 @@ export function mapStateToProps(state) {
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
+    orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state),
   };
 }
 

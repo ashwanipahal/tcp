@@ -26,9 +26,11 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      inheritedStyles,
       isBagPageStickyHeader,
       closeModal,
       isUSSite,
+      containerId,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -46,6 +48,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         isBagPageStickyHeader={isBagPageStickyHeader}
         closeModal={closeModal}
         isUSSite={isUSSite}
+        inheritedStyles={inheritedStyles}
+        containerId={containerId}
       />
     );
   }
@@ -57,10 +61,12 @@ AddedToBagContainer.propTypes = {
   isInternationalShipping: PropTypes.bool.isRequired,
   isNoNEmptyBag: PropTypes.number.isRequired,
   isBagPageStickyHeader: PropTypes.bool,
+  containerId: PropTypes.string,
 };
 
 AddedToBagContainer.defaultProps = {
   isBagPageStickyHeader: false,
+  containerId: null,
 };
 
 const mapDispatchToProps = dispatch => {

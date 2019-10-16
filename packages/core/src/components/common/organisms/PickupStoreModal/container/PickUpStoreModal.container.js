@@ -18,6 +18,7 @@ import {
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -35,6 +36,9 @@ export const mapDispatchToProps = dispatch => {
     },
     addItemToCartInPickup: payload => {
       dispatch(addItemToCartBopis(payload));
+    },
+    updatePickUpCartItem: payload => {
+      dispatch(updateCartItem(payload));
     },
   };
 };
@@ -64,6 +68,9 @@ const mapStateToProps = (state, ownProps) => {
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
   const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
+  const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
+  const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
+  const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
 
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
@@ -74,7 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     cartBopisStoresList: PickupSelectors.getStoresOnCart(state),
     distancesMap,
     isShowExtendedSizesNotification: false,
-    initialValues: itemValues.formValues,
+    initialValues: fromBagPage ? initialValuesFromBagPage : itemValues.formValues,
     showDefaultSizeMsg: itemValues.showDefaultSizeMsg,
     isPickupStoreUpdating: false,
     requestorKey: '',
@@ -100,6 +107,8 @@ const mapStateToProps = (state, ownProps) => {
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
     navigation,
+    updateCartItemStore,
+    initialValuesFromBagPage,
   };
 };
 

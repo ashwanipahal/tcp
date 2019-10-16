@@ -183,6 +183,7 @@ class BagPageView extends React.Component {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          containerId="paypal-button-container-bag"
         />
       </div>
     );
@@ -202,13 +203,18 @@ class BagPageView extends React.Component {
       showAddTobag,
       handleCartCheckout,
       orderItemsCount,
+      currencySymbol,
     } = this.props;
     const { showCondensedHeader } = this.state;
-    if (!showCondensedHeader) return null;
+    // if (!showCondensedHeader) return null;
     return (
       <div
         ref={this.getBagCondensedHeader}
-        className={`${orderItemsCount === 0 ? 'hidden-condensed-header' : ''}`}
+        className={`${
+          orderItemsCount === 0 || orderItemsCount === false || !showCondensedHeader
+            ? 'hidden-condensed-header'
+            : ''
+        }`}
       >
         <Row className="bag-condensed-header">
           <Row className="content-wrapper">
@@ -221,7 +227,7 @@ class BagPageView extends React.Component {
                   component="span"
                   className="elem-ml-SM"
                 >
-                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
                 </BodyCopy>
               </BodyCopy>
             </Col>
@@ -232,6 +238,7 @@ class BagPageView extends React.Component {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                containerId="paypal-button-container-bag-header"
               />
             </Col>
           </Row>
@@ -251,13 +258,15 @@ class BagPageView extends React.Component {
       sflItems,
       isShowSaveForLaterSwitch,
       orderBalanceTotal,
+      currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob } = this.state;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
+    const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {this.stickyBagCondensedHeader()}
+        {showCondensedHeader && this.stickyBagCondensedHeader()}
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -271,6 +280,7 @@ class BagPageView extends React.Component {
               }}
             >
               <Heading
+                component="h2"
                 variant="h6"
                 fontSize="fs16"
                 color="text.primary"
@@ -288,7 +298,7 @@ class BagPageView extends React.Component {
                     activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeEstimatedHeader' : ''
                   }`}
                 >
-                  {`${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`}
+                  {`${labels.totalLabel}: ${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
                 </BodyCopy>
               )}
             </Col>
@@ -316,7 +326,10 @@ class BagPageView extends React.Component {
         </div>
         <CnCTemplate
           leftSection={this.renderLeftSection}
-          showLeftSection={isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE}
+          showLeftSection={
+            (isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE) || isNotLoaded
+          }
+          isNotLoaded={!isNotLoaded}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
@@ -343,6 +356,7 @@ BagPageView.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   orderBalanceTotal: PropTypes.number.isRequired,
   bagStickyHeaderInterval: PropTypes.number.isRequired,
+  currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
 };
 

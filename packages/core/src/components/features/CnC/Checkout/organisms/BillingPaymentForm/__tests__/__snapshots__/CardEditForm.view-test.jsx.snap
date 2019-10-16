@@ -7,9 +7,7 @@ exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
   onSubmit={[Function]}
 >
   Hello
-  <div>
-    CCForm
-  </div>
+  CCForm
   <Component
     editMode={true}
     key="cardEditAddressForm"
@@ -32,6 +30,7 @@ exports[`CardEditForm component CardEditFormViewVanilla 1`] = `
     </Styled(Button)>
     <Styled(Button)
       className="card-edit-button card-edit-cancel"
+      onClick={[Function]}
       type="button"
     >
       <Styled(BodyCopy)
@@ -79,6 +78,7 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
       "creditCardId": undefined,
       "expMonth": "2",
       "expYear": undefined,
+      "isDefault": undefined,
     }
   }
   keepDirtyOnReinitialize={true}
@@ -93,6 +93,12 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
   persistentSubmitErrors={false}
   pure={true}
   renderCardDetailsHeading={[Function]}
+  selectedCard={
+    Object {
+      "accountNo": "123",
+      "expMonth": "2",
+    }
+  }
   shouldAsyncValidate={[Function]}
   shouldError={[Function]}
   shouldValidate={[Function]}

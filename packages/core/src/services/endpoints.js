@@ -317,10 +317,6 @@ const endpoints = {
     method: 'POST',
     URI: SAVE_FOR_LATER,
   },
-  getMyFavoriteStore: {
-    method: API_METHODS.GET,
-    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
-  },
   getStoreandProductInventoryInfo: {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
@@ -404,6 +400,10 @@ const endpoints = {
   getStoreLocationByCountry: {
     method: 'GET',
     URI: 'v2/store/getStoreLocationByCountry',
+  },
+  startExpressCheckout: {
+    method: 'POST',
+    URI: 'v2/checkout/expressCheckout',
   },
 };
 export default endpoints;

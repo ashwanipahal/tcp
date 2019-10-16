@@ -31,7 +31,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
               "content": <div
                 className="address-wrapper"
               >
-                <Address
+                <ForwardRef
                   address={
                     Object {
                       "addressLine": Array [
@@ -47,12 +47,9 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                     }
                   }
                   className="address"
-                  dataLocatorPrefix=""
-                  fontWeight="regular"
                   isDefault={true}
                   showCountry={false}
                   showDefault={false}
-                  showName={true}
                   showPhone={false}
                 />
                 <ForwardRef
@@ -147,15 +144,10 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
         }
       }
     >
-      <Address
+      <Styled(Address)
         address={null}
         className="shipping__address"
         dataLocatorPrefix="address"
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
         showPhone={true}
       />
     </Styled(Col)>
@@ -255,7 +247,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
               "content": <div
                 className="address-wrapper"
               >
-                <Address
+                <ForwardRef
                   address={
                     Object {
                       "addressId": "123",
@@ -271,12 +263,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                     }
                   }
                   className="address"
-                  dataLocatorPrefix=""
-                  fontWeight="regular"
                   isDefault={false}
                   showCountry={false}
                   showDefault={false}
-                  showName={true}
                   showPhone={false}
                 />
               </div>,
@@ -674,7 +663,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "content": <div
                 className="address-wrapper"
               >
-                <Address
+                <ForwardRef
                   address={
                     Object {
                       "addressLine": Array [
@@ -689,12 +678,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                     }
                   }
                   className="address"
-                  dataLocatorPrefix=""
-                  fontWeight="regular"
                   isDefault={false}
                   showCountry={false}
                   showDefault={false}
-                  showName={true}
                   showPhone={false}
                 />
               </div>,
@@ -1191,7 +1177,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "content": <div
                 className="address-wrapper"
               >
-                <Address
+                <ForwardRef
                   address={
                     Object {
                       "addressLine": Array [
@@ -1206,12 +1192,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                     }
                   }
                   className="address"
-                  dataLocatorPrefix=""
-                  fontWeight="regular"
                   isDefault={false}
                   showCountry={false}
                   showDefault={false}
-                  showName={true}
                   showPhone={false}
                 />
               </div>,
@@ -1708,7 +1691,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
               "content": <div
                 className="address-wrapper"
               >
-                <Address
+                <ForwardRef
                   address={
                     Object {
                       "addressLine": Array [
@@ -1723,12 +1706,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                     }
                   }
                   className="address"
-                  dataLocatorPrefix=""
-                  fontWeight="regular"
                   isDefault={false}
                   showCountry={false}
                   showDefault={false}
-                  showName={true}
                   showPhone={false}
                 />
               </div>,

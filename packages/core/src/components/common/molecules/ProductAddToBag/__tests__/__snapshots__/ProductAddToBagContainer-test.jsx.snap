@@ -2,157 +2,6 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should call getFitOptions 1`] = `
 <Connect(ReduxForm)
-  colorList={
-    Array [
-      Object {
-        "categoryEntity": "Girl:School Uniforms",
-        "color": Object {
-          "family": "BLUE",
-          "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000935_IV.jpg",
-          "name": "TIDAL",
-        },
-        "colorDisplayId": "3000935_IV",
-        "colorProductId": "1281598",
-        "favoritedCount": 0,
-        "fits": Array [
-          Object {
-            "fitName": "regular",
-            "isDefault": true,
-            "maxAvailable": 1.7976931348623157e+308,
-            "sizes": Array [
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 739,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 0,
-                "sizeName": "XS (4)",
-                "skuId": "1281998",
-                "variantId": "00193511074322",
-                "variantNo": "3000935007",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 6771,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 1,
-                "sizeName": "S (5/6)",
-                "skuId": "1282327",
-                "variantId": "00193511074339",
-                "variantNo": "3000935008",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 12920,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 2,
-                "sizeName": "M (7/8)",
-                "skuId": "1281700",
-                "variantId": "00193511074346",
-                "variantNo": "3000935009",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 9331,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 3,
-                "sizeName": "L (10/12)",
-                "skuId": "1281815",
-                "variantId": "00193511074353",
-                "variantNo": "3000935010",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 4381,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 4,
-                "sizeName": "XL (14)",
-                "skuId": "1281870",
-                "variantId": "00193511074360",
-                "variantNo": "3000935011",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 3473,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 5,
-                "sizeName": "XXL (16)",
-                "skuId": "1281922",
-                "variantId": "00193511074377",
-                "variantNo": "3000935012",
-              },
-            ],
-          },
-          Object {
-            "fitName": "plus",
-            "isDefault": false,
-            "maxAvailable": 1.7976931348623157e+308,
-            "sizes": Array [
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 1037,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 0,
-                "sizeName": "L(10P-12P)",
-                "skuId": "1225288",
-                "variantId": "00193511079488",
-                "variantNo": "3000936026",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 1231,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 1,
-                "sizeName": "XL(14P)",
-                "skuId": "1225289",
-                "variantId": "00193511079495",
-                "variantNo": "3000936027",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 2345,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 2,
-                "sizeName": "XXL (16P)",
-                "skuId": "1225287",
-                "variantId": "00193511079471",
-                "variantNo": "3000936025",
-              },
-            ],
-          },
-        ],
-        "hasFits": true,
-        "imageName": "3000935_IV",
-        "listPrice": 12.95,
-        "maxAvailable": 42228,
-        "maxAvailableBoss": 0,
-        "miscInfo": Object {
-          "badge1": Object {
-            "defaultBadge": "ONLINE EXCLUSIVE",
-          },
-          "badge2": "",
-          "hasOnModelAltImages": "",
-          "isBopisEligible": false,
-          "isBossEligible": true,
-          "isClearance": "",
-          "keepAlive": false,
-          "videoUrl": "",
-        },
-        "name": null,
-        "offerPrice": 12.95,
-        "pdpUrl": "/us/p/3000935_IV",
-        "unbxdId": null,
-      },
-    ]
-  }
   currentProduct={
     Object {
       "colorFitsSizesMap": Array [
@@ -310,18 +159,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
   }
   displayErrorMessage={[Function]}
   fitChanged={true}
-  fitList={
-    Array [
-      Object {
-        "displayName": "regular",
-        "id": "regular",
-      },
-      Object {
-        "displayName": "plus",
-        "id": "plus",
-      },
-    ]
-  }
+  fitList={Array []}
   generalProductId="3000935_IV"
   initialValues={
     Object {
@@ -536,163 +374,11 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
     }
   }
   showAddToBagCTA={true}
-  sizeList={Array []}
 />
 `;
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <Connect(ReduxForm)
-  colorList={
-    Array [
-      Object {
-        "categoryEntity": "Girl:School Uniforms",
-        "color": Object {
-          "family": "BLUE",
-          "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000935_IV.jpg",
-          "name": "TIDAL",
-        },
-        "colorDisplayId": "3000935_IV",
-        "colorProductId": "1281598",
-        "favoritedCount": 0,
-        "fits": Array [
-          Object {
-            "fitName": "regular",
-            "isDefault": true,
-            "maxAvailable": 1.7976931348623157e+308,
-            "sizes": Array [
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 739,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 0,
-                "sizeName": "XS (4)",
-                "skuId": "1281998",
-                "variantId": "00193511074322",
-                "variantNo": "3000935007",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 6771,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 1,
-                "sizeName": "S (5/6)",
-                "skuId": "1282327",
-                "variantId": "00193511074339",
-                "variantNo": "3000935008",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 12920,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 2,
-                "sizeName": "M (7/8)",
-                "skuId": "1281700",
-                "variantId": "00193511074346",
-                "variantNo": "3000935009",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 9331,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 3,
-                "sizeName": "L (10/12)",
-                "skuId": "1281815",
-                "variantId": "00193511074353",
-                "variantNo": "3000935010",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 4381,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 4,
-                "sizeName": "XL (14)",
-                "skuId": "1281870",
-                "variantId": "00193511074360",
-                "variantNo": "3000935011",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 3473,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 5,
-                "sizeName": "XXL (16)",
-                "skuId": "1281922",
-                "variantId": "00193511074377",
-                "variantNo": "3000935012",
-              },
-            ],
-          },
-          Object {
-            "fitName": "plus",
-            "isDefault": false,
-            "maxAvailable": 1.7976931348623157e+308,
-            "sizes": Array [
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 1037,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 0,
-                "sizeName": "L(10P-12P)",
-                "skuId": "1225288",
-                "variantId": "00193511079488",
-                "variantNo": "3000936026",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 1231,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 1,
-                "sizeName": "XL(14P)",
-                "skuId": "1225289",
-                "variantId": "00193511079495",
-                "variantNo": "3000936027",
-              },
-              Object {
-                "listPrice": 12.95,
-                "maxAvailable": 2345,
-                "maxAvailableBoss": 0,
-                "offerPrice": 12.95,
-                "position": 2,
-                "sizeName": "XXL (16P)",
-                "skuId": "1225287",
-                "variantId": "00193511079471",
-                "variantNo": "3000936025",
-              },
-            ],
-          },
-        ],
-        "hasFits": true,
-        "imageName": "3000935_IV",
-        "listPrice": 12.95,
-        "maxAvailable": 42228,
-        "maxAvailableBoss": 0,
-        "miscInfo": Object {
-          "badge1": Object {
-            "defaultBadge": "ONLINE EXCLUSIVE",
-          },
-          "badge2": "",
-          "hasOnModelAltImages": "",
-          "isBopisEligible": false,
-          "isBossEligible": true,
-          "isClearance": "",
-          "keepAlive": false,
-          "videoUrl": "",
-        },
-        "name": null,
-        "offerPrice": 12.95,
-        "pdpUrl": "/us/p/3000935_IV",
-        "unbxdId": null,
-      },
-    ]
-  }
   currentProduct={
     Object {
       "colorFitsSizesMap": Array [
@@ -850,18 +536,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   }
   displayErrorMessage={[Function]}
   fitChanged={true}
-  fitList={
-    Array [
-      Object {
-        "displayName": "regular",
-        "id": "regular",
-      },
-      Object {
-        "displayName": "plus",
-        "id": "plus",
-      },
-    ]
-  }
+  fitList={Array []}
   generalProductId="3000935_IV"
   initialValues={
     Object {
@@ -964,45 +639,5 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     }
   }
   showAddToBagCTA={true}
-  sizeList={
-    Array [
-      Object {
-        "disabled": false,
-        "displayName": "XS (4)",
-        "id": "XS (4)",
-        "maxAvailable": 739,
-      },
-      Object {
-        "disabled": false,
-        "displayName": "S (5/6)",
-        "id": "S (5/6)",
-        "maxAvailable": 6771,
-      },
-      Object {
-        "disabled": false,
-        "displayName": "M (7/8)",
-        "id": "M (7/8)",
-        "maxAvailable": 12920,
-      },
-      Object {
-        "disabled": false,
-        "displayName": "L (10/12)",
-        "id": "L (10/12)",
-        "maxAvailable": 9331,
-      },
-      Object {
-        "disabled": false,
-        "displayName": "XL (14)",
-        "id": "XL (14)",
-        "maxAvailable": 4381,
-      },
-      Object {
-        "disabled": false,
-        "displayName": "XXL (16)",
-        "id": "XXL (16)",
-        "maxAvailable": 3473,
-      },
-    ]
-  }
 />
 `;

@@ -11,6 +11,11 @@ export const googleAppConfig = {
   google_map_api_key: 'AIzaSyDYl5bgJ8yD30bRchcB0hKgZgJR0JqdrO4',
 };
 
+export const UPDATE_ITEM_IN_CART = {
+  X_CALCULATION_USAGE: '-1,-3,-5,-6,-7',
+  X_UPDATE_DESCRIPTION: 'true',
+};
+
 export const awsAppSync = {
   aws_project_region: 'us-east-1',
   aws_appsync_region: 'us-east-1',
