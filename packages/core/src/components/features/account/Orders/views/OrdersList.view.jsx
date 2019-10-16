@@ -14,7 +14,7 @@ export const OrdersList = ({ labels, ordersListItems, ...otherprops }) => {
   return (
     <React.Fragment>
       <FormPageHeading
-        className="elem-mb-XL"
+        className="elem-mb-XL myAccountRightView"
         heading={getLabelValue(labels, 'lbl_orders_heading', 'orders')}
         data-locator="OrdersListPageLbl"
       />

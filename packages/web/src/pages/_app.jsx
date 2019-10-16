@@ -8,6 +8,7 @@ import withReduxSaga from 'next-redux-saga';
 import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
+import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import {
@@ -242,6 +243,7 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
+              <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>

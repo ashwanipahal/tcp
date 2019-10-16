@@ -24,7 +24,7 @@ const getCardDetailsMethod = (labels, setFormToEditState, editMode, scope) => {
           fontWeight="regular"
           spacingStyles="margin-bottom-MED"
           color="gray.900"
-          data-locator="billing-payment-details"
+          dataLocator="cardDetailLbl"
           text={labels.cardDetailsTitle}
         />
       ) : null}
@@ -53,7 +53,7 @@ const getDefaultPayment = (selectedCard, labels, isSpace) => {
         id="primary"
         name={isSpace ? 'isDefault' : 'defaultPayment'}
         component={InputCheckbox}
-        dataLocator="abilling-payment-checkbox-field"
+        dataLocator="defaultPaymentChkBox"
       />
       <DefaultPaymentTextWrapper>
         <BodyCopy
@@ -76,7 +76,7 @@ const getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {
             mobileFontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
-            dataLocator="billing-payment-billingAddress"
+            dataLocator="billingAddressLbl"
             color="gray.900"
             text={labels.billingAddress}
           />
@@ -85,7 +85,7 @@ const getBillingAddressWrapper = (selectedCard, onFileCardKey, labels) => {
       {selectedCard ? (
         <BillingAddressWrapper>
           {onFileCardKey && (
-            <Card card={selectedCard} dataLocatorPrefix="billing-payment-card-detail" showAddress />
+            <Card card={selectedCard} dataLocator="selectedCardDetail" showAddress />
           )}
         </BillingAddressWrapper>
       ) : null}
