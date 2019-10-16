@@ -16,6 +16,7 @@ import {
   submitReviewSection,
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
+  submitVerifiedAddressData,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -28,6 +29,7 @@ import selectors, {
   getGiftServicesSend,
   isUsSite as isUsSiteUser,
 } from './Checkout.selector';
+import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
@@ -97,6 +99,18 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     }
   }
 
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+      },
+    };
+  };
+
   render() {
     const {
       initialValues,
@@ -137,7 +151,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       reviewProps,
       isVenmoPaymentInProgress,
       setVenmoPickupState,
+      verifyAddressAction,
       setVenmoShippingState,
+      submitVerifiedShippingAddressData,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -161,10 +177,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
+        submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        verifyAddressAction={verifyAddressAction}
         shippingProps={shippingProps}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
@@ -181,6 +199,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={reviewProps}
+        formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
@@ -231,6 +250,12 @@ export const mapDispatchToProps = dispatch => {
     },
     submitReview: payload => {
       dispatch(submitReviewSection(payload));
+    },
+    verifyAddressAction: payload => {
+      dispatch(verifyAddress(payload));
+    },
+    submitVerifiedShippingAddressData: payload => {
+      dispatch(submitVerifiedAddressData(payload));
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
