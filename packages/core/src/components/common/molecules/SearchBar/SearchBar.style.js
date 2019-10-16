@@ -2,8 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   display: inline;
-  height: 40px;
-  flex-grow: 1;
   .searchWrapper {
     width: 100%;
     height: 40px;

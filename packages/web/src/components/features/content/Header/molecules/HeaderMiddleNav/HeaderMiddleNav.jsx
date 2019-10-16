@@ -69,6 +69,18 @@ class HeaderMiddleNav extends React.PureComponent {
     return userNameClick ? 'carrot-down-icon' : 'carrot-up-icon';
   };
 
+  handleUserTypeColor = isUserPlcc => {
+    return isUserPlcc ? 'blue.500' : 'orange.800';
+  };
+
+  handleUserName = userName => {
+    return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
+  };
+
+  handleUserRewards = userRewards => {
+    return userRewards % 1 ? userRewards : Math.floor(userRewards);
+  };
+
   handleKeyDown = (event, openNavigationDrawer, closeNavigationDrawer, isNavigationDrawerOpen) => {
     const { KEY_ENTER, KEY_SPACE } = keyboard;
     const { which } = event;
@@ -100,6 +112,7 @@ class HeaderMiddleNav extends React.PureComponent {
       closeNavigationDrawer,
       navigationDrawer,
       openOverlay,
+      isUserPlcc,
       userName,
       userPoints,
       userRewards,
@@ -179,29 +192,44 @@ class HeaderMiddleNav extends React.PureComponent {
               {userName ? (
                 <React.Fragment>
                   <BodyCopy
+                    component="div"
                     id="accountDrawer"
-                    textAlign="right"
-                    className="username rightLink"
+                    className="account-info-section"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                   >
                     <BodyCopy
                       fontFamily="secondary"
-                      fontSize="fs12"
-                      className="user-name"
+                      fontSize="fs14"
+                      className="account-info user-name"
                       textAlign="left"
                     >
-                      {`Hi, ${userName}`}
+                      {`Hi, ${this.handleUserName(userName)}`}
                     </BodyCopy>
                     <Image
                       alt="user"
-                      className={this.handleCarrottoggle(userNameClick)}
+                      className={`account-info ${this.handleCarrottoggle(userNameClick)}`}
                       src={getIconPath('down_arrow_icon')}
                       height="6px"
                     />
-                    <BodyCopy className="rightLink" fontFamily="secondary" fontSize="fs10">
+                    <BodyCopy lineHeight="0" />
+                    <BodyCopy
+                      className="account-info user-points"
+                      fontFamily="secondary"
+                      fontSize="fs10"
+                      color={this.handleUserTypeColor(isUserPlcc)}
+                    >
                       {`${userPoints} Points`}
                     </BodyCopy>
-                    <BodyCopy>{`${userRewards} Rewards`}</BodyCopy>
+                    <BodyCopy
+                      className="account-info user-rewards rightLink"
+                      component="span"
+                      fontFamily="secondary"
+                      fontSize="fs10"
+                      color={this.handleUserTypeColor(isUserPlcc)}
+                    >
+                      {`$${this.handleUserRewards(userRewards)} Rewards`}
+                    </BodyCopy>
+
                     <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
                   </BodyCopy>
                 </React.Fragment>
@@ -212,7 +240,7 @@ class HeaderMiddleNav extends React.PureComponent {
                       href="#"
                       noLink
                       id="createAccount"
-                      className="leftLink"
+                      className=""
                       onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                       fontSizeVariation="large"
                       anchorVariation="primary"
@@ -237,7 +265,6 @@ class HeaderMiddleNav extends React.PureComponent {
               <Anchor
                 to=""
                 id="cartIcon"
-                className="rightLink"
                 onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
                 anchorVariation="primary"
@@ -281,6 +308,9 @@ class HeaderMiddleNav extends React.PureComponent {
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
               closeNav={closeNavigationDrawer}
+              userName={userName}
+              userPoints={userPoints}
+              userRewards={userRewards}
             />
           </Col>
         </Row>
@@ -295,6 +325,7 @@ HeaderMiddleNav.propTypes = {
   navigationDrawer: PropTypes.shape({}),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  isUserPlcc: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,

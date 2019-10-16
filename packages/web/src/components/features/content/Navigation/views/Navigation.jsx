@@ -40,9 +40,13 @@ const Navigation = props => {
   const {
     openNavigationDrawer,
     className,
+    userName,
+    userPoints,
+    userRewards,
     closeNavigationDrawer,
     hideNavigationFooter,
     showCondensedHeader,
+    openOverlay,
   } = props;
 
   useEffect(registerRouterChangeEvent(closeNavigationDrawer));
@@ -52,8 +56,12 @@ const Navigation = props => {
       id="l1_drawer"
       small
       medium
+      userName={userName}
+      userPoints={userPoints}
+      userRewards={userRewards}
       open={openNavigationDrawer}
       close={closeNavigationDrawer}
+      openOverlay={openOverlay}
       width={{
         small: '314px',
         medium: '314px',
@@ -82,6 +90,10 @@ Navigation.propTypes = {
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

@@ -92,6 +92,8 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
+      userPoints,
+      userRewards,
       labels,
     } = this.props;
     const brand = getBrand();
@@ -138,6 +140,9 @@ class CondensedHeader extends React.PureComponent {
                 openNavigationDrawer={navigationDrawer.open}
                 closeNavigationDrawer={!navigationDrawer.open}
                 closeNav={closeNavigationDrawer}
+                userName={userName}
+                userPoints={userPoints}
+                userRewards={userRewards}
               />
             </div>
             <div className="condensed-header-icons">
@@ -156,7 +161,12 @@ class CondensedHeader extends React.PureComponent {
                     className="username"
                     onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                   >
-                    {`Hi, ${userName}`}
+                    <Image
+                      alt={accountIconButton}
+                      className="rightLink userIcon"
+                      src={getIconPath('user-icon-blue')}
+                      data-locator="user-icon"
+                    />
                   </BodyCopy>
                 </React.Fragment>
               ) : (
@@ -219,6 +229,8 @@ CondensedHeader.propTypes = {
   openMiniBagDispatch: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,

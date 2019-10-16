@@ -37,6 +37,9 @@ export default css`
     }
   }
   .header-middle-login-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin-top: 30px;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 71%;
@@ -46,9 +49,11 @@ export default css`
       width: 74%;
     }
   }
-  .username {
+  .account-info-section {
     cursor: pointer;
     display: inline-block;
+    line-height: normal;
+    padding: 0px 12px;
   }
   .carrot-down-icon {
     margin-left: 9px;
@@ -60,22 +65,35 @@ export default css`
     transform: rotate(180deg);
     transition: transform 0.15s linear;
   }
-  .user-name {
+  .account-info {
     cursor: pointer;
     display: none;
-    @media ${props => props.theme.mediaQuery.large} {
-      display: inline-block;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
+    }
+  }
+  .user-name {
+    &:hover {
+      color: ${props => props.theme.colorPalette.blue[500]};
     }
   }
   .usericon {
     cursor: pointer;
     display: inline-block;
-    @media ${props => props.theme.mediaQuery.large} {
+    vertical-align: baseline;
+    @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
   }
   .product-image {
+    padding-left: 12px;
     vertical-align: baseline;
+  }
+  #login {
+    padding-right: 12px;
+  }
+  #createaccount {
+    padding-left: 12px;
   }
 
   .rightLink {

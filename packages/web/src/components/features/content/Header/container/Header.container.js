@@ -8,6 +8,7 @@ import { setTrackOrderModalMountedState } from '@tcp/core/src/components/feature
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
+  isPlccUser,
   getUserName,
   getUserLoggedInState,
   getCurrentPointsState,
@@ -27,6 +28,7 @@ const mapStateToProps = state => {
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
+    isUserPlcc: isPlccUser(state),
     userName: getUserName(state),
     userPoints: getCurrentPointsState(state),
     userRewards: getTotalRewardsState(state),
