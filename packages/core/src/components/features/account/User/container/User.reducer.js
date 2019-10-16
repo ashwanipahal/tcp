@@ -86,9 +86,9 @@ const UserReducer = (state = initialState, { type, payload }) => {
     case USER_CONSTANTS.SET_DEFAULT_STORE:
       return state.set('defaultStore', payload);
     case USER_CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION:
-      return state.setIn(['personalData', 'plccCardId'], payload.onFileCard);
+      return state.setIn(['personalData', 'plccCardId'], payload);
     case USER_CONSTANTS.RESPONSE_SET_PLCC_INFORMATION:
-      return state.setIn(['personalData', 'plccCardNumber'], payload.cardNumber);
+      return state.setIn(['personalData', 'plccCardNumber'], payload);
     case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
       return state.set(
         'survey',

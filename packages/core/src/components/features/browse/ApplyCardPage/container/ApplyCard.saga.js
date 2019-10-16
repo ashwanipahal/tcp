@@ -44,7 +44,7 @@ export function* submitCreditCardForm({ payload = '' }) {
       yield put(toastMessageInfo(res.status));
     }
     yield put(obtainInstantCardApplication(res));
-    yield put(setPlccCardIdActn(res.onFileCard));
+    yield put(setPlccCardIdActn(res.onFileCardId || res.xCardId));
     yield put(setPlccCardNumberActn((res.cardNumber || '').substr(-4)));
   } catch (err) {
     yield null;

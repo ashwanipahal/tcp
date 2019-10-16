@@ -44,6 +44,8 @@ class LoginForm extends React.PureComponent<Props> {
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -94,11 +96,20 @@ class LoginForm extends React.PureComponent<Props> {
               </Field>
             </BodyCopy>
 
-            <BodyCopy component="div">
-              <Field name="savePlcc" component={InputCheckbox} dataLocator="login-savemyplcccardcb">
-                {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login')}
-              </Field>
-            </BodyCopy>
+            {userplccCardNumber && userplccCardId && (
+              <BodyCopy component="div">
+                <Field
+                  name="savePlcc"
+                  component={InputCheckbox}
+                  dataLocator="login-savemyplcccardcb"
+                >
+                  {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login').replace(
+                    '#number',
+                    `${userplccCardNumber}`
+                  )}
+                </Field>
+              </BodyCopy>
+            )}
 
             <BodyCopy component="div">
               {showRecaptcha && (
@@ -167,6 +178,8 @@ LoginForm.propTypes = {
   change: PropTypes.func,
   pristine: PropTypes.bool,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {
