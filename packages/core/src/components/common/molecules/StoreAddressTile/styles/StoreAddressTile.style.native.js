@@ -9,6 +9,13 @@ export default styled.View`
   border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  ${props =>
+    props.selectedStoreId
+      ? `
+        border: solid 1px ${props.theme.colorPalette.gray[500]};
+        background-color: ${props.theme.colorPalette.gray[300]};
+        `
+      : ''};
 `;
 
 export const TileHeader = styled.View`

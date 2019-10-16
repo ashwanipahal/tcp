@@ -28,7 +28,7 @@ export class CreditCardDropDown extends React.PureComponent {
             card.defaultInd ? `(${labels.defaultBadge})` : ''
           }`,
           content: (
-            <CardListWrapper>
+            <CardListWrapper dataLocator="cardDetailCardDropDown">
               <Card
                 card={card}
                 isDefault={card.defaultInd}
@@ -48,6 +48,7 @@ export class CreditCardDropDown extends React.PureComponent {
       label: labels.addCreditBtn,
       content: '',
       primary: false,
+      dataLocator: 'addCreditCardBtn',
     });
 
     return cardOptions && cardOptions.toArray();
@@ -87,6 +88,7 @@ export class CreditCardDropDown extends React.PureComponent {
         selectedValue={selectedOnFileCardKey}
         labels={{ common: { lbl_common_tapClose: 'close' } }}
         disableBtn={!selectedOnFileCardKey || (creditCardList && creditCardList.size === 0)}
+        dataLocator="selectCardDrpDown"
       />
     );
   };

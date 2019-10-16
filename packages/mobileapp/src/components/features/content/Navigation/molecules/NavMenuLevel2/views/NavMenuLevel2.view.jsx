@@ -32,6 +32,18 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
       accessibilityLabels,
     });
   }
+
+  if (url.includes('-outfit')) {
+    // Navigate to outfit listing for outfits
+    const categoryIds = url.split('cid=');
+    return navigate('OutfitListing', {
+      title: name,
+      url,
+      accessibilityLabels,
+      outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
+    });
+  }
+
   return navigate('ProductListing', {
     title: name,
     url,

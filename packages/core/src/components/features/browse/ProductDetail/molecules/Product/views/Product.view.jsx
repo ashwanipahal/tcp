@@ -216,6 +216,7 @@ class Product extends React.Component {
       isInternationalShipping,
       isKeepAlive,
       isMatchingFamily,
+      isGiftCard,
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
     const currentColorProductId = productDetails.get('currentColorProductId');
@@ -239,6 +240,7 @@ class Product extends React.Component {
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
+          isGiftCard={isGiftCard}
           productInfo={productInfo}
           // {...addToBagFormValues}
           isShowFavoriteCount
@@ -253,20 +255,24 @@ class Product extends React.Component {
           // isShowPriceRange={isShowPriceRange}
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
         />
-        <ProductPrice
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
-          isItemPartNumberVisible={false}
-          itemPartNumber={colorProduct.colorDisplayId}
-          {...prices}
-          promotionalMessage={promotionalMessage}
-          isCanada={isCanada}
-          promotionalPLCCMessage={promotionalPLCCMessage}
-          isPlcc={isHasPlcc}
-          isInternationalShipping={isInternationalShipping}
-        />
-        <RenderPerf.Measure name={PRICING_VISIBLE} />
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyExchange={currencyExchange}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,

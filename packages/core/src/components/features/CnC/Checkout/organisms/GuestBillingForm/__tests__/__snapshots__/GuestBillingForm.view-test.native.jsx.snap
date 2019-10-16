@@ -6,8 +6,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     <Styled(BodyCopy)
       accessibilityText=""
       className="elem-mb-XS elem-mt-MED"
-      data-locator="billing-details"
-      dataLocator=""
+      dataLocator="paymentMethodLbl"
       fontSize="fs26"
       fontWeight="regular"
       margin={null}
@@ -50,14 +49,19 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
           />
         </ReactTooltip>
       }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBilling"
       isExpirationRequired={true}
       isGuest={true}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={true}
       labels={Object {}}
+      selectedCard={null}
     />
     <Styled(CheckoutAddress)
       billingData={Object {}}
+      editMode={false}
       formName="checkoutBilling"
       isGuest={true}
       isSameAsShippingChecked={true}
@@ -86,8 +90,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     <Styled(BodyCopy)
       accessibilityText=""
       className="elem-mb-XS elem-mt-MED"
-      data-locator="billing-details"
-      dataLocator=""
+      dataLocator="paymentMethodLbl"
       fontSize="fs26"
       fontWeight="regular"
       margin={null}
@@ -154,11 +157,15 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           ],
         }
       }
+      dto={Object {}}
+      editMode={false}
       formName="checkoutBilling"
       isExpirationRequired={true}
       isGuest={true}
+      isSameAsShippingChecked={false}
       isSaveToAccountChecked={true}
       labels={Object {}}
+      selectedCard={null}
     />
     <Styled(CheckoutAddress)
       billingData={Object {}}
@@ -186,6 +193,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           ],
         }
       }
+      editMode={false}
       formName="checkoutBilling"
       isGuest={true}
       isSameAsShippingChecked={true}

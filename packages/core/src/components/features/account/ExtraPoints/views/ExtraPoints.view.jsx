@@ -139,6 +139,7 @@ const EarnPoints = ({
         <>
           <FormPageHeadingComponent
             heading={getLabelValue(labels, 'lbl_common_extraPointsHeading')}
+            className="myAccountRightView"
           />
           {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
 

@@ -12,12 +12,16 @@ import {
   getLabels,
   getErrorMessage,
 } from './CreateAccount.selectors';
-import { getUserLoggedInState } from '../../User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getplccCardId,
+  getplccCardNumber,
+} from '../../User/container/User.selectors';
 import { API_CONFIG } from '../../../../../services/config';
 import {
   closeOverlayModal,
   openOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
 
@@ -41,6 +45,8 @@ export class CreateAccountContainer extends React.Component {
     setLoginModalMountState: PropTypes.bool.isRequired,
     showLogin: PropTypes.func.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    userplccCardNumber: PropTypes.string.isRequired,
+    userplccCardId: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -125,6 +131,8 @@ export class CreateAccountContainer extends React.Component {
       showLogin,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <CreateAccountView
@@ -141,6 +149,8 @@ export class CreateAccountContainer extends React.Component {
         showLogin={showLogin}
         isUserLoggedIn={isUserLoggedIn}
         formErrorMessage={formErrorMessage}
+        userplccCardNumber={userplccCardNumber}
+        userplccCardId={userplccCardId}
       />
     );
   }
@@ -152,6 +162,8 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    userplccCardNumber: getplccCardNumber(state),
+    userplccCardId: getplccCardId(state),
     error: getErrorMessage(state),
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),

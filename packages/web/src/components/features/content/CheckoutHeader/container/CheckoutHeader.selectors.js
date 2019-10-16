@@ -14,6 +14,12 @@ const getCheckoutHeaderLabels = state => {
       'checkoutHeader',
       'checkout'
     ),
+    expressCheckoutLbl: getLabelValue(
+      state.Labels,
+      'lbl_checkoutHeader_expressCheckout',
+      'checkoutHeader',
+      'checkout'
+    ),
   };
 };
 
