@@ -1,6 +1,7 @@
 const dummyUrl = 'http://www.childrensplace.com';
 const cat1 = '47526';
 const cat2 = '47503>47544';
+const footerlink = 'Shop All Matchables';
 
 export default {
   moduleG: {
@@ -78,11 +79,11 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: [cat1, cat1],
+            cat_id: [cat2, '47501>47526'],
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 2',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -90,7 +91,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'SHOP ALL 0',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -106,7 +107,7 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 1',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -114,7 +115,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'Shop All Matchables 1',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -130,7 +131,7 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 3',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -138,7 +139,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'Shop All Matchables 2',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -154,15 +155,15 @@ export default {
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 4',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
             action: '',
           },
           singleCTAButtonCart: {
-            url: dummyUrl,
-            text: 'Shop All Matchables 4',
+            url: '/us',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,

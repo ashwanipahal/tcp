@@ -28,32 +28,47 @@ class ModuleG extends React.PureComponent {
 
     this.state = {
       currentCatId: [],
-      currentTabItem: {},
       next: 0,
     };
   }
 
-  onTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+  onTabChange = catId => {
+    this.setState({ currentCatId: catId });
   };
 
-  onAddToBagClick = () => {
-    const { onQuickViewOpenClick } = this.props;
-    const { currentCatId, next } = this.state;
+  getImagesData = () => {
+    const { currentCatId } = this.state;
     const { productTabList } = this.props;
     const { TOTAL_IMAGES } = config;
     let data = [];
     data = currentCatId.map(item => [...data, ...(productTabList[item] || [])]);
     data = data.slice(0, TOTAL_IMAGES);
+    if (Object.keys(productTabList).length) {
+      return data;
+    }
+    return [];
+  };
+
+  onAddToBagClick = () => {
+    const { onQuickViewOpenClick } = this.props;
+    const { next } = this.state;
+    const data = this.getImagesData();
     onQuickViewOpenClick({
-      colorProductId: data[0][next].prodpartno,
+      colorProductId: data.length && data[0][next].prodpartno,
     });
   };
 
   getCurrentCtaButton = () => {
-    const { currentTabItem: CTAButtons } = this.state;
-    const currentSingleCTAButton = CTAButtons[0];
-    return currentSingleCTAButton ? (
+    const { currentCatId, next } = this.state;
+    const { divTabs } = this.props;
+    let currentSingleCTAButton = {};
+    divTabs.forEach(tab => {
+      if (JSON.stringify(tab.category.cat_id) === JSON.stringify(currentCatId)) {
+        currentSingleCTAButton = tab.singleCTAButtonCart;
+      }
+    });
+    const data = this.getImagesData();
+    return Object.keys(currentSingleCTAButton).length ? (
       <>
         <Row centered>
           <Col
@@ -83,13 +98,13 @@ class ModuleG extends React.PureComponent {
           >
             <Anchor
               noLink
-              to={currentSingleCTAButton.url}
+              to={`${currentSingleCTAButton.url}${data.length && data[0][next].pdpAsPath}`}
               target={currentSingleCTAButton.target}
               title={currentSingleCTAButton.title}
-              asPath={currentSingleCTAButton.url}
+              asPath={`${currentSingleCTAButton.url}${data.length && data[0][next].pdpAsPath}`}
               dataLocator={getLocator('moduleJ_cta_btn')}
             >
-              <span className="shopall_footerlink">Shop All Matchables</span>
+              <span className="shopall_footerlink">{currentSingleCTAButton.text}</span>
               <span className="right_chevron_arrow">
                 <Image src={getIconPath('smallright')} />
               </span>
