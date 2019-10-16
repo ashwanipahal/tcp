@@ -6,9 +6,6 @@ import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 
-// Script as string for SSR
-const isSupported = stringify`typeof performance !== ${undefined}`;
-
 function ServerOnlyScript({ children, ...props }) {
   return (
     <Safe.script suppressHydrationWarning {...props}>
@@ -27,7 +24,7 @@ export function Mark({ name }) {
   usePerfMark(name);
   // For server-side execution
   return isEnabled ? (
-    <ServerOnlyScript>{stringify`${isSupported} && performance.mark(${name});`}</ServerOnlyScript>
+    <ServerOnlyScript>{stringify`typeof performance !== ${'undefined'} && performance.mark(${name});`}</ServerOnlyScript>
   ) : null;
 }
 
@@ -42,7 +39,7 @@ export function Measure({ name, start, end }) {
   return isEnabled ? (
     <ServerOnlyScript>
       {/* "start" and "end" intentionally omitted for SSR */}
-      {stringify`${isSupported} && performance.measure(${name});`}
+      {stringify`typeof performance !== ${'undefined'} && performance.measure(${name});`}
     </ServerOnlyScript>
   ) : null;
 }
