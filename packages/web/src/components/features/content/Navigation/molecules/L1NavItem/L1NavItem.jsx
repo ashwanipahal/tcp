@@ -29,8 +29,8 @@ class L1NavItem extends React.PureComponent {
 
   onHover = e => {
     if (getViewportInfo().isDesktop) {
-      const IsL1overlay = e.target.classList.contains('l1-overlay');
-      if (IsL1overlay) {
+      const isL1overlay = e.target.classList.contains('l1-overlay');
+      if (isL1overlay) {
         this.setState(
           {
             hovered: false,
