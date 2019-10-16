@@ -10,7 +10,7 @@ const images = [
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
-  /*   const gymboreeHeaderTextItems = [
+    const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
       style: 'style1',
@@ -20,10 +20,18 @@ for (let i = 1; i <= totalImageSlides; i++) {
   // eslint-disable-next-line no-unused-vars
   const gymboreePromoTextItems = [
     {
-      text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
+      text: 'The whole bunch is blooming',
       style: 'gymboree_description',
     },
-  ]; */
+   /*  {
+      text: 'in purple and pastel pops ',
+      style: 'gymboree_description',
+    },
+    {
+      text: '- just in time for Easter fun!',
+      style: 'gymboree_description',
+    }, */
+  ];
 
   // eslint-disable-next-line no-unused-vars
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
@@ -79,7 +87,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
         },
       },
     ],
-    ribbonBanner: [
+   /*  ribbonBanner: [
       {
         ribbonPlacement: 'right',
         textItems: [
@@ -94,7 +102,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           external: 0,
         },
       },
-    ],
+    ], */
   });
 }
 
@@ -202,7 +210,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[0],
+        val: ctaTypes[1],
       },
     ],
   },

@@ -126,7 +126,7 @@ class ModuleA extends React.Component {
                         />
                       )}
                     </div>
-                    {/* {ribbonBanner && (
+                    {ribbonBanner && (
                       <div className="ribbon-container">
                         <PromoBanner
                           promoBanner={ribbonBanner}
@@ -135,7 +135,7 @@ class ModuleA extends React.Component {
                           fontSize="fs48"
                         />
                       </div>
-                    )} */}
+                    )}
                   </div>
                 );
               })}

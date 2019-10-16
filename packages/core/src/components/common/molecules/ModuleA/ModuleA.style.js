@@ -55,12 +55,14 @@ const style = css`
   &.gymboree-module-a .banner-content {
     @media ${props => props.theme.mediaQuery.medium} {
       top: 40px;
+      transform: none;
       left: 14px;
       width: 280px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
       top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      transform: none;
       left: 120px;
       width: 470px;
     }

@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext, ThemeProvider } from 'styled-components';
 
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+
 import { Row, Col } from '../../../../common/atoms';
 
 import ModuleA from '../../../../common/molecules/ModuleA';
 import ModuleD from '../../../../common/molecules/ModuleD';
 import ModuleG from '../../../../common/molecules/ModuleG';
 import ModuleQ from '../../../../common/molecules/ModuleQ';
-import ModuleO from '../../../../common/molecules/ModuleO';
-import ModuleP from '../../../../common/molecules/ModuleP';
 import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock';
 import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
 import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
@@ -56,7 +56,7 @@ const ProductListView = ({
 }) => {
   const themeContext = useContext(ThemeContext);
 
-  const largeBreakpoint = 1200;
+  /* const largeBreakpoint = 1200;
   const promoModulesTheme = {
     ...themeContext,
     breakpoints: {
@@ -68,7 +68,7 @@ const ProductListView = ({
       ...themeContext.mediaQuery,
       large: `(min-width: ${largeBreakpoint}px)`,
     },
-  };
+  }; */
   console.info(moduleDMock, '----');
 
   return (
@@ -93,14 +93,21 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
-              <ThemeProvider theme={() => promoModulesTheme}>
+              <ModuleA {...moduleAMock.moduleA.composites} ctaType="stackedCTAButtons" />
+              <ModuleD {...moduleDMock.composites} />
+              <ModuleG {...moduleGMock.moduleG.composites} />
+              <ModuleQ {...moduleQMock.moduleQ.composites} />
+              <Recommendations variations="moduleO,moduleP" />
+              {/* <ModuleO /> */}
+              {/* <ModuleP /> */}
+              {/* <ThemeProvider theme={() => promoModulesTheme}>
                 <>
-                  <ModuleA {...moduleAMock.moduleA.composites} ctaType="stackedCTAButtons" />
+                  <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" />
                   <ModuleD {...moduleDMock.composites} />
                   <ModuleG {...moduleGMock.moduleG.composites} />
                   <ModuleQ {...moduleQMock.moduleQ.composites} />
                 </>
-              </ThemeProvider>
+              </ThemeProvider> */}
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
