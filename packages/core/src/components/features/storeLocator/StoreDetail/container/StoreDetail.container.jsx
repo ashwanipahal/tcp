@@ -44,6 +44,9 @@ export class StoreDetailContainer extends PureComponent {
       .catch(error => {
         console.log('error: ', error);
       });
+    this.state = {
+      distance: 0,
+    };
   }
 
   componentDidMount() {
@@ -125,7 +128,10 @@ export class StoreDetailContainer extends PureComponent {
         latitude: coordinates.lat,
         longitude: coordinates.long,
       };
-      calcDistanceByLatLng([{ lat: coordinates.lat, long: coordinates.long }]);
+      calcDistanceByLatLng([{ lat: coordinates.lat, long: coordinates.long }]).then(val => {
+        console.log(val);
+        this.setState({ distance: val });
+      });
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
     }
@@ -141,7 +147,8 @@ export class StoreDetailContainer extends PureComponent {
       setFavStore,
       getRichContent,
     } = this.props;
-    const store = formatStore(currentStoreInfo);
+    const { distance } = this.state;
+    const store = formatStore(currentStoreInfo, distance);
     const otherStores =
       nearByStores && nearByStores.length > 0
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
@@ -166,12 +173,9 @@ export class StoreDetailContainer extends PureComponent {
   }
 }
 
-StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
-  if (!isServer) {
-    const storeId = fetchStoreIdFromUrlPath(query.storeStr);
-    store.dispatch(getCurrentStoreInfo(storeId));
-  }
-
+StoreDetailContainer.getInitialProps = async ({ store, query }, pageProps) => {
+  const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+  store.dispatch(getCurrentStoreInfo(storeId));
   return pageProps;
 };
 
