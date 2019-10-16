@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const SignupConfirmStyle = css`
-  margin-top: 187px;
+  margin-top: 90px;
   .confirmation-label {
     margin: 19px auto 0;
     ::after {
@@ -19,6 +19,8 @@ const SignupConfirmStyle = css`
   .confirmation-image {
     margin: 0 auto 15px;
     display: flex;
+    width: 50px;
+    height: 50px;
   }
   .first-label {
     margin: 0 60px 5px;

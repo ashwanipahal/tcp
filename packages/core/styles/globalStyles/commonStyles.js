@@ -167,6 +167,10 @@ export default css`
     word-break: break-word;
   }
 
+  .capitalize {
+    text-transform: uppercase;
+  }
+
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {
       return `

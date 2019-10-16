@@ -29,6 +29,9 @@ export default css`
       margin-left: 0;
       width: 233px;
       margin-bottom: 5px;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 100%;
+      }
     }
     .product-upc {
       width: 150px;

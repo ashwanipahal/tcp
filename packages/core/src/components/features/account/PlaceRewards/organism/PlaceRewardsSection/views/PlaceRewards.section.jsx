@@ -31,7 +31,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             fontSize="fs16"
             fontWeight="extrabold"
             component="h4"
-            className="place-rewards__heading"
+            className="place-rewards__heading myAccountRightView"
             data-locator="place-rewards-heading"
           >
             {getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}

@@ -215,7 +215,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   getSizeOptions = (colorItem, selectedFit?) => {
     const { fits } = colorItem;
     let sizeOptions = [];
-    if (colorItem) {
+    if (colorItem && fits && fits.length) {
       fits.forEach(fit => {
         if (selectedFit) {
           if (fit.fitName === selectedFit.name) {
@@ -338,6 +338,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   sizeChange = e => {
     const { selectedFit } = this.state;
+    const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
@@ -345,6 +346,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
+    }
+    if (onChangeSize) {
+      onChangeSize(e);
     }
   };
 
@@ -371,7 +375,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
-      currentProduct: { colorFitsSizesMap },
+      currentProduct: { colorFitsSizesMap, colorFitSizeDisplayNames, isGiftCard },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
@@ -381,6 +385,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
+      colorFitsSizesMap: favColorFitsSizesMap,
+      isOutfitPage,
     } = this.props;
     const {
       selectedColor,
@@ -393,14 +399,17 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     if (fromBagPage) {
       this.setPreSelectedValuesForProduct(productInfoFromBag);
     }
+
+    const productColorFitsSizesMap = colorFitsSizesMap || favColorFitsSizesMap;
+
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
-        colorList={colorFitsSizesMap}
-        fitList={this.getFitOptions(colorFitsSizesMap, selectedColor)}
-        sizeList={this.getSizeList(colorFitsSizesMap)}
+        colorList={productColorFitsSizesMap}
+        fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
+        sizeList={this.getSizeList(productColorFitsSizesMap)}
         selectSize={this.sizeChange}
         selectFit={this.fitChange}
         selectColor={this.colorChange}
@@ -424,6 +433,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         showAddToBagCTA={showAddToBagCTA}
         fromBagPage={fromBagPage}
         inheritedStyles={customSubmitButtonStyle}
+        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+        isGiftCard={isGiftCard}
+        isOutfitPage={isOutfitPage}
       />
     );
   }

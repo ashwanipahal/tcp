@@ -72,6 +72,7 @@ const getCardOptions = ({
         cardNumber={`${labels.creditCardEnd}${card.accountNo.slice(-4)}`}
         labels={labels}
         selectedValue={+onFileCardKey}
+        dataLocator="cardDetailCardDropDown"
       />
     ),
   }));
@@ -87,6 +88,7 @@ const getCardOptions = ({
         fill="BLACK"
         onClick={addNewCC}
         disabled={addNewCCState || !selectedCard}
+        dataLocator="addCreditCardBtn"
       >
         {labels.addCreditBtn}
       </Button>
@@ -109,13 +111,17 @@ const onAddNewCreditCardUpdate = dispatch => {
   dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
 };
 
+const getFormName = editMode => {
+  return editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+};
+
 const renderBillingAddressHeading = labels => {
   return (
     <Heading
       component="h3"
       variant="listMenu"
       className="cardDropdownHeading"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
     >
       {labels.selectFromCard}
     </Heading>
@@ -128,5 +134,6 @@ export {
   getCardOptions,
   onCCDropUpdateChange,
   onAddNewCreditCardUpdate,
+  getFormName,
   renderBillingAddressHeading,
 };

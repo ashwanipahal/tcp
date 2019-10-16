@@ -6,8 +6,9 @@ import constants from '../Checkout.constants';
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = () => ({
+export const initCheckoutAction = router => ({
   type: constants.INIT_CHECKOUT,
+  router,
 });
 
 export const submitPickupSection = payload => ({
@@ -80,6 +81,7 @@ export function getSetEstimatedAirMilesActn(estimatedAirMiles) {
     type: 'CART_SUMMARY_SET_ESTIMATED_AIRMILES',
   };
 }
+
 export function setShippingTotal(shippingTotal) {
   return {
     shippingTotal,
@@ -282,8 +284,6 @@ export const routeToPickupPage = () => {
   };
 };
 
-// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
-
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export const updateShippingAddress = payload => {
@@ -306,12 +306,7 @@ export function submitBillingSection(payload) {
   };
 }
 
-export const setGiftCardError = payload => {
-  return {
-    type: constants.SET_GIFTCARD_ERROR,
-    payload,
-  };
-};
+export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
 export const addNewShippingAddress = payload => {
   return {
@@ -330,6 +325,13 @@ export const setOnFileAddressKey = payload => {
 export const resetGiftCardError = () => {
   return {
     type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setShippingLoadingState = isLoading => {
+  return {
+    type: constants.CHECKOUT_VALUES_SET_SHIPPING_LOADING,
+    isLoading,
   };
 };
 
@@ -406,6 +408,13 @@ export const addGiftCardFailure = payload => {
 export const setVenmoData = payload => {
   return {
     type: constants.SET_VENMO_DATA,
+    payload,
+  };
+};
+
+export const submitVerifiedAddressData = payload => {
+  return {
+    type: constants.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS,
     payload,
   };
 };

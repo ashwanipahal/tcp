@@ -24,7 +24,7 @@ exports[`Bag page View should not render SFL section 1`] = `
         <Styled(Heading)
           className="bag-header activeHeader"
           color="text.primary"
-          component={null}
+          component="h2"
           dataLocator=""
           fontSize="fs16"
           textAlign="left"
@@ -87,7 +87,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
         <Styled(Heading)
           className="bag-header activeHeader"
           color="text.primary"
-          component={null}
+          component="h2"
           dataLocator=""
           fontSize="fs16"
           textAlign="left"
@@ -150,7 +150,7 @@ exports[`Bag page View should render SFL section 1`] = `
         <Styled(Heading)
           className="bag-header activeHeader"
           color="text.primary"
-          component={null}
+          component="h2"
           dataLocator=""
           fontSize="fs16"
           textAlign="left"

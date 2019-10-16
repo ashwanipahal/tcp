@@ -8,7 +8,7 @@ import {
   getIsCartItemsSFL,
   getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import {
   getUserLoggedInState,
   isPlccUser,

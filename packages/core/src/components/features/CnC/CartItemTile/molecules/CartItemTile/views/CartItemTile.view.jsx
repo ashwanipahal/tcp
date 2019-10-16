@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
+import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-
-import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
+import { getIconPath, getLocator, isCanada, disableBodyScroll } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -50,18 +50,69 @@ class CartItemTile extends React.Component {
           selectedColor: color,
           selectedSize: size,
           selectedFit: fit,
+          itemBrand,
         },
       });
     }
   };
 
+  /**
+   *
+   * @method handleEditCartItemWithStore
+   * @description this method handles edit for cart item for boss/bopis item
+   * @memberof CartItemTile
+   */
+  handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false) => {
+    const { onPickUpOpenClick, productDetail, orderId } = this.props;
+    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+    const { store, orderItemType } = productDetail.miscInfo;
+    const { productPartNumber } = productDetail.productInfo;
+    const isItemShipToHome = !store;
+    const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+    const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    onPickUpOpenClick({
+      colorProductId: productPartNumber,
+      orderInfo: {
+        orderItemId: itemId,
+        Quantity: qty,
+        color,
+        Size: size,
+        Fit: fit,
+        orderId,
+        orderItemType,
+        itemBrand,
+      },
+      openSkuSelectionForm,
+      isBopisCtaEnabled,
+      isBossCtaEnabled,
+      isItemShipToHome,
+    });
+  };
+
   callEditMethod = () => {
     const { productDetail, pageView } = this.props;
-    this.handleEditCartItem(
-      pageView,
-      productDetail.itemInfo.itemBrand,
-      productDetail.productInfo.productPartNumber
-    );
+    const {
+      miscInfo: { orderItemType },
+    } = productDetail;
+    disableBodyScroll();
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+      this.handleEditCartItem(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
+    } else if (pageView === 'myBag') {
+      const openSkuSelectionForm = true;
+      this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    }
+  };
+
+  handleKeyDown = (event, callback) => {
+    const { KEY_ENTER, KEY_SPACE } = KEY_CODES;
+    const { which } = event;
+    if (which === KEY_ENTER || which === KEY_SPACE) {
+      callback();
+    }
   };
 
   handleMoveItemtoSaveList = () => {
@@ -522,13 +573,24 @@ class CartItemTile extends React.Component {
   };
 
   getCrossIconImage = () => {
-    const { isBagPageSflSection } = this.props;
+    const {
+      isBagPageSflSection,
+      productDetail: {
+        itemInfo: { name },
+      },
+      labels: { removeEdit },
+    } = this.props;
     return (
       <Image
-        alt="closeIcon"
+        alt={`${removeEdit} ${name}`}
+        role="button"
+        tabIndex="0"
         className="close-icon-image"
         src={getIconPath('close-icon')}
         onClick={isBagPageSflSection ? this.removeSflItem : this.removeCartItem}
+        onKeyDown={e =>
+          this.handleKeyDown(e, isBagPageSflSection ? this.removeSflItem : this.removeCartItem)
+        }
       />
     );
   };
@@ -606,6 +668,12 @@ class CartItemTile extends React.Component {
         <Row
           fullBleed
           className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+          tabIndex="0"
+          aria-label={`${productDetail.itemInfo.name}. ${labels.price} ${
+            productDetail.itemInfo.price
+          }. ${labels.size} ${productDetail.itemInfo.size}. ${labels.qty} ${
+            productDetail.itemInfo.qty
+          }`}
         >
           <Col
             key="productDetails"
@@ -658,7 +726,7 @@ class CartItemTile extends React.Component {
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
                   fontFamily="secondary"
-                  tag="span"
+                  component="h2"
                   fontSize="fs14"
                   fontWeight={['extrabold']}
                   dataLocator={getLocator('cart_item_title')}
@@ -720,9 +788,12 @@ class CartItemTile extends React.Component {
                           fontFamily="secondary"
                           fontSize="fs12"
                           component="div"
+                          role="button"
+                          tabIndex="0"
                           dataLocator={getLocator('cart_item_edit_link')}
                           className="padding-left-10 responsive-edit-css"
                           onClick={this.callEditMethod}
+                          onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
                         >
                           {labels.edit}
                         </BodyCopy>
@@ -758,6 +829,7 @@ class CartItemTile extends React.Component {
                 className="cart-item-radio-buttons"
                 productDetail={productDetail}
                 labels={labels}
+                openPickUpModal={this.handleEditCartItemWithStore}
               />
             </Row>
           )}
@@ -799,7 +871,9 @@ CartItemTile.propTypes = {
   showOnReviewPage: PropTypes.bool,
   startSflItemDelete: PropTypes.func.isRequired,
   startSflDataMoveToBag: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
+  orderId: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
 };
 
