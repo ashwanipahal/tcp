@@ -145,7 +145,7 @@ class ProductListingFiltersForm extends React.Component {
 
   captureFilterRef = ref => {
     if (!ref) return;
-    const typeRef = ref && ref.getRenderedComponent();
+    const typeRef = ref.getRenderedComponent();
     typeRef.filterRefType = ref.props.name;
     this.filterRef.push(typeRef);
   };
@@ -226,7 +226,7 @@ class ProductListingFiltersForm extends React.Component {
 
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
     const { filtersMaps, labels } = this.props;
-
+    console.log('LLLL', filterName)
     return (
       <Field
         name={facetName}
@@ -301,6 +301,8 @@ class ProductListingFiltersForm extends React.Component {
       slpLabels,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
+
+    debugger;
 
     const sortOptions = getSortOptions(sortLabels);
 
@@ -384,7 +386,7 @@ class ProductListingFiltersForm extends React.Component {
    * @param none
    */
   renderDesktopFilters(filterKeys, appliedFilters) {
-    const { filtersMaps, filtersLength } = this.props;
+    const { filtersMaps, filtersLength, isFavoriteView } = this.props;
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const appliedFilterAvailable = this.getAppliedFiltersCount();
     let filterList = {};
@@ -403,11 +405,12 @@ class ProductListingFiltersForm extends React.Component {
               key
             );
         } else {
+          console.log('::::', appliedFilterAvailable, appliedFilters, filtersMaps, key);
           filterList =
             filtersMaps[key].length > 0 &&
             this.renderFilterField(
               appliedFilterAvailable && appliedFilters[key],
-              filtersLength[`${key}Filters`],
+              !isFavoriteView ? filtersLength[`${key}Filters`] : 'Display',
               unbxdKeyMapping[key],
               key
             );

@@ -296,7 +296,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param none
    */
   renderMobileFilters() {
-    const { filtersMaps, filtersLength, className } = this.props;
+    const { filtersMaps, filtersLength, className, selectedKeyValue} = this.props;
     const filterKeys = Object.keys(filtersMaps);
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const accordionItems = [];
@@ -306,7 +306,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       if (this.isUnbxdFacetKey(key)) {
         const titleKey = {
           header: {
-            title: unbxdKeyMapping[key],
+            title: selectedKeyValue || unbxdKeyMapping[key],
           },
         };
         accordionItems.push(titleKey);
@@ -473,6 +473,7 @@ ProductListingMobileFiltersForm.propTypes = {
   handleSubmitOnChange: PropTypes.func,
   removeAllFilters: PropTypes.func,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  selectedKeyValue: PropTypes.string,
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
@@ -481,6 +482,7 @@ ProductListingMobileFiltersForm.defaultProps = {
   sortLabels: [],
   handleSubmitOnChange: () => {},
   removeAllFilters: () => {},
+  selectedKeyValue: 'All',
 };
 export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 
