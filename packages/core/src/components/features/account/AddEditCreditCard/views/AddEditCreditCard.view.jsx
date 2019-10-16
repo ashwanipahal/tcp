@@ -58,6 +58,7 @@ export const AddEditCreditCard = ({
       <FormPageHeading
         heading={pageHeading(pageheading)}
         data-locator="payment-addcreditordebitcardheader"
+        className="myAccountRightView"
       />
       {globalErrorMessage && showNotification && (
         <Notification

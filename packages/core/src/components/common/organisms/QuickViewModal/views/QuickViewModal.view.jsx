@@ -64,13 +64,15 @@ class QuickViewModal extends React.Component {
           onCloseClick={this.onCloseClick}
           {...otherProps}
         />
-        <FulfillmentSection
-          btnClassName="added-to-bag"
-          dataLocator={getLocator('global_addtocart_Button')}
-          buttonLabel="Pickup In Store"
-          currentProduct={productInfo}
-          closeQuickViewClick={this.onCloseClick}
-        />
+        {!fromBagPage && (
+          <FulfillmentSection
+            btnClassName="added-to-bag"
+            dataLocator={getLocator('global_addtocart_Button')}
+            buttonLabel="Pickup In Store"
+            currentProduct={productInfo}
+            closeQuickViewClick={this.onCloseClick}
+          />
+        )}
       </Modal>
     );
   }

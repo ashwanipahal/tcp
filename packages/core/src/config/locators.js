@@ -364,4 +364,13 @@ export default {
   store_USCanadagymboreetstorelabel: 'store_USCanadagymboreetstorelabel',
   store_USCanadastatelabel: 'store_USCanadastatelabel',
   store_USCanadastateaccordion: 'store_USCanadastateaccordion',
+
+  // gift services
+  gift_service: 'gift-service',
+  giftservice_detailslnk: 'giftservice-detailslnk',
+  addMessage_txt: 'addMessage-txt',
+  logo_TCP: 'logo-TCP',
+  logo_gymboree: 'logo-gymboree',
+  giftService_list: 'giftService-list',
+  details_modal: 'details-modal',
 };

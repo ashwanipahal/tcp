@@ -7,7 +7,7 @@ import {
 } from '@tcp/core/src/components/common/molecules/StoreLocations';
 import { CountryName } from '@tcp/core/src/components/common/molecules/StoresIntlTile/styles/StoresIntlTile.style';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
-import { getViewportInfo, isClient, getLocator } from '@tcp/core/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import { propTypes } from '@tcp/core/src/components/common/molecules/StoreAddressTile/views/prop-types';
 import style from '../styles/StoresCountryTile.style';
 
@@ -66,27 +66,27 @@ class StoresCountryTile extends PureComponent {
       dataLocatorKey,
       onToggleCallback,
     } = this.props;
-    if (isClient() && (getViewportInfo().isMobile || getViewportInfo().isTablet)) {
-      return (
-        <CollapsibleLocations
-          header={this.getCollapsibleHeader()}
-          body={this.getCollapsibleContent()}
-          className={className}
-          iconClose="plus-icon"
-          iconOpen="minus-icon"
-          defaultOpen={isDefaultOpen}
-          id={`scroll-${title}`}
-          onToggleCallback={onToggleCallback}
-        />
-      );
-    }
     return (
-      <div className={className} id={`scroll-${title}`}>
-        <CountryName data-locator={getLocator(`store_${dataLocatorKey}statelabel`)}>
-          {title}
-        </CountryName>
-        {this.getAddressTiles()}
+      <div className={className}>
         {children}
+        <div className="storemodule__lg" id={`scroll-${title}`}>
+          <CountryName data-locator={getLocator(`store_${dataLocatorKey}statelabel`)}>
+            {title}
+          </CountryName>
+          {this.getAddressTiles()}
+        </div>
+        <div className="storemodule__sm">
+          <CollapsibleLocations
+            header={this.getCollapsibleHeader()}
+            body={this.getCollapsibleContent()}
+            className={className}
+            iconClose="plus-icon"
+            iconOpen="minus-icon"
+            defaultOpen={isDefaultOpen}
+            id={`scroll-${title}`}
+            onToggleCallback={onToggleCallback}
+          />
+        </div>
       </div>
     );
   }
