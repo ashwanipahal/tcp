@@ -55,6 +55,12 @@ export default css`
     vertical-align: top;
     width: 86px;
 
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: 12px;
+      padding-left: 8px;
+      margin-right: 16px;
+    }
+
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin-right: 84px;
     }
