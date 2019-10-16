@@ -76,7 +76,7 @@ export default {
             text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: '47502',
+            cat_id: ['47502>47535>54071', '47502>47535>54071'],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -100,7 +100,7 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: '47526',
+            cat_id: ['47526', '47526'],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -124,7 +124,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '47503>47544',
+            cat_id: ['47503>47544', '47503>47544'],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -148,7 +148,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '47501>47526',
+            cat_id: ['47501>47526', '47501>47526'],
           },
           singleCTAButton: {
             url: dummyUrl,

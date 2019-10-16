@@ -214,6 +214,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       id="phoneNumber"
       label="lbl_profile_personal_info_phoneNumber"
       name="phoneNumber"
+      normalize={[Function]}
       type="tel"
     />
   </Styled(View)>
@@ -224,11 +225,14 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
               "bounces": true,
               "data": Array [],
+              "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
             },
@@ -347,11 +351,14 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
               "bounces": true,
               "data": Array [],
+              "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
             },
@@ -538,7 +545,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -563,7 +570,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

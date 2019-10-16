@@ -5,7 +5,18 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import {
+  getUserLoggedInState,
+  getUserName,
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { readCookieMobileApp } from '../../../../utils/utils';
+
 import {
   Container,
   MessageContainer,
@@ -15,11 +26,12 @@ import {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  BackgroundView,
   CartIconView,
   ImageColor,
   Touchable,
 } from './Header.style';
+
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header
@@ -46,21 +58,31 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
-      cartVal: 0,
     };
   }
 
   componentDidMount() {
-    const CART_ITEM_COUNTER = 'cartItemsCount';
-    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
-    const { loadFavoriteStore } = this.props;
-    loadFavoriteStore({});
+    this.getInitialProps();
+  }
 
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
+    if (
+      isUpdateCartCount !== prevProps.isUpdateCartCount ||
+      isUserLoggedIn !== prevProps.isUserLoggedIn
+    ) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
+  }
+
+  getInitialProps() {
+    const { updateCartCountAction, loadFavoriteStore } = this.props;
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
-      this.setState({
-        cartVal: parseInt(res || 0, 10),
-      });
+      updateCartCountAction(parseInt(res || 0, 10));
     });
+    loadFavoriteStore({});
   }
 
   /**
@@ -71,7 +93,9 @@ class Header extends React.PureComponent<Props> {
     const { isDownIcon } = this.state;
     navigation.navigate({
       routeName: 'StoreLanding',
-      params: { title: labels.lbl_header_storeDefaultTitle.toUpperCase() },
+      params: {
+        title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
+      },
     });
     this.setState({
       isDownIcon: !isDownIcon,
@@ -107,8 +131,8 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { favStore, labels } = this.props;
-    const { isDownIcon, cartVal } = this.state;
+    const { favStore, labels, cartVal, isUserLoggedIn, userName } = this.props;
+    const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
     const isInfoPresent = basicInfo && basicInfo.storeName && storeTime;
@@ -123,9 +147,13 @@ class Header extends React.PureComponent<Props> {
     const favStoreTxt = isInfoPresent
       ? `${capitalize(basicInfo.storeName)} ${headerLabels.lbl_header_openUntil} ${storeTime}`
       : null;
+    const welcomeMessage = isUserLoggedIn
+      ? `${headerLabels.lbl_header_hiTxt} ${userName}!`
+      : headerLabels.lbl_header_welcomeMessage;
 
     return (
       <SafeAreaViewStyle>
+        <ToastContainer />
         <Container data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <BodyCopy
@@ -134,7 +162,7 @@ class Header extends React.PureComponent<Props> {
               textAlign="center"
               color="black"
               fontWeight="semibold"
-              text={headerLabels.lbl_header_welcomeMessage}
+              text={welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
             />
             <StoreContainer onPress={this.validateIcon}>
@@ -174,9 +202,9 @@ class Header extends React.PureComponent<Props> {
               <CartIconView
                 source={cartIcon}
                 data-locator={getLocator('global_headerpanelbagicon')}
+                cartVal={cartVal}
               />
-              <BackgroundView />
-              <RoundView />
+              <RoundView cartVal={cartVal} />
               <BodyCopy
                 text={cartVal}
                 color="white"
@@ -184,6 +212,7 @@ class Header extends React.PureComponent<Props> {
                 fontSize="fs10"
                 data-locator={getLocator('global_headerpanelbagitemtext')}
                 accessibilityText="Mini bag with count"
+                fontWeight="extrabold"
               />
             </Touchable>
           </CartContainer>
@@ -197,6 +226,7 @@ Header.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   favStore: PropTypes.shape({}),
   loadFavoriteStore: PropTypes.func,
+  cartVal: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
@@ -208,17 +238,27 @@ const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
     favStore: state.User && state.User.get('defaultStore'),
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    isUserLoggedIn: getUserLoggedInState(state),
+    userName: getUserName(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     loadFavoriteStore: payload => dispatch(getFavoriteStoreActn(payload)),
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
+    },
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(InitialPropsHOC(Header));
 export { Header as HeaderVanilla };

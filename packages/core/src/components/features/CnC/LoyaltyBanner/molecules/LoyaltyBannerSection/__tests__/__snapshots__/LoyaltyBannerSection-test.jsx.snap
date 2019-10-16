@@ -5,75 +5,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
   className=" elem-mb-MED"
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
-  >
-    <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
-      color="text.primary"
-      component="div"
-      fontFamily="secondary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-      </div>
-    </Styled(BodyCopy)>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `
-<div
-  className=" elem-mb-MED"
->
-  <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
-  >
-    <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
-      color="text.primary"
-      component="div"
-      fontFamily="secondary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-      </div>
-    </Styled(BodyCopy)>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `
-<div
-  className=" elem-mb-MED"
->
-  <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
       className="loyaltyBannerSectionWrapper"
@@ -92,7 +24,9 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         currentSubtotal={21}
         earnedReward={1}
         estimatedSubtotal={33}
-        finalPointsLabelStr={
+        fsPoints="fs18"
+        getCurrencySymbol=""
+        headingLabel={
           <span
             dangerouslySetInnerHTML={
               Object {
@@ -101,27 +35,163 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
             }
           />
         }
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pointsDescription={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        remainingPlcc={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        showSubtotal={true}
+        subHeadingLabel=""
+      />
+      <div
+        className="footer alignCenter"
+      />
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `
+<div
+  className=" elem-mb-MED"
+>
+  <div
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyaltyBannerSectionWrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        className=""
+        currentSubtotal={21}
+        earnedReward={0}
+        estimatedSubtotal={33}
+        fsPoints="fs18"
         getCurrencySymbol=""
+        headingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pointsDescription={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        remainingPlcc={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        showSubtotal={true}
+        subHeadingLabel=""
+      />
+      <div
+        className="footer alignCenter"
+      />
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `
+<div
+  className=" elem-mb-MED"
+>
+  <div
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyaltyBannerSectionWrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        className=""
+        currentSubtotal={21}
+        earnedReward={1}
+        estimatedSubtotal={33}
+        fsPoints="fs16"
+        getCurrencySymbol=""
+        headingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
         isPlcc={false}
+        isProductDetailView=""
         labels={Object {}}
         remainingPlcc=""
         showSubtotal={true}
       />
       <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
+        className="footer alignCenter"
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="applyNow"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <span>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="applyNow"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="learnMore elem-pl-XL"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+        </span>
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -133,7 +203,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
   className=" elem-mb-MED"
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
       className="loyaltyBannerSectionWrapper"
@@ -147,16 +217,49 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       link={null}
       textAlign="left"
     >
+      <Styled(GuestMprPlccSection)
+        className=""
+        currentSubtotal={21}
+        earnedReward={1}
+        estimatedSubtotal={33}
+        fsPoints="fs18"
+        getCurrencySymbol=""
+        headingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pointsDescription={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        remainingPlcc={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+          />
+        }
+        showSubtotal={true}
+        subHeadingLabel=""
+      />
       <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-      </div>
+        className="footer alignCenter"
+      />
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -167,7 +270,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
   className=" elem-mb-MED"
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
       className="loyaltyBannerSectionWrapper"
@@ -186,7 +289,9 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         currentSubtotal={21}
         earnedReward={0}
         estimatedSubtotal={33}
-        finalPointsLabelStr={
+        fsPoints="fs16"
+        getCurrencySymbol=""
+        headingLabel={
           <span
             dangerouslySetInnerHTML={
               Object {
@@ -195,27 +300,29 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
             }
           />
         }
-        getCurrencySymbol=""
         isPlcc={false}
+        isProductDetailView=""
         labels={Object {}}
         remainingPlcc=""
         showSubtotal={true}
       />
       <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
+        className="footer alignCenter"
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="applyNow"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <span>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="applyNow"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="learnMore elem-pl-XL"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+        </span>
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -227,7 +334,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
   className=" elem-mb-MED"
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM elem-pl-MED elem-pr-MED"
+    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
       className="loyaltyBannerSectionWrapper"
@@ -246,7 +353,9 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         currentSubtotal={21}
         earnedReward={0}
         estimatedSubtotal={33}
-        finalPointsLabelStr={
+        fsPoints="fs16"
+        getCurrencySymbol=""
+        headingLabel={
           <span
             dangerouslySetInnerHTML={
               Object {
@@ -255,27 +364,29 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
             }
           />
         }
-        getCurrencySymbol=""
         isPlcc={false}
+        isProductDetailView=""
         labels={Object {}}
         remainingPlcc=""
         showSubtotal={true}
       />
       <div
-        className="footer alignCenter elem-pt-MED elem-pb-MED"
+        className="footer alignCenter"
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="applyNow"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore elem-pl-XL"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <span>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="applyNow"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+          <Styled(Anchor)
+            anchorVariation="primary"
+            className="learnMore elem-pl-XL"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+        </span>
       </div>
     </Styled(BodyCopy)>
   </div>

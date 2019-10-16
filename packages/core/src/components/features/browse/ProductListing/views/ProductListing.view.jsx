@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext, ThemeProvider } from 'styled-components';
 
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 
@@ -52,25 +51,9 @@ const ProductListView = ({
   sortLabels,
   slpLabels,
   onPickUpOpenClick,
+  isFilterBy,
   ...otherProps
 }) => {
-  const themeContext = useContext(ThemeContext);
-
-  /* const largeBreakpoint = 1200;
-  const promoModulesTheme = {
-    ...themeContext,
-    breakpoints: {
-      ...themeContext.breakpoints,
-      large: `${largeBreakpoint}px`,
-      values: { ...themeContext.breakpoints.values, lg: largeBreakpoint },
-    },
-    mediaQuery: {
-      ...themeContext.mediaQuery,
-      large: `(min-width: ${largeBreakpoint}px)`,
-    },
-  }; */
-  console.info(moduleDMock, '----');
-
   return (
     <div className={className}>
       <Row>
@@ -98,16 +81,6 @@ const ProductListView = ({
               <ModuleG {...moduleGMock.moduleG.composites} />
               <ModuleQ {...moduleQMock.moduleQ.composites} />
               <Recommendations variations="moduleO,moduleP" />
-              {/* <ModuleO /> */}
-              {/* <ModuleP /> */}
-              {/* <ThemeProvider theme={() => promoModulesTheme}>
-                <>
-                  <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" />
-                  <ModuleD {...moduleDMock.composites} />
-                  <ModuleG {...moduleGMock.moduleG.composites} />
-                  <ModuleQ {...moduleQMock.moduleQ.composites} />
-                </>
-              </ThemeProvider> */}
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -123,6 +96,7 @@ const ProductListView = ({
                 getProducts={getProducts}
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
+                isFilterBy={isFilterBy}
               />
             </div>
           </Col>
@@ -175,6 +149,7 @@ ProductListView.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFilterBy: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {
@@ -193,6 +168,7 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   sortLabels: [],
   slpLabels: {},
+  isFilterBy: true,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

@@ -27,6 +27,7 @@ describe('Cart Item saga', () => {
     const afterFunc = () => {};
     const getOrderDetailSagaGen = getOrderDetailSaga({ payload: { after: afterFunc } });
     getOrderDetailSagaGen.next();
+    getOrderDetailSagaGen.next();
 
     const res = {
       orderDetails: {

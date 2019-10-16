@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-
 import { Button, Anchor, BodyCopy } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
@@ -47,14 +46,18 @@ const {
 } = CAROUSEL_OPTIONS.APP;
 const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
+const getLoadingHost = host => {
+  return host ? LAZYLOAD_HOST_NAME.PDP : LAZYLOAD_HOST_NAME.HOME;
+};
+
 /**
  * This function is being called through snap carousel render function.
  * @param {Object} productItem SnapCarousel data item
  * @param {Object} navigation Navigation object required for children
  * @param {String} moduleQMainTile label required for all slides main tile.
  */
-function getCarouselSlide(productItem, navigation, moduleQMainTile) {
-  const { imageUrl, items, subItemsId, productItemIndex } = productItem;
+function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad) {
+  const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
 
@@ -65,11 +68,10 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
           navigation={navigation}
           testID={`${getLocator('moduleQ_product_image')}${productItemIndex}`}
           onPress={() =>
-            navigation.navigate('ProductDetail', {
-              title: '',
-              pdpUrl: subItemsId,
-              selectedColorProductId: subItemsId,
-              reset: true,
+            navigation.navigate('OutfitDetail', {
+              title: 'COMPLETE THE LOOK',
+              outfitId: id,
+              vendorColorProductIdsList: subItemsId,
             })
           }
         >
@@ -77,7 +79,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
             <OutfitMainImageWrapper>
               <StyledImage
                 alt={moduleQMainTile}
-                host={LAZYLOAD_HOST_NAME.HOME}
+                host={getLoadingHost(hostLazyLoad)}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
                 width={PRODUCT_IMAGE_WIDTH}
@@ -99,7 +101,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile) {
                   <StyledImage
                     key={remoteId}
                     alt={alt}
-                    host={LAZYLOAD_HOST_NAME.HOME}
+                    host={getLoadingHost(hostLazyLoad)}
                     url={getUrlWithHttp(smallImageUrl)}
                     height={OUTFIT_ITEM_IMAGE_HEIGHT}
                     width={OUTFIT_ITEM_IMAGE_WIDTH}
@@ -141,6 +143,7 @@ const ModuleQ = props => {
     bgClass,
     autoplayInterval,
     shopThisLookLabel,
+    hostLazyLoad,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -154,7 +157,7 @@ const ModuleQ = props => {
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, shopThisLookLabel);
+    return getCarouselSlide(item, navigation, shopThisLookLabel, hostLazyLoad);
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -233,7 +236,6 @@ const ModuleQ = props => {
       {selectedSingleCTAButton ? (
         <ButtonContainer>
           <Button
-            buttonVariation="variable-width"
             width="225px"
             text={selectedSingleCTAButton.text}
             url={selectedSingleCTAButton.url}
@@ -251,6 +253,7 @@ ModuleQ.defaultProps = {
   promoBanner: null,
   autoplayInterval: 1,
   shopThisLookLabel: '',
+  hostLazyLoad: '',
 };
 
 ModuleQ.propTypes = {
@@ -290,6 +293,7 @@ ModuleQ.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  hostLazyLoad: PropTypes.string,
 };
 
 export default ModuleQ;

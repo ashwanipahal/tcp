@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView, Dimensions } from 'react-native';
 
 /**
  * @param {object} props : Props for RichText
@@ -15,7 +15,8 @@ type Props = {
   domStorageEnabled?: boolean,
   thirdPartyCookiesEnabled?: boolean,
 };
-const style = { backgroundColor: 'transparent' };
+const screenHeight = Math.round(Dimensions.get('window').height);
+const style = { backgroundColor: 'transparent', height: screenHeight };
 
 const RichText = (props: Props) => {
   const { javaScriptEnabled, domStorageEnabled, thirdPartyCookiesEnabled } = props;

@@ -13,6 +13,7 @@ import ProductColorChip from './ProductColorChip';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { BodyCopy } from '../../../../../../common/atoms';
 import styles from '../styles/ProductColorChipWrapper.style';
+import { ProductSKUInfo } from './ProductItemComponents';
 
 class ProductColorChipWrapper extends React.Component {
   static propTypes = {
@@ -20,19 +21,26 @@ class ProductColorChipWrapper extends React.Component {
      * Callback for clicks on color chips. Accepts colorProductId, colorName.
      * Note that it is up to this callback to update the selectedColorId prop of this component.
      */
-    onChipClick: PropTypes.func.isRequired,
+    onChipClick: PropTypes.func,
     /** the color name of the currently selected chip */
     selectedColorId: PropTypes.string.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     showColorEvenOne: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
+    skuInfo: PropTypes.shape(PropTypes.string).isRequired,
     /** map of available colors to render chips for */
     colorsMap: PropTypes.arrayOf(
       PropTypes.shape({
         color: COLOR_PROP_TYPE.isRequired,
         colorProductId: PropTypes.string.isRequired,
       })
-    ).isRequired,
+    ),
+    isFavoriteView: PropTypes.bool.isRequired,
+  };
+
+  static defaultProps = {
+    onChipClick: () => {},
+    colorsMap: [],
   };
 
   constructor(props) {
@@ -116,7 +124,18 @@ class ProductColorChipWrapper extends React.Component {
   };
 
   getColorSwatches = () => {
-    const { onChipClick, selectedColorId } = this.props;
+    const { onChipClick, selectedColorId, skuInfo, isFavoriteView } = this.props;
+    if (isFavoriteView) {
+      return (
+        <ProductColorChip
+          key={selectedColorId}
+          colorEntry={skuInfo}
+          isActive
+          onChipClick={onChipClick}
+          skuInfo={skuInfo}
+        />
+      );
+    }
     return this.getColors().map(colorEntry => (
       <ProductColorChip
         key={colorEntry.colorProductId}
@@ -128,11 +147,11 @@ class ProductColorChipWrapper extends React.Component {
   };
 
   render() {
-    const { colorsMap, showColorEvenOne, className } = this.props;
+    const { colorsMap, showColorEvenOne, className, isFavoriteView, skuInfo } = this.props;
     const { maxVisibleItems } = this.state;
     const isDisplayNext = colorsMap.length > maxVisibleItems;
 
-    if (showColorEvenOne ? colorsMap.length <= 0 : colorsMap.length <= 1) {
+    if (!isFavoriteView && (showColorEvenOne ? colorsMap.length <= 0 : colorsMap.length <= 1)) {
       return null;
     }
 
@@ -150,7 +169,6 @@ class ProductColorChipWrapper extends React.Component {
           </Swipeable>
           <div className="color-swatches-desktop-view">{this.getColorSwatches()}</div>
         </ol>
-
         {isDisplayNext && (
           <BodyCopy
             component="div"
@@ -167,6 +185,7 @@ class ProductColorChipWrapper extends React.Component {
             />
           </BodyCopy>
         )}
+        {skuInfo && <ProductSKUInfo {...skuInfo} />}
       </div>
     );
   }

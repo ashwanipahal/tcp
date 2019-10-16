@@ -4,6 +4,7 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
 <Styled(SafeAreaView)
   showSearch={false}
 >
+  <Connect(ToastContainer) />
   <Styled(View)>
     <Styled(View)
       data-locator="global_headerpanel"
@@ -57,9 +58,9 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               data-locator="obal_headerpanelbagicon"
               dataLocator=""
               fontSize="fs10"
+              fontWeight="extrabold"
               margin={null}
               numberOfLines={null}
-              text={0}
               textDecoration={null}
             />
           </Styled(View)>

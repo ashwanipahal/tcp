@@ -10,7 +10,7 @@ exports[`CouponList component should renders applied list 1`] = `
     <Styled(BodyCopy)
       className="couponList__heading"
       color="text.primary"
-      component="p"
+      component="h2"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
@@ -146,11 +146,23 @@ exports[`CouponList component should renders applied list 1`] = `
       anchorVariation="primary"
       dataLocator="cartShowLessButton"
       fontFamily="secondary"
-      fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -165,7 +177,7 @@ exports[`CouponList component should renders available list 1`] = `
     <Styled(BodyCopy)
       className="couponList__heading"
       color="text.primary"
-      component="p"
+      component="h2"
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
@@ -324,11 +336,23 @@ exports[`CouponList component should renders available list 1`] = `
       anchorVariation="primary"
       dataLocator="cartShowLessButton"
       fontFamily="secondary"
-      fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
       underline={true}
-    />
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Anchor)>
   </div>
 </div>
 `;

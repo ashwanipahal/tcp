@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   getLabelValue,
   formatDate,
@@ -6,7 +7,12 @@ import {
   formatPhoneNumber,
   getAddressFromPlace,
   extractFloat,
+  getStoreHours,
+  parseUTCDate,
+  getOrderGroupLabelAndMessage,
 } from '../utils';
+import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
+import constants from '../../components/features/account/OrderDetails/OrderDetails.constants';
 
 const formattedDate = '01/01/1970';
 const formattedPhoneNumber = '(718) 243-1150';
@@ -149,5 +155,74 @@ describe('getAddressFromPlace', () => {
       ''
     );
     expect(address.street).toBe('1000 test');
+  });
+});
+
+describe('getStoreHours', () => {
+  const { hours } = storesMock;
+  const labels = {
+    lbl_storelanding_opensAt: 'opens at',
+    lbl_storelanding_openInterval: 'open until',
+  };
+  it('should return opens until toTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 19:59:00'));
+    expect(storeTime).toContain('open until 8 pm');
+  });
+  it('should return opens at fromTime', () => {
+    const storeTime = getStoreHours(hours, labels, new Date('2019-09-17 21:00:00'));
+    expect(storeTime).toContain('opens at 10 am');
+  });
+});
+
+describe('getOrderGroupLabelAndMessage', () => {
+  const labels = {
+    lbl_orders_shippedOn: 'test1',
+    lbl_orders_pickedUpOn: 'test2',
+  };
+
+  it('should return correct label and message if Order status is shipped', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ORDER_SHIPPED,
+      shippedDate: '2019-10-09',
+      ordersLabels: labels,
+    };
+
+    const message = moment(orderProps.shippedDate).format('LL');
+    const label = labels.lbl_orders_shippedOn;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return correct label and message if Order status is Picked', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ITEMS_PICKED_UP,
+      pickedUpDate: '2019-10-10',
+      ordersLabels: labels,
+    };
+
+    const message = moment(orderProps.pickedUpDate).format('LL');
+    const label = labels.lbl_orders_pickedUpOn;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return null values if status is not matched', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ORDER_RECEIVED,
+      pickedUpDate: '2019-10-10',
+      ordersLabels: labels,
+    };
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(null);
+    expect(labelAndMessage.label).toBe(null);
+  });
+});
+
+describe('parseUTCDate', () => {
+  it('default', () => {
+    const returnDateValue = parseUTCDate('2019-10-15 20:00:00');
+    expect(returnDateValue).toStrictEqual(new Date('2019-10-15T20:00:00.000Z'));
   });
 });

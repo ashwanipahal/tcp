@@ -9,6 +9,7 @@ import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 import AddedToBagActions from '../../AddedToBagActions';
+
 import {
   HeadingViewStyle,
   MainSection,
@@ -32,6 +33,8 @@ import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+
+import LoyaltyBanner from '../../LoyaltyBanner';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
@@ -307,6 +310,7 @@ export class BagPage extends React.Component {
                 <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
+              <LoyaltyBanner />
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}

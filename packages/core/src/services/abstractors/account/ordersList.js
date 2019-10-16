@@ -306,6 +306,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
           res.body.orderLookupResponse.orderSummary.requestedDeliveryBy.replace('T', ' '),
         pickedUpDate: (orderDetails.dateShipped || '').replace('T', ' '),
         shippedDate: (orderDetails.dateShipped || '').replace('T', ' '),
+        orderStatus: orderDetails.orderStatus ? orderDetails.orderStatus.toLowerCase() : '',
         status:
           orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOSS
             ? orderDetails.orderStatus

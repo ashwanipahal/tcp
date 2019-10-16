@@ -27,6 +27,8 @@ export default {
   'amex-small': '/static/images/amex.svg',
   'place-card-small': '/static/images/TCP-CC.svg',
   'visa-small': '/static/images/visa.svg',
+  'visa-bordered': '/static/images/visa-bordered.svg',
+  'venmo-bordered': '/static/images/venmo-bordered.svg',
   'gift-card-small': '/static/images/TCP-gift.svg',
   'venmo-blue-acceptance-mark': '/static/images/venmo.svg',
   'my-place-rewards': '/static/images/my-place-rewards.png',
@@ -98,4 +100,7 @@ export default {
   'twitter-icon': '/static/images/twitter-black.svg',
   'pinterest-icon': '/static/images/pinterest@2x.svg',
   'icon-printer': '/static/images/icon-printer.png',
+  'modules-s-left-ribbon': '/static/images/module-s-left-ribbon.png',
+  'modules-s-right-ribbon': '/static/images/module-s-right-ribbon.png',
+  'icon-expand': '/static/images/icon-expand.svg',
 };

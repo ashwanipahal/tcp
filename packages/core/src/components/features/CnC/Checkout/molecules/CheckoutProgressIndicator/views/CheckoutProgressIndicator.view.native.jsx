@@ -36,21 +36,30 @@ export class CheckoutProgressIndicator extends React.PureComponent {
             if (availableStages[index].toLowerCase() === activeStage.toLowerCase()) {
               hasSeenActive = true;
               return (
-                <ProgressStep>
-                  <ProgressDotActive />
-                  <ProgressBar />
-                  <StyledAnchor>
-                    <Anchor
-                      fontSizeVariation="large"
-                      fontFamily="secondary"
-                      anchorVariation="primary"
-                      fontWeightVariation="active"
-                      onPress={this.routeToPickup}
-                      dataLocator=""
-                      text={stage}
-                    />
-                  </StyledAnchor>
-                </ProgressStep>
+                <>
+                  {index === availableStages.length - 1 ? (
+                    <View>
+                      <ProgressDotActive />
+                      <StyledDisableLabels>{stage}</StyledDisableLabels>
+                    </View>
+                  ) : (
+                    <ProgressStep>
+                      <ProgressDotActive />
+                      <ProgressBar />
+                      <StyledAnchor>
+                        <Anchor
+                          fontSizeVariation="large"
+                          fontFamily="secondary"
+                          anchorVariation="primary"
+                          fontWeightVariation="active"
+                          onPress={this.routeToPickup}
+                          dataLocator=""
+                          text={stage}
+                        />
+                      </StyledAnchor>
+                    </ProgressStep>
+                  )}
+                </>
               );
             }
             if (hasSeenActive) {

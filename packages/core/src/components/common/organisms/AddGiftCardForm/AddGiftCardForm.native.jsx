@@ -117,7 +117,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const { labels, toggleModal, addGiftCardResponse, isRow } = this.props;
+    const { labels, toggleModal, addGiftCardResponse, isRow, showNotification } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -126,7 +126,7 @@ class AddGiftCardForm extends React.PureComponent {
         keyboardShouldPersistTaps="handled"
       >
         <View>
-          {addGiftCardResponse && (
+          {showNotification && addGiftCardResponse && (
             <ErrorWrapper>
               <BodyCopy
                 mobileFontFamily={['secondary']}
@@ -205,7 +205,6 @@ class AddGiftCardForm extends React.PureComponent {
                 color="black"
                 text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                 data-locator="gift-card-cancelbtn"
-                buttonVariation="variable-width"
                 onPress={toggleModal}
                 width="150px"
               />
@@ -213,7 +212,6 @@ class AddGiftCardForm extends React.PureComponent {
                 color="white"
                 fill="BLUE"
                 text={getLabelValue(labels, 'lbl_payment_addCard')}
-                buttonVariation="variable-width"
                 data-locator="gift-card-addcardbtn"
                 width="164px"
                 onPress={this.handleAddGiftCardClick}
@@ -228,7 +226,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="white"
                   fill="BLUE"
                   text={getLabelValue(labels, 'lbl_payment_addCard')}
-                  buttonVariation="variable-width"
                   data-locator="gift-card-addcardbtn"
                   onPress={this.handleAddGiftCardClick}
                 />
@@ -239,7 +236,6 @@ class AddGiftCardForm extends React.PureComponent {
                   color="black"
                   text={getLabelValue(labels, 'lbl_payment_cancelCard')}
                   data-locator="gift-card-cancelbtn"
-                  buttonVariation="variable-width"
                   onPress={toggleModal}
                 />
               </CancelButtonWrapper>
@@ -267,6 +263,7 @@ AddGiftCardForm.propTypes = {
     }),
   }),
   addGiftCardResponse: PropTypes.string,
+  showNotification: PropTypes.bool,
   change: PropTypes.func,
   addGiftCardError: PropTypes.string,
   onClearError: PropTypes.func,
@@ -294,6 +291,7 @@ AddGiftCardForm.defaultProps = {
   onClearError: () => {},
   isRow: false,
   isRecapchaEnabled: true,
+  showNotification: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));

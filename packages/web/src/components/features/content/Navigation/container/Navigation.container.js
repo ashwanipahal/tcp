@@ -29,6 +29,7 @@ const mapStateToProps = state => {
     removeL1Focus: state.Navigation.removeL1Focus,
     accessibilityLabels:
       (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {},
+    isDrawerOpen: state.Header.navigationDrawer && state.Header.navigationDrawer.open,
   };
 };
 
