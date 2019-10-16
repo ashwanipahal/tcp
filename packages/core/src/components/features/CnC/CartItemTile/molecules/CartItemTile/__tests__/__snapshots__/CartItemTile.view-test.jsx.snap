@@ -6900,7 +6900,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
         "fit": "regular",
         "isGiftItem": true,
         "myPlacePoints": 123,
-        "name": "Boys Basic Skinny Jeans",
+        "name": "Boys Basic Skinny Jeans 1",
         "price": 123,
         "qty": "1",
         "size": "1",
