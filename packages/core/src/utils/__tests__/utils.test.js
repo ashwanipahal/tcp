@@ -8,6 +8,7 @@ import {
   getAddressFromPlace,
   extractFloat,
   getStoreHours,
+  parseUTCDate,
   getOrderGroupLabelAndMessage,
 } from '../utils';
 import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
@@ -216,5 +217,12 @@ describe('getOrderGroupLabelAndMessage', () => {
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(null);
     expect(labelAndMessage.label).toBe(null);
+  });
+});
+
+describe('parseUTCDate', () => {
+  it('default', () => {
+    const returnDateValue = parseUTCDate('2019-10-15 20:00:00');
+    expect(returnDateValue).toStrictEqual(new Date('2019-10-15T20:00:00.000Z'));
   });
 });

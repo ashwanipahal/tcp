@@ -117,6 +117,7 @@ export class AddressView extends React.Component {
               <BodyCopy
                 fontSize="fs16"
                 fontWeight="extrabold"
+                color="black"
                 text={getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook')}
               />
             )}
@@ -130,6 +131,7 @@ export class AddressView extends React.Component {
                     fontSize="fs14"
                     fontWeight="semibold"
                     mobilefontFamily={['secondary']}
+                    color="black"
                     text={getLabelValue(labels, 'ACC_LBL_CREATE_ADDRESS_BOOK_MSG', 'addressBook')}
                   />
                 )}
@@ -144,6 +146,7 @@ export class AddressView extends React.Component {
                     fontSize="fs13"
                     fontWeight="regular"
                     mobilefontFamily={['secondary']}
+                    color="black"
                     text={getLabelValue(
                       labels,
                       'ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG',
