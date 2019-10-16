@@ -2,7 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Image, Anchor } from '../../../../common/atoms';
-
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Container, Separator, AnchorStyle } from '../OutfitListing.style.native';
 
@@ -13,7 +12,16 @@ class OutfitListing extends React.PureComponent {
    *
    * @memberof OutfitListing
    */
-  navigateToOutfitDetails = () => {};
+  navigateToOutfitDetails = item => {
+    const { navigation } = this.props;
+    const { id, subItemsId } = item;
+    if (navigation)
+      navigation.navigate('OutfitDetail', {
+        title: 'COMPLETE THE LOOK',
+        outfitId: id,
+        vendorColorProductIdsList: subItemsId,
+      });
+  };
 
   /**
    * @function renderItem
@@ -36,7 +44,7 @@ class OutfitListing extends React.PureComponent {
         <Image url={imageURLWithHost} height="427px" width={getScreenWidth() - 24} />
         <Anchor
           text={shopThisLookLabel}
-          onPress={this.navigateToOutfitDetails}
+          onPress={() => this.navigateToOutfitDetails(item)}
           customStyle={AnchorStyle}
           fontSizeVariation="medium"
           visible
@@ -82,12 +90,14 @@ OutfitListing.propTypes = {
   outfitDetails: PropTypes.arrayOf(Object),
   asPath: PropTypes.string,
   labels: PropTypes.instanceOf(Object),
+  navigation: PropTypes.instanceOf(Object),
 };
 
 OutfitListing.defaultProps = {
   outfitDetails: [],
   asPath: '',
   labels: {},
+  navigation: null,
 };
 
 export default OutfitListing;

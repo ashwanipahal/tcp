@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import OutfitListing from '@tcp/core/src/components/features/browse/OutfitListing';
+import OutfitDetail from '@tcp/core/src/components/features/browse/OutfitDetails';
 
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
@@ -28,6 +29,12 @@ const PlpStack = createStackNavigator(
   {
     [ROUTE_NAMES.NAV_MENU_LEVEL_1]: {
       screen: Navigation,
+    },
+    OutfitDetail: {
+      screen: OutfitDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
     },
     [ROUTE_NAMES.NAV_MENU_LEVEL_2]: {
       screen: NavMenuLevel2,
