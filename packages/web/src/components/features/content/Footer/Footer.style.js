@@ -35,9 +35,12 @@ export default css`
           ['small', 'medium'].includes(key)
             ? `
           @media ${props.theme.mediaQuery[`${key}Only`]} {
-            margin-top: 8px;
+            padding: 0;
+            margin-bottom: 12px;
           }`
-            : ``
+            : `
+            padding: 0;
+            margin-bottom: 12px;`
         )}
     }
   }
@@ -74,6 +77,9 @@ export default css`
   .footer_top__signup_form {
     label {
       margin-bottom: 10px;
+    }
+    .footer_top__signup_form_row{
+      align-items: center;
     }
   }
 

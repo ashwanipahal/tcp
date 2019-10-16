@@ -15,6 +15,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     textDecoration={null}
   />
   <Styled(SearchBar)
+    labels={[Function]}
     openSearchProductPage={[Function]}
     showCustomizedSearch={true}
   />
