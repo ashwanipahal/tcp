@@ -170,7 +170,7 @@ export class BillingPaymentForm extends React.PureComponent {
               mobileFontFamily="primary"
               fontSize="fs16"
               fontWeight="extrabold"
-              data-locator="paymentMethodLbl"
+              dataLocator="paymentMethodLbl"
               text={labels.paymentMethod}
               color="gray.900"
             />
@@ -382,7 +382,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 fontWeight="regular"
                 spacingStyles="margin-bottom-MED"
                 color="gray.900"
-                data-locator="paymentMethodLbl"
+                dataLocator="paymentMethodLbl"
                 text={labels.paymentMethod}
               />
             </PaymentMethodHeader>

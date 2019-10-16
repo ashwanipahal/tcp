@@ -7,8 +7,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -635,8 +634,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1006,8 +1004,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1063,8 +1060,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1233,8 +1229,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="paymentMethodLbl"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -1396,8 +1391,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1598,8 +1592,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="paymentMethodLbl"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -1761,8 +1754,7 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="paymentMethodLbl"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"

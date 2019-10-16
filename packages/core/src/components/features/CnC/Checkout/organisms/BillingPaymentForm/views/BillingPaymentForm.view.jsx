@@ -401,7 +401,7 @@ export class BillingPaymentForm extends React.PureComponent {
               fontFamily="primary"
               fontSize="fs26"
               fontWeight="regular"
-              data-locator="paymentMethodLbl"
+              dataLocator="paymentMethodLbl"
               className="elem-mb-LRG elem-mt-XL"
             >
               {labels.paymentMethod}

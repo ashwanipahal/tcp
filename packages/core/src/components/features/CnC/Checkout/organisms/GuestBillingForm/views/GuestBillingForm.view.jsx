@@ -105,7 +105,7 @@ class GuestBillingForm extends React.Component {
           fontFamily="primary"
           fontSize="fs28"
           fontWeight="regular"
-          data-locator="paymentMethodLbl"
+          dataLocator="paymentMethodLbl"
           className="elem-mb-XS elem-mt-MED"
         >
           {labels.paymentMethod}

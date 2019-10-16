@@ -10,7 +10,7 @@ exports[`CardImageVanilla component renders correctly without props 1`] = `
     >
       <img
         className="cardImage-img"
-        dataLocator="cardLogo"
+        data-locator="cardLogo"
       />
     </div>
     <Styled(BodyCopy)
