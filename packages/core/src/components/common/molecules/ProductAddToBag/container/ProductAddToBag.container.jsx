@@ -55,7 +55,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   /**
    * @function getDefaultColor
-   * @returns default color at 0 index in color array
+   * @returns default color at 0 index in color array.
    *
    * @memberof ProductAddToBagContainer
    */
