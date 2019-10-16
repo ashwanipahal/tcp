@@ -59,7 +59,6 @@ describe('Cart Item saga', () => {
       coupons: {},
     };
     getCartDataSagaGen.next(res);
-    getCartDataSagaGen.next(res);
     expect(getCartDataSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );

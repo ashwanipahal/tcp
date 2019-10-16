@@ -26,8 +26,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -447,8 +449,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -864,8 +868,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -1299,8 +1305,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -1716,8 +1724,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -2133,8 +2143,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -2564,8 +2576,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -3007,8 +3021,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -3438,8 +3454,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -3881,8 +3899,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -4312,8 +4332,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -4729,8 +4751,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -5164,8 +5188,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -5599,8 +5625,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
@@ -6048,8 +6076,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
     </div>
   </div>
   <Styled(Row)
+    aria-label="Boys Basic Skinny Jeans. Price 123. undefined 1. Qty 1"
     className="product "
     fullBleed={true}
+    tabIndex="0"
   >
     <Styled(Col)
       className="align-product-img product-brand-img-wrapper"
