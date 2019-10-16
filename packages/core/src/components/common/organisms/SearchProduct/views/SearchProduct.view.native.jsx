@@ -185,17 +185,24 @@ class SearchProduct extends React.PureComponent {
    *
    * @memberof SearchProduct
    */
-  renderSectionHeader = ({ section: { title } }) => (
-    <HeaderContainer>
-      <BodyCopy
-        fontWeight="regular"
-        color="gray.900"
-        mobileFontFamily="secondary"
-        fontSize="fs13"
-        text={title}
-      />
-    </HeaderContainer>
-  );
+  renderSectionHeader = ({ section: { title } }) => {
+    const { showRecentSearches } = this.state;
+    const headerStyle = showRecentSearches
+      ? { textTransform: 'capitalize' }
+      : { textTransform: 'none' };
+    return (
+      <HeaderContainer>
+        <BodyCopy
+          fontWeight="regular"
+          color="gray.900"
+          mobileFontFamily="secondary"
+          fontSize="fs13"
+          text={title}
+          style={headerStyle}
+        />
+      </HeaderContainer>
+    );
+  };
 
   /**
    * @function renderItem
