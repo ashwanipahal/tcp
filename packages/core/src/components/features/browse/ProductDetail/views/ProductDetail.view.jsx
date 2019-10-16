@@ -109,7 +109,11 @@ class ProductDetailView extends React.Component {
             className="product-detail-section"
             colSize={{ small: 6, medium: 4, large: 5 }}
           >
-            <Product productDetails={productDetails} currencySymbol={currency} />
+            <Product
+              productDetails={productDetails}
+              currencySymbol={currency}
+              selectedColorProductId={selectedColorProductId}
+            />
             {currentProduct && (
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}
