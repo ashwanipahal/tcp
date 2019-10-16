@@ -68,7 +68,7 @@ const CnCCommonTemplate = ({
         </>
       ) : (
         <View>
-          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} showAccordian />
           <BannerWrapper>
             <BodyCopyWithSpacing
               textAlign="center"

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { withRouter } from 'next/router'; // eslint-disable-line
 import OutfitListing from '../views/index';
 import getLabels from './OutfitListing.selectors';
 import { getStyliticsProductTabListSelector } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.selector';
@@ -9,8 +8,9 @@ import { styliticsProductTabListDataReqforOutfit } from '../../../../common/orga
 
 class OutfitListingContainer extends React.PureComponent {
   componentDidMount() {
-    const { getStyliticsProductTabListData, asPath } = this.props;
-    getStyliticsProductTabListData({ categoryId: asPath, count: 20 });
+    const { getStyliticsProductTabListData, asPath, navigation } = this.props;
+    const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
+    getStyliticsProductTabListData({ categoryId, count: 20 });
   }
 
   render() {
@@ -23,7 +23,11 @@ class OutfitListingContainer extends React.PureComponent {
       currentNavIds,
       longDescription,
       categoryId,
+      navigation,
     } = this.props;
+
+    const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
+
     return (
       <OutfitListing
         labels={labels}
@@ -33,7 +37,8 @@ class OutfitListingContainer extends React.PureComponent {
         currentNavIds={currentNavIds}
         longDescription={longDescription}
         categoryId={categoryId}
-        asPath={asPath}
+        asPath={outfitPath}
+        navigation={navigation}
       />
     );
   }
@@ -64,6 +69,7 @@ OutfitListingContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
+  navigation: PropTypes.instanceOf(Object),
 };
 
 OutfitListingContainer.defaultProps = {
@@ -74,11 +80,10 @@ OutfitListingContainer.defaultProps = {
   currentNavIds: [],
   longDescription: '',
   categoryId: '',
+  navigation: null,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(OutfitListingContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OutfitListingContainer);

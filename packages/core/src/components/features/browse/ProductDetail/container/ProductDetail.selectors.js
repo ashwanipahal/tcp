@@ -126,3 +126,21 @@ export const getPDPLabels = state => {
     ),
   };
 };
+
+export const getRelatedOutfits = state => {
+  const { Layouts = {}, Modules = {} } = state;
+  const relatedOutfitsSlots = Layouts.homepage ? Layouts.homepage.slots : [];
+  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+
+  return {
+    slots: relatedOutfitsSlots
+      .map(slot => {
+        return {
+          ...slot,
+          accessibility,
+          data: Modules[slot.contentId],
+        };
+      })
+      .filter(item => item.moduleName === 'moduleQ'),
+  };
+};
