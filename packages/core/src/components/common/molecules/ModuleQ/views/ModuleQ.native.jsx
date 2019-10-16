@@ -208,7 +208,7 @@ const ModuleQ = props => {
       {selectedProductList.length === 0 ? (
         <Skeleton
           row={1}
-          col={1}
+          col={3}
           width={250}
           height={300}
           rowProps={{ justifyContent: 'center', marginTop: '20px' }}

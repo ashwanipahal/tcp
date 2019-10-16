@@ -164,12 +164,14 @@ export const StyledSkeleton = styled(Skeleton)`
   }
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     justify-content: center;
-    width: 30%;
   }
   .skeleton-col {
     height: 225px;
     @media ${props => props.theme.mediaQuery.medium} {
       height: 360px;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 30%;
     }
     @media ${props => props.theme.mediaQuery.large} {
       height: 347px;

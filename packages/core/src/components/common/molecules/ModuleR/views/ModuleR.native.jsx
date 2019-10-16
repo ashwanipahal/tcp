@@ -170,7 +170,7 @@ class ModuleR extends React.PureComponent {
         />
         {selectedProductList.length === 0 ? (
           <Skeleton
-            row={2}
+            row={3}
             col={3}
             rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
           />

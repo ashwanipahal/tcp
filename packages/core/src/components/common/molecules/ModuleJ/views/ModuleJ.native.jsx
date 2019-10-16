@@ -125,10 +125,10 @@ class ModuleJ extends React.PureComponent {
       return (
         <Skeleton
           row={1}
-          col={4}
+          col={3}
           width={PRODUCT_IMAGE_WIDTH}
           height={PRODUCT_IMAGE_HEIGHT}
-          rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+          rowProps={{ justifyContent: 'space-around' }}
         />
       );
     }

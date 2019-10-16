@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { ParallaxImage } from 'react-native-snap-carousel';
-import { Button, Anchor } from '../../../atoms';
+import { Button, Anchor, Skeleton } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 
@@ -170,8 +170,18 @@ class ModuleG extends React.PureComponent {
           <SHADOW />
         </ShadowContainer>
         <View>
-          <ImageSlidesWrapper>
-            {selectedProductList.length ? (
+          {selectedProductList.length === 0 ? (
+            <Skeleton
+              row={1}
+              col={3}
+              width={190}
+              height={170}
+              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+              showArrows
+            />
+          ) : null}
+          {selectedProductList.length ? (
+            <ImageSlidesWrapper>
               <Carousel
                 data={selectedProductCarouselList}
                 renderItem={this.renderCarouselSlide}
@@ -183,17 +193,27 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            ) : null}
-          </ImageSlidesWrapper>
+            </ImageSlidesWrapper>
+          ) : null}
 
           <MiddleContainer>
             <Border />
             <Circle />
             <StyledCustomImage source={plusIcon} />
           </MiddleContainer>
+          {selectedProductList.length === 0 ? (
+            <Skeleton
+              row={1}
+              col={3}
+              width={200}
+              height={200}
+              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+              showArrows
+            />
+          ) : null}
 
-          <ImageSlidesWrapper>
-            {selectedProductList.length ? (
+          {selectedProductList.length ? (
+            <ImageSlidesWrapper>
               <Carousel
                 data={selectedProductCarouselList}
                 renderItem={this.renderCarouselSlide}
@@ -205,8 +225,8 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            ) : null}
-          </ImageSlidesWrapper>
+            </ImageSlidesWrapper>
+          ) : null}
         </View>
 
         {selectedSingleCTAButton ? (
