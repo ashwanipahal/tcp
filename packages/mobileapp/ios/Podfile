@@ -39,7 +39,6 @@ end
 target 'mobileapp' do
   facebook
   twitter
-  
   target 'mobileappTests' do
     inherit! :search_paths
     # Pods for testing
@@ -65,4 +64,24 @@ end
 target 'mobileapp_uat' do
   facebook
   twitter
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == 'react-native-twitter-signin'
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
+      end
+    end
+    if target.name == "React"
+      target.remove_from_project
+    end
+    if target.name == 'yoga'
+      target.remove_from_project
+      target.build_configurations.each do |config|
+          config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+          config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
+      end
+    end
+  end
 end
