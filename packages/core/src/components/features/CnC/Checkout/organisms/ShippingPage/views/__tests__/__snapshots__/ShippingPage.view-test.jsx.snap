@@ -1,280 +1,301 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shipping Page should render correctly 1`] = `
-<ReduxForm
-  addNewShippingAddress={[Function]}
-  address={
-    Object {
-      "addressLine1": "pob",
-      "addressLine2": "",
+<Fragment>
+  <ReduxForm
+    addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob",
+        "addressLine2": "",
+      }
     }
-  }
-  addressPhoneNo={null}
-  defaultShipmentId={null}
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="checkoutShipping"
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "address": Object {
-        "country": "US",
-      },
-      "onFileAddressKey": null,
-      "saveToAddressBook": false,
-      "shipmentMethods": Object {
-        "shippingMethodId": null,
-      },
+    addressLabels={Object {}}
+    addressPhoneNo={null}
+    defaultShipmentId={null}
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "onFileAddressKey": null,
+        "saveToAddressBook": false,
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
     }
-  }
-  isAddNewAddress={false}
-  isGiftServicesChecked={false}
-  isGuest={true}
-  isMobile={false}
-  isOrderUpdateChecked={false}
-  isSaveToAddressBookChecked={false}
-  isUsSite={true}
-  isVenmoPaymentInProgress={false}
-  isVenmoShippingDisplayed={true}
-  keepDirtyOnReinitialize={false}
-  loadShipmentMethods={[Function]}
-  newUserPhoneNo={null}
-  onFileAddressKey={null}
-  onSubmit={[Function]}
-  orderHasPickUp={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedShipmentId={null}
-  setAsDefaultShipping={false}
-  setDefaultAddressId={[Function]}
-  shipmentMethods={
-    Array [
-      Object {},
-    ]
-  }
-  shippingAddress={null}
-  shippingAddressId={null}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  syncErrorsObject={Object {}}
-  toggleAddNewAddress={[Function]}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateShippingAddress={[Function]}
-  updateUnregisteredFields={false}
-  userAddresses={Immutable.List []}
-  validate={[Function]}
-/>
+    isAddNewAddress={false}
+    isGiftServicesChecked={false}
+    isGuest={true}
+    isMobile={false}
+    isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
+    isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={[Function]}
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId={null}
+    setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingAddress={null}
+    shippingAddressId={null}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
+    toggleAddNewAddress={[Function]}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateShippingAddress={[Function]}
+    updateUnregisteredFields={false}
+    userAddresses={Immutable.List []}
+    validate={[Function]}
+  />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
+  />
+</Fragment>
 `;
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
-<ReduxForm
-  addNewShippingAddress={[Function]}
-  address={
-    Object {
-      "addressLine1": "pob 123",
-      "addressLine2": "pob",
+<Fragment>
+  <ReduxForm
+    addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
     }
-  }
-  addressPhoneNo={null}
-  defaultAddressId="34789"
-  defaultShipmentId={null}
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="checkoutShipping"
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "address": Object {
-        "country": "US",
-      },
-      "onFileAddressKey": "123",
-      "saveToAddressBook": false,
-      "shipmentMethods": Object {
-        "shippingMethodId": null,
-      },
+    addressLabels={Object {}}
+    addressPhoneNo={null}
+    defaultAddressId="34789"
+    defaultShipmentId={null}
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "onFileAddressKey": "123",
+        "saveToAddressBook": false,
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
     }
-  }
-  isAddNewAddress={false}
-  isGiftServicesChecked={false}
-  isGuest={true}
-  isMobile={false}
-  isOrderUpdateChecked={false}
-  isSaveToAddressBookChecked={false}
-  isUsSite={true}
-  isVenmoPaymentInProgress={false}
-  isVenmoShippingDisplayed={true}
-  keepDirtyOnReinitialize={false}
-  loadShipmentMethods={
-    [MockFunction] {
-      "calls": Array [
-        Array [
+    isAddNewAddress={false}
+    isGiftServicesChecked={false}
+    isGuest={true}
+    isMobile={false}
+    isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
+    isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "formName": "checkoutShipping",
+            },
+          ],
+        ],
+        "results": Array [
           Object {
-            "formName": "checkoutShipping",
+            "type": "return",
+            "value": undefined,
           },
         ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
+      }
     }
-  }
-  newUserPhoneNo={null}
-  onFileAddressKey={null}
-  onSubmit={[Function]}
-  orderHasPickUp={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedShipmentId="336"
-  setAsDefaultShipping={false}
-  setDefaultAddressId={[Function]}
-  shipmentMethods={
-    Array [
-      Object {},
-    ]
-  }
-  shippingAddress={null}
-  shippingAddressId="123"
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  syncErrorsObject={Object {}}
-  toggleAddNewAddress={[Function]}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateShippingAddress={[Function]}
-  updateUnregisteredFields={false}
-  userAddresses={
-    Immutable.List [
-      Object {
-        "addressId": "123",
-        "addressLine": Array [
-          "addressline 1",
-          "addressline 2",
-        ],
-        "city": "test city",
-        "country": "test country",
-        "firstName": "test",
-        "lastName": "test",
-        "phone1": "1234567890",
-        "primary": "true",
-      },
-    ]
-  }
-  validate={[Function]}
-/>
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId="336"
+    setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingAddress={null}
+    shippingAddressId="123"
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
+    toggleAddNewAddress={[Function]}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateShippingAddress={[Function]}
+    updateUnregisteredFields={false}
+    userAddresses={
+      Immutable.List [
+        Object {
+          "addressId": "123",
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+          "primary": "true",
+        },
+      ]
+    }
+    validate={[Function]}
+  />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
+  />
+</Fragment>
 `;
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
-<ReduxForm
-  addNewShippingAddress={[Function]}
-  address={
-    Object {
-      "addressLine1": "pob 123",
-      "addressLine2": "pob",
+<Fragment>
+  <ReduxForm
+    addNewShippingAddress={[Function]}
+    address={
+      Object {
+        "addressLine1": "pob 123",
+        "addressLine2": "pob",
+      }
     }
-  }
-  addressPhoneNo={null}
-  defaultAddressId="123"
-  defaultShipmentId={null}
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="checkoutShipping"
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "address": Object {
-        "country": "US",
-      },
-      "onFileAddressKey": "123",
-      "saveToAddressBook": false,
-      "shipmentMethods": Object {
-        "shippingMethodId": null,
-      },
+    addressLabels={Object {}}
+    addressPhoneNo={null}
+    defaultAddressId="123"
+    defaultShipmentId={null}
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="checkoutShipping"
+    getFormState={[Function]}
+    initialValues={
+      Object {
+        "address": Object {
+          "country": "US",
+        },
+        "onFileAddressKey": "123",
+        "saveToAddressBook": false,
+        "shipmentMethods": Object {
+          "shippingMethodId": null,
+        },
+      }
     }
-  }
-  isAddNewAddress={false}
-  isGiftServicesChecked={false}
-  isGuest={true}
-  isMobile={false}
-  isOrderUpdateChecked={false}
-  isSaveToAddressBookChecked={false}
-  isUsSite={true}
-  isVenmoPaymentInProgress={false}
-  isVenmoShippingDisplayed={true}
-  keepDirtyOnReinitialize={false}
-  loadShipmentMethods={
-    [MockFunction] {
-      "calls": Array [
-        Array [
+    isAddNewAddress={false}
+    isGiftServicesChecked={false}
+    isGuest={true}
+    isMobile={false}
+    isOrderUpdateChecked={false}
+    isSaveToAddressBookChecked={false}
+    isUsSite={true}
+    isVenmoPaymentInProgress={false}
+    isVenmoShippingDisplayed={true}
+    keepDirtyOnReinitialize={false}
+    loadShipmentMethods={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "formName": "checkoutShipping",
+            },
+          ],
+        ],
+        "results": Array [
           Object {
-            "formName": "checkoutShipping",
+            "type": "return",
+            "value": undefined,
           },
         ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
+      }
     }
-  }
-  newUserPhoneNo={null}
-  onFileAddressKey={null}
-  onSubmit={[Function]}
-  orderHasPickUp={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  selectedShipmentId="336"
-  setAsDefaultShipping={false}
-  setDefaultAddressId={[Function]}
-  shipmentMethods={
-    Array [
-      Object {},
-    ]
-  }
-  shippingAddress={null}
-  shippingAddressId="123"
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  syncErrorsObject={Object {}}
-  toggleAddNewAddress={[Function]}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateShippingAddress={[Function]}
-  updateUnregisteredFields={false}
-  userAddresses={
-    Immutable.List [
-      Object {
-        "addressId": "123",
-        "addressLine": Array [
-          "addressline 1",
-          "addressline 2",
-        ],
-        "city": "test city",
-        "country": "test country",
-        "firstName": "test",
-        "lastName": "test",
-        "phone1": "1234567890",
-        "primary": "true",
-      },
-    ]
-  }
-  validate={[Function]}
-/>
+    newUserPhoneNo={null}
+    onFileAddressKey={null}
+    onSubmit={[Function]}
+    orderHasPickUp={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    selectedShipmentId="336"
+    setAsDefaultShipping={false}
+    setDefaultAddressId={[Function]}
+    shipmentMethods={
+      Array [
+        Object {},
+      ]
+    }
+    shippingAddress={null}
+    shippingAddressId="123"
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    syncErrorsObject={Object {}}
+    toggleAddNewAddress={[Function]}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateShippingAddress={[Function]}
+    updateUnregisteredFields={false}
+    userAddresses={
+      Immutable.List [
+        Object {
+          "addressId": "123",
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+          "primary": "true",
+        },
+      ]
+    }
+    validate={[Function]}
+  />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
+  />
+</Fragment>
 `;
