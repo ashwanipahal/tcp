@@ -38,12 +38,17 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  getIsInternationalShipping,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+
+const { getOrderPointsRecalcFlag } = utility;
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -137,19 +142,20 @@ export function* getCartDataSaga(payload = {}) {
         isCheckoutFlow,
         isCartNotRequired,
         updateSmsInfo,
+        recalcRewards,
+        isCartPage,
         onCartRes,
+        excludeCartItems = false,
       } = {},
     } = payload;
-    const isCartPage = true;
-    // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
-    const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = true; // TODO to get current country
-    const isCanadaSIte = false; // TODO to get current country
+    const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
+    const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
+    const isRadialInvEnabled = select(getIsRadialInventoryEnabled);
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
-      excludeCartItems: false,
+      excludeCartItems,
       recalcRewards: recalcOrderPoints,
-      isCanadaSIte,
+      isCanada: isCanada(),
       isRadialInvEnabled,
     });
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
