@@ -142,6 +142,10 @@ const styles = css`
     width: auto;
   }
 
+  .product-size-error {
+    margin-top: 30px;
+  }
+
   .size-field-error {
     height: auto;
     .select__input {
