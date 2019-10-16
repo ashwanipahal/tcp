@@ -39,6 +39,7 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
   <View>
     <Connect(OrderLedgerContainer)
       isConfirmationPage={true}
+      showAccordian={true}
     />
     <Styled(View)>
       <Styled(Styled(BodyCopy))
