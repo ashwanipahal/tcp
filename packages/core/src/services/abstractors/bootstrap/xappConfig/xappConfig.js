@@ -11,9 +11,15 @@ import { getDataFromRedis, setDataInRedis } from '../../../../utils/redis.util';
  */
 const Abstractor = {
   getData: async module => {
-    const xappData = await Abstractor.getDataFromCache();
+    let xappData;
+    try {
+      xappData = await Abstractor.getDataFromCache();
+    } catch (e) {
+      logger.error(e);
+    }
     if (xappData) {
       try {
+        logger.info(`XAPP | REDIS CACHE HIT`);
         const jsonXappData = JSON.parse(xappData);
         jsonXappData.IS_DATA_FROM_REDIS = true;
         return jsonXappData;
