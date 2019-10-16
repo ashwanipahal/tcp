@@ -13,9 +13,13 @@ class CartItemRadioButtons extends React.Component {
    */
   handleChangeStoreClick = () => {
     const { openPickUpModal } = this.props;
-    const { selectedOrder } = this.state;
+    const {
+      productDetail: {
+        miscInfo: { orderItemType },
+      },
+    } = this.props;
     const openSkuSelectionForm = false;
-    openPickUpModal(selectedOrder, openSkuSelectionForm);
+    openPickUpModal(orderItemType, openSkuSelectionForm);
   };
 
   /**
