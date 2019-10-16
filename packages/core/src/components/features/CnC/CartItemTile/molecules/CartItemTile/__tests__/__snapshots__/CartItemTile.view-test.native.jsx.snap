@@ -187,7 +187,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
                 }
                 margin={null}
                 numberOfLines={null}
-                text="undefined: "
+                text="undefined:"
                 textAlign="left"
                 textDecoration={null}
               />
@@ -216,7 +216,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
@@ -228,7 +230,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
                 }
                 margin={null}
                 numberOfLines={null}
-                text="Qty: "
+                text="Qty:"
                 textAlign="left"
                 textDecoration={null}
               />
@@ -582,7 +584,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
                 }
                 margin={null}
                 numberOfLines={null}
-                text="undefined: "
+                text="undefined:"
                 textAlign="left"
                 textDecoration={null}
               />
@@ -611,7 +613,9 @@ exports[`CartItemTile common component renders correctly with Save for later ena
             />
           </Styled(View)>
           <Styled(View)>
-            <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
@@ -623,7 +627,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
                 }
                 margin={null}
                 numberOfLines={null}
-                text="Qty: "
+                text="Qty:"
                 textAlign="left"
                 textDecoration={null}
               />
@@ -977,7 +981,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
                 }
                 margin={null}
                 numberOfLines={null}
-                text="undefined: "
+                text="undefined:"
                 textAlign="left"
                 textDecoration={null}
               />

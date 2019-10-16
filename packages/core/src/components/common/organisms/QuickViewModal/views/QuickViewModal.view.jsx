@@ -25,10 +25,15 @@ class QuickViewModal extends React.Component {
       productInfo,
       productInfo: { colorFitsSizesMap, colorFitSizeDisplayNames },
       quickViewLabels,
+      selectedColorProductId,
       ...otherProps
     } = this.props;
 
+    const modifiedColorFitsSizesMap = selectedColorProductId
+      ? colorFitsSizesMap.filter(item => item.colorDisplayId === selectedColorProductId)
+      : colorFitsSizesMap;
     const { fromBagPage } = otherProps;
+
     return (
       <Modal
         isOpen={isModalOpen}
@@ -51,7 +56,9 @@ class QuickViewModal extends React.Component {
       >
         <ProductCustomizeFormPart
           productInfo={productInfo}
-          colorFitsSizesMap={colorFitsSizesMap}
+          colorFitsSizesMap={
+            modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
+          }
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
           onCloseClick={this.onCloseClick}
@@ -78,6 +85,7 @@ QuickViewModal.propTypes = {
   clearAddToBagError: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  selectedColorProductId: PropTypes.string.isRequired,
 };
 
 export default withStyles(QuickViewModal, styles);

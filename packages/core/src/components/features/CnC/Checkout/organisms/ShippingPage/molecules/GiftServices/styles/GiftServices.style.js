@@ -52,8 +52,14 @@ export default css`
   .dropdownliBottomBorder {
     height: 71px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
   }
   .price {
     float: right;

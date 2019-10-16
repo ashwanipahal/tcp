@@ -55,5 +55,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     sortLabels={Object {}}
     totalProductsCount={0}
   />
+  <Connect(QuickViewModalContainer) />
+  <Connect(AddedToBagContainer) />
 </Styled(View)>
 `;

@@ -34,7 +34,7 @@ exports[`Selectbox component renders correctly 1`] = `
     name="test"
     onValueChange={[Function]}
     selectedValue="test"
-    width={null}
+    width="100%"
   />
 </Styled(View)>
 `;
@@ -73,7 +73,7 @@ exports[`Selectbox component renders correctly for error 1`] = `
     name="test"
     onValueChange={[Function]}
     selectedValue="test"
-    width={null}
+    width="100%"
   />
   <Styled(View)>
     <Styled(View)

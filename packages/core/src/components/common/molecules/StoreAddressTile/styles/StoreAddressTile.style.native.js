@@ -13,6 +13,13 @@ export default styled.View`
 
 export const TileHeader = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  ${props =>
+    props.selectedStoreId
+      ? `
+        border: solid 1px ${props.theme.colorPalette.gray[500]};
+        background-color: ${props.theme.colorPalette.gray[300]};
+        `
+      : ''};
 `;
 
 export const TileBody = styled.View`
@@ -124,6 +131,10 @@ export const FooterBtnWrapper = styled.View`
   flex-direction: row;
   display: flex;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+export const BtnFullWidth = css`
+  width: 100%;
 `;
 
 export const FooterBtnRight = styled.View`

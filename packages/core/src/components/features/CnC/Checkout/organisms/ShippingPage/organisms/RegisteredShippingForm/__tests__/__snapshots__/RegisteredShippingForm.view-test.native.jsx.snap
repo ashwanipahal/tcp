@@ -651,7 +651,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
 </Fragment>
 `;
 
-exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddresskey 1`] = `
+exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddressKey 1`] = `
 <Fragment>
   <Field
     component={[Function]}
@@ -772,7 +772,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
 </Fragment>
 `;
 
-exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddresskey but does not match 1`] = `
+exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddressKey but does not match 1`] = `
 <Fragment>
   <Field
     component={[Function]}

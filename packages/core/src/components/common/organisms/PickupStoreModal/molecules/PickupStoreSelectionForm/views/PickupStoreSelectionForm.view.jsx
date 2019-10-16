@@ -64,6 +64,7 @@ class _PickupStoreSelectionForm extends React.Component {
       cartBopisStoresList,
       handleAddTobag,
       handlePickupRadioBtn,
+      handleUpdatePickUpItem,
       selectedStoreId,
       isBossSelected,
       isShowMessage,
@@ -75,6 +76,7 @@ class _PickupStoreSelectionForm extends React.Component {
       <PickupStoreListContainer
         isShoppingBag={isShoppingBag}
         onStoreSelect={handleAddTobag}
+        onStoreUpdate={handleUpdatePickUpItem}
         onPickupRadioBtnToggle={handlePickupRadioBtn}
         isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
         onCancel={onCloseClick}
@@ -208,6 +210,7 @@ class _PickupStoreSelectionForm extends React.Component {
       preferredStore,
       handleAddTobag,
       handlePickupRadioBtn,
+      handleUpdatePickUpItem,
       selectedStoreId,
       isBossSelected,
       isShowMessage,
@@ -222,6 +225,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isShoppingBag={isShoppingBag}
             store={preferredStore}
             onStoreSelect={handleAddTobag}
+            onStoreUpdate={handleUpdatePickUpItem}
             onPickupRadioBtnToggle={handlePickupRadioBtn}
             isBopisSelected={preferredStore.basicInfo.id === selectedStoreId && !isBossSelected}
             isBossSelected={preferredStore.basicInfo.id === selectedStoreId && isBossSelected}

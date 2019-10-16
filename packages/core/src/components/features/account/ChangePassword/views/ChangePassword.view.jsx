@@ -32,7 +32,7 @@ export const ChangePassword = ({
       </BodyCopy>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_changePassword_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
         dataLocator="pi-profileinformationheading"
       />
       <BodyCopy component="div" className="elem-pt-LRG">

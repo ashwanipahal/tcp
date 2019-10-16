@@ -12,7 +12,8 @@ const getHeader = (labels, ledgerSummaryData) => {
   return (
     <div className="elem-mb-SM order-ledger-header">
       <BodyCopy fontFamily="secondary" fontSize="fs16" fontWeight="semibold" component="span">
-        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal.toFixed(2)})`}
+        {`${labels.orderLedgerTitle} (${currencySymbol}${orderBalanceTotal &&
+          orderBalanceTotal.toFixed(2)})`}
       </BodyCopy>
     </div>
   );
@@ -25,6 +26,7 @@ const OrderLedger = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
+  orderLedgerAfterView,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
@@ -52,6 +54,7 @@ const OrderLedger = ({
         />
       </Col>
       <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
+      {orderLedgerAfterView}
     </div>
   );
 };
@@ -72,6 +75,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
   confirmationPageLedgerSummaryData: PropTypes.shape({

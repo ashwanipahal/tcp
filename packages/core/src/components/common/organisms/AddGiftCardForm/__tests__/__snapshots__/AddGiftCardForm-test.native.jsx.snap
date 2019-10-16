@@ -18,29 +18,12 @@ exports[`Add gift card form component render error message 1`] = `
   }
   onAddGiftCardClick={[MockFunction]}
   onClearError={[MockFunction]}
+  showNotification={false}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
   untouch={[MockFunction]}
 >
   <View>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="error"
-        dataLocator=""
-        fontSize="fs12"
-        fontWeight="semibold"
-        margin={null}
-        mobileFontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-        numberOfLines={null}
-        text="foo"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Field
       component={
         Object {
@@ -296,6 +279,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
   onAddGiftCardClick={[MockFunction]}
   onClearError={[MockFunction]}
+  showNotification={false}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
   untouch={[MockFunction]}

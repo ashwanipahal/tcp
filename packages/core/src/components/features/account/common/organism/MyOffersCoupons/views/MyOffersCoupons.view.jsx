@@ -186,8 +186,8 @@ class MyOffersCouponView extends PureComponent {
                 <Col
                   colSize={{
                     small: 4,
-                    medium: 4,
-                    large: 8,
+                    medium: 6,
+                    large: 9,
                   }}
                 >
                   <BodyCopy
@@ -208,8 +208,8 @@ class MyOffersCouponView extends PureComponent {
                 <Col
                   colSize={{
                     small: 2,
-                    medium: 4,
-                    large: 4,
+                    medium: 2,
+                    large: 3,
                   }}
                 >
                   {couponListSize > 0 && (
