@@ -31,6 +31,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeModal,
       isUSSite,
       getPayPalSettings,
+      containerId,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -50,6 +51,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isUSSite={isUSSite}
         inheritedStyles={inheritedStyles}
         getPayPalSettings={getPayPalSettings}
+        containerId={containerId}
       />
     );
   }
@@ -61,10 +63,12 @@ AddedToBagContainer.propTypes = {
   isInternationalShipping: PropTypes.bool.isRequired,
   isNoNEmptyBag: PropTypes.number.isRequired,
   isBagPageStickyHeader: PropTypes.bool,
+  containerId: PropTypes.string,
 };
 
 AddedToBagContainer.defaultProps = {
   isBagPageStickyHeader: false,
+  containerId: null,
 };
 
 const mapDispatchToProps = dispatch => {

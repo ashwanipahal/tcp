@@ -3,6 +3,7 @@
 exports[`ProductListingFiltersForm is shown should render ProductListingFiltersForm 1`] = `
 <Fragment>
   <Styled(Modal)
+    bodyOpenClassName={null}
     heightConfig={
       Object {
         "height": "100%",

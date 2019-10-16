@@ -26,7 +26,10 @@ import {
   getPersonalDataState,
 } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
-import checkoutSelectors, { isRemembered } from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, {
+  isRemembered,
+  isExpressCheckout,
+} from '../../Checkout/container/Checkout.selector';
 import { isMobileApp, isCanada } from '../../../../../utils';
 
 import {
@@ -42,9 +45,6 @@ import {
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
-
-// external helper function
-const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -196,7 +196,22 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   if (isMobileApp()) {
+    /** WILL UNCOMMENT AFTER confirmation of behavior from samaksh TODO-Priya */
+    // if (isExpressCheckoutEnabled) {
+    //   const navigateAction = navigationActions.navigate({
+    //     routeName: CONSTANTS.CHECKOUT_ROOT,
+    //     params: {},
+    //     action: navigationActions.navigate({
+    //       routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW,
+    //       params: {
+    //         routeTo: CONSTANTS.REVIEW_DEFAULT_PARAM,
+    //       },
+    //     }),
+    //   });
+    //   navigation.dispatch(navigateAction);
+    // } else
     if (orderHasPickup) {
       const navigateAction = navigationActions.navigate({
         routeName: CONSTANTS.CHECKOUT_ROOT,
@@ -228,7 +243,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
     const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
-    if (hasVenmoReviewPage) {
+    if (hasVenmoReviewPage || isExpressCheckoutEnabled) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
       return;
     }
@@ -344,11 +359,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
       });
       navigation.dispatch(navigateAction);
     } else {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, {
-        queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' },
-      });
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
     }
-    // redirect
   }
 }
 

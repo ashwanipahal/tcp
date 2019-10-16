@@ -396,9 +396,13 @@ class StoreAddressTile extends PureComponent {
   }
 
   render() {
-    const { className, children, variation, store, ...rest } = this.props;
+    const { className, children, variation, store, selectedStoreId, ...rest } = this.props;
     return (
-      <div className={`address-tile ${className}`}>
+      <div
+        className={`address-tile ${className} ${
+          selectedStoreId ? 'address-tile__selectedStore' : ''
+        }`}
+      >
         {variation === listingHeader && this.getListingHeader()}
         {variation !== listingHeader && (
           <Fragment>
