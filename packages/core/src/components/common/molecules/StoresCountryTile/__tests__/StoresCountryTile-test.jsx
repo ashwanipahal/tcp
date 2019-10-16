@@ -27,7 +27,7 @@ const props = {
 };
 
 describe('StoresCountryTile component', () => {
-  it.skip('StoresCountryTile component renders correctly for mobile/tablet', () => {
+  it('StoresCountryTile component renders correctly for mobile/tablet', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: true, isTablet: true }));
     const component = mount(
       <ThemeProvider theme={Theme()}>
@@ -37,7 +37,7 @@ describe('StoresCountryTile component', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-  it.skip('StoresCountryTile component renders correctly for desktop screens', () => {
+  it('StoresCountryTile component renders correctly for desktop screens', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false, isTablet: false }));
     const component = mount(
       <ThemeProvider theme={Theme()}>
@@ -47,7 +47,7 @@ describe('StoresCountryTile component', () => {
     expect(component.html()).toMatchSnapshot();
   });
 
-  it.skip('should trigger click on button when title function provided', () => {
+  it('should trigger click on button when title function provided', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false, isTablet: false }));
     const mockFn = jest.fn();
     const component = mount(
