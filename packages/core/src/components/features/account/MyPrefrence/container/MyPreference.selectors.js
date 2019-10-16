@@ -1,8 +1,8 @@
 import { formValueSelector } from 'redux-form';
-import MyPrefrenceConst from '../MyPrefrence.constants';
+import MyPreferenceConst from '../MyPrefrence.constants';
 
 export const getIsTcpSubscribe = state => {
-  const selector = formValueSelector(MyPrefrenceConst.MY_PREFRENCE_FORM);
+  const selector = formValueSelector(MyPreferenceConst.MY_PREFERENCE_FORM);
   return selector(state, 'primary3');
 };
 

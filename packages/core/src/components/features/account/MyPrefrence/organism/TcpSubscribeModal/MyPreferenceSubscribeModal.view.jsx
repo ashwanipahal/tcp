@@ -8,7 +8,6 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import styles from './styles/MyPreferenceSubscribeModal.style';
 import myPreferenceConst from '../../MyPrefrence.constants';
-import { formatPhoneNumber } from '../../../../../../utils/formValidation/phoneNumber';
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -33,7 +32,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
 
   handleSubmitData = data => {
     const { handleSubmitModalPopup } = this.props;
-    const formData = { subscribe: true, ...data };
+    const formData = { tcpSubscribe: true, ...data };
     handleSubmitModalPopup(formData);
   };
 
@@ -50,7 +49,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
       <div className={className}>
         <BodyCopy component="div" className="myPreferenceModalWrapper">
           <form
-            name={myPreferenceConst.MY_PREFRENCE_FORM_MODAL}
+            name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL}
             className={className}
             onSubmit={handleSubmit(this.handleSubmitData)}
             noValidate
@@ -103,7 +102,6 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                 component={TextBox}
                 dataLocator="editPersonalInfo-phnumber"
                 type="tel"
-                normalize={formatPhoneNumber}
               />
             </BodyCopy>
             <BodyCopy
@@ -157,7 +155,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
 const validateMethod = createValidateMethod(getStandardConfig(['phoneNumber']));
 
 export default reduxForm({
-  form: myPreferenceConst.MY_PREFRENCE_FORM_MODAL, // a unique identifier for this form
+  form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(MyPreferenceSubscribeModal, styles));

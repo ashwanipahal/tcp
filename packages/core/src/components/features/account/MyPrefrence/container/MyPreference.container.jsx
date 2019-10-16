@@ -6,6 +6,7 @@ import MyPrefrence from '../views';
 import { getIsTcpSubscribe } from './MyPreference.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
+import { getSubscribeStore, setBrandSubscribeData } from './MyPreference.actions';
 
 const getMyPrefrenceLabels = labels => {
   return (labels && labels.preferences) || {};
@@ -23,6 +24,11 @@ export class MyPrefrenceContainer extends PureComponent {
       isGymboreeSubscribeModal: false,
       isGymboreeUnsubscribeModal: false,
     };
+  }
+
+  componentDidMount() {
+    const { getSubscribeStoreAction } = this.props;
+    getSubscribeStoreAction();
   }
 
   /**
@@ -45,9 +51,32 @@ export class MyPrefrenceContainer extends PureComponent {
   };
 
   handleSubmitModalPopup = data => {
-    console.log('handleSubmit by furkan');
-    console.log(data);
-    console.log('handleSubmit by furkan');
+    const { submitSubscribeBrand } = this.props;
+    let formSubscribeData = {};
+    if (data.tcpSubscribe) {
+      formSubscribeData = {
+        mobileNumber: data.phoneNumber,
+        CustomerPreferences: [
+          {
+            isModeSelected: true,
+            preferenceMode: 'placeRewardsSms',
+          },
+        ],
+      };
+    }
+
+    if (data.tcpUnsubscribe) {
+      formSubscribeData = {
+        CustomerPreferences: [
+          {
+            isModeSelected: false,
+            preferenceMode: 'placeRewardsSms',
+          },
+        ],
+      };
+    }
+
+    submitSubscribeBrand(formSubscribeData);
   };
 
   /**
@@ -151,11 +180,24 @@ export const mapStateToProps = state => ({
   isTcpSubscribe: getIsTcpSubscribe(state),
 });
 
+export const mapDispatchToProps = dispatch => {
+  return {
+    getSubscribeStoreAction: () => {
+      dispatch(getSubscribeStore());
+    },
+    submitSubscribeBrand: payload => {
+      dispatch(setBrandSubscribeData(payload));
+    },
+  };
+};
+
 MyPrefrenceContainer.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
   isTcpSubscribe: PropTypes.bool,
+  getSubscribeStoreAction: PropTypes.func.isRequired,
+  submitSubscribeBrand: PropTypes.func.isRequired,
 };
 
 MyPrefrenceContainer.defaultProps = {
@@ -165,4 +207,7 @@ MyPrefrenceContainer.defaultProps = {
   isTcpSubscribe: false,
 };
 
-export default connect(mapStateToProps)(MyPrefrenceContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyPrefrenceContainer);

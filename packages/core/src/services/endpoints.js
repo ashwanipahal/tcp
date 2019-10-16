@@ -209,6 +209,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
   },
+  getContactPreferences: {
+    method: 'GET',
+    URI: 'v2/account/preferences',
+  },
+  setContactPreferences: {
+    method: 'PUT',
+    URI: 'v2/account/preferences',
+  },
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',

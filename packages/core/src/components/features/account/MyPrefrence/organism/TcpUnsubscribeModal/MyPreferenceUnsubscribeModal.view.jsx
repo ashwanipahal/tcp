@@ -1,8 +1,7 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { BodyCopy, Row, Col, Button } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import PropTypes from 'prop-types';
 import styles from './styles/MyPreferenceUnsubscribeModal.style';
 import myPreferenceConst from '../../MyPrefrence.constants';
@@ -30,7 +29,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
 
   handleSubmitData = () => {
     const { handleSubmitModalPopup } = this.props;
-    const data = { unsubscribe: true };
+    const data = { tcpUnsubscribe: true };
     handleSubmitModalPopup(data);
   };
 
@@ -47,7 +46,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
       <div className={className}>
         <BodyCopy component="div" className="myPreferenceModalWrapper">
           <form
-            name={myPreferenceConst.MY_PREFRENCE_FORM_MODAL_UNSUBSCRIBE}
+            name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE}
             className={className}
             onSubmit={handleSubmit(this.handleSubmitData)}
             noValidate
@@ -140,7 +139,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
 }
 
 export default reduxForm({
-  form: myPreferenceConst.MY_PREFRENCE_FORM_MODAL_UNSUBSCRIBE, // a unique identifier for this form
+  form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE, // a unique identifier for this form
   enableReinitialize: true,
 })(withStyles(MyPreferenceUnsubscribeModal, styles));
 export { MyPreferenceUnsubscribeModal as MyPreferenceUnsubscribeModalVanilla };
