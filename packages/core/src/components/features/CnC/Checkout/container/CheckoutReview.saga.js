@@ -23,7 +23,7 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { resetCheckoutReducer } from './Checkout.action';
+import { resetCheckoutReducer, setServerErrorCheckout } from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
@@ -128,27 +128,39 @@ export function* loadPersonalizedCoupons(
 }
 
 export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
-  let venmoPayloadData = {};
-  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
-  const venmoData = yield select(selectors.getVenmoData);
-  // Add Venmo Payment method to the registered user account
-  if (isVenmoSaveSelected) {
-    yield call(updateVenmoPaymentInstruction);
+  try {
+    let venmoPayloadData = {};
+    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+    const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+    const venmoData = yield select(selectors.getVenmoData);
+    const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+    // Add Venmo Payment method to the registered user account
+    if (isVenmoSaveSelected) {
+      yield call(updateVenmoPaymentInstruction);
+    }
+    if (isVenmoInProgress && venmoData) {
+      const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
+      const email = yield select(getUserEmail);
+      venmoPayloadData = {
+        venmoNonce,
+        venmo_device_data: venmoDeviceData,
+        email,
+        isVenmoSaveSelected,
+      };
+    }
+    const res = yield call(
+      submitOrder,
+      orderId,
+      smsOrderInfo,
+      currentLanguage,
+      venmoPayloadData,
+      errorMappings
+    );
+    yield put(getSetOrderConfirmationActn(res));
+    return res;
+  } catch (err) {
+    return yield put(setServerErrorCheckout({ errorMessage: err, component: 'PAGE' }));
   }
-  if (isVenmoInProgress && venmoData) {
-    const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
-    const email = yield select(getUserEmail);
-    venmoPayloadData = {
-      venmoNonce,
-      venmo_device_data: venmoDeviceData,
-      email,
-      isVenmoSaveSelected,
-    };
-  }
-  const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
-  yield put(getSetOrderConfirmationActn(res));
-  return res;
 }
 
 // method to handle submit of order in review page

@@ -121,6 +121,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      checkoutServerError,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -167,6 +168,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        checkoutServerError={checkoutServerError}
       />
     );
   }
@@ -285,6 +287,7 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    checkoutServerError: selectors.getCheckoutServerError(state),
   };
 };
 

@@ -25,6 +25,7 @@ import {
   setAddressError,
   getSetIntlUrl,
   setShippingLoadingState,
+  setServerErrorCheckout,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -617,7 +618,6 @@ function* submitShipping({
   }
   const {
     payload: { addressId },
-    addressKey,
   } = addOrEditAddressRes;
   // Retrieve phone number info for sms updates
   yield saveLocalSmsInfo(smsInfo);
@@ -628,7 +628,6 @@ function* submitShipping({
     addressId,
     false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
     smsInfo ? smsInfo.smsUpdateNumber : null,
-    addressKey,
     yield select(BagPageSelectors.getErrorMapping)
   );
   // return getPlccOperator(store)
@@ -702,6 +701,7 @@ function* submitShippingSection({ payload: { navigation, ...formData } }) {
   } catch (err) {
     yield put(setShippingLoadingState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
+    yield put(setServerErrorCheckout({ errorMessage: err, component: 'PAGE' }));
   }
 }
 

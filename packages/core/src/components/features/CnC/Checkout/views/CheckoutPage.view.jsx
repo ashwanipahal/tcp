@@ -11,6 +11,7 @@ import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
 import { routerPush } from '../../../../../utils';
+import ErrorMessage from '../../common/molecules/ErrorMessage';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -93,6 +94,17 @@ class CheckoutPage extends React.PureComponent {
         !this.isVenmoPickupDisplayed()) ||
         (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING &&
           !this.isVenmoShippingDisplayed()))
+    );
+  };
+
+  renderPageErrors = () => {
+    const { checkoutServerError } = this.props;
+    return (
+      <div className="checkout-page-error-container">
+        {checkoutServerError && (
+          <ErrorMessage error={checkoutServerError.errorMessage} className="checkout-page-error" />
+        )}
+      </div>
     );
   };
 
@@ -206,6 +218,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
           <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
         )}
+        {this.renderPageErrors()}
       </div>
     );
   };
@@ -261,6 +274,7 @@ CheckoutPage.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,
+  checkoutServerError: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
