@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<ScrollViewMock>
+<LazyloadScrollView
+  horizontal={false}
+  name="lazyload-pdp"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
+>
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
       imageUrls={Array []}
@@ -68,5 +74,5 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       }
     />
   </Styled(View)>
-</ScrollViewMock>
+</LazyloadScrollView>
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
@@ -95,7 +96,7 @@ class ProductDetailView extends React.PureComponent {
     }
 
     return (
-      <ScrollView>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
           <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
           <ProductSummary
@@ -130,7 +131,7 @@ class ProductDetailView extends React.PureComponent {
           {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }

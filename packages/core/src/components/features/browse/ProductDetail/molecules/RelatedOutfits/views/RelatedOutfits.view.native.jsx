@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import { StyleRelatedOutfits, ImageStyleWrapper } from '../RelatedOutfits.native.style';
 import ModuleQ from '../../../../../../common/molecules/ModuleQ';
@@ -36,6 +37,7 @@ class RelatedOutfits extends React.PureComponent {
             accessibility={accessibility}
             {...data}
             navigation={navigation}
+            hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
             {...others}
           />
         )
