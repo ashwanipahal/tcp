@@ -6,6 +6,12 @@ export default css`
   justify-content: center;
   margin-bottom: 40px;
 
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    > div:nth-child(1) {
+      margin-bottom: 32px;
+    }
+  }
+
   .moduleN {
     display: flex;
     justify-content: center;
