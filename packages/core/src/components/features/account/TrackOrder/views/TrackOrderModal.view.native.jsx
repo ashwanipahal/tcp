@@ -1,8 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { SafeAreaView } from 'react-native';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import ModalNative from '../../../../common/molecules/Modal';
 import TrackOrderViewTemplate from '../molecules/TrackOrderView';
 
 /**
@@ -15,7 +13,8 @@ export class TrackOrderModal extends React.PureComponent {
    * @function onCloseModal  Used to close the modal
    */
   onClose = () => {
-    const { setModalMountState } = this.props;
+    const { navigation, setModalMountState } = this.props;
+    navigation.navigate('Account');
     setModalMountState({ state: false });
   };
 
@@ -26,8 +25,6 @@ export class TrackOrderModal extends React.PureComponent {
    */
   render() {
     const {
-      openState,
-      setModalMountState,
       labels,
       onSubmit,
       errorMessage,
@@ -37,33 +34,23 @@ export class TrackOrderModal extends React.PureComponent {
       handleToggle,
     } = this.props;
     return (
-      <ModalNative
-        isOpen={openState}
-        onRequestClose={this.onClose}
-        headingFontFamily="secondary"
-        fontSize="fs16"
-        heading={getLabelValue(labels, 'lbl_header_trackOrderOverlay_appHeader', 'trackOrder')}
-      >
-        <SafeAreaView>
-          <TrackOrderViewTemplate
-            labels={labels}
-            errorMessage={errorMessage}
-            isGuestUser={isUserLoggedIn}
-            onSubmit={onSubmit}
-            showNotification={showNotification}
-            onChangeForm={onChangeForm}
-            handleToggle={handleToggle}
-            setModalMountState={setModalMountState}
-          />
-        </SafeAreaView>
-      </ModalNative>
+      <SafeAreaView>
+        <TrackOrderViewTemplate
+          labels={labels}
+          errorMessage={errorMessage}
+          isGuestUser={isUserLoggedIn}
+          onSubmit={onSubmit}
+          showNotification={showNotification}
+          onChangeForm={onChangeForm}
+          handleToggle={handleToggle}
+          onRequestClose={this.onClose}
+        />
+      </SafeAreaView>
     );
   }
 }
 
 TrackOrderModal.propTypes = {
-  openState: PropTypes.bool.isRequired,
-  setModalMountState: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     trackOrder: PropTypes.shape({}),
   }).isRequired,
@@ -73,6 +60,8 @@ TrackOrderModal.propTypes = {
   onChangeForm: PropTypes.func.isRequired,
   showNotification: PropTypes.string.isRequired,
   handleToggle: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
+  setModalMountState: PropTypes.func.isRequired,
 };
 
 export default TrackOrderModal;

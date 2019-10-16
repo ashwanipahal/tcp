@@ -17,7 +17,7 @@ import {
 class TrackOrderBottomSection extends React.Component {
   handleDefaultLinkClick(e) {
     e.preventDefault();
-    const { toggleModal, setModalMountState } = this.props;
+    const { toggleModal } = this.props;
     const comp = {
       getComponentId: {
         login: true,
@@ -25,7 +25,6 @@ class TrackOrderBottomSection extends React.Component {
         trackOrder: false,
       },
     };
-    setModalMountState({ state: false });
     toggleModal(comp);
   }
 
@@ -70,7 +69,6 @@ TrackOrderBottomSection.propTypes = {
     trackOrder: PropTypes.shape({}),
   }).isRequired,
   toggleModal: PropTypes.func.isRequired,
-  setModalMountState: PropTypes.func.isRequired,
 };
 
 export default TrackOrderBottomSection;

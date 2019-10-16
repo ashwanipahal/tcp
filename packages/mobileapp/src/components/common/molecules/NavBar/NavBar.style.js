@@ -11,6 +11,7 @@ const container = styled.View`
   height: 55px;
   justify-content: center;
   background-color: white;
+  z-index: 9999;
 `;
 
 const logoStyle = styled.TouchableOpacity`
@@ -40,6 +41,7 @@ const navContainer = styled.View`
   justify-content: center;
   background-color: ${colorPallete.white};
   align-items: center;
+  z-index: 999999;
 `;
 
 export default {

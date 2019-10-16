@@ -2,15 +2,52 @@
 
 exports[`TrackOrderTopSection component should renders correctly 1`] = `
 <Styled(View)>
-  <Styled(BodyCopy)
-    accessibilityText=""
-    data-locator="trackordermodal-overlaysubheading"
-    dataLocator=""
-    id="trackorder__modal__subheading"
-    margin={null}
-    numberOfLines={null}
-    text="lbl_trackOrder_subheader"
-    textDecoration={null}
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        data-locator="trackordermodal-overlayheading"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="extrabold"
+        id="trackorder__modal__subheading"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_header_trackOrderOverlay_appHeader"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        accessibilityLabel="close"
+        accessibilityRole="button"
+      >
+        <Styled(Image)
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/close.png",
+            }
+          }
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(LineComp)
+    borderColor="black"
+    borderWidth={2}
+    marginBottom={0}
+    marginTop={5}
   />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator="trackordermodal-overlaysubheading"
+      dataLocator=""
+      margin={null}
+      numberOfLines={null}
+      text="lbl_trackOrder_subheader"
+      textDecoration={null}
+    />
+  </Styled(View)>
 </Styled(View)>
 `;
