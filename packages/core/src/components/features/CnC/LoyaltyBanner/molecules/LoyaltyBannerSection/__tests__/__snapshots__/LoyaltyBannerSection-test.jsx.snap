@@ -22,9 +22,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={1}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -37,6 +35,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
         }
         isPlcc={true}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         pointsDescription={
           <span
@@ -47,21 +46,20 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
             }
           />
         }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        remainingPlcc=""
       />
       <div
         className="footer alignCenter"
-      />
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -89,9 +87,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={0}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -104,6 +100,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
         }
         isPlcc={true}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         pointsDescription={
           <span
@@ -114,21 +111,20 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
             }
           />
         }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        remainingPlcc=""
       />
       <div
         className="footer alignCenter"
-      />
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -156,9 +152,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={1}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -171,27 +165,21 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         }
         isPlcc={false}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc=""
-        showSubtotal={true}
       />
       <div
         className="footer alignCenter"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -220,9 +208,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={1}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -235,6 +221,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
         }
         isPlcc={true}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         pointsDescription={
           <span
@@ -245,21 +232,20 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
             }
           />
         }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        remainingPlcc=""
       />
       <div
         className="footer alignCenter"
-      />
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={true}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -287,9 +273,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={0}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -302,27 +286,21 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         }
         isPlcc={false}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc=""
-        showSubtotal={true}
       />
       <div
         className="footer alignCenter"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -351,9 +329,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         className=""
         currentSubtotal={21}
-        earnedReward={0}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
         headingLabel={
           <span
@@ -366,27 +342,21 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         }
         isPlcc={false}
         isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc=""
-        showSubtotal={true}
       />
       <div
         className="footer alignCenter"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          isGuest={true}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>
