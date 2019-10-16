@@ -183,6 +183,7 @@ class BagPageView extends React.Component {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          containerId="paypal-button-container-bag"
         />
       </div>
     );
@@ -237,6 +238,7 @@ class BagPageView extends React.Component {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                containerId="paypal-button-container-bag-header"
               />
             </Col>
           </Row>
@@ -258,13 +260,13 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob } = this.state;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {this.stickyBagCondensedHeader()}
+        {showCondensedHeader && this.stickyBagCondensedHeader()}
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}

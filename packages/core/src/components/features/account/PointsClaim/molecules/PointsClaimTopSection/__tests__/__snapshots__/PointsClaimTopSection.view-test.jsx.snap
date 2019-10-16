@@ -42,7 +42,7 @@ exports[`PointsClaimTopSection component should renders correctly 1`] = `
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="elem-mb-XL"
+    className="elem-mb-XL myAccountRightView"
     data-locator="historyPointsLbl"
     heading="lbl_points_claim_heading"
   />

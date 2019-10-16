@@ -126,6 +126,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       Subtotal: undefined112.00
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
+      containerId="paypal-button-container-minibag"
       isEditingItem={false}
       showAddTobag={false}
       showVenmo={false}

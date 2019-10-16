@@ -11,7 +11,22 @@ const initialState = fromJS({
   children: null,
   favoriteStore: null,
   defaultStore: null,
+  isRegisteredUserCallDone: false,
 });
+
+const getUserReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case USER_CONSTANTS.SET_IS_EXPRESS_ELIGIBLE:
+      return state.setIn(['personalData', 'isExpressEligible'], payload);
+    case USER_CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE:
+      return state.set('isRegisteredUserCallDone', true);
+    default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
 
 const UserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -93,12 +108,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
           answers: [],
         })
       );
-
     default:
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return getUserReducer(state, { type, payload });
   }
 };
 

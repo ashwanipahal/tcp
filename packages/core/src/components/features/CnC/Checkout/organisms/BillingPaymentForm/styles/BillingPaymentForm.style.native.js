@@ -46,6 +46,7 @@ const BillingAddressHeader = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   display: flex;
   flex-direction: row;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 const CreditCardHeader = styled.View`
   top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
@@ -67,6 +68,12 @@ const PaymentMethodMainWrapper = styled.View`
 const PaymentMethodImage = styled.View`
   flex: 0.5;
 `;
+const DefaultPaymentWrapper = styled.View`
+  margin-bottom: ${props => (props.isSpace ? props.theme.spacing.ELEM_SPACING.LRG : '0')};
+  display: flex;
+  flex-direction: row;
+  margin-top: ${props => (props.isSpace ? props.theme.spacing.ELEM_SPACING.LRG : '0')};
+`;
 export {
   CvvCode,
   CvvTextboxStyle,
@@ -84,4 +91,5 @@ export {
   DefaultPaymentTextWrapper,
   PaymentMethodMainWrapper,
   PaymentMethodImage,
+  DefaultPaymentWrapper,
 };

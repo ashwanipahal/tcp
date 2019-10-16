@@ -58,6 +58,7 @@ export const AddEditCreditCard = ({
       <FormPageHeading
         heading={pageHeading(pageheading)}
         data-locator="payment-addcreditordebitcardheader"
+        className="myAccountRightView"
       />
       {globalErrorMessage && showNotification && (
         <Notification
@@ -89,6 +90,7 @@ export const AddEditCreditCard = ({
             showCreditCardFields={showCreditCardFields}
             addressFormLabels={addressFormLabels}
             formErrorMessage={formErrorMessage}
+            onFileAddressKey={onFileAddressKey}
             {...otherProps}
           />
         </div>
@@ -100,6 +102,7 @@ export const AddEditCreditCard = ({
           initialValues={initialValues}
           addressFormLabels={addressFormLabels}
           formErrorMessage={formErrorMessage}
+          onFileAddressKey={onFileAddressKey}
           {...otherProps}
         />
       )}

@@ -21,7 +21,7 @@ const AccountComponentNativeMapping = {
   pointHistoryPageMobile: PointHistoryPage,
   myPreferencePageMobile: MyPrefrenceContainer,
   PointsClaimPageMobile: PointsClaimPage,
-  myOrdersPageMobile: Orders
+  myOrdersPageMobile: Orders,
 };
 
 export default AccountComponentNativeMapping;

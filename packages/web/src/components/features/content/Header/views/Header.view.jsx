@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
-import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
