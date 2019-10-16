@@ -1,1 +1,1 @@
-export { default } from '../components/features/account/twitter';
+export { default } from '../components/features/account/Instagram';
