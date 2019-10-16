@@ -896,6 +896,11 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getExpressReviewShippingSectionId = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'expressReviewShippingSection');
+};
+
 export default {
   getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
@@ -976,4 +981,5 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getExpressReviewShippingSectionId,
 };
