@@ -195,7 +195,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +250,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -689,7 +689,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-jTzLTM",
               "isStatic": false,
               "rules": Array [
                 "
@@ -744,7 +744,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-jTzLTM",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

@@ -235,9 +235,9 @@ class StoreAddressTile extends PureComponent {
   }
 
   render() {
-    const { children, variation } = this.props;
+    const { children, variation, selectedStoreId } = this.props;
     return (
-      <StoreAddressTileRoot variation={variation}>
+      <StoreAddressTileRoot variation={variation} selectedStoreId={selectedStoreId}>
         <TileHeader>
           {variation === detailsType && this.getDetailsHeader()}
           {variation !== detailsType && this.getListingHeader()}

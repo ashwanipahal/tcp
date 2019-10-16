@@ -58,9 +58,9 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               data-locator="obal_headerpanelbagicon"
               dataLocator=""
               fontSize="fs10"
+              fontWeight="extrabold"
               margin={null}
               numberOfLines={null}
-              text={0}
               textDecoration={null}
             />
           </Styled(View)>

@@ -185,6 +185,7 @@ class MiniBagBody extends React.PureComponent {
                 {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
               </BodyCopy>
               <AddedToBagActions
+                containerId="paypal-button-container-minibag"
                 showAddTobag={false}
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
