@@ -86,7 +86,7 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'search',
-    path: '/search/:searchQuery',
+    path: '/search/:searchQuery?',
     resolver: '/SearchDetail',
     params: ['searchQuery'],
   },

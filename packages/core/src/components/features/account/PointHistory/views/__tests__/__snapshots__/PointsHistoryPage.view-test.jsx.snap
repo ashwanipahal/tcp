@@ -39,7 +39,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="elem-mb-XL"
+    className="elem-mb-XL myAccountRightView"
     dataLocator="points_history_heading"
     heading="lbl_common_points_history_heading"
   />

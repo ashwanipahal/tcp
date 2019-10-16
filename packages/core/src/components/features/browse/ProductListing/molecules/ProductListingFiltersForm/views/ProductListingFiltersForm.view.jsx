@@ -299,6 +299,7 @@ class ProductListingFiltersForm extends React.Component {
       onSubmit,
       sortLabels,
       slpLabels,
+      isFilterBy,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
 
@@ -311,19 +312,21 @@ class ProductListingFiltersForm extends React.Component {
           {totalProductsCount > 0 && (
             <div className={`${className} desktop-dropdown`}>
               <div className="filters-only-container">
-                <BodyCopy
-                  component="span"
-                  role="option"
-                  textAlign="center"
-                  tabIndex={0}
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                  color="gray.900"
-                  outline="none"
-                  data-locator={getLocator('plp_filter_label_filterby')}
-                >
-                  {`${labels.lbl_filter_by}`}
-                </BodyCopy>
+                {isFilterBy && (
+                  <BodyCopy
+                    component="span"
+                    role="option"
+                    textAlign="center"
+                    tabIndex={0}
+                    fontSize="fs14"
+                    fontFamily="secondary"
+                    color="gray.900"
+                    outline="none"
+                    data-locator={getLocator('plp_filter_label_filterby')}
+                  >
+                    {`${labels.lbl_filter_by}`}
+                  </BodyCopy>
+                )}
 
                 {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
               </div>
@@ -452,6 +455,7 @@ ProductListingFiltersForm.propTypes = {
   change: PropTypes.func,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFilterBy: PropTypes.bool,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -466,6 +470,7 @@ ProductListingFiltersForm.defaultProps = {
   change: () => null,
   sortLabels: [],
   slpLabels: {},
+  isFilterBy: true,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form
