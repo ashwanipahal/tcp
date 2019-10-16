@@ -187,6 +187,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
   showSortModal = () => {
     this.setState({ show: true, isSortOpenModal: true });
+    document.body.style.height = '90vh';
+    document.body.style.position = 'fixed';
   };
   /**
    * @function toggleFilterIcon

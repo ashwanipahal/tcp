@@ -19,6 +19,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
         asPath="/myWalletPage"
         fontSizeVariation="large"
         fontWeightVariation=""
+        onClick={[Function]}
       >
         My Wallet
       </Styled(Anchor)>
@@ -33,6 +34,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
         asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
         fontWeightVariation=""
+        onClick={[Function]}
       >
         Earn Extra Points
       </Styled(Anchor)>
@@ -47,6 +49,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
         asPath="/account/place-rewards"
         fontSizeVariation="large"
         fontWeightVariation="active"
+        onClick={[Function]}
         to="/account?id=myPlaceRewards"
       >
         My Place Rewards
@@ -64,6 +67,7 @@ exports[`My Account Left Nav should render links with sub section  1`] = `
             asPath="/account/place-rewards/points-history"
             fontSizeVariation="large"
             fontWeightVariation=""
+            onClick={[Function]}
             to="/account?id=pointsHistoryPage"
           >
             Points History
@@ -88,6 +92,7 @@ exports[`My Account Left Nav should render only 2  links if navData has 2 links 
         asPath="/myWalletPage"
         fontSizeVariation="large"
         fontWeightVariation="active"
+        onClick={[Function]}
       >
         My Wallet
       </Styled(Anchor)>
@@ -102,6 +107,7 @@ exports[`My Account Left Nav should render only 2  links if navData has 2 links 
         asPath="/earnExtraPointsPage"
         fontSizeVariation="large"
         fontWeightVariation=""
+        onClick={[Function]}
       >
         Earn Extra Points
       </Styled(Anchor)>
