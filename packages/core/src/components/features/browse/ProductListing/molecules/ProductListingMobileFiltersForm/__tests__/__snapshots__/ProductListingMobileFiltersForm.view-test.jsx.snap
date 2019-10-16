@@ -14,6 +14,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         "
   div.TCPModal__InnerContent {
     background: none;
+    z-index: ",
+        [Function],
+        ";
   }
   button.close-modal {
     display: none;

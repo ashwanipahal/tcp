@@ -47,6 +47,7 @@ describe('Cart Item saga', () => {
   it('should dispatch getCartDataSaga action for success resposnse', () => {
     const getCartDataSagaGen = getCartDataSaga({ payload: {} });
     getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
 
     const res = {
       orderDetails: {
