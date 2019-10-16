@@ -199,7 +199,21 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
     <Styled(View) />
   </Styled(View)>
   <View>
-    <Styled(View) />
+    <Skeleton
+      col={3}
+      colProps={Object {}}
+      height={170}
+      otherprops={Object {}}
+      row={1}
+      rowProps={
+        Object {
+          "justifyContent": "center",
+          "marginTop": "20px",
+        }
+      }
+      showArrows={true}
+      width={190}
+    />
     <Styled(View)>
       <Styled(View) />
       <Styled(View) />
@@ -214,7 +228,21 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
         url=""
       />
     </Styled(View)>
-    <Styled(View) />
+    <Skeleton
+      col={3}
+      colProps={Object {}}
+      height={200}
+      otherprops={Object {}}
+      row={1}
+      rowProps={
+        Object {
+          "justifyContent": "center",
+          "marginTop": "20px",
+        }
+      }
+      showArrows={true}
+      width={200}
+    />
   </View>
 </Styled(View)>
 `;
