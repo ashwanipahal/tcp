@@ -4,7 +4,9 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
 <div
   className="className"
 >
-  <Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       colSize={
         Object {
