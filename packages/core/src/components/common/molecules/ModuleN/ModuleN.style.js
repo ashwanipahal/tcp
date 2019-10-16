@@ -41,6 +41,12 @@ export default css`
     }
   }
 
+  .ModuleN-heading {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline-block;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .heading-wrapper {
       text-align: center;

@@ -24,7 +24,7 @@ const StyledCarousel = styled(Carousel)`
     left: 36px;
   }
   .slick-dots {
-    bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     z-index: 1;
   }
 `;
