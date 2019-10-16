@@ -34,6 +34,8 @@ import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialProps
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
+import LoyaltyBanner from '../../LoyaltyBanner';
+
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
 export class BagPage extends React.Component {
@@ -308,6 +310,7 @@ export class BagPage extends React.Component {
                 <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
+              <LoyaltyBanner />
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}

@@ -775,6 +775,17 @@ export const isPastStoreHours = (date1, date2) => {
 };
 
 /**
+ * Function to parse the store timing in correct format
+ * @param {String} dateString Non UTC Format Date
+ */
+export const parseUTCDate = dateString => {
+  const dateParams = dateString.replace(/ UTC/, '').split(/[\s-:]/);
+  dateParams[1] = (parseInt(dateParams[1], 10) - 1).toString();
+
+  return new Date(Date.UTC(...dateParams));
+};
+
+/**
  * Function to get the stores hours based on the current date
  * @param {Array} intervals The store hours array
  * @param {Date} currentDate The current date to be checked against
@@ -782,7 +793,7 @@ export const isPastStoreHours = (date1, date2) => {
 export const getCurrentStoreHours = (intervals = [], currentDate) => {
   let selectedInterval = intervals.filter(hour => {
     const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-    const parsedDate = new Date(toInterval);
+    const parsedDate = new Date(parseUTCDate(toInterval));
     return (
       parsedDate.getDate() === currentDate.getDate() &&
       parsedDate.getMonth() === currentDate.getMonth() &&
@@ -794,7 +805,7 @@ export const getCurrentStoreHours = (intervals = [], currentDate) => {
   if (!selectedInterval.length) {
     selectedInterval = intervals.filter(hour => {
       const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-      const parsedDate = new Date(toInterval);
+      const parsedDate = new Date(parseUTCDate(toInterval));
       return (
         parsedDate.getDay() === currentDate.getDay() &&
         parsedDate.getFullYear() === currentDate.getFullYear()
