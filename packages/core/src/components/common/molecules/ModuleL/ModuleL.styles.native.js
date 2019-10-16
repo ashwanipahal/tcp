@@ -29,7 +29,7 @@ export const LinkContainer = styled.View`
 `;
 
 export const ListContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export default {

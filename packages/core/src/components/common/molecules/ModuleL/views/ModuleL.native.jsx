@@ -70,6 +70,7 @@ const renderItem = (item, navigation) => {
               color="gray.900"
               letterSpacing="ls222"
               text={image.alt}
+              fontfamily="primary"
               testID={`${getLocator('moduleL_title')}${index + 1}`}
             />
           </BodyCopyContainer>
@@ -107,10 +108,10 @@ const ModuleL = ({ headerText, imageGrid, navigation, promoBanner }) => {
           navigation={navigation}
           type="heading"
           fontFamily="primary"
-          fontSize="fs36"
+          fontSize="fs32"
           letterSpacing="ls167"
           textAlign="center"
-          color="text.primary"
+          color="gray.900"
           fontWeight="black"
           testID={getLocator('moduleL_header_text')}
         />
