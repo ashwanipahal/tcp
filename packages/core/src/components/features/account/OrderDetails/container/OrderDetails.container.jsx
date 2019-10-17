@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OrderDetailsView from '../views';
 import { getOrderDetails } from './OrderDetails.actions';
-import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
+import { getOrderDetailsDataState, getOrdersLabels, getOrderId } from './OrderDetails.selectors';
 
 /**
  * This Class component use for return the Order Details data
@@ -47,7 +47,7 @@ export const mapDispatchToProps = dispatch => {
 
 export const mapStateToProps = (state, ownProps) => {
   return {
-    orderId: ownProps.router.query.orderId,
+    orderId: getOrderId(state, ownProps),
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
   };

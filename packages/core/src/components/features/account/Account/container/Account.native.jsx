@@ -60,6 +60,7 @@ export class Account extends React.PureComponent<Props, State> {
       PointsClaimPageMobile: 'PointsClaimPageMobile',
       myOrdersPageMobile: 'myOrdersPageMobile',
       addressBookMobile: 'addressBookMobile',
+      orderDetailPageMobile: 'orderDetailPageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];
