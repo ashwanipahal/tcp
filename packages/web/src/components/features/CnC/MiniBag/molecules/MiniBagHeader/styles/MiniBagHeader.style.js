@@ -66,7 +66,6 @@ export default css`
     margin-right: 16px;
   }
   .pointsRewards {
-    color: ${props => props.theme.colorPalette.orange['800']};
     padding-left: 6px;
     white-space: nowrap;
     width: auto;
