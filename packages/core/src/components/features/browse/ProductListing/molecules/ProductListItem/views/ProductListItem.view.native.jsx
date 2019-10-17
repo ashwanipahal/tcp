@@ -59,14 +59,8 @@ const ListItem = props => {
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
 
-  // if (renderPriceAndBagOnly) {
-  //   return (
-  //     <RenderPriceAndBagOnlyVariation {...props} />
-  //   );
-  // }
-
   return (
-    <ListContainer accessible fullWidth={fullWidth}>
+    <ListContainer accessible fullWidth={fullWidth} renderPriceAndBagOnly={renderPriceAndBagOnly}>
       {!renderPriceAndBagOnly && <RenderTopBadge1 text={badge1} />}
       <ImageSection
         item={item}
