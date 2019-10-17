@@ -101,4 +101,5 @@ export default {
   'modules-s-left-ribbon': '/static/images/module-s-left-ribbon.png',
   'modules-s-right-ribbon': '/static/images/module-s-right-ribbon.png',
   'icon-expand': '/static/images/icon-expand.svg',
+  'img-placeholder': '/static/images/img-placeholder.png',
 };

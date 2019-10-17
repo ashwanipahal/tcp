@@ -7,6 +7,8 @@ import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
 import { cropImageUrl } from '../../../../../utils/index.native';
 
+const placeHolderImg = require('../../../../../assets/img-placeholder.png');
+
 /**
  * DamImage returns two types of images
  * 1. Image from react-native
@@ -29,6 +31,7 @@ const DamImage = (props: Props) => {
       accessibilityRole="image"
       accessibilityLabel={alt || ''}
       source={{ uri: cropImageUrl(urlVal, cropVal, namedTransformation) }}
+      defaultSource={placeHolderImg}
     />
   );
 };

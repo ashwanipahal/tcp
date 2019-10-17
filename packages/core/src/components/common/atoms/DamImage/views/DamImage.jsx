@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getIconPath,
+} from '../../../../../utils';
+
+const placeHolderImg = getIconPath('img-placeholder');
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -61,7 +67,17 @@ const renderImage = imgProps => {
   } = imgProps;
 
   const { alt } = imgData;
-
+  const [isImgLoaded, setImgLoaded] = useState(false);
+  const imgTag = !isImgLoaded ? (
+    <img src={placeHolderImg} alt={alt} className="img-placeholder" />
+  ) : (
+    <img
+      src={getBreakpointImgUrl('xs', imgProps)}
+      alt={alt}
+      {...other}
+      onLoad={() => setImgLoaded(true)}
+    />
+  );
   return (
     <picture>
       <source
@@ -75,9 +91,14 @@ const renderImage = imgProps => {
       />
 
       {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <LazyLoadImage
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+          placeholderClass="img-placeholder"
+        />
       ) : (
-        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        imgTag
       )}
     </picture>
   );
