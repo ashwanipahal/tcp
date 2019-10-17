@@ -53,13 +53,15 @@ export const getVisibleWishlistItems = (items, filterId, sortId) => {
 export const getSortsList = labels =>
   Object.keys(WISHLIST_SORTS).map(key => ({
     id: key,
-    displayName: labels ? labels.WISHLIST_SORTS[key].displayName : WISHLIST_SORTS[key].displayName,
+    displayName: Object.keys(labels).length
+      ? labels.WISHLIST_SORTS[key].displayName
+      : WISHLIST_SORTS[key].displayName,
   }));
 
 export function getNonEmptyFiltersList(items, labels) {
   return Object.keys(WISHLIST_FILTERS).map(key => ({
     id: key,
-    displayName: labels
+    displayName: Object.keys(labels).length
       ? labels.WISHLIST_FILTERS[key].displayName
       : WISHLIST_FILTERS[key].displayName,
     facetName: 'display_group_uFilter',
