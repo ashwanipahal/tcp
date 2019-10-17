@@ -65,6 +65,19 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  // large text with bold
+  medium_text_regular: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs32"
+        fontWeight="black"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
