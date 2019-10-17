@@ -317,7 +317,6 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     if (!data) {
       return null;
     }
-    console.info('1111iconBottomMarginiconBottomMargin--', iconBottomMargin);
 
     const { autoplay, activeSlide } = this.state;
     const settings = { ...defaults, ...options };
