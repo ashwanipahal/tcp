@@ -51,12 +51,8 @@ const getListingCount = store => {
 
 const getStoreId = store => {
   const state = store.getState();
-  return (
-    state.User &&
-    state.User.get('defaultStore') &&
-    state.User.get('defaultStore').basicInfo &&
-    state.User.get('defaultStore').basicInfo.id
-  );
+  const defaultStore = state.User && state.User.get('defaultStore');
+  return defaultStore.basicInfo && defaultStore.basicInfo.id;
 };
 
 export const generateBrowseDataLayer = store => {
