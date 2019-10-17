@@ -43,6 +43,15 @@
 		205AA737234351D3000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
 		205AA738234351E1000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
 		205AA739234351EB000A190A /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 202455B6233C9ADB009D482E /* libRCTFBSDK.a */; };
+		20A5C28E2358661500A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2C82358661C00A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2C92358662300A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CA2358662A00A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CB2358663200A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CC2358663800A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CD2358664600A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CE2358664D00A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20A5C2CF2358665400A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
 		25D5AE82AE664358A8DBBBE1 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -1035,6 +1044,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C28E2358661500A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9DE2345C9D0000A022D /* libRNCardIO.a in Frameworks */,
 				205AA73123435148000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AC8232FBC4F00908A8B /* libRNPrint.a in Frameworks */,
@@ -1069,6 +1079,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2C82358661C00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9DF2345C9E5000A022D /* libRNCardIO.a in Frameworks */,
 				205AA73223435175000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACA232FBC5E00908A8B /* libRNPrint.a in Frameworks */,
@@ -1103,6 +1114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2C92358662300A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E02345CA2B000A022D /* libRNCardIO.a in Frameworks */,
 				205AA733234351A6000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACC232FBD0600908A8B /* libRNPrint.a in Frameworks */,
@@ -1137,6 +1149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CA2358662A00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E12345CA39000A022D /* libRNCardIO.a in Frameworks */,
 				205AA734234351B1000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538ACE232FBD1200908A8B /* libRNPrint.a in Frameworks */,
@@ -1171,6 +1184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CC2358663800A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E32345CA50000A022D /* libRNCardIO.a in Frameworks */,
 				205AA736234351C7000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD2232FBD2900908A8B /* libRNPrint.a in Frameworks */,
@@ -1205,6 +1219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CD2358664600A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E42345CA65000A022D /* libRNCardIO.a in Frameworks */,
 				205AA737234351D3000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD4232FBD3900908A8B /* libRNPrint.a in Frameworks */,
@@ -1239,6 +1254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CE2358664D00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E52345CA72000A022D /* libRNCardIO.a in Frameworks */,
 				205AA738234351E1000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD6232FBD4600908A8B /* libRNPrint.a in Frameworks */,
@@ -1273,6 +1289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CF2358665400A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E62345CA7E000A022D /* libRNCardIO.a in Frameworks */,
 				205AA739234351EB000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD8232FBD5000908A8B /* libRNPrint.a in Frameworks */,
@@ -1307,6 +1324,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A5C2CB2358663200A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E22345CA46000A022D /* libRNCardIO.a in Frameworks */,
 				205AA735234351BD000A190A /* libRCTFBSDK.a in Frameworks */,
 				79538AD0232FBD1E00908A8B /* libRNPrint.a in Frameworks */,
