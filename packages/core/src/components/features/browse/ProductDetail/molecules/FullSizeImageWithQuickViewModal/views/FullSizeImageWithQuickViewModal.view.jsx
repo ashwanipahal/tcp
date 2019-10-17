@@ -37,7 +37,7 @@ const FullSizeImageWithQuickViewModal = props => {
       <div className="overlay-content">
         {!isMobile && (
           <form noValidate>
-            <Row className="edit-form-css">
+            <Row>
               <Col colSize={{ small: 10, medium: 10, large: 10 }}>
                 <div className="select-value-wrapper">
                   {colorList && colorList.size > 0 && (
