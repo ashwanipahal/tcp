@@ -12,7 +12,13 @@ import EmptyOrdersList from '../../EmptyOrdersList';
  * This component will render RecentOrders component
  * @param { string, object, object }
  */
-export const RecentOrders = ({ ordersListItems, labels, navigation }) => {
+export const RecentOrders = ({
+  ordersListItems,
+  labels,
+  navigation,
+  handleComponentChange,
+  router,
+}) => {
   return (
     <>
       <ViewWithSpacing spacingStyles="margin-bottom-MED">
@@ -29,7 +35,13 @@ export const RecentOrders = ({ ordersListItems, labels, navigation }) => {
       </ViewWithSpacing>
       {ordersListItems && ordersListItems.length ? (
         <>
-          <OrdersListItem labels={labels} orderItem={ordersListItems[0]} navigation={navigation} />
+          <OrdersListItem
+            labels={labels}
+            orderItem={ordersListItems[0]}
+            navigation={navigation}
+            handleComponentChange={handleComponentChange}
+            router={router}
+          />
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
@@ -50,6 +62,13 @@ RecentOrders.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  handleComponentChange: PropTypes.func,
+  router: PropTypes.shape({}),
+};
+
+RecentOrders.defaultProps = {
+  handleComponentChange: () => {},
+  router: {},
 };
 
 export default RecentOrders;

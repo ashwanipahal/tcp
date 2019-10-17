@@ -46,6 +46,7 @@ import OutfitDetailReducer from '@tcp/core/src/components/features/browse/Outfit
 import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
+import OrderDetailsDataReducer from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -104,6 +105,7 @@ import {
   SLP_PAGE_REDUCER_KEY,
   EXTRA_POINTS_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
+  ORDERDETAILS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
   OUTFIT_DETAILS_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
@@ -211,6 +213,7 @@ const rootReducer = combineReducers({
   [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
+  [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,

@@ -12,8 +12,10 @@ exports[`OrdersList View component should renders correctly 1`] = `
     marginTop={0}
   />
   <RecentOrders
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={Object {}}
+    router={Object {}}
   />
 </Fragment>
 `;
@@ -30,6 +32,7 @@ exports[`OrdersList View component should renders correctly 2`] = `
     marginTop={0}
   />
   <RecentOrders
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={
       Array [
@@ -59,8 +62,10 @@ exports[`OrdersList View component should renders correctly 2`] = `
         },
       ]
     }
+    router={Object {}}
   />
   <PastOrders
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={
       Array [
@@ -90,6 +95,7 @@ exports[`OrdersList View component should renders correctly 2`] = `
         },
       ]
     }
+    router={Object {}}
   />
 </Fragment>
 `;

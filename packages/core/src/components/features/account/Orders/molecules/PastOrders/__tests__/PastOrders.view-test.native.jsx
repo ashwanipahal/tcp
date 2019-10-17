@@ -43,6 +43,8 @@ describe('PastOrders component', () => {
             'https://childrensplace.narvar.com/childrensplace/tracking/ups?order_number=7000036213&order_date=2019-10-04T07:17:00-04:00&dzip=10036&locale=en_US&type=p',
         },
       ],
+      handleComponentChange: jest.fn(),
+      router: {},
     };
     const component = shallow(<PastOrders {...props} />);
     expect(component).toMatchSnapshot();

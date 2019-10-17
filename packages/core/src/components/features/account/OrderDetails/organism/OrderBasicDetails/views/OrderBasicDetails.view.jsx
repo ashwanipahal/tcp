@@ -51,7 +51,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
             fontSize="fs14"
             fontWeight="extrabold"
             fontFamily="secondary"
-            className="elem-mb-SM"
+            className="elem-mb-SM elem-mt-MED"
           >
             {getLabelValue(ordersLabels, 'lbl_orders_bossStatus')}
           </BodyCopy>

@@ -61,7 +61,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
         link={null}
         textAlign="right"
       >
-        lbl_orders_items
+        lbl_orders_orderTotal
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
@@ -90,6 +90,58 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
         textAlign="left"
       >
         lbl_orders_items (undefined):
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="right"
+      >
+        undefinedNaN
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-XS"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_orders_couponsPromotions:
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -233,7 +285,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
         link={null}
         textAlign="right"
       >
-        lbl_orders_items
+        lbl_orders_orderTotal
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
@@ -561,7 +613,7 @@ exports[`Order Summary Details component should renders correctly with free ship
         link={null}
         textAlign="right"
       >
-        lbl_orders_items
+        lbl_orders_orderTotal
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
@@ -590,6 +642,58 @@ exports[`Order Summary Details component should renders correctly with free ship
         textAlign="left"
       >
         lbl_orders_items (undefined):
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="right"
+      >
+        $NaN
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-XS"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_orders_couponsPromotions:
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -837,7 +941,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
         link={null}
         textAlign="right"
       >
-        lbl_orders_items
+        lbl_orders_orderTotal
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
@@ -866,6 +970,58 @@ exports[`Order Summary Details component should renders correctly with shipping 
         textAlign="left"
       >
         lbl_orders_items (undefined):
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="right"
+      >
+        $NaN
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-XS"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_orders_couponsPromotions:
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)

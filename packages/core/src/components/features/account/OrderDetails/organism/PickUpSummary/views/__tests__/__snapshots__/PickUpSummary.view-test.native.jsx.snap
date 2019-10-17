@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-XS"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="space 170"
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="New Jersey, NJ, 33232"
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      locator=""
+      noLink={true}
+      onPress={[Function]}
+      text="lbl_orders_getDirections"
+      textAlign="left"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_pickupPerson"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      ontFamily="primary"
+      spacingStyles="margin-top-XXS margin-bottom-XXS"
+      text="Username1 Username2"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      ontFamily="primary"
+      spacingStyles="margin-top-XXS margin-bottom-XXS"
+      text="undefined undefined"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
