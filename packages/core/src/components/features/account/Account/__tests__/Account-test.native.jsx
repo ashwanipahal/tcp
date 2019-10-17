@@ -34,4 +34,28 @@ describe('Account View', () => {
     component = shallow(<Account {...props} />);
     expect(component).toMatchSnapshot();
   });
+
+  it('should set state correctly based on the navData received from CMS', () => {
+    props = {
+      labels: {
+        account: {},
+      },
+      accountNavigation: null,
+      mainContent: 'AccountOverview',
+      handleComponentChange: () => {},
+    };
+    component = shallow(<Account {...props} />);
+    component.setProps({
+      accountNavigation: {
+        accountNav: [
+          {
+            id: 'payment',
+            component: 'payment',
+          },
+        ],
+      },
+    });
+    const navState = component.state('navData');
+    expect(navState[0].value).toBe('paymentGiftCardsPageMobile');
+  });
 });
