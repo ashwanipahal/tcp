@@ -5,7 +5,13 @@ import { getLocator, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.nativ
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
-import { ButtonWrapper, Tile, Wrapper, Container, ListContainer } from '../ModuleD.style.native';
+import {
+  ButtonWrapper,
+  Tile,
+  Wrapper,
+  HeaderContainer,
+  ListContainer,
+} from '../ModuleD.style.native';
 import LinkText from '../../LinkText';
 import config from '../config';
 
@@ -73,7 +79,7 @@ const renderItem = (item, navigation) => {
 const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
   return (
     <Wrapper>
-      <Container>
+      <HeaderContainer>
         {headerText && (
           <LinkText
             headerText={headerText}
@@ -95,7 +101,7 @@ const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, nav
             navigation={navigation}
           />
         )}
-      </Container>
+      </HeaderContainer>
 
       <ListContainer>
         {smallCompImage && (

@@ -25,7 +25,7 @@ export const Tile = styled.View`
   ${props => (props.tileIndex % 2 === 0 ? `margin-right: 14px ` : `margin-left: 5px`)};
 `;
 
-export const Container = styled.View`
+export const HeaderContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
@@ -38,6 +38,6 @@ export default {
   Heading,
   Wrapper,
   Tile,
-  Container,
+  HeaderContainer,
   ListContainer,
 };
