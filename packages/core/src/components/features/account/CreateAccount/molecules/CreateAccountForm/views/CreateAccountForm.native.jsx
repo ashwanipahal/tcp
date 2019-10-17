@@ -166,7 +166,7 @@ class CreateAccountForm extends PureComponent<Props> {
 
           {/* CHECKBOXES */}
 
-          {userplccCardNumber && userplccCardId && (
+          {!!(userplccCardNumber && userplccCardId) && (
             <Field
               inputVariation="inputVariation-1"
               name="plcc_checkbox"

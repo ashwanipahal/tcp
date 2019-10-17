@@ -177,7 +177,7 @@ class LoginForm extends React.PureComponent<Props> {
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
-          {userplccCardNumber && userplccCardId && (
+          {!!(userplccCardNumber && userplccCardId) && (
             <Field
               inputVariation="inputVariation-1"
               name="plcc_checkbox"
