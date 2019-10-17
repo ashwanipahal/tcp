@@ -451,6 +451,12 @@ const getSmsSignUpLabels = state => {
 
 const getEmailSignUpLabels = state => {
   return {
+    shippingAddressEditError: getLabelValue(
+      state.Labels,
+      'lbl_shipping_addressEditError',
+      'shipping',
+      'checkout'
+    ),
     emailSignupHeading: getLabelValue(
       state.Labels,
       'lbl_pickup_emailSignupHeading',
