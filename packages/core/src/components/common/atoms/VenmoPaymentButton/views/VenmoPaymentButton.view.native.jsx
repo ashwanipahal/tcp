@@ -3,12 +3,7 @@ import { View } from 'react-native';
 import { string, func, bool, shape, oneOf } from 'prop-types';
 import Image from '../../Image/views/Image';
 import logger from '../../../../../utils/loggerInstance';
-import {
-  modes,
-  constants,
-  VENMO_USER_STATES,
-  VENMO_MOCK_DATA,
-} from '../container/VenmoPaymentButton.util';
+import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import VenmoButton from '../styles/VenmoPaymentButton.style.native';
 
 const venmoIconBlue = require('../../../../../assets/venmo_logo_blue.png');
@@ -72,8 +67,6 @@ export class VenmoPaymentButton extends Component {
     }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
-    // Local Test Data without bridge, required for local development and testing
-    this.handleVenmoSuccess(VENMO_MOCK_DATA);
   };
 
   /**
@@ -125,12 +118,12 @@ export class VenmoPaymentButton extends Component {
   };
 
   render() {
-    const { mode, enabled } = this.props;
+    const { mode, enabled, className } = this.props;
     return (
-      <View>
+      <View className={className}>
         {enabled && (this.canCallVenmoApi() || mode === modes.PAYMENT_TOKEN) && (
-          <VenmoButton accessibilityRole="button" onPress={this.handleVenmoClick}>
-            <Image source={venmoIconBlue} width="80px" height="15px" />
+          <VenmoButton accessibilityRole="button">
+            <Image source={venmoIconBlue} width={150} height={28} />
           </VenmoButton>
         )}
       </View>
@@ -139,6 +132,7 @@ export class VenmoPaymentButton extends Component {
 }
 
 VenmoPaymentButton.propTypes = {
+  className: string,
   enabled: bool,
   authorizationKey: string,
   mode: oneOf([modes.CLIENT_TOKEN, modes.PAYMENT_TOKEN]),
@@ -169,6 +163,7 @@ VenmoPaymentButton.propTypes = {
 };
 
 VenmoPaymentButton.defaultProps = {
+  className: '',
   enabled: false,
   authorizationKey: '',
   setVenmoData: () => {},

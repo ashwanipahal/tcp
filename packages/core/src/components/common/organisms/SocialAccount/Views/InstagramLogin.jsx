@@ -50,10 +50,14 @@ export const onClickHandler = () => {
  * @return CTA for connecting to instagram - The button connects/disconnects instagram
  */
 const InstagramLoginComponent = props => {
-  const { saveSocialAcc, loginStatus, pointModalClose } = props;
+  const { saveSocialAcc, loginStatus, pointModalClose, urlParams } = props;
   saveAccountInfo = saveSocialAcc;
   elem = loginStatus;
   closeModal = pointModalClose;
+
+  if (urlParams.socialAccount === 'instagram' && urlParams.id === 'my-preference') {
+    onClickHandler();
+  }
 
   const onTokenCapture = () => {
     const instagramTokenField = document.getElementById('instagram-token');
@@ -120,6 +124,15 @@ InstagramLoginComponent.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   pointModalClose: PropTypes.func.isRequired,
   loginStatus: PropTypes.shape({}).isRequired,
+  urlParams: PropTypes.shape({
+    socialAccount: PropTypes.string,
+    id: PropTypes.string,
+  }),
+};
+InstagramLoginComponent.defaultProps = {
+  urlParams: {
+    socialAccount: '',
+  },
 };
 
 export { InstagramLoginComponent };

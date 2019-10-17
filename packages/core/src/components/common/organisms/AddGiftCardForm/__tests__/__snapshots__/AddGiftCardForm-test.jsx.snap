@@ -178,6 +178,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           }
         }
         dataLocator="gift-card-cardnumberfield"
+        id="giftCardNumber"
         maxLength={50}
         name="giftCardNumber"
         onChange={[Function]}
@@ -356,6 +357,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           }
         }
         dataLocator="gift-card-pinnumberfield"
+        id="cardPin"
         name="cardPin"
         onChange={[Function]}
         placeholder="lbl_payment_giftCardPinPlaceholder"
