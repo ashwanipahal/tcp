@@ -60,10 +60,6 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenQuickViewClick = () =>
       onQuickViewOpenClick(generalProductId, selectedColorProductId, generalProductId);
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
-    this.handleAddToWishlist = this.handleAddToWishlist.bind(this);
-    this.handleOpenAltImages = this.handleOpenAltImages.bind(this);
-    this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleQuickViewOpenClick = this.handleQuickViewOpenClick.bind(this);
   }
 
   componentDidMount() {
@@ -138,7 +134,7 @@ class ProductsGridItem extends React.PureComponent {
     const {
       item: {
         productInfo: { generalProductId },
-        itemInfo: { itemId },
+        itemInfo: { itemId } = {},
       },
       onAddItemToFavorites,
       isLoggedIn,
