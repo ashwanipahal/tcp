@@ -1,19 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { BodyCopy, Image, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
+// import { getIconPath } from '@tcp/core/src/utils';
+
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   ViewWithSpacing,
   BodyCopyWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import {
+  ImageStyle,
+  ImageBrandStyle,
+  ImageGymBrandStyle,
   OrderItemContainer,
   OrderItemImage,
   OrderItemContent,
   OrderContentWrapper,
 } from '../styles/OrderItem.style.native';
+import endpoints from '../../../../../../../service/endpoint';
+
+const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
+const tcpImage = require('../../../../../../../assets/tcp-logo.png');
+
 // import { Image, BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
 // import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
@@ -48,46 +57,56 @@ const OrderItems = ({ className, ...otherProps }) => {
     <>
       <OrderItemContainer>
         <OrderItemImage>
-          <Image source={imagePath} width="103" height="129" />
-          <Image
-            source={
-              itemBrand === 'TCP'
-                ? getIconPath(`header__brand-tab--tcp`)
-                : getIconPath('header__brand-tab-gymboree')
-            }
-            width="64"
-            height="22"
-          />
+          <ImageStyle source={{ uri: endpoints.global.baseURI + imagePath }} />
+
+          {itemBrand === 'TCP' ? (
+            <ImageBrandStyle source={tcpImage} />
+          ) : (
+            <ImageGymBrandStyle source={gymboreeImage} />
+          )}
         </OrderItemImage>
         <OrderItemContent>
-          <BodyCopy fontSize="fs14" fontWeight="extrabold" text={name} fontFamily="secondary" />
+          <BodyCopy
+            fontSize="fs14"
+            fontWeight={['semibold']}
+            textAlign="left"
+            text={name}
+            fontFamily="secondary"
+          />
           <BodyCopyWithSpacing
             spacingStyles="margin-top-XXS"
-            fontSize="fs14"
             fontFamily="secondary"
+            color="gray.800"
+            fontSize="fs14"
             text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_upc')} ${upc}`}
           />
-
-          <BodyCopyWithSpacing
-            spacingStyles="margin-top-XXS"
-            margin-top="margin-top-XXS"
-            fontSize="fs14"
-            fontFamily="secondary"
-            text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_color')} ${color.name}`}
-          />
-
+          {!!size && (
+            <BodyCopyWithSpacing
+              spacingStyles="margin-top-XXS"
+              margin-top="margin-top-XXS"
+              fontFamily="secondary"
+              color="gray.800"
+              fontSize="fs14"
+              text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_color')} ${color.name}`}
+            />
+          )}
           <OrderContentWrapper>
-            <BodyCopy
-              fontSize="fs14"
-              fontFamily="secondary"
-              text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_fit')} ${fit}    `}
-            />
-
-            <BodyCopy
-              fontSize="fs14"
-              fontFamily="secondary"
-              text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_size')} ${size}`}
-            />
+            {!!fit && (
+              <BodyCopy
+                fontFamily="secondary"
+                color="gray.800"
+                fontSize="fs14"
+                text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_fit')} ${fit}`}
+              />
+            )}
+            {!!size && (
+              <BodyCopy
+                fontFamily="secondary"
+                color="gray.800"
+                fontSize="fs14"
+                text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_size')} ${size}`}
+              />
+            )}
           </OrderContentWrapper>
 
           <ViewWithSpacing spacingStyles="margin-top-MED">

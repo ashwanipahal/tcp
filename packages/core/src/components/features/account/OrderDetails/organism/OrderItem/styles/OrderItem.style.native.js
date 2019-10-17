@@ -9,7 +9,7 @@ const OrderItemContainer = styled.View`
 const OrderItemImage = styled.View`
   width: 33%;
   /* To do  need to be removed*/
-  border: 1px solid ${props => props.theme.colorPalette.gray[800]};
+  /* border: 1px solid ${props => props.theme.colorPalette.gray[800]}; */
 `;
 
 const OrderItemContent = styled.View`
@@ -24,4 +24,26 @@ const OrderContentWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export { OrderItemContainer, OrderItemImage, OrderItemContent, OrderContentWrapper };
+const ImageStyle = styled.Image`
+  width: 100px;
+  height: 100px;
+`;
+
+const ImageBrandStyle = styled.Image`
+  width: 62px;
+  height: 22px;
+`;
+
+const ImageGymBrandStyle = styled.Image`
+  width: 60px;
+  height: 15px;
+`;
+export {
+  ImageStyle,
+  ImageBrandStyle,
+  ImageGymBrandStyle,
+  OrderItemContainer,
+  OrderItemImage,
+  OrderItemContent,
+  OrderContentWrapper,
+};
