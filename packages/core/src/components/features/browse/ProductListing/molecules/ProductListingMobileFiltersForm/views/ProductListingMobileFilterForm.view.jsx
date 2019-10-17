@@ -324,7 +324,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       if (this.isUnbxdFacetKey(key)) {
         const titleKey = {
           header: {
-            title: selectedKeyValue || unbxdKeyMapping[key],
+            title: unbxdKeyMapping[key] || selectedKeyValue,
           },
         };
         accordionItems.push(titleKey);

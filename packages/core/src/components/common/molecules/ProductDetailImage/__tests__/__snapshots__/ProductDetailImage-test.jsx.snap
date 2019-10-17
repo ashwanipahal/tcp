@@ -13,14 +13,13 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
     imgData={
       Object {
         "alt": "",
-        "url": "",
+        "isFluidWidth": true,
+        "onLoad": [Function],
+        "src": "",
       }
     }
     isProductImage={true}
     itemProp="contentUrl"
-  />
-  <Measure
-    name="hero_visible"
   />
 </div>
 `;
