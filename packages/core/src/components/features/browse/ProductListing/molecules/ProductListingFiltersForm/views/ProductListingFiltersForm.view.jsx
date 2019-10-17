@@ -70,6 +70,7 @@ function getFilterOptionsMap(optionsMap) {
   return optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
+    disabled: option.disabled,
     content: (
       <BodyCopy
         component="span"
@@ -225,8 +226,7 @@ class ProductListingFiltersForm extends React.Component {
    */
 
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
-    const { filtersMaps, labels } = this.props;
-    console.log('LLLL', filterName)
+    const { filtersMaps, labels, isFavoriteView, onFilterSelection } = this.props;
     return (
       <Field
         name={facetName}
@@ -236,7 +236,7 @@ class ProductListingFiltersForm extends React.Component {
         optionsMap={getFilterOptionsMap(filtersMaps[facetName])}
         title=""
         placeholder={filterName}
-        allowMultipleSelections
+        allowMultipleSelections={!isFavoriteView}
         className="size-detail-chips"
         expanded={false}
         disableExpandStateChanges={false}
@@ -244,6 +244,7 @@ class ProductListingFiltersForm extends React.Component {
         withRef
         forwardRef
         labels={labels}
+        onFilterSelection={onFilterSelection}
       />
     );
   }
@@ -300,12 +301,14 @@ class ProductListingFiltersForm extends React.Component {
       sortLabels,
       slpLabels,
       isFilterBy,
+      favoriteSortingParams,
+      onSortSelection,
+      defaultPlaceholder,
+      isFavoriteView,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
 
-    debugger;
-
-    const sortOptions = getSortOptions(sortLabels);
+    const sortOptions = favoriteSortingParams || getSortOptions(sortLabels);
 
     return (
       <div className="filter-and-sort-form-container">
@@ -335,8 +338,13 @@ class ProductListingFiltersForm extends React.Component {
               <div className="sort-selector-wrapper">
                 <SortSelector
                   isMobile={false}
+                  defaultPlaceholder={defaultPlaceholder}
                   sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
-                  onChange={handleSubmit(this.handleSubmitOnChange)}
+                  onChange={
+                    isFavoriteView
+                      ? handleSubmit(this.handleSubmitOnChange)
+                      : selectedOption => onSortSelection(selectedOption)
+                  }
                 />
               </div>
             </div>
@@ -376,6 +384,9 @@ class ProductListingFiltersForm extends React.Component {
             removeAllFilters={this.handleRemoveAllFilters}
             handleSubmitOnChange={this.handleSubmitOnChange}
             sortLabels={sortLabels}
+            isFavoriteView={isFavoriteView}
+            favoriteSortingParams={favoriteSortingParams}
+            onSortSelection={onSortSelection}
           />
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
@@ -408,7 +419,6 @@ class ProductListingFiltersForm extends React.Component {
               key
             );
         } else {
-          console.log('::::', appliedFilterAvailable, appliedFilters, filtersMaps, key);
           filterList =
             filtersMaps[key].length > 0 &&
             this.renderFilterField(
@@ -459,6 +469,11 @@ ProductListingFiltersForm.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool,
+  isFavoriteView: PropTypes.bool,
+  onFilterSelection: PropTypes.func,
+  favoriteSortingParams: PropTypes.shape({}),
+  onSortSelection: PropTypes.func,
+  defaultPlaceholder: PropTypes.string,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -474,6 +489,11 @@ ProductListingFiltersForm.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isFilterBy: true,
+  isFavoriteView: false,
+  onFilterSelection: () => null,
+  defaultPlaceholder: '',
+  onSortSelection: () => null,
+  favoriteSortingParams: null,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

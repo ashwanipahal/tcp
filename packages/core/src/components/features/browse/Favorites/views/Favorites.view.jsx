@@ -3,10 +3,10 @@ import { PropTypes } from 'prop-types';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
-import { Row, Col, BodyCopy } from '../../../../common/atoms';
+import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
-import { getNonEmptyFiltersList } from '../Favorites.util';
+import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
 
 const FavoritesView = props => {
   const {
@@ -21,6 +21,13 @@ const FavoritesView = props => {
     onQuickViewOpenClick,
     selectedColorProductId,
     // deleteWishList, @TODO will be used in the wish-list pop-up
+    filteredId,
+    sortId,
+    onFilterSelection,
+    onSortSelection,
+    selectBrandType,
+    gymSelected,
+    tcpSelected,
   } = props;
 
   const favoriteListMap = wishlistsSummaries.map(favorite => {
@@ -49,11 +56,23 @@ const FavoritesView = props => {
     );
   });
 
-  const productsList = !!activeWishList && (
+  const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
+  let filteredItemsList =
+    !!activeWishList && getVisibleWishlistItems(activeWishList.items, filteredId, sortId);
+
+  if (filteredItemsList) {
+    if (gymSelected) {
+      filteredItemsList = filteredItemsList.filter(item => !item.itemInfo.isTCP);
+    } else if (tcpSelected) {
+      filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
+    }
+  }
+
+  const productsList = !!filteredItemsList && (
     <>
       <ProductsGrid
-        products={activeWishList.items}
-        productsBlock={[activeWishList.items]}
+        products={filteredItemsList}
+        productsBlock={[filteredItemsList]}
         labels={labels}
         wishlistsSummaries={wishlistsSummaries}
         createNewWishList={createNewWishList}
@@ -66,7 +85,20 @@ const FavoritesView = props => {
     </>
   );
 
-  const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
+  const brandOptions = [
+    {
+      name: 'gymboreeOption',
+      dataLocator: 'gymboree-option',
+      brandLabel: labels.Gymboree,
+      checked: gymSelected,
+    },
+    {
+      name: 'tcpOption',
+      dataLocator: 'tcp-option',
+      brandLabel: labels.TCP,
+      checked: tcpSelected,
+    },
+  ];
 
   return (
     <>
@@ -100,33 +132,40 @@ const FavoritesView = props => {
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductListingFiltersForm
             filtersMaps={{
-              age_group_uFilter: filters,
-              // TCPColor_uFilter: [],
-              // categoryPath2_uFilter: [],
-              // gender_uFilter: [],
-              // l1category: '',
+              display_group_uFilter: filters,
               unbxdDisplayName: {
-                // TCPColor_uFilter: "Color",
-                age_group_uFilter: "All",
-                // categoryPath2_uFilter: "Category",
-                // gender_uFilter: "Gender",
-                // unbxd_price_range_uFilter: "Price",
-                // v_tcpsize_uFilter: "Size",
+                display_group_uFilter: filters.length && filters[0].displayName,
               },
-              // unbxd_price_range_uFilter: [],
-              // v_tcpsize_uFilter: [],
             }}
             totalProductsCount={!!activeWishList && activeWishList.items.length}
             initialValues={null}
             filtersLength={null}
             labels={labels}
             isFavoriteView
-            // onSubmit={onSubmit}
-            // formValues={formValues}
-            // sortLabels={sortLabels}
-            // getProducts={getProducts}
-            // slpLabels={slpLabels}
+            favoriteSortingParams={getSortsList()}
+            onFilterSelection={onFilterSelection}
+            onSortSelection={onSortSelection}
+            defaultPlaceholder={getSortsList()[0].displayName}
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col colSize={{ large: 12, medium: 4, small: 6 }}>
+          <div>
+            <ul className="brand-option-list">
+              {brandOptions.map(({ name, dataLocator, brandLabel, checked }) => (
+                <li className="brand-options" key={name}>
+                  <InputCheckBox
+                    execOnChangeByDefault={false}
+                    dataLocator={dataLocator}
+                    input={{ value: checked, onChange: selectBrandType, name }}
+                  >
+                    {brandLabel}
+                  </InputCheckBox>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Col>
       </Row>
       <Row>
@@ -161,6 +200,13 @@ FavoritesView.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
   selectedColorProductId: PropTypes.string,
+  filteredId: PropTypes.string.isRequired,
+  sortId: PropTypes.string.isRequired,
+  onFilterSelection: PropTypes.func.isRequired,
+  onSortSelection: PropTypes.func.isRequired,
+  selectBrandType: PropTypes.string.isRequired,
+  gymSelected: PropTypes.bool.isRequired,
+  tcpSelected: PropTypes.bool.isRequired,
 };
 
 FavoritesView.defaultProps = {
