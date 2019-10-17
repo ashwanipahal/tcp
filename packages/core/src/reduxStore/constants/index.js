@@ -14,6 +14,9 @@ export default {
   LOAD_LABELS_DATA: 'LOAD_LABELS_DATA',
   SET_LABELS_DATA: 'SET_LABELS_DATA',
   LOAD_COMPONENT_LABELS_DATA: 'LOAD_COMPONENT_LABELS_DATA',
+  LOAD_SEO_DATA: 'LOAD_SEO_DATA',
+  SET_SEO_DATA: 'SET_SEO_DATA',
+  LOAD_PAGE_SEO_DATA: 'LOAD_PAGE_SEO_DATA',
   LOAD_MODULES_DATA: 'LOAD_MODULES_DATA',
   LOAD_USER_DATA: 'GET_USER_INFO',
   SET_XAPP_CONFIG: `${SESSIONCONFIG_ACTION_PATTERN}SET_XAPP_CONFIG`,
@@ -33,4 +36,9 @@ export const LABELS = {
   account: 'account',
   bagPage: 'bag',
   checkout: 'checkout',
+};
+
+export const SEO_DATA = {
+  seoData: 'seoData',
+  home: '/home',
 };

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import HomePageView from '../views/HomePage.view';
+import { initActions } from './HomePage.actions';
 
 HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   const state = store.getState();
@@ -9,6 +10,8 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   }
   return pageProps;
 };
+
+HomePageView.getInitActions = () => initActions;
 
 HomePageView.pageInfo = {
   name: 'homepage',
