@@ -7,6 +7,9 @@ const SmsSignupModalStyle = css`
   .sms-signup-content {
     position: relative;
   }
+  .full-height {
+    height: 100%;
+  }
   .button-wrapper,
   .button-wrapper-form {
     background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
@@ -39,6 +42,7 @@ const SmsSignupModalStyle = css`
   }
   .alignTop {
     top: 14px;
+    z-index: 1;
     @media ${props => props.theme.mediaQuery.medium} {
       top: 16px;
     }

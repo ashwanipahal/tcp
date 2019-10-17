@@ -116,8 +116,8 @@ class SmsSignupModal extends React.PureComponent {
           }}
         >
           {subscription.success ? (
-            <Grid>
-              <Row fullBleed>
+            <Grid className="full-height">
+              <Row fullBleed className="full-height">
                 <Col
                   isNotInlineBlock
                   colSize={{ small: 4, medium: 4, large: 4 }}
