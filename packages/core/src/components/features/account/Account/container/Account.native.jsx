@@ -71,12 +71,11 @@ export class Account extends React.PureComponent<Props, State> {
   /**
    *  @function handleComponentChange triggered when dropdown clicked
    */
-  handleComponentChange = (component, otherProps, routerPath) => {
+  handleComponentChange = (component, otherProps) => {
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
       componentProps: otherProps,
-      router: routerPath,
     });
   };
 
@@ -91,7 +90,7 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component, componentProps, router } = this.state;
+    const { component, componentProps } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
@@ -105,7 +104,6 @@ export class Account extends React.PureComponent<Props, State> {
             labels={labels}
             isUserLoggedIn={isUserLoggedIn}
             navigation={navigation}
-            router={router}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>

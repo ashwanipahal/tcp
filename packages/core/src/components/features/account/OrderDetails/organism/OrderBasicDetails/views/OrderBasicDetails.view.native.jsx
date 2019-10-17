@@ -9,11 +9,12 @@ import {
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
 export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
-  const { orderNumber, pickUpExpirationDate, isBossOrder, status } = orderDetailsData;
-  let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
+  const { orderNumber, isBossOrder, status } = orderDetailsData;
+  let { orderDate, pickUpExpirationDate, bossMaxDate, bossMinDate } = orderDetailsData;
   let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
   let orderTime = orderDate.split(' ')[1];
   orderDate = moment(orderDate);
+  pickUpExpirationDate = pickUpExpirationDate && moment(pickUpExpirationDate);
   orderTime = orderTime && moment(orderTime, 'HH:mm:ss');
   pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
   bossMinDate = getDateInformation(bossMinDate);
@@ -49,12 +50,13 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
             fontFamily="primary"
             fontSize="fs14"
             fontWeight="semibold"
-            spacingStyles="margin-top-XS margin-bottom-XS"
+            spacingStyles="margin-top-MED margin-bottom-XXS"
             text={getLabelValue(ordersLabels, 'lbl_orders_bossStatus')}
           />
           <BodyCopyWithSpacing
             fontFamily="primary"
             fontSize="fs14"
+            fontWeight="semibold"
             spacingStyles="margin-top-XS margin-bottom-XS"
             text={status}
           />
@@ -101,7 +103,7 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
               )} ${orderTime.format('hh:mma')}`}
             />
           </ViewWithSpacing>
-          {pickUpExpirationDate && !bossDate && (
+          {!!pickUpExpirationDate && !isBossOrder && (
             <ViewWithSpacing spacingStyles="margin-top-MED">
               <BodyCopyWithSpacing
                 fontFamily="primary"

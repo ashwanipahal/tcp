@@ -40,6 +40,7 @@ exports[`PastOrders component should renders correctly 2`] = `
     />
   </Styled(View)>
   <OrdersListItem
+    componentProps={Object {}}
     handleComponentChange={[MockFunction]}
     key="7000036213"
     labels={Object {}}
@@ -57,7 +58,6 @@ exports[`PastOrders component should renders correctly 2`] = `
         "orderTrackingUrl": "https://childrensplace.narvar.com/childrensplace/tracking/ups?order_number=7000036213&order_date=2019-10-04T07:17:00-04:00&dzip=10036&locale=en_US&type=p",
       }
     }
-    router={Object {}}
   />
 </Fragment>
 `;

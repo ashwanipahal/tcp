@@ -17,7 +17,7 @@ export const RecentOrders = ({
   labels,
   navigation,
   handleComponentChange,
-  router,
+  componentProps,
 }) => {
   return (
     <>
@@ -40,7 +40,7 @@ export const RecentOrders = ({
             orderItem={ordersListItems[0]}
             navigation={navigation}
             handleComponentChange={handleComponentChange}
-            router={router}
+            componentProps={componentProps}
           />
           <Button
             buttonVariation="fixed-width"
@@ -63,12 +63,12 @@ RecentOrders.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func,
-  router: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}),
 };
 
 RecentOrders.defaultProps = {
   handleComponentChange: () => {},
-  router: {},
+  componentProps: {},
 };
 
 export default RecentOrders;

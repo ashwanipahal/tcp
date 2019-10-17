@@ -75,11 +75,11 @@ exports[`Order Summary Details component should renders correctly 1`] = `
     <Styled(Styled(BodyCopy))
       accessibilityText=""
       dataLocator=""
+      fontFamily="primary"
       fontSize="fs14"
       fontWeight="regular"
       margin={null}
       numberOfLines={null}
-      ontFamily="primary"
       spacingStyles="margin-top-XXS margin-bottom-XXS"
       text="Username1 Username2"
       textDecoration={null}

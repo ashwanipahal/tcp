@@ -44,7 +44,6 @@ describe('PastOrders component', () => {
         },
       ],
       handleComponentChange: jest.fn(),
-      router: {},
     };
     const component = shallow(<PastOrders {...props} />);
     expect(component).toMatchSnapshot();

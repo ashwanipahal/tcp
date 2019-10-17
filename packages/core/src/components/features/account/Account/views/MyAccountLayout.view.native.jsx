@@ -25,7 +25,6 @@ const MyAccountLayoutView = props => {
     navigation,
     component,
     componentProps,
-    router,
   } = props;
   return (
     <View className={className} {...props}>
@@ -46,7 +45,7 @@ const MyAccountLayoutView = props => {
         handleComponentChange={handleComponentChange}
         navigation={navigation}
         componentProps={componentProps}
-        router={router}
+        {...componentProps}
       />
     </View>
   );

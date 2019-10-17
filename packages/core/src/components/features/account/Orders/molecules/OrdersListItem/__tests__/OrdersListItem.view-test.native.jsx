@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrdersListItemVanilla } from '../views/OrdersListItem.view.native';
+import { OrdersListItemVanilla, handleOrderClick } from '../views/OrdersListItem.view.native';
 
 describe('OrdersListItem component', () => {
   it('should renders correctly', () => {
@@ -29,5 +29,17 @@ describe('OrdersListItem component', () => {
     };
     const component = shallow(<OrdersListItemVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should call handleComponentChange', () => {
+    let component;
+    let route;
+    const handleComponentChange = (handleKey, routingObj) => {
+      component = handleKey;
+      route = routingObj;
+    };
+    handleOrderClick(handleComponentChange, '7000050028');
+    expect(component).toEqual('orderDetailsPageMobile');
+    expect(route).toEqual({ router: { query: { orderId: '7000050028' } } });
   });
 });

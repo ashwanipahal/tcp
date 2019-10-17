@@ -1,128 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Order Summary Details component if orderDetails Data is not available 1`] = `
-<Fragment>
+<View>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orderDetails_orderSummary"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orders_orderTotal"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orderDetails_orderSummary"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orders_orderTotal"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_items (undefined):"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="undefinedNaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_items (undefined):"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="undefinedNaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_couponsPromotions:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="undefinedNaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_couponsPromotions:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="undefinedNaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orderDetails_shipping:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_free"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_shipping:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_free"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(LineComp)
     borderColor="gray.600"
@@ -130,162 +114,142 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
     marginBottom={10}
     marginTop={10}
   />
-</Fragment>
+</View>
 `;
 
 exports[`Order Summary Details component should render correctly for valid coupon and promotion amount 1`] = `
-<Fragment>
+<View>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orderDetails_orderSummary"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orders_orderTotal"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orderDetails_orderSummary"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orders_orderTotal"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_items (undefined):"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$NaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_items (undefined):"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$NaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_couponsPromotions:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="-$21.20"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_couponsPromotions:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="-$21.20"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orderDetails_shipping:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_free"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_shipping:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_free"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_tax:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$1.23"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_tax:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$1.23"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(LineComp)
     borderColor="gray.600"
@@ -294,191 +258,167 @@ exports[`Order Summary Details component should render correctly for valid coupo
     marginTop={10}
   />
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_orderTotal:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$122.50"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_orderTotal:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$122.50"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
-</Fragment>
+</View>
 `;
 
 exports[`Order Summary Details component should renders correctly with free shipping 1`] = `
-<Fragment>
+<View>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orderDetails_orderSummary"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orders_orderTotal"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orderDetails_orderSummary"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orders_orderTotal"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_items (undefined):"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$NaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_items (undefined):"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$NaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_couponsPromotions:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$NaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_couponsPromotions:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$NaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orderDetails_shipping:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$10.00"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_shipping:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$10.00"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_tax:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$11.37"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_tax:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$11.37"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(LineComp)
     borderColor="gray.600"
@@ -487,191 +427,167 @@ exports[`Order Summary Details component should renders correctly with free ship
     marginTop={10}
   />
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_orderTotal:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$125.50"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_orderTotal:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$125.50"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
-</Fragment>
+</View>
 `;
 
 exports[`Order Summary Details component should renders correctly with shipping value 1`] = `
-<Fragment>
+<View>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orderDetails_orderSummary"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-MED margin-bottom-XS"
-        text="lbl_orders_orderTotal"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orderDetails_orderSummary"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-XS"
+      text="lbl_orders_orderTotal"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_items (undefined):"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$NaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_items (undefined):"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$NaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_couponsPromotions:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$NaN"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_couponsPromotions:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$NaN"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orderDetails_shipping:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$23.10"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_shipping:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$23.10"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_tax:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$100.10"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_tax:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$100.10"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
   <Styled(LineComp)
     borderColor="gray.600"
@@ -680,34 +596,30 @@ exports[`Order Summary Details component should renders correctly with shipping 
     marginTop={10}
   />
   <Styled(View)>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="lbl_orders_orderTotal:"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
-    <Text>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs14"
-        margin={null}
-        numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
-        text="$12.51"
-        textAlign="left"
-        textDecoration={null}
-      />
-    </Text>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orders_orderTotal:"
+      textAlign="left"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="$12.51"
+      textAlign="left"
+      textDecoration={null}
+    />
   </Styled(View)>
-</Fragment>
+</View>
 `;

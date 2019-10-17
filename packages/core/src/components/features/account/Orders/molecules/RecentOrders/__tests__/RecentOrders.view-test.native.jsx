@@ -30,7 +30,6 @@ describe('RecentOrders component', () => {
             'https://childrensplace.narvar.com/childrensplace/tracking/ups?order_number=7000037172&order_date=2019-10-04T07:22:00-04:00&dzip=10036&locale=en_US&type=p',
         },
       ],
-      router: {},
     };
     const component = shallow(<RecentOrders {...props} />);
     expect(component).toMatchSnapshot();

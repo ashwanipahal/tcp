@@ -11,7 +11,7 @@ export const OrdersList = ({
   ordersListItems,
   navigation,
   handleComponentChange,
-  router,
+  componentProps,
 }) => {
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ export const OrdersList = ({
         ordersListItems={ordersListItems}
         navigation={navigation}
         handleComponentChange={handleComponentChange}
-        router={router}
+        componentProps={componentProps}
       />
       {ordersListItems && ordersListItems.length ? (
         <PastOrders
@@ -30,7 +30,7 @@ export const OrdersList = ({
           ordersListItems={ordersListItems}
           navigation={navigation}
           handleComponentChange={handleComponentChange}
-          router={router}
+          componentProps={componentProps}
         />
       ) : null}
     </React.Fragment>
@@ -42,11 +42,11 @@ OrdersList.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
-  router: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}),
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},
-  router: {},
+  componentProps: {},
 };
 
 export default OrdersList;

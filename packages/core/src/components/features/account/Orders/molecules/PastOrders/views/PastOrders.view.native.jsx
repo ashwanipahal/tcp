@@ -5,7 +5,13 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import OrdersListItem from '../../OrdersListItem';
 
-const PastOrders = ({ labels, ordersListItems, navigation, handleComponentChange, router }) => {
+const PastOrders = ({
+  labels,
+  ordersListItems,
+  navigation,
+  handleComponentChange,
+  componentProps,
+}) => {
   const pastOrdereList = ordersListItems.slice(1, ordersListItems.length);
   return (
     <>
@@ -27,7 +33,7 @@ const PastOrders = ({ labels, ordersListItems, navigation, handleComponentChange
             key={orderItem.orderNumber}
             navigation={navigation}
             handleComponentChange={handleComponentChange}
-            router={router}
+            componentProps={componentProps}
           />
         ))}
     </>
@@ -39,10 +45,10 @@ PastOrders.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func,
-  router: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}),
 };
 PastOrders.defaultProps = {
   handleComponentChange: () => {},
-  router: {},
+  componentProps: {},
 };
 export default PastOrders;

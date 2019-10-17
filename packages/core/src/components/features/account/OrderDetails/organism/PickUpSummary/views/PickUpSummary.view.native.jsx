@@ -108,7 +108,7 @@ export const PickUpSummary = ({ pickUpStore, ordersLabels }) => {
               text={getLabelValue(ordersLabels, 'lbl_orders_pickupPerson')}
             />
             <BodyCopyWithSpacing
-              ontFamily="primary"
+              fontFamily="primary"
               fontWeight="regular"
               fontSize="fs14"
               spacingStyles="margin-top-XXS margin-bottom-XXS"

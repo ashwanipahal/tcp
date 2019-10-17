@@ -11,20 +11,23 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
+/**
+ * @function handleOrderClick  to route to Order Details page based on order Number
+ * @param    {Object} activeActivity The activity details of waysToEarn
+ * @returns  {String} route for redirection mapping
+ */
+export const handleOrderClick = (handleComponentChange, orderNumber) => {
+  const router = {
+    query: {
+      orderId: orderNumber,
+    },
+  };
+  handleComponentChange('orderDetailsPageMobile', { router });
+};
+
 const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
 
-  /**
-   * @function handleOrderClick  to route to Order Details page based on order Number
-   * @param    {Object} activeActivity The activity details of waysToEarn
-   * @returns  {String} route for redirection mapping
-   */
-  const handleOrderClick = () => {
-    const query = {
-      orderId: orderNumber,
-    };
-    handleComponentChange('orderDetailsPageMobile', {}, { query });
-  };
   return (
     <>
       <OrdersListItemMainView>
@@ -49,7 +52,7 @@ const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
               noLink
               underline
               anchorVariation="primary"
-              onPress={() => handleOrderClick()}
+              onPress={() => handleOrderClick(handleComponentChange, orderNumber)}
             />
           </OrdersNumberWrapper>
         </OrdersListItemView>
