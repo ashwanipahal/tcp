@@ -51,6 +51,10 @@ const ButtonStyles = css`
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 20px;
       width: 100%;
+      &:hover{
+        border: solid 1px #9b9b9b;
+        background-color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
+      }
     `
       : ''};
   ${props =>
@@ -63,6 +67,10 @@ const ButtonStyles = css`
       font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 32px;
+      &:hover{
+        border: solid 1px #9b9b9b;
+        background-color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
+      }
     `
       : ''};
 
