@@ -478,5 +478,8 @@ exports[`HomePageView should render correctly 1`] = `
       ]
     }
   />
+  <Connect(Recommendations)
+    variation="moduleO,moduleP"
+  />
 </LazyloadScrollView>
 `;
