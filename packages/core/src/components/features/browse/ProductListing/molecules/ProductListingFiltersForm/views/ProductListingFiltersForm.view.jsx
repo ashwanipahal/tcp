@@ -341,7 +341,7 @@ class ProductListingFiltersForm extends React.Component {
                   defaultPlaceholder={defaultPlaceholder}
                   sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
                   onChange={
-                    isFavoriteView
+                    !isFavoriteView
                       ? handleSubmit(this.handleSubmitOnChange)
                       : selectedOption => onSortSelection(selectedOption)
                   }

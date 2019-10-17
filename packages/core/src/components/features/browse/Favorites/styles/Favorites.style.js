@@ -43,9 +43,10 @@ export default css`
   }
 
   .brand-option-list {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    display: none;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: block;
       margin-top: 0;
     }
   }
