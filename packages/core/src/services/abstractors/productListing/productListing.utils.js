@@ -112,6 +112,7 @@ export const FACETS_FIELD_KEY = {
   aux_color: 'auxdescription_ufilter',
   aux_color_unbxd: 'auxdescription_uFilter',
   l1category: 'l1category',
+  display: 'display_group_uFilter',
 };
 
 export const FACETS_OPTIONS = {
