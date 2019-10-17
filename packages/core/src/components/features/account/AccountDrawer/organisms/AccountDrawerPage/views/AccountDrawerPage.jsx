@@ -17,14 +17,21 @@ const AccountDrawerPage = props => {
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
-          <RewardsPoints />
-          <ExtraPointsTeaser plccUser={plccUser} labels={labels} globalLabels={globalLabels} />
+          <div className="elem-pl-MED elem-pr-MED">
+            <RewardsPoints />
+          </div>
+          <ExtraPointsTeaser
+            plccUser={plccUser}
+            labels={labels}
+            closedOverlay={closedOverlay}
+            globalLabels={globalLabels}
+          />
         </>
       )}
       <div className="accountDrawer_coupons">
         <MyOffersCoupons closedOverlay={closedOverlay} />
       </div>
-      <AccountDrawerBottomLinks />
+      <AccountDrawerBottomLinks closedOverlay={closedOverlay} />
     </div>
   );
 };

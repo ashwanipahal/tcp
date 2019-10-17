@@ -61,6 +61,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       </Styled(BodyCopy)>
       <Connect(SocialContainer)
         labels={Object {}}
+        urlParams={Object {}}
       />
     </Styled(Col)>
   </Styled(Row)>

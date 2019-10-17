@@ -49,6 +49,8 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         fontSizeVariation="medium"
+        href="#"
+        onClick={[Function]}
         text="lbl_drawer_learn_more"
         underline={true}
       />

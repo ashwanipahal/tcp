@@ -16,7 +16,7 @@ import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { className, labels, onSubscribe, isTcpSubscribe } = this.props;
+    const { className, labels, urlParams, onSubscribe, isTcpSubscribe } = this.props;
     return (
       <div className={`elem-pt-LRG ${className}`}>
         <Row fullBleed>
@@ -54,7 +54,7 @@ class MyPrefrenceSection extends React.PureComponent {
             >
               {getLabelValue(labels, 'lbl_prefrence_social_account')}
             </BodyCopy>
-            <SocialContainer labels={labels} />
+            <SocialContainer labels={labels} urlParams={urlParams} />
           </Col>
         </Row>
 
@@ -261,6 +261,7 @@ class MyPrefrenceSection extends React.PureComponent {
 MyPrefrenceSection.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
+  urlParams: PropTypes.shape({}),
   onSubscribe: PropTypes.func.isRequired,
   isTcpSubscribe: PropTypes.bool,
 };
@@ -268,6 +269,7 @@ MyPrefrenceSection.propTypes = {
 MyPrefrenceSection.defaultProps = {
   labels: {},
   isTcpSubscribe: false,
+  urlParams: {},
 };
 
 export default reduxForm({

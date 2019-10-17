@@ -133,6 +133,7 @@ export class MyPrefrenceContainer extends PureComponent {
       labels,
       handleComponentChange,
       componentProps,
+      router,
       isTcpSubscribe,
       phoneNumber,
     } = this.props;
@@ -143,7 +144,10 @@ export class MyPrefrenceContainer extends PureComponent {
       isGymboreeSubscribeModal,
       isGymboreeUnsubscribeModal,
     } = this.state;
+
+    const urlParams = router.query || {};
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
+
     return (
       <>
         <MyPrefrence
@@ -153,6 +157,7 @@ export class MyPrefrenceContainer extends PureComponent {
           isTcpSubscribe={isTcpSubscribe}
           initialValues={this.initialValuesPreference}
           onSubscribe={this.onSubscribe}
+          urlParams={urlParams}
         />
         {modalVisible && (
           <Modal
@@ -230,6 +235,9 @@ MyPrefrenceContainer.propTypes = {
   getSubscribeStoreAction: PropTypes.func.isRequired,
   submitSubscribeBrand: PropTypes.func.isRequired,
   phoneNumber: PropTypes.string.isRequired,
+  router: PropTypes.shape({
+    query: PropTypes.shape({}),
+  }),
 };
 
 MyPrefrenceContainer.defaultProps = {
@@ -237,6 +245,7 @@ MyPrefrenceContainer.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
   isTcpSubscribe: false,
+  router: {},
 };
 
 export default connect(

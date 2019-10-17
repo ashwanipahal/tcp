@@ -1,4 +1,5 @@
-import { isClient, isMobileApp } from './utils';
+import { isClient, isMobileApp, getAPIConfig } from './utils';
+import { API_CONFIG } from '../services/config';
 
 export const CART_ITEM_COUNTER = 'cartItemsCount';
 export const SFL_ITEM_COUNTER = 'sflItemsCount_US';
@@ -100,6 +101,21 @@ export function getSflItemCount(siteId) {
   return parseInt(readCookie(SFL_ITEM_COUNTER) || 0, 10);
 }
 
+/**
+ * @summary This returns the session Id created
+ * from the Quantum cookie needed to tag Raygun errors.
+ * @return  {String}  - string of cookies
+ */
+export function generateSessionId() {
+  const { sessionCookieKey } = API_CONFIG;
+
+  const cookieValue = readCookie(sessionCookieKey, !isClient() ? getAPIConfig().cookie : null);
+
+  return (
+    cookieValue &&
+    `${cookieValue.substring(0, 4).toUpperCase()}-${cookieValue.substring(4, 8).toUpperCase()}`
+  );
+}
 /**
  * @summary This returns all cookies in string format.
  * @return  {String}  - string of cookies
