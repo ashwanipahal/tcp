@@ -8,8 +8,6 @@ describe('RelatedOutfitsVanilla component', () => {
   beforeEach(() => {
     const props = {
       pdpLabels: {},
-      navigation: {},
-      relatedOutfits: [],
     };
     wrapper = shallow(<RelatedOutfitsVanilla {...props} />);
   });
