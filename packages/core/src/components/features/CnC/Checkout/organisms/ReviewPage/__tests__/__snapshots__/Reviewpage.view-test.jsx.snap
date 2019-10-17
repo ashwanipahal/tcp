@@ -1,9 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewPageVanilla component should renders correctly props not present 1`] = `
-<div>
+<form
+  name="expressReviewPage"
+>
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="review-title"
+  />
+  <FormSection
+    name="expressReviewShippingSection"
   />
   <Connect(BillingSectionContainer) />
   <Connect(CheckoutCartItemList) />
@@ -32,5 +37,5 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     }
     hideBackLink={true}
   />
-</div>
+</form>
 `;
