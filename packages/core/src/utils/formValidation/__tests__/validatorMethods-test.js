@@ -195,4 +195,26 @@ describe('validator methods', () => {
       expect(validatorMethods.nonSequentialNumber('')).toBeTruthy();
     });
   });
+
+  describe('userBirthValidator', () => {
+    it('should return true for valid Birth Month', () => {
+      const value = 2;
+      const param = null;
+      const linkedProps = [
+        {
+          userBirthMonth: 2,
+          userBirthYear: 1999,
+        },
+      ];
+
+      expect(validatorMethods.userBirthday(value, param, linkedProps)).toBeTruthy();
+    });
+
+    it('should return true for empty values', () => {
+      const value = null;
+      const param = null;
+      const linkedProps = [{}];
+      expect(validatorMethods.userBirthday(value, param, linkedProps)).toBeTruthy();
+    });
+  });
 });

@@ -83,13 +83,11 @@ function expirationValidator(value, param, linkedPropsValues, datePieces) {
   return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
 }
 
-function userBirthMonthValidator(value, param, linkedProps) {
-  console.log('linked props ----------> ', linkedProps);
-  const values = linkedProps[0];
-  if (!values.userBirthMonth && !values.userBirthYear) {
+function userBirthdayValidator(value, param, linkedProps) {
+  const birthdayValues = linkedProps[0];
+  if (!birthdayValues.userBirthMonth && !birthdayValues.userBirthYear) {
     return true;
   }
-
   return !!value;
 }
 
@@ -243,7 +241,7 @@ const validatorMethods = {
   cvvNumber: onlyDigitsValidator,
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,
-  userBirthMonth: userBirthMonthValidator,
+  userBirthday: userBirthdayValidator,
 };
 
 export default validatorMethods;
