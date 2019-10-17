@@ -83,6 +83,7 @@ const CnCTemplate = ({
                     <CouponAndPromos
                       showAccordian={showAccordian}
                       additionalClassNameModal="coupon-modal-web"
+                      idPrefix="desktop"
                     />
                   </>
                 )}

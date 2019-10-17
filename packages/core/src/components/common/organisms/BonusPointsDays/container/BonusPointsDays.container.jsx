@@ -31,6 +31,7 @@ export class BonusPointsDays extends React.Component {
     showAccordian: PropTypes.bool,
     isBagPage: PropTypes.bool,
     additionalClassNameModal: PropTypes.string.isRequired,
+    isDefaultOpen: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -47,6 +48,7 @@ export class BonusPointsDays extends React.Component {
     orderId: '',
     showAccordian: true,
     isBagPage: false,
+    isDefaultOpen: false,
   };
 
   componentDidMount() {
@@ -71,6 +73,7 @@ export class BonusPointsDays extends React.Component {
       showAccordian,
       isBagPage,
       additionalClassNameModal,
+      isDefaultOpen,
     } = this.props;
     return (
       !isCanada() &&
@@ -85,6 +88,7 @@ export class BonusPointsDays extends React.Component {
           orderDetails={orderId}
           showAccordian={showAccordian}
           isBagPage={isBagPage}
+          isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
         />
       )
