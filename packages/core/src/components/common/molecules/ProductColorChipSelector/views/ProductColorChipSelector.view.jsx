@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import styles from '../styles/ProductColorChipSelector.style';
@@ -30,7 +31,11 @@ const getColorsChipsOptionsMap = (
         content: (
           <span className="color-title-container" title={name}>
             <span className="color-name">{name}</span>
-            <img className="color-image" src={imagePath} alt="" />
+            <img
+              className="color-image"
+              src={changeImageURLToDOM(imagePath, 'w_50,h_50,c_thumb,g_auto:0')}
+              alt=""
+            />
           </span>
         ),
         disabled: isDisableZeroInventoryEntries && colorEntry.maxAvailable <= 0,
