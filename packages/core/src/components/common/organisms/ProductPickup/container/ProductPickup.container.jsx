@@ -529,149 +529,154 @@ function mapStateToProps(state, ownProps) {
   // const geoDefaultStore = storesStoreView.getGeoDefaultStore(state);
   // const userDefaultStore = favStore || geoDefaultStore || null;
   // const offerEspot = generalStoreView.getEspotByName(state, 'fav_store_pickup_content');
-  const userDefaultStore = null;
+  // const userDefaultStore = null;
 
   return {
     labels: PickupSelectors.getLabels(state),
     itemValues: updateItemValueObj(selector(state, 'color', 'Fit', 'Size', 'Quantity')),
-    isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
-    isBossEnabled: PickupSelectors.getIsBossEnabled(state),
     pickupModalState: getIsPickupModalOpen(state),
-    isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
-    isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
-    userDefaultStore,
+    // isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
+    // isBossEnabled: PickupSelectors.getIsBossEnabled(state),
+    // isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
+    // isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
+    isBopisEnabled: true,
+    isBossEnabled: true,
+    isBopisClearanceProductEnabled: true,
+    isBossClearanceProductEnabled: true,
+
+    // userDefaultStore,
     // TODO - This is a sample default store value for implementation.
     // Will be removed once the favorite store is available in the store
-    // userDefaultStore: {
-    //   storeBossInfo: {
-    //     isBossEligible: '1',
-    //     startDate: '09/29/2019',
-    //     endDate: '10/03/2019',
-    //   },
-    //   pickupType: {
-    //     isStoreBossSelected: true,
-    //     isStoreBopisSelected: true,
-    //   },
-    //   distance: null,
-    //   basicInfo: {
-    //     id: '114037',
-    //     storeName: 'south park meadows',
-    //     isDefault: 1,
-    //     address: {
-    //       addressLine1: '9500 south ih-35',
-    //       city: 'austin',
-    //       state: 'TX',
-    //       country: 'US',
-    //       zipCode: '78748',
-    //     },
-    //     phone: '(512) 292-3025',
-    //     coordinates: {
-    //       lat: 30.16216,
-    //       long: -97.7892,
-    //     },
-    //   },
-    //   hours: {
-    //     regularHours: [
-    //       {
-    //         dayName: 'TUESDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-24 10:00:00',
-    //             toHour: '2019-09-24 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'WEDNESDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-25 10:00:00',
-    //             toHour: '2019-09-25 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'THURSDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-26 10:00:00',
-    //             toHour: '2019-09-26 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'FRIDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-27 10:00:00',
-    //             toHour: '2019-09-27 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'SATURDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-28 10:00:00',
-    //             toHour: '2019-09-28 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'SUNDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-29 12:00:00',
-    //             toHour: '2019-09-29 18:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'MONDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-09-30 10:00:00',
-    //             toHour: '2019-09-30 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'TUESDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-10-01 10:00:00',
-    //             toHour: '2019-10-01 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //       {
-    //         dayName: 'WEDNESDAY',
-    //         openIntervals: [
-    //           {
-    //             fromHour: '2019-10-02 10:00:00',
-    //             toHour: '2019-10-02 21:00:00',
-    //           },
-    //         ],
-    //         isClosed: false,
-    //       },
-    //     ],
-    //     holidayHours: [],
-    //     regularAndHolidayHours: [],
-    //   },
-    //   features: {
-    //     storeType: 'Retail Store',
-    //   },
-    //   productAvailability: {},
-    //   timeStamp: 1569314564525,
-    // },
+    userDefaultStore: {
+      storeBossInfo: {
+        isBossEligible: '1',
+        startDate: '09/29/2019',
+        endDate: '10/03/2019',
+      },
+      pickupType: {
+        isStoreBossSelected: true,
+        isStoreBopisSelected: true,
+      },
+      distance: null,
+      basicInfo: {
+        id: '114037',
+        storeName: 'south park meadows',
+        isDefault: 1,
+        address: {
+          addressLine1: '9500 south ih-35',
+          city: 'austin',
+          state: 'TX',
+          country: 'US',
+          zipCode: '78748',
+        },
+        phone: '(512) 292-3025',
+        coordinates: {
+          lat: 30.16216,
+          long: -97.7892,
+        },
+      },
+      hours: {
+        regularHours: [
+          {
+            dayName: 'TUESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-24 10:00:00',
+                toHour: '2019-09-24 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'WEDNESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-25 10:00:00',
+                toHour: '2019-09-25 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'THURSDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-26 10:00:00',
+                toHour: '2019-09-26 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'FRIDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-27 10:00:00',
+                toHour: '2019-09-27 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'SATURDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-28 10:00:00',
+                toHour: '2019-09-28 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'SUNDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-29 12:00:00',
+                toHour: '2019-09-29 18:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'MONDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-09-30 10:00:00',
+                toHour: '2019-09-30 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'TUESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-10-01 10:00:00',
+                toHour: '2019-10-01 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+          {
+            dayName: 'WEDNESDAY',
+            openIntervals: [
+              {
+                fromHour: '2019-10-02 10:00:00',
+                toHour: '2019-10-02 21:00:00',
+              },
+            ],
+            isClosed: false,
+          },
+        ],
+        holidayHours: [],
+        regularAndHolidayHours: [],
+      },
+      features: {
+        storeType: 'Retail Store',
+      },
+      productAvailability: {},
+      timeStamp: 1569314564525,
+    },
     userGeoCoordinates: {
       lat: null,
       long: null,

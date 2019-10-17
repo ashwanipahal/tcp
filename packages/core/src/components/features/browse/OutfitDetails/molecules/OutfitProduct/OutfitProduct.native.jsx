@@ -73,7 +73,6 @@ const OutfitDetailsView = ({
       <OutfitProductContainer>
         <ImageContainer>
           <BodyCopy
-            margin="0 0 0 20px"
             mobileFontFamily="secondary"
             fontSize="fs10"
             fontWeight="regular"
@@ -99,16 +98,17 @@ const OutfitDetailsView = ({
             color="gray.900"
             text={name}
           />
+
           <View accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
             <CustomIcon name={ICON_NAME.favorite} size="fs21" color="gray.600" />
+            <BodyCopy
+              mobileFontFamily="secondary"
+              fontSize="fs10"
+              fontWeight="regular"
+              color="gray.600"
+              text={favoriteCount}
+            />
           </View>
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs10"
-            fontWeight="regular"
-            color="gray.600"
-            text={favoriteCount}
-          />
           <BodyCopy
             margin="4px 0 0 0"
             mobileFontFamily="secondary"
