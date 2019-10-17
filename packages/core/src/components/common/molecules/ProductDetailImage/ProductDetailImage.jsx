@@ -1,37 +1,42 @@
+/* eslint-disable */
+// Temp fix for DAM image in PLP
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { DamImage, Anchor } from '../../atoms';
 import useBooleanState from '@tcp/core/src/hooks/useBooleanState';
-import { Image, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
 import { getLocator } from '../../../../utils';
 
-// eslint-disable-next-line react/prop-types
 const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) => {
   const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
+  const imgData = {
+    alt: imageName,
+    url: imageUrl,
+  };
   return (
     <>
+      {' '}
       {!isMobile ? (
-        <Image
+        <DamImage
           className="full-size-desktop-image"
-          src={imageUrl}
-          alt={imageName}
-          itemProp="contentUrl"
           data-locator={getLocator('pdp_main_image')}
-          onLoad={handleImageLoaded}
+          imgData={imgData}
+          itemProp="contentUrl"
+          isProductImage
         />
       ) : (
         <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
-          <Image
+          <DamImage
+            className="full-size-desktop-image"
             data-locator={getLocator('pdp_main_image')}
-            src={imageUrl}
-            alt={imageName}
+            imgData={imgData}
             itemProp="contentUrl"
-            onLoad={handleImageLoaded}
+            isProductImage
           />
         </Anchor>
       )}
@@ -52,6 +57,7 @@ const ProductDetailImage = props => {
   } = props;
   const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
   let productSectionWidth;
+  const imgZoom = false;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
