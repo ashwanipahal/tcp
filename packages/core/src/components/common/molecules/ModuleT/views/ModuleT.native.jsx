@@ -66,19 +66,26 @@ class ModuleT extends React.PureComponent {
    *  @naviagtion is used to navigate the page.
    */
   renderButtonList(ctaType, navigation, ctaItems) {
+    const ctaTypeValue = ctaTypes[ctaType];
     return (
       <View>
-        {ctaType === ctaTypes.divImageCTACarousel && (
+        {ctaTypeValue === ctaTypes.divImageCTACarousel && (
           <View>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'moduleT_cta_links', 'black')}
+            {this.renderButtonListItem(
+              ctaTypeValue,
+              navigation,
+              ctaItems,
+              'moduleT_cta_links',
+              'black'
+            )}
           </View>
         )}
 
-        {ctaType === ctaTypes.stackedCTAButtons && (
+        {ctaTypeValue === ctaTypes.stackedCTAButtons && (
           <View>
             <Border />
             {this.renderButtonListItem(
-              ctaType,
+              ctaTypeValue,
               navigation,
               ctaItems,
               'stacked_cta_list',
@@ -88,15 +95,21 @@ class ModuleT extends React.PureComponent {
           </View>
         )}
 
-        {ctaType === ctaTypes.scrollCTAList && (
+        {ctaTypeValue === ctaTypes.scrollCTAList && (
           <ButtonContainer>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
+            {this.renderButtonListItem(
+              ctaTypeValue,
+              navigation,
+              ctaItems,
+              'scroll_cta_list',
+              'gray'
+            )}
           </ButtonContainer>
         )}
 
-        {ctaType === ctaTypes.linkList && (
+        {ctaTypeValue === ctaTypes.linkList && (
           <ButtonLinksContainer>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
+            {this.renderButtonListItem(ctaTypeValue, navigation, ctaItems, 'link_cta_list', 'gray')}
           </ButtonLinksContainer>
         )}
       </View>
