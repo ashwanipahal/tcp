@@ -1,8 +1,4 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../../utils';
-
-const downArrowIcon = getIconPath('down_arrow_icon');
-const upArrowIcon = getIconPath('up_arrow_icon');
 
 const dropDownlist = css`
   .dropdownUlBorder {
@@ -21,21 +17,31 @@ const dropDownlist = css`
   }
 
   .customSelectTitleImg {
-    background: url(${downArrowIcon}) no-repeat right center;
     position: absolute;
-    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    width: 100%;
-    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    top: 50%;
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
+    border-top: 2px solid ${props => props.theme.colorPalette.gray['800']};
+    transform: rotate(135deg);
+    margin-top: -7px;
+    right: 15px;
   }
 
   .customSelectTitleUpImg {
-    background: url(${upArrowIcon}) no-repeat right center;
     position: absolute;
-    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    width: 100%;
-    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    top: 50%;
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
+    border-top: 2px solid ${props => props.theme.colorPalette.gray['800']};
+    transform: rotate(315deg);
+    margin-top: -5px;
+    right: 15px;
   }
 
   .dropDownLists {

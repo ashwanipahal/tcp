@@ -153,6 +153,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       verifyAddressAction,
       setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       submitVerifiedShippingAddressData,
       shippingMethod,
     } = this.props;
@@ -205,6 +207,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
         shippingMethod={shippingMethod}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
       />
     );
   }
@@ -329,7 +333,9 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
+    isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
+    isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };

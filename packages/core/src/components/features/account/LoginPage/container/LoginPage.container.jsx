@@ -22,7 +22,11 @@ import {
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
-import { getUserLoggedInState } from '../../User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getplccCardId,
+  getplccCardNumber,
+} from '../../User/container/User.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 import LoginView from '../views';
@@ -92,6 +96,8 @@ class LoginPageContainer extends React.PureComponent {
       formErrorMessage,
       showCheckoutModal,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -122,6 +128,8 @@ class LoginPageContainer extends React.PureComponent {
         formErrorMessage={formErrorMessage}
         showCheckoutModal={showCheckoutModal}
         showLogin={showLogin}
+        userplccCardNumber={userplccCardNumber}
+        userplccCardId={userplccCardId}
       />
     );
   }
@@ -155,6 +163,8 @@ LoginPageContainer.propTypes = {
   showCheckoutModal: PropTypes.func.isRequired,
   showLogin: PropTypes.func.isRequired,
   resetAccountOverViewState: PropTypes.func,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -209,6 +219,8 @@ const mapStateToProps = state => {
     showRecaptcha: shouldShowRecaptcha(state),
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    userplccCardNumber: getplccCardNumber(state),
+    userplccCardId: getplccCardId(state),
   };
 };
 

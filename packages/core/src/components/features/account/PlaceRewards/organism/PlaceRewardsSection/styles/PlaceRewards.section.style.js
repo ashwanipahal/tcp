@@ -64,6 +64,15 @@ const styles = css`
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
+
+  .place-rewards-right-col {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    @media ${props => props.theme.mediaQuery.xlarge} {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+  }
 `;
 
 export default styles;
