@@ -44,6 +44,21 @@ const getCategoryList = store => {
   return departmentListing[1].displayName;
 };
 
+const getListingCount = store => {
+  const state = store.getState();
+  return state.ProductListing && state.ProductListing.get('totalProductsCount');
+};
+
+const getStoreId = store => {
+  const state = store.getState();
+  return (
+    state.User &&
+    state.User.get('defaultStore') &&
+    state.User.get('defaultStore').basicInfo &&
+    state.User.get('defaultStore').basicInfo.id
+  );
+};
+
 export const generateBrowseDataLayer = store => {
   return {
     listingFilterList: {
@@ -72,12 +87,12 @@ export const generateBrowseDataLayer = store => {
     },
     listingCount: {
       get() {
-        return store.getState().ProductListing.get('totalProductsCount') || '';
+        return getListingCount(store) || '';
       },
     },
     storeId: {
       get() {
-        return store.getState().User.get('defaultStore').basicInfo.id || '';
+        return getStoreId(store) || '';
       },
     },
   };
