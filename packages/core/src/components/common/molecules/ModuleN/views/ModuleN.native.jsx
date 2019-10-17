@@ -91,6 +91,7 @@ const ModuleN = (props: Props) => {
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
             color="red"
+            buttonVariation="cautionary"
           />
         </ButtonContainer>
       )}
