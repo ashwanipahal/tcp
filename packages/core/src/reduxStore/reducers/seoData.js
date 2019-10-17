@@ -1,8 +1,8 @@
+/* eslint-disable */
 import GLOBAL_CONSTANTS from '../constants';
 
 // TODO: Remove NOSONAR from line below and disable the default parameters rule
 // Remove eslint-disable after NOSONAR is removed
-/* eslint-disable */
 const SEODataReducer = (state = {}, action) => {
   //NOSONAR
   switch (action.type) {
