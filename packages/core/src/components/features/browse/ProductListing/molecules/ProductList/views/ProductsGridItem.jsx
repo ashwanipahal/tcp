@@ -203,9 +203,10 @@ class ProductsGridItem extends React.PureComponent {
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
     const { currencySymbol } = this.props;
+    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     return (
       <ProductPricesSection
-        currencySymbol={currencySymbol || '$'}
+        currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
@@ -390,8 +391,8 @@ class ProductsGridItem extends React.PureComponent {
     // };
     const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
-    const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
-    const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
+    const listPriceForColor = listPrice * currencyExchange;
+    const offerPriceForColor = offerPrice * currencyExchange;
     // const isShowPickupCTA =
     //   validateBopisEligibility({
     //     isBopisClearanceProductEnabled: isBopisEnabledForClearance,

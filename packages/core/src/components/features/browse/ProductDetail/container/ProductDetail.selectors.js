@@ -90,6 +90,10 @@ export const getCurrentCurrency = state => {
   return state.session.siteDetails.currency;
 };
 
+export const getCurrencyAttributes = state => {
+  return state.session.siteDetails.currencyAttributes;
+};
+
 export const getCurrentProduct = state => {
   return state.ProductDetail.get('currentProduct');
 };
