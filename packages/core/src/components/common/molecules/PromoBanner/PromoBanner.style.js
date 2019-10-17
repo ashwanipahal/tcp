@@ -403,11 +403,11 @@ export default css`
     display: block;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 
