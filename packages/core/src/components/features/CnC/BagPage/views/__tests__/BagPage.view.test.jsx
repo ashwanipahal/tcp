@@ -81,4 +81,35 @@ describe('Bag page View', () => {
     component.instance().getBagActionsContainerRef('<p></p>');
     expect(spyOpenModal).toHaveBeenCalled();
   });
+  it('should render with showCondensedHeader: true,', () => {
+    props.isShowSaveForLaterSwitch = true;
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    component.setState({
+      showCondensedHeader: true,
+      showStickyHeaderMob: true,
+      activeSection: 'SFL',
+    });
+    component.instance().handleChangeActiveSection('BAG');
+    component.instance().renderActions();
+    component.instance().renderLeftSection();
+    expect(component).toMatchSnapshot();
+  });
+  it('should render with only SFL condition', () => {
+    props.isShowSaveForLaterSwitch = true;
+    props.totalCount = null;
+    props.sflItems = { size: 2 };
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    component.setState({
+      showCondensedHeader: true,
+      showStickyHeaderMob: true,
+      activeSection: 'SFL',
+    });
+    component.setProps({ orderItemsCount: 20 });
+    component.instance.bagActionsContainer = '<div></div>';
+    expect(component).toMatchSnapshot();
+  });
+  it('should call componentWillUnmount', () => {
+    const component = shallow(<BagPageViewVanilla {...props} />);
+    component.instance().componentWillUnmount();
+  });
 });
