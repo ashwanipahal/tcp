@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Summary Details component should renders BOSSOrder and Bopis orders 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-SM margin-right-SM"
+  >
+    <ScrollViewMock />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Summary Details component should renders CanceledItems items 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-SM margin-right-SM"
+  >
+    <ScrollViewMock />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Summary Details component should renders Out of Stock items 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-SM margin-right-SM"
+  >
+    <ScrollViewMock />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Summary Details component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-SM margin-right-SM"
+  >
+    <ScrollViewMock />
+  </Styled(View)>
+</Fragment>
+`;

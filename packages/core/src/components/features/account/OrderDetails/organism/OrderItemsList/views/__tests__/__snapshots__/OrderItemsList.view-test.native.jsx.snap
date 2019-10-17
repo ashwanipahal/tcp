@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items component should renders correctly 1`] = `
+<Fragment>
+  <OrderItems
+    className=""
+    isCanceledList={false}
+    item={
+      Object {
+        "orderGroup": Object {
+          "itemBrand": "TCP",
+          "linePrice": 24.94,
+          "listPrice": 24.94,
+          "offerPrice": 24.94,
+          "quantity": 1,
+          "quantityCanceled": 0,
+          "quantityOOS": 0,
+          "quantityReturned": 0,
+          "quantityShipped": 0,
+        },
+        "productInfo": Object {
+          "color": Object {
+            "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/2044394_627.jpg",
+            "name": "DAYBREAK",
+          },
+          "fit": null,
+          "imagePath": "//uatlive4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044394_627.jpg",
+          "name": "Girls Uniform Long Sleeve Polo Dress",
+          "pdpUrl": "http://uatlive4.childrensplace.com/us/p/Girls-Uniform-Long-Sleeve-Polo-Dress-2044394-627",
+          "size": "XL (14)",
+          "upc": "00889705122527",
+        },
+      }
+    }
+    items={
+      Array [
+        Object {
+          "orderGroup": Object {
+            "itemBrand": "TCP",
+            "linePrice": 24.94,
+            "listPrice": 24.94,
+            "offerPrice": 24.94,
+            "quantity": 1,
+            "quantityCanceled": 0,
+            "quantityOOS": 0,
+            "quantityReturned": 0,
+            "quantityShipped": 0,
+          },
+          "productInfo": Object {
+            "color": Object {
+              "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/2044394_627.jpg",
+              "name": "DAYBREAK",
+            },
+            "fit": null,
+            "imagePath": "//uatlive4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044394_627.jpg",
+            "name": "Girls Uniform Long Sleeve Polo Dress",
+            "pdpUrl": "http://uatlive4.childrensplace.com/us/p/Girls-Uniform-Long-Sleeve-Polo-Dress-2044394-627",
+            "size": "XL (14)",
+            "upc": "00889705122527",
+          },
+        },
+      ]
+    }
+    key="0"
+  />
+</Fragment>
+`;
