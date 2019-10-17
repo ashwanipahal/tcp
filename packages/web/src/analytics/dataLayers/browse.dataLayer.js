@@ -32,6 +32,29 @@ const getSortParams = store => {
   return sort ? `sort=${sort}` : '';
 };
 
+const getDepartmentList = store => {
+  const state = store.getState();
+  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  return departmentListing[0].displayName;
+};
+
+const getCategoryList = store => {
+  const state = store.getState();
+  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  return departmentListing[1].displayName;
+};
+
+const getListingCount = store => {
+  const state = store.getState();
+  return state.ProductListing && state.ProductListing.get('totalProductsCount');
+};
+
+const getStoreId = store => {
+  const state = store.getState();
+  const defaultStore = state.User && state.User.get('defaultStore');
+  return defaultStore.basicInfo && defaultStore.basicInfo.id;
+};
+
 export const generateBrowseDataLayer = store => {
   return {
     listingFilterList: {
@@ -46,6 +69,26 @@ export const generateBrowseDataLayer = store => {
         filterLiteral = filterLiteral ? sortfilterTypeSeparator + filterLiteral : '';
         const sortLiteral = getSortParams(store);
         return sortLiteral ? sortLiteral + filterLiteral : '';
+      },
+    },
+    listingDepartment: {
+      get() {
+        return getDepartmentList(store) || '';
+      },
+    },
+    listingCategory: {
+      get() {
+        return getCategoryList(store) || '';
+      },
+    },
+    listingCount: {
+      get() {
+        return getListingCount(store) || '';
+      },
+    },
+    storeId: {
+      get() {
+        return getStoreId(store) || '';
       },
     },
   };
