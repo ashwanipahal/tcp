@@ -72,6 +72,16 @@ export default css`
     }
   }
 
+  /* Module G Heading styles */
+  .medium_text_regular {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
+    font-weight: ${props => props.theme.typography.fontWeights.medium};
+    letter-spacing: 2px;
+    text-align: center;
+    color: ${props => props.theme.colorPalette.black};
+  }
+
   /* Module S Heading styles */
   .small_text_white_medium {
     color: ${props => props.theme.colorPalette.white};

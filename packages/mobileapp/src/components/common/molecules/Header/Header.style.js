@@ -1,4 +1,16 @@
 import styled from 'styled-components/native';
+import { isGymboree } from '@tcp/core/src/utils';
+
+const setBackground = props => {
+  if (isGymboree()) {
+    return `
+    background-color: ${props.theme.colorPalette.orange[700]};
+    `;
+  }
+  return `
+  background-color: ${props.theme.colorPalette.blue[800]};
+  `;
+};
 
 const cartItemsWidth = cartItems => {
   let width = '';
@@ -59,12 +71,12 @@ export const Icon = styled.Image`
 `;
 
 export const RoundView = styled.View`
-  background-color: ${props => props.theme.colorPalette.primary.dark};
+  ${setBackground}
   width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 20px;
   border-radius: 10;
   position: absolute;
-  margin-top: 14px;
+  margin-top: 15px;
   border: 2px solid white;
 `;
 
@@ -75,7 +87,7 @@ export const CartIconView = styled.Image`
 
 export const TextStyle = {
   position: 'absolute',
-  marginTop: 18,
+  marginTop: 19,
   paddingRight: 5.6,
 };
 

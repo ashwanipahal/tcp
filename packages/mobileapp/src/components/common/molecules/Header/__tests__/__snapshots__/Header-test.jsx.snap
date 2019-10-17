@@ -76,7 +76,7 @@ exports[`Header Component Header should render correctly 1`] = `
           numberOfLines={null}
           style={
             Object {
-              "marginTop": 18,
+              "marginTop": 19,
               "paddingRight": 5.6,
               "position": "absolute",
             }

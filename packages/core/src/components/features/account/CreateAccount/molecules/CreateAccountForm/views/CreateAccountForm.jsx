@@ -29,7 +29,14 @@ let CreateAccountForm = ({
   onAlreadyHaveAnAccountClick,
   className,
   tooltipContent,
+  userplccCardNumber,
+  userplccCardId,
 }) => {
+  const getPlccLbl = getLabelValue(
+    labels,
+    'lbl_createAccount_plcc_checkbox_Text',
+    'registration'
+  ).replace('#number', `${userplccCardNumber}`);
   return (
     <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
@@ -160,6 +167,24 @@ let CreateAccountForm = ({
               </Col>
             </span>
           </Col>
+          {userplccCardNumber && userplccCardId && (
+            <Col
+              className="plcc_checkbox elem-pb-MED"
+              ignoreGutter={{ small: true }}
+              colSize={{ small: 6 }}
+            >
+              <Field
+                name="plcc_checkbox"
+                component={InputCheckbox}
+                dataLocator="plcc_checkbox"
+                alignCheckbox="top"
+              >
+                <BodyCopy fontFamily="secondary" fontSize="fs10">
+                  <RichText richTextHtml={getPlccLbl} />
+                </BodyCopy>
+              </Field>
+            </Col>
+          )}
           <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
@@ -261,6 +286,8 @@ CreateAccountForm.propTypes = {
   onAlreadyHaveAnAccountClick: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   tooltipContent: PropTypes.string.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 export default withStyles(CreateAccountForm, Styles);

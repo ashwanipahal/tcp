@@ -200,6 +200,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
+        dataLocator="saveCardChkBox"
         name="saveToAccount"
         onChange={[Function]}
         showDefaultCheckbox={false}
@@ -362,6 +363,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
+        dataLocator="defaultPaymentChkBox"
         disabled={false}
         name="defaultPayment"
         showDefaultCheckbox={false}
