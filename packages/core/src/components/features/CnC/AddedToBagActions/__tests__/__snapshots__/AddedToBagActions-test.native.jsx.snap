@@ -15,60 +15,11 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
-        text="VIEW BAG"
+        text=""
         textDecoration={null}
         textTransform="uppercase"
       />
     </Styled(TouchableOpacity)>
-  </Styled(View)>
-  <Connect(AddedToBagContainer) />
-</Styled(View)>
-`;
-
-exports[`AddedToBagActions native component AddedToBagActions renders correctly with Venmo Button 1`] = `
-<Styled(View)>
-  <Styled(View)>
-    <Styled(TouchableOpacity)
-      onPress={[Function]}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="extrabold"
-        margin={null}
-        numberOfLines={null}
-        text="VIEW BAG"
-        textDecoration={null}
-        textTransform="uppercase"
-      />
-    </Styled(TouchableOpacity)>
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(TouchableOpacity)
-      onPress={[Function]}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="extrabold"
-        margin={null}
-        numberOfLines={null}
-        text="CHECKOUT"
-        textDecoration={null}
-      />
-    </Styled(TouchableOpacity)>
-  </Styled(View)>
-  <Styled(View)>
-    <Connect(VenmoPaymentButtonContainer)
-      className="venmo-container"
-      onSuccess={[Function]}
-    />
   </Styled(View)>
   <Connect(AddedToBagContainer) />
 </Styled(View)>
