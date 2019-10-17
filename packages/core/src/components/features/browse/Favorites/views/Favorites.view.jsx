@@ -125,6 +125,7 @@ const FavoritesView = props => {
           className="share-list"
           ignoreGutter={{ small: true, medium: true, large: true }}
         >
+          {/* Placeholder for dropdown */}
           <span>Dropdown end</span>
         </Col>
       </Row>
@@ -181,6 +182,7 @@ const FavoritesView = props => {
           colSize={{ small: 6, medium: 8, large: 12 }}
           className="recommendation"
         >
+          {/* Placeholder for you may also like */}
           <div>You may also like</div>
         </Col>
       </Row>
