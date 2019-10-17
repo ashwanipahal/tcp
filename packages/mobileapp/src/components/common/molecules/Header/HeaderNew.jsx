@@ -1,15 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
-
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import {
   Container,
   HeaderContainer,
@@ -22,8 +27,11 @@ import {
   TitleText,
   CartCountContainer,
 } from './HeaderNew.style';
+import { readCookieMobileApp } from '../../../../utils/utils';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
+
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header.
@@ -50,9 +58,28 @@ class HeaderNew extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      cartVal: 0,
       showSearchModal: false,
     };
+  }
+
+  componentDidMount() {
+    this.getInitialProps();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
+    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
+  }
+
+  getInitialProps() {
+    const { updateCartCountAction } = this.props;
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
+    cartValuePromise.then(res => {
+      updateCartCountAction(parseInt(res || 0, 10));
+    });
   }
 
   /**
@@ -105,8 +132,8 @@ class HeaderNew extends React.PureComponent<Props> {
   };
 
   render() {
-    const { title, showSearch } = this.props;
-    const { cartVal, showSearchModal } = this.state;
+    const { title, showSearch, cartVal, slpLabels } = this.props;
+    const { showSearchModal } = this.state;
     return (
       <SafeAreaViewStyle showSearch={showSearch}>
         <ToastContainer />
@@ -141,19 +168,22 @@ class HeaderNew extends React.PureComponent<Props> {
                   source={cartIcon}
                   data-locator={getLocator('global_headerpanelbagicon')}
                 />
-                <CartCountContainer>
+                <CartCountContainer cartVal={cartVal}>
                   <BodyCopy
                     text={cartVal}
                     color="white"
                     fontSize="fs10"
                     data-locator={getLocator('global_headerpanelbagitemtext')}
                     accessibilityText="Mini bag with count"
+                    fontWeight="extrabold"
                   />
                 </CartCountContainer>
               </Touchable>
             </RightSection>
           </HeaderContainer>
-          {showSearch && <SearchBar openSearchProductPage={this.openSearchProductPage} />}
+          {showSearch && (
+            <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          )}
           {showSearchModal && (
             <SearchProduct
               closeSearchModal={this.closeSearchProductPage}
@@ -166,4 +196,28 @@ class HeaderNew extends React.PureComponent<Props> {
   }
 }
 
-export default HeaderNew;
+const mapStateToProps = state => {
+  return {
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    slpLabels: state.Labels.Browse && state.Labels.Browse.SLP,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InitialPropsHOC(HeaderNew));
+
+export { HeaderNew as HeaderNewVanilla };

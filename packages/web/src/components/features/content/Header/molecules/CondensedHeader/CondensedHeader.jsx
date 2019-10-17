@@ -27,8 +27,10 @@ class CondensedHeader extends React.PureComponent {
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      isFullSizeSearchModalOpen: false,
     };
     this.setSearchState = this.setSearchState.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -38,6 +40,14 @@ class CondensedHeader extends React.PureComponent {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
+  }
+
+  onCloseClick() {
+    const { isFullSizeSearchModalOpen, isSearchOpen } = this.state;
+    this.setState({
+      isFullSizeSearchModalOpen: !isFullSizeSearchModalOpen,
+      isSearchOpen: !isSearchOpen,
+    });
   }
 
   setSearchState(currentStatus, cb = null) {
@@ -150,6 +160,7 @@ class CondensedHeader extends React.PureComponent {
                 setSearchState={this.setSearchState}
                 isSearchOpen={isSearchOpen}
                 fromCondensedHeader
+                onCloseClick={this.onCloseClick}
               />
 
               {userName ? (
@@ -184,6 +195,7 @@ class CondensedHeader extends React.PureComponent {
               <Anchor
                 to="#"
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
                 fontSizeVariation="small"
@@ -201,6 +213,8 @@ class CondensedHeader extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  tabIndex="-1"
+                  aria-hidden="true"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>

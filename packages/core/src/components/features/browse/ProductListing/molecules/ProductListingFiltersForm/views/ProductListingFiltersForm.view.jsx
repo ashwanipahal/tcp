@@ -70,6 +70,7 @@ function getFilterOptionsMap(optionsMap) {
   return optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
+    disabled: option.disabled,
     content: (
       <BodyCopy
         component="span"
@@ -145,7 +146,7 @@ class ProductListingFiltersForm extends React.Component {
 
   captureFilterRef = ref => {
     if (!ref) return;
-    const typeRef = ref && ref.getRenderedComponent();
+    const typeRef = ref.getRenderedComponent();
     typeRef.filterRefType = ref.props.name;
     this.filterRef.push(typeRef);
   };
@@ -225,8 +226,7 @@ class ProductListingFiltersForm extends React.Component {
    */
 
   renderFilterField(appliedFilterVal, selectedFilters, filterName, facetName) {
-    const { filtersMaps, labels } = this.props;
-
+    const { filtersMaps, labels, isFavoriteView, onFilterSelection } = this.props;
     return (
       <Field
         name={facetName}
@@ -236,7 +236,7 @@ class ProductListingFiltersForm extends React.Component {
         optionsMap={getFilterOptionsMap(filtersMaps[facetName])}
         title=""
         placeholder={filterName}
-        allowMultipleSelections
+        allowMultipleSelections={!isFavoriteView}
         className="size-detail-chips"
         expanded={false}
         disableExpandStateChanges={false}
@@ -244,6 +244,7 @@ class ProductListingFiltersForm extends React.Component {
         withRef
         forwardRef
         labels={labels}
+        onFilterSelection={onFilterSelection}
       />
     );
   }
@@ -299,10 +300,15 @@ class ProductListingFiltersForm extends React.Component {
       onSubmit,
       sortLabels,
       slpLabels,
+      isFilterBy,
+      favoriteSortingParams,
+      onSortSelection,
+      defaultPlaceholder,
+      isFavoriteView,
     } = this.props;
     const filterKeys = Object.keys(filtersMaps);
 
-    const sortOptions = getSortOptions(sortLabels);
+    const sortOptions = favoriteSortingParams || getSortOptions(sortLabels);
 
     return (
       <div className="filter-and-sort-form-container">
@@ -311,27 +317,34 @@ class ProductListingFiltersForm extends React.Component {
           {totalProductsCount > 0 && (
             <div className={`${className} desktop-dropdown`}>
               <div className="filters-only-container">
-                <BodyCopy
-                  component="span"
-                  role="option"
-                  textAlign="center"
-                  tabIndex={0}
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                  color="gray.900"
-                  outline="none"
-                  data-locator={getLocator('plp_filter_label_filterby')}
-                >
-                  {`${labels.lbl_filter_by}`}
-                </BodyCopy>
+                {isFilterBy && (
+                  <BodyCopy
+                    component="span"
+                    role="option"
+                    textAlign="center"
+                    tabIndex={0}
+                    fontSize="fs14"
+                    fontFamily="secondary"
+                    color="gray.900"
+                    outline="none"
+                    data-locator={getLocator('plp_filter_label_filterby')}
+                  >
+                    {`${labels.lbl_filter_by}`}
+                  </BodyCopy>
+                )}
 
                 {filtersMaps && this.renderDesktopFilters(filterKeys, appliedFilters)}
               </div>
               <div className="sort-selector-wrapper">
                 <SortSelector
                   isMobile={false}
+                  defaultPlaceholder={defaultPlaceholder}
                   sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
-                  onChange={handleSubmit(this.handleSubmitOnChange)}
+                  onChange={
+                    !isFavoriteView
+                      ? handleSubmit(this.handleSubmitOnChange)
+                      : selectedOption => onSortSelection(selectedOption)
+                  }
                 />
               </div>
             </div>
@@ -371,6 +384,9 @@ class ProductListingFiltersForm extends React.Component {
             removeAllFilters={this.handleRemoveAllFilters}
             handleSubmitOnChange={this.handleSubmitOnChange}
             sortLabels={sortLabels}
+            isFavoriteView={isFavoriteView}
+            favoriteSortingParams={favoriteSortingParams}
+            onSortSelection={onSortSelection}
           />
         </div>
         {/* {submitting && <Spinner className="loading-more-product">Updating...</Spinner>} */}
@@ -384,7 +400,7 @@ class ProductListingFiltersForm extends React.Component {
    * @param none
    */
   renderDesktopFilters(filterKeys, appliedFilters) {
-    const { filtersMaps, filtersLength } = this.props;
+    const { filtersMaps, filtersLength, isFavoriteView } = this.props;
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const appliedFilterAvailable = this.getAppliedFiltersCount();
     let filterList = {};
@@ -407,7 +423,7 @@ class ProductListingFiltersForm extends React.Component {
             filtersMaps[key].length > 0 &&
             this.renderFilterField(
               appliedFilterAvailable && appliedFilters[key],
-              filtersLength[`${key}Filters`],
+              !isFavoriteView ? filtersLength[`${key}Filters`] : 'Display',
               unbxdKeyMapping[key],
               key
             );
@@ -452,6 +468,12 @@ ProductListingFiltersForm.propTypes = {
   change: PropTypes.func,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFilterBy: PropTypes.bool,
+  isFavoriteView: PropTypes.bool,
+  onFilterSelection: PropTypes.func,
+  favoriteSortingParams: PropTypes.shape({}),
+  onSortSelection: PropTypes.func,
+  defaultPlaceholder: PropTypes.string,
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -466,6 +488,12 @@ ProductListingFiltersForm.defaultProps = {
   change: () => null,
   sortLabels: [],
   slpLabels: {},
+  isFilterBy: true,
+  isFavoriteView: false,
+  onFilterSelection: () => null,
+  defaultPlaceholder: '',
+  onSortSelection: () => null,
+  favoriteSortingParams: null,
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

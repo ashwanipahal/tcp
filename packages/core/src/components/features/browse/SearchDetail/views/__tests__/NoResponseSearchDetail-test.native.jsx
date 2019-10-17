@@ -8,7 +8,15 @@ describe('NoResponseSearchDetailVanilla component', () => {
   beforeEach(() => {
     const props = {
       searchedText: '',
-      slpLabels: {},
+      slpLabels: {
+        lbl_no_suggestion: '',
+        lbl_didYouMean: '',
+        lbl_tips: '',
+        lbl_check_your_spelling: '',
+        lbl_simplified_keywords: '',
+        lbl_try_searching: '',
+        lbl_narrow_searches: '',
+      },
       labels: {
         lbl_search_whats_trending: '',
         lbl_search_recent_search: '',

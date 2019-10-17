@@ -98,6 +98,7 @@ export const getPDPLabels = state => {
   return {
     fullSize: getLabelValue(state.Labels, 'lbl_full_size', 'PDP', 'Browse'),
     promoArea1: getLabelValue(state.Labels, 'lbl_promo_area_1', 'PDP', 'Browse'),
+    promoArea: getLabelValue(state.Labels, 'lbl_promo_area', 'PDP', 'Browse'),
     promoArea3: getLabelValue(state.Labels, 'lbl_promo_area_3', 'PDP', 'Browse'),
     completeTheLook: getLabelValue(state.Labels, 'lbl_complete_the_look', 'PDP', 'Browse'),
     youMayAlsoLike: getLabelValue(state.Labels, 'lbl_you_may_also_like', 'PDP', 'Browse'),
@@ -124,5 +125,38 @@ export const getPDPLabels = state => {
       'PDP',
       'Browse'
     ),
+    preferSendingViaEmail: getLabelValue(
+      state.Labels,
+      'lbl_prefer_sending_via_email',
+      'PDP',
+      'Browse'
+    ),
+    sendAnEmailCard: getLabelValue(state.Labels, 'lbl_send_an_email_card', 'PDP', 'Browse'),
+    freeShippingEveryDay: getLabelValue(
+      state.Labels,
+      'lbl_free_shipping_every_day',
+      'PDP',
+      'Browse'
+    ),
+    back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
+    eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
+  };
+};
+
+export const getRelatedOutfits = state => {
+  const { Layouts = {}, Modules = {} } = state;
+  const relatedOutfitsSlots = Layouts.homepage ? Layouts.homepage.slots : [];
+  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+
+  return {
+    slots: relatedOutfitsSlots
+      .map(slot => {
+        return {
+          ...slot,
+          accessibility,
+          data: Modules[slot.contentId],
+        };
+      })
+      .filter(item => item.moduleName === 'moduleQ'),
   };
 };

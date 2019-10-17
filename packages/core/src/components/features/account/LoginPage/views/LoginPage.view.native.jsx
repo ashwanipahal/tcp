@@ -82,6 +82,8 @@ class LoginView extends React.PureComponent {
       loginError,
       showCheckoutModal,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -107,6 +109,8 @@ class LoginView extends React.PureComponent {
           handleContinueAsGuest={handleContinueAsGuest}
           showCheckoutModal={showCheckoutModal}
           showLogin={showLogin}
+          userplccCardNumber={userplccCardNumber}
+          userplccCardId={userplccCardId}
         />
       </ScrollViewStyle>
     );
@@ -131,6 +135,8 @@ LoginView.propTypes = {
   loginError: PropTypes.bool.isRequired,
   showCheckoutModal: PropTypes.func,
   showLogin: PropTypes.func,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginView.defaultProps = {
@@ -138,6 +144,8 @@ LoginView.defaultProps = {
   navigation: {},
   showCheckoutModal: () => {},
   showLogin: () => {},
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 export default LoginView;
