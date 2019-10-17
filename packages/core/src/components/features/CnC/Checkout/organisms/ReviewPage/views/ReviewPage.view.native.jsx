@@ -88,6 +88,7 @@ class ReviewPage extends React.PureComponent {
           </Container>
           <CheckoutCartItemList />
           <CnCTemplate
+            isReviewPage
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
