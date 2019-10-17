@@ -101,8 +101,8 @@ const FavoritesView = props => {
   ];
 
   return (
-    <>
-      <Row className={className} fullBleed>
+    <div className={className}>
+      <Row fullBleed>
         <Col
           colSize={{ small: 6, medium: 8, large: 12 }}
           ignoreGutter={{ small: true, medium: true, large: true }}
@@ -184,12 +184,12 @@ const FavoritesView = props => {
           <div>You may also like</div>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
 FavoritesView.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   wishlistsSummaries: PropTypes.arrayOf({}),
   activeWishList: PropTypes.shape({}),
   createNewWishListMoveItem: PropTypes.func.isRequired,
@@ -210,7 +210,6 @@ FavoritesView.propTypes = {
 };
 
 FavoritesView.defaultProps = {
-  className: '',
   wishlistsSummaries: [],
   activeWishList: {},
   selectedColorProductId: '',
