@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { openQuickViewWithValues } from '../../../organisms/QuickViewModal/container/QuickViewModal.actions';
 
 import ModuleG from '../views';
 
@@ -10,4 +11,15 @@ export const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ModuleG);
+export const mapDispatchToProps = dispatch => {
+  return {
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ModuleG);

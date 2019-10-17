@@ -17,9 +17,11 @@
  * })
  */
 
+import * as utils from './utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 export default {
   eventData: {},
+  ...utils,
   // TODO: For these values, determine if we need them.
   // _dataManager.eventData.errorFields
   // _dataManager.eventData.eventName
