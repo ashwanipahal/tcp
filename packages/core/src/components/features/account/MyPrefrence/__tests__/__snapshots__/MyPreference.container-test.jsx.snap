@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfile container should render MyProfile component 1`] = `
+<Fragment>
+  <MyPrefrence
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
+    initialValues={
+      Object {
+        "tcpWebSubscribe": undefined,
+      }
+    }
+    isTcpSubscribe={false}
+    labels={Object {}}
+    onSubscribe={[Function]}
+  />
+</Fragment>
+`;
