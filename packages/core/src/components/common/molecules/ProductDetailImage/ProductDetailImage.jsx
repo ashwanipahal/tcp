@@ -49,7 +49,7 @@ const ProductDetailImage = props => {
   } = props;
 
   let productSectionWidth;
-
+  const imgZoom = false;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
@@ -57,7 +57,7 @@ const ProductDetailImage = props => {
   }
   return (
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
-      {/* {isZoomEnabled && !isMobile ? (
+      {imgZoom && !isMobile ? (
         <ReactImageMagnify
           data-locator={getLocator('pdp_main_image')}
           {...{
@@ -83,8 +83,7 @@ const ProductDetailImage = props => {
         />
       ) : (
         getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)
-      )} */}
-      {getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)}
+      )}
       <RenderPerf.Measure name={HERO_VISIBLE} />
     </div>
   );
