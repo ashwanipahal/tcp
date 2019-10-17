@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
+import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -72,7 +73,7 @@ const ProductDetailImage = props => {
             {...{
               enlargedImagePortalId: 'portal',
               smallImage: {
-                src: imageUrl,
+                src: changeImageURLToDOM(imageUrl, 'w_500'),
                 isFluidWidth: true,
                 alt: imageName,
                 onLoad: handleImageLoaded,
