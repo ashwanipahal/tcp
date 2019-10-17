@@ -17,7 +17,9 @@ const AccountDrawerPage = props => {
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
-          <RewardsPoints />
+          <div className="elem-pl-MED elem-pr-MED">
+            <RewardsPoints />
+          </div>
           <ExtraPointsTeaser plccUser={plccUser} labels={labels} globalLabels={globalLabels} />
         </>
       )}
