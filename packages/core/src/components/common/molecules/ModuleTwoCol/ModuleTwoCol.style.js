@@ -21,10 +21,6 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    > div:first-child {
-      margin-right: 30px;
-    }
-
     .moduleH,
     .moduleN {
       margin: 0;
