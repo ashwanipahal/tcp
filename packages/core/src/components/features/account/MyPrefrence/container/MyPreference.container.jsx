@@ -10,7 +10,7 @@ const getMyPrefrenceLabels = labels => {
 export class MyPrefrenceContainer extends PureComponent {
   render() {
     const { labels, handleComponentChange, componentProps, router } = this.props;
-    const urlParams = router.query;
+    const urlParams = router.query || {};
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
 
     return (
