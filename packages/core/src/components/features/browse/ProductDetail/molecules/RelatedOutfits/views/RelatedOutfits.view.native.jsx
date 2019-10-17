@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import { StyleRelatedOutfits, ImageStyleWrapper } from '../RelatedOutfits.native.style';
-import ModuleQ from '../../../../../../common/molecules/ModuleQ';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../../../assets/carrot-small-up.png');
@@ -23,25 +21,9 @@ class RelatedOutfits extends React.PureComponent {
   };
 
   render() {
-    const { pdpLabels, navigation, relatedOutfits, ...others } = this.props;
+    const { pdpLabels } = this.props;
     const { completeTheLook } = pdpLabels;
     const { isAccordionOpen } = this.state;
-
-    const RelatedOutfitsSlots = () => {
-      const { data, contentId, accessibility } = relatedOutfits[0];
-      return (
-        data && (
-          <ModuleQ
-            key={contentId}
-            accessibility={accessibility}
-            {...data}
-            navigation={navigation}
-            hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
-            {...others}
-          />
-        )
-      );
-    };
 
     return (
       <View>
@@ -60,7 +42,6 @@ class RelatedOutfits extends React.PureComponent {
             </Anchor>
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
-        {isAccordionOpen && relatedOutfits.length ? <RelatedOutfitsSlots /> : null}
       </View>
     );
   }
@@ -68,14 +49,10 @@ class RelatedOutfits extends React.PureComponent {
 
 RelatedOutfits.propTypes = {
   pdpLabels: PropTypes.shape({}),
-  navigation: PropTypes.shape({}),
-  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 RelatedOutfits.defaultProps = {
   pdpLabels: {},
-  navigation: {},
-  relatedOutfits: [],
 };
 
 export default RelatedOutfits;
