@@ -38,11 +38,11 @@ const CnCTemplate = ({
   isGuest,
   isCheckoutView,
   showAccordian,
-  isNonEmptySFL,
   isConfirmationPage,
   isNotLoaded,
+  orderLedgerAfterView,
 }) => {
-  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
+  const isSmallLeftSection = showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
@@ -75,7 +75,7 @@ const CnCTemplate = ({
                   </>
                 ) : (
                   <>
-                    <OrderLedgerContainer />
+                    <OrderLedgerContainer orderLedgerAfterView={orderLedgerAfterView} />
                     {getBagActions({ BagActions })}
                     <LoyaltyBanner />
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
@@ -100,11 +100,11 @@ CnCTemplate.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
-  isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   isNotLoaded: PropTypes.bool,
@@ -115,7 +115,6 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
-  isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
   isNotLoaded: true,

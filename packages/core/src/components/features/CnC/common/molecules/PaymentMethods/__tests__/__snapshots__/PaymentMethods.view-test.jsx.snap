@@ -169,6 +169,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "withComponent": [Function],
           }
         }
+        data-locator="creditCardRadioBtn"
         hideSubtitleOnMobile={true}
         key="Credit Card"
         name="paymentMethodId"
@@ -188,6 +189,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       }
     >
       <Field
+        aria-label="undefined undefined"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -328,6 +330,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "withComponent": [Function],
           }
         }
+        data-locator="paypalRadioBtn"
         hideSubtitleOnMobile={true}
         key="PayPal"
         name="paymentMethodId"

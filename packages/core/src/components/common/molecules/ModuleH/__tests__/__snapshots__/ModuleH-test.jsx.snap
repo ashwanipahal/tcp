@@ -221,6 +221,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "type": "light",
         }
       }
+      className="moduleH_carousel"
       options={
         Object {
           "arrows": false,

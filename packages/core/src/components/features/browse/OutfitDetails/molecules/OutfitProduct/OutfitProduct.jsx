@@ -26,6 +26,7 @@ const OutfitDetailsView = ({
   priceCurrency,
   currencyExchange,
   handleAddToBag,
+  addToBagError,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -105,6 +106,7 @@ const OutfitDetailsView = ({
             currentProduct={outfitProduct}
             plpLabels={plpLabels}
             isOutfitPage
+            errorOnHandleSubmit={addToBagError}
           />
         </div>
       </Col>
@@ -123,9 +125,10 @@ OutfitDetailsView.propTypes = {
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyExchange: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  addToBagError: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -139,8 +142,9 @@ OutfitDetailsView.defaultProps = {
   isInternationalShipping: false,
   currencySymbol: '$',
   priceCurrency: 'USD',
-  currencyExchange: '1',
+  currencyExchange: [{ exchangevalue: 1 }],
   labels: {},
+  addToBagError: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

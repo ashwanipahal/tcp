@@ -8,12 +8,17 @@ import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.nati
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
+import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
+import CONSTANTS from '../../../Checkout.constants';
+import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
+import ModalNative from '../../../../../../common/molecules/Modal';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
     labels: PropTypes.shape({}).isRequired,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
@@ -26,6 +31,9 @@ export default class ShippingPage extends React.Component {
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
+    formatPayload: PropTypes.func.isRequired,
+    verifyAddressAction: PropTypes.func.isRequired,
+    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
@@ -40,6 +48,13 @@ export default class ShippingPage extends React.Component {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoShippingDisplayed: PropTypes.bool,
+    isVenmoPickupDisplayed: PropTypes.bool,
+    setVenmoPickupState: PropTypes.func,
+    venmoBannerLabel: PropTypes.shape({
+      venmoBannerText: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -62,12 +77,20 @@ export default class ShippingPage extends React.Component {
     addNewShippingAddressData: () => {},
     syncErrors: {},
     newUserPhoneNo: null,
+    isVenmoPaymentInProgress: false,
+    isVenmoShippingDisplayed: true,
+    isVenmoPickupDisplayed: true,
+    setVenmoPickupState: () => {},
+    venmoBannerLabel: {
+      venmoBannerText: '',
+    },
   };
 
   constructor(props) {
     super(props);
     this.state = {
       defaultAddressId: null,
+      showAddressVerification: false,
     };
   }
 
@@ -89,6 +112,11 @@ export default class ShippingPage extends React.Component {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
+  }
+
+  shouldComponentUpdate() {
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
   }
 
   componentDidUpdate(prevProps) {
@@ -114,6 +142,25 @@ export default class ShippingPage extends React.Component {
     }
   }
 
+  /**
+   * This function is to validate if we need to show venmo banner or not.
+   * Only if user comes on pickup or shipping page, but not on coming back from navigation
+   * @params {string} currentSection - current checkout section name
+   */
+  isShowVenmoBanner = currentSection => {
+    const {
+      isVenmoPaymentInProgress,
+      isVenmoPickupDisplayed,
+      isVenmoShippingDisplayed,
+    } = this.props;
+    const { CHECKOUT_STAGES } = CONSTANTS;
+    return (
+      isVenmoPaymentInProgress &&
+      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
+        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
+    );
+  };
+
   submitShippingForm = data => {
     const {
       address,
@@ -123,7 +170,7 @@ export default class ShippingPage extends React.Component {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses } = this.props;
+    const { isGuest, userAddresses, formatPayload, setVenmoPickupState } = this.props;
     const { isAddNewAddress } = this.state;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && !isAddNewAddress) {
@@ -135,8 +182,8 @@ export default class ShippingPage extends React.Component {
         shipAddress.addressLine2 = addressLine2;
       }
     }
-    const { handleSubmit } = this.props;
-    handleSubmit({
+    setVenmoPickupState(true);
+    const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
       },
@@ -154,7 +201,16 @@ export default class ShippingPage extends React.Component {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
-    });
+    };
+    const { handleSubmit, verifyAddressAction } = this.props;
+    if (!onFileAddressKey) {
+      const formattedPayload = formatPayload(shipAddress);
+      this.submitData = submitData;
+      this.setState({ showAddressVerification: true });
+      return verifyAddressAction(formattedPayload);
+    }
+
+    return handleSubmit(submitData);
   };
 
   updateShippingAddress = () => {
@@ -201,6 +257,16 @@ export default class ShippingPage extends React.Component {
     });
   };
 
+  submitVerifiedShippingAddressData = shippingAddress => {
+    const { submitVerifiedShippingAddressData, navigation } = this.props;
+    this.setState({ showAddressVerification: false });
+    submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData, navigation });
+  };
+
+  closeAddAddressVerificationModal = () => {
+    this.setState({ showAddressVerification: false });
+  };
+
   render() {
     const {
       shipmentMethods,
@@ -226,67 +292,96 @@ export default class ShippingPage extends React.Component {
       setAsDefaultShipping,
       syncErrors,
       newUserPhoneNo,
+      venmoBannerLabel,
+      isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
+      formatPayload,
     } = this.props;
 
-    const { defaultAddressId } = this.state;
+    const { CHECKOUT_STAGES } = CONSTANTS;
+    const { defaultAddressId, showAddressVerification } = this.state;
+    const shippingAddressData = (this.submitData && this.submitData.shipTo.address) || {};
     return (
       <>
-        <CheckoutProgressIndicator
-          activeStage="shipping"
-          navigation={navigation}
-          availableStages={availableStages}
-        />
-        <ScrollView keyboardShouldPersistTaps="handled">
-          <HeaderContainer>
-            <CheckoutSectionTitleDisplay
-              title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
+        {showAddressVerification && (
+          <ModalNative
+            isOpen={showAddressVerification}
+            onRequestClose={this.closeAddAddressVerificationModal}
+            heading={getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
+          >
+            <AddressVerification
+              onSuccess={this.submitVerifiedShippingAddressData}
+              heading={addressLabels.addAddressHeading}
+              onError={this.submitVerifiedShippingAddressData}
+              userAddress={formatPayload(shippingAddressData)}
             />
-          </HeaderContainer>
-          <StyledHeader>
-            <BodyCopy
-              color="black"
-              fontWeight="regular"
-              fontFamily="primary"
-              fontSize="fs28"
-              text={getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
-              textAlign="left"
-            />
-          </StyledHeader>
-          {shipmentMethods && shipmentMethods.length > 0 && (
-            <ShippingForm
-              shipmentMethods={shipmentMethods}
-              initialValues={{
-                address: { country: 'US' },
-                shipmentMethods: { shippingMethodId: defaultShipmentId },
-                onFileAddressKey: defaultAddressId,
-              }}
-              selectedShipmentId={selectedShipmentId}
-              isGuest={isGuest}
-              isUsSite={isUsSite}
-              orderHasPickUp={orderHasPickUp}
-              smsSignUpLabels={smsSignUpLabels}
-              isOrderUpdateChecked={isOrderUpdateChecked}
-              emailSignUpLabels={emailSignUpLabels}
-              addressPhoneNo={addressPhoneNumber}
-              addressLabels={addressLabels}
-              loadShipmentMethods={loadShipmentMethods}
+          </ModalNative>
+        )}
+        {!showAddressVerification && (
+          <>
+            <CheckoutProgressIndicator
+              activeStage="shipping"
               navigation={navigation}
-              submitShippingForm={this.submitShippingForm}
-              labels={labels}
-              isGiftServicesChecked={isGiftServicesChecked}
-              userAddresses={userAddresses}
-              onFileAddressKey={onFileAddressKey}
-              isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-              updateShippingAddress={this.updateShippingAddress}
-              addNewShippingAddress={this.addNewShippingAddress}
-              address={address}
-              setAsDefaultShipping={setAsDefaultShipping}
-              defaultAddressId={defaultAddressId}
-              syncErrorsObject={syncErrors}
-              newUserPhoneNo={newUserPhoneNo}
+              availableStages={availableStages}
             />
-          )}
-        </ScrollView>
+            {this.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING) && (
+              <VenmoBanner labels={venmoBannerLabel} />
+            )}
+            <ScrollView keyboardShouldPersistTaps="handled">
+              <HeaderContainer>
+                <CheckoutSectionTitleDisplay
+                  title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
+                />
+              </HeaderContainer>
+              <StyledHeader>
+                <BodyCopy
+                  color="black"
+                  fontWeight="regular"
+                  fontFamily="primary"
+                  fontSize="fs28"
+                  text={getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
+                  textAlign="left"
+                />
+              </StyledHeader>
+              {shipmentMethods && shipmentMethods.length > 0 && (
+                <ShippingForm
+                  shipmentMethods={shipmentMethods}
+                  initialValues={{
+                    address: { country: 'US' },
+                    shipmentMethods: { shippingMethodId: defaultShipmentId },
+                    onFileAddressKey: defaultAddressId,
+                  }}
+                  selectedShipmentId={selectedShipmentId}
+                  isGuest={isGuest}
+                  isUsSite={isUsSite}
+                  orderHasPickUp={orderHasPickUp}
+                  smsSignUpLabels={smsSignUpLabels}
+                  isOrderUpdateChecked={isOrderUpdateChecked}
+                  emailSignUpLabels={emailSignUpLabels}
+                  addressPhoneNo={addressPhoneNumber}
+                  addressLabels={addressLabels}
+                  loadShipmentMethods={loadShipmentMethods}
+                  navigation={navigation}
+                  submitShippingForm={this.submitShippingForm}
+                  labels={labels}
+                  isGiftServicesChecked={isGiftServicesChecked}
+                  userAddresses={userAddresses}
+                  onFileAddressKey={onFileAddressKey}
+                  isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                  updateShippingAddress={this.updateShippingAddress}
+                  addNewShippingAddress={this.addNewShippingAddress}
+                  address={address}
+                  setAsDefaultShipping={setAsDefaultShipping}
+                  defaultAddressId={defaultAddressId}
+                  syncErrorsObject={syncErrors}
+                  newUserPhoneNo={newUserPhoneNo}
+                  isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+                  isVenmoShippingDisplayed={isVenmoShippingDisplayed}
+                />
+              )}
+            </ScrollView>
+          </>
+        )}
       </>
     );
   }

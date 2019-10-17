@@ -61,7 +61,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
             },
           ]
         }
-        testID="moduleJ_promobanner_text"
+        testID="moduleT_promobanner_text"
       />
     </Styled(View)>
   </Styled(View)>

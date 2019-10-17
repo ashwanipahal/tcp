@@ -241,6 +241,7 @@ export const getWishListbyId = ({
                 quantity: parseInt(item.quantityRequested, 10),
                 store: null,
                 storeZipCode: null,
+                isTCP: item.itemBrand === 'TCP',
                 availability: getAvailability(item),
                 keepAlive: parseBoolean(
                   isUSStore ? item.TCPOutOfStockFlagUSStore : item.TCPOutOfStockFlagCanadaStore

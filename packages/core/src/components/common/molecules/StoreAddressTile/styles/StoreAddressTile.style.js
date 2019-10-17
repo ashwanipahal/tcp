@@ -108,6 +108,11 @@ export default css`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
+  &.address-tile__selectedStore {
+    border: solid 1px ${props => props.theme.colorPalette.gray[500]};
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+  }
+
   .brand-store {
     display: flex;
     align-items: center;

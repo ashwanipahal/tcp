@@ -8,6 +8,7 @@ import withReduxSaga from 'next-redux-saga';
 import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
+import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import {
@@ -18,7 +19,7 @@ import {
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
@@ -64,7 +65,12 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    let compProps;
+    try {
+      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    } catch (e) {
+      compProps = {};
+    }
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
     return {
       pageProps,
@@ -190,16 +196,19 @@ class TCPWebApp extends App {
   }
 
   static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
-    const compProps = {};
+    let compProps = {};
     if (Component.getInitialProps) {
-      // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+      try {
+        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+      } catch (e) {
+        compProps = {};
+      }
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
     }
-    return Object.assign(pageProps, compProps);
+    return Object.assign({}, pageProps, compProps);
   }
 
   getSEOTags = pageId => {
@@ -234,6 +243,7 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
+              <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>

@@ -133,6 +133,25 @@ class BagPageView extends React.Component {
     }
   };
 
+  wrapSection = Component => {
+    const { orderItemsCount } = this.props;
+    const isNoNEmptyBag = orderItemsCount > 0;
+    if (!isNoNEmptyBag) {
+      return (
+        <Col
+          colSize={{
+            small: 6,
+            medium: 5,
+            large: 8,
+          }}
+        >
+          {Component}
+        </Col>
+      );
+    }
+    return Component;
+  };
+
   renderLeftSection = () => {
     const { labels, sflItems, isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
     const { activeSection } = this.state;
@@ -146,29 +165,31 @@ class BagPageView extends React.Component {
         >
           <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
         </div>
-        {isShowSaveForLaterSwitch && (
-          <div
-            className={`save-for-later-section ${
-              activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
-            } ${sflItems.size === 0 && !isSflItemRemoved ? 'hide-on-desktop' : ''}`}
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight={['semibold']}
-              className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
+
+        {isShowSaveForLaterSwitch &&
+          this.wrapSection(
+            <div
+              className={`save-for-later-section ${
+                activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
+              } ${sflItems.size === 0 && !isSflItemRemoved ? 'hide-on-desktop' : ''}`}
             >
-              {`${labels.savedForLaterText} (${sflItems.size})`}
-            </BodyCopy>
-            <ProductTileWrapper
-              bagLabels={labels}
-              pageView={myBag}
-              sflItems={sflItems}
-              showPlccApplyNow={false}
-              isBagPageSflSection
-            />
-          </div>
-        )}
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight={['semibold']}
+                className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
+              >
+                {`${labels.savedForLaterText} (${sflItems.size})`}
+              </BodyCopy>
+              <ProductTileWrapper
+                bagLabels={labels}
+                pageView={myBag}
+                sflItems={sflItems}
+                showPlccApplyNow={false}
+                isBagPageSflSection
+              />
+            </div>
+          )}
       </React.Fragment>
     );
   };
@@ -183,6 +204,7 @@ class BagPageView extends React.Component {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          containerId="paypal-button-container-bag"
         />
       </div>
     );
@@ -237,6 +259,7 @@ class BagPageView extends React.Component {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                containerId="paypal-button-container-bag-header"
               />
             </Col>
           </Row>
@@ -258,13 +281,13 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob } = this.state;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {this.stickyBagCondensedHeader()}
+        {showCondensedHeader && this.stickyBagCondensedHeader()}
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -278,6 +301,7 @@ class BagPageView extends React.Component {
               }}
             >
               <Heading
+                component="h2"
                 variant="h6"
                 fontSize="fs16"
                 color="text.primary"
