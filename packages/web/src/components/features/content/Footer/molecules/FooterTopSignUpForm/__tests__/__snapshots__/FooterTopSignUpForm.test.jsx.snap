@@ -180,10 +180,9 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
             }
           }
           dataLocator="enter_email_text_field"
+          enableSuccessCheck={false}
           id="signup"
           name="signup"
-          onBlur={[Function]}
-          onKeyPress={[Function]}
           placeholder="Enter email address"
           type="text"
         />
@@ -207,9 +206,8 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
           buttonVariation="fixed-width"
           className="candidate_a_form_button"
           data-locator="email_submit_btn"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
+          disabled={false}
+          type="submit"
         >
           Submit
         </Styled(Button)>

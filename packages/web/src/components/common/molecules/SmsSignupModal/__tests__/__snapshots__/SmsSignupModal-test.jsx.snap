@@ -267,12 +267,11 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   }
                 }
                 dataLocator="sms_address_field"
+                enableSuccessCheck={false}
                 id="signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -305,11 +304,9 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -397,6 +394,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
           />
         </Styled(Col)>
         <Styled(Col)
+          className="sms-signup-content"
           colSize={
             Object {
               "large": 8,
@@ -428,15 +426,16 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 }
               }
             >
-              <Styled(Button)
-                buttonVariation="fixed-width"
-                className="shop-button"
-                dataLocator="shop_now_btn"
-                fill="BLUE"
-                fullWidth={true}
-                onClick={[Function]}
-                type="submit"
-              />
+              <Styled(Anchor)>
+                <Styled(Button)
+                  buttonVariation="fixed-width"
+                  className="shop-button"
+                  dataLocator="shop_now_btn"
+                  fill="BLUE"
+                  fullWidth={true}
+                  type="submit"
+                />
+              </Styled(Anchor)>
             </Styled(Col)>
           </Styled(Row)>
         </Styled(Col)>
@@ -713,12 +712,11 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   }
                 }
                 dataLocator="sms_address_field"
+                enableSuccessCheck={false}
                 id="signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -751,11 +749,9 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>

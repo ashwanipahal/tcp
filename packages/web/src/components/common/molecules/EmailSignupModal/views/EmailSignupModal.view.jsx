@@ -178,7 +178,6 @@ class EmailSignupModal extends React.PureComponent {
                         maxLength={50}
                         dataLocator="email_address_field"
                         enableSuccessCheck={false}
-                        showSuccessCheck={false}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.lbl_SignUp_termsTextLabel}

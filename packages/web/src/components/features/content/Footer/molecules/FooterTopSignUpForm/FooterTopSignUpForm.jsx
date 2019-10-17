@@ -98,7 +98,6 @@ class FooterTopSignUpForm extends React.PureComponent {
                 dataLocator={dataLocators.inputField}
                 errorDataLocator={dataLocators.errorDataLocator}
                 enableSuccessCheck={false}
-                showSuccessCheck={false}
                 {...fieldProps}
               />
             </Col>

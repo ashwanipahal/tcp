@@ -196,7 +196,6 @@ class SmsSignupModal extends React.PureComponent {
                         dataLocator="sms_address_field"
                         normalize={formatPhoneNumber}
                         enableSuccessCheck={false}
-                        showSuccessCheck={false}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.lbl_SignUp_termsTextLabel}
