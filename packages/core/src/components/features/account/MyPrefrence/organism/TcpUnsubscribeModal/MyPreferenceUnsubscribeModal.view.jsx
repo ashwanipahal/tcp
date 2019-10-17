@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { BodyCopy, Row, Col, Button } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PropTypes from 'prop-types';
 import styles from './styles/MyPreferenceUnsubscribeModal.style';
 import myPreferenceConst from '../../MyPrefrence.constants';
@@ -20,11 +21,14 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
+    labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     waysToEarnRow: {},
+    labels: {},
   };
 
   handleSubmitData = () => {
@@ -40,7 +44,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose } = this.props;
+    const { className, handleSubmit, onRequestClose, phoneNumber, labels } = this.props;
 
     return (
       <div className={className}>
@@ -59,7 +63,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               className="elem-mb-LRG elem-mt-LRG"
               data-locator="my-preference-modal_title"
             >
-              Unsubscribe from My Place Rewards SMS Alerts
+              {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -68,7 +72,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               textAlign="center"
               data-locator="my-preference-modal_info-text"
             >
-              Are you sure?
+              {getLabelValue(labels, 'lbl_prefrence_modal_are_you_sure')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -78,8 +82,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               className="elem-mb-LRG"
               data-locator="my-preference-modal_info-text"
             >
-              By clicking submit, you’ll no longer receive text notifications about rewards, points,
-              coupons & special offers!
+              {getLabelValue(labels, 'lbl_prefrence_modal_clicking_submit_text')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -89,9 +92,8 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               textAlign="center"
               data-locator="my-preference-modal_sub-info-text"
             >
-              Phone Number
+              {getLabelValue(labels, 'lbl_prefrence_modal_phone_number')}
             </BodyCopy>
-
             <BodyCopy
               component="div"
               fontSize="fs16"
@@ -100,7 +102,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               className="disclaimer-sub-text"
               data-locator="my-preference-modal_sub-info-text"
             >
-              123-456-7890
+              {phoneNumber}
             </BodyCopy>
 
             <Row fullBleed className="elem-mb-LRG">
@@ -113,7 +115,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
                   className="submit-button"
                   dataLocator="subscribe_modal_submit"
                 >
-                  Submit
+                  {getLabelValue(labels, 'lbl_prefrence_modal_submit')}
                 </Button>
               </Col>
             </Row>
@@ -127,7 +129,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
                   dataLocator="subscribe_modal_cancel"
                   onClick={onRequestClose}
                 >
-                  Cancel
+                  {getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
                 </Button>
               </Col>
             </Row>

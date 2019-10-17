@@ -54,7 +54,7 @@ export class MyPrefrenceContainer extends PureComponent {
 
   getSubscribeInitialValues = props => {
     const { phoneNumber } = props;
-    return phoneNumber;
+    return { phoneNumber };
   };
 
   handleSubmitModalPopup = data => {
@@ -67,6 +67,10 @@ export class MyPrefrenceContainer extends PureComponent {
           {
             isModeSelected: true,
             preferenceMode: 'placeRewardsSms',
+          },
+          {
+            preferenceMode: 'marketingPreferenceEmail',
+            isModeSelected: true,
           },
         ],
       };
@@ -84,6 +88,9 @@ export class MyPrefrenceContainer extends PureComponent {
     }
 
     submitSubscribeBrand(formSubscribeData);
+
+    // TO DO - need to be discussed to closed popup without error handle
+    this.handlePopupSubscribeModal();
   };
 
   /**
@@ -180,6 +187,7 @@ export class MyPrefrenceContainer extends PureComponent {
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
                 phoneNumber={phoneNumber}
+                initialValues={this.initialValuesSubscribe}
                 labels={myPrefrenceLabels}
               />
             )}
