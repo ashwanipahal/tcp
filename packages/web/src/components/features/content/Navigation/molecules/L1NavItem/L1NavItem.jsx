@@ -6,7 +6,6 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
-import HeaderConstants from '../../../Header/config';
 
 const HideDrawerContext = React.createContext({});
 const HideDrawerProvider = HideDrawerContext.Provider;
@@ -25,35 +24,23 @@ class L1NavItem extends React.PureComponent {
     hovered: false,
   };
 
-  timerId = '';
-
   onHover = e => {
     if (getViewportInfo().isDesktop) {
-      const isL1overlay = e.target.classList.contains('l1-overlay');
-      if (isL1overlay) {
-        this.setState(
-          {
-            hovered: false,
-          },
-          () => clearTimeout(this.timerId)
-        );
-      } else {
-        this.timerId = setTimeout(() => {
-          this.setState({
-            hovered: true,
-          });
-        }, HeaderConstants.l1HoverDelay);
-      }
+      this.setState({
+        hovered: !e.target.classList.contains('l1-overlay'),
+      });
     }
   };
 
   hideL2Nav = () => {
-    this.setState({ hovered: false }, () => clearTimeout(this.timerId));
+    this.setState({ hovered: false });
   };
 
   onMouseLeave = () => {
     if (getViewportInfo().isDesktop) {
-      this.setState({ hovered: false }, () => clearTimeout(this.timerId));
+      this.setState({
+        hovered: false,
+      });
     }
   };
 
