@@ -76,7 +76,7 @@ const ProductListView = ({
             <div className="promo-area">
               <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
               <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
-              <ModuleD {...moduleDMock.composites} />
+              <ModuleD {...moduleDMock.composites} fullBleed />
               <ModuleG {...moduleGMock.moduleG.composites} />
               <ModuleQ {...moduleQMock.moduleQ.composites} />
               <Recommendations variations="moduleO,moduleP" />
