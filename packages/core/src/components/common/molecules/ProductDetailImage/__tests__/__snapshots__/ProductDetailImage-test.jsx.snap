@@ -7,10 +7,36 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
   itemType="http://schema.org/ImageObject"
   title=""
 >
-  <WithTheme(DamImage)
-    className="full-size-desktop-image"
+  <ReactImageMagnify
     data-locator="pdp_main_image"
-    imgData={
+    enlargedImageContainerClassName="enlarged-image-wrapper"
+    enlargedImageContainerDimensions={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+    enlargedImagePortalId="portal"
+    fadeDurationInMs={300}
+    hintComponent={[Function]}
+    hintTextMouse="Hover to Zoom"
+    hintTextTouch="Long-Touch to Zoom"
+    hoverDelayInMs={250}
+    hoverOffDelayInMs={150}
+    isActivatedOnTouch={false}
+    isEnlargedImagePortalEnabledForTouch={false}
+    isHintEnabled={false}
+    largeImage={
+      Object {
+        "alt": "",
+        "height": 900,
+        "src": "",
+        "width": 900,
+      }
+    }
+    shouldHideHintAfterFirstActivation={true}
+    shouldUsePositiveSpaceLens={false}
+    smallImage={
       Object {
         "alt": "",
         "isFluidWidth": true,
@@ -18,8 +44,6 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
         "src": "",
       }
     }
-    isProductImage={true}
-    itemProp="contentUrl"
   />
 </div>
 `;
