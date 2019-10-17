@@ -31,7 +31,7 @@ const AccountDrawerPage = props => {
       <div className="accountDrawer_coupons">
         <MyOffersCoupons closedOverlay={closedOverlay} />
       </div>
-      <AccountDrawerBottomLinks />
+      <AccountDrawerBottomLinks closedOverlay={closedOverlay} />
     </div>
   );
 };
