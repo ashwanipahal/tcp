@@ -6762,6 +6762,15 @@ exports[`CartItemTile common component renders correctly 1`] = `
         padding-left: 15px;
         left: 155px;
         bottom: 4px;
+        /* stylelint-disable */
+        @media ",
+          [Function],
+          " {
+          position: absolute;
+          left: 110px;
+          bottom: 3px;
+        }
+        /* stylelint-enable */
       }
 
       /* stylelint-disable */
@@ -6787,6 +6796,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           " 0;
         width: 100%;
+        position: absolute;
+        left: 10px;
+        margin-top: 0;
       }
       .color-map-size-fit {
         display: inline-grid;
@@ -6851,12 +6863,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      float: right;
-      cursor: pointer;
+      position: absolute;
+      right: -10px;
     }
   }
 
   .parent-myBag {
+    .save-for-later-label {
+      display: flex;
+      align-items: center;
+    }
     @media ",
           [Function],
           " {
@@ -7188,6 +7204,15 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
         padding-left: 15px;
         left: 155px;
         bottom: 4px;
+        /* stylelint-disable */
+        @media ",
+          [Function],
+          " {
+          position: absolute;
+          left: 110px;
+          bottom: 3px;
+        }
+        /* stylelint-enable */
       }
 
       /* stylelint-disable */
@@ -7213,6 +7238,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           " 0;
         width: 100%;
+        position: absolute;
+        left: 10px;
+        margin-top: 0;
       }
       .color-map-size-fit {
         display: inline-grid;
@@ -7277,12 +7305,16 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      float: right;
-      cursor: pointer;
+      position: absolute;
+      right: -10px;
     }
   }
 
   .parent-myBag {
+    .save-for-later-label {
+      display: flex;
+      align-items: center;
+    }
     @media ",
           [Function],
           " {
