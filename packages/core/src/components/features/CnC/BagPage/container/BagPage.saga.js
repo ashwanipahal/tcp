@@ -41,6 +41,7 @@ import { getUserInfo } from '../../../account/User/container/User.actions';
 import {
   getIsInternationalShipping,
   getIsRadialInventoryEnabled,
+  getRecalcOrderPointsInterval,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
@@ -70,10 +71,7 @@ const getProductsTypes = orderItems => {
     tcpProducts = filterProductsBrand(orderItems, 'TCP');
     gymProducts = filterProductsBrand(orderItems, 'GYM');
   }
-  return {
-    tcpProducts,
-    gymProducts,
-  };
+  return { tcpProducts, gymProducts };
 };
 
 export function* getTranslatedProductInfo(cartInfo) {
@@ -100,9 +98,7 @@ export function* getTranslatedProductInfo(cartInfo) {
 
     return [...gymProductsResults, ...tcpProductsResults];
   } catch (err) {
-    gymProductsResults = [];
-    tcpProductsResults = [];
-    return [...gymProductsResults, ...tcpProductsResults];
+    return [];
   }
 }
 
@@ -136,34 +132,37 @@ export function* getOrderDetailSaga(payload) {
   }
 }
 
+function* updateBopisItems(res) {
+  const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+  if (bopisItems.length) {
+    const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+    res.orderDetails = {
+      ...res.orderDetails,
+      orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+    };
+  }
+}
+
 export function* getCartDataSaga(payload = {}) {
   try {
-    const {
-      payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage, onCartRes, recalcRewards } = {},
-    } = payload;
+    const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
+    const { payload: { onCartRes, recalcRewards, translation = true } = {} } = payload;
     const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
-    const recalcOrderPointsInterval = 3000;
+    const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
+    const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
-      excludeCartItems,
-      recalcRewards: recalcOrderPoints,
-      isCanada: isCanada(),
-      isRadialInvEnabled,
+      ...cartProps,
     });
-    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
-    if (!translatedProductInfo.error) {
-      createMatchObject(res, translatedProductInfo);
+    if (translation) {
+      const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+      if (!translatedProductInfo.error) {
+        createMatchObject(res, translatedProductInfo);
+      }
     }
-    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
-    if (bopisItems.length) {
-      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
-      res.orderDetails = {
-        ...res.orderDetails,
-        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
-      };
-    }
+    yield updateBopisItems(res);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
 
     if (res.orderDetails.orderItems.length > 0) {
@@ -447,7 +446,13 @@ export function* startSflItemMoveToBag({ payload }) {
       fromMoveToBag: true,
     };
     yield put(addToCartEcom(addToCartData));
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        isRecalculateTaxes: true,
+        recalcRewards: true,
+        translation: true,
+      })
+    );
     // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
   } catch (err) {
@@ -459,7 +464,6 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
-
   yield takeLatest(
     BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
     removeUnqualifiedItemsAndCheckout

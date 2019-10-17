@@ -2,7 +2,6 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
-import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import CONSTANTS from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
@@ -49,9 +48,9 @@ import {
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
+import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
 const {
-  getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,
@@ -112,7 +111,6 @@ export function* loadUpdatedCheckoutValues(
   updateSmsInfo,
   handleCartRes
 ) {
-  const imageGenerator = getImgPath;
   const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
   const recalcOrderPoints = yield call(
     getOrderPointsRecalcFlag,
@@ -132,8 +130,7 @@ export function* loadUpdatedCheckoutValues(
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isTaxCalculation,
-      isCartNotRequired,
-      imageGenerator,
+      excludeCartItems: isCartNotRequired,
       recalcRewards,
       recalcOrderPoints,
       isCheckoutFlow: true,

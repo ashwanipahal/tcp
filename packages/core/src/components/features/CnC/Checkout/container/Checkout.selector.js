@@ -29,10 +29,6 @@ import {
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
-function getRecalcOrderPointsInterval() {
-  return 300000;
-}
-
 export const getCheckoutState = state => {
   return state[CHECKOUT_REDUCER_KEY];
 };
@@ -897,7 +893,6 @@ export const getVenmoUserName = () => {
 };
 
 export default {
-  getRecalcOrderPointsInterval,
   getIsOrderHasShipping,
   getShippingDestinationValues,
   getDefaultAddress,

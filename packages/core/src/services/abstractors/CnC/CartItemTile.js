@@ -721,7 +721,7 @@ export const getOrderDetailsData = () => {
     const orderDetailsResponse = res.body;
 
     return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, isCASite()),
     };
   });
 };
@@ -749,7 +749,6 @@ export const getCartData = ({
   calcsEnabled,
   excludeCartItems,
   recalcRewards,
-  isCanada,
   isCheckoutFlow,
   isRadialInvEnabled,
   isLoggedIn,
@@ -785,7 +784,7 @@ export const getCartData = ({
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
         excludeCartItems,
-        isCanada,
+        isCASite(),
         isRadialInvEnabled
       ),
     };
