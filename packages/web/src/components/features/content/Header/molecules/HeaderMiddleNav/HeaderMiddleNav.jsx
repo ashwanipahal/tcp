@@ -277,13 +277,6 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
             >
-              {this.renderAccountInfoSection(
-                userName,
-                openOverlay,
-                isUserPlcc,
-                userPoints,
-                userRewards
-              )}
               {isFullSizeSearchModalOpen ? (
                 <Modal
                   isOpen={isFullSizeSearchModalOpen}
@@ -310,7 +303,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 </Modal>
               ) : (
                 <SearchBar
-                  className={!isSearchOpen && 'rightLink'}
+                  className={!isSearchOpen}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}
@@ -318,11 +311,18 @@ class HeaderMiddleNav extends React.PureComponent {
                 />
               )}
 
+              {this.renderAccountInfoSection(
+                userName,
+                openOverlay,
+                isUserPlcc,
+                userPoints,
+                userRewards
+              )}
               <Anchor
                 to=""
                 id="cartIcon"
                 aria-label={`${cartIconButton} ${cartItemCount} item`}
-                className="rightLink"
+                className=""
                 onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
                 anchorVariation="primary"

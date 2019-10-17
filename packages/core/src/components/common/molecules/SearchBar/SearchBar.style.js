@@ -2,33 +2,7 @@ import { css } from 'styled-components';
 import { commonSearchBarStyles, commonStyles } from './CommonSearchBar.style';
 
 export default css`
-  display: inline;
-  .searchWrapper {
-    width: 100%;
-    height: 40px;
-    display: inline-block;
 
-    ${props =>
-      props.fromCondensedHeader
-        ? `
-
-        position: fixed;
-        width: 66%;
-        right: 120px;
-        top: ${props.theme.spacing.ELEM_SPACING.XS};
-
-        @media ${props.theme.mediaQuery.large} {
-          width: 74%;
-        }
-
-        @media ${props.theme.mediaQuery.large} {
-          width: 31.8%;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.SM};
-        }
-      `
-        : ``};
-  }
 
   ${commonSearchBarStyles}
   ${commonStyles}
@@ -60,7 +34,7 @@ export default css`
           }
         `
           : ``};
-    }
+        }
 
     .searchbar {
       border-radius: 0;
@@ -149,7 +123,6 @@ export default css`
   @media ${props => props.theme.mediaQuery.medium} {
 
     .searchWrapper {
-      position: absolute;
       top: 0;
       height: 50px;
     }
