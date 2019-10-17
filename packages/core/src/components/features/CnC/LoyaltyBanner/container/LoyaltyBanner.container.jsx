@@ -11,7 +11,6 @@ import {
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
-// import labels from '../LoyaltyBanner.labels';
 
 export const LoyaltyBannerContainer = ({
   labels,

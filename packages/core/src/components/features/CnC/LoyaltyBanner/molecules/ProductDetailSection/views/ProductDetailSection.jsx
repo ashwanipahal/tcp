@@ -82,37 +82,17 @@ const ProductDetailSection = props => {
 };
 
 ProductDetailSection.propTypes = {
-  // estimatedSubtotal: PropTypes.number,
-  // currentSubtotal: PropTypes.number,
-  // showSubtotal: PropTypes.bool,
   labels: PropTypes.shape.isRequired,
   className: PropTypes.string,
-  // headingLabel: PropTypes.string,
-  // subHeadingLabel: PropTypes.string,
   isPlcc: PropTypes.bool,
   isGuest: PropTypes.bool,
-  // isReviewPage: PropTypes.bool,
-  // pointsDescription: PropTypes.string,
-  // earnedReward: PropTypes.number,
-  // remainingPlcc: PropTypes.number,
-  // getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
 };
 
 ProductDetailSection.defaultProps = {
   className: '',
-  // estimatedSubtotal: 0,
-  // currentSubtotal: 0,
-  // showSubtotal: false,
-  // headingLabel: '',
-  // subHeadingLabel: '',
   isPlcc: false,
   isGuest: false,
-  // isReviewPage: false,
-  // pointsDescription: '',
-  // earnedReward: 0,
-  // remainingPlcc: 0,
-  // getCurrencySymbol: '',
   isProductDetailView: '',
 };
 
