@@ -9,6 +9,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
       color="white"
       fontFamily="primary"
       fontSize="fs22"
+      fontWeight={null}
       headerText={
         Array [
           Object {
