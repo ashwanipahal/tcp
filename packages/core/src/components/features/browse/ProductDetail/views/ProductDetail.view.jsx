@@ -64,13 +64,15 @@ class ProductDetailView extends React.Component {
 
   getProductSummary = () => {
     const { productDetails, productInfo, currency, pdpLabels } = this.props;
-    const { currentGiftCardValue } = this.state;
+    const { currentGiftCardValue, currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
     return (
       <div className="product-summary-wrapper">
         <Product
           isGiftCard={productInfo.isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
+          selectedColorProductId={selectedColorProductId}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -150,6 +152,8 @@ class ProductDetailView extends React.Component {
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
+
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
         imagesByColor: productInfo.imagesByColor,
@@ -185,6 +189,9 @@ class ProductDetailView extends React.Component {
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
               isZoomEnabled
+              currentProduct={currentProduct}
+              onChangeColor={this.onChangeColor}
+              currentColorEntry={currentColorEntry}
             />
           </Col>
           <Col
@@ -205,6 +212,7 @@ class ProductDetailView extends React.Component {
                 onChangeColor={this.onChangeColor}
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
+                selectedColorProductId={selectedColorProductId}
               />
             )}
 
