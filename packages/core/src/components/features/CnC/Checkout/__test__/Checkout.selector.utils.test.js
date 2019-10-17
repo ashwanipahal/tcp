@@ -305,4 +305,21 @@ describe('Checkout Selectors', () => {
     isMobileApp.mockImplementation(() => true);
     expect(isVenmoShippingBannerDisplayed(state)).toEqual(false);
   });
+
+  it('#getExpressReviewShippingSectionId', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
+        },
+      },
+    };
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
+  });
 });

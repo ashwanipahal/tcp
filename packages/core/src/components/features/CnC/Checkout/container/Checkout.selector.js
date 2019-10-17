@@ -25,6 +25,7 @@ import {
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -917,11 +918,6 @@ export const getVenmoUserName = state => {
   const venmoData = getVenmoData(state);
   const { details: { username } = {} } = venmoData || {};
   return username;
-};
-
-const getExpressReviewShippingSectionId = state => {
-  const selector = formValueSelector('expressReviewPage');
-  return selector(state, 'expressReviewShippingSection');
 };
 
 export default {
