@@ -20,6 +20,12 @@ import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
 
+const nextCTAText = (labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed) => {
+  return isVenmoPaymentInProgress && !isVenmoShippingDisplayed
+    ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+    : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
+};
+
 const ShippingForm = ({
   shipmentMethods,
   selectedShipmentId,
@@ -47,6 +53,8 @@ const ShippingForm = ({
   defaultAddressId,
   syncErrorsObject,
   newUserPhoneNo,
+  isVenmoPaymentInProgress,
+  isVenmoShippingDisplayed,
 }) => {
   return (
     <>
@@ -184,7 +192,7 @@ const ShippingForm = ({
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
+        btnText={nextCTAText(labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed)}
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
         isGuest={isGuest}
@@ -232,6 +240,8 @@ ShippingForm.propTypes = {
   defaultAddressId: PropTypes.string,
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  isVenmoShippingDisplayed: PropTypes.bool,
 };
 
 ShippingForm.defaultProps = {
@@ -252,6 +262,8 @@ ShippingForm.defaultProps = {
   defaultAddressId: null,
   syncErrorsObject: {},
   newUserPhoneNo: null,
+  isVenmoPaymentInProgress: false,
+  isVenmoShippingDisplayed: true,
 };
 
 export default reduxForm({

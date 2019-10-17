@@ -28,6 +28,13 @@ export const customHeaderStyle = css`
       right: 0;
     }
   }
+
+  div.TCPModal__InnerContent {
+    padding-top: initial;
+    border-top-style: inset;
+    border-top-width: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    border-top-color: transparent;
+  }
 `;
 
 export default styles;

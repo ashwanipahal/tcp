@@ -52,6 +52,12 @@ const ROUTES_LIST = [
     resolver: '/instagram',
   },
   {
+    noSlugPath: 'twitter',
+    path: '/twitter',
+    resolver: '/twitter',
+  },
+
+  {
     noSlugPath: 'account',
     path: '/account/:id?/:subSection?',
     resolver: '/account',
