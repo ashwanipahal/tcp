@@ -17,6 +17,7 @@ import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getLabelValue } from '../../../../../utils/utils';
 import SOCIAL_ICONS from '../social.icons.constants';
+import getLinkedSocialAccountLabel from '../utils';
 
 class Socialview extends React.PureComponent {
   static propTypes = {
@@ -137,7 +138,7 @@ class Socialview extends React.PureComponent {
                   <BodyCopy
                     fontSize="fs14"
                     textAlign="center"
-                    text={getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                    text={getLinkedSocialAccountLabel(this.pointsInformation.activity, labels)}
                   />
                 </TextWithSpacing>
 
