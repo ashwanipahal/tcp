@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
@@ -33,3 +34,4 @@ ModuleTwoCol.propTypes = {
 };
 
 export default withStyles(errorBoundary(ModuleTwoCol), style);
+export { ModuleTwoCol as ModuleTwoColVanilla };
