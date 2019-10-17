@@ -33,8 +33,8 @@ const width = getScreenWidth() - 150;
 const keyExtractor = (_, index) => index.toString();
 
 /**
- * @function renderItem : Render method for Flatlist.
- * @desc This method is rendering Module L items.
+ * @function  renderItem : Render method for Flatlist.
+ * @desc  This method is rendering Module L items.
  *
  * @param {Object} item : Single object to render inside Flatlist.
  * @return {node} function returns module L single element item.
