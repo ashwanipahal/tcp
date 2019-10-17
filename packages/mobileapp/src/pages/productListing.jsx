@@ -2,6 +2,9 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
+import OutfitListing from '@tcp/core/src/components/features/browse/OutfitListing';
+import OutfitDetail from '@tcp/core/src/components/features/browse/OutfitDetails';
+
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
 import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
@@ -27,6 +30,12 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.NAV_MENU_LEVEL_1]: {
       screen: Navigation,
     },
+    OutfitDetail: {
+      screen: OutfitDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
     [ROUTE_NAMES.NAV_MENU_LEVEL_2]: {
       screen: NavMenuLevel2,
     },
@@ -36,11 +45,17 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.PRODUCT_LISTING]: {
       screen: ProductListing,
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation, true);
+        return getNewHeader(navigation, false);
       },
     },
     [ROUTE_NAMES.PRODUCT_DETAIL_PAGE]: {
       screen: ProductDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    [ROUTE_NAMES.OUTFIT_LISTING]: {
+      screen: OutfitListing,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
@@ -53,7 +68,7 @@ const PlpStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         const title = navigation && navigation.getParam('title');
         const navTitle = (title && `"${title.toUpperCase()}"`) || '';
-        return getNewHeader(navigation, false, navTitle);
+        return getNewHeader(navigation, true, navTitle);
       },
     },
     [ROUTE_NAMES.CONFIRMATION]: {

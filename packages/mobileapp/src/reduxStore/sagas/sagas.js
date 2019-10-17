@@ -19,6 +19,7 @@ import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
+import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
@@ -49,6 +50,7 @@ import StoreLandingSaga from '@tcp/core/src/components/features/storeLocator/Sto
 import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
+import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -118,6 +120,8 @@ export default function* rootSaga() {
     ExtraPointsSaga(),
     OrdersSaga(),
     SearchBarSaga(),
+    OutfitDetailsSaga(),
     RecentSearchSaga(),
+    AccountSaga(),
   ]);
 }

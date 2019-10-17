@@ -6,7 +6,7 @@ const ignorePsuedoCodeDir = [
   '/StoreSummaryComponents/',
   '/ProductDetail/',
   '/SearchDetail/',
-  '/OutfitDetail/',
+  '/OutfitDetails/',
   '/OutfitListing/',
   '/ProductPickup/',
   '/bopisInventory/',
@@ -29,6 +29,9 @@ const ignorePsuedoCodeDir = [
   '/ModuleK/',
   '/formValidation/createValidateMethod.js',
   '/ExtraPoints/imageSourceMap.js',
+  '/twitterDynamicAbstractor/',
+  '/twitterLoginComponent/',
+  '/twitterRedirectPage/',
 ];
 
 module.exports = {

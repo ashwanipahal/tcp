@@ -455,6 +455,12 @@ const getSmsSignUpLabels = state => {
 
 const getEmailSignUpLabels = state => {
   return {
+    shippingAddressEditError: getLabelValue(
+      state.Labels,
+      'lbl_shipping_addressEditError',
+      'shipping',
+      'checkout'
+    ),
     emailSignupHeading: getLabelValue(
       state.Labels,
       'lbl_pickup_emailSignupHeading',
@@ -775,10 +781,13 @@ const getSelectedGiftWrapDetails = state => {
   const checkout = orderDetails.get('checkout');
   const optionId = checkout.getIn(['giftWrap', 'optionId']);
   const selectedOptionData = getGiftWrapOptions(state);
-  const selectedOption = selectedOptionData.body.giftOptions.filter(
-    option => option.catEntryId === optionId
-  );
-  if (selectedOption.length === 1) return selectedOption[0];
+  if (selectedOptionData.body) {
+    const selectedOption = selectedOptionData.body.giftOptions.filter(
+      option => option.catEntryId === optionId
+    );
+    if (selectedOption.length === 1) return selectedOption[0];
+  }
+
   return [];
 };
 

@@ -45,6 +45,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
           className="rightLink search-icon"
           fromCondensedHeader={true}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
@@ -65,6 +66,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         </Styled(Anchor)>
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="cart 0 item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -79,6 +81,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             src="/static/images/bag-icon-blue.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -88,6 +91,7 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0

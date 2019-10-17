@@ -17,7 +17,7 @@ export const AddEditCreditCard = ({
   backToAddressBookClick,
   verifyAddressAction,
   initialValues,
-  onFileAddresskey,
+  onFileAddressKey,
   mailingAddress,
   showUserName,
   addressFormLabels,
@@ -51,7 +51,7 @@ export const AddEditCreditCard = ({
               showCreditCardFields={showCreditCardFields}
               addressFormLabels={addressFormLabels}
               mailingAddress={mailingAddress}
-              onFileAddresskey=""
+              onFileAddressKey={onFileAddressKey}
               {...otherProps}
             />
           )}
@@ -63,9 +63,11 @@ export const AddEditCreditCard = ({
           isEdit={isEdit}
           onClose={onClose}
           dto={dto}
+          initialValues={initialValues}
           updateCardList={updateCardList}
           selectedCard={selectedCard}
-          onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
+          onFileAddressKey={onFileAddressKey}
+          addressFormLabels={addressFormLabels}
           {...otherProps}
         />
       )}
@@ -89,7 +91,7 @@ AddEditCreditCard.propTypes = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: PropTypes.shape({}),
-  onFileAddresskey: PropTypes.string,
+  onFileAddressKey: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
@@ -105,7 +107,7 @@ AddEditCreditCard.defaultProps = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: {},
-  onFileAddresskey: '',
+  onFileAddressKey: '',
   mailingAddress: false,
   addressFormLabels: {},
 };

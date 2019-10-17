@@ -9,13 +9,13 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
-import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
-import styles from '../styles/ProductAddToBag.style';
+import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
 
 // to get Error Message displayed in case any error comes on Add To card
 const ErrorComp = errorMessage => {
@@ -67,6 +67,49 @@ class ProductAddToBag extends React.PureComponent<Props> {
     ) : null;
   };
 
+  renderColorList = (colorList, colorTitle) => {
+    const { selectColor, isGiftCard } = this.props;
+    return (
+      colorList &&
+      colorList.size > 0 && (
+        <div className="color-selector">
+          <Field
+            width={87}
+            id="color"
+            name="color"
+            component={ProductColorChipsSelector}
+            colorFitsSizesMap={colorList}
+            onChange={selectColor}
+            dataLocator="addnewaddress-state"
+            title={colorTitle}
+            inheritedStyles={isGiftCard ? giftCardDesignStyle : ''}
+          />
+        </div>
+      )
+    );
+  };
+
+  renderFitList = (fitList, fitTitle) => {
+    const { selectFit } = this.props;
+    return (
+      fitList &&
+      fitList.size > 0 && (
+        <div className="fit-selector">
+          <Field
+            width={69}
+            id="fit"
+            name="Fit"
+            component={ProductSizeSelector}
+            sizesMap={fitList}
+            onChange={selectFit}
+            dataLocator="addnewaddress-state"
+            title={`${fitTitle}:`}
+          />
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       plpLabels,
@@ -74,8 +117,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       fitChanged,
       quantityList,
-      selectColor,
-      selectFit,
       selectSize,
       displayErrorMessage,
       errorOnHandleSubmit,
@@ -83,47 +124,30 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
     } = this.props;
 
-    let { sizeList, fitList, colorList } = this.props;
+    let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
+    colorFitSizeDisplayNames = {
+      color: 'Color',
+      fit: 'Fit',
+      size: 'Size',
+      ...colorFitSizeDisplayNames,
+    };
 
-    sizeList = sizeList && fromJS(sizeList);
-    fitList = fitList && fromJS(fitList);
+    if (sizeList) {
+      sizeList = fromJS(sizeList);
+      fitList = fromJS(fitList);
+    }
+
     colorList = fromJS(colorList);
-    const { errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
+    const { errorMessage, fit: fitTitle } = plpLabels;
 
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
           <Col colSize={{ small: 10, medium: 10, large: 10 }}>
             <div className="select-value-wrapper">
-              {colorList.size > 0 && (
-                <div className="color-selector">
-                  <Field
-                    width={87}
-                    id="color"
-                    name="color"
-                    component={ProductColorChipsSelector}
-                    colorFitsSizesMap={colorList}
-                    onChange={selectColor}
-                    dataLocator="addnewaddress-state"
-                    title={`${colorTitle}:`}
-                  />
-                </div>
-              )}
-              {fitList.size > 0 && (
-                <div className="fit-selector">
-                  <Field
-                    width={69}
-                    id="fit"
-                    name="Fit"
-                    component={ProductSizeSelector}
-                    sizesMap={fitList}
-                    onChange={selectFit}
-                    dataLocator="addnewaddress-state"
-                    title={`${fitTitle}:`}
-                  />
-                </div>
-              )}
-              {sizeList.size > 0 && (
+              {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
+              {this.renderFitList(fitList, fitTitle)}
+              {sizeList && sizeList.size > 0 && (
                 <div className="size-selector">
                   <Field
                     width={49}
@@ -134,7 +158,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     sizesMap={sizeList}
                     onChange={selectSize}
                     dataLocator="addnewaddress-state"
-                    title={`${sizeTitle}:`}
+                    title={`${colorFitSizeDisplayNames.size}:`}
                   />
                   {isErrorMessageDisplayed && ErrorComp(errorMessage)}
                 </div>
@@ -151,11 +175,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 />
               </div>
             </div>
+            <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
         {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
         {showAddToBagCTA && (
-          <Row fullBleed>
+          <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
                 <Button

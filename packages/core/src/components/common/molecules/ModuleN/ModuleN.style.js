@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
+  background-color: ${props => props.theme.colorPalette.red['400']};
   margin-bottom: 40px;
 
   .heading-wrapper {
@@ -12,8 +13,6 @@ export default css`
       padding-bottom: 25px;
     }
   }
-
-  background-color: #f53d3d;
 
   h3.link-text {
     margin: 0;
