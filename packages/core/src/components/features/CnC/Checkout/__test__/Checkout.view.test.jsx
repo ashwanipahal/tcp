@@ -66,7 +66,6 @@ describe('CheckoutPageVanilla component', () => {
   it('calling isShowVenmoBanner method', () => {
     const props = {
       ...initialProps,
-      isVenmoPickupBannerDisplayed: false,
       router: { query: { subSection: CHECKOUT_STAGES.PICKUP, section: CHECKOUT_STAGES.PICKUP } },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
@@ -75,15 +74,7 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isShowVenmoBanner method for Shipping', () => {
-    const props = {
-      ...initialProps,
-      isVenmoShippingBannerDisplayed: false,
-      router: {
-        query: { subSection: CHECKOUT_STAGES.SHIPPING, section: CHECKOUT_STAGES.SHIPPING },
-      },
-    };
-    const component = shallow(<CheckoutPageVanilla {...props} />);
-    const componentInstance = component.instance();
+    const componentInstance = tree.instance();
     expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING)).toBeTruthy();
   });
 
@@ -97,7 +88,6 @@ describe('CheckoutPageVanilla component', () => {
       disableBackLink: false,
       router: { query: { section: 'pickup', subSection: 'pickup' } },
       onPickupSubmit: () => {},
-      isVenmoPickupBannerDisplayed: false,
       reviewProps: { labels: {} },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
@@ -106,29 +96,7 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling isVenmoShippingDisplayed method', () => {
-    const props = {
-      className: 'className',
-      backLinkText: 'backLinkText',
-      nextButtonText: 'nextButtonText',
-      disableNext: false,
-      backLinkHandler: () => {},
-      disableBackLink: false,
-      router: { query: { section: 'pickup', subSection: 'pickup' } },
-      onPickupSubmit: () => {},
-      isVenmoShippingBannerDisplayed: false,
-      reviewProps: {
-        labels: {
-          ariaLabelSubmitOrderButton: '',
-          applyConditionPreText: '',
-          applyConditionTermsText: '',
-          nextSubmitText: '',
-          applyConditionPolicyText: '',
-          applyConditionAndText: '',
-        },
-      },
-    };
-    const component = shallow(<CheckoutPageVanilla {...props} />);
-    const componentInstance = component.instance();
+    const componentInstance = tree.instance();
     expect(componentInstance.isVenmoShippingDisplayed()).toBeFalsy();
   });
 });
