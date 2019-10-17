@@ -8,8 +8,12 @@ const styles = css`
     padding-right: 15px;
   }
   .checkoutForm {
-    padding-left: 74px;
-    padding-right: 74px;
+    padding-left: 0px;
+    padding-right: 0px;
+    @media ${props => props.theme.mediaQuery.largeOnly} {
+      padding-left: 74px;
+      padding-right: 74px;
+    }
   }
   .border {
     border-top: 1px solid ${props => props.theme.colors.BORDER.BLUE};

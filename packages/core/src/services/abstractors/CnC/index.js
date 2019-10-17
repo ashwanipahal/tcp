@@ -27,5 +27,6 @@ export {
   requestPersonalizedCoupons,
   addGiftCard,
   getInternationCheckoutSettings,
+  startExpressCheckout,
 } from './Checkout';
 export { getVenmoToken } from './venmo';

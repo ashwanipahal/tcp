@@ -185,7 +185,7 @@ describe('ProductSummaryVanilla', () => {
   });
 
   it('should return styled BodyCopy component value one', () => {
-    expect(component.find('Styled(BodyCopy)')).toHaveLength(6);
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(5);
   });
 
   it('should return styled PromotionalMessage component value one', () => {

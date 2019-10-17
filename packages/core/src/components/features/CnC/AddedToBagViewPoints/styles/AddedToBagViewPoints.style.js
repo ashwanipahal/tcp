@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-top: 10px;
-  font-size: 12px;
   .text-value {
     text-align: right;
   }

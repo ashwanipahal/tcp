@@ -15,11 +15,17 @@ import {
   updateCartItemComplete,
   getProductSKUInfoSuccess,
 } from './CartItemTile.actions';
+import {
+  AddToPickupError,
+  clearAddToPickupErrorState,
+} from '../../AddedToBag/container/AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { isItemBossBopisInEligible } from './CartItemTile.selectors';
+import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
+import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
@@ -73,10 +79,13 @@ export function* removeCartItem({ payload }) {
 
 export function* updateCartItemSaga({ payload }) {
   try {
-    const res = yield call(updateItem, payload);
+    yield put(clearAddToPickupErrorState());
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
+    /* istanbul ignore else */
     if (callBack) {
       callBack();
     }
@@ -85,7 +94,13 @@ export function* updateCartItemSaga({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
-    logger.error(err);
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errorMessage =
+      // eslint-disable-next-line no-underscore-dangle
+      (err && err.errorMessages && err.errorMessages._error) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
+    yield put(AddToPickupError(errorMessage));
   }
 }
 
@@ -99,7 +114,7 @@ export function* getProductSKUInfoSaga(payload) {
   if (itemBrand === 'GYM') {
     unbxdkey = '4c26a092be20e0a237b91e51087453fa/dev1-gymboree-com800681562072113';
   } else {
-    unbxdkey = '8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808';
+    unbxdkey = 'd248ac8ed345ce5d29c9a6a3791db213/dev1-childrensplace-com800681565760135';
   }
 
   const relURI = `/${unbxdkey}/search?variants=true&variants.count=100&version=V2&rows=20&pagetype=boolean&q=${productId}&promotion=false&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price,long_product_title&uid=uid-1562746344280-64813`;
@@ -132,11 +147,59 @@ export function* getProductSKUInfoSaga(payload) {
   }
 }
 
+/**
+ *
+ * @method openPickupModalFromBag
+ * @description this method handles opening of pickup modal on click of edit from bag for boss/bopis item
+ * @export
+ * @param {*} payload
+ */
+export function* openPickupModalFromBag(payload) {
+  try {
+    const state = yield select();
+    const {
+      payload: {
+        colorProductId,
+        orderInfo,
+        openSkuSelectionForm,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
+        isItemShipToHome,
+      },
+    } = payload;
+    let itemBrand;
+    if (orderInfo) {
+      ({ itemBrand } = orderInfo);
+    }
+    const productDetail = yield call(getProductInfoById, colorProductId, state, itemBrand);
+    const { product } = productDetail;
+    const currentProduct = product;
+    const { generalProductId } = currentProduct;
+    yield put(
+      openPickupModalWithValues({
+        generalProductId,
+        colorProductId: generalProductId,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
+        currentProduct,
+        fromBagPage: true,
+        openSkuSelectionForm,
+        initialValues: { ...orderInfo },
+        updateCartItemStore: true,
+        isItemShipToHome,
+      })
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export function* CartPageSaga() {
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM, removeCartItem);
   yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM, updateCartItemSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.CONFIRM_REMOVE_CART_ITEM, confirmRemoveItem);
+  yield takeLatest(CARTPAGE_CONSTANTS.PICKUP_MODAL_OPEN_FROM_BAG, openPickupModalFromBag);
 }
 
 export default CartPageSaga;

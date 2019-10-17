@@ -6,6 +6,7 @@ import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductP
 import {
   getPrices,
   getMapSliceForColorProductId,
+  getProductListToPath,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import withStyles from '../../../../../common/hoc/withStyles';
@@ -17,12 +18,15 @@ const OutfitDetailsView = ({
   colorProductId,
   productIndexText,
   plpLabels,
+  labels,
   isCanada,
   isPlcc,
   isInternationalShipping,
   currencySymbol,
   priceCurrency,
   currencyExchange,
+  handleAddToBag,
+  addToBagError,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -32,34 +36,52 @@ const OutfitDetailsView = ({
   // TODO - this is temporary - just for the display - once the form values are fetched, it would be updated
   const color = Object.keys(imagesByColor)[0];
 
+  const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
+  const pdpToPath = getProductListToPath(currentColorPdpUrl);
+  const viewDetails = labels && labels.lbl_outfit_title;
+
   return (
     <Row className={className}>
       <Col
         colSize={{ small: 6, medium: 3, large: 4 }}
         ignoreGutter={{ small: true }}
         hideCol={{ small: true, medium: true, large: false }}
+        className="desktop-image-section"
       >
-        <BodyCopy>{productIndexText}</BodyCopy>
+        <BodyCopy fontSize="fs10" fontFamily="secondary" className="image-section">
+          {productIndexText}
+        </BodyCopy>
         <Image src={imagesByColor[color].basicImageUrl} />
-        <Anchor to={outfitProduct.pdpUrl.replace('/p', '?pid=')} asPath={outfitProduct.pdpUrl}>
-          View Product Details
-        </Anchor>
+        <BodyCopy className="view-detail-anchor">
+          <Anchor underline fontSizeVariation="large" to={pdpToPath} asPath={outfitProduct.pdpUrl}>
+            {viewDetails}
+          </Anchor>
+        </BodyCopy>
       </Col>
       <Col
         colSize={{ small: 6, medium: 8, large: 8 }}
         ignoreGutter={{ small: true, medium: true, large: true }}
+        className="tablet-product-info"
       >
         <div className="tablet-image-section">
-          <BodyCopy>{productIndexText}</BodyCopy>
-          <Image src={imagesByColor[color].basicImageUrl} />
-          <Anchor
-            underline
-            fontSizeVariation="large"
-            to={outfitProduct.pdpUrl.replace('/p', '?pid=')}
-            asPath={outfitProduct.pdpUrl}
-          >
-            View Product Details
-          </Anchor>
+          <BodyCopy fontSize="fs10" fontFamily="secondary" className="image-section">
+            {productIndexText}
+          </BodyCopy>
+
+          <BodyCopy component="div" className="outfit-mobile-image">
+            <Image src={imagesByColor[color].basicImageUrl} />
+          </BodyCopy>
+
+          <BodyCopy className="view-detail-anchor">
+            <Anchor
+              underline
+              fontSizeVariation="large"
+              to={pdpToPath}
+              asPath={outfitProduct.pdpUrl}
+            >
+              {viewDetails}
+            </Anchor>
+          </BodyCopy>
         </div>
         <div className="product-information">
           <ProductBasicInfo
@@ -78,13 +100,15 @@ const OutfitDetailsView = ({
             isInternationalShipping={isInternationalShipping}
           />
         </div>
-        <ProductAddToBagContainer
-          handleFormSubmit={() => {}}
-          errorOnHandleSubmit={() => {}}
-          currentProduct={outfitProduct}
-          plpLabels={plpLabels}
-          onChangeColor={() => {}}
-        />
+        <div className="outfit-sku">
+          <ProductAddToBagContainer
+            handleFormSubmit={handleAddToBag}
+            currentProduct={outfitProduct}
+            plpLabels={plpLabels}
+            isOutfitPage
+            errorOnHandleSubmit={addToBagError}
+          />
+        </div>
       </Col>
     </Row>
   );
@@ -101,7 +125,10 @@ OutfitDetailsView.propTypes = {
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyExchange: PropTypes.shape({}),
+  handleAddToBag: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}),
+  addToBagError: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -115,7 +142,9 @@ OutfitDetailsView.defaultProps = {
   isInternationalShipping: false,
   currencySymbol: '$',
   priceCurrency: 'USD',
-  currencyExchange: '1',
+  currencyExchange: [{ exchangevalue: 1 }],
+  labels: {},
+  addToBagError: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

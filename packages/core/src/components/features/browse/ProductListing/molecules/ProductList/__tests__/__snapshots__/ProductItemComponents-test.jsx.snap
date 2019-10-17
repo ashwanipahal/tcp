@@ -10,13 +10,7 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
     component="p"
     dataLocator="global-productbadge-txt"
     fontFamily="secondary"
-    fontSize={
-      Array [
-        "fs10",
-        "fs12",
-        "fs14",
-      ]
-    }
+    fontSize={12}
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"

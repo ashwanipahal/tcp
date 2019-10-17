@@ -11,6 +11,7 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
 let tcpAPIConfig = null;
@@ -20,6 +21,7 @@ let gymAPIConfig = null;
 export const LAZYLOAD_HOST_NAME = {
   HOME: 'lazyload-home',
   PLP: 'lazyload-plp',
+  PDP: 'lazyload-pdp',
   ACCOUNT: 'lazyload-account',
   WALLET: 'lazyload-wallet',
 };
@@ -376,7 +378,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`];
+  const unbxdApiKeyTCP = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_TCP`];
+  const unbxdApiKeyGYM = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_GYM`];
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
@@ -384,11 +387,12 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
-    unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${unbxdApiKey}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
-    }`,
-    unbxdApiKey,
+    unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: envConfig.RWD_APP_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
@@ -626,5 +630,41 @@ export const readCookieMobileApp = key => {
         return resolve(response[key]);
       })
       .catch(e => reject(e));
+  });
+};
+
+/**
+ * @function createGoogleMapUrl - returns map apps url.
+ * @param {String} lat - lattitude
+ * @param {String} long - longitude
+ */
+export const createGoogleMapUrl = (lat = '', long = '', label = '') => {
+  return Platform.select({
+    ios: `maps:${lat},${long}?q=${label}`,
+    android: `geo:${lat},long?q=${label}`,
+  });
+};
+
+/**
+ * @function mapHandler - checks if map application is present in phone, opens app,
+ * otherwise opens the map in mobile browser.
+ * @param {Object} store - store info
+ */
+export const mapHandler = store => {
+  const {
+    basicInfo: { address, coordinates },
+  } = store;
+  const { addressLine1, city, state, zipCode } = address;
+  const { lat, long } = coordinates;
+  const mapLabel = `${addressLine1}, ${city}, ${state}`;
+  const url = createGoogleMapUrl(lat, long, mapLabel);
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) {
+      return Linking.openURL(url);
+    }
+    const browserUrl = `${
+      googleMapConstants.OPEN_STORE_DIR_WEB
+    }${addressLine1}, ${city}, ${state}, ${zipCode}`;
+    return Linking.openURL(browserUrl);
   });
 };

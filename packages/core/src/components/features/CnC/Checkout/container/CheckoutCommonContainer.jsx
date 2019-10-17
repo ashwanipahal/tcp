@@ -16,6 +16,7 @@ import {
   submitReviewSection,
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
+  submitVerifiedAddressData,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -28,11 +29,15 @@ import selectors, {
   getGiftServicesSend,
   isUsSite as isUsSiteUser,
 } from './Checkout.selector';
+import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
+import {
+  getUserPhoneNumber,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const {
@@ -60,24 +65,51 @@ const {
   getBillingValues,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  getShipmentLoadingStatus,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {
-      initCheckout,
       needHelpContentId,
       fetchNeedHelpContent,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
+      isRegisteredUserCallDone,
+      initCheckout,
+      router,
     } = this.props;
-    initCheckout();
+    /* istanbul ignore else */
+    if (isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
     fetchNeedHelpContent([
       needHelpContentId,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
     ]);
   }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { isRegisteredUserCallDone, router, initCheckout } = this.props;
+    /* istanbul ignore else */
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
+  }
+
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+      },
+    };
+  };
 
   render() {
     const {
@@ -119,7 +151,11 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       reviewProps,
       isVenmoPaymentInProgress,
       setVenmoPickupState,
+      verifyAddressAction,
       setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
+      submitVerifiedShippingAddressData,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -143,10 +179,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
+        submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
+        verifyAddressAction={verifyAddressAction}
         shippingProps={shippingProps}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
@@ -163,9 +201,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={reviewProps}
+        formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
       />
     );
   }
@@ -175,8 +216,8 @@ CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: () => {
-      dispatch(initCheckoutAction());
+    initCheckout: router => {
+      dispatch(initCheckoutAction(router));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
@@ -214,6 +255,12 @@ export const mapDispatchToProps = dispatch => {
     submitReview: payload => {
       dispatch(submitReviewSection(payload));
     },
+    verifyAddressAction: payload => {
+      dispatch(verifyAddress(payload));
+    },
+    submitVerifiedShippingAddressData: payload => {
+      dispatch(submitVerifiedAddressData(payload));
+    },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
   };
@@ -230,6 +277,7 @@ const mapStateToProps = state => {
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
     shippingProps: {
+      isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
       isGiftServicesChecked: getGiftWrappingValues(state),
@@ -282,7 +330,10 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
+    isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
+    isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Anchor, Image } from '../../../../../atoms';
+import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
-import styles, { customPriceStyles } from '../styles/ProductCustomizeFormPart.style';
+import styles, {
+  customPriceStyles,
+  customSubmitButtonStyle,
+} from '../styles/ProductCustomizeFormPart.style';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
-import { getLocator } from '../../../../../../../utils';
+import { getSiteId, getLocator } from '../../../../../../../utils';
 
 import {
   getPrices,
@@ -32,6 +36,7 @@ const ProductCustomizeFormPart = props => {
     goToPDPPage,
     imageUrl,
     handleUpdateItem,
+    colorFitsSizesMap,
     ...otherProps
   } = props;
   const { fromBagPage, productInfoFromBag } = otherProps;
@@ -66,6 +71,7 @@ const ProductCustomizeFormPart = props => {
               dataLocator={getLocator('quick_view_View_Product_details')}
               className="link-redirect"
               noLink
+              to={`/${getSiteId()}${currentColorPdpUrl}`}
               onClick={e => goToPDPPage(e, pdpToPath, currentColorPdpUrl)}
             >
               <BodyCopy className="product-link" fontSize="fs14" fontFamily="secondary">
@@ -108,6 +114,8 @@ const ProductCustomizeFormPart = props => {
             handleFormSubmit={fromBagPage ? handleUpdateItem : handleAddToBag}
             fromBagPage={fromBagPage}
             productInfoFromBag={productInfoFromBag}
+            customSubmitButtonStyle={customSubmitButtonStyle}
+            colorFitsSizesMap={colorFitsSizesMap}
           />
         </div>
       </div>
@@ -136,6 +144,7 @@ ProductCustomizeFormPart.propTypes = {
   imageUrl: PropTypes.string,
   currentColorEntry: PropTypes.func,
   goToPDPPage: PropTypes.func,
+  colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE.isRequired,
 };
 
 ProductCustomizeFormPart.defaultProps = {

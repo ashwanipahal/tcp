@@ -7,6 +7,7 @@ import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getUnbxdId,
   getCategoryId,
@@ -31,6 +32,7 @@ import {
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
+import { setRecentSearch } from '../../../../common/organisms/SearchProduct/RecentSearch.actions';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -40,12 +42,22 @@ class SearchDetailContainer extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.makeApiCall();
+    const { navigation } = this.props;
+    const title = navigation.getParam('title');
+    this.makeApiCall(title);
   }
 
-  makeApiCall = () => {
-    const { getProducts, navigation } = this.props;
-    const searchQuery = navigation && navigation.getParam('title');
+  componentWillUpdate = nextProps => {
+    const { navigation } = nextProps;
+    const title = navigation.getParam('title');
+    const isForceUpdate = navigation.getParam('isForceUpdate');
+    if (isForceUpdate) {
+      this.makeApiCall(title);
+    }
+  };
+
+  makeApiCall = searchQuery => {
+    const { getProducts, setRecentSearches } = this.props;
     if (this.searchQuery !== searchQuery) {
       this.searchQuery = searchQuery;
       const splitAsPathBy = `/search/${this.searchQuery}?`;
@@ -53,6 +65,9 @@ class SearchDetailContainer extends React.PureComponent {
       const queryString = this.asPath.split(splitAsPathBy);
       const filterSortString = (queryString.length && queryString[1]) || '';
       const formValues = { sort: '' }; // TODO
+      if (this.searchQuery.length > 0) {
+        setRecentSearches(this.searchQuery);
+      }
       getProducts({
         URI: 'search',
         asPath: filterSortString,
@@ -124,7 +139,7 @@ class SearchDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isSearchResultsAvailable ? (
           <View>
-            {products && products.length > 0 ? (
+            {this.searchQuery && products && products.length > 0 ? (
               <SearchDetail
                 filters={filters}
                 formValues={formValues}
@@ -151,7 +166,7 @@ class SearchDetailContainer extends React.PureComponent {
                 totalProductsCount={totalProductsCount}
                 labels={labels}
                 slpLabels={slpLabels}
-                searchedText={searchedText}
+                searchedText={this.searchQuery}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
                 {...otherProps}
@@ -159,29 +174,7 @@ class SearchDetailContainer extends React.PureComponent {
             )}
           </View>
         ) : (
-          <View>
-            <SearchDetail
-              filters={filters}
-              formValues={formValues}
-              filtersLength={filtersLength}
-              getProducts={getProducts}
-              isLoadingMore={isLoadingMore}
-              initialValues={initialValues}
-              onSubmit={this.onSubmitFilters}
-              products={products}
-              productsBlock={productsBlock}
-              totalProductsCount={totalProductsCount}
-              labels={labels}
-              labelsFilter={labelsFilter}
-              slpLabels={slpLabels}
-              searchedText={searchedText}
-              sortLabels={sortLabels}
-              searchResultSuggestions={searchResultSuggestions}
-              onGoToPDPPage={this.onGoToPDPPage}
-              onLoadMoreProducts={this.onLoadMoreProducts}
-              {...otherProps}
-            />
-          </View>
+          <View />
         )}
       </React.Fragment>
     );
@@ -247,6 +240,12 @@ function mapDispatchToProps(dispatch) {
     resetProducts: () => {
       dispatch(resetSlpProducts());
     },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
+    },
+    setRecentSearches: searchTerm => {
+      dispatch(setRecentSearch({ searchTerm }));
+    },
   };
 }
 
@@ -285,6 +284,7 @@ SearchDetailContainer.propTypes = {
   searchResultSuggestions: PropTypes.shape({}),
   sortLabels: PropTypes.shape({}),
   resetProducts: PropTypes.func,
+  setRecentSearches: PropTypes.func,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -309,6 +309,7 @@ SearchDetailContainer.defaultProps = {
   searchResultSuggestions: {},
   sortLabels: {},
   resetProducts: () => {},
+  setRecentSearches: null,
 };
 
 export default connect(

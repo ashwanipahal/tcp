@@ -115,10 +115,13 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
       colorItem.get('fits').forEach(fit => {
         if (selectedFit) {
           if (fit.get('fitName') === selectedFit) {
-            sizeOptions = fit.get('sizes').map(size => ({
-              displayName: size.get('sizeName'),
-              id: size.get('sizeName'),
-            }));
+            sizeOptions = fit
+              .get('sizes')
+              .filter(size => size.get('maxAvailable') > 0)
+              .map(size => ({
+                displayName: size.get('sizeName'),
+                id: size.get('sizeName'),
+              }));
             if (fitChanged) {
               sizeOptions = sizeOptions.unshift({
                 displayName: 'Select',
@@ -127,10 +130,13 @@ class ProductCustomizeForm extends React.PureComponent<Props> {
             }
           }
         } else {
-          sizeOptions = fit.get('sizes').map(size => ({
-            displayName: size.get('sizeName'),
-            id: size.get('sizeName'),
-          }));
+          sizeOptions = fit
+            .get('sizes')
+            .filter(size => size.get('maxAvailable') > 0)
+            .map(size => ({
+              displayName: size.get('sizeName'),
+              id: size.get('sizeName'),
+            }));
         }
       });
     }

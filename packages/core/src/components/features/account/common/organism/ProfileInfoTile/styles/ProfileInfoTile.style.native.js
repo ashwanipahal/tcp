@@ -4,12 +4,13 @@ const UnderlineStyle = styled.View`
   height: 1px;
   background-color: ${props => props.theme.colorPalette.gray[600]};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const ProfileInfoTileContainer = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[700]};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const ButtonWrapperStyle = styled.View`

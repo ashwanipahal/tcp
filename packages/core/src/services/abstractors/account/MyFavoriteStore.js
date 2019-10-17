@@ -9,7 +9,7 @@ import { executeStatefulAPICall } from '@tcp/core/src/services/handler';
  * @return empty object if you do not have a default store else you will get back
  */
 
-const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId) => {
+const getFavoriteStore = (skuId = null, lat = null, long = null, variantId = null) => {
   const payload = {
     header: {
       action: 'get',
@@ -24,7 +24,7 @@ const getFavoriteStore = (skuId = null, { lat, long } = {}, variantId) => {
       catEntryId: skuId,
       itemPartNumber: variantId,
     },
-    webService: endpoints.getMyFavoriteStore,
+    webService: endpoints.getFavoriteStore,
   };
 
   return executeStatefulAPICall(payload)

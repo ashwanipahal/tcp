@@ -8,8 +8,10 @@ import {
   openMiniBag,
   closeMiniBag,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { isPlccUser } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -23,6 +25,7 @@ import {
   getCurrentPointsState,
   getTotalRewardsState,
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
+import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
 // @flow
 type Props = {
@@ -40,6 +43,8 @@ type Props = {
   updateCartItemCount: Function,
   closeMiniBagDispatch: Function,
   openOverlay: Function,
+  resetSuccessMessage: Function,
+  isPlcc: PropTypes.bool.isRequired,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -69,6 +74,8 @@ export class MiniBagContainer extends React.Component<Props> {
       cartItemSflError,
       closeMiniBagDispatch,
       openOverlay,
+      resetSuccessMessage,
+      isPlcc,
     } = this.props;
     return (
       <MiniBagView
@@ -86,6 +93,8 @@ export class MiniBagContainer extends React.Component<Props> {
         cartItemSflError={cartItemSflError}
         closeMiniBagDispatch={closeMiniBagDispatch}
         openOverlay={openOverlay}
+        resetSuccessMessage={resetSuccessMessage}
+        isPlcc={isPlcc}
       />
     );
   }
@@ -102,6 +111,7 @@ const mapStateToProps = state => {
     isCartItemSFL: getIsCartItemsSFL(state),
     cartItemSflError: getCartItemsSflError(state),
     isOpen: getIsMiniBagOpen(state),
+    isPlcc: isPlccUser(state),
   };
 };
 
@@ -115,6 +125,9 @@ export const mapDispatchToProps = dispatch => {
       dispatch(closeMiniBag());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
+    resetSuccessMessage: payload => {
+      dispatch(BAG_ACTIONS.setCartItemsSFL(payload));
+    },
   };
 };
 
