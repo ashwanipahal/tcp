@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import Thumbnail from '../../atoms/Thumbnail';
 
 const ThumbnailsList = props => {
@@ -15,7 +14,7 @@ const ThumbnailsList = props => {
             key={image.imageUrl}
             image={{
               name: image.imageName,
-              thumbnailPath: changeImageURLToDOM(image.imageUrl, 'w_125'),
+              thumbnailPath: image.imageUrl,
               id: index,
             }}
             isSelected={selectedImageIndex === index}
