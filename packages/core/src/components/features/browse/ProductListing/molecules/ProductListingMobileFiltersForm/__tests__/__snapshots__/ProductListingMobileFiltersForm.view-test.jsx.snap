@@ -79,37 +79,37 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     Array [
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Category",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Color",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Size",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Price",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Fit",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Gender",
                         },
                       },
                       Object {
                         "header": Object {
-                          "title": "All",
+                          "title": "Size Range",
                         },
                       },
                     ]
