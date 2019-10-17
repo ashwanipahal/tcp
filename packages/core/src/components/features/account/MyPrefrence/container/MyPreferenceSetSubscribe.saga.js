@@ -7,21 +7,8 @@ export function* setSubscribeStoreSaga(data) {
   const { payload } = data;
   const { mobileNumber, CustomerPreferences } = payload;
 
-  console.log('khan--------------------------------------');
-  console.log(mobileNumber);
-  console.log(CustomerPreferences);
-  console.log('khan--------------------------------------');
   try {
     const subscribeData = yield call(myPreferenceModalSubmit, mobileNumber, CustomerPreferences);
-
-    console.log(
-      'furkan ali ifsldfnlsndflksdf  --------------testing-------------------------------------'
-    );
-    console.log(subscribeData);
-    console.log(
-      'furkan ali ifsldfnlsndflksdf  --------------testing-------------------------------------'
-    );
-
     yield put(setSubscribeStore(subscribeData));
   } catch (err) {
     yield null;

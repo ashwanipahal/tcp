@@ -330,7 +330,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 }
               }
               dataLocator="mypreference-apptcpcheckbox"
-              name="primary"
+              name="tcpAppSubscribe"
             >
               <Styled(BodyCopy)
                 className={null}
@@ -481,7 +481,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 }
               }
               dataLocator="mypreference-appgymcheckbox"
-              name="primary"
+              name="gymboreeAppSubscribe"
             >
               <Styled(BodyCopy)
                 className={null}
@@ -532,6 +532,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
+              checked={false}
               className="elm-padding-top"
               component={
                 Object {
@@ -663,7 +664,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 }
               }
               dataLocator="mypreference-texttcpcheckbox"
-              name="primary"
+              name="tcpWebSubscribe"
             >
               <Styled(BodyCopy)
                 className={null}
@@ -812,7 +813,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 }
               }
               dataLocator="mypreference-textgymcheckbox"
-              name="primary"
+              name="gymboreeWebSubscribe"
             >
               <Styled(BodyCopy)
                 className={null}
