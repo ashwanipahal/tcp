@@ -4,6 +4,9 @@ const SmsSignupModalStyle = css`
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+  .sms-signup-content {
+    position: relative;
+  }
   .button-wrapper,
   .button-wrapper-form {
     background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
@@ -62,6 +65,11 @@ const SmsSignupModalStyle = css`
     .field-container {
       padding-top: 0;
     }
+    .button-wrapper {
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      width: 100%;
+      position: absolute;
+    }
     .button-wrapper,
     .button-wrapper-form {
       margin: 24px auto 0;
@@ -78,7 +86,6 @@ const SmsSignupModalStyle = css`
       width: calc(100% - 300px);
     }
     .shop-button {
-      position: absolute;
       bottom: 0;
       width: 100%;
     }

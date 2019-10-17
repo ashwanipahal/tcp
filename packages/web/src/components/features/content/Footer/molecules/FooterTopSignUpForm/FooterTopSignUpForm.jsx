@@ -46,7 +46,6 @@ class FooterTopSignUpForm extends React.PureComponent {
       fieldName,
     } = this.props;
 
-    console.info('vlues: ', values);
     return validateForm(values)
       .then(subscription => {
         if (subscription.error) {
@@ -55,13 +54,11 @@ class FooterTopSignUpForm extends React.PureComponent {
 
         return new Promise((resolve, reject) => {
           this.formSubmitPromise = { resolve, reject };
-          console.info('values[fieldName]: ', values[fieldName]);
           onFormSubmit(values[fieldName]);
         });
       })
       .catch(() => {
         const error = { [fieldName]: validationErrorLabel };
-        console.info('validationErrorLabel: ', error, values, fieldName);
         throw new SubmissionError({ ...error, _error: error });
       });
   };
