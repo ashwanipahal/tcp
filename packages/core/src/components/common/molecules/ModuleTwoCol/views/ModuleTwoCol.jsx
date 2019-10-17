@@ -34,4 +34,3 @@ ModuleTwoCol.propTypes = {
 };
 
 export default withStyles(errorBoundary(ModuleTwoCol), style);
-export { ModuleTwoCol as ModuleTwoColVanilla };
