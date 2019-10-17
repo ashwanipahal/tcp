@@ -74,15 +74,15 @@ exports[`HomePageView should render correctly 1`] = `
         Object {
           "category": Object {
             "cat_id": Array [
-              "47502>47535>54071",
-              "47502>47535>54071",
+              "47503>47544",
+              "47501>47526",
             ],
           },
           "singleCTAButton": Object {
             "action": "",
             "external": 0,
             "target": "",
-            "text": "SHOP ALL 1",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
             "url": "http://www.childrensplace.com",
           },
@@ -90,34 +90,7 @@ exports[`HomePageView should render correctly 1`] = `
             "action": "",
             "external": 0,
             "target": "",
-            "text": "Shop All Matchables 1",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "text": Object {
-            "text": "TODDLER GIRL",
-          },
-        },
-        Object {
-          "category": Object {
-            "cat_id": Array [
-              "47526",
-              "47526",
-            ],
-          },
-          "singleCTAButton": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 2",
-            "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
-          },
-          "singleCTAButtonCart": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "SHOP ALL 0",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
             "url": "http://www.childrensplace.com",
           },
@@ -128,7 +101,7 @@ exports[`HomePageView should render correctly 1`] = `
         Object {
           "category": Object {
             "cat_id": Array [
-              "47503>47544",
+              "47526",
               "47503>47544",
             ],
           },
@@ -136,7 +109,7 @@ exports[`HomePageView should render correctly 1`] = `
             "action": "",
             "external": 0,
             "target": "",
-            "text": "SHOP ALL 3",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
             "url": "http://www.childrensplace.com",
           },
@@ -144,7 +117,34 @@ exports[`HomePageView should render correctly 1`] = `
             "action": "",
             "external": 0,
             "target": "",
-            "text": "Shop All Matchables 2",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": Array [
+              "47503>47544",
+              "47526",
+            ],
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
             "url": "http://www.childrensplace.com",
           },
@@ -156,14 +156,14 @@ exports[`HomePageView should render correctly 1`] = `
           "category": Object {
             "cat_id": Array [
               "47501>47526",
-              "47501>47526",
+              "47503>47544",
             ],
           },
           "singleCTAButton": Object {
             "action": "",
             "external": 0,
             "target": "",
-            "text": "SHOP ALL 4",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
             "url": "http://www.childrensplace.com",
           },
@@ -171,9 +171,9 @@ exports[`HomePageView should render correctly 1`] = `
             "action": "",
             "external": 0,
             "target": "",
-            "text": "Shop All Matchables 4",
+            "text": "Shop All Matchables",
             "title": "SHOP ALL",
-            "url": "http://www.childrensplace.com",
+            "url": "/us",
           },
           "text": Object {
             "text": "TODDLER BOY",
@@ -198,7 +198,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_black",
+              "style": "medium_text_regular",
               "text": "ALL MATCHABLES",
             },
           ],
@@ -219,7 +219,7 @@ exports[`HomePageView should render correctly 1`] = `
           "textItems": Array [
             Object {
               "style": "medium_text_black",
-              "text": "THE SHORT SHOP",
+              "text": "60% OFF",
             },
           ],
         },
@@ -287,191 +287,6 @@ exports[`HomePageView should render correctly 1`] = `
               "style": "extrabold_text_regular",
               "style2": "style2",
               "text": "60% OFF",
-            },
-          ],
-        },
-      ]
-    }
-  />
-  <ModuleT
-    ctaItems={
-      Array [
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Girl",
-            "title": "Girl",
-            "url": "/c/",
-          },
-          "image": Object {
-            "alt": "Girl",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Girl",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Girl",
-            "title": "Toddler Girl",
-            "url": "/c/",
-          },
-          "image": Object {
-            "alt": "Toddler Girl alt",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Toddler Girl title",
-            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Boy",
-            "title": "Boy",
-            "url": "/c/",
-          },
-          "image": Object {
-            "alt": "Boy",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Boy",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Toddler Boy",
-            "title": "Toddler Boy",
-            "url": "/c/",
-          },
-          "image": Object {
-            "alt": "Toddler Boy alt",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Toddler Boy title",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
-          },
-        },
-        Object {
-          "button": Object {
-            "external": 0,
-            "target": "",
-            "text": "Baby",
-            "title": "Baby",
-            "url": "/c/",
-          },
-          "image": Object {
-            "alt": "Baby",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Baby",
-            "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
-          },
-        },
-      ]
-    }
-    ctaType="stackedCTAButtons"
-    headerText={
-      Array [
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "http://www.childrensplace.com",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_black",
-              "text": "THE SHORT SHOP",
-            },
-          ],
-        },
-      ]
-    }
-    mediaLinkedList={
-      Array [
-        Object {
-          "image": Object {
-            "alt": "Boys",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Boys",
-            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "Boys",
-            "title": "Boys",
-            "url": "/p/",
-          },
-        },
-        Object {
-          "image": Object {
-            "alt": "Girls",
-            "crop_d": "",
-            "crop_m": "",
-            "crop_t": "",
-            "title": "Girls",
-            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
-          },
-          "link": Object {
-            "action": "",
-            "external": 0,
-            "target": "",
-            "text": "Girls",
-            "title": "Girls",
-            "url": "/p/",
-          },
-        },
-      ]
-    }
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-    promoBanner={
-      Array [
-        Object {
-          "link": Object {
-            "class": "",
-            "external": 0,
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "http://www.childrensplace.com",
-          },
-          "textItems": Array [
-            Object {
-              "style": "medium_text_regular_tab",
-              "text": "ALL GRAPHIC TEES",
-            },
-            Object {
-              "style": "percentage_all_wrapped_normal_tab",
-              "text": "60 % OFF",
             },
           ],
         },

@@ -53,11 +53,16 @@ const CnCCommonTemplate = ({
                 fontFamily="secondary"
                 fontSize="fs13"
                 text={btnText}
+                dataLocator="reviewBtn"
               />
             </CheckoutButton>
             {footerBody}
             {!!backLinkText && (
-              <TouchableOpacity accessibilityRole="link" onPress={onBackLinkPress}>
+              <TouchableOpacity
+                accessibilityRole="link"
+                onPress={onBackLinkPress}
+                dataLocator="returnToLink"
+              >
                 <BackLinkWrapperWrapper>
                   <BackIcon />
                   <BackLinkText>{backLinkText}</BackLinkText>
@@ -68,7 +73,7 @@ const CnCCommonTemplate = ({
         </>
       ) : (
         <View>
-          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} showAccordian />
           <BannerWrapper>
             <BodyCopyWithSpacing
               textAlign="center"

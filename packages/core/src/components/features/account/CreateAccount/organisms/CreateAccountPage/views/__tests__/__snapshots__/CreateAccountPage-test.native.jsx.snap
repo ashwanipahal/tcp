@@ -16,6 +16,8 @@ exports[`Create Account Page should render correctly 1`] = `
   onRequestClose={[Function]}
   showForgotPasswordForm={[Function]}
   showsVerticalScrollIndicator={false}
+  userplccCardId=""
+  userplccCardNumber=""
 >
   <View>
     <Styled(CreateAccountTopSection)
@@ -76,6 +78,8 @@ exports[`Create Account Page should render correctly 1`] = `
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
+      userplccCardId=""
+      userplccCardNumber=""
       validate={[Function]}
     />
   </View>

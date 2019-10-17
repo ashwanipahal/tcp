@@ -2,6 +2,7 @@ import React from 'react';
 import BodyCopy from '../../BodyCopy';
 import CustomIcon from '../../Icon';
 import { ICON_NAME } from '../../Icon/Icon.constants';
+import { ViewWithSpacing } from '../../styledWrapper/styledWrapper.native';
 import { BadgeView, DefaultBadgeView, PrimaryBadgeView } from '../Badge.style.native';
 
 // @flow
@@ -18,7 +19,11 @@ const Badge = ({ children, dataLocator, primary }: Props) => {
   return (
     <BadgeViewWrapper data-locator={dataLocator}>
       <BadgeView>
-        {!primary && <CustomIcon name={ICON_NAME.checkmark} size="fs10" color="white" />}
+        {!primary && (
+          <ViewWithSpacing spacingStyles="margin-right-XXXS">
+            <CustomIcon name={ICON_NAME.checkmark} size="fs10" color="white" />
+          </ViewWithSpacing>
+        )}
         <BodyCopy
           mobilefontFamily={['secondary']}
           fontWeight="semibold"
