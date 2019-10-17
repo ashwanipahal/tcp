@@ -49,7 +49,7 @@ export const ControlsWrapperLeft = styled.View`
 export const ControlsWrapperRight = styled.View`
   flex-direction: row;
   position: absolute;
-  bottom: 13px;
+  bottom: 10px;
   right: 0;
 `;
 
@@ -60,6 +60,7 @@ export const PlayPauseButtonView = styled.View`
 export const PaginationWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
+  margin-bottom: ${props => (props.iconBottomMargin ? props.iconBottomMargin : '2px')};
 `;
 
 export default {

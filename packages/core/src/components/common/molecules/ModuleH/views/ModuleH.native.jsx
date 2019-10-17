@@ -155,6 +155,7 @@ class ModuleH extends React.PureComponent {
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
             vertical={MODULE_DIRECTION}
+            iconBottomMargin="13px"
             carouselConfig={{
               autoplay: true,
               dataLocatorPlay: getLocator('moduleH_play_button'),

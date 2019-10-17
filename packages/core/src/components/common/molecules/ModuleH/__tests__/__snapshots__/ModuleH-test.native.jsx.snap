@@ -328,6 +328,7 @@ exports[`ModuleH component renders correctly 1`] = `
       ]
     }
     height={425}
+    iconBottomMargin="13px"
     onSnapToItem={[Function]}
     renderItem={[Function]}
     vertical={true}
