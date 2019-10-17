@@ -29,7 +29,7 @@ class ProductsGrid extends React.Component {
   static propTypes = {
     isLoadingMore: PropTypes.bool,
     productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
-    getMoreProducts: PropTypes.bool,
+    getMoreProducts: PropTypes.func,
     onPickUpOpenClick: PropTypes.func,
     onQuickViewOpenClick: PropTypes.func,
     isGridView: PropTypes.bool,
@@ -41,7 +41,7 @@ class ProductsGrid extends React.Component {
   static defaultProps = {
     isLoadingMore: false,
     productsBlock: [],
-    getMoreProducts: false,
+    getMoreProducts: () => null,
     onPickUpOpenClick: null,
     onQuickViewOpenClick: null,
     isGridView: false,
