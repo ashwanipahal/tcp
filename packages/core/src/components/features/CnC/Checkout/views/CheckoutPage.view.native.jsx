@@ -5,9 +5,10 @@ import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
+import withKeyboardAvoidingView from '../../../../common/hoc/withKeyboardAvoidingView.native';
 import Confirmation from '../../Confirmation';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -41,7 +42,15 @@ export default class CheckoutPage extends React.PureComponent {
       addNewShippingAddressData,
       // setCheckoutStage,
       onPickupSubmit,
+      formatPayload,
+      verifyAddressAction,
+      submitVerifiedShippingAddressData,
       submitReview,
+      isVenmoPaymentInProgress,
+      setVenmoPickupState,
+      setVenmoShippingState,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
@@ -52,6 +61,7 @@ export default class CheckoutPage extends React.PureComponent {
       REVIEW,
       CONFIRMATION,
     } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
+    const { venmoBannerText } = pickUpLabels;
     switch (currentRoute) {
       case PICKUP.toLowerCase():
         return (
@@ -71,6 +81,10 @@ export default class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            orderHasShipping={orderHasShipping}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case SHIPPING.toLowerCase():
@@ -81,6 +95,9 @@ export default class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
+            verifyAddressAction={verifyAddressAction}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
@@ -88,6 +105,10 @@ export default class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            venmoBannerLabel={{ venmoBannerText }}
+            setVenmoPickupState={setVenmoPickupState}
+            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
+            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case BILLING.toLowerCase():
@@ -111,6 +132,8 @@ export default class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            setVenmoPickupState={setVenmoPickupState}
+            setVenmoShippingState={setVenmoShippingState}
           />
         );
       case CONFIRMATION.toLowerCase():
@@ -146,6 +169,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
@@ -156,4 +182,19 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  isVenmoPaymentInProgress: PropTypes.bool,
+  setVenmoPickupState: PropTypes.func,
+  setVenmoShippingState: PropTypes.func,
+  isVenmoPickupBannerDisplayed: PropTypes.bool,
+  isVenmoShippingBannerDisplayed: PropTypes.bool,
 };
+
+CheckoutPage.defaultProps = {
+  isVenmoPaymentInProgress: false,
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
+  isVenmoPickupBannerDisplayed: true,
+  isVenmoShippingBannerDisplayed: true,
+};
+
+export default withKeyboardAvoidingView(CheckoutPage);

@@ -32,9 +32,10 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
+  canUseDOM,
+  getUrlParameter,
   scrollToParticularElement,
+  getDirections,
 } from './utils.web';
 
 export {
@@ -73,5 +74,7 @@ export {
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
   stringify,
 } from './utils';

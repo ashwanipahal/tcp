@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor } from '../../../atoms';
+import { Anchor, BodyCopy, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
 import ThumbnailsList from '../../../molecules/ThumbnailsList';
-
 import FullSizeImageModal from '../../../../features/browse/ProductDetail/molecules/FullSizeImageModal/views/FullSizeImageModal.view';
 import Carousel from '../../../molecules/Carousel';
 import styles, { carousalStyle } from '../styles/ProductImages.style';
@@ -53,6 +52,7 @@ class ProductImages extends React.Component {
      * images (default behavior)
      */
     isShowBigSizeImages: PropTypes.bool,
+    isGiftCard: PropTypes.bool,
 
     /** Flags if the zoom should be enabled */
     isZoomEnabled: PropTypes.bool.isRequired,
@@ -79,6 +79,14 @@ class ProductImages extends React.Component {
     this.setState({ currentImageIndex: imageIndex });
   };
 
+  getImageWrapperCss = () => {
+    const { isFullSizeForTab, isMobile } = this.props;
+    return [
+      'main-image-container-wrap',
+      isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
+    ].join(' ');
+  };
+
   render() {
     const {
       productName,
@@ -88,11 +96,11 @@ class ProductImages extends React.Component {
       isFullSizeVisible,
       className,
       isThumbnailListVisible,
-      isFullSizeForTab,
       onCloseClick,
       isFullSizeModalOpen,
       isMobile,
       pdpLabels,
+      isGiftCard,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -113,12 +121,7 @@ class ProductImages extends React.Component {
           currentImageIndex,
           this.handleThumbnailClick
         )}
-        <div
-          className={[
-            'main-image-container-wrap',
-            isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
-          ].join(' ')}
-        >
+        <div className={this.getImageWrapperCss()}>
           <div className="main-image-container">
             {
               <Carousel
@@ -139,7 +142,7 @@ class ProductImages extends React.Component {
                         imageUrl={image && image[imageSizePropertyName]}
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
-                        isZoomEnabled={isZoomEnabled}
+                        isZoomEnabled={!isGiftCard && isZoomEnabled}
                         onOpenSimpleFullSize={onCloseClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}
@@ -149,7 +152,7 @@ class ProductImages extends React.Component {
               </Carousel>
             }
             <div className="social-connect-wrapper">
-              {isFullSizeVisible && (
+              {isFullSizeVisible && !isGiftCard && (
                 <span className="fullSize-image-label">
                   <Anchor
                     className="resize-text"
@@ -157,7 +160,15 @@ class ProductImages extends React.Component {
                     onClick={onCloseClick}
                     dataLocator={getLocator('pdp_full_size_btn')}
                   >
-                    {pdpLabels.fullSize}
+                    <Image
+                      alt={pdpLabels.fullSize}
+                      className="icon-expand"
+                      src={getIconPath('icon-expand')}
+                      height="25px"
+                    />
+                    <BodyCopy fontFamily="secondary" fontSize="fs10">
+                      {pdpLabels.fullSize}
+                    </BodyCopy>
                   </Anchor>
                 </span>
               )}
@@ -192,6 +203,7 @@ ProductImages.defaultProps = {
   isFullSizeVisible: true,
   isFullSizeModalOpen: false,
   isMobile: true,
+  isGiftCard: false,
 };
 
 export default withStyles(ProductImages, styles);

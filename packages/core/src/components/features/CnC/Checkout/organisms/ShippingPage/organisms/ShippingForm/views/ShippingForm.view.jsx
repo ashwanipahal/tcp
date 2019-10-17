@@ -61,9 +61,16 @@ class ShippingForm extends React.Component {
       modalState: false,
       isEditingMode: false,
       isEditingMobileMode: false,
+      editShipmentDetailsError: '',
     };
     this.isAddressModalEmptied = false;
     this.addNewAddressEnabled = false;
+    this.editShippingErrorRef = React.createRef();
+  }
+
+  shouldComponentUpdate() {
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
   }
 
   componentDidUpdate(prevProps) {
@@ -148,7 +155,7 @@ class ShippingForm extends React.Component {
 
   toggleIsEditing = () => {
     const { isEditing } = this.state;
-    this.setState({ isEditing: !isEditing });
+    this.setState({ isEditing: !isEditing, editShipmentDetailsError: '' });
   };
 
   toggleAddEditModal = ({ type, e }) => {
@@ -218,10 +225,23 @@ class ShippingForm extends React.Component {
     );
   };
 
+  handleSubmit = e => {
+    const { handleSubmit, emailSignUpLabels } = this.props;
+    const { isEditing } = this.state;
+
+    if (isEditing) {
+      e.preventDefault();
+      this.setState({
+        editShipmentDetailsError: emailSignUpLabels.shippingAddressEditError,
+      });
+      return this.editShippingErrorRef.current.scrollIntoView(false);
+    }
+    return handleSubmit(e);
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
-      handleSubmit,
       className,
       dispatch,
       isOrderUpdateChecked,
@@ -250,7 +270,7 @@ class ShippingForm extends React.Component {
       isVenmoShippingDisplayed,
       showAccordian,
     } = this.props;
-    const { isEditing, modalType, modalState } = this.state;
+    const { isEditing, modalType, modalState, editShipmentDetailsError } = this.state;
     const nextButtonText =
       isVenmoPaymentInProgress && !isVenmoShippingDisplayed
         ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
@@ -273,7 +293,12 @@ class ShippingForm extends React.Component {
         >
           {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
         </BodyCopy>
-        <form name={formName} className={className} onSubmit={handleSubmit} isEditing={isEditing}>
+        <form
+          name={formName}
+          className={className}
+          onSubmit={this.handleSubmit}
+          isEditing={isEditing}
+        >
           {!isGuest && (
             <RegisteredShippingForm
               {...this.props}
@@ -293,6 +318,8 @@ class ShippingForm extends React.Component {
               labels={labels}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
+              errorMessageRef={this.editShippingErrorRef}
+              editShipmentDetailsError={editShipmentDetailsError}
             />
           )}
           {isGuest && (
@@ -369,7 +396,6 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
-            disableNext={isEditing}
           />
         </form>
       </>

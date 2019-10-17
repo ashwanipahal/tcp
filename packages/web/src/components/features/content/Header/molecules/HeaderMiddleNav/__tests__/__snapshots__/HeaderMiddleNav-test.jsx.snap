@@ -20,6 +20,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -55,10 +56,12 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -94,9 +97,14 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           }
         }
       >
+        <Connect(Styled(SearchBar))
+          className="leftLink"
+          isSearchOpen={false}
+          setSearchState={[Function]}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
-          className="leftLink"
+          className=""
           fontSizeVariation="large"
           href="#"
           id="createAccount"
@@ -118,11 +126,14 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -137,6 +148,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -146,6 +158,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0
@@ -206,6 +219,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         }
       >
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -241,10 +255,12 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
         />
         <Styled(StoreLocatorLink)
+          labels={Object {}}
           store={
             Object {
               "basicInfo": Object {
@@ -280,9 +296,14 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           }
         }
       >
+        <Connect(Styled(SearchBar))
+          className="leftLink"
+          isSearchOpen={false}
+          setSearchState={[Function]}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
-          className="leftLink"
+          className=""
           fontSizeVariation="large"
           href="#"
           id="createAccount"
@@ -304,11 +325,14 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -323,6 +347,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -332,6 +357,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0

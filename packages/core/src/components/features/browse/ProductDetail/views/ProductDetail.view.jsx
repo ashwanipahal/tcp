@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { isClient } from '@tcp/core/src/utils';
-import { Row, Col } from '../../../../common/atoms';
+import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
-import ProductDetailStyle from '../ProductDetail.style';
+import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
-import { getLocator } from '../../../../../utils';
+import { getLocator, routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
+import ProductPrice from '../molecules/ProductPrice/ProductPrice';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -23,6 +25,7 @@ import {
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
+import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 
 class ProductDetailView extends React.Component {
   constructor(props) {
@@ -36,6 +39,7 @@ class ProductDetailView extends React.Component {
         colorFitsSizesMap,
         productInfo.generalProductId
       ),
+      currentGiftCardValue: productInfo.offerPrice,
     };
   }
 
@@ -46,6 +50,88 @@ class ProductDetailView extends React.Component {
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
   };
 
+  onChangeSize = e => {
+    this.setState({ currentGiftCardValue: e });
+  };
+
+  onGoBack = e => {
+    e.preventDefault();
+    if (window.history.length > 2) window.history.back();
+    else {
+      routerPush('/', '/home');
+    }
+  };
+
+  getProductSummary = () => {
+    const { productDetails, productInfo, currency, pdpLabels } = this.props;
+    const { currentGiftCardValue } = this.state;
+    return (
+      <div className="product-summary-wrapper">
+        <Product
+          isGiftCard={productInfo.isGiftCard}
+          productDetails={productDetails}
+          currencySymbol={currency}
+        />
+        {productInfo.isGiftCard ? (
+          <div className="product-price-desktop-view">
+            <ProductPrice
+              offerPrice={parseInt(currentGiftCardValue, 10)}
+              listPrice={parseInt(currentGiftCardValue, 10)}
+              currencySymbol={currency}
+              isGiftCard={productInfo.isGiftCard}
+            />
+          </div>
+        ) : null}
+        {productInfo.isGiftCard ? (
+          <Row fullBleed className="placeholder">
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <div className="product-detail-section">{pdpLabels.promoArea}</div>
+            </Col>
+          </Row>
+        ) : null}
+      </div>
+    );
+  };
+
+  isWebEnvironment = () => {
+    return ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
+  };
+
+  getBreadCrumb = () => {
+    const { pdpLabels, productInfo, breadCrumbs } = this.props;
+    return productInfo.isGiftCard ? (
+      <div className="go-back-container">
+        <button type="button" onClick={this.onGoBack} className="button-go-back">
+          <Image src={getIconPath('medium-left-arrow')} />
+          <BodyCopy className="back-button" fontFamily="secondary" fontSize="fs16">
+            {pdpLabels.back}
+          </BodyCopy>
+        </button>
+      </div>
+    ) : (
+      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+    );
+  };
+
+  getSendAnEmailComponent = () => {
+    const { pdpLabels, productInfo } = this.props;
+    return productInfo.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null;
+  };
+
+  getProductPriceForGiftCard = () => {
+    const { productInfo, currency } = this.props;
+    const { currentGiftCardValue } = this.state;
+    return productInfo.isGiftCard ? (
+      <div className="product-price-mobile-view">
+        <ProductPrice
+          listPrice={parseInt(currentGiftCardValue, 10)}
+          offerPrice={parseInt(currentGiftCardValue, 10)}
+          currencySymbol={currency}
+        />
+      </div>
+    ) : null;
+  };
+
   render() {
     const {
       className,
@@ -53,8 +139,6 @@ class ProductDetailView extends React.Component {
       longDescription,
       shortDescription,
       itemPartNumber,
-      breadCrumbs,
-      currency,
       productInfo,
       plpLabels,
       pdpLabels,
@@ -62,8 +146,7 @@ class ProductDetailView extends React.Component {
       addToBagError,
     } = this.props;
     const currentProduct = productDetails && productDetails.get('currentProduct');
-    const isWeb =
-      ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
+    const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
@@ -74,21 +157,14 @@ class ProductDetailView extends React.Component {
         isAbTestActive: false,
         isFullSet: true,
       });
-
-      imagesToDisplay = getImagesToDisplay({
-        imagesByColor: productInfo.imagesByColor,
-        curentColorEntry: currentColorEntry,
-        isAbTestActive: false,
-        isFullSet: true,
-      });
     }
+
+    const { isGiftCard } = productInfo;
 
     return (
       <div className={className}>
         <Row>
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            {breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />}
-          </Col>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>{this.getBreadCrumb()}</Col>
         </Row>
         <Row className="placeholder product-detail-image-wrapper">
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -96,9 +172,15 @@ class ProductDetailView extends React.Component {
           </Col>
         </Row>
         <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            {isGiftCard ? (
+              <div className="product-summary-mobile-view">{this.getProductSummary()}</div>
+            ) : null}
+          </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
             <ProductImagesWrapper
               productName={productInfo.name}
+              isGiftCard={isGiftCard}
               isThumbnailListVisible={isWeb}
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
@@ -110,7 +192,10 @@ class ProductDetailView extends React.Component {
             className="product-detail-section"
             colSize={{ small: 6, medium: 4, large: 5 }}
           >
-            <Product productDetails={productDetails} currencySymbol={currency} />
+            <div className={isGiftCard ? 'product-summary-desktop-view' : ''}>
+              {this.getProductSummary()}
+            </div>
+            {this.getProductPriceForGiftCard()}
             {currentProduct && (
               <ProductAddToBagContainer
                 handleFormSubmit={handleAddToBag}
@@ -118,8 +203,11 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
                 plpLabels={plpLabels}
                 onChangeColor={this.onChangeColor}
+                customSubmitButtonStyle={customSubmitButtonStyle}
+                onChangeSize={this.onChangeSize}
               />
             )}
+
             {productInfo && currentColorEntry && (
               <ProductPickupContainer
                 productInfo={productInfo}
@@ -136,6 +224,8 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
+            <LoyaltyBanner isProductDetailView />
+            {this.getSendAnEmailComponent()}
           </Col>
         </Row>
         <Row className="placeholder">

@@ -19,6 +19,11 @@ import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 class MiniBagBody extends React.PureComponent {
   isEditing = false;
 
+  componentWillUnmount() {
+    const { resetSuccessMessage } = this.props;
+    resetSuccessMessage(false);
+  }
+
   handleItemEdit = value => {
     this.isEditing = value;
   };
@@ -180,6 +185,7 @@ class MiniBagBody extends React.PureComponent {
                 {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
               </BodyCopy>
               <AddedToBagActions
+                containerId="paypal-button-container-minibag"
                 showAddTobag={false}
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
@@ -220,6 +226,7 @@ MiniBagBody.propTypes = {
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBag: PropTypes.func.isRequired,
   onLinkClick: PropTypes.func.isRequired,
+  resetSuccessMessage: PropTypes.func.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

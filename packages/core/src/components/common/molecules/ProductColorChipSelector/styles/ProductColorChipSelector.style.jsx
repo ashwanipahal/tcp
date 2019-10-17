@@ -50,6 +50,7 @@ const styles = css`
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
       }
 
       input[type='radio']:focus {
@@ -114,6 +115,7 @@ const styles = css`
       height: 23px;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

@@ -1,1 +1,1 @@
-export { default } from './Ribbon.native';
+export { default } from './Ribbon';

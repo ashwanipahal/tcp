@@ -122,6 +122,9 @@ export default css`
 
     .l1-overlay.is-open {
       top: 70px;
+      height: 100vh;
+      left: -21.5%;
+      width: 145%;
     }
 
     .nav-bar-item-label {
@@ -206,8 +209,8 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       position: fixed;
       top: 70px;
-      left: -50%;
-      width: 200%;
+      left: 0%;
+      width: 100%;
       z-index: ${props => props.theme.zindex.zEnlargedImage};
       height: 1px;
       background-color: ${props => props.theme.colorPalette.gray[300]};

@@ -6,6 +6,7 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
+import HeaderConstants from '../../../Header/config';
 
 const HideDrawerContext = React.createContext({});
 const HideDrawerProvider = HideDrawerContext.Provider;
@@ -24,23 +25,35 @@ class L1NavItem extends React.PureComponent {
     hovered: false,
   };
 
+  timerId = '';
+
   onHover = e => {
     if (getViewportInfo().isDesktop) {
-      this.setState({
-        hovered: !e.target.classList.contains('l1-overlay'),
-      });
+      const isL1overlay = e.target.classList.contains('l1-overlay');
+      if (isL1overlay) {
+        this.setState(
+          {
+            hovered: false,
+          },
+          () => clearTimeout(this.timerId)
+        );
+      } else {
+        this.timerId = setTimeout(() => {
+          this.setState({
+            hovered: true,
+          });
+        }, HeaderConstants.l1HoverDelay);
+      }
     }
   };
 
   hideL2Nav = () => {
-    this.setState({ hovered: false });
+    this.setState({ hovered: false }, () => clearTimeout(this.timerId));
   };
 
   onMouseLeave = () => {
     if (getViewportInfo().isDesktop) {
-      this.setState({
-        hovered: false,
-      });
+      this.setState({ hovered: false }, () => clearTimeout(this.timerId));
     }
   };
 
@@ -116,7 +129,6 @@ class L1NavItem extends React.PureComponent {
             color="text.hint"
             lineHeight="lh115"
             data-locator={dataLocator}
-            tabIndex={0}
             onMouseOver={this.onHover}
             onFocus={this.onHover}
             onMouseOut={this.onMouseLeave}
@@ -124,7 +136,7 @@ class L1NavItem extends React.PureComponent {
             {...others}
           >
             <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
-              <div className="nav-bar-l1-content" role="button" tabIndex={0}>
+              <div className="nav-bar-l1-content">
                 <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
                 <span
                   className={`nav-bar-item-content ${

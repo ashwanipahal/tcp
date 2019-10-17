@@ -180,7 +180,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-jTzLTM",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -237,6 +237,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
       }
 
       input[type='radio']:focus {
@@ -313,6 +314,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       height: 23px;
     }
   }
+  ",
+                    [Function],
+                    ";
 ",
                     ";
 ",
@@ -321,7 +325,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-jTzLTM",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -330,9 +334,10 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             }
             dataLocator="addnewaddress-state"
             id="color"
+            inheritedStyles=""
             name="color"
             onChange={[MockFunction]}
-            title=":"
+            title="Color"
             width={87}
           />
         </div>
@@ -346,7 +351,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-VigVT",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -411,6 +416,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
 
       input {
         -webkit-appearance: none;
+        display: none;
       }
 
       &:before,
@@ -439,7 +445,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-VigVT",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -459,7 +465,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 },
               ]
             }
-            title=":"
+            title="Size:"
             width={49}
           />
         </div>
@@ -661,7 +667,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-gqjmRU",
+                  "componentId": "sc-jTzLTM",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -718,6 +724,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         height: 100%;
         cursor: pointer;
         -webkit-appearance: none;
+        display: none;
       }
 
       input[type='radio']:focus {
@@ -794,6 +801,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       height: 23px;
     }
   }
+  ",
+                    [Function],
+                    ";
 ",
                     ";
 ",
@@ -802,7 +812,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-gqjmRU",
+                "styledComponentId": "sc-jTzLTM",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -811,9 +821,10 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             }
             dataLocator="addnewaddress-state"
             id="color"
+            inheritedStyles=""
             name="color"
             onChange={[MockFunction]}
-            title=":"
+            title="Color"
             width={87}
           />
         </div>
@@ -827,7 +838,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-VigVT",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -892,6 +903,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
 
       input {
         -webkit-appearance: none;
+        display: none;
       }
 
       &:before,
@@ -920,7 +932,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-VigVT",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -940,7 +952,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 },
               ]
             }
-            title=":"
+            title="Size:"
             width={49}
           />
           <Styled(BodyCopy)

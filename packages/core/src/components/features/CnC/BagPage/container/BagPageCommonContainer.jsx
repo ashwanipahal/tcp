@@ -12,7 +12,10 @@ import {
   getIsSflItemRemoved,
   getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import {
   setVenmoPaymentInProgress,
   setVenmoPickupMessageState,
@@ -36,11 +39,16 @@ export class BagPageContainer extends React.Component<Props> {
     const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    this.fetchInitialActions();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { router } = this.props;
+      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+      const { router, isRegisteredUserCallDone } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+        this.fetchInitialActions();
+      }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
       if (isSfl) {
         document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
@@ -50,11 +58,13 @@ export class BagPageContainer extends React.Component<Props> {
 
   closeModal = () => {};
 
-  componentWillMount = () => {
-    const { initialActions, fetchSflData } = this.props;
-    initialActions();
-    fetchSflData();
-  };
+  fetchInitialActions() {
+    const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
+    if (isRegisteredUserCallDone) {
+      initialActions();
+      fetchSflData();
+    }
+  }
 
   render() {
     const {
@@ -80,6 +90,7 @@ export class BagPageContainer extends React.Component<Props> {
       bagStickyHeaderInterval,
       toastMessagePositionInfo,
       cartItemSflError,
+      currencySymbol,
     } = this.props;
 
     const showAddTobag = false;
@@ -108,6 +119,7 @@ export class BagPageContainer extends React.Component<Props> {
         bagStickyHeaderInterval={bagStickyHeaderInterval}
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
+        currencySymbol={currencySymbol}
       />
     );
   }
@@ -142,7 +154,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { size = 0 } = getCartOrderList(state) || {};
+  const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
@@ -160,6 +172,8 @@ const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
   };
 };
 

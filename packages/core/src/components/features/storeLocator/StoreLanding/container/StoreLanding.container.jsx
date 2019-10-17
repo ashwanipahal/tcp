@@ -20,10 +20,13 @@ export class StoreLanding extends PureComponent {
       basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    window.open(
-      `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`
-    );
+    return `https://maps.google.com/maps?daddr=${addressLine1},%20${city},%20${state},%20${zipCode}`;
   }
+
+  state = {
+    searchDone: false,
+    geoLocationEnabled: false,
+  };
 
   componentDidMount() {
     this.getFavoriteStoreInititator();
@@ -55,13 +58,22 @@ export class StoreLanding extends PureComponent {
             Promise.resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
             INITIAL_STORE_LIMIT
           );
+          this.setState({
+            geoLocationEnabled: true,
+          });
         },
         () => {
           this.initiateGetFavoriteStoreRequest();
+          this.setState({
+            geoLocationEnabled: false,
+          });
         }
       );
     } else {
       this.initiateGetFavoriteStoreRequest();
+      this.setState({
+        geoLocationEnabled: false,
+      });
     }
   };
 
@@ -80,9 +92,14 @@ export class StoreLanding extends PureComponent {
    */
   loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
     const { fetchStoresByCoordinates } = this.props;
-    coordinatesPromise.then(({ lat, lng }) =>
-      fetchStoresByCoordinates({ coordinates: { lat, lng }, maxItems, radius })
-    );
+    coordinatesPromise.then(coordinates => {
+      this.setState(
+        {
+          searchDone: true,
+        },
+        () => fetchStoresByCoordinates({ coordinates, maxItems, radius })
+      );
+    });
     return false;
   };
 
@@ -108,6 +125,7 @@ export class StoreLanding extends PureComponent {
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
+        {...this.state}
       />
     );
   }
@@ -139,6 +157,8 @@ const mapStateToProps = state => ({
   selectedCountry: getCurrentCountry(state),
   labels: getPageLabels(state),
   suggestedStoreList: state.StoreLocatorReducer && state.StoreLocatorReducer.get('suggestedStores'),
+  isStoreSearched:
+    state.StoreLocatorReducer && state.StoreLocatorReducer.get('storeSuggestionCompleted'),
   favoriteStore: state.User && state.User.get('defaultStore'),
 });
 

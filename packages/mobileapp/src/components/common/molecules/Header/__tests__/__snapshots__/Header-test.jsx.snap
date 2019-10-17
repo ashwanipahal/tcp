@@ -2,6 +2,7 @@
 
 exports[`Header Component Header should render correctly 1`] = `
 <Styled(SafeAreaView)>
+  <Connect(ToastContainer) />
   <Styled(View)
     data-locator="global_headerpanel"
   >
@@ -64,23 +65,22 @@ exports[`Header Component Header should render correctly 1`] = `
           }
         />
         <Styled(View) />
-        <Styled(View) />
         <Styled(BodyCopy)
           accessibilityText="Mini bag with count"
           color="white"
           data-locator="obal_headerpanelbagicon"
           dataLocator=""
           fontSize="fs10"
+          fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
           style={
             Object {
-              "marginTop": 18,
+              "marginTop": 19,
               "paddingRight": 5.6,
               "position": "absolute",
             }
           }
-          text={0}
           textDecoration={null}
         />
       </Styled(TouchableOpacity)>

@@ -50,6 +50,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -3965,6 +3966,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -7876,6 +7878,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -11791,6 +11794,7 @@ exports[`StoreStaticMap component resize window should update component on windo
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -12479,6 +12483,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "900": "#162f42",
           "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {

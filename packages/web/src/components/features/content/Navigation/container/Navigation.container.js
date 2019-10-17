@@ -12,7 +12,7 @@ import {
   hideAllDrawers,
 } from '@tcp/core/src/components/features/content/Navigation/container/Navigation.actions';
 import { closeNavigationDrawer } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import NavigationView from '../views/Navigation';
 
 const mapStateToProps = state => {
@@ -30,6 +30,7 @@ const mapStateToProps = state => {
     removeL1Focus: state.Navigation.removeL1Focus,
     accessibilityLabels:
       (state.Labels && state.Labels.global && state.Labels.global.accessibility) || {},
+    isDrawerOpen: state.Header.navigationDrawer && state.Header.navigationDrawer.open,
   };
 };
 

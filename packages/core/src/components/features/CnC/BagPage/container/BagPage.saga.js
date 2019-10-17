@@ -25,7 +25,10 @@ import {
   getPersonalDataState,
 } from '../../../account/User/container/User.selectors';
 import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
-import checkoutSelectors, { isRemembered } from '../../Checkout/container/Checkout.selector';
+import checkoutSelectors, {
+  isRemembered,
+  isExpressCheckout,
+} from '../../Checkout/container/Checkout.selector';
 import { isMobileApp, isCanada } from '../../../../../utils';
 
 import {
@@ -35,12 +38,17 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
-import { closeMiniBag } from '../../../../common/organisms/Header/container/Header.actions';
+import {
+  getIsInternationalShipping,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  closeMiniBag,
+  updateCartManually,
+} from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
-
-// external helper function
-const PAYPAL_REDIRECT_PARAM = 'isPaypalPostBack';
+import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
+import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -111,11 +119,13 @@ function createMatchObject(res, translatedProductInfo) {
 export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
+    yield put(updateCartManually(true));
     const res = yield call(getOrderDetailsData);
     const translatedProductInfo = yield call(getTranslatedProductInfo, res);
 
     createMatchObject(res, translatedProductInfo);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (after) {
       yield call(after);
     }
@@ -126,19 +136,12 @@ export function* getOrderDetailSaga(payload) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    const {
-      payload: {
-        isRecalculateTaxes,
-        isCheckoutFlow,
-        isCartNotRequired,
-        updateSmsInfo,
-        onCartRes,
-      } = {},
-    } = payload;
+    const { payload: { isRecalculateTaxes, isCheckoutFlow } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, onCartRes } = {} } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = true; // TODO to get current country
+    const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const isCanadaSIte = false; // TODO to get current country
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
@@ -151,7 +154,16 @@ export function* getCartDataSaga(payload = {}) {
     if (!translatedProductInfo.error) {
       createMatchObject(res, translatedProductInfo);
     }
+    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+    if (bopisItems.length) {
+      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+      res.orderDetails = {
+        ...res.orderDetails,
+        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+      };
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
       if (!personalData || !personalData.get('userId')) {
@@ -190,7 +202,23 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
+  const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   if (isMobileApp()) {
+    /** WILL UNCOMMENT AFTER confirmation of behavior from samaksh TODO-Priya */
+    // if (isExpressCheckoutEnabled || hasVenmoReviewPage) {
+    //   const navigateAction = navigationActions.navigate({
+    //     routeName: CONSTANTS.CHECKOUT_ROOT,
+    //     params: {},
+    //     action: navigationActions.navigate({
+    //       routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW,
+    //       params: {
+    //         routeTo: CONSTANTS.REVIEW_DEFAULT_PARAM,
+    //       },
+    //     }),
+    //   });
+    //   navigation.dispatch(navigateAction);
+    // } else
     if (orderHasPickup) {
       const navigateAction = navigationActions.navigate({
         routeName: CONSTANTS.CHECKOUT_ROOT,
@@ -221,8 +249,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     }
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
-    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
-    if (hasVenmoReviewPage) {
+    if (hasVenmoReviewPage || isExpressCheckoutEnabled) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
       return;
     }
@@ -316,11 +343,7 @@ export function* authorizePayPalPayment() {
   );
   if (res) {
     // redirect
-    utility.routeToPage(
-      CHECKOUT_ROUTES.reviewPage,
-      { queryValues: { [PAYPAL_REDIRECT_PARAM]: 'true' } },
-      true
-    );
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
   }
 }
 

@@ -9,6 +9,7 @@ import { API_CONFIG } from '../services/config';
 import { defaultCountries, defaultCurrencies } from '../constants/site.constants';
 import { readCookie, setCookie } from './cookie.util';
 import { ROUTING_MAP, ROUTE_PATH } from '../config/route.config';
+import googleMapConstants from '../constants/googleMap.constants';
 
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
@@ -32,6 +33,13 @@ const FIXED_HEADER = {
 
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
+};
+
+export const getUrlParameter = name => {
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
+  const results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
 export const importGraphQLQueriesDynamically = query => {
@@ -133,6 +141,10 @@ export const createUrlSearchParams = (query = {}) => {
   }
   return queryParams.join('&');
 };
+
+export function getHostName() {
+  return window.location.hostname;
+}
 
 export const buildUrl = options => {
   if (typeof options === 'object') {
@@ -340,10 +352,11 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
-  const country = siteId && siteId.toUpperCase();
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
+
+  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
+  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -352,11 +365,15 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
-    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
-    unbxdApiKey,
+
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
@@ -436,7 +453,11 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
+  const basicConfig = getAPIInfoFromEnv(
+    apiSiteInfo,
+    processEnv,
+    countryConfig && countryConfig.countryKey
+  );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
@@ -510,45 +531,6 @@ export const fetchStoreIdFromUrlPath = url => {
   return pathSplit[pathSplit.length - 1];
 };
 
-export const getModifiedLanguageCode = id => {
-  switch (id) {
-    case 'en':
-      return 'en_US';
-    case 'es':
-      return 'es_ES';
-    case 'fr':
-      return 'fr_FR';
-    default:
-      return id;
-  }
-};
-
-/**
- * @method getTranslateDateInformation
- * @desc returns day, month and day of the respective date provided
- * @param {string} date date which is to be mutated
- * @param {upperCase} locale use for convert locate formate
- */
-export const getTranslateDateInformation = (
-  date,
-  language,
-  dayOption = {
-    weekday: 'short',
-  },
-  monthOption = {
-    month: 'short',
-  }
-) => {
-  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
-  const currentDate = date ? new Date(date) : new Date();
-  return {
-    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
-    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
-    date: currentDate.getDate(),
-    year: currentDate.getFullYear(),
-  };
-};
-
 export const scrollToParticularElement = element => {
   const fixedHeaderOffset = getViewportInfo().isDesktop
     ? FIXED_HEADER.LG_HEADER
@@ -561,6 +543,13 @@ export const scrollToParticularElement = element => {
       behavior: 'smooth',
     });
   }
+};
+
+export const getDirections = address => {
+  const { addressLine1, city, state, zipCode } = address;
+  return window.open(
+    `${googleMapConstants.OPEN_STORE_DIR_WEB}${addressLine1},%20${city},%20${state},%20${zipCode}`
+  );
 };
 
 export default {
@@ -587,7 +576,6 @@ export default {
   viewport,
   fetchStoreIdFromUrlPath,
   canUseDOM,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   scrollToParticularElement,
+  getDirections,
 };

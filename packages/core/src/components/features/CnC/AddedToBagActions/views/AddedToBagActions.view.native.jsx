@@ -7,11 +7,41 @@ import {
   ActionsWrapper,
   ViewBagButton,
   CheckoutButton,
+  PaymentsButtonWrapper,
 } from '../styles/AddedToBagActions.style.native';
 import ADDEDTOBAG_CONSTANTS from '../../AddedToBag/AddedToBag.constants';
 import CheckoutModals from '../../common/organism/CheckoutModals';
+import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  getVenmoPaymentButton() {
+    const {
+      isInternationalShipping,
+      handleCartCheckout,
+      isEditingItem,
+      navigation,
+      closeModal,
+    } = this.props;
+    if (!isInternationalShipping) {
+      return (
+        <PaymentsButtonWrapper>
+          <VenmoPaymentButton
+            className="venmo-container"
+            onSuccess={() =>
+              handleCartCheckout({
+                isEditingItem,
+                navigation,
+                closeModal,
+                navigationActions: NavigationActions,
+              })
+            }
+          />
+        </PaymentsButtonWrapper>
+      );
+    }
+    return null;
+  }
+
   render() {
     const {
       labels,
@@ -68,6 +98,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </CheckoutButton>
           </ButtonWrapper>
         )}
+        {(isNoNEmptyBag || fromAddedToBagModal) && this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );

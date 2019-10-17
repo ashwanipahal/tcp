@@ -92,6 +92,7 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
+    const { creditCardId } = card;
     const cardNum = `${getLabelValue(
       labels,
       'lbl_payment_cardNum',
@@ -106,6 +107,7 @@ class CardTile extends React.Component<Props> {
       <React.Fragment>
         <BodyCopy
           component="span"
+          id={creditCardId}
           fontSize="fs14"
           fontFamily="secondary"
           fontWeight="bold"
@@ -172,10 +174,10 @@ class CardTile extends React.Component<Props> {
         {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
-            buttonVariation="variable-width"
             type="submit"
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
+            buttonVariation="variable-width"
           >
             {getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
           </Button>
@@ -237,6 +239,7 @@ class CardTile extends React.Component<Props> {
           <Anchor
             fontSizeVariation="large"
             underline
+            aria-describedby={creditCardId}
             to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
             asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
@@ -250,6 +253,7 @@ class CardTile extends React.Component<Props> {
           className="cardTile__anchor"
           fontSizeVariation="large"
           underline
+          aria-describedby={creditCardId}
           to="/#"
           anchorVariation="primary"
           dataLocator={`payment-${dataLocatorPrefix}deletelink`}
@@ -321,7 +325,6 @@ class CardTile extends React.Component<Props> {
                   {cardName}
                 </BodyCopy>
                 {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-                {isCreditCard ? getAddressDetails({ card }) : null}
               </div>
             </Col>
             <Col
@@ -338,6 +341,7 @@ class CardTile extends React.Component<Props> {
             </Col>
           </Row>
         </div>
+        {isCreditCard && <div>{getAddressDetails({ card })}</div>}
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
             <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>

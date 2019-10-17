@@ -4,6 +4,13 @@ import Anchor from '../../../../common/atoms/Anchor';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountLayout.style';
 
+const focusHandler = () => {
+  const domHeader = document.getElementsByClassName('myAccountRightView');
+  if (domHeader && domHeader[0]) {
+    domHeader[0].focus();
+  }
+};
+
 /**
  * @function getNavLink This function renders each link present in the left nav
  * @param {nav} nav Each Link data is passed in nav Object
@@ -15,6 +22,7 @@ const getNavLink = (navObj, selectedSubNav) => {
   return (
     <Anchor
       asPath={nav.url}
+      onClick={() => focusHandler()}
       to={nav.href}
       anchorVariation={selectedNav || selectedSubNav ? 'primary' : 'grayed'}
       fontSizeVariation="large"

@@ -4,6 +4,7 @@ import { change } from 'redux-form';
 import constants from '../container/CreditCard.constants';
 import Button from '../../../../../../common/atoms/Button';
 import Card from '../../../../../../common/molecules/Card';
+import { Heading } from '../../../../../../common/atoms';
 
 const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -71,6 +72,7 @@ const getCardOptions = ({
         cardNumber={`${labels.creditCardEnd}${card.accountNo.slice(-4)}`}
         labels={labels}
         selectedValue={+onFileCardKey}
+        dataLocator="cardDetailCardDropDown"
       />
     ),
   }));
@@ -86,6 +88,7 @@ const getCardOptions = ({
         fill="BLACK"
         onClick={addNewCC}
         disabled={addNewCCState || !selectedCard}
+        dataLocator="addCreditCardBtn"
       >
         {labels.addCreditBtn}
       </Button>
@@ -108,4 +111,29 @@ const onAddNewCreditCardUpdate = dispatch => {
   dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
 };
 
-export { propTypes, defaultProps, getCardOptions, onCCDropUpdateChange, onAddNewCreditCardUpdate };
+const getFormName = editMode => {
+  return editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
+};
+
+const renderBillingAddressHeading = labels => {
+  return (
+    <Heading
+      component="h3"
+      variant="listMenu"
+      className="cardDropdownHeading"
+      dataLocator="cardDropDownLbl"
+    >
+      {labels.selectFromCard}
+    </Heading>
+  );
+};
+
+export {
+  propTypes,
+  defaultProps,
+  getCardOptions,
+  onCCDropUpdateChange,
+  onAddNewCreditCardUpdate,
+  getFormName,
+  renderBillingAddressHeading,
+};

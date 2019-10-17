@@ -33,7 +33,14 @@ class ProductTabListContainer extends React.PureComponent {
         category: { cat_id: catId },
       } = item;
       const tabsMap = map;
-      tabsMap[catId] = item;
+      if (Array.isArray(catId)) {
+        catId.forEach(id => {
+          tabsMap[id] = item;
+          return tabsMap;
+        });
+      } else {
+        tabsMap[catId] = item;
+      }
       return tabsMap;
     }, {});
   };
@@ -52,15 +59,22 @@ class ProductTabListContainer extends React.PureComponent {
     });
   };
 
-  updateCategoryId(catId) {
+  updateCategoryId(categoryId) {
+    let catId = categoryId;
     if (catId) {
+      if (!Array.isArray(catId)) {
+        catId = [catId];
+      }
       const { productTabList, getProductTabListData, onProductTabChange, tabItems } = this.props;
-      const categoryItem = this.getTabItemsMap(tabItems)[catId];
+      const categoryItem = [];
+      catId.map(id => categoryItem.push(this.getTabItemsMap(tabItems)[id]));
       this.setState({ selectedCategoryId: catId });
       onProductTabChange(catId, categoryItem);
-      if (!productTabList[catId]) {
-        getProductTabListData({ categoryId: catId });
-      }
+      catId.forEach(id => {
+        if (!productTabList[id]) {
+          getProductTabListData({ categoryId: id });
+        }
+      });
     }
   }
 

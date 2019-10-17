@@ -70,6 +70,7 @@ const styles = css`
   }
   .couponCard__col {
     flex: 1;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     ${props =>
       props.isCarouselView ? `padding-right: ${props.theme.spacing.ELEM_SPACING.SM};` : ''}
   }

@@ -5,7 +5,6 @@ import { View } from 'react-native';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import {
@@ -80,7 +79,6 @@ class MyRewards extends PureComponent {
     const isSelected = selectedCoupon !== null;
     return (
       <View>
-        <ToastContainer />
         {selectedCoupon && (
           <CouponDetailModal
             labels={couponsLabels}

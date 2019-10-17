@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Venmo Payment Button should render correctly 1`] = `
+<View>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <Styled(ImageComp)
+      alt=""
+      height="15px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/venmo_logo_blue.png",
+        }
+      }
+      url=""
+      width="80px"
+    />
+  </Styled(TouchableOpacity)>
+</View>
+`;

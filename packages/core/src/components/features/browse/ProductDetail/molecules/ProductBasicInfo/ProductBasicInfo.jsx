@@ -14,6 +14,7 @@ const ProductBasicInfo = props => {
     // isBundleProduct,
     pdpUrl,
     badge,
+    isGiftCard,
     // isShowFavoriteCount,
     productInfo: {
       /* generalProductId, isInDefaultWishlist, isGiftCard, unbxdProdId: uniqueId */ name,
@@ -36,7 +37,12 @@ const ProductBasicInfo = props => {
 
   return (
     <div className="product-details-header-container">
-      <BadgeItem customFontWeight="regular" className="inline-badge-item" text={badge} />
+      <BadgeItem
+        customFontWeight="regular"
+        customFontSize={['fs10', 'fs10', 'fs10']}
+        className="inline-badge-item"
+        text={badge}
+      />
       <div className="information-container">
         {typeof pdpUrl === 'string' ? (
           <Anchor to={pdpUrl} className="product-link-title">
@@ -47,7 +53,7 @@ const ProductBasicInfo = props => {
         )}
         {/* TODO - fix it with bundle product requirement */}
         {/* {!isBundleProduct && !isGiftCard && isRatingsVisible && <ProductRating ratingsProductId={ratingsProductId} /> } */}
-        <ProductRating ratingsProductId={ratingsProductId} />
+        {!isGiftCard ? <ProductRating ratingsProductId={ratingsProductId} /> : null}
       </div>
       {/* TODO - the favourite functionality needs to be implemented here */}
       {/* {!isBundleProduct && !isGiftCard && (
@@ -65,6 +71,7 @@ ProductBasicInfo.propTypes = {
   productInfo: PropTypes.shape({}).isRequired,
   pdpUrl: PropTypes.string,
   badge: PropTypes.string,
+  isGiftCard: PropTypes.bool.isRequired,
 };
 
 ProductBasicInfo.defaultProps = {

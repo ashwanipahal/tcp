@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { TouchableOpacity, Clipboard } from 'react-native';
 import PropTypes from 'prop-types';
 import { Button, RichText } from '../../../../../../common/atoms';
 import {
@@ -37,6 +38,15 @@ const fetchTotalSavingOnOrder = (plccData = {}, approvedPLCCData = {}) => {
 };
 
 /**
+ * @function - copyToClipboard
+ *
+ * @param {*} couponCode - text data.
+ */
+const copyToClipboard = async couponCode => {
+  await Clipboard.setString(couponCode);
+};
+
+/**
  * @const getCouponBody
  *
  * @param - labels
@@ -70,16 +80,22 @@ const getCouponBody = (plccData, labels, approvedPLCCData) => {
         marginLeft="60px"
         text={approvedPLCCData && approvedPLCCData.couponCode}
       />
-      <CopyToClipBoardWrapper
-        color="gray.900"
-        fontFamily="secondary"
-        fontWeight="regular"
-        fontSize="fs18"
-        textAlign="center"
-        text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
-        paddingTop="16px"
-        paddingBottom="24px"
-      />
+      <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
+        onPress={() => copyToClipboard(approvedPLCCData.couponCode)}
+      >
+        <CopyToClipBoardWrapper
+          color="gray.900"
+          fontFamily="secondary"
+          fontWeight="regular"
+          fontSize="fs18"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
+          paddingTop="16px"
+          paddingBottom="24px"
+        />
+      </TouchableOpacity>
       <ImageContainer>
         <StyledImage source={couponImage} width="158px" height="125px" />
       </ImageContainer>
@@ -124,7 +140,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
             type="submit"
             fontWeight="regular"
             color="white"
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             onPress={() => {
               toggleModal();
@@ -139,7 +154,6 @@ const footerBottom = (plccData, labels, approvedPLCCData, bagItems, navigation, 
           fill={bagItems ? 'WHITE' : 'BLUE'}
           type="submit"
           color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
           text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           onPress={() => {
             navigation.navigate('Home');

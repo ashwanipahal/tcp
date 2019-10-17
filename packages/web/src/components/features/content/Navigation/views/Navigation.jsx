@@ -9,10 +9,13 @@ import style from '../Navigation.style';
 
 /**
  * This function closes Navigation Drawer on route change
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const handleRouteChange = closeNavigationDrawer => () => {
-  closeNavigationDrawer();
+const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
+  if (isDrawerOpen) {
+    closeNavigationDrawer();
+  }
 };
 
 /**
@@ -24,14 +27,15 @@ const handleRouteComplete = () => {
 
 /**
  * This function handler router change and complete events
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const registerRouterChangeEvent = closeNavigationDrawer => () => {
-  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+const registerRouterChangeEvent = (closeNavigationDrawer, isDrawerOpen) => () => {
+  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
   Router.events.on('routeChangeComplete', handleRouteComplete);
 
   return () => {
-    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
     Router.events.off('routeChangeComplete', handleRouteComplete);
   };
 };
@@ -47,9 +51,10 @@ const Navigation = props => {
     hideNavigationFooter,
     showCondensedHeader,
     openOverlay,
+    isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer));
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
 
   return (
     <Drawer
@@ -94,6 +99,7 @@ Navigation.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isDrawerOpen: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

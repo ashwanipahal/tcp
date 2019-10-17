@@ -143,7 +143,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
 
     if (showInBottom) {
       if (calculateHeight > dH) {
-        listHeight = dH;
+        listHeight = 250;
       } else {
         listHeight = calculateHeight;
       }
@@ -162,7 +162,6 @@ export class AddressDropdown extends React.PureComponent<Props> {
     return showButton ? (
       <Button
         fullWidth
-        buttonVariation="variable-width"
         fill="BLUE"
         text={label}
         onPress={this.openAddressBook}

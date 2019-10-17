@@ -46,6 +46,7 @@ class CheckoutFooter extends React.PureComponent {
               buttonVariation="variable-width"
               fill="BLUE"
               onClick={nextHandler}
+              dataLocator="reviewBtn"
             >
               {nextButtonText}
             </Button>
@@ -58,6 +59,7 @@ class CheckoutFooter extends React.PureComponent {
                 type="button"
                 className="back-link"
                 onClick={backLinkHandler}
+                dataLocator="returnToLink"
               >
                 <span className="left-arrow"> </span>
                 {backLinkText}
@@ -75,6 +77,7 @@ class CheckoutFooter extends React.PureComponent {
               buttonVariation="variable-width"
               fill="BLUE"
               onClick={nextHandler}
+              dataLocator="reviewBtn"
             >
               {nextButtonText}
             </Button>

@@ -73,7 +73,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -291,7 +291,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -521,7 +521,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -754,7 +754,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
