@@ -16,12 +16,38 @@ import { fetchCurrencySymbol, getLabelsFavorites } from './Favorites.selectors';
 class FavoritesContainer extends React.PureComponent {
   state = {
     selectedColorProductId: '',
+    filteredId: '',
+    sortId: '',
+    gymSelected: false,
+    tcpSelected: false,
   };
 
   componentDidMount() {
     const { loadWishList } = this.props;
     loadWishList();
   }
+
+  onFilterSelection = filteredId => {
+    this.setState({
+      filteredId,
+    });
+  };
+
+  onSortSelection = sortId => {
+    this.setState({
+      sortId,
+    });
+  };
+
+  selectBrandType = event => {
+    const {
+      target: { id, checked },
+    } = event;
+    this.setState({
+      gymSelected: id === 'gymboreeOption' && checked,
+      tcpSelected: id === 'tcpOption' && checked,
+    });
+  };
 
   openQuickViewModal = (payload, allColors) => {
     const { onQuickViewOpenClick } = this.props;
@@ -45,7 +71,7 @@ class FavoritesContainer extends React.PureComponent {
       currencySymbol,
       labels,
     } = this.props;
-    const { selectedColorProductId } = this.state;
+
     return (
       <Favorites
         wishlistsSummaries={wishlistsSummaries}
@@ -58,7 +84,10 @@ class FavoritesContainer extends React.PureComponent {
         currencySymbol={currencySymbol}
         labels={labels}
         onQuickViewOpenClick={this.openQuickViewModal}
-        selectedColorProductId={selectedColorProductId}
+        onFilterSelection={this.onFilterSelection}
+        onSortSelection={this.onSortSelection}
+        selectBrandType={this.selectBrandType}
+        {...this.state}
       />
     );
   }
