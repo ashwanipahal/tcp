@@ -275,3 +275,4 @@ ProfileInformation.defaultProps = {
 };
 
 export default withStyles(ProfileInformation, styles);
+export { ProfileInformation as ProfileInformationvanilla };
