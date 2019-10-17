@@ -93,7 +93,7 @@ class MiniBagBody extends React.PureComponent {
   };
 
   renderLoyaltyBanner = () => {
-    return <>{!isCanada() && <LoyaltyBanner />}</>;
+    return !isCanada() && <LoyaltyBanner />;
   };
 
   render() {
