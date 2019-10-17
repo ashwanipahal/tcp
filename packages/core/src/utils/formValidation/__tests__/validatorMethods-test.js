@@ -210,7 +210,7 @@ describe('validator methods', () => {
       expect(validatorMethods.userBirthday(value, param, linkedProps)).toBeTruthy();
     });
 
-    it('should return true for empty values', () => {
+    it('should return true for  empty values', () => {
       const value = null;
       const param = null;
       const linkedProps = [{}];
