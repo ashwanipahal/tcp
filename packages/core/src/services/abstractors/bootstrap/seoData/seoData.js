@@ -19,7 +19,8 @@ const Abstractor = {
   processData: data => {
     const result = {};
     data.forEach(({ path, ...rest }) => {
-      result[path] = { ...rest };
+      const seoDataKey = path.split('/')[1];
+      result[seoDataKey] = { ...rest };
     });
     return result;
   },

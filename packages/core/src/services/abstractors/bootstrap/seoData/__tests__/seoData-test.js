@@ -3,7 +3,7 @@ import mock from '../mock';
 
 jest.mock('../../../../handler/handler');
 
-it('Label Abstractor | ', () => {
+it('SEO Data Abstractor | ', () => {
   SEODataAbstractor.getData('seoData', {
     page: '/home',
     brand: 'TCP',
@@ -14,7 +14,7 @@ it('Label Abstractor | ', () => {
   });
 });
 
-it('Labels Abstractor | getMock', () => {
+it('SEO Data Abstractor | getMock', () => {
   const data = SEODataAbstractor.getMock();
   expect(data).toMatchObject(mock);
 });
