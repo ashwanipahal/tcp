@@ -60,7 +60,7 @@ class RelatedOutfits extends React.PureComponent {
             </Anchor>
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
-        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
+        {isAccordionOpen && relatedOutfits.length ? <RelatedOutfitsSlots /> : null}
       </View>
     );
   }
