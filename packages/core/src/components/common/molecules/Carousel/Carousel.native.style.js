@@ -34,7 +34,7 @@ export const ControlsWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
 `;
 
