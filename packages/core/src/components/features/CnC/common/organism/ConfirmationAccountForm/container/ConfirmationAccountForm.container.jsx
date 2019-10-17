@@ -9,6 +9,7 @@ import { getErrorMessage } from '@tcp/core/src/components/features/account/Creat
 import ConfirmationAccountForm from '../views';
 import confirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
 import confirmationAccountSelectors from './ConfirmationAccountForm.selectors';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @function ConfirmationAccountFormContainer
@@ -27,6 +28,9 @@ export const mapDispatchToProps = dispatch => {
     },
     resetAccountErrorState: () => {
       dispatch(resetCreateAccountErr());
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

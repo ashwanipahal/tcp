@@ -16,6 +16,11 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import PasswordRequirement from '@tcp/core/src/components/features/account/ResetPassword/molecules/PasswordRequirement';
 import IconInfoLogo from '@tcp/core/src/assets/info-icon.png';
 import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
+import theme from '@tcp/core/styles/themes/TCP';
+import {
   Styles,
   ParentView,
   ButtonWrapper,
@@ -29,6 +34,10 @@ import {
 } from '../styles/ConfirmationAccountForm.style.native';
 import Constants from '../../../../../account/ChangePassword/container/CurrentPassword.utils';
 
+const buttonStyle = {
+  fontWeight: theme.typography.fontWeights.extrabold,
+};
+
 /**
  * @function renderEmailAddress
  * @param {String} emailAddress
@@ -37,7 +46,7 @@ import Constants from '../../../../../account/ChangePassword/container/CurrentPa
  */
 const renderEmailAddress = (emailAddress, label) => {
   return emailAddress ? (
-    <>
+    <ViewWithSpacing spacingStyles="margin-bottom-MED">
       <BodyCopy
         textAlign="center"
         fontFamily="secondary"
@@ -47,7 +56,7 @@ const renderEmailAddress = (emailAddress, label) => {
         lineHeight="1.71"
         text={label}
       />
-      <BodyCopy
+      <BodyCopyWithSpacing
         textAlign="center"
         fontFamily="secondary"
         fontSize="fs14"
@@ -55,8 +64,9 @@ const renderEmailAddress = (emailAddress, label) => {
         color="gray[900]"
         lineHeight="1.71"
         text={emailAddress}
+        spacingStyles="margin-top-XXS"
       />
-    </>
+    </ViewWithSpacing>
   ) : (
     <Field
       label="Email Address"
@@ -76,12 +86,8 @@ const renderEmailAddress = (emailAddress, label) => {
  * @param {String} error
  * @returns {JSX} Notification component with error or success state as provided in the input params.
  */
-const renderNotification = (success, successMsg, error) => {
-  return (
-    (error || success) && (
-      <Notification status={error ? 'error' : 'success'} message={error || successMsg} />
-    )
-  );
+const renderNotification = (success, successMsg) => {
+  return success && <Notification status="success" message={successMsg} />;
 };
 
 /**
@@ -98,6 +104,13 @@ export class CreateAccountForm extends React.Component {
         Confirm: true,
       },
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const { toastMessage, createAccountError } = this.props;
+    if (createAccountError !== prevProps.createAccountError) {
+      toastMessage(createAccountError);
+    }
   }
 
   onShowHidePassword = type => {
@@ -135,7 +148,6 @@ export class CreateAccountForm extends React.Component {
       handleSubmit,
       createAccountSubmit,
       createAccountSuccess,
-      createAccountError,
       resetAccountErrorState,
       labels: {
         lbl_createAccount_emailAddress: lblEmailAddress,
@@ -155,8 +167,6 @@ export class CreateAccountForm extends React.Component {
       passwordLabels,
     } = this.props;
 
-    /* Added istanbul, as method is called via redux form */
-    /* istanbul ignore next */
     const formSubmit = formValues => {
       resetAccountErrorState();
       createAccountSubmit({
@@ -170,17 +180,17 @@ export class CreateAccountForm extends React.Component {
     return (
       <View>
         <ParentView>
-          {renderNotification(createAccountSuccess, lblSucccessMsg, createAccountError)}
-          <BodyCopy
-            textAlign="center"
-            fontFamily="primary"
-            fontSize="fs26"
-            fontWeight="black"
-            color="gray[900]"
-            lineHeight="1.71"
-            text={lblHeading}
-          />
-
+          {renderNotification(createAccountSuccess, lblSucccessMsg)}
+          <ViewWithSpacing spacingStyles="margin-bottom-MED">
+            <BodyCopy
+              textAlign="center"
+              fontFamily="primary"
+              fontSize="fs26"
+              fontWeight="regular"
+              color="gray.900"
+              text={lblHeading}
+            />
+          </ViewWithSpacing>
           {renderEmailAddress(emailAddress, lblEmailAddress)}
           {isPromptForUserDetails ? (
             <Field
@@ -222,7 +232,7 @@ export class CreateAccountForm extends React.Component {
                 width={300}
                 textAlign="left"
               >
-                <Image source={IconInfoLogo} height={10} width={10} />
+                <Image source={IconInfoLogo} height={12} width={12} />
               </ReactTooltip>
             </IconContainer>
 
@@ -262,19 +272,23 @@ export class CreateAccountForm extends React.Component {
               enableSuccessCheck={false}
             />
           )}
-          <CheckBoxContainerView>
-            <CheckBoxImage>
-              <Field
-                name="iAgree"
-                component={InputCheckbox}
-                dataLocator="i-agree-checkbox"
-                alignCheckbox="top"
-              />
-            </CheckBoxImage>
-            <CheckMessageView>
-              <RichText source={{ html: isAgreeText }} />
-            </CheckMessageView>
-          </CheckBoxContainerView>
+          <ViewWithSpacing spacingStyles="margin-top-XXL margin-bottom-XXL">
+            <CheckBoxContainerView>
+              <CheckBoxImage>
+                <Field
+                  name="iAgree"
+                  component={InputCheckbox}
+                  dataLocator="i-agree-checkbox"
+                  alignCheckbox="top"
+                  enableSuccessCheck={false}
+                />
+              </CheckBoxImage>
+              <CheckMessageView>
+                <RichText source={{ html: isAgreeText }} />
+              </CheckMessageView>
+            </CheckBoxContainerView>
+            <Field label="" component={TextBox} title="" type="hidden" id="iAgree" name="iAgree" />
+          </ViewWithSpacing>
           <ButtonWrapper>
             <Button
               buttonVariation="fixed-width"
@@ -283,6 +297,7 @@ export class CreateAccountForm extends React.Component {
               data-locator="create-account-btn"
               text={lblSubmitButton}
               onPress={handleSubmit(formSubmit)}
+              customTextStyle={buttonStyle}
             />
           </ButtonWrapper>
         </ParentView>
@@ -329,6 +344,7 @@ CreateAccountForm.propTypes = {
     lbl_createAccount_heading: PropTypes.string,
   }),
   passwordLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func.isRequired,
 };
 
 CreateAccountForm.defaultProps = {

@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components';
 
 const Styles = css`
-  padding: 2px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
 const ParentView = styled.View`
-  margin: 28px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const ButtonWrapper = styled.View``;
 
 const AlreadyAccountWrapper = styled.View`
-  padding-top: 16px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const PasswordWrapper = styled.View`
@@ -21,7 +21,7 @@ const PasswordWrapper = styled.View`
 const HideShowField = styled.View`
   position: absolute;
   right: 0;
-  top: 16px;
+  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom-width: 1px;
   border-bottom-color: black;
 `;
@@ -30,26 +30,10 @@ const ConfirmPasswordWrapper = styled.View`
   position: relative;
 `;
 
-const HideShowFieldStyle = props =>
-  `
-  width:${props.theme.spacing.ELEM_SPACING.XL};
-  background: ${props.theme.colorPalette.white};
-  height:18px; /* 18px not available in spacing variable*/
-  position: absolute;
-  right: 0;
-  top:18px; /* 18px not available in spacing variable */
-  border-bottom-width: 1px;
-  border-bottom-color: black;
-  `;
-
-const ConfirmHideShowField = styled.View`
-  ${HideShowFieldStyle}
-`;
-
 const IconContainer = styled.View`
   position: absolute;
-  right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  top: -${props => props.theme.spacing.ELEM_SPACING.SM};
+  right: ${props => props.theme.fonts.fontSize.anchor.medium / 2}px;
+  top: 0px;
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
@@ -59,14 +43,20 @@ const CheckBoxContainerView = styled.View`
 `;
 
 const CheckBoxImage = styled.View`
-  width: 40px;
-  height: 40px;
+  width: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
 `;
 
 const CheckMessageView = styled.View`
   width: 80%;
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
 `;
+
+const FieldContainer = styled.View`
+  margin-top: 12px;
+`;
+
 export {
   Styles,
   ParentView,
@@ -75,9 +65,9 @@ export {
   PasswordWrapper,
   HideShowField,
   ConfirmPasswordWrapper,
-  ConfirmHideShowField,
   IconContainer,
   CheckBoxContainerView,
   CheckBoxImage,
   CheckMessageView,
+  FieldContainer,
 };
