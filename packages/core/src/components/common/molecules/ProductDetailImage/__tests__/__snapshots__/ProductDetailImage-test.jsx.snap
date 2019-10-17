@@ -7,42 +7,17 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
   itemType="http://schema.org/ImageObject"
   title=""
 >
-  <ReactImageMagnify
+  <WithTheme(DamImage)
+    className="full-size-desktop-image"
     data-locator="pdp_main_image"
-    enlargedImageContainerClassName="enlarged-image-wrapper"
-    enlargedImageContainerDimensions={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
-    }
-    enlargedImagePortalId="portal"
-    fadeDurationInMs={300}
-    hintComponent={[Function]}
-    hintTextMouse="Hover to Zoom"
-    hintTextTouch="Long-Touch to Zoom"
-    hoverDelayInMs={250}
-    hoverOffDelayInMs={150}
-    isActivatedOnTouch={false}
-    isEnlargedImagePortalEnabledForTouch={false}
-    isHintEnabled={false}
-    largeImage={
+    imgData={
       Object {
         "alt": "",
-        "height": 900,
-        "src": "",
-        "width": 900,
+        "url": "",
       }
     }
-    shouldHideHintAfterFirstActivation={true}
-    shouldUsePositiveSpaceLens={false}
-    smallImage={
-      Object {
-        "alt": "",
-        "isFluidWidth": true,
-        "src": "",
-      }
-    }
+    isProductImage={true}
+    itemProp="contentUrl"
   />
   <Measure
     name="hero_visible"
