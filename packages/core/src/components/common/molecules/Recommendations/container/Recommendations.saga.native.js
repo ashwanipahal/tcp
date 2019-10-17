@@ -5,7 +5,6 @@ import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
 import logger from '../../../../../utils/loggerInstance';
 
 function* fetchRecommendationsData() {
-  console.log('saga');
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, {
       pageType: 'pdp',

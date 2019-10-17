@@ -26,35 +26,17 @@ const RecommendationsAbstractor = {
   getRecs: resolve => event => {
     const { recs, title } = RecommendationsAbstractor.formatResponseRecommendation(event);
 
-    const recommendations = recs
-      .filter(rec => rec.availability === 'In Stock')
-      .map(rec => ({
-        generalProductId: rec.id.replace(/_(US|CA)$/, ''),
-        pdpUrl: rec.pdpURL,
-        department: rec.department,
-        name: rec.name,
-        imagePath: rec.imagePath,
-      }));
+    // const recommendations = recs
+    //   .filter(rec => rec.availability === 'In Stock')
+    //   .map(rec => ({
+    //     generalProductId: rec.id.replace(/_(US|CA)$/, ''),
+    //     pdpUrl: rec.pdpURL,
+    //     department: rec.department,
+    //     name: rec.name,
+    //     imagePath: rec.imagePath,
+    //   }));
 
-    return resolve(
-      RecommendationsAbstractor.getProductsPrices(
-        recommendations.map(recommendation => recommendation.generalProductId)
-      ).then(prices => {
-        return {
-          products: recommendations
-            .filter(recommendation => {
-              return typeof prices[recommendation.generalProductId] !== 'undefined';
-            })
-            .map(recommendation => {
-              return {
-                ...recommendation,
-                ...prices[recommendation.generalProductId],
-              };
-            }),
-          mainTitle: title,
-        };
-      })
-    );
+    return resolve(RecommendationsAbstractor.parseProductResponse(recs, title));
   },
   getMcmId: () => {
     let mcmid;
@@ -67,6 +49,37 @@ const RecommendationsAbstractor = {
 
     return mcmid;
   },
+
+  parseProductResponse: (products, title) => {
+    const recommendations = products
+      .filter(product => product.availability === 'In Stock')
+      .map(product => ({
+        generalProductId: product.id.replace(/_(US|CA)$/, ''),
+        pdpUrl: product.pdpURL,
+        department: product.department,
+        name: product.name,
+        imagePath: product.imagePath,
+      }));
+
+    return RecommendationsAbstractor.getProductsPrices(
+      recommendations.map(recommendation => recommendation.generalProductId)
+    ).then(prices => {
+      return {
+        products: recommendations
+          .filter(recommendation => {
+            return typeof prices[recommendation.generalProductId] !== 'undefined';
+          })
+          .map(recommendation => {
+            return {
+              ...recommendation,
+              ...prices[recommendation.generalProductId],
+            };
+          }),
+        mainTitle: title,
+      };
+    });
+  },
+
   getData: ({
     itemPartNumber,
     page,
@@ -131,14 +144,11 @@ const RecommendationsAbstractor = {
           region,
         },
       },
-    })
-      .then(result => {
-        logger.info('result', result);
-        return result;
-      })
-      .error(e => {
-        logger.error(e);
-      });
+    }).then(result => {
+      return RecommendationsAbstractor.parseProductResponse(
+        result.body ? JSON.parse(result.body.content) : []
+      );
+    });
   },
   handleValidationError: e => {
     logger.error(e);

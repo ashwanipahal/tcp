@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native';
 
 const ListContainer = styled.View`
-  width: 50%;
-  min-height: 412;
+  width: ${props => (props.fullWidth ? '100%' : '50%')};
+  ${props => (!props.fullWidth ? `min-height: 412;` : ``)}
   background: white;
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;

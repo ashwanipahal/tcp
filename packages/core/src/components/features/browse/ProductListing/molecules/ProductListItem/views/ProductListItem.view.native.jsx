@@ -50,29 +50,41 @@ const ListItem = props => {
     isPlcc,
     onGoToPDPPage,
     onQuickViewOpenClick,
+    fullWidth,
+    renderPriceAndBagOnly,
   } = props;
+
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
+
+  // if (renderPriceAndBagOnly) {
+  //   return (
+  //     <RenderPriceAndBagOnlyVariation {...props} />
+  //   );
+  // }
+
   return (
-    <ListContainer accessible>
-      <RenderTopBadge1 text={badge1} />
+    <ListContainer accessible fullWidth={fullWidth}>
+      {!renderPriceAndBagOnly && <RenderTopBadge1 text={badge1} />}
       <ImageSection
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
       />
-      <RenderBadge2 text={badge2} />
+      {!renderPriceAndBagOnly && <RenderBadge2 text={badge2} />}
       <RenderPricesSection
         onFavorite={onFavorite}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
       />
-      <RenderTitle text={name} />
-      <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      {loyaltyPromotionMessage ? (
+      {!renderPriceAndBagOnly && <RenderTitle text={name} />}
+      {!renderPriceAndBagOnly && (
+        <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
+      )}
+      {!renderPriceAndBagOnly && loyaltyPromotionMessage ? (
         <PromotionalMessage
           isPlcc={isPlcc}
           text={loyaltyPromotionMessage}
@@ -201,6 +213,8 @@ ListItem.propTypes = {
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
+  fullWidth: PropTypes.bool,
+  renderPriceAndBagOnly: PropTypes.bool,
 };
 
 ListItem.defaultProps = {
@@ -211,6 +225,8 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onFavorite: () => {},
   isPlcc: false,
+  fullWidth: false,
+  renderPriceAndBagOnly: false,
 };
 
 export default withStyles(ListItem, styles);
