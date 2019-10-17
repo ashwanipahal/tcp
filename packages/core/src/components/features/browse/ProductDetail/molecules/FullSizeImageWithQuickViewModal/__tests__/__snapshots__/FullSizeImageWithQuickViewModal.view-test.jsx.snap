@@ -80,9 +80,7 @@ exports[`FullSizeImageWithQuickViewModal component should renders correctly 1`] 
     <form
       noValidate={true}
     >
-      <Styled(Row)
-        className="edit-form-css"
-      >
+      <Styled(Row)>
         <Styled(Col)
           colSize={
             Object {
