@@ -887,7 +887,7 @@ export const getOrderGroupLabelAndMessage = orderProps => {
  */
 export const changeImageURLToDOM = (img, cropParams) => {
   let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1) {
+  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
     const imgArr = imageUrl.split('/');
     const productPartId = imgArr.slice(-1);
     const productArr = productPartId[0].split('_');
