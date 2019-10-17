@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Modal,
-  StatusBar,
-  SafeAreaView,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+import { Modal, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -126,7 +119,6 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
               >
                 <Heading>
                   <ToastContainer shouldShowSafeArea={false} />
-                  <StatusBar hidden />
                   <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
                     {heading && (
                       <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
