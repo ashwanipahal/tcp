@@ -99,7 +99,7 @@ const ProductListView = ({
             />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <SpotlightContainer categoryId={categoryId} />
+            {categoryId ? <SpotlightContainer categoryId={categoryId} /> : null}
           </Col>
         </Col>
       </Row>

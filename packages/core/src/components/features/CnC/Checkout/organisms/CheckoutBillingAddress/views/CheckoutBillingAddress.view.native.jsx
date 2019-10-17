@@ -115,7 +115,7 @@ class CheckoutAddress extends React.Component {
           mobileFontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"
-          dataLocator="billing-payment-billingAddress"
+          dataLocator="billingAddressLbl"
           text={labels.billingAddress}
         />
       </BillingAddWrapper>
@@ -207,6 +207,7 @@ class CheckoutAddress extends React.Component {
             fontSize="fs16"
             onChange={this.onSameAsShippingChange}
             rightText={labels.sameAsShipping}
+            dataLocator="sameShiAddChkBox"
           />
         </SameAsShippingWrapper>
         {this.getAddressSection()}
@@ -242,6 +243,7 @@ class CheckoutAddress extends React.Component {
       label: addressFormLabels.addNewAddressSign,
       content: '',
       primary: false,
+      dataLocator: 'billingAddressBtn',
     });
 
     return addressOptions.valueSeq().toArray();
@@ -310,10 +312,16 @@ class CheckoutAddress extends React.Component {
               selectedValue={selectedOnFileAddressId}
               labels={{ common: { lbl_common_tapClose: 'close' } }}
               disableBtn={isAddNewAddress}
+              dataLocator="billingAddDropDown"
             />
           </AddressDropdownWrapper>
           {!isAddNewAddress && (
-            <Address showCountry={false} showPhone={false} address={selectedAddress} />
+            <Address
+              showCountry={false}
+              showPhone={false}
+              address={selectedAddress}
+              dataLocator="billingAddDetail"
+            />
           )}
         </>
       )

@@ -6,7 +6,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
 >
   <Styled(Row)
     className="elem-mb-SM elem-mt-SM"
-    fullbleed={true}
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -78,7 +78,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
-        textAlign="left"
+        textAlign="center"
       >
         5
       </Styled(BodyCopy)>
@@ -86,7 +86,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-SM"
-    fullbleed={true}
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -166,7 +166,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   </Styled(Row)>
   <Styled(Row)
     className="elem-mt-XXL elem-mt-XXS"
-    fullbleed={true}
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={

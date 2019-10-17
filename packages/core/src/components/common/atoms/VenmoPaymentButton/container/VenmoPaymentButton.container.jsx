@@ -77,7 +77,7 @@ const mapStateToProps = state => {
     mode: venmoPaymentTokenAvailable === 'TRUE' ? modes.PAYMENT_TOKEN : modes.CLIENT_TOKEN,
     authorizationKey,
     isNonceNotExpired: selectors.isVenmoNonceNotExpired(state),
-    venmoData: selectors.getVenmoData(),
+    venmoData: selectors.getVenmoData(state),
     venmoClientTokenData,
     allowNewBrowserTab: true,
     isGuest: isGuestUser(state),
