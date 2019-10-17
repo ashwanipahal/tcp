@@ -14,7 +14,7 @@ exports[`Venmo Payment Button Container should render VenmoPaymentButton correct
   onSuccess={[MockFunction]}
   onVenmoPaymentButtonClick={[Function]}
   onVenmoPaymentButtonError={[Function]}
-  orderId={3000332630}
+  orderId="3000332630"
   setVenmoData={[Function]}
   setVenmoDataAction={[MockFunction]}
   setVenmoPaymentInProgress={[MockFunction]}
@@ -52,7 +52,7 @@ exports[`Venmo Payment Button Container should render correctly 1`] = `
   onSuccess={[MockFunction]}
   onVenmoPaymentButtonClick={[Function]}
   onVenmoPaymentButtonError={[Function]}
-  orderId={3000332630}
+  orderId="3000332630"
   setVenmoData={[Function]}
   setVenmoDataAction={[MockFunction]}
   setVenmoPaymentInProgress={[MockFunction]}
