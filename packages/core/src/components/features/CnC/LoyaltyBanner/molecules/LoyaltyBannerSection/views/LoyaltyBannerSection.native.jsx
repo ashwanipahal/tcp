@@ -1,8 +1,3 @@
-/* eslint-disable sonarjs/no-duplicated-branches */
-/* eslint-disable sonarjs/no-all-duplicated-branches */
-/* eslint-disable max-statements */
-/* eslint-disable no-lonely-if */
-/* eslint-disable complexity */
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
@@ -38,14 +33,6 @@ const renderLearnMoreLink = labels => {
     />
   );
 };
-
-// const loyaltyBannerLabelsObject = () => {
-//   const obj = {
-//     isReviewPage : {
-
-//     }
-//   };
-// };
 
 const LoyaltyBannerSection = props => {
   const {
