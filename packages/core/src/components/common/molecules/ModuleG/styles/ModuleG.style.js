@@ -7,8 +7,6 @@ export default css`
   .wrapper {
     position: relative;
     overflow: hidden;
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 
   .moduleG__carousel-wrapper {
@@ -105,6 +103,27 @@ export default css`
     }
   }
   .carousel-bottom-link {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-align: center;
+  }
+
+  .promo-header a:nth-child(1) {
+    > .link-text {
+      margin-bottom: 0;
+    }
+  }
+
+  .shopall_footerlink {
+    font-size: ${props => props.theme.fonts.fontSize.promo1.small}px;
+  }
+
+  .right_chevron_arrow {
+    margin-left: 9px;
+  }
+
+  .promo-header a:nth-child(2) {
+    > .link-text {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
   }
 `;

@@ -179,7 +179,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         </Row>
         {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
         {showAddToBagCTA && (
-          <Row fullBleed>
+          <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
                 <Button
