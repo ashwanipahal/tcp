@@ -2429,7 +2429,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           <Styled(SortSelector)
             defaultPlaceholder=""
             isMobile={false}
-            onChange={[Function]}
             sortSelectOptions={
               Array [
                 Object {
@@ -3058,8 +3057,15 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
               Array [
                 [Function],
               ],
+              Array [
+                [Function],
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
               Object {
                 "type": "return",
                 "value": undefined,
