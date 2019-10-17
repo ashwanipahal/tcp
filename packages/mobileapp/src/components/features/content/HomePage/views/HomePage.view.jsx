@@ -21,8 +21,8 @@ import {
   ModuleT,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
-import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+// import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
+// import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
@@ -90,7 +90,7 @@ class HomePageView extends React.PureComponent<Props> {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        {/* <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} /> */}
         <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
         <Recommendations variation="moduleO,moduleP" />
       </LazyloadScrollView>

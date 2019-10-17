@@ -262,26 +262,16 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     onSnapToItem(index);
   };
 
-  getSliderWidth = () => {
-    const { sliderWidth, hasParallaxImages, width } = this.props;
+  getSliderWidth = width => {
+    const { sliderWidth } = this.props;
 
-    let carouselWidth = width - 64;
-    if (hasParallaxImages) {
-      carouselWidth = width - 80;
-    }
-
-    return sliderWidth || carouselWidth;
+    return sliderWidth || width;
   };
 
-  getItemWidth = () => {
-    const { itemWidth, hasParallaxImages, width } = this.props;
+  getItemWidth = width => {
+    const { itemWidth } = this.props;
 
-    let carouselWidth = width - 64;
-    if (hasParallaxImages) {
-      carouselWidth = width - 80;
-    }
-
-    return itemWidth || carouselWidth;
+    return itemWidth || width;
   };
 
   updateRef(ref, name) {
@@ -366,8 +356,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               data={data}
               onSnapToItem={this.onSnapToItemHandler}
               renderItem={renderItem}
-              sliderWidth={this.getSliderWidth()}
-              itemWidth={this.getItemWidth()}
+              sliderWidth={this.getSliderWidth(carouselWidth)}
+              itemWidth={this.getItemWidth(carouselWidth)}
               sliderHeight={height}
               itemHeight={height}
               slideStyle={slideStyle}
@@ -401,8 +391,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           onSnapToItem={this.onSnapToItemHandler}
           data={data}
           renderItem={renderItem}
-          sliderWidth={this.getSliderWidth()}
-          itemWidth={hasParallaxImages ? carouselWidth : this.getItemWidth()}
+          sliderWidth={this.getSliderWidth(width)}
+          itemWidth={
+            hasParallaxImages ? this.getItemWidth(carouselWidth) : this.getItemWidth(width)
+          }
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}

@@ -90,7 +90,6 @@ const fetchRecommendations = loadRecommendations => () => {
 
 const Recommendations = props => {
   const { variation, loadRecommendations } = props;
-
   const variationArray = variation.split(',');
 
   useEffect(fetchRecommendations(loadRecommendations));

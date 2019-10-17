@@ -59,15 +59,47 @@ const ListItem = props => {
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
 
+  if (renderPriceAndBagOnly) {
+    return (
+      <ListContainer accessible fullWidth={fullWidth} renderPriceAndBagOnly={renderPriceAndBagOnly}>
+        <ImageSection
+          item={item}
+          selectedColorIndex={selectedColorIndex}
+          onGoToPDPPage={onGoToPDPPage}
+        />
+        <RenderPricesSection
+          hideFavorite={renderPriceAndBagOnly}
+          onFavorite={onFavorite}
+          miscInfo={miscInfo}
+          currencyExchange={currencyExchange}
+          currencySymbol={currencySymbol}
+        />
+        <AddToBagContainer>
+          <CustomButton
+            fill="BLUE"
+            type="button"
+            buttonVariation="variable-width"
+            data-locator=""
+            text="ADD TO BAG"
+            onPress={() => {
+              handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
+            }}
+            accessibilityLabel="add to bag"
+          />
+        </AddToBagContainer>
+      </ListContainer>
+    );
+  }
+
   return (
-    <ListContainer accessible fullWidth={fullWidth} renderPriceAndBagOnly={renderPriceAndBagOnly}>
-      {!renderPriceAndBagOnly && <RenderTopBadge1 text={badge1} />}
+    <ListContainer accessible fullWidth={fullWidth}>
+      <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
       />
-      {!renderPriceAndBagOnly && <RenderBadge2 text={badge2} />}
+      <RenderBadge2 text={badge2} />
       <RenderPricesSection
         hideFavorite={renderPriceAndBagOnly}
         onFavorite={onFavorite}
@@ -75,11 +107,9 @@ const ListItem = props => {
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
       />
-      {!renderPriceAndBagOnly && <RenderTitle text={name} />}
-      {!renderPriceAndBagOnly && (
-        <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
-      )}
-      {!renderPriceAndBagOnly && loyaltyPromotionMessage ? (
+      <RenderTitle text={name} />
+      <ColorSwitch colorsMap={colorsMap} setSelectedColorIndex={setSelectedColorIndex} />
+      {loyaltyPromotionMessage ? (
         <PromotionalMessage
           isPlcc={isPlcc}
           text={loyaltyPromotionMessage}
@@ -147,7 +177,7 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange, currencySymbol, onFavorite } = values;
+  const { miscInfo, currencyExchange, currencySymbol, onFavorite, hideFavorite } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${(
@@ -163,9 +193,16 @@ const RenderPricesSection = values => {
         <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
           {offerPriceForColor}
         </ListPrice>
-        <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-          <CustomIcon name={ICON_NAME.favorite} size="fs21" color="gray.600" onPress={onFavorite} />
-        </FavoriteIconContainer>
+        {hideFavorite && (
+          <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
+            <CustomIcon
+              name={ICON_NAME.favorite}
+              size="fs21"
+              color="gray.600"
+              onPress={onFavorite}
+            />
+          </FavoriteIconContainer>
+        )}
       </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
         {listPriceForColor !== offerPriceForColor && (

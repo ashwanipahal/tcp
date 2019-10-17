@@ -25,17 +25,6 @@ const RecommendationsAbstractor = {
   // event listener callback that sets recommendations and clears itself
   getRecs: resolve => event => {
     const { recs, title } = RecommendationsAbstractor.formatResponseRecommendation(event);
-
-    // const recommendations = recs
-    //   .filter(rec => rec.availability === 'In Stock')
-    //   .map(rec => ({
-    //     generalProductId: rec.id.replace(/_(US|CA)$/, ''),
-    //     pdpUrl: rec.pdpURL,
-    //     department: rec.department,
-    //     name: rec.name,
-    //     imagePath: rec.imagePath,
-    //   }));
-
     return resolve(RecommendationsAbstractor.parseProductResponse(recs, title));
   },
   getMcmId: () => {
