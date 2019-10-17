@@ -9,6 +9,7 @@ import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteCon
 class ModalsCheckout extends React.PureComponent<Props> {
   routeToCheckout = e => {
     const { routeForBagCheckout, closeCheckoutModalMountState, closeMiniBagDispatch } = this.props;
+    /* istanbul ignore else */
     if (e) {
       e.preventDefault();
     }
