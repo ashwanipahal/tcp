@@ -7,6 +7,7 @@ import GlobalNavigationMenuDesktopL2 from '../../ProductListing/molecules/Global
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ReadMore from '../../ProductListing/molecules/ReadMore/views';
 import SpotlightContainer from '../../ProductListing/molecules/Spotlight/container/Spotlight.container';
+import OutfitTileSection from '../OutfitTileSection.view';
 
 const OutfitListingView = ({
   className,
@@ -18,6 +19,7 @@ const OutfitListingView = ({
   currentNavIds,
   longDescription,
   categoryId,
+  asPath,
 }) => {
   return (
     <>
@@ -42,7 +44,7 @@ const OutfitListingView = ({
           </Col>
         </Row>
         <Row>
-          <Col colSize={{ small: 6, medium: 8, large: 2 }}>
+          <Col hideCol={{ small: true, medium: true }} colSize={{ small: 6, medium: 8, large: 2 }}>
             <div className="sidebar">
               <GlobalNavigationMenuDesktopL2
                 navigationTree={navTree}
@@ -52,6 +54,7 @@ const OutfitListingView = ({
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <OutfitTileSection asPath={asPath} outfitDetails={outfitDetails} />
               {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -80,6 +83,7 @@ OutfitListingView.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
+  asPath: PropTypes.string,
 };
 
 OutfitListingView.defaultProps = {
@@ -90,6 +94,7 @@ OutfitListingView.defaultProps = {
   currentNavIds: [],
   longDescription: '',
   categoryId: '',
+  asPath: '',
 };
 
 export default withStyles(OutfitListingView, OutfitListingStyle);
