@@ -100,6 +100,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
       );
     };
 
+    const lblTrySearching = slpLabels.lbl_try_searching.split('(');
+
     return (
       <PageContainer>
         {this.renderSearchTopSection()}
@@ -154,7 +156,14 @@ class NoResponseSearchDetailView extends React.PureComponent {
           fontFamily="secondary"
           fontSize="fs12"
           color="gray.1000"
-          text={`${slpLabels.lbl_try_searching}`}
+          text={`${lblTrySearching[0]}`}
+        />
+        <BodyCopy
+          dataLocator="slp_store_name_value"
+          fontFamily="secondary"
+          fontSize="fs12"
+          color="gray.1000"
+          text={`(${lblTrySearching[1]}`}
         />
         <BodyCopy
           dataLocator="slp_store_name_value"
