@@ -37,7 +37,7 @@ describe('Venmo Payment Button', () => {
     },
     allowNewBrowserTab: true,
     isGuest: false,
-    orderId: '3000332630',
+    orderId: 3000332630,
     setVenmoPaymentInProgress: jest.fn(),
     getVenmoPaymentTokenAction: jest.fn(),
     setVenmoDataAction: jest.fn(),
