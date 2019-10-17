@@ -108,24 +108,26 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           }
         />
       </StyledRowDataContainer>
-      {!!totalTax && (
-        <StyledRowDataContainer>
-          <BodyCopyWithSpacing
-            fontFamily="primary"
-            fontSize="fs14"
-            textAlign="left"
-            spacingStyles="margin-top-XS margin-bottom-XS"
-            text={`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
-          />
-          <BodyCopyWithSpacing
-            fontFamily="primary"
-            fontSize="fs14"
-            textAlign="left"
-            spacingStyles="margin-top-XS margin-bottom-XS"
-            text={`${currencySymbol}${totalTax.toFixed(2)}`}
-          />
-        </StyledRowDataContainer>
-      )}
+      <StyledRowDataContainer>
+        <BodyCopyWithSpacing
+          fontFamily="primary"
+          fontSize="fs14"
+          textAlign="left"
+          spacingStyles="margin-top-XS margin-bottom-XS"
+          text={`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
+        />
+        <BodyCopyWithSpacing
+          fontFamily="primary"
+          fontSize="fs14"
+          textAlign="left"
+          spacingStyles="margin-top-XS margin-bottom-XS"
+          text={
+            !totalTax
+              ? `${currencySymbol}${getLabelValue(ordersLabels, 'lbl_orders_freeAmount')}`
+              : `${currencySymbol}${totalTax.toFixed(2)}`
+          }
+        />
+      </StyledRowDataContainer>
       <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
       {!!grandTotal && (
         <StyledRowDataContainer>
@@ -133,6 +135,7 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
             fontFamily="primary"
             fontSize="fs14"
             textAlign="left"
+            fontWeight="semibold"
             spacingStyles="margin-top-XS margin-bottom-XS"
             text={`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
           />
@@ -140,6 +143,7 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
             fontFamily="primary"
             fontSize="fs14"
             textAlign="left"
+            fontWeight="semibold"
             spacingStyles="margin-top-XS margin-bottom-XS"
             text={`${currencySymbol}${grandTotal.toFixed(2)}`}
           />

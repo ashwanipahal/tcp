@@ -1,122 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Order Summary Details component if orderDetails Data is not available 1`] = `
-<View>
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      fontWeight="semibold"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-MED margin-bottom-XS"
-      text="lbl_orderDetails_orderSummary"
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      fontWeight="semibold"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-MED margin-bottom-XS"
-      text="lbl_orders_orderTotal"
-      textAlign="left"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="lbl_orders_items (undefined):"
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="undefinedNaN"
-      textAlign="left"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="lbl_orders_couponsPromotions:"
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="undefinedNaN"
-      textAlign="left"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="lbl_orderDetails_shipping:"
-      textAlign="left"
-      textDecoration={null}
-    />
-    <Styled(Styled(BodyCopy))
-      accessibilityText=""
-      dataLocator=""
-      fontFamily="primary"
-      fontSize="fs14"
-      margin={null}
-      numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
-      text="lbl_orders_free"
-      textAlign="left"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <Styled(LineComp)
-    borderColor="gray.600"
-    borderWidth={1}
-    marginBottom={10}
-    marginTop={10}
-  />
-</View>
-`;
-
 exports[`Order Summary Details component should render correctly for valid coupon and promotion amount 1`] = `
 <View>
   <Styled(View)>
@@ -263,6 +146,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"
@@ -275,6 +159,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"
@@ -432,6 +317,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"
@@ -444,6 +330,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"
@@ -601,6 +488,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"
@@ -613,6 +501,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       dataLocator=""
       fontFamily="primary"
       fontSize="fs14"
+      fontWeight="semibold"
       margin={null}
       numberOfLines={null}
       spacingStyles="margin-top-XS margin-bottom-XS"

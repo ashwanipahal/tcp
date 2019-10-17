@@ -19,15 +19,6 @@ describe('Order Summary Details component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('if orderDetails Data is not available', () => {
-    const props = {
-      ordersLabels: {},
-      orderDetailsData: {},
-    };
-    const component = shallow(<OrderSummaryDetails {...props} />);
-    expect(component).toMatchSnapshot();
-  });
-
   it('should renders correctly with free shipping', () => {
     const props = {
       ordersLabels: {},

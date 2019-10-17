@@ -89,20 +89,22 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
           </BodyCopy>
         </Col>
       </Row>
-      {totalTax && (
-        <Row className="items-total elem-mb-XS">
-          <Col colSize={{ large: 7, medium: 4, small: 3 }}>
-            <BodyCopy fontFamily="secondary" fontSize="fs14">
-              {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 5, medium: 4, small: 3 }}>
-            <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
-              {`${currencySymbol}${totalTax.toFixed(2)}`}
-            </BodyCopy>
-          </Col>
-        </Row>
-      )}
+
+      <Row className="items-total elem-mb-XS">
+        <Col colSize={{ large: 7, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14">
+            {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
+          </BodyCopy>
+        </Col>
+        <Col colSize={{ large: 5, medium: 4, small: 3 }}>
+          <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="right">
+            {totalTax
+              ? `${currencySymbol}${totalTax.toFixed(2)}`
+              : `${currencySymbol}${getLabelValue(ordersLabels, 'lbl_orders_freeAmount')}`}
+          </BodyCopy>
+        </Col>
+      </Row>
+
       {grandTotal && (
         <Row className="elem-mb-XS total-value">
           <Col colSize={{ large: 7, medium: 4, small: 3 }}>
