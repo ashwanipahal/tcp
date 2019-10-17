@@ -13,6 +13,7 @@ import Address from '../../../../../../../../common/molecules/Address';
 import Button from '../../../../../../../../common/atoms/Button';
 import AddEditShippingAddressModal from '../../../../../molecules/AddEditShippingAddressModal';
 import { getLabelValue } from '../../../../../../../../../utils';
+import ErrorMessage from '../../../../../../common/molecules/ErrorMessage';
 import {
   getSelectedAddress,
   getDefaultShippingDisabledState,
@@ -347,14 +348,17 @@ class RegisteredShippingForm extends React.Component {
     return disabledState;
   };
 
-  renderActionButtons = () => {
+  renderActionButtons = (errorMessageRef, editShipmentDetailsError) => {
     const { modalState, labels } = this.props;
     const cancelAction = getCancelAction({
       ...this.props,
       toggleEditingMode: this.toggleEditingMode,
     });
     return (
-      <>
+      <div ref={errorMessageRef}>
+        {editShipmentDetailsError && (
+          <ErrorMessage error={editShipmentDetailsError} className="edit-shipping-error" />
+        )}
         <Row
           fullBleed
           className={`elem-mt-XL edit-cta ${modalState ? 'elem-mb-LRG top-border' : ''}`}
@@ -388,19 +392,28 @@ class RegisteredShippingForm extends React.Component {
             </Button>
           </Col>
         </Row>
-      </>
+      </div>
     );
   };
 
   render() {
-    const { isEditing, className, modalState, modalType, toggleAddEditModal, labels } = this.props;
+    const {
+      isEditing,
+      className,
+      modalState,
+      modalType,
+      toggleAddEditModal,
+      labels,
+      errorMessageRef,
+      editShipmentDetailsError,
+    } = this.props;
     return (
       <div className={className} isEditing={isEditing} data-locator="shipping-details">
         {!modalState && (
           <>
             {this.renderAddressForm()}
             {this.renderDefaultOptions()}
-            {isEditing && this.renderActionButtons()}
+            {isEditing && this.renderActionButtons(errorMessageRef, editShipmentDetailsError)}
           </>
         )}
         <AddEditShippingAddressModal

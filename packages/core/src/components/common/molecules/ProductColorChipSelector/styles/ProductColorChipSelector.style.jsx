@@ -115,6 +115,7 @@ const styles = css`
       height: 23px;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

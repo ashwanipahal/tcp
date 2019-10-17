@@ -597,51 +597,53 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XL edit-cta "
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
+  <div>
+    <Styled(Row)
+      className="elem-mt-XL edit-cta "
+      fullBleed={true}
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className=""
-        data-locator="edit-shipping-cancel-btn"
-        disabled={false}
-        fill="WHITE"
-        onClick={[Function]}
-        type="button"
-      >
-        lbl_shipping_cancel
-      </Styled(Button)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        data-locator="edit-shipping-save-btn"
-        fill="BLUE"
-        onClick={[Function]}
-        type="button"
       >
-        lbl_shipping_save
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className=""
+          data-locator="edit-shipping-cancel-btn"
+          disabled={false}
+          fill="WHITE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_cancel
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="edit-shipping-save-btn"
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_save
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}
@@ -2053,51 +2055,53 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XL edit-cta "
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
+  <div>
+    <Styled(Row)
+      className="elem-mt-XL edit-cta "
+      fullBleed={true}
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className=""
-        data-locator="edit-shipping-cancel-btn"
-        disabled={false}
-        fill="WHITE"
-        onClick={[Function]}
-        type="button"
-      >
-        lbl_shipping_cancel
-      </Styled(Button)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        data-locator="edit-shipping-save-btn"
-        fill="BLUE"
-        onClick={[Function]}
-        type="button"
       >
-        lbl_shipping_save
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className=""
+          data-locator="edit-shipping-cancel-btn"
+          disabled={false}
+          fill="WHITE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_cancel
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="edit-shipping-save-btn"
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_save
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(AddEditShippingAddress)
     actionButtons={[Function]}
     addressFields={[Function]}

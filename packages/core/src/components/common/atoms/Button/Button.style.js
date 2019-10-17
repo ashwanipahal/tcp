@@ -77,10 +77,6 @@ const ButtonStyles = css`
       border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
       margin-right: 16px;
       padding-bottom: 3px;
-
-      @media ${props.theme.mediaQuery.large} {
-      font-size: ${props.theme.typography.fontSizes.fs20};
-      }
     `
       : ''};
 
@@ -94,10 +90,6 @@ const ButtonStyles = css`
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
       padding-bottom: 3px;
-
-      @media ${props.theme.mediaQuery.large} {
-      font-size: ${props.theme.typography.fontSizes.fs20};
-      }
     `
       : ''};
 
@@ -132,7 +124,14 @@ const ButtonStyles = css`
         height: 0;
         overflow: hidden;
         visibility: hidden;
-		  }
+      }
+      
+      @media ${props.theme.mediaQuery.large} {
+      font-size: ${props.theme.typography.fontSizes.fs20};
+      ::after {
+          font-size: ${props.theme.typography.fontSizes.fs20};
+        }
+      }
     `
       : ''};
 
