@@ -232,6 +232,8 @@ class CustomSelect extends React.Component {
     labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
     type: PropTypes.string,
     isSortOpenModal: PropTypes.bool,
+    onSortSelection: PropTypes.func,
+    onFilterSelection: PropTypes.func,
   };
 
   static customSelectCounter = 0;
@@ -344,6 +346,8 @@ class CustomSelect extends React.Component {
       optionsMap,
       allowMultipleSelections,
       input: { value },
+      onFilterSelection,
+      onSortSelection,
     } = this.props;
 
     if (event.button !== 0 && event.keyCode !== KEY_ENTER) return; // ignore clicks not on the main (left) mouse button
@@ -356,6 +360,11 @@ class CustomSelect extends React.Component {
         this.unsetValue(clickedItemValue); // remove clickedItemValue from this component's selcted values list
       } else {
         // set the value (or add to the value if multiple selections is on) of this component to clickedItemValue
+        if (onFilterSelection) {
+          onFilterSelection(clickedItemValue);
+        } else if (onSortSelection) {
+          onSortSelection(clickedItemValue);
+        }
         this.setValue(clickedItemValue);
       }
     }
@@ -618,6 +627,7 @@ class CustomSelect extends React.Component {
             handleItemClick={this.handleItemClick}
             facetName={facetName}
             dataLocator={dataLocatorSuffix}
+            allowMultipleSelections={allowMultipleSelections}
             labels={labels}
             type={type}
           />
@@ -649,5 +659,7 @@ CustomSelect.defaultProps = {
   labels: {},
   type: '',
   isSortOpenModal: false,
+  onSortSelection: null,
+  onFilterSelection: null,
 };
 export default withStyles(CustomSelect, CustomSelectStyle);
