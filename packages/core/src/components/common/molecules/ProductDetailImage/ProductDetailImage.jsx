@@ -1,30 +1,37 @@
+/* eslint-disable */
+// Temp fix for DAM image in PLP
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { Image, Anchor } from '../../atoms';
+import { DamImage, Anchor } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import styles from './ProductDetailImage.style';
 import { getLocator } from '../../../../utils';
 
 const getNonZoomImage = (isMobile, imageUrl, imageName, onOpenSimpleFullSize) => {
+  const imgData = {
+    alt: imageName,
+    url: imageUrl,
+  };
   return !isMobile ? (
-    <Image
+    <DamImage
       className="full-size-desktop-image"
-      src={imageUrl}
-      alt={imageName}
-      itemProp="contentUrl"
       data-locator={getLocator('pdp_main_image')}
+      imgData={imgData}
+      itemProp="contentUrl"
+      isProductImage
     />
   ) : (
     <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
-      <Image
+      <DamImage
+        className="full-size-desktop-image"
         data-locator={getLocator('pdp_main_image')}
-        src={imageUrl}
-        alt={imageName}
+        imgData={imgData}
         itemProp="contentUrl"
+        isProductImage
       />
     </Anchor>
   );
@@ -42,6 +49,7 @@ const ProductDetailImage = props => {
   } = props;
 
   let productSectionWidth;
+
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
@@ -49,7 +57,7 @@ const ProductDetailImage = props => {
   }
   return (
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
-      {isZoomEnabled && !isMobile ? (
+      {/* {isZoomEnabled && !isMobile ? (
         <ReactImageMagnify
           data-locator={getLocator('pdp_main_image')}
           {...{
@@ -75,7 +83,8 @@ const ProductDetailImage = props => {
         />
       ) : (
         getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)
-      )}
+      )} */}
+      {getNonZoomImage(isMobile, imageUrl, imageName, onOpenSimpleFullSize)}
       <RenderPerf.Measure name={HERO_VISIBLE} />
     </div>
   );
