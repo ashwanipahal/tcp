@@ -1,44 +1,35 @@
 platform :ios, '9.0'
 use_frameworks!
 
-def facebook
+def social
   pod 'FBSDKCoreKit', '~> 4.35.0'
   pod 'FBSDKLoginKit', '~> 4.35.0'
   pod 'FBSDKShareKit', '~> 4.35.0'
-end
-
-def twitter
   pod 'TwitterKit', '~> 3.3.0'
 end
 
 target 'gymboree' do
-   facebook
-   twitter
+  social
 end
 
 target 'gymboree_dev' do
-   facebook
-   twitter
+  social
 end
 
 target 'gymboree_int' do
-   facebook
-   twitter
+  social
 end
 
 target 'gymboree_prod' do
-   facebook
-   twitter
+  social
 end
 
 target 'gymboree_uat' do
-   facebook
-   twitter
+  social
 end
 
 target 'mobileapp' do
-  facebook
-  twitter
+  social
   target 'mobileappTests' do
     inherit! :search_paths
     # Pods for testing
@@ -47,41 +38,17 @@ target 'mobileapp' do
 end
 
 target 'mobileapp_dev' do
-  facebook
-  twitter
+  social
 end
 
 target 'mobileapp_int' do
-  facebook
-  twitter
+  social
 end
 
 target 'mobileapp_prod' do
-   facebook
-   twitter
+  social
 end
 
 target 'mobileapp_uat' do
-  facebook
-  twitter
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    if target.name == 'react-native-twitter-signin'
-      target.build_configurations.each do |config|
-        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
-      end
-    end
-    if target.name == "React"
-      target.remove_from_project
-    end
-    if target.name == 'yoga'
-      target.remove_from_project
-      target.build_configurations.each do |config|
-          config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
-          config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
-      end
-    end
-  end
+  social
 end
