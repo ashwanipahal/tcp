@@ -83,6 +83,16 @@ function expirationValidator(value, param, linkedPropsValues, datePieces) {
   return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
 }
 
+function userBirthMonthValidator(value, param, linkedProps) {
+  console.log('linked props ----------> ', linkedProps);
+  const values = linkedProps[0];
+  if (!values.userBirthMonth && !values.userBirthYear) {
+    return true;
+  }
+
+  return !!value;
+}
+
 function cardNumberForTypeValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
   // no type, invalid CC numbr
@@ -233,6 +243,7 @@ const validatorMethods = {
   cvvNumber: onlyDigitsValidator,
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,
+  userBirthMonth: userBirthMonthValidator,
 };
 
 export default validatorMethods;

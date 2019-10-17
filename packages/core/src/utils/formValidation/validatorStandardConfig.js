@@ -40,10 +40,10 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    required: 'lbl_err_userbirthdaymonth_required',
+    userBirthMonth: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
-    required: 'lbl_err_userbirthdayyear_required',
+    userBirthMonth: 'lbl_err_userbirthdayyear_required',
   },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
@@ -234,10 +234,14 @@ export const formValidationRules = {
   },
 
   userBirthMonth: {
-    required: true,
+    userBirthMonth: {
+      linkedProps: ['values'],
+    },
   },
   userBirthYear: {
-    required: true,
+    userBirthMonth: {
+      linkedProps: ['values'],
+    },
   },
   firstName: {
     nonEmpty: true,
