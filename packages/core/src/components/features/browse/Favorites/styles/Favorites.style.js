@@ -11,6 +11,28 @@ export default css`
     padding: 10px 0;
   }
 
+  .render-desktop-view {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
+  }
+
+  .render-mobile-view {
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
+    }
+  }
+
   .brand-options {
     display: inline-block;
     min-width: 150px;

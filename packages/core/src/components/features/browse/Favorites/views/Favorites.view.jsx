@@ -142,10 +142,10 @@ const FavoritesView = props => {
             filtersLength={null}
             labels={labels}
             isFavoriteView
-            favoriteSortingParams={getSortsList()}
+            favoriteSortingParams={getSortsList(labels)}
             onFilterSelection={onFilterSelection}
             onSortSelection={onSortSelection}
-            defaultPlaceholder={getSortsList()[0].displayName}
+            defaultPlaceholder={getSortsList(labels)[0].displayName}
           />
         </Col>
       </Row>
