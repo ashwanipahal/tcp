@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  background-color: #f53d3d;
+  background-color: ${props => props.theme.colorPalette.red['400']};
   margin-bottom: 40px;
 
   .heading-wrapper {
