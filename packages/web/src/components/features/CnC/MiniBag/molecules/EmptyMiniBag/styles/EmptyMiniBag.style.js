@@ -27,4 +27,11 @@ export default css`
     height: 51px;
     width: 210px;
   }
+
+  .continueShoppingText {
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
 `;

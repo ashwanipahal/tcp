@@ -172,7 +172,7 @@ export const mapStateToProps = state => {
     ),
     updateOrderDetailsBossId: selectors.getUpdateOrderDetailsId(state, 'Update_Order_Details_BOSS'),
     updateOrderDetailsData: selectors.getUpdateOrderDetailsData(state),
-    venmoUserName: getVenmoUserName(),
+    venmoUserName: getVenmoUserName(state),
   };
 };
 

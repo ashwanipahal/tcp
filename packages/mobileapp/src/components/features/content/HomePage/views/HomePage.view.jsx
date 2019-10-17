@@ -18,10 +18,10 @@ import {
   ModuleR,
   ModuleQ,
   ModuleS,
+  ModuleT,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
-import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT/views/ModuleT.native';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';

@@ -111,7 +111,7 @@ const createBootstrapParams = () => {
 export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   const cachedKeyData = cachedData[key];
   if (cachedKeyData) {
-    logger.info('CACHE HIT');
+    logger.info(`BOOTSTRAP CACHE HIT: ${key}`);
     try {
       return JSON.parse(cachedKeyData);
     } catch (err) {
@@ -119,15 +119,19 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
     }
   }
 
-  logger.info('CACHE MISS');
+  logger.info(`BOOTSTRAP CACHE MISS: ${key}`);
   Object.keys(CACHED_KEYS).forEach(async item => {
     if (CACHED_KEYS[item] === key) {
       const globalRedisClient = global.redisClient;
       if (globalRedisClient && globalRedisClient.connected) {
-        await setDataInRedis({
-          data: bootstrapData[key],
-          CACHE_IDENTIFIER: item,
-        });
+        try {
+          await setDataInRedis({
+            data: bootstrapData[key],
+            CACHE_IDENTIFIER: item,
+          });
+        } catch (err) {
+          logger.error(err);
+        }
       }
     }
   });

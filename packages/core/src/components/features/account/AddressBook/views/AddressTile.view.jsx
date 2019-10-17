@@ -56,6 +56,7 @@ class AddressBookTile extends React.Component {
 
   render() {
     const { address, labels, className } = this.props;
+    const { addressId } = address;
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
@@ -119,6 +120,7 @@ class AddressBookTile extends React.Component {
             fontSizeVariation="large"
             underline
             to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
@@ -129,6 +131,7 @@ class AddressBookTile extends React.Component {
             fontSizeVariation="large"
             underline
             to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}

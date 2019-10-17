@@ -69,6 +69,7 @@ const ListItem = props => {
       />
       {!renderPriceAndBagOnly && <RenderBadge2 text={badge2} />}
       <RenderPricesSection
+        hideFavorite={renderPriceAndBagOnly}
         onFavorite={onFavorite}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
