@@ -10,7 +10,7 @@ const ModuleTwoCol = props => {
   const { slots = [], className, modules, ...others } = props;
 
   return (
-    <Row className={`${className} moduleTwoCol`} fullBleed>
+    <Row className={`${className} moduleTwoCol`} fullBleed={{ small: true, medium: true }}>
       {slots
         .filter(slot => slot.moduleName === 'moduleH' || slot.moduleName === 'moduleN')
         .map(slot => {
