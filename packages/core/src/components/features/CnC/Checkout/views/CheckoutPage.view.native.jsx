@@ -55,14 +55,8 @@ class CheckoutPage extends React.PureComponent {
       submitReview,
       currentStage,
       setCheckoutStage,
-      isVenmoPaymentInProgress,
-      setVenmoPickupState,
-      setVenmoShippingState,
-      isVenmoPickupBannerDisplayed,
-      isVenmoShippingBannerDisplayed,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
-    const { venmoBannerText } = pickUpLabels;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
@@ -83,10 +77,6 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             availableStages={availableStages}
             setCheckoutStage={setCheckoutStage}
-            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-            orderHasShipping={orderHasShipping}
-            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
-            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case SHIPPING:
@@ -108,10 +98,6 @@ class CheckoutPage extends React.PureComponent {
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
             setCheckoutStage={setCheckoutStage}
-            venmoBannerLabel={{ venmoBannerText }}
-            setVenmoPickupState={setVenmoPickupState}
-            isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
-            isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
         );
       case BILLING:
@@ -137,8 +123,6 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
-            setVenmoPickupState={setVenmoPickupState}
-            setVenmoShippingState={setVenmoShippingState}
           />
         );
       case CONFIRMATION:
@@ -188,19 +172,6 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   currentStage: PropTypes.string.isRequired,
-  isVenmoPaymentInProgress: PropTypes.bool,
-  setVenmoPickupState: PropTypes.func,
-  setVenmoShippingState: PropTypes.func,
-  isVenmoPickupBannerDisplayed: PropTypes.bool,
-  isVenmoShippingBannerDisplayed: PropTypes.bool,
-};
-
-CheckoutPage.defaultProps = {
-  isVenmoPaymentInProgress: false,
-  setVenmoPickupState: () => {},
-  setVenmoShippingState: () => {},
-  isVenmoPickupBannerDisplayed: true,
-  isVenmoShippingBannerDisplayed: true,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

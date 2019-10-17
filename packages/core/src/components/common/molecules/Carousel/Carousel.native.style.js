@@ -60,6 +60,7 @@ export const PlayPauseButtonView = styled.View`
 export const PaginationWrapper = styled.View`
   flex-direction: row;
   justify-content: center;
+  bottom: ${props => (props.iconBottomMargin ? props.iconBottomMargin : '1px')};
 `;
 
 export default {
