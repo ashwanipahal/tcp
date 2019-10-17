@@ -1,9 +1,10 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import { BodyCopy, Row, Col, Button } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Row, Col, Button, RichText } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import PropTypes from 'prop-types';
 import styles from './styles/MyPreferenceSubscribeModal.style';
@@ -23,12 +24,36 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     waysToEarnRow: {},
+    labels: {},
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      disclaimerText: '',
+    };
+  }
+
+  componentDidMount() {
+    let disclaimerLabels = '';
+    const { labels } = this.props;
+    const disclaimerLabelsArray = Object.keys(labels).filter(disclaimerLabelsValue =>
+      /lbl_prefrence_modal_disclaimer_line-/.test(disclaimerLabelsValue)
+    );
+    disclaimerLabelsArray.forEach(elem => {
+      disclaimerLabels += getLabelValue(labels, elem);
+    });
+
+    this.setState({
+      disclaimerText: disclaimerLabels,
+    });
+  }
 
   handleSubmitData = data => {
     const { handleSubmitModalPopup } = this.props;
@@ -43,7 +68,8 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose } = this.props;
+    const { className, handleSubmit, onRequestClose, labels } = this.props;
+    const { disclaimerText } = this.state;
 
     return (
       <div className={className}>
@@ -62,7 +88,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               className="elem-mb-MED elem-mt-LRG"
               data-locator="my-preference-modal_title"
             >
-              Subscribe to Text Alerts
+              {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -70,10 +96,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-LRG"
-              data-locator="my-preference-modal_info-text"
+              data-locator="my-preference-modal_info_text"
             >
-              Click submit to start the process of receiving My Place Rewards SMS Alerts about
-              rewards, points, coupons & special offers via text nofications.
+              {getLabelValue(labels, 'lbl_prefrence_modal_info_text')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -81,10 +106,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-MED"
-              data-locator="my-preference-modal_sub-info-text"
+              data-locator="my-preference-modal_sub_info_text"
             >
-              If you are not already subscribed for other text alerts, you'll receive a text message
-              to the number provided; reply with Y to be subscribed!
+              {getLabelValue(labels, 'lbl_prefrence_modal_sub_info_text')}
             </BodyCopy>
 
             <BodyCopy
@@ -93,7 +117,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-MED"
-              data-locator="my-preference-modal_sub-info-text"
+              data-locator="my-preference-modal_phnumber"
             >
               <Field
                 placeholder="Mobile Phone Number"
@@ -106,16 +130,15 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
             </BodyCopy>
             <BodyCopy
               component="div"
+              textAlign="center"
               fontSize="fs14"
               fontFamily="secondary"
-              textAlign="center"
               className="disclaimer-sub-text"
-              data-locator="my-preference-modal_disclaimer-sub-text"
             >
-              Frequency varies. Carrier messages & data rates may apply. Recurring automated
-              marketing and loyalty messages will be sent to the number provided at opt-in. Text
-              STOP to 89700 to opt-out. See Mobile T&Cs & Privacy Policy. No purchase necessary. US
-              customers only.
+              <RichText
+                richTextHtml={disclaimerText}
+                dataLocator="my-preference-modal_disclaimer_sub_text"
+              />
             </BodyCopy>
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -127,7 +150,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                   className="submit-button"
                   dataLocator="subscribe_modal_submit"
                 >
-                  Submit
+                  {getLabelValue(labels, 'lbl_prefrence_modal_submit')}
                 </Button>
               </Col>
             </Row>
@@ -141,7 +164,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                   dataLocator="subscribe_modal_cancel"
                   onClick={onRequestClose}
                 >
-                  Cancel
+                  {getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
                 </Button>
               </Col>
             </Row>

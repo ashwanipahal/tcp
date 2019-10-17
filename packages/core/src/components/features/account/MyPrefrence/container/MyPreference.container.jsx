@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import MyPrefrence from '../views';
 import { getIsTcpSubscribe } from './MyPreference.selectors';
+import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
 import { getSubscribeStore, setBrandSubscribeData } from './MyPreference.actions';
@@ -16,7 +17,8 @@ export class MyPrefrenceContainer extends PureComponent {
   constructor(props) {
     super(props);
     const { labels, ...otherProps } = this.props;
-    this.initialValues = this.getInitialValues(otherProps);
+    this.initialValuesPreference = this.getPreferenceInitialValues(otherProps);
+    this.initialValuesSubscribe = this.getSubscribeInitialValues(otherProps);
     this.state = {
       modalVisible: false,
       isTcpSubscribeModal: false,
@@ -45,9 +47,14 @@ export class MyPrefrenceContainer extends PureComponent {
       isGymboreeUnsubscribeModal: false,
     });
 
-  getInitialValues = props => {
+  getPreferenceInitialValues = props => {
     const { tcpWebSubscribe } = props;
     return { tcpWebSubscribe };
+  };
+
+  getSubscribeInitialValues = props => {
+    const { phoneNumber } = props;
+    return phoneNumber;
   };
 
   handleSubmitModalPopup = data => {
@@ -115,7 +122,13 @@ export class MyPrefrenceContainer extends PureComponent {
   };
 
   render() {
-    const { labels, handleComponentChange, componentProps, isTcpSubscribe } = this.props;
+    const {
+      labels,
+      handleComponentChange,
+      componentProps,
+      isTcpSubscribe,
+      phoneNumber,
+    } = this.props;
     const {
       modalVisible,
       isTcpSubscribeModal,
@@ -131,7 +144,7 @@ export class MyPrefrenceContainer extends PureComponent {
           handleComponentChange={handleComponentChange}
           componentProps={componentProps}
           isTcpSubscribe={isTcpSubscribe}
-          initialValues={this.initialValues}
+          initialValues={this.initialValuesPreference}
           onSubscribe={this.onSubscribe}
         />
         {modalVisible && (
@@ -149,24 +162,33 @@ export class MyPrefrenceContainer extends PureComponent {
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
+                phoneNumber={phoneNumber}
+                initialValues={this.initialValuesSubscribe}
+                labels={myPrefrenceLabels}
               />
             )}
             {isTcpUnsubscribeModal && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
+                phoneNumber={phoneNumber}
+                labels={myPrefrenceLabels}
               />
             )}
             {isGymboreeSubscribeModal && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
+                phoneNumber={phoneNumber}
+                labels={myPrefrenceLabels}
               />
             )}
             {isGymboreeUnsubscribeModal && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
+                phoneNumber={phoneNumber}
+                labels={myPrefrenceLabels}
               />
             )}
           </Modal>
@@ -178,6 +200,7 @@ export class MyPrefrenceContainer extends PureComponent {
 
 export const mapStateToProps = state => ({
   isTcpSubscribe: getIsTcpSubscribe(state),
+  phoneNumber: getUserPhoneNumber(state),
 });
 
 export const mapDispatchToProps = dispatch => {
@@ -198,6 +221,7 @@ MyPrefrenceContainer.propTypes = {
   isTcpSubscribe: PropTypes.bool,
   getSubscribeStoreAction: PropTypes.func.isRequired,
   submitSubscribeBrand: PropTypes.func.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
 };
 
 MyPrefrenceContainer.defaultProps = {
