@@ -13,6 +13,7 @@ exports[`N component renders correctly 1`] = `
   }
 >
   <Styled(Col)
+    className="moduleN-innerContent"
     colSize={
       Object {
         "large": 12,

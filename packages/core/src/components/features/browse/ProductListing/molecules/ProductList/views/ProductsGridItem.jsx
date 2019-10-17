@@ -1,7 +1,8 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, disableBodyScroll } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -133,6 +134,7 @@ class ProductsGridItem extends React.PureComponent {
     const {
       item: {
         productInfo: { generalProductId },
+        itemInfo: { itemId },
       },
       onAddItemToFavorites,
       isLoggedIn,
@@ -141,7 +143,7 @@ class ProductsGridItem extends React.PureComponent {
     const { selectedColorProductId } = this.state;
     const colorProductId = selectedColorProductId || generalProductId;
     if (removeFavItem) {
-      removeFavItem(colorProductId);
+      removeFavItem({ itemId });
     } else {
       onAddItemToFavorites({ colorProductId });
       if (isClient() && isLoggedIn) {
@@ -257,6 +259,7 @@ class ProductsGridItem extends React.PureComponent {
   handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
+    disableBodyScroll();
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });

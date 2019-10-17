@@ -6,6 +6,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
 >
   <Styled(Grid)>
     <Styled(Row)
+      className="footer_top__signup_form_row"
       fullBleed={true}
     >
       <Styled(Col)

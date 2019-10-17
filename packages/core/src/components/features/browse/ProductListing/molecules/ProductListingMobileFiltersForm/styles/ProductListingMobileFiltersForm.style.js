@@ -161,6 +161,7 @@ export default css`
 export const customModalCss = css`
   div.TCPModal__InnerContent {
     background: none;
+    z-index: ${props => props.theme.zindex.zOverlay};
   }
   button.close-modal {
     display: none;

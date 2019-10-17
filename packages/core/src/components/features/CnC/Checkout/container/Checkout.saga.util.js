@@ -1,11 +1,12 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
 import logger from '../../../../../utils/loggerInstance';
-import selectors from './Checkout.selector';
+import selectors, { isGuest } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
   briteVerifyStatusExtraction,
   getVenmoToken,
+  addPickupPerson,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -31,6 +32,20 @@ import {
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isCanada } from '../../../../../utils';
+
+export const pickUpRouting = ({
+  getIsShippingRequired,
+  isVenmoInProgress,
+  isVenmoPickupDisplayed,
+}) => {
+  if (getIsShippingRequired) {
+    utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+  } else if (isVenmoInProgress && !isVenmoPickupDisplayed) {
+    utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
+  } else {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  }
+};
 
 export function* addRegisteredUserAddress({ address, phoneNumber, emailAddress, setAsDefault }) {
   let addOrEditAddressResponse = null;
@@ -287,4 +302,24 @@ export function* addOrEditGuestUserAddress({
   addOrEditAddressRes = { payload: addOrEditAddressRes };
 
   return addOrEditAddressRes;
+}
+
+export function* callPickupSubmitMethod(formData) {
+  let emailAddress = '';
+  let firstName = '';
+  let lastName = '';
+  if (formData.hasAlternatePickup && formData.pickUpAlternate) {
+    ({ emailAddress, firstName, lastName } = formData.pickUpAlternate);
+  }
+  return yield call(addPickupPerson, {
+    firstName: formData.pickUpContact.firstName,
+    lastName: formData.pickUpContact.lastName,
+    phoneNumber: formData.pickUpContact.phoneNumber,
+    emailAddress:
+      formData.pickUpContact.emailAddress ||
+      (yield select(isGuest) ? yield select(getUserEmail) : ''),
+    alternateEmail: emailAddress,
+    alternateFirstName: firstName,
+    alternateLastName: lastName,
+  });
 }

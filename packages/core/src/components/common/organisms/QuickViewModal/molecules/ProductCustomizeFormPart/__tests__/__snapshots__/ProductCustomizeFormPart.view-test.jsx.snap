@@ -23,6 +23,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           dataLocator="quick_view_View_Product_details"
           noLink={true}
           onClick={[Function]}
+          to="/undefined/p/2100606_1137"
         >
           <Styled(BodyCopy)
             className="product-link"

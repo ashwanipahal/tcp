@@ -36,9 +36,9 @@ const getIsInternationalShipping = state => {
 };
 
 export const getIsRadialInventoryEnabled = state => {
-  return (
+  return !!(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isRadialInventoryEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_RADIAL_BOSS_ENABLED'])
   );
 };
 
@@ -53,6 +53,20 @@ export const getIsBopisEnabled = (state, brand = getBrand()) => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOPISEnabled_${brand.toUpperCase()}`])
+  );
+};
+
+export const getIsBossClearanceProductEnabled = state => {
+  return !!(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOSS_ENABLED_CLEARANCE_PRODUCTS'])
+  );
+};
+
+export const getIsBopisClearanceProductEnabled = state => {
+  return !!(
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOPIS_ENABLED_CLEARANCE_PRODUCTS'])
   );
 };
 

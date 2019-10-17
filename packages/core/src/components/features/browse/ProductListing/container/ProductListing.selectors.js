@@ -6,6 +6,7 @@ import {
   PRODUCT_LISTING_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
+import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
 
@@ -220,4 +221,20 @@ export const updateAppliedFiltersInState = state => {
   }
 
   return filters;
+};
+
+export const getIsFilterBy = state => {
+  const filterMaps = state.ProductListing.get('filtersMaps');
+  const filterKeys =
+    filterMaps && filterMaps.unbxdDisplayName && Object.keys(filterMaps.unbxdDisplayName);
+  return (
+    filterKeys &&
+    filterKeys
+      .filter(filter => {
+        return filter !== FACETS_FIELD_KEY.aux_color_unbxd;
+      })
+      .some(facets => {
+        return filterMaps[facets].length > 0;
+      })
+  );
 };
