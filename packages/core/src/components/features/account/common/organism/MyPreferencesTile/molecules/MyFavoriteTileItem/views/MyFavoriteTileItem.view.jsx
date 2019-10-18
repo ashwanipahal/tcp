@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { getLabelValue, formatPhoneNumber } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../../../common/atoms';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
+import internalEndpoints from '../../../../../internalEndpoints';
 import styles from '../styles/MyFavoriteTileItem.style';
 
-const MyFavoriteTile = ({
+export const MyFavoriteTileItem = ({
   labels,
   favStoreName,
   favStoreAddress,
@@ -40,7 +41,13 @@ const MyFavoriteTile = ({
             }}
           >
             <BodyCopy component="div" textAlign="right" fontSize="fs14" fontFamily="secondary">
-              <Anchor fontSizeVariation="large" underline anchorVariation="primary" to="" asPath="">
+              <Anchor
+                fontSizeVariation="large"
+                underline
+                anchorVariation="primary"
+                to={internalEndpoints.myPreferencesPage.link}
+                asPath={internalEndpoints.myPreferencesPage.path}
+              >
                 {getLabelValue(labels, addEditLabel, 'preferences')}
               </Anchor>
             </BodyCopy>
@@ -118,7 +125,7 @@ const MyFavoriteTile = ({
   );
 };
 
-MyFavoriteTile.propTypes = {
+MyFavoriteTileItem.propTypes = {
   labels: PropTypes.shape({}),
   favStoreName: PropTypes.string,
   favStoreAddress: PropTypes.string,
@@ -129,7 +136,7 @@ MyFavoriteTile.propTypes = {
   className: PropTypes.string,
 };
 
-MyFavoriteTile.defaultProps = {
+MyFavoriteTileItem.defaultProps = {
   labels: {
     lbl_prefrence_tile_edit: '',
     lbl_prefrence_tile_add: '',
@@ -145,4 +152,4 @@ MyFavoriteTile.defaultProps = {
   className: '',
 };
 
-export default withStyles(MyFavoriteTile, styles);
+export default withStyles(MyFavoriteTileItem, styles);

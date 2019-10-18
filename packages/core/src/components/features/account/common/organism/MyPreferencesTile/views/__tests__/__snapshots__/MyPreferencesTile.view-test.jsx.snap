@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPreferencesTile component should render correctly when coupons are not present 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="/account?id=my-preference"
+  ctaPath="/account/my-preference"
+  ctaTitle="lbl_prefrence_view_preferences"
+  dataLocatorPrefix="orders"
+  title="lbl_prefrence_heading"
+>
+  <Styled(MyFavoriteTileItem)
+    favStoreAddress=""
+    favStoreCity=""
+    favStoreName=""
+    favStorePhone=""
+    favStoreState=""
+    favStoreZipcode=""
+    labels={Object {}}
+  />
+  <ContactPreferencesTileItem
+    isContactAdded={true}
+    labels={Object {}}
+  />
+  <SocialAccountsTileItem
+    getSocialAcc={Object {}}
+    labels={Object {}}
+  />
+</Styled(AccountOverviewTile)>
+`;

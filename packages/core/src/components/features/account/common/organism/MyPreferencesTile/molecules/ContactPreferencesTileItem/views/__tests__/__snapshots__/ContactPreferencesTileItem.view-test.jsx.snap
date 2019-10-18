@@ -151,7 +151,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          asPath="/account//my-preference"
+          asPath="/account/my-preference"
           fontSizeVariation="large"
           to="/account?id=my-preference"
           underline={true}

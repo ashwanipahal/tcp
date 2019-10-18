@@ -1,46 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyFavoriteTileItem component should render correctly when coupons are not present 1`] = `
-<StyledComponent
-  favStoreAddress=""
-  favStoreCity=""
-  favStoreName=""
-  favStorePhone=""
-  favStoreState=""
-  favStoreZipcode=""
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
-        "isStatic": true,
-        "rules": Array [
-          "
-  ",
-          "
-  .favStoreData {
-    padding: 0;
-  }
-  .capFirstLetter {
-    text-transform: capitalize;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(MyFavoriteTile)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-VigVT",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={Object {}}
-/>
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="heading"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 6,
+            "small": 5,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_prefrence_favorite_store
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 2,
+            "small": 1,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="right"
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath=""
+            fontSizeVariation="large"
+            to=""
+            underline={true}
+          >
+            lbl_prefrence_tile_add
+          </Styled(Anchor)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="elem-mb-SM"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 7,
+            "small": 5,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_prefrence_tile_access_buy_online_pickup
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;
