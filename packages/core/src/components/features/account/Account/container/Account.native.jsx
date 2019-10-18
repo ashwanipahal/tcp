@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
+
 import navDataMobile from '../MyAccountRoute.config';
 import {
   StyledKeyboardAvoidingView,
@@ -22,10 +25,12 @@ import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.a
 export class Account extends React.PureComponent<Props, State> {
   static propTypes = {
     labels: PropTypes.shape({}),
+    fetchLabels: PropTypes.func,
   };
 
   static defaultProps = {
     labels: PropTypes.shape({}),
+    fetchLabels: () => {},
   };
 
   constructor(props) {
@@ -34,6 +39,15 @@ export class Account extends React.PureComponent<Props, State> {
     this.state = {
       component,
     };
+  }
+
+  /**
+   * @function componentDidMount function is used to
+   * call fetchLabels method
+   */
+  componentDidMount() {
+    const { fetchLabels } = this.props;
+    fetchLabels({ category: LABELS.account });
   }
 
   componentDidUpdate(prevProps) {
@@ -110,6 +124,14 @@ export class Account extends React.PureComponent<Props, State> {
   }
 }
 
+export const mapDispatchToProps = dispatch => {
+  return {
+    fetchLabels: payload => {
+      dispatch(loadComponentLabelsData(payload));
+    },
+  };
+};
+
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),
@@ -117,5 +139,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Account);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account);
 export { Account as AccountVanilla };
