@@ -60,6 +60,7 @@
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
     "superagent-jsonp": "^0.2.1",
+    "react-native-twitter-signin": "^1.1.1",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-immutable": "^5.0.0"
   },
@@ -187,6 +188,8 @@
       "**/react-native-instagram-login/**",
       "**/react-native-awesome-card-io",
       "**/react-native-awesome-card-io/**",
+      "**/react-native-twitter-signin",
+      "**/react-native-twitter-signin/**",
       "**/redux-persist",
       "**/redux-persist/**",
       "**/redux-persist-transform-immutable",
