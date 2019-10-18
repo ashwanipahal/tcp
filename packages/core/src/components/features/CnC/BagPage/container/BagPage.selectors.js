@@ -162,7 +162,7 @@ const returnCurrentCurrency = currency => {
   return currency === 'USD' || currency === 'CA' ? '$' : currency;
 };
 const getCurrentCurrency = state => {
-  const currency = state.session && state.session.getIn(['siteDetails', 'currency']);
+  const currency = state.session && state.session.siteDetails.currency;
   return currency ? returnCurrentCurrency(currency) : '$';
 };
 
@@ -216,7 +216,7 @@ const itemDeleteModalLabels = state => {
 
 const getBagStickyHeaderInterval = state => {
   return (
-    parseInt(state.session.getIn(['siteDetails', 'BAG_CONDENSE_HEADER_INTERVAL']), 10) ||
+    parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
     BAGPAGE_CONSTANTS.BAG_PAGE_STICKY_HEADER_INTERVAL
   );
 };

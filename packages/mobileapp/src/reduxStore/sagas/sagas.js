@@ -61,6 +61,7 @@ import OrdersSaga from '@tcp/core/src/components/features/account/Orders/contain
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
+import OrderDetailsListSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -124,6 +125,7 @@ export default function* rootSaga() {
     SearchBarSaga(),
     OutfitDetailsSaga(),
     RecentSearchSaga(),
+    OrderDetailsListSaga(),
     AccountSaga(),
   ]);
 }

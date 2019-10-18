@@ -52,6 +52,8 @@ class Recommendations extends Component {
       onPickUpOpenClick,
       labels,
       priceOnly,
+      currency,
+      currencyAttributes,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -72,6 +74,8 @@ class Recommendations extends Component {
           labels={labels}
           sequenceNumber={index + 1}
           variation={variation}
+          currencySymbol={currency}
+          currencyExchange={currencyAttributes.exchangevalue}
         />
       );
     });
@@ -201,6 +205,8 @@ Recommendations.propTypes = {
   ctaTitle: PropTypes.string,
   ctaUrl: PropTypes.string,
   variations: PropTypes.string,
+  currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 Recommendations.defaultProps = {
@@ -210,6 +216,8 @@ Recommendations.defaultProps = {
   ctaTitle: '',
   ctaUrl: '',
   variations: '',
+  currency: '$',
+  currencyAttributes: {},
 };
 
 export { Recommendations as RecommendationsVanilla };

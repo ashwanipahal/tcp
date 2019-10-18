@@ -45,6 +45,7 @@ const MyAccountLayoutView = props => {
         handleComponentChange={handleComponentChange}
         navigation={navigation}
         componentProps={componentProps}
+        {...componentProps}
       />
     </View>
   );
@@ -60,6 +61,7 @@ MyAccountLayoutView.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   component: PropTypes.string.isRequired,
   componentProps: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(MyAccountLayoutView, ParentContainer);
