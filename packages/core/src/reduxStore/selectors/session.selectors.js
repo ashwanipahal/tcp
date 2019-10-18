@@ -83,6 +83,6 @@ export const getCurrentCurrencySymbol = state => {
 export const getRecalcOrderPointsInterval = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BRIERLEY_ORD_RECALC_CACHING_INTERVAL'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BRIERLEY_ORD_RECALC_CACHING_INTERVAL
   );
 };
