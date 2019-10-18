@@ -11,6 +11,7 @@ import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/Add
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
+import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
@@ -68,6 +69,7 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
+  ACCOUNT_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   AIRMILES_BANNER_REDUCER_KEY,
@@ -178,6 +180,7 @@ const rootReducer = combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,

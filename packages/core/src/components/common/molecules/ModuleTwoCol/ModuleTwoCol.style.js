@@ -19,4 +19,10 @@ export default css`
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .moduleH {
+      margin-bottom: 32px;
+    }
+  }
 `;

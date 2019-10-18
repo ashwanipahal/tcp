@@ -55,6 +55,7 @@ type Props = {
   buttonPosition: String,
   autoplay?: Boolean,
   hasParallaxImages?: Boolean,
+  iconBottomMargin?: String,
 };
 
 type State = {
@@ -215,9 +216,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
   /**
    * @function getBottomView This function return the Play Or Pause Button.
    */
-  getBottomView(carouselConfig, showDots) {
+  getBottomView(carouselConfig, showDots, iconBottomMargin) {
     return (
-      <PaginationWrapper>
+      <PaginationWrapper iconBottomMargin={iconBottomMargin}>
         {carouselConfig.autoplay && (
           <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
         )}
@@ -324,6 +325,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       hasParallaxImages,
       loop,
       activeSlideAlignment,
+      iconBottomMargin,
     } = this.props;
 
     if (!data) {
@@ -409,8 +411,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         {data.length > 1 && (
           <View>
             {showDots && overlap
-              ? this.getOverlapComponent(carouselConfig, buttonPosition)
-              : this.getBottomView(carouselConfig, showDots)}
+              ? this.getOverlapComponent(carouselConfig, buttonPosition, iconBottomMargin)
+              : this.getBottomView(carouselConfig, showDots, iconBottomMargin)}
           </View>
         )}
       </View>
@@ -443,6 +445,7 @@ SnapCarousel.defaultProps = {
   sliderWidth: 0,
   itemWidth: 0,
   activeSlideAlignment: 'center',
+  iconBottomMargin: null,
 };
 
 SnapCarousel.propTypes = {
@@ -465,6 +468,7 @@ SnapCarousel.propTypes = {
   autoplay: PropTypes.bool,
   paginationProps: PropTypes.shape({}),
   hasParallaxImages: PropTypes.bool,
+  iconBottomMargin: PropTypes.string,
   options: PropTypes.shape({}),
   loop: PropTypes.bool,
   sliderWidth: PropTypes.number,
