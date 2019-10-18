@@ -309,7 +309,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       color="white"
       dataLocator=""
       fontFamily="primary"
-      fontSize="fs20"
+      fontSize="fs18"
       fontWeight="black"
       lineHeight="20px"
       margin={null}
@@ -365,7 +365,7 @@ exports[`PromoTextBanner native component renders all style correctly 7`] = `
       color="black"
       dataLocator=""
       fontFamily="primary"
-      fontSize="fs20"
+      fontSize="fs18"
       fontWeight="black"
       lineHeight="20px"
       margin={null}
@@ -421,7 +421,7 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
       color="black"
       dataLocator=""
       fontFamily="primary"
-      fontSize="fs20"
+      fontSize="fs18"
       fontWeight="black"
       lineHeight="20px"
       margin={null}
@@ -1291,6 +1291,54 @@ exports[`PromoTextBanner native component renders all style correctly 25`] = `
     />
   </Styled(View)>
 </Styled(View)>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 26`] = `
+<StyledNativeComponent
+  accessibilityText=""
+  color="white"
+  dataLocator=""
+  fontSize="fs48"
+  fontWeight="black"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "accessibilityText": "",
+        "dataLocator": "",
+        "margin": null,
+        "numberOfLines": null,
+        "textDecoration": null,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  margin={null}
+  mobilefontFamily="secondary"
+  numberOfLines={null}
+  textAlign="center"
+  textDecoration={null}
+/>
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `

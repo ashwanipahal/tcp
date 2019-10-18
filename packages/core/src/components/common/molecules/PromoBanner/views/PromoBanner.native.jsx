@@ -183,6 +183,16 @@ export const bodyCopyStyles = {
   ),
 
   percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
+  extrabold_text_regular_secondary: props => (
+    <BodyCopy
+      fontSize="fs48"
+      color="white"
+      mobilefontFamily="secondary"
+      fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -315,7 +325,7 @@ const PercentageStyle = props => {
           style={bodyCopyStyle}
         />
         <BodyCopy
-          fontSize="fs20"
+          fontSize="fs18"
           fontWeight="black"
           color={colorVariation}
           fontFamily="primary"
