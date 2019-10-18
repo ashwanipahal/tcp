@@ -34,6 +34,7 @@ class BillingPage extends React.PureComponent {
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -69,6 +70,7 @@ class BillingPage extends React.PureComponent {
       billingData,
       userAddresses,
       creditFieldLabels,
+      setCheckoutStage,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -79,6 +81,7 @@ class BillingPage extends React.PureComponent {
           activeStage="billing"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView
           ref={scrollView => {
@@ -103,6 +106,7 @@ class BillingPage extends React.PureComponent {
                 navigation={navigation}
                 btnText={nextSubmitText}
                 creditFieldLabels={creditFieldLabels}
+                setCheckoutStage={setCheckoutStage}
               />
             ) : (
               <BillingPaymentForm
@@ -121,6 +125,7 @@ class BillingPage extends React.PureComponent {
                 navigation={navigation}
                 creditFieldLabels={creditFieldLabels}
                 scrollView={this.scrollView}
+                setCheckoutStage={setCheckoutStage}
               />
             )}
           </Container>

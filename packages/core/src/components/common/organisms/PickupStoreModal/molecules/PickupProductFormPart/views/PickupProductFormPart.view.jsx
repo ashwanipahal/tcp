@@ -134,6 +134,7 @@ class PickupProductFormPart extends React.Component {
       offerPrice,
       className,
       colorFitSizeDisplayNames,
+      currencyExchange,
     } = this.props;
 
     const altImageText = `Image for product ${name}`;
@@ -180,6 +181,7 @@ class PickupProductFormPart extends React.Component {
                     currencySymbol={currencySymbol}
                     listPrice={listPrice}
                     offerPrice={offerPrice}
+                    currencyExchange={currencyExchange}
                   />
                 </div>
               </BodyCopy>

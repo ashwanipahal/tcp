@@ -57,9 +57,10 @@ const CONSTANTS = {
     CONFIRMATION: 'confirmationPage',
   },
   CHECKOUT_ROOT: 'Checkout',
-  PICKUP_DEFAULT_PARAM: 'PickupPage',
-  SHIPPING_DEFAULT_PARAM: 'ShippingPage',
-  REVIEW_DEFAULT_PARAM: 'ReviewPage',
+  PICKUP_DEFAULT_PARAM: 'Pickup',
+  SHIPPING_DEFAULT_PARAM: 'Shipping',
+  REVIEW_DEFAULT_PARAM: 'Review',
+  BILLING_DEFAULT_PARAM: 'Billing',
   CHECKOUT_ROUTES_NAMES: {
     CHECKOUT_PICKUP: 'CheckoutPickup',
     CHECKOUT_SHIPPING: 'CheckoutShipping',

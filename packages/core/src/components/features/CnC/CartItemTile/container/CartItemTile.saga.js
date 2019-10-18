@@ -14,6 +14,8 @@ import {
   removeCartItemComplete,
   updateCartItemComplete,
   getProductSKUInfoSuccess,
+  setToggleCartItemError,
+  clearToggleCartItemError,
 } from './CartItemTile.actions';
 import {
   AddToPickupError,
@@ -97,6 +99,7 @@ export function* updateCartItemSaga({ payload }) {
       callBack();
     }
     // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(clearToggleCartItemError());
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         recalcRewards: true,
@@ -113,7 +116,16 @@ export function* updateCartItemSaga({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
-    yield put(AddToPickupError(errorMessage));
+    if (payload.fromToggling) {
+      yield put(
+        setToggleCartItemError({
+          errorMessage,
+          itemId: payload.apiPayload.orderItem[0].orderItemId,
+        })
+      );
+    } else {
+      yield put(AddToPickupError(errorMessage));
+    }
   }
 }
 

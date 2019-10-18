@@ -9,7 +9,7 @@ import {
 import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
-import { getSetIsBillingVisitedActn } from './Checkout.action';
+import { getSetIsBillingVisitedActn, getSetCheckoutStage } from './Checkout.action';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
@@ -35,13 +35,7 @@ const {
 } = selectors;
 const { getCreditCardType } = utility;
 
-export function* updatePaymentInstruction(
-  formData,
-  cardDetailsInfo,
-  isGuestUser,
-  res,
-  loadUpdatedCheckoutValues
-) {
+export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser, res) {
   let cardDetails;
   let cardNotUpdated = true;
   if (formData.onFileCardId) {
@@ -153,7 +147,7 @@ export function addressIdToString(addressId) {
   return null;
 }
 
-export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
+export function* submitBillingData(formData, address) {
   let res;
   let cardDetails;
   const updatePaymentRequired = true;
@@ -221,14 +215,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = res.body;
   }
   if (updatePaymentRequired) {
-    yield call(
-      updatePaymentInstruction,
-      formData,
-      cardDetails,
-      isGuestUser,
-      res,
-      loadUpdatedCheckoutValues
-    );
+    yield call(updatePaymentInstruction, formData, cardDetails, isGuestUser, res);
   }
 }
 
@@ -244,11 +231,11 @@ export function* submitVenmoBilling(payload = {}) {
   if (!isMobileApp()) {
     utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
   } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+    yield put(getSetCheckoutStage(CONSTANTS.REVIEW_DEFAULT_PARAM));
   }
 }
 
-export default function* submitBilling(action = {}, loadUpdatedCheckoutValues) {
+export default function* submitBilling(action = {}) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
     const { payload: { navigation, ...formData } = {} } = action;
@@ -267,14 +254,14 @@ export default function* submitBilling(action = {}, loadUpdatedCheckoutValues) {
     yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
     const isPaymentDisabled = yield select(getIsPaymentDisabled);
     if (!isPaymentDisabled) {
-      yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
+      yield call(submitBillingData, formData, address);
     }
     yield call(getAddressList);
     yield call(getCardList);
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+      yield put(getSetCheckoutStage(CONSTANTS.REVIEW_DEFAULT_PARAM));
     }
   } catch (e) {
     // submitBillingError(store, e);

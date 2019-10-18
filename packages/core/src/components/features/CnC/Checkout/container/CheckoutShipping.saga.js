@@ -6,8 +6,7 @@ import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
 import { setShippingLoadingState } from './Checkout.action';
 import { isCanada } from '../../../../../utils/utils';
-
-const { redirectToBilling } = utility;
+import { redirectToBilling } from './Checkout.saga.util';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
@@ -54,7 +53,7 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
     if (isVenmoInProgress && !isVenmoShippingDisplayed) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: recalcFlag });
     } else {
-      redirectToBilling(navigation);
+      yield call(redirectToBilling);
     }
     yield put(setShippingLoadingState(false));
   } catch (err) {

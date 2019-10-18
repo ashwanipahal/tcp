@@ -8,27 +8,15 @@ const CheckoutStack = createStackNavigator(
   {
     CheckoutPickup: {
       screen: Checkout,
-      params: {
-        routeTo: 'PickupPage',
-      },
     },
     CheckoutShipping: {
       screen: Checkout,
-      params: {
-        routeTo: 'ShippingPage',
-      },
     },
     CheckoutBilling: {
       screen: Checkout,
-      params: {
-        routeTo: 'BillingPage',
-      },
     },
     CheckoutReview: {
       screen: Checkout,
-      params: {
-        routeTo: 'ReviewPage',
-      },
     },
   },
   {

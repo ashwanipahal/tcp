@@ -4,7 +4,7 @@ import { ReviewPageVanilla } from '../views/ReviewPage.view';
 
 describe('ReviewPageVanilla component', () => {
   it('should renders correctly props not present', () => {
-    const props = { labels: {} };
+    const props = { labels: {}, reviewDidMount: () => {} };
     const component = shallow(<ReviewPageVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });

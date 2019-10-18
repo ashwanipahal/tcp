@@ -10,8 +10,10 @@ const buildQuery = () => `
         displayName: name
       }
       exchangeRate {
-        value
+        roundMethod
+        exchangevalue: value
         merchantMargin
+        quoteId
       }
     }
   }

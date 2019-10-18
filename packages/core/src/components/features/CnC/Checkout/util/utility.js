@@ -26,8 +26,7 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { isMobileApp, routerPush } from '../../../../../utils';
-import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
+import { routerPush } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 
@@ -177,14 +176,6 @@ function getCreditCardType({ cardNumber = '', cardType } = {}) {
   return null;
 }
 
-function redirectToBilling(navigation) {
-  if (!isMobileApp()) {
-    routeToPage(CHECKOUT_ROUTES.billingPage);
-  } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
-  }
-}
-
 export const getSelectedCard = ({ creditCardList, onFileCardKey }) => {
   return creditCardList.find(card => card.creditCardId === +onFileCardKey);
 };
@@ -210,6 +201,5 @@ export default {
   getAvailableStages,
   routeToPage,
   getCreditCardType,
-  redirectToBilling,
   isOrderHasShipping,
 };

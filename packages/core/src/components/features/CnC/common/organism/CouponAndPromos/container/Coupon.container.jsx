@@ -33,6 +33,7 @@ export class CouponContainer extends React.PureComponent {
       showAccordian,
       isCarouselView,
       closedOverlay,
+      idPrefix,
       additionalClassNameModal,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
@@ -51,6 +52,7 @@ export class CouponContainer extends React.PureComponent {
             handleErrorCoupon={handleErrorCoupon}
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
+            idPrefix={idPrefix}
           />
         )}
 
@@ -94,11 +96,13 @@ CouponContainer.propTypes = {
   handleErrorCoupon: PropTypes.func.isRequired,
   isCarouselView: PropTypes.bool,
   closedOverlay: PropTypes.func,
+  idPrefix: PropTypes.string,
 };
 
 CouponContainer.defaultProps = {
   closedOverlay: () => {},
   isCarouselView: false,
+  idPrefix: '',
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({

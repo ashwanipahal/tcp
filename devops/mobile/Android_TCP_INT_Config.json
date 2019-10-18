@@ -264,6 +264,22 @@
     {
       "name": "RWD_APP_ASSETHOST_GYM",
       "value": "https://test5.gymboree.com"
+    },
+    {
+      "name": "RWD_APP_TWITTER_CONSUMER_KEY_TCP",
+      "value": "7GFPBsI0aEZgbVSFQYXBwBbOK"
+    },
+    {
+      "name": "RWD_APP_TWITTER_CONSUMER_SECRET_TCP",
+      "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
+    },
+    {
+      "name": "RWD_APP_TWITTER_CONSUMER_KEY_GYM",
+      "value": "7GFPBsI0aEZgbVSFQYXBwBbOK"
+    },
+    {
+      "name": "RWD_APP_TWITTER_CONSUMER_SECRET_GYM",
+      "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
     }
   ],
   "signed": true,

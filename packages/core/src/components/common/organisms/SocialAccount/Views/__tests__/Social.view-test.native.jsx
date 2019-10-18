@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
+import { NativeModules } from 'react-native';
 import { SocialviewVanilla } from '../Social.view.native';
 
 describe('Social component', () => {
@@ -24,6 +24,10 @@ describe('Social component', () => {
 
   beforeEach(() => {
     component = shallow(<SocialviewVanilla {...props} />);
+    NativeModules.RNTwitterSignIn = {
+      init: jest.fn(),
+      logIn: jest.fn(() => Promise.resolve({ loginData: { userID: 'foo', authToken: 'foo' } })),
+    };
   });
 
   it('should renders correctly', () => {
@@ -55,5 +59,10 @@ describe('Social component', () => {
   it('test dispatchSaveSocial func', () => {
     component.instance().dispatchSaveSocial('facebook', 'foo', 'foo');
     expect(props.pointModalClose).toHaveBeenCalled();
+  });
+
+  it('should simulate twitter connect', () => {
+    component.instance().handleSocialNetwork('Twitter', false);
+    expect(props.saveSocialAcc).toHaveBeenCalledTimes(1);
   });
 });

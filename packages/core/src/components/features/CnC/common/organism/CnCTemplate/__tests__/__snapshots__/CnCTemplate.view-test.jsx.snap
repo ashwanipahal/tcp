@@ -35,6 +35,7 @@ exports[`CnC template should render correctly 1`] = `
       <Connect(CouponContainer)
         additionalClassNameModal="coupon-modal-web"
         fullPageInfo={true}
+        idPrefix="desktop"
         showAccordian={true}
       />
     </Styled(Col)>

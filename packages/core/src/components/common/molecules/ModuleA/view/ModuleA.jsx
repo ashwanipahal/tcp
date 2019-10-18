@@ -48,6 +48,7 @@ class ModuleA extends React.Component {
       ctaType,
       className,
       accessibility: { playIconButton, pauseIconButton } = {},
+      fullBleed,
     } = this.props;
 
     const buttonListCtaType = ctaTypes[ctaType];
@@ -79,7 +80,7 @@ class ModuleA extends React.Component {
         className={`${className} ${isGymboree() ? 'gymboree-module-a' : ''} ${
           isRibbonLeftAligned ? 'left-aligned-ribbon' : ''
         } moduleA`}
-        fullBleed={{ small: true, medium: true, large: false }}
+        fullBleed={fullBleed || { small: true, medium: true, large: false }}
       >
         <Col
           colSize={{
@@ -160,6 +161,7 @@ class ModuleA extends React.Component {
 
 ModuleA.defaultProps = {
   accessibility: {},
+  fullBleed: false,
 };
 
 ModuleA.propTypes = {
@@ -184,6 +186,7 @@ ModuleA.propTypes = {
   ctaItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList'])
     .isRequired,
+  fullBleed: PropTypes.bool,
 };
 
 export default withStyles(errorBoundary(ModuleA), style);

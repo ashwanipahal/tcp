@@ -47,6 +47,7 @@ export default class ShippingPage extends React.Component {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -262,6 +263,7 @@ export default class ShippingPage extends React.Component {
       setAsDefaultShipping,
       syncErrors,
       newUserPhoneNo,
+      setCheckoutStage,
       formatPayload,
     } = this.props;
 
@@ -288,6 +290,7 @@ export default class ShippingPage extends React.Component {
             <CheckoutProgressIndicator
               activeStage="shipping"
               navigation={navigation}
+              setCheckoutStage={setCheckoutStage}
               availableStages={availableStages}
             />
             <ScrollView keyboardShouldPersistTaps="handled">
@@ -338,6 +341,7 @@ export default class ShippingPage extends React.Component {
                   defaultAddressId={defaultAddressId}
                   syncErrorsObject={syncErrors}
                   newUserPhoneNo={newUserPhoneNo}
+                  setCheckoutStage={setCheckoutStage}
                 />
               )}
             </ScrollView>
