@@ -4,6 +4,7 @@ export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
+  position: relative;
   .product {
     padding-top: 6px;
   }
@@ -85,6 +86,9 @@ export default css`
     width: 10px;
     height: 10px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   .crossDeleteIconBag {
@@ -93,6 +97,10 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
     img {
       display: block;
     }
@@ -334,6 +342,19 @@ export default css`
   }
   .product-detail-review-page {
     display: inline-block;
+  }
+
+  .toggle-error {
+    display: flex;
+    align-items: center;
+    background: ${props => props.theme.colorPalette.white};
+
+    img {
+      padding-top: 0px;
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      padding-left: 0;
+      padding-bottom: 1px;
+    }
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
