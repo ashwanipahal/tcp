@@ -7,6 +7,11 @@ import ProductPickup from '../views/ProductPickup.view';
 import { getBopisInventoryDetailsAction } from './ProductPickup.actions';
 import * as PickupSelectors from './ProductPickup.selectors';
 import {
+  getIsBossEnabled,
+  getIsBopisEnabled,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
+import {
   validateSkuDetails,
   validateBossEligibility,
   validateBopisEligibility,
@@ -246,7 +251,24 @@ class ProductPickupContainer extends React.PureComponent {
       getBopisInventoryDetails,
       userGeoCoordinates: { lat, long },
       getGeoDefaultStore,
+      isBossClearanceProductEnabled,
+      isBossEnabled,
+      isBopisClearanceProductEnabled,
+      isBopisEnabled,
+      miscInfo,
     } = this.props;
+    const bossValidatingParams = {
+      isBossClearanceProductEnabled,
+      isBossEnabled,
+    };
+    const bopisValidatingParams = {
+      isBopisClearanceProductEnabled,
+      isBopisEnabled,
+    };
+    this.isSkuResolved = false;
+    this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
+    this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
+    this.isGeoStoreAPIRequested = false;
     if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps)) {
       // Added New check for userDefaultStore to fire getBopisInventoryDetails when user has already selected sku and allows location access later.
       const itemPartNumber = getVariantId(
@@ -322,7 +344,9 @@ class ProductPickupContainer extends React.PureComponent {
 
     let isStoreBossEligible = false;
     if (userDefaultStore) {
-      isStoreBossEligible = numericStringToBool(userDefaultStore.storeBossInfo.isBossEligible);
+      isStoreBossEligible = numericStringToBool(
+        userDefaultStore.storeBossInfo && userDefaultStore.storeBossInfo.isBossEligible
+      );
     }
 
     let isbossInventoryAvailable;
@@ -392,7 +416,9 @@ class ProductPickupContainer extends React.PureComponent {
     const isStoreBopisEligible = this.getIsStoreBopisEligible(bopisItemInventory);
     let isStoreBossEligible = false;
     if (userDefaultStore) {
-      isStoreBossEligible = numericStringToBool(userDefaultStore.storeBossInfo.isBossEligible);
+      isStoreBossEligible = numericStringToBool(
+        userDefaultStore.storeBossInfo && userDefaultStore.storeBossInfo.isBossEligible
+      );
     }
 
     let isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligible(isStoreBossEligible);
@@ -535,14 +561,14 @@ function mapStateToProps(state, ownProps) {
     labels: PickupSelectors.getLabels(state),
     itemValues: updateItemValueObj(selector(state, 'color', 'Fit', 'Size', 'Quantity')),
     pickupModalState: getIsPickupModalOpen(state),
-    // isBopisEnabled: PickupSelectors.getIsBopisEnabled(state),
-    // isBossEnabled: PickupSelectors.getIsBossEnabled(state),
-    // isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
-    // isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
-    isBopisEnabled: true,
-    isBossEnabled: true,
-    isBopisClearanceProductEnabled: true,
-    isBossClearanceProductEnabled: true,
+    isBopisEnabled: getIsBopisEnabled(state),
+    isBossEnabled: getIsBossEnabled(state),
+    isBopisClearanceProductEnabled: PickupSelectors.getIsBopisClearanceProductEnabled(state),
+    isBossClearanceProductEnabled: PickupSelectors.getIsBossClearanceProductEnabled(state),
+    // isBopisEnabled: true,
+    // isBossEnabled: true,
+    // isBopisClearanceProductEnabled: true,
+    // isBossClearanceProductEnabled: true,
 
     // userDefaultStore,
     // TODO - This is a sample default store value for implementation.
@@ -687,7 +713,7 @@ function mapStateToProps(state, ownProps) {
     // TODO - check if required => getGeoDefaultStore: storeOperators.storesOperator.loadDefaultStore,
     bopisItemInventory: PickupSelectors.getBopisItemInventory(state),
     // TODO - This changes to CMS data - offerEspotAvailable: offerEspot && offerEspot.value,
-    isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
+    // isRadialInventoryEnabled: PickupSelectors.getIsRadialInventoryEnabled(state),
     // TODO - dummy values for hardcoding the status. Remove once the API works.
     // bopisItemInventory: [
     //   {
@@ -695,7 +721,7 @@ function mapStateToProps(state, ownProps) {
     //     quantity: 10,
     //   },
     // ],
-    // isRadialInventoryEnabled: true,
+    isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),
   };
 }
 

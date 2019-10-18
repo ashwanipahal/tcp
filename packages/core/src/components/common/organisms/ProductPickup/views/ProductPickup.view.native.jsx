@@ -136,7 +136,7 @@ class ProductPickup extends React.PureComponent {
      */
     bopisItemInventory: PropTypes.arrayOf(PropTypes.object),
     isBopisEligible: PropTypes.bool,
-    isBossEligible: PropTypes.bool,
+    // isBossEligible: PropTypes.bool,
     isSkuResolved: PropTypes.bool,
     showChangeStore: PropTypes.bool,
     pickupTitleText: PropTypes.string,
@@ -183,7 +183,7 @@ class ProductPickup extends React.PureComponent {
     onPickUpOpenClick: null,
     bopisItemInventory: [],
     isBopisEligible: false,
-    isBossEligible: false,
+    // isBossEligible: false,
     isSkuResolved: false,
     showChangeStore: false,
     pickupTitleText: '',
@@ -220,24 +220,18 @@ class ProductPickup extends React.PureComponent {
    */
 
   handlePickupModalClick = () => {
-    const {
-      onPickUpOpenClick,
-      productInfo,
-      itemValues,
-      isBopisEligible,
-      isBossEligible,
-    } = this.props;
-
-    if (onPickUpOpenClick) {
-      onPickUpOpenClick(
-        productInfo.generalProductId,
-        itemValues,
-        productInfo.generalProductId,
-        productInfo.generalProductId,
-        isBopisEligible,
-        isBossEligible
-      );
-    }
+    const { productInfo, onPickUpOpenClick } = this.props;
+    const { /* colorFitsSizesMap, */ generalProductId } = productInfo;
+    // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    onPickUpOpenClick({
+      generalProductId,
+      colorProductId: generalProductId,
+      // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      currentProduct: productInfo,
+    });
+    // if (closeQuickViewClick) {
+    // }
   };
 
   handleChangeStoreOnKeyPress = event =>
@@ -488,6 +482,22 @@ class ProductPickup extends React.PureComponent {
     const { showPickupInfo, isSubmitting, labels } = this.props;
     return (
       <Container margins="40px 0 0 0">
+        <Button
+          margin="12px 12px 0 12px"
+          color="white"
+          fill="BLACK"
+          text={
+            showPickupInfo
+              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+              : labels.lbl_Product_pickup_FIND_STORE
+          }
+          fontSize="fs12"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          onPress={this.handlePickupModalClick}
+          locator="pdp_pick_up_in_store_btn"
+          disabled={isSubmitting}
+        />
         <FastShippingContainer>
           <CustomIcon
             iconFontName={ICON_FONT_CLASS.Icomoon}

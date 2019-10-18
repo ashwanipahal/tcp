@@ -43,6 +43,7 @@ export const getIsRadialInventoryEnabled = state => {
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
+  // return true;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOSSEnabled_${brand.toUpperCase()}`])
@@ -50,6 +51,7 @@ export const getIsBossEnabled = (state, brand = getBrand()) => {
 };
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
+  // return true;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOPISEnabled_${brand.toUpperCase()}`])

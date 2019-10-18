@@ -5,6 +5,7 @@ import { ScrollViewContainer } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -65,6 +66,8 @@ const OutfitDetailsView = ({
   addToBagEcom,
   currentState,
   labels,
+  isPickupModalOpen,
+  navigation,
 }) => {
   return (
     <ScrollViewContainer>
@@ -86,6 +89,7 @@ const OutfitDetailsView = ({
           })
         }
       />
+      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       <AddedToBagContainer />
     </ScrollViewContainer>
   );
@@ -100,6 +104,8 @@ OutfitDetailsView.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
+  isPickupModalOpen: PropTypes.bool,
+  navigation: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -108,6 +114,8 @@ OutfitDetailsView.defaultProps = {
   plpLabels: {},
   item: PropTypes.shape({}),
   labels: {},
+  isPickupModalOpen: false,
+  navigation: {},
 };
 
 export default OutfitDetailsView;

@@ -17,6 +17,7 @@ import {
   getCurrentCurrencySymbol,
   getCurrentCurrency,
 } from '../../../../../reduxStore/selectors/session.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
   addToCartEcom,
@@ -31,14 +32,14 @@ class OutfitDetailsContainer extends React.PureComponent {
     const {
       getOutfit,
       router: { query },
-      navigation,
+      // navigation,
     } = this.props;
 
     if (isMobileApp()) {
-      const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
-      const outfitId = navigation.getParam('outfitId');
-      // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
-      // const outfitId = '138548';
+      // const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
+      // const outfitId = navigation.getParam('outfitId');
+      const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
+      const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
       const { vendorColorProductIdsList, outfitId } = query;
@@ -112,6 +113,7 @@ const mapStateToProps = state => {
     addToBagError: getAddedToBagError(state),
     addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 

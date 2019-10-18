@@ -28,14 +28,14 @@ export const getIsBopisEnabled = state => {
 export const getIsBopisClearanceProductEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBopisClearanceProductEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOPIS_ENABLED_CLEARANCE_PRODUCTS'])
   );
 };
 
 export const getIsBossClearanceProductEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isBossClearanceProductEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOSS_ENABLED_CLEARANCE_PRODUCTS'])
   );
 };
 
