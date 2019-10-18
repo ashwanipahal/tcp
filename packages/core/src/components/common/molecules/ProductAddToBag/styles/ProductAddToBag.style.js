@@ -28,18 +28,15 @@ const styles = css`
     font-style: normal;
     letter-spacing: 1px;
     height: 42px;
-<<<<<<< HEAD
     width: 347px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       height: 42px;
       width: 213px;
-=======
+    }
     &:hover {
       background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
->>>>>>> a16e27af2b67ff3bea2061dc088b786ca96f7196
     }
-
     @media ${props => props.theme.mediaQuery.large} {
       height: 51px;
       width: 330px;
