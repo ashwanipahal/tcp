@@ -75,10 +75,12 @@ function getIsMobile() {
   return getViewportInfo().isMobile;
 }
 
-export const isExpressCheckout = createSelector(
-  getPersonalDataState,
-  state => state && state.get('isExpressEligible')
-);
+// export const isExpressCheckout = createSelector(
+//   getPersonalDataState,
+//   state => state && state.get('isExpressEligible')
+// );
+
+export const isExpressCheckout = () => false;
 
 export const getCheckoutStage = createSelector(
   getCheckoutUiFlagState,
