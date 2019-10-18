@@ -15,6 +15,9 @@ const mapStateToProps = (state, ownProps) => {
     modulePHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_P_HEADER_LABEL', 'recommendations', 'global'),
+    ctaText: getLabelValue(state.Labels, 'CTA_TEXT', 'recommendations', 'global'),
+    ctaTitle: getLabelValue(state.Labels, 'CTA_TITLE', 'recommendations', 'global'),
+    ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
     isPlcc: isPlccUser(state),
   };
 };

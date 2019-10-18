@@ -5,8 +5,9 @@ import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import ModuleO from '@tcp/core/src/components/common/molecules/ModuleO';
 import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
-import { getScreenWidth } from '@tcp/core/src/utils/index.native';
-import { CarouselContainer } from './Recommendations.style';
+import { getScreenWidth, getLocator } from '@tcp/core/src/utils/index.native';
+import { Button } from '@tcp/core/src/components/common/atoms';
+import { CarouselContainer, ButtonContainer } from './Recommendations.style';
 import config from './config';
 
 const PRODUCT_IMAGE_WIDTH = 186;
@@ -14,12 +15,13 @@ const MODULE_HEIGHT = 287;
 const MODULE_WIDTH = getScreenWidth();
 
 const loadVariation = (variation, variationProps) => itemProps => {
-  const { isPlcc, onQuickViewOpenClick, ...others } = variationProps;
+  const { isPlcc, onQuickViewOpenClick, priceOnly, ...others } = variationProps;
 
   if (variation === 'moduleO') {
     return (
       <ModuleO
         isPlcc={isPlcc}
+        priceOnly={priceOnly}
         onQuickViewOpenClick={onQuickViewOpenClick}
         {...itemProps}
         {...others}
@@ -37,6 +39,23 @@ const loadVariation = (variation, variationProps) => itemProps => {
   );
 };
 
+const ButtonView = buttonProps => {
+  const { ctaText, ctaTitle, ctaUrl, navigation } = buttonProps;
+
+  return (
+    <ButtonContainer>
+      <Button
+        width="225px"
+        accessibilityLabel={ctaTitle}
+        text={ctaText}
+        testID={getLocator('moduleD_button')}
+        url={ctaUrl}
+        navigation={navigation}
+      />
+    </ButtonContainer>
+  );
+};
+
 const renderRecommendationView = (props, variation) => {
   const {
     moduleOHeaderLabel,
@@ -44,6 +63,8 @@ const renderRecommendationView = (props, variation) => {
     products,
     isPlcc,
     onQuickViewOpenClick,
+    priceOnly,
+    showButton,
     ...others
   } = props;
 
@@ -67,6 +88,7 @@ const renderRecommendationView = (props, variation) => {
           <Carousel
             data={products}
             renderItem={loadVariation(variation, {
+              priceOnly,
               isPlcc,
               onQuickViewOpenClick,
               ...others,
@@ -78,6 +100,7 @@ const renderRecommendationView = (props, variation) => {
             activeSlideAlignment="start"
           />
         </CarouselContainer>
+        {showButton && <ButtonView {...props} />}
       </React.Fragment>
     )
   );

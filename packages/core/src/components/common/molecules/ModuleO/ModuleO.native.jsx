@@ -26,6 +26,7 @@ const ModuleO = props => {
     isPlcc,
     onQuickViewOpenClick,
     item,
+    priceOnly,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -66,6 +67,7 @@ const ModuleO = props => {
         onQuickViewOpenClick={onQuickViewOpenClick}
         fullWidth
         renderPriceAndBagOnly
+        renderPriceOnly={priceOnly}
       />
     </View>
   );
@@ -78,6 +80,7 @@ ModuleO.propTypes = {
   isPlcc: PropTypes.bool,
   onQuickViewOpenClick: PropTypes.func,
   item: PropTypes.shape({}).isRequired,
+  priceOnly: PropTypes.bool,
 };
 
 ModuleO.defaultProps = {
@@ -86,6 +89,7 @@ ModuleO.defaultProps = {
   isMatchingFamily: true,
   isPlcc: false,
   currencySymbol: '$',
+  priceOnly: false,
 };
 
 export default ModuleO;
