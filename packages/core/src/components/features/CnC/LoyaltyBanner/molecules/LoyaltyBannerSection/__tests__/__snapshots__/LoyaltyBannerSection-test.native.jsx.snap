@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render correctly 1`] = `
+<View>
+  <Styled(View)
+    isPlcc={false}
+  />
+  <Styled(GuestMprPlccSection)
+    currentSubtotal={21}
+    descriptionLabel={false}
+    estimatedSubtotal={33}
+    getCurrencySymbol=""
+    headingLabel={false}
+    isPlcc={false}
+    labels={Object {}}
+    remainingPlcc={false}
+    showSubtotal={true}
+    subHeadingLabel={false}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      className="applyNow"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      locator=""
+      onPress={null}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        className="learnMore"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="medium"
+        locator=""
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)
+    isPlcc={false}
+  />
+</View>
+`;

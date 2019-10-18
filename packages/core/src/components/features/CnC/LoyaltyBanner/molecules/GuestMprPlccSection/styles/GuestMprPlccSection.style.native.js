@@ -15,6 +15,7 @@ const SubTotalLine = styled.View`
 
 const HeadingLabel = styled.Text`
   padding: 12px 45px 0;
+  color: ${props => (props.isPlcc ? plccMpr : 'black')};
 `;
 
 const PointsValueText = styled.Text`
