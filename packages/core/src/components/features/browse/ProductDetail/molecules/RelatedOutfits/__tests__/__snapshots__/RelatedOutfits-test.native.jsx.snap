@@ -38,6 +38,5 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(View)>
   </Styled(TouchableOpacity)>
-  <RelatedOutfitsSlots />
 </View>
 `;

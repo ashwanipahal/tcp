@@ -45,7 +45,7 @@ const PlpStack = createStackNavigator(
     [ROUTE_NAMES.PRODUCT_LISTING]: {
       screen: ProductListing,
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation, true);
+        return getNewHeader(navigation, false);
       },
     },
     [ROUTE_NAMES.PRODUCT_DETAIL_PAGE]: {

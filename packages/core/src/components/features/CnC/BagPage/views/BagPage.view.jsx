@@ -51,6 +51,7 @@ class BagPageView extends React.Component {
   }
 
   componentDidUpdate() {
+    /* istanbul ignore else */
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = this.bagActionsContainer;
       const header = this.bagPageHeader;
