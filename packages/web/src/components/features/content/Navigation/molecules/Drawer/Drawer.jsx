@@ -137,7 +137,6 @@ class Drawer extends React.Component {
     }
     if (close && renderOverlay) {
       closeOverlay();
-      enableBodyScroll();
     }
     if (openDrawer && renderOverlay) {
       showOverlay();
