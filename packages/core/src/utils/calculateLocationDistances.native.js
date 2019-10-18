@@ -9,7 +9,7 @@ const DISTANCE_API = `https://maps.googleapis.com/maps/api/distancematrix/json?u
  * example - store location - [{ lat: 32.632603, long: -117.084907 }]
  * example - coords -  { lat: 32.659629, lng: -117.064635}
  */
-const calcDistanceByLatLng = (storeLocations, coords, isDisabled) => {
+const calcDistanceByLatLng = (storeLocations = [], coords = {}, isDisabled = false) => {
   return new Promise((resolve, reject) => {
     if (isDisabled) {
       return reject();

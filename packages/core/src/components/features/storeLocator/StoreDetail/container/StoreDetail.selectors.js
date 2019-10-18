@@ -125,3 +125,6 @@ export const getReferredContentList = createSelector(
 );
 
 export const getRichTextContent = (state, key) => state[STORE_DETAIL_REDUCER_KEY].get(key);
+
+export const getStoreDistance = state =>
+  state[STORE_DETAIL_REDUCER_KEY].get('storeDistanceFromUser');

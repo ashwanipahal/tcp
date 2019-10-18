@@ -172,7 +172,10 @@ AutoCompleteComponent.propTypes = {
   apiFields: PropTypes.shape({}).isRequired,
   input: PropTypes.shape({}).isRequired,
   onPlaceSelected: PropTypes.func.isRequired,
-  meta: PropTypes.shape({}).isRequired,
+  meta: PropTypes.shape({
+    touched: PropTypes.string,
+    error: PropTypes.string,
+  }).isRequired,
 };
 
 export default AutoCompleteComponent;

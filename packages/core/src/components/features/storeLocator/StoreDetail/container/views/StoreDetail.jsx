@@ -112,7 +112,7 @@ const StoreDetail = ({
       </Row>
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          {createRichText(fetchRichContent('storeLocator-description'))}
+          {createRichText(fetchRichContent('storeLocator_description'))}
         </Col>
       </Row>
     </div>

@@ -25,6 +25,8 @@ const StoreDetailReducer = (state = initialState, action) => {
       return state.set('suggestedStores', action.payload.nearByStores);
     case constants.SET_MODULEX_CONTENT:
       return state.set(action.payload.key, action.payload.value);
+    case constants.SET_DISTANCE:
+      return state.set('storeDistanceFromUser', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

@@ -34,3 +34,17 @@ export function getModuleXContent(payload) {
     type: constants.GET_MODULEX_CONTENT,
   };
 }
+
+export function getDistance(payload) {
+  return {
+    payload,
+    type: constants.GET_DISTANCE,
+  };
+}
+
+export function setDistance(payload) {
+  return {
+    payload,
+    type: constants.SET_DISTANCE,
+  };
+}

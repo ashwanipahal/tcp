@@ -379,12 +379,20 @@ class StoreAddressTile extends PureComponent {
           fontFamily="secondary"
           className="address-details"
         >
-          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map((item, i) => (
-            <BodyCopy key={`${item + i}`} fontSize="fs12" component="span" fontFamily="secondary">
-              {item}
-              <br />
-            </BodyCopy>
-          ))}
+          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map(
+            (item, i) =>
+              item && (
+                <BodyCopy
+                  key={`${item + i}`}
+                  fontSize="fs12"
+                  component="span"
+                  fontFamily="secondary"
+                >
+                  {item}
+                  <br />
+                </BodyCopy>
+              )
+          )}
         </BodyCopy>
         <div className={`address-meta${addressMetaClassName}`}>
           <div className="address-meta__left">

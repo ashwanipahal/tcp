@@ -1,12 +1,18 @@
 import { call, takeLatest, put, all } from 'redux-saga/effects';
-import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
+import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleXComposite';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 import {
   getCurrentStoreInfoApi,
   getNearByStoreApi,
+  calcDistanceByLatLng,
 } from '@tcp/core/src/services/abstractors/common/storeLocator';
 import constants from './StoreDetail.constants';
-import { setCurrentStoreInfo, setNearByStore, setModuleXContent } from './StoreDetail.actions';
+import {
+  setCurrentStoreInfo,
+  setNearByStore,
+  setModuleXContent,
+  setDistance,
+} from './StoreDetail.actions';
 
 export function* getCurrentStore({ payload }) {
   try {
@@ -26,17 +32,12 @@ export function* getNearByStore({ payload }) {
   }
 }
 
-export function* fetchModuleX({ payload = {} }) {
+export function* fetchModuleX({ payload = [] }) {
   try {
-    const moduleXResponses = yield all([
-      call(getModuleX, payload[0].contentId),
-      call(getModuleX, payload[1].contentId),
-      call(getModuleX, payload[2].contentId),
-      call(getModuleX, payload[3].contentId),
-    ]);
-    const putDescriptorParams = moduleXResponses.map((item, i) => ({
-      key: payload[i].name,
-      value: moduleXResponses[i].richText,
+    const moduleXResponses = yield call(getModuleX, payload);
+    const putDescriptorParams = Object.keys(moduleXResponses).map(item => ({
+      key: item,
+      value: moduleXResponses[item],
     }));
     return yield all([
       put(setModuleXContent(putDescriptorParams[0])),
@@ -49,11 +50,26 @@ export function* fetchModuleX({ payload = {} }) {
   }
 }
 
+export function* calculateDistance({ payload }) {
+  try {
+    const distance = yield call(calcDistanceByLatLng, payload.destination);
+    console.log(distance);
+    if (distance && distance !== -1) {
+      yield put(setDistance(distance));
+    }
+    yield put(setDistance(null));
+  } catch (err) {
+    yield put(setDistance(null));
+  }
+}
+
 export function* StoreDetailSaga() {
   const cachedModuleX = validateReduxCache(fetchModuleX);
+  const cachedDistance = validateReduxCache(calculateDistance);
   yield takeLatest(constants.GET_CURRENT_STORE, getCurrentStore);
   yield takeLatest(constants.GET_SUGGESTED_STORE, getNearByStore);
   yield takeLatest(constants.GET_MODULEX_CONTENT, cachedModuleX);
+  yield takeLatest(constants.GET_DISTANCE, cachedDistance);
 }
 
 export default StoreDetailSaga;

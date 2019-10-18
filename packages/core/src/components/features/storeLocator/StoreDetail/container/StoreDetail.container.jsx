@@ -2,14 +2,24 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
-import { getNearByStore, getCurrentStoreInfo, getModuleXContent } from './StoreDetail.actions';
+import {
+  getNearByStore,
+  getCurrentStoreInfo,
+  getModuleXContent,
+  getDistance,
+} from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import { routeToStoreDetails, routerPush, fetchStoreIdFromUrlPath } from '../../../../../utils';
-import calcDistanceByLatLng from '../../../../../utils/calculateLocationDistances';
+import {
+  routeToStoreDetails,
+  routerPush,
+  fetchStoreIdFromUrlPath,
+  isMobileApp,
+} from '../../../../../utils';
+import calculateDistance from '../../../../../utils/calculateLocationDistances';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -18,6 +28,7 @@ import {
   isFavoriteStore,
   getReferredContentList,
   getRichTextContent,
+  getStoreDistance,
 } from './StoreDetail.selectors';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import googleMapConstants from '../../../../../constants/googleMap.constants';
@@ -34,8 +45,7 @@ export class StoreDetailContainer extends PureComponent {
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(({ isMobileApp, navigateToNestedRoute, UrlHandler, isAndroid, mapHandler }) => {
-        this.hasMobileApp = isMobileApp();
+      .then(({ navigateToNestedRoute, UrlHandler, isAndroid, mapHandler }) => {
         this.navigateToNestedRoute = navigateToNestedRoute;
         this.UrlHandler = UrlHandler;
         this.isAndroid = isAndroid && isAndroid();
@@ -105,7 +115,7 @@ export class StoreDetailContainer extends PureComponent {
       basicInfo: { address },
     } = store;
     const { addressLine1, city, state, zipCode } = address;
-    if (this.hasMobileApp) {
+    if (isMobileApp()) {
       this.mapHandler(store);
     } else {
       window.open(
@@ -117,7 +127,13 @@ export class StoreDetailContainer extends PureComponent {
   }
 
   loadCurrentStoreInitialInfo() {
-    const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
+    const {
+      loadNearByStoreInfo,
+      currentStoreInfo,
+      formatStore,
+      getFavStore,
+      calcDistanceByLatLng,
+    } = this.props;
     const store = formatStore(currentStoreInfo);
     if (store.basicInfo && Object.keys(store.basicInfo).length > 0) {
       const { basicInfo } = store;
@@ -128,9 +144,15 @@ export class StoreDetailContainer extends PureComponent {
         latitude: coordinates.lat,
         longitude: coordinates.long,
       };
-      calcDistanceByLatLng([{ lat: coordinates.lat, long: coordinates.long }]).then(val => {
-        this.setState({ distance: val });
-      });
+      const distanceArgs = {
+        destination: [{ lat: coordinates.lat, long: coordinates.long }],
+      };
+      if (isMobileApp()) calcDistanceByLatLng(distanceArgs);
+      else {
+        calculateDistance([{ lat: coordinates.lat, long: coordinates.long }]).then(value => {
+          if (value && Number.isNaN(Number(value))) this.setState({ distance: value });
+        });
+      }
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
     }
@@ -145,9 +167,11 @@ export class StoreDetailContainer extends PureComponent {
       isFavorite,
       setFavStore,
       getRichContent,
+      distanceFromUser,
     } = this.props;
     const { distance } = this.state;
-    const store = formatStore(currentStoreInfo, distance);
+    const calculatedDistance = distance || distanceFromUser;
+    const store = formatStore(currentStoreInfo, calculatedDistance);
     const otherStores =
       nearByStores && nearByStores.length > 0
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
@@ -207,6 +231,8 @@ StoreDetailContainer.propTypes = {
   getModuleX: PropTypes.func,
   referredContentList: PropTypes.shape([]),
   getRichContent: PropTypes.func,
+  calcDistanceByLatLng: PropTypes.func,
+  distanceFromUser: PropTypes.string,
 };
 
 StoreDetailContainer.defaultProps = {
@@ -228,6 +254,8 @@ StoreDetailContainer.defaultProps = {
   getModuleX: () => null,
   referredContentList: [],
   getRichContent: () => null,
+  calcDistanceByLatLng: () => null,
+  distanceFromUser: -1,
 };
 
 const mapStateToProps = state => {
@@ -240,6 +268,7 @@ const mapStateToProps = state => {
     isUserLoggedIn: getUserLoggedInState(state),
     referredContentList: getReferredContentList(state),
     getRichContent: key => getRichTextContent(state, key),
+    distanceFromUser: getStoreDistance(state),
   };
 };
 
@@ -254,6 +283,7 @@ export const mapDispatchToProps = dispatch => ({
   getModuleX: payload => {
     dispatch(getModuleXContent(payload));
   },
+  calcDistanceByLatLng: payload => dispatch(getDistance(payload)),
 });
 
 export default connect(

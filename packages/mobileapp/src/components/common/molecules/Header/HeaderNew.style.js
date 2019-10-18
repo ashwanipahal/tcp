@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
 import { isAndroid } from '@tcp/core/src/utils/utils.app';
-import { isGymboree } from '@tcp/core/src/utils';
 
 const setBackground = props => {
-  if (isGymboree()) {
+  if (props.theme.isGymboree) {
     return `
     background-color: ${props.theme.colorPalette.orange[900]};
     `;
