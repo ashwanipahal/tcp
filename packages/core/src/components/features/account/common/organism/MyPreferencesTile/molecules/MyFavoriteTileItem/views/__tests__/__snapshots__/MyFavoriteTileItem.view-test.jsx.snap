@@ -75,9 +75,9 @@ exports[`MyFavoriteTileItem component should render correctly when coupons are n
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath=""
+            asPath="/account/my-preference"
             fontSizeVariation="large"
-            to=""
+            to="/account?id=my-preference"
             underline={true}
           >
             lbl_prefrence_tile_add
