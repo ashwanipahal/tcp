@@ -479,6 +479,11 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <Connect(Recommendations)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
     variation="moduleO,moduleP"
   />
 </LazyloadScrollView>
