@@ -25,7 +25,6 @@ class ModuleJ extends React.PureComponent {
 
   getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
-
     return currentSingleCTAButton ? (
       <Row centered>
         <Col

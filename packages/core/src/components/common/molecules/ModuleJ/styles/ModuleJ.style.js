@@ -153,7 +153,7 @@ export default css`
   }
 
   .buttonStylingAndSpacing {
-    margin-top: 14px;
+    margin-top: 27px;
   }
 
   .imagesDiv {
