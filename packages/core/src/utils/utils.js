@@ -856,6 +856,11 @@ export const getStoreHours = (
 
  * @returns {object} label and message for order group
  */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
 export const getOrderGroupLabelAndMessage = orderProps => {
   let label;
   let message;
@@ -915,4 +920,5 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  readCookieMobileApp,
 };

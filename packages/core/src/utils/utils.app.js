@@ -400,6 +400,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
   };
 };
 
@@ -630,7 +631,8 @@ export const readCookieMobileApp = key => {
   return new Promise((resolve, reject) => {
     CookieManager.get(apiConfigObj.domain)
       .then(response => {
-        return resolve(response[key]);
+        const keyValue = key ? response[key] : response;
+        return resolve(keyValue);
       })
       .catch(e => reject(e));
   });
