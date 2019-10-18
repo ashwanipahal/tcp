@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -66,14 +65,14 @@ const ProductDetailImage = props => {
   }
   return (
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
-      {isZoomEnabled && !isMobile ? (
+      {imgZoom && !isMobile ? (
         <>
           <ReactImageMagnify
             data-locator={getLocator('pdp_main_image')}
             {...{
               enlargedImagePortalId: 'portal',
               smallImage: {
-                src: changeImageURLToDOM(imageUrl, 'w_500'),
+                src: imageUrl,
                 isFluidWidth: true,
                 alt: imageName,
                 onLoad: handleImageLoaded,
