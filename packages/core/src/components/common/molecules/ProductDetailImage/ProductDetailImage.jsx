@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
+import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import ReactImageMagnify from 'react-image-magnify';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -57,7 +58,6 @@ const ProductDetailImage = props => {
   } = props;
   const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
   let productSectionWidth;
-  const imgZoom = false;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
@@ -65,14 +65,14 @@ const ProductDetailImage = props => {
   }
   return (
     <div itemScope itemType="http://schema.org/ImageObject" className={className} title={imageName}>
-      {imgZoom && !isMobile ? (
+      {isZoomEnabled && !isMobile ? (
         <>
           <ReactImageMagnify
             data-locator={getLocator('pdp_main_image')}
             {...{
               enlargedImagePortalId: 'portal',
               smallImage: {
-                src: imageUrl,
+                src: changeImageURLToDOM(imageUrl, 'w_500'),
                 isFluidWidth: true,
                 alt: imageName,
                 onLoad: handleImageLoaded,
@@ -82,7 +82,7 @@ const ProductDetailImage = props => {
                 height: '100%',
               },
               largeImage: {
-                src: zoomImageUrl,
+                src: changeImageURLToDOM(zoomImageUrl, 'w_500'),
                 width: 900,
                 height: 900,
                 alt: imageName,
