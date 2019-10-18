@@ -25,6 +25,7 @@ import {
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -826,7 +827,7 @@ const getIsVenmoEnabled = state => {
   return (
     getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.VENMO_ENABLED === 'TRUE'
   );
 };
 
@@ -982,4 +983,5 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getExpressReviewShippingSectionId,
 };

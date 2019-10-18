@@ -19,7 +19,7 @@ const RecentSearchReducer = (state = INITIAL_STATE, action) => {
 
       if (
         searchTermList &&
-        searchTermList.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+        searchTermList.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
       ) {
         // There can be max 10 terms in local storage at one time, remove first search in such a scenario
         searchTermList.pop();

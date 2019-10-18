@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+// import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 
 import {
   OrdersListItemMainView,
@@ -11,8 +11,23 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-export const OrdersListItem = ({ labels, orderItem, navigation }) => {
+/**
+ * @function handleOrderClick  to route to Order Details page based on order Number
+ * @param    {Object} activeActivity The activity details of waysToEarn
+ * @returns  {String} route for redirection mapping
+ */
+export const handleOrderClick = (handleComponentChange, orderNumber) => {
+  const router = {
+    query: {
+      orderId: orderNumber,
+    },
+  };
+  handleComponentChange('orderDetailsPageMobile', { router });
+};
+
+const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
+
   return (
     <>
       <OrdersListItemMainView>
@@ -37,9 +52,7 @@ export const OrdersListItem = ({ labels, orderItem, navigation }) => {
               noLink
               underline
               anchorVariation="primary"
-              onPress={() => {
-                navigateToNestedRoute(navigation, 'HomeStack', 'home');
-              }}
+              onPress={() => handleOrderClick(handleComponentChange, orderNumber)}
             />
           </OrdersNumberWrapper>
         </OrdersListItemView>
@@ -91,7 +104,11 @@ export const OrdersListItem = ({ labels, orderItem, navigation }) => {
 OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
-  navigation: PropTypes.shape([]).isRequired,
+  handleComponentChange: PropTypes.func,
+};
+OrdersListItem.defaultProps = {
+  handleComponentChange: () => {},
 };
 
 export default OrdersListItem;
+export { OrdersListItem as OrdersListItemVanilla };

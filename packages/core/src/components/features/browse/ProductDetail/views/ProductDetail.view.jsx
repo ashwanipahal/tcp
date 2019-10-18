@@ -63,14 +63,18 @@ class ProductDetailView extends React.Component {
   };
 
   getProductSummary = () => {
-    const { productDetails, productInfo, currency, pdpLabels } = this.props;
-    const { currentGiftCardValue } = this.state;
+    const { productDetails, productInfo, currency, pdpLabels, currencyExchange } = this.props;
+    const { currentGiftCardValue, currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
+
     return (
       <div className="product-summary-wrapper">
         <Product
           isGiftCard={productInfo.isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
+          selectedColorProductId={selectedColorProductId}
+          currencyExchange={currencyExchange}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -78,6 +82,7 @@ class ProductDetailView extends React.Component {
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
+              currencyExchange={currencyExchange}
               isGiftCard={productInfo.isGiftCard}
             />
           </div>
@@ -119,13 +124,14 @@ class ProductDetailView extends React.Component {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency } = this.props;
+    const { productInfo, currency, currencyExchange } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
         <ProductPrice
           listPrice={parseInt(currentGiftCardValue, 10)}
           offerPrice={parseInt(currentGiftCardValue, 10)}
+          currencyExchange={currencyExchange}
           currencySymbol={currency}
         />
       </div>
@@ -150,6 +156,8 @@ class ProductDetailView extends React.Component {
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry } = this.state;
+    const selectedColorProductId = currentColorEntry.colorProductId;
+
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
         imagesByColor: productInfo.imagesByColor,
@@ -185,6 +193,9 @@ class ProductDetailView extends React.Component {
               images={imagesToDisplay}
               pdpLabels={pdpLabels}
               isZoomEnabled
+              currentProduct={currentProduct}
+              onChangeColor={this.onChangeColor}
+              currentColorEntry={currentColorEntry}
             />
           </Col>
           <Col
@@ -205,6 +216,7 @@ class ProductDetailView extends React.Component {
                 onChangeColor={this.onChangeColor}
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
+                selectedColorProductId={selectedColorProductId}
               />
             )}
 
@@ -294,6 +306,7 @@ ProductDetailView.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
+  currencyExchange: PropTypes.string,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -313,6 +326,7 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
+  currencyExchange: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

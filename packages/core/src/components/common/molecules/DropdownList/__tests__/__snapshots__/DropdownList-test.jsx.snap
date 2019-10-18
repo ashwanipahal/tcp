@@ -39,6 +39,7 @@ exports[`DropdownList component should renders correctly 1`] = `
     >
       <ul
         className="dropdownUlBorder"
+        data-locator="drop-down-list"
       >
         <li
           className="dropdownliBottomBorder "
@@ -125,6 +126,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
     >
       <ul
         className="ulBorderWithLastRow"
+        data-locator="drop-down-list"
       >
         <li
           className="dropdownliBottomBorder "

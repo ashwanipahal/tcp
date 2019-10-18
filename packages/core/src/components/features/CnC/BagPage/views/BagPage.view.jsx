@@ -51,6 +51,7 @@ class BagPageView extends React.Component {
   }
 
   componentDidUpdate() {
+    /* istanbul ignore else */
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = this.bagActionsContainer;
       const header = this.bagPageHeader;
@@ -292,7 +293,7 @@ class BagPageView extends React.Component {
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
         >
-          <Row tagName="header">
+          <Row tagName="header" className="cartPageTitleHeader">
             <Col
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
