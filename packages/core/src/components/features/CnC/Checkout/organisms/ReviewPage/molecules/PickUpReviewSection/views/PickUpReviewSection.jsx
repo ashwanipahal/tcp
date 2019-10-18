@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormSection } from 'redux-form';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
@@ -9,6 +10,7 @@ import TitlePlusEditButton from '../../TitlePlusEditButton';
 import PickupStoreDisplay from '../../PickUpStoreDisplay';
 import PickUpContactDisplay from '../../PickUpContactDisplay';
 import { ORDER_ITEM_TYPE } from '../../../../../../../../../services/abstractors/CnC/CartItemTile';
+import PickUpAlternateFormPart from '../../../../../molecules/PickUpAlternateFormPart';
 
 export class PickUpReviewSection extends React.PureComponent {
   /**
@@ -78,6 +80,10 @@ export class PickUpReviewSection extends React.PureComponent {
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
       onEdit,
+      pickUpLabels,
+      isAlternateUpdateChecked,
+      isExpressCheckout,
+      pickUpContactAlternate,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -146,9 +152,15 @@ export class PickUpReviewSection extends React.PureComponent {
             >
               {title}
             </BodyCopy>
-            <PickUpContactDisplay formData={pickUpContactPerson} />
+            <PickUpContactDisplay
+              formData={
+                typeof pickUpContactPerson.firstName !== 'undefined'
+                  ? pickUpContactPerson
+                  : pickUpContactAlternate.pickUpContact
+              }
+            />
           </Col>
-          {isHasPickUpAlternatePerson && (
+          {!isExpressCheckout && isHasPickUpAlternatePerson && (
             <Col
               className="pickupContactAlternateContainer"
               colSize={{ small: 6, medium: 4, large: 5 }}
@@ -163,6 +175,25 @@ export class PickUpReviewSection extends React.PureComponent {
                 {alternate}
               </BodyCopy>
               <PickUpContactDisplay formData={pickUpAlternatePerson} />
+            </Col>
+          )}
+          {isExpressCheckout && (
+            <Col
+              className="pickupContactAlternateContainer"
+              colSize={{ small: 6, medium: 4, large: 7 }}
+            >
+              <div className="pickUpAlternate-container">
+                <FormSection name="pickUpAlternateExpress">
+                  <PickUpAlternateFormPart
+                    isAlternateUpdateChecked={isAlternateUpdateChecked}
+                    showNoteOnToggle
+                    formName="checkoutPickup"
+                    formSection="pickUpAlternate"
+                    labels={pickUpLabels}
+                    isExpressCheckout={isExpressCheckout}
+                  />
+                </FormSection>
+              </div>
             </Col>
           )}
         </Row>
@@ -191,6 +222,10 @@ PickUpReviewSection.propTypes = {
   isHasPickUpAlternatePerson: PropTypes.bool.isRequired,
   cartStores: PropTypes.shape({}).isRequired,
   onEdit: PropTypes.func.isRequired,
+  pickUpLabels: PropTypes.shape({}).isRequired,
+  isAlternateUpdateChecked: PropTypes.bool.isRequired,
+  isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };
 
 PickUpReviewSection.defaultProps = {
@@ -209,6 +244,7 @@ PickUpReviewSection.defaultProps = {
     lastName: '',
     emailAddress: '',
   },
+  isExpressCheckout: false,
 };
 
 export default withStyles(PickUpReviewSection, styles);

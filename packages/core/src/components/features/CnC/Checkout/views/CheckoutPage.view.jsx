@@ -136,6 +136,8 @@ class CheckoutPage extends React.PureComponent {
       submitVerifiedShippingAddressData,
       isExpressCheckout,
       shippingMethod,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -217,6 +219,12 @@ class CheckoutPage extends React.PureComponent {
             initialValues={{
               expressReviewShippingSection: {
                 shippingMethodId: shippingMethod,
+              },
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
               },
             }}
           />
@@ -331,6 +339,8 @@ CheckoutPage.propTypes = {
   setVenmoShippingState: PropTypes.func,
   isExpressCheckout: PropTypes.bool,
   shippingMethod: PropTypes.shape({}),
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {

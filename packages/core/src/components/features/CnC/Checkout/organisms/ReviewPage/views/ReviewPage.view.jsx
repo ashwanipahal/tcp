@@ -13,6 +13,8 @@ import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const formName = 'expressReviewPage';
 
@@ -79,6 +81,7 @@ class ReviewPage extends React.PureComponent {
         {!!orderHasPickUp && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer
+              isExpressCheckout={isExpressCheckout}
               onEdit={() => {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
@@ -137,8 +140,13 @@ class ReviewPage extends React.PureComponent {
   }
 }
 
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+});
+
 export default reduxForm({
   form: formName, // a unique identifier for this form
+  ...validateMethod,
   enableReinitialize: true,
 })(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };
