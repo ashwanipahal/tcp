@@ -180,7 +180,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -325,7 +325,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -351,7 +351,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-fjdhpX",
+                  "componentId": "sc-jzJRlG",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -445,7 +445,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-fjdhpX",
+                "styledComponentId": "sc-jzJRlG",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -670,7 +670,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
+                  "componentId": "sc-fjdhpX",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -815,7 +815,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductColorChipsSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
+                "styledComponentId": "sc-fjdhpX",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -841,7 +841,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-fjdhpX",
+                  "componentId": "sc-jzJRlG",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -935,7 +935,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-fjdhpX",
+                "styledComponentId": "sc-jzJRlG",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

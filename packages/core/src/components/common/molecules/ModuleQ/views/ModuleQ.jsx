@@ -138,8 +138,8 @@ class ModuleQ extends React.PureComponent {
     selectedProductList = selectedProductList.concat(selectedProductList);
     const IconPath = getIconPath('carousel-big-carrot');
     let dataStatus = true;
-    if (selectedProductList && selectedProductList.status) {
-      dataStatus = selectedProductList.status[currentCatId];
+    if (styliticsProductTabList && styliticsProductTabList.status) {
+      dataStatus = styliticsProductTabList.status[currentCatId];
     }
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>

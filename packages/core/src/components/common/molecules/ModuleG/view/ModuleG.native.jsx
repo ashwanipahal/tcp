@@ -211,7 +211,7 @@ class ModuleG extends React.PureComponent {
             <Circle />
             <StyledCustomImage source={plusIcon} />
           </MiddleContainer>
-          {selectedProductList.length === 0 ? (
+          {dataStatus ? (
             <Skeleton
               row={1}
               col={3}

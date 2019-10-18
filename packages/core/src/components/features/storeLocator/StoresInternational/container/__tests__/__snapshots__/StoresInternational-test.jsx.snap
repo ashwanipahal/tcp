@@ -625,9 +625,9 @@ exports[`StoresInternational component StoresInternational component renders cor
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-VigVT",
+            "componentId": "sc-jTzLTM",
             "isStatic": false,
-            "lastClassName": "YdtAz",
+            "lastClassName": "LXWRp",
             "rules": Array [
               "
   ",
@@ -643,7 +643,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "displayName": "Styled(StoresInternational)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-VigVT",
+          "styledComponentId": "sc-jTzLTM",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -653,16 +653,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="test sc-VigVT YdtAz"
+        className="test sc-jTzLTM LXWRp"
         content="test"
         dataLocator="test"
       >
         <div
-          className="test sc-VigVT YdtAz"
+          className="test sc-jTzLTM LXWRp"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="test sc-VigVT YdtAz__backlink"
+            className="test sc-jTzLTM LXWRp__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -671,7 +671,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="test sc-VigVT YdtAz__backlink"
+              className="test sc-jTzLTM LXWRp__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -778,7 +778,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               <Anchor
                 anchorVariation="secondary"
                 asPath=""
-                className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
+                className="test sc-jTzLTM LXWRp__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -792,7 +792,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
+                  className="test sc-jTzLTM LXWRp__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
@@ -878,7 +878,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -895,7 +895,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "displayName": "Styled(StoresInternational)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-VigVT",
+      "styledComponentId": "sc-jTzLTM",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
