@@ -14,7 +14,6 @@ const { redirectToBilling } = utility;
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
     yield put(setShippingLoadingState(true));
-
     const {
       // giftWrap,
       method,

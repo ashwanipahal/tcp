@@ -102,7 +102,7 @@ export function* updatePaymentInstruction(
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
   if (!isMobileApp()) {
-    yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
+    yield call(loadUpdatedCheckoutValues, true, cardNotUpdated, false, false, true);
   }
 }
 
@@ -251,10 +251,10 @@ export function* submitVenmoBilling(payload = {}) {
   }
 }
 
-export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) {
+export default function* submitBilling(action = {}, loadUpdatedCheckoutValues) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
-    const { payload: { navigation, ...formData } = {} } = payload;
+    const { payload: { navigation, ...formData } = {} } = action;
     formData.phoneNumber = formData.phoneNumber || '';
     const {
       addressLine1: address1,

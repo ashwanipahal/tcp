@@ -135,6 +135,7 @@ class CheckoutPage extends React.PureComponent {
       formatPayload,
       submitVerifiedShippingAddressData,
       isExpressCheckout,
+      initShippingPage,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -169,6 +170,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
+            initShippingPage={initShippingPage}
             isGuest={isGuest}
             isUsSite={isUsSite}
             formatPayload={formatPayload}
@@ -316,6 +318,7 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
+  initShippingPage: PropTypes.func.isRequired,
   formatPayload: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,

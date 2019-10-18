@@ -46,6 +46,7 @@ class CheckoutPage extends React.PureComponent {
       verifyAddressAction,
       submitVerifiedShippingAddressData,
       submitReview,
+      initShippingPage,
     } = this.props;
     const { routeTo } = navigation.state.params;
     const currentRoute = routeTo.toLowerCase();
@@ -81,6 +82,7 @@ class CheckoutPage extends React.PureComponent {
         return (
           <ShippingPage
             {...shippingProps}
+            initShippingPage={initShippingPage}
             loadShipmentMethods={loadShipmentMethods}
             navigation={navigation}
             isGuest={isGuest}
@@ -154,6 +156,7 @@ CheckoutPage.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
   formatPayload: PropTypes.func.isRequired,
+  initShippingPage: PropTypes.func.isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
   submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,

@@ -511,3 +511,5 @@ export const resetCheckoutReducer = () => {
     type: constants.RESET_CHECKOUT_REDUCER,
   };
 };
+
+export const initShippingAction = () => ({ type: constants.INIT_SHIPPING_PAGE });

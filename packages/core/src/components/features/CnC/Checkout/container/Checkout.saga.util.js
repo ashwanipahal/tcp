@@ -182,6 +182,7 @@ export function* addNewShippingAddress({ payload }) {
 export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
+
 export function* addAndSetGiftWrappingOptions(payload) {
   if (payload.hasGiftWrapping) {
     try {

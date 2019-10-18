@@ -34,6 +34,7 @@ exports[`CnC template should render correctly 1`] = `
       <Connect(AirmilesBannerContainer) />
       <Connect(CouponContainer)
         additionalClassNameModal="coupon-modal-web"
+        fullPageInfo={true}
         showAccordian={true}
       />
     </Styled(Col)>

@@ -17,6 +17,7 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
+  initShippingAction,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -154,6 +155,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       verifyAddressAction,
       setVenmoShippingState,
       submitVerifiedShippingAddressData,
+      initShippingPage,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -203,6 +205,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        initShippingPage={initShippingPage}
       />
     );
   }
@@ -214,6 +217,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: router => {
       dispatch(initCheckoutAction(router));
+    },
+    initShippingPage: () => {
+      dispatch(initShippingAction());
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));

@@ -1,4 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
+import queryString from 'query-string';
 import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
@@ -141,8 +142,12 @@ const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
   return result;
 };
 
-const routeToPage = (dataObj, ...others) => {
-  const { to, asPath } = dataObj;
+const routeToPage = (dataObj, queryParams, ...others) => {
+  const { asPath } = dataObj;
+  let { to } = dataObj;
+  if (queryParams) {
+    to += `?${queryString.stringify(queryParams)}`;
+  }
   routerPush(to, asPath, ...others);
 };
 
