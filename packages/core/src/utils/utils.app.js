@@ -55,6 +55,9 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
     case 'promoList':
       resolve(require('../services/handler/graphQL/queries/promoList'));
       break;
+    case 'AccountNavigation':
+      resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
+      break;
     default:
       reject();
       break;
