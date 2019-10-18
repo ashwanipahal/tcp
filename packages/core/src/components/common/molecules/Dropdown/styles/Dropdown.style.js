@@ -21,6 +21,7 @@ const dropDownlist = css`
     top: 50%;
     content: '';
     display: inline-block;
+    border-radius: 0.1em;
     width: 6px;
     height: 6px;
     border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
@@ -35,12 +36,13 @@ const dropDownlist = css`
     top: 50%;
     content: '';
     display: inline-block;
+    border-radius: 0.1em;
     width: 6px;
     height: 6px;
     border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
     border-top: 2px solid ${props => props.theme.colorPalette.gray['800']};
     transform: rotate(315deg);
-    margin-top: -5px;
+    margin-top: -3px;
     right: 15px;
   }
 
