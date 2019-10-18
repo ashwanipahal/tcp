@@ -19,9 +19,10 @@ HomePageView.pageInfo = {
 };
 
 const mapStateToProps = state => {
-  const { Layouts, Modules } = state;
+  const { Layouts, Modules, SEOData } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+  const seoData = SEOData && (SEOData.plp || {});
 
   return {
     slots: homepageSlots.map(slot => {
@@ -31,6 +32,7 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
+    seoData,
   };
 };
 
