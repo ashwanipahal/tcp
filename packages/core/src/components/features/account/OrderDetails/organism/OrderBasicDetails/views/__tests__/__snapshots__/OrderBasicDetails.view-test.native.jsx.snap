@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Basic Details component  should render correctly for Boss order 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_orderNumber"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="70000311411"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="lbl_orderDetails_orderDate"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="October 12, 2019 lbl_orderDetails_at 02:21am"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Basic Details component  should render correctly for ECOM order 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_orderNumber"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="70000310001"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="lbl_orderDetails_orderDate"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XXS margin-bottom-XS"
+      text="September 30, 2018 lbl_orderDetails_at 02:21am"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;

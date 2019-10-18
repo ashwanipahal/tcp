@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalsCheckoutVanilla should render correctly 1`] = `
+<Fragment>
+  <Styled(BagConfirmationModal)
+    labels={Object {}}
+  />
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    variation="checkout"
+  />
+  <Styled(ItemDeleteConfirmationModal)
+    confirmRemoveCartItem={[Function]}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`ModalsCheckoutVanilla should render correctly with modalEditingItem 1`] = `
+<Fragment>
+  <Styled(BagConfirmationModal)
+    labels={
+      Object {
+        "confirmationText": undefined,
+      }
+    }
+    removeUnqualifiedItemsAndCheckout={[Function]}
+  />
+  <OpenLoginModal
+    handleAfterLogin={[Function]}
+    handleContinueAsGuest={[Function]}
+    setLoginModalMountState={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "state": false,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    variation="checkout"
+  />
+  <Styled(ItemDeleteConfirmationModal)
+    confirmRemoveCartItem={[Function]}
+    moveToSfl={[Function]}
+  />
+</Fragment>
+`;

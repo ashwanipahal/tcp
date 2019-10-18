@@ -11,7 +11,7 @@ import {
 } from '../../../PickUpStoreModal.constants';
 import Anchor from '../../../../../atoms/Anchor';
 import BodyCopy from '../../../../../atoms/BodyCopy';
-import { Row, Col } from '../../../../../atoms';
+import { Row, Col, DamImage } from '../../../../../atoms';
 import PickupProductFormPartStyling from '../styles/PickupProductFormPart.style';
 import withStyles from '../../../../../hoc/withStyles';
 import ProductPrice from '../../../../../../features/browse/ProductDetail/molecules/ProductPrice/ProductPrice';
@@ -137,11 +137,15 @@ class PickupProductFormPart extends React.Component {
     } = this.props;
 
     const altImageText = `Image for product ${name}`;
+    const imgData = {
+      alt: altImageText,
+      url: imagePath,
+    };
     return (
       <div className={`${className} item-product-container clearfix`}>
         <Row>
           <Col colSize={{ small: 3, medium: 4, large: 6 }} className="container-image">
-            <img src={imagePath} alt={altImageText} />
+            <DamImage imgData={imgData} isProductImage />
           </Col>
           <Col colSize={{ small: 3, medium: 4, large: 6 }} className="product-description">
             <BodyCopy
