@@ -116,18 +116,18 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     };
   };
 
-  invokeWithParams = (router, callback) => {
+  invokeWithParams = (router, callback, extraProps = {}) => {
     let recalc;
     let isPaypalPostBack;
     if (router && router.query) {
       ({ recalc, isPaypalPostBack } = router.query);
     }
-    callback({ recalc, isPaypalPostBack });
+    callback({ recalc, isPaypalPostBack, ...extraProps });
   };
 
   shippingDidMount = () => {
     const { initShippingPage, router } = this.props;
-    this.invokeWithParams(router, initShippingPage);
+    this.invokeWithParams(router, initShippingPage, { initialLoad: true });
   };
 
   billingDidMount = () => {

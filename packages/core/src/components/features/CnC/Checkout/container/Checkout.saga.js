@@ -233,7 +233,7 @@ function* initPickupData({ payload: { recalc } }) {
   yield call(loadCartAndCheckoutDetails, recalc, true);
 }
 
-function* initShippingData({ payload: { recalc } }) {
+function* initShippingData({ payload: { recalc, initialLoad } }) {
   const pendingPromises = [];
   let shippingAddress = yield select(getShippingDestinationValues);
   shippingAddress = shippingAddress.address;
@@ -241,7 +241,7 @@ function* initShippingData({ payload: { recalc } }) {
   const hasShipping =
     shippingAddress && shippingAddress.country && shippingAddress.state && shippingAddress.zipCode;
   const isGuestUser = yield select(isGuest);
-  if (isGuestUser || (!hasShipping && !defaultAddress)) {
+  if (initialLoad || isGuestUser || (!hasShipping && !defaultAddress)) {
     pendingPromises.push(
       call(
         validDateAndLoadShipmentMethods,
