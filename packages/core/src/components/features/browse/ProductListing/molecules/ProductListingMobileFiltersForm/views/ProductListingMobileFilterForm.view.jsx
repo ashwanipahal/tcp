@@ -165,7 +165,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   hideModal = isApplyFilter => {
     const { removeAllFilters } = this.props;
-
+    console.log(':::::', removeAllFilters);
     if (removeAllFilters && !isApplyFilter) {
       removeAllFilters();
     }

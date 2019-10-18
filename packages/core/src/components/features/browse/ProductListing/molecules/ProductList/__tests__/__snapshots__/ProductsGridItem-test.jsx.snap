@@ -151,6 +151,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         buttonVariation="fixed-width"
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
+        fill="BLUE"
         fullWidth={true}
         onClick={[Function]}
       />
