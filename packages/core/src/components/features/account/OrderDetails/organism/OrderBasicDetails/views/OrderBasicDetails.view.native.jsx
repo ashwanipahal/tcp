@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { getDateInformation } from '@tcp/core/src//utils/badge.util';
+import { getDateInformation } from '@tcp/core/src/utils/badge.util';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,

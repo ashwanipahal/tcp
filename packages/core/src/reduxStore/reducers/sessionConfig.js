@@ -1,37 +1,59 @@
-import { fromJS } from 'immutable';
 import GLOBAL_CONSTANTS from '../constants';
+import { API_CONFIG } from '../../services/config';
 
-const initialState = fromJS({
+const { siteIds } = API_CONFIG;
+const initialState = {
   siteDetails: {},
-});
-
-const getDefaultState = state => {
-  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  if (state instanceof Object) {
-    return fromJS(state);
-  }
-  return state;
-};
-
-const mergedSiteDetails = (state, payload) => {
-  const mapPayload = fromJS(payload);
-  return state.get('siteDetails').merge(mapPayload);
+  siteOptions: {
+    countriesMap: [],
+    currenciesMap: [],
+    sitesTable: {
+      [siteIds.us]: {
+        languages: [
+          {
+            id: 'en',
+            displayName: 'English',
+          },
+          {
+            id: 'es',
+            displayName: 'Spanish',
+          },
+        ],
+      },
+      [siteIds.ca]: {
+        languages: [
+          {
+            id: 'en',
+            displayName: 'English',
+          },
+          {
+            id: 'fr',
+            displayName: 'French',
+          },
+        ],
+      },
+    },
+  },
 };
 
 const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:
-      return state.set('siteDetails', mergedSiteDetails(state, action.payload));
+      return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
     case GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS:
-      return state.set('siteDetails', mergedSiteDetails(state, action.payload));
+      return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
     case GLOBAL_CONSTANTS.SET_COUNTRY:
-      return state.setIn(['siteDetails', 'country'], action.payload);
+      return { ...state, siteDetails: { ...state.siteDetails, country: action.payload } };
     case GLOBAL_CONSTANTS.SET_CURRENCY:
-      return state.setIn(['siteDetails', 'currency'], action.payload);
+      return { ...state, siteDetails: { ...state.siteDetails, currency: action.payload } };
     case GLOBAL_CONSTANTS.SET_LANGUAGE:
-      return state.setIn(['siteDetails', 'language'], action.payload);
+      return { ...state, siteDetails: { ...state.siteDetails, language: action.payload } };
+    case GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_COUNTRIES_MAP:
+      return { ...state, siteOptions: { ...state.siteOptions, countriesMap: action.payload } };
+    case GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_CURRENCIES_MAP:
+      return { ...state, siteOptions: { ...state.siteOptions, currenciesMap: action.payload } };
     default:
-      return getDefaultState(state);
+      return state;
   }
 };
 

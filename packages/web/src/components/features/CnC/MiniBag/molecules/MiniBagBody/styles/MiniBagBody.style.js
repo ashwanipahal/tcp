@@ -10,6 +10,9 @@ export default css`
     height: calc(100% - 120px);
     overflow-y: auto;
     flex-grow: 1;
+    .tile-header {
+      padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    }
   }
   .mainWrapper {
     text-align: center;
