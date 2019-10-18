@@ -17,7 +17,6 @@ const MyFavoriteTile = ({
 }) => {
   const isFavStoreName = !!favStoreName;
   const addEditLabel = isFavStoreName ? 'lbl_prefrence_tile_edit' : 'lbl_prefrence_tile_add';
-  console.info('favStorePhone-->>', favStorePhone);
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="heading">

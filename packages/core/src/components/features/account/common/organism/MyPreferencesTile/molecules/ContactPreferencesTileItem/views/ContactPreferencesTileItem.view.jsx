@@ -6,7 +6,6 @@ import internalEndpoints from '../../../../../internalEndpoints';
 import { getIconPath } from '../../../../../../../../../utils';
 
 const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
-  // const isContactAdded = false;
   const addEditText = isContactAdded ? 'lbl_prefrence_tile_edit' : 'lbl_prefrence_tile_add';
   return (
     <BodyCopy component="div" className="heading elem-pt-LRG">
