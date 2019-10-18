@@ -17,6 +17,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     }
     loginErrorMessage=""
     onSubmit={[Function]}
+    userplccCardId=""
+    userplccCardNumber=""
   >
     <Field
       autoCapitalize="none"

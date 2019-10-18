@@ -5,25 +5,49 @@ export default css`
     padding-bottom: 12px;
     border-bottom: 3px solid black;
   }
-  .favorite-list {
-    text-align: center;
-  }
-  .sort-list,
-  .share-list,
-  .fav-items {
-    text-align: right;
-  }
+
   .wish-list {
     text-align: center;
     padding: 10px 0;
   }
-  .product-items {
-    width: 20%;
+
+  .render-desktop-view {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: block;
+    }
+  }
+
+  .render-mobile-view {
+    width: auto;
+    padding: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .filter-row {
+        width: auto;
+      }
+    }
+  }
+
+  .brand-options {
     display: inline-block;
-    text-align: center;
-    padding: 10px 10px;
-    background: #d3d3d3;
-    min-height: 230px;
-    margin: 10px;
+    min-width: 150px;
+
+    &:nth-of-type(odd) {
+      float: left;
+    }
+  }
+
+  .brand-option-list {
+    display: none;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: block;
+      margin-top: 0;
+    }
   }
 `;

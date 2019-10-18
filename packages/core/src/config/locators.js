@@ -98,8 +98,8 @@ export default {
 
   // Module T
   moduleT_header_text: 'moduleT_header_text',
-  moduleT_promobanner_text: 'moduleJ_promobanner_text',
-  moduleT_promobanner_img: 'moduleJ_promobanner_img_',
+  moduleT_promobanner_text: 'moduleT_promobanner_text',
+  moduleT_promobanner_img: 'moduleT_promobanner_img_',
   moduleT_cta_links: 'moduleT_cta_links_',
   moduleT_cta_image: 'moduleT_cta_image_',
 
@@ -364,4 +364,13 @@ export default {
   store_USCanadagymboreetstorelabel: 'store_USCanadagymboreetstorelabel',
   store_USCanadastatelabel: 'store_USCanadastatelabel',
   store_USCanadastateaccordion: 'store_USCanadastateaccordion',
+
+  // gift services
+  gift_service: 'gift-service',
+  giftservice_detailslnk: 'giftservice-detailslnk',
+  addMessage_txt: 'addMessage-txt',
+  logo_TCP: 'logo-TCP',
+  logo_gymboree: 'logo-gymboree',
+  giftService_list: 'giftService-list',
+  details_modal: 'details-modal',
 };

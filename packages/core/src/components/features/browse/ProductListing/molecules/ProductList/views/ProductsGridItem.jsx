@@ -134,17 +134,17 @@ class ProductsGridItem extends React.PureComponent {
     const {
       item: {
         productInfo: { generalProductId },
+        itemInfo: { itemId } = {},
       },
       onAddItemToFavorites,
       isLoggedIn,
       removeFavItem,
     } = this.props;
     const { selectedColorProductId } = this.state;
-    const colorProductId = selectedColorProductId || generalProductId;
     if (removeFavItem) {
-      removeFavItem(colorProductId);
+      removeFavItem({ itemId });
     } else {
-      onAddItemToFavorites({ colorProductId });
+      onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
       if (isClient() && isLoggedIn) {
         this.setState({ isInDefaultWishlist: true });
       }

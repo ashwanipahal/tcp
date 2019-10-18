@@ -234,6 +234,24 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
 
+  /* Module G Heading styles */
+  .medium_text_regular {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    text-align: center;
+    color: ",
+                [Function],
+                ";
+  }
+
   /* Module S Heading styles */
   .small_text_white_medium {
     color: ",

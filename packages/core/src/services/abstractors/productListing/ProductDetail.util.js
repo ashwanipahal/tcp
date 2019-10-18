@@ -81,29 +81,22 @@ const getSwatchImgPath = (id, excludeExtension) => {
   }`;
 };
 
-const getProductImgPath = (id, excludeExtension) => {
-  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+const getProductImagePath = (id, excludeExtension) => {
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
 
   return {
-    125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
+    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
   };
 };
 
 const getImgPath = (id, excludeExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
-    productImages: getProductImgPath(id, excludeExtension),
+    productImages: getProductImagePath(id, excludeExtension),
   };
 };
 
@@ -414,7 +407,7 @@ const processHelperUtil = {
   breadCrumbFactory,
   routingInfoStoreView,
   getSwatchImgPath,
-  getProductImgPath,
+  getProductImagePath,
   getImgPath,
   convertMultipleSizeSkusToAlternatives,
   sumBy,
