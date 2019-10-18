@@ -1,6 +1,5 @@
 import React from 'react';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
-import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
@@ -20,8 +19,6 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
-import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
@@ -39,7 +36,6 @@ const modulesMap = {
   moduleQ: ModuleQ,
 };
 
-const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent<Props> {
   componentDidMount() {
     this.loadBootstrapData();
@@ -82,12 +78,6 @@ class HomePageView extends React.PureComponent<Props> {
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Button
-          text="PLP Page"
-          onPress={() => navigation.navigate('ProductListingPageContainer')}
-          style={buttonMargin}
-        />
-        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
       </LazyloadScrollView>
     );
   }

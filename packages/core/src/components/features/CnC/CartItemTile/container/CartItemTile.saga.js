@@ -14,6 +14,8 @@ import {
   removeCartItemComplete,
   updateCartItemComplete,
   getProductSKUInfoSuccess,
+  setToggleCartItemError,
+  clearToggleCartItemError,
 } from './CartItemTile.actions';
 import {
   AddToPickupError,
@@ -79,6 +81,14 @@ export function* removeCartItem({ payload }) {
   }
 }
 
+function* updateSagaErrorActions(updateActionType, errorMessage) {
+  if (updateActionType) {
+    yield put(AddToPickupError(errorMessage));
+  } else {
+    yield put(AddToCartError(errorMessage));
+  }
+}
+
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
@@ -96,7 +106,7 @@ export function* updateCartItemSaga({ payload }) {
     if (callBack) {
       callBack();
     }
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(clearToggleCartItemError());
     yield put(BAG_PAGE_ACTIONS.getCartData());
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
@@ -107,10 +117,16 @@ export function* updateCartItemSaga({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
-    if (updateActionType) {
-      yield put(AddToPickupError(errorMessage));
+    yield call(updateSagaErrorActions, updateActionType, errorMessage);
+    if (payload.fromToggling) {
+      yield put(
+        setToggleCartItemError({
+          errorMessage,
+          itemId: payload.apiPayload.orderItem[0].orderItemId,
+        })
+      );
     } else {
-      yield put(AddToCartError(errorMessage));
+      yield put(AddToPickupError(errorMessage));
     }
   }
 }

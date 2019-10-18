@@ -258,7 +258,7 @@ class ProductAltImages extends React.PureComponent {
           <DamImage
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
-            isProductPage
+            isProductImage
           />
         </Anchor>
       </figure>

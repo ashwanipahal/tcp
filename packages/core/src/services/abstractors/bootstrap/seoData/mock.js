@@ -1,0 +1,32 @@
+export default [
+  {
+    path: '/plp',
+    pageTitle: 'PLP',
+    keywords: 'seo, tcp',
+    description: 'this is my plp seo desc',
+    robotsInfo: null,
+    canonicalUrl: null,
+    hrefLang: null,
+    thumbnailUrl: null,
+  },
+  {
+    path: '/home',
+    pageTitle: 'Home',
+    keywords: 'seo, tcp',
+    description: 'this is my home seo desc',
+    robotsInfo: null,
+    canonicalUrl: null,
+    hrefLang: null,
+    thumbnailUrl: null,
+  },
+  {
+    path: '/clp',
+    pageTitle: 'CLP',
+    keywords: 'seo, tcp',
+    description: 'this is my clp seo desc',
+    robotsInfo: null,
+    canonicalUrl: null,
+    hrefLang: null,
+    thumbnailUrl: null,
+  },
+];
