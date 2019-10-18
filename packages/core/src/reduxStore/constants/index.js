@@ -40,5 +40,5 @@ export const LABELS = {
 
 export const SEO_DATA = {
   seoData: 'seoData',
-  home: '/plp',
+  home: '/home',
 };
