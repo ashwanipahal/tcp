@@ -5,6 +5,7 @@ import ListItem from '../../../features/browse/ProductListing/molecules/ProductL
 import { getMapSliceForColorProductId } from '../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import { getPromotionalMessage } from '../../../features/browse/ProductListing/molecules/ProductList/utils/utility';
 
+const PRODUCT_IMAGE_WIDTH = 162;
 // eslint-disable-next-line
 const onAddToBag = data => {};
 
@@ -68,6 +69,7 @@ const ModuleP = props => {
         onGoToPDPPage={onOpenPDPPageHandler(props)}
         onQuickViewOpenClick={onQuickViewOpenClick}
         fullWidth
+        productImageWidth={PRODUCT_IMAGE_WIDTH}
       />
     </View>
   );

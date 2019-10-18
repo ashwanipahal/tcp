@@ -53,6 +53,7 @@ const ListItem = props => {
     fullWidth,
     renderPriceAndBagOnly,
     renderPriceOnly,
+    productImageWidth,
   } = props;
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -69,6 +70,7 @@ const ListItem = props => {
           item={item}
           selectedColorIndex={selectedColorIndex}
           onGoToPDPPage={onGoToPDPPage}
+          productImageWidth={productImageWidth}
         />
         <RenderPricesSection
           hideFavorite={renderVariation}
@@ -104,6 +106,7 @@ const ListItem = props => {
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
+        productImageWidth={productImageWidth}
       />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
@@ -152,13 +155,14 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
+const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWidth }) => {
   return (
     <ImageSectionContainer>
       <ImageCarousel
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
+        productImageWidth={productImageWidth}
       />
     </ImageSectionContainer>
   );
@@ -168,6 +172,11 @@ ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
+  productImageWidth: PropTypes.number,
+};
+
+ImageSection.defaultProps = {
+  productImageWidth: '',
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -254,6 +263,7 @@ ListItem.propTypes = {
   fullWidth: PropTypes.bool,
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
+  productImageWidth: PropTypes.number,
 };
 
 ListItem.defaultProps = {
@@ -267,6 +277,7 @@ ListItem.defaultProps = {
   fullWidth: false,
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
+  productImageWidth: '',
 };
 
 export default withStyles(ListItem, styles);

@@ -13,7 +13,7 @@ import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupSt
 import { CarouselContainer, ButtonContainer } from './Recommendations.style';
 import config from './config';
 
-const PRODUCT_IMAGE_WIDTH = 186;
+const PRODUCT_TILE_WIDTH = 182;
 const MODULE_HEIGHT = 287;
 const MODULE_WIDTH = getScreenWidth();
 
@@ -105,7 +105,7 @@ const renderRecommendationView = (props, variation) => {
             })}
             height={MODULE_HEIGHT}
             sliderWidth={MODULE_WIDTH}
-            itemWidth={PRODUCT_IMAGE_WIDTH}
+            itemWidth={PRODUCT_TILE_WIDTH}
             loop
             activeSlideAlignment="start"
             inactiveSlideOpacity={1}
