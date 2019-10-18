@@ -137,7 +137,7 @@ exports[`ModuleT component renders correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           }
         }
         link={
@@ -269,7 +269,7 @@ exports[`ModuleT component renders correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Girls",
-            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           }
         }
         link={

@@ -256,4 +256,21 @@ describe('Checkout Selectors', () => {
     };
     expect(getCurrentCheckoutStage(state)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
   });
+
+  it('#getExpressReviewShippingSectionId', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
+        },
+      },
+    };
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
+  });
 });

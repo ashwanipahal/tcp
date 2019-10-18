@@ -156,6 +156,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoShippingState,
       currentStage,
       submitVerifiedShippingAddressData,
+      shippingMethod,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -206,6 +207,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
         currentStage={currentStage}
+        shippingMethod={shippingMethod}
       />
     );
   }
@@ -275,6 +277,7 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
+    shippingMethod: getDefaultShipmentID(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
