@@ -849,9 +849,6 @@ export const getStoreHours = (
     return '';
   }
 };
-export const test = () => {
-  return 'test';
-};
 /**
  * @summary this is meant to generate a new UID on each API call
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
