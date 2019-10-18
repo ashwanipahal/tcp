@@ -10,6 +10,13 @@ import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MiniBagHeader.style';
 
+const getPointsColor = isPlcc => {
+  if (isPlcc) {
+    return 'blue.B100';
+  }
+  return 'orange.800';
+};
+
 class MiniBagHeader extends React.Component {
   onLinkClick = ({ e, componentId }) => {
     const { onRequestClose, openOverlay } = this.props;
@@ -22,7 +29,15 @@ class MiniBagHeader extends React.Component {
   };
 
   render() {
-    const { labels, cartItemCount, className, userName, currentPoints, totalRewards } = this.props;
+    const {
+      labels,
+      cartItemCount,
+      className,
+      userName,
+      currentPoints,
+      totalRewards,
+      isPlcc,
+    } = this.props;
 
     const createAccount = 'createAccount';
     const login = 'login';
@@ -73,6 +88,7 @@ class MiniBagHeader extends React.Component {
                 </BodyCopy>
                 <BodyCopy
                   className="pointsRewards"
+                  color={getPointsColor(isPlcc)}
                   component="span"
                   fontSize="fs13"
                   fontFamily="secondary"
@@ -128,6 +144,7 @@ MiniBagHeader.propTypes = {
   totalRewards: PropTypes.string.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagHeader, styles);

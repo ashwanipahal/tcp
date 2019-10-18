@@ -12,6 +12,8 @@ exports[`OrdersList View component should renders correctly 1`] = `
     marginTop={0}
   />
   <RecentOrders
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={Object {}}
   />
@@ -30,6 +32,8 @@ exports[`OrdersList View component should renders correctly 2`] = `
     marginTop={0}
   />
   <RecentOrders
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={
       Array [
@@ -61,6 +65,8 @@ exports[`OrdersList View component should renders correctly 2`] = `
     }
   />
   <PastOrders
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
     labels={Object {}}
     ordersListItems={
       Array [

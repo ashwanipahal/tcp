@@ -1,10 +1,9 @@
 import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
-import { isMobileApp, getViewportInfo } from '../../../../../utils';
+import { isMobileApp } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
-  getViewportInfo: jest.fn(),
 }));
 
 describe('Checkout Selectors', () => {
@@ -204,23 +203,8 @@ describe('Checkout Selectors', () => {
     const state = {
       session,
     };
-    getViewportInfo.mockImplementation(() => ({ isMobile: true }));
-    isMobileApp.mockImplementation(() => false);
-    expect(getIsVenmoEnabled(state)).toEqual(true);
-  });
-
-  it('#getIsVenmoEnabled for Mobile App', () => {
-    const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
-    const session = fromJS({
-      siteDetails: {
-        VENMO_APP_ENABLED: 'TRUE',
-      },
-    });
-
-    const state = {
-      session,
-    };
     isMobileApp.mockImplementation(() => true);
+    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
     expect(getIsVenmoEnabled(state)).toEqual(true);
   });
 
@@ -256,53 +240,20 @@ describe('Checkout Selectors', () => {
     );
   });
 
-  it('#isVenmoPaymentInProgress', () => {
-    const { isVenmoPaymentInProgress } = CHECKOUT_SELECTORS;
+  it('#getExpressReviewShippingSectionId', () => {
     const state = {
-      Checkout: fromJS({
-        uiFlags: {
-          venmoPaymentInProgress: true,
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
         },
-      }),
+      },
     };
-    expect(isVenmoPaymentInProgress(state)).toEqual(true);
-  });
-
-  it('#isVenmoPaymentSaveSelected', () => {
-    const { isVenmoPaymentSaveSelected } = CHECKOUT_SELECTORS;
-    const state = {
-      Checkout: fromJS({
-        uiFlags: {
-          venmoPaymentOptionSave: true,
-        },
-      }),
-    };
-    expect(isVenmoPaymentSaveSelected(state)).toEqual(true);
-  });
-
-  it('#isVenmoPickupBannerDisplayed', () => {
-    const { isVenmoPickupBannerDisplayed } = CHECKOUT_SELECTORS;
-    const state = {
-      Checkout: fromJS({
-        uiFlags: {
-          venmoPickupMessageDisplayed: true,
-        },
-      }),
-    };
-    isMobileApp.mockImplementation(() => true);
-    expect(isVenmoPickupBannerDisplayed(state)).toEqual(false);
-  });
-
-  it('#isVenmoShippingBannerDisplayed', () => {
-    const { isVenmoShippingBannerDisplayed } = CHECKOUT_SELECTORS;
-    const state = {
-      Checkout: fromJS({
-        uiFlags: {
-          venmoShippingMessageDisplayed: false,
-        },
-      }),
-    };
-    isMobileApp.mockImplementation(() => true);
-    expect(isVenmoShippingBannerDisplayed(state)).toEqual(false);
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
   });
 });

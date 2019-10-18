@@ -70,15 +70,19 @@ const trackError = errorArgs => {
   }
 
   const { error } = errorArgs;
-  let { tags, extraData } = errorArgs;
+  let { errorTags, extraData } = errorArgs;
 
-  tags = tags || {};
+  errorTags = errorTags || [];
+
   extraData = extraData || {};
 
   if (isServer()) {
-    getRaygunInstance().send(error, { ...extraData, ...tags }, () => {}, {}, ['node-server-error']);
+    getRaygunInstance().send(error, { ...extraData }, () => {}, {}, [
+      'node-server-error',
+      ...errorTags,
+    ]);
   } else {
-    getRaygunInstance()('send', { error, customData: { ...extraData, ...tags } });
+    getRaygunInstance()('send', { error, tags: errorTags, customData: { ...extraData } });
   }
 };
 

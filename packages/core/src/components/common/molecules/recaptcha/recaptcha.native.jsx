@@ -18,7 +18,7 @@ const generateTheWebViewContent = siteKey => {
           <html>
             <head>
                 <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=0.6 , minimum-scale=0.6" >
+                <meta name="viewport" content="width=device-width, initial-scale=1" >
                 <script src="https://recaptcha.google.com/recaptcha/api.js"></script>
                 <script type="text/javascript"> var onloadCallback = function() { };
                   var onDataCallback = function(response) { console.log(response); window.postMessage(response);  };
@@ -28,7 +28,7 @@ const generateTheWebViewContent = siteKey => {
             </head>
             <body style="padding: 0; margin: 0;">
                 <div style="text-align: left">
-                  <div class="g-recaptcha" style="display: inline-block"
+                  <div class="g-recaptcha" style="display: inline-block; margin:35px 55px 0 55px; transform:scale(0.8);transform-origin:0 0"
                       data-sitekey="
                       ${siteKey}
                       "data-callback="onDataCallback"

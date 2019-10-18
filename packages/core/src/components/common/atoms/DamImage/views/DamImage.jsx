@@ -29,7 +29,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints, isProductPage } = props;
+  const { breakpoints, isProductImage } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -43,7 +43,7 @@ const getBreakpointImgUrl = (type, props) => {
 
   const { assetHost, productAssetPath } = getAPIConfig();
 
-  return isProductPage
+  return isProductImage
     ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
     : `${basePath}/${config}/${imgPath}`;
 };

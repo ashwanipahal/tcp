@@ -32,7 +32,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="pointsRewards"
-        color="text.primary"
+        color="orange.800"
         component="span"
         fontFamily="secondary"
         fontSize="fs13"
