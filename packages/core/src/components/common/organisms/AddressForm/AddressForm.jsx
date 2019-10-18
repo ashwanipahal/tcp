@@ -131,9 +131,8 @@ export class AddressForm extends React.PureComponent {
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
-              placeholder={
-                country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl
-              }
+              placeholder={addressFormLabels.select}
+              title={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               name="state"
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
@@ -158,6 +157,7 @@ export class AddressForm extends React.PureComponent {
             <Field
               id="country"
               placeholder={addressFormLabels.country}
+              title={addressFormLabels.country}
               name="country"
               component={SelectBox}
               options={countriesOptionsMap}
