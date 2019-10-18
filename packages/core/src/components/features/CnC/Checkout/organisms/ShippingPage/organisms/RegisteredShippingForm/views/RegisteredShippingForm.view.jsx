@@ -13,6 +13,7 @@ import Address from '../../../../../../../../common/molecules/Address';
 import Button from '../../../../../../../../common/atoms/Button';
 import AddEditShippingAddressModal from '../../../../../molecules/AddEditShippingAddressModal';
 import { getLabelValue } from '../../../../../../../../../utils';
+import ErrorMessage from '../../../../../../common/molecules/ErrorMessage';
 import {
   getSelectedAddress,
   getDefaultShippingDisabledState,
@@ -106,6 +107,7 @@ class RegisteredShippingForm extends React.Component {
           fill="BLACK"
           onClick={this.toggleAddNewAddressMode}
           disabled={isAddNewAddress}
+          dataLocator="new-addressbtn"
         >
           {getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
         </Button>
@@ -192,7 +194,8 @@ class RegisteredShippingForm extends React.Component {
               address={getSelectedAddress(userAddresses, onFileAddressKey, shippingAddressId)}
               showPhone
               className="shipping__address"
-              dataLocatorPrefix="address"
+              dataLocatorPrefix="shipping"
+              parentDataLocator="shipping-details"
             />
           </Col>
         )}
@@ -223,15 +226,19 @@ class RegisteredShippingForm extends React.Component {
             colSize={{ small: 6, medium: 8, large: 6 }}
             className="address-dropDown"
             isEditing={isEditing}
+            data-locator="address-dropdown"
           >
             <Field
               selectListTitle="Select from address book"
               name="onFileAddressKey"
               id="onFileAddressKey"
               component={AddressDropdown}
-              dataLocator="shipping-address"
               options={this.getAddressOptions()}
               onChange={this.onAddressDropDownChange}
+              dataLocatorObj={{
+                heading: 'address-book-txt',
+                dropDownList: 'shipping-details-lst',
+              }}
             />
           </Col>
         </Row>
@@ -298,7 +305,7 @@ class RegisteredShippingForm extends React.Component {
               name="saveToAddressBook"
               onChange={this.onSaveToAccountChange}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary">
+              <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="saveaddress-chk">
                 {getLabelValue(labels, 'lbl_shipping_saveToAccount', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
@@ -316,7 +323,7 @@ class RegisteredShippingForm extends React.Component {
               name="defaultShipping"
               disabled={defaultShippingDisabled}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary">
+              <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="shippingDefault-chk">
                 {getLabelValue(labels, 'lbl_shipping_defaultShipping', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
@@ -341,14 +348,17 @@ class RegisteredShippingForm extends React.Component {
     return disabledState;
   };
 
-  renderActionButtons = () => {
+  renderActionButtons = (errorMessageRef, editShipmentDetailsError) => {
     const { modalState, labels } = this.props;
     const cancelAction = getCancelAction({
       ...this.props,
       toggleEditingMode: this.toggleEditingMode,
     });
     return (
-      <>
+      <div ref={errorMessageRef}>
+        {editShipmentDetailsError && (
+          <ErrorMessage error={editShipmentDetailsError} className="edit-shipping-error" />
+        )}
         <Row
           fullBleed
           className={`elem-mt-XL edit-cta ${modalState ? 'elem-mb-LRG top-border' : ''}`}
@@ -382,19 +392,28 @@ class RegisteredShippingForm extends React.Component {
             </Button>
           </Col>
         </Row>
-      </>
+      </div>
     );
   };
 
   render() {
-    const { isEditing, className, modalState, modalType, toggleAddEditModal, labels } = this.props;
+    const {
+      isEditing,
+      className,
+      modalState,
+      modalType,
+      toggleAddEditModal,
+      labels,
+      errorMessageRef,
+      editShipmentDetailsError,
+    } = this.props;
     return (
-      <div className={className} isEditing={isEditing}>
+      <div className={className} isEditing={isEditing} data-locator="shipping-details">
         {!modalState && (
           <>
             {this.renderAddressForm()}
             {this.renderDefaultOptions()}
-            {isEditing && this.renderActionButtons()}
+            {isEditing && this.renderActionButtons(errorMessageRef, editShipmentDetailsError)}
           </>
         )}
         <AddEditShippingAddressModal

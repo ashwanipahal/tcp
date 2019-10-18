@@ -9,13 +9,13 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
-import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
-import styles from '../styles/ProductAddToBag.style';
+import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
 
 // to get Error Message displayed in case any error comes on Add To card
 const ErrorComp = errorMessage => {
@@ -68,7 +68,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderColorList = (colorList, colorTitle) => {
-    const { selectColor } = this.props;
+    const { selectColor, isGiftCard } = this.props;
     return (
       colorList &&
       colorList.size > 0 && (
@@ -81,7 +81,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"
-            title={`${colorTitle}:`}
+            title={colorTitle}
+            inheritedStyles={isGiftCard ? giftCardDesignStyle : ''}
           />
         </div>
       )
@@ -123,19 +124,28 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
     } = this.props;
 
-    let { sizeList, fitList, colorList } = this.props;
+    let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
+    colorFitSizeDisplayNames = {
+      color: 'Color',
+      fit: 'Fit',
+      size: 'Size',
+      ...colorFitSizeDisplayNames,
+    };
 
-    sizeList = sizeList && fromJS(sizeList);
-    fitList = fitList && fromJS(fitList);
+    if (sizeList) {
+      sizeList = fromJS(sizeList);
+      fitList = fromJS(fitList);
+    }
+
     colorList = fromJS(colorList);
-    const { errorMessage, size: sizeTitle, fit: fitTitle, color: colorTitle } = plpLabels;
+    const { errorMessage, fit: fitTitle } = plpLabels;
 
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
           <Col colSize={{ small: 10, medium: 10, large: 10 }}>
             <div className="select-value-wrapper">
-              {this.renderColorList(colorList, colorTitle)}
+              {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
               {sizeList && sizeList.size > 0 && (
                 <div className="size-selector">
@@ -148,7 +158,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     sizesMap={sizeList}
                     onChange={selectSize}
                     dataLocator="addnewaddress-state"
-                    title={`${sizeTitle}:`}
+                    title={`${colorFitSizeDisplayNames.size}:`}
                   />
                   {isErrorMessageDisplayed && ErrorComp(errorMessage)}
                 </div>
@@ -165,11 +175,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 />
               </div>
             </div>
+            <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
         {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
         {showAddToBagCTA && (
-          <Row fullBleed>
+          <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
               <div className="button-wrapper">
                 <Button

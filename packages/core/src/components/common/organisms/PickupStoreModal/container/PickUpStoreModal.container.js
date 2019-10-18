@@ -71,7 +71,7 @@ const mapStateToProps = (state, ownProps) => {
   const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
   const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
   const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
-
+  const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -109,6 +109,7 @@ const mapStateToProps = (state, ownProps) => {
     navigation,
     updateCartItemStore,
     initialValuesFromBagPage,
+    isItemShipToHome,
   };
 };
 

@@ -14,6 +14,9 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
         "
   div.TCPModal__InnerContent {
     background: none;
+    z-index: ",
+        [Function],
+        ";
   }
   button.close-modal {
     display: none;
@@ -201,6 +204,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="categoryPath2_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -209,6 +213,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Essentials Shop
                           </span>,
+                          "disabled": undefined,
                           "title": "Essentials Shop",
                           "value": "Essentials Shop",
                         },
@@ -218,6 +223,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Baby Girl
                           </span>,
+                          "disabled": undefined,
                           "title": "Baby Girl",
                           "value": "Baby Girl",
                         },
@@ -227,6 +233,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Bottoms
                           </span>,
+                          "disabled": undefined,
                           "title": "Bottoms",
                           "value": "Bottoms",
                         },
@@ -236,6 +243,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Tops
                           </span>,
+                          "disabled": undefined,
                           "title": "Tops",
                           "value": "Tops",
                         },
@@ -245,6 +253,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Shoes & Accessories
                           </span>,
+                          "disabled": undefined,
                           "title": "Shoes & Accessories",
                           "value": "Shoes & Accessories",
                         },
@@ -254,6 +263,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Leggings
                           </span>,
+                          "disabled": undefined,
                           "title": "Leggings",
                           "value": "Leggings",
                         },
@@ -263,6 +273,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Polos
                           </span>,
+                          "disabled": undefined,
                           "title": "Polos",
                           "value": "Polos",
                         },
@@ -272,6 +283,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Socks, Tights & Underwear
                           </span>,
+                          "disabled": undefined,
                           "title": "Socks, Tights & Underwear",
                           "value": "Socks, Tights & Underwear",
                         },
@@ -281,6 +293,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Online Only
                           </span>,
+                          "disabled": undefined,
                           "title": "Online Only",
                           "value": "Online Only",
                         },
@@ -290,6 +303,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Baby Boy
                           </span>,
+                          "disabled": undefined,
                           "title": "Baby Boy",
                           "value": "Baby Boy",
                         },
@@ -299,6 +313,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Socks & Underwear
                           </span>,
+                          "disabled": undefined,
                           "title": "Socks & Underwear",
                           "value": "Socks & Underwear",
                         },
@@ -308,6 +323,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Unisex
                           </span>,
+                          "disabled": undefined,
                           "title": "Unisex",
                           "value": "Unisex",
                         },
@@ -317,6 +333,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Active
                           </span>,
+                          "disabled": undefined,
                           "title": "Active",
                           "value": "Active",
                         },
@@ -326,6 +343,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Skorts & Shorts
                           </span>,
+                          "disabled": undefined,
                           "title": "Skorts & Shorts",
                           "value": "Skorts & Shorts",
                         },
@@ -335,6 +353,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Jeggings & Chinos
                           </span>,
+                          "disabled": undefined,
                           "title": "Jeggings & Chinos",
                           "value": "Jeggings & Chinos",
                         },
@@ -344,6 +363,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Shoes
                           </span>,
+                          "disabled": undefined,
                           "title": "Shoes",
                           "value": "Shoes",
                         },
@@ -353,6 +373,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Dresses & Jumpers
                           </span>,
+                          "disabled": undefined,
                           "title": "Dresses & Jumpers",
                           "value": "Dresses & Jumpers",
                         },
@@ -362,6 +383,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Dresses
                           </span>,
+                          "disabled": undefined,
                           "title": "Dresses",
                           "value": "Dresses",
                         },
@@ -371,6 +393,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Shorts
                           </span>,
+                          "disabled": undefined,
                           "title": "Shorts",
                           "value": "Shorts",
                         },
@@ -380,6 +403,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Activewear
                           </span>,
+                          "disabled": undefined,
                           "title": "Activewear",
                           "value": "Activewear",
                         },
@@ -389,6 +413,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             All Easter Dress Up
                           </span>,
+                          "disabled": undefined,
                           "title": "All Easter Dress Up",
                           "value": "All Easter Dress Up",
                         },
@@ -398,6 +423,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Easter Dress Up
                           </span>,
+                          "disabled": undefined,
                           "title": "Easter Dress Up",
                           "value": "Easter Dress Up",
                         },
@@ -407,6 +433,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Sibling Shop
                           </span>,
+                          "disabled": undefined,
                           "title": "Sibling Shop",
                           "value": "Sibling Shop",
                         },
@@ -416,6 +443,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Big & Lil Sister
                           </span>,
+                          "disabled": undefined,
                           "title": "Big & Lil Sister",
                           "value": "Big & Lil Sister",
                         },
@@ -425,6 +453,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Big & Little Sister
                           </span>,
+                          "disabled": undefined,
                           "title": "Big & Little Sister",
                           "value": "Big & Little Sister",
                         },
@@ -434,6 +463,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Flower Girl Shop
                           </span>,
+                          "disabled": undefined,
                           "title": "Flower Girl Shop",
                           "value": "Flower Girl Shop",
                         },
@@ -443,6 +473,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Jackets
                           </span>,
+                          "disabled": undefined,
                           "title": "Jackets",
                           "value": "Jackets",
                         },
@@ -452,6 +483,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Matching Family Collections
                           </span>,
+                          "disabled": undefined,
                           "title": "Matching Family Collections",
                           "value": "Matching Family Collections",
                         },
@@ -461,6 +493,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Accessories
                           </span>,
+                          "disabled": undefined,
                           "title": "Accessories",
                           "value": "Accessories",
                         },
@@ -1082,6 +1115,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="v_tcpsize_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -1090,6 +1124,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             6-9 M
                           </span>,
+                          "disabled": undefined,
                           "title": "6-9 M",
                           "value": "EF_6-9 M",
                         },
@@ -1099,6 +1134,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             6-12 M
                           </span>,
+                          "disabled": undefined,
                           "title": "6-12 M",
                           "value": "EG_6-12 M",
                         },
@@ -1108,6 +1144,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             9-12 M
                           </span>,
+                          "disabled": undefined,
                           "title": "9-12 M",
                           "value": "EJ_9-12 M",
                         },
@@ -1117,6 +1154,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             12-18 M
                           </span>,
+                          "disabled": undefined,
                           "title": "12-18 M",
                           "value": "EM_12-18 M",
                         },
@@ -1126,6 +1164,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             12-24 M
                           </span>,
+                          "disabled": undefined,
                           "title": "12-24 M",
                           "value": "EN_12-24 M",
                         },
@@ -1135,6 +1174,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             18-24 M
                           </span>,
+                          "disabled": undefined,
                           "title": "18-24 M",
                           "value": "EP_18-24 M",
                         },
@@ -1144,6 +1184,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             2T
                           </span>,
+                          "disabled": undefined,
                           "title": "2T",
                           "value": "ET_2T",
                         },
@@ -1153,6 +1194,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             2T - 3T
                           </span>,
+                          "disabled": undefined,
                           "title": "2T - 3T",
                           "value": "EV_2T - 3T",
                         },
@@ -1162,6 +1204,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             3T
                           </span>,
+                          "disabled": undefined,
                           "title": "3T",
                           "value": "EX_3T",
                         },
@@ -1171,6 +1214,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             3T-4T
                           </span>,
+                          "disabled": undefined,
                           "title": "3T-4T",
                           "value": "EY_3T-4T",
                         },
@@ -1180,6 +1224,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             4T
                           </span>,
+                          "disabled": undefined,
                           "title": "4T",
                           "value": "EZ_4T",
                         },
@@ -1189,6 +1234,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             5T
                           </span>,
+                          "disabled": undefined,
                           "title": "5T",
                           "value": "FB_5T",
                         },
@@ -1198,6 +1244,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 4
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 4",
                           "value": "IW_TODDLER 4",
                         },
@@ -1207,6 +1254,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 5
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 5",
                           "value": "IZ_TODDLER 5",
                         },
@@ -1216,6 +1264,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 6
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 6",
                           "value": "JC_TODDLER 6",
                         },
@@ -1225,6 +1274,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 7
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 7",
                           "value": "JF_TODDLER 7",
                         },
@@ -1234,6 +1284,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 8
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 8",
                           "value": "JI_TODDLER 8",
                         },
@@ -1243,6 +1294,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 9
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 9",
                           "value": "JL_TODDLER 9",
                         },
@@ -1252,6 +1304,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 10
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 10",
                           "value": "JO_TODDLER 10",
                         },
@@ -1261,6 +1314,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             TODDLER 11
                           </span>,
+                          "disabled": undefined,
                           "title": "TODDLER 11",
                           "value": "JR_TODDLER 11",
                         },
@@ -1270,6 +1324,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             ONE SIZE
                           </span>,
+                          "disabled": undefined,
                           "title": "ONE SIZE",
                           "value": "LA_ONE SIZE",
                         },
@@ -1365,6 +1420,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="unbxd_price_range_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -1373,6 +1429,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             $10 and Under
                           </span>,
+                          "disabled": undefined,
                           "title": "$10 and Under",
                           "value": "$10 and Under",
                         },
@@ -1382,6 +1439,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             $10 - $19.99
                           </span>,
+                          "disabled": undefined,
                           "title": "$10 - $19.99",
                           "value": "$10 - $19.99",
                         },
@@ -1477,6 +1535,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="v_tcpfit_unbxd_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -1485,6 +1544,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Regular
                           </span>,
+                          "disabled": undefined,
                           "title": "Regular",
                           "value": "Regular",
                         },
@@ -1580,6 +1640,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="gender_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -1588,6 +1649,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Girl
                           </span>,
+                          "disabled": undefined,
                           "title": "Girl",
                           "value": "Girl",
                         },
@@ -1597,6 +1659,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Unisex
                           </span>,
+                          "disabled": undefined,
                           "title": "Unisex",
                           "value": "Unisex",
                         },
@@ -1692,6 +1755,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     expanded={true}
                     forwardRef={true}
                     name="age_group_uFilter"
+                    onFilterSelection={null}
                     optionsMap={
                       Array [
                         Object {
@@ -1700,6 +1764,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Big Kid (4 - 18)
                           </span>,
+                          "disabled": undefined,
                           "title": "Big Kid (4 - 18)",
                           "value": "AB_Big Kid (4 - 18)",
                         },
@@ -1709,6 +1774,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Toddler (6M - 5T)
                           </span>,
+                          "disabled": undefined,
                           "title": "Toddler (6M - 5T)",
                           "value": "AC_Toddler (6M - 5T)",
                         },
@@ -1718,6 +1784,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           >
                             Baby (0 - 18M)
                           </span>,
+                          "disabled": undefined,
                           "title": "Baby (0 - 18M)",
                           "value": "AD_Baby (0 - 18M)",
                         },

@@ -21,6 +21,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
 
   componentWillMount() {
     const { airmilesBannerData } = this.props;
+    /* istanbul ignore else */
     if (airmilesBannerData && !!airmilesBannerData.collectorNumber) {
       this.setState({ expanded: false, isValidPromoField: true });
     }
@@ -33,12 +34,13 @@ class AirmilesBanner extends React.PureComponent<Props> {
       syncErrorObj: { syncError },
     } = nextProps;
     const isValidPromoField = this.checkIsValidPromoField(promoField, syncError);
+    /* istanbul ignore else */
     if (!airmilesBannerData.collectorNumber) {
       this.setState({
         isValidPromoField,
       });
     }
-
+    /* istanbul ignore else */
     if (isValidPromoField) {
       const { onAddAirmilesBanner } = this.props;
 
@@ -74,6 +76,7 @@ class AirmilesBanner extends React.PureComponent<Props> {
   handleSubmit = () => {
     const { onAddAirmilesBanner } = this.props;
     const { touched } = this.state;
+    /* istanbul ignore else */
     if (touched) {
       this.toggleTouched();
     }

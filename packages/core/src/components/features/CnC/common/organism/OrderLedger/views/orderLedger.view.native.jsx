@@ -12,8 +12,6 @@ import {
   IconContainer,
   StyledHeader,
   OrderSummaryWrapper,
-  OrderSummaryHeader,
-  OrderSummaryBody,
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
@@ -355,10 +353,7 @@ const OrderLedger = ({
           />
         </OrderSummaryWrapper>
       ) : (
-        <>
-          {isConfirmationPage ? <OrderSummaryHeader>{header}</OrderSummaryHeader> : null}
-          {isConfirmationPage ? <OrderSummaryBody>{body}</OrderSummaryBody> : body}
-        </>
+        body
       )}
     </View>
   );
