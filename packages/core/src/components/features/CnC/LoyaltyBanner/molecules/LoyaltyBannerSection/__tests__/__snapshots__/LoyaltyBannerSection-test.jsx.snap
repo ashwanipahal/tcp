@@ -20,33 +20,16 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
@@ -85,33 +68,16 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
@@ -150,24 +116,16 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
@@ -206,33 +164,16 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
@@ -271,24 +212,16 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
@@ -327,24 +260,16 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
+        descriptionLabel={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
-        isProductDetailView=""
-        isReviewPage={false}
         labels={Object {}}
-        remainingPlcc=""
+        remainingPlcc={false}
+        showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
         className="footer alignCenter"
