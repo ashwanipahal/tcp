@@ -50,6 +50,7 @@ import {
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
+import { getUserInfoSaga } from '../../../account/User/container/User.saga';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -208,6 +209,7 @@ function* navigateToCheckout(stage, navigation, navigationActions) {
  * @param {Boolean} closeModal for closing addedtoBag modal in app
  */
 export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
+  yield call(getUserInfoSaga);
   const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
