@@ -28,6 +28,11 @@ class Socialview extends React.PureComponent {
     setPointsModal: PropTypes.func.isRequired,
     handleComponentChange: PropTypes.func.isRequired,
     isPlcc: PropTypes.isRequired,
+    componentProps: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    componentProps: {},
   };
 
   constructor(props) {
@@ -42,7 +47,12 @@ class Socialview extends React.PureComponent {
       Connected: SOCIAL_ICONS.CLOSE_ICON,
       Disconnected: SOCIAL_ICONS.PLUS_ICON,
     };
+    this.state = {
+      autoOpenSocial: true,
+    };
   }
+
+  componentDidUpdate() {}
 
   /**
    * Close the points modal
@@ -264,11 +274,42 @@ class Socialview extends React.PureComponent {
 
   render() {
     const { getSocialAcc, labels } = this.props;
+
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
     const { assetHost, siteId, instakey } = getAPIConfig();
     const redirectUrl = `${assetHost}/${siteId}/instagram`;
+
+    // handling of auto social modal - facebook and instagram
+    if (this.socialAccounts.length > 0) {
+      const { autoOpenSocial } = this.state;
+      const {
+        componentProps: { activityModalSocialAccount },
+      } = this.props;
+
+      const socialArray = this.socialAccounts.map(elem => {
+        return {
+          socialAccount: elem.socialAccount,
+          isConnected: elem.isConnected,
+        };
+      });
+
+      if (activityModalSocialAccount && autoOpenSocial) {
+        if (activityModalSocialAccount === 'facebook') {
+          this.handleSocialNetwork(
+            'Facebook',
+            socialArray.filter(social => social.socialAccount === 'facebook')[0].isConnected
+          );
+        } else {
+          this.handleSocialNetwork(
+            'Instagram',
+            socialArray.filter(social => social.socialAccount === 'instagram')[0].isConnected
+          );
+        }
+        this.setState({ autoOpenSocial: false });
+      }
+    }
 
     return (
       <View>
