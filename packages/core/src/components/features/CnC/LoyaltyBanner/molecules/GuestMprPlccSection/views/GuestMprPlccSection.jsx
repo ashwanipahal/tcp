@@ -13,11 +13,9 @@ const GuestMprPlccSection = props => {
     showSubtotal,
     currentSubtotal,
     estimatedSubtotal,
-    isPlcc,
-    pointsDescription,
+    descriptionLabel,
     remainingPlcc,
     getCurrencySymbol,
-    isProductDetailView,
   } = props;
   return (
     <div className={`${className} body`}>
@@ -42,7 +40,7 @@ const GuestMprPlccSection = props => {
           {subHeadingLabel}
         </BodyCopy>
       )}
-      {pointsDescription && (
+      {descriptionLabel && (
         <BodyCopy
           className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
           color="text.primary"
@@ -50,7 +48,7 @@ const GuestMprPlccSection = props => {
           fontFamily="secondary"
           fontWeight="extrabold"
         >
-          {pointsDescription}
+          {descriptionLabel}
         </BodyCopy>
       )}
 
@@ -65,7 +63,7 @@ const GuestMprPlccSection = props => {
           {remainingPlcc}
         </BodyCopy>
       )}
-      {showSubtotal && !isPlcc && !isProductDetailView && (
+      {showSubtotal && (
         <div className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM">
           <Row fullBleed className="currentSubtotalRow">
             <Col colSize={{ large: 7, medium: 5, small: 4 }} className="currentSubtotalTextCol">
@@ -135,11 +133,9 @@ GuestMprPlccSection.propTypes = {
   className: PropTypes.string,
   headingLabel: PropTypes.string,
   subHeadingLabel: PropTypes.string,
-  isPlcc: PropTypes.bool,
-  pointsDescription: PropTypes.string,
+  descriptionLabel: PropTypes.string,
   remainingPlcc: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
-  isProductDetailView: PropTypes.bool,
 };
 
 GuestMprPlccSection.defaultProps = {
@@ -149,11 +145,9 @@ GuestMprPlccSection.defaultProps = {
   showSubtotal: false,
   headingLabel: '',
   subHeadingLabel: '',
-  isPlcc: false,
-  pointsDescription: '',
+  descriptionLabel: '',
   remainingPlcc: 0,
   getCurrencySymbol: '',
-  isProductDetailView: '',
 };
 
 export default withStyles(GuestMprPlccSection, Styles);
