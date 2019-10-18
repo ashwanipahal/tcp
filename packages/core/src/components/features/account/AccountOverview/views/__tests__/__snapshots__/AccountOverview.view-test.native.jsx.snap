@@ -234,9 +234,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     title="lbl_overview_messages"
   />
   <Styled(View) />
-  <Connect(TrackOrderContainer)
-    handleToggle={[Function]}
-  />
   <Styled(View) />
 </View>
 `;

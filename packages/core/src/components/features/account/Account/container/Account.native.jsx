@@ -110,6 +110,7 @@ export class Account extends React.PureComponent {
       PointsClaimPageMobile: 'PointsClaimPageMobile',
       myOrdersPageMobile: 'myOrdersPageMobile',
       addressBookMobile: 'addressBookMobile',
+      orderDetailsPageMobile: 'orderDetailsPageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];

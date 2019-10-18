@@ -95,6 +95,7 @@ class LabeledRadioButton extends React.Component {
             component="span"
             fontFamily="secondary"
             fontSize="fs16"
+            dataLocator={title}
           >
             {title}
           </BodyCopy>
@@ -105,6 +106,7 @@ class LabeledRadioButton extends React.Component {
             component="span"
             fontFamily="secondary"
             fontSize="fs12"
+            dataLocator={subtitle}
           >
             {subtitle}
           </BodyCopy>
