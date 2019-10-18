@@ -173,7 +173,7 @@ const ModuleQ = props => {
     setSelectedCategoryId(categoryId);
     setSelectedTabItem(tabItem);
   };
-  const dataStatus = getDataStatus(selectedProductList, selectedCategoryId);
+  const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
     <Container bgClass={bgClass}>

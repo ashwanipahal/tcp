@@ -156,7 +156,7 @@ class ModuleR extends React.PureComponent {
         selectedProductList = selectedProductList.slice(0, 9);
       }
     }
-    const dataStatus = this.getDataStatus(selectedProductList, selectedCategoryId);
+    const dataStatus = this.getDataStatus(productTabList, selectedCategoryId);
 
     return (
       <Container>
@@ -181,7 +181,7 @@ class ModuleR extends React.PureComponent {
           <Skeleton
             row={3}
             col={3}
-            rowProps={{ justifyContent: 'space-around', marginBottom: '10px' }}
+            rowProps={{ justifyContent: 'space-around', marginTop: '10px', marginBottom: '10px' }}
           />
         ) : null}
         {this.getImageGrid(selectedProductList)}
