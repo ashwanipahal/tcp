@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Image, Anchor } from '../../../../../atoms';
+import { BodyCopy, Anchor, DamImage } from '../../../../../atoms';
 import {
   PickUpSkUSectionContainer,
   ImageWrapper,
@@ -44,7 +44,13 @@ const ProductCustomizeFormPart = props => {
     <PickUpSkUSectionContainer>
       <ProductSummaryContainer>
         <ImageWrapper>
-          <Image resizeMode="contain" height="198px" width="161px" url={imageUrl} />
+          <DamImage
+            resizeMode="contain"
+            url={imageUrl}
+            isProductImage
+            height="198px"
+            width="161px"
+          />
 
           <Anchor noLink onPress={() => goToPDPPageMobile(modifiedPdpUrl, colorProductId)}>
             <BodyCopy
