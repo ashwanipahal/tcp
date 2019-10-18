@@ -38,6 +38,8 @@ const ProductListView = ({
   slpLabels,
   onPickUpOpenClick,
   isFilterBy,
+  currencyExchange,
+  currency,
   ...otherProps
 }) => {
   return (
@@ -88,7 +90,13 @@ const ProductListView = ({
             />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
+            <ProductsGrid
+              productsBlock={productsBlock}
+              labels={labels}
+              currency={currency}
+              currencyExchange={currencyExchange}
+              {...otherProps}
+            />
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -131,6 +139,8 @@ ProductListView.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool.isRequired,
+  currencyExchange: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductListView.defaultProps = {
@@ -150,6 +160,7 @@ ProductListView.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isFilterBy: true,
+  currency: '$',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
