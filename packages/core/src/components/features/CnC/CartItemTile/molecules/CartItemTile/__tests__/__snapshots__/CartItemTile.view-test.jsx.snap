@@ -6653,6 +6653,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: flex;
     justify-content: flex-start;
     padding-left: 15px;
+    z-index: 1;
+    outline: none;
   }
   .imageWrapper {
     position: relative;
@@ -7095,6 +7097,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     display: flex;
     justify-content: flex-start;
     padding-left: 15px;
+    z-index: 1;
+    outline: none;
   }
   .imageWrapper {
     position: relative;
