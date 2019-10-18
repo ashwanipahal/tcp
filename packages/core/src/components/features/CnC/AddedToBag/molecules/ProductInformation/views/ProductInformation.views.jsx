@@ -4,6 +4,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator, getBrand } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import DamImage from '../../../../../../common/atoms/DamImage';
 
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
@@ -24,11 +25,20 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
           className="product-logo"
           colSize={{ small: 2, medium: 2, large: 3 }}
         >
-          <Image
+          {/* <Image
             alt="Product"
             className="product-image"
             src={data.skuInfo.imageUrl}
             data-locator="addedtobag-productimage"
+          /> */}
+          <DamImage
+            imgData={{
+              alt: 'Product',
+              url: data.skuInfo.imageUrl,
+            }}
+            className="product-image"
+            data-locator="addedtobag-productimage"
+            isProductImage
           />
           {!data.isGiftCard && (
             <Image

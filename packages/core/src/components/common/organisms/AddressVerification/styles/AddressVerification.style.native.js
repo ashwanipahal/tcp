@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+// Conditional spacing based on showInput prop
+const OptionsSpacing = props =>
+  props.showInput ? props.theme.spacing.LAYOUT_SPACING.MED : props.theme.spacing.LAYOUT_SPACING.XL;
+
 const AddressVerificationContainer = styled.View`
   margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
@@ -16,14 +20,14 @@ const MessageWrapper = styled.View`
 
 const AddressOptionWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+  margin-left: ${props => OptionsSpacing(props)};
+  margin-right: ${props => OptionsSpacing(props)};
 `;
 
 const EnteredWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+  margin-left: ${props => OptionsSpacing(props)};
+  margin-right: ${props => OptionsSpacing(props)};
 `;
 
 const EnteredSectionWrapper = styled.View`
@@ -34,8 +38,8 @@ const EnteredSectionWrapper = styled.View`
 
 const SuggestWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
 
 const SuggestSectionWrapper = styled.View`
