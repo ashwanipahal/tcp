@@ -1,4 +1,11 @@
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
+
+const progress = keyframes`0% {
+  left: -500px;
+}
+100% {
+  left: 500px;
+}`;
 
 const style = css`
   &.skeleton-row {
@@ -6,13 +13,30 @@ const style = css`
   }
   .skeleton-col {
     height: 150px;
-    background: #d8d8d8;
     ${props =>
       props.removeLastMargin
         ? `&:nth-child(${props.col}){
       margin-right:0;
     }`
         : ''}
+    background-color: rgb(239, 241, 246);
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: -500px;
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0)
+      );
+      animation: ${progress} 0.5s ease-in-out infinite;
+    }
   }
   .left-carousel {
     position: absolute;
