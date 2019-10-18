@@ -27,6 +27,11 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
     >
       (718) 243-1150
     </Styled(Text)>
+    <Styled(Text)
+      key="0.17 miles away3"
+    >
+      0.17 Miles Away
+    </Styled(Text)>
     <Styled(View)>
       <Styled(View)>
         <Styled(View)>
@@ -171,6 +176,11 @@ exports[`StoreAddressTile component Details should render details view with fav 
       key="(718) 243-11502"
     >
       (718) 243-1150
+    </Styled(Text)>
+    <Styled(Text)
+      key="0.17 miles away3"
+    >
+      0.17 Miles Away
     </Styled(Text)>
     <Styled(View)>
       <Styled(View)>
@@ -351,6 +361,9 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
     >
       (718) 243-1150
     </Styled(Text)>
+    <Styled(Text)
+      key="3"
+    />
     <Styled(View)>
       <Styled(Image)
         accessibilityLabel="Gymboree"
@@ -429,7 +442,9 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
     >
       (718) 243-1150
     </Styled(Text)>
-    <Styled(View) />
+    <Styled(Text)
+      key="3"
+    />
   </Styled(View)>
   <Styled(View)>
     <Styled(Styled(Anchor))
@@ -516,6 +531,9 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
     >
       (718) 243-1150
     </Styled(Text)>
+    <Styled(Text)
+      key="3"
+    />
     <Styled(View)>
       <Styled(Image)
         accessibilityLabel="Gymboree"
@@ -617,6 +635,9 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
     >
       (718) 243-1150
     </Styled(Text)>
+    <Styled(Text)
+      key="3"
+    />
     <Styled(View)>
       <Styled(Image)
         accessibilityLabel="Gymboree"
@@ -709,6 +730,9 @@ exports[`StoreAddressTile component Listing should render listing view with inde
     >
       (718) 243-1150
     </Styled(Text)>
+    <Styled(Text)
+      key="3"
+    />
     <Styled(View)>
       <Styled(Image)
         accessibilityLabel="Gymboree"
