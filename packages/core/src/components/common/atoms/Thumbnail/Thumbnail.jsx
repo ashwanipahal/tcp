@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import withStyles from '../../hoc/withStyles';
 import styles from './Thumbnail.style';
 import { getLocator } from '../../../../utils';
-import Image from '../Image';
 import Anchor from '../Anchor';
+import DamImage from '../DamImage';
 
 class Thumbnail extends React.Component {
   static propTypes = {
@@ -45,6 +45,10 @@ class Thumbnail extends React.Component {
 
   render() {
     const { image, isSelected, index, totalCount, className } = this.props;
+    const imgData = {
+      alt: image.name,
+      url: image.thumbnailPath,
+    };
     return (
       <div isSelected={isSelected} className={className}>
         <Anchor
@@ -53,12 +57,12 @@ class Thumbnail extends React.Component {
           onClick={this.handleClick}
           className={['image-wrapper', isSelected ? 'selected-image' : ''].join(' ')}
         >
-          <Image
-            src={image.thumbnailPath}
-            alt={image.name}
-            title={image.name}
-            itemProp="thumbnailUrl"
+          <DamImage
             data-locator={`${getLocator('pdp_alt_image')}_${index}`}
+            imgData={imgData}
+            itemProp="contenthumbnailUrltUrl"
+            isProductImage
+            title={image.name}
           />
         </Anchor>
       </div>

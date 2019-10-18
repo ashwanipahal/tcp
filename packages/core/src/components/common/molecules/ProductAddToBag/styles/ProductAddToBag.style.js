@@ -24,6 +24,9 @@ const styles = css`
     color: white;
     font-weight: 800;
     height: 42px;
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 50px;

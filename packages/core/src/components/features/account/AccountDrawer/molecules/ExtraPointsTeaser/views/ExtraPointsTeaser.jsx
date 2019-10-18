@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
+import { routerPush } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ExtraPointsTeaser.style';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -8,6 +10,17 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const ExtraPointsTeaser = props => {
   const { className, plccUser, globalLabels } = props;
+
+  /**
+   * This function will handle click to go to respective links
+   * @param {event, link, path} -
+   */
+  const onLinkRedirect = ({ e, link, path }) => {
+    e.preventDefault();
+    const { closedOverlay } = props;
+    routerPush(link, path);
+    closedOverlay();
+  };
 
   return (
     <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
@@ -33,6 +46,14 @@ const ExtraPointsTeaser = props => {
             anchorVariation="primary"
             text={getLabelValue(globalLabels, 'lbl_drawer_learn_more', 'accountDrawer')}
             underline
+            href="#"
+            onClick={e =>
+              onLinkRedirect({
+                e,
+                link: internalEndpoints.extraPointsPage.link,
+                path: internalEndpoints.extraPointsPage.path,
+              })
+            }
           />
         </div>
       </div>
@@ -45,6 +66,7 @@ ExtraPointsTeaser.propTypes = {
   labels: PropTypes.shape({}),
   plccUser: PropTypes.bool,
   globalLabels: PropTypes.shape({}),
+  closedOverlay: PropTypes.func.isRequired,
 };
 
 ExtraPointsTeaser.defaultProps = {

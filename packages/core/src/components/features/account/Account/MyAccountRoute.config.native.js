@@ -26,7 +26,7 @@ const navDataMobile = [
   },
   {
     id: 'orders',
-    label: 'Orders',
+    label: 'ORDERS',
     value: 'myOrdersPageMobile',
   },
   {
