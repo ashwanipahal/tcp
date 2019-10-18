@@ -75,11 +75,11 @@ describe('Checkout Selectors', () => {
 
   it('#getRecalcOrderPointsInterval', () => {
     const State = {
-      session: fromJS({
+      session: {
         siteDetails: {
           BRIERLEY_ORD_RECALC_CACHING_INTERVAL: 300000,
         },
-      }),
+      },
     };
     expect(getRecalcOrderPointsInterval(State)).toEqual(300000);
   });
