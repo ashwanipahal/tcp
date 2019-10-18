@@ -155,7 +155,7 @@ describe('loadPersonalizedCoupons saga', () => {
             description: '20% OFF YOUR ENTIRE PURCHASE',
             disclaimer: 'Valid on select styles. Excludes Gift Cards.',
             endDate: 'Oct 17th, 2019',
-            isPastStartDate: false,
+            isPastStartDate: true,
             startDate: 'Oct 4th, 2019',
             categoryType: 'Marketing_Offers',
           },
