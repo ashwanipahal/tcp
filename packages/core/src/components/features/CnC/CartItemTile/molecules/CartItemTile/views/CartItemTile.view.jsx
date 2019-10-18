@@ -12,7 +12,7 @@ import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-import { getIconPath, getLocator, isCanada, disableBodyScroll } from '../../../../../../../utils';
+import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -99,7 +99,6 @@ class CartItemTile extends React.Component {
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    disableBodyScroll();
     if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
       this.handleEditCartItem(
         pageView,
