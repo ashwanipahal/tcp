@@ -19,6 +19,7 @@ import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
+import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
@@ -123,5 +124,6 @@ export default function* rootSaga() {
     SearchBarSaga(),
     OutfitDetailsSaga(),
     RecentSearchSaga(),
+    AccountSaga(),
   ]);
 }

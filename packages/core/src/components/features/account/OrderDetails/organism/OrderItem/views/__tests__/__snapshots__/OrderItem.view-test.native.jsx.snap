@@ -4,21 +4,19 @@ exports[`Order Items component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(ImageComp)
-        alt=""
-        height="129"
-        host=""
-        source="test"
-        url=""
-        width="103"
+      <Styled(Image)
+        source={
+          Object {
+            "uri": "https://test4.childrensplace.comtest",
+          }
+        }
       />
-      <Styled(ImageComp)
-        alt=""
-        height="22"
-        host=""
-        source="/static/images/tcp-logo.svg"
-        url=""
-        width="64"
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/tcp-logo.png",
+          }
+        }
       />
     </Styled(View)>
     <Styled(View)>
@@ -27,14 +25,20 @@ exports[`Order Items component should renders correctly 1`] = `
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="extrabold"
+        fontWeight={
+          Array [
+            "semibold",
+          ]
+        }
         margin={null}
         numberOfLines={null}
         text="test product"
+        textAlign="left"
         textDecoration={null}
       />
       <Styled(Styled(BodyCopy))
         accessibilityText=""
+        color="gray.800"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
@@ -46,6 +50,7 @@ exports[`Order Items component should renders correctly 1`] = `
       />
       <Styled(Styled(BodyCopy))
         accessibilityText=""
+        color="gray.800"
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
@@ -59,16 +64,18 @@ exports[`Order Items component should renders correctly 1`] = `
       <Styled(View)>
         <Styled(BodyCopy)
           accessibilityText=""
+          color="gray.800"
           dataLocator=""
           fontFamily="secondary"
           fontSize="fs14"
           margin={null}
           numberOfLines={null}
-          text="lbl_orderDetails_fit test    "
+          text="lbl_orderDetails_fit test"
           textDecoration={null}
         />
         <Styled(BodyCopy)
           accessibilityText=""
+          color="gray.800"
           dataLocator=""
           fontFamily="secondary"
           fontSize="fs14"

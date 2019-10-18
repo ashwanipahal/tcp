@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-// import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import OrderItem from '../../OrderItem';
 
 /**
@@ -13,19 +12,11 @@ const OrderItemsList = ({ className, ...otherProps }) => {
   const { items } = otherProps;
 
   return (
-    // <BodyCopy component="div" className={className}>
-    //   <Row fullBleed>
-    //     {items.map((item, index) => (
-    //       <Col className="order-Item" colSize={{ large: 6, medium: 4, small: 6 }}>
-    //         <OrderItem key={index.toString()} {...{ item }} {...otherProps} />
-    //       </Col>
-    //     ))}
-    //   </Row>
-    // </BodyCopy>
     <>
       {items.map((item, index) => (
         <OrderItem key={index.toString()} {...{ item }} {...otherProps} />
       ))}
+      <LineComp marginTop={32} borderWidth={0.5} borderColor="gray.1600" />
     </>
   );
 };

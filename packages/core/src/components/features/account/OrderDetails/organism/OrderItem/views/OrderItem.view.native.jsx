@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-// import { getIconPath } from '@tcp/core/src/utils';
 
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   ViewWithSpacing,
   BodyCopyWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
+
 import {
   ImageStyle,
   ImageBrandStyle,
-  ImageGymBrandStyle,
+  ImageBrandTCPStyle,
   OrderItemContainer,
   OrderItemImage,
   OrderItemContent,
@@ -22,11 +21,6 @@ import endpoints from '../../../../../../../service/endpoint';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
-
-// import { Image, BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atoms';
-// import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-
-// import styles from '../styles/OrderItem.style';
 
 /**
  * This function component use for return the OrderItems
@@ -58,12 +52,8 @@ const OrderItems = ({ className, ...otherProps }) => {
       <OrderItemContainer>
         <OrderItemImage>
           <ImageStyle source={{ uri: endpoints.global.baseURI + imagePath }} />
-
-          {itemBrand === 'TCP' ? (
-            <ImageBrandStyle source={tcpImage} />
-          ) : (
-            <ImageGymBrandStyle source={gymboreeImage} />
-          )}
+          {itemBrand === 'TCP' && <ImageBrandTCPStyle source={tcpImage} />}
+          {itemBrand === 'GYM' && <ImageBrandStyle source={gymboreeImage} />}
         </OrderItemImage>
         <OrderItemContent>
           <BodyCopy
@@ -118,7 +108,6 @@ const OrderItems = ({ className, ...otherProps }) => {
                 text={getLabelValue(ordersLabels, 'lbl_orderDetails_price')}
               />
 
-              {/* TO DO: - need to be clear how to define offer price */}
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"

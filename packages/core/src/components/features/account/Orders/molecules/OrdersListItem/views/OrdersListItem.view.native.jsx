@@ -11,8 +11,23 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-export const OrdersListItem = ({ labels, orderItem, navigation }) => {
-  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder, orderId } = orderItem;
+/**
+ * @function handleOrderClick  to route to Order Details page based on order Number
+ * @param    {Object} activeActivity The activity details of waysToEarn
+ * @returns  {String} route for redirection mapping
+ */
+export const handleOrderClick = (handleComponentChange, orderNumber) => {
+  const router = {
+    query: {
+      orderId: orderNumber,
+    },
+  };
+  handleComponentChange('orderDetailsPageMobile', { router });
+};
+
+const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
+  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
+
   return (
     <>
       <OrdersListItemMainView>
@@ -37,12 +52,7 @@ export const OrdersListItem = ({ labels, orderItem, navigation }) => {
               noLink
               underline
               anchorVariation="primary"
-              onPress={() => {
-                navigation.navigate('OrderDetailPage', {
-                  title: 'Order Detail',
-                  orderId,
-                });
-              }}
+              onPress={() => handleOrderClick(handleComponentChange, orderNumber)}
             />
           </OrdersNumberWrapper>
         </OrdersListItemView>
@@ -94,7 +104,11 @@ export const OrdersListItem = ({ labels, orderItem, navigation }) => {
 OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
-  navigation: PropTypes.shape([]).isRequired,
+  handleComponentChange: PropTypes.func,
+};
+OrdersListItem.defaultProps = {
+  handleComponentChange: () => {},
 };
 
 export default OrdersListItem;
+export { OrdersListItem as OrdersListItemVanilla };

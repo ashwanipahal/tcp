@@ -2,40 +2,216 @@
 
 exports[`Order Summary Details component should renders BOSSOrder and Bopis orders 1`] = `
 <Fragment>
-  <Styled(View)
-    spacingStyles="margin-left-SM margin-right-SM"
-  >
-    <ScrollViewMock />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
   </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+</Fragment>
+`;
+
+exports[`Order Summary Details component should renders BOSSOrder and Bopis orders 2`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
 </Fragment>
 `;
 
 exports[`Order Summary Details component should renders CanceledItems items 1`] = `
 <Fragment>
-  <Styled(View)
-    spacingStyles="margin-left-SM margin-right-SM"
-  >
-    <ScrollViewMock />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
   </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+</Fragment>
+`;
+
+exports[`Order Summary Details component should renders ECOM order 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
 </Fragment>
 `;
 
 exports[`Order Summary Details component should renders Out of Stock items 1`] = `
 <Fragment>
-  <Styled(View)
-    spacingStyles="margin-left-SM margin-right-SM"
-  >
-    <ScrollViewMock />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
   </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
 </Fragment>
 `;
 
 exports[`Order Summary Details component should renders correctly 1`] = `
 <Fragment>
-  <Styled(View)
-    spacingStyles="margin-left-SM margin-right-SM"
-  >
-    <ScrollViewMock />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-MED margin-bottom-MED"
+      text="lbl_orderDetail_heading #undefined"
+      textAlign="center"
+      textDecoration={null}
+    />
   </Styled(View)>
+  <OrderBasicDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderShippingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderBillingDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
+  <OrderSummaryDetails
+    orderDetailsData={Object {}}
+    ordersLabels={Object {}}
+  />
 </Fragment>
 `;

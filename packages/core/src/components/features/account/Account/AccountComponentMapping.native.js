@@ -23,7 +23,7 @@ const AccountComponentNativeMapping = {
   myPreferencePageMobile: MyPrefrenceContainer,
   PointsClaimPageMobile: PointsClaimPage,
   myOrdersPageMobile: Orders,
-  orderDetailPageMobile: OrderDetails,
+  orderDetailsPageMobile: OrderDetails,
 };
 
 export default AccountComponentNativeMapping;

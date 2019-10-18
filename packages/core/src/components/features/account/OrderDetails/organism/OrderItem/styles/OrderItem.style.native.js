@@ -7,8 +7,9 @@ const OrderItemContainer = styled.View`
 `;
 
 const OrderItemImage = styled.View`
+  display: flex;
+  align-items: center;
   width: 33%;
-  /* To do  need to be removed*/
   /* border: 1px solid ${props => props.theme.colorPalette.gray[800]}; */
 `;
 
@@ -25,23 +26,22 @@ const OrderContentWrapper = styled.View`
 `;
 
 const ImageStyle = styled.Image`
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 129px;
 `;
 
 const ImageBrandStyle = styled.Image`
-  width: 62px;
+  width: 100%;
   height: 22px;
 `;
-
-const ImageGymBrandStyle = styled.Image`
-  width: 60px;
-  height: 15px;
+const ImageBrandTCPStyle = styled.Image`
+  width: 64px;
+  height: 22px;
 `;
 export {
   ImageStyle,
   ImageBrandStyle,
-  ImageGymBrandStyle,
+  ImageBrandTCPStyle,
   OrderItemContainer,
   OrderItemImage,
   OrderItemContent,
