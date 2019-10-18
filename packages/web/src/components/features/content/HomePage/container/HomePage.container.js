@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import HomePageView from '../views/HomePage.view';
+import { initActions } from './HomePage.actions';
 
 HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   const state = store.getState();
@@ -10,15 +11,18 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   return pageProps;
 };
 
+HomePageView.getInitActions = () => initActions;
+
 HomePageView.pageInfo = {
   name: 'homepage',
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 
 const mapStateToProps = state => {
-  const { Layouts, Modules } = state;
+  const { Layouts, Modules, SEOData } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
+  const seoData = SEOData && (SEOData.home || {});
 
   return {
     slots: homepageSlots.map(slot => {
@@ -28,6 +32,7 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
+    seoData,
   };
 };
 
