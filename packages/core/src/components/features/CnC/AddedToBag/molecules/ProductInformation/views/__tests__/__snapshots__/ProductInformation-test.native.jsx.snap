@@ -3,12 +3,16 @@
 exports[`GiftCardList Component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(Image)
-      source={
-        Object {
-          "uri": "https://test4.childrensplace.comundefined",
-        }
-      }
+    <Styled(DamImage)
+      alt=""
+      crop=""
+      height={100}
+      host=""
+      imgConfig=""
+      isProductImage={true}
+      source=""
+      url=""
+      width={100}
     />
     <Styled(Image)
       data-locator="cartItemBrandLogo"
