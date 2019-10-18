@@ -1,5 +1,4 @@
 /* eslint-disable max-lines */
-/* eslint-disable complexity */
 
 import moment from 'moment';
 import icons from '../config/icons';
@@ -857,17 +856,9 @@ export const getStoreHours = (
 
  * @returns {object} label and message for order group
  */
-export const getOrderGroupLabelAndMessage = orderProps => {
+export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
   let label;
   let message;
-  const {
-    status,
-    shippedDate,
-    pickedUpDate,
-    ordersLabels,
-    isBopisOrder,
-    pickUpExpirationDate,
-  } = orderProps;
 
   switch (status) {
     case constants.STATUS_CONSTANTS.ORDER_IN_PROCESS:
@@ -880,6 +871,34 @@ export const getOrderGroupLabelAndMessage = orderProps => {
         ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
         : getLabelValue(ordersLabels, 'lbl_orders_processing');
       break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+  return { label, message };
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getOrderGroupLabelAndMessage = orderProps => {
+  let label;
+  let message;
+  const {
+    status,
+    shippedDate,
+    pickedUpDate,
+    ordersLabels,
+    isBopisOrder,
+    pickUpExpirationDate,
+  } = orderProps;
+
+  getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder);
+  switch (status) {
     case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
     case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
       label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
