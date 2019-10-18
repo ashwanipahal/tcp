@@ -28,6 +28,26 @@ export const loadComponentLabelsData = payload => {
   };
 };
 
+export const loadSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_SEO_DATA,
+  };
+};
+export const setSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_SEO_DATA,
+  };
+};
+
+export const loadPageSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_PAGE_SEO_DATA,
+  };
+};
+
 export const loadXappConfigData = payload => {
   return {
     payload,

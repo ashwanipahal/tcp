@@ -405,3 +405,7 @@ export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = 
     !bossBopisFlags[flagName]
   );
 };
+
+export const getCartToggleError = state => {
+  return state.CartItemTileReducer.get('toggleError');
+};
