@@ -26,10 +26,10 @@ export const AVAILABILITY = {
 };
 
 const addItemToWishlist = wishlistDetails => {
-  const { wishlistId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
+  const { wishListId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
   const payload = {
     header: {
-      externalId: wishlistId,
+      externalId: wishListId,
       addItem: true,
     },
     body: {

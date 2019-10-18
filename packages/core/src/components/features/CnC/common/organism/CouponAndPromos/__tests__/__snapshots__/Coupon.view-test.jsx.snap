@@ -91,7 +91,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
               openState={false}
             />
           </div>
-          <Connect(ApplyNowModalWrapper) />
         </div>
       }
       className="undefined "
@@ -194,7 +193,6 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
               openState={false}
             />
           </div>
-          <Connect(ApplyNowModalWrapper) />
         </div>
       }
       className="undefined "

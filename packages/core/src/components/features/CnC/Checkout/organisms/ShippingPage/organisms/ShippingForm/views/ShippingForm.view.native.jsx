@@ -47,6 +47,7 @@ const ShippingForm = ({
   defaultAddressId,
   syncErrorsObject,
   newUserPhoneNo,
+  setCheckoutStage,
 }) => {
   return (
     <>
@@ -192,7 +193,7 @@ const ShippingForm = ({
           orderHasPickUp &&
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
-        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
+        onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
         showAccordian
       />
     </>
@@ -232,6 +233,7 @@ ShippingForm.propTypes = {
   defaultAddressId: PropTypes.string,
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {

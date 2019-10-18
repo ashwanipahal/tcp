@@ -55,3 +55,20 @@ export const PAGE_NAVIGATION_VISIBLE = 'page_navigation_visible';
 
 // The time when the primary global branding element is considered visible to the end-user
 export const BRAND_IDENTITY_VISIBLE = 'brand_identity_visible';
+
+export const TIMER_NAMES = [
+  NAVIGATION_START,
+  FULLY_LOADED,
+  FULLY_VISIBLE,
+  TIME_TO_USER_ACTION,
+  HERO_VISIBLE,
+  CALL_TO_ACTION_VISIBLE,
+  NAVIGATION_VISIBLE,
+  HEADING_VISIBLE,
+  PRICING_VISIBLE,
+  CONTROLS_VISIBLE,
+  RESULTS_VISIBLE,
+  PROMOTION_VISIBLE,
+  PAGE_NAVIGATION_VISIBLE,
+  BRAND_IDENTITY_VISIBLE,
+];

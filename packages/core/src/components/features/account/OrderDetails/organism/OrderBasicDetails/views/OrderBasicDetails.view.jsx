@@ -12,11 +12,12 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
  */
 
 const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
-  const { orderNumber, pickUpExpirationDate, isBossOrder, status } = orderDetailsData;
-  let { orderDate, bossMaxDate, bossMinDate } = orderDetailsData;
+  const { orderNumber, isBossOrder, status } = orderDetailsData;
+  let { orderDate, pickUpExpirationDate, bossMaxDate, bossMinDate } = orderDetailsData;
   let pickUpExpirationTime = pickUpExpirationDate && pickUpExpirationDate.split(' ')[1];
   let orderTime = orderDate.split(' ')[1];
   orderDate = moment(orderDate);
+  pickUpExpirationDate = pickUpExpirationDate && moment(pickUpExpirationDate);
   orderTime = orderTime && moment(orderTime, 'HH:mm:ss');
   pickUpExpirationTime = pickUpExpirationTime && moment(orderTime, 'HH:mm:ss');
   bossMinDate = getDateInformation(bossMinDate);
@@ -51,7 +52,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
             fontSize="fs14"
             fontWeight="extrabold"
             fontFamily="secondary"
-            className="elem-mb-SM"
+            className="elem-mb-SM elem-mt-MED"
           >
             {getLabelValue(ordersLabels, 'lbl_orders_bossStatus')}
           </BodyCopy>
@@ -73,7 +74,6 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
-
   return (
     <div className={className}>
       <BodyCopy component="div">
@@ -117,7 +117,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           )}
         </BodyCopy>
       </BodyCopy>
-      {pickUpExpirationDate && !bossDate && (
+      {!!pickUpExpirationDate && !isBossOrder && (
         <BodyCopy component="div" className="elem-mt-LRG">
           <BodyCopy
             fontSize="fs14"
@@ -129,21 +129,17 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           </BodyCopy>
           <BodyCopy fontSize="fs14" fontFamily="secondary">
             {pickUpExpirationDate.format('LL')}
-            {pickUpExpirationTime && (
-              <>
-                <BodyCopy
-                  component="span"
-                  fontSize="fs14"
-                  className="elem-mr-XXS elem-ml-XXS"
-                  fontFamily="secondary"
-                >
-                  {getLabelValue(ordersLabels, 'lbl_orderDetails_at')}
-                </BodyCopy>
-                <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-                  {pickUpExpirationTime.format('hh:mma')}
-                </BodyCopy>
-              </>
-            )}
+            <BodyCopy
+              component="span"
+              fontSize="fs14"
+              className="elem-mr-XXS elem-ml-XXS"
+              fontFamily="secondary"
+            >
+              {getLabelValue(ordersLabels, 'lbl_orderDetails_at')}
+            </BodyCopy>
+            <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+              {pickUpExpirationTime.format('hh:mma')}
+            </BodyCopy>
           </BodyCopy>
         </BodyCopy>
       )}
