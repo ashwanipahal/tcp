@@ -13,7 +13,8 @@ export function usePerfMeasure(name, start, end) {
     performance.clearMeasures(name);
     try {
       performance.measure(name, start, end);
-    } catch {
+    } catch (e) {
+      console.log(e.toString());
       // This throws if "start" or "end" don't match existing entries.
     }
     // Clear measures when component un-mounts.
