@@ -506,10 +506,9 @@ export const updateCardData = payload => {
  * @function resetCheckoutReducer
  * action creator for type: RESET_CHECKOUT_REDUCER
  */
-export const resetCheckoutReducer = () => {
-  return {
-    type: constants.RESET_CHECKOUT_REDUCER,
-  };
-};
+export const resetCheckoutReducer = () => ({ type: constants.RESET_CHECKOUT_REDUCER });
 
-export const initShippingAction = () => ({ type: constants.INIT_SHIPPING_PAGE });
+export const initShippingAction = payload => ({ type: constants.INIT_SHIPPING_PAGE, payload });
+export const initBillingAction = payload => ({ type: constants.INIT_BILLING_PAGE, payload });
+export const initReviewAction = payload => ({ type: constants.INIT_REVIEW_PAGE, payload });
+export const initPickupAction = payload => ({ type: constants.INIT_PICKUP_PAGE, payload });

@@ -1,6 +1,9 @@
 const CONSTANTS = {
   INIT_CHECKOUT: 'INIT_CHECKOUT',
   INIT_SHIPPING_PAGE: 'INIT_SHIPPING_PAGE',
+  INIT_BILLING_PAGE: 'INIT_BILLING_PAGE',
+  INIT_REVIEW_PAGE: 'INIT_REVIEW_PAGE',
+  INIT_PICKUP_PAGE: 'INIT_PICKUP_PAGE',
   ROUTING_CONST: {
     siteIds: {
       // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)

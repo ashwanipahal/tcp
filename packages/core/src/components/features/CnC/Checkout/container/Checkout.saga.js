@@ -48,10 +48,7 @@ import {
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
-import {
-  getRecalcOrderPointsInterval,
-  getIsRadialInventoryEnabled,
-} from '../../../../../reduxStore/selectors/session.selectors';
+import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
 const {
   getIsOrderHasShipping,
@@ -108,10 +105,10 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
 
 export function* loadUpdatedCheckoutValues(
   isTaxCalculation,
-  isCartNotRequired,
+  isCartNotRequired = true,
   recalcRewards,
   updateSmsInfo,
-  excludeCartItems = true
+  translation
 ) {
   const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
   const recalcOrderPoints = yield call(
@@ -119,7 +116,6 @@ export function* loadUpdatedCheckoutValues(
     recalcRewards,
     recalcOrderPointsInterval
   );
-  const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
   function* onCartRes(res) {
     yield call(storeUpdatedCheckoutValues, { payload: { res } }, isCartNotRequired, updateSmsInfo);
     // Load coupons to the store after constructing the coupons structure
@@ -128,14 +124,14 @@ export function* loadUpdatedCheckoutValues(
 
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
-      isTaxCalculation,
-      excludeCartItems,
+      isRecalculateTaxes: isTaxCalculation,
+      excludeCartItems: isCartNotRequired,
       recalcRewards,
       recalcOrderPoints,
       isCheckoutFlow: true,
       updateSmsInfo,
       onCartRes,
-      isRadialInvEnabled,
+      translation,
     })
   );
 }
@@ -156,21 +152,23 @@ function* submitPickupSection({ payload }) {
   if (result.addressId) {
     yield call(getAddressList);
     yield call(getCardList);
+    const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
     if (!isMobileApp()) {
       const getIsShippingRequired = yield select(getIsOrderHasShipping);
       const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
       const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
-      pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
+      pickUpRouting({
+        getIsShippingRequired,
+        isVenmoInProgress,
+        isVenmoPickupDisplayed,
+        wantsSmsOrderUpdates,
+      });
     } else if (navigation) {
       navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
     }
   }
   // eslint-disable-next-line no-unused-expressions
   // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
-  const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  if (!isMobileApp()) {
-    yield call(loadUpdatedCheckoutValues, true, true, false, !wantsSmsOrderUpdates);
-  }
   // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(true, true, false, !wantsSmsOrderUpdates);
   // }).catch((err) => {
   //   throw getSubmissionError(this.store, 'submitPickupSection', err);
@@ -208,6 +206,19 @@ function* loadShipmentMethods(miniAddress, throwError) {
     }
   }
 }
+
+function* loadCartAndCheckoutDetails(...params) {
+  const [isRecalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
+  yield call(
+    loadUpdatedCheckoutValues,
+    null,
+    excludeCartItems,
+    isRecalcRewards,
+    updateSmsInfo,
+    translation
+  );
+}
+
 function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError) {
   // Note: this convoluted logic is due to BE. If address lines do not contain a pobox
   // then in the US we should only respond to state changes, and in Canada only to
@@ -232,7 +243,12 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* initShippingData() {
+function* initPickupData({ payload: { recalc } }) {
+  yield call(loadCartAndCheckoutDetails, recalc, true);
+}
+
+function* initShippingData({ payload: { recalc } }) {
+  const pendingPromises = [];
   let shippingAddress = yield select(getShippingDestinationValues);
   shippingAddress = shippingAddress.address;
   const defaultAddress = yield select(getDefaultAddress);
@@ -240,16 +256,28 @@ function* initShippingData() {
     shippingAddress && shippingAddress.country && shippingAddress.state && shippingAddress.zipCode;
   const isGuestUser = yield select(isGuest);
   if (isGuestUser || (!hasShipping && !defaultAddress)) {
-    yield validDateAndLoadShipmentMethods(
-      { country: '', state: '', zipCode: '' },
-      { state: true, zipCode: true },
-      true
+    pendingPromises.push(
+      call(
+        validDateAndLoadShipmentMethods,
+        { country: '', state: '', zipCode: '' },
+        { state: true, zipCode: true },
+        true
+      )
     );
   }
+  pendingPromises.push(call(loadCartAndCheckoutDetails, recalc, true));
+  yield all(pendingPromises);
 }
 
-function* loadCartAndCheckoutDetails(isRecalcRewards, excludeCartItems) {
-  yield call(loadUpdatedCheckoutValues, null, null, isRecalcRewards, undefined, excludeCartItems);
+function* initBillingData({ payload: { recalc } }) {
+  yield call(loadCartAndCheckoutDetails, recalc, true);
+}
+
+function* initReviewData({ payload: { recalc, isPaypalPostBack } }) {
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  if (!isExpressCheckoutEnabled || isPaypalPostBack) {
+    yield call(loadUpdatedCheckoutValues, true, false, recalc, undefined, true);
+  }
 }
 
 // function* displayPreScreenModal (res) {
@@ -274,7 +302,7 @@ function* triggerExpressCheckout(isRecalcRewards, shouldPreScreenUser = false, s
     //  if (preScreenInfo.plccEligible) {
     // yield call(displayPreScreenModal(preScreenInfo) )
     //  };
-    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
+    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true, true);
     const shippingValues = yield select(getShippingDestinationValues);
     const shippingAddress = (shippingValues && shippingValues.address) || {};
     yield validDateAndLoadShipmentMethods(
@@ -288,7 +316,7 @@ function* triggerExpressCheckout(isRecalcRewards, shouldPreScreenUser = false, s
     );
   } catch (e) {
     yield put(setIsExpressEligible(false));
-    yield call(loadCartAndCheckoutDetails, isRecalcRewards);
+    yield call(loadCartAndCheckoutDetails, isRecalcRewards, true);
   }
 }
 
@@ -307,7 +335,7 @@ function* loadExpressCheckout(isRecalcRewards) {
   yield call(triggerExpressCheckout, isRecalcRewards);
 }
 
-function* loadStartupData(isPaypalPostBack, isRecalcRewards, excludeCartItems /* isVenmo */) {
+function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   // const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
   // if (isVenmo) {
@@ -351,7 +379,6 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, excludeCartItems /*
   if (!isPaypalPostBack && isExpressCheckoutEnabled) {
     pendingPromises.push(call(loadExpressCheckout, isRecalcRewards));
   } else {
-    pendingPromises.push(call(loadCartAndCheckoutDetails, isRecalcRewards, excludeCartItems));
     pendingPromises.push(call(getAddressList));
   }
 
@@ -496,18 +523,12 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards, excludeCartItems /*
 function* initCheckout({ router }) {
   let isPaypalPostBack;
   let recalc;
-  let section;
   if (router && router.query) {
     const { query } = router;
-    ({ isPaypalPostBack, recalc, section } = query);
+    ({ isPaypalPostBack, recalc } = query);
   }
   try {
-    yield call(
-      loadStartupData,
-      isPaypalPostBack,
-      recalc,
-      !(section && section.toLowerCase() === CONSTANTS.REVIEW)
-    );
+    yield call(loadStartupData, isPaypalPostBack, recalc);
   } catch (e) {
     logger.error(e);
   }
@@ -537,7 +558,6 @@ function* submitShipping({
   saveToAccount,
   method,
   smsInfo,
-  recalcFlag,
 }) {
   const giftServicesFormData = yield select(getGiftServicesFormData);
   yield addAndSetGiftWrappingOptions(giftServicesFormData);
@@ -591,16 +611,7 @@ function* submitShipping({
   //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
   // REVIEW: the true indicates to load the reward data for user.
   // But how can the reward points change here?
-  const isOrderHasPickup = yield select(selectors.getIsOrderHasPickup);
-  const smsNumberForOrderUpdates = yield select(selectors.getSmsNumberForOrderUpdates);
-  if (!isMobileApp()) {
-    yield loadUpdatedCheckoutValues(
-      false,
-      true,
-      recalcFlag,
-      !(isOrderHasPickup && smsNumberForOrderUpdates)
-    );
-  }
+  yield select(selectors.getSmsNumberForOrderUpdates);
   yield call(getAddressList);
 }
 
@@ -623,7 +634,10 @@ export function* submitVerifiedAddress(action) {
 
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
+  yield takeLatest(CONSTANTS.INIT_PICKUP_PAGE, initPickupData);
   yield takeLatest(CONSTANTS.INIT_SHIPPING_PAGE, initShippingData);
+  yield takeLatest(CONSTANTS.INIT_BILLING_PAGE, initBillingData);
+  yield takeLatest(CONSTANTS.INIT_REVIEW_PAGE, initReviewData);
   yield takeLatest(CONSTANTS.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS, submitVerifiedAddress);
   yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);

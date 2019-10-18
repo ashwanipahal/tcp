@@ -29,7 +29,7 @@ export default class ShippingPage extends React.Component {
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
-    initShippingPage: PropTypes.func.isRequired,
+    shippingDidMount: PropTypes.func.isRequired,
     formatPayload: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
@@ -100,8 +100,8 @@ export default class ShippingPage extends React.Component {
   }
 
   componentDidMount() {
-    const { initShippingPage } = this.props;
-    initShippingPage();
+    const { shippingDidMount } = this.props;
+    shippingDidMount();
   }
 
   shouldComponentUpdate() {

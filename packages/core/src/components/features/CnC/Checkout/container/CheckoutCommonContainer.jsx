@@ -18,6 +18,9 @@ import {
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
   initShippingAction,
+  initBillingAction,
+  initReviewAction,
+  initPickupAction,
 } from './Checkout.action';
 
 import CheckoutPage from '../views/CheckoutPage.view';
@@ -112,6 +115,35 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     };
   };
 
+  invokeWithParams = (router, callback) => {
+    let recalc;
+    let isPaypalPostBack;
+    if (router && router.query) {
+      ({ recalc, isPaypalPostBack } = router.query);
+    }
+    callback({ recalc, isPaypalPostBack });
+  };
+
+  shippingDidMount = () => {
+    const { initShippingPage, router } = this.props;
+    this.invokeWithParams(router, initShippingPage);
+  };
+
+  billingDidMount = () => {
+    const { initBillingPage, router } = this.props;
+    this.invokeWithParams(router, initBillingPage);
+  };
+
+  reviewDidMount = () => {
+    const { initReviewPage, router } = this.props;
+    this.invokeWithParams(router, initReviewPage);
+  };
+
+  pickupDidMount = () => {
+    const { initPickupPage, router } = this.props;
+    this.invokeWithParams(router, initPickupPage);
+  };
+
   render() {
     const {
       initialValues,
@@ -155,7 +187,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       verifyAddressAction,
       setVenmoShippingState,
       submitVerifiedShippingAddressData,
-      initShippingPage,
       shippingMethod,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
@@ -164,12 +195,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     );
     return (
       <CheckoutPage
+        pickupDidMount={this.pickupDidMount}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
-        billingProps={billingProps}
+        billingProps={{ ...billingProps, billingDidMount: this.billingDidMount }}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -186,7 +218,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
         verifyAddressAction={verifyAddressAction}
-        shippingProps={shippingProps}
+        shippingProps={{ ...shippingProps, shippingDidMount: this.shippingDidMount }}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
@@ -201,12 +233,11 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         labels={labels}
         submitBilling={submitBilling}
         submitReview={submitReview}
-        reviewProps={reviewProps}
+        reviewProps={{ ...reviewProps, reviewDidMount: this.reviewDidMount }}
         formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
-        initShippingPage={initShippingPage}
         shippingMethod={shippingMethod}
       />
     );
@@ -220,8 +251,17 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: router => {
       dispatch(initCheckoutAction(router));
     },
-    initShippingPage: () => {
-      dispatch(initShippingAction());
+    initPickupPage: payload => {
+      dispatch(initPickupAction(payload));
+    },
+    initShippingPage: payload => {
+      dispatch(initShippingAction(payload));
+    },
+    initBillingPage: payload => {
+      dispatch(initBillingAction(payload));
+    },
+    initReviewPage: payload => {
+      dispatch(initReviewAction(payload));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));

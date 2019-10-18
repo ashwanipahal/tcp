@@ -20,6 +20,7 @@ class ReviewPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
@@ -39,9 +40,10 @@ class ReviewPage extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { setVenmoShippingState, setVenmoPickupState } = this.props;
+    const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
     setVenmoShippingState(true);
     setVenmoPickupState(true);
+    reviewDidMount();
   }
 
   handleDefaultLinkClick = e => {

@@ -137,6 +137,7 @@ class CheckoutPage extends React.PureComponent {
       isExpressCheckout,
       initShippingPage,
       shippingMethod,
+      pickupDidMount,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -149,6 +150,7 @@ class CheckoutPage extends React.PureComponent {
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
+            pickupDidMount={pickupDidMount}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -323,6 +325,7 @@ CheckoutPage.propTypes = {
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   routeToPickupPage: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,

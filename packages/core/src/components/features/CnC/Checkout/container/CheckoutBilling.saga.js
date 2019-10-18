@@ -101,9 +101,6 @@ export function* updatePaymentInstruction(
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
-  if (!isMobileApp()) {
-    yield call(loadUpdatedCheckoutValues, true, cardNotUpdated, false, false, true);
-  }
 }
 
 /**

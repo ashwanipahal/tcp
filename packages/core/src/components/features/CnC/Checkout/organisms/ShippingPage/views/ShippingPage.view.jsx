@@ -42,7 +42,7 @@ export default class ShippingPage extends React.PureComponent {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
-    initShippingPage: PropTypes.func.isRequired,
+    shippingDidMount: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
     shippingAddress: PropTypes.shape({}),
@@ -88,8 +88,8 @@ export default class ShippingPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { initShippingPage } = this.props;
-    initShippingPage();
+    const { shippingDidMount } = this.props;
+    shippingDidMount();
   }
 
   componentDidUpdate(prevProps) {
