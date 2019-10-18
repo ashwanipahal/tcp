@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoyaltyBannerVanilla } from '../LoyaltyBannerView/views/LoyaltyBanner.view';
+import LoyaltyBanner from '../LoyaltyBannerView/views/LoyaltyBanner.view.native';
 
 describe('LoyaltyBanner View Component', () => {
   let component;
@@ -14,7 +14,7 @@ describe('LoyaltyBanner View Component', () => {
   };
 
   it('LoyaltyBanner should render correctly', () => {
-    component = shallow(<LoyaltyBannerVanilla {...Props} />);
+    component = shallow(<LoyaltyBanner {...Props} />);
     expect(component).toMatchSnapshot();
   });
 });

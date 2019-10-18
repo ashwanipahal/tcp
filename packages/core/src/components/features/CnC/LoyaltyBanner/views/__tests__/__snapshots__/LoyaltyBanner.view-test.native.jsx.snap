@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] = `
+<LoyaltyBannerSection
+  currentSubtotal={21}
+  earnedReward={0}
+  estimatedRewardsVal={20}
+  estimatedSubtotal={33}
+  getCurrencySymbol=""
+  isConfirmationPage={false}
+  isGuest={false}
+  isPlcc={false}
+  isReviewPage={false}
+  labels={Object {}}
+  pointsToNextReward={0}
+  thresholdValue={16.66}
+/>
+`;

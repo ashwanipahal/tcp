@@ -30,7 +30,9 @@ exports[`CnC template should render correctly 1`] = `
     >
       <Connect(OrderLedgerContainer) />
       <[object Object] />
-      <Connect(LoyaltyBannerContainer) />
+      <Connect(LoyaltyBannerContainer)
+        isReviewPage={false}
+      />
       <Connect(AirmilesBannerContainer) />
       <Connect(CouponContainer)
         additionalClassNameModal="coupon-modal-web"

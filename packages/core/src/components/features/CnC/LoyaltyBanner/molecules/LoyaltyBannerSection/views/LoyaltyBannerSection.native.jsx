@@ -1,12 +1,12 @@
 import React from 'react';
+import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import {
-  LoyaltyBannerContainer,
   LineStyle,
   FooterLinksSection,
   LearnMoreWrapper,
 } from '../styles/LoyaltyBannerSection.style.native';
-import mobileHashValues from '../../../util/utilityNative';
+import { mobileHashValues, renderLoyaltyLabels } from '../../../util/utilityNative';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
@@ -46,56 +46,51 @@ const LoyaltyBannerSection = props => {
     estimatedRewardsVal,
     pointsToNextReward,
     getCurrencySymbol,
+    isReviewPage,
+    isConfirmationPage,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
-  let conditionalPointsLabelVal = '';
-  let rewardPointsValue = '';
-  let remainingPlcc = false;
+  let remainingPlcc = '';
+  let subHeadingLabel = '';
+  let descriptionLabel = '';
 
   /* istanbul ignore else */
-  if (currentSubtotal > thresholdValue && !isPlcc) {
+  if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
     showSubtotal = true;
   }
 
-  if (!earnedReward) {
-    rewardPointsValue = estimatedRewardsVal;
-    if (isGuest) {
-      conditionalPointsLabelVal = labels.youCanEarnPoints;
-    } else if (!isPlcc) {
-      conditionalPointsLabelVal = labels.youllEarnPoints;
-    } else {
-      conditionalPointsLabelVal = labels.youllEarnPointsPlcc;
-      remainingPlcc = mobileHashValues(
-        labels.thatsSomePointsFromReward,
+  const LoyaltyLabels = renderLoyaltyLabels(
+    labels,
+    estimatedRewardsVal,
+    earnedReward,
+    isGuest,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage
+  );
+  headingLabel = LoyaltyLabels.headingLabelValFn
+    ? mobileHashValues(
+        LoyaltyLabels.headingLabelValFn,
+        '#estimatedRewardsVal#',
+        LoyaltyLabels.rewardPointsValueFn,
+        isPlcc
+      )
+    : false;
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn || false;
+  descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
+  remainingPlcc = LoyaltyLabels.remainingPlccValFn
+    ? mobileHashValues(
+        LoyaltyLabels.remainingPlccValFn,
         '#pointsToNextReward#',
         pointsToNextReward,
-        ''
-      );
-    }
-  } else {
-    rewardPointsValue = earnedReward;
-    if (isGuest) {
-      conditionalPointsLabelVal = labels.becomeMemberOnThisPurchase;
-    } else if (!isPlcc) {
-      conditionalPointsLabelVal = labels.youllGetWithThisPurchase;
-    } else {
-      conditionalPointsLabelVal = labels.youllGetARewardPlcc;
-    }
-  }
-  headingLabel = mobileHashValues(
-    conditionalPointsLabelVal,
-    '#estimatedRewardsVal#',
-    rewardPointsValue,
-    'mpr-plcc-theme'
-  );
-
-  const subHeadingLabel = labels.save30Today;
-  const descriptionLabel = labels.earnDoublePoints;
+        isPlcc
+      )
+    : false;
 
   return (
-    <LoyaltyBannerContainer>
-      <LineStyle />
+    <View>
+      <LineStyle isPlcc={isPlcc} />
       <GuestMprPlccSection
         labels={labels}
         headingLabel={headingLabel}
@@ -106,14 +101,14 @@ const LoyaltyBannerSection = props => {
         getCurrencySymbol={getCurrencySymbol}
         currentSubtotal={currentSubtotal}
         estimatedSubtotal={estimatedSubtotal}
+        isPlcc={isPlcc}
       />
       <FooterLinksSection>
         {!isPlcc && renderApplyNowLink(labels)}
         <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
-
-      <LineStyle />
-    </LoyaltyBannerContainer>
+      <LineStyle isPlcc={isPlcc} />
+    </View>
   );
 };
 
@@ -128,6 +123,8 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   estimatedRewardsVal: PropTypes.string,
   pointsToNextReward: PropTypes.number,
+  isReviewPage: PropTypes.bool,
+  isConfirmationPage: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -140,6 +137,8 @@ LoyaltyBannerSection.defaultProps = {
   getCurrencySymbol: '',
   estimatedRewardsVal: '',
   pointsToNextReward: 0,
+  isReviewPage: false,
+  isConfirmationPage: false,
 };
 
 export default LoyaltyBannerSection;

@@ -30,6 +30,7 @@ exports[`ConfirmationView should render correctly 1`] = `
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -90,6 +91,7 @@ exports[`ConfirmationView should render correctly 2`] = `
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -145,6 +147,7 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;

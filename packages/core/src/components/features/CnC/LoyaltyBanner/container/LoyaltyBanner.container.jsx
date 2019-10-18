@@ -20,6 +20,8 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   isProductDetailView,
+  isReviewPage,
+  isConfirmationPage,
 }) => {
   const {
     estimatedRewards,
@@ -41,6 +43,8 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       isProductDetailView={isProductDetailView}
+      isReviewPage={isReviewPage}
+      isConfirmationPage={isConfirmationPage}
     />
   );
 };
@@ -53,6 +57,8 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
+  isConfirmationPage: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -60,7 +66,9 @@ LoyaltyBannerContainer.defaultProps = {
   isGuestCheck: false,
   isPlcc: false,
   currencySymbol: '',
-  isProductDetailView: '',
+  isProductDetailView: false,
+  isReviewPage: false,
+  isConfirmationPage: false,
 };
 
 /* istanbul ignore next */

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
+exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] = `
 <div
   className=""
 >
@@ -8,6 +8,7 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = 
     currentSubtotal={21}
     estimatedRewardsVal={20}
     estimatedSubtotal={33}
+    isReviewPage={false}
     labels={Object {}}
     thresholdValue={16.66}
   />
