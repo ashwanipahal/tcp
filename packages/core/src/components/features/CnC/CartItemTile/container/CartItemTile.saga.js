@@ -81,6 +81,13 @@ export function* removeCartItem({ payload }) {
   }
 }
 
+/**
+ *
+ * @function updateSagaErrorActions
+ * @description decided error actions on basis of result of update item call
+ * @param {*} updateActionType
+ * @param {*} errorMessage
+ */
 function* updateSagaErrorActions(updateActionType, errorMessage) {
   if (updateActionType) {
     yield put(AddToPickupError(errorMessage));

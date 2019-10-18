@@ -22,6 +22,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
     super(props);
   }
 
+  /**
+   *
+   * @function getButtonLabel
+   * @returns Returns label of button on basis of update/addtobag scenarios
+   * @memberof ProductAddToBag
+   */
   getButtonLabel = () => {
     const { fromBagPage, plpLabels } = this.props;
     const { addToBag, update } = plpLabels;

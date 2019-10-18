@@ -12,7 +12,7 @@ import {
 import { removeCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import { AddToPickupError } from '../../AddedToBag/container/AddedToBag.actions';
+import { AddToPickupError, AddToCartError } from '../../AddedToBag/container/AddedToBag.actions';
 
 describe('Cart Item saga remove', () => {
   it('should dispatch confirmRemoveItem action for success resposnse', () => {
@@ -101,13 +101,29 @@ describe('Cart Item saga update', () => {
     try {
       const updateCartItemSagaGen = updateCartItemSaga({ payload });
       const err = {
-        errorMessages: { _error: 'Error in API' },
+        errorMessages: { _error: 'Error of update cart API' },
       };
       updateCartItemSagaGen.next();
       let putDescriptor = updateCartItemSagaGen.throw(err).value;
       putDescriptor = updateCartItemSagaGen.next().value;
       // eslint-disable-next-line no-underscore-dangle
       expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+    } catch (err) {
+      console.log('testing errors for update item resposnse');
+    }
+  });
+
+  it('should dispatch updateCartItem action for pick up error resposnse', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      const err = {
+        errorMessages: { _error: 'Error in API of Update Cart' },
+      };
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(err).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToCartError(err.errorMessages._error)));
     } catch (err) {
       console.log('testing errors for update item resposnse');
     }

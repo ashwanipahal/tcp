@@ -5,6 +5,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   colorList={Array []}
   currentProduct={null}
   fitList={Array []}
+  fromBagPage={true}
   handleFormSubmit={null}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}

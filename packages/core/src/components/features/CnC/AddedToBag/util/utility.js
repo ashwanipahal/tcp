@@ -33,8 +33,8 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
       skuInfo: {
         skuId: getSkuId(colorFitsSizesMap, color, fit, size),
         imageUrl:
-          (imagesByColor[color] && imagesByColor[color].basicImageUrl) ||
-          ((imagesByColor[color] && imagesByColor[color].extraImages[0]) || {}).iconSizeImageUrl,
+          imagesByColor[color].basicImageUrl ||
+          (imagesByColor[color].extraImages[0] || {}).iconSizeImageUrl,
         color: getMapSliceForColor(colorFitsSizesMap, color).color,
         variantId: getVariantId(colorFitsSizesMap, color, fit, size),
         variantNo:
