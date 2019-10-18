@@ -88,7 +88,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
   );
 });
 
-const DamImage = forwardRef((props, ref) => {
+const DamImage = props => {
   const {
     theme: { breakpoints },
     imgConfigs,
@@ -98,6 +98,7 @@ const DamImage = forwardRef((props, ref) => {
     lazyLoad,
     link,
     dataLocator,
+    forwardedRef,
     ...other
   } = props;
 
@@ -113,7 +114,7 @@ const DamImage = forwardRef((props, ref) => {
   };
 
   if (!link) {
-    return <RenderImage {...imgProps} ref={ref} />;
+    return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
 
   const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
@@ -132,10 +133,10 @@ const DamImage = forwardRef((props, ref) => {
       title={title}
       dataLocator="image-link"
     >
-      <RenderImage {...imgProps} ref={ref} />
+      <RenderImage {...imgProps} ref={forwardedRef} />
     </Anchor>
   );
-});
+};
 
 DamImage.defaultProps = {
   lazyLoad: true,
@@ -151,6 +152,7 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
+  forwardedRef: null,
 };
 
 DamImage.propTypes = {
@@ -194,6 +196,7 @@ DamImage.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
   }),
+  forwardedRef: PropTypes.shape({ current: PropTypes.any }),
 };
 
 export default withTheme(DamImage);

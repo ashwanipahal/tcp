@@ -26,7 +26,7 @@ function FirstCarouselSlide(props) {
   const imageLoaded = useImageLoadedState(imageRef);
   return (
     <>
-      <DamImage ref={imageRef} {...props} />
+      <DamImage forwardedRef={imageRef} {...props} />
       {imageLoaded && <RenderPerf.Measure name={HERO_VISIBLE} />}
     </>
   );
