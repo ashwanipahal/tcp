@@ -52,6 +52,7 @@ const ListItem = props => {
     onQuickViewOpenClick,
     fullWidth,
     renderPriceAndBagOnly,
+    renderPriceOnly,
   } = props;
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -59,34 +60,39 @@ const ListItem = props => {
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
 
-  if (renderPriceAndBagOnly) {
+  const renderVariation = renderPriceAndBagOnly || renderPriceOnly;
+
+  if (renderVariation) {
     return (
-      <ListContainer accessible fullWidth={fullWidth} renderPriceAndBagOnly={renderPriceAndBagOnly}>
+      <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
         <ImageSection
           item={item}
           selectedColorIndex={selectedColorIndex}
           onGoToPDPPage={onGoToPDPPage}
         />
         <RenderPricesSection
-          hideFavorite={renderPriceAndBagOnly}
+          hideFavorite={renderVariation}
           onFavorite={onFavorite}
           miscInfo={miscInfo}
           currencyExchange={currencyExchange}
           currencySymbol={currencySymbol}
+          accessibilityLabel="Price Section"
         />
-        <AddToBagContainer>
-          <CustomButton
-            fill="BLUE"
-            type="button"
-            buttonVariation="variable-width"
-            data-locator=""
-            text="ADD TO BAG"
-            onPress={() => {
-              handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
-            }}
-            accessibilityLabel="add to bag"
-          />
-        </AddToBagContainer>
+        {!renderPriceOnly && (
+          <AddToBagContainer>
+            <CustomButton
+              fill="BLUE"
+              type="button"
+              buttonVariation="variable-width"
+              data-locator=""
+              text="ADD TO BAG"
+              onPress={() => {
+                handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
+              }}
+              accessibilityLabel="add to bag"
+            />
+          </AddToBagContainer>
+        )}
       </ListContainer>
     );
   }
@@ -193,7 +199,7 @@ const RenderPricesSection = values => {
         <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
           {offerPriceForColor}
         </ListPrice>
-        {hideFavorite && (
+        {!hideFavorite && (
           <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
             <CustomIcon
               name={ICON_NAME.favorite}
@@ -247,6 +253,7 @@ ListItem.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   fullWidth: PropTypes.bool,
   renderPriceAndBagOnly: PropTypes.bool,
+  renderPriceOnly: PropTypes.bool,
 };
 
 ListItem.defaultProps = {
@@ -259,6 +266,7 @@ ListItem.defaultProps = {
   isPlcc: false,
   fullWidth: false,
   renderPriceAndBagOnly: false,
+  renderPriceOnly: false,
 };
 
 export default withStyles(ListItem, styles);
