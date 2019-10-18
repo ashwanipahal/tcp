@@ -8,6 +8,8 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { getViewportInfo } from '@tcp/core/src/utils';
+import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
 
@@ -143,6 +145,7 @@ class Header extends React.PureComponent {
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
+        <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
   }
