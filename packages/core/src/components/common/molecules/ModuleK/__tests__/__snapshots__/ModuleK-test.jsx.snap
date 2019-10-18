@@ -136,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ",
@@ -187,6 +187,9 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
   .medium_text_black {
+    color: ",
+                [Function],
+                ";
     font-family: ",
                 [Function],
                 ";
@@ -512,9 +515,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: ",
-                [Function],
-                ";
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -577,7 +578,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   li.slick-active {
     width: 11px;
-    height: 11px;
+    height: 12px;
     background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
     button,
     button:before {

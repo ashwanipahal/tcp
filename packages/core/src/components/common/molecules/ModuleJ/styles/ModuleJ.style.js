@@ -55,7 +55,7 @@ export default css`
   }
 
   .promo-header-wrapper:first-child {
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 0;
     display: inline-block;
     ${props =>
       props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
@@ -153,6 +153,11 @@ export default css`
   }
 
   .buttonStylingAndSpacing {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-top: 14px;
+  }
+
+  .imagesDiv {
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 `;

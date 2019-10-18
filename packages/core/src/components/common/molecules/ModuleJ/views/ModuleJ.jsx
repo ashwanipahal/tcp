@@ -195,7 +195,7 @@ class ModuleJ extends React.PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row className="imagesDiv">
           <Col
             className="moduleJ__carousel-wrapper"
             colSize={{
