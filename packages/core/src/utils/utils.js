@@ -849,6 +849,38 @@ export const getStoreHours = (
     return '';
   }
 };
+export const test = () => {
+  return 'test';
+};
+/**
+ * @summary this is meant to generate a new UID on each API call
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns generated traceId of User or else not-found string value
+
+ */
+export const generateTraceId = () => {
+  const apiConfigObj = getAPIConfig();
+  let prefix;
+
+  // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
+  if (isMobileApp()) {
+    prefix = 'MOBILE';
+  } else if (isClient()) {
+    prefix = 'CLIENT';
+  } else {
+    prefix = 'NODE';
+  }
+  const timeStamp = new Date().valueOf().toString();
+
+  // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
+  if (apiConfigObj.traceIdCount > 10000) {
+    apiConfigObj.traceIdCount = 0;
+  }
+
+  const traceIdCount = apiConfigObj.traceIdCount + 1;
+  const traceId = `${prefix}_${traceIdCount}_${timeStamp}`;
+  return traceId || 'not-found';
+};
 
 /**
  * Function to get Order Detail Group Header label and Message
@@ -933,4 +965,5 @@ export default {
   getTranslateDateInformation,
   stringify,
   changeImageURLToDOM,
+  generateTraceId,
 };

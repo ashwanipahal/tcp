@@ -77,4 +77,5 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  generateTraceId,
 } from './utils';
