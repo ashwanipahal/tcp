@@ -897,7 +897,8 @@ export const getOrderGroupLabelAndMessage = orderProps => {
     pickUpExpirationDate,
   } = orderProps;
 
-  getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder);
+  ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+
   switch (status) {
     case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
     case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
