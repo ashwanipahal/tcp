@@ -9,6 +9,7 @@ import CHECKOUT_SELECTORS, {
   isRemembered,
   isUsSite,
 } from '../container/Checkout.selector';
+import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
 import { isMobileApp, getViewportInfo, getAPIConfig } from '../../../../../utils';
 
@@ -73,7 +74,14 @@ describe('Checkout Selectors', () => {
   });
 
   it('#getRecalcOrderPointsInterval', () => {
-    expect(CHECKOUT_SELECTORS.getRecalcOrderPointsInterval()).toEqual(300000);
+    const State = {
+      session: fromJS({
+        siteDetails: {
+          BRIERLEY_ORD_RECALC_CACHING_INTERVAL: 300000,
+        },
+      }),
+    };
+    expect(getRecalcOrderPointsInterval(State)).toEqual(300000);
   });
 
   it('#igetIsOrderHasShipping', () => {

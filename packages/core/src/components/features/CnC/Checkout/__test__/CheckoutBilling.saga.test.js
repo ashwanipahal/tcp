@@ -128,7 +128,7 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
 
     expect(CheckoutReviewSaga.next({ body: {} }).value).toEqual(
-      call(func, false, true, true, false, false)
+      call(func, true, true, false, false, true)
     );
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
@@ -147,7 +147,7 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
 
     expect(CheckoutReviewSaga.next({ body: {} }).value).toEqual(
-      call(func, false, true, true, false, false)
+      call(func, true, true, false, false, true)
     );
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });

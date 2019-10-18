@@ -146,7 +146,7 @@ function* updateBopisItems(res) {
 export function* getCartDataSaga(payload = {}) {
   try {
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
-    const { payload: { onCartRes, recalcRewards, translation = true } = {} } = payload;
+    const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
     const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
     const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
