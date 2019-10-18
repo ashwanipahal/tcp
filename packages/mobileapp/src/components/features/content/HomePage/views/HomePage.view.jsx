@@ -92,7 +92,7 @@ class HomePageView extends React.PureComponent<Props> {
         />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
-        <Recommendations navigation={navigation} variation="moduleO,moduleP" />
+        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
       </LazyloadScrollView>
     );
   }

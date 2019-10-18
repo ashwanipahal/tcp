@@ -8,6 +8,5 @@ export const CarouselContainer = styled.View`
 export const ButtonContainer = styled.View`
   align-items: center;
   display: flex;
-  padding-top: 12px;
   margin-bottom: 32px;
 `;
