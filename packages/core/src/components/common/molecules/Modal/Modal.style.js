@@ -22,6 +22,7 @@ const ModalStyle = css`
     height: 100%;
     width: ${props => (props.fixedWidth ? '100%' : '')};
     width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
+    max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};

@@ -236,7 +236,7 @@ export class AddressVerification extends React.Component<Props> {
     if (this.showVerifyModal) {
       return (
         <Modal
-          colSet={{ large: 4, medium: 8, small: 6 }}
+          colSet={{ large: 6, medium: 8, small: 6 }}
           isOpen
           onRequestClose={this.onCloseModal}
           overlayClassName="TCPModal__Overlay"
@@ -244,7 +244,8 @@ export class AddressVerification extends React.Component<Props> {
           heading={heading}
           fixedWidth
           maxWidth={spacing.MODAL_WIDTH.SMALL}
-          minHeight="675px"
+          minHeight="95vh"
+          maxHeight="100vh"
         >
           <div className="addressVerification">
             <BodyCopy
