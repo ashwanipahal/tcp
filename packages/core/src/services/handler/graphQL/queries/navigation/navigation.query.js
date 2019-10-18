@@ -8,6 +8,8 @@ const buildQuery = ({ brand, country, channel }) => `
       seoUrl
       seoToken
       longDescription
+      seoTitle
+      seoMetaDesc
       mainCategory {
         set {
           key
@@ -64,6 +66,8 @@ const buildQuery = ({ brand, country, channel }) => `
         catgroupId
         longDescription
         catgroupId
+        seoTitle
+        seoMetaDesc
         mainCategory {
           promoBadge {
             text
@@ -84,6 +88,8 @@ const buildQuery = ({ brand, country, channel }) => `
           catgroupId
           longDescription
           catgroupId
+          seoTitle
+          seoMetaDesc
         }
       }
     }

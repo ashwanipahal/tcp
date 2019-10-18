@@ -67,7 +67,7 @@ const TextBox = ({
 
   return (
     <label
-      htmlFor={input.name}
+      htmlFor={id}
       className={`${className} input-fields-wrapper ${getValidationSuccessClass(
         showSuccessCheck,
         meta

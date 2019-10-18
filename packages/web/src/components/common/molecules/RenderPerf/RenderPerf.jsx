@@ -1,18 +1,19 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
-import Safe from 'react-safe';
 import { string } from 'prop-types';
 import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
-import { stringify } from '@tcp/core/src/utils';
 import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 
 function ServerOnlyScript({ children, ...props }) {
+  // This may be unnecessary since react-dom will not execute the contents.
   return (
-    <Safe.script suppressHydrationWarning {...props}>
-      {/* This may be unnecessary since react-dom will not execute the contents. */}
-      {typeof window === 'undefined' ? children : null}
-    </Safe.script>
+    <script
+      suppressHydrationWarning
+      {...props}
+      dangerouslySetInnerHTML={{ __html: typeof window === 'undefined' ? children : null }}
+    />
   );
 }
 
@@ -25,7 +26,7 @@ export function Mark({ name }) {
   usePerfMark(name);
   // For server-side execution
   return isEnabled ? (
-    <ServerOnlyScript>{stringify`typeof performance !== ${'undefined'} && performance.mark(${name});`}</ServerOnlyScript>
+    <ServerOnlyScript>{`typeof performance !== ${'undefined'} && performance.mark('${name}');`}</ServerOnlyScript>
   ) : null;
 }
 
@@ -41,7 +42,7 @@ export function Measure({ name, start, end }) {
   return isEnabled ? (
     <ServerOnlyScript>
       {/* "start" and "end" intentionally omitted for SSR */}
-      {stringify`typeof performance !== ${'undefined'} && performance.measure(${name});`}
+      {`typeof performance !== ${'undefined'} && performance.measure('${name}');`}
     </ServerOnlyScript>
   ) : null;
 }
