@@ -136,11 +136,14 @@ class CheckoutPage extends React.PureComponent {
       submitVerifiedShippingAddressData,
       isExpressCheckout,
       initShippingPage,
+      shippingMethod,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
+    const { shipmentMethods } = shippingProps;
+
     return (
       <div>
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
@@ -212,6 +215,12 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
             isExpressCheckout={isExpressCheckout}
+            shipmentMethods={shipmentMethods}
+            initialValues={{
+              expressReviewShippingSection: {
+                shippingMethodId: shippingMethod,
+              },
+            }}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -324,6 +333,7 @@ CheckoutPage.propTypes = {
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,
   isExpressCheckout: PropTypes.bool,
+  shippingMethod: PropTypes.shape({}),
 };
 
 CheckoutPage.defaultProps = {
@@ -331,6 +341,7 @@ CheckoutPage.defaultProps = {
   setVenmoPickupState: () => {},
   setVenmoShippingState: () => {},
   isExpressCheckout: false,
+  shippingMethod: {},
 };
 
 export default CheckoutPage;

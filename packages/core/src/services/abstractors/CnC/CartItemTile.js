@@ -96,15 +96,19 @@ export const imageGenerator = (id, excludeExtension) => {
 };
 
 export const getSwatchImgPath = (id, excludeExtension) => {
-  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
+  return `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`;
 };
 
 export const getProductImgPath = (id, excludeExtension) => {
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
   return {
-    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
-    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
-    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
-    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
+    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
   };
 };
 
