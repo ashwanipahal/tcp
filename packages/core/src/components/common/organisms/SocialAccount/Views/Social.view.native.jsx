@@ -297,7 +297,7 @@ class Socialview extends React.PureComponent {
         return this.logoutApp('facebook');
       case 'Instagram':
         if (!isConnected) {
-          this.instagramLogin.show();
+          return this.instagramLogin.show();
         }
         return this.logoutApp('instagram');
       case 'Twitter':
@@ -305,12 +305,12 @@ class Socialview extends React.PureComponent {
           const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = getAPIConfig();
           const { RNTwitterSignIn } = NativeModules;
           RNTwitterSignIn.init(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
-          RNTwitterSignIn.logIn().then(loginData => {
+          return RNTwitterSignIn.logIn().then(loginData => {
             const { authToken, userID } = loginData;
             this.dispatchSaveSocial('twitter', authToken, userID);
           });
         }
-        return null;
+        return this.logoutApp('twitter');
       default:
         return null;
     }
