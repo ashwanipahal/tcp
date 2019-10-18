@@ -4,6 +4,7 @@ export default css`
   padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
+  position: relative;
   .product {
     padding-top: 6px;
   }
@@ -85,6 +86,9 @@ export default css`
     width: 10px;
     height: 10px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   .crossDeleteIconBag {
@@ -93,6 +97,10 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    position: absolute;
+    top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+
     img {
       display: block;
     }
@@ -217,6 +225,13 @@ export default css`
         padding-left: 15px;
         left: 155px;
         bottom: 4px;
+        /* stylelint-disable */
+        @media ${props => props.theme.mediaQuery.large} {
+          position: absolute;
+          left: 110px;
+          bottom: 3px;
+        }
+        /* stylelint-enable */
       }
 
       /* stylelint-disable */
@@ -238,6 +253,9 @@ export default css`
       .save-for-later-label {
         margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
+        position: absolute;
+        left: 10px;
+        margin-top: 0;
       }
       .color-map-size-fit {
         display: inline-grid;
@@ -298,12 +316,16 @@ export default css`
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      float: right;
-      cursor: pointer;
+      position: absolute;
+      right: -10px;
     }
   }
 
   .parent-myBag {
+    .save-for-later-label {
+      display: flex;
+      align-items: center;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: 0px;
     }
@@ -334,6 +356,19 @@ export default css`
   }
   .product-detail-review-page {
     display: inline-block;
+  }
+
+  .toggle-error {
+    display: flex;
+    align-items: center;
+    background: ${props => props.theme.colorPalette.white};
+
+    img {
+      padding-top: 0px;
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      padding-left: 0;
+      padding-bottom: 1px;
+    }
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

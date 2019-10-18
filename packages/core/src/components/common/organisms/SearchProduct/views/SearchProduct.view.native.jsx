@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, SectionList } from 'react-native';
+import { Modal, SectionList, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BodyCopy, Button } from '../../../atoms';
@@ -13,7 +13,7 @@ import SearchContainer, {
   CloseButton,
 } from '../SearchProduct.style.native';
 import { getSearchResult } from '../../../molecules/SearchBar/SearchBar.actions';
-import { getLabelValue } from '../../../../../utils/index.native';
+import { getLabelValue, isAndroid } from '../../../../../utils/index.native';
 import { setRecentSearch } from '../RecentSearch.actions';
 import getRecentSearchesData from '../RecentSearches.selectors';
 
@@ -127,7 +127,8 @@ class SearchProduct extends React.PureComponent {
    * @memberof SearchProduct
    */
   renderSearchContainer = () => {
-    const cancelStyle = { borderWidth: 0 };
+    const topStyle = { marginTop: 10 };
+    const cancelStyle = { borderWidth: 0, marginTop: 3 };
     const canceTextStyle = { textTransform: 'none', fontWeight: 'normal' };
     const { searchText } = this.state;
     return (
@@ -137,6 +138,7 @@ class SearchProduct extends React.PureComponent {
           name={ICON_NAME.search}
           size="fs25"
           color="blue.500"
+          style={topStyle}
         />
         <TextInput
           returnKeyType="search"
@@ -155,6 +157,7 @@ class SearchProduct extends React.PureComponent {
               name={ICON_NAME.large}
               size="fs10"
               color="gray.900"
+              accessibilityLabel="close"
             />
           </CloseButton>
         ) : (
@@ -163,6 +166,8 @@ class SearchProduct extends React.PureComponent {
             name={ICON_NAME.qrcode}
             size="fs25"
             color="gray.600"
+            accessibilityLabel="barcode"
+            style={topStyle}
           />
         )}
         <Button
@@ -277,6 +282,7 @@ class SearchProduct extends React.PureComponent {
   render() {
     const { modalVisible, showRecentSearches, extraDataForSearch, listData } = this.state;
     const data = showRecentSearches ? this.recentSearchesListData() : listData;
+    const containerStyle = { flex: 1 };
 
     return (
       <Modal
@@ -286,16 +292,18 @@ class SearchProduct extends React.PureComponent {
         onRequestClose={this.closeModal}
       >
         <SafeAreaView>
-          {this.renderSearchContainer()}
-          <SectionList
-            sections={data}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
-            renderSectionHeader={this.renderSectionHeader}
-            keyboardShouldPersistTaps="handled"
-            stickySectionHeadersEnabled={false}
-            extraData={extraDataForSearch}
-          />
+          <KeyboardAvoidingView behavior={isAndroid() ? null : 'padding'} style={containerStyle}>
+            {this.renderSearchContainer()}
+            <SectionList
+              sections={data}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem}
+              renderSectionHeader={this.renderSectionHeader}
+              keyboardShouldPersistTaps="handled"
+              stickySectionHeadersEnabled={false}
+              extraData={extraDataForSearch}
+            />
+          </KeyboardAvoidingView>
         </SafeAreaView>
       </Modal>
     );

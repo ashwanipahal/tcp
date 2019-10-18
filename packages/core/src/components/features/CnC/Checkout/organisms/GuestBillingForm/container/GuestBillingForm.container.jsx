@@ -137,6 +137,7 @@ class GuestBillingContainer extends React.Component {
       syncErrors,
       shippingOnFileAddressKey,
       isVenmoPaymentInProgress,
+      setCheckoutStage,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -167,6 +168,7 @@ class GuestBillingContainer extends React.Component {
         }}
         onSubmit={this.submitBillingData}
         syncErrorsObj={syncErrors}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -209,6 +211,7 @@ GuestBillingContainer.propTypes = {
   navigation: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoProgress: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 GuestBillingContainer.defaultProps = {
