@@ -6,48 +6,17 @@ import {
   updateSelectedCountry,
   updateSelectedLanguage,
   updateSelectedCurrency,
-  storeCountriesMap,
-  storeCurrenciesMap,
   udpateSiteId,
 } from '../container/CountrySelector.actions';
 
 describe('Country Selector reducer', () => {
   const initialState = fromJS({
     isModalOpen: false,
-    countriesMap: [],
-    currenciesMap: [],
-    sitesTable: {
-      us: {
-        languages: [
-          {
-            id: 'en',
-            displayName: 'English',
-          },
-          {
-            id: 'es',
-            displayName: 'Spanish',
-          },
-        ],
-      },
-      ca: {
-        languages: [
-          {
-            id: 'en',
-            displayName: 'English',
-          },
-          {
-            id: 'fr',
-            displayName: 'French',
-          },
-        ],
-      },
-    },
     country: '',
     language: '',
     currency: '',
     siteId: '',
     moduleXContent: '',
-    cacheUntil: null,
   });
 
   it('should return default state', () => {
@@ -87,16 +56,6 @@ describe('Country Selector reducer', () => {
     it('setting siteId correctly', () => {
       state = CountrySelectorReducer(initialState, udpateSiteId(payload.siteId));
       expect(state.get('siteId')).toEqual(payload.siteId);
-    });
-
-    it('setting countriesMap correctly', () => {
-      state = CountrySelectorReducer(initialState, storeCountriesMap(payload.countriesMap));
-      expect(state.get('countriesMap')).toEqual(payload.countriesMap);
-    });
-
-    it('setting currenciesMap correctly', () => {
-      state = CountrySelectorReducer(initialState, storeCurrenciesMap(payload.currenciesMap));
-      expect(state.get('currenciesMap')).toEqual(payload.currenciesMap);
     });
 
     it('setting moduleX Content correctly', () => {

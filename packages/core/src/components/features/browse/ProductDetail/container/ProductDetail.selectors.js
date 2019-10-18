@@ -87,7 +87,7 @@ export const getDefaultImage = state => {
 };
 
 export const getCurrentCurrency = state => {
-  return state.session.getIn(['siteDetails', 'currency']);
+  return state.session.siteDetails.currency;
 };
 
 export const getCurrentProduct = state => {
