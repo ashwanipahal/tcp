@@ -5,7 +5,7 @@ const selectedIcon = getIconPath('selected-item-check-no-circle');
 
 export default css`
   .sort-select-title {
-    font-size: 8px;
+    font-size: 16px;
     display: none;
     padding-right: 5px;
   }
