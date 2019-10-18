@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
-import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import {
+  getAddedToBagError,
+  getMultipleItemsAddedToBagError,
+} from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import {
   getModalState,
@@ -18,7 +21,9 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 import {
   addToCartEcom,
+  addMultipleItemsToCartEcom,
   clearAddToBagErrorState,
+  clearAddToCartMultipleItemErrorState,
 } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
@@ -26,7 +31,9 @@ import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utilit
 class QuickViewModalContainer extends React.PureComponent {
   handleAddToBag = () => {
     const { addToBagEcom, formValues, productInfo, closeQuickViewModalAction } = this.props;
-    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    const [{ product }] = productInfo;
+    const [formValue] = formValues;
+    let cartItemInfo = getCartItemInfo(product, formValue);
     cartItemInfo = { ...cartItemInfo, callBack: closeQuickViewModalAction };
     addToBagEcom(cartItemInfo);
   };
@@ -39,7 +46,9 @@ class QuickViewModalContainer extends React.PureComponent {
       closeQuickViewModalAction,
       productInfoFromBag,
     } = this.props;
-    const cartItemInfo = getCartItemInfo(productInfo, formValues);
+    const [{ product }] = productInfo;
+    const [formValue] = formValues;
+    const cartItemInfo = getCartItemInfo(product, formValue);
     const {
       skuInfo: { skuId, variantNo, variantId },
     } = cartItemInfo;
@@ -57,14 +66,22 @@ class QuickViewModalContainer extends React.PureComponent {
   };
 
   render() {
-    const { isModalOpen, closeQuickViewModalAction, productInfo, ...otherProps } = this.props;
+    const {
+      isModalOpen,
+      closeQuickViewModalAction,
+      productInfo,
+      plpLabels,
+      ...otherProps
+    } = this.props;
+    const showModal = productInfo && productInfo.length;
     return (
       <React.Fragment>
-        {productInfo ? (
+        {showModal ? (
           <QuickViewModal
             isModalOpen={isModalOpen}
             closeQuickViewModal={closeQuickViewModalAction}
             productInfo={productInfo}
+            plpLabels={plpLabels}
             handleAddToBag={this.handleAddToBag}
             handleUpdateItem={this.handleUpdateItem}
             {...otherProps}
@@ -76,14 +93,19 @@ class QuickViewModalContainer extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
+  const productInfo = getProductInfo(state);
+  const isMultiItemQVModal = productInfo && productInfo.length > 1;
+
   return {
     isModalOpen: getModalState(state),
-    productInfo: getProductInfo(state),
+    productInfo,
+    isMultiItemQVModal,
     plpLabels: getPlpLabels(state),
     currency: getCurrentCurrency(state),
     quickViewLabels: getQuickViewLabels(state),
     formValues: getQuickViewFormValues(state),
-    addToBagError: getAddedToBagError(state),
+    addToBagError: getAddedToBagError(state) || '',
+    addToBagMultipleItemError: getMultipleItemsAddedToBagError(state) || {},
     productInfoFromBag: getProductInfoFromBag(state),
   };
 }
@@ -93,11 +115,17 @@ function mapDispatchToProps(dispatch) {
     closeQuickViewModalAction: () => {
       dispatch(closeQuickViewModal({ isModalOpen: false }));
     },
+    addMultipleItemsToBagEcom: payload => {
+      dispatch(addMultipleItemsToCartEcom(payload));
+    },
     addToBagEcom: payload => {
       dispatch(addToCartEcom(payload));
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    clearMultipleItemsAddToBagError: () => {
+      dispatch(clearAddToCartMultipleItemErrorState());
     },
     updateCartItemAction: payload => {
       dispatch(updateCartItem(payload));
@@ -106,17 +134,20 @@ function mapDispatchToProps(dispatch) {
 }
 
 QuickViewModalContainer.propTypes = {
+  plpLabels: PropTypes.shape({}),
   isModalOpen: PropTypes.bool.isRequired,
-  formValues: PropTypes.shape({}).isRequired,
+  formValues: PropTypes.shape([]).isRequired,
   closeQuickViewModalAction: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
+  addMultipleItemsToBagEcom: PropTypes.func.isRequired,
   updateCartItemAction: PropTypes.func.isRequired,
-  productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  productInfo: PropTypes.shape([PRODUCT_INFO_PROP_TYPE_SHAPE]).isRequired,
   productInfoFromBag: PropTypes.shape({}),
 };
 
 QuickViewModalContainer.defaultProps = {
   productInfoFromBag: {},
+  plpLabels: {},
 };
 
 export default connect(

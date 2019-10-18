@@ -44,13 +44,15 @@ const InputCheckbox = ({
           disabled={disabled}
           aria-describedby={errorMessagea11yLbl}
         />
-        <BodyCopy
-          fontSize="fs12"
-          fontFamily="secondary"
-          className={`CheckBox__text ${disabled ? 'disabled' : ''}`}
-        >
-          {children}
-        </BodyCopy>
+        {children && (
+          <BodyCopy
+            fontSize="fs12"
+            fontFamily="secondary"
+            className={`CheckBox__text ${disabled ? 'disabled' : ''}`}
+          >
+            {children}
+          </BodyCopy>
+        )}
 
         <div className="Checkbox__error" component="div">
           <span className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />

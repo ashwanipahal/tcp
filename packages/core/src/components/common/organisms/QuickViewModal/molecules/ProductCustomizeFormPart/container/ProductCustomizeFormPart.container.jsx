@@ -4,7 +4,6 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import ProductCustomizeFormPart from '../views/ProductCustomizeFormPart.view';
 import { routerPush } from '../../../../../../../utils';
-
 import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
@@ -14,7 +13,9 @@ class ProductCustomizeFormPartContainer extends React.Component {
   constructor(props) {
     super(props);
     const { productInfo, colorFitsSizesMap } = this.props;
+    this.onInputSelectionChange = this.onInputSelectionChange.bind(this);
     this.state = {
+      formEnabled: true,
       currentColorEntry: getMapSliceForColorProductId(
         colorFitsSizesMap,
         productInfo.generalProductId
@@ -25,6 +26,10 @@ class ProductCustomizeFormPartContainer extends React.Component {
   onChangeColor = e => {
     const { colorFitsSizesMap } = this.props;
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
+
+  onInputSelectionChange = () => {
+    this.setState(oldState => ({ formEnabled: !oldState.formEnabled }));
   };
 
   goToPDPPage = (e, pdpToPath, currentColorPdpUrl) => {
@@ -47,8 +52,8 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   render() {
-    const { productInfo } = this.props;
-    const { currentColorEntry } = this.state;
+    const { productInfo, formRef } = this.props;
+    const { currentColorEntry, formEnabled } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&
         productInfo.imagesByColor[currentColorEntry.color.name].basicImageUrl
@@ -62,6 +67,9 @@ class ProductCustomizeFormPartContainer extends React.Component {
         onChangeColor={this.onChangeColor}
         goToPDPPage={this.goToPDPPage}
         goToPDPPageMobile={this.goToPDPPageMobile}
+        onInputSelectionChange={this.onInputSelectionChange}
+        formRef={formRef}
+        formEnabled={formEnabled}
       />
     );
   }
@@ -71,8 +79,9 @@ ProductCustomizeFormPartContainer.propTypes = {
   plpLabels: PropTypes.shape({}).isRequired,
   onCloseClick: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  formRef: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
-  formValues: PropTypes.shape({}).isRequired,
+  formValues: PropTypes.shape([]).isRequired,
   quickViewLabels: PropTypes.shape({
     addToBag: PropTypes.string,
     viewProductDetails: PropTypes.string,
@@ -87,6 +96,7 @@ ProductCustomizeFormPartContainer.defaultProps = {
   currency: 'USD',
   addToBagError: '',
   navigation: {},
+  formRef: {},
 };
 
 export default ProductCustomizeFormPartContainer;

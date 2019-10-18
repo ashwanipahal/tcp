@@ -68,8 +68,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderColorList = (colorList, colorTitle) => {
-    const { selectColor, isGiftCard } = this.props;
+    const { selectColor, isGiftCard, showColorChips } = this.props;
     return (
+      showColorChips &&
       colorList &&
       colorList.size > 0 && (
         <div className="color-selector">
