@@ -19,7 +19,9 @@ exports[`Order Items component should renders correctly 1`] = `
         }
       />
     </Styled(View)>
-    <Styled(View)>
+    <Styled(Styled(View))
+      spacingStyles="padding-right-SM padding-left-SM"
+    >
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
@@ -193,7 +195,7 @@ exports[`Order Items component should renders correctly 1`] = `
           />
         </Styled(View)>
       </Styled(View)>
-    </Styled(View)>
+    </Styled(Styled(View))>
   </Styled(View)>
 </Fragment>
 `;
