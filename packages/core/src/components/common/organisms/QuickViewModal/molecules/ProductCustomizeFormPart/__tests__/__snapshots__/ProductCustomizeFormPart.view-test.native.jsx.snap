@@ -4,10 +4,13 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(ImageComp)
+      <Styled(DamImage)
         alt=""
+        crop=""
         height="198px"
         host=""
+        imgConfig=""
+        isProductImage={true}
         resizeMode="contain"
         source=""
         url=""
