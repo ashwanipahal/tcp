@@ -25,6 +25,7 @@ import {
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 } from './Checkout.selector.util';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -455,6 +456,12 @@ const getSmsSignUpLabels = state => {
 
 const getEmailSignUpLabels = state => {
   return {
+    shippingAddressEditError: getLabelValue(
+      state.Labels,
+      'lbl_shipping_addressEditError',
+      'shipping',
+      'checkout'
+    ),
     emailSignupHeading: getLabelValue(
       state.Labels,
       'lbl_pickup_emailSignupHeading',
@@ -976,4 +983,5 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getExpressReviewShippingSectionId,
 };

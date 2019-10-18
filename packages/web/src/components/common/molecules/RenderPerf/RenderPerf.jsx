@@ -1,13 +1,11 @@
 import React from 'react';
 import Safe from 'react-safe';
 import { string } from 'prop-types';
+import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import { stringify } from '@tcp/core/src/utils';
 import { usePerfMark, usePerfMeasure } from '../../../../hooks/performance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
-
-// Script as string for SSR
-const isSupported = stringify`typeof performance !== ${undefined}`;
 
 function ServerOnlyScript({ children, ...props }) {
   return (
@@ -27,7 +25,7 @@ export function Mark({ name }) {
   usePerfMark(name);
   // For server-side execution
   return isEnabled ? (
-    <ServerOnlyScript>{stringify`${isSupported} && performance.mark(${name});`}</ServerOnlyScript>
+    <ServerOnlyScript>{stringify`typeof performance !== ${'undefined'} && performance.mark(${name});`}</ServerOnlyScript>
   ) : null;
 }
 
@@ -37,12 +35,13 @@ Mark.propTypes = {
 
 export function Measure({ name, start, end }) {
   // For client-side execution
-  usePerfMeasure(name, start, end);
+  // Note: use `NAVIGATION_START` as a default for CSR user timing
+  usePerfMeasure(name, start || NAVIGATION_START, end);
   // For server-side execution
   return isEnabled ? (
     <ServerOnlyScript>
       {/* "start" and "end" intentionally omitted for SSR */}
-      {stringify`${isSupported} && performance.measure(${name});`}
+      {stringify`typeof performance !== ${'undefined'} && performance.measure(${name});`}
     </ServerOnlyScript>
   ) : null;
 }

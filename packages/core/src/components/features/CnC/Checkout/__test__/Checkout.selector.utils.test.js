@@ -239,4 +239,21 @@ describe('Checkout Selectors', () => {
       Checkout.getIn(['values', 'venmoClientTokenData'])
     );
   });
+
+  it('#getExpressReviewShippingSectionId', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
+        },
+      },
+    };
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
+  });
 });
