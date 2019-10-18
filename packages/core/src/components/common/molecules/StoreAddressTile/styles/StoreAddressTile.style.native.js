@@ -9,10 +9,6 @@ export default styled.View`
   border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-`;
-
-export const TileHeader = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   ${props =>
     props.selectedStoreId
       ? `
@@ -20,6 +16,10 @@ export const TileHeader = styled.View`
         background-color: ${props.theme.colorPalette.gray[300]};
         `
       : ''};
+`;
+
+export const TileHeader = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export const TileBody = styled.View`

@@ -120,7 +120,7 @@ class GuestBillingForm extends React.Component {
                 mobileFontFamily="primary"
                 fontSize="fs26"
                 fontWeight="regular"
-                data-locator="billing-details"
+                dataLocator="paymentMethodLbl"
                 className="elem-mb-XS elem-mt-MED"
                 text={labels.paymentMethod}
               />

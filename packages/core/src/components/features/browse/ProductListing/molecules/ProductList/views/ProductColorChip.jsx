@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import { getLocator } from '../../../../../../../utils';
 
 export default class ProductColorChip extends React.Component {
@@ -50,7 +51,11 @@ export default class ProductColorChip extends React.Component {
         title={name}
         className={['content-colors-button', isActive ? 'active' : null].join(' ')}
       >
-        <img className="product-color-chip-image" src={imagePath} alt={name} />
+        <img
+          className="product-color-chip-image"
+          src={changeImageURLToDOM(imagePath, 'w_50,h_50,c_thumb,g_auto:0')}
+          alt={name}
+        />
       </button>
     );
   }

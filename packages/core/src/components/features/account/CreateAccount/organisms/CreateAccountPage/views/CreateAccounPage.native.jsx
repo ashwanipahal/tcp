@@ -22,6 +22,8 @@ class CreateAccounPage extends React.Component {
     error: PropTypes.string,
     showForgotPasswordForm: PropTypes.func,
     showLogin: PropTypes.func.isRequired,
+    userplccCardNumber: PropTypes.string,
+    userplccCardId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -31,6 +33,8 @@ class CreateAccounPage extends React.Component {
     onRequestClose: () => {},
     showForgotPasswordForm: () => {},
     error: {},
+    userplccCardNumber: '',
+    userplccCardId: '',
   };
 
   constructor(props) {
@@ -73,6 +77,8 @@ class CreateAccounPage extends React.Component {
       error,
       showForgotPasswordForm,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     const { hideShowPwd, confirmHideShowPwd, getTouchStatus } = this.state;
     return (
@@ -109,6 +115,8 @@ class CreateAccounPage extends React.Component {
             isIAgreeChecked={isIAgreeChecked}
             onRequestClose={onRequestClose}
             showLogin={showLogin}
+            userplccCardNumber={userplccCardNumber}
+            userplccCardId={userplccCardId}
           />
         </View>
       </ScrollView>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
@@ -16,6 +17,7 @@ import { FullScreenImageCarousel } from '../../../../common/molecules/index.nati
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
+import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -80,6 +82,7 @@ class ProductDetailView extends React.PureComponent {
       itemPartNumber,
       longDescription,
       pdpLabels,
+      relatedOutfits,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -93,7 +96,7 @@ class ProductDetailView extends React.PureComponent {
     }
 
     return (
-      <ScrollView>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
           <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
           <ProductSummary
@@ -120,10 +123,15 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
+          <RelatedOutfits
+            pdpLabels={pdpLabels}
+            navigation={navigation}
+            relatedOutfits={relatedOutfits}
+          />
           {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }
@@ -142,6 +150,7 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductDetailView.defaultProps = {
@@ -156,6 +165,7 @@ ProductDetailView.defaultProps = {
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  relatedOutfits: [],
 };
 
 export default withStyles(ProductDetailView);

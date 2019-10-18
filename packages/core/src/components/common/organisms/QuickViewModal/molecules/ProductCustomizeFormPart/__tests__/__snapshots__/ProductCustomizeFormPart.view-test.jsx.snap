@@ -13,16 +13,22 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
       <div
         className="image-wrapper"
       >
-        <Styled(Image)
-          alt="Boys Uniform V Neck Sweater"
+        <WithTheme(DamImage)
           data-locator="quick_view_product_image"
-          src=""
+          imgData={
+            Object {
+              "alt": "Boys Uniform V Neck Sweater",
+              "url": "",
+            }
+          }
+          isProductImage={true}
         />
         <Styled(Anchor)
           className="link-redirect"
           dataLocator="quick_view_View_Product_details"
           noLink={true}
           onClick={[Function]}
+          to="/undefined/p/2100606_1137"
         >
           <Styled(BodyCopy)
             className="product-link"

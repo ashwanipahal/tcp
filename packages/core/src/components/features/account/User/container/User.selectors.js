@@ -43,6 +43,16 @@ export const getUserId = createSelector(
   state => state && state.get('userId')
 );
 
+export const getplccCardId = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('plccCardId');
+};
+
+export const getplccCardNumber = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('plccCardNumber');
+};
+
 export const getUserLoggedInState = createSelector(
   getPersonalDataState,
   state => state && !state.get('isGuest')
