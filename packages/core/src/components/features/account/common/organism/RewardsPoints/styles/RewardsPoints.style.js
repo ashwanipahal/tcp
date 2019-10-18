@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 
 const RewardsPointsStyles = css`
   .progress-container {
-    height: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    height: 10px;
+    border-radius: 5px;
     background-color: ${props => props.theme.colorPalette.userTheme.mprPrimary};
     width: 100%;
     overflow: hidden;
@@ -18,8 +18,8 @@ const RewardsPointsStyles = css`
   }
 
   .progress-container_plcc {
-    height: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    height: 10px;
+    border-radius: 5px;
     background-color: ${props => props.theme.colorPalette.userTheme.plccLight};
     width: 100%;
     overflow: hidden;

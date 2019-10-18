@@ -7,11 +7,12 @@ import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
 import {
   submitOrder,
   requestPersonalizedCoupons,
+  updatePaymentOnOrder,
 } from '../../../../../services/abstractors/CnC/index';
-import selectors, { isGuest } from './Checkout.selector';
+import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
-import { validateAndSubmitEmailSignup } from './Checkout.saga.util';
+import { validateAndSubmitEmailSignup, callPickupSubmitMethod } from './Checkout.saga.util';
 import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -28,6 +29,7 @@ import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/conta
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
+import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 
 const {
   // isVenmoPaymentAvailable,
@@ -35,6 +37,7 @@ const {
   getSmsNumberForBillingOrderUpdates,
   // getIsPaymentDisabled,
   getCurrentLanguage,
+  getBillingValues,
 } = selectors;
 
 function extractCouponInfo(personalizedOffersResponse) {
@@ -147,76 +150,61 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
     };
   }
   const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
-  yield call(loadPersonalizedCoupons, res, orderId);
   yield put(getSetOrderConfirmationActn(res));
-  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
-  const isCaSite = yield call(isCanada);
-  const isGuestUser = yield select(isGuest);
+  return res;
+}
+
+// function* expressCheckoutSubmit(formData) {
+export function* expressCheckoutSubmit(formData) {
+  // if express checkout
+  const { billing, hasAlternatePickup } = formData; // /* giftWrap, disabled */
   /* istanbul ignore else */
-  if (isGuestUser && !isCaSite && email) {
-    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+  if (hasAlternatePickup) {
+    yield call(callPickupSubmitMethod, formData);
+  }
+
+  // const giftWrapPromise = Promise.resolve();
+
+  /* NOTE: DT-19417: Gift Wrapping option no longer available for Express User on review page (backend does not support it)
+   * I guess this needs to be re-enabled once backend fixes the services.
+  if (giftWrap && giftWrap.hasGiftWrapping) {       // user specified gift wrapping
+    // pendingPromises.push(this.checkoutServiceAbstractor.addGiftWrappingOption(giftWrap.message, giftWrap.optionId));
+    giftWrapPromise = this.checkoutServiceAbstractor.addGiftWrappingOption(giftWrap.message, giftWrap.optionId);
+  } else if (checkoutStoreView.getGiftWrappingValues(state).optionId) {
+    // pendingPromises.push(this.checkoutServiceAbstractor.removeGiftWrappingOption()); // remove existing gift wrap (if any)
+    giftWrapPromise = this.checkoutServiceAbstractor.removeGiftWrappingOption();
+  }
+  */
+  /* istanbul ignore else */
+  if (billing && billing.cvv) {
+    // PLCC does not require CVV -> billing = null. User entered a cvv for a credit card
+    // submit CVV
+    const billingDetails = yield select(getBillingValues);
+    const grandTotal = yield select(getGrandTotal);
+    const requestData = {
+      orderGrandTotal: grandTotal,
+      monthExpire: billingDetails.billing.expMonth,
+      yearExpire: billingDetails.billing.expYear,
+      cardType: billingDetails.billing.cardType,
+      cardNumber: billingDetails.billing.cardNumber,
+      paymentId: billingDetails.paymentId,
+      billingAddressId: billingDetails.address.onFileAddressId, // DT-34037 billing_address_id need to be send along with updatePayment.
+      cvv: billing.cvv, // the cvv entered by the user
+    };
+    yield call(updatePaymentOnOrder, requestData);
   }
 }
 
 // method to handle submit of order in review page
-function* submitOrderForProcessing({ payload: { navigation } }) {
+function* submitOrderForProcessing({ payload: { navigation, formData } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
   const currentLanguage = yield select(getCurrentLanguage);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   const pendingPromises = [];
-  // if (checkoutStoreView.isExpressCheckout(state)) {
-  //   // if express checkout
-  //   let { billing, hasAlternatePickup, pickUpAlternate } = formData; // /* giftWrap, disabled */
-
-  //   if (hasAlternatePickup) {
-  //     // user specified an alternate pickup person
-  //     pendingPromises.push(
-  //       getPickupOperator(this.store).addContact(
-  //         // the main pickup person info comes from the values already in the form
-  //         {
-  //           ...checkoutStoreView.getPickupValues(state),
-  //           alternateEmail: pickUpAlternate.emailAddress,
-  //           alternateFirstName: pickUpAlternate.firstName,
-  //           alternateLastName: pickUpAlternate.lastName,
-  //         }
-  //       )
-  //     );
-  //   }
-
-  //   let giftWrapPromise = Promise.resolve();
-
-  //   /* NOTE: DT-19417: Gift Wrapping option no longer available for Express User on review page (backend does not support it)
-  //    * I guess this needs to be re-enabled once backend fixes the services.
-  //   if (giftWrap && giftWrap.hasGiftWrapping) {       // user specified gift wrapping
-  //     // pendingPromises.push(this.checkoutServiceAbstractor.addGiftWrappingOption(giftWrap.message, giftWrap.optionId));
-  //     giftWrapPromise = this.checkoutServiceAbstractor.addGiftWrappingOption(giftWrap.message, giftWrap.optionId);
-  //   } else if (checkoutStoreView.getGiftWrappingValues(state).optionId) {
-  //     // pendingPromises.push(this.checkoutServiceAbstractor.removeGiftWrappingOption()); // remove existing gift wrap (if any)
-  //     giftWrapPromise = this.checkoutServiceAbstractor.removeGiftWrappingOption();
-  //   }
-  //   */
-
-  //   if (billing && billing.cvv) {
-  //     // PLCC does not require CVV -> billing = null. User entered a cvv for a credit card
-  //     // submit CVV
-  //     let billingDetails = checkoutStoreView.getBillingValues(state);
-  //     pendingPromises.push(
-  //       giftWrapPromise.then(() => {
-  //         return this.checkoutServiceAbstractor.updatePaymentOnOrder({
-  //           // for some odd reason backend want this info
-  //           orderGrandTotal: cartStoreView.getGrandTotal(state),
-  //           monthExpire: billingDetails.billing.expMonth,
-  //           yearExpire: billingDetails.billing.expYear,
-  //           cardType: billingDetails.billing.cardType,
-  //           cardNumber: billingDetails.billing.cardNumber,
-  //           paymentId: billingDetails.paymentId,
-  //           billingAddressId: billingDetails.address.onFileAddressId, // DT-34037 billing_address_id need to be send along with updatePayment.
-  //           cvv: billing.cvv, // the cvv entered by the user
-  //         });
-  //       })
-  //     );
-  //   }
-  // }
+  if (isExpressCheckoutEnabled && formData) {
+    yield call(expressCheckoutSubmit, formData);
+  }
 
   // Venmo Support
   // if (venmoPaymentMethodApplied) {
@@ -322,13 +310,22 @@ function* submitOrderForProcessing({ payload: { navigation } }) {
   //   pendingPromises.push(runPromisesInSerial(localPromises));
   // }
   yield all(pendingPromises);
-  yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
+  const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
   if (!isMobileApp()) {
     utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
   } else if (navigation) {
     navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
   }
+
+  yield call(loadPersonalizedCoupons, res, orderId);
   const cartItems = yield select(BagPageSelectors.getOrderItems);
+  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
+  const isCaSite = yield call(isCanada);
+  const isGuestUser = yield select(isGuest);
+  /* istanbul ignore else */
+  if (isGuestUser && !isCaSite && email) {
+    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+  }
   // const vendorId =
   //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
 

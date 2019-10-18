@@ -19,6 +19,10 @@ export {
   LAZYLOAD_HOST_NAME,
   setTestId,
   validateColor,
+  getTranslatedMomentDate,
+  readCookieMobileApp,
+  createGoogleMapUrl,
+  mapHandler,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -38,6 +42,7 @@ export {
   getAddressFromPlace,
   formatAddress,
   formatPhoneNumber,
+  formatPhone,
   getLabelValue,
   capitalize,
   toTimeString,
@@ -48,4 +53,10 @@ export {
   sanitizeEntity,
   configureInternalNavigationFromCMSUrl,
   flattenArray,
+  getDateInformation,
+  buildStorePageUrlSuffix,
+  getBrand,
+  parseStoreHours,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
 } from './utils';

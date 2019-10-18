@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
 import PageContainer from '../styles/ProductDetail.style.native';
@@ -15,6 +16,8 @@ import {
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
+import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -75,6 +78,11 @@ class ProductDetailView extends React.PureComponent {
       addToBagError,
       isPickupModalOpen,
       handleSubmit,
+      shortDescription,
+      itemPartNumber,
+      longDescription,
+      pdpLabels,
+      relatedOutfits,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -88,7 +96,7 @@ class ProductDetailView extends React.PureComponent {
     }
 
     return (
-      <ScrollView>
+      <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
           <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
           <ProductSummary
@@ -108,10 +116,22 @@ class ProductDetailView extends React.PureComponent {
 
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <ProductDetailDescription
+            shortDescription={shortDescription}
+            itemPartNumber={itemPartNumber}
+            longDescription={longDescription}
+            isShowMore={false}
+            pdpLabels={pdpLabels}
+          />
+          <RelatedOutfits
+            pdpLabels={pdpLabels}
+            navigation={navigation}
+            relatedOutfits={relatedOutfits}
+          />
           {this.renderFulfilmentSection()}
-          {isPickupModalOpen ? <PickupStoreModal /> : null}
+          {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
-      </ScrollView>
+      </LazyloadScrollView>
     );
   }
 }
@@ -126,6 +146,11 @@ ProductDetailView.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   handleFormSubmit: PropTypes.func,
   addToBagError: PropTypes.string,
+  shortDescription: PropTypes.string,
+  itemPartNumber: PropTypes.string,
+  longDescription: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
+  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductDetailView.defaultProps = {
@@ -136,6 +161,11 @@ ProductDetailView.defaultProps = {
   isPickupModalOpen: false,
   handleFormSubmit: null,
   addToBagError: '',
+  shortDescription: '',
+  itemPartNumber: '',
+  longDescription: '',
+  pdpLabels: {},
+  relatedOutfits: [],
 };
 
 export default withStyles(ProductDetailView);

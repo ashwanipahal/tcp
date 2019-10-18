@@ -25,12 +25,13 @@ describe('AddEditCreditCardReducer reducer', () => {
       fromJS({
         showNotification: true,
         error: fromJS({ userId: '12345' }),
+        success: null,
       })
     );
   });
 
   it('should handle success addCreditCardSuccess', () => {
-    const initialState = null;
+    const initialState = fromJS({});
     expect(
       AddEditCreditCardReducer(
         initialState,
@@ -40,7 +41,8 @@ describe('AddEditCreditCardReducer reducer', () => {
       )
     ).toEqual(
       fromJS({
-        creditCardId: '12345',
+        success: fromJS({ creditCardId: '12345' }),
+        error: null,
       })
     );
   });

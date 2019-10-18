@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Button } from '../../../../../../common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
@@ -25,7 +26,7 @@ const ProductList = props => {
     className,
     productsBlock,
     showQuickViewForProductId,
-    currencySymbol,
+    currency,
     onAddItemToFavorites,
     onQuickViewOpenClick,
     onPickUpOpenClick,
@@ -42,6 +43,10 @@ const ProductList = props => {
     isPlcc,
     productTileVariation,
     isLoggedIn,
+    wishlistsSummaries,
+    isFavoriteView,
+    removeFavItem,
+    createNewWishListMoveItem,
   } = props;
   let gridIndex = 0;
 
@@ -56,11 +61,13 @@ const ProductList = props => {
         }
         window.gridIndex = gridIndex;
         return typeof item === 'string' ? (
-          /* id={isShowPLPId && (categoryNameTop +`-`+item).replace(/ /g, '-')} */
-
-          <h2 key={item} className={`${className} item-title`}>
+          <Heading
+            key={item}
+            className={`${className} item-title`}
+            fontFamily="secondaryFontFamily"
+          >
             {item}
-          </h2>
+          </Heading>
         ) : (
           <div className={`${className} product-tile ${productTileVariation}`}>
             <ProductsGridItem
@@ -70,7 +77,7 @@ const ProductList = props => {
               item={item}
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
-              currencySymbol={currencySymbol}
+              currencySymbol={currency}
               currencyExchange={currencyExchange}
               onAddItemToFavorites={onAddItemToFavorites}
               onQuickViewOpenClick={onQuickViewOpenClick}
@@ -99,6 +106,10 @@ const ProductList = props => {
               isKeepAliveKillSwitch={false}
               labels={labels}
               isLoggedIn={isLoggedIn}
+              wishlistsSummaries={wishlistsSummaries}
+              isFavoriteView={isFavoriteView}
+              removeFavItem={removeFavItem}
+              createNewWishListMoveItem={createNewWishListMoveItem}
             />
           </div>
         );
@@ -113,8 +124,8 @@ ProductList.propTypes = {
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
-  currencySymbol: PropTypes.string,
-  currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
+  currency: PropTypes.string,
+  currencyExchange: PropTypes.shape({}),
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
@@ -139,13 +150,17 @@ ProductList.propTypes = {
   isPlcc: PropTypes.bool,
   productTileVariation: PropTypes.string,
   isLoggedIn: PropTypes.bool,
+  wishlistsSummaries: PropTypes.shape(),
+  isFavoriteView: PropTypes.bool,
+  removeFavItem: PropTypes.func,
+  createNewWishListMoveItem: PropTypes.func,
 };
 
 ProductList.defaultProps = {
   className: '',
   productsBlock: [],
   showQuickViewForProductId: '',
-  currencySymbol: '',
+  currency: '',
   onAddItemToFavorites: () => {},
   onQuickViewOpenClick: () => {},
   onPickUpOpenClick: () => {},
@@ -155,7 +170,7 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencyExchange: '',
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',
@@ -164,6 +179,10 @@ ProductList.defaultProps = {
   isPlcc: false,
   productTileVariation: '',
   isLoggedIn: false,
+  wishlistsSummaries: null,
+  isFavoriteView: false,
+  removeFavItem: null,
+  createNewWishListMoveItem: null,
 };
 
 export default withStyles(ProductList, ProductListStyle);

@@ -4,6 +4,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { fromJS } from 'immutable';
+import AddEditPersonalInformation from '@tcp/core/src/components/features/account/AddEditPersonalInformation';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
@@ -21,6 +22,7 @@ const map = {
   userAboutYourselfSurvey: 'mountSurveyModal',
   userMailing: 'mountMailingAddressModal',
   birthdaySavings: 'mountAddChildModal',
+  userBirthday: 'mountPersonalInformationModal',
 };
 
 export class ProfileInformation extends React.PureComponent {
@@ -32,6 +34,7 @@ export class ProfileInformation extends React.PureComponent {
       mountSurveyModal: map[componentProps.activeComponent] === map.userAboutYourselfSurvey,
       mountMailingAddressModal: map[componentProps.activeComponent] === map.userMailing,
       mountAddChildModal: map[componentProps.activeComponent] === map.birthdaySavings,
+      mountPersonalInformationModal: map[componentProps.activeComponent] === map.userBirthday,
     };
   }
 
@@ -49,6 +52,10 @@ export class ProfileInformation extends React.PureComponent {
 
   toggleAddChildModal = () => {
     this.toggleModalState('mountAddChildModal');
+  };
+
+  togglePersonalInformationModal = () => {
+    this.toggleModalState('mountPersonalInformationModal');
   };
 
   render() {
@@ -69,9 +76,13 @@ export class ProfileInformation extends React.PureComponent {
       userSurvey,
       percentageIncrement,
       childrenBirthdays,
-      componentProps,
     } = this.props;
-    const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
+    const {
+      mountSurveyModal,
+      mountMailingAddressModal,
+      mountAddChildModal,
+      mountPersonalInformationModal,
+    } = this.state;
     return (
       <>
         <ProfileInfoActions
@@ -97,7 +108,6 @@ export class ProfileInformation extends React.PureComponent {
           airMiles={airMiles}
           myPlaceNumber={myPlaceNumber}
           toggleModalState={this.toggleModalState}
-          componentProps={componentProps}
         />
         {userSurvey !== null && userSurvey.getIn(['0', '0']) !== '' && (
           <AboutYouInfo labels={labels} userSurvey={userSurvey} />
@@ -151,6 +161,15 @@ export class ProfileInformation extends React.PureComponent {
                 onClose={this.toggleMailingAddressModal}
               />
             </ViewWithSpacing>
+          </ModalNative>
+        )}
+        {mountPersonalInformationModal && (
+          <ModalNative
+            isOpen={mountPersonalInformationModal}
+            onRequestClose={this.togglePersonalInformationModal}
+            heading={getLabelValue(labels, 'lbl_profile_heading')}
+          >
+            <AddEditPersonalInformation onRequestClose={this.togglePersonalInformationModal} />
           </ModalNative>
         )}
       </>

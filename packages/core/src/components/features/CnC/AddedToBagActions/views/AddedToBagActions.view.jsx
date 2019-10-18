@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -13,20 +14,21 @@ import { getLocator } from '../../../../../utils';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { isBagPageStickyHeader, showAddTobag } = this.props;
-    const containerId = isBagPageStickyHeader
-      ? 'paypal-button-container-bagHeader'
-      : 'paypal-button-container';
+    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    let containerID = containerId;
+    if (isBagPageStickyHeader) {
+      containerID = 'paypal-button-container-bag-header';
+    }
     return (
       <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerId} />
+        <PayPalButton className="payPal-button" containerId={containerID} />
       </div>
     );
   }
 
   getHeaderPaypalButton() {
-    const { isBagPageStickyHeader } = this.props;
-    if (isBagPageStickyHeader) {
+    const { isBagPageStickyHeader, isInternationalShipping } = this.props;
+    if (!isInternationalShipping && isBagPageStickyHeader) {
       return this.getPaypalButton();
     }
     return null;
@@ -60,8 +62,9 @@ class AddedToBagActions extends React.PureComponent<Props> {
       showVenmo,
       handleCartCheckout,
       isEditingItem,
+      isUSSite,
     } = this.props;
-    if (!isInternationalShipping && isVenmoEnabled && showVenmo) {
+    if (!isInternationalShipping && isVenmoEnabled && showVenmo && isUSSite) {
       return (
         <div className="venmo-wrapper">
           <VenmoPaymentButton
@@ -116,7 +119,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
             {this.getVenmoPaymentButton()}
           </div>
           {this.getCheckoutButton()}
-          <RenderPerf.Measure name="render_checkout_cta" />
+          <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
       </div>
     );
@@ -131,11 +134,13 @@ AddedToBagActions.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   showVenmo: PropTypes.bool,
   isBagPageStickyHeader: PropTypes.bool,
+  isUSSite: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   showVenmo: true,
   isBagPageStickyHeader: false,
+  isUSSite: true,
 };
 
 export default withStyles(AddedToBagActions, style);

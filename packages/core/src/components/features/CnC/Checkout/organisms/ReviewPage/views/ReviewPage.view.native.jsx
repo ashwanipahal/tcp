@@ -22,6 +22,7 @@ class ReviewPage extends React.PureComponent {
     orderHasPickUp: PropTypes.bool.isRequired,
     availableStages: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   renderFooter = () => {
@@ -52,6 +53,7 @@ class ReviewPage extends React.PureComponent {
       availableStages,
       orderHasShipping,
       orderHasPickUp,
+      setCheckoutStage,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -61,6 +63,7 @@ class ReviewPage extends React.PureComponent {
           activeStage="review"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -68,34 +71,32 @@ class ReviewPage extends React.PureComponent {
             {!!orderHasPickUp && (
               <PickUpReviewSectionContainer
                 onEdit={() => {
-                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+                  setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
               />
             )}
             {!!orderHasShipping && (
               <ShippingReviewSection
                 onEdit={() => {
-                  navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING);
+                  setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
                 }}
               />
             )}
 
             <BillingSection
               onEdit={() => {
-                navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING);
+                setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
             />
-            <CheckoutCartItemList />
           </Container>
+          <CheckoutCartItemList />
           <CnCTemplate
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
             onPress={() => submitReview({ navigation })}
             backLinkText={backLinkBilling}
-            onBackLinkPress={() =>
-              navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_BILLING)
-            }
+            onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
             showAccordian
           />

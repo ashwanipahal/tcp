@@ -43,6 +43,18 @@ export const bodyCopyStyles = {
     <BodyCopy color="gray.900" fontFamily="primary" fontSize="fs14" textAlign="center" {...props} />
   ),
   // large text with bold font
+  large_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="regular"
+      textAlign="center"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  // large text with bold font
   medium_text_black: props => (
     <BodyCopy
       color="gray.900"
@@ -53,6 +65,19 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  // large text with bold
+  medium_text_regular: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs32"
+        fontWeight="black"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
@@ -65,23 +90,20 @@ export const bodyCopyStyles = {
  * accepts all parameters for BodyCopy and Heading atom
  */
 
-const getTextItems = (textItems, renderComponentInNewLine, useStyle) => {
-  const textItemsSize = textItems.length;
+const getTextItems = (textItems, useStyle, compProps) => {
   return (
     textItems &&
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
         const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
-        const updatedText =
-          renderComponentInNewLine && index !== textItemsSize - 1 ? `${text}\n` : text;
-
         return (
           <StyleBodyCopy
             accessibilityRole="text"
-            accessibilityLabel={updatedText}
-            text={updatedText}
+            accessibilityLabel={text}
+            text={text}
             key={index.toString()}
+            {...compProps}
           />
         );
       }
@@ -126,20 +148,17 @@ const LinkText = (props: Props) => {
 
   return headerText.map((item, index) => {
     const { link, textItems } = item;
+    const textItemsComponents = getTextItems(textItems, useStyle, compProps);
     if (useStyle) {
       return (
         <Anchor url={link.url} navigation={navigation}>
-          <Text>{getTextItems(textItems, renderComponentInNewLine, useStyle)}</Text>
+          {renderComponentInNewLine ? textItemsComponents : <Text>{textItemsComponents}</Text>}
         </Anchor>
       );
     }
     return (
       <Anchor key={index.toString()} url={link.url} navigation={navigation}>
-        <Component
-          {...compProps}
-          text={getTextItems(textItems, renderComponentInNewLine, useStyle)}
-          locator={locator}
-        />
+        <Component {...compProps} text={textItemsComponents} locator={locator} />
       </Anchor>
     );
   });

@@ -8,6 +8,7 @@ import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
+import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getUnbxdId,
   getCategoryId,
@@ -32,8 +33,13 @@ import {
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
-import { getSearchResult } from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.actions';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
+
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
@@ -111,6 +117,12 @@ class SearchDetailContainer extends React.PureComponent {
       searchResultSuggestions,
       sortLabels,
       isSearchResultsAvailable,
+      router: {
+        query: { searchQuery },
+        asPath,
+      },
+      currency,
+      currencyAttributes,
       ...otherProps
     } = this.props;
 
@@ -118,7 +130,7 @@ class SearchDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isSearchResultsAvailable ? (
           <div>
-            {products && products.length > 0 ? (
+            {products && products.length > 0 && searchQuery ? (
               <SearchDetail
                 filters={filters}
                 formValues={formValues}
@@ -136,6 +148,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={searchedText}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                currencyAttributes={currencyAttributes}
+                currency={currency}
                 {...otherProps}
               />
             ) : (
@@ -169,6 +183,8 @@ class SearchDetailContainer extends React.PureComponent {
               searchedText={searchedText}
               sortLabels={sortLabels}
               searchResultSuggestions={searchResultSuggestions}
+              currency={currency}
+              currencyAttributes={currencyAttributes}
               {...otherProps}
             />
           </div>
@@ -221,6 +237,8 @@ function mapStateToProps(state) {
     searchResultSuggestions:
       state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
+    currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
   };
 }
 
@@ -231,6 +249,9 @@ function mapDispatchToProps(dispatch) {
     },
     getMoreProducts: payload => {
       dispatch(getMoreSlpProducts(payload));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 }

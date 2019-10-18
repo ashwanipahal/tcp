@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
+        "componentId": "sc-jTzLTM",
         "isStatic": false,
         "rules": Array [
           "
@@ -64,8 +64,20 @@ exports[`CreateAccountForm should render correctly 1`] = `
       },
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
+      "propTypes": Object {
+        "className": [Function],
+        "confirmHideShowPwd": [Function],
+        "handleSubmit": [Function],
+        "hideShowPwd": [Function],
+        "isMakeDefaultDisabled": [Function],
+        "labels": [Function],
+        "onAlreadyHaveAnAccountClick": [Function],
+        "tooltipContent": [Function],
+        "userplccCardId": [Function],
+        "userplccCardNumber": [Function],
+      },
       "render": [Function],
-      "styledComponentId": "sc-VigVT",
+      "styledComponentId": "sc-jTzLTM",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {
@@ -88,6 +100,18 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "validate": [Function],
         },
         "displayName": "ReduxForm",
+        "propTypes": Object {
+          "className": [Function],
+          "confirmHideShowPwd": [Function],
+          "handleSubmit": [Function],
+          "hideShowPwd": [Function],
+          "isMakeDefaultDisabled": [Function],
+          "labels": [Function],
+          "onAlreadyHaveAnAccountClick": [Function],
+          "tooltipContent": [Function],
+          "userplccCardId": [Function],
+          "userplccCardNumber": [Function],
+        },
         "render": [Function],
       },
       "toString": [Function],

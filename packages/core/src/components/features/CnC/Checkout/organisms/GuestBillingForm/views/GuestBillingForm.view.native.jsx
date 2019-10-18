@@ -27,6 +27,7 @@ class GuestBillingForm extends React.Component {
     syncErrorsObj: PropTypes.shape({}),
     labels: PropTypes.shape({}),
     orderHasShipping: PropTypes.bool,
+    isPaymentDisabled: PropTypes.bool.isRequired,
     addressLabels: PropTypes.shape({}).isRequired,
     isGuest: PropTypes.bool,
     isSameAsShippingChecked: PropTypes.bool,
@@ -38,6 +39,7 @@ class GuestBillingForm extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     creditFieldLabels: PropTypes.shape({}),
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -103,6 +105,8 @@ class GuestBillingForm extends React.Component {
       handleSubmit,
       onSubmit,
       creditFieldLabels,
+      isPaymentDisabled,
+      setCheckoutStage,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -112,39 +116,41 @@ class GuestBillingForm extends React.Component {
     return (
       <>
         <GuestBillingFormWrapper>
-          <BodyCopy
-            mobileFontFamily="primary"
-            fontSize="fs26"
-            fontWeight="regular"
-            data-locator="billing-details"
-            className="elem-mb-XS elem-mt-MED"
-            text={labels.paymentMethod}
-          />
-          <>
-            <AddNewCCForm
-              cvvInfo={cvvInfo({ cvvCodeRichText })}
-              cardType={cardType}
-              cvvError={cvvError}
-              labels={labels}
-              formName="checkoutBilling"
-              isExpirationRequired={isExpirationRequired}
-              isGuest={isGuest}
-              dispatch={dispatch}
-              billingData={billingData}
-              creditFieldLabels={creditFieldLabels}
-            />
-            <CheckoutBillingAddress
-              isGuest={isGuest}
-              orderHasShipping={orderHasShipping}
-              addressLabels={addressLabels}
-              dispatch={dispatch}
-              shippingAddress={shippingAddress}
-              isSameAsShippingChecked={isSameAsShippingChecked}
-              labels={labels}
-              billingData={billingData}
-              formName="checkoutBilling"
-            />
-          </>
+          {!isPaymentDisabled && (
+            <>
+              <BodyCopy
+                mobileFontFamily="primary"
+                fontSize="fs26"
+                fontWeight="regular"
+                dataLocator="paymentMethodLbl"
+                className="elem-mb-XS elem-mt-MED"
+                text={labels.paymentMethod}
+              />
+              <AddNewCCForm
+                cvvInfo={cvvInfo({ cvvCodeRichText })}
+                cardType={cardType}
+                cvvError={cvvError}
+                labels={labels}
+                formName="checkoutBilling"
+                isExpirationRequired={isExpirationRequired}
+                isGuest={isGuest}
+                dispatch={dispatch}
+                billingData={billingData}
+                creditFieldLabels={creditFieldLabels}
+              />
+              <CheckoutBillingAddress
+                isGuest={isGuest}
+                orderHasShipping={orderHasShipping}
+                addressLabels={addressLabels}
+                dispatch={dispatch}
+                shippingAddress={shippingAddress}
+                isSameAsShippingChecked={isSameAsShippingChecked}
+                labels={labels}
+                billingData={billingData}
+                formName="checkoutBilling"
+              />
+            </>
+          )}
           <CnCTemplate
             navigation={navigation}
             btnText={nextSubmitText}
@@ -152,11 +158,9 @@ class GuestBillingForm extends React.Component {
             onPress={handleSubmit(onSubmit)}
             backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
             onBackLinkPress={() =>
-              navigation.navigate(
-                orderHasShipping
-                  ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
-                  : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
-              )
+              orderHasShipping
+                ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
+                : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
             }
             showAccordian
           />

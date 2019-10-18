@@ -8,7 +8,6 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
-import searchData from '../../../../../../../web/src/components/features/content/Header/molecules/SearchBar/SearchBar.mock';
 import { routerPush } from '../../../../../utils/index';
 
 class NoResponseSearchDetailView extends React.PureComponent {
@@ -30,11 +29,22 @@ class NoResponseSearchDetailView extends React.PureComponent {
 
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch } = this.props;
+    const { startSearch, slpLabels, searchResults } = this.props;
     const searchText = this.searchInput.current.value;
+
+    const showMatchBox = this.getMatchBoxStatus(searchResults);
+
     this.setState({ showProduct: Boolean(searchText.length) }, () => {
-      startSearch(searchText);
+      const payload = {
+        slpLabels,
+        searchText,
+      };
+      startSearch(payload);
     });
+
+    if (searchText.length > 3 && !showMatchBox) {
+      this.setState({ showProduct: false });
+    }
   };
 
   getSearchResults = e => {
@@ -45,8 +55,39 @@ class NoResponseSearchDetailView extends React.PureComponent {
     }
   };
 
+  startInitiateSearch = () => {
+    let searchText = this.searchInput.current.value;
+    if (searchText) {
+      searchText = searchText.toLowerCase();
+      this.redirectToSearchPage(searchText);
+    }
+  };
+
+  initiateSearchBySubmit = () => {
+    this.startInitiateSearch();
+  };
+
+  getMatchBoxStatus = searchResults => {
+    return (
+      (searchResults &&
+        searchResults.autosuggestList &&
+        searchResults.autosuggestList[0].suggestions &&
+        searchResults.autosuggestList[0].suggestions.length > 0) ||
+      (searchResults &&
+        searchResults.autosuggestProducts &&
+        searchResults.autosuggestProducts.length > 0)
+    );
+  };
+
   render() {
-    const { className, slpLabels, searchedText, searchResultSuggestions, labels } = this.props;
+    const {
+      className,
+      slpLabels,
+      searchedText,
+      searchResultSuggestions,
+      labels,
+      searchResults,
+    } = this.props;
 
     const { showProduct } = this.state;
 
@@ -54,6 +95,21 @@ class NoResponseSearchDetailView extends React.PureComponent {
       searchResultSuggestions && searchResultSuggestions.length
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
         : slpLabels.lbl_no_suggestion;
+
+    const ProductMatchesLabel = () => {
+      if (
+        searchResults &&
+        searchResults.autosuggestProducts &&
+        searchResults.autosuggestProducts.length > 0
+      ) {
+        return (
+          <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
+            {getLabelValue(labels, 'lbl_search_product_matches')}
+          </BodyCopy>
+        );
+      }
+      return null;
+    };
 
     return (
       <div className={className}>
@@ -114,13 +170,16 @@ class NoResponseSearchDetailView extends React.PureComponent {
               fontWeight="regular"
               className="empty-search-inputBox-container"
             >
-              <input
-                className="empty-search-input"
-                maxLength="150"
-                placeholder={slpLabels.lbl_looking_for}
-                onChange={this.changeSearchText}
-                ref={this.searchInput}
-              />
+              <form className={className} noValidate onSubmit={this.initiateSearchBySubmit}>
+                <input
+                  className="empty-search-input"
+                  maxLength="150"
+                  placeholder={slpLabels.lbl_looking_for}
+                  onChange={this.changeSearchText}
+                  ref={this.searchInput}
+                />
+              </form>
+
               <Image
                 alt="search"
                 className="empty-search-image icon-small"
@@ -138,41 +197,72 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   {slpLabels.lbl_noresults_found}
                 </BodyCopy>
               ) : (
-                <div className="matchBox suggestionHide">
+                <div className="matchBox">
                   <div className="matchLinkBox">
-                    <BodyCopy
-                      fontFamily="secondary"
-                      className="boxHead matchLinkBoxHead suggestionHide"
-                    >
-                      {getLabelValue(labels, 'lbl_search_looking_for')}
-                    </BodyCopy>
-                    <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
-                      <ul>
-                        {searchData.looking.map(item => {
-                          return (
-                            <BodyCopy
-                              component="li"
-                              fontFamily="secondary"
-                              fontSize="fs14"
-                              key={item.id}
-                              className="linkName"
-                            >
-                              {item.text}
+                    {searchResults &&
+                      searchResults.autosuggestList &&
+                      searchResults.autosuggestList.map(item => {
+                        return (
+                          <div>
+                            {item && item.suggestions.length > 0 && (
+                              <BodyCopy fontFamily="secondary" className="boxHead matchLinkBoxHead">
+                                {item.heading}
+                              </BodyCopy>
+                            )}
+                            <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
+                              <ul>
+                                {item &&
+                                  item.suggestions &&
+                                  item.suggestions.map(itemData => {
+                                    return (
+                                      <BodyCopy
+                                        component="li"
+                                        fontFamily="secondary"
+                                        fontSize="fs14"
+                                        key={item.id}
+                                        className="linkName"
+                                      >
+                                        <Anchor
+                                          asPath={`/search/${itemData.text}`}
+                                          to={`/search?searchQuery=${itemData.text}`}
+                                          className="suggestion-label"
+                                        >
+                                          {itemData.text}
+                                        </Anchor>
+                                      </BodyCopy>
+                                    );
+                                  })}
+                              </ul>
                             </BodyCopy>
-                          );
-                        })}
-                      </ul>
-                    </BodyCopy>
+                          </div>
+                        );
+                      })}
                   </div>
                   <div className="matchProductBox">
-                    <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-                      {getLabelValue(labels, 'lbl_search_product_matches')}
-                    </BodyCopy>
+                    <ProductMatchesLabel />
                     <BodyCopy className="matchProductBody" lineHeight="39" component="div">
                       <ul>
-                        {searchData.products.map(item => {
-                          return <BodyCopy component="li" key={item.id} className="productBox" />;
-                        })}
+                        {searchResults &&
+                          searchResults.autosuggestProducts &&
+                          searchResults.autosuggestProducts.map(item => {
+                            return (
+                              <BodyCopy component="li" key={item.id} className="productBox">
+                                <Anchor
+                                  asPath={`${item.productUrl}`}
+                                  to={`${item.productUrl}`}
+                                  className="suggestion-label"
+                                >
+                                  <Image
+                                    alt={`${item.name}`}
+                                    className="autosuggest-image"
+                                    src={`${item.imageUrl[0]}`}
+                                    data-locator={`${item.name}`}
+                                    height="25px"
+                                  />
+                                </Anchor>
+                              </BodyCopy>
+                            );
+                          })}
                       </ul>
                     </BodyCopy>
                   </div>
@@ -287,8 +377,8 @@ const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    startSearch: searchTerm => {
-      dispatch(getSearchResult(searchTerm));
+    startSearch: payload => {
+      dispatch(getSearchResult(payload));
     },
   };
 };

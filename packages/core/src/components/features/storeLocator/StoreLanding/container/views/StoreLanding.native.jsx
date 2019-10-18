@@ -1,22 +1,30 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, ScrollView } from 'react-native';
-import { isCanada, getAPIConfig, navigateToNestedRoute, getLabelValue } from '@tcp/core/src/utils';
+import {
+  isCanada,
+  getAPIConfig,
+  navigateToNestedRoute,
+  getLabelValue,
+  isGymboree,
+  mapHandler,
+} from '@tcp/core/src/utils';
 import StoreStaticMap from '@tcp/core/src/components/common/atoms/StoreStaticMap';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import StoreAddressTile from '@tcp/core/src/components/common/molecules/StoreAddressTile';
 import { withTheme } from 'styled-components/native';
 import StoreLocatorSearch from '../../organisms/StoreSearch';
 import {
   StyleStoreLandingContainer,
   StyledFavStoreHeading,
-  StyledStoreListView,
 } from '../styles/StoreLanding.style.native';
 
 export class StoreLanding extends PureComponent {
   state = {
     mapView: false,
     isOutlet: false,
-    isGym: false,
+    isGym: isGymboree(),
+    centeredStoreId: '',
   };
 
   toggleMap = event => {
@@ -24,6 +32,13 @@ export class StoreLanding extends PureComponent {
     this.setState(prevState => ({
       mapView: !prevState.mapView,
     }));
+  };
+
+  focusOnMap = (event, id) => {
+    event.preventDefault();
+    this.setState({
+      centeredStoreId: id,
+    });
   };
 
   selectStoreType = ({ gymSelected, outletSelected }) => {
@@ -34,14 +49,55 @@ export class StoreLanding extends PureComponent {
   };
 
   openStoreDetails = store => {
-    const { fetchCurrentStore, navigation } = this.props;
+    const { fetchCurrentStore, navigation, labels } = this.props;
     fetchCurrentStore(store);
-    navigateToNestedRoute(navigation, 'HomeStack', 'StoreDetails');
+    navigateToNestedRoute(navigation, 'HomeStack', 'StoreDetails', {
+      title: getLabelValue(labels, 'lbl_storedetail_storedetailTxt'),
+    });
+  };
+
+  renderList = modifiedStoreList => {
+    const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
+    const { mapView, centeredStoreId } = this.state;
+    return searchDone && !modifiedStoreList.length ? (
+      <Notification
+        status="info"
+        message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+      />
+    ) : (
+      modifiedStoreList.map((item, index) => (
+        <StoreAddressTile
+          {...this.props}
+          store={item}
+          variation="listing"
+          storeIndex={mapView && `${index + 1}`}
+          setFavoriteStore={setFavoriteStore}
+          isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
+          key={item.basicInfo.id}
+          openStoreDetails={this.openStoreDetails}
+          openStoreDirections={() => this.openStoreDirections(item)}
+          selectedStoreId={centeredStoreId === item.basicInfo.id}
+          titleClickCb={this.focusOnMap}
+        />
+      ))
+    );
+  };
+
+  openStoreDirections = store => {
+    mapHandler(store);
   };
 
   render() {
-    const { suggestedStoreList, setFavoriteStore, favoriteStore, theme, labels } = this.props;
-    const { mapView, isGym, isOutlet } = this.state;
+    const {
+      suggestedStoreList,
+      favoriteStore,
+      theme,
+      labels,
+      loadStoresByCoordinates,
+      getLocationStores,
+      geoLocationEnabled,
+    } = this.props;
+    const { mapView, isGym, isOutlet, centeredStoreId } = this.state;
 
     let modifiedStoreList = suggestedStoreList;
 
@@ -62,55 +118,51 @@ export class StoreLanding extends PureComponent {
         <View>
           <ScrollView>
             {favoriteStore && (
-              <StyledFavStoreHeading>
-                <Text
-                  // eslint-disable-next-line react-native/no-inline-styles
-                  style={{
-                    textTransform: 'uppercase',
-                    color: theme.colors.TEXT.DARK,
-                    fontSize: 16,
-                    margin: 0,
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {getLabelValue(labels, 'lbl_storelanding_favStoreHeading')}
-                </Text>
+              <View>
+                <StyledFavStoreHeading>
+                  <Text
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                      textTransform: 'uppercase',
+                      color: theme.colors.TEXT.DARK,
+                      fontSize: 16,
+                      margin: 0,
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {getLabelValue(labels, 'lbl_storelanding_favStoreHeading')}
+                  </Text>
+                </StyledFavStoreHeading>
                 <StoreAddressTile
                   {...this.props}
                   store={favoriteStore}
                   variation="listing-header"
                   isFavorite
+                  geoLocationDisabled={!geoLocationEnabled}
+                  openStoreDetails={this.openStoreDetails}
+                  openStoreDirections={() => this.openStoreDirections(favoriteStore)}
                 />
-              </StyledFavStoreHeading>
+              </View>
             )}
             <StoreLocatorSearch
-              {...this.props}
-              selectStoreType={this.selectStoreType}
+              labels={labels}
+              loadStoresByCoordinates={loadStoresByCoordinates}
               toggleMap={this.toggleMap}
               mapView={mapView}
+              selectStoreType={this.selectStoreType}
+              getLocationStores={getLocationStores}
+              selectedCountry={isCanada() ? 'CA' : 'USA'}
             />
             {mapView && !!modifiedStoreList.length && (
               <StoreStaticMap
                 storesList={modifiedStoreList}
-                isCanada={isCanada}
+                isCanada={isCanada()}
                 apiKey={getAPIConfig().googleApiKey}
+                centeredStoreId={centeredStoreId}
                 {...this.props}
               />
             )}
-            <StyledStoreListView>
-              {modifiedStoreList.map((item, index) => (
-                <StoreAddressTile
-                  {...this.props}
-                  store={item}
-                  variation="listing"
-                  storeIndex={mapView && `${index + 1}`}
-                  setFavoriteStore={setFavoriteStore}
-                  isFavorite={favoriteStore && favoriteStore.basicInfo.id === item.basicInfo.id}
-                  key={item.basicInfo.id}
-                  openStoreDetails={this.openStoreDetails}
-                />
-              ))}
-            </StyledStoreListView>
+            {this.renderList(modifiedStoreList)}
           </ScrollView>
         </View>
       </StyleStoreLandingContainer>
@@ -127,11 +179,17 @@ StoreLanding.propTypes = {
   labels: PropTypes.shape(PropTypes.string).isRequired,
   fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  loadStoresByCoordinates: PropTypes.func.isRequired,
+  getLocationStores: PropTypes.func.isRequired,
+  geoLocationEnabled: PropTypes.bool,
+  searchDone: PropTypes.bool,
 };
 
 StoreLanding.defaultProps = {
   suggestedStoreList: [],
   favoriteStore: null,
+  geoLocationEnabled: false,
+  searchDone: false,
 };
 
 export default withTheme(StoreLanding);

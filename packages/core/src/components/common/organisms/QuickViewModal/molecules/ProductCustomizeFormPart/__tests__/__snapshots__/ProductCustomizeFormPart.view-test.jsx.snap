@@ -13,16 +13,22 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
       <div
         className="image-wrapper"
       >
-        <Styled(Image)
-          alt="Boys Uniform V Neck Sweater"
+        <WithTheme(DamImage)
           data-locator="quick_view_product_image"
-          src="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
+          imgData={
+            Object {
+              "alt": "Boys Uniform V Neck Sweater",
+              "url": "",
+            }
+          }
+          isProductImage={true}
         />
         <Styled(Anchor)
-          asPath="/p/2100606_IV"
           className="link-redirect"
           dataLocator="quick_view_View_Product_details"
-          to="/p?pid=2100606_IV"
+          noLink={true}
+          onClick={[Function]}
+          to="/undefined/p/2100606_1137"
         >
           <Styled(BodyCopy)
             className="product-link"
@@ -57,6 +63,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           Boys Uniform V Neck Sweater
         </Styled(BodyCopy)>
         <Styled(ProductPrice)
+          badge2="25% OFF"
           currencyExchange=""
           currencySymbol=""
           customFonts={
@@ -105,6 +112,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           Boys Uniform V Neck Sweater
         </Styled(BodyCopy)>
         <Styled(ProductPrice)
+          badge2="25% OFF"
           currencyExchange=""
           currencySymbol=""
           customFonts={
@@ -130,7 +138,108 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           priceCurrency=""
         />
       </div>
-      <ProductAddToBagContainer
+      <Connect(ProductAddToBagContainer)
+        colorFitsSizesMap={
+          Array [
+            Object {
+              "categoryEntity": "Boy:School Uniforms",
+              "color": Object {
+                "family": "BLUE",
+                "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
+                "name": "TIDAL",
+              },
+              "colorDisplayId": "2100606_IV",
+              "colorProductId": "1118007",
+              "favoritedCount": 1529,
+              "fits": Array [
+                Object {
+                  "fitNameVal": "",
+                  "isDefault": true,
+                  "maxAvailable": 1.7976931348623157e+308,
+                  "sizes": Array [
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 191,
+                      "offerPrice": 18.71,
+                      "position": 0,
+                      "sizeName": "XS (4)",
+                      "skuId": "1118991",
+                      "variantId": "00191755242996",
+                      "variantNo": "2100606007",
+                    },
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 2238,
+                      "offerPrice": 18.71,
+                      "position": 1,
+                      "sizeName": "S (5/6)",
+                      "skuId": "1119731",
+                      "variantId": "00191755243009",
+                      "variantNo": "2100606008",
+                    },
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 3493,
+                      "offerPrice": 18.71,
+                      "position": 2,
+                      "sizeName": "M (7/8)",
+                      "skuId": "1118373",
+                      "variantId": "00191755243016",
+                      "variantNo": "2100606009",
+                    },
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 2641,
+                      "offerPrice": 18.71,
+                      "position": 3,
+                      "sizeName": "L (10/12)",
+                      "skuId": "1118587",
+                      "variantId": "00191755243023",
+                      "variantNo": "2100606010",
+                    },
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 991,
+                      "offerPrice": 18.71,
+                      "position": 4,
+                      "sizeName": "XL (14)",
+                      "skuId": "1118691",
+                      "variantId": "00191755243030",
+                      "variantNo": "2100606011",
+                    },
+                    Object {
+                      "listPrice": 24.95,
+                      "maxAvailable": 822,
+                      "offerPrice": 18.71,
+                      "position": 5,
+                      "sizeName": "XXL (16)",
+                      "skuId": "1118794",
+                      "variantId": "00191755243047",
+                      "variantNo": "2100606012",
+                    },
+                  ],
+                },
+              ],
+              "hasFits": false,
+              "imageName": "2100606_IV",
+              "listPrice": 24.95,
+              "maxAvailable": 10376,
+              "maxAvailableBoss": 0,
+              "miscInfo": Object {
+                "badge1": Object {
+                  "defaultBadge": "ONLINE EXCLUSIVE",
+                  "matchBadge": false,
+                },
+                "badge2": "25% OFF",
+                "isBopisEligible": false,
+                "isBossEligible": false,
+                "keepAlive": false,
+              },
+              "offerPrice": 18.71,
+              "pdpUrl": "/p/2100606_IV",
+            },
+          ]
+        }
         currentProduct={
           Object {
             "alternateSizes": Object {},
@@ -302,8 +411,20 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             "unbxdProdId": "2100606_IV",
           }
         }
+        customSubmitButtonStyle={
+          Array [
+            "
+  @media ",
+            [Function],
+            " {
+    .add-to-bag-button {
+      width: 243px;
+    }
+  }
+",
+          ]
+        }
         errorOnHandleSubmit=""
-        onChangeColor={[Function]}
         plpLabels={Object {}}
       />
     </div>

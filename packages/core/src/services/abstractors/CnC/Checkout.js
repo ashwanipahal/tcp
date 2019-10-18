@@ -387,11 +387,10 @@ export function addPaymentToOrder({
 }) {
   let venmoInstruction = {};
   if (venmoDetails) {
-    const { userId, saveVenmoTokenIntoProfile, nonce } = venmoDetails;
+    const { userId, saveVenmoTokenIntoProfile } = venmoDetails;
     venmoInstruction = {
       venmo_user_id: userId,
       save_venmo_token_into_profile: saveVenmoTokenIntoProfile ? 'true' : 'false',
-      account: nonce,
     };
   }
   const paymentInstruction = {
@@ -1029,6 +1028,32 @@ export function getInternationCheckoutSettings() {
 
       return {
         checkoutUrl: res.body.completeURL,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function startExpressCheckout(verifyPrescreen, source = null) {
+  const payload = {
+    header: {
+      prescreen: verifyPrescreen,
+      source,
+    },
+    webService: endpoints.startExpressCheckout,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        orderId: res.body.orderId,
+        plccEligible: rtpsData.plccEligible,
+        prescreenCode: rtpsData.prescreenCode,
       };
     })
     .catch(err => {

@@ -32,6 +32,7 @@ const Cards = props => {
     openUpdateModal,
     setSelectedCard,
     setCardHandler,
+    toggleRecaptchaModal,
   } = props;
   return (
     <View {...props}>
@@ -50,7 +51,6 @@ const Cards = props => {
       <ButtonWrapperStyle>
         <CustomButton
           text={cardList.size === 0 ? emptyBtnLabel : addBtnLabel}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={setCardHandler}
         />
@@ -69,6 +69,7 @@ const Cards = props => {
               toggleModal={toggleModal}
               openUpdateModal={openUpdateModal}
               setSelectedCard={setSelectedCard}
+              toggleRecaptchaModal={toggleRecaptchaModal}
               {...cardTileProps}
             />
           );
@@ -89,6 +90,7 @@ Cards.propTypes = {
   setDefaultPaymentMethod: PropTypes.func,
   onGetBalanceCard: PropTypes.func,
   checkbalanceValueInfo: PropTypes.func,
+  toggleRecaptchaModal: PropTypes.func,
   toggleModal: PropTypes.func,
   openUpdateModal: PropTypes.func,
   setSelectedCard: PropTypes.func,
@@ -101,6 +103,7 @@ Cards.defaultProps = {
   checkbalanceValueInfo: null,
   toggleModal: null,
   openUpdateModal: null,
+  toggleRecaptchaModal: null,
   setSelectedCard: null,
   setCardHandler: () => {},
 };

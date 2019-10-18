@@ -19,7 +19,7 @@ const RewardsPointsSlider = ({
 }) => {
   return (
     <div className={className}>
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <div className="current-points">
             <span>
@@ -48,7 +48,7 @@ const RewardsPointsSlider = ({
                 fontFamily="secondary"
                 fontSize="fs13"
               >
-                {`${getLabelValue(labels, 'lbl_rewardPoints_heading')}`}
+                {`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
                 <BodyCopy
                   data-locator="slidermyrewardsvalue"
                   component="span"
@@ -64,7 +64,7 @@ const RewardsPointsSlider = ({
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <div
             data-locator="sliderpointsgraph"
@@ -81,7 +81,7 @@ const RewardsPointsSlider = ({
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <BodyCopy
             data-locator="slidernextrewardspointslbl"

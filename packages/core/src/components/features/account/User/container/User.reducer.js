@@ -11,10 +11,28 @@ const initialState = fromJS({
   children: null,
   favoriteStore: null,
   defaultStore: null,
+  isRegisteredUserCallDone: false,
 });
+/* eslint-disable */
+
+const getUserReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case USER_CONSTANTS.SET_IS_EXPRESS_ELIGIBLE:
+      return state.setIn(['personalData', 'isExpressEligible'], payload);
+    case USER_CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE:
+      return state.set('isRegisteredUserCallDone', true);
+    default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
 
 const UserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case USER_CONSTANTS.GET_USER_INFO:
+      return state.set('isRegisteredUserCallDone', false);
     case USER_CONSTANTS.SET_USER_INFO:
       return state
         .set(
@@ -85,6 +103,10 @@ const UserReducer = (state = initialState, { type, payload }) => {
       return state.set(DEFAULT_REDUCER_KEY, null);
     case USER_CONSTANTS.SET_DEFAULT_STORE:
       return state.set('defaultStore', payload);
+    case USER_CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION:
+      return state.setIn(['personalData', 'plccCardId'], payload);
+    case USER_CONSTANTS.RESPONSE_SET_PLCC_INFORMATION:
+      return state.setIn(['personalData', 'plccCardNumber'], payload);
     case USER_CONSTANTS.SET_SURVEY_QUESTIONS:
       return state.set(
         'survey',
@@ -93,12 +115,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
           answers: [],
         })
       );
-
     default:
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return getUserReducer(state, { type, payload });
   }
 };
 

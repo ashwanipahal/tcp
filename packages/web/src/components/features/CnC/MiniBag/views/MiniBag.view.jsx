@@ -9,28 +9,6 @@ import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
 import { getSiteId } from '../../../../../../../core/src/utils/utils.web';
 
-const renderMiniBagHeader = (
-  labels,
-  cartItemCount,
-  userName,
-  currentPoints,
-  totalRewards,
-  onRequestClose,
-  openOverlay
-) => {
-  return (
-    <MiniBagHeader
-      labels={labels}
-      cartItemCount={cartItemCount}
-      userName={userName}
-      currentPoints={currentPoints}
-      totalRewards={totalRewards}
-      onRequestClose={onRequestClose}
-      openOverlay={openOverlay}
-    />
-  );
-};
-
 class MiniBag extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +25,40 @@ class MiniBag extends React.Component {
     }
   }
 
+  onLinkClick = ({ e, componentId }) => {
+    const { onRequestClose, openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
+    onRequestClose();
+  };
+
+  renderMiniBagHeader = cartItemCount => {
+    const {
+      labels,
+      userName,
+      currentPoints,
+      totalRewards,
+      onRequestClose,
+      openOverlay,
+      isPlcc,
+    } = this.props;
+    return (
+      <MiniBagHeader
+        labels={labels}
+        cartItemCount={cartItemCount}
+        userName={userName}
+        currentPoints={currentPoints}
+        totalRewards={totalRewards}
+        onRequestClose={onRequestClose}
+        openOverlay={openOverlay}
+        isPlcc={isPlcc}
+      />
+    );
+  };
+
   render() {
     const {
       onRequestClose,
@@ -56,12 +68,10 @@ class MiniBag extends React.Component {
       userName,
       subTotal,
       currencySymbol,
-      currentPoints,
-      totalRewards,
       isCartItemsUpdating,
       isCartItemSFL,
       cartItemSflError,
-      openOverlay,
+      resetSuccessMessage,
     } = this.props;
     const { country } = this.state;
     const cartItemCount = getCartItemCount();
@@ -70,15 +80,6 @@ class MiniBag extends React.Component {
       <Modal
         isOpen={openState}
         onRequestClose={onRequestClose}
-        heading={renderMiniBagHeader(
-          labels,
-          cartItemCount,
-          userName,
-          currentPoints,
-          totalRewards,
-          onRequestClose,
-          openOverlay
-        )}
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
         closeIconDataLocator="mini-bag-close"
@@ -90,6 +91,7 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {this.renderMiniBagHeader(cartItemCount)}
         <MiniBagBody
           closeMiniBag={onRequestClose}
           labels={labels}
@@ -101,6 +103,8 @@ class MiniBag extends React.Component {
           savedforLaterQty={sflItemsCount}
           isCartItemSFL={isCartItemSFL}
           cartItemSflError={cartItemSflError}
+          onLinkClick={this.onLinkClick}
+          resetSuccessMessage={resetSuccessMessage}
         />
       </Modal>
     );
@@ -123,6 +127,8 @@ MiniBag.propTypes = {
   cartItemSflError: PropTypes.string.isRequired,
   closeMiniBagDispatch: PropTypes.func.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  resetSuccessMessage: PropTypes.func.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

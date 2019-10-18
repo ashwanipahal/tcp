@@ -3,7 +3,8 @@ import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
-import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { getViewportInfo } from '@tcp/core/src/utils';
@@ -88,6 +89,7 @@ class Header extends React.PureComponent {
       isPickupModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
+    const { accessibility: { skipNavigation } = {} } = labels;
     return (
       <header className={className}>
         <HeaderTopNav
@@ -99,6 +101,10 @@ class Header extends React.PureComponent {
           labels={labels}
           store={favStore}
         />
+
+        <Anchor href="#overlayWrapper" noLink className="skip-main">
+          {skipNavigation}
+        </Anchor>
 
         <HeaderMiddleNav
           openNavigationDrawer={openNavigationDrawer}

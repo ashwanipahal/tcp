@@ -89,16 +89,8 @@ class PickUpFormPart extends React.Component {
     const { pickUpLabels, handleSubmit } = this.props;
     return (
       <View>
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnCancel}
-          onClick={this.handleExitEditModeClick}
-        />
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnUpdate}
-          onPress={handleSubmit(this.pickupEditSubmit)}
-        />
+        <Button text={pickUpLabels.btnCancel} onClick={this.handleExitEditModeClick} />
+        <Button text={pickUpLabels.btnUpdate} onPress={handleSubmit(this.pickupEditSubmit)} />
       </View>
     );
   };
@@ -173,6 +165,7 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       navigation,
       availableStages,
+      setCheckoutStage,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -184,6 +177,7 @@ class PickUpFormPart extends React.Component {
           activeStage="pickup"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -345,6 +339,7 @@ PickUpFormPart.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

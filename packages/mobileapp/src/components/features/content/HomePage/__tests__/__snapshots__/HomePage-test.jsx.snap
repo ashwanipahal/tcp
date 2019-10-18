@@ -22,7 +22,9 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
+        "moduleQ": [Function],
         "moduleR": [Function],
+        "moduleS": [Function],
       }
     }
     navigation={
@@ -40,13 +42,13 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     customTextStyle={null}
     disableButton={false}
     fill=""
-    fullWidth={true}
+    fullWidth=""
     iconColor="gray.800"
     iconName="chevron-down"
     iconSize="fs12"
@@ -65,59 +67,231 @@ exports[`HomePageView should render correctly 1`] = `
     theme={Object {}}
     url=""
   />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill=""
-    fullWidth={true}
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    style={
+  <ModuleG
+    bgColor="#d8d8d8"
+    divTabs={
+      Array [
+        Object {
+          "category": Object {
+            "cat_id": Array [
+              "47503>47544",
+              "47501>47526",
+            ],
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": Array [
+              "47526",
+              "47503>47544",
+            ],
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "TODDLER GIRL",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": Array [
+              "47503>47544",
+              "47526",
+            ],
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "text": Object {
+            "text": "BOY",
+          },
+        },
+        Object {
+          "category": Object {
+            "cat_id": Array [
+              "47501>47526",
+              "47503>47544",
+            ],
+          },
+          "singleCTAButton": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "http://www.childrensplace.com",
+          },
+          "singleCTAButtonCart": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Shop All Matchables",
+            "title": "SHOP ALL",
+            "url": "/us",
+          },
+          "text": Object {
+            "text": "TODDLER BOY",
+          },
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_regular",
+              "text": "ALL MATCHABLES",
+            },
+          ],
+        },
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/p/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "60% OFF",
+            },
+          ],
+        },
+      ]
+    }
+    layout="alt"
+    mediaLinkedList={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Boys",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Boys",
+            "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1562731929/Image_14_bp7ih0.jpg",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Boys",
+            "title": "Boys",
+          },
+          "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+        },
+        Object {
+          "image": Object {
+            "alt": "Girls",
+            "crop_d": "h_189,w_177",
+            "crop_m": "h_310,w_375",
+            "crop_t": "h_189,w_177",
+            "title": "Girls",
+            "url": "https://test5.childrensplace.com/image/upload/c_fill,g_face:center,h_189,w_177/v1565145744/mod-h-kids_b9ivyr.png",
+          },
+          "link": Object {
+            "action": "",
+            "external": 0,
+            "target": "",
+            "text": "Girls",
+            "title": "Girls",
+            "url": "/node/product/e499bac3-6770-4757-b924-55c837712dfc",
+          },
+        },
+      ]
+    }
+    navigation={
       Object {
-        "margin": 30,
+        "getParam": [Function],
       }
     }
-    text="Store Details"
-    theme={Object {}}
-    url=""
-  />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill=""
-    fullWidth={true}
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    style={
-      Object {
-        "margin": 30,
-      }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "class": "",
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/c/",
+          },
+          "textItems": Array [
+            Object {
+              "style": "extrabold_text_regular",
+              "style2": "style2",
+              "text": "60% OFF",
+            },
+          ],
+        },
+      ]
     }
-    text="Store Landing"
-    theme={Object {}}
-    url=""
   />
 </LazyloadScrollView>
 `;

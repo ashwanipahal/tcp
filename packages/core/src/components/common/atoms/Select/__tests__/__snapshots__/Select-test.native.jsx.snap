@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectbox component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs10"
+    fontWeight="extrabold"
+    isFocussed={true}
+    margin={null}
+    numberOfLines={null}
+    text="test"
+    textDecoration={null}
+  />
+  <NativeDropDown
+    androidPickerStyle={null}
+    bottomBorderOnly={true}
+    buttonVariation="mobileApp-select"
+    data={
+      Array [
+        Object {
+          "displayName": "United States",
+          "id": "US",
+        },
+        Object {
+          "displayName": "Canada",
+          "id": "CA",
+        },
+      ]
+    }
+    disabled={false}
+    id="test"
+    name="test"
+    onValueChange={[Function]}
+    selectedValue="test"
+    width="100%"
+  />
+</Styled(View)>
+`;
+
+exports[`Selectbox component renders correctly for error 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs10"
+    fontWeight="extrabold"
+    isFocussed={true}
+    margin={null}
+    numberOfLines={null}
+    text="test"
+    textDecoration={null}
+  />
+  <NativeDropDown
+    androidPickerStyle={null}
+    bottomBorderOnly={true}
+    buttonVariation="mobileApp-select"
+    data={
+      Array [
+        Object {
+          "displayName": "United States",
+          "id": "US",
+        },
+        Object {
+          "displayName": "Canada",
+          "id": "CA",
+        },
+      ]
+    }
+    disabled={false}
+    id="test"
+    name="test"
+    onValueChange={[Function]}
+    selectedValue="test"
+    width="100%"
+  />
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-right-XXXS"
+    >
+      <Styled(ImageComp)
+        alt=""
+        height="15px"
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/alert-triangle.png",
+          }
+        }
+        url=""
+        width="15px"
+      />
+    </Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="error"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      text="error message"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

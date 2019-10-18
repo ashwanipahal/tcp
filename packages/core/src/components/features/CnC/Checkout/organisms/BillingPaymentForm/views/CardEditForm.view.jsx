@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, submit } from 'redux-form';
+import { submit } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import constants from '../container/CreditCard.constants';
-import AddressFields from '../../../../../../common/molecules/AddressFields';
-import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
+import { withCardEditReduxForm } from './CardEditReduxForm';
 
 class CardEditFormView extends React.PureComponent {
   handleSubmit = e => {
@@ -29,16 +28,25 @@ class CardEditFormView extends React.PureComponent {
       },
       AddressForm,
       onEditCardFocus,
+      error,
+      editModeSubmissionError,
+      errorMessageRef,
     } = this.props;
     return (
       <form name={constants.EDIT_FORM_NAME} noValidate onSubmit={this.handleSubmit}>
         {renderCardDetailsHeading({ hideAnchor: true })}
+        {error && <ErrorMessage error={error.message} className="edit-card-error" />}
         {getAddNewCCForm({
-          onCardFocus: onEditCardFocus,
+          onCardFocus: () => onEditCardFocus(this),
           editMode: true,
         })}
         <AddressForm editMode key="cardEditAddressForm" />
-        <div className="card-edit-buttons">
+        <div className="edit-card-error-container">
+          {editModeSubmissionError && (
+            <ErrorMessage error={editModeSubmissionError} className="edit-card-error" />
+          )}
+        </div>
+        <div className="card-edit-buttons" ref={errorMessageRef}>
           <Button
             aria-label={ariaLabelSaveButtonText}
             type="submit"
@@ -55,7 +63,7 @@ class CardEditFormView extends React.PureComponent {
             aria-label={ariaLabelCancelButtonText}
             type="button"
             className="card-edit-button card-edit-cancel"
-            onClick={unsetFormEditState}
+            onClick={e => unsetFormEditState(e)}
           >
             <BodyCopy
               component="span"
@@ -97,98 +105,11 @@ CardEditFormView.propTypes = {
   AddressForm: PropTypes.shape({}).isRequired,
   onEditCardFocus: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  error: PropTypes.shape({}).isRequired,
+  editModeSubmissionError: PropTypes.string.isRequired,
+  errorMessageRef: PropTypes.shape({}).isRequired,
 };
 
-export const handleEditFromSubmit = updateCardDetail => data => {
-  const formData = data;
-  formData.onFileAddressKey = formData.address.addressId || '';
-  formData.cardType = formData.ccBrand.toUpperCase();
-  delete formData.ccType;
-  delete formData.ccBrand;
-  updateCardDetail(formData);
-};
-
-const CardEditReduxForm = React.memo(props => {
-  const {
-    selectedCard,
-    addressForm: AddressForm,
-    updateCardDetail,
-    renderCardDetailsHeading,
-    getAddNewCCForm,
-    unsetFormEditState,
-    onEditCardFocus,
-    labels,
-    dispatch,
-  } = props;
-  const {
-    accountNo,
-    ccBrand,
-    ccType,
-    expMonth,
-    expYear,
-    addressDetails: address,
-    creditCardId,
-  } = selectedCard;
-
-  const validateMethod = createValidateMethod({
-    address: AddressFields.addressValidationConfig,
-    ...getStandardConfig(['expYear', 'expMonth']),
-  });
-
-  const CartEditForm = reduxForm({
-    form: constants.EDIT_FORM_NAME, // a unique identifier for this form
-    enableReinitialize: true,
-    ...validateMethod,
-    onSubmitSuccess: () => {
-      unsetFormEditState();
-    },
-  })(CardEditFormView);
-
-  return (
-    <CartEditForm
-      onSubmit={handleEditFromSubmit(updateCardDetail)}
-      initialValues={{
-        cardNumber: accountNo,
-        expMonth: expMonth.trim(),
-        expYear,
-        ccBrand,
-        ccType,
-        address,
-        creditCardId,
-      }}
-      dispatch={dispatch}
-      onEditCardFocus={onEditCardFocus}
-      AddressForm={AddressForm}
-      renderCardDetailsHeading={renderCardDetailsHeading}
-      getAddNewCCForm={getAddNewCCForm}
-      unsetFormEditState={unsetFormEditState}
-      labels={labels}
-    />
-  );
-});
-
-CardEditReduxForm.propTypes = {
-  labels: PropTypes.shape({
-    saveButtonText: PropTypes.string,
-    cancelButtonText: PropTypes.string,
-  }).isRequired,
-  renderCardDetailsHeading: PropTypes.func.isRequired,
-  getAddNewCCForm: PropTypes.func.isRequired,
-  unsetFormEditState: PropTypes.func.isRequired,
-  addressForm: PropTypes.shape({}).isRequired,
-  onEditCardFocus: PropTypes.func.isRequired,
-  updateCardDetail: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  selectedCard: PropTypes.shape({
-    accountNo: PropTypes.string,
-    ccBrand: PropTypes.string,
-    ccType: PropTypes.string,
-    expMonth: PropTypes.string,
-    expYear: PropTypes.string,
-    addressDetails: PropTypes.shape({}),
-  }).isRequired,
-};
-
-export default CardEditReduxForm;
+export default withCardEditReduxForm(CardEditFormView);
 
 export { CardEditFormView as CardEditFormViewVanilla };

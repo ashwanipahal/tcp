@@ -12,6 +12,8 @@ export const TOAST_REDUCER_KEY = 'Toast';
 export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
 export const SOCIAL_REDUCER_KEY = 'Social';
+export const RECENT_SEARCH_REDUCER_KEY = 'RecentSearches';
+
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
 // Login Page Reducer
@@ -46,6 +48,10 @@ export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
 export const SEARCH_REDUCER_ACTION_PATTERN = '@@SLP-';
 
 export const MY_FAVORITE_STORE_ACTION_PATTERN = '@@MyFavoriteStore';
+
+// Extra Points promo list reducer
+export const EXTRA_POINTS_REDUCER_KEY = 'ExtraPoints';
+export const EXTRA_POINTS_ACTION_PATTERN = '@@ExtraPoints';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -86,6 +92,10 @@ export const PRODUCT_PICKUP_ACTION_PATTERN = '@BOPIS-';
 export const QUICK_VIEW_REDUCER_KEY = 'QuickView';
 export const QUICK_VIEW_ACTION_PATTERN = '@@QV-';
 
+// Outfit Detail Page Reducer
+export const OUTFIT_DETAILS_REDUCER_KEY = 'OutfitDetails';
+export const OUTFIT_DETAILS_PATTERN = '@@OutfitDetails-';
+
 // Favorites Reducer
 export const FAVORITES_REDUCER_KEY = 'Favorites';
 export const FAVORITES_ACTION_PATTERN = '@@Favorites-';
@@ -120,6 +130,10 @@ export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
 // Earn extra points reducer
 export const EARNEXTRAPOINTS_REDUCER_KEY = 'earnExtraPointsReducer';
 export const EARNEXTRAPOINTS_ACTION_PATTERN = '@@earnExtraPoints-';
+
+// Earn extra points reducer
+export const ORDERDETAILS_REDUCER_KEY = 'OrderDetailsReducer';
+export const ORDERDETAILS_ACTION_PATTERN = '@@OrderDetails-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
@@ -181,6 +195,10 @@ export const STORE_DETAIL_ACTION_PATTERN = '@@StoreDetail-';
 export const POINTS_CLAIM_REDUCER_KEY = 'PointsClaim';
 export const POINTS_CLAIM_ACTION_PATTERN = '@@PointsClaim-';
 
+// Store International List reducer
+export const STORES_INTL_REDUCER_KEY = 'StoresIntl';
+export const STORES_INTL_ACTION_PATTERN = '@@StoresIntl-';
+
 export const CONFIRMATION_REDUCER_KEY = 'Confirmation';
 export const CONFIRMATION_ACTION_PATTERN = '@@Confirmation-';
 export const PRODUCT_ADD_TO_BAG = 'ProductAddToBag';
@@ -188,6 +206,9 @@ export const PRODUCT_SKU_SELECTION_FORM = 'PickupSkuSelectionForm';
 // User Order History
 export const ORDERS_REDUCER_KEY = 'Orders';
 export const ORDERS_ACTION_PATTERN = '@@Orders-';
+// Store List Reducer
+export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
+export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
@@ -204,6 +225,7 @@ export const REDUCER_ACTION_MAPPING = {
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
   [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
   [EARNEXTRAPOINTS_REDUCER_KEY]: EARNEXTRAPOINTS_ACTION_PATTERN,
+  [ORDERDETAILS_REDUCER_KEY]: ORDERDETAILS_ACTION_PATTERN,
   [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
   [COUNTRY_SELECTOR_REDUCER_KEY]: COUNTRY_SELECTOR_ACTION_PATTERN,
   [TRACK_ORDER_REDUCER_KEY]: TRACK_ORDER_ACTION_PATTERN,
@@ -223,4 +245,7 @@ export const REDUCER_ACTION_MAPPING = {
   [SLP_PAGE_REDUCER_KEY]: SEARCH_REDUCER_ACTION_PATTERN,
   [STORE_DETAIL_REDUCER_KEY]: STORE_DETAIL_ACTION_PATTERN,
   [CONFIRMATION_REDUCER_KEY]: CONFIRMATION_ACTION_PATTERN,
+  [STORES_INTL_REDUCER_KEY]: STORES_INTL_ACTION_PATTERN,
+  [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
+  [STORE_LIST_REDUCER_KEY]: STORE_LIST_ACTION_PATTERN,
 };

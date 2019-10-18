@@ -6,10 +6,17 @@ import labels from '../AccountDrawer.labels';
 import {
   openOverlayModal,
   closeOverlayModal,
-} from '../../../OverlayModal/container/OverlayModal.actions';
+} from '../../OverlayModal/container/OverlayModal.actions';
 import { getUserFullName, isPlccUser } from '../../User/container/User.selectors';
+import { getGlobalLabels } from '../../Account/container/Account.selectors';
 
-export const AccountDrawerContainer = ({ className, plccUser, userName, closedOverlay }) => {
+export const AccountDrawerContainer = ({
+  className,
+  plccUser,
+  userName,
+  closedOverlay,
+  globalLabels,
+}) => {
   return (
     <AccountDrawerView
       className={className}
@@ -17,6 +24,7 @@ export const AccountDrawerContainer = ({ className, plccUser, userName, closedOv
       closedOverlay={closedOverlay}
       userName={userName}
       plccUser={plccUser}
+      globalLabels={globalLabels}
     />
   );
 };
@@ -25,6 +33,7 @@ export const mapStateToProps = state => {
   return {
     userName: getUserFullName(state),
     plccUser: isPlccUser(state),
+    globalLabels: getGlobalLabels(state),
   };
 };
 
@@ -45,6 +54,7 @@ AccountDrawerContainer.propTypes = {
   userName: PropTypes.string,
   closedOverlay: PropTypes.func.isRequired,
   plccUser: PropTypes.bool,
+  globalLabels: PropTypes.shape({}),
 };
 
 AccountDrawerContainer.defaultProps = {
@@ -58,6 +68,7 @@ AccountDrawerContainer.defaultProps = {
   },
   userName: '',
   plccUser: false,
+  globalLabels: {},
 };
 
 export default connect(

@@ -47,6 +47,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
     headingFontWeight="semibold"
     horizontalBar={false}
     iconType="arrow"
+    inheritedStyles=""
     isOpen={true}
     isOverlay={false}
     onRequestClose={[MockFunction]}
@@ -60,7 +61,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}

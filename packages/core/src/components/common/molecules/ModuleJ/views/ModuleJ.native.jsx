@@ -23,10 +23,9 @@ import {
   MessageContainer,
   Border,
   Wrapper,
-  ProductTabListContainer,
+  StyledProductTabList,
 } from '../styles/ModuleJ.style.native';
 
-import ProductTabList from '../../../organisms/ProductTabList';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 
@@ -175,14 +174,14 @@ class ModuleJ extends React.PureComponent {
             </PromoContainer>
           )}
         </MessageContainer>
-        <ProductTabListContainer>
-          <ProductTabList
-            onProductTabChange={this.onProductTabChange}
-            tabItems={divTabs}
-            navigation={navigation}
-            testID={getLocator('moduleJ_cta_link')}
-          />
-        </ProductTabListContainer>
+
+        <StyledProductTabList
+          onProductTabChange={this.onProductTabChange}
+          tabItems={divTabs}
+          navigation={navigation}
+          testID={getLocator('moduleJ_cta_link')}
+        />
+
         <ImageContainer layout={layout}>
           <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
             <DamImage
@@ -214,7 +213,6 @@ class ModuleJ extends React.PureComponent {
         {selectedSingleCTAButton ? (
           <ButtonContainer>
             <Button
-              buttonVariation="variable-width"
               width="225px"
               text={selectedSingleCTAButton.text}
               url={selectedSingleCTAButton.url}

@@ -20,7 +20,7 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gqjmRU",
+                "componentId": "sc-VigVT",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -50,14 +50,14 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "displayName": "Styled(CreditCardNumber)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gqjmRU",
+              "styledComponentId": "sc-VigVT",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
           }
-          dataLocator="payment-cardtextfield"
+          dataLocator="cardNbrTxtBox"
           enableSuccessCheck={false}
           id="cardNumber"
           isPLCCEnabled={true}
@@ -89,7 +89,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-VigVT",
             "isStatic": false,
             "rules": Array [
               "
@@ -119,14 +119,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(CreditCardNumber)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-VigVT",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -164,7 +164,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-VigVT",
             "isStatic": false,
             "rules": Array [
               "
@@ -194,14 +194,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "displayName": "Styled(CreditCardNumber)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-VigVT",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
@@ -324,7 +324,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expmonthdd"
+      dataLocator="expMonthDropDown"
       enableSuccessCheck={false}
       id="expMonth"
       name="expMonth"
@@ -496,7 +496,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-expyeardd"
+      dataLocator="expYearDropDown"
       enableSuccessCheck={false}
       id="expYear"
       name="expYear"
@@ -717,7 +717,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "withComponent": [Function],
         }
       }
-      dataLocator="payment-cvv"
+      dataLocator="cvvTxtBox"
       enableSuccessCheck={false}
       id="cvvCode"
       maxLength="4"

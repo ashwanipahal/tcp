@@ -111,6 +111,27 @@ export const BOPIS_PRODUCT_INFO_PROP_TYPES = {
   colorFitsSizesMap: COLOR_FITS_SIZES_MAP_PROP_TYPE,
 };
 
+export const CART_BOPIS_STORE_LIST = {
+  cartBopisStoresList: PropTypes.arrayOf(
+    PropTypes.shape({
+      basicInfo: PropTypes.shape({
+        storeName: PropTypes.string.isRequired,
+      }).isRequired,
+    })
+  ),
+};
+
+export const COLOR_FIT_SIZE_DISPLAY_NAME = {
+  colorFitSizeDisplayNames: PropTypes.shape({
+    /** label for color selection field */
+    color: PropTypes.string,
+    /** label for fit selection field */
+    fit: PropTypes.string,
+    /** label for size selection field */
+    size: PropTypes.string,
+  }),
+};
+
 export const STORE_SUMMARY_PROP_TYPES = {
   basicInfo: PropTypes.shape({
     /** store id identifier */

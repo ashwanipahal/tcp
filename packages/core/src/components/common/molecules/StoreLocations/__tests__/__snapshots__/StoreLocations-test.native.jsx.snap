@@ -4,7 +4,7 @@ exports[`StoreLocations component StoreLocations component renders correctly wit
 <Styled(View)>
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color=""
     customStyle={Object {}}
     customTextStyle={null}

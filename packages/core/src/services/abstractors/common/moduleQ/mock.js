@@ -1,35 +1,65 @@
-const dummyUrl = 'http://www.childrensplace.com';
-
 export default {
   moduleQ: {
-    contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
+    contentId: 'e90be22e-3652-411c-ae8b-1aeba92d3121',
     name: 'moduleQ',
     type: 'module',
+    set: [
+      {
+        val: '',
+        key: 'moduleClassName',
+      },
+      {
+        val: 'yellow-bg',
+        key: 'bgClass',
+      },
+    ],
     composites: {
-      bgColor: '#d8d8d8',
+      bgClass: 'yellow-bg',
       headerText: [
         {
           textItems: [
             {
-              text: 'SHOP THE LOOK',
+              text: 'SHOP THIS LOOK',
               style: 'medium_text_black',
             },
           ],
+          icon: {
+            placement: '',
+            icon: '',
+          },
           link: {
-            url: '/p/',
+            url: '/ ',
+            title: '',
+            target: '',
+          },
+        },
+      ],
+      promoBanner: [
+        {
+          link: {
+            url: '/c/',
             text: '',
             title: '',
             target: '',
             external: 0,
-            action: '',
+            class: '',
           },
-          icon: {
-            icon: '',
-            placement: '',
-          },
+          textItems: [
+            {
+              text2: 'ALL SHORTS',
+              text: 'ALL UNIFORMS',
+              style: 'medium_text_semibold',
+              style2: 'extra_large_text_regular',
+            },
+            {
+              text: '60% OFF',
+              style: 'fixed_medium_text_black',
+              style2: 'extra_large_text_black',
+            },
+          ],
         },
       ],
-
+      mediaLinkedList: null,
       divTabs: [
         {
           text: {
@@ -38,14 +68,7 @@ export default {
           category: {
             cat_id: '2044392_10',
           },
-          singleCTAButton: {
-            url: dummyUrl,
-            text: 'SHOP ALL 1',
-            title: 'SHOP ALL',
-            target: '',
-            external: 0,
-            action: '',
-          },
+          singleCTAButton: null,
         },
         {
           text: {
@@ -55,12 +78,10 @@ export default {
             cat_id: '2044391_10',
           },
           singleCTAButton: {
-            url: dummyUrl,
-            text: 'SHOP ALL 2',
-            title: 'SHOP ALL',
+            url: '/',
+            text: 'Shop Now ',
             target: '',
-            external: 0,
-            action: '',
+            title: '',
           },
         },
         {
@@ -68,15 +89,13 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: '2044393_10',
+            cat_id: '3002623_BQ',
           },
           singleCTAButton: {
-            url: dummyUrl,
-            text: 'SHOP ALL 3',
-            title: 'SHOP ALL',
+            url: '/ ',
+            text: 'SHOP NOW',
             target: '',
-            external: 0,
-            action: '',
+            title: '',
           },
         },
         {
@@ -84,17 +103,11 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: '2044394_10',
+            cat_id: '2081262_K3',
           },
           singleCTAButton: null,
         },
       ],
     },
-    submodules: {},
-    set: [
-      {
-        key: 'ctaType',
-      },
-    ],
   },
 };

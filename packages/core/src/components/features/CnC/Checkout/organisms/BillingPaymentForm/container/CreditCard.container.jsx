@@ -7,6 +7,7 @@ import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import { updateCardData } from '../../../container/Checkout.action';
+import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
  * @class GiftCardsContainer
@@ -114,7 +115,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     let address;
     if (this.isBillingIfoPresent()) {
       ({
-        address: {
+        address = {
           onFileAddressKey: billingOnFileAddressKey,
           onFileAddressId: billingOnFileAddressId,
           firstName,
@@ -191,6 +192,9 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     return addressLine2 || '';
   };
 
+  getNickName = selectedAddress =>
+    selectedAddress && selectedAddress.get(0) && selectedAddress.get(0).nickName;
+
   /**
    * @function submitBillingData
    * @description submits the billing data
@@ -247,7 +251,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         userAddresses &&
         userAddresses.size > 0 &&
         userAddresses.filter(address => address.addressId === data.onFileAddressId);
-      onFileAddressKey = selectedAddress && selectedAddress.get(0).nickName;
+      onFileAddressKey = this.getNickName(selectedAddress);
     }
     const isCardTypeRequired = cardDetails.ccBrand !== constants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
     handleSubmit({
@@ -308,6 +312,11 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       creditFieldLabels,
       updateCardDetail,
       isVenmoEnabled,
+      editFormCardType,
+      isPLCCEnabled,
+      scrollView,
+      toastMessage,
+      setCheckoutStage,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -327,6 +336,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         formErrorMessage={formErrorMessage}
         isPaymentDisabled={isPaymentDisabled}
         cardType={cardType}
+        editFormCardType={editFormCardType}
         syncErrorsObj={syncErrorsObj}
         addressLabels={addressLabels}
         shippingAddress={shippingAddress}
@@ -341,6 +351,10 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
         isVenmoEnabled={isVenmoEnabled}
+        isPLCCEnabled={isPLCCEnabled}
+        scrollView={scrollView}
+        toastMessage={toastMessage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -355,6 +369,7 @@ const mapStateToProps = (state, ownProps) => {
     isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     syncErrorsObj: CreditCardSelector.getSyncError(state),
     cardType: CreditCardSelector.getCardType(state),
+    editFormCardType: CreditCardSelector.getEditFormCardType(state),
     isSameAsShippingChecked: CreditCardSelector.getSameAsShippingValue(state),
     isEditFormSameAsShippingChecked: CreditCardSelector.getEditFormSameAsShippingValue(state),
     isSaveToAccountChecked: CreditCardSelector.getSaveToAccountValue(state),
@@ -362,6 +377,7 @@ const mapStateToProps = (state, ownProps) => {
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
     editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isPLCCEnabled: CreditCardSelector.getIsPLCCEnabled(state),
     isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };
 };
@@ -370,6 +386,9 @@ const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
       dispatch(updateCardData(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

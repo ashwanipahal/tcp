@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Shipping Details component should renders correctly with BOSS/BOPIS order 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    lbl_orderDetails_pickup
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Address)
+      showCountry={false}
+      showPhone={false}
+    />
+  </Styled(BodyCopy)>
+  <Styled(PickUpSummary)
+    ordersLabels={
+      Object {
+        "lbl_orderDetails_shipping": "",
+      }
+    }
+    pickUpStore={
+      Object {
+        "address": Object {
+          "addressLine1": "234 E 149th St",
+          "city": "Bronx",
+          "state": "NY",
+          "zipCode": "10451",
+        },
+        "basicInfo": Object {
+          "storeName": "28152 paseo drive",
+        },
+      }
+    }
+  />
+</Styled(BodyCopy)>
+`;
+
+exports[`Order Shipping Details component should renders correctly with ECOM order 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="elem-mb-MED"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "234 E 149th St",
+          "addressLine2": "Test",
+          "city": "Bronx",
+          "country": "United States",
+          "firstName": "Ravi",
+          "lastName": "Prasad",
+          "state": "NY",
+          "zipCode": "10451",
+        }
+      }
+      showCountry={false}
+      showPhone={false}
+    />
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

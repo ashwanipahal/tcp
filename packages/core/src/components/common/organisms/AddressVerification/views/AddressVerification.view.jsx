@@ -158,6 +158,7 @@ export class AddressVerification extends React.Component<Props> {
             isSelected={selectAddress === 'userAddress'}
             onChange={this.handleChange}
             showInput={this.showInput}
+            fontWeight="extrabold"
             inputProps={{
               'data-locator': 'verifyaddress-enteredradio',
             }}
@@ -193,6 +194,7 @@ export class AddressVerification extends React.Component<Props> {
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
               onChange={this.handleChange}
+              fontWeight="extrabold"
               inputProps={{
                 'data-locator': 'verifyaddress-suggestedradio',
               }}
@@ -254,7 +256,7 @@ export class AddressVerification extends React.Component<Props> {
               fontWeight="semibold"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-MED"
+              className="elem-pt-LRG elem-mb-MED"
             >
               {verifyAddressLabels.verifyHeader}
             </BodyCopy>

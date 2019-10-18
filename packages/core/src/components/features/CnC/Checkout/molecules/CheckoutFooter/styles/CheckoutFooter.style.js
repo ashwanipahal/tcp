@@ -2,6 +2,13 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .left-arrow {
+    border: solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     border-top: 1px solid ${props => props.theme.colors.BLACK};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};

@@ -123,7 +123,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -170,6 +172,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -505,6 +508,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -747,7 +751,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -794,6 +800,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -1129,6 +1136,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1457,7 +1465,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "700": "#3c7fb0",
             "800": "#254f6e",
             "900": "#162f42",
+            "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -1504,6 +1514,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "100": "#f3d7d7",
             "200": "#f3d7d7",
             "300": "#c84747",
+            "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
           },
@@ -1839,6 +1850,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "FORM_FIELD_HEIGHT": "70px",
           "LAYOUT_SPACING": Object {
             "LRG": "64px",
+            "LRGS": "110px",
             "MED": "48px",
             "SM": "32px",
             "XL": "96px",
@@ -2081,7 +2093,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "700": "#3c7fb0",
               "800": "#254f6e",
               "900": "#162f42",
+              "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -2128,6 +2142,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "100": "#f3d7d7",
               "200": "#f3d7d7",
               "300": "#c84747",
+              "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
             },
@@ -2463,6 +2478,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "FORM_FIELD_HEIGHT": "70px",
             "LAYOUT_SPACING": Object {
               "LRG": "64px",
+              "LRGS": "110px",
               "MED": "48px",
               "SM": "32px",
               "XL": "96px",
@@ -2733,7 +2749,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "700": "#3c7fb0",
                   "800": "#254f6e",
                   "900": "#162f42",
+                  "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -2780,6 +2798,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "100": "#f3d7d7",
                   "200": "#f3d7d7",
                   "300": "#c84747",
+                  "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
                 },
@@ -3115,6 +3134,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "FORM_FIELD_HEIGHT": "70px",
                 "LAYOUT_SPACING": Object {
                   "LRG": "64px",
+                  "LRGS": "110px",
                   "MED": "48px",
                   "SM": "32px",
                   "XL": "96px",
@@ -3492,7 +3512,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "700": "#3c7fb0",
                     "800": "#254f6e",
                     "900": "#162f42",
+                    "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -3539,6 +3561,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "100": "#f3d7d7",
                     "200": "#f3d7d7",
                     "300": "#c84747",
+                    "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
                   },
@@ -3874,6 +3897,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "FORM_FIELD_HEIGHT": "70px",
                   "LAYOUT_SPACING": Object {
                     "LRG": "64px",
+                    "LRGS": "110px",
                     "MED": "48px",
                     "SM": "32px",
                     "XL": "96px",
@@ -4109,6 +4133,8 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
+              id=""
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
@@ -4143,7 +4169,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "700": "#3c7fb0",
                       "800": "#254f6e",
                       "900": "#162f42",
+                      "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -4190,6 +4218,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "100": "#f3d7d7",
                       "200": "#f3d7d7",
                       "300": "#c84747",
+                      "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
                     },
@@ -4525,6 +4554,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "FORM_FIELD_HEIGHT": "70px",
                     "LAYOUT_SPACING": Object {
                       "LRG": "64px",
+                      "LRGS": "110px",
                       "MED": "48px",
                       "SM": "32px",
                       "XL": "96px",
@@ -4716,6 +4746,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             >
               <div
                 className="sc-htpNat sc-bxivhb fJAyfW"
+                id=""
               >
                 <button
                   aria-expanded={true}
@@ -4894,7 +4925,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -4941,6 +4974,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -5276,6 +5310,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -5608,7 +5643,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "700": "#3c7fb0",
             "800": "#254f6e",
             "900": "#162f42",
+            "A100": "#5e9ed6",
             "B100": "#00A7E0",
+            "C900": "#003057",
           },
           "error": "#c8102e",
           "gray": Object {
@@ -5655,6 +5692,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "100": "#f3d7d7",
             "200": "#f3d7d7",
             "300": "#c84747",
+            "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
           },
@@ -5990,6 +6028,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "FORM_FIELD_HEIGHT": "70px",
           "LAYOUT_SPACING": Object {
             "LRG": "64px",
+            "LRGS": "110px",
             "MED": "48px",
             "SM": "32px",
             "XL": "96px",
@@ -6235,7 +6274,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "700": "#3c7fb0",
               "800": "#254f6e",
               "900": "#162f42",
+              "A100": "#5e9ed6",
               "B100": "#00A7E0",
+              "C900": "#003057",
             },
             "error": "#c8102e",
             "gray": Object {
@@ -6282,6 +6323,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "100": "#f3d7d7",
               "200": "#f3d7d7",
               "300": "#c84747",
+              "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
             },
@@ -6617,6 +6659,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "FORM_FIELD_HEIGHT": "70px",
             "LAYOUT_SPACING": Object {
               "LRG": "64px",
+              "LRGS": "110px",
               "MED": "48px",
               "SM": "32px",
               "XL": "96px",
@@ -6875,7 +6918,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "700": "#3c7fb0",
                   "800": "#254f6e",
                   "900": "#162f42",
+                  "A100": "#5e9ed6",
                   "B100": "#00A7E0",
+                  "C900": "#003057",
                 },
                 "error": "#c8102e",
                 "gray": Object {
@@ -6922,6 +6967,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "100": "#f3d7d7",
                   "200": "#f3d7d7",
                   "300": "#c84747",
+                  "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
                 },
@@ -7257,6 +7303,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "FORM_FIELD_HEIGHT": "70px",
                 "LAYOUT_SPACING": Object {
                   "LRG": "64px",
+                  "LRGS": "110px",
                   "MED": "48px",
                   "SM": "32px",
                   "XL": "96px",
@@ -7622,7 +7669,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "700": "#3c7fb0",
                     "800": "#254f6e",
                     "900": "#162f42",
+                    "A100": "#5e9ed6",
                     "B100": "#00A7E0",
+                    "C900": "#003057",
                   },
                   "error": "#c8102e",
                   "gray": Object {
@@ -7669,6 +7718,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "100": "#f3d7d7",
                     "200": "#f3d7d7",
                     "300": "#c84747",
+                    "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
                   },
@@ -8004,6 +8054,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "FORM_FIELD_HEIGHT": "70px",
                   "LAYOUT_SPACING": Object {
                     "LRG": "64px",
+                    "LRGS": "110px",
                     "MED": "48px",
                     "SM": "32px",
                     "XL": "96px",
@@ -8227,6 +8278,8 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
+              id=""
+              onToggleCallback={null}
               theme={
                 Object {
                   "brand": "tcp",
@@ -8261,7 +8314,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "700": "#3c7fb0",
                       "800": "#254f6e",
                       "900": "#162f42",
+                      "A100": "#5e9ed6",
                       "B100": "#00A7E0",
+                      "C900": "#003057",
                     },
                     "error": "#c8102e",
                     "gray": Object {
@@ -8308,6 +8363,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "100": "#f3d7d7",
                       "200": "#f3d7d7",
                       "300": "#c84747",
+                      "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
                     },
@@ -8643,6 +8699,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "FORM_FIELD_HEIGHT": "70px",
                     "LAYOUT_SPACING": Object {
                       "LRG": "64px",
+                      "LRGS": "110px",
                       "MED": "48px",
                       "SM": "32px",
                       "XL": "96px",
@@ -8834,6 +8891,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             >
               <div
                 className="sc-htpNat sc-bxivhb fJAyfW"
+                id=""
               >
                 <button
                   aria-expanded={true}

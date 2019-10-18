@@ -105,7 +105,7 @@ class GuestBillingForm extends React.Component {
           fontFamily="primary"
           fontSize="fs28"
           fontWeight="regular"
-          data-locator="billing-details"
+          dataLocator="paymentMethodLbl"
           className="elem-mb-XS elem-mt-MED"
         >
           {labels.paymentMethod}
@@ -142,6 +142,7 @@ class GuestBillingForm extends React.Component {
               className="venmo-container"
               continueWithText={labels.continueWith}
               onSuccess={handleSubmit}
+              isVenmoBlueButton
             />
           )}
         </div>

@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationView should render correctly 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs16"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        spacingStyles="margin-top-LRG margin-bottom-LRG"
+        text="SMS SIGN UP"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ThankYouComponent
+      fullfillmentCenterData={Array []}
+      isBossInList={false}
+      isGuest={true}
+      isOrderPending={false}
+      isShowBopisMessage={false}
+      isShowMixedMessage={false}
+      isShowShippingMessage={false}
+    />
+  </Styled(View)>
+  <CnCCommonTemplate
+    isConfirmationPage={true}
+    isGuest={true}
+  />
+</Styled(ScrollViewMock)>
+`;
+
+exports[`ConfirmationView should render correctly 2`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs16"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        spacingStyles="margin-top-LRG margin-bottom-LRG"
+        text="SMS SIGN UP"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ThankYouComponent
+      fullfillmentCenterData={
+        Array [
+          Object {
+            "encryptedEmailAddress": "",
+            "isGuest": true,
+            "orderDate": "",
+            "orderLink": "/",
+            "orderNumber": 2345,
+            "orderTotal": 23.45,
+            "orderType": "ECOM",
+            "productsCount": 5,
+            "shippingFullname": undefined,
+          },
+        ]
+      }
+      isBossInList={false}
+      isGuest={true}
+      isOrderPending={false}
+      isShowBopisMessage={true}
+      isShowMixedMessage={false}
+      isShowShippingMessage={true}
+      orderNumbersByFullfillmentCenter={
+        Object {
+          "fullfillmentCenterMap": Array [
+            Object {
+              "center": Object {
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
+              },
+            },
+          ],
+        }
+      }
+    />
+  </Styled(View)>
+  <CnCCommonTemplate
+    isConfirmationPage={true}
+    isGuest={true}
+  />
+</Styled(ScrollViewMock)>
+`;
+
+exports[`ConfirmationView should render correctly without order details 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
+        fontSize="fs16"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        spacingStyles="margin-top-LRG margin-bottom-LRG"
+        text="SMS SIGN UP"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ThankYouComponent
+      fullfillmentCenterData={
+        Array [
+          Object {
+            "center": Object {
+              "orderType": "BOSS",
+              "shippingFullname": "ship",
+            },
+          },
+        ]
+      }
+      isBossInList={false}
+      isGuest={true}
+      isOrderPending={false}
+      isShowBopisMessage={true}
+      isShowMixedMessage={false}
+      isShowShippingMessage={false}
+      orderNumbersByFullfillmentCenter={
+        Object {
+          "fullfillmentCenterMap": Array [
+            Object {
+              "center": Object {
+                "orderType": "BOSS",
+                "shippingFullname": "ship",
+              },
+            },
+          ],
+        }
+      }
+    />
+  </Styled(View)>
+  <CnCCommonTemplate
+    isConfirmationPage={true}
+    isGuest={true}
+  />
+</Styled(ScrollViewMock)>
+`;

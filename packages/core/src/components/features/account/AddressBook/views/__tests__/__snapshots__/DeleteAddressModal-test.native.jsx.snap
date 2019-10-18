@@ -3,6 +3,7 @@
 exports[`Delete Address Modal should render correctly 1`] = `
 <ModalNative
   heading=""
+  inheritedStyles=""
   isOpen={true}
   isOverlay={false}
   onRequestClose={[Function]}

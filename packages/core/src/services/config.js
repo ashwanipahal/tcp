@@ -11,6 +11,11 @@ export const googleAppConfig = {
   google_map_api_key: 'AIzaSyDYl5bgJ8yD30bRchcB0hKgZgJR0JqdrO4',
 };
 
+export const UPDATE_ITEM_IN_CART = {
+  X_CALCULATION_USAGE: '-1,-3,-5,-6,-7',
+  X_UPDATE_DESCRIPTION: 'true',
+};
+
 export const awsAppSync = {
   aws_project_region: 'us-east-1',
   aws_appsync_region: 'us-east-1',
@@ -23,9 +28,6 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL.int,
 };
 
-export const orderConfig = {
-  NON_ECOM_ORDERS: ['USBOPIS', 'CABOPIS', 'USROPIS', 'CAROPIS', 'USBOSS'],
-};
 // TODO - to move it in env config file
 export const API_CONFIG = {
   sites: ['us', 'ca'],
@@ -110,5 +112,4 @@ export default {
   awsAppSync,
   API_CONFIG,
   googleAppConfig,
-  orderConfig,
 };

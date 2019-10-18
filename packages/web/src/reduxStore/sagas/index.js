@@ -40,6 +40,7 @@ import TrackOrderSaga from '@tcp/core/src/components/features/account/TrackOrder
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import EarnExtraPointsSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnExtraPointsTile.saga';
 import EarnedPointsNotificationSaga from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsTile/container/EarnedPointsNotification.saga';
+import OrderDetailsListSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import AddAirmilesBannerSaga from '@tcp/core/src/components/features/CnC/common/organism/AirmilesBanner/container/AirmilesBanner.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
@@ -53,17 +54,21 @@ import StyliticsProductTabListSaga from '@tcp/core/src/components/common/organis
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import StoreLocatorSaga from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.saga';
 import StoreDetailSaga from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.saga';
+import StoresInternationalSaga from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.saga';
 import MyFavoriteStoreSaga from '@tcp/core/src/components/features/account/MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.saga';
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
 import ProductPickup from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.saga';
+import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
+import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
+import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
-import SearchBarSaga from '../../components/features/content/Header/molecules/SearchBar/SearchBar.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -106,6 +111,7 @@ export default function* rootSaga() {
     PointsHistorySaga(),
     EarnExtraPointsSaga(),
     EarnedPointsNotificationSaga(),
+    OrderDetailsListSaga(),
     ResetPasswordSaga(),
     ApplyCreditCardSaga(),
     ChangePasswordSaga(),
@@ -130,6 +136,10 @@ export default function* rootSaga() {
     ConfirmationPageSaga(),
     NavigateXHRSaga(),
     OrdersSaga(),
+    OutfitDetailsSaga(),
     FavoriteSaga(),
+    ExtraPointsSaga(),
+    StoresInternationalSaga(),
+    StoreListSaga(),
   ]);
 }

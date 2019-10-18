@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -16,18 +17,7 @@ import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getIconPath } from '../../../../../../../utils';
-
-// @flow
-type Props = {
-  isMakeDefaultDisabled: string,
-  handleSubmit: string,
-  labels: string,
-  hideShowPwd: boolean,
-  confirmHideShowPwd: boolean,
-  onAlreadyHaveAnAccountClick: any,
-  className: string,
-  tooltipContent: any,
-};
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
@@ -39,7 +29,14 @@ let CreateAccountForm = ({
   onAlreadyHaveAnAccountClick,
   className,
   tooltipContent,
-}: Props) => {
+  userplccCardNumber,
+  userplccCardId,
+}) => {
+  const getPlccLbl = getLabelValue(
+    labels,
+    'lbl_createAccount_plcc_checkbox_Text',
+    'registration'
+  ).replace('#number', `${userplccCardNumber}`);
   return (
     <div className={`${className} elem-pt-MED`}>
       <form onSubmit={handleSubmit}>
@@ -74,6 +71,7 @@ let CreateAccountForm = ({
               maxLength={50}
               dataLocator="phone-number-field"
               enableSuccessCheck={false}
+              normalize={formatPhoneNumber}
             />
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -169,20 +167,24 @@ let CreateAccountForm = ({
               </Col>
             </span>
           </Col>
-
-          {/* CHECKBOXES */}
-          {/* TODO: Uncomment when PLCC reg is available
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
-            <Field
-              name="myPlace"
-              component={InputCheckbox}
-              dataLocator="my-place-checkbox"
-              disabled={isMakeDefaultDisabled}
+          {userplccCardNumber && userplccCardId && (
+            <Col
+              className="plcc_checkbox elem-pb-MED"
+              ignoreGutter={{ small: true }}
+              colSize={{ small: 6 }}
             >
-              {getLabelValue(labels,'lbl_createAccount_saveRewards','registration')}
-            </Field>
-          </Col>
-          */}
+              <Field
+                name="plcc_checkbox"
+                component={InputCheckbox}
+                dataLocator="plcc_checkbox"
+                alignCheckbox="top"
+              >
+                <BodyCopy fontFamily="secondary" fontSize="fs10">
+                  <RichText richTextHtml={getPlccLbl} />
+                </BodyCopy>
+              </Field>
+            </Col>
+          )}
           <Col
             className="i-agree-checkbox elem-pb-MED"
             ignoreGutter={{ small: true }}
@@ -274,6 +276,19 @@ CreateAccountForm = reduxForm({
   ...validateMethod,
   enableReinitialize: true,
 })(CreateAccountForm);
+
+CreateAccountForm.propTypes = {
+  isMakeDefaultDisabled: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+  labels: PropTypes.string.isRequired,
+  hideShowPwd: PropTypes.bool.isRequired,
+  confirmHideShowPwd: PropTypes.bool.isRequired,
+  onAlreadyHaveAnAccountClick: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  tooltipContent: PropTypes.string.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
+};
 
 export default withStyles(CreateAccountForm, Styles);
 export { CreateAccountForm as CreateAccountFormVanilla };

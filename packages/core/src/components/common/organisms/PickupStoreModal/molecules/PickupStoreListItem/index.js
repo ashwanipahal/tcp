@@ -1,1 +1,1 @@
-export { default } from './views/PickupStoreListItem';
+export { default } from './views/PickupStoreListItem.view';

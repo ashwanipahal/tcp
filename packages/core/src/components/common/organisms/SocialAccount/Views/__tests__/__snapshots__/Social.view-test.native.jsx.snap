@@ -26,7 +26,11 @@ exports[`Social component should render with connected 1`] = `
   <Styled(View)
     spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
   >
-    <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityLabel="button"
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
       <Styled(ImageComp)
         alt=""
         height={50}
@@ -51,29 +55,23 @@ exports[`Social component should render with connected 1`] = `
           textDecoration={null}
         />
       </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/plus.png",
-            }
+      <Styled(ImageComp)
+        alt=""
+        height={15}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/plus.png",
           }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
+        }
+        url=""
+        width={15}
+      />
+    </Styled(TouchableOpacity)>
     <ModalNative
       heading=" "
       horizontalBar={false}
+      inheritedStyles=""
       isOverlay={false}
       onRequestClose={[Function]}
       visible={true}
@@ -168,7 +166,7 @@ exports[`Social component should render with connected 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -194,7 +192,7 @@ exports[`Social component should render with connected 1`] = `
         >
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color="black"
             customStyle={Object {}}
             customTextStyle={null}
@@ -219,6 +217,18 @@ exports[`Social component should render with connected 1`] = `
       </Styled(View)>
     </ModalNative>
   </Styled(View)>
+  <Instagram
+    onLoginFailure={[Function]}
+    onLoginSuccess={[Function]}
+    redirectUrl="undefined/undefined/instagram"
+    responseType="token"
+    scopes={
+      Array [
+        "basic",
+      ]
+    }
+    styles={Object {}}
+  />
 </View>
 `;
 
@@ -248,7 +258,11 @@ exports[`Social component should renders correctly 1`] = `
   <Styled(View)
     spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
   >
-    <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityLabel="button"
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
       <Styled(ImageComp)
         alt=""
         height={50}
@@ -273,29 +287,23 @@ exports[`Social component should renders correctly 1`] = `
           textDecoration={null}
         />
       </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/plus.png",
-            }
+      <Styled(ImageComp)
+        alt=""
+        height={15}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/plus.png",
           }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
+        }
+        url=""
+        width={15}
+      />
+    </Styled(TouchableOpacity)>
     <ModalNative
       heading=" "
       horizontalBar={false}
+      inheritedStyles=""
       isOverlay={false}
       onRequestClose={[Function]}
       visible={true}
@@ -390,7 +398,7 @@ exports[`Social component should renders correctly 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color="white"
           customStyle={Object {}}
           customTextStyle={null}
@@ -416,7 +424,7 @@ exports[`Social component should renders correctly 1`] = `
         >
           <Styled(CustomButton)
             active={false}
-            buttonVariation="variable-width"
+            buttonVariation="fixed-width"
             color="black"
             customStyle={Object {}}
             customTextStyle={null}
@@ -441,6 +449,18 @@ exports[`Social component should renders correctly 1`] = `
       </Styled(View)>
     </ModalNative>
   </Styled(View)>
+  <Instagram
+    onLoginFailure={[Function]}
+    onLoginSuccess={[Function]}
+    redirectUrl="undefined/undefined/instagram"
+    responseType="token"
+    scopes={
+      Array [
+        "basic",
+      ]
+    }
+    styles={Object {}}
+  />
 </View>
 `;
 
@@ -513,228 +533,6 @@ exports[`Social component should simulate facebook connect 1`] = `
         />
       </TouchableOpacity>
     </Styled(View)>
-  </Styled(View)>
-</View>
-`;
-
-exports[`Social component should simulate instagram connect 1`] = `
-<View>
-  <Styled(BodyCopy)
-    accessibilityText=""
-    dataLocator=""
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="extrabold"
-    margin={null}
-    numberOfLines={null}
-    text="lbl_prefrence_social_account"
-    textDecoration={null}
-  />
-  <Styled(Styled(BodyCopy))
-    accessibilityText=""
-    dataLocator=""
-    fontSize="fs16"
-    margin={null}
-    numberOfLines={null}
-    spacingStyles="margin-bottom-XXL margin-left-XXS margin-top-SM"
-    text="lbl_prefrence_social_text"
-    textDecoration={null}
-  />
-  <Styled(View)
-    spacingStyles="margin-bottom-XL margin-left-XXS margin-right-XXS"
-  >
-    <Styled(View)>
-      <Styled(ImageComp)
-        alt=""
-        height={50}
-        host=""
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/facebook_share.png",
-          }
-        }
-        url=""
-        width={50}
-      />
-      <Styled(View)>
-        <Styled(Styled(BodyCopy))
-          accessibilityText=""
-          dataLocator=""
-          fontSize="fs16"
-          margin={null}
-          numberOfLines={null}
-          spacingStyles="margin-left-MED margin-right-LRG"
-          text="Facebook lbl_prefrence_connected"
-          textDecoration={null}
-        />
-      </Styled(View)>
-      <TouchableOpacity
-        accessibilityLabel="button"
-        accessibilityRole="button"
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Styled(ImageComp)
-          alt=""
-          height={15}
-          host=""
-          source={
-            Object {
-              "testUri": "../../../../core/src/assets/dark_close.png",
-            }
-          }
-          url=""
-          width={15}
-        />
-      </TouchableOpacity>
-    </Styled(View)>
-    <ModalNative
-      heading=" "
-      horizontalBar={false}
-      isOverlay={false}
-      onRequestClose={[Function]}
-      visible={true}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs22"
-        fontWeight="black"
-        margin={null}
-        numberOfLines={null}
-        text="lbl_prefrence_social_points_heading"
-        textAlign="center"
-        textDecoration={null}
-      />
-      <Styled(View)
-        spacingStyles="margin-left-XXXL margin-right-XXXL"
-      >
-        <Styled(Text)
-          spacingStyles="padding-top-MED padding-bottom-LRG"
-        >
-          <Styled(Styled(BodyCopy))
-            accessibilityText=""
-            dataLocator=""
-            fontSize="fs14"
-            margin={null}
-            numberOfLines={null}
-            spacingStyles="margin-top-LRG"
-            text="lbl_prefrence_social_points_text_1"
-            textAlign="center"
-            textDecoration={null}
-          />
-          <Styled(BodyCopy)
-            accessibilityText=""
-            color="orange.800"
-            dataLocator=""
-            fontSize="fs14"
-            fontWeight="black"
-            margin={null}
-            numberOfLines={null}
-            text=" 10 "
-            textAlign="center"
-            textDecoration={null}
-          />
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator=""
-            fontSize="fs14"
-            margin={null}
-            numberOfLines={null}
-            text="lbl_prefrence_social_points_text_2"
-            textAlign="center"
-            textDecoration={null}
-          />
-        </Styled(Text)>
-        <Styled(Styled(BodyCopy))
-          accessibilityText=""
-          dataLocator=""
-          fontSize="fs14"
-          margin={null}
-          numberOfLines={null}
-          spacingStyles="margin-top-LRG"
-          text="lbl_prefrence_social_points_text_3"
-          textAlign="center"
-          textDecoration={null}
-        />
-        <Styled(Styled(BodyCopy))
-          accessibilityText=""
-          dataLocator=""
-          fontSize="fs14"
-          margin={null}
-          numberOfLines={null}
-          spacingStyles="margin-top-LRG"
-          text="lbl_prefrence_social_points_text_4"
-          textAlign="center"
-          textDecoration={null}
-        />
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator=""
-          fontSize="fs14"
-          margin={null}
-          numberOfLines={null}
-          text="lbl_prefrence_social_points_text_5"
-          textAlign="center"
-          textDecoration={null}
-        />
-      </Styled(View)>
-      <Styled(View)
-        spacingStyles="margin-top-XXXL margin-left-XXXL margin-right-XXXL"
-      >
-        <Styled(CustomButton)
-          active={false}
-          buttonVariation="variable-width"
-          color="white"
-          customStyle={Object {}}
-          customTextStyle={null}
-          disableButton={false}
-          fill="BLUE"
-          fullWidth=""
-          iconColor="gray.800"
-          iconName="chevron-down"
-          iconSize="fs12"
-          locator=""
-          navigation={Object {}}
-          onPress={[Function]}
-          selected={false}
-          selectedIcon="chevron-up"
-          showIcon={false}
-          text="lbl_prefrence_social_points_modal_viewall_btn"
-          theme={Object {}}
-          type="submit"
-          url=""
-        />
-        <Styled(View)
-          spacingStyles="margin-top-LRG"
-        >
-          <Styled(CustomButton)
-            active={false}
-            buttonVariation="variable-width"
-            color="black"
-            customStyle={Object {}}
-            customTextStyle={null}
-            disableButton={false}
-            fill="WHITE"
-            fullWidth=""
-            iconColor="gray.800"
-            iconName="chevron-down"
-            iconSize="fs12"
-            locator=""
-            navigation={Object {}}
-            onPress={[Function]}
-            selected={false}
-            selectedIcon="chevron-up"
-            showIcon={false}
-            text="lbl_prefrence_social_points_modal_close_btn"
-            theme={Object {}}
-            type="submit"
-            url=""
-          />
-        </Styled(View)>
-      </Styled(View)>
-    </ModalNative>
   </Styled(View)>
 </View>
 `;

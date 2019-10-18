@@ -37,6 +37,9 @@ const ProductListView = ({
   sortLabels,
   slpLabels,
   onPickUpOpenClick,
+  isFilterBy,
+  currencyExchange,
+  currency,
   ...otherProps
 }) => {
   return (
@@ -76,6 +79,7 @@ const ProductListView = ({
                 getProducts={getProducts}
                 sortLabels={sortLabels}
                 slpLabels={slpLabels}
+                isFilterBy={isFilterBy}
               />
             </div>
           </Col>
@@ -86,7 +90,13 @@ const ProductListView = ({
             />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} />
+            <ProductsGrid
+              productsBlock={productsBlock}
+              labels={labels}
+              currency={currency}
+              currencyExchange={currencyExchange}
+              {...otherProps}
+            />
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -97,7 +107,7 @@ const ProductListView = ({
             />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <SpotlightContainer categoryId={categoryId} />
+            {categoryId ? <SpotlightContainer categoryId={categoryId} /> : null}
           </Col>
         </Col>
       </Row>
@@ -128,6 +138,9 @@ ProductListView.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isFilterBy: PropTypes.bool.isRequired,
+  currencyExchange: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 ProductListView.defaultProps = {
@@ -146,6 +159,8 @@ ProductListView.defaultProps = {
   labelsFilter: {},
   sortLabels: [],
   slpLabels: {},
+  isFilterBy: true,
+  currency: '$',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

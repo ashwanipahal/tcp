@@ -8,6 +8,8 @@ import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCo
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const SearchListingView = ({
   className,
@@ -25,6 +27,8 @@ const SearchListingView = ({
   initialValues,
   labelsFilter,
   onSubmit,
+  currency,
+  currencyAttributes,
   ...otherProps
 }) => {
   return (
@@ -86,11 +90,15 @@ const SearchListingView = ({
               products={products}
               labels={labels}
               productTileVariation="search-product-tile"
+              currencyExchange={currencyAttributes.exchangevalue}
+              currency={currency}
               {...otherProps}
             />
           ) : null}
         </Col>
       </Row>
+      <QuickViewModal />
+      <AddedToBagContainer />
     </div>
   );
 };
@@ -114,6 +122,8 @@ SearchListingView.propTypes = {
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -129,6 +139,8 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
+  currencyAttributes: {},
+  currency: '$',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

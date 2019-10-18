@@ -26,6 +26,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       <InfoContainer>
@@ -43,7 +44,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
-              onPress={() => handleComponentChange('editPersonalInfoMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -95,7 +96,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
-              onPress={() => handleComponentChange('editMailingAddressMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -122,7 +123,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_overview_profileInfoChangeCTA')}
-              onPress={() => handleComponentChange('changePasswordMobile')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -142,7 +143,6 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
       <ButtonWrapperStyle>
         <CustomButton
           text={getLabelValue(labels, 'lbl_overview_profileInfoViewCTA')}
-          buttonVariation="variable-width"
           fill="BLUE"
           onPress={() => handleComponentChange('profileInformationMobile')}
         />

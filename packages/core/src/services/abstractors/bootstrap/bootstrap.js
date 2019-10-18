@@ -111,7 +111,7 @@ const createBootstrapParams = () => {
 export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   const cachedKeyData = cachedData[key];
   if (cachedKeyData) {
-    logger.info('CACHE HIT');
+    logger.info(`BOOTSTRAP CACHE HIT: ${key}`);
     try {
       return JSON.parse(cachedKeyData);
     } catch (err) {
@@ -119,15 +119,19 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
     }
   }
 
-  logger.info('CACHE MISS');
+  logger.info(`BOOTSTRAP CACHE MISS: ${key}`);
   Object.keys(CACHED_KEYS).forEach(async item => {
     if (CACHED_KEYS[item] === key) {
       const globalRedisClient = global.redisClient;
       if (globalRedisClient && globalRedisClient.connected) {
-        await setDataInRedis({
-          data: bootstrapData[key],
-          CACHE_IDENTIFIER: item,
-        });
+        try {
+          await setDataInRedis({
+            data: bootstrapData[key],
+            CACHE_IDENTIFIER: item,
+          });
+        } catch (err) {
+          logger.error(err);
+        }
       }
     }
   });
@@ -166,15 +170,19 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     const fetchCachedDataParams = { bootstrapData, cachedData };
 
     if (pageName) {
-      response[pageName] = bootstrapData[pageName];
-      logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
-      response.modules =
-        bootstrapData[pageName] &&
-        (await layoutAbstractor.getModulesFromLayout(
-          retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
-        ));
-      logger.info('Modules Query Executed Successfully');
-      logger.debug('Modules Query Result: ', response.modules);
+      try {
+        response[pageName] = bootstrapData[pageName];
+        logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
+        response.modules =
+          bootstrapData[pageName] &&
+          (await layoutAbstractor.getModulesFromLayout(
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
+          ));
+        logger.info('Modules Query Executed Successfully');
+        logger.debug('Modules Query Result: ', response.modules);
+      } catch (e) {
+        logger.error('Error occurred in modules query: ', e);
+      }
     }
 
     response.header = headerAbstractor.processData(
@@ -190,7 +198,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
   } catch (error) {
-    logger.error(error);
+    logger.error('Error occurred in bootstrap query: ', error);
   }
   return response;
 };

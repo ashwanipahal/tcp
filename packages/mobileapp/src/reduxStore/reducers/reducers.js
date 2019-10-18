@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
+import { persistReducer } from 'redux-persist';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
@@ -10,6 +11,7 @@ import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/Add
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
+import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
@@ -41,6 +43,14 @@ import PointsClaimReducer from '@tcp/core/src/components/features/account/Points
 import SocialReducer from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.reducer';
 import orderConfirmationReducer from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import OutfitDetailReducer from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.reducer';
+import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
+import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
+import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
+import OrderDetailsDataReducer from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.reducer';
+import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
+import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -59,6 +69,7 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
+  ACCOUNT_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   AIRMILES_BANNER_REDUCER_KEY,
@@ -93,6 +104,13 @@ import {
   CONFIRMATION_REDUCER_KEY,
   STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
+  SLP_PAGE_REDUCER_KEY,
+  EXTRA_POINTS_REDUCER_KEY,
+  ORDERS_REDUCER_KEY,
+  ORDERDETAILS_REDUCER_KEY,
+  SEARCH_REDUCER_KEY,
+  OUTFIT_DETAILS_REDUCER_KEY,
+  RECENT_SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -103,6 +121,7 @@ import UserReducer from '@tcp/core/src/components/features/account/User/containe
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
 import ProductTabListReducer from '@tcp/core/src/components/common/organisms/ProductTabList/container/ProductTabList.reducer';
 import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
+import immutableTransform from 'redux-persist-transform-immutable';
 
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
@@ -132,6 +151,11 @@ const filteredProductDetailReducer = createFilteredReducer(
   PRODUCT_DETAIL_REDUCER_KEY
 );
 
+const filteredSearchDetailReducer = createFilteredReducer(
+  SearchDetailReducer,
+  SLP_PAGE_REDUCER_KEY
+);
+
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
 
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
@@ -156,6 +180,7 @@ const rootReducer = combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
@@ -188,6 +213,20 @@ const rootReducer = combineReducers({
   [POINTS_CLAIM_REDUCER_KEY]: PointsClaimReducer,
   [CONFIRMATION_REDUCER_KEY]: orderConfirmationReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
+  [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
+  [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
+  [ORDERS_REDUCER_KEY]: OrdersReducer,
+  [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
+  [SEARCH_REDUCER_KEY]: SearchBarReducer,
+  [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
+  [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
 });
 
-export default rootReducer;
+const rootPersistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+  whitelist: [RECENT_SEARCH_REDUCER_KEY],
+  transforms: [immutableTransform()],
+};
+
+export default persistReducer(rootPersistConfig, rootReducer);

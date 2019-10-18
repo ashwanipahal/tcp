@@ -14,7 +14,9 @@ import {
   submitBillingSection,
   setVenmoPaymentInProgress,
 } from '../../../container/Checkout.action';
+import CheckoutSelectors from '../../../container/Checkout.selector';
 import CreditCardSelector from '../../BillingPaymentForm/container/CreditCard.selectors';
+import { getSiteId } from '../../../../../../../utils';
 
 /**
  * @class GuestBillingContainer
@@ -119,7 +121,9 @@ class GuestBillingContainer extends React.Component {
       };
     }
 
-    return null;
+    return {
+      country: getSiteId() && getSiteId().toUpperCase(),
+    };
   };
 
   /**
@@ -133,6 +137,7 @@ class GuestBillingContainer extends React.Component {
       syncErrors,
       shippingOnFileAddressKey,
       isVenmoPaymentInProgress,
+      setCheckoutStage,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -163,6 +168,7 @@ class GuestBillingContainer extends React.Component {
         }}
         onSubmit={this.submitBillingData}
         syncErrorsObj={syncErrors}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -172,6 +178,7 @@ export const mapStateToProps = state => {
   return {
     cardType: getCardType(state),
     syncErrors: getSyncError(state),
+    isPaymentDisabled: CheckoutSelectors.getIsPaymentDisabled(state),
     paymentMethodId: getPaymentMethodId(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
@@ -204,6 +211,7 @@ GuestBillingContainer.propTypes = {
   navigation: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoProgress: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 GuestBillingContainer.defaultProps = {

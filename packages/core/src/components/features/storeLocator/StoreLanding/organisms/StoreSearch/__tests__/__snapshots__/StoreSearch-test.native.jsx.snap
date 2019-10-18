@@ -92,18 +92,11 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -111,13 +104,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -247,18 +240,11 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -266,13 +252,13 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -402,18 +388,11 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="you have an error in the component"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="you have an error in the component"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -421,13 +400,13 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",
@@ -557,18 +536,11 @@ exports[`StoreSearch component component renders correctly with proper elements 
         }
       }
       dataLocator="storeAddressLocator"
+      errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
-    />
-    <ErrorMessage
-      className=""
-      error="there is an error in the input"
-      errorId="storeSearch_geoLocation"
-      formName=""
-      isShowingMessage="there is an error in the input"
-      withoutErrorDataAttribute={true}
     />
   </Styled(View)>
   <Styled(View)>
@@ -576,13 +548,13 @@ exports[`StoreSearch component component renders correctly with proper elements 
       data={
         Array [
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "gymboree-store-option",
             "name": "gymboreeStoreOption",
             "storeLabel": "Gymboree",
           },
           Object {
-            "checked": undefined,
+            "checked": false,
             "dataLocator": "only-outlet-option",
             "name": "outletOption",
             "storeLabel": "Only Outlet Stores",

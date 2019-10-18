@@ -1,4 +1,5 @@
 import CheckoutSelectors from '../../../../Checkout/container/Checkout.selector';
+import { getLabelValue } from '../../../../../../../utils';
 
 export const getItemsTotalCount = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'totalItems']) || 0;
@@ -10,10 +11,10 @@ export const getSavingsTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'savingsTotal']) || 0;
 };
 export const getShippingTotal = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'shippingTotal']);
 };
 export const getTotalTax = state => {
-  return state.CartPageReducer.getIn(['orderDetails', 'totaltax']) || 0;
+  return state.CartPageReducer.getIn(['orderDetails', 'totalTax']) || 0;
 };
 export const getGrandTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'grandTotal']) || 0;
@@ -28,16 +29,21 @@ export const getSubTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'subTotal']) || 0;
 };
 export const getCurrencySymbol = state => {
-  const currency = state.session && state.session.getIn(['siteDetails', 'currency']);
+  const currency = state.session && state.session.siteDetails.currency;
   // eslint-disable-next-line no-nested-ternary
   return currency ? (currency === 'USD' || currency === 'CA' ? '$' : currency) : '$';
 };
+export const getGiftServiceTotal = state => {
+  return state.CartPageReducer.getIn(['orderDetails', 'giftWrappingTotal']) || 0;
+};
+
 export const getLedgerSummaryData = state => {
   return {
     itemsCount: getItemsTotalCount(state),
     subTotal: getSubTotal(state),
     couponsTotal: getCouponsTotal(state),
     savingsTotal: getSavingsTotal(state),
+    giftServiceTotal: getGiftServiceTotal(state),
     shippingTotal: getShippingTotal(state),
     taxesTotal: getTotalTax(state),
     grandTotal: getGrandTotal(state),
@@ -55,6 +61,7 @@ export const getOrderLedgerLabels = state => {
         lbl_orderledger_items: itemsLabel,
         lbl_orderledger_coupons: couponsLabel,
         lbl_orderledger_promotions: promotionsLabel,
+        lbl_orderledger_giftServices: giftServiceLabel,
         lbl_orderledger_shipping: shippingLabel,
         lbl_orderledger_tax: taxLabel,
         lbl_orderledger_total: totalLabel,
@@ -72,6 +79,7 @@ export const getOrderLedgerLabels = state => {
     itemsLabel,
     couponsLabel,
     promotionsLabel,
+    giftServiceLabel,
     shippingLabel,
     taxLabel,
     totalLabel,
@@ -81,5 +89,11 @@ export const getOrderLedgerLabels = state => {
     tooltipText,
     free,
     orderLedgerTitle,
+    totalLabelConfirmation: getLabelValue(
+      state.Labels,
+      'lbl_orderledger_totalConfirmation',
+      'bagPage',
+      'checkout'
+    ),
   };
 };

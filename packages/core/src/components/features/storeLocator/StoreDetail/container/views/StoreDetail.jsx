@@ -28,18 +28,15 @@ const StoreDetail = ({
   setFavoriteStore,
   isFavorite,
 }) => {
-  const {
-    hours,
-    features: { mallType, entranceType },
-  } = store;
+  const { hours, features } = store;
   const storeMeta = [
     {
       label: getLabelValue(labels, 'lbl_storedetails_mallType'),
-      value: mallType,
+      value: features !== undefined && features.mallType,
     },
     {
       label: getLabelValue(labels, 'lbl_storedetails_entranceType'),
-      value: entranceType,
+      value: features !== undefined && features.entranceType,
     },
   ];
 
@@ -47,7 +44,7 @@ const StoreDetail = ({
   if (hours !== undefined && Object.keys(hours).length > 0)
     Object.keys(hours).forEach(hour => storeTimings.push(...hours[hour]));
 
-  return (
+  return store.basicInfo !== undefined ? (
     <div className={className}>
       <Anchor
         fontSizeVariation="xlarge"
@@ -55,9 +52,10 @@ const StoreDetail = ({
         handleLinkClick={routesBack}
         noLink
         className={`${className}__backlink`}
+        title={getLabelValue(labels, 'lbl_storedetails_backLink')}
       >
-        <span className="left-arrow"> </span>
-        Back
+        <span className="left-arrow" />
+        {getLabelValue(labels, 'lbl_storedetails_backLink')}
       </Anchor>
       <Row>
         <Col colSize={{ small: 6, medium: 4, large: 4 }}>
@@ -101,7 +99,7 @@ const StoreDetail = ({
         </Col>
       </Row>
     </div>
-  );
+  ) : null;
 };
 
 StoreDetail.propTypes = {

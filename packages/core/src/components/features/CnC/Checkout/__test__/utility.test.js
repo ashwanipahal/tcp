@@ -27,7 +27,6 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import { fromJS } from '../../../../../../../../node_modules/immutable';
-import { isMobileApp } from '../../../../../utils';
 
 jest.mock('next/router', () => ({ push: jest.fn() }));
 
@@ -38,7 +37,6 @@ const {
   updateCartInfo,
   isOrderHasPickup,
   routeToPage,
-  redirectToBilling,
   getCreditCardType,
   isOrderHasShipping,
   getAvailableStages,
@@ -140,19 +138,6 @@ describe('utility', () => {
   it('getCreditCardType', () => {
     expect(getCreditCardType({ cardNumber: '*', cardType: '' })).toBe(null);
   });
-  it('redirectToBilling', () => {
-    const navigate = jest.fn();
-    const navigation = {
-      navigate,
-    };
-    expect(redirectToBilling(navigation));
-    if (isMobileApp()) {
-      expect(Router.push).toHaveBeenCalled();
-    } else if (navigation) {
-      expect(navigate).toHaveBeenCalledTimes(0);
-    }
-  });
-
   it('getCreditCardType', () => {
     const navigate = jest.fn();
     expect(getCreditCardType({ cardNumber: '', cardType: '' })).toBe(null);
@@ -163,7 +148,12 @@ describe('utility', () => {
   });
   it('getAvailableStages', () => {
     const cartItems = fromJS({});
-    expect(getAvailableStages(cartItems)).toStrictEqual(['', '']);
+    expect(
+      getAvailableStages(cartItems, {
+        billingLabel: '',
+        reviewLabel: '',
+      })
+    ).toStrictEqual(['', '']);
   });
   it('hasPOBox', () => {
     expect(hasPOBox('dsa', 'dasdas')).toBe(false);

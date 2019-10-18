@@ -1,11 +1,9 @@
 /* eslint-disable max-lines */
 import React, { PureComponent, Fragment } from 'react';
-import Router from 'next/router'; // eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
-import { toTimeString, getIconPath } from '@tcp/core/src/utils';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { parseDate } from '@tcp/core/src/utils/parseDate';
+import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
+import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
 import style, {
   TileHeader,
   TileFooter,
@@ -43,7 +41,7 @@ class StoreAddressTile extends PureComponent {
     } = this.props;
     return (
       <Fragment>
-        <div>
+        <div className="tile-footer__fullwidth">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
@@ -54,7 +52,7 @@ class StoreAddressTile extends PureComponent {
             {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
           </Button>
         </div>
-        <div>
+        <div className="tile-footer__fullwidth">
           {variation === detailsType && (!isFavorite && showSetFavorite) && this.getFavLink()}
         </div>
       </Fragment>
@@ -76,6 +74,7 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
             handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
@@ -109,12 +108,17 @@ class StoreAddressTile extends PureComponent {
         basicInfo: { storeName },
       },
       titleClickCb,
+      dataLocatorKey,
     } = this.props;
     return (
       <div className="store-details-header">
         {!titleClickCb && <h4 className="store-name store-name--details">{storeName}</h4>}
         {titleClickCb && (
-          <button className="store-name store-name--details-btn" onClick={titleClickCb}>
+          <button
+            className="store-name store-name--details-btn"
+            onClick={titleClickCb}
+            data-locator={getLocator(`store_${dataLocatorKey}addresslabel`)}
+          >
             {storeName}
           </button>
         )}
@@ -123,10 +127,17 @@ class StoreAddressTile extends PureComponent {
   }
 
   getListingHeader() {
-    const { openStoreDetail, store, labels, openStoreDirections } = this.props;
-    const { isGym, basicInfo, distance } = store;
+    const {
+      openStoreDetails,
+      store,
+      labels,
+      openStoreDirections,
+      geoLocationDisabled,
+    } = this.props;
+    const { isGym, basicInfo, distance, hours } = store;
     const { storeName, address, phone } = basicInfo;
     const { addressLine1, city, state, zipCode } = address;
+    const currentDate = new Date();
     return (
       <div className="listing-header">
         <div className="heading-left">
@@ -149,23 +160,26 @@ class StoreAddressTile extends PureComponent {
                 color="text.primary"
                 fontFamily="secondary"
               >
-                {`(${getLabelValue(
-                  labels,
-                  'lbl_storelanding_openInterval'
-                )} ${this.getStoreHours()})`}
+                {getStoreHours(hours, labels, currentDate)}
               </BodyCopy>
-              <BodyCopy
-                fontSize="fs12"
-                component="span"
-                color="text.primary"
-                fontFamily="secondary"
-              >
-                {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
-              </BodyCopy>
+              {!geoLocationDisabled && (
+                <BodyCopy
+                  fontSize="fs12"
+                  component="span"
+                  color="text.primary"
+                  fontFamily="secondary"
+                >
+                  {`${
+                    distance
+                      ? `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
+                      : ''
+                  }`}
+                </BodyCopy>
+              )}
               <Anchor
                 fontSizeVariation="medium"
                 underline
-                handleLinkClick={() => openStoreDirections(store)}
+                url={openStoreDirections(store)}
                 anchorVariation="primary"
                 target="_blank"
                 className="store-directions-link"
@@ -204,11 +218,13 @@ class StoreAddressTile extends PureComponent {
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={openStoreDetail}
+            to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
+            handleLinkClick={event => openStoreDetails(event, store)}
             anchorVariation="primary"
             target="_blank"
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
+            noLink
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
           </Anchor>
@@ -220,23 +236,29 @@ class StoreAddressTile extends PureComponent {
   getListingTileHeader() {
     const {
       storeIndex,
-      store: { basicInfo, distance },
+      store,
       labels,
       openStoreDirections,
+      titleClickCb,
+      geoLocationDisabled,
     } = this.props;
-    const { storeName } = basicInfo;
-    const storeHours = this.getStoreHours();
+    const { basicInfo, distance, hours } = store;
+    const { storeName, id } = basicInfo;
+    const currentDate = new Date();
+    const storeHours = getStoreHours(hours, labels, currentDate);
 
     return (
       <div className="store-listing-header">
         <div className="title-one">
           <BodyCopy
             fontSize="fs14"
-            component="span"
+            component={titleClickCb ? Anchor : 'span'}
             color="text.primary"
             fontFamily="secondary"
             fontWeight="semibold"
             className="store-name store-name--listing"
+            handleLinkClick={e => titleClickCb(e, id)}
+            noLink
           >
             {!!storeIndex && `${storeIndex}. `}
             {storeName}
@@ -245,16 +267,20 @@ class StoreAddressTile extends PureComponent {
         <div className="title-two">
           {storeHours && (
             <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-              {`(${getLabelValue(labels, 'lbl_storelanding_openInterval')} ${storeHours})`}
+              {storeHours}
             </BodyCopy>
           )}
-          <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
-            {`${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`}
-          </BodyCopy>
+          {!geoLocationDisabled && (
+            <BodyCopy fontSize="fs12" component="span" color="text.primary" fontFamily="secondary">
+              {`${
+                distance ? `${distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}` : ''
+              }`}
+            </BodyCopy>
+          )}
           <Anchor
             fontSizeVariation="medium"
             underline
-            handleLinkClick={openStoreDirections}
+            url={openStoreDirections(store)}
             anchorVariation="primary"
             target="_blank"
             className="store-directions-link"
@@ -294,7 +320,7 @@ class StoreAddressTile extends PureComponent {
   }
 
   getBrandStoreIcon(cls = '') {
-    const { labels } = this.props;
+    const { labels, dataLocatorKey } = this.props;
     return (
       <BodyCopy
         fontSize="fs12"
@@ -302,6 +328,7 @@ class StoreAddressTile extends PureComponent {
         color="text.primary"
         fontFamily="secondary"
         className={`brand-store ${cls}`}
+        dataLocator={getLocator(`store_${dataLocatorKey}gymboreetstorelabel`)}
       >
         <Image
           src={getIconPath('gymboree-icon')}
@@ -337,6 +364,7 @@ class StoreAddressTile extends PureComponent {
     const { store, variation, isFavorite } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
+    const addressMetaClassName = variation === listingType && !store.isGym ? '__nodisplay' : '';
 
     return (
       <div className="address-wrapper">
@@ -354,9 +382,9 @@ class StoreAddressTile extends PureComponent {
             </BodyCopy>
           ))}
         </BodyCopy>
-        <div className="address-meta">
+        <div className={`address-meta${addressMetaClassName}`}>
           <div className="address-meta__left">
-            {variation === detailsType && this.getStoreType()}
+            {variation === detailsType && store.features && this.getStoreType()}
             {store.isGym ? this.getBrandStoreIcon() : <div className="brand-store" />}
           </div>
           <div className="address-meta__right">
@@ -367,46 +395,14 @@ class StoreAddressTile extends PureComponent {
     );
   }
 
-  getStoreHours() {
-    const {
-      store: { hours },
-    } = this.props;
-    const todaysDate = new Date();
-    const { regularHours, holidayHours, regularAndHolidayHours } = hours;
-    const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
-    let selectedInterval = intervals.filter(hour => {
-      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-      const parsedDate = new Date(toInterval);
-      return (
-        parsedDate.getDate() === todaysDate.getDate() &&
-        parsedDate.getMonth() === todaysDate.getMonth() &&
-        parsedDate.getFullYear() === todaysDate.getFullYear()
-      );
-    });
-    // Fallback for Date and month not matching.
-    // We check day and year instead.
-    if (!selectedInterval.length) {
-      selectedInterval = intervals.filter(hour => {
-        const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-        const parsedDate = new Date(toInterval);
-        return (
-          parsedDate.getDay() === todaysDate.getDay() &&
-          parsedDate.getFullYear() === todaysDate.getFullYear()
-        );
-      });
-    }
-    try {
-      return toTimeString(parseDate(selectedInterval[0].openIntervals[0].toHour), true);
-    } catch (err) {
-      // Show empty incase no data found.
-      return '';
-    }
-  }
-
   render() {
-    const { className, children, variation, store, ...rest } = this.props;
+    const { className, children, variation, store, selectedStoreId, ...rest } = this.props;
     return (
-      <div className={`address-tile ${className}`}>
+      <div
+        className={`address-tile ${className} ${
+          selectedStoreId ? 'address-tile__selectedStore' : ''
+        }`}
+      >
         {variation === listingHeader && this.getListingHeader()}
         {variation !== listingHeader && (
           <Fragment>

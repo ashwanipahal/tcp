@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
-import { getNearByStore } from './StoreDetail.actions';
+import { getNearByStore, getCurrentStoreInfo } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
   setFavoriteStoreActn,
 } from '../../StoreLanding/container/StoreLanding.actions';
 import StoreDetail from './views/StoreDetail';
-import { routeToStoreDetails, routerPush } from '../../../../../utils';
+import { routeToStoreDetails, routerPush, fetchStoreIdFromUrlPath } from '../../../../../utils';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -31,15 +31,13 @@ export class StoreDetailContainer extends PureComponent {
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(
-        ({ isMobileApp, navigateToNestedRoute, UrlHandler, validateExternalUrl, isAndroid }) => {
-          this.hasMobileApp = isMobileApp();
-          this.navigateToNestedRoute = navigateToNestedRoute;
-          this.UrlHandler = UrlHandler;
-          this.validateExternalUrl = validateExternalUrl;
-          this.isAndroid = isAndroid && isAndroid();
-        }
-      )
+      .then(({ isMobileApp, navigateToNestedRoute, UrlHandler, isAndroid, mapHandler }) => {
+        this.hasMobileApp = isMobileApp();
+        this.navigateToNestedRoute = navigateToNestedRoute;
+        this.UrlHandler = UrlHandler;
+        this.isAndroid = isAndroid && isAndroid();
+        this.mapHandler = mapHandler;
+      })
       .catch(error => {
         console.log('error: ', error);
       });
@@ -62,7 +60,8 @@ export class StoreDetailContainer extends PureComponent {
     const prevStore = formatStore(prevProps.currentStoreInfo);
     const newStore = formatStore(currentStoreInfo);
     if (
-      prevStore.basicInfo.id !== newStore.basicInfo.id ||
+      (prevStore.basicInfo !== undefined && prevStore.basicInfo.id) !==
+        (newStore.basicInfo !== undefined && newStore.basicInfo.id) ||
       prevProps.isUserLoggedIn !== isUserLoggedIn
     ) {
       return true;
@@ -87,6 +86,28 @@ export class StoreDetailContainer extends PureComponent {
     this.UrlHandler(phoneUrl);
   };
 
+  openStoreDetails = (event, store) => {
+    event.preventDefault();
+    const { routerHandler } = routeToStoreDetails(store);
+    routerHandler();
+  };
+
+  openStoreDirections(store) {
+    const {
+      basicInfo: { address },
+    } = store;
+    const { addressLine1, city, state, zipCode } = address;
+    if (this.hasMobileApp) {
+      this.mapHandler(store);
+    } else {
+      window.open(
+        `${
+          googleMapConstants.OPEN_STORE_DIR_WEB
+        }${addressLine1},%20${city},%20${state},%20${zipCode}`
+      );
+    }
+  }
+
   loadCurrentStoreInitialInfo() {
     const { loadNearByStoreInfo, currentStoreInfo, formatStore, getFavStore } = this.props;
     const store = formatStore(currentStoreInfo);
@@ -101,26 +122,6 @@ export class StoreDetailContainer extends PureComponent {
       };
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
-    }
-  }
-
-  openStoreDirections(store) {
-    const {
-      basicInfo: { address, coordinates },
-    } = store;
-    const { addressLine1, city, state, zipCode } = address;
-    const { lat, long } = coordinates;
-    if (this.hasMobileApp) {
-      const url = `${googleMapConstants.OPEN_STORE_DIR_APP}${lat}%2C${long}`;
-      if (this.validateExternalUrl(url)) {
-        this.UrlHandler(url);
-      }
-    } else {
-      window.open(
-        `${
-          googleMapConstants.OPEN_STORE_DIR_WEB
-        }${addressLine1},%20${city},%20${state},%20${zipCode}`
-      );
     }
   }
 
@@ -139,13 +140,13 @@ export class StoreDetailContainer extends PureComponent {
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
         : [];
 
-    return store && Object.keys(store).length > 0 ? (
+    return store && store !== undefined && Object.keys(store).length > 0 ? (
       <StoreDetail
         className="storedetailinfo"
         store={store}
         labels={labels}
         otherStores={otherStores}
-        openStoreDetails={selectedStore => routeToStoreDetails(selectedStore)}
+        openStoreDetails={this.openStoreDetails}
         openStoreDirections={() => this.openStoreDirections(store)}
         routesBack={this.constructor.routesBack}
         dialStoreNumber={this.dialStoreNumber}
@@ -156,6 +157,17 @@ export class StoreDetailContainer extends PureComponent {
     ) : null;
   }
 }
+
+StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
+  console.log('Hello -----------------------------------------------');
+  if (!isServer) {
+    console.log('hello');
+    const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+    store.dispatch(getCurrentStoreInfo(storeId));
+  }
+
+  return pageProps;
+};
 
 StoreDetailContainer.propTypes = {
   currentStoreInfo: PropTypes.instanceOf(Map),

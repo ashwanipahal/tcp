@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
@@ -11,6 +10,7 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
+import OrdersTile from '../../common/organism/OrdersTile';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -54,6 +54,13 @@ class AccountOverview extends PureComponent<Props> {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.isUserLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
     if (getComponentId.login || getComponentId.favorites) {
@@ -65,7 +72,6 @@ class AccountOverview extends PureComponent<Props> {
           variation={getComponentId.favorites && 'favorites'}
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
-          resetAccountOverViewState={this.resetAccountOverViewState}
         />
       );
     }
@@ -130,8 +136,11 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   showTrackOrderModal = () => {
-    const { openTrackOrder } = this.props;
-    openTrackOrder({ state: true });
+    const { navigation } = this.props;
+    navigation.navigate('TrackOrder', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+    });
   };
 
   getModalHeader = (getComponentId, labels) => {
@@ -173,12 +182,14 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_earnPointsHeading')}>
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')} />
-            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
-              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
+              <OrdersTile labels={labels} navigation={navigation} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}>
+              <ProfileInfoContainer labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
@@ -210,7 +221,6 @@ class AccountOverview extends PureComponent<Props> {
                 id="createAccount"
                 type="submit"
                 width="150px"
-                buttonVariation="variable-width"
                 data-locator=""
                 text={getLabelValue(labels, 'lbl_overview_join_text')}
                 onPress={e =>
@@ -226,11 +236,9 @@ class AccountOverview extends PureComponent<Props> {
               />
 
               <CustomButton
-                className="classBtn"
                 fill="BLUE"
                 id="login"
                 type="submit"
-                buttonVariation="variable-width"
                 data-locator=""
                 width="150px"
                 text={getLabelValue(labels, 'lbl_overview_login_text')}
@@ -334,7 +342,6 @@ class AccountOverview extends PureComponent<Props> {
         )}
 
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
-        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );

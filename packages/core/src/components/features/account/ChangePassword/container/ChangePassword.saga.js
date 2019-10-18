@@ -2,7 +2,6 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import constants from '../ChangePassword.constants';
 import { changePasswordError } from './ChangePassword.actions';
 import { updateProfileSuccess } from '../../MyProfile/container/MyProfile.actions';
-
 import { UpdateProfileInfo } from '../../../../../services/abstractors/account';
 
 export function* ChangePassword({ payload }) {

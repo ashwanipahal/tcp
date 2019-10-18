@@ -2,88 +2,90 @@
 
 exports[`Header Component Header should render correctly 1`] = `
 <Styled(SafeAreaView)>
-  <Styled(View)
-    data-locator="global_headerpanel"
-  >
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="black"
-        data-locator="global_headerpanelwelcometext"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        margin={null}
-        numberOfLines={null}
-        textAlign="center"
-        textDecoration={null}
-      />
-      <Styled(TouchableOpacity)
-        onPress={[Function]}
-      >
+  <Connect(ToastContainer) />
+  <Styled(View)>
+    <Styled(View)
+      data-locator="global_headerpanel"
+    >
+      <Styled(View)>
         <Styled(BodyCopy)
-          accessibilityText="Drop Down"
-          color="text.primary"
-          data-locator="global_findastoretext"
+          accessibilityText=""
+          color="black"
+          data-locator="global_headerpanelwelcometext"
           dataLocator=""
           fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
+          fontSize="fs14"
+          fontWeight="semibold"
           margin={null}
           numberOfLines={null}
           textAlign="center"
           textDecoration={null}
         />
-        <Styled(Image)
-          data-locator="global_headerpanelcollapsedicon"
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/carrot-small-down.png",
+        <Styled(TouchableOpacity)
+          onPress={[Function]}
+        >
+          <Styled(BodyCopy)
+            accessibilityText="Drop Down"
+            color="text.primary"
+            data-locator="global_findastoretext"
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            margin={null}
+            numberOfLines={null}
+            textAlign="center"
+            textDecoration={null}
+          />
+          <Styled(Image)
+            data-locator="global_headerpanelcollapsedicon"
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/carrot-small-down.png",
+              }
             }
-          }
-          style={
-            Object {
-              "tintColor": "gray",
+            style={
+              Object {
+                "tintColor": "gray",
+              }
             }
-          }
-        />
-      </Styled(TouchableOpacity)>
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(TouchableOpacity)
-        accessibilityRole="button"
-        onPress={[Function]}
-      >
-        <Styled(Image)
-          data-locator="global_headerpanelbagicon"
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/empty-bag.png",
+          />
+        </Styled(TouchableOpacity)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(TouchableOpacity)
+          accessibilityRole="button"
+          onPress={[Function]}
+        >
+          <Styled(Image)
+            data-locator="global_headerpanelbagicon"
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/empty-bag.png",
+              }
             }
-          }
-        />
-        <Styled(View) />
-        <Styled(View) />
-        <Styled(BodyCopy)
-          accessibilityText="Mini bag with count"
-          color="white"
-          data-locator="obal_headerpanelbagicon"
-          dataLocator=""
-          fontSize="fs10"
-          margin={null}
-          numberOfLines={null}
-          style={
-            Object {
-              "marginTop": 18,
-              "paddingRight": 5.6,
-              "position": "absolute",
+          />
+          <Styled(View) />
+          <Styled(BodyCopy)
+            accessibilityText="Mini bag with count"
+            color="white"
+            data-locator="obal_headerpanelbagicon"
+            dataLocator=""
+            fontSize="fs10"
+            fontWeight="extrabold"
+            margin={null}
+            numberOfLines={null}
+            style={
+              Object {
+                "marginTop": 19,
+                "paddingRight": 5.6,
+                "position": "absolute",
+              }
             }
-          }
-          text={0}
-          textDecoration={null}
-        />
-      </Styled(TouchableOpacity)>
+            textDecoration={null}
+          />
+        </Styled(TouchableOpacity)>
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
 </Styled(SafeAreaView)>

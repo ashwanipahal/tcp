@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin="16px 0 0 12px"
+    numberOfLines={null}
+    text="undefined \\"\\""
+    textDecoration={null}
+  />
+  <Styled(SearchBar)
+    labels={[Function]}
+    openSearchProductPage={[Function]}
+    showCustomizedSearch={true}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="black"
+    margin="68px 0 0 0"
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin="6px 0 0 0"
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    text="(undefined"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <ProductMatchesLabel />
+</Styled(View)>
+`;

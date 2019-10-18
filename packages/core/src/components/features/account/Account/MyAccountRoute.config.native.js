@@ -25,6 +25,11 @@ const navDataMobile = [
     value: 'earnExtraPointsPageMobile',
   },
   {
+    id: 'orders',
+    label: 'ORDERS',
+    value: 'myOrdersPageMobile',
+  },
+  {
     id: 'profileInformation',
     label: 'PROFILE INFORMATION',
     value: 'profileInformationMobile',

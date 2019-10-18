@@ -51,7 +51,9 @@ const styles = css`
   .AddShopperType {
     background-image: url('/static/images/survey.png');
   }
-
+  .AddBirthDate {
+    background-image: url('/static/images/birthday.png');
+  }
   .FeedbackSurvey {
     background-image: url('/static/images/oval.svg');
   }
@@ -81,8 +83,8 @@ const styles = css`
       min-height: 277px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      margin-left: ${props => (props.viewAll ? '' : props.theme.spacing.ELEM_SPACING.XXL)};
-      margin-right: ${props => (props.viewAll ? '' : props.theme.spacing.ELEM_SPACING.XXL)};
+      margin-left: ${props => (props.viewAll ? '' : props.theme.spacing.ELEM_SPACING.XL)};
+      margin-right: ${props => (props.viewAll ? '' : props.theme.spacing.ELEM_SPACING.XL)};
     }
   }
 

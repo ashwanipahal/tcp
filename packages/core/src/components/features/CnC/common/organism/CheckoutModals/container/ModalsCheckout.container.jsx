@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ModalsCheckoutView from '../views/ModalsCheckout.view';
 import { setCheckoutModalMountedState } from '../../../../../account/LoginPage/container/LoginPage.actions';
+import { getSetCheckoutStage } from '../../../../Checkout/container/Checkout.action';
 import { checkoutModalOpenState } from '../../../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../../../AddedToBag/container/AddedToBag.selectors';
 import { getUserLoggedInState } from '../../../../../account/User/container/User.selectors';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
 import bagPageSelector from '../../../../BagPage/container/BagPage.selectors';
-import checkoutSelectors from '../../../../Checkout/container/Checkout.selector';
+import checkoutSelectors, {
+  isExpressCheckout,
+} from '../../../../Checkout/container/Checkout.selector';
 import { closeMiniBag } from '../../../../../../common/organisms/Header/container/Header.actions';
 import { confirmRemoveCartItem } from '../../../../CartItemTile/container/CartItemTile.actions';
 
@@ -48,6 +51,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       removeCartItem,
       deleteConfirmationModalLabels,
       addItemToSflList,
+      isExpressCheckoutPage,
+      setCheckoutStage,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -70,6 +75,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         deleteConfirmationModalLabels={deleteConfirmationModalLabels}
         confirmRemoveCartItem={removeCartItem}
         addItemToSflList={addItemToSflList}
+        isExpressCheckoutPage={isExpressCheckoutPage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }
@@ -111,6 +118,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     addItemToSflList: payload => {
       dispatch(bagPageActions.addItemToSflList({ ...payload, afterHandler: closeItemDeleteModal }));
     },
+    setCheckoutStage: payload => {
+      dispatch(getSetCheckoutStage(payload));
+    },
   };
 };
 
@@ -123,6 +133,7 @@ const mapStateToProps = state => {
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
     currentSelectItemInfo: bagPageSelector.getCurrentDeleteSelectedItemInfo(state),
     deleteConfirmationModalLabels: bagPageSelector.itemDeleteModalLabels(state),
+    isExpressCheckoutPage: isExpressCheckout(state),
   };
 };
 

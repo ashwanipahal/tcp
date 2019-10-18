@@ -43,7 +43,7 @@ exports[`AccountOverview component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       className="classBtn"
       color="#575757"
       customStyle={Object {}}
@@ -70,8 +70,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     />
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
-      className="classBtn"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -235,9 +234,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     title="lbl_overview_messages"
   />
   <Styled(View) />
-  <Connect(TrackOrderContainer)
-    handleToggle={[Function]}
-  />
   <Styled(View) />
 </View>
 `;
