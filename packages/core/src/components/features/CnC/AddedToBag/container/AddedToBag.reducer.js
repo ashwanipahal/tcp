@@ -17,9 +17,9 @@ const AddedToBagReducer = (state = initialState, action) => {
     case ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG:
       return state.set('isOpenAddedToBag', false);
     case ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR:
-      return state.set('error', action.payload);
+      return state.set('error', action.payload).set('errorCatId', action.id);
     case ADDEDTOBAG_CONSTANTS.CLEAR_ADD_TO_BAG_ERROR_STATE:
-      return state.set('error', null);
+      return state.set('error', null).set('errorCatId', null);
     case ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_PICKUP_ERROR:
       return state.set('pickupError', action.payload);
     case ADDEDTOBAG_CONSTANTS.CLEAR_ADD_TO_PICKUP_ERROR_STATE:

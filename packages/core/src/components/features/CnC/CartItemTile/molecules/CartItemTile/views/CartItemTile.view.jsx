@@ -12,13 +12,13 @@ import {
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
-import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator, isCanada, disableBodyScroll } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import DamImage from '../../../../../../common/atoms/DamImage';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -995,7 +995,7 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-
+    console.log('productDetail.itemInfo.imagePath', productDetail.itemInfo.imagePath);
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -1025,11 +1025,18 @@ class CartItemTile extends React.Component {
             colSize={{ small: 2, medium: 2, large: 3 }}
           >
             <div className="imageWrapper">
-              <Image
+              {/* <Image
                 alt={labels.productImageAlt}
                 className="product-image"
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
+              /> */}
+              <DamImage
+                imgData={{
+                  alt: labels.productImageAlt,
+                  url: productDetail.itemInfo.imagePath,
+                }}
+                isProductImage
               />
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy

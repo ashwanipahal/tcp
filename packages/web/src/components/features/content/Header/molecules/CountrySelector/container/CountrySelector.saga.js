@@ -1,11 +1,9 @@
-import { all, call, put, select, takeLatest } from 'redux-saga/effects';
-import countrySelectorAbstractor from '@tcp/core/src/services/abstractors/common/countrySelector';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
+import countryListAbstractor from '@tcp/core/src/services/abstractors/bootstrap/countryList';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import {
   getSiteId,
-  getCountriesMap,
-  getCurrenciesMap,
   getModifiedLanguageCode,
   siteRedirect,
   languageRedirect,
@@ -22,30 +20,13 @@ import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
 
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 import { sites } from '../../../../../../../constants';
-import {
-  storeCountriesMap,
-  storeCurrenciesMap,
-  udpateSiteId,
-  setModuleXContent,
-} from './CountrySelector.actions';
+import { udpateSiteId, setModuleXContent } from './CountrySelector.actions';
 
 export function* fetchModuleX({ payload = '' }) {
   try {
     const result = yield call(getModuleX, payload);
     yield put(setModuleXContent(result.richText));
   } catch (err) {
-    yield null;
-  }
-}
-
-export function* fetchCountryListData() {
-  try {
-    const res = yield call(countrySelectorAbstractor.getData);
-    const data = res && res.data.countryList;
-    const countriesMap = getCountriesMap(data);
-    const currenciesMap = getCurrenciesMap(data);
-    yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
-  } catch (error) {
     yield null;
   }
 }
@@ -87,15 +68,13 @@ export function* submitCountrySelectionData({ payload: data }) {
       },
       webService: addShipToStore,
     };
-    const { submitData } = countrySelectorAbstractor;
+    const { submitData } = countryListAbstractor;
     const res = yield call(submitData, payload);
     if (!res) logger.error('Error occurered!');
     const { country: newCountry, language: newLanguage } = data;
-    const oldCountry = yield select(state =>
-      state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-    );
-    const oldLanguage = yield select(state =>
-      state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'language'])
+    const oldCountry = yield select(state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country);
+    const oldLanguage = yield select(
+      state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     const oldSiteId = getSiteId();
@@ -109,10 +88,8 @@ export function* submitCountrySelectionData({ payload: data }) {
 }
 
 function* CountrySelectorSaga() {
-  const cachedCountryListData = validateReduxCache(fetchCountryListData);
   const cachedModuleX = validateReduxCache(fetchModuleX);
   yield takeLatest(GLOBAL_CONSTANT.GET_MODULEX_CONTENT, cachedModuleX);
-  yield takeLatest(COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_GET_DATA, cachedCountryListData);
   yield takeLatest(
     COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,
     submitCountrySelectionData

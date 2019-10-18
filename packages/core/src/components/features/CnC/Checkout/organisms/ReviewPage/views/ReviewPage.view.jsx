@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormSection, reduxForm } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
@@ -13,6 +14,8 @@ import BillingSection from '../organisms/BillingSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 
+const formName = 'expressReviewPage';
+
 class ReviewPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
@@ -24,12 +27,15 @@ class ReviewPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     showAccordian: PropTypes.bool,
     isGuest: PropTypes.bool.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    shipmentMethods: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
     setVenmoShippingState: () => {},
     setVenmoPickupState: () => {},
     showAccordian: true,
+    isExpressCheckout: false,
   };
 
   componentDidMount() {
@@ -51,6 +57,8 @@ class ReviewPage extends React.PureComponent {
       submitReview,
       isGuest,
       showAccordian,
+      isExpressCheckout,
+      shipmentMethods,
     } = this.props;
     const {
       header,
@@ -64,8 +72,9 @@ class ReviewPage extends React.PureComponent {
       ariaLabelSubmitOrderButton,
     } = labels;
 
+    const expressReviewShippingSection = 'expressReviewShippingSection';
     return (
-      <div className={className}>
+      <form name={formName} className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {!!orderHasPickUp && (
           <div className="review-pickup">
@@ -76,15 +85,21 @@ class ReviewPage extends React.PureComponent {
             />
           </div>
         )}
-        {!!orderHasShipping && (
-          <div className="review-shipping">
-            <ShippingReviewSection
-              onEdit={() => {
-                utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-              }}
-            />
-          </div>
-        )}
+        <FormSection name={expressReviewShippingSection}>
+          {!!orderHasShipping && (
+            <div className="review-shipping">
+              <ShippingReviewSection
+                isExpressCheckout={isExpressCheckout}
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={expressReviewShippingSection}
+                onEdit={() => {
+                  utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+                }}
+              />
+            </div>
+          )}
+        </FormSection>
         <BillingSection />
         <CheckoutCartItemList />
         <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
@@ -117,10 +132,13 @@ class ReviewPage extends React.PureComponent {
             </Anchor>,
           ]}
         />
-      </div>
+      </form>
     );
   }
 }
 
-export default withStyles(ReviewPage, styles);
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  enableReinitialize: true,
+})(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };

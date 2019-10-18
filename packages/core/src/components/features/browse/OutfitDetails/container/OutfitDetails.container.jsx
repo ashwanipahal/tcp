@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
-import { getLabels, getOutfitImage, getOutfitProducts } from './OutfitDetails.selectors';
+import {
+  getLabels,
+  getOutfitImage,
+  getOutfitProducts,
+  getAddedToBagErrorCatId,
+} from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import { getPlpLabels } from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
@@ -17,6 +22,7 @@ import {
   addToCartEcom,
   clearAddToBagErrorState,
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 
@@ -61,6 +67,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       currencyExchange,
       addToBagEcom,
       currentState,
+      addToBagError,
+      addToBagErrorId,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -78,6 +86,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}
+          addToBagError={addToBagError}
+          addToBagErrorId={addToBagErrorId}
         />
       );
     }
@@ -97,6 +107,8 @@ const mapStateToProps = state => {
     currencySymbol: getCurrentCurrencySymbol(state),
     priceCurrency: getCurrentCurrency(state),
     currencyExchange: [{ exchangevalue: 1 }], // TODO - fix this when currency exchange rate is available
+    addToBagError: getAddedToBagError(state),
+    addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
   };
 };
@@ -132,6 +144,8 @@ OutfitDetailsContainer.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
+  addToBagError: PropTypes.string,
+  addToBagErrorId: PropTypes.string,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -148,6 +162,8 @@ OutfitDetailsContainer.defaultProps = {
   currencySymbol: '$',
   priceCurrency: 'USD',
   currencyExchange: [{ exchangevalue: 1 }],
+  addToBagError: '',
+  addToBagErrorId: '',
 };
 
 export default connect(

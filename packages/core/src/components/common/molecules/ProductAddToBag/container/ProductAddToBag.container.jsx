@@ -28,28 +28,34 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   componentWillReceiveProps(nextProps) {
     const { currentProduct, selectedColorProductId } = nextProps;
-    const { currentProduct: prevCurrentProduct } = this.props;
+    const {
+      currentProduct: prevCurrentProduct,
+      selectedColorProductId: prevSelectedColorProductId,
+    } = this.props;
 
-    if (currentProduct && currentProduct !== prevCurrentProduct) {
+    if (
+      (currentProduct && currentProduct !== prevCurrentProduct) ||
+      selectedColorProductId !== prevSelectedColorProductId
+    ) {
       // update selected color once map is received from api
       this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
     }
   }
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
-    const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
+    this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
     return {
-      selectedColor: initialValues && initialValues.color,
-      selectedFit: initialValues && initialValues.Fit,
-      selectedSize: initialValues && initialValues.Size,
-      selectedQuantity: initialValues && initialValues.Quantity,
-      persistSelectedFit: initialValues && initialValues.Fit,
+      selectedColor: this.initialValuesForm && this.initialValuesForm.color,
+      selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
+      selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
+      selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
+      persistSelectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
     };
   };
 
   /**
    * @function getDefaultColor
-   * @returns default color at 0 index in color array
+   * @returns default color at 0 index in color array.
    *
    * @memberof ProductAddToBagContainer
    */

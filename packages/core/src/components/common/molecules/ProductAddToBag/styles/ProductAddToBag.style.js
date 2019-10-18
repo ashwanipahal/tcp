@@ -24,6 +24,9 @@ const styles = css`
     color: white;
     font-weight: 800;
     height: 42px;
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 50px;
@@ -142,6 +145,10 @@ const styles = css`
   .size-field {
     height: auto;
     width: auto;
+  }
+
+  .product-size-error {
+    margin-top: 30px;
   }
 
   .size-field-error {
