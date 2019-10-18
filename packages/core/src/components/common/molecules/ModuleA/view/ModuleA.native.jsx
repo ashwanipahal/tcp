@@ -195,41 +195,36 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
  */
 
 const ModuleA = (props: Props) => {
-  const {
-    navigation,
-    largeCompImageCarousel,
-    ctaItems,
-    set: [set = {}],
-  } = props;
-  const ctaType = ctaTypes[set.val];
+  const { navigation, largeCompImageCarousel, ctaItems, ctaType } = props;
+  const ctaTypeValue = ctaTypes[ctaType];
 
   return (
     <Container>
       {renderCarousel(largeCompImageCarousel, navigation, 'left')}
 
-      {ctaType === 'imageCTAList' && (
+      {ctaTypeValue === ctaTypes.divImageCTACarouse && (
         <DivImageCTAContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'moduleA_cta_links', 'black')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'moduleA_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaTypeValue === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
           <Border background="gray" />
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaTypeValue === ctaTypes.CTAButtonCarouse && (
         <ButtonContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
       )}
 
-      {ctaType === 'linkCTAList' && (
+      {ctaTypeValue === ctaTypes.linkList && (
         <ButtonLinksContainer>
-          {renderButtonList(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
+          {renderButtonList(ctaTypeValue, navigation, ctaItems, 'link_cta_list', 'gray')}
         </ButtonLinksContainer>
       )}
     </Container>
