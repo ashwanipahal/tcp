@@ -22,7 +22,7 @@ const mapStateToProps = state => {
   const { Layouts, Modules, SEOData } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
-  const seoData = SEOData && (SEOData.plp || {});
+  const seoData = SEOData && (SEOData.home || {});
 
   return {
     slots: homepageSlots.map(slot => {
