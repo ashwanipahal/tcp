@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
 import {
@@ -11,13 +12,13 @@ import {
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
-import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator, isCanada, disableBodyScroll } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import DamImage from '../../../../../../common/atoms/DamImage';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -26,6 +27,17 @@ class CartItemTile extends React.Component {
       isEdit: false,
     };
   }
+
+  componentWillUnmount() {
+    this.clearToggleErrorState();
+  }
+
+  clearToggleErrorState = () => {
+    const { pageView, clearToggleError } = this.props;
+    if (pageView === 'myBag') {
+      clearToggleError();
+    }
+  };
 
   toggleFormVisibility = () => {
     const { isEdit } = this.state;
@@ -138,6 +150,8 @@ class CartItemTile extends React.Component {
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
 
+    this.clearToggleErrorState();
+
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
@@ -154,6 +168,7 @@ class CartItemTile extends React.Component {
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
     const payloadData = { catEntryId };
+    this.clearToggleErrorState();
     return startSflItemDelete({ ...payloadData });
   };
 
@@ -166,11 +181,13 @@ class CartItemTile extends React.Component {
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
     const payloadData = { itemId, catEntryId };
+    this.clearToggleErrorState();
     return startSflDataMoveToBag({ ...payloadData });
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
     const { updateCartItem } = this.props;
+    this.clearToggleErrorState();
     updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
     this.toggleFormVisibility();
   };
@@ -282,6 +299,7 @@ class CartItemTile extends React.Component {
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
 
+    this.clearToggleErrorState();
     removeCartItem({
       itemId,
       pageView,
@@ -914,6 +932,29 @@ class CartItemTile extends React.Component {
     return (isBOSSOrder && bossDisabled) || (isBOPISOrder && bopisDisabled);
   };
 
+  /**
+   * @function renderTogglingError Render Toggling error
+   * @returns {JSX} Error Component with toggling api error.
+   * @memberof CartItemTile
+   */
+  renderTogglingError = () => {
+    const {
+      pageView,
+      toggleError,
+      productDetail: {
+        itemInfo: { itemId },
+      },
+    } = this.props;
+    return pageView === 'myBag' && toggleError && itemId === toggleError.itemId ? (
+      <ErrorMessage
+        className="toggle-error"
+        fontSize="fs12"
+        fontWeight="extrabold"
+        error={toggleError.errorMessage}
+      />
+    ) : null;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -930,6 +971,7 @@ class CartItemTile extends React.Component {
       isEditAllowed,
       isBagPageSflSection,
       showOnReviewPage,
+      setShipToHome,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = this.getBossBopisFlags(itemBrand);
@@ -953,9 +995,10 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-
+    console.log('productDetail.itemInfo.imagePath', productDetail.itemInfo.imagePath);
     return (
       <div className={`${className} tile-header`}>
+        {this.renderTogglingError()}
         {this.headerAndAvailabilityErrorContainer({
           isEcomSoldout,
           bossDisabled,
@@ -982,11 +1025,18 @@ class CartItemTile extends React.Component {
             colSize={{ small: 2, medium: 2, large: 3 }}
           >
             <div className="imageWrapper">
-              <Image
+              {/* <Image
                 alt={labels.productImageAlt}
                 className="product-image"
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
+              /> */}
+              <DamImage
+                imgData={{
+                  alt: labels.productImageAlt,
+                  url: productDetail.itemInfo.imagePath,
+                }}
+                isProductImage
               />
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
@@ -1154,6 +1204,7 @@ class CartItemTile extends React.Component {
                 isBossEnabled={isBossEnabled}
                 isBopisEnabled={isBopisEnabled}
                 openPickUpModal={this.handleEditCartItemWithStore}
+                setShipToHome={setShipToHome}
               />
             </Row>
           )}
@@ -1173,6 +1224,9 @@ CartItemTile.defaultProps = {
   isBossClearanceProductEnabled: false,
   isBopisClearanceProductEnabled: false,
   isRadialInventoryEnabled: false,
+  setShipToHome: () => {},
+  toggleError: null,
+  clearToggleError: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1205,6 +1259,9 @@ CartItemTile.propTypes = {
   isBossClearanceProductEnabled: PropTypes.bool,
   isBopisClearanceProductEnabled: PropTypes.bool,
   isRadialInventoryEnabled: PropTypes.bool,
+  setShipToHome: PropTypes.func,
+  toggleError: PropTypes.shape({}),
+  clearToggleError: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);

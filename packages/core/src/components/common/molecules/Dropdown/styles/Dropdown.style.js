@@ -54,7 +54,7 @@ const dropDownlist = css`
     position: absolute;
     left: 0;
     width: calc(100% - 2px);
-    z-index: 1;
+    z-index: 99;
     overflow: auto;
   }
 

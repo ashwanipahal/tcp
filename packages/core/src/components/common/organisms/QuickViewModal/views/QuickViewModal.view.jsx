@@ -84,6 +84,7 @@ class QuickViewModal extends React.Component {
       plpLabels,
       addToBagError,
       addToBagMultipleItemError,
+      currencyExchange,
       ...otherProps
     } = this.props;
     this.skuFormRefs = [];
@@ -105,6 +106,7 @@ class QuickViewModal extends React.Component {
           colorFitsSizesMap={
             modifiedColorFitsSizesMap.length ? modifiedColorFitsSizesMap : colorFitsSizesMap
           }
+          currencyExchange={currencyExchange}
           plpLabels={plpLabels}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
@@ -180,7 +182,11 @@ QuickViewModal.propTypes = {
   fromBagPage: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
+  currencyExchange: PropTypes.string,
 };
 
+QuickViewModal.defaultProps = {
+  currencyExchange: '',
+};
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };

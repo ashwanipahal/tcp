@@ -18,6 +18,7 @@ import {
 import {
   getPlpLabels,
   getCurrentCurrency,
+  getCurrencyAttributes,
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 import {
   addToCartEcom,
@@ -71,6 +72,7 @@ class QuickViewModalContainer extends React.PureComponent {
       closeQuickViewModalAction,
       productInfo,
       plpLabels,
+      currencyAttributes,
       ...otherProps
     } = this.props;
     const showModal = productInfo && productInfo.length;
@@ -84,6 +86,7 @@ class QuickViewModalContainer extends React.PureComponent {
             plpLabels={plpLabels}
             handleAddToBag={this.handleAddToBag}
             handleUpdateItem={this.handleUpdateItem}
+            currencyExchange={currencyAttributes.exchangevalue}
             {...otherProps}
           />
         ) : null}
@@ -102,6 +105,7 @@ function mapStateToProps(state) {
     isMultiItemQVModal,
     plpLabels: getPlpLabels(state),
     currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
     quickViewLabels: getQuickViewLabels(state),
     formValues: getQuickViewFormValues(state),
     addToBagError: getAddedToBagError(state) || '',
@@ -143,11 +147,13 @@ QuickViewModalContainer.propTypes = {
   updateCartItemAction: PropTypes.func.isRequired,
   productInfo: PropTypes.shape([PRODUCT_INFO_PROP_TYPE_SHAPE]).isRequired,
   productInfoFromBag: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({}),
 };
 
 QuickViewModalContainer.defaultProps = {
   productInfoFromBag: {},
   plpLabels: {},
+  currencyAttributes: {},
 };
 
 export default connect(

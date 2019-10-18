@@ -30,7 +30,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       },
       Object {
         "id": "orders",
-        "label": "Orders",
+        "label": "ORDERS",
         "value": "myOrdersPageMobile",
       },
       Object {

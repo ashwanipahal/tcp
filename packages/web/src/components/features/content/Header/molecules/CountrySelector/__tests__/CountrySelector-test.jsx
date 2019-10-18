@@ -1,12 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { fromJS } from 'immutable';
 import { defaultCountries, defaultCurrencies } from '@tcp/core/src/constants/site.constants';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { CountrySelectorVanilla } from '../views/CountrySelector';
 import CountrySelectorModal from '../views/CountrySelectorModal';
 
-const sitesTable = fromJS({
+const sitesTable = {
   us: {
     languages: [
       {
@@ -31,7 +30,7 @@ const sitesTable = fromJS({
       },
     ],
   },
-});
+};
 
 describe('Country Selector Component', () => {
   const props = {
@@ -96,11 +95,6 @@ describe('Country Selector Component', () => {
   it('should call closeModal', async () => {
     const component = shallow(<CountrySelectorVanilla {...props} />);
     component.instance().closeModal();
-  });
-
-  it('should call getCountryListData', async () => {
-    const component = shallow(<CountrySelectorVanilla {...props} />);
-    component.instance().getCountryListData();
   });
 
   it('should call getSelectedCountry', async () => {

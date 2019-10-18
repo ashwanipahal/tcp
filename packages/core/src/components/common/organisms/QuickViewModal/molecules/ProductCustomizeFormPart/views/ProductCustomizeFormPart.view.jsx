@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Anchor, Image } from '../../../../../atoms';
+import { BodyCopy, Anchor, DamImage } from '../../../../../atoms';
 import { COLOR_FITS_SIZES_MAP_PROP_TYPE } from '../../../../PickupStoreModal/PickUpStoreModal.proptypes';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, {
@@ -60,6 +60,10 @@ const ProductCustomizeFormPart = props => {
     isPlcc: isHasPlcc,
     isInternationalShipping,
   };
+  const imgData = {
+    alt: productInfo.name,
+    url: imageUrl,
+  };
 
   return (
     <div className={className}>
@@ -75,10 +79,10 @@ const ProductCustomizeFormPart = props => {
         <div className="product-customize-form-container">
           <div className="image-title-wrapper">
             <div className="image-wrapper">
-              <Image
+              <DamImage
                 data-locator={getLocator('quick_view_product_image')}
-                alt={productInfo.name}
-                src={imageUrl}
+                imgData={imgData}
+                isProductImage
               />
               <Anchor
                 dataLocator={getLocator('quick_view_View_Product_details')}

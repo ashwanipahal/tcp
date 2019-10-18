@@ -19,26 +19,8 @@ const styles = css`
   .details-link {
     display: block;
   }
-
   .elem-mb-SM h2 {
     display: inline-block;
-  }
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    .hide-in-large-up {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
-  }
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .hide-in-medium-down {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
   }
   .accordian-header-text {
     text-align: center;
