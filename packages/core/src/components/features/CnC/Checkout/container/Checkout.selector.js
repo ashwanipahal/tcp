@@ -701,6 +701,8 @@ const isVenmoShippingBannerDisplayed = () => {
 const isVenmoPaymentSaveSelected = state =>
   state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
 
+const getCurrentCheckoutStage = state => state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'stage']);
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -983,5 +985,6 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
 };
