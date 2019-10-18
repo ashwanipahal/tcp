@@ -262,7 +262,11 @@ class PickupStoreSelectionFormContainer extends React.Component {
       onCloseClick,
       isBopisCtaEnabled,
       isBossCtaEnabled,
+      isItemShipToHome,
     } = this.props;
+    this.setState({
+      isShowMessage: true,
+    });
     const { itemBrand } = initialValuesFromBagPage;
     const { color, Fit: fit, Size: size, Quantity: quantity } = initialValues;
     const formIntialValues = {
@@ -280,13 +284,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
       storeLocId: selectedStoreId,
     };
     const productInfo = getCartItemInfo(currentProduct, productFormData);
-    const {
-      orderId,
-      orderItemId,
-      Quantity,
-      isItemShipToHome,
-      orderItemType,
-    } = initialValuesFromBagPage;
+    const { orderId, orderItemId, Quantity, orderItemType } = initialValuesFromBagPage;
     const {
       skuInfo: { skuId, variantNo, variantId },
     } = productInfo;

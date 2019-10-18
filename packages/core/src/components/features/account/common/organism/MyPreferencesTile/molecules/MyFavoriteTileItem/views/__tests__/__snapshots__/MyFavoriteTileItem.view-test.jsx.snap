@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteTileItem component should render correctly when coupons are not present 1`] = `
+<StyledComponent
+  favStoreAddress=""
+  favStoreCity=""
+  favStoreName=""
+  favStorePhone=""
+  favStoreState=""
+  favStoreZipcode=""
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-VigVT",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .favStoreData {
+    padding: 0;
+  }
+  .capFirstLetter {
+    text-transform: capitalize;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MyFavoriteTile)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-VigVT",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;

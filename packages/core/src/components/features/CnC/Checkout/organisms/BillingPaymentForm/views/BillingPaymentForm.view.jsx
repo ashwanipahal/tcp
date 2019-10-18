@@ -197,7 +197,7 @@ export class BillingPaymentForm extends React.PureComponent {
             name="onFileCardKey"
             id="onFileCardKey"
             component={CreditCardDropdown}
-            dataLocator="payment-billingaddressdd"
+            dataLocator="selectCardDrpDown"
             options={getCardOptions(cardParams)}
             childrenComp={(options, onClickHandler, activeValue, onClose) =>
               this.getCreditCardDropDown(options, onClickHandler, activeValue, onClose)
@@ -218,7 +218,7 @@ export class BillingPaymentForm extends React.PureComponent {
           fontFamily="primary"
           fontSize="fs26"
           fontWeight="regular"
-          data-locator="billing-payment-details"
+          dataLocator="cardDetailLbl"
           className="elem-mb-XS"
         >
           {labels.cardDetailsTitle}
@@ -265,7 +265,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   component="h2"
                   variant="listMenu"
                   className="paymentMethodHeading"
-                  dataLocator="billing-payment-method"
+                  dataLocator="paymentMethodLbl"
                 >
                   {paymentMethod}
                 </Heading>
@@ -283,7 +283,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         name="cvvCode"
                         id="cvvCode"
                         component={TextBox}
-                        dataLocator="billing-payment-cvvCode"
+                        dataLocator="cvvTxtBox"
                         className="field"
                         showSuccessCheck={false}
                         enableSuccessCheck={false}
@@ -300,7 +300,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 {!selectedCard.defaultInd && (
                   <Row fullBleed className="billing-payment-subHeading default-payment">
                     <Field
-                      dataLocator="billing-payment-checkbox-field"
+                      dataLocator="defaultPaymentChkBox"
                       name="defaultPaymentMethod"
                       component={InputCheckbox}
                       className="default-payment"
@@ -325,7 +325,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 component="h2"
                 variant="listMenu"
                 className="paymentMethodHeading"
-                dataLocator="billing-payment-billingAddress"
+                dataLocator="billingAddressLbl"
               >
                 {labels.billingAddress}
               </Heading>
@@ -337,7 +337,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   <Card
                     card={selectedCard}
                     className="CreditCardForm__address"
-                    dataLocatorPrefix="billing-payment-card-detail"
+                    dataLocator="selectedCardDetail"
                     showAddress
                   />
                 )}
@@ -401,7 +401,7 @@ export class BillingPaymentForm extends React.PureComponent {
               fontFamily="primary"
               fontSize="fs26"
               fontWeight="regular"
-              data-locator="billing-details"
+              dataLocator="paymentMethodLbl"
               className="elem-mb-LRG elem-mt-XL"
             >
               {labels.paymentMethod}

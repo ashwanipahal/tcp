@@ -73,6 +73,8 @@ class LoginSection extends React.PureComponent<Props> {
       handleContinueAsGuest,
       tooltipContent,
       resetLoginState,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <Row className={className}>
@@ -110,6 +112,8 @@ class LoginSection extends React.PureComponent<Props> {
                 handleContinueAsGuest={handleContinueAsGuest}
                 tooltipContent={tooltipContent}
                 resetLoginState={resetLoginState}
+                userplccCardNumber={userplccCardNumber}
+                userplccCardId={userplccCardId}
               />
             </React.Fragment>
           )}
@@ -156,6 +160,8 @@ LoginSection.propTypes = {
   currentForm: PropTypes.string,
   handleContinueAsGuest: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginSection.defaultProps = {
