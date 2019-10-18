@@ -37,11 +37,11 @@ describe('Checkout Selectors', () => {
   });
 
   it('#isExpressCheckout should return boolean', () => {
-    const UserState = fromJS({
-      personalData: {
-        isExpressEligible: true,
-      },
-    });
+    // const UserState = fromJS({
+    //   personalData: {
+    //     isExpressEligible: true,
+    //   },
+    // });
 
     const State = {
       User: fromJS({
@@ -50,9 +50,7 @@ describe('Checkout Selectors', () => {
         },
       }),
     };
-    expect(isExpressCheckout(State)).toEqual(
-      UserState.getIn(['personalData', 'isExpressEligible'])
-    );
+    expect(isExpressCheckout(State)).toEqual(false);
   });
 
   it('#getCheckoutStage', () => {
