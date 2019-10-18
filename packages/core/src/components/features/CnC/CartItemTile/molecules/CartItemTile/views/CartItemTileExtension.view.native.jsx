@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
+import { DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
-  ImageStyle,
   ImageBrandStyle,
   ImageGymBrandStyle,
   SoldOutLabel,
@@ -12,7 +12,6 @@ import {
   ProductListPriceOnReview,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
-import endpoints from '../../../../../../../service/endpoint';
 import { getLocator } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
@@ -24,9 +23,17 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
-        <ImageStyle
+        {/* <ImageStyle
           data-locator={getLocator('cart_item_image')}
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
+          showOnReviewPage={showOnReviewPage}
+        /> */}
+        <DamImage
+          width={100}
+          height={100}
+          isProductImage
+          alt={labels.productImageAlt}
+          url={productDetail.itemInfo.imagePath}
           showOnReviewPage={showOnReviewPage}
         />
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
