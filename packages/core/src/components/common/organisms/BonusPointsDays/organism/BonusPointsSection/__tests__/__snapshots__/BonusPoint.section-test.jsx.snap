@@ -5,7 +5,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
   className=""
 >
   <Styled(Col)
-    className="hide-in-large-up"
     colSize={
       Object {
         "large": 12,
@@ -15,7 +14,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -124,7 +122,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         </React.Fragment>
       }
       className=""
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM"
@@ -193,173 +191,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={false}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
-  <div
-    className="hide-in-medium-down"
-  >
-    <div
-      className="elem-mb-SM"
-      data-locator="bonuspointsdayhdr"
-    >
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="orange.800"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsBonus
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="primary.main"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsPoints
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className={null}
-        color="pink.500"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsDay
-      </Styled(BodyCopy)>
-    </div>
-    <Styled(BodyCopy)
-      className="apply-any-day-msg"
-      color="text.primary"
-      component="p"
-      data-locator="msgtextinbold"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs14",
-          "fs10",
-          "fs16",
-        ]
-      }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_applyAnyDay
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="availability-msg"
-      color="text.primary"
-      component="p"
-      data-locator="infomsg"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs12",
-          "fs16",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_msg
-    </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BonusPointsAvailability)
-          bonusDayAvailableToday={0}
-          bonusPoints={
-            Array [
-              Object {
-                "buttonText": "lbl_bonusPoints_ctaApply",
-                "dataLocator": "availabletodaybtn",
-                "disabled": false,
-              },
-            ]
-          }
-          className="availability-msg"
-          enableApplyCta={false}
-          getBonusDaysData={[Function]}
-          labels={
-            Object {
-              "placeRewards": Object {
-                "lbl_bonus_points_apply_any_day": "",
-                "lbl_bonus_points_msg": "",
-                "lbl_common_applied_to_order": "",
-                "lbl_common_details": "",
-                "lbl_place_rewards_bonus": "",
-                "lbl_place_rewards_day": "",
-                "lbl_place_rewards_points": "",
-              },
-            }
-          }
-          orderDetails={Object {}}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="details-link"
-      dataLocator="detailslink"
-      fontSizeVariation="medium"
-      href="#"
-      onClick={[Function]}
-      underline={true}
-    >
-      lbl_bonusPoints_details
-    </Styled(Anchor)>
-  </div>
 </div>
 `;
 
@@ -368,7 +203,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
   className=""
 >
   <Styled(Col)
-    className="hide-in-large-up"
     colSize={
       Object {
         "large": 12,
@@ -378,7 +212,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -497,7 +330,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         </React.Fragment>
       }
       className=""
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM"
@@ -566,183 +399,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={false}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
-  <div
-    className="hide-in-medium-down"
-  >
-    <div
-      className="elem-mb-SM"
-      data-locator="bonuspointsdayhdr"
-    >
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="orange.800"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsBonus
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="primary.main"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsPoints
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className={null}
-        color="pink.500"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsDay
-      </Styled(BodyCopy)>
-    </div>
-    <Styled(BodyCopy)
-      className="apply-any-day-msg"
-      color="text.primary"
-      component="p"
-      data-locator="msgtextinbold"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs14",
-          "fs10",
-          "fs16",
-        ]
-      }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_applyAnyDay
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="availability-msg"
-      color="text.primary"
-      component="p"
-      data-locator="infomsg"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs12",
-          "fs16",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_msg
-    </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BonusPointsAvailability)
-          bonusDayAvailableToday={1}
-          bonusPoints={
-            Array [
-              Object {
-                "buttonText": "lbl_bonusPoints_usedOn ",
-                "dataLocator": "usedonbtn",
-                "disabled": true,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_ctaApplied",
-                "dataLocator": "appliedtoorderbtn",
-                "disabled": false,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_futureUse",
-                "dataLocator": "availableforfutureusebtn",
-                "disabled": true,
-              },
-            ]
-          }
-          className="availability-msg"
-          enableApplyCta={false}
-          getBonusDaysData={[Function]}
-          labels={
-            Object {
-              "placeRewards": Object {
-                "lbl_bonus_points_apply_any_day": "",
-                "lbl_bonus_points_msg": "",
-                "lbl_common_applied_to_order": "",
-                "lbl_common_details": "",
-                "lbl_place_rewards_bonus": "",
-                "lbl_place_rewards_day": "",
-                "lbl_place_rewards_points": "",
-              },
-            }
-          }
-          orderDetails={Object {}}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="details-link"
-      dataLocator="detailslink"
-      fontSizeVariation="medium"
-      href="#"
-      onClick={[Function]}
-      underline={true}
-    >
-      lbl_bonusPoints_details
-    </Styled(Anchor)>
-  </div>
 </div>
 `;
 
@@ -751,7 +411,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
   className=""
 >
   <Styled(Col)
-    className="hide-in-large-up"
     colSize={
       Object {
         "large": 12,
@@ -761,7 +420,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -880,7 +538,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         </React.Fragment>
       }
       className=""
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM"
@@ -949,183 +607,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={false}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
-  <div
-    className="hide-in-medium-down"
-  >
-    <div
-      className="elem-mb-SM"
-      data-locator="bonuspointsdayhdr"
-    >
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="orange.800"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsBonus
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="primary.main"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsPoints
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className={null}
-        color="pink.500"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsDay
-      </Styled(BodyCopy)>
-    </div>
-    <Styled(BodyCopy)
-      className="apply-any-day-msg"
-      color="text.primary"
-      component="p"
-      data-locator="msgtextinbold"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs14",
-          "fs10",
-          "fs16",
-        ]
-      }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_applyAnyDay
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="availability-msg"
-      color="text.primary"
-      component="p"
-      data-locator="infomsg"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs12",
-          "fs16",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_msg
-    </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BonusPointsAvailability)
-          bonusDayAvailableToday={0}
-          bonusPoints={
-            Array [
-              Object {
-                "buttonText": "lbl_bonusPoints_usedOn ",
-                "dataLocator": "usedonbtn",
-                "disabled": true,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_ctaApply",
-                "dataLocator": "availabletodaybtn",
-                "disabled": false,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_futureUse",
-                "dataLocator": "availableforfutureusebtn",
-                "disabled": true,
-              },
-            ]
-          }
-          className="availability-msg"
-          enableApplyCta={false}
-          getBonusDaysData={[Function]}
-          labels={
-            Object {
-              "placeRewards": Object {
-                "lbl_bonus_points_apply_any_day": "",
-                "lbl_bonus_points_msg": "",
-                "lbl_common_applied_to_order": "",
-                "lbl_common_details": "",
-                "lbl_place_rewards_bonus": "",
-                "lbl_place_rewards_day": "",
-                "lbl_place_rewards_points": "",
-              },
-            }
-          }
-          orderDetails={Object {}}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="details-link"
-      dataLocator="detailslink"
-      fontSizeVariation="medium"
-      href="#"
-      onClick={[Function]}
-      underline={true}
-    >
-      lbl_bonusPoints_details
-    </Styled(Anchor)>
-  </div>
 </div>
 `;
 
@@ -1134,7 +619,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
   className=""
 >
   <Styled(Col)
-    className="hide-in-large-up"
     colSize={
       Object {
         "large": 12,
@@ -1144,7 +628,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -1263,7 +746,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         </React.Fragment>
       }
       className=""
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM"
@@ -1332,183 +815,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={false}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
-  <div
-    className="hide-in-medium-down"
-  >
-    <div
-      className="elem-mb-SM"
-      data-locator="bonuspointsdayhdr"
-    >
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="orange.800"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsBonus
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="primary.main"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsPoints
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className={null}
-        color="pink.500"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsDay
-      </Styled(BodyCopy)>
-    </div>
-    <Styled(BodyCopy)
-      className="apply-any-day-msg"
-      color="text.primary"
-      component="p"
-      data-locator="msgtextinbold"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs14",
-          "fs10",
-          "fs16",
-        ]
-      }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_applyAnyDay
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="availability-msg"
-      color="text.primary"
-      component="p"
-      data-locator="infomsg"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs12",
-          "fs16",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_msg
-    </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BonusPointsAvailability)
-          bonusDayAvailableToday={0}
-          bonusPoints={
-            Array [
-              Object {
-                "buttonText": "lbl_bonusPoints_usedOn 15/7",
-                "dataLocator": "usedonbtn",
-                "disabled": true,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_ctaApply",
-                "dataLocator": "availabletodaybtn",
-                "disabled": false,
-              },
-              Object {
-                "buttonText": "lbl_bonusPoints_futureUse",
-                "dataLocator": "availableforfutureusebtn",
-                "disabled": true,
-              },
-            ]
-          }
-          className="availability-msg"
-          enableApplyCta={false}
-          getBonusDaysData={[Function]}
-          labels={
-            Object {
-              "placeRewards": Object {
-                "lbl_bonus_points_apply_any_day": "",
-                "lbl_bonus_points_msg": "",
-                "lbl_common_applied_to_order": "",
-                "lbl_common_details": "",
-                "lbl_place_rewards_bonus": "",
-                "lbl_place_rewards_day": "",
-                "lbl_place_rewards_points": "",
-              },
-            }
-          }
-          orderDetails={Object {}}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="details-link"
-      dataLocator="detailslink"
-      fontSizeVariation="medium"
-      href="#"
-      onClick={[Function]}
-      underline={true}
-    >
-      lbl_bonusPoints_details
-    </Styled(Anchor)>
-  </div>
 </div>
 `;
 
@@ -1517,7 +827,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
   className=""
 >
   <Styled(Col)
-    className="hide-in-large-up"
     colSize={
       Object {
         "large": 12,
@@ -1527,7 +836,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -1613,7 +921,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         </React.Fragment>
       }
       className=""
-      defaultOpen={true}
+      defaultOpen={false}
       header={
         <div
           className="elem-mb-SM"
@@ -1682,151 +990,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={false}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
-  <div
-    className="hide-in-medium-down"
-  >
-    <div
-      className="elem-mb-SM"
-      data-locator="bonuspointsdayhdr"
-    >
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="orange.800"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsBonus
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mr-XS"
-        color="primary.main"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsPoints
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className={null}
-        color="pink.500"
-        component="h2"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs16",
-            "fs13",
-            "fs18",
-          ]
-        }
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_bonusPoints_placeRewardsDay
-      </Styled(BodyCopy)>
-    </div>
-    <Styled(BodyCopy)
-      className="availability-msg"
-      color="text.primary"
-      component="p"
-      data-locator="infomsg"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs12",
-          "fs16",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      lbl_bonusPoints_myRewardsUsedAll
-    </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(BonusPointsAvailability)
-          bonusDayAvailableToday={0}
-          bonusPoints={
-            Array [
-              Object {
-                "buttonText": "lbl_bonusPoints_usedOn ",
-                "dataLocator": "usedonbtn",
-                "disabled": true,
-              },
-            ]
-          }
-          className="availability-msg"
-          enableApplyCta={false}
-          getBonusDaysData={[Function]}
-          labels={
-            Object {
-              "placeRewards": Object {
-                "lbl_bonus_points_apply_any_day": "",
-                "lbl_bonus_points_msg": "",
-                "lbl_common_applied_to_order": "",
-                "lbl_common_details": "",
-                "lbl_place_rewards_bonus": "",
-                "lbl_place_rewards_day": "",
-                "lbl_place_rewards_points": "",
-              },
-            }
-          }
-          orderDetails={Object {}}
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="details-link"
-      dataLocator="detailslink"
-      fontSizeVariation="medium"
-      href="#"
-      onClick={[Function]}
-      underline={true}
-    >
-      lbl_bonusPoints_details
-    </Styled(Anchor)>
-  </div>
 </div>
 `;

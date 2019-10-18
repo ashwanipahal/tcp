@@ -239,6 +239,23 @@ describe('Checkout Selectors', () => {
       Checkout.getIn(['values', 'venmoClientTokenData'])
     );
   });
+  it('#getCurrentCheckoutStage', () => {
+    const { getCurrentCheckoutStage } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        stage: 'true',
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          stage: 'true',
+        },
+      }),
+    };
+    expect(getCurrentCheckoutStage(state)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
+  });
 
   it('#getExpressReviewShippingSectionId', () => {
     const state = {

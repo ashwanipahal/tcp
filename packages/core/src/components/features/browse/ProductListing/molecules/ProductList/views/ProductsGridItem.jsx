@@ -26,6 +26,7 @@ import {
 import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
+import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -306,6 +307,37 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  renderSubmitButton = itemNotAvailable => {
+    const {
+      labels,
+      item: { itemInfo: { itemId } = {} },
+      removeFavItem,
+      isFavoriteView,
+    } = this.props;
+    return itemNotAvailable ? (
+      <Button
+        className="remove-favorite"
+        fullWidth
+        buttonVariation="fixed-width"
+        dataLocator={getLocator('remove_favorite_Button')}
+        onClick={() => removeFavItem({ itemId })}
+      >
+        {labels.removeFavorite}
+      </Button>
+    ) : (
+      <Button
+        className="added-to-bag"
+        fullWidth
+        buttonVariation="fixed-width"
+        dataLocator={getLocator('global_addtocart_Button')}
+        onClick={this.handleQuickViewOpenClick}
+        fill={isFavoriteView ? 'BLUE' : ''}
+      >
+        {labels.addToBag}
+      </Button>
+    );
+  };
+
   render() {
     const {
       onQuickViewOpenClick,
@@ -327,7 +359,7 @@ class ProductsGridItem extends React.PureComponent {
           offerPrice: itemOfferPrice,
           long_product_title: longProductTitle,
         },
-        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag } = {},
+        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag, availability } = {},
         quantityPurchased,
         colorsMap,
         imagesByColor,
@@ -350,6 +382,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       isFavoriteView,
     } = this.props;
+    const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
 
     const prodNameAltImages = longProductTitle || name;
     const {
@@ -441,7 +474,11 @@ class ProductsGridItem extends React.PureComponent {
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
           />
-          {EditButton({ onQuickViewOpenClick, isFavoriteView, labels }, selectedColorProductId)}
+          {EditButton(
+            { onQuickViewOpenClick, isFavoriteView, labels },
+            selectedColorProductId,
+            itemNotAvailable
+          )}
           {
             <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
@@ -454,7 +491,12 @@ class ProductsGridItem extends React.PureComponent {
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
-              {WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist)}
+              {WishListIcon(
+                isFavoriteView,
+                isInDefaultWishlist,
+                this.handleAddToWishlist,
+                itemNotAvailable
+              )}
             </Row>
           }
           {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
@@ -476,21 +518,13 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          <div className="fulfillment-section">
-            <Button
-              className="added-to-bag"
-              fullWidth
-              buttonVariation="fixed-width"
-              dataLocator={getLocator('global_addtocart_Button')}
-              onClick={this.handleQuickViewOpenClick}
-            >
-              {labels.addToBag}
-            </Button>
-          </div>
-          <div className="favorite-move-purchase-section">
-            {PurchaseSection(quantity, labels, quantityPurchased)}
-            {this.renderMoveItem(itemId)}
-          </div>
+          <div className="fulfillment-section">{this.renderSubmitButton(itemNotAvailable)}</div>
+          {!itemNotAvailable && (
+            <div className="favorite-move-purchase-section">
+              {PurchaseSection(quantity, labels, quantityPurchased)}
+              {this.renderMoveItem(itemId)}
+            </div>
+          )}
           {/* {error && <ErrorMessage error={error} />} */}
         </div>
       </li>
