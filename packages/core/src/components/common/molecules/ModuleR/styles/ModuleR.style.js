@@ -55,7 +55,7 @@ export default css`
   margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
 
   .image-items-container {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: 27px;
   }
 
   .moduleR-promo-header {

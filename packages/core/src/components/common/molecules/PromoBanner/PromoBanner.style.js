@@ -363,13 +363,13 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     line-height: normal;
     display: inline;
     vertical-align: top;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
       line-height: normal;
     }
 
@@ -383,7 +383,7 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     line-height: normal;
     display: inline;
     vertical-align: top;
@@ -398,7 +398,7 @@ export default css`
   .ribbon_default_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.secondary};
-    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    font-weight: ${props => props.theme.typography.fontWeights.normal};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     display: block;
 

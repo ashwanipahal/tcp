@@ -88,7 +88,7 @@ class ModuleA extends React.Component {
             large: 12,
           }}
         >
-          <div>
+          <div className="moduleAPosition">
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageCarousel.map((item, i) => {
                 const {
