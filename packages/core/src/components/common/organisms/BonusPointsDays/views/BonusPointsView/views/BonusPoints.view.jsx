@@ -21,6 +21,7 @@ class BonusPointsView extends React.Component {
     orderDetails: PropTypes.shape({}),
     showAccordian: PropTypes.bool.isRequired,
     additionalClassNameModal: PropTypes.string.isRequired,
+    isDefaultOpen: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class BonusPointsView extends React.Component {
     isPlcc: false,
     getBonusDaysData: () => {},
     orderDetails: {},
+    isDefaultOpen: false,
   };
 
   constructor(props) {
@@ -59,6 +61,7 @@ class BonusPointsView extends React.Component {
       orderDetails,
       showAccordian,
       additionalClassNameModal,
+      isDefaultOpen,
     } = this.props;
     const { openModalState } = this.state;
     return (
@@ -86,6 +89,7 @@ class BonusPointsView extends React.Component {
                 getBonusDaysData={getBonusDaysData}
                 orderDetails={orderDetails}
                 showAccordian={showAccordian}
+                isDefaultOpen={isDefaultOpen}
               />
             </div>
           )}

@@ -43,7 +43,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         className="coupon_code_input"
         component={[Function]}
         dataLocator="coupon_code"
-        id="coupon_code"
+        id="coupon_code-id-"
         name="coupon_code"
         onChange={[Function]}
         placeholder="Enter Coupon Code"
@@ -105,7 +105,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         className="coupon_code_input"
         component={[Function]}
         dataLocator="coupon_code"
-        id="coupon_code"
+        id="coupon_code-id-"
         name="coupon_code"
         onChange={[Function]}
         placeholder="Enter Coupon Code"
