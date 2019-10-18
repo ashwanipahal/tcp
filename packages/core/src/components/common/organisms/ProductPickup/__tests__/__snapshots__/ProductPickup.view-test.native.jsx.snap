@@ -4,6 +4,33 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
 <Styled(View)
   margins="40px 0 0 0"
 >
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    disabled={false}
+    fill="BLACK"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="extrabold"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator="pdp_pick_up_in_store_btn"
+    margin="12px 12px 0 12px"
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="FIND A STORE"
+    theme={Object {}}
+    url=""
+  />
   <Styled(View)>
     <Styled(CustomIcon)
       accessibilityLabel=""
