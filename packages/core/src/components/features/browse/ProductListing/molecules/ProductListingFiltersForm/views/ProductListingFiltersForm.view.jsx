@@ -189,9 +189,17 @@ class ProductListingFiltersForm extends React.Component {
    * @param void
    */
   handleRemoveAllFilters() {
-    const { change, initialValues } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const { change, initialValues, formValues } = this.props;
     // eslint-disable-next-line no-restricted-syntax
     for (const key in initialValues) {
+      if (key !== 'sort') {
+        change(key, []);
+      }
+    }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in formValues) {
       if (key !== 'sort') {
         change(key, []);
       }
