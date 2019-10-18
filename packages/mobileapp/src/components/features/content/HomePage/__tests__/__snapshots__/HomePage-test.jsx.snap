@@ -484,6 +484,7 @@ exports[`HomePageView should render correctly 1`] = `
         "getParam": [Function],
       }
     }
+    showButton={true}
     variation="moduleO,moduleP"
   />
 </LazyloadScrollView>
