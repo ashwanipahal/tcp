@@ -1,11 +1,7 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { requireNamedOnlineModule } from './resourceLoader';
 
-const calcDistanceByLatLng = async (
-  storeLocations = [{ lat: 32.632603, long: 117.084907 }],
-  coords = { lat: 32.659629, lng: -117.064635 },
-  isDisabled
-) => {
+const calcDistanceByLatLng = async (storeLocations = [], coords = {}, isDisabled) => {
   // eslint-disable-next-line sonarjs/cognitive-complexity
   return requireNamedOnlineModule('google.maps').then(() => {
     // eslint-disable-next-line consistent-return
