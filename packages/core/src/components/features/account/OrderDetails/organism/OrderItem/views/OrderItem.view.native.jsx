@@ -58,7 +58,7 @@ const OrderItems = ({ className, ...otherProps }) => {
         <OrderItemContent>
           <BodyCopy
             fontSize="fs14"
-            fontWeight={['semibold']}
+            fontWeight="semibold"
             textAlign="left"
             text={name}
             fontFamily="secondary"
@@ -104,7 +104,7 @@ const OrderItems = ({ className, ...otherProps }) => {
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 text={getLabelValue(ordersLabels, 'lbl_orderDetails_price')}
               />
 
@@ -119,7 +119,7 @@ const OrderItems = ({ className, ...otherProps }) => {
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 text={getLabelValue(ordersLabels, 'lbl_orderDetails_youPaid')}
               />
 
@@ -133,7 +133,7 @@ const OrderItems = ({ className, ...otherProps }) => {
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 text={getLabelValue(ordersLabels, 'lbl_orderDetails_quantity')}
               />
 
@@ -147,7 +147,7 @@ const OrderItems = ({ className, ...otherProps }) => {
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"
-                fontWeight="extrabold"
+                fontWeight="semibold"
                 text={getLabelValue(ordersLabels, 'lbl_orderDetails_subTotal')}
               />
 
@@ -165,7 +165,7 @@ const OrderItems = ({ className, ...otherProps }) => {
                   underline
                   anchorVariation="primary"
                   fontSize="fs14"
-                  fontWeight="extrabold"
+                  fontWeight="semibold"
                 />
               </OrderContentWrapper>
             )}

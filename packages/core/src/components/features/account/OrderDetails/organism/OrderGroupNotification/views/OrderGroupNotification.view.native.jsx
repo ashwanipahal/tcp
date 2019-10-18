@@ -13,7 +13,7 @@ const OrderGroupNotification = props => {
   const { message } = props;
   return (
     <ContentWrapper>
-      <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="extrabold" text={message} />
+      <BodyCopy fontSize="fs14" fontFamily="secondary" text={message} />
     </ContentWrapper>
   );
 };

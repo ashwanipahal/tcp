@@ -7,7 +7,6 @@ exports[`Order GroupHeader component should renders correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs14"
-    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="1"

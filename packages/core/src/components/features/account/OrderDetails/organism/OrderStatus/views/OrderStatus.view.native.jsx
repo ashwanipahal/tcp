@@ -20,7 +20,7 @@ const OrderStatus = props => {
     <>
       <ContentWrapper>
         <BodyCopy fontSize="fs14" fontFamily="secondary" text={label} />
-        <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="extrabold" text={message} />
+        <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="semibold" text={message} />
       </ContentWrapper>
       {!isBopisOrder && trackingNumber && trackingNumber !== constants.STATUS_CONSTANTS.NA && (
         <ContentWrapper>
@@ -31,7 +31,7 @@ const OrderStatus = props => {
           />
           <BodyCopy
             fontSize="fs14"
-            fontWeight="extrabold"
+            fontWeight="semibold"
             fontFamily="secondary"
             text={trackingNumber}
           />

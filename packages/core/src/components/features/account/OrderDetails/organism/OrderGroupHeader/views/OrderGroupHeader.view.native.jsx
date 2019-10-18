@@ -14,7 +14,7 @@ const OrderGroupHeader = props => {
   return (
     <ContentWrapper>
       <BodyCopy fontSize="fs14" fontFamily="secondary" text={label} />
-      <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="extrabold" text={message} />
+      <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="semibold" text={message} />
     </ContentWrapper>
   );
 };

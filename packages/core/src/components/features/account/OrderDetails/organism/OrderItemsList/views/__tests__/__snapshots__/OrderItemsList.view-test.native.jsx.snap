@@ -63,5 +63,11 @@ exports[`Order Items component should renders correctly 1`] = `
     }
     key="0"
   />
+  <Styled(LineComp)
+    borderColor="gray.1600"
+    borderWidth={0.5}
+    marginBottom={0}
+    marginTop={32}
+  />
 </Fragment>
 `;
