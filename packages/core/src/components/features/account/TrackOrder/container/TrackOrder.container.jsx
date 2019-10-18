@@ -83,6 +83,7 @@ export class TrackOrderContainer extends React.PureComponent {
       showNotification,
       onChangeForm,
       handleToggle,
+      navigation,
     } = this.props;
     return (
       <TrackOrderView
@@ -97,6 +98,7 @@ export class TrackOrderContainer extends React.PureComponent {
         showNotification={showNotification}
         onChangeForm={onChangeForm}
         handleToggle={handleToggle}
+        navigation={navigation}
       />
     );
   }

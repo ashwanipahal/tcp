@@ -1,5 +1,4 @@
 const dummyUrl = 'http://www.childrensplace.com';
-
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 
 export default {
@@ -56,7 +55,7 @@ export default {
       mediaLinkedList: [
         {
           image: {
-            url: 'https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
+            url: 'https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
             alt: 'Boys',
             title: 'Boys',
             crop_d: '',
@@ -74,7 +73,7 @@ export default {
         },
         {
           image: {
-            url: 'https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png',
+            url: 'https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg',
             alt: 'Girls',
             title: 'Girls',
             crop_d: '',

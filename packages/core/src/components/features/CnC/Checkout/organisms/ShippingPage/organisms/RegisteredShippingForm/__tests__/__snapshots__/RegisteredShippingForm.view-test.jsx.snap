@@ -3,6 +3,7 @@
 exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -17,11 +18,17 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -66,6 +73,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -147,7 +155,8 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Address)
         address={null}
         className="shipping__address"
-        dataLocatorPrefix="address"
+        dataLocatorPrefix="shipping"
+        parentDataLocator="shipping-details"
         showPhone={true}
       />
     </Styled(Col)>
@@ -189,6 +198,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
 exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(AddEditShippingAddress)
@@ -204,6 +214,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
 exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(AddEditShippingAddress)
@@ -219,6 +230,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
 exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDownChange 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={true}
 >
   <Styled(Row)
@@ -233,11 +245,17 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={true}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -275,6 +293,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -564,6 +583,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -637,6 +657,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
 exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -651,11 +672,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -692,6 +719,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={true}
                 fill="BLACK"
                 fullWidth={true}
@@ -964,6 +992,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1125,6 +1154,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1151,6 +1181,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
 exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true and isSaveToAddressBookChecked true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -1165,11 +1196,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -1206,6 +1243,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={true}
                 fill="BLACK"
                 fullWidth={true}
@@ -1478,6 +1516,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1639,6 +1678,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1665,6 +1705,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
 exports[`RegisteredShippingFormVanilla should render correctly with isEditing true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={true}
 >
   <Styled(Row)
@@ -1679,11 +1720,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={true}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -1720,6 +1767,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -1993,6 +2041,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2066,6 +2115,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -2285,6 +2335,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2446,6 +2497,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2489,6 +2541,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 2`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -2724,6 +2777,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2885,6 +2939,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2928,6 +2983,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddNewAddress 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -3163,6 +3219,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3324,6 +3381,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3350,6 +3408,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleIsEditing 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -3569,6 +3628,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3730,6 +3790,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
