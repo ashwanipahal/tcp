@@ -86,9 +86,15 @@ const getPaypalPaymentSettings = state => {
   return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
 };
 
+const getExpressReviewShippingSectionId = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'expressReviewShippingSection');
+};
+
 export {
   getPickUpContactFormLabels,
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 };
