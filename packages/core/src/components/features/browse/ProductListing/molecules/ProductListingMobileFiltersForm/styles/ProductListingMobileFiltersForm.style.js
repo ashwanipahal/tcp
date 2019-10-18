@@ -71,7 +71,7 @@ export default css`
     background: url('/static/images/carrot-small-up.png') no-repeat;
     background-position: 95% 18px;
     background-color: #eeeeee;
-    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
+    font-size: 16px;
 
     &.open-filter-button-expanded {
       background: url('/static/images/carrot-small-down.png') no-repeat;

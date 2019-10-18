@@ -24,6 +24,15 @@ export default css`
   }
   &.item-title {
     width: 100%;
+    height: 22px;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #1a1a1a;
   }
 
   .horizontal-bar {
