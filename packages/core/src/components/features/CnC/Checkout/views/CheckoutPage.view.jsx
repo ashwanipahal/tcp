@@ -286,6 +286,7 @@ class CheckoutPage extends React.PureComponent {
           )
         }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
+        isReviewPage={currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW}
       />
     );
   }

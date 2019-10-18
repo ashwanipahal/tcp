@@ -42,6 +42,7 @@ const CnCTemplate = ({
   isConfirmationPage,
   isNotLoaded,
   orderLedgerAfterView,
+  isReviewPage,
 }) => {
   const isSmallLeftSection = showLeftSection;
   return (
@@ -78,7 +79,7 @@ const CnCTemplate = ({
                   <>
                     <OrderLedgerContainer orderLedgerAfterView={orderLedgerAfterView} />
                     {getBagActions({ BagActions })}
-                    {!isCanada() && <LoyaltyBanner />}
+                    {!isCanada() && <LoyaltyBanner isReviewPage={isReviewPage} />}
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
@@ -109,6 +110,7 @@ CnCTemplate.propTypes = {
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   isNotLoaded: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
@@ -119,6 +121,7 @@ CnCTemplate.defaultProps = {
   isCheckoutView: false,
   isConfirmationPage: false,
   isNotLoaded: true,
+  isReviewPage: false,
 };
 
 export default withStyles(CnCTemplate, styles);

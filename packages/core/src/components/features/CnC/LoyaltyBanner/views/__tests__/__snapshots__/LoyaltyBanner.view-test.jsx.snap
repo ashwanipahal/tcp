@@ -8,6 +8,7 @@ exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] 
     currentSubtotal={21}
     estimatedRewardsVal={20}
     estimatedSubtotal={33}
+    isReviewPage={false}
     labels={Object {}}
     thresholdValue={16.66}
   />

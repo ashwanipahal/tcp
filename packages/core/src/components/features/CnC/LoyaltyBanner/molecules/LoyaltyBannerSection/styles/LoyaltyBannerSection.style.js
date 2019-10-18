@@ -56,6 +56,29 @@ const Styles = css`
         padding-right: ${props.theme.spacing.ELEM_SPACING.MED};
       }
       `};
+
+  ${props =>
+    props.isReviewPage
+      ? `
+          .footer{
+            ${
+              props.isPlcc
+                ? ``
+                : `padding-top: 0;
+            padding-bottom: 12px;`
+            }
+          `
+      : ``};
+
+  .learnSymbolWrapper {
+    position: relative;
+  }
+
+  .symbolWrapper {
+    position: absolute;
+    top: 5px;
+    left: 23px;
+  }
 `;
 
 export default Styles;

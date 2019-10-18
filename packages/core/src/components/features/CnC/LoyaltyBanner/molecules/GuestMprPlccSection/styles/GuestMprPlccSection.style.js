@@ -99,6 +99,29 @@ const Styles = css`
     }
     `
       : ``};
+
+  ${props =>
+    props.isReviewPage
+      ? `
+        .youCanEarnPoints {
+          color: ${
+            props.isPlcc
+              ? props.theme.colorPalette.userTheme.plcc
+              : props.theme.colorPalette.userTheme.mpr
+          };
+          font-size: ${props.theme.typography.fontSizes.fs18};
+          padding-top: ${props.theme.spacing.ELEM_SPACING.SM};
+        }
+        .save30Today {
+          color: ${props.theme.colorPalette.gray[900]};
+          font-size: ${props.theme.typography.fontSizes.fs16};
+
+        }
+        .footer{
+          display: ${props.isPlcc ? '' : 'none'};
+        }
+        `
+      : ``};
 `;
 
 export default Styles;
