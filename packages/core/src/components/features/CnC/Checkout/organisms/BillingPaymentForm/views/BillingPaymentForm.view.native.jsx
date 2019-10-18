@@ -170,7 +170,7 @@ export class BillingPaymentForm extends React.PureComponent {
               mobileFontFamily="primary"
               fontSize="fs16"
               fontWeight="extrabold"
-              data-locator="billing-payment-method"
+              dataLocator="paymentMethodLbl"
               text={labels.paymentMethod}
               color="gray.900"
             />
@@ -200,7 +200,7 @@ export class BillingPaymentForm extends React.PureComponent {
               id="cvvCode"
               type="text"
               component={TextBox}
-              dataLocator="payment-cvv"
+              dataLocator="cvvTxtBox"
               customStyle={CvvTextboxStyle}
             />
             {this.getCvvInfoIcon(cvvCodeRichText)}
@@ -251,7 +251,7 @@ export class BillingPaymentForm extends React.PureComponent {
               mobileFontFamily="primary"
               fontSize="fs10"
               fontWeight="extrabold"
-              dataLocator="billing-payment-bilingcreditcardlabel"
+              dataLocator="cardDropDownLbl"
               text={labels.selectFromCard}
             />
           </CreditCardHeader>
@@ -364,6 +364,7 @@ export class BillingPaymentForm extends React.PureComponent {
       navigation,
       dispatch,
       isPaymentDisabled,
+      setCheckoutStage,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -382,7 +383,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 fontWeight="regular"
                 spacingStyles="margin-bottom-MED"
                 color="gray.900"
-                data-locator="billing-details"
+                dataLocator="paymentMethodLbl"
                 text={labels.paymentMethod}
               />
             </PaymentMethodHeader>
@@ -416,11 +417,9 @@ export class BillingPaymentForm extends React.PureComponent {
           onPress={e => handleBillingFormSubmit(this, e, true)}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           onBackLinkPress={() =>
-            navigation.navigate(
-              orderHasShipping
-                ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
-                : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
-            )
+            orderHasShipping
+              ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
+              : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
           }
           showAccordian
         />

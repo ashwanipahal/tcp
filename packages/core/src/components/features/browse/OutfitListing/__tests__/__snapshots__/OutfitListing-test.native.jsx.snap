@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchProduct should render correctly should match snapshot 1`] = `
+<Styled(FlatList)
+  ItemSeparatorComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "paddingBottom": 32,
+    }
+  }
+  data={Array []}
+  keyExtractor={[Function]}
+  renderItem={[Function]}
+/>
+`;

@@ -10,11 +10,16 @@ exports[`Thumbnail component should renders correctly 1`] = `
     className="image-wrapper selected-image"
     onClick={[Function]}
   >
-    <Styled(Image)
-      alt=""
+    <WithTheme(DamImage)
       data-locator="pdp_alt_image_0"
-      itemProp="thumbnailUrl"
-      src=""
+      imgData={
+        Object {
+          "alt": "",
+          "url": "",
+        }
+      }
+      isProductImage={true}
+      itemProp="contenthumbnailUrltUrl"
       title=""
     />
   </Styled(Anchor)>

@@ -95,7 +95,7 @@ export default css`
     width: 98%;
     position: relative;
     border: 0;
-    padding-top: 6px;
+    padding-top: 16px;
     padding-bottom: 0;
     margin: auto;
 
@@ -161,6 +161,7 @@ export default css`
 export const customModalCss = css`
   div.TCPModal__InnerContent {
     background: none;
+    z-index: ${props => props.theme.zindex.zOverlay};
   }
   button.close-modal {
     display: none;

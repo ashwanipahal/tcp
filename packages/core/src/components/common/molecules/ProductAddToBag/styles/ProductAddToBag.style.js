@@ -28,11 +28,16 @@ const styles = css`
     font-style: normal;
     letter-spacing: 1px;
     height: 42px;
+<<<<<<< HEAD
     width: 347px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       height: 42px;
       width: 213px;
+=======
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+>>>>>>> a16e27af2b67ff3bea2061dc088b786ca96f7196
     }
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -74,6 +79,7 @@ const styles = css`
   }
 
   .color-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
     margin-bottom: 33px;
@@ -89,6 +95,7 @@ const styles = css`
   }
 
   .size-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
   }
 
@@ -160,6 +167,10 @@ const styles = css`
     width: auto;
   }
 
+  .product-size-error {
+    margin-top: 30px;
+  }
+
   .size-field-error {
     height: auto;
     .select__input {
@@ -172,6 +183,51 @@ const styles = css`
     padding-right: 6px;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+`;
+
+export const giftCardDesignStyle = css`
+  .color-chips-selector-item {
+    height: 126px;
+    width: 103px;
+    border-radius: 0;
+
+    .input-radio-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image color of item */
+    .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+
+    /* When the input is checked, the image color has black border (selected) */
+    .input-radio-icon-checked + .input-radio-title {
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .color-chips-selector-item {
+      height: 79px;
+      width: 66px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .color-chips-selector-item {
+      height: 109px;
+      width: 90px;
+    }
+  }
 `;
 
 export default styles;

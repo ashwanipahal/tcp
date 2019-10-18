@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
@@ -137,8 +136,11 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   showTrackOrderModal = () => {
-    const { openTrackOrder } = this.props;
-    openTrackOrder({ state: true });
+    const { navigation } = this.props;
+    navigation.navigate('TrackOrder', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+    });
   };
 
   getModalHeader = (getComponentId, labels) => {
@@ -340,7 +342,6 @@ class AccountOverview extends PureComponent<Props> {
         )}
 
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
-        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );

@@ -132,7 +132,7 @@ class HeaderNew extends React.PureComponent<Props> {
   };
 
   render() {
-    const { title, showSearch, cartVal } = this.props;
+    const { title, showSearch, cartVal, slpLabels } = this.props;
     const { showSearchModal } = this.state;
     return (
       <SafeAreaViewStyle showSearch={showSearch}>
@@ -181,7 +181,9 @@ class HeaderNew extends React.PureComponent<Props> {
               </Touchable>
             </RightSection>
           </HeaderContainer>
-          {showSearch && <SearchBar openSearchProductPage={this.openSearchProductPage} />}
+          {showSearch && (
+            <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          )}
           {showSearchModal && (
             <SearchProduct
               closeSearchModal={this.closeSearchProductPage}
@@ -198,6 +200,7 @@ const mapStateToProps = state => {
   return {
     cartVal: state.Header && state.Header.cartItemCount,
     isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    slpLabels: state.Labels.Browse && state.Labels.Browse.SLP,
   };
 };
 

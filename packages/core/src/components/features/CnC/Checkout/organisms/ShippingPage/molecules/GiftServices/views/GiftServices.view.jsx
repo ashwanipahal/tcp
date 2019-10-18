@@ -132,7 +132,7 @@ class GiftServices extends React.PureComponent {
                 <Field
                   name="hasGiftWrapping"
                   component={InputCheckbox}
-                  dataLocator="hide-show-checkbox"
+                  dataLocator={getLocator('gift_service')}
                   enableSuccessCheck={false}
                   onChange={this.handleChange}
                   className="giftServicesField"
@@ -154,6 +154,7 @@ class GiftServices extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   onClick={this.toggleDetailsModal}
+                  dataLocator={getLocator('gift_service')}
                 >
                   {labels.details}
                 </BodyCopy>
@@ -166,6 +167,7 @@ class GiftServices extends React.PureComponent {
             fontSize="fs16"
             fontWeight="regular"
             textAlign="left"
+            dataLocator={getLocator('addMessage_txt')}
           >
             {labels.addAGift}
           </BodyCopy>
@@ -214,7 +216,7 @@ class GiftServices extends React.PureComponent {
                         alt="Brand"
                         className="brand-image"
                         src={getIconPath('header__brand-tab--tcp')}
-                        data-locator={getLocator('header__brand-tab--tcp')}
+                        data-locator={getLocator('logo_TCP')}
                       />
                     </BodyCopy>
                   </Field>
@@ -251,7 +253,7 @@ class GiftServices extends React.PureComponent {
                         alt="Brand"
                         className="brand-image"
                         src={getIconPath('header__brand-tab-gymboree')}
-                        data-locator={getLocator('header__brand-tab--gymboree')}
+                        data-locator={getLocator('logo_gymboree')}
                       />
                     </BodyCopy>
                   </Field>
@@ -278,7 +280,7 @@ class GiftServices extends React.PureComponent {
                           );
                         }}
                         options={giftServicesList}
-                        dataLocator="addnewaddress-state"
+                        dataLocator={getLocator('giftService_list')}
                         clickHandler={this.giftServiceChanged}
                       />
                     </div>
@@ -333,6 +335,7 @@ class GiftServices extends React.PureComponent {
             }}
             heading={labels.giftServices}
             brand={SelectedBrand}
+            dataLocator={getLocator('details_modal')}
           />
         </div>
       </form>

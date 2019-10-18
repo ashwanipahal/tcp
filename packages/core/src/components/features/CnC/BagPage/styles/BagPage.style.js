@@ -12,6 +12,12 @@ const styles = css`
     }
   }
 
+  .cartPageTitleHeader {
+    @media ${props => props.theme.mediaQuery.medium} {
+      pointer-events: none;
+    }
+  }
+
   .checkout-button {
     display: flex;
     flex: 1;

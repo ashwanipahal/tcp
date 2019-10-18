@@ -4,32 +4,30 @@ import OpenLoginModal from '../../../../../account/LoginPage/views/LoginModal.na
 import CheckoutConstants from '../../../../Checkout/Checkout.constants';
 import BagConfirmationModal from '../../../../BagPage/views/BagConfirmationModal.view';
 import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteConfirmationModal.view';
-import { navigateToNestedRoute } from '../../../../../../../utils/utils.app';
 
-class ModalsCheckout extends React.PureComponent<Props> {
+class ModalsCheckout extends React.PureComponent {
+  navigateToCheckout = stage => {
+    const { setCheckoutStage, navigation } = this.props;
+    setCheckoutStage(stage);
+    navigation.navigate({ routeName: CheckoutConstants.CHECKOUT_ROOT });
+  };
+
   routeToCheckout = e => {
-    const { navigation, closeCheckoutModalMountState, orderHasPickup, closeModal } = this.props;
+    const {
+      closeCheckoutModalMountState,
+      orderHasPickup,
+      closeModal,
+      isExpressCheckoutPage,
+    } = this.props;
     if (e) {
       e.preventDefault();
     }
-    if (orderHasPickup) {
-      navigateToNestedRoute(
-        navigation,
-        CheckoutConstants.CHECKOUT_ROOT,
-        CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP,
-        {
-          routeTo: CheckoutConstants.PICKUP_DEFAULT_PARAM,
-        }
-      );
+    if (isExpressCheckoutPage) {
+      this.navigateToCheckout(CheckoutConstants.REVIEW_DEFAULT_PARAM);
+    } else if (orderHasPickup) {
+      this.navigateToCheckout(CheckoutConstants.PICKUP_DEFAULT_PARAM);
     } else {
-      navigateToNestedRoute(
-        navigation,
-        CheckoutConstants.CHECKOUT_ROOT,
-        CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING,
-        {
-          routeTo: CheckoutConstants.SHIPPING_DEFAULT_PARAM,
-        }
-      );
+      this.navigateToCheckout(CheckoutConstants.SHIPPING_DEFAULT_PARAM);
     }
     if (closeModal) {
       setTimeout(() => {
@@ -105,10 +103,27 @@ ModalsCheckout.propTypes = {
   labels: PropTypes.shape.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   closeModal: PropTypes.func,
+  setCheckoutStage: PropTypes.func.isRequired,
+  closeCheckoutModalMountState: PropTypes.func.isRequired,
+  orderHasPickup: PropTypes.bool,
+  isExpressCheckoutPage: PropTypes.bool,
+  handleCartCheckout: PropTypes.func.isRequired,
+  closeCheckoutConfirmationModal: PropTypes.func.isRequired,
+  checkoutModalMountedState: PropTypes.bool,
+  removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
+  modalInfo: PropTypes.shape({}).isRequired,
+  currentSelectItemInfo: PropTypes.shape({}).isRequired,
+  closeItemDeleteModal: PropTypes.func.isRequired,
+  deleteConfirmationModalLabels: PropTypes.shape({}).isRequired,
+  addItemToSflList: PropTypes.func.isRequired,
+  confirmRemoveCartItem: PropTypes.func.isRequired,
 };
 
 ModalsCheckout.defaultProps = {
   closeModal: () => {},
+  orderHasPickup: false,
+  isExpressCheckoutPage: false,
+  checkoutModalMountedState: false,
 };
 
 export default ModalsCheckout;

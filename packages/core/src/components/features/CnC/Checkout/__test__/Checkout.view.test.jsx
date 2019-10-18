@@ -16,6 +16,9 @@ describe('CheckoutPageVanilla component', () => {
     isVenmoPaymentInProgress: true,
     isUsSite: true,
     reviewProps: { labels: {} },
+    shippingProps: {
+      shipmentMethods: {},
+    },
   };
 
   const tree = shallow(<CheckoutPageVanilla {...initialProps} />);
@@ -31,6 +34,9 @@ describe('CheckoutPageVanilla component', () => {
       router: { query: { section: CHECKOUT_STAGES.PICKUP } },
       onPickupSubmit: () => {},
       reviewProps: { labels: {} },
+      shippingProps: {
+        shipmentMethods: {},
+      },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -48,6 +54,9 @@ describe('CheckoutPageVanilla component', () => {
       router: { query: { subSection: 'shipping' } },
       onPickupSubmit: () => {},
       reviewProps: { labels: {} },
+      shippingProps: {
+        shipmentMethods: {},
+      },
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();

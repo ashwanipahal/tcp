@@ -1,6 +1,5 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Router from 'next/router';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
@@ -8,6 +7,7 @@ import withReduxSaga from 'next-redux-saga';
 import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
+import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import {
@@ -22,7 +22,6 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
-import { NAVIGATION_START } from '@tcp/core/src/constants/rum.constants';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -32,6 +31,7 @@ import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
 import RouteTracker from '../components/common/atoms/RouteTracker';
+import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
 import constants from '../constants';
@@ -41,18 +41,6 @@ function AnalyticsScript() {
   // TODO: Need proper handling for this perf mark
   const handleLoad = () => performance && performance.mark('analytics_script_loaded');
   return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
-}
-
-/**
- * Setup perf marks for when the route changes.
- * This is needed for measuring CSR times relative to
- * when the route/page last changed.
- */
-if (process.env.PERF_TIMING && typeof performance !== 'undefined') {
-  Router.events.on('beforeHistoryChange', () => {
-    performance.clearMarks(NAVIGATION_START);
-    performance.mark(NAVIGATION_START);
-  });
 }
 
 class TCPWebApp extends App {
@@ -185,6 +173,7 @@ class TCPWebApp extends App {
           ...payload,
         };
       }
+
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
@@ -210,9 +199,13 @@ class TCPWebApp extends App {
     return Object.assign({}, pageProps, compProps);
   }
 
-  getSEOTags = pageId => {
-    const seoConfig = deriveSEOTags(pageId);
-    return <SEOTags seoConfig={seoConfig} />;
+  getSEOTags = (pageId, store, router) => {
+    // Just a sample - any store specific data should be set in this
+    if (pageId) {
+      const seoConfig = deriveSEOTags(pageId, store, router);
+      return <SEOTags seoConfig={seoConfig} />;
+    }
+    return null;
   };
 
   render() {
@@ -226,13 +219,14 @@ class TCPWebApp extends App {
         isNonCheckoutPage = false;
       }
     }
+
     return (
       <Container>
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {Component.pageId ? this.getSEOTags(Component.pageId) : null}
+              {Component.pageId ? this.getSEOTags(Component.pageId, store, router) : null}
               <Header />
               <CheckoutHeader />
               <Loader />
@@ -242,6 +236,7 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
+              <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
@@ -249,6 +244,8 @@ class TCPWebApp extends App {
             {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
+        {/* Inject UX timer reporting if enabled. */}
+        {process.env.PERF_TIMING && <UserTimingRouteHandler />}
         {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
