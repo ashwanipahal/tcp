@@ -20,7 +20,6 @@ import myPreferenceConst from '../../MyPrefrence.constants';
 class MyPreferenceSubscribeModal extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
-    waysToEarnRow: PropTypes.shape({}),
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
@@ -29,7 +28,6 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
 
   static defaultProps = {
     className: '',
-    waysToEarnRow: {},
     labels: {},
   };
 

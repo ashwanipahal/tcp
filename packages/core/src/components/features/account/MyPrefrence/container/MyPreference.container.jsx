@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import MyPrefrence from '../views';
-import { getIsTcpSubscribe } from './MyPreference.selectors';
+import { getSmsSubscriptionState } from './MyPreference.selectors';
 import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
@@ -148,6 +148,10 @@ export class MyPrefrenceContainer extends PureComponent {
     const urlParams = router.query || {};
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
 
+    console.log('rihan kan ------------------------------');
+    console.log(isTcpSubscribe);
+    console.log('rihan kan ------------------------------');
+
     return (
       <>
         <MyPrefrence
@@ -212,7 +216,7 @@ export class MyPrefrenceContainer extends PureComponent {
 }
 
 export const mapStateToProps = state => ({
-  isTcpSubscribe: getIsTcpSubscribe(state),
+  isTcpSubscribe: getSmsSubscriptionState(state),
   phoneNumber: getUserPhoneNumber(state),
 });
 
