@@ -128,7 +128,7 @@ export class AddressForm extends React.PureComponent {
               dataLocator="addnewaddress-city"
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
               placeholder={addressFormLabels.select}
@@ -139,7 +139,11 @@ export class AddressForm extends React.PureComponent {
               dataLocator="addnewaddress-state"
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 3, medium: 2, large: 3 }}
+            className="zipField"
+          >
             <Field
               placeholder={
                 country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode
