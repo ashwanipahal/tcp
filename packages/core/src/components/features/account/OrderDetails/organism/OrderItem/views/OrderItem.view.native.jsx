@@ -45,7 +45,6 @@ const OrderItems = ({ className, ...otherProps }) => {
     isShowWriteReview,
     ordersLabels,
   } = otherProps;
-  // const idemListAndOfferPrice = listPrice === offerPrice;
 
   return (
     <>
@@ -55,7 +54,7 @@ const OrderItems = ({ className, ...otherProps }) => {
           {itemBrand === 'TCP' && <ImageBrandTCPStyle source={tcpImage} />}
           {itemBrand === 'GYM' && <ImageBrandStyle source={gymboreeImage} />}
         </OrderItemImage>
-        <OrderItemContent>
+        <OrderItemContent spacingStyles="padding-right-SM padding-left-SM">
           <BodyCopy
             fontSize="fs14"
             fontWeight="semibold"

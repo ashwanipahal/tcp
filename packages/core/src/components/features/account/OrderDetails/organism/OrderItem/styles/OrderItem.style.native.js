@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
 const OrderItemContainer = styled.View`
   display: flex;
@@ -10,13 +11,10 @@ const OrderItemImage = styled.View`
   display: flex;
   align-items: center;
   width: 33%;
-  /* border: 1px solid ${props => props.theme.colorPalette.gray[800]}; */
 `;
 
-const OrderItemContent = styled.View`
+const OrderItemContent = styled(ViewWithSpacing)`
   width: 67%;
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const OrderContentWrapper = styled.View`
@@ -44,6 +42,6 @@ export {
   ImageBrandTCPStyle,
   OrderItemContainer,
   OrderItemImage,
-  OrderItemContent,
   OrderContentWrapper,
+  OrderItemContent,
 };
