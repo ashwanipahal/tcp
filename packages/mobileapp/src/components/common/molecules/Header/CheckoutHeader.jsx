@@ -61,7 +61,7 @@ class CheckoutHeader extends React.PureComponent {
     const { navigation, setCheckoutStage } = this.props;
     const { currentStage } = this.state;
     const currentStageIndex = this.availableStages.indexOf(currentStage);
-    if (currentStageIndex) {
+    if (currentStageIndex > 0) {
       const stageToRoute = this.availableStages[currentStageIndex - 1];
       setCheckoutStage(stageToRoute);
     } else {
@@ -69,7 +69,7 @@ class CheckoutHeader extends React.PureComponent {
     }
   };
 
-  updateState(currentStage) {
+  updateState({ currentStage }) {
     this.setState({ currentStage });
   }
 
