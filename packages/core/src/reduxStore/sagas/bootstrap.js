@@ -77,11 +77,6 @@ function* bootstrap(params) {
     }
 
     const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
-    const response = yield call(countryListAbstractor.getData);
-    const data = response && response.data.countryList;
-    const countriesMap = getCountriesMap(data);
-    const currenciesMap = getCurrenciesMap(data);
-    yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
     if (pageName) {
       yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
       yield put(loadModulesData(result.modules));
@@ -91,7 +86,16 @@ function* bootstrap(params) {
     //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
     // }));
     yield put(loadHeaderData(result.header));
-    if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
+    if (!isMobileApp()) {
+      yield put(loadNavigationData(result.navigation));
+      // Fetch countries and currencies data
+      const response = yield call(countryListAbstractor.getData);
+      const data = response && response.data.countryList;
+      const countriesMap = getCountriesMap(data);
+      const currenciesMap = getCurrenciesMap(data);
+      yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
+    }
+
     yield put(loadFooterData(result.footer));
   } catch (err) {
     logger.error(err);
