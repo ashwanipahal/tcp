@@ -10,6 +10,7 @@ export default css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 10px;
     margin: 0 0 6px 0;
     width: calc(50% - ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS});
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
       padding: 12px ${props => props.theme.spacing.LAYOUT_SPACING.SM};
@@ -23,5 +24,29 @@ export default css`
   }
   &.item-title {
     width: 100%;
+  }
+
+  .horizontal-bar {
+    width: 330px;
+    border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    border-bottom-width: 1px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.L};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.L};
+    margin-right: 1px;
+    margin-left: 0px;
+
+    @media ${props => props.theme.mediaQuery.largeMax} {
+      width: 1100px;
+      border-bottom-width: 1px;
+      margin-right: 15.1px;
+      margin-left: 0px;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 700px;
+      border-bottom-width: 1px;
+      margin-right: 15.1px;
+      margin-left: 0px;
+    }
   }
 `;

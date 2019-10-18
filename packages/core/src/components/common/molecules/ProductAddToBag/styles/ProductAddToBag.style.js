@@ -16,17 +16,28 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .add-to-bag-button {
-    width: 100%;
     max-width: 450px;
     text-align: center;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
     font-weight: 800;
+    font-stretch: normal;
+    font-family: Nunito;
+    line-height: normal;
+    font-style: normal;
+    letter-spacing: 1px;
     height: 42px;
+    width: 347px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 42px;
+      width: 213px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
-      height: 50px;
+      height: 51px;
+      width: 330px;
     }
   }
   .select-value-wrapper {
@@ -111,12 +122,19 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
+    width: 53px;
+    height: 19px;
+    font-family: Nunito;
   }
 
   .color-chips-selector-title-name,
   .size-and-fit-detail-title-name {
     font-weight: normal;
     margin-left: 6px;
+    width: 35px;
+    height: 19px;
+    font-stretch: normal;
+    font-family: Nunito;
   }
 
   .qty-selector {

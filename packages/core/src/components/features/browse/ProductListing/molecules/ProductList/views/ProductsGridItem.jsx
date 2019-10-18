@@ -442,6 +442,7 @@ class ProductsGridItem extends React.PureComponent {
             keepAlive={isKeepAlive}
           />
           {EditButton({ onQuickViewOpenClick, isFavoriteView, labels }, selectedColorProductId)}
+
           {
             <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
@@ -451,13 +452,18 @@ class ProductsGridItem extends React.PureComponent {
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
                 >
+                  {this.getProductPriceSection(
+                    listPriceForColor,
+                    offerPriceForColor,
+                    badge3,
+                    isShowBadges
+                  )}
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
               {WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist)}
             </Row>
           }
-          {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
 
           <ProductTitle
             name={name}
