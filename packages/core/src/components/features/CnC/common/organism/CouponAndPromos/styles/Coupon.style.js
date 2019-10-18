@@ -35,6 +35,16 @@ const styles = css`
       right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .coupon_error_message {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      img {
+        padding-top: 0;
+        padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      }
+    }
+  }
 `;
 
 export default styles;
