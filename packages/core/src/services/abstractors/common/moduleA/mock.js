@@ -87,7 +87,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
         },
       },
     ],
-    /*  ribbonBanner: [
+    ribbonBanner: [
       {
         ribbonPlacement: 'right',
         textItems: [
@@ -102,7 +102,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           external: 0,
         },
       },
-    ], */
+    ],
   });
 }
 
