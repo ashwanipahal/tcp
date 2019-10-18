@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPreference Subscribe component should render correctly 1`] = `
+<div
+  className="test"
+>
+  <Styled(BodyCopy)
+    className="myPreferenceModalWrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <form
+      className="test"
+      name="MyPreferenceFormModal"
+      noValidate={true}
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-MED elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        data-locator="my-preference-modal_title"
+        fontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_subscribe_text_alerts
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_info_text"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_modal_info_text
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-MED"
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_sub_info_text"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_modal_sub_info_text
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-MED"
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_phnumber"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                  [Function],
+                  "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                  [Function],
+                  ";
+    ",
+                  [Function],
+                  "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                  [Function],
+                  "px;
+    color: ",
+                  [Function],
+                  ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+    padding-bottom: ",
+                  [Function],
+                  ";
+    margin-bottom: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+
+    ",
+                  [Function],
+                  "
+
+    ",
+                  [Function],
+                  ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                  [Function],
+                  "px;
+      font-weight: ",
+                  [Function],
+                  ";
+      top: ",
+                  [Function],
+                  ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                  [Function],
+                  ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                  [Function],
+                  ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                  [Function],
+                  ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                  [Function],
+                  ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                  [Function],
+                  ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(TextBox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="editPersonalInfo-phnumber"
+          id="phoneNumber"
+          name="phoneNumber"
+          placeholder="Mobile Phone Number"
+          type="tel"
+        />
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="disclaimer-sub-text"
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        <Styled(RichText)
+          dataLocator="my-preference-modal_disclaimer_sub_text"
+          richTextHtml="test1test2test3test4"
+        />
+      </Styled(BodyCopy)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="submit-button"
+            dataLocator="subscribe_modal_submit"
+            fill="BLUE"
+            fullWidth={true}
+            type="submit"
+          >
+            lbl_prefrence_modal_submit
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="cancel-button"
+            dataLocator="subscribe_modal_cancel"
+            fill="WHITE"
+            fullWidth={true}
+            onClick={[MockFunction]}
+          >
+            lbl_prefrence_modal_cancel
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </form>
+  </Styled(BodyCopy)>
+</div>
+`;

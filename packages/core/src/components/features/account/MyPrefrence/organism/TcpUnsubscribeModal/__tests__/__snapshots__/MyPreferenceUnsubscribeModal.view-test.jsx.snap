@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInformation component should render correctly 1`] = `
+<div
+  className="test"
+>
+  <Styled(BodyCopy)
+    className="myPreferenceModalWrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <form
+      className="test"
+      name="MyPreferenceFormModalUnsubscribe"
+      noValidate={true}
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-LRG elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        data-locator="my-preference-modal_title"
+        fontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_subscribe_text_alerts
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_info-text"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_modal_are_you_sure
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_info-text"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_modal_clicking_submit_text
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_sub-info-text"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        lbl_prefrence_modal_phone_number
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="disclaimer-sub-text"
+        color="text.primary"
+        component="div"
+        data-locator="my-preference-modal_sub-info-text"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
+      >
+        2347368468
+      </Styled(BodyCopy)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="submit-button"
+            dataLocator="subscribe_modal_submit"
+            fill="BLUE"
+            fullWidth={true}
+            type="submit"
+          >
+            lbl_prefrence_modal_submit
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-LRG"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(Button)
+            buttonVariation="fixed-width"
+            className="cancel-button"
+            dataLocator="subscribe_modal_cancel"
+            fill="WHITE"
+            fullWidth={true}
+            onClick={[MockFunction]}
+          >
+            lbl_prefrence_modal_cancel
+          </Styled(Button)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </form>
+  </Styled(BodyCopy)>
+</div>
+`;
