@@ -25,6 +25,7 @@ import {
   getAppliedFilters,
   getAppliedSortId,
   getLabels,
+  getIsFilterBy,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -33,6 +34,11 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
+
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../ProductDetail/container/ProductDetail.selectors';
 
 class ProductListingContainer extends React.PureComponent {
   constructor(props) {
@@ -101,6 +107,8 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       slpLabels,
       isLoggedIn,
+      currencyAttributes,
+      currency,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath } = this.state;
@@ -128,6 +136,8 @@ class ProductListingContainer extends React.PureComponent {
         sortLabels={sortLabels}
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
+        currency={currency}
+        currencyExchange={currencyAttributes.exchangevalue}
         {...otherProps}
       />
     ) : (
@@ -142,6 +152,8 @@ class ProductListingContainer extends React.PureComponent {
     );
   }
 }
+
+ProductListingContainer.pageId = 'c';
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
@@ -189,6 +201,9 @@ function mapStateToProps(state) {
     slpLabels: getLabels(state),
     isGuest: getUserLoggedInState(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    isFilterBy: getIsFilterBy(state),
+    currencyAttributes: getCurrencyAttributes(state),
+    currency: getCurrentCurrency(state),
   };
 }
 
@@ -239,6 +254,8 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -259,6 +276,8 @@ ProductListingContainer.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isLoggedIn: false,
+  currencyAttributes: {},
+  currency: '$',
 };
 
 export default withRouter(

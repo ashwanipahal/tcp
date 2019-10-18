@@ -102,6 +102,30 @@ export const getProductAvailability = product => {
   return product.getIn(['miscInfo', 'availability']);
 };
 
+export const getIsBossEligible = product => {
+  return product.getIn(['miscInfo', 'isBossEligible']);
+};
+
+export const getIsBopisEligible = product => {
+  return product.getIn(['miscInfo', 'isBopisEligible']);
+};
+
+export const getIsOnlineOnly = product => {
+  return product.getIn(['miscInfo', 'isOnlineOnly']);
+};
+
+export const getClearanceItem = product => {
+  return product.getIn(['miscInfo', 'clearanceItem']);
+};
+
+export const getIsInventoryAvailBOSS = product => {
+  return product.getIn(['miscInfo', 'isInventoryAvailBOSS']);
+};
+
+export const getIsStoreBOSSEligible = product => {
+  return product.getIn(['miscInfo', 'isStoreBOSSEligible']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -273,6 +297,50 @@ export const getLabelsCartItemTile = state => {
     sflDeleteSuccess,
     removeError: getLabelValue(state.Labels, 'lbl_minibag_errorRemove', 'minibag', 'global'),
     itemUpdated: getLabelValue(state.Labels, 'lbl_minibag_itemUpdated', 'minibag', 'global'),
+    bossUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    bossReqQtyUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossReqQtyUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    bopisUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bopisUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    ecomUnavailable: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_ecomUnavailable',
+      'cartItemTile',
+      'global'
+    ),
+    notAvailableOnlineOnly: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_notAvailableOnlineOnly',
+      'cartItemTile',
+      'global'
+    ),
+    notAvailableClearanceItem: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_notAvailableClearanceItem',
+      'cartItemTile',
+      'global'
+    ),
+    soldOutError: getLabelValue(state.Labels, 'lbl_cartTile_soldOut', 'cartItemTile', 'global'),
+    bossInEligible: getLabelValue(
+      state.Labels,
+      'lbl_cartTile_bossInEligible',
+      'cartItemTile',
+      'global'
+    ),
+    changeStore: getLabelValue(state.Labels, 'lbl_cartTile_changeStore', 'cartItemTile', 'global'),
   };
 };
 
@@ -310,16 +378,22 @@ export const getProductDetails = tile => {
       bossStartDate: getBossStartDate(tile),
       bossEndDate: getBossEndDate(tile),
       availability: getProductAvailability(tile),
+      isBossEligible: getIsBossEligible(tile),
+      isBopisEligible: getIsBopisEligible(tile),
+      isOnlineOnly: getIsOnlineOnly(tile),
+      clearanceItem: getClearanceItem(tile),
+      isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
+      isStoreBOSSEligible: getIsStoreBOSSEligible(tile),
     },
   };
 };
 
 export const getBossBopisFlags = state => {
   return {
-    isBOSSEnabled_TCP: state.session.getIn(['siteDetails', 'isBOSSEnabled_TCP']),
-    isBOPISEnabled_TCP: state.session.getIn(['siteDetails', 'isBOPISEnabled_TCP']),
-    isBOPISEnabled_GYM: state.session.getIn(['siteDetails', 'isBOPISEnabled_GYM']),
-    isBOSSEnabled_GYM: state.session.getIn(['siteDetails', 'isBOSSEnabled_GYM']),
+    isBOSSEnabled_TCP: state.session.siteDetails.isBOSSEnabled_TCP,
+    isBOPISEnabled_TCP: state.session.siteDetails.isBOPISEnabled_TCP,
+    isBOPISEnabled_GYM: state.session.siteDetails.isBOPISEnabled_GYM,
+    isBOSSEnabled_GYM: state.session.siteDetails.isBOSSEnabled_GYM,
   };
 };
 

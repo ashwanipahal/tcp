@@ -5,15 +5,15 @@ import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
 import MyPref from '../organism/MyPreferencesSection.view';
 
-const MyPrefrence = ({ labels }) => {
+const MyPrefrence = ({ labels, ...otherProps }) => {
   return (
     <div>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_prefrence_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
         data-locator="mypreference-header"
       />
-      <MyPref labels={labels} />
+      <MyPref labels={labels} {...otherProps} />
     </div>
   );
 };

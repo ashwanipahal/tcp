@@ -365,6 +365,14 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
   },
+  getTwitterAuthToken: {
+    method: 'GET',
+    URI: 'v2/twitter/requestToken',
+  },
+  getTwitterAccessToken: {
+    method: 'GET',
+    URI: 'v2/twitter/accessToken',
+  },
   getListofWishList: {
     method: 'GET',
     URI: 'v2/wishlist/getListOfWishlist',
@@ -400,6 +408,10 @@ const endpoints = {
   getStoreLocationByCountry: {
     method: 'GET',
     URI: 'v2/store/getStoreLocationByCountry',
+  },
+  startExpressCheckout: {
+    method: 'POST',
+    URI: 'v2/checkout/expressCheckout',
   },
 };
 export default endpoints;

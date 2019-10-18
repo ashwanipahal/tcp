@@ -21,6 +21,7 @@ let gymAPIConfig = null;
 export const LAZYLOAD_HOST_NAME = {
   HOME: 'lazyload-home',
   PLP: 'lazyload-plp',
+  PDP: 'lazyload-pdp',
   ACCOUNT: 'lazyload-account',
   WALLET: 'lazyload-wallet',
 };
@@ -53,6 +54,9 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'promoList':
       resolve(require('../services/handler/graphQL/queries/promoList'));
+      break;
+    case 'AccountNavigation':
+      resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
       break;
     default:
       reject();
@@ -377,7 +381,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     }`
   );
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_${appTypeSuffix}`];
+  const unbxdApiKeyTCP = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_TCP`];
+  const unbxdApiKeyGYM = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_GYM`];
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
@@ -385,15 +390,18 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
     assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
-    unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
-    unboxKey: `${unbxdApiKey}/${
-      envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_${appTypeSuffix}`]
-    }`,
-    unbxdApiKey,
+    unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: envConfig.RWD_APP_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
+    TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
   };
 };
 

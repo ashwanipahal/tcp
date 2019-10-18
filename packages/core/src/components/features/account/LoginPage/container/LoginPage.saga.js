@@ -9,7 +9,7 @@ import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 
 const errorLabel = 'Error in API';
 
@@ -21,6 +21,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      yield put(getUserInfo());
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
       } else {
@@ -33,9 +34,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       }
       yield put(navigateXHRAction());
       // Provide check for current page and depending on that make Cart or OrderDetails call.
-      yield put(BAG_PAGE_ACTIONS.getCartData());
-      // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-      return yield put(getUserInfo());
+      return yield put(BAG_PAGE_ACTIONS.getCartData());
     }
     return yield put(setLoginInfo(response));
   } catch (err) {

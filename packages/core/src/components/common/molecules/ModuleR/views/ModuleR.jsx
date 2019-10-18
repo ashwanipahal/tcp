@@ -175,6 +175,10 @@ class ModuleR extends React.PureComponent {
     if (selectedProductList.length) {
       selectedProductList = this.getSelectedProductList(selectedProductList);
     }
+    let dataStatus = true;
+    if (productTabList && productTabList.status) {
+      dataStatus = productTabList.status[selectedCategoryId];
+    }
 
     return (
       <Grid className={`${className} moduleR`}>
@@ -197,7 +201,7 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
-        {selectedProductList.length === 0 ? (
+        {dataStatus ? (
           <StyledSkeleton col={18} colSize={{ small: 2, medium: 2, large: 2 }} removeLastMargin />
         ) : null}
         {this.getImageGrid(selectedProductList)}

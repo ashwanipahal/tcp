@@ -33,7 +33,14 @@ class ProductTabListContainer extends React.PureComponent {
         category: { cat_id: catId },
       } = item;
       const tabsMap = map;
-      tabsMap[catId] = item;
+      if (Array.isArray(catId)) {
+        catId.forEach(id => {
+          tabsMap[id] = item;
+          return tabsMap;
+        });
+      } else {
+        tabsMap[catId] = item;
+      }
       return tabsMap;
     }, {});
   };

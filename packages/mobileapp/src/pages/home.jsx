@@ -8,6 +8,8 @@ import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDe
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import OutfitDetail from '@tcp/core/src/components/features/browse/OutfitDetails';
+import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
+
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -16,17 +18,29 @@ import Navigation from '../components/features/content/Navigation';
 import ProductLanding from '../components/features/browse/ProductLanding/ProductLanding';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 
-const getNewHeader = navigation => {
-  const title = navigation && navigation.getParam('title');
+const getNewHeader = (navigation, navTitle) => {
+  const title = navTitle || (navigation && navigation.getParam('title'));
   return {
     header: props => <HeaderNew {...props} title={title} />,
     headerBackground: 'transparent',
   };
 };
 
+const getDefaultHeaderWithSearch = navigation => {
+  return {
+    header: props => <Header {...props} showSearch navigation={navigation} />,
+    headerBackground: 'transparent',
+  };
+};
+
 const HomeStack = createStackNavigator(
   {
-    Home,
+    Home: {
+      screen: Home,
+      navigationOptions: ({ navigation }) => {
+        return getDefaultHeaderWithSearch(navigation);
+      },
+    },
     account,
     Navigation,
     ProductLanding,
@@ -68,6 +82,14 @@ const HomeStack = createStackNavigator(
       path: 'store-landing',
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
+      },
+    },
+    SearchDetail: {
+      screen: SearchDetail,
+      navigationOptions: ({ navigation }) => {
+        const title = navigation && navigation.getParam('title');
+        const navTitle = (title && `"${title.toUpperCase()}"`) || '';
+        return getNewHeader(navigation, navTitle);
       },
     },
   },

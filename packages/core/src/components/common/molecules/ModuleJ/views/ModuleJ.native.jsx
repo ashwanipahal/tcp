@@ -59,7 +59,6 @@ class ModuleJ extends React.PureComponent {
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId];
     selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
-
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
@@ -121,7 +120,11 @@ class ModuleJ extends React.PureComponent {
       },
       [[]]
     );
-    if (selectedProductList.length === 0) {
+    let dataStatus = true;
+    if (productTabList && productTabList.status) {
+      dataStatus = productTabList.status[selectedCategoryId];
+    }
+    if (dataStatus) {
       return (
         <Skeleton
           row={1}

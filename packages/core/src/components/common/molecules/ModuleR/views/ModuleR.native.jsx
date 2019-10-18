@@ -118,6 +118,14 @@ class ModuleR extends React.PureComponent {
     ) : null;
   }
 
+  getDataStatus = (productTabList, selectedCategoryId) => {
+    let dataStatus = true;
+    if (productTabList && productTabList.status) {
+      dataStatus = productTabList.status[selectedCategoryId];
+    }
+    return dataStatus;
+  };
+
   render() {
     const {
       navigation,
@@ -148,6 +156,7 @@ class ModuleR extends React.PureComponent {
         selectedProductList = selectedProductList.slice(0, 9);
       }
     }
+    const dataStatus = this.getDataStatus(selectedProductList, selectedCategoryId);
 
     return (
       <Container>
@@ -168,7 +177,7 @@ class ModuleR extends React.PureComponent {
           tabItems={divTabs}
           navigation={navigation}
         />
-        {selectedProductList.length === 0 ? (
+        {dataStatus ? (
           <Skeleton
             row={3}
             col={3}

@@ -166,6 +166,14 @@ export default css`
   .text-break {
     word-break: break-word;
   }
+  .anchor-full-width {
+    width: 100%;
+    display: inline-block;
+  }
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+  }
 
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {

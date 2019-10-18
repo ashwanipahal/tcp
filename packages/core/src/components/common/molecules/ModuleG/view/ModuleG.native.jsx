@@ -124,6 +124,15 @@ class ModuleG extends React.PureComponent {
     );
   };
 
+  getDataStatus = selectedProductList => {
+    const [selectedCategoryId] = this.state;
+    let dataStatus = true;
+    if (selectedProductList && selectedProductList.status) {
+      dataStatus = selectedProductList.status[selectedCategoryId];
+    }
+    return dataStatus;
+  };
+
   /**
    * @param {object} props : Props for renderView multi type of banner list, button list, header text.
    * @desc This is Method return the complete View with CTA Button .
@@ -135,6 +144,7 @@ class ModuleG extends React.PureComponent {
     selectedSingleCTAButtonCart
   ) => {
     const { navigation, headerText, promoBanner, divTabs } = this.props;
+    const dataStatus = this.getDataStatus(selectedProductList);
     return (
       <Container>
         <MessageContainer>
@@ -170,7 +180,7 @@ class ModuleG extends React.PureComponent {
           <SHADOW />
         </ShadowContainer>
         <View>
-          {selectedProductList.length === 0 ? (
+          {dataStatus ? (
             <Skeleton
               row={1}
               col={3}

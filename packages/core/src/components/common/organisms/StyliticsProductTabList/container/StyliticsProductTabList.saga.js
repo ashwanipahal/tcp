@@ -14,13 +14,21 @@ export function* fetchStyliticsProductTabListData({ payload }) {
     const res = yield call(styliticsProductListing.getData, payload);
     if (res) {
       return yield put(
-        styliticsProductTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
+        styliticsProductTabListDataSuccess({
+          [categoryId]: res,
+          errors: { [categoryId]: null },
+          status: { [categoryId]: false },
+        })
       );
     }
     throw new Error();
   } catch (err) {
     return yield put(
-      styliticsProductTabListDataFail({ [categoryId]: [], errors: { [categoryId]: true } })
+      styliticsProductTabListDataFail({
+        [categoryId]: [],
+        errors: { [categoryId]: true },
+        status: { [categoryId]: false },
+      })
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, BodyCopy, Col, Image, Row, Skeleton } from '../../../atoms';
+import { Anchor, Button, BodyCopy, Col, Image, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -93,20 +93,6 @@ class ModuleQ extends React.PureComponent {
     );
   };
 
-  getLoaderSlide = index => {
-    return (
-      <div key={index}>
-        <Skeleton className="looks-large-image skeleton-image-wrapper" />
-        <div className="looks-images-wrapper">
-          {Array.from({ length: 2 }).map(() => {
-            return <Skeleton className="looks-image" />;
-          })}
-          <Skeleton className="looks-image looks-image-last" />
-        </div>
-      </div>
-    );
-  };
-
   getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
 
@@ -151,6 +137,10 @@ class ModuleQ extends React.PureComponent {
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
     selectedProductList = selectedProductList.concat(selectedProductList);
     const IconPath = getIconPath('carousel-big-carrot');
+    let dataStatus = true;
+    if (selectedProductList && selectedProductList.status) {
+      dataStatus = selectedProductList.status[currentCatId];
+    }
     return (
       <Grid className={`${className} ${bgClass} moduleQ`}>
         <Row centered>
@@ -205,7 +195,7 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
-            {selectedProductList.length === 0 ? (
+            {dataStatus ? (
               <StyledSkeleton
                 col={3}
                 colSize={{ small: 2, medium: 2, large: 4 }}

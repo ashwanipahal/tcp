@@ -92,6 +92,10 @@ class ModuleJ extends React.PureComponent {
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     const iconPath = getIconPath('carousel-big-carrot');
+    let dataStatus = true;
+    if (productTabList && productTabList.status) {
+      dataStatus = productTabList.status[currentCatId];
+    }
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
@@ -213,7 +217,7 @@ class ModuleJ extends React.PureComponent {
               large: 1,
             }}
           >
-            {data.length === 0 ? (
+            {dataStatus ? (
               <StyledSkeleton
                 col={6}
                 colSize={{ small: 2, medium: 2, large: 2 }}

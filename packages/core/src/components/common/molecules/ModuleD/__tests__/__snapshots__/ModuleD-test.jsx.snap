@@ -45,11 +45,13 @@ exports[`ModuleD component renders correctly 1`] = `
             "title": "",
             "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
           },
-          "textItems": Object {
-            "color": "color2",
-            "style": "style1",
-            "text": "Mini me shop",
-          },
+          "textItems": Array [
+            Object {
+              "color": "color2",
+              "style": "style1",
+              "text": "Mini me shop",
+            },
+          ],
         },
       ]
     }
@@ -87,6 +89,7 @@ exports[`ModuleD component renders correctly 1`] = `
   />
   <Styled(Row)
     centered={true}
+    fullBleed={false}
   >
     <Styled(Col)
       className="moduleD_tile"
@@ -136,7 +139,7 @@ exports[`ModuleD component renders correctly 1`] = `
       >
         <Styled(Anchor)
           centered={true}
-          className="moduleD_textlink"
+          className="moduleD_textlink anchor-full-width"
           dataLocator="moduleD_textlink_1"
           target=""
           title="Family Tees"
@@ -198,7 +201,7 @@ exports[`ModuleD component renders correctly 1`] = `
       >
         <Styled(Anchor)
           centered={true}
-          className="moduleD_textlink"
+          className="moduleD_textlink anchor-full-width"
           dataLocator="moduleD_textlink_2"
           target=""
           title="Mom & Me Tees"
@@ -258,7 +261,7 @@ exports[`ModuleD component renders correctly 1`] = `
       >
         <Styled(Anchor)
           centered={true}
-          className="moduleD_textlink"
+          className="moduleD_textlink anchor-full-width"
           dataLocator="moduleD_textlink_3"
           target=""
           title="Family Tees"
@@ -323,7 +326,7 @@ exports[`ModuleD component renders correctly 1`] = `
       >
         <Styled(Anchor)
           centered={true}
-          className="moduleD_textlink"
+          className="moduleD_textlink anchor-full-width"
           dataLocator="moduleD_textlink_4"
           target=""
           title="Mom & Me Tees"
@@ -337,6 +340,7 @@ exports[`ModuleD component renders correctly 1`] = `
   </Styled(Row)>
   <Styled(Row)
     centered={true}
+    fullBleed={false}
   >
     <Styled(Button)
       buttonVariation="fixed-width"

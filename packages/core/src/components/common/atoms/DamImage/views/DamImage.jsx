@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import {
-  configureInternalNavigationFromCMSUrl,
-  getAPIConfig,
-  getIconPath,
-} from '../../../../../utils';
-
-const placeHolderImg = getIconPath('img-placeholder');
+import { configureInternalNavigationFromCMSUrl, getAPIConfig } from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -35,7 +29,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints, isProductPage } = props;
+  const { breakpoints, isProductImage } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -49,7 +43,7 @@ const getBreakpointImgUrl = (type, props) => {
 
   const { assetHost, productAssetPath } = getAPIConfig();
 
-  return isProductPage
+  return isProductImage
     ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
     : `${basePath}/${config}/${imgPath}`;
 };
@@ -67,17 +61,6 @@ const renderImage = imgProps => {
   } = imgProps;
 
   const { alt } = imgData;
-  const [isImgLoaded, setImgLoaded] = useState(false);
-  const imgTag = !isImgLoaded ? (
-    <img src={placeHolderImg} alt={alt} className="img-placeholder" />
-  ) : (
-    <img
-      src={getBreakpointImgUrl('xs', imgProps)}
-      alt={alt}
-      {...other}
-      onLoad={() => setImgLoaded(true)}
-    />
-  );
   return (
     <picture>
       <source
@@ -98,7 +81,7 @@ const renderImage = imgProps => {
           placeholderClass="img-placeholder"
         />
       ) : (
-        imgTag
+        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
       )}
     </picture>
   );
@@ -141,7 +124,7 @@ const DamImage = props => {
 
   return (
     <Anchor
-      className={ctaClassName}
+      className={`${ctaClassName} anchor-full-width`}
       to={to}
       asPath={ctaUrl}
       target={target}

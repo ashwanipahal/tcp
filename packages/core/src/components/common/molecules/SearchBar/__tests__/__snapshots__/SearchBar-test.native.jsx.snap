@@ -6,6 +6,7 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "labels": [Function],
         "openSearchProductPage": null,
         "showCustomizedSearch": false,
       },
@@ -34,6 +35,7 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
     }
   }
   forwardedRef={null}
+  labels={[Function]}
   openSearchProductPage={null}
   showCustomizedSearch={false}
 />

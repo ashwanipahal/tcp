@@ -155,6 +155,7 @@ export default css`
 `;
 
 export const StyledSkeleton = styled(Skeleton)`
+  margin-top: 5px;
   @media ${props => props.theme.mediaQuery.large} {
     .left-carousel {
       left: -25px;

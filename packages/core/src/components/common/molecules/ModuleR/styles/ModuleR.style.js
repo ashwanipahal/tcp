@@ -53,6 +53,7 @@ export const ImageGridCol = styled(Col)`
 `;
 
 export const StyledSkeleton = styled(Skeleton)`
+  margin-top: 5px;
   .skeleton-col {
     height: 109px;
     margin-bottom: 10px;

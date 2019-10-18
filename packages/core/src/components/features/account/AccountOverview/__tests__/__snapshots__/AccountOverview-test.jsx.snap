@@ -3,7 +3,7 @@
 exports[`MyAccountOverview View should render AccountOverview Correctly 1`] = `
 <Fragment>
   <Styled(FormPageHeading)
-    className="margin-none"
+    className="margin-none myAccountRightView"
     heading=""
   />
   <Styled(AccountOverviewTileList)

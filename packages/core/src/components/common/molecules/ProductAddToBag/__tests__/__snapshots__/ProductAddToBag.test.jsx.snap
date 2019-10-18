@@ -314,6 +314,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       height: 23px;
     }
   }
+  ",
+                    [Function],
+                    ";
 ",
                     ";
 ",
@@ -331,9 +334,10 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             }
             dataLocator="addnewaddress-state"
             id="color"
+            inheritedStyles=""
             name="color"
             onChange={[MockFunction]}
-            title=":"
+            title="Color"
             width={87}
           />
         </div>
@@ -461,7 +465,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 },
               ]
             }
-            title=":"
+            title="Size:"
             width={49}
           />
         </div>
@@ -478,6 +482,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
           />
         </div>
       </div>
+      <Measure
+        name="controls_visible"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </form>
@@ -797,6 +804,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       height: 23px;
     }
   }
+  ",
+                    [Function],
+                    ";
 ",
                     ";
 ",
@@ -814,9 +824,10 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             }
             dataLocator="addnewaddress-state"
             id="color"
+            inheritedStyles=""
             name="color"
             onChange={[MockFunction]}
-            title=":"
+            title="Color"
             width={87}
           />
         </div>
@@ -944,7 +955,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 },
               ]
             }
-            title=":"
+            title="Size:"
             width={49}
           />
           <Styled(BodyCopy)
@@ -992,6 +1003,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
           />
         </div>
       </div>
+      <Measure
+        name="controls_visible"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </form>
