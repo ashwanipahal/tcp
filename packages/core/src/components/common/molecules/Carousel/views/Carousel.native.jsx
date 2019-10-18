@@ -326,6 +326,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       loop,
       activeSlideAlignment,
       iconBottomMargin,
+      inactiveSlideOpacity,
     } = this.props;
 
     if (!data) {
@@ -368,6 +369,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               ref={this.carouselRef}
               hasParallaxImages={hasParallaxImages}
               loop={loop}
+              inactiveSlideOpacity={inactiveSlideOpacity}
               {...settings}
             />
             <TouchableView
@@ -405,6 +407,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplayInterval={autoplayInterval}
           hasParallaxImages={hasParallaxImages}
           activeSlideAlignment={activeSlideAlignment}
+          inactiveSlideOpacity={inactiveSlideOpacity}
           {...settings}
         />
 
@@ -446,6 +449,7 @@ SnapCarousel.defaultProps = {
   itemWidth: 0,
   activeSlideAlignment: 'center',
   iconBottomMargin: null,
+  inactiveSlideOpacity: 0.7,
 };
 
 SnapCarousel.propTypes = {
@@ -474,6 +478,7 @@ SnapCarousel.propTypes = {
   sliderWidth: PropTypes.number,
   itemWidth: PropTypes.number,
   activeSlideAlignment: PropTypes.string,
+  inactiveSlideOpacity: PropTypes.number,
 };
 
 export default withTheme(SnapCarousel);

@@ -11,11 +11,14 @@ const onAddToBag = data => {};
 // eslint-disable-next-line
 const onFavorite = item => {};
 
-const onOpenPDPPageHandler = (pdpUrl, selectedColorIndex) => {
-  const { title, onGoToPDPPage } = this.props;
-  if (onGoToPDPPage) {
-    onGoToPDPPage(title, pdpUrl, selectedColorIndex);
-  }
+const onOpenPDPPageHandler = props => (pdpUrl, selectedColorIndex) => {
+  const { title, navigation } = props;
+  navigation.navigate('ProductDetail', {
+    title,
+    pdpUrl,
+    selectedColorProductId: selectedColorIndex,
+    reset: true,
+  });
 };
 
 const ModuleO = props => {
@@ -63,7 +66,7 @@ const ModuleO = props => {
         onFavorite={onFavorite}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
-        onGoToPDPPage={onOpenPDPPageHandler}
+        onGoToPDPPage={onOpenPDPPageHandler(props)}
         onQuickViewOpenClick={onQuickViewOpenClick}
         fullWidth
         renderPriceAndBagOnly

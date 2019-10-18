@@ -7,6 +7,9 @@ import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import { getScreenWidth, getLocator } from '@tcp/core/src/utils/index.native';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
+import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { CarouselContainer, ButtonContainer } from './Recommendations.style';
 import config from './config';
 
@@ -15,13 +18,16 @@ const MODULE_HEIGHT = 287;
 const MODULE_WIDTH = getScreenWidth();
 
 const loadVariation = (variation, variationProps) => itemProps => {
-  const { isPlcc, onQuickViewOpenClick, priceOnly, ...others } = variationProps;
+  const { isPlcc, onQuickViewOpenClick, priceOnly, navigation, ...others } = variationProps;
+  const title = itemProps.item.name;
 
   if (variation === 'moduleO') {
     return (
       <ModuleO
         isPlcc={isPlcc}
+        title={title}
         priceOnly={priceOnly}
+        navigation={navigation}
         onQuickViewOpenClick={onQuickViewOpenClick}
         {...itemProps}
         {...others}
@@ -32,7 +38,9 @@ const loadVariation = (variation, variationProps) => itemProps => {
   return (
     <ModuleP
       isPlcc={isPlcc}
+      title={title}
       onQuickViewOpenClick={onQuickViewOpenClick}
+      navigation={navigation}
       {...itemProps}
       {...others}
     />
@@ -65,6 +73,7 @@ const renderRecommendationView = (props, variation) => {
     onQuickViewOpenClick,
     priceOnly,
     showButton,
+    navigation,
     ...others
   } = props;
 
@@ -91,6 +100,7 @@ const renderRecommendationView = (props, variation) => {
               priceOnly,
               isPlcc,
               onQuickViewOpenClick,
+              navigation,
               ...others,
             })}
             height={MODULE_HEIGHT}
@@ -98,6 +108,7 @@ const renderRecommendationView = (props, variation) => {
             itemWidth={PRODUCT_IMAGE_WIDTH}
             loop
             activeSlideAlignment="start"
+            inactiveSlideOpacity={1}
           />
         </CarouselContainer>
         {showButton && <ButtonView {...props} />}
@@ -112,16 +123,37 @@ const fetchRecommendations = loadRecommendations => () => {
 };
 
 const Recommendations = props => {
-  const { variation, loadRecommendations } = props;
+  const {
+    variation,
+    loadRecommendations,
+    navigation,
+    onPickUpOpenClick,
+    isPickupModalOpen,
+  } = props;
   const variationArray = variation.split(',');
 
   useEffect(fetchRecommendations(loadRecommendations));
 
-  return <View>{variationArray.map(value => renderRecommendationView(props, value))}</View>;
+  return (
+    <View>
+      {variationArray.map(value => renderRecommendationView(props, value))}
+      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+      <AddedToBagContainer navigation={navigation} />
+      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+    </View>
+  );
 };
 
 Recommendations.propTypes = {
   variation: PropTypes.string.isRequired,
   loadRecommendations: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func,
+  navigation: PropTypes.shape({}).isRequired,
+  isPickupModalOpen: PropTypes.bool.isRequired,
 };
+
+Recommendations.defaultProps = {
+  onPickUpOpenClick: () => {},
+};
+
 export default Recommendations;
