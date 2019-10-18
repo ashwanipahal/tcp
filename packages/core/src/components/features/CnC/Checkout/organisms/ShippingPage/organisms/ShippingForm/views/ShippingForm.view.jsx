@@ -239,13 +239,30 @@ class ShippingForm extends React.Component {
     return handleSubmit(e);
   };
 
+  renderGiftServices = () => {
+    const { isCanada, isGiftServicesChecked, dispatch } = this.props;
+    return (
+      !isCanada && (
+        <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+          <GiftServices
+            showDefaultCheckbox={false}
+            formName={formName}
+            formSection="giftServices"
+            variation="secondary"
+            isGiftServicesChecked={isGiftServicesChecked}
+            dispatch={dispatch}
+          />
+        </Col>
+      )
+    );
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
       className,
       dispatch,
       isOrderUpdateChecked,
-      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -374,16 +391,7 @@ class ShippingForm extends React.Component {
                 </div>
               </FormSection>
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <GiftServices
-                showDefaultCheckbox={false}
-                formName={formName}
-                formSection="giftServices"
-                variation="secondary"
-                isGiftServicesChecked={isGiftServicesChecked}
-                dispatch={dispatch}
-              />
-            </Col>
+            {this.renderGiftServices()}
           </Row>
           <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
           <CheckoutFooter

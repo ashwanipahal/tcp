@@ -196,12 +196,19 @@ export function* expressCheckoutSubmit(formData) {
 }
 
 // method to handle submit of order in review page
-function* submitOrderForProcessing({ payload: { navigation, formData } }) {
+// function* submitOrderForProcessing({ payload: { navigation, formData } }) { ===> will be back on component integration
+function* submitOrderForProcessing({ payload: { navigation } }) {
   const orderId = yield select(getCurrentOrderId);
   const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
   const currentLanguage = yield select(getCurrentLanguage);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   const pendingPromises = [];
+  /** This code is to stop application crash on submit order in case of express checkout */
+  const formData = {
+    billing: {
+      cvv: '123',
+    },
+  };
   if (isExpressCheckoutEnabled && formData) {
     yield call(expressCheckoutSubmit, formData);
   }
