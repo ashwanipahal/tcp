@@ -312,6 +312,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: { itemInfo: { itemId } = {} },
       removeFavItem,
+      isFavoriteView,
     } = this.props;
     return itemNotAvailable ? (
       <Button
@@ -330,7 +331,7 @@ class ProductsGridItem extends React.PureComponent {
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
         onClick={this.handleQuickViewOpenClick}
-        fill="BLUE"
+        fill={isFavoriteView ? 'BLUE' : ''}
       >
         {labels.addToBag}
       </Button>
