@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
-import { isClient } from '@tcp/core/src/utils';
+import { isClient, isCanada } from '@tcp/core/src/utils';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -236,7 +236,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
-            <LoyaltyBanner isProductDetailView />
+            {!isCanada() && <LoyaltyBanner isProductDetailView />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
