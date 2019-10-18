@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-
+import useImageLoadedState from '@tcp/web/src/hooks/useImageLoadedState';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { HERO_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Carousel, LinkText, style } from '../ModuleA.style';
 import { Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
@@ -13,6 +15,27 @@ import config from '../config';
 const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
+
+/**
+ * This component is used for the initial slide only,
+ * so that the load timing of the image within can be
+ * measured with the Performance API.
+ */
+function FirstCarouselSlide(props) {
+  const imageRef = useRef();
+  const imageLoaded = useImageLoadedState(imageRef);
+  return (
+    <>
+      <DamImage ref={imageRef} {...props} />
+      {imageLoaded && <RenderPerf.Measure name={HERO_VISIBLE} />}
+    </>
+  );
+}
+
+// Helper for determining when FirstCarouselSlide should be rendered
+function getSlideComponent(slideIndex) {
+  return slideIndex === 0 ? FirstCarouselSlide : DamImage;
+}
 
 class ModuleA extends React.Component {
   constructor(props) {
@@ -99,9 +122,11 @@ class ModuleA extends React.Component {
                   ribbonBanner,
                 } = item;
                 const imageConfig = isGymboree() ? IMG_DATA_GYM.crops : IMG_DATA_TCP.crops;
+                // Use a special component for the first slide (for performance measurement)
+                const SlideComponent = getSlideComponent(i);
                 return (
                   <div key={i.toString()} className="banner-slide">
-                    <DamImage
+                    <SlideComponent
                       imgData={linkedImage.image}
                       imgConfigs={imageConfig}
                       data-locator={`${getLocator('moduleA_image')}${i}`}
