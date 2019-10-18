@@ -60,10 +60,8 @@ class SearchBar extends React.PureComponent {
     e.preventDefault();
     const { setSearchState } = this.props;
 
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       this.openFullSizeSearchModel();
-    } else if (window.innerWidth <= breakpoints.large) {
-      routerPush('/search', '/search');
     } else {
       setSearchState(true);
     }
@@ -71,7 +69,7 @@ class SearchBar extends React.PureComponent {
 
   closeModalIfMobile = e => {
     e.preventDefault();
-    if (window.innerWidth <= breakpoints.large) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       const { onCloseClick } = this.props;
       onCloseClick();
     }
@@ -155,7 +153,7 @@ class SearchBar extends React.PureComponent {
   initiateSearchBySubmit = () => {
     this.startInitiateSearch();
     const { onCloseClick } = this.props;
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       onCloseClick();
     }
   };
