@@ -45,10 +45,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -468,10 +472,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -887,10 +895,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -1324,10 +1336,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -1743,10 +1759,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -2162,10 +2182,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -2595,10 +2619,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -3040,10 +3068,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -3473,10 +3505,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -3918,10 +3954,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -4351,10 +4391,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -4770,10 +4814,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -5207,10 +5255,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -5644,10 +5696,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
       </div>
     </Styled(Col)>
@@ -6095,10 +6151,14 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Image)
-          className="product-image"
-          data-locator="cartItemImage"
-          src="https://test4.childrensplace.comundefined"
+        <WithTheme(DamImage)
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          isProductImage={true}
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
