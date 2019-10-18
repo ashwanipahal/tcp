@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
@@ -48,7 +48,7 @@ const getBreakpointImgUrl = (type, props) => {
     : `${basePath}/${config}/${imgPath}`;
 };
 
-const renderImage = imgProps => {
+const RenderImage = forwardRef((imgProps, ref) => {
   const {
     breakpoints,
     imgConfigs,
@@ -75,15 +75,20 @@ const renderImage = imgProps => {
       />
 
       {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <LazyLoadImage
+          forwardedRef={ref}
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+        />
       ) : (
-        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
       )}
     </picture>
   );
-};
+});
 
-const DamImage = props => {
+const DamImage = forwardRef((props, ref) => {
   const {
     theme: { breakpoints },
     imgConfigs,
@@ -108,7 +113,7 @@ const DamImage = props => {
   };
 
   if (!link) {
-    return renderImage(imgProps);
+    return <RenderImage {...imgProps} ref={ref} />;
   }
 
   const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
@@ -127,10 +132,10 @@ const DamImage = props => {
       title={title}
       dataLocator="image-link"
     >
-      {renderImage(imgProps)}
+      <RenderImage {...imgProps} ref={ref} />
     </Anchor>
   );
-};
+});
 
 DamImage.defaultProps = {
   lazyLoad: true,
