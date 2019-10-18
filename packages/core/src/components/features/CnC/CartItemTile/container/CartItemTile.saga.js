@@ -17,6 +17,8 @@ import {
 } from './CartItemTile.actions';
 import {
   AddToPickupError,
+  AddToCartError,
+  clearAddToBagErrorState,
   clearAddToPickupErrorState,
 } from '../../AddedToBag/container/AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
@@ -78,8 +80,13 @@ export function* removeCartItem({ payload }) {
 }
 
 export function* updateCartItemSaga({ payload }) {
+  const { updateActionType } = payload;
   try {
-    yield put(clearAddToPickupErrorState());
+    if (updateActionType) {
+      yield put(clearAddToBagErrorState());
+    } else {
+      yield put(clearAddToPickupErrorState());
+    }
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
@@ -100,7 +107,11 @@ export function* updateCartItemSaga({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
-    yield put(AddToPickupError(errorMessage));
+    if (updateActionType) {
+      yield put(AddToPickupError(errorMessage));
+    } else {
+      yield put(AddToCartError(errorMessage));
+    }
   }
 }
 

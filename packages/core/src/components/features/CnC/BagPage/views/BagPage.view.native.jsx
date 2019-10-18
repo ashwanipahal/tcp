@@ -35,6 +35,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 import LoyaltyBanner from '../../LoyaltyBanner';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
@@ -80,9 +81,9 @@ export class BagPage extends React.Component {
       isCartItemSFL,
       labels,
       isSflItemRemoved,
-      isCartItemsUpdating: { isDeleting },
+      isCartItemsUpdating: { isDeleting, isUpdating },
     } = this.props;
-    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted, itemUpdated } = labels;
     let message = null;
     if (isCartItemSFL) {
       message = sflSuccess;
@@ -90,6 +91,8 @@ export class BagPage extends React.Component {
       message = sflDeleteSuccess;
     } else if (isDeleting) {
       message = itemDeleted;
+    } else if (isUpdating) {
+      message = itemUpdated;
     }
 
     return (
@@ -315,6 +318,7 @@ export class BagPage extends React.Component {
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
             </MainSection>
+            <QuickViewModal fromBagPage />
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (

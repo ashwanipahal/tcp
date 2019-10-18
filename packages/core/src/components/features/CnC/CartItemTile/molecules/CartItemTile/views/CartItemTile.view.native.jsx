@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -221,10 +221,10 @@ class ProductInformation extends React.Component {
 
   rightButton = () => {
     const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
-    const { isGenricGuest, isCondense } = this.props;
+    const { isGenricGuest, isCondense, onQuickViewOpenClick } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, itemBrand },
-      productInfo: { skuId, generalProductId },
+      itemInfo: { itemId, isGiftItem, itemBrand, qty, color, size, fit },
+      productInfo: { skuId, generalProductId, productPartNumber },
       miscInfo: { orderItemType },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
@@ -232,7 +232,24 @@ class ProductInformation extends React.Component {
     return (
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-          <View>
+          <TouchableOpacity
+            accessibilityRole="link"
+            onPress={() => {
+              onQuickViewOpenClick({
+                colorProductId: productPartNumber,
+                orderInfo: {
+                  orderItemId: itemId,
+                  selectedQty: qty,
+                  selectedColor: color,
+                  selectedSize: size,
+                  selectedFit: fit,
+                  itemBrand,
+                },
+              });
+              this.onSwipeComplete(this.swipeable);
+              return this.swipeable.toggle('right');
+            }}
+          >
             <Image
               data-locator={getLocator('cart_item_edit_link')}
               source={editIcon}
@@ -240,7 +257,7 @@ class ProductInformation extends React.Component {
               width={IconWidth}
             />
             <IconTextEdit>{labels.edit}</IconTextEdit>
-          </View>
+          </TouchableOpacity>
         )}
         {this.renderSflActionsLinks()}
         <MarginLeft
@@ -386,6 +403,7 @@ ProductInformation.propTypes = {
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
   currencySymbol: PropTypes.string.isRequired,
+  onQuickViewOpenClick: PropTypes.func,
 };
 
 ProductInformation.defaultProps = {
@@ -397,6 +415,7 @@ ProductInformation.defaultProps = {
   swipedElement: null,
   isBagPageSflSection: false,
   showOnReviewPage: true,
+  onQuickViewOpenClick: () => {},
 };
 
 export default ProductInformation;

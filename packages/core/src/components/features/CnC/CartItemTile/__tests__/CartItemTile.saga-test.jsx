@@ -81,6 +81,7 @@ describe('Cart Item saga update', () => {
     variantNo: '3002156005',
     xitem_catEntryId: '1285036',
     callBack: jest.fn(),
+    updateActionType: 'UpdatePickUpItem',
   };
   const updateCartItemSagaGen = updateCartItemSaga({ payload });
   it('should dispatch updateCartItem action for success resposnse', () => {

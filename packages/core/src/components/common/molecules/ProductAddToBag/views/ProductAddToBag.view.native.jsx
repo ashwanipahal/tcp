@@ -22,6 +22,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
     super(props);
   }
 
+  getButtonLabel = () => {
+    const { fromBagPage, plpLabels } = this.props;
+    const { addToBag, update } = plpLabels;
+    return fromBagPage ? update : addToBag;
+  };
+
   /**
    * @function renderAddToBagButton
    * @returns Add To Bag Butyon
@@ -29,18 +35,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      plpLabels: { addToBag },
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
         color="white"
         fill="BLUE"
-        text={addToBag}
+        text={this.getButtonLabel()}
         fontSize="fs10"
         fontWeight="extrabold"
         fontFamily="secondary"

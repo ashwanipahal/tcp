@@ -151,9 +151,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
-  renderUpdatingBagItemSuccessfulMsg = isUpdating => {
-    const { labels } = this.props;
+  renderUpdatingBagItemSuccessfulMsg = (isUpdating, isBagPage) => {
+    const { labels, isBagPageSflSection } = this.props;
     return (
+      !isBagPageSflSection &&
+      isBagPage &&
       isUpdating && (
         <div className="delete-msg">
           {this.getTickIcon()}
