@@ -30,7 +30,7 @@ const ROUTES_LIST = [
     resolver: '/index',
   },
   {
-    noSlugPath: 'store',
+    noSlugPath: 'store-locator',
     path: '/store-locator',
     resolver: '/storeLocator',
   },
@@ -51,6 +51,12 @@ const ROUTES_LIST = [
     path: '/instagram',
     resolver: '/instagram',
   },
+  {
+    noSlugPath: 'twitter',
+    path: '/twitter',
+    resolver: '/twitter',
+  },
+
   {
     noSlugPath: 'account',
     path: '/account/:id?/:subSection?',
@@ -86,15 +92,15 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'search',
-    path: '/search/:searchQuery',
+    path: '/search/:searchQuery?',
     resolver: '/SearchDetail',
     params: ['searchQuery'],
   },
   {
     noSlugPath: 'outfit',
-    path: '/outfit/:oid',
-    resolver: '/OutfitDetail',
-    params: ['oid'],
+    path: '/outfit/:outfitId/:vendorColorProductIdsList',
+    resolver: '/OutfitDetails',
+    params: ['outfitId', 'vendorColorProductIdsList'],
   },
   {
     noSlugPath: 'place-card',
@@ -144,10 +150,9 @@ const ROUTES_LIST = [
     params: ['contentType'],
   },
   {
-    noSlugPath: 'store',
-    path: '/store/:storeStr?',
-    resolver: '/storeDetail',
-    params: ['storeStr'],
+    noSlugPath: 'stores',
+    path: '/stores',
+    resolver: '/StoreList',
   },
 ];
 

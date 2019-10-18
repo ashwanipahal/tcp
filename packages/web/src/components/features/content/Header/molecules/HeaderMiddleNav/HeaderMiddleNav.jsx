@@ -7,12 +7,13 @@ import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/conta
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
+import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
-import SearchBar from '../SearchBar/index';
-import style from './HeaderMiddleNav.style';
+import style, { customHeaderStyle } from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
 
 /**
@@ -35,8 +36,18 @@ class HeaderMiddleNav extends React.PureComponent {
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      isFullSizeSearchModalOpen: false,
     };
     this.setSearchState = this.setSearchState.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
+  }
+
+  onCloseClick() {
+    const { isFullSizeSearchModalOpen, isSearchOpen } = this.state;
+    this.setState({
+      isFullSizeSearchModalOpen: !isFullSizeSearchModalOpen,
+      isSearchOpen: !isSearchOpen,
+    });
   }
 
   setSearchState(currentStatus, cb = null) {
@@ -101,7 +112,17 @@ class HeaderMiddleNav extends React.PureComponent {
       labels,
     } = this.props;
     const brand = getBrand();
-    const { userNameClick, triggerLoginCreateAccount, cartItemCount, isSearchOpen } = this.state;
+    const {
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+      isSearchOpen,
+      isFullSizeSearchModalOpen,
+    } = this.state;
+    const {
+      accessibility: { cartIconButton, closeIconButton, hamburgerMenu } = {},
+      store: storeLabel = {},
+    } = labels;
 
     return (
       <React.Fragment>
@@ -115,7 +136,7 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className="header-middle-nav-storelocator"
             >
-              <StoreLocatorLink store={store} labels={labels && labels.store} />
+              <StoreLocatorLink store={store} labels={storeLabel} />
             </Col>
             <Col
               className="header-middle-nav-search"
@@ -132,7 +153,9 @@ class HeaderMiddleNav extends React.PureComponent {
                     : '/static/images/menu.svg'
                 }
                 alt="hamburger menu"
+                role="button"
                 tabIndex="0"
+                aria-label={navigationDrawer.open ? closeIconButton : hamburgerMenu}
                 className="hamburger-menu"
                 onClick={handleNavigationDrawer(
                   openNavigationDrawer,
@@ -149,7 +172,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 }
                 data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
               />
-              <StoreLocatorLink store={store} labels={labels && labels.store} />
+              <StoreLocatorLink store={store} labels={storeLabel} />
               <BrandLogo
                 alt={config[brand].alt}
                 className="header-brand__home-logo--brand"
@@ -204,14 +227,44 @@ class HeaderMiddleNav extends React.PureComponent {
                   </React.Fragment>
                 )
               )}
-              <SearchBar
-                className={!isSearchOpen && 'rightLink'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
-              />
+              {isFullSizeSearchModalOpen ? (
+                <Modal
+                  isOpen={isFullSizeSearchModalOpen}
+                  onRequestClose={this.handleShowHideFullSizeModalClick}
+                  overlayClassName="TCPModal__Overlay"
+                  className="TCPModal__Content"
+                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
+                  heightConfig={{ height: '99%' }}
+                  fixedWidth
+                  inheritedStyles={customHeaderStyle}
+                  headingAlign="center"
+                  horizontalBar={false}
+                  stickyCloseIcon
+                  fullWidth
+                  stickyHeader
+                >
+                  <SearchBar
+                    className={!isSearchOpen}
+                    setSearchState={this.setSearchState}
+                    isSearchOpen={isSearchOpen}
+                    onCloseClick={this.onCloseClick}
+                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                  />
+                </Modal>
+              ) : (
+                <SearchBar
+                  className={!isSearchOpen && 'rightLink'}
+                  setSearchState={this.setSearchState}
+                  isSearchOpen={isSearchOpen}
+                  onCloseClick={this.onCloseClick}
+                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                />
+              )}
+
               <Anchor
                 to=""
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="small"
@@ -229,6 +282,8 @@ class HeaderMiddleNav extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  aria-hidden="true"
+                  tabIndex="-1"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>

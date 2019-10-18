@@ -57,6 +57,8 @@ class LoginSection extends PureComponent<Props> {
       showLogin,
       setEmailid,
       getTouchStatus,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -83,6 +85,8 @@ class LoginSection extends PureComponent<Props> {
               variation={variation}
               navigation={navigation}
               handleContinueAsGuest={handleContinueAsGuest}
+              userplccCardNumber={userplccCardNumber}
+              userplccCardId={userplccCardId}
             />
           </Fragment>
         )}
@@ -111,7 +115,6 @@ class LoginSection extends PureComponent<Props> {
             color={colorPallete.text.secondary}
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
             text={getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
             onPress={this.toggleCheckoutModal}
@@ -127,6 +130,8 @@ LoginSection.propTypes = {
   labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginSection.defaultProps = {
@@ -139,6 +144,8 @@ LoginSection.defaultProps = {
       lbl_login_createAccountHelp_2: 'start earning points!',
     },
   },
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 export default withStyles(LoginSection, FormStyle);

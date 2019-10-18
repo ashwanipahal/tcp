@@ -70,6 +70,7 @@ const styles = css`
   }
   .couponCard__col {
     flex: 1;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     ${props =>
       props.isCarouselView ? `padding-right: ${props.theme.spacing.ELEM_SPACING.SM};` : ''}
   }
@@ -115,6 +116,9 @@ const styles = css`
   .transparent-box {
     background: none;
     padding-bottom: 0;
+  }
+  .couponTitle {
+    word-break: ${props => (props.isCarouselView ? 'break-word' : 'normal')};
   }
 `;
 

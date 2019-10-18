@@ -17,7 +17,8 @@ import {
 } from './PickUpStoreModal.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
-import { getAddedToBagError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -36,6 +37,9 @@ export const mapDispatchToProps = dispatch => {
     addItemToCartInPickup: payload => {
       dispatch(addItemToCartBopis(payload));
     },
+    updatePickUpCartItem: payload => {
+      dispatch(updateCartItem(payload));
+    },
   };
 };
 
@@ -45,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
   const favStore = PickupSelectors.getDefaultStore(state);
   const geoDefaultStore = PickupSelectors.getGeoDefaultStore(state);
   const defaultStore = favStore || geoDefaultStore || null;
-  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess } = ownProps;
+  const { isShowAddItemSuccessNotification, onSubmit, onSubmitSuccess, navigation } = ownProps;
   const isShowDefaultSize = false; // TODO - Do we need this ? abTestingStoreView.getIsShowDefaultSize(state);
 
   const currentProduct = PickupSelectors.getCurrentProduct(state);
@@ -64,7 +68,10 @@ const mapStateToProps = (state, ownProps) => {
   const storeSearchError = PickupSelectors.getStoreSearchError(state);
   const pickupSkuFormId = `${PRODUCT_SKU_SELECTION_FORM}-${generalProductId}`;
   const PickupSkuFormValues = { ...PickupSelectors.getInitialValues(state, pickupSkuFormId) };
-
+  const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
+  const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
+  const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
+  const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -74,7 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     cartBopisStoresList: PickupSelectors.getStoresOnCart(state),
     distancesMap,
     isShowExtendedSizesNotification: false,
-    initialValues: itemValues.formValues,
+    initialValues: fromBagPage ? initialValuesFromBagPage : itemValues.formValues,
     showDefaultSizeMsg: itemValues.showDefaultSizeMsg,
     isPickupStoreUpdating: false,
     requestorKey: '',
@@ -85,7 +92,7 @@ const mapStateToProps = (state, ownProps) => {
     isPickUpWarningModal,
     openSkuSelectionForm,
     isCanada: isCanada(),
-    addToBagError: getAddedToBagError(state),
+    addToBagError: getAddedToPickupError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
     currencySymbol: sessionSelectors.getCurrentCurrencySymbol(state),
     isInternationalShipping: sessionSelectors.getIsInternationalShipping(state),
@@ -99,6 +106,10 @@ const mapStateToProps = (state, ownProps) => {
     currentProduct,
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
+    navigation,
+    updateCartItemStore,
+    initialValuesFromBagPage,
+    isItemShipToHome,
   };
 };
 

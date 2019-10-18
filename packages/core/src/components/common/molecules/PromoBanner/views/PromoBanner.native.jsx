@@ -1,19 +1,9 @@
-// @flow
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Anchor } from '../../../atoms';
 import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 import CurrencyUpPromoBanner from './CurrencyUpPromoBanner';
-
-type Props = {
-  ribbonBanner: Array<Object>,
-  promoBanner: Array<Object>,
-  bodyCopyStyles: Array<Object>,
-};
-
-type PercentageStyleProps = {
-  text: string,
-};
 
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
@@ -64,7 +54,9 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  percentage_wrapped_large: props => <PercentageStyle {...props} />,
+  percentage_wrapped_large: props => <PercentageStyle colorVariation="white" {...props} />,
+  percentage_wrapped_large_black: props => <PercentageStyle colorVariation="black" {...props} />,
+  percentage_all_wrapped_normal_tab: props => <PercentageStyle colorVariation="black" {...props} />,
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
   // TODO: Remove .style10 when currency_up_style is available in CMS
@@ -177,20 +169,30 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  medium_text_regular: props => (
+  medium_text_regular: props => <MediumTextRegular {...props} />,
+  medium_text_regular_tab: props => <MediumTextRegular {...props} />,
+  extrabold_text_regular: props => (
     <BodyCopy
-      fontSize="fs20"
+      fontSize="fs42"
       color="gray.900"
       mobilefontFamily="primary"
-      fontWeight="regular"
+      fontWeight="black"
       textAlign="center"
-      letterSpacing="ls2"
-      lineHeight="20px"
       {...props}
     />
   ),
 
   percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
+  extrabold_text_regular_secondary: props => (
+    <BodyCopy
+      fontSize="fs48"
+      color="white"
+      mobilefontFamily="secondary"
+      fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -204,7 +206,7 @@ export const bodyCopyStyles = {
  * the key provided by CMS
  * @param {*} props
  */
-const PromoBanner = (props: Props) => {
+const PromoBanner = props => {
   const {
     locator,
     navigation,
@@ -219,14 +221,14 @@ const PromoBanner = (props: Props) => {
         <Anchor url={link ? link.url : ''} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
             const StyleBodyCopy = bodyCopyStyles[style];
-            return (
+            return StyleBodyCopy ? (
               <StyleBodyCopy
                 text={index ? `${text}` : text}
                 locator={locator}
                 {...otherProps}
                 key={index.toString()}
               />
-            );
+            ) : null;
           })}
         </Anchor>
       )}
@@ -238,7 +240,7 @@ const PromoBanner = (props: Props) => {
  * This function return the Promobanner Percentage Style
  * Color is 'Black' and Split by the space ' ' key. Font size is also small.
  */
-const PercentageAllWrappedNormal = (props: PercentageStyleProps) => {
+const PercentageAllWrappedNormal = props => {
   const { text } = props;
 
   const strArray = text && text.split(' ');
@@ -284,12 +286,17 @@ const PercentageAllWrappedNormal = (props: PercentageStyleProps) => {
   );
 };
 
+PercentageAllWrappedNormal.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
 /**
  * This function return the Promobanner Percentage Style
  * Color is 'White' and Split by the space ' ' key .
  */
-const PercentageStyle = (props: PercentageStyleProps) => {
-  const { text } = props;
+
+const PercentageStyle = props => {
+  const { text, colorVariation } = props;
 
   const strArray = text && text.split(' ');
   const bodyCopyStyle = { height: 33 };
@@ -300,7 +307,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
       <BodyCopy
         fontSize="fs64"
         fontWeight="black"
-        color="white"
+        color={colorVariation}
         fontFamily="primary"
         textAlign="center"
         lineHeight="64px"
@@ -311,16 +318,16 @@ const PercentageStyle = (props: PercentageStyleProps) => {
         <BodyCopy
           fontSize="fs42"
           fontWeight="black"
-          color="white"
+          color={colorVariation}
           fontFamily="primary"
           text={strArray && strArray[1]}
           lineHeight="42px"
           style={bodyCopyStyle}
         />
         <BodyCopy
-          fontSize="fs20"
+          fontSize="fs18"
           fontWeight="black"
-          color="white"
+          color={colorVariation}
           fontFamily="primary"
           textAlign="center"
           lineHeight="20px"
@@ -331,11 +338,16 @@ const PercentageStyle = (props: PercentageStyleProps) => {
   );
 };
 
+PercentageStyle.propTypes = {
+  text: PropTypes.string.isRequired,
+  colorVariation: PropTypes.string.isRequired,
+};
+
 /**
  * This function return the Promobanner Percentage Style
  * Color is 'Pink' and Split by the space ' ' key .
  */
-const PercentagePinkStyle = (props: PercentageStyleProps) => {
+const PercentagePinkStyle = props => {
   const { text } = props;
 
   const strArray = text && text.split(' ');
@@ -376,6 +388,35 @@ const PercentagePinkStyle = (props: PercentageStyleProps) => {
       </ContainerView>
     </Container>
   );
+};
+
+PercentagePinkStyle.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+/**
+ * This function return the Promobanner Style
+ * Style contains regular primary font
+ */
+const MediumTextRegular = props => {
+  return (
+    <BodyCopy
+      fontSize="fs20"
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontWeight="semibold"
+      textAlign="center"
+      letterSpacing="ls2"
+      lineHeight="20px"
+      {...props}
+    />
+  );
+};
+
+PromoBanner.propTypes = {
+  ribbonBanner: PropTypes.arrayOf(PropTypes.object).isRequired,
+  promoBanner: PropTypes.arrayOf(PropTypes.object).isRequired,
+  bodyCopyStyles: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default PromoBanner;

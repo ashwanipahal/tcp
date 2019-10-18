@@ -6,9 +6,8 @@ import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/at
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
-
+import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
-import SearchBar from '../SearchBar/index';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
@@ -28,8 +27,10 @@ class CondensedHeader extends React.PureComponent {
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      isFullSizeSearchModalOpen: false,
     };
     this.setSearchState = this.setSearchState.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -39,6 +40,14 @@ class CondensedHeader extends React.PureComponent {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
+  }
+
+  onCloseClick() {
+    const { isFullSizeSearchModalOpen, isSearchOpen } = this.state;
+    this.setState({
+      isFullSizeSearchModalOpen: !isFullSizeSearchModalOpen,
+      isSearchOpen: !isSearchOpen,
+    });
   }
 
   setSearchState(currentStatus, cb = null) {
@@ -97,7 +106,9 @@ class CondensedHeader extends React.PureComponent {
     } = this.props;
     const brand = getBrand();
     const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
-    const { accessibility: { accountIconButton, cartIconButton, hamburgerMenu } = {} } = labels;
+    const {
+      accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
+    } = labels;
     return (
       <React.Fragment>
         <Row id="condensedHeader" className={`${className} condensed-header`}>
@@ -111,6 +122,8 @@ class CondensedHeader extends React.PureComponent {
                 }
                 alt={hamburgerMenu}
                 tabIndex="0"
+                role="button"
+                aria-label={navigationDrawer.open ? closeIconButton : hamburgerMenu}
                 className="hamburger-menu"
                 onClick={handleNavigationDrawer(
                   openNavigationDrawer,
@@ -147,6 +160,7 @@ class CondensedHeader extends React.PureComponent {
                 setSearchState={this.setSearchState}
                 isSearchOpen={isSearchOpen}
                 fromCondensedHeader
+                onCloseClick={this.onCloseClick}
               />
 
               {userName ? (
@@ -181,6 +195,7 @@ class CondensedHeader extends React.PureComponent {
               <Anchor
                 to="#"
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
                 fontSizeVariation="small"
@@ -198,6 +213,8 @@ class CondensedHeader extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  tabIndex="-1"
+                  aria-hidden="true"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>

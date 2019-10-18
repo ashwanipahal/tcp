@@ -72,6 +72,7 @@ class CouponCard extends React.Component<Props> {
         data-locator={`coupon_${coupon.status}_apply_cartCta`}
         fullWidth="true"
         disabled={isFetching}
+        aria-labelledby={coupon.id}
       >
         {coupon.labelStatus}
       </Button>
@@ -90,6 +91,7 @@ class CouponCard extends React.Component<Props> {
         type="submit"
         data-locator={`coupon_${coupon.status}_remove_cartCta`}
         fullWidth="true"
+        aria-labelledby={coupon.id}
       >
         {coupon.labelStatus}
       </Button>
@@ -176,7 +178,9 @@ class CouponCard extends React.Component<Props> {
                       lineHeight="lh115"
                       fontWeight="black"
                       fontFamily="secondary"
+                      className="couponTitle"
                       data-locator={`coupon_${coupon.status}_couponNameLbl`}
+                      id={coupon.id}
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
@@ -196,6 +200,7 @@ class CouponCard extends React.Component<Props> {
                     to="/#"
                     onClick={this.handleDefaultLinkClick}
                     className="cartDetailsLink"
+                    aria-labelledby={coupon.id}
                   >
                     {labels.DETAILS_BUTTON_TEXT}
                   </Anchor>

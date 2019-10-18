@@ -71,10 +71,12 @@ const CenterAlign = styled.View`
 
 const ConfirmButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+  width: 200px;
 `;
 
 const CloseButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  width: 200px;
 `;
 
 const CustomAddress = {

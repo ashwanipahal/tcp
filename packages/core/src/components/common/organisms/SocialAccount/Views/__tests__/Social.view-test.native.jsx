@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
+import { NativeModules } from 'react-native';
 import { SocialviewVanilla } from '../Social.view.native';
 
 describe('Social component', () => {
   const props = {
-    saveSocialAcc: {},
+    saveSocialAcc: jest.fn(),
     getSocialAcc: {
       facebook: {
         accessToken: false,
@@ -24,6 +24,10 @@ describe('Social component', () => {
 
   beforeEach(() => {
     component = shallow(<SocialviewVanilla {...props} />);
+    NativeModules.RNTwitterSignIn = {
+      init: jest.fn(),
+      logIn: jest.fn(() => Promise.resolve({ loginData: { userID: 'foo', authToken: 'foo' } })),
+    };
   });
 
   it('should renders correctly', () => {
@@ -32,7 +36,7 @@ describe('Social component', () => {
 
   it.skip('should simulate facebook connect', () => {
     component
-      .find('TouchableOpacity')
+      .find('Styled(TouchableOpacity)')
       .simulate('press', { isSocialAccount: 'Facebook', isConnected: false });
     expect(component).toMatchSnapshot();
   });
@@ -52,10 +56,13 @@ describe('Social component', () => {
     expect(props.handleComponentChange).toHaveBeenCalledTimes(1);
   });
 
-  it('should simulate instagram connect', () => {
-    component
-      .find('TouchableOpacity')
-      .simulate('press', { isSocialAccount: 'Instagram', isConnected: false });
-    expect(component).toMatchSnapshot();
+  it('test dispatchSaveSocial func', () => {
+    component.instance().dispatchSaveSocial('facebook', 'foo', 'foo');
+    expect(props.pointModalClose).toHaveBeenCalled();
+  });
+
+  it('should simulate twitter connect', () => {
+    component.instance().handleSocialNetwork('Twitter', false);
+    expect(props.saveSocialAcc).toHaveBeenCalledTimes(1);
   });
 });

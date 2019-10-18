@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyOrderTile should render correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    data-locator="no_rewards_msg"
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="semibold"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="shop now"
+    textDecoration={null}
+  />
+  <Styled(View)
+    spacingStyles="margin-top-LRG"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="gray"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator="orders-shop-now-btn"
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="msg"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Fragment>
+`;

@@ -36,7 +36,9 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -83,6 +85,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -418,6 +421,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",

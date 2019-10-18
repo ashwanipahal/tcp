@@ -66,8 +66,8 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       </Text>
     </Styled(View)>
     <Styled(LineComp)
-      borderColor="black"
-      borderWidth={0.65}
+      borderColor="gray.600"
+      borderWidth={1}
       marginBottom={10}
       marginTop={10}
     />
@@ -182,7 +182,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="regular"
           margin={null}
           numberOfLines={null}
-          text="undefined"
+          text="undefined:"
           textAlign="left"
           textDecoration={null}
         />
@@ -229,6 +229,39 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
           fontWeight="regular"
           margin={null}
           numberOfLines={null}
+          text="1.00"
+          textAlign="right"
+          textDecoration={null}
+        />
+      </Text>
+    </Styled(View)>
+    <Styled(View)>
+      <Text>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          bodySize="one"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          text="undefined:"
+          textAlign="left"
+          textDecoration={null}
+        />
+      </Text>
+      <Text>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          bodySize="one"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          text="1.00"
           textAlign="right"
           textDecoration={null}
         />
@@ -267,8 +300,8 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       </Text>
     </Styled(View)>
     <Styled(LineComp)
-      borderColor="black"
-      borderWidth={0.65}
+      borderColor="gray.600"
+      borderWidth={1}
       marginBottom={10}
       marginTop={10}
     />

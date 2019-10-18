@@ -59,6 +59,7 @@ describe('ButtonList component', () => {
     nextSubmitText: '',
     isPaymentDisabled,
     dispatch: jest.fn(),
+    scrollView: { scrollTo: jest.fn() },
   };
 
   it('renders correctly without props', () => {
@@ -155,9 +156,11 @@ describe('ButtonList component', () => {
           cvvCode: 'Enter correct code',
         },
       },
+      dispatch: jest.fn(),
+      change: jest.fn(),
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
-    component.setState({ addNewCCState: true });
+    component.setState({ addNewCCState: true, editMode: true });
     expect(component).toMatchSnapshot();
   });
   it('renders correctly if  no cards present ', () => {
@@ -180,6 +183,8 @@ describe('ButtonList component', () => {
           cvvCode: 'Enter correct code',
         },
       },
+      dispatch: jest.fn(),
+      change: jest.fn(),
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
@@ -189,5 +194,41 @@ describe('ButtonList component', () => {
     const label = {};
     instance.renderCVVField({ labels: label, selectedCard: card[0] });
     expect(spyRenderCVVField).toHaveBeenCalled();
+  });
+  it('renders correctly without props with editmode', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    component.setState({ editMode: true });
+    expect(component).toMatchSnapshot();
+  });
+  it('renders correctly with method getAddNewCCForm with editmode', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetCreditListView = jest.spyOn(instance, 'getAddNewCCForm');
+    const onCardFocus = jest.fn();
+    instance.getAddNewCCForm({ onCardFocus, editMode: true });
+    expect(spyGetCreditListView).toHaveBeenCalled();
+  });
+  it('renders correctly with method getCheckoutBillingAddress with editmode', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetCreditListView = jest.spyOn(instance, 'getCheckoutBillingAddress');
+    instance.getCheckoutBillingAddress({ editMode: true });
+    expect(spyGetCreditListView).toHaveBeenCalled();
+  });
+
+  it('renders correctly with method unsetFormEditState', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    const instance = component.instance();
+    const spyGetCreditListView = jest.spyOn(instance, 'unsetFormEditState');
+    instance.unsetFormEditState();
+    expect(spyGetCreditListView).toHaveBeenCalled();
+  });
+  it('renders correctly with method onCCDropDownChange', () => {
+    const component = shallow(<BillingPaymentForm {...props} />);
+    component.setState({ addNewCCState: true });
+    const instance = component.instance();
+    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
+    instance.onCCDropDownChange();
+    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
 });

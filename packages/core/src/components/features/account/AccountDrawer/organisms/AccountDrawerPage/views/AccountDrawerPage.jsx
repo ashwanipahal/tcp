@@ -10,21 +10,28 @@ import MyOffersCoupons from '../../../../common/organism/MyOffersCoupons';
 import { isCanada } from '../../../../../../../utils';
 
 const AccountDrawerPage = props => {
-  const { className, plccUser, userName, closedOverlay } = props;
+  const { className, plccUser, userName, closedOverlay, labels, globalLabels } = props;
   const isCA = isCanada();
   return (
     <div className={className}>
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
-          <RewardsPoints />
-          <ExtraPointsTeaser plccUser={plccUser} />
+          <div className="elem-pl-MED elem-pr-MED">
+            <RewardsPoints />
+          </div>
+          <ExtraPointsTeaser
+            plccUser={plccUser}
+            labels={labels}
+            closedOverlay={closedOverlay}
+            globalLabels={globalLabels}
+          />
         </>
       )}
       <div className="accountDrawer_coupons">
         <MyOffersCoupons closedOverlay={closedOverlay} />
       </div>
-      <AccountDrawerBottomLinks />
+      <AccountDrawerBottomLinks closedOverlay={closedOverlay} />
     </div>
   );
 };
@@ -35,6 +42,7 @@ AccountDrawerPage.propTypes = {
   userName: PropTypes.string,
   closedOverlay: PropTypes.func.isRequired,
   plccUser: PropTypes.bool,
+  globalLabels: PropTypes.shape({}),
 };
 
 AccountDrawerPage.defaultProps = {
@@ -42,6 +50,7 @@ AccountDrawerPage.defaultProps = {
   labels: {},
   userName: '',
   plccUser: false,
+  globalLabels: {},
 };
 
 export default withStyles(AccountDrawerPage, styles);

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PastOrders component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-bottom-MED margin-top-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator="no_rewards_msg"
+      dataLocator=""
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_orders_pastOrders"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`PastOrders component should renders correctly 2`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-bottom-MED margin-top-LRG"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      data-locator="no_rewards_msg"
+      dataLocator=""
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_orders_pastOrders"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <OrdersListItem
+    componentProps={Object {}}
+    handleComponentChange={[MockFunction]}
+    key="7000036213"
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 4, 2019",
+        "orderNumber": "7000036213",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$83.45",
+        "orderTracking": "N/A",
+        "orderTrackingUrl": "https://childrensplace.narvar.com/childrensplace/tracking/ups?order_number=7000036213&order_date=2019-10-04T07:17:00-04:00&dzip=10036&locale=en_US&type=p",
+      }
+    }
+  />
+</Fragment>
+`;

@@ -1,181 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Address component should renders correctly 1`] = `
-<Styled(BodyCopy)
+<StyledComponent
+  address={
+    Object {
+      "addressLine": Array [
+        "addressline 1",
+        "addressline 2",
+      ],
+      "city": "test city",
+      "country": "test country",
+      "firstName": "test",
+      "lastName": "test",
+      "phone1": "1234567890",
+      "state": "test state",
+      "zipCode": "111-111",
+    }
+  }
   className="sample-class"
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize="fs14"
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  link={null}
-  textAlign="left"
->
-  <Styled(BodyCopy)
-    className="addressTile__name address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    test test
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    addressline 1
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    addressline 2
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    test city, test state 111-111
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    test country
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    1234567890
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .addressLine {
+    @media ",
+          [Function],
+          " {
+      ",
+          [Function],
+          "
+    }
+  }
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Address)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
 `;
 
 exports[`Address component should renders correctly when optional fields are not present 1`] = `
-<Styled(BodyCopy)
+<StyledComponent
+  address={
+    Object {
+      "addressLine": Array [
+        "addressline 1",
+        "addressline 2",
+      ],
+      "city": "test city",
+      "firstName": "test",
+      "lastName": "test",
+      "state": "test state",
+      "zipCode": "111-111",
+    }
+  }
   className="sample-class"
-  color="text.primary"
-  component="div"
-  fontFamily="primary"
-  fontSize="fs14"
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  link={null}
-  textAlign="left"
->
-  <Styled(BodyCopy)
-    className="addressTile__name address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    test test
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    addressline 1
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    addressline 2
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="address"
-    color="text.primary"
-    component="p"
-    data-locator=""
-    fontFamily="secondary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    test city, test state 111-111
-  </Styled(BodyCopy)>
-</Styled(BodyCopy)>
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .addressLine {
+    @media ",
+          [Function],
+          " {
+      ",
+          [Function],
+          "
+    }
+  }
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Address)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
 `;

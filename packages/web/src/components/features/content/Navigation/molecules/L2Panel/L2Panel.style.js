@@ -151,7 +151,7 @@ export default css`
       width: 88px;
       height: 1px;
       border-radius: 0.5px;
-      background-color: ${props => props.theme.colorPalette.blue[500]};
+      background-color: ${props => props.theme.colorPalette.primary.main};
     }
     .l2-nav-category-links {
       display: flex;
@@ -162,6 +162,7 @@ export default css`
       ul.half-width {
         width: 50%;
       }
+
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
@@ -176,8 +177,8 @@ export default css`
     }
     .l2-nav-link {
       display: block;
-      padding: 13px 0 12px 0;
-      line-height: 1.07;
+      padding: 11px 0 5px 0;
+      line-height: 1.11;
     }
     .shop-by-size-links {
       display: flex;

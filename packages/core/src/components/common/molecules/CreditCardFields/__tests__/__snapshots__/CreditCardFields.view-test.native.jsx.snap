@@ -1,0 +1,772 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardFields native Component CreditCardFields to render correctly  1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      cameraIcon={false}
+      cardType=""
+      cardTypeImgUrl=""
+      component={[Function]}
+      customStyle={
+        Object {
+          "height": 72,
+        }
+      }
+      dataLocator="cardNbrTxtBox"
+      enableSuccessCheck={false}
+      id="cardNumber"
+      isPLCCEnabled={true}
+      keyboardType="numeric"
+      label=""
+      name="cardNumber"
+      onFocus={[Function]}
+      val=""
+    />
+  </Styled(View)>
+  <Styled(View)
+    showCvv={true}
+  >
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
+              "bounces": true,
+              "data": Array [],
+              "dropDownItemFontWeight": "semibold",
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="expMonthDropDown"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
+        }
+        heading=""
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        name="expMonth"
+        onValueChange={[Function]}
+        selectedValue=""
+        variation="secondary"
+      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="expMonth"
+          label=""
+          name="expMonth"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
+              "bounces": true,
+              "data": Array [],
+              "dropDownItemFontWeight": "semibold",
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="expYearDropDown"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
+        }
+        heading=""
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        name="expYear"
+        onValueChange={[Function]}
+        selectedValue=""
+        variation="secondary"
+      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="expYear"
+          label=""
+          name="expYear"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text) />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        customStyle={
+          Object {
+            "height": 72,
+          }
+        }
+        dataLocator="cvvTxtBox"
+        id="cvvCode"
+        keyboardType="numeric"
+        label=""
+        name="cvvCode"
+        type="text"
+      />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="cardType"
+        name="cardType"
+        type="hidden"
+      />
+      <Styled(View) />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CreditCardFields native Component CreditCardFields to render correctly  2`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Field
+      cameraIcon={true}
+      cardType={null}
+      cardTypeImgUrl=""
+      component={[Function]}
+      customStyle={
+        Object {
+          "height": 72,
+        }
+      }
+      dataLocator="cardNbrTxtBox"
+      enableSuccessCheck={false}
+      id="cardNumber"
+      isEdit={true}
+      isPLCCEnabled={true}
+      keyboardType="numeric"
+      label=""
+      name="cardNumber"
+      onFocus={[Function]}
+      val=""
+    />
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.900"
+        dataLocator="pdp_fast_shipping_icon"
+        iconFontName="FontAwesome"
+        isButton={false}
+        isDisabled={false}
+        margin={null}
+        name="camera"
+        onPress={[Function]}
+        size="fs25"
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(View)>
+  <Styled(View)
+    showCvv={true}
+  >
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
+              "bounces": true,
+              "data": Array [],
+              "dropDownItemFontWeight": "semibold",
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="expMonthDropDown"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
+        }
+        heading=""
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        name="expMonth"
+        onValueChange={[Function]}
+        selectedValue=""
+        variation="secondary"
+      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="expMonth"
+          label=""
+          name="expMonth"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "arrowImageStyle": null,
+              "bounces": true,
+              "data": Array [],
+              "dropDownItemFontWeight": "semibold",
+              "dropDownStyle": null,
+              "itemStyle": null,
+              "onValueChange": null,
+              "selectedItemFontWeight": "semibold",
+              "selectedValue": null,
+              "variation": "primary",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(DropDown)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  height: ",
+                [Function],
+                "px;
+  ",
+                [Function],
+                ";
+  background-color: ",
+                [Function],
+                ";
+  width: 100%;
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="expYearDropDown"
+        dropDownStyle={
+          Object {
+            "border": 1,
+            "height": 40,
+            "marginRight": 15,
+            "width": 100,
+          }
+        }
+        heading=""
+        itemStyle={
+          Object {
+            "height": 40,
+            "width": 100,
+          }
+        }
+        name="expYear"
+        onValueChange={[Function]}
+        selectedValue=""
+        variation="secondary"
+      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="expYear"
+          label=""
+          name="expYear"
+          title=""
+          type="hidden"
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text) />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        customStyle={
+          Object {
+            "height": 72,
+          }
+        }
+        dataLocator="cvvTxtBox"
+        id="cvvCode"
+        keyboardType="numeric"
+        label=""
+        name="cvvCode"
+        type="text"
+      />
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="cardType"
+        name="cardType"
+        type="hidden"
+      />
+      <Styled(View) />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;

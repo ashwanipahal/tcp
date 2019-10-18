@@ -26,9 +26,7 @@ export const logError = ({ error, errorInfo }) => {
     extraData: {
       errorInfo,
     },
-    tags: {
-      component: 'ERROR_BOUNDARY',
-    },
+    tags: ['ERROR_BOUNDARY'],
   });
   return true;
 };

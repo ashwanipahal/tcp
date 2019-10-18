@@ -4,22 +4,21 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 
 export const getCurrentCountry = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
 };
 
-/* istanbul ignore next */
 export const getPageLabels = ({ Labels }) => {
-  const {
-    StoreLocator: { StoreLanding, StoreDetail, StoreList },
-  } = Labels;
-  return {
-    ...StoreLanding,
-    ...StoreDetail,
-    ...StoreList,
-  };
+  const pageLabels = Labels.StoreLocator;
+  let finalLabels = {};
+  if (pageLabels !== undefined) {
+    const { StoreLanding, StoreDetail, StoreList } = pageLabels;
+    finalLabels = {
+      ...StoreLanding,
+      ...StoreDetail,
+      ...StoreList,
+    };
+  }
+  return finalLabels;
 };
 
 export const getStoreInfo = state => {

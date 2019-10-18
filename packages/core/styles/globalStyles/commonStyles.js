@@ -163,6 +163,13 @@ export default css`
       display: none !important;
     }
   }
+  .text-break {
+    word-break: break-word;
+  }
+
+  .capitalize {
+    text-transform: uppercase;
+  }
 
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {

@@ -27,6 +27,7 @@ describe('Cart Item saga', () => {
     const afterFunc = () => {};
     const getOrderDetailSagaGen = getOrderDetailSaga({ payload: { after: afterFunc } });
     getOrderDetailSagaGen.next();
+    getOrderDetailSagaGen.next();
 
     const res = {
       orderDetails: {
@@ -45,6 +46,7 @@ describe('Cart Item saga', () => {
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
     const getCartDataSagaGen = getCartDataSaga({ payload: {} });
+    getCartDataSagaGen.next();
     getCartDataSagaGen.next();
 
     const res = {

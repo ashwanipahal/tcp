@@ -73,6 +73,8 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
+      margin-right: 0;
+      margin-left: auto;
     }
   }
 `;

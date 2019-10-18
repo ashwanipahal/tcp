@@ -2,10 +2,10 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
-  addToBagAction={null}
   colorList={Array []}
   currentProduct={null}
   fitList={Array []}
+  handleFormSubmit={null}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
   quantityList={Array []}
@@ -14,6 +14,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedFit={null}
   selectedQuantity={1}
   selectedSize={null}
+  showAddToBagCTA={true}
   sizeList={Array []}
 >
   <Field
@@ -24,12 +25,15 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "componentWidth": 80,
           "data": Array [],
           "error": null,
+          "input": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
           "locators": null,
-          "renderItem": null,
+          "renderColorItem": false,
+          "selectColor": null,
           "selectItem": null,
+          "selectedColor": "",
           "selectedItem": null,
           "separatorWidth": 8,
         },
@@ -61,7 +65,9 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "value": "pdp_color_value",
       }
     }
-    renderItem={[Function]}
+    name="color"
+    renderColorItem={true}
+    selectedColor={null}
     separatorWidth={16}
   />
   <Field
@@ -72,12 +78,15 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "componentWidth": 80,
           "data": Array [],
           "error": null,
+          "input": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
           "locators": null,
-          "renderItem": null,
+          "renderColorItem": false,
+          "selectColor": null,
           "selectItem": null,
+          "selectedColor": "",
           "selectedItem": null,
           "separatorWidth": 8,
         },
@@ -110,7 +119,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "value": "pdp_fit_value",
       }
     }
-    name=""
+    name="Fit"
     selectedItem=""
   />
   <Field
@@ -121,12 +130,15 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
           "componentWidth": 80,
           "data": Array [],
           "error": null,
+          "input": null,
           "itemNameKey": "",
           "itemValue": "",
           "keyExtractor": null,
           "locators": null,
-          "renderItem": null,
+          "renderColorItem": false,
+          "selectColor": null,
           "selectItem": null,
+          "selectedColor": "",
           "selectedItem": null,
           "separatorWidth": 8,
         },
@@ -160,7 +172,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
         "value": "pdp_size_value",
       }
     }
-    name=""
+    name="Size"
     selectedItem=""
   />
   <Styled(View)>
@@ -176,20 +188,21 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       text="undefined: "
       textDecoration={null}
     />
-    <NativeDropDown
-      androidPickerStyle={null}
-      bottomBorderOnly={true}
+    <Field
+      component={[Function]}
       data={Array []}
-      onValueChange={null}
+      heading="undefined: "
+      id="quantity"
+      name="Quantity"
+      onValueChange={[Function]}
       selectedValue={1}
-      width={null}
     />
   </Styled(View)>
   <ErrorDisplay />
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}

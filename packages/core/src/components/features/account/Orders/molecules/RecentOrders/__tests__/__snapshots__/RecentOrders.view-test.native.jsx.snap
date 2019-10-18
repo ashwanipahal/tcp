@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentOrders component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-bottom-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      className="elem-mb-LRG"
+      data-locator="no_rewards_msg"
+      dataLocator="recent-order_heading"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_orders_recentOrder"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <EmptyOrdersList
+    labels={Object {}}
+  />
+</Fragment>
+`;
+
+exports[`RecentOrders component should renders correctly 2`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-bottom-MED"
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      className="elem-mb-LRG"
+      data-locator="no_rewards_msg"
+      dataLocator="recent-order_heading"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="lbl_orders_recentOrder"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <OrdersListItem
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
+    labels={Object {}}
+    orderItem={
+      Object {
+        "currencySymbol": "$",
+        "isBOSSOrder": false,
+        "isCanadaOrder": false,
+        "isEcomOrder": true,
+        "orderDate": "Oct 4, 2019",
+        "orderNumber": "7000037172",
+        "orderStatus": "lbl_orders_statusNa",
+        "orderTotal": "$24.95",
+        "orderTracking": "N/A",
+        "orderTrackingUrl": "https://childrensplace.narvar.com/childrensplace/tracking/ups?order_number=7000037172&order_date=2019-10-04T07:22:00-04:00&dzip=10036&locale=en_US&type=p",
+      }
+    }
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    data-locator="orders-shop-now-btn"
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[Function]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="lbl_orders_trackit"
+    theme={Object {}}
+    url=""
+  />
+</Fragment>
+`;

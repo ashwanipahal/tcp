@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import CheckoutConstants from '../Checkout.constants';
 import PickupPage from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
 import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
+import withKeyboardAvoidingView from '../../../../common/hoc/withKeyboardAvoidingView.native';
+import Confirmation from '../../Confirmation';
 
-export default class CheckoutPage extends React.PureComponent {
+class CheckoutPage extends React.PureComponent {
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -41,6 +42,9 @@ export default class CheckoutPage extends React.PureComponent {
       addNewShippingAddressData,
       // setCheckoutStage,
       onPickupSubmit,
+      formatPayload,
+      verifyAddressAction,
+      submitVerifiedShippingAddressData,
       submitReview,
     } = this.props;
     const { routeTo } = navigation.state.params;
@@ -81,6 +85,9 @@ export default class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
+            verifyAddressAction={verifyAddressAction}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
@@ -114,7 +121,7 @@ export default class CheckoutPage extends React.PureComponent {
           />
         );
       case CONFIRMATION.toLowerCase():
-        return <Text>Confirmation Page</Text>;
+        return <Confirmation />;
       default:
         return null;
     }
@@ -146,6 +153,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
@@ -157,3 +167,5 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
 };
+
+export default withKeyboardAvoidingView(CheckoutPage);

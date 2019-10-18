@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
-<View
-  searchedText="Pink Dress"
->
-  <View>
+exports[`SearchDetailVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)
+    margins="0 12px 0 12px"
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       color="gray.900"
@@ -13,7 +13,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      text="You searched for"
+      text=""
       textDecoration={null}
     />
     <Styled(BodyCopy)
@@ -25,9 +25,37 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
-      text="\\"Pink Dress\\""
+      text="\\"Pant\\""
       textDecoration={null}
     />
-  </View>
-</View>
+  </Styled(View)>
+  <Styled(ProductListView)
+    breadCrumbs={Array []}
+    filters={null}
+    filtersLength={0}
+    getProducts={[MockFunction]}
+    isLoadingMore={false}
+    labels={Object {}}
+    labelsFilter={Object {}}
+    lastLoadedPageNumber={0}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    onPickUpOpenClick={[Function]}
+    onSubmit={[MockFunction]}
+    products={Array []}
+    setListRef={[Function]}
+    slpLabels={
+      Object {
+        "lbl_searched_for": "",
+      }
+    }
+    sortLabels={Object {}}
+    totalProductsCount={0}
+  />
+  <Connect(QuickViewModalContainer) />
+  <Connect(AddedToBagContainer) />
+</Styled(View)>
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -10,18 +11,7 @@ import utils from '../../../../../utils';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 
-// @flow
-
-type Props = {
-  address: Object,
-  labels: Object,
-  className: string,
-  onDefaultShippingAddressClick(address: {}): Object,
-  setSelectedAddress: Function,
-  setDeleteModalMountState: Function,
-};
-
-class AddressBookTile extends React.Component<Props> {
+class AddressBookTile extends React.Component {
   handleDefaultLinkClick = event => {
     const { onDefaultShippingAddressClick, address } = this.props;
     event.preventDefault();
@@ -66,6 +56,7 @@ class AddressBookTile extends React.Component<Props> {
 
   render() {
     const { address, labels, className } = this.props;
+    const { addressId } = address;
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
@@ -129,6 +120,7 @@ class AddressBookTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
@@ -139,6 +131,7 @@ class AddressBookTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             to="/#"
+            aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
@@ -150,6 +143,15 @@ class AddressBookTile extends React.Component<Props> {
     );
   }
 }
+
+AddressBookTile.propTypes = {
+  address: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDefaultShippingAddressClick: PropTypes.shape({}).isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  setSelectedAddress: PropTypes.func.isRequired,
+};
 
 export default withStyles(AddressBookTile, styles);
 export { AddressBookTile as AddressBookTileVanilla };

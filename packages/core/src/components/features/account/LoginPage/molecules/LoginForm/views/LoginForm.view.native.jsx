@@ -2,20 +2,19 @@ import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
-import { noop } from 'lodash';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
+import { noop, get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
+import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
-
-const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -46,6 +45,7 @@ class LoginForm extends React.PureComponent<Props> {
     super(props);
     this.state = {
       type: 'password',
+      setRecaptchaModalMountedState: false,
     };
   }
 
@@ -55,6 +55,49 @@ class LoginForm extends React.PureComponent<Props> {
       change('emailAddress', setEmailid);
     }
   }
+
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
+  onMessage = event => {
+    const { handleSubmit, onSubmit, change } = this.props;
+    if (event && event.nativeEvent.data) {
+      const value = get(event, 'nativeEvent.data', '');
+      change('recaptchaToken', value);
+      handleSubmit(data => {
+        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
+        const LoginData = {
+          emailAddress,
+          password,
+          rememberMe,
+          savePlcc,
+          userTouchId,
+          recaptchaToken: value,
+        };
+        onSubmit(LoginData);
+      })();
+
+      this.setRecaptchaModalMountState();
+    }
+  };
+
+  onClose = () => {
+    this.setRecaptchaModalMountState();
+  };
+
+  handleLoginClick = e => {
+    const { handleSubmit, invalid, showRecaptcha } = this.props;
+    e.preventDefault();
+    if (!invalid && showRecaptcha) {
+      this.setRecaptchaModalMountState();
+    } else {
+      handleSubmit();
+    }
+  };
 
   showForgotPassword = () => {
     const { showForgotPasswordForm, resetForm } = this.props;
@@ -76,8 +119,20 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, handleSubmit, onSubmit, variation, getTouchStatus } = this.props;
-    const { type } = this.state;
+    const {
+      labels,
+      variation,
+      getTouchStatus,
+      showRecaptcha,
+      userplccCardNumber,
+      userplccCardId,
+    } = this.props;
+    const { type, setRecaptchaModalMountedState } = this.state;
+    const getPlccLbl = getLabelValue(
+      labels,
+      'lbl_createAccount_plcc_checkbox_Text',
+      'registration'
+    ).replace('#number', `${userplccCardNumber}`);
     return (
       <Fragment>
         <View {...this.props}>
@@ -122,6 +177,17 @@ class LoginForm extends React.PureComponent<Props> {
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
+          {!!(userplccCardNumber && userplccCardId) && (
+            <Field
+              inputVariation="inputVariation-1"
+              name="plcc_checkbox"
+              component={InputCheckbox}
+              dataLocator="plcc_checkbox"
+              disabled={false}
+              rightText={getPlccLbl}
+              marginTop={13}
+            />
+          )}
           <View style={styles.inputCheckBoxStyle}>
             <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           </View>
@@ -129,16 +195,12 @@ class LoginForm extends React.PureComponent<Props> {
           <CustomButton
             fill="BLUE"
             text={getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
-            buttonVariation="variable-width"
             customStyle={styles.loginButtonStyle}
-            onPress={handleSubmit(onSubmit)}
+            onPress={this.handleLoginClick}
           />
 
           {variation === 'checkout' && (
             <CustomButton
-              color={colorPallete.black}
-              fill="WHITE"
-              buttonVariation="variable-width"
               customStyle={styles.loginButtonStyle}
               text={getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
               onPress={this.handleContinueAsGuest}
@@ -156,6 +218,17 @@ class LoginForm extends React.PureComponent<Props> {
             onPress={this.showForgotPassword}
           />
           <LineComp marginTop={28} />
+
+          <React.Fragment>
+            {setRecaptchaModalMountedState && showRecaptcha && (
+              <RecaptchaModal
+                onMessage={this.onMessage}
+                setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+                toggleRecaptchaModal={this.setRecaptchaModalMountState}
+                onClose={this.onClose}
+              />
+            )}
+          </React.Fragment>
         </View>
       </Fragment>
     );
@@ -178,6 +251,8 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func,
   showForgotPasswordForm: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
@@ -195,6 +270,8 @@ LoginForm.defaultProps = {
   },
   handleSubmit: noop,
   onSubmit: noop,
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 const validateMethod = createValidateMethod(

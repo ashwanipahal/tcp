@@ -98,21 +98,28 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     textAlign="center"
     textDecoration={null}
   />
-  <Styled(Styled(Styled(BodyCopy)))
-    accessibilityText=""
-    color="gray.900"
-    dataLocator=""
-    fontFamily="secondary"
-    fontSize="fs18"
-    fontWeight="regular"
-    margin={null}
-    numberOfLines={null}
-    paddingBottom="24px"
-    paddingTop="16px"
-    text="lbl_PLCCForm_copyToClipboard"
-    textAlign="center"
-    textDecoration={null}
-  />
+  <TouchableOpacity
+    accessibilityLabel="lbl_PLCCForm_copyToClipboard"
+    accessibilityRole="button"
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Styled(Styled(Styled(BodyCopy)))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      paddingBottom="24px"
+      paddingTop="16px"
+      text="lbl_PLCCForm_copyToClipboard"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </TouchableOpacity>
   <Styled(View)>
     <Styled(Styled(ImageComp))
       alt=""
@@ -155,39 +162,12 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
       disableButton={false}
       fill="BLUE"
-      fontWeight="regular"
-      fullWidth=""
-      iconColor="gray.800"
-      iconName="chevron-down"
-      iconSize="fs12"
-      locator=""
-      navigation={Object {}}
-      onPress={[Function]}
-      selected={false}
-      selectedIcon="chevron-up"
-      showIcon={false}
-      text="lbl_PLCCForm_checkout"
-      theme={Object {}}
-      type="submit"
-      url=""
-      width="100%"
-    />
-  </Styled(View)>
-  <Styled(View)>
-    <Styled(CustomButton)
-      active={false}
-      buttonVariation="variable-width"
-      color="black"
-      customStyle={Object {}}
-      customTextStyle={null}
-      disableButton={false}
-      fill="WHITE"
       fullWidth=""
       iconColor="gray.800"
       iconName="chevron-down"
@@ -305,7 +285,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}

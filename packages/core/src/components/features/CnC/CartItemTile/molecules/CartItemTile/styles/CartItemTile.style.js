@@ -93,6 +93,9 @@ export default css`
     width: 15px;
     height: 15px;
     padding-top: 0px;
+    img {
+      display: block;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
@@ -214,6 +217,13 @@ export default css`
         padding-left: 15px;
         left: 155px;
         bottom: 4px;
+        /* stylelint-disable */
+        @media ${props => props.theme.mediaQuery.large} {
+          position: absolute;
+          left: 110px;
+          bottom: 3px;
+        }
+        /* stylelint-enable */
       }
 
       /* stylelint-disable */
@@ -235,6 +245,9 @@ export default css`
       .save-for-later-label {
         margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0;
         width: 100%;
+        position: absolute;
+        left: 10px;
+        margin-top: 0;
       }
       .color-map-size-fit {
         display: inline-grid;
@@ -295,12 +308,16 @@ export default css`
   .parent- {
     padding-bottom: 0px;
     .save-for-later-label {
-      float: right;
-      cursor: pointer;
+      position: absolute;
+      right: -10px;
     }
   }
 
   .parent-myBag {
+    .save-for-later-label {
+      display: flex;
+      align-items: center;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: 0px;
     }
@@ -325,6 +342,12 @@ export default css`
   .sflActions {
     text-decoration: underline;
     cursor: pointer;
+  }
+  .size-and-item-container {
+    display: inline-flex;
+  }
+  .product-detail-review-page {
+    display: inline-block;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

@@ -32,6 +32,10 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
+  canUseDOM,
+  getUrlParameter,
+  scrollToParticularElement,
+  getDirections,
 } from './utils.web';
 
 export {
@@ -67,9 +71,10 @@ export {
   parseStoreHours,
   parseBoolean,
   configureInternalNavigationFromCMSUrl,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
   getDateInformation,
   buildStorePageUrlSuffix,
   flattenArray,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
 } from './utils';

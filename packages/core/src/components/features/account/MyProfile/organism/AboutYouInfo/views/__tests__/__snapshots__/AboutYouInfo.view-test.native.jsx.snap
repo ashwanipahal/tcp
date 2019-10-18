@@ -26,6 +26,7 @@ exports[`AboutYouInfo should render correctly 1`] = `
   />
   <ModalNative
     heading="lbl_profile_about_you_modal_heading"
+    inheritedStyles=""
     isOpen={false}
     isOverlay={false}
     onRequestClose={[Function]}

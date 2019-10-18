@@ -7,11 +7,14 @@ exports[`QuickViewModal component should renders correctly 1`] = `
   dataLocator="quick_view_modal"
   dataLocatorHeader="quick_view_add_to_bag_header"
   fixedWidth={true}
+  fullWidth={true}
+  headingAlign="center"
   heightConfig={
     Object {
       "height": "95%",
     }
   }
+  horizontalBar={false}
   inheritedStyles={
     Array [
       "
@@ -42,12 +45,33 @@ exports[`QuickViewModal component should renders correctly 1`] = `
       ";
     }
   }
+  .close-modal {
+    &.alignTop {
+      top: ",
+      [Function],
+      ";
+    }
+    &.alignRight {
+      right: 0;
+    }
+  }
+
+  div.TCPModal__InnerContent {
+    padding-top: initial;
+    border-top-style: inset;
+    border-top-width: ",
+      [Function],
+      ";
+    border-top-color: transparent;
+  }
 ",
     ]
   }
   isOpen={false}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
+  stickyCloseIcon={true}
+  stickyHeader={true}
   widthConfig={
     Object {
       "large": "704px",
@@ -56,7 +80,8 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     }
   }
 >
-  <Styled(ProductCustomizeFormPart)
+  <ProductCustomizeFormPartContainer
+    addToBagError=""
     closeQuickViewModal={[MockFunction]}
     colorFitSizeDisplayNames={null}
     colorFitsSizesMap={
@@ -165,6 +190,8 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     isCanada={false}
     isHasPlcc={false}
     isInternationalShipping={false}
+    navigation={Object {}}
+    onCloseClick={[Function]}
     plpLabels={Object {}}
     priceCurrency=""
     productInfo={
@@ -333,179 +360,175 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     }
     quickViewLabels={Object {}}
   />
-  <div
-    className="fulfillment-section"
-  >
-    <Connect(Styled(FulfillmentSection))
-      btnClassName="added-to-bag"
-      buttonLabel="Pickup In Store"
-      currentProduct={
-        Object {
-          "alternateSizes": Object {},
-          "bundleProducts": Array [],
-          "colorFitSizeDisplayNames": null,
-          "colorFitsSizesMap": Array [
-            Object {
-              "categoryEntity": "Boy:School Uniforms",
-              "color": Object {
-                "family": "BLUE",
-                "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
-                "name": "TIDAL",
+  <Connect(Styled(FulfillmentSection))
+    btnClassName="added-to-bag"
+    buttonLabel="Pickup In Store"
+    closeQuickViewClick={[Function]}
+    currentProduct={
+      Object {
+        "alternateSizes": Object {},
+        "bundleProducts": Array [],
+        "colorFitSizeDisplayNames": null,
+        "colorFitsSizesMap": Array [
+          Object {
+            "categoryEntity": "Boy:School Uniforms",
+            "color": Object {
+              "family": "BLUE",
+              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
+              "name": "TIDAL",
+            },
+            "colorDisplayId": "2100606_IV",
+            "colorProductId": "1118007",
+            "favoritedCount": 1529,
+            "fits": Array [
+              Object {
+                "fitName": "",
+                "isDefault": true,
+                "maxAvailable": 1.7976931348623157e+308,
+                "sizes": Array [
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 191,
+                    "offerPrice": 18.71,
+                    "position": 0,
+                    "sizeName": "XS (4)",
+                    "skuId": "1118991",
+                    "variantId": "00191755242996",
+                    "variantNo": "2100606007",
+                  },
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 2238,
+                    "offerPrice": 18.71,
+                    "position": 1,
+                    "sizeName": "S (5/6)",
+                    "skuId": "1119731",
+                    "variantId": "00191755243009",
+                    "variantNo": "2100606008",
+                  },
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 3493,
+                    "offerPrice": 18.71,
+                    "position": 2,
+                    "sizeName": "M (7/8)",
+                    "skuId": "1118373",
+                    "variantId": "00191755243016",
+                    "variantNo": "2100606009",
+                  },
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 2641,
+                    "offerPrice": 18.71,
+                    "position": 3,
+                    "sizeName": "L (10/12)",
+                    "skuId": "1118587",
+                    "variantId": "00191755243023",
+                    "variantNo": "2100606010",
+                  },
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 991,
+                    "offerPrice": 18.71,
+                    "position": 4,
+                    "sizeName": "XL (14)",
+                    "skuId": "1118691",
+                    "variantId": "00191755243030",
+                    "variantNo": "2100606011",
+                  },
+                  Object {
+                    "listPrice": 24.95,
+                    "maxAvailable": 822,
+                    "offerPrice": 18.71,
+                    "position": 5,
+                    "sizeName": "XXL (16)",
+                    "skuId": "1118794",
+                    "variantId": "00191755243047",
+                    "variantNo": "2100606012",
+                  },
+                ],
               },
-              "colorDisplayId": "2100606_IV",
-              "colorProductId": "1118007",
-              "favoritedCount": 1529,
-              "fits": Array [
-                Object {
-                  "fitName": "",
-                  "isDefault": true,
-                  "maxAvailable": 1.7976931348623157e+308,
-                  "sizes": Array [
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 191,
-                      "offerPrice": 18.71,
-                      "position": 0,
-                      "sizeName": "XS (4)",
-                      "skuId": "1118991",
-                      "variantId": "00191755242996",
-                      "variantNo": "2100606007",
-                    },
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 2238,
-                      "offerPrice": 18.71,
-                      "position": 1,
-                      "sizeName": "S (5/6)",
-                      "skuId": "1119731",
-                      "variantId": "00191755243009",
-                      "variantNo": "2100606008",
-                    },
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 3493,
-                      "offerPrice": 18.71,
-                      "position": 2,
-                      "sizeName": "M (7/8)",
-                      "skuId": "1118373",
-                      "variantId": "00191755243016",
-                      "variantNo": "2100606009",
-                    },
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 2641,
-                      "offerPrice": 18.71,
-                      "position": 3,
-                      "sizeName": "L (10/12)",
-                      "skuId": "1118587",
-                      "variantId": "00191755243023",
-                      "variantNo": "2100606010",
-                    },
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 991,
-                      "offerPrice": 18.71,
-                      "position": 4,
-                      "sizeName": "XL (14)",
-                      "skuId": "1118691",
-                      "variantId": "00191755243030",
-                      "variantNo": "2100606011",
-                    },
-                    Object {
-                      "listPrice": 24.95,
-                      "maxAvailable": 822,
-                      "offerPrice": 18.71,
-                      "position": 5,
-                      "sizeName": "XXL (16)",
-                      "skuId": "1118794",
-                      "variantId": "00191755243047",
-                      "variantNo": "2100606012",
-                    },
-                  ],
-                },
-              ],
-              "hasFits": false,
-              "imageName": "2100606_IV",
-              "listPrice": 24.95,
-              "maxAvailable": 10376,
-              "maxAvailableBoss": 0,
-              "miscInfo": Object {
-                "badge1": Object {
-                  "defaultBadge": "ONLINE EXCLUSIVE",
-                  "matchBadge": false,
-                },
-                "badge2": "25% OFF",
-                "isBopisEligible": false,
-                "isBossEligible": false,
-                "keepAlive": false,
+            ],
+            "hasFits": false,
+            "imageName": "2100606_IV",
+            "listPrice": 24.95,
+            "maxAvailable": 10376,
+            "maxAvailableBoss": 0,
+            "miscInfo": Object {
+              "badge1": Object {
+                "defaultBadge": "ONLINE EXCLUSIVE",
+                "matchBadge": false,
               },
-              "offerPrice": 18.71,
-              "pdpUrl": "/p/2100606_IV",
+              "badge2": "25% OFF",
+              "isBopisEligible": false,
+              "isBossEligible": false,
+              "keepAlive": false,
             },
-          ],
-          "highListPrice": 0,
-          "highOfferPrice": 0,
-          "imagesByColor": Object {
-            "SMOKEB10": Object {
-              "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
-              "extraImages": Array [
-                Object {
-                  "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-                  "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg",
-                  "isOnModalImage": false,
-                  "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg",
-                  "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
-                  "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-                },
-                Object {
-                  "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-                  "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg",
-                  "isOnModalImage": false,
-                  "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg",
-                  "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg",
-                  "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-                },
-              ],
-            },
-            "TIDAL": Object {
-              "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-              "extraImages": Array [
-                Object {
-                  "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-                  "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg",
-                  "isOnModalImage": false,
-                  "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg",
-                  "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-                  "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-                },
-                Object {
-                  "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
-                  "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg",
-                  "isOnModalImage": false,
-                  "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg",
-                  "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg",
-                  "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
-                },
-              ],
-            },
+            "offerPrice": 18.71,
+            "pdpUrl": "/p/2100606_IV",
           },
-          "isGiftCard": false,
-          "listPrice": 24.95,
-          "long_product_title": "Boys Uniform Long Sleeve V Neck Sweater",
-          "lowListPrice": 24.95,
-          "lowOfferPrice": 18.71,
-          "offerPrice": 18.71,
-          "productId": "2100606_IV",
-          "promotionalMessage": "",
-          "promotionalPLCCMessage": "",
-          "ratings": 0,
-          "reviewsCount": 0,
-          "unbxdProdId": "2100606_IV",
-        }
+        ],
+        "highListPrice": 0,
+        "highOfferPrice": 0,
+        "imagesByColor": Object {
+          "SMOKEB10": Object {
+            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+            "extraImages": Array [
+              Object {
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg",
+                "isOnModalImage": false,
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
+              },
+              Object {
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg",
+                "isOnModalImage": false,
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
+              },
+            ],
+          },
+          "TIDAL": Object {
+            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
+            "extraImages": Array [
+              Object {
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg",
+                "isOnModalImage": false,
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
+              },
+              Object {
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg",
+                "isOnModalImage": false,
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+              },
+            ],
+          },
+        },
+        "isGiftCard": false,
+        "listPrice": 24.95,
+        "long_product_title": "Boys Uniform Long Sleeve V Neck Sweater",
+        "lowListPrice": 24.95,
+        "lowOfferPrice": 18.71,
+        "offerPrice": 18.71,
+        "productId": "2100606_IV",
+        "promotionalMessage": "",
+        "promotionalPLCCMessage": "",
+        "ratings": 0,
+        "reviewsCount": 0,
+        "unbxdProdId": "2100606_IV",
       }
-      dataLocator="global-addtocart-Button"
-      onPickupClickAddon={[Function]}
-    />
-  </div>
+    }
+    dataLocator="global-addtocart-Button"
+  />
 </Styled(Modal)>
 `;

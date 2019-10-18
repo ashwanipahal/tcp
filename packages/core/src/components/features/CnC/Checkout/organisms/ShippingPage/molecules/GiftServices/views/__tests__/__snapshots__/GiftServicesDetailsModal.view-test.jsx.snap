@@ -7,7 +7,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
+        "componentId": "sc-kAzzGY",
         "isStatic": false,
         "rules": Array [
           "
@@ -82,8 +82,18 @@ exports[`GiftServices component renders correctly 1`] = `
   .dropdownliBottomBorder {
     height: 71px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding-left: ",
+          [Function],
+          ";
+      padding-right: ",
+          [Function],
+          ";
+    }
   }
   .price {
     float: right;
@@ -207,7 +217,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "displayName": "Styled(GiftServicesDetailsModal)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
+      "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

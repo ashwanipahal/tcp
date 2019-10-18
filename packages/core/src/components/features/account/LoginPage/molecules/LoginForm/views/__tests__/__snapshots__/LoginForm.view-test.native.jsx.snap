@@ -17,6 +17,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     }
     loginErrorMessage=""
     onSubmit={[Function]}
+    userplccCardId=""
+    userplccCardNumber=""
   >
     <Field
       autoCapitalize="none"
@@ -164,7 +166,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     </View>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={
         Object {
@@ -180,7 +182,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

@@ -20,6 +20,21 @@ export const customHeaderStyle = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
+  .close-modal {
+    &.alignTop {
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+    &.alignRight {
+      right: 0;
+    }
+  }
+
+  div.TCPModal__InnerContent {
+    padding-top: initial;
+    border-top-style: inset;
+    border-top-width: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    border-top-color: transparent;
+  }
 `;
 
 export default styles;

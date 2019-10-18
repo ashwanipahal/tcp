@@ -24,6 +24,9 @@ const styles = css`
     color: white;
     font-weight: 800;
     height: 42px;
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 50px;
@@ -63,6 +66,7 @@ const styles = css`
   }
 
   .color-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
     margin-bottom: 33px;
@@ -78,11 +82,13 @@ const styles = css`
   }
 
   .size-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
   }
 
   .size-error {
-    margin-top: -4px;
+    position: absolute;
+    margin-top: -5px;
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
@@ -141,6 +147,10 @@ const styles = css`
     width: auto;
   }
 
+  .product-size-error {
+    margin-top: 30px;
+  }
+
   .size-field-error {
     height: auto;
     .select__input {
@@ -151,6 +161,52 @@ const styles = css`
   .error-image {
     height: 12px;
     padding-right: 6px;
+  }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+`;
+
+export const giftCardDesignStyle = css`
+  .color-chips-selector-item {
+    height: 126px;
+    width: 103px;
+    border-radius: 0;
+
+    .input-radio-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image color of item */
+    .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+
+    /* When the input is checked, the image color has black border (selected) */
+    .input-radio-icon-checked + .input-radio-title {
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .color-chips-selector-item {
+      height: 79px;
+      width: 66px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .color-chips-selector-item {
+      height: 109px;
+      width: 90px;
+    }
   }
 `;
 

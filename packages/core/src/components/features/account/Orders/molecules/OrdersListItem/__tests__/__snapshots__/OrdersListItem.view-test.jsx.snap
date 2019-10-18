@@ -3,6 +3,7 @@
 exports[`OrdersListItem component should renders correctly 1`] = `
 <Fragment>
   <Styled(Row)
+    className=""
     fullBleed={true}
   >
     <Styled(Col)
@@ -15,7 +16,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
       }
     >
       <Styled(Row)
-        className="elem-pb-MED elem-pt-MED "
+        className="order-item-header "
         fullBleed={true}
       >
         <Styled(Col)
@@ -70,7 +71,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="elem-mb-LRG"
+        className="order-item-value"
         fullBleed={true}
       >
         <Styled(Col)
@@ -133,7 +134,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
       }
     >
       <Styled(Row)
-        className="elem-pb-MED elem-pt-MED "
+        className="order-item-header "
         fullBleed={true}
       >
         <Styled(Col)
@@ -196,7 +197,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
           }
         >
           <Styled(BodyCopy)
-            className={null}
+            className="order-total"
             color="text.primary"
             component="p"
             data-locator="order-total-header"
@@ -206,14 +207,14 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
-            textAlign="right"
+            textAlign="left"
           >
             lbl_orders_orderTotal
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
-        className="elem-mb-LRG"
+        className="order-item-bottom"
         fullBleed={true}
       >
         <Styled(Col)
@@ -274,7 +275,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
           }
         >
           <Styled(BodyCopy)
-            className={null}
+            className="order-total"
             color="text.primary"
             component="p"
             data-locator="order-total-value"
@@ -284,7 +285,8 @@ exports[`OrdersListItem component should renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
-            textAlign="right"
+            mobileRightText={false}
+            textAlign="left"
           />
         </Styled(Col)>
       </Styled(Row)>

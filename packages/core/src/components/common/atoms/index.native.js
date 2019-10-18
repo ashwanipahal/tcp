@@ -7,6 +7,7 @@ import Heading from './Heading';
 import LabeledRadioButton from './LabeledRadioButton';
 import DamImage from './DamImage';
 import NativeDropDown from './NativeDropDown';
+import CustomIcon from './Icon';
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   LabeledRadioButton,
   DamImage,
   NativeDropDown,
+  CustomIcon,
 };

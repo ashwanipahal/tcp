@@ -36,7 +36,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -83,6 +85,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -418,6 +421,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -621,9 +625,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-cSHVUG",
+            "componentId": "sc-kAzzGY",
             "isStatic": false,
-            "lastClassName": "cLTuCh",
+            "lastClassName": "dCuoz",
             "rules": Array [
               "
   ",
@@ -651,7 +655,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-cSHVUG",
+          "styledComponentId": "sc-kAzzGY",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -667,7 +671,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-cSHVUG cLTuCh"
+        className="sc-kAzzGY dCuoz"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -717,7 +721,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "700": "#3c7fb0",
           "800": "#254f6e",
           "900": "#162f42",
+          "A100": "#5e9ed6",
           "B100": "#00A7E0",
+          "C900": "#003057",
         },
         "error": "#c8102e",
         "gray": Object {
@@ -764,6 +770,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
         },
@@ -1099,6 +1106,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
+          "LRGS": "110px",
           "MED": "48px",
           "SM": "32px",
           "XL": "96px",
@@ -1376,9 +1384,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-cSHVUG",
+            "componentId": "sc-kAzzGY",
             "isStatic": false,
-            "lastClassName": "cLTuCh",
+            "lastClassName": "dCuoz",
             "rules": Array [
               "
   ",
@@ -1406,7 +1414,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-cSHVUG",
+          "styledComponentId": "sc-kAzzGY",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1496,7 +1504,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-cSHVUG cLTuCh"
+        className="sc-kAzzGY dCuoz"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1579,7 +1587,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-cSHVUG cLTuCh"
+          className="sc-kAzzGY dCuoz"
         >
           <styled.h3>
             <StyledComponent
@@ -1588,9 +1596,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-jzJRlG",
+                    "componentId": "sc-cSHVUG",
                     "isStatic": false,
-                    "lastClassName": "fjdQzi",
+                    "lastClassName": "dghhgd",
                     "rules": Array [
                       "
   position: relative;
@@ -1634,7 +1642,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-jzJRlG",
+                  "styledComponentId": "sc-cSHVUG",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1644,7 +1652,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-jzJRlG fjdQzi"
+                className="sc-cSHVUG dghhgd"
               >
                 Test
               </h3>

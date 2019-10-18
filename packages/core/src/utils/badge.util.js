@@ -1,3 +1,5 @@
+import { isCanada } from './utils';
+
 // Attributes for PLP/PDP and Cart apis are different hence there was a need to create this.
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
@@ -45,7 +47,7 @@ export const getDateInformation = (date, upperCase) => {
 };
 
 export const getCartProductAttributes = () => {
-  const isUSStore = true;
+  const isUSStore = !isCanada();
   return isUSStore
     ? {
         onlineOnly: 'webOnlyFlagUSStore',
@@ -62,7 +64,7 @@ export const getCartProductAttributes = () => {
 };
 
 export const getProductAttributes = () => {
-  const isUSStore = true;
+  const isUSStore = !isCanada();
   return isUSStore
     ? {
         merchant: 'TCPMerchantTagUSStore',

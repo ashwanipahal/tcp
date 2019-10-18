@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationItemTitleDisplay should render correctly 1`] = `
+<Styled(View)
+  spacingStyles="margin-top-XXL margin-bottom-SM"
+>
+  <Styled(View)>
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator="pdp_fast_pickup_icon"
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margin={null}
+      name="marker-icon"
+      onPress={[Function]}
+      size="fs40"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator="pdp_fast_shipping_icon"
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margin={null}
+      name="fast-shipping"
+      onPress={[Function]}
+      size="fs40"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs22"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text={
+            <React.Fragment>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs18"
+                fontWeight="semibold"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                spacingStyles="margin-right-MED"
+                text="undefined "
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs18"
+                fontWeight="extrabold"
+                margin={null}
+                numberOfLines={null}
+                spacingStyles="margin-left-MED"
+                text="name"
+                textDecoration={null}
+              />
+            </React.Fragment>
+          }
+          textAlign="center"
+          textDecoration={null}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text="union"
+          title="union"
+          url="/"
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <ReactTooltip
+        backgroundColor="#fff"
+        height={150}
+        onClose={[Function]}
+        onOpen={[Function]}
+        overlayColor="rgba(250, 250, 250, 0.80)"
+        pointerColor="#fff"
+        popover={
+          <ForwardRef>
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="1123 ab"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="adf"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs14"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              text="AC, AD 10001"
+              textAlign="center"
+              textDecoration={null}
+            />
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text=""
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text=""
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+            <ForwardRef>
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+                text="undefined"
+                textAlign="center"
+                textDecoration={null}
+              />
+              <ForwardRef
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs14"
+                margin={null}
+                mobilefontFamily="secondary"
+                numberOfLines={null}
+                text="23456789023"
+                textAlign="center"
+                textDecoration={null}
+              />
+            </ForwardRef>
+          </ForwardRef>
+        }
+        toggleOnPress={true}
+        width={240}
+        withOverlay={false}
+        withPointer={true}
+      >
+        <Styled(ImageComp)
+          alt=""
+          height={20}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/info-icon.png",
+            }
+          }
+          url=""
+          width={20}
+        />
+      </ReactTooltip>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`ConfirmationItemTitleDisplay should render correctly without shipping full name 1`] = `
+<Styled(View)
+  spacingStyles="margin-top-XXL margin-bottom-SM"
+>
+  <Styled(View)>
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator="pdp_fast_pickup_icon"
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margin={null}
+      name="marker-icon"
+      onPress={[Function]}
+      size="fs40"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs22"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily="secondary"
+          numberOfLines={null}
+          text={
+            <ForwardRef
+              accessibilityText=""
+              dataLocator=""
+              fontSize="fs18"
+              fontWeight="semibold"
+              margin={null}
+              mobilefontFamily="secondary"
+              numberOfLines={null}
+              textAlign="center"
+              textDecoration={null}
+            />
+          }
+          textAlign="center"
+          textDecoration={null}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation=""
+          colorName={null}
+          customStyle={Object {}}
+          locator=""
+          onPress={null}
+          text="union"
+          title="union"
+          url="/"
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <ReactTooltip
+        backgroundColor="#fff"
+        height={150}
+        onClose={[Function]}
+        onOpen={[Function]}
+        overlayColor="rgba(250, 250, 250, 0.80)"
+        pointerColor="#fff"
+        popover={null}
+        toggleOnPress={true}
+        width={240}
+        withOverlay={false}
+        withPointer={true}
+      >
+        <Styled(ImageComp)
+          alt=""
+          height={20}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/info-icon.png",
+            }
+          }
+          url=""
+          width={20}
+        />
+      </ReactTooltip>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`ConfirmationItemTitleDisplay should render null if center is not present 1`] = `""`;

@@ -35,6 +35,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
             asPath="/bag"
             dataLocator="addressbook-makedefault"
             fontSizeVariation="medium"
+            onClick={[Function]}
             to="/bag"
             underline={true}
           >
@@ -46,6 +47,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
             className="elem-ml-MED"
             data-locator="cartitem-saveforlater"
             fontSizeVariation="medium"
+            onClick={[Function]}
             to="/bag?isSfl=true"
             underline={true}
           >
@@ -124,11 +126,13 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       Subtotal: undefined112.00
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
+      containerId="paypal-button-container-minibag"
       isEditingItem={false}
       showAddTobag={false}
       showVenmo={false}
     />
     <Connect(AirmilesBannerContainer) />
   </div>
+  <Connect(LoyaltyBannerContainer) />
 </div>
 `;

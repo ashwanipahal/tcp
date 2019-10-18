@@ -10,6 +10,7 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
 import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 import {
   SaveButtonWrapper,
   FieldTopMarginWrapper,
@@ -118,6 +119,7 @@ export class AddEditPersonalInformationForm extends PureComponent {
             component={TextBox}
             dataLocator="editPersonalInfo-phnumber"
             type="tel"
+            normalize={formatPhoneNumber}
           />
         </FieldTopMarginWrapper>
 
@@ -202,14 +204,12 @@ export class AddEditPersonalInformationForm extends PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_profile_personal_info_updateCta')}
           />
         </SaveButtonWrapper>
         <CancelButtonWrapper>
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             onPress={onCancel}
             text={getLabelValue(labels, 'lbl_profile_personal_info_cancelCta')}
           />

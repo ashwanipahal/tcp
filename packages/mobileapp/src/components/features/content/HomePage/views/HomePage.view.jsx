@@ -3,9 +3,9 @@ import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+
 import {
   ModuleD,
   ModuleH,
@@ -16,8 +16,12 @@ import {
   ModuleB,
   ModuleJ,
   ModuleR,
+  ModuleQ,
+  ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG/view/ModuleG.native';
+import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 
@@ -31,6 +35,8 @@ const modulesMap = {
   moduleB: ModuleB,
   moduleJ: ModuleJ,
   moduleR: ModuleR,
+  moduleS: ModuleS,
+  moduleQ: ModuleQ,
 };
 
 const buttonMargin = { margin: 30 };
@@ -77,36 +83,11 @@ class HomePageView extends React.PureComponent<Props> {
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Button
-          fullWidth
-          buttonVariation="variable-width"
           text="PLP Page"
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         />
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Details"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreDetails',
-              params: { title: 'Store Details'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
-        <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="Store Landing"
-          onPress={() =>
-            navigation.navigate({
-              routeName: 'StoreLanding',
-              params: { title: 'Find A Store'.toUpperCase() },
-            })
-          }
-          style={buttonMargin}
-        />
+        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
       </LazyloadScrollView>
     );
   }

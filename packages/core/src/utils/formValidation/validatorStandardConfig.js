@@ -23,6 +23,10 @@ export const formValidationMessages = {
     minLength: validStreetAddress,
     maxLength: 'lbl_err_addressline1_maxlength',
   },
+  storeAddressLocator: {
+    required: 'lbl_storelanding_errorLabel',
+    address: 'lbl_storelanding_errorLabel',
+  },
   addressLine2: {
     address: 'lbl_err_addressline2_address',
     maxLength: validStreetAddress,
@@ -36,10 +40,10 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    required: 'lbl_err_userbirthdaymonth_required',
+    userBirthday: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
-    required: 'lbl_err_userbirthdayyear_required',
+    userBirthday: 'lbl_err_userbirthdayyear_required',
   },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
@@ -207,6 +211,10 @@ export const formValidationRules = {
     minLength: 5,
     maxLength: 30,
   },
+  storeAddressLocator: {
+    required: true,
+    address: true,
+  },
   addressLine2: {
     address: true,
     maxLength: 30,
@@ -226,10 +234,14 @@ export const formValidationRules = {
   },
 
   userBirthMonth: {
-    required: true,
+    userBirthday: {
+      linkedProps: ['values'],
+    },
   },
   userBirthYear: {
-    required: true,
+    userBirthday: {
+      linkedProps: ['values'],
+    },
   },
   firstName: {
     nonEmpty: true,
@@ -369,11 +381,11 @@ export const formValidationRules = {
     required: true,
     cvvNumber: true,
     cvvLengthThree: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
     // amex validation, validates length === 4 only if type is amex, otherwise it passes validation
     cvvLengthFour: {
-      linkedProps: ['cardType'],
+      linkedFields: ['cardType'],
     },
   },
   phoneNumberWithAlt: {

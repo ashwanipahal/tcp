@@ -40,11 +40,12 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
-      showSavePlcc,
       pristine,
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -65,7 +66,7 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <Field
               labels={labels}
@@ -79,7 +80,7 @@ class LoginForm extends React.PureComponent<Props> {
               enableSuccessCheck={false}
               className="elem-mb-SM"
               tooltipContent={tooltipContent}
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <BodyCopy component="div">
               <Field
@@ -94,17 +95,22 @@ class LoginForm extends React.PureComponent<Props> {
                 <span>{getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}</span>
               </Field>
             </BodyCopy>
-            {showSavePlcc && (
+
+            {userplccCardNumber && userplccCardId && (
               <BodyCopy component="div">
                 <Field
                   name="savePlcc"
                   component={InputCheckbox}
                   dataLocator="login-savemyplcccardcb"
                 >
-                  {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login')}
+                  {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login').replace(
+                    '#number',
+                    `${userplccCardNumber}`
+                  )}
                 </Field>
               </BodyCopy>
             )}
+
             <BodyCopy component="div">
               {showRecaptcha && (
                 <>
@@ -170,9 +176,10 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
-  showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {
@@ -180,7 +187,6 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
-  showSavePlcc: false,
   pristine: false,
 };
 

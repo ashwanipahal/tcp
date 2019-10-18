@@ -71,4 +71,32 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs48};
     }
   }
+
+  /* Module G Heading styles */
+  .medium_text_regular {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs32};
+    font-weight: ${props => props.theme.typography.fontWeights.medium};
+    letter-spacing: 2px;
+    text-align: center;
+    color: ${props => props.theme.colorPalette.black};
+  }
+
+  /* Module S Heading styles */
+  .small_text_white_medium {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    letter-spacing: 2px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      letter-spacing: normal;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: inline;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
 `;

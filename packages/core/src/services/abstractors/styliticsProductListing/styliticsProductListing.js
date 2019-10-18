@@ -29,11 +29,28 @@ const Abstractor = {
       .then(Abstractor.processData)
       .catch(Abstractor.handleError);
   },
+  getOutfit: params => {
+    const { categoryId, count = 20 } = params;
+
+    const payload = {
+      body: {
+        username: 'thechildrensplace',
+        region: 'US',
+        total: count,
+        tags: categoryId,
+      },
+      webService: endpoints.getStyliticsProductViewById,
+    };
+
+    return executeExternalAPICall(payload)
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
+  },
   getMock: () => {
     return mock;
   },
   processData: res => {
-    const rootPath = 'https://www.childrensplace.com/us/outfit';
+    const rootPath = '/outfit';
 
     return res.body.map(item => {
       const { image_url: imageUrl, large_image_url: largeImageUrl, id, items: subItems } = item;
@@ -48,14 +65,15 @@ const Abstractor = {
         };
       });
 
-      const subItemsPath = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
+      const subItemsId = subItems.map(({ remote_id: remoteId }) => remoteId).join('-');
 
       return {
         id,
+        subItemsId,
         imageUrl,
         largeImageUrl,
         items,
-        pdpUrl: `${rootPath}/${item.id}/${subItemsPath}`,
+        pdpUrl: `${rootPath}/${id}/${subItemsId}`,
       };
     });
   },

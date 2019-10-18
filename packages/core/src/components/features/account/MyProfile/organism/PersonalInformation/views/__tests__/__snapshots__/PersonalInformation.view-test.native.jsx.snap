@@ -27,16 +27,6 @@ exports[`PersonalInformation component should render correctly 1`] = `
       userPhoneNumber=""
     />
   </MyProfileTile>
-  <ModalNative
-    heading="lbl_profile_heading"
-    isOpen={false}
-    isOverlay={false}
-    onRequestClose={[Function]}
-  >
-    <Connect(AddEditPersonalInformationContainer)
-      onRequestClose={[Function]}
-    />
-  </ModalNative>
 </Fragment>
 `;
 
@@ -60,15 +50,5 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
       userPhoneNumber=""
     />
   </MyProfileTile>
-  <ModalNative
-    heading="lbl_profile_heading"
-    isOpen={false}
-    isOverlay={false}
-    onRequestClose={[Function]}
-  >
-    <Connect(AddEditPersonalInformationContainer)
-      onRequestClose={[Function]}
-    />
-  </ModalNative>
 </Fragment>
 `;

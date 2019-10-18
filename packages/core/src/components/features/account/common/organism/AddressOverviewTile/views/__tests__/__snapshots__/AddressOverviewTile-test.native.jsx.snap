@@ -29,7 +29,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         color="black"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         margin={null}
         numberOfLines={null}
         text="Default Shiping Address"
@@ -90,7 +90,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         color="black"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         margin={null}
         numberOfLines={null}
         text="Default Billing Address"
@@ -139,7 +139,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -192,7 +192,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         color="black"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         margin={null}
         numberOfLines={null}
         text="lbl_overview_defaultShipingAddress"
@@ -253,7 +253,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         color="black"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs16"
+        fontSize="fs14"
         margin={null}
         numberOfLines={null}
         text="lbl_overview_defaultBillingAddress"
@@ -302,7 +302,7 @@ exports[`AddressOverviewTile render empty address component should render correc
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}

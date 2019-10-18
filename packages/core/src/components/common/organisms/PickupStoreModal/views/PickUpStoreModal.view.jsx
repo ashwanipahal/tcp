@@ -6,9 +6,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getSiteId } from '@tcp/core/src/utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
-import { STORE_SUMMARY_PROP_TYPES } from '../PickUpStoreModal.proptypes';
+import {
+  STORE_SUMMARY_PROP_TYPES,
+  CART_BOPIS_STORE_LIST,
+  COLOR_FIT_SIZE_DISPLAY_NAME,
+} from '../PickUpStoreModal.proptypes';
 import {
   getSkuId,
   getVariantId,
@@ -21,7 +26,7 @@ import withStyles from '../../../hoc/withStyles';
 import styles, { modalstyles } from '../styles/PickUpStoreModal.style';
 import { SKU_DETAILS } from '../PickUpStoreModal.constants';
 import PickupSkuSelectionForm from '../molecules/PickupSkuSelectionForm';
-import PickupStoreSelectionForm from '../molecules/PickupStoreSelectionForm';
+import PickupStoreSelectionFormContainer from '../molecules/PickupStoreSelectionForm';
 import errorBoundary from '../../../hoc/withErrorBoundary/errorBoundary';
 
 const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
@@ -32,32 +37,16 @@ const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
 );
 
 // eslint-disable-next-line no-unused-vars
-const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
+// const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
 class PickUpStoreModalView extends React.Component {
   static propTypes = {
     /* the list of stores currently in the cart */
-    cartBopisStoresList: PropTypes.arrayOf(
-      PropTypes.shape({
-        basicInfo: PropTypes.shape({
-          storeName: PropTypes.string.isRequired,
-        }).isRequired,
-      })
-    ).isRequired,
-
+    cartBopisStoresList: CART_BOPIS_STORE_LIST.cartBopisStoresList.isRequired,
     /** labels for selection fields */
-    colorFitSizeDisplayNames: PropTypes.shape({
-      /** label for color selection field */
-      color: PropTypes.string,
-      /** label for fit selection field */
-      fit: PropTypes.string,
-      /** label for size selection field */
-      size: PropTypes.string,
-    }),
-
+    colorFitSizeDisplayNames: COLOR_FIT_SIZE_DISPLAY_NAME.colorFitSizeDisplayNames,
     /** The map of distances options to select the radius of search */
     distancesMap: DISTANCES_MAP_PROP_TYPE.isRequired,
-
     /** seed values for the form */
     initialValues: PropTypes.shape({
       /** user's preselected color id from parent instance */
@@ -69,18 +58,15 @@ class PickUpStoreModalView extends React.Component {
       /** user's preselected quantity from parent instance */
       quantity: PropTypes.number,
     }).isRequired,
-
     /**
      * indicates the modal is shown because of an error trying to add to the preferred store
      * (required only in PDP)
      */
     isPreferredStoreError: PropTypes.bool,
-
     /** We need to differentiate if Bopis Modal is open from cart or other place to change
      * select item button's message (DT27100)
      */
     isShoppingBag: PropTypes.bool,
-
     /** indicates the 'extended' sizes not available for bopis notification needs to show
      * (only when user attempted to select it)
      */
@@ -102,6 +88,7 @@ class PickUpStoreModalView extends React.Component {
      * (see the prop requestorKey).
      */
     addItemToCartInPickup: PropTypes.func.isRequired,
+    navigation: PropTypes.shape({}),
 
     /**
      * Function to call when the item has been successfully added to, or updated
@@ -112,7 +99,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** callback for closing this modal */
     closePickupModal: PropTypes.func.isRequired,
-
     onColorChange: PropTypes.func.isRequired,
 
     /**
@@ -151,6 +137,7 @@ class PickUpStoreModalView extends React.Component {
     isBossCtaEnabled: PropTypes.bool,
     isBopisCtaEnabled: PropTypes.bool,
     updateCartItemStore: PropTypes.bool,
+    isItemShipToHome: PropTypes.bool,
     autoSkipStep1: PropTypes.bool,
     showDefaultSizeMsg: PropTypes.bool,
     isRadialInventoryEnabled: PropTypes.number,
@@ -171,6 +158,8 @@ class PickUpStoreModalView extends React.Component {
     }).isRequired,
     className: PropTypes.string,
     currency: PropTypes.string,
+    updatePickUpCartItem: PropTypes.func.isRequired,
+    initialValuesFromBagPage: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -192,12 +181,14 @@ class PickUpStoreModalView extends React.Component {
     requestorKey: '',
     isPreferredStoreError: false,
     isShoppingBag: false,
+    navigation: null,
     cartItemsCount: 0,
     defaultStore: {},
     storeSearchError: '',
     addToBagError: '',
     className: '',
     currency: 'USD',
+    isItemShipToHome: false,
   };
 
   constructor(props) {
@@ -230,8 +221,6 @@ class PickUpStoreModalView extends React.Component {
     const { closePickupModal } = this.props;
     closePickupModal({
       isModalOpen: false,
-      // To clear QV product selected info..
-      // To clear search results from suggested store list
     });
   }
 
@@ -307,6 +296,7 @@ class PickUpStoreModalView extends React.Component {
     const { SkuSelectedValues } = this.state;
     const { getUserCartStoresAndSearch } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
+    const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
     const { distance } = formData;
@@ -319,6 +309,7 @@ class PickUpStoreModalView extends React.Component {
       locationPromise,
       variantId,
       cartItemsCount,
+      country,
     });
   }
 
@@ -400,9 +391,13 @@ class PickUpStoreModalView extends React.Component {
       storeSearchError,
       onClearSearchFormError,
       addItemToCartInPickup,
+      updatePickUpCartItem,
       currency,
       PickupSkuFormValues,
       addToBagError,
+      navigation,
+      initialValuesFromBagPage,
+      isItemShipToHome,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -446,80 +441,80 @@ class PickUpStoreModalView extends React.Component {
     };
 
     return (
-      <div>
-        {
-          <PickupSkuSelectionForm
-            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-            isPreferredStoreError={isPreferredStoreError}
-            onEditSku={this.handleEditSkuDetails}
-            promotionalMessage={currentProduct.promotionalMessage}
-            promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
-            isPickUpWarningModal={isPickUpWarningModal}
-            onColorChange={onColorChange}
-            productInfo={currentProduct}
-            isCanada={isCanada}
-            name={name}
-            isPlcc={isPlcc}
-            currencySymbol={currencySymbol}
-            isInternationalShipping={isInternationalShipping}
-            prices={prices}
-            showDefaultSizeMsg={showDefaultSizeMsg}
-            isSkuResolved={isSkuResolved}
-            currentProduct={currentProduct}
-            initialValues={SkuSelectedValues}
-            selectedColor={selectedColor}
-            currency={currency}
-            className="pickup-sku-selection"
-            onCloseClick={this.onCloseClick}
-          />
-        }
-        {
-          <PickupStoreSelectionForm
-            colorFitSizeDisplayNames={colorFitSizeDisplayNames}
-            maxAllowedStoresInCart={maxAllowedStoresInCart}
-            colorFitsSizesMap={colorFitsSizesMap}
-            cartBopisStoresList={cartBopisStoresList}
-            distancesMap={distancesMap}
-            imagePath={getIconImageForColor(currentProduct, color)}
-            initialValues={SkuSelectedValues}
-            isPreferredStoreError={isPreferredStoreError}
-            isSearchOnlyInCartStores={isSearchOnlyInCartStores}
-            isPickUpWarningModal={isPickUpWarningModal}
-            isShoppingBag={isShoppingBag}
-            isShowExtendedSizesNotification={isShowExtendedSizesNotification}
-            listPrice={prices.listPrice}
-            name={name}
-            offerPrice={prices.offerPrice}
-            onAddItemToCart={addItemToCartInPickup}
-            onCloseClick={this.onCloseClick}
-            onSubmit={this.handleSearchAreaStoresSubmit}
-            promotionalMessage={currentProduct.promotionalMessage}
-            promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
-            currentProduct={currentProduct}
-            addToCartError={addToBagError}
-            isBopisCtaEnabled={isBopisCtaEnabled}
-            isBossCtaEnabled={isBossCtaEnabled}
-            updateCartItemStore={updateCartItemStore}
-            allowBossStoreSearch={allowBossStoreSearch}
-            bopisChangeStore={bopisChangeStore}
-            currencySymbol={currencySymbol}
-            isBopisEnabled={isBopisEnabled}
-            isBossEnabled={isBossEnabled}
-            isGiftCard={currentProduct.isGiftCard}
-            isRadialInventoryEnabled={isRadialInventoryEnabled}
-            defaultStore={defaultStore}
-            itemsCount={cartItemsCount}
-            isCanada={isCanada}
-            isPlcc={isPlcc}
-            isInternationalShipping={isInternationalShipping}
-            storeSearchError={storeSearchError}
-            onClearSearchFormError={onClearSearchFormError}
-            isSkuResolved={isSkuResolved}
-            PickupSkuFormValues={PickupSkuFormValues}
-          />
-        }
-      </div>
+      <>
+        <PickupSkuSelectionForm
+          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+          isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+          isPreferredStoreError={isPreferredStoreError}
+          onEditSku={this.handleEditSkuDetails}
+          promotionalMessage={currentProduct.promotionalMessage}
+          promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
+          isPickUpWarningModal={isPickUpWarningModal}
+          onColorChange={onColorChange}
+          productInfo={currentProduct}
+          isCanada={isCanada}
+          name={name}
+          isPlcc={isPlcc}
+          currencySymbol={currencySymbol}
+          isInternationalShipping={isInternationalShipping}
+          prices={prices}
+          showDefaultSizeMsg={showDefaultSizeMsg}
+          isSkuResolved={isSkuResolved}
+          currentProduct={currentProduct}
+          initialValues={SkuSelectedValues}
+          selectedColor={selectedColor}
+          currency={currency}
+          className="pickup-sku-selection"
+          onCloseClick={this.onCloseClick}
+          navigation={navigation}
+        />
+        <PickupStoreSelectionFormContainer
+          colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+          maxAllowedStoresInCart={maxAllowedStoresInCart}
+          colorFitsSizesMap={colorFitsSizesMap}
+          cartBopisStoresList={cartBopisStoresList}
+          distancesMap={distancesMap}
+          imagePath={getIconImageForColor(currentProduct, color)}
+          initialValues={SkuSelectedValues}
+          isPreferredStoreError={isPreferredStoreError}
+          isSearchOnlyInCartStores={isSearchOnlyInCartStores}
+          isPickUpWarningModal={isPickUpWarningModal}
+          isShoppingBag={isShoppingBag}
+          isShowExtendedSizesNotification={isShowExtendedSizesNotification}
+          listPrice={prices.listPrice}
+          name={name}
+          offerPrice={prices.offerPrice}
+          onAddItemToCart={addItemToCartInPickup}
+          onUpdatePickUpItem={updatePickUpCartItem}
+          onCloseClick={this.onCloseClick}
+          onSubmit={this.handleSearchAreaStoresSubmit}
+          promotionalMessage={currentProduct.promotionalMessage}
+          promotionalPLCCMessage={currentProduct.promotionalPLCCMessage}
+          currentProduct={currentProduct}
+          addToCartError={addToBagError}
+          isBopisCtaEnabled={isBopisCtaEnabled}
+          isBossCtaEnabled={isBossCtaEnabled}
+          updateCartItemStore={updateCartItemStore}
+          allowBossStoreSearch={allowBossStoreSearch}
+          bopisChangeStore={bopisChangeStore}
+          currencySymbol={currencySymbol}
+          isBopisEnabled={isBopisEnabled}
+          isBossEnabled={isBossEnabled}
+          isGiftCard={currentProduct.isGiftCard}
+          isRadialInventoryEnabled={isRadialInventoryEnabled}
+          defaultStore={defaultStore}
+          itemsCount={cartItemsCount}
+          isCanada={isCanada}
+          isPlcc={isPlcc}
+          isInternationalShipping={isInternationalShipping}
+          storeSearchError={storeSearchError}
+          onClearSearchFormError={onClearSearchFormError}
+          isSkuResolved={isSkuResolved}
+          PickupSkuFormValues={PickupSkuFormValues}
+          initialValuesFromBagPage={initialValuesFromBagPage}
+          isItemShipToHome={isItemShipToHome}
+        />
+      </>
     );
   }
 
@@ -533,10 +528,14 @@ class PickUpStoreModalView extends React.Component {
         className={`${className} TCPModal__Content`}
         heading={pickupModalHeading}
         fixedWidth
+        fullWidth
         stickyHeader
         inheritedStyles={modalstyles}
         widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
         heightConfig={{ minHeight: '534px', height: '620', maxHeight: '650' }}
+        headingAlign="center"
+        horizontalBar={false}
+        stickyCloseIcon
       >
         {this.renderModal()}
       </Modal>

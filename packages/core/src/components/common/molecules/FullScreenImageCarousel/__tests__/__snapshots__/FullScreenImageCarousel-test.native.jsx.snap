@@ -11,6 +11,7 @@ exports[`FullScreenImageCarousel should render correctly should match snapshot 1
     }
   }
   horizontalBar={false}
+  inheritedStyles=""
   isOpen={true}
   isOverlay={true}
   onRequestClose={[Function]}
@@ -71,27 +72,6 @@ exports[`FullScreenImageCarousel should render correctly should match snapshot 1
       show={false}
       style={Object {}}
     />
-    <Styled(View)>
-      <Styled(PaginationDots)
-        backgroundColor="#575757"
-        borderColor="#ffffff"
-        borderRadius={4}
-        borderWidth={1}
-        dotLeftMargin={2}
-        dotRightMargin={2}
-        marginTop={0}
-        numberOfDots={1}
-        onPress={[Function]}
-        selectedBackgroundColor="#ffffff"
-        selectedBorderColor="#575757"
-        selectedBorderRadius={6}
-        selectedBorderWidth={2}
-        selectedIndex={0}
-        selectedSize={10}
-        size={8}
-        theme={Object {}}
-      />
-    </Styled(View)>
   </Styled(View)>
 </ModalNative>
 `;

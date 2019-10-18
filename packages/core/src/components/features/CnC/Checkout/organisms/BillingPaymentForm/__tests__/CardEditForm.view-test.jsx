@@ -1,9 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CardEditReduxForm, {
-  CardEditFormViewVanilla,
-  handleEditFromSubmit,
-} from '../views/CardEditForm.view';
+import CardEditReduxForm, { CardEditFormViewVanilla } from '../views/CardEditForm.view';
+import { handleEditFromSubmit } from '../views/CardEditReduxForm';
 
 describe('CardEditForm component', () => {
   const props = {
@@ -41,11 +39,7 @@ describe('CardEditForm component', () => {
     let funcValue;
     handleEditFromSubmit(obj => {
       funcValue = obj;
-    })({ address: { addressId: '123' }, ccBrand: 'Visa' });
-    expect(funcValue).toEqual({
-      address: { addressId: '123' },
-      cardType: 'VISA',
-      onFileAddressKey: '123',
-    });
+    })({ address: { addressId: '123' } });
+    expect(funcValue.formData).toEqual({ address: { addressId: '123' }, onFileAddressKey: '123' });
   });
 });
