@@ -4,7 +4,7 @@ import { isGymboree } from '@tcp/core/src/utils';
 const setBackground = props => {
   if (isGymboree()) {
     return `
-    background-color: ${props.theme.colorPalette.orange[700]};
+    background-color: ${props.theme.colorPalette.orange[900]};
     `;
   }
   return `

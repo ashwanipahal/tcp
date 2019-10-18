@@ -1,5 +1,17 @@
 import styled from 'styled-components/native';
 import { isAndroid } from '@tcp/core/src/utils/utils.app';
+import { isGymboree } from '@tcp/core/src/utils';
+
+const setBackground = props => {
+  if (isGymboree()) {
+    return `
+    background-color: ${props.theme.colorPalette.orange[900]};
+    `;
+  }
+  return `
+  background-color: ${props.theme.colorPalette.blue[800]};
+  `;
+};
 
 const getAdditionalStyle = props => {
   const { theme, showSearch } = props;
@@ -56,7 +68,7 @@ export const HeaderContainer = styled.View`
 `;
 
 export const CartCountContainer = styled.View`
-  background-color: ${props => props.theme.colorPalette.primary.dark};
+  ${setBackground}
   width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 22px;
   border-radius: 10px;

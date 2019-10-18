@@ -129,7 +129,6 @@ export class StoreDetailContainer extends PureComponent {
         longitude: coordinates.long,
       };
       calcDistanceByLatLng([{ lat: coordinates.lat, long: coordinates.long }]).then(val => {
-        console.log(val);
         this.setState({ distance: val });
       });
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
@@ -234,7 +233,7 @@ StoreDetailContainer.defaultProps = {
 const mapStateToProps = state => {
   return {
     currentStoreInfo: getCurrentStore(state),
-    formatStore: store => formatCurrentStoreToObject(store),
+    formatStore: (store, distance) => formatCurrentStoreToObject(store, distance),
     nearByStores: getNearByStores(state),
     labels: getLabels(state),
     isFavorite: isFavoriteStore(state),

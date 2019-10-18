@@ -117,7 +117,10 @@ export class StoreLanding extends PureComponent {
       searchDone,
       geoLocationEnabled,
     } = this.props;
-    if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
+    if (
+      searchDone &&
+      !(suggestedStoreList && (suggestedStoreList.length || suggestedStoreList.size))
+    ) {
       return (
         <Notification
           status="info"

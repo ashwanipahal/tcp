@@ -361,10 +361,14 @@ class StoreAddressTile extends PureComponent {
   }
 
   getStoreAddress() {
-    const { store, variation, isFavorite } = this.props;
+    const { store, variation, isFavorite, labels } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
     const addressMetaClassName = variation === listingType && !store.isGym ? '__nodisplay' : '';
+    const distance =
+      variation === detailsType && store.distance
+        ? `${store.distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
+        : null;
 
     return (
       <div className="address-wrapper">
@@ -375,7 +379,7 @@ class StoreAddressTile extends PureComponent {
           fontFamily="secondary"
           className="address-details"
         >
-          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone].map((item, i) => (
+          {[addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map((item, i) => (
             <BodyCopy key={`${item + i}`} fontSize="fs12" component="span" fontFamily="secondary">
               {item}
               <br />
