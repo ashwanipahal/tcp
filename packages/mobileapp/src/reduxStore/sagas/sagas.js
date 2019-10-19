@@ -60,6 +60,7 @@ import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsCla
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
 import OrderDetailsSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -68,6 +69,7 @@ export default function* rootSaga() {
     LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
+    RecommendationsSaga(),
     NavigationSaga(),
     AddEditAddressSaga(),
     AddressVerificationSaga(),

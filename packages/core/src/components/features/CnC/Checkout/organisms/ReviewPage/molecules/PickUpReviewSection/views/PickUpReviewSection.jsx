@@ -125,10 +125,14 @@ export class PickUpReviewSection extends React.PureComponent {
           </Col>
         </Row>
         <Row fullBleed className="row-two">
-          {stores.map(store => {
+          {stores.map((store, index) => {
             return (
               store && (
-                <Col key={store.storeId} colSize={{ small: 6, medium: 4, large: 5 }}>
+                <Col
+                  key={store.storeId}
+                  colSize={{ small: 6, medium: 4, large: 5 }}
+                  className={`col-${index}`}
+                >
                   <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
                 </Col>
               )
