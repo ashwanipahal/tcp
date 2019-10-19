@@ -122,7 +122,13 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     name="Size"
     selectedItem=""
   />
-  <Styled(View)>
+  <Styled(View)
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       color="gray.900"

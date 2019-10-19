@@ -5,7 +5,7 @@ import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ShopBySize from '../../ShopBySize';
 import MenuItem from '../../MenuItems';
-import { shopBySizeArr, shopBySize } from '../shopBySizeMock';
+import { /* shopBySizeArr , */ shopBySize } from '../shopBySizeMock';
 import {
   TitleContainer,
   HeadingContainer,
@@ -131,11 +131,11 @@ const NavMenuLevel2 = props => {
   } = item;
 
   // TODO - Appending the dummy shop by size object for development. Remove it later
-  subCategories[shopBySize] = {
-    label: shopBySize,
-    order: 0,
-    items: shopBySizeArr,
-  };
+  // subCategories[shopBySize] = {
+  //   label: shopBySize,
+  //   order: 0,
+  //   items: shopBySizeArr,
+  // };
 
   const subCatArr = Object.keys(subCategories).sort((prevGroup, curGroup) => {
     return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);

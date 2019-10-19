@@ -153,7 +153,9 @@ QuickViewModalContainer.propTypes = {
 QuickViewModalContainer.defaultProps = {
   productInfoFromBag: {},
   plpLabels: {},
-  currencyAttributes: {},
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
 };
 
 export default connect(

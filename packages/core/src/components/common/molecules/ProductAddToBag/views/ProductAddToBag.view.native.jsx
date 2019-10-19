@@ -109,7 +109,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
     const sizeError = isErrorMessageDisplayed ? errorMessage : '';
-
+    const quantityDropDownStyle = {
+      width: 200,
+    };
     return (
       <View {...this.props}>
         {showColorChips && (
@@ -155,7 +157,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           error={sizeError}
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
-        <RowViewContainer>
+        <RowViewContainer style={quantityDropDownStyle}>
           <BodyCopy
             fontWeight="black"
             color="gray.900"

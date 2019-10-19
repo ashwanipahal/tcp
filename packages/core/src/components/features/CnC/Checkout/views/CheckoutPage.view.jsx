@@ -136,6 +136,7 @@ class CheckoutPage extends React.PureComponent {
       submitVerifiedShippingAddressData,
       isExpressCheckout,
       shippingMethod,
+      isCanada,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -188,6 +189,7 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
             submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
+            isCanada={isCanada}
             /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
           />
@@ -331,6 +333,7 @@ CheckoutPage.propTypes = {
   setVenmoShippingState: PropTypes.func,
   isExpressCheckout: PropTypes.bool,
   shippingMethod: PropTypes.shape({}),
+  isCanada: PropTypes.bool,
 };
 
 CheckoutPage.defaultProps = {
@@ -339,6 +342,7 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isExpressCheckout: false,
   shippingMethod: {},
+  isCanada: false,
 };
 
 export default CheckoutPage;

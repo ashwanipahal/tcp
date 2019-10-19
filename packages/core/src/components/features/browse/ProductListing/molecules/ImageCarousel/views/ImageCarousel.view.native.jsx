@@ -36,7 +36,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorIndex, onGoToPDPPage } = this.props;
+    const { item, selectedColorIndex, onGoToPDPPage, productImageWidth } = this.props;
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
     const { pdpUrl } = productInfo;
@@ -71,7 +71,11 @@ class ImageCarousel extends React.PureComponent {
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
             >
-              <CustomImage imageSource={imgSource.item} productInfo={productInfo} />
+              <CustomImage
+                width={productImageWidth}
+                imageSource={imgSource.item}
+                productInfo={productInfo}
+              />
             </TouchableOpacity>
           );
         }}
@@ -84,11 +88,13 @@ ImageCarousel.propTypes = {
   item: PropTypes.shape({}),
   selectedColorIndex: PropTypes.number,
   onGoToPDPPage: PropTypes.func.isRequired,
+  productImageWidth: PropTypes.number,
 };
 
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
+  productImageWidth: '',
 };
 
 export default ImageCarousel;

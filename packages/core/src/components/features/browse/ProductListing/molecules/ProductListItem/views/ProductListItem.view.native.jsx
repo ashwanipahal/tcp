@@ -50,21 +50,67 @@ const ListItem = props => {
     isPlcc,
     onGoToPDPPage,
     onQuickViewOpenClick,
+    fullWidth,
+    renderPriceAndBagOnly,
+    renderPriceOnly,
+    productImageWidth,
   } = props;
+
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap } = item;
   const { name } = productInfo;
   const { miscInfo } = colorsMap[selectedColorIndex];
+
+  const renderVariation = renderPriceAndBagOnly || renderPriceOnly;
+
+  if (renderVariation) {
+    return (
+      <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
+        <ImageSection
+          item={item}
+          selectedColorIndex={selectedColorIndex}
+          onGoToPDPPage={onGoToPDPPage}
+          productImageWidth={productImageWidth}
+        />
+        <RenderPricesSection
+          hideFavorite={renderVariation}
+          onFavorite={onFavorite}
+          miscInfo={miscInfo}
+          currencyExchange={currencyExchange}
+          currencySymbol={currencySymbol}
+          accessibilityLabel="Price Section"
+        />
+        {!renderPriceOnly && (
+          <AddToBagContainer>
+            <CustomButton
+              fill="BLUE"
+              type="button"
+              buttonVariation="variable-width"
+              data-locator=""
+              text="ADD TO BAG"
+              onPress={() => {
+                handleQuickViewOpenClick(selectedColorIndex, colorsMap, onQuickViewOpenClick);
+              }}
+              accessibilityLabel="add to bag"
+            />
+          </AddToBagContainer>
+        )}
+      </ListContainer>
+    );
+  }
+
   return (
-    <ListContainer accessible>
+    <ListContainer accessible fullWidth={fullWidth}>
       <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
+        productImageWidth={productImageWidth}
       />
       <RenderBadge2 text={badge2} />
       <RenderPricesSection
+        hideFavorite={renderPriceAndBagOnly}
         onFavorite={onFavorite}
         miscInfo={miscInfo}
         currencyExchange={currencyExchange}
@@ -109,13 +155,14 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage }) => {
+const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWidth }) => {
   return (
     <ImageSectionContainer>
       <ImageCarousel
         item={item}
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
+        productImageWidth={productImageWidth}
       />
     </ImageSectionContainer>
   );
@@ -125,6 +172,11 @@ ImageSection.propTypes = {
   item: PropTypes.shape({}).isRequired,
   selectedColorIndex: PropTypes.number.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
+  productImageWidth: PropTypes.number,
+};
+
+ImageSection.defaultProps = {
+  productImageWidth: '',
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -140,7 +192,7 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
-  const { miscInfo, currencyExchange, currencySymbol, onFavorite } = values;
+  const { miscInfo, currencyExchange, currencySymbol, onFavorite, hideFavorite } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${(
@@ -156,9 +208,16 @@ const RenderPricesSection = values => {
         <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
           {offerPriceForColor}
         </ListPrice>
-        <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-          <CustomIcon name={ICON_NAME.favorite} size="fs21" color="gray.600" onPress={onFavorite} />
-        </FavoriteIconContainer>
+        {!hideFavorite && (
+          <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
+            <CustomIcon
+              name={ICON_NAME.favorite}
+              size="fs21"
+              color="gray.600"
+              onPress={onFavorite}
+            />
+          </FavoriteIconContainer>
+        )}
       </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
         {listPriceForColor !== offerPriceForColor && (
@@ -201,6 +260,10 @@ ListItem.propTypes = {
   currencySymbol: PropTypes.string.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
+  fullWidth: PropTypes.bool,
+  renderPriceAndBagOnly: PropTypes.bool,
+  renderPriceOnly: PropTypes.bool,
+  productImageWidth: PropTypes.number,
 };
 
 ListItem.defaultProps = {
@@ -211,6 +274,10 @@ ListItem.defaultProps = {
   loyaltyPromotionMessage: '',
   onFavorite: () => {},
   isPlcc: false,
+  fullWidth: false,
+  renderPriceAndBagOnly: false,
+  renderPriceOnly: false,
+  productImageWidth: '',
 };
 
 export default withStyles(ListItem, styles);

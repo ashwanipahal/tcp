@@ -185,7 +185,7 @@ ProductListView.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isFilterBy: true,
-  currency: '$',
+  currency: 'USD',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

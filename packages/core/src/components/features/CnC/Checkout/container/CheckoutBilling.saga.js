@@ -159,7 +159,7 @@ export function addressIdToString(addressId) {
 export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
-  const updatePaymentRequired = true;
+  // const updatePaymentRequired = true;
   const isGuestUser = yield select(isGuest);
   if (formData.address.sameAsShipping) {
     const shippingDetails = yield select(getShippingDestinationValues);
@@ -223,16 +223,16 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     );
     res = res.body;
   }
-  if (updatePaymentRequired) {
-    yield call(
-      updatePaymentInstruction,
-      formData,
-      cardDetails,
-      isGuestUser,
-      res,
-      loadUpdatedCheckoutValues
-    );
-  }
+  // if (updatePaymentRequired) {
+  yield call(
+    updatePaymentInstruction,
+    formData,
+    cardDetails,
+    isGuestUser,
+    res,
+    loadUpdatedCheckoutValues
+  );
+  // }
 }
 
 /**
