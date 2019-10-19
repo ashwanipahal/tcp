@@ -17,3 +17,7 @@ export const getOutfitProducts = state => {
     state[OUTFIT_DETAILS_REDUCER_KEY].getIn(['currentOutfit', 'products'])
   );
 };
+
+export const getAddedToBagErrorCatId = state => {
+  return state.AddedToBagReducer.get('errorCatId');
+};

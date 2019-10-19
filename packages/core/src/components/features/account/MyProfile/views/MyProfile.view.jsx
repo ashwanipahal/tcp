@@ -9,7 +9,7 @@ const MyProfile = ({ labels, labelsObj, ...otherProps }) => {
     <div>
       <FormPageHeadingComponent
         heading={getLabelValue(labels, 'lbl_profile_heading')}
-        className="margin-none"
+        className="margin-none myAccountRightView"
       />
       <ProfileInformation labels={labels} {...otherProps} />
     </div>

@@ -9,93 +9,114 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
   visible={true}
 >
   <Styled(SafeAreaView)>
-    <Styled(View)>
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="blue.500"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margin={null}
-        name="mag-glass"
-        onPress={[Function]}
-        size="fs25"
-      />
-      <Styled(TextInput)
-        autoFocus={true}
-        onChangeText={[Function]}
-        onSubmitEditing={[Function]}
-        returnKeyType="search"
-        value=""
-      />
-      <Styled(CustomIcon)
-        accessibilityLabel=""
-        color="gray.600"
-        dataLocator=""
-        iconFontName="Icomoon"
-        isButton={false}
-        isDisabled={false}
-        margin={null}
-        name="scan"
-        onPress={[Function]}
-        size="fs25"
-      />
-      <Styled(CustomButton)
-        active={false}
-        buttonVariation="fixed-width"
-        color=""
-        customStyle={Object {}}
-        customTextStyle={
-          Object {
-            "fontWeight": "normal",
-            "textTransform": "none",
-          }
+    <KeyboardAvoidingView
+      behavior="padding"
+      enabled={true}
+      keyboardVerticalOffset={0}
+      style={
+        Object {
+          "flex": 1,
         }
-        disableButton={false}
-        fill=""
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="regular"
-        fullWidth=""
-        iconColor="gray.800"
-        iconName="chevron-down"
-        iconSize="fs12"
-        locator=""
-        navigation={Object {}}
-        onPress={[Function]}
-        selected={false}
-        selectedIcon="chevron-up"
-        showIcon={false}
-        style={
-          Object {
-            "borderWidth": 0,
+      }
+    >
+      <Styled(View)>
+        <Styled(CustomIcon)
+          accessibilityLabel=""
+          color="blue.500"
+          dataLocator=""
+          iconFontName="Icomoon"
+          isButton={false}
+          isDisabled={false}
+          margin={null}
+          name="mag-glass"
+          onPress={[Function]}
+          size="fs25"
+          style={
+            Object {
+              "marginTop": 10,
+            }
           }
-        }
-        text="Cancel"
-        theme={Object {}}
-        url=""
-        width="90px"
+        />
+        <Styled(TextInput)
+          autoFocus={true}
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          returnKeyType="search"
+          value=""
+        />
+        <Styled(CustomIcon)
+          accessibilityLabel="barcode"
+          color="gray.600"
+          dataLocator=""
+          iconFontName="Icomoon"
+          isButton={false}
+          isDisabled={false}
+          margin={null}
+          name="scan"
+          onPress={[Function]}
+          size="fs25"
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+        />
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color=""
+          customStyle={Object {}}
+          customTextStyle={
+            Object {
+              "fontWeight": "normal",
+              "textTransform": "none",
+            }
+          }
+          disableButton={false}
+          fill=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          style={
+            Object {
+              "borderWidth": 0,
+              "marginTop": 3,
+            }
+          }
+          text="Cancel"
+          theme={Object {}}
+          url=""
+        />
+      </Styled(View)>
+      <SectionList
+        data={Array []}
+        disableVirtualization={false}
+        extraData=""
+        horizontal={false}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        keyboardShouldPersistTaps="handled"
+        maxToRenderPerBatch={10}
+        onEndReachedThreshold={2}
+        renderItem={[Function]}
+        renderSectionHeader={[Function]}
+        scrollEventThrottle={50}
+        sections={Array []}
+        stickySectionHeadersEnabled={false}
+        updateCellsBatchingPeriod={50}
+        windowSize={21}
       />
-    </Styled(View)>
-    <SectionList
-      data={Array []}
-      disableVirtualization={false}
-      extraData=""
-      horizontal={false}
-      initialNumToRender={10}
-      keyExtractor={[Function]}
-      keyboardShouldPersistTaps="handled"
-      maxToRenderPerBatch={10}
-      onEndReachedThreshold={2}
-      renderItem={[Function]}
-      renderSectionHeader={[Function]}
-      scrollEventThrottle={50}
-      sections={Array []}
-      stickySectionHeadersEnabled={false}
-      updateCellsBatchingPeriod={50}
-      windowSize={21}
-    />
+    </KeyboardAvoidingView>
   </Styled(SafeAreaView)>
 </Component>
 `;

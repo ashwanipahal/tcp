@@ -8,7 +8,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -45,11 +45,13 @@ exports[`ModuleD component renders correctly 1`] = `
             "title": "",
             "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
           },
-          "textItems": Object {
-            "color": "color2",
-            "style": "style1",
-            "text": "Mini me shop",
-          },
+          "textItems": Array [
+            Object {
+              "color": "color2",
+              "style": "style1",
+              "text": "Mini me shop",
+            },
+          ],
         },
       ]
     }
@@ -87,6 +89,7 @@ exports[`ModuleD component renders correctly 1`] = `
   />
   <Styled(Row)
     centered={true}
+    fullBleed={false}
   >
     <Styled(Col)
       className="moduleD_tile"
@@ -337,6 +340,7 @@ exports[`ModuleD component renders correctly 1`] = `
   </Styled(Row)>
   <Styled(Row)
     centered={true}
+    fullBleed={false}
   >
     <Styled(Button)
       buttonVariation="fixed-width"

@@ -119,12 +119,13 @@ class CouponListSection extends React.Component<Props> {
               fontSizeVariation="small"
               underline
               anchorVariation="primary"
-              fontSize="fs10"
               dataLocator={showMore === true ? 'cartShowMoreButton' : 'cartShowLessButton'}
               onClick={this.toggleShow}
               fontFamily="secondary"
             >
-              {buttonText}
+              <BodyCopy component="span" fontSize="fs12">
+                {buttonText}
+              </BodyCopy>
             </Anchor>
           )}
         </div>

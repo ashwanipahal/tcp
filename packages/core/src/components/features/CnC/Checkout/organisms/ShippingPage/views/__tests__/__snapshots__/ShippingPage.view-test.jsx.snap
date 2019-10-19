@@ -10,6 +10,7 @@ exports[`Shipping Page should render correctly 1`] = `
         "addressLine2": "",
       }
     }
+    addressLabels={Object {}}
     addressPhoneNo={null}
     defaultShipmentId={null}
     destroyOnUnmount={true}
@@ -30,6 +31,7 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     }
     isAddNewAddress={false}
+    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}
@@ -70,6 +72,10 @@ exports[`Shipping Page should render correctly 1`] = `
     userAddresses={Immutable.List []}
     validate={[Function]}
   />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
+  />
 </Fragment>
 `;
 
@@ -83,6 +89,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "addressLine2": "pob",
       }
     }
+    addressLabels={Object {}}
     addressPhoneNo={null}
     defaultAddressId="34789"
     defaultShipmentId={null}
@@ -104,6 +111,7 @@ exports[`Shipping Page should render correctly with component did update and get
       }
     }
     isAddNewAddress={false}
+    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}
@@ -176,6 +184,10 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     validate={[Function]}
   />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
+  />
 </Fragment>
 `;
 
@@ -189,6 +201,7 @@ exports[`Shipping Page should render correctly with component did update and get
         "addressLine2": "pob",
       }
     }
+    addressLabels={Object {}}
     addressPhoneNo={null}
     defaultAddressId="123"
     defaultShipmentId={null}
@@ -210,6 +223,7 @@ exports[`Shipping Page should render correctly with component did update and get
       }
     }
     isAddNewAddress={false}
+    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}
@@ -281,6 +295,10 @@ exports[`Shipping Page should render correctly with component did update and get
       ]
     }
     validate={[Function]}
+  />
+  <Connect(Styled(AddressVerification))
+    onError={[Function]}
+    onSuccess={[Function]}
   />
 </Fragment>
 `;

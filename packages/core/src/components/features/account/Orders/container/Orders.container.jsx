@@ -29,7 +29,13 @@ export class OrdersContainer extends PureComponent {
   };
 
   render() {
-    const { labels, ordersListItems } = this.props;
+    const {
+      labels,
+      ordersListItems,
+      navigation,
+      handleComponentChange,
+      componentProps,
+    } = this.props;
     const siteId = getSiteId();
     const ordersListItemData = ordersListItems && ordersListItems.orders;
 
@@ -39,6 +45,9 @@ export class OrdersContainer extends PureComponent {
           labels={labels}
           onFilterLink={this.filterLinkHandler}
           ordersListItems={ordersListItemData}
+          navigation={navigation}
+          handleComponentChange={handleComponentChange}
+          componentProps={componentProps}
         />
       )
     );
@@ -60,11 +69,16 @@ OrdersContainer.propTypes = {
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]),
+  navigation: PropTypes.shape({}).isRequired,
+  handleComponentChange: PropTypes.func,
+  componentProps: PropTypes.shape({}),
 };
 
 OrdersContainer.defaultProps = {
   fetchOrders: () => {},
   ordersListItems: [],
+  handleComponentChange: () => {},
+  componentProps: {},
 };
 
 export default connect(

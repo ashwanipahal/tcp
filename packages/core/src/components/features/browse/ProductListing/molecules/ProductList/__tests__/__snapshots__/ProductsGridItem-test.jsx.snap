@@ -128,8 +128,16 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           },
         ]
       }
-      isMobile={false}
-      isPLPredesign={false}
+      isMobile={
+        Object {
+          "isMobile": false,
+        }
+      }
+      isPLPredesign={
+        Object {
+          "isPLPredesign": false,
+        }
+      }
       maxVisibleItems={5}
       onChipClick={[Function]}
       selectedColorId=""
@@ -143,10 +151,14 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         buttonVariation="fixed-width"
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
+        fill=""
         fullWidth={true}
         onClick={[Function]}
       />
     </div>
+    <div
+      className="favorite-move-purchase-section"
+    />
   </div>
 </li>
 `;

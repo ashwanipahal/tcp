@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/Address.style';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
@@ -78,12 +80,20 @@ const Address = ({
   isDefault,
   showName,
   showDefault,
+  parentDataLocator,
 }) => {
   return address ? (
-    <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
+    <BodyCopy
+      component="div"
+      fontSize="fs14"
+      color="text.primary"
+      className={className}
+      dataLocator={parentDataLocator}
+    >
       {showName && (
         <BodyCopy
           component="p"
+          id={address.addressId}
           fontWeight={fontWeight}
           fontFamily="secondary"
           className="addressTile__name address text-break"
@@ -92,20 +102,22 @@ const Address = ({
           {getUserName({ address, isDefault, showDefault })}
         </BodyCopy>
       )}
-      {address.addressLine
-        ? getAddessLines({ address, dataLocatorPrefix })
-        : getAddressfromDiffLines(address, dataLocatorPrefix)}
-      {getFormattedAddress(address, dataLocatorPrefix)}
-      {showCountry && address.country && (
-        <BodyCopy component="p" fontFamily="secondary" className="address text-break">
-          {address.country}
-        </BodyCopy>
-      )}
-      {showPhone && address.phone1 && (
-        <BodyCopy component="p" fontFamily="secondary" className="address text-break">
-          {address.phone1}
-        </BodyCopy>
-      )}
+      <BodyCopy component="div" className="addressLine">
+        {address.addressLine
+          ? getAddessLines({ address, dataLocatorPrefix })
+          : getAddressfromDiffLines(address, dataLocatorPrefix)}
+        {getFormattedAddress(address, dataLocatorPrefix)}
+        {showCountry && address.country && (
+          <BodyCopy component="p" fontFamily="secondary" className="address text-break">
+            {address.country}
+          </BodyCopy>
+        )}
+        {showPhone && address.phone1 && (
+          <BodyCopy component="p" fontFamily="secondary" className="address text-break">
+            {address.phone1}
+          </BodyCopy>
+        )}
+      </BodyCopy>
     </BodyCopy>
   ) : null;
 };
@@ -120,6 +132,7 @@ Address.propTypes = {
   isDefault: PropTypes.bool,
   showName: PropTypes.bool,
   showDefault: PropTypes.bool,
+  parentDataLocator: PropTypes.string,
 };
 
 Address.defaultProps = {
@@ -132,6 +145,7 @@ Address.defaultProps = {
   dataLocatorPrefix: '',
   fontWeight: 'regular',
   showDefault: true,
+  parentDataLocator: 'address-details',
 };
 
-export default Address;
+export default withStyles(Address, styles);

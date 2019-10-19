@@ -14,7 +14,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="tileWrapper"
+    className="tileWrapper elem-mt-XS elem-mb-XS"
     color="text.primary"
     component="div"
     fontFamily="primary"

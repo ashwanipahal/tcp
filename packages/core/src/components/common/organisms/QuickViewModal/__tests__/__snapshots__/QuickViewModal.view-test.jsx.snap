@@ -55,6 +55,15 @@ exports[`QuickViewModal component should renders correctly 1`] = `
       right: 0;
     }
   }
+
+  div.TCPModal__InnerContent {
+    padding-top: initial;
+    border-top-style: inset;
+    border-top-width: ",
+      [Function],
+      ";
+    border-top-color: transparent;
+  }
 ",
     ]
   }
@@ -177,7 +186,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
       ]
     }
     currency=""
-    currencyExchange=""
+    currencyExchange={1}
     isCanada={false}
     isHasPlcc={false}
     isInternationalShipping={false}

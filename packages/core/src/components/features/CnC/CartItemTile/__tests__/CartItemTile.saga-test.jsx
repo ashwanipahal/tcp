@@ -7,10 +7,12 @@ import {
   updateCartItemSaga,
   getProductSKUInfoSaga,
   afterRemovingCartItem,
+  openPickupModalFromBag,
 } from '../container/CartItemTile.saga';
 import { removeCartItemComplete } from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { AddToPickupError } from '../../AddedToBag/container/AddedToBag.actions';
 
 describe('Cart Item saga remove', () => {
   it('should dispatch confirmRemoveItem action for success resposnse', () => {
@@ -72,19 +74,85 @@ describe('Cart Item saga remove', () => {
 });
 
 describe('Cart Item saga update', () => {
+  const payload = {
+    itemPartNumber: '00193511095440',
+    orderItemId: '3001545559',
+    quantity: '1',
+    variantNo: '3002156005',
+    xitem_catEntryId: '1285036',
+    callBack: jest.fn(),
+  };
+
   it('should dispatch updateCartItem action for success resposnse', () => {
-    const payload = [
-      {
-        itemPartNumber: '00193511095440',
-        orderItemId: '3001545559',
-        quantity: '1',
-        variantNo: '3002156005',
-        xitem_catEntryId: '1285036',
-        callBack: jest.fn(),
-      },
-    ];
-    const updateCartItemSagaGen = updateCartItemSaga(payload);
+    const updateCartItemSagaGen = updateCartItemSaga({ payload });
     updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
+    const res = updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next(res);
+    updateCartItemSagaGen.next({ isUpdating: true });
+    updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next({ isUpdating: false });
+  });
+
+  it('should dispatch updateCartItem action for error resposnse', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      const err = {
+        errorMessages: { _error: 'Error in API' },
+      };
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(err).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+    } catch (err) {
+      console.log('testing errors for update item resposnse');
+    }
+  });
+
+  it('should dispatch updateCartItem action without error message from CMS', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(null).value;
+      putDescriptor = updateCartItemSagaGen.next({ DEFAULT: 'Default' }).value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError('Default')));
+    } catch (err) {
+      console.log('testing errors without error message from CMS');
+    }
+  });
+
+  it('should dispatch updateCartItem action without error message from CMS and without default', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(null).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError('ERROR')));
+    } catch (err) {
+      console.log('testing errors without error message from CMS');
+    }
+  });
+
+  it('should dispatch updateCartItem action for error resposnse from toggling', () => {
+    try {
+      payload.fromToggling = true;
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      const err = {
+        errorMessages: { _error: 'Error in API' },
+      };
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(err).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+    } catch (err) {
+      console.log('testing errors for resposnse from toggling');
+    }
   });
 });
 
@@ -105,5 +173,27 @@ describe('ForgotPasswordSaga', () => {
     expect(takeLatestDescriptor).toEqual(
       takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga)
     );
+
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    expect(takeLatestDescriptor).toEqual(
+      takeLatest(CARTPAGE_CONSTANTS.PICKUP_MODAL_OPEN_FROM_BAG, openPickupModalFromBag)
+    );
+  });
+});
+
+describe('openPickupModalFromBag', () => {
+  const payload = {
+    payload: {
+      colorProductId: '00193511095440',
+      orderInfo: {},
+    },
+  };
+  const generator = openPickupModalFromBag(payload);
+  it('should return correct takeLatest effect', () => {
+    generator.next();
+    generator.next();
+    generator.next({ product: { generalProductId: '12345' } });
+    generator.next();
   });
 });

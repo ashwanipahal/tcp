@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
+import SEODataSaga from '@tcp/core/src/reduxStore/sagas/seoData';
 import LayoutSaga from '@tcp/core/src/reduxStore/sagas/layout';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
@@ -66,6 +67,7 @@ import OrdersSaga from '@tcp/core/src/components/features/account/Orders/contain
 import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
 import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
+import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';
@@ -74,6 +76,7 @@ export default function* rootSaga() {
   yield all([
     BootstrapSaga(),
     LabelsSaga(),
+    SEODataSaga(),
     LayoutSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
@@ -139,6 +142,7 @@ export default function* rootSaga() {
     OutfitDetailsSaga(),
     FavoriteSaga(),
     ExtraPointsSaga(),
+    SubscribeStoreSaga(),
     StoresInternationalSaga(),
     StoreListSaga(),
   ]);

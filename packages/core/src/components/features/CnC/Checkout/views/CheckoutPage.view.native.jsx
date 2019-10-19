@@ -9,6 +9,14 @@ import withKeyboardAvoidingView from '../../../../common/hoc/withKeyboardAvoidin
 import Confirmation from '../../Confirmation';
 
 class CheckoutPage extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    const { currentStage: prevCurrentStage } = prevProps;
+    const { setCheckoutStage, currentStage } = this.props;
+    if (currentStage !== prevCurrentStage) {
+      setCheckoutStage(currentStage);
+    }
+  }
+
   submitShippingSection = data => {
     const { submitShippingSection, navigation } = this.props;
     submitShippingSection({ ...data, navigation });
@@ -40,21 +48,17 @@ class CheckoutPage extends React.PureComponent {
       updateShippingMethodSelection,
       updateShippingAddressData,
       addNewShippingAddressData,
-      // setCheckoutStage,
       onPickupSubmit,
+      formatPayload,
+      verifyAddressAction,
+      submitVerifiedShippingAddressData,
       submitReview,
+      currentStage,
+      setCheckoutStage,
     } = this.props;
-    const { routeTo } = navigation.state.params;
-    const currentRoute = routeTo.toLowerCase();
-    const {
-      PICKUP,
-      SHIPPING,
-      BILLING,
-      REVIEW,
-      CONFIRMATION,
-    } = CheckoutConstants.CHECKOUT_PAGES_NAMES;
-    switch (currentRoute) {
-      case PICKUP.toLowerCase():
+    const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    switch (currentStage && currentStage.toLowerCase()) {
+      case PICKUP:
         return (
           <PickupPage
             isGuest={isGuest}
@@ -72,9 +76,10 @@ class CheckoutPage extends React.PureComponent {
             onPickupSubmit={onPickupSubmit}
             navigation={navigation}
             availableStages={availableStages}
+            setCheckoutStage={setCheckoutStage}
           />
         );
-      case SHIPPING.toLowerCase():
+      case SHIPPING:
         return (
           <ShippingPage
             {...shippingProps}
@@ -82,6 +87,9 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
+            verifyAddressAction={verifyAddressAction}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={this.submitShippingSection}
             availableStages={availableStages}
@@ -89,9 +97,10 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            setCheckoutStage={setCheckoutStage}
           />
         );
-      case BILLING.toLowerCase():
+      case BILLING:
         return (
           <BillingPage
             {...billingProps}
@@ -101,9 +110,10 @@ class CheckoutPage extends React.PureComponent {
             isUsSite={isUsSite}
             availableStages={availableStages}
             submitBilling={submitBilling}
+            setCheckoutStage={setCheckoutStage}
           />
         );
-      case REVIEW.toLowerCase():
+      case REVIEW:
         return (
           <ReviewPage
             {...reviewProps}
@@ -112,9 +122,10 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
+            setCheckoutStage={setCheckoutStage}
           />
         );
-      case CONFIRMATION.toLowerCase():
+      case CONFIRMATION:
         return <Confirmation />;
       default:
         return null;
@@ -147,6 +158,9 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
@@ -157,6 +171,7 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  currentStage: PropTypes.string.isRequired,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

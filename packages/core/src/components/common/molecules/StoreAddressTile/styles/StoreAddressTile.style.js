@@ -55,7 +55,6 @@ export const TileFooter = styled.div`
 `;
 
 export const TileBody = styled.div`
-  flex: 1;
   .address-wrapper {
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: ${props => (props.variation === 'listing' ? 'flex' : 'block')};
@@ -107,6 +106,11 @@ export default css`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+
+  &.address-tile__selectedStore {
+    border: solid 1px ${props => props.theme.colorPalette.gray[500]};
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+  }
 
   .brand-store {
     display: flex;

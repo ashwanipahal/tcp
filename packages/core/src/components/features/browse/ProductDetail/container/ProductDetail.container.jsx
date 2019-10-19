@@ -13,6 +13,7 @@ import {
   getRatingsProductId,
   getDefaultImage,
   getCurrentCurrency,
+  getCurrencyAttributes,
   getPlpLabels,
   getCurrentProduct,
   getPDPLabels,
@@ -74,6 +75,7 @@ class ProductDetailContainer extends React.PureComponent {
       defaultImage,
       productInfo,
       currency,
+      currencyAttributes,
       plpLabels,
       pdpLabels,
       addToBagError,
@@ -95,6 +97,7 @@ class ProductDetailContainer extends React.PureComponent {
             plpLabels={plpLabels}
             pdpLabels={pdpLabels}
             currency={currency}
+            currencyExchange={currencyAttributes.exchangevalue}
             productInfo={productInfo}
             handleAddToBag={this.handleAddToBag}
             addToBagError={addToBagError}
@@ -118,6 +121,7 @@ function mapStateToProps(state) {
     defaultImage: getDefaultImage(state),
     productInfo: getCurrentProduct(state),
     currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
     addToBagError: getAddedToBagError(state),
@@ -160,6 +164,7 @@ ProductDetailContainer.propTypes = {
   }).isRequired,
   defaultImage: PropTypes.string,
   currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -174,7 +179,10 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
-  currency: '',
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
   plpLabels: {
     lbl_sort: '',
   },

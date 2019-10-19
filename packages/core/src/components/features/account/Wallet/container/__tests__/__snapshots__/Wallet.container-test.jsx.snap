@@ -3,6 +3,7 @@
 exports[`WalletContainer should render correctly 1`] = `
 <WalletView
   commonLabels={Object {}}
+  fetchLabels={[Function]}
   labels={Object {}}
 />
 `;

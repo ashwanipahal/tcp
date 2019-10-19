@@ -1,4 +1,7 @@
 const dummyUrl = 'http://www.childrensplace.com';
+const cat1 = '47526';
+const cat2 = '47503>47544';
+const footerlink = 'Shop All Matchables';
 
 export default {
   moduleG: {
@@ -13,7 +16,7 @@ export default {
           textItems: [
             {
               text: 'ALL MATCHABLES',
-              style: 'large_text_black',
+              style: 'medium_text_regular',
             },
           ],
           link: {
@@ -32,7 +35,7 @@ export default {
         {
           textItems: [
             {
-              text: 'THE SHORT SHOP',
+              text: '60% OFF',
               style: 'medium_text_black',
             },
           ],
@@ -73,14 +76,14 @@ export default {
       divTabs: [
         {
           text: {
-            text: 'TODDLER GIRL',
+            text: 'GIRL',
           },
           category: {
-            cat_id: ['47502>47535>54071', '47502>47535>54071'],
+            cat_id: [cat2, '47501>47526'],
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 1',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -88,7 +91,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'Shop All Matchables 1',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -97,14 +100,14 @@ export default {
         },
         {
           text: {
-            text: 'GIRL',
+            text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: ['47526', '47526'],
+            cat_id: [cat1, cat2],
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 2',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -112,7 +115,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'SHOP ALL 0',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -124,11 +127,11 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: ['47503>47544', '47503>47544'],
+            cat_id: [cat2, cat1],
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 3',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -136,7 +139,7 @@ export default {
           },
           singleCTAButtonCart: {
             url: dummyUrl,
-            text: 'Shop All Matchables 2',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
@@ -148,19 +151,19 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: ['47501>47526', '47501>47526'],
+            cat_id: ['47501>47526', cat2],
           },
           singleCTAButton: {
             url: dummyUrl,
-            text: 'SHOP ALL 4',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,
             action: '',
           },
           singleCTAButtonCart: {
-            url: dummyUrl,
-            text: 'Shop All Matchables 4',
+            url: '/us',
+            text: footerlink,
             title: 'SHOP ALL',
             target: '',
             external: 0,

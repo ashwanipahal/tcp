@@ -63,7 +63,7 @@ export const bodyCopyStyles = {
   style10: props => <CurrencyUpPromoBanner {...props} />,
   small_text_bold: props => (
     <BodyCopy
-      fontSize="fs16"
+      fontSize="fs14"
       fontWeight="black"
       color="black"
       fontFamily="primary"
@@ -74,7 +74,7 @@ export const bodyCopyStyles = {
   ),
   small_text_normal: props => (
     <BodyCopy
-      fontSize="fs16"
+      fontSize="fs14"
       color="gray.900"
       fontFamily="primary"
       textAlign="left"
@@ -183,6 +183,16 @@ export const bodyCopyStyles = {
   ),
 
   percentage_all_wrapped_normal: props => <PercentageAllWrappedNormal {...props} />,
+  extrabold_text_regular_secondary: props => (
+    <BodyCopy
+      fontSize="fs48"
+      color="white"
+      mobilefontFamily="secondary"
+      fontWeight="black"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
@@ -315,7 +325,7 @@ const PercentageStyle = props => {
           style={bodyCopyStyle}
         />
         <BodyCopy
-          fontSize="fs20"
+          fontSize="fs18"
           fontWeight="black"
           color={colorVariation}
           fontFamily="primary"
@@ -341,15 +351,14 @@ const PercentagePinkStyle = props => {
   const { text } = props;
 
   const strArray = text && text.split(' ');
-  const bodyCopyStyle = { height: 85, fontSize: 99 };
-  const bodyCopyStyle1 = { height: 131, marginTop: 8, fontSize: 153 };
-  const bodyCopyStyle2 = { height: 42 };
+  const bodyCopyStyle = { height: 85, fontSize: 98, color: '#f797d6' };
+  const bodyCopyStyle1 = { height: 131, marginTop: 8, fontSize: 154, color: '#f791cf' };
+  const bodyCopyStyle2 = { height: 42, color: '#f791cf' };
 
   return (
     <Container>
       <BodyCopy
         fontWeight="black"
-        color="pink.400"
         fontFamily="primary"
         textAlign="center"
         lineHeight="155px"
@@ -359,7 +368,6 @@ const PercentagePinkStyle = props => {
       <ContainerView>
         <BodyCopy
           fontWeight="black"
-          color="pink.400"
           fontFamily="primary"
           text={strArray && strArray[1]}
           lineHeight="99px"
@@ -368,7 +376,6 @@ const PercentagePinkStyle = props => {
         <BodyCopy
           fontSize="fs42"
           fontWeight="black"
-          color="pink.400"
           fontFamily="primary"
           textAlign="center"
           lineHeight="42px"
@@ -394,7 +401,7 @@ const MediumTextRegular = props => {
       fontSize="fs20"
       color="gray.900"
       mobilefontFamily="primary"
-      fontWeight="regular"
+      fontWeight="semibold"
       textAlign="center"
       letterSpacing="ls2"
       lineHeight="20px"

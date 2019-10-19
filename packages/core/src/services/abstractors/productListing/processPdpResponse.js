@@ -58,14 +58,6 @@ const getReviewsCount = (isGiftCard, reviewsCount) => {
   return isGiftCard ? 0 : reviewsCount;
 };
 
-const getCurrentColorProductId = (generalProductId, colorFitsSizesMap) => {
-  const currentColorProduct =
-    generalProductId !== 'gift_cards'
-      ? colorFitsSizesMap.filter(item => item.colorDisplayId === generalProductId)
-      : [];
-  return currentColorProduct.length ? currentColorProduct[0].colorProductId : generalProductId;
-};
-
 const processPdpResponse = ({
   baseProduct,
   categoryPathMap,
@@ -79,7 +71,6 @@ const processPdpResponse = ({
   alternateSizes,
   breadCrumbs,
 }) => {
-  const generalProductId = getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct);
   return {
     breadCrumbs,
     rawBreadCrumb: getRawBreadCrumb(categoryPathMap),
@@ -87,7 +78,7 @@ const processPdpResponse = ({
       // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
       ratingsProductId: baseProduct.style_partno,
       // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
-      generalProductId,
+      generalProductId: getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct),
       categoryId: getCatId(categoryId),
       name: getIsGiftCard(isGiftCard, baseProduct),
       pdpUrl: `/p/${colorIdOrSeoKeyword}`,
@@ -114,7 +105,6 @@ const processPdpResponse = ({
       long_product_title: baseProduct.long_product_title || '',
       bundleProducts: baseProduct.products || [],
     },
-    currentColorProductId: getCurrentColorProductId(generalProductId, colorFitsSizesMap),
   };
 };
 
