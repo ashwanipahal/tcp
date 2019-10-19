@@ -105,6 +105,8 @@ class ProductDetailContainer extends React.PureComponent {
   }
 }
 
+ProductDetailContainer.pageId = 'p';
+
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
