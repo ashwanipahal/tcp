@@ -125,7 +125,15 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
-        subHeadingLabel={false}
+        subHeadingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "undefined<sup>undefined</sup>",
+              }
+            }
+          />
+        }
       />
       <div
         className="footer alignCenter"
@@ -173,7 +181,15 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={false}
-        subHeadingLabel={false}
+        subHeadingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "undefined<sup>undefined</sup>",
+              }
+            }
+          />
+        }
       />
       <div
         className="footer alignCenter"
@@ -221,7 +237,15 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
-        subHeadingLabel={false}
+        subHeadingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "undefined<sup>undefined</sup>",
+              }
+            }
+          />
+        }
       />
       <div
         className="footer alignCenter"
@@ -269,7 +293,15 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
-        subHeadingLabel={false}
+        subHeadingLabel={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "undefined<sup>undefined</sup>",
+              }
+            }
+          />
+        }
       />
       <div
         className="footer alignCenter"
