@@ -3,9 +3,17 @@ import { PropTypes } from 'prop-types';
 import OutfitTileStyle from './OutfitTile.style';
 import withStyles from '../../../common/hoc/withStyles';
 import { BodyCopy, Anchor, Image } from '../../../common/atoms';
+// import DamImage from '../../../common/atoms/BodyCopy';
 
 const OutfitTile = props => {
   const { className, item, asPath } = props;
+
+  //  for DAM
+  // const imgData = {
+  //   alt: asPath,
+  //   url: item.imageUrl,
+  // };
+
   return (
     <div className={`${className}`}>
       <Anchor
@@ -13,6 +21,9 @@ const OutfitTile = props => {
         asPath={item.pdpUrl}
         title={asPath}
       >
+        {/* TO DO - image from DAM
+        <DamImage className="outfit-tile" imgData={imgData} isProductPage />
+        */}
         <Image className="outfit-tile" src={item.imageUrl} />
         <BodyCopy className="shop-look-label" fontFamily="secondary" fontSize="fs12">
           Shop This Look ›

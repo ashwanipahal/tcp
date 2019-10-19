@@ -13,4 +13,7 @@ export default css`
       margin-bottom: 48px;
     }
   }
+  .outfit-section-wrapper {
+    margin-bottom: 48px;
+  }
 `;

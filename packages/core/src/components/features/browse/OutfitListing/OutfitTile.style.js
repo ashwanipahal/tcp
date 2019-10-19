@@ -45,10 +45,13 @@ export default css`
       z-index: 1;
     }
     &:hover {
-      opacity: 0.3;
+      .outfit-tile {
+        opacity: 0.3;
+      }
       .shop-look-label {
         text-indent: 0px;
         opacity: 1;
+        z-index: 9999;
       }
     }
   }
