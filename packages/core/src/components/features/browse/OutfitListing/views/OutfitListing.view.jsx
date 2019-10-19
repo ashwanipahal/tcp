@@ -54,7 +54,7 @@ const OutfitListingView = ({
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-              <OutfitTileSection asPath={asPath} outfitDetails={outfitDetails} />
+              <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
               {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
             </Col>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>

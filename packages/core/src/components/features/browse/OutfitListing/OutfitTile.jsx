@@ -6,7 +6,7 @@ import { BodyCopy, Anchor, Image } from '../../../common/atoms';
 // import DamImage from '../../../common/atoms/BodyCopy';
 
 const OutfitTile = props => {
-  const { className, item, asPath } = props;
+  const { className, item, asPath, labels } = props;
 
   //  for DAM
   // const imgData = {
@@ -26,7 +26,7 @@ const OutfitTile = props => {
         */}
         <Image className="outfit-tile" src={item.imageUrl} />
         <BodyCopy className="shop-look-label" fontFamily="secondary" fontSize="fs12">
-          Shop This Look ›
+          {labels.lbl_outfit_shop_this_look}
         </BodyCopy>
       </Anchor>
     </div>
@@ -37,12 +37,14 @@ OutfitTile.propTypes = {
   className: PropTypes.string,
   asPath: PropTypes.string,
   item: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 OutfitTile.defaultProps = {
   className: '',
   asPath: '',
   item: {},
+  labels: {},
 };
 
 export default withStyles(OutfitTile, OutfitTileStyle);
