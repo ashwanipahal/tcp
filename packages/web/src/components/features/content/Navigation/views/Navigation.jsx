@@ -22,7 +22,21 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
  * This function scrolls page to top on route change complete
  */
 const handleRouteComplete = url => {
-  if (url.match(/\?sort/g) === null && url.match(/\?categoryPath2_uFilter/g) === null) {
+  /**
+   * This constant is for to check PLP page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
+   */
+  const checkListingPageParam =
+    url.match(/\/c\//g) !== null &&
+    (url.match(/\?sort/g) !== null || url.match(/\?categoryPath2_uFilter/g) !== null);
+
+  /**
+   * This constant is for to check Search page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
+   */
+  const checkSearchPageParam =
+    url.match(/\/search\//g) !== null &&
+    (url.match(/\?sort/g) !== null || url.match(/\?categoryPath2_uFilter/g) !== null);
+
+  if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
   }
 };
