@@ -8,7 +8,7 @@ import CheckoutReview, {
 import { isGuest } from '../container/Checkout.selector';
 import {
   validateAndSubmitEmailSignup,
-  callPickupSubmitMethod,
+  // callPickupSubmitMethod,
 } from '../container/Checkout.saga.util';
 import {
   requestPersonalizedCoupons,
@@ -34,18 +34,18 @@ jest.mock('../../../../../utils', () => ({
 const emailAddress = '123@123.com';
 const orderId = '54321';
 const formData = {
-  hasAlternatePickup: true,
-  pickUpAlternate: {
-    emailAddress: 'testthis@test.com',
-    firstName: 'test',
-    lastName: 'hello',
-  },
-  pickUpContact: {
-    firstName: 'hello',
-    lastName: 'this',
-    phoneNumber: '2345678923',
-    emailAddress: 'testbill2@test.com',
-  },
+  // hasAlternatePickup: true,
+  // pickUpAlternate: {
+  //   emailAddress: 'testthis@test.com',
+  //   firstName: 'test',
+  //   lastName: 'hello',
+  // },
+  // pickUpContact: {
+  //   firstName: 'hello',
+  //   lastName: 'this',
+  //   phoneNumber: '2345678923',
+  //   emailAddress: 'testbill2@test.com',
+  // },
   billing: {
     cvv: '123',
   },
@@ -274,7 +274,6 @@ describe('expressCheckoutSubmit saga', () => {
       },
     };
     const expressCheckout = expressCheckoutSubmit(formData);
-    expect(expressCheckout.next().value).toEqual(call(callPickupSubmitMethod, formData));
     expressCheckout.next();
     expressCheckout.next(billingDetails);
     expect(expressCheckout.next(23).value).toEqual(call(updatePaymentOnOrder, requestData));
