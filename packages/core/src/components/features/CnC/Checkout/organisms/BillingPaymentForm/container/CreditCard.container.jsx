@@ -316,6 +316,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isPLCCEnabled,
       scrollView,
       toastMessage,
+      setCheckoutStage,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -353,6 +354,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isPLCCEnabled={isPLCCEnabled}
         scrollView={scrollView}
         toastMessage={toastMessage}
+        setCheckoutStage={setCheckoutStage}
       />
     );
   }

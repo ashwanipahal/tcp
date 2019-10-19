@@ -19,17 +19,8 @@ export const mapDispatchToProps = dispatch => {
     closeModal: () => {
       dispatch(toggleSmsSignupModal({ isModalOpen: false }));
     },
-    asyncValidate: (values, reduxFormDispatch, props) => {
-      const { signupPhoneNumber } = values;
-      if (signupPhoneNumber.length && !validatePhoneNumber(signupPhoneNumber)) {
-        const {
-          formViewConfig: { validationErrorLabel },
-        } = props;
-        const error = { signupPhoneNumber: validationErrorLabel };
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject({ ...error, _error: error });
-      }
-      return Promise.resolve();
+    validateSignupSmsPhoneNumber: phoneNumber => {
+      return validatePhoneNumber(phoneNumber) ? Promise.resolve({}) : Promise.reject();
     },
   };
 };

@@ -1,4 +1,4 @@
-import { all, call, takeLatest, put } from 'redux-saga/effects';
+import { all, call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { submitUserSurvey } from '@tcp/core/src/services/abstractors/account/UpdateProfileInfo';
 import { updateProfileSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.actions';
@@ -24,6 +24,7 @@ export function* getUserInfoSaga() {
     });
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
+    const getCurrenciesMap = state => state.session.siteOptions.currenciesMap;
 
     yield all([
       put(setUserInfo(response)),
@@ -36,7 +37,14 @@ export function* getUserInfoSaga() {
       yield put(setCountry(country));
     }
     if (currency) {
-      yield put(setCurrency(currency));
+      const setCurrenciesMap = yield select(getCurrenciesMap);
+      const currencyAttributes = setCurrenciesMap.find(item => item.id === currency);
+      yield put(
+        setCurrency({
+          currency,
+          currencyAttributes,
+        })
+      );
     }
     if (language) {
       yield put(setLanguage(language));
