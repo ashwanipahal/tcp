@@ -12,6 +12,12 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
+  .col-0 {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+
   .pickup-store-details-container {
     display: flex;
     flex-direction: 'row';
