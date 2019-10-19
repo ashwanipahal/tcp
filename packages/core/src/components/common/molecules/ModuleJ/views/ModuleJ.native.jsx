@@ -151,6 +151,7 @@ class ModuleJ extends React.PureComponent {
                 />
               )}
             </HeaderContainer>
+
             <SecondHeaderContainer>
               {[headerText[1]] && (
                 <LinkText
@@ -186,7 +187,7 @@ class ModuleJ extends React.PureComponent {
           <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
             <DamImage
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
-              height="300px"
+              height="310px"
               width="100%"
               testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}

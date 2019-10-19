@@ -26,8 +26,56 @@ const renderLearnMoreLink = labels => {
   );
 };
 
+const renderCreateAccountLink = labels => {
+  return (
+    <Anchor
+      className="learnMore"
+      fontSizeVariation="medium"
+      anchorVariation="primary"
+      text={labels.createMyPlaceRewardsAccount}
+      underline
+    />
+  );
+};
+
+const renderLoginLink = labels => {
+  return (
+    <Anchor
+      className="learnMore"
+      fontSizeVariation="medium"
+      anchorVariation="primary"
+      text={labels.logIn}
+      underline
+    />
+  );
+};
+
+const confirmationPageLinks = (labels, isGuest, earnedReward) => {
+  return (
+    <>
+      {isGuest && earnedReward && (
+        <div className="links-wrapper">
+          <span className="links-container">
+            <span>{renderCreateAccountLink(labels)}</span>
+            <span className="elem-pl-XL">{renderLoginLink(labels)}</span>
+          </span>
+        </div>
+      )}
+    </>
+  );
+};
+
 const LoyaltyFooterSection = props => {
-  const { className, isProductDetailView, isGuest, isPlcc, isReviewPage, labels } = props;
+  const {
+    labels,
+    className,
+    isProductDetailView,
+    isGuest,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage,
+    earnedReward,
+  } = props;
   return (
     <div className={`${className} footerWrapper`}>
       {isProductDetailView && (
@@ -40,34 +88,43 @@ const LoyaltyFooterSection = props => {
         />
       )}
       {!isProductDetailView && (
-        <div className="links-wrapper">
+        <>
           {!isReviewPage && (
             <>
-              {!isPlcc && (
-                <span className="links-container">
-                  {renderApplyNowLink()}
-                  <span className="learnSymbolWrapper elem-pl-XL">
-                    <BodyCopy
-                      className="symbolWrapper"
-                      color="text.primary"
-                      component="span"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                      fontSize="fs9"
-                    >
-                      {labels.sectionSymbol}
-                      {labels.asteriskSymbol}
-                    </BodyCopy>
+              {!isConfirmationPage && (
+                <>
+                  {!isPlcc && (
+                    <div className="links-wrapper">
+                      <span className="links-container">
+                        {renderApplyNowLink()}
+                        <span className="learnSymbolWrapper elem-pl-XL">
+                          <BodyCopy
+                            className="symbolWrapper"
+                            color="text.primary"
+                            component="span"
+                            fontFamily="secondary"
+                            fontWeight="regular"
+                            fontSize="fs9"
+                          >
+                            {labels.sectionSymbol}
+                            {labels.asteriskSymbol}
+                          </BodyCopy>
 
-                    {renderLearnMoreLink(labels)}
-                  </span>
-                </span>
+                          {renderLearnMoreLink(labels)}
+                        </span>
+                      </span>
+                    </div>
+                  )}
+                  {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+                </>
               )}
-              {isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
+              {isConfirmationPage && <>{confirmationPageLinks(labels, isGuest, earnedReward)}</>}
             </>
           )}
-          {isReviewPage && isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
-        </div>
+          {isReviewPage && isPlcc && (
+            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
+          )}
+        </>
       )}
     </div>
   );
@@ -80,6 +137,8 @@ LoyaltyFooterSection.propTypes = {
   isGuest: PropTypes.bool,
   isReviewPage: PropTypes.bool,
   isProductDetailView: PropTypes.bool,
+  isConfirmationPage: PropTypes.bool,
+  earnedReward: PropTypes.bool,
 };
 
 LoyaltyFooterSection.defaultProps = {
@@ -87,7 +146,9 @@ LoyaltyFooterSection.defaultProps = {
   isPlcc: false,
   isGuest: false,
   isReviewPage: false,
-  isProductDetailView: '',
+  isProductDetailView: false,
+  isConfirmationPage: false,
+  earnedReward: false,
 };
 
 export default withStyles(LoyaltyFooterSection, Styles);

@@ -177,7 +177,7 @@ PickupSkuSelectionForm.defaultProps = {
   className: '',
   onChangeColor: () => {},
   currentColorEntry: {},
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

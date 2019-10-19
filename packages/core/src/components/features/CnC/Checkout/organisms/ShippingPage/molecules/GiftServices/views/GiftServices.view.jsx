@@ -106,7 +106,7 @@ class GiftServices extends React.PureComponent {
       const defaultOption = options.find(o => o.value === 'standard');
       return defaultOption && defaultOption.title;
     }
-    return selectedOption && selectedOption.title;
+    return selectedOption.title;
   };
 
   render() {

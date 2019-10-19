@@ -112,6 +112,30 @@ const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGue
   };
 };
 
+const productDetailPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
+  let rewardPointsValue = '';
+  let headingLabelVal = '';
+  let subHeadingLabel = '';
+  if (!earnedReward) {
+    rewardPointsValue = estimatedRewardsVal;
+    if (isGuest) {
+      headingLabelVal = labels.getRewardedShopping;
+      subHeadingLabel = labels.loyaltyPayPoints;
+    } else if (!isPlcc) {
+      headingLabelVal = labels.earnDoublePointsPDP;
+      subHeadingLabel = labels.myPlaceCreditCard;
+    } else {
+      headingLabelVal = labels.getDoublePointsPLCCPDP;
+      subHeadingLabel = labels.checkoutMyPlaceCreditCard;
+    }
+  }
+  return {
+    rewardPointsValue,
+    headingLabelVal,
+    subHeadingLabel,
+  };
+};
+
 const bagCheckoutPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
   let headingLabelVal = '';
@@ -165,7 +189,8 @@ const renderLoyaltyLabels = (
   isPlcc,
   isReviewPage,
   isConfirmationPage,
-  isAddedToBagPage
+  isAddedToBagPage,
+  isProductDetailView
 ) => {
   let rewardPointsValueFn = '';
   let headingLabelValFn = '';
@@ -200,6 +225,19 @@ const renderLoyaltyLabels = (
     remainingPlccValFn = confirmationPageLabels.remainingPlccVal;
   } else if (isAddedToBagPage) {
     const addedToBagPageLabels = addedToBagPageLabelsFn(
+      labels,
+      earnedReward,
+      estimatedRewardsVal,
+      isGuest,
+      isPlcc
+    );
+    rewardPointsValueFn = addedToBagPageLabels.rewardPointsValue;
+    headingLabelValFn = addedToBagPageLabels.headingLabelVal;
+    subHeadingLabelFn = addedToBagPageLabels.subHeadingLabel;
+    descriptionLabelFn = addedToBagPageLabels.descriptionLabel;
+    remainingPlccValFn = addedToBagPageLabels.remainingPlccVal;
+  } else if (isProductDetailView) {
+    const addedToBagPageLabels = productDetailPageLabelsFn(
       labels,
       earnedReward,
       estimatedRewardsVal,

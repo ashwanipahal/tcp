@@ -9,34 +9,16 @@ import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import renderLoyaltyLabels from '../../../util/utilityCommon';
 
-// const renderPDPLoyaltyMessage = (earnedReward, isGuest, labels, isPlcc) => {
-//   let pdpHeadingLabel = '';
-//   let pdpSubHeadingLabel = '';
-//   if (!earnedReward) {
-//     if (isGuest) {
-//       pdpHeadingLabel = labels.getRewardedShopping;
-//       pdpSubHeadingLabel = labels.loyaltyPayPoints;
-//     } else if (!isPlcc) {
-//       pdpHeadingLabel = labels.earnDoublePointsPDP;
-//       pdpSubHeadingLabel = labels.myPlaceCreditCard;
-//     } else {
-//       pdpHeadingLabel = labels.getDoublePointsPLCCPDP;
-//       pdpSubHeadingLabel = labels.checkoutMyPlaceCreditCard;
-//     }
-//   }
-//   return { pdpHeadingLabel, pdpSubHeadingLabel };
-// };
-
 const getPageCategory = pageCategory => {
   let ischeckoutPage = false;
   let isReviewPage = false;
   let isConfirmationPage = false;
   let isAddedToBagPage = false;
   switch (pageCategory) {
-    case 'isReviewPage':
+    case 'review':
       isReviewPage = true;
       break;
-    case 'isConfirmationPage':
+    case 'confirmation':
       isConfirmationPage = true;
       break;
     case 'isAddedToBagPage':
@@ -48,9 +30,9 @@ const getPageCategory = pageCategory => {
   return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
 };
 
-const concatSectionSymbol = (str, sectionSymbol) => {
-  return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
-};
+// const concatSectionSymbol = (str, sectionSymbol) => {
+//   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
+// };
 
 const LoyaltyBannerSection = props => {
   const {
@@ -90,7 +72,8 @@ const LoyaltyBannerSection = props => {
     isPlcc,
     isReviewPage,
     isConfirmationPage,
-    isAddedToBagPage
+    isAddedToBagPage,
+    isProductDetailView
   );
 
   const utilArrRewards = [
@@ -104,9 +87,7 @@ const LoyaltyBannerSection = props => {
   const finalPointsValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrRewards);
 
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
-  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn
-    ? convertHtml(concatSectionSymbol(LoyaltyLabels.subHeadingLabelFn, labels.sectionSymbol))
-    : false;
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn || false;
   descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
 
   const utilArrNextReward = [
@@ -138,6 +119,10 @@ const LoyaltyBannerSection = props => {
             currentSubtotal={currentSubtotal}
             estimatedSubtotal={estimatedSubtotal}
             isPlcc={isPlcc}
+            isReviewPage={isReviewPage}
+            isConfirmationPage={isConfirmationPage}
+            isAddedToBagPage={isAddedToBagPage}
+            isProductDetailView={isProductDetailView}
           />
           <div className="footer">
             <LoyaltyFooterSection
@@ -146,7 +131,9 @@ const LoyaltyBannerSection = props => {
               isPlcc={isPlcc}
               isProductDetailView={isProductDetailView}
               isReviewPage={isReviewPage}
+              isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
+              earnedReward
             />
           </div>
         </BodyCopy>
