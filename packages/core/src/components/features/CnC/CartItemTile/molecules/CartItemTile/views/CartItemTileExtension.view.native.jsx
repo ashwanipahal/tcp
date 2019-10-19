@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
@@ -15,6 +16,7 @@ import Image from '../../../../../../common/atoms/Image';
 import endpoints from '../../../../../../../service/endpoint';
 import { getLocator } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CartItemRadioButtons from '../../CartItemRadioButtons';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -176,6 +178,60 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
+/* eslint-disable react/prop-types */
+const getCartRadioButtons = ({
+  productDetail,
+  labels,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile,
+  isBagPageSflSection,
+  showOnReviewPage,
+  isEcomSoldout,
+  isECOMOrder,
+  isBOSSOrder,
+  isBOPISOrder,
+  noBopisMessage,
+  noBossMessage,
+  bossDisabled,
+  bopisDisabled,
+  isBossEnabled,
+  isBopisEnabled,
+}) => {
+  if (isBagPageSflSection || !showOnReviewPage) return null;
+  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
+    return (
+      <CartItemRadioButtons
+        productDetail={productDetail}
+        labels={labels}
+        index={itemIndex}
+        openedTile={openedTile}
+        setSelectedProductTile={setSelectedProductTile}
+        isEcomSoldout={isEcomSoldout}
+        isECOMOrder={isECOMOrder}
+        isBOSSOrder={isBOSSOrder}
+        isBOPISOrder={isBOPISOrder}
+        noBopisMessage={noBopisMessage}
+        noBossMessage={noBossMessage}
+        bossDisabled={bossDisabled}
+        bopisDisabled={bopisDisabled}
+        isBossEnabled={isBossEnabled}
+        isBopisEnabled={isBopisEnabled}
+      />
+    );
+  }
+  return <></>;
+};
+
+const getItemStatus = (productDetail, labels) => {
+  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
+    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
+  }
+  return <></>;
+};
+
+/* eslint-enable react/prop-types */
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -185,4 +241,6 @@ export default {
   moveToBagSflItem,
   PriceOnReviewPage,
   getEditError,
+  getCartRadioButtons,
+  getItemStatus,
 };

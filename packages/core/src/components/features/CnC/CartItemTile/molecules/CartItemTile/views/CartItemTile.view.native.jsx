@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -26,44 +25,23 @@ import {
   SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
-import CartItemRadioButtons from '../../CartItemRadioButtons';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileExtension from './CartItemTileExtension.view.native';
+import {
+  getBossBopisFlags,
+  isEcomOrder,
+  isBopisOrder,
+  isBossOrder,
+  isSoldOut,
+  noBossBopisMessage,
+  checkBossBopisDisabled,
+  showRadioButtons,
+} from './CartItemTile.utils';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
-
-const getItemStatus = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
-  }
-  return <></>;
-};
-const getCartRadioButtons = (
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection,
-  showOnReviewPage
-) => {
-  if (isBagPageSflSection || !showOnReviewPage) return null;
-  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
-    return (
-      <CartItemRadioButtons
-        productDetail={productDetail}
-        labels={labels}
-        index={itemIndex}
-        openedTile={openedTile}
-        setSelectedProductTile={setSelectedProductTile}
-      />
-    );
-  }
-  return <></>;
-};
 
 class ProductInformation extends React.Component {
   swipeable = React.createRef();
@@ -279,9 +257,37 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
+    const {
+      productDetail,
+      productDetail: {
+        miscInfo: { store, orderItemType, availability },
+        itemInfo: { itemBrand, isGiftItem },
+      },
+      labels,
+      itemIndex,
+      showOnReviewPage,
+      currencySymbol,
+    } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
-    const { isGiftItem } = productDetail.itemInfo;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isECOMOrder = isEcomOrder(orderItemType);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
+
+    console.log('bossDisabled, bopisDisabled', bossDisabled, bopisDisabled);
+
     return (
       <Swipeable
         onRef={ref => {
@@ -295,7 +301,9 @@ class ProductInformation extends React.Component {
         }}
       >
         <MainWrapper>
-          <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
+          <UnavailableView>
+            {CartItemTileExtension.getItemStatus(productDetail, labels)}
+          </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
             <ProductDescription>
@@ -356,15 +364,32 @@ class ProductInformation extends React.Component {
               {CartItemTileExtension.getEditError(productDetail, labels)}
             </EditButton>
           )}
-          {getCartRadioButtons(
-            productDetail,
-            labels,
-            itemIndex,
-            openedTile,
-            setSelectedProductTile,
-            isBagPageSflSection,
-            showOnReviewPage
-          )}
+          {showRadioButtons({
+            isEcomSoldout,
+            isECOMOrder,
+            isBossEnabled,
+            isBopisEnabled,
+            store,
+          }) &&
+            CartItemTileExtension.getCartRadioButtons({
+              productDetail,
+              labels,
+              itemIndex,
+              openedTile,
+              setSelectedProductTile,
+              isBagPageSflSection,
+              showOnReviewPage,
+              isEcomSoldout,
+              isECOMOrder,
+              isBOSSOrder,
+              isBOPISOrder,
+              noBopisMessage,
+              noBossMessage,
+              bossDisabled,
+              bopisDisabled,
+              isBossEnabled,
+              isBopisEnabled,
+            })}
         </MainWrapper>
       </Swipeable>
     );

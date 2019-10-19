@@ -994,7 +994,7 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-    console.log('productDetail.itemInfo.imagePath', productDetail.itemInfo.imagePath);
+
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
