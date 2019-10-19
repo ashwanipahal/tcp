@@ -41,6 +41,7 @@ exports[`PickUp Review Section should render the component correctly with same s
     fullBleed={true}
   >
     <Styled(Col)
+      className="col-0"
       colSize={
         Object {
           "large": 5,
@@ -82,6 +83,7 @@ exports[`PickUp Review Section should render the component correctly with same s
       />
     </Styled(Col)>
     <Styled(Col)
+      className="col-1"
       colSize={
         Object {
           "large": 5,
