@@ -45,8 +45,11 @@ const getPageCategory = pageCategory => {
     default:
       ischeckoutPage = true;
   }
-
   return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
+};
+
+const concatSectionSymbol = (str, sectionSymbol) => {
+  return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
 };
 
 const LoyaltyBannerSection = props => {
@@ -101,7 +104,9 @@ const LoyaltyBannerSection = props => {
   const finalPointsValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrRewards);
 
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
-  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn || false;
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn
+    ? convertHtml(concatSectionSymbol(LoyaltyLabels.subHeadingLabelFn, labels.sectionSymbol))
+    : false;
   descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
 
   const utilArrNextReward = [

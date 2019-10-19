@@ -8,25 +8,25 @@ const reviewPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, 
   if (!earnedReward) {
     rewardPointsValue = estimatedRewardsVal;
     if (isGuest) {
-      headingLabelVal = labels.guestReviewYouCanEarn;
-      subHeadingLabel = labels.oneDollarSpent;
+      headingLabelVal = labels.reviewGuestPointsHeading;
+      subHeadingLabel = labels.reviewGuestPointsSubHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprReviewYoullEarn;
+      headingLabelVal = labels.reviewMprPointsHeading;
     } else {
-      headingLabelVal = labels.plccReviewYoullEarn;
-      descriptionLabel = labels.plccReviewWhenYouCheck;
-      remainingPlccVal = labels.plccReviewThatsSomePoints;
+      headingLabelVal = labels.reviewPlccPointsHeading;
+      descriptionLabel = labels.reviewPlccPointsDescription;
+      remainingPlccVal = labels.reviewPlccPointsRemaining;
     }
   } else {
     rewardPointsValue = earnedReward;
     if (isGuest) {
-      headingLabelVal = labels.guestReviewBecomeMember;
-      subHeadingLabel = labels.oneDollarSpent;
+      headingLabelVal = labels.reviewGuestRewardsHeading;
+      subHeadingLabel = labels.reviewGuestRewardsSubHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprReviewYoullGet;
+      headingLabelVal = labels.reviewMprRewardsHeading;
     } else {
-      headingLabelVal = labels.plccReviewYoullGet;
-      descriptionLabel = labels.plccReviewWhenYouCheck;
+      headingLabelVal = labels.reviewPlccRewardsHeading;
+      descriptionLabel = labels.reviewPlccRewardsDescription;
     }
   }
   return {
@@ -46,23 +46,23 @@ const confirmationPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isG
   if (!earnedReward) {
     rewardPointsValue = estimatedRewardsVal;
     if (isGuest) {
-      headingLabelVal = labels.guestConfirmationSignUp;
+      headingLabelVal = labels.confirmationGuestPointsHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprConfirmationYouEarnedPoints;
-      remainingPlccVal = labels.mprConfirmationThatsSomePoints;
+      headingLabelVal = labels.confirmationMprPointsHeading;
+      remainingPlccVal = labels.confirmationMprPointsRemaining;
     } else {
-      headingLabelVal = labels.plccConfirmationYouEarnedPoints;
-      remainingPlccVal = labels.plccConfirmationYoureSomePoints;
+      headingLabelVal = labels.confirmationPlccPointsHeading;
+      remainingPlccVal = labels.confirmationPlccPointsRemaining;
     }
   } else {
     rewardPointsValue = earnedReward;
     if (isGuest) {
-      headingLabelVal = labels.guestConfirmationBecomeMember;
-      subHeadingLabel = labels.oneDollarSpent;
+      headingLabelVal = labels.confirmationGuestRewardsHeading;
+      subHeadingLabel = labels.confirmationGuestRewardsSubHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprConfirmationYouEarnedReward;
+      headingLabelVal = labels.confirmationMprRewardsHeading;
     } else {
-      headingLabelVal = labels.plccConfirmationYouEarnedReward;
+      headingLabelVal = labels.confirmationPlccRewardsHeading;
     }
   }
   return {
@@ -117,31 +117,31 @@ const bagCheckoutPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGu
   if (!earnedReward) {
     rewardPointsValue = estimatedRewardsVal;
     if (isGuest) {
-      headingLabelVal = labels.youCanEarnPoints;
-      subHeadingLabel = labels.save30Today;
-      descriptionLabel = labels.earnDoublePoints;
+      headingLabelVal = labels.bagGuestPointsHeading;
+      subHeadingLabel = labels.bagGuestPointsSubHeading;
+      descriptionLabel = labels.bagGuestPointsDescription;
     } else if (!isPlcc) {
-      headingLabelVal = labels.youllEarnPoints;
-      subHeadingLabel = labels.save30Today;
-      descriptionLabel = labels.earnDoublePoints;
+      headingLabelVal = labels.bagMprPointsHeading;
+      subHeadingLabel = labels.bagMprPointsSubHeading;
+      descriptionLabel = labels.bagMprPointsDescription;
     } else {
-      headingLabelVal = labels.youllEarnPointsPlcc;
-      descriptionLabel = labels.whenYouCheckOutPlcc;
-      remainingPlccVal = labels.thatsSomePointsFromReward;
+      headingLabelVal = labels.bagPlccPointsHeading;
+      descriptionLabel = labels.bagPlccPointsDescription;
+      remainingPlccVal = labels.bagPlccPointsRemaining;
     }
   } else {
     rewardPointsValue = earnedReward;
     if (isGuest) {
-      headingLabelVal = labels.becomeMemberOnThisPurchase;
-      subHeadingLabel = labels.save30Today;
-      descriptionLabel = labels.earnDoublePoints;
+      headingLabelVal = labels.bagGuestRewardsHeading;
+      subHeadingLabel = labels.bagGuestRewardsSubHeading;
+      descriptionLabel = labels.bagGuestRewardsDescription;
     } else if (!isPlcc) {
-      headingLabelVal = labels.youllGetWithThisPurchase;
-      subHeadingLabel = labels.save30Today;
-      descriptionLabel = labels.earnDoublePoints;
+      headingLabelVal = labels.bagMprRewardsHeading;
+      subHeadingLabel = labels.bagMprRewardsSubHeading;
+      descriptionLabel = labels.bagMprRewardsDescription;
     } else {
-      headingLabelVal = labels.youllGetARewardPlcc;
-      descriptionLabel = labels.whenYouCheckOutPlcc;
+      headingLabelVal = labels.bagPlccRewardsHeading;
+      descriptionLabel = labels.bagPlccRewardsSubHeading;
     }
   }
   return {
