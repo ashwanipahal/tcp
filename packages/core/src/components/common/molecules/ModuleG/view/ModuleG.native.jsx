@@ -124,11 +124,11 @@ class ModuleG extends React.PureComponent {
     );
   };
 
-  getDataStatus = selectedProductList => {
-    const [selectedCategoryId] = this.state;
+  getDataStatus = selectedCategoryId => {
+    const { productTabList = {} } = this.props;
     let dataStatus = true;
-    if (selectedProductList && selectedProductList.status) {
-      dataStatus = selectedProductList.status[selectedCategoryId];
+    if (productTabList && productTabList.status) {
+      dataStatus = productTabList.status[selectedCategoryId];
     }
     return dataStatus;
   };
@@ -144,7 +144,12 @@ class ModuleG extends React.PureComponent {
     selectedSingleCTAButtonCart
   ) => {
     const { navigation, headerText, promoBanner, divTabs } = this.props;
-    const dataStatus = this.getDataStatus(selectedProductList);
+    // const { selectedCategoryId } = this.state;
+    // const dataStatus1 = this.getDataStatus(selectedCategoryId[0]);
+    // const dataStatus2 = this.getDataStatus(selectedCategoryId[1]);
+    const dataStatus1 = true;
+    const dataStatus2 = true;
+
     return (
       <Container>
         <MessageContainer>
@@ -180,7 +185,7 @@ class ModuleG extends React.PureComponent {
           <SHADOW />
         </ShadowContainer>
         <View>
-          {dataStatus ? (
+          {dataStatus1 ? (
             <Skeleton
               row={1}
               col={3}
@@ -211,7 +216,7 @@ class ModuleG extends React.PureComponent {
             <Circle />
             <StyledCustomImage source={plusIcon} />
           </MiddleContainer>
-          {dataStatus ? (
+          {dataStatus2 ? (
             <Skeleton
               row={1}
               col={3}
