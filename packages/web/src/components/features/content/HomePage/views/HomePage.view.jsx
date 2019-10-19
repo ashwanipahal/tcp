@@ -4,11 +4,9 @@ import { PropTypes } from 'prop-types';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-import { isTCP } from '@tcp/core/src/utils';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
-import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -26,6 +24,8 @@ const HomePageView = dynamic({
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
+    module2columns: () =>
+      import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
   }),
   render: ({ slots, seoData }, modules) => {
     // TODO: Remove logger and use to render
@@ -33,8 +33,7 @@ const HomePageView = dynamic({
 
     return [
       <HomePageSlots slots={slots} modules={modules} />,
-      isTCP() ? <ModuleT {...mock.moduleT.composites} /> : null,
-      <ModuleTwoCol slots={slots} modules={modules} />,
+      <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
     ];
