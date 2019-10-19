@@ -7,7 +7,6 @@ const numberOfColumn = 2;
 const imageWidth = win.width / numberOfColumn - paddingAroundImage;
 const getImageStyle = () => {
   return `
-  width: ${imageWidth};
   height: 205;
   resize-mode: contain;
   `;
@@ -15,6 +14,7 @@ const getImageStyle = () => {
 
 const ImageContainer = styled.Image`
   ${getImageStyle}
+  width: ${props => props.width || imageWidth}
 `;
 const styles = css`
   ${getImageStyle}
