@@ -1,7 +1,10 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { getSubscribeStoreSaga, SubscribeStoreSaga } from '../container/MyPreference.saga';
-import { setSubscribeStore } from '../container/MyPreference.actions';
-import constants from '../MyPrefrence.constants';
+import {
+  getSubscribeStoreSaga,
+  SubscribeStoreSaga,
+} from '../container/MyPreferenceSubscription.saga';
+import { setSubscribeStore } from '../container/MyPreferenceSubscription.actions';
+import constants from '../MyPreferenceSubscription.constants';
 
 describe('getSubscribeStoreSaga saga', () => {
   describe('getSubscribeStoreSaga', () => {

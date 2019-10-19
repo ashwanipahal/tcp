@@ -1,5 +1,8 @@
-import MyPreferenceReducer from '../container/MyPreference.reducer';
-import { setSubscribeStore, getSubscribeStore } from '../container/MyPreference.actions';
+import MyPreferenceReducer from '../container/MyPreferenceSubscription.reducer';
+import {
+  setSubscribeStore,
+  getSubscribeStore,
+} from '../container/MyPreferenceSubscription.actions';
 
 const initialState = { subscribeStoreData: null };
 const subscribePayload = {};

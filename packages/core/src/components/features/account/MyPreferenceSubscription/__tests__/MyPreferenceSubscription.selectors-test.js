@@ -4,7 +4,7 @@ import {
   getGymSmsSubscriptionState,
   getSmsPhone,
   getGymSmsPhone,
-} from '../container/MyPreference.selectors';
+} from '../container/MyPreferenceSubscriptionText.selectors';
 
 describe('#My Preference Selectors', () => {
   const subscribeStoreData = {

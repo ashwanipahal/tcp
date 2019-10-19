@@ -1,14 +1,11 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
-import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import { BodyCopy, Row, Col, Button, RichText } from '@tcp/core/src/components/common/atoms';
+import { reduxForm } from 'redux-form';
+import { BodyCopy, Row, Col, Button } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PropTypes from 'prop-types';
-import styles from './styles/MyPreferenceSubscribeModal.style';
-import myPreferenceConst from '../../MyPrefrence.constants';
+import styles from './styles/MyPreferenceUnsubscribeModal.style';
+import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -17,12 +14,13 @@ import myPreferenceConst from '../../MyPrefrence.constants';
  * * @param onRequestClose - received onRequestClose function as param for closed popup
  * * @param openState - received openState function as param for open popup
  */
-class MyPreferenceSubscribeModal extends React.PureComponent {
+class MyPreferenceUnsubscribeModal extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
+    phoneNumber: PropTypes.string.isRequired,
     activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
@@ -32,32 +30,10 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     labels: {},
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      disclaimerText: '',
-    };
-  }
-
-  componentDidMount() {
-    let disclaimerLabels = '';
-    const { labels } = this.props;
-    const disclaimerLabelsArray = Object.keys(labels).filter(disclaimerLabelsValue =>
-      /lbl_prefrence_modal_disclaimer_line-/.test(disclaimerLabelsValue)
-    );
-    disclaimerLabelsArray.forEach(elem => {
-      disclaimerLabels += getLabelValue(labels, elem);
-    });
-
-    this.setState({
-      disclaimerText: disclaimerLabels,
-    });
-  }
-
-  handleSubmitData = data => {
+  handleSubmitData = () => {
     const { handleSubmitModalPopup, activeModal } = this.props;
-    const formData = { activeBrand: activeModal, ...data };
-    handleSubmitModalPopup(formData);
+    const data = { activeBrand: activeModal };
+    handleSubmitModalPopup(data);
   };
 
   /**
@@ -67,14 +43,13 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose, labels } = this.props;
-    const { disclaimerText } = this.state;
+    const { className, handleSubmit, onRequestClose, phoneNumber, labels } = this.props;
 
     return (
       <div className={className}>
         <BodyCopy component="div" className="myPreferenceModalWrapper">
           <form
-            name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL}
+            name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE}
             className={className}
             onSubmit={handleSubmit(this.handleSubmitData)}
             noValidate
@@ -84,7 +59,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontWeight="extrabold"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-MED elem-mt-LRG"
+              className="elem-mb-LRG elem-mt-LRG"
               data-locator="my-preference-modal_title"
             >
               {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
@@ -94,51 +69,41 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontSize="fs14"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-LRG"
-              data-locator="my-preference-modal_info_text"
+              data-locator="my-preference-modal_info-text"
             >
-              {getLabelValue(labels, 'lbl_prefrence_modal_info_text')}
+              {getLabelValue(labels, 'lbl_prefrence_modal_are_you_sure')}
             </BodyCopy>
             <BodyCopy
               component="div"
               fontSize="fs14"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-MED"
-              data-locator="my-preference-modal_sub_info_text"
+              className="elem-mb-LRG"
+              data-locator="my-preference-modal_info-text"
             >
-              {getLabelValue(labels, 'lbl_prefrence_modal_sub_info_text')}
+              {getLabelValue(labels, 'lbl_prefrence_modal_clicking_submit_text')}
+            </BodyCopy>
+            <BodyCopy
+              component="div"
+              fontSize="fs16"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              textAlign="center"
+              data-locator="my-preference-modal_sub-info-text"
+            >
+              {getLabelValue(labels, 'lbl_prefrence_modal_phone_number')}
+            </BodyCopy>
+            <BodyCopy
+              component="div"
+              fontSize="fs16"
+              fontFamily="secondary"
+              textAlign="center"
+              className="disclaimer-sub-text"
+              data-locator="my-preference-modal_sub-info-text"
+            >
+              {phoneNumber}
             </BodyCopy>
 
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontFamily="secondary"
-              textAlign="center"
-              className="elem-mb-MED"
-              data-locator="my-preference-modal_phnumber"
-            >
-              <Field
-                placeholder="Mobile Phone Number"
-                name="phoneNumber"
-                id="phoneNumber"
-                component={TextBox}
-                dataLocator="editPersonalInfo-phnumber"
-                type="tel"
-              />
-            </BodyCopy>
-            <BodyCopy
-              component="div"
-              textAlign="center"
-              fontSize="fs14"
-              fontFamily="secondary"
-              className="disclaimer-sub-text"
-            >
-              <RichText
-                richTextHtml={disclaimerText}
-                dataLocator="my-preference-modal_disclaimer_sub_text"
-              />
-            </BodyCopy>
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <Button
@@ -174,11 +139,8 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
   }
 }
 
-const validateMethod = createValidateMethod(getStandardConfig(['phoneNumber']));
-
 export default reduxForm({
-  form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
+  form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE, // a unique identifier for this form
   enableReinitialize: true,
-  ...validateMethod,
-})(withStyles(MyPreferenceSubscribeModal, styles));
-export { MyPreferenceSubscribeModal as MyPreferenceSubscribeModalVanilla };
+})(withStyles(MyPreferenceUnsubscribeModal, styles));
+export { MyPreferenceUnsubscribeModal as MyPreferenceUnsubscribeModalVanilla };

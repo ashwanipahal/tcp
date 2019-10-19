@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import MY_PREFERENCE_CONSTANTS from '../MyPrefrence.constants';
-import { setSubscribeStore } from './MyPreference.actions';
+import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
+import { setSubscribeStore } from './MyPreferenceSubscription.actions';
 import { getUserSubscriptionPreference } from '../../../../../services/abstractors/account/myPreferernce';
 
 export function* getSubscribeStoreSaga() {

@@ -61,7 +61,7 @@ import FavoriteReducer from '@tcp/core/src/components/features/browse/Favorites/
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import StoresInternationalReducer from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.reducer';
 import StoreListReducer from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.reducer';
-import MyPreferenceReducer from '@tcp/core/src/components/features/account/MyPrefrence/container/MyPreference.reducer';
+import MyPreferenceReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,

@@ -2,9 +2,9 @@ import { put, takeLatest } from 'redux-saga/effects';
 import {
   setSubscribeStoreSaga,
   SubscribeBrandStoreSaga,
-} from '../container/MyPreferenceSetSubscribe.saga';
-import { getSubscribeStore } from '../container/MyPreference.actions';
-import constants from '../MyPrefrence.constants';
+} from '../container/MyPreferenceSubscriptionSetSubscribe.saga';
+import { getSubscribeStore } from '../container/MyPreferenceSubscription.actions';
+import constants from '../MyPreferenceSubscription.constants';
 
 describe('setSubscribeStoreSaga saga', () => {
   describe('setSubscribeStoreSaga', () => {

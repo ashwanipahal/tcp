@@ -67,8 +67,8 @@ import OrdersSaga from '@tcp/core/src/components/features/account/Orders/contain
 import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
 import StoreListSaga from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.saga';
-import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPrefrence/container/MyPreference.saga';
-import SubscribeBrandStoreSaga from '@tcp/core/src/components/features/account/MyPrefrence/container/MyPreferenceSetSubscribe.saga';
+import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
+import SubscribeBrandStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscriptionSetSubscribe.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 import CountrySelectorSaga from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.saga';

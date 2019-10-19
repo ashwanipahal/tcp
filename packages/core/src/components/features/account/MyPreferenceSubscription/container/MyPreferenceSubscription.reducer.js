@@ -1,4 +1,4 @@
-import MY_PREFERENCE_CONSTANTS from '../MyPrefrence.constants';
+import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
 
 const initialState = {
   subscribeStoreData: null,
