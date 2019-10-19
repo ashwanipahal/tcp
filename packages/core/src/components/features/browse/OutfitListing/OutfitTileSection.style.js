@@ -14,6 +14,6 @@ export default css`
     }
   }
   .outfit-section-wrapper {
-    margin-bottom: 48px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
 `;

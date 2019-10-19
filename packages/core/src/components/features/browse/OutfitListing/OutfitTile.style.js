@@ -41,7 +41,6 @@ export default css`
       left: 50%;
       transform: translateX(-50%);
       text-indent: -9999px;
-      display: block;
       z-index: 1;
     }
     &:hover {
@@ -51,7 +50,6 @@ export default css`
       .shop-look-label {
         text-indent: 0px;
         opacity: 1;
-        z-index: 9999;
       }
     }
   }
