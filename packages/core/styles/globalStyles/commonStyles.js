@@ -112,6 +112,10 @@ export default css`
     z-index: 2;
   }
 
+  .disableBodyScroll {
+    overflow: hidden;
+  }
+
   figure {
     margin: 0;
     padding: 0;
