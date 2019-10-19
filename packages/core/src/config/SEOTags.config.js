@@ -9,6 +9,8 @@ const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 const GYM_BASE_URL = 'www.thecGymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
+const TCP_LABEL = "The Children's Place";
+const GYM_LABEL = 'Gymboree';
 
 const SEO_CONFIG = {
   canonical: 'www.thechildrensplace.com',
@@ -87,17 +89,21 @@ function getBrandDetails() {
   let BRAND_BASE_URL;
   let BRAND_TWITTER_SITE_TAG;
   let BRAND_TWITTER_SITE_CARD_TYPE;
+  let BRAND_NAME;
   if (brand === 'TCP') {
+    BRAND_NAME = brand;
     BRAND_BASE_URL = TCP_BASE_URL;
     BRAND_TWITTER_SITE_TAG = TCP_TWITTER_SITE_TAG;
     BRAND_TWITTER_SITE_CARD_TYPE = TCP_TWITTER_SITE_CARD_TYPE;
   } else {
+    BRAND_NAME = brand;
     BRAND_BASE_URL = GYM_BASE_URL;
     BRAND_TWITTER_SITE_TAG = GYM_TWITTER_SITE_TAG;
     BRAND_TWITTER_SITE_CARD_TYPE = GYM_TWITTER_SITE_CARD_TYPE;
   }
 
   return {
+    BRAND_NAME,
     BRAND_BASE_URL,
     BRAND_TWITTER_SITE_TAG,
     BRAND_TWITTER_SITE_CARD_TYPE,
@@ -216,14 +222,18 @@ export const getSearchSEOTags = (store, router, categoryKey) => {
   const { isUSStore } = getAPIConfig();
 
   const brandDetails = getBrandDetails();
+  let brandLabel;
+  if (brandDetails.BRAND_NAME === 'TCP') {
+    brandLabel = TCP_LABEL;
+  } else {
+    brandLabel = GYM_LABEL;
+  }
 
-  const usTitle = "Kids Clothes & Baby Clothes | The Children's Place | Free Shipping*";
-  const caTitle = "Kids Clothes & Baby Clothes | The Children's Place CA | Free Shipping*";
+  const usTitle = `Kids Clothes & Baby Clothes | ${brandLabel} | Free Shipping*`;
+  const caTitle = `Kids Clothes & Baby Clothes | ${brandLabel} CA | Free Shipping*`;
 
-  const usDecs =
-    "Check out The Children's Place for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!";
-  const caDecs =
-    "Check out The Children's Place CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!";
+  const usDecs = `Check out ${brandLabel} for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
+  const caDecs = `Check out ${brandLabel} CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
 
   const openGraph = {
     url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
