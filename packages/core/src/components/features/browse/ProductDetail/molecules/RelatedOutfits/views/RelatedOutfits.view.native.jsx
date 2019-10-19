@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import { StyleRelatedOutfits, ImageStyleWrapper } from '../RelatedOutfits.native.style';
+import ModuleQ from '../../../../../../common/molecules/ModuleQ';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../../../assets/carrot-small-up.png');
@@ -21,9 +23,22 @@ class RelatedOutfits extends React.PureComponent {
   };
 
   render() {
-    const { pdpLabels } = this.props;
+    const { pdpLabels, navigation, selectedColorProductId } = this.props;
     const { completeTheLook } = pdpLabels;
     const { isAccordionOpen } = this.state;
+
+    const RelatedOutfitsSlots = () => {
+      return (
+        <ModuleQ
+          navigation={navigation}
+          hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
+          selectedColorProductId={selectedColorProductId}
+          hideTabs
+          divTabs={[]}
+          bgClass="yellow-bg"
+        />
+      );
+    };
 
     return (
       <View>
@@ -42,6 +57,8 @@ class RelatedOutfits extends React.PureComponent {
             </Anchor>
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
+
+        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
       </View>
     );
   }
@@ -49,10 +66,13 @@ class RelatedOutfits extends React.PureComponent {
 
 RelatedOutfits.propTypes = {
   pdpLabels: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
+  selectedColorProductId: PropTypes.number.isRequired,
 };
 
 RelatedOutfits.defaultProps = {
   pdpLabels: {},
+  navigation: {},
 };
 
 export default RelatedOutfits;
