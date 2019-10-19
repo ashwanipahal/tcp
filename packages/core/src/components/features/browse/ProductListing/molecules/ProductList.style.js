@@ -26,13 +26,13 @@ export default css`
     width: 100%;
     height: 22px;
     font-family: Nunito;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-weight: ${props => props.theme.typography.fontWeights.semibold};
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #1a1a1a;
+    line-height: ${props => props.theme.fonts.lineHeight.normal};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.normal};
+    color: ${props => props.theme.colorPalette.black};
   }
 
   .horizontal-bar {
