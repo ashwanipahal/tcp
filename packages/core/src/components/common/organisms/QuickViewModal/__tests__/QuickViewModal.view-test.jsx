@@ -197,7 +197,7 @@ describe('QuickViewModal component', () => {
       plpLabels: {},
       currency: '',
       priceCurrency: '',
-      currencyExchange: '',
+      currencyExchange: 1,
       isCanada: false,
       isHasPlcc: false,
       isInternationalShipping: false,
