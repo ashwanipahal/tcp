@@ -267,11 +267,10 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   }
                 }
                 dataLocator="email_address_field"
+                enableSuccessCheck={false}
                 id="signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -304,11 +303,10 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -587,11 +585,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   }
                 }
                 dataLocator="email_address_field"
+                enableSuccessCheck={false}
                 id="signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -624,11 +621,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -907,11 +903,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   }
                 }
                 dataLocator="email_address_field"
+                enableSuccessCheck={false}
                 id="signup"
                 maxLength={50}
                 name="signup"
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -944,11 +939,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
+                  disabled={false}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
