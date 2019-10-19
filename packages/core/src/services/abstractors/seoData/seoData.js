@@ -1,5 +1,5 @@
 import mock from './mock';
-import handler from '../../../handler';
+import handler from '../../handler';
 
 /**
  * Abstractor layer for loading data from API for SEO data

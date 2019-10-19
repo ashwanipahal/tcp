@@ -1,7 +1,7 @@
 import SEODataAbstractor from '../seoData';
 import mock from '../mock';
 
-jest.mock('../../../../handler/handler');
+jest.mock('../../../handler/handler');
 
 it('SEO Data Abstractor | getData', () => {
   SEODataAbstractor.getData('seoData', {

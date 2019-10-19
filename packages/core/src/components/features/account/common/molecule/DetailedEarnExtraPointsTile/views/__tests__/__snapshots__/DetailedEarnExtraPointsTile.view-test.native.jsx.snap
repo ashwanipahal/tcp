@@ -4,17 +4,14 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
 <Styled(View)
   style={
     Object {
-      "elevation": 5,
-      "marginLeft": 5,
-      "marginRight": 3,
-      "marginTop": 5,
+      "elevation": 7,
       "shadowColor": "#9b9b9b",
       "shadowOffset": Object {
-        "height": 5,
+        "height": 2,
         "width": 0,
       },
       "shadowOpacity": 0.2,
-      "shadowRadius": 10,
+      "shadowRadius": 5,
     }
   }
   viewAll={true}
@@ -33,6 +30,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       viewAll={true}
     >
       <Styled(Image)
+        resizeMode="contain"
         source={
           Object {
             "testUri": "../../../../core/src/assets/download-app.png",
@@ -41,7 +39,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
       />
     </Styled(View)>
     <Styled(View)
-      spacingStyles="margin-top-LRG margin-bottom-XL"
+      spacingStyles="margin-top-LRG"
     >
       <Styled(BodyCopy)
         accessibilityText=""
@@ -51,7 +49,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
-        fontWeight="black"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="Earn 5 Points"
