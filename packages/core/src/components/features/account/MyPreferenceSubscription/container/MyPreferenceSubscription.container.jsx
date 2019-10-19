@@ -22,10 +22,6 @@ export class MyPreferenceSubscription extends PureComponent {
     this.initialValuesSubscribe = this.getSubscribeInitialValues(otherProps);
     this.state = {
       modalVisible: false,
-      isTcpSubscribeModal: false,
-      isTcpUnsubscribeModal: false,
-      isGymboreeSubscribeModal: false,
-      isGymboreeUnsubscribeModal: false,
       activeModal: '',
     };
   }
@@ -43,10 +39,6 @@ export class MyPreferenceSubscription extends PureComponent {
   handlePopupSubscribeModal = () =>
     this.setState({
       modalVisible: false,
-      isTcpSubscribeModal: false,
-      isTcpUnsubscribeModal: false,
-      isGymboreeSubscribeModal: false,
-      isGymboreeUnsubscribeModal: false,
       activeModal: '',
     });
 
@@ -146,7 +138,6 @@ export class MyPreferenceSubscription extends PureComponent {
     if (target.name === 'tcpWebSubscribe') {
       this.setState({
         modalVisible: true,
-        isTcpSubscribeModal: true,
         activeModal: 'tcpWebSubscribe',
       });
     }
@@ -154,7 +145,6 @@ export class MyPreferenceSubscription extends PureComponent {
     if (target.name === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
-        isGymboreeSubscribeModal: true,
         activeModal: 'gymboreeWebSubscribe',
       });
     }
@@ -167,7 +157,6 @@ export class MyPreferenceSubscription extends PureComponent {
     if (target.name === 'tcpWebSubscribe') {
       this.setState({
         modalVisible: true,
-        isTcpUnsubscribeModal: true,
         activeModal: 'tcpWebUnsubscribe',
       });
     }
@@ -175,7 +164,6 @@ export class MyPreferenceSubscription extends PureComponent {
     if (target.name === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
-        isGymboreeUnsubscribeModal: true,
         activeModal: 'gymboreeWebUnsubscribe',
       });
     }
@@ -194,14 +182,7 @@ export class MyPreferenceSubscription extends PureComponent {
       isGymSubscribe,
       gymSmsPhone,
     } = this.props;
-    const {
-      modalVisible,
-      isTcpSubscribeModal,
-      isTcpUnsubscribeModal,
-      isGymboreeSubscribeModal,
-      isGymboreeUnsubscribeModal,
-      activeModal,
-    } = this.state;
+    const { modalVisible, activeModal } = this.state;
 
     const urlParams = router.query || {};
     return (
@@ -228,7 +209,7 @@ export class MyPreferenceSubscription extends PureComponent {
             fixedWidth
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >
-            {isTcpSubscribeModal && (
+            {activeModal === 'tcpWebSubscribe' && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
@@ -238,7 +219,7 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
-            {isTcpUnsubscribeModal && (
+            {activeModal === 'tcpWebUnsubscribe' && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
@@ -247,7 +228,7 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
-            {isGymboreeSubscribeModal && (
+            {activeModal === 'gymboreeWebSubscribe' && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
@@ -257,7 +238,7 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
-            {isGymboreeUnsubscribeModal && (
+            {activeModal === 'gymboreeWebUnsubscribe' && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
