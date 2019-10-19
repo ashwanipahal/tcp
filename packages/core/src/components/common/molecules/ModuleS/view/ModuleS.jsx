@@ -12,7 +12,7 @@ import {
   RibbonButton,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
-import imageCropConfigs, { TEXT_COLOR_WHITE, TEXT_COLOR_BALCK } from '../ModuleS.config';
+import imageCropConfigs, { TEXT_COLOR_WHITE, TEXT_COLOR_BLACK } from '../ModuleS.config';
 import RibbonComponent from '../../Ribbon';
 
 /**
@@ -47,14 +47,15 @@ const getImageConfig = ribbonPresent => {
  * @param {*} props
  */
 const TextView = props => {
-  const { headerText } = props;
-  const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_BALCK;
+  const { headerText, ribbonBanner } = props;
+  const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_BLACK;
+  const addPaddingClass = !ribbonBanner && isGymboree();
   return (
     headerText && (
       <LinkText
         type="heading"
         component="h2"
-        className="header-text"
+        className={`header-text ${addPaddingClass ? 'padding-LR-15' : ''}`}
         headerText={headerText}
         data-locator={getLocator('moduleS_header_text')}
         color={color}
@@ -67,9 +68,10 @@ const TextView = props => {
  * @param {*} props
  */
 const ImgView = props => {
-  const { linkedImage } = props;
+  const { linkedImage, ribbonBanner } = props;
   const [imageDetails] = linkedImage;
-  const imageConfig = getImageConfig();
+  const ribbonPresent = ribbonBanner && ribbonBanner.length > 0;
+  const imageConfig = getImageConfig(ribbonPresent);
   return (
     imageDetails && (
       <DamImage

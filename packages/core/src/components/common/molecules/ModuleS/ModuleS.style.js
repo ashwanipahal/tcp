@@ -3,6 +3,11 @@ import { LinkText } from '..';
 import Button from '../../atoms/Button';
 
 const StyledLinkText = styled(LinkText)`
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    &.padding-LR-15 {
+      padding: 0 15px;
+    }
+  }
   &.header-text {
     .small_text_white_medium {
       display: block;
