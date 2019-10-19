@@ -10,22 +10,13 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-/**
- * @function handleOrderClick  to route to Order Details page based on order Number
- * @param    {Object} activeActivity The activity details of waysToEarn
- * @returns  {String} route for redirection mapping
- */
-export const handleOrderClick = (handleComponentChange, orderNumber) => {
+const OrdersListItem = ({ labels, orderItem, navigation }) => {
+  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   const router = {
     query: {
       orderId: orderNumber,
     },
   };
-  handleComponentChange('orderDetailsPageMobile', { router });
-};
-
-const OrdersListItem = ({ labels, orderItem, navigation }) => {
-  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
 
   return (
     <>
@@ -58,7 +49,7 @@ const OrdersListItem = ({ labels, orderItem, navigation }) => {
                     'lbl_orderDetail_heading',
                     'orders'
                   )} #${orderNumber}`,
-                  orderId: orderNumber,
+                  router,
                 })
               }
             />

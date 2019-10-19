@@ -46,7 +46,11 @@ const AccountStack = createStackNavigator(
       },
     },
     OrderDetailPage: {
-      screen: OrderDetail,
+      // eslint-disable-next-line react/prop-types
+      screen: ({ navigation }) => {
+        const router = navigation.getParam('router');
+        return <OrderDetail navigation={navigation} router={router} />;
+      },
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
