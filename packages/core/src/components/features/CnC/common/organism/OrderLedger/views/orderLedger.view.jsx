@@ -42,18 +42,17 @@ const OrderLedger = ({
           medium: 8,
           small: 6,
         }}
-        ignoreGutter={{ small: true, medium: true }}
-        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        ignoreGutter={{ small: true }}
       >
         <CollapsibleContainer
-          className={`${''} ${showAccordian ? 'orderLedgerAccordian' : ''}`}
+          className={`${showAccordian ? 'orderLedgerAccordian' : ''}`}
           header={header}
           body={body}
           iconLocator="arrowicon"
           defaultOpen={false}
+          isDefaultView={!showAccordian}
         />
       </Col>
-      <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
       {orderLedgerAfterView}
     </div>
   );

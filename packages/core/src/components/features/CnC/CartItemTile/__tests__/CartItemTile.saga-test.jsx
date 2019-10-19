@@ -82,8 +82,9 @@ describe('Cart Item saga update', () => {
     xitem_catEntryId: '1285036',
     callBack: jest.fn(),
   };
-  const updateCartItemSagaGen = updateCartItemSaga({ payload });
+
   it('should dispatch updateCartItem action for success resposnse', () => {
+    const updateCartItemSagaGen = updateCartItemSaga({ payload });
     updateCartItemSagaGen.next();
     updateCartItemSagaGen.next();
     const res = updateCartItemSagaGen.next();
@@ -91,17 +92,67 @@ describe('Cart Item saga update', () => {
     updateCartItemSagaGen.next({ isUpdating: true });
     updateCartItemSagaGen.next();
     updateCartItemSagaGen.next();
+    updateCartItemSagaGen.next();
     updateCartItemSagaGen.next({ isUpdating: false });
   });
 
-  it('should dispatch updateCartItem action for success resposnse', () => {
-    const err = {
-      errorMessages: { _error: 'Error in API' },
-    };
-    let putDescriptor = updateCartItemSagaGen.throw(err).value;
-    putDescriptor = updateCartItemSagaGen.next().value;
-    // eslint-disable-next-line no-underscore-dangle
-    expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+  it('should dispatch updateCartItem action for error resposnse', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      const err = {
+        errorMessages: { _error: 'Error in API' },
+      };
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(err).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+    } catch (err) {
+      console.log('testing errors for update item resposnse');
+    }
+  });
+
+  it('should dispatch updateCartItem action without error message from CMS', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(null).value;
+      putDescriptor = updateCartItemSagaGen.next({ DEFAULT: 'Default' }).value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError('Default')));
+    } catch (err) {
+      console.log('testing errors without error message from CMS');
+    }
+  });
+
+  it('should dispatch updateCartItem action without error message from CMS and without default', () => {
+    try {
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(null).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError('ERROR')));
+    } catch (err) {
+      console.log('testing errors without error message from CMS');
+    }
+  });
+
+  it('should dispatch updateCartItem action for error resposnse from toggling', () => {
+    try {
+      payload.fromToggling = true;
+      const updateCartItemSagaGen = updateCartItemSaga({ payload });
+      const err = {
+        errorMessages: { _error: 'Error in API' },
+      };
+      updateCartItemSagaGen.next();
+      let putDescriptor = updateCartItemSagaGen.throw(err).value;
+      putDescriptor = updateCartItemSagaGen.next().value;
+      // eslint-disable-next-line no-underscore-dangle
+      expect(putDescriptor).toEqual(put(AddToPickupError(err.errorMessages._error)));
+    } catch (err) {
+      console.log('testing errors for resposnse from toggling');
+    }
   });
 });
 
