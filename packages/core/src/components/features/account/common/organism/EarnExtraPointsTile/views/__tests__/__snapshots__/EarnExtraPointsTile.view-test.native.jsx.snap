@@ -49,6 +49,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         height={220}
         options={
           Object {
+            "autoplay": false,
             "enableSnap": true,
             "loop": false,
           }
@@ -84,6 +85,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         height={220}
         options={
           Object {
+            "autoplay": false,
             "enableSnap": true,
             "loop": false,
           }
