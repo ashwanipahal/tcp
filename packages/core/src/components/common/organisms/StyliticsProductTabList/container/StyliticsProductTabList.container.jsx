@@ -53,9 +53,10 @@ function StyliticsProductTabListContainer(props) {
     getStyliticsProductTabListData,
     onProductTabChange,
     style,
+    selectedColorProductId,
   } = props;
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-
+  lastSelectedId = selectedColorProductId || 0;
   useEffect(() => {
     if (lastSelectedId !== 0 || selectedCategoryId) {
       const tabId = lastSelectedId === 0 ? selectedCategoryId : lastSelectedId;
@@ -99,6 +100,7 @@ StyliticsProductTabListContainer.defaultProps = {
   onProductTabChange: () => {},
   dataLocator: '',
   style: [],
+  selectedColorProductId: '',
 };
 
 StyliticsProductTabListContainer.propTypes = {
@@ -121,6 +123,7 @@ StyliticsProductTabListContainer.propTypes = {
   ),
   onProductTabChange: PropTypes.func,
   dataLocator: PropTypes.string,
+  selectedColorProductId: PropTypes.string,
 };
 
 export const mapStateToProps = state => {

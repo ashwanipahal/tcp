@@ -122,6 +122,7 @@ class ModuleQ extends React.PureComponent {
     ) : null;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -130,19 +131,25 @@ class ModuleQ extends React.PureComponent {
       headerText,
       promoBanner,
       styliticsProductTabList,
+      hideTabs,
+      selectedColorProductId,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-    selectedProductList = selectedProductList.concat(selectedProductList);
+    const showCarousel = selectedProductList && selectedProductList.length > 3;
+    const bgName = `${className} ${bgClass} moduleQ`;
+    // eslint-disable-next-line no-nested-ternary
+    const showBg = hideTabs ? (showCarousel ? bgName : '') : bgName;
     const IconPath = getIconPath('carousel-big-carrot');
     let dataStatus = true;
     if (styliticsProductTabList && styliticsProductTabList.status) {
       dataStatus = styliticsProductTabList.status[currentCatId];
     }
+
     return (
-      <Grid className={`${className} ${bgClass} moduleQ`}>
+      <Grid className={showBg}>
         <Row centered>
           <Col
             colSize={{
@@ -160,7 +167,7 @@ class ModuleQ extends React.PureComponent {
                 dataLocator={getLocator('moduleQ_header_text')}
               />
             )}
-            {promoBanner && (
+            {!hideTabs && promoBanner && (
               <PromoBanner
                 promoBanner={promoBanner}
                 className="moduleQ-promo"
@@ -172,6 +179,7 @@ class ModuleQ extends React.PureComponent {
             <StyliticsProductTabList
               onProductTabChange={this.onProductTabChange}
               tabItems={divTabs}
+              selectedColorProductId={selectedColorProductId}
               dataLocator={getLocator('moduleQ_cta_link')}
             />
           </div>
@@ -203,7 +211,7 @@ class ModuleQ extends React.PureComponent {
                 showArrows
               />
             ) : null}
-            {selectedProductList.length > 0 && (
+            {showCarousel ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
@@ -215,10 +223,10 @@ class ModuleQ extends React.PureComponent {
               >
                 {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
               </Carousel>
-            )}
+            ) : null}
           </Col>
         </Row>
-        {selectedProductList.length > 3 ? this.getCurrentCtaButton() : null}
+        {showCarousel ? this.getCurrentCtaButton() : null}
       </Grid>
     );
   }
@@ -229,6 +237,8 @@ ModuleQ.defaultProps = {
   bgClass: '',
   className: '',
   promoBanner: [],
+  hideTabs: false,
+  selectedColorProductId: '',
 };
 
 ModuleQ.propTypes = {
@@ -265,6 +275,8 @@ ModuleQ.propTypes = {
       )
     )
   ).isRequired,
+  hideTabs: PropTypes.bool,
+  selectedColorProductId: PropTypes.string,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

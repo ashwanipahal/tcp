@@ -189,7 +189,9 @@ class PickUpStoreModalView extends React.Component {
     className: '',
     currency: 'USD',
     isItemShipToHome: false,
-    currencyAttributes: {},
+    currencyAttributes: {
+      exchangevalue: 1,
+    },
   };
 
   constructor(props) {

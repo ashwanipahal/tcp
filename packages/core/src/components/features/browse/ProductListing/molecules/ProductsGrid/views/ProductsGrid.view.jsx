@@ -50,8 +50,8 @@ class ProductsGrid extends React.Component {
     className: '',
     labels: '',
     productTileVariation: '',
-    currency: '$',
-    currencyExchange: '',
+    currency: 'USD',
+    currencyExchange: 1,
   };
 
   constructor(props, context) {

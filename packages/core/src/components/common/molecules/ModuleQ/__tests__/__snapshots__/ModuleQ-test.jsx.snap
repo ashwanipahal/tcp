@@ -79,6 +79,7 @@ exports[`ModuleQ component renders correctly 1`] = `
       <Connect(StyliticsProductTabListContainer)
         dataLocator="moduleQ_cta_links_"
         onProductTabChange={[Function]}
+        selectedColorProductId=""
         tabItems={
           Array [
             Object {

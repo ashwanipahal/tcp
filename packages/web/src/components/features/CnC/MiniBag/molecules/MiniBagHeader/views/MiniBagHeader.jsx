@@ -82,7 +82,7 @@ class MiniBagHeader extends React.Component {
                   fontWeight="extrabold"
                   textAlign="left"
                   fontFamily="secondary"
-                  handleLinkClick={e => this.onLinkClick({ e, componentId: accountDrawer })}
+                  onClick={e => this.onLinkClick({ e, componentId: accountDrawer })}
                 >
                   {`${labels.hi}, ${userName} `}
                 </BodyCopy>
