@@ -1,5 +1,8 @@
 import { fromJS } from 'immutable';
-import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
+import CHECKOUT_SELECTORS, {
+  getSendOrderUpdate,
+  getAlternateFormFieldsExpress,
+} from '../container/Checkout.selector';
 import { isMobileApp } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
@@ -271,6 +274,23 @@ describe('Checkout Selectors', () => {
     };
     expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
       shippingMethodId: '911',
+    });
+  });
+
+  it('#getAlternateFormFieldsExpress', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            pickUpAlternateExpress: {
+              hasAlternatePickup: true,
+            },
+          },
+        },
+      },
+    };
+    expect(getAlternateFormFieldsExpress(state)).toEqual({
+      hasAlternatePickup: true,
     });
   });
 });
