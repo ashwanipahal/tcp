@@ -26,15 +26,13 @@ const handleRouteComplete = url => {
    * This constant is for to check PLP page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
    */
   const checkListingPageParam =
-    url.match(/\/c\//g) !== null &&
-    (url.match(/\?sort/g) !== null || url.match(/\?categoryPath2_uFilter/g) !== null);
+    url.match(/\/c\//g) && !(url.match(/\?sort/g) || !url.match(/\?categoryPath2_uFilter/g));
 
   /**
    * This constant is for to check Search page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
    */
   const checkSearchPageParam =
-    url.match(/\/search\//g) !== null &&
-    (url.match(/\?sort/g) !== null || url.match(/\?categoryPath2_uFilter/g) !== null);
+    url.match(/\/search\//g) && !(url.match(/\?sort/g) || !url.match(/\?categoryPath2_uFilter/g));
 
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
