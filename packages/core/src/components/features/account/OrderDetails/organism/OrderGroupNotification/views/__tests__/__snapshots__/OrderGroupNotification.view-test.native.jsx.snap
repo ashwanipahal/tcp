@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order GroupHeader component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    text="1"
+    textDecoration={null}
+  />
+</Styled(View)>
+`;

@@ -106,7 +106,7 @@ exports[`ProductCustomizeFormPartContainer component should renders correctly 1`
     ]
   }
   currency=""
-  currencyExchange=""
+  currencyExchange={1}
   currentColorEntry={
     Object {
       "categoryEntity": "Boy:School Uniforms",

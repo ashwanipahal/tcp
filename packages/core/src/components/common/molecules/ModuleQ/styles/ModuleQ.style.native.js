@@ -22,18 +22,18 @@ const applyBackgroundClassStyle = props => {
 
 export const Container = styled.View`
   width: 100%;
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
+  margin-bottom: ${props => (props.showData ? props.theme.spacing.LAYOUT_SPACING.SM : '0')};
+  padding: ${props => (props.showData ? props.theme.spacing.ELEM_SPACING.LRG : '0')} 0;
   ${applyBackgroundClassStyle}
 `;
 
 export const ImageSlidesWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: ${props => (props.hideTabs ? '0' : props.theme.spacing.ELEM_SPACING.LRG)};
 `;
 
 export const ImageSlideWrapper = styled.View`
   flex-direction: row;
-  padding: 8px;
+  padding: ${props => (props.showData ? props.theme.spacing.ELEM_SPACING.LRG : '8px')};
 `;
 
 export const OutfitItemsWrapper = styled.View`

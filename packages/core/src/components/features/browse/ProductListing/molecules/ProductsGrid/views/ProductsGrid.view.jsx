@@ -36,6 +36,8 @@ class ProductsGrid extends React.Component {
     className: PropTypes.string,
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
+    currency: PropTypes.string,
+    currencyExchange: PropTypes.string,
   };
 
   static defaultProps = {
@@ -48,6 +50,8 @@ class ProductsGrid extends React.Component {
     className: '',
     labels: '',
     productTileVariation: '',
+    currency: 'USD',
+    currencyExchange: 1,
   };
 
   constructor(props, context) {
@@ -139,6 +143,8 @@ class ProductsGrid extends React.Component {
       onPickUpOpenClick,
       onQuickViewOpenClick,
       productTileVariation,
+      currency,
+      currencyExchange,
       ...otherProps
     } = this.props;
 
@@ -168,6 +174,8 @@ class ProductsGrid extends React.Component {
                         labels={labels}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
+                        currency={currency}
+                        currencyExchange={currencyExchange}
                         {...otherProps}
                       />
                     );

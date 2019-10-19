@@ -1,6 +1,7 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
+import { LabeledRadioButton, Anchor } from '@tcp/core/src/components/common/atoms';
 import { CartItemRadioButtonsVanilla } from '../views/CartItemRadioButtons.view';
 
 describe('CartItemRadioButtons Component', () => {
@@ -39,6 +40,8 @@ describe('CartItemRadioButtons Component', () => {
       noBossMessage: null,
       bossDisabled: false,
       bopisDisabled: false,
+      setShipToHome: jest.fn(),
+      openPickUpModal: jest.fn(),
     };
   });
 
@@ -141,5 +144,31 @@ describe('CartItemRadioButtons Component', () => {
     props.noBopisMessage = 'Not Available (Online only)';
     props.component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should toggle to STH', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component
+      .find(LabeledRadioButton)
+      .last()
+      .props()
+      .onClick();
+    expect(props.setShipToHome).toHaveBeenCalled();
+  });
+
+  it('should open change store popup', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component
+      .find(Anchor)
+      .first()
+      .props()
+      .onClick({
+        preventDefault: jest.fn(),
+      });
+    expect(props.openPickUpModal).toHaveBeenCalled();
   });
 });

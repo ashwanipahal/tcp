@@ -165,6 +165,7 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       navigation,
       availableStages,
+      setCheckoutStage,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -176,6 +177,7 @@ class PickUpFormPart extends React.Component {
           activeStage="pickup"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -337,6 +339,7 @@ PickUpFormPart.propTypes = {
   onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

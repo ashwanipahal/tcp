@@ -26,6 +26,7 @@ class QuickViewModal extends React.Component {
       productInfo: { colorFitsSizesMap, colorFitSizeDisplayNames },
       quickViewLabels,
       selectedColorProductId,
+      currencyExchange,
       ...otherProps
     } = this.props;
 
@@ -62,6 +63,7 @@ class QuickViewModal extends React.Component {
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
           onCloseClick={this.onCloseClick}
+          currencyExchange={currencyExchange}
           {...otherProps}
         />
         {!fromBagPage && (
@@ -88,7 +90,11 @@ QuickViewModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
+  currencyExchange: PropTypes.string,
 };
 
+QuickViewModal.defaultProps = {
+  currencyExchange: 1,
+};
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };

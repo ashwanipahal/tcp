@@ -35,7 +35,14 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTAButton }) => {
+const ModuleD = ({
+  className,
+  headerText,
+  promoBanner,
+  smallCompImage,
+  singleCTAButton,
+  fullBleed,
+}) => {
   let colSize;
   let imgDataConfig;
   const checkPromo = promoBanner && promoBanner.length;
@@ -71,7 +78,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
           data-locator={getLocator('moduleD_promobanner')}
         />
       )}
-      <Row centered className="moduleD__image-container-section">
+      <Row centered fullBleed={fullBleed} className="moduleD__image-container-section">
         {smallCompImage &&
           smallCompImage.map((item, index) => {
             return (
@@ -113,7 +120,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
           })}
       </Row>
       {singleCTAButton && (
-        <Row centered>
+        <Row centered fullBleed={fullBleed}>
           <Button
             buttonVariation="fixed-width"
             className="moduleD_button"
@@ -131,6 +138,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
 ModuleD.defaultProps = {
   promoBanner: [],
   singleCTAButton: {},
+  fullBleed: false,
 };
 
 ModuleD.propTypes = {
@@ -154,6 +162,7 @@ ModuleD.propTypes = {
     })
   ).isRequired,
   singleCTAButton: PropTypes.objectOf(PropTypes.shape({})),
+  fullBleed: PropTypes.bool,
 };
 
 export default withStyles(errorBoundary(ModuleD), style);

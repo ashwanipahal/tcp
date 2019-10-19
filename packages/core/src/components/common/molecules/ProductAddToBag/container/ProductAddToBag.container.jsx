@@ -191,6 +191,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
+      fitChanged: true,
     });
     // props for any custom action to call
     if (onChangeColor) {

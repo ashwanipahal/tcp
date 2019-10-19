@@ -29,6 +29,7 @@ import { getDataFromRedis } from '../../utils/redis.util';
 // import GLOBAL_CONSTANTS, { LABELS } from '../constants';
 // import { loadLayoutData, loadLabelsData, setLabelsData, loadModulesData, setAPIConfig } from '../actions';
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function* bootstrap(params) {
   const {
     payload: {
@@ -68,20 +69,20 @@ function* bootstrap(params) {
       yield putResolve(setAPIConfig(apiConfig));
       yield putResolve(setDeviceInfo({ deviceType }));
       yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
-
-      yield put(setCountry(country));
-      yield put(setCurrency(currency));
-      yield put(setLanguage(language));
+      if (country) {
+        yield put(setCountry(country));
+      }
+      if (currency) {
+        yield put(setCurrency({ currency }));
+      }
+      if (language) {
+        yield put(setLanguage(language));
+      }
       const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
       yield put(loadXappConfigData(xappConfig));
     }
 
     const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
-    const response = yield call(countryListAbstractor.getData);
-    const data = response && response.data.countryList;
-    const countriesMap = getCountriesMap(data);
-    const currenciesMap = getCurrenciesMap(data);
-    yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
     if (pageName) {
       yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
       yield put(loadModulesData(result.modules));
@@ -91,7 +92,15 @@ function* bootstrap(params) {
     //  yield put(setLabelsData({ category:LABELS.global, data:result.labels
     // }));
     yield put(loadHeaderData(result.header));
-    if (!isMobileApp()) yield put(loadNavigationData(result.navigation));
+    if (!isMobileApp()) {
+      yield put(loadNavigationData(result.navigation));
+      // Fetching countries and currencies data
+      const response = yield call(countryListAbstractor.getData);
+      const data = response && response.data.countryList;
+      const countriesMap = getCountriesMap(data);
+      const currenciesMap = getCurrenciesMap(data);
+      yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
+    }
     yield put(loadFooterData(result.footer));
   } catch (err) {
     logger.error(err);

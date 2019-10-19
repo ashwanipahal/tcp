@@ -9,13 +9,25 @@ const UserInfoRow = styled.View`
 `;
 
 const UserInfoLabels = styled.View`
-  width: 40%;
+  width: 35%;
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  align-self: center;
 `;
 
-const UserInfoValues = styled.View`
-  width: 55%;
+const UserIDLabels = styled.View`
+  width: 35%;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   align-self: flex-end;
 `;
 
-export { UserInfoRow, UserInfoLabels, UserInfoValues };
+const UserInfoValues = styled.View`
+  width: 60%;
+  align-self: center;
+`;
+
+const UserIDValues = styled.View`
+  width: 60%;
+  align-self: flex-end;
+`;
+
+export { UserInfoRow, UserInfoLabels, UserInfoValues, UserIDValues, UserIDLabels };
