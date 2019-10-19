@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 const reviewPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
   let headingLabelVal = '';
@@ -72,6 +73,41 @@ const confirmationPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isG
   };
 };
 
+const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
+  let rewardPointsValue = '';
+  let headingLabelVal = '';
+  let subHeadingLabel = '';
+  let remainingPlccVal = '';
+  if (!earnedReward) {
+    rewardPointsValue = estimatedRewardsVal;
+    if (isGuest) {
+      headingLabelVal = labels.guestConfirmationSignUp1;
+    } else if (!isPlcc) {
+      headingLabelVal = labels.mprConfirmationYouEarnedPoints1;
+      remainingPlccVal = labels.mprConfirmationThatsSomePoints1;
+    } else {
+      headingLabelVal = labels.plccConfirmationYouEarnedPoints1;
+      remainingPlccVal = labels.plccConfirmationYoureSomePoints1;
+    }
+  } else {
+    rewardPointsValue = earnedReward;
+    if (isGuest) {
+      headingLabelVal = labels.guestConfirmationBecomeMember1;
+      subHeadingLabel = labels.oneDollarSpent1;
+    } else if (!isPlcc) {
+      headingLabelVal = labels.mprConfirmationYouEarnedReward1;
+    } else {
+      headingLabelVal = labels.plccConfirmationYouEarnedReward1;
+    }
+  }
+  return {
+    rewardPointsValue,
+    headingLabelVal,
+    subHeadingLabel,
+    remainingPlccVal,
+  };
+};
+
 const bagCheckoutPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
   let headingLabelVal = '';
@@ -124,7 +160,8 @@ const renderLoyaltyLabels = (
   isGuest,
   isPlcc,
   isReviewPage,
-  isConfirmationPage
+  isConfirmationPage,
+  isAddedToBagPage
 ) => {
   let rewardPointsValueFn = '';
   let headingLabelValFn = '';
@@ -157,6 +194,19 @@ const renderLoyaltyLabels = (
     subHeadingLabelFn = confirmationPageLabels.subHeadingLabel;
     descriptionLabelFn = confirmationPageLabels.descriptionLabel;
     remainingPlccValFn = confirmationPageLabels.remainingPlccVal;
+  } else if (isAddedToBagPage) {
+    const addedToBagPageLabels = addedToBagPageLabelsFn(
+      labels,
+      earnedReward,
+      estimatedRewardsVal,
+      isGuest,
+      isPlcc
+    );
+    rewardPointsValueFn = addedToBagPageLabels.rewardPointsValue;
+    headingLabelValFn = addedToBagPageLabels.headingLabelVal;
+    subHeadingLabelFn = addedToBagPageLabels.subHeadingLabel;
+    descriptionLabelFn = addedToBagPageLabels.descriptionLabel;
+    remainingPlccValFn = addedToBagPageLabels.remainingPlccVal;
   } else {
     const bagcheckoutPageLabels = bagCheckoutPageLabelsFn(
       labels,

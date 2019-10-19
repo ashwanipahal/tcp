@@ -21,7 +21,7 @@ const GuestMprPlccSection = props => {
     <div className={`${className} body`}>
       {headingLabel && (
         <BodyCopy
-          className="youCanEarnPoints alignCenter"
+          className="heading-val"
           color="text.primary"
           fontFamily="secondary"
           fontWeight="extrabold"
@@ -31,8 +31,7 @@ const GuestMprPlccSection = props => {
       )}
       {subHeadingLabel && (
         <BodyCopy
-          className="save30Today alignCenter elem-pt-MED"
-          fontSize="fs20"
+          className="subheading-val"
           color="text.primary"
           fontFamily="secondary"
           fontWeight="extrabold"
@@ -42,9 +41,8 @@ const GuestMprPlccSection = props => {
       )}
       {descriptionLabel && (
         <BodyCopy
-          className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
+          className="description-val"
           color="text.primary"
-          fontSize="fs16"
           fontFamily="secondary"
           fontWeight="extrabold"
         >
@@ -54,8 +52,7 @@ const GuestMprPlccSection = props => {
 
       {remainingPlcc && (
         <BodyCopy
-          className="earnDoublePoints alignCenter"
-          fontSize="fs16"
+          className="remaining-val"
           color="text.primary"
           fontFamily="secondary"
           fontWeight="extrabold"
@@ -64,11 +61,11 @@ const GuestMprPlccSection = props => {
         </BodyCopy>
       )}
       {showSubtotal && (
-        <div className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM">
-          <Row fullBleed className="currentSubtotalRow">
-            <Col colSize={{ large: 7, medium: 5, small: 4 }} className="currentSubtotalTextCol">
+        <div className="subtotal-section">
+          <Row fullBleed className="subtotal-row">
+            <Col colSize={{ large: 7, medium: 5, small: 4 }} className="current-subtotal-text-col">
               <BodyCopy
-                className="currentSubtotalText"
+                className="current-subtotal-text"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -78,9 +75,9 @@ const GuestMprPlccSection = props => {
               </BodyCopy>
             </Col>
             {currentSubtotal && (
-              <Col colSize={{ large: 5, medium: 3, small: 2 }} className="currentSubtotalValCol">
+              <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-subtotal-val-col">
                 <BodyCopy
-                  className="currentSubtotalVal"
+                  className="current-subtotal-val"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
@@ -92,10 +89,13 @@ const GuestMprPlccSection = props => {
               </Col>
             )}
           </Row>
-          <Row fullBleed className="estimatedSubtotalRow elem-pt-SM elem-pb-SM">
-            <Col colSize={{ large: 7, medium: 5, small: 4 }} className="estimatedSubtotalTextCol">
+          <Row fullBleed className="estimated-subtotal-row elem-pt-SM elem-pb-SM">
+            <Col
+              colSize={{ large: 7, medium: 5, small: 4 }}
+              className="estimated-subtotal-text-col"
+            >
               <BodyCopy
-                className="estimatedSubtotalText"
+                className="estimated-subtotal-text"
                 component="span"
                 color="text.primary"
                 fontFamily="secondary"
@@ -105,9 +105,12 @@ const GuestMprPlccSection = props => {
               </BodyCopy>
             </Col>
             {estimatedSubtotal && (
-              <Col colSize={{ large: 5, medium: 3, small: 2 }} className="estimatedSubtotalValCol">
+              <Col
+                colSize={{ large: 5, medium: 3, small: 2 }}
+                className="estimated-subtotal-val-col"
+              >
                 <BodyCopy
-                  className="estimatedSubtotalVal"
+                  className="estimated-subtotal-val"
                   component="span"
                   color="text.primary"
                   fontFamily="secondary"
