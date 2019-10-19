@@ -36,23 +36,22 @@ export default css`
   }
 
   .horizontal-bar {
-    width: 330px;
     border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     border-bottom-width: 1px;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.L};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.L};
     margin-right: 1px;
-    margin-left: 0px;
+    width: 347px;
 
-    @media ${props => props.theme.mediaQuery.largeMax} {
-      width: 1100px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.L};
+      width: 730px;
       border-bottom-width: 1px;
       margin-right: 15.1px;
       margin-left: 0px;
     }
 
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      width: 700px;
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 1100px;
       border-bottom-width: 1px;
       margin-right: 15.1px;
       margin-left: 0px;
