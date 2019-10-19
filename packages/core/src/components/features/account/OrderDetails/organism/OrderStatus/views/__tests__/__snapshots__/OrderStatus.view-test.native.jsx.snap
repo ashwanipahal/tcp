@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items component should  not render Tracking Button And Tracking header 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text={null}
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      text={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Items component should renders Tracking Button 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text={null}
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      text={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator="orders-shop-now-btn"
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_orders_trackit"
+      theme={Object {}}
+      url=""
+      width="100%"
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`Order Items component should renders tracking header 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_orders_shippedOn"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      text="May 1, 2019"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_orders_trackingNumber"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      text="1234567"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
