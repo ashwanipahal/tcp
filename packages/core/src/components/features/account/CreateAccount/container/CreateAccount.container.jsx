@@ -83,17 +83,13 @@ export class CreateAccountContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay, onRequestClose, error, toastMessage } = this.props;
+    const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (this.hasMobileApp()) {
         onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
         setTimeout(() => closeOverlay(), API_CONFIG.overlayTimeout);
         routerPush('/', '/home');
-      }
-
-      if (error && isMobileApp()) {
-        toastMessage(error);
       }
     }
   }
@@ -142,6 +138,7 @@ export class CreateAccountContainer extends React.Component {
       formErrorMessage,
       userplccCardNumber,
       userplccCardId,
+      toastMessage,
     } = this.props;
     return (
       <CreateAccountView
@@ -160,6 +157,7 @@ export class CreateAccountContainer extends React.Component {
         formErrorMessage={formErrorMessage}
         userplccCardNumber={userplccCardNumber}
         userplccCardId={userplccCardId}
+        toastMessage={toastMessage}
       />
     );
   }
