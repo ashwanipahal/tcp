@@ -14,7 +14,6 @@ import MyPreferenceSubscription from '../../MyPreferenceSubscription';
 class MyPrefrenceSection extends React.PureComponent {
   render() {
     const { className, labels, urlParams } = this.props;
-
     return (
       <div className={`elem-pt-LRG ${className}`}>
         <Row fullBleed>
