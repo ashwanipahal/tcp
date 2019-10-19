@@ -8,5 +8,13 @@ const OrderDetailsMainView = styled.View`
 const OrdersNumberWrapper = styled.View`
   width: 33%;
 `;
+const ContentWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
 
-export { OrderDetailsMainView, OrdersNumberWrapper };
+const OrderGroupWrapper = styled.View`
+  border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
+`;
+export { OrderDetailsMainView, OrdersNumberWrapper, ContentWrapper, OrderGroupWrapper };

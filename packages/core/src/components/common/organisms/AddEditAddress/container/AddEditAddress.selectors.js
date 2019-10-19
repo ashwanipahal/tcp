@@ -74,6 +74,7 @@ export const getAddEditAddressLabels = createSelector(
       'lbl_addEditAddress_cancel',
       'lbl_addEditAddress_setDefault',
       'lbl_addEditAddress_addressButton',
+      'lbl_addEditAddress_select',
     ];
 
     addressLabelsKeys.forEach(key => {
@@ -108,6 +109,7 @@ export const getAddEditAddressLabels = createSelector(
       lbl_addEditAddress_internationalShipping: shipInternationally,
       lbl_addEditAddress_addNewAddress: addNewAddressSign,
       lbl_addEditAddress_selectFromAddress: selectFromAddress,
+      lbl_addEditAddress_select: select,
       ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: editAddressLbl,
       ACC_LBL_EDIT_ADDRESS_FORM_HEADING: addNewAddress,
       ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER: verifyAddress,
@@ -125,6 +127,7 @@ export const getAddEditAddressLabels = createSelector(
         postalCode,
         country,
         phoneNumber,
+        select,
         setDefaultMsg,
         addAddress,
         update,
