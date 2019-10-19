@@ -59,7 +59,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     <div
       className="header-topnav__brand-tabs"
     >
-      <Styled(ErrorBoundary)
+      <Styled(BrandTabs)
         data={
           Array [
             Object {
@@ -138,7 +138,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     <div
       className="header-topnav__track-order"
     >
-      <Connect(Styled(ErrorBoundary)) />
+      <Connect(Styled(CountrySelector)) />
       <Styled(Anchor)
         anchorVariation="primary"
         className="track-order"
@@ -236,7 +236,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     <div
       className="header-topnav__brand-tabs"
     >
-      <Styled(ErrorBoundary)
+      <Styled(BrandTabs)
         data={
           Array [
             Object {
@@ -315,7 +315,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     <div
       className="header-topnav__track-order"
     >
-      <Connect(Styled(ErrorBoundary)) />
+      <Connect(Styled(CountrySelector)) />
       <Styled(Anchor)
         anchorVariation="primary"
         className="track-order"
