@@ -33,17 +33,20 @@ const CouponDetailModalStyle = css`
     text-align: center;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     font-size: ${props => props.theme.typography.fontSizes.fs40};
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0;
       text-align: center;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: 0;
+    }
   }
   .couponModal_modalSubTitle {
     text-align: center;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     font-size: ${props => props.theme.typography.fontSizes.fs22};
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0;
@@ -52,10 +55,11 @@ const CouponDetailModalStyle = css`
   }
   .couponModal_modalbarcode {
     color: ${props => props.theme.colors.BLACK};
-    border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
-    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     text-align: center;
     width: 100%;
     svg {
@@ -64,7 +68,7 @@ const CouponDetailModalStyle = css`
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       svg {
-        height: 100px;
+        height: 64px;
       }
     }
   }
@@ -88,7 +92,7 @@ const CouponDetailModalStyle = css`
     text-align: left;
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     color: ${props => props.theme.colors.BLACK};
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0px
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0px
       ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
   }
 `;
