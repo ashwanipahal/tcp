@@ -47,7 +47,11 @@ const getAddGiftCardResponse = state => {
 };
 
 const getIsRecapchaEnabled = state => {
-  return state.session && state.session.siteDetails && state.session.siteDetails.isRecapchaEnabled;
+  return (
+    state.session &&
+    state.session.siteDetails &&
+    state.session.siteDetails.GIFT_CARD_RECAPTCHA_ENABLED
+  );
 };
 
 const getIsLoading = state => {
