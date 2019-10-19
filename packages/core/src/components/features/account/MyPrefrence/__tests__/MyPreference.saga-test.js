@@ -1,33 +1,44 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { getOrderDetailsListSaga, OrderDetailsListSaga } from '../OrderDetails.saga';
-import { setOrderDetails } from '../OrderDetails.actions';
-import constants from '../../OrderDetails.constants';
+import { getSubscribeStoreSaga, SubscribeStoreSaga } from '../container/MyPreference.saga';
+import { setSubscribeStore } from '../container/MyPreference.actions';
+import constants from '../MyPrefrence.constants';
 
-describe('getOrderDetailsListSaga saga', () => {
-  describe('getOrderDetailsListSaga', () => {
+describe('getSubscribeStoreSaga saga', () => {
+  describe('getSubscribeStoreSaga', () => {
     let gen;
     beforeEach(() => {
-      gen = getOrderDetailsListSaga({});
-      gen.next();
-      gen.next();
+      gen = getSubscribeStoreSaga({});
       gen.next();
     });
 
-    it('should dispatch setOrderDetails action for response', () => {
-      const OrderDetailsList = {
-        getOrderInfoByOrderId: '',
-        updatedPayload: {},
+    it('should dispatch setSubscribeStore action for response', () => {
+      const subscribeStoreData = {
+        CustomerPreferencesGym: [],
+        CustomerPreferences: [
+          {
+            preferenceMode: 'gymPlaceRewardsSms',
+            isModeSelected: true,
+          },
+          {
+            preferenceMode: 'gymMarketingPreferenceSMS',
+            isModeSelected: true,
+          },
+        ],
+        gymSmsPhone: '',
+        gymSmsSubscriptionState: '',
+        smsPhone: '2012386357',
+        smsSubscriptionState: 'ATTEMPTED',
       };
-      const putDescriptor = gen.next(OrderDetailsList).value;
-      expect(putDescriptor).toEqual(put(setOrderDetails(OrderDetailsList)));
+      const putDescriptor = gen.next(subscribeStoreData).value;
+      expect(putDescriptor).toEqual(put(setSubscribeStore(subscribeStoreData)));
     });
   });
 
-  describe('OrderDetailsListSaga', () => {
+  describe('SubscribeStoreSaga', () => {
     it('should return correct takeLatest effect', () => {
-      const generator = OrderDetailsListSaga();
+      const generator = SubscribeStoreSaga();
       const takeLatestDescriptor = generator.next().value;
-      const expected = takeLatest(constants.GET_ORDERDETAILS, getOrderDetailsListSaga);
+      const expected = takeLatest(constants.GET_SUBSCRIBE_STORE, getSubscribeStoreSaga);
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });
   });

@@ -21,6 +21,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
     phoneNumber: PropTypes.string.isRequired,
+    activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -30,8 +31,8 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
   };
 
   handleSubmitData = () => {
-    const { handleSubmitModalPopup } = this.props;
-    const data = { tcpUnsubscribe: true };
+    const { handleSubmitModalPopup, activeModal } = this.props;
+    const data = { activeBrand: activeModal };
     handleSubmitModalPopup(data);
   };
 

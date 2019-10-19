@@ -16,7 +16,16 @@ import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
-    const { className, labels, urlParams, onSubscribe, isTcpSubscribe } = this.props;
+    const {
+      className,
+      labels,
+      urlParams,
+      onSubscribe,
+      onUnsubscribe,
+      isTcpSubscribe,
+      isGymSubscribe,
+    } = this.props;
+
     return (
       <div className={`elem-pt-LRG ${className}`}>
         <Row fullBleed>
@@ -193,10 +202,11 @@ class MyPrefrenceSection extends React.PureComponent {
 
                   <Field
                     name="tcpWebSubscribe"
+                    type="checkbox"
                     component={InputCheckbox}
                     dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
-                    onChange={onSubscribe}
+                    onChange={isTcpSubscribe ? onUnsubscribe : onSubscribe}
                     checked={isTcpSubscribe}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
@@ -208,7 +218,8 @@ class MyPrefrenceSection extends React.PureComponent {
                     component={InputCheckbox}
                     dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
-                    onChange={onSubscribe}
+                    onChange={isGymSubscribe ? onUnsubscribe : onSubscribe}
+                    checked={isGymSubscribe}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
@@ -263,12 +274,15 @@ MyPrefrenceSection.propTypes = {
   className: PropTypes.string.isRequired,
   urlParams: PropTypes.shape({}),
   onSubscribe: PropTypes.func.isRequired,
+  onUnsubscribe: PropTypes.func.isRequired,
   isTcpSubscribe: PropTypes.bool,
+  isGymSubscribe: PropTypes.bool,
 };
 
 MyPrefrenceSection.defaultProps = {
   labels: {},
   isTcpSubscribe: false,
+  isGymSubscribe: false,
   urlParams: {},
 };
 

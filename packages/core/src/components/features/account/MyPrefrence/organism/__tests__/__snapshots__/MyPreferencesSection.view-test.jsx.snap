@@ -666,6 +666,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-texttcpcheckbox"
               name="tcpWebSubscribe"
+              type="checkbox"
             >
               <Styled(BodyCopy)
                 className={null}

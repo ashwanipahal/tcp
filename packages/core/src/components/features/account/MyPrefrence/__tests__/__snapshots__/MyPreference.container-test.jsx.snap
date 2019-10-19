@@ -13,6 +13,7 @@ exports[`MyProfile container should render MyProfile component 1`] = `
     isTcpSubscribe={false}
     labels={Object {}}
     onSubscribe={[Function]}
+    onUnsubscribe={[Function]}
     urlParams={Object {}}
   />
 </Fragment>

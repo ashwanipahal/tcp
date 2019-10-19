@@ -23,6 +23,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleSubmitModalPopup: PropTypes.func.isRequired,
+    activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -54,8 +55,8 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
   }
 
   handleSubmitData = data => {
-    const { handleSubmitModalPopup } = this.props;
-    const formData = { tcpSubscribe: true, ...data };
+    const { handleSubmitModalPopup, activeModal } = this.props;
+    const formData = { activeBrand: activeModal, ...data };
     handleSubmitModalPopup(formData);
   };
 

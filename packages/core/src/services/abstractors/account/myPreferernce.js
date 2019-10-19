@@ -2,13 +2,15 @@ import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-export const myPreferenceModalSubmit = (mobileNumber, formData) => {
+export const myPreferenceModalSubmit = (mobileNumber, formData, brand) => {
   const apiConfig = getAPIConfig();
+  const bodyData =
+    brand === 'gymboree'
+      ? { CustomerPreferencesGym: formData, gymSmsPhone: mobileNumber }
+      : { CustomerPreferences: formData, smsPhone: mobileNumber };
+
   const payload = {
-    body: {
-      CustomerPreferences: formData,
-      smsPhone: mobileNumber,
-    },
+    body: bodyData,
     header: {
       'X-Cookie': apiConfig.cookie,
       storeId: apiConfig.storeId,

@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import MyPrefrence from '../views';
-import { getSmsSubscriptionState } from './MyPreference.selectors';
+import {
+  getSmsSubscriptionState,
+  getSmsPhone,
+  getGymSmsSubscriptionState,
+  getGymSmsPhone,
+} from './MyPreference.selectors';
 import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
@@ -25,6 +30,7 @@ export class MyPrefrenceContainer extends PureComponent {
       isTcpUnsubscribeModal: false,
       isGymboreeSubscribeModal: false,
       isGymboreeUnsubscribeModal: false,
+      activeModal: '',
     };
   }
 
@@ -45,6 +51,7 @@ export class MyPrefrenceContainer extends PureComponent {
       isTcpUnsubscribeModal: false,
       isGymboreeSubscribeModal: false,
       isGymboreeUnsubscribeModal: false,
+      activeModal: '',
     });
 
   getPreferenceInitialValues = props => {
@@ -58,10 +65,12 @@ export class MyPrefrenceContainer extends PureComponent {
   };
 
   handleSubmitModalPopup = data => {
-    const { submitSubscribeBrand } = this.props;
+    const { submitSubscribeBrand, smsPhone, gymSmsPhone } = this.props;
     let formSubscribeData = {};
-    if (data.tcpSubscribe) {
+
+    if (data.activeBrand === 'tcpWebSubscribe') {
       formSubscribeData = {
+        brand: 'tcp',
         mobileNumber: data.phoneNumber,
         CustomerPreferences: [
           {
@@ -76,20 +85,58 @@ export class MyPrefrenceContainer extends PureComponent {
       };
     }
 
-    if (data.tcpUnsubscribe) {
+    if (data.activeBrand === 'tcpWebUnsubscribe') {
       formSubscribeData = {
+        brand: 'tcp',
+        mobileNumber: smsPhone,
         CustomerPreferences: [
           {
             isModeSelected: false,
             preferenceMode: 'placeRewardsSms',
+          },
+          {
+            preferenceMode: 'marketingPreferenceEmail',
+            isModeSelected: false,
+          },
+        ],
+      };
+    }
+
+    if (data.activeBrand === 'gymboreeWebSubscribe') {
+      formSubscribeData = {
+        brand: 'gymboree',
+        mobileNumber: data.phoneNumber,
+        CustomerPreferencesGym: [
+          {
+            isModeSelected: true,
+            preferenceMode: 'gymPlaceRewardsSms',
+          },
+          {
+            preferenceMode: 'gymMarketingPreferenceSMS',
+            isModeSelected: true,
+          },
+        ],
+      };
+    }
+
+    if (data.activeBrand === 'gymboreeWebUnsubscribe') {
+      formSubscribeData = {
+        brand: 'gymboree',
+        mobileNumber: gymSmsPhone,
+        CustomerPreferencesGym: [
+          {
+            isModeSelected: false,
+            preferenceMode: 'gymPlaceRewardsSms',
+          },
+          {
+            preferenceMode: 'gymMarketingPreferenceSMS',
+            isModeSelected: false,
           },
         ],
       };
     }
 
     submitSubscribeBrand(formSubscribeData);
-
-    // TO DO - need to be discussed to closed popup without error handle
     this.handlePopupSubscribeModal();
   };
 
@@ -98,31 +145,42 @@ export class MyPrefrenceContainer extends PureComponent {
    * @param {object} event - event object
    */
   onSubscribe = event => {
+    event.preventDefault();
     const { target } = event;
-    if (target.name === 'tcpWebSubscribe' && target.checked === true) {
+    if (target.name === 'tcpWebSubscribe') {
       this.setState({
         modalVisible: true,
         isTcpSubscribeModal: true,
+        activeModal: 'tcpWebSubscribe',
       });
     }
 
-    if (target.name === 'tcpWebSubscribe' && target.checked === false) {
-      this.setState({
-        modalVisible: true,
-        isTcpUnsubscribeModal: true,
-      });
-    }
-
-    if (target.name === 'gymboreeWebSubscribe' && target.checked === true) {
+    if (target.name === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
         isGymboreeSubscribeModal: true,
+        activeModal: 'gymboreeWebSubscribe',
       });
     }
-    if (target.name === 'gymboreeWebSubscribe' && target.checked === false) {
+    return true;
+  };
+
+  onUnsubscribe = event => {
+    event.preventDefault();
+    const { target } = event;
+    if (target.name === 'tcpWebSubscribe') {
+      this.setState({
+        modalVisible: true,
+        isTcpUnsubscribeModal: true,
+        activeModal: 'tcpWebUnsubscribe',
+      });
+    }
+
+    if (target.name === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
         isGymboreeUnsubscribeModal: true,
+        activeModal: 'gymboreeWebUnsubscribe',
       });
     }
     return true;
@@ -136,6 +194,9 @@ export class MyPrefrenceContainer extends PureComponent {
       router,
       isTcpSubscribe,
       phoneNumber,
+      smsPhone,
+      isGymSubscribe,
+      gymSmsPhone,
     } = this.props;
     const {
       modalVisible,
@@ -143,15 +204,11 @@ export class MyPrefrenceContainer extends PureComponent {
       isTcpUnsubscribeModal,
       isGymboreeSubscribeModal,
       isGymboreeUnsubscribeModal,
+      activeModal,
     } = this.state;
 
     const urlParams = router.query || {};
     const myPrefrenceLabels = getMyPrefrenceLabels(labels);
-
-    console.log('rihan kan ------------------------------');
-    console.log(isTcpSubscribe);
-    console.log('rihan kan ------------------------------');
-
     return (
       <>
         <MyPrefrence
@@ -159,8 +216,10 @@ export class MyPrefrenceContainer extends PureComponent {
           handleComponentChange={handleComponentChange}
           componentProps={componentProps}
           isTcpSubscribe={isTcpSubscribe}
+          isGymSubscribe={isGymSubscribe}
           initialValues={this.initialValuesPreference}
           onSubscribe={this.onSubscribe}
+          onUnsubscribe={this.onUnsubscribe}
           urlParams={urlParams}
         />
         {modalVisible && (
@@ -181,14 +240,16 @@ export class MyPrefrenceContainer extends PureComponent {
                 phoneNumber={phoneNumber}
                 initialValues={this.initialValuesSubscribe}
                 labels={myPrefrenceLabels}
+                activeModal={activeModal}
               />
             )}
             {isTcpUnsubscribeModal && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
-                phoneNumber={phoneNumber}
+                phoneNumber={smsPhone}
                 labels={myPrefrenceLabels}
+                activeModal={activeModal}
               />
             )}
             {isGymboreeSubscribeModal && (
@@ -198,14 +259,16 @@ export class MyPrefrenceContainer extends PureComponent {
                 phoneNumber={phoneNumber}
                 initialValues={this.initialValuesSubscribe}
                 labels={myPrefrenceLabels}
+                activeModal={activeModal}
               />
             )}
             {isGymboreeUnsubscribeModal && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 handleSubmitModalPopup={this.handleSubmitModalPopup}
-                phoneNumber={phoneNumber}
+                phoneNumber={gymSmsPhone}
                 labels={myPrefrenceLabels}
+                activeModal={activeModal}
               />
             )}
           </Modal>
@@ -218,6 +281,9 @@ export class MyPrefrenceContainer extends PureComponent {
 export const mapStateToProps = state => ({
   isTcpSubscribe: getSmsSubscriptionState(state),
   phoneNumber: getUserPhoneNumber(state),
+  smsPhone: getSmsPhone(state),
+  isGymSubscribe: getGymSmsSubscriptionState(state),
+  gymSmsPhone: getGymSmsPhone(state),
 });
 
 export const mapDispatchToProps = dispatch => {
@@ -236,9 +302,12 @@ MyPrefrenceContainer.propTypes = {
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
   isTcpSubscribe: PropTypes.bool,
+  isGymSubscribe: PropTypes.bool,
   getSubscribeStoreAction: PropTypes.func.isRequired,
   submitSubscribeBrand: PropTypes.func.isRequired,
   phoneNumber: PropTypes.string.isRequired,
+  smsPhone: PropTypes.string,
+  gymSmsPhone: PropTypes.string,
   router: PropTypes.shape({
     query: PropTypes.shape({}),
   }),
@@ -249,6 +318,9 @@ MyPrefrenceContainer.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
   isTcpSubscribe: false,
+  isGymSubscribe: false,
+  smsPhone: '',
+  gymSmsPhone: '',
   router: {},
 };
 

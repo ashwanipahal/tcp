@@ -1,17 +1,22 @@
-import OrderDetailsDataReducer from '../OrderDetails.reducer';
-import { setOrderDetails } from '../OrderDetails.actions';
+import MyPreferenceReducer from '../container/MyPreference.reducer';
+import { setSubscribeStore, getSubscribeStore } from '../container/MyPreference.actions';
 
-const initialState = { orderDetailsData: null };
-const orderPayload = {};
+const initialState = { subscribeStoreData: null };
+const subscribePayload = {};
 
 describe('OrderDetails Reducer', () => {
   it('should return default state', () => {
-    const state = OrderDetailsDataReducer(undefined, {});
-    expect(state.orderDetailsData).toBeNull();
+    const state = MyPreferenceReducer(undefined, {});
+    expect(state.subscribeStoreData).toBeNull();
   });
 
-  it('should return orderDetailsData state', () => {
-    const state = OrderDetailsDataReducer(initialState, setOrderDetails(orderPayload));
-    expect(state.orderDetailsData).toBe(orderPayload);
+  it('should return subscribeStoreData state', () => {
+    const state = MyPreferenceReducer(initialState, setSubscribeStore(subscribePayload));
+    expect(state.subscribeStoreData).toBe(subscribePayload);
+  });
+
+  it('should return subscribeStoreData state', () => {
+    const state = MyPreferenceReducer(initialState, getSubscribeStore());
+    expect(state.subscribeStoreData).toBe(null);
   });
 });

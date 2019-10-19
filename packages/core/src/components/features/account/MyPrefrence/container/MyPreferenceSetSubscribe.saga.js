@@ -1,15 +1,16 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import MY_PREFERENCE_CONSTANTS from '../MyPrefrence.constants';
-import { setSubscribeStore } from './MyPreference.actions';
+import { getSubscribeStore } from './MyPreference.actions';
 import { myPreferenceModalSubmit } from '../../../../../services/abstractors/account/myPreferernce';
 
 export function* setSubscribeStoreSaga(data) {
   const { payload } = data;
-  const { mobileNumber, CustomerPreferences } = payload;
 
+  const { mobileNumber, brand, CustomerPreferences, CustomerPreferencesGym } = payload;
+  const customerPreferencesData = CustomerPreferencesGym || CustomerPreferences;
   try {
-    const subscribeData = yield call(myPreferenceModalSubmit, mobileNumber, CustomerPreferences);
-    yield put(setSubscribeStore(subscribeData));
+    yield call(myPreferenceModalSubmit, mobileNumber, customerPreferencesData, brand);
+    yield put(getSubscribeStore());
   } catch (err) {
     yield null;
   }
