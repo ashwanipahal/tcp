@@ -11,3 +11,8 @@ export const getOrderDetailsDataState = createSelector(
   getState,
   state => state && state.orderDetailsData
 );
+
+export const getOrderId = createSelector(
+  getState,
+  state => state && state.orderDetailsData && state.orderDetailsData.orderNumber
+);

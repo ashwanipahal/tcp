@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OrderDetailsView from '../views';
 import { getOrderDetails } from './OrderDetails.actions';
-import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
+import { getOrderDetailsDataState, getOrdersLabels, getOrderId } from './OrderDetails.selectors';
+import { isMobileApp } from '../../../../../utils';
 
 /**
  * This Class component use for return the Order Details data
@@ -12,11 +13,19 @@ import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.select
  */
 export class OrderDetailsContainer extends PureComponent {
   componentDidMount() {
-    const { getOrderDetailsAction, orderId } = this.props;
-    const payload = {
-      orderId,
-    };
-    getOrderDetailsAction(payload);
+    const {
+      getOrderDetailsAction,
+      router: { query },
+      navigation,
+    } = this.props;
+
+    if (isMobileApp()) {
+      const orderId = navigation.getParam('orderId');
+      getOrderDetailsAction({ orderId });
+    } else {
+      const { orderId } = query;
+      getOrderDetailsAction({ orderId });
+    }
   }
 
   /**
@@ -45,9 +54,9 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-export const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = state => {
   return {
-    orderId: ownProps.router.query.orderId,
+    orderId: getOrderId(state),
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
   };
@@ -58,12 +67,20 @@ OrderDetailsContainer.propTypes = {
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
   getOrderDetailsAction: PropTypes.func.isRequired,
+  router: PropTypes.shape({
+    query: PropTypes.shape({}),
+  }),
+  navigation: PropTypes.shape({}),
 };
 
 OrderDetailsContainer.defaultProps = {
   orderId: '',
+  router: {
+    query: {},
+  },
   ordersLabels: {},
   orderDetailsData: {},
+  navigation: {},
 };
 
 export default connect(
