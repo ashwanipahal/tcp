@@ -8,15 +8,11 @@
             <item  >
                 <shape>
                     <gradient android:angle="90" android:endColor="@android:color/white" android:startColor="@android:color/white" android:type="linear" />
-
-
                 </shape>
             </item>
 
             <item android:gravity="end|center_vertical" android:top="0dp" android:bottom="0dp" >
-
                 <bitmap  android:gravity="center_vertical|left" android:src="@drawable/arrow_down_medium" />
-
             </item>
 
 
@@ -30,9 +26,7 @@
                     <size
                         android:height="1dp" />
                     <solid
-                        android:color="#000" />
-
-
+                        android:color="@android:color/black" />
                 </shape>
             </item>
         </layer-list>
