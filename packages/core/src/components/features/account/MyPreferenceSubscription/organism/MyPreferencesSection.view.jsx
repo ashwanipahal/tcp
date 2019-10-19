@@ -49,7 +49,7 @@ class MyPrefrenceSection extends React.PureComponent {
             >
               {getLabelValue(labels, 'lbl_prefrence_access_buy_online_pickup')}
             </BodyCopy>
-            <BodyCopy className="elm-padding-top" fontSize="fs14" fontFamily="secondary">
+            <BodyCopy className="elm-pt-LRG" fontSize="fs14" fontFamily="secondary">
               {getLabelValue(labels, 'lbl_prefrence_marketing_notification')}
             </BodyCopy>
           </Col>

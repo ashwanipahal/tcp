@@ -47,7 +47,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         lbl_prefrence_access_buy_online_pickup
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elm-padding-top"
+        className="elm-pt-LRG"
         color="text.primary"
         component="p"
         fontFamily="secondary"

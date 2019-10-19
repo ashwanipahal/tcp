@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import MyPref from '../organism/MyPreferencesSection.view';
 
 const MyPrefrence = ({ labels, ...otherProps }) => {
-  return (
-    <div>
-      <MyPref labels={labels} {...otherProps} />
-    </div>
-  );
+  return <MyPref labels={labels} {...otherProps} />;
 };
 
 MyPrefrence.propTypes = {

@@ -4,7 +4,7 @@ const initialState = {
   subscribeStoreData: null,
 };
 
-const MyPreferenceReducer = (state = initialState, action) => {
+const MyPreferenceSubscriptionReducer = (state = initialState, action) => {
   switch (action.type) {
     case MY_PREFERENCE_CONSTANTS.GET_SUBSCRIBE_STORE:
       return { ...state };
@@ -15,4 +15,4 @@ const MyPreferenceReducer = (state = initialState, action) => {
   }
 };
 
-export default MyPreferenceReducer;
+export default MyPreferenceSubscriptionReducer;
