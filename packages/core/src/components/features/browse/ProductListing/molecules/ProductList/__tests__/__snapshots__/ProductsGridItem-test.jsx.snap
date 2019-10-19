@@ -154,7 +154,9 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         fill=""
         fullWidth={true}
         onClick={[Function]}
-      />
+      >
+        SHOP COLLECTION
+      </Styled(Button)>
     </div>
     <div
       className="favorite-move-purchase-section"
