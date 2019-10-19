@@ -32,6 +32,11 @@ export default function create(store) {
         return store.getState().pageName;
       },
     },
+    pageType: {
+      get() {
+        return store.getState().pageName;
+      },
+    },
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {

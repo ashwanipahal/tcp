@@ -1,8 +1,5 @@
-const getStore = store => {
-  return store.getState();
-};
 const getStoreId = store => {
-  const state = getStore(store);
+  const state = store.getState();
   const defaultStore = state.User && state.User.get('defaultStore');
   console.log(state);
   return defaultStore.basicInfo && defaultStore.basicInfo.id;

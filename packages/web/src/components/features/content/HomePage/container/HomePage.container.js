@@ -15,6 +15,7 @@ HomePageView.getInitActions = () => initActions;
 
 HomePageView.pageInfo = {
   name: 'homepage',
+  analyticsPageName: 'home page',
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 
