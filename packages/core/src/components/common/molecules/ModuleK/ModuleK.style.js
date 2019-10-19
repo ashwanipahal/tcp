@@ -6,14 +6,14 @@ const StyledCarousal = styled(Carousel)`
     top: 44%;
   }
   .slick-next {
-    height: 52px;
+    height: 50px;
     right: -68px;
-    width: 15px;
+    width: 13px;
   }
   .slick-prev {
-    height: 52px;
+    height: 50px;
     left: -68px;
-    width: 15px;
+    width: 13px;
   }
   .slick-dots {
     bottom: -20px;
@@ -36,7 +36,7 @@ const StyledModuleK = css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
   .moduleK__promoBanner,
   .moduleK__header {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-right: 0;
   }
   .carousal-cta {
@@ -54,8 +54,8 @@ const StyledModuleK = css`
   }
   .image-col {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;

@@ -71,7 +71,7 @@ const ModuleD = ({ className, headerText, promoBanner, smallCompImage, singleCTA
           data-locator={getLocator('moduleD_promobanner')}
         />
       )}
-      <Row centered>
+      <Row centered className="moduleD__image-container-section">
         {smallCompImage &&
           smallCompImage.map((item, index) => {
             return (

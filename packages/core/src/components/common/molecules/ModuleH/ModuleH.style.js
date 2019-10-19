@@ -68,7 +68,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
     }
   }
 
