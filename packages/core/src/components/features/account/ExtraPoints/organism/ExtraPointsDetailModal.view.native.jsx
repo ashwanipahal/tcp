@@ -55,6 +55,7 @@ class ExtraPointsDetailModal extends React.PureComponent {
       case 'myPreference':
         return handleComponentChange('myPreferencePageMobile', {
           activeComponent: activityDetails.activityModalAction,
+          activityModalSocialAccount: activityDetails.activityModalSocialAccount,
         });
 
       case 'orders':
