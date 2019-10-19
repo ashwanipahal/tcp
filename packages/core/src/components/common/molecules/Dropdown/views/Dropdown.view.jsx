@@ -159,7 +159,7 @@ class Dropdown extends React.PureComponent {
             component="div"
             fontFamily="secondary"
             fontWeight="extrabold"
-            className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
+            className={`customSelectArrow ${dropDownExpand ? 'up' : 'down'}`}
           />
           {this.getDisplayName(navState.displayName)}
         </BodyCopy>
