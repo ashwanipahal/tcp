@@ -60,7 +60,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <RelatedOutfits
       navigation={Object {}}
       pdpLabels={Object {}}
-      relatedOutfits={Array []}
     />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"
