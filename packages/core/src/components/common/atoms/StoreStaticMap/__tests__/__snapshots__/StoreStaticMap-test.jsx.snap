@@ -501,9 +501,9 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -514,7 +514,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -529,7 +529,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -542,9 +542,9 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -4418,9 +4418,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -4431,7 +4431,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -4446,7 +4446,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -4459,9 +4459,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -8331,9 +8331,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -8344,7 +8344,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -8359,7 +8359,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -8372,9 +8372,9 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -12248,9 +12248,9 @@ exports[`StoreStaticMap component resize window should update component on windo
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -12261,7 +12261,7 @@ exports[`StoreStaticMap component resize window should update component on windo
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -12276,7 +12276,7 @@ exports[`StoreStaticMap component resize window should update component on windo
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -12289,9 +12289,9 @@ exports[`StoreStaticMap component resize window should update component on windo
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -12938,9 +12938,9 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -12951,7 +12951,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -12966,7 +12966,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -12979,9 +12979,9 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",

@@ -489,9 +489,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -502,7 +502,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -517,7 +517,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -530,9 +530,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -1174,9 +1174,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -1187,7 +1187,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -1202,7 +1202,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -1215,9 +1215,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
