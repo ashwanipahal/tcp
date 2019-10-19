@@ -146,7 +146,7 @@ export class PickUpReviewSection extends React.PureComponent {
           })}
         </Row>
         <Row fullBleed>
-          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 5 }}>
+          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 6 }}>
             <BodyCopy
               fontSize="fs16"
               fontFamily="secondary"
@@ -167,7 +167,7 @@ export class PickUpReviewSection extends React.PureComponent {
           {!isExpressCheckout && isHasPickUpAlternatePerson && (
             <Col
               className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 5 }}
+              colSize={{ small: 6, medium: 4, large: 6 }}
             >
               <BodyCopy
                 fontSize="fs16"
@@ -184,7 +184,7 @@ export class PickUpReviewSection extends React.PureComponent {
           {isExpressCheckout && (
             <Col
               className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 7 }}
+              colSize={{ small: 6, medium: 4, large: 6 }}
             >
               <div className="pickUpAlternate-container">
                 <FormSection name="pickUpAlternateExpress">
