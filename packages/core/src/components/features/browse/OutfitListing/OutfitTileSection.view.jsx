@@ -2,36 +2,33 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import OutfitTileSectionStyle from './OutfitTileSection.style';
 import withStyles from '../../../common/hoc/withStyles';
-import { BodyCopy, Anchor, Image } from '../../../common/atoms';
+import BodyCopy from '../../../common/atoms/BodyCopy';
+import OutfitTile from './OutfitTile';
 
-const getOutfitTile = outfitTile => {
+const getOutfitTile = (outfitTile, asPath, className) => {
   return (
     outfitTile &&
-    outfitTile.map(item => (
-      <div className="outfit-wrapper">
-        <Anchor>
-          <Image className="outfit-tile-wrapper" src={item.imageUrl} />
-          <BodyCopy className="shop-look-label" fontFamily="secondary" fontSize="fs12">
-            Shop This Look ›
-          </BodyCopy>
-        </Anchor>
-      </div>
-    ))
+    outfitTile.map(item => <OutfitTile className={className} item={item} asPath={asPath} />)
   );
 };
 
 const OutfitTileSection = props => {
   const { className, asPath, outfitDetails } = props;
-
   const outfitTile = outfitDetails[asPath];
+
   return (
     <div className={className}>
-      <BodyCopy className="outfit-title">OUTFITS</BodyCopy>
-      {getOutfitTile(outfitTile)}
-      {getOutfitTile(outfitTile)}
-      {getOutfitTile(outfitTile)}
-      {getOutfitTile(outfitTile)}
-      {getOutfitTile(outfitTile)}
+      <BodyCopy
+        className="outfit-title"
+        fontSize="fs16"
+        fontFamily="secondary"
+        fontWeight="semibold"
+      >
+        OUTFITS
+      </BodyCopy>
+      <div className={`${className} outfit-section-wrapper`}>
+        {getOutfitTile(outfitTile, asPath)}
+      </div>
     </div>
   );
 };
