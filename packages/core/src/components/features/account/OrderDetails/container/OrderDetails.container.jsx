@@ -58,20 +58,12 @@ OrderDetailsContainer.propTypes = {
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
   getOrderDetailsAction: PropTypes.func.isRequired,
-  router: PropTypes.shape({
-    query: PropTypes.shape({}),
-  }),
-  navigation: PropTypes.shape({}),
 };
 
 OrderDetailsContainer.defaultProps = {
   orderId: '',
-  router: {
-    query: {},
-  },
   ordersLabels: {},
   orderDetailsData: {},
-  navigation: {},
 };
 
 export default connect(
