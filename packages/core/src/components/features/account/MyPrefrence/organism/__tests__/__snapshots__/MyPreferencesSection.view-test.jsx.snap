@@ -684,6 +684,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
+              checked={false}
               className="elm-padding-top"
               component={
                 Object {

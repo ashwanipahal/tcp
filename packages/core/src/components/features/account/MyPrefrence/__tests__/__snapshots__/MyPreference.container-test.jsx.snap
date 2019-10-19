@@ -10,6 +10,7 @@ exports[`MyProfile container should render MyProfile component 1`] = `
         "tcpWebSubscribe": undefined,
       }
     }
+    isGymSubscribe={false}
     isTcpSubscribe={false}
     labels={Object {}}
     onSubscribe={[Function]}
