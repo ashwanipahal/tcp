@@ -25,7 +25,11 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={true}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={false}
@@ -36,6 +40,9 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={false}
           isPlcc={true}
           isProductDetailView=""
@@ -73,7 +80,11 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={true}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={false}
@@ -84,6 +95,9 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={false}
           isPlcc={true}
           isProductDetailView=""
@@ -121,7 +135,11 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={false}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
@@ -132,6 +150,9 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={false}
           isPlcc={false}
           isProductDetailView=""
@@ -169,7 +190,11 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={true}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={false}
@@ -180,6 +205,9 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={true}
           isPlcc={true}
           isProductDetailView=""
@@ -217,7 +245,11 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={false}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
@@ -228,6 +260,9 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={false}
           isPlcc={false}
           isProductDetailView=""
@@ -265,7 +300,11 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
         isPlcc={false}
+        isProductDetailView=""
+        isReviewPage={false}
         labels={Object {}}
         remainingPlcc={false}
         showSubtotal={true}
@@ -276,6 +315,9 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
+          earnedReward={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
           isGuest={true}
           isPlcc={false}
           isProductDetailView=""

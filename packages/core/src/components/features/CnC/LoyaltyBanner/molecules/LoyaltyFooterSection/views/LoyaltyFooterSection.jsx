@@ -50,17 +50,75 @@ const renderLoginLink = labels => {
   );
 };
 
-const confirmationPageLinks = (labels, isGuest, earnedReward) => {
+const createLoginLinks = labels => {
+  return (
+    // <>
+    //   {isGuest && earnedReward && (
+    <div className="links-wrapper">
+      <span className="links-container">
+        <span>{renderCreateAccountLink(labels)}</span>
+        <span className="elem-pl-XL">{renderLoginLink(labels)}</span>
+      </span>
+    </div>
+    //   )}
+    // </>
+  );
+};
+
+const applyLearnLinks = labels => {
+  return (
+    <div className="links-wrapper">
+      <span className="links-container">
+        {renderApplyNowLink()}
+        <span className="learnSymbolWrapper elem-pl-XL">
+          <BodyCopy
+            className="symbolWrapper"
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontWeight="regular"
+            fontSize="fs9"
+          >
+            {labels.sectionSymbol}
+            {labels.asteriskSymbol}
+          </BodyCopy>
+
+          {renderLearnMoreLink(labels)}
+        </span>
+      </span>
+    </div>
+  );
+};
+
+const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedReward) => {
   return (
     <>
-      {isGuest && earnedReward && (
-        <div className="links-wrapper">
-          <span className="links-container">
-            <span>{renderCreateAccountLink(labels)}</span>
-            <span className="elem-pl-XL">{renderLoginLink(labels)}</span>
-          </span>
-        </div>
+      {isGuest && <>{createLoginLinks(labels)}</>}
+      {!isGuest && !isPlcc && (
+        <>
+          {!earnedReward && applyLearnLinks(labels)}
+          {earnedReward && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+        </>
       )}
+      {!isGuest && isPlcc && (
+        <>
+          <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
+        </>
+      )}
+    </>
+  );
+};
+
+const notReviewLinks = (labels, isConfirmationPage, isPlcc, isGuest, earnedReward) => {
+  return (
+    <>
+      {!isConfirmationPage && (
+        <>
+          {!isPlcc && applyLearnLinks(labels)}
+          {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+        </>
+      )}
+      {isConfirmationPage && <>{isGuest && earnedReward && createLoginLinks(labels)}</>}
     </>
   );
 };
@@ -74,6 +132,7 @@ const LoyaltyFooterSection = props => {
     isPlcc,
     isReviewPage,
     isConfirmationPage,
+    isAddedToBagPage,
     earnedReward,
   } = props;
   return (
@@ -87,40 +146,11 @@ const LoyaltyFooterSection = props => {
           isGuest={isGuest}
         />
       )}
-      {!isProductDetailView && (
+      {isAddedToBagPage && <>{addedToBagPageLinks(labels, isGuest, isPlcc, earnedReward)}</>}
+      {!isProductDetailView && !isAddedToBagPage && (
         <>
-          {!isReviewPage && (
-            <>
-              {!isConfirmationPage && (
-                <>
-                  {!isPlcc && (
-                    <div className="links-wrapper">
-                      <span className="links-container">
-                        {renderApplyNowLink()}
-                        <span className="learnSymbolWrapper elem-pl-XL">
-                          <BodyCopy
-                            className="symbolWrapper"
-                            color="text.primary"
-                            component="span"
-                            fontFamily="secondary"
-                            fontWeight="regular"
-                            fontSize="fs9"
-                          >
-                            {labels.sectionSymbol}
-                            {labels.asteriskSymbol}
-                          </BodyCopy>
-
-                          {renderLearnMoreLink(labels)}
-                        </span>
-                      </span>
-                    </div>
-                  )}
-                  {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
-                </>
-              )}
-              {isConfirmationPage && <>{confirmationPageLinks(labels, isGuest, earnedReward)}</>}
-            </>
-          )}
+          {!isReviewPage &&
+            notReviewLinks(labels, isConfirmationPage, isPlcc, isGuest, earnedReward)}
           {isReviewPage && isPlcc && (
             <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
           )}
@@ -139,6 +169,7 @@ LoyaltyFooterSection.propTypes = {
   isProductDetailView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   earnedReward: PropTypes.bool,
+  isAddedToBagPage: PropTypes.bool,
 };
 
 LoyaltyFooterSection.defaultProps = {
@@ -149,6 +180,7 @@ LoyaltyFooterSection.defaultProps = {
   isProductDetailView: false,
   isConfirmationPage: false,
   earnedReward: false,
+  isAddedToBagPage: false,
 };
 
 export default withStyles(LoyaltyFooterSection, Styles);

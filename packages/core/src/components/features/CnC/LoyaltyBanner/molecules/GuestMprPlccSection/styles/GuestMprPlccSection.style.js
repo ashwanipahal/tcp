@@ -204,6 +204,43 @@ const Styles = css`
         }
       `
       : ``};
+  ${props =>
+    props.isAddedToBagPage
+      ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${colorTheme(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize16(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize12(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize12(props)}
+          }
+        }
+        .description-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize12(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize12(props)}
+          }
+        }
+      `
+      : ``};
 `;
 
 // ${props => (props.pageCategory ? `` : ``)};

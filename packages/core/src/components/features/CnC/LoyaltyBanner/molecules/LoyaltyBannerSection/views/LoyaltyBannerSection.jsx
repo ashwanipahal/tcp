@@ -133,6 +133,7 @@ const LoyaltyBannerSection = props => {
               isReviewPage={isReviewPage}
               isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
+              isAddedToBagPage={isAddedToBagPage}
               earnedReward
             />
           </div>
