@@ -4,16 +4,13 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import ProductDetailSection from '../../ProductDetailSection';
+import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
-const renderApplyNowLink = labels => {
+const renderApplyNowLink = () => {
   return (
-    <Anchor
-      className="applyNow"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.applyNow}
-      underline
-    />
+    <span className="applyNowLink">
+      <ApplyNowModal />
+    </span>
   );
 };
 
@@ -33,20 +30,22 @@ const LoyaltyFooterSection = props => {
   const { className, isProductDetailView, isGuest, isPlcc, isReviewPage, labels } = props;
   return (
     <div className={`${className} footerWrapper`}>
-      <ProductDetailSection
-        className={className}
-        labels={labels}
-        isPlcc={isPlcc}
-        isProductDetailView={isProductDetailView}
-        isGuest={isGuest}
-      />
+      {isProductDetailView && (
+        <ProductDetailSection
+          className={className}
+          labels={labels}
+          isPlcc={isPlcc}
+          isProductDetailView={isProductDetailView}
+          isGuest={isGuest}
+        />
+      )}
       {!isProductDetailView && (
-        <>
+        <div className="links-wrapper">
           {!isReviewPage && (
             <>
               {!isPlcc && (
-                <span>
-                  {renderApplyNowLink(labels)}
+                <span className="links-container">
+                  {renderApplyNowLink()}
                   <span className="learnSymbolWrapper elem-pl-XL">
                     <BodyCopy
                       className="symbolWrapper"
@@ -68,7 +67,7 @@ const LoyaltyFooterSection = props => {
             </>
           )}
           {isReviewPage && isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
-        </>
+        </div>
       )}
     </div>
   );

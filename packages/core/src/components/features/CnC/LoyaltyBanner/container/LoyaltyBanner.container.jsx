@@ -20,7 +20,7 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   isProductDetailView,
-  isReviewPage,
+  pageCategory,
   isConfirmationPage,
 }) => {
   const {
@@ -43,7 +43,7 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       isProductDetailView={isProductDetailView}
-      isReviewPage={isReviewPage}
+      pageCategory={pageCategory}
       isConfirmationPage={isConfirmationPage}
     />
   );
@@ -57,7 +57,7 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
-  isReviewPage: PropTypes.bool,
+  pageCategory: PropTypes.string,
   isConfirmationPage: PropTypes.bool,
 };
 
@@ -67,7 +67,7 @@ LoyaltyBannerContainer.defaultProps = {
   isPlcc: false,
   currencySymbol: '',
   isProductDetailView: false,
-  isReviewPage: false,
+  pageCategory: '',
   isConfirmationPage: false,
 };
 

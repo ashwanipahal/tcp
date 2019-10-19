@@ -2,13 +2,13 @@
 
 exports[`LoyaltyBanner View Component earnedReward isGuest should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -32,7 +32,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""
@@ -50,13 +50,13 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
 
 exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -80,7 +80,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""
@@ -98,13 +98,13 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
 
 exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -128,7 +128,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""
@@ -146,13 +146,13 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
 
 exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -176,7 +176,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""
@@ -194,13 +194,13 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
 
 exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -224,7 +224,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""
@@ -242,13 +242,13 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
 
 exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -272,7 +272,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
         <Styled(LoyaltyFooterSection)
           className=""

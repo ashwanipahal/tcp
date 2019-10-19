@@ -27,6 +27,27 @@ import renderLoyaltyLabels from '../../../util/utilityCommon';
 //   return { pdpHeadingLabel, pdpSubHeadingLabel };
 // };
 
+const getPageCategory = pageCategory => {
+  let ischeckoutPage = false;
+  let isReviewPage = false;
+  let isConfirmationPage = false;
+  let isAddedToBagPage = false;
+  switch (pageCategory) {
+    case 'isReviewPage':
+      isReviewPage = true;
+      break;
+    case 'isConfirmationPage':
+      isConfirmationPage = true;
+      break;
+    case 'isAddedToBagPage':
+      isAddedToBagPage = true;
+      break;
+    default:
+      ischeckoutPage = true;
+  }
+  return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
+};
+
 const concatSectionSymbol = (str, sectionSymbol) => {
   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
 };
@@ -44,8 +65,7 @@ const LoyaltyBannerSection = props => {
     estimatedRewardsVal,
     pointsToNextReward,
     getCurrencySymbol,
-    isReviewPage,
-    isConfirmationPage,
+    pageCategory,
     isProductDetailView,
   } = props;
   let showSubtotal = false;
@@ -53,6 +73,9 @@ const LoyaltyBannerSection = props => {
   let remainingPlcc = '';
   let subHeadingLabel = '';
   let descriptionLabel = '';
+
+  const pageCategoryArr = getPageCategory(pageCategory);
+  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -66,7 +89,8 @@ const LoyaltyBannerSection = props => {
     isGuest,
     isPlcc,
     isReviewPage,
-    isConfirmationPage
+    isConfirmationPage,
+    isAddedToBagPage
   );
 
   const utilArrRewards = [
@@ -100,9 +124,9 @@ const LoyaltyBannerSection = props => {
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
 
   return (
-    <div className={`${className} elem-mb-MED`}>
-      <div className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper">
-        <BodyCopy className="loyaltyBannerSectionWrapper" component="div" fontFamily="secondary">
+    <div className={`${className}`}>
+      <div className="loyalty-banner-wrapper">
+        <BodyCopy className="loyalty-banner-section-wrapper" component="div" fontFamily="secondary">
           <GuestMprPlccSection
             labels={labels}
             headingLabel={headingLabel}
@@ -115,7 +139,7 @@ const LoyaltyBannerSection = props => {
             estimatedSubtotal={estimatedSubtotal}
             isPlcc={isPlcc}
           />
-          <div className="footer alignCenter">
+          <div className="footer">
             <LoyaltyFooterSection
               className={className}
               labels={labels}
@@ -144,8 +168,7 @@ LoyaltyBannerSection.propTypes = {
   pointsToNextReward: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
-  isReviewPage: PropTypes.bool,
-  isConfirmationPage: PropTypes.bool,
+  pageCategory: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -157,11 +180,10 @@ LoyaltyBannerSection.defaultProps = {
   isGuest: false,
   earnedReward: 0,
   isPlcc: false,
-  isReviewPage: false,
+  pageCategory: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',
-  isConfirmationPage: false,
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

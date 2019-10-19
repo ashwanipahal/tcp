@@ -15,14 +15,14 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
 >
   0
   <div
-    className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM"
+    className="subtotal-section"
   >
     <Styled(Row)
-      className="currentSubtotalRow"
+      className="subtotal-row"
       fullBleed={true}
     >
       <Styled(Col)
-        className="currentSubtotalTextCol"
+        className="current-subtotal-text-col"
         colSize={
           Object {
             "large": 7,
@@ -32,7 +32,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="currentSubtotalText"
+          className="current-subtotal-text"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -45,7 +45,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         />
       </Styled(Col)>
       <Styled(Col)
-        className="currentSubtotalValCol"
+        className="current-subtotal-val-col"
         colSize={
           Object {
             "large": 5,
@@ -55,7 +55,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="currentSubtotalVal"
+          className="current-subtotal-val"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -71,11 +71,11 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="estimatedSubtotalRow elem-pt-SM elem-pb-SM"
+      className="estimated-subtotal-row elem-pt-SM elem-pb-SM"
       fullBleed={true}
     >
       <Styled(Col)
-        className="estimatedSubtotalTextCol"
+        className="estimated-subtotal-text-col"
         colSize={
           Object {
             "large": 7,
@@ -85,7 +85,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="estimatedSubtotalText"
+          className="estimated-subtotal-text"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -98,7 +98,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         />
       </Styled(Col)>
       <Styled(Col)
-        className="estimatedSubtotalValCol"
+        className="estimated-subtotal-val-col"
         colSize={
           Object {
             "large": 5,
@@ -108,7 +108,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="estimatedSubtotalVal"
+          className="estimated-subtotal-val"
           color="text.primary"
           component="span"
           fontFamily="secondary"
