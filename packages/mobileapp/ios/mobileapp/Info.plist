@@ -27,14 +27,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb512065309359521</string>
+				<string>fb312738492865420</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>512065309359521</string>
+	<string>312738492865420</string>
 	<key>FacebookDisplayName</key>
 	<string>My Place</string>
 	<key>LSApplicationCategoryType</key>
@@ -91,5 +91,19 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
+      </array>
+    </dict>
+  </array>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>twitter</string>
+    <string>twitterauth</string>
+  </array>
 </dict>
 </plist>

@@ -316,14 +316,14 @@ exports[`ModuleK component renders correctly 1`] = `
       className="moduleK__carousal"
       colSize={
         Object {
-          "large": 8,
+          "large": 10,
           "medium": 8,
           "small": 6,
         }
       }
       offsetLeft={
         Object {
-          "large": 2,
+          "large": 1,
           "medium": 0,
           "small": 0,
         }
@@ -728,6 +728,7 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
+          imageMaxWidth="270px"
           imgConfigs={
             Array [
               "t_mod_K_img_m",
@@ -859,6 +860,7 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
+          imageMaxWidth="270px"
           imgConfigs={
             Array [
               "t_mod_K_img_m",

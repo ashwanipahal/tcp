@@ -27,8 +27,7 @@ const StyledLinkText = styled(LinkText)`
   }
 `;
 const StyledImageGrid = styled(ImageGrid)`
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
 `;
 

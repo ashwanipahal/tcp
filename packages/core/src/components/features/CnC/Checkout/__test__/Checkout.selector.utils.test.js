@@ -194,11 +194,11 @@ describe('Checkout Selectors', () => {
 
   it('#getIsVenmoEnabled', () => {
     const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
-    const session = fromJS({
+    const session = {
       siteDetails: {
         VENMO_ENABLED: 'TRUE',
       },
-    });
+    };
 
     const state = {
       session,
