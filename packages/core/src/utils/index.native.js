@@ -59,4 +59,5 @@ export {
   parseStoreHours,
   getModifiedLanguageCode,
   getTranslateDateInformation,
+  parseBoolean,
 } from './utils';
