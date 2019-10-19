@@ -194,7 +194,7 @@ PickupSkuSelectionFormContainer.defaultProps = {
   onEditSku: false,
   isPickUpWarningModal: false,
   onCloseClick: () => {},
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default withStyles(PickupSkuSelectionFormContainer, styles);
