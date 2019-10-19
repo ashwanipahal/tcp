@@ -138,6 +138,8 @@ class CheckoutPage extends React.PureComponent {
       shippingMethod,
       isHasPickUpAlternatePerson,
       pickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -216,6 +218,8 @@ class CheckoutPage extends React.PureComponent {
             isGuest={isGuest}
             isExpressCheckout={isExpressCheckout}
             shipmentMethods={shipmentMethods}
+            pickUpContactPerson={pickUpContactPerson}
+            pickUpContactAlternate={pickUpContactAlternate}
             initialValues={{
               expressReviewShippingSection: {
                 shippingMethodId: shippingMethod,
@@ -341,6 +345,8 @@ CheckoutPage.propTypes = {
   shippingMethod: PropTypes.shape({}),
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  pickUpContactPerson: PropTypes.shape({}).isRequired,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
