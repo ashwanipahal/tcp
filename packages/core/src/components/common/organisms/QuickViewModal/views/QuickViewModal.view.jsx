@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLocator, isCanada } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
-import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
+import LoyaltyBanner from '../../../../features/CnC/LoyaltyBanner';
 
 class QuickViewModal extends React.Component {
   componentWillUnmount = () => {
@@ -66,6 +67,7 @@ class QuickViewModal extends React.Component {
           currencyExchange={currencyExchange}
           {...otherProps}
         />
+        {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!fromBagPage && (
           <FulfillmentSection
             btnClassName="added-to-bag"

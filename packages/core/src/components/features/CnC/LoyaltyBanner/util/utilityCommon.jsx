@@ -77,34 +77,38 @@ const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGue
   let rewardPointsValue = '';
   let headingLabelVal = '';
   let subHeadingLabel = '';
-  let remainingPlccVal = '';
+  let descriptionLabel = '';
   if (!earnedReward) {
     rewardPointsValue = estimatedRewardsVal;
     if (isGuest) {
-      headingLabelVal = labels.guestConfirmationSignUp1;
+      headingLabelVal = labels.added2bagGuestPointsHeading;
+      subHeadingLabel = labels.added2bagGuestPointsSubHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprConfirmationYouEarnedPoints1;
-      remainingPlccVal = labels.mprConfirmationThatsSomePoints1;
+      headingLabelVal = labels.added2bagMprPointsHeading;
+      subHeadingLabel = labels.added2bagMprPointsSubHeading;
+      descriptionLabel = labels.added2bagMprPointsDescription;
     } else {
-      headingLabelVal = labels.plccConfirmationYouEarnedPoints1;
-      remainingPlccVal = labels.plccConfirmationYoureSomePoints1;
+      headingLabelVal = labels.added2bagPlccPointsHeading;
+      descriptionLabel = labels.added2bagPlccPointsDescription;
     }
   } else {
     rewardPointsValue = earnedReward;
     if (isGuest) {
-      headingLabelVal = labels.guestConfirmationBecomeMember1;
-      subHeadingLabel = labels.oneDollarSpent1;
+      headingLabelVal = labels.added2bagGuestRewardsHeading;
+      subHeadingLabel = labels.added2bagGuestRewardsSubHeading;
     } else if (!isPlcc) {
-      headingLabelVal = labels.mprConfirmationYouEarnedReward1;
+      headingLabelVal = labels.added2bagMprRewardsHeading;
+      descriptionLabel = labels.added2bagMprRewardsDescription;
     } else {
-      headingLabelVal = labels.plccConfirmationYouEarnedReward1;
+      headingLabelVal = labels.added2bagPlccRewardsHeading;
+      descriptionLabel = labels.added2bagPlccRewardsDescription;
     }
   }
   return {
     rewardPointsValue,
     headingLabelVal,
     subHeadingLabel,
-    remainingPlccVal,
+    descriptionLabel,
   };
 };
 
