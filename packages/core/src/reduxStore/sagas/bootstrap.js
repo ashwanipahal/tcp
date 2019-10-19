@@ -73,7 +73,7 @@ function* bootstrap(params) {
         yield put(setCountry(country));
       }
       if (currency) {
-        yield put(setCurrency(currency));
+        yield put(setCurrency({ currency }));
       }
       if (language) {
         yield put(setLanguage(language));

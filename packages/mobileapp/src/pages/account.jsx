@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import PointsPage from '@tcp/core/src/components/features/account/PointsClaim';
 import PointsHistory from '@tcp/core/src/components/features/account/PointHistory';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
+import OrderDetail from '@tcp/core/src/components/features/account/OrderDetails';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
@@ -39,6 +40,16 @@ const AccountStack = createStackNavigator(
       screen: ({ navigation }) => {
         const handleToggle = navigation.getParam('handleToggle');
         return <TrackOrderContainer handleToggle={handleToggle} navigation={navigation} />;
+      },
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    OrderDetailPage: {
+      // eslint-disable-next-line react/prop-types
+      screen: ({ navigation }) => {
+        const router = navigation.getParam('router');
+        return <OrderDetail navigation={navigation} router={router} />;
       },
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);

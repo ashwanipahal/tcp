@@ -326,7 +326,7 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
