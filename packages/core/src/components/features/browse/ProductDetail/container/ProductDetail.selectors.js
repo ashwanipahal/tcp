@@ -91,7 +91,11 @@ export const getCurrentCurrency = state => {
 };
 
 export const getCurrencyAttributes = state => {
-  return state.session.siteDetails.currencyAttributes;
+  return (
+    (state.session.siteDetails && state.session.siteDetails.currencyAttributes) || {
+      exchangevalue: 1,
+    }
+  );
 };
 
 export const getCurrentProduct = state => {

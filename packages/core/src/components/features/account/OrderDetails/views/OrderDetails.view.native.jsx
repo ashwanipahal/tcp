@@ -1,10 +1,10 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import config from '@tcp/core/src/config/orderConfig';
 
-import { OrderDetailsMainView } from '../styles/OrderDetails.style.native';
 import OrderBasicDetails from '../organism/OrderBasicDetails';
 import OrderShippingDetails from '../organism/OrderShippingDetails';
 import OrderBillingDetails from '../organism/OrderBillingDetails';
@@ -95,7 +95,6 @@ const renderCancelledAndOutOfStockOrders = (
 };
 export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
   const {
-    orderNumber,
     summary,
     orderStatus,
     purchasedItems,
@@ -112,19 +111,9 @@ export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
     ? getLabelValue(ordersLabels, 'lbl_orders_isBossOrderCancelNotification')
     : getLabelValue(ordersLabels, 'lbl_orders_CancelNotification');
   return (
-    <>
+    <ScrollView>
       {orderDetailsData && (
-        <>
-          <OrderDetailsMainView>
-            <BodyCopyWithSpacing
-              fontFamily="primary"
-              fontSize="fs12"
-              fontWeight="semibold"
-              spacingStyles="margin-top-MED margin-bottom-MED"
-              text={`${getLabelValue(ordersLabels, 'lbl_orderDetail_heading')} #${orderNumber}`}
-              textAlign="center"
-            />
-          </OrderDetailsMainView>
+        <ViewWithSpacing spacingStyles="margin-left-MED margin-right-MED">
           <OrderBasicDetails orderDetailsData={orderDetailsData} ordersLabels={ordersLabels} />
           <OrderShippingDetails orderDetailsData={orderDetailsData} ordersLabels={ordersLabels} />
           <OrderBillingDetails orderDetailsData={orderDetailsData} ordersLabels={ordersLabels} />
@@ -172,9 +161,9 @@ export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
             notificationHeader,
             notificationMessage
           )}
-        </>
+        </ViewWithSpacing>
       )}
-    </>
+    </ScrollView>
   );
 };
 
