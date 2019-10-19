@@ -156,6 +156,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -332,6 +333,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -718,6 +720,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [

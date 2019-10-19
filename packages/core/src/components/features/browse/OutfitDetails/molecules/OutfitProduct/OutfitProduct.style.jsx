@@ -78,6 +78,10 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       margin-left: 30px;
     }
+
+    .size-error-message {
+      max-width: 60%;
+    }
   }
 
   .fulfillment-section {

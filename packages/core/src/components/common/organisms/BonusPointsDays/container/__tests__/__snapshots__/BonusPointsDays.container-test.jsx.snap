@@ -8,6 +8,7 @@ exports[`BonusPointsDaysContainer should render correctly 1`] = `
   bonusDetailsData=""
   getBonusDaysData={[Function]}
   isBagPage={false}
+  isDefaultOpen={false}
   isPlcc={false}
   labels={Object {}}
   orderDetails=""

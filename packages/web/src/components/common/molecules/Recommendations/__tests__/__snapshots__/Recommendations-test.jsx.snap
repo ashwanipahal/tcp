@@ -36,6 +36,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
       >
         <LoadableComponent
           className="test class product-list price-only"
+          currencySymbol="$"
           isPerfectBlock={true}
           item={
             Object {
@@ -101,6 +102,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       >
         <LoadableComponent
           className="test class product-list "
+          currencySymbol="$"
           isPerfectBlock={true}
           item={
             Object {
@@ -190,6 +192,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
       >
         <LoadableComponent
           className="test class product-list "
+          currencySymbol="$"
           isPerfectBlock={true}
           item={
             Object {
@@ -255,6 +258,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
       >
         <LoadableComponent
           className="test class product-list "
+          currencySymbol="$"
           isPerfectBlock={true}
           item={
             Object {

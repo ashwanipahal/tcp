@@ -10,7 +10,14 @@ describe('FullSizeImageWithQuickViewModal component', () => {
       onCloseClick: jest.fn(),
       name: '',
       isThumbnailListVisible: true,
-      images: [{}],
+      images: [
+        {
+          iconSizeImageUrl: '',
+          regularSizeImageUrl: '',
+          bigSizeImageUrl: '',
+          superSizeImageUrl: '',
+        },
+      ],
     };
     const component = shallow(<FullSizeImageWithQuickViewModalVanilla {...props} />);
     expect(component).toMatchSnapshot();

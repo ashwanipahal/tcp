@@ -90,10 +90,5 @@ export default function create(store) {
         return store.getState().ProductListing.get('totalProductsCount');
       },
     },
-    listingCategory: {
-      get() {
-        return store.getState().ProductListing.get('currentListingId');
-      },
-    },
   });
 }

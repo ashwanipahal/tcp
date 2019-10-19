@@ -56,6 +56,7 @@ const OrderStatus = props => {
             centered
             className="button-track"
             dataLocator={trackingNumber}
+            target="_blank"
           >
             {getLabelValue(ordersLabels, 'lbl_orders_trackit')}
           </Anchor>

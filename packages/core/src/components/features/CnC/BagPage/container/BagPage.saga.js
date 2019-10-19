@@ -17,6 +17,7 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
+  getSetCheckoutStage,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -38,12 +39,18 @@ import {
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 import { getUserInfo } from '../../../account/User/container/User.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import {
+  getIsInternationalShipping,
+  getIsRadialInventoryEnabled,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
+import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
+import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
+import { getUserInfoSaga } from '../../../account/User/container/User.saga';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -131,19 +138,12 @@ export function* getOrderDetailSaga(payload) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    const {
-      payload: {
-        isRecalculateTaxes,
-        isCheckoutFlow,
-        isCartNotRequired,
-        updateSmsInfo,
-        onCartRes,
-      } = {},
-    } = payload;
+    const { payload: { isRecalculateTaxes, isCheckoutFlow } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, onCartRes } = {} } = payload;
     const isCartPage = true;
     // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
     const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
-    const isRadialInvEnabled = true; // TODO to get current country
+    const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const isCanadaSIte = false; // TODO to get current country
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
@@ -156,7 +156,16 @@ export function* getCartDataSaga(payload = {}) {
     if (!translatedProductInfo.error) {
       createMatchObject(res, translatedProductInfo);
     }
+    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+    if (bopisItems.length) {
+      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+      res.orderDetails = {
+        ...res.orderDetails,
+        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+      };
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
       if (!personalData || !personalData.get('userId')) {
@@ -185,6 +194,14 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+function* navigateToCheckout(stage, navigation, navigationActions) {
+  yield put(getSetCheckoutStage(stage));
+  const navigateAction = navigationActions.navigate({
+    routeName: CONSTANTS.CHECKOUT_ROOT,
+  });
+  navigation.dispatch(navigateAction);
+}
+
 /**
  * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
  * @param {Boolean} recalc query parameter for recalculation of points
@@ -192,49 +209,23 @@ export function* fetchModuleX({ payload = [] }) {
  * @param {Boolean} closeModal for closing addedtoBag modal in app
  */
 export function* routeForCartCheckout(recalc, navigation, closeModal, navigationActions) {
+  yield call(getUserInfoSaga);
   const { hasVenmoReviewPageRedirect, getIsOrderHasPickup } = checkoutSelectors;
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   if (isMobileApp()) {
-    /** WILL UNCOMMENT AFTER confirmation of behavior from samaksh TODO-Priya */
-    // if (isExpressCheckoutEnabled) {
-    //   const navigateAction = navigationActions.navigate({
-    //     routeName: CONSTANTS.CHECKOUT_ROOT,
-    //     params: {},
-    //     action: navigationActions.navigate({
-    //       routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW,
-    //       params: {
-    //         routeTo: CONSTANTS.REVIEW_DEFAULT_PARAM,
-    //       },
-    //     }),
-    //   });
-    //   navigation.dispatch(navigateAction);
-    // } else
-    if (orderHasPickup) {
-      const navigateAction = navigationActions.navigate({
-        routeName: CONSTANTS.CHECKOUT_ROOT,
-        params: {},
-        action: navigationActions.navigate({
-          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP,
-          params: {
-            routeTo: CONSTANTS.PICKUP_DEFAULT_PARAM,
-          },
-        }),
-      });
-      navigation.dispatch(navigateAction);
+    if (isExpressCheckoutEnabled) {
+      yield call(navigateToCheckout, CONSTANTS.REVIEW_DEFAULT_PARAM, navigation, navigationActions);
+    } else if (orderHasPickup) {
+      yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
     } else {
-      const navigateAction = navigationActions.navigate({
-        routeName: CONSTANTS.CHECKOUT_ROOT,
-        params: {},
-        action: navigationActions.navigate({
-          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING,
-          params: {
-            routeTo: CONSTANTS.SHIPPING_DEFAULT_PARAM,
-          },
-        }),
-      });
-      navigation.dispatch(navigateAction);
+      yield call(
+        navigateToCheckout,
+        CONSTANTS.SHIPPING_DEFAULT_PARAM,
+        navigation,
+        navigationActions
+      );
     }
     if (closeModal) {
       closeModal();

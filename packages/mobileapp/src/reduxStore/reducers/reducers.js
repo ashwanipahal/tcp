@@ -11,6 +11,7 @@ import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/Add
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
+import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
@@ -46,7 +47,9 @@ import OutfitDetailReducer from '@tcp/core/src/components/features/browse/Outfit
 import SearchDetailReducer from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.reducer';
 import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraPoints/container/ExtraPoints.reducer';
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
+import OrderDetailsDataReducer from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
+import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -67,6 +70,7 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
+  ACCOUNT_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   AIRMILES_BANNER_REDUCER_KEY,
@@ -104,7 +108,9 @@ import {
   SLP_PAGE_REDUCER_KEY,
   EXTRA_POINTS_REDUCER_KEY,
   ORDERS_REDUCER_KEY,
+  ORDERDETAILS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  RECOMMENDATIONS_REDUCER_KEY,
   OUTFIT_DETAILS_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -156,6 +162,11 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
+const filteredRecommendationsReducers = createFilteredReducer(
+  RecommendationsReducer,
+  RECOMMENDATIONS_REDUCER_KEY
+);
+
 const rootReducer = combineReducers({
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
@@ -176,6 +187,7 @@ const rootReducer = combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
@@ -211,7 +223,9 @@ const rootReducer = combineReducers({
   [SLP_PAGE_REDUCER_KEY]: filteredSearchDetailReducer,
   [EXTRA_POINTS_REDUCER_KEY]: ExtraPointsReducer,
   [ORDERS_REDUCER_KEY]: OrdersReducer,
+  [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
+  [RECOMMENDATIONS_REDUCER_KEY]: filteredRecommendationsReducers,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
 });

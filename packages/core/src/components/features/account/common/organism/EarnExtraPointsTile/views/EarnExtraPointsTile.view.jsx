@@ -26,7 +26,7 @@ const EarnExtraPointsTile = ({ className, labels, waysToEarn, isAccountOverview 
   return (
     <div className={className}>
       {!isAccountOverview && (
-        <Row>
+        <Row fullBleed>
           <Col colSize={{ large: 10, medium: 6, small: 4 }}>
             <BodyCopy
               component="div"

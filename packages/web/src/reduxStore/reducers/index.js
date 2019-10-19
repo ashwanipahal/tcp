@@ -6,6 +6,7 @@ import ForgotPasswordReducer from '@tcp/core/src/components/features/account/For
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
+import SEODataReducer from '@tcp/core/src/reduxStore/reducers/seoData';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
@@ -69,6 +70,7 @@ import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
+  SEO_DATA_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
   LOADER_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
@@ -196,6 +198,7 @@ export default combineReducers({
   [TOAST_REDUCER_KEY]: ToastMessageReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
+  [SEO_DATA_REDUCER_KEY]: SEODataReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [LOADER_REDUCER_KEY]: LoaderReducer,

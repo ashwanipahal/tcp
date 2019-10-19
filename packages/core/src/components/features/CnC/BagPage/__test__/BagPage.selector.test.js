@@ -35,12 +35,12 @@ describe('#Added to bag Selectors', () => {
     openItemDeleteConfirmationModalInfo: true,
   });
 
-  const sessionState = fromJS({
+  const sessionState = {
     siteDetails: {
       SFL_MAX_COUNT: '200',
       BAG_CONDENSE_HEADER_INTERVAL: 3000,
     },
-  });
+  };
 
   const state = {
     Labels: BagPageState,
@@ -121,7 +121,7 @@ describe('#Added to bag Selectors', () => {
   });
   it('#getBagStickyHeaderInterval should return interval', () => {
     expect(BAGPAGE_SELECTORS.getBagStickyHeaderInterval(state)).toEqual(
-      sessionState.getIn(['siteDetails', 'BAG_CONDENSE_HEADER_INTERVAL'])
+      sessionState.siteDetails.BAG_CONDENSE_HEADER_INTERVAL
     );
   });
 });
