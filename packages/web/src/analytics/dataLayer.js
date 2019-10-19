@@ -1,5 +1,5 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer } from './dataLayers';
+import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -20,8 +20,10 @@ import { generateBrowseDataLayer } from './dataLayers';
  */
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
+  const homepageDataLayer = generateHomePageDataLayer(store);
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
+    ...homepageDataLayer,
 
     // TODO: All pods to include dataElements here like browseDataLayer and make a global for common one.
 

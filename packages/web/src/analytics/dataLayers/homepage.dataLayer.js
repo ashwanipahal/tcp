@@ -1,6 +1,10 @@
+const getStore = store => {
+  return store.getState();
+};
 const getStoreId = store => {
-  const state = store.getState();
+  const state = getStore(store);
   const defaultStore = state.User && state.User.get('defaultStore');
+  console.log(state);
   return defaultStore.basicInfo && defaultStore.basicInfo.id;
 };
 
