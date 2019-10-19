@@ -89,7 +89,7 @@ ProductCustomizeFormPartContainer.defaultProps = {
   currency: 'USD',
   addToBagError: '',
   navigation: {},
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default ProductCustomizeFormPartContainer;
