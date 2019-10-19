@@ -21,8 +21,10 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 /**
  * This function scrolls page to top on route change complete
  */
-const handleRouteComplete = () => {
-  window.scrollTo(0, 0);
+const handleRouteComplete = url => {
+  if (url.match(/\?sort/g) === null && url.match(/\?categoryPath2_uFilter/g) === null) {
+    window.scrollTo(0, 0);
+  }
 };
 
 /**
