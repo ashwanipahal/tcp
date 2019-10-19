@@ -10,12 +10,29 @@ const styles = css`
     width: 100%;
     border: none;
     background: none;
+    display: ${props => (props.isDefaultView ? 'none' : 'block')};
+    ${props =>
+      props.showHeaderAlways
+        ? css`
+            height: auto;
+            display: block;
+            padding: 0;
+          `
+        : css`
+            @media ${props.theme.mediaQuery.medium} {
+              display: none;
+            }
+          `};
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: none;
     top: 30px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: ${props => (props.showHeaderAlways && props.isDefaultView ? 'none' : 'block')};
+    }
   }
 
   .item-opened {
@@ -23,7 +40,10 @@ const styles = css`
   }
 
   .item-closed {
-    display: none;
+    display: ${props => (props.isDefaultView ? 'block' : 'none')};
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
+    }
   }
 `;
 

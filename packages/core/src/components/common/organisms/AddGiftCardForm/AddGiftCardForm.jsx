@@ -128,7 +128,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              {getLabelValue(labels, 'payment_saveToAccount')}
+              {getLabelValue(labels, 'lbl_payment_saveToAccount')}
             </BodyCopy>
           </Field>
         </Row>

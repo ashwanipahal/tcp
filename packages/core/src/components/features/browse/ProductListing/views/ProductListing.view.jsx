@@ -1,6 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Changes as per RWD-9852. Keeping this for future reference.
+// import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+
 import { Row, Col } from '../../../../common/atoms';
+
+/*
+// Changes as per RWD-9852. Keeping this for future reference.
+import ModuleA from '../../../../common/molecules/ModuleA';
+import ModuleD from '../../../../common/molecules/ModuleD';
+import ModuleG from '../../../../common/molecules/ModuleG';
+import ModuleQ from '../../../../common/molecules/ModuleQ';
+import moduleAMock from '../../../../../services/abstractors/common/moduleA/mock';
+import moduleDMock from '../../../../../services/abstractors/common/moduleD/mock';
+import moduleGMock from '../../../../../services/abstractors/common/moduleG/mock';
+import moduleQMock from '../../../../../services/abstractors/common/moduleQ/mock';
+*/
+
 // import ProductList from '../molecules/ProductList/views';
 import ProductsGrid from '../molecules/ProductsGrid/views';
 import GlobalNavigationMenuDesktopL2 from '../molecules/GlobalNavigationMenuDesktopL2/views';
@@ -64,6 +81,14 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
+              {/*
+              // Changes as per RWD-9852. Keeping this for future reference.
+              <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
+              <ModuleD {...moduleDMock.composites} fullBleed />
+              <ModuleG {...moduleGMock.moduleG.composites} />
+              <ModuleQ {...moduleQMock.moduleQ.composites} />
+              <Recommendations variations="moduleO,moduleP" />
+              */}
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
