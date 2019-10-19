@@ -22,17 +22,25 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
  * This function scrolls page to top on route change complete
  */
 const handleRouteComplete = url => {
-  /**
-   * This constant is for to check PLP page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
-   */
-  const checkListingPageParam =
-    url.match(/\/c\//g) && !(url.match(/\?sort/g) || !url.match(/\?categoryPath2_uFilter/g));
+  const params = new URL(document.location).searchParams;
+  const sortParam = params.get('sort');
+  const filterParam = params.get('categoryPath2_uFilter');
 
   /**
-   * This constant is for to check Search page url Parameter , If URL has '?sort' or '?categoryPath2_uFilter' it will return true.
+   * check if sort or filter param present in URL
    */
-  const checkSearchPageParam =
-    url.match(/\/search\//g) && !(url.match(/\?sort/g) || !url.match(/\?categoryPath2_uFilter/g));
+
+  const isSortOrFilterParamPresent = !sortParam || !filterParam;
+
+  /**
+   * check if sort or filter param present in PLP page
+   */
+  const checkListingPageParam = url.match(/\/c\//g) && isSortOrFilterParamPresent;
+
+  /**
+   * check if sort or filter param present in Search page
+   */
+  const checkSearchPageParam = url.match(/\/search\//g) && isSortOrFilterParamPresent;
 
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
