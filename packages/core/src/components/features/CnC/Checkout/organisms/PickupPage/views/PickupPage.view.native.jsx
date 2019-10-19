@@ -54,7 +54,7 @@ class PickUpFormPart extends React.Component {
 
   componentDidMount() {
     const { pickupDidMount } = this.props;
-    pickupDidMount();
+    pickupDidMount(true);
   }
 
   handleEditModeChange = (isEditing, pickUpContact) => {

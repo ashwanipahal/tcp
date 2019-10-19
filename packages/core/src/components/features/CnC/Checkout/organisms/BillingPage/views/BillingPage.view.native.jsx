@@ -49,7 +49,7 @@ class BillingPage extends React.PureComponent {
 
   componentDidMount() {
     const { billingDidMount } = this.props;
-    billingDidMount();
+    billingDidMount(true);
   }
 
   /**

@@ -229,11 +229,11 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* initPickupData({ payload: { recalc } }) {
-  yield call(loadCartAndCheckoutDetails, recalc, true);
+function* initPickupData({ payload: { recalc, isApp } }) {
+  yield call(loadCartAndCheckoutDetails, recalc, !isApp);
 }
 
-function* initShippingData({ payload: { recalc, initialLoad } }) {
+function* initShippingData({ payload: { recalc, initialLoad, isApp } }) {
   const pendingPromises = [];
   let shippingAddress = yield select(getShippingDestinationValues);
   shippingAddress = shippingAddress.address;
@@ -251,12 +251,12 @@ function* initShippingData({ payload: { recalc, initialLoad } }) {
       )
     );
   }
-  pendingPromises.push(call(loadCartAndCheckoutDetails, recalc, true));
+  pendingPromises.push(call(loadCartAndCheckoutDetails, recalc, !isApp));
   yield all(pendingPromises);
 }
 
-function* initBillingData({ payload: { recalc } }) {
-  yield call(loadCartAndCheckoutDetails, recalc, true);
+function* initBillingData({ payload: { recalc, isApp } }) {
+  yield call(loadCartAndCheckoutDetails, recalc, !isApp);
 }
 
 function* initReviewData({ payload: { recalc, isPaypalPostBack } }) {

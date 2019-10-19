@@ -126,24 +126,24 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     callback({ recalc, isPaypalPostBack, ...extraProps });
   };
 
-  shippingDidMount = () => {
+  shippingDidMount = isApp => {
     const { initShippingPage, router } = this.props;
-    this.invokeWithParams(router, initShippingPage, { initialLoad: true });
+    this.invokeWithParams(router, initShippingPage, { initialLoad: true, isApp });
   };
 
-  billingDidMount = () => {
+  billingDidMount = isApp => {
     const { initBillingPage, router } = this.props;
-    this.invokeWithParams(router, initBillingPage);
+    this.invokeWithParams(router, initBillingPage, { isApp });
   };
 
-  reviewDidMount = () => {
+  reviewDidMount = isApp => {
     const { initReviewPage, router } = this.props;
-    this.invokeWithParams(router, initReviewPage);
+    this.invokeWithParams(router, initReviewPage, { isApp });
   };
 
-  pickupDidMount = () => {
+  pickupDidMount = isApp => {
     const { initPickupPage, router } = this.props;
-    this.invokeWithParams(router, initPickupPage);
+    this.invokeWithParams(router, initPickupPage, { isApp });
   };
 
   render() {

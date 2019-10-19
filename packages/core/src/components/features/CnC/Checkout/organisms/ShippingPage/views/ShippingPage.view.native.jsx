@@ -102,7 +102,7 @@ export default class ShippingPage extends React.Component {
 
   componentDidMount() {
     const { shippingDidMount } = this.props;
-    shippingDidMount();
+    shippingDidMount(true);
   }
 
   shouldComponentUpdate() {
