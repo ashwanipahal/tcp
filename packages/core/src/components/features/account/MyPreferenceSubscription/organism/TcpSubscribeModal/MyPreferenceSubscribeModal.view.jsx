@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
@@ -6,7 +7,7 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { BodyCopy, Row, Col, Button, RichText } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '../../../../../../utils/formValidation/phoneNumber';
 import styles from './styles/MyPreferenceSubscribeModal.style';
 import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 
@@ -123,8 +124,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                 name="phoneNumber"
                 id="phoneNumber"
                 component={TextBox}
-                dataLocator="editPersonalInfo-phnumber"
+                dataLocator="my-preference-modal-phoneNumber"
                 type="tel"
+                normalize={formatPhoneNumber}
               />
             </BodyCopy>
             <BodyCopy

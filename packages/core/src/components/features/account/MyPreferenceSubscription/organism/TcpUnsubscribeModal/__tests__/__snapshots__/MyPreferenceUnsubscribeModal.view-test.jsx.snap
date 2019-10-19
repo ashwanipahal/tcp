@@ -94,7 +94,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         link={null}
         textAlign="center"
       >
-        2347368468
+        (234) 736-8468
       </Styled(BodyCopy)>
       <Styled(Row)
         className="elem-mb-LRG"

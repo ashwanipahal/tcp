@@ -235,9 +235,10 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator="editPersonalInfo-phnumber"
+          dataLocator="my-preference-modal-phoneNumber"
           id="phoneNumber"
           name="phoneNumber"
+          normalize={[Function]}
           placeholder="Mobile Phone Number"
           type="tel"
         />

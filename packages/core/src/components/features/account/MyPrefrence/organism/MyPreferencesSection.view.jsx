@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { isCanada } from '@tcp/core/src/utils';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import styles from '../styles/MyPrefrence.style';
@@ -34,38 +35,42 @@ class MyPrefrenceSection extends React.PureComponent {
               <MyFavoriteStore isMyPreferences />
             </BodyCopy>
           </Col>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 4,
-              large: 7,
-            }}
-            className="profileInfoCol"
-          >
-            <BodyCopy
-              className="elem-mb-MED"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-              data-locator="mypreference-socialaccountheader"
+          {!isCanada() && (
+            <Col
+              colSize={{
+                small: 6,
+                medium: 4,
+                large: 7,
+              }}
+              className="profileInfoCol"
             >
-              {getLabelValue(labels, 'lbl_prefrence_social_account')}
-            </BodyCopy>
-            <SocialContainer labels={labels} urlParams={urlParams} />
-          </Col>
+              <BodyCopy
+                className="elem-mb-MED"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                data-locator="mypreference-socialaccountheader"
+              >
+                {getLabelValue(labels, 'lbl_prefrence_social_account')}
+              </BodyCopy>
+              <SocialContainer labels={labels} urlParams={urlParams} />
+            </Col>
+          )}
         </Row>
 
-        <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
-          <Col
-            colSize={{
-              large: 12,
-            }}
-            className="profileInfoSeparator"
-          />
-        </Row>
-
-        <MyPreferenceSubscription labels={labels} />
-
+        {!isCanada() && (
+          <>
+            <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
+              <Col
+                colSize={{
+                  large: 12,
+                }}
+                className="profileInfoSeparator"
+              />
+            </Row>
+            <MyPreferenceSubscription labels={labels} />
+          </>
+        )}
         <Row fullBleed className="elem-pt-LRG">
           <Col
             colSize={{

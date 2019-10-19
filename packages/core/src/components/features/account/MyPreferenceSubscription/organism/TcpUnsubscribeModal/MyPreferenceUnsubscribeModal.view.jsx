@@ -4,6 +4,7 @@ import { BodyCopy, Row, Col, Button } from '@tcp/core/src/components/common/atom
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '../../../../../../utils/formValidation/phoneNumber';
 import styles from './styles/MyPreferenceUnsubscribeModal.style';
 import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 
@@ -101,7 +102,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               className="disclaimer-sub-text"
               data-locator="my-preference-modal_sub-info-text"
             >
-              {phoneNumber}
+              {formatPhoneNumber(phoneNumber)}
             </BodyCopy>
 
             <Row fullBleed className="elem-mb-LRG">
