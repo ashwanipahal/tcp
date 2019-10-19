@@ -111,7 +111,7 @@ const renderView = (item, navigation, position) => {
               {...HeaderConfig}
               type="heading"
               fontFamily="primary"
-              fontSize="fs36"
+              fontSize="fs32"
               fontWeight="black"
               navigation={navigation}
               headerText={headerText}
@@ -216,7 +216,7 @@ const ModuleA = (props: Props) => {
         </ContainerView>
       )}
 
-      {ctaTypeValue === ctaTypes.CTAButtonCarouse && (
+      {ctaTypeValue === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
           {renderButtonList(ctaTypeValue, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>
