@@ -16,6 +16,11 @@ import {
 import { getsocialDataOnLoadState } from '../../../../../../common/organisms/SocialAccount/container/Social.selectors';
 import { getSocialAccount } from '../../../../../../common/organisms/SocialAccount/container/Social.actions';
 import { getMyFavoriteStoreAction } from '../../../../MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.actions';
+import {
+  getSmsPhone,
+  getGymSmsPhone,
+} from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscriptionText.selectors';
+import { getSubscribeStore } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.actions';
 
 class MyPreferencesTile extends PureComponent {
   componentDidMount() {
@@ -24,8 +29,10 @@ class MyPreferencesTile extends PureComponent {
       getMyFavoriteStoreDetails,
       socialAccounts,
       socialLoad,
+      getContactPreferences,
     } = this.props;
 
+    getContactPreferences();
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
     }
@@ -45,7 +52,11 @@ class MyPreferencesTile extends PureComponent {
       favStoreZipcode,
       favStorePhone,
       socialAccounts,
+      smsPhone,
+      gymSmsPhone,
     } = this.props;
+
+    // console.info('-->>', smsPhone, gymSmsPhone);
     return (
       <MyPreferencesTileComponent
         labels={labels}
@@ -57,6 +68,8 @@ class MyPreferencesTile extends PureComponent {
         favStoreZipcode={favStoreZipcode}
         favStorePhone={favStorePhone}
         socialAccounts={socialAccounts}
+        smsPhone={smsPhone}
+        gymSmsPhone={gymSmsPhone}
       />
     );
   }
@@ -76,6 +89,9 @@ MyPreferencesTile.propTypes = {
   getMyFavoriteStoreDetails: PropTypes.func.isRequired,
   socialAccounts: PropTypes.shape({}),
   socialLoad: PropTypes.func.isRequired,
+  getContactPreferences: PropTypes.func.isRequired,
+  smsPhone: PropTypes.shape({}),
+  gymSmsPhone: PropTypes.shape({}),
 };
 
 MyPreferencesTile.defaultProps = {
@@ -88,6 +104,8 @@ MyPreferencesTile.defaultProps = {
   favStoreZipcode: '',
   favStorePhone: '',
   socialAccounts: {},
+  smsPhone: {},
+  gymSmsPhone: {},
 };
 
 export const mapStateToProps = state => ({
@@ -101,6 +119,8 @@ export const mapStateToProps = state => ({
   favStorePhone: getFavoriteStorePhone(state),
   defaultStore: getDefaultStore(state),
   socialAccounts: getsocialDataOnLoadState(state),
+  smsPhone: getSmsPhone(state),
+  gymSmsPhone: getGymSmsPhone(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -109,6 +129,9 @@ export const mapDispatchToProps = dispatch => ({
   },
   socialLoad: () => {
     dispatch(getSocialAccount());
+  },
+  getContactPreferences: () => {
+    dispatch(getSubscribeStore());
   },
 });
 
