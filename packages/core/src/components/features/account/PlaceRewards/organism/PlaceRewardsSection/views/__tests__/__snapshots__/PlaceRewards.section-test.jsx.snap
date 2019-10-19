@@ -189,7 +189,9 @@ exports[`MyRewards should render correctly 1`] = `
         <div
           className="bonusPointsWrapper"
         >
-          <BonusPointsDaysSection />
+          <BonusPointsDaysSection
+            isDefaultOpen={true}
+          />
         </div>
       </Styled(Col)>
       <Styled(Col)
