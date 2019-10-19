@@ -3,6 +3,7 @@ import mock from './mock';
 import module2ColumnMock from './module2ColumnMock';
 import handler from '../../../handler';
 
+let mockAdded = 0;
 /**
  * Abstractor layer for loading data from API for Layout
  */
@@ -59,8 +60,11 @@ const LayoutAbstractor = {
   getModulesFromLayout: async data => {
     // Adding Module 2 columns mock
     const layoutResponse = data.items;
-    layoutResponse[0].layout.slots.push(module2ColumnMock);
-    const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
+    if (!mockAdded) {
+      layoutResponse[0].layout.slots.push(module2ColumnMock);
+      mockAdded = 1;
+    }
+    const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return LayoutAbstractor.processModuleData(response.data);
     });
