@@ -55,35 +55,20 @@ class Socialview extends React.PureComponent {
     };
   }
 
-  getSnapshotBeforeUpdate() {
+  componentDidMount() {
     // handling of auto social modal - facebook and instagram
-    if (this.socialAccounts.length > 0) {
-      const { autoOpenSocial } = this.state;
-      const {
-        componentProps: { activityModalSocialAccount },
-      } = this.props;
+    const { autoOpenSocial } = this.state;
+    const {
+      componentProps: { activityModalSocialAccount },
+    } = this.props;
 
-      const socialArray = this.socialAccounts.map(elem => {
-        return {
-          socialAccount: elem.socialAccount,
-          isConnected: elem.isConnected,
-        };
-      });
-
-      if (activityModalSocialAccount && autoOpenSocial) {
-        if (activityModalSocialAccount === 'facebook') {
-          this.handleSocialNetwork(
-            'Facebook',
-            socialArray.filter(social => social.socialAccount === 'facebook')[0].isConnected
-          );
-        } else {
-          this.handleSocialNetwork(
-            'Instagram',
-            socialArray.filter(social => social.socialAccount === 'instagram')[0].isConnected
-          );
-        }
-        this.setState({ autoOpenSocial: false });
+    if (activityModalSocialAccount && autoOpenSocial) {
+      if (activityModalSocialAccount === 'facebook') {
+        this.handleSocialNetwork('Facebook', false);
+      } else {
+        this.handleSocialNetwork('Instagram', false);
       }
+      this.setState({ autoOpenSocial: false });
     }
   }
 
