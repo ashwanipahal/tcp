@@ -1,7 +1,7 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
-import seoDataAbstractor from './seoData';
+// import seoDataAbstractor from './seoData';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
@@ -195,9 +195,10 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     response.labels = labelsAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
     );
-    response.seoData = seoDataAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'seoData' })
-    );
+    // Commenting as it is breaking
+    // response.seoData = seoDataAbstractor.processData(
+    //   retrieveCachedData({ ...fetchCachedDataParams, key: 'seoData' })
+    // );
     response.navigation = navigationAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );

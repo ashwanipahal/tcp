@@ -3,6 +3,7 @@
 exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
   accessible={true}
+  fullWidth={false}
 >
   <RenderTopBadge1
     text=""
@@ -26,12 +27,14 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
       }
     }
+    productImageWidth=""
     selectedColorIndex={0}
   />
   <RenderBadge2
     text=""
   />
   <RenderPricesSection
+    hideFavorite={false}
     miscInfo={Object {}}
     onFavorite={[Function]}
   />

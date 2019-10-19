@@ -39,6 +39,7 @@ import {
   getIsRegisteredUserCallDone,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { isCanada } from '../../../../../utils';
 
 const {
   getSmsSignUpLabels,
@@ -208,6 +209,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoShippingState={setVenmoShippingState}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
+        isCanada={isCanada()}
       />
     );
   }

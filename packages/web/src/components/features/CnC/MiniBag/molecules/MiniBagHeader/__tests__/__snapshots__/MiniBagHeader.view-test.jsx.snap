@@ -22,10 +22,10 @@ exports[`MiniBagHeader component renders correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="extrabold"
-        handleLinkClick={[Function]}
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
+        onClick={[Function]}
         textAlign="left"
       >
         undefined, User 

@@ -21,6 +21,7 @@ import {
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
+import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -78,6 +79,7 @@ class HomePageView extends React.PureComponent<Props> {
         </HeaderPromoContainer>
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
+        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
       </LazyloadScrollView>
     );
   }
