@@ -10,10 +10,6 @@ export default css`
   .moduleL__promo-banner {
     text-align: center;
   }
-  .moduleL__desktop-tablet-carousel,
-  .moduleL__mobile-web-container {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  }
   .text-black {
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
