@@ -122,7 +122,12 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
-          <RelatedOutfits pdpLabels={pdpLabels} navigation={navigation} />
+          <RelatedOutfits
+            pdpLabels={pdpLabels}
+            navigation={navigation}
+            selectedColorProductId={selectedColorProductId}
+          />
+
           {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
