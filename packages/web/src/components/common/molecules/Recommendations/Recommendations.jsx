@@ -216,8 +216,10 @@ Recommendations.defaultProps = {
   ctaTitle: '',
   ctaUrl: '',
   variations: '',
-  currency: '$',
-  currencyAttributes: {},
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
 };
 
 export { Recommendations as RecommendationsVanilla };
