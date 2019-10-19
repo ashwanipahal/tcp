@@ -8,48 +8,30 @@ import constants from '../MyPrefrence.constants';
 
 describe('setSubscribeStoreSaga saga', () => {
   describe('setSubscribeStoreSaga', () => {
+    const data = {
+      payload: {
+        CustomerPreferences: [
+          {
+            preferenceMode: 'placeRewardsSms',
+            isModeSelected: true,
+          },
+          {
+            preferenceMode: 'marketingPreferenceSMS',
+            isModeSelected: true,
+          },
+        ],
+        brand: 'tcp',
+        mobileNumber: '2012386357',
+      },
+    };
     let gen;
     beforeEach(() => {
-      gen = setSubscribeStoreSaga({});
-      gen.next();
+      gen = setSubscribeStoreSaga(data);
       gen.next();
     });
 
     it('should dispatch setSubscribeStore action for response', () => {
-      // const data = {
-      //   payload:
-      //   {
-      //     CustomerPreferences: [
-      //       {
-      //         preferenceMode:"placeRewardsSms",
-      // eslint-disable-next-line extra-rules/no-commented-out-code
-      //         isModeSelected:true
-      //       },
-      //       {
-      //         preferenceMode:"marketingPreferenceSMS",
-      // eslint-disable-next-line extra-rules/no-commented-out-code
-      //         isModeSelected:true
-      //       }
-      //     ],
-      //     brand: "tcp",
-      //     mobileNumber :"2012386357",
-      //   }
-      // };
-
-      const customerPreferences = [
-        {
-          preferenceMode: 'placeRewardsSms',
-          isModeSelected: true,
-        },
-        {
-          preferenceMode: 'marketingPreferenceSMS',
-          isModeSelected: true,
-        },
-      ];
-      const brand = 'tcp';
-      const mobileNumber = '2012386357';
-
-      const putDescriptor = gen.next(mobileNumber, customerPreferences, brand).value;
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(getSubscribeStore()));
     });
   });
