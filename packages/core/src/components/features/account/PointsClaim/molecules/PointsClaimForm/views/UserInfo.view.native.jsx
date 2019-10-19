@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { UserInfoRow, UserInfoLabels, UserInfoValues } from '../styles/UserInfo.native.style';
+import {
+  UserInfoRow,
+  UserInfoLabels,
+  UserInfoValues,
+  UserIDValues,
+  UserIDLabels,
+} from '../styles/UserInfo.native.style';
 import { BodyCopy } from '../../../../../../common/atoms';
 
 export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
   return (
     <>
       <UserInfoRow>
-        <UserInfoLabels>
+        <UserIDLabels>
           <BodyCopy
             text={getLabelValue(labels, 'lbl_points_claim_account_number', 'myPlaceRewards')}
             fontFamily="secondary"
@@ -16,8 +22,8 @@ export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
             color="gray.900"
             fontWeight="extrabold"
           />
-        </UserInfoLabels>
-        <UserInfoValues>
+        </UserIDLabels>
+        <UserIDValues>
           <BodyCopy
             text={myPlaceNumber}
             mobileFontFamily="secondary"
@@ -25,7 +31,7 @@ export const UserInfo = ({ labels, myPlaceNumber, userInfoData }) => {
             fontWeight="regular"
             color="gray.900"
           />
-        </UserInfoValues>
+        </UserIDValues>
       </UserInfoRow>
       <UserInfoRow>
         <UserInfoLabels>
