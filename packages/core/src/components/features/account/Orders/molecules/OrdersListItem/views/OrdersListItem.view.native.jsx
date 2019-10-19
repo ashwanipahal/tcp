@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-// import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 
 import {
   OrdersListItemMainView,
@@ -11,22 +10,13 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-/**
- * @function handleOrderClick  to route to Order Details page based on order Number
- * @param    {Object} activeActivity The activity details of waysToEarn
- * @returns  {String} route for redirection mapping
- */
-export const handleOrderClick = (handleComponentChange, orderNumber) => {
+const OrdersListItem = ({ labels, orderItem, navigation }) => {
+  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   const router = {
     query: {
       orderId: orderNumber,
     },
   };
-  handleComponentChange('orderDetailsPageMobile', { router });
-};
-
-const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
-  const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
 
   return (
     <>
@@ -52,7 +42,16 @@ const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
               noLink
               underline
               anchorVariation="primary"
-              onPress={() => handleOrderClick(handleComponentChange, orderNumber)}
+              onPress={() =>
+                navigation.navigate('OrderDetailPage', {
+                  title: `${getLabelValue(
+                    labels,
+                    'lbl_orderDetail_heading',
+                    'orders'
+                  )} #${orderNumber}`,
+                  router,
+                })
+              }
             />
           </OrdersNumberWrapper>
         </OrdersListItemView>
@@ -104,10 +103,7 @@ const OrdersListItem = ({ labels, orderItem, handleComponentChange }) => {
 OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
-  handleComponentChange: PropTypes.func,
-};
-OrdersListItem.defaultProps = {
-  handleComponentChange: () => {},
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default OrdersListItem;
