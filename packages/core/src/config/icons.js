@@ -58,6 +58,7 @@ export default {
   'cart-icon-3': '/static/images/bag-3.svg',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
+  'user-icon-gray': '/static/images/user-icon.svg',
   'user-icon-blue': '/static/images/user-icon-blue.svg',
   'selected-item': '/static/images/selected-item.svg',
   'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
@@ -103,4 +104,5 @@ export default {
   'modules-s-left-ribbon': '/static/images/module-s-left-ribbon.png',
   'modules-s-right-ribbon': '/static/images/module-s-right-ribbon.png',
   'icon-expand': '/static/images/icon-expand.svg',
+  'medium-left-arrow': '/static/images/medium-left-arrow.svg',
 };

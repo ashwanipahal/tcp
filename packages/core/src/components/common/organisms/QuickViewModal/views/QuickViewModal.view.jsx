@@ -26,6 +26,7 @@ class QuickViewModal extends React.Component {
       productInfo: { colorFitsSizesMap, colorFitSizeDisplayNames },
       quickViewLabels,
       selectedColorProductId,
+      currencyExchange,
       ...otherProps
     } = this.props;
 
@@ -62,15 +63,18 @@ class QuickViewModal extends React.Component {
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           quickViewLabels={quickViewLabels}
           onCloseClick={this.onCloseClick}
+          currencyExchange={currencyExchange}
           {...otherProps}
         />
-        <FulfillmentSection
-          btnClassName="added-to-bag"
-          dataLocator={getLocator('global_addtocart_Button')}
-          buttonLabel="Pickup In Store"
-          currentProduct={productInfo}
-          closeQuickViewClick={this.onCloseClick}
-        />
+        {!fromBagPage && (
+          <FulfillmentSection
+            btnClassName="added-to-bag"
+            dataLocator={getLocator('global_addtocart_Button')}
+            buttonLabel="Pickup In Store"
+            currentProduct={productInfo}
+            closeQuickViewClick={this.onCloseClick}
+          />
+        )}
       </Modal>
     );
   }
@@ -86,7 +90,11 @@ QuickViewModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   selectedColorProductId: PropTypes.string.isRequired,
+  currencyExchange: PropTypes.string,
 };
 
+QuickViewModal.defaultProps = {
+  currencyExchange: '',
+};
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };

@@ -60,3 +60,4 @@ BackToTop.defaultProps = {
 };
 
 export default withStyles(BackToTop, style);
+export { BackToTop as BackToTopVanilla };

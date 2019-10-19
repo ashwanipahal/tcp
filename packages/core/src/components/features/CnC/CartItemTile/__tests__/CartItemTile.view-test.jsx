@@ -9,6 +9,7 @@ describe('CartItemTile Component', () => {
   const Props = {
     getOrderDetails: jest.fn(),
     removeCartItem: jest.fn(),
+    clearToggleError: jest.fn(),
     cartItems: [
       {
         productInfo: {

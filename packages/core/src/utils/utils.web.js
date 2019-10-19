@@ -35,6 +35,13 @@ export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
 
+export const getUrlParameter = name => {
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
+  const results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
@@ -135,6 +142,10 @@ export const createUrlSearchParams = (query = {}) => {
   return queryParams.join('&');
 };
 
+export function getHostName() {
+  return window.location.hostname;
+}
+
 export const buildUrl = options => {
   if (typeof options === 'object') {
     const { pathname, query } = options;
@@ -223,7 +234,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'auto';
+    body.classList.remove('disableBodyScroll');
   }
 };
 
@@ -233,7 +244,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'hidden';
+    body.classList.add('disableBodyScroll');
   }
 };
 
@@ -343,7 +354,9 @@ export const handleGenericKeyDown = (event, key, method) => {
 };
 const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN`];
+
+  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
+  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -352,11 +365,15 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
     productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
-    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN`]}`,
-    unbxdApiKey,
+
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,

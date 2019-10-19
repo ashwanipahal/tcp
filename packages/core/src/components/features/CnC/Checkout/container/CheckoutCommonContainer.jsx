@@ -66,6 +66,7 @@ const {
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   getShipmentLoadingStatus,
+  getCurrentCheckoutStage,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -153,7 +154,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       verifyAddressAction,
       setVenmoShippingState,
+      currentStage,
       submitVerifiedShippingAddressData,
+      shippingMethod,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -203,6 +206,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        currentStage={currentStage}
+        shippingMethod={shippingMethod}
       />
     );
   }
@@ -272,6 +277,7 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
+    shippingMethod: getDefaultShipmentID(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -328,6 +334,7 @@ const mapStateToProps = state => {
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    currentStage: getCurrentCheckoutStage(state),
   };
 };
 

@@ -32,6 +32,15 @@ export const SafeAreaViewStyle = styled.SafeAreaView`
 `;
 
 export const Container = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SearchContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+export const HeaderContainer = styled.View`
   flex-direction: row;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};

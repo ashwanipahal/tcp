@@ -217,6 +217,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
               trackingUrl: sanitizeEntity(shipment.trackingUrl),
               shippedDate: shipment.shipDate,
               status: OrderShippedKey,
+              orderStatus: OrderShippedKey.toLowerCase(),
               items,
             };
           }
@@ -272,6 +273,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
                 };
               }),
               status: 'order received',
+              orderStatus: 'order received',
               trackingNumber: aTrackingItem.trackingNumber || null,
               trackingUrl: sanitizeEntity(aTrackingItem.trackingUrl) || null,
             };

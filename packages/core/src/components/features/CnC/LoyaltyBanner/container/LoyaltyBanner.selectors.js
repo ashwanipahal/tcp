@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
 const getThresholdValue = state => {
-  return state.session && state.session.getIn(['siteDetails', 'PLCC_MARKETING_BAG_TOTAL_CUT_OFF']);
+  return state.session && state.session.siteDetails.PLCC_MARKETING_BAG_TOTAL_CUT_OFF;
 };
 
 const cartOrderDetails = createSelector(

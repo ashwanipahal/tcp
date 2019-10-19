@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import { getCurrentCountry, getStoreInfo, getPageLabels } from '../StoreLanding.selectors';
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -14,7 +13,7 @@ describe('selectors', () => {
       },
     };
     const state = {
-      [SESSIONCONFIG_REDUCER_KEY]: fromJS(siteDetails),
+      [SESSIONCONFIG_REDUCER_KEY]: siteDetails,
     };
     const countrySelectorValue = getCurrentCountry(state);
     expect(countrySelectorValue).toBe('NY');

@@ -108,6 +108,7 @@ class AddNewCCForm extends React.PureComponent {
             onChange={this.onSaveToAccountChange}
             fontSize="fs16"
             rightText={labels.saveToAccount}
+            dataLocator="saveCardChkBox"
           />
         </SaveToAccWrapper>
         <DefaultPaymentWrapper>
@@ -118,6 +119,7 @@ class AddNewCCForm extends React.PureComponent {
             disabled={!cardList && !isSaveToAccountChecked}
             fontSize="fs16"
             rightText={labels.defaultPayment}
+            dataLocator="defaultPaymentChkBox"
           />
         </DefaultPaymentWrapper>
       </>

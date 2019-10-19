@@ -24,6 +24,7 @@ describe('CheckoutPage Container', () => {
     initCheckout: jest.fn(),
     fetchNeedHelpContent: jest.fn(),
     isRegisteredUserCallDone: true,
+    getUserInformation: jest.fn(),
   };
 
   it('should render CheckoutPage view section', () => {

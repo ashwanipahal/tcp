@@ -6,7 +6,7 @@
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Row, BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../../hoc/withStyles';
 import styles, {
@@ -33,9 +33,11 @@ const PickupSkuSelectionForm = props => {
     imageUrl,
     generalProductId,
     navigateToPDP,
+    currencyExchange,
   } = props;
   const productPriceProps = {
     currencySymbol: currency,
+    currencyExchange,
     isItemPartNumberVisible: false,
     ...prices,
     isCanada,
@@ -68,12 +70,17 @@ const PickupSkuSelectionForm = props => {
     );
   };
 
+  const imgData = {
+    alt: 'Error',
+    url: imageUrl,
+  };
+
   return (
     <Row className={className}>
       <div className="product-customize-form-container">
         <div className="image-title-wrapper">
           <div className="image-wrapper">
-            <Image alt="Error" src={imageUrl} />
+            <DamImage imgData={imgData} isProductImage />
           </div>
           <div className="product-details-card-container-separate">
             <BodyCopy
@@ -144,6 +151,7 @@ PickupSkuSelectionForm.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
+  currencyExchange: PropTypes.string,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -169,6 +177,7 @@ PickupSkuSelectionForm.defaultProps = {
   className: '',
   onChangeColor: () => {},
   currentColorEntry: {},
+  currencyExchange: '',
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

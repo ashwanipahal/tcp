@@ -31,9 +31,7 @@ exports[`CheckoutHeader Component  Checkout Header should render correctly 1`] =
     <Styled(View)>
       <Text
         className="product-name"
-      >
-        CHECKOUT
-      </Text>
+      />
     </Styled(View)>
   </Styled(View)>
 </Styled(SafeAreaView)>
