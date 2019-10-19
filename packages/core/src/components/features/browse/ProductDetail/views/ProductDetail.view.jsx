@@ -26,6 +26,7 @@ import {
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
+import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
 class ProductDetailView extends React.Component {
   constructor(props) {
@@ -258,9 +259,11 @@ class ProductDetailView extends React.Component {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.completeTheLook}</div>
+            <div className="product-detail-section">
+              <RelatedOutfits pdpLabels={pdpLabels} selectedColorProductId={itemPartNumber} />
+            </div>
           </Col>
         </Row>
         <Row className="placeholder">
@@ -326,7 +329,7 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
