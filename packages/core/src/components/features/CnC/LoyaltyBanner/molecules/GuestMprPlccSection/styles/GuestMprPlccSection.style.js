@@ -30,6 +30,9 @@ const fontSize18 = props => `
 const fontSize20 = props => `
     font-size: ${props.theme.typography.fontSizes.fs20};
 `;
+const fontSize24 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs24};
+`;
 const colorTheme = props => `
     color: ${plccMpr(props)};
 `;
@@ -47,7 +50,7 @@ const Styles = css`
       }
       return fontSize12;
     }};
-    
+
     @media ${props => props.theme.mediaQuery.medium} {
         ${props => (props.isPlcc ? fontSize14 : fontSize10)};
     }
@@ -146,8 +149,61 @@ const Styles = css`
     }
   }
 
-  
-  
+  ${props =>
+    props.isReviewPage
+      ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${colorTheme(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize14(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize18(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize10(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+      `
+      : ``};
+
+  ${props =>
+    props.isConfirmationPage
+      ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${colorTheme(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize14(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize24(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize10(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+      `
+      : ``};
 `;
 
 // ${props => (props.pageCategory ? `` : ``)};

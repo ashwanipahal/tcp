@@ -79,6 +79,8 @@ export function mapStateToProps(state) {
     thresholdValue: getThresholdValue(state),
     isGuestCheck: isGuest(state),
     isPlcc: isPlccUser(state),
+    // isGuestCheck: false,
+    // isPlcc: true,
     currencySymbol: getCurrencySymbol(state),
   };
 }

@@ -32,6 +32,7 @@ export const getLoyaltyBannerLabels = state => {
         lbl_loyaltyBanner_applyNow: applyNow,
         lbl_loyaltyBanner_learnMore: learnMore,
         lbl_loyaltyBanner_logIn: logIn,
+        lbl_loyaltyBanner_createMyPlaceRewardsAccount: createMyPlaceRewardsAccount,
 
         lbl_loyaltyBanner_sectionSymbol: sectionSymbol,
         lbl_loyaltyBanner_asteriskSymbol: asteriskSymbol,
@@ -99,6 +100,7 @@ export const getLoyaltyBannerLabels = state => {
     applyNow,
     learnMore,
     logIn,
+    createMyPlaceRewardsAccount,
 
     sectionSymbol,
     asteriskSymbol,

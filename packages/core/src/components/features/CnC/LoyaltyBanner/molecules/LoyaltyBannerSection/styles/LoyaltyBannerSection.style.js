@@ -14,6 +14,7 @@ const Styles = css`
   .loyalty-banner-section-wrapper {
     border-top: 5px solid ${plccMpr};
     border-bottom: 5px solid ${plccMpr};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -32,6 +33,7 @@ const Styles = css`
     .loyalty-banner-section-wrapper {
       border-top: 4px solid ${plccMpr};
       border-bottom: 4px solid ${plccMpr};
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;
