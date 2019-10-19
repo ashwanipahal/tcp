@@ -23,6 +23,27 @@ class CartItemRadioButtons extends React.Component {
   };
 
   /**
+   * @function handleShipToHome Ship to Home click handler
+   * @param {bool} isECOMOrder Represents Whether it is STH option selected already
+   * @param {bool} isEcomSoldout Represents whether the product has been soldout or not.
+   * @memberof CartItemRadioButtons
+   */
+  handleShipToHome = (isECOMOrder, isEcomSoldout) => {
+    const {
+      setShipToHome,
+      productDetail: {
+        itemInfo: { itemId },
+        miscInfo: { orderItemType },
+      },
+    } = this.props;
+
+    /* istanbul ignore else */
+    if (!isECOMOrder && !isEcomSoldout) {
+      setShipToHome(itemId, orderItemType);
+    }
+  };
+
+  /**
    * @function showBoss Handles to show BOSS Item or not
    * @param isBossOrder Represents the current product is BOSS or not
    * @param isBossEnabled Represents the Country/State level kill switch for BOSS
@@ -139,7 +160,7 @@ class CartItemRadioButtons extends React.Component {
           this.handleChangeStoreClick();
         }}
       >
-        {labels.changeStore}
+        {`(${labels.changeStore})`}
       </Anchor>
     ) : null;
   };
@@ -300,6 +321,9 @@ class CartItemRadioButtons extends React.Component {
           name={radioGroupName}
           checked={isECOMOrder}
           disabled={isEcomSoldout}
+          onClick={() => {
+            this.handleShipToHome(isECOMOrder, isEcomSoldout);
+          }}
           data-locator={getLocator('cart_item_ship_to_home_radio_button')}
         >
           {this.renderRadioItem({
@@ -335,6 +359,7 @@ CartItemRadioButtons.propTypes = {
   bossDisabled: PropTypes.bool.isRequired,
   bopisDisabled: PropTypes.bool.isRequired,
   openPickUpModal: PropTypes.bool.isRequired,
+  setShipToHome: PropTypes.func.isRequired,
 };
 
 export default withStyles(CartItemRadioButtons, style);

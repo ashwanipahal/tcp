@@ -8,7 +8,8 @@ const StyledRowDataContainer = styled.View`
 const HeadRowDataContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 32px 0 12px 0;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
 `;
 
 export { StyledRowDataContainer, HeadRowDataContainer };

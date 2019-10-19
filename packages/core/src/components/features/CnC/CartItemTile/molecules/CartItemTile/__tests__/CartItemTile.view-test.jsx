@@ -241,6 +241,10 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
   let props;
   beforeEach(() => {
     props = {
+      clearToggleError: jest.fn(),
+      toggleError: {
+        error: {},
+      },
       productDetail: {
         itemInfo: {
           name: 'Boys Basic Skinny Jeans',
@@ -251,6 +255,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
           isGiftItem: true,
           fit: 'regular',
           itemBrand: 'TCP',
+          itemUnitPrice: 12.345,
         },
         miscInfo: {
           badge: '',
@@ -262,6 +267,9 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
           isInventoryAvailBOSS: true,
           isBossEligible: true,
           isBopisEligible: true,
+        },
+        productInfo: {
+          upc: 'upc',
         },
       },
       labels: {
@@ -384,5 +392,13 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.availability = CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT;
     const component = shallow(<CartItemTileVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should clear toggle error', () => {
+    props.pageView = 'myBag';
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    const instance = component.instance();
+    instance.componentWillUnmount();
+    expect(props.clearToggleError).toHaveBeenCalled();
   });
 });

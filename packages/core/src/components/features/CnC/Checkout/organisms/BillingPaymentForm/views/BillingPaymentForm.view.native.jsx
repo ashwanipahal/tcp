@@ -364,6 +364,7 @@ export class BillingPaymentForm extends React.PureComponent {
       navigation,
       dispatch,
       isPaymentDisabled,
+      setCheckoutStage,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -416,11 +417,9 @@ export class BillingPaymentForm extends React.PureComponent {
           onPress={e => handleBillingFormSubmit(this, e, true)}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           onBackLinkPress={() =>
-            navigation.navigate(
-              orderHasShipping
-                ? CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_SHIPPING
-                : CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP
-            )
+            orderHasShipping
+              ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
+              : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
           }
           showAccordian
         />

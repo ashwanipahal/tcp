@@ -3367,7 +3367,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -3383,12 +3383,26 @@ exports[`StoreHours component should render component with timing data 1`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: none;
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -3396,7 +3410,14 @@ exports[`StoreHours component should render component with timing data 1`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: block;
+    }
   }
 ",
                     ";
@@ -4122,7 +4143,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -4745,7 +4766,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
                 id=""
               >
                 <button
@@ -7524,7 +7545,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -7540,12 +7561,26 @@ exports[`StoreHours component should render component with timing data 2`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: none;
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -7553,7 +7588,14 @@ exports[`StoreHours component should render component with timing data 2`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: block;
+    }
   }
 ",
                     ";
@@ -8267,7 +8309,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -8890,7 +8932,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
                 id=""
               >
                 <button
