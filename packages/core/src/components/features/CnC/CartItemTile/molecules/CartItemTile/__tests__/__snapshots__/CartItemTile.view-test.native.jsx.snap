@@ -173,6 +173,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
               fontSize="fs13"
               margin={null}
               numberOfLines={null}
+              text="red"
               textDecoration={null}
             />
           </Styled(View)>
@@ -361,6 +362,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       productDetail={
         Object {
           "itemInfo": Object {
+            "color": "red",
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
@@ -374,6 +376,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
             "badge": "",
           },
           "productInfo": Object {
+            "productPartNumber": 123,
             "skuId": "123",
           },
         }

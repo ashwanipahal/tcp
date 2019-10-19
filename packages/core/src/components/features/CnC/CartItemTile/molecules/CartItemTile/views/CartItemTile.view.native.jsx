@@ -221,10 +221,10 @@ class ProductInformation extends React.Component {
 
   rightButton = () => {
     const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
-    const { isGenricGuest, isCondense, onQuickViewOpenClick } = this.props;
+    const { isGenricGuest, isCondense } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem, itemBrand, qty, color, size, fit },
-      productInfo: { skuId, generalProductId, productPartNumber },
+      itemInfo: { itemId, isGiftItem, itemBrand },
+      productInfo: { skuId, generalProductId },
       miscInfo: { orderItemType },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
@@ -235,17 +235,7 @@ class ProductInformation extends React.Component {
           <TouchableOpacity
             accessibilityRole="link"
             onPress={() => {
-              onQuickViewOpenClick({
-                colorProductId: productPartNumber,
-                orderInfo: {
-                  orderItemId: itemId,
-                  selectedQty: qty,
-                  selectedColor: color,
-                  selectedSize: size,
-                  selectedFit: fit,
-                  itemBrand,
-                },
-              });
+              CartItemTileExtension.callEditMethod(this.props);
               this.onSwipeComplete(this.swipeable);
               return this.swipeable.toggle('right');
             }}
@@ -403,7 +393,6 @@ ProductInformation.propTypes = {
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
   currencySymbol: PropTypes.string.isRequired,
-  onQuickViewOpenClick: PropTypes.func,
 };
 
 ProductInformation.defaultProps = {
@@ -415,7 +404,6 @@ ProductInformation.defaultProps = {
   swipedElement: null,
   isBagPageSflSection: false,
   showOnReviewPage: true,
-  onQuickViewOpenClick: () => {},
 };
 
 export default ProductInformation;

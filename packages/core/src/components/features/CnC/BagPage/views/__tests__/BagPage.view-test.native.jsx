@@ -151,6 +151,7 @@ describe('AddedToBagActions native component', () => {
       isUserLoggedIn: true,
       isNoNEmptyBag: true,
       isBagStage: true,
+      isPickupModalOpen: true,
     };
     const component = shallow(<BagPage {...props} />);
     component.setState({ activeSection: 'BAG', showCondensedHeader: true });
@@ -178,5 +179,11 @@ describe('AddedToBagActions native component', () => {
     const spyHandleScroll = jest.spyOn(component.instance(), 'handleChangeActiveSection');
     component.instance().handleChangeActiveSection('BagPage');
     expect(spyHandleScroll).toHaveBeenCalled();
+  });
+  it('AddedToBagActions native component renders correctly with bag section with method handleChangeActiveSection', () => {
+    const component = shallow(<BagPage {...props1} />);
+    const spyRenderModals = jest.spyOn(component.instance(), 'renderModals');
+    component.instance().renderModals();
+    expect(spyRenderModals).toHaveBeenCalled();
   });
 });

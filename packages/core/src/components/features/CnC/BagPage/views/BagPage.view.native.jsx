@@ -36,6 +36,7 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 import LoyaltyBanner from '../../LoyaltyBanner';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.container';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
@@ -260,6 +261,16 @@ export class BagPage extends React.Component {
     return <></>;
   };
 
+  renderModals = () => {
+    const { isPickupModalOpen, navigation } = this.props;
+    return (
+      <>
+        <QuickViewModal fromBagPage />
+        {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      </>
+    );
+  };
+
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
@@ -318,7 +329,7 @@ export class BagPage extends React.Component {
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
             </MainSection>
-            <QuickViewModal fromBagPage />
+            {this.renderModals()}
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
@@ -356,6 +367,11 @@ BagPage.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  isPickupModalOpen: PropTypes.bool,
+};
+
+BagPage.defaultProps = {
+  isPickupModalOpen: false,
 };
 
 export default InitialPropsHOC(BagPage);
