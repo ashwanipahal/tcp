@@ -3,7 +3,7 @@ import { Carousel, LinkText, ImageGrid } from '..';
 
 const StyledCarousal = styled(Carousel)`
   .slick-arrow {
-    top: 44%;
+    top: 50%;
   }
   .slick-next {
     height: 50px;
@@ -40,6 +40,9 @@ const StyledModuleK = css`
   }
   .carousal-cta {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
   .tcp_carousel_wrapper {
     position: relative;
@@ -52,9 +55,9 @@ const StyledModuleK = css`
     }
   }
   .image-col {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin-bottom: 0px;
     }
   }
 `;
