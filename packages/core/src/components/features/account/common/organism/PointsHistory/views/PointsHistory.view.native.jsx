@@ -78,7 +78,6 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                textAlign="center"
               />
             </PointView>
           </PointHistoryView>
