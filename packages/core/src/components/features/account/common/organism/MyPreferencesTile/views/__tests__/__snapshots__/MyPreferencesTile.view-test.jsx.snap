@@ -22,8 +22,8 @@ exports[`MyPreferencesTile component should render correctly when coupons are no
     labels={Object {}}
   />
   <SocialAccountsTileItem
-    getSocialAcc={Object {}}
     labels={Object {}}
+    socialAccounts={Object {}}
   />
 </Styled(AccountOverviewTile)>
 `;

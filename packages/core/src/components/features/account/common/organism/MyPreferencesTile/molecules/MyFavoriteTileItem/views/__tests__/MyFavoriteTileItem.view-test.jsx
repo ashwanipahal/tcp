@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { MyFavoriteTileItem } from '../MyFavoriteTileItem.view';
 
 describe('MyFavoriteTileItem component', () => {
-  it('should render correctly when coupons are not present', () => {
+  it('should render correctly', () => {
     const props = {
       labels: {},
       favStoreName: '',

@@ -13,7 +13,7 @@ describe('MyPreferencesTile component', () => {
       favStoreCity: '',
       favStoreZipcode: '',
       favStorePhone: '',
-      getSocialAcc: {},
+      socialAccounts: {},
     };
     const component = shallow(<MyPreferencesTile {...props} />);
     expect(component).toMatchSnapshot();

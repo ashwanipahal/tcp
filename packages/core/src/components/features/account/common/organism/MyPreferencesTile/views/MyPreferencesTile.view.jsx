@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import internalEndpoints from '../../../internalEndpoints';
-import MyFavoriteTile from '../molecules/MyFavoriteTileItem';
+import MyFavoriteTileItem from '../molecules/MyFavoriteTileItem';
 import ContactPreferencesTileItem from '../molecules/ContactPreferencesTileItem';
 import SocialAccountsTileItem from '../molecules/SocialAccountsTileItem';
+import { isCanada } from '../../../../../../../utils';
 
 export const MyPreferencesTile = ({
   labels,
-  isCanada,
   favStoreName,
   favStoreAddress,
   favStoreState,
   favStoreCity,
   favStoreZipcode,
   favStorePhone,
-  getSocialAcc,
+  socialAccounts,
 }) => {
   const isContactAdded = true;
   return (
@@ -27,7 +27,7 @@ export const MyPreferencesTile = ({
       ctaLink={internalEndpoints.myPreferencesPage.link}
       ctaPath={internalEndpoints.myPreferencesPage.path}
     >
-      <MyFavoriteTile
+      <MyFavoriteTileItem
         labels={labels}
         favStoreName={favStoreName}
         favStoreAddress={favStoreAddress}
@@ -39,7 +39,9 @@ export const MyPreferencesTile = ({
 
       <ContactPreferencesTileItem labels={labels} isContactAdded={isContactAdded} />
 
-      {!isCanada ? <SocialAccountsTileItem labels={labels} getSocialAcc={getSocialAcc} /> : null}
+      {!isCanada() ? (
+        <SocialAccountsTileItem labels={labels} socialAccounts={socialAccounts} />
+      ) : null}
     </AccountOverviewTile>
   );
 };
@@ -47,21 +49,20 @@ export const MyPreferencesTile = ({
 MyPreferencesTile.propTypes = {
   labels: PropTypes.shape({}),
   ordersList: PropTypes.shape({}).isRequired,
-  isCanada: PropTypes.bool.isRequired,
   favStoreName: PropTypes.string,
   favStoreAddress: PropTypes.string,
   favStoreState: PropTypes.string,
   favStoreCity: PropTypes.string,
   favStoreZipcode: PropTypes.string,
   favStorePhone: PropTypes.string,
-  getSocialAcc: PropTypes.shape({}),
+  socialAccounts: PropTypes.shape({}),
 };
 
 MyPreferencesTile.defaultProps = {
   labels: {
     lbl_prefrence_heading: '',
     lbl_prefrence_view_preferences: '',
-    lbl_prefrence_favorite_store: '',
+    lbl_prefrence_tileFavoriteStore: '',
   },
   favStoreName: '',
   favStoreState: '',
@@ -69,7 +70,7 @@ MyPreferencesTile.defaultProps = {
   favStoreZipcode: '',
   favStorePhone: '',
   favStoreAddress: '',
-  getSocialAcc: {},
+  socialAccounts: {},
 };
 
 export default MyPreferencesTile;

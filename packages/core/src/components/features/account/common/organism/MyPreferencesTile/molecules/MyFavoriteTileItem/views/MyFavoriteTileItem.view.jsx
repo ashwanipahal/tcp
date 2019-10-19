@@ -17,7 +17,7 @@ export const MyFavoriteTileItem = ({
   className,
 }) => {
   const isFavStoreName = !!favStoreName;
-  const addEditLabel = isFavStoreName ? 'lbl_prefrence_tile_edit' : 'lbl_prefrence_tile_add';
+  const addEditLabel = isFavStoreName ? 'lbl_preference_tileEdit' : 'lbl_preference_tileAdd';
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="heading">
@@ -30,7 +30,7 @@ export const MyFavoriteTileItem = ({
             }}
           >
             <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-              {getLabelValue(labels, 'lbl_prefrence_favorite_store', 'preferences')}
+              {getLabelValue(labels, 'lbl_prefrence_tileFavoriteStore', 'preferences')}
             </BodyCopy>
           </Col>
           <Col
@@ -111,11 +111,7 @@ export const MyFavoriteTileItem = ({
               </Row>
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
-                {getLabelValue(
-                  labels,
-                  'lbl_prefrence_tile_access_buy_online_pickup',
-                  'preferences'
-                )}
+                {getLabelValue(labels, 'lbl_preferenceTile_accessBuyOnlinePickup', 'preferences')}
               </BodyCopy>
             )}
           </Col>
@@ -138,10 +134,10 @@ MyFavoriteTileItem.propTypes = {
 
 MyFavoriteTileItem.defaultProps = {
   labels: {
-    lbl_prefrence_tile_edit: '',
-    lbl_prefrence_tile_add: '',
-    lbl_prefrence_favorite_store: '',
-    lbl_prefrence_tile_access_buy_online_pickup: '',
+    lbl_preference_tileEdit: '',
+    lbl_preference_tileAdd: '',
+    lbl_prefrence_tileFavoriteStore: '',
+    lbl_preferenceTile_accessBuyOnlinePickup: '',
   },
   favStoreName: '',
   favStoreState: '',

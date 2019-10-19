@@ -6,7 +6,7 @@ import internalEndpoints from '../../../../../internalEndpoints';
 import { getIconPath } from '../../../../../../../../../utils';
 
 const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
-  const addEditText = isContactAdded ? 'lbl_prefrence_tile_edit' : 'lbl_prefrence_tile_add';
+  const addEditText = isContactAdded ? 'lbl_preference_tileEdit' : 'lbl_preference_tileAdd';
   return (
     <BodyCopy component="div" className="heading elem-pt-LRG">
       <Row fullBleed>
@@ -31,7 +31,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                 fontWeight="extrabold"
                 fontFamily="secondary"
               >
-                {getLabelValue(labels, 'lbl_prefrence_tile_contact_preference', 'preferences')}
+                {getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
               </BodyCopy>
             </Col>
             <Col
@@ -62,7 +62,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                       fontWeight="extrabold"
                       fontFamily="secondary"
                     >
-                      {getLabelValue(labels, 'lbl_prefrence_tile_text_text', 'preferences')}
+                      {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
                     </BodyCopy>
                   </Col>
                   <Col
@@ -85,7 +85,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                       fontWeight="extrabold"
                       fontFamily="secondary"
                     >
-                      {getLabelValue(labels, 'lbl_prefrence_tile_app_text', 'preferences')}
+                      {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -110,7 +110,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                       fontWeight="semibold"
                       fontFamily="secondary"
                     >
-                      {getLabelValue(labels, 'lbl_prefrence_tile_text_text', 'preferences')}
+                      {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
                     </BodyCopy>
                   </Col>
                   <Col
@@ -133,7 +133,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                       fontWeight="semibold"
                       fontFamily="secondary"
                     >
-                      {getLabelValue(labels, 'lbl_prefrence_tile_app_text', 'preferences')}
+                      {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -172,9 +172,11 @@ ContactPreferencesTileItem.propTypes = {
 
 ContactPreferencesTileItem.defaultProps = {
   labels: {
-    lbl_prefrence_tile_contact_preference: '',
-    lbl_prefrence_tile_add: '',
-    lbl_prefrence_tile_edit: '',
+    lbl_preference_tileContactPreference: '',
+    lbl_preference_tileAdd: '',
+    lbl_preference_tileEdit: '',
+    lbl_preference_tileTextText: '',
+    lbl_preference_tileAppText: '',
   },
   isContactAdded: false,
 };

@@ -37,7 +37,7 @@ exports[`SocialAccountsTileItem component should render correctly when coupons a
         link={null}
         textAlign="left"
       >
-        lbl_prefrence_tile_connected_social_accounts_heading
+        lbl_preference_tileConnectedSocialAccountsHeading
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -68,7 +68,7 @@ exports[`SocialAccountsTileItem component should render correctly when coupons a
           to="/account?id=my-preference"
           underline={true}
         >
-          lbl_prefrence_tile_add
+          lbl_preference_tileAdd
         </Styled(Anchor)>
       </Styled(BodyCopy)>
     </Styled(Col)>
@@ -98,7 +98,7 @@ exports[`SocialAccountsTileItem component should render correctly when coupons a
         link={null}
         textAlign="left"
       >
-        lbl_prefrence_tile_connected_social_accounts_text
+        lbl_preference_tileConnectedSocialAccountsText
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>

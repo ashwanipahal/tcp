@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyFavoriteTileItem component should render correctly when coupons are not present 1`] = `
+exports[`MyFavoriteTileItem component should render correctly 1`] = `
 <Styled(BodyCopy)
   className=""
   color="text.primary"
@@ -49,7 +49,7 @@ exports[`MyFavoriteTileItem component should render correctly when coupons are n
           link={null}
           textAlign="left"
         >
-          lbl_prefrence_favorite_store
+          lbl_prefrence_tileFavoriteStore
         </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
@@ -80,7 +80,7 @@ exports[`MyFavoriteTileItem component should render correctly when coupons are n
             to="/account?id=my-preference"
             underline={true}
           >
-            lbl_prefrence_tile_add
+            lbl_preference_tileAdd
           </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
@@ -110,7 +110,7 @@ exports[`MyFavoriteTileItem component should render correctly when coupons are n
           link={null}
           textAlign="left"
         >
-          lbl_prefrence_tile_access_buy_online_pickup
+          lbl_preferenceTile_accessBuyOnlinePickup
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

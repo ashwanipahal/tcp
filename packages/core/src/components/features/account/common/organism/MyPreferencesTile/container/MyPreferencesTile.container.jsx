@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MyPreferencesTileComponent from '../views';
-// import { getSiteId } from '../../../../../../../utils';
-import { isCanada } from '../../../../../../../utils';
 import { getLabels } from '../../../../Account/container/Account.selectors';
 import {
   getFavoriteStore,
@@ -20,23 +18,18 @@ import { getSocialAccount } from '../../../../../../common/organisms/SocialAccou
 import { getMyFavoriteStoreAction } from '../../../../MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.actions';
 
 class MyPreferencesTile extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.isCanada = isCanada();
-  }
-
   componentDidMount() {
     const {
       favoriteStoreDetails,
       getMyFavoriteStoreDetails,
-      getSocialAcc,
+      socialAccounts,
       socialLoad,
     } = this.props;
 
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
     }
-    if (getSocialAcc.size === 0) {
+    if (socialAccounts.size === 0) {
       socialLoad();
     }
   }
@@ -51,12 +44,11 @@ class MyPreferencesTile extends PureComponent {
       favStoreCity,
       favStoreZipcode,
       favStorePhone,
-      getSocialAcc,
+      socialAccounts,
     } = this.props;
     return (
       <MyPreferencesTileComponent
         labels={labels}
-        isCanada={this.isCanada}
         defaultStore={defaultStore}
         favStoreName={favStoreName}
         favStoreAddress={favStoreAddress}
@@ -64,7 +56,7 @@ class MyPreferencesTile extends PureComponent {
         favStoreCity={favStoreCity}
         favStoreZipcode={favStoreZipcode}
         favStorePhone={favStorePhone}
-        getSocialAcc={getSocialAcc}
+        socialAccounts={socialAccounts}
       />
     );
   }
@@ -82,7 +74,7 @@ MyPreferencesTile.propTypes = {
   favStoreZipcode: PropTypes.string,
   favStorePhone: PropTypes.string,
   getMyFavoriteStoreDetails: PropTypes.func.isRequired,
-  getSocialAcc: PropTypes.shape({}),
+  socialAccounts: PropTypes.shape({}),
   socialLoad: PropTypes.func.isRequired,
 };
 
@@ -95,7 +87,7 @@ MyPreferencesTile.defaultProps = {
   favStoreCity: '',
   favStoreZipcode: '',
   favStorePhone: '',
-  getSocialAcc: {},
+  socialAccounts: {},
 };
 
 export const mapStateToProps = state => ({
@@ -108,7 +100,7 @@ export const mapStateToProps = state => ({
   favStoreZipcode: getFavoriteStoreZipcode(state),
   favStorePhone: getFavoriteStorePhone(state),
   defaultStore: getDefaultStore(state),
-  getSocialAcc: getsocialDataOnLoadState(state),
+  socialAccounts: getsocialDataOnLoadState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
