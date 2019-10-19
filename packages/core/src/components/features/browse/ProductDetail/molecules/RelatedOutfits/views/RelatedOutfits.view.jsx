@@ -13,18 +13,11 @@ class RelatedOutfits extends React.PureComponent {
     this.state = {
       isAccordionOpen: true,
     };
-
-    this.handleAccordionToggle = this.handleAccordionToggle.bind(this);
   }
 
   getAccordionClass = isAccordionOpen => {
     return isAccordionOpen ? 'show-accordion-toggle' : '';
   };
-
-  handleAccordionToggle() {
-    const { isAccordionOpen } = this.state;
-    this.setState({ isAccordionOpen: !isAccordionOpen });
-  }
 
   render() {
     const { pdpLabels, className, selectedColorProductId } = this.props;
@@ -51,7 +44,6 @@ class RelatedOutfits extends React.PureComponent {
           component="div"
           fontFamily="secondary"
           fontWeight="black"
-          // onClick={this.handleAccordionToggle}
           data-locator={getLocator('pdp_anchor_complete_the_look')}
         >
           {completeTheLook}
