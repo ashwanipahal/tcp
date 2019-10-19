@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { getSiteId } from '../../../../utils';
+import { getSiteId, getAPIConfig } from '../../../../utils';
 import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
@@ -108,10 +108,10 @@ const RecommendationsAbstractor = {
     });
   },
   getAppData: ({ pageType, categoryName, partNumber }) => {
-    const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
+    const ADOBE_RECOMMENDATIONS_URL = getAPIConfig().RECOMMENDATIONS_API;
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
-    const region = 'US'; // TODO use `CA` for Canada
+    const region = getSiteId(); // TODO use `CA` for Canada
     const requestLocation = {
       impressionId: ADOBE_RECOMMENDATIONS_IMPRESSION_ID,
       host: ADOBE_RECOMMENDATIONS_HOST,
@@ -127,8 +127,8 @@ const RecommendationsAbstractor = {
         mbox: 'target-global-mbox',
         requestLocation,
         mboxParameters: {
-          'entity.categoryId': categoryName || 'boysskinnychinopants',
-          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US',
+          'entity.categoryId': categoryName || 'boysskinnychinopants', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
           pageType,
           region,
         },
