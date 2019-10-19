@@ -55,7 +55,6 @@ export const TileFooter = styled.div`
 `;
 
 export const TileBody = styled.div`
-  flex: 1;
   .address-wrapper {
     @media ${props => props.theme.mediaQuery.largeOnly} {
       display: ${props => (props.variation === 'listing' ? 'flex' : 'block')};
