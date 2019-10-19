@@ -180,7 +180,7 @@ const getFullfilmentCentersMap = createSelector(
       no BOPIS then return null, or neither... this needs to all be consolidated into
       a single operator to deal with a ECOM/BOPIS/mixed order.
   */
-    return pickupStores && sth ? pickupStores.concat(sth) : null;
+    return pickupStores ? pickupStores.concat(sth) : null;
   }
 );
 
