@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
+import SEODataSaga from '@tcp/core/src/reduxStore/sagas/seoData';
 import LayoutSaga from '@tcp/core/src/reduxStore/sagas/layout';
 import SearchPageSaga from '@tcp/core/src/components/features/browse/SearchDetail/container/SearchDetail.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
@@ -76,6 +77,7 @@ export default function* rootSaga() {
   yield all([
     BootstrapSaga(),
     LabelsSaga(),
+    SEODataSaga(),
     LayoutSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),

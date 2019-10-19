@@ -4,6 +4,12 @@ const SmsSignupModalStyle = css`
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+  .sms-signup-content {
+    position: relative;
+  }
+  .full-height {
+    height: 100%;
+  }
   .button-wrapper,
   .button-wrapper-form {
     background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
@@ -36,6 +42,7 @@ const SmsSignupModalStyle = css`
   }
   .alignTop {
     top: 14px;
+    z-index: 1;
     @media ${props => props.theme.mediaQuery.medium} {
       top: 16px;
     }
@@ -62,6 +69,11 @@ const SmsSignupModalStyle = css`
     .field-container {
       padding-top: 0;
     }
+    .button-wrapper {
+      bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      width: 100%;
+      position: absolute;
+    }
     .button-wrapper,
     .button-wrapper-form {
       margin: 24px auto 0;
@@ -78,9 +90,8 @@ const SmsSignupModalStyle = css`
       width: calc(100% - 300px);
     }
     .shop-button {
-      position: absolute;
-      width: 222px;
-      bottom: 24px;
+      bottom: 0;
+      width: 100%;
     }
   }
 `;

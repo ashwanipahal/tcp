@@ -28,6 +28,26 @@ export const loadComponentLabelsData = payload => {
   };
 };
 
+export const loadSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_SEO_DATA,
+  };
+};
+export const setSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_SEO_DATA,
+  };
+};
+
+export const loadPageSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_PAGE_SEO_DATA,
+  };
+};
+
 export const loadXappConfigData = payload => {
   return {
     payload,
@@ -67,6 +87,27 @@ export const loadModulesData = payload => {
   return {
     payload,
     type: GLOBAL_CONSTANTS.LOAD_MODULES_DATA,
+  };
+};
+
+export const getCountryListData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_GET_DATA,
+  };
+};
+
+export const storeCountriesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_COUNTRIES_MAP,
+  };
+};
+
+export const storeCurrenciesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_CURRENCIES_MAP,
   };
 };
 
@@ -115,6 +156,9 @@ export default {
   loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
+  getCountryListData,
+  storeCountriesMap,
+  storeCurrenciesMap,
   setCountry,
   setCurrency,
   setLanguage,

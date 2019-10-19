@@ -194,11 +194,11 @@ describe('Checkout Selectors', () => {
 
   it('#getIsVenmoEnabled', () => {
     const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
-    const session = fromJS({
+    const session = {
       siteDetails: {
         VENMO_ENABLED: 'TRUE',
       },
-    });
+    };
 
     const state = {
       session,
@@ -238,5 +238,39 @@ describe('Checkout Selectors', () => {
     expect(getVenmoClientTokenData(state)).toEqual(
       Checkout.getIn(['values', 'venmoClientTokenData'])
     );
+  });
+  it('#getCurrentCheckoutStage', () => {
+    const { getCurrentCheckoutStage } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        stage: 'true',
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          stage: 'true',
+        },
+      }),
+    };
+    expect(getCurrentCheckoutStage(state)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
+  });
+
+  it('#getExpressReviewShippingSectionId', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
+        },
+      },
+    };
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
   });
 });

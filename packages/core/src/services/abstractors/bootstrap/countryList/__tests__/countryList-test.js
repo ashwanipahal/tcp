@@ -1,4 +1,4 @@
-import CountrySelectorAbstractor from '../countrySelector';
+import CountryListAbstractor from '../countryList';
 import * as handler from '../../../../handler/handler';
 import mock from '../mock';
 
@@ -54,25 +54,25 @@ handler.executeStatefulAPICall.mockImplementation(() => {
   });
 });
 
-describe('CountrySelectorAbstractor', () => {
+describe('CountryListAbstractor', () => {
   test('Country Selector fetch countries list', () => {
-    return CountrySelectorAbstractor.getData().then(data => {
+    return CountryListAbstractor.getData().then(data => {
       expect(data.countryList.length).toBeGreaterThan(1);
     });
   });
 
   test('Country Selector submit country selection', () => {
-    return CountrySelectorAbstractor.submitData().then(data => {
+    return CountryListAbstractor.submitData().then(data => {
       expect(data.cc).toBeTruthy();
     });
   });
 
   it('Country Selector returns mock data', () => {
-    const data = CountrySelectorAbstractor.getMock();
+    const data = CountryListAbstractor.getMock();
     expect(data).toMatchObject(mock);
   });
 
   it('Country Selector handles error', () => {
-    CountrySelectorAbstractor.handleError();
+    CountryListAbstractor.handleError();
   });
 });

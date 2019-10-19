@@ -1,6 +1,7 @@
 export const HEADER_REDUCER_KEY = 'Header';
 export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
+export const SEO_DATA_REDUCER_KEY = 'SEOData';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
