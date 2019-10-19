@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -90,6 +90,10 @@ class MiniBagBody extends React.PureComponent {
       );
     }
     return null;
+  };
+
+  renderLoyaltyBanner = () => {
+    return !isCanada() && <LoyaltyBanner />;
   };
 
   render() {
@@ -185,6 +189,7 @@ class MiniBagBody extends React.PureComponent {
                 {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
               </BodyCopy>
               <AddedToBagActions
+                containerId="paypal-button-container-minibag"
                 showAddTobag={false}
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
@@ -206,7 +211,7 @@ class MiniBagBody extends React.PureComponent {
             </BodyCopy>
           </div>
         )}
-        <LoyaltyBanner />
+        {this.renderLoyaltyBanner()}
       </div>
     );
   }

@@ -112,6 +112,10 @@ export default css`
     z-index: 2;
   }
 
+  .disableBodyScroll {
+    overflow: hidden;
+  }
+
   figure {
     margin: 0;
     padding: 0;
@@ -165,6 +169,10 @@ export default css`
   }
   .text-break {
     word-break: break-word;
+  }
+
+  .capitalize {
+    text-transform: uppercase;
   }
 
   ${props => {

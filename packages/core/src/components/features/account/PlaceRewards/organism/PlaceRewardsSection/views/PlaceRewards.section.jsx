@@ -31,7 +31,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             fontSize="fs16"
             fontWeight="extrabold"
             component="h4"
-            className="place-rewards__heading"
+            className="place-rewards__heading myAccountRightView"
             data-locator="place-rewards-heading"
           >
             {getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}
@@ -62,7 +62,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                     fontSize="fs16"
                     fontWeight="extrabold"
                     component="h4"
-                    className="elem-mb-SM elem-ml-SM"
+                    className="elem-mb-SM elem-mt-XXXS"
                   >
                     {getLabelValue(labels, 'lbl_my_rewards_point_balance', 'placeRewards')}
                   </BodyCopy>
@@ -91,37 +91,39 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
               }}
               className="place-rewards-col2"
             >
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    small: 4,
-                    large: 10,
-                    medium: 6,
-                  }}
-                >
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="extrabold"
-                    component="h4"
-                    className="elem-mb-SM elem-ml-SM"
-                    data-locator="pointshistorylbl"
+              <BodyCopy component="div" className="place-rewards-right-col">
+                <Row fullBleed>
+                  <Col
+                    colSize={{
+                      small: 4,
+                      large: 10,
+                      medium: 6,
+                    }}
                   >
-                    {getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
-                  </BodyCopy>
-                </Col>
-              </Row>
-              <Row fullBleed className="elem-mb-MED">
-                <Col
-                  colSize={{
-                    small: 6,
-                    large: 11,
-                    medium: 8,
-                  }}
-                >
-                  <PointsHistory />
-                </Col>
-              </Row>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="extrabold"
+                      component="h4"
+                      className="elem-mb-SM elem-mt-XXXS"
+                      data-locator="pointshistorylbl"
+                    >
+                      {getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
+                    </BodyCopy>
+                  </Col>
+                </Row>
+                <Row fullBleed className="elem-mb-MED">
+                  <Col
+                    colSize={{
+                      small: 6,
+                      large: 11,
+                      medium: 8,
+                    }}
+                  >
+                    <PointsHistory />
+                  </Col>
+                </Row>
+              </BodyCopy>
             </Col>
           </Row>
         )}
@@ -135,7 +137,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             className="place-rewards-col3"
           >
             <div className="bonusPointsWrapper">
-              <BonusPointsDays />
+              <BonusPointsDays isDefaultOpen />
             </div>
           </Col>
           <Col
@@ -146,7 +148,9 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             }}
             className="place-rewards-col4"
           >
-            <EarnExtraPointsTileContainer />
+            <BodyCopy component="div" className="place-rewards-right-col">
+              <EarnExtraPointsTileContainer />
+            </BodyCopy>
           </Col>
         </Row>
       </Row>

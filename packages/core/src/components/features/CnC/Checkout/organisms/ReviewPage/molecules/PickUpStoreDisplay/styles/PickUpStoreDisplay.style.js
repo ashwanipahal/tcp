@@ -1,15 +1,18 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  height: 100%;
   @media ${props => props.theme.mediaQuery.smallMax} {
-    margin-top: 16px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .pickup-store-details {
+    height: 100%;
     padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     display: flex;
     flex-direction: 'row';
     border: solid 1px ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
+    box-sizing: border-box;
   }
   .pickup-store-icon {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

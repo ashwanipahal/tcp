@@ -20,6 +20,7 @@ function track(...args) {
   const satellite = global._satellite;
   if (!satellite) {
     console.warn('Analytics library is undefined.');
+    return;
   }
   satellite.track(...args);
 }

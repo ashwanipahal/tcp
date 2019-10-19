@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
 import TrackOrderView from '../views';
 import {
@@ -83,6 +83,7 @@ export class TrackOrderContainer extends React.PureComponent {
       showNotification,
       onChangeForm,
       handleToggle,
+      navigation,
     } = this.props;
     return (
       <TrackOrderView
@@ -97,6 +98,7 @@ export class TrackOrderContainer extends React.PureComponent {
         showNotification={showNotification}
         onChangeForm={onChangeForm}
         handleToggle={handleToggle}
+        navigation={navigation}
       />
     );
   }

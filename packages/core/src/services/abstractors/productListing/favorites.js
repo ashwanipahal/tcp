@@ -26,10 +26,10 @@ export const AVAILABILITY = {
 };
 
 const addItemToWishlist = wishlistDetails => {
-  const { wishlistId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
+  const { wishListId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
   const payload = {
     header: {
-      externalId: wishlistId,
+      externalId: wishListId,
       addItem: true,
     },
     body: {
@@ -241,6 +241,7 @@ export const getWishListbyId = ({
                 quantity: parseInt(item.quantityRequested, 10),
                 store: null,
                 storeZipCode: null,
+                isTCP: item.itemBrand === 'TCP',
                 availability: getAvailability(item),
                 keepAlive: parseBoolean(
                   isUSStore ? item.TCPOutOfStockFlagUSStore : item.TCPOutOfStockFlagCanadaStore

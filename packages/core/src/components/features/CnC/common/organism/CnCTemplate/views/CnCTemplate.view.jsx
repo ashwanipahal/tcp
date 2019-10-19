@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isCanada } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -38,11 +39,11 @@ const CnCTemplate = ({
   isGuest,
   isCheckoutView,
   showAccordian,
-  isNonEmptySFL,
   isConfirmationPage,
   isNotLoaded,
+  orderLedgerAfterView,
 }) => {
-  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
+  const isSmallLeftSection = showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
@@ -75,14 +76,15 @@ const CnCTemplate = ({
                   </>
                 ) : (
                   <>
-                    <OrderLedgerContainer />
+                    <OrderLedgerContainer orderLedgerAfterView={orderLedgerAfterView} />
                     {getBagActions({ BagActions })}
-                    <LoyaltyBanner />
+                    {!isCanada() && <LoyaltyBanner />}
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
                       showAccordian={showAccordian}
                       additionalClassNameModal="coupon-modal-web"
+                      idPrefix="desktop"
                     />
                   </>
                 )}
@@ -100,11 +102,11 @@ CnCTemplate.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  orderLedgerAfterView: PropTypes.shape({}).isRequired,
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
-  isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   isNotLoaded: PropTypes.bool,
@@ -115,7 +117,6 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
-  isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
   isNotLoaded: true,

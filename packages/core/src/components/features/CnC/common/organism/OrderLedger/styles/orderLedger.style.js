@@ -36,23 +36,8 @@ const LedgerStyle = css`
     text-align: left;
   }
 
-  @media ${props => props.theme.mediaQuery.medium} {
-    .hide-in-large-up {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
-  }
-
   @media ${props => props.theme.mediaQuery.smallMax} {
     background-color: ${props => props.theme.colors.WHITE};
-    .hide-in-medium-down {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
   }
 
   .orderLedgerAccordian {
@@ -64,6 +49,37 @@ const LedgerStyle = css`
     .collapsible-icon {
       top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
+
+  .review-submit-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    .review-submit-button {
+      flex: 1;
+    }
+    .submit-disclaimer {
+      font-family: ${props => props.theme.typography.fonts.secondary};
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
+      color: ${props => props.theme.colorPalette.gray[800]};
+      text-align: center;
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+        margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+        margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    .submit-disclaimer-link {
+      display: inline-block;
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     }
   }
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
-import HeaderNew from '../HeaderNew';
+import { HeaderNewVanilla } from '../HeaderNew';
 
 describe('HeaderNew Component', () => {
   let component;
@@ -11,7 +11,7 @@ describe('HeaderNew Component', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<HeaderNew {...props} />);
+    component = shallow(<HeaderNewVanilla {...props} />);
   });
   it('HeaderNew should render correctly', () => {
     expect(component).toMatchSnapshot();

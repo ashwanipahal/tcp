@@ -39,20 +39,26 @@ const OrderItems = ({ className, ...otherProps }) => {
             <Image src={imagePath} data-locator="order_item_image" />
           </BodyCopy>
           <BodyCopy component="div">
-            <Image
-              alt={itemBrand}
-              className="brand-image"
-              src={
-                itemBrand === 'TCP'
-                  ? getIconPath(`header__brand-tab--tcp`)
-                  : getIconPath('header__brand-tab-gymboree')
-              }
-              data-locator="order_item_brand_logo"
-            />
+            {itemBrand === 'TCP' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath(`header__brand-tab--tcp`)}
+                data-locator="order_item_brand_logo"
+              />
+            )}
+            {itemBrand === 'GYM' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath('header__brand-tab-gymboree')}
+                data-locator="order_item_brand_logo"
+              />
+            )}
           </BodyCopy>
         </Col>
         <Col
-          colSize={{ large: 9, medium: 5, small: 3 }}
+          colSize={{ large: 9, medium: 5, small: 4 }}
           ignoreGutter={{ small: true, medium: true, large: true }}
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
@@ -195,7 +201,6 @@ const OrderItems = ({ className, ...otherProps }) => {
 OrderItems.propTypes = {
   className: PropTypes.string,
   currencySymbol: PropTypes.string.isRequired,
-  isBopisOrder: PropTypes.bool.isRequired,
   orderGroup: PropTypes.shape({}).isRequired,
 };
 

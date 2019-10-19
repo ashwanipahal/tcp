@@ -14,6 +14,7 @@ import {
   getIsCartItemsUpdating,
   getProductSkuId,
   getCartItemsSflError,
+  getCartToggleError,
 } from '../container/CartItemTile.selectors';
 
 describe('#CartItemTile selector', () => {
@@ -206,54 +207,22 @@ describe('#CartItemTile selector', () => {
         },
       },
     };
-    expect(getLabelsCartItemTile(productState)).toEqual({
-      at: undefined,
-      bopisLabel: 'bopis',
-      bopisPickUp: 'pickup',
-      bossLabel: 'boss',
-      bossPickUp: 'boss',
-      by: 'lbl_cartTile_by',
-      cancel: 'Cancel',
-      chooseDiff: 'minibag',
-      color: 'Color',
-      deleteItem: 'delete',
-      design: 'Design',
-      ecomShipping: 'ecom',
-      edit: 'Edit',
-      errorSize: 'minibag',
-      extra: 'extra',
-      fit: 'Fit',
-      itemDeleted: 'lbl_msg_itemDeleteSuccess',
-      itemSoldOut: 'minibag',
-      itemUnavailable: 'minibag',
-      itemUpdated: 'lbl_minibag_itemUpdated',
-      moveToBagLink: 'moveToBagLink',
-      off: 'off',
-      phone: undefined,
-      pickup: undefined,
-      points: 'Points',
-      price: 'Price',
-      problemWithOrder: 'minibag',
-      productBandAlt: 'Brand',
-      productImageAlt: 'Product',
-      qty: 'Qty',
-      removeEdit: 'removeEdit',
-      removeError: 'remove',
-      removeSoldOut: 'minibag',
-      removeSoldoutHeader: 'minibag',
-      saveForLater: 'Save For Later',
-      saveForLaterLink: 'saveForLaterLink',
-      sflDeleteSuccess: 'sflDeleteSuccess',
-      sflMaxLimitError: 'sflMaxLimitError',
-      sflSuccess: 'sflSuccess',
-      shipping: undefined,
-      size: 'Size',
-      soldOut: 'minibag',
-      today: undefined,
-      tomorrow: undefined,
-      update: 'update',
-      updateUnavailable: 'minibag',
-      value: 'Value',
+    expect(getLabelsCartItemTile(productState).bopisLabel).toEqual('bopis');
+    expect(getLabelsCartItemTile(productState).problemWithOrder).toEqual('minibag');
+    expect(getLabelsCartItemTile(productState).sflSuccess).toEqual('sflSuccess');
+  });
+
+  it('#getCartToggleError', () => {
+    const CartItemTileReducer = fromJS({
+      toggleError: {
+        error: {
+          errorMessage: 'ERROR',
+        },
+      },
     });
+
+    expect(getCartToggleError({ CartItemTileReducer }).getIn(['error', 'errorMessage'])).toBe(
+      'ERROR'
+    );
   });
 });

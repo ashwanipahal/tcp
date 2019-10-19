@@ -4,6 +4,7 @@ import { withRouter } from 'next/router'; // eslint-disable-line
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
+import OutfitListingContainer from '../../OutfitListing/container';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
@@ -24,6 +25,7 @@ import {
   getAppliedFilters,
   getAppliedSortId,
   getLabels,
+  getIsFilterBy,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -33,7 +35,21 @@ import {
 } from '../../../account/User/container/User.selectors';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../ProductDetail/container/ProductDetail.selectors';
+
 class ProductListingContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOutfit: false,
+      asPath: '',
+    };
+  }
+
   componentDidMount() {
     this.makeApiCall();
   }
@@ -51,7 +67,18 @@ class ProductListingContainer extends React.PureComponent {
   }
 
   makeApiCall = () => {
-    const { getProducts, navigation } = this.props;
+    const {
+      getProducts,
+      navigation,
+      router: { asPath },
+    } = this.props;
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    if (path.indexOf('-outfits') > -1) {
+      this.setState({
+        isOutfit: true,
+        asPath: path,
+      });
+    }
     const url = navigation && navigation.getParam('url');
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
@@ -80,9 +107,12 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       slpLabels,
       isLoggedIn,
+      currencyAttributes,
+      currency,
       ...otherProps
     } = this.props;
-    return (
+    const { isOutfit, asPath } = this.state;
+    return !isOutfit ? (
       <ProductListing
         productsBlock={productsBlock}
         products={products}
@@ -106,11 +136,24 @@ class ProductListingContainer extends React.PureComponent {
         sortLabels={sortLabels}
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
+        currency={currency}
+        currencyExchange={currencyAttributes.exchangevalue}
         {...otherProps}
+      />
+    ) : (
+      <OutfitListingContainer
+        asPath={asPath}
+        breadCrumbs={breadCrumbs}
+        navTree={navTree}
+        currentNavIds={currentNavIds}
+        longDescription={longDescription}
+        categoryId={categoryId}
       />
     );
   }
 }
+
+ProductListingContainer.pageId = 'c';
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
@@ -158,6 +201,9 @@ function mapStateToProps(state) {
     slpLabels: getLabels(state),
     isGuest: getUserLoggedInState(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    isFilterBy: getIsFilterBy(state),
+    currencyAttributes: getCurrencyAttributes(state),
+    currency: getCurrentCurrency(state),
   };
 }
 
@@ -208,6 +254,8 @@ ProductListingContainer.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoggedIn: PropTypes.bool,
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
 };
 
 ProductListingContainer.defaultProps = {
@@ -228,6 +276,8 @@ ProductListingContainer.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isLoggedIn: false,
+  currencyAttributes: {},
+  currency: '$',
 };
 
 export default withRouter(

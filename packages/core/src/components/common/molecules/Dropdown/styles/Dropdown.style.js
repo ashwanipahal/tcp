@@ -1,12 +1,9 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../../utils';
-
-const downArrowIcon = getIconPath('down_arrow_icon');
-const upArrowIcon = getIconPath('up_arrow_icon');
 
 const dropDownlist = css`
   .dropdownUlBorder {
-    border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-left: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-right: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
   }
 
@@ -19,22 +16,58 @@ const dropDownlist = css`
     position: relative;
   }
 
-  .customSelectTitleImg {
-    background: url(${downArrowIcon}) no-repeat right center;
+  .customSelectArrow {
     position: absolute;
-    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    width: 100%;
-    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  }
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    right: 15px;
+    margin-top: -5px;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background: ${props => props.theme.colorPalette.gray['800']};
+      border-radius: 0.09rem;
+      display: block;
+    }
 
-  .customSelectTitleUpImg {
-    background: url(${upArrowIcon}) no-repeat right center;
-    position: absolute;
-    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    width: 100%;
-    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    &.up,
+    &.down {
+      height: 8px;
+      &:before {
+        left: 8px;
+      }
+      &:after {
+        right: 8px;
+      }
+      &:before,
+      &:after {
+        top: -5%;
+        height: 110%;
+        width: 2px;
+      }
+    }
+
+    &.up {
+      &:before,
+      &:after {
+        transform: rotate(-45deg);
+      }
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+    &.down {
+      &:before,
+      &:after {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
   }
 
   .dropDownLists {
@@ -47,7 +80,7 @@ const dropDownlist = css`
     position: absolute;
     left: 0;
     width: calc(100% - 2px);
-    z-index: 1;
+    z-index: 99;
     overflow: auto;
   }
 

@@ -90,6 +90,27 @@ export const loadModulesData = payload => {
   };
 };
 
+export const getCountryListData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_GET_DATA,
+  };
+};
+
+export const storeCountriesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_COUNTRIES_MAP,
+  };
+};
+
+export const storeCurrenciesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_CURRENCIES_MAP,
+  };
+};
+
 export const setCountry = payload => {
   return {
     payload,
@@ -135,6 +156,9 @@ export default {
   loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
+  getCountryListData,
+  storeCountriesMap,
+  storeCurrenciesMap,
   setCountry,
   setCurrency,
   setLanguage,

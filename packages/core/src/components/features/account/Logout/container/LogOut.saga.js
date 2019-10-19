@@ -2,7 +2,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetUserInfo } from '../../User/container/User.actions';
-import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { LogoutApplication } from '../../../../../services/abstractors/account';

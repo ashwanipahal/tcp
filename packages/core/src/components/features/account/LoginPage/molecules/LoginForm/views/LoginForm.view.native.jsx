@@ -11,6 +11,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
+import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/views/faceTouchIdCheckBox.native';
@@ -118,8 +119,20 @@ class LoginForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, variation, getTouchStatus, showRecaptcha } = this.props;
+    const {
+      labels,
+      variation,
+      getTouchStatus,
+      showRecaptcha,
+      userplccCardNumber,
+      userplccCardId,
+    } = this.props;
     const { type, setRecaptchaModalMountedState } = this.state;
+    const getPlccLbl = getLabelValue(
+      labels,
+      'lbl_createAccount_plcc_checkbox_Text',
+      'registration'
+    ).replace('#number', `${userplccCardNumber}`);
     return (
       <Fragment>
         <View {...this.props}>
@@ -164,6 +177,17 @@ class LoginForm extends React.PureComponent<Props> {
               />
             </HideShowFieldWrapper>
           </ShowHideWrapper>
+          {!!(userplccCardNumber && userplccCardId) && (
+            <Field
+              inputVariation="inputVariation-1"
+              name="plcc_checkbox"
+              component={InputCheckbox}
+              dataLocator="plcc_checkbox"
+              disabled={false}
+              rightText={getPlccLbl}
+              marginTop={13}
+            />
+          )}
           <View style={styles.inputCheckBoxStyle}>
             <TouchFaceIdCheckBox labels={labels} getTouchStatus={getTouchStatus} />
           </View>
@@ -227,6 +251,8 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func,
   showForgotPasswordForm: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
@@ -244,6 +270,8 @@ LoginForm.defaultProps = {
   },
   handleSubmit: noop,
   onSubmit: noop,
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 const validateMethod = createValidateMethod(
