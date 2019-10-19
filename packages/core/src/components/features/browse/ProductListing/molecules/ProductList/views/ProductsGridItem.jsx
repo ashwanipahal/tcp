@@ -2,7 +2,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath, disableBodyScroll } from '@tcp/core/src/utils';
+import { getIconPath, disableBodyScroll, routerPush } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -266,6 +266,22 @@ class ProductsGridItem extends React.PureComponent {
     });
   };
 
+  handleViewBundleClick = () => {
+    const {
+      isBundleProductABTest,
+      item: {
+        productInfo: { bundleProduct, pdpUrl },
+      },
+    } = this.props;
+    const isBundleProduct = !isBundleProductABTest && bundleProduct;
+    if (isBundleProduct) {
+      routerPush(pdpUrl.replace('/b', '/b?bid='), pdpUrl);
+      console.log('go to the bundle page');
+    } else {
+      this.handleQuickViewOpenClick();
+    }
+  };
+
   renderMoveItem = itemId => {
     const {
       wishlistsSummaries,
@@ -314,7 +330,10 @@ class ProductsGridItem extends React.PureComponent {
       item: { itemInfo: { itemId } = {} },
       removeFavItem,
       isFavoriteView,
+      isShowQuickView,
     } = this.props;
+
+    const isBundleProduct = true;
     return itemNotAvailable ? (
       <Button
         className="remove-favorite"
@@ -331,10 +350,14 @@ class ProductsGridItem extends React.PureComponent {
         fullWidth
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
-        onClick={this.handleQuickViewOpenClick}
+        onClick={
+          isShowQuickView && !isBundleProduct
+            ? this.handleQuickViewOpenClick
+            : this.handleViewBundleClick
+        }
         fill={isFavoriteView ? 'BLUE' : ''}
       >
-        {labels.addToBag}
+        {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
       </Button>
     );
   };
