@@ -1,6 +1,7 @@
 export const HEADER_REDUCER_KEY = 'Header';
 export const FOOTER_REDUCER_KEY = 'Footer';
 export const LABEL_REDUCER_KEY = 'Labels';
+export const SEO_DATA_REDUCER_KEY = 'SEOData';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
@@ -210,6 +211,10 @@ export const ORDERS_ACTION_PATTERN = '@@Orders-';
 export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
 export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
+// My Profile reducer
+export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
+export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
@@ -248,4 +253,5 @@ export const REDUCER_ACTION_MAPPING = {
   [STORES_INTL_REDUCER_KEY]: STORES_INTL_ACTION_PATTERN,
   [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
   [STORE_LIST_REDUCER_KEY]: STORE_LIST_ACTION_PATTERN,
+  [MY_PREFERENCE_REDUCER_KEY]: MY_PREFERENCE_ACTION_PATTERN,
 };

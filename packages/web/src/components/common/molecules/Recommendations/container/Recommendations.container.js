@@ -7,6 +7,10 @@ import {
   getLoadedProductsCount,
   getLabelsProductListing,
 } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.selectors';
 import RecommendationsView from '../Recommendations';
 
 const mapStateToProps = (state, ownProps) => {
@@ -23,6 +27,8 @@ const mapStateToProps = (state, ownProps) => {
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
     loadedProductCount: getLoadedProductsCount(state),
     labels: getLabelsProductListing(state),
+    currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
   };
 };
 

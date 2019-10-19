@@ -39,16 +39,22 @@ const OrderItems = ({ className, ...otherProps }) => {
             <Image src={imagePath} data-locator="order_item_image" />
           </BodyCopy>
           <BodyCopy component="div">
-            <Image
-              alt={itemBrand}
-              className="brand-image"
-              src={
-                itemBrand === 'TCP'
-                  ? getIconPath(`header__brand-tab--tcp`)
-                  : getIconPath('header__brand-tab-gymboree')
-              }
-              data-locator="order_item_brand_logo"
-            />
+            {itemBrand === 'TCP' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath(`header__brand-tab--tcp`)}
+                data-locator="order_item_brand_logo"
+              />
+            )}
+            {itemBrand === 'GYM' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath('header__brand-tab-gymboree')}
+                data-locator="order_item_brand_logo"
+              />
+            )}
           </BodyCopy>
         </Col>
         <Col

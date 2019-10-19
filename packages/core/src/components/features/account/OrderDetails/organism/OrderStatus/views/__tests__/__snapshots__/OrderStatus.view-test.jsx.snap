@@ -100,6 +100,7 @@ exports[`Order Items component should renders Tracking Button 1`] = `
       className="button-track"
       dataLocator=""
       fill="BLUE"
+      target="_blank"
       to="/test"
     >
       lbl_orders_trackit

@@ -28,6 +28,9 @@ import selectors, {
   getCheckoutStage,
   getGiftServicesSend,
   isUsSite as isUsSiteUser,
+  getPickupAltValues,
+  isPickupAlt,
+  getPickupValues,
 } from './Checkout.selector';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
@@ -157,6 +160,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       currentStage,
       submitVerifiedShippingAddressData,
       shippingMethod,
+      pickUpAlternatePerson,
+      isHasPickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -208,6 +215,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoShippingState={setVenmoShippingState}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
+        pickUpAlternatePerson={pickUpAlternatePerson}
+        isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+        pickUpContactPerson={pickUpContactPerson}
+        pickUpContactAlternate={pickUpContactAlternate}
       />
     );
   }
@@ -335,6 +346,10 @@ const mapStateToProps = state => {
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
+    pickUpAlternatePerson: getPickupAltValues(state),
+    isHasPickUpAlternatePerson: isPickupAlt(state),
+    pickUpContactPerson: getPickupValues(state),
+    pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
   };
 };
 
