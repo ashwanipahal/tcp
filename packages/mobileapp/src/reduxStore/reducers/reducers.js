@@ -162,6 +162,11 @@ const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONF
 
 const filteredGetCandidReducer = createFilteredReducer(GetCandidReducer, GET_CANDID_REDUCER_KEY);
 
+const filteredRecommendationsReducers = createFilteredReducer(
+  RecommendationsReducer,
+  RECOMMENDATIONS_REDUCER_KEY
+);
+
 const rootReducer = combineReducers({
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
@@ -220,7 +225,7 @@ const rootReducer = combineReducers({
   [ORDERS_REDUCER_KEY]: OrdersReducer,
   [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
-  [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
+  [RECOMMENDATIONS_REDUCER_KEY]: filteredRecommendationsReducers,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
 });
