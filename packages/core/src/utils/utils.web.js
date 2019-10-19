@@ -234,7 +234,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'auto';
+    body.classList.remove('disableBodyScroll');
   }
 };
 
@@ -244,7 +244,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'hidden';
+    body.classList.add('disableBodyScroll');
   }
 };
 

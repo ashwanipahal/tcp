@@ -179,8 +179,10 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
-  currency: '',
-  currencyAttributes: {},
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
   plpLabels: {
     lbl_sort: '',
   },
