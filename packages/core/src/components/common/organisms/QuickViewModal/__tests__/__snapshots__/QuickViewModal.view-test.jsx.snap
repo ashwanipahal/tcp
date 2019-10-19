@@ -278,7 +278,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
       ]
     }
     currency=""
-    currencyExchange=""
+    currencyExchange={1}
     formRef={
       Object {
         "current": null,
