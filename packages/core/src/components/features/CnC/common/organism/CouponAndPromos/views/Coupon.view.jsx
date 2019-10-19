@@ -59,6 +59,7 @@ class CouponView extends React.PureComponent<Props> {
     helpStatus,
     selectedCoupon,
     additionalClassName,
+    idPrefix,
   }) => {
     return (
       <div className={className}>
@@ -69,6 +70,7 @@ class CouponView extends React.PureComponent<Props> {
           labels={labels}
           onNeedHelpTextClick={this.toggleNeedHelpModal}
           additionalClassNameModal={additionalClassName}
+          idPrefix={idPrefix}
         />
         <div className="coupon_list">
           {appliedCouponList && appliedCouponList.size > 0 && (
@@ -144,6 +146,7 @@ class CouponView extends React.PureComponent<Props> {
       handleErrorCoupon,
       showAccordian,
       additionalClassNameModal,
+      idPrefix,
     } = this.props;
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     const header = this.getHeader({ labels });
@@ -162,6 +165,7 @@ class CouponView extends React.PureComponent<Props> {
         helpStatus,
         selectedCoupon,
         additionalClassName,
+        idPrefix,
       });
     const defaultOpen = availableCouponList && availableCouponList.size > 0;
     return (
@@ -172,8 +176,7 @@ class CouponView extends React.PureComponent<Props> {
             medium: 8,
             small: 6,
           }}
-          ignoreGutter={{ small: true, medium: true }}
-          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+          ignoreGutter={{ small: true }}
         >
           <CollapsibleContainer
             className={`${className} ${showAccordian ? 'couponsWrapperAccordian' : ''}`}
@@ -181,11 +184,9 @@ class CouponView extends React.PureComponent<Props> {
             body={body(additionalClassNameModal)}
             iconLocator="arrowicon"
             defaultOpen={defaultOpen}
+            isDefaultView={!showAccordian}
           />
         </Col>
-        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
-          {body(`${additionalClassNameModal}_1`)}
-        </div>
       </div>
     );
   }

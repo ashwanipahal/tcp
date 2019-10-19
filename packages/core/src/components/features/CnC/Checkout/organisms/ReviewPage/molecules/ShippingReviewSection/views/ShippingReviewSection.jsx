@@ -14,11 +14,16 @@ import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods'
 
 export class ShippingReviewSection extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { updateShippingMethodSelection, expressReviewShippingSectionId } = this.props;
+    const {
+      updateShippingMethodSelection,
+      expressReviewShippingSectionId,
+      isExpressCheckout,
+    } = this.props;
     const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
     if (
+      isExpressCheckout &&
       expressReviewShippingSectionId.shippingMethodId !==
-      prevexpressReviewShippingSectionId.shippingMethodId
+        prevexpressReviewShippingSectionId.shippingMethodId
     ) {
       updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
     }

@@ -6,6 +6,7 @@ import ModuleK from './ModuleK';
 import ModuleN from './ModuleN';
 import ModuleS from './ModuleS';
 import ModuleQ from './ModuleQ';
+import ModuleT from './ModuleT';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
@@ -36,6 +37,7 @@ export {
   ModuleJ,
   ModuleR,
   ModuleQ,
+  ModuleT,
   ButtonTabs,
   Grid,
   StoreAddressTile,

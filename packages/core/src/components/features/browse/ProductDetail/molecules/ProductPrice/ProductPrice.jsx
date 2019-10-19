@@ -10,7 +10,7 @@ import withStyles from '../../../../../common/hoc/withStyles';
 import productPriceStyle from './ProductPrice.style';
 
 const getExchangeValue = currencyExchange => {
-  return currencyExchange && currencyExchange[0] && currencyExchange[0].exchangevalue;
+  return currencyExchange;
 };
 
 const getListPricePostFix = (highListPrice, nonUSCA, currencySymbol) => {
