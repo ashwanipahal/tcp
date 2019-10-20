@@ -43,7 +43,7 @@ const LabeledRadioButton = ({
             buttonStyle={buttonStyle}
           />
         )}
-        {disabledWithAlert && <Image source={errorIcon} alt="error" width={15} height={15} />}
+        {disabledWithAlert && <Image source={errorIcon} alt="error" width={20} height={20} />}
         <RadioButtonLabel
           obj={obj}
           index={index}

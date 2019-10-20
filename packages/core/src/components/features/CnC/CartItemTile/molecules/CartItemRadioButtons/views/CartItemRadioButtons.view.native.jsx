@@ -13,6 +13,7 @@ import {
   StyledStoreWrapper,
   StyledChangeStore,
   labelStyle,
+  disabledLabelStyle,
 } from '../styles/CartItemRadioButtons.style.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 
@@ -156,17 +157,18 @@ class CartItemRadioButtons extends React.Component {
               value: isSelected,
             }}
             index={0}
-            labelStyle={labelStyle}
+            labelStyle={disabled ? disabledLabelStyle : labelStyle}
             // onPress={e => this.handleToggle(e, key)}
             checked={isSelected}
             disabled={disabled}
             disabledWithAlert={disabled && isSelected}
           />
           {onlineClearanceMessage && (
-            <BodyCopy
+            <BodyCopyWithSpacing
               fontFamily="secondary"
               fontSize="fs12"
               color="gray[800]"
+              spacingStyles="padding-left-MED"
               text={onlineClearanceMessage}
             />
           )}

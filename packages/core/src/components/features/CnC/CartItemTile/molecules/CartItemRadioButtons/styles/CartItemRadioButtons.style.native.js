@@ -24,6 +24,7 @@ const StyledRadioButtonItem = styled.View`
 const StyledTopRow = styled.View`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 const StyledBottomRow = styled.View`
@@ -54,6 +55,11 @@ const labelStyle = {
   color: colorPallete.gray[900],
 };
 
+const disabledLabelStyle = {
+  fontSize: 14,
+  color: colorPallete.gray[900],
+};
+
 export {
   StyledWrapper,
   StyledTopRow,
@@ -63,4 +69,5 @@ export {
   StyledStoreWrapper,
   StyledChangeStore,
   labelStyle,
+  disabledLabelStyle,
 };
