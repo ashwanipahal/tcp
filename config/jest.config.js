@@ -51,7 +51,7 @@ module.exports = {
     },
   },
   setupFiles: ['<rootDir>/config/jest.setup.js'],
-  collectCoverage: false,
+  collectCoverage: true,
   coverageDirectory: 'reports/web/coverage',
   collectCoverageFrom: [
     '**/*.js',
