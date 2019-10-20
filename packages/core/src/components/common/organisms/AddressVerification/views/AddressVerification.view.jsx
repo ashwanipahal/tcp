@@ -246,7 +246,7 @@ export class AddressVerification extends React.Component<Props> {
           heading={heading}
           fixedWidth
           maxWidth={spacing.MODAL_WIDTH.SMALL}
-          heightConfig={{ height: '100%' }}
+          heightConfig={{ maxHeight: '100%' }}
         >
           <div className="addressVerification">
             <BodyCopy
