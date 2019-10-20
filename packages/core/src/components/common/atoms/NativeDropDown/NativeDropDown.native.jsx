@@ -97,10 +97,17 @@ class NativeDropDown extends React.PureComponent {
       return <Picker.Item label={label} value={item.id} />;
     });
 
+    const pickerStyle = { height: 41 };
+    const pickerItemStyle = { height: 41, padding: 0 };
     if (isAndroidPlatform) {
       return (
         <AndroidPickerView width={width} androidPickerStyle={androidPickerStyle}>
-          <Picker selectedValue={tempValue} onValueChange={this.changeValue}>
+          <Picker
+            style={pickerStyle}
+            itemStyle={pickerItemStyle}
+            selectedValue={tempValue}
+            onValueChange={this.changeValue}
+          >
             {itemList}
           </Picker>
         </AndroidPickerView>

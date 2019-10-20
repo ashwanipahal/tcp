@@ -310,7 +310,7 @@ export class BagPage extends React.Component {
                 <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
-              <LoyaltyBanner />
+              {!isCanada() && <LoyaltyBanner />}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}

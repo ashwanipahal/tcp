@@ -9,7 +9,7 @@ import {
 import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
-import { getSetIsBillingVisitedActn } from './Checkout.action';
+import { getSetIsBillingVisitedActn, getSetCheckoutStage } from './Checkout.action';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
@@ -159,7 +159,7 @@ export function addressIdToString(addressId) {
 export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
   let res;
   let cardDetails;
-  const updatePaymentRequired = true;
+  // const updatePaymentRequired = true;
   const isGuestUser = yield select(isGuest);
   if (formData.address.sameAsShipping) {
     const shippingDetails = yield select(getShippingDestinationValues);
@@ -223,16 +223,16 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     );
     res = res.body;
   }
-  if (updatePaymentRequired) {
-    yield call(
-      updatePaymentInstruction,
-      formData,
-      cardDetails,
-      isGuestUser,
-      res,
-      loadUpdatedCheckoutValues
-    );
-  }
+  // if (updatePaymentRequired) {
+  yield call(
+    updatePaymentInstruction,
+    formData,
+    cardDetails,
+    isGuestUser,
+    res,
+    loadUpdatedCheckoutValues
+  );
+  // }
 }
 
 /**
@@ -247,7 +247,7 @@ export function* submitVenmoBilling(payload = {}) {
   if (!isMobileApp()) {
     utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
   } else if (navigation) {
-    navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+    yield put(getSetCheckoutStage(CONSTANTS.REVIEW_DEFAULT_PARAM));
   }
 }
 
@@ -277,7 +277,7 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     if (!isMobileApp()) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage);
     } else if (navigation) {
-      navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW);
+      yield put(getSetCheckoutStage(CONSTANTS.REVIEW_DEFAULT_PARAM));
     }
   } catch (e) {
     // submitBillingError(store, e);

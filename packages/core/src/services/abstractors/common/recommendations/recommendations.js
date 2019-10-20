@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { getSiteId } from '../../../../utils';
-import { executeUnbxdAPICall } from '../../../handler';
+import { getSiteId, getAPIConfig } from '../../../../utils';
+import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
 
@@ -25,36 +25,7 @@ const RecommendationsAbstractor = {
   // event listener callback that sets recommendations and clears itself
   getRecs: resolve => event => {
     const { recs, title } = RecommendationsAbstractor.formatResponseRecommendation(event);
-
-    const recommendations = recs
-      .filter(rec => rec.availability === 'In Stock')
-      .map(rec => ({
-        generalProductId: rec.id.replace(/_(US|CA)$/, ''),
-        pdpUrl: rec.pdpURL,
-        department: rec.department,
-        name: rec.name,
-        imagePath: rec.imagePath,
-      }));
-
-    return resolve(
-      RecommendationsAbstractor.getProductsPrices(
-        recommendations.map(recommendation => recommendation.generalProductId)
-      ).then(prices => {
-        return {
-          products: recommendations
-            .filter(recommendation => {
-              return typeof prices[recommendation.generalProductId] !== 'undefined';
-            })
-            .map(recommendation => {
-              return {
-                ...recommendation,
-                ...prices[recommendation.generalProductId],
-              };
-            }),
-          mainTitle: title,
-        };
-      })
-    );
+    return resolve(RecommendationsAbstractor.parseProductResponse(recs, title));
   },
   getMcmId: () => {
     let mcmid;
@@ -67,6 +38,37 @@ const RecommendationsAbstractor = {
 
     return mcmid;
   },
+
+  parseProductResponse: (products, title) => {
+    const recommendations = products
+      .filter(product => product.availability === 'In Stock')
+      .map(product => ({
+        generalProductId: product.id.replace(/_(US|CA)$/, ''),
+        pdpUrl: product.pdpURL,
+        department: product.department,
+        name: product.name,
+        imagePath: product.imagePath,
+      }));
+
+    return RecommendationsAbstractor.getProductsPrices(
+      recommendations.map(recommendation => recommendation.generalProductId)
+    ).then(prices => {
+      return {
+        products: recommendations
+          .filter(recommendation => {
+            return typeof prices[recommendation.generalProductId] !== 'undefined';
+          })
+          .map(recommendation => {
+            return {
+              ...recommendation,
+              ...prices[recommendation.generalProductId],
+            };
+          }),
+        mainTitle: title,
+      };
+    });
+  },
+
   getData: ({
     itemPartNumber,
     page,
@@ -105,7 +107,38 @@ const RecommendationsAbstractor = {
       }
     });
   },
+  getAppData: ({ pageType, categoryName, partNumber }) => {
+    const ADOBE_RECOMMENDATIONS_URL = getAPIConfig().RECOMMENDATIONS_API;
+    const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
+    const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
+    const region = getSiteId(); // TODO use `CA` for Canada
+    const requestLocation = {
+      impressionId: ADOBE_RECOMMENDATIONS_IMPRESSION_ID,
+      host: ADOBE_RECOMMENDATIONS_HOST,
+    };
 
+    return executeExternalAPICall({
+      webService: {
+        method: 'POST',
+        URI: ADOBE_RECOMMENDATIONS_URL,
+      },
+      body: {
+        marketingCloudVisitorId: '',
+        mbox: 'target-global-mbox',
+        requestLocation,
+        mboxParameters: {
+          'entity.categoryId': categoryName || 'boysskinnychinopants', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          pageType,
+          region,
+        },
+      },
+    }).then(result => {
+      return RecommendationsAbstractor.parseProductResponse(
+        result.body ? JSON.parse(result.body.content) : []
+      );
+    });
+  },
   handleValidationError: e => {
     logger.error(e);
   },

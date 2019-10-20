@@ -95,6 +95,16 @@ describe('User reducer', () => {
       expect(updatedState).toStrictEqual(returnValue);
     });
 
+    it('set isRegisteredUserCallDone correctly on getUserInfo', () => {
+      const action = {
+        type: USER_CONSTANTS.GET_USER_INFO,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.set('isRegisteredUserCallDone', false);
+      expect(updatedState).toStrictEqual(returnValue);
+    });
+
     it('setting default store correctly', () => {
       const storeData = {
         name: 'new jersey',

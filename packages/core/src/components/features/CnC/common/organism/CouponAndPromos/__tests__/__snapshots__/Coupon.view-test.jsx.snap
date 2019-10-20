@@ -3,7 +3,6 @@
 exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
 <div>
   <Styled(Col)
-    className="hideAccordian"
     colSize={
       Object {
         "large": 12,
@@ -13,7 +12,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -93,7 +91,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
               openState={false}
             />
           </div>
-          <Connect(ApplyNowModalWrapper) />
         </div>
       }
       className="undefined "
@@ -117,98 +114,15 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={true}
     />
   </Styled(Col)>
-  <div
-    className=""
-  >
-    <div>
-      <ReduxForm
-        additionalClassNameModal="undefined_1"
-        destroyOnUnmount={true}
-        enableReinitialize={false}
-        forceUnregisterOnUnmount={false}
-        form="CouponForm"
-        getFormState={[Function]}
-        isFetching={false}
-        keepDirtyOnReinitialize={false}
-        labels={
-          Object {
-            "APPLIED_REWARDS_HEADING": "Applied",
-            "AVAILABLE_REWARDS_HEADING": "Available",
-          }
-        }
-        onNeedHelpTextClick={[Function]}
-        onSubmit={[Function]}
-        onSubmitSuccess={[Function]}
-        persistentSubmitErrors={false}
-        pure={true}
-        shouldAsyncValidate={[Function]}
-        shouldError={[Function]}
-        shouldValidate={[Function]}
-        shouldWarn={[Function]}
-        source="form"
-        submitAsSideEffect={false}
-        touchOnBlur={true}
-        touchOnChange={false}
-        updateUnregisteredFields={false}
-      />
-      <div
-        className="coupon_list"
-      >
-        <Styled(CouponListSection)
-          additionalClassNameModal="undefined_1"
-          className="available_coupon"
-          couponDetailClick={[Function]}
-          couponList={Immutable.List []}
-          dataLocator="coupon-cartAvaliableRewards"
-          heading="Available"
-          helpAnchorClick={[Function]}
-          helpSubHeading="true"
-          isFetching={false}
-          labels={
-            Object {
-              "APPLIED_REWARDS_HEADING": "Applied",
-              "AVAILABLE_REWARDS_HEADING": "Available",
-            }
-          }
-        />
-        <Styled(CouponDetailModal)
-          additionalClassNameModal="undefined_1"
-          coupon={Object {}}
-          labels={
-            Object {
-              "APPLIED_REWARDS_HEADING": "Applied",
-              "AVAILABLE_REWARDS_HEADING": "Available",
-            }
-          }
-          onRequestClose={[Function]}
-          openState={false}
-        />
-        <CouponHelpModal
-          additionalClassNameModal="undefined_1"
-          coupon={Object {}}
-          heading="Help Modal"
-          labels={
-            Object {
-              "APPLIED_REWARDS_HEADING": "Applied",
-              "AVAILABLE_REWARDS_HEADING": "Available",
-            }
-          }
-          onRequestClose={[Function]}
-          openState={false}
-        />
-      </div>
-      <Connect(ApplyNowModalWrapper) />
-    </div>
-  </div>
 </div>
 `;
 
 exports[`Coupon component should renders correctly when Coupon are present 1`] = `
 <div>
   <Styled(Col)
-    className="hideAccordian"
     colSize={
       Object {
         "large": 12,
@@ -218,7 +132,6 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
     }
     ignoreGutter={
       Object {
-        "medium": true,
         "small": true,
       }
     }
@@ -280,7 +193,6 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
               openState={false}
             />
           </div>
-          <Connect(ApplyNowModalWrapper) />
         </div>
       }
       className="undefined "
@@ -303,71 +215,8 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
         </div>
       }
       iconLocator="arrowicon"
+      isDefaultView={true}
     />
   </Styled(Col)>
-  <div
-    className=""
-  >
-    <div>
-      <ReduxForm
-        additionalClassNameModal="undefined_1"
-        destroyOnUnmount={true}
-        enableReinitialize={false}
-        forceUnregisterOnUnmount={false}
-        form="CouponForm"
-        getFormState={[Function]}
-        keepDirtyOnReinitialize={false}
-        labels={
-          Object {
-            "addressBook": Object {},
-            "common": Object {},
-          }
-        }
-        onNeedHelpTextClick={[Function]}
-        onSubmitSuccess={[Function]}
-        persistentSubmitErrors={false}
-        pure={true}
-        shouldAsyncValidate={[Function]}
-        shouldError={[Function]}
-        shouldValidate={[Function]}
-        shouldWarn={[Function]}
-        source="form"
-        submitAsSideEffect={false}
-        touchOnBlur={true}
-        touchOnChange={false}
-        updateUnregisteredFields={false}
-      />
-      <div
-        className="coupon_list"
-      >
-        <Styled(CouponDetailModal)
-          additionalClassNameModal="undefined_1"
-          coupon={Object {}}
-          labels={
-            Object {
-              "addressBook": Object {},
-              "common": Object {},
-            }
-          }
-          onRequestClose={[Function]}
-          openState={false}
-        />
-        <CouponHelpModal
-          additionalClassNameModal="undefined_1"
-          coupon={Object {}}
-          heading="Help Modal"
-          labels={
-            Object {
-              "addressBook": Object {},
-              "common": Object {},
-            }
-          }
-          onRequestClose={[Function]}
-          openState={false}
-        />
-      </div>
-      <Connect(ApplyNowModalWrapper) />
-    </div>
-  </div>
 </div>
 `;

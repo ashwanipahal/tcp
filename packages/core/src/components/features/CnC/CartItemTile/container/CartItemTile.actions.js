@@ -58,3 +58,16 @@ export const updateCartItemComplete = () => {
     type: CARTPAGE_CONSTANTS.UPDATE_CART_ITEM_COMPLETE,
   };
 };
+
+export const setToggleCartItemError = payload => {
+  return {
+    type: CARTPAGE_CONSTANTS.SET_TOGGLE_CART_ITEM_ERROR,
+    payload,
+  };
+};
+
+export const clearToggleCartItemError = () => {
+  return {
+    type: CARTPAGE_CONSTANTS.CLEAR_TOGGLE_CART_ITEM_ERROR,
+  };
+};

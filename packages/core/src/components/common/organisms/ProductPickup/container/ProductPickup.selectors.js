@@ -13,36 +13,35 @@ export const getBopisItemInventory = state => {
 
 export const getIsBossEnabled = state => {
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOSS_ENABLED'])
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_BOSS_ENABLED
   );
 };
 
 export const getIsBopisEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOPIS_ENABLED'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_BOPIS_ENABLED
   );
 };
 
 export const getIsBopisClearanceProductEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOPIS_ENABLED_CLEARANCE_PRODUCTS'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.isBopisClearanceProductEnabled
   );
 };
 
 export const getIsBossClearanceProductEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOSS_ENABLED_CLEARANCE_PRODUCTS'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.isBossClearanceProductEnabled
   );
 };
 
 export const getIsRadialInventoryEnabled = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isRadialInventoryEnabled'])
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.isRadialInventoryEnabled
   );
 };
 

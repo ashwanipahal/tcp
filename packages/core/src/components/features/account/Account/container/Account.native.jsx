@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
-import navDataMobile from '../MyAccountRoute.config';
 import {
   StyledKeyboardAvoidingView,
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
-import { getLabels } from './Account.selectors';
+import { getLabels, getAccountNavigationState } from './Account.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
+
+import { getAccountNavigationList } from './Account.actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -19,13 +22,39 @@ import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.a
  * NOTE: Which ever new component that gets added for drop down nav, needs an entry in AccountComponentMappingNative file.
  */
 
-export class Account extends React.PureComponent<Props, State> {
+const navConfigMap = {
+  payment: 'paymentGiftCardsPageMobile',
+  'place-rewards': 'myPlaceRewardsMobile',
+  'account-overview': 'accountOverviewMobile',
+  profile: 'profileInformationMobile',
+  wallet: 'myWalletPageMobile',
+  'extra-points': 'earnExtraPointsPageMobile',
+  'points-history': 'pointHistoryPageMobile',
+  preferernces: 'myPreferencePageMobile',
+  'points-claim': 'PointsClaimPageMobile',
+  orders: 'myOrdersPageMobile',
+  'address-book': 'addressBookMobile',
+};
+
+export class Account extends React.PureComponent {
   static propTypes = {
     labels: PropTypes.shape({}),
+    component: PropTypes.string,
+    isUserLoggedIn: PropTypes.bool,
+    closeOverlay: PropTypes.func,
+    getAccountNavigationAction: PropTypes.func,
+    navigation: PropTypes.shape({}),
+    fetchLabels: PropTypes.func,
   };
 
   static defaultProps = {
-    labels: PropTypes.shape({}),
+    labels: {},
+    component: '',
+    isUserLoggedIn: false,
+    closeOverlay: () => {},
+    getAccountNavigationAction: () => {},
+    navigation: {},
+    fetchLabels: () => {},
   };
 
   constructor(props) {
@@ -33,7 +62,33 @@ export class Account extends React.PureComponent<Props, State> {
     const { component } = this.props;
     this.state = {
       component,
+      navData: [],
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (
+      props.accountNavigation &&
+      props.accountNavigation.accountNav &&
+      state.navData.length === 0
+    ) {
+      return {
+        navData: props.accountNavigation.accountNav.map(nav => ({
+          ...nav,
+          ...{
+            value: navConfigMap[nav.component],
+          },
+        })),
+      };
+    }
+
+    return null;
+  }
+
+  componentDidMount() {
+    const { getAccountNavigationAction, fetchLabels } = this.props;
+    getAccountNavigationAction();
+    fetchLabels({ category: LABELS.account });
   }
 
   componentDidUpdate(prevProps) {
@@ -60,6 +115,7 @@ export class Account extends React.PureComponent<Props, State> {
       PointsClaimPageMobile: 'PointsClaimPageMobile',
       myOrdersPageMobile: 'myOrdersPageMobile',
       addressBookMobile: 'addressBookMobile',
+      orderDetailsPageMobile: 'orderDetailsPageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];
@@ -89,13 +145,13 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component, componentProps } = this.state;
+    const { component, componentProps, navData } = this.state;
     const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView keyboardShouldPersistTaps="handled">
           <MyAccountLayout
-            navData={navDataMobile}
+            navData={navData}
             component={this.getComponent(component)}
             componentProps={componentProps}
             mainContent={AccountComponentNativeMapping[component]}
@@ -114,8 +170,23 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    accountNavigation: getAccountNavigationState(state),
   };
 };
 
-export default connect(mapStateToProps)(Account);
+export const mapDispatchToProps = dispatch => {
+  return {
+    getAccountNavigationAction: () => {
+      dispatch(getAccountNavigationList());
+    },
+    fetchLabels: payload => {
+      dispatch(loadComponentLabelsData(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account);
 export { Account as AccountVanilla };

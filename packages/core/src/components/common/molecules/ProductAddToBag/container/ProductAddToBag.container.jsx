@@ -191,6 +191,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
+      fitChanged: true,
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -388,12 +389,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      showColorChips = true,
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
       colorFitsSizesMap: favColorFitsSizesMap,
       isOutfitPage,
-      simplifiedProductPickupView,
+      formRef,
+      formEnabled,
     } = this.props;
     const {
       selectedColor,
@@ -438,12 +441,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        showColorChips={showColorChips}
         fromBagPage={fromBagPage}
         inheritedStyles={customSubmitButtonStyle}
         colorFitSizeDisplayNames={colorFitSizeDisplayNames}
         isGiftCard={isGiftCard}
         isOutfitPage={isOutfitPage}
-        simplifiedProductPickupView={simplifiedProductPickupView}
+        ref={formRef}
+        formEnabled={formEnabled}
       />
     );
   }

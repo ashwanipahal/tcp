@@ -71,7 +71,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <RelatedOutfits
       navigation={Object {}}
       pdpLabels={Object {}}
-      relatedOutfits={Array []}
+      selectedColorProductId=""
     />
   </Styled(View)>
 </LazyloadScrollView>
