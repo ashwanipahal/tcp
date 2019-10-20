@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDetailSection View Component ProductDetailSection & guest & plcc true should render correctly 1`] = `
+<div
+  className=" productDetailWrapper"
+>
+  <div>
+    <span>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="createAccount"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="login"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProductDetailSection View Component ProductDetailSection & plcc true should render correctly 1`] = `
+<div
+  className=" productDetailWrapper"
+>
+  <div>
+    <span>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="learnMore"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`ProductDetailSection View Component ProductDetailSection should render correctly 1`] = `
+<div
+  className=" productDetailWrapper"
+/>
+`;
+
+exports[`ProductDetailSection View Component ProductDetailSection true should render correctly 1`] = `
+<div
+  className=" productDetailWrapper"
+>
+  <div>
+    <span>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="applyNow"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="learnMore"
+        fontSizeVariation="medium"
+        underline={true}
+      />
+    </span>
+  </div>
+</div>
+`;
