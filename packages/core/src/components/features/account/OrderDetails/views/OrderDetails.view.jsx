@@ -109,23 +109,13 @@ class OrderDetailsView extends PureComponent {
     const { orderDetailsData, className, ordersLabels } = this.props;
 
     const {
-      // orderNumber,
-      // orderDate,
-      // pickUpExpirationDate,
-      // checkout,
       summary,
-      // appliedGiftCards,
-      // status,
       orderStatus,
-      // pickedUpDate,
       purchasedItems,
       outOfStockItems,
       isBossOrder,
       canceledItems,
       isBopisOrder,
-      // orderType,
-      // bossMaxDate,
-      // bossMinDate,
     } = orderDetailsData || {};
 
     const { currencySymbol } = summary || {};
@@ -177,51 +167,53 @@ class OrderDetailsView extends PureComponent {
                 </Row>
               </Col>
             </Row>
-            {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
-              purchasedItems &&
-              purchasedItems.length > 0 &&
-              purchasedItems.map((orderGroup, index) => (
-                <Row fullBleed className="group-row">
-                  <OrderStatus
-                    status={orderGroup.orderStatus}
-                    trackingNumber={orderGroup.trackingNumber}
-                    trackingUrl={orderGroup.trackingUrl}
-                    shippedDate={orderGroup.shippedDate}
-                    isBopisOrder={isBopisOrder}
-                    ordersLabels={ordersLabels}
-                  />
-
-                  <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-                    <OrderItemsList
-                      key={index.toString()}
+            <div className="elem-mt-XL">
+              {orderDetailsData.orderType === config.ORDER_ITEM_TYPE.ECOM &&
+                purchasedItems &&
+                purchasedItems.length > 0 &&
+                purchasedItems.map((orderGroup, index) => (
+                  <Row fullBleed className="group-row">
+                    <OrderStatus
+                      status={orderGroup.orderStatus}
+                      trackingNumber={orderGroup.trackingNumber}
+                      trackingUrl={orderGroup.trackingUrl}
+                      shippedDate={orderGroup.shippedDate}
+                      isBopisOrder={isBopisOrder}
                       ordersLabels={ordersLabels}
-                      items={orderGroup.items}
-                      currencySymbol={currencySymbol}
-                      isShowWriteReview={
-                        orderGroup.orderStatus === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
-                        orderStatus === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
-                      }
                     />
-                  </Col>
-                </Row>
-              ))}
 
-            {renderBopisAndBossOrder(orderDetailsData, ordersLabels)}
-            {renderCancelledAndOutOfStockOrders(
-              outOfStockItems,
-              ordersLabels,
-              currencySymbol,
-              getLabelValue(ordersLabels, 'lbl_orders_outOfStock'),
-              getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')
-            )}
+                    <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                      <OrderItemsList
+                        key={index.toString()}
+                        ordersLabels={ordersLabels}
+                        items={orderGroup.items}
+                        currencySymbol={currencySymbol}
+                        isShowWriteReview={
+                          orderGroup.orderStatus === constants.STATUS_CONSTANTS.ORDER_SHIPPED ||
+                          orderStatus === constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED
+                        }
+                      />
+                    </Col>
+                  </Row>
+                ))}
 
-            {renderCancelledAndOutOfStockOrders(
-              canceledItems,
-              ordersLabels,
-              currencySymbol,
-              notificationHeader,
-              notificationMessage
-            )}
+              {renderBopisAndBossOrder(orderDetailsData, ordersLabels)}
+              {renderCancelledAndOutOfStockOrders(
+                outOfStockItems,
+                ordersLabels,
+                currencySymbol,
+                getLabelValue(ordersLabels, 'lbl_orders_outOfStock'),
+                getLabelValue(ordersLabels, 'lbl_orders_outOfStockNotification')
+              )}
+
+              {renderCancelledAndOutOfStockOrders(
+                canceledItems,
+                ordersLabels,
+                currencySymbol,
+                notificationHeader,
+                notificationMessage
+              )}
+            </div>
           </>
         )}
       </div>

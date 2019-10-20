@@ -14,52 +14,60 @@ const OrderStatus = props => {
   const { isBopisOrder, trackingNumber, trackingUrl, ordersLabels } = props;
   const { label, message } = getOrderGroupLabelAndMessage(props);
   return (
-    <Row fullBleed className="elem-mb-XL">
-      <Col className="elem-pt-MED elem-pb-MED" colSize={{ large: 9, medium: 8, small: 6 }}>
-        <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-          {label}
-        </BodyCopy>
+    <Row fullBleed>
+      <Col colSize={{ large: 6, medium: 8, small: 6 }}>
+        <BodyCopy className="order-status-header" component="div">
+          <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+            {label}
+          </BodyCopy>
 
-        <BodyCopy fontWeight="extrabold" component="span" fontSize="fs16" fontFamily="secondary">
-          {message}
-        </BodyCopy>
+          <BodyCopy fontWeight="extrabold" component="span" fontSize="fs16" fontFamily="secondary">
+            {message}
+          </BodyCopy>
 
-        {!isBopisOrder && trackingNumber && trackingNumber !== constants.STATUS_CONSTANTS.NA && (
-          <>
-            <BodyCopy className="orderDetail-trackingNumber-pipe" component="span">
-              {' | '}
-            </BodyCopy>
-            <BodyCopy className="orderDetail-trackingNumber">
-              <BodyCopy
-                component="span"
-                fontSize="fs16"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-              >
-                {getLabelValue(ordersLabels, 'lbl_orders_trackingNumber')}
+          {!isBopisOrder && trackingNumber && trackingNumber !== constants.STATUS_CONSTANTS.NA && (
+            <>
+              <BodyCopy className="orderDetail-trackingNumber-pipe" component="span">
+                {' | '}
               </BodyCopy>
-              <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                {trackingNumber}
+              <BodyCopy className="orderDetail-trackingNumber">
+                <BodyCopy
+                  component="span"
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  fontFamily="secondary"
+                >
+                  {getLabelValue(ordersLabels, 'lbl_orders_trackingNumber')}
+                </BodyCopy>
+                <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+                  {trackingNumber}
+                </BodyCopy>
               </BodyCopy>
-            </BodyCopy>
-          </>
-        )}
+            </>
+          )}
+        </BodyCopy>
       </Col>
 
       {!isBopisOrder && trackingUrl && trackingUrl !== constants.STATUS_CONSTANTS.NA && (
-        <Col className="button-container" colSize={{ large: 3, medium: 0, small: 6 }}>
-          <Anchor
-            to={trackingUrl}
-            anchorVariation="button"
-            buttonVariation="fixed-width"
-            fill="BLUE"
-            centered
-            className="button-track"
-            dataLocator={trackingNumber}
-            target="_blank"
-          >
-            {getLabelValue(ordersLabels, 'lbl_orders_trackit')}
-          </Anchor>
+        <Col className="button-container" colSize={{ large: 6, medium: 0, small: 6 }}>
+          <Row fullBleed>
+            <Col colSize={{ large: 5, medium: 8, small: 6 }} />
+            <Col colSize={{ large: 7, medium: 8, small: 6 }}>
+              <BodyCopy className="button-track" component="div">
+                <Anchor
+                  to={trackingUrl}
+                  anchorVariation="button"
+                  buttonVariation="fixed-width"
+                  fill="BLUE"
+                  centered
+                  dataLocator={trackingNumber}
+                  target="_blank"
+                >
+                  {getLabelValue(ordersLabels, 'lbl_orders_trackit')}
+                </Anchor>
+              </BodyCopy>
+            </Col>
+          </Row>
         </Col>
       )}
     </Row>
