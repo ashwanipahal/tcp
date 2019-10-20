@@ -18,7 +18,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
       : ``}
 `;
 
-const ModalCustomWrapper = styled.View`
+const ModalCustomWrapper = styled.SafeAreaView`
   ${props =>
     props.transparentModal === 'transparent-captcha'
       ? `

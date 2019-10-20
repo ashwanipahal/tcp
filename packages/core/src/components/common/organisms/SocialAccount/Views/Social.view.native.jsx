@@ -29,6 +29,11 @@ class Socialview extends React.PureComponent {
     setPointsModal: PropTypes.func.isRequired,
     handleComponentChange: PropTypes.func.isRequired,
     isPlcc: PropTypes.isRequired,
+    componentProps: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    componentProps: {},
   };
 
   constructor(props) {
@@ -45,6 +50,23 @@ class Socialview extends React.PureComponent {
       Connected: SOCIAL_ICONS.CLOSE_ICON,
       Disconnected: SOCIAL_ICONS.PLUS_ICON,
     };
+  }
+
+  componentDidMount() {
+    // handling of auto social modal - facebook and instagram
+    const {
+      componentProps: { activityModalSocialAccount },
+    } = this.props;
+
+    if (activityModalSocialAccount) {
+      if (activityModalSocialAccount === 'facebook') {
+        this.handleSocialNetwork('Facebook', false);
+      } else if (activityModalSocialAccount === 'instagram') {
+        this.handleSocialNetwork('Instagram', false);
+      } else {
+        this.handleSocialNetwork('Twitter', false);
+      }
+    }
   }
 
   /**
@@ -257,7 +279,7 @@ class Socialview extends React.PureComponent {
         return this.logoutApp('facebook');
       case 'Instagram':
         if (!isConnected) {
-          this.instagramLogin.show();
+          return this.instagramLogin.show();
         }
         return this.logoutApp('instagram');
       case 'Twitter':
@@ -265,12 +287,12 @@ class Socialview extends React.PureComponent {
           const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = getAPIConfig();
           const { RNTwitterSignIn } = NativeModules;
           RNTwitterSignIn.init(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
-          RNTwitterSignIn.logIn().then(loginData => {
+          return RNTwitterSignIn.logIn().then(loginData => {
             const { authToken, userID } = loginData;
             this.dispatchSaveSocial('twitter', authToken, userID);
           });
         }
-        return null;
+        return this.logoutApp('twitter');
       default:
         return null;
     }
@@ -278,6 +300,7 @@ class Socialview extends React.PureComponent {
 
   render() {
     const { getSocialAcc, labels } = this.props;
+
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }
