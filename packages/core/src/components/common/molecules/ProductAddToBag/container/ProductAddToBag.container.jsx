@@ -389,11 +389,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      showColorChips = true,
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
       colorFitsSizesMap: favColorFitsSizesMap,
       isOutfitPage,
+      formRef,
+      formEnabled,
     } = this.props;
     const {
       selectedColor,
@@ -438,11 +441,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        showColorChips={showColorChips}
         fromBagPage={fromBagPage}
         inheritedStyles={customSubmitButtonStyle}
         colorFitSizeDisplayNames={colorFitSizeDisplayNames}
         isGiftCard={isGiftCard}
         isOutfitPage={isOutfitPage}
+        ref={formRef}
+        formEnabled={formEnabled}
       />
     );
   }
