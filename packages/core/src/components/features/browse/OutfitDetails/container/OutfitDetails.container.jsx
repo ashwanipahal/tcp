@@ -33,14 +33,15 @@ class OutfitDetailsContainer extends React.PureComponent {
     const {
       getOutfit,
       router: { query },
-      // navigation,
+      navigation,
     } = this.props;
 
     if (isMobileApp()) {
-      // const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
-      // const outfitId = navigation.getParam('outfitId');
-      const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
-      const outfitId = '138548';
+      const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
+      const outfitId = navigation.getParam('outfitId');
+      // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
+      // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
+      // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
       const { vendorColorProductIdsList, outfitId } = query;
@@ -136,7 +137,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(clearAddToBagErrorState());
     },
     addToFavorites: payload => {
-      console.log('addToFavorites');
       dispatch(addItemsToWishlist(payload));
     },
   };
