@@ -1134,6 +1134,9 @@ exports[`QuickViewModal component should renders correctly 2`] = `
     }
     quickViewLabels={Object {}}
   />
+  <Connect(LoyaltyBannerContainer)
+    pageCategory="isAddedToBagPage"
+  />
   <QuickViewAddToBagButton
     onClickActn={[Function]}
   />
