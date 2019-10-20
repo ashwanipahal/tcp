@@ -281,8 +281,10 @@ ProductListingContainer.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isLoggedIn: false,
-  currencyAttributes: {},
-  currency: '$',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
 };
 
 export default withRouter(

@@ -99,7 +99,7 @@ ProductCustomizeFormPartContainer.defaultProps = {
   addToBagError: '',
   navigation: {},
   formRef: {},
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default ProductCustomizeFormPartContainer;

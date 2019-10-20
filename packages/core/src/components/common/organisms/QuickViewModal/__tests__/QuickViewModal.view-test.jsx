@@ -210,12 +210,16 @@ describe('QuickViewModal component', () => {
       plpLabels: {},
       currency: '',
       priceCurrency: '',
-      currencyExchange: '',
+      currencyExchange: 1,
       isCanada: false,
       isHasPlcc: false,
       isInternationalShipping: false,
     };
+
     const component = shallow(<QuickViewModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
+    const newProp = { ...props, isMultiItemQVModal: true };
+    const component1 = shallow(<QuickViewModalVanilla {...newProp} />);
+    expect(component1).toMatchSnapshot();
   });
 });

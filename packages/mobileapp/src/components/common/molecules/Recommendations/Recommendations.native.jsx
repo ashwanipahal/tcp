@@ -132,7 +132,7 @@ const Recommendations = props => {
   } = props;
   const variationArray = variation.split(',');
 
-  useEffect(fetchRecommendations(loadRecommendations));
+  useEffect(fetchRecommendations(loadRecommendations), []);
 
   return (
     <View>

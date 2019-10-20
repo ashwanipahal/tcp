@@ -8,6 +8,7 @@ import CHECKOUT_SELECTORS, {
   getPickupValues,
   getPickupAltValues,
   isPickupAlt,
+  getAlternateFormFieldsExpress,
 } from '../../../../../container/Checkout.selector';
 
 export const PickUpReviewContainer = ({
@@ -17,6 +18,10 @@ export const PickUpReviewContainer = ({
   isHasPickUpAlternatePerson,
   onEdit,
   labels,
+  pickUpLabels,
+  isAlternateUpdateChecked,
+  isExpressCheckout,
+  pickUpContactAlternate,
 }) => {
   return (
     <PickUpReviewSection
@@ -26,6 +31,12 @@ export const PickUpReviewContainer = ({
       isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
       onEdit={onEdit}
       labels={labels}
+      pickUpLabels={pickUpLabels}
+      isAlternateUpdateChecked={
+        isAlternateUpdateChecked ? isAlternateUpdateChecked.hasAlternatePickup : false
+      }
+      isExpressCheckout={isExpressCheckout}
+      pickUpContactAlternate={pickUpContactAlternate}
     />
   );
 };
@@ -37,10 +48,16 @@ PickUpReviewContainer.propTypes = {
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   onEdit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  pickUpLabels: PropTypes.shape({}),
+  isAlternateUpdateChecked: PropTypes.shape({}).isRequired,
+  isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };
 
 PickUpReviewContainer.defaultProps = {
   labels: {},
+  pickUpLabels: {},
+  isExpressCheckout: false,
 };
 
 const mapStateToProps = state => {
@@ -50,6 +67,12 @@ const mapStateToProps = state => {
     pickUpAlternatePerson: getPickupAltValues(state),
     isHasPickUpAlternatePerson: isPickupAlt(state),
     labels: CHECKOUT_SELECTORS.getPickupSectionLabels(state),
+    pickUpLabels: {
+      ...CHECKOUT_SELECTORS.getPickUpContactFormLabels(state),
+      ...CHECKOUT_SELECTORS.getEmailSignUpLabels(state),
+    },
+    isAlternateUpdateChecked: getAlternateFormFieldsExpress(state),
+    pickUpContactAlternate: CHECKOUT_SELECTORS.getPickupInitialPickupSectionValues(state),
   };
 };
 

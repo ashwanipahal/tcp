@@ -178,7 +178,7 @@ ProductCustomizeFormPart.defaultProps = {
   currency: 'USD',
   className: '',
   priceCurrency: '',
-  currencyExchange: '',
+  currencyExchange: 1,
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,

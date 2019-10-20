@@ -5,6 +5,8 @@ import {
   getOrderItems,
   getQuantityValue,
   getPointsSummary,
+  getAddedToPickupError,
+  getMultipleItemsAddedToBagError,
 } from '../container/AddedToBag.selectors';
 
 describe('#Added to bag Selectors', () => {
@@ -13,6 +15,8 @@ describe('#Added to bag Selectors', () => {
       quantity: '2',
     },
     error: false,
+    pickupError: false,
+    multipleItemsError: false,
     isOpenAddedToBag: false,
   });
   AddedToBagState = AddedToBagState.set('itemInfo', {
@@ -49,6 +53,14 @@ describe('#Added to bag Selectors', () => {
 
   it('#getOrderItems should return state', () => {
     expect(getOrderItems(state)).toEqual(CartPageState.getIn(['orderDetails', 'orderItems']));
+  });
+
+  it('#getMultipleItemsAddedToBagError should return state', () => {
+    expect(getMultipleItemsAddedToBagError(state)).toEqual(false);
+  });
+
+  it('#getAddedToPickupError should return state', () => {
+    expect(getAddedToPickupError(state)).toEqual(false);
   });
 
   it('#getQuantityValue should return state', () => {

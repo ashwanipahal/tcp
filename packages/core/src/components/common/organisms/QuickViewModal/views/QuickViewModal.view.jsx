@@ -186,7 +186,7 @@ QuickViewModal.propTypes = {
 };
 
 QuickViewModal.defaultProps = {
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };
