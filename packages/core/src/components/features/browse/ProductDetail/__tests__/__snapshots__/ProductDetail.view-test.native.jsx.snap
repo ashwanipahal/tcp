@@ -47,6 +47,17 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
     />
+    <Connect(Styled(FulfillmentSection))
+      btnClassName="added-to-bag"
+      buttonLabel="Add To Bag"
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+    />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
@@ -61,17 +72,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       navigation={Object {}}
       pdpLabels={Object {}}
       relatedOutfits={Array []}
-    />
-    <Connect(Styled(FulfillmentSection))
-      btnClassName="added-to-bag"
-      buttonLabel="Add To Bag"
-      currentProduct={
-        Object {
-          "colorFitsSizesMap": Array [],
-          "name": "",
-          "shortDescription": "",
-        }
-      }
     />
   </Styled(View)>
 </LazyloadScrollView>
