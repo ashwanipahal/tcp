@@ -31,7 +31,6 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     }
     isAddNewAddress={false}
-    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}
@@ -111,7 +110,6 @@ exports[`Shipping Page should render correctly with component did update and get
       }
     }
     isAddNewAddress={false}
-    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}
@@ -223,7 +221,6 @@ exports[`Shipping Page should render correctly with component did update and get
       }
     }
     isAddNewAddress={false}
-    isCanada={false}
     isGiftServicesChecked={false}
     isGuest={true}
     isMobile={false}

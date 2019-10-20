@@ -1,5 +1,5 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects';
-import seoDataAbstractor from '../../services/abstractors/bootstrap/seoData';
+import seoDataAbstractor from '../../services/abstractors/seoData';
 import GLOBAL_CONSTANTS, { SEO_DATA } from '../constants';
 import { SEO_DATA_REDUCER_KEY } from '../../constants/reducer.constants';
 import { setSEOData } from '../actions';

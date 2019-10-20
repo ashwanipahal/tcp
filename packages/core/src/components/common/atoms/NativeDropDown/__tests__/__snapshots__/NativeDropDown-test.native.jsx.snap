@@ -78,9 +78,20 @@ exports[`NativeDropDown native should render correctly should match snapshot for
   width={null}
 >
   <Picker
+    itemStyle={
+      Object {
+        "height": 41,
+        "padding": 0,
+      }
+    }
     mode="dialog"
     onValueChange={[Function]}
     selectedValue={null}
+    style={
+      Object {
+        "height": 41,
+      }
+    }
   >
     <PickerItem
       label="Test"
