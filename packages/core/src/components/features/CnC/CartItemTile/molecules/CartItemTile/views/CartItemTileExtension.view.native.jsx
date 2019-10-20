@@ -17,6 +17,11 @@ import endpoints from '../../../../../../../service/endpoint';
 import { getLocator } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
+import {
+  getBOSSUnavailabilityMessage,
+  getBOPISUnavailabilityMessage,
+  getSTHUnavailabilityMessage,
+} from './CartItemTile.utils';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -223,11 +228,48 @@ const getCartRadioButtons = ({
   return <></>;
 };
 
-const getItemStatus = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
+/**
+ * @function renderUnavailableErrorMessage
+ * @param {Object} settings
+ * @returns {JSX} Returns Item Unavailable component with respective variation of text via passed input
+ * @memberof CartItemTile
+ */
+const renderUnavailableErrorMessage = ({
+  props,
+  isEcomSoldout,
+  bossDisabled,
+  isBOSSOrder,
+  bopisDisabled,
+  isBOPISOrder,
+  noBossMessage,
+  noBopisMessage,
+  availability,
+}) => {
+  const { labels } = props;
+  let unavailableMessage = '';
+  if (isEcomSoldout) {
+    unavailableMessage = labels.soldOutError;
+  } else if (isBOSSOrder) {
+    unavailableMessage = getBOSSUnavailabilityMessage(
+      bossDisabled,
+      noBossMessage,
+      availability,
+      labels
+    );
+  } else if (isBOPISOrder) {
+    unavailableMessage = getBOPISUnavailabilityMessage(
+      bopisDisabled,
+      noBopisMessage,
+      availability,
+      labels
+    );
+  } else {
+    unavailableMessage = getSTHUnavailabilityMessage(availability, labels);
   }
-  return <></>;
+
+  return unavailableMessage ? (
+    <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={unavailableMessage} />
+  ) : null;
 };
 
 /* eslint-enable react/prop-types */
@@ -242,5 +284,5 @@ export default {
   PriceOnReviewPage,
   getEditError,
   getCartRadioButtons,
-  getItemStatus,
+  renderUnavailableErrorMessage,
 };

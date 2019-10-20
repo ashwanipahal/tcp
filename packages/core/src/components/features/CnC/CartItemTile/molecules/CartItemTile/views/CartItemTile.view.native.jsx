@@ -286,8 +286,6 @@ class ProductInformation extends React.Component {
       isBOPISOrder
     );
 
-    console.log('bossDisabled, bopisDisabled', bossDisabled, bopisDisabled);
-
     return (
       <Swipeable
         onRef={ref => {
@@ -302,7 +300,17 @@ class ProductInformation extends React.Component {
       >
         <MainWrapper>
           <UnavailableView>
-            {CartItemTileExtension.getItemStatus(productDetail, labels)}
+            {CartItemTileExtension.renderUnavailableErrorMessage({
+              props: this.props,
+              isEcomSoldout,
+              bossDisabled,
+              isBOSSOrder,
+              bopisDisabled,
+              isBOPISOrder,
+              noBossMessage,
+              noBopisMessage,
+              availability,
+            })}
           </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}

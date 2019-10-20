@@ -150,3 +150,65 @@ export const getBossBopisFlags = (props, brand) => {
     isBopisEnabled,
   };
 };
+
+/**
+ * @function getBOSSUnavailabilityMessage Get Boss Unavailability messages
+ * @param {bool} bossDisabled Represents if the boss option should be disabled or not
+ * @param {string} noBossMessage Represents the online only products or clearance disabled products message.
+ * @param {string} availability Represents status of the availability
+ * @param {Object} labels
+ * @returns {string} Unavailable message string
+ * @memberof CartItemTile
+ */
+export const getBOSSUnavailabilityMessage = (bossDisabled, noBossMessage, availability, labels) => {
+  let unavailableMessage = '';
+  /* istanbul ignore else */
+  if (bossDisabled || !!noBossMessage) {
+    switch (availability) {
+      case CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE:
+        unavailableMessage = labels.bossUnavailable;
+        break;
+      case CARTPAGE_CONSTANTS.AVAILABILITY.REQ_QTY_UNAVAILABLE:
+        unavailableMessage = labels.bossReqQtyUnavailable;
+        break;
+      case CARTPAGE_CONSTANTS.AVAILABILITY.BOSSINELIGIBLE:
+        unavailableMessage = labels.bossInEligible;
+        break;
+      default:
+        unavailableMessage = labels.bossUnavailable;
+    }
+  }
+  return unavailableMessage;
+};
+
+/**
+ * @function getBOPISUnavailabilityMessage Get BOPIS Unavailability messages
+ * @param {bool} bopisDisabled Represents if the bopis option should be disabled or not
+ * @param {string} noBopisMessage Represents the online only products or clearance disabled products message.
+ * @param {string} availability Represents status of the availability
+ * @param {Object} labels
+ * @returns {string} Unavailable message string
+ * @memberof CartItemTile
+ */
+export const getBOPISUnavailabilityMessage = (
+  bopisDisabled,
+  noBopisMessage,
+  availability,
+  labels
+) => {
+  let unavailableMessage = '';
+  /* istanbul ignore else */
+  if (bopisDisabled || !!noBopisMessage) {
+    unavailableMessage = labels.bopisUnavailable;
+  }
+  return unavailableMessage;
+};
+
+/**
+ * @function getSTHUnavailabilityMessage
+ * @param {string} availability Represents status of the availability
+ * @param {Object} labels
+ * @memberof CartItemTile
+ */
+export const getSTHUnavailabilityMessage = (availability, labels) =>
+  availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK ? labels.ecomUnavailable : '';
