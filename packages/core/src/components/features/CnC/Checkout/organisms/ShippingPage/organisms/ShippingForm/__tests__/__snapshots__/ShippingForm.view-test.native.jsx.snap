@@ -139,6 +139,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           fontSizeVariation="small"
           href="#"
           locator=""
+          margins={null}
           noLink={true}
           noUnderline={true}
           onPress={null}
