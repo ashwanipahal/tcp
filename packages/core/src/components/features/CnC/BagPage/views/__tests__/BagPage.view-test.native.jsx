@@ -182,8 +182,8 @@ describe('AddedToBagActions native component', () => {
   });
   it('AddedToBagActions native component renders correctly with bag section with method handleChangeActiveSection', () => {
     const component = shallow(<BagPage {...props1} />);
-    const spyRenderModals = jest.spyOn(component.instance(), 'renderModals');
-    component.instance().renderModals();
+    const spyRenderModals = jest.spyOn(component.instance(), 'renderPickupModal');
+    component.instance().renderPickupModal();
     expect(spyRenderModals).toHaveBeenCalled();
   });
 });

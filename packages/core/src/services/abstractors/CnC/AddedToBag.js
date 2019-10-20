@@ -29,6 +29,33 @@ export const getPlpProducts = () => getUnboxResult(endpoints.getProductsBySearch
 export const getGiftCardProducts = () =>
   getUnboxResult(endpoints.getProductsBySearchTerm, 'gift card');
 
+export const addMultipleProductsInEcom = paramsArray => {
+  const atbSuccessProducts = [];
+  return paramsArray.reduce((initialSynchPromise, params) => {
+    return initialSynchPromise.then(() => {
+      return executeStatefulAPICall({ body: params, webService: endpoints.addProductToCart })
+        .then(res => {
+          if (responseContainsErrors(res)) {
+            throw new ServiceResponseError(res);
+          }
+          atbSuccessProducts.push({
+            orderId: res.body.orderId && res.body.orderId[0],
+            orderItemId: res.body.orderItemId && res.body.orderItemId[0],
+          });
+          return atbSuccessProducts;
+        })
+        .catch(err => {
+          // eslint-disable-next-line no-throw-literal
+          throw {
+            error: getFormattedError(err),
+            errorProductId: params.productId,
+            atbSuccessProducts,
+          };
+        });
+    });
+  }, Promise.resolve());
+};
+
 export const addCartEcomItem = params =>
   executeStatefulAPICall({ body: params, webService: endpoints.addProductToCart })
     .then(res => {
@@ -63,4 +90,5 @@ export default {
   getGiftCardProducts,
   addCartEcomItem,
   addCartBopisItem,
+  addMultipleProductsInEcom,
 };

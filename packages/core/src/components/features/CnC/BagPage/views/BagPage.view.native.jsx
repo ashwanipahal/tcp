@@ -261,14 +261,9 @@ export class BagPage extends React.Component {
     return <></>;
   };
 
-  renderModals = () => {
+  renderPickupModal = () => {
     const { isPickupModalOpen, navigation } = this.props;
-    return (
-      <>
-        <QuickViewModal fromBagPage />
-        {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-      </>
-    );
+    return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
   };
 
   render() {
@@ -282,6 +277,7 @@ export class BagPage extends React.Component {
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     const viewHeight = showCondensedHeader ? '74%' : '65%';
+    const isBagPage = true;
     return (
       <>
         <ContainerMain>
@@ -329,7 +325,8 @@ export class BagPage extends React.Component {
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
             </MainSection>
-            {this.renderModals()}
+            <QuickViewModal fromBagPage={isBagPage} />
+            {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
