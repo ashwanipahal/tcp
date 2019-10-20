@@ -102,6 +102,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedQuantity,
       selectColor,
       showAddToBagCTA,
+      showColorChips,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -113,21 +114,23 @@ class ProductAddToBag extends React.PureComponent<Props> {
     };
     return (
       <View {...this.props}>
-        <Field
-          id="color"
-          name="color"
-          itemValue={colorName}
-          component={ProductVariantSelector}
-          title={color}
-          renderColorItem
-          data={colorList}
-          selectedItem={colorName}
-          selectedColor={selectedColor}
-          selectColor={selectColor}
-          componentWidth={30}
-          separatorWidth={16}
-          locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
-        />
+        {showColorChips && (
+          <Field
+            id="color"
+            name="color"
+            itemValue={colorName}
+            component={ProductVariantSelector}
+            title={color}
+            renderColorItem
+            data={colorList}
+            selectedItem={colorName}
+            selectedColor={selectedColor}
+            selectColor={selectColor}
+            componentWidth={30}
+            separatorWidth={16}
+            locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
+          />
+        )}
         <Field
           id="fit"
           name="Fit"
