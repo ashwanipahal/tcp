@@ -5,8 +5,10 @@ import { Row, Col, BodyCopy, Anchor, Image } from '../../../../../../../../commo
 import internalEndpoints from '../../../../../internalEndpoints';
 import { getIconPath } from '../../../../../../../../../utils';
 
-const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
-  const addEditText = isContactAdded ? 'lbl_preference_tileEdit' : 'lbl_preference_tileAdd';
+const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
+  const { placeRewardsPush, placeRewardsSms } = customerPreferences;
+  const addEditText =
+    placeRewardsPush || placeRewardsSms ? 'lbl_preference_tileEdit' : 'lbl_preference_tileAdd';
   return (
     <BodyCopy component="div" className="heading elem-pt-LRG">
       <Row fullBleed>
@@ -41,103 +43,71 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
                 medium: 3,
               }}
             >
-              {isContactAdded ? (
-                <Row fullBleed>
-                  <Col
-                    colSize={{
-                      small: 3,
-                      large: 6,
-                      medium: 4,
-                    }}
-                  >
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    small: 3,
+                    large: 6,
+                    medium: 4,
+                  }}
+                >
+                  {placeRewardsSms ? (
                     <Image
                       className="elem-pr-SM"
                       width="30"
                       height="30"
                       src={getIconPath('sms-enabled')}
                     />
-                    <BodyCopy
-                      component="span"
-                      fontSize="fs10"
-                      fontWeight="extrabold"
-                      fontFamily="secondary"
-                    >
-                      {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
-                    </BodyCopy>
-                  </Col>
-                  <Col
-                    colSize={{
-                      small: 3,
-                      large: 6,
-                      medium: 4,
-                    }}
-                  >
-                    <Image
-                      className="elem-pr-SM"
-                      width="30"
-                      height="30"
-                      src={getIconPath('push-enabled')}
-                    />
-                    <BodyCopy
-                      className="elem-pl-XXXS"
-                      component="span"
-                      fontSize="fs10"
-                      fontWeight="extrabold"
-                      fontFamily="secondary"
-                    >
-                      {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
-                    </BodyCopy>
-                  </Col>
-                </Row>
-              ) : (
-                <Row fullBleed>
-                  <Col
-                    colSize={{
-                      small: 3,
-                      large: 6,
-                      medium: 4,
-                    }}
-                  >
+                  ) : (
                     <Image
                       className="elem-pr-SM"
                       width="30"
                       height="30"
                       src={getIconPath('sms-disabled')}
                     />
-                    <BodyCopy
-                      component="span"
-                      fontSize="fs10"
-                      fontWeight="semibold"
-                      fontFamily="secondary"
-                    >
-                      {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
-                    </BodyCopy>
-                  </Col>
-                  <Col
-                    colSize={{
-                      small: 3,
-                      large: 6,
-                      medium: 4,
-                    }}
+                  )}
+                  <BodyCopy
+                    component="span"
+                    fontSize="fs10"
+                    fontWeight="extrabold"
+                    fontFamily="secondary"
                   >
+                    {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
+                  </BodyCopy>
+                </Col>
+                <Col
+                  colSize={{
+                    small: 3,
+                    large: 6,
+                    medium: 4,
+                  }}
+                >
+                  {placeRewardsPush ? (
+                    <Image
+                      className="elem-pr-SM"
+                      width="30"
+                      height="30"
+                      src={getIconPath('push-enabled')}
+                    />
+                  ) : (
                     <Image
                       className="elem-pr-SM"
                       width="30"
                       height="30"
                       src={getIconPath('push-disabled')}
                     />
-                    <BodyCopy
-                      className="elem-pl-XXXS"
-                      component="span"
-                      fontSize="fs10"
-                      fontWeight="semibold"
-                      fontFamily="secondary"
-                    >
-                      {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
-                    </BodyCopy>
-                  </Col>
-                </Row>
-              )}
+                  )}
+                  <BodyCopy
+                    className="elem-pl-XXXS"
+                    component="span"
+                    fontSize="fs10"
+                    fontWeight="extrabold"
+                    fontFamily="secondary"
+                  >
+                    {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
+                  </BodyCopy>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Col>
@@ -167,7 +137,7 @@ const ContactPreferencesTileItem = ({ labels, isContactAdded }) => {
 
 ContactPreferencesTileItem.propTypes = {
   labels: PropTypes.shape({}),
-  isContactAdded: PropTypes.bool,
+  customerPreferences: PropTypes.shape({}),
 };
 
 ContactPreferencesTileItem.defaultProps = {
@@ -178,7 +148,7 @@ ContactPreferencesTileItem.defaultProps = {
     lbl_preference_tileTextText: '',
     lbl_preference_tileAppText: '',
   },
-  isContactAdded: false,
+  customerPreferences: {},
 };
 
 export default ContactPreferencesTileItem;

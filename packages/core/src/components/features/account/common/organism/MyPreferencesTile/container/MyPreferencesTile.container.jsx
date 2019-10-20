@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MyPreferencesTileComponent from '../views';
 import { getLabels } from '../../../../Account/container/Account.selectors';
+import { isGymboree } from '../../../../../../../utils';
 import {
   getFavoriteStore,
   getFavoriteStoreName,
@@ -16,10 +17,7 @@ import {
 import { getsocialDataOnLoadState } from '../../../../../../common/organisms/SocialAccount/container/Social.selectors';
 import { getSocialAccount } from '../../../../../../common/organisms/SocialAccount/container/Social.actions';
 import { getMyFavoriteStoreAction } from '../../../../MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.actions';
-import {
-  getSmsPhone,
-  getGymSmsPhone,
-} from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscriptionText.selectors';
+import { getCustomerPreferences } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscriptionText.selectors';
 import { getSubscribeStore } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.actions';
 
 class MyPreferencesTile extends PureComponent {
@@ -33,6 +31,7 @@ class MyPreferencesTile extends PureComponent {
     } = this.props;
 
     getContactPreferences();
+
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
     }
@@ -40,6 +39,25 @@ class MyPreferencesTile extends PureComponent {
       socialLoad();
     }
   }
+
+  getContactPreferencesValues = customerPreferencesObject => {
+    const { CustomerPreferences, CustomerPreferencesGym } = customerPreferencesObject;
+
+    const customerPreferences = isGymboree() ? CustomerPreferencesGym : CustomerPreferences;
+
+    if (customerPreferences.length) {
+      const contactPreferencesValue = {};
+      customerPreferences.forEach(customerPreference => {
+        const { preferenceMode, isModeSelected } = customerPreference;
+        if (preferenceMode === 'placeRewardsPush' || preferenceMode === 'placeRewardsSms') {
+          contactPreferencesValue[preferenceMode] = isModeSelected;
+        }
+      });
+      return contactPreferencesValue;
+    }
+
+    return { placeRewardsPush: false, placeRewardsSms: false };
+  };
 
   render() {
     const {
@@ -52,11 +70,11 @@ class MyPreferencesTile extends PureComponent {
       favStoreZipcode,
       favStorePhone,
       socialAccounts,
-      smsPhone,
-      gymSmsPhone,
+      customerPreferences,
     } = this.props;
 
-    // console.info('-->>', smsPhone, gymSmsPhone);
+    const customerPreferencesValue =
+      (customerPreferences && this.getContactPreferencesValues(customerPreferences)) || {};
     return (
       <MyPreferencesTileComponent
         labels={labels}
@@ -68,8 +86,7 @@ class MyPreferencesTile extends PureComponent {
         favStoreZipcode={favStoreZipcode}
         favStorePhone={favStorePhone}
         socialAccounts={socialAccounts}
-        smsPhone={smsPhone}
-        gymSmsPhone={gymSmsPhone}
+        customerPreferences={customerPreferencesValue}
       />
     );
   }
@@ -90,8 +107,7 @@ MyPreferencesTile.propTypes = {
   socialAccounts: PropTypes.shape({}),
   socialLoad: PropTypes.func.isRequired,
   getContactPreferences: PropTypes.func.isRequired,
-  smsPhone: PropTypes.shape({}),
-  gymSmsPhone: PropTypes.shape({}),
+  customerPreferences: PropTypes.shape({}),
 };
 
 MyPreferencesTile.defaultProps = {
@@ -104,8 +120,7 @@ MyPreferencesTile.defaultProps = {
   favStoreZipcode: '',
   favStorePhone: '',
   socialAccounts: {},
-  smsPhone: {},
-  gymSmsPhone: {},
+  customerPreferences: {},
 };
 
 export const mapStateToProps = state => ({
@@ -119,8 +134,7 @@ export const mapStateToProps = state => ({
   favStorePhone: getFavoriteStorePhone(state),
   defaultStore: getDefaultStore(state),
   socialAccounts: getsocialDataOnLoadState(state),
-  smsPhone: getSmsPhone(state),
-  gymSmsPhone: getGymSmsPhone(state),
+  customerPreferences: getCustomerPreferences(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

@@ -6,7 +6,7 @@ describe('ContactPreferencesTileItem component', () => {
   it('should render correctly when coupons are not present', () => {
     const props = {
       labels: {},
-      isContactAdded: false,
+      customerPreferences: {},
     };
     const component = shallow(<ContactPreferencesTileItem {...props} />);
     expect(component).toMatchSnapshot();

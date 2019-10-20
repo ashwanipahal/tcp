@@ -18,7 +18,7 @@ exports[`MyPreferencesTile component should render correctly when coupons are no
     labels={Object {}}
   />
   <ContactPreferencesTileItem
-    isContactAdded={true}
+    customerPreferences={Object {}}
     labels={Object {}}
   />
   <SocialAccountsTileItem

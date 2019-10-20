@@ -17,8 +17,8 @@ export const MyPreferencesTile = ({
   favStoreZipcode,
   favStorePhone,
   socialAccounts,
+  customerPreferences,
 }) => {
-  const isContactAdded = true;
   return (
     <AccountOverviewTile
       title={getLabelValue(labels, 'lbl_prefrence_heading', 'preferences')}
@@ -37,7 +37,7 @@ export const MyPreferencesTile = ({
         favStorePhone={favStorePhone}
       />
 
-      <ContactPreferencesTileItem labels={labels} isContactAdded={isContactAdded} />
+      <ContactPreferencesTileItem labels={labels} customerPreferences={customerPreferences} />
 
       {!isCanada() ? (
         <SocialAccountsTileItem labels={labels} socialAccounts={socialAccounts} />
@@ -56,6 +56,7 @@ MyPreferencesTile.propTypes = {
   favStoreZipcode: PropTypes.string,
   favStorePhone: PropTypes.string,
   socialAccounts: PropTypes.shape({}),
+  customerPreferences: PropTypes.shape({}),
 };
 
 MyPreferencesTile.defaultProps = {
@@ -71,6 +72,7 @@ MyPreferencesTile.defaultProps = {
   favStorePhone: '',
   favStoreAddress: '',
   socialAccounts: {},
+  customerPreferences: {},
 };
 
 export default MyPreferencesTile;

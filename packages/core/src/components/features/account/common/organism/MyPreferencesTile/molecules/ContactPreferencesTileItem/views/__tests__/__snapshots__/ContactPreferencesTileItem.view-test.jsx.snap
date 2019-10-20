@@ -85,7 +85,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs10"
-                fontWeight="semibold"
+                fontWeight="extrabold"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
@@ -115,7 +115,7 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs10"
-                fontWeight="semibold"
+                fontWeight="extrabold"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
