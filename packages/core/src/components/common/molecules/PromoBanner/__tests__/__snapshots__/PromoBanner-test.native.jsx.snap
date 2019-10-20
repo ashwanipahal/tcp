@@ -854,7 +854,6 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   dataLocator=""
   fontFamily="primary"
   fontSize="fs20"
-  fontWeight="black"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -892,6 +891,11 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   lineHeight="20px"
   margin={null}
   numberOfLines={null}
+  style={
+    Object {
+      "fontWeight": "500",
+    }
+  }
   textAlign="center"
   textDecoration={null}
 />
