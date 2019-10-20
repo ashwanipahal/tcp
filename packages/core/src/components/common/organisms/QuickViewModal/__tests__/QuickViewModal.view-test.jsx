@@ -215,7 +215,11 @@ describe('QuickViewModal component', () => {
       isHasPlcc: false,
       isInternationalShipping: false,
     };
+
     const component = shallow(<QuickViewModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
+    const newProp = { ...props, isMultiItemQVModal: true };
+    const component1 = shallow(<QuickViewModalVanilla {...newProp} />);
+    expect(component1).toMatchSnapshot();
   });
 });
