@@ -42,7 +42,7 @@ const getAdditionalStyle = props => {
   };
 };
 
-const IconTouchableOpacity = styled.View`
+const IconTouchableOpacity = styled.TouchableOpacity`
   ${getAdditionalStyle}
 `;
 

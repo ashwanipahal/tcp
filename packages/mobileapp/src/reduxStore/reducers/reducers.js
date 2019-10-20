@@ -49,6 +49,7 @@ import OrdersReducer from '@tcp/core/src/components/features/account/Orders/cont
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
+import FavoritesReducer from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -107,6 +108,7 @@ import {
   SEARCH_REDUCER_KEY,
   OUTFIT_DETAILS_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
+  FAVORITES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -214,6 +216,7 @@ const rootReducer = combineReducers({
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
+  [FAVORITES_REDUCER_KEY]: FavoritesReducer,
 });
 
 const rootPersistConfig = {

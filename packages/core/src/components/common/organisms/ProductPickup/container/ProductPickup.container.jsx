@@ -171,6 +171,7 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
       lbl_Product_pickup_CHANGE_STORE: PropTypes.string,
     }),
+    simplifiedProductPickupView: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -215,6 +216,7 @@ class ProductPickupContainer extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
       lbl_Product_pickup_CHANGE_STORE: '(Change Store)',
     },
+    simplifiedProductPickupView: false,
   };
 
   constructor(props, context) {
@@ -491,6 +493,7 @@ class ProductPickupContainer extends React.PureComponent {
       bopisItemInventory,
       onPickUpOpenClick,
       labels,
+      simplifiedProductPickupView,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -535,6 +538,7 @@ class ProductPickupContainer extends React.PureComponent {
         showPickupDetails={showPickupDetails}
         showPickupInfo={showPickupInfo}
         isSubmitting={isSubmitting}
+        simplifiedProductPickupView={simplifiedProductPickupView}
       />
     );
   }

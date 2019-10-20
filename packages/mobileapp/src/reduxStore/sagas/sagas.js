@@ -58,6 +58,7 @@ import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialA
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import FavoritesSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
@@ -121,5 +122,6 @@ export default function* rootSaga() {
     SearchBarSaga(),
     OutfitDetailsSaga(),
     RecentSearchSaga(),
+    FavoritesSaga(),
   ]);
 }

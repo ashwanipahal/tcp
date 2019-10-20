@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import get from 'lodash/get';
 import CustomIcon from '../../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../../common/atoms/Icon/Icon.constants';
 import PromotionalMessage from '../../../../../common/atoms/PromotionalMessage';
@@ -17,7 +17,35 @@ import {
   ImageContainer,
   DetailsContainer,
   DiscountedPriceContainer,
+  FavoriteView,
 } from '../styles/OutfitProduct.native.style';
+import ProductPickupContainer from '../../../../../common/organisms/ProductPickup';
+
+const renderPickUpStore = props => {
+  const { currentProduct, selectedColorProductId } = props;
+  if (currentProduct) {
+    const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
+    const curentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
+    const { miscInfo } = curentColorEntry;
+    return (
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        miscInfo={miscInfo}
+        simplifiedProductPickupView
+      />
+    );
+  }
+  return null;
+};
+
+renderPickUpStore.propTypes = {
+  currentProduct: PropTypes.string.isRequired,
+  selectedColorProductId: PropTypes.string.isRequired,
+};
 
 const OutfitDetailsView = ({
   outfitProduct,
@@ -29,6 +57,7 @@ const OutfitDetailsView = ({
   currencyExchange,
   favoriteCount,
   handleAddToBag,
+  handleAddToFavorites,
 }) => {
   const {
     imagesByColor,
@@ -89,6 +118,7 @@ const OutfitDetailsView = ({
               fontWeight="regular"
               color="gray.900"
               text={badge1Value}
+              margin="0 0 4px 0"
             />
           )}
           <BodyCopy
@@ -97,18 +127,26 @@ const OutfitDetailsView = ({
             fontWeight="extrabold"
             color="gray.900"
             text={name}
+            margin="0 0 4px 0"
           />
-
-          <View accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-            <CustomIcon name={ICON_NAME.favorite} size="fs21" color="gray.600" />
+          <FavoriteView accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
+            <CustomIcon
+              name={ICON_NAME.favorite}
+              size="fs25"
+              color="gray.600"
+              isButton
+              onPress={handleAddToFavorites}
+            />
             <BodyCopy
               mobileFontFamily="secondary"
               fontSize="fs10"
               fontWeight="regular"
               color="gray.600"
               text={favoriteCount}
+              textAlign="center"
+              margin="0 0 16px 0"
             />
-          </View>
+          </FavoriteView>
           <BodyCopy
             margin="4px 0 0 0"
             mobileFontFamily="secondary"
@@ -118,17 +156,17 @@ const OutfitDetailsView = ({
             text={offerPriceForColor}
           />
           <DiscountedPriceContainer>
-            {/* {listPriceForColor !== offerPriceForColor && ( */}
-            <BodyCopy
-              dataLocator="pdp_discounted_product_price"
-              textDecoration="line-through"
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              color="gray.800"
-              text={listPriceForColor}
-            />
-            {/* )} */}
+            {listPriceForColor !== offerPriceForColor && (
+              <BodyCopy
+                dataLocator="pdp_discounted_product_price"
+                textDecoration="line-through"
+                mobileFontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                color="gray.800"
+                text={listPriceForColor}
+              />
+            )}
             <BodyCopy
               dataLocator="pdp_discounted_percentage"
               margin="0 0 0 10px"
@@ -155,7 +193,12 @@ const OutfitDetailsView = ({
         currentProduct={outfitProduct}
         plpLabels={plpLabels}
         isOutfitPage
+        simplifiedProductPickupView
       />
+      {renderPickUpStore({
+        currentProduct: outfitProduct,
+        selectedColorProductId: colorProductId,
+      })}
     </>
   );
 };
@@ -170,6 +213,7 @@ OutfitDetailsView.propTypes = {
   currencyExchange: PropTypes.string,
   favoriteCount: PropTypes.string,
   handleAddToBag: PropTypes.func.isRequired,
+  handleAddToFavorites: PropTypes.func.isRequired,
 };
 
 OutfitDetailsView.defaultProps = {

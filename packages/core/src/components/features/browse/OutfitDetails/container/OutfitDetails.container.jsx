@@ -26,6 +26,7 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
   componentDidMount() {
@@ -69,9 +70,11 @@ class OutfitDetailsContainer extends React.PureComponent {
       priceCurrency,
       currencyExchange,
       addToBagEcom,
+      addToFavorites,
       currentState,
       addToBagError,
       addToBagErrorId,
+      isPickupModalOpen,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -91,6 +94,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           currentState={currentState}
           addToBagError={addToBagError}
           addToBagErrorId={addToBagErrorId}
+          isPickupModalOpen={isPickupModalOpen}
+          addToFavorites={addToFavorites}
         />
       );
     }
@@ -128,6 +133,10 @@ function mapDispatchToProps(dispatch) {
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
     },
+    addToFavorites: payload => {
+      console.log('addToFavorites');
+      dispatch(addItemsToWishlist(payload));
+    },
   };
 }
 
@@ -150,6 +159,8 @@ OutfitDetailsContainer.propTypes = {
   navigation: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  isPickupModalOpen: PropTypes.bool,
+  addToFavorites: PropTypes.func.isRequired,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -168,6 +179,7 @@ OutfitDetailsContainer.defaultProps = {
   currencyExchange: [{ exchangevalue: 1 }],
   addToBagError: '',
   addToBagErrorId: '',
+  isPickupModalOpen: false,
 };
 
 export default connect(

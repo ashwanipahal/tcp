@@ -4,15 +4,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
 import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
-import ProductPickupContainer from '../../../organisms/ProductPickup';
-import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ErrorDisplay from '../../../atoms/ErrorDisplay';
 
 class ProductAddToBag extends React.PureComponent<Props> {
@@ -57,26 +54,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
-  renderPickUpStor = () => {
-    const { currentProduct, selectedColorProductId } = this.props;
-    if (currentProduct) {
-      const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
-      const curentColorEntry = getMapSliceForColorProductId(
-        colorFitsSizesMap,
-        selectedColorProductId
-      );
-      const { miscInfo } = curentColorEntry;
-      return (
-        <ProductPickupContainer
-          productInfo={currentProduct}
-          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-          miscInfo={miscInfo}
-        />
-      );
-    }
-    return null;
-  };
-
   onQuantityValueChange = selectedQuantity => {
     const { onQuantityChange, form } = this.props;
     if (onQuantityChange) {
@@ -108,7 +85,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
     const sizeError = isErrorMessageDisplayed ? errorMessage : '';
-
     return (
       <View {...this.props}>
         <Field
@@ -171,7 +147,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </RowViewContainer>
 
-        {this.renderPickUpStor()}
         <ErrorDisplay error={errorOnHandleSubmit} />
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>

@@ -393,6 +393,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       customSubmitButtonStyle,
       colorFitsSizesMap: favColorFitsSizesMap,
       isOutfitPage,
+      simplifiedProductPickupView,
     } = this.props;
     const {
       selectedColor,
@@ -442,6 +443,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         colorFitSizeDisplayNames={colorFitSizeDisplayNames}
         isGiftCard={isGiftCard}
         isOutfitPage={isOutfitPage}
+        simplifiedProductPickupView={simplifiedProductPickupView}
       />
     );
   }

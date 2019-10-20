@@ -9,12 +9,18 @@ export const OutfitProductContainer = styled.View`
 
 export const DetailsContainer = styled.View`
   width: 50%;
+  padding-left: 10px;
 `;
 
 export const ImageContainer = styled.View`
   width: 50%;
+  padding-right: 10px;
 `;
 
 export const DiscountedPriceContainer = styled.View`
   flex-direction: row;
+`;
+
+export const FavoriteView = styled.View`
+  width: 25px;
 `;

@@ -21,6 +21,7 @@ const renderItem = ({
   productsCount,
   index,
   handleAddToBag,
+  addToFavorites,
   addToBagEcom,
   currentState,
   labels,
@@ -34,6 +35,9 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      handleAddToFavorites={() => {
+        addToFavorites({ colorProductId: item.generalProductId });
+      }}
     />
   );
 };
@@ -44,6 +48,7 @@ renderItem.propTypes = {
   productsCount: PropTypes.string,
   index: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}),
   labels: PropTypes.shape({}),
@@ -58,17 +63,19 @@ renderItem.defaultProps = {
   labels: {},
 };
 
-const OutfitDetailsView = ({
-  outfitImageUrl,
-  outfitProducts,
-  plpLabels,
-  handleAddToBag,
-  addToBagEcom,
-  currentState,
-  labels,
-  isPickupModalOpen,
-  navigation,
-}) => {
+const OutfitDetailsView = props => {
+  const {
+    outfitImageUrl,
+    outfitProducts,
+    plpLabels,
+    handleAddToBag,
+    addToFavorites,
+    addToBagEcom,
+    currentState,
+    labels,
+    isPickupModalOpen,
+    navigation,
+  } = props;
   return (
     <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
@@ -83,6 +90,7 @@ const OutfitDetailsView = ({
             productsCount: outfitProducts.length,
             index,
             handleAddToBag,
+            addToFavorites,
             addToBagEcom,
             currentState,
             labels,
@@ -101,6 +109,7 @@ OutfitDetailsView.propTypes = {
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
