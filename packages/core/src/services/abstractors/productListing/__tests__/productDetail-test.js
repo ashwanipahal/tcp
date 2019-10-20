@@ -20,7 +20,7 @@ const state = {
 state.ProductListing.breadCrumbTrail = breadCrumb;
 
 describe('product Detail', () => {
-  xit('should get the PDP', () => {
+  it('should get the PDP', () => {
     return getProductInfoById('2043572', state).then(res => {
       expect(res).toEqual(formattedPdpRes);
     });
