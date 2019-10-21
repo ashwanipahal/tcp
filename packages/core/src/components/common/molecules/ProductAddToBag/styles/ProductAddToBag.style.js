@@ -96,6 +96,10 @@ const styles = css`
     display: inline-flex;
   }
 
+  .default-error {
+    display: inline-flex;
+  }
+
   .size-error-message {
     margin-top: -2px;
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};

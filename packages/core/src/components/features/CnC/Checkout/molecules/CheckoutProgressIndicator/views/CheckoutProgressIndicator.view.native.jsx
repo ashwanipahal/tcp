@@ -50,7 +50,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                           fontSizeVariation="large"
                           fontFamily="secondary"
                           anchorVariation="primary"
-                          fontWeightVariation="active"
+                          fontWeightVariation="extrabold"
                           onPress={() => this.routeToStage(stage)}
                           dataLocator=""
                           text={stage}
@@ -91,7 +91,7 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                     fontSizeVariation="large"
                     fontFamily="secondary"
                     anchorVariation="primary"
-                    fontWeightVariation="active"
+                    fontWeightVariation="extrabold"
                     onPress={() => this.routeToStage(stage)}
                     dataLocator=""
                     text={stage}

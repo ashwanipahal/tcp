@@ -14,6 +14,7 @@ const ExpiryContainer = styled.View`
 
 const ExpiryMonth = styled.View`
   width: 30%;
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const ExpiryYear = styled.View`

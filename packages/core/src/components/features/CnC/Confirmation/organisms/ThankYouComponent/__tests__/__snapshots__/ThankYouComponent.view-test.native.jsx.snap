@@ -67,6 +67,7 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -147,6 +148,7 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
