@@ -53,7 +53,6 @@ export function* fetchModuleX({ payload = [] }) {
 export function* calculateDistance({ payload }) {
   try {
     const distance = yield call(calcDistanceByLatLng, payload.destination);
-    console.log(distance);
     yield put(setDistance(distance));
   } catch (err) {
     yield put(setDistance(null));

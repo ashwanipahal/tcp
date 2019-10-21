@@ -85,7 +85,7 @@ export const RoundView = styled.View`
   border-radius: 10;
   position: absolute;
   margin-top: 15px;
-  border: 2px solid white;
+  border: 2px solid ${props => props.theme.colorPalette.white};
 `;
 
 export const CartIconView = styled.Image`
