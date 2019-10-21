@@ -70,4 +70,42 @@ export const customHeaderStyle = css`
   }
 `;
 
+export const quickViewColorSwatchesCss = css`
+  .color-chips-selector-item {
+    /* Image color of item */
+    .color-image {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .color-chips-selector-item {
+      .color-image {
+        width: 20px;
+        height: 20px;
+      }
+      .input-radio-icon-checked {
+        width: 20px;
+        height: 20px;
+      }
+
+      .input-radio-icon-checked + .input-radio-title .color-image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+`;
+
 export default styles;

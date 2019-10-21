@@ -46,6 +46,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -56,6 +59,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */
@@ -215,6 +221,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -225,6 +234,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */

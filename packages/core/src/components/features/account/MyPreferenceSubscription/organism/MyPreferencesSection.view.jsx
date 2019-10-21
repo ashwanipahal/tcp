@@ -69,7 +69,7 @@ class MyPrefrenceSection extends React.PureComponent {
             }}
             className="profileInfoCol elem-mb-XL"
           >
-            <form oValidate>
+            <form noValidate>
               <Row fullBleed className="elem-pt-LRG">
                 <Col
                   colSize={{
@@ -149,12 +149,14 @@ class MyPrefrenceSection extends React.PureComponent {
 
                   <Field
                     name="tcpWebSubscribe"
-                    type="checkbox"
                     component={InputCheckbox}
                     dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
                     onChange={isTcpSubscribe ? onUnsubscribe : onSubscribe}
-                    checked={isTcpSubscribe}
+                    checked={isTcpSubscribe || false}
+                    onBlur={e => {
+                      e.preventDefault();
+                    }}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
@@ -166,7 +168,10 @@ class MyPrefrenceSection extends React.PureComponent {
                     dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
                     onChange={isGymSubscribe ? onUnsubscribe : onSubscribe}
-                    checked={isGymSubscribe}
+                    checked={isGymSubscribe || false}
+                    onBlur={e => {
+                      e.preventDefault();
+                    }}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}

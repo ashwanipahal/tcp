@@ -224,7 +224,7 @@ class ModuleG extends React.PureComponent {
             </ImageSlidesWrapper>
           ) : null}
 
-          {this.middleContainer(selectedProductList.length)}
+          {this.getMiddleContainer(selectedProductList.length)}
 
           {dataStatus2 ? (
             <Skeleton

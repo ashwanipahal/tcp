@@ -214,20 +214,6 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       showArrows={true}
       width={190}
     />
-    <Styled(View)>
-      <Styled(View) />
-      <Styled(View) />
-      <Styled(Styled(ImageComp))
-        alt=""
-        host=""
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/plus.png",
-          }
-        }
-        url=""
-      />
-    </Styled(View)>
     <Skeleton
       col={3}
       colProps={Object {}}

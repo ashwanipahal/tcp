@@ -135,6 +135,7 @@ const styles = css`
       .size-and-fit-detail-title,
       .pdp-qty {
         text-transform: capitalize;
+        font-family: ${props => props.theme.fonts.secondaryFontFamily};
       }
 
       .color-chips-selector-items-list {
