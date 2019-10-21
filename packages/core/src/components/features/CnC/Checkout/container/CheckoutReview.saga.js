@@ -24,7 +24,7 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { resetCheckoutReducer, setServerErrorCheckout } from './Checkout.action';
+import { resetCheckoutReducer, setServerErrorCheckout } from './Checkout.action.util';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';

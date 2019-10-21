@@ -9,11 +9,8 @@ import {
 import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
-import {
-  getSetIsBillingVisitedActn,
-  getSetCheckoutStage,
-  setServerErrorCheckout,
-} from './Checkout.action';
+import { getSetIsBillingVisitedActn, getSetCheckoutStage } from './Checkout.action';
+import { setServerErrorCheckout } from './Checkout.action.util';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
