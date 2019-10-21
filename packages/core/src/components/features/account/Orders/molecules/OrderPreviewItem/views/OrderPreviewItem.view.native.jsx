@@ -37,12 +37,11 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
       productInfo: { name, imagePath },
       itemInfo: { itemBrand, quantity, quantityCanceled },
     },
-    item,
     ordersLabels,
     isCanceledList,
   } = otherProps;
 
-  const { status } = item.trackingInfo[0];
+  const { item } = otherProps.item;
 
   return (
     <>
@@ -86,7 +85,13 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
                 text="Status: "
               />
 
-              <BodyCopy fontSize="fs14" fontFamily="secondary" text={status} />
+              {item && item.trackingInfo && item.trackingInfo.length > 0 && (
+                <BodyCopy
+                  fontSize="fs14"
+                  fontFamily="secondary"
+                  text={item.trackingInfo[0].status}
+                />
+              )}
             </OrderContentWrapper>
           </ViewWithSpacing>
         </OrderItemContent>
