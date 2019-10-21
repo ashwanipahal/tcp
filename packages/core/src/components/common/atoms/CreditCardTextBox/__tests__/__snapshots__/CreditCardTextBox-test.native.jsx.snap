@@ -49,6 +49,7 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -132,6 +133,7 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -196,6 +198,7 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -260,6 +263,7 @@ exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",

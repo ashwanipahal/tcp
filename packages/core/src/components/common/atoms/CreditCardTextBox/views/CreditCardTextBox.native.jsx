@@ -151,7 +151,12 @@ export class CreditCardTextBox extends React.Component {
         />
         {cardType !== null && (
           <ImageWrapper>
-            <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
+            <Image
+              source={getCardTypeImgUrl(cardType)}
+              width="40"
+              height="30"
+              resizeMode="contain"
+            />
           </ImageWrapper>
         )}
       </View>

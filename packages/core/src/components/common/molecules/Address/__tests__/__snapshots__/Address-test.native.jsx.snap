@@ -302,14 +302,10 @@ exports[`Address component should renders correctly when optional fields are not
     accessibilityText=""
     color="gray.900"
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs14"
     fontWeight="regular"
     margin={null}
-    mobilefontFamily={
-      Array [
-        "secondary",
-      ]
-    }
     numberOfLines={null}
     text="addressLine1"
     textDecoration={null}
@@ -318,14 +314,10 @@ exports[`Address component should renders correctly when optional fields are not
     accessibilityText=""
     color="gray.900"
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs14"
     fontWeight="regular"
     margin={null}
-    mobilefontFamily={
-      Array [
-        "secondary",
-      ]
-    }
     numberOfLines={null}
     text="addressLine2"
     textDecoration={null}

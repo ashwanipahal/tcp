@@ -43,7 +43,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
       {address.addressLine1 ? (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.addressLine1}
           color="gray.900"
@@ -53,7 +53,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
       {address.addressLine2 ? (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.addressLine2}
           color="gray.900"
