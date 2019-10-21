@@ -20,12 +20,6 @@ import CnCTemplate from '../../../../../../common/organism/CnCTemplate';
 import RegisteredShippingFormView from '../../RegisteredShippingForm/views/RegisteredShippingForm.view.native';
 import CONSTANTS from '../../../../../Checkout.constants';
 
-const nextCTAText = (labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed) => {
-  return isVenmoPaymentInProgress && !isVenmoShippingDisplayed
-    ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
-    : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
-};
-
 const ShippingForm = ({
   shipmentMethods,
   selectedShipmentId,
@@ -53,8 +47,7 @@ const ShippingForm = ({
   defaultAddressId,
   syncErrorsObject,
   newUserPhoneNo,
-  isVenmoPaymentInProgress,
-  isVenmoShippingDisplayed,
+  setCheckoutStage,
 }) => {
   return (
     <>
@@ -192,7 +185,7 @@ const ShippingForm = ({
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
-        btnText={nextCTAText(labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed)}
+        btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
         routeToPage=""
         onPress={handleSubmit(submitShippingForm)}
         isGuest={isGuest}
@@ -200,7 +193,7 @@ const ShippingForm = ({
           orderHasPickUp &&
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
-        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
+        onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
         showAccordian
       />
     </>
@@ -240,8 +233,7 @@ ShippingForm.propTypes = {
   defaultAddressId: PropTypes.string,
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
-  isVenmoPaymentInProgress: PropTypes.bool,
-  isVenmoShippingDisplayed: PropTypes.bool,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {
@@ -262,8 +254,6 @@ ShippingForm.defaultProps = {
   defaultAddressId: null,
   syncErrorsObject: {},
   newUserPhoneNo: null,
-  isVenmoPaymentInProgress: false,
-  isVenmoShippingDisplayed: true,
 };
 
 export default reduxForm({

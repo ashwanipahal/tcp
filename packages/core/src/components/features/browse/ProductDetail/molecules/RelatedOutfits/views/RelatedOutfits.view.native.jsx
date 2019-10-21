@@ -23,23 +23,20 @@ class RelatedOutfits extends React.PureComponent {
   };
 
   render() {
-    const { pdpLabels, navigation, relatedOutfits, ...others } = this.props;
+    const { pdpLabels, navigation, selectedColorProductId } = this.props;
     const { completeTheLook } = pdpLabels;
     const { isAccordionOpen } = this.state;
 
     const RelatedOutfitsSlots = () => {
-      const { data, contentId, accessibility } = relatedOutfits[0];
       return (
-        data && (
-          <ModuleQ
-            key={contentId}
-            accessibility={accessibility}
-            {...data}
-            navigation={navigation}
-            hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
-            {...others}
-          />
-        )
+        <ModuleQ
+          navigation={navigation}
+          hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
+          selectedColorProductId={selectedColorProductId}
+          hideTabs
+          divTabs={[]}
+          bgClass="yellow-bg"
+        />
       );
     };
 
@@ -60,6 +57,7 @@ class RelatedOutfits extends React.PureComponent {
             </Anchor>
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
+
         {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
       </View>
     );
@@ -69,13 +67,12 @@ class RelatedOutfits extends React.PureComponent {
 RelatedOutfits.propTypes = {
   pdpLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}),
-  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
+  selectedColorProductId: PropTypes.number.isRequired,
 };
 
 RelatedOutfits.defaultProps = {
   pdpLabels: {},
   navigation: {},
-  relatedOutfits: [],
 };
 
 export default RelatedOutfits;

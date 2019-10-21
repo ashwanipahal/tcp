@@ -94,5 +94,12 @@ describe('CreateAccount', () => {
       dispatchProps.resetAccountError();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
+
+    it('#toastMessage', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.toastMessage();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
   });
 });

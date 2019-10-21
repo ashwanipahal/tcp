@@ -176,8 +176,14 @@ describe('getStoreHours', () => {
 
 describe('getOrderGroupLabelAndMessage', () => {
   const labels = {
-    lbl_orders_shippedOn: 'test1',
-    lbl_orders_pickedUpOn: 'test2',
+    lbl_orders_shippedOn: 'lbl_orders_shippedOn',
+    lbl_orders_pickedUpOn: 'lbl_orders_pickedUpOn',
+    lbl_orders_orderInProcess: 'lbl_orders_orderInProcess',
+    lbl_orders_OrderReceived: 'lbl_orders_OrderReceived',
+    lbl_orders_orderIsReadyForPickup: 'lbl_orders_orderIsReadyForPickup',
+    lbl_orders_processing: 'lbl_orders_processing',
+    lbl_orders_orderCancelMessage: 'lbl_orders_orderCancelMessage',
+    lbl_orders_pleasePickupBy: 'lbl_orders_pleasePickupBy',
   };
 
   it('should return correct label and message if Order status is shipped', () => {
@@ -208,10 +214,86 @@ describe('getOrderGroupLabelAndMessage', () => {
     expect(labelAndMessage.label).toBe(label);
   });
 
+  it('should return correct label and message if Bopis Order in Process', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ORDER_IN_PROCESS,
+      pickedUpDate: '2019-10-11',
+      ordersLabels: labels,
+      isBopisOrder: true,
+    };
+
+    const label = labels.lbl_orders_orderInProcess;
+    const message = labels.lbl_orders_orderIsReadyForPickup;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return correct label and message if Order in Process', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ORDER_IN_PROCESS,
+      pickedUpDate: '2019-10-12',
+      ordersLabels: labels,
+      isBopisOrder: false,
+    };
+
+    const label = labels.lbl_orders_OrderReceived;
+    const message = labels.lbl_orders_processing;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return correct label and message if Order is cancelled', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ORDER_CANCELED,
+      pickedUpDate: '2019-10-13',
+      ordersLabels: labels,
+      isBopisOrder: true,
+    };
+
+    const label = '';
+    const message = labels.lbl_orders_orderCancelMessage;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return correct label and message if Order Item is received', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ITEMS_RECEIVED,
+      pickedUpDate: '2019-10-14',
+      ordersLabels: labels,
+      isBopisOrder: true,
+    };
+
+    const label = labels.lbl_orders_orderInProcess;
+    const message = labels.lbl_orders_orderIsReadyForPickup;
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
+  it('should return correct label and message if Order is ready for pickup', () => {
+    const orderProps = {
+      status: constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP,
+      pickedUpDate: '2019-10-15',
+      pickUpExpirationDate: '2019-10-10',
+      ordersLabels: labels,
+      isBopisOrder: true,
+    };
+
+    const label = labels.lbl_orders_pleasePickupBy;
+    const message = moment(orderProps.pickUpExpirationDate).format('LL');
+    const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
+    expect(labelAndMessage.message).toBe(message);
+    expect(labelAndMessage.label).toBe(label);
+  });
+
   it('should return null values if status is not matched', () => {
     const orderProps = {
-      status: constants.STATUS_CONSTANTS.ORDER_RECEIVED,
-      pickedUpDate: '2019-10-10',
+      status: '',
+      pickedUpDate: '2019-10-16',
       ordersLabels: labels,
     };
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);

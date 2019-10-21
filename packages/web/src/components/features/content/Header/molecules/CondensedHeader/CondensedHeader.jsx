@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
@@ -197,7 +197,7 @@ class CondensedHeader extends React.PureComponent {
                     alt={accountIconButton}
                     className="rightLink userIcon"
                     id="condensedLogin"
-                    src={getIconPath('user-icon-blue')}
+                    src={getIconPath(isGymboree() ? 'user-icon-gray' : 'user-icon-blue')}
                     data-locator="user-icon"
                   />
                 </Anchor>
@@ -215,7 +215,7 @@ class CondensedHeader extends React.PureComponent {
                 <Image
                   alt={cartIconButton}
                   className="product-image"
-                  src={getIconPath('cart-icon-blue')}
+                  src={getIconPath(isGymboree() ? 'cart-icon-1' : 'cart-icon-blue')}
                   data-locator="addedtobag-bag-icon"
                 />
                 <BodyCopy

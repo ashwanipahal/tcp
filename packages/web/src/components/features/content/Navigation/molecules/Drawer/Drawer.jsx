@@ -78,6 +78,7 @@ class Drawer extends React.Component {
       typeof close === 'function'
     ) {
       close();
+      enableBodyScroll();
       e.stopPropagation();
     }
   };
@@ -152,7 +153,6 @@ class Drawer extends React.Component {
     }
     if (close && renderOverlay) {
       closeOverlay();
-      enableBodyScroll();
     }
     if (openDrawer && renderOverlay) {
       showOverlay();

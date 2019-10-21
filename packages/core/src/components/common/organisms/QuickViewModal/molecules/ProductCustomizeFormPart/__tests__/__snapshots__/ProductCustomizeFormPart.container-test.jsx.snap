@@ -106,7 +106,7 @@ exports[`ProductCustomizeFormPartContainer component should renders correctly 1`
     ]
   }
   currency=""
-  currencyExchange=""
+  currencyExchange={1}
   currentColorEntry={
     Object {
       "categoryEntity": "Boy:School Uniforms",
@@ -206,6 +206,8 @@ exports[`ProductCustomizeFormPartContainer component should renders correctly 1`
       "pdpUrl": "/p/2100606_IV",
     }
   }
+  formEnabled={true}
+  formRef={Object {}}
   goToPDPPage={[Function]}
   goToPDPPageMobile={[Function]}
   imageUrl="https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg"
@@ -214,6 +216,7 @@ exports[`ProductCustomizeFormPartContainer component should renders correctly 1`
   isInternationalShipping={false}
   navigation={Object {}}
   onChangeColor={[Function]}
+  onInputSelectionChange={[Function]}
   plpLabels={Object {}}
   priceCurrency=""
   productInfo={

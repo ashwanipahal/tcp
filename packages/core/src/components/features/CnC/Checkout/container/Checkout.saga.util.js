@@ -24,6 +24,7 @@ import {
   getVenmoClientTokenError,
   setSmsNumberForUpdates,
   emailSignupStatus,
+  getSetCheckoutStage,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -31,7 +32,7 @@ import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
-import { isCanada } from '../../../../../utils';
+import { isCanada, isMobileApp } from '../../../../../utils';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -244,9 +245,9 @@ export function* saveLocalSmsInfo(smsInfo = {}) {
   const { wantsSmsOrderUpdates, smsUpdateNumber } = smsInfo;
   if (smsUpdateNumber) {
     if (wantsSmsOrderUpdates) {
-      returnVal = yield call(setSmsNumberForUpdates, smsUpdateNumber);
+      returnVal = yield put(setSmsNumberForUpdates(smsUpdateNumber));
     } else {
-      returnVal = yield call(setSmsNumberForUpdates(null));
+      returnVal = yield put(setSmsNumberForUpdates(null));
     }
   }
   return returnVal;
@@ -322,4 +323,12 @@ export function* callPickupSubmitMethod(formData) {
     alternateFirstName: firstName,
     alternateLastName: lastName,
   });
+}
+
+export function* redirectToBilling() {
+  if (!isMobileApp()) {
+    utility.routeToPage(CHECKOUT_ROUTES.billingPage);
+  } else {
+    yield put(getSetCheckoutStage(constants.BILLING_DEFAULT_PARAM));
+  }
 }

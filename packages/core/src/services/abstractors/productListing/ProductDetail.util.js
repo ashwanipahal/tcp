@@ -8,6 +8,13 @@ const getIsGiftCard = (isGiftCard, baseProduct) => {
   return isGiftCard ? 'Gift Card' : baseProduct.product_name;
 };
 
+const isGiftCardItem = product =>
+  !!(
+    product &&
+    product.style_partno &&
+    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+  );
+
 /* DTN-5579 BE  will be sending the list of badges to be excluded in any category
 and we are checking if the particular category should show/hide a badge */
 const getNavAttributes = (navTree, categoryId, attribute) => {
@@ -81,29 +88,22 @@ const getSwatchImgPath = (id, excludeExtension) => {
   }`;
 };
 
-const getProductImgPath = (id, excludeExtension) => {
-  const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
+const getProductImagePath = (id, excludeExtension) => {
+  const imageName = id.split('_');
+  const imagePath = imageName[0];
 
   return {
-    125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    380: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/380/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    500: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/500/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
-    900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
-      excludeExtension ? '' : '.jpg'
-    }`,
+    125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
   };
 };
 
 const getImgPath = (id, excludeExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
-    productImages: getProductImgPath(id, excludeExtension),
+    productImages: getProductImagePath(id, excludeExtension),
   };
 };
 
@@ -276,8 +276,9 @@ const getColorfitsSizesMap = ({
       hasFits: hasFit,
       miscInfo: {
         isBopisEligible:
-          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) && !getIsGiftCard(itemColor),
-        isBossEligible: isBossProduct(bossDisabledFlags) && !getIsGiftCard(itemColor),
+          isBopisProduct(apiHelper.configOptions.isUSStore, itemColor) &&
+          !isGiftCardItem(itemColor),
+        isBossEligible: isBossProduct(bossDisabledFlags) && !isGiftCardItem(itemColor),
         badge1: isBundleProduct
           ? extractPrioritizedBadge(itemColor, productAttributes, '', excludeBage)
           : extractPrioritizedBadge(getFirstVariant(itemColor), productAttributes, '', excludeBage),
@@ -414,7 +415,7 @@ const processHelperUtil = {
   breadCrumbFactory,
   routingInfoStoreView,
   getSwatchImgPath,
-  getProductImgPath,
+  getProductImagePath,
   getImgPath,
   convertMultipleSizeSkusToAlternatives,
   sumBy,

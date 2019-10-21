@@ -20,7 +20,7 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
    * @return   {[Object]} JSX of the component
    */
 
-  const { checkout } = orderDetailsData;
+  const { checkout, appliedGiftCards } = orderDetailsData;
   const { billing } = checkout;
   const { card } = billing;
 
@@ -42,6 +42,24 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
                 )}`
               : card.endingNumbers}
           </BodyCopy>
+          {appliedGiftCards &&
+            appliedGiftCards.length > 0 &&
+            appliedGiftCards.map(giftCard => {
+              return (
+                <BodyCopy component="div" className="card-details">
+                  <Image
+                    src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
+                    className="elem-mr-XS"
+                  />
+                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                    {`${getLabelValue(
+                      ordersLabels,
+                      'lbl_orders_ending'
+                    )} ${giftCard.endingNumbers.slice(-4)}`}
+                  </BodyCopy>
+                </BodyCopy>
+              );
+            })}
         </BodyCopy>
       )}
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -60,10 +60,8 @@ class SearchBar extends React.PureComponent {
     e.preventDefault();
     const { setSearchState } = this.props;
 
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       this.openFullSizeSearchModel();
-    } else if (window.innerWidth <= breakpoints.large) {
-      routerPush('/search', '/search');
     } else {
       setSearchState(true);
     }
@@ -71,7 +69,7 @@ class SearchBar extends React.PureComponent {
 
   closeModalIfMobile = e => {
     e.preventDefault();
-    if (window.innerWidth <= breakpoints.large) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       const { onCloseClick } = this.props;
       onCloseClick();
     }
@@ -155,7 +153,7 @@ class SearchBar extends React.PureComponent {
   initiateSearchBySubmit = () => {
     this.startInitiateSearch();
     const { onCloseClick } = this.props;
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= breakpoints.values.lg) {
       onCloseClick();
     }
   };
@@ -293,7 +291,6 @@ class SearchBar extends React.PureComponent {
 
     const SEARCH_IMAGE = 'search-icon';
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
-
     return (
       <React.Fragment>
         <BodyCopy className={className} component="div">
@@ -424,7 +421,9 @@ class SearchBar extends React.PureComponent {
               alt="search-image"
               className="search-image icon`"
               onClick={this.openSearchBar}
-              src={getIconPath(fromCondensedHeader ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`)}
+              src={getIconPath(
+                fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
+              )}
               data-locator="search-icon"
               height="25px"
             />

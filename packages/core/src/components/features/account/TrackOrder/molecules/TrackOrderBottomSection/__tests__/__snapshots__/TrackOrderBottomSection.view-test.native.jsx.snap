@@ -14,12 +14,13 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel="lbl_trackOrder_login
-                lbl_trackOrder_content1"
+                lbl_trackOrder_content"
         anchorVariation="primary"
         colorName={null}
         customStyle={Object {}}
         data-locator="track_order_login"
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_trackOrder_login"
         underline={true}
@@ -30,7 +31,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
         dataLocator=""
         margin={null}
         numberOfLines={null}
-        text="lbl_trackOrder_content1"
+        text="lbl_trackOrder_content"
         textDecoration={null}
       />
     </Styled(View)>
@@ -38,11 +39,12 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
   <Styled(View)>
     <Styled(Anchor)
       accessibilityLabel="lbl_trackOrder_clickHere
-                lbl_trackOrder_content2"
+                lbl_trackOrder_subContent"
       anchorVariation="primary"
       colorName={null}
       customStyle={Object {}}
       locator="track_order_click_here"
+      margins={null}
       onPress={null}
       text="lbl_trackOrder_clickHere"
       underline={true}
@@ -54,7 +56,7 @@ exports[`TrackOrderBottomSection component should renders correctly 1`] = `
       dataLocator=""
       margin={null}
       numberOfLines={null}
-      text="lbl_trackOrder_content2"
+      text="lbl_trackOrder_subContent"
       textDecoration={null}
     />
   </Styled(View)>

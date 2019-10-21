@@ -24,6 +24,9 @@ const styles = css`
     color: white;
     font-weight: 800;
     height: 42px;
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 50px;
@@ -90,6 +93,10 @@ const styles = css`
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
     font-weight: 800;
+    display: inline-flex;
+  }
+
+  .default-error {
     display: inline-flex;
   }
 
