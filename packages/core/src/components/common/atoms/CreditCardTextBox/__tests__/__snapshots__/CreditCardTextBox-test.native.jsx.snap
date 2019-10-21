@@ -61,6 +61,20 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
     </View>
     <Styled(View)>
       <Styled(View)>
+        <Styled(View)>
+          <Styled(ImageComp)
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/alert-triangle.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(View)>
         <Styled(BodyCopy)
           accessibilityText=""
           color="error"

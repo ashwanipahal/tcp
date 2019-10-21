@@ -73,6 +73,12 @@ export const AnchorStyles = css`
                     `
       : ''};
   ${props =>
+    props.fontWeightVariation === 'extrabold'
+      ? `
+                      font-weight: ${props.theme.typography.fontWeights.extrabold};
+                    `
+      : ''};
+  ${props =>
     props.fullWidth
       ? `
                       width: 100%;
