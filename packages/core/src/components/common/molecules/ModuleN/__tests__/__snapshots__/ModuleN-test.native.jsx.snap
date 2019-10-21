@@ -13,16 +13,19 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
       headerText={
         Array [
           Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
+            },
             "link": Object {
-              "target": "",
-              "title": "",
-              "url": "plpUrl",
+              "target": "_blank",
+              "title": "ALL CLEARANCE",
+              "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
             },
             "textItems": Array [
               Object {
-                "color": "color2",
-                "style": "style12",
-                "text": "ALL CLEARANCE",
+                "style": "white_large_text_half",
+                "text": "Must-See Markdowns",
               },
             ],
           },
@@ -41,26 +44,93 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
         Array [
           Object {
             "link": Object {
-              "class": "",
-              "external": 0,
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/c/",
+              "title": "60-70 % OFF",
+              "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
             },
             "textItems": Array [
               Object {
-                "style": "percentage_wrapped_large",
+                "style": "percentage_inline_promo_half",
                 "text": "60-70 % OFF",
-              },
-              Object {
-                "style": "text_normal",
-                "text": "No Exclusions",
               },
             ],
           },
         ]
       }
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <ButtonList
+      buttonListVariation="imageCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "button": Object {
+              "target": "_blank",
+              "text": "GIRL",
+              "title": "GIRL",
+              "url": "/c/girls-clothing",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "target": "_blank",
+              "text": "BOY",
+              "title": "BOY",
+              "url": "https://test6.childrensplace.com/us/c/baby-clothes",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "target": "_blank",
+              "text": "TODDLER BOY",
+              "title": "TODDLER BOY",
+              "url": "https://test6.childrensplace.com/us/c/toddler-boy-clothes",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+          Object {
+            "button": Object {
+              "target": "_blank",
+              "text": "TODDLER GIRL",
+              "title": "TODDLER GIRL",
+              "url": "https://test6.childrensplace.com/us/c/toddler-girl-clothes",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            },
+          },
+        ]
+      }
+      color="white"
+      locator="moduleN_cta_links"
     />
   </Styled(View)>
 </Styled(View)>

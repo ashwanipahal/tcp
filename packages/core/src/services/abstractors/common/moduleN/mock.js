@@ -3,7 +3,7 @@ const divImageUrl =
   'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
 
 export default {
-  ModuleN: {
+  moduleN: {
     contentId: '728f4e9b-b1ee-4b83-addc-399caae17239',
     name: 'moduleN',
     type: 'module',

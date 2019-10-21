@@ -33,7 +33,7 @@ const HomePageView = dynamic({
     return [
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-          <ModuleN {...mockModuleN.ModuleN.composites} halfWidth />
+          <ModuleN {...mockModuleN.moduleN.composites} halfWidth />
         </Col>
         <Col colSize={{}} />
       </Row>,
