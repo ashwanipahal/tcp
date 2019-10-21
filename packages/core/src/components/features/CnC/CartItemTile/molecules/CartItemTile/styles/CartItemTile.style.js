@@ -100,7 +100,7 @@ export default css`
     position: absolute;
     top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
+    z-index: 1;
     img {
       display: block;
     }
