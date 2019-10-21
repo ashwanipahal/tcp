@@ -133,8 +133,8 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
 
 function getDataStatus(selectedProductList, currentCatId) {
   let dataStatus = true;
-  if (selectedProductList && selectedProductList.status) {
-    dataStatus = selectedProductList.status[currentCatId];
+  if (selectedProductList && selectedProductList.completed) {
+    dataStatus = selectedProductList.completed[currentCatId];
   }
   return dataStatus;
 }

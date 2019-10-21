@@ -14,7 +14,7 @@ export function* fetchProductTabListData({ payload }) {
         productTabListDataSuccess({
           [categoryId]: res,
           errors: { [categoryId]: null },
-          status: { [categoryId]: false },
+          completed: { [categoryId]: false },
         })
       );
     }
@@ -24,7 +24,7 @@ export function* fetchProductTabListData({ payload }) {
       productTabListDataFail({
         [categoryId]: [],
         errors: { [categoryId]: true },
-        status: { [categoryId]: false },
+        completed: { [categoryId]: false },
       })
     );
   }

@@ -176,8 +176,8 @@ class ModuleR extends React.PureComponent {
       selectedProductList = this.getSelectedProductList(selectedProductList);
     }
     let dataStatus = true;
-    if (productTabList && productTabList.status) {
-      dataStatus = productTabList.status[selectedCategoryId];
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
     }
 
     return (

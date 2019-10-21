@@ -127,10 +127,23 @@ class ModuleG extends React.PureComponent {
   getDataStatus = selectedCategoryId => {
     const { productTabList = {} } = this.props;
     let dataStatus = true;
-    if (productTabList && productTabList.status) {
-      dataStatus = productTabList.status[selectedCategoryId];
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
     }
     return dataStatus;
+  };
+
+  getMiddleContainer = dataLength => {
+    if (!dataLength) {
+      return null;
+    }
+    return (
+      <MiddleContainer>
+        <Border />
+        <Circle />
+        <StyledCustomImage source={plusIcon} />
+      </MiddleContainer>
+    );
   };
 
   /**
@@ -211,11 +224,8 @@ class ModuleG extends React.PureComponent {
             </ImageSlidesWrapper>
           ) : null}
 
-          <MiddleContainer>
-            <Border />
-            <Circle />
-            <StyledCustomImage source={plusIcon} />
-          </MiddleContainer>
+          {this.middleContainer(selectedProductList.length)}
+
           {dataStatus2 ? (
             <Skeleton
               row={1}

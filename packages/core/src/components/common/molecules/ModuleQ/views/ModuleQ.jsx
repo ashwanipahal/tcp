@@ -144,8 +144,8 @@ class ModuleQ extends React.PureComponent {
     const showBg = hideTabs ? (showCarousel ? bgName : '') : bgName;
     const IconPath = getIconPath('carousel-big-carrot');
     let dataStatus = true;
-    if (styliticsProductTabList && styliticsProductTabList.status) {
-      dataStatus = styliticsProductTabList.status[currentCatId];
+    if (styliticsProductTabList && styliticsProductTabList.completed) {
+      dataStatus = styliticsProductTabList.completed[currentCatId];
     }
 
     return (

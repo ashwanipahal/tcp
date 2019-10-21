@@ -93,8 +93,8 @@ class ModuleJ extends React.PureComponent {
     data = data.slice(0, TOTAL_IMAGES);
     const iconPath = getIconPath('carousel-big-carrot');
     let dataStatus = true;
-    if (productTabList && productTabList.status) {
-      dataStatus = productTabList.status[currentCatId];
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[currentCatId];
     }
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>

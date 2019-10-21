@@ -121,8 +121,8 @@ class ModuleJ extends React.PureComponent {
       [[]]
     );
     let dataStatus = true;
-    if (productTabList && productTabList.status) {
-      dataStatus = productTabList.status[selectedCategoryId];
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
     }
     if (dataStatus) {
       return (
@@ -131,7 +131,7 @@ class ModuleJ extends React.PureComponent {
           col={3}
           width={PRODUCT_IMAGE_WIDTH}
           height={PRODUCT_IMAGE_HEIGHT}
-          rowProps={{ justifyContent: 'space-around' }}
+          rowProps={{ justifyContent: 'space-around', marginTop: '10px' }}
         />
       );
     }

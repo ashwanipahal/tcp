@@ -156,8 +156,8 @@ class ModuleG extends React.PureComponent {
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     let dataStatus = true;
-    if (productTabList && productTabList.status) {
-      dataStatus = productTabList.status[currentCatId];
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[currentCatId];
     }
     if (dataStatus) {
       return (
@@ -225,7 +225,7 @@ class ModuleG extends React.PureComponent {
   render() {
     const {
       className,
-      // productTabList,
+      productTabList,
       // mediaLinkedList,
       // layout,
       divTabs,
@@ -238,6 +238,7 @@ class ModuleG extends React.PureComponent {
     // const promoMediaLinkedList = mediaLinkedList || [];
     // const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     // const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
+    const data = productTabList[currentCatId] || [];
     return (
       <Grid className={`${className} moduleG`}>
         <Row>
@@ -258,11 +259,13 @@ class ModuleG extends React.PureComponent {
         </Row>
         <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
           {this.renderCarousel('top', currentCatId[0])}
-          <div className="focusAreaView">
-            <span className="focusArea-plus">
-              <Image src={getIconPath('plus-icon')} />
-            </span>
-          </div>
+          {data && data.length > 0 ? (
+            <div className="focusAreaView">
+              <span className="focusArea-plus">
+                <Image src={getIconPath('plus-icon')} />
+              </span>
+            </div>
+          ) : null}
           {/* carousel bottom */}
           {this.renderCarousel('bottom', currentCatId[1])}
         </Row>

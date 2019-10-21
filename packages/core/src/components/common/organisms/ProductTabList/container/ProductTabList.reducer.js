@@ -8,7 +8,7 @@ const ProductTabListReducer = (state = initialState, action = {}) => {
   switch (type) {
     case constants.PRODUCT_TAB_LIST_REQ: {
       const { categoryId } = payload;
-      return { ...state, status: { ...state.status, [categoryId]: true } };
+      return { ...state, completed: { ...state.completed, [categoryId]: true } };
     }
     case constants.PRODUCT_TAB_LIST_SUCCESS:
     case constants.PRODUCT_TAB_LIST_FAIL:
@@ -16,7 +16,7 @@ const ProductTabListReducer = (state = initialState, action = {}) => {
         ...state,
         ...payload,
         errors: { ...state.errors, ...payload.errors },
-        status: { ...state.status, ...payload.status },
+        completed: { ...state.completed, ...payload.completed },
       };
     default:
       return state;

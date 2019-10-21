@@ -17,7 +17,7 @@ export function* fetchStyliticsProductTabListData({ payload }) {
         styliticsProductTabListDataSuccess({
           [categoryId]: res,
           errors: { [categoryId]: null },
-          status: { [categoryId]: false },
+          completed: { [categoryId]: false },
         })
       );
     }
@@ -27,7 +27,7 @@ export function* fetchStyliticsProductTabListData({ payload }) {
       styliticsProductTabListDataFail({
         [categoryId]: [],
         errors: { [categoryId]: true },
-        status: { [categoryId]: false },
+        completed: { [categoryId]: false },
       })
     );
   }

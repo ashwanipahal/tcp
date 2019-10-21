@@ -35,12 +35,14 @@ export class LazyImage extends React.Component {
   // Just render the image with data-src
   render() {
     const { isImgLoaded } = this.state;
-    const { alt, src, srcset, sizes, className, placeholderClass, ...otherProps } = this.props;
+    const { alt, src, srcset, sizes, className, showPlaceHolder, ...otherProps } = this.props;
     return (
       <img
         alt={alt}
-        className={`${ELEMENTS_CLASS} ${className} ${!isImgLoaded ? placeholderClass : ''}`}
-        src={placeHolderImg}
+        className={`${ELEMENTS_CLASS} ${className} ${
+          !isImgLoaded && showPlaceHolder ? 'img-placeholder' : ''
+        }`}
+        src={showPlaceHolder ? placeHolderImg : ''}
         data-src={src}
         data-srcset={srcset}
         data-sizes={sizes}
@@ -57,7 +59,7 @@ LazyImage.propTypes = {
   sizes: PropTypes.string,
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
-  placeholderClass: PropTypes.string.isRequired,
+  showPlaceHolder: PropTypes.bool.isRequired,
 };
 
 LazyImage.defaultProps = {
