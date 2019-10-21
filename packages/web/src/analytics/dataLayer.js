@@ -24,9 +24,6 @@ export default function create(store) {
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
-
-    // TODO: All pods to include dataElements here like browseDataLayer and make a global for common one.
-
     pageName: {
       get() {
         return store.getState().pageName;
