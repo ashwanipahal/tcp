@@ -120,8 +120,9 @@ class RegisteredShippingForm extends React.Component {
   };
 
   toggleAddNewAddressMode = () => {
-    const { dispatch } = this.props;
+    const { dispatch, toggleAddNewAddress } = this.props;
     dispatch(change(formName, 'defaultShipping', false));
+    return toggleAddNewAddress();
   };
 
   onAddressDropDownChange = value => {
