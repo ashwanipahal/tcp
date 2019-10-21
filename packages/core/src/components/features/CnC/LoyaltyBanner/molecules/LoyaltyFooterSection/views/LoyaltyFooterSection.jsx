@@ -174,6 +174,9 @@ const LoyaltyFooterSection = props => {
               isGuest,
               earnedReward
             )}
+          {isReviewPage && isPlcc && (
+            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
+          )}
         </>
       )}
     </div>
