@@ -11,8 +11,8 @@ import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 const OrderGroupNotification = props => {
   const { message } = props;
   return (
-    <Row>
-      <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
+    <Row className="elem-mt-MED" fullBleed>
+      <Col colSize={{ large: 12, medium: 8, small: 6 }}>
         <BodyCopy fontSize="fs14" fontFamily="secondary">
           {message}
         </BodyCopy>

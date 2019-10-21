@@ -42,3 +42,8 @@ export const getGymSmsPhone = createSelector(
   getState,
   state => state && state.subscribeStoreData && state.subscribeStoreData.gymSmsPhone
 );
+
+export const getCustomerPreferences = createSelector(
+  getState,
+  state => state && state.subscribeStoreData
+);
