@@ -28,9 +28,12 @@ class MyPreferencesTile extends PureComponent {
       socialAccounts,
       socialLoad,
       getContactPreferences,
+      customerPreferences,
     } = this.props;
 
-    getContactPreferences();
+    if (!customerPreferences) {
+      getContactPreferences();
+    }
 
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
@@ -45,8 +48,9 @@ class MyPreferencesTile extends PureComponent {
 
     const customerPreferences = isGymboree() ? CustomerPreferencesGym : CustomerPreferences;
 
+    const contactPreferencesValue = { placeRewardsPush: false, placeRewardsSms: false };
+
     if (customerPreferences.length) {
-      const contactPreferencesValue = {};
       customerPreferences.forEach(customerPreference => {
         const { preferenceMode, isModeSelected } = customerPreference;
         if (preferenceMode === 'placeRewardsPush' || preferenceMode === 'placeRewardsSms') {
@@ -56,7 +60,7 @@ class MyPreferencesTile extends PureComponent {
       return contactPreferencesValue;
     }
 
-    return { placeRewardsPush: false, placeRewardsSms: false };
+    return contactPreferencesValue;
   };
 
   render() {
@@ -75,6 +79,7 @@ class MyPreferencesTile extends PureComponent {
 
     const customerPreferencesValue =
       (customerPreferences && this.getContactPreferencesValues(customerPreferences)) || {};
+
     return (
       <MyPreferencesTileComponent
         labels={labels}

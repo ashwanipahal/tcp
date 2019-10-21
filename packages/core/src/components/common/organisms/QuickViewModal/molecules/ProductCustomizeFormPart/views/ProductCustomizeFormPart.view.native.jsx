@@ -19,6 +19,10 @@ import {
   getProductListToPathInMobileApp,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag) => {
+  return fromBagPage ? handleUpdateItem : handleAddToBag;
+};
+
 const ProductCustomizeFormPart = props => {
   const {
     productInfo,
@@ -32,10 +36,14 @@ const ProductCustomizeFormPart = props => {
     isMultiItemQVModal,
     goToPDPPageMobile,
     onChangeColor,
+    handleUpdateItem,
     formRef,
     formEnabled,
     onInputSelectionChange,
+    ...otherProps
   } = props;
+
+  const { fromBagPage, productInfoFromBag } = otherProps;
 
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const { badge2, listPrice, offerPrice } = prices;
@@ -113,8 +121,10 @@ const ProductCustomizeFormPart = props => {
         onChangeColor={onChangeColor}
         plpLabels={plpLabels}
         currentProduct={productInfo}
-        handleFormSubmit={handleAddToBag}
+        handleFormSubmit={handleFormSubmit(fromBagPage, handleUpdateItem, handleAddToBag)}
         errorOnHandleSubmit={addToBagError}
+        fromBagPage={fromBagPage}
+        productInfoFromBag={productInfoFromBag}
         formRef={formRef}
         formEnabled={formEnabled}
       />
@@ -138,6 +148,7 @@ ProductCustomizeFormPart.propTypes = {
   currentColorEntry: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
+  handleUpdateItem: PropTypes.func.isRequired,
   formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({
     addToBag: PropTypes.string,

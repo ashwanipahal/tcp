@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue, formatPhoneNumber } from '@tcp/core/src/utils/utils';
+import commonStyles from '@tcp/core/styles/globalStyles/commonStyles';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../../../common/atoms';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import internalEndpoints from '../../../../../internalEndpoints';
-import styles from '../styles/MyFavoriteTileItem.style';
 
 export const MyFavoriteTileItem = ({
   labels,
@@ -71,7 +71,7 @@ export const MyFavoriteTileItem = ({
                   }}
                 >
                   <BodyCopy
-                    className="favStoreData capFirstLetter"
+                    className="padding-none capFirstLetter"
                     fontSize="fs14"
                     data-locator="storeName"
                     fontFamily="secondary"
@@ -81,7 +81,7 @@ export const MyFavoriteTileItem = ({
                     {favStoreName}
                   </BodyCopy>
                   <BodyCopy
-                    className="favStoreData capFirstLetter"
+                    className="padding-none capFirstLetter"
                     fontSize="fs14"
                     data-locator="storeAddress"
                     fontFamily="secondary"
@@ -90,7 +90,7 @@ export const MyFavoriteTileItem = ({
                     {favStoreAddress}
                   </BodyCopy>
                   <BodyCopy
-                    className="favStoreData capFirstLetter"
+                    className="padding-none capFirstLetter"
                     fontSize="fs14"
                     data-locator="storeCityDetails"
                     fontFamily="secondary"
@@ -99,7 +99,7 @@ export const MyFavoriteTileItem = ({
                     {`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
                   </BodyCopy>
                   <BodyCopy
-                    className="favStoreData"
+                    className="padding-none"
                     fontSize="fs14"
                     data-locator="storePhoneNumber"
                     fontFamily="secondary"
@@ -111,7 +111,7 @@ export const MyFavoriteTileItem = ({
               </Row>
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
-                {getLabelValue(labels, 'lbl_preferenceTile_accessBuyOnlinePickup', 'preferences')}
+                {getLabelValue(labels, 'lbl_preference_tileAccessBuyOnlinePickup', 'preferences')}
               </BodyCopy>
             )}
           </Col>
@@ -148,4 +148,4 @@ MyFavoriteTileItem.defaultProps = {
   className: '',
 };
 
-export default withStyles(MyFavoriteTileItem, styles);
+export default withStyles(MyFavoriteTileItem, commonStyles);

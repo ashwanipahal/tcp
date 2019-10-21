@@ -20,6 +20,7 @@ import {
   getAllProductsSelect,
   getScrollToTopValue,
   getTotalProductsCount,
+  getIsDataLoading,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -153,6 +154,7 @@ function mapStateToProps(state) {
     scrollToTop: getScrollToTopValue(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
+    isDataLoading: getIsDataLoading(state),
   };
 }
 

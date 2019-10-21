@@ -110,7 +110,7 @@ exports[`MyFavoriteTileItem component should render correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          lbl_preferenceTile_accessBuyOnlinePickup
+          lbl_preference_tileAccessBuyOnlinePickup
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
