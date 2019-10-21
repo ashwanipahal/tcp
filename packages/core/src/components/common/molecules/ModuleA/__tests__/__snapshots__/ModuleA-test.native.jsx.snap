@@ -346,7 +346,6 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <ButtonList
-      buttonListVariation="linkCTAList"
       buttonsData={
         Array [
           Object {
@@ -436,8 +435,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
           },
         ]
       }
-      color="gray"
-      locator="link_cta_list"
+      color="black"
+      locator="moduleA_cta_links"
     />
   </Styled(View)>
 </Styled(View)>
