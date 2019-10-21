@@ -1,4 +1,7 @@
 import { css } from 'styled-components';
+import CHECKOUT_STAGES, {
+  ADDED_TO_BAG_PAGE,
+} from '../../../../../../../../../web/src/pages/App.constants';
 
 const plccMpr = props =>
   props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
@@ -150,7 +153,7 @@ const Styles = css`
   }
 
   ${props =>
-    props.isReviewPage
+    props.pageCategory === CHECKOUT_STAGES.REVIEW
       ? `
         .heading-val {
           ${paddingTopSm(props)}
@@ -178,7 +181,7 @@ const Styles = css`
       : ``};
 
   ${props =>
-    props.isConfirmationPage
+    props.pageCategory === CHECKOUT_STAGES.CONFIRMATION
       ? `
         .heading-val {
           ${paddingTopSm(props)}
@@ -205,7 +208,7 @@ const Styles = css`
       `
       : ``};
   ${props =>
-    props.isAddedToBagPage
+    props.pageCategory === ADDED_TO_BAG_PAGE
       ? `
         .heading-val {
           ${paddingTopSm(props)}

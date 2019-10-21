@@ -9,7 +9,7 @@ const cartOrderDetails = createSelector(
   getCartOrderDetails,
   cartOrderDetailsObj => {
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
-    const subTotal = cartOrderDetailsObj.get('subTotalWithDiscounts');
+    const subTotal = cartOrderDetailsObj.get('subTotal');
     const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');

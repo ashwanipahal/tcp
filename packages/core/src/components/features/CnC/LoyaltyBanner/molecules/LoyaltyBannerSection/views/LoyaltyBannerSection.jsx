@@ -8,6 +8,9 @@ import { labelsHashValuesReplace, convertHtml } from '../../../util/utility';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import renderLoyaltyLabels from '../../../util/utilityCommon';
+import CHECKOUT_STAGES, {
+  ADDED_TO_BAG_PAGE,
+} from '../../../../../../../../../web/src/pages/App.constants';
 
 const getPageCategory = pageCategory => {
   let ischeckoutPage = false;
@@ -15,13 +18,13 @@ const getPageCategory = pageCategory => {
   let isConfirmationPage = false;
   let isAddedToBagPage = false;
   switch (pageCategory) {
-    case 'review':
+    case CHECKOUT_STAGES.REVIEW:
       isReviewPage = true;
       break;
-    case 'confirmation':
+    case CHECKOUT_STAGES.CONFIRMATION:
       isConfirmationPage = true;
       break;
-    case 'isAddedToBagPage':
+    case ADDED_TO_BAG_PAGE:
       isAddedToBagPage = true;
       break;
     default:
@@ -119,9 +122,7 @@ const LoyaltyBannerSection = props => {
             currentSubtotal={currentSubtotal}
             estimatedSubtotal={estimatedSubtotal}
             isPlcc={isPlcc}
-            isReviewPage={isReviewPage}
-            isConfirmationPage={isConfirmationPage}
-            isAddedToBagPage={isAddedToBagPage}
+            pageCategory={pageCategory}
             isProductDetailView={isProductDetailView}
           />
           <div className="footer">
