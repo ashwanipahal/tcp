@@ -41,15 +41,18 @@ const getItemStatus = (productDetail, labels) => {
   }
   return <></>;
 };
-const getCartRadioButtons = (
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection,
-  showOnReviewPage
-) => {
+const getCartRadioButtons = reqdArgs => {
+  const {
+    productDetail,
+    labels,
+    itemIndex,
+    openedTile,
+    setSelectedProductTile,
+    isBagPageSflSection,
+    showOnReviewPage,
+    onPickUpOpenClick,
+    orderId,
+  } = reqdArgs;
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
@@ -59,6 +62,9 @@ const getCartRadioButtons = (
         index={itemIndex}
         openedTile={openedTile}
         setSelectedProductTile={setSelectedProductTile}
+        openPickUpModal={CartItemTileExtension.handleEditCartItemWithStore}
+        onPickUpOpenClick={onPickUpOpenClick}
+        orderId={orderId}
       />
     );
   }
@@ -286,7 +292,15 @@ class ProductInformation extends React.Component {
   };
 
   render() {
-    const { productDetail, labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
+    const {
+      productDetail,
+      labels,
+      itemIndex,
+      showOnReviewPage,
+      currencySymbol,
+      onPickUpOpenClick,
+      orderId,
+    } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     return (
@@ -363,15 +377,17 @@ class ProductInformation extends React.Component {
               {CartItemTileExtension.getEditError(productDetail, labels)}
             </EditButton>
           )}
-          {getCartRadioButtons(
+          {getCartRadioButtons({
             productDetail,
             labels,
             itemIndex,
             openedTile,
             setSelectedProductTile,
             isBagPageSflSection,
-            showOnReviewPage
-          )}
+            showOnReviewPage,
+            onPickUpOpenClick,
+            orderId,
+          })}
         </MainWrapper>
       </Swipeable>
     );
@@ -393,6 +409,8 @@ ProductInformation.propTypes = {
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
   currencySymbol: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  orderId: PropTypes.string,
 };
 
 ProductInformation.defaultProps = {
@@ -404,6 +422,7 @@ ProductInformation.defaultProps = {
   swipedElement: null,
   isBagPageSflSection: false,
   showOnReviewPage: true,
+  orderId: '',
 };
 
 export default ProductInformation;

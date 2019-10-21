@@ -358,7 +358,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
           "sizeL": "Size",
         }
       }
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId=""
       productDetail={
         Object {
           "itemInfo": Object {
@@ -761,7 +763,9 @@ exports[`CartItemTile common component renders correctly with Save for later ena
           "sizeL": "Size",
         }
       }
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId=""
       productDetail={
         Object {
           "itemInfo": Object {

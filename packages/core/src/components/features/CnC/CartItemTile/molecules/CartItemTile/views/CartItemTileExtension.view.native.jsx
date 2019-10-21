@@ -238,4 +238,5 @@ export default {
   PriceOnReviewPage,
   getEditError,
   callEditMethod,
+  handleEditCartItemWithStore,
 };

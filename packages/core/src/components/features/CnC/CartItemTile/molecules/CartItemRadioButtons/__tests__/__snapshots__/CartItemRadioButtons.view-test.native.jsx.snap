@@ -188,11 +188,28 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
           <ForwardRef>
             undefined:
           </ForwardRef>
-          <ForwardRef>
+          <React.Fragment>
             <ForwardRef>
-               New port center
+              <ForwardRef>
+                 New port center
+              </ForwardRef>
             </ForwardRef>
-          </ForwardRef>
+            <ForwardRef
+              accessibilityLabel=""
+              anchorVariation="primary"
+              colorName={null}
+              customStyle={Object {}}
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontSizeVariation="small"
+              locator=""
+              margins={null}
+              onPress={[Function]}
+              text="(change store)"
+              underline={true}
+              visible={false}
+            />
+          </React.Fragment>
         </ForwardRef>
         <ForwardRef>
           <LabeledRadioButton

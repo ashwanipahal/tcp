@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RadioButtonInput } from 'react-native-simple-radio-button';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import { LabeledRadioButton } from '../../../../../../common/atoms';
+import { LabeledRadioButton, Anchor } from '../../../../../../common/atoms';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import {
   StyledWrapper,
@@ -31,6 +31,25 @@ class CartItemRadioButtons extends React.Component {
       currentExpandedState: true,
     };
   }
+
+  /**
+   * @function handleChangeStoreClick Handle click event for change store
+   * @memberof CartItemRadioButtons
+   */
+  handleChangeStoreClick = () => {
+    const { openPickUpModal, onPickUpOpenClick, productDetail, orderId } = this.props;
+    const {
+      productDetail: {
+        miscInfo: { orderItemType },
+      },
+    } = this.props;
+    const openSkuSelectionForm = false;
+    openPickUpModal(orderItemType, openSkuSelectionForm, {
+      onPickUpOpenClick,
+      productDetail,
+      orderId,
+    });
+  };
 
   getExpandedState = ({ state, index }) => {
     const { setSelectedProductTile } = this.props;
@@ -84,9 +103,23 @@ class CartItemRadioButtons extends React.Component {
         {this.renderRadioButtonInput({ key, label })}
         <StyledText>{productDetail.miscInfo.store ? `${label}:` : label}</StyledText>
         {productDetail.miscInfo.store && (
-          <StyledStoreTextWrapper>
-            <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
-          </StyledStoreTextWrapper>
+          <>
+            <StyledStoreTextWrapper>
+              <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
+            </StyledStoreTextWrapper>
+            <Anchor
+              fontSizeVariation="small"
+              underline
+              anchorVariation="primary"
+              fontSize="fs12"
+              fontFamily="secondary"
+              onPress={e => {
+                e.preventDefault();
+                this.handleChangeStoreClick();
+              }}
+              text="(change store)"
+            />
+          </>
         )}
       </StyledBopisBorder>
     );
@@ -165,11 +198,15 @@ CartItemRadioButtons.propTypes = {
   index: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  orderId: PropTypes.string,
+  openPickUpModal: PropTypes.func.isRequired,
 };
 
 CartItemRadioButtons.defaultProps = {
   index: 0,
   openedTile: 0,
+  orderId: '',
 };
 
 export default CartItemRadioButtons;
