@@ -3,7 +3,11 @@ import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+} from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -29,7 +33,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints, isProductImage } = props;
+  const { breakpoints, isProductImage, itemBrand } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -41,10 +45,16 @@ const getBreakpointImgUrl = (type, props) => {
     config = imgConfigs[breakpointTypeIndex];
   }
 
+  let brandName = getBrand();
+
+  if (itemBrand) {
+    brandName = itemBrand;
+  }
+
   const { assetHost, productAssetPath } = getAPIConfig();
 
   return isProductImage
-    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
+    ? `${assetHost}/${config}/${productAssetPath}/${brandName}/${imgPath}`
     : `${basePath}/${config}/${imgPath}`;
 };
 
@@ -57,6 +67,7 @@ const renderImage = imgProps => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
     ...other
   } = imgProps;
 
@@ -93,6 +104,7 @@ const DamImage = props => {
     lazyLoad,
     link,
     dataLocator,
+    itemBrand,
     ...other
   } = props;
 
@@ -104,6 +116,7 @@ const DamImage = props => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
     ...other,
   };
 
@@ -146,6 +159,7 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
+  itemBrand: getBrand(),
 };
 
 DamImage.propTypes = {
@@ -189,6 +203,7 @@ DamImage.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
   }),
+  itemBrand: PropTypes.string,
 };
 
 export default withTheme(DamImage);

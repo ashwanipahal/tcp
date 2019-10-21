@@ -1035,6 +1035,7 @@ class CartItemTile extends React.Component {
                   alt: labels.productImageAlt,
                   url: productDetail.itemInfo.imagePath,
                 }}
+                itemBrand={productDetail.itemInfo.itemBrand.toLowerCase()}
                 isProductImage
               />
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
