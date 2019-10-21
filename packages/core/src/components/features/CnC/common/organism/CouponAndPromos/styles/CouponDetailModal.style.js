@@ -52,6 +52,9 @@ const CouponDetailModalStyle = css`
       padding: 0;
       text-align: center;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
   .couponModal_modalbarcode {
     color: ${props => props.theme.colors.BLACK};
@@ -92,7 +95,7 @@ const CouponDetailModalStyle = css`
     text-align: left;
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     color: ${props => props.theme.colors.BLACK};
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0px
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0px
       ${props => props.theme.spacing.ELEM_SPACING.MED} 0px;
   }
 `;
