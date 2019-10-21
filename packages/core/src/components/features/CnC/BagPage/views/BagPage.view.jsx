@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
@@ -12,6 +13,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import BagPageExtension from './BagPageExtension.view';
 import {
   customStyles,
   bagTileCSS,
@@ -70,7 +72,7 @@ class BagPageView extends React.Component {
   }
 
   componentWillUnmount() {
-    BagPageUtils.removeScrollListener();
+    this.removeScrollListener();
   }
 
   setHeaderErrorState = (state, ...params) => {
@@ -97,6 +99,16 @@ class BagPageView extends React.Component {
   addScrollListenerMobileHeader = () => {
     const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
     BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
+  };
+
+  removeScrollListener = () => {
+    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
+    const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
+    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
+    window.removeEventListener(
+      'scroll',
+      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
+    );
   };
 
   handleScroll = sticky => {
@@ -133,27 +145,14 @@ class BagPageView extends React.Component {
     }
   };
 
-  wrapSection = Component => {
-    const { orderItemsCount } = this.props;
-    const isNoNEmptyBag = orderItemsCount > 0;
-    if (!isNoNEmptyBag) {
-      return (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 5,
-            large: 8,
-          }}
-        >
-          {Component}
-        </Col>
-      );
-    }
-    return Component;
-  };
-
   renderLeftSection = () => {
-    const { labels, sflItems, isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
+    const {
+      labels,
+      sflItems,
+      isShowSaveForLaterSwitch,
+      isSflItemRemoved,
+      orderItemsCount,
+    } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -172,7 +171,7 @@ class BagPageView extends React.Component {
         </div>
 
         {isShowSaveForLaterSwitch &&
-          this.wrapSection(
+          BagPageExtension.wrapSection(
             <div
               className={`save-for-later-section ${
                 activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
@@ -194,7 +193,8 @@ class BagPageView extends React.Component {
                 isBagPageSflSection
                 setHeaderErrorState={this.setHeaderErrorState}
               />
-            </div>
+            </div>,
+            orderItemsCount
           )}
       </React.Fragment>
     );

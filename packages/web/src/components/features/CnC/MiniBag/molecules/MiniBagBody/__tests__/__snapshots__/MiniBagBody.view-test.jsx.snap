@@ -69,42 +69,9 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
     link={null}
     textAlign="left"
   >
-    <Styled(Row)
-      className="mainWrapper"
-    >
-      <Styled(Col)
-        className="deleteMsg"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(Image)
-          alt="closeIcon"
-          className="tick-icon-image"
-          height={12}
-          src="/static/images/circle-check.png"
-          width={12}
-        />
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
     <Connect(ProductTileWrapperContainer)
       onItemEdit={[Function]}
+      setHeaderErrorState={[Function]}
     />
   </Styled(BodyCopy)>
   <div
@@ -206,42 +173,9 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
     link={null}
     textAlign="left"
   >
-    <Styled(Row)
-      className="mainWrapper"
-    >
-      <Styled(Col)
-        className="deleteMsg"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(Image)
-          alt="closeIcon"
-          className="tick-icon-image"
-          height={12}
-          src="/static/images/circle-check.png"
-          width={12}
-        />
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
     <Connect(ProductTileWrapperContainer)
       onItemEdit={[Function]}
+      setHeaderErrorState={[Function]}
     />
   </Styled(BodyCopy)>
   <div
@@ -342,42 +276,9 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    <Styled(Row)
-      className="mainWrapper"
-    >
-      <Styled(Col)
-        className="deleteMsg"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(Image)
-          alt="closeIcon"
-          className="tick-icon-image"
-          height={12}
-          src="/static/images/circle-check.png"
-          width={12}
-        />
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
     <Connect(ProductTileWrapperContainer)
       onItemEdit={[Function]}
+      setHeaderErrorState={[Function]}
     />
   </Styled(BodyCopy)>
   <div
