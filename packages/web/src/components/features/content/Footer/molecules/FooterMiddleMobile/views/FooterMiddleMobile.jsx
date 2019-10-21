@@ -22,6 +22,7 @@ const FooterMiddleMobile = ({
       ignoreGutter={{ small: true, medium: true }}
     >
       <AccordionList className={className} accordionItems={navLinkItems}>
+        {/* To hide the second footer column for canada, we need to put check for index ===1 and isCanada */}
         {navLinkItems.map((item, index) =>
           index === 1 && isCanada() ? null : (
             <FooterNavLinksList
