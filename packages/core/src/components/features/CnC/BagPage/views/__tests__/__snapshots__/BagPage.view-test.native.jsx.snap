@@ -52,6 +52,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         />
         <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
@@ -124,6 +127,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         />
         <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -183,6 +189,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         />
         <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -254,6 +263,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           />
         </Styled(View)>
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
