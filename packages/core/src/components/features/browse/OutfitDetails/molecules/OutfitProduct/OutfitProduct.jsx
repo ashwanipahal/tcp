@@ -38,7 +38,7 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = labels && labels.lbl_outfit_title;
+  const viewDetails = labels && labels.lbl_outfit_viewdetail;
 
   return (
     <Row className={className}>
