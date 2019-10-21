@@ -6,7 +6,7 @@ import withStyles from '../../../hoc/withStyles';
 
 import style from '../LoyaltyPromoBanner.style';
 
-function loyaltyBannerCloseStatus() {
+export const useLoyaltyBannerCloseStatus = () => {
   const [bannerClosed, setBannerClosed] = useState(true);
 
   useEffect(() => {
@@ -42,8 +42,9 @@ function loyaltyBannerCloseStatus() {
   }, [bannerClosed]);
 
   return bannerClosed;
-}
+};
 
+/* istanbul ignore next */
 const LoyaltyPromoBanner = props => {
   const {
     className,
@@ -51,7 +52,7 @@ const LoyaltyPromoBanner = props => {
     dataLocator,
   } = props;
 
-  return !loyaltyBannerCloseStatus() ? (
+  return !useLoyaltyBannerCloseStatus() ? (
     <div className={`${className} content-wrapper`}>
       <Row fullBleed={{ small: true, medium: true, large: false }}>
         <Col
@@ -78,7 +79,7 @@ const LoyaltyPromoBanner = props => {
 
 LoyaltyPromoBanner.propTypes = {
   className: PropTypes.string.isRequired,
-  richTextList: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.string)),
+  richTextList: PropTypes.arrayOf(PropTypes.object),
   dataLocator: PropTypes.string,
 };
 
