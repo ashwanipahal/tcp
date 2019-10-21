@@ -10,6 +10,7 @@ import mobileHashValues from '../../../util/utilityNative';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import Anchor from '../../../../../../common/atoms/Anchor';
+// import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
 const renderApplyNowLink = labels => {
   return (
@@ -118,6 +119,18 @@ const LoyaltyBannerSection = props => {
         {!isPlcc && renderApplyNowLink(labels)}
         <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
+      {/* <View className="footer">
+        <LoyaltyFooterSection
+          labels={labels}
+          isPlcc={isPlcc}
+          isProductDetailView={isProductDetailView}
+          isReviewPage={isReviewPage}
+          isConfirmationPage={isConfirmationPage}
+          isGuest={isGuest}
+          isAddedToBagPage={isAddedToBagPage}
+          earnedReward
+        />
+      </View> */}
       <LineStyle isPlcc={isPlcc} />
     </View>
   );

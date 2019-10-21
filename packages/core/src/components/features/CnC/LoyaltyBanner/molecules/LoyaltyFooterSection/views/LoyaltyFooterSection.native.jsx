@@ -1,16 +1,21 @@
 import React from 'react';
+import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
-import ProductDetailSection from '../../ProductDetailSection';
-import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
-const renderApplyNowLink = () => {
+const renderApplyNowLink = labels => {
   return (
-    <span className="applyNowLink">
-      <ApplyNowModal />
-    </span>
+    <View className="applyNowLink">
+      <Anchor
+        className="learnMore"
+        fontSizeVariation="medium"
+        anchorVariation="primary"
+        View={labels.applyNow}
+        underline
+      />
+    </View>
   );
 };
 
@@ -20,7 +25,7 @@ const renderLearnMoreLink = labels => {
       className="learnMore"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.learnMore}
+      View={labels.learnMore}
       underline
     />
   );
@@ -32,7 +37,7 @@ const renderCreateAccountLink = labels => {
       className="learnMore"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.createMyPlaceRewardsAccount}
+      View={labels.createMyPlaceRewardsAccount}
       underline
     />
   );
@@ -44,7 +49,7 @@ const renderLoginLink = labels => {
       className="learnMore"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.logIn}
+      View={labels.logIn}
       underline
     />
   );
@@ -52,73 +57,96 @@ const renderLoginLink = labels => {
 
 const createLoginLinks = labels => {
   return (
-    // <>
-    //   {isGuest && earnedReward && (
-    <div className="links-wrapper">
-      <span className="links-container">
-        <span>{renderCreateAccountLink(labels)}</span>
-        <span className="elem-pl-XL">{renderLoginLink(labels)}</span>
-      </span>
-    </div>
-    //   )}
-    // </>
+    <View className="links-wrapper">
+      <View className="links-container">
+        <View>{renderCreateAccountLink(labels)}</View>
+        <View className="elem-pl-XL">{renderLoginLink(labels)}</View>
+      </View>
+    </View>
   );
 };
 
 const applyLearnLinks = labels => {
   return (
-    <div className="links-wrapper">
-      <span className="links-container">
+    <View className="links-wrapper">
+      <View className="links-container">
         {renderApplyNowLink()}
-        <span className="learnSymbolWrapper elem-pl-XL">
+        <View className="learnSymbolWrapper elem-pl-XL">
           <BodyCopy
             className="symbolWrapper"
-            color="text.primary"
-            component="span"
+            color="View.primary"
+            component="View"
             fontFamily="secondary"
             fontWeight="regular"
             fontSize="fs9"
-          >
-            {labels.sectionSymbol}
-            {labels.asteriskSymbol}
-          </BodyCopy>
-
+            View={`${labels.sectionSymbol}${labels.asteriskSymbol}`}
+          />
           {renderLearnMoreLink(labels)}
-        </span>
-      </span>
-    </div>
+        </View>
+      </View>
+    </View>
   );
 };
 
 const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedReward) => {
   return (
     <>
-      {isGuest && <>{createLoginLinks(labels)}</>}
+      {isGuest && createLoginLinks(labels)}
       {!isGuest && !isPlcc && (
         <>
           {!earnedReward && applyLearnLinks(labels)}
-          {earnedReward && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+          {earnedReward && <View className="links-wrapper">{renderLearnMoreLink(labels)}</View>}
         </>
       )}
-      {!isGuest && isPlcc && (
-        <>
-          <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
-        </>
-      )}
+      {!isGuest && isPlcc && <View className="links-wrapper">{renderLearnMoreLink(labels)}</View>}
     </>
   );
 };
 
-const notReviewLinks = (labels, isConfirmationPage, isPlcc, isGuest, earnedReward) => {
+const renderConfirmationAndBagLinks = (
+  labels,
+  isConfirmationPage,
+  isPlcc,
+  isGuest,
+  earnedReward
+) => {
   return (
     <>
       {!isConfirmationPage && (
         <>
           {!isPlcc && applyLearnLinks(labels)}
-          {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+          {isPlcc && <View className="links-wrapper">{renderLearnMoreLink(labels)}</View>}
         </>
       )}
-      {isConfirmationPage && <>{isGuest && earnedReward && createLoginLinks(labels)}</>}
+      {isConfirmationPage && isGuest && earnedReward && createLoginLinks(labels)}
+    </>
+  );
+};
+
+const detailViewFooter = (labels, isProductDetailView, isGuest, isPlcc) => {
+  return (
+    <>
+      {isProductDetailView && (
+        <View>
+          {isGuest && (
+            <View>
+              {renderCreateAccountLink(labels)}
+              {renderLoginLink(labels)}
+            </View>
+          )}
+          {!isGuest && (
+            <>
+              {!isPlcc && (
+                <View>
+                  {renderApplyNowLink()}
+                  {renderLearnMoreLink(labels)}
+                </View>
+              )}
+              {isPlcc && <View>{renderLearnMoreLink(labels)}</View>}
+            </>
+          )}
+        </View>
+      )}
     </>
   );
 };
@@ -136,27 +164,25 @@ const LoyaltyFooterSection = props => {
     earnedReward,
   } = props;
   return (
-    <div className={`${className} footerWrapper`}>
-      {isProductDetailView && (
-        <ProductDetailSection
-          className={className}
-          labels={labels}
-          isPlcc={isPlcc}
-          isProductDetailView={isProductDetailView}
-          isGuest={isGuest}
-        />
-      )}
-      {isAddedToBagPage && <>{addedToBagPageLinks(labels, isGuest, isPlcc, earnedReward)}</>}
+    <View className={`${className} footerWrapper`}>
+      {isProductDetailView && detailViewFooter()}
+      {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, earnedReward)}
       {!isProductDetailView && !isAddedToBagPage && (
         <>
           {!isReviewPage &&
-            notReviewLinks(labels, isConfirmationPage, isPlcc, isGuest, earnedReward)}
+            renderConfirmationAndBagLinks(
+              labels,
+              isConfirmationPage,
+              isPlcc,
+              isGuest,
+              earnedReward
+            )}
           {isReviewPage && isPlcc && (
-            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
+            <View className="links-wrapper">{renderLearnMoreLink(labels)}</View>
           )}
         </>
       )}
-    </div>
+    </View>
   );
 };
 

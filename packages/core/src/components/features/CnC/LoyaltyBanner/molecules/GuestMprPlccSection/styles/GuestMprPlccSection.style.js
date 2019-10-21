@@ -54,79 +54,79 @@ const colorTheme = props => `
 
 const Styles = css`
   .mpr-plcc-theme {
-    ${colorTheme}
+    ${props => colorTheme(props)}
   }
   .heading-val {
-    ${paddingTopSm}
-    ${alignCenter}
+    ${props => paddingTopSm(props)}
+    ${alignCenter()}
     ${props => {
       if (props.isPlcc) {
         return `${fontSize16(props)}${colorTheme(props)}${paddingLeftMed(props)}${paddingRightMed(
           props
         )}`;
       }
-      return fontSize12;
+      return fontSize12(props);
     }};
 
     @media ${props => props.theme.mediaQuery.medium} {
         ${props =>
           props.isPlcc
             ? `${fontSize14(props)}${paddingLeftXxs(props)}${paddingRightXxs(props)}`
-            : fontSize10};
+            : fontSize10(props)};
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${paddingTopMed}
+        ${props => paddingTopMed(props)}
         ${props =>
           props.isPlcc
             ? `${fontSize18(props)}${paddingLeftMed(props)}${paddingRightMed(props)}`
-            : fontSize16};
+            : fontSize16(props)};
     }
   }
   .subheading-val {
-    ${alignCenter}
-    ${colorTheme}
-    ${paddingTopSm}
-    ${fontSize18}
+    ${alignCenter()}
+    ${props => colorTheme(props)}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize18(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize14}
+        ${props => fontSize14(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${paddingTopMed}
-        ${fontSize20}
+        ${props => paddingTopMed(props)}
+        ${props => fontSize20(props)}
     }
   }
   .description-val {
-    ${alignCenter}
-    ${paddingTopSm}
-    ${fontSize12}
+    ${alignCenter()}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize12(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize10}
+        ${props => fontSize10(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${paddingTopMed}
-        ${fontSize16}
+        ${props => paddingTopMed(props)}
+        ${props => fontSize16(props)}
     }
   }
   .remaining-val {
-    ${alignCenter}
-    ${paddingTopSm}
-    ${fontSize12}
+    ${alignCenter()}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize12(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize10}
+        ${props => fontSize10(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${paddingTopMed}
-        ${fontSize16}
+        ${props => paddingTopMed(props)}
+        ${props => fontSize16(props)}
     }
   }
   .subtotal-section {
     border-top: 1px solid ${props => props.theme.colorPalette.gray[300]};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[300]};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    ${paddingTopSm}
+    ${props => paddingTopSm(props)}
     @media ${props => props.theme.mediaQuery.large} {
         margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-        ${paddingTopMed}
+        ${props => paddingTopMed(props)}
     }
   }
   .current-subtotal-val-col,
@@ -135,40 +135,40 @@ const Styles = css`
   }
   .current-subtotal-text {
     color: ${props => props.theme.colorPalette.gray[800]};
-    ${fontSize12}
+    ${props => fontSize12(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize12}
+        ${props => fontSize12(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${fontSize14}
+        ${props => fontSize14(props)}
     }
   }
   .current-subtotal-val {
-    ${fontSize14}
+    ${props => fontSize14(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize14}
+        ${props => fontSize14(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${fontSize16}
+        ${props => fontSize16(props)}
     }
   }
   .estimated-subtotal-text {
     color: ${props => props.theme.colorPalette.gray[800]};
-    ${fontSize12}
+    ${props => fontSize12(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize12}
+        ${props => fontSize12(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${fontSize14}
+        ${props => fontSize14(props)}
     }
   }
   .estimated-subtotal-val {
-    ${fontSize16}
+    ${props => fontSize16(props)}
     @media ${props => props.theme.mediaQuery.medium} {
-        ${fontSize16}
+        ${props => fontSize16(props)}
     }
     @media ${props => props.theme.mediaQuery.large} {
-        ${fontSize18}
+        ${props => fontSize18(props)}
     }
   }
 
