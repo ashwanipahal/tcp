@@ -4,6 +4,7 @@ import { API_CONFIG } from '../../services/config';
 const { siteIds } = API_CONFIG;
 const initialState = {
   siteDetails: {},
+  otherBrandSiteDetails: {},
   siteOptions: {
     countriesMap: [],
     currenciesMap: [],
@@ -40,6 +41,11 @@ const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:
       return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
+    case GLOBAL_CONSTANTS.SET_XAPP_CONFIG_OTHER_BRAND:
+      return {
+        ...state,
+        otherBrandSiteDetails: { ...state.otherBrandSiteDetails, ...action.payload },
+      };
     case GLOBAL_CONSTANTS.SET_BOSS_BOPIS_FLAGS:
       return { ...state, siteDetails: { ...state.siteDetails, ...action.payload } };
     case GLOBAL_CONSTANTS.SET_COUNTRY:

@@ -885,24 +885,79 @@ export const generateTraceId = () => {
 
  * @returns {object} label and message for order group
  */
+export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
+  let label;
+  let message;
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_IN_PROCESS:
+    case constants.STATUS_CONSTANTS.ORDER_RECEIVED:
+    case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
+      label = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
+      message = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
+        : getLabelValue(ordersLabels, 'lbl_orders_processing');
+      break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+  return { label, message };
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
 export const getOrderGroupLabelAndMessage = orderProps => {
   let label;
   let message;
-  const { status, shippedDate, pickedUpDate, ordersLabels } = orderProps;
+  const {
+    status,
+    shippedDate,
+    pickedUpDate,
+    ordersLabels,
+    isBopisOrder,
+    pickUpExpirationDate,
+  } = orderProps;
+
+  // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
 
   switch (status) {
     case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
     case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
       label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
-      message = moment(shippedDate).format('LL');
+      message =
+        shippedDate === constants.STATUS_CONSTANTS.NA
+          ? shippedDate
+          : moment(shippedDate).format('LL');
       break;
+    case constants.STATUS_CONSTANTS.ORDER_CANCELED:
+    case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
+      label = '';
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderCancelMessage');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_RECEIVED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_orderInProcess');
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
+      message = moment(pickUpExpirationDate).format('LL');
+      break;
+
+    case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
     case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
       label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
       message = moment(pickedUpDate).format('LL');
       break;
     default:
-      label = null;
-      message = null;
+      ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
       break;
   }
 
@@ -924,6 +979,19 @@ export const changeImageURLToDOM = (img, cropParams) => {
     imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
   }
   return imageUrl;
+};
+
+/**
+ * The insertIntoString() method changes the content of a string by removing a range of
+ * characters and/or adding new characters.
+ * @param {String} string base string to work on
+ * @param {number} start Index at which to start changing the string.
+ * @param {number} delCount An integer indicating the number of old chars to remove.
+ * @param {string} newSubStr The String that is spliced in.
+ * @return {string} A new string with the spliced substring.
+ */
+export const insertIntoString = (string, idx, rem, str) => {
+  return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
 export default {
@@ -963,4 +1031,5 @@ export default {
   stringify,
   changeImageURLToDOM,
   generateTraceId,
+  insertIntoString,
 };

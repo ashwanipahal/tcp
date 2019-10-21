@@ -1,5 +1,7 @@
 import { all, call, put, putResolve, takeLatest } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getAPIConfig } from '@tcp/core/src/utils';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
 import countryListAbstractor from '../../services/abstractors/bootstrap/countryList';
@@ -9,6 +11,7 @@ import {
   loadModulesData,
   setAPIConfig,
   loadXappConfigData,
+  loadXappConfigDataOtherBrand,
   setDeviceInfo,
   setOptimizelyFeaturesList,
   setCountry,
@@ -73,13 +76,23 @@ function* bootstrap(params) {
         yield put(setCountry(country));
       }
       if (currency) {
-        yield put(setCurrency(currency));
+        yield put(setCurrency({ currency }));
       }
       if (language) {
         yield put(setLanguage(language));
       }
       const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
       yield put(loadXappConfigData(xappConfig));
+
+      const { brandIdCMS } = getAPIConfig();
+      const xappConfigOtherBrand = yield call(
+        xappAbstractor.getData,
+        GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE,
+        brandIdCMS === API_CONFIG.TCP_CONFIG_OPTIONS.brandIdCMS
+          ? API_CONFIG.GYM_CONFIG_OPTIONS
+          : API_CONFIG.TCP_CONFIG_OPTIONS
+      );
+      yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
 
     const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
