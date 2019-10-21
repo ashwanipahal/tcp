@@ -122,7 +122,7 @@ OutfitDetailsView.propTypes = {
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyExchange: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.bool,
