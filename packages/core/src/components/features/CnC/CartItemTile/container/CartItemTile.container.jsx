@@ -8,7 +8,9 @@ import {
   getIsBossClearanceProductEnabled,
   getIsBopisClearanceProductEnabled,
   getIsRadialInventoryEnabled,
+  getIsBossAppEnabled,
 } from '@tcp/core/src/reduxStore/selectors/session.selectors';
+import { isMobileApp } from '@tcp/core/src/utils';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import {
@@ -194,14 +196,20 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 export function mapStateToProps(state) {
+  const isMobile = isMobileApp();
+  const { isBossEnabledAppTCP, isBossEnabledAppGYM } = getIsBossAppEnabled(state);
   return {
     editableProductInfo: getEditableProductInfo(state),
     isShowSaveForLater: getSaveForLaterSwitch(state),
     sflMaxCount: parseInt(getSflMaxCount(state)),
     isGenricGuest: getPersonalDataState(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
-    isBossEnabledTCP: getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
-    isBossEnabledGYM: getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.GYM),
+    isBossEnabledTCP: isMobile
+      ? isBossEnabledAppTCP
+      : getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
+    isBossEnabledGYM: isMobile
+      ? isBossEnabledAppGYM
+      : getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.GYM),
     isBopisEnabledTCP: getIsBopisEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
     isBopisEnabledGYM: getIsBopisEnabled(state, CARTPAGE_CONSTANTS.BRANDS.GYM),
     isBossClearanceProductEnabled: getIsBossClearanceProductEnabled(state),
