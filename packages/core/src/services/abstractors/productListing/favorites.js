@@ -17,9 +17,6 @@ import endpoints from '../../endpoints';
 
 const FAKE_WISHLIST_ID = 'fake_sv2a9';
 
-// Mock Image
-const noImgPath = '3009740/3009740_IV.jpg';
-
 export const AVAILABILITY = {
   OK: 'OK',
   SOLDOUT: 'SOLDOUT',
@@ -257,11 +254,11 @@ export const getWishListbyId = ({
                 if (extraImages.length === 0) {
                   extraImage = [
                     {
-                      iconSizeImageUrl: noImgPath,
-                      listingSizeImageUrl: noImgPath,
-                      regularSizeImageUrl: noImgPath,
-                      bigSizeImageUrl: noImgPath,
-                      superSizeImageUrl: noImgPath,
+                      iconSizeImageUrl: productImages[125],
+                      listingSizeImageUrl: productImages[380],
+                      regularSizeImageUrl: productImages[500],
+                      bigSizeImageUrl: productImages[900],
+                      superSizeImageUrl: productImages[900],
                     },
                   ];
                 } else {
