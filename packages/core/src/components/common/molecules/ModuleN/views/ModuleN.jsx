@@ -10,18 +10,28 @@ import { Row, Col } from '../../../atoms';
 import config from '../config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
-const { ctaTypes, getColSize } = config;
+const { ctaTypes } = config;
 
 const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType, moduleWidth } = props;
-  const COL_SIZE = getColSize(moduleWidth);
+  const { className, ctaItems, headerText, promoBanner, ctaType } = props;
+  const promoTexts = promoBanner[0];
+  const mappedPromoBanner = promoTexts.textItems.map(item => {
+    return { ...promoTexts, textItems: [item] };
+  });
   return (
     <Row
       className={`${className} moduleN`}
       fullBleed={{ small: true, medium: true, large: true }}
       data-locator={getLocator('moduleN_promobanner_img')}
     >
-      <Col className="moduleN-innerContent" colSize={COL_SIZE}>
+      <Col
+        className="moduleN-innerContent"
+        colSize={{
+          small: 6,
+          medium: 8,
+          large: 12,
+        }}
+      >
         <div className="heading-wrapper">
           {headerText && (
             <LinkText
@@ -34,22 +44,32 @@ const ModuleN = props => {
               dataLocator={getLocator('moduleN_header_text')}
             />
           )}
-          {promoBanner && (
+          {mappedPromoBanner && mappedPromoBanner[0] && (
             <PromoBanner
-              promoBanner={promoBanner}
+              promoBanner={[mappedPromoBanner[0]]}
               className="moduleN__promo-banner"
               color="white"
               data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList
-          buttonListVariation={ctaTypes[ctaType]}
-          buttonsData={ctaItems}
-          fill="RED"
-          dataLocatorDivisionImages={getLocator('moduleN_image')}
-          dataLocatorTextCta={getLocator('moduleN_cta_links')}
-        />
+        {mappedPromoBanner && mappedPromoBanner[1] && (
+          <PromoBanner
+            promoBanner={[mappedPromoBanner[1]]}
+            className="moduleN__promo-banner"
+            color="white"
+            data-locator={getLocator('moduleN_promobanner_text')}
+          />
+        )}
+        <div className="ModuleN_Button">
+          <ButtonList
+            buttonListVariation={ctaTypes[ctaType]}
+            buttonsData={ctaItems}
+            fill="RED"
+            dataLocatorDivisionImages={getLocator('moduleN_image')}
+            dataLocatorTextCta={getLocator('moduleN_cta_links')}
+          />
+        </div>
       </Col>
     </Row>
   );
@@ -61,7 +81,6 @@ ModuleN.defaultProps = {
   headerText: [],
   promoBanner: [],
   ctaType: 'stackedCTAButtons',
-  moduleWidth: 'full',
 };
 
 ModuleN.propTypes = {
@@ -70,7 +89,6 @@ ModuleN.propTypes = {
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   ctaType: PropTypes.string,
-  moduleWidth: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);

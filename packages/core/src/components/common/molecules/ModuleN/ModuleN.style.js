@@ -9,8 +9,19 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 30px;
-      padding-bottom: 25px;
+      padding-top: 16px;
+      padding-bottom: 24px;
+    }
+  }
+
+  .stacked-button-list-wrapper,
+  .scroll-button-list-wrapper {
+    color: ${props => props.theme.colorPalette.red['300']};
+  }
+
+  .ModuleN_Button a {
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 24px;
     }
   }
 
@@ -49,10 +60,15 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .heading-wrapper {
       text-align: center;
+      display: ${props => (props.halfWidth ? 'block' : 'flex')};
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0px;
     }
     .heading,
     .moduleN__promo-banner {
-      display: inline-block;
+      display: block;
+      margin-bottom: 0px;
     }
   }
 `;
