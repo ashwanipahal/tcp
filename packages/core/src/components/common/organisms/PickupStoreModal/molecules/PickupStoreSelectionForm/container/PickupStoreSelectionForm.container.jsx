@@ -284,9 +284,10 @@ class PickupStoreSelectionFormContainer extends React.Component {
       storeLocId: selectedStoreId,
     };
     const productInfo = getCartItemInfo(currentProduct, productFormData);
-    const { orderId, orderItemId, Quantity, orderItemType } = initialValuesFromBagPage;
+    const { orderId, orderItemId, orderItemType } = initialValuesFromBagPage;
     const {
       skuInfo: { skuId, variantNo, variantId },
+      quantity: newQuantity,
     } = productInfo;
     const targetOrderType = this.calculateTargetOrderType(isBopisCtaEnabled, isBossCtaEnabled);
 
@@ -297,7 +298,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
           {
             orderItemId,
             xitem_catEntryId: skuId,
-            quantity: Quantity.toString(),
+            quantity: newQuantity.toString(),
             variantNo,
             itemPartNumber: variantId,
           },

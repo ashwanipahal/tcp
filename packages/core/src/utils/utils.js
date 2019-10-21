@@ -952,6 +952,19 @@ export const changeImageURLToDOM = (img, cropParams) => {
   return imageUrl;
 };
 
+/**
+ * The insertIntoString() method changes the content of a string by removing a range of
+ * characters and/or adding new characters.
+ * @param {String} string base string to work on
+ * @param {number} start Index at which to start changing the string.
+ * @param {number} delCount An integer indicating the number of old chars to remove.
+ * @param {string} newSubStr The String that is spliced in.
+ * @return {string} A new string with the spliced substring.
+ */
+export const insertIntoString = (string, idx, rem, str) => {
+  return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -988,4 +1001,5 @@ export default {
   getTranslateDateInformation,
   stringify,
   changeImageURLToDOM,
+  insertIntoString,
 };
