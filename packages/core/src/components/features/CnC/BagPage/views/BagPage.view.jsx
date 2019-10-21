@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
@@ -13,7 +12,12 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
+import {
+  customStyles,
+  bagTileCSS,
+} from '../../CartItemTile/organisms/ProductTileWrapper/styles/ProductTileWrapper.style';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import InformationHeader from '../../common/molecules/InformationHeader';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -22,6 +26,7 @@ class BagPageView extends React.Component {
       activeSection: null,
       showCondensedHeader: false,
       showStickyHeaderMob: false,
+      headerError: false,
     };
     this.bagPageHeader = null;
     this.bagActionsContainer = null;
@@ -65,8 +70,12 @@ class BagPageView extends React.Component {
   }
 
   componentWillUnmount() {
-    this.removeScrollListener();
+    BagPageUtils.removeScrollListener();
   }
+
+  setHeaderErrorState = (state, ...params) => {
+    this.setState({ headerError: true, params });
+  };
 
   getBagPageHeaderRef(ref) {
     this.bagPageHeader = ref;
@@ -88,16 +97,6 @@ class BagPageView extends React.Component {
   addScrollListenerMobileHeader = () => {
     const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
     BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
-  };
-
-  removeScrollListener = () => {
-    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
-    const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
-    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
-    window.removeEventListener(
-      'scroll',
-      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
-    );
   };
 
   handleScroll = sticky => {
@@ -164,7 +163,12 @@ class BagPageView extends React.Component {
             activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
-          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
+          <ProductTileWrapper
+            bagLabels={labels}
+            pageView={myBag}
+            showPlccApplyNow
+            setHeaderErrorState={this.setHeaderErrorState}
+          />
         </div>
 
         {isShowSaveForLaterSwitch &&
@@ -188,6 +192,7 @@ class BagPageView extends React.Component {
                 sflItems={sflItems}
                 showPlccApplyNow={false}
                 isBagPageSflSection
+                setHeaderErrorState={this.setHeaderErrorState}
               />
             </div>
           )}
@@ -269,6 +274,50 @@ class BagPageView extends React.Component {
     );
   };
 
+  getHeaderError = ({
+    labels,
+    orderItems,
+    pageView,
+    isUnavailable,
+    isSoldOut,
+    getUnavailableOOSItems,
+    confirmRemoveCartItem,
+    isBagPageSflSection,
+    isCartItemSFL,
+    isCartItemsUpdating,
+    isSflItemRemoved,
+    renderItemDeleteSuccessMsg,
+    renderItemSflSuccessMsg,
+    renderSflItemRemovedMessage,
+    renderUpdatingBagItemSuccessfulMsg,
+  }) => {
+    const stylesNew = pageView === 'myBag' ? bagTileCSS : customStyles;
+    return (
+      <InformationHeader
+        labels={labels}
+        orderItems={orderItems}
+        pageView={pageView}
+        isUnavailable={isUnavailable}
+        isSoldOut={isSoldOut}
+        getUnavailableOOSItems={getUnavailableOOSItems}
+        confirmRemoveCartItem={confirmRemoveCartItem}
+        isBagPageSflSection={isBagPageSflSection}
+        isCartItemSFL={isCartItemSFL}
+        isCartItemsUpdating={isCartItemsUpdating}
+        isSflItemRemoved={isSflItemRemoved}
+        styles={stylesNew}
+        renderItemDeleteSuccessMsg={renderItemDeleteSuccessMsg}
+        renderItemSflSuccessMsg={renderItemSflSuccessMsg}
+        renderSflItemRemovedMessage={renderSflItemRemovedMessage}
+        renderUpdatingBagItemSuccessfulMsg={renderUpdatingBagItemSuccessfulMsg}
+      />
+    );
+  };
+
+  renderHeaderError = (headerError, params) => {
+    return <>{headerError && this.getHeaderError(params[0])}</>;
+  };
+
   render() {
     const {
       className,
@@ -282,13 +331,20 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
+    const {
+      activeSection,
+      showStickyHeaderMob,
+      showCondensedHeader,
+      headerError,
+      params,
+    } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
         {showCondensedHeader && this.stickyBagCondensedHeader()}
+
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -345,6 +401,7 @@ class BagPageView extends React.Component {
               </Col>
             )}
           </Row>
+          {this.renderHeaderError(headerError, params)}
         </div>
         <CnCTemplate
           leftSection={this.renderLeftSection}

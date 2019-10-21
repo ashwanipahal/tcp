@@ -12,6 +12,11 @@ import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organis
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import LoyaltyBanner from '@tcp/core/src/components/features/CnC/LoyaltyBanner';
+import {
+  customStyles,
+  bagTileCSS,
+} from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/styles/ProductTileWrapper.style';
+import InformationHeader from '@tcp/core/src/components/features/CnC/common/molecules/InformationHeader';
 import ErrorMessage from '../../../../../../../../../core/src/components/features/CnC/common/molecules/ErrorMessage';
 import styles from '../styles/MiniBagBody.style';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
@@ -19,10 +24,21 @@ import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 class MiniBagBody extends React.PureComponent {
   isEditing = false;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      headerError: false,
+    };
+  }
+
   componentWillUnmount() {
     const { resetSuccessMessage } = this.props;
     resetSuccessMessage(false);
   }
+
+  setHeaderErrorState = (state, ...params) => {
+    this.setState({ headerError: true, params });
+  };
 
   handleItemEdit = value => {
     this.isEditing = value;
@@ -96,6 +112,46 @@ class MiniBagBody extends React.PureComponent {
     return !isCanada() && <LoyaltyBanner />;
   };
 
+  getHeaderError = ({
+    labels,
+    orderItems,
+    pageView,
+    isUnavailable,
+    isSoldOut,
+    getUnavailableOOSItems,
+    confirmRemoveCartItem,
+    isBagPageSflSection,
+    isCartItemSFL,
+    isCartItemsUpdating,
+    isSflItemRemoved,
+    renderItemDeleteSuccessMsg,
+    renderItemSflSuccessMsg,
+    renderSflItemRemovedMessage,
+    renderUpdatingBagItemSuccessfulMsg,
+  }) => {
+    const stylesNew = pageView === 'myBag' ? bagTileCSS : customStyles;
+    return (
+      <InformationHeader
+        labels={labels}
+        orderItems={orderItems}
+        pageView={pageView}
+        isUnavailable={isUnavailable}
+        isSoldOut={isSoldOut}
+        getUnavailableOOSItems={getUnavailableOOSItems}
+        confirmRemoveCartItem={confirmRemoveCartItem}
+        isBagPageSflSection={isBagPageSflSection}
+        isCartItemSFL={isCartItemSFL}
+        isCartItemsUpdating={isCartItemsUpdating}
+        isSflItemRemoved={isSflItemRemoved}
+        styles={stylesNew}
+        renderItemDeleteSuccessMsg={renderItemDeleteSuccessMsg}
+        renderItemSflSuccessMsg={renderItemSflSuccessMsg}
+        renderSflItemRemovedMessage={renderSflItemRemovedMessage}
+        renderUpdatingBagItemSuccessfulMsg={renderUpdatingBagItemSuccessfulMsg}
+      />
+    );
+  };
+
   render() {
     const {
       labels,
@@ -105,12 +161,10 @@ class MiniBagBody extends React.PureComponent {
       savedforLaterQty,
       subTotal,
       currencySymbol,
-      isCartItemsUpdating,
-      isCartItemSFL,
       closeMiniBag,
       onLinkClick,
     } = this.props;
-    const { isDeleting, isUpdating } = isCartItemsUpdating;
+    const { headerError, params } = this.state;
     return (
       <div className={className}>
         <div className="minibag-viewbag">
@@ -148,36 +202,17 @@ class MiniBagBody extends React.PureComponent {
                 </BodyCopy>
               )}
             </Col>
+            {headerError && this.getHeaderError(params[0])}
+            {this.renderGiftCardError()}
           </Row>
         </div>
         <BodyCopy component="div" className="viewBagAndProduct">
-          {!isCartItemSFL && (isDeleting || isUpdating) ? (
-            <Row className="mainWrapper">
-              <Col className="deleteMsg" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Image
-                  alt="closeIcon"
-                  className="tick-icon-image"
-                  src={getIconPath('active_icon')}
-                  height={12}
-                  width={12}
-                />
-                <BodyCopy
-                  component="span"
-                  fontSize="fs12"
-                  textAlign="center"
-                  fontFamily="secondary"
-                  fontWeight="extrabold"
-                >
-                  {isDeleting ? labels.itemDeleted : null}
-                  {isUpdating ? labels.itemUpdated : null}
-                </BodyCopy>
-              </Col>
-            </Row>
-          ) : null}
-          {this.renderCartItemSflSuceessMessage()}
-          {this.renderGiftCardError()}
           {cartItemCount ? (
-            <ProductTileWrapper sflItemsCount={savedforLaterQty} onItemEdit={this.handleItemEdit} />
+            <ProductTileWrapper
+              sflItemsCount={savedforLaterQty}
+              onItemEdit={this.handleItemEdit}
+              setHeaderErrorState={this.setHeaderErrorState}
+            />
           ) : (
             <EmptyMiniBag labels={labels} userName={userName} onLinkClick={onLinkClick} />
           )}
