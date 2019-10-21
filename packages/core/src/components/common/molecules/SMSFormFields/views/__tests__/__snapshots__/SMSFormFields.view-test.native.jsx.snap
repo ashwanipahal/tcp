@@ -127,6 +127,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontSizeVariation="small"
         href="#"
         locator=""
+        margins={null}
         noLink={true}
         onPress={null}
         target="_blank"
@@ -242,6 +243,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         fontSizeVariation="small"
         href="#"
         locator=""
+        margins={null}
         noLink={true}
         onPress={null}
         target="_blank"

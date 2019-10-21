@@ -15,8 +15,9 @@ describe('CartItemTile common component', () => {
           isGiftItem: true,
           fit: 'regular',
           itemBrand: 'TCP',
+          color: 'red',
         },
-        productInfo: { skuId: '123' },
+        productInfo: { skuId: '123', productPartNumber: 123 },
         miscInfo: {
           badge: '',
         },
@@ -28,6 +29,7 @@ describe('CartItemTile common component', () => {
         design: 'Design',
         price: 'Price',
       },
+      onQuickViewOpenClick: jest.fn(),
     };
     const component = shallow(<CartItemTile {...props} />);
     expect(component).toMatchSnapshot();

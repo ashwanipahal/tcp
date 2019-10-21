@@ -5,6 +5,8 @@ import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native'
 
 import CurrencyUpPromoBanner from './CurrencyUpPromoBanner';
 
+const textStyle = { fontWeight: '500' };
+
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 export const bodyCopyStyles = {
@@ -107,10 +109,10 @@ export const bodyCopyStyles = {
       color="text.primary"
       fontFamily="primary"
       fontSize="fs20"
-      fontWeight="black"
       textAlign="center"
       lineHeight="20px"
       letterSpacing="ls1"
+      style={textStyle}
       {...props}
     />
   ),
