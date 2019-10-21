@@ -3,18 +3,22 @@
 exports[`Native Badge component renders correctly with  as false 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(CustomIcon)
-      accessibilityLabel=""
-      color="white"
-      dataLocator=""
-      iconFontName="FontAwesome"
-      isButton={false}
-      isDisabled={false}
-      margin={null}
-      name="check"
-      onPress={[Function]}
-      size="fs10"
-    />
+    <Styled(View)
+      spacingStyles="margin-right-XXXS"
+    >
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="white"
+        dataLocator=""
+        iconFontName="FontAwesome"
+        isButton={false}
+        isDisabled={false}
+        margins={null}
+        name="check"
+        onPress={[Function]}
+        size="fs10"
+      />
+    </Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
       color="white"

@@ -55,7 +55,6 @@ exports[`Points History List Page View should render Points History Page Correct
         margin={null}
         numberOfLines={null}
         text="5"
-        textAlign="center"
         textDecoration={null}
       />
     </Styled(View)>
@@ -100,7 +99,6 @@ exports[`Points History List Page View should render Points History Page Correct
         margin={null}
         numberOfLines={null}
         text={5}
-        textAlign="center"
         textDecoration={null}
       />
     </Styled(View)>

@@ -39,6 +39,20 @@ module.exports = withTM({
       __dirname: false,
     };
 
+    /**
+     * Polyfills added as per
+     * https://nextjs.org/docs#browser-support
+     * https://github.com/zeit/next.js/tree/canary/examples/with-polyfills
+     */
+    const originalEntry = newConfig.entry;
+    newConfig.entry = async () => {
+      const entries = await originalEntry();
+      if (entries['main.js'] && !entries['main.js'].includes('./utils/polyfills.js')) {
+        entries['main.js'].unshift('./utils/polyfills.js');
+      }
+      return entries;
+    };
+
     return newConfig;
   },
 });

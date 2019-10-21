@@ -58,6 +58,7 @@ class CheckoutOrderInfo extends React.PureComponent {
             <CouponAndPromos
               showAccordian={showAccordian}
               additionalClassNameModal="coupon-modal-mob"
+              idPrefix="mobile"
             />
             <OrderLedgerContainer showAccordian={showAccordian} />
             {!isGuest && (

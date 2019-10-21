@@ -27,6 +27,8 @@ export default {
   'amex-small': '/static/images/amex.svg',
   'place-card-small': '/static/images/TCP-CC.svg',
   'visa-small': '/static/images/visa.svg',
+  'visa-bordered': '/static/images/visa-bordered.svg',
+  'venmo-bordered': '/static/images/venmo-bordered.svg',
   'gift-card-small': '/static/images/TCP-gift.svg',
   'venmo-blue-acceptance-mark': '/static/images/venmo.svg',
   'my-place-rewards': '/static/images/my-place-rewards.png',
@@ -56,6 +58,7 @@ export default {
   'cart-icon-3': '/static/images/bag-3.svg',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
+  'user-icon-gray': '/static/images/user-icon.svg',
   'user-icon-blue': '/static/images/user-icon-blue.svg',
   'selected-item': '/static/images/selected-item.svg',
   'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
@@ -101,4 +104,5 @@ export default {
   'modules-s-left-ribbon': '/static/images/module-s-left-ribbon.png',
   'modules-s-right-ribbon': '/static/images/module-s-right-ribbon.png',
   'icon-expand': '/static/images/icon-expand.svg',
+  'medium-left-arrow': '/static/images/medium-left-arrow.svg',
 };

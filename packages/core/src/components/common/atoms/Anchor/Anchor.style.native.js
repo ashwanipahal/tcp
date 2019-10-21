@@ -9,6 +9,7 @@ export const AnchorStyles = css`
                 ? props.theme.colorPalette[props.colorName]
                 : props.theme.colors.ANCHOR.PRIMARY
             };
+            margin: ${props.margins ? props.margins : '0 0 0 0'};
           `
       : ''};
   ${props =>

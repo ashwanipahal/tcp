@@ -35,6 +35,7 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="creditCardRadioBtn"
           />
         </Col>
         <Col
@@ -51,6 +52,7 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="paypalRadioBtn"
           />
         </Col>
         {isVenmoEnabled && (
@@ -66,6 +68,7 @@ const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) =>
               subtitle=""
               name="paymentMethodId"
               variation="secondary"
+              data-locator="venmoRadioBtn"
             />
           </Col>
         )}

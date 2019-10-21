@@ -30,7 +30,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       },
       Object {
         "id": "orders",
-        "label": "Orders",
+        "label": "ORDERS",
         "value": "myOrdersPageMobile",
       },
       Object {
@@ -57,6 +57,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         "id": "myPlaceRewardsCC",
         "label": "MY PLACE REWARDS CREDIT CARD",
         "value": "myPlaceRewardsCCPageMobile",
+      },
+      Object {
+        "id": "myFavorite",
+        "label": "My Favorite",
+        "value": "myFavoritePageMobile",
       },
     ]
   }

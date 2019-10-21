@@ -30,7 +30,9 @@ const mediumTextRegular = (props, variation) => {
 };
 
 const percentageAllWrappedNormal = (props, variation) => {
-  const className = `percentage_all_wrapped_normal${variation}`;
+  const className = variation
+    ? `percentage_all_wrapped_normal${variation}`
+    : `percentage_all_wrapped_normal`;
   return `
     {
       color: ${props.theme.colorPalette.gray['900']};

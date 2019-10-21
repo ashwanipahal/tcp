@@ -23,24 +23,31 @@ class ProductAddToBag extends React.PureComponent<Props> {
   }
 
   /**
+   *
+   * @function getButtonLabel
+   * @returns Returns label of button on basis of update/addtobag scenarios
+   * @memberof ProductAddToBag
+   */
+  getButtonLabel = () => {
+    const { fromBagPage, plpLabels } = this.props;
+    const { addToBag, update } = plpLabels;
+    return fromBagPage ? update : addToBag;
+  };
+
+  /**
    * @function renderAddToBagButton
    * @returns Add To Bag Butyon
    *
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      plpLabels: { addToBag },
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
         color="white"
         fill="BLUE"
-        text={addToBag}
+        text={this.getButtonLabel()}
         fontSize="fs10"
         fontWeight="extrabold"
         fontFamily="secondary"
@@ -102,30 +109,35 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedQuantity,
       selectColor,
       showAddToBagCTA,
+      showColorChips,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
     const sizeError = isErrorMessageDisplayed ? errorMessage : '';
-
+    const quantityDropDownStyle = {
+      width: 200,
+    };
     return (
       <View {...this.props}>
-        <Field
-          id="color"
-          name="color"
-          itemValue={colorName}
-          component={ProductVariantSelector}
-          title={color}
-          renderColorItem
-          data={colorList}
-          selectedItem={colorName}
-          selectedColor={selectedColor}
-          selectColor={selectColor}
-          componentWidth={30}
-          separatorWidth={16}
-          locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
-        />
+        {showColorChips && (
+          <Field
+            id="color"
+            name="color"
+            itemValue={colorName}
+            component={ProductVariantSelector}
+            title={color}
+            renderColorItem
+            data={colorList}
+            selectedItem={colorName}
+            selectedColor={selectedColor}
+            selectColor={selectColor}
+            componentWidth={30}
+            separatorWidth={16}
+            locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
+          />
+        )}
         <Field
           id="fit"
           name="Fit"
@@ -152,7 +164,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           error={sizeError}
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
         />
-        <RowViewContainer>
+        <RowViewContainer style={quantityDropDownStyle}>
           <BodyCopy
             fontWeight="black"
             color="gray.900"

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -232,7 +232,14 @@ class ProductInformation extends React.Component {
     return (
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-          <View>
+          <TouchableOpacity
+            accessibilityRole="link"
+            onPress={() => {
+              CartItemTileExtension.callEditMethod(this.props);
+              this.onSwipeComplete(this.swipeable);
+              return this.swipeable.toggle('right');
+            }}
+          >
             <Image
               data-locator={getLocator('cart_item_edit_link')}
               source={editIcon}
@@ -240,7 +247,7 @@ class ProductInformation extends React.Component {
               width={IconWidth}
             />
             <IconTextEdit>{labels.edit}</IconTextEdit>
-          </View>
+          </TouchableOpacity>
         )}
         {this.renderSflActionsLinks()}
         <MarginLeft

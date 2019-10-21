@@ -128,7 +128,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontWeight="regular"
             >
-              {getLabelValue(labels, 'payment_saveToAccount')}
+              {getLabelValue(labels, 'lbl_payment_saveToAccount')}
             </BodyCopy>
           </Field>
         </Row>
@@ -205,6 +205,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               dataLocator="gift-card-cardnumberfield"
               className="giftCardNumber"
               onChange={this.handleChange}
+              id="giftCardNumber"
             />
           </Col>
           {!isRow && (
@@ -216,6 +217,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 component={TextBox}
                 dataLocator="gift-card-pinnumberfield"
                 onChange={this.handleChange}
+                id="cardPin"
               />
             </Col>
           )}
@@ -231,6 +233,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 dataLocator="gift-card-pinnumberfield"
                 className="cardPin"
                 onChange={this.handleChange}
+                id="cardPin"
               />
             </Col>
           </Row>

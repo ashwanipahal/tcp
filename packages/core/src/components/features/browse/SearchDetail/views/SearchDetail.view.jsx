@@ -27,6 +27,8 @@ const SearchListingView = ({
   initialValues,
   labelsFilter,
   onSubmit,
+  currency,
+  currencyAttributes,
   ...otherProps
 }) => {
   return (
@@ -88,6 +90,8 @@ const SearchListingView = ({
               products={products}
               labels={labels}
               productTileVariation="search-product-tile"
+              currencyExchange={currencyAttributes.exchangevalue}
+              currency={currency}
               {...otherProps}
             />
           ) : null}
@@ -118,6 +122,8 @@ SearchListingView.propTypes = {
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -133,6 +139,10 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

@@ -15,6 +15,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     textDecoration={null}
   />
   <Styled(SearchBar)
+    labels={[Function]}
     openSearchProductPage={[Function]}
     showCustomizedSearch={true}
   />
@@ -27,7 +28,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontWeight="black"
     margin="68px 0 0 0"
     numberOfLines={null}
-    text="undefined"
+    text=""
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -38,7 +39,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontSize="fs12"
     margin="6px 0 0 0"
     numberOfLines={null}
-    text="undefined"
+    text=""
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -49,7 +50,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
-    text="undefined"
+    text=""
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -60,7 +61,7 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
-    text="undefined"
+    text=""
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -71,7 +72,18 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
-    text="undefined"
+    text="(undefined"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.1000"
+    dataLocator="slp_store_name_value"
+    fontFamily="secondary"
+    fontSize="fs12"
+    margin={null}
+    numberOfLines={null}
+    text=""
     textDecoration={null}
   />
   <ProductMatchesLabel />

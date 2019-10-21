@@ -29,6 +29,10 @@ const ignorePsuedoCodeDir = [
   '/ModuleK/',
   '/formValidation/createValidateMethod.js',
   '/ExtraPoints/imageSourceMap.js',
+  '/twitterDynamicAbstractor/',
+  '/twitterLoginComponent/',
+  '/twitterRedirectPage/',
+  '/config/SEOTags.config.js',
 ];
 
 module.exports = {

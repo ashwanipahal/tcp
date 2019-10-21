@@ -44,6 +44,7 @@ function getTabItemsMap(tabItems) {
   }, {});
 }
 
+let lastSelectedId = 0;
 function StyliticsProductTabListContainer(props) {
   const {
     tabItems,
@@ -52,15 +53,17 @@ function StyliticsProductTabListContainer(props) {
     getStyliticsProductTabListData,
     onProductTabChange,
     style,
+    selectedColorProductId,
   } = props;
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-
+  lastSelectedId = selectedColorProductId || 0;
   useEffect(() => {
-    if (selectedCategoryId) {
-      const categoryItem = getTabItemsMap(tabItems)[selectedCategoryId];
-      onProductTabChange(selectedCategoryId, categoryItem);
-      if (!styliticsProductTabList[selectedCategoryId]) {
-        getStyliticsProductTabListData({ categoryId: selectedCategoryId });
+    if (lastSelectedId !== 0 || selectedCategoryId) {
+      const tabId = lastSelectedId === 0 ? selectedCategoryId : lastSelectedId;
+      const categoryItem = getTabItemsMap(tabItems)[tabId];
+      onProductTabChange(tabId, categoryItem);
+      if (!styliticsProductTabList[tabId]) {
+        getStyliticsProductTabListData({ categoryId: tabId });
       }
     } else {
       // TODO: This should be uncommentted when the CMS category field gets updated with simple text.
@@ -74,10 +77,15 @@ function StyliticsProductTabListContainer(props) {
 
   const buttonTabItems = getButtonTabItems(tabItems);
 
+  const onSetSelectedCategoryId = id => {
+    lastSelectedId = id;
+    setSelectedCategoryId(id);
+  };
+
   return buttonTabItems.length > 1 ? (
     <ProductTabListView
-      selectedTabId={selectedCategoryId}
-      onTabChange={setSelectedCategoryId}
+      selectedTabId={lastSelectedId === 0 ? selectedCategoryId : lastSelectedId}
+      onTabChange={onSetSelectedCategoryId}
       tabs={buttonTabItems}
       dataLocator={dataLocator}
       style={style}
@@ -92,6 +100,7 @@ StyliticsProductTabListContainer.defaultProps = {
   onProductTabChange: () => {},
   dataLocator: '',
   style: [],
+  selectedColorProductId: '',
 };
 
 StyliticsProductTabListContainer.propTypes = {
@@ -114,6 +123,7 @@ StyliticsProductTabListContainer.propTypes = {
   ),
   onProductTabChange: PropTypes.func,
   dataLocator: PropTypes.string,
+  selectedColorProductId: PropTypes.string,
 };
 
 export const mapStateToProps = state => {

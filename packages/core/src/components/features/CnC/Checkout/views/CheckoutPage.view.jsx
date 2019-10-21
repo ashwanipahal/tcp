@@ -11,6 +11,7 @@ import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
 import { routerPush } from '../../../../../utils';
+import { Anchor, Button } from '../../../../common/atoms';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -130,11 +131,22 @@ class CheckoutPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       setVenmoPickupState,
       setVenmoShippingState,
+      verifyAddressAction,
+      formatPayload,
+      submitVerifiedShippingAddressData,
+      isExpressCheckout,
+      shippingMethod,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
+    const { shipmentMethods } = shippingProps;
+
     return (
       <div>
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
@@ -166,6 +178,7 @@ class CheckoutPage extends React.PureComponent {
             {...shippingProps}
             isGuest={isGuest}
             isUsSite={isUsSite}
+            formatPayload={formatPayload}
             orderHasPickUp={orderHasPickUp}
             handleSubmit={submitShippingSection}
             loadShipmentMethods={loadShipmentMethods}
@@ -175,8 +188,10 @@ class CheckoutPage extends React.PureComponent {
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
             labels={labels}
+            verifyAddressAction={verifyAddressAction}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
+            submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
             /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
           />
@@ -201,6 +216,21 @@ class CheckoutPage extends React.PureComponent {
             setVenmoPickupState={setVenmoPickupState}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
+            isExpressCheckout={isExpressCheckout}
+            shipmentMethods={shipmentMethods}
+            pickUpContactPerson={pickUpContactPerson}
+            pickUpContactAlternate={pickUpContactAlternate}
+            initialValues={{
+              expressReviewShippingSection: {
+                shippingMethodId: shippingMethod,
+              },
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
+              },
+            }}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -210,8 +240,15 @@ class CheckoutPage extends React.PureComponent {
     );
   };
 
+  handleDefaultLinkClick = e => {
+    e.preventDefault();
+  };
+
   render() {
-    const { isGuest, router } = this.props;
+    const { isGuest, router, submitReview, reviewProps } = this.props;
+    const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
+    const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
+    const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
@@ -220,6 +257,46 @@ class CheckoutPage extends React.PureComponent {
         marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
         isCheckoutView
+        orderLedgerAfterView={
+          currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
+            <div className="review-submit-container">
+              <Button
+                aria-label={ariaLabelSubmitOrderButton}
+                type="button"
+                className="review-submit-button"
+                fontSize="fs13"
+                fontWeight="extrabold"
+                buttonVariation="variable-width"
+                fill="BLUE"
+                onClick={submitReview}
+              >
+                {nextSubmitText}
+              </Button>
+              <div className="submit-disclaimer">
+                {applyConditionPreText}
+                <Anchor
+                  className="submit-disclaimer-link"
+                  underline
+                  to="/#"
+                  dataLocator="termAndConditionText"
+                  onClick={this.handleDefaultLinkClick}
+                >
+                  {applyConditionTermsText}
+                </Anchor>
+                {applyConditionAndText}
+                <Anchor
+                  className="submit-disclaimer-link"
+                  underline
+                  to="/#"
+                  dataLocator="PrivacyText"
+                  onClick={this.handleDefaultLinkClick}
+                >
+                  {applyConditionPolicyText}
+                </Anchor>
+              </div>
+            </div>
+          )
+        }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
       />
     );
@@ -250,6 +327,8 @@ CheckoutPage.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
+  verifyAddressAction: PropTypes.func.isRequired,
+  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
@@ -258,15 +337,24 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
+  formatPayload: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
   setVenmoShippingState: PropTypes.func,
+  isExpressCheckout: PropTypes.bool,
+  shippingMethod: PropTypes.shape({}),
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  pickUpContactPerson: PropTypes.shape({}).isRequired,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
   setVenmoPickupState: () => {},
   setVenmoShippingState: () => {},
+  isExpressCheckout: false,
+  shippingMethod: {},
 };
 
 export default CheckoutPage;

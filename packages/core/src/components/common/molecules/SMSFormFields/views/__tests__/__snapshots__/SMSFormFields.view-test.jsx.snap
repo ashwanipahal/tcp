@@ -17,6 +17,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -155,6 +156,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -192,6 +194,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -330,6 +333,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [
@@ -577,6 +581,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       }
     >
       <Field
+        className="send-order-update"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -715,6 +720,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="orderUpdate-chk"
           fontFamily="secondary"
           fontSize={
             Array [

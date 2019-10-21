@@ -27,29 +27,44 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { currentProduct, selectedColorProductId } = nextProps;
-    const { currentProduct: prevCurrentProduct } = this.props;
+    const { currentProduct, selectedColorProductId, productInfoFromBag } = nextProps;
+    const {
+      currentProduct: prevCurrentProduct,
+      selectedColorProductId: prevSelectedColorProductId,
+      productInfoFromBag: prevProductInfoFromBag,
+    } = this.props;
 
-    if (currentProduct && currentProduct !== prevCurrentProduct) {
+    if (
+      (currentProduct && currentProduct !== prevCurrentProduct) ||
+      selectedColorProductId !== prevSelectedColorProductId
+    ) {
       // update selected color once map is received from api
       this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
+    }
+    if (productInfoFromBag && productInfoFromBag !== prevProductInfoFromBag) {
+      this.setState({
+        selectedColor: { name: productInfoFromBag.selectedColor },
+        selectedFit: { name: productInfoFromBag.selectedFit },
+        selectedSize: { name: productInfoFromBag.selectedSize },
+        selectedQuantity: productInfoFromBag.selectedQty,
+      });
     }
   }
 
   getStateValuesFromProps = (currentProduct, selectedColorProductId) => {
-    const initialValues = this.getInitialValues(currentProduct, selectedColorProductId);
+    this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
     return {
-      selectedColor: initialValues && initialValues.color,
-      selectedFit: initialValues && initialValues.Fit,
-      selectedSize: initialValues && initialValues.Size,
-      selectedQuantity: initialValues && initialValues.Quantity,
-      persistSelectedFit: initialValues && initialValues.Fit,
+      selectedColor: this.initialValuesForm && this.initialValuesForm.color,
+      selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
+      selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
+      selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
+      persistSelectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
     };
   };
 
   /**
    * @function getDefaultColor
-   * @returns default color at 0 index in color array
+   * @returns default color at 0 index in color array.
    *
    * @memberof ProductAddToBagContainer
    */
@@ -185,6 +200,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
+      fitChanged: true,
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -316,7 +332,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         const {
           color: { name },
         } = colorItem;
-        return selectedColor && selectedColor.name === name;
+        return (selectedColor && selectedColor.name) || selectedColor === name;
       })
     );
   };
@@ -338,6 +354,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   sizeChange = e => {
     const { selectedFit } = this.state;
+    const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
@@ -345,6 +362,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
+    }
+    if (onChangeSize) {
+      onChangeSize(e);
     }
   };
 
@@ -357,9 +377,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   setPreSelectedValuesForProduct = productInfoFromBag => {
     const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
     this.initialValuesForm.Fit = selectedFit;
-    this.initialValuesForm.Quantity = selectedQty;
-    this.initialValuesForm.Size.name = selectedSize;
-    this.initialValuesForm.color.name = selectedColor;
+    this.initialValuesForm.Quantity = selectedQty || 1;
+    this.initialValuesForm.Size = selectedSize;
+    this.initialValuesForm.color = selectedColor;
   };
 
   /**
@@ -371,17 +391,21 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   render() {
     const {
       currentProduct,
+      currentProduct: { colorFitsSizesMap, colorFitSizeDisplayNames, isGiftCard },
       plpLabels,
       handleFormSubmit,
       errorOnHandleSubmit,
       selectedColorProductId,
       customFormName,
       showAddToBagCTA = true,
+      showColorChips = true,
       fromBagPage,
       productInfoFromBag,
       customSubmitButtonStyle,
-      colorFitsSizesMap,
+      colorFitsSizesMap: favColorFitsSizesMap,
       isOutfitPage,
+      formRef,
+      formEnabled,
     } = this.props;
     const {
       selectedColor,
@@ -394,14 +418,17 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     if (fromBagPage) {
       this.setPreSelectedValuesForProduct(productInfoFromBag);
     }
+
+    const productColorFitsSizesMap = colorFitsSizesMap || favColorFitsSizesMap;
+
     const initialValues = this.initialValuesForm;
     const generalProductId = currentProduct && currentProduct.generalProductId;
 
     return (
       <ProductAddToBag
-        colorList={colorFitsSizesMap}
-        fitList={this.getFitOptions(colorFitsSizesMap, selectedColor)}
-        sizeList={this.getSizeList(colorFitsSizesMap)}
+        colorList={productColorFitsSizesMap}
+        fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
+        sizeList={this.getSizeList(productColorFitsSizesMap)}
         selectSize={this.sizeChange}
         selectFit={this.fitChange}
         selectColor={this.colorChange}
@@ -423,9 +450,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId={selectedColorProductId}
         customFormName={customFormName}
         showAddToBagCTA={showAddToBagCTA}
+        showColorChips={showColorChips}
         fromBagPage={fromBagPage}
         inheritedStyles={customSubmitButtonStyle}
+        colorFitSizeDisplayNames={colorFitSizeDisplayNames}
+        isGiftCard={isGiftCard}
         isOutfitPage={isOutfitPage}
+        ref={formRef}
+        formEnabled={formEnabled}
       />
     );
   }

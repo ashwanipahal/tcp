@@ -1,4 +1,6 @@
 /* eslint-disable max-lines */
+
+import moment from 'moment';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -7,6 +9,7 @@ import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
 import { ROUTE_PATH } from '../config/route.config';
+import constants from '../components/features/account/OrderDetails/OrderDetails.constants';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -772,6 +775,17 @@ export const isPastStoreHours = (date1, date2) => {
 };
 
 /**
+ * Function to parse the store timing in correct format
+ * @param {String} dateString Non UTC Format Date
+ */
+export const parseUTCDate = dateString => {
+  const dateParams = dateString.replace(/ UTC/, '').split(/[\s-:]/);
+  dateParams[1] = (parseInt(dateParams[1], 10) - 1).toString();
+
+  return new Date(Date.UTC(...dateParams));
+};
+
+/**
  * Function to get the stores hours based on the current date
  * @param {Array} intervals The store hours array
  * @param {Date} currentDate The current date to be checked against
@@ -779,7 +793,7 @@ export const isPastStoreHours = (date1, date2) => {
 export const getCurrentStoreHours = (intervals = [], currentDate) => {
   let selectedInterval = intervals.filter(hour => {
     const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-    const parsedDate = new Date(toInterval);
+    const parsedDate = new Date(parseUTCDate(toInterval));
     return (
       parsedDate.getDate() === currentDate.getDate() &&
       parsedDate.getMonth() === currentDate.getMonth() &&
@@ -791,7 +805,7 @@ export const getCurrentStoreHours = (intervals = [], currentDate) => {
   if (!selectedInterval.length) {
     selectedInterval = intervals.filter(hour => {
       const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
-      const parsedDate = new Date(toInterval);
+      const parsedDate = new Date(parseUTCDate(toInterval));
       return (
         parsedDate.getDay() === currentDate.getDay() &&
         parsedDate.getFullYear() === currentDate.getFullYear()
@@ -836,6 +850,108 @@ export const getStoreHours = (
   }
 };
 
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
+  let label;
+  let message;
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_IN_PROCESS:
+    case constants.STATUS_CONSTANTS.ORDER_RECEIVED:
+    case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
+      label = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
+        : getLabelValue(ordersLabels, 'lbl_orders_statusOrderReceived');
+      message = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
+        : getLabelValue(ordersLabels, 'lbl_orders_processing');
+      break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+  return { label, message };
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getOrderGroupLabelAndMessage = orderProps => {
+  let label;
+  let message;
+  const {
+    status,
+    shippedDate,
+    pickedUpDate,
+    ordersLabels,
+    isBopisOrder,
+    pickUpExpirationDate,
+  } = orderProps;
+
+  // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
+    case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
+      message =
+        shippedDate === constants.STATUS_CONSTANTS.NA
+          ? shippedDate
+          : moment(shippedDate).format('LL');
+      break;
+    case constants.STATUS_CONSTANTS.ORDER_CANCELED:
+    case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
+      label = '';
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderCancelMessage');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_RECEIVED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_orderInProcess');
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
+      message = moment(pickUpExpirationDate).format('LL');
+      break;
+
+    case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
+    case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
+      message = moment(pickedUpDate).format('LL');
+      break;
+    default:
+      ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+      break;
+  }
+
+  return { label, message };
+};
+
+/**
+  this is a temporary fix only for DEMO to change
+  WCS store image path to DAM image for Gymboree
+  MUST BE REVERTED
+ */
+export const changeImageURLToDOM = (img, cropParams) => {
+  let imageUrl = img;
+  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
+    const imgArr = imageUrl.split('/');
+    const productPartId = imgArr.slice(-1);
+    const productArr = productPartId[0].split('_');
+    const productId = productArr[0];
+    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
+  }
+  return imageUrl;
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -871,4 +987,5 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  changeImageURLToDOM,
 };

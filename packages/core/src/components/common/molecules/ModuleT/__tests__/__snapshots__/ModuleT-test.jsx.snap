@@ -8,7 +8,7 @@ exports[`ModuleT component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleT component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -69,7 +69,7 @@ exports[`ModuleT component renders correctly 1`] = `
     />
     <Styled(PromoBanner)
       className="promoBanner"
-      dataLocator="moduleJ_promobanner_text"
+      dataLocator="moduleT_promobanner_text"
       promoBanner={
         Array [
           Object {
@@ -122,7 +122,7 @@ exports[`ModuleT component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleJ_promobanner_img_1"
+        data-locator="moduleT_promobanner_img_1"
         imgConfigs={
           Array [
             "t_mod_T_img_m",
@@ -137,7 +137,7 @@ exports[`ModuleT component renders correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Boys",
-            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
+            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
           }
         }
         link={
@@ -204,7 +204,7 @@ exports[`ModuleT component renders correctly 1`] = `
       />
       <Styled(PromoBanner)
         className="promoBanner"
-        dataLocator="moduleJ_promobanner_text"
+        dataLocator="moduleT_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -254,7 +254,7 @@ exports[`ModuleT component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleJ_promobanner_img_2"
+        data-locator="moduleT_promobanner_img_2"
         imgConfigs={
           Array [
             "t_mod_T_img_m",
@@ -269,7 +269,7 @@ exports[`ModuleT component renders correctly 1`] = `
             "crop_m": "",
             "crop_t": "",
             "title": "Girls",
-            "url": "https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png",
+            "url": "https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg",
           }
         }
         link={

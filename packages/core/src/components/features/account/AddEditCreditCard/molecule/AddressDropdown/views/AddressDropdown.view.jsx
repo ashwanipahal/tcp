@@ -7,7 +7,13 @@ const getActiveTitle = (options, value) => {
   return selectedOption && selectedOption.title;
 };
 
-export const AddressDropdown = ({ options, input, selectListTitle, customSelectClassName }) => {
+export const AddressDropdown = ({
+  options,
+  input,
+  selectListTitle,
+  customSelectClassName,
+  dataLocatorObj,
+}) => {
   return (
     <CustomSelect
       options={options}
@@ -16,6 +22,7 @@ export const AddressDropdown = ({ options, input, selectListTitle, customSelectC
       clickHandler={(e, value) => input.onChange(value)}
       selectListTitle={selectListTitle}
       customSelectClassName={customSelectClassName}
+      dataLocatorObj={dataLocatorObj}
     />
   );
 };
@@ -25,9 +32,14 @@ AddressDropdown.propTypes = {
   input: PropTypes.shape({}).isRequired,
   selectListTitle: PropTypes.string.isRequired,
   customSelectClassName: PropTypes.string,
+  dataLocatorObj: PropTypes.shape({}),
 };
 AddressDropdown.defaultProps = {
   customSelectClassName: '',
+  dataLocatorObj: {
+    heading: 'drop-down-heading',
+    dropDownList: 'drop-down-list',
+  },
 };
 
 export default AddressDropdown;

@@ -85,8 +85,10 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -454,6 +456,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",

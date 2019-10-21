@@ -42,6 +42,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         fill="WHITE"
         fullWidth={true}
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_overview_myWalletShopCTA"
         visible={false}

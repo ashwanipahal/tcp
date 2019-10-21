@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
@@ -27,8 +27,10 @@ class CondensedHeader extends React.PureComponent {
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
+      isFullSizeSearchModalOpen: false,
     };
     this.setSearchState = this.setSearchState.bind(this);
+    this.onCloseClick = this.onCloseClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -38,6 +40,14 @@ class CondensedHeader extends React.PureComponent {
       return { cartItemCount: getCartItemCount() };
     }
     return null;
+  }
+
+  onCloseClick() {
+    const { isFullSizeSearchModalOpen, isSearchOpen } = this.state;
+    this.setState({
+      isFullSizeSearchModalOpen: !isFullSizeSearchModalOpen,
+      isSearchOpen: !isSearchOpen,
+    });
   }
 
   setSearchState(currentStatus, cb = null) {
@@ -150,6 +160,7 @@ class CondensedHeader extends React.PureComponent {
                 setSearchState={this.setSearchState}
                 isSearchOpen={isSearchOpen}
                 fromCondensedHeader
+                onCloseClick={this.onCloseClick}
               />
 
               {userName ? (
@@ -176,7 +187,7 @@ class CondensedHeader extends React.PureComponent {
                     alt={accountIconButton}
                     className="rightLink userIcon"
                     id="condensedLogin"
-                    src={getIconPath('user-icon-blue')}
+                    src={getIconPath(isGymboree() ? 'user-icon-gray' : 'user-icon-blue')}
                     data-locator="user-icon"
                   />
                 </Anchor>
@@ -184,6 +195,7 @@ class CondensedHeader extends React.PureComponent {
               <Anchor
                 to="#"
                 id="cartIcon"
+                aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className="rightLink"
                 onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
                 fontSizeVariation="small"
@@ -193,7 +205,7 @@ class CondensedHeader extends React.PureComponent {
                 <Image
                   alt={cartIconButton}
                   className="product-image"
-                  src={getIconPath('cart-icon-blue')}
+                  src={getIconPath(isGymboree() ? 'cart-icon-1' : 'cart-icon-blue')}
                   data-locator="addedtobag-bag-icon"
                 />
                 <BodyCopy
@@ -201,6 +213,8 @@ class CondensedHeader extends React.PureComponent {
                   component="span"
                   fontWeight="semibold"
                   fontSize="fs10"
+                  tabIndex="-1"
+                  aria-hidden="true"
                 >
                   {cartItemCount || 0}
                 </BodyCopy>
