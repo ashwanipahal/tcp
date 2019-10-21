@@ -98,9 +98,7 @@ const LoyaltyBannerSection = props => {
             currentSubtotal={currentSubtotal}
             estimatedSubtotal={estimatedSubtotal}
             isPlcc={isPlcc}
-            isReviewPage={isReviewPage}
-            isConfirmationPage={isConfirmationPage}
-            isAddedToBagPage={isAddedToBagPage}
+            pageCategory={pageCategory}
             isProductDetailView={isProductDetailView}
           />
           <div className="footer">

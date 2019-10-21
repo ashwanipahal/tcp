@@ -1,17 +1,21 @@
 /* eslint-disable max-params */
+import CHECKOUT_STAGES, {
+  ADDED_TO_BAG_PAGE,
+} from '../../../../../../../web/src/pages/App.constants';
+
 const getPageCategory = pageCategory => {
   let ischeckoutPage = false;
   let isReviewPage = false;
   let isConfirmationPage = false;
   let isAddedToBagPage = false;
   switch (pageCategory) {
-    case 'review':
+    case CHECKOUT_STAGES.REVIEW:
       isReviewPage = true;
       break;
-    case 'confirmation':
+    case CHECKOUT_STAGES.CONFIRMATION:
       isConfirmationPage = true;
       break;
-    case 'isAddedToBagPage':
+    case ADDED_TO_BAG_PAGE:
       isAddedToBagPage = true;
       break;
     default:
