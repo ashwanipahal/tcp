@@ -238,3 +238,7 @@ export const getIsFilterBy = state => {
       })
   );
 };
+
+export const getIsDataLoading = state => {
+  return state.ProductListing.get('isDataLoading');
+};
