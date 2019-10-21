@@ -1,22 +1,25 @@
 import React from 'react';
+import { View } from 'react-native';
 import { Field, change, FormSection, resetSection } from 'redux-form';
+import PropTypes from 'prop-types';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
+import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import { getLabelValue } from '../../../../../../../../../utils';
-import AddEditShippingAddress from '../../../../../molecules/AddEditShippingAddressModal';
 import AddressFields from '../../../../../../../../common/molecules/AddressFields';
 import {
   AddressFieldsWrapper,
   SaveToAccountWrapper,
   MarginBottom,
   AddressViewWrapper,
+  EditAddressFormHeader,
+  EditFromSeparator,
 } from '../styles/RegisteredShippingForm.view.style.native';
 import {
   onSaveBtnClick,
-  getFieldsValidation,
   getDefaultShippingDisabledState,
   nativeDefaultPropTypes,
   nativePropTypes,
@@ -34,6 +37,51 @@ const itemStyle = {
 const CustomAddress = {
   fontWeight: 'regular',
   fontSize: 'fs14',
+};
+
+const AddEditShippingAddress = ({
+  addressFields,
+  defaultOptions,
+  modalType,
+  actionButtons,
+  labels,
+}) => {
+  return (
+    <>
+      <EditAddressFormHeader>
+        <BodyCopy
+          color="black"
+          fontWeight="regular"
+          fontFamily="primary"
+          fontSize="fs28"
+          text={
+            modalType === 'add'
+              ? getLabelValue(labels, 'lbl_shipping_addHeading', 'shipping', 'checkout')
+              : getLabelValue(labels, 'lbl_shipping_editHeading', 'shipping', 'checkout')
+          }
+          textAlign="left"
+        />
+      </EditAddressFormHeader>
+      {addressFields()}
+      {defaultOptions()}
+      {actionButtons()}
+    </>
+  );
+};
+
+AddEditShippingAddress.propTypes = {
+  addressFields: PropTypes.func,
+  defaultOptions: PropTypes.func,
+  modalType: PropTypes.string,
+  actionButtons: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+};
+
+AddEditShippingAddress.defaultProps = {
+  addressFields: () => {},
+  defaultOptions: () => {},
+  modalType: null,
+  actionButtons: () => {},
 };
 
 class RegisteredShippingForm extends React.Component {
@@ -238,17 +286,6 @@ class RegisteredShippingForm extends React.Component {
     });
   };
 
-  getBtnDisabledState = () => {
-    let disabledState = false;
-    const { syncErrorsObject } = this.props;
-    const { modalState } = this.state;
-    if (modalState) {
-      disabledState = getFieldsValidation({ syncErrorsObject });
-    }
-
-    return disabledState;
-  };
-
   renderActionButtons = () => {
     const { labels } = this.props;
     const { modalType } = this.state;
@@ -262,7 +299,6 @@ class RegisteredShippingForm extends React.Component {
             data-locator="edit-shipping-cancel-btn"
             onPress={this.saveBtnClickHandler}
             text={getLabelValue(labels, 'lbl_shipping_selectShipAdd', 'shipping', 'checkout')}
-            disableButton={this.getBtnDisabledState()}
           />
         </MarginBottom>
         <Button
@@ -280,49 +316,66 @@ class RegisteredShippingForm extends React.Component {
   renderAddressForm = () => {
     const defaultAddress = this.getSelectedAddress();
     const { labels, onFileAddressKey } = this.props;
+    const { modalState, modalType } = this.state;
     return (
       <>
-        <Field
-          selectListTitle="Select from address book"
-          name="onFileAddressKey"
-          id="onFileAddressKey"
-          component={AddressDropdown}
-          dataLocator="shipping-address"
-          data={this.getAddressOptions()}
-          labels={{ common: { lbl_common_tapClose: 'close' } }}
-          dropDownStyle={{ ...dropDownStyle }}
-          itemStyle={{ ...itemStyle }}
-          toggleModal={this.toggleAddressModal}
-          onValueChange={itemValue => {
-            this.onAddressDropDownChange(itemValue);
-          }}
-          variation="secondary"
-          showButton={false}
-          selectedValue={onFileAddressKey}
-        />
+        <View {...{ pointerEvents: modalState ? 'none' : 'auto' }}>
+          <Field
+            selectListTitle="Select from address book"
+            name="onFileAddressKey"
+            id="onFileAddressKey"
+            component={AddressDropdown}
+            dataLocator="shipping-address"
+            data={this.getAddressOptions()}
+            labels={{ common: { lbl_common_tapClose: 'close' } }}
+            dropDownStyle={{ ...dropDownStyle }}
+            itemStyle={{ ...itemStyle }}
+            toggleModal={this.toggleAddressModal}
+            onValueChange={itemValue => {
+              this.onAddressDropDownChange(itemValue);
+            }}
+            variation="secondary"
+            showButton={false}
+            selectedValue={onFileAddressKey}
+          />
+        </View>
 
-        <AddressViewWrapper>
-          <Address
-            address={defaultAddress}
-            showCountry={false}
-            showPhone={false}
-            showName
-            dataLocatorPrefix="address"
-            customStyle={CustomAddress}
-            className="elem-mb-SM"
+        {!modalState && (
+          <AddressViewWrapper>
+            <Address
+              address={defaultAddress}
+              showCountry={false}
+              showPhone={false}
+              showName
+              dataLocatorPrefix="address"
+              customStyle={CustomAddress}
+              className="elem-mb-SM"
+            />
+            <Anchor
+              underline
+              anchorVariation="primary"
+              fontSizeVariation="small"
+              noLink
+              href="#"
+              target="_blank"
+              dataLocator="shipping-edit-contact-anchor"
+              text={getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
+              onPress={this.onEditClick}
+            />
+          </AddressViewWrapper>
+        )}
+        {modalState && (
+          <AddEditShippingAddress
+            modalState={modalState}
+            addressFields={this.renderAddressFields}
+            defaultOptions={this.renderDefaultOptions}
+            modalType={modalType}
+            toggleAddEditModal={this.toggleModal}
+            actionButtons={this.renderActionButtons}
+            labels={labels}
           />
-          <Anchor
-            underline
-            anchorVariation="primary"
-            fontSizeVariation="small"
-            noLink
-            href="#"
-            target="_blank"
-            dataLocator="shipping-edit-contact-anchor"
-            text={getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
-            onPress={this.onEditClick}
-          />
-        </AddressViewWrapper>
+        )}
+        {modalState && <EditFromSeparator />}
       </>
     );
   };
@@ -370,25 +423,14 @@ class RegisteredShippingForm extends React.Component {
   };
 
   render() {
-    const { modalState, modalType } = this.state;
-    const { labels, userAddresses } = this.props;
+    const { modalState } = this.state;
+    const { userAddresses } = this.props;
     return (
       <>
         {userAddresses && userAddresses.size > 0
           ? this.renderAddressForm()
           : this.renderAddressFields()}
         {!modalState && this.renderDefaultOptions()}
-        {modalState && (
-          <AddEditShippingAddress
-            modalState={modalState}
-            addressFields={this.renderAddressFields}
-            defaultOptions={this.renderDefaultOptions}
-            modalType={modalType}
-            toggleAddEditModal={this.toggleModal}
-            actionButtons={this.renderActionButtons}
-            labels={labels}
-          />
-        )}
       </>
     );
   }

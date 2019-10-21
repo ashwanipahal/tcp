@@ -179,14 +179,17 @@ export default class ShippingPage extends React.Component {
   };
 
   updateShippingAddress = () => {
+    console.log('in>>>update');
     const {
       address,
       onFileAddressKey,
       setAsDefaultShipping,
       saveToAddressBook,
-      updateShippingAddressData,
+      formatPayload,
+      verifyAddressAction,
     } = this.props;
-    updateShippingAddressData({
+    this.isAddressUpdating = true;
+    this.submitShippingAddressData = {
       shipTo: {
         address,
         addressId: address.addressId,
@@ -197,10 +200,14 @@ export default class ShippingPage extends React.Component {
         saveToAccount: saveToAddressBook,
         setAsDefault: setAsDefaultShipping,
       },
-    });
+    };
+    const formattedPayload = formatPayload(address);
+    console.log('in>>>>updateShippingAddress', formattedPayload);
+    return verifyAddressAction(formattedPayload);
   };
 
   addNewShippingAddress = () => {
+    console.log('in>>>add Address');
     const {
       address,
       onFileAddressKey,
@@ -223,9 +230,24 @@ export default class ShippingPage extends React.Component {
   };
 
   submitVerifiedShippingAddressData = shippingAddress => {
-    const { submitVerifiedShippingAddressData, navigation } = this.props;
+    const { submitVerifiedShippingAddressData, navigation, updateShippingAddressData } = this.props;
     this.setState({ showAddressVerification: false });
-    submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData, navigation });
+    if (this.isAddressUpdating) {
+      this.isAddressUpdating = false;
+      this.submitShippingAddressData.shipTo.address = {
+        ...this.submitShippingAddressData.shipTo.address,
+        ...shippingAddress,
+        addressLine1: shippingAddress.address1,
+        addressLine2: shippingAddress.address2,
+        zipCode: shippingAddress.zip,
+      };
+      return updateShippingAddressData(this.submitShippingAddressData);
+    }
+    return submitVerifiedShippingAddressData({
+      shippingAddress,
+      submitData: this.submitData,
+      navigation,
+    });
   };
 
   closeAddAddressVerificationModal = () => {
@@ -262,7 +284,11 @@ export default class ShippingPage extends React.Component {
     } = this.props;
 
     const { defaultAddressId, showAddressVerification } = this.state;
-    const shippingAddressData = (this.submitData && this.submitData.shipTo.address) || {};
+    let { submitData } = this;
+    if (this.isAddressUpdating) {
+      submitData = this.submitShippingAddressData;
+    }
+    const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
       <>
         {showAddressVerification && (
