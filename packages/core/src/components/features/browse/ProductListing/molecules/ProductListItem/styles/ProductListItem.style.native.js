@@ -1,5 +1,19 @@
 import styled, { css } from 'styled-components/native';
 
+const getAdditionalStyle = props => {
+  const { margins, padding } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(padding && { padding }),
+  };
+};
+
+const RowContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  ${getAdditionalStyle}
+`;
+
 const ListContainer = styled.View`
   width: ${props => (props.fullWidth ? '100%' : '50%')};
   ${props => (!props.renderPriceAndBagOnly ? `min-height: 412;` : ``)}
@@ -113,4 +127,5 @@ export {
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
+  RowContainer,
 };
