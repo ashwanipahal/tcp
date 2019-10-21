@@ -13,7 +13,7 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       height: 400px;
     }
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       height: 540px;
     }
   }
