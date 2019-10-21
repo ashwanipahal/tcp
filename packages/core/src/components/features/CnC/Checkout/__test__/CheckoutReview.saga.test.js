@@ -20,7 +20,7 @@ import {
   getSetOrderProductDetails,
 } from '../../Confirmation/container/Confirmation.actions';
 import { isMobileApp, routerPush } from '../../../../../utils';
-import { resetCheckoutReducer } from '../container/Checkout.action';
+import { resetCheckoutReducer } from '../container/Checkout.action.util';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
