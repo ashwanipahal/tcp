@@ -23,7 +23,6 @@ const getPageCategory = pageCategory => {
   }
   return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
 };
-
 const reviewPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
   let headingLabelVal = '';

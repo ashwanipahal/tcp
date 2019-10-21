@@ -88,7 +88,7 @@ const applyLearnLinks = labels => {
 const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedReward) => {
   return (
     <>
-      {isGuest && <>{createLoginLinks(labels)}</>}
+      {isGuest && createLoginLinks(labels)}
       {!isGuest && !isPlcc && (
         <>
           {!earnedReward && applyLearnLinks(labels)}
@@ -174,9 +174,6 @@ const LoyaltyFooterSection = props => {
               isGuest,
               earnedReward
             )}
-          {isReviewPage && isPlcc && (
-            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
-          )}
         </>
       )}
     </div>
