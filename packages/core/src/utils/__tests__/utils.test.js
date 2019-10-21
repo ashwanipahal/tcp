@@ -179,7 +179,7 @@ describe('getOrderGroupLabelAndMessage', () => {
     lbl_orders_shippedOn: 'lbl_orders_shippedOn',
     lbl_orders_pickedUpOn: 'lbl_orders_pickedUpOn',
     lbl_orders_orderInProcess: 'lbl_orders_orderInProcess',
-    lbl_orders_statusOrderReceived: 'lbl_orders_statusOrderReceived',
+    lbl_orders_OrderReceived: 'lbl_orders_OrderReceived',
     lbl_orders_orderIsReadyForPickup: 'lbl_orders_orderIsReadyForPickup',
     lbl_orders_processing: 'lbl_orders_processing',
     lbl_orders_orderCancelMessage: 'lbl_orders_orderCancelMessage',
@@ -237,7 +237,7 @@ describe('getOrderGroupLabelAndMessage', () => {
       isBopisOrder: false,
     };
 
-    const label = labels.lbl_orders_statusOrderReceived;
+    const label = labels.lbl_orders_OrderReceived;
     const message = labels.lbl_orders_processing;
     const labelAndMessage = getOrderGroupLabelAndMessage(orderProps);
     expect(labelAndMessage.message).toBe(message);

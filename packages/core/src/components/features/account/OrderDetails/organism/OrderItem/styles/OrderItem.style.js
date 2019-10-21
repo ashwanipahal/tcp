@@ -9,7 +9,6 @@ const styles = css`
       justify-content: space-between;
     }
   }
-
   .itemInfo_details_items {
     display: flex;
     flex-flow: row;
