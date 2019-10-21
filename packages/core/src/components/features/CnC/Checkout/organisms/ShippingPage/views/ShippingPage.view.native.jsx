@@ -178,7 +178,6 @@ export default class ShippingPage extends React.Component {
   };
 
   updateShippingAddress = () => {
-    console.log('in>>>update');
     const {
       address,
       onFileAddressKey,
@@ -206,7 +205,6 @@ export default class ShippingPage extends React.Component {
   };
 
   addNewShippingAddress = () => {
-    console.log('in>>>add Address');
     const {
       address,
       onFileAddressKey,

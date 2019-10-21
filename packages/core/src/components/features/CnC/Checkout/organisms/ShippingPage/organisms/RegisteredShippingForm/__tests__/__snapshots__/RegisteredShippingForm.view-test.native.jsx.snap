@@ -21,14 +21,28 @@ exports[`RegisteredShippingForm should call getBtnDisabledState 1`] = `
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={false}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={true}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
@@ -53,227 +67,285 @@ exports[`RegisteredShippingForm should call renderActionBtns 1`] = `
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    labels={Object {}}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={false}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={true}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
 exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressId": "1234",
-            "addressLine": Array [
-              "addressline 1",
-              "addressline 2",
-            ],
-            "city": "test city",
-            "country": "test country",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="auto"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "1234",
+              "addressLine": Array [
+                "addressline 1",
+                "addressline 2",
+              ],
+              "city": "test city",
+              "country": "test country",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": "1234",
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": "1234",
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
-      }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
-      }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
-      }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue="12345"
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
-  <Styled(View)>
-    <Address
-      className="elem-mb-SM"
-      customStyle={
-        Object {
-          "fontSize": "fs14",
-          "fontWeight": "regular",
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
         }
       }
-      dataLocatorPrefix="address"
-      fontSize="fs14"
-      regularName={false}
-      showCountry={false}
-      showDefaultText={false}
-      showName={true}
-      showPhone={false}
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 90,
+        }
+      }
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue="12345"
+      showButton={false}
+      variation="secondary"
     />
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      colorName={null}
-      customStyle={Object {}}
-      dataLocator="shipping-edit-contact-anchor"
-      fontSizeVariation="small"
-      href="#"
-      locator=""
-      noLink={true}
-      onPress={[Function]}
-      target="_blank"
-      text="lbl_shipping_edit"
-      underline={true}
-      visible={false}
+  </View>
+  <FormSection
+    name="address"
+  >
+    <Styled(View)>
+      <AddressFields
+        addressPhoneNo={null}
+        disableCountry={true}
+        dispatch={[MockFunction]}
+        formName="checkoutShipping"
+        formSection="address"
+        initialValues={Object {}}
+        isGuest={false}
+        showDefaultCheckbox={false}
+        showEmailAddress={true}
+        showPhoneNumber={true}
+        showUserName={true}
+        state=""
+      />
+    </Styled(View)>
+  </FormSection>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={true}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
     />
   </Styled(View)>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={false}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
 exports[`RegisteredShippingForm should call save to account change 1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressId": "1234",
-            "addressLine": Array [
-              "addressline 1",
-              "addressline 2",
-            ],
-            "city": "test city",
-            "country": "test country",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="auto"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "1234",
+              "addressLine": Array [
+                "addressline 1",
+                "addressline 2",
+              ],
+              "city": "test city",
+              "country": "test country",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": "1234",
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": "1234",
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
-      }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
-      }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
-      }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue="12345"
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
-  <Styled(View)>
-    <Address
-      className="elem-mb-SM"
-      customStyle={
-        Object {
-          "fontSize": "fs14",
-          "fontWeight": "regular",
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
         }
       }
-      dataLocatorPrefix="address"
-      fontSize="fs14"
-      regularName={false}
-      showCountry={false}
-      showDefaultText={false}
-      showName={true}
-      showPhone={false}
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 90,
+        }
+      }
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue="12345"
+      showButton={false}
+      variation="secondary"
     />
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      colorName={null}
-      customStyle={Object {}}
-      dataLocator="shipping-edit-contact-anchor"
-      fontSizeVariation="small"
-      href="#"
-      locator=""
-      noLink={true}
-      onPress={[Function]}
-      target="_blank"
-      text="lbl_shipping_edit"
-      underline={true}
-      visible={false}
+  </View>
+  <FormSection
+    name="address"
+  >
+    <Styled(View)>
+      <AddressFields
+        addressPhoneNo={null}
+        disableCountry={true}
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "saveToAddressBook",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": false,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "defaultShipping",
+                    "form": "checkoutShipping",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": false,
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        formName="checkoutShipping"
+        formSection="address"
+        initialValues={Object {}}
+        isGuest={false}
+        showDefaultCheckbox={false}
+        showEmailAddress={true}
+        showPhoneNumber={true}
+        showUserName={true}
+        state=""
+      />
+    </Styled(View)>
+  </FormSection>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={true}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
     />
   </Styled(View)>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={false}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
@@ -338,14 +410,28 @@ exports[`RegisteredShippingForm should call save to account change with user Add
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={true}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={false}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
@@ -371,14 +457,28 @@ exports[`RegisteredShippingForm should call shoe default options 1`] = `
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={false}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={true}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
 
@@ -410,77 +510,72 @@ exports[`RegisteredShippingForm should call shoe default options with modal type
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="edit"
-    toggleAddEditModal={[Function]}
-  />
 </Fragment>
 `;
 
 exports[`RegisteredShippingForm should render correctly  1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressLine": Array [
-              "addressline 155",
-              "addressline 222",
-            ],
-            "city": "test city",
-            "country": "test countryyy",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="auto"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressLine": Array [
+                "addressline 155",
+                "addressline 222",
+              ],
+              "city": "test city",
+              "country": "test countryyy",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": undefined,
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": undefined,
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
+        }
       }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 90,
+        }
       }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
       }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue={null}
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue={null}
+      showButton={false}
+      variation="secondary"
+    />
+  </View>
   <Styled(View)>
     <Address
       address={
@@ -534,347 +629,225 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
 
 exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal 1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressLine": Array [
-              "addressline 1111",
-              "addressline 25",
-            ],
-            "city": "test city",
-            "country": "test country is",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="none"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressLine": Array [
+                "addressline 1111",
+                "addressline 25",
+              ],
+              "city": "test city",
+              "country": "test country is",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": undefined,
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": undefined,
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
-      }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
-      }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
-      }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue={null}
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
-  <Styled(View)>
-    <Address
-      address={
-        Object {
-          "addressLine": Array [
-            "addressline 1111",
-            "addressline 25",
-          ],
-          "city": "test city",
-          "country": "test country is",
-          "firstName": "test",
-          "lastName": "test",
-          "phone1": "1234567890",
-          "primary": "true",
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
         }
       }
-      className="elem-mb-SM"
-      customStyle={
+      id="onFileAddressKey"
+      itemStyle={
         Object {
-          "fontSize": "fs14",
-          "fontWeight": "regular",
+          "height": 90,
         }
       }
-      dataLocatorPrefix="address"
-      fontSize="fs14"
-      regularName={false}
-      showCountry={false}
-      showDefaultText={false}
-      showName={true}
-      showPhone={false}
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue={null}
+      showButton={false}
+      variation="secondary"
     />
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      colorName={null}
-      customStyle={Object {}}
-      dataLocator="shipping-edit-contact-anchor"
-      fontSizeVariation="small"
-      href="#"
-      locator=""
-      noLink={true}
-      onPress={[Function]}
-      target="_blank"
-      text="lbl_shipping_edit"
-      underline={true}
-      visible={false}
-    />
-  </Styled(View)>
+  </View>
   <AddEditShippingAddress
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={true}
     modalType="edit"
-    toggleAddEditModal={[Function]}
   />
+  <Styled(View) />
 </Fragment>
 `;
 
 exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddressKey 1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressId": "1234",
-            "addressLine": Array [
-              "addressline 156",
-              "addressline 290",
-            ],
-            "city": "test city",
-            "country": "test count",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="none"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "1234",
+              "addressLine": Array [
+                "addressline 156",
+                "addressline 290",
+              ],
+              "city": "test city",
+              "country": "test count",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": "1234",
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": "1234",
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
-      }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
-      }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
-      }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue="1234"
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
-  <Styled(View)>
-    <Address
-      address={
-        Object {
-          "addressId": "1234",
-          "addressLine": Array [
-            "addressline 156",
-            "addressline 290",
-          ],
-          "city": "test city",
-          "country": "test count",
-          "firstName": "test",
-          "lastName": "test",
-          "phone1": "1234567890",
-          "primary": "true",
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
         }
       }
-      className="elem-mb-SM"
-      customStyle={
+      id="onFileAddressKey"
+      itemStyle={
         Object {
-          "fontSize": "fs14",
-          "fontWeight": "regular",
+          "height": 90,
         }
       }
-      dataLocatorPrefix="address"
-      fontSize="fs14"
-      regularName={false}
-      showCountry={false}
-      showDefaultText={false}
-      showName={true}
-      showPhone={false}
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue="1234"
+      showButton={false}
+      variation="secondary"
     />
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      colorName={null}
-      customStyle={Object {}}
-      dataLocator="shipping-edit-contact-anchor"
-      fontSizeVariation="small"
-      href="#"
-      locator=""
-      noLink={true}
-      onPress={[Function]}
-      target="_blank"
-      text="lbl_shipping_edit"
-      underline={true}
-      visible={false}
-    />
-  </Styled(View)>
+  </View>
   <AddEditShippingAddress
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={true}
     modalType="edit"
-    toggleAddEditModal={[Function]}
   />
+  <Styled(View) />
 </Fragment>
 `;
 
 exports[`RegisteredShippingForm should render correctly with  addresses and call toggleModal if it has onFileAddressKey but does not match 1`] = `
 <Fragment>
-  <Field
-    component={[Function]}
-    data={
-      Array [
-        Object {
-          "content": Object {
-            "addressId": "1234",
-            "addressLine": Array [
-              "addressline 190",
-              "addressline 52",
-            ],
-            "city": "test city",
-            "country": "test ",
-            "firstName": "test",
-            "lastName": "test",
-            "phone1": "1234567890",
-            "primary": "true",
+  <View
+    pointerEvents="none"
+  >
+    <Field
+      component={[Function]}
+      data={
+        Array [
+          Object {
+            "content": Object {
+              "addressId": "1234",
+              "addressLine": Array [
+                "addressline 190",
+                "addressline 52",
+              ],
+              "city": "test city",
+              "country": "test ",
+              "firstName": "test",
+              "lastName": "test",
+              "phone1": "1234567890",
+              "primary": "true",
+            },
+            "id": "1234",
+            "label": "test test (Default)",
+            "primary": true,
           },
-          "id": "1234",
-          "label": "test test (Default)",
-          "primary": true,
-        },
+          Object {
+            "content": "",
+            "id": "",
+            "label": "+Add New Address",
+            "primary": false,
+          },
+        ]
+      }
+      dataLocator="shipping-address"
+      dropDownStyle={
         Object {
-          "content": "",
-          "id": "",
-          "label": "+Add New Address",
-          "primary": false,
-        },
-      ]
-    }
-    dataLocator="shipping-address"
-    dropDownStyle={
-      Object {
-        "borderBottomWidth": 1,
-        "height": 30,
-        "marginTop": 25,
-      }
-    }
-    id="onFileAddressKey"
-    itemStyle={
-      Object {
-        "height": 90,
-      }
-    }
-    labels={
-      Object {
-        "common": Object {
-          "lbl_common_tapClose": "close",
-        },
-      }
-    }
-    name="onFileAddressKey"
-    onValueChange={[Function]}
-    selectListTitle="Select from address book"
-    selectedValue="12345"
-    showButton={false}
-    toggleModal={[Function]}
-    variation="secondary"
-  />
-  <Styled(View)>
-    <Address
-      className="elem-mb-SM"
-      customStyle={
-        Object {
-          "fontSize": "fs14",
-          "fontWeight": "regular",
+          "borderBottomWidth": 1,
+          "height": 30,
+          "marginTop": 25,
         }
       }
-      dataLocatorPrefix="address"
-      fontSize="fs14"
-      regularName={false}
-      showCountry={false}
-      showDefaultText={false}
-      showName={true}
-      showPhone={false}
+      id="onFileAddressKey"
+      itemStyle={
+        Object {
+          "height": 90,
+        }
+      }
+      labels={
+        Object {
+          "common": Object {
+            "lbl_common_tapClose": "close",
+          },
+        }
+      }
+      name="onFileAddressKey"
+      onValueChange={[Function]}
+      selectListTitle="Select from address book"
+      selectedValue="12345"
+      showButton={false}
+      variation="secondary"
     />
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      colorName={null}
-      customStyle={Object {}}
-      dataLocator="shipping-edit-contact-anchor"
-      fontSizeVariation="small"
-      href="#"
-      locator=""
-      noLink={true}
-      onPress={[Function]}
-      target="_blank"
-      text="lbl_shipping_edit"
-      underline={true}
-      visible={false}
-    />
-  </Styled(View)>
+  </View>
   <AddEditShippingAddress
     actionButtons={[Function]}
     addressFields={[Function]}
     defaultOptions={[Function]}
     modalState={true}
     modalType="edit"
-    toggleAddEditModal={[Function]}
   />
+  <Styled(View) />
 </Fragment>
 `;
 
@@ -926,55 +899,8 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
                   "type": "@@redux-form/CHANGE",
                 },
               ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "form": "checkoutShipping",
-                    "sections": Array [
-                      "address",
-                    ],
-                  },
-                  "type": "@@redux-form/RESET_SECTION",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "saveToAddressBook",
-                    "form": "checkoutShipping",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": true,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
-              Array [
-                Object {
-                  "meta": Object {
-                    "field": "defaultShipping",
-                    "form": "checkoutShipping",
-                    "persistentSubmitErrors": undefined,
-                    "touch": undefined,
-                  },
-                  "payload": false,
-                  "type": "@@redux-form/CHANGE",
-                },
-              ],
             ],
             "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
               Object {
                 "type": "return",
                 "value": undefined,
@@ -1002,13 +928,27 @@ exports[`RegisteredShippingForm should render correctly with no addresses and ca
       />
     </Styled(View)>
   </FormSection>
-  <AddEditShippingAddress
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-    toggleAddEditModal={[Function]}
-  />
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      fontSize="fs16"
+      isChecked={false}
+      name="saveToAddressBook"
+      onChange={[Function]}
+      rightText="lbl_shipping_saveToAccount"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      disabled={true}
+      fontSize="fs16"
+      isChecked={false}
+      name="defaultShipping"
+      rightText="lbl_shipping_defaultShipping"
+      showDefaultCheckbox={false}
+    />
+  </Styled(View)>
 </Fragment>
 `;
