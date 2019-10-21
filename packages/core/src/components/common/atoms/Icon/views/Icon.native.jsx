@@ -39,7 +39,7 @@ const CustomIcon = props => {
     isDisabled,
     isButton,
     onPress,
-    margin,
+    margins,
     dataLocator,
     accessibilityLabel,
     ...otherProps
@@ -50,7 +50,7 @@ const CustomIcon = props => {
   if (isButton) {
     return (
       <IconTouchableOpacity
-        margin={margin}
+        margins={margins}
         {...otherProps}
         onPress={!isDisabled ? onPress : noop}
         accessibilityRole="button"
@@ -67,7 +67,7 @@ const CustomIcon = props => {
     );
   }
   return (
-    <Container margin={margin} accessibilityRole="button" accessibilityLabel={accessibilityLabel}>
+    <Container margins={margins} accessibilityRole="button" accessibilityLabel={accessibilityLabel}>
       <IconClass
         {...otherProps}
         name={name}
@@ -99,7 +99,7 @@ CustomIcon.propTypes = {
   onPress: PropTypes.func,
   isButton: PropTypes.bool,
   dataLocator: PropTypes.string,
-  margin: PropTypes.string,
+  margins: PropTypes.string,
   accessibilityLabel: PropTypes.string,
 };
 
@@ -109,7 +109,7 @@ CustomIcon.defaultProps = {
   onPress: noop,
   isButton: false,
   dataLocator: '',
-  margin: null,
+  margins: null,
   accessibilityLabel: '',
 };
 

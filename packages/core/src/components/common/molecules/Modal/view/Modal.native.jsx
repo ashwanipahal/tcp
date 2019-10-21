@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, SafeAreaView, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { Modal, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -98,57 +98,55 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
   }
 
   return (
-    <SafeAreaView>
-      <Modal
-        transparent={customTransparent || false}
-        visible={isOpen}
-        animationType={animationType}
-        onRequestClose={onRequestClose}
-      >
-        {!customTransparent && (
-          <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
-            <KeyboardAvoidingView
-              behavior={behavior}
-              keyboardVerticalOffset={keyboardVerticalOffset}
-              enabled
+    <Modal
+      transparent={customTransparent || false}
+      visible={isOpen}
+      animationType={animationType}
+      onRequestClose={onRequestClose}
+    >
+      {!customTransparent && (
+        <ModalCustomWrapper transparentModal={transparentModal} inheritedStyles={inheritedStyles}>
+          <KeyboardAvoidingView
+            behavior={behavior}
+            keyboardVerticalOffset={keyboardVerticalOffset}
+            enabled
+          >
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              stickyHeaderIndices={[0]}
             >
-              <ScrollView
-                showsVerticalScrollIndicator={false}
-                keyboardShouldPersistTaps="handled"
-                stickyHeaderIndices={[0]}
-              >
-                <Heading>
-                  <ToastContainer shouldShowSafeArea={false} />
-                  <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
-                    {heading && (
-                      <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
-                        <BodyCopy
-                          mobileFontFamily={headingFontFamily || 'primary'}
-                          fontWeight={headingFontWeight || 'extrabold'}
-                          textAlign={headingAlign}
-                          fontSize={fontSize || 'fs16'}
-                          text={heading}
-                        />
-                      </ModalHeading>
-                    )}
-                    {getCloseIcon({
-                      onRequestClose,
-                      headerStyle,
-                      iconType,
-                      isOverlay,
-                      stickyCloseIcon,
-                    })}
-                  </RowWrapper>
-                  {geLine(horizontalBar, borderColor)}
-                </Heading>
-                {children}
-              </ScrollView>
-            </KeyboardAvoidingView>
-          </ModalCustomWrapper>
-        )}
-        {customTransparent && children}
-      </Modal>
-    </SafeAreaView>
+              <Heading>
+                <ToastContainer shouldShowSafeArea={false} />
+                <RowWrapper stickyCloseIcon={stickyCloseIcon} isOverlay={isOverlay}>
+                  {heading && (
+                    <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
+                      <BodyCopy
+                        mobileFontFamily={headingFontFamily || 'primary'}
+                        fontWeight={headingFontWeight || 'extrabold'}
+                        textAlign={headingAlign}
+                        fontSize={fontSize || 'fs16'}
+                        text={heading}
+                      />
+                    </ModalHeading>
+                  )}
+                  {getCloseIcon({
+                    onRequestClose,
+                    headerStyle,
+                    iconType,
+                    isOverlay,
+                    stickyCloseIcon,
+                  })}
+                </RowWrapper>
+                {geLine(horizontalBar, borderColor)}
+              </Heading>
+              {children}
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </ModalCustomWrapper>
+      )}
+      {customTransparent && children}
+    </Modal>
   );
 };
 

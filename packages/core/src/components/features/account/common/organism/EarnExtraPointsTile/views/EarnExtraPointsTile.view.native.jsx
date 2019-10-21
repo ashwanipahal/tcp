@@ -89,6 +89,7 @@ class EarnExtraPointsTile extends PureComponent {
               options={{
                 enableSnap: true,
                 loop: false,
+                autoplay: false,
               }}
             />
           </View>

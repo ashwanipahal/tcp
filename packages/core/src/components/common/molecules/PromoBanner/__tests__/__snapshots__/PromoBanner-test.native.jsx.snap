@@ -8,6 +8,7 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     url="http://example.com235"
@@ -437,7 +438,6 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
 <Styled(View)>
   <Styled(Styled(BodyCopy))
     accessibilityText=""
-    color="pink.400"
     dataLocator=""
     fontFamily="primary"
     fontWeight="black"
@@ -446,7 +446,8 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
     numberOfLines={null}
     style={
       Object {
-        "fontSize": 153,
+        "color": "#f791cf",
+        "fontSize": 154,
         "height": 131,
         "marginTop": 8,
       }
@@ -457,7 +458,6 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
   <Styled(View)>
     <Styled(Styled(BodyCopy))
       accessibilityText=""
-      color="pink.400"
       dataLocator=""
       fontFamily="primary"
       fontWeight="black"
@@ -466,7 +466,8 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
       numberOfLines={null}
       style={
         Object {
-          "fontSize": 99,
+          "color": "#f797d6",
+          "fontSize": 98,
           "height": 85,
         }
       }
@@ -474,7 +475,6 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
     />
     <Styled(Styled(BodyCopy))
       accessibilityText=""
-      color="pink.400"
       dataLocator=""
       fontFamily="primary"
       fontSize="fs42"
@@ -484,6 +484,7 @@ exports[`PromoTextBanner native component renders all style correctly 9`] = `
       numberOfLines={null}
       style={
         Object {
+          "color": "#f791cf",
           "height": 42,
         }
       }
@@ -660,7 +661,7 @@ exports[`PromoTextBanner native component renders all style correctly 12`] = `
   color="black"
   dataLocator=""
   fontFamily="primary"
-  fontSize="fs16"
+  fontSize="fs14"
   fontWeight="black"
   forwardedComponent={
     Object {
@@ -709,7 +710,7 @@ exports[`PromoTextBanner native component renders all style correctly 13`] = `
   color="gray.900"
   dataLocator=""
   fontFamily="primary"
-  fontSize="fs16"
+  fontSize="fs14"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -854,7 +855,6 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   dataLocator=""
   fontFamily="primary"
   fontSize="fs20"
-  fontWeight="black"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -892,6 +892,11 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   lineHeight="20px"
   margin={null}
   numberOfLines={null}
+  style={
+    Object {
+      "fontWeight": "500",
+    }
+  }
   textAlign="center"
   textDecoration={null}
 />
@@ -1349,6 +1354,7 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     url="http://example.com235"
