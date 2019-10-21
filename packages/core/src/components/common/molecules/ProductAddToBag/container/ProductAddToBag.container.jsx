@@ -406,6 +406,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isOutfitPage,
       formRef,
       formEnabled,
+      quickViewColorSwatchesCss,
+      isPDP,
     } = this.props;
     const {
       selectedColor,
@@ -458,6 +460,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isOutfitPage={isOutfitPage}
         ref={formRef}
         formEnabled={formEnabled}
+        quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+        isPDP={isPDP}
       />
     );
   }
