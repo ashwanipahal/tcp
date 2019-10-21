@@ -19,6 +19,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         noLink={true}
         onPress={[Function]}
         text=""

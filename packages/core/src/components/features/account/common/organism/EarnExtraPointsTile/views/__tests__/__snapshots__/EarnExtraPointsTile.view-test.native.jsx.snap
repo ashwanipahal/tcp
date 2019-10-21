@@ -24,6 +24,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       data-locator="earnExtraPointsViewAll"
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       onPress={[Function]}
       text="View All"
       underline={true}

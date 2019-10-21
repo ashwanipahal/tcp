@@ -44,6 +44,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
       fontSizeVariation="medium"
       href="#"
       locator="pdp_anchor_complete_the_look"
+      margins={null}
       onPress={[Function]}
       text="Complete The Look"
       underline={true}
