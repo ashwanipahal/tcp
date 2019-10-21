@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 export default css`
   .moduleD_button {
     margin: 0 auto 32px;
-    padding: 12px 0;
     width: 225px;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -12,7 +11,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       margin: 0 auto 48px;
-      padding: 16px 0;
       width: 210px;
     }
   }

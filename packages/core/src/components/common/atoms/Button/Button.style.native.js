@@ -5,10 +5,13 @@ import { StyledText } from '../../../../../styles/globalStyles/StyledText.style'
 import { BUTTON_VARIATION } from '.';
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margin, height } = props;
   return {
     ...(margin && {
       margin,
+    }),
+    ...(height && {
+      height,
     }),
   };
 };

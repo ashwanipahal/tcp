@@ -30,6 +30,7 @@ export default css`
     min-height: 42px;
 
     &.candidate_a_form_button {
+      width: 162px;
       ${props =>
         props.theme.gridDimensions.gridBreakPointsKeys.map(key =>
           ['small', 'medium'].includes(key)
@@ -270,6 +271,10 @@ export default css`
       font-size: 15px;
       line-height: 1.67;
     }
+
+    .candidate_a_inline_container_button .refer_a_friend_button{
+      width: 165px;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -287,5 +292,10 @@ export default css`
     .hide-in-medium-down {
       display: none;
     }
+    .refer_a_friend_desktop .candidate_a_inline_container_button .refer_a_friend_button{
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        width: 192px;
+    }
   }
+}
 `;

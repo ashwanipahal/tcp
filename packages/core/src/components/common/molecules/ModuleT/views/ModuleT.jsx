@@ -138,6 +138,7 @@ class ModuleT extends React.PureComponent {
               buttonListVariation={buttonListCtaType}
               dataLocatorDivisionImages={getLocator('moduleT_cta_image')}
               dataLocatorTextCta={getLocator('moduleT_cta_links')}
+              className="button-list-container-alternate"
             />
           )}
         </div>

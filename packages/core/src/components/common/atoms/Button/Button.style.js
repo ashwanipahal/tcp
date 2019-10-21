@@ -48,7 +48,7 @@ const ButtonStyles = css`
       color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.text.hint};
       padding: 11px 20px;
       width: 100%;
       &:hover{
@@ -65,7 +65,7 @@ const ButtonStyles = css`
       color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.text.hint};
       padding: 11px 32px;
       &:hover{
         border: solid 1px #9b9b9b;
@@ -225,11 +225,11 @@ const ButtonStyles = css`
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width'
-        ? `min-height: 51px; padding: 16px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `min-height: 51px; font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
     ${props =>
       props.buttonVariation === 'variable-width'
-        ? `min-height: 45px; padding: 16px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `min-height: 45px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
   }
   ${props =>

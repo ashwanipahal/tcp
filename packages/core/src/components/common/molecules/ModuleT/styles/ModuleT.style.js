@@ -75,4 +75,8 @@ export default css`
       }
     `}
   }
+
+  .button-list-container .button-list-container-alternate a:nth-child(even) {
+    width: 141px;
+  }
 `;

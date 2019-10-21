@@ -199,6 +199,7 @@ class FooterTopCandidateA extends React.PureComponent {
                     id="extole_zone_global_footer"
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
+                    className="refer_a_friend_button"
                   >
                     {referAFriendButtonLabels.text}
                   </Button>

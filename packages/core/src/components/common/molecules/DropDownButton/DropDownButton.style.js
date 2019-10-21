@@ -52,7 +52,7 @@ export default css`
     .dropdown-button-container {
       display: inline-block;
       button {
-        min-width: 188px;
+        min-width: 162px;
         height: 42px;
       }
     }

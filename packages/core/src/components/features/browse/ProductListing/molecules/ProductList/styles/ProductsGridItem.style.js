@@ -215,6 +215,18 @@ const styles = css`
       min-height: 40px;
     }
   }
+  .fulfillment-section .added-to-bag {
+    width: 200px;
+    height: 51px;
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      width: 214px;
+      height: 42px;
+    }
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 148px;
+      height: 32px;
+    }
+  }
 `;
 
 export default styles;

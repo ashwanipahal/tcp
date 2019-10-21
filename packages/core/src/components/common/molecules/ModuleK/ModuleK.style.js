@@ -33,7 +33,6 @@ const StyledImageGrid = styled(ImageGrid)`
 `;
 
 const StyledModuleK = css`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
   .moduleK__promoBanner,
   .moduleK__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -41,6 +40,7 @@ const StyledModuleK = css`
   }
   .carousal-cta {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    width: 210px;
   }
   .tcp_carousel_wrapper {
     position: relative;

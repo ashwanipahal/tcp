@@ -51,7 +51,7 @@ export default css`
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 210px;
+      width: 180px;
     }
   }
 
@@ -64,7 +64,7 @@ export default css`
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 210px;
+      width: 180px;
     }
   }
 `;
