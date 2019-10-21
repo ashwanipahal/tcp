@@ -8,6 +8,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   const props = {
     currentProduct: null,
     selectedColorProductId: 123,
+    fromBagPage: true,
   };
 
   beforeEach(() => {
