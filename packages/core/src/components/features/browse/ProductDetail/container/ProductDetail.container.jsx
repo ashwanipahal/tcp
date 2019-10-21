@@ -108,6 +108,8 @@ class ProductDetailContainer extends React.PureComponent {
   }
 }
 
+ProductDetailContainer.pageId = 'p';
+
 function mapStateToProps(state) {
   return {
     navTree: getNavTree(state),
@@ -179,8 +181,10 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   ratingsProductId: '',
   defaultImage: '',
-  currency: '',
-  currencyAttributes: {},
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
   plpLabels: {
     lbl_sort: '',
   },

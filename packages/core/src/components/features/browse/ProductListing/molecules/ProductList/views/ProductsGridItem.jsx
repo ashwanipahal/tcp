@@ -398,6 +398,7 @@ class ProductsGridItem extends React.PureComponent {
       imagesByColor,
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
+      isFavoriteView,
     });
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
     const currentColorMiscInfo =
@@ -473,6 +474,8 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
+            isSoldOut={itemNotAvailable}
+            soldOutLabel={labels.soldOut}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },

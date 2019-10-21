@@ -27,6 +27,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>fb312738492865420</string>
 			</array>
 		</dict>
@@ -41,7 +49,9 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>fbapi</string>
+		<string>twitter</string>
+		<string>twitterauth</string>
+    <string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
@@ -91,19 +101,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
-      </array>
-    </dict>
-  </array>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>twitter</string>
-    <string>twitterauth</string>
-  </array>
 </dict>
 </plist>

@@ -69,6 +69,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
                 fontFamily="secondary"
                 fontSizeVariation="small"
                 locator=""
+                margins={null}
                 noLink={true}
                 onPress={[Function]}
                 text=""
