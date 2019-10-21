@@ -24,6 +24,7 @@ exports[`TitlePlusEditButton component should renders correctly props are presen
       dataLocator="review--edit-anchor"
       fontSize="fs12"
       locator=""
+      margins={null}
       mobileFontFamily="secondary"
       onPress={[Function]}
       text=""
@@ -58,6 +59,7 @@ exports[`TitlePlusEditButton component should renders correctly props not presen
       dataLocator="review--edit-anchor"
       fontSize="fs12"
       locator=""
+      margins={null}
       mobileFontFamily="secondary"
       onPress={[Function]}
       text=""

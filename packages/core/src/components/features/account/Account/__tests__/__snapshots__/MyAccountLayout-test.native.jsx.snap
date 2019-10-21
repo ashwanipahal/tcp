@@ -58,6 +58,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         "label": "MY PLACE REWARDS CREDIT CARD",
         "value": "myPlaceRewardsCCPageMobile",
       },
+      Object {
+        "id": "myFavorite",
+        "label": "My Favorite",
+        "value": "myFavoritePageMobile",
+      },
     ]
   }
   selectedComponent="addressBookMobile"

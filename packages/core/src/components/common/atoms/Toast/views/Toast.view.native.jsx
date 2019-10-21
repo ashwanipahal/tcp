@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
@@ -45,12 +45,12 @@ class ToastView extends React.PureComponent {
     const { errorMessage, toastMessageReset } = this.props;
     if (errorMessage) {
       this.toastRef.current.show(
-        <View>
+        <SafeAreaView>
           <ToastWrapper>
             <ToastText>{errorMessage}</ToastText>
             <ToastCross>X</ToastCross>
           </ToastWrapper>
-        </View>,
+        </SafeAreaView>,
         500,
         () => {
           toastMessageReset();

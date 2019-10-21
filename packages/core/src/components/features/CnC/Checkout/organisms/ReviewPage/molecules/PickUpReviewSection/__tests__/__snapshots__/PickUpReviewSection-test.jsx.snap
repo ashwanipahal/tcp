@@ -136,7 +136,7 @@ exports[`PickUp Review Section should render the component correctly with same s
       className="pickupContactPersonContainer"
       colSize={
         Object {
-          "large": 5,
+          "large": 6,
           "medium": 4,
           "small": 6,
         }
@@ -169,7 +169,7 @@ exports[`PickUp Review Section should render the component correctly with same s
       className="pickupContactAlternateContainer"
       colSize={
         Object {
-          "large": 5,
+          "large": 6,
           "medium": 4,
           "small": 6,
         }
