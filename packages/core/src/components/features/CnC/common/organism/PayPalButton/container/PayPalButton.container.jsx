@@ -8,6 +8,13 @@ import CONSTANTS from '../../../../Checkout/Checkout.constants';
 import { getAPIConfig, isMobileApp } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    const apiConfigObj = getAPIConfig();
+    const { paypalEnv } = apiConfigObj;
+    this.paypalEnv = paypalEnv;
+  }
+
   componentDidMount() {
     const { startPaypalNativeCheckoutAction } = this.props;
     if (isMobileApp()) startPaypalNativeCheckoutAction();
@@ -19,9 +26,6 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   }
 
   initalizePayPalButton = data => {
-    const apiConfigObj = getAPIConfig();
-    const { paypalEnv } = apiConfigObj;
-    console.log('paypalEnv', paypalEnv);
     const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
     const { containerId, height } = data;
     const options = {
@@ -37,7 +41,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       funding: {
         disallowed: [window.paypal && window.paypal.FUNDING.CREDIT],
       },
-      env: paypalEnv,
+      env: this.paypalEnv,
       payment: () => {
         return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
       },
@@ -60,8 +64,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       paypalAuthorizationHandle,
       clearPaypalSettings,
     } = this.props;
-    const apiConfigObj = getAPIConfig();
-    const { paypalEnv } = apiConfigObj;
+    console.log('getPayPalSettings', getPayPalSettings, this.paypalEnv);
     return (
       getPayPalSettings &&
       getPayPalSettings.paypalInContextToken && (
@@ -74,7 +77,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           payPalWebViewHandle={payPalWebViewHandle}
           paypalAuthorizationHandle={paypalAuthorizationHandle}
           clearPaypalSettings={clearPaypalSettings}
-          paypalEnv={paypalEnv}
+          paypalEnv={this.paypalEnv}
         />
       )
     );

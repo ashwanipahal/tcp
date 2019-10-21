@@ -18,7 +18,6 @@
           return vars;
       }
       const paypalEnv = getUrlVars()["paypalEnv"];
-      
       paypal.Button.render(
         {
           style: {
@@ -27,9 +26,9 @@
             shape: "rect",
             tagline: false,
             height: 42,
-            label: paypalEnv,
+            label: 'paypal',
           },
-          env: "sandbox", // Specify 'sandbox' for the test environment
+          env: paypalEnv,
           funding: {
             disallowed: [paypal && paypal.FUNDING.CREDIT]
           },
