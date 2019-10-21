@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomePageView should render correctly 1`] = `undefined`;
+exports[`HomePageView should render correctly 1`] = `
+<LazyloadScrollView
+  horizontal={false}
+  name="lazyload-home"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
+>
+  <Styled(View)>
+    <HeaderPromo />
+  </Styled(View)>
+  <HomePageSlots
+    modules={
+      Object {
+        "moduleA": [Function],
+        "moduleB": [Function],
+        "moduleD": [Function],
+        "moduleH": [Function],
+        "moduleJ": [Function],
+        "moduleK": [Function],
+        "moduleL": [Function],
+        "moduleN": [Function],
+        "moduleQ": [Function],
+        "moduleR": [Function],
+        "moduleS": [Function],
+      }
+    }
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <Connect(GetCandid)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <Connect(Recommendations)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    showButton={true}
+    variation="moduleO,moduleP"
+  />
+</LazyloadScrollView>
+`;
