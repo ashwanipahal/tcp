@@ -77,11 +77,11 @@ const OrderItems = ({ className, ...otherProps }) => {
             {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
             {upc}
           </BodyCopy>
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_color')}
             {color.name}
           </BodyCopy>
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
             {fit && (
               <BodyCopy
                 component="span"
