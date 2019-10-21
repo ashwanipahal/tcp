@@ -27,8 +27,17 @@ describe('ProductListItem component', () => {
     listPriceForColor: 10,
     offerPriceForColor: 12,
     loyaltyPromotionMessage: '',
-    onAddToBag: () => {},
-    onFavorite: () => {},
+    onAddToBag: jest.fn(),
+    onFavorite: jest.fn(),
+    onGoToPDPPage: jest.fn(),
+    onQuickViewOpenClick: jest.fn(),
+    isFavorite: false,
+    setLastDeletedItemId: jest.fn(),
+    fullWidth: false,
+    renderPriceAndBagOnly: false,
+    renderPriceOnly: false,
+    productImageWidth: false,
+    isDataLoading: false,
   };
   beforeEach(() => {
     component = shallow(<ListItemVanilla {...props} />);
@@ -44,10 +53,6 @@ describe('ProductListItem component', () => {
 
   it('should return styled View component value two', () => {
     expect(component.find('Styled(View)')).toHaveLength(2);
-  });
-
-  it('should return Styled(ColorSwitch) component value one', () => {
-    expect(component.find('Styled(ColorSwitch)')).toHaveLength(1);
   });
 
   it('should return RenderPricesSection component value one', () => {

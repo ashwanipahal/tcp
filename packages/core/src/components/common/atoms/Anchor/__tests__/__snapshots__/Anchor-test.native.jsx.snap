@@ -11,6 +11,7 @@ exports[`Anchor Native should render correctly 1`] = `
     anchorVariation=""
     colorName={null}
     internal={true}
+    margins={null}
     name="Anchor"
     navigation={
       Object {

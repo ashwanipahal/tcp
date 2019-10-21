@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Account } from '../container/Account.native';
+import { AccountVanilla, mapDispatchToProps } from '../container/Account.native';
 
 describe('Account View', () => {
   let component;
@@ -8,7 +8,7 @@ describe('Account View', () => {
     labels: {},
   };
   beforeEach(() => {
-    component = shallow(<Account {...props} />);
+    component = shallow(<AccountVanilla {...props} />);
   });
 
   it('should be defined', () => {
@@ -16,7 +16,7 @@ describe('Account View', () => {
   });
 
   it('should validate getComponent', () => {
-    component = shallow(<Account {...props} />);
+    component = shallow(<AccountVanilla {...props} />);
     expect(component.instance().getComponent('accountOverviewMobile')).toEqual(
       'accountOverviewMobile'
     );
@@ -31,8 +31,15 @@ describe('Account View', () => {
       mainContent: 'AccountOverview',
       handleComponentChange: () => {},
     };
-    component = shallow(<Account {...props} />);
+    component = shallow(<AccountVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('#fetchLabels should call on componentDidMount', () => {
+    const dispatch = jest.fn();
+    const dispatchProps = mapDispatchToProps(dispatch);
+    dispatchProps.fetchLabels();
+    expect(dispatch.mock.calls).toHaveLength(1);
   });
 
   it('should set state correctly based on the navData received from CMS', () => {
@@ -44,7 +51,7 @@ describe('Account View', () => {
       mainContent: 'AccountOverview',
       handleComponentChange: () => {},
     };
-    component = shallow(<Account {...props} />);
+    component = shallow(<AccountVanilla {...props} />);
     component.setProps({
       accountNavigation: {
         accountNav: [

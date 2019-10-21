@@ -2,6 +2,7 @@
 
 exports[`ProductPickupVanilla should render correctly 1`] = `
 <Styled(View)
+  borderWidth={1}
   margins="40px 0 0 0"
 >
   <Styled(View)>
@@ -12,7 +13,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       iconFontName="Icomoon"
       isButton={false}
       isDisabled={false}
-      margin={null}
+      margins={null}
       name="fast-shipping"
       onPress={[Function]}
       size="fs25"
@@ -58,7 +59,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       iconFontName="Icomoon"
       isButton={false}
       isDisabled={false}
-      margin={null}
+      margins={null}
       name="marker-icon"
       onPress={[Function]}
       size="fs24"

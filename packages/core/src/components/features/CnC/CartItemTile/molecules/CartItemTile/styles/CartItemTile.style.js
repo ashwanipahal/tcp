@@ -59,6 +59,8 @@ export default css`
     display: flex;
     justify-content: flex-start;
     padding-left: 15px;
+    z-index: 1;
+    outline: none;
   }
   .imageWrapper {
     position: relative;

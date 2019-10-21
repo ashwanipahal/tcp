@@ -18,6 +18,10 @@ export const getAddedToBagError = state => {
   return state.AddedToBagReducer.get('error');
 };
 
+export const getMultipleItemsAddedToBagError = state => {
+  return state.AddedToBagReducer.get('multipleItemsError');
+};
+
 export const getAddedToPickupError = state => {
   return state.AddedToBagReducer.get('pickupError');
 };

@@ -160,7 +160,7 @@ class CartItemRadioButtons extends React.Component {
           this.handleChangeStoreClick();
         }}
       >
-        {labels.changeStore}
+        {`(${labels.changeStore})`}
       </Anchor>
     ) : null;
   };
