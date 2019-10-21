@@ -99,10 +99,10 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator="shipping-email-signUp-heading-lbl"
+            fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
             margin={null}
-            mobileFontFamily="secondary"
             numberOfLines={null}
             text="lbl_pickup_emailSignupHeading"
             textDecoration={null}
@@ -111,10 +111,10 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           dataLocator="shipping-email-signUp-sub-heading-text"
+          fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
           margin={null}
-          mobileFontFamily="secondary"
           numberOfLines={null}
           text="lbl_pickup_emailSignupSubHeading"
           textDecoration={null}
@@ -122,10 +122,10 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           dataLocator=""
+          fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
           margin={null}
-          mobileFontFamily="secondary"
           numberOfLines={null}
           text="lbl_pickup_emailSignupSubSubHeading"
           textDecoration={null}

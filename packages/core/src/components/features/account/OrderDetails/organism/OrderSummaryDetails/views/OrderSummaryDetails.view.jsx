@@ -37,7 +37,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
 
   return (
     <BodyCopy component="div" className={className}>
-      <Row className="elem-mb-XS">
+      <Row fullBleed className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_orderSummary')}
@@ -49,7 +49,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
           </BodyCopy>
         </Col>
       </Row>
-      <Row className="elem-mb-XS">
+      <Row fullBleed className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
@@ -62,7 +62,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
       </Row>
 
-      <Row className="elem-mb-XS">
+      <Row fullBleed className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}:`}
@@ -75,7 +75,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
       </Row>
 
-      <Row className="elem-mb-XS">
+      <Row fullBleed className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
@@ -90,7 +90,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
         </Col>
       </Row>
 
-      <Row className="items-total elem-mb-XS">
+      <Row fullBleed className="items-total elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
@@ -106,7 +106,7 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
       </Row>
 
       {grandTotal && (
-        <Row className="elem-mb-XS total-value">
+        <Row fullBleed className="elem-mb-XS total-value">
           <Col colSize={{ large: 7, medium: 4, small: 3 }}>
             <BodyCopy fontSize="fs16" fontWeight="extrabold" fontFamily="secondary">
               {`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}

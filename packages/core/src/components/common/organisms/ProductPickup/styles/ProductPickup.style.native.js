@@ -11,7 +11,7 @@ const getContainerStyle = props => {
   const { theme } = props;
   const { colorPalette, spacing } = theme;
   return `
-    border: 1px solid ${colorPalette.gray[1600]};
+    border-color: ${colorPalette.gray[1600]};
     padding-top: ${spacing.ELEM_SPACING.MED};
     padding-bottom: ${spacing.ELEM_SPACING.MED};
   `;

@@ -2,7 +2,10 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 import { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+
+const errorIcon = require('@tcp/core/src/assets/alert-triangle.png');
 
 const colorPallete = createThemeColorPalette();
 
@@ -19,23 +22,27 @@ const LabeledRadioButton = ({
   buttonOuterSize,
   disabled,
   labelStyle,
+  disabledWithAlert,
 }) => {
   return (
     <View pointerEvents={disabled ? 'none' : 'auto'}>
       <RadioButton labelHorizontal key={index}>
         {/*  You can set RadioButtonLabel before RadioButtonInput */}
-        <RadioButtonInput
-          obj={obj}
-          index={index}
-          isSelected={checked}
-          onPress={onPress}
-          borderWidth={1}
-          buttonInnerColor={buttonInnerColor}
-          buttonOuterColor={buttonOuterColor}
-          buttonSize={buttonSize}
-          buttonOuterSize={buttonOuterSize}
-          buttonStyle={buttonStyle}
-        />
+        {!disabledWithAlert && (
+          <RadioButtonInput
+            obj={obj}
+            index={index}
+            isSelected={checked}
+            onPress={onPress}
+            borderWidth={1}
+            buttonInnerColor={buttonInnerColor}
+            buttonOuterColor={buttonOuterColor}
+            buttonSize={buttonSize}
+            buttonOuterSize={buttonOuterSize}
+            buttonStyle={buttonStyle}
+          />
+        )}
+        {disabledWithAlert && <Image source={errorIcon} alt="error" width={20} height={20} />}
         <RadioButtonLabel
           obj={obj}
           index={index}
@@ -62,6 +69,7 @@ LabeledRadioButton.propTypes = {
   buttonInnerColor: PropTypes.string,
   buttonOuterColor: PropTypes.string,
   disabled: PropTypes.bool,
+  disabledWithAlert: PropTypes.bool,
 };
 
 LabeledRadioButton.defaultProps = {
@@ -77,6 +85,7 @@ LabeledRadioButton.defaultProps = {
   buttonInnerColor: colorPallete.black,
   buttonOuterColor: colorPallete.black,
   disabled: false,
+  disabledWithAlert: false,
 };
 
 export default LabeledRadioButton;
