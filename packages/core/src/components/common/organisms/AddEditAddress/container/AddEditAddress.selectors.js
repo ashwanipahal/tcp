@@ -75,6 +75,7 @@ export const getAddEditAddressLabels = createSelector(
       'lbl_addEditAddress_setDefault',
       'lbl_addEditAddress_addressButton',
       'lbl_addEditAddress_select',
+      'lbl_addEditAddress_internationalShipping',
     ];
 
     addressLabelsKeys.forEach(key => {
