@@ -19,6 +19,7 @@ const styles = css`
     width: 100%;
     max-width: 450px;
     text-align: center;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
@@ -116,10 +117,12 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
   .color-chips-selector-title-name,
   .size-and-fit-detail-title-name {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     margin-left: 6px;
   }
