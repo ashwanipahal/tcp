@@ -86,7 +86,7 @@ class ImageCarousel extends React.PureComponent {
                 url={imageUrl}
                 isProductImage
                 height={imageHeight}
-                width={productImageWidth}
+                width={productImageWidth || imageWidth}
                 resizeMode="contain"
               />
             </TouchableOpacity>
@@ -107,7 +107,7 @@ ImageCarousel.propTypes = {
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
-  productImageWidth: '',
+  productImageWidth: null,
 };
 
 export default ImageCarousel;
