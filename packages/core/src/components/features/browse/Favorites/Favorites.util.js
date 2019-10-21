@@ -2,43 +2,43 @@ import { AVAILABILITY } from './container/Favorites.constants';
 
 const WISHLIST_FILTERS = {
   ALL: {
-    displayName: 'all',
+    displayName: 'lbl_fav_all',
     filterMethod: () => true,
   },
   AVAILABLE: {
-    displayName: 'available',
+    displayName: 'lbl_fav_available',
     filterMethod: item => item.itemInfo.availability === AVAILABILITY.OK,
   },
   SOLDOUT: {
-    displayName: 'soldOut',
+    displayName: 'lbl_fav_soldOut',
     filterMethod: item => item.itemInfo.availability === AVAILABILITY.SOLDOUT,
   },
   PURCHASED: {
-    displayName: 'purchased',
+    displayName: 'lbl_fav_purchased',
     filterMethod: item => item.quantityPurchased > 0,
   },
 };
 
 const WISHLIST_SORTS = {
   UNSORTED: {
-    displayName: 'recentlyAdded',
+    displayName: 'lbl_fav_recentlyAdded',
     sortMethod: null,
   },
   PRICE_ASCENDING: {
-    displayName: 'price_Low_High',
+    displayName: 'lbl_fav_priceLowHigh',
     sortMethod: (item1, item2) => item1.productInfo.offerPrice - item2.productInfo.offerPrice,
   },
   PRICE_DESCENDING: {
-    displayName: 'price_HighLow',
+    displayName: 'lbl_fav_priceHighLow',
     sortMethod: (item1, item2) => item2.productInfo.offerPrice - item1.productInfo.offerPrice,
   },
   CLEARANCE: {
-    displayName: 'clearance',
+    displayName: 'lbl_fav_clearance',
     sortMethod: (item1, item2) =>
       (item1.miscInfo.clearanceItem ? 0 : 1) - (item2.miscInfo.clearanceItem ? 0 : 1),
   },
   NEW_ARRIVAL: {
-    displayName: 'new_Arrivals',
+    displayName: 'lbl_fav_newArrivals',
     sortMethod: (item1, item2) =>
       (item1.miscInfo.newArrivalItem ? 0 : 1) - (item2.miscInfo.newArrivalItem ? 0 : 1),
   },
@@ -54,7 +54,7 @@ export const getSortsList = labels =>
   Object.keys(WISHLIST_SORTS).map(key => ({
     id: key,
     displayName: Object.keys(labels).length
-      ? labels.WISHLIST_SORTS[key].displayName
+      ? labels[WISHLIST_SORTS[key].displayName]
       : WISHLIST_SORTS[key].displayName,
   }));
 
@@ -62,7 +62,7 @@ export function getNonEmptyFiltersList(items, labels) {
   return Object.keys(WISHLIST_FILTERS).map(key => ({
     id: key,
     displayName: Object.keys(labels).length
-      ? labels.WISHLIST_FILTERS[key].displayName
+      ? labels[WISHLIST_FILTERS[key].displayName]
       : WISHLIST_FILTERS[key].displayName,
     facetName: 'display_group_uFilter',
     disabled: items.findIndex(WISHLIST_FILTERS[key].filterMethod) < 0,

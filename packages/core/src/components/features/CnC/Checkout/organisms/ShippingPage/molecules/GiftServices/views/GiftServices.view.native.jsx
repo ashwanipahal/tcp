@@ -77,7 +77,7 @@ class GiftServices extends React.PureComponent {
             <BodyCopy
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={servicesMap.name}
               textAlign="left"
@@ -87,7 +87,7 @@ class GiftServices extends React.PureComponent {
             <BodyCopy
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={
                 parseInt(servicesMap.price, 10) === 0
