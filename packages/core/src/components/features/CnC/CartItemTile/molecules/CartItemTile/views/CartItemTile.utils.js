@@ -166,16 +166,17 @@ export const hideEditBossBopis = (isBOSSOrder, bossDisabled, isBOPISOrder, bopis
  */
 export const getBOSSUnavailabilityMessage = (bossDisabled, noBossMessage, availability, labels) => {
   let unavailableMessage = '';
+  const { UNAVAILABLE, REQ_QTY_UNAVAILABLE, BOSSINELIGIBLE } = CARTPAGE_CONSTANTS.AVAILABILITY;
   /* istanbul ignore else */
   if (bossDisabled || !!noBossMessage) {
     switch (availability) {
-      case CARTPAGE_CONSTANTS.AVAILABILITY.UNAVAILABLE:
+      case UNAVAILABLE:
         unavailableMessage = labels.bossUnavailable;
         break;
-      case CARTPAGE_CONSTANTS.AVAILABILITY.REQ_QTY_UNAVAILABLE:
+      case REQ_QTY_UNAVAILABLE:
         unavailableMessage = labels.bossReqQtyUnavailable;
         break;
-      case CARTPAGE_CONSTANTS.AVAILABILITY.BOSSINELIGIBLE:
+      case BOSSINELIGIBLE:
         unavailableMessage = labels.bossInEligible;
         break;
       default:

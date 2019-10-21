@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
@@ -183,7 +184,6 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
-/* eslint-disable react/prop-types */
 const getCartRadioButtons = ({
   productDetail,
   labels,
@@ -228,6 +228,26 @@ const getCartRadioButtons = ({
   return <></>;
 };
 
+getCartRadioButtons.propTypes = {
+  productDetail: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  itemIndex: PropTypes.number.isRequired,
+  openedTile: PropTypes.number.isRequired,
+  setSelectedProductTile: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool.isRequired,
+  showOnReviewPage: PropTypes.bool.isRequired,
+  isEcomSoldout: PropTypes.bool.isRequired,
+  isECOMOrder: PropTypes.bool.isRequired,
+  isBOSSOrder: PropTypes.bool.isRequired,
+  isBOPISOrder: PropTypes.bool.isRequired,
+  noBopisMessage: PropTypes.string.isRequired,
+  noBossMessage: PropTypes.string.isRequired,
+  bossDisabled: PropTypes.bool.isRequired,
+  bopisDisabled: PropTypes.bool.isRequired,
+  isBossEnabled: PropTypes.bool.isRequired,
+  isBopisEnabled: PropTypes.bool.isRequired,
+};
+
 /**
  * @function renderUnavailableErrorMessage
  * @param {Object} settings
@@ -235,7 +255,7 @@ const getCartRadioButtons = ({
  * @memberof CartItemTile
  */
 const renderUnavailableErrorMessage = ({
-  props,
+  props: myProps,
   isEcomSoldout,
   bossDisabled,
   isBOSSOrder,
@@ -245,7 +265,7 @@ const renderUnavailableErrorMessage = ({
   noBopisMessage,
   availability,
 }) => {
-  const { labels } = props;
+  const { labels } = myProps;
   let unavailableMessage = '';
   if (isEcomSoldout) {
     unavailableMessage = labels.soldOutError;
@@ -272,7 +292,22 @@ const renderUnavailableErrorMessage = ({
   ) : null;
 };
 
-/* eslint-enable react/prop-types */
+renderUnavailableErrorMessage.propTypes = {
+  props: PropTypes.shape({
+    labels: PropTypes.shape({
+      soldOutError: PropTypes.string.isRequired,
+      itemUnavailable: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  isEcomSoldout: PropTypes.bool.isRequired,
+  bossDisabled: PropTypes.bool.isRequired,
+  isBOSSOrder: PropTypes.bool.isRequired,
+  bopisDisabled: PropTypes.bool.isRequired,
+  isBOPISOrder: PropTypes.bool.isRequired,
+  noBossMessage: PropTypes.string.isRequired,
+  noBopisMessage: PropTypes.string.isRequired,
+  availability: PropTypes.string.isRequired,
+};
 
 const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
   const { onPickUpOpenClick, productDetail, orderId } = props;
