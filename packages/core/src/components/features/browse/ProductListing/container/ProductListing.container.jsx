@@ -213,12 +213,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(getPlpProducts(payload));
     },
     onQuickViewOpenClick: payload => {
-      // dispatch(openQuickViewWithValues(payload));
-      dispatch(openQuickViewWithValues([{
-        colorProductId: '2061449_A2'
-      },{
-        colorProductId: '2065287_10'
-      }]));
+      dispatch(openQuickViewWithValues(payload));
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
