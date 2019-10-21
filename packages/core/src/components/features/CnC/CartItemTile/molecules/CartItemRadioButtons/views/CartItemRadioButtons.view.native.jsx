@@ -121,13 +121,7 @@ class CartItemRadioButtons extends React.Component {
   renderChangeStore = (disabled, isBossItem) => {
     const { labels } = this.props;
     return !disabled || this.hideChangeStore(isBossItem) ? (
-      <Anchor
-        fontSizeVariation="small"
-        onClick={e => {
-          e.preventDefault();
-          this.handleChangeStoreClick();
-        }}
-      >
+      <Anchor fontSizeVariation="small">
         <StyledChangeStore>
           <BodyCopy
             fontSize="fs12"
@@ -222,6 +216,7 @@ class CartItemRadioButtons extends React.Component {
       productDetail: {
         miscInfo: { store },
       },
+      labels,
     } = this.props;
     const { currentExpandedState } = this.state;
     const isOpened = index === openedTile;
@@ -231,7 +226,7 @@ class CartItemRadioButtons extends React.Component {
           this.renderRadioButton({
             isSelected: isBOSSOrder,
             disabled: bossDisabled,
-            radioText: 'No Rush Pickup',
+            radioText: labels.bossPickUp,
             onlineClearanceMessage: noBossMessage,
             isBossItem: true,
             isEcomItem: false,
@@ -241,7 +236,7 @@ class CartItemRadioButtons extends React.Component {
           this.renderRadioButton({
             isSelected: isBOPISOrder,
             disabled: bopisDisabled,
-            radioText: 'Pickup Today',
+            radioText: labels.bopisPickUp,
             onlineClearanceMessage: noBopisMessage,
             isBossItem: false,
             isEcomItem: false,
@@ -251,7 +246,7 @@ class CartItemRadioButtons extends React.Component {
           this.renderRadioButton({
             isSelected: isECOMOrder,
             disabled: isEcomSoldout,
-            radioText: 'Ship To Home',
+            radioText: labels.ecomShipping,
             onlineClearanceMessage: false,
             isBossItem: false,
             isEcomItem: true,
@@ -273,6 +268,7 @@ class CartItemRadioButtons extends React.Component {
       },
       index,
       openedTile,
+      labels,
     } = this.props;
     const { currentExpandedState } = this.state;
     const isOpened = index === openedTile;
@@ -283,7 +279,7 @@ class CartItemRadioButtons extends React.Component {
           this.renderRadioButton({
             isSelected: isBOPISOrder,
             disabled: bopisDisabled,
-            radioText: 'Pickup Today',
+            radioText: labels.bopisPickUp,
             onlineClearanceMessage: noBopisMessage,
             isBossItem: false,
             isEcomItem: false,
@@ -292,7 +288,7 @@ class CartItemRadioButtons extends React.Component {
         {this.renderRadioButton({
           isSelected: isECOMOrder,
           disabled: isEcomSoldout,
-          radioText: 'Ship To Home',
+          radioText: labels.ecomShipping,
           onlineClearanceMessage: false,
           isBossItem: false,
           isEcomItem: true,
