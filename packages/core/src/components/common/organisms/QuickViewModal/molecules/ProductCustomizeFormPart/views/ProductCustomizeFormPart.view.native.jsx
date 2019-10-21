@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import colors from '@tcp/core/styles/themes/TCP/colors';
-import { BodyCopy, Image, Anchor } from '../../../../../atoms';
+import { BodyCopy, Anchor, DamImage } from '../../../../../atoms';
 import {
   PickUpSkUSectionContainer,
   ImageWrapper,
@@ -57,7 +57,6 @@ const ProductCustomizeFormPart = props => {
   const modifiedPdpUrl = getProductListToPathInMobileApp(currentColorPdpUrl) || '';
   // const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const colorProductId = currentColorEntry && currentColorEntry.colorProductId;
-
   return (
     <PickUpSkUSectionContainer
       formEnabled={formEnabled}
@@ -81,8 +80,13 @@ const ProductCustomizeFormPart = props => {
       >
         <ProductSummaryContainer isMultiItemQVModal={isMultiItemQVModal}>
           <ImageWrapper>
-            <Image resizeMode="contain" height="198px" width="161px" url={imageUrl} />
-
+            <DamImage
+              resizeMode="contain"
+              url={imageUrl}
+              isProductImage
+              height="198px"
+              width="161px"
+            />
             <Anchor noLink onPress={() => goToPDPPageMobile(modifiedPdpUrl, colorProductId)}>
               <BodyCopy
                 fontSize="fs14"
