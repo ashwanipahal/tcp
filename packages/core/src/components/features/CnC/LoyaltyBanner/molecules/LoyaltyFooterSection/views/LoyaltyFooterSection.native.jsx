@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
+import ProductDetailSection from '../../ProductDetailSection';
 import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 const renderApplyNowLink = () => {
@@ -51,12 +52,16 @@ const renderLoginLink = labels => {
 
 const createLoginLinks = labels => {
   return (
+    // <>
+    //   {isGuest && earnedReward && (
     <div className="links-wrapper">
       <span className="links-container">
         <span>{renderCreateAccountLink(labels)}</span>
         <span className="elem-pl-XL">{renderLoginLink(labels)}</span>
       </span>
     </div>
+    //   )}
+    // </>
   );
 };
 
@@ -118,34 +123,6 @@ const notReviewLinks = (labels, isConfirmationPage, isPlcc, isGuest, earnedRewar
   );
 };
 
-const detailViewFooter = (labels, isProductDetailView, isGuest, isPlcc) => {
-  return (
-    <>
-      {isProductDetailView && (
-        <div>
-          {isGuest && (
-            <span>
-              {renderCreateAccountLink(labels)}
-              {renderLoginLink(labels)}
-            </span>
-          )}
-          {!isGuest && (
-            <>
-              {!isPlcc && (
-                <span>
-                  {renderApplyNowLink()}
-                  {renderLearnMoreLink(labels)}
-                </span>
-              )}
-              {isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
-            </>
-          )}
-        </div>
-      )}
-    </>
-  );
-};
-
 const LoyaltyFooterSection = props => {
   const {
     labels,
@@ -160,7 +137,15 @@ const LoyaltyFooterSection = props => {
   } = props;
   return (
     <div className={`${className} footerWrapper`}>
-      {isProductDetailView && detailViewFooter()}
+      {isProductDetailView && (
+        <ProductDetailSection
+          className={className}
+          labels={labels}
+          isPlcc={isPlcc}
+          isProductDetailView={isProductDetailView}
+          isGuest={isGuest}
+        />
+      )}
       {isAddedToBagPage && <>{addedToBagPageLinks(labels, isGuest, isPlcc, earnedReward)}</>}
       {!isProductDetailView && !isAddedToBagPage && (
         <>

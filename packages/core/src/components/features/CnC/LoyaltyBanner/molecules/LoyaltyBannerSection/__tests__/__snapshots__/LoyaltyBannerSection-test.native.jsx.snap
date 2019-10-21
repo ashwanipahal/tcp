@@ -11,7 +11,11 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
     estimatedSubtotal={33}
     getCurrencySymbol=""
     headingLabel={false}
+    isAddedToBagPage={false}
+    isConfirmationPage={false}
     isPlcc={false}
+    isProductDetailView={false}
+    isReviewPage={false}
     labels={Object {}}
     remainingPlcc={false}
     showSubtotal={true}
@@ -26,6 +30,7 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       onPress={null}
       text=""
       underline={true}
@@ -40,6 +45,7 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
         customStyle={Object {}}
         fontSizeVariation="medium"
         locator=""
+        margins={null}
         onPress={null}
         text=""
         underline={true}

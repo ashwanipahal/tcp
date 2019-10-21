@@ -7,28 +7,7 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import { labelsHashValuesReplace, convertHtml } from '../../../util/utility';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
-import renderLoyaltyLabels from '../../../util/utilityCommon';
-
-const getPageCategory = pageCategory => {
-  let ischeckoutPage = false;
-  let isReviewPage = false;
-  let isConfirmationPage = false;
-  let isAddedToBagPage = false;
-  switch (pageCategory) {
-    case 'review':
-      isReviewPage = true;
-      break;
-    case 'confirmation':
-      isConfirmationPage = true;
-      break;
-    case 'isAddedToBagPage':
-      isAddedToBagPage = true;
-      break;
-    default:
-      ischeckoutPage = true;
-  }
-  return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
-};
+import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
 // const concatSectionSymbol = (str, sectionSymbol) => {
 //   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;

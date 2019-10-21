@@ -1,4 +1,25 @@
 /* eslint-disable max-params */
+const getPageCategory = pageCategory => {
+  let ischeckoutPage = false;
+  let isReviewPage = false;
+  let isConfirmationPage = false;
+  let isAddedToBagPage = false;
+  switch (pageCategory) {
+    case 'review':
+      isReviewPage = true;
+      break;
+    case 'confirmation':
+      isConfirmationPage = true;
+      break;
+    case 'isAddedToBagPage':
+      isAddedToBagPage = true;
+      break;
+    default:
+      ischeckoutPage = true;
+  }
+  return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
+};
+
 const reviewPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGuest, isPlcc) => {
   let rewardPointsValue = '';
   let headingLabelVal = '';
@@ -273,4 +294,4 @@ const renderLoyaltyLabels = (
   };
 };
 
-export default renderLoyaltyLabels;
+export { renderLoyaltyLabels, getPageCategory };

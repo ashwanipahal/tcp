@@ -12,6 +12,18 @@ const paddingTopSm = props => `
 const paddingTopMed = props => `
     padding-top: ${props.theme.spacing.ELEM_SPACING.MED};
 `;
+const paddingLeftXxs = props => `
+    padding-left: ${props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+const paddingRightXxs = props => `
+    padding-right: ${props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+const paddingLeftMed = props => `
+    padding-left: ${props.theme.spacing.LAYOUT_SPACING.MED};
+`;
+const paddingRightMed = props => `
+    padding-right: ${props.theme.spacing.LAYOUT_SPACING.MED};
+`;
 const fontSize10 = props => `
     font-size: ${props.theme.typography.fontSizes.fs10};
 `;
@@ -46,17 +58,25 @@ const Styles = css`
     ${alignCenter}
     ${props => {
       if (props.isPlcc) {
-        return `${fontSize16(props)}${colorTheme(props)}`;
+        return `${fontSize16(props)}${colorTheme(props)}${paddingLeftMed(props)}${paddingRightMed(
+          props
+        )}`;
       }
       return fontSize12;
     }};
 
     @media ${props => props.theme.mediaQuery.medium} {
-        ${props => (props.isPlcc ? fontSize14 : fontSize10)};
+        ${props =>
+          props.isPlcc
+            ? `${fontSize14(props)}${paddingLeftXxs(props)}${paddingRightXxs(props)}`
+            : fontSize10};
     }
     @media ${props => props.theme.mediaQuery.large} {
         ${paddingTopMed}
-        ${props => (props.isPlcc ? fontSize18 : fontSize16)};
+        ${props =>
+          props.isPlcc
+            ? `${fontSize18(props)}${paddingLeftMed(props)}${paddingRightMed(props)}`
+            : fontSize16};
     }
   }
   .subheading-val {

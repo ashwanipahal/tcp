@@ -3,15 +3,7 @@
 exports[`LoyaltyFooterSection View Component ProductDetailSection true should render correctly 1`] = `
 <div
   className=" footerWrapper"
->
-  <Styled(ProductDetailSection)
-    className=""
-    isGuest={false}
-    isPlcc={false}
-    isProductDetailView={true}
-    labels={Object {}}
-  />
-</div>
+/>
 `;
 
 exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward true should render correctly 1`] = `
