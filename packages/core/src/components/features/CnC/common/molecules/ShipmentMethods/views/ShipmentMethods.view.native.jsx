@@ -29,7 +29,7 @@ const ShipmentMethods = ({
       <BodyCopy
         color="gray.900"
         fontWeight="semibold"
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs16"
         text={shipmentHeader}
         textAlign="left"
@@ -58,13 +58,13 @@ const ShipmentMethods = ({
       {selectedShipment && (
         <ShippingMsgWrapper>
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
             text={`${selectedShipment.displayName || ''} - `}
           />
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
             style={italicStyle}

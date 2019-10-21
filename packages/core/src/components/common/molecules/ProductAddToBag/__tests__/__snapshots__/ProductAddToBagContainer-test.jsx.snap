@@ -536,6 +536,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
     }
   }
   showAddToBagCTA={true}
+  showColorChips={true}
   sizeList={Array []}
 />
 `;
@@ -964,6 +965,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     }
   }
   showAddToBagCTA={true}
+  showColorChips={true}
   sizeList={
     Array [
       Object {

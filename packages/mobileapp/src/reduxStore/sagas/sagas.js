@@ -58,9 +58,11 @@ import ApplyCreditCardSaga, {
 import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
+import OrderDetailsSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.saga';
+import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
+import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
-import OrderDetailsListSaga from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -68,6 +70,7 @@ export default function* rootSaga() {
     LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
+    RecommendationsSaga(),
     NavigationSaga(),
     AddEditAddressSaga(),
     AddressVerificationSaga(),
@@ -120,10 +123,11 @@ export default function* rootSaga() {
     PickupStoreSaga(),
     ExtraPointsSaga(),
     OrdersSaga(),
+    OrderDetailsSaga(),
     SearchBarSaga(),
+    FavoriteSaga(),
     OutfitDetailsSaga(),
     RecentSearchSaga(),
-    OrderDetailsListSaga(),
     AccountSaga(),
   ]);
 }

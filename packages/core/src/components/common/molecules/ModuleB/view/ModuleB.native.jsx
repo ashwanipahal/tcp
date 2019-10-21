@@ -168,13 +168,13 @@ const ModuleB = (props: Props) => {
         navigation
       )}
 
-      {ctaType === 'imageCTAList' && (
+      {ctaType === ctaTypes.divImageCTACarousel && (
         <DivImageCTAContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'moduleB_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaType === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <Border background="gray" />
           {renderButtonList(
@@ -189,7 +189,7 @@ const ModuleB = (props: Props) => {
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaType === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>

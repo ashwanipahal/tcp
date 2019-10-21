@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { isMobileApp } from '@tcp/core/src/utils/utils';
 import Favorites from '../views';
 import {
   getSetWishlistsSummariesAction,
@@ -11,7 +12,17 @@ import {
   createNewWishListAction,
   setLastDeletedItemIdAction,
 } from './Favorites.actions';
-import { fetchCurrencySymbol, getLabelsFavorites } from './Favorites.selectors';
+
+import {
+  selectWishlistsSummaries,
+  selectActiveWishlistId,
+  selectActiveWishList,
+  selectActiveWishlistProducts,
+  selectActiveDisplayName,
+  selectTotalProductsCount,
+  fetchCurrencySymbol,
+  getLabelsFavorites,
+} from './Favorites.selectors';
 
 class FavoritesContainer extends React.PureComponent {
   state = {
@@ -59,6 +70,16 @@ class FavoritesContainer extends React.PureComponent {
     );
   };
 
+  onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
+    const { navigation } = this.props;
+    navigation.navigate('ProductDetail', {
+      title,
+      pdpUrl,
+      selectedColorProductId,
+      reset: true,
+    });
+  };
+
   render() {
     const {
       wishlistsSummaries,
@@ -68,9 +89,16 @@ class FavoritesContainer extends React.PureComponent {
       getActiveWishlist,
       createNewWishList,
       setLastDeletedItemId,
+      activeWishListId,
+      activeWishListProducts,
+      activeDisplayName,
       currencySymbol,
       labels,
+      navigation,
+      onQuickViewOpenClick,
     } = this.props;
+
+    const { selectedColorProductId } = this.state;
 
     return (
       <Favorites
@@ -81,9 +109,15 @@ class FavoritesContainer extends React.PureComponent {
         getActiveWishlist={getActiveWishlist}
         createNewWishList={createNewWishList}
         setLastDeletedItemId={setLastDeletedItemId}
+        activeWishListId={activeWishListId}
+        activeWishListProducts={activeWishListProducts}
+        activeDisplayName={activeDisplayName}
         currencySymbol={currencySymbol}
         labels={labels}
-        onQuickViewOpenClick={this.openQuickViewModal}
+        onQuickViewOpenClick={isMobileApp() ? onQuickViewOpenClick : this.openQuickViewModal}
+        selectedColorProductId={selectedColorProductId}
+        navigation={navigation}
+        onGoToPDPPage={this.onGoToPDPPage}
         onFilterSelection={this.onFilterSelection}
         onSortSelection={this.onSortSelection}
         selectBrandType={this.selectBrandType}
@@ -94,12 +128,15 @@ class FavoritesContainer extends React.PureComponent {
 }
 
 const mapStateToProps = state => {
-  const FavoritesState = state.Favorites;
   return {
-    wishlistsSummaries: FavoritesState.get('wishlistsSummaries'),
-    activeWishList: FavoritesState.get('activeWishList'),
+    wishlistsSummaries: selectWishlistsSummaries(state),
+    activeWishList: selectActiveWishList(state),
+    activeWishListId: selectActiveWishlistId(state),
+    activeWishListProducts: selectActiveWishlistProducts(state),
+    activeDisplayName: selectActiveDisplayName(state),
     currencySymbol: fetchCurrencySymbol(state),
     labels: getLabelsFavorites(state),
+    totalProductsCount: selectTotalProductsCount(state),
   };
 };
 
@@ -107,11 +144,17 @@ const mapDispatchToProps = dispatch => {
   return {
     loadWishList: () => dispatch(getSetWishlistsSummariesAction()),
     createNewWishListMoveItem: wishListId => dispatch(createNewWishListMoveItemAction(wishListId)),
-    deleteWishList: wishListId => dispatch(deleteWishListAction(wishListId)),
+    deleteWishList: wishListId => {
+      dispatch(deleteWishListAction(wishListId));
+    },
     getActiveWishlist: payload => dispatch(getActiveWishlistAction(payload)),
     createNewWishList: formData => dispatch(createNewWishListAction(formData)),
-    setLastDeletedItemId: itemId => dispatch(setLastDeletedItemIdAction(itemId)),
-    onQuickViewOpenClick: payload => dispatch(openQuickViewWithValues(payload)),
+    setLastDeletedItemId: itemId => {
+      dispatch(setLastDeletedItemIdAction(itemId));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
+    },
   };
 };
 
@@ -124,9 +167,13 @@ FavoritesContainer.propTypes = {
   getActiveWishlist: PropTypes.func.isRequired,
   createNewWishList: PropTypes.func.isRequired,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  activeWishListId: PropTypes.number.isRequired,
+  activeWishListProducts: PropTypes.shape({}).isRequired,
+  activeDisplayName: PropTypes.string.isRequired,
   onQuickViewOpenClick: PropTypes.func.isRequired,
   currencySymbol: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 FavoritesContainer.defaultProps = {

@@ -14,7 +14,6 @@ import {
   getShortDescription,
   getGeneralProductId,
   getDescription,
-  getRelatedOutfits,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -70,7 +69,6 @@ class ProductDetailContainer extends React.PureComponent {
       longDescription,
       shortDescription,
       itemPartNumber,
-      relatedOutfits,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -91,7 +89,6 @@ class ProductDetailContainer extends React.PureComponent {
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
             longDescription={longDescription}
-            relatedOutfits={relatedOutfits.slots}
           />
         ) : null}
       </React.Fragment>
@@ -112,7 +109,6 @@ function mapStateToProps(state) {
     shortDescription: getShortDescription(state),
     itemPartNumber: getGeneralProductId(state),
     longDescription: getDescription(state),
-    relatedOutfits: getRelatedOutfits(state),
   };
 }
 
@@ -146,9 +142,6 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  relatedOutfits: PropTypes.shape({
-    slots: PropTypes.arrayOf(PropTypes.shape({})),
-  }),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -162,7 +155,6 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
-  relatedOutfits: {},
 };
 
 export default connect(

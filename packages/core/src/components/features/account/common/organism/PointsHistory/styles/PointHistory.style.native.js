@@ -8,13 +8,12 @@ const PointHistoryView = styled.View`
 `;
 
 const PointView = styled.View`
-  width: 35%;
+  width: 33%;
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const PointTransView = styled.View`
-  width: 30%;
+  width: 33%;
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 

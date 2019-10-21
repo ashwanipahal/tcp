@@ -27,7 +27,7 @@ exports[`Dropdown component should renders componentDidUpdate  correctly 1`] = `
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -69,7 +69,7 @@ exports[`Dropdown component should renders componentDidUpdate with option length
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -111,7 +111,7 @@ exports[`Dropdown component should renders correctly 1`] = `
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -153,7 +153,7 @@ exports[`Dropdown component should renders correctly when optional fields are no
     textAlign="center"
   >
     <Styled(BodyCopy)
-      className="customSelectTitleImg"
+      className="customSelectArrow down"
       color="text.primary"
       component="div"
       fontFamily="secondary"

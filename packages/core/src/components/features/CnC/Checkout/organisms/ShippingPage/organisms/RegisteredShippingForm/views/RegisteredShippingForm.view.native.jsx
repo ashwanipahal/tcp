@@ -314,7 +314,7 @@ class RegisteredShippingForm extends React.Component {
           <Anchor
             underline
             anchorVariation="primary"
-            fontSizeVariation="small"
+            fontSizeVariation="medium"
             noLink
             href="#"
             target="_blank"

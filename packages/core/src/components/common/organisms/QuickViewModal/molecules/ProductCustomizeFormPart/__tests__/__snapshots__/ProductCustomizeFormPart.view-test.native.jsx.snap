@@ -4,10 +4,13 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(ImageComp)
+      <Styled(DamImage)
         alt=""
+        crop=""
         height="198px"
         host=""
+        imgConfig=""
+        isProductImage={true}
         resizeMode="contain"
         source=""
         url=""
@@ -19,6 +22,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         noLink={true}
         onPress={[Function]}
         text=""
@@ -264,6 +268,8 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
     }
     errorOnHandleSubmit=""
     plpLabels={Object {}}
+    showAddToBagCTA={true}
+    showColorChips={true}
   />
 </Styled(View)>
 `;

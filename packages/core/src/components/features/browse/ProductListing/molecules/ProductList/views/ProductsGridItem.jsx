@@ -2,7 +2,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath, disableBodyScroll } from '@tcp/core/src/utils';
+import { getIconPath } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -260,7 +260,6 @@ class ProductsGridItem extends React.PureComponent {
   handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
-    disableBodyScroll();
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
@@ -282,13 +281,13 @@ class ProductsGridItem extends React.PureComponent {
       wishlistsSummaries && (
         <div className="move-item-container">
           <Button className="move-item-button" onClick={this.openMoveItem}>
-            {labels.moveToAnotherList}
+            {labels.lbl_fav_moveToAnotherList}
             <Image
               alt="accordian button"
               className="accordian-item-arrow icon-small"
               src={accordianIcon}
               data-locator="accordian-icon"
-              height="8px"
+              height="6px"
             />
           </Button>
           {isMoveItemOpen && (
@@ -323,7 +322,7 @@ class ProductsGridItem extends React.PureComponent {
         dataLocator={getLocator('remove_favorite_Button')}
         onClick={() => removeFavItem({ itemId })}
       >
-        {labels.removeFavorite}
+        {labels.lbl_fav_removeFavorite}
       </Button>
     ) : (
       <Button
@@ -399,6 +398,7 @@ class ProductsGridItem extends React.PureComponent {
       imagesByColor,
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
+      isFavoriteView,
     });
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
     const currentColorMiscInfo =
@@ -474,6 +474,8 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
+            isSoldOut={itemNotAvailable}
+            soldOutLabel={labels.lbl_fav_soldOut}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },

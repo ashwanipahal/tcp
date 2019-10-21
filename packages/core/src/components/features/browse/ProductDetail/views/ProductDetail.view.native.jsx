@@ -82,7 +82,6 @@ class ProductDetailView extends React.PureComponent {
       itemPartNumber,
       longDescription,
       pdpLabels,
-      relatedOutfits,
     } = this.props;
     const { currentColorEntry } = this.state;
     let imageUrls = [];
@@ -113,7 +112,7 @@ class ProductDetailView extends React.PureComponent {
             onChangeColor={this.onChangeColor}
             handleSubmit={handleSubmit}
           />
-
+          {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <ProductDetailDescription
@@ -126,9 +125,8 @@ class ProductDetailView extends React.PureComponent {
           <RelatedOutfits
             pdpLabels={pdpLabels}
             navigation={navigation}
-            relatedOutfits={relatedOutfits}
+            selectedColorProductId={selectedColorProductId}
           />
-          {this.renderFulfilmentSection()}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>
@@ -150,7 +148,6 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
-  relatedOutfits: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductDetailView.defaultProps = {
@@ -165,7 +162,6 @@ ProductDetailView.defaultProps = {
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
-  relatedOutfits: [],
 };
 
 export default withStyles(ProductDetailView);
