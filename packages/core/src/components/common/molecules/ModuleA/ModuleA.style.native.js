@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.View`
   z-index: ${props => props.theme.zindex.zOverlay};
   align-items: center;
   width: 100%;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const PromoTextBannerWrapper = styled.View``;

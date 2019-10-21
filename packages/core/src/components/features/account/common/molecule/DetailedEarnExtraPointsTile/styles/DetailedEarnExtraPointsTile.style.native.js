@@ -1,15 +1,17 @@
 import styled from 'styled-components/native';
 
 const ImageSize = styled.Image`
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
 `;
 
 const TileWrapper = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
   border-bottom-width: 2px;
-  min-height: 240px;
+  min-height: 280px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   border-bottom-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[800]

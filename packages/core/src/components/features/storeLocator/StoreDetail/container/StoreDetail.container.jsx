@@ -19,7 +19,6 @@ import {
   fetchStoreIdFromUrlPath,
   isMobileApp,
 } from '../../../../../utils';
-import calculateDistance from '../../../../../utils/calculateLocationDistances';
 import {
   getCurrentStore,
   formatCurrentStoreToObject,
@@ -54,9 +53,6 @@ export class StoreDetailContainer extends PureComponent {
       .catch(error => {
         console.log('error: ', error);
       });
-    this.state = {
-      distance: 0,
-    };
   }
 
   componentDidMount() {
@@ -147,12 +143,7 @@ export class StoreDetailContainer extends PureComponent {
       const distanceArgs = {
         destination: [{ lat: coordinates.lat, long: coordinates.long }],
       };
-      if (isMobileApp()) calcDistanceByLatLng(distanceArgs);
-      else {
-        calculateDistance([{ lat: coordinates.lat, long: coordinates.long }]).then(value => {
-          if (value && Number.isNaN(Number(value))) this.setState({ distance: value });
-        });
-      }
+      calcDistanceByLatLng(distanceArgs);
       getFavStore({ geoLatLang: { lat: coordinates.lat, long: coordinates.long } });
       loadNearByStoreInfo(payloadArgs);
     }
@@ -169,9 +160,7 @@ export class StoreDetailContainer extends PureComponent {
       getRichContent,
       distanceFromUser,
     } = this.props;
-    const { distance } = this.state;
-    const calculatedDistance = distance || distanceFromUser;
-    const store = formatStore(currentStoreInfo, calculatedDistance);
+    const store = formatStore(currentStoreInfo, distanceFromUser);
     const otherStores =
       nearByStores && nearByStores.length > 0
         ? nearByStores.filter(nStore => nStore.basicInfo.id !== store.basicInfo.id)
@@ -255,7 +244,7 @@ StoreDetailContainer.defaultProps = {
   referredContentList: [],
   getRichContent: () => null,
   calcDistanceByLatLng: () => null,
-  distanceFromUser: -1,
+  distanceFromUser: null,
 };
 
 const mapStateToProps = state => {

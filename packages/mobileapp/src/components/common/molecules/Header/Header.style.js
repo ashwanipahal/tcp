@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 const setBackground = props => {
-  if (props.theme.isGymboree()) {
+  if (props.theme.isGymboree) {
     return `
     background-color: ${props.theme.colorPalette.orange[900]};
     `;

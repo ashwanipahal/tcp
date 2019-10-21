@@ -35,6 +35,8 @@ import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
+import CustomIcon from '../../../../common/atoms/Icon';
+import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -340,7 +342,25 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
           </React.Fragment>
         )}
-
+        {isUserLoggedIn && (
+          <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
+              color="gray.900"
+              textAlign="center"
+            />
+            <CustomIcon
+              margins="0 0 0 8px"
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.filledHeart}
+              size="fs20"
+              color="red.500"
+            />
+          </TouchabelContainer>
+        )}
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
       </View>

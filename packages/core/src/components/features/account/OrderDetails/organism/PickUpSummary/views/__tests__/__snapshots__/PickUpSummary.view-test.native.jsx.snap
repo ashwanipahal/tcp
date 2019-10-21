@@ -49,6 +49,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
       customStyle={Object {}}
       fontSizeVariation="large"
       locator=""
+      margins={null}
       noLink={true}
       onPress={[Function]}
       text="lbl_orders_getDirections"

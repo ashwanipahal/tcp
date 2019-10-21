@@ -79,6 +79,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -234,6 +235,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -389,6 +391,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -544,6 +547,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -672,6 +676,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}

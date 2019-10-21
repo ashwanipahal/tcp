@@ -54,10 +54,7 @@ export function* calculateDistance({ payload }) {
   try {
     const distance = yield call(calcDistanceByLatLng, payload.destination);
     console.log(distance);
-    if (distance && distance !== -1) {
-      yield put(setDistance(distance));
-    }
-    yield put(setDistance(null));
+    yield put(setDistance(distance));
   } catch (err) {
     yield put(setDistance(null));
   }

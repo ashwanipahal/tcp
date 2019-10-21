@@ -24,6 +24,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       data-locator="earnExtraPointsViewAll"
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       onPress={[Function]}
       text="View All"
       underline={true}
@@ -49,6 +50,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         height={220}
         options={
           Object {
+            "autoplay": false,
             "enableSnap": true,
             "loop": false,
           }
@@ -84,6 +86,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
         height={220}
         options={
           Object {
+            "autoplay": false,
             "enableSnap": true,
             "loop": false,
           }

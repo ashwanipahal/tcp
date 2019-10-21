@@ -32,7 +32,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             {getLabelValue(labels, 'lbl_common_order_date')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 3, medium: 2, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorytransactionslbl"
             fontFamily="secondary"
@@ -42,14 +42,13 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             {getLabelValue(labels, 'lbl_common_transaction')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 3, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorypointsearnedlbl"
             component="p"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
-            textAlign="center"
           >
             {getLabelValue(labels, 'lbl_common_points_earned')}
           </BodyCopy>
@@ -70,23 +69,23 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="elem-pr-XXS"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 3, medium: 3, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorypoints"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                textAlign="center"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>

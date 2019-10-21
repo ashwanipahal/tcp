@@ -1,6 +1,6 @@
 import { Map, fromJS } from 'immutable';
 import StoreDetailReducer, { initialState } from '../StoreDetail.reducer';
-import { setCurrentStoreInfo, setNearByStore } from '../StoreDetail.actions';
+import { setCurrentStoreInfo, setNearByStore, setDistance } from '../StoreDetail.actions';
 
 describe('StoreDetail Reducer', () => {
   it('should return state as Map object if state is passsed as an object', () => {
@@ -75,5 +75,9 @@ describe('StoreDetail Reducer', () => {
       bopisStoresOnCart: [],
     });
     expect(state.suggestedStores).toEqual(updatedState.suggestedStores);
+  });
+  it('should set the distance', () => {
+    const state = StoreDetailReducer(initialState, setDistance('1,271'));
+    expect(state.get('storeDistanceFromUser')).toEqual('1,271');
   });
 });

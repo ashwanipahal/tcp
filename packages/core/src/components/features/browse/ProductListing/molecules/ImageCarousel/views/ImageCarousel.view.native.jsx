@@ -36,18 +36,19 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorIndex, onGoToPDPPage } = this.props;
+    const { item, selectedColorIndex, onGoToPDPPage, productImageWidth } = this.props;
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
-    const { pdpUrl } = productInfo;
+    const { pdpUrl, name } = productInfo;
     const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
-    const { colorProductId } = colorsMap[selectedColorIndex];
+    const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
-    const imageUrls = getImagesToDisplay({
-      imagesByColor,
-      curentColorEntry,
-      isAbTestActive: true,
-    });
+    const imageUrls = (colorsMap &&
+      getImagesToDisplay({
+        imagesByColor,
+        curentColorEntry,
+        isAbTestActive: true,
+      })) || [item.skuInfo];
     return (
       <FlatList
         onViewableItemsChanged={this.onViewableItemsChanged}
@@ -64,14 +65,21 @@ class ImageCarousel extends React.PureComponent {
         listKey={(_, index) => index.toString()}
         renderItem={imgSource => {
           const { index } = imgSource;
+          const imageUrl = colorsMap
+            ? imgSource.item
+            : `https://test4.childrensplace.com${imgSource.item.imageUrl}`;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, name)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
             >
-              <CustomImage imageSource={imgSource.item} productInfo={productInfo} />
+              <CustomImage
+                width={productImageWidth}
+                imageSource={imageUrl}
+                productInfo={productInfo}
+              />
             </TouchableOpacity>
           );
         }}
@@ -84,11 +92,13 @@ ImageCarousel.propTypes = {
   item: PropTypes.shape({}),
   selectedColorIndex: PropTypes.number,
   onGoToPDPPage: PropTypes.func.isRequired,
+  productImageWidth: PropTypes.number,
 };
 
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
+  productImageWidth: '',
 };
 
 export default ImageCarousel;
