@@ -134,7 +134,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
   <div
     className="recommendation-cta-container"
   >
-    <ErrorBoundary
+    <ButtonCTA
       className="recommendation-cta"
       ctaInfo={
         Object {
@@ -151,6 +151,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
           "cta": "moduleO_cta_btn",
         }
       }
+      dataLocatorCTA=""
       uniqueKey="recommendation-button"
     />
   </div>
@@ -291,7 +292,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
   <div
     className="recommendation-cta-container"
   >
-    <ErrorBoundary
+    <ButtonCTA
       className="recommendation-cta"
       ctaInfo={
         Object {
@@ -308,6 +309,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
           "cta": "moduleP_cta_btn",
         }
       }
+      dataLocatorCTA=""
       uniqueKey="recommendation-button"
     />
   </div>

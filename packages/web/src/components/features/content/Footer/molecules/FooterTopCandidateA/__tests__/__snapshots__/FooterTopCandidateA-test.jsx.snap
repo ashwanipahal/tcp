@@ -33,7 +33,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <ErrorBoundary />
+        <TextItems />
       </Styled(BodyCopy)>
       <ReduxForm
         dataLocators={
@@ -134,7 +134,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         link={null}
         textAlign="left"
       >
-        <ErrorBoundary />
+        <TextItems />
       </Styled(BodyCopy)>
       <ReduxForm
         dataLocators={
@@ -257,7 +257,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               link={null}
               textAlign="left"
             >
-              <ErrorBoundary />
+              <TextItems />
             </Styled(BodyCopy)>
           </Styled(Col)>
           <Styled(Col)

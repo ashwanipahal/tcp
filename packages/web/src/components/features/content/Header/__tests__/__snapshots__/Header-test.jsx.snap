@@ -70,7 +70,7 @@ exports[`Header component renders correctly 1`] = `
 ",
         ],
       },
-      "displayName": "Styled(ErrorBoundary)",
+      "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
       "styledComponentId": "sc-VJcYb",

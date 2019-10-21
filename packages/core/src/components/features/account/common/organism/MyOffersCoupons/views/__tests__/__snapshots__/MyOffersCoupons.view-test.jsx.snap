@@ -143,7 +143,7 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
         link={null}
         textAlign="left"
       >
-        <Styled(ErrorBoundary)
+        <Styled(Carousel)
           carouselConfig={
             Object {
               "arrow": "small",
@@ -361,7 +361,7 @@ exports[`CouponListCarousel component should renders offersandcoupons list 1`] =
               </Styled(Button)>
             </Styled(BodyCopy)>
           </Styled(BodyCopy)>
-        </Styled(ErrorBoundary)>
+        </Styled(Carousel)>
       </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>

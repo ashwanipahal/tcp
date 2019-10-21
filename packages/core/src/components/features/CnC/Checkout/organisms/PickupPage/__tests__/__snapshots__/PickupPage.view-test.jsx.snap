@@ -220,7 +220,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kAzzGY",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -337,7 +337,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-kAzzGY",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
