@@ -1,54 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModuleS Componenet should match snapshot 1`] = `
-<<<<<<< HEAD
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-jwKygS",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  /* Gymboree Variation Design Starts Here*/
-  .tb-btn {
-    width: 225px;
-    @media ",
-          [Function],
-          " {
-      width: 210px;
-    }
-  }
-  /* Gymboree Variation Design Ends Here*/
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(ModuleS)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-jwKygS",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  headerText={
-    Array [
-=======
 <Styled(Row)
   fullBleed={true}
 >
   <Styled(Col)
     colSize={
->>>>>>> RELEASE-1-RWD
       Object {
         "large": 6,
         "medium": 8,
