@@ -10,7 +10,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      imageUrls={Array []}
+      imageUrls={null}
       onImageClick={[Function]}
     />
     <Styled(ProductSummary)
@@ -60,7 +60,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <RelatedOutfits
       navigation={Object {}}
       pdpLabels={Object {}}
-      relatedOutfits={Array []}
+      selectedColorProductId=""
     />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"

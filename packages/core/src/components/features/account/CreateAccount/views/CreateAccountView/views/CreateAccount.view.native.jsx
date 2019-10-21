@@ -23,6 +23,7 @@ class CreateAccount extends React.Component<Props> {
     showLogin: PropTypes.func.isRequired,
     userplccCardNumber: PropTypes.string,
     userplccCardId: PropTypes.string,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ class CreateAccount extends React.Component<Props> {
     onRequestClose: () => {},
     userplccCardNumber: '',
     userplccCardId: '',
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -67,6 +69,7 @@ class CreateAccount extends React.Component<Props> {
       showLogin,
       userplccCardNumber,
       userplccCardId,
+      toastMessage,
     } = this.props;
     const { resetPassword } = this.state;
     return (
@@ -86,6 +89,7 @@ class CreateAccount extends React.Component<Props> {
             showLogin={showLogin}
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}
+            toastMessage={toastMessage}
           />
         )}
         {resetPassword && (

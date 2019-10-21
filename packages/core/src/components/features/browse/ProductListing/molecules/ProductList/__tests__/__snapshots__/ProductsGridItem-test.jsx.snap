@@ -46,6 +46,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isMobile={false}
       isPLPredesign={false}
       isShowVideoOnPlp={false}
+      isSoldOut={false}
       loadedProductCount={12}
       onImageChange={[Function]}
       videoUrl=""

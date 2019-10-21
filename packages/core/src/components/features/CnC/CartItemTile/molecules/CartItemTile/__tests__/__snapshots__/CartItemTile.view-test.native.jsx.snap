@@ -46,7 +46,11 @@ exports[`CartItemTile common component renders correctly 1`] = `
   rightButtons={
     Array [
       <ForwardRef>
-        <View>
+        <TouchableOpacity
+          accessibilityRole="link"
+          activeOpacity={0.2}
+          onPress={[Function]}
+        >
           <ForwardRef
             alt=""
             data-locator="cartItemEditLink"
@@ -61,7 +65,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
             width="58px"
           />
           <ForwardRef />
-        </View>
+        </TouchableOpacity>
         <ForwardRef
           onPress={[Function]}
         >
@@ -169,6 +173,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
               fontSize="fs13"
               margin={null}
               numberOfLines={null}
+              text="red"
               textDecoration={null}
             />
           </Styled(View)>
@@ -357,6 +362,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       productDetail={
         Object {
           "itemInfo": Object {
+            "color": "red",
             "fit": "regular",
             "isGiftItem": true,
             "itemBrand": "TCP",
@@ -370,6 +376,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
             "badge": "",
           },
           "productInfo": Object {
+            "productPartNumber": 123,
             "skuId": "123",
           },
         }
@@ -425,7 +432,11 @@ exports[`CartItemTile common component renders correctly with Save for later ena
   rightButtons={
     Array [
       <ForwardRef>
-        <View>
+        <TouchableOpacity
+          accessibilityRole="link"
+          activeOpacity={0.2}
+          onPress={[Function]}
+        >
           <ForwardRef
             alt=""
             data-locator="cartItemEditLink"
@@ -440,7 +451,7 @@ exports[`CartItemTile common component renders correctly with Save for later ena
             width="58px"
           />
           <ForwardRef />
-        </View>
+        </TouchableOpacity>
         <ForwardRef
           onPress={[Function]}
         >
@@ -823,7 +834,11 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   rightButtons={
     Array [
       <ForwardRef>
-        <View>
+        <TouchableOpacity
+          accessibilityRole="link"
+          activeOpacity={0.2}
+          onPress={[Function]}
+        >
           <ForwardRef
             alt=""
             data-locator="cartItemEditLink"
@@ -838,7 +853,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
             width="58px"
           />
           <ForwardRef />
-        </View>
+        </TouchableOpacity>
         <ForwardRef
           onPress={[Function]}
         >

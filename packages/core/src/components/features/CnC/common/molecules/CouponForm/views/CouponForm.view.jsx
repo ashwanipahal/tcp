@@ -48,6 +48,7 @@ class CouponForm extends React.PureComponent {
       error,
       isFetching,
       onNeedHelpTextClick,
+      idPrefix,
     } = this.props;
     const { touched } = this.state;
     return (
@@ -80,7 +81,7 @@ class CouponForm extends React.PureComponent {
             <Field
               placeholder={labels.placeholderText}
               name={fieldName}
-              id={fieldName}
+              id={`${fieldName}-id-${idPrefix}`}
               type="text"
               onChange={!touched && this.toggleTouched}
               component={this.renderTextBox}
@@ -118,6 +119,7 @@ CouponForm.propTypes = {
   fieldName: PropTypes.string,
   className: PropTypes.string.isRequired,
   error: PropTypes.string,
+  idPrefix: PropTypes.string,
   onNeedHelpTextClick: PropTypes.func,
   isFetching: PropTypes.isRequired,
 };
@@ -137,6 +139,7 @@ CouponForm.defaultProps = {
   fieldName: 'couponCode',
   handleSubmit: () => {},
   onNeedHelpTextClick: () => {},
+  idPrefix: '',
 };
 
 export const onSubmitSuccess = (result, dispatch, { reset }) => reset();

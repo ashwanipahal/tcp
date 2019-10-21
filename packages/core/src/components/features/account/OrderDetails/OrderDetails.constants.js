@@ -15,6 +15,8 @@ const ORDERDETAILS_CONSTANTS = {
     ITEMS_RECEIVED: 'received',
     ITEMS_READY_FOR_PICKUP: 'ready for pickup',
     ITEMS_PICKED_UP: 'picked up',
+    ORDER_PICKED_UP: 'order picked up',
+
     SUCCESSFULLY_PICKED_UP: 'successfully picked up',
     ORDER_EXPIRED: 'expired',
     ORDER_PROCESSING: 'processing',

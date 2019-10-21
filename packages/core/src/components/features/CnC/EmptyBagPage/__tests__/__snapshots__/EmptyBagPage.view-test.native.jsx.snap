@@ -23,6 +23,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     customStyle={Object {}}
     fontSizeVariation="large"
     locator=""
+    margins={null}
     onPress={[Function]}
     text="Apply Now"
     underline={true}

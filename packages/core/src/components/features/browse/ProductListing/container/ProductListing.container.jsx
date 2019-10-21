@@ -153,6 +153,8 @@ class ProductListingContainer extends React.PureComponent {
   }
 }
 
+ProductListingContainer.pageId = 'c';
+
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
   const appliedFilters = getAppliedFilters(state);
@@ -274,8 +276,10 @@ ProductListingContainer.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isLoggedIn: false,
-  currencyAttributes: {},
-  currency: '$',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
 };
 
 export default withRouter(

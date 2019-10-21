@@ -2,7 +2,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath, disableBodyScroll, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -260,7 +260,6 @@ class ProductsGridItem extends React.PureComponent {
   handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
-    disableBodyScroll();
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
@@ -422,6 +421,7 @@ class ProductsGridItem extends React.PureComponent {
       imagesByColor,
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
+      isFavoriteView,
     });
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
     const currentColorMiscInfo =
@@ -497,6 +497,8 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
+            isSoldOut={itemNotAvailable}
+            soldOutLabel={labels.soldOut}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
