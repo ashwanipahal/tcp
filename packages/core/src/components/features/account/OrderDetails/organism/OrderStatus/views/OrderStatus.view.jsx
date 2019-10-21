@@ -31,15 +31,15 @@ const OrderStatus = props => {
                 {' | '}
               </BodyCopy>
               <BodyCopy className="orderDetail-trackingNumber">
-                <BodyCopy
-                  component="span"
-                  fontSize="fs16"
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                >
+                <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
                   {getLabelValue(ordersLabels, 'lbl_orders_trackingNumber')}
                 </BodyCopy>
-                <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+                <BodyCopy
+                  component="span"
+                  fontWeight="extrabold"
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                >
                   {trackingNumber}
                 </BodyCopy>
               </BodyCopy>

@@ -7,9 +7,14 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.large} {
       flex-flow: row;
       justify-content: space-between;
+      max-width: ${props => (props.isShowWriteReview ? '432px' : '305px')};
     }
   }
-
+  .product-name {
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-width: 231px;
+    }
+  }
   .itemInfo_details_items {
     display: flex;
     flex-flow: row;

@@ -63,11 +63,17 @@ const OrderItems = ({ className, ...otherProps }) => {
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
         >
-          <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+          <BodyCopy
+            component="div"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            className="product-name"
+          >
             {name}
           </BodyCopy>
 
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-SM">
+          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-MED">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
             {upc}
           </BodyCopy>

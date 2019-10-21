@@ -86,7 +86,7 @@ exports[`Order Items component should renders correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="product-name"
         color="text.primary"
         component="div"
         fontFamily="secondary"
@@ -100,7 +100,7 @@ exports[`Order Items component should renders correctly 1`] = `
         test product
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className="elem-mt-SM"
+        className="elem-mt-MED"
         color="text.primary"
         component="div"
         fontFamily="secondary"
