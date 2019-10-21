@@ -159,7 +159,7 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
-  itemBrand: getBrand(),
+  itemBrand: '',
 };
 
 DamImage.propTypes = {
