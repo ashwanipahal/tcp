@@ -4,15 +4,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
 import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
-import ProductPickupContainer from '../../../organisms/ProductPickup';
-import { getMapSliceForColorProductId } from '../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ErrorDisplay from '../../../atoms/ErrorDisplay';
 
 class ProductAddToBag extends React.PureComponent<Props> {
@@ -23,24 +20,31 @@ class ProductAddToBag extends React.PureComponent<Props> {
   }
 
   /**
+   *
+   * @function getButtonLabel
+   * @returns Returns label of button on basis of update/addtobag scenarios
+   * @memberof ProductAddToBag
+   */
+  getButtonLabel = () => {
+    const { fromBagPage, plpLabels } = this.props;
+    const { addToBag, update } = plpLabels;
+    return fromBagPage ? update : addToBag;
+  };
+
+  /**
    * @function renderAddToBagButton
    * @returns Add To Bag Butyon
    *
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const {
-      plpLabels: { addToBag },
-      handleFormSubmit,
-      fitChanged,
-      displayErrorMessage,
-    } = this.props;
+    const { handleFormSubmit, fitChanged, displayErrorMessage } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
         color="white"
         fill="BLUE"
-        text={addToBag}
+        text={this.getButtonLabel()}
         fontSize="fs10"
         fontWeight="extrabold"
         fontFamily="secondary"
@@ -55,26 +59,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
         accessibilityLabel="Add to Bag"
       />
     );
-  };
-
-  renderPickUpStor = () => {
-    const { currentProduct, selectedColorProductId } = this.props;
-    if (currentProduct) {
-      const colorFitsSizesMap = get(currentProduct, 'colorFitsSizesMap', null);
-      const curentColorEntry = getMapSliceForColorProductId(
-        colorFitsSizesMap,
-        selectedColorProductId
-      );
-      const { miscInfo } = curentColorEntry;
-      return (
-        <ProductPickupContainer
-          productInfo={currentProduct}
-          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-          miscInfo={miscInfo}
-        />
-      );
-    }
-    return null;
   };
 
   onQuantityValueChange = selectedQuantity => {
@@ -176,7 +160,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </RowViewContainer>
 
-        {this.renderPickUpStor()}
         <ErrorDisplay error={errorOnHandleSubmit} />
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
