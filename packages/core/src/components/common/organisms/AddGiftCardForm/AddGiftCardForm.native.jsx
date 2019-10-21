@@ -8,7 +8,6 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import TextBox from '../../atoms/TextBox';
 import CustomButton from '../../atoms/Button';
 import {
-  ErrorWrapper,
   SaveButtonWrapper,
   CancelButtonWrapper,
   MessageWrapper,
@@ -117,7 +116,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const { labels, toggleModal, addGiftCardResponse, isRow, showNotification } = this.props;
+    const { labels, toggleModal, isRow } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -126,17 +125,6 @@ class AddGiftCardForm extends React.PureComponent {
         keyboardShouldPersistTaps="handled"
       >
         <View>
-          {showNotification && addGiftCardResponse && (
-            <ErrorWrapper>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="semibold"
-                fontSize="fs12"
-                color="error"
-                text={addGiftCardResponse}
-              />
-            </ErrorWrapper>
-          )}
           <Field
             label={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
             name="giftCardNumber"
@@ -262,8 +250,6 @@ AddGiftCardForm.propTypes = {
       lbl_payment_cancelCard: PropTypes.string,
     }),
   }),
-  addGiftCardResponse: PropTypes.string,
-  showNotification: PropTypes.bool,
   change: PropTypes.func,
   addGiftCardError: PropTypes.string,
   onClearError: PropTypes.func,
@@ -285,13 +271,11 @@ AddGiftCardForm.defaultProps = {
       lbl_payment_cancelCard: '',
     },
   },
-  addGiftCardResponse: null,
   change: () => {},
   addGiftCardError: null,
   onClearError: () => {},
   isRow: false,
   isRecapchaEnabled: true,
-  showNotification: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));

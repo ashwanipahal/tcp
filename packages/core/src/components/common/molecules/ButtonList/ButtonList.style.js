@@ -266,6 +266,11 @@ export default css`
       width: auto;
     }
 
+    .stacked-button:last-child,
+    .scroll-button:last-child {
+      margin-right: 0;
+    }
+
     &.stacked-button-list-wrapper,
     &.scroll-button-list-wrapper {
       justify-content: center;

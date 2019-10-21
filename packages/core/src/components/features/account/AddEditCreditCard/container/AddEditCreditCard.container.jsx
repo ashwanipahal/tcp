@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import { routerPush } from '@tcp/core/src/utils';
+import { routerPush, isCanada } from '@tcp/core/src/utils';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
   getCardType,
@@ -153,7 +153,7 @@ export class AddEditCreditCard extends React.PureComponent {
     return {
       onFileAddressKey,
       address: {
-        country: 'US',
+        country: isCanada() ? 'CA' : 'US',
         addressLine2: '',
       },
     };

@@ -1,35 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrackOrderModal component should renders correctly 1`] = `
-<ModalNative
-  fontSize="fs22"
-  headerStyle={
-    Object {
-      "width": "100%",
-    }
-  }
-  headingAlign="center"
-  headingFontFamily="secondary"
-  horizontalBar={false}
-  inheritedStyles=""
-  isOpen={true}
-  isOverlay={false}
-  onRequestClose={[Function]}
->
-  <SafeAreaView>
-    <TrackOrderView
-      errorMessage={null}
-      handleToggle={[MockFunction]}
-      labels={
-        Object {
-          "trackOrder": Object {},
-        }
+<SafeAreaView>
+  <TrackOrderView
+    errorMessage={null}
+    handleToggle={[MockFunction]}
+    labels={
+      Object {
+        "trackOrder": Object {},
       }
-      onChangeForm={[MockFunction]}
-      onSubmit={[MockFunction]}
-      setModalMountState={[MockFunction]}
-      showNotification="error"
-    />
-  </SafeAreaView>
-</ModalNative>
+    }
+    onChangeForm={[MockFunction]}
+    onRequestClose={[Function]}
+    onSubmit={[MockFunction]}
+    showNotification="error"
+  />
+</SafeAreaView>
 `;

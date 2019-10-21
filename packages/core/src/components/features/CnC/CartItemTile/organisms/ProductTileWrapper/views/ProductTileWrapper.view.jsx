@@ -86,12 +86,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isDeleting,
     itemDeleteSuccessMsg
   ) => {
-    const { isCartItemSFL } = this.props;
+    const { isCartItemSFL, pageView } = this.props;
     return (
       !isCartItemSFL &&
       !isBagPageSflSection &&
       isBagPage &&
-      isDeleting && (
+      isDeleting &&
+      pageView === 'myBag' && (
         <div className="delete-msg">
           {this.getTickIcon()}
           <BodyCopy
@@ -151,9 +152,15 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
+  /**
+   * @method renderUpdatingBagItemSuccessfulMsg
+   * @description render message once item get updated.
+   * @memberof ProductTileWrapper
+   */
   renderUpdatingBagItemSuccessfulMsg = isUpdating => {
-    const { labels } = this.props;
+    const { labels, pageView } = this.props;
     return (
+      pageView === 'myBag' &&
       isUpdating && (
         <div className="delete-msg">
           {this.getTickIcon()}
@@ -291,7 +298,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           )}
           {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
           {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
-          {this.renderUpdatingBagItemSuccessfulMsg(isUpdating)}
+          {this.renderUpdatingBagItemSuccessfulMsg(isUpdating, isBagPageSflSection)}
           {orderItemsView}
         </>
       );
