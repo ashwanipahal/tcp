@@ -2,174 +2,21 @@
 
 exports[`Order Items component should  not render Tracking Button And Tracking header 1`] = `
 <Styled(Row)
-  className="elem-mb-XL"
   fullBleed={true}
 >
   <Styled(Col)
-    className="elem-pt-MED elem-pb-MED"
     colSize={
       Object {
-        "large": 9,
+        "large": 6,
         "medium": 8,
         "small": 6,
       }
     }
   >
     <Styled(BodyCopy)
-      className={null}
+      className="order-status-header"
       color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-  </Styled(Col)>
-</Styled(Row)>
-`;
-
-exports[`Order Items component should renders Tracking Button 1`] = `
-<Styled(Row)
-  className="elem-mb-XL"
-  fullBleed={true}
->
-  <Styled(Col)
-    className="elem-pt-MED elem-pb-MED"
-    colSize={
-      Object {
-        "large": 9,
-        "medium": 8,
-        "small": 6,
-      }
-    }
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-  </Styled(Col)>
-  <Styled(Col)
-    className="button-container"
-    colSize={
-      Object {
-        "large": 3,
-        "medium": 0,
-        "small": 6,
-      }
-    }
-  >
-    <Styled(Anchor)
-      anchorVariation="button"
-      buttonVariation="fixed-width"
-      centered={true}
-      className="button-track"
-      dataLocator=""
-      fill="BLUE"
-      target="_blank"
-      to="/test"
-    >
-      lbl_orders_trackit
-    </Styled(Anchor)>
-  </Styled(Col)>
-</Styled(Row)>
-`;
-
-exports[`Order Items component should renders tracking header 1`] = `
-<Styled(Row)
-  className="elem-mb-XL"
-  fullBleed={true}
->
-  <Styled(Col)
-    className="elem-pt-MED elem-pb-MED"
-    colSize={
-      Object {
-        "large": 9,
-        "medium": 8,
-        "small": 6,
-      }
-    }
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      lbl_orders_shippedOn
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="span"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-      May 1, 2019
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="orderDetail-trackingNumber-pipe"
-      color="text.primary"
-      component="span"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    >
-       | 
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="orderDetail-trackingNumber"
-      color="text.primary"
-      component="p"
+      component="div"
       fontFamily="primary"
       fontSize={12}
       fontWeight="regular"
@@ -184,14 +31,166 @@ exports[`Order Items component should renders tracking header 1`] = `
         component="span"
         fontFamily="secondary"
         fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
         textAlign="left"
+      />
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+</Styled(Row)>
+`;
+
+exports[`Order Items component should renders Tracking Button 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(BodyCopy)
+      className="order-status-header"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+  <Styled(Col)
+    className="button-container"
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 0,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 8,
+            "small": 6,
+          }
+        }
       >
-        lbl_orders_trackingNumber
-      </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="button-track"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(Anchor)
+            anchorVariation="button"
+            buttonVariation="fixed-width"
+            centered={true}
+            dataLocator=""
+            fill="BLUE"
+            target="_blank"
+            to="/test"
+          >
+            lbl_orders_trackit
+          </Styled(Anchor)>
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Col)>
+</Styled(Row)>
+`;
+
+exports[`Order Items component should renders tracking header 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(BodyCopy)
+      className="order-status-header"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
@@ -204,7 +203,76 @@ exports[`Order Items component should renders tracking header 1`] = `
         link={null}
         textAlign="left"
       >
-        1234567
+        lbl_orders_shippedOn
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        May 1, 2019
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="orderDetail-trackingNumber-pipe"
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+         | 
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="orderDetail-trackingNumber"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_orders_trackingNumber
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          1234567
+        </Styled(BodyCopy)>
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(Col)>

@@ -18,10 +18,10 @@ import ProductSizeSelector from '../../ProductSizeSelector';
 import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
 
 // to get Error Message displayed in case any error comes on Add To card
-const ErrorComp = errorMessage => {
+const ErrorComp = (errorMessage, showAddToBagCTA) => {
   return (
     <BodyCopy
-      className="size-error"
+      className={!showAddToBagCTA ? 'size-error' : 'default-error'}
       fontSize="fs12"
       component="div"
       fontFamily="secondary"
@@ -179,7 +179,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
-        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
+        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">

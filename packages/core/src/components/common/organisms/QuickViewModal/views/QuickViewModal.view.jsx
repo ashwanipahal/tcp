@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
-import { getLocator } from '../../../../../utils';
+import { getLocator, enableBodyScroll } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
@@ -23,6 +23,7 @@ class QuickViewModal extends React.Component {
   };
 
   onCloseClick = () => {
+    enableBodyScroll();
     const { closeQuickViewModal } = this.props;
     closeQuickViewModal();
   };
