@@ -5,7 +5,6 @@ import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPal
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
-// const errorIcon = require('../../../../../assets/alert-triangle.png');
 const errorIcon = require('@tcp/core/src/assets/alert-triangle.png');
 
 const colorPallete = createThemeColorPalette();
