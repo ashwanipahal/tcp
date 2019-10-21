@@ -27,19 +27,37 @@ export default function create(store) {
 
     pageName: {
       get() {
-        return store.getState().pageName;
+        return `gl:${store.getState().pageData.pageName}`;
+      },
+    },
+
+    pageCategory: {
+      get() {
+        return store.getState().pageData.pageName;
       },
     },
 
     countryId: {
       get() {
-        return store.getState().APIConfig.country;
+        return store.getState().APIConfig.storeId;
       },
     },
 
     pageLocale: {
       get() {
         return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+      },
+    },
+
+    section: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    siteType: {
+      get() {
+        return 'global site';
       },
     },
 
