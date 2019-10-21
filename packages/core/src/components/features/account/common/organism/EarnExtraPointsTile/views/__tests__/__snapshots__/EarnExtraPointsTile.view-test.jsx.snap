@@ -66,7 +66,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     link={null}
     textAlign="center"
   >
-    <Styled(Carousel)
+    <Styled(ErrorBoundary)
       carouselConfig={
         Object {
           "arrow": "small",
@@ -120,7 +120,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
           }
         }
       />
-    </Styled(Carousel)>
+    </Styled(ErrorBoundary)>
   </Styled(BodyCopy)>
 </div>
 `;
@@ -141,7 +141,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
     link={null}
     textAlign="center"
   >
-    <Styled(Carousel)
+    <Styled(ErrorBoundary)
       carouselConfig={
         Object {
           "arrow": "small",
@@ -195,7 +195,7 @@ exports[`Earn Extra Points Tile component  should render Earn Extra Points Tile 
           }
         }
       />
-    </Styled(Carousel)>
+    </Styled(ErrorBoundary)>
   </Styled(BodyCopy)>
 </div>
 `;

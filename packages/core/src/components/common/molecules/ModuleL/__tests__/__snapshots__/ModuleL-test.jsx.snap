@@ -133,7 +133,7 @@ exports[`ModuleL component renders correctly 1`] = `
           "type": "light",
         }
       }
-      className="moduleL__desktop-tablet-carousel"
+      className="moduleL__carousel"
       options={
         Object {
           "arrows": true,

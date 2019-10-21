@@ -38,7 +38,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          <TextItems />
+          <ErrorBoundary />
         </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
@@ -76,7 +76,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          <TextItems />
+          <ErrorBoundary />
         </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
@@ -115,7 +115,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            <TextItems />
+            <ErrorBoundary />
           </Styled(BodyCopy)>
         </Styled(Button)>
       </span>

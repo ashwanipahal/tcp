@@ -8,7 +8,7 @@ exports[`PromotionalArea component renders correctly with mobile check false for
     className="header-topnav__promo-area--tablet"
     tabIndex="0"
   >
-    <Styled(Carousel)
+    <Styled(ErrorBoundary)
       carouselConfig={
         Object {
           "arrow": "small",
@@ -66,7 +66,7 @@ exports[`PromotionalArea component renders correctly with mobile check false for
           richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.</span>"
         />
       </Styled(Anchor)>
-    </Styled(Carousel)>
+    </Styled(ErrorBoundary)>
   </div>
 </div>
 `;
@@ -79,7 +79,7 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
     className="header-topnav__promo-area--mobile"
     tabIndex="0"
   >
-    <Styled(Carousel)
+    <Styled(ErrorBoundary)
       carouselConfig={
         Object {
           "arrow": "small",
@@ -123,7 +123,7 @@ exports[`PromotionalArea component renders correctly with mobile check true 1`] 
           richTextHtml="<span><b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.</span>"
         />
       </Styled(Anchor)>
-    </Styled(Carousel)>
+    </Styled(ErrorBoundary)>
   </div>
 </div>
 `;
