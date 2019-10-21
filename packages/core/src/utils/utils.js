@@ -867,7 +867,7 @@ export const generateTraceId = () => {
   } else {
     prefix = 'NODE';
   }
-  const timeStamp = new Date().valueOf().toString();
+  const timeStamp = `${Date.now()}`;
 
   // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
   if (apiConfigObj.traceIdCount > 10000) {
