@@ -151,6 +151,10 @@ export const getBossBopisFlags = (props, brand) => {
   };
 };
 
+export const hideEditBossBopis = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) => {
+  return (isBOSSOrder && bossDisabled) || (isBOPISOrder && bopisDisabled);
+};
+
 /**
  * @function getBOSSUnavailabilityMessage Get Boss Unavailability messages
  * @param {bool} bossDisabled Represents if the boss option should be disabled or not

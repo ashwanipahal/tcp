@@ -23,6 +23,7 @@ import {
   noBossBopisMessage,
   checkBossBopisDisabled,
   showRadioButtons,
+  hideEditBossBopis,
   getBOSSUnavailabilityMessage,
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
@@ -944,7 +945,7 @@ class CartItemTile extends React.Component {
                     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
                       {!isBagPageSflSection &&
                         isEditAllowed &&
-                        !this.hideEditBossBopis(
+                        !hideEditBossBopis(
                           isBOSSOrder,
                           bossDisabled,
                           isBOPISOrder,
