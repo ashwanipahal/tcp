@@ -266,6 +266,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                   showName
                   dataLocatorPrefix="address"
                   customStyle={CustomAddress}
+                  regularName
                 />
                 <RightBracket />
               </DefaultAddress>
