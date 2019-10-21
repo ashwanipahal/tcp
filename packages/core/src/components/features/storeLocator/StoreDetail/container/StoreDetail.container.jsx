@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { getNearByStore, getCurrentStoreInfo } from './StoreDetail.actions';
 import {
   getFavoriteStoreActn,
@@ -39,7 +40,7 @@ export class StoreDetailContainer extends PureComponent {
         this.mapHandler = mapHandler;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error(error);
       });
   }
 
@@ -159,9 +160,7 @@ export class StoreDetailContainer extends PureComponent {
 }
 
 StoreDetailContainer.getInitialProps = async ({ store, isServer, query }, pageProps) => {
-  console.log('Hello -----------------------------------------------');
   if (!isServer) {
-    console.log('hello');
     const storeId = fetchStoreIdFromUrlPath(query.storeStr);
     store.dispatch(getCurrentStoreInfo(storeId));
   }

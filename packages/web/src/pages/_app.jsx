@@ -15,6 +15,7 @@ import {
   getAPIConfig,
   isDevelopment,
   fetchStoreIdFromUrlPath,
+  withPreviewCheck,
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
@@ -136,8 +137,11 @@ class TCPWebApp extends App {
     if (isServer) {
       const { locals } = res;
       const { device = {} } = req;
-      const apiConfig = createAPIConfig(locals);
-      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
+      const apiConfig = withPreviewCheck(
+        createAPIConfig(locals),
+        res,
+        constants.PREVIEW_RES_HEADER_KEY
+      );
 
       // optimizely headers
       const optimizelyHeadersObject = {};

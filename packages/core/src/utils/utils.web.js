@@ -473,6 +473,10 @@ export const createAPIConfig = resLocals => {
   };
 };
 
+export const withPreviewCheck = (config, { getHeaders }, previewHeader) => {
+  return { ...config, isPreviewEnv: getHeaders()[previewHeader] };
+};
+
 export const routeToStoreDetails = (storeDetail, refresh = false) => {
   const {
     basicInfo: {

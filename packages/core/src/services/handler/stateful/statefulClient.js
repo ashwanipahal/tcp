@@ -58,9 +58,6 @@ const getRequestParams = (apiConfig, reqObj) => {
   const { domain, catalogId, storeId, langId, isMobile, isPreviewEnv, previewEnvId } = apiConfig;
   const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
   const requestUrl = `${domain}${reqObj.webService.URI}`;
-  // TODO: It will be passed to request header to detect preview
-  // eslint-disable-next-line no-unused-vars
-  const setEnvId = isPreviewEnv || previewEnvId;
 
   const reqHeaders = {
     langId,
@@ -73,6 +70,11 @@ const getRequestParams = (apiConfig, reqObj) => {
     'tcp-trace-request-id': generateTraceId(apiConfig),
     'tcp-trace-session-id': generateSessionId(apiConfig),
   };
+  // Add preview header to each request
+  const previewEnabled = isPreviewEnv || previewEnvId;
+  if (previewEnabled) {
+    reqHeaders['tcp-trace-preview-env'] = previewEnabled.toString();
+  }
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
     reqHeaders.Cookie = apiConfig.cookie;
