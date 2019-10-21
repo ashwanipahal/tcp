@@ -9,12 +9,14 @@ import {
   getAddedToBagErrorCatId,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
-import { getPlpLabels } from '../../ProductDetail/container/ProductDetail.selectors';
+import {
+  getPlpLabels,
+  getCurrencyAttributes,
+} from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import {
   getIsInternationalShipping,
-  getCurrentCurrencySymbol,
   getCurrentCurrency,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
@@ -62,9 +64,8 @@ class OutfitDetailsContainer extends React.PureComponent {
       plpLabels,
       isPlcc,
       isInternationalShipping,
-      currencySymbol,
       priceCurrency,
-      currencyExchange,
+      currencyAttributes,
       addToBagEcom,
       currentState,
       addToBagError,
@@ -80,9 +81,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           isCanada={isCanada()}
           isPlcc={isPlcc}
           isInternationalShipping={isInternationalShipping}
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
+          currencySymbol={priceCurrency}
+          currencyExchange={currencyAttributes.exchangevalue}
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}
@@ -106,9 +106,8 @@ const mapStateToProps = state => {
     isCanada: isCanada(),
     isPlcc: isPlccUser(state),
     isInternationalShipping: getIsInternationalShipping(state),
-    currencySymbol: getCurrentCurrencySymbol(state),
     priceCurrency: getCurrentCurrency(state),
-    currencyExchange: [{ exchangevalue: 1 }], // TODO - fix this when currency exchange rate is available
+    currencyAttributes: getCurrencyAttributes(state),
     addToBagError: getAddedToBagError(state),
     addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
@@ -140,9 +139,8 @@ OutfitDetailsContainer.propTypes = {
   plpLabels: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
-  currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
@@ -161,9 +159,8 @@ OutfitDetailsContainer.defaultProps = {
   plpLabels: {},
   isPlcc: false,
   isInternationalShipping: false,
-  currencySymbol: '$',
   priceCurrency: 'USD',
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencyAttributes: { exchangevalue: 1 },
   addToBagError: '',
   addToBagErrorId: '',
 };
