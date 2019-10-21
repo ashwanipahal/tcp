@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import { Anchor, BodyCopy, Image } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import config from '../config';
@@ -141,10 +140,8 @@ class ProductImages extends React.Component {
                     const { superSizeImageUrl } = image;
                     return (
                       <ProductDetailImage
-                        imageUrl={
-                          image && changeImageURLToDOM(image[imageSizePropertyName], 'w_500')
-                        }
-                        zoomImageUrl={changeImageURLToDOM(superSizeImageUrl, 'w_500')}
+                        imageUrl={image && image[imageSizePropertyName]}
+                        zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
                         isZoomEnabled={!isGiftCard && isZoomEnabled}
                         onOpenSimpleFullSize={onCloseClick}
