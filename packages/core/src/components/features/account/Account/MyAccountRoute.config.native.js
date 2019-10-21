@@ -54,6 +54,11 @@ const navDataMobile = [
     label: 'MY PLACE REWARDS CREDIT CARD',
     value: 'myPlaceRewardsCCPageMobile',
   },
+  {
+    id: 'myFavorite',
+    label: 'My Favorite',
+    value: 'myFavoritePageMobile',
+  },
 ];
 
 export default navDataMobile;

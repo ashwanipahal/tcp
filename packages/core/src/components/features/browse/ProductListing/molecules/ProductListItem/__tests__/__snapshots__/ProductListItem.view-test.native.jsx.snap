@@ -4,6 +4,7 @@ exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
   accessible={true}
   fullWidth={false}
+  renderPriceAndBagOnly={false}
 >
   <RenderTopBadge1
     text=""
@@ -27,21 +28,26 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
       }
     }
-    productImageWidth=""
+    onGoToPDPPage={[MockFunction]}
+    productImageWidth={false}
     selectedColorIndex={0}
   />
   <RenderBadge2
     text=""
   />
   <RenderPricesSection
+    accessibilityLabel="Price Section"
     hideFavorite={false}
+    isFavorite={false}
+    itemInfo={Object {}}
     miscInfo={Object {}}
-    onFavorite={[Function]}
+    onFavorite={[MockFunction]}
+    setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle
     text="tcp"
   />
-  <Styled(ColorSwitch)
+  <RenderColorSwitch
     colorsMap={
       Array [
         Object {
@@ -55,7 +61,6 @@ exports[`ProductListItem component should render correctly 1`] = `
         },
       ]
     }
-    props={Object {}}
     setSelectedColorIndex={[Function]}
   />
   <Styled(View)>
