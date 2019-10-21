@@ -12,7 +12,7 @@ import {
   RibbonButton,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
-import imageCropConfigs, { TEXT_COLOR_WHITE, TEXT_COLOR_BLACK } from '../ModuleS.config';
+import imageCropConfigs from '../ModuleS.config';
 import RibbonComponent from '../../Ribbon';
 
 /**
@@ -48,7 +48,7 @@ const getImageConfig = ribbonPresent => {
  */
 const TextView = props => {
   const { headerText, ribbonBanner } = props;
-  const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_BLACK;
+  // const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_BLACK;
   const addPaddingClass = !ribbonBanner && isGymboree();
   return (
     headerText && (
@@ -58,7 +58,7 @@ const TextView = props => {
         className={`header-text ${addPaddingClass ? 'padding-LR-15' : ''}`}
         headerText={headerText}
         data-locator={getLocator('moduleS_header_text')}
-        color={color}
+        // color={color}
       />
     )
   );
