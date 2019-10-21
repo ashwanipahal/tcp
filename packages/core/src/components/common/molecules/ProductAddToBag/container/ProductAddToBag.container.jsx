@@ -27,10 +27,11 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { currentProduct, selectedColorProductId } = nextProps;
+    const { currentProduct, selectedColorProductId, productInfoFromBag } = nextProps;
     const {
       currentProduct: prevCurrentProduct,
       selectedColorProductId: prevSelectedColorProductId,
+      productInfoFromBag: prevProductInfoFromBag,
     } = this.props;
 
     if (
@@ -39,6 +40,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     ) {
       // update selected color once map is received from api
       this.setState(this.getStateValuesFromProps(currentProduct, selectedColorProductId));
+    }
+    if (productInfoFromBag && productInfoFromBag !== prevProductInfoFromBag) {
+      this.setState({
+        selectedColor: { name: productInfoFromBag.selectedColor },
+        selectedFit: { name: productInfoFromBag.selectedFit },
+        selectedSize: { name: productInfoFromBag.selectedSize },
+        selectedQuantity: productInfoFromBag.selectedQty,
+      });
     }
   }
 
@@ -323,7 +332,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         const {
           color: { name },
         } = colorItem;
-        return selectedColor && selectedColor.name === name;
+        return (selectedColor && selectedColor.name) || selectedColor === name;
       })
     );
   };
@@ -368,9 +377,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   setPreSelectedValuesForProduct = productInfoFromBag => {
     const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
     this.initialValuesForm.Fit = selectedFit;
-    this.initialValuesForm.Quantity = selectedQty;
-    this.initialValuesForm.Size.name = selectedSize;
-    this.initialValuesForm.color.name = selectedColor;
+    this.initialValuesForm.Quantity = selectedQty || 1;
+    this.initialValuesForm.Size = selectedSize;
+    this.initialValuesForm.color = selectedColor;
   };
 
   /**

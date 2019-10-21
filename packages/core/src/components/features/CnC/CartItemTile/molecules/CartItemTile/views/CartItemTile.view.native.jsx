@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -212,7 +212,14 @@ class ProductInformation extends React.Component {
       <BtnWrapper>
         {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT &&
           !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
-            <View>
+            <TouchableOpacity
+              accessibilityRole="link"
+              onPress={() => {
+                CartItemTileExtension.callEditMethod(this.props);
+                CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
+                return this.swipeable.toggle('right');
+              }}
+            >
               <Image
                 data-locator={getLocator('cart_item_edit_link')}
                 source={editIcon}
@@ -220,7 +227,7 @@ class ProductInformation extends React.Component {
                 width={IconWidth}
               />
               <IconTextEdit>{labels.edit}</IconTextEdit>
-            </View>
+            </TouchableOpacity>
           )}
         {this.renderSflActionsLinks()}
         <MarginLeft
@@ -250,18 +257,9 @@ class ProductInformation extends React.Component {
     );
   };
 
-  onSwipeComplete = swipe => {
-    const { swipedElement, setSwipedElement } = this.props;
-    if (swipedElement && swipedElement !== swipe) {
-      swipedElement.recenter();
-    }
-    setSwipedElement(swipe);
-  };
-
   render() {
-    const { labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
+    const { labels, itemIndex, showOnReviewPage, currencySymbol, productDetail } = this.props;
     const {
-      productDetail,
       productDetail: {
         miscInfo: { store, orderItemType, availability },
         itemInfo: { itemBrand, isGiftItem },
@@ -294,7 +292,7 @@ class ProductInformation extends React.Component {
         rightButtonWidth={240}
         leftButtons={null}
         onSwipeComplete={(event, gestureState, swipe) => {
-          this.onSwipeComplete(swipe);
+          CartItemTileExtension.onSwipeComplete(this.props, swipe);
         }}
       >
         <MainWrapper>
@@ -365,7 +363,7 @@ class ProductInformation extends React.Component {
             !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
               <EditButton
                 onPress={() => {
-                  this.onSwipeComplete(this.swipeable);
+                  CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
                   return this.swipeable.toggle('right');
                 }}
               >
@@ -413,7 +411,6 @@ ProductInformation.propTypes = {
   isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
   swipedElement: PropTypes.shape({}),
-  setSwipedElement: PropTypes.func.isRequired,
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,

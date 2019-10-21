@@ -274,6 +274,66 @@ const renderUnavailableErrorMessage = ({
 
 /* eslint-enable react/prop-types */
 
+const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
+  const { onPickUpOpenClick, productDetail, orderId } = props;
+  const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+  const { store, orderItemType } = productDetail.miscInfo;
+  const { productPartNumber } = productDetail.productInfo;
+  const isItemShipToHome = !store;
+  const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+  const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  onPickUpOpenClick({
+    colorProductId: productPartNumber,
+    orderInfo: {
+      orderItemId: itemId,
+      Quantity: qty,
+      color,
+      Size: size,
+      Fit: fit,
+      orderId,
+      orderItemType,
+      itemBrand,
+    },
+    openSkuSelectionForm,
+    isBopisCtaEnabled,
+    isBossCtaEnabled,
+    isItemShipToHome,
+  });
+};
+
+const callEditMethod = props => {
+  const { productDetail, onQuickViewOpenClick } = props;
+  const {
+    miscInfo: { orderItemType },
+    productInfo: { productPartNumber },
+  } = productDetail;
+  if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+    onQuickViewOpenClick({
+      colorProductId: productPartNumber,
+      orderInfo: {
+        orderItemId: itemId,
+        selectedQty: qty,
+        selectedColor: color,
+        selectedSize: size,
+        selectedFit: fit,
+        itemBrand,
+      },
+    });
+  } else {
+    const openSkuSelectionForm = true;
+    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, props);
+  }
+};
+
+const onSwipeComplete = (props, swipe) => {
+  const { swipedElement, setSwipedElement } = props;
+  if (swipedElement && swipedElement !== swipe) {
+    swipedElement.recenter();
+  }
+  setSwipedElement(swipe);
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -285,4 +345,6 @@ export default {
   getEditError,
   getCartRadioButtons,
   renderUnavailableErrorMessage,
+  callEditMethod,
+  onSwipeComplete,
 };

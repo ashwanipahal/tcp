@@ -108,6 +108,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -247,6 +248,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -442,6 +444,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -637,6 +640,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -832,6 +836,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -1086,6 +1091,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -1188,6 +1194,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -1358,6 +1365,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
@@ -1528,6 +1536,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               customStyle={Object {}}
               fontSizeVariation="small"
               locator=""
+              margins={null}
               onClick={[Function]}
               onPress={null}
               text=""
