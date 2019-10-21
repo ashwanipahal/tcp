@@ -8,6 +8,7 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     url="http://example.com235"
@@ -854,7 +855,6 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   dataLocator=""
   fontFamily="primary"
   fontSize="fs20"
-  fontWeight="black"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -892,6 +892,11 @@ exports[`PromoTextBanner native component renders all style correctly 16`] = `
   lineHeight="20px"
   margin={null}
   numberOfLines={null}
+  style={
+    Object {
+      "fontWeight": "500",
+    }
+  }
   textAlign="center"
   textDecoration={null}
 />
@@ -1349,6 +1354,7 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     url="http://example.com235"
