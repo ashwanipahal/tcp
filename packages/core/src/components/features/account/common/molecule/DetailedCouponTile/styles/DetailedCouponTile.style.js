@@ -16,7 +16,7 @@ const styles = css`
 
   .content {
     display: grid;
-    min-height: 345px;
+    min-height: 320px;
     box-sizing: border-box;
   }
 

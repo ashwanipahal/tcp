@@ -304,9 +304,9 @@
     "xcode": {
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "Hockey_Distribution_profile_01-10-2019.mobileprovision",
+      "provisioningProfileFilename": "Hockey_Distribution_profile_21-10-2019.mobileprovision",
       "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
-      "provisioningProfileFileId": "9c62301e-f4ec-4e5e-a6c9-c050ae7e2886",
+      "provisioningProfileFileId": "c3c732dc-9986-4b1a-9870-c5109d7ef8e4",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "mobileapp_uat",

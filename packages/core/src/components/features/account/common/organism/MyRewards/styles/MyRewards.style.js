@@ -10,8 +10,14 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props =>
         props.view === 'all'
-          ? props.theme.spacing.ELEM_SPACING.MED
+          ? props.theme.spacing.ELEM_SPACING.XL
           : props.theme.spacing.ELEM_SPACING.XXXL};
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin-bottom: ${props =>
+        props.view === 'all'
+          ? props.theme.spacing.ELEM_SPACING.XL
+          : props.theme.spacing.ELEM_SPACING.SM};
     }
   }
 
