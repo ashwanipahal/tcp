@@ -10,11 +10,13 @@ export default {
   composites: {
     headerText: [
       {
-        textItems: {
-          text: 'Mini me shop',
-          color: 'color2',
-          style: 'style1',
-        },
+        textItems: [
+          {
+            text: 'Mini me shop',
+            color: 'color2',
+            style: 'style1',
+          },
+        ],
         link: {
           url: plpUrl,
           title: '',

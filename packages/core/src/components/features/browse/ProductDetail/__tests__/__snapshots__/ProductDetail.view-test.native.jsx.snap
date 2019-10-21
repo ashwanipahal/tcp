@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductDetailView component should renders correctly 1`] = `
-<ScrollViewMock>
+<LazyloadScrollView
+  horizontal={false}
+  name="lazyload-pdp"
+  recycle={true}
+  recycleDistance={5336}
+  renderDistance={0}
+>
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      imageUrls={Array []}
+      imageUrls={null}
       onImageClick={[Function]}
     />
     <Styled(ProductSummary)
@@ -41,16 +47,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
     />
-    <Connect(AddedToBagContainer)
-      navigation={Object {}}
-    />
-    <ProductDetailDescription
-      isShowMore={false}
-      itemPartNumber=""
-      longDescription=""
-      pdpLabels={Object {}}
-      shortDescription=""
-    />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"
       buttonLabel="Add To Bag"
@@ -62,6 +58,21 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
       }
     />
+    <Connect(AddedToBagContainer)
+      navigation={Object {}}
+    />
+    <ProductDetailDescription
+      isShowMore={false}
+      itemPartNumber=""
+      longDescription=""
+      pdpLabels={Object {}}
+      shortDescription=""
+    />
+    <RelatedOutfits
+      navigation={Object {}}
+      pdpLabels={Object {}}
+      selectedColorProductId=""
+    />
   </Styled(View)>
-</ScrollViewMock>
+</LazyloadScrollView>
 `;

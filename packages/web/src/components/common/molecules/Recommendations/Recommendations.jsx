@@ -52,6 +52,8 @@ class Recommendations extends Component {
       onPickUpOpenClick,
       labels,
       priceOnly,
+      currency,
+      currencyAttributes,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -72,12 +74,14 @@ class Recommendations extends Component {
           labels={labels}
           sequenceNumber={index + 1}
           variation={variation}
+          currencySymbol={currency}
+          currencyExchange={currencyAttributes.exchangevalue}
         />
       );
     });
   }
 
-  renderRecommendationVariation(variation) {
+  renderRecommendationView(variation) {
     const {
       moduleOHeaderLabel,
       modulePHeaderLabel,
@@ -91,7 +95,8 @@ class Recommendations extends Component {
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
-    const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
+    const headerLabel =
+      variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
       products &&
@@ -178,7 +183,7 @@ class Recommendations extends Component {
     return variation.map(value => {
       return (
         <section className={`${className} recommendations-tile`}>
-          {this.renderRecommendationVariation(value)}
+          {this.renderRecommendationView(value)}
         </section>
       );
     });
@@ -200,6 +205,8 @@ Recommendations.propTypes = {
   ctaTitle: PropTypes.string,
   ctaUrl: PropTypes.string,
   variations: PropTypes.string,
+  currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 Recommendations.defaultProps = {
@@ -209,6 +216,10 @@ Recommendations.defaultProps = {
   ctaTitle: '',
   ctaUrl: '',
   variations: '',
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
 };
 
 export { Recommendations as RecommendationsVanilla };

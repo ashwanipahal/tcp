@@ -23,9 +23,9 @@ const OutfitDetailsView = ({
   isPlcc,
   isInternationalShipping,
   currencySymbol,
-  priceCurrency,
   currencyExchange,
   handleAddToBag,
+  addToBagError,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -91,7 +91,6 @@ const OutfitDetailsView = ({
           />
           <ProductPrice
             currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
             currencyExchange={currencyExchange}
             {...prices}
             isCanada={isCanada}
@@ -105,6 +104,7 @@ const OutfitDetailsView = ({
             currentProduct={outfitProduct}
             plpLabels={plpLabels}
             isOutfitPage
+            errorOnHandleSubmit={addToBagError}
           />
         </div>
       </Col>
@@ -122,10 +122,10 @@ OutfitDetailsView.propTypes = {
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
-  priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyExchange: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  addToBagError: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -137,10 +137,10 @@ OutfitDetailsView.defaultProps = {
   isCanada: false,
   isPlcc: false,
   isInternationalShipping: false,
-  currencySymbol: '$',
-  priceCurrency: 'USD',
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencySymbol: 'USD',
+  currencyExchange: 1,
   labels: {},
+  addToBagError: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

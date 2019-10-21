@@ -24,7 +24,7 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
             iconFontName="FontAwesome"
             isButton={false}
             isDisabled={false}
-            margin={null}
+            margins={null}
             name="chevron-left"
             onPress={[Function]}
             size="fs20"
@@ -58,9 +58,9 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
               data-locator="obal_headerpanelbagicon"
               dataLocator=""
               fontSize="fs10"
+              fontWeight="extrabold"
               margin={null}
               numberOfLines={null}
-              text={0}
               textDecoration={null}
             />
           </Styled(View)>

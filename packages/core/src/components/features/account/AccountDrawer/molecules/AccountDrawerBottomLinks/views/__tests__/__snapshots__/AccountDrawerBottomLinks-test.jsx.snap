@@ -32,11 +32,11 @@ exports[`AccountDrawerBottomLinks should render correctly 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        asPath="/account/wallet"
         fontFamily="secondary"
         fontSizeVariation="large"
+        href="#"
+        onClick={[Function]}
         text="Wallet"
-        to="/account?id=wallet"
       />
     </div>
     <div

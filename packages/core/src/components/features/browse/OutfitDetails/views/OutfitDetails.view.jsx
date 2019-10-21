@@ -14,6 +14,10 @@ const OutfitDetailsView = ({
   handleAddToBag,
   addToBagEcom,
   currentState,
+  addToBagError,
+  addToBagErrorId,
+  currencyExchange,
+  currencySymbol,
   labels,
 }) => {
   return (
@@ -45,6 +49,9 @@ const OutfitDetailsView = ({
                       handleAddToBag(addToBagEcom, product, product.generalProductId, currentState);
                     }}
                     className="outfiting-list-details"
+                    addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
+                    currencySymbol={currencySymbol}
+                    currencyExchange={currencyExchange}
                   />
                 </li>
               ))}
@@ -74,6 +81,10 @@ OutfitDetailsView.propTypes = {
   handleAddToBag: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}),
+  addToBagError: PropTypes.string,
+  addToBagErrorId: PropTypes.string,
+  currencyExchange: PropTypes.string,
+  currencySymbol: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -82,6 +93,10 @@ OutfitDetailsView.defaultProps = {
   outfitProducts: null,
   plpLabels: {},
   labels: {},
+  addToBagError: '',
+  addToBagErrorId: '',
+  currencyExchange: 1,
+  currencySymbol: 'USD',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

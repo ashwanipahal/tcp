@@ -4,9 +4,10 @@ import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { styles, ImageContainer } from '../styles/CustomImage.style.native';
 
 const CustomImage = props => {
-  const { imageSource } = props;
+  const { imageSource, width } = props;
   return (
     <ImageContainer
+      width={width}
       source={{
         uri: imageSource,
       }}
@@ -16,10 +17,12 @@ const CustomImage = props => {
 
 CustomImage.propTypes = {
   imageSource: PropTypes.string,
+  width: PropTypes.number,
 };
 
 CustomImage.defaultProps = {
   imageSource: '',
+  width: '',
 };
 
 export default withStyles(CustomImage, styles);

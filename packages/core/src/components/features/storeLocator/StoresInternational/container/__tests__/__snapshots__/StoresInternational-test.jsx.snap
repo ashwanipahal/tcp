@@ -85,8 +85,10 @@ exports[`StoresInternational component StoresInternational component renders cor
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -454,6 +456,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -624,9 +627,9 @@ exports[`StoresInternational component StoresInternational component renders cor
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-gqjmRU",
+            "componentId": "sc-VigVT",
             "isStatic": false,
-            "lastClassName": "lrgQs",
+            "lastClassName": "YdtAz",
             "rules": Array [
               "
   ",
@@ -642,7 +645,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           "displayName": "Styled(StoresInternational)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-gqjmRU",
+          "styledComponentId": "sc-VigVT",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -652,16 +655,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="test sc-gqjmRU lrgQs"
+        className="test sc-VigVT YdtAz"
         content="test"
         dataLocator="test"
       >
         <div
-          className="test sc-gqjmRU lrgQs"
+          className="test sc-VigVT YdtAz"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="test sc-gqjmRU lrgQs__backlink"
+            className="test sc-VigVT YdtAz__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -670,7 +673,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="test sc-gqjmRU lrgQs__backlink"
+              className="test sc-VigVT YdtAz__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -777,7 +780,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               <Anchor
                 anchorVariation="secondary"
                 asPath=""
-                className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -791,7 +794,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="test sc-gqjmRU lrgQs__backlink sc-bwzfXH eZrbaF"
+                  className="test sc-VigVT YdtAz__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
@@ -877,7 +880,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-VigVT",
         "isStatic": false,
         "rules": Array [
           "
@@ -894,7 +897,7 @@ exports[`StoresInternational component StoresInternational component renders cor
       "displayName": "Styled(StoresInternational)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-VigVT",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

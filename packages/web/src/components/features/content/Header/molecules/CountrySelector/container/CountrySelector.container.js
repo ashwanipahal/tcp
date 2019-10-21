@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 import {
-  getCountryListData,
   getModuleXContent,
   submitCountrySelection,
   toggleCountrySelectorModal,
@@ -35,9 +34,6 @@ export const mapDispatchToProps = dispatch => {
     },
     toggleModal: payload => {
       dispatch(toggleCountrySelectorModal(payload));
-    },
-    loadCountryListData: () => {
-      dispatch(getCountryListData());
     },
     handleSubmit: payload => {
       dispatch(submitCountrySelection(payload));

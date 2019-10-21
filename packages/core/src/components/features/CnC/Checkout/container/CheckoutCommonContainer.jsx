@@ -28,6 +28,9 @@ import selectors, {
   getCheckoutStage,
   getGiftServicesSend,
   isUsSite as isUsSiteUser,
+  getPickupAltValues,
+  isPickupAlt,
+  getPickupValues,
 } from './Checkout.selector';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
@@ -66,6 +69,7 @@ const {
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
   getShipmentLoadingStatus,
+  getCurrentCheckoutStage,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -154,7 +158,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       verifyAddressAction,
       setVenmoShippingState,
       getPayPalSettings,
+      currentStage,
       submitVerifiedShippingAddressData,
+      shippingMethod,
+      pickUpAlternatePerson,
+      isHasPickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -205,6 +215,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
         getPayPalSettings={getPayPalSettings}
+        currentStage={currentStage}
+        shippingMethod={shippingMethod}
+        pickUpAlternatePerson={pickUpAlternatePerson}
+        isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+        pickUpContactPerson={pickUpContactPerson}
+        pickUpContactAlternate={pickUpContactAlternate}
       />
     );
   }
@@ -274,6 +290,7 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
+    shippingMethod: getDefaultShipmentID(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -331,6 +348,11 @@ const mapStateToProps = state => {
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    currentStage: getCurrentCheckoutStage(state),
+    pickUpAlternatePerson: getPickupAltValues(state),
+    isHasPickUpAlternatePerson: isPickupAlt(state),
+    pickUpContactPerson: getPickupValues(state),
+    pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
   };
 };
 

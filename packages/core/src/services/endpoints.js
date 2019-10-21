@@ -209,6 +209,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
   },
+  getContactPreferences: {
+    method: 'GET',
+    URI: 'v2/account/preferences',
+  },
+  setContactPreferences: {
+    method: 'PUT',
+    URI: 'v2/account/preferences',
+  },
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
@@ -355,7 +363,7 @@ const endpoints = {
   },
   getStyliticsProductViewById: {
     method: API_METHODS.GET,
-    URI: 'https://widget-api.stylitics.com/api/outfits',
+    URI: 'https://widget-api-staging.stylitics.com/api/outfits',
   },
   getDetailedOrderHistory: {
     method: 'GET',
@@ -364,6 +372,14 @@ const endpoints = {
   addOrUpdateWishlist: {
     method: 'PUT',
     URI: 'v2/wishlist/addOrUpdateWishlist',
+  },
+  getTwitterAuthToken: {
+    method: 'GET',
+    URI: 'v2/twitter/requestToken',
+  },
+  getTwitterAccessToken: {
+    method: 'GET',
+    URI: 'v2/twitter/accessToken',
   },
   getListofWishList: {
     method: 'GET',

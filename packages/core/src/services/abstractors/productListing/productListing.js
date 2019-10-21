@@ -112,6 +112,39 @@ class ProductsDynamicAbstractor {
     return isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory;
   };
 
+  getLengths = state => {
+    if (!state.SearchListingPage) {
+      return 0;
+    }
+    const loadedProductsPageData =
+      state.SearchListingPage &&
+      state.SearchListingPage.get('loadedProductsPages').map(a => {
+        return a.length;
+      });
+
+    return (
+      loadedProductsPageData &&
+      loadedProductsPageData.length > 0 &&
+      loadedProductsPageData.reduce((a, b) => a + b, 0)
+    );
+  };
+
+  getTotalProductsCount = state => {
+    return state.SearchListingPage ? state.SearchListingPage.get('totalProductsCount') : 0;
+  };
+
+  isMoreProductsApiCalled = (isSearch, pageNumber, state) => {
+    if (isSearch && pageNumber >= 2) {
+      const loadedProductsPagesLength = this.getLengths(state);
+      const totalProductsCount = this.getTotalProductsCount(state);
+      if (isSearch && totalProductsCount <= loadedProductsPagesLength) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // eslint-disable-next-line complexity
   getProducts = (reqObj, state) => {
     const {
       seoKeywordOrCategoryIdOrSearchTerm,
@@ -143,6 +176,13 @@ class ProductsDynamicAbstractor {
     // We will be sending the start to getCategoryListingPage function in the bucketing scenario and we need to send that in UNBXD api.
     // Falsy check has not been placed as i need to send start 0 in L2 call in case of bucketing sequence.
     const start = getStart(startProductCount, pageNumber); // In UNBXD start is from zero but seo paging starts with 1
+
+    const isMoreProductsApiCalled = this.isMoreProductsApiCalled(isSearch, pageNumber, state);
+
+    if (!isMoreProductsApiCalled) {
+      return false;
+    }
+
     const payload = {
       body: {
         ...facetsPayload,
@@ -159,7 +199,6 @@ class ProductsDynamicAbstractor {
       },
       webService: this.getPlpOrSlpEndpoint(isSearch),
     };
-
     if (!isSearch) {
       payload.body.pagetype = 'boolean';
       if (categoryId) {

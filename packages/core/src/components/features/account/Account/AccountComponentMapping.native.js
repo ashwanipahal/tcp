@@ -8,7 +8,9 @@ import ExtraPoints from '../ExtraPoints/container/ExtraPoints.container';
 import PointHistoryPage from '../PointHistory';
 import { MyPrefrenceContainer } from '../MyPrefrence/container/MyPreference.container';
 import PointsClaimPage from '../PointsClaim';
+import MyFavorite from '../../browse/Favorites/container/Favorites.container';
 import Orders from '../Orders';
+import OrderDetails from '../OrderDetails';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,
@@ -21,7 +23,9 @@ const AccountComponentNativeMapping = {
   pointHistoryPageMobile: PointHistoryPage,
   myPreferencePageMobile: MyPrefrenceContainer,
   PointsClaimPageMobile: PointsClaimPage,
+  myFavoritePageMobile: MyFavorite,
   myOrdersPageMobile: Orders,
+  orderDetailsPageMobile: OrderDetails,
 };
 
 export default AccountComponentNativeMapping;

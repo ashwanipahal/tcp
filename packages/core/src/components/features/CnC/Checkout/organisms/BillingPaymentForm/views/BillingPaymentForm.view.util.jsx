@@ -72,6 +72,7 @@ const getCardOptions = ({
         cardNumber={`${labels.creditCardEnd}${card.accountNo.slice(-4)}`}
         labels={labels}
         selectedValue={+onFileCardKey}
+        dataLocator="cardDetailCardDropDown"
       />
     ),
   }));
@@ -87,6 +88,7 @@ const getCardOptions = ({
         fill="BLACK"
         onClick={addNewCC}
         disabled={addNewCCState || !selectedCard}
+        dataLocator="addCreditCardBtn"
       >
         {labels.addCreditBtn}
       </Button>
@@ -119,7 +121,7 @@ const renderBillingAddressHeading = labels => {
       component="h3"
       variant="listMenu"
       className="cardDropdownHeading"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
     >
       {labels.selectFromCard}
     </Heading>

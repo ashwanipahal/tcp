@@ -4,7 +4,7 @@ exports[`CustomIcon should render correctly 1`] = `
 <Styled(View)
   accessibilityLabel=""
   accessibilityRole="button"
-  margin={null}
+  margins={null}
 >
   <Icon
     allowFontScaling={false}

@@ -41,29 +41,29 @@ describe('#getOrderPointSummary', () => {
   });
 
   it('should return getSwatchImgPath=', () => {
-    const resultType = getSwatchImgPath(12, 'extension');
-    expect(resultType).toEqual('/wcsstore/GlobalSAS/images/tcp/products/swatches/12');
+    const resultType = getSwatchImgPath('12_12', 'extension');
+    expect(resultType).toEqual('12/12_12');
   });
 
   it('should return getProductImgPath=', () => {
-    const resultType = imageGenerator(12, 'extension');
+    const resultType = imageGenerator('12_10', 'extension');
     expect(resultType).toEqual({
-      colorSwatch: '/wcsstore/GlobalSAS/images/tcp/products/swatches/12',
+      colorSwatch: '12/12_10',
       productImages: {
-        '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
-        '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
-        '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
-        '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+        '125': '12/12_10',
+        '380': '12/12_10',
+        '500': '12/12_10',
+        '900': '12/12_10',
       },
     });
   });
   it('should return getProductImgPath=', () => {
-    const resultType = getProductImgPath(12, 'extension');
+    const resultType = getProductImgPath('12_10', 'extension');
     expect(resultType).toEqual({
-      '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
-      '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
-      '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
-      '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+      '125': '12/12_10',
+      '380': '12/12_10',
+      '500': '12/12_10',
+      '900': '12/12_10',
     });
   });
   it('should return valid constructCouponStructure', () => {

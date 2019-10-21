@@ -31,6 +31,7 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -92,6 +93,7 @@ export class BagPageContainer extends React.Component<Props> {
       cartItemSflError,
       currencySymbol,
       isPayPalWebViewEnable,
+      isPickupModalOpen,
     } = this.props;
 
     const showAddTobag = false;
@@ -122,6 +124,7 @@ export class BagPageContainer extends React.Component<Props> {
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        isPickupModalOpen={isPickupModalOpen}
       />
     );
   }
@@ -155,7 +158,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
@@ -177,6 +180,7 @@ const mapStateToProps = state => {
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 

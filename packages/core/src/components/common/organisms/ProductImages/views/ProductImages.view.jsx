@@ -52,6 +52,7 @@ class ProductImages extends React.Component {
      * images (default behavior)
      */
     isShowBigSizeImages: PropTypes.bool,
+    isGiftCard: PropTypes.bool,
 
     /** Flags if the zoom should be enabled */
     isZoomEnabled: PropTypes.bool.isRequired,
@@ -78,6 +79,14 @@ class ProductImages extends React.Component {
     this.setState({ currentImageIndex: imageIndex });
   };
 
+  getImageWrapperCss = () => {
+    const { isFullSizeForTab, isMobile } = this.props;
+    return [
+      'main-image-container-wrap',
+      isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
+    ].join(' ');
+  };
+
   render() {
     const {
       productName,
@@ -87,17 +96,18 @@ class ProductImages extends React.Component {
       isFullSizeVisible,
       className,
       isThumbnailListVisible,
-      isFullSizeForTab,
       onCloseClick,
       isFullSizeModalOpen,
       isMobile,
       pdpLabels,
+      isGiftCard,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
       imageUrl: image.iconSizeImageUrl,
       imageName: productName,
     }));
+
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
 
     const { CAROUSEL_OPTIONS } = config;
@@ -112,12 +122,7 @@ class ProductImages extends React.Component {
           currentImageIndex,
           this.handleThumbnailClick
         )}
-        <div
-          className={[
-            'main-image-container-wrap',
-            isFullSizeForTab && !isMobile ? 'main-image-container-wrap-full-size' : '',
-          ].join(' ')}
-        >
+        <div className={this.getImageWrapperCss()}>
           <div className="main-image-container">
             {
               <Carousel
@@ -138,7 +143,7 @@ class ProductImages extends React.Component {
                         imageUrl={image && image[imageSizePropertyName]}
                         zoomImageUrl={superSizeImageUrl}
                         imageName={productName}
-                        isZoomEnabled={isZoomEnabled}
+                        isZoomEnabled={!isGiftCard && isZoomEnabled}
                         onOpenSimpleFullSize={onCloseClick}
                         isMobile={isMobile}
                         isFullSizeModalOpen={isFullSizeModalOpen}
@@ -148,7 +153,7 @@ class ProductImages extends React.Component {
               </Carousel>
             }
             <div className="social-connect-wrapper">
-              {isFullSizeVisible && (
+              {isFullSizeVisible && !isGiftCard && (
                 <span className="fullSize-image-label">
                   <Anchor
                     className="resize-text"
@@ -199,6 +204,7 @@ ProductImages.defaultProps = {
   isFullSizeVisible: true,
   isFullSizeModalOpen: false,
   isMobile: true,
+  isGiftCard: false,
 };
 
 export default withStyles(ProductImages, styles);

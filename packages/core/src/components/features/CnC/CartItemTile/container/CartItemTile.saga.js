@@ -14,7 +14,15 @@ import {
   removeCartItemComplete,
   updateCartItemComplete,
   getProductSKUInfoSuccess,
+  setToggleCartItemError,
+  clearToggleCartItemError,
 } from './CartItemTile.actions';
+import {
+  AddToPickupError,
+  AddToCartError,
+  clearAddToBagErrorState,
+  clearAddToPickupErrorState,
+} from '../../AddedToBag/container/AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
@@ -73,21 +81,60 @@ export function* removeCartItem({ payload }) {
   }
 }
 
+/**
+ *
+ * @function updateSagaErrorActions
+ * @description decided error actions on basis of result of update item call
+ * @param {*} updateActionType
+ * @param {*} errorMessage
+ */
+function* updateSagaErrorActions(updateActionType, errorMessage) {
+  if (updateActionType) {
+    yield put(AddToPickupError(errorMessage));
+  } else {
+    yield put(AddToCartError(errorMessage));
+  }
+}
+
 export function* updateCartItemSaga({ payload }) {
+  const { updateActionType } = payload;
   try {
-    const res = yield call(updateItem, payload);
+    if (updateActionType) {
+      yield put(clearAddToBagErrorState());
+    } else {
+      yield put(clearAddToPickupErrorState());
+    }
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));
+    /* istanbul ignore else */
     if (callBack) {
       callBack();
     }
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(clearToggleCartItemError());
     yield put(BAG_PAGE_ACTIONS.getCartData());
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
-    logger.error(err);
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errorMessage =
+      // eslint-disable-next-line no-underscore-dangle
+      (err && err.errorMessages && err.errorMessages._error) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
+    yield call(updateSagaErrorActions, updateActionType, errorMessage);
+    if (payload.fromToggling) {
+      yield put(
+        setToggleCartItemError({
+          errorMessage,
+          itemId: payload.apiPayload.orderItem[0].orderItemId,
+        })
+      );
+    } else {
+      yield put(AddToPickupError(errorMessage));
+    }
   }
 }
 
@@ -145,9 +192,20 @@ export function* openPickupModalFromBag(payload) {
   try {
     const state = yield select();
     const {
-      payload: { colorProductId, orderInfo },
+      payload: {
+        colorProductId,
+        orderInfo,
+        openSkuSelectionForm,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
+        isItemShipToHome,
+      },
     } = payload;
-    const productDetail = yield call(getProductInfoById, colorProductId, state);
+    let itemBrand;
+    if (orderInfo) {
+      ({ itemBrand } = orderInfo);
+    }
+    const productDetail = yield call(getProductInfoById, colorProductId, state, itemBrand);
     const { product } = productDetail;
     const currentProduct = product;
     const { generalProductId } = currentProduct;
@@ -155,13 +213,14 @@ export function* openPickupModalFromBag(payload) {
       openPickupModalWithValues({
         generalProductId,
         colorProductId: generalProductId,
-        // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
-        // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+        isBopisCtaEnabled,
+        isBossCtaEnabled,
         currentProduct,
         fromBagPage: true,
-        openSkuSelectionForm: true,
+        openSkuSelectionForm,
         initialValues: { ...orderInfo },
         updateCartItemStore: true,
+        isItemShipToHome,
       })
     );
   } catch (err) {

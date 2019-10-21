@@ -274,7 +274,15 @@ export const PurchaseSection = (quantity, labels, quantityPurchased) =>
     </div>
   );
 
-export const WishListIcon = (isFavoriteView, isInDefaultWishlist, handleAddToWishlist) => {
+export const WishListIcon = (
+  isFavoriteView,
+  isInDefaultWishlist,
+  handleAddToWishlist,
+  itemNotAvailable
+) => {
+  if (itemNotAvailable) {
+    return null;
+  }
   return (
     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
       <ProductWishlistIcon
@@ -286,7 +294,10 @@ export const WishListIcon = (isFavoriteView, isInDefaultWishlist, handleAddToWis
   );
 };
 
-export const EditButton = (props, selectedColorProductId) => {
+export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
+  if (itemNotAvailable) {
+    return null;
+  }
   const { isFavoriteView, labels, onQuickViewOpenClick } = props;
   return (
     isFavoriteView && (
