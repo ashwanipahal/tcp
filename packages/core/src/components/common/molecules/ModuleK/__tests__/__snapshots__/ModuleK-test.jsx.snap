@@ -157,15 +157,18 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 22px;
+    font-size: ",
+                [Function],
+                ";
     line-height: normal;
     letter-spacing: 2px;
 
     @media ",
                 [Function],
                 " {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -280,6 +283,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 " {
       display: inline;
     }
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    color: ",
+                [Function],
+                ";
+    text-align: center;
     @media ",
                 [Function],
                 " {
