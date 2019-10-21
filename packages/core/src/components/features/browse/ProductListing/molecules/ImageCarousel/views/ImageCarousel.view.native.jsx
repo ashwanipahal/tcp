@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, FlatList } from 'react-native';
-import CustomImage from '../../../atoms/CustomImage';
+import { TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
   getProductListToPathInMobileApp,
 } from '../../ProductList/utils/productsCommonUtils';
+import { DamImage } from '../../../../../../common/atoms';
+
+const win = Dimensions.get('window');
+const paddingAroundImage = 24;
+const numberOfColumn = 2;
+const imageWidth = win.width / numberOfColumn - paddingAroundImage;
+const imageHeight = '205px';
 
 class ImageCarousel extends React.PureComponent {
   constructor(props) {
@@ -75,10 +81,13 @@ class ImageCarousel extends React.PureComponent {
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
             >
-              <CustomImage
-                width={productImageWidth}
-                imageSource={imageUrl}
-                productInfo={productInfo}
+              <DamImage
+                key={index.toString()}
+                url={imageUrl}
+                isProductImage
+                height={imageHeight}
+                width={productImageWidth || imageWidth}
+                resizeMode="contain"
               />
             </TouchableOpacity>
           );
@@ -98,7 +107,7 @@ ImageCarousel.propTypes = {
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
-  productImageWidth: '',
+  productImageWidth: null,
 };
 
 export default ImageCarousel;

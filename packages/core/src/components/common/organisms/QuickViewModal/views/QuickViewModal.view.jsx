@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLocator, isCanada } from '@tcp/core/src/utils';
+import { getLocator, isCanada, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
@@ -24,6 +24,7 @@ class QuickViewModal extends React.Component {
   };
 
   onCloseClick = () => {
+    enableBodyScroll();
     const { closeQuickViewModal } = this.props;
     closeQuickViewModal();
   };
