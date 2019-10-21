@@ -23,24 +23,18 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
  */
 const handleRouteComplete = url => {
   const params = new URL(document.location).searchParams;
-  const sortParam = params.get('sort');
-  const filterParam = params.get('categoryPath2_uFilter');
-
-  /**
-   * check if sort or filter param present in URL
-   */
-
-  const isSortOrFilterParamPresent = !sortParam || !filterParam;
+  const sortParam = params.has('sort');
+  const filterParam = params.has('categoryPath2_uFilter');
 
   /**
    * check if sort or filter param present in PLP page
    */
-  const checkListingPageParam = url.match(/\/c\//g) && isSortOrFilterParamPresent;
+  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam);
 
   /**
    * check if sort or filter param present in Search page
    */
-  const checkSearchPageParam = url.match(/\/search\//g) && isSortOrFilterParamPresent;
+  const checkSearchPageParam = url.match(/\/search\//g) && (sortParam || filterParam);
 
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
