@@ -187,6 +187,7 @@ exports[`Order Items component should renders correctly 1`] = `
             fontSize="fs14"
             fontWeight="semibold"
             locator=""
+            margins={null}
             onPress={null}
             text="lbl_orderDetails_writeReview"
             underline={true}

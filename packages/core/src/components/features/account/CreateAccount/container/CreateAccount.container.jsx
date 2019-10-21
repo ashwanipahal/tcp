@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { isMobileApp } from '@tcp/core/src/utils';
+
 import { routerPush } from '../../../../../utils';
 import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
@@ -47,6 +50,7 @@ export class CreateAccountContainer extends React.Component {
     formErrorMessage: PropTypes.shape({}).isRequired,
     userplccCardNumber: PropTypes.string.isRequired,
     userplccCardId: PropTypes.string.isRequired,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
@@ -54,7 +58,7 @@ export class CreateAccountContainer extends React.Component {
     createAccountAction: noop,
     hideShowPwd: false,
     confirmHideShowPwd: false,
-    error: {},
+    error: '',
     openOverlay: noop,
     onRequestClose: noop,
     isIAgreeChecked: false,
@@ -63,12 +67,13 @@ export class CreateAccountContainer extends React.Component {
     closeOverlay: noop,
     isUserLoggedIn: false,
     navigation: {},
+    toastMessage: () => {},
   };
 
   constructor(props) {
     super(props);
     import('../../../../../utils')
-      .then(({ isMobileApp, navigateToNestedRoute }) => {
+      .then(({ navigateToNestedRoute }) => {
         this.hasMobileApp = isMobileApp;
         this.hasNavigateToNestedRoute = navigateToNestedRoute;
       })
@@ -133,6 +138,7 @@ export class CreateAccountContainer extends React.Component {
       formErrorMessage,
       userplccCardNumber,
       userplccCardId,
+      toastMessage,
     } = this.props;
     return (
       <CreateAccountView
@@ -151,6 +157,7 @@ export class CreateAccountContainer extends React.Component {
         formErrorMessage={formErrorMessage}
         userplccCardNumber={userplccCardNumber}
         userplccCardId={userplccCardId}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -183,6 +190,9 @@ export const mapDispatchToProps = dispatch => {
     },
     resetAccountError: () => {
       dispatch(resetCreateAccountErr());
+    },
+    toastMessage: error => {
+      dispatch(toastMessageInfo(error));
     },
   };
 };
