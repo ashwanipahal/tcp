@@ -2,9 +2,14 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import getOrdersListState from './Orders.selectors';
+import {
+  getOrderDetailsDataState,
+  getOrdersLabels,
+} from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
+import { getOrderDetails } from '../../OrderDetails/container/OrderDetails.actions';
 import { getLabels } from '../../Account/container/Account.selectors';
 import { API_CONFIG } from '../../../../../services/config';
 
@@ -16,6 +21,21 @@ export class OrdersContainer extends PureComponent {
   componentDidMount() {
     const { fetchOrders } = this.props;
     fetchOrders(getSiteId());
+  }
+
+  componentDidUpdate() {
+    const { orderDetailsData, ordersListItems, getOrderDetailsAction } = this.props;
+    if (
+      !orderDetailsData &&
+      ordersListItems &&
+      ordersListItems.orders &&
+      ordersListItems.orders.length > 0
+    ) {
+      const payload = {
+        orderId: ordersListItems.orders[0].orderNumber,
+      };
+      getOrderDetailsAction(payload);
+    }
   }
 
   /**
@@ -31,10 +51,12 @@ export class OrdersContainer extends PureComponent {
   render() {
     const {
       labels,
+      ordersLabels,
       ordersListItems,
       navigation,
       handleComponentChange,
       componentProps,
+      orderDetailsData,
     } = this.props;
     const siteId = getSiteId();
     const ordersListItemData = ordersListItems && ordersListItems.orders;
@@ -43,11 +65,13 @@ export class OrdersContainer extends PureComponent {
       siteId !== API_CONFIG.siteIds.ca && (
         <OrderListComponent
           labels={labels}
+          ordersLabels={ordersLabels}
           onFilterLink={this.filterLinkHandler}
           ordersListItems={ordersListItemData}
           navigation={navigation}
           handleComponentChange={handleComponentChange}
           componentProps={componentProps}
+          orderDetailsData={orderDetailsData}
         />
       )
     );
@@ -57,21 +81,29 @@ export class OrdersContainer extends PureComponent {
 export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
+  orderDetailsData: getOrderDetailsDataState(state),
+  ordersLabels: getOrdersLabels(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
   fetchOrders: payload => {
     dispatch(getOrdersList(payload));
   },
+  getOrderDetailsAction: payload => {
+    dispatch(getOrderDetails(payload));
+  },
 });
 
 OrdersContainer.propTypes = {
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
+  ordersLabels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]),
   navigation: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
+  orderDetailsData: PropTypes.shape({}),
+  getOrderDetailsAction: PropTypes.func.isRequired,
 };
 
 OrdersContainer.defaultProps = {
@@ -79,6 +111,7 @@ OrdersContainer.defaultProps = {
   ordersListItems: [],
   handleComponentChange: () => {},
   componentProps: {},
+  orderDetailsData: {},
 };
 
 export default connect(
