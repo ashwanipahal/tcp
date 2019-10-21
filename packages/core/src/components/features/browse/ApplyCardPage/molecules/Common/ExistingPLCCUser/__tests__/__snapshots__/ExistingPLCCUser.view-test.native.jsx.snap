@@ -20,6 +20,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -106,6 +107,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
