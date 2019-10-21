@@ -27,7 +27,7 @@ exports[`NavBar component renders correctly 1`] = `
   <nav
     className="undefined navigation nav-bar"
   >
-    <Styled(NavBar)
+    <Styled(ErrorBoundary)
       closeNavigationDrawer={false}
       nav={
         Array [

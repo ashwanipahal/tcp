@@ -7778,70 +7778,74 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
       ]
     }
   >
-    <Styled(Image)
-      height="400px"
-      url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
-      width="100%"
+    <div
+      className="google-map"
     >
-      <StyledComponent
-        forwardedComponent={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
-              "isStatic": false,
-              "lastClassName": "cFBjof",
-              "rules": Array [
-                "
-  ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(Image)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        forwardedRef={null}
-        height="400px"
-        url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
-        width="100%"
+      <Styled(Image)
+        alt="Google Map"
+        title="Stores"
+        url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
       >
-        <Image
-          className="sc-bwzfXH cFBjof"
-          height="400px"
-          link={null}
-          placeholderSrc=""
-          ref={[Function]}
-          sizes=""
-          srcset=""
-          url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
-          width="100%"
+        <StyledComponent
+          alt="Google Map"
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bwzfXH",
+                "isStatic": false,
+                "lastClassName": "cFBjof",
+                "rules": Array [
+                  "
+  ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(Image)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bwzfXH",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={null}
+          title="Stores"
+          url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
         >
-          <img
+          <Image
+            alt="Google Map"
             className="sc-bwzfXH cFBjof"
-            height="400px"
-            onError={null}
-            sizes={null}
-            src="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=346x400&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
-            srcSet=""
-            width="100%"
-          />
-        </Image>
-      </StyledComponent>
-    </Styled(Image)>
+            link={null}
+            placeholderSrc=""
+            ref={[Function]}
+            sizes=""
+            srcset=""
+            title="Stores"
+            url="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
+          >
+            <img
+              alt="Google Map"
+              className="sc-bwzfXH cFBjof"
+              onError={null}
+              sizes={null}
+              src="https://maps.googleapis.com/maps/api/staticmap?center=40.69112,-73.98625&zoom=15&size=630x600&markers=40.69112,-73.98625&markers=40.68056,-73.95081&markers=40.71855,-73.98745&markers=40.73603,-73.98943&markers=40.63779,-73.98933&markers=40.72614,-74.03881&markers=40.66955,-73.91113&markers=40.70036,-73.90464&markers=40.62261,-74.02792&markers=40.60816,-73.95989&markers=40.76004,-73.91805&markers=40.60242,-73.99447&markers=40.77918,-73.95466&markers=40.6539,-73.87271&markers=40.61006,-73.92028&markers=40.73421,-73.87187&markers=40.74956,-73.88437&markers=40.78785,-74.0175&markers=40.72046,-73.84581&markers=40.78434,-74.07573&markers=40.8042,-73.93685&markers=40.80953,-73.94982&markers=40.75816,-73.83467&markers=40.81696,-73.91615&markers=40.72877,-74.15724&key=AIzaSyCzOG6DZLR-haS8xvPOr73KkIWPMBbTVI8"
+              srcSet=""
+              title="Stores"
+            />
+          </Image>
+        </StyledComponent>
+      </Styled(Image)>
+    </div>
   </StoreStaticMap>
 </ThemeProvider>
 `;
