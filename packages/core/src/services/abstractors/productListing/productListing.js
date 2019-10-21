@@ -113,6 +113,9 @@ class ProductsDynamicAbstractor {
   };
 
   getLengths = state => {
+    if (!state.SearchListingPage) {
+      return 0;
+    }
     const loadedProductsPageData =
       state.SearchListingPage &&
       state.SearchListingPage.get('loadedProductsPages').map(a => {
