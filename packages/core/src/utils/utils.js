@@ -866,7 +866,7 @@ export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder)
     case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
       label = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
-        : getLabelValue(ordersLabels, 'lbl_orders_statusOrderReceived');
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
       message = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
         : getLabelValue(ordersLabels, 'lbl_orders_processing');

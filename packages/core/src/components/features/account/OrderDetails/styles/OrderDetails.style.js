@@ -6,11 +6,11 @@ export default css`
       margin-right: 0;
     }
   }
-.order-status-header{
-  @media ${props => props.theme.mediaQuery.large} {
-    padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  .order-status-header {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
-}
+  }
   .group-row {
     border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
     padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
@@ -25,7 +25,7 @@ export default css`
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
     text-align: left;
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top:0px;
+      margin-top: 0px;
       text-align: right;
     }
   }
@@ -39,7 +39,7 @@ export default css`
     margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.medium} {
       display: inline;
-      margin-top:0
+      margin-top: 0;
     }
   }
   .orderDetail-trackingNumber-pipe {
@@ -50,9 +50,6 @@ export default css`
   }
   .order-Item {
     padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    /* @media ${props => props.theme.mediaQuery.medium} {
-      padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
-    } */
   }
   .margin-tablet {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
