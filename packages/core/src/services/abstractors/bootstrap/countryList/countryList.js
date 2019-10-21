@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler, { executeStatefulAPICall } from '../../../handler';
-import countryListQuery from '../../../handler/graphQL/queries/countrySelector';
+import countryListQuery from '../../../handler/graphQL/queries/countryList';
 
 /**
  * Abstractor layer for loading Country List data

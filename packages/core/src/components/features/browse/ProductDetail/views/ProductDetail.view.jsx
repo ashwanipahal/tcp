@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
-import { isClient } from '@tcp/core/src/utils';
+import { isClient, isCanada } from '@tcp/core/src/utils';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -63,9 +63,10 @@ class ProductDetailView extends React.Component {
   };
 
   getProductSummary = () => {
-    const { productDetails, productInfo, currency, pdpLabels } = this.props;
+    const { productDetails, productInfo, currency, pdpLabels, currencyExchange } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
+
     return (
       <div className="product-summary-wrapper">
         <Product
@@ -73,6 +74,7 @@ class ProductDetailView extends React.Component {
           productDetails={productDetails}
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
+          currencyExchange={currencyExchange}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -80,6 +82,7 @@ class ProductDetailView extends React.Component {
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
+              currencyExchange={currencyExchange}
               isGiftCard={productInfo.isGiftCard}
             />
           </div>
@@ -121,13 +124,14 @@ class ProductDetailView extends React.Component {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency } = this.props;
+    const { productInfo, currency, currencyExchange } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
         <ProductPrice
           listPrice={parseInt(currentGiftCardValue, 10)}
           offerPrice={parseInt(currentGiftCardValue, 10)}
+          currencyExchange={currencyExchange}
           currencySymbol={currency}
         />
       </div>
@@ -232,7 +236,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
-            <LoyaltyBanner isProductDetailView />
+            {!isCanada() && <LoyaltyBanner isProductDetailView />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
@@ -302,6 +306,7 @@ ProductDetailView.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
+  currencyExchange: PropTypes.string,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -321,6 +326,7 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
+  currencyExchange: '',
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

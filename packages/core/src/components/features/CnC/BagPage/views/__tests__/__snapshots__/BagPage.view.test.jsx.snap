@@ -8,6 +8,7 @@ exports[`Bag page View should not render SFL section 1`] = `
     className=""
   >
     <Styled(Row)
+      className="cartPageTitleHeader"
       tagName="header"
     >
       <Styled(Col)
@@ -71,6 +72,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
     className=""
   >
     <Styled(Row)
+      className="cartPageTitleHeader"
       tagName="header"
     >
       <Styled(Col)
@@ -134,6 +136,7 @@ exports[`Bag page View should render SFL section 1`] = `
     className=""
   >
     <Styled(Row)
+      className="cartPageTitleHeader"
       tagName="header"
     >
       <Styled(Col)
@@ -308,6 +311,7 @@ exports[`Bag page View should render with only SFL condition 1`] = `
     className="stickyBagHeader"
   >
     <Styled(Row)
+      className="cartPageTitleHeader"
       tagName="header"
     >
       <Styled(Col)
@@ -491,6 +495,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
     className="stickyBagHeader"
   >
     <Styled(Row)
+      className="cartPageTitleHeader"
       tagName="header"
     >
       <Styled(Col)
