@@ -10,16 +10,15 @@ export default css`
 
   img {
     height: 425px;
-    @media ${props => props.theme.mediaQuery.large} {
+    @media ${props => props.theme.mediaQuery.medium} {
       height: 400px;
     }
-    @media ${props => props.theme.mediaQuery.large} {
+    @media ${props => props.theme.mediaQuery.medium} {
       height: 540px;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    height: 540px;
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   }
@@ -67,11 +66,11 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
     }
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
     }
   }
 

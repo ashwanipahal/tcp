@@ -80,7 +80,7 @@ const ModuleL = ({
         )}
         <Carousel
           options={options}
-          className="moduleL__desktop-tablet-carousel"
+          className="moduleL__carousel"
           carouselConfig={{
             type: 'light',
             autoplay: false,
