@@ -18,12 +18,15 @@ class ContactFormFields extends React.Component {
   ]);
 
   render() {
-    const { className, showEmailAddress, showPhoneNumber, labels } = this.props;
-
+    const { className, showEmailAddress, showPhoneNumber, labels, isExpressCheckout } = this.props;
+    const colSizeLarge = isExpressCheckout ? 12 : 6;
     return (
       <div className={className}>
         <Row fullBleed>
-          <Col className="pickupField fieldFirstName" colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col
+            className="pickupField fieldFirstName"
+            colSize={{ small: 6, medium: 8, large: colSizeLarge }}
+          >
             <Field
               placeholder={labels.firstName}
               name="firstName"
@@ -36,7 +39,10 @@ class ContactFormFields extends React.Component {
               {labels.govIdText}
             </BodyCopy>
           </Col>
-          <Col className="pickupField fieldLastName" colSize={{ small: 6, medium: 8, large: 6 }}>
+          <Col
+            className="pickupField fieldLastName"
+            colSize={{ small: 6, medium: 8, large: colSizeLarge }}
+          >
             <Field
               placeholder={labels.lastName}
               name="lastName"
@@ -48,7 +54,10 @@ class ContactFormFields extends React.Component {
           </Col>
 
           {showEmailAddress && (
-            <Col className="pickupField fieldEmail" colSize={{ small: 6, medium: 8, large: 6 }}>
+            <Col
+              className="pickupField fieldEmail"
+              colSize={{ small: 6, medium: 8, large: colSizeLarge }}
+            >
               <Field
                 id="emailAddress"
                 placeholder={labels.email}
@@ -62,7 +71,10 @@ class ContactFormFields extends React.Component {
             </Col>
           )}
           {showPhoneNumber && (
-            <Col className="pickupField fieldNumber" colSize={{ small: 6, medium: 8, large: 6 }}>
+            <Col
+              className="pickupField fieldNumber"
+              colSize={{ small: 6, medium: 8, large: colSizeLarge }}
+            >
               <Field
                 placeholder={labels.mobile}
                 name="phoneNumber"
@@ -86,12 +98,14 @@ ContactFormFields.propTypes = {
   showEmailAddress: PropTypes.bool,
   showPhoneNumber: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
+  isExpressCheckout: PropTypes.bool,
 };
 
 ContactFormFields.defaultProps = {
   className: '',
   showEmailAddress: false,
   showPhoneNumber: false,
+  isExpressCheckout: false,
 };
 
 export default withStyles(ContactFormFields, styles);

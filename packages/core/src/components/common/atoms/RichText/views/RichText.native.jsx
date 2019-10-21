@@ -1,6 +1,6 @@
-// @flow
 import React from 'react';
 import { WebView, Dimensions } from 'react-native';
+import { PropTypes } from 'prop-types';
 
 /**
  * @param {object} props : Props for RichText
@@ -9,27 +9,45 @@ import { WebView, Dimensions } from 'react-native';
  * Note that static HTML will require setting originWhitelist to ["*"]
  */
 
-type Props = {
-  source?: string,
-  javaScriptEnabled?: boolean,
-  domStorageEnabled?: boolean,
-  thirdPartyCookiesEnabled?: boolean,
-};
-const screenHeight = Math.round(Dimensions.get('window').height);
-const style = { backgroundColor: 'transparent', height: screenHeight };
+// type Props = {
+//   source?: string,
+//   javaScriptEnabled?: boolean,
+//   domStorageEnabled?: boolean,
+//   thirdPartyCookiesEnabled?: boolean,
+//   isApplyDeviceHeight?: boolean,
+// };
 
-const RichText = (props: Props) => {
-  const { javaScriptEnabled, domStorageEnabled, thirdPartyCookiesEnabled } = props;
-  return (
-    <WebView
-      style={style}
-      originWhitelist={['*']}
-      javaScriptEnabled={javaScriptEnabled}
-      domStorageEnabled={domStorageEnabled}
-      thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
-      {...props}
-    />
-  );
+class RichText extends React.PureComponent {
+  render() {
+    const {
+      javaScriptEnabled,
+      domStorageEnabled,
+      thirdPartyCookiesEnabled,
+      isApplyDeviceHeight,
+    } = this.props;
+    const screenHeight = Math.round(Dimensions.get('window').height);
+    const style = { backgroundColor: 'transparent' };
+    const styleWithHeight = { backgroundColor: 'transparent', height: screenHeight };
+
+    return (
+      <WebView
+        style={isApplyDeviceHeight ? styleWithHeight : style}
+        originWhitelist={['*']}
+        javaScriptEnabled={javaScriptEnabled}
+        domStorageEnabled={domStorageEnabled}
+        thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
+        {...this.props}
+      />
+    );
+  }
+}
+
+RichText.propTypes = {
+  source: PropTypes.string,
+  javaScriptEnabled: PropTypes.bool,
+  domStorageEnabled: PropTypes.bool,
+  thirdPartyCookiesEnabled: PropTypes.bool,
+  isApplyDeviceHeight: PropTypes.bool,
 };
 
 RichText.defaultProps = {
@@ -37,6 +55,7 @@ RichText.defaultProps = {
   javaScriptEnabled: false,
   domStorageEnabled: false,
   thirdPartyCookiesEnabled: false,
+  isApplyDeviceHeight: false,
 };
 
 export default RichText;

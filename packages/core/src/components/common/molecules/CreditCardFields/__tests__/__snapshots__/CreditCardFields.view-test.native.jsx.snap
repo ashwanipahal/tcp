@@ -411,7 +411,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         iconFontName="FontAwesome"
         isButton={false}
         isDisabled={false}
-        margin={null}
+        margins={null}
         name="camera"
         onPress={[Function]}
         size="fs25"

@@ -139,8 +139,10 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
-  currencyAttributes: {},
-  currency: '$',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

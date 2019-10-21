@@ -149,6 +149,9 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
   return firstSizeName;
 }
 
+const getIsColorOnModelLegible = curentColorEntry =>
+  curentColorEntry && curentColorEntry.miscInfo.hasOnModelAltImages;
+
 /**
  * @summary This function will return an array of image paths to display
  * @param {Object} args
@@ -158,15 +161,16 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
  * @param {Object} args.isFullSet - If true it will return all data from imagesByColor for given selection
  */
 export const getImagesToDisplay = args => {
-  const { imagesByColor, curentColorEntry, isAbTestActive, isFullSet } = args;
+  const { imagesByColor, curentColorEntry, isAbTestActive, isFullSet, isFavoriteView } = args;
   let images = [];
 
   try {
     // See DTN-155 for image suffex value definitions
     const mainAndAltImages = isEmpty(imagesByColor)
       ? null
-      : imagesByColor[curentColorEntry.color.name].extraImages;
-    const isColorOnModelLegible = curentColorEntry.miscInfo.hasOnModelAltImages;
+      : imagesByColor[isFavoriteView ? Object.keys(imagesByColor)[0] : curentColorEntry.color.name]
+          .extraImages;
+    const isColorOnModelLegible = getIsColorOnModelLegible(curentColorEntry);
     const regularAltImages = mainAndAltImages
       ? mainAndAltImages.filter(imgs => !imgs.isOnModalImage)
       : null;

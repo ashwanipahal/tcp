@@ -55,6 +55,13 @@ export const loadXappConfigData = payload => {
   };
 };
 
+export const loadXappConfigDataOtherBrand = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG_OTHER_BRAND,
+  };
+};
+
 export const setBossBopisFlags = payload => {
   return {
     payload,

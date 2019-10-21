@@ -616,6 +616,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       fontSizeVariation="small"
       href="#"
       locator=""
+      margins={null}
       noLink={true}
       onPress={[Function]}
       target="_blank"

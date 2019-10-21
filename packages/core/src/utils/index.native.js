@@ -61,3 +61,5 @@ export {
   getTranslateDateInformation,
   parseBoolean,
 } from './utils';
+
+export { getLoading } from './JsxUtils.app';
