@@ -47,6 +47,8 @@ exports[`RecentOrders component should renders correctly 2`] = `
     />
   </Styled(View)>
   <OrdersListItem
+    componentProps={Object {}}
+    handleComponentChange={[Function]}
     labels={Object {}}
     orderItem={
       Object {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrdersListItemvanilla from '../views/OrdersListItem.view.native';
+import { OrdersListItemVanilla } from '../views/OrdersListItem.view.native';
 
 describe('OrdersListItem component', () => {
   it('should renders correctly', () => {
@@ -8,7 +8,7 @@ describe('OrdersListItem component', () => {
       labels: {},
       orderItem: {},
     };
-    const component = shallow(<OrdersListItemvanilla {...props} />);
+    const component = shallow(<OrdersListItemVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -27,7 +27,7 @@ describe('OrdersListItem component', () => {
         orderTracking: 'N/A',
       },
     };
-    const component = shallow(<OrdersListItemvanilla {...props} />);
+    const component = shallow(<OrdersListItemVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

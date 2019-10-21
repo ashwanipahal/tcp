@@ -2,10 +2,9 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { Styles, ErrorWrapper } from '../styles/CreateAccounPage.style.native';
+import { Styles } from '../styles/CreateAccounPage.style.native';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   setUserLoginDetails,
   resetTouchPassword,
@@ -24,6 +23,7 @@ class CreateAccounPage extends React.Component {
     showLogin: PropTypes.func.isRequired,
     userplccCardNumber: PropTypes.string,
     userplccCardId: PropTypes.string,
+    toastMessage: PropTypes.func,
   };
 
   static defaultProps = {
@@ -35,6 +35,7 @@ class CreateAccounPage extends React.Component {
     error: {},
     userplccCardNumber: '',
     userplccCardId: '',
+    toastMessage: () => {},
   };
 
   constructor(props) {
@@ -46,6 +47,13 @@ class CreateAccounPage extends React.Component {
     isSupportedTouch().then(biometryType => {
       this.setState({ getTouchStatus: biometryType });
     });
+  }
+
+  componentDidUpdate() {
+    const { error, toastMessage } = this.props;
+    if (error) {
+      toastMessage(error);
+    }
   }
 
   onPwdHideShowClick = value => {
@@ -74,7 +82,6 @@ class CreateAccounPage extends React.Component {
       labels,
       isIAgreeChecked,
       onRequestClose,
-      error,
       showForgotPasswordForm,
       showLogin,
       userplccCardNumber,
@@ -93,17 +100,7 @@ class CreateAccounPage extends React.Component {
             labels={labels}
             showLogin={showLogin}
           />
-          {!!error && (
-            <ErrorWrapper>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="semibold"
-                fontSize="fs12"
-                color="error"
-                text={error}
-              />
-            </ErrorWrapper>
-          )}
+
           <CreateAccountForm
             getTouchStatus={getTouchStatus}
             labels={labels}

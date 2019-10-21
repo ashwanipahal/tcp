@@ -17,13 +17,13 @@ export const defaultCurrencies = [
   {
     id: 'USD',
     displayName: 'Dollars',
-    value: '1.0',
+    exchangevalue: '1.0',
     merchantMargin: '1.0',
   },
   {
     id: 'CAD',
     displayName: 'Canada Dollar',
-    value: '1.0',
+    exchangevalue: '1.0',
     merchantMargin: '1.0',
   },
 ];

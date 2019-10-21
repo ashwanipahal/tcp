@@ -12,11 +12,16 @@ import {
 import { BodyCopyWithSpacing } from '../../../../../atoms/styledWrapper';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 import {
   getPrices,
   getProductListToPathInMobileApp,
 } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+
+const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag) => {
+  return fromBagPage ? handleUpdateItem : handleAddToBag;
+};
 
 const ProductCustomizeFormPart = props => {
   const {
@@ -28,9 +33,17 @@ const ProductCustomizeFormPart = props => {
     addToBagError,
     currentColorEntry,
     imageUrl,
+    isMultiItemQVModal,
     goToPDPPageMobile,
     onChangeColor,
+    handleUpdateItem,
+    formRef,
+    formEnabled,
+    onInputSelectionChange,
+    ...otherProps
   } = props;
+
+  const { fromBagPage, productInfoFromBag } = otherProps;
 
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const { badge2, listPrice, offerPrice } = prices;
@@ -109,12 +122,26 @@ const ProductCustomizeFormPart = props => {
       </ProductSummaryContainer>
 
       <ProductAddToBagContainer
+        showAddToBagCTA={!isMultiItemQVModal}
+        showColorChips={!isMultiItemQVModal}
         onChangeColor={onChangeColor}
         plpLabels={plpLabels}
         currentProduct={productInfo}
-        handleFormSubmit={handleAddToBag}
+        handleFormSubmit={handleFormSubmit(fromBagPage, handleUpdateItem, handleAddToBag)}
         errorOnHandleSubmit={addToBagError}
+        fromBagPage={fromBagPage}
+        productInfoFromBag={productInfoFromBag}
+        formRef={formRef}
+        formEnabled={formEnabled}
       />
+      {isMultiItemQVModal && (
+        <div className="inputCheckBox">
+          <InputCheckbox
+            execOnChangeByDefault={false}
+            input={{ value: formEnabled, onChange: onInputSelectionChange }}
+          />
+        </div>
+      )}
     </PickUpSkUSectionContainer>
   );
 };
@@ -127,14 +154,19 @@ ProductCustomizeFormPart.propTypes = {
   currentColorEntry: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
+  handleUpdateItem: PropTypes.func.isRequired,
   formValues: PropTypes.shape({}).isRequired,
   quickViewLabels: PropTypes.shape({
     addToBag: PropTypes.string,
     viewProductDetails: PropTypes.string,
   }).isRequired,
+  isMultiItemQVModal: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   currency: PropTypes.string,
   addToBagError: PropTypes.string,
+  formRef: PropTypes.shape({}).isRequired,
+  formEnabled: PropTypes.bool.isRequired,
+  onInputSelectionChange: PropTypes.func.isRequired,
 };
 
 ProductCustomizeFormPart.defaultProps = {

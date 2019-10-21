@@ -106,10 +106,6 @@ describe('Shipping Form', () => {
     });
     tree.instance().toggleIsEditing();
     expect(tree.state('isEditing')).toBe(true);
-    const e = { preventDefault: jest.fn() };
-    tree.instance().toggleAddEditModal({ type: 'add', e });
-    expect(tree.state('modalType')).toBe('add');
-    expect(tree.state('modalState')).toBe(true);
 
     expect(tree).toMatchSnapshot();
   });
@@ -148,10 +144,6 @@ describe('Shipping Form', () => {
       modalType: 'add',
       isEditing: false,
     });
-    const e = { preventDefault: jest.fn() };
-    tree.instance().toggleAddEditModal({ type: 'add', e });
-    expect(tree.state('modalType')).toBe('add');
-    expect(tree.state('modalState')).toBe(false);
 
     expect(tree).toMatchSnapshot();
   });

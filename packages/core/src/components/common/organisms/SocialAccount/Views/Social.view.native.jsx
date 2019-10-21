@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, NativeModules } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -17,6 +17,7 @@ import ImageComp from '../../../atoms/Image';
 import BodyCopy from '../../../atoms/BodyCopy';
 import { getLabelValue } from '../../../../../utils/utils';
 import SOCIAL_ICONS from '../social.icons.constants';
+import getLinkedSocialAccountLabel from '../utils';
 
 class Socialview extends React.PureComponent {
   static propTypes = {
@@ -28,6 +29,11 @@ class Socialview extends React.PureComponent {
     setPointsModal: PropTypes.func.isRequired,
     handleComponentChange: PropTypes.func.isRequired,
     isPlcc: PropTypes.isRequired,
+    componentProps: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    componentProps: {},
   };
 
   constructor(props) {
@@ -39,9 +45,28 @@ class Socialview extends React.PureComponent {
       InstagramEnable: SOCIAL_ICONS.INSTAGRAM_ENABLE_ICON,
       FacebookDisable: SOCIAL_ICONS.FACEBOOK_DISABLE_ICON,
       InstagramDisable: SOCIAL_ICONS.INSTAGRAM_DISABLE_ICON,
+      TwitterEnable: SOCIAL_ICONS.TWITTER_ENABLE_ICON,
+      TwitterDisable: SOCIAL_ICONS.TWITTER_DISABLE_ICON,
       Connected: SOCIAL_ICONS.CLOSE_ICON,
       Disconnected: SOCIAL_ICONS.PLUS_ICON,
     };
+  }
+
+  componentDidMount() {
+    // handling of auto social modal - facebook and instagram
+    const {
+      componentProps: { activityModalSocialAccount },
+    } = this.props;
+
+    if (activityModalSocialAccount) {
+      if (activityModalSocialAccount === 'facebook') {
+        this.handleSocialNetwork('Facebook', false);
+      } else if (activityModalSocialAccount === 'instagram') {
+        this.handleSocialNetwork('Instagram', false);
+      } else {
+        this.handleSocialNetwork('Twitter', false);
+      }
+    }
   }
 
   /**
@@ -135,7 +160,7 @@ class Socialview extends React.PureComponent {
                   <BodyCopy
                     fontSize="fs14"
                     textAlign="center"
-                    text={getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                    text={getLinkedSocialAccountLabel(this.pointsInformation.activity, labels)}
                   />
                 </TextWithSpacing>
 
@@ -188,7 +213,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook' || prop === 'instagram') {
+      if (prop === 'facebook' || prop === 'instagram' || prop === 'twitter') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
@@ -254,9 +279,20 @@ class Socialview extends React.PureComponent {
         return this.logoutApp('facebook');
       case 'Instagram':
         if (!isConnected) {
-          this.instagramLogin.show();
+          return this.instagramLogin.show();
         }
         return this.logoutApp('instagram');
+      case 'Twitter':
+        if (!isConnected) {
+          const { TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = getAPIConfig();
+          const { RNTwitterSignIn } = NativeModules;
+          RNTwitterSignIn.init(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
+          return RNTwitterSignIn.logIn().then(loginData => {
+            const { authToken, userID } = loginData;
+            this.dispatchSaveSocial('twitter', authToken, userID);
+          });
+        }
+        return this.logoutApp('twitter');
       default:
         return null;
     }
@@ -264,6 +300,7 @@ class Socialview extends React.PureComponent {
 
   render() {
     const { getSocialAcc, labels } = this.props;
+
     if (Object.keys(getSocialAcc).length) {
       this.refactorSocialDetails(getSocialAcc);
     }

@@ -29,25 +29,28 @@ class ProductsGrid extends React.Component {
   static propTypes = {
     isLoadingMore: PropTypes.bool,
     productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
-    getMoreProducts: PropTypes.func,
+    getMoreProducts: PropTypes.func.isRequired,
     onPickUpOpenClick: PropTypes.func,
     onQuickViewOpenClick: PropTypes.func,
     isGridView: PropTypes.bool,
     className: PropTypes.string,
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
+    currency: PropTypes.string,
+    currencyExchange: PropTypes.string,
   };
 
   static defaultProps = {
     isLoadingMore: false,
     productsBlock: [],
-    getMoreProducts: () => null,
     onPickUpOpenClick: null,
     onQuickViewOpenClick: null,
     isGridView: false,
     className: '',
     labels: '',
     productTileVariation: '',
+    currency: 'USD',
+    currencyExchange: 1,
   };
 
   constructor(props, context) {
@@ -139,6 +142,8 @@ class ProductsGrid extends React.Component {
       onPickUpOpenClick,
       onQuickViewOpenClick,
       productTileVariation,
+      currency,
+      currencyExchange,
       ...otherProps
     } = this.props;
 
@@ -168,6 +173,8 @@ class ProductsGrid extends React.Component {
                         labels={labels}
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
+                        currency={currency}
+                        currencyExchange={currencyExchange}
                         {...otherProps}
                       />
                     );

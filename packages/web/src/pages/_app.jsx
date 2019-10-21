@@ -173,6 +173,7 @@ class TCPWebApp extends App {
           ...payload,
         };
       }
+
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
@@ -198,9 +199,13 @@ class TCPWebApp extends App {
     return Object.assign({}, pageProps, compProps);
   }
 
-  getSEOTags = pageId => {
-    const seoConfig = deriveSEOTags(pageId);
-    return <SEOTags seoConfig={seoConfig} />;
+  getSEOTags = (pageId, store, router) => {
+    // Just a sample - any store specific data should be set in this
+    if (pageId) {
+      const seoConfig = deriveSEOTags(pageId, store, router);
+      return <SEOTags seoConfig={seoConfig} />;
+    }
+    return null;
   };
 
   render() {
@@ -214,13 +219,14 @@ class TCPWebApp extends App {
         isNonCheckoutPage = false;
       }
     }
+
     return (
       <Container>
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {Component.pageId ? this.getSEOTags(Component.pageId) : null}
+              {Component.pageId ? this.getSEOTags(Component.pageId, store, router) : null}
               <Header />
               <CheckoutHeader />
               <Loader />

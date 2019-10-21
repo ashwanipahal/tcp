@@ -37,9 +37,10 @@ type Props = {
  * @param {Object} meta redux-form meta object to analyse the success state. Based on this class will be returned.
  * @return {string} Returns a class name if the form success validation criteria matches else blank string.
  */
-const getValidationSuccessClass = (showSuccessCheck, meta) => {
+const getValidationSuccessClass = (enableSuccessCheck, showSuccessCheck, meta) => {
   const { invalid, pristine, asyncValidating, active } = meta;
-  return showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating)
+  return enableSuccessCheck &&
+    (showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating))
     ? 'textbox_validation_success'
     : '';
 };
@@ -67,8 +68,9 @@ const TextBox = ({
 
   return (
     <label
-      htmlFor={input.name}
+      htmlFor={id}
       className={`${className} input-fields-wrapper ${getValidationSuccessClass(
+        enableSuccessCheck,
         showSuccessCheck,
         meta
       )}`}

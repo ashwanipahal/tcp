@@ -87,44 +87,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearSmsSignupForm());
       dispatch(submitSmsSignup(payload));
     },
-    /* Validate function for email signup redux-for. check asyncValidate of redux-form */
-    emailSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
-      const { fieldName } = props;
-      const email = values[fieldName];
-
-      return email
-        ? emailSignupAbstractor.verifyEmail(email).then(subscription => {
-            if (subscription.error) {
-              const {
-                labels: { validationErrorLabel },
-              } = props;
-              const error = {
-                [fieldName]: validationErrorLabel,
-              };
-              // eslint-disable-next-line prefer-promise-reject-errors
-              return Promise.reject({ ...error, _error: error });
-            }
-
-            return subscription;
-          })
-        : Promise.resolve();
+    validateSignupEmail: values => {
+      return emailSignupAbstractor.verifyEmail(values.signup);
     },
-    /* Validate function for sms signup redux-form; check asyncValidate of redux-form */
-    smsSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
-      const { fieldName } = props;
-
-      const phoneNumber = values[fieldName];
-      if (phoneNumber.length && !validatePhoneNumber(phoneNumber)) {
-        const {
-          labels: { validationErrorLabel },
-        } = props;
-        const error = {
-          [fieldName]: validationErrorLabel,
-        };
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject({ ...error, _error: error });
-      }
-      return Promise.resolve();
+    validateSignupSmsPhoneNumber: values => {
+      return validatePhoneNumber(values.footerTopSmsSignup)
+        ? Promise.resolve({})
+        : Promise.reject();
     },
     openTrackOrder: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
