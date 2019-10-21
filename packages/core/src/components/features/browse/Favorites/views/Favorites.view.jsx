@@ -89,13 +89,13 @@ const FavoritesView = props => {
     {
       name: 'gymboreeOption',
       dataLocator: 'gymboree-option',
-      brandLabel: labels.Gymboree,
+      brandLabel: labels.lbl_fav_gym,
       checked: gymSelected,
     },
     {
       name: 'tcpOption',
       dataLocator: 'tcp-option',
-      brandLabel: labels.TCP,
+      brandLabel: labels.lbl_fav_tcp,
       checked: tcpSelected,
     },
   ];
@@ -151,9 +151,10 @@ const FavoritesView = props => {
         </Col>
       </Row>
       <Row>
-        <Col colSize={{ large: 12, medium: 4, small: 6 }}>
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <div>
             <ul className="brand-option-list">
+              <li className="brand-options is-label">{labels.lbl_fav_brand}</li>
               {brandOptions.map(({ name, dataLocator, brandLabel, checked }) => (
                 <li className="brand-options" key={name}>
                   <InputCheckBox

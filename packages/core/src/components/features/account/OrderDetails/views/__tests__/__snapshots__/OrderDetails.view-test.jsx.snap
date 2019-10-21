@@ -102,6 +102,9 @@ exports[`Order Summary Details component should renders BOSSOrder and Bopis orde
       </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
+  <div
+    className="elem-mt-XL"
+  />
 </div>
 `;
 
@@ -207,6 +210,9 @@ exports[`Order Summary Details component should renders CanceledItems items 1`] 
       </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
+  <div
+    className="elem-mt-XL"
+  />
 </div>
 `;
 
@@ -312,6 +318,9 @@ exports[`Order Summary Details component should renders Out of Stock items 1`] =
       </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
+  <div
+    className="elem-mt-XL"
+  />
 </div>
 `;
 
@@ -417,5 +426,8 @@ exports[`Order Summary Details component should renders correctly 1`] = `
       </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
+  <div
+    className="elem-mt-XL"
+  />
 </div>
 `;

@@ -15,6 +15,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
 >
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -67,6 +68,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -119,6 +121,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -171,6 +174,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -223,6 +227,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
   </Styled(Row)>
   <Styled(Row)
     className="items-total elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -291,6 +296,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
 >
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -343,6 +349,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -395,6 +402,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -447,6 +455,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -499,6 +508,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
   </Styled(Row)>
   <Styled(Row)
     className="items-total elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -551,6 +561,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS total-value"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -619,6 +630,7 @@ exports[`Order Summary Details component should renders correctly with free ship
 >
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -671,6 +683,7 @@ exports[`Order Summary Details component should renders correctly with free ship
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -723,6 +736,7 @@ exports[`Order Summary Details component should renders correctly with free ship
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -775,6 +789,7 @@ exports[`Order Summary Details component should renders correctly with free ship
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -827,6 +842,7 @@ exports[`Order Summary Details component should renders correctly with free ship
   </Styled(Row)>
   <Styled(Row)
     className="items-total elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -879,6 +895,7 @@ exports[`Order Summary Details component should renders correctly with free ship
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS total-value"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -947,6 +964,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
 >
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -999,6 +1017,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -1051,6 +1070,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -1103,6 +1123,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -1155,6 +1176,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
   </Styled(Row)>
   <Styled(Row)
     className="items-total elem-mb-XS"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={
@@ -1207,6 +1229,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
   </Styled(Row)>
   <Styled(Row)
     className="elem-mb-XS total-value"
+    fullBleed={true}
   >
     <Styled(Col)
       colSize={

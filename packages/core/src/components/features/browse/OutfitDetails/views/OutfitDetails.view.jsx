@@ -16,6 +16,8 @@ const OutfitDetailsView = ({
   currentState,
   addToBagError,
   addToBagErrorId,
+  currencyExchange,
+  currencySymbol,
   labels,
 }) => {
   return (
@@ -48,6 +50,8 @@ const OutfitDetailsView = ({
                     }}
                     className="outfiting-list-details"
                     addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
+                    currencySymbol={currencySymbol}
+                    currencyExchange={currencyExchange}
                   />
                 </li>
               ))}
@@ -79,6 +83,8 @@ OutfitDetailsView.propTypes = {
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  currencyExchange: PropTypes.string,
+  currencySymbol: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -89,6 +95,8 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   addToBagError: '',
   addToBagErrorId: '',
+  currencyExchange: 1,
+  currencySymbol: 'USD',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);
