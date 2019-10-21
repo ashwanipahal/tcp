@@ -49,10 +49,10 @@ import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraP
 import OrdersReducer from '@tcp/core/src/components/features/account/Orders/container/Orders.reducer';
 import OrderDetailsDataReducer from '@tcp/core/src/components/features/account/OrderDetails/container/OrderDetails.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
+import FavoriteReducer from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
-import FavoritesReducer from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -111,10 +111,10 @@ import {
   ORDERS_REDUCER_KEY,
   ORDERDETAILS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
+  FAVORITES_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
   OUTFIT_DETAILS_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
-  FAVORITES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -227,10 +227,10 @@ const rootReducer = combineReducers({
   [ORDERS_REDUCER_KEY]: OrdersReducer,
   [ORDERDETAILS_REDUCER_KEY]: OrderDetailsDataReducer,
   [SEARCH_REDUCER_KEY]: SearchBarReducer,
+  [FAVORITES_REDUCER_KEY]: FavoriteReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: filteredRecommendationsReducers,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
-  [FAVORITES_REDUCER_KEY]: FavoritesReducer,
 });
 
 const rootPersistConfig = {
