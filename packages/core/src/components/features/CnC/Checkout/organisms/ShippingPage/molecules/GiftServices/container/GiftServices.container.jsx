@@ -12,7 +12,7 @@ import {
   getDetailsContentZymboorie,
 } from './GiftServices.selector';
 import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
-import { isGymboree } from '../../../../../../../../../utils';
+import { isGymboree, isCanada } from '../../../../../../../../../utils';
 
 class GiftServicesContainer extends React.PureComponent {
   constructor(props) {
@@ -64,34 +64,37 @@ class GiftServicesContainer extends React.PureComponent {
       currencySymbol,
       detailsRichTextGymboree,
     } = this.props;
-    const optionId = giftWrap ? giftWrap.get('optionId') : '';
-    const message = giftWrap ? giftWrap.get('message') : '';
-    const hasGiftWrapping = giftWrap && !!giftWrap.size;
-    const brand = giftWrap ? giftWrap.get('brand') : '';
-    const SelectedBrand = this.getBrandForGiftServices();
-    const updateLabels = {
-      ...labels,
-      DETAILS_RICH_TEXT: detailsRichText,
-      DETAILS_RICH_TEXT_GYM: detailsRichTextGymboree,
-    };
-    return (
-      <>
-        {giftWrapOptions && (
-          <GiftServices
-            labels={updateLabels}
-            formName={formName}
-            dispatch={dispatch}
-            isGiftServicesChecked={giftWrap && giftWrap.size}
-            formSection={formSection}
-            giftWrapOptions={giftWrapOptions}
-            initialValues={{ optionId, message, hasGiftWrapping, brand }}
-            currencySymbol={currencySymbol}
-            handleToggle={this.handleToggle}
-            SelectedBrand={SelectedBrand}
-          />
-        )}
-      </>
-    );
+    if (!isCanada()) {
+      const optionId = giftWrap ? giftWrap.get('optionId') : '';
+      const message = giftWrap ? giftWrap.get('message') : '';
+      const hasGiftWrapping = giftWrap && !!giftWrap.size;
+      const brand = giftWrap ? giftWrap.get('brand') : '';
+      const SelectedBrand = this.getBrandForGiftServices();
+      const updateLabels = {
+        ...labels,
+        DETAILS_RICH_TEXT: detailsRichText,
+        DETAILS_RICH_TEXT_GYM: detailsRichTextGymboree,
+      };
+      return (
+        <>
+          {giftWrapOptions && (
+            <GiftServices
+              labels={updateLabels}
+              formName={formName}
+              dispatch={dispatch}
+              isGiftServicesChecked={giftWrap && giftWrap.size}
+              formSection={formSection}
+              giftWrapOptions={giftWrapOptions}
+              initialValues={{ optionId, message, hasGiftWrapping, brand }}
+              currencySymbol={currencySymbol}
+              handleToggle={this.handleToggle}
+              SelectedBrand={SelectedBrand}
+            />
+          )}
+        </>
+      );
+    }
+    return null;
   }
 }
 GiftServicesContainer.propTypes = {

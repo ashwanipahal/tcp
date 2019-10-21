@@ -18,7 +18,6 @@ exports[`Add gift card form component render error message 1`] = `
   }
   onAddGiftCardClick={[MockFunction]}
   onClearError={[MockFunction]}
-  showNotification={false}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
   untouch={[MockFunction]}
@@ -264,7 +263,6 @@ exports[`Add gift card form component render error message 1`] = `
 exports[`Add gift card form component should render component correctly 1`] = `
 <ScrollViewMock
   addGiftCardError={true}
-  addGiftCardResponse={null}
   change={[MockFunction]}
   goBackToPayment={[MockFunction]}
   handleSubmit={[MockFunction]}
@@ -279,7 +277,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
   onAddGiftCardClick={[MockFunction]}
   onClearError={[MockFunction]}
-  showNotification={false}
   showsVerticalScrollIndicator={false}
   toggleModal={[Function]}
   untouch={[MockFunction]}

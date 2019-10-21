@@ -44,6 +44,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       cartBopisStoresList,
       handleAddTobag,
       handlePickupRadioBtn,
+      handleUpdatePickUpItem,
       selectedStoreId,
       isBossSelected,
       isShowMessage,
@@ -53,6 +54,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       <PickupStoreListContainer
         isShoppingBag={isShoppingBag}
         onStoreSelect={handleAddTobag}
+        onStoreUpdate={handleUpdatePickUpItem}
         onPickupRadioBtnToggle={handlePickupRadioBtn}
         isResultOfSearchingInCartStores={isSearchOnlyInCartStores}
         onCancel={onCloseClick}

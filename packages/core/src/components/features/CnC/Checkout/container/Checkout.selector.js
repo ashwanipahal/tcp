@@ -558,6 +558,11 @@ const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
+export const getAlternateFormFieldsExpress = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'pickUpAlternateExpress');
+};
+
 export const isPickupAlt = createSelector(
   getPickupAltValues,
   pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
