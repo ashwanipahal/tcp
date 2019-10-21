@@ -13,12 +13,13 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       height: 400px;
     }
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       height: 540px;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    height: 540px;
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   }
