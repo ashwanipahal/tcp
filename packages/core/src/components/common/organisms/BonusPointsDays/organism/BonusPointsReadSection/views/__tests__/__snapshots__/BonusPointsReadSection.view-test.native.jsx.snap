@@ -25,6 +25,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
         dataLocator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
         text="details"
         visible={false}

@@ -202,16 +202,20 @@ export function* updateExistingWishList(formData) {
 }
 
 export function* deleteWishListItemById({ payload }) {
-  const state = yield select();
-  const activeWishlistObject =
-    state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
-  const activeWishlistId = activeWishlistObject.id;
-  const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, payload.itemId);
-  if (!deleteItemResponse.success) {
-    throw deleteItemResponse;
+  try {
+    const state = yield select();
+    const activeWishlistObject =
+      state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
+    const activeWishlistId = activeWishlistObject.id;
+    const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, payload);
+    if (!deleteItemResponse.success) {
+      throw deleteItemResponse;
+    }
+    yield put(setDeletedItemAction(payload.itemId));
+    yield* loadWishlistsSummaries(activeWishlistId);
+  } catch (err) {
+    yield null;
   }
-  yield put(setDeletedItemAction(payload.itemId));
-  yield* loadWishlistsSummaries(activeWishlistId);
 }
 
 export function* updateWishListItem(formData) {
@@ -258,7 +262,7 @@ export function* sendWishListMail(formData) {
   }
 }
 
-function* ProductListingSaga() {
+function* FavoriteSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SET_FAVORITES, addItemsToWishlist);
   yield takeLatest(FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST, loadWishlistsSummaries);
   yield takeLatest(FAVORITES_CONSTANTS.LOAD_ACTIVE_FAVORITES_WISHLIST, loadActiveWishlist);
@@ -271,4 +275,4 @@ function* ProductListingSaga() {
   yield takeLatest(FAVORITES_CONSTANTS.SEND_WISHLIST_EMAIL, sendWishListMail);
 }
 
-export default ProductListingSaga;
+export default FavoriteSaga;

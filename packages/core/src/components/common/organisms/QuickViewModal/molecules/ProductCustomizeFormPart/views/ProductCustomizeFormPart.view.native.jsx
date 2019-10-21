@@ -12,6 +12,7 @@ import {
 import { BodyCopyWithSpacing } from '../../../../../atoms/styledWrapper';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductAddToBagContainer from '../../../../../molecules/ProductAddToBag/container/ProductAddToBag.container';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 import {
   getPrices,
@@ -28,8 +29,12 @@ const ProductCustomizeFormPart = props => {
     addToBagError,
     currentColorEntry,
     imageUrl,
+    isMultiItemQVModal,
     goToPDPPageMobile,
     onChangeColor,
+    formRef,
+    formEnabled,
+    onInputSelectionChange,
   } = props;
 
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -103,12 +108,24 @@ const ProductCustomizeFormPart = props => {
       </ProductSummaryContainer>
 
       <ProductAddToBagContainer
+        showAddToBagCTA={!isMultiItemQVModal}
+        showColorChips={!isMultiItemQVModal}
         onChangeColor={onChangeColor}
         plpLabels={plpLabels}
         currentProduct={productInfo}
         handleFormSubmit={handleAddToBag}
         errorOnHandleSubmit={addToBagError}
+        formRef={formRef}
+        formEnabled={formEnabled}
       />
+      {isMultiItemQVModal && (
+        <div className="inputCheckBox">
+          <InputCheckbox
+            execOnChangeByDefault={false}
+            input={{ value: formEnabled, onChange: onInputSelectionChange }}
+          />
+        </div>
+      )}
     </PickUpSkUSectionContainer>
   );
 };
@@ -126,9 +143,13 @@ ProductCustomizeFormPart.propTypes = {
     addToBag: PropTypes.string,
     viewProductDetails: PropTypes.string,
   }).isRequired,
+  isMultiItemQVModal: PropTypes.bool.isRequired,
   productInfo: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
   currency: PropTypes.string,
   addToBagError: PropTypes.string,
+  formRef: PropTypes.shape({}).isRequired,
+  formEnabled: PropTypes.bool.isRequired,
+  onInputSelectionChange: PropTypes.func.isRequired,
 };
 
 ProductCustomizeFormPart.defaultProps = {

@@ -88,6 +88,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -455,6 +456,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -773,6 +775,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -1140,6 +1143,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",

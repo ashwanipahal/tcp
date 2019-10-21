@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getCardList } from '../../container/Payment.actions';
@@ -13,13 +14,24 @@ import utils, { isMobileApp } from '../../../../../../utils';
 import { getFormValidationErrorMessages } from '../../../Account/container/Account.selectors';
 
 class AddGiftCardContainer extends React.Component {
-  componentDidUpdate() {
-    const { addGiftCardResponse, toggleModal, getCardListAction } = this.props;
+  componentDidUpdate(prevProps) {
+    const {
+      addGiftCardResponse,
+      toggleModal,
+      getCardListAction,
+      getAddGiftCardErr,
+      showNotification,
+      toastMessage,
+    } = this.props;
     if (addGiftCardResponse === 'success') {
       if (isMobileApp()) {
         toggleModal();
         getCardListAction();
       } else this.goBackToPayment();
+    }
+
+    if (isMobileApp() && !prevProps.showNotification && showNotification) {
+      toastMessage(getAddGiftCardErr);
     }
   }
 
@@ -70,6 +82,9 @@ export const mapDispatchToProps = dispatch => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
+    },
   };
 };
 
@@ -92,6 +107,7 @@ AddGiftCardContainer.propTypes = {
   getCardListAction: PropTypes.func,
   formErrorMessage: PropTypes.shape({}).isRequired,
   showNotification: PropTypes.bool.isRequired,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 AddGiftCardContainer.defaultProps = {
