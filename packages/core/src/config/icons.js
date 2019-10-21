@@ -13,6 +13,7 @@ export default {
   'icon-carrot-white': '/static/images/carrot-icon-white.svg',
   'icon-done': '/static/images/done.png',
   'footer__mpr-container--col1': '/static/images/mp-rewards-orange.png',
+  'footer__mpr-container--col1-CA': '/static/images/airmiles-logo.png',
   'footer__mpr-container--col2': '/static/images/mp-rewards-blue.png',
   'header__brand-tab--tcp': '/static/images/tcp-logo.svg',
   'header__brand-tab-gymboree': '/static/images/gymboree-logo.svg',

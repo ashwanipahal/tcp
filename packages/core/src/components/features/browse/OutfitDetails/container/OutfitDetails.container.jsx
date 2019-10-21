@@ -19,6 +19,7 @@ import {
   getIsInternationalShipping,
   getCurrentCurrency,
 } from '../../../../../reduxStore/selectors/session.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
   addToCartEcom,
@@ -27,6 +28,7 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
   componentDidMount() {
@@ -39,6 +41,9 @@ class OutfitDetailsContainer extends React.PureComponent {
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
+      // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
+      // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
+      // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
       const { vendorColorProductIdsList, outfitId } = query;
@@ -67,9 +72,11 @@ class OutfitDetailsContainer extends React.PureComponent {
       priceCurrency,
       currencyAttributes,
       addToBagEcom,
+      addToFavorites,
       currentState,
       addToBagError,
       addToBagErrorId,
+      isPickupModalOpen,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -88,6 +95,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           currentState={currentState}
           addToBagError={addToBagError}
           addToBagErrorId={addToBagErrorId}
+          isPickupModalOpen={isPickupModalOpen}
+          addToFavorites={addToFavorites}
         />
       );
     }
@@ -111,6 +120,7 @@ const mapStateToProps = state => {
     addToBagError: getAddedToBagError(state),
     addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 
@@ -124,6 +134,9 @@ function mapDispatchToProps(dispatch) {
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    addToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
   };
 }
@@ -146,6 +159,8 @@ OutfitDetailsContainer.propTypes = {
   navigation: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  isPickupModalOpen: PropTypes.bool,
+  addToFavorites: PropTypes.func.isRequired,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -163,6 +178,7 @@ OutfitDetailsContainer.defaultProps = {
   currencyAttributes: { exchangevalue: 1 },
   addToBagError: '',
   addToBagErrorId: '',
+  isPickupModalOpen: false,
 };
 
 export default connect(
