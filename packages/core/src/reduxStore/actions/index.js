@@ -122,9 +122,10 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
-export const fetchPageLayout = payload => {
+export const fetchPageLayout = (payload, layoutName) => {
   return {
     payload,
+    layoutName,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };

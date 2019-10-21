@@ -64,6 +64,7 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
   }
 };
 
+// eslint-disable-next-line complexity
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
@@ -92,6 +93,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'categoryPromo':
+      resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
     default:
       importOtherGraphQLQueries({

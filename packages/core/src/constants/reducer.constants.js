@@ -210,6 +210,10 @@ export const ORDERS_ACTION_PATTERN = '@@Orders-';
 export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
 export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
+// Category List Reducer
+export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
+export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
