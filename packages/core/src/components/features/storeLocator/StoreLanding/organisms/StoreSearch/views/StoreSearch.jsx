@@ -256,13 +256,14 @@ StoreSearch.propTypes = {
   toggleMap: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
-  showSubmitError: PropTypes.func.isRequired,
+  showSubmitError: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
   mapView: false,
+  showSubmitError: () => false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));
