@@ -10,7 +10,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      imageUrls={Array []}
+      imageUrls={null}
       onImageClick={[Function]}
     />
     <Styled(ProductSummary)
