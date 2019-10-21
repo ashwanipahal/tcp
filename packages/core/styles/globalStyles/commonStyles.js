@@ -133,6 +133,10 @@ export default css`
     margin: 0 !important;
   }
 
+  .padding-none {
+    padding: 0 !important;
+  }
+
   ul {
     padding: 0px;
     margin: 0px;
@@ -173,6 +177,10 @@ export default css`
 
   .capitalize {
     text-transform: uppercase;
+  }
+
+  .capFirstLetter {
+    text-transform: capitalize;
   }
 
   ${props => {

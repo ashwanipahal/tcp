@@ -2,6 +2,7 @@
 
 exports[`ProductPickupVanilla should render correctly 1`] = `
 <Styled(View)
+  borderWidth={1}
   margins="40px 0 0 0"
 >
   <Styled(View)>

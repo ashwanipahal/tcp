@@ -11,8 +11,8 @@ import { Row, Col, BodyCopy } from '@tcp/core/src/components/common/atoms';
 const OrderGroupHeader = props => {
   const { label, message } = props;
   return (
-    <Row>
-      <Col className="elem-mb-MED" colSize={{ large: 12, medium: 8, small: 6 }}>
+    <Row className="elem-mt-MED" fullBleed>
+      <Col colSize={{ large: 12, medium: 8, small: 6 }}>
         <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
           {label}
         </BodyCopy>

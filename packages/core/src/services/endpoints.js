@@ -363,7 +363,7 @@ const endpoints = {
   },
   getStyliticsProductViewById: {
     method: API_METHODS.GET,
-    URI: 'https://widget-api.stylitics.com/api/outfits',
+    URI: 'https://widget-api-staging.stylitics.com/api/outfits',
   },
   getDetailedOrderHistory: {
     method: 'GET',
