@@ -24,6 +24,7 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -38,5 +39,6 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(View)>
   </Styled(TouchableOpacity)>
+  <RelatedOutfitsSlots />
 </View>
 `;

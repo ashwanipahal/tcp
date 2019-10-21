@@ -46,6 +46,7 @@ export const FONT_SIZES = {
   fs36: '36px',
   fs32: '32px',
   fs28: '28px',
+  fs30: '30px',
   fs26: '26px',
   fs25: '25px',
   fs24: '24px',

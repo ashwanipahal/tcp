@@ -17,6 +17,7 @@ type Props = {
   onPress?: Function,
   accessibilityLabel?: string,
   colorName?: string,
+  margins?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -89,6 +90,7 @@ Anchor.defaultProps = {
   onPress: null,
   accessibilityLabel: '',
   colorName: null,
+  margins: null,
 };
 
 export default withStyles(Anchor, AnchorStyles);

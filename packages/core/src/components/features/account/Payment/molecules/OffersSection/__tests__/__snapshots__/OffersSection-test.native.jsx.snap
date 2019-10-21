@@ -24,6 +24,7 @@ exports[`Offers Component should render correctly 1`] = `
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {

@@ -199,7 +199,7 @@ const renderWishListItem = (item, labels) => (
     </p>
     <p className="wish-list-count-section">
       <span className="wish-list-count">{item.itemsCount}</span>
-      <span>{labels.items}</span>
+      <span>{labels.lbl_fav_items}</span>
     </p>
   </div>
 );
@@ -214,7 +214,7 @@ export const CreateWishList = props => {
   } = props;
   return (
     <div className="create-wish-list-section">
-      <h4 className="create-wish-list-header">{labels.MyFavWishList}</h4>
+      <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
       <ul>
         {wishlistsSummaries.map(item => (
           <li className="wish-list-item">
@@ -238,7 +238,7 @@ export const CreateWishList = props => {
         data-locator="create-new-wish-list"
         className="create-new__button"
       >
-        {labels.createNewList}
+        {labels.lbl_fav_createNewList}
       </Button>
     </div>
   );
@@ -268,9 +268,11 @@ export const ProductSKUInfo = props => {
 export const PurchaseSection = (quantity, labels, quantityPurchased) =>
   !!quantity && (
     <div className="purchase-section">
-      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-      {quantityPurchased}/{quantity}
-      <span>{labels.Purchased}</span>
+      <span>
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+        {quantityPurchased}/{quantity}
+      </span>
+      <span className="is-purchase-label">{labels.lbl_fav_purchased}</span>
     </div>
   );
 
@@ -309,7 +311,7 @@ export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
         }}
         noLink
       >
-        {labels.edit}
+        {labels.lbl_fav_edit}
       </Anchor>
     )
   );

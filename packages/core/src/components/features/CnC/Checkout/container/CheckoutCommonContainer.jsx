@@ -28,6 +28,9 @@ import selectors, {
   getCheckoutStage,
   getGiftServicesSend,
   isUsSite as isUsSiteUser,
+  getPickupAltValues,
+  isPickupAlt,
+  getPickupValues,
 } from './Checkout.selector';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
@@ -39,7 +42,6 @@ import {
   getIsRegisteredUserCallDone,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
-import { isCanada } from '../../../../../utils';
 
 const {
   getSmsSignUpLabels,
@@ -68,6 +70,7 @@ const {
   getCreditFieldLabels,
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
+  getShippingAddressList,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -158,6 +161,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       currentStage,
       submitVerifiedShippingAddressData,
       shippingMethod,
+      pickUpAlternatePerson,
+      isHasPickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -209,7 +216,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         setVenmoShippingState={setVenmoShippingState}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
-        isCanada={isCanada()}
+        pickUpAlternatePerson={pickUpAlternatePerson}
+        isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+        pickUpContactPerson={pickUpContactPerson}
+        pickUpContactAlternate={pickUpContactAlternate}
       />
     );
   }
@@ -293,7 +303,7 @@ const mapStateToProps = state => {
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
       isSaveToAddressBookChecked: getSaveToAddressBook(state),
-      userAddresses: getAddressListState(state),
+      userAddresses: getShippingAddressList(state),
       onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
       newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
       shippingAddressId: getShippingAddressID(state), // address user has selected should be shown as selected in dropdown, not the default address
@@ -337,6 +347,10 @@ const mapStateToProps = state => {
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
+    pickUpAlternatePerson: getPickupAltValues(state),
+    isHasPickUpAlternatePerson: isPickupAlt(state),
+    pickUpContactPerson: getPickupValues(state),
+    pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
   };
 };
 

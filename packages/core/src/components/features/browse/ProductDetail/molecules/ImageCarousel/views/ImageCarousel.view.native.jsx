@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { FlatList, Text, Dimensions, Share } from 'react-native';
 import { withTheme } from 'styled-components/native';
-import CustomImage from '@tcp/core/src/components/common/atoms/CustomImage';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -18,6 +17,7 @@ import {
 } from '../styles/ImageCarousel.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../../common/atoms/Icon/Icon.constants';
+import { DamImage } from '../../../../../../common/atoms';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -100,8 +100,10 @@ class ImageCarousel extends React.PureComponent {
         accessibilityRole="image"
         accessibilityLabel={`product image ${index + 1}`}
       >
-        <CustomImage
+        <DamImage
+          key={index.toString()}
           url={imgSource.item.regularSizeImageUrl}
+          isProductImage
           width={imageWidth}
           height={imageHeight}
         />
