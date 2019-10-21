@@ -100,14 +100,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -472,14 +475,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -859,14 +865,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1242,14 +1251,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1609,14 +1621,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1977,14 +1992,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -2345,14 +2363,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
@@ -2673,14 +2694,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -3041,14 +3065,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
@@ -3369,14 +3396,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -3737,14 +3767,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -4125,14 +4158,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -4528,14 +4564,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -4931,14 +4970,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -5314,14 +5356,17 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
