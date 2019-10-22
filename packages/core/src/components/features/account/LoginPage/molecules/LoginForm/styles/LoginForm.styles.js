@@ -7,6 +7,9 @@ const styles = css`
   .remember-me-text {
     display: block;
   }
+  .save-my-plcc {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
   .richTextColor a {
     color: ${props => props.theme.colorPalette.red[500]};
   }

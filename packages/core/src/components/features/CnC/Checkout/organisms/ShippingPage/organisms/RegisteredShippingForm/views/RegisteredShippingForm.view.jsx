@@ -120,8 +120,9 @@ class RegisteredShippingForm extends React.Component {
   };
 
   toggleAddNewAddressMode = () => {
-    const { dispatch } = this.props;
+    const { dispatch, toggleAddNewAddress } = this.props;
     dispatch(change(formName, 'defaultShipping', false));
+    return toggleAddNewAddress();
   };
 
   onAddressDropDownChange = value => {
@@ -189,7 +190,7 @@ class RegisteredShippingForm extends React.Component {
           </Col>
         )}
         {this.renderAddressFields()}
-        {!isEditing && (
+        {!isEditing && !isAddNewAddress && (
           <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
             <Anchor
               fontSizeVariation="small"

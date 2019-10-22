@@ -856,6 +856,11 @@ export const getStoreHours = (
 
  * @returns {object} label and message for order group
  */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
 export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
   let label;
   let message;
@@ -866,7 +871,7 @@ export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder)
     case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
       label = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
-        : getLabelValue(ordersLabels, 'lbl_orders_statusOrderReceived');
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
       message = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
         : getLabelValue(ordersLabels, 'lbl_orders_processing');
@@ -1000,6 +1005,7 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  readCookieMobileApp,
   changeImageURLToDOM,
   insertIntoString,
 };

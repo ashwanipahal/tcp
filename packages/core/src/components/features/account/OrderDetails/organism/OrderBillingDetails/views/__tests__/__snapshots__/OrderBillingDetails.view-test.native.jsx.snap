@@ -3,7 +3,7 @@
 exports[`Order Billing Details component should renders correctly with credit card details 1`] = `
 <Fragment>
   <Styled(View)
-    spacingStyles="margin-top-MED"
+    spacingStyles="margin-top-MED margin-bottom-SM"
   >
     <Styled(Styled(BodyCopy))
       accessibilityText=""
@@ -33,7 +33,7 @@ exports[`Order Billing Details component should renders correctly with credit ca
         fontWeight="semibold"
         margin={null}
         numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
+        spacingStyles="margin-left-XS margin-right-XS"
         text="lbl_orders_ending 1111"
         textDecoration={null}
       />
@@ -56,7 +56,7 @@ exports[`Order Billing Details component should renders correctly with credit ca
 exports[`Order Billing Details component should renders correctly with venmo card  1`] = `
 <Fragment>
   <Styled(View)
-    spacingStyles="margin-top-MED"
+    spacingStyles="margin-top-MED margin-bottom-SM"
   >
     <Styled(Styled(BodyCopy))
       accessibilityText=""
@@ -86,7 +86,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
         fontWeight="semibold"
         margin={null}
         numberOfLines={null}
-        spacingStyles="margin-top-XS margin-bottom-XS"
+        spacingStyles="margin-left-XS margin-right-XS"
         text="lbl_orders_ending name"
         textDecoration={null}
       />

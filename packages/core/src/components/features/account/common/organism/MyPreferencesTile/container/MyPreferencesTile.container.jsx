@@ -17,7 +17,7 @@ import {
 import { getsocialDataOnLoadState } from '../../../../../../common/organisms/SocialAccount/container/Social.selectors';
 import { getSocialAccount } from '../../../../../../common/organisms/SocialAccount/container/Social.actions';
 import { getMyFavoriteStoreAction } from '../../../../MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.actions';
-import { getCustomerPreferences } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscriptionText.selectors';
+import { getCustomerPreferences } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.selectors';
 import { getSubscribeStore } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.actions';
 
 class MyPreferencesTile extends PureComponent {

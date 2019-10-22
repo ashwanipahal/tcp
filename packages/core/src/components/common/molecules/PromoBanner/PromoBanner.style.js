@@ -114,7 +114,7 @@ export default css`
     }
   }
   .style2 {
-    color: ${props => props.theme.colorPalette.black};
+    color: ${props => props.theme.colorPalette.gray['900']};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: 70px;

@@ -23,7 +23,7 @@ const componentMap = {
   myPlaceRewardsOverviewTile: MyPlaceRewardsOverviewTile,
   myWalletTile: MyWalletTile,
   ordersTile: OrdersTile,
-  myPreferencesTile: MyPreferencesTile
+  myPreferencesTile: MyPreferencesTile,
 };
 
 export const COMPONENTS_US = [
