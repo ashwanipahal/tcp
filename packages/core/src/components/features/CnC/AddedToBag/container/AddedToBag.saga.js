@@ -61,7 +61,11 @@ export function* addToCartEcom({ payload }) {
 
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    const errMsg = err && err.errorResponse && err.errorResponse.errorMessage;
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errMsg =
+      (err && err.errorResponse && err.errorResponse.errorMessage) ||
+      (errorMapping && errorMapping.DEFAULT) ||
+      'ERROR';
     yield put(AddToCartError(errMsg, payload.skuInfo.unbxdProdId));
   }
 }
@@ -164,7 +168,10 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
       const removeProducts = atbSuccessProducts.map(product => product.orderItemId);
       yield call(removeItem, removeProducts);
     }
-    const errMsg = error && error.errorResponse && error.errorResponse.errorMessage;
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errMsg =
+      (error && error.errorResponse && error.errorResponse.errorMessage) ||
+      (errorMapping && errorMapping.DEFAULT);
     yield put(AddToCartMultipleItemError({ errMsg, errorProductId }));
   }
 }
