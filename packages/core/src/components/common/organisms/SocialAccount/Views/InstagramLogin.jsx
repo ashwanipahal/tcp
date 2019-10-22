@@ -16,111 +16,118 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
 import { getInstagramAccessToken } from '../../../../../services/abstractors/account';
 
-let elem;
-let saveAccountInfo;
-let closeModal;
-
-/**
- * @function onClickHandler This function handles the click event on plus/cross icon
- * @return undefined
- */
-export const onClickHandler = () => {
-  const apiConfig = getAPIConfig();
-  const redirectUrl = `${getLocationOrigin()}/${getSiteId()}/instagram`;
-  if (elem[1].isConnected) {
-    const socialAccInfo = {
-      instagram: elem[1].socialAccount,
-      accessToken: '',
-      isconnected: true,
-      userId: '',
-    };
-    saveAccountInfo({ socialAccInfo });
-  } else {
-    window.open(
-      `${config.AUTH_URL.INSTAGRAM}?client_id=${
-        apiConfig.instakey
-      }&redirect_uri=${redirectUrl}&response_type=token`,
-      '_blank',
-      'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
-    );
-  }
-};
-
 /**
  * @function InstagramLoginComponent This component validates the instagram login and stores the access token
  * @param {Callback} the callback function which is calledwhen user does a succesfull sign in
  * @return CTA for connecting to instagram - The button connects/disconnects instagram
  */
-const InstagramLoginComponent = props => {
-  const { saveSocialAcc, loginStatus, pointModalClose, urlParams } = props;
-  saveAccountInfo = saveSocialAcc;
-  elem = loginStatus;
-  closeModal = pointModalClose;
 
-  if (urlParams.socialAccount === 'instagram' && urlParams.id === 'my-preference') {
-    onClickHandler();
+export class InstagramLoginComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.elem = null;
+    this.saveAccountInfo = null;
+    this.closeModal = null;
   }
 
-  const onTokenCapture = () => {
+  componentDidMount() {
+    const { urlParams } = this.props;
+    if (urlParams.socialAccount === 'instagram' && urlParams.id === 'my-preference') {
+      this.onClickHandler();
+    }
+  }
+
+  /**
+   * @function onClickHandler This function handles the click event on plus/cross icon
+   * @return undefined
+   */
+  onClickHandler = () => {
+    const apiConfig = getAPIConfig();
+    if (this.elem[1].isConnected) {
+      const socialAccInfo = {
+        instagram: this.elem[1].socialAccount,
+        accessToken: '',
+        isconnected: true,
+        userId: '',
+      };
+      this.saveAccountInfo({ socialAccInfo });
+    } else {
+      window.open(
+        `${config.AUTH_URL.INSTAGRAM}?client_id=${
+          apiConfig.instaKey
+        }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=token`,
+        '_blank',
+        'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
+      );
+    }
+  };
+
+  onTokenCapture = () => {
     const redirectUrl = `${getLocationOrigin()}/${getSiteId()}/instagram`;
     const instagramTokenField = document.getElementById('instagram-token');
     const instagramTokenVal = instagramTokenField.value;
     if (instagramTokenVal) {
       getInstagramAccessToken({ code: instagramTokenVal, redirectUrl }).then(res => {
         const socialAccInfo = {
-          instagram: elem[1].socialAccount,
+          instagram: this.elem[1].socialAccount,
           accessToken: res,
           isconnected: false,
           userId: instagramTokenVal.split('.')[0],
         };
-        saveAccountInfo({ socialAccInfo });
+        this.saveAccountInfo({ socialAccInfo });
         instagramTokenField.value = '';
-        closeModal({ state: true });
+        this.closeModal({ state: true });
       });
     }
   };
 
-  return (
-    <React.Fragment>
-      {elem &&
-        elem.length &&
-        elem.map(element => {
-          return (
-            <React.Fragment>
-              {element.socialAccount === 'instagram' && !element.isConnected && (
-                <BodyCopy
-                  className="social-accounts__align social_accounts_cross_plus-icon"
-                  onClick={onClickHandler}
-                  tabIndex="0"
-                >
-                  <ImageComp
-                    className="social-account-icon"
-                    width={15}
-                    height={15}
-                    src={getIconPath('plus-icon')}
-                    data-locator="facebookPlusIcon"
-                  />
-                </BodyCopy>
-              )}
-              {element.socialAccount === 'instagram' && element.isConnected && (
-                <BodyCopy className="social-accounts__align social_accounts_cross_plus-icon">
-                  <ImageComp
-                    className="social-account-icon"
-                    width={15}
-                    height={15}
-                    src={getIconPath('close-icon')}
-                    data-locator="facebookCrossIcon"
-                    onClick={onClickHandler}
-                  />
-                </BodyCopy>
-              )}
-            </React.Fragment>
-          );
-        })}
-      <input type="hidden" onClick={onTokenCapture} id="instagram-token" />
-    </React.Fragment>
-  );
-};
+  render() {
+    const { saveSocialAcc, loginStatus, pointModalClose } = this.props;
+    this.saveAccountInfo = saveSocialAcc;
+    this.elem = loginStatus;
+    this.closeModal = pointModalClose;
+    return (
+      <React.Fragment>
+        {this.elem &&
+          this.elem.length &&
+          this.elem.map(element => {
+            return (
+              <React.Fragment>
+                {element.socialAccount === 'instagram' && !element.isConnected && (
+                  <BodyCopy
+                    className="social-accounts__align social_accounts_cross_plus-icon"
+                    onClick={this.onClickHandler}
+                    tabIndex="0"
+                  >
+                    <ImageComp
+                      className="social-account-icon"
+                      width={15}
+                      height={15}
+                      src={getIconPath('plus-icon')}
+                      data-locator="facebookPlusIcon"
+                    />
+                  </BodyCopy>
+                )}
+                {element.socialAccount === 'instagram' && element.isConnected && (
+                  <BodyCopy className="social-accounts__align social_accounts_cross_plus-icon">
+                    <ImageComp
+                      className="social-account-icon"
+                      width={15}
+                      height={15}
+                      src={getIconPath('close-icon')}
+                      data-locator="facebookCrossIcon"
+                      onClick={this.onClickHandler}
+                    />
+                  </BodyCopy>
+                )}
+              </React.Fragment>
+            );
+          })}
+        <input type="hidden" onClick={this.onTokenCapture} id="instagram-token" />
+      </React.Fragment>
+    );
+  }
+}
 
 InstagramLoginComponent.propTypes = {
   socialLoad: PropTypes.shape({}).isRequired,
@@ -140,4 +147,4 @@ InstagramLoginComponent.defaultProps = {
   },
 };
 
-export { InstagramLoginComponent };
+export default InstagramLoginComponent;

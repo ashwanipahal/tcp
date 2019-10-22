@@ -38,10 +38,10 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
 
   boxWithShadow = {
     shadowColor: colorPalette.gray[600],
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 7,
+    shadowRadius: 10,
+    elevation: 5,
   };
 
   render() {

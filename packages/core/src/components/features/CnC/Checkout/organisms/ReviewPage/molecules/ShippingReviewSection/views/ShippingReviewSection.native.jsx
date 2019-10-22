@@ -42,27 +42,29 @@ export class ShippingReviewSection extends React.PureComponent {
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 color="gray.900"
                 fontWeight="extrabold"
                 text={addressTitle}
               />
             </AddressTitle>
             <AddressSection>
-              <Address address={shippingAddress.address} regularName />
+              {!!shippingAddress.address && (
+                <Address address={shippingAddress.address} regularName />
+              )}
               <BodyCopy
                 fontSize="fs16"
                 dataLocator=""
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 color="gray.900"
                 fontWeight="regular"
                 text={shippingAddress.emailAddress}
               />
-              {shippingAddress.phoneNumber && (
+              {!!shippingAddress.phoneNumber && (
                 <BodyCopy
                   fontSize="fs16"
                   dataLocator=""
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   color="gray.900"
                   fontWeight="regular"
                   text={formatPhoneNumber(shippingAddress.phoneNumber)}
