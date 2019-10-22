@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import CustomButton from '../../../../../../common/atoms/Button';
