@@ -491,6 +491,12 @@ class ProductsGridItem extends React.PureComponent {
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
                 >
+                  {this.getProductPriceSection(
+                    listPriceForColor,
+                    offerPriceForColor,
+                    badge3,
+                    isShowBadges
+                  )}
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
@@ -502,7 +508,6 @@ class ProductsGridItem extends React.PureComponent {
               )}
             </Row>
           }
-          {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
 
           <ProductTitle
             name={name}

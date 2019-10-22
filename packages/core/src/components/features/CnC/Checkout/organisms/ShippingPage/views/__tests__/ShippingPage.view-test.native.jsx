@@ -13,10 +13,10 @@ describe('Shipping Page', () => {
     const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       formatPayload: () => {},
-      addressLabels: {},
       verifyAddressAction: () => {},
       shippingLabels: {
         sectionHeader: '',
@@ -182,7 +182,9 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       handleSubmit: () => {},
+      verifyAddressAction: mockedupdateShippingAddressData,
       selectedShipmentId: '334',
       userAddresses: new List([
         {
@@ -205,6 +207,7 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      formatPayload: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);
