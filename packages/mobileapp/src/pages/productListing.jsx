@@ -68,7 +68,7 @@ const PlpStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         const title = navigation && navigation.getParam('title');
         const navTitle = (title && `"${title.toUpperCase()}"`) || '';
-        return getNewHeader(navigation, true, navTitle);
+        return getNewHeader(navigation, false, navTitle);
       },
     },
     [ROUTE_NAMES.CONFIRMATION]: {
