@@ -91,7 +91,6 @@ export const mapDispatchToProps = dispatch => ({
 OrdersContainer.propTypes = {
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
-  ordersLabels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]),
   navigation: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func,

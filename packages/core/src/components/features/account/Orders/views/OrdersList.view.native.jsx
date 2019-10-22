@@ -52,7 +52,6 @@ export const OrdersList = ({
 
 OrdersList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  ordersLabels: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
