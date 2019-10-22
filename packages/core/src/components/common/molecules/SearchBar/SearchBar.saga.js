@@ -21,9 +21,10 @@ export function* getSearchResult({ payload }) {
   try {
     const response = yield call(makeSearch, payloadData);
     if (
-      response.autosuggestList[0].suggestions.length <= 0 &&
-      response.autosuggestList[1].suggestions.length <= 0 &&
-      response.autosuggestProducts.length <= 0
+      response.autosuggestList &&
+      response.autosuggestList[0].suggestions.length < 1 &&
+      response.autosuggestList[1].suggestions.length < 1 &&
+      response.autosuggestProducts.length < 1
     ) {
       yield put(setShowMoreProductFlag(false));
     } else {
