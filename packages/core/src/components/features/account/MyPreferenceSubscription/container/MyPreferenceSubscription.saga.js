@@ -1,4 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
 import { setSubscribeStore, getSubscribeStore } from './MyPreferenceSubscription.actions';
 import {
@@ -29,7 +30,8 @@ export function* setSubscribeStoreSaga(data) {
 }
 
 export function* SubscribeStoreSaga() {
-  yield takeLatest(MY_PREFERENCE_CONSTANTS.GET_SUBSCRIBE_STORE, getSubscribeStoreSaga);
+  const cachedSubscribeStoreSaga = validateReduxCache(getSubscribeStoreSaga);
+  yield takeLatest(MY_PREFERENCE_CONSTANTS.GET_SUBSCRIBE_STORE, cachedSubscribeStoreSaga);
   yield takeLatest(MY_PREFERENCE_CONSTANTS.SET_BRAND_SUBSCRIBE_DATA, setSubscribeStoreSaga);
 }
 

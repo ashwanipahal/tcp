@@ -47,7 +47,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
               className="moduleL__tile-title"
               fontFamily="primary"
               fontSize={['fs20', 'fs20', 'fs32']}
-              fontWeight={['regular', 'semibold']}
+              fontWeight={['semibold', 'semibold']}
               letterSpacing="ls222"
               lineHeight="lh107"
               textAlign="left"
@@ -64,6 +64,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor = {} 
               asPath={ctaUrl}
               target={target}
               title={title}
+              fontSizeVariation="large"
             >
               {link.text}
             </Anchor>

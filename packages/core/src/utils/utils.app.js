@@ -64,6 +64,7 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
   }
 };
 
+// eslint-disable-next-line complexity
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
@@ -92,6 +93,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'categoryPromo':
+      resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
     default:
       importOtherGraphQLQueries({
@@ -406,6 +410,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
     TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
     RECOMMENDATIONS_API: recommendationsAPI,
@@ -639,7 +644,8 @@ export const readCookieMobileApp = key => {
   return new Promise((resolve, reject) => {
     CookieManager.get(apiConfigObj.domain)
       .then(response => {
-        return resolve(response[key]);
+        const keyValue = key ? response[key] : response;
+        return resolve(keyValue);
       })
       .catch(e => reject(e));
   });
@@ -678,5 +684,23 @@ export const mapHandler = store => {
       googleMapConstants.OPEN_STORE_DIR_WEB
     }${addressLine1}, ${city}, ${state}, ${zipCode}`;
     return Linking.openURL(browserUrl);
+  });
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (date, language) => {
+  // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
+  // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
+  // To fix this, need to add fallback package for Intl
+  return getTranslatedMomentDate(date, language, {
+    day: 'ddd',
+    month: 'MMM',
+    date: 'D',
+    year: 'YYYY',
   });
 };

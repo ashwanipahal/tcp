@@ -30,7 +30,6 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
-import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
@@ -242,8 +241,6 @@ class TCPWebApp extends App {
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
-            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

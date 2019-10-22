@@ -61,6 +61,10 @@ class Drawer extends React.Component {
     return null;
   }
 
+  componentWillUnmount() {
+    enableBodyScroll();
+  }
+
   /* Set drawer ref */
   setDrawerRef = node => {
     this.drawerRef = node;
