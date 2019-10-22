@@ -21,327 +21,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         className="select-value-wrapper"
       >
         <div
-          className="color-selector"
-        >
-          <Field
-            colorFitsSizesMap={
-              Immutable.List [
-                Immutable.Map {
-                  "categoryEntity": "Girl:School Uniforms",
-                  "fits": Immutable.List [
-                    Immutable.Map {
-                      "fitName": "regular",
-                      "isDefault": true,
-                      "maxAvailable": 1.7976931348623157e+308,
-                      "sizes": Immutable.List [
-                        Immutable.Map {
-                          "variantId": "00193511074322",
-                          "maxAvailable": 739,
-                          "variantNo": "3000935007",
-                          "position": 0,
-                          "listPrice": 12.95,
-                          "sizeName": "XS (4)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281998",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074339",
-                          "maxAvailable": 6771,
-                          "variantNo": "3000935008",
-                          "position": 1,
-                          "listPrice": 12.95,
-                          "sizeName": "S (5/6)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1282327",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074346",
-                          "maxAvailable": 12920,
-                          "variantNo": "3000935009",
-                          "position": 2,
-                          "listPrice": 12.95,
-                          "sizeName": "M (7/8)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281700",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074353",
-                          "maxAvailable": 9331,
-                          "variantNo": "3000935010",
-                          "position": 3,
-                          "listPrice": 12.95,
-                          "sizeName": "L (10/12)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281815",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074360",
-                          "maxAvailable": 4381,
-                          "variantNo": "3000935011",
-                          "position": 4,
-                          "listPrice": 12.95,
-                          "sizeName": "XL (14)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281870",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074377",
-                          "maxAvailable": 3473,
-                          "variantNo": "3000935012",
-                          "position": 5,
-                          "listPrice": 12.95,
-                          "sizeName": "XXL (16)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281922",
-                        },
-                      ],
-                    },
-                    Immutable.Map {
-                      "fitName": "plus",
-                      "isDefault": false,
-                      "maxAvailable": 1.7976931348623157e+308,
-                      "sizes": Immutable.List [
-                        Immutable.Map {
-                          "variantId": "00193511079488",
-                          "maxAvailable": 1037,
-                          "variantNo": "3000936026",
-                          "position": 0,
-                          "listPrice": 12.95,
-                          "sizeName": "L(10P-12P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225288",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511079495",
-                          "maxAvailable": 1231,
-                          "variantNo": "3000936027",
-                          "position": 1,
-                          "listPrice": 12.95,
-                          "sizeName": "XL(14P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225289",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511079471",
-                          "maxAvailable": 2345,
-                          "variantNo": "3000936025",
-                          "position": 2,
-                          "listPrice": 12.95,
-                          "sizeName": "XXL (16P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225287",
-                        },
-                      ],
-                    },
-                  ],
-                  "color": Immutable.Map {
-                    "name": "TIDAL",
-                    "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000935_IV.jpg",
-                    "family": "BLUE",
-                  },
-                  "maxAvailable": 42228,
-                  "imageName": "3000935_IV",
-                  "colorProductId": "1281598",
-                  "favoritedCount": 0,
-                  "name": null,
-                  "listPrice": 12.95,
-                  "offerPrice": 12.95,
-                  "unbxdId": null,
-                  "maxAvailableBoss": 0,
-                  "pdpUrl": "/us/p/3000935_IV",
-                  "colorDisplayId": "3000935_IV",
-                  "miscInfo": Immutable.Map {
-                    "isBopisEligible": false,
-                    "isBossEligible": true,
-                    "badge1": Immutable.Map {
-                      "defaultBadge": "ONLINE EXCLUSIVE",
-                    },
-                    "badge2": "",
-                    "isClearance": "",
-                    "hasOnModelAltImages": "",
-                    "videoUrl": "",
-                    "keepAlive": false,
-                  },
-                  "hasFits": true,
-                },
-              ]
-            }
-            component={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
-                  "isStatic": false,
-                  "rules": Array [
-                    "
-  ",
-                    "
-  .color-chips-selector-container {
-    .inline-error-message {
-      white-space: normal;
-    }
-  }
-
-  .color-chips-selector-items-list {
-    position: relative;
-    width: 100%;
-    margin-top: ",
-                    [Function],
-                    ";
-    cursor: auto;
-  }
-
-  .color-chips-selector-item {
-    width: 30px;
-    height: 30px;
-    padding: 0px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 16px 5px 0;
-    border-radius: 50%;
-    line-height: 25px;
-    position: relative;
-
-    .input-radio-title {
-      line-height: 0px;
-      position: absolute;
-      top: 0;
-    }
-
-    /* First color's chip */
-    &:first-of-type {
-      margin-left: 0px;
-    }
-
-    .input-radio-icon-unchecked,
-    .input-radio-icon-checked {
-      top: auto;
-      width: 30px;
-      height: 30px;
-      vertical-align: middle;
-
-      input[type='radio'] {
-        left: 0px;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        -webkit-appearance: none;
-        display: none;
-      }
-
-      input[type='radio']:focus {
-        border-radius: 15px;
-        box-shadow: 0 0 0 2pt ",
-                    [Function],
-                    ";
-        margin-top: -3px;
-        margin-left: -3px;
-        width: 30px;
-        height: 30px;
-        outline: 0;
-      }
-
-      &:before,
-      &:after {
-        display: none;
-      }
-
-      @media ",
-                    [Function],
-                    " {
-        width: 23px;
-        height: 23px;
-      }
-    }
-
-    /* Container of title name and image */
-    .color-title-container {
-      display: inline-block;
-    }
-
-    /* Color name */
-    .color-name {
-      font-size: 0;
-    }
-
-    /* Image color of item */
-    .color-image {
-      border-radius: 50%;
-      position: relative;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-
-      @media ",
-                    [Function],
-                    " {
-        width: 23px;
-        height: 23px;
-      }
-    }
-
-    /* When the input is checked, the image color has black border (selected) */
-    .input-radio-icon-checked + .input-radio-title .color-image {
-      border: 2px solid ",
-                    [Function],
-                    ";
-      width: 26px;
-      height: 26px;
-
-      @media ",
-                    [Function],
-                    " {
-        width: 19px;
-        height: 19px;
-      }
-    }
-
-    @media ",
-                    [Function],
-                    " {
-      width: 23px;
-      height: 23px;
-    }
-  }
-  ",
-                    [Function],
-                    ";
-",
-                    ";
-",
-                  ],
-                },
-                "displayName": "Styled(ProductColorChipsSelector)",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
-                "target": [Function],
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
-            }
-            dataLocator="addnewaddress-state"
-            id="color"
-            inheritedStyles=""
-            name="color"
-            onChange={[MockFunction]}
-            title="Color"
-            width={87}
-          />
-        </div>
-        <div
           className="size-selector"
         >
           <Field
@@ -367,6 +46,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -377,6 +59,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */
@@ -482,6 +167,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
           />
         </div>
       </div>
+      <Measure
+        name="controls_visible"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </form>
@@ -508,327 +196,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         className="select-value-wrapper"
       >
         <div
-          className="color-selector"
-        >
-          <Field
-            colorFitsSizesMap={
-              Immutable.List [
-                Immutable.Map {
-                  "categoryEntity": "Girl:School Uniforms",
-                  "fits": Immutable.List [
-                    Immutable.Map {
-                      "fitName": "regular",
-                      "isDefault": true,
-                      "maxAvailable": 1.7976931348623157e+308,
-                      "sizes": Immutable.List [
-                        Immutable.Map {
-                          "variantId": "00193511074322",
-                          "maxAvailable": 739,
-                          "variantNo": "3000935007",
-                          "position": 0,
-                          "listPrice": 12.95,
-                          "sizeName": "XS (4)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281998",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074339",
-                          "maxAvailable": 6771,
-                          "variantNo": "3000935008",
-                          "position": 1,
-                          "listPrice": 12.95,
-                          "sizeName": "S (5/6)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1282327",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074346",
-                          "maxAvailable": 12920,
-                          "variantNo": "3000935009",
-                          "position": 2,
-                          "listPrice": 12.95,
-                          "sizeName": "M (7/8)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281700",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074353",
-                          "maxAvailable": 9331,
-                          "variantNo": "3000935010",
-                          "position": 3,
-                          "listPrice": 12.95,
-                          "sizeName": "L (10/12)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281815",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074360",
-                          "maxAvailable": 4381,
-                          "variantNo": "3000935011",
-                          "position": 4,
-                          "listPrice": 12.95,
-                          "sizeName": "XL (14)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281870",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511074377",
-                          "maxAvailable": 3473,
-                          "variantNo": "3000935012",
-                          "position": 5,
-                          "listPrice": 12.95,
-                          "sizeName": "XXL (16)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1281922",
-                        },
-                      ],
-                    },
-                    Immutable.Map {
-                      "fitName": "plus",
-                      "isDefault": false,
-                      "maxAvailable": 1.7976931348623157e+308,
-                      "sizes": Immutable.List [
-                        Immutable.Map {
-                          "variantId": "00193511079488",
-                          "maxAvailable": 1037,
-                          "variantNo": "3000936026",
-                          "position": 0,
-                          "listPrice": 12.95,
-                          "sizeName": "L(10P-12P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225288",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511079495",
-                          "maxAvailable": 1231,
-                          "variantNo": "3000936027",
-                          "position": 1,
-                          "listPrice": 12.95,
-                          "sizeName": "XL(14P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225289",
-                        },
-                        Immutable.Map {
-                          "variantId": "00193511079471",
-                          "maxAvailable": 2345,
-                          "variantNo": "3000936025",
-                          "position": 2,
-                          "listPrice": 12.95,
-                          "sizeName": "XXL (16P)",
-                          "offerPrice": 12.95,
-                          "maxAvailableBoss": 0,
-                          "skuId": "1225287",
-                        },
-                      ],
-                    },
-                  ],
-                  "color": Immutable.Map {
-                    "name": "TIDAL",
-                    "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/3000935_IV.jpg",
-                    "family": "BLUE",
-                  },
-                  "maxAvailable": 42228,
-                  "imageName": "3000935_IV",
-                  "colorProductId": "1281598",
-                  "favoritedCount": 0,
-                  "name": null,
-                  "listPrice": 12.95,
-                  "offerPrice": 12.95,
-                  "unbxdId": null,
-                  "maxAvailableBoss": 0,
-                  "pdpUrl": "/us/p/3000935_IV",
-                  "colorDisplayId": "3000935_IV",
-                  "miscInfo": Immutable.Map {
-                    "isBopisEligible": false,
-                    "isBossEligible": true,
-                    "badge1": Immutable.Map {
-                      "defaultBadge": "ONLINE EXCLUSIVE",
-                    },
-                    "badge2": "",
-                    "isClearance": "",
-                    "hasOnModelAltImages": "",
-                    "videoUrl": "",
-                    "keepAlive": false,
-                  },
-                  "hasFits": true,
-                },
-              ]
-            }
-            component={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-jTzLTM",
-                  "isStatic": false,
-                  "rules": Array [
-                    "
-  ",
-                    "
-  .color-chips-selector-container {
-    .inline-error-message {
-      white-space: normal;
-    }
-  }
-
-  .color-chips-selector-items-list {
-    position: relative;
-    width: 100%;
-    margin-top: ",
-                    [Function],
-                    ";
-    cursor: auto;
-  }
-
-  .color-chips-selector-item {
-    width: 30px;
-    height: 30px;
-    padding: 0px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 16px 5px 0;
-    border-radius: 50%;
-    line-height: 25px;
-    position: relative;
-
-    .input-radio-title {
-      line-height: 0px;
-      position: absolute;
-      top: 0;
-    }
-
-    /* First color's chip */
-    &:first-of-type {
-      margin-left: 0px;
-    }
-
-    .input-radio-icon-unchecked,
-    .input-radio-icon-checked {
-      top: auto;
-      width: 30px;
-      height: 30px;
-      vertical-align: middle;
-
-      input[type='radio'] {
-        left: 0px;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        -webkit-appearance: none;
-        display: none;
-      }
-
-      input[type='radio']:focus {
-        border-radius: 15px;
-        box-shadow: 0 0 0 2pt ",
-                    [Function],
-                    ";
-        margin-top: -3px;
-        margin-left: -3px;
-        width: 30px;
-        height: 30px;
-        outline: 0;
-      }
-
-      &:before,
-      &:after {
-        display: none;
-      }
-
-      @media ",
-                    [Function],
-                    " {
-        width: 23px;
-        height: 23px;
-      }
-    }
-
-    /* Container of title name and image */
-    .color-title-container {
-      display: inline-block;
-    }
-
-    /* Color name */
-    .color-name {
-      font-size: 0;
-    }
-
-    /* Image color of item */
-    .color-image {
-      border-radius: 50%;
-      position: relative;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-
-      @media ",
-                    [Function],
-                    " {
-        width: 23px;
-        height: 23px;
-      }
-    }
-
-    /* When the input is checked, the image color has black border (selected) */
-    .input-radio-icon-checked + .input-radio-title .color-image {
-      border: 2px solid ",
-                    [Function],
-                    ";
-      width: 26px;
-      height: 26px;
-
-      @media ",
-                    [Function],
-                    " {
-        width: 19px;
-        height: 19px;
-      }
-    }
-
-    @media ",
-                    [Function],
-                    " {
-      width: 23px;
-      height: 23px;
-    }
-  }
-  ",
-                    [Function],
-                    ";
-",
-                    ";
-",
-                  ],
-                },
-                "displayName": "Styled(ProductColorChipsSelector)",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-jTzLTM",
-                "target": [Function],
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
-            }
-            dataLocator="addnewaddress-state"
-            id="color"
-            inheritedStyles=""
-            name="color"
-            onChange={[MockFunction]}
-            title="Color"
-            width={87}
-          />
-        </div>
-        <div
           className="size-selector"
         >
           <Field
@@ -854,6 +221,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -864,6 +234,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */
@@ -1000,6 +373,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
           />
         </div>
       </div>
+      <Measure
+        name="controls_visible"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </form>

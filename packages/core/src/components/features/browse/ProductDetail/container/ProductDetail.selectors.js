@@ -87,7 +87,15 @@ export const getDefaultImage = state => {
 };
 
 export const getCurrentCurrency = state => {
-  return state.session.getIn(['siteDetails', 'currency']);
+  return state.session.siteDetails.currency;
+};
+
+export const getCurrencyAttributes = state => {
+  return (
+    (state.session.siteDetails && state.session.siteDetails.currencyAttributes) || {
+      exchangevalue: 1,
+    }
+  );
 };
 
 export const getCurrentProduct = state => {
@@ -140,23 +148,5 @@ export const getPDPLabels = state => {
     ),
     back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
-  };
-};
-
-export const getRelatedOutfits = state => {
-  const { Layouts = {}, Modules = {} } = state;
-  const relatedOutfitsSlots = Layouts.homepage ? Layouts.homepage.slots : [];
-  const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
-
-  return {
-    slots: relatedOutfitsSlots
-      .map(slot => {
-        return {
-          ...slot,
-          accessibility,
-          data: Modules[slot.contentId],
-        };
-      })
-      .filter(item => item.moduleName === 'moduleQ'),
   };
 };

@@ -50,6 +50,11 @@ const styles = css`
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
     margin-top: ${props =>
       props.editShipmentDetailsError ? 0 : props.theme.spacing.ELEM_SPACING.XL};
+    .save-btn {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+    }
   }
 
   .hide-on-mobile {

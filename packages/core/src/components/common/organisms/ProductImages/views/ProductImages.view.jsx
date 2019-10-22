@@ -107,6 +107,7 @@ class ProductImages extends React.Component {
       imageUrl: image.iconSizeImageUrl,
       imageName: productName,
     }));
+
     const imageSizePropertyName = isShowBigSizeImages ? 'bigSizeImageUrl' : 'regularSizeImageUrl';
 
     const { CAROUSEL_OPTIONS } = config;

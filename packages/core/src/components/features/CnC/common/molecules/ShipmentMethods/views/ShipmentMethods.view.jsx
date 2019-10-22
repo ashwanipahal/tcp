@@ -18,6 +18,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
         fontSize="fs16"
         fontWeight="extrabold"
         className="elem-mb-XXS"
+        dataLocator="shippingMethods"
       >
         {shipmentHeader}
       </BodyCopy>

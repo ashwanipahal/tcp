@@ -9,6 +9,13 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
+
+  .zip-code {
+    .address-field {
+      top: 2px;
+    }
+  }
+
   .email-signup-container {
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};

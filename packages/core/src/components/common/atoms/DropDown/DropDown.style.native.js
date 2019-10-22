@@ -45,6 +45,7 @@ const OverLayView = styled.View`
   flex-direction: row;
   border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   border-top-width: 1px;
+  margin-top: -1px;
 `;
 
 const DropDownItemContainer = styled.TouchableHighlight.attrs({

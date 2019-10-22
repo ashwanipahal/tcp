@@ -88,6 +88,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -455,6 +456,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -489,9 +491,9 @@ exports[`StoreSelector component should default set title as value for selected 
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -502,7 +504,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -517,7 +519,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -530,9 +532,9 @@ exports[`StoreSelector component should default set title as value for selected 
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -7359,6 +7361,12 @@ exports[`StoreSelector component should default set title as value for selected 
                     className="sc-bxivhb sc-fjdhpX khaECL"
                     clickHandler={[Function]}
                     customSelectClassName=""
+                    dataLocatorObj={
+                      Object {
+                        "dropDownList": "drop-down-list",
+                        "heading": "drop-down-heading",
+                      }
+                    }
                     options={
                       Array [
                         Object {
@@ -8700,6 +8708,7 @@ exports[`StoreSelector component should default set title as value for selected 
                               className="customSelectTitle"
                               color="text.primary"
                               component="div"
+                              data-locator="Canada"
                               fontFamily="primary"
                               fontSize={12}
                               fontWeight="regular"
@@ -8714,6 +8723,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                 className="customSelectTitle"
                                 color="text.primary"
                                 component="div"
+                                data-locator="Canada"
                                 fontFamily="primary"
                                 fontSize={12}
                                 fontWeight="regular"
@@ -8775,6 +8785,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                   className="customSelectTitle sc-bwzfXH fdGFgB"
                                   color="text.primary"
                                   component="div"
+                                  data-locator="Canada"
                                   fontFamily="primary"
                                   fontSize={12}
                                   fontWeight="regular"
@@ -8787,6 +8798,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                 >
                                   <div
                                     className="customSelectTitle sc-bwzfXH fdGFgB"
+                                    data-locator="Canada"
                                     onClick={[Function]}
                                     tabIndex="0"
                                   >
@@ -8899,6 +8911,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -9266,6 +9279,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -9300,9 +9314,9 @@ exports[`StoreSelector component should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -9313,7 +9327,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -9328,7 +9342,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -9341,9 +9355,9 @@ exports[`StoreSelector component should render correctly 1`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -16168,6 +16182,12 @@ exports[`StoreSelector component should render correctly 1`] = `
                     className="sc-bxivhb sc-fjdhpX khaECL"
                     clickHandler={[Function]}
                     customSelectClassName=""
+                    dataLocatorObj={
+                      Object {
+                        "dropDownList": "drop-down-list",
+                        "heading": "drop-down-heading",
+                      }
+                    }
                     options={
                       Array [
                         Object {
@@ -17509,6 +17529,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                               className="customSelectTitle"
                               color="text.primary"
                               component="div"
+                              data-locator="Test Text"
                               fontFamily="primary"
                               fontSize={12}
                               fontWeight="regular"
@@ -17523,6 +17544,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                 className="customSelectTitle"
                                 color="text.primary"
                                 component="div"
+                                data-locator="Test Text"
                                 fontFamily="primary"
                                 fontSize={12}
                                 fontWeight="regular"
@@ -17584,6 +17606,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                   className="customSelectTitle sc-bwzfXH fdGFgB"
                                   color="text.primary"
                                   component="div"
+                                  data-locator="Test Text"
                                   fontFamily="primary"
                                   fontSize={12}
                                   fontWeight="regular"
@@ -17596,6 +17619,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                 >
                                   <div
                                     className="customSelectTitle sc-bwzfXH fdGFgB"
+                                    data-locator="Test Text"
                                     onClick={[Function]}
                                     tabIndex="0"
                                   >

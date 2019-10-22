@@ -14,6 +14,7 @@ import {
   getIsCartItemsUpdating,
   getProductSkuId,
   getCartItemsSflError,
+  getCartToggleError,
 } from '../container/CartItemTile.selectors';
 
 describe('#CartItemTile selector', () => {
@@ -209,5 +210,19 @@ describe('#CartItemTile selector', () => {
     expect(getLabelsCartItemTile(productState).bopisLabel).toEqual('bopis');
     expect(getLabelsCartItemTile(productState).problemWithOrder).toEqual('minibag');
     expect(getLabelsCartItemTile(productState).sflSuccess).toEqual('sflSuccess');
+  });
+
+  it('#getCartToggleError', () => {
+    const CartItemTileReducer = fromJS({
+      toggleError: {
+        error: {
+          errorMessage: 'ERROR',
+        },
+      },
+    });
+
+    expect(getCartToggleError({ CartItemTileReducer }).getIn(['error', 'errorMessage'])).toBe(
+      'ERROR'
+    );
   });
 });

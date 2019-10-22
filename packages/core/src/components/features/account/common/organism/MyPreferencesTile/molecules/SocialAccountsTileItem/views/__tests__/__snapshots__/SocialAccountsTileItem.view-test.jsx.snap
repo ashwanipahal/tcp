@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialAccountsTileItem component should render correctly when coupons are not present 1`] = `
+<Styled(BodyCopy)
+  className=" elem-pt-LRG"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 6,
+          "small": 5,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_preference_tileConnectedSocialAccountsHeading
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="right"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          asPath="/account/my-preference"
+          fontSizeVariation="large"
+          to="/account?id=my-preference"
+          underline={true}
+        >
+          lbl_preference_tileAdd
+        </Styled(Anchor)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XS"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 7,
+          "small": 5,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_preference_tileConnectedSocialAccountsText
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
+`;

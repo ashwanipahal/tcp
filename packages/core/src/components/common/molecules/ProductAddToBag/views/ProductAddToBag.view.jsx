@@ -9,7 +9,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
-import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
@@ -18,10 +18,10 @@ import ProductSizeSelector from '../../ProductSizeSelector';
 import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
 
 // to get Error Message displayed in case any error comes on Add To card
-const ErrorComp = errorMessage => {
+const ErrorComp = (errorMessage, showAddToBagCTA) => {
   return (
     <BodyCopy
-      className="size-error"
+      className={!showAddToBagCTA ? 'size-error' : 'default-error'}
       fontSize="fs12"
       component="div"
       fontFamily="secondary"
@@ -68,8 +68,15 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderColorList = (colorList, colorTitle) => {
-    const { selectColor, isGiftCard } = this.props;
+    const {
+      selectColor,
+      isGiftCard,
+      showColorChips,
+      quickViewColorSwatchesCss,
+      isPDP,
+    } = this.props;
     return (
+      showColorChips &&
       colorList &&
       colorList.size > 0 && (
         <div className="color-selector">
@@ -82,7 +89,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onChange={selectColor}
             dataLocator="addnewaddress-state"
             title={colorTitle}
-            inheritedStyles={isGiftCard ? giftCardDesignStyle : ''}
+            inheritedStyles={isGiftCard && isPDP ? giftCardDesignStyle : quickViewColorSwatchesCss}
           />
         </div>
       )
@@ -175,9 +182,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 />
               </div>
             </div>
+            <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
-        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit)}
+        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">

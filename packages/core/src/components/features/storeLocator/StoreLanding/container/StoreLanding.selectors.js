@@ -4,10 +4,7 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 
 export const getCurrentCountry = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
 };
 
 export const getPageLabels = ({ Labels }) => {

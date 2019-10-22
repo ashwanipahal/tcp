@@ -55,12 +55,16 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
     case 'promoList':
       resolve(require('../services/handler/graphQL/queries/promoList'));
       break;
+    case 'AccountNavigation':
+      resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
+      break;
     default:
       reject();
       break;
   }
 };
 
+// eslint-disable-next-line complexity
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
@@ -89,6 +93,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'categoryPromo':
+      resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
     default:
       importOtherGraphQLQueries({
@@ -380,6 +387,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
   const unbxdApiKeyTCP = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_TCP`];
   const unbxdApiKeyGYM = envConfig[`RWD_APP_UNBXD_API_KEY_${country}_EN_GYM`];
+  const recommendationsAPI =
+    envConfig[`RWD_APP_RECOMMENDATIONS_API_${country}_EN_${appTypeSuffix}`];
+
   return {
     traceIdCount: 0,
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
@@ -397,6 +407,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
+    TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
+    RECOMMENDATIONS_API: recommendationsAPI,
   };
 };
 

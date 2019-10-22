@@ -9,6 +9,8 @@ import {
   getPricesWithRange,
   getMapSliceForColorProductId,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 
 class Product extends React.Component {
   // static propTypes = {
@@ -254,19 +256,22 @@ class Product extends React.Component {
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
         />
         {!isGiftCard ? (
-          <ProductPrice
-            currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
-            currencyExchange={currencyExchange}
-            isItemPartNumberVisible={false}
-            itemPartNumber={colorProduct.colorDisplayId}
-            {...prices}
-            promotionalMessage={promotionalMessage}
-            isCanada={isCanada}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPlcc={isHasPlcc}
-            isInternationalShipping={isInternationalShipping}
-          />
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyExchange={currencyExchange}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
         ) : null}
       </div>
     );

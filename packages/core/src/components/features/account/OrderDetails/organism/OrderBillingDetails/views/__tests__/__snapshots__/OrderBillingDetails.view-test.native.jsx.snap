@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Billing Details component should renders correctly with credit card details 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-SM"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_billing"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/visa-small.png",
+          }
+        }
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-XS margin-right-XS"
+        text="lbl_orders_ending 1111"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Address
+    className="elem-mb-SM elem-mt-SM"
+    customStyle={Object {}}
+    dataLocatorPrefix="address"
+    fontSize="fs14"
+    regularName={true}
+    showCountry={false}
+    showDefaultText={false}
+    showName={true}
+    showPhone={false}
+  />
+</Fragment>
+`;
+
+exports[`Order Billing Details component should renders correctly with venmo card  1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-top-MED margin-bottom-SM"
+  >
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-top-XS margin-bottom-XS"
+      text="lbl_orderDetails_billing"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/visa-small.png",
+          }
+        }
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-left-XS margin-right-XS"
+        text="lbl_orders_ending name"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Address
+    className="elem-mb-SM elem-mt-SM"
+    customStyle={Object {}}
+    dataLocatorPrefix="address"
+    fontSize="fs14"
+    regularName={true}
+    showCountry={false}
+    showDefaultText={false}
+    showName={true}
+    showPhone={false}
+  />
+</Fragment>
+`;

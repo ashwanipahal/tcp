@@ -19,11 +19,15 @@ const styles = css`
     width: 100%;
     max-width: 450px;
     text-align: center;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
     font-weight: 800;
     height: 42px;
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       height: 50px;
@@ -93,6 +97,10 @@ const styles = css`
     display: inline-flex;
   }
 
+  .default-error {
+    display: inline-flex;
+  }
+
   .size-error-message {
     margin-top: -2px;
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
@@ -113,10 +121,12 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
   .color-chips-selector-title-name,
   .size-and-fit-detail-title-name {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     margin-left: 6px;
   }

@@ -8,6 +8,7 @@ exports[`LinkText component renders correctly 1`] = `
   customStyle={Object {}}
   key="0"
   locator=""
+  margins={null}
   onPress={null}
   text=""
   url="http://example.com3367"

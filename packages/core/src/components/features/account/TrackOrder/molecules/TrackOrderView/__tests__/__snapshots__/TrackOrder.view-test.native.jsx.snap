@@ -8,6 +8,7 @@ exports[`TrackOrderView component should renders correctly 1`] = `
         "trackOrder": Object {},
       }
     }
+    onRequestClose={[MockFunction]}
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -53,6 +54,7 @@ exports[`TrackOrderView component should renders correctly with generic error me
         "trackOrder": Object {},
       }
     }
+    onRequestClose={[MockFunction]}
   />
   <Styled(Notification)
     colSize={
@@ -89,6 +91,7 @@ exports[`TrackOrderView component should renders correctly with generic error me
           customStyle={Object {}}
           data-locator="contact_us_form_help"
           locator=""
+          margins={null}
           onPress={null}
           text="lbl_trackOrder_genericErrorLinkText"
           underline={true}
@@ -156,6 +159,7 @@ exports[`TrackOrderView component should renders correctly with notification com
         "trackOrder": Object {},
       }
     }
+    onRequestClose={[MockFunction]}
   />
   <Styled(Notification)
     colSize={

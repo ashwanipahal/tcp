@@ -88,6 +88,7 @@ export const CreditCardFields = ({
           <Col {...expMonthProps}>
             <Field
               placeholder={creditFieldLabels.expMonth}
+              title={creditFieldLabels.expMonth}
               name="expMonth"
               id="expMonth"
               component={Select}
@@ -100,6 +101,7 @@ export const CreditCardFields = ({
           <Col {...expYearProps} className="exp-year-field">
             <Field
               placeholder={creditFieldLabels.expYear}
+              title={creditFieldLabels.expYear}
               name="expYear"
               id="expYear"
               component={Select}
