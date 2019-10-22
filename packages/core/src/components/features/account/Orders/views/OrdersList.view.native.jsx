@@ -6,6 +6,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import UnderlineStyle from '../styles/OrdersList.style.native';
 import RecentOrders from '../molecules/RecentOrders';
 import PastOrders from '../molecules/PastOrders';
+import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
 
 export const OrdersList = ({
   labels,
@@ -13,6 +14,7 @@ export const OrdersList = ({
   navigation,
   handleComponentChange,
   componentProps,
+  orderDetailsData,
 }) => {
   return (
     <React.Fragment>
@@ -31,6 +33,17 @@ export const OrdersList = ({
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
       />
+      {orderDetailsData &&
+        orderDetailsData.purchasedItems &&
+        orderDetailsData.purchasedItems.length > 0 && (
+          <OrderPreviewItemsList
+            labels={labels}
+            navigation={navigation}
+            orderNumber={orderDetailsData.orderNumber}
+            items={orderDetailsData.purchasedItems[0].items}
+            canceledItems={orderDetailsData.canceledItems}
+          />
+        )}
       {ordersListItems && ordersListItems.length ? (
         <PastOrders
           labels={labels}
@@ -50,10 +63,12 @@ OrdersList.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
+  orderDetailsData: PropTypes.shape({}),
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
+  orderDetailsData: {},
 };
 
 export default OrdersList;

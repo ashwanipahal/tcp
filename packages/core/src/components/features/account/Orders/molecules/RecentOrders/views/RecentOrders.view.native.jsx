@@ -7,6 +7,7 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import OrdersListItem from '../../OrdersListItem';
 import EmptyOrdersList from '../../EmptyOrdersList';
+import constants from '../../../../OrderDetails/OrderDetails.constants';
 
 /**
  * This component will render RecentOrders component
@@ -43,14 +44,17 @@ export const RecentOrders = ({
             handleComponentChange={handleComponentChange}
             componentProps={componentProps}
           />
-          <Button
-            buttonVariation="fixed-width"
-            fill="BLUE"
-            color="white"
-            onPress={() => UrlHandler(ordersListItems[0].orderTrackingUrl)}
-            data-locator="orders-shop-now-btn"
-            text={getLabelValue(labels, 'lbl_orders_trackit', 'orders')}
-          />
+          {ordersListItems[0].orderTrackingUrl &&
+            ordersListItems[0].orderTrackingUrl !== constants.STATUS_CONSTANTS.NA && (
+              <Button
+                buttonVariation="fixed-width"
+                fill="BLUE"
+                color="white"
+                onPress={() => UrlHandler(ordersListItems[0].orderTrackingUrl)}
+                data-locator="orders-shop-now-btn"
+                text={getLabelValue(labels, 'lbl_orders_trackit', 'orders')}
+              />
+            )}
         </>
       ) : (
         <EmptyOrdersList labels={labels} navigation={navigation} />

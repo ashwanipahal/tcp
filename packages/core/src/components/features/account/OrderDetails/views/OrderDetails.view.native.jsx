@@ -56,7 +56,7 @@ const renderBopisAndBossOrder = (orderDetailsData, ordersLabels) => {
           items={purchasedItems[0].items}
           currencySymbol={currencySymbol}
           isShowWriteReview={
-            isBopisOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ORDER_PICKED
+            isBossOrder ? true : orderStatus === constants.STATUS_CONSTANTS.ITEMS_PICKED_UP
           }
         />
       </>

@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
 import handler from '../../handler';
 
@@ -11,7 +12,8 @@ const Abstractor = {
       .then(response => {
         return response.data.seoData;
       })
-      .then(Abstractor.processData);
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
   },
   getMock: () => {
     return mock;
@@ -23,6 +25,10 @@ const Abstractor = {
       result[seoDataKey] = { ...rest };
     });
     return result;
+  },
+  handleError: e => {
+    logger.error(e);
+    return {};
   },
 };
 export default Abstractor;

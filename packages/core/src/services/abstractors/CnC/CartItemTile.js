@@ -131,7 +131,7 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    for (let value of orderItemId.values()) {
+    for (let value of orderItemId) {
       orderItems.push({
         orderItemId: value,
         quantity: '0',
