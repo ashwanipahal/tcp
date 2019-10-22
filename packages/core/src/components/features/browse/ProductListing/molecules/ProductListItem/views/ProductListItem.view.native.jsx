@@ -84,8 +84,9 @@ const ListItem = props => {
     renderPriceAndBagOnly,
     renderPriceOnly,
     productImageWidth,
+    viaModule,
   } = props;
-
+  console.log(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
   const { name } = productInfo;
@@ -383,6 +384,7 @@ ListItem.propTypes = {
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
   productImageWidth: PropTypes.number,
+  viaModule: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -399,6 +401,7 @@ ListItem.defaultProps = {
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
   productImageWidth: '',
+  viaModule: '',
 };
 
 export default withStyles(ListItem, styles);

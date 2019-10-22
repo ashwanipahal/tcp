@@ -381,9 +381,10 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
+      viaModule,
     } = this.props;
+    console.log(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
-
     const prodNameAltImages = longProductTitle || name;
     const {
       selectedColorProductId,

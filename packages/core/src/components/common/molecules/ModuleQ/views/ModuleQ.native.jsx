@@ -32,7 +32,7 @@ import LinkText from '../../LinkText';
 
 const MODULE_WIDTH = getScreenWidth();
 
-const { TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
+const { TOTAL_IMAGES, CAROUSEL_OPTIONS, viaModule } = config;
 const {
   PRODUCT_IMAGE_WIDTH,
   PRODUCT_IMAGE_HEIGHT,
@@ -60,7 +60,6 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
-
   return (
     <ImageSlideWrapper>
       <ImageItemWrapper>
@@ -72,6 +71,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
               title: 'COMPLETE THE LOOK',
               outfitId: id,
               vendorColorProductIdsList: subItemsId,
+              viaModule,
             })
           }
         >
