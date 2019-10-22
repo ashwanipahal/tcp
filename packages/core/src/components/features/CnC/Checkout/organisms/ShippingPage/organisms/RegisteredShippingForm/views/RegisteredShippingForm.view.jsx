@@ -200,7 +200,7 @@ class RegisteredShippingForm extends React.Component {
         {this.renderAddressFields()}
         <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
           <Anchor
-            fontSizeVariation="small"
+            fontSizeVariation="medium"
             underline
             noLink
             anchorVariation="primary"
@@ -250,9 +250,9 @@ class RegisteredShippingForm extends React.Component {
               </BodyCopy>
             </Col>
             {showEditLink && (
-              <Col colSize={{ small: 1, medium: 1, large: 1 }}>
+              <Col colSize={{ small: 1, medium: 1, large: 1 }} className="edit-link-placement">
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   noLink
                   anchorVariation="primary"

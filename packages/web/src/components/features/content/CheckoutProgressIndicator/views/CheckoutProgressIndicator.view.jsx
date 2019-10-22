@@ -18,6 +18,7 @@ export class CheckoutProgressIndicator extends React.Component {
     /** the available stages in the current checkout flow <strong>in order</strong> */
     availableStages: PropTypes.arrayOf(CHECKOUT_STAGE_PROP_TYPE).isRequired,
     className: PropTypes.string.isRequired,
+    totalStages: PropTypes.string.isRequired,
   };
 
   static stageNamesTable = {
@@ -39,7 +40,8 @@ export class CheckoutProgressIndicator extends React.Component {
   }
 
   render() {
-    const { activeStage, availableStages, className } = this.props;
+    const { activeStage, availableStages, className, totalStages } = this.props;
+
     let hasSeenActive = false;
     let checkoutProgressClass = 'checkout-progress-bar ';
 
@@ -60,6 +62,7 @@ export class CheckoutProgressIndicator extends React.Component {
                       isActive
                       key={stage}
                       name={CheckoutProgressIndicator.stageNamesTable[stage]}
+                      totalStages={totalStages}
                     />
                   );
                 }
@@ -68,6 +71,7 @@ export class CheckoutProgressIndicator extends React.Component {
                     <StepIndicator
                       key={stage}
                       name={CheckoutProgressIndicator.stageNamesTable[stage]}
+                      totalStages={totalStages}
                     />
                   );
                 }
@@ -77,6 +81,7 @@ export class CheckoutProgressIndicator extends React.Component {
                     stage={stage}
                     onClick={this.moveToCallbackTable[stage]}
                     name={CheckoutProgressIndicator.stageNamesTable[stage]}
+                    totalStages={totalStages}
                   />
                 );
               })}

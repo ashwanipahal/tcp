@@ -32,10 +32,9 @@ export default css`
     }
 
     &.pickup-shipping {
-      padding: 8px 0;
       @media ${props => props.theme.mediaQuery.large} {
         padding: 18px 0 14px;
-        width: 880px;
+        width: 528px;
       }
 
       li {
@@ -54,8 +53,8 @@ export default css`
     color: ${props => props.theme.colors.TEXT.DARK};
 
     &:before {
-      width: 17px;
-      height: 17px;
+      width: 24px;
+      height: 24px;
       content: '';
       display: block;
       text-align: center;
@@ -70,8 +69,8 @@ export default css`
       height: 2px;
       content: '';
       position: absolute;
-      background-color: ${props => props.theme.colors.PRIMARY.GRAY};
-      top: 7px;
+      background-color: ${props => props.theme.colors.TEXT.DARKERGRAY};
+      top: 10px;
       right: calc(50% + 12px);
       left: calc(-50% + 12px);
       z-index: 1;
@@ -109,8 +108,8 @@ export default css`
       content: '';
       background: url(${checkouttick});
       background-color: ${props => props.theme.colors.WHITE};
-      height: 20px;
-      width: 20px;
+      height: 26px;
+      width: 26px;
       position: inherit;
       display: block;
       z-index: 1;
@@ -142,10 +141,10 @@ export default css`
       border: 2px solid ${props => props.theme.colors.BLACK};
       border-radius: 50%;
       display: block;
-      height: 17px;
-      width: 17px;
+      height: 22px;
+      width: 22px;
       position: absolute;
-      left: 43%;
+      left: ${props => (props.totalStages ? '35%' : '40%')};
       top: -1px;
       @media ${props => props.theme.mediaQuery.large} {
         left: 50%;
@@ -157,7 +156,7 @@ export default css`
   .pending {
     &:before {
       background-color: ${props => props.theme.colors.WHITE};
-      border: 1px solid ${props => props.theme.colors.BLACK};
+      border: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
   }
 
