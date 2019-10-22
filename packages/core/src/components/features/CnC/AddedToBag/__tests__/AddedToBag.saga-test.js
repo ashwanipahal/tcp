@@ -115,7 +115,8 @@ describe('Added to bag saga', () => {
     const atbError = { errMsg: 'Error', errorProductId: 1 };
     const addMultipleItemToCartECOMGenError = addMultipleItemToCartECOM({ payload });
     addMultipleItemToCartECOMGenError.next();
-    expect(addMultipleItemToCartECOMGenError.throw(err).value).toEqual(
+    addMultipleItemToCartECOMGenError.throw(err);
+    expect(addMultipleItemToCartECOMGenError.next().value).toEqual(
       put(AddToCartMultipleItemError(atbError))
     );
 
@@ -128,6 +129,7 @@ describe('Added to bag saga', () => {
     const addMultipleItemToCartECOMGenSecondError = addMultipleItemToCartECOM({ payload });
     addMultipleItemToCartECOMGenSecondError.next();
     addMultipleItemToCartECOMGenSecondError.throw(errorObj);
+    addMultipleItemToCartECOMGenSecondError.next();
     expect(addMultipleItemToCartECOMGenSecondError.next().value).toEqual(
       put(AddToCartMultipleItemError(atbErrorSecondProduct))
     );

@@ -1,11 +1,12 @@
 const cardIconMapping = {
   DISC: 'disc-small',
-  MC: 'mc-small',
+  'MASTER CARD': 'mc-small',
   AMEX: 'amex-small',
-  VISA: 'visa-bordered',
-  GC: 'gift-card-small',
+  VISA: 'visa-small',
+  'GIFT CARD': 'gift-card-small',
   'PLACE CARD': 'place-card-small',
-  VENMO: 'venmo-bordered',
+  VENMO: 'venmo-small',
+  PAYPAL: 'paypal-icon',
 };
 
 export default cardIconMapping;

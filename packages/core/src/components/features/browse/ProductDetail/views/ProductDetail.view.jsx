@@ -218,6 +218,7 @@ class ProductDetailView extends React.Component {
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
                 selectedColorProductId={selectedColorProductId}
+                isPDP
               />
             )}
 
