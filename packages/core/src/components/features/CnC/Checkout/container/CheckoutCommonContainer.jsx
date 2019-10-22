@@ -170,10 +170,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
-    let totalStages = false;
-    if (availableStages.length > 3) {
-      totalStages = true;
-    }
+
     return (
       <CheckoutPage
         initialValues={initialValues}
@@ -206,7 +203,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         routeToPickupPage={routeToPickupPage}
         setCheckoutStage={setCheckoutStage}
         availableStages={availableStages}
-        totalStages={totalStages}
         router={router}
         updateShippingMethodSelection={updateShippingMethodSelection}
         updateShippingAddressData={updateShippingAddressData}

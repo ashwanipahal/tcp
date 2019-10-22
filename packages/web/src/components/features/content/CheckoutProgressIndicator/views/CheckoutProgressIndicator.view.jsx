@@ -18,7 +18,6 @@ export class CheckoutProgressIndicator extends React.Component {
     /** the available stages in the current checkout flow <strong>in order</strong> */
     availableStages: PropTypes.arrayOf(CHECKOUT_STAGE_PROP_TYPE).isRequired,
     className: PropTypes.string.isRequired,
-    totalStages: PropTypes.string.isRequired,
   };
 
   static stageNamesTable = {
@@ -40,7 +39,7 @@ export class CheckoutProgressIndicator extends React.Component {
   }
 
   render() {
-    const { activeStage, availableStages, className, totalStages } = this.props;
+    const { activeStage, availableStages, className } = this.props;
 
     let hasSeenActive = false;
     let checkoutProgressClass = 'checkout-progress-bar ';
@@ -59,29 +58,29 @@ export class CheckoutProgressIndicator extends React.Component {
                   hasSeenActive = true;
                   return (
                     <StepIndicator
+                      availableStages={availableStages}
                       isActive
                       key={stage}
                       name={CheckoutProgressIndicator.stageNamesTable[stage]}
-                      totalStages={totalStages}
                     />
                   );
                 }
                 if (hasSeenActive) {
                   return (
                     <StepIndicator
+                      availableStages={availableStages}
                       key={stage}
                       name={CheckoutProgressIndicator.stageNamesTable[stage]}
-                      totalStages={totalStages}
                     />
                   );
                 }
                 return (
                   <StepIndicator
+                    availableStages={availableStages}
                     isComplete
                     stage={stage}
                     onClick={this.moveToCallbackTable[stage]}
                     name={CheckoutProgressIndicator.stageNamesTable[stage]}
-                    totalStages={totalStages}
                   />
                 );
               })}

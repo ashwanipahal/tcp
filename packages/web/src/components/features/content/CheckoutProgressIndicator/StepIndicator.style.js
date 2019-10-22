@@ -144,7 +144,7 @@ export default css`
       height: 22px;
       width: 22px;
       position: absolute;
-      left: ${props => (props.totalStages ? '35%' : '40%')};
+      left: ${props => (props.availableStages.length > 3 ? '35%' : '40%')};
       top: -1px;
       @media ${props => props.theme.mediaQuery.large} {
         left: 50%;

@@ -4,9 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import style from '../StepIndicator.style';
 
-const StepIndicator = ({ className, key, name, isActive, isComplete, onClick, countStages }) => {
-  console.log('Here');
-  console.log('Control Comes Here', countStages);
+const StepIndicator = ({ className, key, name, isActive, isComplete, onClick }) => {
   let stepClass = '';
   let indicatorClass = '';
 
@@ -58,7 +56,6 @@ StepIndicator.propTypes = {
   isActive: PropTypes.bool,
   isComplete: PropTypes.bool,
   onClick: PropTypes.func,
-  countStages: PropTypes.string.isRequired,
 };
 
 StepIndicator.defaultProps = {
