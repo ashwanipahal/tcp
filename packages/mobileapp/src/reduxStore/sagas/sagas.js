@@ -52,6 +52,7 @@ import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoin
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
+import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
@@ -129,5 +130,6 @@ export default function* rootSaga() {
     OutfitDetailsSaga(),
     RecentSearchSaga(),
     AccountSaga(),
+    NavigateXHRSaga(),
   ]);
 }

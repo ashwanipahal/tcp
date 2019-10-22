@@ -20,7 +20,7 @@ const Badge = ({ children, dataLocator, primary }: Props) => {
     <BadgeViewWrapper data-locator={dataLocator}>
       <BadgeView>
         {!primary && (
-          <ViewWithSpacing spacingStyles="margin-right-XXXS">
+          <ViewWithSpacing spacingStyles="margin-right-XXS">
             <CustomIcon name={ICON_NAME.checkmark} size="fs10" color="white" />
           </ViewWithSpacing>
         )}

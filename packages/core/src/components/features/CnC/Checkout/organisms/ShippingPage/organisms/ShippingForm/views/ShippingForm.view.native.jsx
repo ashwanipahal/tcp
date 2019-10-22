@@ -112,7 +112,7 @@ const ShippingForm = ({
                 <BodyCopy
                   dataLocator="shipping-email-signUp-heading-lbl"
                   fontSize="fs14"
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   fontWeight="regular"
                   text={getLabelValue(
                     labels,
@@ -125,7 +125,7 @@ const ShippingForm = ({
               <BodyCopy
                 dataLocator="shipping-email-signUp-sub-heading-text"
                 fontSize="fs12"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontWeight="regular"
                 text={getLabelValue(
                   labels,
@@ -136,7 +136,7 @@ const ShippingForm = ({
               />
               <BodyCopy
                 fontSize="fs12"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontWeight="regular"
                 text={getLabelValue(
                   labels,

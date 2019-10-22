@@ -71,6 +71,7 @@ const {
   getCreditFieldLabels,
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
+  getShippingAddressList,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -308,7 +309,7 @@ const mapStateToProps = state => {
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
       isSaveToAddressBookChecked: getSaveToAddressBook(state),
-      userAddresses: getAddressListState(state),
+      userAddresses: getShippingAddressList(state),
       onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
       newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
       shippingAddressId: getShippingAddressID(state), // address user has selected should be shown as selected in dropdown, not the default address
