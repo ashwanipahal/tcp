@@ -1,5 +1,4 @@
 /* eslint-disable max-params */
-/* istanbul ignore file */
 const getPageCategory = pageCategory => {
   let ischeckoutPage = false;
   let isReviewPage = false;

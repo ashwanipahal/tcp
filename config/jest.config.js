@@ -33,6 +33,7 @@ const ignorePsuedoCodeDir = [
   '/twitterLoginComponent/',
   '/twitterRedirectPage/',
   '/config/SEOTags.config.js',
+  '/components/features/CnC/LoyaltyBanner/util', // TODO - Loyalty Banner Story In Progress -- Harmeet
 ];
 
 module.exports = {

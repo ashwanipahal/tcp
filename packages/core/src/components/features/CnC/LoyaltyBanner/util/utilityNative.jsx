@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React from 'react';
 import { PointsValueText } from '../molecules/GuestMprPlccSection/styles/GuestMprPlccSection.style.native';
 
