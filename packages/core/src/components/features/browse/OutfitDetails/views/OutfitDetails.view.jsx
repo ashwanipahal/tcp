@@ -16,6 +16,8 @@ const OutfitDetailsView = ({
   currentState,
   addToBagError,
   addToBagErrorId,
+  isLoggedIn,
+  addToFavorites,
   labels,
 }) => {
   return (
@@ -48,6 +50,8 @@ const OutfitDetailsView = ({
                     }}
                     className="outfiting-list-details"
                     addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
+                    isLoggedIn={isLoggedIn}
+                    addToFavorites={addToFavorites}
                   />
                 </li>
               ))}
@@ -79,6 +83,8 @@ OutfitDetailsView.propTypes = {
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  addToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -89,6 +95,7 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   addToBagError: '',
   addToBagErrorId: '',
+  isLoggedIn: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

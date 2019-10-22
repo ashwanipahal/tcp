@@ -18,6 +18,8 @@ const styles = css`
   .clear-button {
     border: none;
     background: transparent;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    width: 35px;
   }
   .fav-icon {
     width: 21px;

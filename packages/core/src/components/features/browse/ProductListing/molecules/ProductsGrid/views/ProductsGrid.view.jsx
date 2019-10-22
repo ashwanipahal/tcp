@@ -38,6 +38,8 @@ class ProductsGrid extends React.Component {
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
     currencyExchange: PropTypes.string,
+    onAddItemToFavorites: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -52,6 +54,7 @@ class ProductsGrid extends React.Component {
     productTileVariation: '',
     currency: 'USD',
     currencyExchange: 1,
+    isLoggedIn: false,
   };
 
   constructor(props, context) {
@@ -145,10 +148,13 @@ class ProductsGrid extends React.Component {
       productTileVariation,
       currency,
       currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
 
     const containerClassName = `${className} main-section-container `;
+
     return (
       <main className={containerClassName}>
         <section
@@ -176,6 +182,8 @@ class ProductsGrid extends React.Component {
                         productTileVariation={productTileVariation}
                         currency={currency}
                         currencyExchange={currencyExchange}
+                        isLoggedIn={isLoggedIn}
+                        onAddItemToFavorites={onAddItemToFavorites}
                         {...otherProps}
                       />
                     );

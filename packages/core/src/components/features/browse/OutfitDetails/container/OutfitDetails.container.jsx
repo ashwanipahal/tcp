@@ -11,7 +11,11 @@ import {
 import { getOutfitDetails } from './OutfitDetails.actions';
 import { getPlpLabels } from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import {
   getIsInternationalShipping,
   getCurrentCurrencySymbol,
@@ -76,6 +80,7 @@ class OutfitDetailsContainer extends React.PureComponent {
       addToBagError,
       addToBagErrorId,
       isPickupModalOpen,
+      isLoggedIn,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -97,6 +102,7 @@ class OutfitDetailsContainer extends React.PureComponent {
           addToBagErrorId={addToBagErrorId}
           isPickupModalOpen={isPickupModalOpen}
           addToFavorites={addToFavorites}
+          isLoggedIn={isLoggedIn}
         />
       );
     }
@@ -122,6 +128,7 @@ const mapStateToProps = state => {
     addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
     isPickupModalOpen: getIsPickupModalOpen(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 };
 
@@ -163,6 +170,7 @@ OutfitDetailsContainer.propTypes = {
   addToBagErrorId: PropTypes.string,
   isPickupModalOpen: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -182,6 +190,7 @@ OutfitDetailsContainer.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isPickupModalOpen: false,
+  isLoggedIn: false,
 };
 
 export default connect(
