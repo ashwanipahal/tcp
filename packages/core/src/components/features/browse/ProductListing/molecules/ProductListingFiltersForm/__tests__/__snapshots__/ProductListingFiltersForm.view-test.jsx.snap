@@ -2429,6 +2429,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           <Styled(SortSelector)
             defaultPlaceholder=""
             isMobile={false}
+            labels={Object {}}
             sortSelectOptions={
               Array [
                 Object {

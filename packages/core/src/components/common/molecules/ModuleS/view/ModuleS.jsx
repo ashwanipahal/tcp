@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../hoc/withStyles';
-import { Row, Col, DamImage, Button } from '../../../atoms';
+import { Row, Col, DamImage } from '../../../atoms';
 import {
   LinkText,
-  style,
   ColWrapper,
   ImgContainer,
   RibbonViewImgContainer,
   Container,
   ButtonContainer,
+  Button,
+  RibbonButton,
 } from '../ModuleS.style';
 import { getLocator, isGymboree } from '../../../../../utils';
-import imageCropConfigs, { TEXT_COLOR_WHITE } from '../ModuleS.config';
+import imageCropConfigs from '../ModuleS.config';
 import RibbonComponent from '../../Ribbon';
 
 /**
@@ -47,17 +47,18 @@ const getImageConfig = ribbonPresent => {
  * @param {*} props
  */
 const TextView = props => {
-  const { headerText } = props;
-  const color = !isGymboree() ? TEXT_COLOR_WHITE : '';
+  const { headerText, ribbonBanner } = props;
+  // const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_BLACK;
+  const addPaddingClass = !ribbonBanner && isGymboree();
   return (
     headerText && (
       <LinkText
         type="heading"
         component="h2"
-        className="header-text"
+        className={`header-text ${addPaddingClass ? 'padding-LR-15' : ''}`}
         headerText={headerText}
         data-locator={getLocator('moduleS_header_text')}
-        color={color}
+        // color={color}
       />
     )
   );
@@ -67,9 +68,10 @@ const TextView = props => {
  * @param {*} props
  */
 const ImgView = props => {
-  const { linkedImage } = props;
+  const { linkedImage, ribbonBanner } = props;
   const [imageDetails] = linkedImage;
-  const imageConfig = getImageConfig();
+  const ribbonPresent = ribbonBanner && ribbonBanner.length > 0;
+  const imageConfig = getImageConfig(ribbonPresent);
   return (
     imageDetails && (
       <DamImage
@@ -101,14 +103,14 @@ const RibbonView = props => {
           locator="moduleS_promo_badge"
         />
         <ButtonContainer>
-          <Button
+          <RibbonButton
             cta={singleCTAButton}
             buttonVariation="fixed-width"
             className="tb-btn"
             data-locator={getLocator('moduleS_cta_btn')}
           >
             {singleCTAButton.text}
-          </Button>
+          </RibbonButton>
         </ButtonContainer>
       </div>
     </ColWrapper>
@@ -179,4 +181,4 @@ ModuleS.defaultProps = {
   ribbonBanner: null,
 };
 
-export default withStyles(ModuleS, style);
+export default ModuleS;
