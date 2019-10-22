@@ -102,7 +102,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       </Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
-        anchorVariation="secondary"
+        anchorVariation="primary"
         class="clickhere"
         colorName={null}
         customStyle={Object {}}
@@ -112,7 +112,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         margins={null}
         onPress={[Function]}
         text="PRINT_ANCHOR_TEXT"
-        underlineBlue={true}
+        underline={true}
         visible={false}
       />
       <Styled(View)
