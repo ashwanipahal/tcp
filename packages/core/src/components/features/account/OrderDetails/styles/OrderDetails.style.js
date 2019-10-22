@@ -52,13 +52,13 @@ export default css`
     padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   }
   .margin-tablet {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.large} {
       margin-top: 0;
     }
   }
   .margin-mobile {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 0;
     }
