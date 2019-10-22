@@ -264,8 +264,9 @@ class ProductInformation extends React.Component {
         miscInfo: { store, orderItemType, availability },
         itemInfo: { itemBrand, isGiftItem },
       },
+      onPickUpOpenClick,
     } = this.props;
-    const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
+    const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
     const isECOMOrder = isEcomOrder(orderItemType);
@@ -395,6 +396,8 @@ class ProductInformation extends React.Component {
               bopisDisabled,
               isBossEnabled,
               isBopisEnabled,
+              onPickUpOpenClick,
+              orderId,
             })}
         </MainWrapper>
       </Swipeable>
@@ -410,12 +413,14 @@ ProductInformation.propTypes = {
   openedTile: PropTypes.number,
   isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
-  swipedElement: PropTypes.shape({}),
+  swipedElement: PropTypes.shape({}).isRequired,
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
   currencySymbol: PropTypes.string.isRequired,
+  orderId: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {
@@ -424,7 +429,6 @@ ProductInformation.defaultProps = {
   itemIndex: 0,
   openedTile: 0,
   isCondense: true,
-  swipedElement: null,
   isBagPageSflSection: false,
   showOnReviewPage: true,
 };
