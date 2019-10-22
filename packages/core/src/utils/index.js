@@ -77,4 +77,5 @@ export {
   stringify,
   enableBodyScroll,
   disableBodyScroll,
+  readCookieMobileApp,
 } from './utils';

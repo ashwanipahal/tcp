@@ -155,8 +155,8 @@ class CouponDetailModal extends React.PureComponent<Props> {
             </ViewWithSpacing>
             <Anchor
               fontSizeVariation="large"
-              underlineBlue
-              anchorVariation="secondary"
+              underline
+              anchorVariation="primary"
               dataLocator={`couponDetailModal_${coupon.status}_printAch`}
               text={getLabelValue(labels, 'PRINT_ANCHOR_TEXT')}
               class="clickhere"

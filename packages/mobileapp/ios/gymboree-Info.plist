@@ -75,6 +75,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>icomoon.ttf</string>
 		<string>FontAwesome.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat.ttf</string>
