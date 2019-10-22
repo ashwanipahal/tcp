@@ -433,7 +433,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             lbl_login_rememberMe
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
-            className="remember-me-help-text"
+            className={null}
             color="text.primary"
             component="p"
             fontFamily="secondary"
@@ -950,7 +950,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             lbl_login_rememberMe
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
-            className="remember-me-help-text"
+            className={null}
             color="text.primary"
             component="p"
             fontFamily="secondary"
