@@ -5,6 +5,7 @@ import { SubmissionError } from 'redux-form';
 import {
   updatePaymentOnOrder,
   addPaymentToOrder,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import { updateAddress } from '../../../../../services/abstractors/account';
 
@@ -284,7 +285,9 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     }
   } catch (e) {
     // submitBillingError(store, e);
-    yield put(setServerErrorCheckout({ errorMessage: e, component: 'PAGE' }));
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
   }
 }
 

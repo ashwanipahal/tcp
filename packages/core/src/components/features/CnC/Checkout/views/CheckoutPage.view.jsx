@@ -10,12 +10,19 @@ import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
 import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
-import { routerPush } from '../../../../../utils';
+import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.pageServerError = null;
+    this.pageServerErrorRef = this.pageServerErrorRef.bind(this);
+  }
+
   componentDidMount() {
     const { router } = this.props;
     const section = router.query.section || router.query.subSection;
@@ -24,6 +31,14 @@ class CheckoutPage extends React.PureComponent {
       routerPush('/', '/');
     }
   }
+
+  componentDidUpdate(prevProps) {
+    const { checkoutServerError } = this.props;
+    if (checkoutServerError && checkoutServerError !== prevProps.checkoutServerError) {
+      scrollToParticularElement(this.pageServerError);
+    }
+  }
+
   // componentDidUpdate() {
   // const { router, cartOrderItems } = this.props;
   // const currentStage = router.query.section;
@@ -101,7 +116,7 @@ class CheckoutPage extends React.PureComponent {
   renderPageErrors = () => {
     const { checkoutServerError } = this.props;
     return (
-      <div className="checkout-page-error-container">
+      <div className="checkout-page-error-container elem-mt-MED" ref={this.pageServerErrorRef}>
         {checkoutServerError && (
           <ErrorMessage error={checkoutServerError.errorMessage} className="checkout-page-error" />
         )}
@@ -183,6 +198,7 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */
             isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
+            ServerErrors={this.renderPageErrors}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -206,6 +222,7 @@ class CheckoutPage extends React.PureComponent {
             submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
             /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
+            ServerErrors={this.renderPageErrors}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -215,6 +232,7 @@ class CheckoutPage extends React.PureComponent {
             isGuest={isGuest}
             submitBilling={submitBilling}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            ServerErrors={this.renderPageErrors}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -232,6 +250,7 @@ class CheckoutPage extends React.PureComponent {
             shipmentMethods={shipmentMethods}
             pickUpContactPerson={pickUpContactPerson}
             pickUpContactAlternate={pickUpContactAlternate}
+            ServerErrors={this.renderPageErrors}
             initialValues={{
               expressReviewShippingSection: {
                 shippingMethodId: shippingMethod,
@@ -248,7 +267,6 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
           <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
         )}
-        {this.renderPageErrors()}
       </div>
     );
   };
@@ -256,6 +274,10 @@ class CheckoutPage extends React.PureComponent {
   handleDefaultLinkClick = e => {
     e.preventDefault();
   };
+
+  pageServerErrorRef(ref) {
+    this.pageServerError = ref;
+  }
 
   render() {
     const { isGuest, router, submitReview, reviewProps } = this.props;

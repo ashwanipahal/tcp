@@ -10,6 +10,7 @@ import {
   setShippingMethodAndAddressId,
   getInternationCheckoutSettings,
   startExpressCheckout,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
@@ -50,6 +51,7 @@ import {
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
+import { setServerErrorCheckout } from './Checkout.action.util';
 
 const {
   getRecalcOrderPointsInterval,
@@ -139,35 +141,41 @@ export function* loadUpdatedCheckoutValues(
 }
 
 function* submitPickupSection({ payload }) {
-  const formData = { ...payload };
-  const { navigation } = payload;
-  const result = yield call(callPickupSubmitMethod, formData);
-  if (result.addressId) {
-    yield call(getAddressList);
-    yield call(getCardList);
-    if (!isMobileApp()) {
-      const getIsShippingRequired = yield select(getIsOrderHasShipping);
-      const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-      const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
-      pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
-    } else if (navigation) {
-      yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+  try {
+    const formData = { ...payload };
+    const { navigation } = payload;
+    const result = yield call(callPickupSubmitMethod, formData);
+    if (result.addressId) {
+      yield call(getAddressList);
+      yield call(getCardList);
+      if (!isMobileApp()) {
+        const getIsShippingRequired = yield select(getIsOrderHasShipping);
+        const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+        const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
+        pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
+      } else if (navigation) {
+        yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+      }
     }
+    /* In the future I imagine us sending the SMS to backend for them to
+        store so it will be loaded in the below loadUpdatedCheckoutValues function.
+        for now we are storing it only on browser so will lose this info on page re-load.
+      */
+    // eslint-disable-next-line no-unused-expressions
+    // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
+    const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
+    if (!isMobileApp()) {
+      yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
+    }
+    // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
+    // }).catch((err) => {
+    //   throw getSubmissionError(this.store, 'submitPickupSection', err);
+    // });
+  } catch (e) {
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
   }
-  /* In the future I imagine us sending the SMS to backend for them to
-       store so it will be loaded in the below loadUpdatedCheckoutValues function.
-       for now we are storing it only on browser so will lose this info on page re-load.
-    */
-  // eslint-disable-next-line no-unused-expressions
-  // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
-  const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-  if (!isMobileApp()) {
-    yield call(loadUpdatedCheckoutValues, false, true, true, false, !wantsSmsOrderUpdates);
-  }
-  // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
-  // }).catch((err) => {
-  //   throw getSubmissionError(this.store, 'submitPickupSection', err);
-  // });
 }
 // function setCartInfo(cartInfo, isSetCartItems) {
 //   return updateCartInfo(cartInfo, isSetCartItems);

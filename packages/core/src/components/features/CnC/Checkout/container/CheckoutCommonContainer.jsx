@@ -42,6 +42,7 @@ import {
   getIsRegisteredUserCallDone,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 const {
   getSmsSignUpLabels,
@@ -274,6 +275,9 @@ export const mapDispatchToProps = dispatch => {
     },
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),

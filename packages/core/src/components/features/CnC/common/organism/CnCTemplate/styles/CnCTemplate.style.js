@@ -39,9 +39,6 @@ const styles = css`
       font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
   }
-  .checkout-page-error-container {
-    float: right;
-  }
 `;
 
 export default styles;

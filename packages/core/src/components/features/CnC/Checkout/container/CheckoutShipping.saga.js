@@ -9,6 +9,9 @@ import { isCanada } from '../../../../../utils/utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
 import { redirectToBilling } from './Checkout.saga.util';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
+import { setServerErrorCheckout } from './Checkout.action.util';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
@@ -65,6 +68,9 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
   } catch (err) {
     yield put(setShippingLoadingState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(err, errorsMapping);
+    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
   }
 }
 

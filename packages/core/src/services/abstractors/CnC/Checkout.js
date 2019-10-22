@@ -60,8 +60,11 @@ export const getGiftWrappingOptions = () => {
 
 export const getServerErrorMessage = (error, errorsMapping) => {
   const errorMsg = getFormattedError(error, errorsMapping);
+  if (typeof errorMsg.errorMessages === 'undefined') {
+    return 'Oops... Something went Wrong !!!!';
+  }
   // eslint-disable-next-line
-  return errorMsg.errorMessage._error;
+  return errorMsg.errorMessages._error;
 };
 
 export const addPickupPerson = args => {
