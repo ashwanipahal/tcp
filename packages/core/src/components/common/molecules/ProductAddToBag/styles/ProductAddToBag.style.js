@@ -21,12 +21,12 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: 800;
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
     font-stretch: normal;
     font-family: Nunito;
     line-height: normal;
     font-style: normal;
-    letter-spacing: 1px;
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
     height: 42px;
     width: 347px;
 
@@ -126,9 +126,9 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 53px;
     height: 19px;
-    font-family: Nunito;
   }
 
   .color-chips-selector-title-name,
