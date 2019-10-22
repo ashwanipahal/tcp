@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -26,44 +25,24 @@ import {
   SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
-import CartItemRadioButtons from '../../CartItemRadioButtons';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileExtension from './CartItemTileExtension.view.native';
+import {
+  getBossBopisFlags,
+  isEcomOrder,
+  isBopisOrder,
+  isBossOrder,
+  isSoldOut,
+  noBossBopisMessage,
+  hideEditBossBopis,
+  checkBossBopisDisabled,
+  showRadioButtons,
+} from './CartItemTile.utils';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
-
-const getItemStatus = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
-  }
-  return <></>;
-};
-const getCartRadioButtons = (
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection,
-  showOnReviewPage
-) => {
-  if (isBagPageSflSection || !showOnReviewPage) return null;
-  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
-    return (
-      <CartItemRadioButtons
-        productDetail={productDetail}
-        labels={labels}
-        index={itemIndex}
-        openedTile={openedTile}
-        setSelectedProductTile={setSelectedProductTile}
-      />
-    );
-  }
-  return <></>;
-};
 
 class ProductInformation extends React.Component {
   swipeable = React.createRef();
@@ -219,7 +198,7 @@ class ProductInformation extends React.Component {
     );
   };
 
-  rightButton = () => {
+  rightButton = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) => {
     const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
     const { isGenricGuest, isCondense } = this.props;
     const {
@@ -231,24 +210,25 @@ class ProductInformation extends React.Component {
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
     return (
       <BtnWrapper>
-        {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-          <TouchableOpacity
-            accessibilityRole="link"
-            onPress={() => {
-              CartItemTileExtension.callEditMethod(this.props);
-              this.onSwipeComplete(this.swipeable);
-              return this.swipeable.toggle('right');
-            }}
-          >
-            <Image
-              data-locator={getLocator('cart_item_edit_link')}
-              source={editIcon}
-              height={IconHeight}
-              width={IconWidth}
-            />
-            <IconTextEdit>{labels.edit}</IconTextEdit>
-          </TouchableOpacity>
-        )}
+        {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT &&
+          !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+            <TouchableOpacity
+              accessibilityRole="link"
+              onPress={() => {
+                CartItemTileExtension.callEditMethod(this.props);
+                CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
+                return this.swipeable.toggle('right');
+              }}
+            >
+              <Image
+                data-locator={getLocator('cart_item_edit_link')}
+                source={editIcon}
+                height={IconHeight}
+                width={IconWidth}
+              />
+              <IconTextEdit>{labels.edit}</IconTextEdit>
+            </TouchableOpacity>
+          )}
         {this.renderSflActionsLinks()}
         <MarginLeft
           onPress={() =>
@@ -277,32 +257,59 @@ class ProductInformation extends React.Component {
     );
   };
 
-  onSwipeComplete = swipe => {
-    const { swipedElement, setSwipedElement } = this.props;
-    if (swipedElement && swipedElement !== swipe) {
-      swipedElement.recenter();
-    }
-    setSwipedElement(swipe);
-  };
-
   render() {
-    const { productDetail, labels, itemIndex, showOnReviewPage, currencySymbol } = this.props;
-    const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
-    const { isGiftItem } = productDetail.itemInfo;
+    const { labels, itemIndex, showOnReviewPage, currencySymbol, productDetail } = this.props;
+    const {
+      productDetail: {
+        miscInfo: { store, orderItemType, availability },
+        itemInfo: { itemBrand, isGiftItem },
+      },
+      onPickUpOpenClick,
+    } = this.props;
+    const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isECOMOrder = isEcomOrder(orderItemType);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton()]}
+        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
         rightButtonWidth={240}
         leftButtons={null}
         onSwipeComplete={(event, gestureState, swipe) => {
-          this.onSwipeComplete(swipe);
+          CartItemTileExtension.onSwipeComplete(this.props, swipe);
         }}
       >
         <MainWrapper>
-          <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
+          <UnavailableView>
+            {CartItemTileExtension.renderUnavailableErrorMessage({
+              props: this.props,
+              isEcomSoldout,
+              bossDisabled,
+              isBOSSOrder,
+              bopisDisabled,
+              isBOPISOrder,
+              noBossMessage,
+              noBopisMessage,
+              availability,
+            })}
+          </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
             {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
             <ProductDescription>
@@ -353,25 +360,45 @@ class ProductInformation extends React.Component {
             {!showOnReviewPage &&
               CartItemTileExtension.PriceOnReviewPage(currencySymbol, productDetail)}
           </OuterContainer>
-          {showOnReviewPage && (
-            <EditButton
-              onPress={() => {
-                this.onSwipeComplete(this.swipeable);
-                return this.swipeable.toggle('right');
-              }}
-            >
-              {CartItemTileExtension.getEditError(productDetail, labels)}
-            </EditButton>
-          )}
-          {getCartRadioButtons(
-            productDetail,
-            labels,
-            itemIndex,
-            openedTile,
-            setSelectedProductTile,
-            isBagPageSflSection,
-            showOnReviewPage
-          )}
+          {showOnReviewPage &&
+            !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+              <EditButton
+                onPress={() => {
+                  CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
+                  return this.swipeable.toggle('right');
+                }}
+              >
+                {CartItemTileExtension.getEditError(productDetail, labels)}
+              </EditButton>
+            )}
+          {showRadioButtons({
+            isEcomSoldout,
+            isECOMOrder,
+            isBossEnabled,
+            isBopisEnabled,
+            store,
+          }) &&
+            CartItemTileExtension.getCartRadioButtons({
+              productDetail,
+              labels,
+              itemIndex,
+              openedTile,
+              setSelectedProductTile,
+              isBagPageSflSection,
+              showOnReviewPage,
+              isEcomSoldout,
+              isECOMOrder,
+              isBOSSOrder,
+              isBOPISOrder,
+              noBopisMessage,
+              noBossMessage,
+              bossDisabled,
+              bopisDisabled,
+              isBossEnabled,
+              isBopisEnabled,
+              onPickUpOpenClick,
+              orderId,
+            })}
         </MainWrapper>
       </Swipeable>
     );
@@ -386,13 +413,14 @@ ProductInformation.propTypes = {
   openedTile: PropTypes.number,
   isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
-  swipedElement: PropTypes.shape({}),
-  setSwipedElement: PropTypes.func.isRequired,
+  swipedElement: PropTypes.shape({}).isRequired,
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
   showOnReviewPage: PropTypes.bool,
   currencySymbol: PropTypes.string.isRequired,
+  orderId: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {
@@ -401,7 +429,6 @@ ProductInformation.defaultProps = {
   itemIndex: 0,
   openedTile: 0,
   isCondense: true,
-  swipedElement: null,
   isBagPageSflSection: false,
   showOnReviewPage: true,
 };

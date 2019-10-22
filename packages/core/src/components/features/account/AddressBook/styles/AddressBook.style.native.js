@@ -56,7 +56,7 @@ const UnderlineStyle = styled.View`
 const NoAddressWrapper = styled.View`
   display: flex;
   flex-direction: column;
-  padding: 0 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const NoAddressHeading = styled.View`

@@ -22,7 +22,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           dataLocator=""
           fontFamily="secondary"
           fontSizeVariation="large"
-          fontWeightVariation="active"
+          fontWeightVariation="extrabold"
           locator=""
           margins={null}
           onPress={[Function]}
@@ -50,7 +50,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
           dataLocator=""
           fontFamily="secondary"
           fontSizeVariation="large"
-          fontWeightVariation="active"
+          fontWeightVariation="extrabold"
           locator=""
           margins={null}
           onPress={[Function]}

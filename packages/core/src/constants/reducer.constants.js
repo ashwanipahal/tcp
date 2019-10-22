@@ -213,6 +213,10 @@ export const ORDERS_ACTION_PATTERN = '@@Orders-';
 export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
 export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
+// Category List Reducer
+export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
+export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
+
 // My Profile reducer
 export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
 export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';

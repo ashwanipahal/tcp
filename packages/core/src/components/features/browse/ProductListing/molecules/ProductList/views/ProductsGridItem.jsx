@@ -296,13 +296,13 @@ class ProductsGridItem extends React.PureComponent {
       wishlistsSummaries && (
         <div className="move-item-container">
           <Button className="move-item-button" onClick={this.openMoveItem}>
-            {labels.moveToAnotherList}
+            {labels.lbl_fav_moveToAnotherList}
             <Image
               alt="accordian button"
               className="accordian-item-arrow icon-small"
               src={accordianIcon}
               data-locator="accordian-icon"
-              height="8px"
+              height="6px"
             />
           </Button>
           {isMoveItemOpen && (
@@ -343,7 +343,7 @@ class ProductsGridItem extends React.PureComponent {
         dataLocator={getLocator('remove_favorite_Button')}
         onClick={() => removeFavItem({ itemId })}
       >
-        {labels.removeFavorite}
+        {labels.lbl_fav_removeFavorite}
       </Button>
     ) : (
       <Button
@@ -500,7 +500,7 @@ class ProductsGridItem extends React.PureComponent {
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
             isSoldOut={itemNotAvailable}
-            soldOutLabel={labels.soldOut}
+            soldOutLabel={labels.lbl_fav_soldOut}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
@@ -516,6 +516,12 @@ class ProductsGridItem extends React.PureComponent {
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
                 >
+                  {this.getProductPriceSection(
+                    listPriceForColor,
+                    offerPriceForColor,
+                    badge3,
+                    isShowBadges
+                  )}
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
@@ -527,7 +533,6 @@ class ProductsGridItem extends React.PureComponent {
               )}
             </Row>
           }
-          {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
 
           <ProductTitle
             name={name}
