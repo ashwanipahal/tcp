@@ -54,7 +54,7 @@ export class InstagramLoginComponent extends React.Component {
     } else {
       window.open(
         `${config.AUTH_URL.INSTAGRAM}?client_id=${
-          apiConfig.instaKey
+          apiConfig.instakey
         }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=token`,
         '_blank',
         'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
