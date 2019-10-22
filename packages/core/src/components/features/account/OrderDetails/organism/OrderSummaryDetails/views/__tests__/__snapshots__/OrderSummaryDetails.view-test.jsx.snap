@@ -120,7 +120,7 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mb-XS"
+    className="elem-mb-XS total-value"
     fullBleed={true}
   >
     <Styled(Col)
@@ -137,14 +137,14 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
+        fontSize="fs16"
+        fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
         textAlign="left"
       >
-        lbl_orders_couponsPromotions:
+        lbl_orders_orderTotal:
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
@@ -161,114 +161,8 @@ exports[`Order Summary Details component if orderDetails Data is not available 1
         color="text.primary"
         component="p"
         fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="right"
-      >
-        undefinedNaN
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mb-XS"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 7,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_orderDetails_shipping:
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="right"
-      >
-        lbl_orders_free
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="items-total elem-mb-XS"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 7,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_orders_tax:
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
+        fontSize="fs16"
+        fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
@@ -507,7 +401,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="items-total elem-mb-XS"
+    className="elem-mb-XS"
     fullBleed={true}
   >
     <Styled(Col)
@@ -841,7 +735,7 @@ exports[`Order Summary Details component should renders correctly with free ship
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="items-total elem-mb-XS"
+    className="elem-mb-XS"
     fullBleed={true}
   >
     <Styled(Col)
@@ -1175,7 +1069,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="items-total elem-mb-XS"
+    className="elem-mb-XS"
     fullBleed={true}
   >
     <Styled(Col)

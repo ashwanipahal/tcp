@@ -205,7 +205,6 @@ describe('RegisteredShippingForm', () => {
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: true, modalType: 'add' });
-    tree.instance().getBtnDisabledState();
     expect(tree).toMatchSnapshot();
   });
   it('should call renderActionBtns', () => {
@@ -267,9 +266,6 @@ describe('RegisteredShippingForm', () => {
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: false, modalType: null });
-    tree.instance().toggleAddressModal();
-    expect(tree.state('modalState')).toBe(true);
-    expect(tree.state('modalType')).toBe('add');
     expect(tree).toMatchSnapshot();
   });
 });
