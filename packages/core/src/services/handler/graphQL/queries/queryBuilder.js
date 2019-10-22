@@ -84,12 +84,10 @@ const QueryBuilder = {
         const module = modules[i];
         // eslint-disable-next-line no-await-in-loop
         const query = await QueryBuilder.loadModuleQuery(module.name, module.data);
-        console.log(query);
         queriesList.push(query);
       }
     } else {
       const query = await QueryBuilder.loadModuleQuery(modules.name, modules.data);
-      console.log(query);
       queriesList.push(query);
     }
     return queriesList;
