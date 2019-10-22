@@ -59,7 +59,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
-            fontWeight="extrabold"
+            fontWeight="black"
             className="elem-mb-SM"
           >
             {status}
@@ -85,7 +85,7 @@ const OrderBasicDetails = ({ className, orderDetailsData, ordersLabels }) => {
         >
           {getLabelValue(ordersLabels, 'lbl_orderDetails_orderNumber')}
         </BodyCopy>
-        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+        <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary">
           {orderNumber}
         </BodyCopy>
       </BodyCopy>
