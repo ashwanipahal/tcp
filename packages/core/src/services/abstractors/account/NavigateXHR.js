@@ -2,10 +2,10 @@ import endpoints from '../../endpoints';
 import { getAllCookies } from '../../../utils/cookie.util';
 import { getAPIConfig, isMobileApp } from '../../../utils';
 
-const checkMobileApp = isMobileApp();
-
 export const getPayloadCookieArray = cookie => {
-  const informationCookies = checkMobileApp ? Object.entries(cookie) : getAllCookies().split(';');
+  const checkMobileApp = isMobileApp();
+  const informationCookies =
+    checkMobileApp && cookie ? Object.entries(cookie) : getAllCookies().split(';');
   return informationCookies.map(str => {
     const obj = Object.create(null);
     if (!checkMobileApp) {
