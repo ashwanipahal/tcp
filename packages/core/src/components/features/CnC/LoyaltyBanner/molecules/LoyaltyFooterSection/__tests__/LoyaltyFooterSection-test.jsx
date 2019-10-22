@@ -3,6 +3,20 @@ import { shallow } from 'enzyme';
 import { LoyaltyFooterSectionVanilla } from '../views/LoyaltyFooterSection';
 
 describe('LoyaltyFooterSection View Component', () => {
+  let props;
+  beforeEach(() => {
+    props = {
+      labels: {},
+      className: '',
+      isProductDetailView: false,
+      isGuest: false,
+      isPlcc: false,
+      isReviewPage: false,
+      isConfirmationPage: false,
+      isAddedToBagPage: false,
+      earnedReward: false,
+    };
+  });
   let component;
   const Props = {
     labels: {},
@@ -154,6 +168,50 @@ describe('LoyaltyFooterSection View Component', () => {
 
   it('isConfirmationPage true should render correctly', () => {
     component = shallow(<LoyaltyFooterSectionVanilla {...Props6} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('is not ProductDetailView should render correctly', () => {
+    props.isProductDetailView = false;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('isProductDetailView should render correctly', () => {
+    props.isProductDetailView = true;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('isProductDetailView && plcc && isGuest should render correctly', () => {
+    props.isProductDetailView = true;
+    props.isGuest = false;
+    props.isPlcc = true;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('isProductDetailView && isGuest should render correctly', () => {
+    props.isProductDetailView = true;
+    props.isGuest = true;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('isConfirmationPage && earnedRewardAvailable should render correctly', () => {
+    props.isConfirmationPage = true;
+    props.isGuest = true;
+    props.earnedRewardAvailable = true;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('isConfirmationPage && earnedRewardAvailable should render correctly', () => {
+    props.isAddedToBagPage = true;
+    props.isGuest = false;
+    props.isPlcc = false;
+    props.earnedRewardAvailable = true;
+    component = shallow(<LoyaltyFooterSectionVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

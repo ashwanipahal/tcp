@@ -122,29 +122,25 @@ const renderConfirmationAndBagLinks = (
   );
 };
 
-const detailViewFooter = (labels, isProductDetailView, isGuest, isPlcc) => {
+const detailViewFooter = (labels, isGuest, isPlcc) => {
   return (
     <>
-      {isProductDetailView && (
-        <div>
-          {isGuest && (
+      {isGuest && (
+        <span>
+          {renderCreateAccountLink(labels)}
+          {renderLoginLink(labels)}
+        </span>
+      )}
+      {!isGuest && (
+        <>
+          {!isPlcc && (
             <span>
-              {renderCreateAccountLink(labels)}
-              {renderLoginLink(labels)}
+              {renderApplyNowLink()}
+              {renderLearnMoreLink(labels)}
             </span>
           )}
-          {!isGuest && (
-            <>
-              {!isPlcc && (
-                <span>
-                  {renderApplyNowLink()}
-                  {renderLearnMoreLink(labels)}
-                </span>
-              )}
-              {isPlcc && <span>{renderLearnMoreLink(labels)}</span>}
-            </>
-          )}
-        </div>
+          {isPlcc && renderLearnMoreLink(labels)}
+        </>
       )}
     </>
   );
@@ -164,7 +160,7 @@ const LoyaltyFooterSection = props => {
   } = props;
   return (
     <div className={`${className} footerWrapper`}>
-      {isProductDetailView && detailViewFooter()}
+      {isProductDetailView && detailViewFooter(labels, isGuest, isPlcc)}
       {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, earnedRewardAvailable)}
       {!isProductDetailView && !isAddedToBagPage && (
         <>
