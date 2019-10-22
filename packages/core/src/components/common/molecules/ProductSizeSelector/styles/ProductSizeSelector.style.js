@@ -7,6 +7,7 @@ const styles = css`
       font-weight: ${props => props.theme.fonts.fontWeight.medium};
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ${props => props.theme.fonts.secondaryFontFamily};
     }
   }
 
@@ -15,6 +16,7 @@ const styles = css`
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
   /* Radio Button for size */

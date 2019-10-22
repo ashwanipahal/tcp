@@ -1,9 +1,13 @@
-import { fromJS } from 'immutable';
-import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
-import { isMobileApp } from '../../../../../utils';
+import { fromJS, List } from 'immutable';
+import CHECKOUT_SELECTORS, {
+  getSendOrderUpdate,
+  getAlternateFormFieldsExpress,
+} from '../container/Checkout.selector';
+import { isMobileApp, getAPIConfig } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
+  getAPIConfig: jest.fn(),
 }));
 
 describe('Checkout Selectors', () => {
@@ -272,5 +276,46 @@ describe('Checkout Selectors', () => {
     expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
       shippingMethodId: '911',
     });
+  });
+
+  it('#getAlternateFormFieldsExpress', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            pickUpAlternateExpress: {
+              hasAlternatePickup: true,
+            },
+          },
+        },
+      },
+    };
+    expect(getAlternateFormFieldsExpress(state)).toEqual({
+      hasAlternatePickup: true,
+    });
+  });
+
+  it('#getShippingAddressList', () => {
+    getAPIConfig.mockImplementation(() => {
+      return { siteId: 'us' };
+    });
+    const AddressBookReducer = fromJS({
+      list: List([
+        {
+          addressId: '158247',
+          nickName: 'sb_2019-06-21 01:23:49.834',
+          primary: 'false',
+          country: 'US',
+          xcont_isShippingAddress: 'true',
+        },
+      ]),
+    });
+
+    const state = {
+      AddressBookReducer,
+    };
+    expect(CHECKOUT_SELECTORS.getShippingAddressList(state)).toEqual(
+      AddressBookReducer.get('list')
+    );
   });
 });

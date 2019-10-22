@@ -8,9 +8,7 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
     data-locator="deletegcmodalheadinng"
     fontFamily="secondaryFontFamily"
     fontWeight="bold"
-  >
-    abc
-  </Styled(BodyStyle)>
+  />
   <Styled(BodyStyle)
     className="deleteCardModal__desc"
   >

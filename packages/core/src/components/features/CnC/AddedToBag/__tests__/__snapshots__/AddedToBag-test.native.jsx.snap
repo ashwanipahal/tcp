@@ -94,6 +94,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               dataLocator="addedToBag-continueShopping"
               fontSizeVariation="medium"
               locator=""
+              margins={null}
               noLink={true}
               onPress={null}
               text=""

@@ -20,6 +20,7 @@ export {
   setTestId,
   validateColor,
   getTranslatedMomentDate,
+  getTranslateDateInformation,
   readCookieMobileApp,
   createGoogleMapUrl,
   mapHandler,
@@ -57,6 +58,7 @@ export {
   buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
-  getModifiedLanguageCode,
-  getTranslateDateInformation,
+  parseBoolean,
 } from './utils';
+
+export { getLoading } from './JsxUtils.app';
