@@ -43,3 +43,4 @@ CategoryListing.propTypes = {
 };
 
 export default CategoryListing;
+export { CategoryListing as CategoryListingVanilla };
