@@ -17,10 +17,9 @@ const OrderItemContent = styled(ViewWithSpacing)`
   width: 67%;
 `;
 
-const OrderContentWrapper = styled.View`
+const ItemContentWrapper = styled(ViewWithSpacing)`
   display: flex;
   flex-direction: row;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const ImageStyle = styled.Image`
@@ -42,6 +41,6 @@ export {
   ImageBrandTCPStyle,
   OrderItemContainer,
   OrderItemImage,
-  OrderContentWrapper,
+  ItemContentWrapper,
   OrderItemContent,
 };
