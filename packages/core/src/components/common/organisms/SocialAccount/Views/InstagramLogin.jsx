@@ -14,6 +14,7 @@ import { getSiteId, getLocationOrigin } from '../../../../../utils/utils.web';
 import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
+import { getInstagramAccessToken } from '../../../../../services/abstractors/account';
 
 /**
  * @function InstagramLoginComponent This component validates the instagram login and stores the access token
@@ -62,18 +63,21 @@ export class InstagramLoginComponent extends React.Component {
   };
 
   onTokenCapture = () => {
+    const redirectUrl = `${getLocationOrigin()}/${getSiteId()}/instagram`;
     const instagramTokenField = document.getElementById('instagram-token');
     const instagramTokenVal = instagramTokenField.value;
     if (instagramTokenVal) {
-      const socialAccInfo = {
-        instagram: this.elem[1].socialAccount,
-        accessToken: instagramTokenVal,
-        isconnected: false,
-        userId: instagramTokenVal.split('.')[0],
-      };
-      this.saveAccountInfo({ socialAccInfo });
-      instagramTokenField.value = '';
-      this.closeModal({ state: true });
+      getInstagramAccessToken({ code: instagramTokenVal, redirectUrl }).then(res => {
+        const socialAccInfo = {
+          instagram: this.elem[1].socialAccount,
+          accessToken: res,
+          isconnected: false,
+          userId: instagramTokenVal.split('.')[0],
+        };
+        this.saveAccountInfo({ socialAccInfo });
+        instagramTokenField.value = '';
+        this.closeModal({ state: true });
+      });
     }
   };
 
