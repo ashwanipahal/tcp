@@ -9,7 +9,6 @@ import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
 
 export const OrdersList = ({
   labels,
-  ordersLabels,
   ordersListItems,
   navigation,
   handleComponentChange,
@@ -31,7 +30,9 @@ export const OrdersList = ({
         orderDetailsData.purchasedItems &&
         orderDetailsData.purchasedItems.length > 0 && (
           <OrderPreviewItemsList
-            ordersLabels={ordersLabels}
+            labels={labels}
+            navigation={navigation}
+            orderNumber={orderDetailsData.orderNumber}
             items={orderDetailsData.purchasedItems[0].items}
             canceledItems={orderDetailsData.canceledItems}
           />

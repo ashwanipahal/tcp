@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import getOrdersListState from './Orders.selectors';
-import {
-  getOrderDetailsDataState,
-  getOrdersLabels,
-} from '../../OrderDetails/container/OrderDetails.selectors';
+import { getOrderDetailsDataState } from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
@@ -51,7 +48,6 @@ export class OrdersContainer extends PureComponent {
   render() {
     const {
       labels,
-      ordersLabels,
       ordersListItems,
       navigation,
       handleComponentChange,
@@ -65,7 +61,6 @@ export class OrdersContainer extends PureComponent {
       siteId !== API_CONFIG.siteIds.ca && (
         <OrderListComponent
           labels={labels}
-          ordersLabels={ordersLabels}
           onFilterLink={this.filterLinkHandler}
           ordersListItems={ordersListItemData}
           navigation={navigation}
@@ -82,7 +77,6 @@ export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
   orderDetailsData: getOrderDetailsDataState(state),
-  ordersLabels: getOrdersLabels(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

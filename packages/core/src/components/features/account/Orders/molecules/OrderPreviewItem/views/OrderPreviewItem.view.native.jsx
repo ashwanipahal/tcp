@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 
 import {
   ImageStyle,
@@ -12,7 +11,7 @@ import {
   OrderItemContainer,
   OrderItemImage,
   OrderItemContent,
-  OrderContentWrapper,
+  ItemContentWrapper,
 } from '../styles/OrderPreviewItem.style.native';
 import endpoints from '../../../../../../../service/endpoint';
 
@@ -37,11 +36,11 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
       productInfo: { name, imagePath },
       itemInfo: { itemBrand, quantity, quantityCanceled },
     },
-    ordersLabels,
+    labels,
     isCanceledList,
   } = otherProps;
 
-  const { item } = otherProps.item;
+  const { item } = otherProps;
 
   return (
     <>
@@ -60,24 +59,22 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
             fontFamily="secondary"
           />
 
-          <ViewWithSpacing spacingStyles="margin-top-MED">
-            <OrderContentWrapper>
-              <BodyCopy
-                fontSize="fs14"
-                fontFamily="secondary"
-                fontWeight="semibold"
-                text={getLabelValue(ordersLabels, 'lbl_orderDetails_quantity')}
-              />
+          <ItemContentWrapper spacingStyles="margin-top-MED">
+            <BodyCopy
+              fontSize="fs14"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              text={getLabelValue(labels, 'lbl_orderDetails_quantity', 'orders')}
+            />
 
-              <BodyCopy
-                fontSize="fs14"
-                fontFamily="secondary"
-                text={isCanceledList ? quantityCanceled : quantity}
-              />
-            </OrderContentWrapper>
-          </ViewWithSpacing>
-          <ViewWithSpacing spacingStyles="margin-top-MED">
-            <OrderContentWrapper>
+            <BodyCopy
+              fontSize="fs14"
+              fontFamily="secondary"
+              text={isCanceledList ? quantityCanceled : quantity}
+            />
+          </ItemContentWrapper>
+          {item && item.trackingInfo && item.trackingInfo.length > 0 && (
+            <ItemContentWrapper spacingStyles="margin-top-MED">
               <BodyCopy
                 fontSize="fs14"
                 fontFamily="secondary"
@@ -85,15 +82,9 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
                 text="Status: "
               />
 
-              {item && item.trackingInfo && item.trackingInfo.length > 0 && (
-                <BodyCopy
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                  text={item.trackingInfo[0].status}
-                />
-              )}
-            </OrderContentWrapper>
-          </ViewWithSpacing>
+              <BodyCopy fontSize="fs14" fontFamily="secondary" text={item.trackingInfo[0].status} />
+            </ItemContentWrapper>
+          )}
         </OrderItemContent>
       </OrderItemContainer>
     </>

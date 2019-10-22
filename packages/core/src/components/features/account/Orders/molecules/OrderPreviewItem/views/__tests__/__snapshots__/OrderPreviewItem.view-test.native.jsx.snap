@@ -34,50 +34,31 @@ exports[`Order Items component should renders correctly 1`] = `
         textAlign="left"
         textDecoration={null}
       />
-      <Styled(View)
+      <Styled(Styled(View))
         spacingStyles="margin-top-MED"
       >
-        <Styled(View)>
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator=""
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="semibold"
-            margin={null}
-            numberOfLines={null}
-            text="lbl_orderDetails_quantity"
-            textDecoration={null}
-          />
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator=""
-            fontFamily="secondary"
-            fontSize="fs14"
-            margin={null}
-            numberOfLines={null}
-            text={false}
-            textDecoration={null}
-          />
-        </Styled(View)>
-      </Styled(View)>
-      <Styled(View)
-        spacingStyles="margin-top-MED"
-      >
-        <Styled(View)>
-          <Styled(BodyCopy)
-            accessibilityText=""
-            dataLocator=""
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="semibold"
-            margin={null}
-            numberOfLines={null}
-            text="Status: "
-            textDecoration={null}
-          />
-        </Styled(View)>
-      </Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          text="lbl_orderDetails_quantity"
+          textDecoration={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          margin={null}
+          numberOfLines={null}
+          text={false}
+          textDecoration={null}
+        />
+      </Styled(Styled(View))>
     </Styled(Styled(View))>
   </Styled(View)>
 </Fragment>
