@@ -153,7 +153,6 @@ export const parseProductFromAPI = (
  * @summary This will get product info and all color/sizes for that product
  */
 const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
-  console.log('productColorId', productColorId);
   // const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
   // const location = routingInfoStoreView.getHistory(this.store.getState()).location;
   // const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
