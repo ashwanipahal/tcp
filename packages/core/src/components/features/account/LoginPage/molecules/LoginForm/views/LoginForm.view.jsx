@@ -104,7 +104,7 @@ class LoginForm extends React.PureComponent<Props> {
             </BodyCopy>
 
             {userplccCardNumber && userplccCardId && (
-              <BodyCopy component="div">
+              <BodyCopy component="div" className="save-my-plcc">
                 <Field
                   name="savePlcc"
                   component={InputCheckbox}
