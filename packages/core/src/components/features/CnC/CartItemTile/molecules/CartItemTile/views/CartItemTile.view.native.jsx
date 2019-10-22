@@ -44,43 +44,6 @@ const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
 
-// const getItemStatus = (productDetail, labels) => {
-//   if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-//     return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
-//   }
-//   return <></>;
-// };
-
-// const getCartRadioButtons = reqdArgs => {
-//   const {
-//     productDetail,
-//     labels,
-//     itemIndex,
-//     openedTile,
-//     setSelectedProductTile,
-//     isBagPageSflSection,
-//     showOnReviewPage,
-//     onPickUpOpenClick,
-//     orderId,
-//   } = reqdArgs;
-//   if (isBagPageSflSection || !showOnReviewPage) return null;
-//   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
-//     return (
-//       <CartItemRadioButtons
-//         productDetail={productDetail}
-//         labels={labels}
-//         index={itemIndex}
-//         openedTile={openedTile}
-//         setSelectedProductTile={setSelectedProductTile}
-//         openPickUpModal={CartItemTileExtension.handleEditCartItemWithStore}
-//         onPickUpOpenClick={onPickUpOpenClick}
-//         orderId={orderId}
-//       />
-//     );
-//   }
-//   return <></>;
-// };
-
 class ProductInformation extends React.Component {
   swipeable = React.createRef();
 

@@ -337,9 +337,40 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "colorProductId": undefined,
+                "isBopisCtaEnabled": true,
+                "isBossCtaEnabled": false,
+                "isItemShipToHome": true,
+                "openSkuSelectionForm": false,
+                "orderInfo": Object {
+                  "Fit": "regular",
+                  "Quantity": "1",
+                  "Size": "1",
+                  "color": undefined,
+                  "itemBrand": "TCP",
+                  "orderId": 123,
+                  "orderItemId": undefined,
+                  "orderItemType": "BOPIS",
+                },
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -711,9 +742,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1116,9 +1148,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1485,9 +1518,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         }
       }
       noBopisMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1855,9 +1889,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -2225,9 +2260,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -2923,9 +2959,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -3621,9 +3658,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -3991,9 +4029,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4396,9 +4435,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4801,9 +4841,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -5206,9 +5247,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
       openPickUpModal={[Function]}
       openedTile={0}
-      orderId=""
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {

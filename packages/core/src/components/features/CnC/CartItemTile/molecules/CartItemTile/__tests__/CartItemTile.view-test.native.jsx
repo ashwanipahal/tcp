@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CartItemTile from '../views/CartItemTile.view.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CartItemTileExtension from '../views/CartItemTileExtension.view.native';
 
 describe('CartItemTile common component', () => {
   it('renders correctly', () => {
@@ -148,6 +149,8 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
       isBossClearanceProductEnabled: true,
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
+      onPickUpOpenClick: jest.fn(),
+      orderId: 123,
     };
   });
 
@@ -232,6 +235,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.clearanceItem = true;
     props.isBopisClearanceProductEnabled = false;
     const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, props);
     expect(component).toMatchSnapshot();
   });
 

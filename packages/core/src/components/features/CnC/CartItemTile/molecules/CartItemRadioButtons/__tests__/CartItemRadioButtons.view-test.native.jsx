@@ -24,6 +24,7 @@ describe('CartItemRadioButtons native Component', () => {
             date: '18',
           }),
           store: 'NewPort',
+          orderItemType: 'BOPIS',
         },
         itemInfo: '',
       },
@@ -41,6 +42,9 @@ describe('CartItemRadioButtons native Component', () => {
       bopisDisabled: false,
       index: 0,
       openedTile: 0,
+      openPickUpModal: jest.fn(),
+      onPickUpOpenClick: jest.fn(),
+      orderId: 123,
     };
   });
 
@@ -128,6 +132,7 @@ describe('CartItemRadioButtons native Component', () => {
     props.noBossMessage = 'Not Available (Online only)';
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     component.setState({ currentExpandedState: true });
+    component.instance().handleChangeStoreClick();
     expect(component).toMatchSnapshot();
   });
 });
