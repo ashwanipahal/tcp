@@ -39,7 +39,7 @@ export default function create(store) {
 
     pageType: {
       get() {
-        return store.getState().pageName;
+        return store.getState().pageData.pageName;
       },
     },
 
