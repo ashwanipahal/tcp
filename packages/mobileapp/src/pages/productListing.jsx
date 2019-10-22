@@ -19,8 +19,9 @@ import ROUTE_NAMES from '../reduxStore/routes';
 
 const getNewHeader = (navigation, showSearch, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
+  const capitalizedTitle = title && title.toUpperCase();
   return {
-    header: props => <HeaderNew {...props} title={title} showSearch={showSearch} />,
+    header: props => <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />,
     headerBackground: 'transparent',
   };
 };
