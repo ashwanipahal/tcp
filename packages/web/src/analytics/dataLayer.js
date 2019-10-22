@@ -31,7 +31,7 @@ export default function create(store) {
       },
     },
 
-    pageCategory: {
+    pageshortName: {
       get() {
         return store.getState().pageData.pageName;
       },
@@ -49,7 +49,19 @@ export default function create(store) {
       },
     },
 
-    section: {
+    pageType: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSubSubSection: {
       get() {
         return store.getState().pageData.pageSection;
       },
