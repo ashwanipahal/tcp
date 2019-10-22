@@ -170,7 +170,7 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: '',
+  currencyExchange: 1,
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',

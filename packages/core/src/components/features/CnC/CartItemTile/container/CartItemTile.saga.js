@@ -19,6 +19,8 @@ import {
 } from './CartItemTile.actions';
 import {
   AddToPickupError,
+  AddToCartError,
+  clearAddToBagErrorState,
   clearAddToPickupErrorState,
 } from '../../AddedToBag/container/AddedToBag.actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
@@ -79,9 +81,29 @@ export function* removeCartItem({ payload }) {
   }
 }
 
+/**
+ *
+ * @function updateSagaErrorActions
+ * @description decided error actions on basis of result of update item call
+ * @param {*} updateActionType
+ * @param {*} errorMessage
+ */
+function* updateSagaErrorActions(updateActionType, errorMessage) {
+  if (updateActionType) {
+    yield put(AddToPickupError(errorMessage));
+  } else {
+    yield put(AddToCartError(errorMessage));
+  }
+}
+
 export function* updateCartItemSaga({ payload }) {
+  const { updateActionType } = payload;
   try {
-    yield put(clearAddToPickupErrorState());
+    if (updateActionType) {
+      yield put(clearAddToBagErrorState());
+    } else {
+      yield put(clearAddToPickupErrorState());
+    }
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
@@ -102,6 +124,7 @@ export function* updateCartItemSaga({ payload }) {
       (err && err.errorMessages && err.errorMessages._error) ||
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
+    yield call(updateSagaErrorActions, updateActionType, errorMessage);
     if (payload.fromToggling) {
       yield put(
         setToggleCartItemError({

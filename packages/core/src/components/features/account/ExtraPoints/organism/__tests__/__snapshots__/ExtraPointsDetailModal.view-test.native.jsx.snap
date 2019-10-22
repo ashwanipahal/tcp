@@ -44,6 +44,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
     <RichText
       data-locator="earnPointsModal_undefined_ShortDesc"
       domStorageEnabled={false}
+      isApplyDeviceHeight={false}
       javaScriptEnabled={false}
       source={
         Object {

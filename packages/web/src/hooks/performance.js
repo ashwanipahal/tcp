@@ -1,4 +1,5 @@
 import { useEffect, useDebugValue } from 'react';
+import logger from '@tcp/core/src/utils/loggerInstance';
 
 const isEnabled = Boolean(process.env.PERF_TIMING);
 const isSupported = typeof performance !== 'undefined';
@@ -13,7 +14,8 @@ export function usePerfMeasure(name, start, end) {
     performance.clearMeasures(name);
     try {
       performance.measure(name, start, end);
-    } catch {
+    } catch (e) {
+      logger.error(e);
       // This throws if "start" or "end" don't match existing entries.
     }
     // Clear measures when component un-mounts.

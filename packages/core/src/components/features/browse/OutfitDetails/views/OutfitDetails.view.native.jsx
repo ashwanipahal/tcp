@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ScrollView } from 'react-native';
-import withStyles from '../../../../common/hoc/withStyles';
-import OutfitDetailsStyle from '../styles/OutfitDetails.native.style';
+import { FlatList } from 'react-native';
+import { ScrollViewContainer } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -21,6 +21,7 @@ const renderItem = ({
   productsCount,
   index,
   handleAddToBag,
+  addToFavorites,
   addToBagEcom,
   currentState,
   labels,
@@ -34,6 +35,9 @@ const renderItem = ({
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
+      handleAddToFavorites={() => {
+        addToFavorites({ colorProductId: item.generalProductId });
+      }}
     />
   );
 };
@@ -44,6 +48,7 @@ renderItem.propTypes = {
   productsCount: PropTypes.string,
   index: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}),
   labels: PropTypes.shape({}),
@@ -58,17 +63,21 @@ renderItem.defaultProps = {
   labels: {},
 };
 
-const OutfitDetailsView = ({
-  outfitImageUrl,
-  outfitProducts,
-  plpLabels,
-  handleAddToBag,
-  addToBagEcom,
-  currentState,
-  labels,
-}) => {
+const OutfitDetailsView = props => {
+  const {
+    outfitImageUrl,
+    outfitProducts,
+    plpLabels,
+    handleAddToBag,
+    addToFavorites,
+    addToBagEcom,
+    currentState,
+    labels,
+    isPickupModalOpen,
+    navigation,
+  } = props;
   return (
-    <ScrollView>
+    <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
       <FlatList
         data={outfitProducts}
@@ -81,14 +90,16 @@ const OutfitDetailsView = ({
             productsCount: outfitProducts.length,
             index,
             handleAddToBag,
+            addToFavorites,
             addToBagEcom,
             currentState,
             labels,
           })
         }
       />
+      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       <AddedToBagContainer />
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 
@@ -98,9 +109,12 @@ OutfitDetailsView.propTypes = {
   plpLabels: PropTypes.shape({}),
   item: PropTypes.shape({}),
   handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.bool.isRequired,
   labels: PropTypes.shape({}),
+  isPickupModalOpen: PropTypes.bool,
+  navigation: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -109,6 +123,8 @@ OutfitDetailsView.defaultProps = {
   plpLabels: {},
   item: PropTypes.shape({}),
   labels: {},
+  isPickupModalOpen: false,
+  navigation: {},
 };
 
-export default withStyles(OutfitDetailsView, OutfitDetailsStyle);
+export default OutfitDetailsView;

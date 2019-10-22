@@ -10,14 +10,16 @@ export default css`
 
   img {
     height: 425px;
-
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 400px;
+    }
     @media ${props => props.theme.mediaQuery.large} {
-      height: 541px;
+      height: 540px;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    height: 541px;
+    height: 540px;
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   }
@@ -28,7 +30,7 @@ export default css`
     z-index: ${props => props.theme.zindex.zModule};
 
     @media ${props => props.theme.mediaQuery.smallMax} {
-      margin: 18px 0 0 11px;
+      margin: 24px 0 0 14px;
     }
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -39,6 +41,7 @@ export default css`
   .moduleH__header {
     .link-text {
       text-align: left;
+      margin-bottom: 0px;
 
       span {
         display: block;
@@ -64,16 +67,19 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
     }
 
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
     }
   }
 
   .moduleH__listItem-partial {
-    margin-top: 38px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
   }
 
   .moduleH__listItem-full {

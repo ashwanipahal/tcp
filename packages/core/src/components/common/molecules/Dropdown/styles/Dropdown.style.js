@@ -16,32 +16,58 @@ const dropDownlist = css`
     position: relative;
   }
 
-  .customSelectTitleImg {
+  .customSelectArrow {
     position: absolute;
     top: 50%;
-    content: '';
+    width: 13px;
+    height: 13px;
     display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
-    border-top: 2px solid ${props => props.theme.colorPalette.gray['800']};
-    transform: rotate(135deg);
-    margin-top: -7px;
     right: 15px;
-  }
-
-  .customSelectTitleUpImg {
-    position: absolute;
-    top: 50%;
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-right: 2px solid ${props => props.theme.colorPalette.gray['800']};
-    border-top: 2px solid ${props => props.theme.colorPalette.gray['800']};
-    transform: rotate(315deg);
     margin-top: -5px;
-    right: 15px;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background: ${props => props.theme.colorPalette.gray['800']};
+      border-radius: 0.09rem;
+      display: block;
+    }
+
+    &.up,
+    &.down {
+      height: 8px;
+      &:before {
+        left: 8px;
+      }
+      &:after {
+        right: 8px;
+      }
+      &:before,
+      &:after {
+        top: -5%;
+        height: 110%;
+        width: 2px;
+      }
+    }
+
+    &.up {
+      &:before,
+      &:after {
+        transform: rotate(-45deg);
+      }
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+    &.down {
+      &:before,
+      &:after {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
   }
 
   .dropDownLists {
