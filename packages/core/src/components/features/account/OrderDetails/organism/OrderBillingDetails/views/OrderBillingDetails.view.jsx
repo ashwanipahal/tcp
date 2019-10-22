@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, getIconPath } from '@tcp/core/src/utils/utils';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -30,36 +30,41 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
         {getLabelValue(ordersLabels, 'lbl_orderDetails_billing')}
       </BodyCopy>
       {card.cardType && (
-        <BodyCopy component="div" className="card-details">
-          <Image
-            src={getIconPath(cardIconMapping[card.cardType.toUpperCase()])}
-            className="elem-mr-XS"
-          />
-          <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-            {card.cardType.toUpperCase() !== cardIconMapping.VENMO
-              ? `${getLabelValue(ordersLabels, 'lbl_orders_ending')} ${card.endingNumbers.slice(
-                  -4
-                )}`
-              : card.endingNumbers}
-          </BodyCopy>
-          {appliedGiftCards &&
-            appliedGiftCards.length > 0 &&
-            appliedGiftCards.map(giftCard => {
-              return (
-                <BodyCopy component="div" className="card-details">
-                  <Image
-                    src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
-                    className="elem-mr-XS"
-                  />
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                    {`${getLabelValue(
-                      ordersLabels,
-                      'lbl_orders_ending'
-                    )} ${giftCard.endingNumbers.slice(-4)}`}
-                  </BodyCopy>
-                </BodyCopy>
-              );
-            })}
+        <BodyCopy component="div">
+          <Row fullBleed className="elem-mb-XS">
+            <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
+              <Image
+                src={getIconPath(cardIconMapping[card.cardType.toUpperCase()])}
+                className="elem-mr-XS card-border"
+              />
+              <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                {card.cardType.toUpperCase() !== cardIconMapping.VENMO
+                  ? `${getLabelValue(ordersLabels, 'lbl_orders_ending')} ${card.endingNumbers.slice(
+                      -4
+                    )}`
+                  : card.endingNumbers}
+              </BodyCopy>
+            </Col>
+
+            {appliedGiftCards &&
+              appliedGiftCards.length > 0 &&
+              appliedGiftCards.map(giftCard => {
+                return (
+                  <Col className="card-details" colSize={{ large: 12, medium: 4, small: 3 }}>
+                    <Image
+                      src={getIconPath(cardIconMapping[giftCard.cardType.toUpperCase()])}
+                      className="elem-mr-XS"
+                    />
+                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                      {`${getLabelValue(
+                        ordersLabels,
+                        'lbl_orders_ending'
+                      )} ${giftCard.endingNumbers.slice(-4)}`}
+                    </BodyCopy>
+                  </Col>
+                );
+              })}
+          </Row>
         </BodyCopy>
       )}
       <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
