@@ -31,7 +31,7 @@ const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';
 const OPTIMIZELY_HEADER_PREFIX = 'x-flag-';
 
 const PREVIEW_RES_HEADER_KEY = 'x-akamai-staging';
-const PREVIEW_REQ_HEADER_KEY = 'tcp-trace-preview-env';
+const PREVIEW_REQ_HEADER_KEY = 'is_preview';
 
 export default {
   brand,

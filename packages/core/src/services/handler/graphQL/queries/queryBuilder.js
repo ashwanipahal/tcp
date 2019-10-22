@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { importGraphQLQueriesDynamically } from '../../../../utils';
+import { importGraphQLQueriesDynamically, getAPIConfig } from '../../../../utils';
 
 /**
  * Builds query for GraphQL service
@@ -19,8 +19,14 @@ const QueryBuilder = {
    * @param {Object} data
    */
   loadModuleQuery: async (module, data) => {
+    const apiConfig = getAPIConfig();
+    const { isPreviewEnv, previewToken } = apiConfig;
+    const isPreview = isPreviewEnv || previewToken;
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      return QueryModule.getQuery(data);
+      return QueryModule.getQuery(data).replace(
+        /(brand\s*:\s*\S*,{1,1})/g,
+        `$1 is_preview: "${isPreview}", preview_token: "${previewToken}",`
+      );
     });
   },
   /**
@@ -62,10 +68,12 @@ const QueryBuilder = {
         const module = modules[i];
         // eslint-disable-next-line no-await-in-loop
         const query = await QueryBuilder.loadModuleQuery(module.name, module.data);
+        console.log(query);
         queriesList.push(query);
       }
     } else {
       const query = await QueryBuilder.loadModuleQuery(modules.name, modules.data);
+      console.log(query);
       queriesList.push(query);
     }
     return queriesList;
