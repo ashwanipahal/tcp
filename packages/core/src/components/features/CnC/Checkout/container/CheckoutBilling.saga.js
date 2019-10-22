@@ -10,8 +10,10 @@ import {
 import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
-import { getSetIsBillingVisitedActn, getSetCheckoutStage } from './Checkout.action';
-import { setServerErrorCheckout } from './Checkout.action.util';
+import CHECKOUT_ACTIONS, {
+  getSetIsBillingVisitedActn,
+  getSetCheckoutStage,
+} from './Checkout.action';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
@@ -287,7 +289,9 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     // submitBillingError(store, e);
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
 }
 

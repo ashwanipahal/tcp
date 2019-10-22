@@ -15,7 +15,7 @@ import {
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 import utility from '../util/utility';
-import {
+import CHECKOUT_ACTIONS, {
   getSetPickupValuesActn,
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
@@ -51,7 +51,6 @@ import {
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
-import { setServerErrorCheckout } from './Checkout.action.util';
 
 const {
   getRecalcOrderPointsInterval,
@@ -174,7 +173,9 @@ function* submitPickupSection({ payload }) {
   } catch (e) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
 }
 // function setCartInfo(cartInfo, isSetCartItems) {

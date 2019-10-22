@@ -25,7 +25,7 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { resetCheckoutReducer, setServerErrorCheckout } from './Checkout.action.util';
+import CHECKOUT_ACTIONS from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
@@ -340,7 +340,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
 
     yield put(getSetOrderProductDetails(cartItems));
-    yield put(resetCheckoutReducer());
+    yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
     yield put(BagActions.resetCartReducer());
@@ -357,7 +357,9 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
   } catch (e) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' }));
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
 }
 
