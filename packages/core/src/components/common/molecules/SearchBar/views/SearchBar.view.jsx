@@ -13,6 +13,7 @@ import CancelSearch from './CancelSearch.view';
 import SuggestionBox from './SuggestionBox.view';
 import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 import SearchBarPropTypes from '../SearchBar.PropTypes';
+import LookingForProductDetail from './LookingForProductDetail.view';
 
 /**
  * This component produces a Search Bar component for Header
@@ -98,6 +99,12 @@ class SearchBar extends React.PureComponent {
     }
   };
 
+  arrayRemove = (arr, value) => {
+    return arr.filter(ele => {
+      return ele !== value;
+    });
+  };
+
   setDataInLocalStorage = searchText => {
     if (searchText) {
       const searchTextParam = searchText.trim().toLowerCase();
@@ -107,6 +114,9 @@ class SearchBar extends React.PureComponent {
         filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
         if (filteredSearchResults.indexOf(searchTextParam) === -1) {
           filteredSearchResults.push(searchTextParam);
+        } else {
+          filteredSearchResults = this.arrayRemove(filteredSearchResults, searchTextParam);
+          filteredSearchResults.push(searchTextParam);
         }
       } else {
         filteredSearchResults = [];
@@ -114,7 +124,7 @@ class SearchBar extends React.PureComponent {
       }
       if (
         filteredSearchResults &&
-        filteredSearchResults.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
       ) {
         filteredSearchResults.shift();
       }
@@ -255,6 +265,7 @@ class SearchBar extends React.PureComponent {
   };
 
   hideOverlayAfterClick = searchText => {
+    this.setDataInLocalStorage(searchText);
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
     const { toggleSearchResults } = this.props;
     toggleSearchResults(false);
@@ -382,32 +393,7 @@ class SearchBar extends React.PureComponent {
                     </div>
                     <div className="matchProductBox">
                       <LookingForProductLabel searchResults={searchResults} />
-
-                      <BodyCopy className="matchProductBody" lineHeight="39" component="div">
-                        <ul>
-                          {searchResults &&
-                            searchResults.autosuggestProducts &&
-                            searchResults.autosuggestProducts.map(item => {
-                              return (
-                                <BodyCopy component="li" key={item.id} className="productBox">
-                                  <Anchor
-                                    asPath={`${item.productUrl}`}
-                                    to={`${item.productUrl}`}
-                                    className="suggestion-label"
-                                  >
-                                    <Image
-                                      alt={`${item.name}`}
-                                      className="autosuggest-image"
-                                      src={`${item.imageUrl[0]}`}
-                                      data-locator={`${item.name}`}
-                                      height="25px"
-                                    />
-                                  </Anchor>
-                                </BodyCopy>
-                              );
-                            })}
-                        </ul>
-                      </BodyCopy>
+                      <LookingForProductDetail searchResults={searchResults} />
                     </div>
                   </div>
                 )}

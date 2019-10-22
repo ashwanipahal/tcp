@@ -100,7 +100,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
       }
       if (
         filteredSearchResults &&
-        filteredSearchResults.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
       ) {
         filteredSearchResults.shift();
       }
