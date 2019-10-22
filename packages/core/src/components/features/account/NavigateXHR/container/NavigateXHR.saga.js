@@ -2,9 +2,13 @@ import { call, takeLatest } from 'redux-saga/effects';
 import { NavigateXHR } from '../../../../../services/abstractors/account';
 import NAVIGATE_XHR_CONSTANTS from './NavigateXHR.constants';
 
+import { readCookieMobileApp, isMobileApp } from '../../../../../utils';
+
 export function* navigateCrossDomainSaga() {
   try {
-    const response = yield call(NavigateXHR);
+    const ismobile = isMobileApp();
+    const cookies = ismobile ? yield call(readCookieMobileApp) : '';
+    const response = yield call(NavigateXHR, cookies);
     if (response.success) {
       return response.success;
     }
