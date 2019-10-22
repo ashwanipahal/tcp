@@ -64,6 +64,7 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
   }
 };
 
+// eslint-disable-next-line complexity
 export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
   switch (query) {
     case 'moduleX':
@@ -92,6 +93,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'categoryPromo':
+      resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
     default:
       importOtherGraphQLQueries({
@@ -675,5 +679,23 @@ export const mapHandler = store => {
       googleMapConstants.OPEN_STORE_DIR_WEB
     }${addressLine1}, ${city}, ${state}, ${zipCode}`;
     return Linking.openURL(browserUrl);
+  });
+};
+
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (date, language) => {
+  // TODO: In web, we are using Intl to translate date, but Intl is not yet supported in Android
+  // so for now, created this method which in turn will call getTranslatedMomentDate which supports Android
+  // To fix this, need to add fallback package for Intl
+  return getTranslatedMomentDate(date, language, {
+    day: 'ddd',
+    month: 'MMM',
+    date: 'D',
+    year: 'YYYY',
   });
 };
