@@ -19,25 +19,7 @@ const Abstractor = {
   processData: data => data,
   handleError: e => {
     logger.error(e);
-    Abstractor.getMock();
   },
-};
-
-/**
- * Responsible for loading the category promo content
- * @param {String} cid - Content ID
- */
-export const getCategoryPromo = async cid => {
-  const { getData, processData } = Abstractor;
-  let response = {};
-
-  try {
-    const data = await getData(cid);
-    response = await processData(data);
-  } catch (error) {
-    logger.error(error);
-  }
-  return response;
 };
 
 export default Abstractor;

@@ -14,16 +14,6 @@ const WrapperStyle = styled.View`
   flex-direction: row;
 `;
 
-const ImgWrapper = styled.View`
-  flex-basis: 20%;
-  height: 55px;
-`;
-
-const ImageStyle = styled.Image`
-  max-width: 100%;
-  max-height: 100%;
-`;
-
 const EmptyCCLabelStyle = styled.Text`
   flex-basis: 80%;
   font-size: ${props => props.theme.typography.fontSizes.fs14};
@@ -36,7 +26,7 @@ const DescriptionEmptyCCStyle = styled.Text`
 `;
 
 const ButtonWrapperStyle = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
@@ -44,8 +34,6 @@ export {
   ParentContainerStyle,
   HeadingTextStyle,
   WrapperStyle,
-  ImgWrapper,
-  ImageStyle,
   EmptyCCLabelStyle,
   DescriptionEmptyCCStyle,
   ButtonWrapperStyle,

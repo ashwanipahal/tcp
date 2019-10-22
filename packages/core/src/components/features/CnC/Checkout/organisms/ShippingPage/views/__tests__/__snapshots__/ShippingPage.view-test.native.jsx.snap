@@ -204,6 +204,126 @@ exports[`Shipping Page should render correctly with component did update and get
       onSuccess={[Function]}
     />
   </ModalNative>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={null}
+  />
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay
+        title="lbl_shipping_header"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_shipping_sectionHeader"
+        textAlign="left"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      addNewShippingAddress={[Function]}
+      address={
+        Object {
+          "addressLine1": "pob 123",
+          "addressLine2": "pob",
+        }
+      }
+      addressLabels={Object {}}
+      addressPhoneNo={null}
+      defaultAddressId="34789"
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="checkoutShipping"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address": Object {
+            "country": "US",
+          },
+          "onFileAddressKey": "34789",
+          "shipmentMethods": Object {
+            "shippingMethodId": null,
+          },
+        }
+      }
+      isGiftServicesChecked={false}
+      isGuest={true}
+      isOrderUpdateChecked={false}
+      isSaveToAddressBookChecked={false}
+      isUsSite={true}
+      keepDirtyOnReinitialize={true}
+      loadShipmentMethods={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "formName": "checkoutShipping",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      orderHasPickUp={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      selectedShipmentId="336"
+      setAsDefaultShipping={false}
+      shipmentMethods={
+        Array [
+          Object {},
+        ]
+      }
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      submitShippingForm={[Function]}
+      syncErrorsObject={Object {}}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateShippingAddress={[Function]}
+      updateUnregisteredFields={false}
+      userAddresses={
+        Immutable.List [
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "city": "test city",
+            "country": "test country",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+            "primary": "true",
+          },
+        ]
+      }
+      validate={[Function]}
+    />
+  </ScrollViewMock>
 </Fragment>
 `;
 
@@ -221,5 +341,124 @@ exports[`Shipping Page should render correctly with component did update and get
       onSuccess={[Function]}
     />
   </ModalNative>
+  <CheckoutProgressIndicator
+    activeStage="shipping"
+    navigation={null}
+  />
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+  >
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay
+        title="lbl_shipping_header"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_shipping_sectionHeader"
+        textAlign="left"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <ReduxForm
+      addNewShippingAddress={[Function]}
+      address={
+        Object {
+          "addressLine1": "pob 123",
+          "addressLine2": "pob",
+        }
+      }
+      addressLabels={Object {}}
+      addressPhoneNo={null}
+      destroyOnUnmount={false}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="checkoutShipping"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address": Object {
+            "country": "US",
+          },
+          "onFileAddressKey": undefined,
+          "shipmentMethods": Object {
+            "shippingMethodId": null,
+          },
+        }
+      }
+      isGiftServicesChecked={false}
+      isGuest={true}
+      isOrderUpdateChecked={false}
+      isSaveToAddressBookChecked={false}
+      isUsSite={true}
+      keepDirtyOnReinitialize={true}
+      loadShipmentMethods={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "formName": "checkoutShipping",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      newUserPhoneNo={null}
+      onFileAddressKey={null}
+      orderHasPickUp={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      selectedShipmentId="336"
+      setAsDefaultShipping={false}
+      shipmentMethods={
+        Array [
+          Object {},
+        ]
+      }
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      submitShippingForm={[Function]}
+      syncErrorsObject={Object {}}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateShippingAddress={[Function]}
+      updateUnregisteredFields={false}
+      userAddresses={
+        Immutable.List [
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "city": "test city",
+            "country": "test country",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+            "primary": "true",
+          },
+        ]
+      }
+      validate={[Function]}
+    />
+  </ScrollViewMock>
 </Fragment>
 `;
