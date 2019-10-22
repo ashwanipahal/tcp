@@ -133,6 +133,7 @@ describe('CartItemRadioButtons native Component', () => {
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     component.setState({ currentExpandedState: true });
     component.instance().handleChangeStoreClick();
+    expect(props.openPickUpModal).toHaveBeenCalled();
     expect(component).toMatchSnapshot();
   });
 });
