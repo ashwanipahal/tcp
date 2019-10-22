@@ -126,9 +126,9 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 53px;
     height: 19px;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
   .color-chips-selector-title-name,
