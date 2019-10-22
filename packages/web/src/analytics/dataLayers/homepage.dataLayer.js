@@ -3,6 +3,12 @@ const getCategoryList = store => {
   return state.ProductListing && state.ProductListing.entityCategory;
 };
 
+const getSubCategory = store => {
+  const state = store.getState();
+  const categoryListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  return categoryListing[1].displayName;
+};
+
 const getNavigationText = store => {
   const state = store.getState();
   return state.ProductListing && state.ProductListing.currentListingSeoKey;
@@ -19,6 +25,11 @@ export const generateHomePageDataLayer = store => {
     listingCategory: {
       get() {
         return getCategoryList(store) || '';
+      },
+    },
+    listingSubCategory: {
+      get() {
+        return getSubCategory(store) || '';
       },
     },
     pageNavigationText: {
