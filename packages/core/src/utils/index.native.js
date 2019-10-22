@@ -59,6 +59,8 @@ export {
   getBrand,
   parseStoreHours,
   parseBoolean,
+  enableBodyScroll,
+  disableBodyScroll,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
