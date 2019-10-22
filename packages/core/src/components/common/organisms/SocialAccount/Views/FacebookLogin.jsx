@@ -81,6 +81,30 @@ export class FacebookLoginComponent extends React.Component {
     );
   };
 
+  /** * @function openLogin This function calls the Method of login for facebook and open up the dialog window where user sign in.
+   * When user do a suc cesfull sign then we call the callback to pass the access token to the parent.
+   * @param void * @return void
+   **/
+
+  openLogin = () => {
+    /* istanbul ignore next */
+    window.FB.login(
+      response => {
+        if (response.status === 'connected') {
+          const socialAccInfo = {
+            facebook: 'facebook',
+            accessToken: response.authResponse.accessToken,
+            userId: response.authResponse.userID,
+            isconnected: false,
+          };
+          this.saveAccountInfo({ socialAccInfo });
+          this.closeModal({ state: true });
+        }
+      },
+      { scope: 'public_profile,email' }
+    );
+  };
+
   logoutUser = () => {
     /* istanbul ignore next */
 
@@ -142,7 +166,7 @@ export class FacebookLoginComponent extends React.Component {
                 {element.socialAccount === 'facebook' && element.isConnected && (
                   <BodyCopy
                     className="social-accounts__align social_accounts_cross_plus-icon"
-                    onClick={logoutUser}
+                    onClick={this.logoutUser}
                   >
                     <ImageComp
                       className="social-account-icon"
