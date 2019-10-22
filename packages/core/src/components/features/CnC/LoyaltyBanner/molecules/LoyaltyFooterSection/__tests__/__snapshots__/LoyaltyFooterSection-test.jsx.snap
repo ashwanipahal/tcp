@@ -13,12 +13,37 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
   <div
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Connect(ApplyNowModalWrapper) />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(BodyCopy)
+          className="symbolWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs9"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="learnMore"
+          fontSizeVariation="medium"
+          underline={true}
+        />
+      </span>
+    </span>
   </div>
 </div>
 `;
@@ -118,34 +143,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
 exports[`LoyaltyFooterSection View Component isConfirmationPage true should render correctly 1`] = `
 <div
   className=" footerWrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-      </span>
-      <span
-        className="elem-pl-XL"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
+/>
 `;
 
 exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should render correctly 1`] = `

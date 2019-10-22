@@ -21,38 +21,21 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
     showSubtotal={true}
     subHeadingLabel={false}
   />
-  <Styled(View)>
-    <Styled(Anchor)
-      accessibilityLabel=""
-      anchorVariation="primary"
-      className="applyNow"
-      colorName={null}
-      customStyle={Object {}}
-      fontSizeVariation="medium"
-      locator=""
-      margins={null}
-      onPress={null}
-      text=""
-      underline={true}
-      visible={false}
+  <View
+    className="footer"
+  >
+    <Styled(LoyaltyFooterSection)
+      className=""
+      earnedRewardAvailable={false}
+      isAddedToBagPage={false}
+      isConfirmationPage={false}
+      isGuest={true}
+      isPlcc={false}
+      isProductDetailView={false}
+      isReviewPage={false}
+      labels={Object {}}
     />
-    <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel=""
-        anchorVariation="primary"
-        className="learnMore"
-        colorName={null}
-        customStyle={Object {}}
-        fontSizeVariation="medium"
-        locator=""
-        margins={null}
-        onPress={null}
-        text=""
-        underline={true}
-        visible={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
+  </View>
   <Styled(View)
     isPlcc={false}
   />

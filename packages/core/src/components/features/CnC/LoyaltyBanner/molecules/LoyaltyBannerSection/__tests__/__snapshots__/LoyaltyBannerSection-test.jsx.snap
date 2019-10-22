@@ -38,7 +38,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={true}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={false}
@@ -91,7 +91,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={false}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={false}
@@ -144,7 +144,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={true}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={false}
@@ -197,7 +197,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={true}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={true}
@@ -250,7 +250,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={false}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={false}
@@ -303,7 +303,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedReward={true}
+          earnedRewardAvailable={false}
           isAddedToBagPage={false}
           isConfirmationPage={false}
           isGuest={true}
