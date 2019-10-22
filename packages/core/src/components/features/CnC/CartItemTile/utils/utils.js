@@ -37,9 +37,9 @@ export const filterBopisProducts = orderItems => {
 
 export const updateBopisInventory = (orderItems, bopisItemsInventory) => {
   return orderItems.map(item => {
-    const bopisItem = bopisItemsInventory.find(
-      bopItem => item.productInfo.variantNo === bopItem.variantNo
-    );
+    const bopisItem =
+      bopisItemsInventory &&
+      bopisItemsInventory.find(bopItem => item.productInfo.variantNo === bopItem.variantNo);
     let patchedItem = { ...item };
     if (bopisItem) {
       patchedItem = {
