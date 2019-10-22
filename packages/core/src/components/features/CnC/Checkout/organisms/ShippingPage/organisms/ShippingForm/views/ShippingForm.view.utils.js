@@ -36,6 +36,7 @@ const propTypes = {
   labels: PropTypes.shape({}).isRequired,
   syncErrors: PropTypes.shape({}),
   showAccordian: PropTypes.bool.isRequired,
+  ServerErrors: PropTypes.node.isRequired,
 };
 
 const defaultProps = {

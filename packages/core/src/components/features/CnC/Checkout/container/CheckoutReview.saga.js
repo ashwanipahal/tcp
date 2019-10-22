@@ -132,39 +132,35 @@ export function* loadPersonalizedCoupons(
 }
 
 export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
-  try {
-    let venmoPayloadData = {};
-    const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-    const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
-    const venmoData = yield select(selectors.getVenmoData);
-    const errorMappings = yield select(BagPageSelectors.getErrorMapping);
-    // Add Venmo Payment method to the registered user account
-    if (isVenmoSaveSelected) {
-      yield call(updateVenmoPaymentInstruction);
-    }
-    if (isVenmoInProgress && venmoData) {
-      const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
-      const email = yield select(getUserEmail);
-      venmoPayloadData = {
-        venmoNonce,
-        venmo_device_data: venmoDeviceData,
-        email,
-        isVenmoSaveSelected,
-      };
-    }
-    const res = yield call(
-      submitOrder,
-      orderId,
-      smsOrderInfo,
-      currentLanguage,
-      venmoPayloadData,
-      errorMappings
-    );
-    yield put(getSetOrderConfirmationActn(res));
-    return res;
-  } catch (err) {
-    return yield put(setServerErrorCheckout({ errorMessage: err, component: 'PAGE' }));
+  let venmoPayloadData = {};
+  const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
+  const venmoData = yield select(selectors.getVenmoData);
+  const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+  // Add Venmo Payment method to the registered user account
+  if (isVenmoSaveSelected) {
+    yield call(updateVenmoPaymentInstruction);
   }
+  if (isVenmoInProgress && venmoData) {
+    const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
+    const email = yield select(getUserEmail);
+    venmoPayloadData = {
+      venmoNonce,
+      venmo_device_data: venmoDeviceData,
+      email,
+      isVenmoSaveSelected,
+    };
+  }
+  const res = yield call(
+    submitOrder,
+    orderId,
+    smsOrderInfo,
+    currentLanguage,
+    venmoPayloadData,
+    errorMappings
+  );
+  yield put(getSetOrderConfirmationActn(res));
+  return res;
 }
 
 // function* expressCheckoutSubmit(formData) {

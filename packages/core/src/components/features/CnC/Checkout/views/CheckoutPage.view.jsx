@@ -34,7 +34,11 @@ class CheckoutPage extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     const { checkoutServerError } = this.props;
-    if (checkoutServerError && checkoutServerError !== prevProps.checkoutServerError) {
+    if (
+      checkoutServerError &&
+      this.pageServerError !== null &&
+      checkoutServerError !== prevProps.checkoutServerError
+    ) {
       scrollToParticularElement(this.pageServerError);
     }
   }
