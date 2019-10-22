@@ -273,10 +273,8 @@ class ProductsGridItem extends React.PureComponent {
       },
     } = this.props;
     const isBundleProduct = !isBundleProductABTest && bundleProduct;
-    if (isBundleProduct) {
-      console.log('pdpUrl', pdpUrl);
+    if (isBundleProduct && pdpUrl) {
       routerPush(pdpUrl.replace('b/', '/b?bid='), pdpUrl);
-      console.log('go to the bundle page');
     } else {
       this.handleQuickViewOpenClick();
     }

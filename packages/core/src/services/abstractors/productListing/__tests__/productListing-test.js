@@ -21,7 +21,7 @@ jest.mock('../../../../utils', () => ({
 }));
 
 describe('product Listing', () => {
-  xit('should get the PLP products', () => {
+  it('should get the PLP products', () => {
     routerPush.mockImplementation(() => false);
     getSiteId.mockImplementation(() => 'us');
     bindAllClassMethodsToThis.mockImplementation(() => '');
@@ -97,7 +97,6 @@ describe('product Listing', () => {
         {}
       )
       .then(res => {
-        // console.log(formattedData);
         expect(JSON.stringify(res)).toEqual(formattedData);
       });
   });
