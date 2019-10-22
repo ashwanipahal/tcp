@@ -26,7 +26,8 @@ export default {
       },
     ],
     composites: {
-      ctaType: 'divImageCTACarousel',
+      ctaType: 'stackedCTAButtonsExpandable',
+      expandableTitle: 'Shop',
       headerText: [
         {
           textItems: [

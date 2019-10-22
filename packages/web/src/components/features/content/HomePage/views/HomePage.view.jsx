@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Row, Col } from '@tcp/core/src/components/common/atoms';
+// import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
@@ -9,8 +9,8 @@ import { isTCP } from '@tcp/core/src/utils';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
-import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN';
-import mockModuleN from '@tcp/core/src/services/abstractors/common/moduleN/mock';
+// import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN';
+// import mockModuleN from '@tcp/core/src/services/abstractors/common/moduleN/mock';
 import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
@@ -35,12 +35,12 @@ const HomePageView = dynamic({
     logger.debug('SEOData:', JSON.stringify(seoData));
 
     return [
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-          <ModuleN {...mockModuleN.moduleN.composites} halfWidth />
-        </Col>
-        <Col colSize={{}} />
-      </Row>,
+      // <Row fullBleed={{ small: true, medium: true, large: false }}>
+      //   <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+      //     <ModuleN {...mockModuleN.moduleN.composites} halfWidth />
+      //   </Col>
+      //   <Col colSize={{}} />
+      // </Row>,
       <HomePageSlots slots={slots} modules={modules} />,
       isTCP() ? <ModuleT {...mock.moduleT.composites} /> : null,
       <ModuleTwoCol slots={slots} modules={modules} />,

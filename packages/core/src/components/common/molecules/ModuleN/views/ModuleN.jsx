@@ -7,14 +7,28 @@ import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import { Row, Col } from '../../../atoms';
-import config from '../config';
+import { ctaTypeProps, config } from '../config';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 
 const { ctaTypes } = config;
 
+const getButtonListVariationProps = ctaType => {
+  const buttonTypeProps = {
+    ...ctaTypeProps,
+  };
+  return buttonTypeProps[ctaType];
+};
+
 const ModuleN = props => {
-  const { className, ctaItems, headerText, promoBanner, ctaType } = props;
+  const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
   const promoTexts = promoBanner[0];
+  const buttonListProps = getButtonListVariationProps(ctaType);
+  let dualVariation = null;
+  const isDropDown =
+    ctaType === 'stackedCTAButtonsExpandable' || ctaType === 'CTAButtonCarouselExpandable';
+  if (isDropDown) {
+    dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
+  }
   const mappedPromoBanner = promoTexts.textItems.map(item => {
     return { ...promoTexts, textItems: [item] };
   });
@@ -67,7 +81,10 @@ const ModuleN = props => {
             buttonsData={ctaItems}
             fill="RED"
             dataLocatorDivisionImages={getLocator('moduleN_image')}
+            dataLocatorDropDown={getLocator('moduleN_dropdown')}
+            dropdownLabel={expandableTitle}
             dataLocatorTextCta={getLocator('moduleN_cta_links')}
+            dualVariation={isDropDown ? dualVariation : undefined}
           />
         </div>
       </Col>
@@ -81,6 +98,7 @@ ModuleN.defaultProps = {
   headerText: [],
   promoBanner: [],
   ctaType: 'stackedCTAButtons',
+  expandableTitle: '',
 };
 
 ModuleN.propTypes = {
@@ -89,6 +107,7 @@ ModuleN.propTypes = {
   headerText: PropTypes.arrayOf(PropTypes.shape({})),
   promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
   ctaType: PropTypes.string,
+  expandableTitle: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ModuleN), style);

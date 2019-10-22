@@ -10,8 +10,13 @@ export default css`
 
   .promo-alt {
     background-color: ${props => (props.bgColor ? props.bgColor : props.theme.colorPalette.white)};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: 15px;
     padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 14px;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
+    }
   }
 
   .topbar {

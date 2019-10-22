@@ -14,14 +14,23 @@ export default css`
     }
   }
 
-  .stacked-button-list-wrapper,
-  .scroll-button-list-wrapper {
-    color: ${props => props.theme.colorPalette.red['300']};
+  .stacked-cta-wrapper-class {
+    color: ${props =>
+      props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
+        ? props.theme.colorPalette.gray['700']
+        : props.theme.colorPalette.red['300']};
   }
 
   .ModuleN_Button a {
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 24px;
+    }
+  }
+
+  .dropdown-button {
+    margin-top: 32px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 48px;
     }
   }
 
@@ -64,6 +73,7 @@ export default css`
       align-items: center;
       justify-content: center;
       padding-bottom: 0px;
+      padding-top: ${props => (props.theme.isGymboree ? '32px' : '16px')};
     }
     .heading,
     .moduleN__promo-banner {
