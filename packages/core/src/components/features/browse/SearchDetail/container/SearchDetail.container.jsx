@@ -34,6 +34,12 @@ import {
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from '../../ProductListing/container/productListingOnSubmitHandler';
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
+
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+
 class SearchDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
@@ -115,6 +121,8 @@ class SearchDetailContainer extends React.PureComponent {
         query: { searchQuery },
         asPath,
       },
+      currency,
+      currencyAttributes,
       ...otherProps
     } = this.props;
 
@@ -140,6 +148,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={searchedText}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                currencyAttributes={currencyAttributes}
+                currency={currency}
                 {...otherProps}
               />
             ) : (
@@ -173,6 +183,8 @@ class SearchDetailContainer extends React.PureComponent {
               searchedText={searchedText}
               sortLabels={sortLabels}
               searchResultSuggestions={searchResultSuggestions}
+              currency={currency}
+              currencyAttributes={currencyAttributes}
               {...otherProps}
             />
           </div>
@@ -181,6 +193,8 @@ class SearchDetailContainer extends React.PureComponent {
     );
   }
 }
+
+SearchDetailContainer.pageId = 'search';
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
@@ -225,6 +239,8 @@ function mapStateToProps(state) {
     searchResultSuggestions:
       state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
+    currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
   };
 }
 

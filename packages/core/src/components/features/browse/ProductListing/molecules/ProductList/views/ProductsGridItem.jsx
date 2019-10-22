@@ -2,7 +2,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath, disableBodyScroll } from '@tcp/core/src/utils';
+import { getIconPath } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -26,6 +26,7 @@ import {
 import { getTopBadge, getVideoUrl } from './ProductGridItem.util';
 import ProductColorChipWrapper from './ProductColorChipWrapper';
 import ProductAltImages from './ProductAltImages';
+import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constants';
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
@@ -202,9 +203,10 @@ class ProductsGridItem extends React.PureComponent {
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
     const { currencySymbol } = this.props;
+    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     return (
       <ProductPricesSection
-        currencySymbol={currencySymbol || '$'}
+        currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
@@ -258,7 +260,6 @@ class ProductsGridItem extends React.PureComponent {
   handleQuickViewOpenClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { selectedColorProductId } = this.state;
-    disableBodyScroll();
     onQuickViewOpenClick({
       colorProductId: selectedColorProductId,
     });
@@ -280,13 +281,13 @@ class ProductsGridItem extends React.PureComponent {
       wishlistsSummaries && (
         <div className="move-item-container">
           <Button className="move-item-button" onClick={this.openMoveItem}>
-            {labels.moveToAnotherList}
+            {labels.lbl_fav_moveToAnotherList}
             <Image
               alt="accordian button"
               className="accordian-item-arrow icon-small"
               src={accordianIcon}
               data-locator="accordian-icon"
-              height="8px"
+              height="6px"
             />
           </Button>
           {isMoveItemOpen && (
@@ -303,6 +304,37 @@ class ProductsGridItem extends React.PureComponent {
           )}
         </div>
       )
+    );
+  };
+
+  renderSubmitButton = itemNotAvailable => {
+    const {
+      labels,
+      item: { itemInfo: { itemId } = {} },
+      removeFavItem,
+      isFavoriteView,
+    } = this.props;
+    return itemNotAvailable ? (
+      <Button
+        className="remove-favorite"
+        fullWidth
+        buttonVariation="fixed-width"
+        dataLocator={getLocator('remove_favorite_Button')}
+        onClick={() => removeFavItem({ itemId })}
+      >
+        {labels.lbl_fav_removeFavorite}
+      </Button>
+    ) : (
+      <Button
+        className="added-to-bag"
+        fullWidth
+        buttonVariation="fixed-width"
+        dataLocator={getLocator('global_addtocart_Button')}
+        onClick={this.handleQuickViewOpenClick}
+        fill={isFavoriteView ? 'BLUE' : ''}
+      >
+        {labels.addToBag}
+      </Button>
     );
   };
 
@@ -327,7 +359,7 @@ class ProductsGridItem extends React.PureComponent {
           offerPrice: itemOfferPrice,
           long_product_title: longProductTitle,
         },
-        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag } = {},
+        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag, availability } = {},
         quantityPurchased,
         colorsMap,
         imagesByColor,
@@ -350,6 +382,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       isFavoriteView,
     } = this.props;
+    const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
 
     const prodNameAltImages = longProductTitle || name;
     const {
@@ -365,6 +398,7 @@ class ProductsGridItem extends React.PureComponent {
       imagesByColor,
       curentColorEntry,
       isAbTestActive: isOnModelImgDisplay,
+      isFavoriteView,
     });
     const imageUrlsToShow = this.getImageCarouselOptions(imageUrls);
     const currentColorMiscInfo =
@@ -389,8 +423,8 @@ class ProductsGridItem extends React.PureComponent {
     // };
     const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
-    const listPriceForColor = listPrice * currencyExchange[0].exchangevalue;
-    const offerPriceForColor = offerPrice * currencyExchange[0].exchangevalue;
+    const listPriceForColor = listPrice * currencyExchange;
+    const offerPriceForColor = offerPrice * currencyExchange;
     // const isShowPickupCTA =
     //   validateBopisEligibility({
     //     isBopisClearanceProductEnabled: isBopisEnabledForClearance,
@@ -440,8 +474,14 @@ class ProductsGridItem extends React.PureComponent {
             }}
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
+            isSoldOut={itemNotAvailable}
+            soldOutLabel={labels.lbl_fav_soldOut}
           />
-          {EditButton({ onQuickViewOpenClick, isFavoriteView, labels }, selectedColorProductId)}
+          {EditButton(
+            { onQuickViewOpenClick, isFavoriteView, labels },
+            selectedColorProductId,
+            itemNotAvailable
+          )}
           {
             <Row fullBleed className="product-wishlist-container">
               <Col colSize={{ small: 4, medium: 6, large: 10 }}>
@@ -454,7 +494,12 @@ class ProductsGridItem extends React.PureComponent {
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
-              {WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist)}
+              {WishListIcon(
+                isFavoriteView,
+                isInDefaultWishlist,
+                this.handleAddToWishlist,
+                itemNotAvailable
+              )}
             </Row>
           }
           {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
@@ -476,21 +521,13 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          <div className="fulfillment-section">
-            <Button
-              className="added-to-bag"
-              fullWidth
-              buttonVariation="fixed-width"
-              dataLocator={getLocator('global_addtocart_Button')}
-              onClick={this.handleQuickViewOpenClick}
-            >
-              {labels.addToBag}
-            </Button>
-          </div>
-          <div className="favorite-move-purchase-section">
-            {PurchaseSection(quantity, labels, quantityPurchased)}
-            {this.renderMoveItem(itemId)}
-          </div>
+          <div className="fulfillment-section">{this.renderSubmitButton(itemNotAvailable)}</div>
+          {!itemNotAvailable && (
+            <div className="favorite-move-purchase-section">
+              {PurchaseSection(quantity, labels, quantityPurchased)}
+              {this.renderMoveItem(itemId)}
+            </div>
+          )}
           {/* {error && <ErrorMessage error={error} />} */}
         </div>
       </li>

@@ -35,6 +35,8 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 import LoyaltyBanner from '../../LoyaltyBanner';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.container';
 
 const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 
@@ -80,9 +82,9 @@ export class BagPage extends React.Component {
       isCartItemSFL,
       labels,
       isSflItemRemoved,
-      isCartItemsUpdating: { isDeleting },
+      isCartItemsUpdating: { isDeleting, isUpdating },
     } = this.props;
-    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted, itemUpdated } = labels;
     let message = null;
     if (isCartItemSFL) {
       message = sflSuccess;
@@ -90,6 +92,8 @@ export class BagPage extends React.Component {
       message = sflDeleteSuccess;
     } else if (isDeleting) {
       message = itemDeleted;
+    } else if (isUpdating) {
+      message = itemUpdated;
     }
 
     return (
@@ -257,6 +261,11 @@ export class BagPage extends React.Component {
     return <></>;
   };
 
+  renderPickupModal = () => {
+    const { isPickupModalOpen, navigation } = this.props;
+    return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
+  };
+
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
@@ -268,6 +277,7 @@ export class BagPage extends React.Component {
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     const viewHeight = showCondensedHeader ? '74%' : '65%';
+    const isBagPage = true;
     return (
       <>
         <ContainerMain>
@@ -310,11 +320,13 @@ export class BagPage extends React.Component {
                 <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
-              <LoyaltyBanner />
+              {!isCanada() && <LoyaltyBanner />}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
             </MainSection>
+            <QuickViewModal fromBagPage={isBagPage} />
+            {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
@@ -352,6 +364,11 @@ BagPage.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  isPickupModalOpen: PropTypes.bool,
+};
+
+BagPage.defaultProps = {
+  isPickupModalOpen: false,
 };
 
 export default InitialPropsHOC(BagPage);

@@ -35,7 +35,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
       <BodyCopy component="div" className={className}>
         <BodyCopy
           component="div"
-          className="tileWrapper"
+          className="tileWrapper elem-mt-XS elem-mb-XS"
           onClick={() => onViewActivityDetails(waysToEarnRow)}
         >
           <BodyCopy component="div" className="earnExtraPointsTileImage">

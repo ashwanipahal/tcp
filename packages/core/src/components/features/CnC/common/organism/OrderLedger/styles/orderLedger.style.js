@@ -36,23 +36,8 @@ const LedgerStyle = css`
     text-align: left;
   }
 
-  @media ${props => props.theme.mediaQuery.medium} {
-    .hide-in-large-up {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
-  }
-
   @media ${props => props.theme.mediaQuery.smallMax} {
     background-color: ${props => props.theme.colors.WHITE};
-    .hide-in-medium-down {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
   }
 
   .orderLedgerAccordian {

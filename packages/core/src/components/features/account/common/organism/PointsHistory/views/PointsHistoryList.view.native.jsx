@@ -76,7 +76,6 @@ const PointsHistoryList = ({
               fontSize="fs12"
               color="gray.900"
               fontWeight="semibold"
-              textAlign="center"
             />
           </PointView>
         </PointHistoryView>
@@ -109,7 +108,6 @@ const PointsHistoryList = ({
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                textAlign="center"
                 color="gray.900"
               />
             </PointView>

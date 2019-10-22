@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getLoading } from '@tcp/core/src/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
@@ -82,9 +83,11 @@ const ProductListView = ({
   onPickUpOpenClick,
   isPickupModalOpen,
   totalProductsCount,
+  isDataLoading,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
+  if (isDataLoading) return getLoading();
   return (
     <PageContainer>
       <ProductList
@@ -127,6 +130,7 @@ ProductListView.propTypes = {
   scrollToTop: PropTypes.bool.isRequired,
   onPickUpOpenClick: PropTypes.func,
   totalProductsCount: PropTypes.number.isRequired,
+  isDataLoading: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

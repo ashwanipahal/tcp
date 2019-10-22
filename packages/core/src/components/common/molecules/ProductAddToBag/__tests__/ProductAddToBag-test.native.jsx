@@ -8,6 +8,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   const props = {
     currentProduct: null,
     selectedColorProductId: 123,
+    fromBagPage: true,
   };
 
   beforeEach(() => {
@@ -20,6 +21,6 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
 
   it('should render expected number of components', () => {
     expect(wrapper.find('View').length).toBe(1);
-    expect(wrapper.find('Field').length).toBe(4);
+    expect(wrapper.find('Field').length).toBe(3);
   });
 });

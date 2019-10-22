@@ -39,16 +39,22 @@ const OrderItems = ({ className, ...otherProps }) => {
             <Image src={imagePath} data-locator="order_item_image" />
           </BodyCopy>
           <BodyCopy component="div">
-            <Image
-              alt={itemBrand}
-              className="brand-image"
-              src={
-                itemBrand === 'TCP'
-                  ? getIconPath(`header__brand-tab--tcp`)
-                  : getIconPath('header__brand-tab-gymboree')
-              }
-              data-locator="order_item_brand_logo"
-            />
+            {itemBrand === 'TCP' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath(`header__brand-tab--tcp`)}
+                data-locator="order_item_brand_logo"
+              />
+            )}
+            {itemBrand === 'GYM' && (
+              <Image
+                alt={itemBrand}
+                className="brand-image"
+                src={getIconPath('header__brand-tab-gymboree')}
+                data-locator="order_item_brand_logo"
+              />
+            )}
           </BodyCopy>
         </Col>
         <Col
@@ -57,19 +63,29 @@ const OrderItems = ({ className, ...otherProps }) => {
           offsetLeft={{ medium: 1, large: 1 }}
           className="elem-mr-MED"
         >
-          <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
-            {name}
-          </BodyCopy>
+          <Row fullBleed>
+            <Col colSize={{ large: 7, medium: 8, small: 4 }}>
+              <BodyCopy
+                component="div"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
+                {name}
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 5, medium: 0, small: 4 }} />
+          </Row>
 
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-SM">
+          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary" className="elem-mt-MED">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_upc')}
             {upc}
           </BodyCopy>
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
             {getLabelValue(ordersLabels, 'lbl_orderDetails_color')}
             {color.name}
           </BodyCopy>
-          <BodyCopy component="div" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy className="elem-mt-XXXS" component="div" fontSize="fs14" fontFamily="secondary">
             {fit && (
               <BodyCopy
                 component="span"

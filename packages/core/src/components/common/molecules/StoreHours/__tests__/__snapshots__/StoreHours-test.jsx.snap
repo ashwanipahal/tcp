@@ -175,6 +175,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -542,6 +543,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -576,9 +578,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -589,7 +591,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -604,7 +606,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -617,9 +619,9 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -803,6 +805,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -1170,6 +1173,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -1204,9 +1208,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -1217,7 +1221,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -1232,7 +1236,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -1245,9 +1249,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -1517,6 +1521,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
+            "700": "#3f3356",
           },
           "secondary": Object {
             "dark": "#c84747",
@@ -1884,6 +1889,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fs25": "25px",
             "fs26": "26px",
             "fs28": "28px",
+            "fs30": "30px",
             "fs32": "32px",
             "fs36": "36px",
             "fs38": "38px",
@@ -1918,9 +1924,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "h2": Object {
             "fontFamily": "primary",
             "fontSize": Array [
-              "fs36",
-              "fs36",
-              "fs52",
+              "fs32",
+              "fs32",
+              "fs48",
             ],
             "fontWeight": "black",
             "letterSpacing": "normal",
@@ -1931,7 +1937,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs38",
+              "fs36",
             ],
             "fontWeight": "black",
             "letterSpacing": Array [
@@ -1946,7 +1952,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs36",
+              "fs32",
             ],
             "fontWeight": "semibold",
             "letterSpacing": Array [
@@ -1959,9 +1965,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "h5": Object {
             "fontFamily": "primary",
             "fontSize": Array [
+              "fs14",
               "fs16",
-              "fs16",
-              "fs28",
+              "fs20",
             ],
             "fontWeight": "normal",
             "letterSpacing": "normal",
@@ -2145,6 +2151,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
+              "700": "#3f3356",
             },
             "secondary": Object {
               "dark": "#c84747",
@@ -2512,6 +2519,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fs25": "25px",
               "fs26": "26px",
               "fs28": "28px",
+              "fs30": "30px",
               "fs32": "32px",
               "fs36": "36px",
               "fs38": "38px",
@@ -2546,9 +2554,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "h2": Object {
               "fontFamily": "primary",
               "fontSize": Array [
-                "fs36",
-                "fs36",
-                "fs52",
+                "fs32",
+                "fs32",
+                "fs48",
               ],
               "fontWeight": "black",
               "letterSpacing": "normal",
@@ -2559,7 +2567,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs38",
+                "fs36",
               ],
               "fontWeight": "black",
               "letterSpacing": Array [
@@ -2574,7 +2582,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs36",
+                "fs32",
               ],
               "fontWeight": "semibold",
               "letterSpacing": Array [
@@ -2587,9 +2595,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "h5": Object {
               "fontFamily": "primary",
               "fontSize": Array [
+                "fs14",
                 "fs16",
-                "fs16",
-                "fs28",
+                "fs20",
               ],
               "fontWeight": "normal",
               "letterSpacing": "normal",
@@ -2801,6 +2809,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
+                  "700": "#3f3356",
                 },
                 "secondary": Object {
                   "dark": "#c84747",
@@ -3168,6 +3177,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fs25": "25px",
                   "fs26": "26px",
                   "fs28": "28px",
+                  "fs30": "30px",
                   "fs32": "32px",
                   "fs36": "36px",
                   "fs38": "38px",
@@ -3202,9 +3212,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "h2": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
-                    "fs36",
-                    "fs36",
-                    "fs52",
+                    "fs32",
+                    "fs32",
+                    "fs48",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": "normal",
@@ -3215,7 +3225,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs38",
+                    "fs36",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": Array [
@@ -3230,7 +3240,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs36",
+                    "fs32",
                   ],
                   "fontWeight": "semibold",
                   "letterSpacing": Array [
@@ -3243,9 +3253,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "h5": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
+                    "fs14",
                     "fs16",
-                    "fs16",
-                    "fs28",
+                    "fs20",
                   ],
                   "fontWeight": "normal",
                   "letterSpacing": "normal",
@@ -3367,7 +3377,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -3383,12 +3393,26 @@ exports[`StoreHours component should render component with timing data 1`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: none;
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -3396,7 +3420,14 @@ exports[`StoreHours component should render component with timing data 1`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: block;
+    }
   }
 ",
                     ";
@@ -3564,6 +3595,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
+                    "700": "#3f3356",
                   },
                   "secondary": Object {
                     "dark": "#c84747",
@@ -3931,6 +3963,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fs25": "25px",
                     "fs26": "26px",
                     "fs28": "28px",
+                    "fs30": "30px",
                     "fs32": "32px",
                     "fs36": "36px",
                     "fs38": "38px",
@@ -3965,9 +3998,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "h2": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
-                      "fs36",
-                      "fs36",
-                      "fs52",
+                      "fs32",
+                      "fs32",
+                      "fs48",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": "normal",
@@ -3978,7 +4011,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs38",
+                      "fs36",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": Array [
@@ -3993,7 +4026,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs36",
+                      "fs32",
                     ],
                     "fontWeight": "semibold",
                     "letterSpacing": Array [
@@ -4006,9 +4039,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "h5": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
+                      "fs14",
                       "fs16",
-                      "fs16",
-                      "fs28",
+                      "fs20",
                     ],
                     "fontWeight": "normal",
                     "letterSpacing": "normal",
@@ -4122,7 +4155,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -4221,6 +4254,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
+                      "700": "#3f3356",
                     },
                     "secondary": Object {
                       "dark": "#c84747",
@@ -4588,6 +4622,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fs25": "25px",
                       "fs26": "26px",
                       "fs28": "28px",
+                      "fs30": "30px",
                       "fs32": "32px",
                       "fs36": "36px",
                       "fs38": "38px",
@@ -4622,9 +4657,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "h2": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
-                        "fs36",
-                        "fs36",
-                        "fs52",
+                        "fs32",
+                        "fs32",
+                        "fs48",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": "normal",
@@ -4635,7 +4670,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs38",
+                        "fs36",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": Array [
@@ -4650,7 +4685,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs36",
+                        "fs32",
                       ],
                       "fontWeight": "semibold",
                       "letterSpacing": Array [
@@ -4663,9 +4698,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "h5": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
+                        "fs14",
                         "fs16",
-                        "fs16",
-                        "fs28",
+                        "fs20",
                       ],
                       "fontWeight": "normal",
                       "letterSpacing": "normal",
@@ -4745,7 +4780,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
                 id=""
               >
                 <button
@@ -4977,6 +5012,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -5344,6 +5380,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -5378,9 +5415,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -5391,7 +5428,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -5406,7 +5443,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -5419,9 +5456,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -5695,6 +5732,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "400": "#f53d3d",
             "500": "#c8102e",
             "600": "#c01f1f",
+            "700": "#3f3356",
           },
           "secondary": Object {
             "dark": "#c84747",
@@ -6062,6 +6100,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fs25": "25px",
             "fs26": "26px",
             "fs28": "28px",
+            "fs30": "30px",
             "fs32": "32px",
             "fs36": "36px",
             "fs38": "38px",
@@ -6096,9 +6135,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "h2": Object {
             "fontFamily": "primary",
             "fontSize": Array [
-              "fs36",
-              "fs36",
-              "fs52",
+              "fs32",
+              "fs32",
+              "fs48",
             ],
             "fontWeight": "black",
             "letterSpacing": "normal",
@@ -6109,7 +6148,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs38",
+              "fs36",
             ],
             "fontWeight": "black",
             "letterSpacing": Array [
@@ -6124,7 +6163,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontSize": Array [
               "fs20",
               "fs20",
-              "fs36",
+              "fs32",
             ],
             "fontWeight": "semibold",
             "letterSpacing": Array [
@@ -6137,9 +6176,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "h5": Object {
             "fontFamily": "primary",
             "fontSize": Array [
+              "fs14",
               "fs16",
-              "fs16",
-              "fs28",
+              "fs20",
             ],
             "fontWeight": "normal",
             "letterSpacing": "normal",
@@ -6326,6 +6365,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "400": "#f53d3d",
               "500": "#c8102e",
               "600": "#c01f1f",
+              "700": "#3f3356",
             },
             "secondary": Object {
               "dark": "#c84747",
@@ -6693,6 +6733,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fs25": "25px",
               "fs26": "26px",
               "fs28": "28px",
+              "fs30": "30px",
               "fs32": "32px",
               "fs36": "36px",
               "fs38": "38px",
@@ -6727,9 +6768,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "h2": Object {
               "fontFamily": "primary",
               "fontSize": Array [
-                "fs36",
-                "fs36",
-                "fs52",
+                "fs32",
+                "fs32",
+                "fs48",
               ],
               "fontWeight": "black",
               "letterSpacing": "normal",
@@ -6740,7 +6781,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs38",
+                "fs36",
               ],
               "fontWeight": "black",
               "letterSpacing": Array [
@@ -6755,7 +6796,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontSize": Array [
                 "fs20",
                 "fs20",
-                "fs36",
+                "fs32",
               ],
               "fontWeight": "semibold",
               "letterSpacing": Array [
@@ -6768,9 +6809,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "h5": Object {
               "fontFamily": "primary",
               "fontSize": Array [
+                "fs14",
                 "fs16",
-                "fs16",
-                "fs28",
+                "fs20",
               ],
               "fontWeight": "normal",
               "letterSpacing": "normal",
@@ -6970,6 +7011,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "400": "#f53d3d",
                   "500": "#c8102e",
                   "600": "#c01f1f",
+                  "700": "#3f3356",
                 },
                 "secondary": Object {
                   "dark": "#c84747",
@@ -7337,6 +7379,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fs25": "25px",
                   "fs26": "26px",
                   "fs28": "28px",
+                  "fs30": "30px",
                   "fs32": "32px",
                   "fs36": "36px",
                   "fs38": "38px",
@@ -7371,9 +7414,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "h2": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
-                    "fs36",
-                    "fs36",
-                    "fs52",
+                    "fs32",
+                    "fs32",
+                    "fs48",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": "normal",
@@ -7384,7 +7427,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs38",
+                    "fs36",
                   ],
                   "fontWeight": "black",
                   "letterSpacing": Array [
@@ -7399,7 +7442,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontSize": Array [
                     "fs20",
                     "fs20",
-                    "fs36",
+                    "fs32",
                   ],
                   "fontWeight": "semibold",
                   "letterSpacing": Array [
@@ -7412,9 +7455,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "h5": Object {
                   "fontFamily": "primary",
                   "fontSize": Array [
+                    "fs14",
                     "fs16",
-                    "fs16",
-                    "fs28",
+                    "fs20",
                   ],
                   "fontWeight": "normal",
                   "letterSpacing": "normal",
@@ -7524,7 +7567,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "sc-bxivhb",
                   "isStatic": false,
-                  "lastClassName": "fJAyfW",
+                  "lastClassName": "bRBPiy",
                   "rules": Array [
                     "
   ",
@@ -7540,12 +7583,26 @@ exports[`StoreHours component should render component with timing data 2`] = `
     width: 100%;
     border: none;
     background: none;
+    display: ",
+                    [Function],
+                    ";
+    ",
+                    [Function],
+                    ";
   }
 
   .collapsible-icon {
     position: absolute;
     right: 0;
+    display: none;
     top: 30px;
+    @media ",
+                    [Function],
+                    " {
+      display: ",
+                    [Function],
+                    ";
+    }
   }
 
   .item-opened {
@@ -7553,7 +7610,14 @@ exports[`StoreHours component should render component with timing data 2`] = `
   }
 
   .item-closed {
-    display: none;
+    display: ",
+                    [Function],
+                    ";
+    @media ",
+                    [Function],
+                    " {
+      display: block;
+    }
   }
 ",
                     ";
@@ -7721,6 +7785,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "400": "#f53d3d",
                     "500": "#c8102e",
                     "600": "#c01f1f",
+                    "700": "#3f3356",
                   },
                   "secondary": Object {
                     "dark": "#c84747",
@@ -8088,6 +8153,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fs25": "25px",
                     "fs26": "26px",
                     "fs28": "28px",
+                    "fs30": "30px",
                     "fs32": "32px",
                     "fs36": "36px",
                     "fs38": "38px",
@@ -8122,9 +8188,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "h2": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
-                      "fs36",
-                      "fs36",
-                      "fs52",
+                      "fs32",
+                      "fs32",
+                      "fs48",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": "normal",
@@ -8135,7 +8201,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs38",
+                      "fs36",
                     ],
                     "fontWeight": "black",
                     "letterSpacing": Array [
@@ -8150,7 +8216,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontSize": Array [
                       "fs20",
                       "fs20",
-                      "fs36",
+                      "fs32",
                     ],
                     "fontWeight": "semibold",
                     "letterSpacing": Array [
@@ -8163,9 +8229,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "h5": Object {
                     "fontFamily": "primary",
                     "fontSize": Array [
+                      "fs14",
                       "fs16",
-                      "fs16",
-                      "fs28",
+                      "fs20",
                     ],
                     "fontWeight": "normal",
                     "letterSpacing": "normal",
@@ -8267,7 +8333,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   </ul>
                 </div>
               }
-              className="sc-htpNat sc-bxivhb fJAyfW"
+              className="sc-htpNat sc-bxivhb bRBPiy"
               defaultOpen={true}
               header={
                 <span
@@ -8366,6 +8432,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "400": "#f53d3d",
                       "500": "#c8102e",
                       "600": "#c01f1f",
+                      "700": "#3f3356",
                     },
                     "secondary": Object {
                       "dark": "#c84747",
@@ -8733,6 +8800,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fs25": "25px",
                       "fs26": "26px",
                       "fs28": "28px",
+                      "fs30": "30px",
                       "fs32": "32px",
                       "fs36": "36px",
                       "fs38": "38px",
@@ -8767,9 +8835,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "h2": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
-                        "fs36",
-                        "fs36",
-                        "fs52",
+                        "fs32",
+                        "fs32",
+                        "fs48",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": "normal",
@@ -8780,7 +8848,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs38",
+                        "fs36",
                       ],
                       "fontWeight": "black",
                       "letterSpacing": Array [
@@ -8795,7 +8863,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontSize": Array [
                         "fs20",
                         "fs20",
-                        "fs36",
+                        "fs32",
                       ],
                       "fontWeight": "semibold",
                       "letterSpacing": Array [
@@ -8808,9 +8876,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "h5": Object {
                       "fontFamily": "primary",
                       "fontSize": Array [
+                        "fs14",
                         "fs16",
-                        "fs16",
-                        "fs28",
+                        "fs20",
                       ],
                       "fontWeight": "normal",
                       "letterSpacing": "normal",
@@ -8890,7 +8958,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
             >
               <div
-                className="sc-htpNat sc-bxivhb fJAyfW"
+                className="sc-htpNat sc-bxivhb bRBPiy"
                 id=""
               >
                 <button

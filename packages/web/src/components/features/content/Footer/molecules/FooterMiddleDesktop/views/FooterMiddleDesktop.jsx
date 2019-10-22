@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import PropTypes from 'prop-types';
 import OpenLoginModal from '@tcp/core/src/components/features/account/LoginPage/views/LoginModal';
+import { isCanada } from '@tcp/core/src/utils';
 import FooterNavLinks from '../../FooterNavLinks';
 
 const renderFooterNavLinks = (
@@ -107,19 +108,21 @@ const FooterMiddleDesktop = ({
           headerAsImage: true,
         })}
       </Col>
-      <Col
-        colSize={{
-          large: 2,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        {renderFooterNavLinks(navLinks[1], className, 1, linkConfig, footerActionCreator, {
-          isSubHeader: false,
-          isLoggedIn,
-          headerAsImage: true,
-        })}
-      </Col>
+      {!isCanada() ? (
+        <Col
+          colSize={{
+            large: 2,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          {renderFooterNavLinks(navLinks[1], className, 1, linkConfig, footerActionCreator, {
+            isSubHeader: false,
+            isLoggedIn,
+            headerAsImage: true,
+          })}
+        </Col>
+      ) : null}
       {numberOfNavLinkCols <= 5 ? (
         <Col
           className="divider"

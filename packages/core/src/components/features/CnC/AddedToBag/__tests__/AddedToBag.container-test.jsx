@@ -1,14 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { enableBodyScroll, disableBodyScroll } from '@tcp/core/src/utils';
 import { AddedToBagContainer, mapDispatchToProps } from '../container/AddedToBag.container';
 import AddedToBag from '../views/AddedToBag.view';
 
 jest.mock('@tcp/core/src/utils', () => ({
   ...jest.requireActual('@tcp/core/src/utils'),
   isMobileApp: jest.fn().mockImplementation(() => false),
-  enableBodyScroll: jest.fn(),
-  disableBodyScroll: jest.fn(),
 }));
 describe('Added to Bag Container', () => {
   const addedToBagData = {};
@@ -34,7 +31,6 @@ describe('Added to Bag Container', () => {
       />
     );
     tree.setProps({ isOpenDialog: true });
-    expect(disableBodyScroll).toHaveBeenCalled();
   });
 
   it('should call enableBodyScroll when opened', () => {
@@ -47,7 +43,6 @@ describe('Added to Bag Container', () => {
       />
     );
     tree.instance().closeModal({ preventDefault: jest.fn() });
-    expect(enableBodyScroll).toHaveBeenCalled();
   });
 
   describe('#mapDispatchToProps', () => {
