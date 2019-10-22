@@ -85,7 +85,9 @@ const styles = css`
     display: flex;
   }
   .edit-link-placement {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
   }
   .select__input {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
