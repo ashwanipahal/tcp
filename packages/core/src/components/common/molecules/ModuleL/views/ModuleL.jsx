@@ -53,7 +53,7 @@ const ModuleL = ({
     <Row
       className={`${className} moduleL`}
       fullBleed={{
-        small: true,
+        small: false,
         medium: true,
         large: true,
       }}
@@ -80,6 +80,7 @@ const ModuleL = ({
         )}
         <Carousel
           options={options}
+          className="moduleL__carousel"
           carouselConfig={{
             type: 'light',
             autoplay: false,

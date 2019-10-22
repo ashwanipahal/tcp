@@ -71,12 +71,13 @@ const renderItem = (item, navigation) => {
               letterSpacing="ls222"
               text={image.alt}
               fontfamily="primary"
+              fontWeight="semibold"
               testID={`${getLocator('moduleL_title')}${index + 1}`}
             />
           </BodyCopyContainer>
           <LinkContainer>
             <Anchor
-              fontSizeVariation="xlarge"
+              fontSizeVariation="large"
               text={link.text}
               visible={anchorIcon}
               url={link.url}

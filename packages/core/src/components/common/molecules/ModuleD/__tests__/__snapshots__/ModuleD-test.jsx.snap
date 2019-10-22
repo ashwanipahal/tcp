@@ -89,6 +89,7 @@ exports[`ModuleD component renders correctly 1`] = `
   />
   <Styled(Row)
     centered={true}
+    className="moduleD__image-container-section"
     fullBleed={false}
   >
     <Styled(Col)

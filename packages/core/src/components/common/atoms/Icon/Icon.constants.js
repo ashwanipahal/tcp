@@ -31,4 +31,5 @@ export const ICON_NAME = {
   search: 'mag-glass',
   qrcode: 'scan',
   large: 'large',
+  filledHeart: 'filled-heart',
 };

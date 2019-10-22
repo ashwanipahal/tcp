@@ -202,20 +202,18 @@ class ShippingForm extends React.Component {
   };
 
   renderGiftServices = () => {
-    const { isCanada, isGiftServicesChecked, dispatch } = this.props;
+    const { isGiftServicesChecked, dispatch } = this.props;
     return (
-      !isCanada && (
-        <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-          <GiftServices
-            showDefaultCheckbox={false}
-            formName={formName}
-            formSection="giftServices"
-            variation="secondary"
-            isGiftServicesChecked={isGiftServicesChecked}
-            dispatch={dispatch}
-          />
-        </Col>
-      )
+      <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+        <GiftServices
+          showDefaultCheckbox={false}
+          formName={formName}
+          formSection="giftServices"
+          variation="secondary"
+          isGiftServicesChecked={isGiftServicesChecked}
+          dispatch={dispatch}
+        />
+      </Col>
     );
   };
 

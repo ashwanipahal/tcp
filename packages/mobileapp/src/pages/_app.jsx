@@ -66,15 +66,17 @@ export class App extends React.PureComponent {
    */
   toggleBrandAction = () => {
     const { showBrands } = this.state;
-    this.setState({ showBrands: !showBrands });
+    this.setState({ showBrands: !showBrands }, () => {
+      this.store.dispatch(getUserInfo());
+    });
   };
-
   /**
    * @function switchBrand
    * This methods current app type in utils and switches apiConfig in app
    *
    * @memberof App
    */
+
   switchBrand = appType => {
     resetApiConfig();
     updateBrandName(appType);

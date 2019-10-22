@@ -82,7 +82,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       }
     >
       <form
-        oValidate={true}
+        noValidate={true}
       >
         <Styled(Row)
           className="elem-pt-LRG"
@@ -590,7 +590,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-texttcpcheckbox"
               name="tcpWebSubscribe"
-              type="checkbox"
+              onBlur={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -741,6 +741,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-textgymcheckbox"
               name="gymboreeWebSubscribe"
+              onBlur={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}

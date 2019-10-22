@@ -67,6 +67,7 @@ exports[`GetCandidVanilla component should renders correctly considering selecti
     dataLocator=""
     fontFamily="secondary"
     locator=""
+    margins={null}
     noLink={true}
     onPress={[Function]}
     text=""
