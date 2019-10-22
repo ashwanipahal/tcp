@@ -174,9 +174,15 @@ export default css`
   .text-break {
     word-break: break-word;
   }
-
-  .capitalize {
-    text-transform: uppercase;
+  .full-width {
+    width: 100%;
+    display: inline-block;
+  }
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
   }
 
   .capFirstLetter {
