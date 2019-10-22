@@ -97,12 +97,7 @@ class LoginForm extends React.PureComponent<Props> {
                 >
                   {getLabelValue(labels, 'lbl_login_rememberMe', 'login')}
                 </BodyCopy>
-                <BodyCopy
-                  fontFamily="secondary"
-                  tag="span"
-                  fontSize="fs10"
-                  className="remember-me-help-text"
-                >
+                <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
                   {getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}
                 </BodyCopy>
               </Field>
@@ -115,12 +110,7 @@ class LoginForm extends React.PureComponent<Props> {
                   component={InputCheckbox}
                   dataLocator="login-savemyplcccardcb"
                 >
-                  <BodyCopy
-                    fontFamily="secondary"
-                    tag="span"
-                    fontSize="fs10"
-                    className="save-my-place-reward"
-                  >
+                  <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
                     {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login').replace(
                       '#number',
                       `${userplccCardNumber}`
