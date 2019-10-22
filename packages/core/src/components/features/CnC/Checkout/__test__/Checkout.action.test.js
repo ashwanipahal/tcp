@@ -1,4 +1,4 @@
-import {
+import CHECKOUT_ACTIONS, {
   initCheckoutAction,
   submitPickupSection,
   checkoutSetCartData,
@@ -244,6 +244,12 @@ describe('#chekcoutActions', () => {
   it('setGiftCardError', () => {
     expect(setGiftCardError()).toEqual({
       type: 'SET_GIFTCARD_ERROR',
+      payload: undefined,
+    });
+  });
+  it('setServerErrorCheckout', () => {
+    expect(CHECKOUT_ACTIONS.setServerErrorCheckout()).toEqual({
+      type: 'SET_SERVER_ERROR_CHECKOUT',
       payload: undefined,
     });
   });

@@ -73,6 +73,11 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   </Styled(Row)>
   <Styled(Row)
     className="elem-mt-MED"
-  />
+  >
+    <Styled(ErrorMessage)
+      className="checkout-page-error"
+      error="something went wrong"
+    />
+  </Styled(Row)>
 </div>
 `;
