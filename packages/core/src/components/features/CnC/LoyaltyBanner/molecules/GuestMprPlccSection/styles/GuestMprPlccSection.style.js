@@ -67,6 +67,13 @@ const Styles = css`
     ${colorTheme}
     ${paddingTopSm}
     ${fontSize18}
+
+    .section-symbol{
+      vertical-align: super;
+      ${alignCenter}
+      ${fontSize12}
+    }
+
     @media ${props => props.theme.mediaQuery.medium} {
         ${fontSize14}
     }

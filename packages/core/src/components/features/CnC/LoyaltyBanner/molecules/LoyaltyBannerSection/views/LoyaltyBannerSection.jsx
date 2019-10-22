@@ -86,11 +86,22 @@ const LoyaltyBannerSection = props => {
       classValue: `${className} mpr-plcc-theme`,
     },
   ];
+  const utilArrSectionSymbol = [
+    {
+      key: '#sectionSymbol#',
+      value: labels.sectionSymbol,
+      classValue: `${className} section-symbol`,
+    },
+  ];
 
   const finalPointsValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrRewards);
+  const finalSubHeading = labelsHashValuesReplace(
+    LoyaltyLabels.subHeadingLabelFn,
+    utilArrSectionSymbol
+  );
 
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
-  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn || false;
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeading) : false;
   descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
 
   const utilArrNextReward = [
