@@ -134,6 +134,9 @@ class Drawer extends React.Component {
       userName,
       userPoints,
       userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
       openOverlay,
       small,
       medium,
@@ -180,7 +183,9 @@ class Drawer extends React.Component {
                   userPoints={userPoints}
                   userRewards={userRewards}
                   openOverlay={openOverlay}
-                  mainId="sideNavUserInfo"
+                  userNameClick={userNameClick}
+                  onLinkClick={onLinkClick}
+                  triggerLoginCreateAccount={triggerLoginCreateAccount}
                 />
               </Row>
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
@@ -211,6 +216,9 @@ Drawer.propTypes = {
   userName: PropTypes.string.isRequired,
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
 };
 

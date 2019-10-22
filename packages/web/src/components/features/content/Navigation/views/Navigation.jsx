@@ -63,6 +63,9 @@ const Navigation = props => {
     userName,
     userPoints,
     userRewards,
+    userNameClick,
+    onLinkClick,
+    triggerLoginCreateAccount,
     closeNavigationDrawer,
     hideNavigationFooter,
     showCondensedHeader,
@@ -80,6 +83,9 @@ const Navigation = props => {
       userName={userName}
       userPoints={userPoints}
       userRewards={userRewards}
+      userNameClick={userNameClick}
+      onLinkClick={onLinkClick}
+      triggerLoginCreateAccount={triggerLoginCreateAccount}
       open={openNavigationDrawer}
       close={closeNavigationDrawer}
       openOverlay={openOverlay}
@@ -114,6 +120,9 @@ Navigation.propTypes = {
   userName: PropTypes.string.isRequired,
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
 };

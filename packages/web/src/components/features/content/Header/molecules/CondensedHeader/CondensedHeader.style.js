@@ -45,9 +45,6 @@ export default css`
       display: none;
     }
   }
-  .search-icon{
-    padding:0 12px;
-  }
   .product-image{
     padding-left:12px;
   }

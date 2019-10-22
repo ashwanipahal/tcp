@@ -126,7 +126,9 @@ export default css`
       top: 0;
       height: 50px;
     }
-
+    .search-image{
+      padding: 0 12px;
+    }
     .searchbar {
       border-radius: 0;
       background-color: ${props => props.theme.colors.WHITE};
@@ -214,6 +216,10 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .search-image{
+      padding: 0 12px;
+      width:25px;
+    }
 
     .searchWrapper {
       position: absolute;

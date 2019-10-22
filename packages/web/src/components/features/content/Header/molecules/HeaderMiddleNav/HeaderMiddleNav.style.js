@@ -66,16 +66,26 @@ const style = css`
     transition: transform 0.15s linear;
   }
   .account-info {
+    font-family: ${props => props.theme.typography.fonts.secondary};
     cursor: pointer;
     display: none;
     @media ${props => props.theme.mediaQuery.medium} {
       display: inline-flex;
+      align-items: center;
     }
   }
   .user-name {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    text-align: left;
     &:hover {
       color: ${props => props.theme.colorPalette.blue[500]};
     }
+  }
+  .user-points,
+  .user-rewards {
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    color: ${props =>
+      props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};
   }
   .usericon {
     cursor: pointer;

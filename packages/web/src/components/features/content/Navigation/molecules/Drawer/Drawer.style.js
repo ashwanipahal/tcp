@@ -61,7 +61,7 @@ export default css`
   .display-small-none {
     display: none;
   }
-  .account-info-section {
+  .account-main-section {
     cursor: pointer;
     width: 314px;
     display: flex;
@@ -72,6 +72,20 @@ export default css`
     box-sizing: border-box;
     min-height: 50px;
     left: 0px;
+  }
+  .account-info {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  .user-name {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    text-align: left;
+  }
+  .user-points,
+  .user-rewards {
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
   }
   .manage-account {
     position: absolute;

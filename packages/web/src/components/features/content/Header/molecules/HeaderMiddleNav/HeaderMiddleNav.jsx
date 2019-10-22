@@ -15,6 +15,8 @@ import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
 import style, { customHeaderStyle } from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
+import LoggedInUserInfo from '../LoggedInUserInfo/LoggedInUserInfo';
+import GuestUserInfo from '../GuestUserInfo/GuestUserInfo';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -63,11 +65,11 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
+  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
     e.preventDefault();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
-        component: e.target.id !== '' ? e.target.id : e.target.parentNode.id,
+        component: componentToOpen,
         variation: 'primary',
       });
     }
@@ -76,94 +78,32 @@ class HeaderMiddleNav extends React.PureComponent {
     });
   };
 
-  handleCarrottoggle = userNameClick => {
-    return userNameClick ? 'carrot-down-icon' : 'carrot-up-icon';
-  };
-
   handleUserTypeColor = isUserPlcc => {
     return isUserPlcc ? 'blue.500' : 'orange.800';
   };
 
-  handleUserName = userName => {
-    return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
-  };
-
-  handleUserRewards = userRewards => {
-    return userRewards % 1 ? userRewards : Math.floor(userRewards);
-  };
-
   renderAccountInfoSection = (userName, openOverlay, isUserPlcc, userPoints, userRewards) => {
     const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
-    return userName ? (
-      <React.Fragment>
-        <BodyCopy
-          component="div"
-          id="accountDrawer"
-          className="account-info-section"
-          onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
-        >
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            className="account-info user-name"
-            textAlign="left"
-          >
-            {`Hi, ${this.handleUserName(userName)}`}
-          </BodyCopy>
-          <Image
-            alt="user"
-            className={`account-info ${this.handleCarrottoggle(userNameClick)}`}
-            src={getIconPath('down_arrow_icon')}
-            height="6px"
-          />
-          <BodyCopy lineHeight="0" />
-          <BodyCopy
-            className="account-info user-points"
-            fontFamily="secondary"
-            fontSize="fs10"
-            color={this.handleUserTypeColor(isUserPlcc)}
-          >
-            {`${userPoints} Points`}
-          </BodyCopy>
-          <BodyCopy
-            className="account-info user-rewards rightLink"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs10"
-            color={this.handleUserTypeColor(isUserPlcc)}
-          >
-            {`$${this.handleUserRewards(userRewards)} Rewards`}
-          </BodyCopy>
-
-          <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
-        </BodyCopy>
-      </React.Fragment>
+    return userName && !isSearchOpen ? (
+      <LoggedInUserInfo
+        mainId="accountDrawer"
+        userName={userName}
+        userPoints={userPoints}
+        userRewards={userRewards}
+        userNameClick={userNameClick}
+        openOverlay={openOverlay}
+        onLinkClick={this.onLinkClick}
+        isDrawer={false}
+      />
     ) : (
       !isSearchOpen && (
-        <React.Fragment>
-          <Anchor
-            href="#"
-            noLink
-            id="createAccount"
-            className=""
-            onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-            fontSizeVariation="large"
-            anchorVariation="primary"
-          >
-            Create Account
-          </Anchor>
-          <Anchor
-            href="#"
-            noLink
-            id="login"
-            className="rightLink"
-            onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-            fontSizeVariation="large"
-            anchorVariation="primary"
-          >
-            Login
-          </Anchor>
-        </React.Fragment>
+        <GuestUserInfo
+          createAccount="createAccount"
+          login="login"
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+          onLinkClick={this.onLinkClick}
+          openOverlay={openOverlay}
+        />
       )
     );
   };
@@ -206,6 +146,7 @@ class HeaderMiddleNav extends React.PureComponent {
       store,
       labels,
     } = this.props;
+    const { userNameClick, triggerLoginCreateAccount } = this.state;
     const brand = getBrand();
     const { cartItemCount, isSearchOpen, isFullSizeSearchModalOpen } = this.state;
     const {
@@ -371,6 +312,9 @@ class HeaderMiddleNav extends React.PureComponent {
               userName={userName}
               userPoints={userPoints}
               userRewards={userRewards}
+              userNameClick={userNameClick}
+              onLinkClick={this.onLinkClick}
+              triggerLoginCreateAccount={triggerLoginCreateAccount}
             />
           </Col>
         </Row>

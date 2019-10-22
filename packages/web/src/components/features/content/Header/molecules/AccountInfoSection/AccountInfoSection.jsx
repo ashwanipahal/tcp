@@ -1,38 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import LoggedInUserInfo from '../LoggedInUserInfo/LoggedInUserInfo';
+import GuestUserInfo from '../GuestUserInfo/GuestUserInfo';
 
-const handleUserName = userName => {
-  return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
-};
-
-const handleUserRewards = userRewards => {
-  return userRewards % 1 ? userRewards : Math.floor(userRewards);
-};
-
-const AccountInfoSection = ({ userName, userPoints, userRewards, openOverlay, mainId }) => {
+const AccountInfoSection = ({
+  userName,
+  userPoints,
+  userRewards,
+  openOverlay,
+  userNameClick,
+  onLinkClick,
+  triggerLoginCreateAccount,
+}) => {
   return userName ? (
-    <BodyCopy id={mainId} component="div" className="account-info-section">
+    <BodyCopy id="sideNavUserInfo" component="div" className="account-main-section">
       <Col colSize={{ small: 4, medium: 5 }}>
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs14"
-          className="account-info user-name"
-          textAlign="left"
-        >
-          {`Hi, ${handleUserName(userName)}`}
-        </BodyCopy>
-        <BodyCopy className="account-info" component="span" fontFamily="secondary" fontSize="fs10">
-          {`${userPoints} Points`}
-        </BodyCopy>
-        <BodyCopy
-          className="account-info rightLink"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs10"
-        >
-          {`$${handleUserRewards(userRewards)} Rewards`}
-        </BodyCopy>
+        <LoggedInUserInfo
+          mainId="accountDrawer"
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          userNameClick={userNameClick}
+          openOverlay={openOverlay}
+          onLinkClick={onLinkClick}
+        />
       </Col>
       <Col colSize={{ small: 2, medium: 3 }}>
         <BodyCopy
@@ -50,48 +42,19 @@ const AccountInfoSection = ({ userName, userPoints, userRewards, openOverlay, ma
     </BodyCopy>
   ) : (
     <BodyCopy
-      id={mainId}
+      id="sideNavUserInfo"
       component="div"
-      className="account-info-section"
+      className="account-main-section"
       fontFamily="secondary"
       fontSize="fs14"
     >
-      <BodyCopy component="span" fontFamily="secondary" fontSize="fs14">
-        <Anchor
-          href="#"
-          onClick={e => {
-            e.preventDefault();
-            openOverlay({
-              component: 'createAccount',
-              variation: 'primary',
-            });
-          }}
-          id="createAccount"
-          fontSizeVariation="large"
-          anchorVariation="primary"
-        >
-          Create Account
-        </Anchor>
-      </BodyCopy>
-      <BodyCopy component="span" fontFamily="secondary" fontSize="fs14">
-        <Anchor
-          href="#"
-          noLink
-          id="login"
-          onClick={e => {
-            e.preventDefault();
-            openOverlay({
-              component: 'login',
-              variation: 'primary',
-            });
-          }}
-          className="rightLink"
-          fontSizeVariation="large"
-          anchorVariation="primary"
-        >
-          Login
-        </Anchor>
-      </BodyCopy>
+      <GuestUserInfo
+        createAccount="createAccount"
+        login="login"
+        triggerLoginCreateAccount={triggerLoginCreateAccount}
+        onLinkClick={onLinkClick}
+        openOverlay={openOverlay}
+      />
     </BodyCopy>
   );
 };
@@ -100,7 +63,9 @@ AccountInfoSection.propTypes = {
   userName: PropTypes.string.isRequired,
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
-  mainId: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
 };
 export default AccountInfoSection;
