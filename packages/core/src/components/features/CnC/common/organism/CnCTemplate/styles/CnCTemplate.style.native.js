@@ -61,12 +61,6 @@ export const BannerWrapper = styled.View`
   height: 100px;
 `;
 
-export const CouponsWrapper = styled.View`
-  background-color: ${props => props.theme.colorPalette.gray[500]};
-  margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
-  height: 100px;
-`;
-
 export default {
   ButtonWrapper,
   CheckoutButton,
@@ -76,5 +70,4 @@ export default {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  CouponsWrapper,
 };
