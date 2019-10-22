@@ -12,7 +12,7 @@ exports[`OrdersListItem component should renders correctly 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="lbl_orders_orderDateCaps"
+        text="lbl_orders_orderDate"
         textDecoration={null}
       />
       <Styled(BodyCopy)
@@ -143,7 +143,7 @@ exports[`OrdersListItem component should renders correctly 2`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="lbl_orders_orderDateCaps"
+        text="lbl_orders_orderDate"
         textDecoration={null}
       />
       <Styled(BodyCopy)

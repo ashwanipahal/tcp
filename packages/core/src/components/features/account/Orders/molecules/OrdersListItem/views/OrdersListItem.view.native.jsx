@@ -22,7 +22,7 @@ const OrdersListItem = ({ labels, orderItem, navigation, isPastOrder }) => {
       <OrdersListItemMainView isPastOrder={isPastOrder}>
         <OrdersListItemView>
           <BodyCopy
-            text={getLabelValue(labels, 'lbl_orders_orderDateCaps', 'orders')}
+            text={getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="black"
