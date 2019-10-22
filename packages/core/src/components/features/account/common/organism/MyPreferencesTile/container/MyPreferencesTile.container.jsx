@@ -50,7 +50,7 @@ class MyPreferencesTile extends PureComponent {
 
     const contactPreferencesValue = { placeRewardsPush: false, placeRewardsSms: false };
 
-    if (customerPreferences.length) {
+    if (customerPreferences && customerPreferences.length) {
       customerPreferences.forEach(customerPreference => {
         const { preferenceMode, isModeSelected } = customerPreference;
         if (preferenceMode === 'placeRewardsPush' || preferenceMode === 'placeRewardsSms') {
@@ -75,6 +75,7 @@ class MyPreferencesTile extends PureComponent {
       favStorePhone,
       socialAccounts,
       customerPreferences,
+      handleComponentChange,
     } = this.props;
 
     const customerPreferencesValue =
@@ -92,6 +93,7 @@ class MyPreferencesTile extends PureComponent {
         favStorePhone={favStorePhone}
         socialAccounts={socialAccounts}
         customerPreferences={customerPreferencesValue}
+        handleComponentChange={handleComponentChange}
       />
     );
   }
@@ -112,6 +114,7 @@ MyPreferencesTile.propTypes = {
   socialAccounts: PropTypes.shape({}),
   socialLoad: PropTypes.func.isRequired,
   getContactPreferences: PropTypes.func.isRequired,
+  handleComponentChange: PropTypes.func.isRequired,
   customerPreferences: PropTypes.shape({}),
 };
 

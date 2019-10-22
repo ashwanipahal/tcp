@@ -11,6 +11,7 @@ import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -187,6 +188,9 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
               <OrdersTile labels={labels} navigation={navigation} />
             </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
+              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
@@ -196,7 +200,6 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')} />
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
           </React.Fragment>
         )}
