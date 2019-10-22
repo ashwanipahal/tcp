@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteTileItem component should render correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <View
+      style={
+        Object {
+          "flex": 1.5,
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_prefrence_tileFavoriteStore"
+        textDecoration={null}
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 0.5,
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        }
+      }
+    >
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        color="gray.900"
+        colorName={null}
+        customStyle={Object {}}
+        dataLocator=""
+        fontSizeVariation="large"
+        locator=""
+        margins={null}
+        noLink={true}
+        onPress={[Function]}
+        text="lbl_preference_tileAdd"
+        underline={true}
+        visible={false}
+      />
+    </View>
+  </Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="regular"
+    margin={null}
+    mobileFontFamily="secondary"
+    numberOfLines={null}
+    text="lbl_preference_tileAccessBuyOnlinePickup"
+    textDecoration={null}
+  />
+</Fragment>
+`;

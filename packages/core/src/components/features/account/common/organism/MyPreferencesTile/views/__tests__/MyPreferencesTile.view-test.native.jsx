@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPreferencesTile } from '../MyPreferencesTile.view';
+import { MyPreferencesTile } from '../MyPreferencesTile.view.native';
 
 describe('MyPreferencesTile component', () => {
   it('should render correctly', () => {

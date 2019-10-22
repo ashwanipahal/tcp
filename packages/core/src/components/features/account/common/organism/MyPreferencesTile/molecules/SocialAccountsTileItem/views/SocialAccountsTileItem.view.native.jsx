@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-// import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
@@ -9,12 +8,12 @@ import {
   SocialAccountsTileItemContainer,
   LeftContainer,
   RightContainer,
+  ImageWrapper,
 } from '../styles/SocialAccountsTileItem.style.native';
 
-const InstaGramIcon = require('../../../../../../../../../assets/instagram_share.png');
+const InstagramIcon = require('../../../../../../../../../assets/instagram_share.png');
 const TwitterIcon = require('../../../../../../../../../assets/twitter_share.png');
 const FacebookIcon = require('../../../../../../../../../assets/facebook_share.png');
-
 
 class SocialAccountsTileItem extends React.PureComponent {
   getSocialAccounts = socialAccounts => {
@@ -60,7 +59,7 @@ class SocialAccountsTileItem extends React.PureComponent {
               underline
               fontSizeVariation="large"
               noLink
-              dataLocator="addressbook-overview-edit"
+              dataLocator=""
               color="gray.900"
             />
           </View>
@@ -69,25 +68,19 @@ class SocialAccountsTileItem extends React.PureComponent {
           {socialAccountsObject.isSocialConnected ? (
             <>
               {socialAccountsObject.facebook && (
-                <ImageComp
-                  source={FacebookIcon}
-                  width={30}
-                  height={30}
-                />
+                <ImageWrapper>
+                  <ImageComp source={FacebookIcon} width={30} height={30} />
+                </ImageWrapper>
               )}
-              {socialAccountsObject.twitter && (
-                <ImageComp
-                  source={TwitterIcon}
-                  width={30}
-                  height={30}
-                />
+              {socialAccountsObject.isTwitterConnected && (
+                <ImageWrapper>
+                  <ImageComp source={TwitterIcon} width={30} height={30} />
+                </ImageWrapper>
               )}
-              {socialAccountsObject.instagram && (
-                <ImageComp
-                  source={InstaGramIcon}
-                  width={30}
-                  height={30}
-                />
+              {socialAccountsObject.isInstagramConnected && (
+                <ImageWrapper>
+                  <ImageComp source={InstagramIcon} width={30} height={30} />
+                </ImageWrapper>
               )}
             </>
           ) : (

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-// import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, formatPhoneNumber } from '@tcp/core/src/utils';
 import {
@@ -42,7 +41,7 @@ export const MyFavoriteTileItem = ({
             underline
             fontSizeVariation="large"
             noLink
-            dataLocator="addressbook-overview-edit"
+            dataLocator=""
             color="gray.900"
           />
         </View>

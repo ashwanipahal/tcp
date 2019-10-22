@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import {
@@ -12,9 +11,7 @@ import {
   BodyCopyLeftMargin,
   BodyCopyLabelWrapper,
 } from '../styles/ContactPreferencesTileItem.style.native';
-import { getIconPath } from '../../../../../../../../../utils';
 
-// const imagePath = require('../../../../../../../../../assets/');
 const PushEnabledIcon = require('../../../../../../../../../assets/push-enabled.png');
 const PushDisabledIcon = require('../../../../../../../../../assets/push-disabled.png');
 const SmsDisabledIcon = require('../../../../../../../../../assets/sms-disabled.png');
@@ -73,7 +70,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences, handleCompone
             underline
             fontSizeVariation="large"
             noLink
-            dataLocator="addressbook-overview-edit"
+            dataLocator=""
             color="gray.900"
           />
         </View>

@@ -30,7 +30,6 @@ class MyPreferencesTile extends PureComponent {
       getContactPreferences,
       customerPreferences,
     } = this.props;
-    console.info('didmt customerPreferences',customerPreferences)
     if (!customerPreferences) {
       getContactPreferences();
     }
