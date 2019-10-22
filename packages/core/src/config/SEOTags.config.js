@@ -2,11 +2,11 @@ import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 import { findCategoryIdandName } from '../components/features/browse/ProductListing/container/ProductListing.util';
 
-const TCP_BASE_URL = 'www.thechildrensplace.com';
+const TCP_BASE_URL = 'www.childrensplace.com';
 const TCP_TWITTER_SITE_TAG = '@childrensplace';
 const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 
-const GYM_BASE_URL = 'www.thecGymboree.com';
+const GYM_BASE_URL = 'www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
 const TCP_LABEL = "The Children's Place";
@@ -24,7 +24,7 @@ const canonicalUrlConfig = id => ({
 });
 
 const SEO_CONFIG = {
-  canonical: 'www.thechildrensplace.com',
+  canonical: TCP_BASE_URL,
   robots: {
     property: 'robots',
     content: 'index',
@@ -43,14 +43,14 @@ const SEO_CONFIG = {
       site: '@childrensplace',
     },
     openGraph: {
-      url: 'www.Thechildrensplace.com',
+      url: TCP_BASE_URL,
       title: 'Open Graph Title',
       description: 'Open Graph Description',
     },
     hrefLangs: [
       {
         id: 'us-en',
-        canonicalUrl: 'www.Thechildrensplace.com',
+        canonicalUrl: TCP_BASE_URL,
       },
     ],
     US: {
@@ -70,14 +70,14 @@ const SEO_CONFIG = {
       site: '@Gymboree',
     },
     openGraph: {
-      url: 'www.thecGymboree.com',
+      url: GYM_BASE_URL,
       title: 'Open Graph Title',
       description: 'Open Graph Description',
     },
     hrefLangs: [
       {
         id: 'us-en',
-        canonicalUrl: 'www.Thecgymboree.com',
+        canonicalUrl: GYM_BASE_URL,
       },
     ],
     US: {
@@ -222,9 +222,10 @@ const getHomeSEOTags = (store, router, categoryKey) => {
   const brandDetails = getBrandDetails();
   const { brandId } = getAPIConfig();
   const brand = brandId.toUpperCase();
-  const { SEOData = {} } = store.getState();
-  const category = SEOData[categoryKey] || {};
-  const { pageTitle = '', description = '', canonical = '' } = category || {};
+  const {
+    SEOData: { home },
+  } = store.getState();
+  const { pageTitle = '', description = '', canonical = '' } = home || {};
 
   const openGraph = {
     url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
