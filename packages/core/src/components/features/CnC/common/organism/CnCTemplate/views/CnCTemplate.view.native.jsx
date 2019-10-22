@@ -14,7 +14,6 @@ import {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  // CouponsWrapper,
 } from '../styles/CnCTemplate.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
