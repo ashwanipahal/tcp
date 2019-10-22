@@ -21,22 +21,31 @@ import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
   const homepageDataLayer = generateHomePageDataLayer(store);
+  const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
     pageName: {
       get() {
-        return store.getState().pageName;
+        return `gl:${store.getState().pageData.pageName}`;
       },
     },
+
+    pageshortName: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
     pageType: {
       get() {
         return store.getState().pageName;
       },
     },
+
     countryId: {
       get() {
-        return store.getState().APIConfig.country;
+        return store.getState().APIConfig.storeId;
       },
     },
 
@@ -45,6 +54,25 @@ export default function create(store) {
         return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
       },
     },
+
+    pageSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSubSubSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    siteType: {
+      get() {
+        return siteType;
+      },
+    },
+
     customerType: {
       get() {
         return store
@@ -55,6 +83,7 @@ export default function create(store) {
           : 'rewards member:logged in';
       },
     },
+
     userEmailAddress: {
       get() {
         return store
@@ -63,16 +92,19 @@ export default function create(store) {
           .getIn(['contactInfo', 'emailAddress']);
       },
     },
+
     currencyCode: {
       get() {
         return store.getState().APIConfig.currency;
       },
     },
+
     pageDate: {
       get() {
         return new Date().toISOString().split('T')[0];
       },
     },
+
     customerId: {
       get() {
         return store
@@ -81,6 +113,7 @@ export default function create(store) {
           .get('userId');
       },
     },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
