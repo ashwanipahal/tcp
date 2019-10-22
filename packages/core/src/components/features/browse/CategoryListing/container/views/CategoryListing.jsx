@@ -8,7 +8,7 @@ import style from '../styles/CategoryListing.style';
 class CategoryListing extends PureComponent {
   componentDidMount() {
     const { getLayout } = this.props;
-    getLayout('boys-clothing', 'categoryListingPage');
+    getLayout('boy', 'categoryListingPage');
   }
 
   render() {
