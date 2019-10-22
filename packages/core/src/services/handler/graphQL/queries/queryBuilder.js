@@ -14,19 +14,35 @@ const QueryBuilder = {
     return QueryBuilder.wrapQuery(finalQuery);
   },
   /**
+   * Function to add query meta for preview without individually modifying the module queries
+   * @param {String} query Input GraphQl query
+   * @returns {String}
+   */
+  addPreviewQueryMeta: query => {
+    const apiConfig = getAPIConfig();
+    const { isPreviewEnv, previewToken } = apiConfig;
+    const isPreview = !!(isPreviewEnv || previewToken);
+    const previewQueryMeta = `is_preview: "TRUE", preview_token: "${previewToken}"`;
+    if (isPreview) {
+      let localQuery = query;
+      // For root components and labels
+      localQuery = localQuery.replace(/(brand\s*:\s*\S*,{1,1})/g, `$1 ${previewQueryMeta},`);
+      // For modules
+      localQuery = localQuery.replace(/(\(\s*id\s*:\s*"\S*")/g, ` $1 ,${previewQueryMeta}`);
+      // For country list
+      localQuery = localQuery.replace(/(countryList\s*\{)/g, `countryList(${previewQueryMeta}) {`);
+      return localQuery;
+    }
+    return query;
+  },
+  /**
    * Async function which dynamically loads query for a module
    * @param {String} module
    * @param {Object} data
    */
   loadModuleQuery: async (module, data) => {
-    const apiConfig = getAPIConfig();
-    const { isPreviewEnv, previewToken } = apiConfig;
-    const isPreview = isPreviewEnv || previewToken;
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      return QueryModule.getQuery(data).replace(
-        /(brand\s*:\s*\S*,{1,1})/g,
-        `$1 is_preview: "${isPreview}", preview_token: "${previewToken}",`
-      );
+      return QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
     });
   },
   /**
