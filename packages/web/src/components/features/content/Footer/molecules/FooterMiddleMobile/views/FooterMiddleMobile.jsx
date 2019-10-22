@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AccordionList from '@tcp/core/src/components/common/molecules/AccordionList';
+import { isCanada } from '@tcp/core/src/utils';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import FooterNavLinksList from '../../FooterNavLinksList';
 
@@ -21,15 +22,18 @@ const FooterMiddleMobile = ({
       ignoreGutter={{ small: true, medium: true }}
     >
       <AccordionList className={className} accordionItems={navLinkItems}>
-        {navLinkItems.map(item => (
-          <FooterNavLinksList
-            insideAcccordion
-            listArray={item.links}
-            isLoggedIn={isLoggedIn}
-            linkConfig={linkConfig}
-            footerActionCreator={footerActionCreator}
-          />
-        ))}
+        {/* To hide the second footer column for canada, we need to put check for index ===1 and isCanada */}
+        {navLinkItems.map((item, index) =>
+          index === 1 && isCanada() ? null : (
+            <FooterNavLinksList
+              insideAcccordion
+              listArray={item.links}
+              isLoggedIn={isLoggedIn}
+              linkConfig={linkConfig}
+              footerActionCreator={footerActionCreator}
+            />
+          )
+        )}
       </AccordionList>
     </Col>
   );

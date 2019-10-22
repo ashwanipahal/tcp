@@ -8,7 +8,7 @@ import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api
 
 function* fetchPageLayout(action) {
   try {
-    const { payload: page } = action;
+    const { payload: page, layoutName } = action;
     const apiConfig = getAPIConfig();
     const layoutParams = {
       page,
@@ -17,7 +17,7 @@ function* fetchPageLayout(action) {
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
     };
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
-    yield put(loadLayoutData(layoutData.items[0].layout, page));
+    yield put(loadLayoutData(layoutData.items[0].layout, layoutName || page));
     const modulesData = yield call(layoutAbstractor.getModulesFromLayout, layoutData);
     yield put(loadModulesData(modulesData));
   } catch (e) {

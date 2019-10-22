@@ -62,6 +62,7 @@ import ExtraPointsReducer from '@tcp/core/src/components/features/account/ExtraP
 import StoresInternationalReducer from '@tcp/core/src/components/features/storeLocator/StoresInternational/container/StoresInternational.reducer';
 import StoreListReducer from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.reducer';
 import MyPreferenceSubscriptionReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
+import BundleProductReducer from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -135,6 +136,7 @@ import {
   STORES_INTL_REDUCER_KEY,
   STORE_LIST_REDUCER_KEY,
   MY_PREFERENCE_REDUCER_KEY,
+  BUNDLEPRODUCT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -178,12 +180,12 @@ const filteredStyliticsProductTabListReducer = createFilteredReducer(
  *
  * @see RouteTracker.js
  */
-function pageNameReducer(state = '', action) {
+function pageNameReducer(state = {}, action) {
   switch (action.type) {
     case TRACK_PAGE_VIEW: {
       const { props } = action.payload;
-      const { pageName = '' } = (props && props.initialProps && props.initialProps.pageProps) || {};
-      return pageName;
+      const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
+      return pageData;
     }
     default:
       return state;
@@ -191,7 +193,7 @@ function pageNameReducer(state = '', action) {
 }
 
 export default combineReducers({
-  pageName: pageNameReducer,
+  pageData: pageNameReducer,
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
@@ -264,4 +266,5 @@ export default combineReducers({
   [STORES_INTL_REDUCER_KEY]: StoresInternationalReducer,
   [STORE_LIST_REDUCER_KEY]: StoreListReducer,
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
+  [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
 });

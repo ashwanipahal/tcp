@@ -25,6 +25,7 @@ const ORDERDETAILS_CONSTANTS = {
     ORDER_CONTACT_CUSTOMER_SERVICE: 'please contact our customer service',
     ORDER_PROCESSING_AT_FACILITY: 'order processing at facility',
     EXPIRED_AND_REFUNDED: 'expired and refunded',
+    TOP_PREVIEW_ITEMS_COUNT: 3,
   },
 };
 

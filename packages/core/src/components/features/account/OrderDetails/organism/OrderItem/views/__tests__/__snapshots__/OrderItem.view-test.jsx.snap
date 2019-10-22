@@ -85,22 +85,45 @@ exports[`Order Items component should renders correctly 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="div"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
+      <Styled(Row)
+        fullBleed={true}
       >
-        test product
-      </Styled(BodyCopy)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 7,
+              "medium": 8,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            test product
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 5,
+              "medium": 0,
+              "small": 4,
+            }
+          }
+        />
+      </Styled(Row)>
       <Styled(BodyCopy)
-        className="elem-mt-SM"
+        className="elem-mt-MED"
         color="text.primary"
         component="div"
         fontFamily="secondary"
@@ -115,7 +138,7 @@ exports[`Order Items component should renders correctly 1`] = `
         test
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className={null}
+        className="elem-mt-XXXS"
         color="text.primary"
         component="div"
         fontFamily="secondary"
@@ -129,7 +152,7 @@ exports[`Order Items component should renders correctly 1`] = `
         lbl_orderDetails_color
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
-        className={null}
+        className="elem-mt-XXXS"
         color="text.primary"
         component="div"
         fontFamily="secondary"

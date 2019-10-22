@@ -18,7 +18,11 @@ class GiftServicesDetailsModal extends React.PureComponent<Props> {
         horizontalBar={false}
       >
         <RichTextWrapper>
-          <RichText source={{ html: modalContent }} dataLocator="bonus-points-details" />
+          <RichText
+            source={{ html: modalContent }}
+            dataLocator="bonus-points-details"
+            isApplyDeviceHeight
+          />
         </RichTextWrapper>
       </Modal>
     );

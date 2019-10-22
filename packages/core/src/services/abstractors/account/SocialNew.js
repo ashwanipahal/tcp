@@ -1,5 +1,8 @@
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
+
+const errorMsg = 'res body is null';
 
 const getSocialAccountsInformation = () => {
   const payload = {
@@ -8,7 +11,7 @@ const getSocialAccountsInformation = () => {
   return executeStatefulAPICall(payload)
     .then(res => {
       if (!res.body) {
-        throw new Error('res body is null');
+        throw new Error(errorMsg);
         // TODO - Set API Helper to filter if error exists in response
       }
       return res.body || [];
@@ -32,7 +35,7 @@ const saveSocialAccountsInfo = arg => {
   return executeStatefulAPICall(payload)
     .then(response => {
       if (!response.body) {
-        throw new Error('res body is null');
+        throw new Error(errorMsg);
         // TODO - Set API Helper to filter if error exists in response
       }
       return response.body || [];
@@ -41,4 +44,33 @@ const saveSocialAccountsInfo = arg => {
       throw err;
     });
 };
-export { getSocialAccountsInformation, saveSocialAccountsInfo };
+
+/**
+ * @param {string} code - The code from mule response on instagram API
+ * @param {string} redirectUrl - The redirection URL after success from instagram
+ */
+const getInstagramAccessToken = ({ code, redirectUrl }) => {
+  const apiConfig = getAPIConfig();
+  const payload = {
+    header: {
+      storeId: apiConfig.storeId,
+      code,
+      redirectUrl,
+    },
+    webService: endpoints.getInstagramAccessToken,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(response => {
+      if (!response.body) {
+        throw new Error(errorMsg);
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return response.body;
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
+export { getSocialAccountsInformation, saveSocialAccountsInfo, getInstagramAccessToken };

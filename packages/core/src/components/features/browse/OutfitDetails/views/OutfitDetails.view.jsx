@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Image } from '../../../../common/atoms';
+import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
+import { routerPush } from '../../../../../utils';
+
+const routesBack = e => {
+  e.preventDefault();
+  if (window.history.length > 2) window.history.back();
+  else {
+    routerPush('/', '/home');
+  }
+};
 
 const OutfitDetailsView = ({
   className,
@@ -18,11 +27,31 @@ const OutfitDetailsView = ({
   addToBagErrorId,
   isLoggedIn,
   addToFavorites,
+  currencyExchange,
+  currencySymbol,
   labels,
 }) => {
+  const backLabel = labels && labels.lbl_outfit_back;
   return (
     <>
       <Row className={className}>
+        <Col
+          colSize={{ small: 6, medium: 8, large: 12 }}
+          ignoreGutter={{ small: true }}
+          className="outfit-back-button"
+        >
+          <Anchor
+            fontSizeVariation="xlarge"
+            anchorVariation="secondary"
+            handleLinkClick={routesBack}
+            noLink
+            className={`${className}__backlink`}
+            title={backLabel}
+          >
+            <span className="left-arrow" />
+            {backLabel}
+          </Anchor>
+        </Col>
         <Col
           colSize={{ small: 6, medium: 3, large: 5 }}
           ignoreGutter={{ small: true }}
@@ -52,6 +81,8 @@ const OutfitDetailsView = ({
                     addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
                     isLoggedIn={isLoggedIn}
                     addToFavorites={addToFavorites}
+                    currencySymbol={currencySymbol}
+                    currencyExchange={currencyExchange}
                   />
                 </li>
               ))}
@@ -85,6 +116,8 @@ OutfitDetailsView.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  currencyExchange: PropTypes.string,
+  currencySymbol: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -96,6 +129,8 @@ OutfitDetailsView.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
+  currencyExchange: 1,
+  currencySymbol: 'USD',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

@@ -81,12 +81,12 @@ const ModuleK = props => {
           colSize={{
             small: 6,
             medium: 8,
-            large: 8,
+            large: 10,
           }}
           offsetLeft={{
             small: 0,
             medium: 0,
-            large: 2,
+            large: 1,
           }}
           className="moduleK__carousal"
         >
@@ -115,6 +115,7 @@ const ModuleK = props => {
                     dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                     promo={checkPromo}
                     imgConfigs={IMG_DATA.imgConfig}
+                    imageMaxWidth="270px"
                   />
                   <Col
                     colSize={{

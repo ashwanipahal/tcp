@@ -3,6 +3,7 @@
 exports[`RichText should render correctly 1`] = `
 <WebView
   domStorageEnabled={false}
+  isApplyDeviceHeight={false}
   javaScriptEnabled={false}
   originWhitelist={
     Array [
@@ -13,7 +14,6 @@ exports[`RichText should render correctly 1`] = `
   style={
     Object {
       "backgroundColor": "transparent",
-      "height": 1334,
     }
   }
   thirdPartyCookiesEnabled={false}

@@ -29,7 +29,7 @@ class ProductsGrid extends React.Component {
   static propTypes = {
     isLoadingMore: PropTypes.bool,
     productsBlock: PropTypes.arrayOf(PropTypes.shape({})),
-    getMoreProducts: PropTypes.func,
+    getMoreProducts: PropTypes.func.isRequired,
     onPickUpOpenClick: PropTypes.func,
     onQuickViewOpenClick: PropTypes.func,
     isGridView: PropTypes.bool,
@@ -40,12 +40,12 @@ class ProductsGrid extends React.Component {
     currencyExchange: PropTypes.string,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
+    // showQuickViewForProductId: PropTypes.string,
   };
 
   static defaultProps = {
     isLoadingMore: false,
     productsBlock: [],
-    getMoreProducts: () => null,
     onPickUpOpenClick: null,
     onQuickViewOpenClick: null,
     isGridView: false,
@@ -150,6 +150,7 @@ class ProductsGrid extends React.Component {
       currencyExchange,
       onAddItemToFavorites,
       isLoggedIn,
+      // showQuickViewForProductId,
       ...otherProps
     } = this.props;
 
@@ -184,6 +185,7 @@ class ProductsGrid extends React.Component {
                         currencyExchange={currencyExchange}
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
+                        // showQuickViewForProductId={showQuickViewForProductId}
                         {...otherProps}
                       />
                     );

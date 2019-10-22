@@ -1,88 +1,139 @@
 import React from 'react';
+import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
 import { CartItemRadioButtonsVanilla } from '../views/CartItemRadioButtons.view.native';
 
 describe('CartItemRadioButtons native Component', () => {
   let component;
-  const props = {
-    productDetail: {
-      miscInfo: {
-        orderItemType: 'BOSS',
-      },
-      itemInfo: '',
-    },
-    className: '',
-    labels: {},
-  };
-
-  it('CartItemRadioButtons native should be defined', () => {
-    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
-    expect(component).toBeDefined();
-  });
-
-  it('CartItemRadioButtons native should render correctly', () => {
-    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
-    expect(component).toMatchSnapshot();
-  });
-
-  it('CartItemRadioButtons native should render correctly with orderItemType as Bopis', () => {
-    const props1 = {
+  let props;
+  beforeEach(() => {
+    props = {
       productDetail: {
         miscInfo: {
+          isBossEligible: true,
+          isBopisEligible: true,
+          availability: 'OK',
+          bossStartDate: fromJS({
+            day: 'Fri',
+            month: 'Oct',
+            date: '16',
+          }),
+          bossEndDate: fromJS({
+            day: 'Fri',
+            month: 'Oct',
+            date: '18',
+          }),
+          store: 'NewPort',
           orderItemType: 'BOPIS',
-          store: 'New port center',
         },
         itemInfo: '',
       },
       className: '',
       labels: {},
+      isBossEnabled: true,
+      isBopisEnabled: true,
+      isEcomSoldout: false,
+      isECOMOrder: true,
+      isBOPISOrder: false,
+      isBOSSOrder: false,
+      noBopisMessage: null,
+      noBossMessage: null,
+      bossDisabled: false,
+      bopisDisabled: false,
+      index: 0,
+      openedTile: 0,
+      openPickUpModal: jest.fn(),
+      onPickUpOpenClick: jest.fn(),
+      orderId: 123,
     };
-    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
-    component.setState({ expandedState: false });
-    expect(component).toMatchSnapshot();
   });
 
-  it('CartItemRadioButtons native should render correctly with orderItemType as BOSS', () => {
-    const props1 = {
-      productDetail: {
-        miscInfo: {
-          orderItemType: 'BOSS',
-        },
-        itemInfo: '',
-      },
-      className: '',
-      labels: {},
-    };
-    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
-    component.setState({ expandedState: false });
-    expect(component).toMatchSnapshot();
-  });
-
-  it('CartItemRadioButtons native should render correctly with orderItemType as ECOM', () => {
-    const props1 = {
-      productDetail: {
-        miscInfo: {
-          orderItemType: 'ECOM',
-        },
-        itemInfo: '',
-      },
-      className: '',
-      labels: {},
-    };
-    component = shallow(<CartItemRadioButtonsVanilla {...props1} />);
-    component.setState({ expandedState: false });
-    expect(component).toMatchSnapshot();
-  });
-
-  it('CartItemRadioButtons native should call handle toggle', () => {
+  it('CartItemRadioButtons native should render correctly in collapse state with ECOM Order', () => {
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
-
-    component.instance().handleToggle('e', 'BOSS');
-    expect(component.state('selectedOrder')).toBe('BOSS');
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
   });
 
-  it('CartItemRadioButtons native should call default state', () => {
+  it('CartItemRadioButtons native should render correctly in collapse state with BOSS Order', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
-    expect(component.state('selectedOrder')).toBe('BOSS');
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in collapse state with BOSS Order and Boss Global Disabled', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    props.isBossEnabled = false;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in collapse state with BOSS Order and Boss Product Level Disabled', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    props.bossDisabled = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in collapse state with BOPIS Order', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.isBossEnabled = false;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in expanded state with BOPIS Order', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in collapsed state with BOPIS Order and Bopis Global Disabled', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.isBopisEnabled = false;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in expanded state with BOPIS Order and Bopis Global Disabled', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.isBopisEnabled = false;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in collapse state with BOPIS Order and Online only product', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.bopisDisabled = true;
+    props.noBossMessage = 'Not Available (Online only)';
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: false });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons native should render correctly in expanded state with BOPIS Order and Online only product', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.bopisDisabled = true;
+    props.noBossMessage = 'Not Available (Online only)';
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleChangeStoreClick();
+    expect(props.openPickUpModal).toHaveBeenCalled();
+    expect(component).toMatchSnapshot();
   });
 });

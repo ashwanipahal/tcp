@@ -9,6 +9,7 @@ import MyPlaceRewardsOverviewTile from '../../../../common/organism/MyPlaceRewar
 import MyWalletTile from '../../../../common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '../../../../common/organism/EarnExtraPointsOverview';
 import OrdersTile from '../../../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../../../common/organism/MyPreferencesTile';
 
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountOverviewTileList.style';
@@ -22,6 +23,7 @@ const componentMap = {
   myPlaceRewardsOverviewTile: MyPlaceRewardsOverviewTile,
   myWalletTile: MyWalletTile,
   ordersTile: OrdersTile,
+  myPreferencesTile: MyPreferencesTile,
 };
 
 export const COMPONENTS_US = [
@@ -32,6 +34,7 @@ export const COMPONENTS_US = [
   'myPlaceRewardsOverviewTile',
   'myWalletTile',
   'ordersTile',
+  'myPreferencesTile',
 ];
 export const COMPONENTS_CA = [
   'profileInfoTile',
@@ -39,6 +42,7 @@ export const COMPONENTS_CA = [
   'paymentOverviewTile',
   'myWalletTile',
   'ordersTile',
+  'myPreferencesTile',
 ];
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {
