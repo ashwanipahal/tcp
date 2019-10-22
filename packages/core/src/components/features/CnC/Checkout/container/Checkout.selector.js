@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { List } from 'immutable';
 import {
   CHECKOUT_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
@@ -913,6 +914,22 @@ export const getVenmoUserName = () => {
 const getPayPalSettings = state => {
   return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
 };
+const getShippingAddressList = createSelector(
+  [getAddressListState, getCurrentSiteId],
+  (userAddresses, country) => {
+    let addresses = List();
+    if (userAddresses && userAddresses.size > 0) {
+      addresses = userAddresses.filter(
+        address =>
+          address.country === country.toUpperCase() && address.xcont_isShippingAddress === 'true'
+      );
+      if (addresses.size) {
+        return addresses;
+      }
+    }
+    return addresses;
+  }
+);
 
 export default {
   getRecalcOrderPointsInterval,
@@ -997,4 +1014,5 @@ export default {
   getVenmoUserName,
   getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
+  getShippingAddressList,
 };
