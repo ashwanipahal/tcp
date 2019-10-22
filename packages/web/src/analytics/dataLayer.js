@@ -20,6 +20,7 @@ import { generateBrowseDataLayer } from './dataLayers';
  */
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
+  const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
 
@@ -69,7 +70,7 @@ export default function create(store) {
 
     siteType: {
       get() {
-        return 'global site';
+        return siteType;
       },
     },
 
