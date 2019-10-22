@@ -58,9 +58,9 @@ class TCPWebApp extends App {
     } catch (e) {
       globalProps = {};
     }
-    const compProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
+    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
-      compProps,
+      pageProps,
     };
   }
 
@@ -171,7 +171,6 @@ class TCPWebApp extends App {
         payload = {
           ...Component.pageInfo,
           ...payload,
-          seoId: Component.seoId,
         };
       }
       store.dispatch(bootstrapData(payload));
