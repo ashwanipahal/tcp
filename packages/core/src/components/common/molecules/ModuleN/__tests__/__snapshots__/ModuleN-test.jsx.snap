@@ -80,7 +80,7 @@ exports[`N component renders correctly 1`] = `
       className="ModuleN_Button"
     >
       <Styled(ButtonList)
-        buttonListVariation="imageCTAList"
+        buttonListVariation="dropdownButtonCTA"
         buttonsData={
           Array [
             Object {
@@ -151,6 +151,17 @@ exports[`N component renders correctly 1`] = `
         }
         dataLocatorDivisionImages="moduleN_image_"
         dataLocatorTextCta="moduleN_cta_links_"
+        dropdownLabel="Shop"
+        dualVariation={
+          Object {
+            "displayProps": Object {
+              "large": true,
+              "medium": true,
+              "small": false,
+            },
+            "name": "dropdownButtonCTA",
+          }
+        }
         fill="RED"
       />
     </div>
