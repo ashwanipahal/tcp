@@ -25,6 +25,25 @@ class CartItemRadioButtons extends React.Component {
     };
   }
 
+  /**
+   * @function handleChangeStoreClick Handle click event for change store
+   * @memberof CartItemRadioButtons
+   */
+  handleChangeStoreClick = () => {
+    const { openPickUpModal, onPickUpOpenClick, productDetail, orderId } = this.props;
+    const {
+      productDetail: {
+        miscInfo: { orderItemType },
+      },
+    } = this.props;
+    const openSkuSelectionForm = false;
+    openPickUpModal(orderItemType, openSkuSelectionForm, {
+      onPickUpOpenClick,
+      productDetail,
+      orderId,
+    });
+  };
+
   getExpandedState = ({ state, index }) => {
     const { setSelectedProductTile } = this.props;
     this.setState({ currentExpandedState: state }, () => {
@@ -121,7 +140,13 @@ class CartItemRadioButtons extends React.Component {
   renderChangeStore = (disabled, isBossItem) => {
     const { labels } = this.props;
     return !disabled || this.hideChangeStore(isBossItem) ? (
-      <Anchor fontSizeVariation="small">
+      <Anchor
+        fontSizeVariation="small"
+        onPress={e => {
+          e.preventDefault();
+          this.handleChangeStoreClick();
+        }}
+      >
         <StyledChangeStore>
           <BodyCopy
             fontSize="fs12"
@@ -325,6 +350,9 @@ CartItemRadioButtons.propTypes = {
   index: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  orderId: PropTypes.string,
+  openPickUpModal: PropTypes.func.isRequired,
   isECOMOrder: PropTypes.bool.isRequired,
   isBOSSOrder: PropTypes.bool.isRequired,
   isBOPISOrder: PropTypes.bool.isRequired,
@@ -340,6 +368,7 @@ CartItemRadioButtons.propTypes = {
 CartItemRadioButtons.defaultProps = {
   index: 0,
   openedTile: 0,
+  orderId: '',
 };
 
 export default CartItemRadioButtons;
