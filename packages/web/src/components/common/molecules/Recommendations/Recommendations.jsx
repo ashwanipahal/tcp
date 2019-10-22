@@ -8,6 +8,7 @@ import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import config from './config';
+import constant from './Recommendations.constant';
 import style from './Recommendations.style';
 
 /**
@@ -20,7 +21,7 @@ const RecommendationComponentVariation = dynamic(
       ModuleP: import('@tcp/core/src/components/common/molecules/ModuleP').then(mod => mod.default),
     }),
     render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
-      const { viaModule } = config;
+      const { viaModule } = constant;
       switch (dynamicComponentProps.variation) {
         case config.variations.moduleO:
           return <ModuleO viaModule={viaModule} {...dynamicComponentProps} />;

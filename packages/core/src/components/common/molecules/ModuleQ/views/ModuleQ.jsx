@@ -38,6 +38,15 @@ class ModuleQ extends React.PureComponent {
    */
   getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
+  /** This method is to add the queryparam in the url
+   */
+  addQueryParam = (url, param, paramVal) => {
+    if (url.indexOf('?') === -1) {
+      return `${url}?${param}=${paramVal}`;
+    }
+    return `${url}&${param}=${paramVal}`;
+  };
+
   /**
    * This function is being called to render carousel items.
    * @param {object} item image object for the carousel
@@ -49,7 +58,7 @@ class ModuleQ extends React.PureComponent {
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const { viaModule } = config;
-    const updatedPdpUrl = `${pdpUrl}?viaModule=${viaModule}`;
+    const updatedPdpUrl = this.addQueryParam(pdpUrl, 'viaModule', viaModule);
     return (
       <div>
         <Anchor

@@ -12,6 +12,7 @@ import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBa
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { CarouselContainer, ButtonContainer } from './Recommendations.style';
 import config from './config';
+import constant from './Recommendations.constant';
 
 const PRODUCT_TILE_WIDTH = 182;
 const MODULE_HEIGHT = 287;
@@ -20,7 +21,7 @@ const MODULE_WIDTH = getScreenWidth();
 const loadVariation = (variation, variationProps) => itemProps => {
   const { isPlcc, onQuickViewOpenClick, priceOnly, navigation, ...others } = variationProps;
   const title = itemProps.item.name;
-  const { viaModule } = config;
+  const { viaModule } = constant;
   if (variation === 'moduleO') {
     return (
       <ModuleO

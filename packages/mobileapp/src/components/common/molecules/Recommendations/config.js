@@ -13,5 +13,4 @@ export default {
     moduleO: 'moduleO',
     moduleP: 'moduleP',
   },
-  viaModule: 'Recommendation',
 };
