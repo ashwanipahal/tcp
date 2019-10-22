@@ -14,6 +14,7 @@ import { getSiteId, getLocationOrigin } from '../../../../../utils/utils.web';
 import { getIconPath, getAPIConfig } from '../../../../../utils';
 import BodyCopy from '../../../atoms/BodyCopy';
 import ImageComp from '../../../atoms/Image';
+import { getInstagramAccessToken } from '../../../../../services/abstractors/account';
 
 let elem;
 let saveAccountInfo;
@@ -25,6 +26,7 @@ let closeModal;
  */
 export const onClickHandler = () => {
   const apiConfig = getAPIConfig();
+  const redirectUrl = `${getLocationOrigin()}/${getSiteId()}/instagram`;
   if (elem[1].isConnected) {
     const socialAccInfo = {
       instagram: elem[1].socialAccount,
@@ -37,7 +39,7 @@ export const onClickHandler = () => {
     window.open(
       `${config.AUTH_URL.INSTAGRAM}?client_id=${
         apiConfig.instakey
-      }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=token`,
+      }&redirect_uri=${redirectUrl}&response_type=token`,
       '_blank',
       'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
     );
@@ -60,18 +62,21 @@ const InstagramLoginComponent = props => {
   }
 
   const onTokenCapture = () => {
+    const redirectUrl = `${getLocationOrigin()}/${getSiteId()}/instagram`;
     const instagramTokenField = document.getElementById('instagram-token');
     const instagramTokenVal = instagramTokenField.value;
     if (instagramTokenVal) {
-      const socialAccInfo = {
-        instagram: elem[1].socialAccount,
-        accessToken: instagramTokenVal,
-        isconnected: false,
-        userId: instagramTokenVal.split('.')[0],
-      };
-      saveAccountInfo({ socialAccInfo });
-      instagramTokenField.value = '';
-      closeModal({ state: true });
+      getInstagramAccessToken({ code: instagramTokenVal, redirectUrl }).then(res => {
+        const socialAccInfo = {
+          instagram: elem[1].socialAccount,
+          accessToken: res,
+          isconnected: false,
+          userId: instagramTokenVal.split('.')[0],
+        };
+        saveAccountInfo({ socialAccInfo });
+        instagramTokenField.value = '';
+        closeModal({ state: true });
+      });
     }
   };
 
