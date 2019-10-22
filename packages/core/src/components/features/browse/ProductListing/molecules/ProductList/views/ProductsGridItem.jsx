@@ -274,7 +274,8 @@ class ProductsGridItem extends React.PureComponent {
     } = this.props;
     const isBundleProduct = !isBundleProductABTest && bundleProduct;
     if (isBundleProduct) {
-      routerPush(pdpUrl.replace('/b', '/b?bid='), pdpUrl);
+      console.log('pdpUrl', pdpUrl);
+      routerPush(pdpUrl.replace('b/', '/b?bid='), pdpUrl);
       console.log('go to the bundle page');
     } else {
       this.handleQuickViewOpenClick();
@@ -326,13 +327,16 @@ class ProductsGridItem extends React.PureComponent {
   renderSubmitButton = itemNotAvailable => {
     const {
       labels,
-      item: { itemInfo: { itemId } = {} },
+      item: {
+        itemInfo: { itemId } = {},
+        productInfo: { bundleProduct },
+      },
       removeFavItem,
       isFavoriteView,
       isShowQuickView,
     } = this.props;
 
-    const isBundleProduct = true;
+    const isBundleProduct = bundleProduct;
     return itemNotAvailable ? (
       <Button
         className="remove-favorite"

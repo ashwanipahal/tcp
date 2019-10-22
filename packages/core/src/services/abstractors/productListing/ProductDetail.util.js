@@ -82,7 +82,7 @@ const getSwatchImgPath = (id, excludeExtension) => {
 };
 
 const getProductImagePath = (id, excludeExtension) => {
-  const imageName = id.split('_');
+  const imageName = (id && id.split('_')) || [];
   const imagePath = imageName[0];
 
   return {

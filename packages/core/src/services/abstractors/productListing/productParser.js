@@ -279,7 +279,7 @@ const getGeneralProductId = product => {
 };
 
 const getPdpUrl = (isBundleProduct, product) => {
-  return `${isBundleProduct ? 'b' : 'p'}/${product.seo_token || product.uniqueId}`;
+  return `${isBundleProduct ? '/b' : '/p'}/${product.seo_token || product.uniqueId}`;
 };
 
 const checkIfBundleProduct = product => {
