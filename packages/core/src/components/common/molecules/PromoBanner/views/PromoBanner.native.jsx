@@ -6,6 +6,7 @@ import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native'
 import CurrencyUpPromoBanner from './CurrencyUpPromoBanner';
 
 const textStyle = { fontWeight: '500' };
+const TYPE_PROM_TAB = 'type-promo-tab';
 
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
@@ -56,9 +57,15 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
-  percentage_wrapped_large: props => <PercentageStyle colorVariation="white" {...props} />,
-  percentage_wrapped_large_black: props => <PercentageStyle colorVariation="black" {...props} />,
-  percentage_all_wrapped_normal_tab: props => <PercentageStyle colorVariation="black" {...props} />,
+  percentage_wrapped_large: props => (
+    <PercentageStyle colorVariation="white" variation="type-promo" {...props} />
+  ),
+  percentage_wrapped_large_black: props => (
+    <PercentageStyle colorVariation="black" variation="type-promo" {...props} />
+  ),
+  percentage_all_wrapped_normal_tab: props => (
+    <PercentageStyle colorVariation="black" variation={TYPE_PROM_TAB} {...props} />
+  ),
   percentage_wrapped_extra_large: props => <PercentagePinkStyle {...props} />,
   currency_up_style: props => <CurrencyUpPromoBanner {...props} />,
   // TODO: Remove .style10 when currency_up_style is available in CMS
@@ -298,33 +305,34 @@ PercentageAllWrappedNormal.propTypes = {
  */
 
 const PercentageStyle = props => {
-  const { text, colorVariation } = props;
+  const { text, colorVariation, variation } = props;
 
   const strArray = text && text.split(' ');
   const bodyCopyStyle = { height: 33 };
-  const bodyCopyStyle1 = { height: 58, marginTop: 8 };
+  const bodyCopyStyleTab = { height: 30 };
+  const bodyCopyStyle1 = { height: 58, marginTop: 8, fontSize: 64 };
+  const bodyCopyStyle1Tab = { height: 54, marginTop: 8, fontSize: 62 };
 
   return (
     <Container>
       <BodyCopy
-        fontSize="fs64"
         fontWeight="black"
         color={colorVariation}
         fontFamily="primary"
         textAlign="center"
-        lineHeight="64px"
-        style={bodyCopyStyle1}
+        lineHeight={variation === TYPE_PROM_TAB ? '62px' : '64px'}
+        style={variation === TYPE_PROM_TAB ? bodyCopyStyle1Tab : bodyCopyStyle1}
         text={strArray && strArray[0]}
       />
       <ContainerView>
         <BodyCopy
-          fontSize="fs42"
+          fontSize={variation === TYPE_PROM_TAB ? 'fs36' : 'fs42'}
           fontWeight="black"
           color={colorVariation}
           fontFamily="primary"
           text={strArray && strArray[1]}
-          lineHeight="42px"
-          style={bodyCopyStyle}
+          lineHeight={variation === TYPE_PROM_TAB ? '36px' : '42px'}
+          style={variation === TYPE_PROM_TAB ? bodyCopyStyleTab : bodyCopyStyle}
         />
         <BodyCopy
           fontSize="fs18"
@@ -343,6 +351,7 @@ const PercentageStyle = props => {
 PercentageStyle.propTypes = {
   text: PropTypes.string.isRequired,
   colorVariation: PropTypes.string.isRequired,
+  variation: PropTypes.string.isRequired,
 };
 
 /**
