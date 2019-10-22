@@ -127,7 +127,7 @@ const Address = ({
         color="gray.900"
         {...customStyle}
       />
-      {showCountry && address.country && (
+      {showCountry && !!address.country && (
         <BodyCopy
           fontSize={fontSize}
           mobilefontFamily={['secondary']}
@@ -137,7 +137,7 @@ const Address = ({
           {...customStyle}
         />
       )}
-      {showPhone && address.phone1 && (
+      {showPhone && !!address.phone1 && (
         <BodyCopy
           fontSize={fontSize}
           mobilefontFamily={['secondary']}
