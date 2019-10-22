@@ -52,7 +52,7 @@ exports[`Order Basic Details component  should render correctly for Boss order 1
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XXS margin-bottom-XS"
+      spacingStyles="margin-bottom-XS"
       text="October 12, 2019 lbl_orderDetails_at 02:21am"
       textDecoration={null}
     />
@@ -112,7 +112,7 @@ exports[`Order Basic Details component  should render correctly for ECOM order 1
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XXS margin-bottom-XS"
+      spacingStyles="margin-bottom-XS"
       text="September 30, 2018 lbl_orderDetails_at 02:21am"
       textDecoration={null}
     />

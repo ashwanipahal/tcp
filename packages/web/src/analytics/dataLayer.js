@@ -20,6 +20,7 @@ import { generateBrowseDataLayer } from './dataLayers';
  */
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
+  const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
 
@@ -27,9 +28,93 @@ export default function create(store) {
 
     pageName: {
       get() {
-        return store.getState().pageName;
+        return `gl:${store.getState().pageData.pageName}`;
       },
     },
+
+    pageshortName: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
+    countryId: {
+      get() {
+        return store.getState().APIConfig.storeId;
+      },
+    },
+
+    pageLocale: {
+      get() {
+        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+      },
+    },
+
+    pageType: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSubSubSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    siteType: {
+      get() {
+        return siteType;
+      },
+    },
+
+    customerType: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('isGuest')
+          ? 'no rewards:guest'
+          : 'rewards member:logged in';
+      },
+    },
+
+    userEmailAddress: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'emailAddress']);
+      },
+    },
+
+    currencyCode: {
+      get() {
+        return store.getState().APIConfig.currency;
+      },
+    },
+
+    pageDate: {
+      get() {
+        return new Date().toISOString().split('T')[0];
+      },
+    },
+
+    customerId: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('userId');
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {

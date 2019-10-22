@@ -57,11 +57,11 @@ const RenderImage = forwardRef((imgProps, ref) => {
     imgPathSplitter,
     lazyLoad,
     link,
+    showPlaceHolder,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
-
   return (
     <picture>
       <source
@@ -80,6 +80,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
           src={getBreakpointImgUrl('xs', imgProps)}
           alt={alt}
           {...other}
+          showPlaceHolder={showPlaceHolder}
         />
       ) : (
         <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
@@ -99,6 +100,7 @@ const DamImage = props => {
     link,
     dataLocator,
     forwardedRef,
+    showPlaceHolder,
     ...other
   } = props;
 
@@ -110,6 +112,7 @@ const DamImage = props => {
     imgPathSplitter,
     lazyLoad,
     link,
+    showPlaceHolder,
     ...other,
   };
 
@@ -126,7 +129,7 @@ const DamImage = props => {
 
   return (
     <Anchor
-      className={ctaClassName}
+      className={`${ctaClassName} ${showPlaceHolder ? 'full-width' : ''}`}
       to={to}
       asPath={ctaUrl}
       target={target}
@@ -153,6 +156,7 @@ DamImage.defaultProps = {
   dataLocator: '',
   dataLocatorLink: '',
   forwardedRef: null,
+  showPlaceHolder: true,
 };
 
 DamImage.propTypes = {
@@ -197,6 +201,7 @@ DamImage.propTypes = {
     text: PropTypes.string,
   }),
   forwardedRef: PropTypes.shape({ current: PropTypes.any }),
+  showPlaceHolder: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

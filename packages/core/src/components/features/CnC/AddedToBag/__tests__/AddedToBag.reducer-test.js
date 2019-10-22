@@ -2,6 +2,8 @@ import { Map, fromJS } from 'immutable';
 import AddedToBagReducer from '../container/AddedToBag.reducer';
 import {
   AddToCartError,
+  AddToPickupError,
+  AddToCartMultipleItemError,
   SetAddedToBagData,
   openAddedToBag,
   closeAddedToBag,
@@ -65,6 +67,29 @@ describe('Added to bag Reducer', () => {
     });
     expect(AddedToBagReducer(initialState, AddToCartError(err))).toEqual(
       fromJS({ error: err, errorCatId: undefined })
+    );
+  });
+
+  it('should return pickup error if it occurs', () => {
+    const err = 'Error';
+    const initialState = fromJS({
+      pickupError: null,
+    });
+    expect(AddedToBagReducer(initialState, AddToPickupError(err))).toEqual(
+      fromJS({ pickupError: err })
+    );
+  });
+
+  it('should return QV multiple item error if it occurs', () => {
+    const err = fromJS({
+      errMsg: 'error',
+      errorProductId: 123,
+    });
+    const initialState = fromJS({
+      multipleItemsError: null,
+    });
+    expect(AddedToBagReducer(initialState, AddToCartMultipleItemError(err))).toEqual(
+      fromJS({ multipleItemsError: err })
     );
   });
 });

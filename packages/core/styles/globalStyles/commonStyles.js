@@ -112,6 +112,10 @@ export default css`
     z-index: 2;
   }
 
+  .disableBodyScroll {
+    overflow: hidden;
+  }
+
   figure {
     margin: 0;
     padding: 0;
@@ -127,6 +131,10 @@ export default css`
 
   .margin-none {
     margin: 0 !important;
+  }
+
+  .padding-none {
+    padding: 0 !important;
   }
 
   ul {
@@ -166,9 +174,19 @@ export default css`
   .text-break {
     word-break: break-word;
   }
+  .full-width {
+    width: 100%;
+    display: inline-block;
+  }
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
 
-  .capitalize {
-    text-transform: uppercase;
+  .capFirstLetter {
+    text-transform: capitalize;
   }
 
   ${props => {

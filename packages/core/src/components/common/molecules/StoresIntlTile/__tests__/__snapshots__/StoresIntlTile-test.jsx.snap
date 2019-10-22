@@ -88,6 +88,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -455,6 +456,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -489,9 +491,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -502,7 +504,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -517,7 +519,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -530,9 +532,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -625,9 +627,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kAzzGY",
+            "componentId": "sc-chPdSV",
             "isStatic": false,
-            "lastClassName": "dCuoz",
+            "lastClassName": "fyDNYN",
             "rules": Array [
               "
   ",
@@ -655,7 +657,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kAzzGY",
+          "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -671,7 +673,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kAzzGY dCuoz"
+        className="sc-chPdSV fyDNYN"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -773,6 +775,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -1140,6 +1143,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -1174,9 +1178,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -1187,7 +1191,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -1202,7 +1206,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -1215,9 +1219,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",
@@ -1384,9 +1388,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kAzzGY",
+            "componentId": "sc-chPdSV",
             "isStatic": false,
-            "lastClassName": "dCuoz",
+            "lastClassName": "fyDNYN",
             "rules": Array [
               "
   ",
@@ -1414,7 +1418,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kAzzGY",
+          "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1504,7 +1508,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kAzzGY dCuoz"
+        className="sc-chPdSV fyDNYN"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1587,7 +1591,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-kAzzGY dCuoz"
+          className="sc-chPdSV fyDNYN"
         >
           <styled.h3>
             <StyledComponent
@@ -1596,9 +1600,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-cSHVUG",
+                    "componentId": "sc-kAzzGY",
                     "isStatic": false,
-                    "lastClassName": "dghhgd",
+                    "lastClassName": "kOWSlF",
                     "rules": Array [
                       "
   position: relative;
@@ -1642,7 +1646,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-cSHVUG",
+                  "styledComponentId": "sc-kAzzGY",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1652,7 +1656,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-cSHVUG dghhgd"
+                className="sc-kAzzGY kOWSlF"
               >
                 Test
               </h3>

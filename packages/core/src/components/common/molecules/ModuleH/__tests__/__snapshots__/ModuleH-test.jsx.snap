@@ -46,7 +46,7 @@ exports[`ModuleH component renders correctly 1`] = `
   fullBleed={
     Object {
       "large": false,
-      "medium": false,
+      "medium": true,
       "small": true,
     }
   }

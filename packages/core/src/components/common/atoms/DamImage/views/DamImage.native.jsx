@@ -5,7 +5,9 @@ import { LazyloadImage } from 'react-native-lazyload-deux';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
-import { cropImageUrl } from '../../../../../utils/index.native';
+import { cropImageUrl, getBrand } from '../../../../../utils/index.native';
+
+const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
 /**
  * DamImage returns two types of images
@@ -16,11 +18,18 @@ import { cropImageUrl } from '../../../../../utils/index.native';
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
 const DamImage = (props: Props) => {
-  const { url, crop, source, host, imgConfig, alt, ...otherProps } = props;
+  const { url, crop, source, host, imgConfig, alt, isProductImage, ...otherProps } = props;
+  const basePath = 'https://test1.theplace.com/image/upload';
+  const productAssetPath = `ecom/assets/products/${getBrand()}`;
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
   const namedTransformation = imgConfig || '';
+  const uri = {
+    uri: isProductImage
+      ? `${basePath}/w_450/${productAssetPath}/${urlVal}`
+      : cropImageUrl(urlVal, cropVal, namedTransformation),
+  };
 
   return (
     <ImageComponent
@@ -28,7 +37,8 @@ const DamImage = (props: Props) => {
       host={host}
       accessibilityRole="image"
       accessibilityLabel={alt || ''}
-      source={{ uri: cropImageUrl(urlVal, cropVal, namedTransformation) }}
+      source={uri}
+      defaultSource={placeHolderImg}
     />
   );
 };

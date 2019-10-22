@@ -135,6 +135,7 @@ An online account has been created with your email! Click here to reset your pas
           customStyle={Object {}}
           fontSizeVariation="medium"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_createAccount_resetPassword"
           underline={true}

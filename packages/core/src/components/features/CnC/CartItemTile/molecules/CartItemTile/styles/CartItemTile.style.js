@@ -59,6 +59,8 @@ export default css`
     display: flex;
     justify-content: flex-start;
     padding-left: 15px;
+    z-index: 1;
+    outline: none;
   }
   .imageWrapper {
     position: relative;
@@ -100,7 +102,7 @@ export default css`
     position: absolute;
     top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -287,8 +289,8 @@ export default css`
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 

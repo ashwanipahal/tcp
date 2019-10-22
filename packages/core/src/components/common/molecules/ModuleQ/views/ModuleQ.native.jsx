@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { Button, Anchor, BodyCopy } from '../../../atoms';
+
+import { Button, Anchor, BodyCopy, Skeleton } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../ModuleQ.config';
@@ -130,6 +131,15 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
   );
 }
 
+function getDataStatus(selectedProductList, currentCatId) {
+  let dataStatus = true;
+  if (selectedProductList && selectedProductList.completed) {
+    dataStatus = selectedProductList.completed[currentCatId];
+  }
+  return dataStatus;
+}
+
+// eslint-disable-next-line complexity
 const ModuleQ = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [selectedTabItem, setSelectedTabItem] = useState(null);
@@ -144,12 +154,15 @@ const ModuleQ = props => {
     autoplayInterval,
     shopThisLookLabel,
     hostLazyLoad,
+    hideTabs,
+    selectedColorProductId,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
   let selectedProductList = styliticsProductTabList[selectedCategoryId] || [];
   selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
 
+  const showData = hideTabs ? selectedProductList && selectedProductList.length : true;
   /* Add productItemIndex for the testIDs */
   const selectedProductCarouselList = selectedProductList.map((item, index) => {
     return { ...item, productItemIndex: index };
@@ -164,53 +177,69 @@ const ModuleQ = props => {
     setSelectedCategoryId(categoryId);
     setSelectedTabItem(tabItem);
   };
+  const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
-    <Container bgClass={bgClass}>
-      <MessageContainer>
-        <Wrapper>
-          {headerText[0] && (
-            <HeaderContainer>
-              <LinkText
-                navigation={navigation}
-                headerText={[headerText[0]]}
-                testID={getLocator('moduleQ_header_text_0')}
-                useStyle
-              />
-            </HeaderContainer>
+    <Container showData={showData} bgClass={bgClass}>
+      {!hideTabs ? (
+        <MessageContainer>
+          {headerText && (
+            <Wrapper>
+              {headerText[0] && (
+                <HeaderContainer>
+                  <LinkText
+                    navigation={navigation}
+                    headerText={[headerText[0]]}
+                    testID={getLocator('moduleQ_header_text_0')}
+                    useStyle
+                  />
+                </HeaderContainer>
+              )}
+              {headerText[1] && (
+                <SecondHeaderContainer>
+                  <LinkText
+                    navigation={navigation}
+                    headerText={[headerText[1]]}
+                    testID={getLocator('moduleQ_header_text_1')}
+                    renderComponentInNewLine
+                    useStyle
+                  />
+                </SecondHeaderContainer>
+              )}
+            </Wrapper>
           )}
-          {headerText[1] && (
-            <SecondHeaderContainer>
-              <LinkText
+          {promoBanner && (
+            <PromoContainer>
+              <PromoBanner
+                testID={getLocator('moduleQ_promobanner_text')}
+                promoBanner={promoBanner}
                 navigation={navigation}
-                headerText={[headerText[1]]}
-                testID={getLocator('moduleQ_header_text_1')}
-                renderComponentInNewLine
-                useStyle
               />
-            </SecondHeaderContainer>
+            </PromoContainer>
           )}
-        </Wrapper>
-
-        {promoBanner && (
-          <PromoContainer>
-            <PromoBanner
-              testID={getLocator('moduleQ_promobanner_text')}
-              promoBanner={promoBanner}
-              navigation={navigation}
-            />
-          </PromoContainer>
-        )}
-      </MessageContainer>
-
+        </MessageContainer>
+      ) : null}
       <StyledProductTabList
+        showData={showData}
         onProductTabChange={onProductTabChange}
         tabItems={divTabs}
         navigation={navigation}
+        selectedColorProductId={selectedColorProductId}
         testID={getLocator('moduleQ_cta_link')}
       />
 
-      <ImageSlidesWrapper>
+      {dataStatus ? (
+        <Skeleton
+          row={1}
+          col={3}
+          width={250}
+          height={300}
+          rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+          showArrows
+        />
+      ) : null}
+
+      <ImageSlidesWrapper hideTabs={hideTabs}>
         {selectedProductList.length ? (
           <Carousel
             data={selectedProductCarouselList}
@@ -254,6 +283,9 @@ ModuleQ.defaultProps = {
   autoplayInterval: 1,
   shopThisLookLabel: '',
   hostLazyLoad: '',
+  hideTabs: false,
+  selectedColorProductId: '',
+  headerText: [],
 };
 
 ModuleQ.propTypes = {
@@ -265,7 +297,7 @@ ModuleQ.propTypes = {
       link: PropTypes.object,
       textItems: PropTypes.array,
     })
-  ).isRequired,
+  ),
   promoBanner: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.object,
@@ -294,6 +326,8 @@ ModuleQ.propTypes = {
     })
   ).isRequired,
   hostLazyLoad: PropTypes.string,
+  hideTabs: PropTypes.bool,
+  selectedColorProductId: PropTypes.string,
 };
 
 export default ModuleQ;

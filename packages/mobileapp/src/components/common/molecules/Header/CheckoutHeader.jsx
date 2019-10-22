@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLocator } from '@tcp/core/src/utils';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import CheckoutSelectors, {
@@ -93,9 +93,14 @@ class CheckoutHeader extends React.PureComponent {
             </StoreContainer>
           </MessageContainer>
           <CheckoutHeaderTextSection>
-            <Text className="product-name">
-              {isExpressCheckoutPage ? expressCheckoutLbl : checkoutHeaderLabel}
-            </Text>
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              text={isExpressCheckoutPage ? expressCheckoutLbl : checkoutHeaderLabel}
+              color="gray.900"
+              textAlign="center"
+            />
           </CheckoutHeaderTextSection>
         </CheckoutHeaderContainer>
       </SafeAreaViewStyle>

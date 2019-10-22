@@ -112,7 +112,7 @@ class HeaderNew extends React.PureComponent<Props> {
     this.closeSearchProductPage();
 
     const { navigation } = this.props;
-    navigateToNestedRoute(navigation, 'PlpStack', 'SearchDetail', {
+    navigateToNestedRoute(navigation, 'HomeStack', 'SearchDetail', {
       title: searchText,
       isForceUpdate: true,
     });

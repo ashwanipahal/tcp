@@ -49,7 +49,7 @@ const PickupSkuSelectionForm = props => {
 
   const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
 
-  const pdpToPath = getProductListToPath(currentColorPdpUrl);
+  const pdpToPath = currentColorPdpUrl && getProductListToPath(currentColorPdpUrl);
 
   const getProductDetailContainer = () => {
     return (
@@ -177,7 +177,7 @@ PickupSkuSelectionForm.defaultProps = {
   className: '',
   onChangeColor: () => {},
   currentColorEntry: {},
-  currencyExchange: '',
+  currencyExchange: 1,
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

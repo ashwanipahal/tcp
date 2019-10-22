@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { ParallaxImage } from 'react-native-snap-carousel';
-import { Button, Anchor } from '../../../atoms';
+import { Button, Anchor, Skeleton } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 
@@ -124,6 +124,28 @@ class ModuleG extends React.PureComponent {
     );
   };
 
+  getDataStatus = selectedCategoryId => {
+    const { productTabList = {} } = this.props;
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
+    }
+    return dataStatus;
+  };
+
+  getMiddleContainer = dataLength => {
+    if (!dataLength) {
+      return null;
+    }
+    return (
+      <MiddleContainer>
+        <Border />
+        <Circle />
+        <StyledCustomImage source={plusIcon} />
+      </MiddleContainer>
+    );
+  };
+
   /**
    * @param {object} props : Props for renderView multi type of banner list, button list, header text.
    * @desc This is Method return the complete View with CTA Button .
@@ -135,6 +157,12 @@ class ModuleG extends React.PureComponent {
     selectedSingleCTAButtonCart
   ) => {
     const { navigation, headerText, promoBanner, divTabs } = this.props;
+    // const { selectedCategoryId } = this.state;
+    // const dataStatus1 = this.getDataStatus(selectedCategoryId[0]);
+    // const dataStatus2 = this.getDataStatus(selectedCategoryId[1]);
+    const dataStatus1 = true;
+    const dataStatus2 = true;
+
     return (
       <Container>
         <MessageContainer>
@@ -170,8 +198,18 @@ class ModuleG extends React.PureComponent {
           <SHADOW />
         </ShadowContainer>
         <View>
-          <ImageSlidesWrapper>
-            {selectedProductList.length ? (
+          {dataStatus1 ? (
+            <Skeleton
+              row={1}
+              col={3}
+              width={190}
+              height={170}
+              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+              showArrows
+            />
+          ) : null}
+          {selectedProductList.length ? (
+            <ImageSlidesWrapper>
               <Carousel
                 data={selectedProductCarouselList}
                 renderItem={this.renderCarouselSlide}
@@ -183,17 +221,24 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            ) : null}
-          </ImageSlidesWrapper>
+            </ImageSlidesWrapper>
+          ) : null}
 
-          <MiddleContainer>
-            <Border />
-            <Circle />
-            <StyledCustomImage source={plusIcon} />
-          </MiddleContainer>
+          {this.getMiddleContainer(selectedProductList.length)}
 
-          <ImageSlidesWrapper>
-            {selectedProductList.length ? (
+          {dataStatus2 ? (
+            <Skeleton
+              row={1}
+              col={3}
+              width={200}
+              height={200}
+              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+              showArrows
+            />
+          ) : null}
+
+          {selectedProductList.length ? (
+            <ImageSlidesWrapper>
               <Carousel
                 data={selectedProductCarouselList}
                 renderItem={this.renderCarouselSlide}
@@ -205,8 +250,8 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            ) : null}
-          </ImageSlidesWrapper>
+            </ImageSlidesWrapper>
+          ) : null}
         </View>
 
         {selectedSingleCTAButton ? (
