@@ -56,6 +56,6 @@ export const fetchCurrencySymbol = state => {
   return '$';
 };
 
-export const getLabelsFavorites = state => state.Labels && state.Labels.Favorites;
+export const getLabelsFavorites = state => state.Labels.Browse && state.Labels.Browse.Favorites;
 
 export default fetchCurrencySymbol;

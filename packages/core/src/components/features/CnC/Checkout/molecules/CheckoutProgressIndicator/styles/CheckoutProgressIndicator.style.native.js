@@ -25,8 +25,8 @@ export const ProgressStep = styled.View`
 
 export const ProgressDot = styled.View`
   background-color: ${props => props.theme.colorPalette.white};
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   border-radius: 10;
   border-width: 1;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};

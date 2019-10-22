@@ -43,6 +43,7 @@ const ProductCustomizeFormPart = props => {
     colorFitsSizesMap,
     fromBagPage,
     productInfoFromBag,
+    quickViewColorSwatchesCss,
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const currentColorPdpUrl =
@@ -136,6 +137,7 @@ const ProductCustomizeFormPart = props => {
               colorFitsSizesMap={colorFitsSizesMap}
               formRef={formRef}
               formEnabled={formEnabled}
+              quickViewColorSwatchesCss={quickViewColorSwatchesCss}
             />
           </div>
         </div>
@@ -171,6 +173,7 @@ ProductCustomizeFormPart.propTypes = {
   formEnabled: PropTypes.bool.isRequired,
   onInputSelectionChange: PropTypes.func.isRequired,
   fromBagPage: PropTypes.bool.isRequired,
+  quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
 };
 
@@ -186,6 +189,7 @@ ProductCustomizeFormPart.defaultProps = {
   goToPDPPage: () => {},
   addToBagError: '',
   imageUrl: '',
+  quickViewColorSwatchesCss: '',
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

@@ -50,6 +50,7 @@ const styles = css`
 
   .purchase-section {
     margin-top: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
   }
 
   .move-item-container {
@@ -57,9 +58,11 @@ const styles = css`
   }
 
   .move-item-button {
-    margin-top: 5px;
+    margin-top: 3px;
     padding: 0;
-    text-transform: capitalize;
+    text-transform: none;
+    text-align: left;
+    letter-spacing: normal;
   }
 
   .move-item-section {
@@ -73,6 +76,11 @@ const styles = css`
     &.item__odd {
       right: 60px;
     }
+  }
+
+  .is-purchase-label {
+    display: inline-block;
+    padding-left: 2px;
   }
 
   .create-wish-list-section {

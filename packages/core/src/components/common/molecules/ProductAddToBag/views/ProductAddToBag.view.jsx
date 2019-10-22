@@ -68,7 +68,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderColorList = (colorList, colorTitle) => {
-    const { selectColor, isGiftCard, showColorChips } = this.props;
+    const {
+      selectColor,
+      isGiftCard,
+      showColorChips,
+      quickViewColorSwatchesCss,
+      isPDP,
+    } = this.props;
     return (
       showColorChips &&
       colorList &&
@@ -83,7 +89,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onChange={selectColor}
             dataLocator="addnewaddress-state"
             title={colorTitle}
-            inheritedStyles={isGiftCard ? giftCardDesignStyle : ''}
+            inheritedStyles={isGiftCard && isPDP ? giftCardDesignStyle : quickViewColorSwatchesCss}
           />
         </div>
       )
