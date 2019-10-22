@@ -131,7 +131,7 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    for (let value of orderItemId.values()) {
+    for (let value of orderItemId) {
       orderItems.push({
         orderItemId: value,
         quantity: '0',
@@ -910,9 +910,13 @@ export const getUnqualifiedItems = () => {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);
       }
-      const {
+      let {
         body: { orderItemList = [] },
       } = res;
+      orderItemList = [
+        { orderItemId: '8067246021', isArticleOOSUS: true },
+        { orderItemId: '8067246020', isArticleOOSUS: true },
+      ];
       return orderItemList.map(({ orderItemId, isArticleOOSCA, isArticleOOSUS }) => ({
         orderItemId: orderItemId.toString(),
         isOOS: isCanadaSite ? isArticleOOSCA : isArticleOOSUS,

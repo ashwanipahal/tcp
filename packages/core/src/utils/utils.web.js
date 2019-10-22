@@ -229,26 +229,6 @@ export const getViewportInfo = () => {
 };
 
 /**
- * Enable Body Scroll
- */
-export const enableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
-  }
-};
-
-/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {

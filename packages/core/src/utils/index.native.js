@@ -60,6 +60,8 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   parseBoolean,
+  enableBodyScroll,
+  disableBodyScroll,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
