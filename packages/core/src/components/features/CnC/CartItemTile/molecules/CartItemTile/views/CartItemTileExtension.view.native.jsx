@@ -191,6 +191,33 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
+const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
+  const { onPickUpOpenClick, productDetail, orderId } = props;
+  const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+  const { store, orderItemType } = productDetail.miscInfo;
+  const { productPartNumber } = productDetail.productInfo;
+  const isItemShipToHome = !store;
+  const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+  const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  onPickUpOpenClick({
+    colorProductId: productPartNumber,
+    orderInfo: {
+      orderItemId: itemId,
+      Quantity: qty,
+      color,
+      Size: size,
+      Fit: fit,
+      orderId,
+      orderItemType,
+      itemBrand,
+    },
+    openSkuSelectionForm,
+    isBopisCtaEnabled,
+    isBossCtaEnabled,
+    isItemShipToHome,
+  });
+};
+
 const getCartRadioButtons = ({
   productDetail,
   labels,
@@ -209,6 +236,8 @@ const getCartRadioButtons = ({
   bopisDisabled,
   isBossEnabled,
   isBopisEnabled,
+  orderId,
+  onPickUpOpenClick,
 }) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
@@ -229,6 +258,9 @@ const getCartRadioButtons = ({
         bopisDisabled={bopisDisabled}
         isBossEnabled={isBossEnabled}
         isBopisEnabled={isBopisEnabled}
+        openPickUpModal={handleEditCartItemWithStore}
+        onPickUpOpenClick={onPickUpOpenClick}
+        orderId={orderId}
       />
     );
   }
@@ -253,6 +285,8 @@ getCartRadioButtons.propTypes = {
   bopisDisabled: PropTypes.bool.isRequired,
   isBossEnabled: PropTypes.bool.isRequired,
   isBopisEnabled: PropTypes.bool.isRequired,
+  orderId: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
 };
 
 /**
@@ -316,33 +350,6 @@ renderUnavailableErrorMessage.propTypes = {
   availability: PropTypes.string.isRequired,
 };
 
-const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
-  const { onPickUpOpenClick, productDetail, orderId } = props;
-  const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
-  const { store, orderItemType } = productDetail.miscInfo;
-  const { productPartNumber } = productDetail.productInfo;
-  const isItemShipToHome = !store;
-  const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
-  const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  onPickUpOpenClick({
-    colorProductId: productPartNumber,
-    orderInfo: {
-      orderItemId: itemId,
-      Quantity: qty,
-      color,
-      Size: size,
-      Fit: fit,
-      orderId,
-      orderItemType,
-      itemBrand,
-    },
-    openSkuSelectionForm,
-    isBopisCtaEnabled,
-    isBossCtaEnabled,
-    isItemShipToHome,
-  });
-};
-
 const callEditMethod = props => {
   const { productDetail, onQuickViewOpenClick } = props;
   const {
@@ -388,5 +395,6 @@ export default {
   getCartRadioButtons,
   renderUnavailableErrorMessage,
   callEditMethod,
+  handleEditCartItemWithStore,
   onSwipeComplete,
 };

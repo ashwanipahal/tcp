@@ -68,11 +68,11 @@ const renderImage = imgProps => {
     lazyLoad,
     link,
     itemBrand,
+    showPlaceHolder,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
-
   return (
     <picture>
       <source
@@ -86,7 +86,12 @@ const renderImage = imgProps => {
       />
 
       {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <LazyLoadImage
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+          showPlaceHolder={showPlaceHolder}
+        />
       ) : (
         <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
       )}
@@ -105,6 +110,7 @@ const DamImage = props => {
     link,
     dataLocator,
     itemBrand,
+    showPlaceHolder,
     ...other
   } = props;
 
@@ -117,6 +123,7 @@ const DamImage = props => {
     lazyLoad,
     link,
     itemBrand,
+    showPlaceHolder,
     ...other,
   };
 
@@ -133,7 +140,7 @@ const DamImage = props => {
 
   return (
     <Anchor
-      className={ctaClassName}
+      className={`${ctaClassName} ${showPlaceHolder ? 'full-width' : ''}`}
       to={to}
       asPath={ctaUrl}
       target={target}
@@ -160,6 +167,7 @@ DamImage.defaultProps = {
   dataLocator: '',
   dataLocatorLink: '',
   itemBrand: '',
+  showPlaceHolder: true,
 };
 
 DamImage.propTypes = {
@@ -204,6 +212,7 @@ DamImage.propTypes = {
     text: PropTypes.string,
   }),
   itemBrand: PropTypes.string,
+  showPlaceHolder: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

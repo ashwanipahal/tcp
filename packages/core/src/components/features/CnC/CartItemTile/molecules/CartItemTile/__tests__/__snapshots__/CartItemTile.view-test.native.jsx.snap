@@ -340,7 +340,40 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "colorProductId": undefined,
+                "isBopisCtaEnabled": true,
+                "isBossCtaEnabled": false,
+                "isItemShipToHome": true,
+                "openSkuSelectionForm": false,
+                "orderInfo": Object {
+                  "Fit": "regular",
+                  "Quantity": "1",
+                  "Size": "1",
+                  "color": undefined,
+                  "itemBrand": "TCP",
+                  "orderId": 123,
+                  "orderItemId": undefined,
+                  "orderItemType": "BOPIS",
+                },
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -715,7 +748,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1121,7 +1157,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1491,7 +1530,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         }
       }
       noBopisMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1862,7 +1904,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -2233,7 +2278,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -2935,7 +2983,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -3637,7 +3688,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4008,7 +4062,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4414,7 +4471,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4820,7 +4880,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -5226,7 +5289,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -5957,6 +6023,43 @@ exports[`CartItemTile common component renders correctly 1`] = `
         textDecorationLine="underline"
       />
     </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      index={0}
+      labels={
+        Object {
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      openPickUpModal={[Function]}
+      openedTile={0}
+      orderId=""
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "color": "red",
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "myPlacePoints": 123,
+            "name": "Boys Basic Skinny Jeans",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "badge": "",
+          },
+          "productInfo": Object {
+            "productPartNumber": 123,
+            "skuId": "123",
+          },
+        }
+      }
+    />
   </Styled(View)>
 </Swipeable>
 `;
@@ -6328,6 +6431,42 @@ exports[`CartItemTile common component renders correctly with Save for later ena
         textDecorationLine="underline"
       />
     </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      index={0}
+      labels={
+        Object {
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      openPickUpModal={[Function]}
+      openedTile={0}
+      orderId=""
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "myPlacePoints": 123,
+            "name": "Boys Basic",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "availability": "OK",
+            "badge": "",
+          },
+          "productInfo": Object {
+            "skuId": "123",
+          },
+        }
+      }
+    />
   </Styled(View)>
 </Swipeable>
 `;

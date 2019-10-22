@@ -34,22 +34,22 @@ function createThemeTypography(theme = {}) {
     },
     h2 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs36', 'fs36', 'fs52'],
+      fontSize: ['fs32', 'fs32', 'fs48'],
     },
     h3 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs20', 'fs20', 'fs38'],
+      fontSize: ['fs20', 'fs20', 'fs36'],
       letterSpacing: ['ls167', 'ls167', 'ls271'],
     },
     h4 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs20', 'fs20', 'fs36'],
+      fontSize: ['fs20', 'fs20', 'fs32'],
       fontWeight: 'semibold',
       letterSpacing: ['ls222', 'ls222', 'ls257'],
     },
     h5 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs16', 'fs16', 'fs28'],
+      fontSize: ['fs14', 'fs16', 'fs20'],
       fontWeight: 'normal',
     },
     h6 = {

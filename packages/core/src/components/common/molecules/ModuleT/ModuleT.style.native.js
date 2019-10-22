@@ -53,7 +53,8 @@ export const ImageContainer = styled.View`
   flex-direction: row;
   width: 100%;
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MessageContainer = styled.View`
@@ -75,8 +76,7 @@ export const ButtonLinksContainer = styled.View`
 `;
 
 export const ImageWrapper = styled.View`
-  margin-left: 14px;
-  margin-right: 3px;
+  ${props => (props.tileIndex % 2 === 0 ? null : `margin-left: 19px`)};
 `;
 
 export default {

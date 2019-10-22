@@ -5,7 +5,7 @@ const CreditCardContainer = styled.View`
 `;
 
 const AddressWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
 `;
 
 const ActionsWrapper = styled.View`
@@ -17,14 +17,14 @@ const ActionsWrapper = styled.View`
 const AddAddressButton = {
   color: 'white',
   fontWeight: 'normal',
-  marginTop: 48,
+  marginTop: 30,
 };
 
 const CancelButton = {
   fontWeight: 'normal',
   color: 'black',
   border: 1,
-  marginTop: 15,
+  marginTop: 19,
 };
 
 const DefaultAddress = styled.View`
