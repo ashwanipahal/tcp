@@ -34,9 +34,13 @@ const LoyaltyBannerSection = props => {
   let remainingPlcc = '';
   let subHeadingLabel = '';
   let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
+  // isReviewPage = true;
+  // isConfirmationPage = false;
+  // isAddedToBagPage = false;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -111,7 +115,7 @@ const LoyaltyBannerSection = props => {
               isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
               isAddedToBagPage={isAddedToBagPage}
-              earnedReward
+              earnedRewardAvailable={earnedRewardAvailable}
             />
           </div>
         </BodyCopy>

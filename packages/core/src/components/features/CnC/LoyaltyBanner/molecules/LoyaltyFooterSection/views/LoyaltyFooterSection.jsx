@@ -85,14 +85,16 @@ const applyLearnLinks = labels => {
   );
 };
 
-const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedReward) => {
+const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedRewardAvailable) => {
   return (
     <>
       {isGuest && createLoginLinks(labels)}
       {!isGuest && !isPlcc && (
         <>
-          {!earnedReward && applyLearnLinks(labels)}
-          {earnedReward && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+          {!earnedRewardAvailable && applyLearnLinks(labels)}
+          {earnedRewardAvailable && (
+            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
+          )}
         </>
       )}
       {!isGuest && isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
@@ -105,7 +107,7 @@ const renderConfirmationAndBagLinks = (
   isConfirmationPage,
   isPlcc,
   isGuest,
-  earnedReward
+  earnedRewardAvailable
 ) => {
   return (
     <>
@@ -115,7 +117,7 @@ const renderConfirmationAndBagLinks = (
           {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
         </>
       )}
-      {isConfirmationPage && isGuest && earnedReward && createLoginLinks(labels)}
+      {isConfirmationPage && isGuest && earnedRewardAvailable && createLoginLinks(labels)}
     </>
   );
 };
@@ -158,12 +160,12 @@ const LoyaltyFooterSection = props => {
     isReviewPage,
     isConfirmationPage,
     isAddedToBagPage,
-    earnedReward,
+    earnedRewardAvailable,
   } = props;
   return (
     <div className={`${className} footerWrapper`}>
       {isProductDetailView && detailViewFooter()}
-      {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, earnedReward)}
+      {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, earnedRewardAvailable)}
       {!isProductDetailView && !isAddedToBagPage && (
         <>
           {!isReviewPage &&
@@ -172,7 +174,7 @@ const LoyaltyFooterSection = props => {
               isConfirmationPage,
               isPlcc,
               isGuest,
-              earnedReward
+              earnedRewardAvailable
             )}
           {isReviewPage && isPlcc && (
             <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
@@ -191,7 +193,7 @@ LoyaltyFooterSection.propTypes = {
   isReviewPage: PropTypes.bool,
   isProductDetailView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
-  earnedReward: PropTypes.bool,
+  earnedRewardAvailable: PropTypes.bool,
   isAddedToBagPage: PropTypes.bool,
 };
 
@@ -202,7 +204,7 @@ LoyaltyFooterSection.defaultProps = {
   isReviewPage: false,
   isProductDetailView: false,
   isConfirmationPage: false,
-  earnedReward: false,
+  earnedRewardAvailable: false,
   isAddedToBagPage: false,
 };
 

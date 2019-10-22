@@ -1,40 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
-import {
-  LineStyle,
-  FooterLinksSection,
-  LearnMoreWrapper,
-} from '../styles/LoyaltyBannerSection.style.native';
+import LineStyle from '../styles/LoyaltyBannerSection.style.native';
 import mobileHashValues from '../../../util/utilityNative';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
-import Anchor from '../../../../../../common/atoms/Anchor';
-// import LoyaltyFooterSection from '../../LoyaltyFooterSection';
-
-const renderApplyNowLink = labels => {
-  return (
-    <Anchor
-      className="applyNow"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.applyNow}
-      underline
-    />
-  );
-};
-
-const renderLearnMoreLink = labels => {
-  return (
-    <Anchor
-      className="learnMore"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.learnMore}
-      underline
-    />
-  );
-};
+import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
 const LoyaltyBannerSection = props => {
   const {
@@ -56,6 +27,7 @@ const LoyaltyBannerSection = props => {
   let remainingPlcc = '';
   let subHeadingLabel = '';
   let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
@@ -115,11 +87,7 @@ const LoyaltyBannerSection = props => {
         isAddedToBagPage={isAddedToBagPage}
         isProductDetailView={isProductDetailView}
       />
-      <FooterLinksSection>
-        {!isPlcc && renderApplyNowLink(labels)}
-        <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
-      </FooterLinksSection>
-      {/* <View className="footer">
+      <View className="footer">
         <LoyaltyFooterSection
           labels={labels}
           isPlcc={isPlcc}
@@ -128,9 +96,9 @@ const LoyaltyBannerSection = props => {
           isConfirmationPage={isConfirmationPage}
           isGuest={isGuest}
           isAddedToBagPage={isAddedToBagPage}
-          earnedReward
+          earnedRewardAvailable={earnedRewardAvailable}
         />
-      </View> */}
+      </View>
       <LineStyle isPlcc={isPlcc} />
     </View>
   );
