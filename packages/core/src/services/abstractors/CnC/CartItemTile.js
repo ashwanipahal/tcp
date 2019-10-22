@@ -910,13 +910,9 @@ export const getUnqualifiedItems = () => {
       if (responseContainsErrors(res)) {
         throw new ServiceResponseError(res);
       }
-      let {
+      const {
         body: { orderItemList = [] },
       } = res;
-      orderItemList = [
-        { orderItemId: '8067246021', isArticleOOSUS: true },
-        { orderItemId: '8067246020', isArticleOOSUS: true },
-      ];
       return orderItemList.map(({ orderItemId, isArticleOOSCA, isArticleOOSUS }) => ({
         orderItemId: orderItemId.toString(),
         isOOS: isCanadaSite ? isArticleOOSCA : isArticleOOSUS,
