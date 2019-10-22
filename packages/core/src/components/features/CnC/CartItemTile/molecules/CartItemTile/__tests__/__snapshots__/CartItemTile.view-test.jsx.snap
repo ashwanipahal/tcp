@@ -6720,7 +6720,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     right: ",
           [Function],
           ";
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -6925,8 +6925,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
@@ -7197,7 +7197,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     right: ",
           [Function],
           ";
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -7402,8 +7402,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
