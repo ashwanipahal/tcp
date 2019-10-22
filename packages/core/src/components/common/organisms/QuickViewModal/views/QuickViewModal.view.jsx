@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLocator, isCanada, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
-import styles, { customHeaderStyle } from '../styles/QuickViewModal.style';
+import styles, {
+  customHeaderStyle,
+  quickViewColorSwatchesCss,
+} from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
@@ -115,6 +118,7 @@ class QuickViewModal extends React.Component {
           onCloseClick={this.onCloseClick}
           isMultiItemQVModal={isMultiItemQVModal}
           formRef={formRef}
+          quickViewColorSwatchesCss={quickViewColorSwatchesCss}
           {...otherProps}
         />
       );
