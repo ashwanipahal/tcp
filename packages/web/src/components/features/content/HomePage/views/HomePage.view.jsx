@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import { isTCP } from '@tcp/core/src/utils';
@@ -27,10 +26,7 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
   }),
-  render: ({ slots, seoData }, modules) => {
-    // TODO: Remove logger and use to render
-    logger.debug('SEOData:', JSON.stringify(seoData));
-
+  render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       isTCP() ? <ModuleT {...mock.moduleT.composites} /> : null,

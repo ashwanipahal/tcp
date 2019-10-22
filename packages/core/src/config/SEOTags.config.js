@@ -11,6 +11,17 @@ const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
 const TCP_LABEL = "The Children's Place";
 const GYM_LABEL = 'Gymboree';
+const BRAND_CONFIG = {
+  TCP: 'childrensplace.com',
+  GYM: 'gymboree.com',
+};
+
+const canonicalUrlConfig = id => ({
+  'en-us': `https://www.${BRAND_CONFIG[id]}/us/home`,
+  'es-us': `https://es.${BRAND_CONFIG[id]}/us/home`,
+  'en-ca': `https://www.${BRAND_CONFIG[id]}/ca/home`,
+  'fr-ca': `https://fr.${BRAND_CONFIG[id]}/ca/home`,
+});
 
 const SEO_CONFIG = {
   canonical: 'www.thechildrensplace.com',
@@ -207,10 +218,54 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
   });
 };
 
-const getHomeSEOTags = () => {
-  return {
-    ...getDefaultSEOTags(), // call getMetaSEOTags() with values
+const getHomeSEOTags = (store, router, categoryKey) => {
+  const brandDetails = getBrandDetails();
+  const { brandId } = getAPIConfig();
+  const brand = brandId.toUpperCase();
+  const { SEOData = {} } = store.getState();
+  const category = SEOData[categoryKey] || {};
+  const { pageTitle = '', description = '', canonical = '' } = category || {};
+
+  const openGraph = {
+    url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
+    title: pageTitle,
+    description,
   };
+  const canonicalConfig = canonicalUrlConfig(brand);
+  const hrefLangs = [
+    {
+      id: 'en-us',
+      canonicalUrl: canonicalConfig['en-us'],
+    },
+    {
+      id: 'es-us',
+      canonicalUrl: canonicalConfig['es-us'],
+    },
+    {
+      id: 'en-ca',
+      canonicalUrl: canonicalConfig['en-ca'],
+    },
+    {
+      id: 'fr-ca',
+      canonicalUrl: canonicalConfig['fr-ca'],
+    },
+  ];
+
+  const twitter = {
+    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
+    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
+  };
+
+  return getMetaSEOTags({
+    title: pageTitle,
+    description,
+    canonical,
+    twitter,
+    openGraph,
+    hrefLangs,
+    keywords: SEO_CONFIG.keywords.content,
+    robots: SEO_CONFIG.robots.content,
+  });
 };
 
 function getPlpSEOTags(store, router, categoryKey) {
@@ -338,7 +393,8 @@ export const getPdpSEOTags = (store, router, categoryKey) => {
 export const deriveSEOTags = (pageId, store, router) => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
   if (pageId === PAGES.HOME_PAGE) {
-    return getHomeSEOTags(); // Just a sample - any store specific data should be set in this
+    const categoryKey = router.asPath;
+    return getHomeSEOTags(store, router, categoryKey);
   }
   if (pageId === PAGES.PRODUCT_LISTING_PAGE) {
     const categoryKey = router.asPath;
