@@ -38,6 +38,7 @@ class ProductsGrid extends React.Component {
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
     currencyExchange: PropTypes.string,
+    // showQuickViewForProductId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -144,6 +145,7 @@ class ProductsGrid extends React.Component {
       productTileVariation,
       currency,
       currencyExchange,
+      // showQuickViewForProductId,
       ...otherProps
     } = this.props;
 
@@ -175,6 +177,7 @@ class ProductsGrid extends React.Component {
                         productTileVariation={productTileVariation}
                         currency={currency}
                         currencyExchange={currencyExchange}
+                        // showQuickViewForProductId={showQuickViewForProductId}
                         {...otherProps}
                       />
                     );
