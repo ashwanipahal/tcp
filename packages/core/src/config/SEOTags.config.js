@@ -225,7 +225,7 @@ const getHomeSEOTags = (store, router, categoryKey) => {
   const {
     SEOData: { home },
   } = store.getState();
-  const { pageTitle = '', description = '', canonical = '' } = home || {};
+  const { pageTitle = '', description = '', canonical = '', keywords } = home || {};
 
   const openGraph = {
     url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
@@ -264,7 +264,7 @@ const getHomeSEOTags = (store, router, categoryKey) => {
     twitter,
     openGraph,
     hrefLangs,
-    keywords: SEO_CONFIG.keywords.content,
+    keywords,
     robots: SEO_CONFIG.robots.content,
   });
 };

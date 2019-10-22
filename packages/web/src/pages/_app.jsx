@@ -52,15 +52,15 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    let compProps;
+    let globalProps;
     try {
-      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+      globalProps = await TCPWebApp.loadGlobalData(Component, ctx, {});
     } catch (e) {
-      compProps = {};
+      globalProps = {};
     }
-    const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
+    const compProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
-      pageProps,
+      compProps,
     };
   }
 
@@ -171,9 +171,9 @@ class TCPWebApp extends App {
         payload = {
           ...Component.pageInfo,
           ...payload,
+          seoId: Component.seoId,
         };
       }
-
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
