@@ -40,15 +40,15 @@ exports[`Country Selector Component renders correctly 1`] = `
       Array [
         Object {
           "displayName": "Dollars",
+          "exchangevalue": "1.0",
           "id": "USD",
           "merchantMargin": "1.0",
-          "value": "1.0",
         },
         Object {
           "displayName": "Canada Dollar",
+          "exchangevalue": "1.0",
           "id": "CAD",
           "merchantMargin": "1.0",
-          "value": "1.0",
         },
       ]
     }
@@ -79,14 +79,14 @@ exports[`Country Selector Component renders correctly 1`] = `
       }
     }
     languages={
-      Immutable.List [
-        Immutable.Map {
-          "id": "en",
+      Array [
+        Object {
           "displayName": "English",
+          "id": "en",
         },
-        Immutable.Map {
-          "id": "es",
+        Object {
           "displayName": "Spanish",
+          "id": "es",
         },
       ]
     }

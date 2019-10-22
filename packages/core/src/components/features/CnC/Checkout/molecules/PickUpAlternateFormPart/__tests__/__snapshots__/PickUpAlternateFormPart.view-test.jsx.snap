@@ -366,6 +366,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
   <Styled(ContactFormFields)
     className="pick-up-alternate-input"
     isCondensed={false}
+    isExpressCheckout={false}
     labels={Object {}}
     showEmailAddress={true}
   />

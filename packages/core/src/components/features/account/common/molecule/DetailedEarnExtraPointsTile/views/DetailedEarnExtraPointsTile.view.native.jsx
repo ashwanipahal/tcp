@@ -42,9 +42,6 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
     shadowOpacity: 0.2,
     shadowRadius: 10,
     elevation: 5,
-    marginLeft: 5,
-    marginRight: 3,
-    marginTop: 5,
   };
 
   render() {
@@ -59,13 +56,13 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
           }
         >
           <EarnExtraPointsTileImage viewAll>
-            <ImageSize source={sourceMap[waysToEarnRow.activityCode]} />
+            <ImageSize resizeMode="contain" source={sourceMap[waysToEarnRow.activityCode]} />
           </EarnExtraPointsTileImage>
-          <ViewWithSpacing spacingStyles="margin-top-LRG margin-bottom-XL">
+          <ViewWithSpacing spacingStyles="margin-top-LRG">
             <BodyCopy
               component="p"
               fontSize="fs16"
-              fontWeight="black"
+              fontWeight="extrabold"
               color="gray.900"
               fontFamily="secondary"
               textAlign="center"

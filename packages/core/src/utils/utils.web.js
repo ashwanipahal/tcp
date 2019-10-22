@@ -37,7 +37,7 @@ export const importGraphQLClientDynamically = module => {
 
 export const getUrlParameter = name => {
   const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
+  const regex = new RegExp(`[\\?&]${replacedName}=([^&#]*)`);
   const results = regex.exec(window.location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
@@ -234,7 +234,7 @@ export const getViewportInfo = () => {
 export const enableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'auto';
+    body.classList.remove('disableBodyScroll');
   }
 };
 
@@ -244,7 +244,7 @@ export const enableBodyScroll = () => {
 export const disableBodyScroll = () => {
   if (typeof window !== 'undefined') {
     const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'hidden';
+    body.classList.add('disableBodyScroll');
   }
 };
 

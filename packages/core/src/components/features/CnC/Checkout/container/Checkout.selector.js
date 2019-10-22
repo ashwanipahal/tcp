@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { List } from 'immutable';
 import {
   CHECKOUT_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
@@ -558,6 +559,11 @@ const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
+export const getAlternateFormFieldsExpress = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'pickUpAlternateExpress');
+};
+
 export const isPickupAlt = createSelector(
   getPickupAltValues,
   pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
@@ -701,6 +707,8 @@ const isVenmoShippingBannerDisplayed = () => {
 const isVenmoPaymentSaveSelected = state =>
   state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
 
+const getCurrentCheckoutStage = state => state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'stage']);
+
 const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
@@ -827,7 +835,7 @@ const getIsVenmoEnabled = state => {
   return (
     getIsMobile() &&
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'VENMO_ENABLED']) === 'TRUE'
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.VENMO_ENABLED === 'TRUE'
   );
 };
 
@@ -902,6 +910,23 @@ export const getVenmoUserName = () => {
   const { details: { username } = {} } = venmoData || {};
   return username;
 };
+
+const getShippingAddressList = createSelector(
+  [getAddressListState, getCurrentSiteId],
+  (userAddresses, country) => {
+    let addresses = List();
+    if (userAddresses && userAddresses.size > 0) {
+      addresses = userAddresses.filter(
+        address =>
+          address.country === country.toUpperCase() && address.xcont_isShippingAddress === 'true'
+      );
+      if (addresses.size) {
+        return addresses;
+      }
+    }
+    return addresses;
+  }
+);
 
 export default {
   getRecalcOrderPointsInterval,
@@ -983,5 +1008,7 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
+  getShippingAddressList,
 };

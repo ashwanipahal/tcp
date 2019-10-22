@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { getDateInformation } from '@tcp/core/src//utils/badge.util';
+import { getDateInformation } from '@tcp/core/src/utils/badge.util';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -37,7 +37,7 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
             fontFamily="primary"
             fontSize="fs14"
             fontWeight="semibold"
-            spacingStyles="margin-top-XS margin-bottom-XS"
+            spacingStyles="margin-bottom-XS"
             text={getLabelValue(ordersLabels, 'lbl_orders_expectedPickup')}
           />
           <BodyCopyWithSpacing
@@ -96,7 +96,7 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
             <BodyCopyWithSpacing
               fontFamily="primary"
               fontSize="fs14"
-              spacingStyles="margin-top-XXS margin-bottom-XS"
+              spacingStyles="margin-bottom-XS"
               text={`${orderDate.format('LL')} ${getLabelValue(
                 ordersLabels,
                 'lbl_orderDetails_at'
@@ -109,7 +109,7 @@ export const OrderBasicDetails = ({ orderDetailsData, ordersLabels }) => {
                 fontFamily="primary"
                 fontSize="fs14"
                 fontWeight="semibold"
-                spacingStyles="margin-top-XXS margin-bottom-XS"
+                spacingStyles="margin-bottom-XS"
                 text={getLabelValue(ordersLabels, 'lbl_orders_expirationDate')}
               />
               <BodyCopyWithSpacing

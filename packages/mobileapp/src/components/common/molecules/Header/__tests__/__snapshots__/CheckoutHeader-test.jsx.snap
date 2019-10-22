@@ -29,11 +29,18 @@ exports[`CheckoutHeader Component  Checkout Header should render correctly 1`] =
       </Styled(TouchableOpacity)>
     </Styled(View)>
     <Styled(View)>
-      <Text
-        className="product-name"
-      >
-        CHECKOUT
-      </Text>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        textAlign="center"
+        textDecoration={null}
+      />
     </Styled(View)>
   </Styled(View)>
 </Styled(SafeAreaView)>

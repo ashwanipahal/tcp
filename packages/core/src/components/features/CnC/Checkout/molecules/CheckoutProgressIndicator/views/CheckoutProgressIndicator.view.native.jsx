@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { View } from 'react-native';
 import { getLocator } from '@tcp/core/src/utils';
-import CheckoutConstants from '../../../Checkout.constants';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 import {
@@ -21,9 +20,9 @@ import {
 const completedStage = require('../../../../../../../assets/checkout-tick.png');
 
 export class CheckoutProgressIndicator extends React.PureComponent {
-  routeToPickup = () => {
-    const { navigation } = this.props;
-    navigation.navigate(CheckoutConstants.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP);
+  routeToStage = stage => {
+    const { setCheckoutStage } = this.props;
+    setCheckoutStage(stage);
   };
 
   render() {
@@ -51,8 +50,8 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                           fontSizeVariation="large"
                           fontFamily="secondary"
                           anchorVariation="primary"
-                          fontWeightVariation="active"
-                          onPress={this.routeToPickup}
+                          fontWeightVariation="extrabold"
+                          onPress={() => this.routeToStage(stage)}
                           dataLocator=""
                           text={stage}
                         />
@@ -92,8 +91,8 @@ export class CheckoutProgressIndicator extends React.PureComponent {
                     fontSizeVariation="large"
                     fontFamily="secondary"
                     anchorVariation="primary"
-                    fontWeightVariation="active"
-                    onPress={this.routeToPickup}
+                    fontWeightVariation="extrabold"
+                    onPress={() => this.routeToStage(stage)}
                     dataLocator=""
                     text={stage}
                   />
@@ -110,6 +109,7 @@ CheckoutProgressIndicator.propTypes = {
   activeStage: PropTypes.string.isRequired,
   navigation: PropTypes.shape({}),
   availableStages: PropTypes.shape([]).isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 CheckoutProgressIndicator.defaultProps = {
   navigation: null,

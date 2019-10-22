@@ -189,13 +189,21 @@ class ProductListingFiltersForm extends React.Component {
    * @param void
    */
   handleRemoveAllFilters() {
-    const { change, initialValues } = this.props;
+    const { change, initialValues, formValues } = this.props;
     // eslint-disable-next-line no-restricted-syntax
     for (const key in initialValues) {
       if (key !== 'sort') {
         change(key, []);
       }
     }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in formValues) {
+      if (key !== 'sort') {
+        change(key, []);
+      }
+    }
+
     this.handleSubmitOnChange();
     return true;
   }
@@ -340,6 +348,7 @@ class ProductListingFiltersForm extends React.Component {
                   isMobile={false}
                   defaultPlaceholder={defaultPlaceholder}
                   sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
+                  labels={labels}
                   onChange={
                     !isFavoriteView
                       ? handleSubmit(this.handleSubmitOnChange)
@@ -474,6 +483,7 @@ ProductListingFiltersForm.propTypes = {
   favoriteSortingParams: PropTypes.shape({}),
   onSortSelection: PropTypes.func,
   defaultPlaceholder: PropTypes.string,
+  formValues: PropTypes.shape({}),
 };
 
 ProductListingFiltersForm.defaultProps = {
@@ -494,6 +504,7 @@ ProductListingFiltersForm.defaultProps = {
   defaultPlaceholder: '',
   onSortSelection: () => null,
   favoriteSortingParams: null,
+  formValues: {},
 };
 export default reduxForm({
   form: 'filter-form', // a unique identifier for this form

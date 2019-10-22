@@ -1,6 +1,7 @@
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { SESSIONCONFIG_REDUCER_KEY } from '../../constants/reducer.constants';
 import { defaultCountries } from '../../constants/site.constants';
-import { getBrand } from '../../utils';
+import { getBrand, parseBoolean } from '../../utils';
 
 const USA_VALUES = {
   currency: 'USD',
@@ -16,10 +17,7 @@ export /**
  * @description this selector gives current country selected.
  */
 const getCurrentCountry = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
 };
 
 export /**
@@ -36,45 +34,63 @@ const getIsInternationalShipping = state => {
 };
 
 export const getIsRadialInventoryEnabled = state => {
-  return !!(
+  return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_RADIAL_BOSS_ENABLED'])
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_RADIAL_BOSS_ENABLED
   );
 };
 
+const getCrossBrandFlags = (state, key) => {
+  const brandFlag = parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[key]
+  );
+  const otherBrandFlag = parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].otherBrandSiteDetails[key]
+  );
+
+  return { brandFlag, otherBrandFlag };
+};
+
+export const getIsBossAppEnabled = state => {
+  const brand = getBrand();
+  const { brandFlag, otherBrandFlag } = getCrossBrandFlags(state, 'BOSS_ENABLED_APP');
+  if (brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
+    return { isBossEnabledAppTCP: brandFlag, isBossEnabledAppGYM: otherBrandFlag };
+  }
+
+  return { isBossEnabledAppTCP: otherBrandFlag, isBossEnabledAppGYM: brandFlag };
+};
+
 export const getIsBossEnabled = (state, brand = getBrand()) => {
+  const isBOSSEnabled = `isBOSSEnabled_${brand.toUpperCase()}`;
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOSSEnabled_${brand.toUpperCase()}`])
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
   );
 };
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
+  const isBOPISEnabled = `isBOPISEnabled_${brand.toUpperCase()}`;
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', `isBOPISEnabled_${brand.toUpperCase()}`])
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOPISEnabled]
   );
 };
 
 export const getIsBossClearanceProductEnabled = state => {
-  return !!(
+  return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOSS_ENABLED_CLEARANCE_PRODUCTS'])
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BOSS_ENABLED_CLEARANCE_PRODUCTS
   );
 };
 
 export const getIsBopisClearanceProductEnabled = state => {
-  return !!(
+  return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'BOPIS_ENABLED_CLEARANCE_PRODUCTS'])
+      state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BOPIS_ENABLED_CLEARANCE_PRODUCTS
   );
 };
 
 export const getCurrentCurrency = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'currency'])
-  );
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.currency;
 };
 
 export const getCurrentCurrencySymbol = state => {

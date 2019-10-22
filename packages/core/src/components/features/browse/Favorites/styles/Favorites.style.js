@@ -35,17 +35,23 @@ export default css`
 
   .brand-options {
     display: inline-block;
-    min-width: 150px;
+    min-width: 152px;
+    padding-right: 16px;
 
     &:nth-of-type(odd) {
       float: left;
+    }
+
+    &.is-label {
+      min-width: auto;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
   }
 
   .brand-option-list {
     display: none;
 
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
+    @media ${props => props.theme.mediaQuery.medium} {
       display: block;
       margin-top: 0;
     }

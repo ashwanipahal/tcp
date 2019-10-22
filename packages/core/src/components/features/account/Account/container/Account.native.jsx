@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
 import {
@@ -28,10 +30,11 @@ const navConfigMap = {
   wallet: 'myWalletPageMobile',
   'extra-points': 'earnExtraPointsPageMobile',
   'points-history': 'pointHistoryPageMobile',
-  'my-preference': 'myPreferencePageMobile',
+  preferernces: 'myPreferencePageMobile',
   'points-claim': 'PointsClaimPageMobile',
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',
+  favorites: 'myFavoritePageMobile',
 };
 
 export class Account extends React.PureComponent {
@@ -42,6 +45,7 @@ export class Account extends React.PureComponent {
     closeOverlay: PropTypes.func,
     getAccountNavigationAction: PropTypes.func,
     navigation: PropTypes.shape({}),
+    fetchLabels: PropTypes.func,
   };
 
   static defaultProps = {
@@ -51,6 +55,7 @@ export class Account extends React.PureComponent {
     closeOverlay: () => {},
     getAccountNavigationAction: () => {},
     navigation: {},
+    fetchLabels: () => {},
   };
 
   constructor(props) {
@@ -82,8 +87,9 @@ export class Account extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { getAccountNavigationAction } = this.props;
+    const { getAccountNavigationAction, fetchLabels } = this.props;
     getAccountNavigationAction();
+    fetchLabels({ category: LABELS.account });
   }
 
   componentDidUpdate(prevProps) {
@@ -111,6 +117,7 @@ export class Account extends React.PureComponent {
       myOrdersPageMobile: 'myOrdersPageMobile',
       addressBookMobile: 'addressBookMobile',
       orderDetailsPageMobile: 'orderDetailsPageMobile',
+      myFavoritePageMobile: 'myFavoritePageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];
@@ -173,6 +180,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
+    },
+    fetchLabels: payload => {
+      dispatch(loadComponentLabelsData(payload));
     },
   };
 };

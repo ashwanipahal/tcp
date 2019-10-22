@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 const SearchContainer = styled.View`
-  height: 50px;
   flex-direction: row;
-  align-items: center;
+  height: 50px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
@@ -41,6 +40,7 @@ const CloseButton = styled.TouchableOpacity`
   height: 25px;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 `;
 
 export default SearchContainer;
