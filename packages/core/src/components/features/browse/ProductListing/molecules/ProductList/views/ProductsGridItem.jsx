@@ -2,7 +2,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -265,6 +265,21 @@ class ProductsGridItem extends React.PureComponent {
     });
   };
 
+  handleViewBundleClick = () => {
+    const {
+      isBundleProductABTest,
+      item: {
+        productInfo: { bundleProduct, pdpUrl },
+      },
+    } = this.props;
+    const isBundleProduct = !isBundleProductABTest && bundleProduct;
+    if (isBundleProduct && pdpUrl) {
+      routerPush(pdpUrl.replace('b/', 'b?bid='), pdpUrl);
+    } else {
+      this.handleQuickViewOpenClick();
+    }
+  };
+
   renderMoveItem = itemId => {
     const {
       wishlistsSummaries,
@@ -281,13 +296,13 @@ class ProductsGridItem extends React.PureComponent {
       wishlistsSummaries && (
         <div className="move-item-container">
           <Button className="move-item-button" onClick={this.openMoveItem}>
-            {labels.moveToAnotherList}
+            {labels.lbl_fav_moveToAnotherList}
             <Image
               alt="accordian button"
               className="accordian-item-arrow icon-small"
               src={accordianIcon}
               data-locator="accordian-icon"
-              height="8px"
+              height="6px"
             />
           </Button>
           {isMoveItemOpen && (
@@ -310,10 +325,16 @@ class ProductsGridItem extends React.PureComponent {
   renderSubmitButton = itemNotAvailable => {
     const {
       labels,
-      item: { itemInfo: { itemId } = {} },
+      item: {
+        itemInfo: { itemId } = {},
+        productInfo: { bundleProduct },
+      },
       removeFavItem,
       isFavoriteView,
+      isShowQuickView,
     } = this.props;
+
+    const isBundleProduct = bundleProduct;
     return itemNotAvailable ? (
       <Button
         className="remove-favorite"
@@ -322,7 +343,7 @@ class ProductsGridItem extends React.PureComponent {
         dataLocator={getLocator('remove_favorite_Button')}
         onClick={() => removeFavItem({ itemId })}
       >
-        {labels.removeFavorite}
+        {labels.lbl_fav_removeFavorite}
       </Button>
     ) : (
       <Button
@@ -330,10 +351,14 @@ class ProductsGridItem extends React.PureComponent {
         fullWidth
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
-        onClick={this.handleQuickViewOpenClick}
+        onClick={
+          isShowQuickView && !isBundleProduct
+            ? this.handleQuickViewOpenClick
+            : this.handleViewBundleClick
+        }
         fill={isFavoriteView ? 'BLUE' : ''}
       >
-        {labels.addToBag}
+        {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
       </Button>
     );
   };
@@ -475,7 +500,7 @@ class ProductsGridItem extends React.PureComponent {
             isPLPredesign={isPLPredesign}
             keepAlive={isKeepAlive}
             isSoldOut={itemNotAvailable}
-            soldOutLabel={labels.soldOut}
+            soldOutLabel={labels.lbl_fav_soldOut}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
@@ -491,6 +516,12 @@ class ProductsGridItem extends React.PureComponent {
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
                 >
+                  {this.getProductPriceSection(
+                    listPriceForColor,
+                    offerPriceForColor,
+                    badge3,
+                    isShowBadges
+                  )}
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
               </Col>
@@ -502,7 +533,6 @@ class ProductsGridItem extends React.PureComponent {
               )}
             </Row>
           }
-          {this.getProductPriceSection(listPriceForColor, offerPriceForColor, badge3, isShowBadges)}
 
           <ProductTitle
             name={name}

@@ -164,7 +164,10 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
       const removeProducts = atbSuccessProducts.map(product => product.orderItemId);
       yield call(removeItem, removeProducts);
     }
-    const errMsg = error && error.errorResponse && error.errorResponse.errorMessage;
+    const errorMapping = yield select(BagPageSelectors.getErrorMapping);
+    const errMsg =
+      (error && error.errorResponse && error.errorResponse.errorMessage) ||
+      (errorMapping && errorMapping.DEFAULT);
     yield put(AddToCartMultipleItemError({ errMsg, errorProductId }));
   }
 }

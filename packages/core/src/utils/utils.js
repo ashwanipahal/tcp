@@ -856,6 +856,11 @@ export const getStoreHours = (
 
  * @returns {object} label and message for order group
  */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
 export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
   let label;
   let message;
@@ -866,7 +871,7 @@ export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder)
     case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
       label = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
-        : getLabelValue(ordersLabels, 'lbl_orders_statusOrderReceived');
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
       message = isBopisOrder
         ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
         : getLabelValue(ordersLabels, 'lbl_orders_processing');
@@ -965,6 +970,26 @@ export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
+  }
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1000,6 +1025,7 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  readCookieMobileApp,
   changeImageURLToDOM,
   insertIntoString,
 };
