@@ -84,7 +84,7 @@ exports[`Order Items component should renders correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text="VIEW FULL ORDER DETAILS"
+      text="lbl_orders_fullOrderDetail"
       theme={Object {}}
       url=""
     />
