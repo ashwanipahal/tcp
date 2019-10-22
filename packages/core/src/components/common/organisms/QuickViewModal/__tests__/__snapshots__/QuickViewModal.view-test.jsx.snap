@@ -509,9 +509,6 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     }
     quickViewLabels={Object {}}
   />
-  <Connect(LoyaltyBannerContainer)
-    pageCategory="isAddedToBagPage"
-  />
   <Connect(Styled(FulfillmentSection))
     btnClassName="added-to-bag"
     buttonLabel="Pickup In Store"
@@ -1219,9 +1216,6 @@ exports[`QuickViewModal component should renders correctly 2`] = `
       ]
     }
     quickViewLabels={Object {}}
-  />
-  <Connect(LoyaltyBannerContainer)
-    pageCategory="isAddedToBagPage"
   />
   <QuickViewAddToBagButton
     onClickActn={[Function]}
