@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
   ParentContainerStyle,
   HeadingTextStyle,
   WrapperStyle,
-  ImgWrapper,
-  ImageStyle,
   EmptyCCLabelStyle,
   DescriptionEmptyCCStyle,
   ButtonWrapperStyle,
@@ -40,9 +39,7 @@ const Cards = props => {
       {cardList.size === 0 && (
         <React.Fragment>
           <WrapperStyle>
-            <ImgWrapper>
-              <ImageStyle source={cardImage} />
-            </ImgWrapper>
+            <ImageComp source={cardImage} height={46} width={69} resizeMode="contain" />
             <EmptyCCLabelStyle>{emptyLabel}</EmptyCCLabelStyle>
           </WrapperStyle>
           <DescriptionEmptyCCStyle>{description}</DescriptionEmptyCCStyle>

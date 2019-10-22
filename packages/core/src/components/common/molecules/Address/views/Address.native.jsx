@@ -43,7 +43,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
       {address.addressLine1 ? (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.addressLine1}
           color="gray.900"
@@ -53,7 +53,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
       {address.addressLine2 ? (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.addressLine2}
           color="gray.900"
@@ -70,7 +70,7 @@ const getAddessLines = ({ address, customStyle, fontSize }) => {
     .map(addressLine => (
       <BodyCopy
         fontSize={fontSize}
-        mobilefontFamily={['secondary']}
+        fontFamily="secondary"
         fontWeight="regular"
         text={addressLine}
         color="gray.900"
@@ -83,8 +83,8 @@ const getNameFromAddress = (address, customStyle, showDefaultText, regularName) 
   const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
   return (
     <BodyCopy
-      fontSize="fs16"
-      mobilefontFamily={['secondary']}
+      fontSize="fs14"
+      fontFamily="secondary"
       fontWeight={regularName ? 'regular' : 'semibold'}
       text={name}
       color="gray.900"
@@ -119,7 +119,7 @@ const Address = ({
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle, fontSize })}
       <BodyCopy
         fontSize={fontSize}
-        mobilefontFamily={['secondary']}
+        fontFamily="secondary"
         fontWeight="regular"
         text={`${address.city ? `${address.city}, ` : ''}${
           address.state ? `${address.state} ` : ''
@@ -127,20 +127,20 @@ const Address = ({
         color="gray.900"
         {...customStyle}
       />
-      {showCountry && address.country && (
+      {showCountry && !!address.country && (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.country}
           color="gray.900"
           {...customStyle}
         />
       )}
-      {showPhone && address.phone1 && (
+      {showPhone && !!address.phone1 && (
         <BodyCopy
           fontSize={fontSize}
-          mobilefontFamily={['secondary']}
+          fontFamily="secondary"
           fontWeight="regular"
           text={address.phone1}
           color="gray.900"
