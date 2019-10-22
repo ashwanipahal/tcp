@@ -54,7 +54,7 @@ const LoyaltyPromoBanner = props => {
 
   return !useLoyaltyBannerCloseStatus() ? (
     <div className={`${className} content-wrapper`}>
-      <Row fullBleed={{ small: true, medium: true, large: false }}>
+      <Row>
         <Col
           colSize={{
             small: 6,
