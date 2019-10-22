@@ -17,7 +17,13 @@ const RibbonComponent = props => {
     <RibbonWrapper>
       {ribbonBanner && (
         <RibbonContainer width={width} height={height} imgPath={getImgPath(ribbonBanner)}>
-          <PromoBanner promoBanner={ribbonBanner} data-locator={getLocator(locator)} />
+          <PromoBanner
+            promoBanner={ribbonBanner}
+            data-locator={getLocator(locator)}
+            color="white"
+            fontFamily="secondary"
+            fontWeight="black"
+          />
         </RibbonContainer>
       )}
     </RibbonWrapper>

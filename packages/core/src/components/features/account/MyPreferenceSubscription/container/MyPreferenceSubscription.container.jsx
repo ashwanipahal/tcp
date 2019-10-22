@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import MyPrefrence from '../views';
 import {
-  getSmsSubscriptionState,
+  getPlaceRewardsSms,
   getSmsPhone,
-  getGymSmsSubscriptionState,
+  getGymPlaceRewardsSms,
   getGymSmsPhone,
-} from './MyPreferenceSubscriptionText.selectors';
+} from './MyPreferenceSubscription.selectors';
 import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
@@ -36,11 +36,12 @@ export class MyPreferenceSubscription extends PureComponent {
    * can be passed in the component.
    * @param earnActivity - this is earnActivity data used for show Activity details
    */
-  handlePopupSubscribeModal = () =>
+  handlePopupSubscribeModal = () => {
     this.setState({
       modalVisible: false,
       activeModal: '',
     });
+  };
 
   getPreferenceInitialValues = props => {
     const { tcpWebSubscribe } = props;
@@ -255,10 +256,10 @@ export class MyPreferenceSubscription extends PureComponent {
 }
 
 export const mapStateToProps = state => ({
-  isTcpSubscribe: getSmsSubscriptionState(state),
+  isTcpSubscribe: getPlaceRewardsSms(state),
   phoneNumber: getUserPhoneNumber(state),
   smsPhone: getSmsPhone(state),
-  isGymSubscribe: getGymSmsSubscriptionState(state),
+  isGymSubscribe: getGymPlaceRewardsSms(state),
   gymSmsPhone: getGymSmsPhone(state),
 });
 

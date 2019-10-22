@@ -13,7 +13,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
 >
   <div>
     <Styled(BodyStyle)
-      className="couponModal_modalTitle"
+      className="couponModal_modalTitle text-break"
       data-locator="couponDetailModal_applied_NameLbl"
       fontWeight="black"
     >
@@ -42,7 +42,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           displayValue={true}
           font="Nunito"
           fontOptions=""
-          fontSize={20}
+          fontSize={24}
           format="CODE128"
           height={100}
           lineColor="#000000"

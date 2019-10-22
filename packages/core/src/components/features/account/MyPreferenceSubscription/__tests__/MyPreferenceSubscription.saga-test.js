@@ -1,4 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 import {
   getSubscribeStoreSaga,
   SubscribeStoreSaga,
@@ -74,7 +75,8 @@ describe('getSubscribeStoreSaga saga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = SubscribeStoreSaga();
       const takeLatestDescriptor = generator.next().value;
-      const expectedGet = takeLatest(constants.GET_SUBSCRIBE_STORE, getSubscribeStoreSaga);
+      const cachedMethod = validateReduxCache(getSubscribeStoreSaga);
+      const expectedGet = takeLatest(constants.GET_SUBSCRIBE_STORE, cachedMethod);
       const expectedSet = takeLatest(constants.SET_BRAND_SUBSCRIBE_DATA, setSubscribeStoreSaga);
       expect(takeLatestDescriptor.toString()).toMatch(expectedGet.toString());
       expect(takeLatestDescriptor.toString()).toMatch(expectedSet.toString());
