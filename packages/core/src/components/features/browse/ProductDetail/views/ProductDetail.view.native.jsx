@@ -112,7 +112,7 @@ class ProductDetailView extends React.PureComponent {
             onChangeColor={this.onChangeColor}
             handleSubmit={handleSubmit}
           />
-
+          {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <ProductDetailDescription
@@ -122,8 +122,11 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
-          <RelatedOutfits pdpLabels={pdpLabels} navigation={navigation} />
-          {this.renderFulfilmentSection()}
+          <RelatedOutfits
+            pdpLabels={pdpLabels}
+            navigation={navigation}
+            selectedColorProductId={selectedColorProductId}
+          />
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>

@@ -8,7 +8,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
+        "componentId": "sc-kAzzGY",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
+      "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -89,6 +89,7 @@ exports[`ModuleD component renders correctly 1`] = `
   />
   <Styled(Row)
     centered={true}
+    className="moduleD__image-container-section"
     fullBleed={false}
   >
     <Styled(Col)

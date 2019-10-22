@@ -4,7 +4,7 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { getLabelValue } from '../../../../../utils';
 
 export const getProductInfo = state => {
-  return state.QuickView.get('quickViewProduct');
+  return state.QuickView.get('quickViewProducts');
 };
 
 export const getProductInfoFromBag = state => {
@@ -12,7 +12,7 @@ export const getProductInfoFromBag = state => {
 };
 
 export const getGeneralProductId = state => {
-  return state.QuickView.getIn(['quickViewProduct', 'generalProductId']);
+  return state.QuickView.getIn(['quickViewProducts', 'generalProductId']);
 };
 
 export const getModalState = state => {
@@ -20,8 +20,11 @@ export const getModalState = state => {
 };
 
 export const getQuickViewFormValues = state => {
-  const generalProductId = getGeneralProductId(state);
-  return getAddedToBagFormValues(state, `${PRODUCT_ADD_TO_BAG}-${generalProductId}`);
+  const products = getProductInfo(state) || [];
+  return products.map(({ product }) => {
+    const { generalProductId } = product;
+    return getAddedToBagFormValues(state, `${PRODUCT_ADD_TO_BAG}-${generalProductId}`);
+  });
 };
 
 export const getQuickViewLabels = state => {

@@ -5,6 +5,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   colorList={Array []}
   currentProduct={null}
   fitList={Array []}
+  fromBagPage={true}
   handleFormSubmit={null}
   isErrorMessageDisplayed={false}
   plpLabels={Object {}}
@@ -17,59 +18,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   showAddToBagCTA={true}
   sizeList={Array []}
 >
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "componentWidth": 80,
-          "data": Array [],
-          "error": null,
-          "input": null,
-          "itemNameKey": "",
-          "itemValue": "",
-          "keyExtractor": null,
-          "locators": null,
-          "renderColorItem": false,
-          "selectColor": null,
-          "selectItem": null,
-          "selectedColor": "",
-          "selectedItem": null,
-          "separatorWidth": 8,
-        },
-        "attrs": Array [],
-        "displayName": "Styled(ProductVariantSelector)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
-    ",
-            "
-  margin-bottom: 33px;
-",
-            ";
-  ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
-      }
-    }
-    componentWidth={30}
-    data={Array []}
-    id="color"
-    locators={
-      Object {
-        "key": "pdp_color_label",
-        "value": "pdp_color_value",
-      }
-    }
-    name="color"
-    renderColorItem={true}
-    selectedColor={null}
-    separatorWidth={16}
-  />
   <Field
     component={
       Object {

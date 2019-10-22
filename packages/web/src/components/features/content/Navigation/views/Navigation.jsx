@@ -21,8 +21,24 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 /**
  * This function scrolls page to top on route change complete
  */
-const handleRouteComplete = () => {
-  window.scrollTo(0, 0);
+const handleRouteComplete = url => {
+  const params = new URL(document.location).searchParams;
+  const sortParam = params.has('sort');
+  const filterParam = params.has('categoryPath2_uFilter');
+
+  /**
+   * check if sort or filter param present in PLP page
+   */
+  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam);
+
+  /**
+   * check if sort or filter param present in Search page
+   */
+  const checkSearchPageParam = url.match(/\/search\//g) && (sortParam || filterParam);
+
+  if (!checkListingPageParam && !checkSearchPageParam) {
+    window.scrollTo(0, 0);
+  }
 };
 
 /**

@@ -6,10 +6,15 @@ import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWra
 import Anchor from '../../../../../../../../common/atoms/Anchor';
 import OrdersTypeContainer from '../styles/OrdersTileItem.style.native';
 
-export const OrdersTileItem = ({ labels, orderItem }) => {
+export const OrdersTileItem = ({ labels, orderItem, navigation }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
+  const router = {
+    query: {
+      orderId: orderNumber,
+    },
+  };
   return (
-    <ViewWithSpacing spacingStyles="margin-bottom-MED">
+    <ViewWithSpacing spacingStyles="margin-bottom-LRG">
       <OrdersTypeContainer>
         <BodyCopy
           fontWeight="regular"
@@ -26,21 +31,25 @@ export const OrdersTileItem = ({ labels, orderItem }) => {
           color="gray.900"
         />
         <Anchor
+          text={orderNumber}
           fontSizeVariation="large"
           underline
+          noLink
           anchorVariation="primary"
           fontSize="fs14"
           dataLocator="order-number-value"
           fontFamily="secondary"
-        >
-          <BodyCopy
-            fontWeight="regular"
-            fontSize="fs14"
-            mobilefontFamily={['secondary']}
-            text={orderNumber}
-            color="gray.900"
-          />
-        </Anchor>
+          onPress={() =>
+            navigation.navigate('OrderDetailPage', {
+              title: `${getLabelValue(
+                labels,
+                'lbl_orderDetail_heading',
+                'orders'
+              )} #${orderNumber}`,
+              router,
+            })
+          }
+        />
       </OrdersTypeContainer>
       <OrdersTypeContainer>
         <BodyCopy
@@ -145,6 +154,7 @@ export const OrdersTileItem = ({ labels, orderItem }) => {
 OrdersTileItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default OrdersTileItem;

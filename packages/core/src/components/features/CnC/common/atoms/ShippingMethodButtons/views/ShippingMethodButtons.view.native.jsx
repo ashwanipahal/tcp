@@ -9,12 +9,12 @@ const ShippingMethodButtons = ({ title, onPress, id, selectedShipmentId, index }
     <Wrapper checked={isChecked} index={index} onPress={() => onPress()}>
       <BodyCopy
         textAlign="center"
-        mobileFontFamily="secondary"
+        fontFamily="secondary"
         fontSize="fs10"
         fontWeight={isChecked ? 'black' : 'semibold'}
         color={isChecked ? 'white' : 'gray.700'}
         checked={isChecked}
-        text={title}
+        text={title.toUpperCase()}
       />
     </Wrapper>
   );
