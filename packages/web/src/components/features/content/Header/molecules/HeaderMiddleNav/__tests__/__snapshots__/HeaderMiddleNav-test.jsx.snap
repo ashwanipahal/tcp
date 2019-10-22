@@ -125,6 +125,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           isSearchOpen={false}
           onCloseClick={[Function]}
           setSearchState={[Function]}
+          showProduct={false}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -319,6 +320,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           isSearchOpen={false}
           onCloseClick={[Function]}
           setSearchState={[Function]}
+          showProduct={false}
         />
         <Styled(Anchor)
           anchorVariation="primary"
