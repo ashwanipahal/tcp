@@ -97,6 +97,8 @@ const setBrandId = (req, res) => {
   res.locals.brandId = brandId;
 };
 
+setErrorReporter();
+
 connectRedis({
   REDIS_CLIENT: redis,
   REDIS_HOST: process.env.RWD_REDIS_HOST,
@@ -107,8 +109,6 @@ const setHostname = (req, res) => {
   const { hostname } = req;
   res.locals.hostname = hostname;
 };
-
-setErrorReporter();
 
 const redirectToErrorPage = (req, res) => {
   // TODO - To handle all this in Akamai redirect ?
