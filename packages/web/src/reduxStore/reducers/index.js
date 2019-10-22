@@ -180,12 +180,12 @@ const filteredStyliticsProductTabListReducer = createFilteredReducer(
  *
  * @see RouteTracker.js
  */
-function pageNameReducer(state = '', action) {
+function pageNameReducer(state = {}, action) {
   switch (action.type) {
     case TRACK_PAGE_VIEW: {
       const { props } = action.payload;
-      const { pageName = '' } = (props && props.initialProps && props.initialProps.pageProps) || {};
-      return pageName;
+      const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
+      return pageData;
     }
     default:
       return state;
@@ -193,7 +193,7 @@ function pageNameReducer(state = '', action) {
 }
 
 export default combineReducers({
-  pageName: pageNameReducer,
+  pageData: pageNameReducer,
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
