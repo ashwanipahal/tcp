@@ -65,9 +65,11 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           setScreenViewShotRef={[Function]}
         >
           <BarcodeView
+            displayValue={true}
             format="CODE128"
             height="50"
             value="Y00105578"
+            width="1"
           />
         </ScreenViewShot>
       </View>
