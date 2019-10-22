@@ -43,6 +43,9 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
           alt={labels.productImageAlt}
           url={productDetail.itemInfo.imagePath}
           showOnReviewPage={showOnReviewPage}
+          itemBrand={
+            productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
+          }
         />
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>
