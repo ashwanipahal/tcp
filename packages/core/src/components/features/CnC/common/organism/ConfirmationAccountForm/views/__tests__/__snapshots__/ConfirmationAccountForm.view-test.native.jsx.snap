@@ -232,6 +232,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         <Styled(View)>
           <RichText
             domStorageEnabled={false}
+            isApplyDeviceHeight={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -559,6 +560,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         <Styled(View)>
           <RichText
             domStorageEnabled={false}
+            isApplyDeviceHeight={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -1089,6 +1091,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         <Styled(View)>
           <RichText
             domStorageEnabled={false}
+            isApplyDeviceHeight={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -1636,6 +1639,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         <Styled(View)>
           <RichText
             domStorageEnabled={false}
+            isApplyDeviceHeight={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -1967,6 +1971,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         <Styled(View)>
           <RichText
             domStorageEnabled={false}
+            isApplyDeviceHeight={false}
             javaScriptEnabled={false}
             source={
               Object {
