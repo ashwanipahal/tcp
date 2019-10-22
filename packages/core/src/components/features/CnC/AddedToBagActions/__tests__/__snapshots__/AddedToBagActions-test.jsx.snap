@@ -71,5 +71,8 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       name="call_to_action_visible"
     />
   </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-MED"
+  />
 </div>
 `;

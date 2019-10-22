@@ -171,6 +171,7 @@ class CheckoutPage extends React.PureComponent {
       pickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
+      checkoutServerError,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -203,6 +204,7 @@ class CheckoutPage extends React.PureComponent {
             /* To handle use cases for venmo banner and next CTA on pickup page. If true then normal checkout flow otherwise venmo scenarios  */
             isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
             ServerErrors={this.renderPageErrors}
+            checkoutServerError={checkoutServerError}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -227,6 +229,7 @@ class CheckoutPage extends React.PureComponent {
             /* To handle use cases for venmo banner and next CTA on shipping page. If true, then normal checkout flow otherwise venmo scenarios  */
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
             ServerErrors={this.renderPageErrors}
+            checkoutServerError={checkoutServerError}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -237,6 +240,7 @@ class CheckoutPage extends React.PureComponent {
             submitBilling={submitBilling}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             ServerErrors={this.renderPageErrors}
+            checkoutServerError={checkoutServerError}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -255,6 +259,7 @@ class CheckoutPage extends React.PureComponent {
             pickUpContactPerson={pickUpContactPerson}
             pickUpContactAlternate={pickUpContactAlternate}
             ServerErrors={this.renderPageErrors}
+            checkoutServerError={checkoutServerError}
             initialValues={{
               expressReviewShippingSection: {
                 shippingMethodId: shippingMethod,
