@@ -39,21 +39,21 @@ export default css`
     border-bottom-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     border-bottom-width: 1px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.L};
-    margin-right: 1px;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     width: 347px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.L};
       width: 730px;
       border-bottom-width: 1px;
-      margin-right: 15.1px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
       margin-left: 0px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
       width: 1100px;
       border-bottom-width: 1px;
-      margin-right: 15.1px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
       margin-left: 0px;
     }
   }

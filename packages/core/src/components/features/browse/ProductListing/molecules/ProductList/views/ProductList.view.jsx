@@ -67,9 +67,7 @@ const ProductList = props => {
             fontFamily="secondaryFontFamily"
           >
             {item}
-            <div>
-              <hr className="horizontal-bar" />
-            </div>
+            <hr className="horizontal-bar" />
           </Heading>
         ) : (
           <div className={`${className} product-tile ${productTileVariation}`}>

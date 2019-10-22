@@ -16,6 +16,7 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .add-to-bag-button {
+    width: 100%;
     max-width: 450px;
     text-align: center;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
@@ -27,19 +28,25 @@ const styles = css`
     line-height: normal;
     font-style: normal;
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
-    height: 42px;
-    width: 347px;
+    padding-top: 12px;
+    padding-left: 129px;
+    padding-right: 125px;
+    padding-bottom: 12px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 42px;
-      width: 213px;
+      padding-top: 12px;
+      padding-left: 33%;
+      padding-right: 32%;
+      padding-bottom: 12px;
     }
     &:hover {
       background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      height: 51px;
-      width: 330px;
+      padding-top: 15px;
+      padding-left: 73px;
+      padding-right: 70px;
+      padding-bottom: 16px;
     }
   }
   .select-value-wrapper {
