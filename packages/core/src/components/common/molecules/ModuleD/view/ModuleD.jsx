@@ -78,7 +78,7 @@ const ModuleD = ({
           data-locator={getLocator('moduleD_promobanner')}
         />
       )}
-      <Row centered fullBleed={fullBleed}>
+      <Row centered fullBleed={fullBleed} className="moduleD__image-container-section">
         {smallCompImage &&
           smallCompImage.map((item, index) => {
             return (

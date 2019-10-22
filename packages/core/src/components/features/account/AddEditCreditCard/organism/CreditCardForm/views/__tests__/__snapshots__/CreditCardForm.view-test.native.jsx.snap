@@ -405,7 +405,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_common_saveCTA"
@@ -435,7 +435,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
         text="lbl_common_cancelCTA"
@@ -824,7 +824,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           }
           dataLocatorPrefix="address"
           fontSize="fs14"
-          regularName={false}
+          regularName={true}
           showCountry={false}
           showDefaultText={false}
           showName={true}
@@ -856,7 +856,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_payment_addCard"
@@ -886,7 +886,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
         text="lbl_common_cancelCTA"
@@ -1303,7 +1303,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_payment_addCard"
@@ -1333,7 +1333,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
         text="lbl_common_cancelCTA"

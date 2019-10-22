@@ -27,11 +27,15 @@ exports[`CardList Component should render correctly 1`] = `
 >
   <Styled(Text) />
   <Styled(View)>
-    <Styled(View)>
-      <Styled(Image)
-        source=""
-      />
-    </Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height={46}
+      host=""
+      resizeMode="contain"
+      source=""
+      url=""
+      width={69}
+    />
     <Styled(Text) />
   </Styled(View)>
   <Styled(Text) />

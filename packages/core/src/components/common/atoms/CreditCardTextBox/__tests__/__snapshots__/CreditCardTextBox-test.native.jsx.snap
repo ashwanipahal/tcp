@@ -49,6 +49,7 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -61,6 +62,20 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation fai
     </View>
     <Styled(View)>
       <Styled(View)>
+        <Styled(View)>
+          <Styled(ImageComp)
+            alt=""
+            height="15px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/alert-triangle.png",
+              }
+            }
+            url=""
+            width="15px"
+          />
+        </Styled(View)>
         <Styled(BodyCopy)
           accessibilityText=""
           color="error"
@@ -132,6 +147,7 @@ exports[`CreditCardTextBox component render enableSuccessCheck on validation tru
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -196,6 +212,7 @@ exports[`CreditCardTextBox component renders correctly 1`] = `
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",
@@ -260,6 +277,7 @@ exports[`CreditCardTextBox component renders correctly hidden textbox 1`] = `
           alt=""
           height="30"
           host=""
+          resizeMode="contain"
           source={
             Object {
               "testUri": "../../../../core/src/assets/visa-small.png",

@@ -2,10 +2,10 @@
 
 const AccountPageNameMapping = {
   'address-book': {
-    pageName: 'gl:myplace:address book',
+    pageName: 'myplace:address book',
   },
   'account-overview': {
-    pageName: 'gl:myplace:accountoverview',
+    pageName: 'myplace:accountoverview',
   },
   'add-new-address': {
     pageName: '',
@@ -17,7 +17,7 @@ const AccountPageNameMapping = {
     pageName: '',
   },
   payment: {
-    pageName: 'gl:myplace:payment',
+    pageName: 'myplace:payment',
   },
   'add-credit-card': {
     pageName: '',
@@ -26,13 +26,13 @@ const AccountPageNameMapping = {
     pageName: '',
   },
   'place-rewards': {
-    pageName: 'gl:myplace:rewardscreditcard',
+    pageName: 'myplace:rewardscreditcard',
   },
   wallet: {
-    pageName: 'gl:myplace:wallet',
+    pageName: 'myplace:wallet',
   },
   profile: {
-    pageName: 'gl:myplace:profile',
+    pageName: 'myplace:profile',
   },
   'change-password': {
     pageName: '',
@@ -50,19 +50,19 @@ const AccountPageNameMapping = {
     pageName: '',
   },
   'my-preference': {
-    pageName: 'gl:myplace:my preference',
+    pageName: 'myplace:my preference',
   },
   'points-history': {
     pageName: '',
   },
   'extra-points': {
-    pageName: 'gl:myplace:extra points',
+    pageName: 'myplace:extra points',
   },
   'points-claim': {
     pageName: '',
   },
   orders: {
-    pageName: 'gl:myplace:orders',
+    pageName: 'myplace:orders',
   },
   favorites: {
     pageName: '',

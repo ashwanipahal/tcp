@@ -1,12 +1,13 @@
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 import CHECKOUT_SELECTORS, {
   getSendOrderUpdate,
   getAlternateFormFieldsExpress,
 } from '../container/Checkout.selector';
-import { isMobileApp } from '../../../../../utils';
+import { isMobileApp, getAPIConfig } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
+  getAPIConfig: jest.fn(),
 }));
 
 describe('Checkout Selectors', () => {
@@ -292,5 +293,29 @@ describe('Checkout Selectors', () => {
     expect(getAlternateFormFieldsExpress(state)).toEqual({
       hasAlternatePickup: true,
     });
+  });
+
+  it('#getShippingAddressList', () => {
+    getAPIConfig.mockImplementation(() => {
+      return { siteId: 'us' };
+    });
+    const AddressBookReducer = fromJS({
+      list: List([
+        {
+          addressId: '158247',
+          nickName: 'sb_2019-06-21 01:23:49.834',
+          primary: 'false',
+          country: 'US',
+          xcont_isShippingAddress: 'true',
+        },
+      ]),
+    });
+
+    const state = {
+      AddressBookReducer,
+    };
+    expect(CHECKOUT_SELECTORS.getShippingAddressList(state)).toEqual(
+      AddressBookReducer.get('list')
+    );
   });
 });
