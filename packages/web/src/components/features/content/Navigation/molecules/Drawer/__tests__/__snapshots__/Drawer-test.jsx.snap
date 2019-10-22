@@ -11,9 +11,7 @@ exports[`Drawer component renders correctly 1`] = `
     className="tcp-drawer tcp-drawer__isOpen undefined display-small-none display-medium-none display-large-none"
   >
     <Styled(Row)>
-      <AccountInfoSection
-        mainId="sideNavUserInfo"
-      />
+      <AccountInfoSection />
     </Styled(Row)>
     <div
       className="tcp-drawer-content"
