@@ -18,6 +18,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     >
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         scrollEnabled={false}
         source={

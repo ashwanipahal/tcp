@@ -14,11 +14,12 @@ export default css`
       width: 210px;
     }
   }
-
   .moduleD_tile {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .moduleD_link {
     text-align: center;
+    color: ${props => props.theme.colorPalette.text.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
   }
 `;

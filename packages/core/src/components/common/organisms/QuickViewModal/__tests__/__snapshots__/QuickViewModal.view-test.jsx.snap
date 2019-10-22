@@ -464,6 +464,49 @@ exports[`QuickViewModal component should renders correctly 1`] = `
         "unbxdProdId": "2044098_757",
       }
     }
+    quickViewColorSwatchesCss={
+      Array [
+        "
+  .color-chips-selector-item {
+    /* Image color of item */
+    .color-image {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  @media ",
+        [Function],
+        " {
+    .color-chips-selector-item {
+      .color-image {
+        width: 20px;
+        height: 20px;
+      }
+      .input-radio-icon-checked {
+        width: 20px;
+        height: 20px;
+      }
+
+      .input-radio-icon-checked + .input-radio-title .color-image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+",
+      ]
+    }
     quickViewLabels={Object {}}
   />
   <Connect(Styled(FulfillmentSection))
@@ -1128,6 +1171,49 @@ exports[`QuickViewModal component should renders correctly 2`] = `
         "shortDescription": "Here's the skinny on a super comfy pair she'll love to wear!",
         "unbxdProdId": "2044098_757",
       }
+    }
+    quickViewColorSwatchesCss={
+      Array [
+        "
+  .color-chips-selector-item {
+    /* Image color of item */
+    .color-image {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  @media ",
+        [Function],
+        " {
+    .color-chips-selector-item {
+      .color-image {
+        width: 20px;
+        height: 20px;
+      }
+      .input-radio-icon-checked {
+        width: 20px;
+        height: 20px;
+      }
+
+      .input-radio-icon-checked + .input-radio-title .color-image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+",
+      ]
     }
     quickViewLabels={Object {}}
   />

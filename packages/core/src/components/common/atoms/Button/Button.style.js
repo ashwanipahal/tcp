@@ -45,7 +45,7 @@ const ButtonStyles = css`
       ? `
       min-width: 40px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.text.darkgray};
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
       border: 1px solid ${props.theme.colorPalette.text.hint};
@@ -62,7 +62,7 @@ const ButtonStyles = css`
       ? `
       min-width: 64px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.text.darkgray};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colorPalette.text.hint};

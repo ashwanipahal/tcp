@@ -307,9 +307,9 @@
     "xcode": {
       "certificatePassword": "__protected__",
       "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "tcp_gymboree_distribution_01-10-2019.mobileprovision",
+      "provisioningProfileFilename": "tcp_gymboree_distribution_21-10-2019.mobileprovision",
       "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
-      "provisioningProfileFileId": "1f270d1c-fc3e-47ac-8b93-6092fe73f9f6",
+      "provisioningProfileFileId": "6e963c07-6a3b-4087-bd22-10265995e985",
       "appExtensionProvisioningProfileFiles": [],
       "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
       "scheme": "gymboree_int",
