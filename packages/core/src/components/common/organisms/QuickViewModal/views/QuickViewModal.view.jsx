@@ -6,7 +6,7 @@ import styles, {
   quickViewColorSwatchesCss,
 } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
-import { getLocator, enableBodyScroll } from '../../../../../utils';
+import { getLocator, enableBodyScroll, isMobileApp } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
@@ -26,7 +26,9 @@ class QuickViewModal extends React.Component {
   };
 
   onCloseClick = () => {
-    enableBodyScroll();
+    if (!isMobileApp()) {
+      enableBodyScroll();
+    }
     const { closeQuickViewModal } = this.props;
     closeQuickViewModal();
   };
