@@ -7,31 +7,7 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import { labelsHashValuesReplace, convertHtml } from '../../../util/utility';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
-import renderLoyaltyLabels from '../../../util/utilityCommon';
-import CHECKOUT_STAGES, {
-  ADDED_TO_BAG_PAGE,
-} from '../../../../../../../../../web/src/pages/App.constants';
-
-const getPageCategory = pageCategory => {
-  let ischeckoutPage = false;
-  let isReviewPage = false;
-  let isConfirmationPage = false;
-  let isAddedToBagPage = false;
-  switch (pageCategory) {
-    case CHECKOUT_STAGES.REVIEW:
-      isReviewPage = true;
-      break;
-    case CHECKOUT_STAGES.CONFIRMATION:
-      isConfirmationPage = true;
-      break;
-    case ADDED_TO_BAG_PAGE:
-      isAddedToBagPage = true;
-      break;
-    default:
-      ischeckoutPage = true;
-  }
-  return { ischeckoutPage, isReviewPage, isConfirmationPage, isAddedToBagPage };
-};
+import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
 // const concatSectionSymbol = (str, sectionSymbol) => {
 //   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
@@ -58,9 +34,13 @@ const LoyaltyBannerSection = props => {
   let remainingPlcc = '';
   let subHeadingLabel = '';
   let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
+  // isReviewPage = true;
+  // isConfirmationPage = false;
+  // isAddedToBagPage = false;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -146,7 +126,7 @@ const LoyaltyBannerSection = props => {
               isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
               isAddedToBagPage={isAddedToBagPage}
-              earnedReward
+              earnedRewardAvailable={earnedRewardAvailable}
             />
           </div>
         </BodyCopy>

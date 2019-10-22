@@ -8,15 +8,4 @@ const LineStyle = styled.View`
   border-color: ${plccMpr};
 `;
 
-const FooterLinksSection = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 12px 0;
-`;
-
-const LearnMoreWrapper = styled.View`
-  padding-left: 30px;
-`;
-
-export { LineStyle, FooterLinksSection, LearnMoreWrapper };
+export default LineStyle;

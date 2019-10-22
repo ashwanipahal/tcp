@@ -1,38 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
-import {
-  LineStyle,
-  FooterLinksSection,
-  LearnMoreWrapper,
-} from '../styles/LoyaltyBannerSection.style.native';
-import { mobileHashValues, renderLoyaltyLabels } from '../../../util/utilityNative';
+import LineStyle from '../styles/LoyaltyBannerSection.style.native';
+import mobileHashValues from '../../../util/utilityNative';
+import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
-import Anchor from '../../../../../../common/atoms/Anchor';
-
-const renderApplyNowLink = labels => {
-  return (
-    <Anchor
-      className="applyNow"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.applyNow}
-      underline
-    />
-  );
-};
-
-const renderLearnMoreLink = labels => {
-  return (
-    <Anchor
-      className="learnMore"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.learnMore}
-      underline
-    />
-  );
-};
+import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
 const LoyaltyBannerSection = props => {
   const {
@@ -46,14 +19,18 @@ const LoyaltyBannerSection = props => {
     estimatedRewardsVal,
     pointsToNextReward,
     getCurrencySymbol,
-    isReviewPage,
-    isConfirmationPage,
+    pageCategory,
+    isProductDetailView,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
   let remainingPlcc = '';
   let subHeadingLabel = '';
   let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
+
+  const pageCategoryArr = getPageCategory(pageCategory);
+  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -67,8 +44,11 @@ const LoyaltyBannerSection = props => {
     isGuest,
     isPlcc,
     isReviewPage,
-    isConfirmationPage
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView
   );
+
   headingLabel = LoyaltyLabels.headingLabelValFn
     ? mobileHashValues(
         LoyaltyLabels.headingLabelValFn,
@@ -102,11 +82,23 @@ const LoyaltyBannerSection = props => {
         currentSubtotal={currentSubtotal}
         estimatedSubtotal={estimatedSubtotal}
         isPlcc={isPlcc}
+        isReviewPage={isReviewPage}
+        isConfirmationPage={isConfirmationPage}
+        isAddedToBagPage={isAddedToBagPage}
+        isProductDetailView={isProductDetailView}
       />
-      <FooterLinksSection>
-        {!isPlcc && renderApplyNowLink(labels)}
-        <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
-      </FooterLinksSection>
+      <View className="footer">
+        <LoyaltyFooterSection
+          labels={labels}
+          isPlcc={isPlcc}
+          isProductDetailView={isProductDetailView}
+          isReviewPage={isReviewPage}
+          isConfirmationPage={isConfirmationPage}
+          isGuest={isGuest}
+          isAddedToBagPage={isAddedToBagPage}
+          earnedRewardAvailable={earnedRewardAvailable}
+        />
+      </View>
       <LineStyle isPlcc={isPlcc} />
     </View>
   );
@@ -123,8 +115,8 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   estimatedRewardsVal: PropTypes.string,
   pointsToNextReward: PropTypes.number,
-  isReviewPage: PropTypes.bool,
-  isConfirmationPage: PropTypes.bool,
+  pageCategory: PropTypes.string,
+  isProductDetailView: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -137,8 +129,8 @@ LoyaltyBannerSection.defaultProps = {
   getCurrencySymbol: '',
   estimatedRewardsVal: '',
   pointsToNextReward: 0,
-  isReviewPage: false,
-  isConfirmationPage: false,
+  pageCategory: '',
+  isProductDetailView: false,
 };
 
 export default LoyaltyBannerSection;

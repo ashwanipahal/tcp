@@ -4,13 +4,61 @@ exports[`LoyaltyFooterSection View Component ProductDetailSection true should re
 <div
   className=" footerWrapper"
 >
-  <Styled(ProductDetailSection)
-    className=""
-    isGuest={false}
-    isPlcc={false}
-    isProductDetailView={true}
-    labels={Object {}}
-  />
+  <span>
+    <span
+      className="applyNowLink"
+    >
+      <Connect(ApplyNowModalWrapper) />
+    </span>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="learnMore"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </span>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component is not ProductDetailView should render correctly 1`] = `
+<div
+  className=" footerWrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Connect(ApplyNowModalWrapper) />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(BodyCopy)
+          className="symbolWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs9"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="learnMore"
+          fontSizeVariation="medium"
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
 </div>
 `;
 
@@ -21,12 +69,37 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
   <div
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Connect(ApplyNowModalWrapper) />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(BodyCopy)
+          className="symbolWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs9"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          className="learnMore"
+          fontSizeVariation="medium"
+          underline={true}
+        />
+      </span>
+    </span>
   </div>
 </div>
 `;
@@ -123,7 +196,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
 </div>
 `;
 
-exports[`LoyaltyFooterSection View Component isConfirmationPage true should render correctly 1`] = `
+exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardAvailable should render correctly 1`] = `
 <div
   className=" footerWrapper"
 >
@@ -154,6 +227,29 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage true should rend
     </span>
   </div>
 </div>
+`;
+
+exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardAvailable should render correctly 2`] = `
+<div
+  className=" footerWrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="learnMore"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isConfirmationPage true should render correctly 1`] = `
+<div
+  className=" footerWrapper"
+/>
 `;
 
 exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should render correctly 1`] = `
@@ -187,6 +283,60 @@ exports[`LoyaltyFooterSection View Component isPlcc true should render correctly
       underline={true}
     />
   </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest should render correctly 1`] = `
+<div
+  className=" footerWrapper"
+>
+  <span>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="learnMore"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="learnMore"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </span>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGuest should render correctly 1`] = `
+<div
+  className=" footerWrapper"
+>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="learnMore"
+    fontSizeVariation="medium"
+    underline={true}
+  />
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isProductDetailView should render correctly 1`] = `
+<div
+  className=" footerWrapper"
+>
+  <span>
+    <span
+      className="applyNowLink"
+    >
+      <Connect(ApplyNowModalWrapper) />
+    </span>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="learnMore"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </span>
 </div>
 `;
 

@@ -7,11 +7,11 @@ exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] 
   estimatedRewardsVal={20}
   estimatedSubtotal={33}
   getCurrencySymbol=""
-  isConfirmationPage={false}
   isGuest={false}
   isPlcc={false}
-  isReviewPage={false}
+  isProductDetailView={false}
   labels={Object {}}
+  pageCategory=""
   pointsToNextReward={0}
   thresholdValue={16.66}
 />

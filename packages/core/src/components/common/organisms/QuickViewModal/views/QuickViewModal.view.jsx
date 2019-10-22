@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLocator, isCanada, enableBodyScroll } from '@tcp/core/src/utils';
+import { getLocator, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
   customHeaderStyle,
@@ -10,7 +10,6 @@ import FulfillmentSection from '../../FulfillmentSection';
 import Modal from '../../../molecules/Modal';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
 import ProductCustomizeFormPart from '../molecules/ProductCustomizeFormPart';
-import LoyaltyBanner from '../../../../features/CnC/LoyaltyBanner';
 import QuickViewAddToBagButton from '../atoms/QuickViewAddToBagButton';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
 
@@ -155,7 +154,6 @@ class QuickViewModal extends React.Component {
         stickyHeader
       >
         {this.renderProductCustomizeFormPart()}
-        {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!isMultiItemQVModal && !fromBagPage && (
           <FulfillmentSection
             btnClassName="added-to-bag"
