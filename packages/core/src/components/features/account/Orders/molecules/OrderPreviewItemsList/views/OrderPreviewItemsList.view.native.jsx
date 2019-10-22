@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import OrderPreviewItem from '../../OrderPreviewItem';
 import constants from '../../../../OrderDetails/OrderDetails.constants';
 
@@ -22,18 +23,24 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
       {items.slice(0, constants.STATUS_CONSTANTS.TOP_PREVIEW_ITEMS_COUNT).map((item, index) => (
         <OrderPreviewItem key={index.toString()} {...{ item }} {...otherProps} />
       ))}
-      <Button
-        buttonVariation="fixed-width"
-        fill="BLUE"
-        color="white"
-        onPress={() =>
-          navigation.navigate('OrderDetailPage', {
-            title: `${getLabelValue(labels, 'lbl_orderDetail_heading', 'orders')} #${orderNumber}`,
-            router,
-          })
-        }
-        text="VIEW FULL ORDER DETAILS"
-      />
+      <ViewWithSpacing spacingStyles="margin-top-MED">
+        <Button
+          buttonVariation="fixed-width"
+          fill="BLUE"
+          color="white"
+          onPress={() =>
+            navigation.navigate('OrderDetailPage', {
+              title: `${getLabelValue(
+                labels,
+                'lbl_orderDetail_heading',
+                'orders'
+              )} #${orderNumber}`,
+              router,
+            })
+          }
+          text="VIEW FULL ORDER DETAILS"
+        />
+      </ViewWithSpacing>
     </>
   );
 };

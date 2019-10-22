@@ -63,27 +63,31 @@ exports[`Order Items component should renders correctly 1`] = `
     }
     key="0"
   />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="fixed-width"
-    color="white"
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill="BLUE"
-    fullWidth=""
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    text="VIEW FULL ORDER DETAILS"
-    theme={Object {}}
-    url=""
-  />
+  <Styled(View)
+    spacingStyles="margin-top-MED"
+  >
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="VIEW FULL ORDER DETAILS"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
 </Fragment>
 `;
