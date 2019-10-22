@@ -175,7 +175,7 @@ class TCPWebApp extends App {
         };
       }
 
-      initialProps.pageName = payload.analyticsPageName;
+      initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);

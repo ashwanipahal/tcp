@@ -10,6 +10,7 @@ import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import RouteTracker from '../../../../common/atoms/RouteTracker';
 
 const returnModule = mod => mod.default;
 const HomePageView = dynamic({
@@ -38,6 +39,7 @@ const HomePageView = dynamic({
       <ModuleTwoCol slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
+      process.env.ANALYTICS && <RouteTracker />,
     ];
   },
 });
