@@ -82,7 +82,15 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          <ProductPricesSection
+            currencySymbol="$"
+            hidePrefixListPrice={true}
+            listPrice={NaN}
+            merchantTag=""
+            offerPrice={NaN}
+          />
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -99,13 +107,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
-    <ProductPricesSection
-      currencySymbol="$"
-      hidePrefixListPrice={true}
-      listPrice={NaN}
-      merchantTag=""
-      offerPrice={NaN}
-    />
     <ProductTitle
       analyticsData={
         Object {

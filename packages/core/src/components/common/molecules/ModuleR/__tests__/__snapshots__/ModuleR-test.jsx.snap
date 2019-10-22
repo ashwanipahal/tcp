@@ -110,6 +110,17 @@ exports[`Module R Component renders correctly 1`] = `
       }
     />
   </div>
+  <Styled(Styled(Skeleton))
+    col={18}
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 2,
+        "small": 2,
+      }
+    }
+    removeLastMargin={true}
+  />
   <Styled(Row)
     className="image-items-container"
   />

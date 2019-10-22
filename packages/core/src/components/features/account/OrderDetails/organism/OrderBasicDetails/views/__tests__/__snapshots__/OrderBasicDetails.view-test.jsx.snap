@@ -36,7 +36,7 @@ exports[`Order Basic Details component  should render correctly for Boss order 1
       component="p"
       fontFamily="secondary"
       fontSize="fs14"
-      fontWeight="extrabold"
+      fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
@@ -153,7 +153,7 @@ exports[`Order Basic Details component  should render correctly for ECOM order 1
       component="p"
       fontFamily="secondary"
       fontSize="fs14"
-      fontWeight="extrabold"
+      fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
       link={null}

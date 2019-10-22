@@ -15,9 +15,11 @@ const AccountDrawerHeading = props => {
       <span>
         <Image src={getIconPath('user-icon')} />
         <span className="userName">
-          <BodyCopy component="span" fontFamily="primary" fontWeight="semibold" fontSize="fs16">
-            {userName}
-          </BodyCopy>
+          {userName && (
+            <BodyCopy component="span" fontFamily="primary" fontWeight="semibold" fontSize="fs16">
+              {userName}
+            </BodyCopy>
+          )}
         </span>
       </span>
       <span

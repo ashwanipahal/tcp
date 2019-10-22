@@ -164,7 +164,20 @@ exports[`ModuleQ component renders correctly 1`] = `
           "small": 0,
         }
       }
-    />
+    >
+      <Styled(Styled(Skeleton))
+        col={3}
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 2,
+            "small": 2,
+          }
+        }
+        removeLastMargin={true}
+        showArrows={true}
+      />
+    </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
 `;

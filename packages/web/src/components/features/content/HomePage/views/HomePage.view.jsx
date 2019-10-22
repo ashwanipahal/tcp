@@ -26,6 +26,7 @@ const HomePageView = dynamic({
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
+    moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
   }),
   render: ({ slots, seoData }, modules) => {
     // TODO: Remove logger and use to render

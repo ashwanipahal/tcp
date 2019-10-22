@@ -78,4 +78,5 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  readCookieMobileApp,
 } from './utils';
