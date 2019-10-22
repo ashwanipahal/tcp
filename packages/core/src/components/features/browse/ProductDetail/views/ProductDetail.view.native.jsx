@@ -24,11 +24,13 @@ class ProductDetailView extends React.PureComponent {
     super(props);
     const {
       currentProduct: { colorFitsSizesMap },
+      currentProduct,
       selectedColorProductId,
     } = this.props;
     this.state = {
       showCarousel: false,
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
+      currentGiftCardValue: currentProduct.offerPrice,
     };
   }
 
@@ -42,6 +44,10 @@ class ProductDetailView extends React.PureComponent {
       currentProduct: { colorFitsSizesMap },
     } = this.props;
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
+
+  onChangeSize = e => {
+    this.setState({ currentGiftCardValue: e });
   };
 
   onImageClick = () => {
@@ -82,8 +88,10 @@ class ProductDetailView extends React.PureComponent {
       itemPartNumber,
       longDescription,
       pdpLabels,
+      currency,
+      currencyExchange,
     } = this.props;
-    const { currentColorEntry } = this.state;
+    const { currentColorEntry, currentGiftCardValue } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -101,6 +109,19 @@ class ProductDetailView extends React.PureComponent {
           <ProductSummary
             productData={currentProduct}
             selectedColorProductId={selectedColorProductId}
+            offerPrice={
+              currentProduct.isGiftCard
+                ? parseInt(currentGiftCardValue, 10)
+                : currentProduct.offerPrice
+            }
+            listPrice={
+              currentProduct.isGiftCard
+                ? parseInt(currentGiftCardValue, 10)
+                : currentProduct.listPrice
+            }
+            currencySymbol={currency}
+            currencyExchange={currencyExchange}
+            isGiftCard={currentProduct.isGiftCard}
           />
 
           <ProductAddToBagContainer
@@ -111,6 +132,7 @@ class ProductDetailView extends React.PureComponent {
             errorOnHandleSubmit={addToBagError}
             onChangeColor={this.onChangeColor}
             handleSubmit={handleSubmit}
+            onChangeSize={this.onChangeSize}
           />
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
@@ -148,6 +170,8 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  currency: PropTypes.string,
+  currencyExchange: PropTypes.number,
 };
 
 ProductDetailView.defaultProps = {
@@ -162,6 +186,8 @@ ProductDetailView.defaultProps = {
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  currency: 'USD',
+  currencyExchange: 1,
 };
 
 export default withStyles(ProductDetailView);
