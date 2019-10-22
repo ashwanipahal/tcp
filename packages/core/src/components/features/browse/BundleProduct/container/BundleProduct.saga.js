@@ -3,6 +3,7 @@ import BUNDLEPRODUCT_CONSTANTS from './BundleProduct.constants';
 import { setProductDetails, setBundleDetails } from './BundleProduct.actions';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import getBundleProductsDetails from '../../../../../services/abstractors/productListing/bundleProducts';
+import logger from '../../../../../utils/loggerInstance';
 
 function* fetchBundleProductDetail({ payload: { productId } }) {
   try {
@@ -14,7 +15,7 @@ function* fetchBundleProductDetail({ payload: { productId } }) {
     const bundleDetails = yield call(getBundleProductsDetails, { bundleProducts: bundledProducts });
     yield put(setBundleDetails({ ...bundleDetails }));
   } catch (err) {
-    console.log(err);
+    logger.error('error: ', err);
   }
 }
 

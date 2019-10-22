@@ -15,7 +15,6 @@ class ProductBundleContainer extends React.PureComponent {
 
     // TODO - fix this to extract the product ID from the page.
     const id = bid && bid.split('-');
-    console.log('id', id);
     const productId = id && id.length > 1 ? id[id.length - 1] : bid;
 
     getDetails({ productId });
