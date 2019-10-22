@@ -33,7 +33,6 @@ class HeaderMiddleNav extends React.PureComponent {
     this.state = {
       isSearchOpen: false,
       userNameClick: true,
-      showProduct: false,
       triggerLoginCreateAccount: true,
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
@@ -119,7 +118,6 @@ class HeaderMiddleNav extends React.PureComponent {
       cartItemCount,
       isSearchOpen,
       isFullSizeSearchModalOpen,
-      showProduct,
     } = this.state;
     const {
       accessibility: { cartIconButton, closeIconButton, hamburgerMenu } = {},
@@ -251,7 +249,6 @@ class HeaderMiddleNav extends React.PureComponent {
                     isSearchOpen={isSearchOpen}
                     onCloseClick={this.onCloseClick}
                     isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                    showProduct={showProduct}
                   />
                 </Modal>
               ) : (
@@ -261,7 +258,6 @@ class HeaderMiddleNav extends React.PureComponent {
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}
                   isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                  showProduct={showProduct}
                 />
               )}
 
