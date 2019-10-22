@@ -181,11 +181,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
               dataLocator={`couponDetailModal_${coupon.status}_printAch`}
               text={getLabelValue(labels, 'PRINT_ANCHOR_TEXT')}
               class="clickhere"
-              onPress={() =>
-                this.printHTML(coupon, labels, this.showValidity()).catch(err => {
-                  console.log({ err });
-                })
-              }
+              onPress={() => this.printHTML(coupon, labels, this.showValidity())}
             />
             {!!coupon.legalText && (
               <PrivacyContent data-locator={`couponDetailModal_${coupon.status}_LongDesc`}>
