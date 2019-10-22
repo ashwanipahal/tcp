@@ -107,6 +107,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -515,6 +516,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -908,6 +910,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -1297,6 +1300,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -1670,6 +1674,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -2044,6 +2049,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -2418,6 +2424,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -2749,6 +2756,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -3123,6 +3131,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -3454,6 +3463,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -3828,6 +3838,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -4222,6 +4233,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -4631,6 +4643,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -5040,6 +5053,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
@@ -5429,6 +5443,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
             source=""
             url=""
