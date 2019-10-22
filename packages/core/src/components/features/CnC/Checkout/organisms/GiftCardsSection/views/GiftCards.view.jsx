@@ -8,24 +8,47 @@ import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/
 
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
-import { propTypes, defaultProps, renderAddGiftCardProps } from './GiftCards.view.utils';
+import {
+  propTypes,
+  defaultProps,
+  renderAddGiftCardProps,
+  renderGiftCardTileProps,
+  renderAppliedGiftCardsProps,
+} from './GiftCards.view.utils';
 
-const GiftCardSectionHeading = (giftCardList, labels, isGiftCardApplied = false) => {
+const getHeading = (labels, isGiftCardApplied) => {
   return (
-    <>
-      {giftCardList && giftCardList.size > 0 && (
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          data-locator="gift-cards"
-          className="elem-mt-MED"
-        >
-          {`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
-        </BodyCopy>
-      )}
-    </>
+    <BodyCopy
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      data-locator="gift-cards"
+      className="elem-mt-MED"
+    >
+      {`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
+    </BodyCopy>
   );
+};
+
+const GiftCardSectionHeading = (
+  giftCardList,
+  labels,
+  isFromReview,
+  isExpressCheckout,
+  isGiftCardApplied = false
+) => {
+  let heading;
+  if (isFromReview) {
+    if (isGiftCardApplied) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+    if (isExpressCheckout && !isGiftCardApplied && giftCardList && giftCardList.size > 0) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+  } else if (giftCardList && giftCardList.size > 0) {
+    heading = getHeading(labels, isGiftCardApplied);
+  }
+  return heading;
 };
 
 const renderAddGiftCardError = getAddGiftCardError => {
@@ -55,6 +78,8 @@ const renderAddGiftCard = ({
   labels,
   isLoading,
   onClearError,
+  isFromReview,
+  isExpressCheckout,
 }) => {
   return (
     <Row className="gift-card-container elem-mb-LRG">
@@ -77,21 +102,30 @@ const renderAddGiftCard = ({
             isRow
             isLoading={isLoading}
             onClearError={onClearError}
+            isFromReview={isFromReview}
+            isExpressCheckout={isExpressCheckout}
           />
         </BodyCopy>
       </Col>
     </Row>
   );
 };
-const renderAddNewGiftButton = (labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard) => {
+const renderAddNewGiftButton = (
+  labels,
+  orderBalanceTotal,
+  appliedGiftCards,
+  showAddGiftCard,
+  isFromReview,
+  isExpressCheckout
+) => {
   if (orderBalanceTotal > 0 && appliedGiftCards && appliedGiftCards.size < 5) {
     return (
       <Row fullBleed className="elem-mt-LRG elem-mb-LRG">
         <Col
           colSize={{
-            small: 4,
+            small: isFromReview && isExpressCheckout ? 3 : 4,
             medium: 4,
-            large: 3,
+            large: isFromReview && isExpressCheckout ? 5 : 3,
           }}
         >
           <Button
@@ -132,6 +166,96 @@ const renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
   );
 };
 
+const renderGiftCardTile = ({
+  cardData,
+  isGiftCardApplied,
+  handleRemoveGiftCard,
+  labels,
+  giftCardErrors,
+  isExpressCheckout,
+  isFromReview,
+  applyExistingGiftCardToOrder,
+  orderBalanceTotal,
+}) => {
+  return (
+    <GiftCardTile
+      cardData={cardData}
+      handleRemoveGiftCard={handleRemoveGiftCard}
+      labels={labels}
+      isGiftCardApplied={isGiftCardApplied}
+      giftCardErrors={giftCardErrors}
+      isExpressCheckout={isExpressCheckout}
+      isFromReview={isFromReview}
+      orderBalanceTotal={orderBalanceTotal}
+      applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
+    />
+  );
+};
+
+const renderAppliedGiftCards = ({
+  appliedGiftCards,
+  handleRemoveGiftCard,
+  labels,
+  giftCardErrors,
+  isExpressCheckout,
+  isFromReview,
+}) => {
+  return (
+    <>
+      {isFromReview && appliedGiftCards && appliedGiftCards.size === 0 && (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          data-locator="gift-cards-none"
+        >
+          {`${labels.noGiftCards}`}
+        </BodyCopy>
+      )}
+      {appliedGiftCards &&
+        appliedGiftCards.size > 0 &&
+        appliedGiftCards.map(cardData =>
+          renderGiftCardTile({
+            cardData,
+            handleRemoveGiftCard,
+            labels,
+            giftCardErrors,
+            isExpressCheckout,
+            isFromReview,
+            isGiftCardApplied: true,
+          })
+        )}
+    </>
+  );
+};
+
+const renderGiftCardsList = ({
+  giftCardList,
+  applyExistingGiftCardToOrder,
+  labels,
+  giftCardErrors,
+  orderBalanceTotal,
+  isExpressCheckout,
+  isFromReview,
+}) => {
+  return (
+    (!isFromReview || (isFromReview && isExpressCheckout)) &&
+    giftCardList &&
+    giftCardList.size > 0 &&
+    giftCardList.map(cardData =>
+      renderGiftCardTile({
+        applyExistingGiftCardToOrder,
+        cardData,
+        labels,
+        giftCardErrors,
+        orderBalanceTotal,
+        isExpressCheckout,
+        isFromReview,
+      })
+    )
+  );
+};
+
 export const GiftCards = ({
   giftCardList,
   appliedGiftCards,
@@ -150,6 +274,8 @@ export const GiftCards = ({
   isRecapchaEnabled,
   isLoading,
   onClearError,
+  isExpressCheckout,
+  isFromReview,
 }) => {
   return (
     <Grid className={className}>
@@ -158,59 +284,63 @@ export const GiftCards = ({
           colSize={{
             small: 6,
             medium: 8,
-            large: 8,
+            large: isFromReview ? 12 : 8,
           }}
         >
-          <BodyCopy
-            fontFamily="primary"
-            fontSize="fs26"
-            fontWeight="regular"
-            data-locator="gift-cards"
-            className="elem-mt-XXL"
-          >
-            {labels.giftCardTitle}
-          </BodyCopy>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            data-locator="gift-cards"
-            className="elem-mt-LRG"
-          >
-            {labels.giftCardAddUpToMsg}
-          </BodyCopy>
-          {GiftCardSectionHeading(appliedGiftCards, labels, true)}
-
-          {appliedGiftCards &&
-            appliedGiftCards.size > 0 &&
-            appliedGiftCards.map(cardData => (
-              <GiftCardTile
-                cardData={cardData}
-                handleRemoveGiftCard={handleRemoveGiftCard}
-                labels={labels}
-                isGiftCardApplied
-                giftCardErrors={giftCardErrors}
-              />
-            ))}
-
+          {!isFromReview && (
+            <>
+              <BodyCopy
+                fontFamily="primary"
+                fontSize="fs26"
+                fontWeight="regular"
+                data-locator="gift-cards"
+                className="elem-mt-XXL"
+              >
+                {labels.giftCardTitle}
+              </BodyCopy>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="regular"
+                data-locator="gift-cards"
+                className="elem-mt-LRG"
+              >
+                {labels.giftCardAddUpToMsg}
+              </BodyCopy>
+            </>
+          )}
+          {GiftCardSectionHeading(appliedGiftCards, labels, isFromReview, isExpressCheckout, true)}
+          {renderAppliedGiftCards({
+            appliedGiftCards,
+            handleRemoveGiftCard,
+            labels,
+            giftCardErrors,
+            isExpressCheckout,
+            isFromReview,
+          })}
           {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
-
-          {GiftCardSectionHeading(giftCardList, labels)}
-          {giftCardList &&
-            giftCardList.size > 0 &&
-            giftCardList.map(cardData => (
-              <GiftCardTile
-                cardData={cardData}
-                applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
-                labels={labels}
-                giftCardErrors={giftCardErrors}
-                orderBalanceTotal={orderBalanceTotal}
-              />
-            ))}
+          {GiftCardSectionHeading(giftCardList, labels, isFromReview, isExpressCheckout)}
+          {renderGiftCardsList({
+            giftCardList,
+            applyExistingGiftCardToOrder,
+            labels,
+            giftCardErrors,
+            orderBalanceTotal,
+            isExpressCheckout,
+            isFromReview,
+          })}
         </Col>
       </Row>
       {!enableAddGiftCard &&
-        renderAddNewGiftButton(labels, orderBalanceTotal, appliedGiftCards, showAddGiftCard)}
+        (!isFromReview || (isFromReview && isExpressCheckout)) &&
+        renderAddNewGiftButton(
+          labels,
+          orderBalanceTotal,
+          appliedGiftCards,
+          showAddGiftCard,
+          isFromReview,
+          isExpressCheckout
+        )}
       {enableAddGiftCard &&
         renderAddGiftCard({
           hideAddGiftCard,
@@ -221,6 +351,7 @@ export const GiftCards = ({
           labels,
           isLoading,
           onClearError,
+          isFromReview,
         })}
     </Grid>
   );
@@ -231,6 +362,11 @@ renderAddGiftCard.propTypes = renderAddGiftCardProps;
 GiftCards.propTypes = propTypes;
 
 GiftCards.defaultProps = defaultProps;
+
+renderGiftCardTile.propTypes = renderGiftCardTileProps.propTypes;
+renderGiftCardTile.defaultProps = renderGiftCardTileProps.defaultProps;
+renderAppliedGiftCards.propTypes = renderAppliedGiftCardsProps.propTypes;
+renderAppliedGiftCards.defaultProps = renderAppliedGiftCardsProps.defaultProps;
 
 export default withStyles(GiftCards, styles);
 export { GiftCards as GiftCardsVanilla };

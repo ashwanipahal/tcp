@@ -1,4 +1,4 @@
-import { call } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 // eslint-disable-next-line import/no-unresolved
 import submitBilling, {
   submitBillingData,
@@ -11,6 +11,7 @@ import submitBilling, {
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { isMobileApp } from '../../../../../utils';
 import CONSTANTS from '../Checkout.constants';
+import { getSetIsBillingVisitedActn } from '../container/Checkout.action';
 // import utility from '../util/utility';
 
 describe('CheckoutBilling saga', () => {
@@ -55,7 +56,7 @@ describe('CheckoutBilling saga', () => {
         undefined
       )
     );
-    expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
+    expect(CheckoutReviewSaga.next(false).value).toEqual(put(getSetIsBillingVisitedActn(true)));
   });
 
   it('submitBillingData with CardId', () => {

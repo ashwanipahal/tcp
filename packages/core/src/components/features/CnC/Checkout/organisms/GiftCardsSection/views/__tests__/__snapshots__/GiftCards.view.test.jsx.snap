@@ -67,6 +67,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -79,6 +80,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -124,6 +126,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={0}
       />
@@ -136,6 +139,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={0}
       />
@@ -211,6 +215,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -223,6 +228,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -268,6 +274,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={0}
       />
@@ -280,6 +287,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={0}
       />
@@ -355,6 +363,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -367,6 +376,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -412,6 +422,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={100}
       />
@@ -424,6 +435,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={100}
       />
@@ -523,6 +535,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -535,6 +548,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
+        isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
       />
@@ -580,6 +594,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={100}
       />
@@ -592,6 +607,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
+        isFromReview={false}
         labels={Object {}}
         orderBalanceTotal={100}
       />
@@ -655,6 +671,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           forceUnregisterOnUnmount={false}
           form="AddGiftCardForm"
           getFormState={[Function]}
+          isFromReview={false}
           isLoading={false}
           isRecapchaEnabled={false}
           isRow={true}
@@ -674,6 +691,156 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           validate={[Function]}
         />
       </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`GiftCardsVanilla should render gift card tile with 100 order balance with enableAddGiftCard and with isExpressCheckout flag true 1`] = `
+<Styled(Grid)
+  className="test"
+>
+  <Styled(Row)
+    className="gift-section-container elem-mb-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        undefined
+      </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={true}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(GiftCardTile)
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        handleRemoveGiftCard={[MockFunction]}
+        isExpressCheckout={true}
+        isFromReview={true}
+        isGiftCardApplied={true}
+        labels={Object {}}
+      />
+      <Styled(BodyCopy)
+        className="elem-mt-LRG"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <span
+          className="headsUpMsgBoldTitle"
+        />
+        undefined
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="elem-mt-MED"
+        color="text.primary"
+        component="p"
+        data-locator="gift-cards"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        undefined
+      </Styled(BodyCopy)>
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={true}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+      <Styled(GiftCardTile)
+        applyExistingGiftCardToOrder={[MockFunction]}
+        cardData={
+          Object {
+            "creditCardId": 123,
+            "name": "test",
+          }
+        }
+        giftCardErrors={Object {}}
+        isExpressCheckout={true}
+        isFromReview={true}
+        labels={Object {}}
+        orderBalanceTotal={100}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-LRG elem-mb-LRG"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="new_gift_card_button"
+        data-locator="gift_apply_button"
+        disabled={false}
+        fullWidth="true"
+        onClick={[Function]}
+        type="submit"
+      />
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormSection, reduxForm } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
@@ -61,7 +62,7 @@ class ReviewPage extends React.PureComponent {
       isExpressCheckout,
     } = this.props;
     const { firstName, lastName, hasAlternatePickup, emailAddress } = data.pickUpAlternateExpress;
-
+    const { cvvCode } = data;
     const pickupContactData =
       typeof pickUpContactPerson.firstName !== 'undefined'
         ? pickUpContactPerson
@@ -83,7 +84,7 @@ class ReviewPage extends React.PureComponent {
             emailAddress: pickupContactData.emailAddress,
           },
           billing: {
-            cvv: '123', // TO DO, remove this hard coding in next cvv story.
+            cvv: cvvCode,
           },
         },
       };
@@ -146,7 +147,7 @@ class ReviewPage extends React.PureComponent {
             </div>
           )}
         </FormSection>
-        <BillingSection />
+        <BillingSection isExpressCheckout={isExpressCheckout} />
         <CheckoutCartItemList />
         <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
         <CheckoutFooter
@@ -184,6 +185,7 @@ class ReviewPage extends React.PureComponent {
 
 const validateMethod = createValidateMethod({
   pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
 });
 
 export default reduxForm({

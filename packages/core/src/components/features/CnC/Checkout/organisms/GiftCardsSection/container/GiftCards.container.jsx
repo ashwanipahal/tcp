@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import {
+  isGuest as isGuestUser,
+  isExpressCheckout,
+} from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
 import { getCardList } from '../../../../../account/Payment/container/Payment.actions';
 import {
   getGiftCards,
@@ -96,6 +99,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getAddGiftCardError,
       isRecapchaEnabled,
       isLoading,
+      isExpressCheckoutUser,
+      isFromReview,
     } = this.props;
 
     let availableGiftCards = [];
@@ -130,6 +135,8 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isRecapchaEnabled={isRecapchaEnabled}
         isLoading={isLoading}
         onClearError={this.onClearError}
+        isExpressCheckout={isExpressCheckoutUser}
+        isFromReview={isFromReview}
       />
     );
   }
@@ -188,6 +195,7 @@ const mapStateToProps = state => {
     isRecapchaEnabled: GiftCardSelector.getIsRecapchaEnabled(state),
     addGiftCardResponse: GiftCardSelector.getAddGiftCardResponse(state),
     isLoading: GiftCardSelector.getIsLoading(state),
+    isExpressCheckoutUser: isExpressCheckout(state),
   };
 };
 

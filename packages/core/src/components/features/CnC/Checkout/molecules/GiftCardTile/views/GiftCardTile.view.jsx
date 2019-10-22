@@ -17,6 +17,8 @@ class GiftCardTile extends React.PureComponent {
     handleRemoveGiftCard: PropTypes.func.isRequired,
     giftCardErrors: PropTypes.shape({}),
     orderBalanceTotal: PropTypes.number,
+    isFromReview: PropTypes.bool,
+    isExpressCheckout: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -26,6 +28,13 @@ class GiftCardTile extends React.PureComponent {
     labels: {},
     giftCardErrors: {},
     orderBalanceTotal: 0,
+    isFromReview: false,
+    isExpressCheckout: false,
+  };
+
+  showRemoveCtas = () => {
+    const { isFromReview, isExpressCheckout } = this.props;
+    return !isFromReview || (isFromReview && isExpressCheckout);
   };
 
   renderApplyRemoveBtn() {
@@ -94,17 +103,25 @@ class GiftCardTile extends React.PureComponent {
   }
 
   render() {
-    const { className, cardData, isGiftCardApplied, labels } = this.props;
+    const {
+      className,
+      cardData,
+      isGiftCardApplied,
+      labels,
+      isFromReview,
+      isExpressCheckout,
+    } = this.props;
 
     let cardEndingIn = cardData.accountNo !== undefined ? cardData.accountNo.substr(-4) : '';
     let remainingBalance = '';
-    if (isGiftCardApplied) {
+    if (isGiftCardApplied && cardData && cardData.size > 0) {
       const remainingBalanceValue = cardData.get('remainingBalance');
       cardEndingIn = `${cardData.get('endingNumbers')} | `;
       remainingBalance = `${getLabelValue(labels, 'lbl_giftcard_remainingBal')}: $${
         typeof remainingBalanceValue !== 'undefined' ? remainingBalanceValue.toFixed(2) : 0
       }`;
     }
+    const showCtas = this.showRemoveCtas();
     return (
       <div className={className}>
         <div className="gift_card_box elem-mt-SM">
@@ -115,7 +132,7 @@ class GiftCardTile extends React.PureComponent {
               colSize={{
                 small: 4,
                 medium: 4,
-                large: 8,
+                large: isFromReview && isExpressCheckout ? 6 : 8,
               }}
               className="gift-tile-msg-container"
             >
@@ -131,16 +148,18 @@ class GiftCardTile extends React.PureComponent {
                 <span className="remainingBalanceText">{remainingBalance}</span>
               </BodyCopy>
             </Col>
-            <Col
-              colSize={{
-                small: 2,
-                medium: 4,
-                large: 4,
-              }}
-              className="gift-action-container"
-            >
-              {this.renderApplyRemoveBtn()}
-            </Col>
+            {showCtas && (
+              <Col
+                colSize={{
+                  small: 2,
+                  medium: 4,
+                  large: 4,
+                }}
+                className="gift-action-container"
+              >
+                {this.renderApplyRemoveBtn()}
+              </Col>
+            )}
           </Row>
         </div>
       </div>

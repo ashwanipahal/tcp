@@ -30,7 +30,7 @@ export function* applyGiftCard(payloadData) {
       yield put(setGiftCardError(errorObject));
     }
 
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
     yield put(setGiftCardError(err));
   }
@@ -42,7 +42,7 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
     yield call(removeGiftCard, payload, labels);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
     console.log(err);
   }

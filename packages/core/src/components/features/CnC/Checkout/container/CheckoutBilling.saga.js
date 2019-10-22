@@ -233,6 +233,7 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     loadUpdatedCheckoutValues
   );
   // }
+  yield put(getSetIsBillingVisitedActn(true));
 }
 
 /**

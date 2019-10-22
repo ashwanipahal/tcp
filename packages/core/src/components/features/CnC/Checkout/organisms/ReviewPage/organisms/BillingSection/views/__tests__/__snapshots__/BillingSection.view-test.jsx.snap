@@ -45,9 +45,16 @@ exports[`BillingSection should render correctly for empty state 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 8,
+          "medium": 8,
           "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
         }
       }
       offsetRight={
@@ -57,7 +64,11 @@ exports[`BillingSection should render correctly for empty state 1`] = `
           "small": 0,
         }
       }
-    />
+    >
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
+      />
+    </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
 `;
@@ -159,6 +170,13 @@ exports[`BillingSection should render correctly without address details 1`] = `
           "small": 6,
         }
       }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
+        }
+      }
       offsetRight={
         Object {
           "large": 1,
@@ -167,44 +185,8 @@ exports[`BillingSection should render correctly without address details 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
-        className="sub-heading"
-        color="gray[900]"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        Applied Gift Cards
-      </Styled(BodyCopy)>
-      <Styled(AppliedGiftCards)
-        appliedGiftCards={
-          Immutable.List [
-            Immutable.Map {
-              "id": "1",
-              "endingNumbers": "4321",
-              "remainingBalance": 0,
-            },
-            Immutable.Map {
-              "id": "2",
-              "endingNumbers": "1234",
-              "remainingBalance": 15,
-            },
-          ]
-        }
-        labels={
-          Object {
-            "lbl_review_appliedGiftCards": "Applied Gift Cards",
-            "lbl_review_billingAddress": "Billing Address",
-            "lbl_review_billingSectionTitle": "Billing",
-            "lbl_review_paymentMethod": "Payment Method",
-            "lbl_review_paymentMethodEndingIn": "ending in",
-          }
-        }
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -256,9 +238,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 8,
+          "medium": 8,
           "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
         }
       }
       offsetRight={
@@ -269,31 +258,8 @@ exports[`BillingSection should render correctly without card & address details o
         }
       }
     >
-      <Styled(BodyCopy)
-        className="sub-heading"
-        color="gray[900]"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        Applied Gift Cards
-      </Styled(BodyCopy)>
-      <Styled(AppliedGiftCards)
-        appliedGiftCards={Immutable.List []}
-        labels={
-          Object {
-            "lbl_review_appliedGiftCards": "Applied Gift Cards",
-            "lbl_review_billingAddress": "Billing Address",
-            "lbl_review_billingSectionTitle": "Billing",
-            "lbl_review_paymentMethod": "Payment Method",
-            "lbl_review_paymentMethodEndingIn": "ending in",
-          }
-        }
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -345,9 +311,16 @@ exports[`BillingSection should render correctly without card & address details o
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
-          "medium": 4,
+          "large": 8,
+          "medium": 8,
           "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
         }
       }
       offsetRight={
@@ -358,44 +331,8 @@ exports[`BillingSection should render correctly without card & address details o
         }
       }
     >
-      <Styled(BodyCopy)
-        className="sub-heading"
-        color="gray[900]"
-        component="p"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        Applied Gift Cards
-      </Styled(BodyCopy)>
-      <Styled(AppliedGiftCards)
-        appliedGiftCards={
-          Immutable.List [
-            Immutable.Map {
-              "id": "1",
-              "endingNumbers": "4321",
-              "remainingBalance": 0,
-            },
-            Immutable.Map {
-              "id": "2",
-              "endingNumbers": "1234",
-              "remainingBalance": 15,
-            },
-          ]
-        }
-        labels={
-          Object {
-            "lbl_review_appliedGiftCards": "Applied Gift Cards",
-            "lbl_review_billingAddress": "Billing Address",
-            "lbl_review_billingSectionTitle": "Billing",
-            "lbl_review_paymentMethod": "Payment Method",
-            "lbl_review_paymentMethodEndingIn": "ending in",
-          }
-        }
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -489,11 +426,77 @@ exports[`BillingSection should render correctly without card details 1`] = `
           "small": 6,
         }
       }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
+        }
+      }
       offsetRight={
         Object {
           "large": 1,
           "medium": 0,
           "small": 0,
+        }
+      }
+    >
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;
+
+exports[`BillingSection should render cvv if express checkout 1`] = `
+<Styled(Grid)
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Billing 
+      </Styled(BodyCopy)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/checkout/billing"
+        fontSizeVariation="large"
+        to="/checkout?section=billing"
+        underline={true}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 3,
         }
       }
     >
@@ -509,32 +512,251 @@ exports[`BillingSection should render correctly without card details 1`] = `
         link={null}
         textAlign="left"
       >
-        Applied Gift Cards
+        Payment Method
       </Styled(BodyCopy)>
-      <Styled(AppliedGiftCards)
-        appliedGiftCards={
-          Immutable.List [
-            Immutable.Map {
-              "id": "1",
-              "endingNumbers": "4321",
-              "remainingBalance": 0,
-            },
-            Immutable.Map {
-              "id": "2",
-              "endingNumbers": "1234",
-              "remainingBalance": 15,
-            },
-          ]
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(CardImage)
+          card={
+            Object {
+              "cardNumber": "1234",
+              "ccBrand": "PLACE CASH",
+              "ccType": "PLACE CASH",
+            }
+          }
+          cardNumber="ending in 1234"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="cvvCode"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 3,
         }
-        labels={
+      }
+    >
+      <Field
+        autoComplete="off"
+        component={
           Object {
-            "lbl_review_appliedGiftCards": "Applied Gift Cards",
-            "lbl_review_billingAddress": "Billing Address",
-            "lbl_review_billingSectionTitle": "Billing",
-            "lbl_review_paymentMethod": "Payment Method",
-            "lbl_review_paymentMethodEndingIn": "ending in",
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: ",
+                [Function],
+                ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-gzVnrw",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
           }
         }
+        dataLocator="cvvTxtBox"
+        enableSuccessCheck={false}
+        id="cvvCode"
+        maxLength="4"
+        name="cvvCode"
+      />
+      <span
+        className="cvv-icon"
+      >
+        <Styled(ReactTooltip)
+          aligned="right"
+          fontFamily="secondary"
+          message={
+            <ForwardRef
+              className="cvv-code-info"
+              dataLocator="cvv-code-info"
+            />
+          }
+        >
+          <Styled(Image)
+            height="15"
+            src="/static/images/info-icon.png"
+            width="15"
+          />
+        </Styled(ReactTooltip)>
+      </span>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Connect(GiftCardsContainer)
+        isFromReview={true}
       />
     </Styled(Col)>
   </Styled(Row)>
