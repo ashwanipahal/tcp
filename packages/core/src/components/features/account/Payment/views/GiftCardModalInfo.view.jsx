@@ -18,7 +18,7 @@ class GiftCardModalInfo extends React.Component {
           className="deleteCardModal__modalTitle"
           data-locator="deletegcmodalheadinng"
         >
-          {data.heading}
+          {data.subHeading}
         </BodyCopy>
         <BodyCopy className="deleteCardModal__desc">
           {' '}
