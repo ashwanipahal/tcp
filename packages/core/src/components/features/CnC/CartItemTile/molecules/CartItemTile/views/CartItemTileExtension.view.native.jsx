@@ -1,5 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
@@ -15,6 +17,12 @@ import Image from '../../../../../../common/atoms/Image';
 import endpoints from '../../../../../../../service/endpoint';
 import { getLocator } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CartItemRadioButtons from '../../CartItemRadioButtons';
+import {
+  getBOSSUnavailabilityMessage,
+  getBOPISUnavailabilityMessage,
+  getSTHUnavailabilityMessage,
+} from './CartItemTile.utils';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -203,6 +211,138 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   });
 };
 
+const getCartRadioButtons = ({
+  productDetail,
+  labels,
+  itemIndex,
+  openedTile,
+  setSelectedProductTile,
+  isBagPageSflSection,
+  showOnReviewPage,
+  isEcomSoldout,
+  isECOMOrder,
+  isBOSSOrder,
+  isBOPISOrder,
+  noBopisMessage,
+  noBossMessage,
+  bossDisabled,
+  bopisDisabled,
+  isBossEnabled,
+  isBopisEnabled,
+  orderId,
+  onPickUpOpenClick,
+}) => {
+  if (isBagPageSflSection || !showOnReviewPage) return null;
+  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
+    return (
+      <CartItemRadioButtons
+        productDetail={productDetail}
+        labels={labels}
+        index={itemIndex}
+        openedTile={openedTile}
+        setSelectedProductTile={setSelectedProductTile}
+        isEcomSoldout={isEcomSoldout}
+        isECOMOrder={isECOMOrder}
+        isBOSSOrder={isBOSSOrder}
+        isBOPISOrder={isBOPISOrder}
+        noBopisMessage={noBopisMessage}
+        noBossMessage={noBossMessage}
+        bossDisabled={bossDisabled}
+        bopisDisabled={bopisDisabled}
+        isBossEnabled={isBossEnabled}
+        isBopisEnabled={isBopisEnabled}
+        openPickUpModal={handleEditCartItemWithStore}
+        onPickUpOpenClick={onPickUpOpenClick}
+        orderId={orderId}
+      />
+    );
+  }
+  return <></>;
+};
+
+getCartRadioButtons.propTypes = {
+  productDetail: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  itemIndex: PropTypes.number.isRequired,
+  openedTile: PropTypes.number.isRequired,
+  setSelectedProductTile: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool.isRequired,
+  showOnReviewPage: PropTypes.bool.isRequired,
+  isEcomSoldout: PropTypes.bool.isRequired,
+  isECOMOrder: PropTypes.bool.isRequired,
+  isBOSSOrder: PropTypes.bool.isRequired,
+  isBOPISOrder: PropTypes.bool.isRequired,
+  noBopisMessage: PropTypes.string.isRequired,
+  noBossMessage: PropTypes.string.isRequired,
+  bossDisabled: PropTypes.bool.isRequired,
+  bopisDisabled: PropTypes.bool.isRequired,
+  isBossEnabled: PropTypes.bool.isRequired,
+  isBopisEnabled: PropTypes.bool.isRequired,
+  orderId: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+};
+
+/**
+ * @function renderUnavailableErrorMessage
+ * @param {Object} settings
+ * @returns {JSX} Returns Item Unavailable component with respective variation of text via passed input
+ * @memberof CartItemTile
+ */
+const renderUnavailableErrorMessage = ({
+  props: myProps,
+  isEcomSoldout,
+  bossDisabled,
+  isBOSSOrder,
+  bopisDisabled,
+  isBOPISOrder,
+  noBossMessage,
+  noBopisMessage,
+  availability,
+}) => {
+  const { labels } = myProps;
+  let unavailableMessage = '';
+  if (isEcomSoldout) {
+    unavailableMessage = labels.soldOutError;
+  } else if (isBOSSOrder) {
+    unavailableMessage = getBOSSUnavailabilityMessage(
+      bossDisabled,
+      noBossMessage,
+      availability,
+      labels
+    );
+  } else if (isBOPISOrder) {
+    unavailableMessage = getBOPISUnavailabilityMessage(
+      bopisDisabled,
+      noBopisMessage,
+      availability,
+      labels
+    );
+  } else {
+    unavailableMessage = getSTHUnavailabilityMessage(availability, labels);
+  }
+
+  return unavailableMessage ? (
+    <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={unavailableMessage} />
+  ) : null;
+};
+
+renderUnavailableErrorMessage.propTypes = {
+  props: PropTypes.shape({
+    labels: PropTypes.shape({
+      soldOutError: PropTypes.string.isRequired,
+      itemUnavailable: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  isEcomSoldout: PropTypes.bool.isRequired,
+  bossDisabled: PropTypes.bool.isRequired,
+  isBOSSOrder: PropTypes.bool.isRequired,
+  bopisDisabled: PropTypes.bool.isRequired,
+  isBOPISOrder: PropTypes.bool.isRequired,
+  noBossMessage: PropTypes.string.isRequired,
+  noBopisMessage: PropTypes.string.isRequired,
+  availability: PropTypes.string.isRequired,
+};
+
 const callEditMethod = props => {
   const { productDetail, onQuickViewOpenClick } = props;
   const {
@@ -228,6 +368,14 @@ const callEditMethod = props => {
   }
 };
 
+const onSwipeComplete = (props, swipe) => {
+  const { swipedElement, setSwipedElement } = props;
+  if (swipedElement && swipedElement !== swipe) {
+    swipedElement.recenter();
+  }
+  setSwipedElement(swipe);
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -237,6 +385,9 @@ export default {
   moveToBagSflItem,
   PriceOnReviewPage,
   getEditError,
+  getCartRadioButtons,
+  renderUnavailableErrorMessage,
   callEditMethod,
   handleEditCartItemWithStore,
+  onSwipeComplete,
 };
