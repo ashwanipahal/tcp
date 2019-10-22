@@ -26,7 +26,7 @@ const LeftTopRibbon = styled.View`
   width: 0;
   height: 59px;
   border-left-width: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  border-left-color: #000;
+  border-left-color: ${props => props.theme.colors.TEXT.DARKERGRAY};
   border-right-width: ${props => props.theme.spacing.ELEM_SPACING.XS};
   border-right-color: transparent;
   border-top-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
@@ -45,7 +45,7 @@ const LeftTopTriangle = styled.View`
   border-bottom-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   border-bottom-color: transparent;
   border-right-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-  border-right-color: white;
+  border-right-color: ${props => props.theme.colors.WHITE};
   transform: rotate(45deg);
   position: absolute;
   left: -4px;
@@ -59,7 +59,7 @@ const RightBottomRibbon = styled.View`
   width: 0;
   height: 59px;
   border-left-width: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  border-left-color: #000;
+  border-left-color: ${props => props.theme.colors.TEXT.DARKERGRAY};
   border-right-width: ${props => props.theme.spacing.ELEM_SPACING.XS};
   border-right-color: transparent;
   border-top-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
@@ -78,7 +78,7 @@ const RightBottomTriangle = styled.View`
   border-bottom-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   border-bottom-color: transparent;
   border-left-width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-  border-left-color: white;
+  border-left-color: ${props => props.theme.colors.WHITE};
   transform: rotate(45deg);
   position: absolute;
   right: -4px;
@@ -86,10 +86,10 @@ const RightBottomTriangle = styled.View`
 `;
 
 const ArrowImage = styled.Image`
-  height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   align-self: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
 

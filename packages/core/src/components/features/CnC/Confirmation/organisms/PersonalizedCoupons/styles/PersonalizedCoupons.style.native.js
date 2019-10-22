@@ -4,4 +4,8 @@ const ModalTextWrapper = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export default ModalTextWrapper;
+const CouponSectionWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+export { ModalTextWrapper, CouponSectionWrapper };

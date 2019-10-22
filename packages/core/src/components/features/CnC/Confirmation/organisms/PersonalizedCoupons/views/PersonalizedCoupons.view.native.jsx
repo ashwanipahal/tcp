@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { isCanada } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import CouponDetailModal from '../../../../common/organism/CouponAndPromos/views/CouponDetailModal.view';
 import PersonalizedCoupon from '../../../molecules/PersonalizedCoupon';
-import ModalTextWrapper from '../styles/PersonalizedCoupons.style.native';
+import { ModalTextWrapper, CouponSectionWrapper } from '../styles/PersonalizedCoupons.style.native';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
 
 export const PersonalizedCoupons = ({ coupons, couponLabels, labels }) => {
@@ -44,7 +43,7 @@ export const PersonalizedCoupons = ({ coupons, couponLabels, labels }) => {
   }
 
   return couponsList ? (
-    <View>
+    <CouponSectionWrapper>
       <BodyCopy
         mobilefontFamily="secondary"
         fontSize="fs12"
@@ -97,7 +96,7 @@ export const PersonalizedCoupons = ({ coupons, couponLabels, labels }) => {
           </ModalTextWrapper>
         </Modal>
       )}
-    </View>
+    </CouponSectionWrapper>
   ) : null;
 };
 
