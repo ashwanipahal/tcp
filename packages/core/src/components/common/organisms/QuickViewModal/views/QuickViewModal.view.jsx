@@ -132,6 +132,7 @@ class QuickViewModal extends React.Component {
       quickViewLabels,
       fromBagPage,
     } = this.props;
+    const [{ product }] = productInfo;
 
     return (
       <Modal
@@ -159,7 +160,7 @@ class QuickViewModal extends React.Component {
             btnClassName="added-to-bag"
             dataLocator={getLocator('global_addtocart_Button')}
             buttonLabel="Pickup In Store"
-            currentProduct={productInfo}
+            currentProduct={product}
             closeQuickViewClick={this.onCloseClick}
           />
         )}
