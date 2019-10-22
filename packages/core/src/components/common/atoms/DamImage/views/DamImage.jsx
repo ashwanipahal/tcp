@@ -50,7 +50,7 @@ const getBreakpointImgUrl = (type, props) => {
     brandName = itemBrand;
   }
 
-  const brandId = brandName.toUpperCase();
+  const brandId = brandName && brandName.toUpperCase();
   const apiConfigObj = getAPIConfig();
   const assetHost = apiConfigObj[`assetHost${brandId}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];

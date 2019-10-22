@@ -40,7 +40,7 @@ const DamImage = (props: Props) => {
   if (itemBrand) {
     brandId = itemBrand;
   }
-  const brandName = brandId.toUpperCase();
+  const brandName = brandId && brandId.toUpperCase();
   const assetHost = apiConfigObj[`assetHost${brandName}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandName}`];
   const uri = {
