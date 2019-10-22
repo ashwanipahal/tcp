@@ -4,16 +4,62 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
 <div
   className=" body"
 >
-  0
-  0
-</div>
-`;
-
-exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 2`] = `
-<div
-  className=" body"
->
-  0
+  <Styled(BodyCopy)
+    className="heading-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    headingLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="subheading-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    subHeadingLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="description-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    descriptionLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="remaining-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    12
+  </Styled(BodyCopy)>
   <div
     className="subtotal-section"
   >
