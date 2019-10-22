@@ -91,6 +91,12 @@ const ROUTES_LIST = [
     params: ['pid'],
   },
   {
+    noSlugPath: 'b',
+    path: '/b/:bid',
+    resolver: '/BundleProduct',
+    params: ['bid'],
+  },
+  {
     noSlugPath: 'search',
     path: '/search/:searchQuery?',
     resolver: '/SearchDetail',
