@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
 import CategoryListingRoot from '../styles/CategoryListing.style.native';
 
-const CategoryListing = ({ children }) => <CategoryListingRoot>{children}</CategoryListingRoot>;
+class CategoryListing extends PureComponent {
+  componentDidMount() {
+    const { getLayout } = this.props;
+    getLayout('boy', 'categoryListingPage');
+  }
+
+  render() {
+    return (
+      <CategoryListingRoot>
+        <View>
+          <Text>Heading</Text>
+        </View>
+        <View>
+          <Text>Promo Banner</Text>
+        </View>
+        <View>
+          <Text>Category List Panel</Text>
+        </View>
+        <View>
+          <Text>Recommendations</Text>
+        </View>
+        <View>
+          <Text>Get Candid Section</Text>
+        </View>
+        <View>
+          <Text>SEO Section</Text>
+        </View>
+        <View>
+          <Text>Ratings and Review</Text>
+        </View>
+      </CategoryListingRoot>
+    );
+  }
+}
 
 CategoryListing.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
-};
-
-CategoryListing.defaultProps = {
-  children: null,
+  getLayout: PropTypes.func.isRequired,
 };
 
 export default CategoryListing;
