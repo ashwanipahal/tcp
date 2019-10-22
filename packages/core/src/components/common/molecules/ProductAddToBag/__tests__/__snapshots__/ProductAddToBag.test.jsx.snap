@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-fjdhpX",
+                  "componentId": "sc-jzJRlG",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -46,6 +46,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -56,6 +59,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */
@@ -124,7 +130,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-fjdhpX",
+                "styledComponentId": "sc-jzJRlG",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -199,7 +205,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-fjdhpX",
+                  "componentId": "sc-jzJRlG",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -215,6 +221,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     ";
       margin-left: 25px;
       vertical-align: middle;
+      font-family: ",
+                    [Function],
+                    ";
     }
   }
 
@@ -225,6 +234,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    font-family: ",
+                    [Function],
+                    ";
   }
 
   /* Radio Button for size */
@@ -293,7 +305,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-fjdhpX",
+                "styledComponentId": "sc-jzJRlG",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],

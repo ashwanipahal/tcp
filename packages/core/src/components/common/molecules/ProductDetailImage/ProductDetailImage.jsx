@@ -58,7 +58,6 @@ const ProductDetailImage = props => {
   } = props;
   const [isImageLoaded, handleImageLoaded] = useBooleanState(false);
   let productSectionWidth;
-  const imgZoom = false;
   if (ExecutionEnvironment.canUseDOM) {
     productSectionWidth =
       document.getElementById('productDetailsSection') &&
@@ -83,7 +82,7 @@ const ProductDetailImage = props => {
                 height: '100%',
               },
               largeImage: {
-                src: zoomImageUrl,
+                src: changeImageURLToDOM(zoomImageUrl, 'w_500'),
                 width: 900,
                 height: 900,
                 alt: imageName,

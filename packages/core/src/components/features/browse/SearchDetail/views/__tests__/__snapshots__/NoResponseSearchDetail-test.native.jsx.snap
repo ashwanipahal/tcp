@@ -11,11 +11,21 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     fontWeight="semibold"
     margin="16px 0 0 12px"
     numberOfLines={null}
-    text="undefined \\"\\""
+    text="undefined \\"\\"."
     textDecoration={null}
   />
   <Styled(SearchBar)
-    labels={[Function]}
+    labels={
+      Object {
+        "lbl_check_your_spelling": "",
+        "lbl_didYouMean": "",
+        "lbl_narrow_searches": "",
+        "lbl_no_suggestion": "",
+        "lbl_simplified_keywords": "",
+        "lbl_tips": "",
+        "lbl_try_searching": "",
+      }
+    }
     openSearchProductPage={[Function]}
     showCustomizedSearch={true}
   />
@@ -51,28 +61,6 @@ exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = 
     margin={null}
     numberOfLines={null}
     text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.1000"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    margin={null}
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.1000"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    margin={null}
-    numberOfLines={null}
-    text="(undefined"
     textDecoration={null}
   />
   <Styled(BodyCopy)

@@ -23,7 +23,6 @@ const OutfitDetailsView = ({
   isPlcc,
   isInternationalShipping,
   currencySymbol,
-  priceCurrency,
   currencyExchange,
   handleAddToBag,
   addToBagError,
@@ -38,7 +37,7 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = labels && labels.lbl_outfit_title;
+  const viewDetails = labels && labels.lbl_outfit_viewdetail;
 
   return (
     <Row className={className}>
@@ -92,7 +91,6 @@ const OutfitDetailsView = ({
           />
           <ProductPrice
             currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
             currencyExchange={currencyExchange}
             {...prices}
             isCanada={isCanada}
@@ -124,8 +122,7 @@ OutfitDetailsView.propTypes = {
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
-  priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyExchange: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.bool,
@@ -140,9 +137,8 @@ OutfitDetailsView.defaultProps = {
   isCanada: false,
   isPlcc: false,
   isInternationalShipping: false,
-  currencySymbol: '$',
-  priceCurrency: 'USD',
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencySymbol: 'USD',
+  currencyExchange: 1,
   labels: {},
   addToBagError: false,
 };

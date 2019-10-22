@@ -104,16 +104,17 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       </Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
-        anchorVariation="secondary"
+        anchorVariation="primary"
         class="clickhere"
         colorName={null}
         customStyle={Object {}}
         dataLocator="couponDetailModal_applied_printAch"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
         text="PRINT_ANCHOR_TEXT"
-        underlineBlue={true}
+        underline={true}
         visible={false}
       />
       <Styled(View)
@@ -217,6 +218,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           fontFamily="secondary"
           fontSizeVariation="medium"
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text="TERMS_AND_CONDITIONS"
@@ -243,6 +245,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           dataLocator="couponDetailModal_applied_pp"
           fontSizeVariation="medium"
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text="PRIVACY_POLICY"

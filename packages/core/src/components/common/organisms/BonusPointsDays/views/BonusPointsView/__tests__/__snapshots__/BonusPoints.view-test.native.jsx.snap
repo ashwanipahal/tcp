@@ -35,6 +35,7 @@ exports[`BonusPointsView should render correctly 1`] = `
       <RichText
         dataLocator="bonus-points-details"
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {

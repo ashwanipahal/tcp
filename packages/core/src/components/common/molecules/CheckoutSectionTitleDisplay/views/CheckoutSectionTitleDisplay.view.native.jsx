@@ -13,7 +13,7 @@ class CheckoutSectionTitleDisplay extends React.PureComponent {
       <CheckoutSectionTitleWrapper>
         <CheckoutSectionTitle>
           <BodyCopy
-            mobileFontFamily="primary"
+            fontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
             data-locator="pickup-title"

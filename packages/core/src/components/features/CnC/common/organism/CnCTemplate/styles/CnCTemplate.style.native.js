@@ -33,7 +33,7 @@ export const BackLinkWrapperWrapper = styled.View`
 `;
 
 export const CheckoutButton = styled.TouchableOpacity`
-  background: ${props => props.theme.colors.PRIMARY.BLUE};
+  background: ${props => props.theme.colorPalette.blue.C900};
   display: flex;
   height: 42px;
   justify-content: center;

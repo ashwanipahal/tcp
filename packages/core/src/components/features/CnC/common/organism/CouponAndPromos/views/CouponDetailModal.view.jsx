@@ -49,7 +49,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
       <div className={className}>
         <BodyCopy
           fontWeight="black"
-          className="couponModal_modalTitle"
+          className="couponModal_modalTitle text-break"
           data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
         >
           {coupon.title}
@@ -71,7 +71,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             className="couponModal_modalbarcode"
           >
             <BodyCopy component="div" className="elem-mt-MED elem-mb-MED">
-              <Barcode value={coupon.id} barcodeId={coupon.id} />
+              <Barcode value={coupon.id} barcodeId={coupon.id} fontSize={24} />
             </BodyCopy>
           </BodyCopy>
         )}

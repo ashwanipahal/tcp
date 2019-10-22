@@ -19,8 +19,9 @@ import ROUTE_NAMES from '../reduxStore/routes';
 
 const getNewHeader = (navigation, showSearch, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
+  const capitalizedTitle = title && title.toUpperCase();
   return {
-    header: props => <HeaderNew {...props} title={title} showSearch={showSearch} />,
+    header: props => <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />,
     headerBackground: 'transparent',
   };
 };
@@ -68,7 +69,7 @@ const PlpStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         const title = navigation && navigation.getParam('title');
         const navTitle = (title && `"${title.toUpperCase()}"`) || '';
-        return getNewHeader(navigation, true, navTitle);
+        return getNewHeader(navigation, false, navTitle);
       },
     },
     [ROUTE_NAMES.CONFIRMATION]: {

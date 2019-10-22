@@ -27,7 +27,7 @@ export default {
   },
   FULL_BLEED: {
     small: true,
-    medium: false,
+    medium: true,
     large: false,
   },
   OFFSET_LEFT: {
