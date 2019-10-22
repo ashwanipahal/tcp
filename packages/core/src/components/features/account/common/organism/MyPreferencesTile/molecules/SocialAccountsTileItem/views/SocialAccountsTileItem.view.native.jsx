@@ -11,6 +11,11 @@ import {
   RightContainer,
 } from '../styles/SocialAccountsTileItem.style.native';
 
+const InstaGramIcon = require('../../../../../../../../../assets/instagram_share.png');
+const TwitterIcon = require('../../../../../../../../../assets/twitter_share.png');
+const FacebookIcon = require('../../../../../../../../../assets/facebook_share.png');
+
+
 class SocialAccountsTileItem extends React.PureComponent {
   getSocialAccounts = socialAccounts => {
     const { facebook, instagram, twitter } = socialAccounts;
@@ -65,30 +70,21 @@ class SocialAccountsTileItem extends React.PureComponent {
             <>
               {socialAccountsObject.facebook && (
                 <ImageComp
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwjPBkluzNkBYfy99tEVqZSdAMnpezBIfIOn2LeEzUSQN-d0qd',
-                  }}
+                  source={FacebookIcon}
                   width={30}
                   height={30}
                 />
               )}
               {socialAccountsObject.twitter && (
                 <ImageComp
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwjPBkluzNkBYfy99tEVqZSdAMnpezBIfIOn2LeEzUSQN-d0qd',
-                  }}
+                  source={TwitterIcon}
                   width={30}
                   height={30}
                 />
               )}
               {socialAccountsObject.instagram && (
                 <ImageComp
-                  source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwjPBkluzNkBYfy99tEVqZSdAMnpezBIfIOn2LeEzUSQN-d0qd',
-                  }}
+                  source={InstaGramIcon}
                   width={30}
                   height={30}
                 />

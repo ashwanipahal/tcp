@@ -26,6 +26,7 @@ export const MyPreferencesTile = ({
   customerPreferences,
   handleComponentChange,
 }) => {
+  console.info('customerPreferences-->>',customerPreferences)
   return (
     <MyPreferencesTileContainer>
       <BodyCopy
@@ -55,12 +56,14 @@ export const MyPreferencesTile = ({
         customerPreferences={customerPreferences}
       />
       <UnderlineStyle />
+      { !isCanada() ? (
+        <SocialAccountsTileItem
+          labels={labels}
+          handleComponentChange={handleComponentChange}
+          socialAccounts={socialAccounts}
+        />
+      ) : null}
 
-      <SocialAccountsTileItem
-        labels={labels}
-        handleComponentChange={handleComponentChange}
-        socialAccounts={socialAccounts}
-      />
       <ButtonWrapperStyle>
         <CustomButton
           text={getLabelValue(labels, 'lbl_prefrence_view_preferences', 'preferences')}

@@ -80,7 +80,7 @@ class MyPreferencesTile extends PureComponent {
 
     const customerPreferencesValue =
       (customerPreferences && this.getContactPreferencesValues(customerPreferences)) || {};
-
+    console.info('render customerPreferences',customerPreferences)
     return (
       <MyPreferencesTileComponent
         labels={labels}
