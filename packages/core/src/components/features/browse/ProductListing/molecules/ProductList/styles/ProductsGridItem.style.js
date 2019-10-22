@@ -18,6 +18,7 @@ const styles = css`
   .clear-button {
     border: none;
     background: transparent;
+    outline: none;
   }
   .fav-icon {
     width: 21px;
@@ -50,6 +51,8 @@ const styles = css`
 
   .purchase-section {
     margin-top: 16px;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-family: ${props => props.theme.typography.fonts.secondary};
   }
 
   .move-item-container {
@@ -57,9 +60,14 @@ const styles = css`
   }
 
   .move-item-button {
-    margin-top: 5px;
+    margin-top: 3px;
     padding: 0;
-    text-transform: capitalize;
+    text-transform: none;
+    text-align: left;
+    letter-spacing: normal;
+    outline: none;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    white-space: nowrap;
   }
 
   .move-item-section {
@@ -73,6 +81,11 @@ const styles = css`
     &.item__odd {
       right: 60px;
     }
+  }
+
+  .is-purchase-label {
+    display: inline-block;
+    padding-left: 2px;
   }
 
   .create-wish-list-section {
@@ -92,6 +105,8 @@ const styles = css`
 
   .wish-list-count-section {
     text-transform: lowercase;
+    display: inline-block;
+    padding-right: 2px;
   }
 
   .wish-list-count,
@@ -154,6 +169,24 @@ const styles = css`
 
   .empty-color-chips-container {
     min-height: 35px;
+  }
+
+  .product-image-container {
+    position: relative;
+  }
+
+  .sold-out-section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(224, 224, 224, 0.6);
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: ${props => props.theme.typography.fontSizes.fs22};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {

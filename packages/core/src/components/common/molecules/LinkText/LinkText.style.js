@@ -6,7 +6,7 @@ export default css`
     text-align: center;
 
     @media ${props => props.theme.mediaQuery.large} {
-      ${props => (!props.promo ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.XL}` : '')}
+      ${props => (!props.promo ? `margin-bottom: ${props.theme.spacing.ELEM_SPACING.MED}` : '')}
     }
     ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
   }
