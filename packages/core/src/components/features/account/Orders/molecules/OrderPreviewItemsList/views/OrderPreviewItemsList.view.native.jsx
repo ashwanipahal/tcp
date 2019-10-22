@@ -38,7 +38,7 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
               router,
             })
           }
-          text="VIEW FULL ORDER DETAILS"
+          text={getLabelValue(labels, 'lbl_orders_fullOrderDetail', 'orders')}
         />
       </ViewWithSpacing>
     </>

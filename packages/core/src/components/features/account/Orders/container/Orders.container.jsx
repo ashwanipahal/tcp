@@ -20,10 +20,11 @@ export class OrdersContainer extends PureComponent {
     fetchOrders(getSiteId());
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { orderDetailsData, ordersListItems, getOrderDetailsAction } = this.props;
     if (
       !orderDetailsData &&
+      !prevProps.ordersListItems &&
       ordersListItems &&
       ordersListItems.orders &&
       ordersListItems.orders.length > 0

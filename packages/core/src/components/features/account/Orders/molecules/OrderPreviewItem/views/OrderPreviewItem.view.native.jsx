@@ -79,7 +79,7 @@ const OrderPreviewItem = ({ className, ...otherProps }) => {
                 fontSize="fs14"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                text="Status: "
+                text={`${getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}: `}
               />
 
               <BodyCopy fontSize="fs14" fontFamily="secondary" text={item.trackingInfo[0].status} />
