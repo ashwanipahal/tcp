@@ -37,6 +37,13 @@ const ImageContainer = styled.View`
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
+const RightArrowImageContainer = styled.View`
+  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  flex: 1;
+  align-items: flex-end;
+`;
+
 const FavoritesContainer = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
@@ -72,4 +79,5 @@ export {
   TextWrapper,
   StyledImage,
   FavImageWrapper,
+  RightArrowImageContainer,
 };

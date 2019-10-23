@@ -22,7 +22,6 @@ import CustomButton from '../../../../common/atoms/Button';
 import Anchor from '../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
-import Notification from '../../../../common/molecules/Notification/views/Notification.native';
 import LineComp from '../../../../common/atoms/Line';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
@@ -34,6 +33,19 @@ class ForgotPasswordView extends React.Component<Props> {
     this.state = {
       email: '',
     };
+  }
+
+  componentDidUpdate() {
+    const { showNotification, labels, resetForgotPasswordErrorResponse, toastMessage } = this.props;
+    const errorObject =
+      resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
+    if (showNotification) {
+      toastMessage(
+        errorObject
+          ? getLabelValue(labels, 'lbl_forgotPassword_userNotAvailable', 'password')
+          : getLabelValue(labels, 'lbl_forgotPassword_apiError', 'password')
+      );
+    }
   }
 
   // Form submit user will submit the form with email id with right format else formsubmit will not trigger
@@ -108,18 +120,8 @@ class ForgotPasswordView extends React.Component<Props> {
   };
 
   render() {
-    const {
-      showNotification,
-      resetForgotPasswordErrorResponse,
-      labels,
-      successFullResetEmail,
-      updateHeader,
-    } = this.props;
-
+    const { labels, successFullResetEmail, updateHeader } = this.props;
     updateHeader(); // remove the header and border line of the modal
-
-    const errorObject =
-      resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
     return (
       <View>
         <FormStyleView>
@@ -142,17 +144,6 @@ class ForgotPasswordView extends React.Component<Props> {
               className="floatLt"
             />
           </FloatWrapper>
-          {showNotification && (
-            <Notification
-              status="error"
-              colSize={{ large: 11, medium: 7, small: 6 }}
-              message={
-                errorObject
-                  ? getLabelValue(labels, 'lbl_forgotPassword_userNotAvailable', 'password')
-                  : getLabelValue(labels, 'lbl_forgotPassword_apiError', 'password')
-              }
-            />
-          )}
           {successFullResetEmail ? this.showSuccessullEmail() : this.showResetEmailSection()}
           <LineComp marginTop={28} />
         </FormStyleView>
@@ -168,6 +159,11 @@ ForgotPasswordView.propTypes = {
   labels: PropTypes.string.isRequired,
   successFullResetEmail: PropTypes.string.isRequired,
   handleSubmit: PropTypes.string.isRequired,
+  toastMessage: PropTypes.func,
+};
+
+ForgotPasswordView.defaultProps = {
+  toastMessage: () => {},
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['Email']));
