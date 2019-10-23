@@ -33,6 +33,7 @@ import {
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isCanada, isMobileApp } from '../../../../../utils';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -99,7 +100,8 @@ export function* updateShipmentMethodSelection({ payload }) {
       payload.id,
       addressId,
       false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
-      transVibesSmsPhoneNo
+      transVibesSmsPhoneNo,
+      yield select(BagPageSelectors.getErrorMapping)
     );
 
     yield put(
@@ -184,9 +186,10 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 export function* addAndSetGiftWrappingOptions(payload) {
+  const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
-      const res = yield call(addGiftWrappingOption, payload);
+      const res = yield call(addGiftWrappingOption, payload, errorMappings);
       if (res) {
         yield put(setGiftWrap(payload));
       }

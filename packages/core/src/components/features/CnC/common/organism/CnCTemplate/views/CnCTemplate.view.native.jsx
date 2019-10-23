@@ -14,9 +14,9 @@ import {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  CouponsWrapper,
 } from '../styles/CnCTemplate.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 
@@ -95,24 +95,7 @@ const CnCCommonTemplate = ({
               />
             </BannerWrapper>
           )}
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
+          <PersonalizedCoupons />
         </View>
       )}
     </>
