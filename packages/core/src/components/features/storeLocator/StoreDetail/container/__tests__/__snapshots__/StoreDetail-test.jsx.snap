@@ -411,6 +411,7 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
           ]
         }
       />
+      <Styled(RichText) />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)>
@@ -508,6 +509,43 @@ exports[`StoreDetail component StoreDetail component renders correctly with prop
           ]
         }
       />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(RichText) />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(RichText) />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(RichText) />
     </Styled(Col)>
   </Styled(Row)>
 </div>

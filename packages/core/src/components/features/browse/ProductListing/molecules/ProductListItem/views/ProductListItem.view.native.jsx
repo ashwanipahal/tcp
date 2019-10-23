@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -86,8 +87,9 @@ const ListItem = props => {
     productImageWidth,
     margins,
     paddings,
+    viaModule,
   } = props;
-
+  logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
   const { name } = productInfo;
@@ -393,6 +395,7 @@ ListItem.propTypes = {
   productImageWidth: PropTypes.number,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  viaModule: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -411,6 +414,7 @@ ListItem.defaultProps = {
   productImageWidth: '',
   margins: null,
   paddings: '12px 0 12px 0',
+  viaModule: '',
 };
 
 export default withStyles(ListItem, styles);

@@ -20,6 +20,8 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   isProductDetailView,
+  pageCategory,
+  isConfirmationPage,
 }) => {
   const {
     estimatedRewards,
@@ -41,6 +43,8 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       isProductDetailView={isProductDetailView}
+      pageCategory={pageCategory}
+      isConfirmationPage={isConfirmationPage}
     />
   );
 };
@@ -53,6 +57,8 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
+  pageCategory: PropTypes.string,
+  isConfirmationPage: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -60,7 +66,9 @@ LoyaltyBannerContainer.defaultProps = {
   isGuestCheck: false,
   isPlcc: false,
   currencySymbol: '',
-  isProductDetailView: '',
+  isProductDetailView: false,
+  pageCategory: '',
+  isConfirmationPage: false,
 };
 
 /* istanbul ignore next */
@@ -71,6 +79,8 @@ export function mapStateToProps(state) {
     thresholdValue: getThresholdValue(state),
     isGuestCheck: isGuest(state),
     isPlcc: isPlccUser(state),
+    // isGuestCheck: false,
+    // isPlcc: true,
     currencySymbol: getCurrencySymbol(state),
   };
 }

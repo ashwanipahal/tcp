@@ -1,1 +1,2 @@
-export { default, generateBrowseDataLayer } from './browse.dataLayer';
+export { generateBrowseDataLayer } from './browse.dataLayer';
+export { generateHomePageDataLayer } from './homepage.dataLayer';

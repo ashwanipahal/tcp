@@ -5,6 +5,7 @@ exports[`Shipping Form should render correctly 1`] = `
   <Styled(CheckoutSectionTitleDisplay)
     title="lbl_shipping_header"
   />
+  <[object Object] />
   <Styled(BodyCopy)
     className="elem-mb-XS elem-mt-MED hide-on-desktop hide-on-tablet"
     color="text.primary"
@@ -27,6 +28,7 @@ exports[`Shipping Form should render correctly 1`] = `
     onSubmit={[Function]}
   >
     <Styled(RegisteredShippingForm)
+      ServerErrors={Object {}}
       addressLabels={
         Object {
           "addressFormLabels": Object {},
