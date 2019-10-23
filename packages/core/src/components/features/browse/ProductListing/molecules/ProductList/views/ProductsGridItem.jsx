@@ -327,7 +327,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct },
+        productInfo: { bundleProduct, isGiftCard },
       },
       removeFavItem,
       isFavoriteView,
@@ -352,7 +352,10 @@ class ProductsGridItem extends React.PureComponent {
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
         onClick={
-          isShowQuickView && !isBundleProduct
+          // eslint-disable-next-line no-nested-ternary
+          isGiftCard
+            ? () => {} // TODO Gift Card Quick View Modal
+            : isShowQuickView && !isBundleProduct
             ? this.handleQuickViewOpenClick
             : this.handleViewBundleClick
         }

@@ -46,7 +46,8 @@ const renderAddToBagContainer = (
   renderPriceOnly,
   selectedColorIndex,
   colorMapData,
-  onQuickViewOpenClick
+  onQuickViewOpenClick,
+  isGiftCard
 ) => {
   if (renderVariation && !renderPriceOnly) return null;
   return (
@@ -57,9 +58,12 @@ const renderAddToBagContainer = (
         buttonVariation="variable-width"
         data-locator=""
         text="ADD TO BAG"
-        onPress={() => {
-          handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick);
-        }}
+        onPress={
+          () =>
+            !isGiftCard
+              ? handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick)
+              : () => {} // TODO Quick View for Gift Card
+        }
         accessibilityLabel="add to bag"
       />
     </AddToBagContainer>
@@ -88,7 +92,7 @@ const ListItem = props => {
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
-  const { name } = productInfo;
+  const { name, isGiftCard } = productInfo;
   const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
@@ -139,7 +143,8 @@ const ListItem = props => {
         renderPriceOnly,
         selectedColorIndex,
         colorMapData,
-        onQuickViewOpenClick
+        onQuickViewOpenClick,
+        isGiftCard
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && <RenderMoveToWishlist />}

@@ -150,11 +150,13 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
-          <RelatedOutfits
-            pdpLabels={pdpLabels}
-            navigation={navigation}
-            selectedColorProductId={selectedColorProductId}
-          />
+          {!currentProduct.isGiftCard ? (
+            <RelatedOutfits
+              pdpLabels={pdpLabels}
+              navigation={navigation}
+              selectedColorProductId={selectedColorProductId}
+            />
+          ) : null}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>
