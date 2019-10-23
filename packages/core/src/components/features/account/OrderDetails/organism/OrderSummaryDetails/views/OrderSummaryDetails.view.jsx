@@ -15,7 +15,7 @@ import formatAmount from '../utils';
 const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
   const { summary } = orderDetailsData || {};
   const {
-    // canceledItem,
+    canceledItems,
     couponsTotal,
     currencySymbol,
     grandTotal,
@@ -52,7 +52,8 @@ const OrderSummaryDetails = ({ className, ordersLabels, orderDetailsData }) => {
       <Row fullBleed className="elem-mb-XS">
         <Col colSize={{ large: 7, medium: 4, small: 3 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
+            {`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems ||
+              canceledItems}):`}
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 5, medium: 4, small: 3 }}>

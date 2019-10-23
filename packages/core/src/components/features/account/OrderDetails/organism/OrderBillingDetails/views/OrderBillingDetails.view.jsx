@@ -38,7 +38,7 @@ const OrderBillingDetails = ({ className, orderDetailsData, ordersLabels }) => {
                 className="elem-mr-XS card-border"
               />
               <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                {card.cardType.toUpperCase() !== cardIconMapping.VENMO
+                {card.cardType.toUpperCase() !== 'VENMO'
                   ? `${getLabelValue(ordersLabels, 'lbl_orders_ending')} ${card.endingNumbers.slice(
                       -4
                     )}`
