@@ -24,7 +24,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
               colSize={{
                 small: 3,
                 large: 6,
-                medium: 5,
+                medium: 6,
               }}
             >
               <BodyCopy
@@ -40,7 +40,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
               colSize={{
                 small: 3,
                 large: 6,
-                medium: 3,
+                medium: 2,
               }}
             >
               <Row fullBleed>
