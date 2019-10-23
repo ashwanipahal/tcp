@@ -48,12 +48,19 @@ class ModuleQ extends React.PureComponent {
     const { shopThisLookLabel } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
+    const outfitParams = pdpUrl && pdpUrl.split('/');
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={pdpUrl}
+          to={
+            outfitParams &&
+            outfitParams.length > 1 &&
+            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+              outfitParams[outfitParams.length - 1]
+            }`
+          }
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
