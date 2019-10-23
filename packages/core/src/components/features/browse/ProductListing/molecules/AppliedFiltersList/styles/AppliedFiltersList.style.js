@@ -20,7 +20,7 @@ export default css`
       letter-spacing: 0;
       line-height: 1.42;
       display: inline-block;
-      margin-right: 15px;
+      margin-right: 8px;
     }
 
     .applied-filter-list {

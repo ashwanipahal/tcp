@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactPreferencesTileItem component should render correctly  1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_preference_tileContactPreference"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(ImageComp)
+          alt=""
+          height={30}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/sms-disabled.png",
+            }
+          }
+          url=""
+          width={30}
+        />
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          spacingStyles="margin-top-XS"
+          text="lbl_preference_tileTextText"
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(View)
+        spacingStyles="margin-left-LRG"
+      >
+        <Styled(ImageComp)
+          alt=""
+          height={30}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/push-disabled.png",
+            }
+          }
+          url=""
+          width={24}
+        />
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          spacingStyles="margin-top-XS"
+          text="lbl_preference_tileAppText"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        color="gray.900"
+        colorName={null}
+        customStyle={Object {}}
+        dataLocator=""
+        fontSizeVariation="large"
+        locator=""
+        margins={null}
+        noLink={true}
+        onPress={[Function]}
+        text="lbl_preference_tileAdd"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;

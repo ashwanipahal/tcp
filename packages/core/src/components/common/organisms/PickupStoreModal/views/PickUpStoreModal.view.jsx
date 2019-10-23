@@ -89,6 +89,7 @@ class PickUpStoreModalView extends React.Component {
      */
     addItemToCartInPickup: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}),
+    alwaysSearchForBOSS: PropTypes.bool.isRequired,
 
     /**
      * Function to call when the item has been successfully added to, or updated
@@ -297,7 +298,7 @@ class PickUpStoreModalView extends React.Component {
 
   deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount) {
     const { SkuSelectedValues } = this.state;
-    const { getUserCartStoresAndSearch } = this.props;
+    const { getUserCartStoresAndSearch, alwaysSearchForBOSS } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
     const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
@@ -306,13 +307,16 @@ class PickUpStoreModalView extends React.Component {
     this.skuId = skuId;
     this.quantity = quantity;
     getUserCartStoresAndSearch({
-      skuId,
-      quantity,
-      distance,
-      locationPromise,
-      variantId,
-      cartItemsCount,
-      country,
+      apiPayload: {
+        skuId,
+        quantity,
+        distance,
+        locationPromise,
+        variantId,
+        cartItemsCount,
+        country,
+      },
+      alwaysSearchForBOSS,
     });
   }
 

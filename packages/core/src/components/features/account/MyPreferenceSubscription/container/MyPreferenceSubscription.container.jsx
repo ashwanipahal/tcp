@@ -54,10 +54,11 @@ export class MyPreferenceSubscription extends PureComponent {
   };
 
   handleSubmitModalPopup = data => {
+    const { activeModal } = this.state;
     const { submitSubscribeBrand, smsPhone, gymSmsPhone } = this.props;
     let formSubscribeData = {};
 
-    if (data.activeBrand === 'tcpWebSubscribe') {
+    if (activeModal === 'tcpWebSubscribe') {
       formSubscribeData = {
         brand: 'tcp',
         mobileNumber: data.phoneNumber,
@@ -67,14 +68,14 @@ export class MyPreferenceSubscription extends PureComponent {
             preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'marketingPreferenceEmail',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
         ],
       };
     }
 
-    if (data.activeBrand === 'tcpWebUnsubscribe') {
+    if (activeModal === 'tcpWebUnsubscribe') {
       formSubscribeData = {
         brand: 'tcp',
         mobileNumber: smsPhone,
@@ -84,41 +85,41 @@ export class MyPreferenceSubscription extends PureComponent {
             preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'marketingPreferenceEmail',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
           },
         ],
       };
     }
 
-    if (data.activeBrand === 'gymboreeWebSubscribe') {
+    if (activeModal === 'gymboreeWebSubscribe') {
       formSubscribeData = {
         brand: 'gymboree',
         mobileNumber: data.phoneNumber,
         CustomerPreferencesGym: [
           {
             isModeSelected: true,
-            preferenceMode: 'gymPlaceRewardsSms',
+            preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'gymMarketingPreferenceSMS',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
         ],
       };
     }
 
-    if (data.activeBrand === 'gymboreeWebUnsubscribe') {
+    if (activeModal === 'gymboreeWebUnsubscribe') {
       formSubscribeData = {
         brand: 'gymboree',
         mobileNumber: gymSmsPhone,
         CustomerPreferencesGym: [
           {
             isModeSelected: false,
-            preferenceMode: 'gymPlaceRewardsSms',
+            preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'gymMarketingPreferenceSMS',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
           },
         ],
@@ -133,17 +134,15 @@ export class MyPreferenceSubscription extends PureComponent {
    * @function onSelectStore function to handle the toggling og checkbox
    * @param {object} event - event object
    */
-  onSubscribe = event => {
-    event.preventDefault();
-    const { target } = event;
-    if (target.name === 'tcpWebSubscribe') {
+  onSubscribe = subscribeBrand => {
+    if (subscribeBrand === 'tcpWebSubscribe') {
       this.setState({
         modalVisible: true,
         activeModal: 'tcpWebSubscribe',
       });
     }
 
-    if (target.name === 'gymboreeWebSubscribe') {
+    if (subscribeBrand === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
         activeModal: 'gymboreeWebSubscribe',
@@ -152,17 +151,15 @@ export class MyPreferenceSubscription extends PureComponent {
     return true;
   };
 
-  onUnsubscribe = event => {
-    event.preventDefault();
-    const { target } = event;
-    if (target.name === 'tcpWebSubscribe') {
+  onUnsubscribe = subscribeBrand => {
+    if (subscribeBrand === 'tcpWebSubscribe') {
       this.setState({
         modalVisible: true,
         activeModal: 'tcpWebUnsubscribe',
       });
     }
 
-    if (target.name === 'gymboreeWebSubscribe') {
+    if (subscribeBrand === 'gymboreeWebSubscribe') {
       this.setState({
         modalVisible: true,
         activeModal: 'gymboreeWebUnsubscribe',
@@ -206,14 +203,19 @@ export class MyPreferenceSubscription extends PureComponent {
             overlayClassName="TCPModal__Overlay"
             className="TCPModal__Content"
             maxWidth="457px"
-            minHeight="517px"
             fixedWidth
+            heading=" "
+            heightConfig={{
+              maxHeight: '100%',
+              height: 'auto',
+            }}
+            horizontalBar={false}
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >
             {activeModal === 'tcpWebSubscribe' && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
-                handleSubmitModalPopup={this.handleSubmitModalPopup}
+                onSubmit={this.handleSubmitModalPopup}
                 phoneNumber={phoneNumber}
                 initialValues={this.initialValuesSubscribe}
                 labels={labels}
@@ -223,7 +225,7 @@ export class MyPreferenceSubscription extends PureComponent {
             {activeModal === 'tcpWebUnsubscribe' && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
-                handleSubmitModalPopup={this.handleSubmitModalPopup}
+                onSubmit={this.handleSubmitModalPopup}
                 phoneNumber={smsPhone}
                 labels={labels}
                 activeModal={activeModal}
@@ -232,7 +234,7 @@ export class MyPreferenceSubscription extends PureComponent {
             {activeModal === 'gymboreeWebSubscribe' && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
-                handleSubmitModalPopup={this.handleSubmitModalPopup}
+                onSubmit={this.handleSubmitModalPopup}
                 phoneNumber={phoneNumber}
                 initialValues={this.initialValuesSubscribe}
                 labels={labels}
@@ -242,7 +244,7 @@ export class MyPreferenceSubscription extends PureComponent {
             {activeModal === 'gymboreeWebUnsubscribe' && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
-                handleSubmitModalPopup={this.handleSubmitModalPopup}
+                onSubmit={this.handleSubmitModalPopup}
                 phoneNumber={gymSmsPhone}
                 labels={labels}
                 activeModal={activeModal}

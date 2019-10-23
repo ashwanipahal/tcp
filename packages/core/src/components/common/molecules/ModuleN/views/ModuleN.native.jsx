@@ -12,7 +12,7 @@ import {
   DivImageCTAContainer,
   HeaderContainer,
 } from '../ModuleN.styles.native';
-import config from '../config';
+import { config } from '../config';
 import { isGymboree } from '../../../../../utils';
 
 /**

@@ -239,7 +239,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
           id="phoneNumber"
           name="phoneNumber"
           normalize={[Function]}
-          placeholder="Mobile Phone Number"
+          placeholder="lbl_preference_mobileNumber"
           type="tel"
         />
       </Styled(BodyCopy)>
