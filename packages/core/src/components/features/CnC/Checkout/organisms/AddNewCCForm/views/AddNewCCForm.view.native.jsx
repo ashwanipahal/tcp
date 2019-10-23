@@ -41,6 +41,7 @@ class AddNewCCForm extends React.PureComponent {
       expYear: PropTypes.string,
       cvvCode: PropTypes.string,
     }),
+    onCardFocus: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -181,6 +182,7 @@ class AddNewCCForm extends React.PureComponent {
       editMode,
       isSameAsShippingChecked,
       selectedCard,
+      onCardFocus,
     } = this.props;
     const { expMonth, expYear } = this.getExpData();
     return (
@@ -204,6 +206,7 @@ class AddNewCCForm extends React.PureComponent {
           selectedCard={selectedCard}
           isEdit={editMode}
           dto={selectedCard}
+          onCardFocus={onCardFocus}
         />
         {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>
