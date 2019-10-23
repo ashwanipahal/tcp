@@ -66,11 +66,6 @@ const FavoritesView = props => {
     } else if (tcpSelected) {
       filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
     }
-    console.log('logs-filters: ', filters);
-    console.log('logs-labels: ', labels);
-    console.log('logs-filteredItemsList: ', filteredItemsList);
-    console.log('logs-filteredId, sortId: ', filteredId, sortId);
-    console.log('logs-getSortsList: ', getSortsList(labels));
   }
 
   const productsList = !!filteredItemsList && (
