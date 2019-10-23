@@ -1,6 +1,7 @@
 import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import COUPON_CONSTANTS from '../Coupon.constants';
+import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
@@ -102,9 +103,10 @@ export function* getAllCoupons() {
 }
 
 export function* CouponSaga() {
+  const cachedAllCoupons = validateReduxCache(getAllCoupons);
+  yield takeLatest(COUPON_CONSTANTS.GET_COUPON_LIST, cachedAllCoupons);
   yield takeLatest(COUPON_CONSTANTS.APPLY_COUPON, applyCoupon);
   yield takeLatest(COUPON_CONSTANTS.REMOVE_COUPON, removeCoupon);
-  yield takeLatest(COUPON_CONSTANTS.GET_COUPON_LIST, getAllCoupons);
 }
 
 export default CouponSaga;
