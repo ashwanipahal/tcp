@@ -30,10 +30,10 @@ class MyPreferencesTile extends PureComponent {
       getContactPreferences,
       customerPreferences,
     } = this.props;
-    console.info('customerPreferences-->',customerPreferences)
-    // if (!customerPreferences) {
+
+    if (!customerPreferences) {
       getContactPreferences();
-    // }
+    }
 
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
@@ -44,7 +44,6 @@ class MyPreferencesTile extends PureComponent {
   }
 
   getContactPreferencesValues = customerPreferencesObject => {
-    console.info('customerPreferencesObject-->',customerPreferencesObject)
     const { CustomerPreferences, CustomerPreferencesGym } = customerPreferencesObject;
 
     const customerPreferences = isGymboree() ? CustomerPreferencesGym : CustomerPreferences;
