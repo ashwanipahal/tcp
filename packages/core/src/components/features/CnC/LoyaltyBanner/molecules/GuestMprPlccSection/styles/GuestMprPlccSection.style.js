@@ -213,7 +213,10 @@ const Styles = css`
         .heading-val {
           ${paddingTopSm(props)}
           ${fontSize16(props)}
-          ${colorTheme(props)}
+
+          ${
+            props.earnedReward ? colorTheme(props) : `color: ${props.theme.colorPalette.gray[900]};`
+          }
           @media ${props.theme.mediaQuery.medium} {
             ${fontSize14(props)}
           }

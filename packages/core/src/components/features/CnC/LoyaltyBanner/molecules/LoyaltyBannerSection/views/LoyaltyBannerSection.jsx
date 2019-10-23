@@ -13,6 +13,13 @@ import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommo
 //   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
 // };
 
+const setHeadingLabelUpperCase = (headingLabel, isReviewPage, isConfirmationPage) => {
+  if (isReviewPage || isConfirmationPage) {
+    return headingLabel.toUpperCase();
+  }
+  return headingLabel;
+};
+
 const LoyaltyBannerSection = props => {
   const {
     className,
@@ -38,9 +45,6 @@ const LoyaltyBannerSection = props => {
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
-  // isReviewPage = true;
-  // isConfirmationPage = false;
-  // isAddedToBagPage = false;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -65,6 +69,16 @@ const LoyaltyBannerSection = props => {
       value: LoyaltyLabels.rewardPointsValueFn,
       classValue: `${className} mpr-plcc-theme`,
     },
+    {
+      key: '#br#',
+      value: '<br/>',
+      classValue: `${className} mpr-plcc-theme`,
+    },
+    {
+      key: '#myPlaceRewards#',
+      value: 'MY PLACE REWARDS',
+      classValue: `${className} mpr-plcc-theme`,
+    },
   ];
   const utilArrSectionSymbol = [
     {
@@ -80,6 +94,7 @@ const LoyaltyBannerSection = props => {
     utilArrSectionSymbol
   );
 
+  headingLabel = setHeadingLabelUpperCase(headingLabel, isReviewPage, isConfirmationPage);
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
   subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeading) : false;
   descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
