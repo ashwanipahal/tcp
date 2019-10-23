@@ -79,12 +79,13 @@ class StoresCountryTile extends PureComponent {
           <CollapsibleLocations
             header={this.getCollapsibleHeader()}
             body={this.getCollapsibleContent()}
-            className={className}
             iconClose="plus-icon"
             iconOpen="minus-icon"
             defaultOpen={isDefaultOpen}
             id={`scroll-${title}`}
             onToggleCallback={onToggleCallback}
+            className={isDefaultOpen ? `${className}hanhun` : `${className}`}
+            isDefaultView
           />
         </div>
       </div>
