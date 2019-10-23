@@ -44,6 +44,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_defaultCardName"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -61,6 +62,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
             ]
           }
           numberOfLines={null}
+          text="lbl_payment_defaultPayment"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -78,7 +80,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
       <Styled(Text)>
@@ -89,7 +91,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
           fontWeight="semibold"
           margin={null}
           numberOfLines={null}
-          text="undefined10/2025"
+          text="lbl_payment_expDate10/2025"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -157,8 +159,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         underline={true}
         visible={false}
       />
@@ -171,8 +174,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -225,6 +229,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_defaultCardName"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -236,8 +241,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_common_makeDefault"
       to="/#"
       underline={true}
       visible={false}
@@ -255,7 +261,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
       <Styled(Text)>
@@ -266,7 +272,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
           fontWeight="semibold"
           margin={null}
           numberOfLines={null}
-          text="undefined10/2025"
+          text="lbl_payment_expDate10/2025"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -334,8 +340,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         underline={true}
         visible={false}
       />
@@ -348,8 +355,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -420,7 +428,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
     </View>
@@ -464,72 +472,11 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
-    />
-  </View>
+  <View />
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -541,11 +488,11 @@ exports[`CardTile should render correctly with gift card 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
     />
@@ -559,8 +506,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -630,7 +578,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
     </View>
@@ -674,71 +622,17 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
+    <RecaptchaModal
+      onClose={[Function]}
+      onMessage={[Function]}
+      setRecaptchaModalMountedState={true}
+      toggleRecaptchaModal={[Function]}
     />
   </View>
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -750,11 +644,11 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
     />
@@ -768,8 +662,9 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -822,6 +717,7 @@ exports[`CardTile should render correctly with master card 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_defaultCardName"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -833,8 +729,9 @@ exports[`CardTile should render correctly with master card 1`] = `
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_common_makeDefault"
       to="/#"
       underline={true}
       visible={false}
@@ -852,7 +749,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
       <Styled(Text)>
@@ -863,7 +760,7 @@ exports[`CardTile should render correctly with master card 1`] = `
           fontWeight="semibold"
           margin={null}
           numberOfLines={null}
-          text="undefined10/2025"
+          text="lbl_payment_expDate10/2025"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -931,8 +828,9 @@ exports[`CardTile should render correctly with master card 1`] = `
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         underline={true}
         visible={false}
       />
@@ -945,8 +843,9 @@ exports[`CardTile should render correctly with master card 1`] = `
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -1016,7 +915,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
     </View>
@@ -1060,71 +959,17 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <View>
-    <Styled(View)>
-      <Recaptcha
-        onMessage={[Function]}
-        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        style={Object {}}
-        url="https://www.childrensplace.com"
-      />
-    </Styled(View)>
-    <Field
-      className="visibility-recaptcha"
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "_foldedDefaultProps": Object {
-            "ariaLabel": "input",
-            "dataLocator": "input-field",
-            "enableSuccessCheck": false,
-            "id": "input",
-            "keyboardType": "default",
-            "label": "input",
-            "marginBottom": true,
-            "meta": Object {
-              "error": "",
-              "touched": "",
-            },
-            "onChangeText": [Function],
-            "secureTextEntry": false,
-            "showErrorIcon": true,
-            "showSuccessCheck": false,
-            "successText": "",
-            "type": "text",
-          },
-          "attrs": Array [],
-          "displayName": "Styled(TextBox)",
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              "
-    ",
-              "
-  ",
-              [Function],
-              ";
-",
-              ";
-  ",
-            ],
-          },
-          "render": [Function],
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
-      }
-      data-locator="gift-card-recaptchcb"
-      id="recaptchaToken"
-      label=""
-      name="recaptchaToken"
-      title=""
-      type="hidden"
+    <RecaptchaModal
+      onClose={[Function]}
+      onMessage={[Function]}
+      setRecaptchaModalMountedState={true}
+      toggleRecaptchaModal={[Function]}
     />
   </View>
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -1136,11 +981,11 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
     />
@@ -1154,8 +999,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         dataLocator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -1208,6 +1054,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_plccCard"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -1219,8 +1066,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_common_makeDefault"
       to="/#"
       underline={true}
       visible={false}
@@ -1238,7 +1086,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
     </View>
@@ -1305,8 +1153,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         underline={true}
         visible={false}
       />
@@ -1319,8 +1168,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -1375,6 +1225,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_venmoAccount"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -1449,8 +1300,9 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         dataLocator="payment-venmodeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />
@@ -1503,6 +1355,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
           ]
         }
         numberOfLines={null}
+        text="lbl_payment_defaultCardName"
         textDecoration={null}
       />
     </Styled(Text)>
@@ -1514,8 +1367,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_common_makeDefault"
       to="/#"
       underline={true}
       visible={false}
@@ -1533,7 +1387,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="undefined6765"
+        text="lbl_payment_cardNum6765"
         textDecoration={null}
       />
       <Styled(Text)>
@@ -1544,7 +1398,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
           fontWeight="semibold"
           margin={null}
           numberOfLines={null}
-          text="undefined10/2025"
+          text="lbl_payment_expDate10/2025"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -1612,8 +1466,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_edit"
         underline={true}
         visible={false}
       />
@@ -1626,8 +1481,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
         dataLocator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        margins={null}
         onPress={[Function]}
-        text=""
+        text="lbl_common_delete"
         underline={true}
         visible={false}
       />

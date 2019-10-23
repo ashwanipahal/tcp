@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { setTestId, getLocator } from '@tcp/core/src/utils';
+import { setTestId, getLocator, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import { StyledText } from '../../../../../../styles/globalStyles/StyledText.style';
-
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
@@ -18,6 +17,7 @@ type Props = {
   onPress?: Function,
   accessibilityLabel?: string,
   colorName?: string,
+  margins?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -41,8 +41,9 @@ const Anchor = ({
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
-    } else {
-      navigateToPage(url, navigation);
+    } else if (navigation) {
+      const cmsValidatedUrl = configureInternalNavigationFromCMSUrl(url);
+      navigateToPage(cmsValidatedUrl, navigation);
     }
   };
 
@@ -89,6 +90,7 @@ Anchor.defaultProps = {
   onPress: null,
   accessibilityLabel: '',
   colorName: null,
+  margins: null,
 };
 
 export default withStyles(Anchor, AnchorStyles);

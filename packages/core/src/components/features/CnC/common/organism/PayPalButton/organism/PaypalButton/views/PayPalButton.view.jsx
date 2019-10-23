@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isClient } from '@tcp/core/src/utils';
 import { requireNamedOnlineModule } from '../../../../../../../../../utils/resourceLoader';
 import ErrorMessage from '../../../../../molecules/ErrorMessage';
 import { getLocator } from '../../../../../../../../../utils';
@@ -8,9 +9,12 @@ import errorBoundary from '../../../../../../../../common/hoc/withErrorBoundary'
 class PayPalButton extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line no-unused-expressions
-    window.paypal
-      ? setTimeout(this.renderPayPalButton)
-      : requireNamedOnlineModule('paypal').then(this.renderPayPalButton);
+    if (window.paypal) {
+      setTimeout(this.renderPayPalButton);
+    } else if (isClient() && !window.isPaypalCalled) {
+      requireNamedOnlineModule('paypal').then(this.renderPayPalButton);
+      window.isPaypalCalled = true;
+    }
   }
 
   renderPayPalButton = () => {
@@ -26,7 +30,7 @@ class PayPalButton extends React.Component {
   };
 
   render() {
-    const { className, error, isAddToBagModal } = this.props;
+    const { className, error, isAddToBagModal, containerId } = this.props;
     return (
       <div>
         {error && !isAddToBagModal && <ErrorMessage error={error} />}
@@ -34,7 +38,7 @@ class PayPalButton extends React.Component {
         <div
           data-locator={getLocator('addedtobag_btnpaypal')}
           className={className}
-          id="paypal-button-container"
+          id={containerId}
         />
       </div>
     );

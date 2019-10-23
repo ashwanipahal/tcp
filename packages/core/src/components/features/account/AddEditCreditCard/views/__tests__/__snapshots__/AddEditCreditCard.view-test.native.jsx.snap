@@ -3,12 +3,14 @@
 exports[`AddEditCreditCard component should renders correctly 1`] = `
 <Fragment>
   <ReduxForm
+    addressFormLabels={Object {}}
     destroyOnUnmount={true}
     dto={Object {}}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="addEditCreditCard"
     getFormState={[Function]}
+    initialValues={Object {}}
     isEdit={false}
     keepDirtyOnReinitialize={false}
     labels={
@@ -18,7 +20,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
       }
     }
     onClose={[Function]}
-    onFileAddresskey=""
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     selectedCard={
@@ -43,6 +45,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
 exports[`AddEditCreditCard component should renders correctly when showCreditCardFields is false 1`] = `
 <Fragment>
   <Connect(AddressVerification)
+    heading="ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD"
     labels={
       Object {
         "addressBook": Object {},
@@ -74,7 +77,7 @@ exports[`AddEditCreditCard component should renders correctly when showCreditCar
     }
     mailingAddress={false}
     onClose={[Function]}
-    onFileAddresskey=""
+    onFileAddressKey=""
     onSubmit={[Function]}
     persistentSubmitErrors={false}
     pure={true}
@@ -96,12 +99,14 @@ exports[`AddEditCreditCard component should renders correctly when showCreditCar
 exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
 <Fragment>
   <ReduxForm
+    addressFormLabels={Object {}}
     destroyOnUnmount={true}
     dto={Object {}}
     enableReinitialize={true}
     forceUnregisterOnUnmount={false}
     form="addEditCreditCard"
     getFormState={[Function]}
+    initialValues={Object {}}
     isEdit={true}
     keepDirtyOnReinitialize={false}
     labels={
@@ -111,7 +116,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
       }
     }
     onClose={[Function]}
-    onFileAddresskey="150786"
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     selectedCard={

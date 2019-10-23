@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
 import BirthdaySavingsList from '../../common/organism/BirthdaySavingsList';
 import internalEndpoints from '../../common/internalEndpoints';
@@ -22,12 +23,12 @@ export const BirthdaySavings = ({ labels }) => {
           data-locator="backLink"
         >
           <span className="left-arrow" />
-          {labels.lbl_profile_personal_info_back}
+          {getLabelValue(labels, 'lbl_profile_personal_info_back')}
         </Anchor>
       </BodyCopy>
       <FormPageHeading
-        className="elem-mb-XL"
-        heading={labels.lbl_profile_birthday_savings}
+        className="elem-mb-XL myAccountRightView"
+        heading={getLabelValue(labels, 'lbl_profile_birthday_savings')}
         data-locator="birthdaySavingsLbl"
       />
       <BirthdaySavingsList view="edit" labels={labels} />

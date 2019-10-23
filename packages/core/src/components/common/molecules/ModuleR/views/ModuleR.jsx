@@ -6,7 +6,7 @@ import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
-import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
+import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -152,17 +152,14 @@ class ModuleR extends React.PureComponent {
           }}
         >
           {currentSingleCTAButton ? (
-            <Anchor
-              noLink
-              to={currentSingleCTAButton.url}
-              target={currentSingleCTAButton.target}
-              asPath={currentSingleCTAButton.url}
+            <Button
               dataLocator={getLocator('moduleR_cta_btn')}
+              buttonVariation="fixed-width"
+              className="cta-btn"
+              cta={currentSingleCTAButton}
             >
-              <Button buttonVariation="fixed-width" className="cta-btn">
-                {currentSingleCTAButton.text}
-              </Button>
-            </Anchor>
+              {currentSingleCTAButton.text}
+            </Button>
           ) : null}
         </Col>
       </Row>
@@ -177,6 +174,10 @@ class ModuleR extends React.PureComponent {
 
     if (selectedProductList.length) {
       selectedProductList = this.getSelectedProductList(selectedProductList);
+    }
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
     }
 
     return (
@@ -200,6 +201,9 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
+        {dataStatus ? (
+          <StyledSkeleton col={18} colSize={{ small: 2, medium: 2, large: 2 }} removeLastMargin />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>

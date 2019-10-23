@@ -12,7 +12,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
-      component={null}
+      component="h2"
       dataLocator=""
       fontFamily="primaryFontFamily"
       textAlign="left"
@@ -29,6 +29,9 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         lineHeight="normal"
         link={null}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
         textAlign="left"
       />
     </Styled(Heading)>
@@ -40,7 +43,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         className="coupon_code_input"
         component={[Function]}
         dataLocator="coupon_code"
-        id="coupon_code"
+        id="coupon_code-id-"
         name="coupon_code"
         onChange={[Function]}
         placeholder="Enter Coupon Code"
@@ -71,7 +74,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
-      component={null}
+      component="h2"
       dataLocator=""
       fontFamily="primaryFontFamily"
       textAlign="left"
@@ -88,6 +91,9 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         lineHeight="normal"
         link={null}
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex="0"
         textAlign="left"
       />
     </Styled(Heading)>
@@ -99,7 +105,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         className="coupon_code_input"
         component={[Function]}
         dataLocator="coupon_code"
-        id="coupon_code"
+        id="coupon_code-id-"
         name="coupon_code"
         onChange={[Function]}
         placeholder="Enter Coupon Code"

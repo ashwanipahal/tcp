@@ -51,29 +51,8 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
           textAlign="left"
         />
       </div>
-      <Address
-        address={null}
+      <Styled(Address)
         className="addressStyle"
-        dataLocatorPrefix=""
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
       />
       <Styled(BodyCopy)
         className={null}
@@ -89,6 +68,113 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
         textAlign="left"
       />
     </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+</div>
+`;
+
+exports[`GiftWrappingDisplay component should renders correctly props are present and isexpresscheckout 1`] = `
+<div
+  className=""
+  dataLocator="review-shipping-section"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(TitlePlusEditButton)
+        dataLocator="pickup-section"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="shippingAddressTitle"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </div>
+      <Styled(Address)
+        className="addressStyle"
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
     <Styled(Col)
       colSize={
         Object {
@@ -161,29 +247,8 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           textAlign="left"
         />
       </div>
-      <Address
-        address={null}
+      <Styled(Address)
         className="addressStyle"
-        dataLocatorPrefix=""
-        fontWeight="regular"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
       />
       <Styled(BodyCopy)
         className={null}
@@ -207,12 +272,20 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
           "small": 6,
         }
       }
-    >
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={Object {}}
-      />
-    </Styled(Col)>
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
   </Styled(Row)>
 </div>
 `;

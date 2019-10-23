@@ -7,7 +7,7 @@ exports[`PersonalInformation component should render correctly 1`] = `
     ctaLink="accountOverviewMobile"
     ctaTitle="Edit personal Info"
     handleComponentChange={[Function]}
-    title=""
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles="XXXXXXX"
@@ -27,15 +27,6 @@ exports[`PersonalInformation component should render correctly 1`] = `
       userPhoneNumber=""
     />
   </MyProfileTile>
-  <ModalNative
-    isOpen={false}
-    isOverlay={false}
-    onRequestClose={[Function]}
-  >
-    <Connect(AddEditPersonalInformationContainer)
-      onRequestClose={[Function]}
-    />
-  </ModalNative>
 </Fragment>
 `;
 
@@ -44,9 +35,9 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
   <MyProfileTile
     birthdaySaving={false}
     ctaLink="accountOverviewMobile"
-    ctaTitle=""
+    ctaTitle="lbl_profile_edit_personal_info"
     handleComponentChange={[Function]}
-    title=""
+    title="lbl_profile_personal_information"
   >
     <PersonalInformationDisplay
       airMiles=""
@@ -59,14 +50,5 @@ exports[`PersonalInformation component should render emptyu correctly 1`] = `
       userPhoneNumber=""
     />
   </MyProfileTile>
-  <ModalNative
-    isOpen={false}
-    isOverlay={false}
-    onRequestClose={[Function]}
-  >
-    <Connect(AddEditPersonalInformationContainer)
-      onRequestClose={[Function]}
-    />
-  </ModalNative>
 </Fragment>
 `;

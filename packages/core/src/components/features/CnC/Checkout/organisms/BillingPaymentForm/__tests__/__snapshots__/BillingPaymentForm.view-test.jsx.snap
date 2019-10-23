@@ -5,14 +5,14 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      dataLocator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -45,12 +45,20 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         }
       }
     />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="cardDropDownLbl"
+      textAlign="left"
+      variant="listMenu"
+    />
     <Styled(Row)
       className="elem-mb-XL elem-mt-MED"
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -62,7 +70,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -86,6 +94,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -108,7 +117,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                       "lbl_billing_venmo": "Venmo",
                     }
                   }
-                  selectedValue={82596}
+                  selectedValue={0}
                 />,
                 "title": "undefined3743 ",
                 "value": 82596,
@@ -117,6 +126,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={true}
                   fill="BLACK"
                   fullWidth={true}
@@ -155,6 +165,79 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           />
         </ForwardRef>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -180,10 +263,83 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -223,6 +379,8 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -232,14 +390,14 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      dataLocator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -271,6 +429,14 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "lbl_billing_venmo": "Venmo",
         }
       }
+    />
+    <Styled(Heading)
+      className="cardDropdownHeading"
+      color="text.primary"
+      component="h3"
+      dataLocator="cardDropDownLbl"
+      textAlign="left"
+      variant="listMenu"
     />
     <AddNewCCForm
       cardList={null}
@@ -296,6 +462,79 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           />
         </ForwardRef>
       }
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      editMode={false}
       formName="checkoutBillingPayment"
       isExpirationRequired={true}
       isGuest={false}
@@ -321,10 +560,83 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           "lbl_billing_venmo": "Venmo",
         }
       }
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       addNewCCState={true}
       billingData={null}
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": null,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "isPLCCEnabled",
+                  "form": "checkoutBillingPayment",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": undefined,
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
       formName="checkoutBillingPayment"
       isGuest={false}
       isSameAsShippingChecked={false}
@@ -364,6 +676,8 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -373,14 +687,14 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      dataLocator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -423,6 +737,8 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -432,14 +748,14 @@ exports[`ButtonList component renders correctly without props 1`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      dataLocator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -476,7 +792,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -485,7 +801,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -497,7 +813,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -521,6 +837,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -552,6 +869,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={false}
                   fill="BLACK"
                   fullWidth={true}
@@ -582,7 +900,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="elem-mb-XS"
         color="text.primary"
         component="p"
-        data-locator="billing-payment-details"
+        dataLocator="cardDetailLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -596,7 +914,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        to="/#"
+        noLink={true}
+        onClick={[Function]}
         underline={true}
       />
     </Styled(BodyCopy)>
@@ -604,7 +923,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       className="paymentMethodHeading"
       color="text.primary"
       component="h2"
-      dataLocator="billing-payment-method"
+      dataLocator="paymentMethodLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -651,13 +970,14 @@ exports[`ButtonList component renders correctly without props 1`] = `
         }
       >
         <Field
+          autoComplete="off"
           className="field"
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -800,14 +1120,14 @@ exports[`ButtonList component renders correctly without props 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
           }
-          dataLocator="billing-payment-cvvCode"
+          dataLocator="cvvTxtBox"
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
@@ -851,7 +1171,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -968,14 +1288,14 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        dataLocator="billing-payment-checkbox-field"
+        dataLocator="defaultPaymentChkBox"
         name="defaultPaymentMethod"
       >
         <Styled(BodyCopy)
@@ -1001,7 +1321,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         className="paymentMethodHeading"
         color="text.primary"
         component="h2"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
         textAlign="left"
         variant="listMenu"
       />
@@ -1027,7 +1347,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           }
         }
         className="CreditCardForm__address"
-        dataLocatorPrefix="billing-payment-card-detail"
+        dataLocator="selectedCardDetail"
         showAddress={true}
       />
     </Styled(Row)>
@@ -1041,6 +1361,8 @@ exports[`ButtonList component renders correctly without props 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -1050,14 +1372,14 @@ exports[`ButtonList component renders correctly without props 2`] = `
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <div>
     <Styled(BodyCopy)
       className="elem-mb-LRG elem-mt-XL"
       color="text.primary"
       component="p"
-      data-locator="billing-details"
+      dataLocator="paymentMethodLbl"
       fontFamily="primary"
       fontSize="fs26"
       fontWeight="regular"
@@ -1094,7 +1416,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       className="cardDropdownHeading"
       color="text.primary"
       component="h3"
-      dataLocator="billing-payment-bilingcreditcardlabel"
+      dataLocator="cardDropDownLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -1103,7 +1425,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       fullBleed={true}
     >
       <Styled(Col)
-        className="creditCardForm__addressBook"
+        className="creditCardForm__addressBook "
         colSize={
           Object {
             "large": 6,
@@ -1115,7 +1437,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Field
           childrenComp={[Function]}
           component={[Function]}
-          dataLocator="payment-billingaddressdd"
+          dataLocator="selectCardDrpDown"
           id="onFileCardKey"
           name="onFileCardKey"
           onChange={[Function]}
@@ -1139,6 +1461,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                     }
                   }
                   cardNumber="undefined3743"
+                  dataLocator="cardDetailCardDropDown"
                   isDefault={false}
                   labels={
                     Object {
@@ -1170,6 +1493,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
+                  dataLocator="addCreditCardBtn"
                   disabled={false}
                   fill="BLACK"
                   fullWidth={true}
@@ -1200,7 +1524,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="elem-mb-XS"
         color="text.primary"
         component="p"
-        data-locator="billing-payment-details"
+        dataLocator="cardDetailLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1214,7 +1538,8 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="billing-payment-edit"
         dataLocator="billing-payment-edit"
         fontSizeVariation="medium"
-        to="/#"
+        noLink={true}
+        onClick={[Function]}
         underline={true}
       />
     </Styled(BodyCopy)>
@@ -1222,7 +1547,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       className="paymentMethodHeading"
       color="text.primary"
       component="h2"
-      dataLocator="billing-payment-method"
+      dataLocator="paymentMethodLbl"
       textAlign="left"
       variant="listMenu"
     />
@@ -1269,13 +1594,14 @@ exports[`ButtonList component renders correctly without props 2`] = `
         }
       >
         <Field
+          autoComplete="off"
           className="field"
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-htpNat",
+                "componentId": "sc-jTzLTM",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1418,14 +1744,14 @@ exports[`ButtonList component renders correctly without props 2`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-htpNat",
+              "styledComponentId": "sc-jTzLTM",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
           }
-          dataLocator="billing-payment-cvvCode"
+          dataLocator="cvvTxtBox"
           enableSuccessCheck={false}
           id="cvvCode"
           name="cvvCode"
@@ -1469,7 +1795,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-ifAKCX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1586,14 +1912,14 @@ exports[`ButtonList component renders correctly without props 2`] = `
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-ifAKCX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        dataLocator="billing-payment-checkbox-field"
+        dataLocator="defaultPaymentChkBox"
         name="defaultPaymentMethod"
       >
         <Styled(BodyCopy)
@@ -1619,7 +1945,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         className="paymentMethodHeading"
         color="text.primary"
         component="h2"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
         textAlign="left"
         variant="listMenu"
       />
@@ -1645,7 +1971,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           }
         }
         className="CreditCardForm__address"
-        dataLocatorPrefix="billing-payment-card-detail"
+        dataLocator="selectedCardDetail"
         showAddress={true}
       />
     </Styled(Row)>
@@ -1659,6 +1985,8 @@ exports[`ButtonList component renders correctly without props 2`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -1668,7 +1996,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   className=""
   name="checkoutBillingPayment"
   noValidate={true}
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -1679,6 +2007,130 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly without props with payPal 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      dataLocator="paymentMethodLbl"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+  </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={false}
+  />
+</form>
+`;
+
+exports[`ButtonList component renders correctly without props with venmo 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      dataLocator="paymentMethodLbl"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+  </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={true}
   />
 </form>
 `;

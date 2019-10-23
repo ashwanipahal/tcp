@@ -17,7 +17,7 @@ exports[`MyRewards should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="place-rewards__heading"
+        className="place-rewards__heading myAccountRightView"
         color="text.primary"
         component="h4"
         data-locator="place-rewards-heading"
@@ -28,7 +28,9 @@ exports[`MyRewards should render correctly 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="left"
-      />
+      >
+        ACC_LBL_PLACE_REWARDS_HEADING
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -61,7 +63,7 @@ exports[`MyRewards should render correctly 1`] = `
             }
           >
             <Styled(BodyCopy)
-              className="elem-mb-SM elem-ml-SM"
+              className="elem-mb-SM elem-mt-XXXS"
               color="text.primary"
               component="h4"
               fontFamily="secondary"
@@ -71,7 +73,9 @@ exports[`MyRewards should render correctly 1`] = `
               lineHeight="normal"
               link={null}
               textAlign="left"
-            />
+            >
+              lbl_my_rewards_point_balance
+            </Styled(BodyCopy)>
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
@@ -92,7 +96,7 @@ exports[`MyRewards should render correctly 1`] = `
               className="my-place-reward-section"
             >
               <Connect(RewardsPointsContainer)
-                labels={Object {}}
+                labels="placeRewards"
               />
             </div>
           </Styled(Col)>
@@ -108,49 +112,64 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        <Styled(Row)
-          fullBleed={true}
+        <Styled(BodyCopy)
+          className="place-rewards-right-col"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
         >
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 10,
-                "medium": 6,
-                "small": 4,
-              }
-            }
+          <Styled(Row)
+            fullBleed={true}
           >
-            <Styled(BodyCopy)
-              className="elem-mb-SM elem-ml-SM"
-              color="text.primary"
-              component="h4"
-              data-locator="pointshistorylbl"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </Styled(Col)>
-        </Styled(Row)>
-        <Styled(Row)
-          className="elem-mb-MED"
-          fullBleed={true}
-        >
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 11,
-                "medium": 8,
-                "small": 6,
+            <Styled(Col)
+              colSize={
+                Object {
+                  "large": 10,
+                  "medium": 6,
+                  "small": 4,
+                }
               }
-            }
+            >
+              <Styled(BodyCopy)
+                className="elem-mb-SM elem-mt-XXXS"
+                color="text.primary"
+                component="h4"
+                data-locator="pointshistorylbl"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                lbl_my_rewards_points_history
+              </Styled(BodyCopy)>
+            </Styled(Col)>
+          </Styled(Row)>
+          <Styled(Row)
+            className="elem-mb-MED"
+            fullBleed={true}
           >
-            <Connect(PointsHistoryContainer) />
-          </Styled(Col)>
-        </Styled(Row)>
+            <Styled(Col)
+              colSize={
+                Object {
+                  "large": 11,
+                  "medium": 8,
+                  "small": 6,
+                }
+              }
+            >
+              <Connect(PointsHistoryContainer) />
+            </Styled(Col)>
+          </Styled(Row)>
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -170,7 +189,9 @@ exports[`MyRewards should render correctly 1`] = `
         <div
           className="bonusPointsWrapper"
         >
-          <BonusPointsDaysSection />
+          <BonusPointsDaysSection
+            isDefaultOpen={true}
+          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -183,7 +204,20 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        <Connect(EarnExtraPointsTileContainer) />
+        <Styled(BodyCopy)
+          className="place-rewards-right-col"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Connect(EarnExtraPointsTileContainer) />
+        </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>

@@ -102,6 +102,8 @@ class NavMenuLevel1 extends React.PureComponent {
             textAlign="center"
             text={name}
             color="text.primary"
+            numberOfLines={1}
+            margin="0 60px 0 0"
           />
           <Image
             alt={name}

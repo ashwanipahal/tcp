@@ -52,6 +52,11 @@ class PickUpFormPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { pickupDidMount } = this.props;
+    pickupDidMount(true);
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -89,16 +94,8 @@ class PickUpFormPart extends React.Component {
     const { pickUpLabels, handleSubmit } = this.props;
     return (
       <View>
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnCancel}
-          onClick={this.handleExitEditModeClick}
-        />
-        <Button
-          buttonVariation="variable-width"
-          text={pickUpLabels.btnUpdate}
-          onPress={handleSubmit(this.pickupEditSubmit)}
-        />
+        <Button text={pickUpLabels.btnCancel} onClick={this.handleExitEditModeClick} />
+        <Button text={pickUpLabels.btnUpdate} onPress={handleSubmit(this.pickupEditSubmit)} />
       </View>
     );
   };
@@ -173,6 +170,7 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       navigation,
       availableStages,
+      setCheckoutStage,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -184,6 +182,7 @@ class PickUpFormPart extends React.Component {
           activeStage="pickup"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -320,6 +319,7 @@ class PickUpFormPart extends React.Component {
             routeToPage="ShippingPage"
             isGuest={isGuest}
             onPress={handleSubmit(this.pickupSubmit)}
+            showAccordian
           />
         </ScrollView>
       </>
@@ -340,10 +340,12 @@ PickUpFormPart.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

@@ -33,7 +33,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_defaultCardName
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -42,13 +44,14 @@ exports[`CardTile should render correctly with amex card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__expiry"
@@ -65,31 +68,8 @@ exports[`CardTile should render correctly with amex card 1`] = `
             tag="span"
             textAlign="left"
           >
-            undefined10/2025
+            lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -108,7 +88,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
             dataLocator="payment-carddefaultpaymentbadge"
             noMargin={true}
             showCheckmark={true}
-          />
+          >
+            lbl_payment_defaultPayment
+          </Styled(Badge)>
           <div
             className="cardTile__img_wrapper elem-mt-XS"
           >
@@ -123,27 +105,54 @@ exports[`CardTile should render correctly with amex card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -181,7 +190,9 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_plccCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -190,37 +201,15 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -242,7 +231,9 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
             onClick={[Function]}
             to="/#"
             underline={true}
-          />
+          >
+            lbl_common_makeDefault
+          </Styled(Anchor)>
           <div
             className="cardTile__img_wrapper elem-mt-MED"
           >
@@ -257,27 +248,54 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -315,7 +333,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_defaultCardName
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -324,13 +344,14 @@ exports[`CardTile should render correctly with discover card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__expiry"
@@ -347,31 +368,8 @@ exports[`CardTile should render correctly with discover card 1`] = `
             tag="span"
             textAlign="left"
           >
-            undefined10/2025
+            lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -393,7 +391,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
             onClick={[Function]}
             to="/#"
             underline={true}
-          />
+          >
+            lbl_common_makeDefault
+          </Styled(Anchor)>
           <div
             className="cardTile__img_wrapper elem-mt-MED"
           >
@@ -408,27 +408,54 @@ exports[`CardTile should render correctly with discover card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -466,7 +493,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_giftCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -475,13 +504,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
         </div>
       </Styled(Col)>
@@ -695,7 +725,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_payment_checkBalance
+        </Styled(Button)>
       </div>
     </form>
   </div>
@@ -704,13 +736,16 @@ exports[`CardTile should render correctly with gift card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -748,7 +783,9 @@ exports[`CardTile should render correctly with master card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_defaultCardName
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -757,13 +794,14 @@ exports[`CardTile should render correctly with master card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__expiry"
@@ -780,31 +818,8 @@ exports[`CardTile should render correctly with master card 1`] = `
             tag="span"
             textAlign="left"
           >
-            undefined10/2025
+            lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -826,7 +841,9 @@ exports[`CardTile should render correctly with master card 1`] = `
             onClick={[Function]}
             to="/#"
             underline={true}
-          />
+          >
+            lbl_common_makeDefault
+          </Styled(Anchor)>
           <div
             className="cardTile__img_wrapper elem-mt-MED"
           >
@@ -841,27 +858,54 @@ exports[`CardTile should render correctly with master card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -910,7 +954,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_giftCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -919,13 +965,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
         </div>
       </Styled(Col)>
@@ -1139,7 +1186,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        />
+        >
+          lbl_payment_checkBalance
+        </Styled(Button)>
       </div>
     </form>
   </div>
@@ -1148,13 +1197,16 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1192,7 +1244,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_plccCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -1201,37 +1255,15 @@ exports[`CardTile should render correctly with plcc card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -1253,7 +1285,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
             onClick={[Function]}
             to="/#"
             underline={true}
-          />
+          >
+            lbl_common_makeDefault
+          </Styled(Anchor)>
           <div
             className="cardTile__img_wrapper elem-mt-MED"
           >
@@ -1268,27 +1302,54 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1326,7 +1387,9 @@ exports[`CardTile should render correctly with venmocard 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_venmoAccount
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__heading"
             color="text.primary"
@@ -1377,13 +1440,16 @@ exports[`CardTile should render correctly with venmocard 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-venmodeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1421,7 +1487,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_defaultCardName
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -1430,13 +1498,14 @@ exports[`CardTile should render correctly with visa card 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__expiry"
@@ -1453,31 +1522,8 @@ exports[`CardTile should render correctly with visa card 1`] = `
             tag="span"
             textAlign="left"
           >
-            undefined10/2025
+            lbl_payment_expDate10/2025
           </Styled(BodyCopy)>
-          <Address
-            address={
-              Object {
-                "addressLine1": "Yucca Street",
-                "addressLine2": "",
-                "city": "Los Angeles",
-                "country": "US",
-                "firstName": "six",
-                "lastName": "test",
-                "phone1": "3214567890",
-                "state": "CA",
-                "zipCode": "90028",
-              }
-            }
-            className=""
-            dataLocatorPrefix="payment-creditcard"
-            fontWeight="normal"
-            isDefault={false}
-            showCountry={false}
-            showDefault={true}
-            showName={true}
-            showPhone={false}
-          />
         </div>
       </Styled(Col)>
       <Styled(Col)
@@ -1499,7 +1545,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
             onClick={[Function]}
             to="/#"
             underline={true}
-          />
+          >
+            lbl_common_makeDefault
+          </Styled(Anchor)>
           <div
             className="cardTile__img_wrapper elem-mt-MED"
           >
@@ -1514,27 +1562,54 @@ exports[`CardTile should render correctly with visa card 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <div>
+    <Styled(Address)
+      address={
+        Object {
+          "addressLine1": "Yucca Street",
+          "addressLine2": "",
+          "city": "Los Angeles",
+          "country": "US",
+          "firstName": "six",
+          "lastName": "test",
+          "phone1": "3214567890",
+          "state": "CA",
+          "zipCode": "90028",
+        }
+      }
+      dataLocatorPrefix="payment-creditcard"
+      fontWeight="normal"
+      showCountry={false}
+      showPhone={false}
+    />
+  </div>
   <div
     className="cardTile__ctaLinks"
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1572,7 +1647,9 @@ exports[`CardTile should show loading 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_giftCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -1581,13 +1658,14 @@ exports[`CardTile should show loading 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
         </div>
       </Styled(Col)>
@@ -1803,7 +1881,9 @@ exports[`CardTile should show loading 1`] = `
           link={null}
           tag="span"
           textAlign="left"
-        />
+        >
+          lbl_payment_loading
+        </Styled(BodyCopy)>
       </div>
     </form>
   </div>
@@ -1812,13 +1892,16 @@ exports[`CardTile should show loading 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1856,7 +1939,9 @@ exports[`CardTile should show remining balance 1`] = `
             link={null}
             tag="span"
             textAlign="left"
-          />
+          >
+            lbl_payment_giftCard
+          </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="cardTile__number"
             color="text.primary"
@@ -1865,13 +1950,14 @@ exports[`CardTile should show remining balance 1`] = `
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="bold"
+            id={8977328}
             letterSpacing="normal"
             lineHeight="normal"
             lineHeights="lh107"
             link={null}
             textAlign="left"
           >
-            undefined6765
+            lbl_payment_cardNum6765
           </Styled(BodyCopy)>
         </div>
       </Styled(Col)>
@@ -2087,7 +2173,9 @@ exports[`CardTile should show remining balance 1`] = `
           link={null}
           tag="span"
           textAlign="left"
-        />
+        >
+          lbl_payment_remainingBalance
+        </Styled(BodyCopy)>
         <Styled(BodyCopy)
           className=""
           color="text.primary"
@@ -2112,13 +2200,16 @@ exports[`CardTile should show remining balance 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      aria-describedby={8977328}
       className="cardTile__anchor"
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;

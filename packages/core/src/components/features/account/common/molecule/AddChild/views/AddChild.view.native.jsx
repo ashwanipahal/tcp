@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, change } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -78,12 +79,12 @@ export class AddChildBirthdayForm extends PureComponent {
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight="regular"
-            text={addChildBirthdayLabels.lbl_add_child_child_information}
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_child_information')}
             spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
           />
           <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
             <Field
-              label={addChildBirthdayLabels.lbl_add_child_child_name}
+              label={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_child_name')}
               name="childName"
               id="childName"
               component={TextBox}
@@ -94,8 +95,11 @@ export class AddChildBirthdayForm extends PureComponent {
             <InputFieldHalf>
               <Field
                 component={DropDown}
-                heading={addChildBirthdayLabels.lbl_add_child_birthday_heading}
-                selectedValue={addChildBirthdayLabels.lbl_add_child_birthday_month}
+                heading={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_heading')}
+                selectedValue={getLabelValue(
+                  addChildBirthdayLabels,
+                  'lbl_add_child_birthday_month'
+                )}
                 data={birthMonthOptionsMap}
                 dataLocator="childBirthdayMonthDD"
                 dropDownStyle={{ ...dropDownStyle }}
@@ -118,7 +122,7 @@ export class AddChildBirthdayForm extends PureComponent {
               <Field
                 component={DropDown}
                 data={birthYearOptionsMap}
-                selectedValue={addChildBirthdayLabels.lbl_add_child_birthday_year}
+                selectedValue={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_year')}
                 dataLocator="childBirthdayYearDD"
                 dropDownStyle={{ ...dropDownStyle }}
                 onValueChange={this.onUserBirthYear}
@@ -140,8 +144,8 @@ export class AddChildBirthdayForm extends PureComponent {
             <InputFieldHalf>
               <Field
                 component={DropDown}
-                heading={addChildBirthdayLabels.lbl_add_child_gender_heading}
-                selectedValue={addChildBirthdayLabels.lbl_add_child_choose_gender}
+                heading={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_gender_heading')}
+                selectedValue={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_choose_gender')}
                 data={childOptions}
                 dataLocator="childGenderDD"
                 dropDownStyle={{ ...dropDownStyle }}
@@ -159,13 +163,13 @@ export class AddChildBirthdayForm extends PureComponent {
             fontFamily="secondary"
             fontSize="fs16"
             fontWeight="regular"
-            text={addChildBirthdayLabels.lbl_add_child_parent_digital_signature}
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_parent_digital_signature')}
             spacingStyles="margin-top-LRG margin-left-LRG margin-bottom-LRG"
           />
           <BirthdayContainer>
             <InputFieldHalf>
               <Field
-                label={addChildBirthdayLabels.lbl_add_child_first_name}
+                label={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_first_name')}
                 name="firstName"
                 id="firstName"
                 component={TextBox}
@@ -174,7 +178,7 @@ export class AddChildBirthdayForm extends PureComponent {
             </InputFieldHalf>
             <InputFieldHalf>
               <Field
-                label={addChildBirthdayLabels.lbl_add_child_last_name}
+                label={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_last_name')}
                 name="lastName"
                 id="lastName"
                 component={TextBox}
@@ -186,10 +190,10 @@ export class AddChildBirthdayForm extends PureComponent {
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
-            text={`${addChildBirthdayLabels.lbl_add_child_timestamp} ${timestamp.toLocaleString(
-              'en-US',
-              AddChildBirthdayForm.timestampFormatOptions
-            )}`}
+            text={`${getLabelValue(
+              addChildBirthdayLabels,
+              'lbl_add_child_timestamp'
+            )} ${timestamp.toLocaleString('en-US', AddChildBirthdayForm.timestampFormatOptions)}`}
             spacingStyles="margin-right-LRG margin-left-LRG"
           />
           <CheckboxMarginWrapper>
@@ -199,9 +203,10 @@ export class AddChildBirthdayForm extends PureComponent {
               component={InputCheckbox}
               isChecked={this.isEmployeeCheck}
               dataLocator="tnccb"
-              rightText={`${addChildBirthdayLabels.lbl_add_child_terms_agreement}${
-                addChildBirthdayLabels.lbl_add_child_terms_agreement_second
-              }`}
+              rightText={`${getLabelValue(
+                addChildBirthdayLabels,
+                'lbl_add_child_terms_agreement'
+              )}${getLabelValue(addChildBirthdayLabels, 'lbl_add_child_terms_agreement_second')}`}
             />
           </CheckboxMarginWrapper>
           <StyledAnchorWrapper>
@@ -213,7 +218,7 @@ export class AddChildBirthdayForm extends PureComponent {
               }}
               anchorVariation="primary"
               data-locator="privacyLnk"
-              text={addChildBirthdayLabels.lbl_add_child_privacy}
+              text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_privacy')}
             />
             <Anchor
               fontSizeVariation="medium"
@@ -224,7 +229,7 @@ export class AddChildBirthdayForm extends PureComponent {
               }}
               anchorVariation="primary"
               data-locator="faqLnk"
-              text={addChildBirthdayLabels.lbl_add_child_faq}
+              text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_faq')}
             />
           </StyledAnchorWrapper>
         </AddChildFormWrapper>
@@ -234,16 +239,14 @@ export class AddChildBirthdayForm extends PureComponent {
             type="submit"
             color="white"
             onPress={handleSubmit}
-            buttonVariation="variable-width"
-            text={addChildBirthdayLabels.lbl_add_child_save}
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_save')}
           />
         </ViewWithSpacing>
         <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
           <Button
             fill="WHITE"
-            buttonVariation="variable-width"
             onPress={closeAddModal}
-            text={addChildBirthdayLabels.lbl_add_child_cancel}
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_cancel')}
           />
         </ViewWithSpacing>
       </>

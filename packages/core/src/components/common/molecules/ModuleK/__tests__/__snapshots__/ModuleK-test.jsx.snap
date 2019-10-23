@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kkGfuU",
+              "componentId": "sc-caSCKo",
               "isStatic": false,
               "rules": Array [
                 "
@@ -233,6 +233,58 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module G Heading styles */
+  .medium_text_regular {
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    text-align: center;
+    color: ",
+                [Function],
+                ";
+  }
+
+  /* Module S Heading styles */
+  .small_text_white_medium {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    @media ",
+                [Function],
+                " {
+      letter-spacing: normal;
+    }
+    @media ",
+                [Function],
+                " {
+      display: inline;
+    }
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -247,10 +299,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-ckVGcZ",
+              "sc-eNQAEJ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kkGfuU",
+            "styledComponentId": "sc-caSCKo",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -264,14 +316,14 @@ exports[`ModuleK component renders correctly 1`] = `
       className="moduleK__carousal"
       colSize={
         Object {
-          "large": 8,
+          "large": 10,
           "medium": 8,
           "small": 6,
         }
       }
       offsetLeft={
         Object {
-          "large": 2,
+          "large": 1,
           "medium": 0,
           "small": 0,
         }
@@ -294,7 +346,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-kEYyzF",
+              "componentId": "sc-fAjcbJ",
               "isStatic": false,
               "rules": Array [
                 "
@@ -475,76 +527,61 @@ exports[`ModuleK component renders correctly 1`] = `
   .slick-dots ul {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .slick-dots li {
     position: relative;
     display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0;
-    width: 10px;
-    height: 10px;
-    button,
-    button:before {
-      margin: 0;
+    margin: 0 2px;
+    width: 6px;
+    height: 6px;
+    button {
+      font-size: 0;
+      line-height: 0;
+      width: 6px;
+      height: 6px;
+      display: block;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+      background: transparent;
       padding: 0;
-      width: 7px;
-      height: 7px;
+      &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: ",
+                [Function],
+                ";
+      }
     }
-  }
-
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    pointer-events: none;
-    background: transparent;
-  }
-
-  .slick-dots li button:before {
-    font-family: Arial;
-    font-size: 6px;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    opacity: 0.25;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   li.slick-active {
-    width: 11px;
-    height: 11px;
-    background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
-    button,
-    button:before {
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    button {
       width: 10px;
       height: 10px;
+      &:before {
+        width: 10px;
+        height: 10px;
+        background: ",
+                [Function],
+                ";
+        border: 1px solid ",
+                [Function],
+                ";
+      }
     }
-  }
-
-  .slick-dots li.slick-active button:before {
-    opacity: 0.75;
-    color: black;
-  }
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
   }
 
   .tcp_carousel__play_pause_button {
@@ -581,17 +618,17 @@ exports[`ModuleK component renders correctly 1`] = `
 ",
                 "
   .slick-arrow {
-    top: 44%;
+    top: 50%;
   }
   .slick-next {
-    height: 52px;
+    height: 50px;
     right: -68px;
-    width: 15px;
+    width: 13px;
   }
   .slick-prev {
-    height: 52px;
+    height: 50px;
     left: -68px;
-    width: 15px;
+    width: 13px;
   }
   .slick-dots {
     bottom: -20px;
@@ -601,10 +638,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-fjdhpX",
+              "sc-cSHVUG",
             ],
             "render": [Function],
-            "styledComponentId": "sc-kEYyzF",
+            "styledComponentId": "sc-fAjcbJ",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -676,6 +713,7 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
+          imageMaxWidth="270px"
           imgConfigs={
             Array [
               "t_mod_K_img_m",
@@ -807,6 +845,7 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
+          imageMaxWidth="270px"
           imgConfigs={
             Array [
               "t_mod_K_img_m",

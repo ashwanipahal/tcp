@@ -26,10 +26,13 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
       >
          
       </span>
+      lbl_common_backLink
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     data-locator="payment-addcreditordebitcardheader"
+    heading="lbl_payment_addCCHeading"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -46,6 +49,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
         "paymentGC": Object {},
       }
     }
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
@@ -87,10 +91,13 @@ exports[`AddEditCreditCard component should renders correctly with error message
       >
          
       </span>
+      lbl_common_backLink
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
+    className="myAccountRightView"
     data-locator="payment-addcreditordebitcardheader"
+    heading="lbl_payment_editCCHeading"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -107,6 +114,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
         "paymentGC": Object {},
       }
     }
+    onFileAddressKey=""
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

@@ -9,6 +9,8 @@ import {
   getPricesWithRange,
   getMapSliceForColorProductId,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 
 class Product extends React.Component {
   // static propTypes = {
@@ -212,8 +214,13 @@ class Product extends React.Component {
       isCanada,
       isHasPlcc,
       isInternationalShipping,
-      badge1,
       isKeepAlive,
+      isMatchingFamily,
+      selectedColorProductId,
+      isGiftCard,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
     if (!productInfo) {
@@ -221,8 +228,11 @@ class Product extends React.Component {
     }
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const colorProduct =
-      productInfo && getMapSliceForColorProductId(productInfo.colorFitsSizesMap, colorProductId);
+      productInfo &&
+      getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId);
     const prices = productInfo && getPrices(productInfo, colorProduct.color.name);
+    const badges = colorProduct.miscInfo.badge1;
+    const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
     // if(isShowPriceRange) {
     //   const { fit, size } = addToBagFormValues;
     //   prices = getPricesWithRange(productInfo, colorProduct.color.name, fit, size, isSelectedSizeDisabled);
@@ -233,6 +243,7 @@ class Product extends React.Component {
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
+          isGiftCard={isGiftCard}
           productInfo={productInfo}
           // {...addToBagFormValues}
           isShowFavoriteCount
@@ -243,23 +254,30 @@ class Product extends React.Component {
           isCanada={isCanada}
           isPlcc={isHasPlcc}
           isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
           // TODO - Since the product price range is dependent on the SKU, it can be shown only after the SKU form is added
           // isShowPriceRange={isShowPriceRange}
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
         />
-        <ProductPrice
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
-          isItemPartNumberVisible={false}
-          itemPartNumber={colorProduct.colorDisplayId}
-          {...prices}
-          promotionalMessage={promotionalMessage}
-          isCanada={isCanada}
-          promotionalPLCCMessage={promotionalPLCCMessage}
-          isPlcc={isHasPlcc}
-          isInternationalShipping={isInternationalShipping}
-        />
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyExchange={currencyExchange}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
       </div>
     );
     // let {isMobile, isInventoryLoaded, productInfo, colorProductId, currencySymbol, handleChooseOption,

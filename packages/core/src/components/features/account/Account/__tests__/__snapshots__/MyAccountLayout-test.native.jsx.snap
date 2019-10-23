@@ -29,6 +29,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         "value": "earnExtraPointsPageMobile",
       },
       Object {
+        "id": "orders",
+        "label": "ORDERS",
+        "value": "myOrdersPageMobile",
+      },
+      Object {
         "id": "profileInformation",
         "label": "PROFILE INFORMATION",
         "value": "profileInformationMobile",
@@ -52,6 +57,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         "id": "myPlaceRewardsCC",
         "label": "MY PLACE REWARDS CREDIT CARD",
         "value": "myPlaceRewardsCCPageMobile",
+      },
+      Object {
+        "id": "myFavorite",
+        "label": "My Favorite",
+        "value": "myFavoritePageMobile",
       },
     ]
   }

@@ -4,12 +4,13 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import cssClassName from '@tcp/core/src/utils/cssClassName';
-import { getTranslateDateInformation } from '@tcp/core/src/utils//utils.web';
+import { getTranslateDateInformation } from '@tcp/core/src/utils';
 import { getAPIConfig, getIconPath } from '@tcp/core/src/utils/utils';
 import CartItemTile from '../../../../../../CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import { getProductDetails } from '../../../../../../CartItemTile/container/CartItemTile.selectors';
 import styles from '../styles/CheckoutCartItemsList.style';
 import CheckoutConstants from '../../../../../Checkout.constants';
+import CollapsibleContainer from '../../../../../../../../common/molecules/CollapsibleContainer';
 
 /**
  *
@@ -46,6 +47,8 @@ class CheckoutCartItemsList extends Component {
     labels: PropTypes.shape({}),
     bagPageLabels: PropTypes.shape({}),
     className: PropTypes.string.isRequired,
+    gettingSortedItemList: PropTypes.func.isRequired,
+    showAccordian: PropTypes.bool,
   };
 
   /**
@@ -56,11 +59,16 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels } = this.props;
+    const { labels, currencySymbol } = this.props;
     const showOnReviewPage = false;
     return (
       <div className="cart-item-tile-container">
-        <CartItemTile productDetail={item} labels={labels} showOnReviewPage={showOnReviewPage} />
+        <CartItemTile
+          productDetail={item}
+          labels={labels}
+          showOnReviewPage={showOnReviewPage}
+          currencySymbol={currencySymbol}
+        />
       </div>
     );
   };
@@ -72,68 +80,44 @@ class CheckoutCartItemsList extends Component {
    */
   OrderTooltip = deliveryItem => {
     const { labels } = this.props;
+    const {
+      storeAddress: { addressLine1, addressLine2, city, state, zipCode },
+    } = deliveryItem;
+    const { storeTodayOpenRange, storeTomorrowOpenRange, storePhoneNumber, store } = deliveryItem;
+    const { today, tomorrow, phone } = labels;
     return (
       <>
+        <BodyCopy component="div" fontWeight="bold" fontSize="fs16" fontFamily="secondary">
+          {store}
+        </BodyCopy>
         {deliveryItem.storeAddress && (
           <>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {deliveryItem.storeAddress.addressLine1}
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+              {addressLine1}
             </BodyCopy>
-            {deliveryItem.storeAddress.addressLine2 && (
-              <BodyCopy
-                component="span"
-                fontWeight="regular"
-                fontSize="fs12"
-                fontFamily="secondary"
-                className="title-list-product"
-              >
-                {deliveryItem.storeAddress.addressLine2}
+            {addressLine2 && (
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {addressLine2}
               </BodyCopy>
             )}
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${deliveryItem.storeAddress.city},${deliveryItem.storeAddress.state}${
-                deliveryItem.storeAddress.zipCode
-              }`}
+            <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+              {`${city},${state}${zipCode}`}
             </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.today}${deliveryItem.storeTodayOpenRange}`}
-            </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.tomorrow}${deliveryItem.storeTomorrowOpenRange}`}
-            </BodyCopy>
-            <BodyCopy
-              component="span"
-              fontWeight="regular"
-              fontSize="fs12"
-              fontFamily="secondary"
-              className="title-list-product"
-            >
-              {`${labels.phone}${deliveryItem.storePhoneNumber}`}
-            </BodyCopy>
+            {storeTodayOpenRange && (
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${today}${storeTodayOpenRange}`}
+              </BodyCopy>
+            )}
+            {storeTomorrowOpenRange && (
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${tomorrow}${storeTomorrowOpenRange}`}
+              </BodyCopy>
+            )}
+            {storePhoneNumber && (
+              <BodyCopy component="div" fontWeight="regular" fontSize="fs12" fontFamily="secondary">
+                {`${phone}${storePhoneNumber}`}
+              </BodyCopy>
+            )}
           </>
         )}
       </>
@@ -151,6 +135,7 @@ class CheckoutCartItemsList extends Component {
    */
   getPickupHeader = (deliveryItem, isShowHeader) => {
     const { labels } = this.props;
+    const toolTipMinWidth = '205px';
     return (
       <div className="title-list-pickup-product">
         {isShowHeader && (
@@ -162,7 +147,6 @@ class CheckoutCartItemsList extends Component {
                   fontWeight="extrabold"
                   fontSize="fs16"
                   fontFamily="secondary"
-                  className="title-list-product"
                 >
                   {labels.pickup}
                 </BodyCopy>
@@ -188,6 +172,7 @@ class CheckoutCartItemsList extends Component {
                   message={this.OrderTooltip(deliveryItem)}
                   aligned="right"
                   className="toolTip"
+                  minWidth={toolTipMinWidth}
                 >
                   <Image height="15" width="15" src={getIconPath('info-icon')} />
                 </ReactToolTip>
@@ -199,7 +184,7 @@ class CheckoutCartItemsList extends Component {
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <BodyCopy
               fontWeight="extrabold"
-              fontSize="fs16"
+              fontSize="fs10"
               fontFamily="secondary"
               className="store-date-container"
             >
@@ -223,7 +208,7 @@ class CheckoutCartItemsList extends Component {
     if (pickUpList && pickUpList.list) {
       return (
         <div key={index}>
-          <Row>
+          <Row className="checkout-cart-list-shipping">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className={headerClassName}>
                 <BodyCopy
@@ -301,75 +286,11 @@ class CheckoutCartItemsList extends Component {
   };
 
   /**
-   * @function categorizingItemsForStores
-   * @summary This function categorizes items for stores
-   */
-  categorizingItemsForStores = ({
-    currentStore,
-    currentStoreAddress,
-    item,
-    orderType,
-    bossStartDate,
-    bossEndDate,
-    bopisDate,
-    bucket,
-    deliveryType,
-    bucketReference,
-  }) => {
-    const { currencySymbol, labels } = this.props;
-    const bucketReferenceTemp = bucketReference;
-    const {
-      storePhoneNumber,
-      storeTodayOpenRange,
-      storeTomorrowOpenRange,
-      orderItemType,
-    } = item.miscInfo;
-    const orderItem = {
-      store: currentStore,
-      storeAddress: currentStoreAddress,
-      storePhoneNumber: storePhoneNumber || '',
-      storeTodayOpenRange: storeTodayOpenRange || '',
-      storeTomorrowOpenRange: storeTomorrowOpenRange || '',
-      orderType,
-      duration:
-        orderItemType === CheckoutConstants.ORDER_ITEM_TYPE.BOSS ? (
-          `${bossStartDate.day}. ${bossStartDate.month} ${bossStartDate.date} - ${
-            bossEndDate.day
-          }. ${bossEndDate.month} ${bossEndDate.date}`
-        ) : (
-          <BodyCopy
-            fontWeight="extrabold"
-            fontSize="fs12"
-            fontFamily="secondary"
-            className="title-list-product"
-          >
-            {`${labels.today}, ${bopisDate.month} ${bopisDate.date}`}
-          </BodyCopy>
-        ),
-    };
-    if (bucket[deliveryType]) {
-      bucketReferenceTemp[deliveryType][currentStore] = bucket[deliveryType][currentStore] || {};
-      const bucketStore = bucket[deliveryType][currentStore];
-      bucketStore[orderType] = bucketStore[orderType] || orderItem;
-      bucketStore[orderType].list = bucketStore[orderType].list || [];
-      bucketStore[orderType].list.push({ item, currencySymbol });
-    } else {
-      bucketReferenceTemp[deliveryType] = {};
-      bucketReferenceTemp[deliveryType][currentStore] = {};
-      const bucketStore = bucketReferenceTemp[deliveryType][currentStore];
-
-      bucketStore[orderType] = orderItem;
-      bucketStore[orderType].list = [];
-      bucketStore[orderType].list.push({ item, currencySymbol });
-    }
-  };
-
-  /**
    * @function renderItems
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   renderItems() {
-    const { items, currencySymbol } = this.props;
+    const { items, currencySymbol, gettingSortedItemList, labels } = this.props;
     const apiConfig = getAPIConfig();
     const bopisDate = getTranslateDateInformation('', apiConfig.language);
     /**
@@ -414,56 +335,27 @@ class CheckoutCartItemsList extends Component {
               -> BOPIS
                 -> list : [array of order line elements]
     */
-    const orderBucket =
-      sortedItem &&
-      sortedItem.reduce((bucket, item) => {
-        const orderType = item.miscInfo.orderItemType;
-        const currentStore = item.miscInfo.store || CheckoutConstants.CHECKOUT_ORDER.ECOM_NO_STORE;
-        const currentStoreAddress = item.miscInfo.storeAddress || '';
-        const { bossStartDate, bossEndDate } = item.miscInfo;
-        const bucketReference = bucket;
-        const {
-          CHECKOUT_ORDER: {
-            ORDER_BOPIS_LABEL,
-            ORDER_BOSS_LABEL,
-            ORDER_PICKUP_LABEL,
-            ORDER_SHIPIT_LABEL,
-          },
-        } = CheckoutConstants;
-        const deliveryType =
-          orderType === ORDER_BOPIS_LABEL || orderType === ORDER_BOSS_LABEL
-            ? ORDER_PICKUP_LABEL
-            : ORDER_SHIPIT_LABEL;
-
-        if (deliveryType === ORDER_SHIPIT_LABEL) {
-          bucketReference[deliveryType] = bucket[deliveryType] || {};
-          bucketReference[deliveryType].list = bucket[deliveryType].list || [];
-          bucket[deliveryType].list.push({ item, currencySymbol });
-        } else {
-          this.categorizingItemsForStores({
-            currentStore,
-            currentStoreAddress,
-            item,
-            orderType,
-            bossStartDate,
-            bossEndDate,
-            bopisDate,
-            bucket,
-            deliveryType,
-            bucketReference,
-          });
-        }
-        return bucket;
-      }, {});
+    const orderBucket = gettingSortedItemList({
+      sortedItem,
+      CheckoutConstants,
+      currencySymbol,
+      bopisDate,
+      labels,
+    });
     const {
       CHECKOUT_ORDER: { REVIEW_PRODUCT_SEQUENCE },
     } = CheckoutConstants;
     const orderTypeList = REVIEW_PRODUCT_SEQUENCE;
-    return (
-      <div className="checkout-cart-list">
-        {orderTypeList.map((item, index) => this.renderOrderItems(item, orderBucket[item], index))}
-      </div>
-    );
+    if (orderBucket) {
+      return (
+        <div className="checkout-cart-list">
+          {orderTypeList.map((item, index) =>
+            this.renderOrderItems(item, orderBucket[item], index)
+          )}
+        </div>
+      );
+    }
+    return {};
   }
 
   /**
@@ -471,22 +363,41 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels } = this.props;
+    const { itemsCount, className, bagPageLabels, showAccordian } = this.props;
+    const header = (
+      <BodyCopy
+        fontWeight="semibold"
+        fontSize="fs16"
+        fontFamily="secondary"
+        className="checkout-cart-list-heading"
+      >
+        {`${bagPageLabels.bagHeading} (${itemsCount}):`}
+      </BodyCopy>
+    );
+
     return (
       <div className={className}>
-        <Row tagName="header">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy
-              fontWeight="semibold"
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="checkout-cart-list-heading"
-            >
-              {`${bagPageLabels.bagHeading} (${itemsCount})`}
-            </BodyCopy>
-            {this.renderItems()}
-          </Col>
-        </Row>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+          ignoreGutter={{ small: true, medium: true }}
+          className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        >
+          <CollapsibleContainer
+            className={`${className} ${showAccordian ? 'reviewMyBagAccordian' : ''}`}
+            header={header}
+            body={this.renderItems()}
+            iconLocator="arrowicon"
+            defaultOpen
+          />
+        </Col>
+        <div className={showAccordian ? 'hide-in-medium-down' : ''}>
+          {header}
+          {this.renderItems()}
+        </div>
       </div>
     );
   }
@@ -495,6 +406,7 @@ class CheckoutCartItemsList extends Component {
 CheckoutCartItemsList.defaultProps = {
   labels: {},
   bagPageLabels: {},
+  showAccordian: true,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

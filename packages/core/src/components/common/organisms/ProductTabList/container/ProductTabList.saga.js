@@ -11,13 +11,21 @@ export function* fetchProductTabListData({ payload }) {
     const res = yield call(lightweightProductListing.getData, payload);
     if (res) {
       return yield put(
-        productTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
+        productTabListDataSuccess({
+          [categoryId]: res,
+          errors: { [categoryId]: null },
+          completed: { [categoryId]: false },
+        })
       );
     }
-    throw new Error('Something went wrong while making request!');
+    throw new Error();
   } catch (err) {
     return yield put(
-      productTabListDataFail({ [categoryId]: [], errors: { [categoryId]: err.message } })
+      productTabListDataFail({
+        [categoryId]: [],
+        errors: { [categoryId]: true },
+        completed: { [categoryId]: false },
+      })
     );
   }
 }

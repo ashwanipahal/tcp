@@ -47,6 +47,7 @@ const ShippingForm = ({
   defaultAddressId,
   syncErrorsObject,
   newUserPhoneNo,
+  setCheckoutStage,
 }) => {
   return (
     <>
@@ -111,7 +112,7 @@ const ShippingForm = ({
                 <BodyCopy
                   dataLocator="shipping-email-signUp-heading-lbl"
                   fontSize="fs14"
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   fontWeight="regular"
                   text={getLabelValue(
                     labels,
@@ -124,7 +125,7 @@ const ShippingForm = ({
               <BodyCopy
                 dataLocator="shipping-email-signUp-sub-heading-text"
                 fontSize="fs12"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontWeight="regular"
                 text={getLabelValue(
                   labels,
@@ -135,7 +136,7 @@ const ShippingForm = ({
               />
               <BodyCopy
                 fontSize="fs12"
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontWeight="regular"
                 text={getLabelValue(
                   labels,
@@ -192,7 +193,8 @@ const ShippingForm = ({
           orderHasPickUp &&
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
-        onBackLinkPress={() => navigation.navigate(CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_PICKUP)}
+        onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
+        showAccordian
       />
     </>
   );
@@ -231,6 +233,7 @@ ShippingForm.propTypes = {
   defaultAddressId: PropTypes.string,
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 ShippingForm.defaultProps = {

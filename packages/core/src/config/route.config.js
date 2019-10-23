@@ -30,6 +30,17 @@ const ROUTES_LIST = [
     resolver: '/index',
   },
   {
+    noSlugPath: 'store-locator',
+    path: '/store-locator',
+    resolver: '/storeLocator',
+  },
+  {
+    noSlugPath: 'store',
+    path: '/store/:storeStr?',
+    resolver: '/storeDetail',
+    params: ['storeStr'],
+  },
+  {
     noSlugPath: 'login',
     path: '/login',
     resolver: '/login',
@@ -40,6 +51,12 @@ const ROUTES_LIST = [
     path: '/instagram',
     resolver: '/instagram',
   },
+  {
+    noSlugPath: 'twitter',
+    path: '/twitter',
+    resolver: '/twitter',
+  },
+
   {
     noSlugPath: 'account',
     path: '/account/:id?/:subSection?',
@@ -64,7 +81,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'c',
     path: '/c/:cid',
-    resolver: '/ProductListing',
+    resolver: '/ListingPage',
     params: ['cid'],
   },
   {
@@ -74,16 +91,22 @@ const ROUTES_LIST = [
     params: ['pid'],
   },
   {
+    noSlugPath: 'b',
+    path: '/b/:bid',
+    resolver: '/BundleProduct',
+    params: ['bid'],
+  },
+  {
     noSlugPath: 'search',
-    path: '/search/:searchQuery',
+    path: '/search/:searchQuery?',
     resolver: '/SearchDetail',
     params: ['searchQuery'],
   },
   {
     noSlugPath: 'outfit',
-    path: '/outfit/:oid',
-    resolver: '/OutfitDetail',
-    params: ['oid'],
+    path: '/outfit/:outfitId/:vendorColorProductIdsList',
+    resolver: '/OutfitDetails',
+    params: ['outfitId', 'vendorColorProductIdsList'],
   },
   {
     noSlugPath: 'place-card',
@@ -131,6 +154,11 @@ const ROUTES_LIST = [
     path: '/content/:contentType',
     resolver: '/content',
     params: ['contentType'],
+  },
+  {
+    noSlugPath: 'stores',
+    path: '/stores',
+    resolver: '/StoreList',
   },
 ];
 

@@ -1,12 +1,15 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
+import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
 import { checkoutModalOpenState } from './LoginPage.selectors';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 
 const errorLabel = 'Error in API';
 
@@ -18,10 +21,20 @@ export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      yield put(getUserInfo());
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
+      } else {
+        yield put(
+          openOverlayModal({
+            component: 'accountDrawer',
+            variation: 'primary',
+          })
+        );
       }
-      return yield put(getUserInfo());
+      yield put(navigateXHRAction());
+      // Provide check for current page and depending on that make Cart or OrderDetails call.
+      return yield put(BAG_PAGE_ACTIONS.getCartData());
     }
     return yield put(setLoginInfo(response));
   } catch (err) {

@@ -8,6 +8,8 @@ import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCo
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const SearchListingView = ({
   className,
@@ -25,6 +27,10 @@ const SearchListingView = ({
   initialValues,
   labelsFilter,
   onSubmit,
+  currency,
+  currencyAttributes,
+  onAddItemToFavorites,
+  isLoggedIn,
   ...otherProps
 }) => {
   return (
@@ -81,14 +87,22 @@ const SearchListingView = ({
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           {productsBlock.length ? (
             <ProductsGrid
+              className={className}
               productsBlock={productsBlock}
               products={products}
               labels={labels}
+              productTileVariation="search-product-tile"
+              currencyExchange={currencyAttributes.exchangevalue}
+              currency={currency}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
               {...otherProps}
             />
           ) : null}
         </Col>
       </Row>
+      <QuickViewModal />
+      <AddedToBagContainer />
     </div>
   );
 };
@@ -112,6 +126,10 @@ SearchListingView.propTypes = {
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 SearchListingView.defaultProps = {
@@ -127,6 +145,11 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
+  isLoggedIn: false,
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Notification from '../../../../../../common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CreateAccounPage.style';
@@ -21,6 +22,8 @@ class CreateAccounPage extends React.Component {
     showForgotPasswordForm: PropTypes.func,
     isUserLoggedIn: PropTypes.bool.isRequired,
     formErrorMessage: PropTypes.shape({}).isRequired,
+    userplccCardNumber: PropTypes.string.isRequired,
+    userplccCardId: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -59,6 +62,8 @@ class CreateAccounPage extends React.Component {
       showForgotPasswordForm,
       isUserLoggedIn,
       formErrorMessage,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -85,7 +90,7 @@ class CreateAccounPage extends React.Component {
               <Notification
                 status="success"
                 colSize={{ large: 12, medium: 8, small: 6 }}
-                message={labels.registration.lbl_createAccount_succcessMsg}
+                message={getLabelValue(labels, 'lbl_createAccount_succcessMsg', 'registration')}
               />
             </div>
           )}
@@ -99,8 +104,10 @@ class CreateAccounPage extends React.Component {
             initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-            tooltipContent={<PasswordRequirement labels={labels.password} />}
+            tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
             formErrorMessage={formErrorMessage}
+            userplccCardNumber={userplccCardNumber}
+            userplccCardId={userplccCardId}
           />
         </div>
       </div>

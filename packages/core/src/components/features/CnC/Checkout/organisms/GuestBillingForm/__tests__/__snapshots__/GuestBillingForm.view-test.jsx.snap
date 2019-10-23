@@ -8,7 +8,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     className="elem-mb-XS elem-mt-MED"
     color="text.primary"
     component="p"
-    data-locator="billing-details"
+    dataLocator="paymentMethodLbl"
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="regular"
@@ -18,6 +18,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     textAlign="left"
   />
   <Styled(PaymentMethods)
+    isVenmoEnabled={false}
     labels={Object {}}
   />
   <div
@@ -32,6 +33,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;
@@ -44,7 +46,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     className="elem-mb-XS elem-mt-MED"
     color="text.primary"
     component="p"
-    data-locator="billing-details"
+    dataLocator="paymentMethodLbl"
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="regular"
@@ -54,6 +56,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     textAlign="left"
   />
   <Styled(PaymentMethods)
+    isVenmoEnabled={false}
     labels={Object {}}
   />
   <div
@@ -83,11 +86,13 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           />
         </ForwardRef>
       }
+      editMode={false}
       formName="checkoutBilling"
       isExpirationRequired={true}
       isGuest={true}
       isSaveToAccountChecked={true}
       labels={Object {}}
+      onCardFocus={[Function]}
     />
     <Styled(CheckoutAddress)
       billingData={Object {}}
@@ -132,6 +137,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showVenmoSubmit={false}
   />
 </form>
 `;

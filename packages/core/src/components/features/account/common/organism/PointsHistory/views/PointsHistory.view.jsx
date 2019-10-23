@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
 
@@ -20,7 +21,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
 
   return (
     <div className={className}>
-      <Row fullbleed className="elem-mb-SM elem-mt-SM">
+      <Row fullBleed className="elem-mb-SM elem-mt-SM">
         <Col colSize={{ large: 3, medium: 2, small: 2 }}>
           <BodyCopy
             data-locator="pointshistoryorderdatelbl"
@@ -28,20 +29,20 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             fontSize="fs12"
             fontWeight="semibold"
           >
-            {labels.lbl_common_order_date}
+            {getLabelValue(labels, 'lbl_common_order_date')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 3, medium: 2, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorytransactionslbl"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight="semibold"
           >
-            {labels.lbl_common_transaction}
+            {getLabelValue(labels, 'lbl_common_transaction')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 3, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorypointsearnedlbl"
             component="p"
@@ -49,7 +50,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             fontSize="fs12"
             fontWeight="semibold"
           >
-            {labels.lbl_common_points_earned}
+            {getLabelValue(labels, 'lbl_common_points_earned')}
           </BodyCopy>
         </Col>
       </Row>
@@ -57,7 +58,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
       {pointHistoryData &&
         pointHistoryData.length &&
         pointHistoryData.map(pointHistoryRow => (
-          <Row fullbleed className="elem-mb-SM">
+          <Row fullBleed className="elem-mb-SM">
             <Col colSize={{ large: 3, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistoryorderdate"
@@ -68,23 +69,23 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="elem-pr-XXS"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 3, medium: 3, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorypoints"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                textAlign="center"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
@@ -92,7 +93,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
           </Row>
         ))}
 
-      <Row fullbleed className="elem-mt-XXL elem-mt-XXS">
+      <Row fullBleed className="elem-mt-XXL elem-mt-XXS">
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <Anchor
             dataLocator="pointshistorylnk"
@@ -102,7 +103,7 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
             to="/account?id=place-rewards&&subSection=points-history"
             asPath="/account/place-rewards/points-history"
           >
-            {labels.lbl_common_points_history}
+            {getLabelValue(labels, 'lbl_common_points_history')}
           </Anchor>
         </Col>
       </Row>

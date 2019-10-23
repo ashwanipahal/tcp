@@ -12,15 +12,22 @@ export const handleEditCreditCardNumber = value => {
   return value.startsWith('*') ? '' : value;
 };
 
-const CardNumberField = ({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels }) => {
+const CardNumberField = ({
+  cardTypeImgUrl,
+  cardType,
+  isPLCCEnabled,
+  creditFieldLabels,
+  onCardFocus,
+}) => {
   return (
     <Field
       placeholder={creditFieldLabels.creditCardNumber}
       name="cardNumber"
       id="cardNumber"
       type="tel"
+      onFocus={onCardFocus}
       component={CreditCardNumber}
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       cardTypeImgUrl={cardTypeImgUrl}
       isPLCCEnabled={isPLCCEnabled}
       cardType={cardType}
@@ -47,6 +54,7 @@ export const CreditCardFields = ({
   showCvv,
   cardNumberWrapper,
   cardNumberInnerProps,
+  onCardFocus,
 }) => {
   const expMonthOptionsMap = getCreditCardExpirationOptionMap().monthsMap;
   const expYearOptionsMap = getCreditCardExpirationOptionMap().yearsMap;
@@ -56,11 +64,23 @@ export const CreditCardFields = ({
         {cardNumberWrapper ? (
           <Row fullBleed>
             <Col {...cardNumberInnerProps}>
-              {CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })}
+              {CardNumberField({
+                cardTypeImgUrl,
+                cardType,
+                isPLCCEnabled,
+                creditFieldLabels,
+                onCardFocus,
+              })}
             </Col>
           </Row>
         ) : (
-          CardNumberField({ cardTypeImgUrl, cardType, isPLCCEnabled, creditFieldLabels })
+          CardNumberField({
+            cardTypeImgUrl,
+            cardType,
+            isPLCCEnabled,
+            creditFieldLabels,
+            onCardFocus,
+          })
         )}
       </Col>
       {isExpirationRequired && (
@@ -68,10 +88,11 @@ export const CreditCardFields = ({
           <Col {...expMonthProps}>
             <Field
               placeholder={creditFieldLabels.expMonth}
+              title={creditFieldLabels.expMonth}
               name="expMonth"
               id="expMonth"
               component={Select}
-              dataLocator="payment-expmonthdd"
+              dataLocator="expMonthDropDown"
               options={expMonthOptionsMap}
               className="field"
               enableSuccessCheck={false}
@@ -80,10 +101,11 @@ export const CreditCardFields = ({
           <Col {...expYearProps} className="exp-year-field">
             <Field
               placeholder={creditFieldLabels.expYear}
+              title={creditFieldLabels.expYear}
               name="expYear"
               id="expYear"
               component={Select}
-              dataLocator="payment-expyeardd"
+              dataLocator="expYearDropDown"
               options={expYearOptionsMap}
               className="field"
               enableSuccessCheck={false}
@@ -96,7 +118,7 @@ export const CreditCardFields = ({
                 name="cvvCode"
                 id="cvvCode"
                 component={TextBox}
-                dataLocator="payment-cvv"
+                dataLocator="cvvTxtBox"
                 maxLength="4"
                 enableSuccessCheck={false}
               />
@@ -112,6 +134,7 @@ export const CreditCardFields = ({
 
 CreditCardFields.propTypes = {
   creditFieldLabels: PropTypes.shape({}),
+  onCardFocus: PropTypes.func,
   isExpirationRequired: PropTypes.bool,
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
@@ -147,12 +170,14 @@ CreditCardFields.defaultProps = {
   showCvv: true,
   cardNumberWrapper: false,
   cardNumberInnerProps: null,
+  onCardFocus: () => {},
 };
 
 CardNumberField.propTypes = {
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
+  onCardFocus: PropTypes.func,
   creditFieldLabels: PropTypes.shape({}),
 };
 
@@ -166,6 +191,7 @@ CardNumberField.defaultProps = {
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
+  onCardFocus: () => {},
 };
 
 export default withStyles(CreditCardFields, styles);

@@ -149,6 +149,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -264,6 +265,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -272,6 +274,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         }
       }
       mailingAddress={true}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
@@ -289,7 +292,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -302,6 +305,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -325,7 +329,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -352,6 +356,8 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
+        selectedValue=""
         variation="secondary"
       />
       <Styled(View)
@@ -372,7 +378,6 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             showEmailAddress={true}
             showPhoneNumber={false}
             showUserName={true}
-            state=""
           />
         </FormSection>
       </Styled(View)>
@@ -380,7 +385,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -400,7 +405,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_common_saveCTA"
@@ -409,7 +414,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -430,10 +435,10 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />
@@ -456,30 +461,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     ]
   }
   className=""
-  dispatch={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
-            "meta": Object {
-              "field": "onFileAddressKey",
-              "form": "addEditCreditCard",
-              "persistentSubmitErrors": undefined,
-              "touch": undefined,
-            },
-            "payload": "12345",
-            "type": "@@redux-form/CHANGE",
-          },
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  dispatch={[MockFunction]}
   dto={Object {}}
   expMonthOptionsMap={
     Array [
@@ -592,8 +574,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     }
   }
   mailingAddress={false}
-  onFileAddressKey=""
-  onFileAddresskey="12345"
+  onFileAddressKey="12345"
   selectedCard={null}
   showCreditCardFields={true}
   showEmailAddress={true}
@@ -614,6 +595,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -624,30 +606,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "expYear": "lbl_payment_expYear",
         }
       }
-      dispatch={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "onFileAddressKey",
-                  "form": "addEditCreditCard",
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": "12345",
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      }
+      dispatch={[MockFunction]}
       dto={Object {}}
       expMonthOptionsMap={
         Array [
@@ -752,6 +711,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -760,8 +720,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
       mailingAddress={false}
-      onFileAddressKey=""
-      onFileAddresskey="12345"
+      onCardFocus={[Function]}
+      onFileAddressKey="12345"
       selectedCard={null}
       showCreditCardFields={true}
       showCvv={false}
@@ -777,7 +737,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -790,6 +750,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -813,7 +774,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -840,6 +801,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
         selectedValue="12345"
         variation="secondary"
       />
@@ -861,6 +823,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             }
           }
           dataLocatorPrefix="address"
+          fontSize="fs14"
+          regularName={true}
           showCountry={false}
           showDefaultText={false}
           showName={true}
@@ -872,7 +836,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -892,7 +856,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_payment_addCard"
@@ -901,7 +865,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -922,10 +886,10 @@ exports[`CreditCardForm component should renders correctly with address dropdown
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />
@@ -1083,6 +1047,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           },
         ]
       }
+      cameraIcon={false}
       cardType=""
       cardTypeImgUrl=""
       className=""
@@ -1198,6 +1163,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       handleSubmit={[MockFunction]}
       initialValues={Object {}}
       isEdit={false}
+      isExpirationRequired={true}
       isPLCCEnabled={true}
       labels={
         Object {
@@ -1206,6 +1172,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
       }
       mailingAddress={false}
+      onCardFocus={[Function]}
       onFileAddressKey=""
       pristine={true}
       selectedCard={null}
@@ -1223,7 +1190,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         letterSpacing="ls167"
         locator=""
         mobilefontFamily="secondary"
-        text=""
+        text="lbl_payment_billingAddress"
         textAlign="left"
       />
       <Styled(View)>
@@ -1236,6 +1203,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           margin={null}
           marginTop="10"
           numberOfLines={null}
+          text="lbl_payment_ccAdressSelect"
           textAlign="left"
           textDecoration={null}
         />
@@ -1259,7 +1227,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             Object {
               "content": "",
               "id": "",
-              "label": undefined,
+              "label": "lbl_payment_addNewAddCta",
               "primary": false,
             },
           ]
@@ -1286,13 +1254,36 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
         name="onFileAddressKey"
         onValueChange={[Function]}
+        selectListTitle="lbl_payment_ccAdressSelect"
+        selectedValue=""
         variation="secondary"
       />
+      <Styled(View)
+        spacingStyles="margin-top-LRG"
+      >
+        <FormSection
+          name="address"
+        >
+          <AddressFields
+            disableCountry={false}
+            dispatch={[MockFunction]}
+            formName="addEditCreditCard"
+            formSection="address"
+            initialValues={Object {}}
+            isGuest={true}
+            labels={Object {}}
+            showDefaultCheckbox={false}
+            showEmailAddress={true}
+            showPhoneNumber={false}
+            showUserName={true}
+          />
+        </FormSection>
+      </Styled(View)>
     </Styled(View)>
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -1312,7 +1303,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           Object {
             "color": "white",
             "fontWeight": "normal",
-            "marginTop": 48,
+            "marginTop": 30,
           }
         }
         text="lbl_payment_addCard"
@@ -1321,7 +1312,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       />
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
@@ -1342,10 +1333,10 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
             "border": 1,
             "color": "black",
             "fontWeight": "normal",
-            "marginTop": 15,
+            "marginTop": 19,
           }
         }
-        text=""
+        text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
       />

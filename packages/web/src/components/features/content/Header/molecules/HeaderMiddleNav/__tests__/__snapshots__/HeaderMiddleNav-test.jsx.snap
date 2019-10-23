@@ -10,6 +10,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       className="undefined header-middle-nav"
     >
       <Styled(Col)
+        className="header-middle-nav-storelocator"
         colSize={
           Object {
             "large": 4,
@@ -17,7 +18,28 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(StoreLocatorLink)
+          labels={Object {}}
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
+        />
+      </Styled(Col)>
       <Styled(Col)
         className="header-middle-nav-search"
         colSize={
@@ -34,8 +56,29 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
+        />
+        <Styled(StoreLocatorLink)
+          labels={Object {}}
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
         />
         <Styled(BrandLogo)
           alt="The Children's Place"
@@ -78,11 +121,14 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -97,6 +143,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -106,6 +153,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0
@@ -156,6 +204,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
       className="undefined header-middle-nav"
     >
       <Styled(Col)
+        className="header-middle-nav-storelocator"
         colSize={
           Object {
             "large": 4,
@@ -163,7 +212,28 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(StoreLocatorLink)
+          labels={Object {}}
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
+        />
+      </Styled(Col)>
       <Styled(Col)
         className="header-middle-nav-search"
         colSize={
@@ -180,8 +250,29 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           data-locator="menu_bar_icon"
           onClick={[Function]}
           onKeyDown={[Function]}
+          role="button"
           src="/static/images/menu.svg"
           tabIndex="0"
+        />
+        <Styled(StoreLocatorLink)
+          labels={Object {}}
+          store={
+            Object {
+              "basicInfo": Object {
+                "address": Object {},
+                "coordinates": Object {},
+                "id": "",
+                "phone": "",
+                "storeName": "",
+              },
+              "features": Object {},
+              "hours": Object {
+                "holidayHours": Array [],
+                "regularAndHolidayHours": Array [],
+                "regularHours": Array [],
+              },
+            }
+          }
         />
         <Styled(BrandLogo)
           alt="The Children's Place"
@@ -224,11 +315,14 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         </Styled(Anchor)>
         <Connect(Styled(SearchBar))
           className="rightLink"
+          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
+          onCloseClick={[Function]}
           setSearchState={[Function]}
         />
         <Styled(Anchor)
           anchorVariation="primary"
+          aria-label="undefined undefined item"
           className="rightLink"
           fontSizeVariation="small"
           id="cartIcon"
@@ -243,6 +337,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             src="/static/images/bag.svg"
           />
           <Styled(BodyCopy)
+            aria-hidden="true"
             className="cartCount"
             color="text.primary"
             component="span"
@@ -252,6 +347,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
+            tabIndex="-1"
             textAlign="left"
           >
             0

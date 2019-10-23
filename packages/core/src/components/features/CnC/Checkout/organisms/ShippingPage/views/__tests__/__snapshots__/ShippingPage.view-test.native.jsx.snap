@@ -26,7 +26,7 @@ exports[`Shipping Page should render correctly 1`] = `
                       "addressId": undefined,
                       "emailAddress": undefined,
                       "emailSignup": true,
-                      "onFileAddressKey": undefined,
+                      "onFileAddressKey": "1234",
                       "phoneNumber": undefined,
                       "saveToAccount": undefined,
                       "setAsDefault": false,
@@ -59,7 +59,7 @@ exports[`Shipping Page should render correctly 1`] = `
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -72,7 +72,7 @@ exports[`Shipping Page should render correctly 1`] = `
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />
@@ -85,6 +85,7 @@ exports[`Shipping Page should render correctly 1`] = `
           "addressLine2": "",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       defaultAddressId={null}
       destroyOnUnmount={false}
@@ -132,7 +133,7 @@ exports[`Shipping Page should render correctly 1`] = `
                         "addressId": undefined,
                         "emailAddress": undefined,
                         "emailSignup": true,
-                        "onFileAddressKey": undefined,
+                        "onFileAddressKey": "1234",
                         "phoneNumber": undefined,
                         "saveToAccount": undefined,
                         "setAsDefault": false,
@@ -191,6 +192,18 @@ exports[`Shipping Page should render correctly 1`] = `
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
 <Fragment>
+  <ModalNative
+    heading="lbl_shipping_addNewAddress"
+    inheritedStyles=""
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <Connect(AddressVerification)
+      onError={[Function]}
+      onSuccess={[Function]}
+    />
+  </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"
     navigation={null}
@@ -200,7 +213,7 @@ exports[`Shipping Page should render correctly with component did update and get
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -213,7 +226,7 @@ exports[`Shipping Page should render correctly with component did update and get
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />
@@ -226,6 +239,7 @@ exports[`Shipping Page should render correctly with component did update and get
           "addressLine2": "pob",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       defaultAddressId="34789"
       destroyOnUnmount={false}
@@ -315,6 +329,18 @@ exports[`Shipping Page should render correctly with component did update and get
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
 <Fragment>
+  <ModalNative
+    heading="lbl_shipping_addNewAddress"
+    inheritedStyles=""
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <Connect(AddressVerification)
+      onError={[Function]}
+      onSuccess={[Function]}
+    />
+  </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"
     navigation={null}
@@ -324,7 +350,7 @@ exports[`Shipping Page should render correctly with component did update and get
   >
     <Styled(View)>
       <CheckoutSectionTitleDisplay
-        title=""
+        title="lbl_shipping_header"
       />
     </Styled(View)>
     <Styled(View)>
@@ -337,7 +363,7 @@ exports[`Shipping Page should render correctly with component did update and get
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
-        text=""
+        text="lbl_shipping_sectionHeader"
         textAlign="left"
         textDecoration={null}
       />
@@ -350,6 +376,7 @@ exports[`Shipping Page should render correctly with component did update and get
           "addressLine2": "pob",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       destroyOnUnmount={false}
       enableReinitialize={true}

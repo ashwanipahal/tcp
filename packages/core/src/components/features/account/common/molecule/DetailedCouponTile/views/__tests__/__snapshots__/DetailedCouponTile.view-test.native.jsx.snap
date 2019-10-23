@@ -38,8 +38,10 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
       </Styled(View)>
       <Styled(View)>
@@ -71,6 +73,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="details"
           underline={true}
@@ -80,12 +83,12 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       <Styled(View)>
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color=""
           customStyle={Object {}}
           customTextStyle={null}
           disableButton={false}
-          fill="WHITE"
+          fill=""
           fullWidth=""
           iconColor="gray.800"
           iconName="chevron-down"
@@ -103,7 +106,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
@@ -141,7 +144,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           host=""
           source={
             Object {
-              "testUri": "../../../../core/src/assets/bag-white.png",
+              "testUri": "../../../../core/src/assets/white-bag.png",
             }
           }
           url=""
@@ -203,8 +206,10 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
         <Styled(Styled(View)) />
       </Styled(View)>
@@ -237,6 +242,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="details"
           underline={true}
@@ -247,12 +253,12 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       <Styled(View)>
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color=""
           customStyle={Object {}}
           customTextStyle={null}
           disableButton={false}
-          fill="WHITE"
+          fill=""
           fullWidth=""
           iconColor="gray.800"
           iconName="chevron-down"
@@ -271,12 +277,12 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color=""
         customStyle={Object {}}
         customTextStyle={null}
         disableButton={false}
-        fill="WHITE"
+        fill=""
         fullWidth=""
         iconColor="gray.800"
         iconName="chevron-down"
@@ -352,8 +358,10 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
       </Styled(View)>
       <Styled(View)>
@@ -385,6 +393,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           data-locator="my-rewards-program-details"
           fontSizeVariation="large"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="details"
           underline={true}
@@ -394,12 +403,12 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       <Styled(View)>
         <Styled(CustomButton)
           active={false}
-          buttonVariation="variable-width"
+          buttonVariation="fixed-width"
           color=""
           customStyle={Object {}}
           customTextStyle={null}
           disableButton={false}
-          fill="WHITE"
+          fill=""
           fullWidth=""
           iconColor="gray.800"
           iconName="chevron-down"
@@ -417,7 +426,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}

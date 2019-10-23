@@ -13,6 +13,7 @@ class BillingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     submitBilling: PropTypes.func.isRequired,
+    billingDidMount: PropTypes.func.isRequired,
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
@@ -20,6 +21,9 @@ class BillingPage extends React.PureComponent {
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
+    isVenmoPaymentInProgress: PropTypes.bool,
+    isVenmoEnabled: PropTypes.bool,
+    ServerErrors: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
@@ -30,7 +34,14 @@ class BillingPage extends React.PureComponent {
     billingData: {},
     userAddresses: null,
     creditFieldLabels: {},
+    isVenmoPaymentInProgress: false,
+    isVenmoEnabled: false,
   };
+
+  componentDidMount() {
+    const { billingDidMount } = this.props;
+    billingDidMount();
+  }
 
   render() {
     const {
@@ -45,11 +56,15 @@ class BillingPage extends React.PureComponent {
       billingData,
       userAddresses,
       creditFieldLabels,
+      isVenmoPaymentInProgress,
+      isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
+      ServerErrors,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
+        {ServerErrors && <ServerErrors />}
         <GiftCardsContainer />
         {!isGuest ? (
           <div className="payment-container">
@@ -67,6 +82,8 @@ class BillingPage extends React.PureComponent {
               shippingAddress={shippingAddress}
               userAddresses={userAddresses}
               creditFieldLabels={creditFieldLabels}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              isVenmoEnabled={isVenmoEnabled}
             />
           </div>
         ) : (
@@ -82,6 +99,8 @@ class BillingPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             billingData={billingData}
             creditFieldLabels={creditFieldLabels}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isVenmoEnabled={isVenmoEnabled}
           />
         )}
       </div>

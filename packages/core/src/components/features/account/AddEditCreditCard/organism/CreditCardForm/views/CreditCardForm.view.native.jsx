@@ -7,8 +7,6 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
-import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddressDropdown from '@tcp/core/src/components/features/account/AddEditCreditCard/molecule/AddressDropdown/views/AddressDropdown.view.native';
 import { fromJS } from 'immutable';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
@@ -22,7 +20,6 @@ import {
   AddAddressButton,
   CancelButton,
   CreditCardContainer,
-  ModalViewWrapper,
   DefaultAddress,
   LeftBracket,
   RightBracket,
@@ -76,11 +73,19 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { onFileAddresskey } = props;
+    const { onFileAddressKey } = props;
     this.state = {
-      addAddressMount: false,
-      selectedAddress: onFileAddresskey,
+      selectedAddress: onFileAddressKey,
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (!state.selectedAddress && props.pristine && props.initialValues.onFileAddressKey) {
+      return {
+        selectedAddress: props.initialValues.onFileAddressKey,
+      };
+    }
+    return null;
   }
 
   getAddressOptions = () => {
@@ -99,7 +104,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: labels.paymentGC.lbl_payment_addNewAddCta,
+      label: getLabelValue(labels, 'lbl_payment_addNewAddCta', 'paymentGC'),
       content: '',
       primary: false,
     });
@@ -107,19 +112,8 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) => {
-    const { dispatch } = this.props;
-    const defaultAddress = onFileAddresskey
-      ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
-      : addressList && addressList.find(add => add.primary);
-    dispatch(
-      change(
-        'addEditCreditCard',
-        'onFileAddressKey',
-        (defaultAddress && defaultAddress.addressId) || ''
-      )
-    );
-    return defaultAddress;
+  getSelectedAddress = (addressList, onFileAddressKey) => {
+    return addressList && addressList.find(add => add.addressId === onFileAddressKey);
   };
 
   handleComponentChange = item => {
@@ -136,28 +130,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
     dispatch(change('addEditCreditCard', 'expMonth', month));
   };
 
-  toggleModal = () => {
-    const { addAddressMount } = this.state;
-    const { mailingAddress } = this.props;
-    if (!mailingAddress) {
-      this.setState({
-        addAddressMount: !addAddressMount,
-      });
-    }
+  showAddressDropdown = addressComponentList => {
+    return addressComponentList && addressComponentList.length > 1;
   };
 
-  showAddressDropdown = (mailingAddress, addressComponentList) => {
-    return mailingAddress
-      ? addressComponentList && addressComponentList.length > 1
-      : addressComponentList;
-  };
-
-  addressFormVisible = (mailingAddress, selectedAddress) => {
-    return mailingAddress && !selectedAddress;
+  addressFormVisible = selectedAddress => {
+    return !selectedAddress;
   };
 
   getSubHeading = (labels, pagesubHeading) => {
-    return pagesubHeading || labels.paymentGC.lbl_payment_billingAddress;
+    return pagesubHeading || getLabelValue(labels, 'lbl_payment_billingAddress', 'paymentGC');
   };
 
   getSubmitCTAText = (labels, mailingAddress, isEdit) => {
@@ -187,7 +169,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       onClose,
       dto,
       selectedCard,
-      onFileAddresskey,
+      onFileAddressKey,
       dispatch,
       handleSubmit,
       showCreditCardFields,
@@ -197,18 +179,18 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
       initialValues,
       subHeading,
       mailingAddress,
+      pristine,
+      invalid,
     } = this.props;
-    const { addAddressMount, selectedAddress } = this.state;
+    const { selectedAddress } = this.state;
     const addressComponentList = this.getAddressOptions();
-    const addressDropdown = this.showAddressDropdown(mailingAddress, addressComponentList);
-    const isAddressFormVisible = this.addressFormVisible(mailingAddress, selectedAddress);
+    const addressDropdown = this.showAddressDropdown(addressComponentList);
+    const isAddressFormVisible = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
 
-    const defaultAddress = selectedAddress
-      ? this.getSelectedAddress(addressList, selectedAddress)
-      : null;
+    const defaultAddress = this.getSelectedAddress(addressList, selectedAddress);
     if (isEdit && selectedCard) {
       const { expMonth, expYear } = selectedCard;
-      // Setting form value to take dropdown values.
+
       this.updateExpiryDate(expMonth, expYear);
       dispatch(change(constants.FORM_NAME, 'creditCardId', selectedCard.creditCardId));
     }
@@ -231,14 +213,16 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
             />
           )}
           <AddressWrapper>
-            <Heading
-              mobilefontFamily="secondary"
-              fontSize="fs14"
-              letterSpacing="ls167"
-              textAlign="left"
-              fontWeight="black"
-              text={this.getSubHeading(labels, subHeading)}
-            />
+            {(addressDropdown || mailingAddress) && (
+              <Heading
+                mobilefontFamily="secondary"
+                fontSize="fs14"
+                letterSpacing="ls167"
+                textAlign="left"
+                fontWeight="black"
+                text={this.getSubHeading(labels, subHeading)}
+              />
+            )}
             {addressDropdown && (
               <>
                 <TextWrapper>
@@ -248,11 +232,11 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                     textAlign="left"
                     fontWeight="black"
                     marginTop="10"
-                    text={labels.paymentGC.lbl_payment_ccAdressSelect}
+                    text={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
                   />
                 </TextWrapper>
                 <Field
-                  selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+                  selectListTitle={getLabelValue(labels, 'lbl_payment_ccAdressSelect', 'paymentGC')}
                   name="onFileAddressKey"
                   id="onFileAddressKey"
                   component={AddressDropdown}
@@ -261,12 +245,14 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                   variation="secondary"
                   dropDownStyle={{ ...dropDownStyle }}
                   itemStyle={{ ...itemStyle }}
-                  addAddress={this.toggleModal}
+                  addAddress={() => {
+                    this.handleComponentChange('');
+                  }}
                   onValueChange={itemValue => {
                     this.handleComponentChange(itemValue);
                   }}
                   labels={labels}
-                  selectedValue={onFileAddresskey}
+                  selectedValue={onFileAddressKey}
                 />
               </>
             )}
@@ -280,6 +266,7 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
                   showName
                   dataLocatorPrefix="address"
                   customStyle={CustomAddress}
+                  regularName
                 />
                 <RightBracket />
               </DefaultAddress>
@@ -306,37 +293,18 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
           <ActionsWrapper>
             <Button
               fill="BLUE"
-              buttonVariation="variable-width"
               text={this.getSubmitCTAText(labels, mailingAddress, isEdit)}
               style={AddAddressButton}
+              disableButton={invalid}
               onPress={handleSubmit}
             />
             <Button
               fill="WHITE"
               onPress={onClose}
-              buttonVariation="variable-width"
-              text={labels.common.lbl_common_cancelCTA}
+              text={getLabelValue(labels, 'lbl_common_cancelCTA', 'common')}
               style={CancelButton}
             />
           </ActionsWrapper>
-          {addAddressMount && (
-            <ModalNative
-              isOpen={addAddressMount}
-              onRequestClose={this.toggleModal}
-              heading={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
-            >
-              <ModalViewWrapper>
-                <AddEditAddressContainer
-                  onCancel={this.toggleModal}
-                  addressBookLabels={addressLabels}
-                  showHeading={false}
-                  currentForm="AddAddress"
-                  toggleAddressModal={this.toggleModal}
-                  address={null}
-                />
-              </ModalViewWrapper>
-            </ModalNative>
-          )}
         </CreditCardContainer>
       </ScrollView>
     );

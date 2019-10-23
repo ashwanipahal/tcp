@@ -11,15 +11,18 @@ type Props = {
   labels: any,
   className: string,
   userName: any,
+  onLinkClick: Function,
 };
-const MiniBagHeader = ({ labels, className, userName }: Props) => {
+const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
+  const createAccount = 'createAccount';
+  const login = 'login';
   return (
     <div className={className}>
       <div className="continue-shopping">
         <BodyCopy
           component="span"
           fontSize="fs18"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           textAlign="left"
           fontFamily="secondary"
           color="gray.800"
@@ -29,20 +32,21 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
       </div>
       <div className="continue-shopping">
         <Anchor
-          fontSizeVariation="medium"
+          className="continueShoppingText"
           underline
           anchorVariation="primary"
-          noLink
-          to=""
-          dataLocator="addedToBag-continueShopping"
+          to="/home"
+          dataLocator="emptyMiniBag-continueShopping"
         >
-          {labels.continueShopping}
+          <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
+            {labels.continueShopping}
+          </BodyCopy>
         </Anchor>
       </div>
       {!userName ? (
         <>
           <div className="continue-shopping">
-            <Button className="logIn">
+            <Button className="logIn" onClick={e => onLinkClick({ e, componentId: login })}>
               <BodyCopy
                 component="span"
                 color="white"
@@ -63,7 +67,10 @@ const MiniBagHeader = ({ labels, className, userName }: Props) => {
             </BodyCopy>
           </div>
           <div className="continue-shopping">
-            <Button className="createAccount">
+            <Button
+              className="createAccount"
+              onClick={e => onLinkClick({ e, componentId: createAccount })}
+            >
               <BodyCopy
                 component="span"
                 color="white"

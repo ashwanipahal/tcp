@@ -3,6 +3,8 @@
 exports[`ProductList component should renders correctly 1`] = `
 <Styled(View)>
   <FlatList
+    ListFooterComponent={[Function]}
+    ListHeaderComponent={[Function]}
     data={
       Array [
         Object {
@@ -13,27 +15,33 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={
       Object {
-        "className": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
+        "isFavorite": false,
         "isMatchingFamily": true,
         "isPlcc": false,
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],
+        "onGoToPDPPage": [MockFunction],
+        "onLoadMoreProducts": [MockFunction],
         "onPickUpOpenClick": [MockFunction],
         "onProductCardHover": [MockFunction],
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
+        "onRenderHeader": [MockFunction],
         "products": Array [
           Object {
             "productInfo": "",
           },
         ],
+        "setLastDeletedItemId": [MockFunction],
+        "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
         "siblingProperties": "",
+        "title": "",
         "unbxdId": "",
       }
     }
@@ -46,6 +54,11 @@ exports[`ProductList component should renders correctly 1`] = `
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
+    stickyHeaderIndices={
+      Array [
+        0,
+      ]
+    }
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />

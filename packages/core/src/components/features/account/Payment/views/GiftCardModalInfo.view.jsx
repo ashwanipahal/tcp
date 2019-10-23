@@ -1,17 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import { getIconPath } from '../../../../../utils';
 import { Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
 
-// @flow
-type Props = {
-  getAccNumbr: object,
-  data: object,
-};
-
-class GiftCardModalInfo extends React.Component<Props> {
+class GiftCardModalInfo extends React.Component {
   render() {
     const { getAccNumbr, data } = this.props;
     return (
@@ -23,7 +18,7 @@ class GiftCardModalInfo extends React.Component<Props> {
           className="deleteCardModal__modalTitle"
           data-locator="deletegcmodalheadinng"
         >
-          {data.heading}
+          {data.subHeading}
         </BodyCopy>
         <BodyCopy className="deleteCardModal__desc">
           {' '}
@@ -50,6 +45,11 @@ class GiftCardModalInfo extends React.Component<Props> {
     );
   }
 }
+
+GiftCardModalInfo.propTypes = {
+  getAccNumbr: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(GiftCardModalInfo, styles);
 export { GiftCardModalInfo as GiftCardModalInfoVanilla };

@@ -18,7 +18,9 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     >
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
+        scrollEnabled={false}
         source={
           Object {
             "html": "",
@@ -40,6 +42,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         customStyle={Object {}}
         fontSizeVariation="medium"
         locator=""
+        margins={null}
         noLink={true}
         onPress={[Function]}
         text="Points claim form"
@@ -56,6 +59,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
         dataLocator="my-rewards-program-details"
         fontSizeVariation="medium"
         locator=""
+        margins={null}
         onPress={[Function]}
         text="lbl_points_history_program_details"
         underline={true}
@@ -70,6 +74,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
           dataLocator="my-rewards-tnc"
           fontSizeVariation="medium"
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text="lbl_common_tnc"

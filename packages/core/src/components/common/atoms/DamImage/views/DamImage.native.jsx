@@ -5,7 +5,9 @@ import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../DamImage.styles';
-import { cropImageUrl } from '../../../../../utils/index.native';
+import { cropImageUrl, getAPIConfig } from '../../../../../utils/index.native';
+
+const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
 /**
  * DamImage returns two types of images
@@ -16,12 +18,38 @@ import { cropImageUrl } from '../../../../../utils/index.native';
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
 const DamImage = (props: Props) => {
-  const { url, crop, source, host, imgConfig, alt, ...otherProps } = props;
+  const {
+    url,
+    crop,
+    source,
+    host,
+    imgConfig,
+    alt,
+    isProductImage,
+    itemBrand,
+    ...otherProps
+  } = props;
+  const config = 'w_450';
   const cropVal = crop || '';
   const urlVal = url || '';
   // const ImageComponent = host ? Image : Image;
   const ImageComponent = Image;
   const namedTransformation = imgConfig || '';
+  const apiConfigObj = getAPIConfig();
+
+  let { brandId } = apiConfigObj;
+  if (itemBrand) {
+    brandId = itemBrand;
+  }
+
+  const brandName = brandId && brandId.toUpperCase();
+  const assetHost = apiConfigObj[`assetHost${brandName}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandName}`];
+  const uri = {
+    uri: isProductImage
+      ? `${assetHost}/${config}/${productAssetPath}/${urlVal}`
+      : cropImageUrl(urlVal, cropVal, namedTransformation),
+  };
 
   return (
     <ImageComponent
@@ -29,7 +57,8 @@ const DamImage = (props: Props) => {
       host={host}
       accessibilityRole="image"
       accessibilityLabel={alt || ''}
-      source={{ uri: cropImageUrl(urlVal, cropVal, namedTransformation) }}
+      source={uri}
+      defaultSource={placeHolderImg}
     />
   );
 };
@@ -41,6 +70,7 @@ DamImage.propTypes = {
   url: PropTypes.string,
   host: PropTypes.string,
   alt: PropTypes.string,
+  itemBrand: PropTypes.string,
 };
 
 DamImage.defaultProps = {
@@ -50,6 +80,7 @@ DamImage.defaultProps = {
   url: '',
   host: '',
   alt: '',
+  itemBrand: '',
 };
 
 export default withStyles(DamImage, style);

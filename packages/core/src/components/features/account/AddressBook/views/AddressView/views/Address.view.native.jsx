@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import AddEditAddressContainer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.container';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainer,
@@ -112,11 +113,12 @@ export class AddressView extends React.Component {
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledHeading>
-            {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING && (
+            {getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook') && (
               <BodyCopy
                 fontSize="fs16"
                 fontWeight="extrabold"
-                text={labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING}
+                color="black"
+                text={getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook')}
               />
             )}
           </StyledHeading>
@@ -124,35 +126,44 @@ export class AddressView extends React.Component {
           {addresses.size === 0 && (
             <NoAddressWrapper>
               <NoAddressHeading>
-                {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_MSG && (
+                {getLabelValue(labels, 'ACC_LBL_CREATE_ADDRESS_BOOK_MSG', 'addressBook') && (
                   <BodyCopy
                     fontSize="fs14"
                     fontWeight="semibold"
                     mobilefontFamily={['secondary']}
-                    text={labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_MSG}
+                    color="black"
+                    text={getLabelValue(labels, 'ACC_LBL_CREATE_ADDRESS_BOOK_MSG', 'addressBook')}
                   />
                 )}
               </NoAddressHeading>
               <NoAddressBody>
-                {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG && (
+                {getLabelValue(
+                  labels,
+                  'ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG',
+                  'addressBook'
+                ) && (
                   <BodyCopy
                     fontSize="fs13"
                     fontWeight="regular"
                     mobilefontFamily={['secondary']}
-                    text={labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG}
+                    color="black"
+                    text={getLabelValue(
+                      labels,
+                      'ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG',
+                      'addressBook'
+                    )}
                   />
                 )}
               </NoAddressBody>
             </NoAddressWrapper>
           )}
           <ButtonWrapperStyle>
-            {labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA && (
+            {getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook') && (
               <Button
                 color="white"
-                buttonVariation="variable-width"
                 fill="BLUE"
                 data-locator="addressbook-addnewaddress"
-                text={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+                text={getLabelValue(labels, 'ACC_LBL_ADD_NEW_ADDRESS_CTA', 'addressBook')}
                 onPress={this.toggleAddAddressModal}
               />
             )}
@@ -177,7 +188,7 @@ export class AddressView extends React.Component {
               <ModalViewWrapper>
                 <AddEditAddressContainer
                   onCancel={this.toggleAddAddressModal}
-                  addressBookLabels={labels.addressBook}
+                  addressBookLabels={getLabelValue(labels, 'addressBook')}
                   showHeading={false}
                   currentForm={currentForm}
                   toggleAddressModal={this.toggleAddressModal}

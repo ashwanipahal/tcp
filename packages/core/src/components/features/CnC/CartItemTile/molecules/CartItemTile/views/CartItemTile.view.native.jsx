@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
+import { TouchableOpacity } from 'react-native';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Image from '../../../../../../common/atoms/Image';
@@ -23,81 +22,27 @@ import {
   IconTextEdit,
   IconTextMoveToBag,
   SflIcons,
+  SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
-import CartItemRadioButtons from '../../CartItemRadioButtons';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileExtension from './CartItemTileExtension.view.native';
+import {
+  getBossBopisFlags,
+  isEcomOrder,
+  isBopisOrder,
+  isBossOrder,
+  isSoldOut,
+  noBossBopisMessage,
+  hideEditBossBopis,
+  checkBossBopisDisabled,
+  showRadioButtons,
+} from './CartItemTile.utils';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
-
-const getItemStatus = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />;
-  }
-  return <></>;
-};
-const getCartRadioButtons = (
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection
-) => {
-  if (isBagPageSflSection) return null;
-  if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
-    return (
-      <CartItemRadioButtons
-        productDetail={productDetail}
-        labels={labels}
-        index={itemIndex}
-        openedTile={openedTile}
-        setSelectedProductTile={setSelectedProductTile}
-      />
-    );
-  }
-  return <></>;
-};
-const getEditError = (productDetail, labels) => {
-  if (productDetail.miscInfo.availability === 'UNAVAILABLE') {
-    return (
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.update}
-        color="error"
-      />
-    );
-  }
-  if (productDetail.miscInfo.availability === 'SOLDOUT') {
-    return (
-      <BodyCopy
-        color="error"
-        fontFamily="secondary"
-        fontSize="fs12"
-        dataLocator={getLocator('cart_item_edit_link')}
-        textDecorationLine="underline"
-        text={labels.removeEdit}
-      />
-    );
-  }
-  return (
-    <BodyCopy
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs12"
-      dataLocator={getLocator('cart_item_edit_link')}
-      textDecorationLine="underline"
-      text={labels.edit}
-    />
-  );
-};
 
 class ProductInformation extends React.Component {
   swipeable = React.createRef();
@@ -136,10 +81,10 @@ class ProductInformation extends React.Component {
   };
 
   renderPoints = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     const { points } = labels;
     const { itemInfo: { myPlacePoints } = {} } = productDetail;
-    if (isBagPageSflSection) return null;
+    if (isBagPageSflSection || !showOnReviewPage) return null;
     return (
       <ProductDesc>
         <ProductSubDetailLabel>
@@ -162,17 +107,17 @@ class ProductInformation extends React.Component {
   };
 
   renderQuantity = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+    const { labels, productDetail, isBagPageSflSection, showOnReviewPage } = this.props;
     const { itemInfo: { qty } = {} } = productDetail;
     if (isBagPageSflSection) return null;
     return (
       <ProductDesc>
-        <ProductSubDetailLabel>
+        <ProductSubDetailLabel showOnReviewPage={showOnReviewPage}>
           <BodyCopy
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={`${labels.qty}: `}
+            text={`${labels.qty}:`}
           />
         </ProductSubDetailLabel>
         <BodyCopy color="gray.800" fontFamily="secondary" fontSize="fs13" text={qty} />
@@ -180,44 +125,80 @@ class ProductInformation extends React.Component {
     );
   };
 
-  renderPrice = () => {
-    const { labels, productDetail, isBagPageSflSection } = this.props;
+  renderSize = () => {
+    const { labels, productDetail, showOnReviewPage } = this.props;
+    const { itemInfo: { isGiftItem, size, fit } = {} } = productDetail;
     return (
       <ProductDesc>
-        <ProductSubDetailLabel>
+        <ProductSubDetailLabel showOnReviewPage={showOnReviewPage}>
           <BodyCopy
             fontSize="fs13"
             fontWeight={['semibold']}
             textAlign="left"
-            text={`${labels.price}: `}
+            text={isGiftItem === true ? `${labels.value}:` : `${labels.size}:`}
           />
         </ProductSubDetailLabel>
         <BodyCopy
+          color="gray.800"
+          fontFamily="secondary"
           fontSize="fs13"
-          fontWeight={['semibold']}
-          textAlign="left"
-          dataLocator={getLocator('cart_item_price')}
-          text={`$${productDetail.itemInfo.price}`}
+          dataLocator={getLocator('cart_item_size')}
+          text={`${size} `}
         />
-        {!isBagPageSflSection && (
-          <ProductListPrice>
+        <BodyCopy
+          fontSize="fs13"
+          color="gray.800"
+          fontFamily="secondary"
+          text={!fit || fit === 'Regular' ? ' ' : fit}
+        />
+      </ProductDesc>
+    );
+  };
+
+  renderPrice = () => {
+    const { labels, productDetail } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
+    return (
+      <ProductDesc>
+        {showOnReviewPage && (
+          <>
+            <ProductSubDetailLabel>
+              <BodyCopy
+                fontSize="fs13"
+                fontWeight={['semibold']}
+                textAlign="left"
+                text={`${labels.price}: `}
+              />
+            </ProductSubDetailLabel>
             <BodyCopy
-              color="gray.800"
-              fontFamily="secondary"
               fontSize="fs13"
-              text={
-                productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                  ? `$${productDetail.itemInfo.itemPrice}`
-                  : ''
-              }
+              fontWeight={['semibold']}
+              textAlign="left"
+              dataLocator={getLocator('cart_item_price')}
+              text={`${currencySymbol}${productDetail.itemInfo.price}`}
             />
-          </ProductListPrice>
+
+            {!isBagPageSflSection && (
+              <ProductListPrice>
+                <BodyCopy
+                  color="gray.800"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  text={
+                    productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
+                      ? `${currencySymbol}${productDetail.itemInfo.itemPrice}`
+                      : ''
+                  }
+                />
+              </ProductListPrice>
+            )}
+          </>
         )}
       </ProductDesc>
     );
   };
 
-  rightButton = () => {
+  rightButton = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) => {
     const { removeCartItem, productDetail, labels, isBagPageSflSection } = this.props;
     const { isGenricGuest, isCondense } = this.props;
     const {
@@ -229,17 +210,25 @@ class ProductInformation extends React.Component {
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
     return (
       <BtnWrapper>
-        {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
-          <View>
-            <Image
-              data-locator={getLocator('cart_item_edit_link')}
-              source={editIcon}
-              height={IconHeight}
-              width={IconWidth}
-            />
-            <IconTextEdit>{labels.edit}</IconTextEdit>
-          </View>
-        )}
+        {productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT &&
+          !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+            <TouchableOpacity
+              accessibilityRole="link"
+              onPress={() => {
+                CartItemTileExtension.callEditMethod(this.props);
+                CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
+                return this.swipeable.toggle('right');
+              }}
+            >
+              <Image
+                data-locator={getLocator('cart_item_edit_link')}
+                source={editIcon}
+                height={IconHeight}
+                width={IconWidth}
+              />
+              <IconTextEdit>{labels.edit}</IconTextEdit>
+            </TouchableOpacity>
+          )}
         {this.renderSflActionsLinks()}
         <MarginLeft
           onPress={() =>
@@ -268,36 +257,63 @@ class ProductInformation extends React.Component {
     );
   };
 
-  onSwipeComplete = swipe => {
-    const { swipedElement, setSwipedElement } = this.props;
-    if (swipedElement && swipedElement !== swipe) {
-      swipedElement.recenter();
-    }
-    setSwipedElement(swipe);
-  };
-
   render() {
-    const { productDetail, labels, itemIndex } = this.props;
-    const { openedTile, setSelectedProductTile, isBagPageSflSection } = this.props;
-    const { isGiftItem } = productDetail.itemInfo;
+    const { labels, itemIndex, showOnReviewPage, currencySymbol, productDetail } = this.props;
+    const {
+      productDetail: {
+        miscInfo: { store, orderItemType, availability },
+        itemInfo: { itemBrand, isGiftItem },
+      },
+      onPickUpOpenClick,
+    } = this.props;
+    const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isECOMOrder = isEcomOrder(orderItemType);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
+
     return (
       <Swipeable
         onRef={ref => {
           this.swipeable = ref;
         }}
-        rightButtons={[this.rightButton()]}
+        rightButtons={[this.rightButton(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)]}
         rightButtonWidth={240}
-        leftButtons={[null]}
+        leftButtons={null}
         onSwipeComplete={(event, gestureState, swipe) => {
-          this.onSwipeComplete(swipe);
+          CartItemTileExtension.onSwipeComplete(this.props, swipe);
         }}
       >
         <MainWrapper>
-          <UnavailableView>{getItemStatus(productDetail, labels)}</UnavailableView>
-          <OuterContainer>
-            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels)}
+          <UnavailableView>
+            {CartItemTileExtension.renderUnavailableErrorMessage({
+              props: this.props,
+              isEcomSoldout,
+              bossDisabled,
+              isBOSSOrder,
+              bopisDisabled,
+              isBOPISOrder,
+              noBossMessage,
+              noBopisMessage,
+              availability,
+            })}
+          </UnavailableView>
+          <OuterContainer showOnReviewPage={showOnReviewPage}>
+            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
             <ProductDescription>
-              {!!productDetail.miscInfo.badge && (
+              {showOnReviewPage && !!productDetail.miscInfo.badge && (
                 <BodyCopy
                   fontWeight={['semibold']}
                   fontFamily="secondary"
@@ -305,8 +321,8 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail)}
-              {CartItemTileExtension.heartIcon(isBagPageSflSection)}
+              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage)}
+              {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
                   <ProductSubDetailLabel>
@@ -325,55 +341,64 @@ class ProductInformation extends React.Component {
                     text={productDetail.itemInfo.color}
                   />
                 </ProductDesc>
-                <ProductDesc>
-                  <ProductSubDetailLabel>
-                    <BodyCopy
-                      fontSize="fs13"
-                      fontWeight={['semibold']}
-                      textAlign="left"
-                      text={isGiftItem === true ? `${labels.value}: ` : `${labels.size}: `}
-                    />
-                  </ProductSubDetailLabel>
-                  <BodyCopy
-                    color="gray.800"
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    dataLocator={getLocator('cart_item_size')}
-                    text={`${productDetail.itemInfo.size} `}
-                  />
-                  <BodyCopy
-                    fontSize="fs13"
-                    color="gray.800"
-                    fontFamily="secondary"
-                    text={
-                      !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'Regular'
-                        ? ' '
-                        : productDetail.itemInfo.fit
-                    }
-                  />
-                </ProductDesc>
-                {this.renderQuantity()}
+                {showOnReviewPage ? (
+                  <>
+                    {this.renderSize()}
+                    {this.renderQuantity()}
+                  </>
+                ) : (
+                  <SizeQtyOnReview>
+                    {this.renderSize()}
+                    <BodyCopy fontFamily="secondary" color="gray.800" fontSize="fs13" text="| " />
+                    {this.renderQuantity()}
+                  </SizeQtyOnReview>
+                )}
                 {this.renderPrice()}
                 {this.renderPoints()}
               </ProductSubDetails>
             </ProductDescription>
+            {!showOnReviewPage &&
+              CartItemTileExtension.PriceOnReviewPage(currencySymbol, productDetail)}
           </OuterContainer>
-          <EditButton
-            onPress={() => {
-              this.onSwipeComplete(this.swipeable);
-              return this.swipeable.toggle('right');
-            }}
-          >
-            {getEditError(productDetail, labels)}
-          </EditButton>
-          {getCartRadioButtons(
-            productDetail,
-            labels,
-            itemIndex,
-            openedTile,
-            setSelectedProductTile,
-            isBagPageSflSection
-          )}
+          {showOnReviewPage &&
+            !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+              <EditButton
+                onPress={() => {
+                  CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
+                  return this.swipeable.toggle('right');
+                }}
+              >
+                {CartItemTileExtension.getEditError(productDetail, labels)}
+              </EditButton>
+            )}
+          {showRadioButtons({
+            isEcomSoldout,
+            isECOMOrder,
+            isBossEnabled,
+            isBopisEnabled,
+            store,
+          }) &&
+            CartItemTileExtension.getCartRadioButtons({
+              productDetail,
+              labels,
+              itemIndex,
+              openedTile,
+              setSelectedProductTile,
+              isBagPageSflSection,
+              showOnReviewPage,
+              isEcomSoldout,
+              isECOMOrder,
+              isBOSSOrder,
+              isBOPISOrder,
+              noBopisMessage,
+              noBossMessage,
+              bossDisabled,
+              bopisDisabled,
+              isBossEnabled,
+              isBopisEnabled,
+              onPickUpOpenClick,
+              orderId,
+            })}
         </MainWrapper>
       </Swipeable>
     );
@@ -388,11 +413,14 @@ ProductInformation.propTypes = {
   openedTile: PropTypes.number,
   isCondense: PropTypes.bool,
   setSelectedProductTile: PropTypes.func.isRequired,
-  swipedElement: PropTypes.shape({}),
-  setSwipedElement: PropTypes.func.isRequired,
+  swipedElement: PropTypes.shape({}).isRequired,
   isBagPageSflSection: PropTypes.bool,
   isShowSaveForLater: PropTypes.bool.isRequired,
   isGenricGuest: PropTypes.shape({}).isRequired,
+  showOnReviewPage: PropTypes.bool,
+  currencySymbol: PropTypes.string.isRequired,
+  orderId: PropTypes.string.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {
@@ -401,8 +429,8 @@ ProductInformation.defaultProps = {
   itemIndex: 0,
   openedTile: 0,
   isCondense: true,
-  swipedElement: null,
   isBagPageSflSection: false,
+  showOnReviewPage: true,
 };
 
 export default ProductInformation;

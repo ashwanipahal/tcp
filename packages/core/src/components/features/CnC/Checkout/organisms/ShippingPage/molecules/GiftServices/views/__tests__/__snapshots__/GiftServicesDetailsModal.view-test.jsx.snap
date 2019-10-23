@@ -7,7 +7,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
+        "componentId": "sc-chPdSV",
         "isStatic": false,
         "rules": Array [
           "
@@ -22,6 +22,11 @@ exports[`GiftServices component renders correctly 1`] = `
   }
   .brand-image {
     width: 83px;
+    @media ",
+          [Function],
+          " {
+      padding-top: 11px;
+    }
   }
   .shortDesc {
     font-weight: ",
@@ -77,8 +82,18 @@ exports[`GiftServices component renders correctly 1`] = `
   .dropdownliBottomBorder {
     height: 71px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding-left: ",
+          [Function],
+          ";
+      padding-right: ",
+          [Function],
+          ";
+    }
   }
   .price {
     float: right;
@@ -99,6 +114,14 @@ exports[`GiftServices component renders correctly 1`] = `
     width: auto;
     margin-left: -12px;
     padding-right: 15px;
+    display: flex;
+    align-self: center;
+  }
+
+  .tcp-radio-button {
+    .radio-button-checked {
+      top: 18px;
+    }
   }
 
   .normal-select-box {
@@ -176,7 +199,7 @@ exports[`GiftServices component renders correctly 1`] = `
   }
 
   .gift-message {
-    width: 99%;
+    width: 98%;
     height: 146px;
     resize: none;
     font-size: ",
@@ -194,7 +217,7 @@ exports[`GiftServices component renders correctly 1`] = `
       "displayName": "Styled(GiftServicesDetailsModal)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
+      "styledComponentId": "sc-chPdSV",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

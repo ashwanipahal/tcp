@@ -1,4 +1,5 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
+import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -18,28 +19,105 @@ import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
  * @returns {Object} data layer
  */
 export default function create(store) {
+  const browseDataLayer = generateBrowseDataLayer(store);
+  const homepageDataLayer = generateHomePageDataLayer(store);
+  const siteType = 'global site';
   return Object.create(defaultDataLayer, {
+    ...browseDataLayer,
+    ...homepageDataLayer,
     pageName: {
       get() {
-        return store.getState().pageName;
+        return `gl:${store.getState().pageData.pageName}`;
       },
     },
-    // TODO: This formatting logic needs to match current app
-    listingFilterList: {
+
+    pageshortName: {
       get() {
-        const { form: { 'filter-form': { values } = {} } = {} } = store.getState();
-        const { TCPColor_uFilter: color, v_tcpsize_uFilter: size } = values;
-        return color || size ? JSON.stringify({ color, size }) : '';
+        return store.getState().pageData.pageName;
       },
     },
+
+    pageType: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
+    countryId: {
+      get() {
+        return store.getState().APIConfig.storeId;
+      },
+    },
+
+    pageLocale: {
+      get() {
+        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+      },
+    },
+
+    pageSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSubSubSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    siteType: {
+      get() {
+        return siteType;
+      },
+    },
+
+    customerType: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('isGuest')
+          ? 'no rewards:guest'
+          : 'rewards member:logged in';
+      },
+    },
+
+    userEmailAddress: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'emailAddress']);
+      },
+    },
+
+    currencyCode: {
+      get() {
+        return store.getState().APIConfig.currency;
+      },
+    },
+
+    pageDate: {
+      get() {
+        return new Date().toISOString().split('T')[0];
+      },
+    },
+
+    customerId: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('userId');
+      },
+    },
+
+    // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
-      },
-    },
-    listingCategory: {
-      get() {
-        return store.getState().ProductListing.get('currentListingId');
       },
     },
   });

@@ -37,14 +37,17 @@ export function getClearanceString(categoryType) {
 }
 
 export function attributeListMaker(attributes) {
-  return attributes.split(`;`).map(attribute => {
-    const regexUrl = /((http|https):\/\/)?(([\w.-]*)\.([\w])).*/g;
-    const isUrl = regexUrl.test(attribute);
-    const match = attribute.match(regexUrl);
-    const url = match && match[0].split('|');
-    const attAndValue = attribute.split(`:`);
-    return { identifier: attAndValue[0], value: isUrl ? url : attAndValue[1] };
-  });
+  return (
+    attributes &&
+    attributes.split(`;`).map(attribute => {
+      const regexUrl = /((http|https):\/\/)?(([\w.-]*)\.([\w])).*/g;
+      const isUrl = regexUrl.test(attribute);
+      const match = attribute.match(regexUrl);
+      const url = match && match[0].split('|');
+      const attAndValue = attribute.split(`:`);
+      return { identifier: attAndValue[0], value: isUrl ? url : attAndValue[1] };
+    })
+  );
 }
 export function extractAttributeValue(item, attribute) {
   try {
@@ -94,11 +97,8 @@ const getPromotionalPLCCMessage = product => {
   return product.TCPLoyaltyPLCCPromotionTextUSStore || '';
 };
 const catMapExists = (temp, catMap, bucketingSeqConfig) => {
-  return (
-    temp &&
-    catMap[bucketingSeqConfig.desiredL2] &&
-    catMap[bucketingSeqConfig.desiredL2].indexOf(temp) !== -1
-  );
+  const desiredL2Val = bucketingSeqConfig.desiredL2 && bucketingSeqConfig.desiredL2.split('|')[0];
+  return temp && catMap[desiredL2Val] && catMap[desiredL2Val].indexOf(temp) !== -1;
 };
 const isMatchingFamily = (matchingFamily, excludeBadge, siteAttributes) => {
   return matchingFamily && excludeBadge !== siteAttributes.matchingFamily;
@@ -107,21 +107,41 @@ const isOnlineOrClearing = (isOnlineOnly, categoryType) => {
   return isOnlineOnly && !getClearanceString('ONLINE_ONLY').includes(categoryType);
 };
 
-export function extractPrioritizedBadge(product, siteAttributes, categoryType, excludeBadge) {
+const getBundleBadge = (hidePdpBadge, product, siteAttributes) => {
+  return !hidePdpBadge ? extractAttributeValue(product, siteAttributes.bundleChecklist) : '';
+};
+
+const checkIfClearance = (clearanceOrNewArrival, categoryType) => {
+  return (
+    clearanceOrNewArrival === 'Clearance' && !getClearanceString('CLEARANCE').includes(categoryType)
+  );
+};
+
+export function extractPrioritizedBadge(
+  product,
+  siteAttributes,
+  categoryType,
+  excludeBadge,
+  hidePdpBadge
+) {
   const matchingCategory = extractAttributeValue(product, siteAttributes.matchingCategory);
   const matchingFamily = extractAttributeValue(product, siteAttributes.matchingFamily);
   const isGlowInTheDark = !!extractAttributeValue(product, siteAttributes.glowInTheDark);
   const isLimitedQuantity =
     extractAttributeValue(product, siteAttributes.limitedQuantity) === 'limited quantities';
-  const isOnlineOnly = !!extractAttributeValue(product, siteAttributes.onlineOnly);
+  // The onlineOnly value could be 0 or 1. So parseInt is require otherwise in case of 0 true was returning
+  const isOnlineOnly = !!+extractAttributeValue(product, siteAttributes.onlineOnly);
   const clearanceOrNewArrival = extractAttributeValue(product, siteAttributes.clearance);
+  const bundleBadge = getBundleBadge(hidePdpBadge, product, siteAttributes);
   const badges = {};
 
   if (isMatchingFamily(matchingFamily, excludeBadge, siteAttributes.matchingFamily)) {
     badges.matchBadge = matchingFamily;
   }
 
-  if (matchingCategory) {
+  if (bundleBadge) {
+    badges.defaultBadge = bundleBadge;
+  } else if (matchingCategory) {
     badges.defaultBadge = matchingCategory;
   } else if (isGlowInTheDark) {
     badges.defaultBadge = 'GLOW-IN-THE-DARK';
@@ -129,10 +149,7 @@ export function extractPrioritizedBadge(product, siteAttributes, categoryType, e
     badges.defaultBadge = 'JUST A FEW LEFT!';
   } else if (isOnlineOrClearing(isOnlineOnly, categoryType)) {
     badges.defaultBadge = 'ONLINE EXCLUSIVE';
-  } else if (
-    clearanceOrNewArrival === 'Clearance' &&
-    !getClearanceString('CLEARANCE').includes(categoryType)
-  ) {
+  } else if (checkIfClearance(clearanceOrNewArrival, categoryType)) {
     badges.defaultBadge = 'CLEARANCE';
   } else if (
     clearanceOrNewArrival === 'New Arrivals' &&
@@ -199,6 +216,7 @@ const getColorsMap = ({
   bossDisabledFlags,
   defaultColor,
   getImgPath,
+  isBundleProduct,
 }) => {
   return [
     {
@@ -208,7 +226,13 @@ const getColorsMap = ({
         isClearance: extractAttributeValue(product, attributesNames.clearance),
         isBopisEligible: isBOPIS && !processHelpers.isGiftCard(product),
         isBossEligible: isBossProduct(bossDisabledFlags) && !processHelpers.isGiftCard(product),
-        badge1: extractPrioritizedBadge(product, attributesNames, categoryType, excludeBadge),
+        badge1: extractPrioritizedBadge(
+          product,
+          attributesNames,
+          categoryType,
+          excludeBadge,
+          !isBundleProduct
+        ),
         badge2: extractAttributeValue(product, attributesNames.extendedSize),
         badge3: extractAttributeValue(product, attributesNames.merchant),
         videoUrl: extractAttributeValue(product, attributesNames.videoUrl),
@@ -221,7 +245,7 @@ const getColorsMap = ({
       },
       color: {
         name: defaultColor,
-        imagePath: getImgPath(product.imagename).colorSwatch,
+        imagePath: getImgPath(isBundleProduct ? product.prodpartno : product.imagename).colorSwatch,
       },
     },
   ];
@@ -254,6 +278,14 @@ const getGeneralProductId = product => {
   return product.prodpartno || product.generalProductId;
 };
 
+const getPdpUrl = (isBundleProduct, product) => {
+  return `${isBundleProduct ? '/b' : '/p'}/${product.seo_token || product.uniqueId}`;
+};
+
+const checkIfBundleProduct = product => {
+  return (product.product_type && product.product_type.toLowerCase() === 'bundle') || false;
+};
+
 export const parseProductInfo = (
   productArr,
   {
@@ -277,6 +309,7 @@ export const parseProductInfo = (
   const colors = processHelpers.getColors(isUSStore, product, uniqueId, defaultColor);
   const rawColors = processHelpers.getRawColors(isUSStore, product);
   const isBOPIS = isBopisEligibleProduct(isUSStore, product);
+  const isBundleProduct = checkIfBundleProduct(product);
   const bossDisabledFlags = {
     bossProductDisabled: isBossProductDisabled(product),
     bossCategoryDisabled: isBopisProductDisabled(product),
@@ -300,6 +333,7 @@ export const parseProductInfo = (
     bossDisabledFlags,
     defaultColor,
     getImgPath,
+    isBundleProduct,
   });
   if (!!Array.isArray(colors) === true) {
     colors.forEach(color => {
@@ -323,7 +357,8 @@ export const parseProductInfo = (
               swatchOfAvailableProduct,
               attributesNames,
               categoryType,
-              excludeBadge
+              excludeBadge,
+              !isBundleProduct
             ),
             badge2: extractAttributeValue(swatchOfAvailableProduct, attributesNames.extendedSize),
             badge3: extractAttributeValue(swatchOfAvailableProduct, attributesNames.merchant),
@@ -369,7 +404,7 @@ export const parseProductInfo = (
     productInfo: {
       generalProductId: getGeneralProductId(product),
       name: product.product_name,
-      pdpUrl: `/p/${product.seo_token || product.uniqueId}`,
+      pdpUrl: getPdpUrl(isBundleProduct, product),
       uniqueId: product.uniqueId,
       shortDescription: product.product_short_description,
       longDescription: product.product_short_description,
@@ -379,6 +414,7 @@ export const parseProductInfo = (
       offerPrice: processHelpers.getOfferPriceResponse(product),
       ratings: getRating(product),
       reviewsCount: getReview(product),
+      bundleProduct: isBundleProduct,
       unbxdId: getUnbxdIdFromReq(res.headers),
       promotionalMessage: getPromotionalMessage(product),
       promotionalPLCCMessage: getPromotionalPLCCMessage(product),

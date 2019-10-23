@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CouponIcon from '@tcp/core/src/components/features/account/common/molecule/CouponIcon';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   CouponTileSection,
   CouponWrapper,
@@ -18,8 +19,8 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
         <CouponInfo>
           <TitleWrapper>
             <BodyCopy
-              fontSize="fs12"
-              fontWeight="semibold"
+              fontSize="fs10"
+              fontWeight="black"
               title={coupon.title}
               data-locator="accountoverview-myplacerewatdstile-rewardvalue"
               text={coupon.title}
@@ -29,9 +30,9 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
             <BodyCopy
               fontSize="fs10"
               data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-              text={`${labels.lbl_overview_couponValid} ${coupon.effectiveDate} - ${
-                coupon.expirationDate
-              }`}
+              text={`${getLabelValue(labels, 'lbl_overview_couponValid')} ${
+                coupon.effectiveDate
+              } - ${coupon.expirationDate}`}
             />
           )}
 
@@ -39,7 +40,7 @@ export const CouponTile = ({ coupon, commonLabels, labels }) => {
             <BodyCopy
               fontSize="fs10"
               data-locator="accountoverview-myplacerewatdstile-rewarduseby"
-              text={`${labels.lbl_overview_couponUseBy} ${coupon.expirationDate}`}
+              text={`${getLabelValue(labels, 'lbl_overview_couponUseBy')} ${coupon.expirationDate}`}
             />
           )}
         </CouponInfo>

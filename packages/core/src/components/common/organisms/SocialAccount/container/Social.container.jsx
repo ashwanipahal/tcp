@@ -15,6 +15,15 @@ class SocialContainer extends React.PureComponent {
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
     isPlcc: PropTypes.string.isRequired,
+    handleComponentChange: PropTypes.func,
+    urlParams: PropTypes.shape({}),
+    componentProps: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    handleComponentChange: () => {},
+    urlParams: {},
+    componentProps: {},
   };
 
   componentDidMount() {
@@ -31,6 +40,9 @@ class SocialContainer extends React.PureComponent {
       setPointsModal,
       pointModalClose,
       isPlcc,
+      handleComponentChange,
+      urlParams,
+      componentProps,
     } = this.props;
     return (
       <Socialview
@@ -41,6 +53,9 @@ class SocialContainer extends React.PureComponent {
         setPointsModal={setPointsModal}
         pointModalClose={pointModalClose}
         isPlcc={isPlcc}
+        handleComponentChange={handleComponentChange}
+        urlParams={urlParams}
+        componentProps={componentProps}
       />
     );
   }

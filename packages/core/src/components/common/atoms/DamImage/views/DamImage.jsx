@@ -3,18 +3,22 @@ import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+} from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
   let { basePath } = props;
   let imgPath;
-
+  const propImageConfig = [];
   /* eslint-disable camelcase */
   const { crop_m, crop_t, crop_d, url } = imgData;
-  imgConfigs[0] = crop_m || imgConfigs[0];
-  imgConfigs[1] = crop_t || imgConfigs[1];
-  imgConfigs[2] = crop_d || imgConfigs[2];
+  propImageConfig[0] = crop_m || imgConfigs[0];
+  propImageConfig[1] = crop_t || imgConfigs[1];
+  propImageConfig[2] = crop_d || imgConfigs[2];
   /* eslint-enable camelcase */
 
   if (/^http/.test(url)) {
@@ -25,11 +29,11 @@ const getImgData = props => {
     imgPath = url;
   }
   imgPath = imgPath && imgPath.replace(/^\//, '');
-  return { basePath, imgPath, imgConfigs };
+  return { basePath, imgPath, imgConfigs: propImageConfig };
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints } = props;
+  const { breakpoints, isProductImage, itemBrand } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -40,7 +44,20 @@ const getBreakpointImgUrl = (type, props) => {
   if (imgConfigs[breakpointTypeIndex]) {
     config = imgConfigs[breakpointTypeIndex];
   }
-  return `${basePath}/${config}/${imgPath}`;
+
+  let brandName = getBrand();
+  if (itemBrand) {
+    brandName = itemBrand;
+  }
+
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+
+  return isProductImage
+    ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
+    : `${basePath}/${config}/${imgPath}`;
 };
 
 const renderImage = imgProps => {
@@ -52,11 +69,12 @@ const renderImage = imgProps => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
+    showPlaceHolder,
     ...other
   } = imgProps;
 
   const { alt } = imgData;
-
   return (
     <picture>
       <source
@@ -70,7 +88,12 @@ const renderImage = imgProps => {
       />
 
       {lazyLoad ? (
-        <LazyLoadImage src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <LazyLoadImage
+          src={getBreakpointImgUrl('xs', imgProps)}
+          alt={alt}
+          {...other}
+          showPlaceHolder={showPlaceHolder}
+        />
       ) : (
         <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
       )}
@@ -88,6 +111,8 @@ const DamImage = props => {
     lazyLoad,
     link,
     dataLocator,
+    itemBrand,
+    showPlaceHolder,
     ...other
   } = props;
 
@@ -99,6 +124,8 @@ const DamImage = props => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
+    showPlaceHolder,
     ...other,
   };
 
@@ -115,7 +142,7 @@ const DamImage = props => {
 
   return (
     <Anchor
-      className={ctaClassName}
+      className={`${ctaClassName} ${showPlaceHolder ? 'full-width' : ''}`}
       to={to}
       asPath={ctaUrl}
       target={target}
@@ -141,6 +168,8 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
+  itemBrand: '',
+  showPlaceHolder: true,
 };
 
 DamImage.propTypes = {
@@ -184,6 +213,8 @@ DamImage.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
   }),
+  itemBrand: PropTypes.string,
+  showPlaceHolder: PropTypes.bool,
 };
 
 export default withTheme(DamImage);

@@ -9,6 +9,7 @@ export const AnchorStyles = css`
                 ? props.theme.colorPalette[props.colorName]
                 : props.theme.colors.ANCHOR.PRIMARY
             };
+            margin: ${props.margins ? props.margins : '0 0 0 0'};
           `
       : ''};
   ${props =>
@@ -69,6 +70,12 @@ export const AnchorStyles = css`
     props.fontWeightVariation === 'active'
       ? `
                       font-weight: ${props.theme.fonts.fontWeight.bold};
+                    `
+      : ''};
+  ${props =>
+    props.fontWeightVariation === 'extrabold'
+      ? `
+                      font-weight: ${props.theme.typography.fontWeights.extrabold};
                     `
       : ''};
   ${props =>

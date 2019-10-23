@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { get } from 'lodash';
 import { View, Text } from 'react-native';
-import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
+import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/recaptchaModal.native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
   CardTileWrapper,
@@ -20,12 +21,10 @@ import {
   CardCtaLinkMargin,
   CardCtaLinks,
   CardCtaRow,
-  RecaptchaContainer,
 } from '../CardTile.style.native';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CustomButton from '../../../../../../common/atoms/Button';
-import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
@@ -35,7 +34,6 @@ class CardTile extends React.Component {
     labels: PropTypes.shape({}),
     setDefaultPaymentMethod: PropTypes.func,
     onGetBalanceCard: PropTypes.func,
-    change: PropTypes.func,
     handleSubmit: PropTypes.func,
     toggleModal: PropTypes.func,
     openUpdateModal: PropTypes.func,
@@ -48,7 +46,6 @@ class CardTile extends React.Component {
     labels: {},
     setDefaultPaymentMethod: () => {},
     onGetBalanceCard: () => {},
-    change: () => {},
     handleSubmit: () => {},
     toggleModal: () => {},
     openUpdateModal: () => {},
@@ -69,23 +66,40 @@ class CardTile extends React.Component {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      setRecaptchaModalMountedState: false,
+    };
   }
 
   getCardName = ({ card, labels }) => {
     switch (card.ccType) {
       case 'GiftCard':
-        return labels.paymentGC.lbl_payment_giftCard;
+        return getLabelValue(labels, 'lbl_payment_giftCard', 'paymentGC');
       case 'PLACE CARD':
-        return labels.paymentGC.lbl_payment_plccCard;
+        return getLabelValue(labels, 'lbl_payment_plccCard', 'paymentGC');
       case 'VENMO':
-        return labels.paymentGC.lbl_payment_venmoAccount;
+        return getLabelValue(labels, 'lbl_payment_venmoAccount', 'paymentGC');
       default:
-        return labels.paymentGC.lbl_payment_defaultCardName;
+        return getLabelValue(labels, 'lbl_payment_defaultCardName', 'paymentGC');
     }
   };
 
+  setRecaptchaModalMountState = () => {
+    const { setRecaptchaModalMountedState } = this.state;
+    this.setState({
+      setRecaptchaModalMountedState: !setRecaptchaModalMountedState,
+    });
+  };
+
+  onClose = () => {
+    this.setDeleteModalMountState({
+      setDeleteModalMountedState: false,
+      setUpdateModalMountedState: false,
+    });
+  };
+
   /**
-   * Get the gift card balance
+   * Get the gift card balances
    * @param {*} key
    * @param {*} checkbalanceValueInfo
    */
@@ -117,7 +131,7 @@ class CardTile extends React.Component {
             mobilefontFamily={['secondary']}
             fontWeight="semibold"
             fontSize="fs10"
-            text={labels.paymentGC.lbl_payment_defaultPayment}
+            text={getLabelValue(labels, 'lbl_payment_defaultPayment', 'paymentGC')}
           />
         </BadgeContent>
       </DefaultBadgeWrapper>
@@ -129,7 +143,7 @@ class CardTile extends React.Component {
         anchorVariation="primary"
         dataLocator="payment-makedefault"
         onPress={e => this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
-        text={labels.common.lbl_common_makeDefault}
+        text={getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
       />
     );
   };
@@ -145,10 +159,16 @@ class CardTile extends React.Component {
   };
 
   getCardDetails = ({ dataLocatorPrefix, card, labels }) => {
-    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
-      card.expYear
-    }`;
+    const cardNum = `${getLabelValue(
+      labels,
+      'lbl_payment_cardNum',
+      'paymentGC'
+    )}${card.accountNo.slice(-4)}`;
+    const expDate = `${getLabelValue(
+      labels,
+      'lbl_payment_expDate',
+      'paymentGC'
+    )}${card.expMonth.trim()}/${card.expYear}`;
     return (
       <View>
         <BodyCopy
@@ -208,10 +228,7 @@ class CardTile extends React.Component {
     isVenmo,
     balance,
     labels,
-    dataLocatorPrefix,
-    card,
-    onGetBalanceCard,
-    handleSubmit
+    dataLocatorPrefix
     // eslint-disable-next-line max-params
   ) => {
     return (
@@ -230,11 +247,9 @@ class CardTile extends React.Component {
           <CustomButton
             color="white"
             fill="BLUE"
-            text={labels.paymentGC.lbl_payment_checkBalance}
-            buttonVariation="variable-width"
-            onPress={handleSubmit(formData =>
-              this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
-            )}
+            text={getLabelValue(labels, 'lbl_payment_checkBalance', 'paymentGC')}
+            buttonVariation="fixed-width"
+            onPress={e => this.setRecaptchaModalMountState(e)}
           />
         )}
 
@@ -245,7 +260,7 @@ class CardTile extends React.Component {
               underline
               anchorVariation="primary"
               dataLocator={`payment-${dataLocatorPrefix}editlink`}
-              text={labels.common.lbl_common_edit}
+              text={getLabelValue(labels, 'lbl_common_edit', 'common')}
               onPress={e => this.onUpdateCardClick(e)}
             />
           )}
@@ -255,13 +270,28 @@ class CardTile extends React.Component {
             underline
             anchorVariation="primary"
             dataLocator={`payment-${dataLocatorPrefix}deletelink`}
-            text={labels.common.lbl_common_delete}
+            text={getLabelValue(labels, 'lbl_common_delete', 'common')}
             onPress={e => this.onDeleteCardClick(e)}
           />
         </CardCtaLinks>
       </CardCtaRow>
     );
   };
+
+  recaptchaRender({ setRecaptchaModalMountedState, onMessage }) {
+    return (
+      <React.Fragment>
+        {setRecaptchaModalMountedState && (
+          <RecaptchaModal
+            onMessage={onMessage}
+            setRecaptchaModalMountedState={setRecaptchaModalMountedState}
+            toggleRecaptchaModal={this.setRecaptchaModalMountState}
+            onClose={this.onClose}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
 
   render() {
     const {
@@ -270,9 +300,9 @@ class CardTile extends React.Component {
       setDefaultPaymentMethod,
       checkbalanceValueInfo,
       onGetBalanceCard,
-      change,
       handleSubmit,
     } = this.props;
+    const { setRecaptchaModalMountedState } = this.state;
 
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
@@ -284,9 +314,14 @@ class CardTile extends React.Component {
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
         const value = get(event, 'nativeEvent.data', '');
-        change('recaptchaToken', value);
+        if (value) {
+          const formData = { recaptchaToken: value };
+          this.setRecaptchaModalMountState();
+          onGetBalanceCard({ formData, card });
+        }
       }
     };
+
     return (
       <CardTileWrapper card={card}>
         <CardTileContext defaultPayment={card.defaultInd}>
@@ -300,7 +335,11 @@ class CardTile extends React.Component {
             />
           </CardTileHeading>
           {isCreditCard
-            ? this.getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod })
+            ? this.getMakeDefaultBadge({
+                card,
+                labels,
+                setDefaultPaymentMethod,
+              })
             : null}
         </CardTileContext>
         <CardTileDefaultSection isVenmo={isVenmo} isGiftCard={isGiftCard}>
@@ -324,16 +363,18 @@ class CardTile extends React.Component {
               mobilefontFamily={['secondary']}
               fontSize="fs14"
               color="gray.900"
-              text={labels.paymentGC.lbl_payment_remainingBalance}
+              text={getLabelValue(labels, 'lbl_payment_remainingBalance', 'paymentGC')}
             />
           </CardCtaRow>
         )}
         {isGiftCard && (balance === undefined || balance === null) && (
           <View>
-            <RecaptchaContainer>
-              <Recaptcha onMessage={onMessage} />
-            </RecaptchaContainer>
-            <Field
+            {this.recaptchaRender({
+              labels,
+              onMessage,
+              setRecaptchaModalMountedState,
+            })}
+            {/* <Field
               label=""
               component={TextBox}
               title=""
@@ -342,7 +383,7 @@ class CardTile extends React.Component {
               id="recaptchaToken"
               data-locator="gift-card-recaptchcb"
               className="visibility-recaptcha"
-            />
+            /> */}
           </View>
         )}
         {this.getCtaRow(

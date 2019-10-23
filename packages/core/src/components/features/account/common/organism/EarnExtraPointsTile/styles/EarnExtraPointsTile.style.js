@@ -15,11 +15,22 @@ const styles = css`
   }
   .slick-dots {
     position: initial;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .slick-disabled {
     opacity: 0.5;
     cursor: default;
+  }
+  .onAccountOverview {
+    max-width: 285px;
+    margin: 0 auto;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 300px;
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      max-width: 318px;
+    }
   }
 `;
 

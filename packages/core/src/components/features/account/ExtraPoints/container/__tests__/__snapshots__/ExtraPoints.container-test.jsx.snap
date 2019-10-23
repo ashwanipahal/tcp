@@ -3,8 +3,12 @@
 exports[`ExtraPointsContainer View should render ExtraPointsContainer Correctly 1`] = `
 <Fragment>
   <Styled(EarnPoints)
+    earnExtraPointsLabels={Object {}}
+    earnedPointsNotification={Array []}
+    handleComponentChange={[Function]}
     labels={Object {}}
     onViewActivityDetails={[Function]}
+    promoListData={Array []}
     waysToEarn={Array []}
   />
 </Fragment>

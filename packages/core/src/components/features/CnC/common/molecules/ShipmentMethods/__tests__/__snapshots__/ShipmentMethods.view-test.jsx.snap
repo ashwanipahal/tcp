@@ -6,6 +6,7 @@ exports[`Shipping Page should render correctly 1`] = `
     className="elem-mb-XXS"
     color="text.primary"
     component="p"
+    dataLocator="shippingMethods"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
@@ -133,6 +134,12 @@ exports[`Shipping Page should render correctly 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }
@@ -287,6 +294,12 @@ exports[`Shipping Page should render correctly 1`] = `
   }
   .radio-button-checked + .input-radio-title {
     ",
+                [Function],
+                ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
                 [Function],
                 ";
   }

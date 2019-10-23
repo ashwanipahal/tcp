@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 import UserReducer from '../User.reducer';
 import { DEFAULT_REDUCER_KEY } from '../../../../../../utils/cache.util';
+import USER_CONSTANTS from '../../User.constants';
 import { setUserInfo, setUserChildren } from '../User.actions';
 
 describe('User reducer', () => {
@@ -12,6 +13,8 @@ describe('User reducer', () => {
     survey: null,
     children: null,
     favoriteStore: null,
+    defaultStore: null,
+    isRegisteredUserCallDone: false,
   });
 
   it('should return default state', () => {
@@ -30,6 +33,7 @@ describe('User reducer', () => {
         airmilesAccountNumber: '1111',
         myPlaceNumber: '2222',
         surveyAnswers: [],
+        isExpressEligible: true,
       };
       state = UserReducer(initialState, setUserInfo(payload));
     });
@@ -68,6 +72,51 @@ describe('User reducer', () => {
 
     it('setting favorite store correctly', () => {
       expect(state.getIn(['favoriteStore', 'name'])).toEqual(payload.name);
+    });
+
+    it('set isExpressEligible correctly', () => {
+      const action = {
+        type: USER_CONSTANTS.SET_IS_EXPRESS_ELIGIBLE,
+        payload: true,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.setIn(['personalData', 'isExpressEligible'], true);
+      expect(updatedState).toStrictEqual(returnValue);
+    });
+
+    it('set isRegisteredUserCallDone correctly', () => {
+      const action = {
+        type: USER_CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.set('isRegisteredUserCallDone', true);
+      expect(updatedState).toStrictEqual(returnValue);
+    });
+
+    it('set isRegisteredUserCallDone correctly on getUserInfo', () => {
+      const action = {
+        type: USER_CONSTANTS.GET_USER_INFO,
+      };
+      const originalState = fromJS({});
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.set('isRegisteredUserCallDone', false);
+      expect(updatedState).toStrictEqual(returnValue);
+    });
+
+    it('setting default store correctly', () => {
+      const storeData = {
+        name: 'new jersey',
+      };
+      const originalState = fromJS({});
+      const action = {
+        payload: storeData,
+        type: USER_CONSTANTS.SET_DEFAULT_STORE,
+      };
+      const updatedState = UserReducer(originalState, action);
+      const returnValue = originalState.set('defaultStore', storeData);
+      expect(updatedState).toStrictEqual(returnValue);
     });
   });
 });

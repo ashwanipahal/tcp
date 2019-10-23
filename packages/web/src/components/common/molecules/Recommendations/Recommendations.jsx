@@ -8,6 +8,7 @@ import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import config from './config';
+import constant from './Recommendations.constant';
 import style from './Recommendations.style';
 
 /**
@@ -33,6 +34,8 @@ const RecommendationComponentVariation = dynamic(
   { ssr: false }
 );
 
+const { RECOMMENDATION } = constant;
+
 class Recommendations extends Component {
   componentDidMount() {
     const { loadRecommendations } = this.props;
@@ -52,6 +55,8 @@ class Recommendations extends Component {
       onPickUpOpenClick,
       labels,
       priceOnly,
+      currency,
+      currencyAttributes,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -72,12 +77,15 @@ class Recommendations extends Component {
           labels={labels}
           sequenceNumber={index + 1}
           variation={variation}
+          currencySymbol={currency}
+          currencyExchange={currencyAttributes.exchangevalue}
+          viaModule={RECOMMENDATION}
         />
       );
     });
   }
 
-  renderRecommendationVariation(variation) {
+  renderRecommendationView(variation) {
     const {
       moduleOHeaderLabel,
       modulePHeaderLabel,
@@ -91,10 +99,12 @@ class Recommendations extends Component {
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
-    const headerLabel = config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
+    const headerLabel =
+      variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
 
     return (
-      products && (
+      products &&
+      products.length > 0 && (
         <React.Fragment>
           <Heading
             variant="h4"
@@ -126,6 +136,7 @@ class Recommendations extends Component {
                     variation: 'big-arrows',
                     customArrowLeft: getIconPath('carousel-big-carrot-left'),
                     customArrowRight: getIconPath('carousel-big-carrot'),
+                    dataLocatorCarousel: `${variation}-variation`,
                   }}
                 >
                   {this.loadVariation(variation)}
@@ -176,7 +187,7 @@ class Recommendations extends Component {
     return variation.map(value => {
       return (
         <section className={`${className} recommendations-tile`}>
-          {this.renderRecommendationVariation(value)}
+          {this.renderRecommendationView(value)}
         </section>
       );
     });
@@ -198,6 +209,8 @@ Recommendations.propTypes = {
   ctaTitle: PropTypes.string,
   ctaUrl: PropTypes.string,
   variations: PropTypes.string,
+  currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 Recommendations.defaultProps = {
@@ -207,6 +220,10 @@ Recommendations.defaultProps = {
   ctaTitle: '',
   ctaUrl: '',
   variations: '',
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
 };
 
 export { Recommendations as RecommendationsVanilla };

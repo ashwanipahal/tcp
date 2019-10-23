@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitlePlusEditButton component should renders correctly props are present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="review--heading"
+    fontSize="fs26"
+    fontWeight="regular"
+    margin={null}
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      color="gray.900"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="review--edit-anchor"
+      fontSize="fs12"
+      locator=""
+      margins={null}
+      mobileFontFamily="secondary"
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`TitlePlusEditButton component should renders correctly props not present 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="review--heading"
+    fontSize="fs26"
+    fontWeight="regular"
+    margin={null}
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation="primary"
+      color="gray.900"
+      colorName={null}
+      customStyle={Object {}}
+      dataLocator="review--edit-anchor"
+      fontSize="fs12"
+      locator=""
+      margins={null}
+      mobileFontFamily="secondary"
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

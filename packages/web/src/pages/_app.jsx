@@ -7,13 +7,20 @@ import withReduxSaga from 'next-redux-saga';
 import setCookie from 'set-cookie-parser';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
+import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig, getAPIConfig, isDevelopment } from '@tcp/core/src/utils';
+import {
+  createAPIConfig,
+  getAPIConfig,
+  isDevelopment,
+  fetchStoreIdFromUrlPath,
+} from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
-import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
@@ -23,15 +30,16 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
-import RenderPerf from '../components/common/molecules/RenderPerf';
-import RouteTracker from '../components/common/atoms/RouteTracker';
+import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
 import constants from '../constants';
 
 // Analytics script injection
 function AnalyticsScript() {
-  return <script src={process.env.ANALYTICS_SCRIPT_URL} />;
+  // TODO: Need proper handling for this perf mark
+  const handleLoad = () => performance && performance.mark('analytics_script_loaded');
+  return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
 }
 
 class TCPWebApp extends App {
@@ -43,7 +51,12 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    const compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    let compProps;
+    try {
+      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+    } catch (e) {
+      compProps = {};
+    }
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
     return {
       pageProps,
@@ -113,89 +126,92 @@ class TCPWebApp extends App {
     };
   };
 
-  /**
-   * This function determines whether to load page data in bootstrap call
-   * @param {boolean} isServer
-   * @param {Object} state
-   * @param {*} Component
-   */
-  static shouldLoadPageData(isServer, state, Component) {
-    return isServer || !state.Layouts[Component.pageInfo && Component.pageInfo.name];
-  }
-
-  static loadGlobalData(Component, { store, res, isServer, req }, pageProps) {
+  static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     let payload = { siteConfig: false };
+    const initialProps = pageProps;
     // Get initial props is getting called twice on server
     // This check ensures this block is executed once since Component is not available in first call
-    if (Component.displayName) {
-      if (isServer) {
-        const { locals } = res;
-        const { device = {} } = req;
-        const apiConfig = createAPIConfig(locals);
+    if (isServer) {
+      const { locals } = res;
+      const { device = {} } = req;
+      const apiConfig = createAPIConfig(locals);
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
 
-        // optimizely headers
-        const optimizelyHeadersObject = {};
-        const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
+      // optimizely headers
+      const optimizelyHeadersObject = {};
+      const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
 
-        const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
-        if (optimizelyHeader) {
-          optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
-            let optimizelyHeaderValue;
-            try {
-              optimizelyHeaderValue = JSON.parse(
-                res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
-              );
-            } catch (err) {
-              optimizelyHeaderValue = {};
-            }
-            optimizelyHeadersObject[item] = optimizelyHeaderValue;
-          });
-        }
-
-        payload = {
-          siteConfig: true,
-          apiConfig,
-          deviceType: device.type,
-          optimizelyHeadersObject,
-        };
+      const optimizelyHeader = setCookieHeaderList && setCookieHeaderList[0];
+      if (optimizelyHeader) {
+        optimizelyHeader[constants.OPTIMIZELY_DECISION_LABEL].forEach(item => {
+          let optimizelyHeaderValue;
+          try {
+            optimizelyHeaderValue = JSON.parse(
+              res.getHeader(`${constants.OPTIMIZELY_HEADER_PREFIX}${item}`)
+            );
+          } catch (err) {
+            optimizelyHeaderValue = {};
+          }
+          optimizelyHeadersObject[item] = optimizelyHeaderValue;
+        });
       }
+
+      payload = {
+        siteConfig: true,
+        apiConfig,
+        deviceType: device.type,
+        optimizelyHeadersObject,
+      };
 
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
-      const state = store.getState();
-      if (TCPWebApp.shouldLoadPageData(isServer, state, Component)) {
+      if (Component.pageInfo) {
         payload = {
           ...Component.pageInfo,
           ...payload,
         };
       }
+
+      initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
+      if (asPath.includes('store') && query && query.storeStr) {
+        const storeId = fetchStoreIdFromUrlPath(query.storeStr);
+        store.dispatch(getCurrentStoreInfo(storeId));
+      }
     }
-    return pageProps;
+    return initialProps;
   }
 
-  static async loadComponentData(Component, { store, isServer }, pageProps) {
-    const compProps = {};
+  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
+    let compProps = {};
     if (Component.getInitialProps) {
-      // eslint-disable-next-line no-param-reassign
-      pageProps = await Component.getInitialProps({ store, isServer });
+      try {
+        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+      } catch (e) {
+        compProps = {};
+      }
     }
     if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
     }
-    return Object.assign(pageProps, compProps);
+    return Object.assign({}, pageProps, compProps);
   }
 
-  getSEOTags = pageId => {
-    const seoConfig = deriveSEOTags(pageId);
-    return <SEOTags seoConfig={seoConfig} />;
+  getSEOTags = (pageId, store, router) => {
+    // Just a sample - any store specific data should be set in this
+    if (pageId) {
+      const seoConfig = deriveSEOTags(pageId, store, router);
+      return <SEOTags seoConfig={seoConfig} />;
+    }
+    return null;
   };
 
   render() {
     const { Component, pageProps, store, router } = this.props;
+    const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
     const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
@@ -204,15 +220,14 @@ class TCPWebApp extends App {
         isNonCheckoutPage = false;
       }
     }
+
     return (
       <Container>
-        {/* TODO: Remove, this is for testing only */}
-        <RenderPerf.Mark name="app_render_start" />
         <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {this.getSEOTags(Component.pageId)}
+              {Component.pageId ? this.getSEOTags(Component.pageId, store, router) : null}
               <Header />
               <CheckoutHeader />
               <Loader />
@@ -222,17 +237,16 @@ class TCPWebApp extends App {
                   <Component {...pageProps} />
                 </div>
               </div>
-              <Footer />
+              <BackToTop />
+              <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
-            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
+        {/* Inject UX timer reporting if enabled. */}
+        {process.env.PERF_TIMING && <UserTimingRouteHandler />}
         {/* Inject analytics script if analytics is enabled. */}
         {process.env.ANALYTICS && <AnalyticsScript />}
-        {/* TODO: Remove, this is for testing only */}
-        <RenderPerf.Measure name="app_render" start="app_render_start" />
       </Container>
     );
   }

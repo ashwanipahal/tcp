@@ -10,6 +10,7 @@ exports[`Help Coupon Modal should call correctly 1`] = `
       "maxHeight": 50,
     }
   }
+  inheritedStyles=""
   isOpen={false}
   isOverlay={false}
   onRequestClose={[MockFunction]}

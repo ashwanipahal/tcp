@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
@@ -17,9 +18,17 @@ import MyFavoriteStore from '../../MyFavoriteStore';
 class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      mountSurveyModal: false,
-    };
+    const url = new URL(window.location.href);
+    const isSurvey = url.searchParams.get('survey');
+    if (isSurvey) {
+      this.state = {
+        mountSurveyModal: true,
+      };
+    } else {
+      this.state = {
+        mountSurveyModal: false,
+      };
+    }
   }
 
   toggleModalState = e => {
@@ -207,7 +216,7 @@ class ProfileInformation extends React.PureComponent {
             }}
           >
             <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
-              {labels.lbl_profile_program_details}
+              {getLabelValue(labels, 'lbl_profile_program_details')}
             </Anchor>
           </Col>
           <Col
@@ -218,7 +227,7 @@ class ProfileInformation extends React.PureComponent {
             }}
           >
             <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
-              {labels.lbl_profile_terms_condition}
+              {getLabelValue(labels, 'lbl_profile_terms_condition')}
             </Anchor>
           </Col>
         </Row>
@@ -266,3 +275,4 @@ ProfileInformation.defaultProps = {
 };
 
 export default withStyles(ProfileInformation, styles);
+export { ProfileInformation as ProfileInformationvanilla };

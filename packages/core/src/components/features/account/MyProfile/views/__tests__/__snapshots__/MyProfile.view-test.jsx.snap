@@ -3,7 +3,8 @@
 exports[`MyProfile component should render correctly 1`] = `
 <div>
   <Styled(FormPageHeading)
-    className="margin-none"
+    className="margin-none myAccountRightView"
+    heading="lbl_profile_heading"
   />
   <Styled(ProfileInformation)
     labels={Object {}}

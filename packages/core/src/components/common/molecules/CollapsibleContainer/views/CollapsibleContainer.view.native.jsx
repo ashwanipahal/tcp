@@ -24,7 +24,6 @@ class CollapsibleContainer extends React.Component {
     index: PropTypes.number,
     height: PropTypes.number,
     arrowPos: PropTypes.string,
-    isBag: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -33,37 +32,30 @@ class CollapsibleContainer extends React.Component {
     index: null,
     height: null,
     arrowPos: null,
-    isBag: false,
   };
 
   constructor(props) {
     super(props);
     this.state = {
       isExpanded: props.defaultOpen || false,
-      isBag: props.isBag || false,
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { index: nextIndex, openedTile: nextOpenedTile, getExpandedState } = nextProps;
-    const { isBag, isExpanded } = prevState;
-    if (isBag) {
-      if (getExpandedState && nextIndex === nextOpenedTile && !isExpanded) {
-        return { isExpanded: true };
-      }
-      return { isExpanded: false };
+  componentWillReceiveProps(nextProps) {
+    const { defaultOpen } = this.props;
+    if (defaultOpen !== nextProps.defaultOpen) {
+      this.setState({
+        isExpanded: nextProps.defaultOpen,
+      });
     }
-    return null;
   }
 
   toggleCollapseState = () => {
     const { isExpanded } = this.state;
     const { getExpandedState, index } = this.props;
+    this.setState({ isExpanded: !isExpanded });
     if (getExpandedState) {
       getExpandedState({ state: !isExpanded, index });
-      this.setState({ isBag: true });
-    } else {
-      this.setState({ isExpanded: !isExpanded });
     }
   };
 

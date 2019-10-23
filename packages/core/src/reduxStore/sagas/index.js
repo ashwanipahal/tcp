@@ -14,6 +14,7 @@ import GiftCardsSaga from '@tcp/core/src/components/features/CnC/Checkout/organi
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
 import LabelsSaga from './labels';
+import LayoutSaga from './layout';
 
 export {
   ProductListingPageSaga,
@@ -32,6 +33,7 @@ export {
   GiftCardsSaga,
   SocialAccountSaga,
   SearchListingPageSaga,
+  LayoutSaga,
 };
 
 export default {
@@ -51,4 +53,5 @@ export default {
   GiftCardsSaga,
   SocialAccountSaga,
   SearchListingPageSaga,
+  LayoutSaga,
 };

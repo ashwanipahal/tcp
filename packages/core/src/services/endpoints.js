@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 500] */
 import { API_METHODS, PRODUCTS_URI, SAVE_FOR_LATER } from './api.constants';
 
 const endpoints = {
@@ -98,7 +99,6 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/logout',
   },
-
   getPointsHistory: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getMyPointHistory',
@@ -130,6 +130,10 @@ const endpoints = {
   getExtraPoints: {
     method: 'GET',
     URI: 'v2/account/points/waysToEarn',
+  },
+  getEarnedPointsNotication: {
+    method: 'GET',
+    URI: 'v2/wallet/points/nontransactional/current',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
@@ -205,6 +209,14 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
   },
+  getContactPreferences: {
+    method: 'GET',
+    URI: 'v2/account/preferences',
+  },
+  setContactPreferences: {
+    method: 'PUT',
+    URI: 'v2/account/preferences',
+  },
   getAllOffers: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
@@ -270,12 +282,22 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
-
+  getFavoriteStore: {
+    method: 'GET',
+    URI: 'v2/store/getFavouriteStoreLocation',
+  },
+  findStoresByCoordinates: {
+    method: 'GET',
+    URI: 'v2/store/findStoresbyLatitudeandLongitude',
+  },
+  setFavoriteStore: {
+    method: 'POST',
+    URI: 'v2/store/addFavouriteStoreLocation',
+  },
   getSocialAccountsInfo: {
     method: 'GET',
     URI: 'v2/account/preferences/socialNew',
   },
-
   saveSocialAccountsInfo: {
     method: 'PUT',
     URI: 'v2/account/preferences/socialNew',
@@ -300,10 +322,6 @@ const endpoints = {
     method: 'POST',
     URI: SAVE_FOR_LATER,
   },
-  getMyFavoriteStore: {
-    method: API_METHODS.GET,
-    URI: 'v2/store/getFavouriteStoreLocation?latitude&longitude&catEntryId&itemPartNumber',
-  },
   getStoreandProductInventoryInfo: {
     method: 'GET',
     URI: 'v2/vendor/getStoreAndProductInventoryInfo',
@@ -316,13 +334,93 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/coupons/getOffers',
   },
+  getStoreInfo: {
+    method: 'GET',
+    URI: 'v2/store/info',
+  },
+  getNearByStore: {
+    method: 'GET',
+    URI: 'v2/store/nearBy',
+  },
   getBOPISInventoryDetails: {
     method: 'POST',
     URI: 'v2/vendor/getBOPISInvetoryDetails',
   },
+  getUserCartStoresAndInventory: {
+    method: 'GET',
+    URI: 'v2/bopis/getUserBopisStores',
+  },
   claimPoints: {
     method: 'POST',
     URI: 'v2/account/points/claim',
+  },
+  navigateXHR: {
+    method: 'POST',
+    URI: 'v2/appconfig/navigateXHR',
+  },
+  getStyliticsProductViewById: {
+    method: API_METHODS.GET,
+    URI: 'https://widget-api-staging.stylitics.com/api/outfits',
+  },
+  getDetailedOrderHistory: {
+    method: 'GET',
+    URI: 'v2/wallet/getPointsAndOrderHistory',
+  },
+  addOrUpdateWishlist: {
+    method: 'PUT',
+    URI: 'v2/wishlist/addOrUpdateWishlist',
+  },
+  getTwitterAuthToken: {
+    method: 'GET',
+    URI: 'v2/twitter/requestToken',
+  },
+  getTwitterAccessToken: {
+    method: 'GET',
+    URI: 'v2/twitter/accessToken',
+  },
+  getListofWishList: {
+    method: 'GET',
+    URI: 'v2/wishlist/getListOfWishlist',
+  },
+  getWishListbyId: {
+    method: 'GET',
+    URI: 'v2/wishlist/getWishListbyId',
+  },
+  createWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/createWishListForUser',
+  },
+  moveWishListItem: {
+    method: 'PUT',
+    URI: 'v2/wishlist/moveItemToWishList',
+  },
+  deleteWishListForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteWishListForUser',
+  },
+  editWishList: {
+    method: 'PUT',
+    URI: 'v2/wishlist/updateWishListForUser',
+  },
+  deleteWishListItemForUser: {
+    method: 'DELETE',
+    URI: 'v2/wishlist/deleteItemFromWishList',
+  },
+  shareWishListForUser: {
+    method: 'POST',
+    URI: 'v2/wishlist/shareWishListForUser',
+  },
+  getStoreLocationByCountry: {
+    method: 'GET',
+    URI: 'v2/store/getStoreLocationByCountry',
+  },
+  startExpressCheckout: {
+    method: 'POST',
+    URI: 'v2/checkout/expressCheckout',
+  },
+  getInstagramAccessToken: {
+    method: 'GET',
+    URI: 'v2/instagram/accessToken',
   },
 };
 export default endpoints;

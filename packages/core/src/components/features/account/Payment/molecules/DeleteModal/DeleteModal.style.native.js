@@ -58,7 +58,7 @@ const ImgWrapper = styled.View`
 const ImageStyle = styled.Image`
   max-width: 100%;
   max-height: 100%;
-  border: 1px solid ${props => props.theme.colorPalette.gray[700]};
+  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
   border-radius: 4px;
 `;
 
@@ -71,10 +71,12 @@ const CenterAlign = styled.View`
 
 const ConfirmButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+  width: 200px;
 `;
 
 const CloseButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  width: 200px;
 `;
 
 const CustomAddress = {

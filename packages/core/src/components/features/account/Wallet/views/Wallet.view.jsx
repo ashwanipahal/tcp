@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 import MyRewards from '../../common/organism/MyRewards';
 
 const WalletView = ({ labels }) => {
   return (
     <PageHeadingWithLinks
-      heading={labels.placeRewards.lbl_my_wallet_heading}
-      programDetailsCta={labels.placeRewards.lbl_my_rewards_program_details}
-      termsConditionCta={labels.placeRewards.lbl_common_tnc}
+      className="myAccountRightView"
+      heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
+      programDetailsCta={getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
+      termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
     >
       <MyRewards labels={labels} view="all" />
     </PageHeadingWithLinks>

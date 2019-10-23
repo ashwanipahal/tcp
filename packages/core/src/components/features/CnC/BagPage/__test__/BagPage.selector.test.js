@@ -35,9 +35,17 @@ describe('#Added to bag Selectors', () => {
     openItemDeleteConfirmationModalInfo: true,
   });
 
+  const sessionState = {
+    siteDetails: {
+      SFL_MAX_COUNT: '200',
+      BAG_CONDENSE_HEADER_INTERVAL: 3000,
+    },
+  };
+
   const state = {
     Labels: BagPageState,
     CartPageReducer,
+    session: sessionState,
   };
 
   it('#getAddedToBagData should return itemInfo', () => {
@@ -110,5 +118,10 @@ describe('#Added to bag Selectors', () => {
       modalHeading: 'lbl_itemDelete_modalHeading',
       modalTitle: 'lbl_itemDelete_modalTitle',
     });
+  });
+  it('#getBagStickyHeaderInterval should return interval', () => {
+    expect(BAGPAGE_SELECTORS.getBagStickyHeaderInterval(state)).toEqual(
+      sessionState.siteDetails.BAG_CONDENSE_HEADER_INTERVAL
+    );
   });
 });

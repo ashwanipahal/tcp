@@ -5,7 +5,7 @@ import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ShopBySize from '../../ShopBySize';
 import MenuItem from '../../MenuItems';
-import { shopBySizeArr, shopBySize } from '../shopBySizeMock';
+import { /* shopBySizeArr , */ shopBySize } from '../shopBySizeMock';
 import {
   TitleContainer,
   HeadingContainer,
@@ -32,6 +32,18 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
       accessibilityLabels,
     });
   }
+
+  if (url.includes('-outfit')) {
+    // Navigate to outfit listing for outfits
+    const categoryIds = url.split('cid=');
+    return navigate('OutfitListing', {
+      title: name,
+      url,
+      accessibilityLabels,
+      outfitPath: (categoryIds && categoryIds.length > 1 && categoryIds[1]) || '',
+    });
+  }
+
   return navigate('ProductListing', {
     title: name,
     url,
@@ -119,11 +131,11 @@ const NavMenuLevel2 = props => {
   } = item;
 
   // TODO - Appending the dummy shop by size object for development. Remove it later
-  subCategories[shopBySize] = {
-    label: shopBySize,
-    order: 0,
-    items: shopBySizeArr,
-  };
+  // subCategories[shopBySize] = {
+  //   label: shopBySize,
+  //   order: 0,
+  //   items: shopBySizeArr,
+  // };
 
   const subCatArr = Object.keys(subCategories).sort((prevGroup, curGroup) => {
     return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);

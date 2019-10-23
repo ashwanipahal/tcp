@@ -8,6 +8,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   const props = {
     currentProduct: null,
     selectedColorProductId: 123,
+    fromBagPage: true,
   };
 
   beforeEach(() => {
@@ -21,20 +22,5 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   it('should render expected number of components', () => {
     expect(wrapper.find('View').length).toBe(1);
     expect(wrapper.find('Field').length).toBe(3);
-  });
-
-  it('should render color', () => {
-    const selectColor = jest.fn();
-    const item = { color: { imagePath: '//', name: 'WHITE' } };
-    wrapper.setProps({ selectColor, selectedColor: item });
-    const linkImage = shallow(
-      wrapper
-        .find('Field')
-        .first()
-        .props()
-        .renderItem({ item })
-    );
-    linkImage.props().onPress();
-    expect(selectColor).toHaveBeenCalled();
   });
 });

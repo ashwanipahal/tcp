@@ -27,4 +27,9 @@ export const ICON_NAME = {
   circleAlertFill: 'circle-alert-fill',
   fastShipping: 'fast-shipping',
   markerIcon: 'marker-icon',
+  iconShare: 'icon-share',
+  search: 'mag-glass',
+  qrcode: 'scan',
+  large: 'large',
+  filledHeart: 'filled-heart',
 };

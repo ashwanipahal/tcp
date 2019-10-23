@@ -10,20 +10,7 @@ exports[`AccountDrawerHeading should render correctly 1`] = `
     />
     <span
       className="userName"
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="span"
-        fontFamily="primary"
-        fontSize="fs16"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </span>
+    />
   </span>
   <span
     className="viewAccAnchor"
@@ -34,6 +21,7 @@ exports[`AccountDrawerHeading should render correctly 1`] = `
       anchorVariation="primary"
       asPath="/account"
       fontSizeVariation="medium"
+      text="lbl_acc_drawer_view_my_acc"
       to="/account?id=account-overview"
       underline={true}
     />

@@ -28,10 +28,37 @@ export const loadComponentLabelsData = payload => {
   };
 };
 
+export const loadSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_SEO_DATA,
+  };
+};
+export const setSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_SEO_DATA,
+  };
+};
+
+export const loadPageSEOData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_PAGE_SEO_DATA,
+  };
+};
+
 export const loadXappConfigData = payload => {
   return {
     payload,
     type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG,
+  };
+};
+
+export const loadXappConfigDataOtherBrand = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG_OTHER_BRAND,
   };
 };
 
@@ -70,6 +97,27 @@ export const loadModulesData = payload => {
   };
 };
 
+export const getCountryListData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_GET_DATA,
+  };
+};
+
+export const storeCountriesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_COUNTRIES_MAP,
+  };
+};
+
+export const storeCurrenciesMap = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_CURRENCIES_MAP,
+  };
+};
+
 export const setCountry = payload => {
   return {
     payload,
@@ -101,6 +149,14 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
+export const fetchPageLayout = (payload, layoutName) => {
+  return {
+    payload,
+    layoutName,
+    type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -108,6 +164,9 @@ export default {
   loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
+  getCountryListData,
+  storeCountriesMap,
+  storeCurrenciesMap,
   setCountry,
   setCurrency,
   setLanguage,

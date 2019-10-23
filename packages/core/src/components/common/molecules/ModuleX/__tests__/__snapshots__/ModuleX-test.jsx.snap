@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Module X component renders correctly 1`] = `
+<Styled(RichText)
+  className="test-class moduleX"
+  dataLocator="data-locator"
+  richTextHtml="<div class='test-class'>I am test </div>"
+/>
+`;

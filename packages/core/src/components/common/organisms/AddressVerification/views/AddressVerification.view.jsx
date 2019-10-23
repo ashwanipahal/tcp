@@ -158,6 +158,7 @@ export class AddressVerification extends React.Component<Props> {
             isSelected={selectAddress === 'userAddress'}
             onChange={this.handleChange}
             showInput={this.showInput}
+            fontWeight="extrabold"
             inputProps={{
               'data-locator': 'verifyaddress-enteredradio',
             }}
@@ -193,6 +194,7 @@ export class AddressVerification extends React.Component<Props> {
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
               onChange={this.handleChange}
+              fontWeight="extrabold"
               inputProps={{
                 'data-locator': 'verifyaddress-suggestedradio',
               }}
@@ -236,7 +238,7 @@ export class AddressVerification extends React.Component<Props> {
     if (this.showVerifyModal) {
       return (
         <Modal
-          colSet={{ large: 4, medium: 8, small: 6 }}
+          colSet={{ large: 6, medium: 8, small: 6 }}
           isOpen
           onRequestClose={this.onCloseModal}
           overlayClassName="TCPModal__Overlay"
@@ -244,7 +246,7 @@ export class AddressVerification extends React.Component<Props> {
           heading={heading}
           fixedWidth
           maxWidth={spacing.MODAL_WIDTH.SMALL}
-          minHeight="675px"
+          heightConfig={{ maxHeight: '100%', height: 'auto' }}
         >
           <div className="addressVerification">
             <BodyCopy
@@ -253,7 +255,7 @@ export class AddressVerification extends React.Component<Props> {
               fontWeight="semibold"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-MED"
+              className="elem-pt-LRG elem-mb-MED"
             >
               {verifyAddressLabels.verifyHeader}
             </BodyCopy>

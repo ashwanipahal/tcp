@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -6,18 +8,9 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../EmptyCard.style';
 import { getIconPath } from '../../../../../../../utils';
 
-// @flow
-type Props = {
-  labels: object,
-  className: string,
-  icon: string,
-  alt: string,
-  prefix: string,
-};
-
-const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
-  const heading = labels.paymentGC[`lbl_payment_${prefix}EmptyHeading`];
-  const desc = labels.paymentGC[`lbl_payment_${prefix}EmptyDesc`];
+const EmptyCard = ({ labels, className, icon, alt, prefix }) => {
+  const heading = getLabelValue(labels, `lbl_payment_${prefix}EmptyHeading`, 'paymentGC');
+  const desc = getLabelValue(labels, `lbl_payment_${prefix}EmptyDesc`, 'paymentGC');
   const cardIcon = getIconPath(icon);
   return (
     <div className={className}>
@@ -98,5 +91,12 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
   );
 };
 
+EmptyCard.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  prefix: PropTypes.string.isRequired,
+};
 export default withStyles(EmptyCard, styles);
 export { EmptyCard as EmptyCardVanilla };

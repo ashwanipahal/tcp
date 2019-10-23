@@ -1,0 +1,6 @@
+https://test5.childrensplace.com/us/home?token=tcprwd
+https://test5.childrensplace.com/us/checkout/pickup?token=tcprwd
+https://test5.childrensplace.com/us/checkout/shipping?token=tcprwd
+https://test5.childrensplace.com/us/bag?token=tcprwd
+https://test5.childrensplace.com/us/c/toddler-girl-school-uniform-polo-shirts?token=tcprwd
+https://test5.childrensplace.com/us/c/girls-clothing-school-uniforms?token=tcprwd

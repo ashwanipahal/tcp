@@ -5,7 +5,6 @@ import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 
@@ -19,10 +18,13 @@ import {
   ModuleB,
   ModuleJ,
   ModuleR,
+  ModuleQ,
+  ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
+import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
   moduleD: ModuleD,
@@ -34,6 +36,8 @@ const modulesMap = {
   moduleB: ModuleB,
   moduleJ: ModuleJ,
   moduleR: ModuleR,
+  moduleS: ModuleS,
+  moduleQ: ModuleQ,
 };
 
 const buttonMargin = { margin: 30 };
@@ -103,6 +107,7 @@ HomePageView.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
   screenProps: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
 };
 
 HomePageView.defaultProps = {

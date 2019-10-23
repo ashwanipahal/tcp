@@ -1,151 +1,338 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadioButtonInput } from 'react-native-simple-radio-button';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import { LabeledRadioButton } from '../../../../../../common/atoms';
+import { View } from 'react-native';
+import { LabeledRadioButton, BodyCopy, Anchor } from '../../../../../../common/atoms';
+import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 import {
   StyledWrapper,
-  StyledLabeledRadioBtn,
-  StyledText,
-  StyledHeaderBtnWrapper,
-  StyledStoreText,
-  StyledStoreTextWrapper,
-  StyledBopisBorder,
+  StyledTopRow,
+  StyledBottomRow,
+  StyledRadioButtonItem,
+  StyledDatesWrapper,
+  StyledStoreWrapper,
+  StyledChangeStore,
+  labelStyle,
+  disabledLabelStyle,
 } from '../styles/CartItemRadioButtons.style.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
-
-const colorPallete = createThemeColorPalette();
 
 class CartItemRadioButtons extends React.Component {
   constructor(props) {
     super(props);
-    this.selectedOrder = CARTPAGE_CONSTANTS.ECOM;
-    if (props.productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOPIS) {
-      this.selectedOrder = CARTPAGE_CONSTANTS.BOPIS;
-    } else if (props.productDetail.miscInfo.orderItemType === CARTPAGE_CONSTANTS.BOSS) {
-      this.selectedOrder = CARTPAGE_CONSTANTS.BOSS;
-    }
     this.state = {
-      selectedOrder: this.selectedOrder,
       currentExpandedState: true,
     };
   }
 
+  /**
+   * @function handleChangeStoreClick Handle click event for change store
+   * @memberof CartItemRadioButtons
+   */
+  handleChangeStoreClick = () => {
+    const { openPickUpModal, onPickUpOpenClick, productDetail, orderId } = this.props;
+    const {
+      productDetail: {
+        miscInfo: { orderItemType },
+      },
+    } = this.props;
+    const openSkuSelectionForm = false;
+    openPickUpModal(orderItemType, openSkuSelectionForm, {
+      onPickUpOpenClick,
+      productDetail,
+      orderId,
+    });
+  };
+
   getExpandedState = ({ state, index }) => {
     const { setSelectedProductTile } = this.props;
-    this.setState({ currentExpandedState: state });
-    if (setSelectedProductTile && state) {
-      setSelectedProductTile({ index });
-    }
+    this.setState({ currentExpandedState: state }, () => {
+      if (setSelectedProductTile && state) {
+        setSelectedProductTile({ index });
+      }
+    });
   };
 
-  handleToggle = (e, orderType) => {
-    this.setState({ selectedOrder: orderType });
-  };
-
-  renderRadioButtonInput = ({ key }) => {
-    const { selectedOrder } = this.state;
-    return (
-      <RadioButtonInput
-        isSelected={selectedOrder === key}
-        borderWidth={1}
-        buttonInnerColor={colorPallete.black}
-        buttonOuterColor={colorPallete.black}
-        buttonSize={10}
-        buttonOuterSize={20}
-        onPress={e => this.handleToggle(e, key)}
-        buttonStyle={{}}
-        obj={{
-          value: selectedOrder,
-        }}
-      />
-    );
-  };
-
-  renderRadioButton = ({ key, label }) => {
-    const { selectedOrder } = this.state;
-    const { productDetail } = this.props;
-    return key !== CARTPAGE_CONSTANTS.BOPIS ? (
-      <StyledLabeledRadioBtn>
-        <LabeledRadioButton
-          obj={{
-            label,
-            value: selectedOrder,
-          }}
-          index={0}
-          onPress={e => this.handleToggle(e, key)}
-          checked={selectedOrder === key}
-          disabled={key !== CARTPAGE_CONSTANTS.ECOM}
+  /**
+   * @function renderBossDates Renders the boss dates values in the format as required.
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {JSX} renders the boss dates unit
+   * @memberof CartItemRadioButtons
+   */
+  renderBossDates = isBossItem => {
+    const {
+      labels,
+      productDetail: {
+        miscInfo: { bossStartDate, bossEndDate },
+      },
+    } = this.props;
+    return isBossItem ? (
+      <StyledDatesWrapper>
+        <BodyCopy fontFamily="secondary" fontSize="fs10" color="gray[800]" text={labels.by} />
+        <BodyCopyWithSpacing
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs10"
+          color="gray[800]"
+          spacingStyles="padding-left-XXS"
+          text={`${bossStartDate.get('day')}. ${bossStartDate.get('month')} ${bossStartDate.get(
+            'date'
+          )} - ${bossEndDate.get('day')}. ${bossEndDate.get('month')} ${bossEndDate.get('date')}`}
         />
-      </StyledLabeledRadioBtn>
-    ) : (
-      <StyledBopisBorder>
-        {this.renderRadioButtonInput({ key, label })}
-        <StyledText>{productDetail.miscInfo.store ? `${label}:` : label}</StyledText>
-        {productDetail.miscInfo.store && (
-          <StyledStoreTextWrapper>
-            <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
-          </StyledStoreTextWrapper>
+      </StyledDatesWrapper>
+    ) : null;
+  };
+
+  renderStore = () => {
+    const {
+      labels,
+      productDetail: {
+        miscInfo: { store },
+      },
+    } = this.props;
+    return store ? (
+      <StyledStoreWrapper>
+        <BodyCopy fontFamily="secondary" fontSize="fs10" color="gray[800]" text={labels.at} />
+        <BodyCopyWithSpacing
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs10"
+          color="gray[800]"
+          spacingStyles="padding-left-XXS"
+          text={store}
+        />
+      </StyledStoreWrapper>
+    ) : null;
+  };
+
+  /**
+   * @function hideChangeStore Method use to handle various conditions for show hide the change store link
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {bool} Whether to hide the change store
+   * @memberof CartItemRadioButtons
+   */
+  hideChangeStore = isBossItem => {
+    const {
+      isBossEnabled,
+      isBopisEnabled,
+      productDetail: {
+        miscInfo: { isBossEligible, isBopisEligible, availability },
+      },
+    } = this.props;
+
+    if (isBossItem) {
+      return !(
+        !isBossEnabled ||
+        !isBossEligible ||
+        availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK
+      );
+    }
+    return !(!isBopisEnabled || !isBopisEligible);
+  };
+
+  /**
+   * @function renderChangeStore
+   * @param {bool} disabled Represents with the current item is disabled or not
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @returns {JSX} Render Change store link.
+   * @memberof CartItemRadioButtons
+   */
+  renderChangeStore = (disabled, isBossItem) => {
+    const { labels } = this.props;
+    return !disabled || this.hideChangeStore(isBossItem) ? (
+      <Anchor
+        fontSizeVariation="small"
+        onPress={e => {
+          e.preventDefault();
+          this.handleChangeStoreClick();
+        }}
+      >
+        <StyledChangeStore>
+          <BodyCopy
+            fontSize="fs12"
+            fontFamily="secondary"
+            color="gray[900]"
+            text={`${labels.changeStore}`}
+          />
+        </StyledChangeStore>
+      </Anchor>
+    ) : null;
+  };
+
+  renderRadioButton = ({
+    isSelected,
+    disabled,
+    radioText,
+    onlineClearanceMessage,
+    isBossItem,
+    isEcomItem,
+  }) => {
+    return (
+      <StyledRadioButtonItem disabled={disabled}>
+        <StyledTopRow>
+          <LabeledRadioButton
+            obj={{
+              label: radioText,
+              value: isSelected,
+            }}
+            index={0}
+            labelStyle={disabled ? disabledLabelStyle : labelStyle}
+            // onPress={e => this.handleToggle(e, key)}
+            checked={isSelected}
+            disabled={disabled}
+            disabledWithAlert={disabled && isSelected}
+          />
+          {onlineClearanceMessage && (
+            <BodyCopyWithSpacing
+              fontFamily="secondary"
+              fontSize="fs12"
+              color="gray[800]"
+              spacingStyles="padding-left-MED"
+              text={onlineClearanceMessage}
+            />
+          )}
+        </StyledTopRow>
+        {!isEcomItem && isSelected && !onlineClearanceMessage && (
+          <StyledBottomRow>
+            <View>
+              {this.renderStore()}
+              {this.renderBossDates(isBossItem)}
+            </View>
+            {this.renderChangeStore(disabled, isBossItem)}
+          </StyledBottomRow>
         )}
-      </StyledBopisBorder>
+      </StyledRadioButtonItem>
     );
   };
 
-  renderRadioButtons = () => {
-    const { labels } = this.props;
+  showHeaderBossRadioButton = (currentExpandedState, isOpened) => {
+    const { isBOSSOrder, isBossEnabled } = this.props;
+    return (
+      ((!isOpened || !currentExpandedState) && isBOSSOrder) ||
+      (currentExpandedState && isOpened && (isBossEnabled || isBOSSOrder))
+    );
+  };
+
+  showHeaderBopisRadioButton = (currentExpandedState, isOpened) => {
+    const { isBOSSOrder, isBOPISOrder, isBossEnabled, isBopisEnabled } = this.props;
+    return (
+      ((!isOpened || !currentExpandedState) && isBOPISOrder) ||
+      (currentExpandedState && isOpened && !(isBossEnabled || isBOSSOrder) && isBopisEnabled)
+    );
+  };
+
+  showHeaderEcomRadioButton = (currentExpandedState, isOpened) => {
+    const { isECOMOrder } = this.props;
+    return (!isOpened || !currentExpandedState) && isECOMOrder;
+  };
+
+  renderHeaderRadioButtons = () => {
+    const {
+      isECOMOrder,
+      isBOSSOrder,
+      isBOPISOrder,
+      bossDisabled,
+      bopisDisabled,
+      isEcomSoldout,
+      index,
+      openedTile,
+      noBossMessage,
+      noBopisMessage,
+      productDetail: {
+        miscInfo: { store },
+      },
+      labels,
+    } = this.props;
+    const { currentExpandedState } = this.state;
+    const isOpened = index === openedTile;
     return (
       <>
-        {this.renderRadioButton({ key: CARTPAGE_CONSTANTS.BOPIS, label: labels.bopisPickUp })}
-        {this.renderRadioButton({ key: CARTPAGE_CONSTANTS.ECOM, label: labels.ecomShipping })}
+        {this.showHeaderBossRadioButton(currentExpandedState, isOpened) &&
+          this.renderRadioButton({
+            isSelected: isBOSSOrder,
+            disabled: bossDisabled,
+            radioText: labels.bossPickUp,
+            onlineClearanceMessage: noBossMessage,
+            isBossItem: true,
+            isEcomItem: false,
+            store,
+          })}
+        {this.showHeaderBopisRadioButton(currentExpandedState, isOpened) &&
+          this.renderRadioButton({
+            isSelected: isBOPISOrder,
+            disabled: bopisDisabled,
+            radioText: labels.bopisPickUp,
+            onlineClearanceMessage: noBopisMessage,
+            isBossItem: false,
+            isEcomItem: false,
+            store,
+          })}
+        {this.showHeaderEcomRadioButton(currentExpandedState, isOpened) &&
+          this.renderRadioButton({
+            isSelected: isECOMOrder,
+            disabled: isEcomSoldout,
+            radioText: labels.ecomShipping,
+            onlineClearanceMessage: false,
+            isBossItem: false,
+            isEcomItem: true,
+          })}
       </>
     );
   };
 
-  renderHeader = ({ key, label }) => {
-    const { productDetail } = this.props;
+  renderBodyRadioButtons = () => {
+    const {
+      isECOMOrder,
+      isBOPISOrder,
+      isBopisEnabled,
+      bopisDisabled,
+      isEcomSoldout,
+      noBopisMessage,
+      productDetail: {
+        miscInfo: { store },
+      },
+      index,
+      openedTile,
+      labels,
+    } = this.props;
+    const { currentExpandedState } = this.state;
+    const isOpened = index === openedTile;
     return (
-      <StyledHeaderBtnWrapper pointerEvents={key !== CARTPAGE_CONSTANTS.ECOM ? 'none' : 'auto'}>
-        {this.renderRadioButtonInput({ key, label })}
-        <StyledText>{key === CARTPAGE_CONSTANTS.BOPIS ? `${label}:` : label}</StyledText>
-        {key === CARTPAGE_CONSTANTS.BOPIS && productDetail.miscInfo.store && (
-          <StyledStoreTextWrapper>
-            <StyledStoreText>{` ${productDetail.miscInfo.store}`}</StyledStoreText>
-          </StyledStoreTextWrapper>
-        )}
-      </StyledHeaderBtnWrapper>
+      <>
+        {!this.showHeaderBopisRadioButton(currentExpandedState, isOpened) &&
+          (isBopisEnabled || isBOPISOrder) &&
+          this.renderRadioButton({
+            isSelected: isBOPISOrder,
+            disabled: bopisDisabled,
+            radioText: labels.bopisPickUp,
+            onlineClearanceMessage: noBopisMessage,
+            isBossItem: false,
+            isEcomItem: false,
+            store,
+          })}
+        {this.renderRadioButton({
+          isSelected: isECOMOrder,
+          disabled: isEcomSoldout,
+          radioText: labels.ecomShipping,
+          onlineClearanceMessage: false,
+          isBossItem: false,
+          isEcomItem: true,
+        })}
+      </>
     );
   };
 
-  header = () => {
-    const { selectedOrder, currentExpandedState } = this.state;
-    const { labels, openedTile, index } = this.props;
-    if (index !== openedTile || !currentExpandedState) {
-      switch (selectedOrder) {
-        case CARTPAGE_CONSTANTS.BOSS:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
-        case CARTPAGE_CONSTANTS.BOPIS:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOPIS, label: labels.bopisPickUp });
-        case CARTPAGE_CONSTANTS.ECOM:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.ECOM, label: labels.ecomShipping });
-        default:
-          return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
-      }
-    } else return this.renderHeader({ key: CARTPAGE_CONSTANTS.BOSS, label: labels.bossPickUp });
-  };
-
   render() {
-    const header = this.header();
     const { index, openedTile } = this.props;
     return (
       <StyledWrapper>
         <CollapsibleContainer
-          header={header}
-          body={this.renderRadioButtons()}
+          header={this.renderHeaderRadioButtons()}
+          body={this.renderBodyRadioButtons()}
           getExpandedState={this.getExpandedState}
           defaultOpen={index === openedTile}
           index={index}
-          height="50px"
+          height="auto"
           openedTile={openedTile}
           arrowPos="20px"
           isBag
@@ -163,11 +350,25 @@ CartItemRadioButtons.propTypes = {
   index: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  orderId: PropTypes.string,
+  openPickUpModal: PropTypes.func.isRequired,
+  isECOMOrder: PropTypes.bool.isRequired,
+  isBOSSOrder: PropTypes.bool.isRequired,
+  isBOPISOrder: PropTypes.bool.isRequired,
+  isBossEnabled: PropTypes.bool.isRequired,
+  isBopisEnabled: PropTypes.bool.isRequired,
+  bossDisabled: PropTypes.bool.isRequired,
+  bopisDisabled: PropTypes.bool.isRequired,
+  isEcomSoldout: PropTypes.bool.isRequired,
+  noBossMessage: PropTypes.bool.isRequired,
+  noBopisMessage: PropTypes.bool.isRequired,
 };
 
 CartItemRadioButtons.defaultProps = {
   index: 0,
   openedTile: 0,
+  orderId: '',
 };
 
 export default CartItemRadioButtons;

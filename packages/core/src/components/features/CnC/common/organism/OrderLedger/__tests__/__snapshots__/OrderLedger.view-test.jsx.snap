@@ -1,704 +1,1437 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
-<Fragment>
-  <Styled(Grid)
-    className=" elem-mb-MED"
-    data-locator="orderLedgerBox"
+<div
+  className=" elem-mb-MED"
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
   >
-    <Styled(Row)
-      className="items-total rowMargin"
-      data-locator="orderLedgerItemLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          dataLocator="orderLedgerCount"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <ForwardRef
+            className=" elem-mb-MED"
+            data-locator="orderLedgerBox"
+          >
+            <ForwardRef
+              className="items-total rowMargin"
+              data-locator="orderLedgerItemLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  dataLocator="orderLedgerCount"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined (1):
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  0.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="tax-total rowMargin"
+              data-locator="orderLedgerTaxLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  0.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="balance-total rowMargin"
+              data-locator="orderLedgerBalanceTotalLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="right"
+                >
+                  0.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
+            />
+          </ForwardRef>
+          <Measure
+            name="pricing_visible"
+          />
+        </React.Fragment>
+      }
+      className=""
+      defaultOpen={false}
+      header={
+        <div
+          className="elem-mb-SM order-ledger-header"
         >
-          undefined (1):
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          0.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="tax-total rowMargin"
-      data-locator="orderLedgerTaxLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          0.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="balance-total rowMargin"
-      data-locator="orderLedgerBalanceTotalLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="right"
-        >
-          0.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-  </Styled(Grid)>
-  <Measure
-    name="render_cart_total"
-  />
-</Fragment>
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined (0)
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+      isDefaultView={true}
+    />
+  </Styled(Col)>
+</div>
 `;
 
 exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
-<Fragment>
-  <Styled(Grid)
-    className=" elem-mb-MED"
-    data-locator="orderLedgerBox"
+<div
+  className=" elem-mb-MED"
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
   >
-    <Styled(Row)
-      className="items-total rowMargin"
-      data-locator="orderLedgerItemLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          dataLocator="orderLedgerCount"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined (1):
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="coupons-total rowMargin"
-      data-locator="orderLedgerCouponsLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          -1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="promotions-total rowMargin"
-      data-locator="orderLedgerPromotionLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          -1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="shipping-total rowMargin"
-      data-locator="orderLedgerShippingLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="tax-total rowMargin"
-      data-locator="orderLedgerTaxLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="estimated-total rowMargin"
-      data-locator="orderLedgerTotalLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="giftCard-total rowMargin"
-      data-locator="orderLedgerGiftCardLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
-        >
-          -1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="balance-total rowMargin"
-      data-locator="orderLedgerBalanceTotalLbl"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="left"
-        >
-          undefined:
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          tag="span"
-          textAlign="right"
-        >
-          1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="total-order-savings rowMargin"
-      data-locator="orderLedgerTotalOrderSavingsLabel"
-    >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          undefined
-          <Styled(ReactTooltip)
-            direction="top"
-            id="tool"
-            minWidth="205px"
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <ForwardRef
+            className=" elem-mb-MED"
+            data-locator="orderLedgerBox"
           >
-            <Styled(Image)
-              alt="info"
-              className="circle-info-image"
-              src="/static/images/info-icon.png"
+            <ForwardRef
+              className="items-total rowMargin"
+              data-locator="orderLedgerItemLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  dataLocator="orderLedgerCount"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined (1):
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="coupons-total rowMargin"
+              data-locator="orderLedgerCouponsLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  -1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="promotions-total rowMargin"
+              data-locator="orderLedgerPromotionLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  -1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="shipping-total rowMargin"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="shipping-total rowMargin"
+              data-locator="orderLedgerShippingLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="tax-total rowMargin"
+              data-locator="orderLedgerTaxLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <React.Fragment>
+              <ForwardRef
+                className="estimated-total rowMargin"
+                data-locator="orderLedgerTotalLbl"
+              >
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="left"
+                  >
+                    undefined:
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="right"
+                  >
+                    1.00
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                className="giftCard-total rowMargin"
+                data-locator="orderLedgerGiftCardLbl"
+              >
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="left"
+                  >
+                    undefined:
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="right"
+                  >
+                    -1.00
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+            </React.Fragment>
+            <ForwardRef
+              className="balance-total rowMargin"
+              data-locator="orderLedgerBalanceTotalLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="total-order-savings rowMargin"
+              data-locator="orderLedgerTotalOrderSavingsLabel"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined
+                  <ForwardRef
+                    direction="top"
+                    id="tool"
+                    minWidth="205px"
+                  >
+                    <ForwardRef
+                      alt="info"
+                      className="circle-info-image"
+                      src="/static/images/info-icon.png"
+                    />
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
             />
-          </Styled(ReactTooltip)>
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 6,
-            "medium": 4,
-            "small": 3,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          bodySize="one"
-          className={null}
-          color="primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="right"
+          </ForwardRef>
+          <Measure
+            name="pricing_visible"
+          />
+        </React.Fragment>
+      }
+      className=""
+      defaultOpen={false}
+      header={
+        <div
+          className="elem-mb-SM order-ledger-header"
         >
-          1.00
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-  </Styled(Grid)>
-  <Measure
-    name="render_cart_total"
-  />
-</Fragment>
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined (1.00)
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+      isDefaultView={true}
+    />
+  </Styled(Col)>
+</div>
+`;
+
+exports[`OrderLedger Component on confirmation page OrderLedger on confirmation page should render correctly 1`] = `
+<div
+  className=" elem-mb-MED"
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Styled(CollapsibleContainer)
+      body={
+        <React.Fragment>
+          <ForwardRef
+            className=" elem-mb-MED"
+            data-locator="orderLedgerBox"
+          >
+            <ForwardRef
+              className="items-total rowMargin"
+              data-locator="orderLedgerItemLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  dataLocator="orderLedgerCount"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined (1):
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="coupons-total rowMargin"
+              data-locator="orderLedgerCouponsLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  -1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="promotions-total rowMargin"
+              data-locator="orderLedgerPromotionLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  -1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="shipping-total rowMargin"
+              data-locator="orderLedgerShippingLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="tax-total rowMargin"
+              data-locator="orderLedgerTaxLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <React.Fragment>
+              <ForwardRef
+                className="estimated-total rowMargin"
+                data-locator="orderLedgerTotalLbl"
+              >
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="left"
+                  >
+                    undefined:
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="right"
+                  >
+                    1.00
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                className="giftCard-total rowMargin"
+                data-locator="orderLedgerGiftCardLbl"
+              >
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="left"
+                  >
+                    undefined:
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
+                  colSize={
+                    Object {
+                      "large": 6,
+                      "medium": 4,
+                      "small": 3,
+                    }
+                  }
+                >
+                  <ForwardRef
+                    bodySize="one"
+                    className={null}
+                    color="primary"
+                    component="p"
+                    fontFamily="secondary"
+                    fontSize="fs13"
+                    fontWeight="semibold"
+                    letterSpacing="normal"
+                    lineHeight="normal"
+                    link={null}
+                    textAlign="right"
+                  >
+                    -1.00
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+            </React.Fragment>
+            <ForwardRef
+              className="balance-total rowMargin"
+              data-locator="orderLedgerBalanceTotalLbl"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="left"
+                >
+                  undefined:
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs18"
+                  fontWeight="extrabold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  tag="span"
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <ForwardRef
+              className="total-order-savings rowMargin"
+              data-locator="orderLedgerTotalOrderSavingsLabel"
+            >
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined
+                  <ForwardRef
+                    direction="top"
+                    id="tool"
+                    minWidth="205px"
+                  >
+                    <ForwardRef
+                      alt="info"
+                      className="circle-info-image"
+                      src="/static/images/info-icon.png"
+                    />
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 3,
+                  }
+                }
+              >
+                <ForwardRef
+                  bodySize="one"
+                  className={null}
+                  color="primary"
+                  component="p"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="semibold"
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="right"
+                >
+                  1.00
+                </ForwardRef>
+              </ForwardRef>
+            </ForwardRef>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
+            />
+          </ForwardRef>
+          <Measure
+            name="pricing_visible"
+          />
+        </React.Fragment>
+      }
+      className=""
+      defaultOpen={false}
+      header={
+        <div
+          className="elem-mb-SM order-ledger-header"
+        >
+          <ForwardRef
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined (1.00)
+          </ForwardRef>
+        </div>
+      }
+      iconLocator="arrowicon"
+      isDefaultView={true}
+    />
+  </Styled(Col)>
+</div>
 `;

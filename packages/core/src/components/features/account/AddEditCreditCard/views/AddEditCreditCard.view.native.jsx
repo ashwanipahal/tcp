@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import CreditCardForm from '../organism/CreditCardForm';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 
@@ -16,7 +17,7 @@ export const AddEditCreditCard = ({
   backToAddressBookClick,
   verifyAddressAction,
   initialValues,
-  onFileAddresskey,
+  onFileAddressKey,
   mailingAddress,
   showUserName,
   addressFormLabels,
@@ -31,8 +32,8 @@ export const AddEditCreditCard = ({
             onSuccess={submitAddressFormAction}
             heading={
               isEdit
-                ? labels.addressBook.ACC_LBL_EDIT_ADDRESS
-                : labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD
+                ? getLabelValue(labels, 'ACC_LBL_EDIT_ADDRESS', 'addressBook')
+                : getLabelValue(labels, 'ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD', 'addressBook')
             }
             labels={labels}
             onError={submitAddressFormAction}
@@ -50,7 +51,7 @@ export const AddEditCreditCard = ({
               showCreditCardFields={showCreditCardFields}
               addressFormLabels={addressFormLabels}
               mailingAddress={mailingAddress}
-              onFileAddresskey=""
+              onFileAddressKey={onFileAddressKey}
               {...otherProps}
             />
           )}
@@ -62,9 +63,11 @@ export const AddEditCreditCard = ({
           isEdit={isEdit}
           onClose={onClose}
           dto={dto}
+          initialValues={initialValues}
           updateCardList={updateCardList}
           selectedCard={selectedCard}
-          onFileAddresskey={selectedCard && isEdit ? selectedCard.billingAddressId.toString() : ''}
+          onFileAddressKey={onFileAddressKey}
+          addressFormLabels={addressFormLabels}
           {...otherProps}
         />
       )}
@@ -88,7 +91,7 @@ AddEditCreditCard.propTypes = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: PropTypes.shape({}),
-  onFileAddresskey: PropTypes.string,
+  onFileAddressKey: PropTypes.string,
 };
 
 AddEditCreditCard.defaultProps = {
@@ -104,7 +107,7 @@ AddEditCreditCard.defaultProps = {
   backToAddressBookClick: PropTypes.func,
   verifyAddressAction: PropTypes.func,
   initialValues: {},
-  onFileAddresskey: '',
+  onFileAddressKey: '',
   mailingAddress: false,
   addressFormLabels: {},
 };

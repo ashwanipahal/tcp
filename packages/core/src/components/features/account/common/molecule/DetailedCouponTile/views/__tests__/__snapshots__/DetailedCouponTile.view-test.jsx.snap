@@ -15,7 +15,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="overlay hide-on-desktop hide-on-tablet"
+    className="overlay"
     color="text.primary"
     component="div"
     data-locator="coupon-overlay"
@@ -41,7 +41,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/bag-white.svg"
+        src="/static/images/white-bag.svg"
       />
       <Styled(BodyCopy)
         className={null}
@@ -55,7 +55,9 @@ exports[`DetailedCouponTile should display overlay 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="center"
-      />
+      >
+        lbl_common_applied_to_bag
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -71,7 +73,7 @@ exports[`DetailedCouponTile should display overlay 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -289,7 +291,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -461,7 +463,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="overlay hide-on-desktop hide-on-tablet"
+    className="overlay"
     color="text.primary"
     component="div"
     data-locator="coupon-overlay"
@@ -487,7 +489,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       textAlign="left"
     >
       <Styled(Image)
-        src="/static/images/bag-white.svg"
+        src="/static/images/white-bag.svg"
       />
       <Styled(BodyCopy)
         className={null}
@@ -501,7 +503,9 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         lineHeight="normal"
         link={null}
         textAlign="center"
-      />
+      >
+        lbl_common_applied_to_bag
+      </Styled(BodyCopy)>
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -517,7 +521,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -750,7 +754,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="top-content"
+      className="top-content overlap"
       color="text.primary"
       component="div"
       fontFamily="primary"

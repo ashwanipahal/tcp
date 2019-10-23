@@ -2,16 +2,18 @@
 
 exports[`ProductPickupVanilla should render correctly 1`] = `
 <Styled(View)
+  borderWidth={1}
   margins="40px 0 0 0"
 >
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_fast_shipping_icon"
       iconFontName="Icomoon"
       isButton={false}
       isDisabled={false}
-      margin={null}
+      margins={null}
       name="fast-shipping"
       onPress={[Function]}
       size="fs25"
@@ -51,12 +53,13 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomIcon)
+      accessibilityLabel=""
       color="gray.900"
       dataLocator="pdp_store_marker_icon"
       iconFontName="Icomoon"
       isButton={false}
       isDisabled={false}
-      margin={null}
+      margins={null}
       name="marker-icon"
       onPress={[Function]}
       size="fs24"
@@ -94,7 +97,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
   </Styled(View)>
   <Styled(CustomButton)
     active={false}
-    buttonVariation="variable-width"
+    buttonVariation="fixed-width"
     color="white"
     customStyle={Object {}}
     customTextStyle={null}

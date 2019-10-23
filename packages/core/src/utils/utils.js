@@ -1,4 +1,6 @@
 /* eslint-disable max-lines */
+
+import moment from 'moment';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -6,6 +8,8 @@ import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { parseDate } from './parseDate';
+import { ROUTE_PATH } from '../config/route.config';
+import constants from '../components/features/account/OrderDetails/OrderDetails.constants';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
@@ -139,7 +143,7 @@ export const getPromotionalMessage = (isPlcc, handlers) => {
   return null;
 };
 
-export const toTimeString = est => {
+export const toTimeString = (est, perfect = false) => {
   let hh = est.getHours();
   let mm = est.getMinutes();
   const ampm = hh >= 12 ? ' pm' : ' am';
@@ -149,7 +153,7 @@ export const toTimeString = est => {
   if (hh === 11 && mm === 59 && ampm === ' pm') {
     return 'Midnight';
   }
-  return `${hh}:${mm}${ampm}`;
+  return !perfect ? `${hh}:${mm}${ampm}` : `${hh}${ampm}`;
 };
 
 /**
@@ -187,45 +191,25 @@ const GOOGLE_PLACE_PARTS = {
   postal_code: 'short_name',
 };
 
-const returngetAddress = (addressType, val, address) => {
-  const addressRef = { ...address };
-  switch (addressType) {
-    case 'street_number':
-      addressRef.street_number = val;
-      break;
-    case 'route':
-      addressRef.street_name = val;
-      break;
-    case 'locality':
-      addressRef.city = val;
-      break;
-    case 'sublocality_level_1':
-      addressRef.city = val;
-      break;
-    case 'administrative_area_level_1':
-      addressRef.state = val;
-      break;
-    case 'country':
-      addressRef.country = val;
-      break;
-    case 'postal_code':
-      addressRef.zip = val;
-      break;
-    default:
-      addressRef.zip = val;
-  }
-  return addressRef;
+const addressTypeMap = {
+  street_number: 'streetNumber',
+  route: 'streetName',
+  locality: 'city',
+  sublocality_level_1: 'city',
+  administrative_area_level_1: 'state',
+  country: 'country',
+  postal_code: 'zip',
 };
 
 export const getAddressFromPlace = (place, inputValue) => {
-  let address = {
+  const address = {
+    streetNumber: '',
+    streetName: '',
     street: '',
     city: '',
     state: '',
     country: '',
     zip: '',
-    steet_number: '',
-    street_name: '',
   };
   if (typeof place.address_components === 'undefined') {
     return address;
@@ -234,20 +218,20 @@ export const getAddressFromPlace = (place, inputValue) => {
     const addressType = place.address_components[i].types[0];
     if (GOOGLE_PLACE_PARTS[addressType]) {
       const val = place.address_components[i][GOOGLE_PLACE_PARTS[addressType]];
-      address = returngetAddress(addressType, val, address);
+      address[addressTypeMap[addressType]] = val;
     }
   }
-  if (!address.street_number) {
-    const regex = new RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+  if (!address.streetNumber) {
+    const regex = RegExp(`^(.*)${address.streetName.split(' ', 1)[0]}`);
     const result = regex.exec(inputValue);
     const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
-    if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
-      address.street_number = inputNum;
+    if (!isNaN(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      address.streetNumber = inputNum;
     }
   }
 
-  address.street = `${address.street_number} ${address.street_name}`;
+  address.street = `${address.streetNumber} ${address.streetName}`.trim();
 
   return address;
 };
@@ -268,7 +252,7 @@ export const formatPhoneNumber = phone => {
   return '';
 };
 
-const MONTH_SHORT_FORMAT = {
+export const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
   FEB: 'Feb',
   MAR: 'Mar',
@@ -285,18 +269,54 @@ const MONTH_SHORT_FORMAT = {
 
 export const getBirthDateOptionMap = () => {
   const monthOptionsMap = [
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+    {
+      id: '1',
+      displayName: MONTH_SHORT_FORMAT.JAN,
+    },
+    {
+      id: '2',
+      displayName: MONTH_SHORT_FORMAT.FEB,
+    },
+    {
+      id: '3',
+      displayName: MONTH_SHORT_FORMAT.MAR,
+    },
+    {
+      id: '4',
+      displayName: MONTH_SHORT_FORMAT.APR,
+    },
+    {
+      id: '5',
+      displayName: MONTH_SHORT_FORMAT.MAY,
+    },
+    {
+      id: '6',
+      displayName: MONTH_SHORT_FORMAT.JUN,
+    },
+    {
+      id: '7',
+      displayName: MONTH_SHORT_FORMAT.JUL,
+    },
+    {
+      id: '8',
+      displayName: MONTH_SHORT_FORMAT.AUG,
+    },
+    {
+      id: '9',
+      displayName: MONTH_SHORT_FORMAT.SEP,
+    },
+    {
+      id: '10',
+      displayName: MONTH_SHORT_FORMAT.OCT,
+    },
+    {
+      id: '11',
+      displayName: MONTH_SHORT_FORMAT.NOV,
+    },
+    {
+      id: '12',
+      displayName: MONTH_SHORT_FORMAT.DEC,
+    },
   ];
 
   const yearOptionsMap = [];
@@ -304,14 +324,20 @@ export const getBirthDateOptionMap = () => {
   const nowYear = new Date().getFullYear();
 
   for (let i = 1900; i < nowYear - 17; i += 1) {
-    yearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+    yearOptionsMap.push({
+      id: i.toString(),
+      displayName: i.toString(),
+    });
   }
 
   for (let i = 1; i < 32; i += 1) {
     if (i <= 9) {
       i = 0 + i;
     }
-    dayOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+    dayOptionsMap.push({
+      id: i.toString(),
+      displayName: i.toString(),
+    });
   }
 
   return {
@@ -357,11 +383,23 @@ export const childOptionsMap = () => {
     .fill(currentYear)
     .map((e, index) => {
       const year = e - index;
-      return { id: year.toString(), displayName: year.toString() };
+      return {
+        id: year.toString(),
+        displayName: year.toString(),
+      };
     });
 
   return {
-    genderMap: [{ id: '01', displayName: 'Boy' }, { id: '0', displayName: 'Girl' }],
+    genderMap: [
+      {
+        id: '01',
+        displayName: 'Boy',
+      },
+      {
+        id: '0',
+        displayName: 'Girl',
+      },
+    ],
     yearsMap: yearOptionsMap,
   };
 };
@@ -376,8 +414,8 @@ export const childOptionsMap = () => {
  * or labelKey itself if its not present in the labelState.
  */
 export const getLabelValue = (labelState, labelKey, subCategory, category) => {
-  if (typeof labelState !== 'object' || typeof labelKey !== 'string') {
-    return ''; // for incorrect params return empty string
+  if (typeof labelState !== 'object') {
+    return typeof labelKey !== 'string' ? '' : labelKey; // for incorrect params return empty string
   }
   let labelValue = '';
 
@@ -552,13 +590,404 @@ export const parseBoolean = bool => {
 
 export const getFormSKUValue = formValue => {
   return {
-    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.Quantity,
+    color: (typeof formValue.color === 'object' && formValue.color.name) || formValue.color,
     size: (typeof formValue.Size === 'object' && formValue.Size.name) || formValue.Size,
     quantity:
       (typeof formValue.Quantity === 'object' && formValue.Quantity.name) || formValue.Quantity,
     fit:
       (formValue.Fit && typeof formValue.Fit === 'object' && formValue.Fit.name) || formValue.Fit,
   };
+};
+
+/**
+ * This function configure url for Next/Link using CMS defined url string
+ */
+export const configureInternalNavigationFromCMSUrl = url => {
+  const plpRoute = `${ROUTE_PATH.plp.name}/`;
+  const pdpRoute = `${ROUTE_PATH.pdp.name}/`;
+  const searchRoute = `${ROUTE_PATH.search.name}/`;
+
+  if (url.includes(plpRoute)) {
+    const urlItems = url.split(plpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.plp.name}?${ROUTE_PATH.plp.param}=${queryParam}`;
+  }
+  if (url.includes(pdpRoute)) {
+    const urlItems = url.split(pdpRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.pdp.name}?${ROUTE_PATH.pdp.param}=${queryParam}`;
+  }
+  if (url.includes(searchRoute)) {
+    const urlItems = url.split(searchRoute);
+    const queryParam = urlItems.join('');
+    return `${ROUTE_PATH.search.name}?${ROUTE_PATH.search.param}=${queryParam}`;
+  }
+  return url;
+};
+
+const WEEK_DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const WEEK_DAYS_SMALL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+const MONTHS_SMALL = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/**
+ * @method getDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} date determines case
+ */
+
+export const getDateInformation = (date, upperCase) => {
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    // added a case for upper and lower case values
+    day: upperCase ? WEEK_DAYS[currentDate.getDay()] : WEEK_DAYS_SMALL[currentDate.getDay()],
+    month: upperCase ? MONTHS[currentDate.getMonth()] : MONTHS_SMALL[currentDate.getMonth()],
+    date: currentDate.getDate(),
+  };
+};
+
+export function buildStorePageUrlSuffix(storeBasicInfo) {
+  const { id, storeName, address } = storeBasicInfo;
+  return [storeName, address.state, address.city, address.zipCode, id]
+    .join('-')
+    .toLowerCase()
+    .replace(/ /g, '');
+}
+
+export const extractFloat = currency => {
+  try {
+    return !currency
+      ? 0
+      : parseFloat(parseFloat(currency.toString().match(/[+-]?\d+(\.\d+)?/g)[0]).toFixed(2));
+  } catch (e) {
+    return 0;
+  }
+};
+
+/* @method flattenArray - this function takes takes array of array and merge into single array
+ * @param arr { Array } Array of Array
+ * @return {Array}  return array
+ */
+export const flattenArray = arr => {
+  return arr.reduce((flat, toFlatten) => {
+    return flat.concat(Array.isArray(toFlatten) ? flattenArray(toFlatten) : toFlatten);
+  }, []);
+};
+
+export const getModifiedLanguageCode = id => {
+  switch (id) {
+    case 'en':
+      return 'en_US';
+    case 'es':
+      return 'es_ES';
+    case 'fr':
+      return 'fr_FR';
+    default:
+      return id;
+  }
+};
+/**
+ * @method getTranslateDateInformation
+ * @desc returns day, month and day of the respective date provided
+ * @param {string} date date which is to be mutated
+ * @param {upperCase} locale use for convert locate formate
+ */
+export const getTranslateDateInformation = (
+  date,
+  language,
+  dayOption = {
+    weekday: 'short',
+  },
+  monthOption = {
+    month: 'short',
+  }
+) => {
+  const localeType = language ? getModifiedLanguageCode(language).replace('_', '-') : 'en';
+  const currentDate = date ? new Date(date) : new Date();
+  return {
+    day: new Intl.DateTimeFormat(localeType, dayOption).format(currentDate),
+    month: new Intl.DateTimeFormat(localeType, monthOption).format(currentDate),
+    date: currentDate.getDate(),
+    year: currentDate.getFullYear(),
+  };
+};
+
+/**
+ * Helper for proper quotations in script string output.
+ * This is a template literal tag function.
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+ */
+export function stringify(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) => result + str + (i < values.length ? JSON.stringify(values[i]) : ''),
+    ''
+  );
+}
+
+/**
+ * Function to add number of days to a date
+ * @param {Date} date The date object
+ * @param {number} days The number of days to be added
+ * @returns {Date} The future date
+ */
+export const addDays = (date, days) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+/**
+ * Check if
+ * @param {Date} date1 The date one object
+ * @param {Date} date2 The date two object
+ */
+export const isPastStoreHours = (date1, date2) => {
+  const date1HH = date1.getHours();
+  const date2HH = date2.getHours();
+  if (date2HH > date1HH) {
+    return true;
+  }
+
+  if (date2HH === date1HH) {
+    const date1MM = date1.getMinutes();
+    const date2MM = date2.getMinutes();
+    if (date2MM > date1MM) {
+      return true;
+    }
+    return false;
+  }
+
+  return false;
+};
+
+/**
+ * Function to parse the store timing in correct format
+ * @param {String} dateString Non UTC Format Date
+ */
+export const parseUTCDate = dateString => {
+  const dateParams = dateString.replace(/ UTC/, '').split(/[\s-:]/);
+  dateParams[1] = (parseInt(dateParams[1], 10) - 1).toString();
+
+  return new Date(Date.UTC(...dateParams));
+};
+
+/**
+ * Function to get the stores hours based on the current date
+ * @param {Array} intervals The store hours array
+ * @param {Date} currentDate The current date to be checked against
+ */
+export const getCurrentStoreHours = (intervals = [], currentDate) => {
+  let selectedInterval = intervals.filter(hour => {
+    const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+    const parsedDate = new Date(parseUTCDate(toInterval));
+    return (
+      parsedDate.getDate() === currentDate.getDate() &&
+      parsedDate.getMonth() === currentDate.getMonth() &&
+      parsedDate.getFullYear() === currentDate.getFullYear()
+    );
+  });
+  // Fallback for Date and month not matching.
+  // We check day and year instead.
+  if (!selectedInterval.length) {
+    selectedInterval = intervals.filter(hour => {
+      const toInterval = hour && hour.openIntervals[0] && hour.openIntervals[0].toHour;
+      const parsedDate = new Date(parseUTCDate(toInterval));
+      return (
+        parsedDate.getDay() === currentDate.getDay() &&
+        parsedDate.getFullYear() === currentDate.getFullYear()
+      );
+    });
+  }
+  return selectedInterval;
+};
+
+/**
+ * Function to get the store opening or open until hours data
+ * @param {object} hours The hours object of the store
+ * @param {object} labels The store locator labels
+ * @param {object} currentDate The date to be compared with
+ * @returns {string} The time when the store next opens or time it is open till
+ */
+export const getStoreHours = (
+  hours = {
+    regularHours: [],
+    holidayHours: [],
+    regularAndHolidayHours: [],
+  },
+  labels = {},
+  currentDate
+) => {
+  const { regularHours, holidayHours, regularAndHolidayHours } = hours;
+  const intervals = [...regularHours, ...holidayHours, ...regularAndHolidayHours];
+  const selectedInterval = getCurrentStoreHours(intervals, currentDate);
+  try {
+    const openUntilLabel = getLabelValue(labels, 'lbl_storelanding_openInterval');
+    const opensAtLabel = getLabelValue(labels, 'lbl_storelanding_opensAt');
+    const selectedDateToHour = parseDate(selectedInterval[0].openIntervals[0].toHour);
+    if (!isPastStoreHours(selectedDateToHour, currentDate)) {
+      return `(${openUntilLabel} ${toTimeString(selectedDateToHour, true)})`;
+    }
+    const selectedDateFromHour = parseDate(selectedInterval[0].openIntervals[0].fromHour);
+    // Handle the other scenarion
+    return `(${opensAtLabel} ${toTimeString(selectedDateFromHour, true)})`;
+  } catch (err) {
+    // Show empty incase no data found.
+    return '';
+  }
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
+export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
+  let label;
+  let message;
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_IN_PROCESS:
+    case constants.STATUS_CONSTANTS.ORDER_RECEIVED:
+    case constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED:
+      label = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderInProcess')
+        : getLabelValue(ordersLabels, 'lbl_orders_OrderReceived');
+      message = isBopisOrder
+        ? getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup')
+        : getLabelValue(ordersLabels, 'lbl_orders_processing');
+      break;
+    default:
+      label = null;
+      message = null;
+      break;
+  }
+  return { label, message };
+};
+
+/**
+ * Function to get Order Detail Group Header label and Message
+ * @param {object} orderProps orderProps contain status, shippedDate, pickedDate, ordersLabels
+
+ * @returns {object} label and message for order group
+ */
+export const getOrderGroupLabelAndMessage = orderProps => {
+  let label;
+  let message;
+  const {
+    status,
+    shippedDate,
+    pickedUpDate,
+    ordersLabels,
+    isBopisOrder,
+    pickUpExpirationDate,
+  } = orderProps;
+
+  // ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+
+  switch (status) {
+    case constants.STATUS_CONSTANTS.ORDER_SHIPPED:
+    case constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_shippedOn');
+      message =
+        shippedDate === constants.STATUS_CONSTANTS.NA
+          ? shippedDate
+          : moment(shippedDate).format('LL');
+      break;
+    case constants.STATUS_CONSTANTS.ORDER_CANCELED:
+    case constants.STATUS_CONSTANTS.ORDER_EXPIRED:
+      label = '';
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderCancelMessage');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_RECEIVED:
+      label = getLabelValue(ordersLabels, 'lbl_orders_orderInProcess');
+      message = getLabelValue(ordersLabels, 'lbl_orders_orderIsReadyForPickup');
+      break;
+    case constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pleasePickupBy');
+      message = moment(pickUpExpirationDate).format('LL');
+      break;
+
+    case constants.STATUS_CONSTANTS.ORDER_PICKED_UP:
+    case constants.STATUS_CONSTANTS.ITEMS_PICKED_UP:
+      label = getLabelValue(ordersLabels, 'lbl_orders_pickedUpOn');
+      message = moment(pickedUpDate).format('LL');
+      break;
+    default:
+      ({ label, message } = getBopisOrderMessageAndLabel(status, ordersLabels, isBopisOrder));
+      break;
+  }
+
+  return { label, message };
+};
+
+/**
+  this is a temporary fix only for DEMO to change
+  WCS store image path to DAM image for Gymboree
+  MUST BE REVERTED
+ */
+export const changeImageURLToDOM = (img, cropParams) => {
+  let imageUrl = img;
+  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
+    const imgArr = imageUrl.split('/');
+    const productPartId = imgArr.slice(-1);
+    const productArr = productPartId[0].split('_');
+    const productId = productArr[0];
+    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
+  }
+  return imageUrl;
+};
+
+/**
+ * The insertIntoString() method changes the content of a string by removing a range of
+ * characters and/or adding new characters.
+ * @param {String} string base string to work on
+ * @param {number} start Index at which to start changing the string.
+ * @param {number} delCount An integer indicating the number of old chars to remove.
+ * @param {string} newSubStr The String that is spliced in.
+ * @return {string} A new string with the spliced substring.
+ */
+export const insertIntoString = (string, idx, rem, str) => {
+  return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
+};
+
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
+  }
 };
 
 export default {
@@ -587,5 +1016,16 @@ export default {
   formatDate,
   parseStoreHours,
   parseBoolean,
+  sanitizeEntity,
   getFormSKUValue,
+  configureInternalNavigationFromCMSUrl,
+  getDateInformation,
+  buildStorePageUrlSuffix,
+  extractFloat,
+  getModifiedLanguageCode,
+  getTranslateDateInformation,
+  stringify,
+  readCookieMobileApp,
+  changeImageURLToDOM,
+  insertIntoString,
 };

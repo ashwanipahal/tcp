@@ -3,8 +3,11 @@ import { PropTypes } from 'prop-types';
 import throttle from 'lodash/throttle';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
-import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
+import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
+import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
@@ -20,11 +23,15 @@ class Header extends React.PureComponent {
   componentDidMount() {
     // eslint-disable-next-line extra-rules/no-commented-out-code
     // this.addScrollListener();
+    const { loadFavoriteStore } = this.props;
+    loadFavoriteStore({});
+    this.addScrollListener();
   }
 
+  componentDidUpdate() {}
+
   componentWillUnmount() {
-    // eslint-disable-next-line extra-rules/no-commented-out-code
-    // this.removeScrollListener();
+    this.removeScrollListener();
   }
 
   getStickyPosition = () => {
@@ -79,8 +86,11 @@ class Header extends React.PureComponent {
       labels,
       openMiniBagDispatch,
       totalItems,
+      favStore,
+      isPickupModalOpen,
     } = this.props;
     const { showCondensedHeader } = this.state;
+    const { accessibility: { skipNavigation } = {} } = labels;
     return (
       <header className={className}>
         <HeaderTopNav
@@ -90,7 +100,12 @@ class Header extends React.PureComponent {
           openOverlay={openTrackOrderOverlay}
           isUserLoggedIn={isLoggedIn}
           labels={labels}
+          store={favStore}
         />
+
+        <Anchor href="#overlayWrapper" noLink className="skip-main">
+          {skipNavigation}
+        </Anchor>
 
         <HeaderMiddleNav
           openNavigationDrawer={openNavigationDrawer}
@@ -102,6 +117,8 @@ class Header extends React.PureComponent {
           cartItemCount={cartItemCount}
           totalItems={totalItems}
           openMiniBagDispatch={openMiniBagDispatch}
+          store={favStore}
+          labels={labels}
         />
         <HeaderPromo
           mobileMarkup
@@ -109,6 +126,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
+        <LoyaltyPromoBanner />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -126,6 +144,7 @@ class Header extends React.PureComponent {
         )}
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
+        {isPickupModalOpen ? <PickupStoreModal /> : null}
       </header>
     );
   }
@@ -147,6 +166,17 @@ Header.propTypes = {
   openMiniBagDispatch: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   totalItems: PropTypes.string,
+  favStore: PropTypes.shape({
+    basicInfo: PropTypes.shape({}),
+    hours: PropTypes.shape({
+      regularHours: PropTypes.shape([]),
+      regularAndHolidayHours: PropTypes.shape([]),
+      holidayHours: PropTypes.shape([]),
+    }),
+    features: PropTypes.shape({}),
+  }),
+  loadFavoriteStore: PropTypes.func.isRequired,
+  isPickupModalOpen: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -154,6 +184,22 @@ Header.defaultProps = {
     trackOrder: {},
   },
   totalItems: 0,
+  favStore: {
+    basicInfo: {
+      id: '',
+      storeName: '',
+      phone: '',
+      coordinates: {},
+      address: {},
+    },
+    hours: {
+      regularHours: [],
+      regularAndHolidayHours: [],
+      holidayHours: [],
+    },
+    features: {},
+  },
+  isPickupModalOpen: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

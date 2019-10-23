@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
-import { Image, BodyCopy, Anchor } from '../../../../../../common/atoms';
+import { Image, BodyCopy, Anchor, Button, Col } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
@@ -53,13 +53,13 @@ export function ProductTitle(values) {
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
 /* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
 export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag, dataLocator } = props;
+  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
 
   return (
     <div className="container-price">
       {offerPrice && (
         <BodyCopy
-          dataLocator={dataLocator || getLocator('global_Price_text')}
+          dataLocator={getLocator('global_Price_text')}
           color="red.500"
           fontWeight="extrabold"
           fontFamily="secondary"
@@ -98,7 +98,7 @@ export function ProductPricesSection(props) {
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile, className } = this.props;
+    const { onClick, isRemove, isDisabled, isMobile, className, activeButton } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
@@ -126,8 +126,8 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
               data-locator={getLocator('global_favorite_button')}
               alt="Add-to-favorite"
               title="addToFavorite"
-              className={className}
-              src={getIconPath('add-to-favorite')}
+              className={activeButton ? `${className} active` : className}
+              src={activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')}
             />
           </button>
         )}
@@ -137,7 +137,7 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
 }
 
 export function BadgeItem(props) {
-  const { text, className, isShowBadges, customFontWeight } = props;
+  const { text, className, isShowBadges, customFontWeight, customFontSize } = props;
 
   return (
     <div className={className}>
@@ -145,7 +145,7 @@ export function BadgeItem(props) {
         dataLocator={getLocator('global_productbadge_txt')}
         fontFamily="secondary"
         fontWeight={customFontWeight || 'semibold'}
-        fontSize={['fs10', 'fs12', 'fs14']}
+        fontSize={customFontSize}
       >
         {isShowBadges && text}
       </BodyCopy>
@@ -181,6 +181,160 @@ export function PromotionalMessage(props) {
   );
 }
 
+const renderWishListItem = (item, labels) => (
+  <div className="wish-list-item-section">
+    <p className="wish-list-name">
+      <span>
+        {item.isDefault && (
+          <Image
+            src={getIconPath('selected-item-check-no-circle')}
+            alt="check mark"
+            className="wish-list-tick-mark icon-small"
+            data-locator="wish-list-check-icon"
+            height="20px"
+          />
+        )}
+      </span>
+      <span>{item.displayName}</span>
+    </p>
+    <p className="wish-list-count-section">
+      <span className="wish-list-count">{item.itemsCount}</span>
+      <span>{labels.lbl_fav_items}</span>
+    </p>
+  </div>
+);
+
+export const CreateWishList = props => {
+  const {
+    labels,
+    wishlistsSummaries,
+    createNewWishList,
+    createNewWishListMoveItem,
+    itemId,
+  } = props;
+  return (
+    <div className="create-wish-list-section">
+      <h4 className="create-wish-list-header">{labels.lbl_fav_myFavWishList}</h4>
+      <ul>
+        {wishlistsSummaries.map(item => (
+          <li className="wish-list-item">
+            {createNewWishListMoveItem ? (
+              <Button
+                onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
+                className="wish-list-item__button"
+              >
+                {renderWishListItem(item, labels)}
+              </Button>
+            ) : (
+              renderWishListItem(item, labels)
+            )}
+          </li>
+        ))}
+      </ul>
+      <Button
+        onClick={createNewWishList}
+        buttonVariation="fixed-width"
+        fill="BLACK"
+        data-locator="create-new-wish-list"
+        className="create-new__button"
+      >
+        {labels.lbl_fav_createNewList}
+      </Button>
+    </div>
+  );
+};
+
+export const ProductSKUInfo = props => {
+  const { size, fit } = props;
+
+  if (!size && !fit) {
+    return null;
+  }
+
+  return (
+    <div className="product-sku-info-container">
+      {size && (
+        <span className="size-container">
+          Size
+          {size}
+        </span>
+      )}
+      {size && fit && <i className="separator-bar-icon">|</i>}
+      {fit && <span className="fit-container">{fit}</span>}
+    </div>
+  );
+};
+
+export const PurchaseSection = (quantity, labels, quantityPurchased) =>
+  !!quantity && (
+    <div className="purchase-section">
+      <span>
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+        {quantityPurchased}/{quantity}
+      </span>
+      <span className="is-purchase-label">{labels.lbl_fav_purchased}</span>
+    </div>
+  );
+
+export const WishListIcon = (
+  isFavoriteView,
+  isInDefaultWishlist,
+  handleAddToWishlist,
+  itemNotAvailable
+) => {
+  if (itemNotAvailable) {
+    return null;
+  }
+  return (
+    <Col colSize={{ small: 2, medium: 2, large: 2 }}>
+      <ProductWishlistIcon
+        onClick={handleAddToWishlist}
+        activeButton={isInDefaultWishlist || isFavoriteView}
+        className="fav-icon"
+      />
+    </Col>
+  );
+};
+
+export const EditButton = (props, selectedColorProductId, itemNotAvailable) => {
+  if (itemNotAvailable) {
+    return null;
+  }
+  const { isFavoriteView, labels, onQuickViewOpenClick } = props;
+  return (
+    isFavoriteView && (
+      <Anchor
+        className="edit-fav-item__button"
+        handleLinkClick={event => {
+          event.preventDefault();
+          onQuickViewOpenClick({ colorProductId: selectedColorProductId }, true);
+        }}
+        noLink
+      >
+        {labels.lbl_fav_edit}
+      </Anchor>
+    )
+  );
+};
+
+ProductSKUInfo.propTypes = {
+  size: PropTypes.string,
+  fit: PropTypes.string,
+};
+
+ProductSKUInfo.defaultProps = {
+  size: '',
+  fit: '',
+};
+
+CreateWishList.propTypes = {
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  wishlistsSummaries: PropTypes.arrayOf({}).isRequired,
+  createNewWishList: PropTypes.func.isRequired,
+  createNewWishListMoveItem: PropTypes.func.isRequired,
+  itemId: PropTypes.string.isRequired,
+};
+
 PromotionalMessage.propTypes = {
   text: PropTypes.string.isRequired,
 };
@@ -190,6 +344,7 @@ BadgeItem.defaultProps = {
   className: '',
   customFontWeight: '',
   isShowBadges: true,
+  customFontSize: ['fs10', 'fs12', 'fs14'],
 };
 
 BadgeItem.propTypes = {
@@ -197,6 +352,7 @@ BadgeItem.propTypes = {
   className: PropTypes.string,
   isShowBadges: PropTypes.bool,
   customFontWeight: PropTypes.string,
+  customFontSize: PropTypes.arrayOf(PropTypes.string),
 };
 
 ProductPricesSection.defaultProps = {
@@ -204,7 +360,6 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
-  dataLocator: '',
 };
 
 ProductPricesSection.propTypes = {
@@ -212,5 +367,4 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
-  dataLocator: PropTypes.string,
 };

@@ -12,9 +12,6 @@ exports[`Module P component renders correctly 1`] = `
       ]
     }
     currencySymbol=""
-    dataLocatorBag="moduleP_add_to_bag_btn"
-    dataLocatorImages="moduleP_image"
-    dataLocatorPrice="moduleP_price"
     gridIndex={0}
     isBopisEnabled={false}
     isBopisEnabledForClearance={false}
@@ -68,6 +65,7 @@ exports[`Module P component renders correctly 1`] = `
     }
     sqnNmbr={12312}
     unbxdId=""
+    viaModule=""
   />
 </ul>
 `;

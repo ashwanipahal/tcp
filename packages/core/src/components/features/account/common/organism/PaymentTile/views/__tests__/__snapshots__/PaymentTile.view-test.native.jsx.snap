@@ -8,8 +8,10 @@ exports[`PaymentTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="black"
     margin={null}
     numberOfLines={null}
+    text="lbl_overview_paymentHeading"
     textDecoration={null}
   />
   <Styled(View) />
@@ -27,9 +29,9 @@ exports[`PaymentTile component should render correctly 1`] = `
       Object {
         "icon": "",
         "subText": "",
-        "text": undefined,
-        "title": undefined,
-        "variation": undefined,
+        "text": "lbl_overview_add_creditCard",
+        "title": "lbl_overview_default_creditCard",
+        "variation": "lbl_overview_addressBookAdd",
       }
     }
     persistentSubmitErrors={false}
@@ -60,9 +62,9 @@ exports[`PaymentTile component should render correctly 1`] = `
       Object {
         "icon": "",
         "subText": "",
-        "text": undefined,
-        "title": undefined,
-        "variation": undefined,
+        "text": "lbl_overview_add_giftCard",
+        "title": "lbl_overview_giftCard",
+        "variation": "lbl_overview_addressBookAdd",
       }
     }
     persistentSubmitErrors={false}
@@ -80,7 +82,7 @@ exports[`PaymentTile component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -96,7 +98,7 @@ exports[`PaymentTile component should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_view_payments"
       theme={Object {}}
       url=""
     />

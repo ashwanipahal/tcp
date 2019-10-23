@@ -30,7 +30,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
       >
         Are you sure you want to delete this address?
       </Styled(BodyCopy)>
-      <Address
+      <Styled(Address)
         address={
           Object {
             "addressLine": Array [
@@ -44,11 +44,6 @@ exports[`Delete Address Modal should render correctly 1`] = `
         className="deleteAddressModal_addressToDelete elem-mt-LRG"
         dataLocatorPrefix="address-delete-modal"
         fontWeight="extrabold"
-        isDefault={false}
-        showCountry={true}
-        showDefault={true}
-        showName={true}
-        showPhone={true}
       />
       <Styled(Button)
         buttonVariation="fixed-width"

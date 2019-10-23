@@ -1,15 +1,21 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
-import { getLocator, getScreenWidth, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
+import { getLocator, LAZYLOAD_HOST_NAME } from '../../../../../utils/index.native';
 import { Anchor, Button, DamImage } from '../../../atoms';
 import PromoBanner from '../../PromoBanner';
-import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
+import {
+  ButtonWrapper,
+  Tile,
+  Wrapper,
+  HeaderContainer,
+  ListContainer,
+} from '../ModuleD.style.native';
 import LinkText from '../../LinkText';
 import config from '../config';
 
-const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
+const imageSize = 164;
 const keyExtractor = (_, index) => index.toString();
 
 /**
@@ -73,43 +79,46 @@ const renderItem = (item, navigation) => {
 const ModuleD = ({ smallCompImage, headerText, promoBanner, singleCTAButton, navigation }) => {
   return (
     <Wrapper>
-      {headerText && (
-        <LinkText
-          headerText={headerText}
-          navigation={navigation}
-          fontFamily="primary"
-          fontSize="fs36"
-          letterSpacing="ls167"
-          textAlign="center"
-          color="text.primary"
-          fontWeight="extrabold"
-          type="heading"
-          testID={getLocator('moduleD_headerlink')}
-        />
-      )}
-      {promoBanner && (
-        <PromoBanner
-          promoBanner={promoBanner}
-          testID={getLocator('moduleD_promobanner')}
-          navigation={navigation}
-        />
-      )}
+      <HeaderContainer>
+        {headerText && (
+          <LinkText
+            headerText={headerText}
+            navigation={navigation}
+            fontFamily="primary"
+            fontSize="fs32"
+            letterSpacing="ls167"
+            textAlign="center"
+            color="text.primary"
+            fontWeight="black"
+            type="heading"
+            testID={getLocator('moduleD_headerlink')}
+          />
+        )}
+        {promoBanner && (
+          <PromoBanner
+            promoBanner={promoBanner}
+            testID={getLocator('moduleD_promobanner')}
+            navigation={navigation}
+          />
+        )}
+      </HeaderContainer>
 
-      {smallCompImage && (
-        <FlatList
-          numColumns={2}
-          data={smallCompImage}
-          keyExtractor={keyExtractor}
-          renderItem={item => renderItem(item, navigation)}
-        />
-      )}
+      <ListContainer>
+        {smallCompImage && (
+          <FlatList
+            numColumns={2}
+            data={smallCompImage}
+            keyExtractor={keyExtractor}
+            renderItem={item => renderItem(item, navigation)}
+          />
+        )}
+      </ListContainer>
 
       {singleCTAButton && (
         <ButtonWrapper>
           <Button
             width="225px"
             accessibilityLabel={singleCTAButton.title}
-            buttonVariation="variable-width"
             text={singleCTAButton.text}
             testID={getLocator('moduleD_button')}
             url={singleCTAButton.url}

@@ -1,13 +1,15 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
+import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = () => ({
+export const initCheckoutAction = router => ({
   type: constants.INIT_CHECKOUT,
+  router,
 });
 
 export const submitPickupSection = payload => ({
@@ -80,6 +82,7 @@ export function getSetEstimatedAirMilesActn(estimatedAirMiles) {
     type: 'CART_SUMMARY_SET_ESTIMATED_AIRMILES',
   };
 }
+
 export function setShippingTotal(shippingTotal) {
   return {
     shippingTotal,
@@ -282,8 +285,6 @@ export const routeToPickupPage = () => {
   };
 };
 
-// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
-
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export const updateShippingAddress = payload => {
@@ -306,12 +307,7 @@ export function submitBillingSection(payload) {
   };
 }
 
-export const setGiftCardError = payload => {
-  return {
-    type: constants.SET_GIFTCARD_ERROR,
-    payload,
-  };
-};
+export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
 export const addNewShippingAddress = payload => {
   return {
@@ -330,6 +326,13 @@ export const setOnFileAddressKey = payload => {
 export const resetGiftCardError = () => {
   return {
     type: constants.RESET_GIFTCARD_ERROR,
+  };
+};
+
+export const setShippingLoadingState = isLoading => {
+  return {
+    type: constants.CHECKOUT_VALUES_SET_SHIPPING_LOADING,
+    isLoading,
   };
 };
 
@@ -410,6 +413,13 @@ export const setVenmoData = payload => {
   };
 };
 
+export const submitVerifiedAddressData = payload => {
+  return {
+    type: constants.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
 export const addGiftCardSuccess = payload => {
   return {
     type: constants.ADD_GIFT_CARD_SUCCESS,
@@ -434,6 +444,17 @@ export const setVenmoPickupMessageState = payload => {
 export const setVenmoShippingMessageState = payload => {
   return {
     type: constants.SET_VENMO_SHIPPING_MESSAGE_STATE,
+    payload,
+  };
+};
+
+/**
+ * Method to save Venmo payment option in redux.
+ * @param {boolean} payload
+ */
+export const setVenmoPaymentOptionSave = payload => {
+  return {
+    type: constants.SET_VENMO_PAYMENT_OPTION_SAVE,
     payload,
   };
 };
@@ -471,3 +492,17 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
+/**
+ * @function updateCardData
+ *  @param { object } payload
+ * action creator for type: UPDATE_CARD_DATA
+ */
+export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
+
+export const initCheckoutSectionPageAction = payload => ({
+  type: constants.INIT_CHECKOUT_SECTION_PAGE,
+  payload,
+});
+
+export default { setServerErrorCheckout, resetCheckoutReducer };

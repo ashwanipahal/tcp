@@ -5,7 +5,7 @@ import { ProductListVanilla } from '../views/ProductList.view.native';
 describe('ProductList component', () => {
   it('should renders correctly', () => {
     const props = {
-      className: '',
+      setListRef: jest.fn(),
       products: [{ productInfo: '' }],
       showQuickViewForProductId: '',
       currencySymbol: '',
@@ -21,6 +21,12 @@ describe('ProductList component', () => {
       currencyExchange: [],
       siblingProperties: '',
       loadedProductCount: 12,
+      onGoToPDPPage: jest.fn(),
+      title: '',
+      onLoadMoreProducts: jest.fn(),
+      onRenderHeader: jest.fn(),
+      isFavorite: false,
+      setLastDeletedItemId: jest.fn(),
     };
     const component = shallow(<ProductListVanilla {...props} />);
     expect(component).toMatchSnapshot();

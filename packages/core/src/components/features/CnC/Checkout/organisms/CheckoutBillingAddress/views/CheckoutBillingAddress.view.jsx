@@ -13,57 +13,50 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/CheckoutBillingAddress.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
+import { updateAddress, getSelectedAddress } from './CheckoutBillingAddress.util';
 
 class CheckoutAddress extends React.Component {
   constructor(props) {
     super(props);
-    const { addNewCCState, selectedOnFileAddressId, userAddresses, orderHasShipping } = props;
+    const {
+      addNewCCState,
+      selectedOnFileAddressId,
+      userAddresses,
+      orderHasShipping,
+      editMode,
+    } = props;
     this.state = {
       isAddNewAddress:
+        editMode ||
         (addNewCCState &&
           !(
-            selectedOnFileAddressId &&
-            this.getSelectedAddress(userAddresses, selectedOnFileAddressId)
+            selectedOnFileAddressId && getSelectedAddress(userAddresses, selectedOnFileAddressId)
           )) ||
-        (!orderHasShipping && !this.getSelectedAddress(userAddresses, selectedOnFileAddressId)) ||
+        (!orderHasShipping && !getSelectedAddress(userAddresses, selectedOnFileAddressId)) ||
         false,
     };
   }
 
-  getSelectedAddress = (addressList, onFileAddressId) => {
-    let selectedAddress = null;
-    if (onFileAddressId) {
-      selectedAddress = addressList.find(add => add.addressId === onFileAddressId);
+  openAddNewAddressMode = () => {
+    const { editMode, dispatch, formName } = this.props;
+    this.newAddressModeStarted = true;
+    if (!editMode) {
+      dispatch(change(formName, `address.addressId`, ''));
+      dispatch(change(formName, `onFileAddressId`, ''));
     }
-    return selectedAddress;
+    this.setState({ isAddNewAddress: true });
   };
 
-  toggleAddNewAddressMode = () => {
-    const { isAddNewAddress } = this.state;
-    this.setState({ isAddNewAddress: !isAddNewAddress });
-  };
-
-  onSameAsShippingChange = () => {
-    const { isSameAsShippingChecked, dispatch, shippingAddress, formName } = this.props;
-    const {
-      firstName,
-      lastName,
-      addressLine1,
-      addressLine2,
-      state,
-      city,
-      zipCode,
-      country,
-    } = shippingAddress;
-    if (isSameAsShippingChecked) {
-      dispatch(change(formName, `address.firstName`, firstName));
-      dispatch(change(formName, `address.lastName`, lastName));
-      dispatch(change(formName, `address.addressLine1`, addressLine1));
-      dispatch(change(formName, `address.addressLine2`, addressLine2));
-      dispatch(change(formName, `address.state`, state));
-      dispatch(change(formName, `address.city`, city));
-      dispatch(change(formName, `address.zipCode`, zipCode));
-      dispatch(change(formName, `address.country`, country));
+  onSameAsShippingChange = (e, value) => {
+    const { shippingAddress, editMode, userAddresses, dispatch, formName } = this.props;
+    if (value) {
+      updateAddress(shippingAddress, editMode, dispatch, formName);
+    } else if (editMode) {
+      const index = userAddresses.findIndex(
+        val => val.primary && val.primary.toString() === 'true'
+      );
+      updateAddress(userAddresses.get(index), editMode, dispatch, formName, true);
+      this.setState({ isAddNewAddress: false });
     }
   };
 
@@ -88,7 +81,7 @@ class CheckoutAddress extends React.Component {
         component="h2"
         variant="listMenu"
         className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
-        dataLocator="billing-payment-billingAddress"
+        dataLocator="billingAddressLbl"
       >
         {labels.billingAddress}
       </Heading>
@@ -96,7 +89,7 @@ class CheckoutAddress extends React.Component {
   };
 
   getAddressFields = () => {
-    const { addressLabels, dispatch, isGuest, formName } = this.props;
+    const { addressLabels, dispatch, isGuest, formName, editMode } = this.props;
     return (
       <FormSection name="address">
         <AddressFields
@@ -109,7 +102,7 @@ class CheckoutAddress extends React.Component {
           isGuest={isGuest}
           showPhoneNumber={false}
           grayTextBox
-          className="elem-mb-LRG"
+          className={`${!editMode ? 'elem-mb-LRG' : ''}`}
         />
       </FormSection>
     );
@@ -120,7 +113,7 @@ class CheckoutAddress extends React.Component {
     return (
       <>
         {isAddNewAddress && this.getAddressDropDown()}
-        {this.getAddressFields()}
+        {this.getAddressFields('from getAddressForm')}
       </>
     );
   };
@@ -138,6 +131,7 @@ class CheckoutAddress extends React.Component {
               name="sameAsShipping"
               className="elem-mb-LRG"
               onChange={this.onSameAsShippingChange}
+              dataLocator="sameShiAddChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.sameAsShipping}
@@ -197,8 +191,9 @@ class CheckoutAddress extends React.Component {
             fullWidth
             buttonVariation="variable-width"
             fill="BLACK"
-            onClick={this.toggleAddNewAddressMode}
+            onClick={this.openAddNewAddressMode}
             disabled={isAddNewAddress || !selectedAddress}
+            dataLocator="billingAddressBtn"
           >
             {labels.addNewAddress}
           </Button>
@@ -207,8 +202,19 @@ class CheckoutAddress extends React.Component {
     return addressOptions;
   };
 
-  onAddressDropDownChange = () => {
+  onAddressDropDownChange = addressId => {
     const { isAddNewAddress } = this.state;
+    const { editMode, userAddresses, dispatch, formName } = this.props;
+    if (this.newAddressModeStarted) {
+      this.newAddressModeStarted = false;
+      return;
+    }
+    if (editMode) {
+      const userAddress = userAddresses.find(
+        address => addressId.toString() === address.addressId.toString()
+      );
+      updateAddress(userAddress, editMode, dispatch, formName);
+    }
     if (isAddNewAddress) {
       this.setState({ isAddNewAddress: !isAddNewAddress });
     }
@@ -220,7 +226,7 @@ class CheckoutAddress extends React.Component {
       selectedOnFileAddressId,
       addressLabels: { addressFormLabels },
     } = this.props;
-    const selectedAddress = this.getSelectedAddress(userAddresses, selectedOnFileAddressId);
+    const selectedAddress = getSelectedAddress(userAddresses, selectedOnFileAddressId);
     return (
       userAddresses &&
       userAddresses.size > 0 && (
@@ -232,7 +238,7 @@ class CheckoutAddress extends React.Component {
                 name="onFileAddressId"
                 id="onFileAddressId"
                 component={AddressDropdown}
-                dataLocator="shipping-address"
+                dataLocator="billingAddDropDown"
                 options={this.getAddressOptions({ selectedAddress })}
                 onChange={this.onAddressDropDownChange}
                 customSelectClassName="billing-address-dropDown"
@@ -245,11 +251,17 @@ class CheckoutAddress extends React.Component {
             showPhone={false}
             address={selectedAddress}
             className="address elem-mb-XXXL"
+            dataLocator="billingAddDetail"
           />
         </>
       )
     );
   };
+
+  updateFormField(fieldName, value) {
+    const { dispatch, formName } = this.props;
+    dispatch(change(formName, fieldName, value));
+  }
 
   renderNonShippingAddressForm = () => {
     const { userAddresses, orderHasShipping } = this.props;
@@ -279,6 +291,7 @@ CheckoutAddress.propTypes = {
   orderHasShipping: PropTypes.bool,
   addressLabels: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool,
+  editMode: PropTypes.bool,
   labels: PropTypes.shape({}).isRequired,
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
@@ -291,6 +304,7 @@ CheckoutAddress.propTypes = {
 
 CheckoutAddress.defaultProps = {
   orderHasShipping: true,
+  editMode: false,
   isGuest: true,
   shippingAddress: {},
   isSameAsShippingChecked: true,

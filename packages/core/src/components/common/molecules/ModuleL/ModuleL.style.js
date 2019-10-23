@@ -9,7 +9,6 @@ export default css`
   }
   .moduleL__promo-banner {
     text-align: center;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .text-black {
     font-weight: ${props => props.theme.typography.fontWeights.black};
@@ -19,16 +18,18 @@ export default css`
   }
   .moduleL__tile {
     display: flex;
+    align-items: center;
     flex-direction: row;
-    margin-bottom: 18px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-align: left;
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: 30px;
     }
   }
-  .moduleL__tile-image {
-    max-width: 210px;
+  .tile-image-wrapper {
+    display: flex;
+    align-items: center;
     min-height: 128px;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -37,6 +38,20 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       min-height: 259px;
+    }
+  }
+  .moduleL__tile-image {
+    max-width: 103px;
+    max-height: 128px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-width: 162px;
+      max-height: 200px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 210px;
+      max-height: 259px;
     }
   }
   .moduleL__tile-text {
@@ -48,34 +63,10 @@ export default css`
     }
   }
   .moduleL__tile-title {
-    margin-top: 31px;
-    margin-bottom: 13px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 44px;
-      margin-bottom: 20px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-top: 58px;
-    }
-
-    @media ${props => props.theme.mediaQuery.xlarge} {
-      margin-top: 91px;
-    }
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   .moduleL__tile-link {
     color: ${props => props.theme.colorPalette.gray['900']};
-    position: absolute;
-    bottom: 13px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      bottom: 24px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      bottom: 33px;
-    }
   }
   .slick-prev,
   .slick-next {
@@ -90,6 +81,6 @@ export default css`
     right: -70px;
   }
   .slick-dots {
-    bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 `;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -55,7 +56,7 @@ const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelect
   const { item, index } = itemObj;
   const { color } = item;
   const imageUrl = color.imagePath;
-  const colorName = color.name.toLowerCase() || '';
+  const colorName = get(color, 'name', '').toLowerCase();
   const { colorProductId } = item;
   const selected =
     (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId;

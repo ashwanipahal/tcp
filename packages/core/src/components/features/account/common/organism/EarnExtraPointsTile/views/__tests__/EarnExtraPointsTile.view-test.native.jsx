@@ -22,4 +22,25 @@ describe('Earn Extra Points Tile app component ', () => {
     const tree = shallow(<EarnExtraPointsTile {...props} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render Earn Extra Points Tile component Correctly in account overview', () => {
+    const props = {
+      waysToEarn: [
+        {
+          activityCode: 'App',
+          activityTitle: 'Earn 15 Points',
+          description: 'Download our App',
+          displayOrder: 1,
+          iconImage: '/wcsstore/static/images/download-app.jpg',
+        },
+      ],
+      className: 'className',
+      labels: {
+        lbl_common_earnExtraPoints: 'Earn Points',
+        lbl_common_viewAll: 'View',
+      },
+      isAccountOverview: true,
+    };
+    const tree = shallow(<EarnExtraPointsTile {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

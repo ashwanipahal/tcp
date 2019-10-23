@@ -4,8 +4,10 @@ export default css`
   background-color: ${props => props.theme.colors.WHITE};
 
   .header-topnav__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
-    padding: 0 14px;
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -13,11 +15,8 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 0 15px 0 6px;
-    }
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      padding-left: 25%;
+      padding: 15px 15px 0 6px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
@@ -26,6 +25,7 @@ export default css`
     text-align: center;
     margin-left: 0;
     margin-right: 0;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     width: 100%;
   }
 
@@ -33,7 +33,6 @@ export default css`
   .header-topnav__track-order,
   .header-topnav__promo-area {
     float: left;
-    padding-top: 15px;
   }
 
   .header-topnav__brand-tabs {
@@ -45,6 +44,10 @@ export default css`
 
   .header-topnav__promo-area {
     text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: 12px;
+    }
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
@@ -68,7 +71,7 @@ export default css`
   .exitFromCheckout {
     position: absolute;
     top: 16px;
-    left: 20px;
+    left: -7px;
     border: none;
     background: transparent;
 
@@ -80,6 +83,8 @@ export default css`
   .checkout-mobile-header {
     text-align: center;
     padding: 10px 0;
+    margin-left: 0;
+    width: 100%;
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
     @media ${props => props.theme.mediaQuery.large} {

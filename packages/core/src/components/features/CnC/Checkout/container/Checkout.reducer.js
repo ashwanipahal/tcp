@@ -33,6 +33,7 @@ const initialState = fromJS({
     },
     addEditResponseAddressId: null,
     giftCardError: null,
+    isShippingFormLoading: false,
     orderBalanceTotal: 0,
   },
   options: {
@@ -51,6 +52,7 @@ const initialState = fromJS({
     venmoPaymentInProgress: false,
     venmoPickupMessageDisplayed: false,
     venmoShppingMessageDisplayed: false,
+    venmoPaymentOptionSave: false,
     isLoadingShippingMethods: false,
     isEditingSubform: false,
     isBillingVisited: false,
@@ -58,6 +60,7 @@ const initialState = fromJS({
     alertMessage: null,
     paymentError: null,
     addressError: null,
+    checkoutServerError: null,
   },
 });
 
@@ -101,6 +104,9 @@ function venmoFlagReducer(checkout, action) {
       });
       return checkout.setIn(['uiFlags', 'venmoShippingMessageDisplayed'], action.payload);
     }
+    case CheckoutConstants.SET_VENMO_PAYMENT_OPTION_SAVE: {
+      return checkout.setIn(['uiFlags', 'venmoPaymentOptionSave'], action.payload);
+    }
     default:
       return checkout;
   }
@@ -131,6 +137,12 @@ function uiGiftCardFlagReducer(checkout, action) {
       return checkout.setIn(['values', 'addGiftCardError'], null);
     case CheckoutConstants.RESET_ADD_GIFT_CARD_SUCCESS:
       return checkout.setIn(['values', 'addGiftCardResponse'], null);
+    case CheckoutConstants.RESET_CHECKOUT_REDUCER:
+      return initialState;
+    case CheckoutConstants.CHECKOUT_VALUES_SET_SHIPPING_LOADING:
+      return checkout.setIn(['values', 'isShippingFormLoading'], action.isLoading);
+    case CheckoutConstants.SET_SERVER_ERROR_CHECKOUT:
+      return checkout.setIn(['uiFlags', 'checkoutServerError'], action.payload);
     default:
       return paypalReducer(checkout, action);
   }

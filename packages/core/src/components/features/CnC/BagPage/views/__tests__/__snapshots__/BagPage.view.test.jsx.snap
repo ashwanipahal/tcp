@@ -4,62 +4,63 @@ exports[`Bag page View should not render SFL section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    tagName="header"
+  <div
+    className=""
   >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+    <Styled(Row)
+      className="cartPageTitleHeader"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (10)
-      </Styled(Heading)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
         }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+        onClick={[Function]}
       >
-        undefined (undefined)
-      </Styled(Heading)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component="h2"
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: undefined50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
+    isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
+  />
+  <Connect(QuickViewModalContainer)
+    fromBagPage={true}
   />
 </div>
 `;
@@ -68,62 +69,63 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    tagName="header"
+  <div
+    className=""
   >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+    <Styled(Row)
+      className="cartPageTitleHeader"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (10)
-      </Styled(Heading)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
         }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+        onClick={[Function]}
       >
-        undefined (undefined)
-      </Styled(Heading)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component="h2"
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: undefined50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={false}
+    isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
+  />
+  <Connect(QuickViewModalContainer)
+    fromBagPage={true}
   />
 </div>
 `;
@@ -132,62 +134,447 @@ exports[`Bag page View should render SFL section 1`] = `
 <div
   className="test"
 >
-  <Styled(Row)
-    tagName="header"
+  <div
+    className=""
   >
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-      onClick={[Function]}
+    <Styled(Row)
+      className="cartPageTitleHeader"
+      tagName="header"
     >
-      <Styled(Heading)
-        className="bag-header activeHeader"
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
-      >
-        undefined (10)
-      </Styled(Heading)>
-    </Styled(Col)>
-    <Styled(Col)
-      className="left-sec"
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
         }
-      }
-      onClick={[Function]}
-    >
-      <Styled(Heading)
-        className="bag-header bag-header-sfl "
-        color="text.primary"
-        component={null}
-        dataLocator=""
-        fontSize="fs16"
-        textAlign="left"
-        variant="h6"
+        onClick={[Function]}
       >
-        undefined (1)
-      </Styled(Heading)>
-    </Styled(Col)>
-  </Styled(Row)>
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component="h2"
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: undefined50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
   <Styled(CnCTemplate)
     bagActions={[Function]}
     isNonEmptySFL={true}
+    isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
+  />
+  <Connect(QuickViewModalContainer)
+    fromBagPage={true}
+  />
+</div>
+`;
+
+exports[`Bag page View should render with only SFL condition 1`] = `
+<div
+  className="test"
+>
+  <div
+    className=""
+  >
+    <Styled(Row)
+      className="bag-condensed-header"
+    >
+      <Styled(Row)
+        className="content-wrapper"
+      >
+        <Styled(Col)
+          className="bagHeaderText"
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined (null)
+            <Styled(BodyCopy)
+              className="elem-ml-SM"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              undefined: undefined50.00
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Connect(AddedToBagContainer)
+            containerId="paypal-button-container-bag-header"
+            handleCartCheckout={[MockFunction]}
+            inheritedStyles={
+              Array [
+                "
+  @media ",
+                [Function],
+                " {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 92%;
+    background: ",
+                [Function],
+                ";
+    z-index: ",
+                [Function],
+                ";
+    margin: 0;
+    border-top: ",
+                [Function],
+                " solid
+      ",
+                [Function],
+                ";
+    padding: ",
+                [Function],
+                "
+      ",
+                [Function],
+                ";
+  }
+
+  .checkout-button.checkout-button-bagHeader {
+    flex-direction: row;
+  }
+
+  .checkout-sticky-header {
+    margin-right: ",
+                [Function],
+                ";
+  }
+",
+              ]
+            }
+            isBagPageStickyHeader={true}
+            labels={Object {}}
+            showAddTobag={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Row)>
+  </div>
+  <div
+    className="stickyBagHeader"
+  >
+    <Styled(Row)
+      className="cartPageTitleHeader"
+      tagName="header"
+    >
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
+      >
+        <Styled(Heading)
+          className="bag-header "
+          color="text.primary"
+          component="h2"
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (null)
+        </Styled(Heading)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
+      >
+        <Styled(Heading)
+          className="bag-header bag-header-sfl activeHeader"
+          color="text.primary"
+          component={null}
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (2)
+        </Styled(Heading)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+  <Styled(CnCTemplate)
+    bagActions={[Function]}
+    isNonEmptySFL={true}
+    isNotLoaded={true}
+    leftSection={[Function]}
+    pageCategory="bagPage"
+    showAccordian={false}
+    showLeftSection={false}
+  />
+  <Connect(QuickViewModalContainer)
+    fromBagPage={true}
+  />
+</div>
+`;
+
+exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
+<div
+  className="test"
+>
+  <div
+    className=""
+  >
+    <Styled(Row)
+      className="bag-condensed-header"
+    >
+      <Styled(Row)
+        className="content-wrapper"
+      >
+        <Styled(Col)
+          className="bagHeaderText"
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs16"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            undefined (10)
+            <Styled(BodyCopy)
+              className="elem-ml-SM"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              undefined: undefined50.00
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 3,
+            }
+          }
+        >
+          <Connect(AddedToBagContainer)
+            containerId="paypal-button-container-bag-header"
+            handleCartCheckout={[MockFunction]}
+            inheritedStyles={
+              Array [
+                "
+  @media ",
+                [Function],
+                " {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 92%;
+    background: ",
+                [Function],
+                ";
+    z-index: ",
+                [Function],
+                ";
+    margin: 0;
+    border-top: ",
+                [Function],
+                " solid
+      ",
+                [Function],
+                ";
+    padding: ",
+                [Function],
+                "
+      ",
+                [Function],
+                ";
+  }
+
+  .checkout-button.checkout-button-bagHeader {
+    flex-direction: row;
+  }
+
+  .checkout-sticky-header {
+    margin-right: ",
+                [Function],
+                ";
+  }
+",
+              ]
+            }
+            isBagPageStickyHeader={true}
+            labels={Object {}}
+            showAddTobag={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Row)>
+  </div>
+  <div
+    className="stickyBagHeader"
+  >
+    <Styled(Row)
+      className="cartPageTitleHeader"
+      tagName="header"
+    >
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
+      >
+        <Styled(Heading)
+          className="bag-header activeHeader"
+          color="text.primary"
+          component="h2"
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (10)
+        </Styled(Heading)>
+        <Styled(BodyCopy)
+          className="estimatedHeaderText activeEstimatedHeader"
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          undefined: undefined50.00
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="left-sec"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+        onClick={[Function]}
+      >
+        <Styled(Heading)
+          className="bag-header bag-header-sfl "
+          color="text.primary"
+          component={null}
+          dataLocator=""
+          fontSize="fs16"
+          textAlign="left"
+          variant="h6"
+        >
+          undefined (undefined)
+        </Styled(Heading)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+  <Styled(CnCTemplate)
+    bagActions={[Function]}
+    isNonEmptySFL={false}
+    isNotLoaded={true}
+    leftSection={[Function]}
+    pageCategory="bagPage"
+    showAccordian={false}
+    showLeftSection={true}
+  />
+  <Connect(QuickViewModalContainer)
+    fromBagPage={true}
   />
 </div>
 `;

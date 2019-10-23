@@ -77,7 +77,7 @@ class CustomSelect extends React.Component<Props> {
   };
 
   getDropDownListWithChild = () => {
-    const { options, childrenComp } = this.props;
+    const { options, childrenComp, dataLocatorObj } = this.props;
     const { activeValue } = this.state;
     return childrenComp !== null ? (
       childrenComp(options, this.onClickHandler, activeValue, this.onClose)
@@ -86,6 +86,7 @@ class CustomSelect extends React.Component<Props> {
         optionsMap={options}
         clickHandler={this.onClickHandler}
         activeValue={activeValue}
+        dataLocatorObj={dataLocatorObj}
       />
     );
   };
@@ -106,14 +107,27 @@ class CustomSelect extends React.Component<Props> {
 
   render() {
     const { toggle, activeTitle } = this.state;
-    const { className, selectListTitle, customSelectClassName } = this.props;
+    const { className, selectListTitle, customSelectClassName, dataLocatorObj } = this.props;
+    const { heading } = dataLocatorObj;
     return (
       <BodyCopy component="div" className={`${className} custom-select ${customSelectClassName}`}>
-        {selectListTitle && <span className="dropdown-title">{`${selectListTitle}:`}</span>}
-        <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
+        {selectListTitle && (
+          <span className="dropdown-title" data-locator={heading}>{`${selectListTitle}:`}</span>
+        )}
+        <BodyCopy
+          component="div"
+          tabIndex="0"
+          onClick={this.toggleHandler}
+          className="customSelectTitle"
+          data-locator={activeTitle}
+        >
           {activeTitle}
         </BodyCopy>
-        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
+        {toggle && (
+          <BodyCopy component="div" className="dropdownListWrapper">
+            {this.getDropDownList()}
+          </BodyCopy>
+        )}
       </BodyCopy>
     );
   }
@@ -128,6 +142,7 @@ CustomSelect.propTypes = {
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
   childrenComp: PropTypes.node,
+  dataLocatorObj: PropTypes.shape({}),
 };
 
 CustomSelect.defaultProps = {
@@ -138,6 +153,10 @@ CustomSelect.defaultProps = {
   activeValue: '',
   clickHandler: () => {},
   childrenComp: null,
+  dataLocatorObj: {
+    heading: 'drop-down-heading',
+    dropDownList: 'drop-down-list',
+  },
 };
 
 export default withStyles(CustomSelect, styles);

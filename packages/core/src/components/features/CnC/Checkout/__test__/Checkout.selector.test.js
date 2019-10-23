@@ -7,7 +7,9 @@ import CHECKOUT_SELECTORS, {
   getPickupAltValues,
   getCheckoutState,
   isRemembered,
+  isUsSite,
 } from '../container/Checkout.selector';
+import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
 import { isMobileApp, getViewportInfo, getAPIConfig } from '../../../../../utils';
 
@@ -72,7 +74,14 @@ describe('Checkout Selectors', () => {
   });
 
   it('#getRecalcOrderPointsInterval', () => {
-    expect(CHECKOUT_SELECTORS.getRecalcOrderPointsInterval()).toEqual(300000);
+    const State = {
+      session: {
+        siteDetails: {
+          BRIERLEY_ORD_RECALC_CACHING_INTERVAL: 300000,
+        },
+      },
+    };
+    expect(getRecalcOrderPointsInterval(State)).toEqual(300000);
   });
 
   it('#igetIsOrderHasShipping', () => {
@@ -388,7 +397,7 @@ describe('Checkout Selectors', () => {
     getAPIConfig.mockImplementation(() => {
       return { siteId: 'us' };
     });
-    expect(CHECKOUT_SELECTORS.isUsSite()).toEqual(true);
+    expect(isUsSite()).toEqual(true);
   });
   it('#isSmsUpdatesEnabled', () => {
     getAPIConfig.mockImplementation(() => {
@@ -463,5 +472,25 @@ describe('Checkout Selectors', () => {
       addressId: '56789',
       phoneNumber: 2012345678,
     });
+  });
+
+  it('#isVenmoPaymentSaveSelected', () => {
+    const { isVenmoPaymentSaveSelected } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        venmoPaymentOptionSave: 'true',
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          venmoPaymentOptionSave: 'true',
+        },
+      }),
+    };
+    expect(isVenmoPaymentSaveSelected(state)).toEqual(
+      Checkout.getIn(['uiFlags', 'venmoPaymentOptionSave'])
+    );
   });
 });

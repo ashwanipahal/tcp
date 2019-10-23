@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import LoginSection from '../organism/LoginSection';
 import PasswordRequirement from '../../ResetPassword/molecules/PasswordRequirement';
 
@@ -22,6 +23,8 @@ const LoginView = ({
   setLoginModalMountState,
   variation,
   handleContinueAsGuest,
+  userplccCardNumber,
+  userplccCardId,
 }) => {
   return (
     <LoginSection
@@ -43,7 +46,9 @@ const LoginView = ({
       setLoginModalMountState={setLoginModalMountState}
       variation={variation}
       handleContinueAsGuest={handleContinueAsGuest}
-      tooltipContent={<PasswordRequirement labels={labels.password} />}
+      tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
+      userplccCardNumber={userplccCardNumber}
+      userplccCardId={userplccCardId}
     />
   );
 };
@@ -67,6 +72,8 @@ LoginView.propTypes = {
   variation: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   formErrorMessage: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginView.defaultProps = {

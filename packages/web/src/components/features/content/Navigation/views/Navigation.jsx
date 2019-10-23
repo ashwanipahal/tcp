@@ -9,29 +9,49 @@ import style from '../Navigation.style';
 
 /**
  * This function closes Navigation Drawer on route change
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const handleRouteChange = closeNavigationDrawer => () => {
-  closeNavigationDrawer();
+const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
+  if (isDrawerOpen) {
+    closeNavigationDrawer();
+  }
 };
 
 /**
  * This function scrolls page to top on route change complete
  */
-const handleRouteComplete = () => {
-  window.scrollTo(0, 0);
+const handleRouteComplete = url => {
+  const params = new URL(document.location).searchParams;
+  const sortParam = params.has('sort');
+  const filterParam = params.has('categoryPath2_uFilter');
+
+  /**
+   * check if sort or filter param present in PLP page
+   */
+  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam);
+
+  /**
+   * check if sort or filter param present in Search page
+   */
+  const checkSearchPageParam = url.match(/\/search\//g) && (sortParam || filterParam);
+
+  if (!checkListingPageParam && !checkSearchPageParam) {
+    window.scrollTo(0, 0);
+  }
 };
 
 /**
  * This function handler router change and complete events
- * @param {*} closeNavigationDrawer
+ * @param {function} closeNavigationDrawer
+ * @param {bool} isDrawerOpen
  */
-const registerRouterChangeEvent = closeNavigationDrawer => () => {
-  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+const registerRouterChangeEvent = (closeNavigationDrawer, isDrawerOpen) => () => {
+  Router.events.on('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
   Router.events.on('routeChangeComplete', handleRouteComplete);
 
   return () => {
-    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer));
+    Router.events.off('routeChangeStart', handleRouteChange(closeNavigationDrawer, isDrawerOpen));
     Router.events.off('routeChangeComplete', handleRouteComplete);
   };
 };
@@ -43,9 +63,10 @@ const Navigation = props => {
     closeNavigationDrawer,
     hideNavigationFooter,
     showCondensedHeader,
+    isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer));
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
 
   return (
     <Drawer
@@ -82,6 +103,7 @@ Navigation.propTypes = {
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  isDrawerOpen: PropTypes.bool.isRequired,
 };
 
 export { Navigation as NavigationVanilla };

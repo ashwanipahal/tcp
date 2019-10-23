@@ -6,8 +6,8 @@ import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.sel
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
-import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/siteDetails.selectors';
-import checkoutSelectors from '../../Checkout/container/Checkout.selector';
+import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
@@ -26,6 +26,12 @@ export class AddedToBagContainer extends React.Component<Props> {
       showVenmo,
       isNoNEmptyBag,
       fromAddedToBagModal,
+      inheritedStyles,
+      isBagPageStickyHeader,
+      closeModal,
+      isUSSite,
+      containerId,
+      checkoutServerError,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -40,6 +46,12 @@ export class AddedToBagContainer extends React.Component<Props> {
         showVenmo={showVenmo}
         isNoNEmptyBag={isNoNEmptyBag}
         fromAddedToBagModal={fromAddedToBagModal}
+        isBagPageStickyHeader={isBagPageStickyHeader}
+        closeModal={closeModal}
+        isUSSite={isUSSite}
+        inheritedStyles={inheritedStyles}
+        containerId={containerId}
+        checkoutServerError={checkoutServerError}
       />
     );
   }
@@ -50,6 +62,13 @@ AddedToBagContainer.propTypes = {
   handleCartCheckout: PropTypes.func.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isNoNEmptyBag: PropTypes.number.isRequired,
+  isBagPageStickyHeader: PropTypes.bool,
+  containerId: PropTypes.string,
+};
+
+AddedToBagContainer.defaultProps = {
+  isBagPageStickyHeader: false,
+  containerId: null,
 };
 
 const mapDispatchToProps = dispatch => {
@@ -65,6 +84,8 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    isUSSite: isUsSite(state),
+    checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

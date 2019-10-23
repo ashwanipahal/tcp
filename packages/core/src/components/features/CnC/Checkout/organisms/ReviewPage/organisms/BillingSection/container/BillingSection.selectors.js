@@ -17,7 +17,7 @@ const getBillingCardDetails = state => {
     return null;
   }
   return {
-    cardNumber: cardDetails.cardNumber.slice(-4),
+    cardNumber: cardDetails.cardNumber && cardDetails.cardNumber.slice(-4),
     ccType: cardDetails.cardType,
     ccBrand: cardDetails.cardType,
   };
@@ -48,6 +48,7 @@ const getReviewPageLabels = createSelector(
       'lbl_review_giftCardHeadsup',
       'lbl_review_giftCardMessage',
       'lbl_review_billingEdit',
+      'lbl_review_save_venmo',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);

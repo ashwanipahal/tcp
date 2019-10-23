@@ -46,7 +46,7 @@ exports[`ModuleH component renders correctly 1`] = `
   fullBleed={
     Object {
       "large": false,
-      "medium": false,
+      "medium": true,
       "small": true,
     }
   }
@@ -221,6 +221,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "type": "light",
         }
       }
+      className="moduleH_carousel"
       options={
         Object {
           "arrows": false,

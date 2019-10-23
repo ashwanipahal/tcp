@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
-import { Button, Anchor, DamImage } from '../../../atoms';
+import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
 import { getLocator, validateColor } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../config';
+import config from '../moduleJ.config';
 
 import {
   Container,
@@ -23,10 +23,9 @@ import {
   MessageContainer,
   Border,
   Wrapper,
-  ProductTabListContainer,
+  StyledProductTabList,
 } from '../styles/ModuleJ.style.native';
 
-import ProductTabList from '../../../organisms/ProductTabList';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 
@@ -60,7 +59,6 @@ class ModuleJ extends React.PureComponent {
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId];
     selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
-
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
@@ -104,25 +102,11 @@ class ModuleJ extends React.PureComponent {
     );
   };
 
-  render() {
-    const {
-      selectedCategoryId,
-      selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {},
-    } = this.state;
-    const {
-      productTabList,
-      navigation,
-      layout,
-      mediaLinkedList,
-      headerText,
-      promoBanner,
-      divTabs,
-      bgColor,
-    } = this.props;
-
+  renderCarousel = () => {
+    const { selectedCategoryId } = this.state;
+    const { productTabList } = this.props;
     let selectedProductList = productTabList[selectedCategoryId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
-
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
         const lastList = list[list.length - 1];
@@ -136,6 +120,50 @@ class ModuleJ extends React.PureComponent {
       },
       [[]]
     );
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
+    }
+    if (dataStatus) {
+      return (
+        <Skeleton
+          row={1}
+          col={3}
+          width={PRODUCT_IMAGE_WIDTH}
+          height={PRODUCT_IMAGE_HEIGHT}
+          rowProps={{ justifyContent: 'space-around', marginTop: '10px' }}
+        />
+      );
+    }
+    return (
+      <ImageSlidesWrapper>
+        {selectedProductList.length ? (
+          <Carousel
+            data={selectedProductCarouselList}
+            renderItem={this.renderCarouselSlide}
+            height={MODULE_HEIGHT}
+            width={MODULE_WIDTH}
+            carouselConfig={{
+              autoplay: false,
+            }}
+            autoplay={false}
+          />
+        ) : null}
+      </ImageSlidesWrapper>
+    );
+  };
+
+  render() {
+    const { selectedTabItem: { singleCTAButton: selectedSingleCTAButton } = {} } = this.state;
+    const {
+      navigation,
+      layout,
+      mediaLinkedList,
+      headerText,
+      promoBanner,
+      divTabs,
+      bgColor,
+    } = this.props;
 
     return (
       <Container>
@@ -152,6 +180,7 @@ class ModuleJ extends React.PureComponent {
                 />
               )}
             </HeaderContainer>
+
             <SecondHeaderContainer>
               {[headerText[1]] && (
                 <LinkText
@@ -175,19 +204,19 @@ class ModuleJ extends React.PureComponent {
             </PromoContainer>
           )}
         </MessageContainer>
-        <ProductTabListContainer>
-          <ProductTabList
-            onProductTabChange={this.onProductTabChange}
-            tabItems={divTabs}
-            navigation={navigation}
-            testID={getLocator('moduleJ_cta_link')}
-          />
-        </ProductTabListContainer>
+
+        <StyledProductTabList
+          onProductTabChange={this.onProductTabChange}
+          tabItems={divTabs}
+          navigation={navigation}
+          testID={getLocator('moduleJ_cta_link')}
+        />
+
         <ImageContainer layout={layout}>
           <Anchor navigation={navigation} url={mediaLinkedList[1] && mediaLinkedList[1].link.url}>
             <DamImage
               url={mediaLinkedList[1] && mediaLinkedList[1].image.url}
-              height="300px"
+              height="310px"
               width="100%"
               testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
@@ -196,25 +225,11 @@ class ModuleJ extends React.PureComponent {
           </Anchor>
         </ImageContainer>
 
-        <ImageSlidesWrapper>
-          {selectedProductList.length ? (
-            <Carousel
-              data={selectedProductCarouselList}
-              renderItem={this.renderCarouselSlide}
-              height={MODULE_HEIGHT}
-              width={MODULE_WIDTH}
-              carouselConfig={{
-                autoplay: false,
-              }}
-              autoplay={false}
-            />
-          ) : null}
-        </ImageSlidesWrapper>
+        {this.renderCarousel()}
 
         {selectedSingleCTAButton ? (
           <ButtonContainer>
             <Button
-              buttonVariation="variable-width"
               width="225px"
               text={selectedSingleCTAButton.text}
               url={selectedSingleCTAButton.url}

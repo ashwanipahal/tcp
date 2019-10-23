@@ -7,6 +7,10 @@ import PaymentOverviewTile from '../../../../common/organism/PaymentOverviewTile
 import ProfileInfoTile from '../../../../common/organism/ProfileInfoTile';
 import MyPlaceRewardsOverviewTile from '../../../../common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '../../../../common/organism/MyWalletTile';
+import EarnExtraPointsOverview from '../../../../common/organism/EarnExtraPointsOverview';
+import OrdersTile from '../../../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../../../common/organism/MyPreferencesTile';
+
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountOverviewTileList.style';
 import { isCanada } from '../../../../../../../utils';
@@ -14,23 +18,31 @@ import { isCanada } from '../../../../../../../utils';
 const componentMap = {
   profileInfoTile: ProfileInfoTile,
   addressOverviewTile: AddressOverviewTile,
+  earnExtraPointsOverview: EarnExtraPointsOverview,
   paymentOverviewTile: PaymentOverviewTile,
   myPlaceRewardsOverviewTile: MyPlaceRewardsOverviewTile,
   myWalletTile: MyWalletTile,
+  ordersTile: OrdersTile,
+  myPreferencesTile: MyPreferencesTile,
 };
 
 export const COMPONENTS_US = [
   'profileInfoTile',
   'addressOverviewTile',
+  'earnExtraPointsOverview',
   'paymentOverviewTile',
   'myPlaceRewardsOverviewTile',
   'myWalletTile',
+  'ordersTile',
+  'myPreferencesTile',
 ];
 export const COMPONENTS_CA = [
   'profileInfoTile',
   'addressOverviewTile',
   'paymentOverviewTile',
   'myWalletTile',
+  'ordersTile',
+  'myPreferencesTile',
 ];
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {

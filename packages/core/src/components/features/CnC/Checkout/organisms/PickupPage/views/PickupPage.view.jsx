@@ -32,6 +32,11 @@ class PickUpFormPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { pickupDidMount } = this.props;
+    pickupDidMount();
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -100,7 +105,7 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit, setVenmoPickupState } = this.props;
+    const { onPickupSubmit } = this.props;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
     const params = {
@@ -121,16 +126,20 @@ class PickUpFormPart extends React.Component {
       },
     };
     onPickupSubmit(params);
-    setVenmoPickupState(true);
   };
 
   /**
    * This method is to return the label text based on venmo or normal checkout
    */
   getNextCTAText = () => {
-    const { isVenmoPaymentInProgress, orderHasShipping, pickUpLabels } = this.props;
+    const {
+      isVenmoPaymentInProgress,
+      orderHasShipping,
+      pickUpLabels,
+      isVenmoPickupDisplayed,
+    } = this.props;
     let nextButtonText;
-    if (isVenmoPaymentInProgress && !orderHasShipping) {
+    if (isVenmoPaymentInProgress && !isVenmoPickupDisplayed && !orderHasShipping) {
       nextButtonText = `${pickUpLabels.nextText}: ${pickUpLabels.reviewText}`;
     } else {
       nextButtonText = !orderHasShipping
@@ -177,6 +186,7 @@ class PickUpFormPart extends React.Component {
       dispatch,
       handleSubmit,
       showAccordian,
+      ServerErrors,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -200,7 +210,7 @@ class PickUpFormPart extends React.Component {
             dataLocator="pickup-title"
             className="summary-title-pick-up"
           />
-
+          {ServerErrors && <ServerErrors />}
           <div className="pickUpContact" dataLocator="pickup-contact">
             <FormSection name="pickUpContact">
               {isGuest ? (
@@ -330,9 +340,11 @@ PickUpFormPart.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
-  setVenmoPickupState: PropTypes.func,
   showAccordian: PropTypes.bool,
+  isVenmoPickupDisplayed: PropTypes.bool,
+  ServerErrors: PropTypes.node.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
@@ -346,8 +358,8 @@ PickUpFormPart.defaultProps = {
   pickupError: '',
   currentPhoneNumber: '',
   isVenmoPaymentInProgress: false,
-  setVenmoPickupState: () => {},
   showAccordian: true,
+  isVenmoPickupDisplayed: true,
 };
 
 const validateMethod = createValidateMethod({

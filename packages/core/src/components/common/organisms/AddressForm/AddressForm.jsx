@@ -16,6 +16,7 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
+import { formatPhoneNumber } from '../../../../utils/formValidation/phoneNumber';
 
 export class AddressForm extends React.PureComponent {
   static propTypes = {
@@ -104,6 +105,7 @@ export class AddressForm extends React.PureComponent {
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
+              apiFields="address_components"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -126,19 +128,22 @@ export class AddressForm extends React.PureComponent {
               dataLocator="addnewaddress-city"
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
-              placeholder={
-                country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl
-              }
+              placeholder={addressFormLabels.select}
+              title={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
               name="state"
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               dataLocator="addnewaddress-state"
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 3, medium: 2, large: 3 }}
+            className="zipField"
+          >
             <Field
               placeholder={
                 country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode
@@ -156,6 +161,7 @@ export class AddressForm extends React.PureComponent {
             <Field
               id="country"
               placeholder={addressFormLabels.country}
+              title={addressFormLabels.country}
               name="country"
               component={SelectBox}
               options={countriesOptionsMap}
@@ -171,6 +177,7 @@ export class AddressForm extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-phnumber"
               type="tel"
+              normalize={formatPhoneNumber}
             />
           </Col>
         </Row>

@@ -1,64 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal Native should render correctly 1`] = `
-<SafeAreaView>
-  <Component
-    hardwareAccelerated={false}
-    onRequestClose={[MockFunction]}
-    transparent={false}
-    visible={true}
+<Component
+  animationType="slide"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  transparent={false}
+  visible={true}
+>
+  <Styled(SafeAreaView)
+    inheritedStyles=""
   >
-    <Connect(ToastContainer) />
-    <StatusBar
-      animated={false}
-      hidden={true}
-      showHideTransition="fade"
-    />
-    <Styled(View)
-      isOverlay={false}
+    <KeyboardAvoidingView
+      behavior="padding"
+      enabled={true}
+      keyboardVerticalOffset={64}
     >
-      <Styled(Text)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          dataLocator=""
-          fontSize="fs16"
-          fontWeight="extrabold"
-          margin={null}
-          mobileFontFamily="primary"
-          numberOfLines={null}
-          text="Modal Heading"
-          textDecoration={null}
-        />
-      </Styled(Text)>
-      <Styled(View)>
-        <Styled(TouchableOpacity)
-          accessibilityLabel="close"
-          accessibilityRole="button"
-          isOverlay={false}
-          onPress={[MockFunction]}
-        >
-          <Styled(Image)
-            source={
-              Object {
-                "testUri": "../../../../core/src/assets/close.png",
-              }
-            }
+      <ScrollViewMock
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={
+          Array [
+            0,
+          ]
+        }
+      >
+        <Styled(View)>
+          <Connect(ToastContainer)
+            shouldShowSafeArea={false}
           />
-        </Styled(TouchableOpacity)>
-      </Styled(View)>
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(LineComp)
-        borderColor="black"
-        borderWidth={2}
-        marginBottom={0}
-        marginTop={5}
-      />
-    </Styled(View)>
-    <ScrollViewMock
-      keyboardShouldPersistTaps="handled"
-      showsVerticalScrollIndicator={false}
-    />
-  </Component>
-</SafeAreaView>
+          <Styled(View)
+            isOverlay={false}
+          >
+            <Styled(Text)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs16"
+                fontWeight="extrabold"
+                margin={null}
+                mobileFontFamily="primary"
+                numberOfLines={null}
+                text="Modal Heading"
+                textDecoration={null}
+              />
+            </Styled(Text)>
+            <Styled(View)>
+              <Styled(TouchableOpacity)
+                accessibilityLabel="close"
+                accessibilityRole="button"
+                isOverlay={false}
+                onPress={[MockFunction]}
+              >
+                <Styled(Image)
+                  source={
+                    Object {
+                      "testUri": "../../../../core/src/assets/close.png",
+                    }
+                  }
+                />
+              </Styled(TouchableOpacity)>
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(LineComp)
+              borderColor="black"
+              borderWidth={2}
+              marginBottom={0}
+              marginTop={5}
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </ScrollViewMock>
+    </KeyboardAvoidingView>
+  </Styled(SafeAreaView)>
+</Component>
 `;

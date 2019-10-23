@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import { routerPush } from '@tcp/core/src/utils';
+import { routerPush, isCanada } from '@tcp/core/src/utils';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
   getCardType,
@@ -18,7 +18,7 @@ import { getFormValidationErrorMessages } from '../../Account/container/Account.
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
-import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
+import { addCreditCard, editCreditCard, resetErrorState } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
@@ -41,6 +41,7 @@ export class AddEditCreditCard extends React.PureComponent {
     formErrorMessage: PropTypes.shape({}).isRequired,
     showNotification: PropTypes.bool.isRequired,
     addEditCreditCardErrorMsg: PropTypes.string,
+    resetErrorNotification: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -88,6 +89,11 @@ export class AddEditCreditCard extends React.PureComponent {
     if (isAddressListUpdated || (!prevProps.creditCard && creditCard)) {
       this.setInitialValues();
     }
+  }
+
+  componentWillUnmount() {
+    const { resetErrorNotification } = this.props;
+    resetErrorNotification();
   }
 
   setInitialValues = () => {
@@ -147,7 +153,7 @@ export class AddEditCreditCard extends React.PureComponent {
     return {
       onFileAddressKey,
       address: {
-        country: 'US',
+        country: isCanada() ? 'CA' : 'US',
         addressLine2: '',
       },
     };
@@ -245,6 +251,9 @@ const mapDispatchToProps = dispatch => {
     },
     showSuccessNotification: () => {
       dispatch(setDefaultPaymentSuccess());
+    },
+    resetErrorNotification: () => {
+      dispatch(resetErrorState());
     },
   };
 };

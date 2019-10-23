@@ -4,6 +4,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import utils from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import internalEndpoints from '../../../internalEndpoints';
 
 const goToHomePage = () => {
@@ -29,7 +30,7 @@ export const EmptyRewards = ({ labels }) => {
           className="no-rewards-msg"
           data-locator="no_rewards_msg"
         >
-          {labels.placeRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
+          {getLabelValue(labels, 'ACC_LBL_MY_REWARDS_NO_REWARDS_MSG', 'placeRewards')}
         </BodyCopy>
       </Col>
       <Col
@@ -49,7 +50,7 @@ export const EmptyRewards = ({ labels }) => {
           onClick={goToHomePage}
           data-locator="my-rewards-shop-now-btn"
         >
-          {labels.placeRewards.lbl_my_rewards_shop_now}
+          {getLabelValue(labels, 'lbl_my_rewards_shop_now', 'placeRewards')}
         </Button>
       </Col>
     </>

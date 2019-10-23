@@ -10,6 +10,7 @@ import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   PaymentContainer,
   PaymentType,
@@ -118,8 +119,7 @@ class PaymentItem extends React.Component<Props> {
               <CheckBalanceContainer>
                 <CustomButton
                   fill="BLUE"
-                  text={labels.lbl_overview_check_balance}
-                  buttonVariation="variable-width"
+                  text={getLabelValue(labels, 'lbl_overview_check_balance')}
                   width="190px"
                   onPress={handleSubmit(formData =>
                     this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)

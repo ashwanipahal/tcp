@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 1`] = `
+<div
+  className=" body"
+>
+  <Styled(BodyCopy)
+    className="heading-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    headingLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="subheading-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    subHeadingLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="description-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    descriptionLabel
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="remaining-val"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    12
+  </Styled(BodyCopy)>
+  <div
+    className="subtotal-section"
+  >
+    <Styled(Row)
+      className="subtotal-row"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="current-subtotal-text-col"
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 5,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="current-subtotal-text"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize={12}
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="current-subtotal-val-col"
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="current-subtotal-val"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize={12}
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          21
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="estimated-subtotal-row elem-pt-SM elem-pb-SM"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        className="estimated-subtotal-text-col"
+        colSize={
+          Object {
+            "large": 7,
+            "medium": 5,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="estimated-subtotal-text"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize={12}
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="estimated-subtotal-val-col"
+        colSize={
+          Object {
+            "large": 5,
+            "medium": 3,
+            "small": 2,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="estimated-subtotal-val"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize={12}
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          33
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;

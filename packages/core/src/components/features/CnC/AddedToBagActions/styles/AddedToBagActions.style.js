@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 
-const CtaStyle = css`
+const ctaStyle = css`
   display: block;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin-bottom: ${props =>
+    props.isBagPageStickyHeader ? '0' : props.theme.spacing.ELEM_SPACING.MED};
   .check-out-container {
     margin-top: 10px;
     display: flex;
@@ -26,7 +27,8 @@ const CtaStyle = css`
       background: ${props => props.theme.colors.PRIMARY.BLUE};
     }
     height: 48px;
-    margin-left: 10px;
+    margin-left: ${props =>
+      props.isInternationalShipping ? '0px' : props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     flex: 1;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     @media ${props => props.theme.mediaQuery.smallMax} {
@@ -52,6 +54,9 @@ const CtaStyle = css`
   }
   .paypal-wrapper-atb {
     width: 100%;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-right: 10px;
+    }
   }
   .venmo-wrapper {
     display: none;
@@ -63,4 +68,4 @@ const CtaStyle = css`
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
-export default CtaStyle;
+export default ctaStyle;

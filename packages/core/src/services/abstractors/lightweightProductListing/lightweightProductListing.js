@@ -6,7 +6,7 @@ import endpoints from '../../endpoints';
  * Abstractor layer for loading Product List Tabs data
  */
 const Abstractor = {
-  getData: ({ categoryId, rows = 18, fields = 'imageUrl,seo_token,product_name' }) => {
+  getData: ({ categoryId, rows = 18, fields = 'imageUrl,seo_token,product_name,prodpartno' }) => {
     const payload = {
       body: {
         start: 0,
@@ -15,7 +15,7 @@ const Abstractor = {
         'variants.count': 0,
         version: 'V2',
         pagetype: 'boolean',
-        'p-id': `categoryPathId:"${categoryId}"`,
+        'p-id': `categoryPathId:"${categoryId.replace(/\|/g, '<')}"`,
         fields,
       },
       webService: endpoints.getProductviewbyCategory,

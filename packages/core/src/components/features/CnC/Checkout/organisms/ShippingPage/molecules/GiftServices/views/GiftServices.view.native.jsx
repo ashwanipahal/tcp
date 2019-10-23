@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import { Field, change } from 'redux-form';
+import { Field, change, reduxForm } from 'redux-form';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
@@ -23,8 +23,9 @@ import {
 } from '../styles/GiftServices.style.native';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import LabeledRadioButton from '../../../../../../../../common/atoms/LabeledRadioButton';
-import { isGymboree, getLocator } from '../../../../../../../../../utils';
+import { getLocator } from '../../../../../../../../../utils';
 import GiftServicesDetailsModal from './GiftServicesDetailsModal.view.native';
+import GIFT_SERVICES_CONSTANTS from '../GiftServices.constants';
 
 const gymboreeImage = require('../../../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../../../assets/tcp-logo.png');
@@ -36,10 +37,9 @@ class GiftServices extends React.PureComponent {
 
     this.state = {
       detailStatus: false,
-      isGymboreeBrand: isGymboree(),
-      isChecked: !isGiftServicesChecked,
+      isChecked: !!isGiftServicesChecked,
       message: initialValues.message,
-      selectedGiftService: 'standard',
+      selectedGiftService: initialValues.optionId ? initialValues.optionId : 'standard',
     };
   }
 
@@ -66,13 +66,10 @@ class GiftServices extends React.PureComponent {
   };
 
   getServicesOptions = (giftWrapOptions, labels) => {
-    const gymboreeBrandName = 'GYM';
-    const tcpBrandName = 'TCP';
     const parsedGiftWrapOptions = JSON.parse(giftWrapOptions);
     const getServicesOptionsMap = parsedGiftWrapOptions.giftOptions;
-    const { isGymboreeBrand } = this.state;
-    const { currencySymbol } = this.props;
-    const brand = isGymboreeBrand ? gymboreeBrandName : tcpBrandName;
+    const { currencySymbol, SelectedBrand } = this.props;
+    const brand = SelectedBrand;
     const labelComponent = servicesMap => hideLongDescription => (
       <>
         <ServiceDetailWrapper>
@@ -80,7 +77,7 @@ class GiftServices extends React.PureComponent {
             <BodyCopy
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={servicesMap.name}
               textAlign="left"
@@ -90,7 +87,7 @@ class GiftServices extends React.PureComponent {
             <BodyCopy
               dataLocator="add-gift-services-details-lbl"
               fontSize="fs16"
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontWeight={!hideLongDescription ? 'semibold' : 'regular'}
               text={
                 parseInt(servicesMap.price, 10) === 0
@@ -122,8 +119,16 @@ class GiftServices extends React.PureComponent {
     );
   };
 
-  handleToggle = (e, isGymboreeBrand) => {
-    this.setState({ isGymboreeBrand });
+  handleToggle = (e, brandName) => {
+    const { handleToggle, dispatch, giftWrapOptions } = this.props;
+    handleToggle(e, brandName);
+
+    const parsedDefaultSelectedGiftService = JSON.parse(giftWrapOptions);
+    const defaultSelectedGiftService = parsedDefaultSelectedGiftService.giftOptions[0].catEntryId;
+    this.setState({
+      selectedGiftService: defaultSelectedGiftService,
+    });
+    dispatch(change('GiftServices', `optionId`, defaultSelectedGiftService));
   };
 
   giftServiceChanged = value => {
@@ -183,11 +188,13 @@ class GiftServices extends React.PureComponent {
   };
 
   render() {
-    const { labels, giftWrapOptions } = this.props;
+    const { labels, giftWrapOptions, SelectedBrand, dispatch, isGiftServicesChecked } = this.props;
     const giftServicesList = this.getServicesOptions(giftWrapOptions, labels);
+    const brand = SelectedBrand;
     const dropDownStyle = {
       height: 30,
       border: 1,
+      lightBorder: true,
     };
     const itemStyle = {
       height: 90,
@@ -196,7 +203,7 @@ class GiftServices extends React.PureComponent {
       color: 'black',
       border: 2,
     };
-    const { detailStatus, isGymboreeBrand, isChecked, message, selectedGiftService } = this.state;
+    const { detailStatus, isChecked, message, selectedGiftService } = this.state;
     return (
       <GiftServicesWrapper>
         <GiftServicesHeader>
@@ -206,7 +213,8 @@ class GiftServices extends React.PureComponent {
               component={InputCheckbox}
               dataLocator="hide-show-checkbox"
               enableSuccessCheck={false}
-              onChange={this.handleChange}
+              onClick={this.handleChange}
+              isChecked={isGiftServicesChecked}
             />
             <BodyCopy
               fontFamily="secondary"
@@ -235,7 +243,7 @@ class GiftServices extends React.PureComponent {
             text={labels.addAGift}
           />
         </GiftServicesContent>
-        {!!isChecked && (
+        {isChecked && (
           <View>
             <GiftServicesContent>
               <BodyCopy
@@ -248,8 +256,8 @@ class GiftServices extends React.PureComponent {
               <RadioButtonWrapper>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={isGymboreeBrand === isGymboree()}
-                    onPress={e => this.handleToggle(e, isGymboree())}
+                    checked={brand === GIFT_SERVICES_CONSTANTS.TCP}
+                    onPress={e => this.handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
                     disabled={false}
                   />
                   <ImageBrandStyle
@@ -260,8 +268,8 @@ class GiftServices extends React.PureComponent {
                 </RadioButtonWrapperInner>
                 <RadioButtonWrapperInner>
                   <LabeledRadioButton
-                    checked={isGymboreeBrand === !isGymboree()}
-                    onPress={e => this.handleToggle(e, !isGymboree())}
+                    checked={brand === GIFT_SERVICES_CONSTANTS.GYM}
+                    onPress={e => this.handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
                     disabled={false}
                   />
                   <ImageBrandStyle
@@ -275,6 +283,7 @@ class GiftServices extends React.PureComponent {
             <Field
               name="giftServices"
               component={DropDown}
+              customDropDownHeight={270}
               data={giftServicesList}
               dataLocator="giftServices-list"
               variation="secondary"
@@ -306,7 +315,10 @@ class GiftServices extends React.PureComponent {
               name="message"
               id="message"
               value={message}
-              onChangeText={text => this.setState({ message: text })}
+              onChangeText={text => {
+                this.setState({ message: text });
+                dispatch(change('GiftServices', `message`, text));
+              }}
               type="text"
               maxLength={100}
               dataLocator="gift-message"
@@ -324,6 +336,7 @@ class GiftServices extends React.PureComponent {
             });
           }}
           heading={labels.giftServices}
+          brand={SelectedBrand}
         />
       </GiftServicesWrapper>
     );
@@ -336,6 +349,8 @@ GiftServices.propTypes = {
   giftWrapOptions: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}),
   currencySymbol: PropTypes.string.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  SelectedBrand: PropTypes.string.isRequired,
 };
 
 GiftServices.defaultProps = {
@@ -343,4 +358,9 @@ GiftServices.defaultProps = {
   dispatch: () => {},
   initialValues: {},
 };
-export default GiftServices;
+
+export { GiftServices as GiftServicesVanilla };
+export default reduxForm({
+  form: 'GiftServices',
+  enableReinitialize: true,
+})(GiftServices);

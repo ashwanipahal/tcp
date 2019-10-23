@@ -44,6 +44,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
     <RichText
       data-locator="earnPointsModal_undefined_ShortDesc"
       domStorageEnabled={false}
+      isApplyDeviceHeight={false}
       javaScriptEnabled={false}
       source={
         Object {
@@ -56,7 +57,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color="white"
       customStyle={Object {}}
       customTextStyle={null}
@@ -68,7 +69,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

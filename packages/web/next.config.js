@@ -4,7 +4,7 @@ const withTM = require('next-transpile-modules');
 const path = require('path');
 
 module.exports = withTM({
-  transpileModules: ['@tcp'],
+  transpileModules: ['@tcp', '../core/+/*.+.js'],
   useFileSystemPublicRoutes: false,
   // This is to supply build-time environment vars to both server and client files:
   //    https://nextjs.org/docs#build-time-configuration
@@ -37,6 +37,20 @@ module.exports = withTM({
     }
     newConfig.node = {
       __dirname: false,
+    };
+
+    /**
+     * Polyfills added as per
+     * https://nextjs.org/docs#browser-support
+     * https://github.com/zeit/next.js/tree/canary/examples/with-polyfills
+     */
+    const originalEntry = newConfig.entry;
+    newConfig.entry = async () => {
+      const entries = await originalEntry();
+      if (entries['main.js'] && !entries['main.js'].includes('./utils/polyfills.js')) {
+        entries['main.js'].unshift('./utils/polyfills.js');
+      }
+      return entries;
     };
 
     return newConfig;

@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersListItem component should renders correctly 1`] = `
+<Fragment>
+  <Styled(Row)
+    className=""
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        className="order-item-header "
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-date-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderDate
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-number-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderNumber
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="order-item-value"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 4,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-date-value"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/orders/order-details/undefined"
+            dataLocator="order-number-value"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontSizeVariation="large"
+            to="/account?id=orders&subSection=order-details&orderId=undefined"
+            underline={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 5,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Row)
+        className="order-item-header "
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-type-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderType
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-status-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderStatus
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="order-total"
+            color="text.primary"
+            component="p"
+            data-locator="order-total-header"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_orderTotal
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="order-item-bottom"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-type-value"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orders_pickupStore
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            data-locator="order-status-value"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className="order-total"
+            color="text.primary"
+            component="p"
+            data-locator="order-total-value"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            mobileRightText={false}
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;

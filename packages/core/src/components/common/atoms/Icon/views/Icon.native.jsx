@@ -39,8 +39,9 @@ const CustomIcon = props => {
     isDisabled,
     isButton,
     onPress,
-    margin,
+    margins,
     dataLocator,
+    accessibilityLabel,
     ...otherProps
   } = props;
   const IconClass = getFontClass(iconFontName);
@@ -49,11 +50,11 @@ const CustomIcon = props => {
   if (isButton) {
     return (
       <IconTouchableOpacity
-        margin={margin}
+        margins={margins}
         {...otherProps}
         onPress={!isDisabled ? onPress : noop}
         accessibilityRole="button"
-        accessibilityLabel={getLocator(dataLocator)}
+        accessibilityLabel={accessibilityLabel}
         {...setTestId(getLocator(dataLocator))}
       >
         <IconClass
@@ -66,13 +67,11 @@ const CustomIcon = props => {
     );
   }
   return (
-    <Container margin={margin}>
+    <Container margins={margins} accessibilityRole="button" accessibilityLabel={accessibilityLabel}>
       <IconClass
         {...otherProps}
         name={name}
         size={fontSize}
-        accessibilityRole="button"
-        accessibilityLabel={getLocator(dataLocator)}
         {...setTestId(getLocator(dataLocator))}
       />
     </Container>
@@ -100,7 +99,8 @@ CustomIcon.propTypes = {
   onPress: PropTypes.func,
   isButton: PropTypes.bool,
   dataLocator: PropTypes.string,
-  margin: PropTypes.string,
+  margins: PropTypes.string,
+  accessibilityLabel: PropTypes.string,
 };
 
 CustomIcon.defaultProps = {
@@ -109,7 +109,8 @@ CustomIcon.defaultProps = {
   onPress: noop,
   isButton: false,
   dataLocator: '',
-  margin: null,
+  margins: null,
+  accessibilityLabel: '',
 };
 
 export default withStyles(CustomIcon, IconStyle);

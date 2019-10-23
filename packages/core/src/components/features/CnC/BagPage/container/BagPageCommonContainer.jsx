@@ -10,15 +10,28 @@ import {
   getLabelsCartItemTile,
   getIsCartItemsSFL,
   getIsSflItemRemoved,
+  getCartItemsSflError,
 } from '../../CartItemTile/container/CartItemTile.selectors';
-import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
+import {
+  getUserLoggedInState,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import {
   setVenmoPaymentInProgress,
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
-import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import {
+  toastMessageInfo,
+  toastMessagePosition,
+} from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import utils, { isClient } from '../../../../../utils';
+import { getSaveForLaterSwitch } from '../../SaveForLater/container/SaveForLater.selectors';
+import {
+  getGrandTotal,
+  getGiftCardsTotal,
+} from '../../common/organism/OrderLedger/container/orderLedger.selector';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -27,11 +40,16 @@ export class BagPageContainer extends React.Component<Props> {
     const { setVenmoPickupState, setVenmoShippingState } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    this.fetchInitialActions();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (isClient()) {
-      const { router } = this.props;
+      const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+      const { router, isRegisteredUserCallDone } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+        this.fetchInitialActions();
+      }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
       if (isSfl) {
         document.querySelector('.save-for-later-section-heading').scrollIntoView(true);
@@ -41,11 +59,13 @@ export class BagPageContainer extends React.Component<Props> {
 
   closeModal = () => {};
 
-  componentWillMount = () => {
-    const { initialActions, fetchSflData } = this.props;
-    initialActions();
-    fetchSflData();
-  };
+  fetchInitialActions() {
+    const { isRegisteredUserCallDone, initialActions, fetchSflData } = this.props;
+    if (isRegisteredUserCallDone) {
+      initialActions();
+      fetchSflData();
+    }
+  }
 
   render() {
     const {
@@ -66,6 +86,13 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessage,
       isCartItemSFL,
       isSflItemRemoved,
+      isShowSaveForLaterSwitch,
+      orderBalanceTotal,
+      bagStickyHeaderInterval,
+      toastMessagePositionInfo,
+      cartItemSflError,
+      currencySymbol,
+      isPickupModalOpen,
     } = this.props;
 
     const showAddTobag = false;
@@ -89,6 +116,13 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessage={toastMessage}
         isCartItemSFL={isCartItemSFL}
         isSflItemRemoved={isSflItemRemoved}
+        isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+        orderBalanceTotal={orderBalanceTotal}
+        bagStickyHeaderInterval={bagStickyHeaderInterval}
+        toastMessagePositionInfo={toastMessagePositionInfo}
+        cartItemSflError={cartItemSflError}
+        currencySymbol={currencySymbol}
+        isPickupModalOpen={isPickupModalOpen}
       />
     );
   }
@@ -99,7 +133,7 @@ BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
-      dispatch(BAG_PAGE_ACTIONS.getCartData());
+      dispatch(BAG_PAGE_ACTIONS.getCartData({ isCartPage: true, translation: true }));
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
@@ -116,11 +150,14 @@ export const mapDispatchToProps = dispatch => {
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
     },
+    toastMessagePositionInfo: palyoad => {
+      dispatch(toastMessagePosition(palyoad));
+    },
   };
 };
 
-const mapStateToProps = state => {
-  const { size = 0 } = getCartOrderList(state) || {};
+export const mapStateToProps = state => {
+  const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
@@ -134,6 +171,13 @@ const mapStateToProps = state => {
     isCartItemsUpdating: getIsCartItemsUpdating(state),
     isCartItemSFL: getIsCartItemsSFL(state),
     isSflItemRemoved: getIsSflItemRemoved(state),
+    isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
+    orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
+    bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
+    cartItemSflError: getCartItemsSflError(state),
+    currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 

@@ -8,24 +8,21 @@ import {
   getIsCartItemsSFL,
   getIsSflItemRemoved,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import {
   getUserLoggedInState,
   isPlccUser,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
-import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { updateCartItem, confirmRemoveCartItem } from '../../../container/CartItemTile.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
-export class ProductTileWrapperContainer extends React.Component {
-  componentDidMount = () => {
-    const { initialActions } = this.props;
-    initialActions();
-  };
-
-  render() {
-    return <ProductTileWrapper {...this.props} />;
-  }
-}
+export const ProductTileWrapperContainer = props => {
+  return (
+    <>
+      <ProductTileWrapper {...props} />
+    </>
+  );
+};
 
 const mapStateToProps = state => {
   return {
@@ -40,25 +37,25 @@ const mapStateToProps = state => {
 };
 export const mapDispatchToProps = dispatch => {
   return {
-    initialActions: () => {
-      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
-    },
     confirmRemoveCartItem: orderItemId => {
       dispatch(confirmRemoveCartItem(orderItemId));
     },
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
+    openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };
 
 ProductTileWrapperContainer.defaultProps = {
   orderItems: [],
+  pageView: '',
 };
 
 ProductTileWrapperContainer.propTypes = {
   orderItems: PropTypes.shape({}),
   initialActions: PropTypes.func.isRequired,
+  pageView: PropTypes.string,
 };
 
 export default connect(

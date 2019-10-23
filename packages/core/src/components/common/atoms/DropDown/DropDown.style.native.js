@@ -1,13 +1,23 @@
 import styled, { css } from 'styled-components/native';
 
+const getSecondaryVariation = props => {
+  return `${
+    props.dropDownStyle.lightBorder
+      ? `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
+          props.theme.colors.FOOTER.DIVIDER
+        }`
+      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
+          props.theme.colors.BLACK
+        }`
+  }`;
+};
+
 const DropDownStyle = css`
   height: ${props => props.dropDownStyle.height}px;
   ${props =>
     props.variation === 'primary'
       ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
-      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
-          props.theme.colors.BLACK
-        }`};
+      : getSecondaryVariation(props)};
   background-color: ${props =>
     props.variation === 'primary' || props.bgColor
       ? props.theme.colorPalette.gray[500]
@@ -35,6 +45,7 @@ const OverLayView = styled.View`
   flex-direction: row;
   border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   border-top-width: 1px;
+  margin-top: -1px;
 `;
 
 const DropDownItemContainer = styled.TouchableHighlight.attrs({

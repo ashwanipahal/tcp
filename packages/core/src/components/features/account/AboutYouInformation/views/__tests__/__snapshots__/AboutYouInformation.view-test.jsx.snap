@@ -27,11 +27,13 @@ exports[`AboutYouInformation should render SurveyQuestion correctly 1`] = `
       >
          
       </span>
+      lbl_profile_personal_info_back
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="margin-none"
+    className="margin-none myAccountRightView"
     data-locator="moreaboutyou-header"
+    heading="lbl_profile_about_you_modal_heading"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -93,11 +95,13 @@ exports[`AboutYouInformation should render correctly 1`] = `
       >
          
       </span>
+      lbl_profile_personal_info_back
     </Styled(Anchor)>
   </Styled(BodyCopy)>
   <Styled(FormPageHeading)
-    className="margin-none"
+    className="margin-none myAccountRightView"
     data-locator="moreaboutyou-header"
+    heading="lbl_profile_about_you_modal_heading"
   />
   <ReduxForm
     destroyOnUnmount={true}

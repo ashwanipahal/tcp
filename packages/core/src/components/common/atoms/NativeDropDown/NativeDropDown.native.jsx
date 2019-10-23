@@ -11,6 +11,7 @@ import {
   PickerView,
   AndroidPickerView,
   iOSPickerButtonStyle,
+  NativeButtonStyledView,
 } from './styles/NativeDropDown.style.native';
 
 /**
@@ -82,16 +83,31 @@ class NativeDropDown extends React.PureComponent {
 
   render() {
     const { tempValue, showPicker, isAndroidPlatform } = this.state;
-    const { selectedValue, data, bottomBorderOnly, width, androidPickerStyle } = this.props;
+    const {
+      selectedValue,
+      data,
+      bottomBorderOnly,
+      width,
+      androidPickerStyle,
+      buttonVariation,
+      disabled,
+    } = this.props;
     const itemList = data.map(item => {
       const label = (item.displayName && item.displayName.toString()) || item.displayName;
       return <Picker.Item label={label} value={item.id} />;
     });
 
+    const pickerStyle = { height: 41 };
+    const pickerItemStyle = { height: 41, padding: 0 };
     if (isAndroidPlatform) {
       return (
         <AndroidPickerView width={width} androidPickerStyle={androidPickerStyle}>
-          <Picker selectedValue={tempValue} onValueChange={this.changeValue}>
+          <Picker
+            style={pickerStyle}
+            itemStyle={pickerItemStyle}
+            selectedValue={tempValue}
+            onValueChange={this.changeValue}
+          >
             {itemList}
           </Picker>
         </AndroidPickerView>
@@ -101,7 +117,7 @@ class NativeDropDown extends React.PureComponent {
     return (
       <View>
         <Button
-          buttonVariation="mobileApp-filter"
+          buttonVariation={buttonVariation}
           type="button"
           data-locator="pdp_quantity"
           text={selectedValue}
@@ -111,6 +127,7 @@ class NativeDropDown extends React.PureComponent {
           showIcon
           bottomBorderOnly={bottomBorderOnly}
           customTextStyle={iOSPickerButtonStyle}
+          disabled={disabled}
         />
         <Modal visible={showPicker} transparent animationType="slide">
           <SafeAreaViewStyle>
@@ -122,7 +139,14 @@ class NativeDropDown extends React.PureComponent {
               <ModalOverlay />
             </ModalOutsideTouchable>
             <PickerView>
-              <NativeButton title="Done" onPress={this.selectItem} />
+              <NativeButtonStyledView>
+                <NativeButton
+                  title="Done"
+                  onPress={this.selectItem}
+                  accessibilityLabel="done"
+                  accessibilityRole="button"
+                />
+              </NativeButtonStyledView>
               <Picker
                 selectedValue={tempValue}
                 onValueChange={value => {
@@ -146,6 +170,8 @@ NativeDropDown.propTypes = {
   bottomBorderOnly: PropTypes.bool,
   width: PropTypes.string,
   androidPickerStyle: ViewPropTypes.style,
+  buttonVariation: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 NativeDropDown.defaultProps = {
@@ -155,6 +181,8 @@ NativeDropDown.defaultProps = {
   bottomBorderOnly: true,
   width: null,
   androidPickerStyle: null,
+  buttonVariation: 'mobileApp-filter',
+  disabled: false,
 };
 
 export default NativeDropDown;

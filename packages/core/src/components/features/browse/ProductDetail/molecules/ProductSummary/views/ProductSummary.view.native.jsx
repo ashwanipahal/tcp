@@ -42,7 +42,8 @@ class ProductSummary extends React.PureComponent {
       const { miscInfo } = curentColorEntry;
 
       const { listPrice, offerPrice } = productData;
-      const { badge1, badge3 } = miscInfo;
+      // The PLP badge2 (EXTENDED SIZE etc) are not showing on the PDP as per the production behavior
+      const { badge1, badge2 } = miscInfo;
       // get default top badge data
       const badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
 
@@ -141,15 +142,17 @@ class ProductSummary extends React.PureComponent {
                 text={listPriceForColor}
               />
             )}
-            <BodyCopy
-              dataLocator="pdp_discounted_percentage"
-              margin="0 0 0 10px"
-              mobileFontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="regular"
-              color="red.500"
-              text={badge3}
-            />
+            {badge2 ? (
+              <BodyCopy
+                dataLocator="pdp_discounted_percentage"
+                margin="0 0 0 10px"
+                mobileFontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                color="red.500"
+                text={badge2}
+              />
+            ) : null}
           </OfferPriceAndBadge3Container>
           {this.loyaltyPromotionMessage && (
             <PromotionalMessage

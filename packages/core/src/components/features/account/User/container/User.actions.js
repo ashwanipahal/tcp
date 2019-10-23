@@ -62,3 +62,51 @@ export const setSurveyAnswers = payload => {
     payload,
   };
 };
+
+export function setUserGeoCoordinates(payload) {
+  return {
+    payload,
+    type: CONSTANTS.SET_GEO_COORDINATES,
+  };
+}
+
+export const setDefaultStore = payload => ({
+  payload,
+  type: CONSTANTS.SET_DEFAULT_STORE,
+});
+
+export const setPlccCardIdActn = payload => {
+  return {
+    payload,
+    type: CONSTANTS.RESPONSE_PLCC_CARD_ID_INFORMATION,
+  };
+};
+
+export const setPlccCardNumberActn = payload => {
+  return {
+    payload,
+    type: CONSTANTS.RESPONSE_SET_PLCC_INFORMATION,
+  };
+};
+/**
+ * @function setIsExpressEligible
+ * @param { object } payload
+ * Action creator for setting user children
+ */
+export const setIsExpressEligible = payload => {
+  return {
+    type: CONSTANTS.SET_IS_EXPRESS_ELIGIBLE,
+    payload,
+  };
+};
+
+/**
+ * @function setIsRegisteredUserCallDone
+ * @param { object } payload
+ * Action creator for setting user children
+ */
+export const setIsRegisteredUserCallDone = () => {
+  return {
+    type: CONSTANTS.SET_IS_REGISTERED_USER_CALL_DONE,
+  };
+};

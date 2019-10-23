@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetCandidVanilla component should renders correctly considering selective arguments are passed 1`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs20"
+    fontWeight="semibold"
+    letterSpacing="ls167"
+    margin={null}
+    marginBottom="12px"
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text="title"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs14"
+    fontWeight="regular"
+    margin={null}
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <FlatList
+      data={
+        Array [
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+          Object {},
+        ]
+      }
+      disableVirtualization={false}
+      horizontal={false}
+      initialNumToRender={6}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={3}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </Styled(View)>
+  <Styled(Anchor)
+    accessibilityLabel=""
+    anchorVariation="primary"
+    color="gray.900"
+    colorName={null}
+    customStyle={Object {}}
+    dataLocator=""
+    fontFamily="secondary"
+    locator=""
+    margins={null}
+    noLink={true}
+    onPress={[Function]}
+    text=""
+    visible={true}
+  />
+</Styled(View)>
+`;

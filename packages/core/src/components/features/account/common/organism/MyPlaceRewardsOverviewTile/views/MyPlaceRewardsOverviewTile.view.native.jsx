@@ -8,6 +8,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import BonusPointsDays from '@tcp/core/src/components/common/organisms/BonusPointsDays';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   UnderlineStyle,
   PlaceRewardsTileContainer,
@@ -36,13 +37,13 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
     let rewardDataLocator = '';
 
     if (rewardCouponsCount) {
-      walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(
+      walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myPlaceRewardsAvailable').replace(
         /\{0\}/,
         rewardCouponsCount
       );
       rewardDataLocator = 'accountoverview-myplacerewatdstile-youhaverewardtext';
     } else {
-      walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
+      walletOverviewInfo = getLabelValue(labels, 'lbl_overview_myPlaceRewardsDesc');
       rewardDataLocator = 'accountoverview-myplacerewatdstile-startshoptext';
     }
 
@@ -51,8 +52,9 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs16"
-          text={labels.lbl_overview_myPlaceRewardsHeading}
+          text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}
           color="black"
+          fontWeight="black"
         />
 
         <LineComp {...UnderlineStyle} />
@@ -83,20 +85,19 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs13"
-              text={labels.lbl_overview_myPlaceRewardsDesc}
+              text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsDesc')}
               color="black"
             />
             <ShopAnchor>
               <Anchor
                 anchorVariation="button"
-                buttonVariation="variable-width"
                 fullWidth
                 centered
                 fill="WHITE"
                 dataLocator="accountoverview-myplacerewardstile-startshopbtn"
                 accessibilityRole="link"
-                accessibilityLabel={labels.lbl_overview_myPlaceRewardsShopNow}
-                text={labels.lbl_overview_myPlaceRewardsShopNow}
+                accessibilityLabel={getLabelValue(labels, 'lbl_overview_myPlaceRewardsShopNow')}
+                text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsShopNow')}
                 borderWidth="1"
                 borderColor="black"
                 onPress={() => navigateToNestedRoute(navigation, 'HomeStack', 'home')}
@@ -111,8 +112,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
 
         <ButtonWrapperStyle>
           <CustomButton
-            text={labels.lbl_overview_myPlaceRewardsCTA}
-            buttonVariation="variable-width"
+            text={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCTA')}
             fill="BLUE"
             onPress={() => handleComponentChange('myPlaceRewardsMobile')}
           />

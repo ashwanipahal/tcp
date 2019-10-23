@@ -184,7 +184,8 @@ exports[`LoginForm component should renders correctly 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
       <Field
@@ -194,7 +195,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -249,7 +250,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -266,7 +267,8 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -415,10 +417,36 @@ exports[`LoginForm component should renders correctly 1`] = `
           dataLocator="login-remembermecb"
           name="rememberMe"
         >
-          <span
+          <Styled(BodyCopy)
             className="remember-me-text"
-          />
-          <span />
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
+            lbl_login_rememberMe
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
+            lbl_login_rememberMeHelpText
+          </Styled(BodyCopy)>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -454,14 +482,18 @@ exports[`LoginForm component should renders correctly 1`] = `
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_login_loginCTA
+      </Styled(Button)>
       <Styled(Anchor)
         anchorVariation="secondary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_login_forgetPasswordCTA
+      </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
 </div>
@@ -668,7 +700,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_email"
         showSuccessCheck={false}
       />
       <Field
@@ -678,7 +711,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-VigVT",
+              "componentId": "sc-fjdhpX",
               "isStatic": false,
               "rules": Array [
                 "
@@ -733,7 +766,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-VigVT",
+            "styledComponentId": "sc-fjdhpX",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -751,7 +784,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         name="password"
-        onKeyPress={[Function]}
+        onChange={[Function]}
+        placeholder="lbl_login_password"
         showSuccessCheck={false}
       />
       <Styled(BodyCopy)
@@ -900,10 +934,36 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           dataLocator="login-remembermecb"
           name="rememberMe"
         >
-          <span
+          <Styled(BodyCopy)
             className="remember-me-text"
-          />
-          <span />
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
+            lbl_login_rememberMe
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            tag="span"
+            textAlign="left"
+          >
+            lbl_login_rememberMeHelpText
+          </Styled(BodyCopy)>
         </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
@@ -939,14 +999,18 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         fill="BLUE"
         fullWidth={true}
         type="submit"
-      />
+      >
+        lbl_login_loginCTA
+      </Styled(Button)>
       <Styled(Anchor)
         anchorVariation="secondary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
         underline={true}
-      />
+      >
+        lbl_login_forgetPasswordCTA
+      </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
 </div>

@@ -641,6 +641,7 @@ export const response = {
   appliedGiftCards: [],
   giftWrappingTotal: 0,
   savingsTotal: 0,
+  shippingTotal: undefined,
   couponsTotal: 0,
   giftCardsTotal: 0,
   totalTax: 0,
@@ -662,6 +663,7 @@ export const response = {
       },
       address: {
         firstName: '',
+        addressId: 0,
         lastName: '',
         addressLine1: '',
         addressLine2: '',
@@ -702,7 +704,7 @@ export const response = {
         orderType: 'ECOM',
         itemBrand: 'TCP',
         fit: 'regular',
-        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003274_32F6.jpg',
+        imagePath: '3003274/3003274_32F6.jpg',
       },
       itemInfo: {
         quantity: 5,
@@ -733,6 +735,9 @@ export const response = {
         bossEndDate: null,
         bossStartDate: null,
         availability: 'OK',
+        isInventoryAvailBOSS: false,
+        clearanceItem: false,
+        isStoreBOSSEligible: false,
       },
     },
     {
@@ -754,7 +759,7 @@ export const response = {
         orderType: 'ECOM',
         itemBrand: 'TCP',
         fit: 'regular',
-        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003289_1464.jpg',
+        imagePath: '3003289/3003289_1464.jpg',
       },
       itemInfo: {
         quantity: 7,
@@ -785,6 +790,9 @@ export const response = {
         bossEndDate: null,
         bossStartDate: null,
         availability: 'OK',
+        isInventoryAvailBOSS: false,
+        clearanceItem: false,
+        isStoreBOSSEligible: false,
       },
     },
     {
@@ -806,7 +814,7 @@ export const response = {
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
         itemBrand: 'TCP',
-        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3000627_635.jpg',
+        imagePath: '3000627/3000627_635.jpg',
       },
       itemInfo: {
         quantity: 2,
@@ -837,6 +845,9 @@ export const response = {
         bossEndDate: null,
         bossStartDate: null,
         availability: 'OK',
+        isInventoryAvailBOSS: false,
+        clearanceItem: false,
+        isStoreBOSSEligible: false,
       },
     },
     {
@@ -860,7 +871,7 @@ export const response = {
         orderType: 'ECOM',
         fit: 'regular',
         itemBrand: 'TCP',
-        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3002156_10.jpg',
+        imagePath: '3002156/3002156_10.jpg',
       },
       itemInfo: {
         quantity: 1,
@@ -891,6 +902,9 @@ export const response = {
         bossEndDate: null,
         bossStartDate: null,
         availability: 'OK',
+        isInventoryAvailBOSS: false,
+        clearanceItem: false,
+        isStoreBOSSEligible: false,
       },
     },
   ],

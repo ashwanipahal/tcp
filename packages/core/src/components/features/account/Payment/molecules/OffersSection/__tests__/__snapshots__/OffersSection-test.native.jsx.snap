@@ -24,10 +24,11 @@ exports[`Offers Component should render correctly 1`] = `
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
-            "html": undefined,
+            "html": "lbl_payment_offersMessageMobile",
           }
         }
         thirdPartyCookiesEnabled={false}

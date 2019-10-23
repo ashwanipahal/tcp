@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -39,11 +40,12 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
-      showSavePlcc,
       pristine,
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -56,7 +58,7 @@ class LoginForm extends React.PureComponent<Props> {
           <BodyCopy component="div" className="elem-mb-LRG">
             <Field
               id="emailAddress"
-              placeholder={labels.login.lbl_login_email}
+              placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
               name="emailAddress"
               component={TextBox}
               dataLocator="login-emailfield"
@@ -64,12 +66,12 @@ class LoginForm extends React.PureComponent<Props> {
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <Field
               labels={labels}
               id="password"
-              placeholder={labels.login.lbl_login_password}
+              placeholder={getLabelValue(labels, 'lbl_login_password', 'login')}
               name="password"
               component={PasswordField}
               dataLocator="login-passwordfield"
@@ -78,7 +80,7 @@ class LoginForm extends React.PureComponent<Props> {
               enableSuccessCheck={false}
               className="elem-mb-SM"
               tooltipContent={tooltipContent}
-              onKeyPress={this.resetError}
+              onChange={this.resetError}
             />
             <BodyCopy component="div">
               <Field
@@ -87,21 +89,37 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="login-remembermecb"
                 className=""
               >
-                <span className="remember-me-text">{labels.login.lbl_login_rememberMe}</span>
-                <span>{labels.login.lbl_login_rememberMeHelpText}</span>
+                <BodyCopy
+                  fontFamily="secondary"
+                  tag="span"
+                  className="remember-me-text"
+                  fontSize="fs10"
+                >
+                  {getLabelValue(labels, 'lbl_login_rememberMe', 'login')}
+                </BodyCopy>
+                <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
+                  {getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}
+                </BodyCopy>
               </Field>
             </BodyCopy>
-            {showSavePlcc && (
-              <BodyCopy component="div">
+
+            {userplccCardNumber && userplccCardId && (
+              <BodyCopy component="div" className="save-my-plcc">
                 <Field
                   name="savePlcc"
                   component={InputCheckbox}
                   dataLocator="login-savemyplcccardcb"
                 >
-                  {labels.login.lbl_login_saveMyPlace}
+                  <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
+                    {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login').replace(
+                      '#number',
+                      `${userplccCardNumber}`
+                    )}
+                  </BodyCopy>
                 </Field>
               </BodyCopy>
             )}
+
             <BodyCopy component="div">
               {showRecaptcha && (
                 <>
@@ -129,7 +147,7 @@ class LoginForm extends React.PureComponent<Props> {
               className="elem-mb-XS"
               disabled={pristine}
             >
-              {labels.login.lbl_login_loginCTA}
+              {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
             {variation === 'checkout' && (
               <Button
@@ -141,7 +159,7 @@ class LoginForm extends React.PureComponent<Props> {
                 className="elem-mb-XS"
                 onClick={handleContinueAsGuest}
               >
-                {labels.login.lbl_login_modal_checkout_as_guest}
+                {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
               </Button>
             )}
             <Anchor
@@ -151,7 +169,7 @@ class LoginForm extends React.PureComponent<Props> {
               dataLocator="login-forgotpasswordlnk"
               onClick={this.showForgotPasswordForm}
             >
-              {labels.login.lbl_login_forgetPasswordCTA}
+              {getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
             </Anchor>
           </BodyCopy>
         </form>
@@ -167,9 +185,10 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
-  showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {
@@ -177,7 +196,6 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
-  showSavePlcc: false,
   pristine: false,
 };
 

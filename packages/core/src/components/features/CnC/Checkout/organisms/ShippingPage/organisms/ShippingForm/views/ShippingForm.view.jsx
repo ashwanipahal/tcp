@@ -25,7 +25,7 @@ const formName = 'checkoutShipping';
 
 class ShippingForm extends React.Component {
   static changeAddressFields(nextProps) {
-    const { onFileAddressKey, dispatch, userAddresses, isMobile, shippingAddress } = nextProps;
+    const { onFileAddressKey, dispatch, userAddresses, shippingAddress } = nextProps;
     let address = {};
     let isDefaultAddress = false;
     if (userAddresses && userAddresses.size > 0) {
@@ -47,23 +47,24 @@ class ShippingForm extends React.Component {
     dispatch(change(formName, 'address.state', address.state));
     dispatch(change(formName, 'address.phoneNumber', address.phone1));
     dispatch(change(formName, 'defaultShipping', isDefaultAddress));
-    if (!isMobile) {
-      return { isEditingMode: true };
-    }
-    return { isEditingMobileMode: true };
+    return { isEditingMode: true };
   }
 
   constructor(props) {
     super(props);
     this.state = {
       isEditing: false,
-      modalType: null,
-      modalState: false,
       isEditingMode: false,
-      isEditingMobileMode: false,
+      editShipmentDetailsError: '',
     };
     this.isAddressModalEmptied = false;
     this.addNewAddressEnabled = false;
+    this.editShippingErrorRef = React.createRef();
+  }
+
+  shouldComponentUpdate() {
+    const { isSubmitting } = this.props;
+    return !isSubmitting;
   }
 
   componentDidUpdate(prevProps) {
@@ -76,21 +77,13 @@ class ShippingForm extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const {
-      isEditing,
-      modalType,
-      modalState,
-      isEditingMode,
-      isEditingMobileMode,
-      shippingAddress,
-    } = prevState;
+    const { isEditing, isEditingMode, shippingAddress } = prevState;
     const { onFileAddressKey, userAddresses } = nextProps;
     if (
-      (isEditing || (modalType === 'edit' && modalState)) &&
+      isEditing &&
       onFileAddressKey &&
       ((userAddresses && userAddresses.size > 0) || shippingAddress) &&
-      !isEditingMode &&
-      !isEditingMobileMode
+      !isEditingMode
     ) {
       return ShippingForm.changeAddressFields(nextProps);
     }
@@ -99,12 +92,7 @@ class ShippingForm extends React.Component {
 
   checkPropsOnUpdation = prevProps => {
     const { dispatch, isAddNewAddress } = this.props;
-    const { modalType, modalState } = this.state;
-    if (
-      ((modalType === 'add' && modalState) || isAddNewAddress) &&
-      !this.isAddressModalEmptied &&
-      !this.addNewAddressEnabled
-    ) {
+    if (isAddNewAddress && !this.isAddressModalEmptied && !this.addNewAddressEnabled) {
       dispatch(resetSection(formName, 'address'));
       if (!this.isAddressModalEmptied) {
         this.isAddressModalEmptied = true;
@@ -119,16 +107,12 @@ class ShippingForm extends React.Component {
   };
 
   checkPropsOnMoreUpdation = prevProps => {
-    const { dispatch, defaultAddressId, isMobile } = this.props;
+    const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
-    if (defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
-      if (isMobile) {
-        this.toggleAddEditModal({ type: 'add' });
-      } else {
-        dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-        this.setState({ isEditing: false });
-      }
+    if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
+      dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
+      this.setState({ isEditing: false });
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -137,8 +121,7 @@ class ShippingForm extends React.Component {
 
   toggleAddressState = () => {
     const { isAddNewAddress } = this.props;
-    const { modalState } = this.state;
-    if (!modalState && this.isAddressModalEmptied) {
+    if (this.isAddressModalEmptied) {
       this.isAddressModalEmptied = false;
     }
     if (!isAddNewAddress && this.addNewAddressEnabled) {
@@ -148,20 +131,7 @@ class ShippingForm extends React.Component {
 
   toggleIsEditing = () => {
     const { isEditing } = this.state;
-    this.setState({ isEditing: !isEditing });
-  };
-
-  toggleAddEditModal = ({ type, e }) => {
-    if (e) e.preventDefault();
-    const { defaultAddressId, dispatch } = this.props;
-    const { modalState, isEditingMobileMode } = this.state;
-    this.setState({ modalType: type, modalState: !modalState });
-    if (modalState && type === 'add') {
-      dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-    }
-    if (isEditingMobileMode) {
-      this.setState({ isEditingMobileMode: !isEditingMobileMode });
-    }
+    this.setState({ isEditing: !isEditing, editShipmentDetailsError: '' });
   };
 
   renderEmailSignUp = () => {
@@ -217,14 +187,50 @@ class ShippingForm extends React.Component {
     );
   };
 
+  handleSubmit = e => {
+    const { handleSubmit, emailSignUpLabels } = this.props;
+    const { isEditing } = this.state;
+
+    if (isEditing) {
+      e.preventDefault();
+      this.setState({
+        editShipmentDetailsError: emailSignUpLabels.shippingAddressEditError,
+      });
+      return this.editShippingErrorRef.current.scrollIntoView(false);
+    }
+    return handleSubmit(e);
+  };
+
+  renderGiftServices = () => {
+    const { isGiftServicesChecked, dispatch } = this.props;
+    return (
+      <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+        <GiftServices
+          showDefaultCheckbox={false}
+          formName={formName}
+          formSection="giftServices"
+          variation="secondary"
+          isGiftServicesChecked={isGiftServicesChecked}
+          dispatch={dispatch}
+        />
+      </Col>
+    );
+  };
+
+  renderShippingErrors = () => {
+    const { ServerErrors } = this.props;
+    if (!ServerErrors) {
+      return null;
+    }
+    return <ServerErrors />;
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
-      handleSubmit,
       className,
       dispatch,
       isOrderUpdateChecked,
-      isGiftServicesChecked,
       smsSignUpLabels,
       selectedShipmentId,
       addressPhoneNo,
@@ -246,17 +252,21 @@ class ShippingForm extends React.Component {
       setDefaultAddressId,
       syncErrorsObject,
       isVenmoPaymentInProgress,
+      isVenmoShippingDisplayed,
       showAccordian,
+      isMobile,
     } = this.props;
-    const { isEditing, modalType, modalState } = this.state;
-    const nextButtonText = isVenmoPaymentInProgress
-      ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
-      : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
+    const { isEditing, editShipmentDetailsError } = this.state;
+    const nextButtonText =
+      isVenmoPaymentInProgress && !isVenmoShippingDisplayed
+        ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
+        : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
       <>
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
+        {this.renderShippingErrors()}
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"
@@ -270,19 +280,22 @@ class ShippingForm extends React.Component {
         >
           {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
         </BodyCopy>
-        <form name={formName} className={className} onSubmit={handleSubmit} isEditing={isEditing}>
+        <form
+          name={formName}
+          className={className}
+          onSubmit={this.handleSubmit}
+          isEditing={isEditing}
+        >
           {!isGuest && (
             <RegisteredShippingForm
               {...this.props}
               isEditing={isEditing}
+              isMobile={isMobile}
               toggleIsEditing={this.toggleIsEditing}
               dispatch={dispatch}
               isAddNewAddress={isAddNewAddress}
               toggleAddNewAddress={toggleAddNewAddress}
               isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-              modalType={modalType}
-              modalState={modalState}
-              toggleAddEditModal={this.toggleAddEditModal}
               shippingAddressId={shippingAddressId}
               updateShippingAddress={updateShippingAddress}
               addNewShippingAddress={addNewShippingAddress}
@@ -290,6 +303,8 @@ class ShippingForm extends React.Component {
               labels={labels}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
+              errorMessageRef={this.editShippingErrorRef}
+              editShipmentDetailsError={editShipmentDetailsError}
             />
           )}
           {isGuest && (
@@ -344,16 +359,7 @@ class ShippingForm extends React.Component {
                 </div>
               </FormSection>
             </Col>
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <GiftServices
-                showDefaultCheckbox={false}
-                formName={formName}
-                formSection="giftServices"
-                variation="secondary"
-                isGiftServicesChecked={isGiftServicesChecked}
-                dispatch={dispatch}
-              />
-            </Col>
+            {this.renderGiftServices()}
           </Row>
           <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
           <CheckoutFooter
@@ -366,7 +372,6 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
-            disableNext={isEditing}
           />
         </form>
       </>

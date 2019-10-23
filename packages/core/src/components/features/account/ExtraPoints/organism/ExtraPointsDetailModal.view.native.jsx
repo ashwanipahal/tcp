@@ -3,6 +3,8 @@ import { BodyCopy, RichText, Button } from '@tcp/core/src/components/common/atom
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import PropTypes from 'prop-types';
 import sourceMap from '../imageSourceMap';
+import endpoints from '../../common/externalEndpoints';
+import { UrlHandler } from '../../../../../utils/utils.app';
 
 import {
   RichTextWrapper,
@@ -22,10 +24,45 @@ import {
 class ExtraPointsDetailModal extends React.PureComponent {
   static propTypes = {
     waysToEarnRow: PropTypes.shape({}),
+    handleComponentChange: PropTypes.func,
   };
 
   static defaultProps = {
     waysToEarnRow: {},
+    handleComponentChange: () => {},
+  };
+
+  /**
+   * @function handleButtonClick  to get the route to CTA url based on activityModalAction
+   * @param    {Object} activeActivity The activity details of waysToEarn
+   * @returns  {String} cta path for redirection mapping
+   */
+  handleButtonClick = activityDetails => {
+    const { handleComponentChange } = this.props;
+    switch (activityDetails.activityModalAction) {
+      case 'rewardPlaceApp':
+        return UrlHandler(endpoints.appDownloadPage);
+      case 'userAboutYourselfSurvey':
+      case 'userMailing':
+      case 'birthdaySavings':
+      case 'userBirthday':
+        return handleComponentChange('profileInformationMobile', {
+          activeComponent: activityDetails.activityModalAction,
+        });
+      case 'userFavoriteStore':
+        return handleComponentChange('profileInformationMobile');
+
+      case 'myPreference':
+        return handleComponentChange('myPreferencePageMobile', {
+          activeComponent: activityDetails.activityModalAction,
+          activityModalSocialAccount: activityDetails.activityModalSocialAccount,
+        });
+
+      case 'orders':
+        return handleComponentChange('accountOverviewMobile');
+      default:
+        return handleComponentChange('profileInformationMobile');
+    }
   };
 
   /**
@@ -76,10 +113,10 @@ class ExtraPointsDetailModal extends React.PureComponent {
         </RichTextWrapper>
         <ButtonWrapper>
           <Button
-            buttonVariation="variable-width"
             text={activityDetails.activityModalCtaText}
             fill="BLUE"
             color="white"
+            onPress={() => this.handleButtonClick(activityDetails)}
           />
         </ButtonWrapper>
       </>

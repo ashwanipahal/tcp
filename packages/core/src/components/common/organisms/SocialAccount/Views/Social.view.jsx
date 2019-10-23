@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookLogin from './FacebookLogin';
 import { InstagramLoginComponent } from './InstagramLogin';
+import TwitterLoginComponent from './twitterLoginComponent';
 import config from './config';
 import socialStyle from '../styles/social.style';
 import withStyles from '../../../hoc/withStyles';
@@ -9,10 +10,12 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Modal from '../../../molecules/Modal';
 import Button from '../../../atoms/Button';
 import { getLabelValue, routerPush } from '../../../../../utils';
+import getLinkedSocialAccountLabel from '../utils';
 
 const loginComponents = {
   Facebook: FacebookLogin,
   Instagram: InstagramLoginComponent,
+  Twitter: TwitterLoginComponent,
 };
 
 class Socialview extends React.PureComponent {
@@ -24,10 +27,12 @@ class Socialview extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     pointModalClose: PropTypes.func.isRequired,
     setPointsModal: PropTypes.func.isRequired,
+    urlParams: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
+    urlParams: {},
   };
 
   constructor() {
@@ -37,13 +42,15 @@ class Socialview extends React.PureComponent {
   }
 
   renderSocialLogins = (Component, saveSocialAcc) => {
-    const { socialLoad, pointModalClose } = this.props;
+    const { socialLoad, urlParams, pointModalClose } = this.props;
+
     return (
       <Component
         socialLoad={socialLoad}
         saveSocialAcc={saveSocialAcc}
         loginStatus={this.socialAccounts}
         pointModalClose={pointModalClose}
+        urlParams={urlParams}
       />
     );
   };
@@ -111,7 +118,7 @@ class Socialview extends React.PureComponent {
                 >
                   {this.pointsInformation.points}
                 </BodyCopy>
-                {getLabelValue(labels, 'lbl_prefrence_social_points_text_2')}
+                {getLinkedSocialAccountLabel(this.pointsInformation.activity, labels)}
               </BodyCopy>
               <BodyCopy
                 fontSize="fs14"
@@ -171,7 +178,7 @@ class Socialview extends React.PureComponent {
   refactorSocialDetails = accounts => {
     const accountsInfo = [];
     Object.keys(accounts).forEach(prop => {
-      if (prop === 'facebook' || prop === 'instagram') {
+      if (prop === 'facebook' || prop === 'instagram' || prop === 'twitter') {
         accountsInfo.push({
           socialAccount: config.SOCIAL_ACCOUNTS_INFO[prop],
           isConnected: accounts[prop].accessToken,
@@ -195,7 +202,8 @@ class Socialview extends React.PureComponent {
   };
 
   viewAll = () => {
-    routerPush('/account?id=payment', '/account/payment');
+    routerPush('/account?id=extra-points', '/account/extra-points');
+    this.onClose();
   };
 
   render() {

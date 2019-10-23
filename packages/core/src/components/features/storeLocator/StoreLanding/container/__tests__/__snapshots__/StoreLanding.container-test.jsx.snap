@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container getFavoriteStoreInititator should be called - no position 1`] = `
+<Styled(StoreLanding)
+  favoriteStore={
+    Object {
+      "basicInfo": Object {
+        "id": 1211,
+      },
+      "name": "saint andreas",
+    }
+  }
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
+  getFavoriteStore={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "geoLatLang": Object {
+              "lat": undefined,
+              "long": undefined,
+            },
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchDone={false}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;
+
+exports[`StoreSearch Container getFavoriteStoreInititator should be called - no position 2`] = `
+<Styled(StoreLanding)
+  favoriteStore={
+    Object {
+      "basicInfo": Object {
+        "id": 1211,
+      },
+      "name": "saint andreas",
+    }
+  }
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
+  getFavoriteStore={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "geoLatLang": Object {
+              "lat": undefined,
+              "long": undefined,
+            },
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchDone={false}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;
+
+exports[`StoreSearch Container getFavoriteStoreInititator should be called 1`] = `
+<Styled(StoreLanding)
+  favoriteStore={
+    Object {
+      "basicInfo": Object {
+        "id": 1211,
+      },
+      "name": "saint andreas",
+    }
+  }
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={true}
+  getFavoriteStore={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "geoLatLang": Object {
+              "lat": undefined,
+              "long": undefined,
+            },
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchDone={false}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;
+
+exports[`StoreSearch Container should render StoreLanding Correctly - without fav store 1`] = `
+<Styled(StoreLanding)
+  favoriteStore={null}
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
+  getFavoriteStore={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "geoLatLang": Object {
+              "lat": undefined,
+              "long": undefined,
+            },
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchDone={false}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;
+
+exports[`StoreSearch Container should render StoreLanding Correctly 1`] = `
+<Styled(StoreLanding)
+  favoriteStore={
+    Object {
+      "basicInfo": Object {
+        "id": 1211,
+      },
+      "name": "saint andreas",
+    }
+  }
+  fetchCurrentStore={[Function]}
+  fetchStoresByLatLng={[MockFunction]}
+  geoLocationEnabled={false}
+  getFavoriteStore={[MockFunction]}
+  getLocationStores={[Function]}
+  loadStoresByCoordinates={[Function]}
+  markerIcon="/static/images/marker-icon.png"
+  navigation={Object {}}
+  openStoreDirections={[Function]}
+  searchDone={false}
+  searchIcon="/static/images/search-icon.svg"
+/>
+`;

@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { getLabelValue } from '../../../../../utils';
 import { AVAILABILITY } from '../../../../../services/abstractors/CnC/CartItemTile';
 import getErrorList from './Errors.selector';
+import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -25,6 +26,7 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
+        lbl_orderledger_total: totalLabel,
       } = {},
     } = {},
     global: {
@@ -71,6 +73,7 @@ const getBagPageLabels = state => {
     emptySflMsg2,
     sflSuccess,
     sflDeleteSuccess,
+    totalLabel,
   };
 };
 
@@ -131,11 +134,8 @@ const getGiftServicesContentTcpId = state => {
   return contentTCP && contentTCP.contentId;
 };
 
-const getGiftServicesContentGymId = ({
-  Labels: {
-    checkout: { addedToBag: { referred = [] } = {} },
-  },
-}) => {
+const getGiftServicesContentGymId = state => {
+  const { referred = [] } = state.Labels.checkout.shipping;
   const contentGYM = referred.find(label => label.name === 'GiftServicesDetailsGYMModal');
   return contentGYM && contentGYM.contentId;
 };
@@ -158,8 +158,12 @@ const getCurrentOrderId = state => {
 
 const getOOSCount = state => getFilteredItems(state, type => type === AVAILABILITY.SOLDOUT).size;
 
+const returnCurrentCurrency = currency => {
+  return currency === 'USD' || currency === 'CA' ? '$' : currency;
+};
 const getCurrentCurrency = state => {
-  return state.session.getIn(['siteDetails', 'currency']);
+  const currency = state.session && state.session.siteDetails.currency;
+  return currency ? returnCurrentCurrency(currency) : '$';
 };
 
 const getCartStores = state => {
@@ -210,6 +214,13 @@ const itemDeleteModalLabels = state => {
   };
 };
 
+const getBagStickyHeaderInterval = state => {
+  return (
+    parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
+    BAGPAGE_CONSTANTS.BAG_PAGE_STICKY_HEADER_INTERVAL
+  );
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -235,4 +246,5 @@ export default {
   checkoutIfItemIsUnqualified,
   getCurrentDeleteSelectedItemInfo,
   itemDeleteModalLabels,
+  getBagStickyHeaderInterval,
 };

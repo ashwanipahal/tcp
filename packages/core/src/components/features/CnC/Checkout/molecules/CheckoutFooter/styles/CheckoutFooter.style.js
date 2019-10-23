@@ -2,6 +2,13 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .left-arrow {
+    border: solid ${props => props.theme.colors.ANCHOR.SECONDARY};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     border-top: 1px solid ${props => props.theme.colors.BLACK};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -11,9 +18,12 @@ const styles = css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
     color: ${props => props.theme.colorPalette.gray[800]};
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      text-align: center;
+    }
   }
   .footer-buttons {
-    flex-direction: column-reverse;
+    flex-direction: column;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -49,19 +59,36 @@ const styles = css`
     .footer-button {
       background-color: ${props => props.theme.colors.PRIMARY.BLUE};
       color: ${props => props.theme.colors.WHITE};
-      height: 42px;
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       font-weight: ${props => props.theme.typography.fontWeights.fontWeights};
       &:hover {
         background: ${props => props.theme.colors.PRIMARY.BLUE};
+        display: inline-block;
       }
-      width: 100%;
+    }
+    .footer-button-web {
+      display: none;
       @media ${props => props.theme.mediaQuery.medium} {
+        display: block;
         width: 192px;
         height: 51px;
       }
       @media ${props => props.theme.mediaQuery.large} {
         width: 210px;
+      }
+    }
+    .footer-button-mob {
+      height: 42px;
+      width: 100%;
+      @media ${props => props.theme.mediaQuery.medium} {
+        display: none;
+      }
+    }
+    .footer-venmo-button {
+      display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        width: 100%;
       }
     }
   }

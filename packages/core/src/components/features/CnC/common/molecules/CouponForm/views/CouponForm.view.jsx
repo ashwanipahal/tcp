@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, TextBox, BodyCopy, Heading } from '@tcp/core/src/components/common/atoms';
+import { keyboard } from '../../../../../../../../../web/src/constants/constants';
 import style from '../styles/CouponForm.style';
 import ErrorMessage from '../../ErrorMessage';
 
@@ -19,6 +19,14 @@ class CouponForm extends React.PureComponent {
   toggleTouched = () => {
     const { touched } = this.state;
     this.setState({ touched: !touched });
+  };
+
+  handleKeyDown = (event, callback) => {
+    const { KEY_ENTER, KEY_SPACE } = keyboard;
+    const { which } = event;
+    if (which === KEY_ENTER || which === KEY_SPACE) {
+      callback();
+    }
   };
 
   handleSubmit = e => {
@@ -40,6 +48,7 @@ class CouponForm extends React.PureComponent {
       error,
       isFetching,
       onNeedHelpTextClick,
+      idPrefix,
     } = this.props;
     const { touched } = this.state;
     return (
@@ -48,6 +57,7 @@ class CouponForm extends React.PureComponent {
         <div className="coupon_form_container">
           <Heading
             fontFamily="primaryFontFamily"
+            component="h2"
             variant="h6"
             className="coupon_form_heading"
             color="black"
@@ -59,7 +69,10 @@ class CouponForm extends React.PureComponent {
               className="coupon_need_help_link"
               component="span"
               fontWeight="semibold"
+              tabIndex="0"
               onClick={onNeedHelpTextClick}
+              role="button"
+              onKeyDown={e => this.handleKeyDown(e, onNeedHelpTextClick)}
             >
               {labels.couponNeedHelpText}
             </BodyCopy>
@@ -68,7 +81,7 @@ class CouponForm extends React.PureComponent {
             <Field
               placeholder={labels.placeholderText}
               name={fieldName}
-              id={fieldName}
+              id={`${fieldName}-id-${idPrefix}`}
               type="text"
               onChange={!touched && this.toggleTouched}
               component={this.renderTextBox}
@@ -106,6 +119,7 @@ CouponForm.propTypes = {
   fieldName: PropTypes.string,
   className: PropTypes.string.isRequired,
   error: PropTypes.string,
+  idPrefix: PropTypes.string,
   onNeedHelpTextClick: PropTypes.func,
   isFetching: PropTypes.isRequired,
 };
@@ -125,6 +139,7 @@ CouponForm.defaultProps = {
   fieldName: 'couponCode',
   handleSubmit: () => {},
   onNeedHelpTextClick: () => {},
+  idPrefix: '',
 };
 
 export const onSubmitSuccess = (result, dispatch, { reset }) => reset();

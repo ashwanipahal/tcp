@@ -16,6 +16,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     }
     data-locator="pdp_quantity"
     disableButton={false}
+    disabled={false}
     fill=""
     fullWidth=""
     iconColor="gray.800"
@@ -47,10 +48,14 @@ exports[`NativeDropDown native should render correctly should match snapshot for
         <Styled(View) />
       </Styled(TouchableWithoutFeedback)>
       <Styled(View)>
-        <Button
-          onPress={[Function]}
-          title="Done"
-        />
+        <Styled(View)>
+          <Button
+            accessibilityLabel="done"
+            accessibilityRole="button"
+            onPress={[Function]}
+            title="Done"
+          />
+        </Styled(View)>
         <Picker
           mode="dialog"
           onValueChange={[Function]}
@@ -73,9 +78,20 @@ exports[`NativeDropDown native should render correctly should match snapshot for
   width={null}
 >
   <Picker
+    itemStyle={
+      Object {
+        "height": 41,
+        "padding": 0,
+      }
+    }
     mode="dialog"
     onValueChange={[Function]}
     selectedValue={null}
+    style={
+      Object {
+        "height": 41,
+      }
+    }
   >
     <PickerItem
       label="Test"

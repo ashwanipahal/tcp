@@ -17,7 +17,7 @@ exports[`AddressTile component should renders correctly 1`] = `
           }
         }
       >
-        <Address
+        <Styled(Address)
           address={
             Object {
               "addressLine": Array [
@@ -32,14 +32,8 @@ exports[`AddressTile component should renders correctly 1`] = `
               "primary": "true",
             }
           }
-          className=""
           dataLocatorPrefix="addressbook"
           fontWeight="extrabold"
-          isDefault={false}
-          showCountry={true}
-          showDefault={true}
-          showName={true}
-          showPhone={true}
         />
       </Styled(Col)>
       <Styled(Col)
@@ -51,7 +45,9 @@ exports[`AddressTile component should renders correctly 1`] = `
           }
         }
       >
-        <div>
+        <div
+          className="default-address-label"
+        >
           <Styled(Badge)
             dataLocator="addressbook-defshippinglabel"
             showCheckmark={true}
@@ -72,7 +68,9 @@ exports[`AddressTile component should renders correctly 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       dataLocator="addressbook-deletelink"
@@ -80,7 +78,9 @@ exports[`AddressTile component should renders correctly 1`] = `
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      lbl_common_delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;

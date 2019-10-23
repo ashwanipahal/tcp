@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardImageVanilla component renders correctly without props 1`] = `
+<Fragment>
+  <div
+    className="cardImage-wrapper elem-mt-MED"
+  >
+    <div
+      className="cardImage-img-wrapper"
+    >
+      <img
+        className="cardImage-img"
+        data-locator="cardLogo"
+      />
+    </div>
+    <Styled(BodyCopy)
+      className="cardImage-card-number"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      1234
+    </Styled(BodyCopy)>
+  </div>
+</Fragment>
+`;

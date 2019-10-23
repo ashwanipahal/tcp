@@ -1,7 +1,17 @@
 import { put, takeLatest } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../../utils/cache.util';
-import { addToCartEcom, addItemToCartBopis, AddedToBagSaga } from '../container/AddedToBag.saga';
-import { SetAddedToBagData, openAddedToBag } from '../container/AddedToBag.actions';
+import {
+  addToCartEcom,
+  addItemToCartBopis,
+  AddedToBagSaga,
+  addMultipleItemToCartECOM,
+} from '../container/AddedToBag.saga';
+import {
+  SetAddedToBagData,
+  openAddedToBag,
+  AddToPickupError,
+  AddToCartMultipleItemError,
+} from '../container/AddedToBag.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
@@ -50,22 +60,26 @@ describe('Added to bag saga', () => {
 
   it('should dispatch addToCartBopis', () => {
     const payload = {
-      storeLocId: '345',
-      isBoss: true,
-      quantity: '1',
-      skuInfo: { skuId: 'skuId', variantId: 'variantId', variantNo: 'variantNo' },
+      productInfo: {
+        storeLocId: '345',
+        isBoss: true,
+        quantity: '1',
+        skuInfo: { skuId: 'skuId', variantId: 'variantId', variantNo: 'variantNo' },
+      },
     };
     const addItemToCartBopisGen = addItemToCartBopis({ payload });
     addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
+    addItemToCartBopisGen.next();
 
-    const res = {
-      ...payload,
-      orderItemId: '1111',
-    };
     const response = {
       orderItemId: '1111',
     };
-    let putDescriptor = addItemToCartBopisGen.next(response).value;
+    const res = {
+      ...payload.productInfo,
+      ...response,
+    };
+    const putDescriptor = addItemToCartBopisGen.next(response).value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
     const err = {
       ...response,
@@ -75,32 +89,49 @@ describe('Added to bag saga', () => {
     };
 
     const addItemToCartBopisGen1 = addItemToCartBopis({ payload });
+
     addItemToCartBopisGen1.next();
-    const putDescriptorError = addItemToCartBopisGen1.next(err).value;
-    expect(putDescriptorError).toEqual(
-      put({
-        payload: {
-          body: {
-            error: 'error',
-          },
-          isBoss: true,
-          orderItemId: '1111',
-          quantity: '1',
-          skuInfo: {
-            skuId: 'skuId',
-            variantId: 'variantId',
-            variantNo: 'variantNo',
-          },
+    addItemToCartBopisGen1.next();
+    addItemToCartBopisGen1.throw(err);
+    expect(addItemToCartBopisGen1.next().value).toEqual(put(AddToPickupError('ERROR')));
+  });
+
+  it('should dispatch AddToCartMultipleItemError In Error', () => {
+    const payload = {
+      productItemsInfo: [
+        {
           storeLocId: '345',
+          isBoss: true,
+          quantity: '1',
+          skuInfo: { skuId: 'skuId', variantId: 'variantId', variantNo: 'variantNo' },
         },
-        type: 'SET_ADDED_TO_BAG',
-      })
+      ],
+    };
+    const err = {
+      error: { errorResponse: { errorMessage: 'Error' } },
+      errorProductId: 1,
+      atbSuccessProducts: [],
+    }; // [] with zero length
+    const atbError = { errMsg: 'Error', errorProductId: 1 };
+    const addMultipleItemToCartECOMGenError = addMultipleItemToCartECOM({ payload });
+    addMultipleItemToCartECOMGenError.next();
+    addMultipleItemToCartECOMGenError.throw(err);
+    expect(addMultipleItemToCartECOMGenError.next().value).toEqual(
+      put(AddToCartMultipleItemError(atbError))
     );
-    putDescriptor = addItemToCartBopisGen.next().value;
-    expect(putDescriptor).toEqual(
-      put({
-        type: 'OPEN_ADDED_TO_BAG',
-      })
+
+    const errorObj = {
+      error: { errorResponse: { errorMessage: 'Error' } },
+      errorProductId: 1,
+      atbSuccessProducts: [1],
+    }; // [] with 1 length
+    const atbErrorSecondProduct = { errMsg: 'Error', errorProductId: 1 };
+    const addMultipleItemToCartECOMGenSecondError = addMultipleItemToCartECOM({ payload });
+    addMultipleItemToCartECOMGenSecondError.next();
+    addMultipleItemToCartECOMGenSecondError.throw(errorObj);
+    addMultipleItemToCartECOMGenSecondError.next();
+    expect(addMultipleItemToCartECOMGenSecondError.next().value).toEqual(
+      put(AddToCartMultipleItemError(atbErrorSecondProduct))
     );
   });
 

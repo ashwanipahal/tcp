@@ -2,4 +2,5 @@
 	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">9pPnHKwVfvUlMPymhIRG6PBpFDv_FrzouT7LN</string>
     <string name="app_name">Gymboree</string>
     <string name="splash_name">Gymboree</string>
+    <string name="facebook_app_id">2346328792295830</string>
 </resources>

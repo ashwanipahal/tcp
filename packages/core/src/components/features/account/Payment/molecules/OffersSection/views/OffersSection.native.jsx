@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainerStyle,
@@ -10,12 +12,7 @@ import {
 } from '../OffersSection.style.native';
 import RichText from '../../../../../../common/atoms/RichText';
 
-// @flow
-type Props = {
-  labels: Object,
-};
-
-const OffersSection = (props: Props) => {
+const OffersSection = props => {
   const { labels } = props;
   return (
     <View {...props}>
@@ -27,11 +24,17 @@ const OffersSection = (props: Props) => {
           />
         </ImgWrapper>
         <RichTextStyle>
-          <RichText source={{ html: labels.paymentGC.lbl_payment_offersMessageMobile }} />
+          <RichText
+            source={{ html: getLabelValue(labels, 'lbl_payment_offersMessageMobile', 'paymentGC') }}
+          />
         </RichTextStyle>
       </WrapperStyle>
     </View>
   );
+};
+
+OffersSection.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(OffersSection, ParentContainerStyle);

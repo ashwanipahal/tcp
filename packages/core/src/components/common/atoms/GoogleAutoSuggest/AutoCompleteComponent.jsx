@@ -1,58 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
-import { getCacheData, setCacheData } from '../../../../utils/multipleLocalStorageManagement';
 
-// @flow
-type Props = {
-  types: ['address'],
-  componentRestrictions: any,
-  bounds: any,
-  apiFields: any,
-  input: any,
-  onPlaceSelected: any,
-};
-
-export function getAddressLocationInfo(address) {
-  const googleApiStoredDataObj = getCacheData('geocode-response', address);
-  if (googleApiStoredDataObj) {
-    // Available in storage, don't trigger the google API call
-    return new Promise(resolve => {
-      resolve({
-        lat: googleApiStoredDataObj.lat,
-        lng: googleApiStoredDataObj.lng,
-        country: googleApiStoredDataObj.country,
-      });
-    });
-  }
-  return requireNamedOnlineModule('google.maps').then(() => {
-    const geocoder = new window.google.maps.Geocoder();
-    return new Promise(resolve => {
-      geocoder.geocode({ address }, (results, status) => {
-        if (status === 'OK') {
-          const country = results[0].address_components.find(component => {
-            return component.types && component.types.find(type => type === 'country');
-          });
-          const timeStamp = new Date().getTime();
-          const storeDataObject = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-            country: country && country.short_name,
-          };
-          setCacheData({
-            key: 'geocode-response',
-            storageKey: address,
-            storageValue: { ...storeDataObject, timeStamp },
-          });
-          resolve(storeDataObject);
-        } else {
-          resolve({ error: status });
-        }
-      });
-    });
-  });
-}
-export class AutoCompleteComponent extends React.PureComponent<Props> {
+export class AutoCompleteComponent extends PureComponent {
   static GOOGLE_PLACE_PARTS = {
     street_number: 'short_name',
     route: 'long_name',
@@ -85,7 +36,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       }
     }
     if (!address.street_number) {
-      const regex = RegExp(`^(.*)${address.street_name.split(' ', 1)[0]}`);
+      const regex = RegExp('^(.*)'`${address.street_name.split(' ', 1)[0]}`);
       const result = regex.exec(inputValue);
       const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
@@ -94,7 +45,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       }
     }
 
-    address.street = `${address.street_number || ''} ${address.street_name}`.trim();
+    address.street = `${address.street_number} ${address.street_name}`;
 
     return address;
   }
@@ -196,12 +147,13 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   }
 
   handleOnPlaceSelected() {
-    const { input, onPlaceSelected } = this.props;
+    const { input, onPlaceSelected, meta } = this.props;
+    const { touched, error } = meta;
     const inputValue = this.refToInputElement != null && this.refToInputElement.value;
     if (this.refToInputElement != null && input) {
       input.onChange(this.refToInputElement.value);
     }
-    onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
+    if (!(touched && error)) onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
   }
 
   render() {
@@ -212,3 +164,18 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
 
   // --------------- end of private methods --------------- //
 }
+
+AutoCompleteComponent.propTypes = {
+  types: PropTypes.oneOf(['address']).isRequired,
+  componentRestrictions: PropTypes.shape({}).isRequired,
+  bounds: PropTypes.shape({}).isRequired,
+  apiFields: PropTypes.shape({}).isRequired,
+  input: PropTypes.shape({}).isRequired,
+  onPlaceSelected: PropTypes.func.isRequired,
+  meta: PropTypes.shape({
+    touched: PropTypes.string,
+    error: PropTypes.string,
+  }).isRequired,
+};
+
+export default AutoCompleteComponent;

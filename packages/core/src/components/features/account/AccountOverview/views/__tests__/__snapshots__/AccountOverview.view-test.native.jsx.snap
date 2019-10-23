@@ -20,6 +20,7 @@ exports[`AccountOverview component should render correctly 1`] = `
         ]
       }
       numberOfLines={null}
+      text="lbl_overview_logout_heading_Text_1"
       textAlign="center"
       textDecoration={null}
     />
@@ -34,6 +35,7 @@ exports[`AccountOverview component should render correctly 1`] = `
         ]
       }
       numberOfLines={null}
+      text="lbl_overview_logout_heading_Text_2"
       textAlign="center"
       textDecoration={null}
     />
@@ -41,7 +43,7 @@ exports[`AccountOverview component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       className="classBtn"
       color="#575757"
       customStyle={Object {}}
@@ -60,7 +62,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_join_text"
       theme={Object {}}
       type="submit"
       url=""
@@ -68,8 +70,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     />
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
-      className="classBtn"
+      buttonVariation="fixed-width"
       color=""
       customStyle={Object {}}
       customTextStyle={null}
@@ -87,7 +88,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_overview_login_text"
       theme={Object {}}
       type="submit"
       url=""
@@ -109,6 +110,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       }
       numberOfLines={null}
       onPress={[Function]}
+      text="lbl_overview_myFavoritesHeading"
       textAlign="left"
       textDecoration={null}
     />
@@ -128,17 +130,64 @@ exports[`AccountOverview component should render correctly 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={true}
-    isFavorite={false}
-    isVariationTypeLink={true}
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(ImageComp))
+          alt=""
+          height={30}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/tcp-cc.png",
+            }
+          }
+          url=""
+          width={47}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          numberOfLines={null}
+          textAlign="center"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_manage_creditCard"
   />
   <Styled(View) />
   <Panel
@@ -146,18 +195,21 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_purchase_giftCards"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_refer_friend"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_trackYourOrder"
   />
   <Styled(View) />
   <Panel
@@ -165,23 +217,23 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_app_settings"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_help"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
+    title="lbl_overview_messages"
   />
   <Styled(View) />
-  <Connect(TrackOrderContainer)
-    handleToggle={[Function]}
-  />
   <Styled(View) />
 </View>
 `;

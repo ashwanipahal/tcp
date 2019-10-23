@@ -2,7 +2,6 @@
 
 exports[`ProductAddToBagVanilla native should render correctly should call getFitOptions 1`] = `
 <Connect(ReduxForm)
-  addToBagAction={[Function]}
   colorList={
     Array [
       Object {
@@ -314,12 +313,12 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
   fitList={
     Array [
       Object {
-        "displayName": undefined,
-        "id": undefined,
+        "displayName": "regular",
+        "id": "regular",
       },
       Object {
-        "displayName": undefined,
-        "id": undefined,
+        "displayName": "plus",
+        "id": "plus",
       },
     ]
   }
@@ -327,7 +326,7 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
   initialValues={
     Object {
       "Fit": Object {
-        "name": undefined,
+        "name": "regular",
       },
       "Quantity": 1,
       "Size": Object {
@@ -536,31 +535,14 @@ exports[`ProductAddToBagVanilla native should render correctly should call getFi
       "name": "",
     }
   }
-  sizeList={
-    Array [
-      Object {
-        "displayName": "L(10P-12P)",
-        "id": "L(10P-12P)",
-        "maxAvailable": 1037,
-      },
-      Object {
-        "displayName": "XL(14P)",
-        "id": "XL(14P)",
-        "maxAvailable": 1231,
-      },
-      Object {
-        "displayName": "XXL (16P)",
-        "id": "XXL (16P)",
-        "maxAvailable": 2345,
-      },
-    ]
-  }
+  showAddToBagCTA={true}
+  showColorChips={true}
+  sizeList={Array []}
 />
 `;
 
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <Connect(ReduxForm)
-  addToBagAction={[Function]}
   colorList={
     Array [
       Object {
@@ -872,12 +854,12 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   fitList={
     Array [
       Object {
-        "displayName": undefined,
-        "id": undefined,
+        "displayName": "regular",
+        "id": "regular",
       },
       Object {
-        "displayName": undefined,
-        "id": undefined,
+        "displayName": "plus",
+        "id": "plus",
       },
     ]
   }
@@ -885,7 +867,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   initialValues={
     Object {
       "Fit": Object {
-        "name": undefined,
+        "name": "regular",
       },
       "Quantity": 1,
       "Size": Object {
@@ -973,7 +955,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedColorProductId="3000935_IV"
   selectedFit={
     Object {
-      "name": undefined,
+      "name": "regular",
     }
   }
   selectedQuantity={1}
@@ -982,22 +964,45 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       "name": "",
     }
   }
+  showAddToBagCTA={true}
+  showColorChips={true}
   sizeList={
     Array [
       Object {
-        "displayName": "L(10P-12P)",
-        "id": "L(10P-12P)",
-        "maxAvailable": 1037,
+        "disabled": false,
+        "displayName": "XS (4)",
+        "id": "XS (4)",
+        "maxAvailable": 739,
       },
       Object {
-        "displayName": "XL(14P)",
-        "id": "XL(14P)",
-        "maxAvailable": 1231,
+        "disabled": false,
+        "displayName": "S (5/6)",
+        "id": "S (5/6)",
+        "maxAvailable": 6771,
       },
       Object {
-        "displayName": "XXL (16P)",
-        "id": "XXL (16P)",
-        "maxAvailable": 2345,
+        "disabled": false,
+        "displayName": "M (7/8)",
+        "id": "M (7/8)",
+        "maxAvailable": 12920,
+      },
+      Object {
+        "disabled": false,
+        "displayName": "L (10/12)",
+        "id": "L (10/12)",
+        "maxAvailable": 9331,
+      },
+      Object {
+        "disabled": false,
+        "displayName": "XL (14)",
+        "id": "XL (14)",
+        "maxAvailable": 4381,
+      },
+      Object {
+        "disabled": false,
+        "displayName": "XXL (16)",
+        "id": "XXL (16)",
+        "maxAvailable": 3473,
       },
     ]
   }

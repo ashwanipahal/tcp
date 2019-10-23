@@ -5,6 +5,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { isCanada } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 
 import styles from '../styles/PlaceRewards.section.style';
 import MyRewards from '../../../../common/organism/MyRewards';
@@ -30,10 +31,10 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             fontSize="fs16"
             fontWeight="extrabold"
             component="h4"
-            className="place-rewards__heading"
+            className="place-rewards__heading myAccountRightView"
             data-locator="place-rewards-heading"
           >
-            {labels.placeRewards.ACC_LBL_PLACE_REWARDS_HEADING}
+            {getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}
           </BodyCopy>
         </Col>
       </Row>
@@ -61,9 +62,9 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                     fontSize="fs16"
                     fontWeight="extrabold"
                     component="h4"
-                    className="elem-mb-SM elem-ml-SM"
+                    className="elem-mb-SM elem-mt-XXXS"
                   >
-                    {labels.placeRewards.lbl_my_rewards_point_balance}
+                    {getLabelValue(labels, 'lbl_my_rewards_point_balance', 'placeRewards')}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -77,7 +78,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
                   className="reward-points-section"
                 >
                   <div className="my-place-reward-section">
-                    <RewardsPoints labels={labels.placeRewards} />
+                    <RewardsPoints labels={getLabelValue(labels, 'placeRewards')} />
                   </div>
                 </Col>
               </Row>
@@ -90,37 +91,39 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
               }}
               className="place-rewards-col2"
             >
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    small: 4,
-                    large: 10,
-                    medium: 6,
-                  }}
-                >
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs16"
-                    fontWeight="extrabold"
-                    component="h4"
-                    className="elem-mb-SM elem-ml-SM"
-                    data-locator="pointshistorylbl"
+              <BodyCopy component="div" className="place-rewards-right-col">
+                <Row fullBleed>
+                  <Col
+                    colSize={{
+                      small: 4,
+                      large: 10,
+                      medium: 6,
+                    }}
                   >
-                    {labels.placeRewards.lbl_my_rewards_points_history}
-                  </BodyCopy>
-                </Col>
-              </Row>
-              <Row fullBleed className="elem-mb-MED">
-                <Col
-                  colSize={{
-                    small: 6,
-                    large: 11,
-                    medium: 8,
-                  }}
-                >
-                  <PointsHistory />
-                </Col>
-              </Row>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="extrabold"
+                      component="h4"
+                      className="elem-mb-SM elem-mt-XXXS"
+                      data-locator="pointshistorylbl"
+                    >
+                      {getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
+                    </BodyCopy>
+                  </Col>
+                </Row>
+                <Row fullBleed className="elem-mb-MED">
+                  <Col
+                    colSize={{
+                      small: 6,
+                      large: 11,
+                      medium: 8,
+                    }}
+                  >
+                    <PointsHistory />
+                  </Col>
+                </Row>
+              </BodyCopy>
             </Col>
           </Row>
         )}
@@ -134,7 +137,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             className="place-rewards-col3"
           >
             <div className="bonusPointsWrapper">
-              <BonusPointsDays />
+              <BonusPointsDays isDefaultOpen />
             </div>
           </Col>
           <Col
@@ -145,7 +148,9 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             }}
             className="place-rewards-col4"
           >
-            <EarnExtraPointsTileContainer />
+            <BodyCopy component="div" className="place-rewards-right-col">
+              <EarnExtraPointsTileContainer />
+            </BodyCopy>
           </Col>
         </Row>
       </Row>

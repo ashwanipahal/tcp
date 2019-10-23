@@ -8,11 +8,11 @@ import {
   ServiceResponseError,
   getFormattedError,
 } from '../../../utils/errorMessage.util';
-import { extractPrioritizedBadge, getProductAttributes } from '../../../utils/badge.util';
+import { extractPrioritizedBadge, getCartProductAttributes } from '../../../utils/badge.util';
 import { sanitizeEntity, flatCurrencyToCents, AVAILABILITY } from './CartItemTile';
 
 export function getProductInfo(item, imageGenerator) {
-  const { isGiftCard, itemAtributes } = item;
+  const { isGiftCard, itemAtributes, itemBrand } = item;
   const sizeAndFit = itemAtributes;
   const returnProductInfo = {
     generalProductId: isGiftCard ? item.itemCatentryId.toString() : item.productId,
@@ -33,6 +33,7 @@ export function getProductInfo(item, imageGenerator) {
     },
     isGiftCard,
     colorFitSizeDisplayNames: isGiftCard ? true : {}, // To Do when consuming this data { color: 'Design', size: 'Value' }
+    itemBrand,
   };
   if (sizeAndFit) {
     returnProductInfo.size = sizeAndFit.TCPSize;
@@ -89,7 +90,8 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
         offerPrice: getItemOfferPrice(item, sizeAndFit, isCanada),
       },
       miscInfo: {
-        badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
+        // set badge info
+        badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
         availability: deriveSflItemAvailability(item, currencyCode),
       },
       itemStatus: {},

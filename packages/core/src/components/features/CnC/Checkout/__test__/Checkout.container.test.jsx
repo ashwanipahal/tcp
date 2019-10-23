@@ -23,6 +23,8 @@ describe('CheckoutPage Container', () => {
     isUsSite: false,
     initCheckout: jest.fn(),
     fetchNeedHelpContent: jest.fn(),
+    isRegisteredUserCallDone: true,
+    getUserInformation: jest.fn(),
   };
 
   it('should render CheckoutPage view section', () => {
@@ -32,6 +34,13 @@ describe('CheckoutPage Container', () => {
 
   it('should render CheckoutPage view section', () => {
     const component = shallow(<CheckoutContainer {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should call componentDidUpdate', () => {
+    props.isRegisteredUserCallDone = false;
+    const component = shallow(<CheckoutContainer {...props} />);
+    component.setProps({ isRegisteredUserCallDone: true });
     expect(component).toMatchSnapshot();
   });
 

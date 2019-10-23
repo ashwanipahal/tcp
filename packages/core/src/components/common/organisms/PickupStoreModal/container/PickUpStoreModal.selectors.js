@@ -1,33 +1,59 @@
+import { fromJS } from 'immutable';
 import {
   USER_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
-  SESSIONCONFIG_REDUCER_KEY,
+  FORM_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
+import { getCartItemCount } from '../../../../../utils/cookie.util';
 
-const USA_VALUES = {
-  currency: 'USD',
-  currencySymbol: '$',
-  countryCode: 'US',
-  siteId: 'US',
+const getColorSizeFitName = (type, values) => {
+  let displayName = values && values.get(type);
+  displayName = displayName && displayName.size > 0 ? displayName.get('name') : displayName;
+
+  return displayName;
 };
 
-// const CA_VALUES = {
-//   currency: 'CAD',
-//   currencySymbol: '$',
-//   countryCode: 'CA',
-//   siteId: 'US',
-// };
+const getColorSizeFit = values => {
+  const color = getColorSizeFitName('color', values);
+  const fit = getColorSizeFitName('Fit', values);
+  const size = getColorSizeFitName('Size', values);
 
-export const getBopisStoresOnCart = state => {
-  return (state.stores && state.stores.bopisStoresOnCart) || [];
+  const quantity = values && values.get('Quantity');
+
+  return {
+    color,
+    Fit: fit,
+    Quantity: quantity,
+    Size: size,
+  };
+};
+
+export const getStoresOnCart = state => {
+  return (
+    (state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('cartStores')) || []
+  );
 };
 
 export const getDefaultStore = state => {
-  return (state.stores && state.stores.defaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].defaultStore) || null;
+};
+
+export const getInitialValues = (state, generalProductId) => {
+  const form = fromJS(state[FORM_REDUCER_KEY]);
+  const formValues = (form.size > 0 && form.get(generalProductId)) || null;
+  const values = formValues && formValues.get('values');
+  const colorFitSize = values && getColorSizeFit(values);
+
+  return colorFitSize || {};
+};
+
+export const getCurrentProduct = state => {
+  const pickupReducer = state[PICKUP_MODAL_REDUCER_KEY];
+  return (pickupReducer && pickupReducer.get('currentProduct')) || null;
 };
 
 export const getGeoDefaultStore = state => {
-  return (state.stores && state.stores.geoDefaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].geoDefaultStore) || null;
 };
 
 // NOTE: used for store locator to populate store geo-location search
@@ -43,57 +69,7 @@ export const getOrderConfirmation = state => {
 };
 
 export const getItemsCount = () => {
-  // TODO - Integrate it with redux original state
-  return 0;
-  // return getOrderConfirmation(state).summary.itemsCount;
-};
-
-export const getIsRadialInventoryEnabled = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'isRadialInventoryEnabled'])
-  );
-};
-
-export const getIsBossEnabled = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOSS_ENABLED'])
-  );
-};
-
-export const getIsBopisEnabled = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'IS_BOPIS_ENABLED'])
-  );
-};
-
-export const getCurrentCountry = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'country'])
-  );
-};
-
-export const getCurrentCurrency = state => {
-  return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].getIn(['siteDetails', 'currency'])
-  );
-};
-
-export const getCurrentCurrencySymbol = state => {
-  const country = getCurrentCountry(state);
-  if (country === 'US' || country === 'CA') {
-    return '$';
-  }
-  const { currency } = getCurrentCurrency(state);
-  return currency === USA_VALUES.currency ? USA_VALUES.currencySymbol : `${currency} `;
-};
-
-export const getIsInternationalShipping = state => {
-  return getCurrentCountry(state) !== 'US' && getCurrentCountry(state) !== 'CA';
+  return getCartItemCount();
 };
 
 export const getUserIsPlcc = state => {
@@ -128,4 +104,32 @@ export const getOpenSkuSelectionForm = state => {
 
 export const getStoreSearchError = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
+};
+
+export const getIsPickupModalOpenFromBagPage = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('fromBagPage');
+};
+
+export const getUpdateCartItemStore = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('updateCartItemStore')
+  );
+};
+
+export const getIsItemShipToHome = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isItemShipToHome');
+};
+
+export const getInitialValuesFromBagPage = state => {
+  const pickUpModalReducer =
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');
+  return {
+    Quantity: pickUpModalReducer && pickUpModalReducer.get('Quantity'),
+    color: pickUpModalReducer && pickUpModalReducer.get('color'),
+    Size: pickUpModalReducer && pickUpModalReducer.get('Size'),
+    Fit: pickUpModalReducer && pickUpModalReducer.get('Fit'),
+    orderItemType: pickUpModalReducer && pickUpModalReducer.get('orderItemType'),
+    orderId: pickUpModalReducer && pickUpModalReducer.get('orderId'),
+    orderItemId: pickUpModalReducer && pickUpModalReducer.get('orderItemId'),
+  };
 };

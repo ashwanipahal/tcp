@@ -17,6 +17,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     }
     loginErrorMessage=""
     onSubmit={[Function]}
+    userplccCardId=""
+    userplccCardNumber=""
   >
     <Field
       autoCapitalize="none"
@@ -65,6 +67,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
       dataLocator="emailAddress"
       id="emailAddress"
+      label="lbl_login_email"
       name="emailAddress"
       type="text"
     />
@@ -115,6 +118,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
         dataLocator="password"
         id="password"
+        label="lbl_login_password"
         name="password"
         rightText="lbl_createAccount_show"
         secureTextEntry={true}
@@ -130,6 +134,7 @@ exports[`LoginForm component should renders correctly 1`] = `
           fontFamily="secondary"
           fontSizeVariation="medium"
           locator=""
+          margins={null}
           noLink={true}
           onPress={[Function]}
           text="lbl_createAccount_show"
@@ -162,7 +167,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     </View>
     <Styled(CustomButton)
       active={false}
-      buttonVariation="variable-width"
+      buttonVariation="fixed-width"
       color=""
       customStyle={
         Object {
@@ -178,11 +183,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onPress={null}
+      onPress={[Function]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="lbl_login_loginCTA"
       theme={Object {}}
       url=""
     />
@@ -198,8 +203,9 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
       fontSizeVariation="xlarge"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_login_forgetPasswordCTA"
       underlineBlue={true}
       visible={false}
     />

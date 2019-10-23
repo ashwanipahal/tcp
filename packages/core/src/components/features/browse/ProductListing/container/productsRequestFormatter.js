@@ -56,7 +56,7 @@ export default class ProductsOperator {
   getImgPath(id, excludeExtension) {
     return {
       colorSwatch: this.getSwatchImgPath(id, excludeExtension),
-      productImages: this.getProductImgPath(id, excludeExtension),
+      productImages: this.getProductImagePath(id, excludeExtension),
     };
   }
 
@@ -104,6 +104,18 @@ export default class ProductsOperator {
       900: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/900/${id}${
         excludeExtension ? '' : '.jpg'
       }`,
+    };
+  };
+
+  getProductImagePath = (id, excludeExtension) => {
+    const imageName = (id && id.split('_')) || [];
+    const imagePath = imageName[0];
+
+    return {
+      125: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      380: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
+      900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     };
   };
 
@@ -421,13 +433,13 @@ export default class ProductsOperator {
     return { bucketingSeqConfig, categoryId };
   };
 
-  getProductsListingFilters({ state, asPath, pageNumber, formData }) {
+  getProductsListingFilters({ state, asPath, pageNumber, formData, location }) {
     const filtersAndSort = formData || getPlpCutomizersFromUrlQueryString(asPath);
     return this.getProductsListingInfo({
       state,
       filtersAndSort,
       pageNumber,
-      location: window.location,
+      location,
     });
   }
 
@@ -510,7 +522,7 @@ export default class ProductsOperator {
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
   };
 
-  getProductsListingMoreProducts(state) {
+  getProductsListingMoreProducts(state, location) {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     const lastLoadedPageNumber = getLastLoadedPageNumber(state);
     if (lastLoadedPageNumber >= getMaxPageNumber(state)) {
@@ -526,6 +538,7 @@ export default class ProductsOperator {
       state,
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
+      location,
     });
   }
 
@@ -535,7 +548,7 @@ export default class ProductsOperator {
    *          we need to trigger multiple L3 calls on the basis of what all L3's are left in this.bucketingConfig.L3left variable.
    */
 
-  getMoreBucketedProducts = state => {
+  getMoreBucketedProducts = (state, location) => {
     // if (isOnSeoPlp()) return Promise.resolve(); // scrolling is only supported on pages intended for human users, not for crawlers
     // const state = this.store.getState();
     const sort = getAppliedSortId(state) || '';
@@ -566,6 +579,6 @@ export default class ProductsOperator {
         categoryPathMap,
       });
     }
-    return this.getProductsListingMoreProducts(state);
+    return this.getProductsListingMoreProducts(state, location);
   };
 }

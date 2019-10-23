@@ -3,10 +3,12 @@
 exports[`AddNewCCForm should render correctly 1`] = `
 <Fragment>
   <CreditCardFields
+    cameraIcon={true}
     cardType={null}
     cardTypeImgUrl=""
     creditFieldLabels={
       Object {
+        "cameraText": undefined,
         "creditCardNumber": undefined,
         "cvvCode": undefined,
         "expMonth": undefined,
@@ -14,7 +16,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
       }
     }
     cvvError={null}
-    dto={Object {}}
+    dto={null}
     expMonthOptionsMap={
       Array [
         Object {
@@ -115,16 +117,21 @@ exports[`AddNewCCForm should render correctly 1`] = `
         },
       ]
     }
+    isEdit={false}
     isExpirationRequired={true}
     isPLCCEnabled={true}
+    isSameAsShippingChecked={false}
+    onCardFocus={[Function]}
     selectedCard={null}
     showCvv={true}
+    updateCardDetails={[Function]}
     updateExpiryDate={[Function]}
     variation="secondary"
   />
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="saveCardChkBox"
       fontSize="fs16"
       name="saveToAccount"
       onChange={[Function]}
@@ -134,6 +141,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
   <Styled(View)>
     <Field
       component={[Function]}
+      dataLocator="defaultPaymentChkBox"
       disabled={false}
       fontSize="fs16"
       name="defaultPayment"

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   FormStyle,
   FormStyleView,
@@ -56,7 +57,7 @@ class ForgotPasswordView extends React.Component<Props> {
       <React.Fragment>
         <ForgotHeadingStyle>{`Forgot your password? \n No worries!`}</ForgotHeadingStyle>
         <ForgotDescriptionStyle>
-          {labels.password.lbl_forgotPassword_content2}
+          {getLabelValue(labels, 'lbl_forgotPassword_content2', 'password')}
         </ForgotDescriptionStyle>
 
         <Field
@@ -70,8 +71,7 @@ class ForgotPasswordView extends React.Component<Props> {
         <CustomButton
           color={colorPallete.white}
           fill="BLUE"
-          text={labels.password.lbl_forgotPassword_resetPassword}
-          buttonVariation="variable-width"
+          text={getLabelValue(labels, 'lbl_forgotPassword_resetPassword', 'password')}
           customStyle={styles.createAccountStyle}
           onPress={handleSubmit(this.onFormSubmit)}
         />
@@ -84,14 +84,18 @@ class ForgotPasswordView extends React.Component<Props> {
     const { labels } = this.props;
     return (
       <React.Fragment>
-        <HeadingStyle>{labels.password.lbl_forgotPassword_checkMail}</HeadingStyle>
-        <SubHeadingStyle>{labels.password.lbl_forgotPassword_heading}</SubHeadingStyle>
+        <HeadingStyle>
+          {getLabelValue(labels, 'lbl_forgotPassword_checkMail', 'password')}
+        </HeadingStyle>
+        <SubHeadingStyle>
+          {getLabelValue(labels, 'lbl_forgotPassword_heading', 'password')}
+        </SubHeadingStyle>
         <SubHeadingSectionStyle>
-          {labels.password.lbl_forgotPassword_subHeading}
+          {getLabelValue(labels, 'lbl_forgotPassword_subHeading', 'password')}
         </SubHeadingSectionStyle>
         <CustomButton
           fill="BLUE"
-          text={labels.password.lbl_forgotPassword_returnLogin}
+          text={getLabelValue(labels, 'lbl_forgotPassword_returnLogin', 'password')}
           buttonVariation="variable-width"
           customStyle={styles.createAccountStyle}
           onPress={this.onBackClick}
@@ -116,7 +120,7 @@ class ForgotPasswordView extends React.Component<Props> {
             <Anchor
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
-              text={labels.password.lbl_forgotPassword_backLogin}
+              text={getLabelValue(labels, 'lbl_forgotPassword_backLogin', 'password')}
               customStyle={styles.forgotPasswordStyle}
               onPress={this.onBackClick}
               className="floatLt"
@@ -128,8 +132,8 @@ class ForgotPasswordView extends React.Component<Props> {
               colSize={{ large: 11, medium: 7, small: 6 }}
               message={
                 errorObject
-                  ? labels.password.lbl_forgotPassword_userNotAvailable
-                  : labels.password.lbl_forgotPassword_apiError
+                  ? getLabelValue(labels, 'lbl_forgotPassword_userNotAvailable', 'password')
+                  : getLabelValue(labels, 'lbl_forgotPassword_apiError', 'password')
               }
             />
           )}

@@ -9,7 +9,7 @@ import { isClient, getLocator } from '@tcp/core/src/utils';
 import { getProductListToPath } from '../utils/productsCommonUtils';
 // import cssClassName from '../utils/cssClassName';
 import styles, { imageAnchorInheritedStyles } from '../styles/ProductAltImages.style';
-import { Anchor } from '../../../../../../common/atoms';
+import { Anchor, DamImage } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
 class ProductAltImages extends React.PureComponent {
@@ -30,7 +30,8 @@ class ProductAltImages extends React.PureComponent {
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
-    dataLocator: PropTypes.string,
+    isSoldOut: PropTypes.bool,
+    soldOutLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -38,7 +39,8 @@ class ProductAltImages extends React.PureComponent {
     analyticsData: {},
     videoUrl: PropTypes.string,
     isShowVideoOnPlp: PropTypes.bool,
-    dataLocator: '',
+    isSoldOut: false,
+    soldOutLabel: '',
   };
 
   nodes = {};
@@ -225,6 +227,11 @@ class ProductAltImages extends React.PureComponent {
     );
   }
 
+  renderSoldOutSection = () => {
+    const { isSoldOut, soldOutLabel } = this.props;
+    return isSoldOut ? <div className="sold-out-section">{soldOutLabel}</div> : null;
+  };
+
   renderImageContent() {
     const {
       imageUrls,
@@ -233,11 +240,14 @@ class ProductAltImages extends React.PureComponent {
       loadedProductCount,
       analyticsData,
       className,
-      dataLocator,
     } = this.props;
     const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
     const pdpToPath = getProductListToPath(pdpUrl);
+    const imgData = {
+      alt: productName,
+      url: imageUrls[0],
+    };
     return imageUrls.length < 2 ? (
       <figure
         className="product-image-container"
@@ -253,10 +263,14 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
-          dataLocator={dataLocator}
         >
-          <img src={imageUrls[0]} alt={productName} itemProp="contentUrl" />
+          <DamImage
+            dataLocator={getLocator('global_productimg_imagelink')}
+            imgData={imgData}
+            isProductImage
+          />
         </Anchor>
+        {this.renderSoldOutSection()}
       </figure>
     ) : (
       <figure
@@ -284,7 +298,6 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_sku={unbxdData && unbxdData.pId}
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
-          dataLocator={dataLocator}
         >
           <img
             src={imageUrls[currentIndex]}
@@ -301,6 +314,7 @@ class ProductAltImages extends React.PureComponent {
         >
           next
         </button>
+        {this.renderSoldOutSection()}
       </figure>
     );
   }

@@ -32,13 +32,16 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     marginBottom={17}
     marginTop={30}
   />
-  <Styled(Text) />
+  <Styled(Text)>
+    lbl_login_heading
+  </Styled(Text)>
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
+    text="lbl_login_subDescription_heading_1"
     textAlign="center"
     textDecoration={null}
   />
@@ -48,6 +51,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     fontSize="fs12"
     margin={null}
     numberOfLines={null}
+    text="lbl_login_Description_heading_2"
     textAlign="center"
     textDecoration={null}
   />
@@ -61,8 +65,9 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       fontSizeVariation="medium"
       id="forgotPasswordForm"
       locator=""
+      margins={null}
       onPress={[Function]}
-      text=""
+      text="lbl_login_Description_clickhere"
       underline={true}
       visible={false}
     />
@@ -73,6 +78,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       fontSize="fs12"
       margin={null}
       numberOfLines={null}
+      text="lbl_login_Description_heading_3"
       textDecoration={null}
     />
   </Styled(View)>

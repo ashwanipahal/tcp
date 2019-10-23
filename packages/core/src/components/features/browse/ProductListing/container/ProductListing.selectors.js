@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect';
 import { generateGroups } from './ProductListing.util';
-import { getAPIConfig } from '../../../../../utils';
+import { getAPIConfig, flattenArray } from '../../../../../utils';
 import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
+import { FACETS_FIELD_KEY } from '../../../../../services/abstractors/productListing/productListing.utils';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
 
@@ -68,6 +69,14 @@ export const getProductsSelect = createSelector(
   getProductListingState,
   products =>
     products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+);
+
+export const getAllProductsSelect = createSelector(
+  getProductListingState,
+  products => {
+    const allProducts = products && products.get('loadedProductsPages');
+    return allProducts && flattenArray(allProducts);
+  }
 );
 
 export const getLabels = state => {
@@ -143,8 +152,20 @@ export const getIsLoadingMore = state => {
   return state.ProductListing.get('isLoadingMore');
 };
 
+export const getScrollToTopValue = state => {
+  return state.ProductListing.get('isScrollToTop');
+};
+
+export const getProductsInCurrCategory = state => {
+  return state.ProductListing.get('productsInCurrCategory');
+};
+
 export const getSpotlightReviewsUrl = () => {
   return getAPIConfig().BAZAARVOICE_SPOTLIGHT;
+};
+
+export const getBazaarvoiceApiUrl = () => {
+  return getAPIConfig().BAZAARVOICE_REVIEWS;
 };
 
 export const getCategoryId = state => {
@@ -200,4 +221,24 @@ export const updateAppliedFiltersInState = state => {
   }
 
   return filters;
+};
+
+export const getIsFilterBy = state => {
+  const filterMaps = state.ProductListing.get('filtersMaps');
+  const filterKeys =
+    filterMaps && filterMaps.unbxdDisplayName && Object.keys(filterMaps.unbxdDisplayName);
+  return (
+    filterKeys &&
+    filterKeys
+      .filter(filter => {
+        return filter !== FACETS_FIELD_KEY.aux_color_unbxd;
+      })
+      .some(facets => {
+        return filterMaps[facets].length > 0;
+      })
+  );
+};
+
+export const getIsDataLoading = state => {
+  return state.ProductListing.get('isDataLoading');
 };

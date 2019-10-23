@@ -13,6 +13,9 @@ import SelectBox from './Select';
 import LabeledRadioButton from './LabeledRadioButton';
 import TextItems from './TextItems';
 import InputCheckBox from './InputCheckbox';
+import StoreStaticMap from './StoreStaticMap';
+import Skeleton from './Skeleton';
+import BackToTop from './BackToTop';
 
 export {
   Anchor,
@@ -30,4 +33,7 @@ export {
   SelectBox,
   LabeledRadioButton,
   TextItems,
+  StoreStaticMap,
+  Skeleton,
+  BackToTop,
 };

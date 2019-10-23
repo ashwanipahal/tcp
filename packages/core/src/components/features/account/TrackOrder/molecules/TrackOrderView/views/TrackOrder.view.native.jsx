@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Notification from '../../../../../../common/molecules/Notification';
@@ -19,7 +20,7 @@ import {
 const getGenericErrorMessage = labels => (
   <GenericErrorView>
     <BodyCopy
-      text={labels.trackOrder.lbl_trackOrder_genericErrorTryAgain}
+      text={getLabelValue(labels, 'lbl_trackOrder_genericErrorTryAgain', 'trackOrder')}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />
@@ -28,13 +29,13 @@ const getGenericErrorMessage = labels => (
         data-locator="contact_us_form_help"
         underline
         anchorVariation="primary"
-        url={labels.trackOrder.lbl_trackOrder_genericErrorLinkHref}
-        text={labels.trackOrder.lbl_trackOrder_genericErrorLinkText}
+        url={getLabelValue(labels, 'lbl_trackOrder_genericErrorLinkHref', 'trackOrder')}
+        text={getLabelValue(labels, 'lbl_trackOrder_genericErrorLinkText', 'trackOrder')}
       />
     </AnchorView>
 
     <BodyCopy
-      text={labels.trackOrder.lbl_trackOrder_genericErrorAssistance}
+      text={getLabelValue(labels, 'lbl_trackOrder_genericErrorAssistance', 'trackOrder')}
       mobilefontFamily={['secondary']}
       fontSize="fs14"
     />
@@ -48,11 +49,11 @@ export const TrackOrderView = ({
   showNotification,
   onChangeForm,
   handleToggle,
-  setModalMountState,
+  onRequestClose,
 }) => {
   return (
     <TrackOrderViewNative>
-      <TrackOrderTopSection labels={labels} />
+      <TrackOrderTopSection labels={labels} onRequestClose={onRequestClose} />
       {errorMessage ? (
         <Notification
           status={showNotification}
@@ -63,11 +64,7 @@ export const TrackOrderView = ({
         </Notification>
       ) : null}
       <TrackOrderForm labels={labels} handleSubmit={onSubmit} onChangeForm={onChangeForm} />
-      <TrackOrderBottomSection
-        labels={labels}
-        toggleModal={handleToggle}
-        setModalMountState={setModalMountState}
-      />
+      <TrackOrderBottomSection labels={labels} toggleModal={handleToggle} />
     </TrackOrderViewNative>
   );
 };
@@ -79,9 +76,9 @@ TrackOrderView.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleToggle: PropTypes.func.isRequired,
-  setModalMountState: PropTypes.func.isRequired,
   showNotification: PropTypes.string.isRequired,
   onChangeForm: PropTypes.func.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 export default TrackOrderView;

@@ -15,6 +15,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
 >
   <span
     className="dropdown-title"
+    data-locator="drop-down-heading"
   >
     Select from address book:
   </span>
@@ -22,6 +23,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
     className="customSelectTitle"
     color="text.primary"
     component="div"
+    data-locator="Please select list item"
     fontFamily="primary"
     fontSize={12}
     fontWeight="regular"
@@ -29,6 +31,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex="0"
     textAlign="left"
   >
     Please select list item
@@ -60,6 +63,7 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     lineHeight="normal"
     link={null}
     onClick={[Function]}
+    tabIndex="0"
     textAlign="left"
   />
 </Styled(BodyCopy)>

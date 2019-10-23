@@ -9,200 +9,217 @@ describe('QuickViewModal component', () => {
       quickViewLabels: {},
       closeQuickViewModal: jest.fn(),
       isModalOpen: false,
-      productInfo: {
-        imagesByColor: {
-          SMOKEB10: {
-            basicImageUrl:
-              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg',
-            extraImages: [
-              {
-                isOnModalImage: false,
-                iconSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg',
-                listingSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg',
-                regularSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg',
-                bigSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg',
-                superSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg',
-              },
-              {
-                isOnModalImage: false,
-                iconSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg',
-                listingSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg',
-                regularSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg',
-                bigSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg',
-                superSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg',
-              },
-            ],
-          },
-          TIDAL: {
-            basicImageUrl:
-              'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg',
-            extraImages: [
-              {
-                isOnModalImage: false,
-                iconSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg',
-                listingSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg',
-                regularSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg',
-                bigSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg',
-                superSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg',
-              },
-              {
-                isOnModalImage: false,
-                iconSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg',
-                listingSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg',
-                regularSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg',
-                bigSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg',
-                superSizeImageUrl:
-                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg',
-              },
-            ],
-          },
-        },
-        colorFitsSizesMap: [
-          {
-            color: {
-              name: 'TIDAL',
-              imagePath:
-                'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg',
-              family: 'BLUE',
+      addToBagMultipleItemError: {},
+      productInfo: [
+        {
+          breadCrumbs: [
+            {
+              displayName: 'Toddler Girl',
+              urlPathSuffix: 'c?cid=toddler-girl-clothes',
+              categoryId: '47502',
             },
-            pdpUrl: '/p/2100606_IV',
-            colorProductId: '1118007',
-            colorDisplayId: '2100606_IV',
-            categoryEntity: 'Boy:School Uniforms',
-            imageName: '2100606_IV',
-            favoritedCount: 1529,
-            maxAvailable: 10376,
-            maxAvailableBoss: 0,
-            hasFits: false,
-            miscInfo: {
-              isBopisEligible: false,
-              isBossEligible: false,
-              badge1: {
-                matchBadge: false,
-                defaultBadge: 'ONLINE EXCLUSIVE',
-              },
-              badge2: '25% OFF',
-              keepAlive: false,
+            {
+              displayName: 'Denim',
+              urlPathSuffix: 'c?cid=toddler-girl-jeans',
+              categoryId: '489054',
             },
-            fits: [
-              {
-                fitNameVal: '',
-                isDefault: true,
-                maxAvailable: 1.7976931348623157e308,
-                sizes: [
+          ],
+          rawBreadCrumb: '47502>489054>489096',
+          product: {
+            ratingsProductId: '2044098',
+            generalProductId: '2044098_757',
+            categoryId: '47502>489054',
+            name: 'Toddler Girls Basic Skinny Jeans - Black Wash',
+            pdpUrl: '/p/2044098_757',
+            shortDescription: "Here's the skinny on a super comfy pair she'll love to wear!",
+            longDescription:
+              '<li>Made of 73% cotton/26% polyester/1% spandex denim in our Black wash</li><li>Pull-on style with elasticized back waist</li><li>Snap closure with zipper fly</li><li>Five-pocket styling with a fitted thigh and knee; slim leg opening</li><li>Inner adjustable waist tabs for a custom fit</li><li>Pre-washed for an extra-gentle feel and to reduce shrinkage</li><li>Tagless label</li><li>Note: details may vary from image</li><li>Imported</li>',
+            imagesByColor: {
+              'BLACK WASH': {
+                basicImageUrl:
+                  'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg',
+                extraImages: [
                   {
-                    sizeName: 'XS (4)',
-                    skuId: '1118991',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 191,
-                    variantId: '00191755242996',
-                    variantNo: '2100606007',
-                    position: 0,
-                  },
-                  {
-                    sizeName: 'S (5/6)',
-                    skuId: '1119731',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 2238,
-                    variantId: '00191755243009',
-                    variantNo: '2100606008',
-                    position: 1,
-                  },
-                  {
-                    sizeName: 'M (7/8)',
-                    skuId: '1118373',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 3493,
-                    variantId: '00191755243016',
-                    variantNo: '2100606009',
-                    position: 2,
-                  },
-                  {
-                    sizeName: 'L (10/12)',
-                    skuId: '1118587',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 2641,
-                    variantId: '00191755243023',
-                    variantNo: '2100606010',
-                    position: 3,
-                  },
-                  {
-                    sizeName: 'XL (14)',
-                    skuId: '1118691',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 991,
-                    variantId: '00191755243030',
-                    variantNo: '2100606011',
-                    position: 4,
-                  },
-                  {
-                    sizeName: 'XXL (16)',
-                    skuId: '1118794',
-                    listPrice: 24.95,
-                    offerPrice: 18.71,
-                    maxAvailable: 822,
-                    variantId: '00191755243047',
-                    variantNo: '2100606012',
-                    position: 5,
+                    isOnModalImage: false,
+                    iconSizeImageUrl:
+                      'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044098_757.jpg',
+                    listingSizeImageUrl:
+                      'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2044098_757.jpg',
+                    regularSizeImageUrl:
+                      'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg',
+                    bigSizeImageUrl:
+                      'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg',
+                    superSizeImageUrl:
+                      'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg',
                   },
                 ],
               },
+            },
+            colorFitsSizesMap: [
+              {
+                color: {
+                  name: 'BLACK WASH',
+                  imagePath:
+                    'https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg',
+                  family: 'DENIM',
+                },
+                pdpUrl: '/p/2044098_757',
+                colorProductId: '585900',
+                colorDisplayId: '2044098_757',
+                categoryEntity: 'Toddler Girl:Denim',
+                imageName: '2044098_757',
+                favoritedCount: 32,
+                maxAvailable: 1603,
+                maxAvailableBoss: 3366,
+                hasFits: false,
+                miscInfo: {
+                  isBopisEligible: false,
+                  isBossEligible: false,
+                  badge1: {
+                    matchBadge: false,
+                    defaultBadge: '',
+                  },
+                  keepAlive: false,
+                },
+                fits: [
+                  {
+                    fitName: '',
+                    isDefault: true,
+                    maxAvailable: 1.7976931348623157e308,
+                    sizes: [
+                      {
+                        sizeName: '6-9 M',
+                        skuId: '747962',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 5,
+                        maxAvailableBoss: 519,
+                        variantId: '00889705031386',
+                        variantNo: '2044098001',
+                        position: 0,
+                      },
+                      {
+                        sizeName: '9-12 M',
+                        skuId: '749797',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 2,
+                        maxAvailableBoss: 391,
+                        variantId: '00889705031393',
+                        variantNo: '2044098008',
+                        position: 1,
+                      },
+                      {
+                        sizeName: '12-18 M',
+                        skuId: '751458',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 14,
+                        maxAvailableBoss: 351,
+                        variantId: '00889705031409',
+                        variantNo: '2044098007',
+                        position: 2,
+                      },
+                      {
+                        sizeName: '18-24 M',
+                        skuId: '756362',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 1436,
+                        maxAvailableBoss: 1436,
+                        variantId: '00889705031416',
+                        variantNo: '2044098002',
+                        position: 3,
+                      },
+                      {
+                        sizeName: '2T',
+                        skuId: '758616',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 27,
+                        maxAvailableBoss: 168,
+                        variantId: '00889705027723',
+                        variantNo: '2044098005',
+                        position: 4,
+                      },
+                      {
+                        sizeName: '3T',
+                        skuId: '761057',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 40,
+                        maxAvailableBoss: 139,
+                        variantId: '00889705027730',
+                        variantNo: '2044098003',
+                        position: 5,
+                      },
+                      {
+                        sizeName: '4T',
+                        skuId: '763482',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 50,
+                        maxAvailableBoss: 263,
+                        variantId: '00889705027747',
+                        variantNo: '2044098004',
+                        position: 6,
+                      },
+                      {
+                        sizeName: '5T',
+                        skuId: '765861',
+                        listPrice: 16.5,
+                        offerPrice: 16.5,
+                        maxAvailable: 29,
+                        maxAvailableBoss: 99,
+                        variantId: '00889705027754',
+                        variantNo: '2044098006',
+                        position: 7,
+                      },
+                    ],
+                  },
+                ],
+                listPrice: 16.5,
+                offerPrice: 16.5,
+              },
             ],
-            listPrice: 24.95,
-            offerPrice: 18.71,
+            isGiftCard: false,
+            colorFitSizeDisplayNames: null,
+            listPrice: 16.5,
+            offerPrice: 16.5,
+            highListPrice: 0,
+            highOfferPrice: 0,
+            lowListPrice: 16.5,
+            lowOfferPrice: 0,
+            ratings: 0,
+            reviewsCount: 0,
+            unbxdProdId: '2044098_757',
+            alternateSizes: {
+              'Big Kid Sizes': 'Boys-Basic-Loose-Jeans---Rinse-Wash-2044069-RQ',
+              'Adult Womens Sizes': 'Girls-Denim-Jeggings-2082137-BM',
+            },
+            productId: '2044098_757',
+            promotionalMessage:
+              "<span class='product-loyalty\u001apromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Denim!",
+            promotionalPLCCMessage:
+              "<span class='product-loyalty\u001apromotionText user-tier-theme'> EARN TRIPLE POINTS </span> on all Denim!",
+            long_product_title: '',
+            bundleProducts: [],
           },
-        ],
-        isGiftCard: false,
-        colorFitSizeDisplayNames: null,
-        listPrice: 24.95,
-        offerPrice: 18.71,
-        highListPrice: 0,
-        highOfferPrice: 0,
-        lowListPrice: 24.95,
-        lowOfferPrice: 18.71,
-        ratings: 0,
-        reviewsCount: 0,
-        unbxdProdId: '2100606_IV',
-        alternateSizes: {},
-        productId: '2100606_IV',
-        promotionalMessage: '',
-        promotionalPLCCMessage: '',
-        long_product_title: 'Boys Uniform Long Sleeve V Neck Sweater',
-        bundleProducts: [],
-      },
+        },
+      ],
       plpLabels: {},
       currency: '',
       priceCurrency: '',
-      currencyExchange: '',
+      currencyExchange: 1,
       isCanada: false,
       isHasPlcc: false,
       isInternationalShipping: false,
     };
+
     const component = shallow(<QuickViewModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
+    const newProp = { ...props, isMultiItemQVModal: true };
+    const component1 = shallow(<QuickViewModalVanilla {...newProp} />);
+    expect(component1).toMatchSnapshot();
   });
 });

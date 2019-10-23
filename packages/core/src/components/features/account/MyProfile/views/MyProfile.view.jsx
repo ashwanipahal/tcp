@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import ProfileInformation from '../organism/ProfileInformation';
 
 const MyProfile = ({ labels, labelsObj, ...otherProps }) => {
   return (
     <div>
-      <FormPageHeadingComponent heading={labels.lbl_profile_heading} className="margin-none" />
+      <FormPageHeadingComponent
+        heading={getLabelValue(labels, 'lbl_profile_heading')}
+        className="margin-none myAccountRightView"
+      />
       <ProfileInformation labels={labels} {...otherProps} />
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils';
 import MyProfileTile from '@tcp/core/src/components/common/molecules/MyProfileTile';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
@@ -31,7 +32,6 @@ export const ProfileInfoActions = ({
   defaultStore,
   userBirthday,
   userSurvey,
-  percentageIncrement,
   handleComponentChange,
   mountSurveyModal,
   toggleModalState,
@@ -41,19 +41,28 @@ export const ProfileInfoActions = ({
       <TopRowWrapper>
         <ProfileTextWrapper>
           <BodyCopyWithSpacing
-            text={labels.lbl_profile_Enhance_Experience}
+            text={getLabelValue(labels, 'lbl_profile_Enhance_Experience')}
             fontSize="fs16"
             fontWeight="semibold"
             spacingStyles="margin-bottom-MED"
           />
           {profileCompletion === '100' ? (
             <>
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionExclamation} />
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileCompletionMessage} />
-              <BodyCopy fontSize="fs16" text={labels.lbl_profile_getMorePoints} />
+              <BodyCopy
+                fontSize="fs16"
+                text={getLabelValue(labels, 'lbl_profile_profileCompletionExclamation')}
+              />
+              <BodyCopy
+                fontSize="fs16"
+                text={getLabelValue(labels, 'lbl_profile_profileCompletionMessage')}
+              />
+              <BodyCopy fontSize="fs16" text={getLabelValue(labels, 'lbl_profile_getMorePoints')} />
             </>
           ) : (
-            <BodyCopy fontSize="fs16" text={labels.lbl_profile_profileInCompleteMessage} />
+            <BodyCopy
+              fontSize="fs16"
+              text={getLabelValue(labels, 'lbl_profile_profileInCompleteMessage')}
+            />
           )}
         </ProfileTextWrapper>
         {!!profileCompletion && (
@@ -66,33 +75,33 @@ export const ProfileInfoActions = ({
         <ProfileInfoActionTile
           activityId="mailingAddress"
           activityIcon={mailingAddressIcon}
-          activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
+          activityTitle={getLabelValue(labels, 'lbl_profile_mailingAddressActivityTitle')}
           activityCompletionState={getMailingAddressState(mailingAddress, labels)}
-          activityDescription={labels.lbl_profile_mailingAddressDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
           handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
         />
         <ProfileInfoActionTile
           activityId="favStore"
           activityIcon={favStoreIcon}
-          activityTitle={`+${percentageIncrement.percentageFavStore}%`}
+          activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
           activityCompletionState={getFavStoreState(defaultStore, labels)}
-          activityDescription={labels.lbl_profile_favStoreDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
           handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
         />
         <ProfileInfoActionTile
           activityId="userBirthday"
           activityIcon={birthdayIcon}
-          activityTitle={`+${percentageIncrement.percentageUserBirthday}%`}
+          activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
           activityCompletionState={getUserBirthdayState(userBirthday, labels)}
-          activityDescription={labels.lbl_profile_userBirthdayDescription}
-          handleComponentChange={() => handleComponentChange('accountOverviewMobile')}
+          activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
+          handleComponentChange={() => toggleModalState('mountPersonalInformationModal')}
         />
         <ProfileInfoActionTile
           activityId="aboutYourself"
           activityIcon={surveyIcon}
-          activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
+          activityTitle={getLabelValue(labels, 'lbl_profile_surveyActivityTitle')}
           activityCompletionState={getAboutYourselfState(userSurvey, labels)}
-          activityDescription={labels.lbl_profile_aboutYourselfDescription}
+          activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
           handleComponentChange={() => toggleModalState('mountSurveyModal')}
         />
       </ProfileTileWrapper>
@@ -113,7 +122,6 @@ ProfileInfoActions.propTypes = {
   defaultStore: PropTypes.string,
   userBirthday: PropTypes.string,
   userSurvey: PropTypes.shape([]),
-  percentageIncrement: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
   mountSurveyModal: PropTypes.bool,
   toggleModalState: PropTypes.func,
@@ -129,12 +137,6 @@ ProfileInfoActions.defaultProps = {
   defaultStore: '',
   userBirthday: '',
   userSurvey: [],
-  percentageIncrement: {
-    percentageMailingAddress: '20',
-    percentageFavStore: '20',
-    percentageUserBirthday: '20',
-    percentageUserSurvey: '20',
-  },
   mountSurveyModal: false,
   toggleModalState: () => {},
 };

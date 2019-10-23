@@ -44,6 +44,8 @@ const creditCardProps = {
 class AddNewCCForm extends React.PureComponent {
   static propTypes = {
     cvvInfo: PropTypes.func.isRequired,
+    editMode: PropTypes.bool,
+    onCardFocus: PropTypes.func,
     cvvError: PropTypes.shape({}),
     cardType: PropTypes.string,
     labels: PropTypes.shape({}),
@@ -58,6 +60,7 @@ class AddNewCCForm extends React.PureComponent {
 
   static defaultProps = {
     cvvError: null,
+    editMode: false,
     cardType: null,
     labels: {},
     isGuest: null,
@@ -65,6 +68,7 @@ class AddNewCCForm extends React.PureComponent {
     isSaveToAccountChecked: true,
     isExpirationRequired: true,
     creditFieldLabels: {},
+    onCardFocus: () => {},
   };
 
   getCreditLabelValues = () => {
@@ -97,6 +101,7 @@ class AddNewCCForm extends React.PureComponent {
               name="saveToAccount"
               className="elem-mb-LRG elem-mt-LRG"
               onChange={this.onSaveToAccountChange}
+              dataLocator="saveCardChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.saveToAccount}
@@ -112,6 +117,7 @@ class AddNewCCForm extends React.PureComponent {
               name="defaultPayment"
               className="elem-mb-LRG"
               disabled={!cardList && !isSaveToAccountChecked}
+              dataLocator="defaultPaymentChkBox"
             >
               <BodyCopy fontSize="fs16" fontFamily="secondary">
                 {labels.defaultPayment}
@@ -124,7 +130,15 @@ class AddNewCCForm extends React.PureComponent {
   };
 
   render() {
-    const { cvvInfo, cardType, cvvError, isGuest, isExpirationRequired } = this.props;
+    const {
+      cvvInfo,
+      cardType,
+      cvvError,
+      editMode,
+      onCardFocus,
+      isGuest,
+      isExpirationRequired,
+    } = this.props;
     return (
       <>
         <CreditCardFields
@@ -133,10 +147,12 @@ class AddNewCCForm extends React.PureComponent {
           variation="secondary"
           cardType={cardType}
           cvvError={cvvError}
+          onCardFocus={onCardFocus}
+          showCvv={!editMode}
           creditFieldLabels={this.getCreditLabelValues()}
           isExpirationRequired={isExpirationRequired}
         />
-        {!isGuest && this.renderSaveToAccountOptions()}
+        {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>
     );
   }

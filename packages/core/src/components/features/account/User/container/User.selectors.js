@@ -9,6 +9,10 @@ export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
 };
 
+export const getUserGeoCoordinates = state => {
+  return state[USER_REDUCER_KEY].get('geoLatLong');
+};
+
 export const getFavoriteStore = state => {
   return state[USER_REDUCER_KEY].get('favoriteStore');
 };
@@ -21,14 +25,43 @@ export const getRewardsState = state => {
   return state[USER_REDUCER_KEY].get('rewards');
 };
 
+export const getIsRegisteredUserCallDone = state => {
+  return state[USER_REDUCER_KEY].get('isRegisteredUserCallDone');
+};
+
 export const getSurveyState = state => {
   return state[USER_REDUCER_KEY].get('survey');
+};
+
+export const mprUserId = createSelector(
+  getRewardsState,
+  state => state && state.get('accountNumber')
+);
+
+export const getUserId = createSelector(
+  getPersonalDataState,
+  state => state && state.get('userId')
+);
+
+export const getplccCardId = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('plccCardId');
+};
+
+export const getplccCardNumber = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('plccCardNumber');
 };
 
 export const getUserLoggedInState = createSelector(
   getPersonalDataState,
   state => state && !state.get('isGuest')
 );
+
+export const getIsGuest = state => {
+  const personalData = state[USER_REDUCER_KEY].get('personalData');
+  return personalData && personalData.get('isGuest');
+};
 
 export const isPlccUser = createSelector(
   getPersonalDataState,
@@ -219,3 +252,8 @@ export const getPercentageIncrement = () => ({
   percentageUserBirthday: 20,
   percentageFavStore: 20,
 });
+
+export const isRememberedUser = createSelector(
+  getPersonalDataState,
+  state => state && state.get('isRemembered')
+);

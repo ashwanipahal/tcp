@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -23,8 +24,9 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
       <BodyCopy
         fontFamily="secondary"
         fontSize="fs16"
-        text={labels.lbl_overview_profileInformationHeading}
+        text={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}
         color="black"
+        fontWeight="black"
       />
       <UnderlineStyle />
       <InfoContainer>
@@ -41,8 +43,8 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text={labels.lbl_overview_profileInfoEditCTA}
-              onPress={() => handleComponentChange('editPersonalInfoMobile')}
+              text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -55,7 +57,10 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}
-          text={`${labels.lbl_overview_profileInfoMember} ${rewardsAccountNumber}`}
+          text={`${getLabelValue(
+            labels,
+            'lbl_overview_profileInfoMember'
+          )} ${rewardsAccountNumber}`}
           color="gray.900"
         />
       </InfoContainer>
@@ -64,7 +69,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
           fontWeight="regular"
           fontSize="fs14"
           mobilefontFamily={['secondary']}
-          text={labels.lbl_overview_profileInfoEmailAddress}
+          text={getLabelValue(labels, 'lbl_overview_profileInfoEmailAddress')}
           color="gray.900"
         />
         <BodyCopy
@@ -83,15 +88,15 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
               fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
-              text={labels.lbl_overview_profileInfoMailingAddress}
+              text={getLabelValue(labels, 'lbl_overview_profileInfoMailingAddress')}
               color="gray.900"
             />
           </LeftCol>
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text={labels.lbl_overview_profileInfoEditCTA}
-              onPress={() => handleComponentChange('editMailingAddressMobile')}
+              text={getLabelValue(labels, 'lbl_overview_profileInfoEditCTA')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -110,15 +115,15 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
               fontFamily="secondary"
               fontSize="fs14"
               fontWeight="extrabold"
-              text={labels.lbl_overview_profileInfoPassword}
+              text={getLabelValue(labels, 'lbl_overview_profileInfoPassword')}
               color="gray.900"
             />
           </LeftCol>
           <RightCol>
             <Anchor
               anchorVariation="primary"
-              text={labels.lbl_overview_profileInfoChangeCTA}
-              onPress={() => handleComponentChange('changePasswordMobile')}
+              text={getLabelValue(labels, 'lbl_overview_profileInfoChangeCTA')}
+              onPress={() => handleComponentChange('profileInformationMobile')}
               underline
               fontSizeVariation="large"
               noLink
@@ -137,10 +142,9 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
       </InfoContainer>
       <ButtonWrapperStyle>
         <CustomButton
-          text={labels.lbl_overview_profileInfoViewCTA}
-          buttonVariation="variable-width"
+          text={getLabelValue(labels, 'lbl_overview_profileInfoViewCTA')}
           fill="BLUE"
-          onPress={() => handleComponentChange('profileInfoMobile')}
+          onPress={() => handleComponentChange('profileInformationMobile')}
         />
       </ButtonWrapperStyle>
     </ProfileInfoTileContainer>

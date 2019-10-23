@@ -26,7 +26,6 @@ const FooterTopEmailSignUpForm = reduxForm({
   initialValues: {
     [emailSignupFieldName]: '',
   },
-  asyncBlurFields: [emailSignupFieldName],
 })(FooterTopSignUpForm);
 
 const smsSignupFieldName = 'footerTopSmsSignup';
@@ -35,7 +34,6 @@ const FooterTopSmsSignUpForm = reduxForm({
   initialValues: {
     [smsSignupFieldName]: '',
   },
-  asyncBlurFields: [smsSignupFieldName],
 })(FooterTopSignUpForm);
 
 class FooterTopCandidateA extends React.PureComponent {
@@ -48,8 +46,8 @@ class FooterTopCandidateA extends React.PureComponent {
       socialMediaLinks,
       referAFriendButtonLabels,
       referAFriend,
-      emailSignUpAsyncValidate,
-      smsSignUpAsyncValidate,
+      validateSignupEmail,
+      validateSignupSmsPhoneNumber,
       submitEmailSubscription,
       submitSmsSubscription,
       emailSubscription,
@@ -74,7 +72,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text email-sign-up"
@@ -84,7 +82,7 @@ class FooterTopCandidateA extends React.PureComponent {
             </BodyCopy>
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
-              asyncValidate={emailSignUpAsyncValidate}
+              validateForm={validateSignupEmail}
               onFormSubmit={submitEmailSubscription}
               subscription={emailSubscription}
               openSuccessModal={openEmailSignUpModal}
@@ -119,7 +117,7 @@ class FooterTopCandidateA extends React.PureComponent {
             }}
           >
             <BodyCopy
-              component="div"
+              component="h2"
               fontWeight="black"
               fontSize="fs15"
               className="heading_text sms_sign_up"
@@ -133,7 +131,7 @@ class FooterTopCandidateA extends React.PureComponent {
               fieldProps={{
                 normalize: formatPhoneNumber,
               }}
-              asyncValidate={smsSignUpAsyncValidate}
+              validateForm={validateSignupSmsPhoneNumber}
               onFormSubmit={submitSmsSubscription}
               subscription={smsSubscription}
               openSuccessModal={openSmsSignUpModal}
@@ -178,7 +176,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   }}
                 >
                   <BodyCopy
-                    component="div"
+                    component="h2"
                     fontWeight="black"
                     fontSize="fs15"
                     className="heading_text refer-a-friend"
@@ -287,8 +285,8 @@ FooterTopCandidateA.propTypes = {
   }),
   showError: PropTypes.bool,
   isEmailValid: PropTypes.bool,
-  emailSignUpAsyncValidate: PropTypes.func,
-  smsSignUpAsyncValidate: PropTypes.func,
+  validateSignupEmail: PropTypes.func,
+  validateSignupSmsPhoneNumber: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
   submitSmsSubscription: PropTypes.func,
   openEmailSignUpModal: PropTypes.func,
@@ -328,8 +326,8 @@ FooterTopCandidateA.defaultProps = {
   },
   showError: false,
   isEmailValid: false,
-  emailSignUpAsyncValidate: () => Promise.resolve(),
-  smsSignUpAsyncValidate: () => {},
+  validateSignupEmail: () => Promise.resolve(),
+  validateSignupSmsPhoneNumber: () => Promise.resolve(),
   submitEmailSubscription: () => {},
   submitSmsSubscription: () => {},
   openEmailSignUpModal: () => {},

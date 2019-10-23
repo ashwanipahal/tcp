@@ -11,7 +11,9 @@ exports[`CreditCardList Component should render correctly 1`] = `
     dataLocator="payment-creditAndDebitCardsLabel"
     textAlign="left"
     variant="h6"
-  />
+  >
+    lbl_payment_ccHeading
+  </Styled(Heading)>
   <Styled(EmptyCard)
     alt="card icon"
     icon="credit-card"
@@ -42,7 +44,10 @@ exports[`CreditCardList Component should render correctly 1`] = `
         className="cardList__ccAddCta"
         dataLocator="payment-addcreditcard"
         fill="BLUE"
-      />
+        onClick={null}
+      >
+        lbl_payment_ccEmptyAddBtn
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
 </div>
@@ -59,7 +64,9 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     dataLocator="payment-creditAndDebitCardsLabel"
     textAlign="left"
     variant="h6"
-  />
+  >
+    lbl_payment_ccHeading
+  </Styled(Heading)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -78,7 +85,10 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         className="cardList__ccAddCta"
         dataLocator="payment-addcreditcard"
         fill="BLUE"
-      />
+        onClick={null}
+      >
+        lbl_payment_addBtn
+      </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
   <CardView
@@ -109,6 +119,8 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
         },
       ]
     }
+    deleteModalMountedState={false}
+    editCreditCard={null}
     labels={
       Object {
         "common": Object {},

@@ -35,10 +35,11 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="checkout-button"
+    className="checkout-button "
+    id="checkout-button-section"
   >
     <div
-      className="paypal-venmo"
+      className="paypal-venmo "
     >
       <div
         className="paypal-wrapper-atb"
@@ -67,7 +68,15 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       />
     </Styled(Button)>
     <Measure
-      name="render_checkout_cta"
+      name="call_to_action_visible"
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-MED"
+  >
+    <Styled(ErrorMessage)
+      className="checkout-page-error"
+      error="something went wrong"
     />
   </Styled(Row)>
 </div>

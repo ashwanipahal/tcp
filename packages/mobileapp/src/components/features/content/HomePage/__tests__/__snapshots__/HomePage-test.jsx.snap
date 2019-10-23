@@ -18,7 +18,9 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleK": [Function],
         "moduleL": [Function],
         "moduleN": [Function],
+        "moduleQ": [Function],
         "moduleR": [Function],
+        "moduleS": [Function],
       }
     }
     navigation={
@@ -34,32 +36,14 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Styled(CustomButton)
-    active={false}
-    buttonVariation="variable-width"
-    color=""
-    customStyle={Object {}}
-    customTextStyle={null}
-    disableButton={false}
-    fill=""
-    fullWidth={true}
-    iconColor="gray.800"
-    iconName="chevron-down"
-    iconSize="fs12"
-    locator=""
-    navigation={Object {}}
-    onPress={[Function]}
-    selected={false}
-    selectedIcon="chevron-up"
-    showIcon={false}
-    style={
+  <Connect(Recommendations)
+    navigation={
       Object {
-        "margin": 30,
+        "getParam": [Function],
       }
     }
-    text="PLP Page"
-    theme={Object {}}
-    url=""
+    showButton={true}
+    variation="moduleO,moduleP"
   />
 </ScrollViewMock>
 `;

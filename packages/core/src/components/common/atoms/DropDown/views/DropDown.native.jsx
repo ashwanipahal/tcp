@@ -37,8 +37,11 @@ class DropDown extends React.PureComponent<Props> {
     onValueChange: PropTypes.func,
     itemStyle: PropTypes.shape({}),
     dropDownStyle: PropTypes.shape({}),
+    arrowImageStyle: PropTypes.shape({}),
     variation: PropTypes.string,
     bounces: PropTypes.bool,
+    selectedItemFontWeight: PropTypes.string,
+    dropDownItemFontWeight: PropTypes.string,
   };
 
   static defaultProps = {
@@ -47,8 +50,11 @@ class DropDown extends React.PureComponent<Props> {
     onValueChange: null,
     itemStyle: null,
     dropDownStyle: null,
+    arrowImageStyle: null,
     variation: 'primary',
     bounces: true,
+    selectedItemFontWeight: 'semibold',
+    dropDownItemFontWeight: 'semibold',
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -143,6 +149,7 @@ class DropDown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
+    const { customDropDownHeight } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -152,6 +159,9 @@ class DropDown extends React.PureComponent<Props> {
         listHeight = dH - 100;
       } else {
         listHeight = calculateHeight - 100;
+      }
+      if (customDropDownHeight) {
+        listHeight = customDropDownHeight;
       }
     } else if (calculateHeight > windowHeight) {
       listMargin = 100;
@@ -166,12 +176,13 @@ class DropDown extends React.PureComponent<Props> {
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
-    const { variation, itemStyle } = this.props;
+    const { variation, itemStyle, dropDownItemFontWeight } = this.props;
     const { displayName } = item;
     let { label } = item;
     if (!label) {
       label = displayName;
     }
+
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         {typeof label !== 'function' ? (
@@ -180,7 +191,7 @@ class DropDown extends React.PureComponent<Props> {
             fontSize="fs13"
             textAlign={variation === 'primary' ? 'center' : ''}
             color={itemStyle.color}
-            fontWeight="semibold"
+            fontWeight={dropDownItemFontWeight}
             text={label}
           />
         ) : (
@@ -229,7 +240,15 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle, heading, bounces, disabled } = this.props;
+    const {
+      data,
+      dropDownStyle,
+      heading,
+      bounces,
+      disabled,
+      arrowImageStyle,
+      selectedItemFontWeight,
+    } = this.props;
     const { dropDownIsOpen, selectedLabelState, top, flatListTop, flatListHeight } = this.state;
     return (
       <View style={dropDownStyle}>
@@ -249,7 +268,7 @@ class DropDown extends React.PureComponent<Props> {
                 fontSize="fs13"
                 textAlign="center"
                 color="gray.800"
-                fontWeight="semibold"
+                fontWeight={selectedItemFontWeight}
                 text={selectedLabelState}
               />
             </HeaderContainer>
@@ -258,7 +277,7 @@ class DropDown extends React.PureComponent<Props> {
               <SelectedLabelView>{selectedLabelState(true)}</SelectedLabelView>
             </HeaderItemContainer>
           )}
-          <Image source={dropDownIsOpen ? upIcon : downIcon} />
+          <Image source={dropDownIsOpen ? upIcon : downIcon} style={arrowImageStyle} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity

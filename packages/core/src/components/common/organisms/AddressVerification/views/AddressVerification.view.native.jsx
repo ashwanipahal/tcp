@@ -88,11 +88,15 @@ export default class AddressVerification extends React.PureComponent {
   };
 
   onClose = () => {
-    const { toggleAddressModal, resetVerifyAddressAction } = this.props;
+    const { toggleAddressModal, resetVerifyAddressAction, plccOnClose } = this.props;
     if (toggleAddressModal) {
       toggleAddressModal();
     } else {
       resetVerifyAddressAction();
+    }
+
+    if (plccOnClose) {
+      plccOnClose();
     }
   };
 
@@ -158,7 +162,7 @@ export default class AddressVerification extends React.PureComponent {
     const { selectAddress } = this.state;
     return (
       <EnteredSectionWrapper>
-        <EnteredWrapper>
+        <EnteredWrapper showInput={this.showInput}>
           <BodyCopy
             fontSize="fs14"
             color="black"
@@ -169,7 +173,7 @@ export default class AddressVerification extends React.PureComponent {
           />
         </EnteredWrapper>
 
-        <AddressOptionWrapper>
+        <AddressOptionWrapper showInput={this.showInput}>
           <AddressOption
             name="selectAddress"
             address={formatAddress(userAddress)}
@@ -194,7 +198,7 @@ export default class AddressVerification extends React.PureComponent {
       const { selectAddress } = this.state;
       return (
         <SuggestSectionWrapper>
-          <SuggestWrapper>
+          <SuggestWrapper showInput={this.showInput}>
             <BodyCopy
               fontSize="fs14"
               color="black"
@@ -205,7 +209,7 @@ export default class AddressVerification extends React.PureComponent {
             />
           </SuggestWrapper>
 
-          <AddressOptionWrapper>
+          <AddressOptionWrapper showInput={this.showInput}>
             <AddressOption
               name="selectAddress"
               address={formatAddress(suggestedAddress)}
@@ -269,7 +273,7 @@ export default class AddressVerification extends React.PureComponent {
               fontSize="fs22"
               textAlign="center"
               color="gray.900"
-              fontWeight="extrabold"
+              fontWeight="semibold"
               text={verifyAddressLabels.verifyHeader}
             />
             {this.getMessage(verificationResult, suggestedAddress)}
@@ -281,7 +285,6 @@ export default class AddressVerification extends React.PureComponent {
                   color="white"
                   fill="BLUE"
                   text={verifyAddressLabels.continueCta}
-                  buttonVariation="variable-width"
                   onPress={this.onConfirm}
                 />
               </ButtonWrapper>
@@ -290,7 +293,6 @@ export default class AddressVerification extends React.PureComponent {
                   color={colorPallete.red[300]}
                   fill="WHITE"
                   text={verifyAddressLabels.editAddress}
-                  buttonVariation="variable-width"
                   onPress={this.onClose}
                 />
               </ButtonWrapper>
@@ -322,6 +324,7 @@ AddressVerification.propTypes = {
   setModalHeading: PropTypes.func,
   verifyModalRendered: PropTypes.func,
   isValidAddress: PropTypes.bool,
+  plccOnClose: PropTypes.func,
 };
 
 AddressVerification.defaultProps = {
@@ -342,6 +345,7 @@ AddressVerification.defaultProps = {
   setModalHeading: () => {},
   verifyModalRendered: () => {},
   isValidAddress: false,
+  plccOnClose: () => {},
 };
 
 export { AddressVerification as AddressVerificationVanilla };

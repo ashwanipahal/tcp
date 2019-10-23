@@ -11,7 +11,7 @@ import ProfileProgress from '../../../molecules/ProfileProgress';
 import internalEndpoints from '../../../../common/internalEndpoints';
 
 import styles from '../styles/ProfileInfoActions.style';
-import { getIconPath } from '../../../../../../../utils';
+import { getIconPath, getLabelValue } from '../../../../../../../utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
   getMailingAddressState,
@@ -28,7 +28,6 @@ export const ProfileInfoActions = ({
   defaultStore,
   userBirthday,
   userSurvey,
-  percentageIncrement,
   mountSurveyModal,
   toggleModalState,
 }) => {
@@ -43,27 +42,27 @@ export const ProfileInfoActions = ({
             fontWeight="extrabold"
             data-locator="enhanceExpHdr"
           >
-            {labels.lbl_profile_Enhance_Experience}
+            {getLabelValue(labels, 'lbl_profile_Enhance_Experience')}
           </BodyCopy>
           {profileCompletion === '100' ? (
             <>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {labels.lbl_profile_profileCompletionExclamation}
+                {getLabelValue(labels, 'lbl_profile_profileCompletionExclamation')}
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="infoAddedTxt">
-                {labels.lbl_profile_profileCompletionMessage}
+                {getLabelValue(labels, 'lbl_profile_profileCompletionMessage')}
               </BodyCopy>
               <BodyCopy fontSize="fs16" fontFamily="secondary">
-                {labels.lbl_profile_getMorePoints}
+                {getLabelValue(labels, 'lbl_profile_getMorePoints')}
                 <Anchor to="/account" underline fontSizeVariation="xlarge" dataLocator="hereLink">
-                  {labels.lbl_profile_getMorePointsLink}
+                  {getLabelValue(labels, 'lbl_profile_getMorePointsLink')}
                 </Anchor>
                 {'?'}
               </BodyCopy>
             </>
           ) : (
             <BodyCopy fontSize="fs16" fontFamily="secondary" data-locator="instructionTxt">
-              {labels.lbl_profile_profileInCompleteMessage}
+              {getLabelValue(labels, 'lbl_profile_profileInCompleteMessage')}
             </BodyCopy>
           )}
         </div>
@@ -88,9 +87,9 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="mailingAddress"
             activityIcon={getIconPath('mailing-address-icon')}
-            activityTitle={`+${percentageIncrement.percentageMailingAddress}%`}
+            activityTitle={getLabelValue(labels, 'lbl_profile_mailingAddressActivityTitle')}
             activityCompletionState={getMailingAddressState(mailingAddress, labels)}
-            activityDescription={labels.lbl_profile_mailingAddressDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_mailingAddressDescription')}
             redirectTo={internalEndpoints.mailingAddressPage.link}
             redirectAsPath={internalEndpoints.mailingAddressPage.path}
             dataLocatorPrefix="email"
@@ -112,9 +111,9 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="favStore"
             activityIcon={getIconPath('fav-store-icon')}
-            activityTitle={`+${percentageIncrement.percentageFavStore}%`}
+            activityTitle={getLabelValue(labels, 'lbl_profile_favStoreActivityTitle')}
             activityCompletionState={getFavStoreState(defaultStore, labels)}
-            activityDescription={labels.lbl_profile_favStoreDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_favStoreDescription')}
             redirectTo="/account"
             dataLocatorPrefix="favStore"
           />
@@ -130,9 +129,9 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="userBirthday"
             activityIcon={getIconPath('birthday-icon')}
-            activityTitle={`+${percentageIncrement.percentageUserBirthday}%`}
+            activityTitle={getLabelValue(labels, 'lbl_profile_userBirthdayActivityTitle')}
             activityCompletionState={getUserBirthdayState(userBirthday, labels)}
-            activityDescription={labels.lbl_profile_userBirthdayDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_userBirthdayDescription')}
             redirectTo="/account?id=profile&subSection=edit-personal-info"
             redirectAsPath="/account/profile"
             dataLocatorPrefix="birthday"
@@ -154,9 +153,9 @@ export const ProfileInfoActions = ({
           <ProfileInfoActionTile
             activityId="aboutYourself"
             activityIcon={getIconPath('survey-icon')}
-            activityTitle={`+${percentageIncrement.percentageUserSurvey}%`}
+            activityTitle={getLabelValue(labels, 'lbl_profile_surveyActivityTitle')}
             activityCompletionState={getAboutYourselfState(userSurvey, labels)}
-            activityDescription={labels.lbl_profile_aboutYourselfDescription}
+            activityDescription={getLabelValue(labels, 'lbl_profile_aboutYourselfDescription')}
             redirectTo=""
             redirectAsPath=""
             dataLocatorPrefix="survey"
@@ -184,7 +183,6 @@ ProfileInfoActions.propTypes = {
   defaultStore: PropTypes.string,
   userBirthday: PropTypes.string,
   userSurvey: PropTypes.shape([]),
-  percentageIncrement: PropTypes.shape({}),
   mountSurveyModal: PropTypes.bool,
   toggleModalState: PropTypes.func,
 };
@@ -197,12 +195,6 @@ ProfileInfoActions.defaultProps = {
   defaultStore: '',
   userBirthday: '',
   userSurvey: [],
-  percentageIncrement: {
-    percentageMailingAddress: '20',
-    percentageFavStore: '20',
-    percentageUserBirthday: '20',
-    percentageUserSurvey: '20',
-  },
   mountSurveyModal: false,
   toggleModalState: () => {},
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -6,18 +8,6 @@ import styles from '../styles/DeleteAddressModal.style';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
-
-// @flow
-
-type Props = {
-  data: Object,
-  className: string,
-  onDeleteAddress: Function,
-  setDeleteModalMountState: Function,
-  openState: boolean,
-  showUpdatedNotificationOnModal: boolean,
-  labels: Object,
-};
 
 /**
  * @function DeleteAddressModal The DeleteAddressModal component shows the address to delete.
@@ -27,7 +17,7 @@ type Props = {
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class DeleteAddressModal extends React.Component<Props> {
+class DeleteAddressModal extends React.Component {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
@@ -123,6 +113,7 @@ class DeleteAddressModal extends React.Component<Props> {
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
+
   render() {
     const { className, data, openState, showUpdatedNotificationOnModal, labels } = this.props;
     const { heading } = data;
@@ -142,7 +133,7 @@ class DeleteAddressModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.common.lbl_common_errorMessage}
+            message={getLabelValue(labels, 'lbl_common_errorMessage', 'common')}
           />
         )}
 
@@ -151,6 +142,16 @@ class DeleteAddressModal extends React.Component<Props> {
     );
   }
 }
+
+DeleteAddressModal.propTypes = {
+  data: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  onDeleteAddress: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+  openState: PropTypes.bool.isRequired,
+  showUpdatedNotificationOnModal: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+};
 
 export default withStyles(DeleteAddressModal, styles);
 export { DeleteAddressModal as DeleteAddressModalVanilla };

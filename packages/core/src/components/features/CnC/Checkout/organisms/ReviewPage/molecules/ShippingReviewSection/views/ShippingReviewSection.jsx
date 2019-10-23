@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
 import Row from '../../../../../../../../common/atoms/Row';
@@ -9,8 +10,27 @@ import Address from '../../../../../../../../common/molecules/Address';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import ShippingMethodDisplay from '../../ShippingMethodDisplay';
 import GiftWrappingDisplay from '../../GiftWrappingDisplay';
+import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 export class ShippingReviewSection extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    const {
+      updateShippingMethodSelection,
+      expressReviewShippingSectionId,
+      isExpressCheckout,
+    } = this.props;
+    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
+    if (
+      isExpressCheckout &&
+      prevexpressReviewShippingSectionId.shippingMethodId &&
+      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
+      expressReviewShippingSectionId.shippingMethodId !==
+        prevexpressReviewShippingSectionId.shippingMethodId
+    ) {
+      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
+    }
+  }
+
   render() {
     const {
       className,
@@ -19,11 +39,17 @@ export class ShippingReviewSection extends React.PureComponent {
       isGiftOptionsEnabled,
       giftWrappingDisplayName,
       labels,
+      onEdit,
+      isExpressCheckout,
+      shipmentMethods,
+      formName,
+      formSection,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
       lbl_review_sectionAnchor: edit,
       lbl_review_sectionShippingAddressTitle: addressTitle,
+      lbl_review_sectionShippingMethodTitle: shippingMethodTitle,
     } = labels;
     return (
       <div className={className} dataLocator="review-shipping-section">
@@ -32,7 +58,7 @@ export class ShippingReviewSection extends React.PureComponent {
             <TitlePlusEditButton
               title={title}
               editTitle={edit}
-              onEdit={this.handleEnterEditModeClick}
+              onEdit={onEdit}
               dataLocator="pickup-section"
             />
           </Col>
@@ -61,21 +87,39 @@ export class ShippingReviewSection extends React.PureComponent {
             >
               {shippingAddress.emailAddress}
             </BodyCopy>
-            <BodyCopy
-              fontSize="fs16"
-              dataLocator=""
-              fontFamily="secondary"
-              color="gray.900"
-              fontWeight="regular"
-            >
-              {shippingAddress.phoneNumber}
-            </BodyCopy>
+            {shippingAddress.phoneNumber && (
+              <BodyCopy
+                fontSize="fs16"
+                dataLocator=""
+                fontFamily="secondary"
+                color="gray.900"
+                fontWeight="regular"
+              >
+                {formatPhoneNumber(shippingAddress.phoneNumber)}
+              </BodyCopy>
+            )}
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
-            {shippingMethod && (
+            {!isExpressCheckout && shippingMethod && (
               <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
             )}
+            {isExpressCheckout && shippingMethod && (
+              <ShipmentMethods
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={formSection}
+                selectedShipmentId={shippingMethod.id}
+                shipmentHeader={shippingMethodTitle}
+              />
+            )}
             {isGiftOptionsEnabled && (
+              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+            )}
+          </Col>
+        </Row>
+        <Row fullBleed>
+          <Col colSize={{ small: 6, medium: 4, large: 5 }}>
+            {isExpressCheckout && (
               <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
             )}
           </Col>
@@ -98,13 +142,21 @@ ShippingReviewSection.propTypes = {
     shippingSpeed: PropTypes.string.isRequired,
     isDefault: PropTypes.bool,
   }).isRequired,
+  onEdit: PropTypes.func.isRequired,
+  isExpressCheckout: PropTypes.bool.isRequired,
+  shipmentMethods: PropTypes.shape({}).isRequired,
+  formName: PropTypes.string.isRequired,
+  formSection: PropTypes.string.isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  expressReviewShippingSectionId: PropTypes.shape({}),
 };
 
 ShippingReviewSection.defaultProps = {
   labels: {},
   shippingAddress: {},
-  isGiftOptionsEnabled: true,
+  isGiftOptionsEnabled: false,
   giftWrappingDisplayName: 'N/A',
+  expressReviewShippingSectionId: {},
 };
 
 export default withStyles(ShippingReviewSection, styles);

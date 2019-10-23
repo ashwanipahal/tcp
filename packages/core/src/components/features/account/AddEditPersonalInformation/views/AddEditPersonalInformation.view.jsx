@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditPersonalInformationForm from '../molecules/AddEditPersonalInformationForm';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
@@ -28,12 +29,12 @@ export const AddEditPersonalInformation = ({
           className="elem-mb-LRG"
         >
           <span className="left-arrow"> </span>
-          {labels.lbl_profile_personal_info_back}
+          {getLabelValue(labels, 'lbl_profile_personal_info_back')}
         </Anchor>
       </BodyCopy>
       <FormPageHeadingComponent
-        heading={labels.lbl_profile_heading}
-        className="margin-none"
+        heading={getLabelValue(labels, 'lbl_profile_heading')}
+        className="margin-none myAccountRightView"
         dataLocator="pi-profileinformationheading"
       />
       <AddEditPersonalInformationForm

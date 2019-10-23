@@ -5,7 +5,7 @@ import { getNavTree } from '../../../components/features/browse/ProductDetail/co
 import processResponse from './processPdpResponse';
 import processHelperUtil from './ProductDetail.util';
 
-const parseProductFromAPI = (
+export const parseProductFromAPI = (
   product,
   colorIdOrSeoKeyword,
   dontFetchExtraImages,
@@ -77,7 +77,7 @@ const parseProductFromAPI = (
       hasDefaultFit = processHelperUtil.getHasDefaultFit(hasDefaultFit, isDefaultFit);
 
       return {
-        fitNameVal,
+        fitName: fitNameVal,
         isDefault: isDefaultFit,
         maxAvailable: processHelperUtil.validateQuantityAvailable(
           currentColorFitsSizesMap[fitNameVal]
@@ -152,12 +152,11 @@ const parseProductFromAPI = (
  * @function getProductInfoById
  * @summary This will get product info and all color/sizes for that product
  */
-const getProductInfoById = (productColorId, state) => {
+const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
   // const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
   // const location = routingInfoStoreView.getHistory(this.store.getState()).location;
   // const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
   const isRadialInvEnabled = true;
-  const isBundleProduct = false;
 
   const breadCrumb = processHelperUtil.breadCrumbFactory(state);
   // eslint-disable-next-line
@@ -199,6 +198,7 @@ const getProductInfoById = (productColorId, state) => {
       fields,
     },
     webService: endpoints.getProductInfoById,
+    brand,
   };
 
   if (productId === 'gift') {

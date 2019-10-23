@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 import styles from '../FooterNavHeader.style';
 
 const FooterNavHeader = ({
@@ -14,6 +14,7 @@ const FooterNavHeader = ({
   isSubHeader,
   colNum,
 }) => {
+  const formattedSiteId = isCanada() ? '-CA' : '';
   if (!headerAsImage) {
     return (
       <BodyCopy
@@ -34,10 +35,16 @@ const FooterNavHeader = ({
   return (
     <Anchor
       to={titleObj.url}
+      aria-label={titleText}
       className={`${className} img-link`}
       dataLocator={`col_heading_${colNum}`}
     >
-      <Image alt={titleObj.image_alt} src={getIconPath(titleObj.class)} />
+      <Image
+        tabIndex="-1"
+        aria-hidden="true"
+        alt={titleObj.image_alt}
+        src={getIconPath(`${titleObj.class}${formattedSiteId}`)}
+      />
     </Anchor>
   );
 };

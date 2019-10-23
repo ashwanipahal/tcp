@@ -6,10 +6,15 @@ import {
   setListingFirstProductsPage,
   setPlpLoadingState,
 } from './ProductListing.actions';
-import Abstractor from '../../../../../services/abstractors/productListing';
+import ProductAbstractor from '../../../../../services/abstractors/productListing';
 import ProductsOperator from './productsRequestFormatter';
+import getProductsUserCustomInfo from '../../../../../services/abstractors/productListing/defaultWishlist';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 
-const instanceProductListing = new Abstractor();
+const instanceProductListing = new ProductAbstractor();
 const operatorInstance = new ProductsOperator();
 
 const getUrl = url => {
@@ -21,10 +26,12 @@ const getUrl = url => {
 };
 export function* fetchPlpProducts({ payload }) {
   try {
-    const { url, formData, sortBySelected } = payload;
+    const { url, formData, sortBySelected, scrollToTop } = payload;
     const location = getUrl(url);
     let state = yield select();
-    yield put(setPlpLoadingState({ isLoadingMore: true }));
+    yield put(
+      setPlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop, isDataLoading: true })
+    );
     let reqObj = operatorInstance.getProductListingBucketedData(
       state,
       location,
@@ -42,20 +49,37 @@ export function* fetchPlpProducts({ payload }) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (plpProducts) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        const products = plpProducts.loadedProductsPages[0];
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
+        if (!isGuest && !isRemembered) {
+          const generalProductIdsList = products.map(
+            product => product.productInfo.generalProductId
+          );
+          plpProducts.loadedProductsPages[0] = yield call(
+            getProductsUserCustomInfo,
+            generalProductIdsList,
+            products
+          );
+        }
         yield put(setListingFirstProductsPage({ ...plpProducts }));
       }
     }
-    yield put(setPlpLoadingState({ isLoadingMore: false }));
+    yield put(
+      setPlpLoadingState({ isLoadingMore: false, isScrollToTop: false, isDataLoading: false })
+    );
   } catch (err) {
     logger.error(err);
   }
 }
 
-export function* fetchMoreProducts() {
+export function* fetchMoreProducts({ payload = {} }) {
   try {
+    const { url } = payload;
+    const location = getUrl(url);
     let state = yield select();
     yield put(setPlpLoadingState({ isLoadingMore: true }));
-    const reqObj = operatorInstance.getMoreBucketedProducts(state);
+    const reqObj = operatorInstance.getMoreBucketedProducts(state, location);
     if (reqObj && reqObj.categoryId) {
       state = yield select();
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
@@ -66,6 +90,19 @@ export function* fetchMoreProducts() {
         plpProducts.loadedProductsPages[0].length
       ) {
         operatorInstance.updateBucketingConfig(plpProducts);
+        const products = plpProducts.loadedProductsPages[0];
+        const isGuest = !getUserLoggedInState(state);
+        const isRemembered = isRememberedUser(state);
+        if (!isGuest && !isRemembered) {
+          const generalProductIdsList = products.map(
+            product => product.productInfo.generalProductId
+          );
+          plpProducts.loadedProductsPages[0] = yield call(
+            getProductsUserCustomInfo,
+            generalProductIdsList,
+            products
+          );
+        }
         yield put(setPlpProducts({ ...plpProducts }));
       }
     }

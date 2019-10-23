@@ -21,8 +21,8 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -34,7 +34,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -72,6 +72,12 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   "t_smsSignUp_img_t",
                   "t_smsSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>
@@ -261,12 +267,11 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   }
                 }
                 dataLocator="sms_address_field"
+                enableSuccessCheck={false}
                 id="signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -299,11 +304,9 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -336,8 +339,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -349,12 +352,15 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
-    <Styled(Grid)>
+    <Styled(Grid)
+      className="full-height"
+    >
       <Styled(Row)
+        className="full-height"
         fullBleed={true}
       >
         <Styled(Col)
@@ -382,9 +388,16 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 "t_smsSignUp_img_d",
               ]
             }
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
+            }
           />
         </Styled(Col)>
         <Styled(Col)
+          className="sms-signup-content"
           colSize={
             Object {
               "large": 8,
@@ -416,15 +429,16 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
                 }
               }
             >
-              <Styled(Button)
-                buttonVariation="fixed-width"
-                className="shop-button"
-                dataLocator="shop_now_btn"
-                fill="BLUE"
-                fullWidth={true}
-                onClick={[Function]}
-                type="submit"
-              />
+              <Styled(Anchor)>
+                <Styled(Button)
+                  buttonVariation="fixed-width"
+                  className="shop-button"
+                  dataLocator="shop_now_btn"
+                  fill="BLUE"
+                  fullWidth={true}
+                  type="submit"
+                />
+              </Styled(Anchor)>
             </Styled(Col)>
           </Styled(Row)>
         </Styled(Col)>
@@ -455,8 +469,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "560px",
-        "maxHeight": "560px",
+        "height": "620px",
+        "maxHeight": "620px",
         "minHeight": "500px",
       }
     }
@@ -468,7 +482,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
       Object {
         "large": "851px",
         "medium": "458px",
-        "small": "375px",
+        "small": "100%",
       }
     }
   >
@@ -506,6 +520,12 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   "t_smsSignUp_img_t",
                   "t_smsSignUp_img_d",
                 ]
+              }
+              imgData={
+                Object {
+                  "alt": undefined,
+                  "url": undefined,
+                }
               }
             />
           </Styled(Col)>
@@ -695,12 +715,11 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   }
                 }
                 dataLocator="sms_address_field"
+                enableSuccessCheck={false}
                 id="signupPhoneNumber"
                 maxLength={50}
                 name="signupPhoneNumber"
                 normalize={[Function]}
-                onBlur={[Function]}
-                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -733,11 +752,9 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  onClick={[Function]}
-                  type="button"
+                  type="submit"
                 />
               </Styled(Col)>
             </Styled(Row)>

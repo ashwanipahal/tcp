@@ -6,7 +6,7 @@ const darkArrow = getIconPath('icon-carrot-black-small');
 export default css`
   padding: 0 14px;
   color: ${props => props.theme.colorPalette.text.primary};
-  border-bottom: 1.5px solid ${props => props.theme.colorPalette.white};
+  border-bottom: 1.5px solid transparent;
 
   &.is-open {
     background: ${props => props.theme.colorPalette.gray[300]};
@@ -69,8 +69,8 @@ export default css`
       top: 66px;
       z-index: 1;
       opacity: 0.6;
-      width: 200%;
-      left: -50%;
+      width: 100%;
+      left: 0%;
       height: 200vh;
     }
     &.is-open {

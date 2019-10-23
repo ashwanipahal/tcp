@@ -4,6 +4,7 @@ exports[`RichText should render correctly 1`] = `
 <WebView
   cacheEnabled={true}
   domStorageEnabled={false}
+  isApplyDeviceHeight={false}
   javaScriptEnabled={false}
   originWhitelist={
     Array [

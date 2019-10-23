@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { fromJS } from 'immutable';
+import AddEditPersonalInformation from '@tcp/core/src/components/features/account/AddEditPersonalInformation';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 import ProfileInfoActions from '../../ProfileInfoActions';
 import PersonalInformation from '../../PersonalInformation';
@@ -16,13 +18,23 @@ import MailingInformationContainer from '../../MailingInformation';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import BirthdaySavingsPage from '../../../../BirthdaySavingsPage';
 
+const map = {
+  userAboutYourselfSurvey: 'mountSurveyModal',
+  userMailing: 'mountMailingAddressModal',
+  birthdaySavings: 'mountAddChildModal',
+  userBirthday: 'mountPersonalInformationModal',
+};
+
 export class ProfileInformation extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { componentProps } = this.props;
+
     this.state = {
-      mountSurveyModal: false,
-      mountMailingAddressModal: false,
-      mountAddChildModal: false,
+      mountSurveyModal: map[componentProps.activeComponent] === map.userAboutYourselfSurvey,
+      mountMailingAddressModal: map[componentProps.activeComponent] === map.userMailing,
+      mountAddChildModal: map[componentProps.activeComponent] === map.birthdaySavings,
+      mountPersonalInformationModal: map[componentProps.activeComponent] === map.userBirthday,
     };
   }
 
@@ -40,6 +52,10 @@ export class ProfileInformation extends React.PureComponent {
 
   toggleAddChildModal = () => {
     this.toggleModalState('mountAddChildModal');
+  };
+
+  togglePersonalInformationModal = () => {
+    this.toggleModalState('mountPersonalInformationModal');
   };
 
   render() {
@@ -61,7 +77,12 @@ export class ProfileInformation extends React.PureComponent {
       percentageIncrement,
       childrenBirthdays,
     } = this.props;
-    const { mountSurveyModal, mountMailingAddressModal, mountAddChildModal } = this.state;
+    const {
+      mountSurveyModal,
+      mountMailingAddressModal,
+      mountAddChildModal,
+      mountPersonalInformationModal,
+    } = this.state;
     return (
       <>
         <ProfileInfoActions
@@ -111,7 +132,7 @@ export class ProfileInformation extends React.PureComponent {
             }}
             anchorVariation="primary"
             data-locator="my-rewards-program-details"
-            text={labels.lbl_profile_program_details}
+            text={getLabelValue(labels, 'lbl_profile_program_details')}
           />
           <AnchorLeftMargin>
             <Anchor
@@ -123,7 +144,7 @@ export class ProfileInformation extends React.PureComponent {
               }}
               anchorVariation="primary"
               data-locator="my-rewards-tnc"
-              text={labels.lbl_profile_terms_condition}
+              text={getLabelValue(labels, 'lbl_profile_terms_condition')}
             />
           </AnchorLeftMargin>
         </StyledAnchorWrapper>
@@ -131,7 +152,7 @@ export class ProfileInformation extends React.PureComponent {
           <ModalNative
             isOpen={mountMailingAddressModal}
             onRequestClose={this.toggleMailingAddressModal}
-            heading={labelsObj.profile.lbl_profile_heading}
+            heading={getLabelValue(labelsObj, 'lbl_profile_heading', 'profile')}
           >
             <ViewWithSpacing spacingStyles="margin-left-SM margin-right-SM">
               <MailingInformationContainer
@@ -140,6 +161,15 @@ export class ProfileInformation extends React.PureComponent {
                 onClose={this.toggleMailingAddressModal}
               />
             </ViewWithSpacing>
+          </ModalNative>
+        )}
+        {mountPersonalInformationModal && (
+          <ModalNative
+            isOpen={mountPersonalInformationModal}
+            onRequestClose={this.togglePersonalInformationModal}
+            heading={getLabelValue(labels, 'lbl_profile_heading')}
+          >
+            <AddEditPersonalInformation onRequestClose={this.togglePersonalInformationModal} />
           </ModalNative>
         )}
       </>
@@ -164,6 +194,7 @@ ProfileInformation.propTypes = {
   percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
   childrenBirthdays: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}),
 };
 
 ProfileInformation.defaultProps = {
@@ -183,6 +214,7 @@ ProfileInformation.defaultProps = {
   percentageIncrement: {},
   defaultStore: '',
   childrenBirthdays: fromJS([]),
+  componentProps: {},
 };
 
 export default ProfileInformation;

@@ -131,7 +131,7 @@ const renderImageComponent = (item, navigation) => {
  *  @ctaType are four types : 'imageCTAList' ,'stackedCTAList','scrollCTAList','linkCTAList'.
  *  @naviagtion is used to navigate the page.
  */
-const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
+const renderButtonList = (ctaType, navigation, ctaItems, locator, color, buttonVariation) => {
   return (
     <ButtonList
       buttonListVariation={ctaType}
@@ -139,6 +139,7 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
       buttonsData={ctaItems}
       locator={locator}
       color={color}
+      buttonVariation={buttonVariation}
     />
   );
 };
@@ -167,21 +168,28 @@ const ModuleB = (props: Props) => {
         navigation
       )}
 
-      {ctaType === 'imageCTAList' && (
+      {ctaType === ctaTypes.divImageCTACarousel && (
         <DivImageCTAContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'moduleB_cta_links', 'black')}
         </DivImageCTAContainer>
       )}
 
-      {ctaType === 'stackedCTAList' && (
+      {ctaType === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <Border background="gray" />
-          {renderButtonList(ctaType, navigation, ctaItems, 'stacked_cta_list', 'fixed-width')}
+          {renderButtonList(
+            ctaType,
+            navigation,
+            ctaItems,
+            'stacked_cta_list',
+            'black',
+            'variable-width'
+          )}
           <Border background="gray" />
         </ContainerView>
       )}
 
-      {ctaType === 'scrollCTAList' && (
+      {ctaType === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
           {renderButtonList(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
         </ButtonContainer>

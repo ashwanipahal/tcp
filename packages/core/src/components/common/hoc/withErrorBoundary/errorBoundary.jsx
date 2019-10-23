@@ -26,9 +26,7 @@ export const logError = ({ error, errorInfo }) => {
     extraData: {
       errorInfo,
     },
-    tags: {
-      component: 'ERROR_BOUNDARY',
-    },
+    tags: ['ERROR_BOUNDARY'],
   });
   return true;
 };
@@ -137,7 +135,7 @@ export const nonFunctionalSafeComponent = WrappedComponent => {
  * @param {*} WrappedComponent
  */
 const SafeComponent = WrappedComponent =>
-  !WrappedComponent.prototype.render
+  !(WrappedComponent.prototype && WrappedComponent.prototype.render)
     ? functionalSafeComponent(WrappedComponent)
     : nonFunctionalSafeComponent(WrappedComponent);
 

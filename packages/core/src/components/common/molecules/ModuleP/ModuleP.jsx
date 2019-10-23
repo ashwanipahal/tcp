@@ -29,6 +29,7 @@ const ModuleP = props => {
     gridIndex,
     labels,
     className,
+    viaModule,
   } = props;
   return (
     <ul>
@@ -67,9 +68,7 @@ const ModuleP = props => {
         isPLPredesign
         isKeepAliveKillSwitch={false}
         labels={labels}
-        dataLocatorImages="moduleP_image"
-        dataLocatorBag="moduleP_add_to_bag_btn"
-        dataLocatorPrice="moduleP_price"
+        viaModule={viaModule}
       />
     </ul>
   );
@@ -104,6 +103,7 @@ ModuleP.propTypes = {
   gridIndex: PropTypes.number,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
+  viaModule: PropTypes.string,
 };
 
 ModuleP.defaultProps = {
@@ -127,6 +127,7 @@ ModuleP.defaultProps = {
   },
   isEvenElement: false,
   gridIndex: 0,
+  viaModule: '',
 };
 
 export { ModuleP as ModulePVanilla };

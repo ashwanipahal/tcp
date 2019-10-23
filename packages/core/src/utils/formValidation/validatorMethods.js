@@ -83,6 +83,14 @@ function expirationValidator(value, param, linkedPropsValues, datePieces) {
   return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
 }
 
+function userBirthdayValidator(value, param, linkedProps) {
+  const birthdayValues = linkedProps[0];
+  if (!birthdayValues.userBirthMonth && !birthdayValues.userBirthYear) {
+    return true;
+  }
+  return !!value;
+}
+
 function cardNumberForTypeValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
   // no type, invalid CC numbr
@@ -167,12 +175,12 @@ function onlyDigitsValidator(value) {
   return /^\d+$/.test(value);
 }
 
-function cvvLengthThreeValidator(value, param, linkedProps) {
-  return linkedProps[0] !== ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 3 : true;
+function cvvLengthThreeValidator(value, param, linkedProps, linkedFieldsValues) {
+  return linkedFieldsValues[0] !== ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 3 : true;
 }
 
-function cvvLengthFourValidator(value, param, linkedProps) {
-  return linkedProps[0] === ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 4 : true;
+function cvvLengthFourValidator(value, param, linkedProps, linkedFieldsValues) {
+  return linkedFieldsValues[0] === ACCEPTED_CREDIT_CARDS.AMEX ? (value || '').length === 4 : true;
 }
 function eitherRequiredValidator(value, param, linkedPropsValues, linkedFieldsValues) {
   return (value || linkedFieldsValues[0] || '').length > 0;
@@ -233,6 +241,7 @@ const validatorMethods = {
   cvvNumber: onlyDigitsValidator,
   cvvLengthThree: cvvLengthThreeValidator,
   cvvLengthFour: cvvLengthFourValidator,
+  userBirthday: userBirthdayValidator,
 };
 
 export default validatorMethods;

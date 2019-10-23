@@ -1,106 +1,221 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import { isCanada } from '@tcp/core/src/utils';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
+import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
 import AddedToBagActions from '../../AddedToBagActions';
+
 import {
   HeadingViewStyle,
   MainSection,
   RowSectionStyle,
-  HeadingTextStyle,
   ScrollViewWrapper,
   BonusPointsWrapper,
   BagHeaderRow,
   SflHeadingViewStyle,
-  InActiveBagHeaderText,
-  ActiveBagHeaderText,
   ActiveBagHeaderView,
   InActiveBagHeaderView,
+  HeadingTextStyleView,
+  EstimateTextStyle,
+  ActiveBagHeaderTextNew,
+  InActiveBagHeaderTextView,
+  InActiveEstimateTextStyle,
+  BagHeaderMain,
+  FooterView,
+  ContainerMain,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 
-class BagPage extends React.Component {
+import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import PickupStoreModal from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.container';
+
+const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
+
+export class BagPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activeSection: null,
+      showCondensedHeader: false,
+      height: new Animated.Value(68),
     };
+    this.timer = null;
   }
 
   componentDidMount() {
-    const { fetchLabels, totalCount, sflItems } = this.props;
+    const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
 
     this.setState({
       activeSection:
-        !totalCount && sflItems.size ? BAGPAGE_CONSTANTS.SFL_STATE : BAGPAGE_CONSTANTS.BAG_STATE,
+        !totalCount && sflItems.size && isShowSaveForLaterSwitch
+          ? BAGPAGE_CONSTANTS.SFL_STATE
+          : BAGPAGE_CONSTANTS.BAG_STATE,
     });
   }
 
   componentDidUpdate() {
-    const {
-      toastMessage,
-      isCartItemSFL,
-      labels,
-      isSflItemRemoved,
-      isCartItemsUpdating: { isDeleting },
-    } = this.props;
-    const { sflSuccess, sflDeleteSuccess, itemDeleted } = labels;
-    if (isCartItemSFL) {
-      toastMessage(sflSuccess);
-    } else if (isSflItemRemoved) {
-      toastMessage(sflDeleteSuccess);
-    } else if (isDeleting) {
-      toastMessage(itemDeleted);
+    const { cartItemSflError } = this.props;
+    if (cartItemSflError) {
+      this.showToastMessage(cartItemSflError);
     }
   }
 
+  showToastMessage = message => {
+    const { toastMessage, toastMessagePositionInfo } = this.props;
+    const { showCondensedHeader } = this.state;
+    toastMessage(message);
+    toastMessagePositionInfo(!showCondensedHeader ? 122 : 55);
+  };
+
+  showNotification = () => {
+    const {
+      isCartItemSFL,
+      labels,
+      isSflItemRemoved,
+      isCartItemsUpdating: { isDeleting, isUpdating },
+    } = this.props;
+    const { sflSuccess, sflDeleteSuccess, itemDeleted, itemUpdated } = labels;
+    let message = null;
+    if (isCartItemSFL) {
+      message = sflSuccess;
+    } else if (isSflItemRemoved) {
+      message = sflDeleteSuccess;
+    } else if (isDeleting) {
+      message = itemDeleted;
+    } else if (isUpdating) {
+      message = itemUpdated;
+    }
+
+    return (
+      message && (
+        <Notification status="success" disableSpace>
+          <ViewWithSpacing spacingStyles="padding-right-SM padding-left-SM">
+            <BodyCopy
+              fontSize="fs12"
+              mobilefontFamily={['secondary']}
+              fontWeight="extrabold"
+              text={message}
+            />
+          </ViewWithSpacing>
+        </Notification>
+      )
+    );
+  };
+
   handleChangeActiveSection = sectionName => {
-    this.setState({
-      activeSection: sectionName,
-    });
+    const { isShowSaveForLaterSwitch } = this.props;
+    if (isShowSaveForLaterSwitch) {
+      this.setState({
+        activeSection: sectionName,
+      });
+    }
+  };
+
+  setAnimation = enable => {
+    const { height } = this.state;
+    Animated.timing(height, {
+      duration: 200,
+      toValue: enable ? 68 : 0,
+    }).start();
+  };
+
+  hideHeader = () => {
+    const { bagStickyHeaderInterval } = this.props;
+    this.timer = setTimeout(() => {
+      this.setAnimation(false);
+      this.setState({ showCondensedHeader: true });
+    }, bagStickyHeaderInterval);
+  };
+
+  handleScrollEnd = () => {
+    this.hideHeader();
+  };
+
+  handleMomentumScrollEnd = event => {
+    if (event.nativeEvent.contentOffset.y > 0) {
+      this.hideHeader();
+    }
+  };
+
+  handleScroll = event => {
+    const contentOffset = event.nativeEvent.contentOffset.y;
+    if (contentOffset > 0) {
+      this.setAnimation(true);
+      this.setState({ showCondensedHeader: false });
+
+      if (this.timer !== null) {
+        clearTimeout(this.timer);
+      }
+    } else {
+      if (this.timer !== null) {
+        clearTimeout(this.timer);
+      }
+      this.setAnimation(true);
+      this.setState({ showCondensedHeader: false });
+    }
   };
 
   renderBagHeading() {
     const { activeSection } = this.state;
-    const { labels, totalCount } = this.props;
+    const { labels, totalCount, orderBalanceTotal } = this.props;
     const { bagHeading } = labels;
     const bagHeadingTexts = `${bagHeading} (${totalCount})`;
+    const estimateTotal = `${labels.totalLabel}: $${orderBalanceTotal.toFixed(2)}`;
     return (
-      <HeadingTextStyle>
+      <HeadingTextStyleView>
         {activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? (
-          <InActiveBagHeaderText>{bagHeadingTexts}</InActiveBagHeaderText>
+          <>
+            <InActiveBagHeaderTextView>{bagHeadingTexts}</InActiveBagHeaderTextView>
+            {
+              <InActiveEstimateTextStyle>
+                {totalCount > 0 ? estimateTotal : ''}
+              </InActiveEstimateTextStyle>
+            }
+          </>
         ) : (
-          <ActiveBagHeaderText>{bagHeadingTexts}</ActiveBagHeaderText>
+          <>
+            <ActiveBagHeaderTextNew>{bagHeadingTexts}</ActiveBagHeaderTextNew>
+            {<EstimateTextStyle>{totalCount > 0 ? estimateTotal : ''}</EstimateTextStyle>}
+          </>
         )}
-      </HeadingTextStyle>
+      </HeadingTextStyleView>
     );
   }
 
   renderSflHeading() {
     const { activeSection } = this.state;
-    const { labels, sflItems } = this.props;
+    const { labels, sflItems, isShowSaveForLaterSwitch } = this.props;
+    if (!isShowSaveForLaterSwitch) return null;
     const { savedLaterButton } = labels;
     const headingTexts = `${savedLaterButton} (${sflItems.size})`;
     return (
-      <HeadingTextStyle>
+      <HeadingTextStyleView>
         {activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? (
-          <InActiveBagHeaderText>{headingTexts}</InActiveBagHeaderText>
+          <>
+            <InActiveBagHeaderTextView>{headingTexts}</InActiveBagHeaderTextView>
+            <EstimateTextStyle />
+          </>
         ) : (
-          <ActiveBagHeaderText>{headingTexts}</ActiveBagHeaderText>
+          <>
+            <ActiveBagHeaderTextNew>{headingTexts}</ActiveBagHeaderTextNew>
+            <EstimateTextStyle />
+          </>
         )}
-      </HeadingTextStyle>
+      </HeadingTextStyleView>
     );
   }
 
-  renderOrderLedgerContainer = isNoNEmptyBag => {
-    if (isNoNEmptyBag) {
+  renderOrderLedgerContainer = (isNoNEmptyBag, isBagStage) => {
+    if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
           <OrderLedgerContainer />
@@ -110,76 +225,119 @@ class BagPage extends React.Component {
     return <></>;
   };
 
+  renderBonusPoints = (isUserLoggedIn, isNoNEmptyBag, isBagStage) => {
+    if (isUserLoggedIn && isNoNEmptyBag && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <BonusPointsWrapper>
+            <BonusPointsDays isBagPage showAccordian={false} />
+          </BonusPointsWrapper>
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderAirMiles = isBagStage => {
+    if (isCanada() && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <AirmilesBanner />
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderCouponPromos = (isNoNEmptyBag, isBagStage) => {
+    if (isNoNEmptyBag && isBagStage) {
+      return (
+        <RowSectionStyle>
+          <CouponAndPromos showAccordian={false} />
+        </RowSectionStyle>
+      );
+    }
+    return <></>;
+  };
+
+  renderPickupModal = () => {
+    const { isPickupModalOpen, navigation } = this.props;
+    return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
+  };
+
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
     const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
-    const { activeSection } = this.state;
+    const { activeSection, showCondensedHeader, height } = this.state;
     if (!labels.tagLine) {
       return <View />;
     }
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
+    const viewHeight = showCondensedHeader ? '74%' : '65%';
+    const isBagPage = true;
     return (
       <>
-        <ScrollViewWrapper showAddTobag={showAddTobag}>
-          <BagHeaderRow>
-            <HeadingViewStyle
-              onPress={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
-              }}
-            >
-              {isBagStage ? (
-                <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
-              ) : (
-                <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
+        <ContainerMain>
+          <AnimatedBagHeaderMain style={{ height }}>
+            <BagHeaderRow>
+              <HeadingViewStyle
+                onPress={() => {
+                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.BAG_STATE);
+                }}
+              >
+                {isBagStage ? (
+                  <ActiveBagHeaderView>{this.renderBagHeading()}</ActiveBagHeaderView>
+                ) : (
+                  <InActiveBagHeaderView>{this.renderBagHeading()}</InActiveBagHeaderView>
+                )}
+              </HeadingViewStyle>
+              <SflHeadingViewStyle
+                onPress={() => {
+                  this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
+                }}
+              >
+                {isSFLStage ? (
+                  <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
+                ) : (
+                  <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
+                )}
+              </SflHeadingViewStyle>
+            </BagHeaderRow>
+          </AnimatedBagHeaderMain>
+          {this.showNotification()}
+          <ScrollViewWrapper
+            viewHeight={showAddTobag ? '60%' : viewHeight}
+            onScroll={this.handleScroll}
+            onScrollEndDrag={this.handleScrollEnd}
+            onMomentumScrollEnd={this.handleMomentumScrollEnd}
+          >
+            <MainSection>
+              {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+              {isSFLStage && (
+                <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
-            </HeadingViewStyle>
-            <SflHeadingViewStyle
-              onPress={() => {
-                this.handleChangeActiveSection(BAGPAGE_CONSTANTS.SFL_STATE);
-              }}
-            >
-              {isSFLStage ? (
-                <ActiveBagHeaderView>{this.renderSflHeading()}</ActiveBagHeaderView>
-              ) : (
-                <InActiveBagHeaderView>{this.renderSflHeading()}</InActiveBagHeaderView>
-              )}
-            </SflHeadingViewStyle>
-          </BagHeaderRow>
-          <MainSection>
-            {isBagStage && <ProductTileWrapper bagLabels={labels} />}
-            {isSFLStage && (
-              <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
-            )}
-            {this.renderOrderLedgerContainer(isNoNEmptyBag)}
-            {isUserLoggedIn && isNoNEmptyBag && (
-              <RowSectionStyle>
-                <BonusPointsWrapper>
-                  <BonusPointsDays isBagPage showAccordian={false} />
-                </BonusPointsWrapper>
-              </RowSectionStyle>
-            )}
-            {isCanada() && (
-              <RowSectionStyle>
-                <AirmilesBanner />
-              </RowSectionStyle>
-            )}
-            {isNoNEmptyBag && (
-              <RowSectionStyle>
-                <CouponAndPromos showAccordian={false} />
-              </RowSectionStyle>
-            )}
-          </MainSection>
-        </ScrollViewWrapper>
-
-        <AddedToBagActions
-          handleCartCheckout={handleCartCheckout}
-          labels={labels}
-          showAddTobag={showAddTobag}
-          navigation={navigation}
-          isNoNEmptyBag={isNoNEmptyBag}
-        />
+              {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
+              {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
+              {this.renderAirMiles(isBagStage)}
+              {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
+            </MainSection>
+            <QuickViewModal fromBagPage={isBagPage} />
+            {this.renderPickupModal()}
+          </ScrollViewWrapper>
+        </ContainerMain>
+        {isBagStage && (
+          <FooterView>
+            <AddedToBagActions
+              handleCartCheckout={handleCartCheckout}
+              labels={labels}
+              showAddTobag={showAddTobag}
+              navigation={navigation}
+              isNoNEmptyBag={isNoNEmptyBag}
+            />
+          </FooterView>
+        )}
       </>
     );
   }
@@ -199,6 +357,16 @@ BagPage.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  orderBalanceTotal: PropTypes.number.isRequired,
+  bagStickyHeaderInterval: PropTypes.number.isRequired,
+  toastMessagePositionInfo: PropTypes.func.isRequired,
+  cartItemSflError: PropTypes.string.isRequired,
+  isPickupModalOpen: PropTypes.bool,
+};
+
+BagPage.defaultProps = {
+  isPickupModalOpen: false,
 };
 
 export default InitialPropsHOC(BagPage);

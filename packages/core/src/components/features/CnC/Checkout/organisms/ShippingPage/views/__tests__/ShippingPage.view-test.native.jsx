@@ -10,14 +10,19 @@ describe('Shipping Page', () => {
       addressLine1: 'pob',
       addressLine2: '',
     };
-    const data = { address, shipmentMethods: [{}], smsSignUp: {} };
+    const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
+      formatPayload: () => {},
+      verifyAddressAction: () => {},
       shippingLabels: {
         sectionHeader: '',
       },
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       handleSubmit: mockedhandleSubmit,
       navigation: {
         state: {
@@ -49,6 +54,8 @@ describe('Shipping Page', () => {
     };
     const mockedloadShipmentMethods = jest.fn();
     const props = {
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       shippingLabels: {
@@ -92,7 +99,11 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+      addressLabels: {},
       selectedShipmentId: '334',
+      verifyAddressAction: () => {},
       userAddresses: new List([
         {
           addressId: '123',
@@ -132,6 +143,10 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
+      formatPayload: () => {},
+      verifyAddressAction: () => {},
+      shippingDidMount: () => {},
+      addressLabels: {},
       selectedShipmentId: '334',
       userAddresses: new List([
         {
@@ -173,7 +188,9 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       handleSubmit: () => {},
+      verifyAddressAction: mockedupdateShippingAddressData,
       selectedShipmentId: '334',
       userAddresses: new List([
         {
@@ -196,6 +213,8 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      shippingDidMount: () => {},
+      formatPayload: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);

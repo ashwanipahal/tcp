@@ -12,7 +12,9 @@ exports[`BillingPageContainer should render correctly 1`] = `
   getFormState={[Function]}
   initialValues={
     Object {
-      "address": null,
+      "address": Object {
+        "country": undefined,
+      },
       "cardNumber": undefined,
       "cardType": undefined,
       "expMonth": undefined,
@@ -22,6 +24,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
     }
   }
   isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
   navigation={null}
@@ -84,6 +87,7 @@ exports[`BillingPageContainer should render correctly if billing data is present
     }
   }
   isSameAsShippingChecked={true}
+  isVenmoPaymentInProgress={false}
   keepDirtyOnReinitialize={false}
   labels={Object {}}
   navigation={null}
@@ -92,6 +96,21 @@ exports[`BillingPageContainer should render correctly if billing data is present
   paymentMethodId={null}
   persistentSubmitErrors={false}
   pure={true}
+  setVenmoProgress={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          false,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   shippingAddress={null}
   shippingOnFileAddressKey={null}
   shouldAsyncValidate={[Function]}

@@ -1,25 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import AddEditPersonalInformation from '@tcp/core/src/components/features/account/AddEditPersonalInformation';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PersonalInformationDisplay from '../../../molecules/PersonalInformationDisplay';
 import Address from '../../../../../../common/molecules/Address';
 
 import MyProfileTile from '../../../../../../common/molecules/MyProfileTile';
 
 export class PersonalInformation extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = { isOpenBool: false };
-  }
-
-  toggleModal = () => {
-    const { isOpenBool } = this.state;
-    this.setState({
-      isOpenBool: !isOpenBool,
-    });
-  };
-
   render() {
     const {
       labels,
@@ -34,13 +21,12 @@ export class PersonalInformation extends React.PureComponent {
     } = this.props;
 
     const { address } = profileInfoTile;
-    const { isOpenBool } = this.state;
     return (
       <>
         <MyProfileTile
-          title={labels.lbl_profile_personal_information}
-          ctaTitle={labels.lbl_profile_edit_personal_info}
-          handleComponentChange={this.toggleModal}
+          title={getLabelValue(labels, 'lbl_profile_personal_information')}
+          ctaTitle={getLabelValue(labels, 'lbl_profile_edit_personal_info')}
+          handleComponentChange={() => toggleModalState('mountPersonalInformationModal')}
         >
           <PersonalInformationDisplay
             labels={labels}
@@ -54,8 +40,8 @@ export class PersonalInformation extends React.PureComponent {
         </MyProfileTile>
         {address && address.isComplete && (
           <MyProfileTile
-            title={labels.lbl_profile_mailing_address}
-            ctaTitle={labels.lbl_profile_edit_mailing_info}
+            title={getLabelValue(labels, 'lbl_profile_mailing_address')}
+            ctaTitle={getLabelValue(labels, 'lbl_profile_edit_mailing_info')}
             handleComponentChange={() => toggleModalState('mountMailingAddressModal')}
           >
             <Address
@@ -65,14 +51,6 @@ export class PersonalInformation extends React.PureComponent {
             />
           </MyProfileTile>
         )}
-
-        <ModalNative
-          isOpen={isOpenBool}
-          onRequestClose={this.toggleModal}
-          heading={labels.lbl_profile_heading}
-        >
-          <AddEditPersonalInformation onRequestClose={this.toggleModal} />
-        </ModalNative>
       </>
     );
   }
@@ -91,6 +69,7 @@ PersonalInformation.propTypes = {
   airMiles: PropTypes.string,
   myPlaceNumber: PropTypes.string,
   toggleModalState: PropTypes.func.isRequired,
+  componentProps: PropTypes.shape({}),
 };
 
 PersonalInformation.defaultProps = {
@@ -105,6 +84,7 @@ PersonalInformation.defaultProps = {
   userPhoneNumber: '',
   airMiles: '',
   myPlaceNumber: '',
+  componentProps: {},
 };
 
 export default PersonalInformation;

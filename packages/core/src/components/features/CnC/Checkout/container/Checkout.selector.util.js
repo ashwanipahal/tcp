@@ -78,6 +78,7 @@ const getGiftServicesFormData = state => {
     catEntryId: selector(state, 'optionId'),
     hasGiftWrapping: selector(state, 'hasGiftWrapping'),
     GiftMsg: selector(state, 'message'),
+    brand: selector(state, 'brand'),
   };
 };
 
@@ -85,9 +86,15 @@ const getPaypalPaymentSettings = state => {
   return state.Checkout.getIn(['options', 'paypalPaymentSettings']);
 };
 
+const getExpressReviewShippingSectionId = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'expressReviewShippingSection');
+};
+
 export {
   getPickUpContactFormLabels,
   getGiftServicesFormData,
   getSyncError,
   getPaypalPaymentSettings,
+  getExpressReviewShippingSectionId,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import ChangePasswordForm from '../molecules/ChangePasswordForm';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import Row from '../../../../common/atoms/Row';
@@ -26,12 +27,12 @@ export const ChangePassword = ({
           className="elem-mb-LRG"
         >
           <span className="left-arrow"> </span>
-          {labels.lbl_changePassword_back}
+          {getLabelValue(labels, 'lbl_changePassword_back')}
         </Anchor>
       </BodyCopy>
       <FormPageHeadingComponent
-        heading={labels.lbl_changePassword_heading}
-        className="margin-none"
+        heading={getLabelValue(labels, 'lbl_changePassword_heading')}
+        className="margin-none myAccountRightView"
         dataLocator="pi-profileinformationheading"
       />
       <BodyCopy component="div" className="elem-pt-LRG">
@@ -44,7 +45,7 @@ export const ChangePassword = ({
             }}
           >
             <BodyCopy data-locator="passwordInstructionTxt" fontSize="fs14" fontFamily="secondary">
-              {labels.lbl_changePassword_password_info}
+              {getLabelValue(labels, 'lbl_changePassword_password_info')}
             </BodyCopy>
           </Col>
         </Row>

@@ -9,18 +9,23 @@ export const PICKUP_MODAL_ACTIONS_CONSTANTS = {
   SET_BOPIS_STORES: `${PICKUP_MODAL_REDUCER_PATTERN}SET_BOPIS_STORES`,
   SET_STORE_SEARCH_ERROR: `${PICKUP_MODAL_REDUCER_PATTERN}SET_STORE_SEARCH_ERROR`,
   CLEAR_STORE_SEARCH_FORM: `${PICKUP_MODAL_REDUCER_PATTERN}CLEAR_STORE_SEARCH_FORM`,
+  GET_USER_CART_STORES: `${PICKUP_MODAL_REDUCER_PATTERN}GET_USER_CART_STORES`,
+  SET_USER_CART_STORES: `${PICKUP_MODAL_REDUCER_PATTERN}SET_USER_CART_STORES`,
 };
 
 // Label Constants -
 export const PICKUP_HEADING = 'Pick Up In Store';
 export const EDIT = 'Edit';
+export const BOPIS_FILTER_LABEL = 'Only show stores available for pickup today';
 
 export const SKU_DETAILS = {
-  color: 'color',
-  fit: 'fit',
-  size: 'size',
-  quantity: 'quantity',
+  fit: 'Fit',
+  size: 'Size',
+  quantity: 'Quantity',
   distance: 'distance',
+  addToBag: 'ADD TO BAG',
+  errorMessage: 'Please select Quantity',
+  color: 'Color',
 };
 
 export const BOPIS_ITEM_AVAILABILITY = {
@@ -47,6 +52,9 @@ export const PICKUP_LABELS = {
   FIND_STORE: 'FIND A STORE NEAR YOU',
   UPDATE: 'UPDATE',
   ITEM_UNAVAILABLE: 'This item is not available for pick up in your selected store.',
+  PICK_UP_MODAL_LABEL: 'Pick Up In Store',
+  VIEW_DETAILS: 'View Product Details',
+  PRICE_LABEL: 'Price',
 };
 
 export const PRODUCT_VALUES = {
@@ -59,6 +67,7 @@ export const PRODUCT_VALUES = {
 export const STORE_DETAILS_LABELS = {
   STORE_DETAILS: 'Store Details',
   SPACE_ONE: ' ',
+  COMMA_ONE: ',',
   CLOSING_TOMORROW: 'Open tomorrow until',
   CLOSING_TODAY: 'Open until',
   CLOSED_TODAY: 'Closed Today',
@@ -215,6 +224,8 @@ export const DEFAULT_STORE = {
   timeStamp: 1568281373404,
 };
 
+export const PICKUP_RADIO_BTN_NAME = 'PICKUP-BTN';
+
 export default {
   PICKUP_MODAL_ACTIONS_CONSTANTS,
   PICKUP_HEADING,
@@ -227,4 +238,5 @@ export default {
   PICKUP_CTA_LABELS,
   ENTER_KEY_CODE,
   PRODUCT_VALUES,
+  PICKUP_RADIO_BTN_NAME,
 };

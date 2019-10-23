@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponListCarousel component should renders offersandcoupons list 1`] = `
+<Fragment>
+  <Styled(Row)
+    className=""
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="couponList_title"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 9,
+                "medium": 6,
+                "small": 4,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="couponList_heading"
+              color="text.primary"
+              component="p"
+              data-locator="sdf"
+              fontFamily="secondary"
+              fontSize="fs16"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              lbl_my_rewards_drawerHeading (6)
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 3,
+                "medium": 2,
+                "small": 2,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="view_all"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="right"
+            >
+              <Styled(Anchor)
+                anchorVariation="primary"
+                asPath="/account/wallet"
+                dataLocator="couponcard-view_all"
+                fontFamily="secondary"
+                fontSize="fs13"
+                fontSizeVariation="medium"
+                onClick={[Function]}
+                textAlign="right"
+                to="/account?id=wallet"
+                underline={true}
+              >
+                lbl_my_rewards_viewAll
+              </Styled(Anchor)>
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+        </Styled(Row)>
+        <Styled(BodyCopy)
+          className="couponList_iconContainer"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className="couponList_helpIcon"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            ?
+          </Styled(BodyCopy)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            dataLocator="couponcard-helpApplyingPlaceCashlink"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontSizeVariation="small"
+            onClick={[Function]}
+            underline={true}
+          >
+            lbl_my_rewards_helpLink
+          </Styled(Anchor)>
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="coupon_carousel"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(Carousel)
+          carouselConfig={
+            Object {
+              "arrow": "small",
+              "customArrowLeft": "/static/images/smallright.svg",
+              "customArrowRight": "/static/images/smallright.svg",
+              "type": "light",
+            }
+          }
+          carouselTheme="dark"
+          options={
+            Object {
+              "arrows": true,
+              "autoplay": false,
+              "autoplaySpeed": 4000,
+              "dots": true,
+              "dotsClass": "slick-dots",
+              "fade": false,
+              "focusOnSelect": true,
+              "infinite": true,
+              "initialSlide": 0,
+              "responsive": Array [
+                Object {
+                  "settings": Object {
+                    "arrows": true,
+                  },
+                },
+              ],
+              "speed": 1000,
+              "swipe": true,
+            }
+          }
+        >
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-11T18:29:00.001Z",
+                "id": "Y00105575",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $60",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$10 OFF on $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105575"
+            labels={Object {}}
+          />
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-12T18:29:00.001Z",
+                "id": "Y00105578",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $70",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$20 OFF On $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105578"
+            labels={Object {}}
+          />
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-13T18:29:00.001Z",
+                "id": "Y00105575",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $80",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$30 OFF On $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105575"
+            labels={Object {}}
+          />
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-14T18:29:00.001Z",
+                "id": "Y00105578",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $150",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$40 OFF On $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105578"
+            labels={Object {}}
+          />
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-15T18:29:00.001Z",
+                "id": "Y00105575",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $520",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$50 OFF On $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105575"
+            labels={Object {}}
+          />
+          <Styled(CouponCard)
+            className="coupon-slider"
+            coupon={
+              Object {
+                "details": null,
+                "detailsOpen": false,
+                "effectiveDate": "8/6/19",
+                "error": null,
+                "expirationDate": "8/10/19",
+                "expirationDateTimeStamp": "2019-08-16T18:29:00.001Z",
+                "id": "Y00105578",
+                "isExpiring": true,
+                "isStarted": true,
+                "legalText": "$10 OFF On $350",
+                "promotionType": "public",
+                "status": "available",
+                "title": "$60 OFF On $50",
+              }
+            }
+            couponDetailClick={[Function]}
+            helpAnchorClick={[Function]}
+            isCarouselView={false}
+            key="Y00105578"
+            labels={Object {}}
+          />
+          <Styled(BodyCopy)
+            className="coupon_viewall_tile"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className="elem-mt-XXXL"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              <Styled(Button)
+                buttonVariation="variable-width"
+                className="coupon_button_black"
+                data-locator="coupon_viewall_Cta"
+                onClick={[Function]}
+                type="submit"
+              >
+                lbl_my_rewards_viewAll
+              </Styled(Button)>
+            </Styled(BodyCopy)>
+          </Styled(BodyCopy)>
+        </Styled(Carousel)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(CouponDetailModal)
+    coupon={Object {}}
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={false}
+  />
+  <CouponHelpModal
+    coupon={Object {}}
+    heading="Help Modal"
+    labels={Object {}}
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</Fragment>
+`;

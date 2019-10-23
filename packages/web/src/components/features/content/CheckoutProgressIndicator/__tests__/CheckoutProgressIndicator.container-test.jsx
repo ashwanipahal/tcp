@@ -18,6 +18,7 @@ jest.mock('../../../../../../../core/src/utils', () => ({
   getObjectValue: jest.fn(),
   getIconPath: jest.fn(),
   isCanada: jest.fn(),
+  isClient: jest.fn(),
 }));
 
 describe('CheckoutProgressIndicatorContainer', () => {
@@ -43,7 +44,7 @@ describe('CheckoutProgressIndicatorContainer', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.moveToCheckoutStage();
-      expect(dispatch.mock.calls).toHaveLength(1);
+      expect(dispatch.mock.calls).toHaveLength(0);
     });
   });
 });

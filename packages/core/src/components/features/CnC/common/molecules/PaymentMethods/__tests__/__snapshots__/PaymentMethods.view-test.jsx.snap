@@ -137,6 +137,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -163,6 +169,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "withComponent": [Function],
           }
         }
+        data-locator="creditCardRadioBtn"
         hideSubtitleOnMobile={true}
         key="Credit Card"
         name="paymentMethodId"
@@ -182,6 +189,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       }
     >
       <Field
+        aria-label="undefined undefined"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -290,6 +298,12 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 ";
   }
 
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                [Function],
+                ";
+  }
+
   .input-subtitle {
     display: ",
                 [Function],
@@ -316,163 +330,11 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "withComponent": [Function],
           }
         }
+        data-locator="paypalRadioBtn"
         hideSubtitleOnMobile={true}
         key="PayPal"
         name="paymentMethodId"
         selectedValue="payPal"
-        subtitle=""
-        title=""
-        variation="secondary"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
-      colSize={
-        Object {
-          "large": 0,
-          "medium": 4,
-          "small": 2,
-        }
-      }
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-",
-                [Function],
-                ";
-
-  @media ",
-                [Function],
-                "{
-    padding-left: ",
-                [Function],
-                ";
-    padding-top: ",
-                [Function],
-                ";
-  }
-  display: block;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  ",
-                [Function],
-                "
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  /* Create a custom radio button */
-  .radio-button,
-  .radio-button-checked {
-    ",
-                [Function],
-                "
-
-    @media ",
-                [Function],
-                "{
-    ",
-                [Function],
-                "
-    }
-    @media ",
-                [Function],
-                "{
-      ",
-                [Function],
-                "
-      }
-  }
-
-  .radio-button-checked:after {
-    ",
-                [Function],
-                "
-
-    @media ",
-                [Function],
-                "{
-      ",
-                [Function],
-                "
-    }
-  }
-
-.radio-button-checked{
-  ",
-                [Function],
-                "
-
-    @media ",
-                [Function],
-                " {
-      border: 1px solid ",
-                [Function],
-                ";
-      background-color: ",
-                [Function],
-                ";
-    }
-
-    }
-  .input-radio-title {
-  ",
-                [Function],
-                ";
-  }
-  .radio-button-checked + .input-radio-title {
-    ",
-                [Function],
-                ";
-  }
-
-  .input-subtitle {
-    display: ",
-                [Function],
-                ";
-    @media ",
-                [Function],
-                " {
-      display: block;
-    }
-  }
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(LabeledRadioButton)",
-            "foldedComponentIds": Array [],
-            "labeledRadioButtonCounter": 0,
-            "render": [Function],
-            "styledComponentId": "sc-htpNat",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        key="Venmo"
-        name="paymentMethodId"
-        selectedValue="venmo"
         subtitle=""
         title=""
         variation="secondary"

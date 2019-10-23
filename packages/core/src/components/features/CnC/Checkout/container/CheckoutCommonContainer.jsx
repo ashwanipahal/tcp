@@ -16,8 +16,9 @@ import {
   submitReviewSection,
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
+  submitVerifiedAddressData,
+  initCheckoutSectionPageAction,
 } from './Checkout.action';
-
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
@@ -26,13 +27,23 @@ import selectors, {
   getSendOrderUpdate,
   getCheckoutStage,
   getGiftServicesSend,
+  isUsSite as isUsSiteUser,
+  getPickupAltValues,
+  isPickupAlt,
+  getPickupValues,
 } from './Checkout.selector';
+import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
 import checkoutUtil from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
-import { getUserPhoneNumber } from '../../../account/User/container/User.selectors';
+import {
+  getUserPhoneNumber,
+  getIsRegisteredUserCallDone,
+} from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import constants from '../Checkout.constants';
 
 const {
   getSmsSignUpLabels,
@@ -59,24 +70,79 @@ const {
   getBillingValues,
   getShippingPhoneAndEmail,
   getCreditFieldLabels,
+  getShipmentLoadingStatus,
+  getCurrentCheckoutStage,
+  getShippingAddressList,
 } = selectors;
 
-export class CheckoutContainer extends React.Component<Props> {
+export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {
-      initCheckout,
       needHelpContentId,
       fetchNeedHelpContent,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
+      isRegisteredUserCallDone,
+      initCheckout,
+      router,
     } = this.props;
-    initCheckout();
+    /* istanbul ignore else */
+    if (isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
     fetchNeedHelpContent([
       needHelpContentId,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
     ]);
   }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { isRegisteredUserCallDone, router, initCheckout } = this.props;
+    /* istanbul ignore else */
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      initCheckout(router);
+    }
+  }
+
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+      },
+    };
+  };
+
+  intiSectionPage = (pageName, extraProps = {}) => {
+    const { initCheckoutSectionPage, router } = this.props;
+    let recalc;
+    let isPaypalPostBack;
+    if (router && router.query) {
+      ({ recalc, isPaypalPostBack } = router.query);
+    }
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
+  };
+
+  shippingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, { initialLoad: true });
+  };
+
+  billingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.BILLING);
+  };
+
+  reviewDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.REVIEW);
+  };
+
+  pickupDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.PICKUP);
+  };
 
   render() {
     const {
@@ -118,7 +184,16 @@ export class CheckoutContainer extends React.Component<Props> {
       reviewProps,
       isVenmoPaymentInProgress,
       setVenmoPickupState,
+      verifyAddressAction,
       setVenmoShippingState,
+      checkoutServerError,
+      currentStage,
+      submitVerifiedShippingAddressData,
+      shippingMethod,
+      pickUpAlternatePerson,
+      isHasPickUpAlternatePerson,
+      pickUpContactPerson,
+      pickUpContactAlternate,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -126,12 +201,13 @@ export class CheckoutContainer extends React.Component<Props> {
     );
     return (
       <CheckoutPage
+        pickupDidMount={this.pickupDidMount}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
-        billingProps={billingProps}
+        billingProps={{ ...billingProps, billingDidMount: this.billingDidMount }}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -142,11 +218,13 @@ export class CheckoutContainer extends React.Component<Props> {
         isOrderUpdateChecked={isOrderUpdateChecked}
         isGiftServicesChecked={isGiftServicesChecked}
         isAlternateUpdateChecked={isAlternateUpdateChecked}
+        submitVerifiedShippingAddressData={submitVerifiedShippingAddressData}
         pickUpLabels={pickUpLabels}
         smsSignUpLabels={smsSignUpLabels}
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
-        shippingProps={shippingProps}
+        verifyAddressAction={verifyAddressAction}
+        shippingProps={{ ...shippingProps, shippingDidMount: this.shippingDidMount }}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
@@ -161,10 +239,18 @@ export class CheckoutContainer extends React.Component<Props> {
         labels={labels}
         submitBilling={submitBilling}
         submitReview={submitReview}
-        reviewProps={reviewProps}
+        reviewProps={{ ...reviewProps, reviewDidMount: this.reviewDidMount }}
+        formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        checkoutServerError={checkoutServerError}
+        currentStage={currentStage}
+        shippingMethod={shippingMethod}
+        pickUpAlternatePerson={pickUpAlternatePerson}
+        isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
+        pickUpContactPerson={pickUpContactPerson}
+        pickUpContactAlternate={pickUpContactAlternate}
       />
     );
   }
@@ -174,8 +260,11 @@ CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: () => {
-      dispatch(initCheckoutAction());
+    initCheckout: router => {
+      dispatch(initCheckoutAction(router));
+    },
+    initCheckoutSectionPage: payload => {
+      dispatch(initCheckoutSectionPageAction(payload));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
@@ -213,6 +302,15 @@ export const mapDispatchToProps = dispatch => {
     submitReview: payload => {
       dispatch(submitReviewSection(payload));
     },
+    verifyAddressAction: payload => {
+      dispatch(verifyAddress(payload));
+    },
+    submitVerifiedShippingAddressData: payload => {
+      dispatch(submitVerifiedAddressData(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
   };
@@ -228,7 +326,9 @@ const mapStateToProps = state => {
     isMobile: selectors.getIsMobile(),
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
+    shippingMethod: getDefaultShipmentID(state),
     shippingProps: {
+      isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
       isOrderUpdateChecked: getShippingSendOrderUpdate(state),
       isGiftServicesChecked: getGiftWrappingValues(state),
@@ -240,7 +340,7 @@ const mapStateToProps = state => {
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
       isSaveToAddressBookChecked: getSaveToAddressBook(state),
-      userAddresses: getAddressListState(state),
+      userAddresses: getShippingAddressList(state),
       onFileAddressKey: getOnFileAddressKey(state), // selected address Id in dropdown
       newUserPhoneNo: getUserPhoneNumber(state), // newly added user phone number to be shown as default in mobile number field in address form
       shippingAddressId: getShippingAddressID(state), // address user has selected should be shown as selected in dropdown, not the default address
@@ -257,19 +357,10 @@ const mapStateToProps = state => {
       userAddresses: getAddressListState(state),
       creditFieldLabels: getCreditFieldLabels(state),
     },
-    // isAddressVerifyModalOpen: addressesStoreView.isVerifyAddressModalOpen(state),
-    // onPickupSubmit: storeOperators.checkoutFormOperator.submitPickupSection,
-    // onShippingSubmit: storeOperators.checkoutFormOperator.submitShippingSection,
-    // onBillingSubmit: storeOperators.checkoutFormOperator.submitBillingSection,
-    // onReviewSubmit: storeOperators.checkoutFormOperator.submitOrderForProcessing,
-
     activeStep: getCheckoutStage(state),
-    // moveToCheckoutStage: storeOperators.checkoutSignalsOperator.moveToStage,
-    // availableStages: storeOperators.checkoutSignalsOperator.getAvailableStages(),
-
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
     // isPlccFormModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccFormModalId,
-    isUsSite: selectors.isUsSite(),
+    isUsSite: isUsSiteUser(),
     // shouldSkipBillingStep: storeOperators.checkoutOperator.shouldSkipBillingStep(),
     orderHasPickUp: getIsOrderHasPickup(state),
     orderHasShipping: getIsOrderHasShipping(state),
@@ -291,6 +382,13 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    checkoutServerError: selectors.getCheckoutServerError(state),
+    isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    currentStage: getCurrentCheckoutStage(state),
+    pickUpAlternatePerson: getPickupAltValues(state),
+    isHasPickUpAlternatePerson: isPickupAlt(state),
+    pickUpContactPerson: getPickupValues(state),
+    pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
   };
 };
 

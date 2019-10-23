@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing block for PickupStoreDisplay PickupStoreDisplay should be rendered correclty when order type is BOSS 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="25px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/marker-icon.png",
+        }
+      }
+      url=""
+      width="19px"
+    />
+  </Styled(View)>
+  <View>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-store-name"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="Fulton Street"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="pickup-section-store-address"
+      fontSize="fs12"
+      fontWeight="regular"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      text="471-485 Fulton Street"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="pickup-section-store-boss-title"
+        fontSize="fs14"
+        fontWeight="semibold"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="Title 1 item"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="pickup-section-store-boss-date"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        mobileFontFamily="secondary"
+        numberOfLines={null}
+        text="Thu. Jan 3 - Fri. Jan 4"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </View>
+</Styled(View)>
+`;

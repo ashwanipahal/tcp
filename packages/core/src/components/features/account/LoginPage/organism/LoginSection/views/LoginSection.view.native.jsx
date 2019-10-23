@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import CustomButton from '../../../../../../common/atoms/Button';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
@@ -56,6 +57,8 @@ class LoginSection extends PureComponent<Props> {
       showLogin,
       setEmailid,
       getTouchStatus,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -82,6 +85,8 @@ class LoginSection extends PureComponent<Props> {
               variation={variation}
               navigation={navigation}
               handleContinueAsGuest={handleContinueAsGuest}
+              userplccCardNumber={userplccCardNumber}
+              userplccCardId={userplccCardId}
             />
           </Fragment>
         )}
@@ -103,16 +108,15 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{labels.login.lbl_login_createAccountHelp_1}</Text>
-            <Text>{labels.login.lbl_login_createAccountHelp_2}</Text>
+            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}</Text>
+            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}</Text>
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.text.secondary}
             fill="WHITE"
             type="submit"
-            buttonVariation="variable-width"
             data-locator=""
-            text={labels.login.lbl_login_createAccountCTA}
+            text={getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
             onPress={this.toggleCheckoutModal}
           />
         </FormStyleView>
@@ -126,6 +130,8 @@ LoginSection.propTypes = {
   labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginSection.defaultProps = {
@@ -138,6 +144,8 @@ LoginSection.defaultProps = {
       lbl_login_createAccountHelp_2: 'start earning points!',
     },
   },
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 export default withStyles(LoginSection, FormStyle);

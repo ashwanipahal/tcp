@@ -79,6 +79,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -141,7 +142,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -235,6 +235,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -297,7 +298,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -391,6 +391,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -453,7 +454,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -547,6 +547,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -609,7 +610,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;
@@ -676,6 +676,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           fontSizeVariation="medium"
           href="#"
           locator=""
+          margins={null}
           onPress={[Function]}
           text="lbl_bonusPoints_details"
           underline={true}
@@ -738,7 +739,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     height={null}
     iconLocator="arrowicon"
     index={null}
-    isBag={false}
   />
 </View>
 `;

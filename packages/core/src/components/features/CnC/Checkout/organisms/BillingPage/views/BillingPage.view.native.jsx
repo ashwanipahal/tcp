@@ -24,6 +24,7 @@ class BillingPage extends React.PureComponent {
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     navigation: PropTypes.shape({}).isRequired,
     submitBilling: PropTypes.func.isRequired,
+    billingDidMount: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     labels: PropTypes.shape({}).isRequired,
@@ -33,6 +34,7 @@ class BillingPage extends React.PureComponent {
     billingData: PropTypes.shape({}),
     userAddresses: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
+    setCheckoutStage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -44,6 +46,11 @@ class BillingPage extends React.PureComponent {
     userAddresses: null,
     creditFieldLabels: {},
   };
+
+  componentDidMount() {
+    const { billingDidMount } = this.props;
+    billingDidMount(true);
+  }
 
   /**
    * @function render
@@ -63,6 +70,7 @@ class BillingPage extends React.PureComponent {
       billingData,
       userAddresses,
       creditFieldLabels,
+      setCheckoutStage,
     } = this.props;
 
     const { header, backLinkShipping, backLinkPickup, nextSubmitText } = labels;
@@ -73,8 +81,13 @@ class BillingPage extends React.PureComponent {
           activeStage="billing"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
-        <ScrollView>
+        <ScrollView
+          ref={scrollView => {
+            this.scrollView = scrollView;
+          }}
+        >
           <Container>
             <CheckoutSectionTitleDisplay title={header} />
             <GiftCardsContainer />
@@ -93,6 +106,7 @@ class BillingPage extends React.PureComponent {
                 navigation={navigation}
                 btnText={nextSubmitText}
                 creditFieldLabels={creditFieldLabels}
+                setCheckoutStage={setCheckoutStage}
               />
             ) : (
               <BillingPaymentForm
@@ -110,6 +124,8 @@ class BillingPage extends React.PureComponent {
                 userAddresses={userAddresses}
                 navigation={navigation}
                 creditFieldLabels={creditFieldLabels}
+                scrollView={this.scrollView}
+                setCheckoutStage={setCheckoutStage}
               />
             )}
           </Container>

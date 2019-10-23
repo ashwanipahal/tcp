@@ -1,7 +1,11 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 import { DeleteCardSaga, deleteCard } from '../DeleteCard.saga';
-import { updateCardListonDeleteErr, setDeleteModalMountedState } from '../Payment.actions';
+import {
+  updateCardListonDeleteErr,
+  setDeleteModalMountedState,
+  clearCardBalance,
+} from '../Payment.actions';
 
 describe('DeleteAddressSaga', () => {
   describe('deleteAddress', () => {
@@ -9,6 +13,8 @@ describe('DeleteAddressSaga', () => {
     const payload = {
       creditCardId: '123456',
       action: 'D',
+      ccType: 'GiftCard',
+      accountNo: '***************2525',
     };
     beforeEach(() => {
       deleteCardGen = deleteCard({ payload });
@@ -44,6 +50,16 @@ describe('DeleteAddressSaga', () => {
       };
       const putDescriptor = deleteCardGen.throw(response).value;
       expect(putDescriptor).toEqual(put(updateCardListonDeleteErr(response)));
+    });
+    it('should dispatch clearCardBalance action when card type is Gift', () => {
+      deleteCardGen.next({ statusCode: 200 });
+      deleteCardGen.next();
+      deleteCardGen.next();
+      deleteCardGen.next();
+      const putDescriptor = deleteCardGen.next({
+        payload,
+      }).value;
+      expect(putDescriptor).toEqual(put(clearCardBalance(payload)));
     });
   });
   describe('deleteAddressSaga', () => {

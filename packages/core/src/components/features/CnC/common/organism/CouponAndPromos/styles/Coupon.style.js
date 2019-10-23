@@ -5,21 +5,14 @@ const styles = css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
-  @media ${props => props.theme.mediaQuery.medium} {
-    .hide-in-large-up {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
-    }
+  .alignTop.alignTop {
+    top: 15px;
   }
 
   @media ${props => props.theme.mediaQuery.smallMax} {
-    .hide-in-medium-down {
-      display: none;
-    }
-    .hideAccordian {
-      display: none;
+    .coupon_list {
+      margin-left: 14px;
+      margin-right: 14px;
     }
   }
 
@@ -28,6 +21,10 @@ const styles = css`
   }
 
   .couponsWrapperAccordian {
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-left: -14px;
+      margin-right: -14px;
+    }
     .collapsible-header {
       background-color: ${props => props.theme.colorPalette.white};
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -36,6 +33,16 @@ const styles = css`
     .collapsible-icon {
       top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .coupon_error_message {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      img {
+        padding-top: 0;
+        padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      }
     }
   }
 `;

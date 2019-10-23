@@ -1,13 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils';
+import { SearchBar } from '@tcp/core/src/components/common/molecules';
+import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
+import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
+import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import {
+  updateCartCount,
+  updateCartManually,
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import {
   Container,
+  HeaderContainer,
   SafeAreaViewStyle,
   CartIconView,
   Touchable,
@@ -17,8 +27,11 @@ import {
   TitleText,
   CartCountContainer,
 } from './HeaderNew.style';
+import { readCookieMobileApp } from '../../../../utils/utils';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
+
+const CART_ITEM_COUNTER = 'cartItemsCount';
 
 /**
  * This component creates Mobile Header.
@@ -30,10 +43,12 @@ const cartIcon = require('../../../../assets/images/empty-bag.png');
 class HeaderNew extends React.PureComponent {
   static propTypes = {
     title: PropTypes.string,
+    showSearch: PropTypes.bool,
   };
 
   static defaultProps = {
     title: '',
+    showSearch: false,
   };
 
   /**
@@ -43,9 +58,65 @@ class HeaderNew extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      cartVal: 0,
+      showSearchModal: false,
     };
   }
+
+  componentDidMount() {
+    this.getInitialProps();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
+    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+      this.getInitialProps();
+      updateCartManuallyAction(false);
+    }
+  }
+
+  getInitialProps() {
+    const { updateCartCountAction } = this.props;
+    const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
+    cartValuePromise.then(res => {
+      updateCartCountAction(parseInt(res || 0, 10));
+    });
+  }
+
+  /**
+   * @function openSearchProductPage
+   * opens search product modal
+   *
+   * @memberof HeaderNew
+   */
+  openSearchProductPage = () => {
+    this.setState({ showSearchModal: true });
+  };
+
+  /**
+   * @function closeSearchProductPage
+   * closes search product modal
+   *
+   * @memberof HeaderNew
+   */
+  closeSearchProductPage = () => {
+    this.setState({ showSearchModal: false });
+  };
+
+  /**
+   * @function goToSearchResultsPage
+   * navigates to search results page
+   *
+   * @memberof HeaderNew
+   */
+  goToSearchResultsPage = searchText => {
+    this.closeSearchProductPage();
+
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'SearchDetail', {
+      title: searchText,
+      isForceUpdate: true,
+    });
+  };
 
   onBack = () => {
     const { navigation } = this.props;
@@ -61,55 +132,92 @@ class HeaderNew extends React.PureComponent {
   };
 
   render() {
-    const { title } = this.props;
-    const { cartVal } = this.state;
+    const { title, showSearch, cartVal, slpLabels } = this.props;
+    const { showSearchModal } = this.state;
     return (
-      <SafeAreaViewStyle>
-        <Container data-locator={getLocator('global_headerpanel')}>
-          <LeftSection>
-            <TouchableOpacity
-              accessible
-              onPress={this.onBack}
-              accessibilityRole="button"
-              accessibilityLabel="back button"
-            >
-              <CustomIcon name={ICON_NAME.chevronLeft} size="fs20" color="gray.600" />
-            </TouchableOpacity>
-          </LeftSection>
+      <SafeAreaViewStyle showSearch={showSearch}>
+        <ToastContainer />
+        <Container>
+          <HeaderContainer data-locator={getLocator('global_headerpanel')}>
+            <LeftSection>
+              <TouchableOpacity
+                accessible
+                onPress={this.onBack}
+                accessibilityRole="button"
+                accessibilityLabel="back button"
+              >
+                <CustomIcon name={ICON_NAME.chevronLeft} size="fs20" color="gray.600" />
+              </TouchableOpacity>
+            </LeftSection>
 
-          <MiddleSection>
-            <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
-              {title}
-            </TitleText>
-          </MiddleSection>
+            <MiddleSection>
+              <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
+                {title}
+              </TitleText>
+            </MiddleSection>
 
-          <RightSection>
-            <Touchable
-              accessibilityRole="button"
-              onPress={() => {
-                // eslint-disable-next-line react/destructuring-assignment
-                this.props.navigation.navigate('BagPage');
-              }}
-            >
-              <CartIconView
-                source={cartIcon}
-                data-locator={getLocator('global_headerpanelbagicon')}
-              />
-              <CartCountContainer>
-                <BodyCopy
-                  text={cartVal}
-                  color="white"
-                  fontSize="fs10"
-                  data-locator={getLocator('global_headerpanelbagitemtext')}
-                  accessibilityText="Mini bag with count"
+            <RightSection>
+              <Touchable
+                accessibilityRole="button"
+                onPress={() => {
+                  // eslint-disable-next-line react/destructuring-assignment
+                  this.props.navigation.navigate('BagPage');
+                }}
+              >
+                <CartIconView
+                  source={cartIcon}
+                  data-locator={getLocator('global_headerpanelbagicon')}
                 />
-              </CartCountContainer>
-            </Touchable>
-          </RightSection>
+                <CartCountContainer cartVal={cartVal}>
+                  <BodyCopy
+                    text={cartVal}
+                    color="white"
+                    fontSize="fs10"
+                    data-locator={getLocator('global_headerpanelbagitemtext')}
+                    accessibilityText="Mini bag with count"
+                    fontWeight="extrabold"
+                  />
+                </CartCountContainer>
+              </Touchable>
+            </RightSection>
+          </HeaderContainer>
+          {showSearch && (
+            <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+          )}
+          {showSearchModal && (
+            <SearchProduct
+              closeSearchModal={this.closeSearchProductPage}
+              goToSearchResultsPage={this.goToSearchResultsPage}
+            />
+          )}
         </Container>
       </SafeAreaViewStyle>
     );
   }
 }
 
-export default HeaderNew;
+const mapStateToProps = state => {
+  return {
+    cartVal: state.Header && state.Header.cartItemCount,
+    isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    slpLabels: state.Labels.Browse && state.Labels.Browse.SLP,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCartCountAction: payload => {
+      dispatch(updateCartCount(payload));
+    },
+    updateCartManuallyAction: payload => {
+      dispatch(updateCartManually(payload));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InitialPropsHOC(HeaderNew));
+
+export { HeaderNew as HeaderNewVanilla };

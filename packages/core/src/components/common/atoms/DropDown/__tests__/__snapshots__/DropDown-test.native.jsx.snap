@@ -10,6 +10,7 @@ exports[`DropDown Test should render correctly 1`] = `
     foo
   </Styled(Text)>
   <Styled(TouchableOpacity)
+    arrowImageStyle={null}
     bounces={true}
     data={
       Array [
@@ -19,6 +20,7 @@ exports[`DropDown Test should render correctly 1`] = `
         },
       ]
     }
+    dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
     itemStyle={
@@ -29,6 +31,7 @@ exports[`DropDown Test should render correctly 1`] = `
     onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
+    selectedItemFontWeight="semibold"
     selectedValue="foo"
     variation="primary"
   >
@@ -53,6 +56,7 @@ exports[`DropDown Test should render correctly 1`] = `
           "testUri": "../../../../core/src/assets/carrot-small-down.png",
         }
       }
+      style={null}
     />
   </Styled(TouchableOpacity)>
   <Component
@@ -97,6 +101,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     foo
   </Styled(Text)>
   <Styled(TouchableOpacity)
+    arrowImageStyle={null}
     bounces={true}
     data={
       Array [
@@ -106,6 +111,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
         },
       ]
     }
+    dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
     itemStyle={
@@ -116,6 +122,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     onPress={[Function]}
     onValueChange={[MockFunction]}
     pointerEvents="auto"
+    selectedItemFontWeight="semibold"
     selectedValue="foo"
     variation="primary"
   >
@@ -140,6 +147,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           "testUri": "../../../../core/src/assets/carrot-small-up.png",
         }
       }
+      style={null}
     />
   </Styled(TouchableOpacity)>
   <Component

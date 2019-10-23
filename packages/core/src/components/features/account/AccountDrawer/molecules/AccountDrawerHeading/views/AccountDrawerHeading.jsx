@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountDrawerHeading.style';
 import Image from '../../../../../../common/atoms/Image';
@@ -14,9 +15,11 @@ const AccountDrawerHeading = props => {
       <span>
         <Image src={getIconPath('user-icon')} />
         <span className="userName">
-          <BodyCopy component="span" fontFamily="primary" fontWeight="semibold" fontSize="fs16">
-            {userName}
-          </BodyCopy>
+          {userName && (
+            <BodyCopy component="span" fontFamily="primary" fontWeight="semibold" fontSize="fs16">
+              {userName}
+            </BodyCopy>
+          )}
         </span>
       </span>
       <span
@@ -29,7 +32,7 @@ const AccountDrawerHeading = props => {
         <Anchor
           fontSizeVariation="medium"
           anchorVariation="primary"
-          text={labels.lbl_acc_drawer_view_my_acc}
+          text={getLabelValue(labels, 'lbl_acc_drawer_view_my_acc')}
           underline
           to="/account?id=account-overview"
           asPath="/account"

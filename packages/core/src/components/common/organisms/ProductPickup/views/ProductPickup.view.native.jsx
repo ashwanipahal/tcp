@@ -136,7 +136,7 @@ class ProductPickup extends React.PureComponent {
      */
     bopisItemInventory: PropTypes.arrayOf(PropTypes.object),
     isBopisEligible: PropTypes.bool,
-    isBossEligible: PropTypes.bool,
+    // isBossEligible: PropTypes.bool,
     isSkuResolved: PropTypes.bool,
     showChangeStore: PropTypes.bool,
     pickupTitleText: PropTypes.string,
@@ -160,6 +160,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
     }),
+    simplifiedProductPickupView: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -183,7 +184,7 @@ class ProductPickup extends React.PureComponent {
     onPickUpOpenClick: null,
     bopisItemInventory: [],
     isBopisEligible: false,
-    isBossEligible: false,
+    // isBossEligible: false,
     isSkuResolved: false,
     showChangeStore: false,
     pickupTitleText: '',
@@ -207,6 +208,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
     },
+    simplifiedProductPickupView: false,
   };
 
   constructor(props) {
@@ -220,24 +222,18 @@ class ProductPickup extends React.PureComponent {
    */
 
   handlePickupModalClick = () => {
-    const {
-      onPickUpOpenClick,
-      productInfo,
-      itemValues,
-      isBopisEligible,
-      isBossEligible,
-    } = this.props;
-
-    if (onPickUpOpenClick) {
-      onPickUpOpenClick(
-        productInfo.generalProductId,
-        itemValues,
-        productInfo.generalProductId,
-        productInfo.generalProductId,
-        isBopisEligible,
-        isBossEligible
-      );
-    }
+    const { productInfo, onPickUpOpenClick } = this.props;
+    const { /* colorFitsSizesMap, */ generalProductId } = productInfo;
+    // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
+    onPickUpOpenClick({
+      generalProductId,
+      colorProductId: generalProductId,
+      // isBopisCtaEnabled: colorEntry.miscInfo.isBopisEligible,
+      // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
+      currentProduct: productInfo,
+    });
+    // if (closeQuickViewClick) {
+    // }
   };
 
   handleChangeStoreOnKeyPress = event =>
@@ -485,56 +481,62 @@ class ProductPickup extends React.PureComponent {
   }
 
   render() {
-    const { showPickupInfo, isSubmitting, labels } = this.props;
+    const { showPickupInfo, isSubmitting, labels, simplifiedProductPickupView } = this.props;
     return (
-      <Container margins="40px 0 0 0">
-        <FastShippingContainer>
-          <CustomIcon
-            iconFontName={ICON_FONT_CLASS.Icomoon}
-            name={ICON_NAME.fastShipping}
-            size="fs25"
-            color="gray.900"
-            dataLocator="pdp_fast_shipping_icon"
-          />
-          <FastShippingTextContainer>
-            <BodyCopy
-              dataLocator="pdp_free_shipping_label"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="semibold"
-              color="gray.900"
-              text={labels.lbl_Product_pickup_FREE_SHIPPING}
-            />
-            <BodyCopy
-              dataLocator="pdp_free_shipping_label"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              color="gray.900"
-              text={labels.lbl_Product_pickup_NO_MIN_PURCHASE}
-            />
-          </FastShippingTextContainer>
-        </FastShippingContainer>
-        <LineComp marginTop={16} borderColor="gray.1600" />
-        <StoreContainer>
-          <CustomIcon
-            iconFontName={ICON_FONT_CLASS.Icomoon}
-            name={ICON_NAME.markerIcon}
-            size="fs24"
-            color="gray.900"
-            dataLocator="pdp_store_marker_icon"
-          />
-          <ColumnContainer margins="0 0 0 20px">
-            <RowContainer>{this.renderPickupTitle()}</RowContainer>
-            {showPickupInfo && this.renderPickupInfo()}
-            {!showPickupInfo && this.renderPickupInfoError()}
-          </ColumnContainer>
-        </StoreContainer>
+      <Container
+        margins={!simplifiedProductPickupView ? '40px 0 0 0' : '0'}
+        borderWidth={simplifiedProductPickupView ? 0 : 1}
+      >
+        {!simplifiedProductPickupView && (
+          <>
+            <FastShippingContainer>
+              <CustomIcon
+                iconFontName={ICON_FONT_CLASS.Icomoon}
+                name={ICON_NAME.fastShipping}
+                size="fs25"
+                color="gray.900"
+                dataLocator="pdp_fast_shipping_icon"
+              />
+              <FastShippingTextContainer>
+                <BodyCopy
+                  dataLocator="pdp_free_shipping_label"
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="semibold"
+                  color="gray.900"
+                  text={labels.lbl_Product_pickup_FREE_SHIPPING}
+                />
+                <BodyCopy
+                  dataLocator="pdp_free_shipping_label"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight="regular"
+                  color="gray.900"
+                  text={labels.lbl_Product_pickup_NO_MIN_PURCHASE}
+                />
+              </FastShippingTextContainer>
+            </FastShippingContainer>
+            <LineComp marginTop={16} borderColor="gray.1600" />
+            <StoreContainer>
+              <CustomIcon
+                iconFontName={ICON_FONT_CLASS.Icomoon}
+                name={ICON_NAME.markerIcon}
+                size="fs24"
+                color="gray.900"
+                dataLocator="pdp_store_marker_icon"
+              />
+              <ColumnContainer margins="0 0 0 20px">
+                <RowContainer>{this.renderPickupTitle()}</RowContainer>
+                {showPickupInfo && this.renderPickupInfo()}
+                {!showPickupInfo && this.renderPickupInfoError()}
+              </ColumnContainer>
+            </StoreContainer>
+          </>
+        )}
         <Button
-          margin="12px 12px 0 12px"
+          margin={!simplifiedProductPickupView ? '12px 12px 0 12px' : '0'}
           color="white"
           fill="BLACK"
-          buttonVariation="variable-width"
           text={
             showPickupInfo
               ? labels.lbl_Product_pickup_PICKUP_IN_STORE

@@ -53,7 +53,7 @@ const PointsHistoryList = ({
         <PointHistoryView>
           <PointView>
             <BodyCopy
-              text={labels.lbl_common_order_date}
+              text={getLabelValue(labels, 'lbl_common_order_date')}
               color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
@@ -62,7 +62,7 @@ const PointsHistoryList = ({
           </PointView>
           <PointTransView>
             <BodyCopy
-              text={labels.lbl_common_transaction}
+              text={getLabelValue(labels, 'lbl_common_transaction')}
               color="gray.900"
               fontWeight="semibold"
               fontFamily="secondary"
@@ -71,12 +71,11 @@ const PointsHistoryList = ({
           </PointTransView>
           <PointView>
             <BodyCopy
-              text={labels.lbl_common_points_earned}
+              text={getLabelValue(labels, 'lbl_common_points_earned')}
               fontFamily="secondary"
               fontSize="fs12"
               color="gray.900"
               fontWeight="semibold"
-              textAlign="center"
             />
           </PointView>
         </PointHistoryView>
@@ -109,7 +108,6 @@ const PointsHistoryList = ({
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                textAlign="center"
                 color="gray.900"
               />
             </PointView>
@@ -118,7 +116,7 @@ const PointsHistoryList = ({
 
       {!pointHistory && (
         <BodyCopy
-          text={labels.lbl_common_points_history_nopoints}
+          text={getLabelValue(labels, 'lbl_common_points_history_nopoints')}
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"

@@ -6,35 +6,8 @@ exports[`Add gift card form component render error message 1`] = `
   addGiftCardResponse="foo"
   change={[MockFunction]}
   goBackToPayment={[MockFunction]}
-  handleSubmit={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          [Function],
-        ],
-        Array [
-          [Function],
-        ],
-        Array [
-          [Function],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  handleSubmit={[MockFunction]}
+  isRecapchaEnabled={true}
   isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
@@ -50,24 +23,6 @@ exports[`Add gift card form component render error message 1`] = `
   untouch={[MockFunction]}
 >
   <View>
-    <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="error"
-        dataLocator=""
-        fontSize="fs12"
-        fontWeight="semibold"
-        margin={null}
-        mobileFontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-        numberOfLines={null}
-        text="foo"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Field
       component={
         Object {
@@ -171,14 +126,6 @@ exports[`Add gift card form component render error message 1`] = `
       type="tel"
     />
     <View>
-      <Styled(View)>
-        <Recaptcha
-          onMessage={[Function]}
-          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-          style={Object {}}
-          url="https://www.childrensplace.com"
-        />
-      </Styled(View)>
       <Field
         className="visibility-recaptcha"
         component={
@@ -239,6 +186,7 @@ exports[`Add gift card form component render error message 1`] = `
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="black"
         margin={null}
         numberOfLines={null}
         text="lbl_payment_giftCardMessageHeading"
@@ -262,7 +210,7 @@ exports[`Add gift card form component render error message 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}
@@ -275,7 +223,7 @@ exports[`Add gift card form component render error message 1`] = `
         iconSize="fs12"
         locator=""
         navigation={Object {}}
-        onPress={null}
+        onPress={[Function]}
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -287,7 +235,7 @@ exports[`Add gift card form component render error message 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="black"
         customStyle={Object {}}
         customTextStyle={null}
@@ -316,24 +264,10 @@ exports[`Add gift card form component render error message 1`] = `
 exports[`Add gift card form component should render component correctly 1`] = `
 <ScrollViewMock
   addGiftCardError={true}
-  addGiftCardResponse={null}
   change={[MockFunction]}
   goBackToPayment={[MockFunction]}
-  handleSubmit={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          [Function],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  handleSubmit={[MockFunction]}
+  isRecapchaEnabled={true}
   isRow={false}
   keyboardShouldPersistTaps="handled"
   labels={
@@ -452,14 +386,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
       type="tel"
     />
     <View>
-      <Styled(View)>
-        <Recaptcha
-          onMessage={[Function]}
-          siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-          style={Object {}}
-          url="https://www.childrensplace.com"
-        />
-      </Styled(View)>
       <Field
         className="visibility-recaptcha"
         component={
@@ -520,6 +446,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="black"
         margin={null}
         numberOfLines={null}
         text="lbl_payment_giftCardMessageHeading"
@@ -543,7 +470,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="white"
         customStyle={Object {}}
         customTextStyle={null}
@@ -556,7 +483,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
         iconSize="fs12"
         locator=""
         navigation={Object {}}
-        onPress={null}
+        onPress={[Function]}
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -568,7 +495,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     <Styled(View)>
       <Styled(CustomButton)
         active={false}
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         color="black"
         customStyle={Object {}}
         customTextStyle={null}

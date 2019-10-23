@@ -21,6 +21,7 @@ class BonusPointsView extends React.Component {
     orderDetails: PropTypes.shape({}),
     showAccordian: PropTypes.bool.isRequired,
     additionalClassNameModal: PropTypes.string.isRequired,
+    isDefaultOpen: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class BonusPointsView extends React.Component {
     isPlcc: false,
     getBonusDaysData: () => {},
     orderDetails: {},
+    isDefaultOpen: false,
   };
 
   constructor(props) {
@@ -59,56 +61,64 @@ class BonusPointsView extends React.Component {
       orderDetails,
       showAccordian,
       additionalClassNameModal,
+      isDefaultOpen,
     } = this.props;
     const { openModalState } = this.state;
     return (
       <>
-        {view === constants.VIEWS.READ && (
-          <BonusPointsReadSection
-            labels={labels.account.myPlaceRewards}
-            toggleBonusPointsModal={this.toggleBonusPointsModal}
-            availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
-            usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
-            isPlcc={isPlcc}
-          />
-        )}
-        {view === constants.VIEWS.EDIT && (
-          <div className={className}>
-            <BonusPointsSection
-              labels={labels && labels.global && labels.global.bonusPoints}
-              bonusData={bonusData}
-              toggleBonusPointsModal={this.toggleBonusPointsModal}
-              getBonusDaysData={getBonusDaysData}
-              orderDetails={orderDetails}
-              showAccordian={showAccordian}
-            />
-          </div>
-        )}
-        <Modal
-          isOpen={openModalState}
-          onRequestClose={this.toggleBonusPointsModal}
-          overlayClassName="TCPModal__Overlay"
-          className="TCPModal__Content bonus-details-modal"
-          heading={`${getLabelValue(
-            labels,
-            'lbl_bonusPoints_placeRewardsBonus',
-            'bonusPoints',
-            'global'
-          )} ${getLabelValue(
-            labels,
-            'lbl_bonusPoints_placeRewardsPoints',
-            'bonusPoints',
-            'global'
-          )} DETAILS`}
-          fixedWidth
-          maxWidth="704px"
-          minHeight="550px"
-          showHeading
-          inheritedStyles={modalstyles}
-          customWrapperClassName={additionalClassNameModal}
+        <div
+          className={`${
+            showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
+          } elem-mb-MED ${className}`}
         >
-          <RichText richTextHtml={bonusDetailsData} dataLocator="bonus-points-details" />
-        </Modal>
+          {view === constants.VIEWS.READ && (
+            <BonusPointsReadSection
+              labels={labels.account.myPlaceRewards}
+              toggleBonusPointsModal={this.toggleBonusPointsModal}
+              availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
+              usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
+              isPlcc={isPlcc}
+            />
+          )}
+          {view === constants.VIEWS.EDIT && (
+            <div className={className}>
+              <BonusPointsSection
+                labels={labels && labels.global && labels.global.bonusPoints}
+                bonusData={bonusData}
+                toggleBonusPointsModal={this.toggleBonusPointsModal}
+                getBonusDaysData={getBonusDaysData}
+                orderDetails={orderDetails}
+                showAccordian={showAccordian}
+                isDefaultOpen={isDefaultOpen}
+              />
+            </div>
+          )}
+          <Modal
+            isOpen={openModalState}
+            onRequestClose={this.toggleBonusPointsModal}
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content bonus-details-modal"
+            heading={`${getLabelValue(
+              labels,
+              'lbl_bonusPoints_placeRewardsBonus',
+              'bonusPoints',
+              'global'
+            )} ${getLabelValue(
+              labels,
+              'lbl_bonusPoints_placeRewardsPoints',
+              'bonusPoints',
+              'global'
+            )} DETAILS`}
+            fixedWidth
+            maxWidth="704px"
+            minHeight="550px"
+            showHeading
+            inheritedStyles={modalstyles}
+            customWrapperClassName={additionalClassNameModal}
+          >
+            <RichText richTextHtml={bonusDetailsData} dataLocator="bonus-points-details" />
+          </Modal>
+        </div>
       </>
     );
   }

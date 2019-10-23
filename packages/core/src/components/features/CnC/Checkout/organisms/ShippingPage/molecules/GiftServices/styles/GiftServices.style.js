@@ -6,6 +6,9 @@ export default css`
   }
   .brand-image {
     width: 83px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding-top: 11px;
+    }
   }
   .shortDesc {
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
@@ -49,8 +52,14 @@ export default css`
   .dropdownliBottomBorder {
     height: 71px;
     cursor: pointer;
+    padding: 0;
     padding-top: 2px;
     padding-bottom: 0px;
+    > div {
+      height: 100%;
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
   }
   .price {
     float: right;
@@ -69,6 +78,14 @@ export default css`
     width: auto;
     margin-left: -12px;
     padding-right: 15px;
+    display: flex;
+    align-self: center;
+  }
+
+  .tcp-radio-button {
+    .radio-button-checked {
+      top: 18px;
+    }
   }
 
   .normal-select-box {
@@ -124,7 +141,7 @@ export default css`
   }
 
   .gift-message {
-    width: 99%;
+    width: 98%;
     height: 146px;
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;

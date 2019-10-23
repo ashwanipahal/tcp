@@ -64,6 +64,17 @@ const atomActions = [
     path: `${atomsBasePath}/index.js`,
     templateFile: './plop/templates/atom/index.js',
   },
+  'Copying story files..',
+  {
+    type: 'add',
+    path: `${atomsBasePath}/stories/{{componentName}}.stories.jsx`,
+    templateFile: './plop/templates/atom/stories/MyComponent.stories.jsx',
+  },
+  {
+    type: 'add',
+    path: `${atomsBasePath}/stories/{{componentName}}.stories.native.jsx`,
+    templateFile: './plop/templates/atom/stories/MyComponent.stories.native.jsx',
+  },
   'Modifying the files...',
   function replaceTextOne(ans) {
     return TextReplace(ans, /MyComponent/g, changeCase.pascal(ans.componentName));

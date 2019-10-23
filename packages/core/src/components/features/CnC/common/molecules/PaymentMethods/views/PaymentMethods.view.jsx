@@ -8,7 +8,9 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/PaymentMethods.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
-const PaymentMethods = ({ className, paymentHeader, labels }) => {
+const PaymentMethods = ({ className, paymentHeader, labels, isVenmoEnabled }) => {
+  const { paymentMethod, paypal } = labels;
+  const payPalLabel = `${paymentMethod} ${paypal}`;
   return (
     <>
       <BodyCopy
@@ -33,6 +35,7 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="creditCardRadioBtn"
           />
         </Col>
         <Col
@@ -43,28 +46,32 @@ const PaymentMethods = ({ className, paymentHeader, labels }) => {
             component={LabeledRadioButton}
             key="PayPal"
             selectedValue="payPal"
+            aria-label={payPalLabel}
             title=""
             subtitle=""
             name="paymentMethodId"
             hideSubtitleOnMobile
             variation="secondary"
+            data-locator="paypalRadioBtn"
           />
         </Col>
-
-        <Col
-          colSize={{ small: 2, medium: 4, large: 0 }}
-          className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
-        >
-          <Field
-            component={LabeledRadioButton}
-            key="Venmo"
-            selectedValue="venmo"
-            title=""
-            subtitle=""
-            name="paymentMethodId"
-            variation="secondary"
-          />
-        </Col>
+        {isVenmoEnabled && (
+          <Col
+            colSize={{ small: 2, medium: 4, large: 0 }}
+            className="radio-method payment-method-box payment-method-venmo-img hideOnDesktop"
+          >
+            <Field
+              component={LabeledRadioButton}
+              key="Venmo"
+              selectedValue="venmo"
+              title=""
+              subtitle=""
+              name="paymentMethodId"
+              variation="secondary"
+              data-locator="venmoRadioBtn"
+            />
+          </Col>
+        )}
       </Row>
     </>
   );
@@ -74,10 +81,12 @@ PaymentMethods.propTypes = {
   className: PropTypes.string,
   paymentHeader: PropTypes.string,
   labels: PropTypes.shape({}).isRequired,
+  isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch
 };
 PaymentMethods.defaultProps = {
   className: '',
   paymentHeader: '',
+  isVenmoEnabled: false,
 };
 
 export default withStyles(PaymentMethods, styles);

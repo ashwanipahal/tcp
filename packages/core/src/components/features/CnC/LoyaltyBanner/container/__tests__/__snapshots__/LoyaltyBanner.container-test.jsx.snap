@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
+<Styled(LoyaltyBanner)
+  getCurrencySymbol=""
+  isConfirmationPage={false}
+  isGuest={false}
+  isPlcc={false}
+  isProductDetailView={false}
+  pageCategory=""
+  thresholdValue={16.66}
+/>
+`;
