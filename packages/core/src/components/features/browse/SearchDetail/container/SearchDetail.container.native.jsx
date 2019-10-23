@@ -141,6 +141,7 @@ class SearchDetailContainer extends React.PureComponent {
           <View>
             {this.searchQuery && products && products.length > 0 ? (
               <SearchDetail
+                margins="0 12px 0 12px"
                 filters={filters}
                 formValues={formValues}
                 filtersLength={filtersLength}

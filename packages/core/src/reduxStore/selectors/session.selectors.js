@@ -101,3 +101,10 @@ export const getCurrentCurrencySymbol = state => {
   const currency = getCurrentCurrency(state);
   return currency === USA_VALUES.currency ? USA_VALUES.currencySymbol : `${currency} `;
 };
+
+export const getRecalcOrderPointsInterval = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BRIERLEY_ORD_RECALC_CACHING_INTERVAL
+  );
+};
