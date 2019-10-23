@@ -70,6 +70,9 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
       labels={Object {}}
       showVenmo={false}
     />
+    <Connect(LoyaltyBannerContainer)
+      pageCategory="isAddedToBagPage"
+    />
     <BOSSBanner
       labels={Object {}}
     />

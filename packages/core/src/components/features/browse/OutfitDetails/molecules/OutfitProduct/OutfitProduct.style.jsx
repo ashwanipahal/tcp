@@ -13,6 +13,13 @@ export default css`
     }
   }
 
+  .clear-button {
+    border: none;
+    background: transparent;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    width: 35px;
+  }
+
   .image-section {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     color: ${props => props.theme.colorPalette.gray[600]};

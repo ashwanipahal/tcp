@@ -44,6 +44,7 @@ describe('Checkout Reducer', () => {
       alertMessage: null,
       paymentError: null,
       addressError: null,
+      checkoutServerError: null,
     },
   });
 
@@ -115,6 +116,10 @@ describe('Checkout Reducer', () => {
 
   const resetGiftcardError = {
     type: 'RESET_GIFTCARD_ERROR',
+  };
+
+  const setCheckoutServerError = {
+    type: 'SET_SERVER_ERROR_CHECKOUT',
   };
 
   const setOrderTotal = {
@@ -197,6 +202,13 @@ describe('Checkout Reducer', () => {
       ...resetGiftcardError,
     });
     expect(newState.getIn(['values', 'giftCardError'])).toEqual(null);
+  });
+
+  it('SET_SERVER_ERROR_CHECKOUT', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...setCheckoutServerError,
+    });
+    expect(newState.getIn(['uiFlags', 'checkoutServerError'])).toEqual(undefined);
   });
 
   it('SET_ORDER_TOTAL', () => {
