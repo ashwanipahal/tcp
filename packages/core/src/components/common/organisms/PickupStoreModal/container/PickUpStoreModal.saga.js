@@ -58,7 +58,7 @@ export function* getUserCartStores(action) {
     const { alwaysSearchForBOSS } = payload;
     yield put(setUserCartStores({ stores: null }));
     yield put(setStoreSearchError(''));
-    let stores = 0;
+    let stores = [];
     if (cartItemsCount > 0) {
       stores = yield call(getCartStoresPlusInventory, payload.apiPayload);
     }
