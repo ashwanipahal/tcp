@@ -139,8 +139,6 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
-    width: 53px;
-    height: 19px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
@@ -149,8 +147,6 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     margin-left: 6px;
-    width: 35px;
-    height: 19px;
     font-stretch: normal;
   }
 
