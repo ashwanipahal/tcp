@@ -1,7 +1,7 @@
 import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 import { findCategoryIdandName } from '../components/features/browse/ProductListing/container/ProductListing.util';
-import urlConfig from './SEOCannonicalUrls.config';
+import urlConfig from './SEOCanonicalUrls.config';
 
 const TCP_BASE_URL = 'https://www.childrensplace.com';
 const TCP_TWITTER_SITE_TAG = '@childrensplace';
@@ -10,8 +10,6 @@ const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
-const TCP_LABEL = "The Children's Place";
-const GYM_LABEL = 'Gymboree';
 
 const SEO_CONFIG = {
   canonical: TCP_BASE_URL,
@@ -208,7 +206,7 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
   });
 };
 
-const getHomeSEOTags = (store, router, categoryKey) => {
+const getGenericSeoTags = (store, router, categoryKey, path = '') => {
   const brandDetails = getBrandDetails();
   const { brandId } = getAPIConfig();
   const brand = brandId.toUpperCase();
@@ -222,12 +220,11 @@ const getHomeSEOTags = (store, router, categoryKey) => {
     title: pageTitle,
     description,
   };
-  const cannonicalUrlConfig = {
+  const canonicalUrlConfig = {
     brand,
-    path: 'home',
+    path,
   };
-  const hrefLangs = urlConfig(cannonicalUrlConfig);
-
+  const hrefLangs = urlConfig(canonicalUrlConfig);
   const twitter = {
     cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
     site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
@@ -249,54 +246,6 @@ function getPlpSEOTags(store, router, categoryKey) {
   const navigationTree = store.getState().Navigation.navigationData;
   return findCategoryIdandName(navigationTree, categoryKey);
 }
-
-export const getSearchSEOTags = (store, router, categoryKey) => {
-  const { isUSStore } = getAPIConfig();
-
-  const brandDetails = getBrandDetails();
-  let brandLabel;
-  if (brandDetails.BRAND_NAME === 'TCP') {
-    brandLabel = TCP_LABEL;
-  } else {
-    brandLabel = GYM_LABEL;
-  }
-
-  const usTitle = `Kids Clothes & Baby Clothes | ${brandLabel} | Free Shipping*`;
-  const caTitle = `Kids Clothes & Baby Clothes | ${brandLabel} CA | Free Shipping*`;
-
-  const usDecs = `Check out ${brandLabel} for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
-  const caDecs = `Check out ${brandLabel} CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
-
-  const openGraph = {
-    url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
-    title: isUSStore ? usTitle : caTitle,
-    description: isUSStore ? usDecs : caDecs,
-  };
-  const hrefLangs = [
-    {
-      id: 'us-en',
-      canonicalUrl: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
-    },
-  ];
-
-  const twitter = {
-    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
-    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
-  };
-
-  const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
-
-  return getMetaSEOTags({
-    title: isUSStore ? usTitle : caTitle,
-    description: isUSStore ? usDecs : caDecs,
-    canonical,
-    twitter,
-    openGraph,
-    hrefLangs,
-    keywords: SEO_CONFIG.keywords.content,
-    robots: SEO_CONFIG.robots.content,
-  });
-};
 
 const getProductName = store => {
   return (
@@ -371,7 +320,7 @@ export const deriveSEOTags = (pageId, store, router) => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
   if (pageId === PAGES.HOME_PAGE) {
     const categoryKey = router.asPath;
-    return getHomeSEOTags(store, router, categoryKey);
+    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
   }
   if (pageId === PAGES.PRODUCT_LISTING_PAGE) {
     const categoryKey = router.asPath;
@@ -380,11 +329,11 @@ export const deriveSEOTags = (pageId, store, router) => {
   }
   if (pageId === PAGES.SEARCH_PAGE || pageId === PAGES.OUTFIT) {
     const categoryKey = `/${pageId}`;
-    return getSearchSEOTags(store, router, categoryKey);
+    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
   }
   if (pageId === PAGES.PRODUCT_DESCRIPTION_PAGE) {
     const categoryKey = router.asPath;
-    return getSearchSEOTags(store, router, categoryKey);
+    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
   }
 
   return getDefaultSEOTags();

@@ -3,7 +3,7 @@ export const BRAND_CONFIG = {
   GYM: 'gymboree.com',
 };
 
-const cannonicalUrlsConfig = context => {
+const canonicalUrlsConfig = context => {
   const { brand, path } = context;
 
   return [
@@ -26,4 +26,4 @@ const cannonicalUrlsConfig = context => {
   ];
 };
 
-export default cannonicalUrlsConfig;
+export default canonicalUrlsConfig;
