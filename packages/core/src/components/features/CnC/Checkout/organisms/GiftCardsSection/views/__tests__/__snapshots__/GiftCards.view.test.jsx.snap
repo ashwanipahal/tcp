@@ -461,7 +461,6 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         disabled={false}
         fullWidth="true"
         onClick={[Function]}
-        type="submit"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -839,7 +838,6 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         disabled={false}
         fullWidth="true"
         onClick={[Function]}
-        type="submit"
       />
     </Styled(Col)>
   </Styled(Row)>

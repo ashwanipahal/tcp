@@ -203,11 +203,18 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     };
   };
 
+  handleSubmitData = e => {
+    const { handleSubmit } = this.props;
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit(this.handleSubmit.bind(this))(e);
+  };
+
   render() {
-    const { handleSubmit, labels, isLoading, isRow } = this.props;
+    const { labels, isLoading, isRow, isFromReview } = this.props;
     const colProps = this.getColProps();
     return (
-      <form onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
+      <form onSubmit={this.handleSubmitData}>
         <Row fullBleed className="elem-mb-MED">
           <Col ignoreGutter={{ small: true }} {...colProps.cardNoWithIsRow}>
             <Field
@@ -276,7 +283,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             </Col>
           )}
 
-          {this.renderButtons(isRow, labels, isLoading)}
+          {this.renderButtons(isRow, labels, isLoading, isFromReview)}
         </Row>
       </form>
     );

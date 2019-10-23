@@ -72,6 +72,7 @@ const {
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
   getShippingAddressList,
+  getIsPaymentDisabled,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -349,6 +350,7 @@ const mapStateToProps = state => {
     getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
     reviewProps: {
       labels: getReviewLabels(state),
+      isPaymentDisabled: getIsPaymentDisabled(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     checkoutServerError: selectors.getCheckoutServerError(state),

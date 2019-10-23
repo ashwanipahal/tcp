@@ -132,7 +132,6 @@ const renderAddNewGiftButton = (
             onClick={() => showAddGiftCard()}
             className="new_gift_card_button"
             buttonVariation="variable-width"
-            type="submit"
             data-locator="gift_apply_button"
             fullWidth="true"
             disabled={false}
