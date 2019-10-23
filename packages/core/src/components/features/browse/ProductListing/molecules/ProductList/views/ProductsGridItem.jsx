@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -409,9 +410,10 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
+      viaModule,
     } = this.props;
+    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
-
     const prodNameAltImages = longProductTitle || name;
     const {
       selectedColorProductId,

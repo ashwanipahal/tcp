@@ -86,6 +86,7 @@ exports[`Order Summary Details component should renders correctly 1`] = `
     fontFamily="secondary"
     fontSizeVariation="large"
     href="#"
+    noLink={true}
     onClick={[Function]}
     underline={true}
   >

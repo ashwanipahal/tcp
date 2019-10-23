@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   styles,
@@ -88,8 +89,9 @@ const ListItem = props => {
     renderPriceAndBagOnly,
     renderPriceOnly,
     productImageWidth,
+    viaModule,
   } = props;
-
+  logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
   const { name, isGiftCard } = productInfo;
@@ -388,6 +390,7 @@ ListItem.propTypes = {
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
   productImageWidth: PropTypes.number,
+  viaModule: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -404,6 +407,7 @@ ListItem.defaultProps = {
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
   productImageWidth: '',
+  viaModule: '',
 };
 
 export default withStyles(ListItem, styles);

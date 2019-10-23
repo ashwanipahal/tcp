@@ -7,7 +7,7 @@ exports[`Header component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cqCuEk",
+        "componentId": "sc-dliRfk",
         "isStatic": false,
         "rules": Array [
           "
@@ -73,7 +73,7 @@ exports[`Header component renders correctly 1`] = `
       "displayName": "Styled(Header)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cqCuEk",
+      "styledComponentId": "sc-dliRfk",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

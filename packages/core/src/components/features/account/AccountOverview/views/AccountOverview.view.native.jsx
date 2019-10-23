@@ -186,7 +186,11 @@ class AccountOverview extends PureComponent<Props> {
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
-              <OrdersTile labels={labels} navigation={navigation} />
+              <OrdersTile
+                labels={labels}
+                navigation={navigation}
+                handleComponentChange={handleComponentChange}
+              />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />

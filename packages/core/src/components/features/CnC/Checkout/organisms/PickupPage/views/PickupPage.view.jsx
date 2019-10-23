@@ -32,6 +32,11 @@ class PickUpFormPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { pickupDidMount } = this.props;
+    pickupDidMount();
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -181,6 +186,7 @@ class PickUpFormPart extends React.Component {
       dispatch,
       handleSubmit,
       showAccordian,
+      ServerErrors,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -204,7 +210,7 @@ class PickUpFormPart extends React.Component {
             dataLocator="pickup-title"
             className="summary-title-pick-up"
           />
-
+          {ServerErrors && <ServerErrors />}
           <div className="pickUpContact" dataLocator="pickup-contact">
             <FormSection name="pickUpContact">
               {isGuest ? (
@@ -334,9 +340,11 @@ PickUpFormPart.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isVenmoPickupDisplayed: PropTypes.bool,
+  ServerErrors: PropTypes.node.isRequired,
 };
 
 PickUpFormPart.defaultProps = {
