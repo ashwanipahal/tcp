@@ -53,6 +53,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -480,6 +481,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -903,6 +905,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -1344,6 +1347,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -1767,6 +1771,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -2190,6 +2195,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -2627,6 +2633,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -3076,6 +3083,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -3513,6 +3521,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -3962,6 +3971,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -4399,6 +4409,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -4822,6 +4833,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -5263,6 +5275,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -5704,6 +5717,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -6159,6 +6173,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -6705,7 +6720,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     right: ",
           [Function],
           ";
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -6910,8 +6925,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
@@ -7182,7 +7197,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     right: ",
           [Function],
           ";
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -7387,8 +7402,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 

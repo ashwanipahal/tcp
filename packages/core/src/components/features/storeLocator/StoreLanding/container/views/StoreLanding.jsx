@@ -27,6 +27,7 @@ export class StoreLanding extends PureComponent {
     isOutlet: false,
     isGym: isGymboree(),
     centeredStoreId: '',
+    showSubmitError: false,
   };
 
   openStoreDetails = (event, store) => {
@@ -108,7 +109,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { centeredStoreId } = this.state;
+    const { centeredStoreId, showSubmitError } = this.state;
     const {
       setFavoriteStore,
       favoriteStore,
@@ -117,7 +118,11 @@ export class StoreLanding extends PureComponent {
       searchDone,
       geoLocationEnabled,
     } = this.props;
-    if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
+    if (
+      showSubmitError ||
+      (searchDone &&
+        !(suggestedStoreList && (suggestedStoreList.length || suggestedStoreList.size)))
+    ) {
       return (
         <Notification
           status="info"
@@ -192,6 +197,11 @@ export class StoreLanding extends PureComponent {
     });
   };
 
+  showSubmitError = value => {
+    const { showSubmitError } = this.state;
+    if (showSubmitError !== value) this.setState({ showSubmitError: value });
+  };
+
   render() {
     const {
       className,
@@ -247,6 +257,7 @@ export class StoreLanding extends PureComponent {
                     searchIcon={searchIcon}
                     markerIcon={markerIcon}
                     getLocationStores={getLocationStores}
+                    showSubmitError={this.showSubmitError}
                     selectedCountry={isCanada() ? 'CA' : 'USA'}
                   />
                 </Col>

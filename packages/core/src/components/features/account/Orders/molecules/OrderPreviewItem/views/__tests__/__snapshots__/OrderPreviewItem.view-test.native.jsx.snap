@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Image)
+        source={
+          Object {
+            "uri": "https://test4.childrensplace.comtest",
+          }
+        }
+      />
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/tcp-logo.png",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(Styled(View))
+      spacingStyles="padding-right-SM padding-left-SM"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        margin={null}
+        numberOfLines={null}
+        text="test product"
+        textAlign="left"
+        textDecoration={null}
+      />
+      <Styled(Styled(View))
+        spacingStyles="margin-top-MED"
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="semibold"
+          margin={null}
+          numberOfLines={null}
+          text="lbl_orderDetails_quantity"
+          textDecoration={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          margin={null}
+          numberOfLines={null}
+          text={false}
+          textDecoration={null}
+        />
+      </Styled(Styled(View))>
+    </Styled(Styled(View))>
+  </Styled(View)>
+</Fragment>
+`;

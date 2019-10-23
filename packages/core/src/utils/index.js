@@ -1,7 +1,5 @@
 export {
   default,
-  enableBodyScroll,
-  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -77,5 +75,8 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  generateTraceId,
+  enableBodyScroll,
+  disableBodyScroll,
   readCookieMobileApp,
 } from './utils';

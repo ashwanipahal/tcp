@@ -23,7 +23,6 @@ describe('CheckoutShipping saga', () => {
     CheckoutShippingSaga.next();
     CheckoutShippingSaga.next();
     CheckoutShippingSaga.next();
-    CheckoutShippingSaga.next(true);
     expect(CheckoutShippingSaga.next(false).value).toEqual(put(setShippingLoadingState(false)));
   });
 

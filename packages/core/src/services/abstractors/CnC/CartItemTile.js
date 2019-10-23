@@ -20,6 +20,7 @@ import {
 import { isCanada as isCASite } from '../../../utils';
 import CARTITEMTILE_CONSTANTS from '../../../components/features/CnC/CartItemTile/CartItemTile.constants';
 import { UPDATE_ITEM_IN_CART } from '../../config';
+import { setLocalStorage } from '../../../utils/localStorageManagement';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -111,6 +112,10 @@ export const getProductImgPath = (id, excludeExtension) => {
   };
 };
 
+const setBrierleyOrderPointsTimeCache = () => {
+  setLocalStorage({ key: 'orderPointsTimeStamp', value: new Date().getTime() });
+};
+
 // NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
 export function getPromotionType(promotionType) {
   switch (promotionType) {
@@ -131,7 +136,7 @@ export const removeItem = orderItemId => {
       quantity: '0',
     });
   } else {
-    for (let value of orderItemId.values()) {
+    for (let value of orderItemId) {
       orderItems.push({
         orderItemId: value,
         quantity: '0',
@@ -720,7 +725,7 @@ export const getOrderDetailsData = () => {
     const orderDetailsResponse = res.body;
 
     return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, isCASite()),
     };
   });
 };
@@ -746,18 +751,18 @@ export const getProductInfoForTranslationData = query => {
 
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  excludeCartItems = true,
   recalcRewards,
-  isCanada,
   isCheckoutFlow,
   isRadialInvEnabled,
+  isLoggedIn,
 }) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
       pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
       langId: -1,
-      source: '',
+      source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
       recalculate: !!recalcRewards,
     },
@@ -768,7 +773,9 @@ export const getCartData = ({
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-
+    if (res.req && res.req.header && res.req.header.recalculate) {
+      setBrierleyOrderPointsTimeCache();
+    }
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
     const coupons = isCheckoutFlow
@@ -781,7 +788,7 @@ export const getCartData = ({
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
         excludeCartItems,
-        isCanada,
+        isCASite(),
         isRadialInvEnabled
       ),
     };

@@ -31,6 +31,7 @@ const ModuleO = props => {
     onQuickViewOpenClick,
     item,
     priceOnly,
+    viaModule,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -57,6 +58,7 @@ const ModuleO = props => {
   return (
     <View>
       <ListItem
+        paddings="12px 0 12px 12px"
         item={item}
         isMatchingFamily={isMatchingFamily}
         badge1={topBadge}
@@ -73,6 +75,7 @@ const ModuleO = props => {
         renderPriceAndBagOnly
         renderPriceOnly={priceOnly}
         productImageWidth={PRODUCT_IMAGE_WIDTH}
+        viaModule={viaModule}
       />
     </View>
   );
@@ -86,6 +89,7 @@ ModuleO.propTypes = {
   onQuickViewOpenClick: PropTypes.func,
   item: PropTypes.shape({}).isRequired,
   priceOnly: PropTypes.bool,
+  viaModule: PropTypes.string,
 };
 
 ModuleO.defaultProps = {
@@ -95,6 +99,7 @@ ModuleO.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   priceOnly: false,
+  viaModule: '',
 };
 
 export default ModuleO;
