@@ -21,6 +21,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.instance().SaveAndCancelButton();
@@ -44,6 +45,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.setState({ isEditing: true });
@@ -68,6 +70,7 @@ describe('PickUpFormPart component', () => {
       currentPhoneNumber: '',
       handleSubmit: jest.fn(),
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     component.find(Anchor).simulate('press', { preventDefault: jest.fn() });
