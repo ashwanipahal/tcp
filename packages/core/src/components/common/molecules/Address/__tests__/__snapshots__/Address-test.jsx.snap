@@ -204,7 +204,7 @@ exports[`Address component should renders correctly when different addressLine a
       link={null}
       textAlign="left"
     >
-      test city, test state 111-111
+      test city, state 111-111
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
@@ -294,7 +294,7 @@ exports[`Address component should renders correctly when optional fields are not
       link={null}
       textAlign="left"
     >
-      test city, test state 111-111
+      test city, state 111-111
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
