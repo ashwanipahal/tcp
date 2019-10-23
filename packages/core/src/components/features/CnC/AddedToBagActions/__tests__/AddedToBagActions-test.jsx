@@ -9,6 +9,9 @@ describe('AddedToBagActions component', () => {
       onClickViewBag: jest.fn(),
       labels: {},
       modalInfo: {},
+      checkoutServerError: {
+        errorMessage: 'something went wrong',
+      },
     };
     const component = shallow(<AddedToBagActionsVanilla {...props} />);
     expect(component).toMatchSnapshot();

@@ -66,7 +66,9 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(View)>
+    <Styled(View)
+      tileIndex={0}
+    >
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation=""
@@ -86,6 +88,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
           height="202px"
           host=""
           imgConfig="t_mod_T_img_m"
+          itemBrand=""
           source=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1565145744/mod-h-kids_b9ivyr.png"
@@ -93,7 +96,9 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
         />
       </Styled(Anchor)>
     </Styled(View)>
-    <Styled(View)>
+    <Styled(View)
+      tileIndex={1}
+    >
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation=""
@@ -113,6 +118,7 @@ exports[`ModuleTVanilla ModuleT should render correctly 1`] = `
           height="202px"
           host=""
           imgConfig="t_mod_T_img_m"
+          itemBrand=""
           source=""
           testID="undefined1"
           url="https://test5.childrensplace.com/image/upload/v1562731929/Image_14_bp7ih0.jpg"

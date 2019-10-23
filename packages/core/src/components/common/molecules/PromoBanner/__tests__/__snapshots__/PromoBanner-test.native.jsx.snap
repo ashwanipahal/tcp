@@ -273,13 +273,13 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
     color="white"
     dataLocator=""
     fontFamily="primary"
-    fontSize="fs64"
     fontWeight="black"
     lineHeight="64px"
     margin={null}
     numberOfLines={null}
     style={
       Object {
+        "fontSize": 64,
         "height": 58,
         "marginTop": 8,
       }
@@ -329,13 +329,13 @@ exports[`PromoTextBanner native component renders all style correctly 7`] = `
     color="black"
     dataLocator=""
     fontFamily="primary"
-    fontSize="fs64"
     fontWeight="black"
     lineHeight="64px"
     margin={null}
     numberOfLines={null}
     style={
       Object {
+        "fontSize": 64,
         "height": 58,
         "marginTop": 8,
       }
@@ -385,14 +385,14 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
     color="black"
     dataLocator=""
     fontFamily="primary"
-    fontSize="fs64"
     fontWeight="black"
-    lineHeight="64px"
+    lineHeight="62px"
     margin={null}
     numberOfLines={null}
     style={
       Object {
-        "height": 58,
+        "fontSize": 62,
+        "height": 54,
         "marginTop": 8,
       }
     }
@@ -405,14 +405,14 @@ exports[`PromoTextBanner native component renders all style correctly 8`] = `
       color="black"
       dataLocator=""
       fontFamily="primary"
-      fontSize="fs42"
+      fontSize="fs36"
       fontWeight="black"
-      lineHeight="42px"
+      lineHeight="36px"
       margin={null}
       numberOfLines={null}
       style={
         Object {
-          "height": 33,
+          "height": 30,
         }
       }
       textDecoration={null}

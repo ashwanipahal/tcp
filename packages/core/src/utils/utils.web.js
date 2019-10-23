@@ -37,7 +37,7 @@ export const importGraphQLClientDynamically = module => {
 
 export const getUrlParameter = name => {
   const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-  const regex = new RegExp(`[\\?&] ${replacedName} =([^&#]*)`);
+  const regex = new RegExp(`[\\?&]${replacedName}=([^&#]*)`);
   const results = regex.exec(window.location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
@@ -229,26 +229,6 @@ export const getViewportInfo = () => {
 };
 
 /**
- * Enable Body Scroll
- */
-export const enableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
-  }
-};
-
-/**
  * Show Dark Overlay in background
  */
 export const showOverlay = () => {
@@ -362,8 +342,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
-    productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
+    assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
+    assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
     unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,

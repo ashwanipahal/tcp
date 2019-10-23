@@ -4,11 +4,13 @@ import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
-import { setShippingLoadingState } from './Checkout.action';
+import CHECKOUT_ACTIONS, { setShippingLoadingState } from './Checkout.action';
 import { isCanada } from '../../../../../utils/utils';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
 import { redirectToBilling } from './Checkout.saga.util';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
@@ -65,6 +67,11 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
   } catch (err) {
     yield put(setShippingLoadingState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(err, errorsMapping);
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
 }
 

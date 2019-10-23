@@ -7,7 +7,6 @@ const HomePageSlots = props => {
   return slots.map(slot => {
     const Module = modules[slot.moduleName];
     const { data: slotData, contentId, accessibility } = slot;
-
     return (
       Module &&
       slotData && <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />

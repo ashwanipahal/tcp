@@ -22,6 +22,7 @@ class BillingPage extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool,
+    ServerErrors: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
@@ -51,11 +52,13 @@ class BillingPage extends React.PureComponent {
       creditFieldLabels,
       isVenmoPaymentInProgress,
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
+      ServerErrors,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
+        {ServerErrors && <ServerErrors />}
         <GiftCardsContainer />
         {!isGuest ? (
           <div className="payment-container">
