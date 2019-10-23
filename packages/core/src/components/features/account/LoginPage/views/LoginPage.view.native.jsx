@@ -84,6 +84,7 @@ class LoginView extends React.PureComponent {
       showLogin,
       userplccCardNumber,
       userplccCardId,
+      updateHeader,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -111,6 +112,7 @@ class LoginView extends React.PureComponent {
           showLogin={showLogin}
           userplccCardNumber={userplccCardNumber}
           userplccCardId={userplccCardId}
+          updateHeader={updateHeader}
         />
       </ScrollViewStyle>
     );
@@ -137,6 +139,7 @@ LoginView.propTypes = {
   showLogin: PropTypes.func,
   userplccCardNumber: PropTypes.string,
   userplccCardId: PropTypes.string,
+  updateHeader: PropTypes.func.isRequired,
 };
 
 LoginView.defaultProps = {

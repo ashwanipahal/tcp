@@ -14,9 +14,15 @@ const ImageWrapper = styled.View`
   right: 0;
 `;
 
+const FavImageWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  justify-content: center;
+`;
+
 const FavtWrapper = styled.View`
   width: 32%;
   position: relative;
+  flex-direction: row;
 `;
 
 const TouchabelContainer = styled.TouchableOpacity`
@@ -65,4 +71,5 @@ export {
   FavoritesWrapper,
   TextWrapper,
   StyledImage,
+  FavImageWrapper,
 };

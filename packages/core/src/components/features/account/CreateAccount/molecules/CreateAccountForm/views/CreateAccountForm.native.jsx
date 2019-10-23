@@ -3,7 +3,11 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ReactTooltip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import ImageComp from '@tcp/core/src/components/common/atoms/Image';
+import IconInfoLogo from '@tcp/core/src/assets/info-icon.png';
 import TextBox from '../../../../../../common/atoms/TextBox';
+import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Styles,
@@ -13,6 +17,7 @@ import {
   PasswordWrapper,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
+  IconContainer,
 } from '../styles/CreateAccountForm.style.native';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -23,18 +28,6 @@ import TouchFaceIdCheckBox from '../../../../common/molecule/FaceTouchCheckBox/v
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 class CreateAccountForm extends PureComponent<Props> {
-  onSaveMyPlaceRewards = value => {
-    console.log('onSaveMyPlaceRewards: ', value);
-  };
-
-  onUseTouchID = value => {
-    console.log('onUseTouchID: ', value);
-  };
-
-  onUseFaceID = value => {
-    console.log('onUseFaceID: ', value);
-  };
-
   showLoginSection = () => {
     const { showLogin } = this.props;
     showLogin();
@@ -121,6 +114,17 @@ class CreateAccountForm extends PureComponent<Props> {
               secureTextEntry={!hideShowPwd}
             />
 
+            <IconContainer>
+              <ReactTooltip
+                withOverlay={false}
+                popover={<PasswordRequirement labels={labels.password} />}
+                height={200}
+                width={300}
+                textAlign="left"
+              >
+                <ImageComp source={IconInfoLogo} height={12} width={12} />
+              </ReactTooltip>
+            </IconContainer>
             <ConfirmHideShowField>
               <Field
                 name="hide-show-pwd"

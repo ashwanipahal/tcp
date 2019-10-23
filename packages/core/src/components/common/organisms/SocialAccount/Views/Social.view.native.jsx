@@ -305,7 +305,7 @@ class Socialview extends React.PureComponent {
       this.refactorSocialDetails(getSocialAcc);
     }
     const { assetHost, siteId, instakey } = getAPIConfig();
-    const redirectUrl = `${assetHost}/${siteId}/instagram`;
+    const redirectUrl = `${assetHost}/${siteId}/instagram?token=tcprwd`;
 
     return (
       <View>
