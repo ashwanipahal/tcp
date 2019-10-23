@@ -96,6 +96,7 @@ class CartItemTile extends React.Component {
     const isItemShipToHome = !store;
     const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
     const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
     onPickUpOpenClick({
       colorProductId: productPartNumber,
       orderInfo: {
@@ -112,6 +113,7 @@ class CartItemTile extends React.Component {
       isBopisCtaEnabled,
       isBossCtaEnabled,
       isItemShipToHome,
+      alwaysSearchForBOSS,
     });
   };
 

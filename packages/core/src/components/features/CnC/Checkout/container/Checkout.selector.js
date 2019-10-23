@@ -928,6 +928,13 @@ const getShippingAddressList = createSelector(
   }
 );
 
+const getIsBillingVisited = createSelector(
+  getCheckoutUiFlagState,
+  uiFlags => {
+    return uiFlags && uiFlags.get('isBillingVisited');
+  }
+);
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1011,4 +1018,5 @@ export default {
   getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
   getShippingAddressList,
+  getIsBillingVisited,
 };

@@ -4,7 +4,7 @@ const FooterLinksSection = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 12px 0;
+  padding-top: 12px;
 `;
 
 const LearnMoreWrapper = styled.View`

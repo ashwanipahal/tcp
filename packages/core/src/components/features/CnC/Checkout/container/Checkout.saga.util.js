@@ -32,7 +32,7 @@ import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
-import { isCanada, isMobileApp } from '../../../../../utils';
+import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 export const pickUpRouting = ({
@@ -106,11 +106,11 @@ export function* updateShipmentMethodSelection({ payload }) {
 
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
-        calcsEnabled: true,
+        isRecalculateTaxes: true,
         excludeCartItems: true,
         recalcRewards: false,
-        isCanada: isCanada(),
         isCheckoutFlow: true,
+        translation: false,
       })
     );
   } catch (err) {

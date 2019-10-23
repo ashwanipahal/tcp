@@ -51,13 +51,13 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    let compProps;
+    let globalProps;
     try {
-      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+      globalProps = await TCPWebApp.loadGlobalData(Component, ctx, {});
     } catch (e) {
-      compProps = {};
+      globalProps = {};
     }
-    const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
+    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -173,7 +173,6 @@ class TCPWebApp extends App {
           ...payload,
         };
       }
-
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
@@ -227,7 +226,9 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {Component.pageId ? this.getSEOTags(Component.pageId, store, router) : null}
+              {Component.pageInfo && Component.pageInfo.pageId
+                ? this.getSEOTags(Component.pageInfo.pageId, store, router)
+                : null}
               <Header />
               <CheckoutHeader />
               <Loader />
