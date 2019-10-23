@@ -15,7 +15,6 @@ import {
   getAPIConfig,
   isDevelopment,
   fetchStoreIdFromUrlPath,
-  withPreviewCheck,
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
@@ -137,12 +136,11 @@ class TCPWebApp extends App {
     if (isServer) {
       const { locals } = res;
       const { device = {} } = req;
-      const apiConfig = withPreviewCheck(
-        createAPIConfig(locals),
-        res,
-        constants.PREVIEW_RES_HEADER_KEY
-      );
-
+      const apiConfig = createAPIConfig(locals);
+      // preview check from akamai header
+      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      // preview date if any from the query param
+      apiConfig.previewDate = query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

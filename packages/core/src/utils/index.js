@@ -36,7 +36,6 @@ export {
   getUrlParameter,
   scrollToParticularElement,
   getDirections,
-  withPreviewCheck,
 } from './utils.web';
 
 export {

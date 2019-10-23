@@ -472,9 +472,6 @@ export const createAPIConfig = resLocals => {
     language,
   };
 };
-export const withPreviewCheck = (config, res, previewHeader) => {
-  return { ...config, isPreviewEnv: res.get(previewHeader) };
-};
 
 export const routeToStoreDetails = (storeDetail, refresh = false) => {
   const {
@@ -581,5 +578,4 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
-  withPreviewCheck,
 };
