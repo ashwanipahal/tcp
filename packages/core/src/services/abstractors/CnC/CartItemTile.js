@@ -751,7 +751,7 @@ export const getProductInfoForTranslationData = query => {
 
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  excludeCartItems = true,
   recalcRewards,
   isCheckoutFlow,
   isRadialInvEnabled,

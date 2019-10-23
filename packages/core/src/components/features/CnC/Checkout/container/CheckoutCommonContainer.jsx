@@ -17,12 +17,8 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
-  initShippingAction,
-  initBillingAction,
-  initReviewAction,
-  initPickupAction,
+  initCheckoutSectionPageAction,
 } from './Checkout.action';
-
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
@@ -47,6 +43,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import constants from '../Checkout.constants';
 
 const {
   getSmsSignUpLabels,
@@ -121,33 +118,30 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     };
   };
 
-  invokeWithParams = (router, callback, extraProps = {}) => {
+  intiSectionPage = (pageName, extraProps = {}) => {
+    const { initCheckoutSectionPage, router } = this.props;
     let recalc;
     let isPaypalPostBack;
     if (router && router.query) {
       ({ recalc, isPaypalPostBack } = router.query);
     }
-    callback({ recalc, isPaypalPostBack, ...extraProps });
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
   };
 
-  shippingDidMount = isApp => {
-    const { initShippingPage, router } = this.props;
-    this.invokeWithParams(router, initShippingPage, { initialLoad: true, isApp });
+  shippingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, { initialLoad: true });
   };
 
-  billingDidMount = isApp => {
-    const { initBillingPage, router } = this.props;
-    this.invokeWithParams(router, initBillingPage, { isApp });
+  billingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.BILLING);
   };
 
-  reviewDidMount = isApp => {
-    const { initReviewPage, router } = this.props;
-    this.invokeWithParams(router, initReviewPage, { isApp });
+  reviewDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.REVIEW);
   };
 
-  pickupDidMount = isApp => {
-    const { initPickupPage, router } = this.props;
-    this.invokeWithParams(router, initPickupPage, { isApp });
+  pickupDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.PICKUP);
   };
 
   render() {
@@ -269,17 +263,8 @@ export const mapDispatchToProps = dispatch => {
     initCheckout: router => {
       dispatch(initCheckoutAction(router));
     },
-    initPickupPage: payload => {
-      dispatch(initPickupAction(payload));
-    },
-    initShippingPage: payload => {
-      dispatch(initShippingAction(payload));
-    },
-    initBillingPage: payload => {
-      dispatch(initBillingAction(payload));
-    },
-    initReviewPage: payload => {
-      dispatch(initReviewAction(payload));
+    initCheckoutSectionPage: payload => {
+      dispatch(initCheckoutSectionPageAction(payload));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));

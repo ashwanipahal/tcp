@@ -492,21 +492,17 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
 /**
  * @function updateCardData
  *  @param { object } payload
  * action creator for type: UPDATE_CARD_DATA
  */
-export const updateCardData = payload => {
-  return {
-    payload,
-    type: constants.UPDATE_CARD_DATA,
-  };
-};
+export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
 
-export const initShippingAction = payload => ({ type: constants.INIT_SHIPPING_PAGE, payload });
-export const initBillingAction = payload => ({ type: constants.INIT_BILLING_PAGE, payload });
-export const initReviewAction = payload => ({ type: constants.INIT_REVIEW_PAGE, payload });
-export const initPickupAction = payload => ({ type: constants.INIT_PICKUP_PAGE, payload });
+export const initCheckoutSectionPageAction = payload => ({
+  type: constants.INIT_CHECKOUT_SECTION_PAGE,
+  payload,
+});
 
 export default { setServerErrorCheckout, resetCheckoutReducer };
