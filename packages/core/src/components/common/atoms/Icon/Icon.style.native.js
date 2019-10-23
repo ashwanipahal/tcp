@@ -36,13 +36,13 @@ const getFontSizeStyle = props => {
 };
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margins } = props;
   return {
-    ...(margin && { margin }),
+    ...(margins && { margin: margins }),
   };
 };
 
-const IconTouchableOpacity = styled.View`
+const IconTouchableOpacity = styled.TouchableOpacity`
   ${getAdditionalStyle}
 `;
 

@@ -4,6 +4,11 @@ import { withRouter } from 'next/router'; // eslint-disable-line
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import {
   getNavTree,
@@ -79,6 +84,8 @@ class ProductDetailContainer extends React.PureComponent {
       plpLabels,
       pdpLabels,
       addToBagError,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -101,12 +108,16 @@ class ProductDetailContainer extends React.PureComponent {
             productInfo={productInfo}
             handleAddToBag={this.handleAddToBag}
             addToBagError={addToBagError}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
           />
         ) : null}
       </React.Fragment>
     );
   }
 }
+
+ProductDetailContainer.pageId = 'p';
 
 function mapStateToProps(state) {
   return {
@@ -126,6 +137,7 @@ function mapStateToProps(state) {
     pdpLabels: getPDPLabels(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -139,6 +151,9 @@ function mapDispatchToProps(dispatch) {
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
   };
 }
@@ -168,6 +183,8 @@ ProductDetailContainer.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -188,6 +205,7 @@ ProductDetailContainer.defaultProps = {
   },
   itemPartNumber: '',
   pdpLabels: {},
+  isLoggedIn: false,
 };
 
 export default withRouter(

@@ -1,8 +1,7 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-export default css`
-  li {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
-  }
+export const DetailsContainer = styled.ScrollView``;
+
+export const ScrollViewContainer = styled.ScrollView`
+  padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
 `;

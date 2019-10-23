@@ -7,8 +7,13 @@ import { PropTypes } from 'prop-types';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import {
   getUnbxdId,
   getCategoryId,
@@ -123,6 +128,8 @@ class SearchDetailContainer extends React.PureComponent {
       },
       currency,
       currencyAttributes,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
 
@@ -150,6 +157,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchResultSuggestions={searchResultSuggestions}
                 currencyAttributes={currencyAttributes}
                 currency={currency}
+                onAddItemToFavorites={onAddItemToFavorites}
+                isLoggedIn={isLoggedIn}
                 {...otherProps}
               />
             ) : (
@@ -185,6 +194,8 @@ class SearchDetailContainer extends React.PureComponent {
               searchResultSuggestions={searchResultSuggestions}
               currency={currency}
               currencyAttributes={currencyAttributes}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
               {...otherProps}
             />
           </div>
@@ -193,6 +204,8 @@ class SearchDetailContainer extends React.PureComponent {
     );
   }
 }
+
+SearchDetailContainer.pageId = 'search';
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
@@ -239,6 +252,7 @@ function mapStateToProps(state) {
     sortLabels: getSortLabels(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -252,6 +266,9 @@ function mapDispatchToProps(dispatch) {
     },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
   };
 }

@@ -29,6 +29,7 @@ const CnCCommonTemplate = ({
   isGuest,
   showAccordian,
   isConfirmationPage,
+  isReviewPage,
 }) => {
   return (
     <>
@@ -38,7 +39,7 @@ const CnCCommonTemplate = ({
             <CouponAndPromos isCheckout />
           </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer showAccordian={showAccordian} />
+            <OrderLedgerContainer showAccordian={showAccordian} isReviewPage={isReviewPage} />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>
@@ -127,10 +128,12 @@ CnCCommonTemplate.propTypes = {
   isGuest: PropTypes.func.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
 };
 
 CnCCommonTemplate.defaultProps = {
   isConfirmationPage: false,
+  isReviewPage: false,
 };
 
 export default CnCCommonTemplate;

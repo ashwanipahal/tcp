@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -8,7 +7,6 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
-import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
@@ -42,6 +40,7 @@ const CnCTemplate = ({
   isConfirmationPage,
   isNotLoaded,
   orderLedgerAfterView,
+  pageCategory,
 }) => {
   const isSmallLeftSection = showLeftSection;
   return (
@@ -76,9 +75,11 @@ const CnCTemplate = ({
                   </>
                 ) : (
                   <>
-                    <OrderLedgerContainer orderLedgerAfterView={orderLedgerAfterView} />
+                    <OrderLedgerContainer
+                      orderLedgerAfterView={orderLedgerAfterView}
+                      pageCategory={pageCategory}
+                    />
                     {getBagActions({ BagActions })}
-                    {!isCanada() && <LoyaltyBanner />}
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
@@ -111,6 +112,7 @@ CnCTemplate.propTypes = {
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   isNotLoaded: PropTypes.bool,
+  pageCategory: PropTypes.string,
 };
 
 CnCTemplate.defaultProps = {
@@ -121,6 +123,7 @@ CnCTemplate.defaultProps = {
   isCheckoutView: false,
   isConfirmationPage: false,
   isNotLoaded: true,
+  pageCategory: '',
 };
 
 export default withStyles(CnCTemplate, styles);

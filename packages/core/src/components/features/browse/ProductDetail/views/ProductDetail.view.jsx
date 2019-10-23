@@ -26,6 +26,7 @@ import {
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductReviewsContainer from '../../ProductListing/molecules/ProductReviews/container/ProductReviews.container';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
+import RelatedOutfits from '../molecules/RelatedOutfits/views';
 
 class ProductDetailView extends React.Component {
   constructor(props) {
@@ -63,7 +64,16 @@ class ProductDetailView extends React.Component {
   };
 
   getProductSummary = () => {
-    const { productDetails, productInfo, currency, pdpLabels, currencyExchange } = this.props;
+    const {
+      productDetails,
+      productInfo,
+      currency,
+      pdpLabels,
+      currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
+    } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
@@ -75,6 +85,9 @@ class ProductDetailView extends React.Component {
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
           currencyExchange={currencyExchange}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          {...otherProps}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -217,6 +230,7 @@ class ProductDetailView extends React.Component {
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
                 selectedColorProductId={selectedColorProductId}
+                isPDP
               />
             )}
 
@@ -258,9 +272,11 @@ class ProductDetailView extends React.Component {
             </div>
           </Col>
         </Row>
-        <Row className="placeholder">
+        <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="product-detail-section">{pdpLabels.completeTheLook}</div>
+            <div className="product-detail-section">
+              <RelatedOutfits pdpLabels={pdpLabels} selectedColorProductId={itemPartNumber} />
+            </div>
           </Col>
         </Row>
         <Row className="placeholder">
@@ -310,6 +326,8 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -327,6 +345,7 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   addToBagError: '',
   currencyExchange: 1,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

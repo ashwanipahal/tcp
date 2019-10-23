@@ -20,6 +20,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -75,6 +76,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       onPress={null}
       paddingRight="28px"
       text="lbl_PLCCForm_details"
@@ -106,6 +108,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
     <Styled(View)>
       <RichText
         domStorageEnabled={false}
+        isApplyDeviceHeight={false}
         javaScriptEnabled={false}
         source={
           Object {
@@ -161,6 +164,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       onPress={null}
       paddingRight="28px"
       text="lbl_PLCCForm_details"

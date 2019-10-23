@@ -18,9 +18,26 @@ exports[`QuickViewModal component should renders correctly 1`] = `
   inheritedStyles={
     Array [
       "
+  div.TCPModal__InnerContent {
+    padding: 0;
+    @media ",
+      [Function],
+      " {
+      padding: 0px ",
+      [Function],
+      ";
+    }
+    @media ",
+      [Function],
+      " {
+      padding: 0px ",
+      [Function],
+      ";
+    }
+  }
   .Modal_Heading {
     border-bottom: none;
-    margin-bottom: ",
+    padding-bottom: ",
       [Function],
       ";
     font-size: ",
@@ -29,7 +46,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     display: flex;
     justify-content: center;
     height: auto;
-    padding-bottom: 0;
+    margin-bottom: 0px;
     @media ",
       [Function],
       " {
@@ -37,32 +54,80 @@ exports[`QuickViewModal component should renders correctly 1`] = `
       justify-content: center;
       height: auto;
     }
+  }
+  .Modal-Header {
+    z-index: ",
+      [Function],
+      ";
+    padding-top: ",
+      [Function],
+      ";
     @media ",
       [Function],
       " {
-      margin-bottom: ",
+      padding-top: ",
       [Function],
       ";
     }
   }
   .close-modal {
-    &.alignTop {
-      top: ",
+    height: 14px;
+    right: ",
       [Function],
       ";
-    }
-    &.alignRight {
-      right: 0;
+    @media ",
+      [Function],
+      " {
+      right: 0px;
     }
   }
-
-  div.TCPModal__InnerContent {
-    padding-top: initial;
-    border-top-style: inset;
-    border-top-width: ",
+  .add-to-bag-button {
+    width: 100%;
+    @media ",
+      [Function],
+      " {
+      margin-top: 0;
+      width: 264px;
+    }
+    @media ",
+      [Function],
+      " {
+      margin-top: ",
       [Function],
       ";
-    border-top-color: transparent;
+      width: 243px;
+    }
+    margin: 0 auto;
+  }
+  .add-to-bag-button-wrapper {
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    background-color: ",
+      [Function],
+      ";
+    padding: ",
+      [Function],
+      "
+      ",
+      [Function],
+      ";
+    @media ",
+      [Function],
+      " {
+      padding: ",
+      [Function],
+      " 0px;
+    }
+    @media ",
+      [Function],
+      " {
+      padding: ",
+      [Function],
+      " 0px;
+    }
   }
 ",
     ]
@@ -87,15 +152,15 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     colorFitsSizesMap={
       Array [
         Object {
-          "categoryEntity": "Boy:School Uniforms",
+          "categoryEntity": "Toddler Girl:Denim",
           "color": Object {
-            "family": "BLUE",
-            "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
-            "name": "TIDAL",
+            "family": "DENIM",
+            "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg",
+            "name": "BLACK WASH",
           },
-          "colorDisplayId": "2100606_IV",
-          "colorProductId": "1118007",
-          "favoritedCount": 1529,
+          "colorDisplayId": "2044098_757",
+          "colorProductId": "585900",
+          "favoritedCount": 32,
           "fits": Array [
             Object {
               "fitName": "",
@@ -103,113 +168,150 @@ exports[`QuickViewModal component should renders correctly 1`] = `
               "maxAvailable": 1.7976931348623157e+308,
               "sizes": Array [
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 191,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 5,
+                  "maxAvailableBoss": 519,
+                  "offerPrice": 16.5,
                   "position": 0,
-                  "sizeName": "XS (4)",
-                  "skuId": "1118991",
-                  "variantId": "00191755242996",
-                  "variantNo": "2100606007",
+                  "sizeName": "6-9 M",
+                  "skuId": "747962",
+                  "variantId": "00889705031386",
+                  "variantNo": "2044098001",
                 },
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 2238,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 2,
+                  "maxAvailableBoss": 391,
+                  "offerPrice": 16.5,
                   "position": 1,
-                  "sizeName": "S (5/6)",
-                  "skuId": "1119731",
-                  "variantId": "00191755243009",
-                  "variantNo": "2100606008",
+                  "sizeName": "9-12 M",
+                  "skuId": "749797",
+                  "variantId": "00889705031393",
+                  "variantNo": "2044098008",
                 },
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 3493,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 14,
+                  "maxAvailableBoss": 351,
+                  "offerPrice": 16.5,
                   "position": 2,
-                  "sizeName": "M (7/8)",
-                  "skuId": "1118373",
-                  "variantId": "00191755243016",
-                  "variantNo": "2100606009",
+                  "sizeName": "12-18 M",
+                  "skuId": "751458",
+                  "variantId": "00889705031409",
+                  "variantNo": "2044098007",
                 },
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 2641,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 1436,
+                  "maxAvailableBoss": 1436,
+                  "offerPrice": 16.5,
                   "position": 3,
-                  "sizeName": "L (10/12)",
-                  "skuId": "1118587",
-                  "variantId": "00191755243023",
-                  "variantNo": "2100606010",
+                  "sizeName": "18-24 M",
+                  "skuId": "756362",
+                  "variantId": "00889705031416",
+                  "variantNo": "2044098002",
                 },
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 991,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 27,
+                  "maxAvailableBoss": 168,
+                  "offerPrice": 16.5,
                   "position": 4,
-                  "sizeName": "XL (14)",
-                  "skuId": "1118691",
-                  "variantId": "00191755243030",
-                  "variantNo": "2100606011",
+                  "sizeName": "2T",
+                  "skuId": "758616",
+                  "variantId": "00889705027723",
+                  "variantNo": "2044098005",
                 },
                 Object {
-                  "listPrice": 24.95,
-                  "maxAvailable": 822,
-                  "offerPrice": 18.71,
+                  "listPrice": 16.5,
+                  "maxAvailable": 40,
+                  "maxAvailableBoss": 139,
+                  "offerPrice": 16.5,
                   "position": 5,
-                  "sizeName": "XXL (16)",
-                  "skuId": "1118794",
-                  "variantId": "00191755243047",
-                  "variantNo": "2100606012",
+                  "sizeName": "3T",
+                  "skuId": "761057",
+                  "variantId": "00889705027730",
+                  "variantNo": "2044098003",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 50,
+                  "maxAvailableBoss": 263,
+                  "offerPrice": 16.5,
+                  "position": 6,
+                  "sizeName": "4T",
+                  "skuId": "763482",
+                  "variantId": "00889705027747",
+                  "variantNo": "2044098004",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 29,
+                  "maxAvailableBoss": 99,
+                  "offerPrice": 16.5,
+                  "position": 7,
+                  "sizeName": "5T",
+                  "skuId": "765861",
+                  "variantId": "00889705027754",
+                  "variantNo": "2044098006",
                 },
               ],
             },
           ],
           "hasFits": false,
-          "imageName": "2100606_IV",
-          "listPrice": 24.95,
-          "maxAvailable": 10376,
-          "maxAvailableBoss": 0,
+          "imageName": "2044098_757",
+          "listPrice": 16.5,
+          "maxAvailable": 1603,
+          "maxAvailableBoss": 3366,
           "miscInfo": Object {
             "badge1": Object {
-              "defaultBadge": "ONLINE EXCLUSIVE",
+              "defaultBadge": "",
               "matchBadge": false,
             },
-            "badge2": "25% OFF",
             "isBopisEligible": false,
             "isBossEligible": false,
             "keepAlive": false,
           },
-          "offerPrice": 18.71,
-          "pdpUrl": "/p/2100606_IV",
+          "offerPrice": 16.5,
+          "pdpUrl": "/p/2044098_757",
         },
       ]
     }
     currency=""
     currencyExchange={1}
+    formRef={
+      Object {
+        "current": null,
+      }
+    }
     isCanada={false}
     isHasPlcc={false}
     isInternationalShipping={false}
+    isModalOpen={false}
     navigation={Object {}}
     onCloseClick={[Function]}
     plpLabels={Object {}}
     priceCurrency=""
     productInfo={
       Object {
-        "alternateSizes": Object {},
+        "alternateSizes": Object {
+          "Adult Womens Sizes": "Girls-Denim-Jeggings-2082137-BM",
+          "Big Kid Sizes": "Boys-Basic-Loose-Jeans---Rinse-Wash-2044069-RQ",
+        },
         "bundleProducts": Array [],
+        "categoryId": "47502>489054",
         "colorFitSizeDisplayNames": null,
         "colorFitsSizesMap": Array [
           Object {
-            "categoryEntity": "Boy:School Uniforms",
+            "categoryEntity": "Toddler Girl:Denim",
             "color": Object {
-              "family": "BLUE",
-              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
-              "name": "TIDAL",
+              "family": "DENIM",
+              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg",
+              "name": "BLACK WASH",
             },
-            "colorDisplayId": "2100606_IV",
-            "colorProductId": "1118007",
-            "favoritedCount": 1529,
+            "colorDisplayId": "2044098_757",
+            "colorProductId": "585900",
+            "favoritedCount": 32,
             "fits": Array [
               Object {
                 "fitName": "",
@@ -217,146 +319,193 @@ exports[`QuickViewModal component should renders correctly 1`] = `
                 "maxAvailable": 1.7976931348623157e+308,
                 "sizes": Array [
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 191,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 5,
+                    "maxAvailableBoss": 519,
+                    "offerPrice": 16.5,
                     "position": 0,
-                    "sizeName": "XS (4)",
-                    "skuId": "1118991",
-                    "variantId": "00191755242996",
-                    "variantNo": "2100606007",
+                    "sizeName": "6-9 M",
+                    "skuId": "747962",
+                    "variantId": "00889705031386",
+                    "variantNo": "2044098001",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 2238,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 2,
+                    "maxAvailableBoss": 391,
+                    "offerPrice": 16.5,
                     "position": 1,
-                    "sizeName": "S (5/6)",
-                    "skuId": "1119731",
-                    "variantId": "00191755243009",
-                    "variantNo": "2100606008",
+                    "sizeName": "9-12 M",
+                    "skuId": "749797",
+                    "variantId": "00889705031393",
+                    "variantNo": "2044098008",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 3493,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 14,
+                    "maxAvailableBoss": 351,
+                    "offerPrice": 16.5,
                     "position": 2,
-                    "sizeName": "M (7/8)",
-                    "skuId": "1118373",
-                    "variantId": "00191755243016",
-                    "variantNo": "2100606009",
+                    "sizeName": "12-18 M",
+                    "skuId": "751458",
+                    "variantId": "00889705031409",
+                    "variantNo": "2044098007",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 2641,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 1436,
+                    "maxAvailableBoss": 1436,
+                    "offerPrice": 16.5,
                     "position": 3,
-                    "sizeName": "L (10/12)",
-                    "skuId": "1118587",
-                    "variantId": "00191755243023",
-                    "variantNo": "2100606010",
+                    "sizeName": "18-24 M",
+                    "skuId": "756362",
+                    "variantId": "00889705031416",
+                    "variantNo": "2044098002",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 991,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 27,
+                    "maxAvailableBoss": 168,
+                    "offerPrice": 16.5,
                     "position": 4,
-                    "sizeName": "XL (14)",
-                    "skuId": "1118691",
-                    "variantId": "00191755243030",
-                    "variantNo": "2100606011",
+                    "sizeName": "2T",
+                    "skuId": "758616",
+                    "variantId": "00889705027723",
+                    "variantNo": "2044098005",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 822,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 40,
+                    "maxAvailableBoss": 139,
+                    "offerPrice": 16.5,
                     "position": 5,
-                    "sizeName": "XXL (16)",
-                    "skuId": "1118794",
-                    "variantId": "00191755243047",
-                    "variantNo": "2100606012",
+                    "sizeName": "3T",
+                    "skuId": "761057",
+                    "variantId": "00889705027730",
+                    "variantNo": "2044098003",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 50,
+                    "maxAvailableBoss": 263,
+                    "offerPrice": 16.5,
+                    "position": 6,
+                    "sizeName": "4T",
+                    "skuId": "763482",
+                    "variantId": "00889705027747",
+                    "variantNo": "2044098004",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 29,
+                    "maxAvailableBoss": 99,
+                    "offerPrice": 16.5,
+                    "position": 7,
+                    "sizeName": "5T",
+                    "skuId": "765861",
+                    "variantId": "00889705027754",
+                    "variantNo": "2044098006",
                   },
                 ],
               },
             ],
             "hasFits": false,
-            "imageName": "2100606_IV",
-            "listPrice": 24.95,
-            "maxAvailable": 10376,
-            "maxAvailableBoss": 0,
+            "imageName": "2044098_757",
+            "listPrice": 16.5,
+            "maxAvailable": 1603,
+            "maxAvailableBoss": 3366,
             "miscInfo": Object {
               "badge1": Object {
-                "defaultBadge": "ONLINE EXCLUSIVE",
+                "defaultBadge": "",
                 "matchBadge": false,
               },
-              "badge2": "25% OFF",
               "isBopisEligible": false,
               "isBossEligible": false,
               "keepAlive": false,
             },
-            "offerPrice": 18.71,
-            "pdpUrl": "/p/2100606_IV",
+            "offerPrice": 16.5,
+            "pdpUrl": "/p/2044098_757",
           },
         ],
+        "generalProductId": "2044098_757",
         "highListPrice": 0,
         "highOfferPrice": 0,
         "imagesByColor": Object {
-          "SMOKEB10": Object {
-            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+          "BLACK WASH": Object {
+            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
             "extraImages": Array [
               Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg",
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044098_757.jpg",
                 "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-              },
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-              },
-            ],
-          },
-          "TIDAL": Object {
-            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-            "extraImages": Array [
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-              },
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2044098_757.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
               },
             ],
           },
         },
         "isGiftCard": false,
-        "listPrice": 24.95,
-        "long_product_title": "Boys Uniform Long Sleeve V Neck Sweater",
-        "lowListPrice": 24.95,
-        "lowOfferPrice": 18.71,
-        "offerPrice": 18.71,
-        "productId": "2100606_IV",
-        "promotionalMessage": "",
-        "promotionalPLCCMessage": "",
+        "listPrice": 16.5,
+        "longDescription": "<li>Made of 73% cotton/26% polyester/1% spandex denim in our Black wash</li><li>Pull-on style with elasticized back waist</li><li>Snap closure with zipper fly</li><li>Five-pocket styling with a fitted thigh and knee; slim leg opening</li><li>Inner adjustable waist tabs for a custom fit</li><li>Pre-washed for an extra-gentle feel and to reduce shrinkage</li><li>Tagless label</li><li>Note: details may vary from image</li><li>Imported</li>",
+        "long_product_title": "",
+        "lowListPrice": 16.5,
+        "lowOfferPrice": 0,
+        "name": "Toddler Girls Basic Skinny Jeans - Black Wash",
+        "offerPrice": 16.5,
+        "pdpUrl": "/p/2044098_757",
+        "productId": "2044098_757",
+        "promotionalMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Denim!",
+        "promotionalPLCCMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN TRIPLE POINTS </span> on all Denim!",
         "ratings": 0,
+        "ratingsProductId": "2044098",
         "reviewsCount": 0,
-        "unbxdProdId": "2100606_IV",
+        "shortDescription": "Here's the skinny on a super comfy pair she'll love to wear!",
+        "unbxdProdId": "2044098_757",
       }
+    }
+    quickViewColorSwatchesCss={
+      Array [
+        "
+  .color-chips-selector-item {
+    /* Image color of item */
+    .color-image {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  @media ",
+        [Function],
+        " {
+    .color-chips-selector-item {
+      .color-image {
+        width: 20px;
+        height: 20px;
+      }
+      .input-radio-icon-checked {
+        width: 20px;
+        height: 20px;
+      }
+
+      .input-radio-icon-checked + .input-radio-title .color-image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+",
+      ]
     }
     quickViewLabels={Object {}}
   />
@@ -366,20 +515,24 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     closeQuickViewClick={[Function]}
     currentProduct={
       Object {
-        "alternateSizes": Object {},
+        "alternateSizes": Object {
+          "Adult Womens Sizes": "Girls-Denim-Jeggings-2082137-BM",
+          "Big Kid Sizes": "Boys-Basic-Loose-Jeans---Rinse-Wash-2044069-RQ",
+        },
         "bundleProducts": Array [],
+        "categoryId": "47502>489054",
         "colorFitSizeDisplayNames": null,
         "colorFitsSizesMap": Array [
           Object {
-            "categoryEntity": "Boy:School Uniforms",
+            "categoryEntity": "Toddler Girl:Denim",
             "color": Object {
-              "family": "BLUE",
-              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2100606_IV.jpg",
-              "name": "TIDAL",
+              "family": "DENIM",
+              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg",
+              "name": "BLACK WASH",
             },
-            "colorDisplayId": "2100606_IV",
-            "colorProductId": "1118007",
-            "favoritedCount": 1529,
+            "colorDisplayId": "2044098_757",
+            "colorProductId": "585900",
+            "favoritedCount": 32,
             "fits": Array [
               Object {
                 "fitName": "",
@@ -387,148 +540,668 @@ exports[`QuickViewModal component should renders correctly 1`] = `
                 "maxAvailable": 1.7976931348623157e+308,
                 "sizes": Array [
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 191,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 5,
+                    "maxAvailableBoss": 519,
+                    "offerPrice": 16.5,
                     "position": 0,
-                    "sizeName": "XS (4)",
-                    "skuId": "1118991",
-                    "variantId": "00191755242996",
-                    "variantNo": "2100606007",
+                    "sizeName": "6-9 M",
+                    "skuId": "747962",
+                    "variantId": "00889705031386",
+                    "variantNo": "2044098001",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 2238,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 2,
+                    "maxAvailableBoss": 391,
+                    "offerPrice": 16.5,
                     "position": 1,
-                    "sizeName": "S (5/6)",
-                    "skuId": "1119731",
-                    "variantId": "00191755243009",
-                    "variantNo": "2100606008",
+                    "sizeName": "9-12 M",
+                    "skuId": "749797",
+                    "variantId": "00889705031393",
+                    "variantNo": "2044098008",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 3493,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 14,
+                    "maxAvailableBoss": 351,
+                    "offerPrice": 16.5,
                     "position": 2,
-                    "sizeName": "M (7/8)",
-                    "skuId": "1118373",
-                    "variantId": "00191755243016",
-                    "variantNo": "2100606009",
+                    "sizeName": "12-18 M",
+                    "skuId": "751458",
+                    "variantId": "00889705031409",
+                    "variantNo": "2044098007",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 2641,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 1436,
+                    "maxAvailableBoss": 1436,
+                    "offerPrice": 16.5,
                     "position": 3,
-                    "sizeName": "L (10/12)",
-                    "skuId": "1118587",
-                    "variantId": "00191755243023",
-                    "variantNo": "2100606010",
+                    "sizeName": "18-24 M",
+                    "skuId": "756362",
+                    "variantId": "00889705031416",
+                    "variantNo": "2044098002",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 991,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 27,
+                    "maxAvailableBoss": 168,
+                    "offerPrice": 16.5,
                     "position": 4,
-                    "sizeName": "XL (14)",
-                    "skuId": "1118691",
-                    "variantId": "00191755243030",
-                    "variantNo": "2100606011",
+                    "sizeName": "2T",
+                    "skuId": "758616",
+                    "variantId": "00889705027723",
+                    "variantNo": "2044098005",
                   },
                   Object {
-                    "listPrice": 24.95,
-                    "maxAvailable": 822,
-                    "offerPrice": 18.71,
+                    "listPrice": 16.5,
+                    "maxAvailable": 40,
+                    "maxAvailableBoss": 139,
+                    "offerPrice": 16.5,
                     "position": 5,
-                    "sizeName": "XXL (16)",
-                    "skuId": "1118794",
-                    "variantId": "00191755243047",
-                    "variantNo": "2100606012",
+                    "sizeName": "3T",
+                    "skuId": "761057",
+                    "variantId": "00889705027730",
+                    "variantNo": "2044098003",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 50,
+                    "maxAvailableBoss": 263,
+                    "offerPrice": 16.5,
+                    "position": 6,
+                    "sizeName": "4T",
+                    "skuId": "763482",
+                    "variantId": "00889705027747",
+                    "variantNo": "2044098004",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 29,
+                    "maxAvailableBoss": 99,
+                    "offerPrice": 16.5,
+                    "position": 7,
+                    "sizeName": "5T",
+                    "skuId": "765861",
+                    "variantId": "00889705027754",
+                    "variantNo": "2044098006",
                   },
                 ],
               },
             ],
             "hasFits": false,
-            "imageName": "2100606_IV",
-            "listPrice": 24.95,
-            "maxAvailable": 10376,
-            "maxAvailableBoss": 0,
+            "imageName": "2044098_757",
+            "listPrice": 16.5,
+            "maxAvailable": 1603,
+            "maxAvailableBoss": 3366,
             "miscInfo": Object {
               "badge1": Object {
-                "defaultBadge": "ONLINE EXCLUSIVE",
+                "defaultBadge": "",
                 "matchBadge": false,
               },
-              "badge2": "25% OFF",
               "isBopisEligible": false,
               "isBossEligible": false,
               "keepAlive": false,
             },
-            "offerPrice": 18.71,
-            "pdpUrl": "/p/2100606_IV",
+            "offerPrice": 16.5,
+            "pdpUrl": "/p/2044098_757",
           },
         ],
+        "generalProductId": "2044098_757",
         "highListPrice": 0,
         "highOfferPrice": 0,
         "imagesByColor": Object {
-          "SMOKEB10": Object {
-            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
+          "BLACK WASH": Object {
+            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
             "extraImages": Array [
               Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137.jpg",
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044098_757.jpg",
                 "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137.jpg",
-              },
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_1137-1.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_1137-1.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_1137-1.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_1137-1.jpg",
-              },
-            ],
-          },
-          "TIDAL": Object {
-            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-            "extraImages": Array [
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV.jpg",
-              },
-              Object {
-                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
-                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2100606_IV-1.jpg",
-                "isOnModalImage": false,
-                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2100606_IV-1.jpg",
-                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2100606_IV-1.jpg",
-                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2100606_IV-1.jpg",
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2044098_757.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
               },
             ],
           },
         },
         "isGiftCard": false,
-        "listPrice": 24.95,
-        "long_product_title": "Boys Uniform Long Sleeve V Neck Sweater",
-        "lowListPrice": 24.95,
-        "lowOfferPrice": 18.71,
-        "offerPrice": 18.71,
-        "productId": "2100606_IV",
-        "promotionalMessage": "",
-        "promotionalPLCCMessage": "",
+        "listPrice": 16.5,
+        "longDescription": "<li>Made of 73% cotton/26% polyester/1% spandex denim in our Black wash</li><li>Pull-on style with elasticized back waist</li><li>Snap closure with zipper fly</li><li>Five-pocket styling with a fitted thigh and knee; slim leg opening</li><li>Inner adjustable waist tabs for a custom fit</li><li>Pre-washed for an extra-gentle feel and to reduce shrinkage</li><li>Tagless label</li><li>Note: details may vary from image</li><li>Imported</li>",
+        "long_product_title": "",
+        "lowListPrice": 16.5,
+        "lowOfferPrice": 0,
+        "name": "Toddler Girls Basic Skinny Jeans - Black Wash",
+        "offerPrice": 16.5,
+        "pdpUrl": "/p/2044098_757",
+        "productId": "2044098_757",
+        "promotionalMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Denim!",
+        "promotionalPLCCMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN TRIPLE POINTS </span> on all Denim!",
         "ratings": 0,
+        "ratingsProductId": "2044098",
         "reviewsCount": 0,
-        "unbxdProdId": "2100606_IV",
+        "shortDescription": "Here's the skinny on a super comfy pair she'll love to wear!",
+        "unbxdProdId": "2044098_757",
       }
     }
     dataLocator="global-addtocart-Button"
+  />
+</Styled(Modal)>
+`;
+
+exports[`QuickViewModal component should renders correctly 2`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="quick_view_icon_btn"
+  dataLocator="quick_view_modal"
+  dataLocatorHeader="quick_view_add_to_bag_header"
+  fixedWidth={true}
+  fullWidth={true}
+  headingAlign="center"
+  heightConfig={
+    Object {
+      "height": "95%",
+    }
+  }
+  horizontalBar={false}
+  inheritedStyles={
+    Array [
+      "
+  div.TCPModal__InnerContent {
+    padding: 0;
+    @media ",
+      [Function],
+      " {
+      padding: 0px ",
+      [Function],
+      ";
+    }
+    @media ",
+      [Function],
+      " {
+      padding: 0px ",
+      [Function],
+      ";
+    }
+  }
+  .Modal_Heading {
+    border-bottom: none;
+    padding-bottom: ",
+      [Function],
+      ";
+    font-size: ",
+      [Function],
+      ";
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-bottom: 0px;
+    @media ",
+      [Function],
+      " {
+      display: flex;
+      justify-content: center;
+      height: auto;
+    }
+  }
+  .Modal-Header {
+    z-index: ",
+      [Function],
+      ";
+    padding-top: ",
+      [Function],
+      ";
+    @media ",
+      [Function],
+      " {
+      padding-top: ",
+      [Function],
+      ";
+    }
+  }
+  .close-modal {
+    height: 14px;
+    right: ",
+      [Function],
+      ";
+    @media ",
+      [Function],
+      " {
+      right: 0px;
+    }
+  }
+  .add-to-bag-button {
+    width: 100%;
+    @media ",
+      [Function],
+      " {
+      margin-top: 0;
+      width: 264px;
+    }
+    @media ",
+      [Function],
+      " {
+      margin-top: ",
+      [Function],
+      ";
+      width: 243px;
+    }
+    margin: 0 auto;
+  }
+  .add-to-bag-button-wrapper {
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    background-color: ",
+      [Function],
+      ";
+    padding: ",
+      [Function],
+      "
+      ",
+      [Function],
+      ";
+    @media ",
+      [Function],
+      " {
+      padding: ",
+      [Function],
+      " 0px;
+    }
+    @media ",
+      [Function],
+      " {
+      padding: ",
+      [Function],
+      " 0px;
+    }
+  }
+",
+    ]
+  }
+  isOpen={false}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+  stickyCloseIcon={true}
+  stickyHeader={true}
+  widthConfig={
+    Object {
+      "large": "704px",
+      "medium": "600px",
+      "small": "375px",
+    }
+  }
+>
+  <ProductCustomizeFormPartContainer
+    addToBagError={null}
+    closeQuickViewModal={[MockFunction]}
+    colorFitSizeDisplayNames={null}
+    colorFitsSizesMap={
+      Array [
+        Object {
+          "categoryEntity": "Toddler Girl:Denim",
+          "color": Object {
+            "family": "DENIM",
+            "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg",
+            "name": "BLACK WASH",
+          },
+          "colorDisplayId": "2044098_757",
+          "colorProductId": "585900",
+          "favoritedCount": 32,
+          "fits": Array [
+            Object {
+              "fitName": "",
+              "isDefault": true,
+              "maxAvailable": 1.7976931348623157e+308,
+              "sizes": Array [
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 5,
+                  "maxAvailableBoss": 519,
+                  "offerPrice": 16.5,
+                  "position": 0,
+                  "sizeName": "6-9 M",
+                  "skuId": "747962",
+                  "variantId": "00889705031386",
+                  "variantNo": "2044098001",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 2,
+                  "maxAvailableBoss": 391,
+                  "offerPrice": 16.5,
+                  "position": 1,
+                  "sizeName": "9-12 M",
+                  "skuId": "749797",
+                  "variantId": "00889705031393",
+                  "variantNo": "2044098008",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 14,
+                  "maxAvailableBoss": 351,
+                  "offerPrice": 16.5,
+                  "position": 2,
+                  "sizeName": "12-18 M",
+                  "skuId": "751458",
+                  "variantId": "00889705031409",
+                  "variantNo": "2044098007",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 1436,
+                  "maxAvailableBoss": 1436,
+                  "offerPrice": 16.5,
+                  "position": 3,
+                  "sizeName": "18-24 M",
+                  "skuId": "756362",
+                  "variantId": "00889705031416",
+                  "variantNo": "2044098002",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 27,
+                  "maxAvailableBoss": 168,
+                  "offerPrice": 16.5,
+                  "position": 4,
+                  "sizeName": "2T",
+                  "skuId": "758616",
+                  "variantId": "00889705027723",
+                  "variantNo": "2044098005",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 40,
+                  "maxAvailableBoss": 139,
+                  "offerPrice": 16.5,
+                  "position": 5,
+                  "sizeName": "3T",
+                  "skuId": "761057",
+                  "variantId": "00889705027730",
+                  "variantNo": "2044098003",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 50,
+                  "maxAvailableBoss": 263,
+                  "offerPrice": 16.5,
+                  "position": 6,
+                  "sizeName": "4T",
+                  "skuId": "763482",
+                  "variantId": "00889705027747",
+                  "variantNo": "2044098004",
+                },
+                Object {
+                  "listPrice": 16.5,
+                  "maxAvailable": 29,
+                  "maxAvailableBoss": 99,
+                  "offerPrice": 16.5,
+                  "position": 7,
+                  "sizeName": "5T",
+                  "skuId": "765861",
+                  "variantId": "00889705027754",
+                  "variantNo": "2044098006",
+                },
+              ],
+            },
+          ],
+          "hasFits": false,
+          "imageName": "2044098_757",
+          "listPrice": 16.5,
+          "maxAvailable": 1603,
+          "maxAvailableBoss": 3366,
+          "miscInfo": Object {
+            "badge1": Object {
+              "defaultBadge": "",
+              "matchBadge": false,
+            },
+            "isBopisEligible": false,
+            "isBossEligible": false,
+            "keepAlive": false,
+          },
+          "offerPrice": 16.5,
+          "pdpUrl": "/p/2044098_757",
+        },
+      ]
+    }
+    currency=""
+    currencyExchange={1}
+    formRef={
+      Object {
+        "current": null,
+      }
+    }
+    isCanada={false}
+    isHasPlcc={false}
+    isInternationalShipping={false}
+    isModalOpen={false}
+    isMultiItemQVModal={true}
+    navigation={Object {}}
+    onCloseClick={[Function]}
+    plpLabels={Object {}}
+    priceCurrency=""
+    productInfo={
+      Object {
+        "alternateSizes": Object {
+          "Adult Womens Sizes": "Girls-Denim-Jeggings-2082137-BM",
+          "Big Kid Sizes": "Boys-Basic-Loose-Jeans---Rinse-Wash-2044069-RQ",
+        },
+        "bundleProducts": Array [],
+        "categoryId": "47502>489054",
+        "colorFitSizeDisplayNames": null,
+        "colorFitsSizesMap": Array [
+          Object {
+            "categoryEntity": "Toddler Girl:Denim",
+            "color": Object {
+              "family": "DENIM",
+              "imagePath": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/swatches/2044098_757.jpg",
+              "name": "BLACK WASH",
+            },
+            "colorDisplayId": "2044098_757",
+            "colorProductId": "585900",
+            "favoritedCount": 32,
+            "fits": Array [
+              Object {
+                "fitName": "",
+                "isDefault": true,
+                "maxAvailable": 1.7976931348623157e+308,
+                "sizes": Array [
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 5,
+                    "maxAvailableBoss": 519,
+                    "offerPrice": 16.5,
+                    "position": 0,
+                    "sizeName": "6-9 M",
+                    "skuId": "747962",
+                    "variantId": "00889705031386",
+                    "variantNo": "2044098001",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 2,
+                    "maxAvailableBoss": 391,
+                    "offerPrice": 16.5,
+                    "position": 1,
+                    "sizeName": "9-12 M",
+                    "skuId": "749797",
+                    "variantId": "00889705031393",
+                    "variantNo": "2044098008",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 14,
+                    "maxAvailableBoss": 351,
+                    "offerPrice": 16.5,
+                    "position": 2,
+                    "sizeName": "12-18 M",
+                    "skuId": "751458",
+                    "variantId": "00889705031409",
+                    "variantNo": "2044098007",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 1436,
+                    "maxAvailableBoss": 1436,
+                    "offerPrice": 16.5,
+                    "position": 3,
+                    "sizeName": "18-24 M",
+                    "skuId": "756362",
+                    "variantId": "00889705031416",
+                    "variantNo": "2044098002",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 27,
+                    "maxAvailableBoss": 168,
+                    "offerPrice": 16.5,
+                    "position": 4,
+                    "sizeName": "2T",
+                    "skuId": "758616",
+                    "variantId": "00889705027723",
+                    "variantNo": "2044098005",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 40,
+                    "maxAvailableBoss": 139,
+                    "offerPrice": 16.5,
+                    "position": 5,
+                    "sizeName": "3T",
+                    "skuId": "761057",
+                    "variantId": "00889705027730",
+                    "variantNo": "2044098003",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 50,
+                    "maxAvailableBoss": 263,
+                    "offerPrice": 16.5,
+                    "position": 6,
+                    "sizeName": "4T",
+                    "skuId": "763482",
+                    "variantId": "00889705027747",
+                    "variantNo": "2044098004",
+                  },
+                  Object {
+                    "listPrice": 16.5,
+                    "maxAvailable": 29,
+                    "maxAvailableBoss": 99,
+                    "offerPrice": 16.5,
+                    "position": 7,
+                    "sizeName": "5T",
+                    "skuId": "765861",
+                    "variantId": "00889705027754",
+                    "variantNo": "2044098006",
+                  },
+                ],
+              },
+            ],
+            "hasFits": false,
+            "imageName": "2044098_757",
+            "listPrice": 16.5,
+            "maxAvailable": 1603,
+            "maxAvailableBoss": 3366,
+            "miscInfo": Object {
+              "badge1": Object {
+                "defaultBadge": "",
+                "matchBadge": false,
+              },
+              "isBopisEligible": false,
+              "isBossEligible": false,
+              "keepAlive": false,
+            },
+            "offerPrice": 16.5,
+            "pdpUrl": "/p/2044098_757",
+          },
+        ],
+        "generalProductId": "2044098_757",
+        "highListPrice": 0,
+        "highOfferPrice": 0,
+        "imagesByColor": Object {
+          "BLACK WASH": Object {
+            "basicImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
+            "extraImages": Array [
+              Object {
+                "bigSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
+                "iconSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044098_757.jpg",
+                "isOnModalImage": false,
+                "listingSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/380/2044098_757.jpg",
+                "regularSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/2044098_757.jpg",
+                "superSizeImageUrl": "https://test4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/900/2044098_757.jpg",
+              },
+            ],
+          },
+        },
+        "isGiftCard": false,
+        "listPrice": 16.5,
+        "longDescription": "<li>Made of 73% cotton/26% polyester/1% spandex denim in our Black wash</li><li>Pull-on style with elasticized back waist</li><li>Snap closure with zipper fly</li><li>Five-pocket styling with a fitted thigh and knee; slim leg opening</li><li>Inner adjustable waist tabs for a custom fit</li><li>Pre-washed for an extra-gentle feel and to reduce shrinkage</li><li>Tagless label</li><li>Note: details may vary from image</li><li>Imported</li>",
+        "long_product_title": "",
+        "lowListPrice": 16.5,
+        "lowOfferPrice": 0,
+        "name": "Toddler Girls Basic Skinny Jeans - Black Wash",
+        "offerPrice": 16.5,
+        "pdpUrl": "/p/2044098_757",
+        "productId": "2044098_757",
+        "promotionalMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN DOUBLE/TRIPLE POINTS </span> on all Denim!",
+        "promotionalPLCCMessage": "<span class='product-loyaltypromotionText user-tier-theme'> EARN TRIPLE POINTS </span> on all Denim!",
+        "ratings": 0,
+        "ratingsProductId": "2044098",
+        "reviewsCount": 0,
+        "shortDescription": "Here's the skinny on a super comfy pair she'll love to wear!",
+        "unbxdProdId": "2044098_757",
+      }
+    }
+    quickViewColorSwatchesCss={
+      Array [
+        "
+  .color-chips-selector-item {
+    /* Image color of item */
+    .color-image {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked {
+      width: 23px;
+      height: 23px;
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  @media ",
+        [Function],
+        " {
+    .color-chips-selector-item {
+      .color-image {
+        width: 20px;
+        height: 20px;
+      }
+      .input-radio-icon-checked {
+        width: 20px;
+        height: 20px;
+      }
+
+      .input-radio-icon-checked + .input-radio-title .color-image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+",
+      ]
+    }
+    quickViewLabels={Object {}}
+  />
+  <QuickViewAddToBagButton
+    onClickActn={[Function]}
   />
 </Styled(Modal)>
 `;

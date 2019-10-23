@@ -21,4 +21,23 @@ const AddressViewWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
-export { AddressFieldsWrapper, SaveToAccountWrapper, MarginBottom, AddressViewWrapper };
+const EditAddressFormHeader = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+`;
+
+const EditFromSeparator = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-bottom-width: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  border-bottom-color: ${props => props.theme.colorPalette.black};
+`;
+
+export {
+  AddressFieldsWrapper,
+  SaveToAccountWrapper,
+  MarginBottom,
+  AddressViewWrapper,
+  EditAddressFormHeader,
+  EditFromSeparator,
+};

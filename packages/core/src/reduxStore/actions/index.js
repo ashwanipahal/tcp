@@ -55,6 +55,13 @@ export const loadXappConfigData = payload => {
   };
 };
 
+export const loadXappConfigDataOtherBrand = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_XAPP_CONFIG_OTHER_BRAND,
+  };
+};
+
 export const setBossBopisFlags = payload => {
   return {
     payload,
@@ -142,9 +149,10 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
-export const fetchPageLayout = payload => {
+export const fetchPageLayout = (payload, layoutName) => {
   return {
     payload,
+    layoutName,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };

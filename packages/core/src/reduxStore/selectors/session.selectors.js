@@ -1,3 +1,4 @@
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { SESSIONCONFIG_REDUCER_KEY } from '../../constants/reducer.constants';
 import { defaultCountries } from '../../constants/site.constants';
 import { getBrand, parseBoolean } from '../../utils';
@@ -37,6 +38,27 @@ export const getIsRadialInventoryEnabled = state => {
     state[SESSIONCONFIG_REDUCER_KEY] &&
       state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_RADIAL_BOSS_ENABLED
   );
+};
+
+const getCrossBrandFlags = (state, key) => {
+  const brandFlag = parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[key]
+  );
+  const otherBrandFlag = parseBoolean(
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].otherBrandSiteDetails[key]
+  );
+
+  return { brandFlag, otherBrandFlag };
+};
+
+export const getIsBossAppEnabled = state => {
+  const brand = getBrand();
+  const { brandFlag, otherBrandFlag } = getCrossBrandFlags(state, 'BOSS_ENABLED_APP');
+  if (brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
+    return { isBossEnabledAppTCP: brandFlag, isBossEnabledAppGYM: otherBrandFlag };
+  }
+
+  return { isBossEnabledAppTCP: otherBrandFlag, isBossEnabledAppGYM: brandFlag };
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {

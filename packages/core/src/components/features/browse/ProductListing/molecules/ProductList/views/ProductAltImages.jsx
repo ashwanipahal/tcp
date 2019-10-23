@@ -30,6 +30,8 @@ class ProductAltImages extends React.PureComponent {
     loadedProductCount: PropTypes.number.isRequired,
     isPLPredesign: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
+    isSoldOut: PropTypes.bool,
+    soldOutLabel: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,6 +39,8 @@ class ProductAltImages extends React.PureComponent {
     analyticsData: {},
     videoUrl: PropTypes.string,
     isShowVideoOnPlp: PropTypes.bool,
+    isSoldOut: false,
+    soldOutLabel: '',
   };
 
   nodes = {};
@@ -223,6 +227,11 @@ class ProductAltImages extends React.PureComponent {
     );
   }
 
+  renderSoldOutSection = () => {
+    const { isSoldOut, soldOutLabel } = this.props;
+    return isSoldOut ? <div className="sold-out-section">{soldOutLabel}</div> : null;
+  };
+
   renderImageContent() {
     const {
       imageUrls,
@@ -261,6 +270,7 @@ class ProductAltImages extends React.PureComponent {
             isProductImage
           />
         </Anchor>
+        {this.renderSoldOutSection()}
       </figure>
     ) : (
       <figure
@@ -304,6 +314,7 @@ class ProductAltImages extends React.PureComponent {
         >
           next
         </button>
+        {this.renderSoldOutSection()}
       </figure>
     );
   }

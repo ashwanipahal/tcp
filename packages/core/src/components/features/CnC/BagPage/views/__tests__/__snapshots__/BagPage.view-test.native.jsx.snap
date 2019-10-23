@@ -50,8 +50,10 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
         />
-        <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
@@ -122,8 +124,10 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           isBagPageSflSection={true}
           sflItems={Object {}}
         />
-        <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -181,8 +185,10 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           isBagPageSflSection={true}
           sflItems={Object {}}
         />
-        <Connect(LoyaltyBannerContainer) />
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -239,7 +245,6 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         <Styled(View)>
           <Connect(OrderLedgerContainer) />
         </Styled(View)>
-        <Connect(LoyaltyBannerContainer) />
         <Styled(View)>
           <Styled(View)>
             <Connect(BonusPointsDays)
@@ -254,6 +259,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           />
         </Styled(View)>
       </Styled(View)>
+      <Connect(QuickViewModalContainer)
+        fromBagPage={true}
+      />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>

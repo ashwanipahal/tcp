@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import { formValueSelector } from 'redux-form';
 import { createSelector } from 'reselect';
+import { List } from 'immutable';
 import {
   CHECKOUT_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
@@ -554,6 +555,11 @@ const getAlternateFormFields = state => {
   return selector(state, 'pickUpAlternate');
 };
 
+export const getAlternateFormFieldsExpress = state => {
+  const selector = formValueSelector('expressReviewPage');
+  return selector(state, 'pickUpAlternateExpress');
+};
+
 export const isPickupAlt = createSelector(
   getPickupAltValues,
   pickUpAlternate => pickUpAlternate && !!pickUpAlternate.firstName
@@ -901,6 +907,23 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getShippingAddressList = createSelector(
+  [getAddressListState, getCurrentSiteId],
+  (userAddresses, country) => {
+    let addresses = List();
+    if (userAddresses && userAddresses.size > 0) {
+      addresses = userAddresses.filter(
+        address =>
+          address.country === country.toUpperCase() && address.xcont_isShippingAddress === 'true'
+      );
+      if (addresses.size) {
+        return addresses;
+      }
+    }
+    return addresses;
+  }
+);
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -982,4 +1005,5 @@ export default {
   getVenmoUserName,
   getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
+  getShippingAddressList,
 };

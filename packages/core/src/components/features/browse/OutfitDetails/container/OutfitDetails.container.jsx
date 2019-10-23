@@ -9,14 +9,21 @@ import {
   getAddedToBagErrorCatId,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
-import { getPlpLabels } from '../../ProductDetail/container/ProductDetail.selectors';
+import {
+  getPlpLabels,
+  getCurrencyAttributes,
+} from '../../ProductDetail/container/ProductDetail.selectors';
 import { isCanada, isMobileApp } from '../../../../../utils';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import {
   getIsInternationalShipping,
-  getCurrentCurrencySymbol,
   getCurrentCurrency,
 } from '../../../../../reduxStore/selectors/session.selectors';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import {
   addToCartEcom,
@@ -25,6 +32,7 @@ import {
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
   componentDidMount() {
@@ -37,6 +45,9 @@ class OutfitDetailsContainer extends React.PureComponent {
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
+      // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
+      // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
+      // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
       const { vendorColorProductIdsList, outfitId } = query;
@@ -62,13 +73,15 @@ class OutfitDetailsContainer extends React.PureComponent {
       plpLabels,
       isPlcc,
       isInternationalShipping,
-      currencySymbol,
       priceCurrency,
-      currencyExchange,
+      currencyAttributes,
       addToBagEcom,
+      addToFavorites,
       currentState,
       addToBagError,
       addToBagErrorId,
+      isPickupModalOpen,
+      isLoggedIn,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -80,20 +93,24 @@ class OutfitDetailsContainer extends React.PureComponent {
           isCanada={isCanada()}
           isPlcc={isPlcc}
           isInternationalShipping={isInternationalShipping}
-          currencySymbol={currencySymbol}
-          priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
+          currencySymbol={priceCurrency}
+          currencyExchange={currencyAttributes.exchangevalue}
           handleAddToBag={this.handleAddToBag}
           addToBagEcom={addToBagEcom}
           currentState={currentState}
           addToBagError={addToBagError}
           addToBagErrorId={addToBagErrorId}
+          isPickupModalOpen={isPickupModalOpen}
+          addToFavorites={addToFavorites}
+          isLoggedIn={isLoggedIn}
         />
       );
     }
     return null;
   }
 }
+
+OutfitDetailsContainer.pageId = 'outfit';
 
 const mapStateToProps = state => {
   return {
@@ -104,12 +121,13 @@ const mapStateToProps = state => {
     isCanada: isCanada(),
     isPlcc: isPlccUser(state),
     isInternationalShipping: getIsInternationalShipping(state),
-    currencySymbol: getCurrentCurrencySymbol(state),
     priceCurrency: getCurrentCurrency(state),
-    currencyExchange: [{ exchangevalue: 1 }], // TODO - fix this when currency exchange rate is available
+    currencyAttributes: getCurrencyAttributes(state),
     addToBagError: getAddedToBagError(state),
     addToBagErrorId: getAddedToBagErrorCatId(state),
     currentState: state,
+    isPickupModalOpen: getIsPickupModalOpen(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 };
 
@@ -123,6 +141,9 @@ function mapDispatchToProps(dispatch) {
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    addToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
   };
 }
@@ -138,14 +159,16 @@ OutfitDetailsContainer.propTypes = {
   plpLabels: PropTypes.shape({}),
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
-  currencySymbol: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  isPickupModalOpen: PropTypes.bool,
+  addToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -159,11 +182,12 @@ OutfitDetailsContainer.defaultProps = {
   plpLabels: {},
   isPlcc: false,
   isInternationalShipping: false,
-  currencySymbol: '$',
   priceCurrency: 'USD',
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencyAttributes: { exchangevalue: 1 },
   addToBagError: '',
   addToBagErrorId: '',
+  isPickupModalOpen: false,
+  isLoggedIn: false,
 };
 
 export default connect(

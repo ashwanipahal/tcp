@@ -22,6 +22,8 @@ export class ShippingReviewSection extends React.PureComponent {
     const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
     if (
       isExpressCheckout &&
+      prevexpressReviewShippingSectionId.shippingMethodId &&
+      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
       expressReviewShippingSectionId.shippingMethodId !==
         prevexpressReviewShippingSectionId.shippingMethodId
     ) {

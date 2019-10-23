@@ -50,7 +50,6 @@ export default class ShippingPage extends React.PureComponent {
     isVenmoShippingDisplayed: PropTypes.bool,
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
-    isCanada: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -78,7 +77,6 @@ export default class ShippingPage extends React.PureComponent {
     isVenmoShippingDisplayed: true,
     setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
-    isCanada: false,
   };
 
   constructor(props) {
@@ -346,7 +344,6 @@ export default class ShippingPage extends React.PureComponent {
       isVenmoShippingDisplayed,
       isSubmitting,
       formatPayload,
-      isCanada,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -401,7 +398,6 @@ export default class ShippingPage extends React.PureComponent {
           shippingAddress={shippingAddress}
           isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           isVenmoShippingDisplayed={isVenmoShippingDisplayed}
-          isCanada={isCanada}
         />
         <AddressVerification
           onSuccess={this.submitVerifiedShippingAddressData}
