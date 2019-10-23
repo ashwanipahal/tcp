@@ -84,6 +84,7 @@ class PLCCTimeoutInterimModal extends React.PureComponent {
           className={`${className} TCPModal__Content`}
           dataLocatorHeader={getLocator('plcc_time_out_modal_2_close_btn')}
           maxWidth="458px"
+          maxHeight="536px"
           minHeight="392px"
           inheritedStyles={modalStyles}
           shouldCloseOnOverlayClick={false}

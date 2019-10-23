@@ -76,6 +76,9 @@ const styles = css`
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 `;
 
 export default styles;
