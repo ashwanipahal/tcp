@@ -37,7 +37,7 @@ export const OrdersList = ({
             canceledItems={orderDetailsData.canceledItems}
           />
         )}
-      {ordersListItems && ordersListItems.length ? (
+      {ordersListItems && ordersListItems.length > 1 ? (
         <PastOrders
           labels={labels}
           ordersListItems={ordersListItems}
