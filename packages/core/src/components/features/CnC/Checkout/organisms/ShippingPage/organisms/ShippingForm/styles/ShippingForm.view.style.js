@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-const styleBottomSpacing = '24px';
 const styles = css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   .address-form {
@@ -34,7 +33,8 @@ const styles = css`
   .select__input {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    padding: ${styleBottomSpacing} 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 
