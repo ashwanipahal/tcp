@@ -395,7 +395,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
     MELISSA_KEY: envConfig[`RWD_APP_MELISSA_KEY_${appTypeSuffix}`] || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
-    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
+    assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
+    assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    productAssetPathGYM: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
     unbxdGYM: envConfig.RWD_APP_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
@@ -407,6 +410,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
+    crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
     TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
     RECOMMENDATIONS_API: recommendationsAPI,
@@ -640,7 +644,8 @@ export const readCookieMobileApp = key => {
   return new Promise((resolve, reject) => {
     CookieManager.get(apiConfigObj.domain)
       .then(response => {
-        return resolve(response[key]);
+        const keyValue = key ? response[key] : response;
+        return resolve(keyValue);
       })
       .catch(e => reject(e));
   });

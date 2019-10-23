@@ -31,6 +31,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeModal,
       isUSSite,
       containerId,
+      checkoutServerError,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -50,6 +51,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isUSSite={isUSSite}
         inheritedStyles={inheritedStyles}
         containerId={containerId}
+        checkoutServerError={checkoutServerError}
       />
     );
   }
@@ -83,6 +85,7 @@ const mapStateToProps = state => {
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
     isUSSite: isUsSite(state),
+    checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

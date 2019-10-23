@@ -172,6 +172,7 @@ class AddGiftCardForm extends React.PureComponent {
                 fontFamily="secondary"
                 fontSize="fs14"
                 color="gray.900"
+                fontWeight="black"
                 text={getLabelValue(labels, 'lbl_payment_giftCardMessageHeading')}
               />
               <MessageTextWrapper>

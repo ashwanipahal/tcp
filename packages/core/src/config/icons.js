@@ -107,6 +107,7 @@ export default {
   'modules-s-left-ribbon': '/static/images/module-s-left-ribbon.png',
   'modules-s-right-ribbon': '/static/images/module-s-right-ribbon.png',
   'icon-expand': '/static/images/icon-expand.svg',
+  'img-placeholder': '/static/images/img-placeholder.png',
   'medium-left-arrow': '/static/images/medium-left-arrow.svg',
   'facebook-color-icon': '/static/images/facebook@2x.png',
   'instagram-color-icon': '/static/images/instagram@2x.png',

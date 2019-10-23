@@ -215,7 +215,7 @@ export function mapStateToProps(state) {
     isBossClearanceProductEnabled: getIsBossClearanceProductEnabled(state),
     isBopisClearanceProductEnabled: getIsBopisClearanceProductEnabled(state),
     isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),
-    orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state),
+    orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state) || '',
     toggleError: getCartToggleError(state),
   };
 }

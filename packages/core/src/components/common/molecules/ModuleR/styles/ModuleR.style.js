@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import Col from '../../../atoms/Col';
+import { Skeleton } from '../../../atoms';
 
 export const ImageGridCol = styled(Col)`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -48,6 +49,31 @@ export const ImageGridCol = styled(Col)`
         }
       `
         : ``}
+  }
+`;
+
+export const StyledSkeleton = styled(Skeleton)`
+  margin-top: 5px;
+  .skeleton-col {
+    height: 109px;
+    margin-bottom: 10px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      &:nth-child(n + 10) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 161px;
+      &:nth-child(n + 13) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 209px;
+      &:nth-child(6n) {
+        margin-right: 0;
+      }
+    }
   }
 `;
 

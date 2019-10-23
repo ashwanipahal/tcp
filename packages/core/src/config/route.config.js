@@ -81,7 +81,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'c',
     path: '/c/:cid',
-    resolver: '/ProductListing',
+    resolver: '/ListingPage',
     params: ['cid'],
   },
   {
@@ -89,6 +89,12 @@ const ROUTES_LIST = [
     path: '/p/:pid',
     resolver: '/ProductDetail',
     params: ['pid'],
+  },
+  {
+    noSlugPath: 'b',
+    path: '/b/:bid',
+    resolver: '/BundleProduct',
+    params: ['bid'],
   },
   {
     noSlugPath: 'search',
