@@ -10,6 +10,8 @@ const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
+const TCP_LABEL = "The Children's Place";
+const GYM_LABEL = 'Gymboree';
 
 const SEO_CONFIG = {
   canonical: TCP_BASE_URL,
@@ -247,6 +249,54 @@ function getPlpSEOTags(store, router, categoryKey) {
   return findCategoryIdandName(navigationTree, categoryKey);
 }
 
+export const getSearchSEOTags = (store, router, categoryKey) => {
+  const { isUSStore } = getAPIConfig();
+
+  const brandDetails = getBrandDetails();
+  let brandLabel;
+  if (brandDetails.BRAND_NAME === 'TCP') {
+    brandLabel = TCP_LABEL;
+  } else {
+    brandLabel = GYM_LABEL;
+  }
+
+  const usTitle = `Kids Clothes & Baby Clothes | ${brandLabel} | Free Shipping*`;
+  const caTitle = `Kids Clothes & Baby Clothes | ${brandLabel} CA | Free Shipping*`;
+
+  const usDecs = `Check out ${brandLabel} for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
+  const caDecs = `Check out ${brandLabel} CA for a great selection of kids clothes, baby clothes & more. Shop at the PLACE where big fashion meets little prices!`;
+
+  const openGraph = {
+    url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
+    title: isUSStore ? usTitle : caTitle,
+    description: isUSStore ? usDecs : caDecs,
+  };
+  const hrefLangs = [
+    {
+      id: 'us-en',
+      canonicalUrl: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
+    },
+  ];
+
+  const twitter = {
+    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
+    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
+  };
+
+  const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
+
+  return getMetaSEOTags({
+    title: isUSStore ? usTitle : caTitle,
+    description: isUSStore ? usDecs : caDecs,
+    canonical,
+    twitter,
+    openGraph,
+    hrefLangs,
+    keywords: SEO_CONFIG.keywords.content,
+    robots: SEO_CONFIG.robots.content,
+  });
+};
+
 const getProductName = store => {
   return (
     store.getState() &&
@@ -329,11 +379,11 @@ export const deriveSEOTags = (pageId, store, router) => {
   }
   if (pageId === PAGES.SEARCH_PAGE || pageId === PAGES.OUTFIT) {
     const categoryKey = `/${pageId}`;
-    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
+    return getSearchSEOTags(store, router, categoryKey);
   }
   if (pageId === PAGES.PRODUCT_DESCRIPTION_PAGE) {
     const categoryKey = router.asPath;
-    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
+    return getSearchSEOTags(store, router, categoryKey);
   }
 
   return getDefaultSEOTags();
