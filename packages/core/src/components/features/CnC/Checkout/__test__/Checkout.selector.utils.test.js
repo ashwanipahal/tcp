@@ -338,4 +338,21 @@ describe('Checkout Selectors', () => {
       AddressBookReducer.get('list')
     );
   });
+  it('#getIsBillingVisited', () => {
+    const { getIsBillingVisited } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        isBillingVisited: true,
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          isBillingVisited: true,
+        },
+      }),
+    };
+    expect(getIsBillingVisited(state)).toEqual(Checkout.getIn(['uiFlags', 'isBillingVisited']));
+  });
 });
