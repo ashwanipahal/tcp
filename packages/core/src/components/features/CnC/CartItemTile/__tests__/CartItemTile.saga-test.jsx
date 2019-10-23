@@ -205,6 +205,11 @@ describe('openPickupModalFromBag', () => {
     payload: {
       colorProductId: '00193511095440',
       orderInfo: {},
+      openSkuSelectionForm: false,
+      isBopisCtaEnabled: true,
+      isBossCtaEnabled: false,
+      isItemShipToHome: false,
+      alwaysSearchForBOSS: false,
     },
   };
   const generator = openPickupModalFromBag(payload);
