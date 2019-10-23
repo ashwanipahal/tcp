@@ -17,5 +17,6 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     link={null}
     textAlign="left"
   />
+  <RelatedOutfitsSlots />
 </div>
 `;
