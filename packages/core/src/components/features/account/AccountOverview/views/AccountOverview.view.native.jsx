@@ -40,6 +40,7 @@ import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.c
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
+const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
 
 class AccountOverview extends PureComponent<Props> {
   constructor(props) {
