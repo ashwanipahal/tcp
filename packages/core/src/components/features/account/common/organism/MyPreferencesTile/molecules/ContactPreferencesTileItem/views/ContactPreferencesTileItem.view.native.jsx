@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils';
@@ -9,7 +8,7 @@ import {
   ContactPreferencesTileItemContainer,
   RightContainer,
   MiddleContainer,
-  ImageWrapper
+  ImageWrapper,
 } from '../styles/ContactPreferencesTileItem.style.native';
 
 const PushEnabledIcon = require('../../../../../../../../../assets/push-enabled.png');

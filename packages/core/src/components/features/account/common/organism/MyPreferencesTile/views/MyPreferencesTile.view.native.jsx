@@ -6,12 +6,12 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import {
   UnderlineStyle,
   MyPreferencesTileContainer,
-  ButtonWrapperStyle,
 } from '../styles/MyPreferencesTile.style.native';
 import MyFavoriteTileItem from '../molecules/MyFavoriteTileItem';
 import ContactPreferencesTileItem from '../molecules/ContactPreferencesTileItem';
 import SocialAccountsTileItem from '../molecules/SocialAccountsTileItem';
 import { isCanada } from '../../../../../../../utils';
+import { ViewWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 
 export const MyPreferencesTile = ({
   labels,
@@ -25,7 +25,6 @@ export const MyPreferencesTile = ({
   customerPreferences,
   handleComponentChange,
 }) => {
-  // console.info('customerPreferences-->>',customerPreferences)
   return (
     <MyPreferencesTileContainer>
       <BodyCopy
@@ -55,7 +54,7 @@ export const MyPreferencesTile = ({
         customerPreferences={customerPreferences}
       />
       <UnderlineStyle />
-      { !isCanada() ? (
+      {!isCanada() ? (
         <SocialAccountsTileItem
           labels={labels}
           handleComponentChange={handleComponentChange}
@@ -63,7 +62,7 @@ export const MyPreferencesTile = ({
         />
       ) : null}
 
-      <ButtonWrapperStyle>
+      <ViewWithSpacing spacingStyles="margin-top-XL">
         <CustomButton
           text={getLabelValue(labels, 'lbl_prefrence_view_preferences', 'preferences')}
           fill="BLUE"
@@ -71,7 +70,7 @@ export const MyPreferencesTile = ({
             handleComponentChange('myPreferencePageMobile');
           }}
         />
-      </ButtonWrapperStyle>
+      </ViewWithSpacing>
     </MyPreferencesTileContainer>
   );
 };

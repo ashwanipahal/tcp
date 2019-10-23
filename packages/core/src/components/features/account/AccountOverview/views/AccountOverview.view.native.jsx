@@ -192,9 +192,6 @@ class AccountOverview extends PureComponent<Props> {
                 handleComponentChange={handleComponentChange}
               />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
-              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
-            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
@@ -203,6 +200,9 @@ class AccountOverview extends PureComponent<Props> {
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
+              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
           </React.Fragment>

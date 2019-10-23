@@ -49,10 +49,7 @@ const getOrderPointsRecalcFlag = (recalcRewards, recalcOrderPointsInterval) => {
   if (recalcOrderPointsInterval && !recalcRewards) {
     const orderPointsTimeStamp = getLocalStorage('orderPointsTimeStamp') || null;
     const currentTime = new Date().getTime();
-    if (
-      !orderPointsTimeStamp ||
-      (orderPointsTimeStamp && currentTime - orderPointsTimeStamp > recalcOrderPointsInterval)
-    ) {
+    if (!orderPointsTimeStamp || currentTime - orderPointsTimeStamp > recalcOrderPointsInterval) {
       recalcVal = true;
     }
   }
