@@ -244,6 +244,7 @@ function* initCheckoutSectionData({
           recalcRewards: recalc,
           updateSmsInfo: false,
           translation: false,
+          isCheckoutFlow: true,
         })
       )
     );
@@ -258,6 +259,7 @@ function* initCheckoutSectionData({
             recalcRewards: recalc,
             updateSmsInfo: false,
             translation: true,
+            isCheckoutFlow: true,
           })
         )
       );
