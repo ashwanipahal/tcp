@@ -34,7 +34,9 @@ exports[`MyPreferencesTile component should render correctly 1`] = `
     labels={Object {}}
     socialAccounts={Object {}}
   />
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-XL"
+  >
     <Styled(CustomButton)
       active={false}
       buttonVariation="fixed-width"
