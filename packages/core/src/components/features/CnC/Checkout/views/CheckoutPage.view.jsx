@@ -298,6 +298,7 @@ class CheckoutPage extends React.PureComponent {
           )
         }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
+        pageCategory={currentSection.toLowerCase()}
       />
     );
   }
