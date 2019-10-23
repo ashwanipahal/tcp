@@ -18,6 +18,7 @@ import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
+import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -105,7 +106,11 @@ class ProductDetailView extends React.PureComponent {
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
-          <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
+          <ImageCarousel
+            isGiftCard={currentProduct.isGiftCard}
+            imageUrls={imageUrls}
+            onImageClick={this.onImageClick}
+          />
           <ProductSummary
             productData={currentProduct}
             selectedColorProductId={selectedColorProductId}
@@ -134,6 +139,7 @@ class ProductDetailView extends React.PureComponent {
             handleSubmit={handleSubmit}
             onChangeSize={this.onChangeSize}
           />
+          {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />

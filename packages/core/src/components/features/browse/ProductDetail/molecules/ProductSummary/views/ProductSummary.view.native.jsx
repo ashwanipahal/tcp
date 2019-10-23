@@ -25,6 +25,35 @@ class ProductSummary extends React.PureComponent {
 
   onCompletLook = () => {};
 
+  getBadgeAndListPrice = (offerPriceForColor, listPriceForColor, badge2) => {
+    return (
+      <OfferPriceAndBadge3Container>
+        {listPriceForColor !== offerPriceForColor && (
+          <BodyCopy
+            dataLocator="pdp_discounted_product_price"
+            textDecoration="line-through"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            color="gray.800"
+            text={listPriceForColor}
+          />
+        )}
+        {badge2 ? (
+          <BodyCopy
+            dataLocator="pdp_discounted_percentage"
+            margin="0 0 0 10px"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            color="red.600"
+            text={badge2}
+          />
+        ) : null}
+      </OfferPriceAndBadge3Container>
+    );
+  };
+
   render() {
     const {
       productData,
@@ -100,7 +129,7 @@ class ProductSummary extends React.PureComponent {
               />
             </BazarVoiceContainer>
           ) : null}
-          <LineComp marginTop={0} borderColor="gray.500" />
+          {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {badge1Value !== '' && (
             <BodyCopy
               dataLocator="pdp_product_badges"
@@ -131,30 +160,7 @@ class ProductSummary extends React.PureComponent {
             color="red.600"
             text={offerPriceForColor}
           />
-          <OfferPriceAndBadge3Container>
-            {listPriceForColor !== offerPriceForColor && (
-              <BodyCopy
-                dataLocator="pdp_discounted_product_price"
-                textDecoration="line-through"
-                mobileFontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="regular"
-                color="gray.800"
-                text={listPriceForColor}
-              />
-            )}
-            {badge2 ? (
-              <BodyCopy
-                dataLocator="pdp_discounted_percentage"
-                margin="0 0 0 10px"
-                mobileFontFamily="secondary"
-                fontSize="fs14"
-                fontWeight="regular"
-                color="red.600"
-                text={badge2}
-              />
-            ) : null}
-          </OfferPriceAndBadge3Container>
+          {this.getBadgeAndListPrice(offerPriceForColor, listPriceForColor, badge2)}
           {this.loyaltyPromotionMessage && (
             <PromotionalMessage
               fontSize="fs12"
