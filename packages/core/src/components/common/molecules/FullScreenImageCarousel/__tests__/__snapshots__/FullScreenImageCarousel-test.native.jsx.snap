@@ -37,7 +37,7 @@ exports[`FullScreenImageCarousel should render correctly should match snapshot 1
               "accessibilityRole": "image",
               "accessible": true,
             },
-            "url": "//",
+            "url": "https://test1.theplace.com/image/upload/w_450/ecom/assets/products/undefined///",
             "width": 726,
           },
         ]
