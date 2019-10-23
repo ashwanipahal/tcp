@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 
 const ContactPreferencesTileItemContainer = styled.View`
   height: 24px;
@@ -9,11 +8,11 @@ const ContactPreferencesTileItemContainer = styled.View`
 `;
 
 const ImageWrapper = styled.View`
-margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 const LeftContainer = styled.View`
-  flex: 4,
+  flex: 4;
   flex-direction: 'row';
   justify-content: 'flex-start';
 `;
@@ -37,5 +36,5 @@ export {
   LeftContainer,
   RightContainer,
   MiddleContainer,
-  ImageWrapper
+  ImageWrapper,
 };
