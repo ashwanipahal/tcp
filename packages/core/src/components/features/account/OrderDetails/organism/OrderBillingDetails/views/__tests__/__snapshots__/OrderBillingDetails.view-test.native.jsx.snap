@@ -74,7 +74,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
       <Styled(Image)
         source={
           Object {
-            "testUri": "../../../../core/src/assets/visa-small.png",
+            "testUri": "../../../../core/src/assets/venmo-small.png",
           }
         }
       />
@@ -87,7 +87,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
         margin={null}
         numberOfLines={null}
         spacingStyles="margin-left-XS margin-right-XS"
-        text="lbl_orders_ending name"
+        text="testusername"
         textDecoration={null}
       />
     </Styled(View)>
