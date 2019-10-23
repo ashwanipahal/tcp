@@ -1,3 +1,3 @@
 export default {
-  recommendation: 'Recommendation',
+  RECOMMENDATION: 'Recommendation',
 };

@@ -1,3 +1,3 @@
 export default {
-  recommendation: 'Stylistics_Recommendation',
+  RECOMMENDATION: 'Stylistics_Recommendation',
 };

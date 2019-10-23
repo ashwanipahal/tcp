@@ -21,19 +21,20 @@ const RecommendationComponentVariation = dynamic(
       ModuleP: import('@tcp/core/src/components/common/molecules/ModuleP').then(mod => mod.default),
     }),
     render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
-      const { recommendation } = constant;
       switch (dynamicComponentProps.variation) {
         case config.variations.moduleO:
-          return <ModuleO viaModule={recommendation} {...dynamicComponentProps} />;
+          return <ModuleO {...dynamicComponentProps} />;
         case config.variations.moduleP:
-          return <ModuleP viaModule={recommendation} {...dynamicComponentProps} />;
+          return <ModuleP {...dynamicComponentProps} />;
         default:
-          return <ModuleO viaModule={recommendation} {...dynamicComponentProps} />;
+          return <ModuleO {...dynamicComponentProps} />;
       }
     },
   },
   { ssr: false }
 );
+
+const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
@@ -78,6 +79,7 @@ class Recommendations extends Component {
           variation={variation}
           currencySymbol={currency}
           currencyExchange={currencyAttributes.exchangevalue}
+          viaModule={RECOMMENDATION}
         />
       );
     });
