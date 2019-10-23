@@ -10,8 +10,9 @@
   "dependencies": {
     "apisauce": "^1.0.2",
     "async-redis": "^1.1.7",
-    "aws-appsync": "^1.7.2",
+    "aws-appsync": "^2.0.1",
     "aws-appsync-react": "1.2.7",
+    "aws-sdk": "^2.554.0",
     "bunyan": "^1.8.12",
     "express-device": "^0.4.2",
     "graphql": "^14.1.1",
