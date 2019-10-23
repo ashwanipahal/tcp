@@ -18,6 +18,40 @@ const alertIcon = require('@tcp/core/src/assets/icon-alarm-gray.png');
 const textIcon = require('@tcp/core/src/assets/icon-chat-gray.png');
 
 class MyPrefrenceSection extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    const { isTcpSubscribe, isGymSubscribe } = this.props;
+    this.state = {
+      isTcpSubscribeState: isTcpSubscribe,
+    };
+    this.state = {
+      isGymSubscribeState: isGymSubscribe,
+    };
+  }
+
+  componentDidUpdate() {
+    const { isTcpSubscribe, isGymSubscribe } = this.props;
+    const { isTcpSubscribeState, isGymSubscribeState } = this.state;
+    if (isTcpSubscribe !== isTcpSubscribeState) {
+      this.setTcpSubscribeState(isTcpSubscribe);
+    }
+    if (isGymSubscribe !== isGymSubscribeState) {
+      this.setGymSubscribeState(isGymSubscribe);
+    }
+  }
+
+  setTcpSubscribeState = isTcpSubscribe => {
+    this.setState({
+      isTcpSubscribeState: isTcpSubscribe,
+    });
+  };
+
+  setGymSubscribeState = isGymSubscribe => {
+    this.setState({
+      isGymSubscribeState: isGymSubscribe,
+    });
+  };
+
   onSubscribeHandler = subscribeBrand => {
     const { onSubscribe } = this.props;
     onSubscribe(subscribeBrand);
@@ -30,7 +64,7 @@ class MyPrefrenceSection extends React.PureComponent {
 
   render() {
     const { labels, isTcpSubscribe, isGymSubscribe } = this.props;
-
+    const { isTcpSubscribeState, isGymSubscribeState } = this.state;
     return (
       <ViewWithSpacing spacingStyles="margin-bottom-XXXL margin-left-XXS margin-right-XXS">
         <BodyCopyWithSpacing
@@ -124,14 +158,21 @@ class MyPrefrenceSection extends React.PureComponent {
             dataLocator="mypreference-texttcpcheckbox"
             className="elm-padding-top"
             execOnChangeByDefault={false}
-            onClick={() => {
-              if (isTcpSubscribe) {
-                this.onUnsubscribeHandler('tcpWebSubscribe');
-              } else {
-                this.onSubscribeHandler('tcpWebSubscribe');
-              }
+            onChange={value => {
+              this.setState(
+                {
+                  isTcpSubscribeState: value,
+                },
+                () => {
+                  if (isTcpSubscribe) {
+                    this.onUnsubscribeHandler('tcpWebSubscribe');
+                  } else {
+                    this.onSubscribeHandler('tcpWebSubscribe');
+                  }
+                }
+              );
             }}
-            isChecked={isTcpSubscribe || false}
+            isChecked={isTcpSubscribeState}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
@@ -149,14 +190,21 @@ class MyPrefrenceSection extends React.PureComponent {
             dataLocator="mypreference-textgymcheckbox"
             className="elm-padding-top"
             execOnChangeByDefault={false}
-            onClick={() => {
-              if (isGymSubscribe) {
-                this.onUnsubscribeHandler('gymboreeWebSubscribe');
-              } else {
-                this.onSubscribeHandler('gymboreeWebSubscribe');
-              }
+            onChange={value => {
+              this.setState(
+                {
+                  isGymSubscribeState: value,
+                },
+                () => {
+                  if (isGymSubscribe) {
+                    this.onUnsubscribeHandler('gymboreeWebSubscribe');
+                  } else {
+                    this.onSubscribeHandler('gymboreeWebSubscribe');
+                  }
+                }
+              );
             }}
-            isChecked={isGymSubscribe || false}
+            isChecked={isGymSubscribeState}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
