@@ -45,11 +45,13 @@ class ProductVariantSelector extends React.PureComponent {
     const {
       color: { imagePath, name },
     } = item;
-    const { selectedColor, selectColor } = this.props;
+    const { selectedColor, selectColor, isGiftCard } = this.props;
     const isSelected = (selectedColor && name === selectedColor.name) || false;
     const borderWidth = 2;
-    const componentSize = 30;
-    const imageSize = isSelected ? componentSize - borderWidth : componentSize;
+    const componentWidth = isGiftCard ? 103 : 30;
+    const componentHeight = isGiftCard ? 128 : 30;
+    const imageWidth = isSelected ? componentWidth - borderWidth : componentWidth;
+    const imageHeight = isSelected ? componentHeight - borderWidth : componentHeight;
     return (
       <LinkImageIcon
         uri={imagePath}
@@ -61,12 +63,12 @@ class ProductVariantSelector extends React.PureComponent {
           this.handleItemChange(value);
           selectColor(name);
         }}
-        width={componentSize}
-        height={componentSize}
-        borderRadius={15}
+        width={componentWidth}
+        height={componentHeight}
+        borderRadius={!isGiftCard ? 15 : 0}
         borderWidth={borderWidth}
-        imageWidth={imageSize}
-        imageHeight={imageSize}
+        imageWidth={imageWidth}
+        imageHeight={imageHeight}
       />
     );
   };
@@ -179,6 +181,7 @@ ProductVariantSelector.propTypes = {
   locators: PropTypes.instanceOf(Object),
   input: PropTypes.instanceOf(Object),
   renderColorItem: PropTypes.bool,
+  isGiftCard: PropTypes.bool,
 };
 
 ProductVariantSelector.defaultProps = {
@@ -196,6 +199,7 @@ ProductVariantSelector.defaultProps = {
   selectedColor: '',
   selectColor: null,
   renderColorItem: false,
+  isGiftCard: false,
 };
 
 /* export class with styles */
