@@ -130,7 +130,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             creditCard={creditCard}
             customStyle={CardTextboxStyle}
             cameraIcon={cameraIcon}
-            onFocus={onCardFocus}
+            onCardFocus={onCardFocus}
           />
           {cameraIcon && cardType == null && (
             <StyledImageWrapper onPress={this.scanCard}>

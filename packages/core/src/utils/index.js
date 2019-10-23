@@ -75,6 +75,7 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  generateTraceId,
   enableBodyScroll,
   disableBodyScroll,
   readCookieMobileApp,
