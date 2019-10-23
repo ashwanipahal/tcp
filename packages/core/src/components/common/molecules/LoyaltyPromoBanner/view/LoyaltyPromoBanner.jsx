@@ -86,11 +86,7 @@ LoyaltyPromoBanner.defaultProps = {
       text: `
   <style>
 
-.loyalty-banner-wrapper {
-  height: 23px;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .loyalty-banner-wrapper__item {
   display: flex;
@@ -155,9 +151,7 @@ LoyaltyPromoBanner.defaultProps = {
 }
 
 @media (min-width: 1200px) {
-  .loyalty-banner-wrapper {
-    height: 45px;
-  }
+
   .loyalty-banner-wrapper__divider {
     margin: 0 22px;
   }
