@@ -66,7 +66,7 @@ export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser
     // FIXME: we need to store the details of the selected card and selected
     // address book entry, but like this it is pretty ugly. needs major cleanup
     yield call(addPaymentToOrder, requestData, errorMappings);
-    cardNotUpdated = yield select(isCardNotUpdated, requestData.onFileCardId);
+    yield select(isCardNotUpdated, requestData.onFileCardId);
   } else {
     const cardType = getCreditCardType(formData);
     const checkoutDetails = yield select(getBillingValues);
