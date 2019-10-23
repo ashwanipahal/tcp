@@ -1,21 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPreferencesTile } from '../MyPreferencesTile.view';
+import { MyFavoriteTileItem } from '../MyFavoriteTileItem.view.native';
 
-describe('MyPreferencesTile component', () => {
+describe('MyFavoriteTileItem component', () => {
   it('should render correctly', () => {
     const props = {
       labels: {},
-      isCanada: '',
       favStoreName: '',
       favStoreAddress: '',
       favStoreState: '',
       favStoreCity: '',
       favStoreZipcode: '',
       favStorePhone: '',
-      socialAccounts: {},
+      isFavStoreName: '',
+      addEditLabel: '',
     };
-    const component = shallow(<MyPreferencesTile {...props} />);
+    const component = shallow(<MyFavoriteTileItem {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
