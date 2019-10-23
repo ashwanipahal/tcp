@@ -13,7 +13,7 @@ export const OrdersList = ({
   navigation,
   handleComponentChange,
   componentProps,
-  orderDetailsData,
+  orderItems,
 }) => {
   return (
     <React.Fragment>
@@ -26,17 +26,14 @@ export const OrdersList = ({
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
       />
-      {orderDetailsData &&
-        orderDetailsData.purchasedItems &&
-        orderDetailsData.purchasedItems.length > 0 && (
-          <OrderPreviewItemsList
-            labels={labels}
-            navigation={navigation}
-            orderNumber={orderDetailsData.orderNumber}
-            items={orderDetailsData.purchasedItems[0].items}
-            canceledItems={orderDetailsData.canceledItems}
-          />
-        )}
+      {orderItems && orderItems.length > 0 && (
+        <OrderPreviewItemsList
+          labels={labels}
+          navigation={navigation}
+          items={orderItems[0]}
+          orderNumber={ordersListItems[0].orderNumber}
+        />
+      )}
       {ordersListItems && ordersListItems.length > 1 ? (
         <PastOrders
           labels={labels}
@@ -56,12 +53,11 @@ OrdersList.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
-  orderDetailsData: PropTypes.shape({}),
+  orderItems: PropTypes.shape([]).isRequired,
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
-  orderDetailsData: {},
 };
 
 export default OrdersList;

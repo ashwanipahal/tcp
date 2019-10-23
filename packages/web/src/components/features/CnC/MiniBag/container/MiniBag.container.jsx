@@ -11,7 +11,7 @@ import {
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { isPlccUser } from '@tcp/core/src/components/features/account/User/container/User.selectors';
-
+import { getAddedToBagError } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.selectors';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -45,6 +45,7 @@ type Props = {
   openOverlay: Function,
   resetSuccessMessage: Function,
   isPlcc: PropTypes.bool.isRequired,
+  addedToBagError: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -76,6 +77,7 @@ export class MiniBagContainer extends React.Component<Props> {
       openOverlay,
       resetSuccessMessage,
       isPlcc,
+      addedToBagError,
     } = this.props;
     return (
       <MiniBagView
@@ -95,6 +97,7 @@ export class MiniBagContainer extends React.Component<Props> {
         openOverlay={openOverlay}
         resetSuccessMessage={resetSuccessMessage}
         isPlcc={isPlcc}
+        addedToBagError={addedToBagError}
       />
     );
   }
@@ -112,6 +115,7 @@ const mapStateToProps = state => {
     cartItemSflError: getCartItemsSflError(state),
     isOpen: getIsMiniBagOpen(state),
     isPlcc: isPlccUser(state),
+    addedToBagError: getAddedToBagError(state),
   };
 };
 

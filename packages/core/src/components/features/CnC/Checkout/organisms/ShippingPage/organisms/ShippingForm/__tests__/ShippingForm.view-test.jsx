@@ -10,6 +10,7 @@ describe('Shipping Form', () => {
       shippingLabels: {},
       smsSignUpLabels: {},
       isGuest: false,
+      ServerErrors: {},
     };
     const tree = shallow(<ShippingFormVanilla {...props} />);
     expect(tree).toMatchSnapshot();

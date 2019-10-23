@@ -8,7 +8,7 @@ export const RibbonWrapper = styled.div`
 
 export const RibbonContainer = styled.div`
   background: transparent url(${props => props.imgPath}) no-repeat 0 0;
-  background-size: contain;
+  background-size: cover;
   right: 0;
   width: ${props => props.width}px;
   height: ${props => props.height}px;

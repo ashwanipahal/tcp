@@ -96,6 +96,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       dataLocator="storeAddressLocator"
       errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -247,6 +248,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       dataLocator="storeAddressLocator"
       errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -398,6 +400,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       dataLocator="storeAddressLocator"
       errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -549,6 +552,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
       dataLocator="storeAddressLocator"
       errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}

@@ -37,7 +37,7 @@ exports[`FullScreenImageCarousel should render correctly should match snapshot 1
               "accessibilityRole": "image",
               "accessible": true,
             },
-            "url": "//",
+            "url": "undefined/w_450/undefined///",
             "width": 726,
           },
         ]

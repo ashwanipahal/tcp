@@ -2,7 +2,6 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { executeStatefulAPICall } from '../../../handler/handler';
 import {
   getGiftWrappingOptions,
-  getCurrentOrderAndCouponsDetails,
   getShippingMethods,
   addGiftCardPaymentToOrder,
   removeGiftCard,
@@ -13,47 +12,6 @@ jest.mock('../../../handler/handler', () => ({
 }));
 
 describe('Checkout', () => {
-  it('getCurrentOrderAndCouponsDetails', () => {
-    const result = {
-      body: {
-        orderDetails: {
-          orderDetailsResponse: {},
-        },
-        coupons: {},
-      },
-    };
-    executeStatefulAPICall.mockImplementation(() => Promise.resolve(result));
-    getCurrentOrderAndCouponsDetails().then(data => {
-      expect(data.body).toMatchObject({ coupons: result.body.coupons, orderDetails: {} });
-    });
-  });
-  it('getCurrentOrderAndCouponsDetails with parameters', () => {
-    const orderId = 123;
-    const calcsEnabled = false;
-    const excludeCartItems = true;
-    const imageGenerator = null;
-    const isLoggedIn = true;
-    const recalcRewards = false;
-    const result = {
-      body: {
-        orderDetails: {
-          orderDetailsResponse: {},
-        },
-        coupons: {},
-      },
-    };
-    executeStatefulAPICall.mockImplementation(() => Promise.resolve(result));
-    getCurrentOrderAndCouponsDetails(
-      orderId,
-      calcsEnabled,
-      excludeCartItems,
-      imageGenerator,
-      recalcRewards,
-      isLoggedIn
-    ).then(data => {
-      expect(data.body).toMatchObject({ coupons: result.body.coupons, orderDetails: {} });
-    });
-  });
   it('getGiftWrappingOptions', () => {
     const result = {
       body: {
