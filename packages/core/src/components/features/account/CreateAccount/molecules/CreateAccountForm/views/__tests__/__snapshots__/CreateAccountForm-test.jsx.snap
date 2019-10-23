@@ -65,6 +65,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
       "propTypes": Object {
+        "addressLabels": [Function],
         "className": [Function],
         "confirmHideShowPwd": [Function],
         "handleSubmit": [Function],
@@ -101,6 +102,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
         },
         "displayName": "ReduxForm",
         "propTypes": Object {
+          "addressLabels": [Function],
           "className": [Function],
           "confirmHideShowPwd": [Function],
           "handleSubmit": [Function],
