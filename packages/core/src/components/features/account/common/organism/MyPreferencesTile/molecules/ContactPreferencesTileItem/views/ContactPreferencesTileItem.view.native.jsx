@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { getLabelValue } from '@tcp/core/src/utils';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import {
   ContactPreferencesTileItemContainer,
   RightContainer,
   MiddleContainer,
-  BodyCopyLeftMargin,
-  BodyCopyLabelWrapper,
+  ImageWrapper
 } from '../styles/ContactPreferencesTileItem.style.native';
 
 const PushEnabledIcon = require('../../../../../../../../../assets/push-enabled.png');
@@ -24,45 +24,45 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences, handleCompone
   return (
     <>
       <ContactPreferencesTileItemContainer>
-        <View>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            text={getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
-            color="black"
-          />
-        </View>
-        <View style={MiddleContainer}>
-          <BodyCopyLeftMargin>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs14"
+          text={getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
+          color="black"
+        />
+        <MiddleContainer>
+          <ImageWrapper>
             {placeRewardsSms ? (
               <ImageComp source={SmsEnabledIcon} width={30} height={30} />
             ) : (
               <ImageComp source={SmsDisabledIcon} width={30} height={30} />
             )}
-            <BodyCopyLabelWrapper
-              mobileFontFamily="secondary"
+            <BodyCopyWithSpacing
+              fontFamily="secondary"
               fontSize="fs10"
               fontWeight="semibold"
               text={getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
               color="black"
+              spacingStyles="margin-top-XS"
             />
-          </BodyCopyLeftMargin>
-          <View>
+          </ImageWrapper>
+          <ImageWrapper spacingStyles="margin-left-LRG">
             {placeRewardsPush ? (
               <ImageComp source={PushEnabledIcon} width={24} height={30} />
             ) : (
               <ImageComp source={PushDisabledIcon} width={24} height={30} />
             )}
-            <BodyCopyLabelWrapper
-              mobileFontFamily="secondary"
+            <BodyCopyWithSpacing
+              fontFamily="secondary"
               fontSize="fs10"
               fontWeight="semibold"
               text={getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
               color="black"
+              spacingStyles="margin-top-XS"
             />
-          </View>
-        </View>
-        <View style={RightContainer}>
+          </ImageWrapper>
+        </MiddleContainer>
+        <RightContainer>
           <Anchor
             anchorVariation="primary"
             text={getLabelValue(labels, addEditText, 'preferences')}
@@ -73,7 +73,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences, handleCompone
             dataLocator=""
             color="gray.900"
           />
-        </View>
+        </RightContainer>
       </ContactPreferencesTileItemContainer>
     </>
   );

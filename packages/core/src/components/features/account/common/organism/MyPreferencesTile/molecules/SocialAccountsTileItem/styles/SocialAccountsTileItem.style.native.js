@@ -6,17 +6,18 @@ const SocialAccountsTileItemContainer = styled.View`
   flex-direction: row;
 `;
 
-const LeftContainer = {
-  flex: 1.5,
-  justifyContent: 'flex-start',
-};
+const LeftContainer = styled.View`
+  flex: 3;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
 
-const RightContainer = {
-  flex: 0.5,
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-};
+const RightContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
 const ImageWrapper = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};

@@ -39,7 +39,7 @@ class SocialAccountsTileItem extends React.PureComponent {
     return (
       <>
         <SocialAccountsTileItemContainer>
-          <View style={LeftContainer}>
+          <LeftContainer>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
@@ -50,8 +50,8 @@ class SocialAccountsTileItem extends React.PureComponent {
               )}
               color="black"
             />
-          </View>
-          <View style={RightContainer}>
+          </LeftContainer>
+          <RightContainer>
             <Anchor
               anchorVariation="primary"
               text={getLabelValue(labels, addEditText, 'preferences')}
@@ -62,7 +62,7 @@ class SocialAccountsTileItem extends React.PureComponent {
               dataLocator=""
               color="gray.900"
             />
-          </View>
+          </RightContainer>
         </SocialAccountsTileItemContainer>
         <SocialAccountsTileItemContainer>
           {socialAccountsObject.isSocialConnected ? (

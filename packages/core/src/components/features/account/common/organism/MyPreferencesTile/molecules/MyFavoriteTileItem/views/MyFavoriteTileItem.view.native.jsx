@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue, formatPhoneNumber } from '@tcp/core/src/utils';
 import {
@@ -25,15 +24,15 @@ export const MyFavoriteTileItem = ({
   return (
     <>
       <MyFavoriteTileItemContainer>
-        <View style={LeftContainer}>
+        <LeftContainer>
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs14"
             text={getLabelValue(labels, 'lbl_prefrence_tileFavoriteStore', 'preferences')}
             color="black"
           />
-        </View>
-        <View style={RightContainer}>
+        </LeftContainer>
+        <RightContainer>
           <Anchor
             anchorVariation="primary"
             text={getLabelValue(labels, addEditLabel, 'preferences')}
@@ -44,14 +43,14 @@ export const MyFavoriteTileItem = ({
             dataLocator=""
             color="gray.900"
           />
-        </View>
+        </RightContainer>
       </MyFavoriteTileItemContainer>
       {isFavStoreName ? (
         <>
           <BodyCopyWrapper
             fontSize="fs14"
             data-locator="storeName"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             fontWeight="regular"
             color="gray.900"
             text={favStoreName}
@@ -59,7 +58,7 @@ export const MyFavoriteTileItem = ({
           <BodyCopyWrapper
             fontSize="fs14"
             data-locator="storeName"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             fontWeight="regular"
             color="gray.900"
             text={favStoreAddress}
@@ -67,7 +66,7 @@ export const MyFavoriteTileItem = ({
           <BodyCopyWrapper
             fontSize="fs14"
             data-locator="storeName"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             fontWeight="regular"
             color="gray.900"
             text={`${favStoreCity}, ${favStoreState} ${favStoreZipcode}`}
@@ -75,7 +74,7 @@ export const MyFavoriteTileItem = ({
           <BodyCopyWrapper
             fontSize="fs14"
             data-locator="storeName"
-            mobilefontFamily="secondary"
+            fontFamily="secondary"
             fontWeight="regular"
             color="gray.900"
             text={formatPhoneNumber(favStorePhone)}
@@ -83,7 +82,7 @@ export const MyFavoriteTileItem = ({
         </>
       ) : (
         <BodyCopy
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           text={getLabelValue(labels, 'lbl_preference_tileAccessBuyOnlinePickup', 'preferences')}
           color="gray.900"

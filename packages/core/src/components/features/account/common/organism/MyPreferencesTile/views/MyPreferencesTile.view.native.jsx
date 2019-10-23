@@ -25,7 +25,7 @@ export const MyPreferencesTile = ({
   customerPreferences,
   handleComponentChange,
 }) => {
-  console.info('customerPreferences-->>',customerPreferences)
+  // console.info('customerPreferences-->>',customerPreferences)
   return (
     <MyPreferencesTileContainer>
       <BodyCopy

@@ -1,12 +1,6 @@
 import styled from 'styled-components/native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 
-const TouchableLink = styled.TouchableHighlight.attrs({
-  underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
-})`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-`;
-
 const ContactPreferencesTileItemContainer = styled.View`
   height: 24px;
   flex: 1;
@@ -14,45 +8,34 @@ const ContactPreferencesTileItemContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-const BodyCopyStyle = {
-  fontSize: 'fs13',
-};
-
-const BodyCopyLeftMargin = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+const ImageWrapper = styled.View`
+margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-const BodyCopyLabelWrapper = styled(BodyCopy)`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+const LeftContainer = styled.View`
+  flex: 4,
+  flex-direction: 'row';
+  justify-content: 'flex-start';
 `;
 
-const LeftContainer = {
-  flex: 2,
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-};
+const MiddleContainer = styled.View`
+  flex: 3;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+`;
 
-const MiddleContainer = {
-  flex: 1.5,
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-};
-
-const RightContainer = {
-  flex: 0.5,
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-};
+const RightContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
 export {
-  TouchableLink,
-  BodyCopyStyle,
   ContactPreferencesTileItemContainer,
   LeftContainer,
   RightContainer,
   MiddleContainer,
-  BodyCopyLeftMargin,
-  BodyCopyLabelWrapper,
+  ImageWrapper
 };
