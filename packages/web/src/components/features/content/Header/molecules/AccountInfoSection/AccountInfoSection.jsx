@@ -24,6 +24,7 @@ const AccountInfoSection = ({
           userNameClick={userNameClick}
           openOverlay={openOverlay}
           onLinkClick={onLinkClick}
+          isDrawer
         />
       </Col>
       <Col colSize={{ small: 2, medium: 3 }}>
