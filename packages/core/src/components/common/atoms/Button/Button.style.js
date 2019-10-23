@@ -113,19 +113,19 @@ const ButtonStyles = css`
       ? `
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
 
       /* fixes button flickering on the hover because for font-weight */
       ::after {
         font-family: ${props.theme.typography.fonts.secondary};
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         font-size: ${props.theme.typography.fontSizes.fs14};
         display: block;
         content: attr(data-category-link-label);
@@ -225,11 +225,11 @@ const ButtonStyles = css`
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width'
-        ? `min-height: 51px; font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
     ${props =>
       props.buttonVariation === 'variable-width'
-        ? `min-height: 45px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
   }
   ${props =>

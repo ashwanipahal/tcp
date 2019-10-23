@@ -18,6 +18,9 @@ const styles = css`
   .clear-button {
     border: none;
     background: transparent;
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    width: 35px;
+    outline: none;
   }
   .fav-icon {
     width: 21px;
@@ -51,6 +54,7 @@ const styles = css`
   .purchase-section {
     margin-top: 16px;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-family: ${props => props.theme.typography.fonts.secondary};
   }
 
   .move-item-container {
@@ -63,6 +67,9 @@ const styles = css`
     text-transform: none;
     text-align: left;
     letter-spacing: normal;
+    outline: none;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    white-space: nowrap;
   }
 
   .move-item-section {
@@ -100,6 +107,8 @@ const styles = css`
 
   .wish-list-count-section {
     text-transform: lowercase;
+    display: inline-block;
+    padding-right: 2px;
   }
 
   .wish-list-count,
@@ -221,18 +230,6 @@ const styles = css`
     }
     .empty-color-chips-container {
       min-height: 40px;
-    }
-  }
-  .fulfillment-section .added-to-bag {
-    width: 200px;
-    height: 51px;
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      width: 214px;
-      height: 42px;
-    }
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      width: 148px;
-      height: 32px;
     }
   }
 `;

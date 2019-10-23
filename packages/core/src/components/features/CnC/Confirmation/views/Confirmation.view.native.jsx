@@ -10,6 +10,11 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
+import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
+
+const renderAccountForm = isGuest => {
+  return isGuest ? <ConfirmationAccountFormContainer /> : null;
+};
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -88,6 +93,7 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
+      {renderAccountForm(isGuest)}
       <CnCTemplate isConfirmationPage isGuest={isGuest} />
     </Wrapper>
   );

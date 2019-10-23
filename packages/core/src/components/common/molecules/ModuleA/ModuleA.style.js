@@ -104,7 +104,6 @@ const style = css`
       props.theme.isGymboree
         ? props.theme.colors.BUTTON.WHITE
         : props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
