@@ -2,13 +2,12 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import PageHeadingWithLinks from '@tcp/core/src/components/features/account/common/molecule/PageHeadingWithLinks';
 import withStyles from '../../../../common/hoc/withStyles.native';
 
-import { UnderlineStyle } from '../styles/MyPreference.style.native';
 import MyFavoriteStore from '../../MyProfile/organism/MyFavoriteStore';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
 import SocialContainer from '../../../../common/organisms/SocialAccount/container/Social.container';
+import MyPreferenceSubscriptionContainer from '../../MyPreferenceSubscription/container/MyPreferenceSubscription.container';
 
 class MyPrefrenceSection extends React.PureComponent {
   render() {
@@ -16,22 +15,19 @@ class MyPrefrenceSection extends React.PureComponent {
     return (
       <View>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-          <StyledHeading>
-            {getLabelValue(labels, 'lbl_prefrence_heading') && (
-              <BodyCopy
-                fontSize="fs16"
-                fontWeight="extrabold"
-                text={getLabelValue(labels, 'lbl_prefrence_heading')}
-              />
-            )}
-          </StyledHeading>
-          <UnderlineStyle />
-          <MyFavoriteStore isMyPreferences />
-          <SocialContainer
-            labels={labels}
-            handleComponentChange={handleComponentChange}
-            componentProps={componentProps}
-          />
+          <PageHeadingWithLinks
+            heading={getLabelValue(labels, 'lbl_prefrence_heading')}
+            programDetailsCta={getLabelValue(labels, 'lbl_prefrence_program_details')}
+            termsConditionCta={getLabelValue(labels, 'lbl_prefrence_term_codition')}
+          >
+            <MyFavoriteStore isMyPreferences />
+            <SocialContainer
+              labels={labels}
+              handleComponentChange={handleComponentChange}
+              componentProps={componentProps}
+            />
+            <MyPreferenceSubscriptionContainer labels={labels} />
+          </PageHeadingWithLinks>
         </ScrollView>
       </View>
     );

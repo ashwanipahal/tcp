@@ -11,6 +11,7 @@ import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -19,6 +20,7 @@ import {
   TextWrapper,
   TouchabelContainer,
   ImageContainer,
+  RightArrowImageContainer,
   StyledImage,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
@@ -185,7 +187,11 @@ class AccountOverview extends PureComponent<Props> {
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
-              <OrdersTile labels={labels} navigation={navigation} />
+              <OrdersTile
+                labels={labels}
+                navigation={navigation}
+                handleComponentChange={handleComponentChange}
+              />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
@@ -196,7 +202,9 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
+              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
           </React.Fragment>
         )}
@@ -326,10 +334,26 @@ class AccountOverview extends PureComponent<Props> {
 
             <UnderlineStyle />
 
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
-              isVariationTypeLink
-            />
+            <TouchabelContainer
+              onPress={() => {
+                navigation.navigate('GiftCardPage', {
+                  title: 'Gift Cards',
+                  pdpUrl: 'Gift Card',
+                });
+              }}
+            >
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs13"
+                fontWeight="regular"
+                text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
+                color="gray.900"
+              />
+              <RightArrowImageContainer>
+                <ImageComp source={rightIcon} width={7} height={10} />
+              </RightArrowImageContainer>
+            </TouchabelContainer>
+
             <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
             <Panel
               title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}

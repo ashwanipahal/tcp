@@ -37,7 +37,7 @@ export const OrdersList = ({
         <OrderPreviewItemsList
           labels={labels}
           navigation={navigation}
-          items={orderItems[0]}
+          items={orderItems}
           orderNumber={ordersListItems[0].orderNumber}
         />
       )}

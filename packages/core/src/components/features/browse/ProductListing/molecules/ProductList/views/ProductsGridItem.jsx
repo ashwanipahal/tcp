@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -327,7 +328,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       item: {
         itemInfo: { itemId } = {},
-        productInfo: { bundleProduct },
+        productInfo: { bundleProduct, isGiftCard },
       },
       removeFavItem,
       isFavoriteView,
@@ -352,7 +353,10 @@ class ProductsGridItem extends React.PureComponent {
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
         onClick={
-          isShowQuickView && !isBundleProduct
+          // eslint-disable-next-line no-nested-ternary
+          isGiftCard
+            ? () => {} // TODO Gift Card Quick View Modal
+            : isShowQuickView && !isBundleProduct
             ? this.handleQuickViewOpenClick
             : this.handleViewBundleClick
         }
@@ -406,9 +410,10 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
+      viaModule,
     } = this.props;
+    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
-
     const prodNameAltImages = longProductTitle || name;
     const {
       selectedColorProductId,

@@ -6,8 +6,6 @@ import { getUserEmail } from '../../../account/User/container/User.selectors';
 import utility from '../util/utility';
 import CHECKOUT_ACTIONS, { setShippingLoadingState } from './Checkout.action';
 import { isCanada } from '../../../../../utils/utils';
-import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import { getCardList } from '../../../account/Payment/container/Payment.saga';
 import { redirectToBilling } from './Checkout.saga.util';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
@@ -15,7 +13,6 @@ import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/i
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
     yield put(setShippingLoadingState(true));
-
     const {
       // giftWrap,
       method,
@@ -50,16 +47,13 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
         method,
         smsInfo,
         isEmailSignUpAllowed,
-        recalcFlag,
         emailAddress,
       });
     }
-    yield call(getAddressList);
-    yield call(getCardList);
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
     const isVenmoShippingDisplayed = yield select(selectors.isVenmoShippingBannerDisplayed);
     if (isVenmoInProgress && !isVenmoShippingDisplayed) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: false });
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc: recalcFlag });
     } else {
       yield call(redirectToBilling);
     }

@@ -11,6 +11,7 @@ import {
   setActiveWishlistAction,
   getActiveWishlistAction,
   setDeletedItemAction,
+  setLoadingState,
 } from './Favorites.actions';
 import addItemsToWishlistAbstractor, {
   getUserWishLists,
@@ -101,6 +102,7 @@ export function* loadActiveWishlist({ wishListId }) {
     });
     const updatedWishList = { ...wishlistById, items: [...WishlistWithUnbxdPrice] };
     yield put(setActiveWishlistAction(updatedWishList));
+    yield put(setLoadingState({ isDataLoading: false }));
   } catch (err) {
     yield null;
   }
@@ -112,13 +114,18 @@ export function* loadWishlistsSummaries(config) {
     let wishListId;
     if (typeof config !== 'object') {
       wishListId = config;
+    } else if (typeof config === 'object') {
+      const { isDataLoading } = config.payload;
+      yield put(setLoadingState({ isDataLoading: isDataLoading || false }));
     }
+
     const userName = getUserContactInfo(state).get('firstName');
     const wishlists = yield call(getUserWishLists, userName);
     yield put(setWishlistsSummariesAction(wishlists));
     const activeWishListId = wishListId || wishlists.find(list => list.isDefault).id;
     yield put(getActiveWishlistAction(activeWishListId));
   } catch (err) {
+    yield put(setLoadingState({ isDataLoading: false }));
     yield null;
   }
 }
@@ -207,7 +214,7 @@ export function* deleteWishListItemById({ payload }) {
     const activeWishlistObject =
       state[FAVORITES_REDUCER_KEY] && state[FAVORITES_REDUCER_KEY].get('activeWishList');
     const activeWishlistId = activeWishlistObject.id;
-    const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, payload);
+    const deleteItemResponse = yield call(deleteWishListItem, activeWishlistId, payload.itemId);
     if (!deleteItemResponse.success) {
       throw deleteItemResponse;
     }

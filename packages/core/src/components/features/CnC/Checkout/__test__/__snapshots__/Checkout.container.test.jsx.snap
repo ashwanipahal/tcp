@@ -10,6 +10,11 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
       "reviewLabel",
     ]
   }
+  billingProps={
+    Object {
+      "billingDidMount": [Function],
+    }
+  }
   currentPhoneNumber=""
   formatPayload={[Function]}
   initialValues={Object {}}
@@ -20,6 +25,12 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   isUsSite={false}
   isVenmoPaymentInProgress={false}
   onEditModeChange={true}
+  pickupDidMount={[Function]}
+  reviewProps={
+    Object {
+      "reviewDidMount": [Function],
+    }
+  }
   router={
     Object {
       "query": Object {
@@ -30,6 +41,11 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   setVenmoPickupState={[Function]}
   setVenmoShippingState={[Function]}
   shippingMethod={Object {}}
+  shippingProps={
+    Object {
+      "shippingDidMount": [Function],
+    }
+  }
 />
 `;
 
@@ -43,6 +59,11 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
       "reviewLabel",
     ]
   }
+  billingProps={
+    Object {
+      "billingDidMount": [Function],
+    }
+  }
   currentPhoneNumber=""
   formatPayload={[Function]}
   initialValues={Object {}}
@@ -53,6 +74,12 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isUsSite={false}
   isVenmoPaymentInProgress={false}
   onEditModeChange={true}
+  pickupDidMount={[Function]}
+  reviewProps={
+    Object {
+      "reviewDidMount": [Function],
+    }
+  }
   router={
     Object {
       "query": Object {
@@ -63,5 +90,10 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   setVenmoPickupState={[Function]}
   setVenmoShippingState={[Function]}
   shippingMethod={Object {}}
+  shippingProps={
+    Object {
+      "shippingDidMount": [Function],
+    }
+  }
 />
 `;

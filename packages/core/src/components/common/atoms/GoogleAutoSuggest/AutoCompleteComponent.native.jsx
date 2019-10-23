@@ -53,16 +53,13 @@ export class GooglePlacesInput extends PureComponent {
   };
 
   onPress = (data, details = null) => {
-    const {
-      onValueChange,
-      meta: { touched, error },
-    } = this.props;
+    const { onValueChange } = this.props;
     this.setState(
       {
         listViewDisplayed: false,
       },
       () => {
-        if (!(touched && error)) onValueChange(details, data.description);
+        onValueChange(details, data.description);
       }
     );
   };

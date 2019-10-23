@@ -136,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ",
@@ -157,15 +157,18 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 22px;
+    font-size: ",
+                [Function],
+                ";
     line-height: normal;
     letter-spacing: 2px;
 
     @media ",
                 [Function],
                 " {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -187,6 +190,9 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
   .medium_text_black {
+    color: ",
+                [Function],
+                ";
     font-family: ",
                 [Function],
                 ";
@@ -277,6 +283,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 " {
       display: inline;
     }
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    color: ",
+                [Function],
+                ";
+    text-align: center;
     @media ",
                 [Function],
                 " {
@@ -512,9 +542,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: ",
-                [Function],
-                ";
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -713,14 +741,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
@@ -845,14 +873,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {

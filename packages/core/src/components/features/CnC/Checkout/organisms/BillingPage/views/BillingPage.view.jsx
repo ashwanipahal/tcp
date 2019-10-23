@@ -13,6 +13,7 @@ class BillingPage extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     submitBilling: PropTypes.func.isRequired,
+    billingDidMount: PropTypes.func.isRequired,
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
@@ -36,6 +37,11 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
   };
+
+  componentDidMount() {
+    const { billingDidMount } = this.props;
+    billingDidMount();
+  }
 
   render() {
     const {

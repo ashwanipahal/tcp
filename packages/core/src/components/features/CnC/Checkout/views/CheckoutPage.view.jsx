@@ -166,7 +166,9 @@ class CheckoutPage extends React.PureComponent {
       formatPayload,
       submitVerifiedShippingAddressData,
       isExpressCheckout,
+      initShippingPage,
       shippingMethod,
+      pickupDidMount,
       isHasPickUpAlternatePerson,
       pickUpAlternatePerson,
       pickUpContactPerson,
@@ -184,6 +186,7 @@ class CheckoutPage extends React.PureComponent {
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
+            pickupDidMount={pickupDidMount}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -210,6 +213,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
+            initShippingPage={initShippingPage}
             isGuest={isGuest}
             isUsSite={isUsSite}
             formatPayload={formatPayload}
@@ -378,10 +382,12 @@ CheckoutPage.propTypes = {
   cartOrderItems: PropTypes.shape([]).isRequired,
   orderHasShipping: PropTypes.bool.isRequired,
   routeToPickupPage: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
+  initShippingPage: PropTypes.func.isRequired,
   formatPayload: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoPickupState: PropTypes.func,
