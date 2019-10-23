@@ -114,7 +114,7 @@ describe('CheckoutBilling saga', () => {
     expect(addressIdMethod).toEqual(null);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with first variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       { address: { sameAsShipping: true }, cardNumber: '1234' },
@@ -123,6 +123,7 @@ describe('CheckoutBilling saga', () => {
       {},
       func
     );
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ billing: {}, paymentId: '123' });
     CheckoutReviewSaga.next();
@@ -133,7 +134,7 @@ describe('CheckoutBilling saga', () => {
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with second variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       { address: { sameAsShipping: true }, cardNumber: '1234' },
@@ -142,6 +143,7 @@ describe('CheckoutBilling saga', () => {
       {},
       func
     );
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ billing: {} });
     CheckoutReviewSaga.next();
@@ -152,7 +154,7 @@ describe('CheckoutBilling saga', () => {
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with third variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       {
@@ -187,6 +189,7 @@ describe('CheckoutBilling saga', () => {
       deviceData: 'venmoDeviceDataKey',
       details: { username: 'test-user' },
     };
+    CheckoutReviewSaga.next();
     const response = CheckoutReviewSaga.next(venmoData).value; // select getVenmoData
     const requestData = {
       billingAddressId: '12345',
