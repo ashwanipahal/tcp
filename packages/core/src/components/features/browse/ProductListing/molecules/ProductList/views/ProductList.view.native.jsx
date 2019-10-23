@@ -149,6 +149,12 @@ class ProductList extends React.PureComponent {
     }
   };
 
+  getColumnWrapperStyle = () => {
+    return {
+      justifyContent: 'space-between',
+    };
+  };
+
   /**
    * @desc This is render product list
    */
@@ -167,6 +173,7 @@ class ProductList extends React.PureComponent {
         ListFooterComponent={this.renderFooter}
         ListHeaderComponent={this.renderHeader}
         stickyHeaderIndices={[0]}
+        columnWrapperStyle={this.getColumnWrapperStyle()}
       />
     );
   };

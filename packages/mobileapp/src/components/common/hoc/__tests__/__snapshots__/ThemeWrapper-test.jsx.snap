@@ -50,6 +50,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "1400": "#90939b",
           "1500": "#c3c3c3",
           "1600": "#979797",
+          "1700": "#333333",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",

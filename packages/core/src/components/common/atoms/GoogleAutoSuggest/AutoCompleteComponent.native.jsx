@@ -53,13 +53,16 @@ export class GooglePlacesInput extends PureComponent {
   };
 
   onPress = (data, details = null) => {
-    const { onValueChange } = this.props;
+    const {
+      onValueChange,
+      meta: { touched, error },
+    } = this.props;
     this.setState(
       {
         listViewDisplayed: false,
       },
       () => {
-        onValueChange(details, data.description);
+        if (!(touched && error)) onValueChange(details, data.description);
       }
     );
   };
@@ -158,7 +161,10 @@ GooglePlacesInput.propTypes = {
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
   input: PropTypes.shape({}),
-  meta: PropTypes.shape({}),
+  meta: PropTypes.shape({
+    touched: PropTypes.string,
+    error: PropTypes.string,
+  }),
   initialValue: PropTypes.string,
   clearButtonMode: PropTypes.string,
 };
