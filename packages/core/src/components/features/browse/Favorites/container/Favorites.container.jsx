@@ -22,12 +22,13 @@ import {
   selectTotalProductsCount,
   fetchCurrencySymbol,
   getLabelsFavorites,
+  getIsDataLoading,
 } from './Favorites.selectors';
 
 class FavoritesContainer extends React.PureComponent {
   state = {
     selectedColorProductId: '',
-    filteredId: '',
+    filteredId: 'ALL',
     sortId: '',
     gymSelected: false,
     tcpSelected: false,
@@ -35,7 +36,7 @@ class FavoritesContainer extends React.PureComponent {
 
   componentDidMount() {
     const { loadWishList } = this.props;
-    loadWishList();
+    loadWishList({ isDataLoading: true });
   }
 
   onFilterSelection = filteredId => {
@@ -96,6 +97,8 @@ class FavoritesContainer extends React.PureComponent {
       labels,
       navigation,
       onQuickViewOpenClick,
+      totalProductsCount,
+      isDataLoading,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -121,6 +124,8 @@ class FavoritesContainer extends React.PureComponent {
         onFilterSelection={this.onFilterSelection}
         onSortSelection={this.onSortSelection}
         selectBrandType={this.selectBrandType}
+        totalProductsCount={totalProductsCount}
+        isDataLoading={isDataLoading}
         {...this.state}
       />
     );
@@ -137,12 +142,13 @@ const mapStateToProps = state => {
     currencySymbol: fetchCurrencySymbol(state),
     labels: getLabelsFavorites(state),
     totalProductsCount: selectTotalProductsCount(state),
+    isDataLoading: getIsDataLoading(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadWishList: () => dispatch(getSetWishlistsSummariesAction()),
+    loadWishList: payload => dispatch(getSetWishlistsSummariesAction(payload)),
     createNewWishListMoveItem: wishListId => dispatch(createNewWishListMoveItemAction(wishListId)),
     deleteWishList: wishListId => {
       dispatch(deleteWishListAction(wishListId));
@@ -174,6 +180,8 @@ FavoritesContainer.propTypes = {
   currencySymbol: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   navigation: PropTypes.shape({}).isRequired,
+  totalProductsCount: PropTypes.string,
+  isDataLoading: PropTypes.bool,
 };
 
 FavoritesContainer.defaultProps = {
@@ -181,6 +189,8 @@ FavoritesContainer.defaultProps = {
   activeWishList: {},
   currencySymbol: '$',
   labels: {},
+  totalProductsCount: '0',
+  isDataLoading: false,
 };
 
 export default connect(
