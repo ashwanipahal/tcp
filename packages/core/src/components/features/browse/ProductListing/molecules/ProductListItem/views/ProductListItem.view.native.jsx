@@ -95,7 +95,7 @@ const ListItem = props => {
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
-    <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
+    <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation}>
       <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
