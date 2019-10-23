@@ -105,11 +105,12 @@ CouponContainer.defaultProps = {
   idPrefix: '',
 };
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   handleApplyCouponFromList: coupon => {
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
+          fullPageInfo,
           formData: { couponCode: coupon.id },
           formPromise: { resolve, reject },
           coupon,
@@ -119,13 +120,24 @@ export const mapDispatchToProps = dispatch => ({
   },
   handleRemoveCoupon: coupon => {
     return new Promise((resolve, reject) => {
-      dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
+      dispatch(
+        removeCoupon({
+          coupon,
+          fullPageInfo,
+          formPromise: { resolve, reject },
+        })
+      );
     });
   },
   handleApplyCoupon: (formData, _, props) =>
     new Promise((resolve, reject) => {
       dispatch(
-        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
+        applyCoupon({
+          formData,
+          fullPageInfo,
+          source: props && props.source,
+          formPromise: { resolve, reject },
+        })
       );
     }),
   handleErrorCoupon: coupon => {

@@ -1,4 +1,4 @@
-import { getStoresByCountry } from '../storeList';
+import { getStoresByCountry, getBasicInfo } from '../storeList';
 import list from '../__mocks__/storeList';
 import responseMock from '../__mocks__/storeListMockResponse';
 import { executeStatefulAPICall } from '../../../../handler';
@@ -21,5 +21,35 @@ describe('Store List Abstractor', () => {
     stores.then(item => {
       expect(item).toEqual(responseMock.result);
     });
+  });
+  test('getBasicInfo', () => {
+    const store = {
+      Description: [
+        {
+          displayStoreName: 'test',
+        },
+      ],
+      uniqueID: 'test',
+      addressLine: ['test'],
+      city: 'test',
+      stateOrProvinceName: 'test',
+      postalCode: 'test',
+      telephone1: '012 34567899',
+    };
+    const formattedResponse = {
+      basicInfo: {
+        id: 'test',
+        storeName: 'test',
+        address: {
+          addressLine1: 'test',
+          city: 'test',
+          state: 'test',
+          zipCode: 'test',
+        },
+        phone: '(012) 345-67899',
+      },
+    };
+    const formattedStore = getBasicInfo(store);
+    expect(formattedStore).toEqual(formattedResponse);
   });
 });

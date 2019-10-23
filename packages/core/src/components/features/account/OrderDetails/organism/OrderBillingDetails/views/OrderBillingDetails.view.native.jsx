@@ -45,7 +45,7 @@ export const OrderBillingDetails = ({ orderDetailsData, ordersLabels }) => {
                 fontWeight="semibold"
                 spacingStyles="margin-left-XS margin-right-XS"
                 text={
-                  card.cardType.toUpperCase() !== cardIconMapping.VENMO
+                  card.cardType.toUpperCase() !== 'VENMO'
                     ? `${getLabelValue(
                         ordersLabels,
                         'lbl_orders_ending'

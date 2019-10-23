@@ -6,6 +6,8 @@ export const getCurrentStore = state => {
   return state[STORE_DETAIL_REDUCER_KEY].get('currentStore');
 };
 
+export const storeLocatorLabels = state => state.Labels.StoreLocator;
+
 export const getCurrentStoreBasicInfo = createSelector(
   [getCurrentStore],
   currentStoreState =>
@@ -50,7 +52,7 @@ export const formatGenericMapObject = store => {
   return resultObject;
 };
 
-export const formatCurrentStoreToObject = store => {
+export const formatCurrentStoreToObject = (store, distance) => {
   if (store && store.size > 0) {
     const formattedStore = {};
     const basicInfoState = store.get('basicInfo') || fromJS({});
@@ -79,9 +81,10 @@ export const formatCurrentStoreToObject = store => {
     };
     formattedStore.hours = formatHoursToObject(store.get('hours'));
     formattedStore.features = formatGenericMapObject(store.get('features'));
+    formattedStore.distance = distance;
     return formattedStore;
   }
-  return store;
+  return { ...store, distance };
 };
 
 export const getNearByStores = state => state[STORE_DETAIL_REDUCER_KEY].get('suggestedStores');
@@ -110,3 +113,18 @@ export const isFavoriteStore = state => {
     (basicInfoStore && basicInfoStore.id) === (basicInfoDefaultStore && basicInfoDefaultStore.id)
   );
 };
+
+export const getReferredContentList = createSelector(
+  storeLocatorLabels,
+  labels => {
+    if (labels) {
+      return labels.StoreDetail.referred;
+    }
+    return [];
+  }
+);
+
+export const getRichTextContent = (state, key) => state[STORE_DETAIL_REDUCER_KEY].get(key);
+
+export const getStoreDistance = state =>
+  state[STORE_DETAIL_REDUCER_KEY].get('storeDistanceFromUser');
