@@ -20,7 +20,6 @@ import {
   IconWidth,
   IconTextDelete,
   IconTextEdit,
-  IconTextMoveToBag,
   SflIcons,
   SizeQtyOnReview,
 } from '../styles/CartItemTile.style.native';
@@ -37,8 +36,8 @@ import {
   hideEditBossBopis,
   checkBossBopisDisabled,
   showRadioButtons,
+  getPrices,
 } from './CartItemTile.utils';
-import { currencyConversion } from '../../../utils/utils';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
@@ -55,26 +54,22 @@ class ProductInformation extends React.Component {
     if (!isBagPageSflSection && isOK && isShowSaveForLater) {
       return (
         <SflIcons onPress={() => CartItemTileExtension.handleMoveItemtoSaveList(this.props)}>
-          <Image
-            data-locator="save-for-later-link"
-            source={sflIcon}
-            height={IconHeight}
-            width={IconWidth}
-          />
-          <IconTextMoveToBag>{saveForLaterLink}</IconTextMoveToBag>
+          {CartItemTileExtension.renderImage({
+            icon: sflIcon,
+            iconText: saveForLaterLink,
+            dataLocator: 'save-for-later-link',
+          })}
         </SflIcons>
       );
     }
     if (isBagPageSflSection && isOK) {
       return (
         <SflIcons onPress={() => CartItemTileExtension.moveToBagSflItem(this.props)}>
-          <Image
-            data-locator="move-to-bag-link"
-            source={moveToBagIcon}
-            height={IconHeight}
-            width={IconWidth}
-          />
-          <IconTextMoveToBag>{moveToBagLink}</IconTextMoveToBag>
+          {CartItemTileExtension.renderImage({
+            icon: moveToBagIcon,
+            iconText: moveToBagLink,
+            dataLocator: 'move-to-bag-link',
+          })}
         </SflIcons>
       );
     }
@@ -160,15 +155,7 @@ class ProductInformation extends React.Component {
     const { labels, productDetail, currencyExchange } = this.props;
     const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
     const { offerPrice, qty } = productDetail.itemInfo;
-    let { wasPrice, salePrice } = productDetail.itemInfo;
-    salePrice =
-      currencyExchange && currencyExchange.length && salePrice
-        ? currencyConversion(salePrice, currencyExchange[0])
-        : salePrice;
-    wasPrice =
-      currencyExchange && currencyExchange.length && wasPrice
-        ? currencyConversion(wasPrice, currencyExchange[0])
-        : wasPrice;
+    const { salePrice, wasPrice } = getPrices({ productDetail, currencyExchange });
     return (
       <ProductDesc>
         {showOnReviewPage && (
@@ -274,7 +261,6 @@ class ProductInformation extends React.Component {
       onPickUpOpenClick,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
-
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
     const isECOMOrder = isEcomOrder(orderItemType);
     const isBOPISOrder = isBopisOrder(orderItemType);

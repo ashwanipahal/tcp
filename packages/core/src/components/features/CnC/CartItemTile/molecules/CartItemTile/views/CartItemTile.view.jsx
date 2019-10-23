@@ -27,6 +27,8 @@ import {
   getBOSSUnavailabilityMessage,
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
+  getPrices,
+  isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
 import { currencyConversion } from '../../../utils/utils';
 
@@ -320,12 +322,19 @@ class CartItemTile extends React.Component {
     });
   };
 
+  getOfferPrice = (offerPrice, currencyExchange) => {
+    const isCurrencyExchange = isCurrencyExchangeAvailable(currencyExchange);
+    return isCurrencyExchange && offerPrice
+      ? currencyConversion(offerPrice, currencyExchange[0])
+      : offerPrice;
+  };
+
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
-    // let { offerPrice } = productDetail.itemInfo;
+    const { currencySymbol, currencyExchange } = this.props;
+    let { offerPrice } = productDetail.itemInfo;
     // SFL prices
-    // offerPrice = (currencyExchange && currencyExchange.length && offerPrice) ? currencyConversion(offerPrice, currencyExchange[0]) : offerPrice;
+    offerPrice = this.getOfferPrice(offerPrice, currencyExchange);
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -414,28 +423,11 @@ class CartItemTile extends React.Component {
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
     const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
-    let { listPrice, offerPrice, wasPrice, salePrice, isGiftItem, price } = productDetail.itemInfo;
-
-    //Cart item tile prices
-    salePrice =
-      currencyExchange && currencyExchange.length && salePrice
-        ? currencyConversion(salePrice, currencyExchange[0])
-        : salePrice;
-    wasPrice =
-      currencyExchange && currencyExchange.length && wasPrice
-        ? currencyConversion(wasPrice, currencyExchange[0])
-        : wasPrice;
-
-    //SFL prices
-    listPrice =
-      currencyExchange && currencyExchange.length && listPrice
-        ? currencyConversion(listPrice, currencyExchange[0])
-        : listPrice;
-    price =
-      currencyExchange && currencyExchange.length && price
-        ? currencyConversion(listPrice, currencyExchange[0])
-        : price;
-
+    const { isGiftItem } = productDetail.itemInfo;
+    const { salePrice, wasPrice, listPrice, price } = getPrices({
+      productDetail,
+      currencyExchange,
+    });
     if (isBagPageSflSection) {
       return (
         <>
@@ -504,7 +496,7 @@ class CartItemTile extends React.Component {
             <BodyCopy
               fontFamily="secondary"
               component="span"
-              fontSize={'fs12'}
+              fontSize="fs12"
               dataLocator={getLocator('cart_was_price')}
               fontWeight={['regular']}
               className="was-price"
@@ -1085,6 +1077,7 @@ CartItemTile.defaultProps = {
   setShipToHome: () => {},
   toggleError: null,
   clearToggleError: () => {},
+  currencyExchange: null,
 };
 
 CartItemTile.propTypes = {
@@ -1117,6 +1110,7 @@ CartItemTile.propTypes = {
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   clearToggleError: PropTypes.func,
+  currencyExchange: PropTypes.shape([]),
 };
 
 export default withStyles(CartItemTile, styles);
