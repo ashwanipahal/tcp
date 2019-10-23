@@ -2,7 +2,6 @@
 
 exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
-  accessible={true}
   fullWidth={false}
   renderPriceAndBagOnly={false}
 >
