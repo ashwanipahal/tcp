@@ -11,6 +11,7 @@ import {
   getProductInfoForTranslationData,
   startPaypalCheckoutAPI,
   paypalAuthorizationAPI,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -51,6 +52,7 @@ import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
+import { setServerErrorCheckout } from '../../Checkout/container/Checkout.action.util';
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -278,23 +280,29 @@ function* confirmStartCheckout() {
 export function* startCartCheckout({
   payload: { isEditingItem, navigation, closeModal, navigationActions } = {},
 } = {}) {
-  if (isEditingItem) {
-    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
-  } else {
-    // this.store.dispatch(setVenmoPaymentInProgress(false));
-    let res = yield call(getUnqualifiedItems);
-    res = res || [];
-    yield all(
-      res.map(({ orderItemId, isOOS }) =>
-        isOOS
-          ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
-          : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
-      )
-    );
-    const oOSModalOpen = yield call(confirmStartCheckout);
-    if (!oOSModalOpen) {
-      yield call(checkoutCart, false, navigation, closeModal, navigationActions);
+  try {
+    if (isEditingItem) {
+      yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
+    } else {
+      // this.store.dispatch(setVenmoPaymentInProgress(false));
+      let res = yield call(getUnqualifiedItems);
+      res = res || [];
+      yield all(
+        res.map(({ orderItemId, isOOS }) =>
+          isOOS
+            ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+            : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+        )
+      );
+      const oOSModalOpen = yield call(confirmStartCheckout);
+      if (!oOSModalOpen) {
+        yield call(checkoutCart, false, navigation, closeModal, navigationActions);
+      }
     }
+  } catch (e) {
+    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'CHECKOUT' }));
   }
 }
 
@@ -326,7 +334,6 @@ export function* authorizePayPalPayment() {
     centinelOrderId
   );
   if (res) {
-    // redirect
     utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
   }
 }
@@ -373,7 +380,8 @@ export function* addItemToSFL({
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }
 }
 
