@@ -38,6 +38,7 @@ import {
   checkBossBopisDisabled,
   showRadioButtons,
 } from './CartItemTile.utils';
+import { currencyConversion } from '../../../utils/utils';
 
 const editIcon = require('../../../../../../../assets/edit-icon.png');
 const deleteIcon = require('../../../../../../../assets/delete.png');
@@ -156,8 +157,18 @@ class ProductInformation extends React.Component {
   };
 
   renderPrice = () => {
-    const { labels, productDetail } = this.props;
+    const { labels, productDetail, currencyExchange } = this.props;
     const { isBagPageSflSection, showOnReviewPage, currencySymbol } = this.props;
+    const { offerPrice, qty } = productDetail.itemInfo;
+    let { wasPrice, salePrice } = productDetail.itemInfo;
+    salePrice =
+      currencyExchange && currencyExchange.length && salePrice
+        ? currencyConversion(salePrice, currencyExchange[0])
+        : salePrice;
+    wasPrice =
+      currencyExchange && currencyExchange.length && wasPrice
+        ? currencyConversion(wasPrice, currencyExchange[0])
+        : wasPrice;
     return (
       <ProductDesc>
         {showOnReviewPage && (
@@ -175,20 +186,16 @@ class ProductInformation extends React.Component {
               fontWeight={['semibold']}
               textAlign="left"
               dataLocator={getLocator('cart_item_price')}
-              text={`${currencySymbol}${productDetail.itemInfo.price}`}
+              text={`${currencySymbol}${Number(offerPrice).toFixed(2)}`}
             />
 
-            {!isBagPageSflSection && (
+            {!isBagPageSflSection && wasPrice !== salePrice && (
               <ProductListPrice>
                 <BodyCopy
                   color="gray.800"
                   fontFamily="secondary"
-                  fontSize="fs13"
-                  text={
-                    productDetail.itemInfo.price !== productDetail.itemInfo.itemPrice
-                      ? `${currencySymbol}${productDetail.itemInfo.itemPrice}`
-                      : ''
-                  }
+                  fontSize="fs12"
+                  text={`${currencySymbol}${Number(wasPrice * qty).toFixed(2)}`}
                 />
               </ProductListPrice>
             )}
@@ -421,6 +428,7 @@ ProductInformation.propTypes = {
   currencySymbol: PropTypes.string.isRequired,
   orderId: PropTypes.string.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
+  currencyExchange: PropTypes.func.isRequired,
 };
 
 ProductInformation.defaultProps = {
