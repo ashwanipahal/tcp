@@ -153,7 +153,7 @@ class ReviewPage extends React.PureComponent {
         </FormSection>
         <BillingSection />
         <CheckoutCartItemList />
-        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} fullPageInfo />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}

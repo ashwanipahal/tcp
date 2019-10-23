@@ -28,10 +28,8 @@ import CHECKOUT_ACTIONS, {
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-// import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
-// import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import { isMobileApp } from '../../../../../utils';
 import {
   updateShipmentMethodSelection,
@@ -50,7 +48,6 @@ import {
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
-import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
 const {
   getIsOrderHasShipping,
@@ -58,7 +55,7 @@ const {
   getDefaultAddress,
   getGiftServicesFormData,
 } = selectors;
-const { getOrderPointsRecalcFlag, hasPOBox } = utility;
+const { hasPOBox } = utility;
 let oldHasPOB = {};
 
 function* loadGiftWrappingOptions() {
@@ -99,34 +96,20 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
-export function* loadUpdatedCheckoutValues(
-  isTaxCalculation,
-  isCartNotRequired = true,
+export function* loadUpdatedCheckoutValues({
+  isRecalculateTaxes,
+  excludeCartItems,
   recalcRewards,
   updateSmsInfo,
-  translation
-) {
-  const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
-  const recalcOrderPoints = yield call(
-    getOrderPointsRecalcFlag,
-    recalcRewards,
-    recalcOrderPointsInterval
-  );
-  function* onCartRes(res) {
-    yield call(storeUpdatedCheckoutValues, { payload: { res } }, isCartNotRequired, updateSmsInfo);
-    // Load coupons to the store after constructing the coupons structure
-    // getWalletOperator(this.store).getWallet(res.coupons.offers);
-  }
-
+  translation,
+}) {
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
-      isRecalculateTaxes: isTaxCalculation,
-      excludeCartItems: isCartNotRequired,
+      isRecalculateTaxes,
+      excludeCartItems,
       recalcRewards,
-      recalcOrderPoints,
       isCheckoutFlow: true,
       updateSmsInfo,
-      onCartRes,
       translation,
     })
   );
@@ -201,15 +184,14 @@ function* loadShipmentMethods(miniAddress, throwError) {
 }
 
 function* loadCartAndCheckoutDetails(...params) {
-  const [isRecalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
-  yield call(
-    loadUpdatedCheckoutValues,
-    null,
+  const [recalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
+  yield call(loadUpdatedCheckoutValues, {
+    isRecalculateTaxes: false,
     excludeCartItems,
-    isRecalcRewards,
+    recalcRewards,
     updateSmsInfo,
-    translation
-  );
+    translation,
+  });
 }
 
 function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError) {
@@ -236,41 +218,67 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* initPickupData({ payload: { recalc, isApp } }) {
-  yield call(loadCartAndCheckoutDetails, recalc, !isApp);
+function* initShippingData(pageName, initialLoad, pendingPromises) {
+  console.log({ pageName, initialLoad, pendingPromises });
+  if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
+    console.log('in>>>');
+    let shippingAddress = yield select(getShippingDestinationValues);
+    shippingAddress = shippingAddress.address;
+    const defaultAddress = yield select(getDefaultAddress);
+    const hasShipping =
+      shippingAddress &&
+      shippingAddress.country &&
+      shippingAddress.state &&
+      shippingAddress.zipCode;
+    const isGuestUser = yield select(isGuest);
+    if (initialLoad || isGuestUser || (!hasShipping && !defaultAddress)) {
+      pendingPromises.push(
+        call(
+          validDateAndLoadShipmentMethods,
+          { country: '', state: '', zipCode: '' },
+          { state: true, zipCode: true },
+          true
+        )
+      );
+    }
+  }
 }
 
-function* initShippingData({ payload: { recalc, initialLoad, isApp } }) {
+function* initCheckoutSectionData({
+  payload: { recalc, pageName, isPaypalPostBack, initialLoad },
+}) {
+  console.log({ recalc, pageName, isPaypalPostBack, initialLoad });
+  const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
+  const isMobile = isMobileApp();
   const pendingPromises = [];
-  let shippingAddress = yield select(getShippingDestinationValues);
-  shippingAddress = shippingAddress.address;
-  const defaultAddress = yield select(getDefaultAddress);
-  const hasShipping =
-    shippingAddress && shippingAddress.country && shippingAddress.state && shippingAddress.zipCode;
-  const isGuestUser = yield select(isGuest);
-  if (initialLoad || isGuestUser || (!hasShipping && !defaultAddress)) {
+  if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
+    yield call(initShippingData, pageName, initialLoad, pendingPromises);
+    // pendingPromises.push(call(loadCartAndCheckoutDetails, recalc));
+    // const [isRecalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
     pendingPromises.push(
-      call(
-        validDateAndLoadShipmentMethods,
-        { country: '', state: '', zipCode: '' },
-        { state: true, zipCode: true },
-        true
-      )
+      call(loadUpdatedCheckoutValues, {
+        isRecalculateTaxes: false,
+        excludeCartItems: !isMobile,
+        recalcRewards: recalc,
+        updateSmsInfo: false,
+        translation: false,
+      })
     );
+  } else if (pageName === REVIEW) {
+    const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+    if (!isExpressCheckoutEnabled || isPaypalPostBack) {
+      pendingPromises.push(
+        call(loadUpdatedCheckoutValues, {
+          isRecalculateTaxes: true,
+          excludeCartItems: false,
+          recalcRewards: recalc,
+          updateSmsInfo: false,
+          translation: true,
+        })
+      );
+    }
   }
-  pendingPromises.push(call(loadCartAndCheckoutDetails, recalc, !isApp));
   yield all(pendingPromises);
-}
-
-function* initBillingData({ payload: { recalc, isApp } }) {
-  yield call(loadCartAndCheckoutDetails, recalc, !isApp);
-}
-
-function* initReviewData({ payload: { recalc, isPaypalPostBack } }) {
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  if (!isExpressCheckoutEnabled || isPaypalPostBack) {
-    yield call(loadUpdatedCheckoutValues, true, false, recalc, undefined, true);
-  }
 }
 
 // function* displayPreScreenModal (res) {
@@ -611,7 +619,7 @@ export function* submitBillingSection(action) {
   if (isVenmoInProgress) {
     yield call(submitVenmoBilling, action);
   } else {
-    yield call(submitBilling, action, loadUpdatedCheckoutValues);
+    yield call(submitBilling, action);
   }
 }
 
@@ -625,10 +633,10 @@ export function* submitVerifiedAddress(action) {
 
 export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.INIT_CHECKOUT, initCheckout);
-  yield takeLatest(CONSTANTS.INIT_PICKUP_PAGE, initPickupData);
-  yield takeLatest(CONSTANTS.INIT_SHIPPING_PAGE, initShippingData);
-  yield takeLatest(CONSTANTS.INIT_BILLING_PAGE, initBillingData);
-  yield takeLatest(CONSTANTS.INIT_REVIEW_PAGE, initReviewData);
+  yield takeLatest(CONSTANTS.INIT_CHECKOUT_SECTION_PAGE, initCheckoutSectionData);
+  // yield takeLatest(CONSTANTS.INIT_SHIPPING_PAGE, initShippingData);
+  // yield takeLatest(CONSTANTS.INIT_BILLING_PAGE, initBillingData);
+  // yield takeLatest(CONSTANTS.INIT_REVIEW_PAGE, initReviewData);
   yield takeLatest(CONSTANTS.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS, submitVerifiedAddress);
   yield takeLatest('INIT_INTL_CHECKOUT', initIntlCheckout);
   yield takeLatest('CHECKOUT_SET_CART_DATA', storeUpdatedCheckoutValues);

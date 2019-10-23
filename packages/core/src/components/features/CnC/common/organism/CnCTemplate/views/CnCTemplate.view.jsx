@@ -83,7 +83,7 @@ const CnCTemplate = ({
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
-                      fullPageInfo={!isConfirmationPage || orderLedgerAfterView}
+                      fullPageInfo={!isCheckoutView || orderLedgerAfterView}
                       showAccordian={showAccordian}
                       additionalClassNameModal="coupon-modal-web"
                       idPrefix="desktop"
