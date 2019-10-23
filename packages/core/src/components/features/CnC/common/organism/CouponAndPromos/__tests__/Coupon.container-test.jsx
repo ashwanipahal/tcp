@@ -39,21 +39,21 @@ describe('Coupon Container', () => {
 
   it('should return an action handleApplyCoupon which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
-    const dispatchProps = mapDispatchToProps(dispatch);
+    const dispatchProps = mapDispatchToProps(dispatch, {});
     dispatchProps.handleApplyCoupon();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 
   it('should return an action handleRemoveCoupon which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
-    const dispatchProps = mapDispatchToProps(dispatch);
+    const dispatchProps = mapDispatchToProps(dispatch, {});
     dispatchProps.handleRemoveCoupon();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
 
   it('should return an action handleApplyCouponFromList which will call dispatch function on execution', () => {
     const dispatch = jest.fn();
-    const dispatchProps = mapDispatchToProps(dispatch);
+    const dispatchProps = mapDispatchToProps(dispatch, {});
     dispatchProps.handleApplyCouponFromList();
     expect(dispatch.mock.calls).toHaveLength(0);
   });
