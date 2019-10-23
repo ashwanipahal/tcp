@@ -52,6 +52,11 @@ class PickUpFormPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { pickupDidMount } = this.props;
+    pickupDidMount(true);
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -335,6 +340,7 @@ PickUpFormPart.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,

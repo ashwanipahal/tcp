@@ -50,7 +50,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(closeNavigationDrawer());
     },
     openMiniBagDispatch: () => {
-      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
+      dispatch(BAG_PAGE_ACTIONS.getOrderDetails({ isCartPage: true }));
       dispatch(openMiniBag());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),
