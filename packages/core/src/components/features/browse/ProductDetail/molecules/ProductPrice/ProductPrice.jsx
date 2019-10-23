@@ -98,7 +98,7 @@ class ProductPrice extends React.Component {
         <div className={`${className} price-container`}>
           <BodyCopy
             className="price-item actual-price"
-            fontSize="fs22"
+            fontSize="fs16"
             fontFamily="secondary"
             fontWeight="black"
             color="red.500"
@@ -128,7 +128,7 @@ class ProductPrice extends React.Component {
       return (
         <BodyCopy
           className="price-item actual-price"
-          fontSize="fs22"
+          fontSize="fs16"
           fontFamily="secondary"
           fontWeight="black"
           color="red.500"
