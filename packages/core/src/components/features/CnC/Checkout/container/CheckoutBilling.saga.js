@@ -5,11 +5,15 @@ import { SubmissionError } from 'redux-form';
 import {
   updatePaymentOnOrder,
   addPaymentToOrder,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import { updateAddress } from '../../../../../services/abstractors/account';
 
 import selectors, { isGuest } from './Checkout.selector';
-import { getSetIsBillingVisitedActn, getSetCheckoutStage } from './Checkout.action';
+import CHECKOUT_ACTIONS, {
+  getSetIsBillingVisitedActn,
+  getSetCheckoutStage,
+} from './Checkout.action';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import utility from '../util/utility';
 import {
@@ -38,6 +42,7 @@ const { getCreditCardType } = utility;
 export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser, res) {
   let cardDetails;
   let cardNotUpdated = true;
+  const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (formData.onFileCardId) {
     if (!cardDetailsInfo) {
       cardDetails = yield select(getDetailedCreditCardById, formData.onFileCardId);
@@ -60,7 +65,7 @@ export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser
     };
     // FIXME: we need to store the details of the selected card and selected
     // address book entry, but like this it is pretty ugly. needs major cleanup
-    yield call(addPaymentToOrder, requestData);
+    yield call(addPaymentToOrder, requestData, errorMappings);
     cardNotUpdated = yield select(isCardNotUpdated, requestData.onFileCardId);
   } else {
     const cardType = getCreditCardType(formData);
@@ -91,7 +96,7 @@ export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser
       requestData.paymentId = checkoutDetails.paymentId;
       addOrEditPaymentToOrder = updatePaymentOnOrder;
     }
-    yield call(addOrEditPaymentToOrder, requestData);
+    yield call(addOrEditPaymentToOrder, requestData, errorMappings);
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
@@ -131,7 +136,8 @@ export function* updateVenmoPaymentInstruction() {
       venmoDeviceData,
     },
   };
-  yield call(addPaymentToOrder, requestData);
+  const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+  yield call(addPaymentToOrder, requestData, errorMappings);
 }
 
 export function* getAddressData(formData) {
@@ -265,6 +271,11 @@ export default function* submitBilling(action = {}) {
     }
   } catch (e) {
     // submitBillingError(store, e);
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
 }
 

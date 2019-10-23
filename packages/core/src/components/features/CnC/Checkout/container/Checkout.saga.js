@@ -9,11 +9,12 @@ import {
   setShippingMethodAndAddressId,
   getInternationCheckoutSettings,
   startExpressCheckout,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
 import utility from '../util/utility';
-import {
+import CHECKOUT_ACTIONS, {
   getSetPickupValuesActn,
   getSetPickupAltValuesActn,
   getSetShippingValuesActn,
@@ -132,33 +133,39 @@ export function* loadUpdatedCheckoutValues(
 }
 
 function* submitPickupSection({ payload }) {
-  const formData = { ...payload };
-  const { navigation } = payload;
-  const result = yield call(callPickupSubmitMethod, formData);
-  if (result.addressId) {
-    yield call(getAddressList);
-    yield call(getCardList);
-    const { wantsSmsOrderUpdates } = formData.pickUpContact && formData.pickUpContact.smsInfo;
-    if (!isMobileApp()) {
-      const getIsShippingRequired = yield select(getIsOrderHasShipping);
-      const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
-      const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
-      pickUpRouting({
-        getIsShippingRequired,
-        isVenmoInProgress,
-        isVenmoPickupDisplayed,
-        wantsSmsOrderUpdates,
-      });
-    } else if (navigation) {
-      yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+  try {
+    const formData = { ...payload };
+    const { navigation } = payload;
+    const result = yield call(callPickupSubmitMethod, formData);
+    if (result.addressId) {
+      yield call(getAddressList);
+      yield call(getCardList);
+      if (!isMobileApp()) {
+        const getIsShippingRequired = yield select(getIsOrderHasShipping);
+        const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+        const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
+        pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
+      } else if (navigation) {
+        yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+      }
     }
+    /* In the future I imagine us sending the SMS to backend for them to
+        store so it will be loaded in the below loadUpdatedCheckoutValues function.
+        for now we are storing it only on browser so will lose this info on page re-load.
+      */
+    // eslint-disable-next-line no-unused-expressions
+    // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
+    // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(false, true, true, false, !wantsSmsOrderUpdates);
+    // }).catch((err) => {
+    //   throw getSubmissionError(this.store, 'submitPickupSection', err);
+    // });
+  } catch (e) {
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
-  // eslint-disable-next-line no-unused-expressions
-  // formData.pickUpContact.smsInfo && saveLocalSmsInfo(this.store, formData.pickUpContact.smsInfo);
-  // return getCheckoutOperator(this.store).loadUpdatedCheckoutValues(true, true, false, !wantsSmsOrderUpdates);
-  // }).catch((err) => {
-  //   throw getSubmissionError(this.store, 'submitPickupSection', err);
-  // });
 }
 // function setCartInfo(cartInfo, isSetCartItems) {
 //   return updateCartInfo(cartInfo, isSetCartItems);
@@ -579,7 +586,6 @@ function* submitShipping({
   }
   const {
     payload: { addressId },
-    addressKey,
   } = addOrEditAddressRes;
   // Retrieve phone number info for sms updates
   yield saveLocalSmsInfo(smsInfo);
@@ -590,7 +596,6 @@ function* submitShipping({
     addressId,
     false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
     smsInfo ? smsInfo.smsUpdateNumber : null,
-    addressKey,
     yield select(BagPageSelectors.getErrorMapping)
   );
   // return getPlccOperator(store)

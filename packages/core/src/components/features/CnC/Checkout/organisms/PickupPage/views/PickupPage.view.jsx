@@ -186,6 +186,7 @@ class PickUpFormPart extends React.Component {
       dispatch,
       handleSubmit,
       showAccordian,
+      ServerErrors,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -209,7 +210,7 @@ class PickUpFormPart extends React.Component {
             dataLocator="pickup-title"
             className="summary-title-pick-up"
           />
-
+          {ServerErrors && <ServerErrors />}
           <div className="pickUpContact" dataLocator="pickup-contact">
             <FormSection name="pickUpContact">
               {isGuest ? (
@@ -343,6 +344,7 @@ PickUpFormPart.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isVenmoPickupDisplayed: PropTypes.bool,
+  ServerErrors: PropTypes.node.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

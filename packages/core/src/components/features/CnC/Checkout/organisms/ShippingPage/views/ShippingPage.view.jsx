@@ -50,6 +50,7 @@ export default class ShippingPage extends React.PureComponent {
     isVenmoShippingDisplayed: PropTypes.bool,
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
+    ServerErrors: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
@@ -344,6 +345,7 @@ export default class ShippingPage extends React.PureComponent {
       isVenmoShippingDisplayed,
       isSubmitting,
       formatPayload,
+      ServerErrors,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -398,6 +400,7 @@ export default class ShippingPage extends React.PureComponent {
           shippingAddress={shippingAddress}
           isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           isVenmoShippingDisplayed={isVenmoShippingDisplayed}
+          ServerErrors={ServerErrors}
         />
         <AddressVerification
           onSuccess={this.submitVerifiedShippingAddressData}

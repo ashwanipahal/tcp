@@ -72,6 +72,7 @@ class MiniBag extends React.Component {
       isCartItemSFL,
       cartItemSflError,
       resetSuccessMessage,
+      addedToBagError,
     } = this.props;
     const { country } = this.state;
     const cartItemCount = getCartItemCount();
@@ -105,6 +106,7 @@ class MiniBag extends React.Component {
           cartItemSflError={cartItemSflError}
           onLinkClick={this.onLinkClick}
           resetSuccessMessage={resetSuccessMessage}
+          addedToBagError={addedToBagError}
         />
       </Modal>
     );
@@ -129,6 +131,7 @@ MiniBag.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   resetSuccessMessage: PropTypes.func.isRequired,
   isPlcc: PropTypes.bool.isRequired,
+  addedToBagError: PropTypes.string.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

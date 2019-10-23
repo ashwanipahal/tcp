@@ -4,7 +4,7 @@ import { BillingPageVanilla } from '../views/BillingPage.view';
 
 describe('CheckoutProgressIndicator component', () => {
   it('should renders correctly props not present', () => {
-    const props = { labels: {}, billingDidMount: () => {} };
+    const props = { labels: {}, billingDidMount: () => {}, ServerErrors: {} };
     const component = shallow(<BillingPageVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
