@@ -6,6 +6,7 @@ const SearchBarPropTypes = {
   startSearch: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   isSearchOpen: PropTypes.bool,
+  showProduct: PropTypes.bool,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
     categories: PropTypes.shape({}),
