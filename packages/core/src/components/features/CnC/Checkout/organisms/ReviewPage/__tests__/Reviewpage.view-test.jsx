@@ -16,6 +16,7 @@ describe('ReviewPageVanilla component', () => {
 
   it('calling reviewFormSubmit method', () => {
     const props = {
+      reviewDidMount: () => {},
       className: '',
       labels: {},
       submitReview: jest.fn(),

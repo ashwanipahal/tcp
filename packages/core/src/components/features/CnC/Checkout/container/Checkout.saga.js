@@ -96,25 +96,6 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
-export function* loadUpdatedCheckoutValues({
-  isRecalculateTaxes,
-  excludeCartItems,
-  recalcRewards,
-  updateSmsInfo,
-  translation,
-}) {
-  yield put(
-    BAG_PAGE_ACTIONS.getCartData({
-      isRecalculateTaxes,
-      excludeCartItems,
-      recalcRewards,
-      isCheckoutFlow: true,
-      updateSmsInfo,
-      translation,
-    })
-  );
-}
-
 function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
@@ -185,13 +166,16 @@ function* loadShipmentMethods(miniAddress, throwError) {
 
 function* loadCartAndCheckoutDetails(...params) {
   const [recalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
-  yield call(loadUpdatedCheckoutValues, {
-    isRecalculateTaxes: false,
-    excludeCartItems,
-    recalcRewards,
-    updateSmsInfo,
-    translation,
-  });
+  yield put(
+    BAG_PAGE_ACTIONS.getCartData({
+      isRecalculateTaxes: false,
+      excludeCartItems,
+      recalcRewards,
+      isCheckoutFlow: true,
+      updateSmsInfo,
+      translation,
+    })
+  );
 }
 
 function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError) {
@@ -219,9 +203,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* initShippingData(pageName, initialLoad, pendingPromises) {
-  console.log({ pageName, initialLoad, pendingPromises });
   if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
-    console.log('in>>>');
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
     const defaultAddress = yield select(getDefaultAddress);
@@ -247,7 +229,6 @@ function* initShippingData(pageName, initialLoad, pendingPromises) {
 function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad },
 }) {
-  console.log({ recalc, pageName, isPaypalPostBack, initialLoad });
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
   const isMobile = isMobileApp();
   const pendingPromises = [];
@@ -256,25 +237,29 @@ function* initCheckoutSectionData({
     // pendingPromises.push(call(loadCartAndCheckoutDetails, recalc));
     // const [isRecalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
     pendingPromises.push(
-      call(loadUpdatedCheckoutValues, {
-        isRecalculateTaxes: false,
-        excludeCartItems: !isMobile,
-        recalcRewards: recalc,
-        updateSmsInfo: false,
-        translation: false,
-      })
+      put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: false,
+          excludeCartItems: !isMobile,
+          recalcRewards: recalc,
+          updateSmsInfo: false,
+          translation: false,
+        })
+      )
     );
   } else if (pageName === REVIEW) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     if (!isExpressCheckoutEnabled || isPaypalPostBack) {
       pendingPromises.push(
-        call(loadUpdatedCheckoutValues, {
-          isRecalculateTaxes: true,
-          excludeCartItems: false,
-          recalcRewards: recalc,
-          updateSmsInfo: false,
-          translation: true,
-        })
+        put(
+          BAG_PAGE_ACTIONS.getCartData({
+            isRecalculateTaxes: true,
+            excludeCartItems: false,
+            recalcRewards: recalc,
+            updateSmsInfo: false,
+            translation: true,
+          })
+        )
       );
     }
   }
