@@ -11,9 +11,12 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   <FormSection
     name="expressReviewShippingSection"
   />
-  <Connect(BillingSectionContainer) />
+  <Connect(BillingSectionContainer)
+    isExpressCheckout={false}
+  />
   <Connect(CheckoutCartItemList) />
   <Styled(CheckoutOrderInfo)
+    fullPageInfo={true}
     showAccordian={true}
   />
   <Styled(CheckoutFooter)

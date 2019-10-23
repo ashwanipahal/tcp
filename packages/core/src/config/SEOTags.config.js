@@ -1,19 +1,20 @@
 import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 import { findCategoryIdandName } from '../components/features/browse/ProductListing/container/ProductListing.util';
+import urlConfig from './SEOCanonicalUrls.config';
 
-const TCP_BASE_URL = 'www.thechildrensplace.com';
+const TCP_BASE_URL = 'https://www.childrensplace.com';
 const TCP_TWITTER_SITE_TAG = '@childrensplace';
 const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 
-const GYM_BASE_URL = 'www.thecGymboree.com';
+const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
 const TCP_LABEL = "The Children's Place";
 const GYM_LABEL = 'Gymboree';
 
 const SEO_CONFIG = {
-  canonical: 'www.thechildrensplace.com',
+  canonical: TCP_BASE_URL,
   robots: {
     property: 'robots',
     content: 'index',
@@ -32,14 +33,14 @@ const SEO_CONFIG = {
       site: '@childrensplace',
     },
     openGraph: {
-      url: 'www.Thechildrensplace.com',
+      url: TCP_BASE_URL,
       title: 'Open Graph Title',
       description: 'Open Graph Description',
     },
     hrefLangs: [
       {
         id: 'us-en',
-        canonicalUrl: 'www.Thechildrensplace.com',
+        canonicalUrl: TCP_BASE_URL,
       },
     ],
     US: {
@@ -59,14 +60,14 @@ const SEO_CONFIG = {
       site: '@Gymboree',
     },
     openGraph: {
-      url: 'www.thecGymboree.com',
+      url: GYM_BASE_URL,
       title: 'Open Graph Title',
       description: 'Open Graph Description',
     },
     hrefLangs: [
       {
         id: 'us-en',
-        canonicalUrl: 'www.Thecgymboree.com',
+        canonicalUrl: GYM_BASE_URL,
       },
     ],
     US: {
@@ -207,10 +208,40 @@ export const getSeoConfig = (getSeoMap, categoryKey) => {
   });
 };
 
-const getHomeSEOTags = () => {
-  return {
-    ...getDefaultSEOTags(), // call getMetaSEOTags() with values
+const getGenericSeoTags = (store, router, categoryKey, path = '') => {
+  const brandDetails = getBrandDetails();
+  const { brandId } = getAPIConfig();
+  const brand = brandId.toUpperCase();
+  const {
+    SEOData: { home },
+  } = store.getState();
+  const { pageTitle = '', description = '', canonical = '', keywords } = home || {};
+
+  const openGraph = {
+    url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
+    title: pageTitle,
+    description,
   };
+  const canonicalUrlConfig = {
+    brand,
+    path,
+  };
+  const hrefLangs = urlConfig(canonicalUrlConfig);
+  const twitter = {
+    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
+    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
+  };
+
+  return getMetaSEOTags({
+    title: pageTitle,
+    description,
+    canonical,
+    twitter,
+    openGraph,
+    hrefLangs,
+    keywords,
+    robots: SEO_CONFIG.robots.content,
+  });
 };
 
 function getPlpSEOTags(store, router, categoryKey) {
@@ -338,7 +369,8 @@ export const getPdpSEOTags = (store, router, categoryKey) => {
 export const deriveSEOTags = (pageId, store, router) => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
   if (pageId === PAGES.HOME_PAGE) {
-    return getHomeSEOTags(); // Just a sample - any store specific data should be set in this
+    const categoryKey = router.asPath;
+    return getGenericSeoTags(store, router, categoryKey, pageId.toLowerCase());
   }
   if (pageId === PAGES.PRODUCT_LISTING_PAGE) {
     const categoryKey = router.asPath;

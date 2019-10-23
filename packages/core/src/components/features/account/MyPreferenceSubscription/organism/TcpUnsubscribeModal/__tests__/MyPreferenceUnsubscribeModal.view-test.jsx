@@ -6,7 +6,6 @@ describe('ProfileInformation component', () => {
   const props = {
     className: 'test',
     onRequestClose: jest.fn(),
-    handleSubmitModalPopup: jest.fn(),
     handleSubmit: jest.fn(),
     handleSubmitData: jest.fn(),
     labels: {},
@@ -15,11 +14,5 @@ describe('ProfileInformation component', () => {
   it('should render correctly', () => {
     const component = shallow(<MyPreferenceUnsubscribeModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
-  });
-
-  it('simulate handleSubmitData click ', () => {
-    const component = shallow(<MyPreferenceUnsubscribeModalVanilla {...props} />);
-    component.instance().handleSubmitData();
-    expect(props.handleSubmitModalPopup).toHaveBeenCalled();
   });
 });
