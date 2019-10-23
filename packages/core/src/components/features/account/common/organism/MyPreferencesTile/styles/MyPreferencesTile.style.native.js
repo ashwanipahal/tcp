@@ -14,11 +14,6 @@ const MyPreferencesTileContainer = styled.View`
   min-height: 150px;
 `;
 
-const ButtonWrapperStyle = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-`;
-
 const ShopAnchor = styled.View`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   border: 1px solid gray;
@@ -26,4 +21,4 @@ const ShopAnchor = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
-export { UnderlineStyle, MyPreferencesTileContainer, ButtonWrapperStyle, ShopAnchor };
+export { UnderlineStyle, MyPreferencesTileContainer, ShopAnchor };

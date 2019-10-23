@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
@@ -85,7 +84,7 @@ class SocialAccountsTileItem extends React.PureComponent {
             </>
           ) : (
             <BodyCopy
-              mobileFontFamily="secondary"
+              fontFamily="secondary"
               fontSize="fs14"
               text={getLabelValue(
                 labels,
