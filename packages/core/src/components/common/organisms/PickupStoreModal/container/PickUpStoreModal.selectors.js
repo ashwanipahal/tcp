@@ -1,10 +1,12 @@
 import { fromJS } from 'immutable';
+import bagSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   USER_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
   FORM_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { getCartItemCount } from '../../../../../utils/cookie.util';
+import { isMobileApp } from '../../../../../utils';
 
 const getColorSizeFitName = (type, values) => {
   let displayName = values && values.get(type);
@@ -68,8 +70,8 @@ export const getOrderConfirmation = state => {
   return state.confirmation.orderConfirmation;
 };
 
-export const getItemsCount = () => {
-  return getCartItemCount();
+export const getItemsCount = state => {
+  return isMobileApp() ? bagSelectors.getTotalItems(state) : getCartItemCount();
 };
 
 export const getUserIsPlcc = state => {
@@ -118,6 +120,12 @@ export const getUpdateCartItemStore = state => {
 
 export const getIsItemShipToHome = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isItemShipToHome');
+};
+
+export const getAlwaysSearchForBOSS = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('alwaysSearchForBOSS')
+  );
 };
 
 export const getInitialValuesFromBagPage = state => {

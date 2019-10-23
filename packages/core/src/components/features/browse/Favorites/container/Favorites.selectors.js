@@ -59,3 +59,7 @@ export const fetchCurrencySymbol = state => {
 export const getLabelsFavorites = state => state.Labels.Browse && state.Labels.Browse.Favorites;
 
 export default fetchCurrencySymbol;
+
+export const getIsDataLoading = state => {
+  return state[FAVORITES_REDUCER_KEY].get('isDataLoading');
+};

@@ -58,6 +58,7 @@ const PickUpSummary = ({ className, pickUpStore, ordersLabels }) => {
       <Anchor
         fontSizeVariation="large"
         underline
+        noLink
         anchorVariation="primary"
         fontFamily="secondary"
         href="#"

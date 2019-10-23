@@ -52,7 +52,9 @@ const setErrorReporter = () => {
     raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
     isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
   };
-  initErrorReporter(config);
+  if (process.env.IS_ERROR_REPORTING_NODE_ACTIVE) {
+    initErrorReporter(config);
+  }
   const expressMiddleWare = getExpressMiddleware();
   if (expressMiddleWare) {
     server.use(expressMiddleWare);

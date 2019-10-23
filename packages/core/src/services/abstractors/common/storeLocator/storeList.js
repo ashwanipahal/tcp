@@ -7,10 +7,10 @@ export const errorHandler = err => {
   return err || null;
 };
 
-const getStoreName = store =>
+export const getStoreName = store =>
   (store.Description && store.Description[0] && store.Description[0].displayStoreName) || '';
 
-const getBasicInfo = store => ({
+export const getBasicInfo = store => ({
   basicInfo: {
     id: (store.uniqueID || '').trim(),
     storeName: getStoreName(store),

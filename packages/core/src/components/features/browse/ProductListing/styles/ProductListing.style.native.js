@@ -1,7 +1,16 @@
 import styled, { css } from 'styled-components';
 
+const getAdditionalStyle = props => {
+  const { margins, paddings } = props;
+  return {
+    ...(margins && { margin: margins }),
+    ...(margins && { padding: paddings }),
+  };
+};
+
 const PageContainer = styled.View`
   flex: 1;
+  ${getAdditionalStyle}
 `;
 
 const ItemCountContainer = styled.View`

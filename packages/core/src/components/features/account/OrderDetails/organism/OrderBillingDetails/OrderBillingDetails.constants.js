@@ -5,7 +5,7 @@ const cardIconMapping = {
   VISA: 'visa-small',
   'GIFT CARD': 'gift-card-small',
   'PLACE CARD': 'place-card-small',
-  VENMO: 'venmo-small',
+  VENMO: 'venmo-blue-acceptance-mark',
   PAYPAL: 'paypal-icon',
 };
 
