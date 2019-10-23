@@ -1,6 +1,7 @@
 import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 import { findCategoryIdandName } from '../components/features/browse/ProductListing/container/ProductListing.util';
+import urlConfig from './SEOCannonicalUrls.config';
 
 const TCP_BASE_URL = 'https://www.childrensplace.com';
 const TCP_TWITTER_SITE_TAG = '@childrensplace';
@@ -11,17 +12,6 @@ const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
 const TCP_LABEL = "The Children's Place";
 const GYM_LABEL = 'Gymboree';
-const BRAND_CONFIG = {
-  TCP: 'childrensplace.com',
-  GYM: 'gymboree.com',
-};
-
-const canonicalUrlConfig = id => ({
-  'en-us': `https://www.${BRAND_CONFIG[id]}/us/home`,
-  'es-us': `https://es.${BRAND_CONFIG[id]}/us/home`,
-  'en-ca': `https://www.${BRAND_CONFIG[id]}/ca/home`,
-  'fr-ca': `https://fr.${BRAND_CONFIG[id]}/ca/home`,
-});
 
 const SEO_CONFIG = {
   canonical: TCP_BASE_URL,
@@ -232,25 +222,11 @@ const getHomeSEOTags = (store, router, categoryKey) => {
     title: pageTitle,
     description,
   };
-  const canonicalConfig = canonicalUrlConfig(brand);
-  const hrefLangs = [
-    {
-      id: 'en-us',
-      canonicalUrl: canonicalConfig['en-us'],
-    },
-    {
-      id: 'es-us',
-      canonicalUrl: canonicalConfig['es-us'],
-    },
-    {
-      id: 'en-ca',
-      canonicalUrl: canonicalConfig['en-ca'],
-    },
-    {
-      id: 'fr-ca',
-      canonicalUrl: canonicalConfig['fr-ca'],
-    },
-  ];
+  const cannonicalUrlConfig = {
+    brand,
+    path: 'home',
+  };
+  const hrefLangs = urlConfig(cannonicalUrlConfig);
 
   const twitter = {
     cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
