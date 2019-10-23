@@ -159,7 +159,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
    *  -   Labels
    *  -   Navigation
    */
-  const bootstrapModules = modules || ['labels', 'header', 'footer'];
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
