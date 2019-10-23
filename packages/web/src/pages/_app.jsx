@@ -130,6 +130,7 @@ class TCPWebApp extends App {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     let payload = { siteConfig: false };
+    const initialProps = pageProps;
     // Get initial props is getting called twice on server
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
@@ -173,13 +174,14 @@ class TCPWebApp extends App {
         };
       }
 
+      initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
         store.dispatch(getCurrentStoreInfo(storeId));
       }
     }
-    return pageProps;
+    return initialProps;
   }
 
   static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
