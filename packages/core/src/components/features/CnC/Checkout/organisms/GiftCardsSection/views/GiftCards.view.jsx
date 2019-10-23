@@ -123,7 +123,7 @@ const renderAddNewGiftButton = (
       <Row fullBleed className="elem-mt-LRG elem-mb-LRG">
         <Col
           colSize={{
-            small: isFromReview && isExpressCheckout ? 3 : 4,
+            small: 4,
             medium: 4,
             large: isFromReview && isExpressCheckout ? 5 : 3,
           }}
@@ -176,6 +176,7 @@ const renderGiftCardTile = ({
   isFromReview,
   applyExistingGiftCardToOrder,
   orderBalanceTotal,
+  isPaymentDisabled,
 }) => {
   return (
     <GiftCardTile
@@ -188,6 +189,7 @@ const renderGiftCardTile = ({
       isFromReview={isFromReview}
       orderBalanceTotal={orderBalanceTotal}
       applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
+      isPaymentDisabled={isPaymentDisabled}
     />
   );
 };
@@ -199,6 +201,7 @@ const renderAppliedGiftCards = ({
   giftCardErrors,
   isExpressCheckout,
   isFromReview,
+  isPaymentDisabled,
 }) => {
   return (
     <>
@@ -223,6 +226,7 @@ const renderAppliedGiftCards = ({
             isExpressCheckout,
             isFromReview,
             isGiftCardApplied: true,
+            isPaymentDisabled,
           })
         )}
     </>
@@ -237,9 +241,10 @@ const renderGiftCardsList = ({
   orderBalanceTotal,
   isExpressCheckout,
   isFromReview,
+  isPaymentDisabled,
 }) => {
   return (
-    (!isFromReview || (isFromReview && isExpressCheckout)) &&
+    (!isFromReview || isExpressCheckout) &&
     giftCardList &&
     giftCardList.size > 0 &&
     giftCardList.map(cardData =>
@@ -251,6 +256,7 @@ const renderGiftCardsList = ({
         orderBalanceTotal,
         isExpressCheckout,
         isFromReview,
+        isPaymentDisabled,
       })
     )
   );
@@ -276,6 +282,7 @@ export const GiftCards = ({
   onClearError,
   isExpressCheckout,
   isFromReview,
+  isPaymentDisabled,
 }) => {
   return (
     <Grid className={className}>
@@ -317,6 +324,7 @@ export const GiftCards = ({
             giftCardErrors,
             isExpressCheckout,
             isFromReview,
+            isPaymentDisabled,
           })}
           {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
           {GiftCardSectionHeading(giftCardList, labels, isFromReview, isExpressCheckout)}
@@ -328,6 +336,7 @@ export const GiftCards = ({
             orderBalanceTotal,
             isExpressCheckout,
             isFromReview,
+            isPaymentDisabled,
           })}
         </Col>
       </Row>

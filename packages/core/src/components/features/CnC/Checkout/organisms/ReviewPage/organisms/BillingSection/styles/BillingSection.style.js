@@ -57,7 +57,7 @@ export default css`
   .cvvCode {
     position: relative;
     width: 100px;
-
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     .TextBox__label {
       top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
       font-size: ${props => props.theme.typography.fontSizes.fs10};
@@ -69,6 +69,6 @@ export default css`
     position: absolute;
     right: 0;
     width: 30px;
-    top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 `;

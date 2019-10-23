@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
+import CheckoutSelectors, {
   isGuest as isGuestUser,
   isExpressCheckout,
 } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
@@ -23,6 +23,7 @@ import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container
 import { getFormValidationErrorMessages } from '../../../../../account/Account/container/Account.selectors';
 import CHECKOUT_CONSTANTS from '../../../Checkout.constants';
 
+const { getIsPaymentDisabled } = CheckoutSelectors;
 export class GiftCardsContainer extends React.PureComponent<Props> {
   componentWillMount() {
     const { getCardListAction } = this.props;
@@ -101,6 +102,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isLoading,
       isExpressCheckoutUser,
       isFromReview,
+      isPaymentDisabled,
     } = this.props;
 
     let availableGiftCards = [];
@@ -137,6 +139,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         onClearError={this.onClearError}
         isExpressCheckout={isExpressCheckoutUser}
         isFromReview={isFromReview}
+        isPaymentDisabled={isPaymentDisabled}
       />
     );
   }
@@ -196,6 +199,7 @@ const mapStateToProps = state => {
     addGiftCardResponse: GiftCardSelector.getAddGiftCardResponse(state),
     isLoading: GiftCardSelector.getIsLoading(state),
     isExpressCheckoutUser: isExpressCheckout(state),
+    isPaymentDisabled: getIsPaymentDisabled(state),
   };
 };
 

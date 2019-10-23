@@ -79,6 +79,7 @@ export const mapStateToProps = state => {
     isVenmoPaymentInProgress,
     getVenmoData,
     getIsBillingVisited,
+    getIsPaymentDisabled,
   } = checkoutSelectors;
   const venmoClientTokenData = getVenmoClientTokenData(state);
   const { venmoPaymentTokenAvailable } = venmoClientTokenData || {};
@@ -106,6 +107,7 @@ export const mapStateToProps = state => {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
     isBillingVisited: getIsBillingVisited(state),
+    isPaymentDisabled: getIsPaymentDisabled(state),
   };
 };
 

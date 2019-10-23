@@ -28,9 +28,7 @@ export function* applyGiftCard(payloadData) {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
-    }
-
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+    } else yield put(BAG_PAGE_ACTIONS.getCartData());
   } catch (err) {
     yield put(setGiftCardError(err));
   }

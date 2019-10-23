@@ -75,9 +75,14 @@ export class BillingSection extends PureComponent {
     );
   };
 
+  getIsCCReq = () => {
+    const { card, address, isPaymentDisabled } = this.props;
+    return (card || address) && !isPaymentDisabled;
+  };
+
   getColProps = () => {
-    const { isExpressCheckout, card, address } = this.props;
-    const isCreditCardReq = card || address;
+    const { isExpressCheckout } = this.props;
+    const isCreditCardReq = this.getIsCCReq();
     return {
       cardDetails: {
         colSize: { small: isExpressCheckout ? 3 : 6, medium: 4, large: isExpressCheckout ? 3 : 5 },
@@ -109,6 +114,7 @@ export class BillingSection extends PureComponent {
     } = this.props;
     const { saveVenmoPayment } = this.state;
     const colProps = this.getColProps();
+    const isCCReq = this.getIsCCReq();
     return (
       <Grid className={`${className}`}>
         <Row fullBleed>
@@ -127,7 +133,7 @@ export class BillingSection extends PureComponent {
           </Col>
         </Row>
         <Row fullBleed>
-          {(card || address) && (
+          {isCCReq && (
             <>
               <Col {...colProps.cardDetails}>
                 {card && !isVenmoPaymentSelected && (
@@ -221,6 +227,7 @@ BillingSection.propTypes = {
   isExpressCheckout: PropTypes.bool,
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
+  isPaymentDisabled: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
@@ -230,6 +237,7 @@ BillingSection.defaultProps = {
   card: null,
   address: null,
   appliedGiftCards: [],
+  isPaymentDisabled: false,
   className: '',
   labels: {
     lbl_review_billingSectionTitle: '',

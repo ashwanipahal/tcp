@@ -19,6 +19,7 @@ class GiftCardTile extends React.PureComponent {
     orderBalanceTotal: PropTypes.number,
     isFromReview: PropTypes.bool,
     isExpressCheckout: PropTypes.bool,
+    isPaymentDisabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -30,11 +31,33 @@ class GiftCardTile extends React.PureComponent {
     orderBalanceTotal: 0,
     isFromReview: false,
     isExpressCheckout: false,
+    isPaymentDisabled: false,
   };
 
   showRemoveCtas = () => {
     const { isFromReview, isExpressCheckout } = this.props;
-    return !isFromReview || (isFromReview && isExpressCheckout);
+    return !isFromReview || isExpressCheckout;
+  };
+
+  getColSize = () => {
+    const { isFromReview, isExpressCheckout, isPaymentDisabled } = this.props;
+    let giftTileColSize = {
+      colSize: {
+        small: 4,
+        medium: 4,
+        large: 8,
+      },
+    };
+    if (isFromReview && isExpressCheckout) {
+      giftTileColSize = {
+        colSize: {
+          small: 4,
+          medium: 4,
+          large: isPaymentDisabled ? 7 : 6,
+        },
+      };
+    }
+    return giftTileColSize;
   };
 
   renderApplyRemoveBtn() {
@@ -55,7 +78,6 @@ class GiftCardTile extends React.PureComponent {
           }}
           className="gift_remove_button gift-action-btn"
           buttonVariation="variable-width"
-          type="submit"
           data-locator="gift_apply_button"
           fullWidth="true"
           disabled={false}
@@ -72,7 +94,6 @@ class GiftCardTile extends React.PureComponent {
         }}
         className="gift_apply_button gift-action-btn"
         buttonVariation="variable-width"
-        type="submit"
         data-locator="gift_apply_button"
         fullWidth="true"
         disabled={!orderBalanceTotal}
@@ -103,14 +124,7 @@ class GiftCardTile extends React.PureComponent {
   }
 
   render() {
-    const {
-      className,
-      cardData,
-      isGiftCardApplied,
-      labels,
-      isFromReview,
-      isExpressCheckout,
-    } = this.props;
+    const { className, cardData, isGiftCardApplied, labels } = this.props;
 
     let cardEndingIn = cardData.accountNo !== undefined ? cardData.accountNo.substr(-4) : '';
     let remainingBalance = '';
@@ -121,6 +135,7 @@ class GiftCardTile extends React.PureComponent {
         typeof remainingBalanceValue !== 'undefined' ? remainingBalanceValue.toFixed(2) : 0
       }`;
     }
+    const giftTileColSize = this.getColSize();
     const showCtas = this.showRemoveCtas();
     return (
       <div className={className}>
@@ -128,14 +143,7 @@ class GiftCardTile extends React.PureComponent {
           {this.renderGiftCardError()}
 
           <Row className="gift-card-row">
-            <Col
-              colSize={{
-                small: 4,
-                medium: 4,
-                large: isFromReview && isExpressCheckout ? 6 : 8,
-              }}
-              className="gift-tile-msg-container"
-            >
+            <Col {...giftTileColSize} className="gift-tile-msg-container">
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs16"

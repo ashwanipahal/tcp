@@ -55,7 +55,6 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -120,7 +119,6 @@ exports[`GiftCardTileVanilla should render gift card tile if from review page 1`
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -185,7 +183,6 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -250,7 +247,6 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           disabled={false}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -331,7 +327,6 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -398,7 +393,6 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           disabled={false}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_removeBtn
         </Styled(Button)>
