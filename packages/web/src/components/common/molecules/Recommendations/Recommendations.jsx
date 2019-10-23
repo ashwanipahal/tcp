@@ -8,6 +8,7 @@ import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import config from './config';
+import constant from './Recommendations.constant';
 import style from './Recommendations.style';
 
 /**
@@ -32,6 +33,8 @@ const RecommendationComponentVariation = dynamic(
   },
   { ssr: false }
 );
+
+const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
@@ -76,6 +79,7 @@ class Recommendations extends Component {
           variation={variation}
           currencySymbol={currency}
           currencyExchange={currencyAttributes.exchangevalue}
+          viaModule={RECOMMENDATION}
         />
       );
     });

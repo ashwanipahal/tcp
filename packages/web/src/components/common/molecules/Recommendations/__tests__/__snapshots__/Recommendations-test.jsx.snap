@@ -60,6 +60,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -127,6 +128,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -218,6 +220,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -285,6 +288,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
           }
           sequenceNumber={1}
           variation="moduleP"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>

@@ -18,6 +18,7 @@ export const DoneIconWrapper = styled(Image)`
 `;
 
 export const TileIconWrapper = styled(Image)`
-  margin-top: 30px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   max-height: 55px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;

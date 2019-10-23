@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Row, Col, StoreStaticMap, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Row, Col, StoreStaticMap, Anchor, RichText } from '@tcp/core/src/components/common/atoms';
 import {
   StoreAddressTile,
   StoreHours,
@@ -17,6 +17,8 @@ import {
 import style from '../styles/StoreDetail.style';
 import formatStoreTiming from '../../../../../../utils/formatStoreTiming';
 
+export const createRichText = richTextContent => <RichText richTextHtml={richTextContent} />;
+
 const StoreDetail = ({
   className,
   store,
@@ -27,6 +29,7 @@ const StoreDetail = ({
   routesBack,
   setFavoriteStore,
   isFavorite,
+  fetchRichContent,
 }) => {
   const { hours, features } = store;
   const storeMeta = [
@@ -84,6 +87,7 @@ const StoreDetail = ({
             isCanada={isCanada}
             apiKey={getAPIConfig().googleApiKey}
           />
+          {createRichText(fetchRichContent('storelocator_Promo1'))}
         </Col>
       </Row>
       <Row>
@@ -96,6 +100,19 @@ const StoreDetail = ({
               openStoreDetails={openStoreDetails}
             />
           ) : null}
+        </Col>
+      </Row>
+      <Row>
+        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          {createRichText(fetchRichContent('storelocator_Promo2'))}
+        </Col>
+        <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+          {createRichText(fetchRichContent('storelocator_Promo3'))}
+        </Col>
+      </Row>
+      <Row>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          {createRichText(fetchRichContent('storeLocator_description'))}
         </Col>
       </Row>
     </div>
@@ -131,6 +148,7 @@ StoreDetail.propTypes = {
   routesBack: PropTypes.func.isRequired,
   setFavoriteStore: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,
+  fetchRichContent: PropTypes.func.isRequired,
 };
 
 export default withStyles(StoreDetail, style);
