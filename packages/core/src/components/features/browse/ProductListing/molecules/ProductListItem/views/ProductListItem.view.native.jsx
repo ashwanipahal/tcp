@@ -47,7 +47,8 @@ const renderAddToBagContainer = (
   renderPriceOnly,
   selectedColorIndex,
   colorMapData,
-  onQuickViewOpenClick
+  onQuickViewOpenClick,
+  isGiftCard
 ) => {
   if (renderVariation && !renderPriceOnly) return null;
   return (
@@ -58,9 +59,12 @@ const renderAddToBagContainer = (
         buttonVariation="variable-width"
         data-locator=""
         text="ADD TO BAG"
-        onPress={() => {
-          handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick);
-        }}
+        onPress={
+          () =>
+            !isGiftCard
+              ? handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick)
+              : () => {} // TODO Quick View for Gift Card
+        }
         accessibilityLabel="add to bag"
       />
     </AddToBagContainer>
@@ -85,19 +89,27 @@ const ListItem = props => {
     renderPriceAndBagOnly,
     renderPriceOnly,
     productImageWidth,
+    margins,
+    paddings,
     viaModule,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
-  const { name } = productInfo;
+  const { name, isGiftCard } = productInfo;
   const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
-    <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
+    <ListContainer
+      fullWidth={fullWidth}
+      renderPriceAndBagOnly={renderVariation}
+      accessible
+      margins={margins}
+      paddings={paddings}
+    >
       <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
@@ -141,7 +153,8 @@ const ListItem = props => {
         renderPriceOnly,
         selectedColorIndex,
         colorMapData,
-        onQuickViewOpenClick
+        onQuickViewOpenClick,
+        isGiftCard
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && <RenderMoveToWishlist />}
@@ -240,7 +253,7 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.filledHeart}
                 size="fs21"
                 color="gray.500"
-                onPress={() => setLastDeletedItemId(itemId)}
+                onPress={() => setLastDeletedItemId({ itemId })}
               />
             ) : (
               <CustomIcon
@@ -385,6 +398,8 @@ ListItem.propTypes = {
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
   productImageWidth: PropTypes.number,
+  margins: PropTypes.string,
+  paddings: PropTypes.string,
   viaModule: PropTypes.string,
 };
 
@@ -402,6 +417,8 @@ ListItem.defaultProps = {
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
   productImageWidth: '',
+  margins: null,
+  paddings: '12px 0 12px 0',
   viaModule: '',
 };
 

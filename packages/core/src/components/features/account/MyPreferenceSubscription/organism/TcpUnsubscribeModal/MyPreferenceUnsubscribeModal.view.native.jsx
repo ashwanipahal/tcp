@@ -107,7 +107,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
             fill="WHITE"
             className="cancel-button"
             dataLocator="subscribe_modal_cancel"
-            onClick={onRequestClose}
+            onPress={onRequestClose}
             text={getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
           />
         </ButtonWrapper>

@@ -20,17 +20,20 @@ import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
+import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
     super(props);
     const {
       currentProduct: { colorFitsSizesMap },
+      currentProduct,
       selectedColorProductId,
     } = this.props;
     this.state = {
       showCarousel: false,
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
+      currentGiftCardValue: currentProduct.offerPrice,
     };
   }
 
@@ -44,6 +47,10 @@ class ProductDetailView extends React.PureComponent {
       currentProduct: { colorFitsSizesMap },
     } = this.props;
     this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+  };
+
+  onChangeSize = e => {
+    this.setState({ currentGiftCardValue: e });
   };
 
   onImageClick = () => {
@@ -84,8 +91,10 @@ class ProductDetailView extends React.PureComponent {
       itemPartNumber,
       longDescription,
       pdpLabels,
+      currency,
+      currencyExchange,
     } = this.props;
-    const { currentColorEntry } = this.state;
+    const { currentColorEntry, currentGiftCardValue } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -99,10 +108,27 @@ class ProductDetailView extends React.PureComponent {
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
-          <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} />
+          <ImageCarousel
+            isGiftCard={currentProduct.isGiftCard}
+            imageUrls={imageUrls}
+            onImageClick={this.onImageClick}
+          />
           <ProductSummary
             productData={currentProduct}
             selectedColorProductId={selectedColorProductId}
+            offerPrice={
+              currentProduct.isGiftCard
+                ? parseInt(currentGiftCardValue, 10)
+                : currentProduct.offerPrice
+            }
+            listPrice={
+              currentProduct.isGiftCard
+                ? parseInt(currentGiftCardValue, 10)
+                : currentProduct.listPrice
+            }
+            currencySymbol={currency}
+            currencyExchange={currencyExchange}
+            isGiftCard={currentProduct.isGiftCard}
           />
 
           <ProductAddToBagContainer
@@ -113,7 +139,9 @@ class ProductDetailView extends React.PureComponent {
             errorOnHandleSubmit={addToBagError}
             onChangeColor={this.onChangeColor}
             handleSubmit={handleSubmit}
+            onChangeSize={this.onChangeSize}
           />
+          {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
@@ -124,11 +152,13 @@ class ProductDetailView extends React.PureComponent {
             isShowMore={false}
             pdpLabels={pdpLabels}
           />
-          <RelatedOutfits
-            pdpLabels={pdpLabels}
-            navigation={navigation}
-            selectedColorProductId={selectedColorProductId}
-          />
+          {!currentProduct.isGiftCard ? (
+            <RelatedOutfits
+              pdpLabels={pdpLabels}
+              navigation={navigation}
+              selectedColorProductId={selectedColorProductId}
+            />
+          ) : null}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>
@@ -150,6 +180,8 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  currency: PropTypes.string,
+  currencyExchange: PropTypes.number,
 };
 
 ProductDetailView.defaultProps = {
@@ -164,6 +196,8 @@ ProductDetailView.defaultProps = {
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  currency: 'USD',
+  currencyExchange: 1,
 };
 
 export default withStyles(ProductDetailView);

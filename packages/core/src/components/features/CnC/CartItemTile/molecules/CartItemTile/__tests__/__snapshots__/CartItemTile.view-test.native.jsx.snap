@@ -346,6 +346,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           "calls": Array [
             Array [
               Object {
+                "alwaysSearchForBOSS": false,
                 "colorProductId": undefined,
                 "isBopisCtaEnabled": true,
                 "isBossCtaEnabled": false,

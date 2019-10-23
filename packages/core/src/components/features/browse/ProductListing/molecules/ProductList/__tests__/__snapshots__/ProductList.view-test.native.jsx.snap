@@ -5,6 +5,11 @@ exports[`ProductList component should renders correctly 1`] = `
   <FlatList
     ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
+    columnWrapperStyle={
+      Object {
+        "justifyContent": "space-between",
+      }
+    }
     data={
       Array [
         Object {
