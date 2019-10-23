@@ -3,14 +3,7 @@
 exports[`SocialAccountsTileItem component should render correctly 1`] = `
 <Fragment>
   <Styled(View)>
-    <View
-      style={
-        Object {
-          "flex": 1.5,
-          "justifyContent": "flex-start",
-        }
-      }
-    >
+    <Styled(View)>
       <Styled(BodyCopy)
         accessibilityText=""
         color="black"
@@ -22,17 +15,8 @@ exports[`SocialAccountsTileItem component should render correctly 1`] = `
         text="lbl_preference_tileConnectedSocialAccountsHeading"
         textDecoration={null}
       />
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "flex": 0.5,
-          "flexDirection": "row",
-          "justifyContent": "flex-end",
-        }
-      }
-    >
+    </Styled(View)>
+    <Styled(View)>
       <Styled(Anchor)
         accessibilityLabel=""
         anchorVariation="primary"
@@ -49,7 +33,7 @@ exports[`SocialAccountsTileItem component should render correctly 1`] = `
         underline={true}
         visible={false}
       />
-    </View>
+    </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
