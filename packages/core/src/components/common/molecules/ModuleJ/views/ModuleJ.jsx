@@ -120,10 +120,7 @@ class ModuleJ extends React.PureComponent {
             >
               <DamImage
                 imgConfigs={IMG_DATA.promoImgConfig}
-                imgData={{
-                  alt: promoImage1.alt,
-                  url: promoImage1.url,
-                }}
+                imgData={promoImage1}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
                 link={promoLink1}
               />
