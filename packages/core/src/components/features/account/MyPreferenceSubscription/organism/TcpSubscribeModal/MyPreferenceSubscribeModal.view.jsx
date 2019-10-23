@@ -54,9 +54,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     });
   }
 
-  handleSubmitData = () => {
+  handleSubmitData = data => {
     const { onSubmit } = this.props;
-    onSubmit();
+    onSubmit(data);
   };
 
   /**
@@ -66,7 +66,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose, labels } = this.props;
+    const { className, handleSubmit, onSubmit, onRequestClose, labels } = this.props;
     const { disclaimerText } = this.state;
 
     return (
@@ -75,7 +75,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
           <form
             name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL}
             className={className}
-            onSubmit={handleSubmit(this.handleSubmitData)}
+            onSubmit={handleSubmit(onSubmit)}
             noValidate
           >
             <BodyCopy

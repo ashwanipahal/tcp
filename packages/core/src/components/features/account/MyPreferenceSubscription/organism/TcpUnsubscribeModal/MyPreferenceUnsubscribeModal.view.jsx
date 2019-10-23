@@ -29,11 +29,6 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
     labels: {},
   };
 
-  handleSubmitData = () => {
-    const { onSubmit } = this.props;
-    onSubmit();
-  };
-
   /**
    * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -41,7 +36,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, onRequestClose, phoneNumber, labels } = this.props;
+    const { className, onRequestClose, onSubmit, phoneNumber, labels } = this.props;
 
     return (
       <div className={className}>
@@ -49,7 +44,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
           <form
             name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE}
             className={className}
-            onSubmit={this.handleSubmitData}
+            onSubmit={onSubmit}
             noValidate
           >
             <BodyCopy
