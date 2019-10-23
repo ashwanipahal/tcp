@@ -41,7 +41,6 @@ const { getCreditCardType } = utility;
 
 export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser, res) {
   let cardDetails;
-  let cardNotUpdated = true;
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (formData.onFileCardId) {
     if (!cardDetailsInfo) {
