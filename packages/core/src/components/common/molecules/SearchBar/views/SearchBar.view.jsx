@@ -7,12 +7,13 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
-import { getSearchResult } from '../SearchBar.actions';
+import { getSearchResult, setShowMoreProductFlag } from '../SearchBar.actions';
 import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
 import CancelSearch from './CancelSearch.view';
 import SuggestionBox from './SuggestionBox.view';
 import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 import SearchBarPropTypes from '../SearchBar.PropTypes';
+import LookingForProductDetail from './LookingForProductDetail.view';
 
 /**
  * This component produces a Search Bar component for Header
@@ -28,7 +29,6 @@ class SearchBar extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      showProduct: false,
       ...props,
     };
 
@@ -48,8 +48,7 @@ class SearchBar extends React.PureComponent {
   }
 
   openFullSizeSearchModel = () => {
-    const { onCloseClick } = this.props;
-    onCloseClick();
+    this.commonCloseClick();
     const elementExists = document.getElementById('search-input');
     if (elementExists) {
       document.getElementById('search-input').focus();
@@ -70,24 +69,23 @@ class SearchBar extends React.PureComponent {
   closeModalIfMobile = e => {
     e.preventDefault();
     if (window.innerWidth <= breakpoints.values.lg) {
-      const { onCloseClick } = this.props;
-      onCloseClick();
+      this.commonCloseClick();
     }
   };
 
   closeSearchBar = e => {
     e.preventDefault();
-    const { setSearchState } = this.props;
-    this.setState({ showProduct: false });
+    const { setSearchState, toggleSearchResults } = this.props;
     setSearchState(false);
+    toggleSearchResults(false);
   };
 
   closeModalSearch = e => {
     e.preventDefault();
-    const { setSearchState, onCloseClick } = this.props;
-    this.setState({ showProduct: false });
+    const { setSearchState, toggleSearchResults } = this.props;
+    toggleSearchResults(false);
     setSearchState(false);
-    onCloseClick();
+    this.commonCloseClick();
   };
 
   cancelSearchBar = e => {
@@ -101,14 +99,23 @@ class SearchBar extends React.PureComponent {
     }
   };
 
+  arrayRemove = (arr, value) => {
+    return arr.filter(ele => {
+      return ele !== value;
+    });
+  };
+
   setDataInLocalStorage = searchText => {
     if (searchText) {
-      const searchTextParam = searchText.toLowerCase();
+      const searchTextParam = searchText.trim().toLowerCase();
       const getPreviousSearchResults = getRecentStoreFromLocalStorage();
       let filteredSearchResults;
       if (getPreviousSearchResults) {
         filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
         if (filteredSearchResults.indexOf(searchTextParam) === -1) {
+          filteredSearchResults.push(searchTextParam);
+        } else {
+          filteredSearchResults = this.arrayRemove(filteredSearchResults, searchTextParam);
           filteredSearchResults.push(searchTextParam);
         }
       } else {
@@ -117,7 +124,7 @@ class SearchBar extends React.PureComponent {
       }
       if (
         filteredSearchResults &&
-        filteredSearchResults.length === RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
       ) {
         filteredSearchResults.shift();
       }
@@ -138,11 +145,15 @@ class SearchBar extends React.PureComponent {
     setSearchState(false);
   };
 
+  commonCloseClick = () => {
+    const { onCloseClick } = this.props;
+    onCloseClick();
+  };
+
   initiateSearchByModal = e => {
     e.preventDefault();
     this.startInitiateSearch();
-    const { onCloseClick } = this.props;
-    onCloseClick();
+    this.commonCloseClick();
   };
 
   initiateSearch = e => {
@@ -152,14 +163,14 @@ class SearchBar extends React.PureComponent {
 
   initiateSearchBySubmit = () => {
     this.startInitiateSearch();
-    const { onCloseClick } = this.props;
     if (window.innerWidth <= breakpoints.values.lg) {
-      onCloseClick();
+      this.commonCloseClick();
     }
   };
 
   redirectToSearchPage = searchText => {
-    this.setState({ showProduct: false });
+    const { toggleSearchResults } = this.props;
+    toggleSearchResults(false);
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
@@ -174,15 +185,11 @@ class SearchBar extends React.PureComponent {
       .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
 
     if (searchText.length > RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
-      this.setState({ showProduct: Boolean(searchText.length) }, () => {
-        const payload = {
-          searchText,
-          slpLabels: labels,
-        };
-        startSearch(payload);
-      });
-    } else {
-      this.setState({ showProduct: false });
+      const payload = {
+        searchText,
+        slpLabels: labels,
+      };
+      startSearch(payload);
     }
 
     if (searchText.length >= 1 && !searchImage) {
@@ -254,19 +261,18 @@ class SearchBar extends React.PureComponent {
     }
 
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    const { onCloseClick } = this.props;
-    onCloseClick();
+    this.commonCloseClick();
   };
 
   hideOverlayAfterClick = searchText => {
+    this.setDataInLocalStorage(searchText);
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    this.setState({ showProduct: false });
+    const { toggleSearchResults } = this.props;
+    toggleSearchResults(false);
   };
 
   render() {
-    const { className, fromCondensedHeader, searchResults, isSearchOpen } = this.props;
-
-    const { showProduct } = this.state;
+    const { className, showProduct, fromCondensedHeader, searchResults, isSearchOpen } = this.props;
 
     const getRecentStore = getRecentStoreFromLocalStorage();
     let latestSearchResults;
@@ -373,7 +379,9 @@ class SearchBar extends React.PureComponent {
                                             this.redirectToSuggestedUrl(`${itemData.text}`)
                                           }
                                         >
-                                          <HighLightSearch inputText={`${itemData.text}`} />
+                                          {itemData && itemData.text && (
+                                            <HighLightSearch inputText={`${itemData.text}`} />
+                                          )}
                                         </Anchor>
                                       </BodyCopy>
                                     );
@@ -385,32 +393,7 @@ class SearchBar extends React.PureComponent {
                     </div>
                     <div className="matchProductBox">
                       <LookingForProductLabel searchResults={searchResults} />
-
-                      <BodyCopy className="matchProductBody" lineHeight="39" component="div">
-                        <ul>
-                          {searchResults &&
-                            searchResults.autosuggestProducts &&
-                            searchResults.autosuggestProducts.map(item => {
-                              return (
-                                <BodyCopy component="li" key={item.id} className="productBox">
-                                  <Anchor
-                                    asPath={`${item.productUrl}`}
-                                    to={`${item.productUrl}`}
-                                    className="suggestion-label"
-                                  >
-                                    <Image
-                                      alt={`${item.name}`}
-                                      className="autosuggest-image"
-                                      src={`${item.imageUrl[0]}`}
-                                      data-locator={`${item.name}`}
-                                      height="25px"
-                                    />
-                                  </Anchor>
-                                </BodyCopy>
-                              );
-                            })}
-                        </ul>
-                      </BodyCopy>
+                      <LookingForProductDetail searchResults={searchResults} />
                     </div>
                   </div>
                 )}
@@ -439,6 +422,7 @@ SearchBar.propTypes = SearchBarPropTypes;
 SearchBar.defaultProps = {
   isSearchOpen: false,
   fromCondensedHeader: false,
+  showProduct: false,
   searchResults: {
     trends: {},
     categories: {},
@@ -456,6 +440,7 @@ const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.Search,
     searchResults: state.Search.searchResults,
+    showProduct: state.Search.showProduct,
   };
 };
 
@@ -463,6 +448,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     startSearch: payload => {
       dispatch(getSearchResult(payload));
+    },
+    toggleSearchResults: payload => {
+      dispatch(setShowMoreProductFlag(payload));
     },
   };
 };

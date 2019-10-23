@@ -87,20 +87,25 @@ LoyaltyPromoBanner.defaultProps = {
   <style>
 
 
+.header-loyalty-banner-wrapper {
+  height: 23px;
+  display: flex;
+  justify-content: space-between;
+}
 
-.loyalty-banner-wrapper__item {
+.header-loyalty-banner-wrapper__item {
   display: flex;
   align-items: center;
 }
 
-.loyalty-banner-wrapper__divider {
+.header-loyalty-banner-wrapper__divider {
   width: 1px;
   height: 100%;
   background-color: #d8d8d8;
   margin: 0 8px;
 }
 
-.loyalty-banner-wrapper__text-content {
+.header-loyalty-banner-wrapper__text-content {
   font-family: Arial;
   font-size: 12px;
   text-align: center;
@@ -122,11 +127,11 @@ LoyaltyPromoBanner.defaultProps = {
   padding-right: 15px;
 }
 
-.loyalty-banner-wrapper__img {
+.header-loyalty-banner-wrapper__img {
   height: 100%;
   margin-right: 4px;
 }
-.loyalty-banner-wrapper__img img {
+.header-loyalty-banner-wrapper__img img {
   height: 100%;
 }
 
@@ -137,14 +142,14 @@ LoyaltyPromoBanner.defaultProps = {
 }
 
 @media (min-width: 768px) {
-  .loyalty-banner-wrapper__divider {
+  .header-loyalty-banner-wrapper__divider {
     margin: 0 14px;
   }
   .the-my-place-rewards {
     width: 320px;
     font-size: 13px;
   }
-  .loyalty-banner-wrapper__img {
+  .header-loyalty-banner-wrapper__img {
     height: 23px;
     margin-right: 4px;
   }
@@ -152,13 +157,13 @@ LoyaltyPromoBanner.defaultProps = {
 
 @media (min-width: 1200px) {
 
-  .loyalty-banner-wrapper__divider {
+  .header-loyalty-banner-wrapper__divider {
     margin: 0 22px;
   }
-  .loyalty-banner-wrapper__item {
+  .header-loyalty-banner-wrapper {
     height: 45px;
   }
-  .loyalty-banner-wrapper__text-content {
+  .header-loyalty-banner-wrapper__text-content {
     font-size: 22px;
   }
 
@@ -170,7 +175,7 @@ LoyaltyPromoBanner.defaultProps = {
     width: 570px;
     font-size: 22px;
   }
-  .loyalty-banner-wrapper__img {
+  .header-loyalty-banner-wrapper__img {
     height: 44px;
     margin-right: 8px;
   }
@@ -179,29 +184,29 @@ LoyaltyPromoBanner.defaultProps = {
   </style>
 
 
-<div class="loyalty-banner-wrapper">
-  <div class="loyalty-banner-wrapper__item hide-on-mobile">
-    <div class="loyalty-banner-wrapper__text-content">
+<div class="header-loyalty-banner-wrapper">
+  <div class="header-loyalty-banner-wrapper__item hide-on-mobile">
+    <div class="header-loyalty-banner-wrapper__text-content">
       BONUS POINTS EVENT
     </div>
   </div>
 
-  <div class="loyalty-banner-wrapper__divider hide-on-mobile"></div>
+  <div class="header-loyalty-banner-wrapper__divider hide-on-mobile"></div>
 
-  <div class="loyalty-banner-wrapper__item hide-on-mobile">
-    <div class="loyalty-banner-wrapper__text-content">
+  <div class="header-loyalty-banner-wrapper__item hide-on-mobile">
+    <div class="header-loyalty-banner-wrapper__text-content">
       MARCH 7-APRIL 21, 2019
     </div>
   </div>
-  <div class="loyalty-banner-wrapper__divider hide-on-mobile"></div>
-  <div class="loyalty-banner-wrapper__item">
-    <div class="loyalty-banner-wrapper__img">
+  <div class="header-loyalty-banner-wrapper__divider hide-on-mobile"></div>
+  <div class="header-loyalty-banner-wrapper__item">
+    <div class="header-loyalty-banner-wrapper__img">
           <img src="https://test5.childrensplace.com/image/upload//v1571658182/tcp-loyality.png" alt="Rewards">
     </div>
-    <div class="loyalty-banner-wrapper__text-content content-3X">
+    <div class="header-loyalty-banner-wrapper__text-content content-3X">
         3X
   </div>
-  <div class="loyalty-banner-wrapper__text-content the-my-place-rewards">
+  <div class="header-loyalty-banner-wrapper__text-content the-my-place-rewards">
   THE MY PLACE REWARDS POINTS
 ON ALL EASTER DRESS UP & MATCHING FAMILY STYLES
 </div>
