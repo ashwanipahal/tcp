@@ -27,9 +27,11 @@ exports[`ConfirmationView should render correctly 1`] = `
       isShowShippingMessage={false}
     />
   </Styled(View)>
+  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -87,9 +89,11 @@ exports[`ConfirmationView should render correctly 2`] = `
       }
     />
   </Styled(View)>
+  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -142,9 +146,11 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
       }
     />
   </Styled(View)>
+  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    isReviewPage={false}
   />
 </Styled(ScrollViewMock)>
 `;

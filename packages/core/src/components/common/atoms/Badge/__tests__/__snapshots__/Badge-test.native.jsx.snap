@@ -4,7 +4,7 @@ exports[`Native Badge component renders correctly with  as false 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(View)
-      spacingStyles="margin-right-XXXS"
+      spacingStyles="margin-right-XXS"
     >
       <Styled(CustomIcon)
         accessibilityLabel=""

@@ -47,7 +47,7 @@ exports[`ModuleL component renders correctly 1`] = `
     Object {
       "large": true,
       "medium": true,
-      "small": true,
+      "small": false,
     }
   }
 >
@@ -133,6 +133,7 @@ exports[`ModuleL component renders correctly 1`] = `
           "type": "light",
         }
       }
+      className="moduleL__carousel"
       options={
         Object {
           "arrows": true,

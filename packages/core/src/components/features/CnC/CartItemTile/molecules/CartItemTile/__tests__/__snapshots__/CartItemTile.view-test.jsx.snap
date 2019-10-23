@@ -53,6 +53,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -204,7 +205,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -300,7 +301,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -480,6 +481,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -631,7 +633,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -727,7 +729,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -903,6 +905,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -1054,7 +1057,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -1168,7 +1171,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1344,6 +1347,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -1495,7 +1499,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -1591,7 +1595,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1767,6 +1771,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -1918,7 +1923,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -2014,7 +2019,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -2190,6 +2195,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -2341,7 +2347,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -2437,7 +2443,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -2627,6 +2633,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -2790,7 +2797,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -2886,7 +2893,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -3076,6 +3083,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -3227,7 +3235,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -3323,7 +3331,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -3513,6 +3521,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -3676,7 +3685,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -3772,7 +3781,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -3962,6 +3971,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -4113,7 +4123,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -4209,7 +4219,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -4399,6 +4409,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -4550,7 +4561,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -4646,7 +4657,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -4822,6 +4833,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -4973,7 +4985,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -5087,7 +5099,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -5263,6 +5275,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -5414,7 +5427,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -5528,7 +5541,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -5704,6 +5717,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
       </div>
     </Styled(Col)>
@@ -5855,7 +5869,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -5969,7 +5983,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -6159,6 +6173,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
           isProductImage={true}
+          itemBrand="tcp"
         />
         <Styled(BodyCopy)
           className="soldOutLabel"
@@ -6322,7 +6337,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -6436,7 +6451,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -6584,7 +6599,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kGXeez",
+        "componentId": "sc-kpOJdX",
         "isStatic": false,
         "rules": Array [
           "
@@ -6705,7 +6720,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
     right: ",
           [Function],
           ";
-    z-index: 1;
+    z-index: 2;
     img {
       display: block;
     }
@@ -6910,8 +6925,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
@@ -7018,7 +7033,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kGXeez",
+      "styledComponentId": "sc-kpOJdX",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7061,7 +7076,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kGXeez",
+        "componentId": "sc-kpOJdX",
         "isStatic": false,
         "rules": Array [
           "
@@ -7182,7 +7197,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     right: ",
           [Function],
           ";
-    z-index: 1;
+    z-index: 2;
     img {
       display: block;
     }
@@ -7387,8 +7402,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 
@@ -7495,7 +7510,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kGXeez",
+      "styledComponentId": "sc-kpOJdX",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

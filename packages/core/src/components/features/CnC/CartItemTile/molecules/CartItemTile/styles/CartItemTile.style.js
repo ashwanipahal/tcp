@@ -102,7 +102,7 @@ export default css`
     position: absolute;
     top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    z-index: 1;
+    z-index: 2;
     img {
       display: block;
     }
@@ -289,8 +289,8 @@ export default css`
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 

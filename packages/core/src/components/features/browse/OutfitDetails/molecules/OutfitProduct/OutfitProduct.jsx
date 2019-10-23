@@ -26,6 +26,8 @@ const OutfitDetailsView = ({
   currencyExchange,
   handleAddToBag,
   addToBagError,
+  isLoggedIn,
+  addToFavorites,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -37,7 +39,7 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = labels && labels.lbl_outfit_title;
+  const viewDetails = labels && labels.lbl_outfit_viewdetail;
 
   return (
     <Row className={className}>
@@ -88,6 +90,8 @@ const OutfitDetailsView = ({
             isCanada={isCanada}
             isPlcc={isPlcc}
             isInternationalShipping={isInternationalShipping}
+            onAddItemToFavorites={addToFavorites}
+            isLoggedIn={isLoggedIn}
           />
           <ProductPrice
             currencySymbol={currencySymbol}
@@ -126,6 +130,8 @@ OutfitDetailsView.propTypes = {
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.bool,
+  addToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -141,6 +147,7 @@ OutfitDetailsView.defaultProps = {
   currencyExchange: 1,
   labels: {},
   addToBagError: false,
+  isLoggedIn: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

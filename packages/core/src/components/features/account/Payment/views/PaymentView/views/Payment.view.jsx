@@ -45,7 +45,7 @@ export class PaymentView extends React.Component {
     } else {
       cardHeading = getLabelValue(
         labels,
-        isVenmo ? 'lbl_payment_modalVenmoDelete' : 'lbl_payment_modalGCHeading',
+        isVenmo ? 'lbl_payment_modalVenmoDelete' : 'lbl_payment_modalDeleteCard',
         'paymentGC'
       );
     }
@@ -57,7 +57,7 @@ export class PaymentView extends React.Component {
           subHeading:
             selectedCard.ccType === 'VENMO'
               ? getLabelValue(labels, 'lbl_payment_modalVenmoDeleteHeading', 'paymentGC')
-              : '',
+              : getLabelValue(labels, 'lbl_payment_modalGCHeading', 'paymentGC'),
           description: selectedCard,
           buttons: {
             cancel: getLabelValue(labels, 'lbl_payment_modalGCCancel', 'paymentGC'),
