@@ -264,6 +264,24 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <Styled(Row)
+    className="mainWrapper"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ErrorMessage)
+        className="error_box minibag-error"
+        error="something went wrong"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(BodyCopy)
     className="viewBagAndProduct"
     color="text.primary"

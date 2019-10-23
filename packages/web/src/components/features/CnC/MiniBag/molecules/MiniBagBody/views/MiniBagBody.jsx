@@ -138,6 +138,20 @@ class MiniBagBody extends React.PureComponent {
     );
   };
 
+  renderServerError = () => {
+    const { addedToBagError } = this.props;
+    if (!addedToBagError) {
+      return null;
+    }
+    return (
+      <Row className="mainWrapper">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ErrorMessage error={addedToBagError} className="error_box minibag-error" />
+        </Col>
+      </Row>
+    );
+  };
+
   render() {
     const {
       labels,
@@ -192,6 +206,7 @@ class MiniBagBody extends React.PureComponent {
             {this.renderGiftCardError()}
           </Row>
         </div>
+        {this.renderServerError()}
         <BodyCopy component="div" className="viewBagAndProduct">
           {cartItemCount ? (
             <ProductTileWrapper
@@ -252,6 +267,7 @@ MiniBagBody.propTypes = {
   closeMiniBag: PropTypes.func.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   resetSuccessMessage: PropTypes.func.isRequired,
+  addedToBagError: PropTypes.string.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);
