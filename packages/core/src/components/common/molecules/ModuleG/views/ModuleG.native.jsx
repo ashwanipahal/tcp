@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
-import { ParallaxImage } from 'react-native-snap-carousel';
-import { Button, Anchor } from '../../../atoms';
+import { Button, Anchor, Image } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
@@ -38,17 +37,11 @@ const MODULE_HEIGHT = 200;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
 const { TOTAL_IMAGES } = config;
 const { width: screenWidth } = Dimensions.get('window');
-const IS_PARALLAX_IMAGE = true;
 
-const imageStyle = {
-  position: 'absolute',
-  resizeMode: 'contain',
-  width: '40%',
-};
-const imageContainer = {
-  flex: 1,
-  borderRadius: 8,
-};
+const LOOP_CLONES_PER_SIDE = 2;
+const INACTIVE_SLIDE_SCALE = 0.81;
+const INACTIVE_SLIDE_OPACITY = 0.8;
+const ITEM_WIDTH = 235;
 
 const plusIcon = require('../../../../../../src/assets/plus.png');
 
@@ -107,45 +100,32 @@ class ModuleG extends React.PureComponent {
   /**
    * @param {object} props : Props for renderCarouselSlide accept slideProps & parallaxProps and render the image sliding view.
    */
-  renderCarouselSlide = (slideProps, parallaxProps) => {
-    const { item } = slideProps;
+  renderCarouselSlide = item => {
+    const { item: itemValue } = item;
     const { navigation } = this.props;
+    let itemData;
+    if (itemValue) {
+      [itemData] = itemValue;
+    }
+    const { imageUrl, productItemIndex, product_name: productName, uniqueId } = itemData;
     return (
       <ImageSlideWrapper>
-        {item.map(productItem => {
-          const {
-            imageUrl: [imageUrl],
-            uniqueId,
-            product_name: productName,
-            productItemIndex,
-          } = productItem;
-
-          return (
-            <Anchor
-              onPress={() =>
-                navigation.navigate('ProductDetail', {
-                  title: productName,
-                  pdpUrl: uniqueId,
-                  selectedColorProductId: uniqueId,
-                  reset: true,
-                })
-              }
-              navigation={navigation}
-              testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
-            >
-              <View style={{ width: screenWidth - 80, height: PRODUCT_IMAGE_HEIGHT }}>
-                <ParallaxImage
-                  source={{ uri: imageUrl }}
-                  containerStyle={imageContainer}
-                  style={imageStyle}
-                  parallaxFactor={0.4}
-                  activeOpacity={3}
-                  {...parallaxProps}
-                />
-              </View>
-            </Anchor>
-          );
-        })}
+        <View style={{ width: screenWidth, height: PRODUCT_IMAGE_HEIGHT }}>
+          <Anchor
+            onPress={() =>
+              navigation.navigate('ProductDetail', {
+                title: productName,
+                pdpUrl: uniqueId,
+                selectedColorProductId: uniqueId,
+                reset: true,
+              })
+            }
+            navigation={navigation}
+            testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
+          >
+            <Image url={imageUrl[0]} height={PRODUCT_IMAGE_HEIGHT} width={PRODUCT_IMAGE_WIDTH} />
+          </Anchor>
+        </View>
       </ImageSlideWrapper>
     );
   };
@@ -165,6 +145,7 @@ class ModuleG extends React.PureComponent {
     const secondCarouselList = selectedProductCarouselList[1];
     const firstCarouseProductList = selectedProductList[0];
     const secondCarouseProductList = selectedProductList[1];
+
     return (
       <Container>
         <MessageContainer>
@@ -206,11 +187,16 @@ class ModuleG extends React.PureComponent {
                 data={firstCarouselList}
                 renderItem={this.renderCarouselSlide}
                 height={MODULE_HEIGHT}
-                width={screenWidth}
-                carouselWidth={MODULE_WIDTH - 60}
-                hasParallaxImages={IS_PARALLAX_IMAGE}
-                carouselConfig={{
+                options={{
+                  loopClonesPerSide: LOOP_CLONES_PER_SIDE,
+                  inactiveSlideScale: INACTIVE_SLIDE_SCALE,
+                  inactiveSlideOpacity: INACTIVE_SLIDE_OPACITY,
+                  sliderWidth: MODULE_WIDTH,
+                  itemWidth: ITEM_WIDTH,
                   autoplay: false,
+                }}
+                paginationProps={{
+                  containerStyle: { paddingVertical: 5 },
                 }}
               />
             ) : null}
@@ -228,11 +214,16 @@ class ModuleG extends React.PureComponent {
                 data={secondCarouselList}
                 renderItem={this.renderCarouselSlide}
                 height={MODULE_HEIGHT}
-                width={screenWidth}
-                carouselWidth={MODULE_WIDTH - 60}
-                hasParallaxImages={IS_PARALLAX_IMAGE}
-                carouselConfig={{
+                options={{
+                  loopClonesPerSide: LOOP_CLONES_PER_SIDE,
+                  inactiveSlideScale: INACTIVE_SLIDE_SCALE,
+                  inactiveSlideOpacity: INACTIVE_SLIDE_OPACITY,
+                  sliderWidth: MODULE_WIDTH,
+                  itemWidth: ITEM_WIDTH,
                   autoplay: false,
+                }}
+                paginationProps={{
+                  containerStyle: { paddingVertical: 5 },
                 }}
               />
             ) : null}
@@ -322,13 +313,11 @@ class ModuleG extends React.PureComponent {
 }
 
 ModuleG.defaultProps = {
-  bgColor: '',
   promoBanner: [],
 };
 
 ModuleG.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
-  bgColor: PropTypes.string,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.object,
@@ -353,7 +342,6 @@ ModuleG.propTypes = {
     )
   ).isRequired,
   navigation: PropTypes.shape({}).isRequired,
-  layout: PropTypes.string.isRequired,
   divTabs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.object,
