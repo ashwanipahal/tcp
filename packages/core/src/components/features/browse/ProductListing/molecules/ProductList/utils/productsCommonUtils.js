@@ -284,7 +284,7 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
   const currentFitEntry = getMapSliceForFit(colorFitsSizesMap, selectedSKu.color, selectedSKu.fit);
   if (currentFitEntry && currentFitEntry.sizes) {
     const selectedSKuProductInfo = currentFitEntry.sizes.find(
-      size => size.sizeName === selectedSKu.size
+      size => size.sizeName === selectedSKu.Size
     );
     const maxAvailableBossProducts = selectedSKuProductInfo
       ? selectedSKuProductInfo.maxAvailableBoss

@@ -65,6 +65,7 @@ import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/S
 import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
+import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -131,6 +132,7 @@ export default function* rootSaga() {
     OutfitDetailsSaga(),
     RecentSearchSaga(),
     AccountSaga(),
+    SubscribeStoreSaga(),
     LayoutSaga(),
     NavigateXHRSaga(),
   ]);

@@ -110,7 +110,9 @@ class OutfitDetailsContainer extends React.PureComponent {
   }
 }
 
-OutfitDetailsContainer.pageId = 'outfit';
+OutfitDetailsContainer.pageInfo = {
+  pageId: 'outfit',
+};
 
 const mapStateToProps = state => {
   return {

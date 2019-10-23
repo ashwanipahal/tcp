@@ -1,10 +1,18 @@
 import styled from 'styled-components/native';
 import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
 
+const getAdditionalStyle = props => {
+  const { margins } = props;
+  return {
+    ...(margins && { margin: margins }),
+  };
+};
+
 const StyledCheckBox = styled.View`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  ${getAdditionalStyle}
 `;
 
 const StyledImage = styled.View`
