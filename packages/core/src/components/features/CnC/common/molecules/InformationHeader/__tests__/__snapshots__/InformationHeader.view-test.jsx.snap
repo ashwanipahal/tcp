@@ -12,5 +12,26 @@ exports[`InformationHeader Component InformationHeader should render correctly 1
     }
     pageView=""
   />
+  <div
+    className="delete-msg"
+  >
+    <Styled(Image)
+      alt="closeIcon"
+      className="tick-icon"
+      src="/static/images/circle-check-fill.png"
+    />
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    />
+  </div>
 </div>
 `;
