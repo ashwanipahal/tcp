@@ -11,12 +11,22 @@ export function* fetchProductTabListData({ payload }) {
     const res = yield call(lightweightProductListing.getData, payload);
     if (res) {
       return yield put(
-        productTabListDataSuccess({ [categoryId]: res, errors: { [categoryId]: null } })
+        productTabListDataSuccess({
+          [categoryId]: res,
+          errors: { [categoryId]: null },
+          completed: { [categoryId]: false },
+        })
       );
     }
     throw new Error();
   } catch (err) {
-    return yield put(productTabListDataFail({ [categoryId]: [], errors: { [categoryId]: true } }));
+    return yield put(
+      productTabListDataFail({
+        [categoryId]: [],
+        errors: { [categoryId]: true },
+        completed: { [categoryId]: false },
+      })
+    );
   }
 }
 

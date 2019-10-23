@@ -11,7 +11,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontWeight="semibold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-MED margin-bottom-XS"
+      spacingStyles="margin-top-SM margin-bottom-XS"
       text="lbl_orderDetails_orderSummary"
       textAlign="left"
       textDecoration={null}
@@ -38,7 +38,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_items (undefined):"
       textAlign="left"
       textDecoration={null}
@@ -50,7 +50,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$NaN"
       textAlign="left"
       textDecoration={null}
@@ -64,7 +64,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_couponsPromotions:"
       textAlign="left"
       textDecoration={null}
@@ -76,7 +76,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="-$21.20"
       textAlign="left"
       textDecoration={null}
@@ -90,7 +90,6 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="lbl_orderDetails_shipping:"
       textAlign="left"
       textDecoration={null}
@@ -102,7 +101,6 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="lbl_orders_free"
       textAlign="left"
       textDecoration={null}
@@ -116,7 +114,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_tax:"
       textAlign="left"
       textDecoration={null}
@@ -128,7 +126,7 @@ exports[`Order Summary Details component should render correctly for valid coupo
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$1.23"
       textAlign="left"
       textDecoration={null}
@@ -182,7 +180,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontWeight="semibold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-MED margin-bottom-XS"
+      spacingStyles="margin-top-SM margin-bottom-XS"
       text="lbl_orderDetails_orderSummary"
       textAlign="left"
       textDecoration={null}
@@ -209,7 +207,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_items (undefined):"
       textAlign="left"
       textDecoration={null}
@@ -221,7 +219,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$NaN"
       textAlign="left"
       textDecoration={null}
@@ -235,7 +233,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_couponsPromotions:"
       textAlign="left"
       textDecoration={null}
@@ -247,7 +245,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$NaN"
       textAlign="left"
       textDecoration={null}
@@ -261,7 +259,6 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="lbl_orderDetails_shipping:"
       textAlign="left"
       textDecoration={null}
@@ -273,7 +270,6 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="$10.00"
       textAlign="left"
       textDecoration={null}
@@ -287,7 +283,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_tax:"
       textAlign="left"
       textDecoration={null}
@@ -299,7 +295,7 @@ exports[`Order Summary Details component should renders correctly with free ship
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$11.37"
       textAlign="left"
       textDecoration={null}
@@ -353,7 +349,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontWeight="semibold"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-MED margin-bottom-XS"
+      spacingStyles="margin-top-SM margin-bottom-XS"
       text="lbl_orderDetails_orderSummary"
       textAlign="left"
       textDecoration={null}
@@ -380,7 +376,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_items (undefined):"
       textAlign="left"
       textDecoration={null}
@@ -392,7 +388,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$NaN"
       textAlign="left"
       textDecoration={null}
@@ -406,7 +402,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_couponsPromotions:"
       textAlign="left"
       textDecoration={null}
@@ -418,7 +414,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$NaN"
       textAlign="left"
       textDecoration={null}
@@ -432,7 +428,6 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="lbl_orderDetails_shipping:"
       textAlign="left"
       textDecoration={null}
@@ -444,7 +439,6 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
       text="$23.10"
       textAlign="left"
       textDecoration={null}
@@ -458,7 +452,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="lbl_orders_tax:"
       textAlign="left"
       textDecoration={null}
@@ -470,7 +464,7 @@ exports[`Order Summary Details component should renders correctly with shipping 
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-top-XS margin-bottom-XS"
+      spacingStyles="margin-top-XS "
       text="$100.10"
       textAlign="left"
       textDecoration={null}

@@ -33,6 +33,11 @@ const ignorePsuedoCodeDir = [
   '/twitterLoginComponent/',
   '/twitterRedirectPage/',
   '/config/SEOTags.config.js',
+  '/BundleProduct/',
+  '/QuickViewModal/',
+  '/ProductColorChipSelector/views/',
+  '/organisms/QuickViewModal/',
+  '/ProductCustomizeForm/views/',
 ];
 
 module.exports = {
