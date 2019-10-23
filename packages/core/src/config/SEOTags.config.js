@@ -2,11 +2,11 @@ import PAGES from '../constants/pages.constants';
 import { getAPIConfig } from '../utils';
 import { findCategoryIdandName } from '../components/features/browse/ProductListing/container/ProductListing.util';
 
-const TCP_BASE_URL = 'www.childrensplace.com';
+const TCP_BASE_URL = 'https://www.childrensplace.com';
 const TCP_TWITTER_SITE_TAG = '@childrensplace';
 const TCP_TWITTER_SITE_CARD_TYPE = 'summary';
 
-const GYM_BASE_URL = 'www.gymboree.com';
+const GYM_BASE_URL = 'https://www.gymboree.com';
 const GYM_TWITTER_SITE_TAG = '@Gymboree';
 const GYM_TWITTER_SITE_CARD_TYPE = 'summary';
 const TCP_LABEL = "The Children's Place";

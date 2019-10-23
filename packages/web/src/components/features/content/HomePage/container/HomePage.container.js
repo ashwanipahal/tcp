@@ -12,9 +12,9 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
 };
 
 HomePageView.getInitActions = () => initActions;
-HomePageView.pageId = 'Home';
 
 HomePageView.pageInfo = {
+  pageId: 'Home',
   name: 'homepage',
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
