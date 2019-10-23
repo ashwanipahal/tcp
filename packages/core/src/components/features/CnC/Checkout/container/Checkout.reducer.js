@@ -60,6 +60,7 @@ const initialState = fromJS({
     alertMessage: null,
     paymentError: null,
     addressError: null,
+    checkoutServerError: null,
   },
 });
 
@@ -140,6 +141,8 @@ function uiGiftCardFlagReducer(checkout, action) {
       return initialState;
     case CheckoutConstants.CHECKOUT_VALUES_SET_SHIPPING_LOADING:
       return checkout.setIn(['values', 'isShippingFormLoading'], action.isLoading);
+    case CheckoutConstants.SET_SERVER_ERROR_CHECKOUT:
+      return checkout.setIn(['uiFlags', 'checkoutServerError'], action.payload);
     default:
       return paypalReducer(checkout, action);
   }

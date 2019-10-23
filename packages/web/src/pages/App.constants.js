@@ -11,6 +11,8 @@ const CHECKOUT_STAGES = {
   INTERNATIONAL_CHECKOUT: 'international-checkout',
 };
 
+export const ADDED_TO_BAG_PAGE = 'isAddedToBagPage';
+
 export const CHECKOUT_PAGE = 'checkout';
 
 export const CHECKOUT_SECTIONS = {

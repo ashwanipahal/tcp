@@ -30,17 +30,17 @@ const GuestMprPlccSection = props => {
     getCurrencySymbol,
     currentSubtotal,
     estimatedSubtotal,
+    isPlcc,
   } = props;
   return (
     <View>
       {headingLabel && (
-        <HeadingLabel>
+        <HeadingLabel isPlcc={isPlcc}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
             fontSize="fs12"
-            color="black"
             text={headingLabel}
           />
         </HeadingLabel>
@@ -145,6 +145,7 @@ GuestMprPlccSection.propTypes = {
   descriptionLabel: PropTypes.string,
   remainingPlcc: PropTypes.string,
   showSubtotal: PropTypes.bool,
+  isPlcc: PropTypes.bool,
   getCurrencySymbol: PropTypes.string,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.string,
@@ -156,6 +157,7 @@ GuestMprPlccSection.defaultProps = {
   descriptionLabel: '',
   remainingPlcc: '',
   showSubtotal: false,
+  isPlcc: false,
   getCurrencySymbol: '',
   currentSubtotal: 0,
   estimatedSubtotal: '',

@@ -16,6 +16,8 @@ import {
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
 
+import LoyaltyBanner from '../../../../LoyaltyBanner';
+
 const popover = message => {
   return (
     <BodyCopy
@@ -55,7 +57,7 @@ export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, l
   ) : null;
 };
 
-const getBody = (ledgerSummaryData, labels, isConfirmationPage) => {
+const getBody = (ledgerSummaryData, labels, isConfirmationPage, isReviewPage) => {
   const {
     itemsCount,
     currencySymbol,
@@ -302,6 +304,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage) => {
           </Text>
         </StyledRowDataContainer>
       ) : null}
+      <LoyaltyBanner isConfirmationPage={isConfirmationPage} isReviewPage={isReviewPage} />
     </StyledOrderLedger>
   );
 };
@@ -330,13 +333,14 @@ const OrderLedger = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
+  isReviewPage,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = getBody(summaryData, labels, isConfirmationPage);
+  const body = getBody(summaryData, labels, isConfirmationPage, isReviewPage);
   return (
     <View>
       {showAccordian ? (
@@ -447,6 +451,7 @@ OrderLedger.propTypes = {
 
   /** Flag to identify if the current page is confirmation page */
   isConfirmationPage: PropTypes.bool,
+  isReviewPage: PropTypes.bool,
 };
 
 OrderLedger.defaultProps = {
@@ -454,6 +459,7 @@ OrderLedger.defaultProps = {
   labels: {},
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
+  isReviewPage: false,
 };
 
 export default OrderLedger;
