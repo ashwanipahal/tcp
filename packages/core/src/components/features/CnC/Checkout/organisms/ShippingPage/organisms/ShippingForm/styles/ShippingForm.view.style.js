@@ -9,12 +9,6 @@ const styles = css`
     }
   }
 
-  .zip-code {
-    .address-field {
-      top: 2px;
-    }
-  }
-
   .email-signup-container {
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
@@ -35,6 +29,12 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
+  }
+  .select__input {
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

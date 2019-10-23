@@ -8,7 +8,6 @@ describe('MyPreference Subscribe component', () => {
     onRequestClose: jest.fn(),
     handleSubmit: jest.fn(),
     handleSubmitData: jest.fn(),
-    handleSubmitModalPopup: jest.fn(),
     labels: {
       'lbl_prefrence_modal_disclaimer_line-1': 'test1',
       'lbl_prefrence_modal_disclaimer_line-2': 'test2',
@@ -19,11 +18,5 @@ describe('MyPreference Subscribe component', () => {
   it('should render correctly', () => {
     const component = shallow(<MyPreferenceSubscribeModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
-  });
-
-  it('simulate handleSubmitData click ', () => {
-    const component = shallow(<MyPreferenceSubscribeModalVanilla {...props} />);
-    component.instance().handleSubmitData();
-    expect(props.handleSubmitModalPopup).toHaveBeenCalled();
   });
 });

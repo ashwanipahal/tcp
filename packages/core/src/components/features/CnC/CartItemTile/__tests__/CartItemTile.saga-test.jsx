@@ -66,8 +66,9 @@ describe('Cart Item saga remove', () => {
     const removeCartItemGen = removeCartItem(payload);
     removeCartItemGen.next();
     removeCartItemGen.next();
+    removeCartItemGen.next();
 
-    expect(removeCartItemGen.next().value).toEqual(
+    expect(removeCartItemGen.next(true).value).toEqual(
       put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payloadValue))
     );
   });

@@ -200,6 +200,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
+
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
