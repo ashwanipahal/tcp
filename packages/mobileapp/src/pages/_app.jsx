@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-const { store } = initializeStore();
+// const { store } = initializeStore();
 
 export class App extends React.PureComponent {
   state = {
@@ -36,11 +36,10 @@ export class App extends React.PureComponent {
     apiConfig: null,
   };
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     const { store } = initializeStore();
     this.store = store;
     const { appType } = this.props;
-    console.log(this.props);
 
     // create and save api configs for tcp and gymboree in app
     updateBrandName(appType);
@@ -101,9 +100,8 @@ export class App extends React.PureComponent {
   render() {
     const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
-    console.log('APP PROPS', this.props);
     return (
-      <Provider store={store}>
+      <Provider store={this.store}>
         <NetworkProvider>
           <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
             <Box style={styles.container}>

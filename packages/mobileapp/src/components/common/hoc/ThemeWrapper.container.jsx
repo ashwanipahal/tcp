@@ -48,7 +48,7 @@ export class ThemeWrapper extends React.PureComponent {
   render() {
     const { children, appType } = this.props;
     const currentTheme = this.getTheme();
-    console.log('CURRENT THEME: ', currentTheme);
+
     return (
       <ThemeProvider theme={currentTheme} appType={appType}>
         <React.Fragment>{children}</React.Fragment>
