@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import LoggedInUserInfo from '../LoggedInUserInfo/LoggedInUserInfo';
-import GuestUserInfo from '../GuestUserInfo/GuestUserInfo';
+import LoggedInUserInfo from '../LoggedInUserInfo/view/LoggedInUserInfo';
+import GuestUserInfo from '../GuestUserInfo/view/GuestUserInfo';
 
 const AccountInfoSection = ({
   userName,

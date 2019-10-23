@@ -15,8 +15,8 @@ import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
 import style, { customHeaderStyle } from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
-import LoggedInUserInfo from '../LoggedInUserInfo/LoggedInUserInfo';
-import GuestUserInfo from '../GuestUserInfo/GuestUserInfo';
+import LoggedInUserInfo from '../LoggedInUserInfo/view/LoggedInUserInfo';
+import GuestUserInfo from '../GuestUserInfo/view/GuestUserInfo';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
