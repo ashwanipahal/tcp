@@ -13,7 +13,7 @@ describe('LoyaltyBanner View Component', () => {
     thresholdValue: 16.66,
   };
 
-  it('OrderLedger should render correctly', () => {
+  it('LoyaltyBanner should render correctly', () => {
     component = shallow(<LoyaltyBannerVanilla {...Props} />);
     expect(component).toMatchSnapshot();
   });

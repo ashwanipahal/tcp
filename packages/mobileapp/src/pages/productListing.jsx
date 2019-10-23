@@ -13,6 +13,7 @@ import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import Navigation from '../components/features/content/Navigation';
+// import CategoryListing from '@tcp/core/src/components/features/browse/CategoryListing'; // @TODO when clp can link to PLP
 import NavMenuLevel2 from '../components/features/content/Navigation/molecules/NavMenuLevel2';
 import NavMenuLevel3 from '../components/features/content/Navigation/molecules/NavMenuLevel3';
 import ROUTE_NAMES from '../reduxStore/routes';
@@ -29,7 +30,7 @@ const getNewHeader = (navigation, showSearch, navTitle) => {
 const PlpStack = createStackNavigator(
   {
     [ROUTE_NAMES.NAV_MENU_LEVEL_1]: {
-      screen: Navigation,
+      screen: Navigation, // CategoryListing
     },
     OutfitDetail: {
       screen: OutfitDetail,
