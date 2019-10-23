@@ -18,6 +18,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
       className="summary-title-pick-up"
       dataLocator="pickup-title"
     />
+    <[object Object] />
     <div
       className="pickUpContact"
       dataLocator="pickup-contact"
