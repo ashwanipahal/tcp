@@ -47,9 +47,13 @@ exports[`FilterModal is shown should render FilterModal when show is false 1`] =
           </Styled(TouchableOpacity)>
         </Styled(View)>
         <Styled(WithTheme(Filters))
+          filteredId="ALL"
           filters={Object {}}
+          isFavorite={false}
           labelsFilter={Object {}}
           name="filters"
+          onCloseModal={[Function]}
+          onFilterSelection={[Function]}
           onSubmit={[Function]}
         />
       </Styled(View)>

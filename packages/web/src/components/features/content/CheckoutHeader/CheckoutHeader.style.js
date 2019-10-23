@@ -95,4 +95,9 @@ export default css`
   .non-checkout-pages & {
     display: none;
   }
+  .checkout-mobile-header-font {
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs24};
+    }
+  }
 `;

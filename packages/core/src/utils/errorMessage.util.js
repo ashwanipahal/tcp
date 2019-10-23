@@ -61,8 +61,13 @@ function getErrorList(response) {
   );
 }
 
-function getFormattedErrorFromResponse(response, ERRORS_MAP) {
-  const errorsList = getErrorList(response);
+export function getFormattedErrorFromResponse(response, ERRORS_MAP, errorsListData = []) {
+  let errorsList;
+  if (errorsListData.length > 0) {
+    errorsList = errorsListData;
+  } else {
+    errorsList = getErrorList(response);
+  }
 
   let errorCodes = '';
   const errorMessages = {};
