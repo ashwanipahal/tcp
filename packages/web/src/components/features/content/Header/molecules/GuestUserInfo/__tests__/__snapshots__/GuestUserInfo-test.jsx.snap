@@ -107,3 +107,111 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
   </Styled(Anchor)>
 </Fragment>
 `;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot num1 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot num2 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot num3 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot num4 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;
