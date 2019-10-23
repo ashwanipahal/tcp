@@ -11,6 +11,12 @@ const get = (obj, key, def, p, undef) => {
 const createRwdStyle = styleConfig => props => {
   const { theme } = props;
   const { breakpoints } = theme;
+  console.log('THEME', theme);
+  console.log('BREAKPOINTS', breakpoints);
+  console.log('PROPS', props);
+  if (typeof breakpoints === 'undefined') {
+    return;
+  }
   return breakpoints.keys.reduce((rwdStyle, breakpointKey, breakpointKeyIndex) => {
     const breakpointValue = breakpoints.values[breakpointKey];
     let totalRwdStyle = '';

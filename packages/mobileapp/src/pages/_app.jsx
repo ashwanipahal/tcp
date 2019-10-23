@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 const { store } = initializeStore();
 
 export class App extends React.PureComponent {
@@ -36,7 +35,8 @@ export class App extends React.PureComponent {
     apiConfig: null,
   };
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
+    const { store } = initializeStore();
     this.store = store;
     const { appType } = this.props;
     console.log(this.props);
@@ -89,10 +89,11 @@ export class App extends React.PureComponent {
   render() {
     const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
+    console.log('APP PROPS', this.props);
     return (
-      <Provider store={this.store}>
+      <Provider store={store}>
         <NetworkProvider>
-          <ThemeWrapperHOC appType={appType || 'gym'} switchBrand={this.switchBrand}>
+          <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
             <Box style={styles.container}>
               {Platform.OS === 'ios' ? (
                 <StatusBar barStyle="default" />

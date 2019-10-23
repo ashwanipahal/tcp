@@ -78,18 +78,18 @@ class HomePageView extends React.PureComponent {
     } = this.props;
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
-        <HeaderPromoContainer>
+        {/* <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
-        <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Button
+        </HeaderPromoContainer> */}
+        {/* <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} /> */}
+        {/* <GetCandid apiConfig={apiConfig} navigation={navigation} /> */}
+        {/* <Button
           fullWidth
           buttonVariation="variable-width"
           text="PLP Page"
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
-        />
+        /> */}
       </ScrollView>
     );
   }
