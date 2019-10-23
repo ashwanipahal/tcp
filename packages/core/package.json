@@ -11,6 +11,7 @@
     "apisauce": "^1.0.2",
     "async-redis": "^1.1.7",
     "aws-appsync": "^2.0.1",
+    "aws-appsync-auth-link": "^1.0.1",
     "aws-appsync-react": "1.2.7",
     "aws-sdk": "^2.554.0",
     "bunyan": "^1.8.12",
