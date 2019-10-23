@@ -204,10 +204,6 @@ export default css`
     .stacked-cta-wrapper-class {
       width: 100%;
       height: 100%;
-      padding-top: 16px;
-      padding-right: 20px;
-      padding-bottom: 16px;
-      padding-left: 20px;
     }
 
     &.scroll-button-list-wrapper,

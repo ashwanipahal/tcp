@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
@@ -34,12 +33,6 @@ const HomePageView = dynamic({
     logger.debug('SEOData:', JSON.stringify(seoData));
 
     return [
-      // <Row fullBleed={{ small: true, medium: true, large: false }}>
-      //   <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-      //     <ModuleN {...mockModuleN.moduleN.composites} halfWidth />
-      //   </Col>
-      //   <Col colSize={{}} />
-      // </Row>,
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,

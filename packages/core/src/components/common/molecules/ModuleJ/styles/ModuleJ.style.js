@@ -113,6 +113,13 @@ export default css`
     }
   }
 
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+  }
+
   .moduleJ__carousel-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
@@ -158,11 +165,11 @@ export default css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
-  .buttonStylingAndSpacing {
+  .product-tab-list {
     margin-top: 27px;
   }
 
-  .imagesDiv {
+  .product-image {
     margin-top: 16px;
     margin-bottom: 16px;
   }

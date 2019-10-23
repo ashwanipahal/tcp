@@ -255,7 +255,6 @@ export default css`
     text-align: center;
     color: ${props => props.theme.colorPalette.white};
     display: block;
-    margin-top: -14px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: inline-block;
@@ -511,18 +510,6 @@ export default css`
   * Module N Promo Banner styles Gymboree
   *********************************/
   .percentage_inline_promo {
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
-    letter-spacing: 0px;
-    color: ${props => props.theme.colorPalette.white};
-    text-align: center;
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs64};
-    }
-  }
-
-  .percentage_inline_promo_half {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs48};

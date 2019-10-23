@@ -46,16 +46,17 @@ const style = css`
 
   .banner-content {
     position: absolute;
-    top: 24px;
+    transform: translateY(-50%);
+    top: 50%;
     left: 0;
     width: 100%;
-    @media ${props => props.theme.mediaQuery.medium} {
-      top: 40px;
-    }
   }
 
-  .moduleAPosition {
-    position: relative;
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
   }
 
   &.gymboree-module-a .banner-content {

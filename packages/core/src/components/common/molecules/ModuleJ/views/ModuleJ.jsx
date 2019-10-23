@@ -141,7 +141,7 @@ class ModuleJ extends React.PureComponent {
             >
               {this.getHeaderText()}
               {this.getPromoBanner()}
-              <div className="buttonStylingAndSpacing">
+              <div className="product-tab-list">
                 <ProductTabList
                   onProductTabChange={this.onTabChange}
                   tabItems={divTabs}
@@ -199,7 +199,7 @@ class ModuleJ extends React.PureComponent {
             </Col>
           </Row>
         )}
-        <Row className="imagesDiv">
+        <Row className="product-image">
           <Col
             className="moduleJ__carousel-wrapper"
             colSize={{

@@ -15,22 +15,27 @@ export default css`
   }
 
   .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 24px;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
     }
   }
 
+  .text_normal {
+    margin-top: -14px;
+  }
+
   .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
     color: ${props =>
       props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
         ? props.theme.colorPalette.gray['700']
         : props.theme.colorPalette.red['300']};
-  }
-
-  .ModuleN_Button a {
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 24px;
-    }
   }
 
   .dropdown-button {

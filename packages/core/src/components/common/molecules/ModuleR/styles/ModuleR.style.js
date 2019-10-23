@@ -88,6 +88,13 @@ export default css`
     margin-bottom: 0;
   }
 
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+  }
+
   .promo-wrapper {
     text-align: center;
     margin: 0 auto;
