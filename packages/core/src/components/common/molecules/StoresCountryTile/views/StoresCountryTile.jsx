@@ -85,6 +85,8 @@ class StoresCountryTile extends PureComponent {
             defaultOpen={isDefaultOpen}
             id={`scroll-${title}`}
             onToggleCallback={onToggleCallback}
+            showHeaderAlways
+            isStoreCountry
           />
         </div>
       </div>
