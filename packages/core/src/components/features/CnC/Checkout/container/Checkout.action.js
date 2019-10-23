@@ -1,6 +1,7 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
+import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
@@ -502,12 +503,5 @@ export const updateCardData = payload => {
     type: constants.UPDATE_CARD_DATA,
   };
 };
-/**
- * @function resetCheckoutReducer
- * action creator for type: RESET_CHECKOUT_REDUCER
- */
-export const resetCheckoutReducer = () => {
-  return {
-    type: constants.RESET_CHECKOUT_REDUCER,
-  };
-};
+
+export default { setServerErrorCheckout, resetCheckoutReducer };
