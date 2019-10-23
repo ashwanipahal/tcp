@@ -3404,7 +3404,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
   .collapsible-icon {
     position: absolute;
     right: 0;
-    display: none;
+    display: ",
+                    [Function],
+                    ";
     top: 30px;
     @media ",
                     [Function],
@@ -3426,7 +3428,9 @@ exports[`StoreHours component should render component with timing data 1`] = `
     @media ",
                     [Function],
                     " {
-      display: block;
+      display: ",
+                    [Function],
+                    ";
     }
   }
 ",
@@ -7594,7 +7598,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
   .collapsible-icon {
     position: absolute;
     right: 0;
-    display: none;
+    display: ",
+                    [Function],
+                    ";
     top: 30px;
     @media ",
                     [Function],
@@ -7616,7 +7622,9 @@ exports[`StoreHours component should render component with timing data 2`] = `
     @media ",
                     [Function],
                     " {
-      display: block;
+      display: ",
+                    [Function],
+                    ";
     }
   }
 ",
