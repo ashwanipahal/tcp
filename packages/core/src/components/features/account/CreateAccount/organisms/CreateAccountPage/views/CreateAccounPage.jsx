@@ -24,7 +24,6 @@ class CreateAccounPage extends React.Component {
     formErrorMessage: PropTypes.shape({}).isRequired,
     userplccCardNumber: PropTypes.string.isRequired,
     userplccCardId: PropTypes.string.isRequired,
-    addressLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -65,7 +64,6 @@ class CreateAccounPage extends React.Component {
       formErrorMessage,
       userplccCardNumber,
       userplccCardId,
-      addressLabels,
     } = this.props;
     return (
       <div className={className}>
@@ -110,7 +108,6 @@ class CreateAccounPage extends React.Component {
             formErrorMessage={formErrorMessage}
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}
-            addressLabels={addressLabels}
           />
         </div>
       </div>

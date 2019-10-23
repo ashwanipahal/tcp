@@ -8,9 +8,6 @@ describe('CreateAccount', () => {
     setLoginModalMountState: () => {},
     showLogin: () => {},
     formErrorMessage: {},
-    addressLabels: {
-      addressFormLabels: {},
-    },
   };
 
   it('should render CreateAccountView component', () => {
