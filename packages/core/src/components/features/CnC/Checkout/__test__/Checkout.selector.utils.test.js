@@ -261,6 +261,26 @@ describe('Checkout Selectors', () => {
     expect(getCurrentCheckoutStage(state)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
   });
 
+  it('#getCheckoutServerError', () => {
+    const { getCheckoutServerError } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        checkoutServerError: null,
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          checkoutServerError: null,
+        },
+      }),
+    };
+    expect(getCheckoutServerError(state)).toEqual(
+      Checkout.getIn(['uiFlags', 'checkoutServerError'])
+    );
+  });
+
   it('#getExpressReviewShippingSectionId', () => {
     const state = {
       form: {
