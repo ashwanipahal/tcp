@@ -11,10 +11,11 @@ describe('getErrorMessageLabels', () => {
     const props = {
       formErrorMessage: {
         lbl_err_email_req: emailErrorMessage,
+        lbl_err_prefix: 'ERROR:',
       },
     };
     const expectedErrorObj = {
-      emailAddress: emailErrorMessage,
+      emailAddress: `ERROR: ${emailErrorMessage}`,
     };
     expect(getErrorMessageLabels(errors, props)).toStrictEqual(expectedErrorObj);
   });
@@ -26,7 +27,7 @@ describe('getErrorMessageLabels', () => {
     };
     const props = {};
     const expectedErrorObj = {
-      emailAddress: emailErrorMessage,
+      emailAddress: `ERROR: ${emailErrorMessage}`,
     };
     expect(getErrorMessageLabels(errors, props)).toStrictEqual(expectedErrorObj);
   });

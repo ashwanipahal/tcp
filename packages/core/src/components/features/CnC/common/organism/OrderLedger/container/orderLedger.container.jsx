@@ -14,6 +14,7 @@ type Props = {
   isConfirmationPage: any,
   orderLedgerAfterView: any,
   confirmationPageLedgerSummaryData: any,
+  pageCategory: any,
 };
 
 export const OrderLedgerContainer = ({
@@ -24,6 +25,7 @@ export const OrderLedgerContainer = ({
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
   orderLedgerAfterView,
+  pageCategory,
 }: Props) => (
   <OrderLedger
     className={className}
@@ -33,6 +35,7 @@ export const OrderLedgerContainer = ({
     orderLedgerAfterView={orderLedgerAfterView}
     confirmationPageLedgerSummaryData={confirmationPageLedgerSummaryData}
     isConfirmationPage={isConfirmationPage}
+    pageCategory={pageCategory}
   />
 );
 
