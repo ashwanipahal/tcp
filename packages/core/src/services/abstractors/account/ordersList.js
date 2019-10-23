@@ -174,7 +174,10 @@ export const getOrderInfoByOrderId = updatedPayload => {
           quantityOOS: 0, // no support from backend
           itemBrand: item.brand ? item.brand : '',
         },
-        trackingInfo: item.shipmentAndStatusInfo ? item.shipmentAndStatusInfo : [],
+        trackingInfo:
+          item.shipmentAndStatusInfo.length > 0
+            ? item.shipmentAndStatusInfo
+            : [{ status: orderDetails.orderStatus }],
         isShippedItem: parseInt(item.quantity, 10) === parseInt(item.quantityShipped, 10),
       }));
 
@@ -270,6 +273,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
                     quantity,
                   },
                   productInfo: item.productInfo,
+                  trackingInfo: item.trackingInfo,
                 };
               }),
               status: 'order received',
@@ -297,6 +301,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
             ...item.itemInfo,
             linePrice: extractFloat(item.paidUnitPrice) * item.itemInfo.quantityCanceled,
           },
+          trackingInfo: item.trackingInfo,
         }));
 
       const outOfStockItems = []; // cartItems.filter((item) => item.itemInfo.quantityOOS);
