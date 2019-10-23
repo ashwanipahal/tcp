@@ -20,7 +20,7 @@ import {
 export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
   const { summary } = orderDetailsData || {};
   const {
-    // canceledItem,
+    canceledItems,
     couponsTotal,
     currencySymbol,
     grandTotal,
@@ -61,7 +61,8 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           fontSize="fs14"
           textAlign="left"
           spacingStyles="margin-top-XS "
-          text={`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
+          text={`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems ||
+            canceledItems}):`}
         />
         <BodyCopyWithSpacing
           fontFamily="primary"

@@ -11,6 +11,7 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
+import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
@@ -85,6 +86,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       showAddTobag,
       isInternationalShipping,
       isBagPageStickyHeader,
+      checkoutServerError,
     } = this.props;
     return (
       <div className={className}>
@@ -121,6 +123,14 @@ class AddedToBagActions extends React.PureComponent<Props> {
           {this.getCheckoutButton()}
           <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
+        <Row className="elem-mt-MED">
+          {checkoutServerError && (
+            <ErrorMessage
+              error={checkoutServerError.errorMessage}
+              className="checkout-page-error"
+            />
+          )}
+        </Row>
       </div>
     );
   }
@@ -135,6 +145,7 @@ AddedToBagActions.propTypes = {
   showVenmo: PropTypes.bool,
   isBagPageStickyHeader: PropTypes.bool,
   isUSSite: PropTypes.bool,
+  checkoutServerError: PropTypes.shape({}).isRequired,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
