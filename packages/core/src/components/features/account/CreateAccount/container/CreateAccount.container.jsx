@@ -14,6 +14,7 @@ import {
   getConfirmHideShowPwd,
   getLabels,
   getErrorMessage,
+  getPasswordLabels,
 } from './CreateAccount.selectors';
 import {
   getUserLoggedInState,
@@ -27,6 +28,7 @@ import {
 } from '../../OverlayModal/container/OverlayModal.actions';
 
 import { getFormValidationErrorMessages } from '../../Account/container/Account.selectors';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 const noop = () => {};
 
@@ -51,6 +53,8 @@ export class CreateAccountContainer extends React.Component {
     userplccCardNumber: PropTypes.string.isRequired,
     userplccCardId: PropTypes.string.isRequired,
     toastMessage: PropTypes.func,
+    addressLabels: PropTypes.shape({}).isRequired,
+    passwordLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -139,6 +143,8 @@ export class CreateAccountContainer extends React.Component {
       userplccCardNumber,
       userplccCardId,
       toastMessage,
+      addressLabels,
+      passwordLabels,
     } = this.props;
     return (
       <CreateAccountView
@@ -158,6 +164,8 @@ export class CreateAccountContainer extends React.Component {
         userplccCardNumber={userplccCardNumber}
         userplccCardId={userplccCardId}
         toastMessage={toastMessage}
+        addressLabels={addressLabels.addressFormLabels}
+        passwordLabels={passwordLabels}
       />
     );
   }
@@ -174,6 +182,8 @@ export const mapStateToProps = state => {
     error: getErrorMessage(state),
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    addressLabels: getAddEditAddressLabels(state),
+    passwordLabels: getPasswordLabels(state),
   };
 };
 

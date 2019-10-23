@@ -16,7 +16,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getIconPath } from '../../../../../../../utils';
+import { getIconPath, isCanada } from '../../../../../../../utils';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -31,6 +31,7 @@ let CreateAccountForm = ({
   tooltipContent,
   userplccCardNumber,
   userplccCardId,
+  addressLabels,
 }) => {
   const getPlccLbl = getLabelValue(
     labels,
@@ -76,7 +77,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Zip Code"
+              placeholder={isCanada() ? addressLabels.postalCode : addressLabels.zipCode}
               name="noCountryZip"
               id="noCountryZip"
               component={TextBox}
@@ -288,6 +289,7 @@ CreateAccountForm.propTypes = {
   tooltipContent: PropTypes.string.isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  addressLabels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(CreateAccountForm, Styles);

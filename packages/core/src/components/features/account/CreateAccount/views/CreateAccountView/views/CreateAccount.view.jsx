@@ -48,6 +48,7 @@ class CreateAccount extends React.Component<Props> {
       formErrorMessage,
       userplccCardNumber,
       userplccCardId,
+      addressLabels,
     } = this.props;
     return (
       <div className={className}>
@@ -66,6 +67,7 @@ class CreateAccount extends React.Component<Props> {
           formErrorMessage={formErrorMessage}
           userplccCardNumber={userplccCardNumber}
           userplccCardId={userplccCardId}
+          addressLabels={addressLabels}
         />
       </div>
     );

@@ -45,6 +45,7 @@ class CreateAccountForm extends PureComponent<Props> {
       getTouchStatus,
       userplccCardNumber,
       userplccCardId,
+      passwordLabels,
     } = this.props;
     const getPlccLbl = getLabelValue(
       labels,
@@ -117,7 +118,7 @@ class CreateAccountForm extends PureComponent<Props> {
             <IconContainer>
               <ReactTooltip
                 withOverlay={false}
-                popover={<PasswordRequirement labels={labels.password} />}
+                popover={<PasswordRequirement labels={passwordLabels} />}
                 height={200}
                 width={300}
                 textAlign="left"
