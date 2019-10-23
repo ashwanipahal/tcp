@@ -57,6 +57,7 @@ const ModuleP = props => {
   return (
     <View>
       <ListItem
+        paddings="12px 0 12px 12px"
         item={item}
         isMatchingFamily={isMatchingFamily}
         badge1={topBadge}

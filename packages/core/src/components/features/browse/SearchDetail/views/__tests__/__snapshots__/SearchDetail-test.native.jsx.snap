@@ -31,21 +31,28 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
   </Styled(View)>
   <Styled(ProductListView)
     breadCrumbs={Array []}
+    filteredId="ALL"
     filters={null}
     filtersLength={0}
     getProducts={[MockFunction]}
+    isFavorite={false}
     isLoadingMore={false}
     labels={Object {}}
     labelsFilter={Object {}}
     lastLoadedPageNumber={0}
+    margins={null}
     navigation={
       Object {
         "getParam": [Function],
       }
     }
+    onFilterSelection={[Function]}
     onPickUpOpenClick={[Function]}
+    onSortSelection={[Function]}
     onSubmit={[MockFunction]}
+    paddings={null}
     products={Array []}
+    renderBrandFilter={null}
     setListRef={[Function]}
     slpLabels={
       Object {
