@@ -763,6 +763,10 @@ class CartItemTile extends React.Component {
     ) : null;
   };
 
+  getItemBrand = itemBrand => {
+    return itemBrand && itemBrand.toLowerCase();
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -845,6 +849,7 @@ class CartItemTile extends React.Component {
                   alt: labels.productImageAlt,
                   url: productDetail.itemInfo.imagePath,
                 }}
+                itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                 isProductImage
               />
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (

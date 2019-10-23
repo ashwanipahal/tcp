@@ -218,6 +218,9 @@ class Product extends React.Component {
       isMatchingFamily,
       selectedColorProductId,
       isGiftCard,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
     } = this.props;
     const productInfo = productDetails.get('currentProduct');
     if (!productInfo) {
@@ -251,6 +254,8 @@ class Product extends React.Component {
           isCanada={isCanada}
           isPlcc={isHasPlcc}
           isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
           // TODO - Since the product price range is dependent on the SKU, it can be shown only after the SKU form is added
           // isShowPriceRange={isShowPriceRange}
           // isSelectedSizeDisabled={isSelectedSizeDisabled}
