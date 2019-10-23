@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { Button, Anchor, BodyCopy } from '../../../atoms';
+
+import { Button, Anchor, BodyCopy, Skeleton } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../ModuleQ.config';
+import constant from '../ModuleQ.constant';
 
 import {
   Container,
@@ -33,6 +35,7 @@ import LinkText from '../../LinkText';
 const MODULE_WIDTH = getScreenWidth();
 
 const { TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
+const { recommendation } = constant;
 const {
   PRODUCT_IMAGE_WIDTH,
   PRODUCT_IMAGE_HEIGHT,
@@ -60,7 +63,6 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
-
   return (
     <ImageSlideWrapper>
       <ImageItemWrapper>
@@ -72,6 +74,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
               title: 'COMPLETE THE LOOK',
               outfitId: id,
               vendorColorProductIdsList: subItemsId,
+              viaModule: recommendation,
             })
           }
         >
@@ -130,6 +133,14 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
   );
 }
 
+function getDataStatus(selectedProductList, currentCatId) {
+  let dataStatus = true;
+  if (selectedProductList && selectedProductList.completed) {
+    dataStatus = selectedProductList.completed[currentCatId];
+  }
+  return dataStatus;
+}
+
 // eslint-disable-next-line complexity
 const ModuleQ = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -168,6 +179,7 @@ const ModuleQ = props => {
     setSelectedCategoryId(categoryId);
     setSelectedTabItem(tabItem);
   };
+  const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
     <Container showData={showData} bgClass={bgClass}>
@@ -217,6 +229,17 @@ const ModuleQ = props => {
         selectedColorProductId={selectedColorProductId}
         testID={getLocator('moduleQ_cta_link')}
       />
+
+      {dataStatus ? (
+        <Skeleton
+          row={1}
+          col={3}
+          width={250}
+          height={300}
+          rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+          showArrows
+        />
+      ) : null}
 
       <ImageSlidesWrapper hideTabs={hideTabs}>
         {selectedProductList.length ? (

@@ -30,7 +30,6 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
-import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
@@ -131,6 +130,7 @@ class TCPWebApp extends App {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     let payload = { siteConfig: false };
+    const initialProps = pageProps;
     // Get initial props is getting called twice on server
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
@@ -174,13 +174,14 @@ class TCPWebApp extends App {
         };
       }
 
+      initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
         store.dispatch(getCurrentStoreInfo(storeId));
       }
     }
-    return pageProps;
+    return initialProps;
   }
 
   static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
@@ -240,8 +241,6 @@ class TCPWebApp extends App {
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
-            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

@@ -8,6 +8,7 @@ import {
   submitOrder,
   requestPersonalizedCoupons,
   updatePaymentOnOrder,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import utility from '../util/utility';
@@ -24,7 +25,7 @@ import {
 } from '../../Confirmation/container/Confirmation.actions';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { resetCheckoutReducer } from './Checkout.action';
+import CHECKOUT_ACTIONS from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
@@ -135,6 +136,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
   const isVenmoSaveSelected = yield select(selectors.isVenmoPaymentSaveSelected);
   const venmoData = yield select(selectors.getVenmoData);
+  const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   // Add Venmo Payment method to the registered user account
   if (isVenmoSaveSelected) {
     yield call(updateVenmoPaymentInstruction);
@@ -149,7 +151,14 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
       isVenmoSaveSelected,
     };
   }
-  const res = yield call(submitOrder, orderId, smsOrderInfo, currentLanguage, venmoPayloadData);
+  const res = yield call(
+    submitOrder,
+    orderId,
+    smsOrderInfo,
+    currentLanguage,
+    venmoPayloadData,
+    errorMappings
+  );
   yield put(getSetOrderConfirmationActn(res));
   return res;
 }
@@ -197,153 +206,161 @@ export function* expressCheckoutSubmit(formData) {
 
 // method to handle submit of order in review page
 function* submitOrderForProcessing({ payload: { navigation, formData } }) {
-  const orderId = yield select(getCurrentOrderId);
-  const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
-  const currentLanguage = yield select(getCurrentLanguage);
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  const pendingPromises = [];
-  if (isExpressCheckoutEnabled && formData) {
-    yield call(expressCheckoutSubmit, formData);
+  try {
+    const orderId = yield select(getCurrentOrderId);
+    const smsOrderInfo = yield select(getSmsNumberForBillingOrderUpdates);
+    const currentLanguage = yield select(getCurrentLanguage);
+    const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+    const pendingPromises = [];
+    if (isExpressCheckoutEnabled && formData) {
+      yield call(expressCheckoutSubmit, formData);
+    }
+
+    // Venmo Support
+    // if (venmoPaymentMethodApplied) {
+    //   const localPromises = [];
+    //   const shippingAddress = checkoutStoreView.getShippingDestinationValues(state);
+    //   let billingAddressId = shippingAddress && shippingAddress.onFileAddressId;
+    //   let billingAddressKey = shippingAddress && shippingAddress.onFileAddressKey;
+
+    //   if (
+    //     !billingAddressId &&
+    //     !userStoreView.isGuest(state) &&
+    //     cartStoreView.getIsOrderHasShipping(state)
+    //   ) {
+    //     // We have to find the billingAddressId so let's get the default billing id which is ok for Venmo
+    //     const shipToValues = checkoutStoreView.getInitialShippingSectionValues(state);
+    //     if (shipToValues.shipTo && shipToValues.shipTo.addressId) {
+    //       billingAddressId = shipToValues.shipTo.addressId;
+    //       billingAddressKey = shipToValues.shipTo.onFileAddressKey;
+    //     }
+    //   }
+    //   // Now we need to support Pickup values
+    //   if (!checkoutStoreView.isPickupValuesAvailable(state) && cartStoreView.isCartStores(state)) {
+    //     // We need to submit the defaults
+    //     const initialPickupValues = checkoutStoreView.getInitialPickupSectionValues(state);
+    //     if (initialPickupValues && initialPickupValues.pickUpContact) {
+    //       localPromises.push(
+    //         () =>
+    //           new Promise(res =>
+    //             res(
+    //               getPickupOperator(this.store).addContact({
+    //                 firstName: initialPickupValues.pickUpContact.firstName,
+    //                 lastName: initialPickupValues.pickUpContact.lastName,
+    //                 phoneNumber: initialPickupValues.pickUpContact.phoneNumber,
+    //                 emailAddress:
+    //                   initialPickupValues.pickUpContact.emailAddress ||
+    //                   (!userStoreView.isGuest(state) ? userStoreView.getUserEmail(state) : ''),
+    //                 alternateEmail:
+    //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
+    //                     ? initialPickupValues.pickUpAlternate.emailAddress
+    //                     : '',
+    //                 alternateFirstName:
+    //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
+    //                     ? initialPickupValues.pickUpAlternate.firstName
+    //                     : '',
+    //                 alternateLastName:
+    //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
+    //                     ? initialPickupValues.pickUpAlternate.lastName
+    //                     : '',
+    //               })
+    //             )
+    //           )
+    //       );
+    //     }
+    //   }
+    //   if (
+    //     !billingAddressId &&
+    //     cartStoreView.getIsOrderHasPickup(state) &&
+    //     !cartStoreView.getIsOrderHasShipping(state)
+    //   ) {
+    //     // We have to retrieve store for billing address
+    //     const tcpStores = cartStoreView.getCartStores(state);
+    //     if (tcpStores && tcpStores.length) {
+    //       const aTcpStore = tcpStores[0];
+    //       billingAddressId = `${aTcpStore.address.addressId}`;
+    //       billingAddressKey = `${aTcpStore.address.addessKey}`;
+    //     }
+    //   }
+    //   // Since we normally skip the billing step during Venmo, we will set it here.
+    //   if (billingAddressId && billingAddressKey) {
+    //     const accountServiceAbstractor = getAccountAbstractor(
+    //       routingInfoStoreView.getApiHelper(state)
+    //     );
+    //     localPromises.push(
+    //       () =>
+    //         new Promise(res =>
+    //           res(
+    //             accountServiceAbstractor.applyBillingAddress({
+    //               addressId: billingAddressId,
+    //               nickName: billingAddressKey,
+    //               addressKey: billingAddressKey,
+    //             })
+    //           )
+    //         )
+    //     );
+    //   }
+
+    //   const addPaymentData = {
+    //     billingAddressId,
+    //     venmoData,
+    //     orderGrandTotal: cartStoreView.getGrandTotal(state),
+    //     cardType: CREDIT_CARDS_PAYMETHODID.VENMO,
+    //     saveVenmoTokenIntoProfile: !userStoreView.isGuest(state) && venmoSavedToAccount,
+    //     applyToOrder: true,
+    //   };
+    //   const venmoPaymentInfo = paymentCardsStoreView.getVenmoPaymentInfo(state);
+    //   if (venmoPaymentInfo && venmoPaymentInfo.length && venmoPaymentInfo[0].onFileCardId) {
+    //     addPaymentData.creditCardId = venmoPaymentInfo[0].onFileCardId;
+    //   }
+    //   localPromises.push(
+    //     () =>
+    //       new Promise(res => res(this.checkoutServiceAbstractor.addPaymentToOrder(addPaymentData)))
+    //   );
+    //   pendingPromises.push(runPromisesInSerial(localPromises));
+    // }
+    yield all(pendingPromises);
+    const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
+    if (!isMobileApp()) {
+      utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
+    } else if (navigation) {
+      navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
+    }
+
+    yield call(loadPersonalizedCoupons, res, orderId);
+    const cartItems = yield select(BagPageSelectors.getOrderItems);
+    const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
+    const isCaSite = yield call(isCanada);
+    const isGuestUser = yield select(isGuest);
+    /* istanbul ignore else */
+    if (isGuestUser && !isCaSite && email) {
+      yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
+    }
+    // const vendorId =
+    //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
+
+    yield put(getSetOrderProductDetails(cartItems));
+    yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
+    yield put(resetAirmilesReducer());
+    yield put(resetCouponReducer());
+    yield put(BagActions.resetCartReducer());
+    // getProductsOperator(this.store).loadProductRecommendations(
+    //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
+    //   vendorId
+    // );
+    // this.store.dispatch(setVenmoPaymentConfirmationDisplayed(venmoPaymentMethodApplied));
+    // getCartOperator(this.store)
+    // .loadSflItemsCount()
+    // .catch(err => {
+    //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
+    // });
+  } catch (e) {
+    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(
+      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
+    );
   }
-
-  // Venmo Support
-  // if (venmoPaymentMethodApplied) {
-  //   const localPromises = [];
-  //   const shippingAddress = checkoutStoreView.getShippingDestinationValues(state);
-  //   let billingAddressId = shippingAddress && shippingAddress.onFileAddressId;
-  //   let billingAddressKey = shippingAddress && shippingAddress.onFileAddressKey;
-
-  //   if (
-  //     !billingAddressId &&
-  //     !userStoreView.isGuest(state) &&
-  //     cartStoreView.getIsOrderHasShipping(state)
-  //   ) {
-  //     // We have to find the billingAddressId so let's get the default billing id which is ok for Venmo
-  //     const shipToValues = checkoutStoreView.getInitialShippingSectionValues(state);
-  //     if (shipToValues.shipTo && shipToValues.shipTo.addressId) {
-  //       billingAddressId = shipToValues.shipTo.addressId;
-  //       billingAddressKey = shipToValues.shipTo.onFileAddressKey;
-  //     }
-  //   }
-  //   // Now we need to support Pickup values
-  //   if (!checkoutStoreView.isPickupValuesAvailable(state) && cartStoreView.isCartStores(state)) {
-  //     // We need to submit the defaults
-  //     const initialPickupValues = checkoutStoreView.getInitialPickupSectionValues(state);
-  //     if (initialPickupValues && initialPickupValues.pickUpContact) {
-  //       localPromises.push(
-  //         () =>
-  //           new Promise(res =>
-  //             res(
-  //               getPickupOperator(this.store).addContact({
-  //                 firstName: initialPickupValues.pickUpContact.firstName,
-  //                 lastName: initialPickupValues.pickUpContact.lastName,
-  //                 phoneNumber: initialPickupValues.pickUpContact.phoneNumber,
-  //                 emailAddress:
-  //                   initialPickupValues.pickUpContact.emailAddress ||
-  //                   (!userStoreView.isGuest(state) ? userStoreView.getUserEmail(state) : ''),
-  //                 alternateEmail:
-  //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
-  //                     ? initialPickupValues.pickUpAlternate.emailAddress
-  //                     : '',
-  //                 alternateFirstName:
-  //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
-  //                     ? initialPickupValues.pickUpAlternate.firstName
-  //                     : '',
-  //                 alternateLastName:
-  //                   initialPickupValues.hasAlternatePickup && initialPickupValues.pickUpAlternate
-  //                     ? initialPickupValues.pickUpAlternate.lastName
-  //                     : '',
-  //               })
-  //             )
-  //           )
-  //       );
-  //     }
-  //   }
-  //   if (
-  //     !billingAddressId &&
-  //     cartStoreView.getIsOrderHasPickup(state) &&
-  //     !cartStoreView.getIsOrderHasShipping(state)
-  //   ) {
-  //     // We have to retrieve store for billing address
-  //     const tcpStores = cartStoreView.getCartStores(state);
-  //     if (tcpStores && tcpStores.length) {
-  //       const aTcpStore = tcpStores[0];
-  //       billingAddressId = `${aTcpStore.address.addressId}`;
-  //       billingAddressKey = `${aTcpStore.address.addessKey}`;
-  //     }
-  //   }
-  //   // Since we normally skip the billing step during Venmo, we will set it here.
-  //   if (billingAddressId && billingAddressKey) {
-  //     const accountServiceAbstractor = getAccountAbstractor(
-  //       routingInfoStoreView.getApiHelper(state)
-  //     );
-  //     localPromises.push(
-  //       () =>
-  //         new Promise(res =>
-  //           res(
-  //             accountServiceAbstractor.applyBillingAddress({
-  //               addressId: billingAddressId,
-  //               nickName: billingAddressKey,
-  //               addressKey: billingAddressKey,
-  //             })
-  //           )
-  //         )
-  //     );
-  //   }
-
-  //   const addPaymentData = {
-  //     billingAddressId,
-  //     venmoData,
-  //     orderGrandTotal: cartStoreView.getGrandTotal(state),
-  //     cardType: CREDIT_CARDS_PAYMETHODID.VENMO,
-  //     saveVenmoTokenIntoProfile: !userStoreView.isGuest(state) && venmoSavedToAccount,
-  //     applyToOrder: true,
-  //   };
-  //   const venmoPaymentInfo = paymentCardsStoreView.getVenmoPaymentInfo(state);
-  //   if (venmoPaymentInfo && venmoPaymentInfo.length && venmoPaymentInfo[0].onFileCardId) {
-  //     addPaymentData.creditCardId = venmoPaymentInfo[0].onFileCardId;
-  //   }
-  //   localPromises.push(
-  //     () =>
-  //       new Promise(res => res(this.checkoutServiceAbstractor.addPaymentToOrder(addPaymentData)))
-  //   );
-  //   pendingPromises.push(runPromisesInSerial(localPromises));
-  // }
-  yield all(pendingPromises);
-  const res = yield call(submitOrderProcessing, orderId, smsOrderInfo, currentLanguage);
-  if (!isMobileApp()) {
-    utility.routeToPage(CHECKOUT_ROUTES.confirmationPage);
-  } else if (navigation) {
-    navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
-  }
-
-  yield call(loadPersonalizedCoupons, res, orderId);
-  const cartItems = yield select(BagPageSelectors.getOrderItems);
-  const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
-  const isCaSite = yield call(isCanada);
-  const isGuestUser = yield select(isGuest);
-  /* istanbul ignore else */
-  if (isGuestUser && !isCaSite && email) {
-    yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
-  }
-  // const vendorId =
-  //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
-
-  yield put(getSetOrderProductDetails(cartItems));
-  yield put(resetCheckoutReducer());
-  yield put(resetAirmilesReducer());
-  yield put(resetCouponReducer());
-  yield put(BagActions.resetCartReducer());
-  // getProductsOperator(this.store).loadProductRecommendations(
-  //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
-  //   vendorId
-  // );
-  // this.store.dispatch(setVenmoPaymentConfirmationDisplayed(venmoPaymentMethodApplied));
-  // getCartOperator(this.store)
-  // .loadSflItemsCount()
-  // .catch(err => {
-  //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
-  // });
 }
 
 export default submitOrderForProcessing;

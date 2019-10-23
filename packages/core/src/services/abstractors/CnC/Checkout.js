@@ -5,7 +5,7 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import { getCurrentOrderFormatter, flatCurrencyToCents } from './CartItemTile';
+import { flatCurrencyToCents } from './CartItemTile';
 import {
   responseContainsErrors,
   ServiceResponseError,
@@ -58,6 +58,15 @@ export const getGiftWrappingOptions = () => {
   // });
 };
 
+export const getServerErrorMessage = (error, errorsMapping) => {
+  const errorMsg = getFormattedError(error, errorsMapping);
+  if (typeof errorMsg.errorMessages === 'undefined') {
+    return 'Oops... Something went Wrong !!!!';
+  }
+  // eslint-disable-next-line
+  return errorMsg.errorMessages._error;
+};
+
 export const addPickupPerson = args => {
   const apiConfig = getAPIConfig();
   const payload = {
@@ -92,58 +101,6 @@ export const addPickupPerson = args => {
     .catch(err => {
       logger.error(err);
     });
-};
-
-export const getCurrentOrderAndCouponsDetails = (
-  orderId,
-  calcsEnabled,
-  excludeCartItems,
-  imageGenerator,
-  recalcRewards,
-  isLoggedIn
-) => {
-  // isLoggedIn = false;
-  const payload = {
-    header: {
-      orderId,
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo', // If this value is not set then you will get partial order information
-      // DT-33656 Perfomance -addCheckout/ getOrderDetails - Avoid Store Locator aggregation
-      // locStore: 'True', // this flag is so that mulesoft can run other services on their side to get BOPIS store info per item
-      // 'X-Cookie': this.apiHelper.configOptions.cookie,
-      langId: -1,
-      source: isLoggedIn ? 'login' : '',
-      calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
-      recalculate: !!recalcRewards,
-    },
-    webService: endpoints.fullDetails,
-  };
-
-  return executeStatefulAPICall(payload).then(res => {
-    // if (this.apiHelper.responseContainsErrors(res)) {
-    //   throw new ServiceResponseError(res);
-    // }
-
-    // If recalculate is true in the header of the request and the response is success,
-    // Set the time when the recalculated order points have been updated.
-    // if(res.req && res.req.header && res.req.header.recalculate) {
-    //   setBrierleyOrderPointsTimeCache();
-    // }
-
-    const orderDetailsResponse =
-      res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
-
-    return {
-      coupons: res.body.coupons,
-      orderDetails: getCurrentOrderFormatter(
-        orderDetailsResponse,
-        excludeCartItems,
-        imageGenerator
-      ),
-    };
-  });
-  // .catch(err => {
-  //   // throw this.apiHelper.getFormattedError(err);
-  // });
 };
 
 const shippingMethodResponseHandler = res => {
@@ -199,7 +156,7 @@ export const getShippingMethods = (state, zipCode, addressField1, addressField2,
       throw getFormattedError(err, labels);
     });
 };
-export function addGiftWrappingOption(payload) {
+export function addGiftWrappingOption(payload, errorsMapping) {
   const payloadArgs = {
     webService: endpoints.addGiftOptions,
     body: {
@@ -210,9 +167,13 @@ export function addGiftWrappingOption(payload) {
       brand: payload.brand,
     },
   };
-  return executeStatefulAPICall(payloadArgs).then(res => {
-    return res;
-  });
+  return executeStatefulAPICall(payloadArgs)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw getServerErrorMessage(err, errorsMapping);
+    });
 }
 export function removeGiftWrappingOption() {
   const payloadArgs = {
@@ -295,11 +256,12 @@ export function setShippingMethodAndAddressId(
       }
     })
     .catch(err => {
-      throw getFormattedError(err, labels);
+      // throw getFormattedError(err, labels);
+      throw getServerErrorMessage(err, labels);
     });
 }
 
-export function addGiftCardPaymentToOrder(args) {
+export function addGiftCardPaymentToOrder(args, errorsMapping) {
   const { billingAddressId, orderGrandTotal } = args;
   const { cardNumber, cardPin, balance, saveToAccount, nickName, creditCardId } = args;
   const paymentInstruction = {
@@ -347,7 +309,7 @@ export function addGiftCardPaymentToOrder(args) {
       }
     })
     .catch(err => {
-      return err;
+      throw getServerErrorMessage(err, errorsMapping);
     });
 }
 
@@ -371,20 +333,23 @@ export function removeGiftCard(paymentId, labels) {
       throw getFormattedError(err, labels);
     });
 }
-export function addPaymentToOrder({
-  billingAddressId = '',
-  orderGrandTotal = '',
-  cardType,
-  cardNumber = '',
-  monthExpire = '',
-  yearExpire = '',
-  setAsDefault,
-  saveToAccount,
-  nickName,
-  onFileCardId = '',
-  cvv = '',
-  venmoDetails = null,
-}) {
+export function addPaymentToOrder(
+  {
+    billingAddressId = '',
+    orderGrandTotal = '',
+    cardType,
+    cardNumber = '',
+    monthExpire = '',
+    yearExpire = '',
+    setAsDefault,
+    saveToAccount,
+    nickName,
+    onFileCardId = '',
+    cvv = '',
+    venmoDetails = null,
+  },
+  errorsMapping
+) {
   let venmoInstruction = {};
   if (venmoDetails) {
     const { userId, saveVenmoTokenIntoProfile } = venmoDetails;
@@ -444,11 +409,11 @@ export function addPaymentToOrder({
       };
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw getServerErrorMessage(err, errorsMapping);
     });
 }
 
-export function updatePaymentOnOrder(args) {
+export function updatePaymentOnOrder(args, errorsMapping) {
   const payload = {
     header: {
       savePayment: args.saveToAccount ? 'true' : 'false',
@@ -472,12 +437,16 @@ export function updatePaymentOnOrder(args) {
     },
     webService: endpoints.updatePaymentInstruction,
   };
-  return executeStatefulAPICall(payload).then(res => {
-    if (responseContainsErrors(res)) {
-      throw new ServiceResponseError(res);
-    }
-    return { paymentId: res.body.paymentInstruction[0].piId };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return { paymentId: res.body.paymentInstruction[0].piId };
+    })
+    .catch(err => {
+      throw getServerErrorMessage(err, errorsMapping);
+    });
 }
 
 const getStateTax = orderSummary => {
@@ -830,7 +799,13 @@ const handleSubmitOrderResponse = res => {
   return orderConfirmationDetails;
 };
 
-export function submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayloadData = {}) {
+export function submitOrder(
+  orderId,
+  smsOrderInfo,
+  currentLanguage,
+  venmoPayloadData = {},
+  errorsMapping
+) {
   const payload = {
     body: {
       orderId: orderId || '.',
@@ -849,7 +824,7 @@ export function submitOrder(orderId, smsOrderInfo, currentLanguage, venmoPayload
   })
     .then(handleSubmitOrderResponse)
     .catch(err => {
-      throw getFormattedError(err);
+      throw getServerErrorMessage(err, errorsMapping);
     });
 }
 
@@ -1063,7 +1038,6 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
 
 export default {
   getGiftWrappingOptions,
-  getCurrentOrderAndCouponsDetails,
   getShippingMethods,
   briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,

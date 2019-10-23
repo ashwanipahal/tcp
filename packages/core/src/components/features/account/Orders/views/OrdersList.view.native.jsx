@@ -5,6 +5,7 @@ import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapp
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import RecentOrders from '../molecules/RecentOrders';
 import PastOrders from '../molecules/PastOrders';
+import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
 
 export const OrdersList = ({
   labels,
@@ -12,6 +13,7 @@ export const OrdersList = ({
   navigation,
   handleComponentChange,
   componentProps,
+  orderItems,
 }) => {
   return (
     <React.Fragment>
@@ -24,6 +26,14 @@ export const OrdersList = ({
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
       />
+      {orderItems && orderItems.length > 0 && (
+        <OrderPreviewItemsList
+          labels={labels}
+          navigation={navigation}
+          items={orderItems[0]}
+          orderNumber={ordersListItems[0].orderNumber}
+        />
+      )}
       {ordersListItems && ordersListItems.length ? (
         <PastOrders
           labels={labels}
@@ -43,6 +53,7 @@ OrdersList.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
+  orderItems: PropTypes.shape([]).isRequired,
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},

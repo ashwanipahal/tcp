@@ -2,7 +2,8 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 import React from 'react';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -265,6 +266,21 @@ class ProductsGridItem extends React.PureComponent {
     });
   };
 
+  handleViewBundleClick = () => {
+    const {
+      isBundleProductABTest,
+      item: {
+        productInfo: { bundleProduct, pdpUrl },
+      },
+    } = this.props;
+    const isBundleProduct = !isBundleProductABTest && bundleProduct;
+    if (isBundleProduct && pdpUrl) {
+      routerPush(pdpUrl.replace('b/', 'b?bid='), pdpUrl);
+    } else {
+      this.handleQuickViewOpenClick();
+    }
+  };
+
   renderMoveItem = itemId => {
     const {
       wishlistsSummaries,
@@ -310,10 +326,16 @@ class ProductsGridItem extends React.PureComponent {
   renderSubmitButton = itemNotAvailable => {
     const {
       labels,
-      item: { itemInfo: { itemId } = {} },
+      item: {
+        itemInfo: { itemId } = {},
+        productInfo: { bundleProduct },
+      },
       removeFavItem,
       isFavoriteView,
+      isShowQuickView,
     } = this.props;
+
+    const isBundleProduct = bundleProduct;
     return itemNotAvailable ? (
       <Button
         className="remove-favorite"
@@ -330,10 +352,14 @@ class ProductsGridItem extends React.PureComponent {
         fullWidth
         buttonVariation="fixed-width"
         dataLocator={getLocator('global_addtocart_Button')}
-        onClick={this.handleQuickViewOpenClick}
+        onClick={
+          isShowQuickView && !isBundleProduct
+            ? this.handleQuickViewOpenClick
+            : this.handleViewBundleClick
+        }
         fill={isFavoriteView ? 'BLUE' : ''}
       >
-        {labels.addToBag}
+        {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
       </Button>
     );
   };
@@ -381,9 +407,10 @@ class ProductsGridItem extends React.PureComponent {
       unbxdId,
       labels,
       isFavoriteView,
+      viaModule,
     } = this.props;
+    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
-
     const prodNameAltImages = longProductTitle || name;
     const {
       selectedColorProductId,

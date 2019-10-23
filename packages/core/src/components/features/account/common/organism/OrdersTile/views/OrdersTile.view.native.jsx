@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -14,7 +13,7 @@ import {
 /*
 OrdersTile component is used in AccountOverview screen on mobile app
 */
-export const OrdersTile = ({ labels, ordersList, navigation }) => {
+export const OrdersTile = ({ labels, ordersList, navigation, handleComponentChange }) => {
   const selectedOrders = ordersList && ordersList.orders.slice(0, 2);
   let ordersItemList;
   if (selectedOrders && selectedOrders.length) {
@@ -40,7 +39,7 @@ export const OrdersTile = ({ labels, ordersList, navigation }) => {
           text={getLabelValue(labels, 'lbl_ordersTile_viewAllOrders', 'orders')}
           fill="BLUE"
           onPress={() => {
-            navigateToNestedRoute(navigation, 'HomeStack', 'home');
+            handleComponentChange('myOrdersPageMobile');
           }}
         />
       </ButtonWrapperStyle>
@@ -52,6 +51,7 @@ OrdersTile.propTypes = {
   labels: PropTypes.shape({}),
   ordersList: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  handleComponentChange: PropTypes.isRequired,
 };
 
 OrdersTile.defaultProps = {

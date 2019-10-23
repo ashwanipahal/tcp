@@ -24,6 +24,7 @@ class BillingPage extends React.PureComponent {
     emailSignUpLabels: PropTypes.shape({}).isRequired,
     navigation: PropTypes.shape({}).isRequired,
     submitBilling: PropTypes.func.isRequired,
+    billingDidMount: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     labels: PropTypes.shape({}).isRequired,
@@ -45,6 +46,11 @@ class BillingPage extends React.PureComponent {
     userAddresses: null,
     creditFieldLabels: {},
   };
+
+  componentDidMount() {
+    const { billingDidMount } = this.props;
+    billingDidMount(true);
+  }
 
   /**
    * @function render

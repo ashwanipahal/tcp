@@ -217,6 +217,14 @@ class ShippingForm extends React.Component {
     );
   };
 
+  renderShippingErrors = () => {
+    const { ServerErrors } = this.props;
+    if (!ServerErrors) {
+      return null;
+    }
+    return <ServerErrors />;
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
@@ -258,6 +266,7 @@ class ShippingForm extends React.Component {
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
+        {this.renderShippingErrors()}
         <BodyCopy
           fontFamily="primary"
           fontSize="fs28"

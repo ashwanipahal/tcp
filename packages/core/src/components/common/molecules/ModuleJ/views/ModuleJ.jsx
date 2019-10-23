@@ -5,7 +5,7 @@ import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
-import moduleJStyle from '../styles/ModuleJ.style';
+import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../moduleJ.config';
 
@@ -91,6 +91,11 @@ class ModuleJ extends React.PureComponent {
     const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
+    const iconPath = getIconPath('carousel-big-carrot');
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[currentCatId];
+    }
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
@@ -116,10 +121,7 @@ class ModuleJ extends React.PureComponent {
             >
               <DamImage
                 imgConfigs={PROMO_IMG_DATA.imgConfig}
-                imgData={{
-                  alt: promoImage1.alt,
-                  url: promoImage1.url,
-                }}
+                imgData={promoImage1}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
                 link={promoLink1}
               />
@@ -212,14 +214,22 @@ class ModuleJ extends React.PureComponent {
               large: 1,
             }}
           >
+            {dataStatus ? (
+              <StyledSkeleton
+                col={6}
+                colSize={{ small: 2, medium: 2, large: 2 }}
+                showArrows
+                removeLastMargin
+              />
+            ) : null}
             {data ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
                   autoplay: false,
                   variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
+                  customArrowLeft: iconPath,
+                  customArrowRight: iconPath,
                 }}
               >
                 {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {

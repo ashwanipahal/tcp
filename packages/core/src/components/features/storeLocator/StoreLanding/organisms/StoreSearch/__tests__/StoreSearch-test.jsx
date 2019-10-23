@@ -74,6 +74,7 @@ describe('StoreSearch component', () => {
     const formData = {
       storeAddressLocator: null,
     };
+    component.setState({ storeSelected: true });
     component.instance().onSubmit(formData);
     expect(loadStoresByCoordinates).toHaveBeenCalled();
   });

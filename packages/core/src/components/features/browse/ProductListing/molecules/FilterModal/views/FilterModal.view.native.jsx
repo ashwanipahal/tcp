@@ -29,6 +29,10 @@ class FilterModal extends React.PureComponent {
     getProducts: PropTypes.func.isRequired,
     navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
     sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+    isFavorite: PropTypes.bool,
+    onFilterSelection: PropTypes.func,
+    onSortSelection: PropTypes.func,
+    filteredId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -37,6 +41,10 @@ class FilterModal extends React.PureComponent {
     labelsFilter: {},
     navigation: {},
     sortLabels: [],
+    isFavorite: false,
+    onFilterSelection: () => {},
+    onSortSelection: () => {},
+    filteredId: 'ALL',
   };
 
   constructor(props) {
@@ -67,7 +75,10 @@ class FilterModal extends React.PureComponent {
   };
 
   onCloseModal = () => {
-    this.resetAppliedFilters();
+    const { isFavorite } = this.props;
+    if (!isFavorite) {
+      this.resetAppliedFilters();
+    }
     this.setModalVisibilityState(false);
   };
 
@@ -118,7 +129,13 @@ class FilterModal extends React.PureComponent {
     const { language } = this.state;
     const sortValue = Platform.OS === 'ios' ? language : selectedValue;
     this.sortValue = sortValue;
-    this.applyFilterAndSort();
+    const { isFavorite, onSortSelection } = this.props;
+    if (isFavorite) {
+      this.setModalVisibilityState(false);
+      onSortSelection(sortValue);
+    } else {
+      this.applyFilterAndSort();
+    }
   };
 
   /**
@@ -133,10 +150,16 @@ class FilterModal extends React.PureComponent {
   };
 
   render() {
-    const { labelsFilter, filters, sortLabels } = this.props;
+    const {
+      labelsFilter,
+      filters,
+      sortLabels,
+      isFavorite,
+      onFilterSelection,
+      filteredId,
+    } = this.props;
     const { showModal, language, showSortModal } = this.state;
-
-    const sortOptions = getSortOptions(sortLabels);
+    const sortOptions = isFavorite ? sortLabels : getSortOptions(sortLabels);
 
     const lapsList = sortOptions.map(data => {
       return <Picker.Item label={data.displayName} value={data.id} />;
@@ -180,6 +203,10 @@ class FilterModal extends React.PureComponent {
                   ref={ref => {
                     this.filterViewRef = ref;
                   }}
+                  isFavorite={isFavorite}
+                  onFilterSelection={onFilterSelection}
+                  filteredId={filteredId}
+                  onCloseModal={this.onCloseModal}
                 />
               </ModalContent>
             )}

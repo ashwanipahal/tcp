@@ -58,7 +58,10 @@ export {
   buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
   parseBoolean,
+  enableBodyScroll,
+  disableBodyScroll,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

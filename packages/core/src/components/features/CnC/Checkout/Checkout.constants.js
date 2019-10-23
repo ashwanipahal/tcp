@@ -1,5 +1,6 @@
 const CONSTANTS = {
   INIT_CHECKOUT: 'INIT_CHECKOUT',
+  INIT_CHECKOUT_SECTION_PAGE: 'INIT_CHECKOUT_SECTION_PAGE',
   ROUTING_CONST: {
     siteIds: {
       // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
@@ -134,6 +135,7 @@ const CONSTANTS = {
   PAYPAL_LABEL: 'paypal',
   UPDATE_CARD_DATA: 'UPDATE_CARD_DATA',
   LOYALITY_OFFERS: 'Loyalty_Offers',
+  SET_SERVER_ERROR_CHECKOUT: 'SET_SERVER_ERROR_CHECKOUT',
 };
 
 const {

@@ -59,12 +59,7 @@ export class StoreLanding extends PureComponent {
   renderList = modifiedStoreList => {
     const { labels, setFavoriteStore, favoriteStore, searchDone } = this.props;
     const { mapView, centeredStoreId } = this.state;
-    return searchDone && !modifiedStoreList.length ? (
-      <Notification
-        status="info"
-        message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
-      />
-    ) : (
+    return searchDone && modifiedStoreList.length > 0 ? (
       modifiedStoreList.map((item, index) => (
         <StoreAddressTile
           {...this.props}
@@ -80,6 +75,11 @@ export class StoreLanding extends PureComponent {
           titleClickCb={this.focusOnMap}
         />
       ))
+    ) : (
+      <Notification
+        status="info"
+        message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+      />
     );
   };
 

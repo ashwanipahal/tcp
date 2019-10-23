@@ -22,6 +22,7 @@ class CheckoutOrderInfo extends React.PureComponent {
       isVenmoPaymentInProgress,
       venmoPayment,
       labels,
+      fullPageInfo,
     } = this.props;
     return (
       <div className={className}>
@@ -59,6 +60,7 @@ class CheckoutOrderInfo extends React.PureComponent {
               showAccordian={showAccordian}
               additionalClassNameModal="coupon-modal-mob"
               idPrefix="mobile"
+              fullPageInfo={fullPageInfo}
             />
             <OrderLedgerContainer showAccordian={showAccordian} />
             {!isGuest && (
@@ -81,6 +83,7 @@ CheckoutOrderInfo.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
+  fullPageInfo: PropTypes.bool,
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoPayment: PropTypes.shape({
     userName: PropTypes.string,
@@ -95,6 +98,7 @@ CheckoutOrderInfo.propTypes = {
 CheckoutOrderInfo.defaultProps = {
   isConfirmationPage: false,
   isVenmoPaymentInProgress: false,
+  fullPageInfo: false,
   venmoPayment: {
     userName: '',
     ccBrand: VenmoConstants.VENMO,
