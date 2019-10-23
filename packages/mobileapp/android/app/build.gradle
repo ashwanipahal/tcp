@@ -143,6 +143,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+         multiDexEnabled true
         resValue "string", "build_config_package", "com.mobileapp"
     }
     splits {
@@ -178,6 +179,7 @@ android {
     // Specifies one flavor dimension.
     flavorDimensions "version"
     productFlavors {
+       
         tcp {
             // Assigns this product flavor to the "version" flavor dimension.
             // This property is optional if you are using only one dimension.
@@ -284,8 +286,7 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-code-push')
-    implementation project(':react-native-webview')
+    compile project(':react-native-code-push')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     
