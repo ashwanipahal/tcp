@@ -59,6 +59,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
         recalcRewards: true,
         isRecalculateTaxes: true,
         translation: false,
+        excludeCartItems: false,
       })
     );
   } catch (err) {
@@ -127,6 +128,7 @@ export function* updateCartItemSaga({ payload }) {
         recalcRewards: true,
         isRecalculateTaxes: true,
         translation: true,
+        excludeCartItems: false,
       })
     );
     yield delay(3000);

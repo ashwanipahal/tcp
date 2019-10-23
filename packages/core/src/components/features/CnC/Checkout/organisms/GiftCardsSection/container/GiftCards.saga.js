@@ -60,7 +60,15 @@ export function* addGiftCardFromBilling(payloadData) {
     if (response && response.success) {
       yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardSuccess());
-      yield put(BAG_PAGE_ACTIONS.getCartData());
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: true,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
     }
     if (response.errorMessage) {
       const resErr = response.errorMessage[Object.keys(response.errorMessage)[0]];
