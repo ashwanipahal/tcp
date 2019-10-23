@@ -28,7 +28,7 @@ export const EmptyOrdersList = ({ className, labels }) => {
         fontFamily="secondary"
         fontSize="fs14"
         component="p"
-        fontWeight="regular"
+        fontWeight="semibold"
         className="elem-mt-LRG elem-mb-LRG"
       >
         {getLabelValue(labels, 'lbl_orders_emptySupportingText', 'orders')}
@@ -36,7 +36,7 @@ export const EmptyOrdersList = ({ className, labels }) => {
       <Col
         colSize={{
           small: 6,
-          large: 2,
+          large: 3,
           medium: 3,
         }}
       >
