@@ -120,6 +120,12 @@ export const getIsItemShipToHome = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isItemShipToHome');
 };
 
+export const getAlwaysSearchForBOSS = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('alwaysSearchForBOSS')
+  );
+};
+
 export const getInitialValuesFromBagPage = state => {
   const pickUpModalReducer =
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');

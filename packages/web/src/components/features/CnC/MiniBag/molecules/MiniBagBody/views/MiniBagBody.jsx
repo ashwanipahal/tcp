@@ -28,9 +28,9 @@ class MiniBagBody extends React.PureComponent {
     this.isEditing = value;
   };
 
-  ViewSaveForLaterLink = savedforLaterQty => {
+  ViewSaveForLaterLink = (savedforLaterQty, isShowSaveForLaterSwitch) => {
     const { labels, closeMiniBag } = this.props;
-    if (savedforLaterQty <= 0) {
+    if (!isShowSaveForLaterSwitch || savedforLaterQty <= 0) {
       return null;
     }
     return (
@@ -123,6 +123,7 @@ class MiniBagBody extends React.PureComponent {
       isCartItemSFL,
       closeMiniBag,
       onLinkClick,
+      isShowSaveForLaterSwitch,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -143,7 +144,7 @@ class MiniBagBody extends React.PureComponent {
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
-                  {this.ViewSaveForLaterLink(savedforLaterQty)}
+                  {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
               ) : (
                 <BodyCopy component="span" fontSize="fs12" textAlign="left">
@@ -158,7 +159,7 @@ class MiniBagBody extends React.PureComponent {
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
-                  {this.ViewSaveForLaterLink(savedforLaterQty)}
+                  {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
               )}
             </Col>
@@ -247,6 +248,7 @@ MiniBagBody.propTypes = {
   onLinkClick: PropTypes.func.isRequired,
   resetSuccessMessage: PropTypes.func.isRequired,
   addedToBagError: PropTypes.string.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);
