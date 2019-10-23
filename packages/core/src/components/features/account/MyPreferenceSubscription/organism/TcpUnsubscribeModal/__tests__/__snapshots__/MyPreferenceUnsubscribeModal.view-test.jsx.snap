@@ -34,7 +34,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
         link={null}
         textAlign="center"
       >
-        lbl_prefrence_subscribe_text_alerts
+        lbl_prefrence_modal_unsubscribe_title
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
