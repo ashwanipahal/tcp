@@ -7,6 +7,7 @@ import { Button, Anchor, BodyCopy, Skeleton } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../ModuleQ.config';
+import constant from '../ModuleQ.constant';
 
 import {
   Container,
@@ -33,7 +34,8 @@ import LinkText from '../../LinkText';
 
 const MODULE_WIDTH = getScreenWidth();
 
-const { TOTAL_IMAGES, CAROUSEL_OPTIONS, viaModule } = config;
+const { TOTAL_IMAGES, CAROUSEL_OPTIONS } = config;
+const { recommendation } = constant;
 const {
   PRODUCT_IMAGE_WIDTH,
   PRODUCT_IMAGE_HEIGHT,
@@ -72,7 +74,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
               title: 'COMPLETE THE LOOK',
               outfitId: id,
               vendorColorProductIdsList: subItemsId,
-              viaModule,
+              viaModule: recommendation,
             })
           }
         >

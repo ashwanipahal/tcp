@@ -21,7 +21,7 @@ const MODULE_WIDTH = getScreenWidth();
 const loadVariation = (variation, variationProps) => itemProps => {
   const { isPlcc, onQuickViewOpenClick, priceOnly, navigation, ...others } = variationProps;
   const title = itemProps.item.name;
-  const { viaModule } = constant;
+  const { recommendation } = constant;
   if (variation === 'moduleO') {
     return (
       <ModuleO
@@ -30,7 +30,7 @@ const loadVariation = (variation, variationProps) => itemProps => {
         priceOnly={priceOnly}
         navigation={navigation}
         onQuickViewOpenClick={onQuickViewOpenClick}
-        viaModule={viaModule}
+        viaModule={recommendation}
         {...itemProps}
         {...others}
       />
@@ -43,7 +43,7 @@ const loadVariation = (variation, variationProps) => itemProps => {
       title={title}
       onQuickViewOpenClick={onQuickViewOpenClick}
       navigation={navigation}
-      viaModule={viaModule}
+      viaModule={recommendation}
       {...itemProps}
       {...others}
     />

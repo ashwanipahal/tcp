@@ -59,5 +59,4 @@ export default {
       'c_fill,g_face:center,h_215,w_279',
     ],
   },
-  viaModule: 'Recommendation',
 };

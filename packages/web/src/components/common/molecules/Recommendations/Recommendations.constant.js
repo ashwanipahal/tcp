@@ -1,3 +1,3 @@
 export default {
-  viaModule: 'Recommendation',
+  recommendation: 'Recommendation',
 };

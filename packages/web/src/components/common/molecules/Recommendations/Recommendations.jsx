@@ -21,14 +21,14 @@ const RecommendationComponentVariation = dynamic(
       ModuleP: import('@tcp/core/src/components/common/molecules/ModuleP').then(mod => mod.default),
     }),
     render: (dynamicComponentProps, { ModuleO, ModuleP }) => {
-      const { viaModule } = constant;
+      const { recommendation } = constant;
       switch (dynamicComponentProps.variation) {
         case config.variations.moduleO:
-          return <ModuleO viaModule={viaModule} {...dynamicComponentProps} />;
+          return <ModuleO viaModule={recommendation} {...dynamicComponentProps} />;
         case config.variations.moduleP:
-          return <ModuleP viaModule={viaModule} {...dynamicComponentProps} />;
+          return <ModuleP viaModule={recommendation} {...dynamicComponentProps} />;
         default:
-          return <ModuleO viaModule={viaModule} {...dynamicComponentProps} />;
+          return <ModuleO viaModule={recommendation} {...dynamicComponentProps} />;
       }
     },
   },
