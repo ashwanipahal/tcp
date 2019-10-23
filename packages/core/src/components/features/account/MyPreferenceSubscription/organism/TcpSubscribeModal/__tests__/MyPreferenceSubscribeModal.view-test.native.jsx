@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPreferenceSubscribeModalVanilla } from '../MyPreferenceSubscribeModal.view';
+import { MyPreferenceSubscribeModalVanilla } from '../MyPreferenceSubscribeModal.view.native';
 
 describe('MyPreference Subscribe component', () => {
   const props = {
