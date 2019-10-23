@@ -53,6 +53,7 @@ import FavoriteReducer from '@tcp/core/src/components/features/browse/Favorites/
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import RecentSearchReducer from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.reducer';
 import AsyncStorage from '@react-native-community/async-storage';
+import MyPreferenceSubscriptionReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -115,6 +116,7 @@ import {
   RECOMMENDATIONS_REDUCER_KEY,
   OUTFIT_DETAILS_REDUCER_KEY,
   RECENT_SEARCH_REDUCER_KEY,
+  MY_PREFERENCE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -231,6 +233,7 @@ const rootReducer = combineReducers({
   [RECOMMENDATIONS_REDUCER_KEY]: filteredRecommendationsReducers,
   [OUTFIT_DETAILS_REDUCER_KEY]: OutfitDetailReducer,
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
+  [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
 });
 
 const rootPersistConfig = {

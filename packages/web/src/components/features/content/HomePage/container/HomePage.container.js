@@ -14,15 +14,19 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
 HomePageView.getInitActions = () => initActions;
 
 HomePageView.pageInfo = {
+  pageId: 'Home',
   name: 'homepage',
+  pageData: {
+    pageName: 'home page',
+    pageSection: 'homepage',
+  },
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
 
 const mapStateToProps = state => {
-  const { Layouts, Modules, SEOData } = state;
+  const { Layouts, Modules } = state;
   const homepageSlots = Layouts.homepage ? Layouts.homepage.slots || [] : [];
   const accessibility = state.Labels && state.Labels.global && state.Labels.global.accessibility;
-  const seoData = SEOData && (SEOData.home || {});
 
   return {
     slots: homepageSlots.map(slot => {
@@ -51,7 +55,6 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
-    seoData,
   };
 };
 

@@ -28,9 +28,9 @@ class MiniBagBody extends React.PureComponent {
     this.isEditing = value;
   };
 
-  ViewSaveForLaterLink = savedforLaterQty => {
+  ViewSaveForLaterLink = (savedforLaterQty, isShowSaveForLaterSwitch) => {
     const { labels, closeMiniBag } = this.props;
-    if (savedforLaterQty <= 0) {
+    if (!isShowSaveForLaterSwitch || savedforLaterQty <= 0) {
       return null;
     }
     return (
@@ -96,6 +96,20 @@ class MiniBagBody extends React.PureComponent {
     return !isCanada() && <LoyaltyBanner />;
   };
 
+  renderServerError = () => {
+    const { addedToBagError } = this.props;
+    if (!addedToBagError) {
+      return null;
+    }
+    return (
+      <Row className="mainWrapper">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ErrorMessage error={addedToBagError} className="error_box minibag-error" />
+        </Col>
+      </Row>
+    );
+  };
+
   render() {
     const {
       labels,
@@ -109,6 +123,7 @@ class MiniBagBody extends React.PureComponent {
       isCartItemSFL,
       closeMiniBag,
       onLinkClick,
+      isShowSaveForLaterSwitch,
     } = this.props;
     const { isDeleting, isUpdating } = isCartItemsUpdating;
     return (
@@ -129,7 +144,7 @@ class MiniBagBody extends React.PureComponent {
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
-                  {this.ViewSaveForLaterLink(savedforLaterQty)}
+                  {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
               ) : (
                 <BodyCopy component="span" fontSize="fs12" textAlign="left">
@@ -144,12 +159,13 @@ class MiniBagBody extends React.PureComponent {
                   >
                     {`${labels.viewBag}(${cartItemCount})`}
                   </Anchor>
-                  {this.ViewSaveForLaterLink(savedforLaterQty)}
+                  {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
               )}
             </Col>
           </Row>
         </div>
+        {this.renderServerError()}
         <BodyCopy component="div" className="viewBagAndProduct">
           {!isCartItemSFL && (isDeleting || isUpdating) ? (
             <Row className="mainWrapper">
@@ -231,6 +247,8 @@ MiniBagBody.propTypes = {
   closeMiniBag: PropTypes.func.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   resetSuccessMessage: PropTypes.func.isRequired,
+  addedToBagError: PropTypes.string.isRequired,
+  isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

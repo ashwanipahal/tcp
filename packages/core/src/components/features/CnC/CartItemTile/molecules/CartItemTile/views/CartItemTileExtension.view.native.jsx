@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
+import { DamImage } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
-  ImageStyle,
   ImageBrandStyle,
   ImageGymBrandStyle,
   SoldOutLabel,
@@ -14,7 +14,6 @@ import {
   ProductListPriceOnReview,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
-import endpoints from '../../../../../../../service/endpoint';
 import { getLocator } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
@@ -32,10 +31,21 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
-        <ImageStyle
+        {/* <ImageStyle
           data-locator={getLocator('cart_item_image')}
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
           showOnReviewPage={showOnReviewPage}
+        /> */}
+        <DamImage
+          width={100}
+          height={100}
+          isProductImage
+          alt={labels.productImageAlt}
+          url={productDetail.itemInfo.imagePath}
+          showOnReviewPage={showOnReviewPage}
+          itemBrand={
+            productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
+          }
         />
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>
@@ -192,6 +202,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isItemShipToHome = !store;
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -208,6 +219,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
     isBopisCtaEnabled,
     isBossCtaEnabled,
     isItemShipToHome,
+    alwaysSearchForBOSS,
   });
 };
 

@@ -21,7 +21,8 @@ export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
     yield put(resetGiftCardError());
-    const res = yield call(addGiftCardPaymentToOrder, payload);
+    const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(addGiftCardPaymentToOrder, payload, errorMappings);
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       const errorObject = {
@@ -32,7 +33,10 @@ export function* applyGiftCard(payloadData) {
 
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
-    yield put(setGiftCardError(err));
+    const errorObject = {
+      [payload.creditCardId]: err,
+    };
+    yield put(setGiftCardError(errorObject));
   }
 }
 
@@ -56,7 +60,15 @@ export function* addGiftCardFromBilling(payloadData) {
     if (response && response.success) {
       yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardSuccess());
-      yield put(BAG_PAGE_ACTIONS.getCartData());
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: true,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
     }
     if (response.errorMessage) {
       const resErr = response.errorMessage[Object.keys(response.errorMessage)[0]];

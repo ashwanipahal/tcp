@@ -41,18 +41,6 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
           >
             View bag(1)
           </Styled(Anchor)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/bag"
-            className="elem-ml-MED"
-            data-locator="cartitem-saveforlater"
-            fontSizeVariation="medium"
-            onClick={[Function]}
-            to="/bag?isSfl=true"
-            underline={true}
-          >
-            undefined(undefined)
-          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -178,18 +166,6 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
           >
             View bag(1)
           </Styled(Anchor)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/bag"
-            className="elem-ml-MED"
-            data-locator="cartitem-saveforlater"
-            fontSizeVariation="medium"
-            onClick={[Function]}
-            to="/bag?isSfl=true"
-            underline={true}
-          >
-            undefined(undefined)
-          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -314,22 +290,28 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
           >
             View bag(1)
           </Styled(Anchor)>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/bag"
-            className="elem-ml-MED"
-            data-locator="cartitem-saveforlater"
-            fontSizeVariation="medium"
-            onClick={[Function]}
-            to="/bag?isSfl=true"
-            underline={true}
-          >
-            undefined(undefined)
-          </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
   </div>
+  <Styled(Row)
+    className="mainWrapper"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(ErrorMessage)
+        className="error_box minibag-error"
+        error="something went wrong"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(BodyCopy)
     className="viewBagAndProduct"
     color="text.primary"

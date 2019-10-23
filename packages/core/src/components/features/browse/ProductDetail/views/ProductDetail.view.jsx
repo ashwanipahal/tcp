@@ -64,7 +64,16 @@ class ProductDetailView extends React.Component {
   };
 
   getProductSummary = () => {
-    const { productDetails, productInfo, currency, pdpLabels, currencyExchange } = this.props;
+    const {
+      productDetails,
+      productInfo,
+      currency,
+      pdpLabels,
+      currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
+    } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
@@ -76,6 +85,9 @@ class ProductDetailView extends React.Component {
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
           currencyExchange={currencyExchange}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          {...otherProps}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -314,6 +326,8 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -331,6 +345,7 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   addToBagError: '',
   currencyExchange: 1,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
