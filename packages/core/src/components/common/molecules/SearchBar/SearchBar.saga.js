@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import makeSearch from '@tcp/core/src/services/abstractors/common/searchBar';
 import SEARCH_CONSTANTS from './SearchBar.constants';
-import { setSearchResult } from './SearchBar.actions';
+import { setSearchResult, setShowMoreProductFlag } from './SearchBar.actions';
 
 export function* getSearchResult({ payload }) {
   const suggestionsCount = {
@@ -20,7 +20,17 @@ export function* getSearchResult({ payload }) {
   };
   try {
     const response = yield call(makeSearch, payloadData);
-    yield put(setSearchResult(response));
+    if (
+      response.autosuggestList &&
+      response.autosuggestList[0].suggestions.length < 1 &&
+      response.autosuggestList[1].suggestions.length < 1 &&
+      response.autosuggestProducts.length < 1
+    ) {
+      yield put(setShowMoreProductFlag(false));
+    } else {
+      yield put(setSearchResult(response));
+      yield put(setShowMoreProductFlag(true));
+    }
   } catch (err) {
     logger.error('Error: error in fetching Search bar results ');
   }

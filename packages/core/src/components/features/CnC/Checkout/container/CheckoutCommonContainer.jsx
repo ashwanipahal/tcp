@@ -42,6 +42,7 @@ import {
   getIsRegisteredUserCallDone,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 const {
   getSmsSignUpLabels,
@@ -158,6 +159,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       verifyAddressAction,
       setVenmoShippingState,
+      checkoutServerError,
       currentStage,
       submitVerifiedShippingAddressData,
       shippingMethod,
@@ -214,6 +216,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        checkoutServerError={checkoutServerError}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
         pickUpAlternatePerson={pickUpAlternatePerson}
@@ -273,6 +276,9 @@ export const mapDispatchToProps = dispatch => {
     },
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
@@ -345,6 +351,7 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
     pickUpAlternatePerson: getPickupAltValues(state),

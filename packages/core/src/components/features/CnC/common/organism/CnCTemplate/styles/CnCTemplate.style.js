@@ -32,6 +32,13 @@ const styles = css`
     margin-bottom: 5px;
     text-align: center;
   }
+
+  .checkout-page-error {
+    span {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+  }
 `;
 
 export default styles;

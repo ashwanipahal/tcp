@@ -7,6 +7,7 @@ import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
@@ -125,6 +126,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
+        <LoyaltyPromoBanner />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}

@@ -33,7 +33,7 @@ describe('#loyaltyBanner Selectors', () => {
       CartPageReducer,
     };
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
-    const subTotal = cartOrderDetailsObj.get('subTotalWithDiscounts');
+    const subTotal = cartOrderDetailsObj.get('subTotal');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
     expect(cartOrderDetails(state)).toEqual({
