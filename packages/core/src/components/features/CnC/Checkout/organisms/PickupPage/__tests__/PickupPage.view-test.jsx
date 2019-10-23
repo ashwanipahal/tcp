@@ -52,6 +52,7 @@ describe('PickUpFormPartVanilla component', () => {
       handleSubmit: jest.fn(),
       orderHasShipping: false,
       onPickupSubmit: mockedOnPickupSubmit,
+      ServerErrors: {},
     };
     const component = shallow(<PickUpFormPartVanilla {...props} />);
     const data = {

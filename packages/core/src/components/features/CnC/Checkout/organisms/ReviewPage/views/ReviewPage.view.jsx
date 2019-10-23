@@ -35,6 +35,7 @@ class ReviewPage extends React.PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     pickUpContactPerson: PropTypes.shape({}).isRequired,
     pickUpContactAlternate: PropTypes.shape({}).isRequired,
+    ServerErrors: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
@@ -105,6 +106,7 @@ class ReviewPage extends React.PureComponent {
       isExpressCheckout,
       shipmentMethods,
       handleSubmit,
+      ServerErrors,
     } = this.props;
     const {
       header,
@@ -122,6 +124,7 @@ class ReviewPage extends React.PureComponent {
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(this.reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
+        {ServerErrors && <ServerErrors />}
         {!!orderHasPickUp && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer

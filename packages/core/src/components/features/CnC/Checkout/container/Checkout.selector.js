@@ -713,6 +713,10 @@ const isGiftOptionsEnabled = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'isGiftOptionsEnabled']);
 };
 
+const getCheckoutServerError = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'checkoutServerError']);
+};
+
 /**
  * Mainly used to check for Venmo nonce expiry
  * @param state
@@ -1015,6 +1019,7 @@ export default {
   getCreditFieldLabels,
   isPickupHasValues,
   getVenmoUserName,
+  getCheckoutServerError,
   getCurrentCheckoutStage,
   getExpressReviewShippingSectionId,
   getShippingAddressList,

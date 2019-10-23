@@ -10,10 +10,17 @@ import Confirmation from '../../Confirmation';
 
 class CheckoutPage extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { currentStage: prevCurrentStage } = prevProps;
-    const { setCheckoutStage, currentStage } = this.props;
+    const {
+      currentStage: prevCurrentStage,
+      checkoutServerError: prevCheckoutServerError,
+    } = prevProps;
+    const { setCheckoutStage, currentStage, checkoutServerError, toastMessage } = this.props;
     if (currentStage !== prevCurrentStage) {
       setCheckoutStage(currentStage);
+    }
+
+    if (checkoutServerError && checkoutServerError !== prevCheckoutServerError) {
+      toastMessage(checkoutServerError.errorMessage);
     }
   }
 
@@ -172,6 +179,8 @@ CheckoutPage.propTypes = {
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
   currentStage: PropTypes.string.isRequired,
+  checkoutServerError: PropTypes.shape({}).isRequired,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);
