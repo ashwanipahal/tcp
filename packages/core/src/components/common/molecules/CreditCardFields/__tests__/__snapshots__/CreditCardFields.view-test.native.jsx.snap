@@ -20,7 +20,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
       keyboardType="numeric"
       label=""
       name="cardNumber"
-      onFocus={[Function]}
+      onCardFocus={[Function]}
       val=""
     />
   </Styled(View)>
@@ -398,7 +398,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
       keyboardType="numeric"
       label=""
       name="cardNumber"
-      onFocus={[Function]}
+      onCardFocus={[Function]}
       val=""
     />
     <Styled(TouchableOpacity)

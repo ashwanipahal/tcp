@@ -3,7 +3,11 @@ import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
 import LazyLoadImage from '../../LazyImage';
-import { configureInternalNavigationFromCMSUrl, getAPIConfig } from '../../../../../utils';
+import {
+  configureInternalNavigationFromCMSUrl,
+  getAPIConfig,
+  getBrand,
+} from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
@@ -29,7 +33,7 @@ const getImgData = props => {
 };
 
 const getBreakpointImgUrl = (type, props) => {
-  const { breakpoints, isProductImage } = props;
+  const { breakpoints, isProductImage, itemBrand } = props;
 
   const { basePath, imgPath, imgConfigs } = getImgData(props);
 
@@ -41,7 +45,15 @@ const getBreakpointImgUrl = (type, props) => {
     config = imgConfigs[breakpointTypeIndex];
   }
 
-  const { assetHost, productAssetPath } = getAPIConfig();
+  let brandName = getBrand();
+  if (itemBrand) {
+    brandName = itemBrand;
+  }
+
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
 
   return isProductImage
     ? `${assetHost}/${config}/${productAssetPath}/${imgPath}`
@@ -57,6 +69,7 @@ const RenderImage = forwardRef((imgProps, ref) => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
     showPlaceHolder,
     ...other
   } = imgProps;
@@ -100,6 +113,7 @@ const DamImage = props => {
     link,
     dataLocator,
     forwardedRef,
+    itemBrand,
     showPlaceHolder,
     ...other
   } = props;
@@ -112,6 +126,7 @@ const DamImage = props => {
     imgPathSplitter,
     lazyLoad,
     link,
+    itemBrand,
     showPlaceHolder,
     ...other,
   };
@@ -156,6 +171,7 @@ DamImage.defaultProps = {
   dataLocator: '',
   dataLocatorLink: '',
   forwardedRef: null,
+  itemBrand: '',
   showPlaceHolder: true,
 };
 
@@ -201,6 +217,7 @@ DamImage.propTypes = {
     text: PropTypes.string,
   }),
   forwardedRef: PropTypes.shape({ current: PropTypes.any }),
+  itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
 };
 

@@ -1,4 +1,4 @@
-import { call } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 // eslint-disable-next-line import/no-unresolved
 import submitBilling, {
   submitBillingData,
@@ -11,6 +11,8 @@ import submitBilling, {
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
 import { isMobileApp } from '../../../../../utils';
 import CONSTANTS from '../Checkout.constants';
+import { getSetIsBillingVisitedActn } from '../container/Checkout.action';
+import { getCardList } from '../../../account/Payment/container/Payment.saga';
 // import utility from '../util/utility';
 
 describe('CheckoutBilling saga', () => {
@@ -19,24 +21,9 @@ describe('CheckoutBilling saga', () => {
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
 
-    expect(CheckoutReviewSaga.next(false).value).toEqual(
-      call(
-        submitBillingData,
-        { address: {}, phoneNumber: '' },
-        {
-          address1: undefined,
-          address2: undefined,
-          city: undefined,
-          country: undefined,
-          firstName: undefined,
-          lastName: undefined,
-          state: undefined,
-          zip: undefined,
-        },
-        undefined
-      )
-    );
+    CheckoutReviewSaga.next(false);
     expect(CheckoutReviewSaga.next(false).value).toEqual(call(getAddressList));
+    expect(CheckoutReviewSaga.next().value).toEqual(call(getCardList));
   });
 
   it('submitBillingData', () => {
@@ -51,11 +38,10 @@ describe('CheckoutBilling saga', () => {
         { address: { sameAsShipping: true } },
         undefined,
         undefined,
-        {},
-        undefined
+        {}
       )
     );
-    expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
+    expect(CheckoutReviewSaga.next(false).value).toEqual(put(getSetIsBillingVisitedActn(true)));
   });
 
   it('submitBillingData with CardId', () => {
@@ -114,7 +100,7 @@ describe('CheckoutBilling saga', () => {
     expect(addressIdMethod).toEqual(null);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with first variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       { address: { sameAsShipping: true }, cardNumber: '1234' },
@@ -123,17 +109,16 @@ describe('CheckoutBilling saga', () => {
       {},
       func
     );
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ billing: {}, paymentId: '123' });
     CheckoutReviewSaga.next();
 
-    expect(CheckoutReviewSaga.next({ body: {} }).value).toEqual(
-      call(func, false, true, true, false, false)
-    );
+    CheckoutReviewSaga.next({ body: {} });
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with second variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       { address: { sameAsShipping: true }, cardNumber: '1234' },
@@ -143,16 +128,14 @@ describe('CheckoutBilling saga', () => {
       func
     );
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ billing: {} });
     CheckoutReviewSaga.next();
 
-    expect(CheckoutReviewSaga.next({ body: {} }).value).toEqual(
-      call(func, false, true, true, false, false)
-    );
     expect(CheckoutReviewSaga.next(false).value).toEqual(undefined);
   });
 
-  it('updatePaymentInstruction', () => {
+  it('updatePaymentInstruction with third variation', () => {
     const func = () => {};
     const CheckoutReviewSaga = updatePaymentInstruction(
       {
@@ -173,7 +156,6 @@ describe('CheckoutBilling saga', () => {
     );
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next({ billing: {}, paymentId: '123' });
-    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next(false).value).not.toEqual(undefined);
   });
 
@@ -187,6 +169,7 @@ describe('CheckoutBilling saga', () => {
       deviceData: 'venmoDeviceDataKey',
       details: { username: 'test-user' },
     };
+    CheckoutReviewSaga.next();
     const response = CheckoutReviewSaga.next(venmoData).value; // select getVenmoData
     const requestData = {
       billingAddressId: '12345',

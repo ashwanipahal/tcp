@@ -1,7 +1,7 @@
 import React from 'react';
 import { PointsValueText } from '../molecules/GuestMprPlccSection/styles/GuestMprPlccSection.style.native';
 
-const mobileHashValues = (str, key, value, classValue) => {
+const mobileHashValues = (str, key, value, pageChecksObj) => {
   const textArr = str.split(' ');
   const keyIndex = textArr.indexOf(key);
   textArr.map((obj, i) => {
@@ -9,7 +9,11 @@ const mobileHashValues = (str, key, value, classValue) => {
     return textArr[i];
   });
   textArr[keyIndex] =
-    value == null ? '' : <PointsValueText class={classValue}>{`${value} `}</PointsValueText>;
+    value == null ? (
+      ''
+    ) : (
+      <PointsValueText pageChecksObj={pageChecksObj}>{`${value} `}</PointsValueText>
+    );
   return textArr;
 };
 

@@ -21,18 +21,29 @@ export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
   try {
     yield put(resetGiftCardError());
-    const res = yield call(addGiftCardPaymentToOrder, payload);
+    const errorMappings = yield select(BagPageSelectors.getErrorMapping);
+    const res = yield call(addGiftCardPaymentToOrder, payload, errorMappings);
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       const errorObject = {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
-    }
-
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    } else
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: true,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
   } catch (err) {
-    yield put(setGiftCardError(err));
+    const errorObject = {
+      [payload.creditCardId]: err,
+    };
+    yield put(setGiftCardError(errorObject));
   }
 }
 
@@ -42,7 +53,15 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
     yield call(removeGiftCard, payload, labels);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        isRecalculateTaxes: true,
+        excludeCartItems: true,
+        recalcRewards: true,
+        isCheckoutFlow: true,
+        translation: false,
+      })
+    );
   } catch (err) {
     console.log(err);
   }
@@ -56,7 +75,15 @@ export function* addGiftCardFromBilling(payloadData) {
     if (response && response.success) {
       yield put(setIsLoadingShippingMethods(false));
       yield put(addGiftCardSuccess());
-      yield put(BAG_PAGE_ACTIONS.getCartData());
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: true,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
     }
     if (response.errorMessage) {
       const resErr = response.errorMessage[Object.keys(response.errorMessage)[0]];
