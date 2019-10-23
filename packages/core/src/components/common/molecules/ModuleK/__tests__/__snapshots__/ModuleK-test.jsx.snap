@@ -713,14 +713,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
@@ -845,14 +845,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
