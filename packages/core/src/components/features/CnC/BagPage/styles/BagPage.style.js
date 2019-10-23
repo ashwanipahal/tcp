@@ -19,7 +19,6 @@ const styles = css`
   }
 
   .information-header {
-    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
     padding-left: 13px;
     padding-right: 13px;
     padding-top: 1px;

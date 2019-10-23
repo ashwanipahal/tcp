@@ -12,10 +12,6 @@ import AirmilesBanner from '@tcp/core/src/components/features/CnC/common/organis
 import AddedToBagActions from '@tcp/core/src/components/features/CnC/AddedToBagActions';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import LoyaltyBanner from '@tcp/core/src/components/features/CnC/LoyaltyBanner';
-import {
-  customStyles,
-  bagTileCSS,
-} from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/styles/ProductTileWrapper.style';
 import InformationHeader from '@tcp/core/src/components/features/CnC/common/molecules/InformationHeader';
 import ErrorMessage from '../../../../../../../../../core/src/components/features/CnC/common/molecules/ErrorMessage';
 import styles from '../styles/MiniBagBody.style';
@@ -124,12 +120,7 @@ class MiniBagBody extends React.PureComponent {
     isCartItemSFL,
     isCartItemsUpdating,
     isSflItemRemoved,
-    renderItemDeleteSuccessMsg,
-    renderItemSflSuccessMsg,
-    renderSflItemRemovedMessage,
-    renderUpdatingBagItemSuccessfulMsg,
   }) => {
-    const stylesNew = pageView === 'myBag' ? bagTileCSS : customStyles;
     return (
       <InformationHeader
         labels={labels}
@@ -143,11 +134,6 @@ class MiniBagBody extends React.PureComponent {
         isCartItemSFL={isCartItemSFL}
         isCartItemsUpdating={isCartItemsUpdating}
         isSflItemRemoved={isSflItemRemoved}
-        styles={stylesNew}
-        renderItemDeleteSuccessMsg={renderItemDeleteSuccessMsg}
-        renderItemSflSuccessMsg={renderItemSflSuccessMsg}
-        renderSflItemRemovedMessage={renderSflItemRemovedMessage}
-        renderUpdatingBagItemSuccessfulMsg={renderUpdatingBagItemSuccessfulMsg}
       />
     );
   };

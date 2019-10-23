@@ -37,10 +37,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
     this.setState({ swipedElement: elem });
   };
 
-  getTickIcon = () => {
-    return <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />;
-  };
-
   setSelectedProductTile = ({ index }) => {
     this.setState({ openedTile: index });
   };
@@ -57,54 +53,17 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return isEditAllowed;
   };
 
-  renderItemDeleteSuccessMsg = (
-    isBagPageSflSection,
-    isBagPage,
-    isDeleting,
-    itemDeleteSuccessMsg
-  ) => {
-    const { isCartItemSFL } = this.props;
-    return (
-      !isCartItemSFL &&
-      !isBagPageSflSection &&
-      !isMobileApp() &&
-      isDeleting && (
-        <div className="delete-msg">
-          {this.getTickIcon()}
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            textAlign="center"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-          >
-            {itemDeleteSuccessMsg}
-          </BodyCopy>
-        </div>
-      )
-    );
+  onLinkClick = ({ e, componentId }) => {
+    const { openOverlay } = this.props;
+    e.preventDefault();
+    openOverlay({
+      component: componentId,
+      variation: 'primary',
+    });
   };
 
-  renderItemSflSuccessMsg = (isBagPage, isCartItemSFL, itemSflSuccessMsg) => {
-    const { isBagPageSflSection } = this.props;
-    return (
-      !isBagPageSflSection &&
-      !isMobileApp() &&
-      isCartItemSFL && (
-        <div className="delete-msg">
-          {this.getTickIcon()}
-          <BodyCopy
-            component="span"
-            fontSize="fs12"
-            textAlign="center"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-          >
-            {itemSflSuccessMsg}
-          </BodyCopy>
-        </div>
-      )
-    );
+  getTickIcon = () => {
+    return <Image alt="closeIcon" className="tick-icon" src={getIconPath('circle-check-fill')} />;
   };
 
   renderSflItemRemovedMessage = (isSflItemRemoved, sflDeleteSuccessMsg) => {
@@ -129,16 +88,13 @@ class ProductTileWrapper extends React.PureComponent<props> {
     );
   };
 
-  /**
-   * @method renderUpdatingBagItemSuccessfulMsg
-   * @description render message once item get updated.
-   * @memberof ProductTileWrapper
-   */
-  renderUpdatingBagItemSuccessfulMsg = isUpdating => {
-    const { labels } = this.props;
+  renderItemSflSuccessMsg = (isBagPage, isCartItemSFL, itemSflSuccessMsg) => {
+    const { isBagPageSflSection } = this.props;
     return (
-      isUpdating &&
-      !isMobileApp() && (
+      !isBagPageSflSection &&
+      !isMobileApp() &&
+      isBagPage &&
+      isCartItemSFL && (
         <div className="delete-msg">
           {this.getTickIcon()}
           <BodyCopy
@@ -148,20 +104,11 @@ class ProductTileWrapper extends React.PureComponent<props> {
             fontFamily="secondary"
             fontWeight="extrabold"
           >
-            {labels.itemUpdated}
+            {itemSflSuccessMsg}
           </BodyCopy>
         </div>
       )
     );
-  };
-
-  onLinkClick = ({ e, componentId }) => {
-    const { openOverlay } = this.props;
-    e.preventDefault();
-    openOverlay({
-      component: componentId,
-      variation: 'primary',
-    });
   };
 
   renderEmptyBag = (
@@ -267,18 +214,16 @@ class ProductTileWrapper extends React.PureComponent<props> {
               isCartItemSFL,
               isCartItemsUpdating,
               isSflItemRemoved,
-              renderItemDeleteSuccessMsg: this.renderItemDeleteSuccessMsg,
-              renderItemSflSuccessMsg: this.renderItemSflSuccessMsg,
-              renderSflItemRemovedMessage: this.renderSflItemRemovedMessage,
-              renderUpdatingBagItemSuccessfulMsg: this.renderUpdatingBagItemSuccessfulMsg,
             })}
-
+          {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
+          {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
           {orderItemsView}
         </>
       );
     }
     return (
       <>
+        {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
         {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(
           productSectionData,

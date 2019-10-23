@@ -13,11 +13,6 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
-import BagPageExtension from './BagPageExtension.view';
-import {
-  customStyles,
-  bagTileCSS,
-} from '../../CartItemTile/organisms/ProductTileWrapper/styles/ProductTileWrapper.style';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 
@@ -145,6 +140,24 @@ class BagPageView extends React.Component {
     }
   };
 
+  wrapSection = (Component, orderItemsCount) => {
+    const isNoNEmptyBag = orderItemsCount > 0;
+    if (!isNoNEmptyBag) {
+      return (
+        <Col
+          colSize={{
+            small: 6,
+            medium: 5,
+            large: 8,
+          }}
+        >
+          {Component}
+        </Col>
+      );
+    }
+    return Component;
+  };
+
   renderLeftSection = () => {
     const {
       labels,
@@ -171,7 +184,7 @@ class BagPageView extends React.Component {
         </div>
 
         {isShowSaveForLaterSwitch &&
-          BagPageExtension.wrapSection(
+          this.wrapSection(
             <div
               className={`save-for-later-section ${
                 activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
@@ -286,12 +299,7 @@ class BagPageView extends React.Component {
     isCartItemSFL,
     isCartItemsUpdating,
     isSflItemRemoved,
-    renderItemDeleteSuccessMsg,
-    renderItemSflSuccessMsg,
-    renderSflItemRemovedMessage,
-    renderUpdatingBagItemSuccessfulMsg,
   }) => {
-    const stylesNew = pageView === 'myBag' ? bagTileCSS : customStyles;
     return (
       <InformationHeader
         labels={labels}
@@ -305,17 +313,12 @@ class BagPageView extends React.Component {
         isCartItemSFL={isCartItemSFL}
         isCartItemsUpdating={isCartItemsUpdating}
         isSflItemRemoved={isSflItemRemoved}
-        styles={stylesNew}
-        renderItemDeleteSuccessMsg={renderItemDeleteSuccessMsg}
-        renderItemSflSuccessMsg={renderItemSflSuccessMsg}
-        renderSflItemRemovedMessage={renderSflItemRemovedMessage}
-        renderUpdatingBagItemSuccessfulMsg={renderUpdatingBagItemSuccessfulMsg}
       />
     );
   };
 
   renderHeaderError = (headerError, params) => {
-    return <>{headerError && this.getHeaderError(params[0])}</>;
+    return headerError && this.getHeaderError(params[0]);
   };
 
   render() {
