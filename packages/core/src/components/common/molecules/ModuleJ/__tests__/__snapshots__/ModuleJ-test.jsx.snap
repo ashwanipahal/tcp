@@ -227,7 +227,7 @@ exports[`ModuleJ component renders correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="imagesDiv"
+    className="product-image"
   >
     <Styled(Col)
       className="moduleJ__carousel-wrapper"

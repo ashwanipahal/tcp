@@ -20,9 +20,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
       }
     }
   >
-    <div
-      className="moduleAPosition"
-    >
+    <div>
       <ForwardRef
         carouselConfig={
           Object {
@@ -654,9 +652,7 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
       }
     }
   >
-    <div
-      className="moduleAPosition"
-    >
+    <div>
       <ForwardRef
         carouselConfig={
           Object {
