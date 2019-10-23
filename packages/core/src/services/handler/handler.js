@@ -30,7 +30,7 @@ const errorHandler = ({
       ...reqObj,
       'trace-request-id': reqHeaders['tcp-trace-request-id'],
       'trace-session-id': reqHeaders['tcp-trace-session-id'],
-      'unbxd-request-id': err.response.headers['unbxd-request-id'] || 'N/A',
+      'unbxd-request-id': err && err.response ? err.response.headers['unbxd-request-id'] : 'N/A',
     },
   });
   throw err;

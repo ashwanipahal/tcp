@@ -8,7 +8,12 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
+import {
+  setRecentStoreToLocalStorage,
+  getRecentStoreFromLocalStorage,
+} from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
+import RECENT_SEARCH_CONSTANTS from '../../../../common/molecules/SearchBar/SearchBar.constants';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -77,6 +82,38 @@ class NoResponseSearchDetailView extends React.PureComponent {
         searchResults.autosuggestProducts &&
         searchResults.autosuggestProducts.length > 0)
     );
+  };
+
+  setDataInLocalStorage = searchText => {
+    if (searchText) {
+      const searchTextParam = searchText.trim().toLowerCase();
+      const getPreviousSearchResults = getRecentStoreFromLocalStorage();
+      let filteredSearchResults;
+      if (getPreviousSearchResults) {
+        filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        if (filteredSearchResults.indexOf(searchTextParam) === -1) {
+          filteredSearchResults.push(searchTextParam);
+        }
+      } else {
+        filteredSearchResults = [];
+        filteredSearchResults.push(searchTextParam);
+      }
+      if (
+        filteredSearchResults &&
+        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+      ) {
+        filteredSearchResults.shift();
+      }
+
+      setRecentStoreToLocalStorage(filteredSearchResults);
+    }
+  };
+
+  redirectToSuggestedUrl = searchText => {
+    if (searchText) {
+      this.setDataInLocalStorage(searchText);
+      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    }
   };
 
   render() {
@@ -152,9 +189,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
               >
                 {slpLabels.lbl_didYouMean}
                 <Anchor
-                  asPath={`/search/${searchResultSuggestionsArg}`}
-                  to={`/search?searchQuery=${searchResultSuggestionsArg}`}
+                  noLink
                   className="suggestion-label"
+                  onClick={() => this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`)}
                 >
                   {` "${searchResultSuggestionsArg}" ?`}
                 </Anchor>

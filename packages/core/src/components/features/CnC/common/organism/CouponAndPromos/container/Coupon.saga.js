@@ -20,6 +20,7 @@ export function* applyCoupon({ payload }) {
     formPromise: { resolve, reject },
     source,
     coupon,
+    fullPageInfo,
   } = payload;
   if (coupon) {
     let oldStatus = coupon.status;
@@ -36,7 +37,14 @@ export function* applyCoupon({ payload }) {
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
-      yield put(BagPageAction.getCartData());
+      yield put(
+        BagPageAction.getCartData({
+          recalcRewards: true,
+          isRecalculateTaxes: true,
+          translation: false,
+          excludeCartItems: !fullPageInfo,
+        })
+      );
       resolve();
     } catch (e) {
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
@@ -52,7 +60,14 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(BagPageAction.getCartData());
+      yield put(
+        BagPageAction.getCartData({
+          recalcRewards: true,
+          isRecalculateTaxes: true,
+          translation: false,
+          excludeCartItems: !fullPageInfo,
+        })
+      );
       resolve();
     } catch (e) {
       yield put(hideLoader());
@@ -64,6 +79,7 @@ export function* applyCoupon({ payload }) {
 export function* removeCoupon({ payload }) {
   const {
     coupon,
+    fullPageInfo,
     formPromise: { resolve, reject },
   } = payload;
   const formData = { couponCode: coupon.id };
@@ -77,7 +93,14 @@ export function* removeCoupon({ payload }) {
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield call(removeCouponOrPromo, formData);
-    yield put(BagPageAction.getCartData());
+    yield put(
+      BagPageAction.getCartData({
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: false,
+        excludeCartItems: !fullPageInfo,
+      })
+    );
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield put(hideLoader());
     resolve();
