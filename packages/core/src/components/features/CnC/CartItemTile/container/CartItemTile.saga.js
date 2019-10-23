@@ -54,7 +54,14 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(BAG_PAGE_ACTIONS.getCartData({ onCartRes: afterRemovingCartItem }));
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        onCartRes: afterRemovingCartItem,
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: false,
+      })
+    );
   } catch (err) {
     logger.error(err);
   }
@@ -115,8 +122,15 @@ export function* updateCartItemSaga({ payload }) {
     if (callBack) {
       callBack();
     }
+    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(clearToggleCartItemError());
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: true,
+      })
+    );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {

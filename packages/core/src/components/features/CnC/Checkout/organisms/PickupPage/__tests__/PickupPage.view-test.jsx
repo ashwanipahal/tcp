@@ -26,6 +26,7 @@ describe('PickUpFormPartVanilla component', () => {
       isSmsUpdatesEnabled: true,
       dispatch: jest.fn(),
       handleSubmit: jest.fn(),
+      pickupDidMount: jest.fn(),
       orderHasShipping: true,
       isVenmoPaymentInProgress: false,
     };
@@ -49,6 +50,7 @@ describe('PickUpFormPartVanilla component', () => {
       initialValues: {},
       isSmsUpdatesEnabled: true,
       dispatch: jest.fn(),
+      pickupDidMount: jest.fn(),
       handleSubmit: jest.fn(),
       orderHasShipping: false,
       onPickupSubmit: mockedOnPickupSubmit,
@@ -109,6 +111,7 @@ describe('PickUpFormPartVanilla component', () => {
       isSmsUpdatesEnabled: true,
       dispatch: jest.fn(),
       handleSubmit: jest.fn(),
+      pickupDidMount: jest.fn(),
       orderHasShipping: false,
       isVenmoPaymentInProgress: true,
       isVenmoPickupDisplayed: false,
@@ -134,6 +137,7 @@ describe('PickUpFormPartVanilla component', () => {
       isSmsUpdatesEnabled: true,
       dispatch: jest.fn(),
       handleSubmit: jest.fn(),
+      pickupDidMount: jest.fn(),
       orderHasShipping: true,
       isVenmoPaymentInProgress: false,
     };
