@@ -26,6 +26,7 @@ const handleFormSubmit = (fromBagPage, handleUpdateItem, handleAddToBag) => {
   return fromBagPage ? handleUpdateItem : handleAddToBag;
 };
 const getPointerEvents = formEnabled => (formEnabled ? 'auto' : 'none');
+const getCurrencySymbol = currency => (currency === 'USD' ? '$' : currency);
 
 const ProductCustomizeFormPart = props => {
   const {
@@ -51,7 +52,7 @@ const ProductCustomizeFormPart = props => {
 
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const { badge2, listPrice, offerPrice } = prices;
-  const currencyPrefix = currency === 'USD' ? '$' : currency;
+  const currencyPrefix = getCurrencySymbol(currency);
   const currentColorPdpUrl =
     currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
   const modifiedPdpUrl = getProductListToPathInMobileApp(currentColorPdpUrl) || '';
@@ -62,7 +63,7 @@ const ProductCustomizeFormPart = props => {
       formEnabled={formEnabled}
       isMultiItemQVModal={isMultiItemQVModal}
       borderBottomColor={colors.BORDER.NORMAL}
-      borderBottomWidth={!!isMultiItemQVModal}
+      borderBottomWidth={isMultiItemQVModal ? 1 : 0}
     >
       {isMultiItemQVModal && (
         <InputCheckboxWrapper>
