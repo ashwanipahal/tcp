@@ -28,5 +28,6 @@ export {
   addGiftCard,
   getInternationCheckoutSettings,
   startExpressCheckout,
+  getServerErrorMessage,
 } from './Checkout';
 export { getVenmoToken } from './venmo';
