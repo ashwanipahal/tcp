@@ -56,6 +56,24 @@ const registerRouterChangeEvent = (closeNavigationDrawer, isDrawerOpen) => () =>
   };
 };
 
+const registerExtoleScript = () => {
+  if (window.extole) {
+    // Data hard coded with reference to extole 3rd party script
+    window.extole.createZone({
+      name: 'global_footer',
+      element_id: 'extole_zone_global_navigation_footer',
+      data: {
+        email: 'abc@abc.com',
+        first_name: 'test',
+        last_name: 'abc',
+        partner_user_id: '123',
+        labels: 'us, en',
+      },
+    });
+  }
+  return () => {};
+};
+
 const Navigation = props => {
   const {
     openNavigationDrawer,
@@ -66,7 +84,8 @@ const Navigation = props => {
     isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
+  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
+  useEffect(registerExtoleScript, []);
 
   return (
     <Drawer

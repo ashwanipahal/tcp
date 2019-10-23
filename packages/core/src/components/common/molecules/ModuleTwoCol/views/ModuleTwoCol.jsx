@@ -20,7 +20,9 @@ const DynamicColumns = dynamic({
     return (
       slots &&
       slots
-        .filter(slot => slot.moduleName === 'moduleH' || slot.moduleName === 'moduleN')
+        .filter(slot => {
+          return slot && (slot.moduleName === 'moduleH' || slot.moduleName === 'moduleN');
+        })
         .map(slotData => {
           const Module = modules[slotData.moduleName];
           return (

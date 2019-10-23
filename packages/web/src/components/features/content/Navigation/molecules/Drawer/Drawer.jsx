@@ -38,7 +38,9 @@ const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
   if (hideNavigationFooter) {
     classToHide = 'is-hidden';
   }
-  return drawerFooter && <Footer className={`navigation-footer ${classToHide}`} />;
+  return (
+    drawerFooter && <Footer className={`navigation-footer ${classToHide}`} isNavigationFooter />
+  );
 };
 
 class Drawer extends React.Component {
