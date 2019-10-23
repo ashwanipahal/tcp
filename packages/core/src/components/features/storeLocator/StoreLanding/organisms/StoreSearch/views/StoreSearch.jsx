@@ -25,6 +25,7 @@ export class StoreSearch extends PureComponent {
   state = {
     gymSelected: isGymboree(),
     outletSelected: false,
+    storeSelected: false,
   };
 
   /**
@@ -34,11 +35,13 @@ export class StoreSearch extends PureComponent {
    * @param {object} location - The location details of the selected location
    */
   handleLocationSelection = ({ geometry, location }) => {
-    const { loadStoresByCoordinates, submitting } = this.props;
+    const { loadStoresByCoordinates, submitting, showSubmitError } = this.props;
     if ((!geometry && !location) || submitting) {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
+    this.setState({ storeSelected: true });
+    showSubmitError(false);
     loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
   };
 
@@ -47,8 +50,9 @@ export class StoreSearch extends PureComponent {
    * @param {object} formData - form input data
    */
   onSubmit = formData => {
-    const { submitting, loadStoresByCoordinates } = this.props;
-    if (!submitting) {
+    const { storeSelected } = this.state;
+    const { submitting, loadStoresByCoordinates, showSubmitError } = this.props;
+    if (!submitting && storeSelected) {
       let res;
       try {
         res = getAddressLocationInfo(formData.storeAddressLocator);
@@ -57,6 +61,7 @@ export class StoreSearch extends PureComponent {
       }
       return loadStoresByCoordinates(res, INITIAL_STORE_LIMIT);
     }
+    showSubmitError(true);
     return false;
   };
 
@@ -92,6 +97,11 @@ export class StoreSearch extends PureComponent {
       );
     }
     return true;
+  };
+
+  onStoreChange = () => {
+    const { storeSelected } = this.state;
+    if (storeSelected) this.setState({ storeSelected: false });
   };
 
   render() {
@@ -174,6 +184,7 @@ export class StoreSearch extends PureComponent {
                   dataLocator="storeAddressLocator"
                   className="store-locator-field"
                   enableSuccessCheck={false}
+                  onChange={this.onStoreChange}
                 />
                 <Button type="submit" title="search" className="button-search-store">
                   <Image
@@ -245,12 +256,14 @@ StoreSearch.propTypes = {
   toggleMap: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
+  showSubmitError: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
   submitting: false,
   labels: {},
   mapView: false,
+  showSubmitError: () => false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));
