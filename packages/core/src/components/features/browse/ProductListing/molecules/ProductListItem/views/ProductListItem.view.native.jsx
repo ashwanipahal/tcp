@@ -87,7 +87,7 @@ const ListItem = props => {
     productImageWidth,
     viaModule,
   } = props;
-  logger.log(viaModule);
+  logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
   const { name } = productInfo;

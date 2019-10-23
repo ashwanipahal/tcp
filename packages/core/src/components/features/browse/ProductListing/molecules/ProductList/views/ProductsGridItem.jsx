@@ -409,7 +409,7 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       viaModule,
     } = this.props;
-    logger.log(viaModule);
+    logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
     const {
