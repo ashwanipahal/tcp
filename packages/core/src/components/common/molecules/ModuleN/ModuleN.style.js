@@ -14,6 +14,12 @@ export default css`
     }
   }
 
+  .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
+    }
+  }
+
   .stacked-cta-wrapper-class {
     color: ${props =>
       props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
