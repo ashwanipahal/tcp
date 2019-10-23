@@ -26,7 +26,7 @@ export const OrdersList = ({
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
       />
-      {orderItems && orderItems.length > 0 && ordersListItems && ordersListItems.length > 0 && (
+      {orderItems && orderItems.length > 0 && (
         <OrderPreviewItemsList
           labels={labels}
           navigation={navigation}
