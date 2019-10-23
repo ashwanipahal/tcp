@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { ParallaxImage } from 'react-native-snap-carousel';
-import { Button, Anchor, Skeleton } from '../../../atoms';
+import { Button, Anchor } from '../../../atoms';
 import { getLocator } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-
+import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import config from '../../ModuleJ/moduleJ.config';
 
 import {
@@ -66,15 +66,36 @@ class ModuleG extends React.PureComponent {
     super(props);
 
     this.state = {
-      selectedCategoryId: null,
-      selectedTabItem: {},
+      selectedCategoryId: [],
     };
   }
 
-  onProductTabChange = (catId, tabItem) => {
+  onProductTabChange = catId => {
     this.setState({
       selectedCategoryId: catId,
-      selectedTabItem: tabItem,
+    });
+  };
+
+  getImagesData = () => {
+    const { selectedCategoryId } = this.state;
+
+    const { productTabList } = this.props;
+
+    let data = [];
+    data = selectedCategoryId.map(item => [...data, ...(productTabList[item] || [])]);
+    data = data.slice(0, TOTAL_IMAGES);
+    if (Object.keys(productTabList).length) {
+      return data;
+    }
+    return [];
+  };
+
+  onAddToBagClick = () => {
+    const { onQuickViewOpenClick } = this.props;
+    const { next = 0 } = this.state;
+    const data = this.getImagesData();
+    onQuickViewOpenClick({
+      colorProductId: data.length && data[0][next].prodpartno,
     });
   };
 
@@ -124,28 +145,6 @@ class ModuleG extends React.PureComponent {
     );
   };
 
-  getDataStatus = selectedCategoryId => {
-    const { productTabList = {} } = this.props;
-    let dataStatus = true;
-    if (productTabList && productTabList.completed) {
-      dataStatus = productTabList.completed[selectedCategoryId];
-    }
-    return dataStatus;
-  };
-
-  getMiddleContainer = dataLength => {
-    if (!dataLength) {
-      return null;
-    }
-    return (
-      <MiddleContainer>
-        <Border />
-        <Circle />
-        <StyledCustomImage source={plusIcon} />
-      </MiddleContainer>
-    );
-  };
-
   /**
    * @param {object} props : Props for renderView multi type of banner list, button list, header text.
    * @desc This is Method return the complete View with CTA Button .
@@ -157,12 +156,10 @@ class ModuleG extends React.PureComponent {
     selectedSingleCTAButtonCart
   ) => {
     const { navigation, headerText, promoBanner, divTabs } = this.props;
-    // const { selectedCategoryId } = this.state;
-    // const dataStatus1 = this.getDataStatus(selectedCategoryId[0]);
-    // const dataStatus2 = this.getDataStatus(selectedCategoryId[1]);
-    const dataStatus1 = true;
-    const dataStatus2 = true;
-
+    const firstCarouselList = selectedProductCarouselList[0];
+    const secondCarouselList = selectedProductCarouselList[1];
+    const firstCarouseProductList = selectedProductList[0];
+    const secondCarouseProductList = selectedProductList[1];
     return (
       <Container>
         <MessageContainer>
@@ -198,20 +195,10 @@ class ModuleG extends React.PureComponent {
           <SHADOW />
         </ShadowContainer>
         <View>
-          {dataStatus1 ? (
-            <Skeleton
-              row={1}
-              col={3}
-              width={190}
-              height={170}
-              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
-              showArrows
-            />
-          ) : null}
-          {selectedProductList.length ? (
-            <ImageSlidesWrapper>
+          <ImageSlidesWrapper>
+            {firstCarouseProductList && firstCarouseProductList.length > 0 ? (
               <Carousel
-                data={selectedProductCarouselList}
+                data={firstCarouselList}
                 renderItem={this.renderCarouselSlide}
                 height={MODULE_HEIGHT}
                 width={screenWidth}
@@ -221,26 +208,19 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            </ImageSlidesWrapper>
-          ) : null}
+            ) : null}
+          </ImageSlidesWrapper>
 
-          {this.getMiddleContainer(selectedProductList.length)}
+          <MiddleContainer>
+            <Border />
+            <Circle />
+            <StyledCustomImage source={plusIcon} />
+          </MiddleContainer>
 
-          {dataStatus2 ? (
-            <Skeleton
-              row={1}
-              col={3}
-              width={200}
-              height={200}
-              rowProps={{ justifyContent: 'center', marginTop: '20px' }}
-              showArrows
-            />
-          ) : null}
-
-          {selectedProductList.length ? (
-            <ImageSlidesWrapper>
+          <ImageSlidesWrapper>
+            {secondCarouseProductList && secondCarouseProductList.length ? (
               <Carousel
-                data={selectedProductCarouselList}
+                data={secondCarouselList}
                 renderItem={this.renderCarouselSlide}
                 height={MODULE_HEIGHT}
                 width={screenWidth}
@@ -250,16 +230,16 @@ class ModuleG extends React.PureComponent {
                   autoplay: false,
                 }}
               />
-            </ImageSlidesWrapper>
-          ) : null}
+            ) : null}
+          </ImageSlidesWrapper>
         </View>
 
         {selectedSingleCTAButton ? (
           <ButtonContainer>
             <Button
               width="225px"
-              text={selectedSingleCTAButton.text}
-              url={selectedSingleCTAButton.url}
+              text={selectedSingleCTAButton.title}
+              onPress={this.onAddToBagClick}
               navigation={navigation}
               testID={getLocator('moduleG_cta_btn')}
             />
@@ -276,6 +256,7 @@ class ModuleG extends React.PureComponent {
             visible
           />
         ) : null}
+        <QuickViewModal />
       </Container>
     );
   };
@@ -284,35 +265,51 @@ class ModuleG extends React.PureComponent {
    * @desc This is Method return the view with TAB List.
    */
   render() {
-    const {
-      selectedCategoryId,
-      selectedTabItem: {
-        singleCTAButton: selectedSingleCTAButton,
-        singleCTAButtonCart: selectedSingleCTAButtonCart,
-      } = {},
-    } = this.state;
-    const { productTabList = {} } = this.props;
+    const { selectedCategoryId = [] } = this.state;
 
-    let selectedProductList = productTabList[selectedCategoryId] || [];
-    selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
+    const { divTabs, productTabList = {} } = this.props;
+    const { CAROUSEL_OPTIONS } = config;
+    CAROUSEL_OPTIONS.beforeChange = (current, next) => {
+      this.setState({ next });
+    };
+    const selectedProdLists = [];
+    selectedCategoryId.forEach((catId, index) => {
+      const productList = productTabList[selectedCategoryId[index]] || [];
+      selectedProdLists.push(productList.slice(0, TOTAL_IMAGES));
+    });
 
-    const selectedProductCarouselList = selectedProductList.reduce(
-      (list, item, index) => {
-        const lastList = list[list.length - 1];
-        if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
-          list.push([{ ...item, productItemIndex: index }]);
-        } else {
-          lastList.push({ ...item, productItemIndex: index });
-        }
+    // eslint-disable-next-line prefer-const
+    let selectedProductCarouselList1 = [];
+    selectedProdLists.forEach(prodlist => {
+      selectedProductCarouselList1.push(
+        prodlist.reduce(
+          (list, item, index) => {
+            const lastList = list[list.length - 1];
+            if (lastList.length === PRODUCT_IMAGE_PER_SLIDE) {
+              list.push([{ ...item, productItemIndex: index }]);
+            } else {
+              lastList.push({ ...item, productItemIndex: index });
+            }
 
-        return list;
-      },
-      [[]]
-    );
+            return list;
+          },
+          [[]]
+        )
+      );
+    });
+
+    let selectedSingleCTAButton;
+    let selectedSingleCTAButtonCart;
+    divTabs.forEach(tab => {
+      if (JSON.stringify(tab.category.cat_id) === JSON.stringify(selectedCategoryId)) {
+        selectedSingleCTAButton = tab.singleCTAButton;
+        selectedSingleCTAButtonCart = tab.singleCTAButtonCart;
+      }
+    });
 
     return this.renderView(
-      selectedProductCarouselList,
-      selectedProductList,
+      selectedProductCarouselList1,
+      selectedProdLists,
       selectedSingleCTAButton,
       selectedSingleCTAButtonCart
     );
@@ -325,6 +322,7 @@ ModuleG.defaultProps = {
 };
 
 ModuleG.propTypes = {
+  onQuickViewOpenClick: PropTypes.func.isRequired,
   bgColor: PropTypes.string,
   headerText: PropTypes.arrayOf(
     PropTypes.shape({
