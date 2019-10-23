@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
-import { Button, Anchor, BodyCopy } from '../../../atoms';
+
+import { Button, Anchor, BodyCopy, Skeleton } from '../../../atoms';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../ModuleQ.config';
@@ -130,6 +131,14 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
   );
 }
 
+function getDataStatus(selectedProductList, currentCatId) {
+  let dataStatus = true;
+  if (selectedProductList && selectedProductList.completed) {
+    dataStatus = selectedProductList.completed[currentCatId];
+  }
+  return dataStatus;
+}
+
 // eslint-disable-next-line complexity
 const ModuleQ = props => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -168,6 +177,7 @@ const ModuleQ = props => {
     setSelectedCategoryId(categoryId);
     setSelectedTabItem(tabItem);
   };
+  const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
     <Container showData={showData} bgClass={bgClass}>
@@ -217,6 +227,17 @@ const ModuleQ = props => {
         selectedColorProductId={selectedColorProductId}
         testID={getLocator('moduleQ_cta_link')}
       />
+
+      {dataStatus ? (
+        <Skeleton
+          row={1}
+          col={3}
+          width={250}
+          height={300}
+          rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+          showArrows
+        />
+      ) : null}
 
       <ImageSlidesWrapper hideTabs={hideTabs}>
         {selectedProductList.length ? (

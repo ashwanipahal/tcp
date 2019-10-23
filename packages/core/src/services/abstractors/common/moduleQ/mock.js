@@ -65,8 +65,8 @@ export default {
           text: {
             text: 'GIRL',
           },
-          category: {
-            cat_id: '2044392_10',
+          stylistic: {
+            styl_id: '3002623_BQ',
           },
           singleCTAButton: null,
         },
@@ -74,8 +74,8 @@ export default {
           text: {
             text: 'TODDLER GIRL',
           },
-          category: {
-            cat_id: '2044391_10',
+          stylistic: {
+            styl_id: '2044391_10',
           },
           singleCTAButton: {
             url: '/',
@@ -88,8 +88,8 @@ export default {
           text: {
             text: 'BOY',
           },
-          category: {
-            cat_id: '3002623_BQ',
+          stylistic: {
+            styl_id: '2044392_10',
           },
           singleCTAButton: {
             url: '/ ',
@@ -102,8 +102,8 @@ export default {
           text: {
             text: 'TODDLER BOY',
           },
-          category: {
-            cat_id: '2081262_K3',
+          stylistic: {
+            styl_id: '2081262_K3',
           },
           singleCTAButton: null,
         },

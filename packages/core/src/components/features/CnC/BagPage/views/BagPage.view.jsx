@@ -357,6 +357,7 @@ class BagPageView extends React.Component {
           isGuest={isGuest}
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
+          pageCategory="bagPage"
         />
         <QuickViewModal fromBagPage />
       </div>

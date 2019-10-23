@@ -51,3 +51,4 @@ CategoryListing.propTypes = {
 CategoryListing.defaultProps = {};
 
 export default withStyles(CategoryListing, style);
+export { CategoryListing as CategoryListingVanilla };

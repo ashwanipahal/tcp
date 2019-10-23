@@ -1,0 +1,2068 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationAccountForm component should render component correctly 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-top-XXS"
+        text="test@childrensplace.com"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password-field"
+        enableSuccessCheck={false}
+        id="password"
+        label=""
+        name="password"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={200}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <PasswordRequirement
+              labels={Object {}}
+            />
+          }
+          textAlign="left"
+          toggleOnPress={true}
+          width={300}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={12}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={12}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="confirm-Password-field"
+        enableSuccessCheck={false}
+        id="confirmPassword"
+        label=""
+        name="confirmPassword"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-XXL margin-bottom-XXL"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            alignCheckbox="top"
+            component={[Function]}
+            dataLocator="i-agree-checkbox"
+            enableSuccessCheck={false}
+            name="iAgree"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <RichText
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": " ",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="iAgree"
+        label=""
+        name="iAgree"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={
+          Object {
+            "fontWeight": "800",
+          }
+        }
+        data-locator="create-account-btn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with error state 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-top-XXS"
+        text="test@childrensplace.com"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password-field"
+        enableSuccessCheck={false}
+        id="password"
+        label=""
+        name="password"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={200}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <PasswordRequirement
+              labels={Object {}}
+            />
+          }
+          textAlign="left"
+          toggleOnPress={true}
+          width={300}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={12}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={12}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="confirm-Password-field"
+        enableSuccessCheck={false}
+        id="confirmPassword"
+        label=""
+        name="confirmPassword"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-XXL margin-bottom-XXL"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            alignCheckbox="top"
+            component={[Function]}
+            dataLocator="i-agree-checkbox"
+            enableSuccessCheck={false}
+            name="iAgree"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <RichText
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": " ",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="iAgree"
+        label=""
+        name="iAgree"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={
+          Object {
+            "fontWeight": "800",
+          }
+        }
+        data-locator="create-account-btn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with isPromptForUserDetails state 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-top-XXS"
+        text="test@childrensplace.com"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="first-name-field"
+      id="firstName"
+      label=""
+      name="firstName"
+      type="text"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="last name-field"
+      enableSuccessCheck={false}
+      id="lastName"
+      label=""
+      name="lastName"
+      type="text"
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password-field"
+        enableSuccessCheck={false}
+        id="password"
+        label=""
+        name="password"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={200}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <PasswordRequirement
+              labels={Object {}}
+            />
+          }
+          textAlign="left"
+          toggleOnPress={true}
+          width={300}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={12}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={12}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="confirm-Password-field"
+        enableSuccessCheck={false}
+        id="confirmPassword"
+        label=""
+        name="confirmPassword"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="phone-number-field"
+      enableSuccessCheck={false}
+      id="phoneNumber"
+      label=""
+      maxLength={50}
+      name="phoneNumber"
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="zip-code-field"
+      enableSuccessCheck={false}
+      id="noCountryZip"
+      label=""
+      name="noCountryZip"
+    />
+    <Styled(View)
+      spacingStyles="margin-top-XXL margin-bottom-XXL"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            alignCheckbox="top"
+            component={[Function]}
+            dataLocator="i-agree-checkbox"
+            enableSuccessCheck={false}
+            name="iAgree"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <RichText
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": " ",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="iAgree"
+        label=""
+        name="iAgree"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={
+          Object {
+            "fontWeight": "800",
+          }
+        }
+        data-locator="create-account-btn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with isPromptForUserDetails state and without email 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="email-address-field"
+      id="emailAddress"
+      label="Email Address"
+      name="emailAddress"
+      type="text"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="first-name-field"
+      id="firstName"
+      label=""
+      name="firstName"
+      type="text"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="last name-field"
+      enableSuccessCheck={false}
+      id="lastName"
+      label=""
+      name="lastName"
+      type="text"
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password-field"
+        enableSuccessCheck={false}
+        id="password"
+        label=""
+        name="password"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={200}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <PasswordRequirement
+              labels={Object {}}
+            />
+          }
+          textAlign="left"
+          toggleOnPress={true}
+          width={300}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={12}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={12}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="confirm-Password-field"
+        enableSuccessCheck={false}
+        id="confirmPassword"
+        label=""
+        name="confirmPassword"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="phone-number-field"
+      enableSuccessCheck={false}
+      id="phoneNumber"
+      label=""
+      maxLength={50}
+      name="phoneNumber"
+      type="tel"
+    />
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="zip-code-field"
+      enableSuccessCheck={false}
+      id="noCountryZip"
+      label=""
+      name="noCountryZip"
+    />
+    <Styled(View)
+      spacingStyles="margin-top-XXL margin-bottom-XXL"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            alignCheckbox="top"
+            component={[Function]}
+            dataLocator="i-agree-checkbox"
+            enableSuccessCheck={false}
+            name="iAgree"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <RichText
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": " ",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="iAgree"
+        label=""
+        name="iAgree"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={
+          Object {
+            "fontWeight": "800",
+          }
+        }
+        data-locator="create-account-btn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
+
+exports[`ConfirmationAccountForm component should render component correctly with success state 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(Notification)
+      disableSpace={false}
+      status="success"
+    />
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs26"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-bottom-MED"
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray[900]"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        lineHeight="1.71"
+        margin={null}
+        numberOfLines={null}
+        spacingStyles="margin-top-XXS"
+        text="test@childrensplace.com"
+        textAlign="center"
+        textDecoration={null}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="password-field"
+        enableSuccessCheck={false}
+        id="password"
+        label=""
+        name="password"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={200}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <PasswordRequirement
+              labels={Object {}}
+            />
+          }
+          textAlign="left"
+          toggleOnPress={true}
+          width={300}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={12}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={12}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="confirm-Password-field"
+        enableSuccessCheck={false}
+        id="confirmPassword"
+        label=""
+        name="confirmPassword"
+        secureTextEntry={true}
+      />
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="hide-show-pwd"
+          disabled={false}
+          fontSize="fs13"
+          hideCheckboxIcon={true}
+          name="hide-show-pwd"
+          onClick={[Function]}
+          rightText=""
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)
+      spacingStyles="margin-top-XXL margin-bottom-XXL"
+    >
+      <Styled(View)>
+        <Styled(View)>
+          <Field
+            alignCheckbox="top"
+            component={[Function]}
+            dataLocator="i-agree-checkbox"
+            enableSuccessCheck={false}
+            name="iAgree"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <RichText
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": " ",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="iAgree"
+        label=""
+        name="iAgree"
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={
+          Object {
+            "fontWeight": "800",
+          }
+        }
+        data-locator="create-account-btn"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text=""
+        theme={Object {}}
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;
