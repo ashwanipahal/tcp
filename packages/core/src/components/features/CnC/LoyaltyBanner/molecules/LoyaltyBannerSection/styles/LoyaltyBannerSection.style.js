@@ -5,10 +5,7 @@ const plccMpr = props =>
 
 const Styles = css`
   .loyalty-banner-wrapper {
-    padding-top: 12px;
-    padding-bottom: 0;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding: 12px 14px;
   }
 
   .loyalty-banner-section-wrapper {
@@ -21,7 +18,7 @@ const Styles = css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     .loyalty-banner-wrapper {
-      padding: 12px 6px 0;
+      padding: 12px 6px;
     }
     .loyalty-banner-section-wrapper {
       border-top: 3px solid ${plccMpr};
@@ -30,7 +27,7 @@ const Styles = css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     .loyalty-banner-wrapper {
-      padding: 12px 12px 0;
+      padding: 12px 12px;
     }
     .loyalty-banner-section-wrapper {
       border-top: 4px solid ${plccMpr};
