@@ -85,6 +85,8 @@ const ListItem = props => {
     renderPriceAndBagOnly,
     renderPriceOnly,
     productImageWidth,
+    margins,
+    paddings,
     viaModule,
   } = props;
   logger.info(viaModule);
@@ -97,7 +99,13 @@ const ListItem = props => {
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
-    <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
+    <ListContainer
+      fullWidth={fullWidth}
+      renderPriceAndBagOnly={renderVariation}
+      accessible
+      margins={margins}
+      paddings={paddings}
+    >
       <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
@@ -240,7 +248,7 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.filledHeart}
                 size="fs21"
                 color="gray.500"
-                onPress={() => setLastDeletedItemId(itemId)}
+                onPress={() => setLastDeletedItemId({ itemId })}
               />
             ) : (
               <CustomIcon
@@ -385,6 +393,8 @@ ListItem.propTypes = {
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
   productImageWidth: PropTypes.number,
+  margins: PropTypes.string,
+  paddings: PropTypes.string,
   viaModule: PropTypes.string,
 };
 
@@ -402,6 +412,8 @@ ListItem.defaultProps = {
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
   productImageWidth: '',
+  margins: null,
+  paddings: '12px 0 12px 0',
   viaModule: '',
 };
 
