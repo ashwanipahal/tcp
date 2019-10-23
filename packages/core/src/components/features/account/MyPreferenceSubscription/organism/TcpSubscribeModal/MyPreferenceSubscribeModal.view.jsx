@@ -23,8 +23,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    handleSubmitModalPopup: PropTypes.func.isRequired,
-    activeModal: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -55,10 +54,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     });
   }
 
-  handleSubmitData = data => {
-    const { handleSubmitModalPopup, activeModal } = this.props;
-    const formData = { activeBrand: activeModal, ...data };
-    handleSubmitModalPopup(formData);
+  handleSubmitData = () => {
+    const { onSubmit } = this.props;
+    onSubmit();
   };
 
   /**
@@ -120,7 +118,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               data-locator="my-preference-modal_phnumber"
             >
               <Field
-                placeholder="Mobile Phone Number"
+                placeholder={getLabelValue(labels, 'lbl_preference_mobileNumber')}
                 name="phoneNumber"
                 id="phoneNumber"
                 component={TextBox}

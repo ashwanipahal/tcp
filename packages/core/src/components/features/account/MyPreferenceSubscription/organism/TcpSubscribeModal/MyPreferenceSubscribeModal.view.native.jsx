@@ -5,11 +5,14 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import { BodyCopy, Row, Col, Button, RichText } from '@tcp/core/src/components/common/atoms';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Button, RichText } from '@tcp/core/src/components/common/atoms';
+import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { formatPhoneNumber } from '../../../../../../utils/formValidation/phoneNumber';
-import styles from './styles/MyPreferenceSubscribeModal.style';
 import myPreferenceConst from '../../MyPreferenceSubscription.constants';
+import { RichTextWrapper, ButtonWrapper } from './styles/MyPreferenceSubscribeModal.style.native';
 
 /**
  * This Class component use for return the Extra Points Detail Modal
@@ -20,16 +23,12 @@ import myPreferenceConst from '../../MyPreferenceSubscription.constants';
  */
 class MyPreferenceSubscribeModal extends React.PureComponent {
   static propTypes = {
-    className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    handleSubmitModalPopup: PropTypes.func.isRequired,
-    activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
-    className: '',
     labels: {},
   };
 
@@ -50,16 +49,12 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
       disclaimerLabels += getLabelValue(labels, elem);
     });
 
+    const richTextStyle = `<meta name="viewport" content="width=device-width, initial-scale=1.0"><div style="font-size:14px; text-align:center; font-family: Nunito; font-weight: normal;">${disclaimerLabels} </div>`;
+
     this.setState({
-      disclaimerText: disclaimerLabels,
+      disclaimerText: richTextStyle,
     });
   }
-
-  handleSubmitData = data => {
-    const { handleSubmitModalPopup, activeModal } = this.props;
-    const formData = { activeBrand: activeModal, ...data };
-    handleSubmitModalPopup(formData);
-  };
 
   /**
    * @function render  Used to render the JSX of the component
@@ -68,110 +63,89 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose, labels } = this.props;
+    const { onRequestClose, handleSubmit, labels } = this.props;
     const { disclaimerText } = this.state;
 
     return (
-      <div className={className}>
-        <BodyCopy component="div" className="myPreferenceModalWrapper">
-          <form
-            name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL}
-            className={className}
-            onSubmit={handleSubmit(this.handleSubmitData)}
-            noValidate
-          >
-            <BodyCopy
-              fontSize="fs22"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              textAlign="center"
-              className="elem-mb-MED elem-mt-LRG"
-              data-locator="my-preference-modal_title"
-            >
-              {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
-            </BodyCopy>
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontFamily="secondary"
-              textAlign="center"
-              className="elem-mb-LRG"
-              data-locator="my-preference-modal_info_text"
-            >
-              {getLabelValue(labels, 'lbl_prefrence_modal_info_text')}
-            </BodyCopy>
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontFamily="secondary"
-              textAlign="center"
-              className="elem-mb-MED"
-              data-locator="my-preference-modal_sub_info_text"
-            >
-              {getLabelValue(labels, 'lbl_prefrence_modal_sub_info_text')}
-            </BodyCopy>
+      <ViewWithSpacing spacingStyles="margin-bottom-XXXL margin-left-MED margin-right-MED">
+        <BodyCopyWithSpacing
+          fontSize="fs22"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          textAlign="center"
+          spacingStyles="margin-bottom-MED"
+          data-locator="my-preference-modal_title"
+          text={getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
+        />
 
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontFamily="secondary"
-              textAlign="center"
-              className="elem-mb-MED"
-              data-locator="my-preference-modal_phnumber"
-            >
-              <Field
-                placeholder="Mobile Phone Number"
-                name="phoneNumber"
-                id="phoneNumber"
-                component={TextBox}
-                dataLocator="my-preference-modal-phoneNumber"
-                type="tel"
-                normalize={formatPhoneNumber}
-              />
-            </BodyCopy>
-            <BodyCopy
-              component="div"
-              textAlign="center"
-              fontSize="fs14"
-              fontFamily="secondary"
-              className="disclaimer-sub-text"
-            >
-              <RichText
-                richTextHtml={disclaimerText}
-                dataLocator="my-preference-modal_disclaimer_sub_text"
-              />
-            </BodyCopy>
-            <Row fullBleed className="elem-mb-LRG">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Button
-                  fullWidth
-                  buttonVariation="fixed-width"
-                  fill="BLUE"
-                  type="submit"
-                  className="submit-button"
-                  dataLocator="subscribe_modal_submit"
-                >
-                  {getLabelValue(labels, 'lbl_prefrence_modal_submit')}
-                </Button>
-              </Col>
-            </Row>
-            <Row fullBleed className="elem-mb-LRG">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Button
-                  fullWidth
-                  buttonVariation="fixed-width"
-                  fill="WHITE"
-                  className="cancel-button"
-                  dataLocator="subscribe_modal_cancel"
-                  onClick={onRequestClose}
-                >
-                  {getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
-                </Button>
-              </Col>
-            </Row>
-          </form>
-        </BodyCopy>
-      </div>
+        <BodyCopyWithSpacing
+          component="div"
+          fontSize="fs14"
+          fontWeight="regular"
+          fontFamily="secondary"
+          textAlign="center"
+          spacingStyles="margin-bottom-LRG"
+          data-locator="my-preference-modal_info_text"
+          text={getLabelValue(labels, 'lbl_prefrence_modal_info_text')}
+        />
+
+        <BodyCopyWithSpacing
+          component="div"
+          fontSize="fs14"
+          fontWeight="regular"
+          fontFamily="secondary"
+          textAlign="center"
+          spacingStyles="margin-bottom-MED"
+          data-locator="my-preference-modal_sub_info_text"
+          text={getLabelValue(labels, 'lbl_prefrence_modal_sub_info_text')}
+        />
+
+        <BodyCopyWithSpacing
+          component="div"
+          fontSize="fs14"
+          fontFamily="secondary"
+          textAlign="center"
+          spacingStyles="margin-bottom-MED"
+          data-locator="my-preference-modal_phnumber"
+        />
+        <Field
+          label={getLabelValue(labels, 'lbl_preference_mobileNumber')}
+          name="phoneNumber"
+          id="phoneNumber"
+          component={TextBox}
+          dataLocator="my-preference-modal-phoneNumber"
+          type="tel"
+          normalize={formatPhoneNumber}
+        />
+
+        <RichTextWrapper>
+          <RichText
+            source={{ html: disclaimerText }}
+            dataLocator="my-preference-modal_disclaimer_sub_text"
+          />
+        </RichTextWrapper>
+        <Button
+          fullWidth
+          buttonVariation="fixed-width"
+          fill="BLUE"
+          type="submit"
+          className="submit-button"
+          onPress={handleSubmit}
+          dataLocator="subscribe_modal_submit"
+          text={getLabelValue(labels, 'lbl_prefrence_modal_submit')}
+        />
+        <ButtonWrapper>
+          <Button
+            fullWidth
+            buttonVariation="fixed-width"
+            fill="WHITE"
+            className="cancel-button"
+            dataLocator="subscribe_modal_cancel"
+            onClick={onRequestClose}
+            text={getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
+          />
+        </ButtonWrapper>
+      </ViewWithSpacing>
     );
   }
 }
@@ -182,5 +156,5 @@ export default reduxForm({
   form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(withStyles(MyPreferenceSubscribeModal, styles));
+})(MyPreferenceSubscribeModal);
 export { MyPreferenceSubscribeModal as MyPreferenceSubscribeModalVanilla };
