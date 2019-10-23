@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreSearch Container should render CLP Correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Grid)
+    className=""
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        Heading
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        Promo Banner
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        hideCol={
+          Object {
+            "medium": true,
+            "small": true,
+          }
+        }
+      >
+        Left Panel
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 8,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            Category List Panel
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            Recommendations
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            Get Candid Section
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            SEO Section
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            Ratings and Review
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Grid)>
+</div>
+`;
