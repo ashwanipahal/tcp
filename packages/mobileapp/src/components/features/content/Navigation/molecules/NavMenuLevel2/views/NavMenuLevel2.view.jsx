@@ -4,8 +4,8 @@ import { SectionList, Text } from 'react-native';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ShopBySize from '../../ShopBySize';
+import shopByConstant from '../../ShopBySize/ShopBySize.constant';
 import MenuItem from '../../MenuItems';
-import { /* shopBySizeArr , */ shopBySize } from '../shopBySizeMock';
 import {
   TitleContainer,
   HeadingContainer,
@@ -16,6 +16,7 @@ import {
 import ROUTE_NAMES from '../../../../../../../reduxStore/routes';
 
 const keyExtractor = (_, index) => index.toString();
+const { SHOP_BY_SIZE } = shopByConstant;
 
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
@@ -52,6 +53,37 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
   });
 };
 
+const addShopBySize = item => {
+  let {
+    item: {
+      categoryContent: { mainCategory },
+    },
+  } = item;
+  if (!mainCategory) {
+    mainCategory = {
+      categoryLayout: [],
+    };
+  }
+  const { categoryLayout } = mainCategory;
+  if (categoryLayout && categoryLayout.length) {
+    const columnArr = categoryLayout[0].columns;
+    const shopBySizeColumn = columnArr.find(colItem => colItem.shopBySize);
+    if (shopBySizeColumn) {
+      const [shopBySizeElem] = shopBySizeColumn.shopBySize;
+      const {
+        text: { text: shopBySizeTitle },
+      } = shopBySizeElem;
+      return {
+        label: shopBySizeTitle,
+        order: 0,
+        items: shopBySizeColumn.shopBySize,
+        isShopBySize: true,
+      };
+    }
+    return false;
+  }
+  return false;
+};
 /**
  * The Navigation menu level2 is created by this component
  * @param {object} props Props passed from Stack navigator screen and the parent L1
@@ -67,25 +99,20 @@ const NavMenuLevel2 = props => {
    * @param {object} item menu item object
    * @param {object} section contains the section title of the menu item
    */
-  const renderItem = ({ item, section: { title } }) => {
+  const renderItem = ({ item, section: { isShopBySize } }) => {
     let maxWidthItem = getScreenWidth() - 60;
     let promoBannerMargin = 55;
 
     let hasL3 = false;
     let hasBadge = false;
 
-    // TODO - there would be a differentiating factor for generating circular links
-    // Use that check instead, as of now hardcoding the mock Title
-    if (title === shopBySize) {
-      return <ShopBySize navigate={navigate} links={item.links} hasL3={hasL3} />;
-      // return shopBySizeCircle(navigate, item.links);
+    if (isShopBySize) {
+      return <ShopBySize navigate={navigate} links={item.linkList} hasL3={hasL3} />;
     }
-
     if (item.subCategories && item.subCategories.length) {
       hasL3 = true;
       promoBannerMargin = 40;
     }
-
     if (
       item.categoryContent.mainCategory &&
       item.categoryContent.mainCategory.promoBadge &&
@@ -129,14 +156,10 @@ const NavMenuLevel2 = props => {
   const {
     item: { subCategories },
   } = item;
-
-  // TODO - Appending the dummy shop by size object for development. Remove it later
-  // subCategories[shopBySize] = {
-  //   label: shopBySize,
-  //   order: 0,
-  //   items: shopBySizeArr,
-  // };
-
+  const shopBySizeElem = addShopBySize(item);
+  if (shopBySizeElem) {
+    subCategories[SHOP_BY_SIZE] = shopBySizeElem;
+  }
   const subCatArr = Object.keys(subCategories).sort((prevGroup, curGroup) => {
     return parseInt(prevGroup.order, 10) - parseInt(curGroup.order, 10);
   });
@@ -146,6 +169,7 @@ const NavMenuLevel2 = props => {
       data: subCategories[subcatName].items || [],
       title: subCategories[subcatName].label,
       order: parseInt(subCategories[subcatName].order, 10),
+      isShopBySize: subCategories[subcatName].isShopBySize,
     };
   });
 

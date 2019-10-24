@@ -12,19 +12,29 @@ export default css`
     padding: 10px 14px 10px;
     ul {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      @media ${props => props.theme.mediaQuery.large} {
+        flex-wrap: unset;
+        justify-content: space-between;
+      }
     }
   }
   .shop-by-size-links li {
     cursor: pointer;
     border: 1px solid ${props => props.theme.colorPalette.gray[800]};
-    width: 38px;
-    height: 38px;
-    border-radius: 20px 20px;
+    width: 41px;
+    height: 41px;
+    border-radius: 21px 21px;
     align-items: center;
     justify-content: center;
     display: flex;
     margin-bottom: 16px;
+    margin-right: 19px;
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 39px;
+      height: 39px;
+    }
   }
   .shop-by-size-links li:hover {
     border: solid 1px
