@@ -99,6 +99,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_0"
       index={0}
       key="l1menu_link_0"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -2177,6 +2178,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_1"
       index={1}
       key="l1menu_link_1"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -3943,6 +3945,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_2"
       index={2}
       key="l1menu_link_2"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -5999,6 +6002,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_3"
       index={3}
       key="l1menu_link_3"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -7797,6 +7801,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_4"
       index={4}
       key="l1menu_link_4"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -9081,6 +9086,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_5"
       index={5}
       key="l1menu_link_5"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -9691,6 +9697,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_6"
       index={6}
       key="l1menu_link_6"
+      onClick={[Function]}
       sizesRange={
         Array [
           Object {
@@ -10604,6 +10611,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_7"
       index={7}
       key="l1menu_link_7"
+      onClick={[Function]}
       sizesRange={null}
       subCategories={Array []}
     >
@@ -10669,6 +10677,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_8"
       index={8}
       key="l1menu_link_8"
+      onClick={[Function]}
       sizesRange={null}
       subCategories={
         Array [
@@ -10811,6 +10820,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_9"
       index={9}
       key="l1menu_link_9"
+      onClick={[Function]}
       sizesRange={null}
       subCategories={
         Array [
@@ -11029,6 +11039,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_10"
       index={10}
       key="l1menu_link_10"
+      onClick={[Function]}
       sizesRange={null}
       subCategories={
         Array [
@@ -11138,6 +11149,7 @@ exports[`NavBar component renders correctly 1`] = `
       dataLocator="l1menu_link_11"
       index={11}
       key="l1menu_link_11"
+      onClick={[Function]}
       sizesRange={null}
       subCategories={
         Array [

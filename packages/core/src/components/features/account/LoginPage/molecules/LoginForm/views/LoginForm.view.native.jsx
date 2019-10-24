@@ -6,7 +6,12 @@ import RecaptchaModal from '@tcp/core/src/components/common/molecules/recaptcha/
 import { noop, get } from 'lodash';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
+import {
+  FormStyle,
+  ShowHideWrapper,
+  HideShowFieldWrapper,
+  GuestButtonWrapper,
+} from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -200,11 +205,12 @@ class LoginForm extends React.PureComponent<Props> {
           />
 
           {variation === 'checkout' && (
-            <CustomButton
-              customStyle={styles.loginButtonStyle}
-              text={getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
-              onPress={this.handleContinueAsGuest}
-            />
+            <GuestButtonWrapper>
+              <CustomButton
+                text={getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
+                onPress={this.handleContinueAsGuest}
+              />
+            </GuestButtonWrapper>
           )}
 
           <Anchor

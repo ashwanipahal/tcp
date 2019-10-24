@@ -50,7 +50,7 @@ export const getPlpLabels = state => {
     PLP: {
       plpTiles: {
         lbl_add_to_bag: addToBag,
-        lbl_update: update,
+        lbl_pdp_update: update,
         lbl_pdp_size_error: errorMessage,
         lbl_pdp_size: size,
         lbl_pdp_fit: fit,

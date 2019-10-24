@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 2`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className=""
+    fontSizeVariation="large"
+    href="#"
+    id="createAccount"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Create Account
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="rightLink"
+    fontSizeVariation="large"
+    href="#"
+    id="login"
+    noLink={true}
+    onClick={[Function]}
+  >
+    Login
+  </Styled(Anchor)>
+</Fragment>
+`;

@@ -90,6 +90,10 @@ const renderL3Panel = (
 const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, e) => {
   if (!getViewportInfo().isDesktop) {
     openL3Drawer(`l3-drawer-${id.toString()}`, hasL3)(e);
+    const drawerElement = document.getElementById('tcp-nav-drawer');
+    if (drawerElement) {
+      drawerElement.scrollTop = 0;
+    }
   } else {
     hideL2Nav();
   }
