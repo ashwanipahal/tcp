@@ -31,7 +31,7 @@ const NavBar = props => {
             let categoryLayout = [];
             let sizesRange = [];
             const settings = {};
-
+            const stringId = index.toString();
             if (navL1Item.categoryContent.mainCategory) {
               const { mainCategory } = navL1Item.categoryContent;
               const { categoryLayout: catLayout, sizesRange: sizRange, set } = mainCategory;
@@ -47,10 +47,10 @@ const NavBar = props => {
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
                 index={index}
-                key={`l1menu_link_${index.toString()}`}
+                key={`l1menu_link_${stringId}`}
                 sizesRange={sizesRange}
                 onClick={() => {
-                  openL2Drawer(`l2-drawer-${index.toString()}`)();
+                  openL2Drawer(`l2-drawer-${stringId}`)();
                   document.getElementById('tcp-nav-drawer').scrollTop = 0;
                 }}
                 // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
@@ -58,7 +58,7 @@ const NavBar = props => {
                 {...navL1Item}
               >
                 <Drawer
-                  id={`l2-drawer-${index.toString()}`}
+                  id={`l2-drawer-${stringId}`}
                   small
                   medium
                   open={openDrawer}
@@ -78,7 +78,7 @@ const NavBar = props => {
                     categoryLayout={categoryLayout}
                     panelData={navL1Item.subCategories}
                     name={navL1Item.categoryContent.name}
-                    hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}
+                    hideL2Drawer={hideL2Drawer(`l2-drawer-${stringId}`)}
                     className="nav-bar-l2"
                     l1Index={index}
                     openL3Drawer={openL3Drawer}
