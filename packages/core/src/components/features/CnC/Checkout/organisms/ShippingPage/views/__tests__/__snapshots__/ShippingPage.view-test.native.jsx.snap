@@ -199,10 +199,15 @@ exports[`Shipping Page should render correctly with component did update and get
     isOverlay={false}
     onRequestClose={[Function]}
   >
-    <Connect(AddressVerification)
-      onError={[Function]}
-      onSuccess={[Function]}
-    />
+    <SafeAreaView>
+      <ScrollViewMock>
+        <Connect(AddressVerification)
+          onError={[Function]}
+          onSuccess={[Function]}
+          toggleAddressModal={[Function]}
+        />
+      </ScrollViewMock>
+    </SafeAreaView>
   </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"
@@ -336,10 +341,15 @@ exports[`Shipping Page should render correctly with component did update and get
     isOverlay={false}
     onRequestClose={[Function]}
   >
-    <Connect(AddressVerification)
-      onError={[Function]}
-      onSuccess={[Function]}
-    />
+    <SafeAreaView>
+      <ScrollViewMock>
+        <Connect(AddressVerification)
+          onError={[Function]}
+          onSuccess={[Function]}
+          toggleAddressModal={[Function]}
+        />
+      </ScrollViewMock>
+    </SafeAreaView>
   </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"

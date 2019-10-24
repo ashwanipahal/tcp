@@ -66,4 +66,7 @@ export default css`
       width: 100%;
     }
   }
+  .storeview__error {
+    width: 100%;
+  }
 `;

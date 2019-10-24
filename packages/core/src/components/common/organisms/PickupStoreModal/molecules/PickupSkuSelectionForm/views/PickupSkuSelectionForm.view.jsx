@@ -115,6 +115,7 @@ const PickupSkuSelectionForm = props => {
             selectedColorProductId={generalProductId}
             initialFormValues={initialValues}
             showAddToBagCTA={false}
+            renderReceiveProps
           />
         </div>
       </div>

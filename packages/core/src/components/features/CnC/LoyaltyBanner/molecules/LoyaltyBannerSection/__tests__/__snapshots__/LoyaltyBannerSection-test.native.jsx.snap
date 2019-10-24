@@ -1,43 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render correctly 1`] = `
-<View>
+<Fragment>
   <Styled(View)
     isPlcc={false}
   />
-  <Styled(GuestMprPlccSection)
-    currentSubtotal={21}
-    descriptionLabel={false}
-    estimatedSubtotal={33}
-    getCurrencySymbol=""
-    headingLabel={false}
-    isAddedToBagPage={false}
-    isConfirmationPage={false}
-    isPlcc={false}
-    isProductDetailView={false}
-    isReviewPage={false}
-    labels={Object {}}
-    remainingPlcc={false}
-    showSubtotal={true}
-    subHeadingLabel={false}
-  />
-  <View
-    className="footer"
-  >
-    <Styled(LoyaltyFooterSection)
-      className=""
-      earnedRewardAvailable={false}
-      isAddedToBagPage={false}
-      isConfirmationPage={false}
-      isGuest={true}
-      isPlcc={false}
-      isProductDetailView={false}
-      isReviewPage={false}
+  <Styled(View)>
+    <Styled(GuestMprPlccSection)
+      currentSubtotal={21}
+      descriptionLabel={false}
+      estimatedSubtotal={33}
+      getCurrencySymbol=""
+      headingLabel={false}
       labels={Object {}}
+      pageChecksObj={
+        Object {
+          "earnedRewardAvailable": false,
+          "isGuest": true,
+          "isPlcc": false,
+          "pageCategoryArr": Object {
+            "isAddedToBagPage": false,
+            "isConfirmationPage": false,
+            "isReviewPage": false,
+            "ischeckoutPage": true,
+          },
+        }
+      }
+      remainingPlcc={false}
+      showSubtotal={true}
+      subHeadingLabel={false}
     />
-  </View>
+    <View
+      className="footer"
+    >
+      <Styled(LoyaltyFooterSection)
+        className=""
+        earnedRewardAvailable={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
+        isGuest={true}
+        isPlcc={false}
+        isProductDetailView={false}
+        isReviewPage={false}
+        labels={Object {}}
+      />
+    </View>
+  </Styled(View)>
   <Styled(View)
     isPlcc={false}
   />
-</View>
+</Fragment>
 `;
