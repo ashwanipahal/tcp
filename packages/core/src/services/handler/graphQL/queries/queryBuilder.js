@@ -20,13 +20,14 @@ const QueryBuilder = {
    */
   addPreviewQueryMeta: query => {
     const apiConfig = getAPIConfig();
-    const { isPreviewEnv, previewToken, previewDate } = apiConfig;
+    const { isPreviewEnv, previewToken, previewDate, previewDateEnv } = apiConfig;
     const isPreview = !!(isPreviewEnv || previewToken);
     if (isPreview) {
       let localQuery = query;
       let previewQueryMeta = `is_preview: "TRUE"`;
       previewQueryMeta += previewToken ? `, preview_token: "${previewToken}"` : '';
-      previewQueryMeta += previewDate ? `, preview_date: "${previewDate}"` : '';
+      previewQueryMeta +=
+        previewDate || previewDateEnv ? `, preview_date: "${previewDate || previewDateEnv}"` : '';
       // For root components and labels
       localQuery = localQuery.replace(/(brand\s*:\s*\S*,{1,1})/g, `$1 ${previewQueryMeta},`);
       // For modules
