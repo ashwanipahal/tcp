@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
@@ -29,6 +30,7 @@ import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import ImageCarousel from '../../ImageCarousel';
+import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
@@ -139,7 +141,14 @@ const ListItem = props => {
         productInfo={productInfo}
         accessibilityLabel="Price Section"
       />
-      <RenderTitle text={name} />
+      <RenderTitle
+        text={name}
+        onGoToPDPPage={onGoToPDPPage}
+        selectedColorIndex={selectedColorIndex}
+        item={item}
+        productInfo={productInfo}
+        colorsMap={colorMapData}
+      />
       <RenderColorSwitch colorsMap={colorMapData} setSelectedColorIndex={setSelectedColorIndex} />
       {isFavorite && <RenderSizeFit item={item} />}
       {loyaltyPromotionMessage ? (
@@ -292,10 +301,14 @@ const RenderPricesSection = values => {
   );
 };
 
-const RenderTitle = ({ text }) => {
+const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColorIndex, item }) => {
+  const { pdpUrl } = productInfo;
+  const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
+  const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
+
   if (renderVariation) return null;
   return (
-    <TitleContainer>
+    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, text)}>
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
@@ -386,7 +399,35 @@ RenderPurchasedQuantity.propTypes = {
   item: PropTypes.shape({}).isRequired,
 };
 
-RenderTitle.propTypes = TextProps;
+RenderTitle.propTypes = {
+  text: PropTypes.string.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
+  colorsMap: PropTypes.shape({
+    miscInfo: PropTypes.string,
+  }),
+  productInfo: PropTypes.shape({
+    name: PropTypes.string,
+    pdpUrl: PropTypes.string,
+  }),
+  selectedColorIndex: PropTypes.number,
+  item: PropTypes.shape({
+    skuInfo: PropTypes.string,
+  }),
+};
+
+RenderTitle.defaultProps = {
+  colorsMap: {
+    miscInfo: '',
+  },
+  productInfo: {
+    name: '',
+    pdpUrl: '',
+  },
+  selectedColorIndex: 0,
+  item: {
+    skuInfo: '',
+  },
+};
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
