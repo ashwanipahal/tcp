@@ -18,6 +18,12 @@ const styles = css`
     }
   }
 
+  .information-header {
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 1px;
+  }
+
   .checkout-button {
     display: flex;
     flex: 1;

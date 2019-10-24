@@ -31,6 +31,12 @@ const AccountStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
+    GiftCardPage: {
+      screen: ProductDetail,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
     PointsHistoryPage: {
       screen: PointsHistory,
       navigationOptions: ({ navigation }) => {

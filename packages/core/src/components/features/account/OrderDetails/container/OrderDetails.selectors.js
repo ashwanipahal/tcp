@@ -18,13 +18,15 @@ export const getAllItems = createSelector(
     const items = [];
     if (orderState) {
       if (orderState.purchasedItems && orderState.purchasedItems.length > 0) {
-        items.push(orderState.purchasedItems[0].items);
+        orderState.purchasedItems.forEach(item => {
+          items.push(...item.items);
+        });
       }
       if (orderState.canceledItems && orderState.canceledItems.length > 0) {
-        items.push(orderState.canceledItems);
+        items.push(...orderState.canceledItems);
       }
       if (orderState.outOfStockItems && orderState.outOfStockItems.length > 0) {
-        items.push(orderState.outOfStockItems);
+        items.push(...orderState.outOfStockItems);
       }
     }
     return items;

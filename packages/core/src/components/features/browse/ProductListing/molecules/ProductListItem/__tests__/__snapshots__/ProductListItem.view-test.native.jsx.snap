@@ -4,6 +4,8 @@ exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
   accessible={true}
   fullWidth={false}
+  margins={null}
+  paddings="12px 0 12px 0"
   renderPriceAndBagOnly={false}
 >
   <RenderTopBadge1
