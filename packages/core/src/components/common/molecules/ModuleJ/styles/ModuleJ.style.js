@@ -12,8 +12,13 @@ export default css`
 
   .promo-alt {
     background-color: ${props => (props.bgColor ? props.bgColor : props.theme.colorPalette.white)};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: 15px;
     padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 14px;
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
+    }
   }
 
   .topbar {
@@ -57,7 +62,7 @@ export default css`
   }
 
   .promo-header-wrapper:first-child {
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    padding: 0 0;
     display: inline-block;
     ${props =>
       props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
@@ -108,6 +113,13 @@ export default css`
     }
   }
 
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+  }
+
   .moduleJ__carousel-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
@@ -151,6 +163,15 @@ export default css`
   }
   .cta-btn {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+
+  .product-tab-list {
+    margin-top: 27px;
+  }
+
+  .product-image {
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 `;
 

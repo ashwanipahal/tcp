@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { MyPreferencesTile } from '../MyPreferencesTile.view';
 
 describe('MyPreferencesTile component', () => {
-  it('should render correctly when coupons are not present', () => {
+  it('should render correctly', () => {
     const props = {
       labels: {},
       isCanada: '',

@@ -1,3 +1,5 @@
+const { trackError } = require('./errorReporter.util');
+
 const DEFAULT_CACHE_TIME = 7200;
 const DEFAULT_CACHE_EXP_MODIFIER = 'EX';
 
@@ -28,13 +30,14 @@ const setDataInRedis = ({
 
 const redisConnectCallback = () => {
   console.log(`Redis(Elasticache) CONNECTED`);
-  // TODO - Raygun Success handling here
 };
 
 const redisErrorCallback = err => {
-  console.log(`Redis(Elasticache) ERROR: ${err.toString()}`);
+  trackError({
+    error: err,
+    errorTags: ['Redis Connection'],
+  });
   global.redisClient.quit();
-  // TODO - Raygun Error handling here
 };
 
 const connectRedis = config => {
@@ -52,6 +55,10 @@ const connectRedis = config => {
       redisConnectCallback();
     });
   } catch (e) {
+    trackError({
+      error: e,
+      errorTags: ['Redis Catch'],
+    });
     console.log(`Redis(Elasticache) CATCH ERROR: ${e.toString()}`);
   }
 };

@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  padding: 24px 14px;
+  padding: 24px 12px;
   background-color: ${props =>
     props.theme.isGymboree
       ? props.theme.colorPalette.orange[50]
@@ -100,7 +100,7 @@ export default css`
     }
 
     .storeLinks {
-      padding: 0 10px;
+      padding: 0 5px;
       border-right: 1px solid;
     }
 

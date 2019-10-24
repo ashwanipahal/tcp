@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import PointsClaimForm from '../molecules/PointsClaimForm';
 import RewardsFooter from '../../common/molecule/RewardsFooterLinks/views/RewardsFooterLinks.view.native';
@@ -18,29 +18,42 @@ export const PointsClaimView = ({
   claimSubmit,
   ...otherprops
 }) => {
+  let behavior = null;
+  let keyboardVerticalOffset = 0;
+  if (Platform.OS === 'ios') {
+    behavior = 'padding';
+    keyboardVerticalOffset = 64;
+  }
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-      <PointsClaimWrapper>
-        <PointsClaimForm
-          labels={labels}
-          successMessage={successMessage}
-          errorMessage={errorMessage}
-          onSubmit={claimSubmit}
-          onBack={onBack}
-          resetPasswordErrorMessage={resetPasswordErrorMessage}
-          showNotification={showNotification}
-          {...otherprops}
-        />
-        <RewardsFooter
-          programDetailsCta={getLabelValue(
-            labels,
-            'lbl_my_rewards_program_details',
-            'myPlaceRewards'
-          )}
-          termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'common')}
-        />
-      </PointsClaimWrapper>
-    </ScrollView>
+    <KeyboardAvoidingView
+      behavior={behavior}
+      keyboardVerticalOffset={keyboardVerticalOffset}
+      enabled
+    >
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+        <PointsClaimWrapper>
+          <PointsClaimForm
+            labels={labels}
+            successMessage={successMessage}
+            errorMessage={errorMessage}
+            onSubmit={claimSubmit}
+            onBack={onBack}
+            resetPasswordErrorMessage={resetPasswordErrorMessage}
+            showNotification={showNotification}
+            {...otherprops}
+          />
+          <RewardsFooter
+            programDetailsCta={getLabelValue(
+              labels,
+              'lbl_my_rewards_program_details',
+              'myPlaceRewards'
+            )}
+            termsConditionCta={getLabelValue(labels, 'lbl_common_tnc', 'common')}
+          />
+        </PointsClaimWrapper>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

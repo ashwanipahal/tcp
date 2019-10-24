@@ -434,6 +434,7 @@ export function* startSflItemMoveToBag({ payload }) {
         isRecalculateTaxes: true,
         recalcRewards: true,
         translation: true,
+        excludeCartItems: false,
       })
     );
     // yield put(BAG_PAGE_ACTIONS.getOrderDetails());

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
-import LineStyle from '../styles/LoyaltyBannerSection.style.native';
+import { LineStyle, LoyaltySectionWrapper } from '../styles/LoyaltyBannerSection.style.native';
 import mobileHashValues from '../../../util/utilityNative';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
@@ -32,6 +32,13 @@ const LoyaltyBannerSection = props => {
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
 
+  const pageChecksObj = {
+    isGuest,
+    isPlcc,
+    pageCategoryArr,
+    earnedRewardAvailable,
+  };
+
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
     showSubtotal = true;
@@ -54,7 +61,7 @@ const LoyaltyBannerSection = props => {
         LoyaltyLabels.headingLabelValFn,
         '#estimatedRewardsVal#',
         LoyaltyLabels.rewardPointsValueFn,
-        isPlcc
+        pageChecksObj
       )
     : false;
   subHeadingLabel = LoyaltyLabels.subHeadingLabelFn || false;
@@ -64,43 +71,41 @@ const LoyaltyBannerSection = props => {
         LoyaltyLabels.remainingPlccValFn,
         '#pointsToNextReward#',
         pointsToNextReward,
-        isPlcc
+        pageChecksObj
       )
     : false;
 
   return (
-    <View>
+    <>
       <LineStyle isPlcc={isPlcc} />
-      <GuestMprPlccSection
-        labels={labels}
-        headingLabel={headingLabel}
-        subHeadingLabel={subHeadingLabel}
-        descriptionLabel={descriptionLabel}
-        remainingPlcc={remainingPlcc}
-        showSubtotal={showSubtotal}
-        getCurrencySymbol={getCurrencySymbol}
-        currentSubtotal={currentSubtotal}
-        estimatedSubtotal={estimatedSubtotal}
-        isPlcc={isPlcc}
-        isReviewPage={isReviewPage}
-        isConfirmationPage={isConfirmationPage}
-        isAddedToBagPage={isAddedToBagPage}
-        isProductDetailView={isProductDetailView}
-      />
-      <View className="footer">
-        <LoyaltyFooterSection
+      <LoyaltySectionWrapper>
+        <GuestMprPlccSection
           labels={labels}
-          isPlcc={isPlcc}
-          isProductDetailView={isProductDetailView}
-          isReviewPage={isReviewPage}
-          isConfirmationPage={isConfirmationPage}
-          isGuest={isGuest}
-          isAddedToBagPage={isAddedToBagPage}
-          earnedRewardAvailable={earnedRewardAvailable}
+          headingLabel={headingLabel}
+          subHeadingLabel={subHeadingLabel}
+          descriptionLabel={descriptionLabel}
+          remainingPlcc={remainingPlcc}
+          showSubtotal={showSubtotal}
+          getCurrencySymbol={getCurrencySymbol}
+          currentSubtotal={currentSubtotal}
+          estimatedSubtotal={estimatedSubtotal}
+          pageChecksObj={pageChecksObj}
         />
-      </View>
+        <View className="footer">
+          <LoyaltyFooterSection
+            labels={labels}
+            isPlcc={isPlcc}
+            isProductDetailView={isProductDetailView}
+            isReviewPage={isReviewPage}
+            isConfirmationPage={isConfirmationPage}
+            isGuest={isGuest}
+            isAddedToBagPage={isAddedToBagPage}
+            earnedRewardAvailable={earnedRewardAvailable}
+          />
+        </View>
+      </LoyaltySectionWrapper>
       <LineStyle isPlcc={isPlcc} />
-    </View>
+    </>
   );
 };
 

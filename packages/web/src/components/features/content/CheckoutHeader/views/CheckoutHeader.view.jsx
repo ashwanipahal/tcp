@@ -91,7 +91,12 @@ const CheckoutHeader = ({
                 large: 12,
               }}
             >
-              <BodyCopy component="span" fontSize="fs16" fontWeight="semibold">
+              <BodyCopy
+                component="span"
+                fontSize="fs16"
+                fontWeight="semibold"
+                className="checkout-mobile-header-font"
+              >
                 {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
               </BodyCopy>
             </Col>

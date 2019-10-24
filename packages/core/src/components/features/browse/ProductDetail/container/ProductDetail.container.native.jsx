@@ -14,6 +14,8 @@ import {
   getShortDescription,
   getGeneralProductId,
   getDescription,
+  getCurrentCurrency,
+  getCurrencyAttributes,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -69,6 +71,8 @@ class ProductDetailContainer extends React.PureComponent {
       longDescription,
       shortDescription,
       itemPartNumber,
+      currency,
+      currencyAttributes,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -89,6 +93,8 @@ class ProductDetailContainer extends React.PureComponent {
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
             longDescription={longDescription}
+            currency={currency}
+            currencyExchange={currencyAttributes.exchangevalue}
           />
         ) : null}
       </React.Fragment>
@@ -109,6 +115,8 @@ function mapStateToProps(state) {
     shortDescription: getShortDescription(state),
     itemPartNumber: getGeneralProductId(state),
     longDescription: getDescription(state),
+    currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
   };
 }
 
@@ -142,6 +150,8 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
+  currency: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -155,6 +165,10 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
+  currency: 'USD',
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
 };
 
 export default connect(
