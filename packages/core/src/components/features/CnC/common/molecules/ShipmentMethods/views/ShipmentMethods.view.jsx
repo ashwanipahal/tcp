@@ -40,6 +40,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
                   name="shippingMethodId"
                   hideSubtitleOnMobile
                   variation="secondary"
+                  className="estimated-shipping-size"
                 />
               </Col>
             );

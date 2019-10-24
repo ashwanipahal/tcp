@@ -30,6 +30,7 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
+        className="estimated-shipping-size"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -190,6 +191,7 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
+        className="estimated-shipping-size"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

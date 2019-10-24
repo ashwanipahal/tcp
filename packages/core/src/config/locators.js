@@ -373,4 +373,11 @@ export default {
   logo_gymboree: 'logo-gymboree',
   giftService_list: 'giftService-list',
   details_modal: 'details-modal',
+
+  // favorite list
+  fav_brand_title: 'Brand',
+  fav_brand_tcp_lbl: 'The Childrens Place',
+  fav_brand_gym_lbl: 'Gymboree',
+  fav_lbl_myFavorites: 'My Favorites',
+  fav_lbl_editListSettings: 'Edit List Settings',
 };

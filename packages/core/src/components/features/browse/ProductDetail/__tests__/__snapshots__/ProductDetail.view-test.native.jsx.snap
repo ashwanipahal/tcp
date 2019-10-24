@@ -14,14 +14,9 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       onImageClick={[Function]}
     />
     <Styled(ProductSummary)
-      currencyExchange={
-        Array [
-          Object {
-            "exchangevalue": 1,
-          },
-        ]
-      }
-      currencySymbol="$"
+      currencyExchange={1}
+      currencySymbol="USD"
+      isGiftCard={false}
       isPlcc={false}
       productData={
         Object {
@@ -44,6 +39,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       handleFormSubmit={null}
       handleSubmit={null}
       onChangeColor={[Function]}
+      onChangeSize={[Function]}
       plpLabels={null}
       selectedColorProductId=""
     />
