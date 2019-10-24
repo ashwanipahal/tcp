@@ -16,7 +16,7 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -29,13 +29,17 @@ export default css`
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: 22px;
+    font-size: ${props =>
+      props.theme.isGymboree
+        ? props.theme.typography.fontSizes.fs20
+        : props.theme.typography.fontSizes.fs22};
     line-height: normal;
     letter-spacing: 2px;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -49,6 +53,7 @@ export default css`
     }
   }
   .medium_text_black {
+    color: ${props => props.theme.colorPalette.gray['900']};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs32};
@@ -95,6 +100,18 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       display: inline;
     }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    letter-spacing: 2px;
+    color: ${props => props.theme.colorPalette.white};
+    text-align: center;
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }

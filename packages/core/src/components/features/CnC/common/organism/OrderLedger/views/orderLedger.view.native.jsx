@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -27,6 +28,14 @@ const popover = message => {
       color="gray.900"
       text={message}
     />
+  );
+};
+
+const getLoyaltybanner = (isConfirmationPage, isReviewPage) => {
+  return (
+    !isCanada() && (
+      <LoyaltyBanner isConfirmationPage={isConfirmationPage} isReviewPage={isReviewPage} />
+    )
   );
 };
 
@@ -304,7 +313,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, isReviewPage) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <LoyaltyBanner isConfirmationPage={isConfirmationPage} isReviewPage={isReviewPage} />
+      {getLoyaltybanner(isConfirmationPage, isReviewPage)}
     </StyledOrderLedger>
   );
 };

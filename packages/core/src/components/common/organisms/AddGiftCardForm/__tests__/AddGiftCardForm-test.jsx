@@ -20,6 +20,12 @@ describe('Add gift card form component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should render component correctly when isFromReview props is passed', () => {
+    props.isFromReview = true;
+    const component = shallow(<AddGiftCardFormVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
   it('simulate add gift card button ', () => {
     const component = shallow(<AddGiftCardFormVanilla {...props} />);
     component.instance().handleSubmit({

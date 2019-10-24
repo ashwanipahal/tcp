@@ -3,7 +3,7 @@
 exports[`RecentOrders component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)
-    spacingStyles="margin-bottom-MED"
+    spacingStyles="margin-top-LRG margin-bottom-SM"
   >
     <Styled(BodyCopy)
       accessibilityText=""
@@ -11,7 +11,7 @@ exports[`RecentOrders component should renders correctly 1`] = `
       data-locator="no_rewards_msg"
       dataLocator="recent-order_heading"
       fontFamily="secondary"
-      fontSize="fs14"
+      fontSize="fs16"
       fontWeight="semibold"
       margin={null}
       mobileFontFamily="secondary"
@@ -29,7 +29,7 @@ exports[`RecentOrders component should renders correctly 1`] = `
 exports[`RecentOrders component should renders correctly 2`] = `
 <Fragment>
   <Styled(View)
-    spacingStyles="margin-bottom-MED"
+    spacingStyles="margin-top-LRG margin-bottom-SM"
   >
     <Styled(BodyCopy)
       accessibilityText=""
@@ -37,7 +37,7 @@ exports[`RecentOrders component should renders correctly 2`] = `
       data-locator="no_rewards_msg"
       dataLocator="recent-order_heading"
       fontFamily="secondary"
-      fontSize="fs14"
+      fontSize="fs16"
       fontWeight="semibold"
       margin={null}
       mobileFontFamily="secondary"
@@ -49,6 +49,7 @@ exports[`RecentOrders component should renders correctly 2`] = `
   <OrdersListItem
     componentProps={Object {}}
     handleComponentChange={[Function]}
+    isPastOrder={false}
     labels={Object {}}
     orderItem={
       Object {

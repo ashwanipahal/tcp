@@ -30,51 +30,47 @@ const GuestMprPlccSection = props => {
     getCurrencySymbol,
     currentSubtotal,
     estimatedSubtotal,
-    isPlcc,
+    pageChecksObj,
   } = props;
   return (
     <View>
       {headingLabel && (
-        <HeadingLabel isPlcc={isPlcc}>
+        <HeadingLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
             text={headingLabel}
           />
         </HeadingLabel>
       )}
       {subHeadingLabel && (
-        <SubHeadingLabel>
+        <SubHeadingLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs18"
             text={subHeadingLabel}
           />
         </SubHeadingLabel>
       )}
       {descriptionLabel && (
-        <DescriptionLabel>
+        <DescriptionLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
             color="black"
             text={descriptionLabel}
           />
         </DescriptionLabel>
       )}
       {remainingPlcc && (
-        <RemainingPlccLabel>
+        <RemainingPlccLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
             color="black"
             text={remainingPlcc}
           />
@@ -145,7 +141,7 @@ GuestMprPlccSection.propTypes = {
   descriptionLabel: PropTypes.string,
   remainingPlcc: PropTypes.string,
   showSubtotal: PropTypes.bool,
-  isPlcc: PropTypes.bool,
+  pageChecksObj: PropTypes.shape({}),
   getCurrencySymbol: PropTypes.string,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.string,
@@ -157,7 +153,7 @@ GuestMprPlccSection.defaultProps = {
   descriptionLabel: '',
   remainingPlcc: '',
   showSubtotal: false,
-  isPlcc: false,
+  pageChecksObj: {},
   getCurrencySymbol: '',
   currentSubtotal: 0,
   estimatedSubtotal: '',

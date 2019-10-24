@@ -17,4 +17,8 @@ const getPageLevelHeaderHeight = () => {
     : 0;
 };
 
-export default { getElementStickyPosition, bindScrollEvent, getPageLevelHeaderHeight };
+export default {
+  getElementStickyPosition,
+  bindScrollEvent,
+  getPageLevelHeaderHeight,
+};
