@@ -303,6 +303,7 @@ class SearchBar extends React.PureComponent {
 
     const HighLightSearch = inputText => this.highlight(inputText);
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
+
     return (
       <React.Fragment>
         <BodyCopy className={className} component="div">
