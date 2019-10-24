@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import UnderlineStyle from '../styles/OrdersList.style.native';
 import RecentOrders from '../molecules/RecentOrders';
 import PastOrders from '../molecules/PastOrders';
 import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
@@ -17,8 +18,14 @@ export const OrdersList = ({
 }) => {
   return (
     <React.Fragment>
-      <StyledHeading>{getLabelValue(labels, 'lbl_orders_heading', 'orders')}</StyledHeading>
-      <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
+      <StyledHeading>
+        <BodyCopy
+          fontSize="fs16"
+          fontWeight="extrabold"
+          text={getLabelValue(labels, 'lbl_orders_heading', 'orders')}
+        />
+      </StyledHeading>
+      <UnderlineStyle />
       <RecentOrders
         labels={labels}
         ordersListItems={ordersListItems}

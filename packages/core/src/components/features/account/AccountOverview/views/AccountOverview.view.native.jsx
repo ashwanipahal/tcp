@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
@@ -14,7 +14,6 @@ import OrdersTile from '../../common/organism/OrdersTile';
 import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
   UnderlineStyle,
-  ImageWrapper,
   FavtWrapper,
   FavoritesWrapper,
   TextWrapper,
@@ -22,6 +21,7 @@ import {
   ImageContainer,
   RightArrowImageContainer,
   StyledImage,
+  FavImageWrapper,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
@@ -55,6 +55,8 @@ class AccountOverview extends PureComponent<Props> {
         createAccount: '',
         favorites: '',
       },
+      horizontalBar: true,
+      modalHeaderLbl: ' ',
     };
   }
 
@@ -76,6 +78,7 @@ class AccountOverview extends PureComponent<Props> {
           variation={getComponentId.favorites && 'favorites'}
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
+          updateHeader={this.updateHeader}
         />
       );
     }
@@ -148,20 +151,33 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   getModalHeader = (getComponentId, labels) => {
-    let header = null;
+    let header = ' ';
     if (getComponentId.login || getComponentId.favorites) {
       header = getLabelValue(labels, 'lbl_overview_login_text');
+      this.setState({
+        horizontalBar: true,
+      });
     }
     if (getComponentId.createAccount) {
       header = getLabelValue(labels, 'lbl_overview_createAccount');
+      this.setState({
+        horizontalBar: true,
+      });
     }
-    return header;
+    this.setState({ modalHeaderLbl: header });
+  };
+
+  updateHeader = () => {
+    this.setState({
+      modalHeaderLbl: ' ',
+      horizontalBar: false,
+    });
   };
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyCard } = this.state;
-    const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
+    const { showModal, getComponentId, applyCard, modalHeaderLbl, horizontalBar } = this.state;
+    this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
     return (
@@ -212,13 +228,13 @@ class AccountOverview extends PureComponent<Props> {
           <React.Fragment>
             <LoggedinTextWrapper>
               <BodyCopy
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs14"
                 textAlign="center"
                 text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
               />
               <BodyCopy
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs14"
                 textAlign="center"
                 text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
@@ -230,7 +246,7 @@ class AccountOverview extends PureComponent<Props> {
                 color={colorPallete.text.secondary}
                 id="createAccount"
                 type="submit"
-                width="150px"
+                width="47%"
                 data-locator=""
                 text={getLabelValue(labels, 'lbl_overview_join_text')}
                 onPress={e =>
@@ -250,7 +266,7 @@ class AccountOverview extends PureComponent<Props> {
                 id="login"
                 type="submit"
                 data-locator=""
-                width="150px"
+                width="47%"
                 text={getLabelValue(labels, 'lbl_overview_login_text')}
                 onPress={e =>
                   this.toggleModal({
@@ -272,25 +288,24 @@ class AccountOverview extends PureComponent<Props> {
                 heading={modalHeaderLbl}
                 headingFontFamily="secondary"
                 fontSize="fs16"
+                horizontalBar={horizontalBar}
               >
-                <SafeAreaView>
-                  <ModalViewWrapper>
-                    {this.renderComponent({
-                      navigation,
-                      getComponentId,
-                      isUserLoggedIn,
-                    })}
-                  </ModalViewWrapper>
-                </SafeAreaView>
+                <ModalViewWrapper>
+                  {this.renderComponent({
+                    navigation,
+                    getComponentId,
+                    isUserLoggedIn,
+                  })}
+                </ModalViewWrapper>
               </ModalNative>
             )}
             <FavtWrapper>
               <BodyCopy
                 color="gray.900"
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs13"
                 textAlign="left"
-                fontWeight="semibold"
+                fontWeight="regular"
                 text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
                 onPress={e =>
                   this.toggleModal({
@@ -299,9 +314,9 @@ class AccountOverview extends PureComponent<Props> {
                   })
                 }
               />
-              <ImageWrapper>
-                <ImageComp source={favIcon} width={20} height={18} />
-              </ImageWrapper>
+              <FavImageWrapper>
+                <ImageComp source={favIcon} width={15} height={13} />
+              </FavImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
             <TouchabelContainer onPress={this.toggleApplyNowModal}>
@@ -320,9 +335,7 @@ class AccountOverview extends PureComponent<Props> {
                   />
                 </TextWrapper>
               </FavoritesWrapper>
-              <ImageContainer>
-                <ImageComp source={rightIcon} width={7} height={10} />
-              </ImageContainer>
+              <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
             </TouchabelContainer>
 
             <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />

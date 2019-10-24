@@ -84,7 +84,7 @@ const GuestMprPlccSection = props => {
                   fontWeight="semibold"
                 >
                   {getCurrencySymbol}
-                  {currentSubtotal}
+                  {currentSubtotal.toFixed(2)}
                 </BodyCopy>
               </Col>
             )}
@@ -117,7 +117,7 @@ const GuestMprPlccSection = props => {
                   fontWeight="extrabold"
                 >
                   {getCurrencySymbol}
-                  {estimatedSubtotal}
+                  {estimatedSubtotal.toFixed(2)}
                 </BodyCopy>
               </Col>
             )}

@@ -1,37 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Account View should render Account Correctly 1`] = `
-<Fragment>
-  <Styled(MyAccountLayoutView)
-    active="accountOverview"
-    activeSubComponent="accountOverview"
-    labels={Object {}}
-    navData={Array []}
-    router={
-      Object {
-        "query": Object {
-          "id": "accountOverview",
-        },
-      }
+<Styled(MyAccountLayoutView)
+  active="accountOverview"
+  activeSubComponent="accountOverview"
+  labels={Object {}}
+  navData={Array []}
+  router={
+    Object {
+      "query": Object {
+        "id": "accountOverview",
+      },
     }
-  />
-</Fragment>
+  }
+/>
 `;
 
 exports[`Account View should render Account container Correctly 1`] = `
-<Fragment>
-  <Styled(MyAccountLayoutView)
-    active="addressBook"
-    activeSubComponent="addressBook"
-    labels={Object {}}
-    navData={Array []}
-    router={
-      Object {
-        "query": Object {
-          "id": "addressBook",
-        },
-      }
+<Styled(MyAccountLayoutView)
+  active="addressBook"
+  activeSubComponent="addressBook"
+  labels={Object {}}
+  navData={Array []}
+  router={
+    Object {
+      "query": Object {
+        "id": "addressBook",
+      },
     }
-  />
-</Fragment>
+  }
+/>
 `;
