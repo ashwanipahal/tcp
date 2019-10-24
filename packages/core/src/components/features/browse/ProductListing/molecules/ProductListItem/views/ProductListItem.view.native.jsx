@@ -106,7 +106,6 @@ const ListItem = props => {
     <ListContainer
       fullWidth={fullWidth}
       renderPriceAndBagOnly={renderVariation}
-      accessible
       margins={margins}
       paddings={paddings}
     >
