@@ -288,7 +288,10 @@ export class StoreLanding extends PureComponent {
                   />
                 </Col>
               </Row>
-              <Row className="storeView__List" fullBleed>
+              <Row
+                className={`storeView__List${mapView ? ' storeView__ListAndMap' : ''}`}
+                fullBleed
+              >
                 {mapView
                   ? this.renderMapView(modifiedStoreList)
                   : this.renderStoreList(modifiedStoreList)}

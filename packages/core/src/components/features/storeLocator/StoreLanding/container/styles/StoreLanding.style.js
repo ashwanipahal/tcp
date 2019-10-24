@@ -19,7 +19,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .storeView__List {
+    .storeView__ListAndMap {
       flex-direction: row-reverse;
     }
 

@@ -523,7 +523,7 @@ exports[`StoreSearch Container should call openStoreDetails 1`] = `
             colSize={
               Object {
                 "large": 12,
-                "medium": 8,
+                "medium": 4,
                 "small": 6,
               }
             }
