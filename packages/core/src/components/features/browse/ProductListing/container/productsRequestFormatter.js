@@ -458,8 +458,6 @@ export default class ProductsOperator {
     numberOfProducts,
     categoryPathMap,
     catNameL3,
-    l2currentNavigationIds,
-    updatedAvailableL3,
   }) => {
     const isSearchPage = this.isPageSearch(location);
     const searchTerm = location.pathname.substr(11);
@@ -518,8 +516,6 @@ export default class ProductsOperator {
       shouldApplyUnbxdLogic: this.checkUnbxdLogic(isSearchPage),
       hasShortImage,
       categoryNameList,
-      l2currentNavigationIds,
-      updatedAvailableL3,
     };
   };
 
