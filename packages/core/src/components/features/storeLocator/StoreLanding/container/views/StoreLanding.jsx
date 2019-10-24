@@ -30,6 +30,27 @@ export class StoreLanding extends PureComponent {
     showSubmitError: false,
   };
 
+  componentDidUpdate(prevProps) {
+    const {
+      favoriteStore: { basicInfo },
+    } = this.props;
+    const prevFavStoreBasicInfo = prevProps.favoriteStore && prevProps.favoriteStore.basicInfo;
+
+    if (basicInfo && prevFavStoreBasicInfo && prevFavStoreBasicInfo.id !== basicInfo.id) {
+      const storeList = document.querySelectorAll(
+        '.store__list.store_item_container .address-tile'
+      );
+      let storeMaxHeight = 0;
+      storeList.forEach(list => {
+        if (storeMaxHeight < list.offsetHeight) storeMaxHeight = list.offsetHeight;
+      });
+      storeList.forEach(list => {
+        const element = list;
+        element.style.height = `${storeMaxHeight}px`;
+      });
+    }
+  }
+
   openStoreDetails = (event, store) => {
     event.preventDefault();
     const { routerHandler } = routeToStoreDetails(store);
@@ -137,7 +158,7 @@ export class StoreLanding extends PureComponent {
     }
     return suggestedStoreList.map((item, index) => (
       <Col
-        colSize={{ large: 12, medium: 8, small: 6 }}
+        colSize={{ large: 12, medium: 4, small: 6 }}
         ignoreGutter={{ small: true }}
         className="store__list store_item_container"
         key={item.basicInfo.id}
