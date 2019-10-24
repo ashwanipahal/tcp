@@ -35,6 +35,18 @@ export const filterBopisProducts = orderItems => {
     }));
 };
 
+/**
+ * @method currencyConversion This method calculates the price for the product based on the exchange rate for different countries
+ * @param {float} price value on which calculation needs to be done
+ * @param {object} exchangeRate object having current exchange rate available
+ */
+export const currencyConversion = (price, exchangeRate) => {
+  const { exchangevalue, merchantMargin, exchangeRoundMethod } = exchangeRate;
+  let newPrice = price * exchangevalue * merchantMargin;
+  newPrice = exchangeRoundMethod ? parseFloat(newPrice.toFixed(exchangeRoundMethod)) : newPrice;
+  return newPrice;
+};
+
 export const updateBopisInventory = (orderItems, bopisItemsInventory) => {
   return orderItems.map(item => {
     const bopisItem =
