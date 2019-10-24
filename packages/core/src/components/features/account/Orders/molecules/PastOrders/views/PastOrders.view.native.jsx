@@ -15,10 +15,10 @@ const PastOrders = ({
   const pastOrdereList = ordersListItems.slice(1, ordersListItems.length);
   return (
     <>
-      <ViewWithSpacing spacingStyles="margin-bottom-MED margin-top-LRG">
+      <ViewWithSpacing spacingStyles="margin-bottom-MED margin-top-XXXL">
         <BodyCopy
           mobileFontFamily="secondary"
-          fontSize="fs14"
+          fontSize="fs16"
           fontWeight="semibold"
           data-locator="no_rewards_msg"
           text={getLabelValue(labels, 'lbl_orders_pastOrders', 'orders')}
@@ -32,6 +32,7 @@ const PastOrders = ({
             orderItem={orderItem}
             key={orderItem.orderNumber}
             navigation={navigation}
+            isPastOrder
             handleComponentChange={handleComponentChange}
             componentProps={componentProps}
           />
