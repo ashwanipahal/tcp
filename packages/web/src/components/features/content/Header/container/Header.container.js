@@ -8,8 +8,11 @@ import { setTrackOrderModalMountedState } from '@tcp/core/src/components/feature
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
+  isPlccUser,
   getUserName,
   getUserLoggedInState,
+  getCurrentPointsState,
+  getTotalRewardsState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import BAGPAGE_SELECTORS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
@@ -25,7 +28,10 @@ const mapStateToProps = state => {
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
+    isUserPlcc: isPlccUser(state),
     userName: getUserName(state),
+    userPoints: getCurrentPointsState(state),
+    userRewards: getTotalRewardsState(state),
     isLoggedIn: getUserLoggedInState(state),
     cartItemCount: getCartItemCount(),
     totalItems: BAGPAGE_SELECTORS.getTotalItems(state),
@@ -44,7 +50,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(closeNavigationDrawer());
     },
     openMiniBagDispatch: () => {
-      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
+      dispatch(BAG_PAGE_ACTIONS.getOrderDetails({ isCartPage: true }));
       dispatch(openMiniBag());
     },
     openOverlay: component => dispatch(openOverlayModal(component)),

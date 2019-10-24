@@ -15,6 +15,7 @@ const getGiftCardSectionLabels = state => {
     newGiftCard: getGiftSectionLabelValue('lbl_giftcard_newGiftCard'),
     availableGiftCards: getGiftSectionLabelValue('lbl_giftcard_availableCards'),
     appliedGiftCards: getGiftSectionLabelValue('lbl_giftcard_appliedCards'),
+    noGiftCards: getGiftSectionLabelValue('lbl_billing_noGC'),
   };
 };
 

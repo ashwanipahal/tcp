@@ -4,6 +4,7 @@ import {
 } from '@tcp/core/src/components/common/organisms/ProductPickup/util';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
+import { currencyConversion } from '../../../utils/utils';
 
 /**
  * @function noBossBopisMessage Checks for online only or clearance messages for BOSS/BOPIS items
@@ -217,3 +218,31 @@ export const getBOPISUnavailabilityMessage = (
  */
 export const getSTHUnavailabilityMessage = (availability, labels) =>
   availability !== CARTPAGE_CONSTANTS.AVAILABILITY.OK ? labels.ecomUnavailable : '';
+
+export const isCurrencyExchangeAvailable = currencyExchange =>
+  currencyExchange && currencyExchange.length;
+
+export const getPrices = ({ productDetail, currencyExchange }) => {
+  let { listPrice, wasPrice, salePrice, price } = productDetail.itemInfo;
+  const isCurrencyExchange = isCurrencyExchangeAvailable(currencyExchange);
+  // Cart item tile prices
+  salePrice =
+    isCurrencyExchange && salePrice
+      ? currencyConversion(salePrice, currencyExchange[0])
+      : salePrice;
+  wasPrice =
+    isCurrencyExchange && wasPrice ? currencyConversion(wasPrice, currencyExchange[0]) : wasPrice;
+
+  // SFL prices
+  listPrice =
+    isCurrencyExchange && listPrice
+      ? currencyConversion(listPrice, currencyExchange[0])
+      : listPrice;
+  price = isCurrencyExchange && price ? currencyConversion(listPrice, currencyExchange[0]) : price;
+  return {
+    salePrice,
+    wasPrice,
+    listPrice,
+    price,
+  };
+};

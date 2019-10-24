@@ -10,6 +10,7 @@ const {
   getSubTotal,
   getCouponsTotal,
   getSavingsTotal,
+  giftServiceTotal,
 } = ConfirmationSelectors;
 
 jest.mock('../../../../../utils/utils', () => ({
@@ -148,5 +149,9 @@ describe('Confirmation Page Selectors', () => {
 
   it.skip('#getSavingsTotal', () => {
     expect(getSavingsTotal(State)).toEqual(12);
+  });
+
+  it.skip('#giftServiceTotal', () => {
+    expect(giftServiceTotal(State)).toEqual(0);
   });
 });

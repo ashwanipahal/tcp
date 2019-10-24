@@ -115,4 +115,20 @@ describe('BillingSection', () => {
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render cvv if express checkout', () => {
+    const props = {
+      card: { ...cardMock },
+      address: null,
+      appliedGiftCards: fromJS([...appliedGiftCardsMock]),
+      className: '',
+      labels: {
+        ...labelsMock,
+      },
+      onEdit: jest.fn(),
+      isBillingVisited: false,
+      isExpressCheckout: true,
+    };
+    const tree = shallow(<BillingSection {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

@@ -15,6 +15,13 @@ export default css`
       display: inline-flex;
     }
   }
+
+  span.was-price {
+    margin-left: 5px;
+    color: ${props => props.theme.colorPalette.gray[800]};
+    text-decoration: line-through;
+  }
+
   .padding-left-6 {
     padding-left: 6px;
   }
@@ -214,6 +221,9 @@ export default css`
         /* stylelint-disable */
         span:not(.list-price) {
           font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
+        }
+        span.was-price {
+          font-size: ${props => props.theme.typography.fontSizes.fs12};
         }
         /* stylelint-enable */
       }
