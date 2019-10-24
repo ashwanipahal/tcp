@@ -21,7 +21,7 @@ const unsetPaymentFormEditState = (scope, e) => {
 };
 
 const handleBillingFormSubmit = (scope, e, isMobile) => {
-  const { handleSubmit, labels, onSubmit, scrollView } = scope.props;
+  const { handleSubmit, labels, scrollView } = scope.props;
   const { editMode } = scope.state;
   if (editMode) {
     scope.setState({ editModeSubmissionError: labels.cardEditUnSavedError });
@@ -29,7 +29,7 @@ const handleBillingFormSubmit = (scope, e, isMobile) => {
       ? scrollView.scrollTo({ x: 0, y: 1300, animated: true })
       : scope.ediCardErrorRef.current.scrollIntoView(false);
   }
-  return isMobile ? handleSubmit(onSubmit) : handleSubmit(e);
+  return handleSubmit(e);
 };
 
 export { onEditCardFocus, setFormToEditState, unsetPaymentFormEditState, handleBillingFormSubmit };
