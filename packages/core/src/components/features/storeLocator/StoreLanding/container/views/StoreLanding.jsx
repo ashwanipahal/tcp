@@ -30,13 +30,24 @@ export class StoreLanding extends PureComponent {
     showSubmitError: false,
   };
 
-  componentDidUpdate(prevProps) {
-    const {
-      favoriteStore: { basicInfo },
-    } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    const { favoriteStore } = this.props;
+    const { mapView } = this.state;
+    const currentFavStoreBasicInfo = favoriteStore && favoriteStore.basicInfo;
     const prevFavStoreBasicInfo = prevProps.favoriteStore && prevProps.favoriteStore.basicInfo;
 
-    if (basicInfo && prevFavStoreBasicInfo && prevFavStoreBasicInfo.id !== basicInfo.id) {
+    /**
+     * USE CASE - When we select a store to be fav store, the fav store icon will replace the button.
+     *  Then the selected flex item height is greater than one in the row, which make the user experience bad.
+     * IMPLEMENTATION - Put a check whether prev prop fav store is not equal to new prop fav store, then
+     *  retrieve all the tiles and calculate the height and apply the max height to all the tiles.
+     */
+    if (
+      (currentFavStoreBasicInfo &&
+        prevFavStoreBasicInfo &&
+        prevFavStoreBasicInfo.id !== currentFavStoreBasicInfo.id) ||
+      mapView !== prevState.mapView
+    ) {
       const storeList = document.querySelectorAll(
         '.store__list.store_item_container .address-tile'
       );

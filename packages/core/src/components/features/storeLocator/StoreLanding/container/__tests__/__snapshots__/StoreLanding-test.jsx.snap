@@ -2450,7 +2450,7 @@ exports[`StoreSearch Container should render StoreLanding Correctly with map 1`]
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
-          className="storeView__List"
+          className="storeView__List storeView__ListAndMap"
           fullBleed={true}
         >
           <Styled(Col)
