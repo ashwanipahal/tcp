@@ -229,6 +229,7 @@ Footer.propTypes = {
     favorites: PropTypes.func,
     'log-out': PropTypes.func,
     'my-account': PropTypes.func,
+    'create-account': PropTypes.func,
   }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
   pageName: PropTypes.string,

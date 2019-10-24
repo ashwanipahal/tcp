@@ -8,6 +8,8 @@ export const footerLinksActionMappingConfig = {
   favorites: setLoginModalMountedState,
   'log-out': logout,
   'my-account': openOverlayModal,
+  'create-account': openOverlayModal,
+  '/create-account': openOverlayModal,
 };
 
 export default footerLinksActionMappingConfig;

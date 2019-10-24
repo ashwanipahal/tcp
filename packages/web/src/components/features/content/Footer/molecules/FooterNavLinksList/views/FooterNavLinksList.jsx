@@ -46,6 +46,22 @@ const FooterNavLinksList = ({
       variation: 'primary',
     });
   };
+
+  const createNewAccount = (e, handler) => {
+    e.preventDefault();
+    footerActionCreator(handler, {
+      component: 'createAccount',
+      variation: 'primary',
+    });
+  };
+
+  const createAccountOnClick = (action, linkItems, dispatchFn, onClick) => {
+    let onClickVal = onClick;
+    if (action === 'create-account' || linkItems.url === '/create-account')
+      onClickVal = e => createNewAccount(e, dispatchFn);
+    return onClickVal;
+  };
+
   /**
    * Callback for redux action mapped to link action type
    * @callback dispatchFn
@@ -57,13 +73,16 @@ const FooterNavLinksList = ({
    * @param {string} action - link action type
    * @param {dispatchFn} dispatchFn -  redux action mapped to link action type
    */
-  const getOnClickAction = (action, dispatchFn) => {
+  const getOnClickAction = (action, dispatchFn, linkItems) => {
     let onClick = null;
-    if (action === 'track-order') onClick = e => trackOrderLink(e, dispatchFn);
-    if (action === 'favorites') onClick = e => loginModalOpenClick(e, dispatchFn);
-    if (action === 'log-out') onClick = e => logout(e, dispatchFn);
-    if (action === 'my-account') onClick = e => myAccountLogin(e, dispatchFn);
-
+    if (action === 'track-order' || linkItems.url === '/track-order')
+      onClick = e => trackOrderLink(e, dispatchFn);
+    if (action === 'favorites' || linkItems.url === 'www.childrensplace.com/us/favorites')
+      onClick = e => loginModalOpenClick(e, dispatchFn);
+    if (action === 'log-out' || linkItems.url === '/home') onClick = e => logout(e, dispatchFn);
+    if (action === 'my-account' || linkItems.url === '/account')
+      onClick = e => myAccountLogin(e, dispatchFn);
+    onClick = createAccountOnClick(action, linkItems, dispatchFn, onClick);
     return onClick;
   };
 
@@ -73,9 +92,23 @@ const FooterNavLinksList = ({
    * @param {number} index index number to track all the references.
    * @returns JSX of the link.
    */
+
+  const hideLogoutMyActLinkBool = linkItems => {
+    return (
+      (isLoggedIn && (linkItems.action === 'my-account' || linkItems.url === '/account')) ||
+      (!isLoggedIn && (linkItems.action === 'log-out' || linkItems.url === '/home')) ||
+      (isLoggedIn && (linkItems.action === 'create-account' || linkItems.url === '/create-account'))
+    );
+  };
+
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
-    const dispatchFn = linkAction ? linkConfig[linkAction] : null;
+    let dispatchFn = null;
+    if (linkAction) {
+      dispatchFn = linkConfig[linkAction];
+    } else if (linkItems.url) {
+      dispatchFn = linkConfig[linkItems.url];
+    }
     /*
       hideLogoutMyActLink - true - if linkAction is my-account and user is logged in.
       hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
@@ -87,11 +120,9 @@ const FooterNavLinksList = ({
       Problem Scenario - As the footer links are statically configured in CMS, if this condition
               is not put, user will be seeing both the links all the time.
     */
-    const hideLogoutMyActLink =
-      (isLoggedIn && linkAction === 'my-account') ||
-      (!isLoggedIn && linkAction === 'log-out') ||
-      false;
-    const onClick = linkAction ? getOnClickAction(linkAction, dispatchFn) : null;
+    const hideLogoutMyActLink = hideLogoutMyActLinkBool(linkItems) || false;
+    const onClick =
+      linkAction || linkItems.url ? getOnClickAction(linkAction, dispatchFn, linkItems) : null;
 
     const { url: ctaUrl, target, title, actualUrl } = linkItems;
 
@@ -102,7 +133,7 @@ const FooterNavLinksList = ({
 
     return !hideLogoutMyActLink ? (
       <li>
-        {linkAction ? (
+        {linkAction || linkItems.url ? (
           <Button
             type="button"
             data-locator={`col_${colNum}_link_${index}`}
