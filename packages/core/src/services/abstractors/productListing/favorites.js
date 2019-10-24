@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, parseBoolean } from '@tcp/core/src/utils';
+import { getAPIConfig, parseBoolean, getBrand } from '@tcp/core/src/utils';
 import {
   responseContainsErrors,
   ServiceResponseError,
@@ -177,7 +177,7 @@ const getExistingImagesNames = (imageSuffixesArray, baseUrl) => {
 
 const getExtraImages = (imagePath, extraSizes, imageGenerator) => {
   const { productImages } = imageGenerator(imagePath);
-  const { assetHost, productAssetPath } = getAPIConfig();
+  const { assetHost, productAssetPath = `ecom/assets/products/${getBrand()}` } = getAPIConfig();
   const baseImgPath = `${assetHost}/w_320/${productAssetPath}/${productImages[125]}`;
   return getExistingImagesNames(extraSizes || ['', '-1', '-2', '-3', '-4', '-5'], baseImgPath).then(
     existingSuffixes =>

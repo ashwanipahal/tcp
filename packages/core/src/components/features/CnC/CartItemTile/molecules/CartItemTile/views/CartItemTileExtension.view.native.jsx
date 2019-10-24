@@ -12,6 +12,9 @@ import {
   HeartIcon,
   ProductName,
   ProductListPriceOnReview,
+  IconTextMoveToBag,
+  IconHeight,
+  IconWidth,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
@@ -202,6 +205,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isItemShipToHome = !store;
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -218,6 +222,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
     isBopisCtaEnabled,
     isBossCtaEnabled,
     isItemShipToHome,
+    alwaysSearchForBOSS,
   });
 };
 
@@ -386,6 +391,27 @@ const onSwipeComplete = (props, swipe) => {
   setSwipedElement(swipe);
 };
 
+const renderImage = ({ icon, dataLocator, iconText }) => {
+  return (
+    <>
+      <Image data-locator={dataLocator} source={icon} height={IconHeight} width={IconWidth} />
+      <IconTextMoveToBag>{iconText}</IconTextMoveToBag>
+    </>
+  );
+};
+
+renderImage.propTypes = {
+  icon: PropTypes.string,
+  dataLocator: PropTypes.string,
+  iconText: PropTypes.string,
+};
+
+renderImage.defaultProps = {
+  icon: '',
+  dataLocator: '',
+  iconText: '',
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -400,4 +426,5 @@ export default {
   callEditMethod,
   handleEditCartItemWithStore,
   onSwipeComplete,
+  renderImage,
 };

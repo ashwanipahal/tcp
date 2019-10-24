@@ -117,7 +117,9 @@ class ProductDetailContainer extends React.PureComponent {
   }
 }
 
-ProductDetailContainer.pageId = 'p';
+ProductDetailContainer.pageInfo = {
+  pageId: 'p',
+};
 
 function mapStateToProps(state) {
   return {

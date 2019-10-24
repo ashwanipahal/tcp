@@ -59,6 +59,7 @@ class LoginSection extends PureComponent<Props> {
       getTouchStatus,
       userplccCardNumber,
       userplccCardId,
+      updateHeader,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -104,6 +105,7 @@ class LoginSection extends PureComponent<Props> {
             resetLoginState={resetLoginState}
             successFullResetEmail={successFullResetEmail}
             showLogin={showLogin}
+            updateHeader={updateHeader}
           />
         )}
         <FormStyleView>

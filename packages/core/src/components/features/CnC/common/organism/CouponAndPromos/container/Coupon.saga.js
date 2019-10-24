@@ -1,6 +1,7 @@
 import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import COUPON_CONSTANTS from '../Coupon.constants';
+import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
@@ -20,6 +21,7 @@ export function* applyCoupon({ payload }) {
     formPromise: { resolve, reject },
     source,
     coupon,
+    fullPageInfo,
   } = payload;
   if (coupon) {
     let oldStatus = coupon.status;
@@ -36,7 +38,14 @@ export function* applyCoupon({ payload }) {
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
-      yield put(BagPageAction.getCartData());
+      yield put(
+        BagPageAction.getCartData({
+          recalcRewards: true,
+          isRecalculateTaxes: true,
+          translation: false,
+          excludeCartItems: !fullPageInfo,
+        })
+      );
       resolve();
     } catch (e) {
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
@@ -52,7 +61,14 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(BagPageAction.getCartData());
+      yield put(
+        BagPageAction.getCartData({
+          recalcRewards: true,
+          isRecalculateTaxes: true,
+          translation: false,
+          excludeCartItems: !fullPageInfo,
+        })
+      );
       resolve();
     } catch (e) {
       yield put(hideLoader());
@@ -64,6 +80,7 @@ export function* applyCoupon({ payload }) {
 export function* removeCoupon({ payload }) {
   const {
     coupon,
+    fullPageInfo,
     formPromise: { resolve, reject },
   } = payload;
   const formData = { couponCode: coupon.id };
@@ -77,7 +94,14 @@ export function* removeCoupon({ payload }) {
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield call(removeCouponOrPromo, formData);
-    yield put(BagPageAction.getCartData());
+    yield put(
+      BagPageAction.getCartData({
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: false,
+        excludeCartItems: !fullPageInfo,
+      })
+    );
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield put(hideLoader());
     resolve();
@@ -102,9 +126,10 @@ export function* getAllCoupons() {
 }
 
 export function* CouponSaga() {
+  const cachedAllCoupons = validateReduxCache(getAllCoupons);
+  yield takeLatest(COUPON_CONSTANTS.GET_COUPON_LIST, cachedAllCoupons);
   yield takeLatest(COUPON_CONSTANTS.APPLY_COUPON, applyCoupon);
   yield takeLatest(COUPON_CONSTANTS.REMOVE_COUPON, removeCoupon);
-  yield takeLatest(COUPON_CONSTANTS.GET_COUPON_LIST, getAllCoupons);
 }
 
 export default CouponSaga;

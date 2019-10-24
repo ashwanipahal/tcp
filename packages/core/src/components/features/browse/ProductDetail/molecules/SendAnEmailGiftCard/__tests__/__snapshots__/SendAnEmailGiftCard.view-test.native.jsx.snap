@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SendAnEmailGiftCard component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs15"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
+    <Styled(Anchor)
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      text=""
+      visible={false}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs15"
+        margin={null}
+        numberOfLines={null}
+        textDecoration="underline"
+      />
+    </Styled(Anchor)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs15"
+      margin={null}
+      numberOfLines={null}
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

@@ -17,8 +17,8 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
+  initCheckoutSectionPageAction,
 } from './Checkout.action';
-
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
   isGuest as isGuestUser,
@@ -43,6 +43,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
+import constants from '../Checkout.constants';
 
 const {
   getSmsSignUpLabels,
@@ -72,6 +73,7 @@ const {
   getShipmentLoadingStatus,
   getCurrentCheckoutStage,
   getShippingAddressList,
+  getIsPaymentDisabled,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -115,6 +117,32 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         zip: zipCode,
       },
     };
+  };
+
+  intiSectionPage = (pageName, extraProps = {}) => {
+    const { initCheckoutSectionPage, router } = this.props;
+    let recalc;
+    let isPaypalPostBack;
+    if (router && router.query) {
+      ({ recalc, isPaypalPostBack } = router.query);
+    }
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
+  };
+
+  shippingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, { initialLoad: true });
+  };
+
+  billingDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.BILLING);
+  };
+
+  reviewDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.REVIEW);
+  };
+
+  pickupDidMount = () => {
+    this.intiSectionPage(constants.CHECKOUT_STAGES.PICKUP);
   };
 
   render() {
@@ -172,14 +200,16 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
+
     return (
       <CheckoutPage
+        pickupDidMount={this.pickupDidMount}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
-        billingProps={billingProps}
+        billingProps={{ ...billingProps, billingDidMount: this.billingDidMount }}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -196,7 +226,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         navigation={navigation}
         onPickupSubmit={onPickupSubmit}
         verifyAddressAction={verifyAddressAction}
-        shippingProps={shippingProps}
+        shippingProps={{ ...shippingProps, shippingDidMount: this.shippingDidMount }}
         orderHasPickUp={orderHasPickUp}
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
@@ -211,7 +241,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         labels={labels}
         submitBilling={submitBilling}
         submitReview={submitReview}
-        reviewProps={reviewProps}
+        reviewProps={{ ...reviewProps, reviewDidMount: this.reviewDidMount }}
         formatPayload={this.formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
@@ -234,6 +264,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: router => {
       dispatch(initCheckoutAction(router));
+    },
+    initCheckoutSectionPage: payload => {
+      dispatch(initCheckoutSectionPageAction(payload));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
@@ -349,6 +382,7 @@ const mapStateToProps = state => {
     getGiftServicesContentGymId: BagPageSelector.getGiftServicesContentGymId(state),
     reviewProps: {
       labels: getReviewLabels(state),
+      isPaymentDisabled: getIsPaymentDisabled(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     checkoutServerError: selectors.getCheckoutServerError(state),
