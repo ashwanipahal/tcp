@@ -86,7 +86,7 @@ class StoresCountryTile extends PureComponent {
             id={`scroll-${title}`}
             onToggleCallback={onToggleCallback}
             showHeaderAlways
-            isStoreCountry
+            isAccordionTablet
           />
         </div>
       </div>
