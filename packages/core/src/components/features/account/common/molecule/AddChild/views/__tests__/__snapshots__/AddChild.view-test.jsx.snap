@@ -1211,7 +1211,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            lbl_add_child_timestamp 
+            lbl_add_child_timestamp
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1339,6 +1339,9 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                     ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+      margin-top: 4px;
   }
 ",
                     ";

@@ -302,6 +302,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+      margin-top: 4px;
+  }
 ",
                   ";
 ",
@@ -627,6 +630,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+      margin-top: 4px;
   }
 ",
                   ";
@@ -1128,6 +1134,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+      margin-top: 4px;
+  }
 ",
                   ";
 ",
@@ -1604,6 +1613,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+      margin-top: 4px;
   }
 ",
                   ";
