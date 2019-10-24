@@ -99,7 +99,7 @@ const GuestMprPlccSection = props => {
                 mobilefontFamily={['secondary']}
                 fontWeight="semibold"
                 fontSize="fs14"
-                text={currentSubtotal}
+                text={currentSubtotal.toFixed(2)}
               />
             </SubTotalValue>
           </CurrentTotalWrapper>
@@ -123,7 +123,7 @@ const GuestMprPlccSection = props => {
                 mobilefontFamily={['secondary']}
                 fontWeight="extrabold"
                 fontSize="fs16"
-                text={estimatedSubtotal}
+                text={estimatedSubtotal.toFixed(2)}
               />
             </EstimatedSubTotalValue>
           </EstimatedSubTotalWrapper>
