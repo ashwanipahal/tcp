@@ -57,7 +57,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
             ]
           }
           numberOfLines={null}
-          text={21}
+          text="21.00"
           textDecoration={null}
         />
       </Styled(Text)>
@@ -107,7 +107,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
             ]
           }
           numberOfLines={null}
-          text={33}
+          text="33.00"
           textDecoration={null}
         />
       </Styled(Text)>
